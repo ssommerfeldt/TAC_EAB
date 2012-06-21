@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f3afee79-170f-4eeb-b311-006993f6e023" lastModifiedUtc="2012-06-19T22:26:56.2189954Z" parentEntityId="aeac9d9a-3f79-4934-84b2-c358dfd0a371" childEntityId="7edd7d1b-6f90-46f7-9d06-7187ff1d15b3">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="89f15c47-66f2-4b1c-9452-201d4d5405e5" lastModifiedUtc="2012-06-19T22:26:51.133Z" name="ProductStatus" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="6ba97194-e525-4998-a4c9-2f8e53a171fd" lastModifiedUtc="2012-06-19T22:26:30.8594128Z" name="ProductReference" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="e969040a-c010-49cc-99a9-bfc4d1e6354b" parentPropertyId="fdaaf877-40cd-41b9-8696-25e8b2f2f93a" childPropertyId="8f398988-0a01-4bfc-9d82-64bf7e4d95ea" ordinal="0" />
+  </column>
+</relationship>
