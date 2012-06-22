@@ -13,7 +13,26 @@
     <Property name="Description" type="System.String"></Property>
     <Property name="ActiveControl" type="System.String"></Property>
   </Properties>
-  <LoadActions />
+  <LoadActions>
+    <ActionDefinition>
+      <ResourceKey>41cd1417-e6e9-4e4a-8eca-b36ebcb34452</ResourceKey>
+      <RootActionName>CSharpSnippetAction</RootActionName>
+      <Action>
+        <CSharpCodeSnippet><![CDATA[// TAC Code Here
+//Get Current user
+    Sage.SalesLogix.Security.SLXUserService usersvc = (Sage.SalesLogix.Security.SLXUserService)Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Security.IUserService>();
+    Sage.Entity.Interfaces.IUser currentuser = usersvc.GetUser();
+
+    lueProductGroup.SeedValue = currentuser.MascompanyId;]]></CSharpCodeSnippet>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </ActionDefinition>
+  </LoadActions>
   <QuickFormElements>
     <QuickFormElement>
       <Properties>
@@ -38,7 +57,7 @@
       </Properties>
       <ControlDefinition>
         <Properties>
-          <Property name="Control" type="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls"><QFSLXLookup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>1</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>lueProductGroup</ControlId><DataBindings><QuickFormPropertyDataBindingDefinition><DataSourceID>MainEntity</DataSourceID><DataItemName>Product.Family</DataItemName><ControlItemName>LookupResultValue</ControlItemName><FormatString /><NullValueString /></QuickFormPropertyDataBindingDefinition></DataBindings><ControlLabelPlacement>left</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><OnChangeAction><ResourceKey>lueProductGroup</ResourceKey><RootActionName>NoActionAction</RootActionName><Action /><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnChangeAction><LookupImage /><LookupDialogWidth xsi:nil="true" /><LookupDialogHeight xsi:nil="true" /><LookupBindingMode>String</LookupBindingMode><LookupResultValue xsi:type="xsd:string" /><SeedProperty /><SeedValue /><Required>false</Required><DropDownDisplayProperty /><AllowClearingResult>false</AllowClearingResult><OverrideSeedOnSearch>false</OverrideSeedOnSearch><LookupEntityName>Vlueproductgroup</LookupEntityName><LookupEntityTypeName>Sage.Entity.Interfaces.IVlueproductgroup, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName><AutoPostBack>false</AutoPostBack><ReturnPrimaryKey>false</ReturnPrimaryKey><EnableHyperLinking>false</EnableHyperLinking><InitializeLookup>true</InitializeLookup><LookupProperties><LookupProperty><PropertyName>Family</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Family</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty></LookupProperties><LookupPreFilters /></QFSLXLookup></Property>
+          <Property name="Control" type="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls"><QFSLXLookup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>1</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>lueProductGroup</ControlId><DataBindings><QuickFormPropertyDataBindingDefinition><DataSourceID>MainEntity</DataSourceID><DataItemName>TIMPRODCATEGORYID</DataItemName><ControlItemName>LookupResultValue</ControlItemName><FormatString /><NullValueString /></QuickFormPropertyDataBindingDefinition></DataBindings><ControlLabelPlacement>left</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><OnChangeAction><ResourceKey>lueProductGroup</ResourceKey><RootActionName>NoActionAction</RootActionName><Action /><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnChangeAction><LookupImage /><LookupDialogWidth xsi:nil="true" /><LookupDialogHeight xsi:nil="true" /><LookupBindingMode>String</LookupBindingMode><LookupResultValue xsi:type="xsd:string" /><SeedProperty>CompanyId</SeedProperty><SeedValue /><Required>false</Required><DropDownDisplayProperty /><AllowClearingResult>false</AllowClearingResult><OverrideSeedOnSearch>false</OverrideSeedOnSearch><LookupEntityName>Vlueproductgroup</LookupEntityName><LookupEntityTypeName>Sage.Entity.Interfaces.IVlueproductgroup, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName><AutoPostBack>false</AutoPostBack><EnableHyperLinking>false</EnableHyperLinking><InitializeLookup>false</InitializeLookup><LookupProperties><LookupProperty><PropertyName>ProdcategoryId</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>ProdcategoryId (Prodcategory Id)</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Icount</PropertyName><PropertyType>System.Int32</PropertyType><PropertyHeader>Icount</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>false</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty></LookupProperties><LookupPreFilters /></QFSLXLookup></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>
@@ -70,55 +89,13 @@
       </Properties>
       <ControlDefinition>
         <Properties>
-          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>QFButton</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>Icon</ButtonType><Image>[Localization!Global_Images:Save_16x16]</Image><OnClientClick /><OnClickAction><ResourceKey>QFButton</ResourceKey><RootActionName>CSharpSnippetAction</RootActionName><Action><CSharpCodeSnippet><![CDATA[ // TAC Code Here
-    if (lueProductGroup.LookupResultValue != null)
-    {
-        Sage.Entity.Interfaces.IStockCardItems entity = (Sage.Entity.Interfaces.IStockCardItems)this.BindingSource.Current;
-        Sage.Entity.Interfaces.IAccount Account = (Sage.Entity.Interfaces.IAccount)this.GetParentEntity();
-        //==============================================================================================================================================
-        //http://customerfx.com/pages/crmdeveloper/2010/03/05/a-look-at-querying-data-in-saleslogix-using-irepository-and-the-sql-equivalents.aspx
-        //==============================================================================================================================================
-        Sage.Platform.Repository.IRepository<Sage.Entity.Interfaces.IProduct> repository =
-        Sage.Platform.EntityFactory.GetRepository<Sage.Entity.Interfaces.IProduct>();
+          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>QFButton</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>Icon</ButtonType><Image>[Localization!Global_Images:Save_16x16]</Image><OnClientClick /><OnClickAction><ResourceKey>QFButton</ResourceKey><RootActionName>CSharpSnippetAction</RootActionName><Action><CSharpCodeSnippet><![CDATA[// TAC Code Here
+    Sage.Entity.Interfaces.IStockCardItems entity = (Sage.Entity.Interfaces.IStockCardItems)this.BindingSource.Current;
+    Sage.Entity.Interfaces.IAccount Account = (Sage.Entity.Interfaces.IAccount)this.GetParentEntity();
+    
+   
 
-        // setup the query
-        Sage.Platform.Repository.IQueryable query = (Sage.Platform.Repository.IQueryable)repository;
-
-        // setup the expression factory
-        Sage.Platform.Repository.IExpressionFactory ef = query.GetExpressionFactory();
-
-        // setup your criteria 
-        Sage.Platform.Repository.ICriteria criteria = query.CreateCriteria();
-        // add condition for account
-        criteria.Add(ef.Eq("Family", (String)lueProductGroup.LookupResultValue));
-
-        // add sort order
-        criteria.AddOrder(ef.Asc("Family"));
-
-        // returns an IList<IProduct>
-        System.Collections.Generic.IList<Sage.Entity.Interfaces.IProduct> result;
-
-        result = criteria.List<Sage.Entity.Interfaces.IProduct>();
-        Sage.Entity.Interfaces.IProduct tmpProduct;
-        for (int i = 0; i < result.Count; ++i)
-        {
-            tmpProduct= (Sage.Entity.Interfaces.IProduct)result[i]; // Not Working
-            Sage.Entity.Interfaces.IStockCardItems item = Sage.Platform.EntityFactory.Create<Sage.Entity.Interfaces.IStockCardItems>();
-            item.Account = Account;
-            item.Product = tmpProduct;
-            item.Margin = Double.Parse(Margin.Text);
-            //item
-            Account.StockCardItemss.Add(item);
-            Account.Save(); 
-            
-        }
-
-
-    }
-    else
-    {
-
-    }]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>DialogOK</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnClickAction></QFButton></Property>
+    entity.AddProductGroupItems(lueProductGroup.LookupResultValue.ToString() , Account,Double.Parse(Margin.Text) );]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>DialogOK</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnClickAction></QFButton></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>

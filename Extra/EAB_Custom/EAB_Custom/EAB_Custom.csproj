@@ -40,8 +40,17 @@
     <Reference Include="sage.platform">
       <HintPath>..\..\..\..\Program Files\SalesLogix\ReferenceAssemblies\sage.platform.dll</HintPath>
     </Reference>
+    <Reference Include="Sage.Platform.Application">
+      <HintPath>..\..\..\..\Program Files\SalesLogix\ReferenceAssemblies\Sage.Platform.Application.dll</HintPath>
+    </Reference>
+    <Reference Include="Sage.Platform.WebPortal">
+      <HintPath>..\..\..\..\Program Files\SalesLogix\ReferenceAssemblies\Sage.Platform.WebPortal.dll</HintPath>
+    </Reference>
     <Reference Include="Sage.SalesLogix">
       <HintPath>..\..\..\..\Program Files\SalesLogix\ReferenceAssemblies\Sage.SalesLogix.dll</HintPath>
+    </Reference>
+    <Reference Include="Sage.SalesLogix.Security">
+      <HintPath>..\..\..\..\Program Files\SalesLogix\ReferenceAssemblies\Sage.SalesLogix.Security.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
