@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e7625d80-353b-4610-91fd-0d514a111a53" lastModifiedUtc="2012-06-21T21:53:30.549448Z" parentEntityId="d1538c32-b87c-40ed-ace1-20939e6471e9" childEntityId="03da3a53-eab7-4bb2-bd1b-9c0c988b66d2">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="b91dab3e-896c-4ebe-83a0-4de174514bbb" lastModifiedUtc="2012-06-21T21:53:24.7468344Z" name="Products" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="633d1056-c520-434b-8e3f-204abb486278" lastModifiedUtc="2012-06-21T21:53:24.7517204Z" name="Vwarehouse" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="c8fe7fae-b5ff-4bb5-94f4-ee798781c502" parentPropertyId="91ee7c6e-b953-4ab6-bc44-57e59acd38d0" childPropertyId="1bc2d817-6cc8-42b8-b7d1-aac17aa4146f" ordinal="0" />
+  </column>
+</relationship>
