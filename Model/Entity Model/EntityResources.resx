@@ -12277,7 +12277,7 @@
     <value>Modified By</value>
   </data>
   <data name="Productstatus.DisplayName" xml:space="preserve">
-    <value>Productstatus</value>
+    <value>Inventory</value>
   </data>
   <data name="Productstatus.Productstatusid.DisplayName" xml:space="preserve">
     <value>Productstatusid</value>
@@ -12507,6 +12507,12 @@
   <data name="StockCardItems.Account.DisplayName" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="StockCardItems.Product.DisplayName" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="Product.StockCardItems.DisplayName" xml:space="preserve">
+    <value>StockCardItem</value>
+  </data>
   <data name="Vlueproductgroup.DisplayName" xml:space="preserve">
     <value>Vlueproductgroup</value>
   </data>
@@ -12523,16 +12529,16 @@
     <value>Listprice</value>
   </data>
   <data name="Product.Vlueproductmsrp.DisplayName" xml:space="preserve">
-    <value>Vlueproductmsrp</value>
+    <value>ProductMSRP</value>
   </data>
   <data name="Vlueproductmsrp.Product.DisplayName" xml:space="preserve">
     <value>Product</value>
   </data>
-  <data name="StockCardItems.TIMPRODCATEGORYID.DisplayName" xml:space="preserve">
-    <value>TIMPRODCATEGORYID</value>
+  <data name="Vlueproductgroup.Family.DisplayName" xml:space="preserve">
+    <value>Family</value>
   </data>
-  <data name="Vlueproductgroup.Icount.DisplayName" xml:space="preserve">
-    <value>Icount</value>
+  <data name="StockCardItems.TmpProductGroupID.DisplayName" xml:space="preserve">
+    <value>tmpProductGroupID</value>
   </data>
   <data name="StockCardItems.Filter.Dealer.DisplayName" xml:space="preserve">
     <value>Dealer</value>
@@ -12618,9 +12624,6 @@
   <data name="Vwarehouse.Productreference_syncDate.DisplayName" xml:space="preserve">
     <value>Productreference Syncdate</value>
   </data>
-  <data name="Vwarehouse.Productreference_syncmessage.DisplayName" xml:space="preserve">
-    <value>Productreference Syncmessage</value>
-  </data>
   <data name="Vwarehouse.Productreference_syncStatuscode.DisplayName" xml:space="preserve">
     <value>Productreference Syncstatuscode</value>
   </data>
@@ -12660,9 +12663,6 @@
   <data name="Vwarehouse.Syncdate.DisplayName" xml:space="preserve">
     <value>Syncdate</value>
   </data>
-  <data name="Vwarehouse.Syncmessage.DisplayName" xml:space="preserve">
-    <value>Syncmessage</value>
-  </data>
   <data name="Vwarehouse.Syncstatuscode.DisplayName" xml:space="preserve">
     <value>Syncstatuscode</value>
   </data>
@@ -12689,9 +12689,6 @@
   </data>
   <data name="Vwarehouse.Attention.DisplayName" xml:space="preserve">
     <value>Attention</value>
-  </data>
-  <data name="Vwarehouse.Comments.DisplayName" xml:space="preserve">
-    <value>Comments</value>
   </data>
   <data name="Vwarehouse.Sitecode.DisplayName" xml:space="preserve">
     <value>Sitecode</value>
@@ -12738,34 +12735,604 @@
   <data name="Product.Vwarehouse.DisplayName" xml:space="preserve">
     <value>Warehouse</value>
   </data>
-  <data name="User.MascompanyId.DisplayName" xml:space="preserve">
-    <value>Mascompany Id</value>
+  <data name="Vwarehouse.ItemKey.DisplayName" xml:space="preserve">
+    <value>Item Key</value>
   </data>
-  <data name="Vlueproductgroup.CompanyId.DisplayName" xml:space="preserve">
-    <value>Company Id</value>
+  <data name="SLXSite.DisplayName" xml:space="preserve">
+    <value>Site</value>
   </data>
-  <data name="Vlueproductgroup.ProdcategoryId.DisplayName" xml:space="preserve">
-    <value>Prodcategory Id</value>
+  <data name="SLXSite.Siteid.DisplayName" xml:space="preserve">
+    <value>Siteid</value>
   </data>
-  <data name="Vlueproductgroup.ProdcategoryKey.DisplayName" xml:space="preserve">
-    <value>Prodcategory Key</value>
+  <data name="SLXSite.Addressid.DisplayName" xml:space="preserve">
+    <value>Addressid</value>
   </data>
-  <data name="StockCardItems.CategoryName.DisplayName" xml:space="preserve">
-    <value>CategoryName</value>
+  <data name="SLXSite.Mainphone.DisplayName" xml:space="preserve">
+    <value>Mainphone</value>
   </data>
-  <data name="StockCardItems.AccountName.DisplayName" xml:space="preserve">
-    <value>AccountName</value>
+  <data name="SLXSite.Alternatephone.DisplayName" xml:space="preserve">
+    <value>Alternatephone</value>
   </data>
-  <data name="StockCardItems.ProductDescription.DisplayName" xml:space="preserve">
-    <value>ProductDescription</value>
+  <data name="SLXSite.Fax.DisplayName" xml:space="preserve">
+    <value>Fax</value>
   </data>
-  <data name="StockCardItems.CompanyID.DisplayName" xml:space="preserve">
+  <data name="SLXSite.Attention.DisplayName" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="SLXSite.Comments.DisplayName" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="SLXSite.Sitecode.DisplayName" xml:space="preserve">
+    <value>Sitecode</value>
+  </data>
+  <data name="SLXSite.Dataowner.DisplayName" xml:space="preserve">
+    <value>Dataowner</value>
+  </data>
+  <data name="SLXSite.CreateUser.DisplayName" xml:space="preserve">
+    <value>Createuser</value>
+  </data>
+  <data name="SLXSite.CreateDate.DisplayName" xml:space="preserve">
+    <value>Createdate</value>
+  </data>
+  <data name="SLXSite.ModifyUser.DisplayName" xml:space="preserve">
+    <value>Modifyuser</value>
+  </data>
+  <data name="SLXSite.ModifyDate.DisplayName" xml:space="preserve">
+    <value>Modifydate</value>
+  </data>
+  <data name="SLXSite.SeccodeId.DisplayName" xml:space="preserve">
+    <value>SecCodeID</value>
+  </data>
+  <data name="Owner.Sites.DisplayName" xml:space="preserve">
+    <value>Sites</value>
+  </data>
+  <data name="Site.Owner.DisplayName" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Sitereference.SLXSite.DisplayName" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="SLXSite.Sitereferences.DisplayName" xml:space="preserve">
+    <value>Sitereferences</value>
+  </data>
+  <data name="Sitereference.Productstatus.DisplayName" xml:space="preserve">
+    <value>Productstatus</value>
+  </data>
+  <data name="Productstatus.Sitereference.DisplayName" xml:space="preserve">
+    <value>Sitereference</value>
+  </data>
+  <data name="StgInvtTran_TAC.DisplayName" xml:space="preserve">
+    <value>StgInvtTranTAC</value>
+  </data>
+  <data name="StgInvtTran_TAC.Stginvttran_tacId.DisplayName" xml:space="preserve">
+    <value>Stginvttran Tacid</value>
+  </data>
+  <data name="StgInvtTran_TAC.Stginvttranbatch_tacId.DisplayName" xml:space="preserve">
+    <value>Stginvttranbatch Tacid</value>
+  </data>
+  <data name="StgInvtTran_TAC.CreateUser.DisplayName" xml:space="preserve">
+    <value>Createuser</value>
+  </data>
+  <data name="StgInvtTran_TAC.CreateDate.DisplayName" xml:space="preserve">
+    <value>Createdate</value>
+  </data>
+  <data name="StgInvtTran_TAC.ModifyUser.DisplayName" xml:space="preserve">
+    <value>Modifyuser</value>
+  </data>
+  <data name="StgInvtTran_TAC.ModifyDate.DisplayName" xml:space="preserve">
+    <value>Modifydate</value>
+  </data>
+  <data name="StgInvtTran_TAC.TranID.DisplayName" xml:space="preserve">
+    <value>TranID</value>
+  </data>
+  <data name="StgInvtTran_TAC.TranType.DisplayName" xml:space="preserve">
+    <value>TranType</value>
+  </data>
+  <data name="StgInvtTran_TAC.TranDate.DisplayName" xml:space="preserve">
+    <value>TranDate</value>
+  </data>
+  <data name="StgInvtTran_TAC.ItemID.DisplayName" xml:space="preserve">
+    <value>ItemID</value>
+  </data>
+  <data name="StgInvtTran_TAC.Qty.DisplayName" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="StgInvtTran_TAC.UoM.DisplayName" xml:space="preserve">
+    <value>UoM</value>
+  </data>
+  <data name="StgInvtTran_TAC.UnitCost.DisplayName" xml:space="preserve">
+    <value>UnitCost</value>
+  </data>
+  <data name="StgInvtTran_TAC.TranAmt.DisplayName" xml:space="preserve">
+    <value>TranAmt</value>
+  </data>
+  <data name="StgInvtTran_TAC.GLAcctNo.DisplayName" xml:space="preserve">
+    <value>GLAcctNo</value>
+  </data>
+  <data name="StgInvtTran_TAC.TranCmnt.DisplayName" xml:space="preserve">
+    <value>TranCmnt</value>
+  </data>
+  <data name="StgInvtTran_TAC.CompanyID.DisplayName" xml:space="preserve">
     <value>CompanyID</value>
   </data>
-  <data name="StockCardItems.Product.DisplayName" xml:space="preserve">
-    <value>Product</value>
+  <data name="StgInvtTran_TAC.ProcessStatus.DisplayName" xml:space="preserve">
+    <value>ProcessStatus</value>
   </data>
-  <data name="Product.StockCardItems.DisplayName" xml:space="preserve">
-    <value>StockCardItem</value>
+  <data name="StgInvtTran_TAC.BatchID.DisplayName" xml:space="preserve">
+    <value>BatchID</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.DisplayName" xml:space="preserve">
+    <value>StgInvtTranBatchTAC</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.Stginvttranbatch_tacId.DisplayName" xml:space="preserve">
+    <value>Stginvttranbatch Tacid</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.CreateUser.DisplayName" xml:space="preserve">
+    <value>Createuser</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.CreateDate.DisplayName" xml:space="preserve">
+    <value>Createdate</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.ModifyUser.DisplayName" xml:space="preserve">
+    <value>Modifyuser</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.ModifyDate.DisplayName" xml:space="preserve">
+    <value>Modifydate</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.BComment.DisplayName" xml:space="preserve">
+    <value>BComment</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.BDate.DisplayName" xml:space="preserve">
+    <value>BDate</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.WhseID.DisplayName" xml:space="preserve">
+    <value>WhseID</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.CompanyID.DisplayName" xml:space="preserve">
+    <value>CompanyID</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.BatchID.DisplayName" xml:space="preserve">
+    <value>BatchID</value>
+  </data>
+  <data name="StgInvtTranBatch_TAC.StgInvtTran_TACs.DisplayName" xml:space="preserve">
+    <value>StgInvtTranTACs</value>
+  </data>
+  <data name="StgInvtTran_TAC.StgInvtTranBatch_TAC.DisplayName" xml:space="preserve">
+    <value>StgInvtTranBatchTAC</value>
+  </data>
+  <data name="ProductReference.ItemKey.DisplayName" xml:space="preserve">
+    <value>ItemKey</value>
+  </data>
+  <data name="Vproductpricesheet.DisplayName" xml:space="preserve">
+    <value>Vproductpricesheet</value>
+  </data>
+  <data name="StgSalesOrder_TAC.STaxAmt.DisplayName" xml:space="preserve">
+    <value>STaxAmt</value>
+  </data>
+  <data name="StgSalesOrder_TAC.TradeDiscAmt.DisplayName" xml:space="preserve">
+    <value>TradeDiscAmt</value>
+  </data>
+  <data name="StgSalesOrder_TAC.TranDate.DisplayName" xml:space="preserve">
+    <value>TranDate</value>
+  </data>
+  <data name="StgSalesOrder_TAC.TranNo.DisplayName" xml:space="preserve">
+    <value>TranNo</value>
+  </data>
+  <data name="StgSalesOrder_TAC.ModifyDate.DisplayName" xml:space="preserve">
+    <value>Modifydate</value>
+  </data>
+  <data name="StgSalesOrder_TAC.ModifyUser.DisplayName" xml:space="preserve">
+    <value>Modifyuser</value>
+  </data>
+  <data name="StgSalesOrder_TAC.CreateDate.DisplayName" xml:space="preserve">
+    <value>Createdate</value>
+  </data>
+  <data name="StgSalesOrder_TAC.CreateUser.DisplayName" xml:space="preserve">
+    <value>Createuser</value>
+  </data>
+  <data name="StgSalesOrder_TAC.Stgsalesorder_tacId.DisplayName" xml:space="preserve">
+    <value>Stgsalesorder Tacid</value>
+  </data>
+  <data name="StgSalesOrder_TAC.DisplayName" xml:space="preserve">
+    <value>StgSalesOrderTAC</value>
+  </data>
+  <data name="Product.Vproductpricesheet.DisplayName" xml:space="preserve">
+    <value>Vproductpricesheet</value>
+  </data>
+  <data name="Vproductpricesheet.Products.DisplayName" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="Vproductpricesheet.Whsekey.DisplayName" xml:space="preserve">
+    <value>Whsekey</value>
+  </data>
+  <data name="Vproductpricesheet.Listprice.DisplayName" xml:space="preserve">
+    <value>Listprice</value>
+  </data>
+  <data name="Vproductpricesheet.Productid.DisplayName" xml:space="preserve">
+    <value>Productid</value>
+  </data>
+  <data name="StgSalesOrder_TAC.SessionKey.DisplayName" xml:space="preserve">
+    <value>SessionKey</value>
+  </data>
+  <data name="StgSalesOrder_TAC.Status.DisplayName" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Vlueproductmsrp.Products.DisplayName" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="Productstatus.Filter.SKU.DisplayName" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="StgSalesOrder_TAC.RowKey.DisplayName" xml:space="preserve">
+    <value>RowKey</value>
+  </data>
+  <data name="StgSalesOrder_TAC.RequireSOAck.DisplayName" xml:space="preserve">
+    <value>RequireSOAck</value>
+  </data>
+  <data name="StgSalesOrder_TAC.RecurSOTranNo.DisplayName" xml:space="preserve">
+    <value>RecurSOTranNo</value>
+  </data>
+  <data name="StgSalesOrder_TAC.ProcessStatus.DisplayName" xml:space="preserve">
+    <value>ProcessStatus</value>
+  </data>
+  <data name="StgSalesOrder_TAC.OpenAmt.DisplayName" xml:space="preserve">
+    <value>OpenAmt</value>
+  </data>
+  <data name="StgSalesOrder_TAC.Hold.DisplayName" xml:space="preserve">
+    <value>Hold</value>
+  </data>
+  <data name="StgSalesOrder_TAC.FreightAmt.DisplayName" xml:space="preserve">
+    <value>FreightAmt</value>
+  </data>
+  <data name="StgSalesOrder_TAC.DfltShipToCustAddrID.DisplayName" xml:space="preserve">
+    <value>DfltShipToCustAddrID</value>
+  </data>
+  <data name="StgSalesOrder_TAC.CustID.DisplayName" xml:space="preserve">
+    <value>CustID</value>
+  </data>
+  <data name="StgSalesOrder_TAC.CustClassID.DisplayName" xml:space="preserve">
+    <value>CustClassID</value>
+  </data>
+  <data name="StgSalesOrder_TAC.CurrID.DisplayName" xml:space="preserve">
+    <value>CurrID</value>
+  </data>
+  <data name="StgSalesOrder_TAC.CurrExchRate.DisplayName" xml:space="preserve">
+    <value>CurrExchRate</value>
+  </data>
+  <data name="StgSalesOrder_TAC.ContactName.DisplayName" xml:space="preserve">
+    <value>ContactName</value>
+  </data>
+  <data name="StgSalesOrder_TAC.BillToCustAddrID.DisplayName" xml:space="preserve">
+    <value>BillToCustAddrID</value>
+  </data>
+  <data name="StgSOLine_TAC.DisplayName" xml:space="preserve">
+    <value>StgSOLineTAC</value>
+  </data>
+  <data name="StgSOLine_TAC.Stgsoline_tacId.DisplayName" xml:space="preserve">
+    <value>Stgsoline Tacid</value>
+  </data>
+  <data name="StgSOLine_TAC.Stgsalesorder_tacId.DisplayName" xml:space="preserve">
+    <value>Stgsalesorder Tacid</value>
+  </data>
+  <data name="StgSOLine_TAC.CreateUser.DisplayName" xml:space="preserve">
+    <value>Createuser</value>
+  </data>
+  <data name="StgSOLine_TAC.CreateDate.DisplayName" xml:space="preserve">
+    <value>Createdate</value>
+  </data>
+  <data name="StgSOLine_TAC.ModifyUser.DisplayName" xml:space="preserve">
+    <value>Modifyuser</value>
+  </data>
+  <data name="StgSOLine_TAC.ModifyDate.DisplayName" xml:space="preserve">
+    <value>Modifydate</value>
+  </data>
+  <data name="StgSOLine_TAC.AcctRefCode.DisplayName" xml:space="preserve">
+    <value>AcctRefCode</value>
+  </data>
+  <data name="StgSOLine_TAC.RowAction.DisplayName" xml:space="preserve">
+    <value>RowAction</value>
+  </data>
+  <data name="StgSOLine_TAC.AmtInvcd.DisplayName" xml:space="preserve">
+    <value>AmtInvcd</value>
+  </data>
+  <data name="StgSOLine_TAC.CloseDate.DisplayName" xml:space="preserve">
+    <value>CloseDate</value>
+  </data>
+  <data name="StgSOLine_TAC.CmntOnly.DisplayName" xml:space="preserve">
+    <value>CmntOnly</value>
+  </data>
+  <data name="StgSOLine_TAC.CommClassID.DisplayName" xml:space="preserve">
+    <value>CommClassID</value>
+  </data>
+  <data name="StgSOLine_TAC.CommPlanID.DisplayName" xml:space="preserve">
+    <value>CommPlanID</value>
+  </data>
+  <data name="StgSOLine_TAC.DeliveryMeth.DisplayName" xml:space="preserve">
+    <value>DeliveryMeth</value>
+  </data>
+  <data name="StgSOLine_TAC.Description.DisplayName" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="StgSOLine_TAC.ExtAmt.DisplayName" xml:space="preserve">
+    <value>ExtAmt</value>
+  </data>
+  <data name="StgSOLine_TAC.ExtCmnt.DisplayName" xml:space="preserve">
+    <value>ExtCmnt</value>
+  </data>
+  <data name="StgSOLine_TAC.FOBID.DisplayName" xml:space="preserve">
+    <value>FOBID</value>
+  </data>
+  <data name="StgSOLine_TAC.FreightAmt.DisplayName" xml:space="preserve">
+    <value>FreightAmt</value>
+  </data>
+  <data name="StgSOLine_TAC.GLAcctNo.DisplayName" xml:space="preserve">
+    <value>GLAcctNo</value>
+  </data>
+  <data name="StgSOLine_TAC.Hold.DisplayName" xml:space="preserve">
+    <value>Hold</value>
+  </data>
+  <data name="StgSOLine_TAC.HoldReason.DisplayName" xml:space="preserve">
+    <value>HoldReason</value>
+  </data>
+  <data name="StgSOLine_TAC.ItemAliasID.DisplayName" xml:space="preserve">
+    <value>ItemAliasID</value>
+  </data>
+  <data name="StgSOLine_TAC.ItemID.DisplayName" xml:space="preserve">
+    <value>ItemID</value>
+  </data>
+  <data name="StgSOLine_TAC.KitComponent.DisplayName" xml:space="preserve">
+    <value>KitComponent</value>
+  </data>
+  <data name="StgSOLine_TAC.MAS90LineIndex.DisplayName" xml:space="preserve">
+    <value>MAS90LineIndex</value>
+  </data>
+  <data name="StgSOLine_TAC.OrigOrdered.DisplayName" xml:space="preserve">
+    <value>OrigOrdered</value>
+  </data>
+  <data name="StgSOLine_TAC.OrigPromiseDate.DisplayName" xml:space="preserve">
+    <value>OrigPromiseDate</value>
+  </data>
+  <data name="StgSOLine_TAC.PONumber.DisplayName" xml:space="preserve">
+    <value>PONumber</value>
+  </data>
+  <data name="StgSOLine_TAC.ProcessStatus.DisplayName" xml:space="preserve">
+    <value>ProcessStatus</value>
+  </data>
+  <data name="StgSOLine_TAC.PromiseDate.DisplayName" xml:space="preserve">
+    <value>PromiseDate</value>
+  </data>
+  <data name="StgSOLine_TAC.QtyInvcd.DisplayName" xml:space="preserve">
+    <value>QtyInvcd</value>
+  </data>
+  <data name="StgSOLine_TAC.QtyOnBO.DisplayName" xml:space="preserve">
+    <value>QtyOnBO</value>
+  </data>
+  <data name="StgSOLine_TAC.QtyOrd.DisplayName" xml:space="preserve">
+    <value>QtyOrd</value>
+  </data>
+  <data name="StgSOLine_TAC.QtyRtrnCredit.DisplayName" xml:space="preserve">
+    <value>QtyRtrnCredit</value>
+  </data>
+  <data name="StgSOLine_TAC.QtyRtrnReplacement.DisplayName" xml:space="preserve">
+    <value>QtyRtrnReplacement</value>
+  </data>
+  <data name="StgSOLine_TAC.QtyShip.DisplayName" xml:space="preserve">
+    <value>QtyShip</value>
+  </data>
+  <data name="StgSOLine_TAC.ReqCert.DisplayName" xml:space="preserve">
+    <value>ReqCert</value>
+  </data>
+  <data name="StgSOLine_TAC.RequestDate.DisplayName" xml:space="preserve">
+    <value>RequestDate</value>
+  </data>
+  <data name="StgSOLine_TAC.RowKey.DisplayName" xml:space="preserve">
+    <value>RowKey</value>
+  </data>
+  <data name="StgSOLine_TAC.SessionKey.DisplayName" xml:space="preserve">
+    <value>SessionKey</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipDate.DisplayName" xml:space="preserve">
+    <value>ShipDate</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipMethID.DisplayName" xml:space="preserve">
+    <value>ShipMethID</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipPriority.DisplayName" xml:space="preserve">
+    <value>ShipPriority</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToAddrLine1.DisplayName" xml:space="preserve">
+    <value>ShipToAddrLine1</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToAddrLine2.DisplayName" xml:space="preserve">
+    <value>ShipToAddrLine2</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToAddrLine3.DisplayName" xml:space="preserve">
+    <value>ShipToAddrLine3</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToAddrLine4.DisplayName" xml:space="preserve">
+    <value>ShipToAddrLine4</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToAddrLine5.DisplayName" xml:space="preserve">
+    <value>ShipToAddrLine5</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToAddrName.DisplayName" xml:space="preserve">
+    <value>ShipToAddrName</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToCity.DisplayName" xml:space="preserve">
+    <value>ShipToCity</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToCountryID.DisplayName" xml:space="preserve">
+    <value>ShipToCountryID</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToPostalCode.DisplayName" xml:space="preserve">
+    <value>ShipToPostalCode</value>
+  </data>
+  <data name="StgSOLine_TAC.ShipToStateID.DisplayName" xml:space="preserve">
+    <value>ShipToStateID</value>
+  </data>
+  <data name="StgSOLine_TAC.SOLineNo.DisplayName" xml:space="preserve">
+    <value>SOLineNo</value>
+  </data>
+  <data name="StgSOLine_TAC.Status.DisplayName" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StgSOLine_TAC.STaxClassID.DisplayName" xml:space="preserve">
+    <value>STaxClassID</value>
+  </data>
+  <data name="StgSOLine_TAC.TradeDiscAmt.DisplayName" xml:space="preserve">
+    <value>TradeDiscAmt</value>
+  </data>
+  <data name="StgSOLine_TAC.TradeDiscPct.DisplayName" xml:space="preserve">
+    <value>TradeDiscPct</value>
+  </data>
+  <data name="StgSOLine_TAC.TranNo.DisplayName" xml:space="preserve">
+    <value>TranNo</value>
+  </data>
+  <data name="StgSOLine_TAC.UnitMeasID.DisplayName" xml:space="preserve">
+    <value>UnitMeasID</value>
+  </data>
+  <data name="StgSOLine_TAC.UnitPrice.DisplayName" xml:space="preserve">
+    <value>UnitPrice</value>
+  </data>
+  <data name="StgSOLine_TAC.UserFld1.DisplayName" xml:space="preserve">
+    <value>UserFld1</value>
+  </data>
+  <data name="StgSOLine_TAC.UserFld2.DisplayName" xml:space="preserve">
+    <value>UserFld2</value>
+  </data>
+  <data name="StgSOLine_TAC.VendorID.DisplayName" xml:space="preserve">
+    <value>VendorID</value>
+  </data>
+  <data name="StgSOLine_TAC.WarehouseID.DisplayName" xml:space="preserve">
+    <value>WarehouseID</value>
+  </data>
+  <data name="StgSOLine_TAC.WillCall.DisplayName" xml:space="preserve">
+    <value>WillCall</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.DisplayName" xml:space="preserve">
+    <value>StgTrnsfrOrderTAC</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.Stgtrnsfrorder_tacId.DisplayName" xml:space="preserve">
+    <value>Stgtrnsfrorder Tacid</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.CreateUser.DisplayName" xml:space="preserve">
+    <value>Createuser</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.CreateDate.DisplayName" xml:space="preserve">
+    <value>Createdate</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.ModifyUser.DisplayName" xml:space="preserve">
+    <value>Modifyuser</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.ModifyDate.DisplayName" xml:space="preserve">
+    <value>Modifydate</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.TrnsfrOrderID.DisplayName" xml:space="preserve">
+    <value>TrnsfrOrderID</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.CloseDate.DisplayName" xml:space="preserve">
+    <value>CloseDate</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.CompanyID.DisplayName" xml:space="preserve">
+    <value>CompanyID</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.RcvgWhseID.DisplayName" xml:space="preserve">
+    <value>RcvgWhseID</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.ReqDelvDate.DisplayName" xml:space="preserve">
+    <value>ReqDelvDate</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.SchdShipDate.DisplayName" xml:space="preserve">
+    <value>SchdShipDate</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.ShipMethID.DisplayName" xml:space="preserve">
+    <value>ShipMethID</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.ShipWhseID.DisplayName" xml:space="preserve">
+    <value>ShipWhseID</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.TranCmnt.DisplayName" xml:space="preserve">
+    <value>TranCmnt</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.TranDate.DisplayName" xml:space="preserve">
+    <value>TranDate</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.TranNo.DisplayName" xml:space="preserve">
+    <value>TranNo</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.TransitWhseID.DisplayName" xml:space="preserve">
+    <value>TransitWhseID</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.ProcessStatus.DisplayName" xml:space="preserve">
+    <value>ProcessStatus</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.SessionKey.DisplayName" xml:space="preserve">
+    <value>SessionKey</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.ProcessStatusMessage.DisplayName" xml:space="preserve">
+    <value>ProcessStatusMessage</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.DisplayName" xml:space="preserve">
+    <value>StgTrnsfrOrderLineTAC</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.Stgtrnsfrorderline_tacId.DisplayName" xml:space="preserve">
+    <value>Stgtrnsfrorderline Tacid</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.Stgtrnsfrorder_tacId.DisplayName" xml:space="preserve">
+    <value>Stgtrnsfrorder Tacid</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.CreateUser.DisplayName" xml:space="preserve">
+    <value>Createuser</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.CreateDate.DisplayName" xml:space="preserve">
+    <value>Createdate</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.ModifyUser.DisplayName" xml:space="preserve">
+    <value>Modifyuser</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.ModifyDate.DisplayName" xml:space="preserve">
+    <value>Modifydate</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.TrnsfrOrderLineID.DisplayName" xml:space="preserve">
+    <value>TrnsfrOrderLineID</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.ItemID.DisplayName" xml:space="preserve">
+    <value>ItemID</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.UoM.DisplayName" xml:space="preserve">
+    <value>UoM</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.QtyOrd.DisplayName" xml:space="preserve">
+    <value>QtyOrd</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.SurchargeFixedAmt.DisplayName" xml:space="preserve">
+    <value>SurchargeFixedAmt</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.SurchargePct.DisplayName" xml:space="preserve">
+    <value>SurchargePct</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.TranCmnt.DisplayName" xml:space="preserve">
+    <value>TranCmnt</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.TrnsfrLineNo.DisplayName" xml:space="preserve">
+    <value>TrnsfrLineNo</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.TrnsfrOrderID.DisplayName" xml:space="preserve">
+    <value>TrnsfrOrderID</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.ProcessStatus.DisplayName" xml:space="preserve">
+    <value>ProcessStatus</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.SessionKey.DisplayName" xml:space="preserve">
+    <value>SessionKey</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.ProcessStatusMessage.DisplayName" xml:space="preserve">
+    <value>ProcessStatusMessage</value>
+  </data>
+  <data name="StgTrnsfrOrder_TAC.StgTrnsfrOrderLine_TACs.DisplayName" xml:space="preserve">
+    <value>StgTrnsfrOrderLineTACs</value>
+  </data>
+  <data name="StgTrnsfrOrderLine_TAC.StgTrnsfrOrder_TAC.DisplayName" xml:space="preserve">
+    <value>StgTrnsfrOrderTAC</value>
   </data>
 </root>

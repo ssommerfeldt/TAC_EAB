@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="dbc688f3-ad78-49b5-9479-13b2fc3db708" lastModifiedUtc="2012-07-05T00:49:23.7927027Z" name="GetStockCardPricing" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="08b0698b-1842-4ff7-aaa8-2ff16894120d" lastModifiedUtc="2012-07-05T00:49:19.7135859Z" targetType="EAB_Custom.SalesOrderItemExtension, EAB_Custom" targetMethod="GetStockCardPricing" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>
