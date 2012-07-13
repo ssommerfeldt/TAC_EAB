@@ -12,6 +12,13 @@ namespace EAB_Custom {
     public class SalesOrderExtension {
 
 
+        public static void SubmitOrder(ISalesOrder salesOrder) {
+            //Determine which order to submit and pass through
+            SubmitSalesOrder(salesOrder);
+        }
+
+
+
         public static void SubmitSalesOrder(ISalesOrder salesOrder) {
             //submit order to mas
             //Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
@@ -24,6 +31,7 @@ namespace EAB_Custom {
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSalesOrder_TAC),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSalesOrder_TAC;
 
+           
             soHeader.TranNo = "0";
             soHeader.TranDate = DateTime.Now;
             soHeader.TradeDiscAmt = null;
@@ -34,17 +42,22 @@ namespace EAB_Custom {
             soHeader.RequireSOAck = "No";
             soHeader.RecurSOTranNo = null;
             soHeader.ProcessStatus = 0;
-            soHeader.OpenAmt = 0;
+            soHeader.OpenAmt = salesOrder.OrderTotal; //invoice total
             soHeader.Hold = "0";
             //soHeader.FreightAmt = salesOrder.Freight;
             soHeader.FreightAmt = 0;
-            soHeader.DfltShipToCustAddrID = salesOrder.ShippingAddress.Id.ToString(); //change this to mas id
-            soHeader.CustID = ""; //get from mas
-            soHeader.CustClassID = ""; //get from mas
+            soHeader.DfltShipToCustAddrID = salesOrder.ShippingAddress.Address.MASAddrKey.ToString(); //change this to mas id
+
+            //get the accountfinancial data
+            if (salesOrder.Account.AccountFinancial != null) {
+                soHeader.CustID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
+                soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type; //get from mas
+            }
+
             soHeader.CurrID = salesOrder.CurrencyCode;
             soHeader.CurrExchRate = salesOrder.ExchangeRate;
             soHeader.ContactName = salesOrder.BillingContact.FullName;
-            soHeader.BillToCustAddrID = salesOrder.BillingAddress.Id.ToString(); //change to mas id
+            soHeader.BillToCustAddrID = salesOrder.BillingAddress.Address.MASAddrKey.ToString(); //change to mas id
 
             soHeader.Save();
 
@@ -77,17 +90,17 @@ namespace EAB_Custom {
                 soLine.CommClassID = null;
                 soLine.CommPlanID = null;
                 soLine.DeliveryMeth = salesOrder.ShipVia;
-                soLine.Description = item.Description;
+                soLine.Description = item.Description.Substring(0,40);
                 soLine.ExtAmt = item.ExtendedPrice;
                 soLine.ExtCmnt = null;
                 soLine.FOBID = salesOrder.Fob;
-                //soLine.FreightAmt = salesOrder.Freight;
+                //soLine.FreightAmt = salesOrder.Freight; //do not use
                 soLine.FreightAmt = 0;
-                soLine.GLAcctNo = ""; //get this from mas
+                soLine.GLAcctNo = item.Product.GlSubAccountNumber; //get this from mas
                 soLine.Hold = "0";
                 soLine.HoldReason = null;
                 soLine.ItemAliasID = null;
-                soLine.ItemID = ""; //item key from mas
+                soLine.ItemID = item.Product.MASITEMKEY.ToString(); //item key from mas
                 soLine.KitComponent = null;
                 soLine.MAS90LineIndex = null;
                 soLine.OrigOrdered = item.Quantity;
@@ -115,7 +128,7 @@ namespace EAB_Custom {
                 soLine.ShipToAddrLine3 = salesOrder.ShippingAddress.Address3;
                 soLine.ShipToAddrLine4 = salesOrder.ShippingAddress.Address4;
                 soLine.ShipToAddrLine5 = "";
-                soLine.ShipToAddrName = salesOrder.ShippingAddress.Id.ToString();//change this
+                soLine.ShipToAddrName = salesOrder.ShippingAddress.Address.MASAddrKey.ToString();//get from MAS
                 soLine.ShipToCity = salesOrder.ShippingAddress.City;
                 soLine.ShipToCountryID = salesOrder.ShippingAddress.Country;
                 soLine.ShipToPostalCode = salesOrder.ShippingAddress.PostalCode;
@@ -125,12 +138,12 @@ namespace EAB_Custom {
                 soLine.TradeDiscAmt = 0;
                 soLine.TradeDiscPct = null;
                 soLine.TranNo = "0";
-                soLine.UnitMeasID = ""; //get this from mas
+                soLine.UnitMeasID = item.Product.UnitOfMeasureId; //get this from mas
                 soLine.UnitPrice = item.Price;
                 soLine.UserFld1 = null;
                 soLine.UserFld2 = null;
                 soLine.VendorID = null;
-                soLine.WarehouseID = ""; //get this from mas
+                soLine.WarehouseID = salesOrder.USERWHSE.SLXSite.Sitecode; //get this from mas
                 soLine.WillCall = null;
 
                 soLine.Save();
@@ -153,12 +166,18 @@ namespace EAB_Custom {
 
             toHeader.TrnsfrOrderID = 0; //set this to unique int number (global) during integration
             toHeader.CloseDate = DateTime.Now;
-            toHeader.CompanyID = ""; //get this from mas
+
+            //get the accountfinancial data
+            if (salesOrder.Account.AccountFinancial != null) {
+                toHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId; //get this from mas
+                //soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type; //get from mas
+            }
+                        
             toHeader.RcvgWhseID = ""; //get this from mas
             toHeader.ReqDelvDate = DateTime.Now.AddDays(10);
             toHeader.SchdShipDate = DateTime.Now.AddDays(2);
             toHeader.ShipMethID = null;
-            toHeader.ShipWhseID = ""; //get this from mas
+            toHeader.ShipWhseID = salesOrder.USERWHSE.SLXSite.Sitecode; //get this from mas
             toHeader.TranCmnt = null;
             toHeader.TranDate = DateTime.Now;
             toHeader.TranNo = null;
@@ -182,8 +201,8 @@ namespace EAB_Custom {
                 toLine.TrnsfrOrderLineID = 0; //Set this to unique number (for this order) during integration.
                 toLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
 
-                toLine.ItemID = ""; //set to itemid from mas
-                toLine.UoM = ""; //set to unit of measure from mas
+                toLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                toLine.UoM = item.Product.UnitOfMeasureId; //set to unit of measure from mas
                 toLine.QtyOrd = item.Quantity;  
                 toLine.SurchargeFixedAmt = 0;
                 toLine.SurchargePct = 0;

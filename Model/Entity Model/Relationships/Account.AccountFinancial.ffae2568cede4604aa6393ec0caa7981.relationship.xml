@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e7625d80-353b-4610-91fd-0d514a111a53" lastModifiedUtc="2012-06-21T21:53:30.549448Z" parentEntityId="d1538c32-b87c-40ed-ace1-20939e6471e9" childEntityId="03da3a53-eab7-4bb2-bd1b-9c0c988b66d2">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="ffae2568-cede-4604-aa63-93ec0caa7981" lastModifiedUtc="2012-07-13T20:19:55.8506487Z" cardinality="M:1" parentEntityId="ebfd715e-2b2f-4e5e-8c6d-cfc0d9b4ae52" childEntityId="545a20a2-537f-4b4f-8b7a-a538a31ef84e">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="b91dab3e-896c-4ebe-83a0-4de174514bbb" lastModifiedUtc="2012-06-21T21:53:24.7468344Z" name="Products" audited="false">
+  <parentProperty id="1cc85dc9-069e-4291-8536-863f5776eefc" lastModifiedUtc="2012-07-13T20:19:41.8471672Z" name="AccountFinancial" audited="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -16,7 +16,7 @@
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="633d1056-c520-434b-8e3f-204abb486278" lastModifiedUtc="2012-06-21T21:53:24.7517204Z" name="Vwarehouse" audited="false">
+  <childProperty id="8c9553c0-3e4d-486f-be47-3978ab4e0eaf" lastModifiedUtc="2012-07-13T20:19:46.6456389Z" name="Account" audited="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -29,6 +29,6 @@
     </SystemDataType>
   </childProperty>
   <column>
-    <OrmRelationshipColumn id="c8fe7fae-b5ff-4bb5-94f4-ee798781c502" parentPropertyId="91ee7c6e-b953-4ab6-bc44-57e59acd38d0" childPropertyId="1bc2d817-6cc8-42b8-b7d1-aac17aa4146f" ordinal="0" />
+    <OrmRelationshipColumn id="a758da6a-82e8-4666-ae3c-eb0db3f163a8" parentPropertyId="b24f58be-dd73-441a-a479-00e5f517b9e7" childPropertyId="430723c7-7a0b-44c0-8ff2-89a7d8987686" ordinal="0" />
   </column>
 </relationship>

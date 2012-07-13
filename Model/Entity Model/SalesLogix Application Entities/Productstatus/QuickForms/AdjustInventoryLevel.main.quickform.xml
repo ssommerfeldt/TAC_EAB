@@ -159,7 +159,7 @@
         transaction.BatchID = tranHeader.BatchID;
         transaction.TranType = transactionType;
         transaction.TranDate = DateTime.Now;
-        transaction.ItemID = productstatus.ProductReference.ItemKey.ToString();
+        transaction.ItemID = productstatus.Product.MASITEMKEY.ToString();
         transaction.Qty = quantity;
         transaction.UoM = "";
         transaction.UnitCost = (Double)productstatus.Product.Vlueproductmsrp.Listprice;

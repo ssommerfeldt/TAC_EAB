@@ -40,6 +40,9 @@
       <HintPath>..\..\..\..\Program Files (x86)\SalesLogix\ReferenceAssemblies\Sage.Entity.Interfaces.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Sage.Form.Interfaces">
+      <HintPath>..\..\..\..\inetpub\wwwroot\SlxClient\Bin\Sage.Form.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="sage.platform">
       <HintPath>..\..\..\..\Program Files\SalesLogix\ReferenceAssemblies\sage.platform.dll</HintPath>
     </Reference>
@@ -63,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InventoryExtension.cs" />
     <Compile Include="SalesOrderExtension.cs" />
     <Compile Include="SalesOrderItemExtension.cs" />
     <Compile Include="Extentions.cs" />

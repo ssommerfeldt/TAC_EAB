@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="81ded7d2-24fe-4de7-a61c-3382be698acb" lastModifiedUtc="2012-07-13T15:06:05.0959222Z" manageSchema="false" tableName="USERWHSE" name="USERWHSE" isExtension="false" audited="false" onBeforeInsertMethodId="8d4f478a-0963-4023-aee6-92ad223602ba" onAfterInsertMethodId="ad8d8c49-3f94-4d4b-b727-9a39562a9f84" onBeforeUpdateMethodId="fcda8da0-5ed0-482a-869a-31196315858a" onAfterUpdateMethodId="b17ea614-11f9-40c5-9101-d74cb0ff00ea" onBeforeDeleteMethodId="f4115ecc-f0d6-453a-a9c6-5e6e00f00ce2" onAfterDeleteMethodId="a56f8ec4-102d-4bae-ac2b-6e44cd57f3c0" onCreateId="e995722d-1309-43d1-bfc3-8051a64f4980">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="81ded7d2-24fe-4de7-a61c-3382be698acb" lastModifiedUtc="2012-07-13T19:55:41.546088Z" manageSchema="false" tableName="USERWHSE" name="USERWHSE" isExtension="false" audited="false" onBeforeInsertMethodId="8d4f478a-0963-4023-aee6-92ad223602ba" onAfterInsertMethodId="ad8d8c49-3f94-4d4b-b727-9a39562a9f84" onBeforeUpdateMethodId="fcda8da0-5ed0-482a-869a-31196315858a" onAfterUpdateMethodId="b17ea614-11f9-40c5-9101-d74cb0ff00ea" onBeforeDeleteMethodId="f4115ecc-f0d6-453a-a9c6-5e6e00f00ce2" onAfterDeleteMethodId="a56f8ec4-102d-4bae-ac2b-6e44cd57f3c0" onCreateId="e995722d-1309-43d1-bfc3-8051a64f4980">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
@@ -8,6 +8,8 @@
       </extender>
       <extender guid="1589723d-0536-4bf3-bdd7-3f6f7fe165d0">
         <OrmEntityMetadataExtension>
+          <StringExpression>${SLXSite.Attention}</StringExpression>
+          <HistoryTypeName />
           <IsHistoryTable>false</IsHistoryTable>
         </OrmEntityMetadataExtension>
       </extender>
