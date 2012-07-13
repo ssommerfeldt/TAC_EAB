@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="4077bf02-3b00-40e2-ae89-4def27c6a760" lastModifiedUtc="2012-07-13T15:07:37.2890246Z" parentEntityId="6ab738f6-21b0-4fe2-8df5-6f192281423c" childEntityId="81ded7d2-24fe-4de7-a61c-3382be698acb">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="2d2b958c-7888-4c59-ba10-3ea65ff23abd" lastModifiedUtc="2012-07-13T15:07:17.1335463Z" name="USERWHSES" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="f3f9cbac-6ad8-4adc-84f5-0c5ec3bb36af" lastModifiedUtc="2012-07-13T15:07:17.1335463Z" name="User" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="b44173fc-f829-4507-b4ac-dca916c56517" parentPropertyId="ff93a248-20ab-407a-899d-40b1435ca5c3" childPropertyId="f77afc54-c506-4510-85b8-29647410e353" ordinal="0" />
+  </column>
+</relationship>
