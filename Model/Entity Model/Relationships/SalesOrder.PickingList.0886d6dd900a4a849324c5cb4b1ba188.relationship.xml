@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0886d6dd-900a-4a84-9324-c5cb4b1ba188" lastModifiedUtc="2012-07-18T16:25:21.0137858Z" parentEntityId="9b47425f-3b70-4f38-a4cf-574c64d46086" childEntityId="643eb4ab-f3ea-43dc-ac19-457e2d116cbd">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="b7d15595-2a19-4a29-aab8-39c13b8f6976" lastModifiedUtc="2012-07-18T16:25:13.0863998Z" name="PickingLists" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="7d9b6660-8680-4607-9ab0-9bc6efbc9561" lastModifiedUtc="2012-07-18T16:25:13.0883478Z" name="SalesOrder" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="9cff4fb2-48de-42d7-b72f-48bb0af7fc21" parentPropertyId="17935caf-63d3-493c-a723-467cd86393d3" childPropertyId="b003ae71-1c04-4619-bbb8-9df6223a963b" ordinal="0" />
+  </column>
+</relationship>

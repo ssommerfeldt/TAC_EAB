@@ -90,7 +90,13 @@ namespace EAB_Custom {
                 soLine.CommClassID = null;
                 soLine.CommPlanID = null;
                 soLine.DeliveryMeth = salesOrder.ShipVia;
-                soLine.Description = item.Description.Substring(0,40);
+
+                if (item.Description.Length > 40) {
+                    soLine.Description = item.Description.Substring(0, 40);
+                } else {
+                    soLine.Description = item.Description;
+                }
+
                 soLine.ExtAmt = item.ExtendedPrice;
                 soLine.ExtCmnt = null;
                 soLine.FOBID = salesOrder.Fob;
@@ -216,6 +222,128 @@ namespace EAB_Custom {
             }
 
         }
+
+
+        //public static void SubmitSOPicklist(IStgSalesOrder_TAC salesOrder) {
+            
+        //    Sage.Entity.Interfaces.IStgSOPicklist_TAC plHeader =
+        //    Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOPicklist_TAC),
+        //    Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOPicklist_TAC;
+
+        //    plHeader.RowKey = 0; //set this to unique int number (global) during integration
+        //    plHeader.TranType = 801;
+        //    plHeader.TranNo = salesOrder.TranNo;
+        //    plHeader.TranDate = salesOrder.TranDate;
+                 
+        //    plHeader.CompanyID = salesOrder.CustID; //get this from mas
+            
+        //    plHeader.ProcessStatus = 0;            
+        //    plHeader.SessionKey = 0;
+        //    plHeader.SubmitDate = null;
+        //    plHeader.ProcessDate = null;
+
+        //    plHeader.Save();
+
+        //    foreach (Sage.Entity.Interfaces.IStgSOLine_TAC item in salesOrder.StgSOLine_TACs) {
+
+        //        //Transfer order line items
+        //        Sage.Entity.Interfaces.IStgSOPicklistLine_TAC plLine =
+        //                Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOPicklistLine_TAC),
+        //                Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOPicklistLine_TAC;
+
+        //        plLine.Stgsopicklist_tacId = plHeader.Id.ToString();
+
+        //        plLine.RowKey  = 0; //set this to unique int number (global) during integration - same as header value
+        //        plLine.SOLineNo = 0; //Set this to unique number (for this order) during integration.
+        //        //plLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
+        //        //plLine.TranNo =
+        //        plLine.ItemID = item.ItemID; //set to itemid from mas
+
+        //        plLine.QtyOnBO = item.QtyOnBO;
+        //        plLine.QtyOrd = item.QtyOrd;
+        //        plLine.QtyShip = item.QtyShip;
+        //        plLine.ShipDate = item.ShipDate;
+        //        plLine.CompanyID = salesOrder.CustID;
+        //        plLine.UnitMeasID = item.UnitMeasID;
+
+        //        plLine.ProcessStatus = 0;                
+        //        plLine.SessionKey = 0;
+        //        plLine.SubmitDate = null;
+        //        plLine.ProcessDate = null;
+        //        plLine.SOLineKey = null;
+        //        plLine.OrderKey = null;
+
+        //        plLine.Save();
+
+        //    }
+        //}
+
+
+        public static void CreatePickinglist(ISalesOrder salesOrder, out String result) {
+
+            Sage.Entity.Interfaces.IPickingList plHeader =
+            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IPickingList),
+            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IPickingList;
+
+            //plHeader.RowKey = 0; //set this to unique int number (global) during integration
+            plHeader.TranType = 801;
+            plHeader.TranNo = salesOrder.Id.ToString();
+            plHeader.TranDate = salesOrder.OrderDate;
+
+            //get the accountfinancial data
+            if (salesOrder.Account.AccountFinancial != null) {
+                if (salesOrder.Account.AccountFinancial.CustomerId.Length > 12) {
+                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId.Substring(0, 12); //get from mas
+                } else {
+                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId;
+                }
+                
+            }           
+
+            //plHeader.ProcessStatus = 0;
+            //plHeader.SessionKey = 0;
+            //plHeader.SubmitDate = null;
+            //plHeader.ProcessDate = null;
+
+            plHeader.Save();
+
+            foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
+
+                //Transfer order line items
+                Sage.Entity.Interfaces.IPickingListItem plLine =
+                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IPickingListItem),
+                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IPickingListItem;
+
+                plLine.PickingListId = plHeader.Id.ToString();
+
+                plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value
+                plLine.SOLineNo = 0; //Set this to unique number (for this order) during integration.
+                //plLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
+                //plLine.TranNo =
+                plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+
+                plLine.QtyOnBO = 0;
+                plLine.QtyOrd = Decimal.Parse (item.Quantity.ToString());
+                plLine.QtyShip = Decimal.Parse(item.Quantity.ToString());
+                plLine.ShipDate = salesOrder.OrderDate;
+                
+                plLine.CompanyID = plHeader.CompanyID;
+                plLine.UnitMeasID = item.Product.UnitOfMeasureId;
+
+                //plLine.ProcessStatus = 0;
+                //plLine.SessionKey = 0;
+                //plLine.SubmitDate = null;
+                //plLine.ProcessDate = null;
+                //plLine.SOLineKey = null;
+                //plLine.OrderKey = null;
+
+                plLine.Save();
+
+            }
+            //redirect to new picking list
+            result = plHeader.Id.ToString();
+        }
+
 
     }
 }
