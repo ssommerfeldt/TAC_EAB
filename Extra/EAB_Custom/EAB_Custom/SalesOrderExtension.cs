@@ -289,6 +289,7 @@ namespace EAB_Custom {
             plHeader.TranType = 801;
             plHeader.TranNo = salesOrder.Id.ToString();
             plHeader.TranDate = salesOrder.OrderDate;
+            plHeader.SalesOrderId = salesOrder.Id.ToString();
 
             //get the accountfinancial data
             if (salesOrder.Account.AccountFinancial != null) {
