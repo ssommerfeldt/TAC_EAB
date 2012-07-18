@@ -154,5 +154,17 @@
         <StandardIdDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="04490ac5-0a27-499a-aade-8142179b5be5" lastModifiedUtc="2012-07-18T20:52:10.1173716Z" name="RowKey" audited="false" columnName="ROWKEY" maxLength="0" precision="0" scale="0" ordinal="11" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="47f90249-e4c8-4564-9ae6-e1fa9904f8b8">
+        <IntegerDataType />
+      </SystemDataType>
+    </property>
   </properties>
 </entity>

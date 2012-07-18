@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3a39fe6a-7031-4aeb-a3a1-d4473c33c986" lastModifiedUtc="2012-07-18T15:45:09.7982842Z" manageSchema="true" tableName="PICKINGLISTITEM" name="PickingListItem" displayPropertyId="721aac06-6133-452a-a872-02aa73c3a96b" isExtension="false" audited="false" onBeforeInsertMethodId="2cf51ae9-50a8-4d65-b6b2-2f42e5fcc6e9" onAfterInsertMethodId="5daff1d6-59b7-4041-a5c5-653d7e490878" onBeforeUpdateMethodId="90a3c634-ef27-4dbc-81fc-50758fab7cca" onAfterUpdateMethodId="1f32affb-9fe5-4e95-becf-d15049a37205" onBeforeDeleteMethodId="0ea5ba12-232f-415e-8da3-5369fd5a7cec" onAfterDeleteMethodId="06e7c248-5902-4511-98db-5d30c271859e" onCreateId="01b20db3-6a22-4dc6-b1f7-aec4d23db5e9">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3a39fe6a-7031-4aeb-a3a1-d4473c33c986" lastModifiedUtc="2012-07-18T21:34:34.6768975Z" manageSchema="true" tableName="PICKINGLISTITEM" name="PickingListItem" displayPropertyId="798004e8-955e-4434-9f4c-1803230391e8" isExtension="false" audited="false" onBeforeInsertMethodId="2cf51ae9-50a8-4d65-b6b2-2f42e5fcc6e9" onAfterInsertMethodId="5daff1d6-59b7-4041-a5c5-653d7e490878" onBeforeUpdateMethodId="90a3c634-ef27-4dbc-81fc-50758fab7cca" onAfterUpdateMethodId="1f32affb-9fe5-4e95-becf-d15049a37205" onBeforeDeleteMethodId="0ea5ba12-232f-415e-8da3-5369fd5a7cec" onAfterDeleteMethodId="06e7c248-5902-4511-98db-5d30c271859e" onCreateId="01b20db3-6a22-4dc6-b1f7-aec4d23db5e9">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
@@ -8,7 +8,7 @@
       </extender>
       <extender guid="1589723d-0536-4bf3-bdd7-3f6f7fe165d0">
         <OrmEntityMetadataExtension>
-          <StringExpression>${ItemID}</StringExpression>
+          <StringExpression>${Product.ActualId}</StringExpression>
           <IsHistoryTable>false</IsHistoryTable>
         </OrmEntityMetadataExtension>
       </extender>
@@ -30,7 +30,7 @@
         <StandardIdDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="d6e96648-21b8-4f9b-9884-ddb6d13915fc" lastModifiedUtc="2012-07-17T16:12:11.5302081Z" name="PickingListId" audited="false" isNullable="false" columnName="PICKINGLISTID" maxLength="12" precision="0" scale="0" ordinal="1" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="d6e96648-21b8-4f9b-9884-ddb6d13915fc" lastModifiedUtc="2012-07-18T21:06:39.9423516Z" name="PickingListId" audited="false" isNullable="false" columnName="PICKINGLISTID" maxLength="12" precision="0" scale="0" ordinal="1" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -88,20 +88,6 @@
       </ExtendedPropertiesCollection>
       <SystemDataType guid="1f08f2eb-87c8-443b-a7c2-a51f590923f5">
         <DateTimeDataType />
-      </SystemDataType>
-    </property>
-    <property xsi:type="OrmFieldProperty" id="721aac06-6133-452a-a872-02aa73c3a96b" lastModifiedUtc="2012-07-17T16:12:11.5419369Z" name="ItemID" audited="false" columnName="ITEMID" maxLength="12" precision="0" scale="0" ordinal="6" isReadOnly="false">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
-          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
-            <OrmEntityPropertySDataExtension generate="true" />
-          </extender>
-        </extendee>
-      </ExtendedPropertiesCollection>
-      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
-        <TextDataType>
-          <Length>12</Length>
-        </TextDataType>
       </SystemDataType>
     </property>
     <property xsi:type="OrmFieldProperty" id="52c59b40-3b55-411b-a216-4726172ce2da" lastModifiedUtc="2012-07-17T16:12:11.5438917Z" name="RowKey" audited="false" columnName="ROWKEY" maxLength="0" precision="0" scale="0" ordinal="7" isReadOnly="false">

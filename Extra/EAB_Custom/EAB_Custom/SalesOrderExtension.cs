@@ -285,10 +285,18 @@ namespace EAB_Custom {
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IPickingList),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IPickingList;
 
-            //plHeader.RowKey = 0; //set this to unique int number (global) during integration
-            plHeader.TranType = 801;
-            plHeader.TranNo = salesOrder.Id.ToString();
-            plHeader.TranDate = salesOrder.OrderDate;
+            plHeader.RowKey = 0; //set this to unique int number (global) during integration
+            switch (salesOrder.OrderType) {
+                case "Sales Order":
+                    plHeader.TranType = 801;
+                    break;
+                case "Transfer Order":
+                    plHeader.TranType = 812;
+                    break;
+            }
+
+            plHeader.TranNo = "0"; //how to get this??
+            plHeader.TranDate = DateTime.Now;
             plHeader.SalesOrderId = salesOrder.Id.ToString();
 
             //get the accountfinancial data
@@ -317,11 +325,11 @@ namespace EAB_Custom {
 
                 plLine.PickingListId = plHeader.Id.ToString();
 
-                plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value
-                plLine.SOLineNo = 0; //Set this to unique number (for this order) during integration.
-                //plLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
-                //plLine.TranNo =
-                plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value                
+                plLine.SOLineNo = item.LineNumber; //sequence number    
+                
+                //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                plLine.ProductId = item.Product.Id.ToString();
 
                 plLine.QtyOnBO = 0;
                 plLine.QtyOrd = Decimal.Parse (item.Quantity.ToString());
