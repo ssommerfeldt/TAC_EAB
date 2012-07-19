@@ -1,13 +1,19 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Collections;
-//using Sage.Entity.Interfaces;
-//using NHibernate;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections;
+using Sage.Entity.Interfaces;
+using NHibernate;
 
-//namespace EAB_Custom {
-//    class PickingListExtension {
+namespace EAB_Custom {
+    public class PickingListExtension {
+
+        public static void SubmitPickingList(IPickingList pickinglist) {
+            //Determine which order to submit and pass through
+
+        }
+
 
 //        public static void SubmitSOPicklist(IStgSalesOrder_TAC salesOrder) {
 
@@ -63,5 +69,5 @@
 //            }
 //        }
 
-//    }
-//}
+    }
+}

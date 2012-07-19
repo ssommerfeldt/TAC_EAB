@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9b47425f-3b70-4f38-a4cf-574c64d46086" lastModifiedUtc="2010-10-05T22:53:18.7663045Z" manageSchema="false" tableName="SALESORDER" name="SalesOrder" displayPropertyId="f3853e2f-7d75-4e58-a8c2-cfff5c2ee114" isExtension="false" audited="false" smallImage="[Localization!Global_Images:Sales_Order_16x16]" largeImage="[Localization!Global_Images:Sales_Order_24x24]" onBeforeInsertMethodId="fcac4378-0fea-49c2-a806-8560cd52b9fd" onAfterInsertMethodId="032c8b0c-64f4-4077-bb8f-15270a298d16" onBeforeUpdateMethodId="f0bb849e-7d3d-4b6b-95c1-e873397de940" onAfterUpdateMethodId="0efa8d4e-2c10-48b8-ad85-aa62483c96e5" onBeforeDeleteMethodId="2817ab5a-965d-49f8-a17d-d4da75cee6f1" onAfterDeleteMethodId="2d4fdc67-7ba3-4940-b236-25db72afee6a" onCreateId="2060a7a0-b1de-4115-b5fe-5fb0a6358336">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9b47425f-3b70-4f38-a4cf-574c64d46086" lastModifiedUtc="2012-07-19T16:05:19.1296244Z" manageSchema="false" tableName="SALESORDER" name="SalesOrder" displayPropertyId="f3853e2f-7d75-4e58-a8c2-cfff5c2ee114" isExtension="false" audited="false" smallImage="[Localization!Global_Images:Sales_Order_16x16]" largeImage="[Localization!Global_Images:Sales_Order_24x24]" onBeforeInsertMethodId="fcac4378-0fea-49c2-a806-8560cd52b9fd" onAfterInsertMethodId="032c8b0c-64f4-4077-bb8f-15270a298d16" onBeforeUpdateMethodId="f0bb849e-7d3d-4b6b-95c1-e873397de940" onAfterUpdateMethodId="0efa8d4e-2c10-48b8-ad85-aa62483c96e5" onBeforeDeleteMethodId="2817ab5a-965d-49f8-a17d-d4da75cee6f1" onAfterDeleteMethodId="2d4fdc67-7ba3-4940-b236-25db72afee6a" onCreateId="2060a7a0-b1de-4115-b5fe-5fb0a6358336">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
       <extender guid="1589723d-0536-4bf3-bdd7-3f6f7fe165d0">
         <OrmEntityMetadataExtension>
-          <StringExpression>${SalesOrderNumber}</StringExpression>
+          <StringExpression>${OrderType} - ${SalesOrderNumber}</StringExpression>
           <HistoryTypeName />
           <IsHistoryTable>false</IsHistoryTable>
         </OrmEntityMetadataExtension>

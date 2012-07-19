@@ -166,5 +166,19 @@
         <IntegerDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="bed11175-b97e-4cc9-91b4-71755ab62906" lastModifiedUtc="2012-07-19T21:14:43.3792341Z" name="Status" audited="false" columnName="STATUS" maxLength="64" precision="0" scale="0" ordinal="12" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>64</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
   </properties>
 </entity>

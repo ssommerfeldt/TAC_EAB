@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="071ace4f-7e07-4e54-816f-9ebdc54dadac" lastModifiedUtc="2012-07-19T17:00:22.2396476Z" name="CreateReceiptOfGoods" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="b5ef54ac-5602-4f02-a031-e7fa64c11db4" lastModifiedUtc="2012-07-19T17:00:17.298476Z" targetType="EAB_Custom.SalesOrderExtension, EAB_Custom" targetMethod="CreateReceiptOfGoods" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>

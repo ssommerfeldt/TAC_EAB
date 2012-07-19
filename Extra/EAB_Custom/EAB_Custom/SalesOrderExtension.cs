@@ -15,9 +15,7 @@ namespace EAB_Custom {
         public static void SubmitOrder(ISalesOrder salesOrder) {
             //Determine which order to submit and pass through
             SubmitSalesOrder(salesOrder);
-        }
-
-
+        }       
 
         public static void SubmitSalesOrder(ISalesOrder salesOrder) {
             //submit order to mas
@@ -352,6 +350,88 @@ namespace EAB_Custom {
             //redirect to new picking list
             result = plHeader.Id.ToString();
         }
+
+
+        public static void CreateReceiptOfGoods(ISalesOrder salesOrder, out String result) {
+
+            Sage.Entity.Interfaces.IReceiptOfGoods plHeader =
+            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IReceiptOfGoods),
+            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IReceiptOfGoods;
+
+                      
+            plHeader.PostDate = DateTime.Now;
+            plHeader.SalesOrderId = salesOrder.Id.ToString();
+
+            //get the accountfinancial data
+            if (salesOrder.Account.AccountFinancial != null) {
+                if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                } else {
+                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                }
+
+            }
+            plHeader.PONum = "How to get?";
+            plHeader.WhseID = salesOrder.USERWHSE.SLXSite.Sitecode;
+            plHeader.Status = "Open";
+
+            plHeader.Save();
+
+            foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
+
+                //Transfer order line items
+                Sage.Entity.Interfaces.IReceiptOfGoodsItem plLine =
+                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IReceiptOfGoodsItem),
+                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IReceiptOfGoodsItem;
+
+                plLine.ReceiptOfGoodsId = plHeader.Id.ToString();
+
+                //plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value                
+                plLine.POLineNo = item.LineNumber; //sequence number    
+
+                //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                plLine.ProductId = item.Product.Id.ToString();
+                plLine.UnitMeasID = item.Product.UnitOfMeasureId;
+                plLine.QtyRcvd = Decimal.Parse(item.Quantity.ToString());
+                                        
+                plLine.Save();
+
+            }
+            //redirect to new picking list
+            result = plHeader.Id.ToString();
+        }
+
+
+        public static void GetPickingListsbySalesOrder(ISalesOrder salesorder, out IList<IPickingList> result) {
+            
+            //query the picking list object for all PICKING LIST records that are linked to this sales order
+            Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IPickingList> f = 
+                Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IPickingList>();
+            Sage.Platform.Repository.ICriteria crit = f.CreateCriteria();
+            
+            
+            crit.Add(f.EF.Eq("SalesOrder", salesorder));
+            crit.Add(f.EF.Eq("Status", "PickingList"));
+
+            result = crit.List<Sage.Entity.Interfaces.IPickingList>();
+            
+        }
+
+        public static void GetPackingListsbySalesOrder(ISalesOrder salesorder, out IList<IPickingList> result) {
+
+            //query the picking list object for all PACKING LIST records that are linked to this sales order
+            Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IPickingList> f =
+                Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IPickingList>();
+            Sage.Platform.Repository.ICriteria crit = f.CreateCriteria();
+
+
+            crit.Add(f.EF.Eq("SalesOrder", salesorder));
+            crit.Add(f.EF.Eq("Status", "PackingList"));
+
+            result = crit.List<Sage.Entity.Interfaces.IPickingList>();
+
+        }
+
 
 
     }

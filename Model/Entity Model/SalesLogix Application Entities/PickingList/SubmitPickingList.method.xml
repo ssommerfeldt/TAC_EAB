@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="dafd32e9-7441-4e2d-8e2d-de2ee632fe59" lastModifiedUtc="2012-07-19T22:33:51.6045715Z" name="SubmitPickingList" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="e896e739-296c-4735-9888-bd69baf62be7" lastModifiedUtc="2012-07-19T22:38:33.8684751Z" targetType="EAB_Custom.PickingListExtension, EAB_Custom" targetMethod="SubmitPickingList" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>

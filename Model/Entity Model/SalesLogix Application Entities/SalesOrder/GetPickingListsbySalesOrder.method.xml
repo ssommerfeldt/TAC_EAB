@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7ef08d4d-2851-4263-8231-362d059e2c87" lastModifiedUtc="2012-07-19T21:38:16.0897933Z" name="GetPickingListsbySalesOrder" returnType="IList&lt;IPickingList&gt;" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="be7c8840-1ce1-402d-9aff-d0b12a66cdf8" lastModifiedUtc="2012-07-19T21:38:10.5495415Z" targetType="EAB_Custom.SalesOrderExtension, EAB_Custom" targetMethod="GetPickingListsbySalesOrder" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>
