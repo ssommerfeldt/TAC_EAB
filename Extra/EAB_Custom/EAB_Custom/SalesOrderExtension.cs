@@ -14,10 +14,20 @@ namespace EAB_Custom {
 
         public static void SubmitOrder(ISalesOrder salesOrder) {
             //Determine which order to submit and pass through
-            SubmitSalesOrder(salesOrder);
+            switch (salesOrder.OrderType) {
+                case "Sales Order":
+                    SubmitSalesOrder(salesOrder);
+                    break;
+                case "Transfer Order":
+                    SubmitTransferOrder(salesOrder);
+                    break;
+                case "Purchase Order":
+                    SubmitPurchaseOrder(salesOrder);
+                    break;
+            }
         }       
 
-        public static void SubmitSalesOrder(ISalesOrder salesOrder) {
+        private static void SubmitSalesOrder(ISalesOrder salesOrder) {
             //submit order to mas
             //Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
 
@@ -156,7 +166,7 @@ namespace EAB_Custom {
 
         }
 
-        public static void SubmitTransferOrder(ISalesOrder salesOrder) {
+        private static void SubmitTransferOrder(ISalesOrder salesOrder) {
             //submit order to mas
             //Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
 
@@ -170,11 +180,15 @@ namespace EAB_Custom {
 
             toHeader.TrnsfrOrderID = 0; //set this to unique int number (global) during integration
             toHeader.CloseDate = DateTime.Now;
-
+            
             //get the accountfinancial data
             if (salesOrder.Account.AccountFinancial != null) {
-                toHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId; //get this from mas
-                //soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type; //get from mas
+                if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                    toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                } else {
+                    toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                }
+
             }
                         
             toHeader.RcvgWhseID = ""; //get this from mas
@@ -220,7 +234,100 @@ namespace EAB_Custom {
             }
 
         }
+        
+        private static void SubmitPurchaseOrder(ISalesOrder salesOrder) {
+            //submit order to mas
+            
+            Sage.Entity.Interfaces.IStgPurchaseOrder_TAC soHeader =
+            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgPurchaseOrder_TAC),
+            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPurchaseOrder_TAC;
 
+            soHeader.ClosedForInvc = "No";
+            soHeader.ClosedForRcvg = "No";
+            soHeader.CurrExchRate = 1.0;
+            soHeader.CurrID = "CAD";
+            soHeader.FreightAmt = 0;
+            soHeader.Hold = "No";
+            soHeader.IssueDate = DateTime.Now;
+            soHeader.OriginationDate = DateTime.Now;
+            soHeader.RequirePOIssue = "No";
+            soHeader.Status = "Open";
+            soHeader.STaxAmt = null;
+            soHeader.TranCmnt = null;
+            soHeader.TranNo = "0";
+            soHeader.TranDate = DateTime.Now;
+            soHeader.UserFld1 = null;
+            soHeader.VendClassID = null;
+            soHeader.VendorID = null;
+
+            soHeader.Save();
+
+            foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
+
+                //Sales order line items
+                Sage.Entity.Interfaces.IStgPOLine_TAC soLine =
+                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgPOLine_TAC),
+                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPOLine_TAC;
+
+                soLine.Stgpurchaseorder_tacId = soHeader.Id.ToString();
+                                
+                soLine.POLineNo = item.LineNumber;
+
+                soLine.AmtInvcd = 0;
+                soLine.ClosedForInvc = "No";
+                soLine.ClosedForRcvg = "No";
+                soLine.CmntOnly = "No";               
+
+                if (item.Description.Length > 40) {
+                    soLine.Description = item.Description.Substring(0, 40);
+                } else {
+                    soLine.Description = item.Description;
+                }
+
+                soLine.DropShip = "No";
+                soLine.ExclLastCost = "No";
+                soLine.Expedite = "No";
+                soLine.ExtAmt = item.ExtendedPrice;
+                soLine.ExtCmnt = null;                
+                //soLine.FreightAmt = salesOrder.Freight; //do not use
+                soLine.FreightAmt = 0;
+                soLine.GLAcctNo = item.Product.GlSubAccountNumber; //get this from mas
+                soLine.ItemID = item.Product.MASITEMKEY.ToString(); //item key from mas
+                
+                soLine.OrigOrdered = item.Quantity;
+                //soLine.OrigPromiseDate = salesOrder.DatePromised;
+                soLine.OrigPromiseDate = salesOrder.OrderDate.Value.AddDays(10);               
+                //soLine.PromiseDate = salesOrder.DatePromised;
+                soLine.PromiseDate = salesOrder.OrderDate.Value.AddDays(10);
+                soLine.QtyInvcd = 0;
+                soLine.QtyOnBO = 0;
+                soLine.QtyOpenToRcv = item.Quantity;
+                soLine.QtyOrd = item.Quantity;
+                soLine.QtyRcvd = 0;
+                soLine.QtyRtrnCredit = 0;
+                soLine.QtyRtrnReplacement = 0;                
+                soLine.RequestDate = salesOrder.OrderDate;
+                soLine.Status = "Open";
+                               
+                //get the accountfinancial data
+                if (salesOrder.Account.AccountFinancial != null) {
+                    if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                        soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                    } else {
+                        soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                    }
+
+                }
+                soLine.TranNo = "0";
+                soLine.UnitCost = (Double)item.Product.FixedCost;
+                soLine.UnitMeasID = item.Product.UnitOfMeasureId; //get this from mas
+                soLine.UserFld1 = null;
+                
+                soLine.Save();
+
+            }
+
+        }
 
         //public static void SubmitSOPicklist(IStgSalesOrder_TAC salesOrder) {
             
@@ -350,8 +457,7 @@ namespace EAB_Custom {
             //redirect to new picking list
             result = plHeader.Id.ToString();
         }
-
-
+        
         public static void CreateReceiptOfGoods(ISalesOrder salesOrder, out String result) {
 
             Sage.Entity.Interfaces.IReceiptOfGoods plHeader =

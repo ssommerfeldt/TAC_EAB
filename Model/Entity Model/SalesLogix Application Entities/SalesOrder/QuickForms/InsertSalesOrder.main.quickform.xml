@@ -53,6 +53,9 @@ if (Request.QueryString["type"] != null) {
 		case "TO":
 			salesOrder.OrderType = "Transfer Order";
 			break;
+		case "PO":
+			salesOrder.OrderType = "Purchase Order";
+			break;
 		case "EX":
 			salesOrder.OrderType = "Exchange Return";
 			break;
