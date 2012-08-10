@@ -339,5 +339,31 @@
         </TextDataType>
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="96dba41d-ec66-4a42-9f68-3ac3cf10d8a5" lastModifiedUtc="2012-08-10T20:13:57.4879073Z" name="DfltShipPriority" audited="false" columnName="DFLTSHIPPRIORITY" maxLength="0" precision="5" scale="0" ordinal="25" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="6b0b3d51-0728-4b67-9473-52836a81da53">
+        <ShortIntegerDataType />
+      </SystemDataType>
+    </property>
+    <property xsi:type="OrmFieldProperty" id="2706d4bd-d258-40df-8d79-14d9d7471412" lastModifiedUtc="2012-08-10T20:13:57.4879073Z" name="PmtTermsID" audited="false" columnName="PMTTERMSID" maxLength="15" precision="0" scale="0" ordinal="26" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>15</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
   </properties>
 </entity>

@@ -54,18 +54,25 @@ namespace EAB_Custom {
             soHeader.Hold = "0";
             //soHeader.FreightAmt = salesOrder.Freight;
             soHeader.FreightAmt = 0;
-            soHeader.DfltShipToCustAddrID = salesOrder.ShippingAddress.Address.MASAddrKey.ToString(); //change this to mas id
+            
 
             //get the accountfinancial data
             if (salesOrder.Account.AccountFinancial != null) {
                 soHeader.CustID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
-                soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type; //get from mas
+                soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type.Substring(0,4).ToUpper(); //get from mas
+
+                //soHeader.DfltShipToCustAddrID = salesOrder.ShippingAddress.Address.MASAddrKey.ToString(); //change this to mas id
+                soHeader.DfltShipToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
+                //soHeader.BillToCustAddrID = salesOrder.BillingAddress.Address.MASAddrKey.ToString(); //change to mas id
+                soHeader.BillToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
             }
 
             soHeader.CurrID = salesOrder.CurrencyCode;
             soHeader.CurrExchRate = salesOrder.ExchangeRate;
-            soHeader.ContactName = salesOrder.BillingContact.FullName;
-            soHeader.BillToCustAddrID = salesOrder.BillingAddress.Address.MASAddrKey.ToString(); //change to mas id
+            //soHeader.ContactName = salesOrder.BillingContact.FullName;
+            soHeader.ContactName = "";
+            soHeader.DfltShipPriority = 3;
+            soHeader.PmtTermsID = "120";
 
             soHeader.Save();
 
@@ -136,7 +143,7 @@ namespace EAB_Custom {
                 soLine.SessionKey = 0;
                 soLine.ShipDate = salesOrder.OrderDate.Value.AddDays(2);
                 soLine.ShipMethID = null;
-                soLine.ShipPriority = 0;
+                soLine.ShipPriority = 3;
                 soLine.ShipToAddrLine1 = salesOrder.ShippingAddress.Address1;
                 soLine.ShipToAddrLine2 = salesOrder.ShippingAddress.Address2;
                 soLine.ShipToAddrLine3 = salesOrder.ShippingAddress.Address3;
@@ -538,7 +545,18 @@ namespace EAB_Custom {
 
         }
 
+        public static void AddStockcardProducts(ISalesOrder salesorder) {
 
+            //List the stock card items
+
+            //add the products to the salesorder
+            Sage.Entity.Interfaces.ISalesOrderItem item =
+            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
+            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
+
+
+
+        }
 
     }
 }
