@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="4077bf02-3b00-40e2-ae89-4def27c6a760" lastModifiedUtc="2012-07-13T15:07:37.2890246Z" parentEntityId="6ab738f6-21b0-4fe2-8df5-6f192281423c" childEntityId="81ded7d2-24fe-4de7-a61c-3382be698acb">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0c27289d-7279-472f-8374-a041007b5267" lastModifiedUtc="2012-08-14T20:36:45.8479972Z" parentEntityId="6ab738f6-21b0-4fe2-8df5-6f192281423c" childEntityId="81ded7d2-24fe-4de7-a61c-3382be698acb" cascadeOption="SaveUpdateDelete">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="2d2b958c-7888-4c59-ba10-3ea65ff23abd" lastModifiedUtc="2012-07-13T15:07:17.1335463Z" name="USERWHSES" audited="false">
+  <parentProperty id="7ae6d7d3-a35e-4626-a4b8-907ca3c4f23d" lastModifiedUtc="2012-08-14T20:36:38.4597909Z" name="USERWHSES" audited="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -16,7 +16,7 @@
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="f3f9cbac-6ad8-4adc-84f5-0c5ec3bb36af" lastModifiedUtc="2012-07-13T15:07:17.1335463Z" name="User" audited="false">
+  <childProperty id="9a7fff82-91b1-4276-8598-dbcd513649e5" lastModifiedUtc="2012-08-14T20:36:38.4607696Z" name="User" audited="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -29,6 +29,6 @@
     </SystemDataType>
   </childProperty>
   <column>
-    <OrmRelationshipColumn id="b44173fc-f829-4507-b4ac-dca916c56517" parentPropertyId="ff93a248-20ab-407a-899d-40b1435ca5c3" childPropertyId="f77afc54-c506-4510-85b8-29647410e353" ordinal="0" />
+    <OrmRelationshipColumn id="3c88cdea-1a17-452f-be7f-aea7ac9951a2" parentPropertyId="ff93a248-20ab-407a-899d-40b1435ca5c3" childPropertyId="f77afc54-c506-4510-85b8-29647410e353" ordinal="0" />
   </column>
 </relationship>

@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountExtension.cs" />
     <Compile Include="InventoryExtension.cs" />
     <Compile Include="PickingListExtension.cs" />
     <Compile Include="ReceiptOfGoodsExtension.cs" />

@@ -37,12 +37,18 @@ namespace EAB_Custom {
             //    listPrice = (double)item.Listprice;
             //    break;
             //}
-            if (salesorderitem.Product != null) {
-                if (salesorderitem.Product.Vproductpricesheet != null) {
-                    listPrice = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
-                } else {
-                    //price not found
+            try {
+                if (salesorderitem.Product != null) {
+                    if (salesorderitem.Product.Vproductpricesheet != null) {
+                        listPrice = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
+                    } else {
+                        //price not found
+                    }
                 }
+            } catch (Exception ex) {
+                //vproductpricesheet record not found
+                Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                eh.HandleException(ex, false);
             }
 
 
@@ -62,6 +68,7 @@ namespace EAB_Custom {
             salesorderitem.Discount = margin;
             salesorderitem.CalculatedPrice = (Decimal)listPrice - ((Decimal)listPrice * (Decimal)margin);
             salesorderitem.ExtendedPrice = (double)salesorderitem.CalculatedPrice * salesorderitem.Quantity;
+            salesorderitem.UPC = salesorderitem.Product.UPC;
 
             //Set a value on salesorder to recalculate totals on save
             salesorderitem.SalesOrder.Tick = salesorderitem.SalesOrder.Tick + 1 ?? 1;

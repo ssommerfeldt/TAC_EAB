@@ -211,16 +211,6 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);]]></CSharpCodeSnippet></Act
       </Properties>
       <ControlDefinition>
         <Properties>
-          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms"><QFTextBox xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>13</Row><IsReadOnly>false</IsReadOnly><Visible>false</Visible><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>txtServerPath</ControlId><DataBindings /><ControlLabelPlacement>left</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><OnChangeAction><ResourceKey>txtServerPath</ResourceKey><RootActionName>NoActionAction</RootActionName><Action /><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnChangeAction></QFTextBox></Property>
-        </Properties>
-      </ControlDefinition>
-    </QuickFormElement>
-    <QuickFormElement>
-      <Properties>
-        <Property name="EntityMappingType" type="System.String">None</Property>
-      </Properties>
-      <ControlDefinition>
-        <Properties>
           <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms"><QFTextBox xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><ColumnSpan>2</ColumnSpan><RowSpan>3</RowSpan><Column>0</Column><Row>14</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>txtComments</ControlId><DataBindings><QuickFormPropertyDataBindingDefinition><DataSourceID>MainEntity</DataSourceID><DataItemName>Comments</DataItemName><ControlItemName>Text</ControlItemName><FormatString /><NullValueString /></QuickFormPropertyDataBindingDefinition></DataBindings><ControlLabelPlacement>left</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><Lines>3</Lines><OnChangeAction><ResourceKey>txtComments</ResourceKey><RootActionName>NoActionAction</RootActionName><Action /><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnChangeAction></QFTextBox></Property>
         </Properties>
       </ControlDefinition>
@@ -243,11 +233,7 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);]]></CSharpCodeSnippet></Act
       </Properties>
       <ControlDefinition>
         <Properties>
-          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>QFButton</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>StandardButton</ButtonType><Image /><OnClientClick /><OnClickAction><ResourceKey>QFButton</ResourceKey><RootActionName>CSharpSnippetAction</RootActionName><Action><CSharpCodeSnippet><![CDATA[// TAC Code Here
-Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
-  ScriptManager.RegisterStartupScript(this, typeof(string), "OpenWindowScript", "window.open('./TACPrintOrderConfirmation.aspx?salesorderid=" + salesOrder.Id.ToString()+"');",true);
-  
-]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnClickAction></QFButton></Property>
+          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>QFButton</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>StandardButton</ButtonType><Image /><OnClientClick /><OnClickAction><ResourceKey>QFButton</ResourceKey><RootActionName>MessageAction</RootActionName><Action><ResourceKey>bf188876-6ce4-44b4-997f-06db0a5c0601</ResourceKey></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnClickAction></QFButton></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>
@@ -328,6 +314,16 @@ Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sa
       <ControlDefinition>
         <Properties>
           <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>cmdSubmitOrder</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>Icon</ButtonType><Image>[Localization!Global_Images:submit_to_accounting_sys_16x16]</Image><OnClientClick /><OnClickAction><ResourceKey>cmdSubmitOrder</ResourceKey><RootActionName>BusinessRuleAction</RootActionName><Action><BusinessRule>SubmitOrder</BusinessRule><Object>SalesOrder</Object><Parameters /><PassResultsToNextAction>False</PassResultsToNextAction><OnCompleteActionName>MessageAction</OnCompleteActionName><OnComplete><ResourceKey>18f05b01-c8f0-43e1-960e-b80f594e7c06</ResourceKey></OnComplete></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>True</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnClickAction></QFButton></Property>
+        </Properties>
+      </ControlDefinition>
+    </QuickFormElement>
+    <QuickFormElement>
+      <Properties>
+        <Property name="EntityMappingType" type="System.String">None</Property>
+      </Properties>
+      <ControlDefinition>
+        <Properties>
+          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>QFButton2</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>StandardButton</ButtonType><Image /><OnClientClick /><OnClickAction><ResourceKey>QFButton2</ResourceKey><RootActionName>BusinessRuleAction</RootActionName><Action><BusinessRule>AddStockcardProducts</BusinessRule><Object>SalesOrder</Object><Parameters /><PassResultsToNextAction>False</PassResultsToNextAction><OnCompleteActionName>NoActionAction</OnCompleteActionName><OnComplete /></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>True</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnClickAction></QFButton></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>

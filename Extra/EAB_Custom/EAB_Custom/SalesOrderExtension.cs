@@ -549,6 +549,9 @@ namespace EAB_Custom {
             //Only add products if the account is specified
             if (salesorder.Account != null) {
 
+                //save the salesorder
+                salesorder.Save();
+
                 //List the stock card items            
                 Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IStockCardItems> f =
                     Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IStockCardItems>();

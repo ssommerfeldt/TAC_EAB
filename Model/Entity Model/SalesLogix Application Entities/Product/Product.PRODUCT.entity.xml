@@ -365,7 +365,7 @@
         </TextDataType>
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="f8471ae5-b9cf-47ae-9d12-d1be9520f25b" lastModifiedUtc="2008-02-12T18:58:24.3543585Z" name="Unit" audited="false" include="false" columnName="UNIT" maxLength="64" precision="0" scale="0" ordinal="12" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="f8471ae5-b9cf-47ae-9d12-d1be9520f25b" lastModifiedUtc="2012-08-14T22:57:11.2398133Z" name="Unit" audited="false" columnName="UNIT" maxLength="64" precision="0" scale="0" ordinal="12" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -569,6 +569,20 @@
       </ExtendedPropertiesCollection>
       <SystemDataType guid="47f90249-e4c8-4564-9ae6-e1fa9904f8b8">
         <IntegerDataType />
+      </SystemDataType>
+    </property>
+    <property xsi:type="OrmFieldProperty" id="94579deb-6b01-43a4-af40-31cbbc26781c" lastModifiedUtc="2012-08-14T22:14:04.2402046Z" name="UPC" audited="false" columnName="UPC" maxLength="32" precision="0" scale="0" ordinal="41" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>32</Length>
+        </TextDataType>
       </SystemDataType>
     </property>
   </properties>
