@@ -1,0 +1,1 @@
+Temporary directory to hold SalesOrder confirmation Pdf Reports when they are exported to PDF
