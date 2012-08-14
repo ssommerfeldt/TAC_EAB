@@ -159,7 +159,7 @@ namespace EAB_Custom {
                 soLine.TradeDiscAmt = 0;
                 soLine.TradeDiscPct = null;
                 soLine.TranNo = "0";
-                soLine.UnitMeasID = item.Product.UnitOfMeasureId; //get this from mas
+                soLine.UnitMeasID = item.Product.UnitOfMeasure.Name; //get this from mas
                 soLine.UnitPrice = item.Price;
                 soLine.UserFld1 = null;
                 soLine.UserFld2 = null;
@@ -546,16 +546,45 @@ namespace EAB_Custom {
         }
 
         public static void AddStockcardProducts(ISalesOrder salesorder) {
+            //Only add products if the account is specified
+            if (salesorder.Account != null) {
 
-            //List the stock card items
-
-            //add the products to the salesorder
-            Sage.Entity.Interfaces.ISalesOrderItem item =
-            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
-            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
+                //List the stock card items            
+                Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IStockCardItems> f =
+                    Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IStockCardItems>();
+                Sage.Platform.Repository.ICriteria crit = f.CreateCriteria();
 
 
+                crit.Add(f.EF.Eq("Accountid", salesorder.Account.Id.ToString()));
+                //crit.Add(f.EF.Eq("Status", "PickingList"));
 
+                //result = crit.List<Sage.Entity.Interfaces.IPickingList>();
+                foreach (IStockCardItems scitem in crit.List<IStockCardItems>()) {
+
+                    //add the products to the salesorder
+                    Sage.Entity.Interfaces.ISalesOrderItem item =
+                    Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
+                    Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
+
+                    item.SalesOrder = salesorder;
+                    item.ActualID = scitem.Product.ActualId;
+                    item.Description = scitem.ProductDescription;
+                    item.Discount = scitem.Margin;
+                    item.ExtendedPrice = 0; //due to quantity 0
+                    item.Family = scitem.Product.Family;
+                    item.Price = (Double)scitem.Product.Price;
+                    item.Quantity = 0; //set to 0 initially
+                    item.ProductName = scitem.Product.Name;
+                    item.Program = scitem.Product.Program;
+                    item.UnitOfMeasureId = scitem.Product.UnitOfMeasureId.Trim();
+                    item.Product = scitem.Product;
+
+                    salesorder.SalesOrderItems.Add(item);
+                    item.Save();
+                    break;
+                }
+                //salesorder.Save();
+            }
         }
 
     }
