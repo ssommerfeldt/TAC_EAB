@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="71c329c7-b98a-4fb3-bb5b-19829207f05a" lastModifiedUtc="2012-08-15T17:09:43.6346687Z" name="CreatePackingList" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="b6884cf6-bc91-449c-90fb-9f05b966ad75" lastModifiedUtc="2012-08-15T16:54:33.7679692Z" targetType="EAB_Custom.SalesOrderExtension, EAB_Custom" targetMethod="CreatePackinglist" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>

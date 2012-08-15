@@ -69,6 +69,7 @@ namespace EAB_Custom {
             salesorderitem.CalculatedPrice = (Decimal)listPrice - ((Decimal)listPrice * (Decimal)margin);
             salesorderitem.ExtendedPrice = (double)salesorderitem.CalculatedPrice * salesorderitem.Quantity;
             salesorderitem.UPC = salesorderitem.Product.UPC;
+            //salesorderitem.Product.
 
             //Set a value on salesorder to recalculate totals on save
             salesorderitem.SalesOrder.Tick = salesorderitem.SalesOrder.Tick + 1 ?? 1;
