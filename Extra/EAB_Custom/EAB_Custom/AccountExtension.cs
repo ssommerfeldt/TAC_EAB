@@ -52,7 +52,7 @@ namespace EAB_Custom {
 
 
                 crit.Add(f.EF.Eq("USERID", account.AccountManager.Id.ToString()));
-                crit.Add(f.EF.Eq("IsDefault", "T"));
+                crit.Add(f.EF.Eq("IsDefault", true));
 
                 //result = crit.List<Sage.Entity.Interfaces.IPickingList>();
                 foreach (IUSERWHSE warehouse in crit.List<IUSERWHSE>()) {
