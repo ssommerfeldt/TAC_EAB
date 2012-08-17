@@ -117,14 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Product.Caption" xml:space="preserve">
-    <value>Product:</value>
+  <data name="ActualID.Caption" xml:space="preserve">
+    <value>SKU:</value>
   </data>
   <data name="Description.Caption" xml:space="preserve">
     <value>Description:</value>
   </data>
   <data name="Discount.Caption" xml:space="preserve">
     <value>Margin:</value>
+  </data>
+  <data name="ExtendedPrice.Caption" xml:space="preserve">
+    <value>Extended Price:</value>
+  </data>
+  <data name="Family.Caption" xml:space="preserve">
+    <value>Family:</value>
   </data>
   <data name="Price.Caption" xml:space="preserve">
     <value>Price:</value>
@@ -134,6 +140,9 @@
   </data>
   <data name="UPC.Caption" xml:space="preserve">
     <value>UPC:</value>
+  </data>
+  <data name="Product.Caption" xml:space="preserve">
+    <value>Product:</value>
   </data>
   <data name="Product.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
     <value>ActualId (Actual Id)</value>
@@ -155,17 +164,5 @@
   </data>
   <data name="Product.LookupProperties.UPC.PropertyHeader" xml:space="preserve">
     <value>UPC</value>
-  </data>
-  <data name="QFButton.Caption" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="ExtendedPrice.Caption" xml:space="preserve">
-    <value>Extended Price:</value>
-  </data>
-  <data name="SKU.Caption" xml:space="preserve">
-    <value>SKU:</value>
-  </data>
-  <data name="Family.Caption" xml:space="preserve">
-    <value>Family:</value>
   </data>
 </root>

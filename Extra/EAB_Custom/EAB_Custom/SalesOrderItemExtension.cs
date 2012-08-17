@@ -81,10 +81,28 @@ namespace EAB_Custom {
             if (salesorderitem.Product != null) {
                 //item.SalesOrder = salesorder;
                 salesorderitem.ActualID = salesorderitem.Product.ActualId;
-                salesorderitem.Description = salesorderitem.Product.Description;
-                //item.Discount = item.Margin;         
+                salesorderitem.Description = salesorderitem.Product.Description;                     
                 salesorderitem.Family = salesorderitem.Product.Family;
-                salesorderitem.Price = (Double)salesorderitem.Product.Price;
+
+                //get margin from category
+                //salesorderitem.Discount = salesorderitem.SalesOrder.Account;    
+
+                //get msrp price
+                salesorderitem.Price = 0;
+                try {
+                    if (salesorderitem.Product != null) {
+                        if (salesorderitem.Product.Vproductpricesheet != null) {
+                            salesorderitem.Price = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
+                        } else {
+                            //price not found
+                        }
+                    }
+                } catch (Exception ex) {
+                    //vproductpricesheet record not found
+                    Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                    eh.HandleException(ex, false);
+                }
+                                
                 salesorderitem.Quantity = 1; //set to 1 initially
                 salesorderitem.ExtendedPrice = salesorderitem.Price * salesorderitem.Quantity * salesorderitem.Discount;
                 salesorderitem.ProductName = salesorderitem.Product.Name;

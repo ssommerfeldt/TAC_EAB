@@ -62,7 +62,7 @@ namespace EAB_Custom {
                     // These 2 lines get the tab collection for the page.
                     PageWorkItem workItem = PageWorkItemLocator.GetPageWorkItem();
                     TabWorkspace tabWorkspace = workItem.Workspaces["TabControl"] as TabWorkspace;
-
+                                        
                     if (salesOrder.Account.Type == "Distributor") {
                         //Show the Reciept of goods tab
                         tabWorkspace.Hide("ReceiptOfGoodsGrid", false);
@@ -71,6 +71,33 @@ namespace EAB_Custom {
                         //Hide the Reciept of goods tab
                         tabWorkspace.Hide("ReceiptOfGoodsGrid", true);
                     }
+
+                    //show/hide the product tabs
+                    switch (salesOrder.OrderType) {
+                        case ("Sales Order"):
+                            tabWorkspace.Hide("SalesOrderProducts", false);
+                            tabWorkspace.Hide("ReturnProductsGrid", true);
+                            tabWorkspace.Hide("TransferProductsGrid", true);
+                            break;
+                        case("Purchase Order"):
+                            tabWorkspace.Hide("SalesOrderProducts", false);
+                            tabWorkspace.Hide("ReturnProductsGrid", true);
+                            tabWorkspace.Hide("TransferProductsGrid", true);
+                            break;
+                        case ("Transfer Order"):
+                            tabWorkspace.Hide("SalesOrderProducts", true);
+                            tabWorkspace.Hide("ReturnProductsGrid", true);
+                            tabWorkspace.Hide("TransferProductsGrid", false);
+                            break;
+                        case("Return Order"):
+                            tabWorkspace.Hide("SalesOrderProducts", true);
+                            tabWorkspace.Hide("ReturnProductsGrid", false);
+                            tabWorkspace.Hide("TransferProductsGrid", true);
+                            break;
+                        default:
+                            break;
+                    }
+
                 }                 
                    
 
