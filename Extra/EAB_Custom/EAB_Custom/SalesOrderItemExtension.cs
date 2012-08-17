@@ -74,5 +74,26 @@ namespace EAB_Custom {
             //Set a value on salesorder to recalculate totals on save
             salesorderitem.SalesOrder.Tick = salesorderitem.SalesOrder.Tick + 1 ?? 1;
         }
+
+
+        public static void SaveProductToSalesOrderItem(ISalesOrderItem salesorderitem) {
+
+            if (salesorderitem.Product != null) {
+                //item.SalesOrder = salesorder;
+                salesorderitem.ActualID = salesorderitem.Product.ActualId;
+                salesorderitem.Description = salesorderitem.Product.Description;
+                //item.Discount = item.Margin;         
+                salesorderitem.Family = salesorderitem.Product.Family;
+                salesorderitem.Price = (Double)salesorderitem.Product.Price;
+                salesorderitem.Quantity = 1; //set to 1 initially
+                salesorderitem.ExtendedPrice = salesorderitem.Price * salesorderitem.Quantity * salesorderitem.Discount;
+                salesorderitem.ProductName = salesorderitem.Product.Name;
+                salesorderitem.Program = salesorderitem.Product.Program;
+                salesorderitem.UnitOfMeasureId = salesorderitem.Product.UnitOfMeasureId.Trim();
+
+                //item.GetStockCardPricing();			
+
+            }
+        }
     }
 }

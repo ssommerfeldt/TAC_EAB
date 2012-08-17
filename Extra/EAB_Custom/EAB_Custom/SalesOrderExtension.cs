@@ -658,7 +658,7 @@ namespace EAB_Custom {
 
                     salesorder.SalesOrderItems.Add(item);
                     item.Save();
-                    break;
+                    //break;
                 }
                 //salesorder.Save();
             }
