@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c0ab9a12-f247-455a-8ed6-ea8534b53056" lastModifiedUtc="2012-08-17T16:02:06.8005322Z" name="SaveProductToSalesOrderItem" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="5b3cdd61-439d-4eb5-83aa-3bf851159f20" lastModifiedUtc="2012-08-17T16:02:02.9903381Z" targetType="EAB_Custom.SalesOrderItemExtension, EAB_Custom" targetMethod="SaveProductToSalesOrderItem" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>
