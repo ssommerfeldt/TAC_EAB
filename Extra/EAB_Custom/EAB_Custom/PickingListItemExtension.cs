@@ -12,17 +12,25 @@ namespace EAB_Custom {
         public static void UPCSearch(IPickingListItem pickinglistitem) {
             if (!String.IsNullOrEmpty (pickinglistitem.UPC)) {
                                 
-                var productfound = from item in pickinglistitem.PickingList.SalesOrder.SalesOrderItems
-                                   where item.UPC.Equals(pickinglistitem.UPC)
-                                   select item;
+                //var productfound = from item in pickinglistitem.PickingList.SalesOrder.SalesOrderItems
+                //                   where item.UPC.Equals(pickinglistitem.UPC)
+                //                   select item;
                 
-                if (productfound.Count<ISalesOrderItem>() > 0) {
-                    //product found in order, add to result
+                //if (productfound.Count<ISalesOrderItem>() > 0) {
+                //    //product found in order, add to result
+                //    ISalesOrderItem soItem = productfound.First<ISalesOrderItem>();
+                    
+                //    //pickinglistitem.CompanyID = soItem.c 
+                //    pickinglistitem.Product = soItem.Product;                    
+                //    pickinglistitem.QtyOrd = (Decimal)soItem.Quantity;
+                //    pickinglistitem.QtyShip = 0;
+                //    pickinglistitem.SOLineNo = soItem.LineNumber;
 
+                //    pickinglistitem.Save();
 
-                } else {
-                    pickinglistitem.UPC = "Product not found in order";
-                }
+                //} else {
+                //    pickinglistitem.UPC = "Product not found in order";
+                //}
             }
         }
 
