@@ -36,8 +36,8 @@ namespace EAB_Custom {
                     case "PO":
                         salesOrder.OrderType = "Purchase Order";
                         break;
-                    case "EX":
-                        salesOrder.OrderType = "Exchange Return";
+                    case "RO":
+                        salesOrder.OrderType = "Return Order";
                         break;
                     case "IR":
                         salesOrder.OrderType = "Inventory Request";
@@ -62,8 +62,10 @@ namespace EAB_Custom {
 
             salesOrder.Save();
 
-            //Add stock card products
-            salesOrder.AddStockcardProducts();
+            if (!String.IsNullOrEmpty(type) && type == "SO") {
+                //Add stock card products
+                salesOrder.AddStockcardProducts();
+            }
 
             //return the new id
             result = salesOrder.Id.ToString();
