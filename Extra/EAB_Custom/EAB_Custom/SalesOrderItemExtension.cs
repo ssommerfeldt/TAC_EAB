@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections;
 using Sage.Entity.Interfaces;
 using NHibernate;
+using System.Data.OleDb;
 
 
 
@@ -81,28 +82,52 @@ namespace EAB_Custom {
             if (salesorderitem.Product != null) {
                 //item.SalesOrder = salesorder;
                 salesorderitem.ActualID = salesorderitem.Product.ActualId;
-                salesorderitem.Description = salesorderitem.Product.Description;                     
+                salesorderitem.Description = salesorderitem.Product.Description;
                 salesorderitem.Family = salesorderitem.Product.Family;
 
-                //get margin from category
-                //salesorderitem.Discount = salesorderitem.SalesOrder.Account;    
+                ////get margin from category                
+                //String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
+                //sql += " FROM PRODUCT";
+                //sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
+                //sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
+                //sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
+                //sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
+                //sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
 
-                //get msrp price
-                salesorderitem.Price = 0;
-                try {
-                    if (salesorderitem.Product != null) {
-                        if (salesorderitem.Product.Vproductpricesheet != null) {
-                            salesorderitem.Price = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
-                        } else {
-                            //price not found
-                        }
-                    }
-                } catch (Exception ex) {
-                    //vproductpricesheet record not found
-                    Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
-                    eh.HandleException(ex, false);
-                }
-                                
+                //Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+                //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
+                //    conn.Open();
+                //    using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
+                //        OleDbDataReader reader = cmd.ExecuteReader();
+                //        //loop through the reader
+                //        while (reader.Read()) {
+                //            try {
+                //                salesorderitem.Discount = (Double)reader["MARGIN"];
+                //            } catch (Exception) {
+                //                //no catch?
+                //            }
+                //        }
+                //        reader.Close();
+                //    }
+                //}
+                
+
+                ////get msrp price
+                //salesorderitem.Price = 0;
+                //try {
+                //    if (salesorderitem.Product != null) {
+                //        if (salesorderitem.Product.Vproductpricesheet != null) {
+                //            salesorderitem.Price = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
+                //        } else {
+                //            //price not found
+                //        }
+                //    }
+                //} catch (Exception ex) {
+                //    //vproductpricesheet record not found
+                //    Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                //    eh.HandleException(ex, false);
+                //}
+
                 salesorderitem.Quantity = 1; //set to 1 initially
                 salesorderitem.ExtendedPrice = salesorderitem.Price * salesorderitem.Quantity * salesorderitem.Discount;
                 salesorderitem.ProductName = salesorderitem.Product.Name;
