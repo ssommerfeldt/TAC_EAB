@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3a39fe6a-7031-4aeb-a3a1-d4473c33c986" lastModifiedUtc="2012-07-18T21:34:34.6768975Z" manageSchema="true" tableName="PICKINGLISTITEM" name="PickingListItem" displayPropertyId="798004e8-955e-4434-9f4c-1803230391e8" isExtension="false" audited="false" onBeforeInsertMethodId="2cf51ae9-50a8-4d65-b6b2-2f42e5fcc6e9" onAfterInsertMethodId="5daff1d6-59b7-4041-a5c5-653d7e490878" onBeforeUpdateMethodId="90a3c634-ef27-4dbc-81fc-50758fab7cca" onAfterUpdateMethodId="1f32affb-9fe5-4e95-becf-d15049a37205" onBeforeDeleteMethodId="0ea5ba12-232f-415e-8da3-5369fd5a7cec" onAfterDeleteMethodId="06e7c248-5902-4511-98db-5d30c271859e" onCreateId="01b20db3-6a22-4dc6-b1f7-aec4d23db5e9">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3a39fe6a-7031-4aeb-a3a1-d4473c33c986" lastModifiedUtc="2012-08-21T17:44:18.6122554Z" manageSchema="true" tableName="PICKINGLISTITEM" name="PickingListItem" displayPropertyId="798004e8-955e-4434-9f4c-1803230391e8" isExtension="false" audited="false" onBeforeInsertMethodId="2cf51ae9-50a8-4d65-b6b2-2f42e5fcc6e9" onAfterInsertMethodId="5daff1d6-59b7-4041-a5c5-653d7e490878" onBeforeUpdateMethodId="90a3c634-ef27-4dbc-81fc-50758fab7cca" onAfterUpdateMethodId="1f32affb-9fe5-4e95-becf-d15049a37205" onBeforeDeleteMethodId="0ea5ba12-232f-415e-8da3-5369fd5a7cec" onAfterDeleteMethodId="06e7c248-5902-4511-98db-5d30c271859e" onCreateId="01b20db3-6a22-4dc6-b1f7-aec4d23db5e9">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
@@ -8,7 +8,8 @@
       </extender>
       <extender guid="1589723d-0536-4bf3-bdd7-3f6f7fe165d0">
         <OrmEntityMetadataExtension>
-          <StringExpression>${Product.ActualId}</StringExpression>
+          <StringExpression />
+          <HistoryTypeName />
           <IsHistoryTable>false</IsHistoryTable>
         </OrmEntityMetadataExtension>
       </extender>
@@ -248,6 +249,20 @@
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
         <TextDataType>
           <Length>32</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
+    <property xsi:type="OrmFieldProperty" id="34aec173-1693-4c49-b5ab-b145a2bfd74b" lastModifiedUtc="2012-08-21T22:15:19.4405061Z" name="ActualId" audited="false" columnName="ACTUALID" maxLength="64" precision="0" scale="0" ordinal="18" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>64</Length>
         </TextDataType>
       </SystemDataType>
     </property>

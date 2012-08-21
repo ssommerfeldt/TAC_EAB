@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="ba96b7ee-053a-4e45-b579-3b0ed9ee00dd" lastModifiedUtc="2012-08-21T22:13:54.0795257Z" name="SKUSearch" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="d8eec95e-e76d-4539-8ad2-bac11b56960a" lastModifiedUtc="2012-08-21T22:13:48.0191328Z" targetType="EAB_Custom.PickingListItemExtension, EAB_Custom" targetMethod="SKUSearch" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>

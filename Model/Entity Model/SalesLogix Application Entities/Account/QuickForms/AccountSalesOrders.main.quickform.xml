@@ -13,7 +13,41 @@
     <Property name="Description" type="System.String"></Property>
     <Property name="ActiveControl" type="System.String"></Property>
   </Properties>
-  <LoadActions />
+  <LoadActions>
+    <ActionDefinition>
+      <ResourceKey>1a81f3c6-d665-446e-ac99-662726c2c454</ResourceKey>
+      <RootActionName>CSharpSnippetAction</RootActionName>
+      <Action>
+        <CSharpCodeSnippet><![CDATA[	//Onload restrict button based on account type
+	Sage.Entity.Interfaces.IAccount account = BindingSource.Current as Sage.Entity.Interfaces.IAccount;
+	
+	switch(account.Type) {
+		case "Distributor":
+			cmdAddSalesOrder.Visible = false;
+			cmdAddReturnOrder.Visible = false;
+			cmdAddTransferOrder.Visible = true;			
+			break;
+		case "Sales Rep":
+			cmdAddSalesOrder.Visible = false;
+			cmdAddReturnOrder.Visible = false;
+			cmdAddTransferOrder.Visible = true;
+			break;
+			
+		default:
+			cmdAddSalesOrder.Visible = true;
+			cmdAddReturnOrder.Visible = true;
+			cmdAddTransferOrder.Visible = false;
+			break;		
+	}]]></CSharpCodeSnippet>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </ActionDefinition>
+  </LoadActions>
   <QuickFormElements>
     <QuickFormElement>
       <Properties>

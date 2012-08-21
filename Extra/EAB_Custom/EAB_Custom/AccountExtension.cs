@@ -56,7 +56,7 @@ namespace EAB_Custom {
 
                 //result = crit.List<Sage.Entity.Interfaces.IPickingList>();
                 foreach (IUSERWHSE warehouse in crit.List<IUSERWHSE>()) {
-                    //salesOrder.USERWHSE = warehouse.SLXSite;
+                    salesOrder.UserWareHouse = warehouse.SLXSite;
                     break;
                 }
 

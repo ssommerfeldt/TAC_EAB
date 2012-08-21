@@ -12,25 +12,39 @@ namespace EAB_Custom {
         public static void UPCSearch(IPickingListItem pickinglistitem) {
             if (!String.IsNullOrEmpty (pickinglistitem.UPC)) {
                                 
-                //var productfound = from item in pickinglistitem.PickingList.SalesOrder.SalesOrderItems
-                //                   where item.UPC.Equals(pickinglistitem.UPC)
-                //                   select item;
-                
-                //if (productfound.Count<ISalesOrderItem>() > 0) {
-                //    //product found in order, add to result
-                //    ISalesOrderItem soItem = productfound.First<ISalesOrderItem>();
-                    
-                //    //pickinglistitem.CompanyID = soItem.c 
-                //    pickinglistitem.Product = soItem.Product;                    
-                //    pickinglistitem.QtyOrd = (Decimal)soItem.Quantity;
-                //    pickinglistitem.QtyShip = 0;
-                //    pickinglistitem.SOLineNo = soItem.LineNumber;
+                foreach (ISalesOrderItem item in pickinglistitem.PickingList.SalesOrder.SalesOrderItems) {
+                    if (item.UPC == pickinglistitem.UPC) {
+                        //product found in order, add to result
+                        //pickinglistitem.CompanyID
+                        pickinglistitem.Product = item.Product;
+                        pickinglistitem.QtyOrd = (Decimal)item.Quantity;
+                        pickinglistitem.QtyShip = 0;
+                        pickinglistitem.SOLineNo = item.LineNumber;
 
-                //    pickinglistitem.Save();
+                        //pickinglistitem.Save();
 
-                //} else {
-                //    pickinglistitem.UPC = "Product not found in order";
-                //}
+                    }
+                }                
+            }
+        }
+
+
+        public static void SKUSearch(IPickingListItem pickinglistitem) {
+            if (!String.IsNullOrEmpty(pickinglistitem.ActualId)) {
+
+                foreach (ISalesOrderItem item in pickinglistitem.PickingList.SalesOrder.SalesOrderItems) {
+                    if (item.ActualID == pickinglistitem.ActualId) {
+                        //product found in order, add to result
+                        //pickinglistitem.CompanyID
+                        pickinglistitem.Product = item.Product;
+                        pickinglistitem.QtyOrd = (Decimal)item.Quantity;
+                        pickinglistitem.QtyShip = 0;
+                        pickinglistitem.SOLineNo = item.LineNumber;
+                        
+                        //pickinglistitem.Save();
+
+                    }
+                }
             }
         }
 

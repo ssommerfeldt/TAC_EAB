@@ -164,7 +164,7 @@ namespace EAB_Custom {
                 soLine.UserFld1 = null;
                 soLine.UserFld2 = null;
                 soLine.VendorID = null;
-                soLine.WarehouseID = salesOrder.USERWHSE.SLXSite.Sitecode; //get this from mas
+                soLine.WarehouseID = salesOrder.UserWareHouse.Sitecode; //get this from mas
                 soLine.WillCall = null;
 
                 soLine.Save();
@@ -202,7 +202,7 @@ namespace EAB_Custom {
             toHeader.ReqDelvDate = DateTime.Now.AddDays(10);
             toHeader.SchdShipDate = DateTime.Now.AddDays(2);
             toHeader.ShipMethID = null;
-            toHeader.ShipWhseID = salesOrder.USERWHSE.SLXSite.Sitecode; //get this from mas
+            toHeader.ShipWhseID = salesOrder.UserWareHouse.Sitecode; //get this from mas
             toHeader.TranCmnt = null;
             toHeader.TranDate = DateTime.Now;
             toHeader.TranNo = null;
@@ -558,8 +558,8 @@ namespace EAB_Custom {
                 }
 
             }
-            plHeader.PONum = "How to get?";
-            plHeader.WhseID = salesOrder.USERWHSE.SLXSite.Sitecode;
+            //plHeader.PONum = "How to get?";
+            plHeader.WhseID = salesOrder.UserWareHouse.Sitecode;
             plHeader.Status = "Open";
 
             plHeader.Save();
