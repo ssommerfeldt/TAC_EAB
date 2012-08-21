@@ -411,11 +411,11 @@
   <data name="erpStatus_Rejected" xml:space="preserve">
     <value>Rejected</value>
   </data>
-  <data name="lkpWarehouse.Caption" xml:space="preserve">
-    <value>Warehouse:</value>
+  <data name="lkpUserWareHouse.Caption" xml:space="preserve">
+    <value>User WareHouse:</value>
   </data>
-  <data name="lkpWarehouse.LookupProperties.SLXSite.Attention.PropertyHeader" xml:space="preserve">
-    <value>Warehouse</value>
+  <data name="lkpUserWareHouse.LookupProperties.SLXSite.Sitecode.PropertyHeader" xml:space="preserve">
+    <value>SLXSite Sitecode</value>
   </data>
   <data name="cmdSubmitOrder.Caption" xml:space="preserve">
     <value>Submit Order</value>
@@ -440,5 +440,17 @@
   </data>
   <data name="cmdPrintPickingList.Caption" xml:space="preserve">
     <value>Print Picking List</value>
+  </data>
+  <data name="lkpUserWareHouse.LookupProperties.SLXSite.Attention.PropertyHeader" xml:space="preserve">
+    <value>SLXSite Attention</value>
+  </data>
+  <data name="lkpSourceWareHouse.LookupProperties.SLXSite.Attention.PropertyHeader" xml:space="preserve">
+    <value>SLXSite Attention</value>
+  </data>
+  <data name="lkpSourceWareHouse.LookupProperties.SLXSite.Sitecode.PropertyHeader" xml:space="preserve">
+    <value>SLXSite Sitecode</value>
+  </data>
+  <data name="lkpSourceWareHouse.Caption" xml:space="preserve">
+    <value>Source WareHouse:</value>
   </data>
 </root>

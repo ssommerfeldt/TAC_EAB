@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="ec9f0cf4-7cf0-4ff0-9180-fa1eed16a645" lastModifiedUtc="2012-07-13T15:13:37.1609196Z" cardinality="M:1" parentEntityId="81ded7d2-24fe-4de7-a61c-3382be698acb" childEntityId="25be9d10-23d3-4fd9-b276-b226b81caa1a">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6011dd67-37e1-4fa5-89a6-f92f5a56a4d5" lastModifiedUtc="2012-08-20T22:33:41.921875Z" cardinality="M:1" parentEntityId="78fa1a43-696c-481e-97c0-b34e14f9dbf5" childEntityId="25be9d10-23d3-4fd9-b276-b226b81caa1a">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="0564bb6d-e888-42cb-924a-251f31d8938b" lastModifiedUtc="2012-07-13T15:13:30.8254196Z" name="SLXSite" audited="false">
+  <parentProperty id="09b74a84-cad1-4431-8ea9-288b37b32ab0" lastModifiedUtc="2012-08-20T22:33:40.078125Z" name="SLXSite" audited="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -16,7 +16,7 @@
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="1ecf0c0b-57ce-475f-a105-33cd0782fd53" lastModifiedUtc="2012-07-13T15:13:30.8254196Z" name="USERWHSE" audited="false" include="false">
+  <childProperty id="134942c4-1d62-4edd-8dcc-ff0b09f0dfc8" lastModifiedUtc="2012-08-20T22:33:35.828125Z" name="USERWHSE" audited="false" include="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -29,6 +29,6 @@
     </SystemDataType>
   </childProperty>
   <column>
-    <OrmRelationshipColumn id="df39ea8b-d035-4f16-878e-3381f66e9717" parentPropertyId="e820721f-369a-462f-abf8-48344dc777f3" childPropertyId="11bc154a-d2ae-43e8-8801-0e28bcdbeda5" ordinal="0" />
+    <OrmRelationshipColumn id="5c7fb723-1b81-496f-9640-fc85127fd548" parentPropertyId="77ab83e1-cc18-45c7-a973-61bd430aac67" childPropertyId="11bc154a-d2ae-43e8-8801-0e28bcdbeda5" ordinal="0" />
   </column>
 </relationship>

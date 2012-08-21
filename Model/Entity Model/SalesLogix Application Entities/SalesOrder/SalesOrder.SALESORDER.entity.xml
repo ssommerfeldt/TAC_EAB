@@ -795,5 +795,17 @@
         <StandardIdDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="8e13ccf5-cd95-44b7-a8d8-17a38f8dab9f" lastModifiedUtc="2012-08-20T21:53:28.296875Z" name="SourceWHSEID" audited="false" columnName="SOURCEWHSEID" maxLength="12" precision="0" scale="0" ordinal="59" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
+        <StandardIdDataType />
+      </SystemDataType>
+    </property>
   </properties>
 </entity>
