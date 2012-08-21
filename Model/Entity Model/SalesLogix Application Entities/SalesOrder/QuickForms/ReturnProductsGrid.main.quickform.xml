@@ -134,7 +134,7 @@
       </Properties>
       <ControlDefinition>
         <Properties>
-          <Property name="Control" type="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls"><QFDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><Visible>false</Visible><HotKey>48</HotKey><TabIndex>0</TabIndex><ControlId>dsSalesOrderItems</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><EntityTypeName>SalesOrderItem</EntityTypeName><GetByMethod /><GetByProperty>SalesOrderItems</GetByProperty><UseSmartSelection>false</UseSmartSelection><DataOptional>false</DataOptional></QFDataSource></Property>
+          <Property name="Control" type="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls"><QFDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>1</Row><IsReadOnly>false</IsReadOnly><Visible>false</Visible><HotKey>48</HotKey><TabIndex>0</TabIndex><ControlId>dsSalesOrderItems</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><EntityTypeName>SalesOrderItem</EntityTypeName><GetByMethod /><GetByProperty>SalesOrderItems</GetByProperty><UseSmartSelection>false</UseSmartSelection><DataOptional>false</DataOptional></QFDataSource></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>
@@ -166,7 +166,39 @@
       </Properties>
       <ControlDefinition>
         <Properties>
-          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>cmdAddProduct</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>Icon</ButtonType><Image>[Localization!Global_Images:plus_16x16]</Image><OnClientClick /><OnClickAction><ResourceKey>cmdAddProduct</ResourceKey><RootActionName>InsertChildDialogAction</RootActionName><Action><SmartPart>AddReturnProducts</SmartPart><Height>400</Height><Width>600</Width><Top>0</Top><Left>0</Left><ResourceKey>8bec73f1-ef04-429d-be1c-c75142578357</ResourceKey><ParentRelationshipPropertyName>SalesOrder</ParentRelationshipPropertyName><DataSource>dsSalesOrderItems</DataSource><CenterDialog>True</CenterDialog></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>True</PerformsUpdate><AppliedSecurity>ENTITIES/SALESORDER/ADD</AppliedSecurity><RefreshData>True</RefreshData></OnClickAction></QFButton></Property>
+          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>cmdAddProduct</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>Icon</ButtonType><Image>[Localization!Global_Images:plus_16x16]</Image><OnClientClick /><OnClickAction><ResourceKey>cmdAddProduct</ResourceKey><RootActionName>CSharpSnippetAction</RootActionName><Action><CSharpCodeSnippet><![CDATA[    //Add Return Products
+    Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
+    if (_entity != null) {
+        object _parent = GetParentEntity();
+        if (DialogService.ChildInsertInfo != null) {
+            if (_parent != null) {
+                if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+                    DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                }
+            }
+        }
+    }
+    
+    
+    if (DialogService != null)
+{
+  // InsertChildDialogActionItem
+  DialogService.SetSpecs(400, 600, "AddReturnProducts", GetLocalResourceObject("c4ec7b6b-4bb4-43dc-89ef-13c430bbf9bd.DialogTitleOverride").ToString() );
+  DialogService.EntityType = typeof(Sage.Entity.Interfaces.ISalesOrderItem); 
+  DialogService.SetChildIsertInfo(
+    typeof(Sage.Entity.Interfaces.ISalesOrderItem),
+    typeof(Sage.Entity.Interfaces.ISalesOrder),
+    typeof(Sage.Entity.Interfaces.ISalesOrderItem).GetProperty("SalesOrder"),
+    typeof(Sage.Entity.Interfaces.ISalesOrder).GetProperty("SalesOrderItems"));
+  DialogService.ShowDialog();
+}
+  //Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get<Sage.Platform.WebPortal.Services.IPanelRefreshService>();
+  //  if (refresher != null) {
+  //    refresher.RefreshAll();
+  //  }
+  //  else {  
+  //    Response.Redirect(Request.Url.ToString());
+  //  }]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>True</PerformsUpdate><AppliedSecurity>ENTITIES/SALESORDER/ADD</AppliedSecurity><RefreshData>True</RefreshData></OnClickAction></QFButton></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>
