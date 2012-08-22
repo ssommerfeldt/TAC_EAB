@@ -24,8 +24,19 @@ namespace EAB_Custom {
                 case "Purchase Order":
                     SubmitPurchaseOrder(salesOrder);
                     break;
+                case "Return Order":
+                    //Distributor
+                    //SubmitPurchaseOrder(salesOrder);
+
+                    //Sales Rep
+                    //SubmitInventoryAdjustment(salesOrder);
+                    break;
+                case "Inventory Order":
+                    SubmitSalesOrder(salesOrder);
+                    break;
             }
         }       
+
 
         private static void SubmitSalesOrder(ISalesOrder salesOrder) {
             //submit order to mas
@@ -53,8 +64,7 @@ namespace EAB_Custom {
             soHeader.OpenAmt = salesOrder.OrderTotal; //invoice total
             soHeader.Hold = "0";
             //soHeader.FreightAmt = salesOrder.Freight;
-            soHeader.FreightAmt = 0;
-            
+            soHeader.FreightAmt = 0;            
 
             //get the accountfinancial data
             if (salesOrder.Account.AccountFinancial != null) {
@@ -65,6 +75,7 @@ namespace EAB_Custom {
                 soHeader.DfltShipToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
                 //soHeader.BillToCustAddrID = salesOrder.BillingAddress.Address.MASAddrKey.ToString(); //change to mas id
                 soHeader.BillToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
+                soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode; 
             }
 
             soHeader.CurrID = salesOrder.CurrencyCode;
@@ -121,7 +132,7 @@ namespace EAB_Custom {
                 soLine.Hold = "0";
                 soLine.HoldReason = null;
                 soLine.ItemAliasID = null;
-                soLine.ItemID = item.Product.MASITEMKEY.ToString(); //item key from mas
+                soLine.ItemID = item.Product.MasItemID; //item key from mas
                 soLine.KitComponent = null;
                 soLine.MAS90LineIndex = null;
                 soLine.OrigOrdered = item.Quantity;
@@ -226,7 +237,7 @@ namespace EAB_Custom {
                 toLine.TrnsfrOrderLineID = 0; //Set this to unique number (for this order) during integration.
                 toLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
 
-                toLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                toLine.ItemID = item.Product.MasItemID; //set to itemid from mas
                 toLine.UoM = item.Product.UnitOfMeasureId; //set to unit of measure from mas
                 toLine.QtyOrd = item.Quantity;  
                 toLine.SurchargeFixedAmt = 0;
@@ -267,6 +278,11 @@ namespace EAB_Custom {
             soHeader.VendClassID = null;
             soHeader.VendorID = null;
 
+            //get the accountfinancial data
+            if (salesOrder.Account.AccountFinancial != null) {                
+                soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+            }
+            
             soHeader.Save();
 
             foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
@@ -299,7 +315,7 @@ namespace EAB_Custom {
                 //soLine.FreightAmt = salesOrder.Freight; //do not use
                 soLine.FreightAmt = 0;
                 soLine.GLAcctNo = item.Product.GlSubAccountNumber; //get this from mas
-                soLine.ItemID = item.Product.MASITEMKEY.ToString(); //item key from mas
+                soLine.ItemID = item.Product.MasItemID; //item key from mas
                 
                 soLine.OrigOrdered = item.Quantity;
                 //soLine.OrigPromiseDate = salesOrder.DatePromised;
@@ -335,6 +351,136 @@ namespace EAB_Custom {
             }
 
         }
+
+
+        private static void SubmitInventoryAdjustment(ISalesOrder salesOrder) {
+            //submit order to mas
+            
+            //Adjust Inventory on hand
+            string transactionID = "";
+            try {
+                                
+                Sage.Entity.Interfaces.IStgInvtTranBatch_TAC tranHeader =
+                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgInvtTranBatch_TAC),
+                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTranBatch_TAC;
+                                
+                tranHeader.BatchID = 0;
+                //tranHeader.BComment = salesOrder.Comments;
+                tranHeader.BDate = DateTime.Now;
+                tranHeader.WhseID = salesOrder.UserWareHouse.Sitecode; ;
+                                
+                //get the accountfinancial data
+                if (salesOrder.Account.AccountFinancial != null) {                    
+                    tranHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                }
+
+                tranHeader.Save();
+
+
+                Sage.Entity.Interfaces.IStgInvtTran_TAC transaction =
+                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgInvtTran_TAC),
+                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTran_TAC;
+
+                transaction.Stginvttranbatch_tacId = tranHeader.Id.ToString();
+
+                //Determine Transaction Type
+                int transactionType = 0;
+                double quantity = 0;
+                if (Double.Parse(form.txtAdjustment.Text) > 0) {
+                    transactionType = 703;
+                    quantity = Double.Parse(form.txtAdjustment.Text);
+                } else //if (Double.Parse(txtAdjustment.Text) > 0) 
+            {
+                    transactionType = 701;
+                    quantity = Math.Abs(Double.Parse(form.txtAdjustment.Text));
+                }
+
+                transaction.TranID = tranHeader.BatchID;
+                transaction.BatchID = tranHeader.BatchID;
+                transaction.TranType = transactionType;
+                transaction.TranDate = DateTime.Now;
+                transaction.ItemID = productstatus.Product.MASITEMKEY.ToString();
+                transaction.Qty = quantity;
+                transaction.UoM = "";
+                transaction.UnitCost = (Double)productstatus.Product.Vlueproductmsrp.Listprice;
+                transaction.TranAmt = transaction.UnitCost * transaction.Qty;
+                transaction.GLAcctNo = "";
+                transaction.TranCmnt = "";
+                transaction.CompanyID = tranHeader.CompanyID;
+                transaction.ProcessStatus = 0;
+
+                //_entity.Projects.Add(project);
+                transaction.Save();
+
+            } catch (Exception ex) {
+                DialogService.ShowMessage("Error Creating Transaction: " + transactionID + " " + ex.Message);
+                Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                eh.HandleException(ex, false);
+            }
+
+            //--------------------------------------
+            
+            Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC toHeader =
+            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC),
+            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC;
+
+            toHeader.TrnsfrOrderID = 0; //set this to unique int number (global) during integration
+            toHeader.CloseDate = DateTime.Now;
+
+            //get the accountfinancial data
+            if (salesOrder.Account.AccountFinancial != null) {
+                if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                    toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                } else {
+                    toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                }
+
+            }
+
+            toHeader.RcvgWhseID = ""; //get this from mas
+            toHeader.ReqDelvDate = DateTime.Now.AddDays(10);
+            toHeader.SchdShipDate = DateTime.Now.AddDays(2);
+            toHeader.ShipMethID = null;
+            toHeader.ShipWhseID = salesOrder.UserWareHouse.Sitecode; //get this from mas
+            toHeader.TranCmnt = null;
+            toHeader.TranDate = DateTime.Now;
+            toHeader.TranNo = null;
+            toHeader.TransitWhseID = null;
+            toHeader.ProcessStatus = 0;
+            toHeader.ProcessStatusMessage = null;
+            toHeader.SessionKey = 0;
+
+            toHeader.Save();
+
+            foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
+
+                //Transfer order line items
+                Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC toLine =
+                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC),
+                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC;
+
+                toLine.Stgtrnsfrorder_tacId = toHeader.Id.ToString();
+
+                toLine.TrnsfrOrderID = 0; //set this to unique int number (global) during integration - same as header value
+                toLine.TrnsfrOrderLineID = 0; //Set this to unique number (for this order) during integration.
+                toLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
+
+                toLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                toLine.UoM = item.Product.UnitOfMeasureId; //set to unit of measure from mas
+                toLine.QtyOrd = item.Quantity;
+                toLine.SurchargeFixedAmt = 0;
+                toLine.SurchargePct = 0;
+                toLine.TranCmnt = null;
+                toLine.ProcessStatus = 0;
+                toLine.ProcessStatusMessage = null;
+                toLine.SessionKey = 0;
+
+                toLine.Save();
+
+            }
+
+        }
+
 
         //public static void SubmitSOPicklist(IStgSalesOrder_TAC salesOrder) {
             

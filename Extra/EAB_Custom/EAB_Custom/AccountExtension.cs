@@ -39,8 +39,8 @@ namespace EAB_Custom {
                     case "RO":
                         salesOrder.OrderType = "Return Order";
                         break;
-                    case "IR":
-                        salesOrder.OrderType = "Inventory Request";
+                    case "IO":
+                        salesOrder.OrderType = "Inventory Order";
                         break;
                 }
             }

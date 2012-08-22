@@ -365,5 +365,19 @@
         </TextDataType>
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="c00286b4-7efa-4d66-bcbe-53af47c0b140" lastModifiedUtc="2012-08-22T16:23:22.0251326Z" name="CompanyID" audited="false" columnName="COMPANYID" maxLength="3" precision="0" scale="0" ordinal="27" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>3</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
   </properties>
 </entity>

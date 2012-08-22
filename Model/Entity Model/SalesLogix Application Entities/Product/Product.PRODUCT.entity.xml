@@ -585,5 +585,19 @@
         </TextDataType>
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="dabc59b4-1c97-4ce8-ab3d-5f7bd7fd4eb2" lastModifiedUtc="2012-08-22T22:35:12.5687512Z" name="MasItemID" audited="false" columnName="MASITEMID" maxLength="30" precision="0" scale="0" ordinal="42" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>30</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
   </properties>
 </entity>
