@@ -94,6 +94,11 @@ namespace EAB_Custom {
                             tabWorkspace.Hide("ReturnProductsGrid", false);
                             tabWorkspace.Hide("TransferProductsGrid", true);
                             break;
+                        case ("Inventory Order"):
+                            tabWorkspace.Hide("SalesOrderProducts", false);
+                            tabWorkspace.Hide("ReturnProductsGrid", true);
+                            tabWorkspace.Hide("TransferProductsGrid", true);
+                            break;
                         default:
                             break;
                     }

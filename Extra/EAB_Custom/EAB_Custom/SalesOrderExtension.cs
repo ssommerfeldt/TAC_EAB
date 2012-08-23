@@ -25,19 +25,21 @@ namespace EAB_Custom {
                     SubmitPurchaseOrder(salesOrder);
                     break;
                 case "Return Order":
-                    switch (salesOrder.AccountManager.Eabrelationship) {
+                    switch (salesOrder.AccountManager.Eabrelationship.Trim()) {
                         case "Distributor":
                             //Distributor
-                            SubmitPurchaseOrder(salesOrder);
+                            SubmitInventoryAdjustment(salesOrder);                            
                             break;
                         case "Sales Rep":
                             //Sales Rep
-                            SubmitInventoryAdjustment(salesOrder);
+                            SubmitPurchaseOrder(salesOrder);
                             break;
+                        default:
+                            throw new Exception("Error Reading Account Manager Relationship"); 
                     }
                     break;
                 case "Inventory Order":
-                    switch (salesOrder.AccountManager.Eabrelationship) {
+                    switch (salesOrder.AccountManager.Eabrelationship.Trim()) {
                         case "Distributor":
                             //Distributor
                             SubmitSalesOrder(salesOrder);
@@ -46,8 +48,12 @@ namespace EAB_Custom {
                             //Sales Rep
                             SubmitTransferOrder(salesOrder);
                             break;
+                        default:
+                            throw new Exception("Error Reading Account Manager Relationship");                            
                     }
                     break;
+                default:
+                    throw new Exception("Error Determining Order Type");
             }
         }
 
@@ -102,100 +108,101 @@ namespace EAB_Custom {
             soHeader.Save();
 
             foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
+                //only create item if quantity > 0
+                if (item.Quantity > 0) {
+                    //Sales order line items
+                    Sage.Entity.Interfaces.IStgSOLine_TAC soLine =
+                            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOLine_TAC),
+                            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOLine_TAC;
 
-                //Sales order line items
-                Sage.Entity.Interfaces.IStgSOLine_TAC soLine =
-                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOLine_TAC),
-                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOLine_TAC;
+                    soLine.Stgsalesorder_tacId = soHeader.Id.ToString();
 
-                soLine.Stgsalesorder_tacId = soHeader.Id.ToString();
+                    ////Get the so line number - slx does this already
+                    //Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IStgSOLine_TAC> rep =
+                    //    Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IStgSOLine_TAC>();
+                    //Sage.Platform.Repository.ICriteria criteria = rep.CreateCriteria();
+                    //criteria.Add(rep.EF.Eq("Stgsalesorder_tacId", soHeader.Id.ToString()));
+                    //criteria.SetProjection(rep.PF.Max("SOLineNo"));
+                    //criteria.SetMaxResults(1);
 
-                ////Get the so line number - slx does this already
-                //Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IStgSOLine_TAC> rep =
-                //    Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IStgSOLine_TAC>();
-                //Sage.Platform.Repository.ICriteria criteria = rep.CreateCriteria();
-                //criteria.Add(rep.EF.Eq("Stgsalesorder_tacId", soHeader.Id.ToString()));
-                //criteria.SetProjection(rep.PF.Max("SOLineNo"));
-                //criteria.SetMaxResults(1);
+                    //int lastLineNo = (int)criteria.UniqueResult();
+                    //soLine.SOLineNo = lastLineNo + 1;
+                    soLine.SOLineNo = item.LineNumber;
 
-                //int lastLineNo = (int)criteria.UniqueResult();
-                //soLine.SOLineNo = lastLineNo + 1;
-                soLine.SOLineNo = item.LineNumber;
+                    soLine.AcctRefCode = null;
+                    soLine.RowAction = 0; //find out values for this
+                    soLine.AmtInvcd = 0;
+                    soLine.CloseDate = null;
+                    soLine.CmntOnly = "No";
+                    soLine.CommClassID = null;
+                    soLine.CommPlanID = null;
+                    soLine.DeliveryMeth = salesOrder.ShipVia;
 
-                soLine.AcctRefCode = null;
-                soLine.RowAction = 0; //find out values for this
-                soLine.AmtInvcd = 0;
-                soLine.CloseDate = null;
-                soLine.CmntOnly = "No";
-                soLine.CommClassID = null;
-                soLine.CommPlanID = null;
-                soLine.DeliveryMeth = salesOrder.ShipVia;
+                    if (item.Description.Length > 40) {
+                        soLine.Description = item.Description.Substring(0, 40);
+                    } else {
+                        soLine.Description = item.Description;
+                    }
 
-                if (item.Description.Length > 40) {
-                    soLine.Description = item.Description.Substring(0, 40);
-                } else {
-                    soLine.Description = item.Description;
+                    soLine.ExtAmt = item.ExtendedPrice;
+                    soLine.ExtCmnt = null;
+                    soLine.FOBID = salesOrder.Fob;
+                    //soLine.FreightAmt = salesOrder.Freight; //do not use
+                    soLine.FreightAmt = 0;
+                    soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
+                    soLine.Hold = "0";
+                    soLine.HoldReason = null;
+                    soLine.ItemAliasID = null;
+                    soLine.ItemID = item.Product.MasItemID; //item key from mas
+                    soLine.KitComponent = null;
+                    soLine.MAS90LineIndex = null;
+                    soLine.OrigOrdered = item.Quantity;
+                    //soLine.OrigPromiseDate = salesOrder.DatePromised;
+                    soLine.OrigPromiseDate = salesOrder.OrderDate.Value.AddDays(10);
+                    soLine.PONumber = salesOrder.CustomerPurchaseOrderNumber;
+                    soLine.ProcessStatus = 0;
+                    //soLine.PromiseDate = salesOrder.DatePromised;
+                    soLine.PromiseDate = salesOrder.OrderDate.Value.AddDays(10);
+                    soLine.QtyInvcd = item.Quantity;
+                    soLine.QtyOnBO = 0;
+                    soLine.QtyOrd = item.Quantity;
+                    soLine.QtyRtrnCredit = 0;
+                    soLine.QtyRtrnReplacement = 0;
+                    soLine.QtyShip = 0;
+                    soLine.ReqCert = "No";
+                    soLine.RequestDate = salesOrder.OrderDate;
+                    soLine.RowKey = null;
+                    soLine.SessionKey = 0;
+                    soLine.ShipDate = salesOrder.OrderDate.Value.AddDays(2);
+                    soLine.ShipMethID = null;
+                    soLine.ShipPriority = 3;
+                    soLine.ShipToAddrLine1 = salesOrder.ShippingAddress.Address1;
+                    soLine.ShipToAddrLine2 = salesOrder.ShippingAddress.Address2;
+                    soLine.ShipToAddrLine3 = salesOrder.ShippingAddress.Address3;
+                    soLine.ShipToAddrLine4 = salesOrder.ShippingAddress.Address4;
+                    soLine.ShipToAddrLine5 = "";
+                    soLine.ShipToAddrName = salesOrder.ShippingAddress.Address.MASAddrKey.ToString();//get from MAS
+                    soLine.ShipToCity = salesOrder.ShippingAddress.City;
+                    soLine.ShipToCountryID = salesOrder.ShippingAddress.Country;
+                    soLine.ShipToPostalCode = salesOrder.ShippingAddress.PostalCode;
+                    soLine.ShipToStateID = salesOrder.ShippingAddress.State;
+                    soLine.Status = "Open";
+                    soLine.STaxClassID = null;
+                    soLine.TradeDiscAmt = 0;
+                    soLine.TradeDiscPct = null;
+                    soLine.TranNo = "0";
+                    soLine.UnitMeasID = item.Product.Unit; //get this from mas
+                    soLine.UnitPrice = item.Price;
+                    soLine.UserFld1 = null;
+                    soLine.UserFld2 = null;
+                    soLine.VendorID = null;
+                    soLine.WarehouseID = salesOrder.UserWareHouse.Sitecode; //get this from mas
+                    soLine.WillCall = null;
+
+                    soLine.Save();
+
                 }
-
-                soLine.ExtAmt = item.ExtendedPrice;
-                soLine.ExtCmnt = null;
-                soLine.FOBID = salesOrder.Fob;
-                //soLine.FreightAmt = salesOrder.Freight; //do not use
-                soLine.FreightAmt = 0;
-                soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
-                soLine.Hold = "0";
-                soLine.HoldReason = null;
-                soLine.ItemAliasID = null;
-                soLine.ItemID = item.Product.MasItemID; //item key from mas
-                soLine.KitComponent = null;
-                soLine.MAS90LineIndex = null;
-                soLine.OrigOrdered = item.Quantity;
-                //soLine.OrigPromiseDate = salesOrder.DatePromised;
-                soLine.OrigPromiseDate = salesOrder.OrderDate.Value.AddDays(10);
-                soLine.PONumber = salesOrder.CustomerPurchaseOrderNumber;
-                soLine.ProcessStatus = 0;
-                //soLine.PromiseDate = salesOrder.DatePromised;
-                soLine.PromiseDate = salesOrder.OrderDate.Value.AddDays(10);
-                soLine.QtyInvcd = item.Quantity;
-                soLine.QtyOnBO = 0;
-                soLine.QtyOrd = item.Quantity;
-                soLine.QtyRtrnCredit = 0;
-                soLine.QtyRtrnReplacement = 0;
-                soLine.QtyShip = 0;
-                soLine.ReqCert = "No";
-                soLine.RequestDate = salesOrder.OrderDate;
-                soLine.RowKey = null;
-                soLine.SessionKey = 0;
-                soLine.ShipDate = salesOrder.OrderDate.Value.AddDays(2);
-                soLine.ShipMethID = null;
-                soLine.ShipPriority = 3;
-                soLine.ShipToAddrLine1 = salesOrder.ShippingAddress.Address1;
-                soLine.ShipToAddrLine2 = salesOrder.ShippingAddress.Address2;
-                soLine.ShipToAddrLine3 = salesOrder.ShippingAddress.Address3;
-                soLine.ShipToAddrLine4 = salesOrder.ShippingAddress.Address4;
-                soLine.ShipToAddrLine5 = "";
-                soLine.ShipToAddrName = salesOrder.ShippingAddress.Address.MASAddrKey.ToString();//get from MAS
-                soLine.ShipToCity = salesOrder.ShippingAddress.City;
-                soLine.ShipToCountryID = salesOrder.ShippingAddress.Country;
-                soLine.ShipToPostalCode = salesOrder.ShippingAddress.PostalCode;
-                soLine.ShipToStateID = salesOrder.ShippingAddress.State;
-                soLine.Status = "Open";
-                soLine.STaxClassID = null;
-                soLine.TradeDiscAmt = 0;
-                soLine.TradeDiscPct = null;
-                soLine.TranNo = "0";
-                soLine.UnitMeasID = item.Product.Unit; //get this from mas
-                soLine.UnitPrice = item.Price;
-                soLine.UserFld1 = null;
-                soLine.UserFld2 = null;
-                soLine.VendorID = null;
-                soLine.WarehouseID = salesOrder.UserWareHouse.Sitecode; //get this from mas
-                soLine.WillCall = null;
-
-                soLine.Save();
-
             }
-
         }
 
         private static void SubmitTransferOrder(ISalesOrder salesOrder) {
@@ -239,32 +246,33 @@ namespace EAB_Custom {
             toHeader.Save();
 
             foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
+                //only create item if quantity > 0
+                if (item.Quantity > 0) {
+                    //Transfer order line items
+                    Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC toLine =
+                            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC),
+                            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC;
 
-                //Transfer order line items
-                Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC toLine =
-                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC),
-                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC;
+                    toLine.Stgtrnsfrorder_tacId = toHeader.Id.ToString();
 
-                toLine.Stgtrnsfrorder_tacId = toHeader.Id.ToString();
+                    toLine.TrnsfrOrderID = 0; //set this to unique int number (global) during integration - same as header value
+                    toLine.TrnsfrOrderLineID = 0; //Set this to unique number (for this order) during integration.
+                    toLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
 
-                toLine.TrnsfrOrderID = 0; //set this to unique int number (global) during integration - same as header value
-                toLine.TrnsfrOrderLineID = 0; //Set this to unique number (for this order) during integration.
-                toLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
+                    toLine.ItemID = item.Product.MasItemID; //set to itemid from mas
+                    toLine.UoM = item.Product.Unit; //set to unit of measure from mas
+                    toLine.QtyOrd = item.Quantity;
+                    toLine.SurchargeFixedAmt = 0;
+                    toLine.SurchargePct = 0;
+                    toLine.TranCmnt = null;
+                    toLine.ProcessStatus = 0;
+                    toLine.ProcessStatusMessage = null;
+                    toLine.SessionKey = 0;
 
-                toLine.ItemID = item.Product.MasItemID; //set to itemid from mas
-                toLine.UoM = item.Product.Unit; //set to unit of measure from mas
-                toLine.QtyOrd = item.Quantity;
-                toLine.SurchargeFixedAmt = 0;
-                toLine.SurchargePct = 0;
-                toLine.TranCmnt = null;
-                toLine.ProcessStatus = 0;
-                toLine.ProcessStatusMessage = null;
-                toLine.SessionKey = 0;
+                    toLine.Save();
 
-                toLine.Save();
-
+                }
             }
-
         }
 
         private static void SubmitPurchaseOrder(ISalesOrder salesOrder) {
@@ -300,70 +308,71 @@ namespace EAB_Custom {
             soHeader.Save();
 
             foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
+                //only create item if quantity > 0
+                if (item.Quantity > 0) {
+                    //Sales order line items
+                    Sage.Entity.Interfaces.IStgPOLine_TAC soLine =
+                            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgPOLine_TAC),
+                            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPOLine_TAC;
 
-                //Sales order line items
-                Sage.Entity.Interfaces.IStgPOLine_TAC soLine =
-                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgPOLine_TAC),
-                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPOLine_TAC;
+                    soLine.Stgpurchaseorder_tacId = soHeader.Id.ToString();
 
-                soLine.Stgpurchaseorder_tacId = soHeader.Id.ToString();
+                    soLine.POLineNo = item.LineNumber;
 
-                soLine.POLineNo = item.LineNumber;
+                    soLine.AmtInvcd = 0;
+                    soLine.ClosedForInvc = "No";
+                    soLine.ClosedForRcvg = "No";
+                    soLine.CmntOnly = "No";
 
-                soLine.AmtInvcd = 0;
-                soLine.ClosedForInvc = "No";
-                soLine.ClosedForRcvg = "No";
-                soLine.CmntOnly = "No";
-
-                if (item.Description.Length > 40) {
-                    soLine.Description = item.Description.Substring(0, 40);
-                } else {
-                    soLine.Description = item.Description;
-                }
-
-                soLine.DropShip = "No";
-                soLine.ExclLastCost = "No";
-                soLine.Expedite = "No";
-                soLine.ExtAmt = item.ExtendedPrice;
-                soLine.ExtCmnt = null;
-                //soLine.FreightAmt = salesOrder.Freight; //do not use
-                soLine.FreightAmt = 0;
-                soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
-                soLine.ItemID = item.Product.MasItemID; //item key from mas
-
-                soLine.OrigOrdered = item.Quantity;
-                //soLine.OrigPromiseDate = salesOrder.DatePromised;
-                soLine.OrigPromiseDate = salesOrder.OrderDate.Value.AddDays(10);
-                //soLine.PromiseDate = salesOrder.DatePromised;
-                soLine.PromiseDate = salesOrder.OrderDate.Value.AddDays(10);
-                soLine.QtyInvcd = 0;
-                soLine.QtyOnBO = 0;
-                soLine.QtyOpenToRcv = item.Quantity;
-                soLine.QtyOrd = item.Quantity;
-                soLine.QtyRcvd = 0;
-                soLine.QtyRtrnCredit = 0;
-                soLine.QtyRtrnReplacement = 0;
-                soLine.RequestDate = salesOrder.OrderDate;
-                soLine.Status = "Open";
-
-                //get the accountfinancial data
-                if (salesOrder.Account.AccountFinancial != null) {
-                    if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
-                        soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                    if (item.Description.Length > 40) {
+                        soLine.Description = item.Description.Substring(0, 40);
                     } else {
-                        soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                        soLine.Description = item.Description;
                     }
 
+                    soLine.DropShip = "No";
+                    soLine.ExclLastCost = "No";
+                    soLine.Expedite = "No";
+                    soLine.ExtAmt = item.ExtendedPrice;
+                    soLine.ExtCmnt = null;
+                    //soLine.FreightAmt = salesOrder.Freight; //do not use
+                    soLine.FreightAmt = 0;
+                    soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
+                    soLine.ItemID = item.Product.MasItemID; //item key from mas
+
+                    soLine.OrigOrdered = item.Quantity;
+                    //soLine.OrigPromiseDate = salesOrder.DatePromised;
+                    soLine.OrigPromiseDate = salesOrder.OrderDate.Value.AddDays(10);
+                    //soLine.PromiseDate = salesOrder.DatePromised;
+                    soLine.PromiseDate = salesOrder.OrderDate.Value.AddDays(10);
+                    soLine.QtyInvcd = 0;
+                    soLine.QtyOnBO = 0;
+                    soLine.QtyOpenToRcv = item.Quantity;
+                    soLine.QtyOrd = item.Quantity;
+                    soLine.QtyRcvd = 0;
+                    soLine.QtyRtrnCredit = 0;
+                    soLine.QtyRtrnReplacement = 0;
+                    soLine.RequestDate = salesOrder.OrderDate;
+                    soLine.Status = "Open";
+
+                    //get the accountfinancial data
+                    if (salesOrder.Account.AccountFinancial != null) {
+                        if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                            soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                        } else {
+                            soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                        }
+
+                    }
+                    soLine.TranNo = "0";
+                    soLine.UnitCost = (Double)item.Product.FixedCost;
+                    soLine.UnitMeasID = item.Product.Unit; //get this from mas
+                    soLine.UserFld1 = null;
+
+                    soLine.Save();
+
                 }
-                soLine.TranNo = "0";
-                soLine.UnitCost = (Double)item.Product.FixedCost;
-                soLine.UnitMeasID = item.Product.Unit; //get this from mas
-                soLine.UserFld1 = null;
-
-                soLine.Save();
-
             }
-
         }
 
 
@@ -389,39 +398,55 @@ namespace EAB_Custom {
                 tranHeader.Save();
 
                 foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
-
-                    Sage.Entity.Interfaces.IStgInvtTran_TAC transaction =
-                            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgInvtTran_TAC),
-                            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTran_TAC;
-
-                    transaction.Stginvttranbatch_tacId = tranHeader.Id.ToString();
-
-                    //Determine Transaction Type
-                    int transactionType = 0;
-                    double quantity = 0;
+                    //only create item if quantity > 0
                     if (item.Quantity > 0) {
-                        transactionType = 703;
-                        quantity = (Double)item.Quantity;
-                    } else { //if (Double.Parse(txtAdjustment.Text) < 0) 
-                        transactionType = 701;
-                        quantity = Math.Abs((Double)item.Quantity);
+                        Sage.Entity.Interfaces.IStgInvtTran_TAC transaction =
+                                Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgInvtTran_TAC),
+                                Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTran_TAC;
+
+                        transaction.Stginvttranbatch_tacId = tranHeader.Id.ToString();
+
+                        //Determine Transaction Type
+                        int transactionType = 0;
+                        double quantity = 0;
+                        if (item.Quantity > 0) {
+                            transactionType = 703;
+                            quantity = (Double)item.Quantity;
+                        } else { //if (Double.Parse(txtAdjustment.Text) < 0) 
+                            transactionType = 701;
+                            quantity = Math.Abs((Double)item.Quantity);
+                        }
+                        transaction.Qty = quantity;
+                        transaction.TranID = tranHeader.BatchID;
+                        transaction.BatchID = tranHeader.BatchID;
+                        transaction.TranType = transactionType;
+                        transaction.TranDate = DateTime.Now;
+
+                        //product info
+                        if (item.Product != null) {
+                            transaction.ItemID = item.Product.MasItemID;                            
+                            transaction.UoM = item.Product.Unit;
+
+                            //msrp price
+                            if (item.Product.Vlueproductmsrp != null) {
+                                transaction.UnitCost = (Double)item.Product.Vlueproductmsrp.Listprice;
+                            } else {
+                                transaction.UnitCost = 0;
+                            }
+
+                            transaction.TranAmt = transaction.UnitCost * transaction.Qty;
+                            transaction.GLAcctNo = item.Product.GlAccountNumber;
+                            if (transaction.GLAcctNo == null) {
+                                transaction.GLAcctNo = "";
+                            }
+                        }
+
+                        transaction.TranCmnt = "";
+                        transaction.CompanyID = tranHeader.CompanyID;
+                        transaction.ProcessStatus = 0;
+
+                        transaction.Save();
                     }
-
-                    transaction.TranID = tranHeader.BatchID;
-                    transaction.BatchID = tranHeader.BatchID;
-                    transaction.TranType = transactionType;
-                    transaction.TranDate = DateTime.Now;
-                    transaction.ItemID = item.Product.MasItemID;
-                    transaction.Qty = quantity;
-                    transaction.UoM = item.Product.Unit;
-                    transaction.UnitCost = (Double)item.Product.Vlueproductmsrp.Listprice;
-                    transaction.TranAmt = transaction.UnitCost * transaction.Qty;
-                    transaction.GLAcctNo = item.Product.GlAccountNumber;
-                    transaction.TranCmnt = "";
-                    transaction.CompanyID = tranHeader.CompanyID;
-                    transaction.ProcessStatus = 0;
-
-                    transaction.Save();
                 }
             } catch (Exception ex) {
                 //DialogService.ShowMessage("Error Creating Transaction: " + transactionID + " " + ex.Message);
