@@ -23,16 +23,16 @@
 	
 	switch(account.Type) {
 		case "Distributor":
-			cmdAddSalesOrder.Visible = false;
-			cmdAddReturnOrder.Visible = false;
+			cmdAddSalesOrder.Visible = true;
+			cmdAddReturnOrder.Visible = true;
 			cmdAddTransferOrder.Visible = true;
 			cmdAddInventoryOrder.Visible = true;
 			break;
 		case "Sales Rep":
-			cmdAddSalesOrder.Visible = false;
-			cmdAddReturnOrder.Visible = false;
+			cmdAddSalesOrder.Visible = true;
+			cmdAddReturnOrder.Visible = true;
 			cmdAddTransferOrder.Visible = true;
-			cmdAddInventoryOrder.Visible = false;
+			cmdAddInventoryOrder.Visible = true;
 			break;
 			
 		default:

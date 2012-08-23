@@ -47,7 +47,7 @@ namespace EAB_Custom {
                 plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value
                 plLine.SOLineNo = item.SOLineNo; //sequence number  
                 
-                plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                plLine.ItemID = item.Product.MasItemID; //set to itemid from mas
 
                 plLine.QtyOnBO = (Double)item.QtyOnBO;
                 plLine.QtyOrd = (Double)item.QtyOrd;

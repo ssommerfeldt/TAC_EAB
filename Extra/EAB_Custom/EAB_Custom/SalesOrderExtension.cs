@@ -25,17 +25,31 @@ namespace EAB_Custom {
                     SubmitPurchaseOrder(salesOrder);
                     break;
                 case "Return Order":
-                    //Distributor
-                    //SubmitPurchaseOrder(salesOrder);
-
-                    //Sales Rep
-                    //SubmitInventoryAdjustment(salesOrder);
+                    switch (salesOrder.AccountManager.Eabrelationship) {
+                        case "Distributor":
+                            //Distributor
+                            SubmitPurchaseOrder(salesOrder);
+                            break;
+                        case "Sales Rep":
+                            //Sales Rep
+                            SubmitInventoryAdjustment(salesOrder);
+                            break;
+                    }
                     break;
                 case "Inventory Order":
-                    SubmitSalesOrder(salesOrder);
+                    switch (salesOrder.AccountManager.Eabrelationship) {
+                        case "Distributor":
+                            //Distributor
+                            SubmitSalesOrder(salesOrder);
+                            break;
+                        case "Sales Rep":
+                            //Sales Rep
+                            SubmitTransferOrder(salesOrder);
+                            break;
+                    }
                     break;
             }
-        }       
+        }
 
 
         private static void SubmitSalesOrder(ISalesOrder salesOrder) {
@@ -50,7 +64,7 @@ namespace EAB_Custom {
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSalesOrder_TAC),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSalesOrder_TAC;
 
-           
+
             soHeader.TranNo = "0";
             soHeader.TranDate = DateTime.Now;
             soHeader.TradeDiscAmt = null;
@@ -64,18 +78,18 @@ namespace EAB_Custom {
             soHeader.OpenAmt = salesOrder.OrderTotal; //invoice total
             soHeader.Hold = "0";
             //soHeader.FreightAmt = salesOrder.Freight;
-            soHeader.FreightAmt = 0;            
+            soHeader.FreightAmt = 0;
 
             //get the accountfinancial data
             if (salesOrder.Account.AccountFinancial != null) {
                 soHeader.CustID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
-                soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type.Substring(0,4).ToUpper(); //get from mas
+                soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type.Substring(0, 4).ToUpper(); //get from mas
 
                 //soHeader.DfltShipToCustAddrID = salesOrder.ShippingAddress.Address.MASAddrKey.ToString(); //change this to mas id
                 soHeader.DfltShipToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
                 //soHeader.BillToCustAddrID = salesOrder.BillingAddress.Address.MASAddrKey.ToString(); //change to mas id
                 soHeader.BillToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
-                soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode; 
+                soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
             }
 
             soHeader.CurrID = salesOrder.CurrencyCode;
@@ -128,7 +142,7 @@ namespace EAB_Custom {
                 soLine.FOBID = salesOrder.Fob;
                 //soLine.FreightAmt = salesOrder.Freight; //do not use
                 soLine.FreightAmt = 0;
-                soLine.GLAcctNo = item.Product.GlSubAccountNumber; //get this from mas
+                soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
                 soLine.Hold = "0";
                 soLine.HoldReason = null;
                 soLine.ItemAliasID = null;
@@ -170,7 +184,7 @@ namespace EAB_Custom {
                 soLine.TradeDiscAmt = 0;
                 soLine.TradeDiscPct = null;
                 soLine.TranNo = "0";
-                soLine.UnitMeasID = item.Product.UnitOfMeasure.Name; //get this from mas
+                soLine.UnitMeasID = item.Product.Unit; //get this from mas
                 soLine.UnitPrice = item.Price;
                 soLine.UserFld1 = null;
                 soLine.UserFld2 = null;
@@ -198,7 +212,7 @@ namespace EAB_Custom {
 
             toHeader.TrnsfrOrderID = 0; //set this to unique int number (global) during integration
             toHeader.CloseDate = DateTime.Now;
-            
+
             //get the accountfinancial data
             if (salesOrder.Account.AccountFinancial != null) {
                 if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
@@ -208,7 +222,7 @@ namespace EAB_Custom {
                 }
 
             }
-                        
+
             toHeader.RcvgWhseID = ""; //get this from mas
             toHeader.ReqDelvDate = DateTime.Now.AddDays(10);
             toHeader.SchdShipDate = DateTime.Now.AddDays(2);
@@ -221,7 +235,7 @@ namespace EAB_Custom {
             toHeader.ProcessStatus = 0;
             toHeader.ProcessStatusMessage = null;
             toHeader.SessionKey = 0;
-            
+
             toHeader.Save();
 
             foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
@@ -238,24 +252,24 @@ namespace EAB_Custom {
                 toLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
 
                 toLine.ItemID = item.Product.MasItemID; //set to itemid from mas
-                toLine.UoM = item.Product.UnitOfMeasureId; //set to unit of measure from mas
-                toLine.QtyOrd = item.Quantity;  
+                toLine.UoM = item.Product.Unit; //set to unit of measure from mas
+                toLine.QtyOrd = item.Quantity;
                 toLine.SurchargeFixedAmt = 0;
                 toLine.SurchargePct = 0;
-                toLine.TranCmnt = null;                
+                toLine.TranCmnt = null;
                 toLine.ProcessStatus = 0;
                 toLine.ProcessStatusMessage = null;
                 toLine.SessionKey = 0;
-            
+
                 toLine.Save();
 
             }
 
         }
-        
+
         private static void SubmitPurchaseOrder(ISalesOrder salesOrder) {
             //submit order to mas
-            
+
             Sage.Entity.Interfaces.IStgPurchaseOrder_TAC soHeader =
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgPurchaseOrder_TAC),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPurchaseOrder_TAC;
@@ -279,10 +293,10 @@ namespace EAB_Custom {
             soHeader.VendorID = null;
 
             //get the accountfinancial data
-            if (salesOrder.Account.AccountFinancial != null) {                
+            if (salesOrder.Account.AccountFinancial != null) {
                 soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
             }
-            
+
             soHeader.Save();
 
             foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
@@ -293,13 +307,13 @@ namespace EAB_Custom {
                         Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPOLine_TAC;
 
                 soLine.Stgpurchaseorder_tacId = soHeader.Id.ToString();
-                                
+
                 soLine.POLineNo = item.LineNumber;
 
                 soLine.AmtInvcd = 0;
                 soLine.ClosedForInvc = "No";
                 soLine.ClosedForRcvg = "No";
-                soLine.CmntOnly = "No";               
+                soLine.CmntOnly = "No";
 
                 if (item.Description.Length > 40) {
                     soLine.Description = item.Description.Substring(0, 40);
@@ -311,15 +325,15 @@ namespace EAB_Custom {
                 soLine.ExclLastCost = "No";
                 soLine.Expedite = "No";
                 soLine.ExtAmt = item.ExtendedPrice;
-                soLine.ExtCmnt = null;                
+                soLine.ExtCmnt = null;
                 //soLine.FreightAmt = salesOrder.Freight; //do not use
                 soLine.FreightAmt = 0;
-                soLine.GLAcctNo = item.Product.GlSubAccountNumber; //get this from mas
+                soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
                 soLine.ItemID = item.Product.MasItemID; //item key from mas
-                
+
                 soLine.OrigOrdered = item.Quantity;
                 //soLine.OrigPromiseDate = salesOrder.DatePromised;
-                soLine.OrigPromiseDate = salesOrder.OrderDate.Value.AddDays(10);               
+                soLine.OrigPromiseDate = salesOrder.OrderDate.Value.AddDays(10);
                 //soLine.PromiseDate = salesOrder.DatePromised;
                 soLine.PromiseDate = salesOrder.OrderDate.Value.AddDays(10);
                 soLine.QtyInvcd = 0;
@@ -328,10 +342,10 @@ namespace EAB_Custom {
                 soLine.QtyOrd = item.Quantity;
                 soLine.QtyRcvd = 0;
                 soLine.QtyRtrnCredit = 0;
-                soLine.QtyRtrnReplacement = 0;                
+                soLine.QtyRtrnReplacement = 0;
                 soLine.RequestDate = salesOrder.OrderDate;
                 soLine.Status = "Open";
-                               
+
                 //get the accountfinancial data
                 if (salesOrder.Account.AccountFinancial != null) {
                     if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
@@ -343,9 +357,9 @@ namespace EAB_Custom {
                 }
                 soLine.TranNo = "0";
                 soLine.UnitCost = (Double)item.Product.FixedCost;
-                soLine.UnitMeasID = item.Product.UnitOfMeasureId; //get this from mas
+                soLine.UnitMeasID = item.Product.Unit; //get this from mas
                 soLine.UserFld1 = null;
-                
+
                 soLine.Save();
 
             }
@@ -354,136 +368,73 @@ namespace EAB_Custom {
 
 
         private static void SubmitInventoryAdjustment(ISalesOrder salesOrder) {
-            //submit order to mas
-            
-            //Adjust Inventory on hand
-            string transactionID = "";
+            //submit order to mas            
+            //Adjusts Inventory on hand            
             try {
-                                
+
                 Sage.Entity.Interfaces.IStgInvtTranBatch_TAC tranHeader =
                         Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgInvtTranBatch_TAC),
                         Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTranBatch_TAC;
-                                
+
                 tranHeader.BatchID = 0;
                 //tranHeader.BComment = salesOrder.Comments;
                 tranHeader.BDate = DateTime.Now;
                 tranHeader.WhseID = salesOrder.UserWareHouse.Sitecode; ;
-                                
+
                 //get the accountfinancial data
-                if (salesOrder.Account.AccountFinancial != null) {                    
+                if (salesOrder.Account.AccountFinancial != null) {
                     tranHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
                 }
 
                 tranHeader.Save();
 
+                foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
 
-                Sage.Entity.Interfaces.IStgInvtTran_TAC transaction =
-                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgInvtTran_TAC),
-                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTran_TAC;
+                    Sage.Entity.Interfaces.IStgInvtTran_TAC transaction =
+                            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgInvtTran_TAC),
+                            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTran_TAC;
 
-                transaction.Stginvttranbatch_tacId = tranHeader.Id.ToString();
+                    transaction.Stginvttranbatch_tacId = tranHeader.Id.ToString();
 
-                //Determine Transaction Type
-                int transactionType = 0;
-                double quantity = 0;
-                if (Double.Parse(form.txtAdjustment.Text) > 0) {
-                    transactionType = 703;
-                    quantity = Double.Parse(form.txtAdjustment.Text);
-                } else //if (Double.Parse(txtAdjustment.Text) > 0) 
-            {
-                    transactionType = 701;
-                    quantity = Math.Abs(Double.Parse(form.txtAdjustment.Text));
+                    //Determine Transaction Type
+                    int transactionType = 0;
+                    double quantity = 0;
+                    if (item.Quantity > 0) {
+                        transactionType = 703;
+                        quantity = (Double)item.Quantity;
+                    } else { //if (Double.Parse(txtAdjustment.Text) < 0) 
+                        transactionType = 701;
+                        quantity = Math.Abs((Double)item.Quantity);
+                    }
+
+                    transaction.TranID = tranHeader.BatchID;
+                    transaction.BatchID = tranHeader.BatchID;
+                    transaction.TranType = transactionType;
+                    transaction.TranDate = DateTime.Now;
+                    transaction.ItemID = item.Product.MasItemID;
+                    transaction.Qty = quantity;
+                    transaction.UoM = item.Product.Unit;
+                    transaction.UnitCost = (Double)item.Product.Vlueproductmsrp.Listprice;
+                    transaction.TranAmt = transaction.UnitCost * transaction.Qty;
+                    transaction.GLAcctNo = item.Product.GlAccountNumber;
+                    transaction.TranCmnt = "";
+                    transaction.CompanyID = tranHeader.CompanyID;
+                    transaction.ProcessStatus = 0;
+
+                    transaction.Save();
                 }
-
-                transaction.TranID = tranHeader.BatchID;
-                transaction.BatchID = tranHeader.BatchID;
-                transaction.TranType = transactionType;
-                transaction.TranDate = DateTime.Now;
-                transaction.ItemID = productstatus.Product.MASITEMKEY.ToString();
-                transaction.Qty = quantity;
-                transaction.UoM = "";
-                transaction.UnitCost = (Double)productstatus.Product.Vlueproductmsrp.Listprice;
-                transaction.TranAmt = transaction.UnitCost * transaction.Qty;
-                transaction.GLAcctNo = "";
-                transaction.TranCmnt = "";
-                transaction.CompanyID = tranHeader.CompanyID;
-                transaction.ProcessStatus = 0;
-
-                //_entity.Projects.Add(project);
-                transaction.Save();
-
             } catch (Exception ex) {
-                DialogService.ShowMessage("Error Creating Transaction: " + transactionID + " " + ex.Message);
+                //DialogService.ShowMessage("Error Creating Transaction: " + transactionID + " " + ex.Message);
                 Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
                 eh.HandleException(ex, false);
             }
-
-            //--------------------------------------
-            
-            Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC toHeader =
-            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC),
-            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC;
-
-            toHeader.TrnsfrOrderID = 0; //set this to unique int number (global) during integration
-            toHeader.CloseDate = DateTime.Now;
-
-            //get the accountfinancial data
-            if (salesOrder.Account.AccountFinancial != null) {
-                if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
-                    toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
-                } else {
-                    toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
-                }
-
-            }
-
-            toHeader.RcvgWhseID = ""; //get this from mas
-            toHeader.ReqDelvDate = DateTime.Now.AddDays(10);
-            toHeader.SchdShipDate = DateTime.Now.AddDays(2);
-            toHeader.ShipMethID = null;
-            toHeader.ShipWhseID = salesOrder.UserWareHouse.Sitecode; //get this from mas
-            toHeader.TranCmnt = null;
-            toHeader.TranDate = DateTime.Now;
-            toHeader.TranNo = null;
-            toHeader.TransitWhseID = null;
-            toHeader.ProcessStatus = 0;
-            toHeader.ProcessStatusMessage = null;
-            toHeader.SessionKey = 0;
-
-            toHeader.Save();
-
-            foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
-
-                //Transfer order line items
-                Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC toLine =
-                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC),
-                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC;
-
-                toLine.Stgtrnsfrorder_tacId = toHeader.Id.ToString();
-
-                toLine.TrnsfrOrderID = 0; //set this to unique int number (global) during integration - same as header value
-                toLine.TrnsfrOrderLineID = 0; //Set this to unique number (for this order) during integration.
-                toLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
-
-                toLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
-                toLine.UoM = item.Product.UnitOfMeasureId; //set to unit of measure from mas
-                toLine.QtyOrd = item.Quantity;
-                toLine.SurchargeFixedAmt = 0;
-                toLine.SurchargePct = 0;
-                toLine.TranCmnt = null;
-                toLine.ProcessStatus = 0;
-                toLine.ProcessStatusMessage = null;
-                toLine.SessionKey = 0;
-
-                toLine.Save();
-
-            }
-
         }
 
 
+
+
         //public static void SubmitSOPicklist(IStgSalesOrder_TAC salesOrder) {
-            
+
         //    Sage.Entity.Interfaces.IStgSOPicklist_TAC plHeader =
         //    Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOPicklist_TAC),
         //    Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOPicklist_TAC;
@@ -492,9 +443,9 @@ namespace EAB_Custom {
         //    plHeader.TranType = 801;
         //    plHeader.TranNo = salesOrder.TranNo;
         //    plHeader.TranDate = salesOrder.TranDate;
-                 
+
         //    plHeader.CompanyID = salesOrder.CustID; //get this from mas
-            
+
         //    plHeader.ProcessStatus = 0;            
         //    plHeader.SessionKey = 0;
         //    plHeader.SubmitDate = null;
@@ -564,8 +515,8 @@ namespace EAB_Custom {
                 } else {
                     plHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId;
                 }
-                
-            }           
+
+            }
 
             //plHeader.ProcessStatus = 0;
             //plHeader.SessionKey = 0;
@@ -595,7 +546,7 @@ namespace EAB_Custom {
                 plLine.ShipDate = salesOrder.OrderDate;
 
                 plLine.CompanyID = plHeader.CompanyID;
-                plLine.UnitMeasID = item.Product.UnitOfMeasureId;
+                plLine.UnitMeasID = item.Product.Unit;
 
                 //plLine.ProcessStatus = 0;
                 //plLine.SessionKey = 0;
@@ -684,14 +635,14 @@ namespace EAB_Custom {
             //redirect to new picking list
             result = plHeader.Id.ToString();
         }
-        
+
         public static void CreateReceiptOfGoods(ISalesOrder salesOrder, out String result) {
 
             Sage.Entity.Interfaces.IReceiptOfGoods plHeader =
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IReceiptOfGoods),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IReceiptOfGoods;
 
-                      
+
             plHeader.PostDate = DateTime.Now;
             plHeader.SalesOrderId = salesOrder.Id.ToString();
 
@@ -724,9 +675,9 @@ namespace EAB_Custom {
 
                 //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
                 plLine.ProductId = item.Product.Id.ToString();
-                plLine.UnitMeasID = item.Product.UnitOfMeasureId;
+                plLine.UnitMeasID = item.Product.Unit;
                 plLine.QtyRcvd = Decimal.Parse(item.Quantity.ToString());
-                                        
+
                 plLine.Save();
 
             }
@@ -736,18 +687,18 @@ namespace EAB_Custom {
 
 
         public static void GetPickingListsbySalesOrder(ISalesOrder salesorder, out IList<IPickingList> result) {
-            
+
             //query the picking list object for all PICKING LIST records that are linked to this sales order
-            Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IPickingList> f = 
+            Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IPickingList> f =
                 Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IPickingList>();
             Sage.Platform.Repository.ICriteria crit = f.CreateCriteria();
-            
-            
+
+
             crit.Add(f.EF.Eq("SalesOrder", salesorder));
             crit.Add(f.EF.Eq("Status", "PickingList"));
 
             result = crit.List<Sage.Entity.Interfaces.IPickingList>();
-            
+
         }
 
         public static void GetPackingListsbySalesOrder(ISalesOrder salesorder, out IList<IPickingList> result) {
@@ -799,7 +750,7 @@ namespace EAB_Custom {
                     item.Quantity = 0; //set to 0 initially
                     item.ProductName = scitem.Product.Name;
                     item.Program = scitem.Product.Program;
-                    item.UnitOfMeasureId = scitem.Product.UnitOfMeasureId.Trim();
+                    item.UnitOfMeasureId = scitem.Product.Unit;
                     item.Product = scitem.Product;
 
                     salesorder.SalesOrderItems.Add(item);
