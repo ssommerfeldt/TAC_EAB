@@ -223,7 +223,7 @@ namespace EAB_Custom {
 
             }
 
-            toHeader.RcvgWhseID = ""; //get this from mas
+            toHeader.RcvgWhseID = salesOrder.SourceSLXSite.Sitecode; //get this from mas
             toHeader.ReqDelvDate = DateTime.Now.AddDays(10);
             toHeader.SchdShipDate = DateTime.Now.AddDays(2);
             toHeader.ShipMethID = null;
