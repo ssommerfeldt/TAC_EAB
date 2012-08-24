@@ -195,8 +195,8 @@ namespace EAB_Custom {
                     soLine.UnitPrice = item.Price;
                     soLine.UserFld1 = null;
                     soLine.UserFld2 = null;
-                    soLine.VendorID = null;
-                    soLine.WarehouseID = salesOrder.UserWareHouse.Sitecode; //get this from mas
+                    soLine.VendorID = soHeader.CustID;
+                    soLine.WarehouseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname; //get this from mas
                     soLine.WillCall = null;
 
                     soLine.Save();
@@ -229,12 +229,20 @@ namespace EAB_Custom {
                 }
 
             }
+            if (salesOrder.SourceSLXSite == null) {
+                throw new Exception("Error: Destination Warehouse not specified.");
+            } else {
+                toHeader.RcvgWhseID = salesOrder.SourceSLXSite.Sitereference.Siterefdisplayname; //get this from mas
+            }
+            if (salesOrder.UserWareHouse == null) {
+                throw new Exception("Error: Source Warehouse not specified.");
+            } else {
+                toHeader.ShipWhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname; //get this from mas
+            }
 
-            toHeader.RcvgWhseID = salesOrder.SourceSLXSite.Sitecode; //get this from mas
             toHeader.ReqDelvDate = DateTime.Now.AddDays(10);
             toHeader.SchdShipDate = DateTime.Now.AddDays(2);
-            toHeader.ShipMethID = null;
-            toHeader.ShipWhseID = salesOrder.UserWareHouse.Sitecode; //get this from mas
+            toHeader.ShipMethID = null;            
             toHeader.TranCmnt = null;
             toHeader.TranDate = DateTime.Now;
             toHeader.TranNo = null;
@@ -298,11 +306,12 @@ namespace EAB_Custom {
             soHeader.TranDate = DateTime.Now;
             soHeader.UserFld1 = null;
             soHeader.VendClassID = null;
-            soHeader.VendorID = null;
+                        
 
             //get the accountfinancial data
             if (salesOrder.Account.AccountFinancial != null) {
                 soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                soHeader.VendorID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
             }
 
             soHeader.Save();
@@ -388,7 +397,7 @@ namespace EAB_Custom {
                 tranHeader.BatchID = 0;
                 //tranHeader.BComment = salesOrder.Comments;
                 tranHeader.BDate = DateTime.Now;
-                tranHeader.WhseID = salesOrder.UserWareHouse.Sitecode; ;
+                tranHeader.WhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname;
 
                 //get the accountfinancial data
                 if (salesOrder.Account.AccountFinancial != null) {
@@ -606,13 +615,14 @@ namespace EAB_Custom {
             plHeader.TranNo = "0"; //how to get this??
             plHeader.TranDate = DateTime.Now;
             plHeader.SalesOrderId = salesOrder.Id.ToString();
+            plHeader.Status = "Packing List"; 
 
             //get the accountfinancial data
             if (salesOrder.Account.AccountFinancial != null) {
-                if (salesOrder.Account.AccountFinancial.CustomerId.Length > 12) {
-                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId.Substring(0, 12); //get from mas
+                if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
                 } else {
-                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId;
+                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
                 }
 
             }
@@ -681,7 +691,7 @@ namespace EAB_Custom {
 
             }
             //plHeader.PONum = "How to get?";
-            plHeader.WhseID = salesOrder.UserWareHouse.Sitecode;
+            plHeader.WhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname;
             plHeader.Status = "Open";
 
             plHeader.Save();
@@ -720,7 +730,7 @@ namespace EAB_Custom {
 
 
             crit.Add(f.EF.Eq("SalesOrder", salesorder));
-            crit.Add(f.EF.Eq("Status", "PickingList"));
+            crit.Add(f.EF.Eq("Status", "Picking List"));
 
             result = crit.List<Sage.Entity.Interfaces.IPickingList>();
 
@@ -735,7 +745,7 @@ namespace EAB_Custom {
 
 
             crit.Add(f.EF.Eq("SalesOrder", salesorder));
-            crit.Add(f.EF.Eq("Status", "PackingList"));
+            crit.Add(f.EF.Eq("Status", "Packing List"));
 
             result = crit.List<Sage.Entity.Interfaces.IPickingList>();
 

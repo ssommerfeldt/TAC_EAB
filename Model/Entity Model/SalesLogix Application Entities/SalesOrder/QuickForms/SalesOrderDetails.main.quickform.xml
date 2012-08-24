@@ -45,7 +45,7 @@ lkpSourceWareHouse.SeedValue = salesOrder.AccountManager.Id.ToString ();
 lkpUserWareHouse.LookupResultValue = salesOrder.UserWareHouse;
 lkpSourceWareHouse.LookupResultValue = salesOrder.SourceSLXSite ;
 
-if (salesOrder.OrderType == "Transfer Order")
+if (salesOrder.OrderType == "Transfer Order" || salesOrder.OrderType == "Inventory Order")
 {
 	lkpSourceWareHouse.Visible = true;
 	 lkpSourceWareHouse_lbl.Visible = true;

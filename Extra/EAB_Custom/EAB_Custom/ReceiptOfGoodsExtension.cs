@@ -11,7 +11,7 @@ namespace EAB_Custom {
 
         public static void SubmitReceiptOfGoods(IReceiptOfGoods receiptofgoods) {
             //Determine which order to submit and pass through
-
+            SubmitReceiptOfGoodstoMas(receiptofgoods);
         }
 
 

@@ -15,14 +15,16 @@ namespace EAB_Custom {
                 foreach (ISalesOrderItem item in pickinglistitem.PickingList.SalesOrder.SalesOrderItems) {
                     if (item.UPC == pickinglistitem.UPC) {
                         //product found in order, add to result
-                        //pickinglistitem.CompanyID
-                        pickinglistitem.Product = item.Product;
+                        pickinglistitem.TranNo = "0";
+                        //pickinglistitem.CompanyID                        
                         pickinglistitem.QtyOrd = (Decimal)item.Quantity;
                         pickinglistitem.QtyShip = 0;
                         pickinglistitem.SOLineNo = item.LineNumber;
-
+                        pickinglistitem.Product = item.Product;
+                        pickinglistitem.ActualId = item.Product.ActualId;                        
+                        pickinglistitem.UnitMeasID = item.Product.Unit;
+                        
                         //pickinglistitem.Save();
-
                     }
                 }                
             }
@@ -36,10 +38,14 @@ namespace EAB_Custom {
                     if (item.ActualID == pickinglistitem.ActualId) {
                         //product found in order, add to result
                         //pickinglistitem.CompanyID
-                        pickinglistitem.Product = item.Product;
+                        pickinglistitem.TranNo = "0";
+                        //pickinglistitem.CompanyID                        
                         pickinglistitem.QtyOrd = (Decimal)item.Quantity;
                         pickinglistitem.QtyShip = 0;
                         pickinglistitem.SOLineNo = item.LineNumber;
+                        pickinglistitem.Product = item.Product;
+                        pickinglistitem.UPC = item.Product.UPC;
+                        pickinglistitem.UnitMeasID = item.Product.Unit;
                         
                         //pickinglistitem.Save();
 

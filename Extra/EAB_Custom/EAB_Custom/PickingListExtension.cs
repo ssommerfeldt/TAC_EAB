@@ -25,7 +25,7 @@ namespace EAB_Custom {
             plHeader.TranType = 801;
             plHeader.TranNo = pickinglist.TranNo;
             plHeader.TranDate = pickinglist.TranDate;
-
+            
             plHeader.CompanyID = pickinglist.CompanyID; //get this from mas
 
             plHeader.ProcessStatus = 0;
@@ -49,9 +49,21 @@ namespace EAB_Custom {
                 
                 plLine.ItemID = item.Product.MasItemID; //set to itemid from mas
 
-                plLine.QtyOnBO = (Double)item.QtyOnBO;
-                plLine.QtyOrd = (Double)item.QtyOrd;
-                plLine.QtyShip = (Double)item.QtyShip;
+                if (item.QtyOnBO == null) {
+                    plLine.QtyOnBO = 0;
+                } else {
+                    plLine.QtyOnBO = (Double)item.QtyOnBO;
+                }
+                if (item.QtyOrd == null) {
+                    plLine.QtyOrd = 0;
+                } else {
+                    plLine.QtyOrd = (Double)item.QtyOrd;
+                }
+                if (item.QtyShip == null) {
+                    plLine.QtyShip = 0;
+                } else {
+                    plLine.QtyShip = (Double)item.QtyShip;
+                }
                 plLine.ShipDate = item.ShipDate;
                 plLine.CompanyID = pickinglist.CompanyID;
                 plLine.UnitMeasID = item.UnitMeasID;
