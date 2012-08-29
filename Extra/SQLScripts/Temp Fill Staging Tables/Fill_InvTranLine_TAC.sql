@@ -1,0 +1,31 @@
+INSERT INTO [LiveEAB_app].[dbo].[StgInvtTran_TAC]
+           ([BatchID]
+           ,[TranType]
+           ,[TranDate]
+           ,[ItemID]
+           ,[Qty]
+           ,[UoM]
+           ,[UnitCost]
+           ,[TranAmt]
+           ,[GLAcctNo]
+           ,[TranCmnt]
+           ,[CompanyID]
+           ,[ProcessStatus]
+           )
+     
+     SELECT [BATCHID]      
+      ,[TRANTYPE]
+      ,[TRANDATE]
+      ,[ITEMID]
+      ,[QTY]
+      ,[UOM]
+      ,[UNITCOST]
+      ,[TRANAMT]
+      ,[GLACCTNO]
+      ,[TRANCMNT]
+      ,[COMPANYID]
+      ,[PROCESSSTATUS]
+      
+  FROM [LiveEAB_slx].[sysdba].[STGINVTTRAN_TAC]
+  Where batchid = 4
+GO
