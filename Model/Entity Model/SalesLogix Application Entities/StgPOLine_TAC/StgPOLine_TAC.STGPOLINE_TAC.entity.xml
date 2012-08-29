@@ -491,5 +491,33 @@
         <DoubleDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="81d678d0-3dfa-4c24-a080-3dc168510c52" lastModifiedUtc="2012-08-29T17:35:22.3108042Z" name="ShipToWhseID" audited="false" columnName="SHIPTOWHSEID" maxLength="6" precision="0" scale="0" ordinal="37" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>6</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
+    <property xsi:type="OrmFieldProperty" id="28d88d03-7584-4cab-b60a-13c7f2180944" lastModifiedUtc="2012-08-29T17:35:22.313761Z" name="STaxClassID" audited="false" columnName="STAXCLASSID" maxLength="15" precision="0" scale="0" ordinal="38" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>15</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
   </properties>
 </entity>

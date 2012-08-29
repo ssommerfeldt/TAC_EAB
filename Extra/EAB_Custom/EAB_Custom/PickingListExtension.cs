@@ -72,7 +72,7 @@ namespace EAB_Custom {
                 plLine.SessionKey = 0;
                 plLine.SubmitDate = null;
                 plLine.ProcessDate = null;
-                plLine.SOLineKey = null;
+                plLine.SOLineKey = item.SOLineNo;
                 plLine.OrderKey = null;
 
                 plLine.Save();

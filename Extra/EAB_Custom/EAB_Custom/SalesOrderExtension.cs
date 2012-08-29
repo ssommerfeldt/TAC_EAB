@@ -313,6 +313,10 @@ namespace EAB_Custom {
                 soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
                 soHeader.VendorID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
             }
+            //exit if wareouse not specified
+            if (salesOrder.UserWareHouse == null) {
+                        throw new Exception("Error: Source Warehouse not specified.");
+                    }
 
             soHeader.Save();
 
@@ -377,6 +381,13 @@ namespace EAB_Custom {
                     soLine.UnitCost = (Double)item.Product.FixedCost;
                     soLine.UnitMeasID = item.Product.Unit; //get this from mas
                     soLine.UserFld1 = null;
+                    soLine.STaxClassID = "1";
+                    
+                    if (salesOrder.UserWareHouse == null) {
+                        throw new Exception("Error: Source Warehouse not specified.");
+                    } else {
+                        soLine.ShipToWhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname; //get this from mas
+                    }
 
                     soLine.Save();
 
