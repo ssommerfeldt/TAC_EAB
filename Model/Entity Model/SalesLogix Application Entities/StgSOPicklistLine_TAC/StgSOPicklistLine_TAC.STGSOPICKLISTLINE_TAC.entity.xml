@@ -289,5 +289,29 @@
         <IntegerDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="b2a940ab-537e-4464-9a76-b6fd94d4656d" lastModifiedUtc="2012-08-30T21:43:44.7457394Z" name="PickingListID" audited="false" columnName="PICKINGLISTID" maxLength="12" precision="0" scale="0" ordinal="22" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
+        <StandardIdDataType />
+      </SystemDataType>
+    </property>
+    <property xsi:type="OrmFieldProperty" id="1825f2c9-1c3b-4437-bd02-3802f259f992" lastModifiedUtc="2012-08-30T21:43:44.7457394Z" name="PickingListItemID" audited="false" columnName="PICKINGLISTITEMID" maxLength="12" precision="0" scale="0" ordinal="23" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
+        <StandardIdDataType />
+      </SystemDataType>
+    </property>
   </properties>
 </entity>

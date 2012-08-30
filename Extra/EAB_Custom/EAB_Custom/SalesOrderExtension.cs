@@ -70,7 +70,7 @@ namespace EAB_Custom {
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSalesOrder_TAC),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSalesOrder_TAC;
 
-
+            soHeader.SalesOrderID = salesOrder.Id.ToString();
             soHeader.TranNo = "0";
             soHeader.TranDate = DateTime.Now;
             soHeader.TradeDiscAmt = null;
@@ -116,7 +116,8 @@ namespace EAB_Custom {
                             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOLine_TAC;
 
                     soLine.Stgsalesorder_tacId = soHeader.Id.ToString();
-
+                    soLine.SalesOrderID = salesOrder.Id.ToString();
+                    soLine.SalesOrderItemID = item.Id.ToString();
                     ////Get the so line number - slx does this already
                     //Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IStgSOLine_TAC> rep =
                     //    Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IStgSOLine_TAC>();
@@ -217,6 +218,7 @@ namespace EAB_Custom {
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC;
 
+            toHeader.SalesOrderID = salesOrder.Id.ToString();
             toHeader.TrnsfrOrderID = 0; //set this to unique int number (global) during integration
             toHeader.CloseDate = DateTime.Now;
 
@@ -262,6 +264,8 @@ namespace EAB_Custom {
                             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgTrnsfrOrderLine_TAC;
 
                     toLine.Stgtrnsfrorder_tacId = toHeader.Id.ToString();
+                    toLine.SalesOrderID = salesOrder.Id.ToString();
+                    toLine.SalesOrderItemID = item.Id.ToString();
 
                     toLine.TrnsfrOrderID = 0; //set this to unique int number (global) during integration - same as header value
                     toLine.TrnsfrOrderLineID = 0; //Set this to unique number (for this order) during integration.
@@ -290,6 +294,7 @@ namespace EAB_Custom {
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgPurchaseOrder_TAC),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPurchaseOrder_TAC;
 
+            soHeader.SalesOrderID = salesOrder.Id.ToString();
             soHeader.ClosedForInvc = "No";
             soHeader.ClosedForRcvg = "No";
             soHeader.CurrExchRate = 1.0;
@@ -329,6 +334,8 @@ namespace EAB_Custom {
                             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPOLine_TAC;
 
                     soLine.Stgpurchaseorder_tacId = soHeader.Id.ToString();
+                    soLine.SalesOrderID = salesOrder.Id.ToString();
+                    soLine.SalesOrderItemID = item.Id.ToString();
 
                     soLine.POLineNo = item.LineNumber;
 
@@ -405,6 +412,7 @@ namespace EAB_Custom {
                         Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgInvtTranBatch_TAC),
                         Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTranBatch_TAC;
 
+                tranHeader.SalesOrderID = salesOrder.Id.ToString();
                 tranHeader.BatchID = 0;
                 //tranHeader.BComment = salesOrder.Comments;
                 tranHeader.BDate = DateTime.Now;
@@ -425,6 +433,8 @@ namespace EAB_Custom {
                                 Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTran_TAC;
 
                         transaction.Stginvttranbatch_tacId = tranHeader.Id.ToString();
+                        transaction.SalesOrderID = salesOrder.Id.ToString();
+                        transaction.SalesOrderItemID = item.Id.ToString();
 
                         //Determine Transaction Type
                         int transactionType = 0;
@@ -548,8 +558,8 @@ namespace EAB_Custom {
                     plHeader.TranType = 812;
                     break;
             }
-
-            plHeader.TranNo = "0"; //how to get this??
+                        
+            plHeader.TranNo = "0"; 
             plHeader.TranDate = DateTime.Now;
             plHeader.SalesOrderId = salesOrder.Id.ToString();
 

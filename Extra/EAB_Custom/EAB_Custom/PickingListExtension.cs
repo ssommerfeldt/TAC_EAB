@@ -21,6 +21,7 @@ namespace EAB_Custom {
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOPicklist_TAC),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOPicklist_TAC;
 
+            plHeader.PickingListID = pickinglist.Id.ToString();
             plHeader.RowKey = 0; //set this to unique int number (global) during integration
             plHeader.TranType = 801;
             plHeader.TranNo = pickinglist.TranNo;
@@ -43,6 +44,8 @@ namespace EAB_Custom {
                         Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOPicklistLine_TAC;
 
                 plLine.Stgsopicklist_tacId = plHeader.Id.ToString();
+                plLine.PickingListID = pickinglist.Id.ToString();
+                plLine.PickingListItemID = item.Id.ToString();
 
                 plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value
                 plLine.SOLineNo = item.SOLineNo; //sequence number  

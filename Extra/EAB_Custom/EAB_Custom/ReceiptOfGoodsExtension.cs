@@ -21,6 +21,7 @@ namespace EAB_Custom {
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgPORcptTransBatch),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPORcptTransBatch;
 
+            rgHeader.ReceiptOfGoodsID = receiptofgoods.Id.ToString();
             rgHeader.RowKey = 0; //set this to unique int number (global) during integration
             rgHeader.BatchCmnt = null;
             rgHeader.BatchNo = null;
@@ -36,6 +37,7 @@ namespace EAB_Custom {
             rgHeader.Save();
 
             //Update the extension table
+            rgHeader.ReceiptOfGoodsID = receiptofgoods.Id.ToString();
             rgHeader.StgPORcptRcvr.RowRcvrKey = 0; //set to unique value for this record during integration
             rgHeader.StgPORcptRcvr.RowKey = 0; //set to batch record rowkey during integration
             rgHeader.StgPORcptRcvr.ProcessStatus = 0;
@@ -59,6 +61,8 @@ namespace EAB_Custom {
                         Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPORcptLine;
 
                 rgLine.Stgporcpttransbatchid = rgHeader.Id.ToString();
+                rgLine.ReceiptOfGoodsID = receiptofgoods.Id.ToString();
+                rgLine.ReceiptOfGoodsItemID = item.Id.ToString();
 
                 rgLine.RowLineKey = 0; //set this to unique int number (global) during integration - same as header value
                 rgLine.RowRcvrKey = 0; //set this to the reciever rowkey during integration
@@ -83,6 +87,8 @@ namespace EAB_Custom {
                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPORcptDist;
 
                 rgDist.Stgporcptlineid = rgLine.Id.ToString();
+                rgDist.ReceiptOfGoodsID = receiptofgoods.Id.ToString();
+                rgDist.ReceiptOfGoodsItemID = item.Id.ToString();
 
                 rgDist.RowDistKey = 0; //set this to unique int number (global) during integration - same as header value
                 rgDist.RowLineKey = 0; //set this to the reciever rowkey during integration

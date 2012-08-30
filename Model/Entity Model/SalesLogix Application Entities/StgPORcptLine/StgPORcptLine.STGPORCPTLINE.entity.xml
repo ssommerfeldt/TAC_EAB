@@ -239,5 +239,29 @@
         <DoubleDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="2f381b47-9d17-4622-9cbe-8b9a675709d0" lastModifiedUtc="2012-08-30T21:42:33.5117323Z" name="ReceiptOfGoodsID" audited="false" columnName="RECEIPTOFGOODSID" maxLength="12" precision="0" scale="0" ordinal="18" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
+        <StandardIdDataType />
+      </SystemDataType>
+    </property>
+    <property xsi:type="OrmFieldProperty" id="e1c92158-6e18-4b38-bfc1-ed9b2eebe7d6" lastModifiedUtc="2012-08-30T21:42:33.5117323Z" name="ReceiptOfGoodsItemID" audited="false" columnName="RECEIPTOFGOODSITEMID" maxLength="12" precision="0" scale="0" ordinal="19" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
+        <StandardIdDataType />
+      </SystemDataType>
+    </property>
   </properties>
 </entity>
