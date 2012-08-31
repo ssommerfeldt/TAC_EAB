@@ -232,20 +232,6 @@
         <DoubleDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="202ecc80-7b83-41c0-b466-5a22c874c8db" lastModifiedUtc="2008-04-14T16:17:11.3439081Z" name="Case" audited="false" columnName="UNIT" maxLength="64" precision="0" scale="0" ordinal="17" isReadOnly="false">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
-          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
-            <OrmEntityPropertySDataExtension generate="true" />
-          </extender>
-        </extendee>
-      </ExtendedPropertiesCollection>
-      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
-        <TextDataType>
-          <Length>64</Length>
-        </TextDataType>
-      </SystemDataType>
-    </property>
     <property xsi:type="OrmFieldProperty" id="44f3f0bc-a3c1-4e62-ab18-db2f3ded2686" lastModifiedUtc="2009-05-19T18:32:00.6434573Z" name="CalculatedPrice" audited="false" columnName="CALCULATEDPRICE" maxLength="0" precision="17" scale="4" ordinal="18" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
@@ -425,6 +411,20 @@
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
         <TextDataType>
           <Length>32</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
+    <property xsi:type="OrmFieldProperty" id="d9f30a45-644f-49f6-82b7-802dccb59d4e" lastModifiedUtc="2012-08-31T17:43:50.1880641Z" name="Case" audited="false" columnName="UNIT" maxLength="64" precision="0" scale="0" ordinal="17" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>64</Length>
         </TextDataType>
       </SystemDataType>
     </property>

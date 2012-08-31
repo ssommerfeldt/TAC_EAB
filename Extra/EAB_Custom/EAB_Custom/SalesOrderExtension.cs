@@ -806,7 +806,7 @@ namespace EAB_Custom {
                     item.Quantity = 0; //set to 0 initially
                     item.ProductName = scitem.Product.Name;
                     item.Program = scitem.Product.Program;
-                    item.UnitOfMeasureId = scitem.Product.Unit;
+                    item.Case = scitem.Product.Unit;
                     item.Product = scitem.Product;
 
                     salesorder.SalesOrderItems.Add(item);
