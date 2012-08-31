@@ -81,7 +81,7 @@ namespace EAB_Custom {
             soHeader.RequireSOAck = "No";
             soHeader.RecurSOTranNo = null;
             soHeader.ProcessStatus = 0;
-            soHeader.OpenAmt = salesOrder.OrderTotal; //invoice total
+            soHeader.OpenAmt = Math.Round((Double)salesOrder.OrderTotal,2); //invoice total
             soHeader.Hold = "0";
             //soHeader.FreightAmt = salesOrder.Freight;
             soHeader.FreightAmt = 0;
@@ -137,7 +137,7 @@ namespace EAB_Custom {
                     soLine.CmntOnly = "No";
                     soLine.CommClassID = null;
                     soLine.CommPlanID = null;
-                    soLine.DeliveryMeth = salesOrder.ShipVia;
+                    soLine.DeliveryMeth = "1";
 
                     if (item.Description.Length > 40) {
                         soLine.Description = item.Description.Substring(0, 40);
@@ -145,7 +145,7 @@ namespace EAB_Custom {
                         soLine.Description = item.Description;
                     }
 
-                    soLine.ExtAmt = item.ExtendedPrice;
+                    soLine.ExtAmt = Math.Round((Double)item.ExtendedPrice, 2);
                     soLine.ExtCmnt = null;
                     soLine.FOBID = salesOrder.Fob;
                     //soLine.FreightAmt = salesOrder.Freight; //do not use
@@ -193,7 +193,8 @@ namespace EAB_Custom {
                     soLine.TradeDiscPct = null;
                     soLine.TranNo = "0";
                     soLine.UnitMeasID = item.Product.Unit; //get this from mas
-                    soLine.UnitPrice = item.Price;
+                    //soLine.UnitPrice = Math.Round((Double)item.Price, 2); //wrong price, use price * margin
+                    soLine.UnitPrice = Math.Round((Double)item.CalculatedPrice, 2);
                     soLine.UserFld1 = null;
                     soLine.UserFld2 = null;
                     soLine.VendorID = soHeader.CustID;
@@ -247,7 +248,7 @@ namespace EAB_Custom {
             toHeader.ShipMethID = null;            
             toHeader.TranCmnt = null;
             toHeader.TranDate = DateTime.Now;
-            toHeader.TranNo = null;
+            toHeader.TranNo = "0";
             toHeader.TransitWhseID = null;
             toHeader.ProcessStatus = 0;
             toHeader.ProcessStatusMessage = null;
@@ -353,7 +354,7 @@ namespace EAB_Custom {
                     soLine.DropShip = "No";
                     soLine.ExclLastCost = "No";
                     soLine.Expedite = "No";
-                    soLine.ExtAmt = item.ExtendedPrice;
+                    soLine.ExtAmt = Math.Round((Double)item.ExtendedPrice, 2);
                     soLine.ExtCmnt = null;
                     //soLine.FreightAmt = salesOrder.Freight; //do not use
                     soLine.FreightAmt = 0;
@@ -385,7 +386,7 @@ namespace EAB_Custom {
 
                     }
                     soLine.TranNo = "0";
-                    soLine.UnitCost = (Double)item.Product.FixedCost;
+                    soLine.UnitCost = Math.Round((Double)item.Product.FixedCost, 2);
                     soLine.UnitMeasID = item.Product.Unit; //get this from mas
                     soLine.UserFld1 = null;
                     soLine.STaxClassID = "1";
@@ -459,7 +460,7 @@ namespace EAB_Custom {
 
                             //msrp price
                             if (item.Product.Vlueproductmsrp != null) {
-                                transaction.UnitCost = (Double)item.Product.Vlueproductmsrp.Listprice;
+                                transaction.UnitCost = Math.Round((Double)item.Product.Vlueproductmsrp.Listprice, 2);
                             } else {
                                 transaction.UnitCost = 0;
                             }

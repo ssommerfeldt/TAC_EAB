@@ -42,6 +42,7 @@ Update  sysdba.product
 SET    MASITEMID= LiveEAB_app.dbo.vwSLXProductItemMap_TAC.ItemID,
 GLACCOUNTNUMBER = LiveEAB_app.dbo.vwSLXProductItemMap_TAC.GLAcctNo,
  GLSUBACCOUNTNUMBER= LiveEAB_app.dbo.vwSLXProductItemMap_TAC.MisGLAcctNo,
- UNITOFMEASUREID=  LiveEAB_app.dbo.vwSLXProductItemMap_TAC.UnitMeasID
+ UNITOFMEASUREID=  LiveEAB_app.dbo.vwSLXProductItemMap_TAC.UOMKey,
+ Unit =  LiveEAB_app.dbo.vwSLXProductItemMap_TAC.unitMeasID
 FROM         sysdba.PRODUCT INNER JOIN
                       LiveEAB_app.dbo.vwSLXProductItemMap_TAC ON sysdba.PRODUCT.PRODUCTID = LiveEAB_app.dbo.vwSLXProductItemMap_TAC.crmproductid         
