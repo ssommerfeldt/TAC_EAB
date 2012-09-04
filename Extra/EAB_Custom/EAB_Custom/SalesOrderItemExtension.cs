@@ -65,10 +65,10 @@ namespace EAB_Custom {
                 break;
             }
 
-            salesorderitem.Price = listPrice;
+            salesorderitem.Price = Math.Round(listPrice, 2);
             salesorderitem.Discount = margin;
-            salesorderitem.CalculatedPrice = (Decimal)listPrice - ((Decimal)listPrice * (Decimal)margin);
-            salesorderitem.ExtendedPrice = (double)salesorderitem.CalculatedPrice * salesorderitem.Quantity;
+            salesorderitem.CalculatedPrice = Math.Round((Decimal)listPrice - ((Decimal)listPrice * (Decimal)margin), 2, MidpointRounding.AwayFromZero);
+            salesorderitem.ExtendedPrice = Math.Round((Double)salesorderitem.CalculatedPrice * (Double)salesorderitem.Quantity, 2, MidpointRounding.AwayFromZero);
             salesorderitem.UPC = salesorderitem.Product.UPC;
             //salesorderitem.Product.
 
