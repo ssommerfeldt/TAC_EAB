@@ -84,6 +84,7 @@ namespace EAB_Custom {
                 salesorderitem.ActualID = salesorderitem.Product.ActualId;
                 salesorderitem.Description = salesorderitem.Product.Description;
                 salesorderitem.Family = salesorderitem.Product.Family;
+                salesorderitem.UPC = salesorderitem.Product.UPC;
 
                 //get margin from category
                 salesorderitem.Discount = 0;

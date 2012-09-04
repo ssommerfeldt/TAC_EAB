@@ -365,12 +365,14 @@ namespace EAB_Custom {
 
                     soLine.DropShip = "No";
                     soLine.ExclLastCost = "No";
-                    soLine.Expedite = "No";
-                    soLine.ExtAmt = Math.Round((Double)item.ExtendedPrice, 2, MidpointRounding.AwayFromZero);
+                    soLine.Expedite = "No";                   
                     soLine.ExtCmnt = null;
                     //soLine.FreightAmt = salesOrder.Freight; //do not use
                     soLine.FreightAmt = 0;
+
+                    if (String.IsNullOrEmpty(item.Product.GlAccountNumber)) { throw new Exception("GL Account Number is required"); }
                     soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
+                    
                     soLine.ItemID = item.Product.MasItemID; //item key from mas
 
                     soLine.OrigOrdered = item.Quantity;
@@ -398,10 +400,17 @@ namespace EAB_Custom {
 
                     }
                     soLine.TranNo = "0";
-                    soLine.UnitCost = Math.Round((Double)item.Product.FixedCost, 2, MidpointRounding.AwayFromZero);
+                    
+                    if (item.CalculatedPrice == null) {
+                        soLine.UnitCost = 0;
+                        soLine.ExtAmt = 0;
+                    } else {
+                        soLine.UnitCost = Math.Round((Double)item.CalculatedPrice, 2, MidpointRounding.AwayFromZero);
+                        soLine.ExtAmt = Math.Round((Double)item.CalculatedPrice * (Double)item.Quantity, 2, MidpointRounding.AwayFromZero);
+                    }
                     soLine.UnitMeasID = item.Product.Unit; //get this from mas
                     soLine.UserFld1 = null;
-                    soLine.STaxClassID = "1";
+                    soLine.STaxClassID = "Taxable";
                     
                     if (salesOrder.UserWareHouse == null) {
                         throw new Exception("Error: Source Warehouse not specified.");
@@ -483,7 +492,7 @@ namespace EAB_Custom {
                                 transaction.GLAcctNo = "";
                             }
                         }
-
+                                               
                         transaction.TranCmnt = "";
                         transaction.CompanyID = tranHeader.CompanyID;
                         transaction.ProcessStatus = 0;
