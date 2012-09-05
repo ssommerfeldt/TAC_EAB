@@ -11,6 +11,13 @@ using NHibernate;
 namespace EAB_Custom {
     public class SalesOrderExtension {
 
+        public static decimal TruncateDecimal(decimal value, int precision) {
+            decimal step = (decimal)Math.Pow(10, precision);
+            int tmp = (int)Math.Truncate(step * value);
+            return tmp / step;
+        } 
+
+
 
         public static void SubmitOrder(ISalesOrder salesOrder) {
             //Determine which order to submit and pass through
@@ -81,7 +88,8 @@ namespace EAB_Custom {
             soHeader.RequireSOAck = "No";
             soHeader.RecurSOTranNo = null;
             soHeader.ProcessStatus = 0;
-            soHeader.OpenAmt = Math.Round((Double)salesOrder.OrderTotal,2); //invoice total
+            //soHeader.OpenAmt = Math.Round((Double)salesOrder.OrderTotal, 2, MidpointRounding.AwayFromZero); //invoice total
+            soHeader.OpenAmt = (Double)TruncateDecimal((Decimal)salesOrder.OrderTotal, 2);
             soHeader.Hold = "0";
             //soHeader.FreightAmt = salesOrder.Freight;
             soHeader.FreightAmt = 0;
@@ -145,7 +153,11 @@ namespace EAB_Custom {
                         soLine.Description = item.Description;
                     }
 
-                    soLine.ExtAmt = Math.Round((Double)item.ExtendedPrice, 2);
+                    //don't rely on slx calculation
+                    //soLine.ExtAmt = Math.Round((Double)item.ExtendedPrice, 2);
+                    double extendedAmount = (Double)item.CalculatedPrice * (Double)item.Quantity;
+                    soLine.ExtAmt = Math.Round(extendedAmount, 2, MidpointRounding.AwayFromZero);
+
                     soLine.ExtCmnt = null;
                     soLine.FOBID = salesOrder.Fob;
                     //soLine.FreightAmt = salesOrder.Freight; //do not use
@@ -194,7 +206,7 @@ namespace EAB_Custom {
                     soLine.TranNo = "0";
                     soLine.UnitMeasID = item.Product.Unit; //get this from mas
                     //soLine.UnitPrice = Math.Round((Double)item.Price, 2); //wrong price, use price * margin
-                    soLine.UnitPrice = Math.Round((Double)item.CalculatedPrice, 2);
+                    soLine.UnitPrice = Math.Round((Double)item.CalculatedPrice, 2, MidpointRounding.AwayFromZero);
                     soLine.UserFld1 = null;
                     soLine.UserFld2 = null;
                     soLine.VendorID = soHeader.CustID;
@@ -353,12 +365,14 @@ namespace EAB_Custom {
 
                     soLine.DropShip = "No";
                     soLine.ExclLastCost = "No";
-                    soLine.Expedite = "No";
-                    soLine.ExtAmt = Math.Round((Double)item.ExtendedPrice, 2);
+                    soLine.Expedite = "No";                   
                     soLine.ExtCmnt = null;
                     //soLine.FreightAmt = salesOrder.Freight; //do not use
                     soLine.FreightAmt = 0;
+
+                    if (String.IsNullOrEmpty(item.Product.GlAccountNumber)) { throw new Exception("GL Account Number is required"); }
                     soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
+                    
                     soLine.ItemID = item.Product.MasItemID; //item key from mas
 
                     soLine.OrigOrdered = item.Quantity;
@@ -386,10 +400,17 @@ namespace EAB_Custom {
 
                     }
                     soLine.TranNo = "0";
-                    soLine.UnitCost = Math.Round((Double)item.Product.FixedCost, 2);
+                    
+                    if (item.CalculatedPrice == null) {
+                        soLine.UnitCost = 0;
+                        soLine.ExtAmt = 0;
+                    } else {
+                        soLine.UnitCost = Math.Round((Double)item.CalculatedPrice, 2, MidpointRounding.AwayFromZero);
+                        soLine.ExtAmt = Math.Round((Double)item.CalculatedPrice * (Double)item.Quantity, 2, MidpointRounding.AwayFromZero);
+                    }
                     soLine.UnitMeasID = item.Product.Unit; //get this from mas
                     soLine.UserFld1 = null;
-                    soLine.STaxClassID = "1";
+                    soLine.STaxClassID = "Taxable";
                     
                     if (salesOrder.UserWareHouse == null) {
                         throw new Exception("Error: Source Warehouse not specified.");
@@ -460,7 +481,7 @@ namespace EAB_Custom {
 
                             //msrp price
                             if (item.Product.Vlueproductmsrp != null) {
-                                transaction.UnitCost = Math.Round((Double)item.Product.Vlueproductmsrp.Listprice, 2);
+                                transaction.UnitCost = Math.Round((Double)item.Product.Vlueproductmsrp.Listprice, 2, MidpointRounding.AwayFromZero);
                             } else {
                                 transaction.UnitCost = 0;
                             }
@@ -471,7 +492,7 @@ namespace EAB_Custom {
                                 transaction.GLAcctNo = "";
                             }
                         }
-
+                                               
                         transaction.TranCmnt = "";
                         transaction.CompanyID = tranHeader.CompanyID;
                         transaction.ProcessStatus = 0;
@@ -803,7 +824,7 @@ namespace EAB_Custom {
                     item.Discount = scitem.Margin;
                     item.ExtendedPrice = 0; //due to quantity 0
                     item.Family = scitem.Product.Family;
-                    item.Price = (Double)scitem.Product.Price;
+                    item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
                     item.Quantity = 0; //set to 0 initially
                     item.ProductName = scitem.Product.Name;
                     item.Program = scitem.Product.Program;
