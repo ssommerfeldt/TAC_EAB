@@ -13,7 +13,33 @@
     <Property name="Description" type="System.String"></Property>
     <Property name="ActiveControl" type="System.String"></Property>
   </Properties>
-  <LoadActions />
+  <LoadActions>
+    <ActionDefinition>
+      <ResourceKey>73385543-33e3-438b-94c1-4e2d2b78d5e9</ResourceKey>
+      <RootActionName>CSharpSnippetAction</RootActionName>
+      <Action>
+        <CSharpCodeSnippet><![CDATA[	//Onload event
+	//Limit the products list to products in the current warehouse only
+    Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
+    object _parent = GetParentEntity();
+    if (DialogService.ChildInsertInfo != null) {
+        if (_parent != null) {
+            Sage.Entity.Interfaces.ISalesOrder salesOrder = _parent as Sage.Entity.Interfaces.ISalesOrder;
+            LookupPreFilter warehouse = new LookupPreFilter("Warehouse", salesOrder.UserWareHouse.Sitecode);
+            warehouse.CondOperator = "=";
+            warehouse.PropertyName = "WarehouseID";
+            Product.LookupPreFilters.Add(warehouse);             
+        }
+    }]]></CSharpCodeSnippet>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </ActionDefinition>
+  </LoadActions>
   <QuickFormElements>
     <QuickFormElement>
       <Properties>
@@ -43,7 +69,7 @@
 	
 	 object[] objarray = new object[] { this.BindingSource.Current };
      Sage.Platform.EntityFactory.Execute<Sage.Entity.Interfaces.ISalesOrderItem>("SalesOrderItem.SaveProductToSalesOrderItem", objarray);
-	]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>True</PerformsUpdate><AppliedSecurity /><RefreshData>True</RefreshData></OnChangeAction><LookupImage /><LookupDialogWidth xsi:nil="true" /><LookupDialogHeight xsi:nil="true" /><LookupBindingMode>Object</LookupBindingMode><LookupResultValue xsi:type="xsd:string" /><SeedProperty /><SeedValue /><Required>false</Required><DropDownDisplayProperty /><AllowClearingResult>false</AllowClearingResult><OverrideSeedOnSearch>false</OverrideSeedOnSearch><LookupEntityName>Product</LookupEntityName><LookupEntityTypeName>Sage.Entity.Interfaces.IProduct, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName><AutoPostBack>false</AutoPostBack><EnableHyperLinking>false</EnableHyperLinking><InitializeLookup>false</InitializeLookup><LookupProperties><LookupProperty><PropertyName>ActualId</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>ActualId (Actual Id)</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Description</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Description</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Family</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Family</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Name</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Name</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Price</PropertyName><PropertyType>System.Decimal</PropertyType><PropertyHeader>Price</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Unit</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Unit</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>UPC</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>UPC</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty></LookupProperties><LookupPreFilters /></QFSLXLookup></Property>
+	]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>True</PerformsUpdate><AppliedSecurity /><RefreshData>True</RefreshData></OnChangeAction><LookupImage /><LookupDialogWidth xsi:nil="true" /><LookupDialogHeight xsi:nil="true" /><LookupBindingMode>Object</LookupBindingMode><LookupResultValue xsi:type="xsd:string" /><SeedProperty /><SeedValue /><Required>false</Required><DropDownDisplayProperty /><AllowClearingResult>false</AllowClearingResult><OverrideSeedOnSearch>false</OverrideSeedOnSearch><LookupEntityName>Product</LookupEntityName><LookupEntityTypeName>Sage.Entity.Interfaces.IProduct, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName><AutoPostBack>false</AutoPostBack><EnableHyperLinking>false</EnableHyperLinking><InitializeLookup>false</InitializeLookup><LookupProperties><LookupProperty><PropertyName>ActualId</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>SKU</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>UPC</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>UPC</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>false</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Name</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Name</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>false</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Description</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Description</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>false</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Family</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Family</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>false</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Price</PropertyName><PropertyType>System.Decimal</PropertyType><PropertyHeader>Price</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>false</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Unit</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Unit</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>false</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>WarehouseID</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Warehouse ID</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>false</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty></LookupProperties><LookupPreFilters /></QFSLXLookup></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>

@@ -29,7 +29,7 @@ FROM         (SELECT     CONVERT(varchar(255), CAST(WhseKey AS smallint)) + CONV
                                               CAST(Sheet3Price AS numeric(17, 4))) + CONVERT(varchar(255), CAST(Sheet4Price AS numeric(17, 4))) + CONVERT(varchar(255), 
                                               CAST(UpdateCounter AS smallint)) AS MYID, WhseKey, ItemKey, EffectiveDate, CurrID, ListPrice, Sheet1Price, Sheet2Price, Sheet3Price, 
                                               Sheet4Price, UpdateCounter
-                       FROM          LiveEAB_MAS.dbo.timPriceSheet) AS Source INNER JOIN
+                       FROM          LiveEAB_app.dbo.timPriceSheet) AS Source INNER JOIN
                           (SELECT     CONVERT(varchar(255), CAST(WHSEKEY AS smallint)) + CONVERT(varchar(255), CAST(ITEMKEY AS int)) + CONVERT(char(8), 
                                                    CONVERT(date, EFFECTIVEDATE), 112) + CURRID + CONVERT(varchar(255), CAST(LISTPRICE AS numeric(17, 4))) + CONVERT(varchar(255),
                                                     CAST(SHEET1PRICE AS numeric(17, 4))) + CONVERT(varchar(255), CAST(SHEET2PRICE AS numeric(17, 4))) + CONVERT(varchar(255), 
@@ -38,3 +38,7 @@ FROM         (SELECT     CONVERT(varchar(255), CAST(WhseKey AS smallint)) + CONV
                                                    WHSEKEY, EFFECTIVEDATE, CURRID, LISTPRICE, SHEET1PRICE, SHEET2PRICE, SHEET3PRICE, SHEET4PRICE, UPDATECOUNTER, 
                                                    ITEMKEY
                             FROM          sysdba.TIMPRICESHEET AS TIMPRICESHEET_1) AS DEST ON Source.MYID <> DEST.MYID AND Source.ItemKey = DEST.ITEMKEY
+
+truncate table sysdba.timpricesheet
+
+update sysdba.timpricesheet set listprice = '0' where timpricesheetid = 'QDEMOA001DD7'
