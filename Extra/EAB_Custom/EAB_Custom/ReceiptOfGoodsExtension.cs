@@ -81,27 +81,27 @@ namespace EAB_Custom {
                 
                 rgLine.Save();
 
-                //create a distribution record for each line item
-                Sage.Entity.Interfaces.IStgPORcptDist rgDist =
-                       Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgPORcptDist),
-                       Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPORcptDist;
+                ////create a distribution record for each line item
+                //Sage.Entity.Interfaces.IStgPORcptDist rgDist =
+                //       Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgPORcptDist),
+                //       Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgPORcptDist;
 
-                rgDist.Stgporcptlineid = rgLine.Id.ToString();
-                rgDist.ReceiptOfGoodsID = receiptofgoods.Id.ToString();
-                rgDist.ReceiptOfGoodsItemID = item.Id.ToString();
+                //rgDist.Stgporcptlineid = rgLine.Id.ToString();
+                //rgDist.ReceiptOfGoodsID = receiptofgoods.Id.ToString();
+                //rgDist.ReceiptOfGoodsItemID = item.Id.ToString();
 
-                rgDist.RowDistKey = 0; //set this to unique int number (global) during integration - same as header value
-                rgDist.RowLineKey = 0; //set this to the reciever rowkey during integration
+                //rgDist.RowDistKey = 0; //set this to unique int number (global) during integration - same as header value
+                //rgDist.RowLineKey = 0; //set this to the reciever rowkey during integration
 
-                rgDist.DistQty = (Double)item.QtyRcvd;
-                rgDist.BinID = null;
-                rgDist.LotNo = null;
-                rgDist.LotExpirationDate = null;
-                rgDist.SerialNo = null;
-                rgDist.ProcessStatus = 0;
-                rgDist.SessionKey = 0;
+                //rgDist.DistQty = (Double)item.QtyRcvd;
+                //rgDist.BinID = null;
+                //rgDist.LotNo = null;
+                //rgDist.LotExpirationDate = null;
+                //rgDist.SerialNo = null;
+                //rgDist.ProcessStatus = 0;
+                //rgDist.SessionKey = 0;
 
-                rgDist.Save();              
+                //rgDist.Save();              
 
             }
         }

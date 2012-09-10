@@ -819,17 +819,21 @@ namespace EAB_Custom {
                     Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
 
                     item.SalesOrder = salesorder;
-                    item.ActualID = scitem.Product.ActualId;
+                    
                     item.Description = scitem.ProductDescription;
                     item.Discount = scitem.Margin;
-                    item.ExtendedPrice = 0; //due to quantity 0
-                    item.Family = scitem.Product.Family;
-                    item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
-                    item.Quantity = 0; //set to 0 initially
-                    item.ProductName = scitem.Product.Name;
-                    item.Program = scitem.Product.Program;
-                    item.Case = scitem.Product.Unit;
-                    item.Product = scitem.Product;
+                    item.ExtendedPrice = 0; //due to quantity 0                    
+                    item.Quantity = 0; //set to 0 initially                   
+
+                    if (scitem.Product != null) {
+                        item.ActualID = scitem.Product.ActualId;
+                        item.Family = scitem.Product.Family;
+                        item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
+                        item.ProductName = scitem.Product.Name;
+                        item.Program = scitem.Product.Program;
+                        item.Case = scitem.Product.Unit;
+                        item.Product = scitem.Product;
+                    }
 
                     salesorder.SalesOrderItems.Add(item);
                     item.Save();
