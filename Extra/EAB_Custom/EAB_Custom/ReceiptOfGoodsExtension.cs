@@ -24,8 +24,8 @@ namespace EAB_Custom {
             rgHeader.ReceiptOfGoodsID = receiptofgoods.Id.ToString();
             rgHeader.RowKey = 0; //set this to unique int number (global) during integration
             rgHeader.BatchCmnt = null;
-            rgHeader.BatchNo = null;
-            rgHeader.BatchType = null;
+            rgHeader.BatchNo = 0;
+            rgHeader.BatchType = 1101;
             rgHeader.Hold = 0;
             rgHeader.HoldReason = null;
             rgHeader.PostDate = DateTime.Now;
@@ -49,7 +49,7 @@ namespace EAB_Custom {
 
             rgHeader.StgPORcptRcvr.TranCmnt = null;
             rgHeader.StgPORcptRcvr.TranDate = DateTime.Now;
-            rgHeader.StgPORcptRcvr.TranType = null;
+            rgHeader.StgPORcptRcvr.TranType = 1101;
 
             rgHeader.StgPORcptRcvr.Save();
 

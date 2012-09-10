@@ -723,7 +723,7 @@ namespace EAB_Custom {
 
             plHeader.PostDate = DateTime.Now;
             plHeader.SalesOrderId = salesOrder.Id.ToString();
-
+            
             //get the accountfinancial data
             if (salesOrder.Account.AccountFinancial != null) {
                 if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
@@ -740,24 +740,26 @@ namespace EAB_Custom {
             plHeader.Save();
 
             foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
+                //don't add items with 0 quantity
+                if (item.Quantity > 0) {
 
-                //Transfer order line items
-                Sage.Entity.Interfaces.IReceiptOfGoodsItem plLine =
-                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IReceiptOfGoodsItem),
-                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IReceiptOfGoodsItem;
+                    //Transfer order line items
+                    Sage.Entity.Interfaces.IReceiptOfGoodsItem plLine =
+                            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IReceiptOfGoodsItem),
+                            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IReceiptOfGoodsItem;
 
-                plLine.ReceiptOfGoodsId = plHeader.Id.ToString();
+                    plLine.ReceiptOfGoodsId = plHeader.Id.ToString();
 
-                //plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value                
-                plLine.POLineNo = item.LineNumber; //sequence number    
+                    //plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value                
+                    plLine.POLineNo = item.LineNumber; //sequence number    
 
-                //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
-                plLine.ProductId = item.Product.Id.ToString();
-                plLine.UnitMeasID = item.Product.Unit;
-                plLine.QtyRcvd = Decimal.Parse(item.Quantity.ToString());
+                    //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                    plLine.ProductId = item.Product.Id.ToString();
+                    plLine.UnitMeasID = item.Product.Unit;
+                    plLine.QtyRcvd = Decimal.Parse(item.Quantity.ToString());
 
-                plLine.Save();
-
+                    plLine.Save();
+                }
             }
             //redirect to new picking list
             result = plHeader.Id.ToString();
@@ -812,20 +814,21 @@ namespace EAB_Custom {
 
                 //result = crit.List<Sage.Entity.Interfaces.IPickingList>();
                 foreach (IStockCardItems scitem in crit.List<IStockCardItems>()) {
-
-                    //add the products to the salesorder
-                    Sage.Entity.Interfaces.ISalesOrderItem item =
-                    Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
-                    Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
-
-                    item.SalesOrder = salesorder;
-                    
-                    item.Description = scitem.ProductDescription;
-                    item.Discount = scitem.Margin;
-                    item.ExtendedPrice = 0; //due to quantity 0                    
-                    item.Quantity = 0; //set to 0 initially                   
-
                     if (scitem.Product != null) {
+
+                        //add the products to the salesorder
+                        Sage.Entity.Interfaces.ISalesOrderItem item =
+                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
+                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
+
+                        item.SalesOrder = salesorder;
+
+                        item.Description = scitem.ProductDescription;
+                        item.Discount = scitem.Margin;
+                        item.ExtendedPrice = 0; //due to quantity 0                    
+                        item.Quantity = 0; //set to 0 initially                   
+
+
                         item.ActualID = scitem.Product.ActualId;
                         item.Family = scitem.Product.Family;
                         item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
@@ -833,11 +836,11 @@ namespace EAB_Custom {
                         item.Program = scitem.Product.Program;
                         item.Case = scitem.Product.Unit;
                         item.Product = scitem.Product;
+                        
+                        salesorder.SalesOrderItems.Add(item);
+                        item.Save();
+                        //break;
                     }
-
-                    salesorder.SalesOrderItems.Add(item);
-                    item.Save();
-                    //break;
                 }
                 //salesorder.Save();
             }
