@@ -1,5 +1,3 @@
-USE [LiveEAB_app]
-GO
 
 /****** Object:  View [dbo].[vdvMAS_to_SLX_Products_Changed_TAC]    Script Date: 09/11/2012 09:34:01 ******/
 SET ANSI_NULLS ON
@@ -70,7 +68,7 @@ FROM         (SELECT     ISNULL(CONVERT(varchar(255), CAST(PRODUCTID AS char)), 
                                                    GLSUBACCOUNTNUMBER, DATAOWNER, TYPE, FIXEDCOST, GLOBALSYNCID, APPID, TICK, COMMODITYGROUPID, ACTIVEFLAG, 
                                                    SELLINGALLOWEDFLAG, UNITOFMEASUREID, SELLINGUOMID, SELLINGUOMNUMBER, CLASSIFICATION, COMMODITYTYPE, MASITEMKEY, UPC, 
                                                    MASITEMID, WAREHOUSEID, COMPANYID, QTYONHAND, QTYAVAILABLE, SURPLUSQTY, QTYONHOLD, MAXSTOCKLEVEL
-                            FROM          LiveEAB_slx.sysdba.PRODUCT) AS TMPDESTINATION ON TMPSOURCE.MYID <> TMPDESTINATION.MYID AND 
+                            FROM          Saleslogix_Test.sysdba.PRODUCT) AS TMPDESTINATION ON TMPSOURCE.MYID <> TMPDESTINATION.MYID AND 
                       TMPSOURCE.PRODUCTID = TMPDESTINATION.PRODUCTID
 GO
 

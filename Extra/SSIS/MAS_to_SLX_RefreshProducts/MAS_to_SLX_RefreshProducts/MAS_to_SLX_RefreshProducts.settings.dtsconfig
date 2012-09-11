@@ -1,19 +1,60 @@
-<?xml version="1.0"?><DTSConfiguration><DTSConfigurationHeading><DTSConfigurationFileInfo GeneratedBy="DEV\ssommerfeldt" GeneratedFromPackageName="MAS_to_SLX_ProductRefresh1" GeneratedFromPackageID="{DD1D2767-E026-46D2-82EA-334683255EC3}" GeneratedDate="9/10/2012 6:13:23 PM"/></DTSConfigurationHeading><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MasConnectionString].Properties[Description]" ValueType="String"><ConfiguredValue></ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MasConnectionString].Properties[EvaluateAsExpression]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MasConnectionString].Properties[Expression]" ValueType="String"><ConfiguredValue></ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MasConnectionString].Properties[IncludeInDebugDump]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MasConnectionString].Properties[Name]" ValueType="String"><ConfiguredValue>MasConnectionString</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MasConnectionString].Properties[Namespace]" ValueType="String"><ConfiguredValue>User</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MasConnectionString].Properties[RaiseChangedEvent]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MasConnectionString].Properties[ReadOnly]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MasConnectionString].Properties[Value]" ValueType="String"><ConfiguredValue>Provider=SQLNCLI10.1;Password=mas500;Persist Security Info=True;User ID=admin;Initial Catalog=LiveEAB_app;Data Source=SQLSERVER2008;Server SPN=""</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MASDB].Properties[Description]" ValueType="String"><ConfiguredValue></ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MASDB].Properties[EvaluateAsExpression]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MASDB].Properties[Expression]" ValueType="String"><ConfiguredValue></ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MASDB].Properties[IncludeInDebugDump]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MASDB].Properties[Name]" ValueType="String"><ConfiguredValue>MASDB</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MASDB].Properties[Namespace]" ValueType="String"><ConfiguredValue>User</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MASDB].Properties[RaiseChangedEvent]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MASDB].Properties[ReadOnly]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::MASDB].Properties[Value]" ValueType="String"><ConfiguredValue></ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[Description]" ValueType="String"><ConfiguredValue></ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[EvaluateAsExpression]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[Expression]" ValueType="String"><ConfiguredValue></ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[IncludeInDebugDump]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[Name]" ValueType="String"><ConfiguredValue>SLXConnectionString</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[Namespace]" ValueType="String"><ConfiguredValue>User</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[RaiseChangedEvent]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[ReadOnly]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[Value]" ValueType="String"><ConfiguredValue>Provider=SLXOLEDB.1;Password=password;Persist Security Info=True;User ID=admin;Initial Catalog=EAB;Data Source=EAB;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXDB].Properties[Description]" ValueType="String"><ConfiguredValue></ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXDB].Properties[EvaluateAsExpression]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXDB].Properties[Expression]" ValueType="String"><ConfiguredValue>"SELECT     PROD.PRODUCTID,vdvStockStatus.ShortDesc AS NAME, vdvItem.LongDesc AS DESCRIPTION, vdvStockStatus.ItemID AS ACTUALID, vdvItem.ItemClassName AS FAMILY, 
-                      timItem.StdPrice AS PRICE, vdvItem.ItemTypeAsText AS PRODUCTGROUP, vdvItem.StatusAsText AS STATUS, vdvStockStatus.UnitMeasID AS UNIT, NULL 
-                      AS STOCKVOLUME, NULL AS STOCKWEIGHT, NULL AS STOCKITEM, NULL AS PROGRAM, NULL AS SUPPLIER, NULL AS VENDOR, NULL AS SITEID, NULL 
-                      AS WAREHOUSELOCATION, NULL AS COMMISSIONABLE, NULL AS TAXABLE, NULL AS ACCOUNTINGPERIOD, tglAccount.GLAcctNo AS GLACCOUNTNUMBER, NULL 
-                      AS GLSUBACCOUNTNUMBER, NULL AS DATAOWNER, NULL AS TYPE, NULL AS FIXEDCOST, NULL AS GLOBALSYNCID, NULL AS APPID, NULL AS TICK, NULL 
-                      AS COMMODITYGROUPID, NULL AS ACTIVEFLAG, 'T' AS SELLINGALLOWEDFLAG, vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID, NULL 
-                      AS SELLINGUOMID, NULL AS SELLINGUOMNUMBER, NULL AS CLASSIFICATION, NULL AS COMMODITYTYPE, vdvStockStatus.ItemKey AS MASITEMKEY, 
-                      timItemUnitOfMeas.UPC, vdvStockStatus.ItemID AS MASITEMID, vdvStockStatus.WhseID AS WAREHOUSEID, vdvStockStatus.CompanyID AS COMPANYID, 
-                      vdvStockStatus.QtyOnHand AS QTYONHAND, vdvStockStatus.QtyAvailable AS QTYAVAILABLE, vdvStockStatus.SurplusQty AS SURPLUSQTY, 
-                      vdvStockStatus.QtyOnHold AS QTYONHOLD, vdvStockStatus.MaxStockLevel AS MAXSTOCKLEVEL
-FROM         vdvStockStatus INNER JOIN
-                      timInventory ON vdvStockStatus.ItemKey = timInventory.ItemKey AND vdvStockStatus.WhseKey = timInventory.WhseKey INNER JOIN
-                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey AND vdvStockStatus.WhseKey = vdvStockStatus.WhseKey INNER JOIN
-                      tglAccount ON timInventory.InvtAcctKey = tglAccount.GLAcctKey LEFT OUTER JOIN
-                      timItemUnitOfMeas ON vdvStockStatus.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN
-                      vdvItem ON vdvStockStatus.ItemKey = vdvItem.ItemKey
-LEFT OUTER JOIN " + @[User::SLXDB]     + ".sysdba.PRODUCT AS Prod ON vdvStockStatus.CompanyID = Prod.CompanyID
-AND vdvStockStatus.ItemID = Prod.ActualID
-AND vdvStockStatus.WhseID = Prod.WarehouseID"</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXDB].Properties[IncludeInDebugDump]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXDB].Properties[Name]" ValueType="String"><ConfiguredValue>SLXDB</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXDB].Properties[Namespace]" ValueType="String"><ConfiguredValue>User</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXDB].Properties[RaiseChangedEvent]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXDB].Properties[ReadOnly]" ValueType="Boolean"><ConfiguredValue>0</ConfiguredValue></Configuration><Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXDB].Properties[Value]" ValueType="String"><ConfiguredValue>liveeab_slx</ConfiguredValue></Configuration></DTSConfiguration>
+<?xml version="1.0"?>
+<DTSConfiguration>
+	<DTSConfigurationHeading>
+		<DTSConfigurationFileInfo GeneratedBy="DEV\ssommerfeldt" GeneratedFromPackageName="MAS_to_SLX_ProductRefresh1" GeneratedFromPackageID="{DD1D2767-E026-46D2-82EA-334683255EC3}" GeneratedDate="9/11/2012 2:41:26 PM"/>
+	</DTSConfigurationHeading>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Mas500].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=APOLLO;User ID=sa;Initial Catalog=mas500_tst_app;Provider=SQLNCLI10.1;Persist Security Info=True;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Mas500].Properties[Description]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Mas500].Properties[InitialCatalog]" ValueType="String">
+		<ConfiguredValue>mas500_tst_app</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Mas500].Properties[Name]" ValueType="String">
+		<ConfiguredValue>Mas500</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Mas500].Properties[Password]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Mas500].Properties[ProtectionLevel]" ValueType="Int32">
+		<ConfiguredValue>1</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Mas500].Properties[RetainSameConnection]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Mas500].Properties[ServerName]" ValueType="String">
+		<ConfiguredValue>APOLLO</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Mas500].Properties[UserName]" ValueType="String">
+		<ConfiguredValue>sa</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SALESLOGIX].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=Athena;User ID=admin;Initial Catalog=SALESLOGIX_TEST;Provider=SLXOLEDB.1;Persist Security Info=True;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SALESLOGIX].Properties[Description]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SALESLOGIX].Properties[InitialCatalog]" ValueType="String">
+		<ConfiguredValue>SALESLOGIX_TEST</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SALESLOGIX].Properties[Name]" ValueType="String">
+		<ConfiguredValue>SALESLOGIX</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SALESLOGIX].Properties[Password]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SALESLOGIX].Properties[ProtectionLevel]" ValueType="Int32">
+		<ConfiguredValue>1</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SALESLOGIX].Properties[RetainSameConnection]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SALESLOGIX].Properties[ServerName]" ValueType="String">
+		<ConfiguredValue>Athena</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SALESLOGIX].Properties[UserName]" ValueType="String">
+		<ConfiguredValue>admin</ConfiguredValue>
+	</Configuration>
+</DTSConfiguration>

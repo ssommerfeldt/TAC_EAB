@@ -1,5 +1,3 @@
-USE [LiveEAB_app]
-GO
 
 /****** Object:  View [dbo].[vdvMAS_to_SLX_Products_TAC]    Script Date: 09/11/2012 09:34:24 ******/
 SET ANSI_NULLS ON
@@ -27,7 +25,7 @@ FROM         dbo.vdvStockStatus INNER JOIN
                       dbo.timItemUnitOfMeas ON dbo.vdvStockStatus.StockUnitMeasKey = dbo.timItemUnitOfMeas.TargetUnitMeasKey AND 
                       dbo.vdvStockStatus.ItemKey = dbo.timItemUnitOfMeas.ItemKey LEFT OUTER JOIN
                       dbo.vdvItem ON dbo.vdvStockStatus.ItemKey = dbo.vdvItem.ItemKey LEFT OUTER JOIN
-                      LiveEAB_slx.sysdba.PRODUCT AS Prod ON dbo.vdvStockStatus.CompanyID = Prod.COMPANYID AND dbo.vdvStockStatus.ItemID = Prod.ACTUALID AND 
+                      Saleslogix_Test.sysdba.PRODUCT AS Prod ON dbo.vdvStockStatus.CompanyID = Prod.COMPANYID AND dbo.vdvStockStatus.ItemID = Prod.ACTUALID AND 
                       dbo.vdvStockStatus.WhseID = Prod.WAREHOUSEID
 
 GO
