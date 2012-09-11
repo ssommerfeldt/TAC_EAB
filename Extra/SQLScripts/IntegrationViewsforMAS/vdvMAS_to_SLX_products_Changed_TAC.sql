@@ -1,7 +1,7 @@
 USE [LiveEAB_app]
 GO
 
-/****** Object:  View [dbo].[vdvMAS_to_SLX_Products_Changed_TAC]    Script Date: 09/10/2012 18:17:46 ******/
+/****** Object:  View [dbo].[vdvMAS_to_SLX_Products_Changed_TAC]    Script Date: 09/11/2012 09:34:01 ******/
 SET ANSI_NULLS ON
 GO
 
