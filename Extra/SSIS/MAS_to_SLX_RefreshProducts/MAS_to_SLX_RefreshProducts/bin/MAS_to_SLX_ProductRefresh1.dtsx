@@ -10,8 +10,8 @@
 <DTS:Property DTS:Name="PackagePriorityClass">0</DTS:Property>
 <DTS:Property DTS:Name="VersionMajor">1</DTS:Property>
 <DTS:Property DTS:Name="VersionMinor">0</DTS:Property>
-<DTS:Property DTS:Name="VersionBuild">29</DTS:Property>
-<DTS:Property DTS:Name="VersionGUID">{3A3274CD-8FEB-46EF-9025-6164A7435B61}</DTS:Property>
+<DTS:Property DTS:Name="VersionBuild">33</DTS:Property>
+<DTS:Property DTS:Name="VersionGUID">{EE68CD83-BF6B-4A3D-B7EF-A1E3BCEA5538}</DTS:Property>
 <DTS:Property DTS:Name="EnableConfig">-1</DTS:Property>
 <DTS:Property DTS:Name="CheckpointFileName"></DTS:Property>
 <DTS:Property DTS:Name="SaveCheckpoints">0</DTS:Property>
@@ -23,7 +23,7 @@
 <DTS:Property DTS:Name="DTSID">{CA177D4C-7E4E-45CB-B9E1-44046CE87E55}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName">OLEDB</DTS:Property><DTS:PropertyExpression DTS:Name="ConnectionString">@[User::MasConnectionString]</DTS:PropertyExpression><DTS:ObjectData><DTS:ConnectionManager>
-<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQMSDvg2hAkWZMJXxl3RAVwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACD0Kqi1BST4C9b/PCkWY4oAAAAAASAAACgAAAAEAAAAGZQBNzOoV9VYnO2rR/3EP4QAAAAuMSOyUaFG4oBJuqCHm86cBQAAABJX+ixMCh//5Je8yIaDIvK6i0Gkg</DTS:Password>
+<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQMSDvg2hAkWZMJXxl3RAVwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABSwH2OL7xtGui1887eFIJvAAAAAASAAACgAAAAEAAAAHYyCY4N0pe7ClxNOOyURU0QAAAApEizTUEtAOFpdzttk5J71RQAAAC1YKU2XqJ0SzqzTP4Q9AVOaocQjw</DTS:Password>
 <DTS:Property DTS:Name="ConnectionString">Data Source=SQLSERVER2008;User ID=admin;Initial Catalog=LiveEAB_app;Provider=SQLNCLI10.1;Persist Security Info=True;Server SPN="";</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
 <DTS:ConnectionManager>
 <DTS:Property DTS:Name="DelayValidation">0</DTS:Property>
@@ -31,11 +31,11 @@
 <DTS:Property DTS:Name="DTSID">{657A6B25-EF21-4283-9508-C4DF1CF1649C}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName">OLEDB</DTS:Property><DTS:PropertyExpression DTS:Name="ConnectionString">@[User::SLXConnectionString]</DTS:PropertyExpression><DTS:ObjectData><DTS:ConnectionManager>
-<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQMSDvg2hAkWZMJXxl3RAVwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAA98ssZipXRWIjOo50C2XnLAAAAAASAAACgAAAAEAAAAP4koBElRu3OHrJk4u2ELlEYAAAA3o7V0pYI5Sznw69S91FDm2LFerSyv8CpFAAAAJwDbIdEqUqz4OIttY8FYZNEHYc/</DTS:Password>
+<DTS:Property DTS:Name="Retain">0</DTS:Property><DTS:Password DTS:Name="Password" Sensitive="1" Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQMSDvg2hAkWZMJXxl3RAVwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACxCJ9yqAuBikyXEKRRWxLVAAAAAASAAACgAAAAEAAAAHskoxkWyvYUMuZp2ldHts4YAAAAmSLo3BUStDrFQCd3V9OkozA7qykusoiZFAAAAINBORhO5SPs70gff/SOVm0h3hKd</DTS:Password>
 <DTS:Property DTS:Name="ConnectionString">Data Source=EAB;User ID=admin;Initial Catalog=EAB;Provider=SLXOLEDB.1;Persist Security Info=True;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
 <DTS:Configuration>
-<DTS:Property DTS:Name="ConfigurationType">5</DTS:Property>
-<DTS:Property DTS:Name="ConfigurationString">TACPRODUCTREFRESH</DTS:Property>
+<DTS:Property DTS:Name="ConfigurationType">1</DTS:Property>
+<DTS:Property DTS:Name="ConfigurationString">C:\TAC_EAB\Extra\SSIS\MAS_to_SLX_RefreshProducts\MAS_to_SLX_RefreshProducts\MAS_to_SLX_RefreshProducts.settings.dtsconfig</DTS:Property>
 <DTS:Property DTS:Name="ConfigurationVariable"></DTS:Property>
 <DTS:Property DTS:Name="ObjectName">Configuration 1</DTS:Property>
 <DTS:Property DTS:Name="DTSID">{5BE88406-FDC3-4316-919D-C73D8D8E932A}</DTS:Property>
@@ -831,131 +831,917 @@ where productid not in (Select productid from sysdba.productprogram)</property>
 <outputColumn id="14" name="ErrorColumn" description="" lineageId="14" precision="0" scale="0" length="0" dataType="i4" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="2" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/></outputColumns><externalMetadataColumns isUsed="False"/></output>
 </outputs>
 </component>
-<component id="157" name="Script Component" componentClassID="{2E42D45B-F83C-400F-8D77-61DDE6A7DF29}" description="Executes a custom script." localeId="-1" usesDispositions="false" validateExternalMetadata="True" version="4" pipelineVersion="0" contactInfo="Executes a custom script.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4">
+<component id="228" name="Script Component" componentClassID="{2E42D45B-F83C-400F-8D77-61DDE6A7DF29}" description="Executes a custom script." localeId="-1" usesDispositions="false" validateExternalMetadata="True" version="4" pipelineVersion="0" contactInfo="Executes a custom script.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4">
 <properties>
-<property id="161" name="SourceCode" dataType="System.String" state="cdata" isArray="true" description="Stores the source code of the component" typeConverter="" UITypeEditor="" containsID="false" expressionType="None"><arrayElements arrayElementCount="18"><arrayElement dataType="System.String"><![CDATA[\main.cs]]></arrayElement><arrayElement dataType="System.String"><![CDATA[/* Microsoft SQL Server Integration Services Script Component
-*  Write scripts using Microsoft Visual C# 2008.
-*  ScriptMain is the entry point class of the script.*/
+<property id="232" name="SourceCode" dataType="System.String" state="cdata" isArray="true" description="Stores the source code of the component" typeConverter="" UITypeEditor="" containsID="false" expressionType="None"><arrayElements arrayElementCount="18"><arrayElement dataType="System.String"><![CDATA[\my project\settings.designer.vb]]></arrayElement><arrayElement dataType="System.String"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
 
-using System;
-using System.Data;
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
-using Microsoft.SqlServer.Dts.Runtime.Wrapper;
-using System.Windows.Forms;
+Option Strict Off
+Option Explicit On
 
-[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
-public class ScriptMain : UserComponent
-{
 
-    public override void PreExecute()
-    {
-        base.PreExecute();
-        /*
-          Add your code here for preprocessing or remove if not needed
-        */
-    }
 
-    public override void PostExecute()
-    {
-        base.PostExecute();
-        /*
-          Add your code here for postprocessing or remove if not needed
-          You can set read/write variables here, for example:
-          Variables.MyIntVar = 100
-        */
-    }
+Partial Friend NotInheritable Class MySettings
+    Inherits System.Configuration.ApplicationSettingsBase
 
-    public override void Input0_ProcessInputRow(Input0Buffer Row)
-    {
-        /*
-          Add your code here
-        */
+    Private Shared m_Value As MySettings
+
+    Private Shared m_SyncObject As Object = New Object
+
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Shared ReadOnly Property Value() As MySettings
+        Get
+            If (MySettings.m_Value Is Nothing) Then
+                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
+                If (MySettings.m_Value Is Nothing) Then
+                    Try
+                        MySettings.m_Value = New MySettings
+                    Finally
+                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
+                    End Try
+                End If
+            End If
+            Return MySettings.m_Value
+        End Get
+    End Property
+End Class
+]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\my project\assemblyinfo.vb]]></arrayElement><arrayElement dataType="System.String"><![CDATA[Imports System
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+
+' General Information about an assembly is controlled through the following 
+' set of attributes. Change these attribute values to modify the information
+' associated with an assembly.
+
+' Review the values of the assembly attributes
+
+<Assembly: AssemblyTitle("SC_d7a7b465e954421ebd9d06a177a7b30b.vbproj")> 
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("Microsoft")> 
+<Assembly: AssemblyProduct("SC_d7a7b465e954421ebd9d06a177a7b30b.vbproj")> 
+<Assembly: AssemblyCopyright("Copyright @ Microsoft 2012")> 
+<Assembly: AssemblyTrademark("")> 
+<Assembly: CLSCompliant(True)> 
+
+<Assembly: ComVisible(False)> 
+
+'The following GUID is for the ID of the typelib if this project is exposed to COM
+<Assembly: Guid("a692d446-e946-4d80-b3d2-03b395516779")> 
+
+' Version information for an assembly consists of the following four values:
+'
+'      Major Version
+'      Minor Version 
+'      Build Number
+'      Revision
+'
+' You can specify all the values or you can default the Build and Revision Numbers 
+' by using the '*' as shown below:
+' <Assembly: AssemblyVersion("1.0.*")>
+
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> 
+]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\my project\settings.settings]]></arrayElement><arrayElement dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="MySettings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\bufferwrapper.vb]]></arrayElement><arrayElement dataType="System.String"><![CDATA[' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+' Microsoft SQL Server Integration Services buffer wrappers
+' This module defines classes for accessing data flow buffers
+' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+
+
+Option Strict Off   ' This allows usage of PipelineBuffer typed accessors.
+
+Imports System
+Imports System.Data
+Imports Microsoft.SqlServer.Dts.Pipeline
+Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper
+
+<CLSCompliant(False)> _
+Public Class Input0Buffer
+    Inherits ScriptBuffer
+
+    Public Sub New(ByVal Buffer As PipelineBuffer, ByVal BufferColumnIndexes As Integer())
+        MyBase.New(Buffer, BufferColumnIndexes)
+    End Sub
+
+    Public ReadOnly Property [PRODUCTID]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(0))
+        End Get
+    End Property
+    Public ReadOnly Property [PRODUCTID_IsNull] As Boolean
+        Get
+            Return IsNull(0)
+        End Get
+    End Property
+
+    Public ReadOnly Property [NAME]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(1))
+        End Get
+    End Property
+    Public ReadOnly Property [NAME_IsNull] As Boolean
+        Get
+            Return IsNull(1)
+        End Get
+    End Property
+
+    Public ReadOnly Property [DESCRIPTION]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(2))
+        End Get
+    End Property
+    Public ReadOnly Property [DESCRIPTION_IsNull] As Boolean
+        Get
+            Return IsNull(2)
+        End Get
+    End Property
+
+    Public ReadOnly Property [ACTUALID]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(3))
+        End Get
+    End Property
+    Public ReadOnly Property [ACTUALID_IsNull] As Boolean
+        Get
+            Return IsNull(3)
+        End Get
+    End Property
+
+    Public ReadOnly Property [FAMILY]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(4))
+        End Get
+    End Property
+    Public ReadOnly Property [FAMILY_IsNull] As Boolean
+        Get
+            Return IsNull(4)
+        End Get
+    End Property
+
+    Public ReadOnly Property [PRICE]() As Decimal
+        Get
+            Return Buffer.GetDecimal(Me.BufferColumnIndexes(5))
+        End Get
+    End Property
+    Public ReadOnly Property [PRICE_IsNull] As Boolean
+        Get
+            Return IsNull(5)
+        End Get
+    End Property
+
+    Public ReadOnly Property [PRODUCTGROUP]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(6))
+        End Get
+    End Property
+    Public ReadOnly Property [PRODUCTGROUP_IsNull] As Boolean
+        Get
+            Return IsNull(6)
+        End Get
+    End Property
+
+    Public ReadOnly Property [STATUS]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(7))
+        End Get
+    End Property
+    Public ReadOnly Property [STATUS_IsNull] As Boolean
+        Get
+            Return IsNull(7)
+        End Get
+    End Property
+
+    Public ReadOnly Property [UNIT]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(8))
+        End Get
+    End Property
+    Public ReadOnly Property [UNIT_IsNull] As Boolean
+        Get
+            Return IsNull(8)
+        End Get
+    End Property
+
+    Public ReadOnly Property [STOCKVOLUME]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(9))
+        End Get
+    End Property
+    Public ReadOnly Property [STOCKVOLUME_IsNull] As Boolean
+        Get
+            Return IsNull(9)
+        End Get
+    End Property
+
+    Public ReadOnly Property [STOCKWEIGHT]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(10))
+        End Get
+    End Property
+    Public ReadOnly Property [STOCKWEIGHT_IsNull] As Boolean
+        Get
+            Return IsNull(10)
+        End Get
+    End Property
+
+    Public ReadOnly Property [STOCKITEM]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(11))
+        End Get
+    End Property
+    Public ReadOnly Property [STOCKITEM_IsNull] As Boolean
+        Get
+            Return IsNull(11)
+        End Get
+    End Property
+
+    Public ReadOnly Property [PROGRAM]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(12))
+        End Get
+    End Property
+    Public ReadOnly Property [PROGRAM_IsNull] As Boolean
+        Get
+            Return IsNull(12)
+        End Get
+    End Property
+
+    Public ReadOnly Property [SUPPLIER]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(13))
+        End Get
+    End Property
+    Public ReadOnly Property [SUPPLIER_IsNull] As Boolean
+        Get
+            Return IsNull(13)
+        End Get
+    End Property
+
+    Public ReadOnly Property [VENDOR]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(14))
+        End Get
+    End Property
+    Public ReadOnly Property [VENDOR_IsNull] As Boolean
+        Get
+            Return IsNull(14)
+        End Get
+    End Property
+
+    Public ReadOnly Property [SITEID]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(15))
+        End Get
+    End Property
+    Public ReadOnly Property [SITEID_IsNull] As Boolean
+        Get
+            Return IsNull(15)
+        End Get
+    End Property
+
+    Public ReadOnly Property [WAREHOUSELOCATION]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(16))
+        End Get
+    End Property
+    Public ReadOnly Property [WAREHOUSELOCATION_IsNull] As Boolean
+        Get
+            Return IsNull(16)
+        End Get
+    End Property
+
+    Public ReadOnly Property [COMMISSIONABLE]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(17))
+        End Get
+    End Property
+    Public ReadOnly Property [COMMISSIONABLE_IsNull] As Boolean
+        Get
+            Return IsNull(17)
+        End Get
+    End Property
+
+    Public ReadOnly Property [TAXABLE]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(18))
+        End Get
+    End Property
+    Public ReadOnly Property [TAXABLE_IsNull] As Boolean
+        Get
+            Return IsNull(18)
+        End Get
+    End Property
+
+    Public ReadOnly Property [ACCOUNTINGPERIOD]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(19))
+        End Get
+    End Property
+    Public ReadOnly Property [ACCOUNTINGPERIOD_IsNull] As Boolean
+        Get
+            Return IsNull(19)
+        End Get
+    End Property
+
+    Public ReadOnly Property [GLACCOUNTNUMBER]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(20))
+        End Get
+    End Property
+    Public ReadOnly Property [GLACCOUNTNUMBER_IsNull] As Boolean
+        Get
+            Return IsNull(20)
+        End Get
+    End Property
+
+    Public ReadOnly Property [GLSUBACCOUNTNUMBER]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(21))
+        End Get
+    End Property
+    Public ReadOnly Property [GLSUBACCOUNTNUMBER_IsNull] As Boolean
+        Get
+            Return IsNull(21)
+        End Get
+    End Property
+
+    Public ReadOnly Property [DATAOWNER]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(22))
+        End Get
+    End Property
+    Public ReadOnly Property [DATAOWNER_IsNull] As Boolean
+        Get
+            Return IsNull(22)
+        End Get
+    End Property
+
+    Public ReadOnly Property [TYPE]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(23))
+        End Get
+    End Property
+    Public ReadOnly Property [TYPE_IsNull] As Boolean
+        Get
+            Return IsNull(23)
+        End Get
+    End Property
+
+    Public ReadOnly Property [FIXEDCOST]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(24))
+        End Get
+    End Property
+    Public ReadOnly Property [FIXEDCOST_IsNull] As Boolean
+        Get
+            Return IsNull(24)
+        End Get
+    End Property
+
+    Public ReadOnly Property [GLOBALSYNCID]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(25))
+        End Get
+    End Property
+    Public ReadOnly Property [GLOBALSYNCID_IsNull] As Boolean
+        Get
+            Return IsNull(25)
+        End Get
+    End Property
+
+    Public ReadOnly Property [APPID]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(26))
+        End Get
+    End Property
+    Public ReadOnly Property [APPID_IsNull] As Boolean
+        Get
+            Return IsNull(26)
+        End Get
+    End Property
+
+    Public ReadOnly Property [TICK]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(27))
+        End Get
+    End Property
+    Public ReadOnly Property [TICK_IsNull] As Boolean
+        Get
+            Return IsNull(27)
+        End Get
+    End Property
+
+    Public ReadOnly Property [COMMODITYGROUPID]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(28))
+        End Get
+    End Property
+    Public ReadOnly Property [COMMODITYGROUPID_IsNull] As Boolean
+        Get
+            Return IsNull(28)
+        End Get
+    End Property
+
+    Public ReadOnly Property [ACTIVEFLAG]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(29))
+        End Get
+    End Property
+    Public ReadOnly Property [ACTIVEFLAG_IsNull] As Boolean
+        Get
+            Return IsNull(29)
+        End Get
+    End Property
+
+    Public ReadOnly Property [SELLINGALLOWEDFLAG]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(30))
+        End Get
+    End Property
+    Public ReadOnly Property [SELLINGALLOWEDFLAG_IsNull] As Boolean
+        Get
+            Return IsNull(30)
+        End Get
+    End Property
+
+    Public ReadOnly Property [UNITOFMEASUREID]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(31))
+        End Get
+    End Property
+    Public ReadOnly Property [UNITOFMEASUREID_IsNull] As Boolean
+        Get
+            Return IsNull(31)
+        End Get
+    End Property
+
+    Public ReadOnly Property [SELLINGUOMID]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(32))
+        End Get
+    End Property
+    Public ReadOnly Property [SELLINGUOMID_IsNull] As Boolean
+        Get
+            Return IsNull(32)
+        End Get
+    End Property
+
+    Public ReadOnly Property [SELLINGUOMNUMBER]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(33))
+        End Get
+    End Property
+    Public ReadOnly Property [SELLINGUOMNUMBER_IsNull] As Boolean
+        Get
+            Return IsNull(33)
+        End Get
+    End Property
+
+    Public ReadOnly Property [CLASSIFICATION]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(34))
+        End Get
+    End Property
+    Public ReadOnly Property [CLASSIFICATION_IsNull] As Boolean
+        Get
+            Return IsNull(34)
+        End Get
+    End Property
+
+    Public ReadOnly Property [COMMODITYTYPE]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(35))
+        End Get
+    End Property
+    Public ReadOnly Property [COMMODITYTYPE_IsNull] As Boolean
+        Get
+            Return IsNull(35)
+        End Get
+    End Property
+
+    Public ReadOnly Property [MASITEMKEY]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(36))
+        End Get
+    End Property
+    Public ReadOnly Property [MASITEMKEY_IsNull] As Boolean
+        Get
+            Return IsNull(36)
+        End Get
+    End Property
+
+    Public ReadOnly Property [UPC]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(37))
+        End Get
+    End Property
+    Public ReadOnly Property [UPC_IsNull] As Boolean
+        Get
+            Return IsNull(37)
+        End Get
+    End Property
+
+    Public ReadOnly Property [MASITEMID]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(38))
+        End Get
+    End Property
+    Public ReadOnly Property [MASITEMID_IsNull] As Boolean
+        Get
+            Return IsNull(38)
+        End Get
+    End Property
+
+    Public ReadOnly Property [WAREHOUSEID]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(39))
+        End Get
+    End Property
+    Public ReadOnly Property [WAREHOUSEID_IsNull] As Boolean
+        Get
+            Return IsNull(39)
+        End Get
+    End Property
+
+    Public ReadOnly Property [COMPANYID]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(40))
+        End Get
+    End Property
+    Public ReadOnly Property [COMPANYID_IsNull] As Boolean
+        Get
+            Return IsNull(40)
+        End Get
+    End Property
+
+    Public ReadOnly Property [QTYONHAND]() As Decimal
+        Get
+            Return Buffer.GetDecimal(Me.BufferColumnIndexes(41))
+        End Get
+    End Property
+    Public ReadOnly Property [QTYONHAND_IsNull] As Boolean
+        Get
+            Return IsNull(41)
+        End Get
+    End Property
+
+    Public ReadOnly Property [QTYAVAILABLE]() As Decimal
+        Get
+            Return Buffer.GetDecimal(Me.BufferColumnIndexes(42))
+        End Get
+    End Property
+    Public ReadOnly Property [QTYAVAILABLE_IsNull] As Boolean
+        Get
+            Return IsNull(42)
+        End Get
+    End Property
+
+    Public ReadOnly Property [SURPLUSQTY]() As Decimal
+        Get
+            Return Buffer.GetDecimal(Me.BufferColumnIndexes(43))
+        End Get
+    End Property
+    Public ReadOnly Property [SURPLUSQTY_IsNull] As Boolean
+        Get
+            Return IsNull(43)
+        End Get
+    End Property
+
+    Public ReadOnly Property [QTYONHOLD]() As Decimal
+        Get
+            Return Buffer.GetDecimal(Me.BufferColumnIndexes(44))
+        End Get
+    End Property
+    Public ReadOnly Property [QTYONHOLD_IsNull] As Boolean
+        Get
+            Return IsNull(44)
+        End Get
+    End Property
+
+    Public ReadOnly Property [MAXSTOCKLEVEL]() As Decimal
+        Get
+            Return Buffer.GetDecimal(Me.BufferColumnIndexes(45))
+        End Get
+    End Property
+    Public ReadOnly Property [MAXSTOCKLEVEL_IsNull] As Boolean
+        Get
+            Return IsNull(45)
+        End Get
+    End Property
+
+    Public Overloads Function NextRow() As Boolean
+        NextRow = MyBase.NextRow()
+    End Function
+
+    Public Overloads Function EndOfRowset() As Boolean
+        EndOfRowset = MyBase.EndOfRowset
+    End Function
+
+End Class
+]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\sc_d7a7b465e954421ebd9d06a177a7b30b.vbproj]]></arrayElement><arrayElement dataType="System.String"><![CDATA[<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{A860303F-1F3F-4691-B57E-529FC101A107};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SC_d7a7b465e954421ebd9d06a177a7b30b.vbproj</RootNamespace>
+    <AssemblyName>SC_d7a7b465e954421ebd9d06a177a7b30b.vbproj</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <ProjectGuid>{7F3DE541-AE2F-42B6-9662-00008588661E}</ProjectGuid>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- Visual Basic supports Importing namespaces (equivalent to using statements in C#).-->
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+    <Compile Include="BufferWrapper.vb" />
+    <Compile Include="ComponentWrapper.vb" />
+    <Compile Include="main.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a VB project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A860303F-1F3F-4691-B57E-529FC101A107}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{C1B21C64-9E6F-4923-A89D-9F958503C1CE}" ApplicationType="usd" Language="vb" TemplatesPath="" />
+        <Host Name="SSIS_ScriptComponent" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ScriptComponent</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\my project\resources.designer.vb]]></arrayElement><arrayElement dataType="System.String"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+Namespace My.Resources
+    
+    '''<summary>
+    '''   A strongly-typed resource class, for looking up localized strings, etc.
+    '''</summary>
+    'This class was auto-generated by the Strongly Typed Resource Builder
+    'class via a tool like ResGen or Visual Studio.NET.
+    'To add or remove a member, edit your .ResX file then rerun ResGen
+    'with the /str option, or rebuild your VS project.
+    Class MyResources
         
-        ADODB.Connection  objConn = new  ADODB.Connection();
-        ADODB.Recordset  objRS = new  ADODB.Recordset();
-
-        string  strSQL =  System.String .Empty ;
-        strSQL ="SELECT * FROM PRODUCT WHERE PRODUCTID ='" + Row.PRODUCTID.ToString()  + "'" ;//  'Get A Blank Recordset
-        MessageBox.Show(strSQL);
-            objConn .ConnectionString = this.Variables.SLXConnectionString ;
-            MessageBox.Show(this.Variables.SLXConnectionString);
-            objConn.Open(null,null,null,0);
-             
-                objRS.CursorLocation = ADODB.CursorLocationEnum.adUseClient;
-                objRS.CursorType = ADODB.CursorTypeEnum.adOpenDynamic;
-                objRS.LockType = ADODB.LockTypeEnum.adLockOptimistic;
-                objRS.Open(strSQL, objConn,ADODB.CursorTypeEnum.adOpenDynamic, ADODB.LockTypeEnum.adLockOptimistic, -1);
-                if(objRS.EOF == false  )
-                {
-
-                    //objRS.Fields[1].Value = Row.PRODUCTID;
-                    objRS.Fields[2].Value = Row.NAME;
-                    objRS.Fields[3].Value = Row.DESCRIPTION;
-                    MessageBox.Show(objRS.Fields[3].Value.ToString ()); 
-                    //objRS.Fields[4].Value = Row.ACTUALID;
-                    //objRS.Fields[5].Value = Row.FAMILY;
-                    //objRS.Fields[6].Value = Row.PRICE;
-                    ////objRS.Fields[7].Value = Row.CREATEDATE;
-                    ////objRS.Fields[8].Value = Row.CREATEUSER;
-                    //objRS.Fields[9].Value = System.DateTime.Now;
-                    //objRS.Fields[10].Value = "ADMIN";
-                    //objRS.Fields[11].Value = Row.PRODUCTGROUP;
-                    //objRS.Fields[12].Value = Row.STATUS;
-                    //objRS.Fields[13].Value = Row.UNIT;
-                    //objRS.Fields[14].Value = Row.STOCKVOLUME;
-                    //objRS.Fields[15].Value = Row.STOCKWEIGHT;
-                    //objRS.Fields[16].Value = Row.STOCKITEM;
-                    //objRS.Fields[17].Value = Row.PROGRAM;
-                    //objRS.Fields[18].Value = Row.SUPPLIER;
-                    //objRS.Fields[19].Value = Row.VENDOR;
-                    //objRS.Fields[20].Value = Row.SITEID;
-                    //objRS.Fields[21].Value = Row.WAREHOUSELOCATION;
-                    //objRS.Fields[22].Value = Row.COMMISSIONABLE;
-                    //objRS.Fields[23].Value = Row.TAXABLE;
-                    //objRS.Fields[24].Value = Row.ACCOUNTINGPERIOD;
-                    //objRS.Fields[25].Value = Row.GLACCOUNTNUMBER;
-                    //objRS.Fields[26].Value = Row.GLSUBACCOUNTNUMBER;
-                    //objRS.Fields[27].Value = Row.DATAOWNER;
-                    //objRS.Fields[28].Value = Row.TYPE;
-                    //objRS.Fields[29].Value = Row.FIXEDCOST;
-                    //objRS.Fields[30].Value = Row.GLOBALSYNCID;
-                    //objRS.Fields[31].Value = Row.APPID;
-                    //objRS.Fields[32].Value = Row.TICK;
-                    //objRS.Fields[33].Value = Row.COMMODITYGROUPID;
-                    //objRS.Fields[34].Value = Row.ACTIVEFLAG;
-                    //objRS.Fields[35].Value = Row.SELLINGALLOWEDFLAG;
-                    //objRS.Fields[36].Value = Row.UNITOFMEASUREID;
-                    //objRS.Fields[37].Value = Row.SELLINGUOMID;
-                    //objRS.Fields[38].Value = Row.SELLINGUOMNUMBER;
-                    //objRS.Fields[39].Value = Row.CLASSIFICATION;
-                    //objRS.Fields[40].Value = Row.COMMODITYTYPE;
-                    //objRS.Fields[41].Value = Row.MASITEMKEY;
-                    //objRS.Fields[42].Value = Row.UPC;
-                    //objRS.Fields[43].Value = Row.MASITEMID;
-                    //objRS.Fields[44].Value = Row.WAREHOUSEID;
-                    //objRS.Fields[45].Value = Row.COMPANYID;
-                    //objRS.Fields[46].Value = Row.QTYONHAND;
-                    //objRS.Fields[47].Value = Row.QTYAVAILABLE;
-                    //objRS.Fields[48].Value = Row.SURPLUSQTY;
-                    //objRS.Fields[49].Value = Row.QTYONHOLD;
-                    //objRS.Fields[50].Value = Row.MAXSTOCKLEVEL;
-
-
- 
-                    objRS.UpdateBatch(ADODB.AffectEnum.adAffectAll ) ;             
-                }
+        Private Shared _resMgr As System.Resources.ResourceManager
         
+        Private Shared _resCulture As System.Globalization.CultureInfo
+        
+        Friend Sub New()
+            MyBase.New
+        End Sub
+        
+        '''<summary>
+        '''   Returns the cached ResourceManager instance used by this class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared ReadOnly Property ResourceManager() As System.Resources.ResourceManager
+            Get
+                If (_resMgr Is Nothing) Then
+                    Dim temp As System.Resources.ResourceManager = New System.Resources.ResourceManager("My.Resources.MyResources", GetType(MyResources).Assembly)
+                    _resMgr = temp
+                End If
+                Return _resMgr
+            End Get
+        End Property
+        
+        '''<summary>
+        '''   Overrides the current thread's CurrentUICulture property for all
+        '''   resource lookups using this strongly typed resource class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared Property Culture() As System.Globalization.CultureInfo
+            Get
+                Return _resCulture
+            End Get
+            Set
+                _resCulture = value
+            End Set
+        End Property
+    End Class
+End Namespace
+]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\componentwrapper.vb]]></arrayElement><arrayElement dataType="System.String"><![CDATA[' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+' Microsoft SQL Server Integration Services component wrapper
+' This module defines the base class for your component
+' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
 
-                objRS.Close();
-          
-            objConn.Close();
-            
+Imports System
+Imports System.Data
+Imports Microsoft.SqlServer.Dts.Pipeline
+Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper
+Imports Microsoft.SqlServer.Dts.Runtime.Wrapper
 
-       
-    }
+<CLSCompliant(False)> _
+Public Class UserComponent
+    Inherits ScriptComponent
 
-}
-]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\properties\resources.resx]]></arrayElement><arrayElement dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+    Public Connections As New Connections(Me)
+    Public Variables As New Variables(Me)
+
+    Public Overrides Sub ProcessInput(ByVal InputID As Integer, ByVal Buffer As PipelineBuffer)
+
+        If InputID = 230 Then
+            Input0_ProcessInput(New Input0Buffer(Buffer, GetColumnIndexes(InputID)))
+        End If
+
+    End Sub
+
+    Public Overridable Sub Input0_ProcessInput(ByVal Buffer As Input0Buffer)
+
+        While Buffer.NextRow()
+            Input0_ProcessInputRow(Buffer)
+        End While
+
+    End Sub
+
+    Public Overridable Sub Input0_ProcessInputRow(ByVal Row As Input0Buffer)
+
+    End Sub
+
+End Class
+
+Public Class Connections
+
+    Dim ParentComponent As ScriptComponent
+
+    <CLSCompliant(False)> _
+    Public Sub New(ByVal Component As ScriptComponent)
+        ParentComponent = Component
+    End Sub
+
+    Public ReadOnly Property Connection() As IDTSConnectionManager100
+        Get
+            Return ParentComponent.ComponentMetaData.RuntimeConnectionCollection.GetObjectByID(288).ConnectionManager
+        End Get
+    End Property
+
+End Class
+
+Public Class Variables
+
+    Dim ParentComponent As ScriptComponent
+
+    <CLSCompliant(False)> _
+    Public Sub New(ByVal Component As ScriptComponent)
+        ParentComponent = Component
+    End Sub
+
+    Public ReadOnly Property [SLXConnectionString]() As String
+        Get
+            Return CType(ParentComponent.ReadOnlyVariables("SLXConnectionString").Value, String)
+        End Get
+    End Property
+
+End Class
+]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\my project\resources.resx]]></arrayElement><arrayElement dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -1071,1414 +1857,610 @@ public class ScriptMain : UserComponent
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-</root>]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\properties\settings.designer.cs]]></arrayElement><arrayElement dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
+</root>]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\main.vb]]></arrayElement><arrayElement dataType="System.String"><![CDATA[' Microsoft SQL Server Integration Services Script Component
+' Write scripts using Microsoft Visual Basic 2008.
+' ScriptMain is the entry point class of the script.
+
+Imports System
+Imports System.Data
+Imports System.Math
+Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper
+Imports Microsoft.SqlServer.Dts.Runtime.Wrapper
+
+<Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute> _
+<CLSCompliant(False)> _
+Public Class ScriptMain
+    Inherits UserComponent
+
+    Public Overrides Sub PreExecute()
+        MyBase.PreExecute()
+        '
+        ' Add your code here for preprocessing or remove if not needed
+        '
+    End Sub
+
+    Public Overrides Sub PostExecute()
+        MyBase.PostExecute()
+        '
+        ' Add your code here for postprocessing or remove if not needed
+        ' You can set read/write variables here, for example:
+        ' Me.Variables.MyIntVar = 100
+        '
+    End Sub
+
+    Public Overrides Sub Input0_ProcessInputRow(ByVal Row As Input0Buffer)
+        '
+        ' Add your code here
+        '
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM PRODUCT WHERE PRODUCTID ='" & Row.PRODUCTID.ToString & "'"   'Get A Blank Recordset
+
+        Try
+            objConn.Open(Me.Variables.SLXConnectionString)
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If .EOF Then
+                    '=============================================
+                    ' Insert
+                    '=============================================
+                   
+
+                Else
+                   
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    '.Fields("PRODUCTID").Value = Row.PRODUCTID
+                    .Fields("NAME").Value = Row.NAME
+                    .Fields("DESCRIPTION").Value = Row.DESCRIPTION
+                    .Fields("ACTUALID").Value = Row.ACTUALID
+                    .Fields("FAMILY").Value = Row.FAMILY
+                    .Fields("PRICE").Value = Row.PRICE
+                    .Fields("PRODUCTGROUP").Value = Row.PRODUCTGROUP
+                    .Fields("STATUS").Value = Row.STATUS
+                    .Fields("UNIT").Value = Row.UNIT
+                    .Fields("STOCKVOLUME").Value = Row.STOCKVOLUME
+                    .Fields("STOCKWEIGHT").Value = Row.STOCKWEIGHT
+                    .Fields("STOCKITEM").Value = Row.STOCKITEM
+                    .Fields("PROGRAM").Value = Row.PROGRAM
+                    .Fields("SUPPLIER").Value = Row.SUPPLIER
+                    .Fields("VENDOR").Value = Row.VENDOR
+                    .Fields("SITEID").Value = Row.SITEID
+                    .Fields("WAREHOUSELOCATION").Value = Row.WAREHOUSELOCATION
+                    .Fields("COMMISSIONABLE").Value = Row.COMMISSIONABLE
+                    .Fields("TAXABLE").Value = Row.TAXABLE
+                    .Fields("ACCOUNTINGPERIOD").Value = Row.ACCOUNTINGPERIOD
+                    .Fields("GLACCOUNTNUMBER").Value = Row.GLACCOUNTNUMBER
+                    .Fields("GLSUBACCOUNTNUMBER").Value = Row.GLSUBACCOUNTNUMBER
+                    .Fields("DATAOWNER").Value = Row.DATAOWNER
+                    .Fields("TYPE").Value = Row.TYPE
+                    .Fields("FIXEDCOST").Value = Row.FIXEDCOST
+                    .Fields("GLOBALSYNCID").Value = Row.GLOBALSYNCID
+                    .Fields("APPID").Value = Row.APPID
+                    .Fields("TICK").Value = Row.TICK
+                    .Fields("COMMODITYGROUPID").Value = Row.COMMODITYGROUPID
+                    .Fields("ACTIVEFLAG").Value = Row.ACTIVEFLAG
+                    .Fields("SELLINGALLOWEDFLAG").Value = Row.SELLINGALLOWEDFLAG
+                    .Fields("UNITOFMEASUREID").Value = Row.UNITOFMEASUREID
+                    .Fields("SELLINGUOMID").Value = Row.SELLINGUOMID
+                    .Fields("SELLINGUOMNUMBER").Value = Row.SELLINGUOMNUMBER
+                    .Fields("CLASSIFICATION").Value = Row.CLASSIFICATION
+                    .Fields("COMMODITYTYPE").Value = Row.COMMODITYTYPE
+                    .Fields("MASITEMKEY").Value = Row.MASITEMKEY
+                    .Fields("UPC").Value = Row.UPC
+                    .Fields("MASITEMID").Value = Row.MASITEMID
+                    .Fields("WAREHOUSEID").Value = Row.WAREHOUSEID
+                    .Fields("COMPANYID").Value = Row.COMPANYID
+                    .Fields("QTYONHAND").Value = Row.QTYONHAND
+                    .Fields("QTYAVAILABLE").Value = Row.QTYAVAILABLE
+                    .Fields("SURPLUSQTY").Value = Row.SURPLUSQTY
+                    .Fields("QTYONHOLD").Value = Row.QTYONHOLD
+                    .Fields("MAXSTOCKLEVEL").Value = Row.MAXSTOCKLEVEL
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_748737a7753c4d9f8c4c616d27f89b65.csproj.Properties.Settings.get_Default():SC_748737a7753c4d9f8c4c616d27f89b65.csproj.Properties.Sett" +
-    "ings")]
 
-namespace SC_748737a7753c4d9f8c4c616d27f89b65.csproj.Properties
-{
+                    
+                    .Update()              ' Move to next record
+                End If
 
 
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
+                .Close()
+            End With
+            objConn.Close()
+            objRS = Nothing
+            objConn = Nothing
 
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            'Dim ErrorMessage As String = ""
+            'ErrorMessage = " SubjectID =" & SubjectID & " RecordID=" & ID & "  Error Updating " & Field & " Value= " & Value & "....." & ex.Message & " " & Now
+            'WriteErrorLog(SubjectID, ID, Field, Value, ex.Message)
+            'Console.WriteLine(ex.Message)
 
-        public static Settings Default
-        {
-            get
-            {
-                return defaultInstance;
-            }
-        }
-    }
-}
-]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\properties\settings.settings]]></arrayElement><arrayElement dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\sc_748737a7753c4d9f8c4c616d27f89b65.csproj]]></arrayElement><arrayElement dataType="System.String"><![CDATA[<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!-- This section defines project-level properties.
+        End Try
+    End Sub
 
-       Configuration - Specifies whether the default configuration is Release or Debug.
-       Platform - Specifies what CPU the output of this project can run on.
-       OutputType - Must be "Library" for VSTA.
-       NoStandardLibraries - Set to "false" for VSTA.
-       RootNamespace - In C#, this specifies the namespace given to new files.
-                       In Visual Basic, all objects are wrapped in this namespace at runtime.
-       AssemblyName - Name of the output assembly.
-  -->
-  <PropertyGroup>
-    <ProjectTypeGuids>{A860303F-1F3F-4691-B57E-529FC101A107};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <OutputType>Library</OutputType>
-    <NoStandardLibraries>false</NoStandardLibraries>
-    <RootNamespace>SC_748737a7753c4d9f8c4c616d27f89b65.csproj</RootNamespace>
-    <AssemblyName>SC_748737a7753c4d9f8c4c616d27f89b65.csproj</AssemblyName>
-    <ProjectGuid>{BD263442-C4F6-4C39-9DB1-092AEFEC2B9C}</ProjectGuid>
-  </PropertyGroup>
-  <!-- This section defines properties that are set when the "Debug" configuration is
-       selected.
-
-       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
-       Optimize - If true, optimize the build output. If false, do not optimize.
-       OutputPath - Output path of the project relative to the project file.
-       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
-       DefineConstants - Constants defined for the preprocessor.
-       Warning Level - Warning level for the compiler.
-  -->
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DebugSymbols>true</DebugSymbols>
-    <Optimize>false</Optimize>
-    <OutputPath>.\bin\Debug\</OutputPath>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <!-- This section defines properties that are set when the "Release" configuration is
-       selected.
-
-       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
-       Optimize - If true, optimize the build output. If false, do not optimize.
-       OutputPath - Output path of the project relative to the project file.
-       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
-       DefineConstants - Constants defined for the preprocessor.
-       Warning Level - Warning level for the compiler.
-  -->
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugSymbols>false</DebugSymbols>
-    <Optimize>true</Optimize>
-    <OutputPath>.\bin\Release\</OutputPath>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>TRACE</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <!-- This section enables pre- and post-build steps. However,
-       it is recommended that MSBuild tasks be used instead of these properties.
-  -->
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- This sections specifies references for the project. -->
-  <ItemGroup>
-    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.SqlServer.TxScript, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-  </ItemGroup>
-  <!-- This section defines the user source files that are part of the
-       project.
-
-       Compile - Specifies a source file to compile.
-       EmbeddedResource - Specifies a .resx file for embedded resources.
-       None - Specifies a file that is not to be passed to the compiler (for instance,
-              a text file or XML file).
-       AppDesigner - Specifies the directory where the application properties files can
-                     be found.
-  -->
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-    <Compile Include="BufferWrapper.cs" />
-    <Compile Include="ComponentWrapper.cs" />
-    <Compile Include="main.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <!-- Include the default configuration information and metadata files for the add-in.
-         These files are copied to the build output directory when the project is
-         built, and the path to the configuration file is passed to the add-in on the command
-         line when debugging.
-    -->
-  </ItemGroup>
-  <!-- Include the build rules for a C# project.-->
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{A860303F-1F3F-4691-B57E-529FC101A107}">
-        <ProjectProperties HostName="VSTAHostName" HostPackage="{C1B21C64-9E6F-4923-A89D-9F958503C1CE}" ApplicationType="usd" Language="cs" TemplatesPath="" />
-        <Host Name="SSIS_ScriptComponent" IconIndex="0" />
-        <ProjectClient>
-          <HostIdentifier>SSIS_ScriptComponent</HostIdentifier>
-        </ProjectClient>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
-</Project>]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\properties\assemblyinfo.cs]]></arrayElement><arrayElement dataType="System.String"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("SC_748737a7753c4d9f8c4c616d27f89b65.csproj")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("SC_748737a7753c4d9f8c4c616d27f89b65.csproj")]
-[assembly: AssemblyCopyright("Copyright @ Microsoft 2012")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]
-]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\properties\resources.designer.cs]]></arrayElement><arrayElement dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_748737a7753c4d9f8c4c616d27f89b65.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
-    "rceManager")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_748737a7753c4d9f8c4c616d27f89b65.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
-    "fo")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "SC_748737a7753c4d9f8c4c616d27f89b65.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
-    "):Void")]
-
-namespace SC_748737a7753c4d9f8c4c616d27f89b65.csproj.Properties
-{
-
-
-    /// <summary>
-    ///   A strongly-typed resource class, for looking up localized strings, etc.
-    /// </summary>
-    // This class was auto-generated by the StronglyTypedResourceBuilder
-    // class via a tool like ResGen or Visual Studio.
-    // To add or remove a member, edit your .ResX file then rerun ResGen
-    // with the /str option, or rebuild your VS project.
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    internal class Resources
-    {
-
-        private static global::System.Resources.ResourceManager resourceMan;
-
-        private static global::System.Globalization.CultureInfo resourceCulture;
-
-        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
-        }
-
-        /// <summary>
-        ///   Returns the cached ResourceManager instance used by this class.
-        /// </summary>
-        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_748737a7753c4d9f8c4c616d27f89b65.csproj.Properties.Resources", typeof(Resources).Assembly);
-                    resourceMan = temp;
-                }
-                return resourceMan;
-            }
-        }
-
-        /// <summary>
-        ///   Overrides the current thread's CurrentUICulture property for all
-        ///   resource lookups using this strongly typed resource class.
-        /// </summary>
-        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
-                return resourceCulture;
-            }
-            set
-            {
-                resourceCulture = value;
-            }
-        }
-    }
-}
-]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\bufferwrapper.cs]]></arrayElement><arrayElement dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
-*  Microsoft SQL Server Integration Services buffer wrappers
-*  This module defines classes for accessing data flow buffers
-*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
-
-
-
-using System;
-using System.Data;
-using Microsoft.SqlServer.Dts.Pipeline;
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
-
-public class Input0Buffer: ScriptBuffer
-
-{
-    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes)
-        : base(Buffer, BufferColumnIndexes)
-    {
-    }
-
-    public String PRODUCTID
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[0]);
-        }
-    }
-    public bool PRODUCTID_IsNull
-    {
-        get
-        {
-            return IsNull(0);
-        }
-    }
-
-    public String NAME
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[1]);
-        }
-    }
-    public bool NAME_IsNull
-    {
-        get
-        {
-            return IsNull(1);
-        }
-    }
-
-    public String DESCRIPTION
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[2]);
-        }
-    }
-    public bool DESCRIPTION_IsNull
-    {
-        get
-        {
-            return IsNull(2);
-        }
-    }
-
-    public String ACTUALID
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[3]);
-        }
-    }
-    public bool ACTUALID_IsNull
-    {
-        get
-        {
-            return IsNull(3);
-        }
-    }
-
-    public String FAMILY
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[4]);
-        }
-    }
-    public bool FAMILY_IsNull
-    {
-        get
-        {
-            return IsNull(4);
-        }
-    }
-
-    public Decimal PRICE
-    {
-        get
-        {
-            return Buffer.GetDecimal(BufferColumnIndexes[5]);
-        }
-    }
-    public bool PRICE_IsNull
-    {
-        get
-        {
-            return IsNull(5);
-        }
-    }
-
-    public String PRODUCTGROUP
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[6]);
-        }
-    }
-    public bool PRODUCTGROUP_IsNull
-    {
-        get
-        {
-            return IsNull(6);
-        }
-    }
-
-    public String STATUS
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[7]);
-        }
-    }
-    public bool STATUS_IsNull
-    {
-        get
-        {
-            return IsNull(7);
-        }
-    }
-
-    public String UNIT
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[8]);
-        }
-    }
-    public bool UNIT_IsNull
-    {
-        get
-        {
-            return IsNull(8);
-        }
-    }
-
-    public Int32 STOCKVOLUME
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[9]);
-        }
-    }
-    public bool STOCKVOLUME_IsNull
-    {
-        get
-        {
-            return IsNull(9);
-        }
-    }
-
-    public Int32 STOCKWEIGHT
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[10]);
-        }
-    }
-    public bool STOCKWEIGHT_IsNull
-    {
-        get
-        {
-            return IsNull(10);
-        }
-    }
-
-    public Int32 STOCKITEM
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[11]);
-        }
-    }
-    public bool STOCKITEM_IsNull
-    {
-        get
-        {
-            return IsNull(11);
-        }
-    }
-
-    public Int32 PROGRAM
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[12]);
-        }
-    }
-    public bool PROGRAM_IsNull
-    {
-        get
-        {
-            return IsNull(12);
-        }
-    }
-
-    public Int32 SUPPLIER
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[13]);
-        }
-    }
-    public bool SUPPLIER_IsNull
-    {
-        get
-        {
-            return IsNull(13);
-        }
-    }
-
-    public Int32 VENDOR
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[14]);
-        }
-    }
-    public bool VENDOR_IsNull
-    {
-        get
-        {
-            return IsNull(14);
-        }
-    }
-
-    public Int32 SITEID
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[15]);
-        }
-    }
-    public bool SITEID_IsNull
-    {
-        get
-        {
-            return IsNull(15);
-        }
-    }
-
-    public Int32 WAREHOUSELOCATION
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[16]);
-        }
-    }
-    public bool WAREHOUSELOCATION_IsNull
-    {
-        get
-        {
-            return IsNull(16);
-        }
-    }
-
-    public Int32 COMMISSIONABLE
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[17]);
-        }
-    }
-    public bool COMMISSIONABLE_IsNull
-    {
-        get
-        {
-            return IsNull(17);
-        }
-    }
-
-    public Int32 TAXABLE
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[18]);
-        }
-    }
-    public bool TAXABLE_IsNull
-    {
-        get
-        {
-            return IsNull(18);
-        }
-    }
-
-    public Int32 ACCOUNTINGPERIOD
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[19]);
-        }
-    }
-    public bool ACCOUNTINGPERIOD_IsNull
-    {
-        get
-        {
-            return IsNull(19);
-        }
-    }
-
-    public String GLACCOUNTNUMBER
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[20]);
-        }
-    }
-    public bool GLACCOUNTNUMBER_IsNull
-    {
-        get
-        {
-            return IsNull(20);
-        }
-    }
-
-    public Int32 GLSUBACCOUNTNUMBER
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[21]);
-        }
-    }
-    public bool GLSUBACCOUNTNUMBER_IsNull
-    {
-        get
-        {
-            return IsNull(21);
-        }
-    }
-
-    public Int32 DATAOWNER
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[22]);
-        }
-    }
-    public bool DATAOWNER_IsNull
-    {
-        get
-        {
-            return IsNull(22);
-        }
-    }
-
-    public Int32 TYPE
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[23]);
-        }
-    }
-    public bool TYPE_IsNull
-    {
-        get
-        {
-            return IsNull(23);
-        }
-    }
-
-    public Int32 FIXEDCOST
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[24]);
-        }
-    }
-    public bool FIXEDCOST_IsNull
-    {
-        get
-        {
-            return IsNull(24);
-        }
-    }
-
-    public Int32 GLOBALSYNCID
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[25]);
-        }
-    }
-    public bool GLOBALSYNCID_IsNull
-    {
-        get
-        {
-            return IsNull(25);
-        }
-    }
-
-    public Int32 APPID
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[26]);
-        }
-    }
-    public bool APPID_IsNull
-    {
-        get
-        {
-            return IsNull(26);
-        }
-    }
-
-    public Int32 TICK
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[27]);
-        }
-    }
-    public bool TICK_IsNull
-    {
-        get
-        {
-            return IsNull(27);
-        }
-    }
-
-    public Int32 COMMODITYGROUPID
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[28]);
-        }
-    }
-    public bool COMMODITYGROUPID_IsNull
-    {
-        get
-        {
-            return IsNull(28);
-        }
-    }
-
-    public Int32 ACTIVEFLAG
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[29]);
-        }
-    }
-    public bool ACTIVEFLAG_IsNull
-    {
-        get
-        {
-            return IsNull(29);
-        }
-    }
-
-    public String SELLINGALLOWEDFLAG
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[30]);
-        }
-    }
-    public bool SELLINGALLOWEDFLAG_IsNull
-    {
-        get
-        {
-            return IsNull(30);
-        }
-    }
-
-    public Int32 UNITOFMEASUREID
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[31]);
-        }
-    }
-    public bool UNITOFMEASUREID_IsNull
-    {
-        get
-        {
-            return IsNull(31);
-        }
-    }
-
-    public Int32 SELLINGUOMID
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[32]);
-        }
-    }
-    public bool SELLINGUOMID_IsNull
-    {
-        get
-        {
-            return IsNull(32);
-        }
-    }
-
-    public Int32 SELLINGUOMNUMBER
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[33]);
-        }
-    }
-    public bool SELLINGUOMNUMBER_IsNull
-    {
-        get
-        {
-            return IsNull(33);
-        }
-    }
-
-    public Int32 CLASSIFICATION
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[34]);
-        }
-    }
-    public bool CLASSIFICATION_IsNull
-    {
-        get
-        {
-            return IsNull(34);
-        }
-    }
-
-    public Int32 COMMODITYTYPE
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[35]);
-        }
-    }
-    public bool COMMODITYTYPE_IsNull
-    {
-        get
-        {
-            return IsNull(35);
-        }
-    }
-
-    public Int32 MASITEMKEY
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[36]);
-        }
-    }
-    public bool MASITEMKEY_IsNull
-    {
-        get
-        {
-            return IsNull(36);
-        }
-    }
-
-    public String UPC
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[37]);
-        }
-    }
-    public bool UPC_IsNull
-    {
-        get
-        {
-            return IsNull(37);
-        }
-    }
-
-    public String MASITEMID
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[38]);
-        }
-    }
-    public bool MASITEMID_IsNull
-    {
-        get
-        {
-            return IsNull(38);
-        }
-    }
-
-    public String WAREHOUSEID
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[39]);
-        }
-    }
-    public bool WAREHOUSEID_IsNull
-    {
-        get
-        {
-            return IsNull(39);
-        }
-    }
-
-    public String COMPANYID
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[40]);
-        }
-    }
-    public bool COMPANYID_IsNull
-    {
-        get
-        {
-            return IsNull(40);
-        }
-    }
-
-    public Decimal QTYONHAND
-    {
-        get
-        {
-            return Buffer.GetDecimal(BufferColumnIndexes[41]);
-        }
-    }
-    public bool QTYONHAND_IsNull
-    {
-        get
-        {
-            return IsNull(41);
-        }
-    }
-
-    public Decimal QTYAVAILABLE
-    {
-        get
-        {
-            return Buffer.GetDecimal(BufferColumnIndexes[42]);
-        }
-    }
-    public bool QTYAVAILABLE_IsNull
-    {
-        get
-        {
-            return IsNull(42);
-        }
-    }
-
-    public Decimal SURPLUSQTY
-    {
-        get
-        {
-            return Buffer.GetDecimal(BufferColumnIndexes[43]);
-        }
-    }
-    public bool SURPLUSQTY_IsNull
-    {
-        get
-        {
-            return IsNull(43);
-        }
-    }
-
-    public Decimal QTYONHOLD
-    {
-        get
-        {
-            return Buffer.GetDecimal(BufferColumnIndexes[44]);
-        }
-    }
-    public bool QTYONHOLD_IsNull
-    {
-        get
-        {
-            return IsNull(44);
-        }
-    }
-
-    public Decimal MAXSTOCKLEVEL
-    {
-        get
-        {
-            return Buffer.GetDecimal(BufferColumnIndexes[45]);
-        }
-    }
-    public bool MAXSTOCKLEVEL_IsNull
-    {
-        get
-        {
-            return IsNull(45);
-        }
-    }
-
-    new public bool NextRow()
-    {
-        return base.NextRow();
-    }
-
-    new public bool EndOfRowset()
-    {
-        return base.EndOfRowset();
-    }
-
-}
-]]></arrayElement><arrayElement dataType="System.String"><![CDATA[\componentwrapper.cs]]></arrayElement><arrayElement dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
-*  Microsoft SQL Server Integration Services component wrapper
-*  This module defines the base class for your component
-*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
-
-using System;
-using System.Data;
-using Microsoft.SqlServer.Dts.Pipeline;
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
-using Microsoft.SqlServer.Dts.Runtime.Wrapper;
-
-public class UserComponent: ScriptComponent
-{
-    public Connections Connections;
-    public Variables Variables;
-    public UserComponent()
-    {
-        Connections = new Connections(this);
-        Variables = new Variables(this);
-    }
-
-    public override void ProcessInput(int InputID, PipelineBuffer Buffer)
-    {
-
-        if (InputID == 159)
-        {
-            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID)));
-        }
-
-    }
-
-    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
-    {
-        while (Buffer.NextRow())
-        {
-            Input0_ProcessInputRow(Buffer);
-        }
-    }
-
-    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
-    {
-    }
-
-}
-
-public class Connections
-{
-    ScriptComponent ParentComponent;
-
-    public Connections(ScriptComponent Component)
-    {
-        ParentComponent = Component;
-    }
-
-    public IDTSConnectionManager100 Connection
-    {
-        get
-        {
-            return ParentComponent.ComponentMetaData.RuntimeConnectionCollection.GetObjectByID(217).ConnectionManager;
-        }
-    }
-
-}
-
-public class Variables
-{
-    ScriptComponent ParentComponent;
-
-    public Variables(ScriptComponent Component)
-    {
-        ParentComponent = Component;
-    }
-
-    public String SLXConnectionString
-    {
-        get
-        {
-            return (String)(ParentComponent.ReadOnlyVariables["SLXConnectionString"].Value);
-        }
-    }
-
-}
+End Class
 ]]></arrayElement></arrayElements></property>
-<property id="162" name="BinaryCode" dataType="System.String" state="cdata" isArray="true" description="Stores the binary representation of the component" typeConverter="" UITypeEditor="" containsID="false" expressionType="None"><arrayElements arrayElementCount="2"><arrayElement dataType="System.String"><![CDATA[\bin\release\sc_748737a7753c4d9f8c4c616d27f89b65.csproj.dll]]></arrayElement><arrayElement dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+<property id="233" name="BinaryCode" dataType="System.String" state="cdata" isArray="true" description="Stores the binary representation of the component" typeConverter="" UITypeEditor="" containsID="false" expressionType="None"><arrayElements arrayElementCount="2"><arrayElement dataType="System.String"><![CDATA[\bin\sc_d7a7b465e954421ebd9d06a177a7b30b.vbproj.dll]]></arrayElement><arrayElement dataType="System.String"><![CDATA[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
-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
-YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVz
-b3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAEJTSkIBAAEAAAAAAAwAAAB2Mi4wLjUwNzI3
-AAAAAAUAbAAAAMAPAAAjfgAALBAAADAVAAAjU3RyaW5ncwAAAABcJQAAAAEAACNVUwBcJgAAEAAA
-ACNHVUlEAAAAbCYAABACAAAjQmxvYgAAAAAAAAACAAABVxWiAQkBAAAA+gEzABYAAAEAAAAxAAAA
-CAAAAAcAAAByAAAACgAAADwAAAAOAAAAAgAAAAUAAABhAAAAYgAAAAEAAAAIAAAAAQAAAAAACgAB
-AAAAAAAGAM4AxwAKABMB8gAKACMB8gAOAEUBMAEGAG4BXQEGAJ8BigESABYC8gAGABUDxwAWAPMO
-yw4GAJsPiQ8GALIPiQ8GAM8PiQ8GAO4PiQ8GAAcQiQ8GACAQiQ8GADsQiQ8GAFYQiQ8GAG8QiQ8G
-AKgQiBAGAMgQiBAGACQREREGAEERxwAGAEYRxwAGAGoRiQ8OAJYRgBEOAK8RgBEKANUR8gAaAAIS
-/BEaABIS/BEGACESxwAeAFMSPhIeAF4SPhIaAHAS/BEaAJYS/BEaAKES/BEaAMcS/BEaAOUS/BEa
-AAcT/BEGABkTxwAaAB8T/BEaAEIT/BEaABsP/BEaAF8T/BEGAI4TiBAiAP0T1BMiACwU1BMiAG8U
-1BMWAKwUyw4WANMUyw4AAAAAAQAAAAAAAQABAAAAEAA5AEMABQABAAEAAQAQAHkAAAAJAAMABQAB
-ABAAhwAAAAwABQAJAAEAEACSAAAADQAFAA0AAAEQAJ8AQwARAAUAbAABABAAqAAAAAUABgBvAAEA
-EAC0AAAABQAHAHEAEQB+ARMAEQCrARcABgCoADkABgC0AD0AEQB0DngAAQCYDoYAAQCYDoYAUCAA
-AAAAgxi7ARsAAQBYIAAAAACTCMEBHwABAJEgAAAAAJMI1QEkAAEAmCAAAAAAkwjhASkAAQCgIAAA
-AACGGLsBGwACAMAgAAAAAMYAJQJBAAIA3SAAAAAAxgEyAkgABADwIAAAAADGAUYCSAAFAPIgAAAA
-AMYAXQIbAAYA+iAAAAAAxgBoAhsABgAEIQAAAADGAEYCSAAGAAUiAAAAAIYYuwEbAAcADSIAAAAA
-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
-EQC9FHUBgQElE3sBiQE4EywBKQCLAMcALgATALIBLgAbALIBLgAjALgBLgBTAOcBLgALAIIBLgAr
-AIIBLgA7ALIBLgBbAPABLgAzAMcBQwBjAKQASQCLAMcAgwCjAKQAoQCjAaQAvAA3AQIAAQAFAAMA
-BgBfAAcAYAAIAGEAAABuAS8AAADtATQAAAA6CWcAAABECWsAAABVCWcAAABaCWsAAABmCWcAAABy
-CWsAAACFCWcAAACOCWsAAACeCWcAAAClCWsAAACzCW8AAAC5CWsAAADGCWcAAADTCWsAAADnCWcA
-AADuCWsAAAD8CWcAAAABCmsAAAANCnQAAAAZCmsAAAAsCnQAAAA4CmsAAABLCnQAAABVCmsAAABm
-CnQAAABuCmsAAAB9CnQAAACGCmsAAACWCnQAAACdCmsAAACrCnQAAACyCmsAAADACnQAAADSCmsA
-AADrCnQAAAD6CmsAAAAQC3QAAAAYC2sAAAAnC3QAAAA4C2sAAABQC2cAAABgC2sAAAB3C3QAAACK
-C2sAAACkC3QAAACuC2sAAAC/C3QAAADEC2sAAADQC3QAAADaC2sAAADrC3QAAAD4C2sAAAAMDHQA
-AAASDGsAAAAfDHQAAAAkDGsAAAAwDHQAAABBDGsAAABZDHQAAABkDGsAAAB2DGcAAACJDGsAAACj
-DHQAAACzDGsAAADKDHQAAADXDGsAAADrDHQAAAD8DGsAAAAUDXQAAAAjDWsAAAA5DXQAAABHDWsA
-AABcDXQAAABnDWsAAAB5DWcAAAB9DWsAAACIDWcAAACSDWsAAACjDWcAAACvDWsAAADCDWcAAADM
-DWsAAADdDW8AAADnDWsAAAD4DW8AAAAFDmsAAAAZDm8AAAAkDmsAAAA2Dm8AAABADmsAAABRDm8A
-AABfDmsAAACQDoEAAAAbD5UAAAA+D2cAAgACAAMAAQAEAAUAAgADAAUAAgAOAAcAAgAPAAkAAgAQ
-AAsAAgARAA0AAgASAA8AAgATABEAAgAUABMAAgAVABUAAgAWABcAAgAXABkAAgAYABsAAgAZAB0A
-AgAaAB8AAgAbACEAAgAcACMAAgAdACUAAgAeACcAAgAfACkAAgAgACsAAgAhAC0AAgAiAC8AAgAj
-ADEAAgAkADMAAgAlADUAAgAmADcAAgAnADkAAgAoADsAAgApAD0AAgAqAD8AAgArAEEAAgAsAEMA
-AgAtAEUAAgAuAEcAAgAvAEkAAgAwAEsAAgAxAE0AAgAyAE8AAgAzAFEAAgA0AFMAAgA1AFUAAgA2
-AFcAAgA3AFkAAgA4AFsAAgA5AF0AAgA6AF8AAgA7AGEAAgA8AGMAAgA9AGUAAgA+AGcAAgA/AGkA
-AgBAAGsAAgBBAG0AAgBCAG8AAgBDAHEAAgBEAHMAAgBFAHUAAgBGAHcAAgBHAHkAAgBIAHsAAgBJ
-AH0AAgBKAH8AAgBLAIEAAgBMAIMAAgBNAIUAAgBOAIcAAgBPAIkAAgBQAIsAAgBRAI0AAgBSAI8A
-AgBTAJEAAgBUAJMAAgBVAJUAAgBWAJcAAgBXAJkAAgBYAJsAAgBZAJ0AAgBaAJ8AAgBbAKEAAgBc
-AKMAAgBdAKUAAgBeAKcAAgBfAKkAAgBgAKsAAgBhAK0AAgBiAK8AAgBjALEAAgBkALMAAgBlALUA
-AgBmALcAAgBnALkAAgBoALsAAgBpAL0AAgBsAL8AAgBwAMEAAgByAMMABIAAAAEAAAAcEm5qAAAA
-AAAA5hAAAAIAAAAAAAAAAAAAAAEAvgAAAAAACgAAAAAAAAAAAAAACgDVAAAAAAACAAAAAAAAAAAA
-AAABAMcAAAAAAAoAAAAAAAAAAAAAAAoA9QEAAAAACgAAAAAAAAAAAAAACgCoDgAAAAAHAAAA5AwA
-AAAAAADWAPwRAAAAAAIAAAAAAAAAAAAAAAEAPhIAAAAACgAAAAAAAAAAAAAACgCwEwAAAAAAAAAA
-AQAAAOMUAAAAAAA8TW9kdWxlPgBTQ183NDg3MzdhNzc1M2M0ZDlmOGM0YzYxNmQyN2Y4OWI2NS5j
-c3Byb2ouZGxsAFJlc291cmNlcwBTQ183NDg3MzdhNzc1M2M0ZDlmOGM0YzYxNmQyN2Y4OWI2NS5j
-c3Byb2ouUHJvcGVydGllcwBVc2VyQ29tcG9uZW50AFNjcmlwdE1haW4ASW5wdXQwQnVmZmVyAFNl
-dHRpbmdzAENvbm5lY3Rpb25zAFZhcmlhYmxlcwBtc2NvcmxpYgBTeXN0ZW0AT2JqZWN0AE1pY3Jv
-c29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUA
-U2NyaXB0Q29tcG9uZW50AFNjcmlwdEJ1ZmZlcgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBBcHBsaWNh
-dGlvblNldHRpbmdzQmFzZQBTeXN0ZW0uUmVzb3VyY2VzAFJlc291cmNlTWFuYWdlcgByZXNvdXJj
-ZU1hbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBDdWx0dXJlSW5mbwByZXNvdXJjZUN1bHR1cmUALmN0
-b3IAZ2V0X1Jlc291cmNlTWFuYWdlcgBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQBDdWx0dXJlAE1p
-Y3Jvc29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVIb3N0AFBpcGVsaW5lQnVmZmVyAFByb2Nlc3NJbnB1
-dABJbnB1dDBfUHJvY2Vzc0lucHV0AElucHV0MF9Qcm9jZXNzSW5wdXRSb3cAUHJlRXhlY3V0ZQBQ
-b3N0RXhlY3V0ZQBnZXRfUFJPRFVDVElEAGdldF9QUk9EVUNUSURfSXNOdWxsAGdldF9OQU1FAGdl
-dF9OQU1FX0lzTnVsbABnZXRfREVTQ1JJUFRJT04AZ2V0X0RFU0NSSVBUSU9OX0lzTnVsbABnZXRf
-QUNUVUFMSUQAZ2V0X0FDVFVBTElEX0lzTnVsbABnZXRfRkFNSUxZAGdldF9GQU1JTFlfSXNOdWxs
-AERlY2ltYWwAZ2V0X1BSSUNFAGdldF9QUklDRV9Jc051bGwAZ2V0X1BST0RVQ1RHUk9VUABnZXRf
-UFJPRFVDVEdST1VQX0lzTnVsbABnZXRfU1RBVFVTAGdldF9TVEFUVVNfSXNOdWxsAGdldF9VTklU
-AGdldF9VTklUX0lzTnVsbABnZXRfU1RPQ0tWT0xVTUUAZ2V0X1NUT0NLVk9MVU1FX0lzTnVsbABn
-ZXRfU1RPQ0tXRUlHSFQAZ2V0X1NUT0NLV0VJR0hUX0lzTnVsbABnZXRfU1RPQ0tJVEVNAGdldF9T
-VE9DS0lURU1fSXNOdWxsAGdldF9QUk9HUkFNAGdldF9QUk9HUkFNX0lzTnVsbABnZXRfU1VQUExJ
-RVIAZ2V0X1NVUFBMSUVSX0lzTnVsbABnZXRfVkVORE9SAGdldF9WRU5ET1JfSXNOdWxsAGdldF9T
-SVRFSUQAZ2V0X1NJVEVJRF9Jc051bGwAZ2V0X1dBUkVIT1VTRUxPQ0FUSU9OAGdldF9XQVJFSE9V
-U0VMT0NBVElPTl9Jc051bGwAZ2V0X0NPTU1JU1NJT05BQkxFAGdldF9DT01NSVNTSU9OQUJMRV9J
-c051bGwAZ2V0X1RBWEFCTEUAZ2V0X1RBWEFCTEVfSXNOdWxsAGdldF9BQ0NPVU5USU5HUEVSSU9E
-AGdldF9BQ0NPVU5USU5HUEVSSU9EX0lzTnVsbABnZXRfR0xBQ0NPVU5UTlVNQkVSAGdldF9HTEFD
-Q09VTlROVU1CRVJfSXNOdWxsAGdldF9HTFNVQkFDQ09VTlROVU1CRVIAZ2V0X0dMU1VCQUNDT1VO
-VE5VTUJFUl9Jc051bGwAZ2V0X0RBVEFPV05FUgBnZXRfREFUQU9XTkVSX0lzTnVsbABnZXRfVFlQ
-RQBnZXRfVFlQRV9Jc051bGwAZ2V0X0ZJWEVEQ09TVABnZXRfRklYRURDT1NUX0lzTnVsbABnZXRf
-R0xPQkFMU1lOQ0lEAGdldF9HTE9CQUxTWU5DSURfSXNOdWxsAGdldF9BUFBJRABnZXRfQVBQSURf
-SXNOdWxsAGdldF9USUNLAGdldF9USUNLX0lzTnVsbABnZXRfQ09NTU9ESVRZR1JPVVBJRABnZXRf
-Q09NTU9ESVRZR1JPVVBJRF9Jc051bGwAZ2V0X0FDVElWRUZMQUcAZ2V0X0FDVElWRUZMQUdfSXNO
-dWxsAGdldF9TRUxMSU5HQUxMT1dFREZMQUcAZ2V0X1NFTExJTkdBTExPV0VERkxBR19Jc051bGwA
-Z2V0X1VOSVRPRk1FQVNVUkVJRABnZXRfVU5JVE9GTUVBU1VSRUlEX0lzTnVsbABnZXRfU0VMTElO
-R1VPTUlEAGdldF9TRUxMSU5HVU9NSURfSXNOdWxsAGdldF9TRUxMSU5HVU9NTlVNQkVSAGdldF9T
-RUxMSU5HVU9NTlVNQkVSX0lzTnVsbABnZXRfQ0xBU1NJRklDQVRJT04AZ2V0X0NMQVNTSUZJQ0FU
-SU9OX0lzTnVsbABnZXRfQ09NTU9ESVRZVFlQRQBnZXRfQ09NTU9ESVRZVFlQRV9Jc051bGwAZ2V0
-X01BU0lURU1LRVkAZ2V0X01BU0lURU1LRVlfSXNOdWxsAGdldF9VUEMAZ2V0X1VQQ19Jc051bGwA
-Z2V0X01BU0lURU1JRABnZXRfTUFTSVRFTUlEX0lzTnVsbABnZXRfV0FSRUhPVVNFSUQAZ2V0X1dB
-UkVIT1VTRUlEX0lzTnVsbABnZXRfQ09NUEFOWUlEAGdldF9DT01QQU5ZSURfSXNOdWxsAGdldF9R
-VFlPTkhBTkQAZ2V0X1FUWU9OSEFORF9Jc051bGwAZ2V0X1FUWUFWQUlMQUJMRQBnZXRfUVRZQVZB
-SUxBQkxFX0lzTnVsbABnZXRfU1VSUExVU1FUWQBnZXRfU1VSUExVU1FUWV9Jc051bGwAZ2V0X1FU
-WU9OSE9MRABnZXRfUVRZT05IT0xEX0lzTnVsbABnZXRfTUFYU1RPQ0tMRVZFTABnZXRfTUFYU1RP
-Q0tMRVZFTF9Jc051bGwATmV4dFJvdwBFbmRPZlJvd3NldABQUk9EVUNUSUQAUFJPRFVDVElEX0lz
-TnVsbABOQU1FAE5BTUVfSXNOdWxsAERFU0NSSVBUSU9OAERFU0NSSVBUSU9OX0lzTnVsbABBQ1RV
-QUxJRABBQ1RVQUxJRF9Jc051bGwARkFNSUxZAEZBTUlMWV9Jc051bGwAUFJJQ0UAUFJJQ0VfSXNO
-dWxsAFBST0RVQ1RHUk9VUABQUk9EVUNUR1JPVVBfSXNOdWxsAFNUQVRVUwBTVEFUVVNfSXNOdWxs
-AFVOSVQAVU5JVF9Jc051bGwAU1RPQ0tWT0xVTUUAU1RPQ0tWT0xVTUVfSXNOdWxsAFNUT0NLV0VJ
-R0hUAFNUT0NLV0VJR0hUX0lzTnVsbABTVE9DS0lURU0AU1RPQ0tJVEVNX0lzTnVsbABQUk9HUkFN
-AFBST0dSQU1fSXNOdWxsAFNVUFBMSUVSAFNVUFBMSUVSX0lzTnVsbABWRU5ET1IAVkVORE9SX0lz
-TnVsbABTSVRFSUQAU0lURUlEX0lzTnVsbABXQVJFSE9VU0VMT0NBVElPTgBXQVJFSE9VU0VMT0NB
-VElPTl9Jc051bGwAQ09NTUlTU0lPTkFCTEUAQ09NTUlTU0lPTkFCTEVfSXNOdWxsAFRBWEFCTEUA
-VEFYQUJMRV9Jc051bGwAQUNDT1VOVElOR1BFUklPRABBQ0NPVU5USU5HUEVSSU9EX0lzTnVsbABH
-TEFDQ09VTlROVU1CRVIAR0xBQ0NPVU5UTlVNQkVSX0lzTnVsbABHTFNVQkFDQ09VTlROVU1CRVIA
-R0xTVUJBQ0NPVU5UTlVNQkVSX0lzTnVsbABEQVRBT1dORVIAREFUQU9XTkVSX0lzTnVsbABUWVBF
-AFRZUEVfSXNOdWxsAEZJWEVEQ09TVABGSVhFRENPU1RfSXNOdWxsAEdMT0JBTFNZTkNJRABHTE9C
-QUxTWU5DSURfSXNOdWxsAEFQUElEAEFQUElEX0lzTnVsbABUSUNLAFRJQ0tfSXNOdWxsAENPTU1P
-RElUWUdST1VQSUQAQ09NTU9ESVRZR1JPVVBJRF9Jc051bGwAQUNUSVZFRkxBRwBBQ1RJVkVGTEFH
-X0lzTnVsbABTRUxMSU5HQUxMT1dFREZMQUcAU0VMTElOR0FMTE9XRURGTEFHX0lzTnVsbABVTklU
-T0ZNRUFTVVJFSUQAVU5JVE9GTUVBU1VSRUlEX0lzTnVsbABTRUxMSU5HVU9NSUQAU0VMTElOR1VP
-TUlEX0lzTnVsbABTRUxMSU5HVU9NTlVNQkVSAFNFTExJTkdVT01OVU1CRVJfSXNOdWxsAENMQVNT
-SUZJQ0FUSU9OAENMQVNTSUZJQ0FUSU9OX0lzTnVsbABDT01NT0RJVFlUWVBFAENPTU1PRElUWVRZ
-UEVfSXNOdWxsAE1BU0lURU1LRVkATUFTSVRFTUtFWV9Jc051bGwAVVBDAFVQQ19Jc051bGwATUFT
-SVRFTUlEAE1BU0lURU1JRF9Jc051bGwAV0FSRUhPVVNFSUQAV0FSRUhPVVNFSURfSXNOdWxsAENP
-TVBBTllJRABDT01QQU5ZSURfSXNOdWxsAFFUWU9OSEFORABRVFlPTkhBTkRfSXNOdWxsAFFUWUFW
-QUlMQUJMRQBRVFlBVkFJTEFCTEVfSXNOdWxsAFNVUlBMVVNRVFkAU1VSUExVU1FUWV9Jc051bGwA
-UVRZT05IT0xEAFFUWU9OSE9MRF9Jc051bGwATUFYU1RPQ0tMRVZFTABNQVhTVE9DS0xFVkVMX0lz
-TnVsbABkZWZhdWx0SW5zdGFuY2UAZ2V0X0RlZmF1bHQARGVmYXVsdABQYXJlbnRDb21wb25lbnQA
-TWljcm9zb2Z0LlNxbFNlcnZlci5EVFNSdW50aW1lV3JhcABNaWNyb3NvZnQuU3FsU2VydmVyLkR0
-cy5SdW50aW1lLldyYXBwZXIASURUU0Nvbm5lY3Rpb25NYW5hZ2VyMTAwAGdldF9Db25uZWN0aW9u
-AENvbm5lY3Rpb24AZ2V0X1NMWENvbm5lY3Rpb25TdHJpbmcAU0xYQ29ubmVjdGlvblN0cmluZwB2
-YWx1ZQBJbnB1dElEAEJ1ZmZlcgBSb3cAQnVmZmVyQ29sdW1uSW5kZXhlcwBDb21wb25lbnQAU3lz
-dGVtLlJlZmxlY3Rpb24AQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9u
-QXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlB
-dHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmli
-dXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAEFzc2VtYmx5Q3VsdHVyZUF0dHJpYnV0ZQBB
-c3NlbWJseVZlcnNpb25BdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBD
-b21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmli
-dXRlAFNDXzc0ODczN2E3NzUzYzRkOWY4YzRjNjE2ZDI3Zjg5YjY1LmNzcHJvagBTeXN0ZW0uRGlh
-Z25vc3RpY3MARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBUeXBlAFJ1bnRpbWVUeXBlSGFu
-ZGxlAEdldFR5cGVGcm9tSGFuZGxlAEFzc2VtYmx5AGdldF9Bc3NlbWJseQBTeXN0ZW0uQ29tcG9u
-ZW50TW9kZWwARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZVN0YXRlAEdl
-dENvbHVtbkluZGV4ZXMAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1dGUAQURP
-REIAQ29ubmVjdGlvbkNsYXNzAFJlY29yZHNldENsYXNzAFN0cmluZwBFbXB0eQBUb1N0cmluZwBD
-b25jYXQAU3lzdGVtLldpbmRvd3MuRm9ybXMATWVzc2FnZUJveABEaWFsb2dSZXN1bHQAU2hvdwBf
-Q29ubmVjdGlvbgBzZXRfQ29ubmVjdGlvblN0cmluZwBPcGVuAF9SZWNvcmRzZXQAQ3Vyc29yTG9j
-YXRpb25FbnVtAHNldF9DdXJzb3JMb2NhdGlvbgBDdXJzb3JUeXBlRW51bQBzZXRfQ3Vyc29yVHlw
-ZQBMb2NrVHlwZUVudW0Ac2V0X0xvY2tUeXBlAGdldF9FT0YARmllbGRzAGdldF9GaWVsZHMASW50
-MzIARmllbGQAZ2V0X0l0ZW0Ac2V0X1ZhbHVlAGdldF9WYWx1ZQBBZmZlY3RFbnVtAFVwZGF0ZUJh
-dGNoAENsb3NlAFJlY29yZHNldABHZXRTdHJpbmcASXNOdWxsAEdldERlY2ltYWwAR2V0SW50MzIA
-Q29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUALmNjdG9yAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRFRT
-UGlwZWxpbmVXcmFwAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lLldyYXBwZXIASURU
-U0NvbXBvbmVudE1ldGFEYXRhMTAwAGdldF9Db21wb25lbnRNZXRhRGF0YQBJRFRTUnVudGltZUNv
-bm5lY3Rpb25Db2xsZWN0aW9uMTAwAGdldF9SdW50aW1lQ29ubmVjdGlvbkNvbGxlY3Rpb24ASURU
-U1J1bnRpbWVDb25uZWN0aW9uMTAwAEdldE9iamVjdEJ5SUQAZ2V0X0Nvbm5lY3Rpb25NYW5hZ2Vy
-AElEVFNWYXJpYWJsZXMxMDAAZ2V0X1JlYWRPbmx5VmFyaWFibGVzAElEVFNWYXJpYWJsZTEwMABT
-Q183NDg3MzdhNzc1M2M0ZDlmOGM0YzYxNmQyN2Y4OWI2NS5jc3Byb2ouUHJvcGVydGllcy5SZXNv
-dXJjZXMucmVzb3VyY2VzAAAAAAB/UwBDAF8ANwA0ADgANwAzADcAYQA3ADcANQAzAGMANABkADkA
-ZgA4AGMANABjADYAMQA2AGQAMgA3AGYAOAA5AGIANgA1AC4AYwBzAHAAcgBvAGoALgBQAHIAbwBw
-AGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAFFTAEUATABFAEMAVAAgACoAIABGAFIA
-TwBNACAAUABSAE8ARABVAEMAVAAgAFcASABFAFIARQAgAFAAUgBPAEQAVQBDAFQASQBEACAAPQAn
-AAEDJwABJ1MATABYAEMAbwBuAG4AZQBjAHQAaQBvAG4AUwB0AHIAaQBuAGcAAAAg6IGa0QhdTayS
-7/0LTZGRAAi3elxWGTTgiQiJhF3NgIDMkQMGEhUDBhIZAyAAAQQAABIVBAAAEhkFAAEBEhkECAAS
-FQQIABIZAwYSHAMGEiAGIAIBCBIdBSABARIUByACARIdHQgDIAAOAyAAAgQgABEhAyAACAMoAA4D
-KAACBCgAESEDKAAIAwYSGAQAABIYBAgAEhgDBhIJBSABARIJBCAAEiUEKAASJQQgAQEOBCABAQgE
-AQAAAAYAARJZEV0EIAASYQYgAgEOEmEEBwESFQUgAQERaQgBAAIAAAAAAAUgAR0ICAiwP19/EdUK
-OgIGDgYAAw4ODg4GAAERgIEOByAEAQ4ODggGIAEBEYCNBiABARGAkQYgAQERgJUMIAUBHBwRgJER
-gJUIBSAAEoCZBiABEoChHAQgAQEcAyAAHAYgAQERgKUJBwMSgKkSgK0OAwYSHQMGHQgEIAEOCAQg
-AQIIBSABESEIBCABCAgDAAABBSAAEoC1BSAAEoC5BiABEoC9CAUgABKAwQYgARKAxRwvAQAqU0Nf
-NzQ4NzM3YTc3NTNjNGQ5ZjhjNGM2MTZkMjdmODliNjUuY3Nwcm9qAAAFAQAAAAAOAQAJTWljcm9z
-b2Z0AAAfAQAaQ29weXJpZ2h0IEAgTWljcm9zb2Z0IDIwMTIAAAgBAAgAAAAAAB4BAAEAVAIWV3Jh
-cE5vbkV4Y2VwdGlvblRocm93cwEArFEAAAAAAAAAAAAAzlEAAAAgAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAMBRAAAAAAAAAAAAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUA
-IEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQAAAAGAAAgAAA
-AAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAAAFhgAAA4BAAAAAAA
-AAAAAAA4BDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv/gAAAQAAAAEA
-bmocEgAAAQBuahwSPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYAYQByAEYAaQBs
-AGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAAALAEmAMAAAEA
-UwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAdAMAAAEAMAAwADAAMAAwADQAYgAwAAAANAAK
-AAEAQwBvAG0AcABhAG4AeQBOAGEAbQBlAAAAAABNAGkAYwByAG8AcwBvAGYAdAAAAIAAKwABAEYA
-aQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAEMAXwA3ADQAOAA3ADMANwBhADcANwA1
-ADMAYwA0AGQAOQBmADgAYwA0AGMANgAxADYAZAAyADcAZgA4ADkAYgA2ADUALgBjAHMAcAByAG8A
-agAAAAAAQAAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADQANgAzADYALgAy
-ADcAMgA0ADYAAAAAAIAALwABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8ANwA0ADgA
-NwAzADcAYQA3ADcANQAzAGMANABkADkAZgA4AGMANABjADYAMQA2AGQAMgA3AGYAOAA5AGIANgA1
-AC4AYwBzAHAAcgBvAGoALgBkAGwAbAAAAAAAXAAbAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcA
-aAB0AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAATQBpAGMAcgBvAHMAbwBmAHQAIAAyADAAMQAy
-AAAAAACIAC8AAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8ANwA0ADgA
-NwAzADcAYQA3ADcANQAzAGMANABkADkAZgA4AGMANABjADYAMQA2AGQAMgA3AGYAOAA5AGIANgA1
-AC4AYwBzAHAAcgBvAGoALgBkAGwAbAAAAAAAeAArAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAA
-AABTAEMAXwA3ADQAOAA3ADMANwBhADcANwA1ADMAYwA0AGQAOQBmADgAYwA0AGMANgAxADYAZAAy
-ADcAZgA4ADkAYgA2ADUALgBjAHMAcAByAG8AagAAAAAARAAPAAEAUAByAG8AZAB1AGMAdABWAGUA
-cgBzAGkAbwBuAAAAMQAuADAALgA0ADYAMwA2AC4AMgA3ADIANAA2AAAAAABIAA8AAQBBAHMAcwBl
-AG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA0ADYAMwA2AC4AMgA3ADIANAA2AAAA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAPKPTlAAAAAAAAAAAOAAAiELAQgAAE4AAAAMAAAAAAAA3mwA
+AAAgAAAAgAAAAABAAAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAADAAAAAAgAAAAAAAAIAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAIhsAABTAAAAAIAAAFgJAAAAAAAAAAAAAAAAAAAA
+AAAAAKAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA5EwAAAAgAAAATgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAFgJAAAAgAAAAAoAAABQAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAKAAAAACAAAAWgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADA
+bAAAAAAAAEgAAAACAAUApDUAAOQ2AAABAAAAAAAAAFAgAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5S
+ZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFs
+LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGlt
+ZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAAAeAigBAAAKKh4CKAQAAAoqpnMGAAAK
+gAEAAARzBwAACoACAAAEcwgAAAqAAwAABHMJAAAKgAQAAAQqAAATMAEACwAAAAEAABF+AQAABG8K
+AAAKKgATMAEACwAAAAIAABF+AgAABG8LAAAKKgATMAEACwAAAAMAABF+AwAABG8MAAAKKgATMAEA
+CwAAAAQAABF+BAAABG8NAAAKKgATMAIADQAAAAUAABECAygRAAAKKBIAAAoqAAAAEzABAAcAAAAG
+AAARAigTAAAKKgATMAEACwAAAAcAABHQBQAAAigUAAAKKgATMAEABwAAAAgAABECKBUAAAoqABMw
+AQAQAAAACQAAEQKMAQAAGy0GKAEAACsqAioTMAIAEAAAAAoAABEDEgD+FQIAABsGgQIAABsqHgIo
+FwAACioTMAIAKAAAAAsAABECexkAAApvGgAACgsHjAMAABstEigCAAArCwJ7GQAACgdvGwAACgcq
+SgIoFwAACgJzHAAACn0ZAAAKKgAmAgMEKB4AAAoqAAATMAMAFAAAAAwAABECex8AAAoCeyAAAAoW
+lG8hAAAKKhMwAgAIAAAADQAAEQIWbyIAAAoqEzADABQAAAAOAAARAnsfAAAKAnsgAAAKF5RvIQAA
+CioTMAIACAAAAA8AABECF28iAAAKKhMwAwAUAAAAEAAAEQJ7HwAACgJ7IAAAChiUbyEAAAoqEzAC
+AAgAAAARAAARAhhvIgAACioTMAMAFAAAABIAABECex8AAAoCeyAAAAoZlG8hAAAKKhMwAgAIAAAA
+EwAAEQIZbyIAAAoqEzADABQAAAAUAAARAnsfAAAKAnsgAAAKGpRvIQAACioTMAIACAAAABUAABEC
+Gm8iAAAKKhMwAwAUAAAAFgAAEQJ7HwAACgJ7IAAAChuUbyMAAAoqEzACAAgAAAAXAAARAhtvIgAA
+CioTMAMAFAAAABgAABECex8AAAoCeyAAAAoclG8hAAAKKhMwAgAIAAAAGQAAEQIcbyIAAAoqEzAD
+ABQAAAAaAAARAnsfAAAKAnsgAAAKHZRvIQAACioTMAIACAAAABsAABECHW8iAAAKKhMwAwAUAAAA
+HAAAEQJ7HwAACgJ7IAAACh6UbyEAAAoqEzACAAgAAAAdAAARAh5vIgAACioTMAMAFQAAAB4AABEC
+ex8AAAoCeyAAAAofCZRvJAAACioAAAATMAIACQAAAB8AABECHwlvIgAACioAAAATMAMAFQAAACAA
+ABECex8AAAoCeyAAAAofCpRvJAAACioAAAATMAIACQAAACEAABECHwpvIgAACioAAAATMAMAFQAA
+ACIAABECex8AAAoCeyAAAAofC5RvJAAACioAAAATMAIACQAAACMAABECHwtvIgAACioAAAATMAMA
+FQAAACQAABECex8AAAoCeyAAAAofDJRvJAAACioAAAATMAIACQAAACUAABECHwxvIgAACioAAAAT
+MAMAFQAAACYAABECex8AAAoCeyAAAAofDZRvJAAACioAAAATMAIACQAAACcAABECHw1vIgAACioA
+AAATMAMAFQAAACgAABECex8AAAoCeyAAAAofDpRvJAAACioAAAATMAIACQAAACkAABECHw5vIgAA
+CioAAAATMAMAFQAAACoAABECex8AAAoCeyAAAAofD5RvJAAACioAAAATMAIACQAAACsAABECHw9v
+IgAACioAAAATMAMAFQAAACwAABECex8AAAoCeyAAAAofEJRvJAAACioAAAATMAIACQAAAC0AABEC
+HxBvIgAACioAAAATMAMAFQAAAC4AABECex8AAAoCeyAAAAofEZRvJAAACioAAAATMAIACQAAAC8A
+ABECHxFvIgAACioAAAATMAMAFQAAADAAABECex8AAAoCeyAAAAofEpRvJAAACioAAAATMAIACQAA
+ADEAABECHxJvIgAACioAAAATMAMAFQAAADIAABECex8AAAoCeyAAAAofE5RvJAAACioAAAATMAIA
+CQAAADMAABECHxNvIgAACioAAAATMAMAFQAAADQAABECex8AAAoCeyAAAAofFJRvIQAACioAAAAT
+MAIACQAAADUAABECHxRvIgAACioAAAATMAMAFQAAADYAABECex8AAAoCeyAAAAofFZRvJAAACioA
+AAATMAIACQAAADcAABECHxVvIgAACioAAAATMAMAFQAAADgAABECex8AAAoCeyAAAAofFpRvJAAA
+CioAAAATMAIACQAAADkAABECHxZvIgAACioAAAATMAMAFQAAADoAABECex8AAAoCeyAAAAofF5Rv
+JAAACioAAAATMAIACQAAADsAABECHxdvIgAACioAAAATMAMAFQAAADwAABECex8AAAoCeyAAAAof
+GJRvJAAACioAAAATMAIACQAAAD0AABECHxhvIgAACioAAAATMAMAFQAAAD4AABECex8AAAoCeyAA
+AAofGZRvJAAACioAAAATMAIACQAAAD8AABECHxlvIgAACioAAAATMAMAFQAAAEAAABECex8AAAoC
+eyAAAAofGpRvJAAACioAAAATMAIACQAAAEEAABECHxpvIgAACioAAAATMAMAFQAAAEIAABECex8A
+AAoCeyAAAAofG5RvJAAACioAAAATMAIACQAAAEMAABECHxtvIgAACioAAAATMAMAFQAAAEQAABEC
+ex8AAAoCeyAAAAofHJRvJAAACioAAAATMAIACQAAAEUAABECHxxvIgAACioAAAATMAMAFQAAAEYA
+ABECex8AAAoCeyAAAAofHZRvJAAACioAAAATMAIACQAAAEcAABECHx1vIgAACioAAAATMAMAFQAA
+AEgAABECex8AAAoCeyAAAAofHpRvIQAACioAAAATMAIACQAAAEkAABECHx5vIgAACioAAAATMAMA
+FQAAAEoAABECex8AAAoCeyAAAAofH5RvJAAACioAAAATMAIACQAAAEsAABECHx9vIgAACioAAAAT
+MAMAFQAAAEwAABECex8AAAoCeyAAAAofIJRvJAAACioAAAATMAIACQAAAE0AABECHyBvIgAACioA
+AAATMAMAFQAAAE4AABECex8AAAoCeyAAAAofIZRvJAAACioAAAATMAIACQAAAE8AABECHyFvIgAA
+CioAAAATMAMAFQAAAFAAABECex8AAAoCeyAAAAofIpRvJAAACioAAAATMAIACQAAAFEAABECHyJv
+IgAACioAAAATMAMAFQAAAFIAABECex8AAAoCeyAAAAofI5RvJAAACioAAAATMAIACQAAAFMAABEC
+HyNvIgAACioAAAATMAMAFQAAAFQAABECex8AAAoCeyAAAAofJJRvJAAACioAAAATMAIACQAAAFUA
+ABECHyRvIgAACioAAAATMAMAFQAAAFYAABECex8AAAoCeyAAAAofJZRvIQAACioAAAATMAIACQAA
+AFcAABECHyVvIgAACioAAAATMAMAFQAAAFgAABECex8AAAoCeyAAAAofJpRvIQAACioAAAATMAIA
+CQAAAFkAABECHyZvIgAACioAAAATMAMAFQAAAFoAABECex8AAAoCeyAAAAofJ5RvIQAACioAAAAT
+MAIACQAAAFsAABECHydvIgAACioAAAATMAMAFQAAAFwAABECex8AAAoCeyAAAAofKJRvIQAACioA
+AAATMAIACQAAAF0AABECHyhvIgAACioAAAATMAMAFQAAAF4AABECex8AAAoCeyAAAAofKZRvIwAA
+CioAAAATMAIACQAAAF8AABECHylvIgAACioAAAATMAMAFQAAAGAAABECex8AAAoCeyAAAAofKpRv
+IwAACioAAAATMAIACQAAAGEAABECHypvIgAACioAAAATMAMAFQAAAGIAABECex8AAAoCeyAAAAof
+K5RvIwAACioAAAATMAIACQAAAGMAABECHytvIgAACioAAAATMAMAFQAAAGQAABECex8AAAoCeyAA
+AAofLJRvIwAACioAAAATMAIACQAAAGUAABECHyxvIgAACioAAAATMAMAFQAAAGYAABECex8AAAoC
+eyAAAAofLZRvIwAACioAAAATMAIACQAAAGcAABECHy1vIgAACioAAAATMAEACQAAAGgAABECKCUA
+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
+AAAGCHMKrgAGABQtAAAAAIYAjAquAAYALC0AAAAAhgCUCq4ABgBELQAAAAAGGJMBEwAGAGQtAAAA
+AEYC6g/QAAYAhC0AAAAARgP/D9cACACYLQAAAABGAxMQ1wAJAJwtAAAAAAYYkwHhAAoArC0AAAAA
+BgisEOcACwDYLQAAAAAGGJMB4QALAOgtAAAAAAYIxhBxAAwAFC4AAAAABhiTARMADAAcLgAAAABG
+AvIQEwAMACQuAAAAAEYC/RATAAwALC4AAAAARgITENcADADMNAAAAAADGJMBEwANANQ0AAAAABYI
+XxH5AA0AEDUAAAAAFghzEf4ADQAkNQAAAAAWCH8RAwENACw1AAAAABEYzgEXAA4AQDUAAAAABhiT
+ARMADgBINQAAAAAWCNsRGgEOAAAAAQCPAgAAAQDIAgAAAQDIAgAAAQC/AwAAAgDGAwAAAQD3DwAA
+AgC/AwAAAQC/AwAAAQAqEAAAAQA+EAAAAQA+EAAAAQAqEAAAAQCLEQkAkwETAHkAkwEkAYkAkwEz
+AREAkwETAJEAkwETACQAkwETACwAkwETADQAkwETADwAkwETACQA5QKLACwA5QKLADQA5QKLADwA
+5QKLAJkAkwETAKEAkwETAKkAkwGGAbEAOxPRARkAiAJjABkAkQJoACkAXBPeARkAqgJxAMEAeBPu
+ARkAkwETAMkAkwH+AUQALgOQAEwA2xGLAEwAohN7AkwAkwETANEAkwGIAjkAkwGmADkAvwOTAjkA
+xgOXAkEA3xObAjkA6ROgAkEA8BOlAkEA+xOwAjkAjAquADkAlAquANkAkwGIAlEAkwETAFEAGhS1
+AlEAkRS7AuEAyhTAAukAAxXFAvEAERXnAFEAOBXQAvkAXhXVAgEB2xHcAgkBqgLgAlEA8hATAFEA
+/RATACkBkwETADEBkwETADkBqgJxADkBsxXlAkEBxhXsAkkB6RX0AkkBCxb7AkkBJxYCA0kBxhUJ
+A0kBNBauAEkBQxYWA2kBXhUcA3kBaRYjA3EBohMpA5EBixEuA0kBkRYzA0kBmBYTAEEBmBYTAJkB
+qhY5A5kBuhYXAKEBkwETACkA/BZQA2EAkwFWA3EAkwETALEBIhdzA7EBKBdzA7kBkwETAMEBkwF9
+A8kBkwETANEBkwGGAdkBkwGGAeEBkwGGAekBkwGGAfEBkwGGAfkBkwGGAQECkwGGAQkCkwGGASkA
+gwCLAS4AowLnAy4AuwKNAi4AmwKNAi4AwwIHBC4A6wCNAi4AqwIHBC4AswI3BC4AOwHhAy4AewKC
+Ay4AgwKLAy4AiwKqAy4AkwK3A0AAKwBRAUAAEwAqAUMAEwAqAUMAGwA5AUkAgwCpAWMAGwA5AWMA
+EwAqAWkAgwCcAYAAKwBRAYMAewBRAYMAGwA5AYMAcwBRAYkAgwC9AaAAKwBRAaMAEwAqAaMAwwAG
+AsAAKwBRAcMAEwAqAcMA6wCNAuAAKwBRAeMAOwGNAgABEwAqAQABKwBRAQMBOwGNAiABEwAqASAB
+KwBRAUABEwAqAUABKwBRAWABKwBRAWABEwAqAWMBQwJRAWMBOwGNAoABKwBRAaABKwBRAcABKwBR
+AcABEwAqAeABKwBRAQACKwBRAQACEwAqAYkMEwBqA6kMEwBqA8kMcwJRAYAOOwGNAsAOOwGNAnIB
+dwF8AYEB1gHaAeUB6gH5AfkBgQLqAdYB6gHWAeoB1gHqAdYB6gHWAasC1gHqAdYB6gHWAeoB1gHa
+AdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHaAdYB2gHWAeoB1gHaAdYB2gHWAdoB
+1gHaAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHqAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHaAdYB6gHW
+AeoB1gHqAdYB6gHWAasC1gGrAtYBqwLWAasC1gGrAtYB1gHWAcsC6gFAA14DZQN4AwQAAQAGAAUA
+BwAGAAkAYgAKAGMADABkAA0AZgAAALcBTwAAAHACVAAAAB8CWQAAAHwCXgAAADgDmAAAAKAKtwAA
+AKoKuwAAALsKtwAAAMAKuwAAAMwKtwAAANgKuwAAAOsKtwAAAPQKuwAAAAQLtwAAAAsLuwAAABkL
+vwAAAB8LuwAAACwLtwAAADkLuwAAAE0LtwAAAFQLuwAAAGILtwAAAGcLuwAAAHMLxAAAAH8LuwAA
+AJILxAAAAJ4LuwAAALELxAAAALsLuwAAAMwLxAAAANQLuwAAAOMLxAAAAOwLuwAAAPwLxAAAAAMM
+uwAAABEMxAAAABgMuwAAACYMxAAAADgMuwAAAFEMxAAAAGAMuwAAAHYMxAAAAH4MuwAAAI0MxAAA
+AJ4MuwAAALYMtwAAAMYMuwAAAN0MxAAAAPAMuwAAAAoNxAAAABQNuwAAACUNxAAAACoNuwAAADYN
+xAAAAEANuwAAAFENxAAAAF4NuwAAAHINxAAAAHgNuwAAAIUNxAAAAIoNuwAAAJYNxAAAAKcNuwAA
+AL8NxAAAAMoNuwAAANwNtwAAAO8NuwAAAAkOxAAAABkOuwAAADAOxAAAAD0OuwAAAFEOxAAAAGIO
+uwAAAHoOxAAAAIkOuwAAAJ8OxAAAAK0OuwAAAMIOxAAAAM0OuwAAAN8OtwAAAOMOuwAAAO4OtwAA
+APgOuwAAAAkPtwAAABUPuwAAACgPtwAAADIPuwAAAEMPvwAAAE0PuwAAAF4PvwAAAGsPuwAAAH8P
+vwAAAIoPuwAAAJwPvwAAAKYPuwAAALcPvwAAAMUPuwAAALsQ7AAAAN4QtwAAABoRCQEAAJERDgEA
+AIsRHwECAAQAAwACAAUABQACAAYABwACAAcACQACAA8ACwACABIADQACABMADwACABQAEQACABUA
+EwACABYAFQACABcAFwACABgAGQACABkAGwACABoAHQACABsAHwACABwAIQACAB0AIwACAB4AJQAC
+AB8AJwACACAAKQACACEAKwACACIALQACACMALwACACQAMQACACUAMwACACYANQACACcANwACACgA
+OQACACkAOwACACoAPQACACsAPwACACwAQQACAC0AQwACAC4ARQACAC8ARwACADAASQACADEASwAC
+ADIATQACADMATwACADQAUQACADUAUwACADYAVQACADcAVwACADgAWQACADkAWwACADoAXQACADsA
+XwACADwAYQACAD0AYwACAD4AZQACAD8AZwACAEAAaQACAEEAawACAEIAbQACAEMAbwACAEQAcQAC
+AEUAcwACAEYAdQACAEcAdwACAEgAeQACAEkAewACAEoAfQACAEsAfwACAEwAgQACAE0AgwACAE4A
+hQACAE8AhwACAFAAiQACAFEAiwACAFIAjQACAFMAjwACAFQAkQACAFUAkwACAFYAlQACAFcAlwAC
+AFgAmQACAFkAmwACAFoAnQACAFsAnwACAFwAoQACAF0AowACAF4ApQACAF8ApwACAGAAqQACAGEA
+qwACAGIArQACAGMArwACAGQAsQACAGUAswACAGYAtQACAGcAtwACAGgAuQACAGkAuwACAGoAvQAC
+AGsAvwACAGwAwQACAG0AwwACAHUAxQACAHcAxwACAH0AyQACAH4AywABAH8AywACAIIAzQB1AHUA
+iABWAV0BZAFrAWgCbwIEgAAAAQAAAAAAAAAAAAAAAACwAAAAAgAAAAAAAAAAAAAAAQAKAAAAAAAI
+AAAAAAAAAAAAAAAKABMAAAAAAAoAAAAAAAAAAAAAAJ0ARAMAAAAACgAAAAAAAAAAAAAAnQCPAwAA
+AAAKAAAAAAAAAAAAAACdAEgQAAAAAAIAAAAAAAAAAAAAAAEAwAEAAAAACgAAAAAAAAAAAAAAnQAr
+FAAAAAAHAAAA5AwAAAAAAAAKAHMVAAAAAAAAAAABAAAAShcAAAUABAAGAAQAAAAQAAwAxgIAABAA
+GQDGAgAAAAAbAMYCLQD0AS0AdgIAAAAAADxNb2R1bGU+AG1zY29ybGliAE1pY3Jvc29mdC5WaXN1
+YWxCYXNpYwBNeUFwcGxpY2F0aW9uAFNDX2Q3YTdiNDY1ZTk1NDQyMWViZDlkMDZhMTc3YTdiMzBi
+LnZicHJvai5NeQBNeUNvbXB1dGVyAE15UHJvamVjdABNeVdlYlNlcnZpY2VzAFRocmVhZFNhZmVP
+YmplY3RQcm92aWRlcmAxAElucHV0MEJ1ZmZlcgBTQ19kN2E3YjQ2NWU5NTQ0MjFlYmQ5ZDA2YTE3
+N2E3YjMwYi52YnByb2oAVXNlckNvbXBvbmVudABDb25uZWN0aW9ucwBWYXJpYWJsZXMAU2NyaXB0
+TWFpbgBNeVJlc291cmNlcwBTQ19kN2E3YjQ2NWU5NTQ0MjFlYmQ5ZDA2YTE3N2E3YjMwYi52YnBy
+b2ouTXkuUmVzb3VyY2VzAE15U2V0dGluZ3MATWljcm9zb2Z0LlZpc3VhbEJhc2ljLkFwcGxpY2F0
+aW9uU2VydmljZXMAQXBwbGljYXRpb25CYXNlAC5jdG9yAE1pY3Jvc29mdC5WaXN1YWxCYXNpYy5E
+ZXZpY2VzAENvbXB1dGVyAFN5c3RlbQBPYmplY3QALmNjdG9yAGdldF9Db21wdXRlcgBtX0NvbXB1
+dGVyT2JqZWN0UHJvdmlkZXIAZ2V0X0FwcGxpY2F0aW9uAG1fQXBwT2JqZWN0UHJvdmlkZXIAVXNl
+cgBnZXRfVXNlcgBtX1VzZXJPYmplY3RQcm92aWRlcgBnZXRfV2ViU2VydmljZXMAbV9NeVdlYlNl
+cnZpY2VzT2JqZWN0UHJvdmlkZXIAQXBwbGljYXRpb24AV2ViU2VydmljZXMARXF1YWxzAG8AR2V0
+SGFzaENvZGUAVHlwZQBHZXRUeXBlAFRvU3RyaW5nAENyZWF0ZV9fSW5zdGFuY2VfXwBUAGluc3Rh
+bmNlAERpc3Bvc2VfX0luc3RhbmNlX18AZ2V0X0dldEluc3RhbmNlAE1pY3Jvc29mdC5WaXN1YWxC
+YXNpYy5NeVNlcnZpY2VzLkludGVybmFsAENvbnRleHRWYWx1ZWAxAG1fQ29udGV4dABHZXRJbnN0
+YW5jZQBNaWNyb3NvZnQuU3FsU2VydmVyLlR4U2NyaXB0AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRz
+LlBpcGVsaW5lAFNjcmlwdEJ1ZmZlcgBNaWNyb3NvZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9zdABQ
+aXBlbGluZUJ1ZmZlcgBCdWZmZXIAQnVmZmVyQ29sdW1uSW5kZXhlcwBnZXRfUFJPRFVDVElEAGdl
+dF9QUk9EVUNUSURfSXNOdWxsAGdldF9OQU1FAGdldF9OQU1FX0lzTnVsbABnZXRfREVTQ1JJUFRJ
+T04AZ2V0X0RFU0NSSVBUSU9OX0lzTnVsbABnZXRfQUNUVUFMSUQAZ2V0X0FDVFVBTElEX0lzTnVs
+bABnZXRfRkFNSUxZAGdldF9GQU1JTFlfSXNOdWxsAERlY2ltYWwAZ2V0X1BSSUNFAGdldF9QUklD
+RV9Jc051bGwAZ2V0X1BST0RVQ1RHUk9VUABnZXRfUFJPRFVDVEdST1VQX0lzTnVsbABnZXRfU1RB
+VFVTAGdldF9TVEFUVVNfSXNOdWxsAGdldF9VTklUAGdldF9VTklUX0lzTnVsbABnZXRfU1RPQ0tW
+T0xVTUUAZ2V0X1NUT0NLVk9MVU1FX0lzTnVsbABnZXRfU1RPQ0tXRUlHSFQAZ2V0X1NUT0NLV0VJ
+R0hUX0lzTnVsbABnZXRfU1RPQ0tJVEVNAGdldF9TVE9DS0lURU1fSXNOdWxsAGdldF9QUk9HUkFN
+AGdldF9QUk9HUkFNX0lzTnVsbABnZXRfU1VQUExJRVIAZ2V0X1NVUFBMSUVSX0lzTnVsbABnZXRf
+VkVORE9SAGdldF9WRU5ET1JfSXNOdWxsAGdldF9TSVRFSUQAZ2V0X1NJVEVJRF9Jc051bGwAZ2V0
+X1dBUkVIT1VTRUxPQ0FUSU9OAGdldF9XQVJFSE9VU0VMT0NBVElPTl9Jc051bGwAZ2V0X0NPTU1J
+U1NJT05BQkxFAGdldF9DT01NSVNTSU9OQUJMRV9Jc051bGwAZ2V0X1RBWEFCTEUAZ2V0X1RBWEFC
+TEVfSXNOdWxsAGdldF9BQ0NPVU5USU5HUEVSSU9EAGdldF9BQ0NPVU5USU5HUEVSSU9EX0lzTnVs
+bABnZXRfR0xBQ0NPVU5UTlVNQkVSAGdldF9HTEFDQ09VTlROVU1CRVJfSXNOdWxsAGdldF9HTFNV
+QkFDQ09VTlROVU1CRVIAZ2V0X0dMU1VCQUNDT1VOVE5VTUJFUl9Jc051bGwAZ2V0X0RBVEFPV05F
+UgBnZXRfREFUQU9XTkVSX0lzTnVsbABnZXRfVFlQRQBnZXRfVFlQRV9Jc051bGwAZ2V0X0ZJWEVE
+Q09TVABnZXRfRklYRURDT1NUX0lzTnVsbABnZXRfR0xPQkFMU1lOQ0lEAGdldF9HTE9CQUxTWU5D
+SURfSXNOdWxsAGdldF9BUFBJRABnZXRfQVBQSURfSXNOdWxsAGdldF9USUNLAGdldF9USUNLX0lz
+TnVsbABnZXRfQ09NTU9ESVRZR1JPVVBJRABnZXRfQ09NTU9ESVRZR1JPVVBJRF9Jc051bGwAZ2V0
+X0FDVElWRUZMQUcAZ2V0X0FDVElWRUZMQUdfSXNOdWxsAGdldF9TRUxMSU5HQUxMT1dFREZMQUcA
+Z2V0X1NFTExJTkdBTExPV0VERkxBR19Jc051bGwAZ2V0X1VOSVRPRk1FQVNVUkVJRABnZXRfVU5J
+VE9GTUVBU1VSRUlEX0lzTnVsbABnZXRfU0VMTElOR1VPTUlEAGdldF9TRUxMSU5HVU9NSURfSXNO
+dWxsAGdldF9TRUxMSU5HVU9NTlVNQkVSAGdldF9TRUxMSU5HVU9NTlVNQkVSX0lzTnVsbABnZXRf
+Q0xBU1NJRklDQVRJT04AZ2V0X0NMQVNTSUZJQ0FUSU9OX0lzTnVsbABnZXRfQ09NTU9ESVRZVFlQ
+RQBnZXRfQ09NTU9ESVRZVFlQRV9Jc051bGwAZ2V0X01BU0lURU1LRVkAZ2V0X01BU0lURU1LRVlf
+SXNOdWxsAGdldF9VUEMAZ2V0X1VQQ19Jc051bGwAZ2V0X01BU0lURU1JRABnZXRfTUFTSVRFTUlE
+X0lzTnVsbABnZXRfV0FSRUhPVVNFSUQAZ2V0X1dBUkVIT1VTRUlEX0lzTnVsbABnZXRfQ09NUEFO
+WUlEAGdldF9DT01QQU5ZSURfSXNOdWxsAGdldF9RVFlPTkhBTkQAZ2V0X1FUWU9OSEFORF9Jc051
+bGwAZ2V0X1FUWUFWQUlMQUJMRQBnZXRfUVRZQVZBSUxBQkxFX0lzTnVsbABnZXRfU1VSUExVU1FU
+WQBnZXRfU1VSUExVU1FUWV9Jc051bGwAZ2V0X1FUWU9OSE9MRABnZXRfUVRZT05IT0xEX0lzTnVs
+bABnZXRfTUFYU1RPQ0tMRVZFTABnZXRfTUFYU1RPQ0tMRVZFTF9Jc051bGwATmV4dFJvdwBFbmRP
+ZlJvd3NldABQUk9EVUNUSUQAUFJPRFVDVElEX0lzTnVsbABOQU1FAE5BTUVfSXNOdWxsAERFU0NS
+SVBUSU9OAERFU0NSSVBUSU9OX0lzTnVsbABBQ1RVQUxJRABBQ1RVQUxJRF9Jc051bGwARkFNSUxZ
+AEZBTUlMWV9Jc051bGwAUFJJQ0UAUFJJQ0VfSXNOdWxsAFBST0RVQ1RHUk9VUABQUk9EVUNUR1JP
+VVBfSXNOdWxsAFNUQVRVUwBTVEFUVVNfSXNOdWxsAFVOSVQAVU5JVF9Jc051bGwAU1RPQ0tWT0xV
+TUUAU1RPQ0tWT0xVTUVfSXNOdWxsAFNUT0NLV0VJR0hUAFNUT0NLV0VJR0hUX0lzTnVsbABTVE9D
+S0lURU0AU1RPQ0tJVEVNX0lzTnVsbABQUk9HUkFNAFBST0dSQU1fSXNOdWxsAFNVUFBMSUVSAFNV
+UFBMSUVSX0lzTnVsbABWRU5ET1IAVkVORE9SX0lzTnVsbABTSVRFSUQAU0lURUlEX0lzTnVsbABX
+QVJFSE9VU0VMT0NBVElPTgBXQVJFSE9VU0VMT0NBVElPTl9Jc051bGwAQ09NTUlTU0lPTkFCTEUA
+Q09NTUlTU0lPTkFCTEVfSXNOdWxsAFRBWEFCTEUAVEFYQUJMRV9Jc051bGwAQUNDT1VOVElOR1BF
+UklPRABBQ0NPVU5USU5HUEVSSU9EX0lzTnVsbABHTEFDQ09VTlROVU1CRVIAR0xBQ0NPVU5UTlVN
+QkVSX0lzTnVsbABHTFNVQkFDQ09VTlROVU1CRVIAR0xTVUJBQ0NPVU5UTlVNQkVSX0lzTnVsbABE
+QVRBT1dORVIAREFUQU9XTkVSX0lzTnVsbABUWVBFAFRZUEVfSXNOdWxsAEZJWEVEQ09TVABGSVhF
+RENPU1RfSXNOdWxsAEdMT0JBTFNZTkNJRABHTE9CQUxTWU5DSURfSXNOdWxsAEFQUElEAEFQUElE
+X0lzTnVsbABUSUNLAFRJQ0tfSXNOdWxsAENPTU1PRElUWUdST1VQSUQAQ09NTU9ESVRZR1JPVVBJ
+RF9Jc051bGwAQUNUSVZFRkxBRwBBQ1RJVkVGTEFHX0lzTnVsbABTRUxMSU5HQUxMT1dFREZMQUcA
+U0VMTElOR0FMTE9XRURGTEFHX0lzTnVsbABVTklUT0ZNRUFTVVJFSUQAVU5JVE9GTUVBU1VSRUlE
+X0lzTnVsbABTRUxMSU5HVU9NSUQAU0VMTElOR1VPTUlEX0lzTnVsbABTRUxMSU5HVU9NTlVNQkVS
+AFNFTExJTkdVT01OVU1CRVJfSXNOdWxsAENMQVNTSUZJQ0FUSU9OAENMQVNTSUZJQ0FUSU9OX0lz
+TnVsbABDT01NT0RJVFlUWVBFAENPTU1PRElUWVRZUEVfSXNOdWxsAE1BU0lURU1LRVkATUFTSVRF
+TUtFWV9Jc051bGwAVVBDAFVQQ19Jc051bGwATUFTSVRFTUlEAE1BU0lURU1JRF9Jc051bGwAV0FS
+RUhPVVNFSUQAV0FSRUhPVVNFSURfSXNOdWxsAENPTVBBTllJRABDT01QQU5ZSURfSXNOdWxsAFFU
+WU9OSEFORABRVFlPTkhBTkRfSXNOdWxsAFFUWUFWQUlMQUJMRQBRVFlBVkFJTEFCTEVfSXNOdWxs
+AFNVUlBMVVNRVFkAU1VSUExVU1FUWV9Jc051bGwAUVRZT05IT0xEAFFUWU9OSE9MRF9Jc051bGwA
+TUFYU1RPQ0tMRVZFTABNQVhTVE9DS0xFVkVMX0lzTnVsbABTY3JpcHRDb21wb25lbnQAUHJvY2Vz
+c0lucHV0AElucHV0SUQASW5wdXQwX1Byb2Nlc3NJbnB1dABJbnB1dDBfUHJvY2Vzc0lucHV0Um93
+AFJvdwBQYXJlbnRDb21wb25lbnQAQ29tcG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRFRTUnVu
+dGltZVdyYXAATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZS5XcmFwcGVyAElEVFNDb25u
+ZWN0aW9uTWFuYWdlcjEwMABnZXRfQ29ubmVjdGlvbgBDb25uZWN0aW9uAGdldF9TTFhDb25uZWN0
+aW9uU3RyaW5nAFNMWENvbm5lY3Rpb25TdHJpbmcAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQBTeXN0
+ZW0uUmVzb3VyY2VzAFJlc291cmNlTWFuYWdlcgBfcmVzTWdyAFN5c3RlbS5HbG9iYWxpemF0aW9u
+AEN1bHR1cmVJbmZvAF9yZXNDdWx0dXJlAGdldF9SZXNvdXJjZU1hbmFnZXIAZ2V0X0N1bHR1cmUA
+c2V0X0N1bHR1cmUAVmFsdWUAQ3VsdHVyZQBTeXN0ZW0uQ29uZmlndXJhdGlvbgBBcHBsaWNhdGlv
+blNldHRpbmdzQmFzZQBtX1ZhbHVlAG1fU3luY09iamVjdABnZXRfVmFsdWUAU3lzdGVtLkNvbXBv
+bmVudE1vZGVsAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBT
+eXN0ZW0uQ29kZURvbS5Db21waWxlcgBHZW5lcmF0ZWRDb2RlQXR0cmlidXRlAFN5c3RlbS5EaWFn
+bm9zdGljcwBEZWJ1Z2dlckhpZGRlbkF0dHJpYnV0ZQBNaWNyb3NvZnQuVmlzdWFsQmFzaWMuQ29t
+cGlsZXJTZXJ2aWNlcwBTdGFuZGFyZE1vZHVsZUF0dHJpYnV0ZQBIaWRlTW9kdWxlTmFtZUF0dHJp
+YnV0ZQBTeXN0ZW0uQ29tcG9uZW50TW9kZWwuRGVzaWduAEhlbHBLZXl3b3JkQXR0cmlidXRlAFN5
+c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAUnVudGltZUhlbHBlcnMAR2V0T2JqZWN0VmFs
+dWUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAQWN0aXZhdG9yAENyZWF0ZUlu
+c3RhbmNlAE15R3JvdXBDb2xsZWN0aW9uQXR0cmlidXRlAHNldF9WYWx1ZQBTeXN0ZW0uUnVudGlt
+ZS5JbnRlcm9wU2VydmljZXMAQ29tVmlzaWJsZUF0dHJpYnV0ZQBHZXRTdHJpbmcASXNOdWxsAEdl
+dERlY2ltYWwAR2V0SW50MzIAQ0xTQ29tcGxpYW50QXR0cmlidXRlAEdldENvbHVtbkluZGV4ZXMA
+TWljcm9zb2Z0LlNxbFNlcnZlci5EVFNQaXBlbGluZVdyYXAATWljcm9zb2Z0LlNxbFNlcnZlci5E
+dHMuUGlwZWxpbmUuV3JhcHBlcgBJRFRTQ29tcG9uZW50TWV0YURhdGExMDAAZ2V0X0NvbXBvbmVu
+dE1ldGFEYXRhAElEVFNSdW50aW1lQ29ubmVjdGlvbkNvbGxlY3Rpb24xMDAAZ2V0X1J1bnRpbWVD
+b25uZWN0aW9uQ29sbGVjdGlvbgBJRFRTUnVudGltZUNvbm5lY3Rpb24xMDAAR2V0T2JqZWN0QnlJ
+RABnZXRfQ29ubmVjdGlvbk1hbmFnZXIASURUU1ZhcmlhYmxlczEwMABnZXRfUmVhZE9ubHlWYXJp
+YWJsZXMASURUU1ZhcmlhYmxlMTAwAGdldF9JdGVtAENvbnZlcnNpb25zAEFET0RCAFJlY29yZHNl
+dABFeGNlcHRpb24AQ29ubmVjdGlvbkNsYXNzAFJlY29yZHNldENsYXNzAFN0cmluZwBDb25jYXQA
+X0Nvbm5lY3Rpb24AT3BlbgBfUmVjb3Jkc2V0AEN1cnNvckxvY2F0aW9uRW51bQBzZXRfQ3Vyc29y
+TG9jYXRpb24AQ3Vyc29yVHlwZUVudW0Ac2V0X0N1cnNvclR5cGUATG9ja1R5cGVFbnVtAHNldF9M
+b2NrVHlwZQBnZXRfRU9GAEZpZWxkcwBnZXRfRmllbGRzAEZpZWxkAERhdGVBbmRUaW1lAERhdGVU
+aW1lAGdldF9Ob3cASW50MzIAU3lzdGVtLlJlZmxlY3Rpb24ATWlzc2luZwBVcGRhdGUAQ2xvc2UA
+UHJvamVjdERhdGEAU2V0UHJvamVjdEVycm9yAENsZWFyUHJvamVjdEVycm9yAFNTSVNTY3JpcHRD
+b21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5AGdldF9Bc3NlbWJseQBTeXN0ZW0u
+VGhyZWFkaW5nAE1vbml0b3IARW50ZXIARXhpdABEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRl
+AFNDX2Q3YTdiNDY1ZTk1NDQyMWViZDlkMDZhMTc3YTdiMzBiLnZicHJvai5SZXNvdXJjZXMucmVz
+b3VyY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxp
+dHlBdHRyaWJ1dGUAQXNzZW1ibHlGaWxlVmVyc2lvbkF0dHJpYnV0ZQBHdWlkQXR0cmlidXRlAEFz
+c2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAEFzc2Vt
+Ymx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAQXNzZW1ibHlEZXNj
+cmlwdGlvbkF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAFNDX2Q3YTdiNDY1ZTk1NDQy
+MWViZDlkMDZhMTc3YTdiMzBiLnZicHJvai5kbGwAAAAAACdTAEwAWABDAG8AbgBuAGUAYwB0AGkA
+bwBuAFMAdAByAGkAbgBnAABRUwBFAEwARQBDAFQAIAAqACAARgBSAE8ATQAgAFAAUgBPAEQAVQBD
+AFQAIABXAEgARQBSAEUAIABQAFIATwBEAFUAQwBUAEkARAAgAD0AJwABAycAAQEAFU0ATwBEAEkA
+RgBZAEQAQQBUAEUAABVNAE8ARABJAEYAWQBVAFMARQBSAAALQQBEAE0ASQBOAAAJTgBBAE0ARQAA
+F0QARQBTAEMAUgBJAFAAVABJAE8ATgAAEUEAQwBUAFUAQQBMAEkARAAADUYAQQBNAEkATABZAAAL
+UABSAEkAQwBFAAAZUABSAE8ARABVAEMAVABHAFIATwBVAFAAAA1TAFQAQQBUAFUAUwAACVUATgBJ
+AFQAABdTAFQATwBDAEsAVgBPAEwAVQBNAEUAABdTAFQATwBDAEsAVwBFAEkARwBIAFQAABNTAFQA
+TwBDAEsASQBUAEUATQAAD1AAUgBPAEcAUgBBAE0AABFTAFUAUABQAEwASQBFAFIAAA1WAEUATgBE
+AE8AUgAADVMASQBUAEUASQBEAAAjVwBBAFIARQBIAE8AVQBTAEUATABPAEMAQQBUAEkATwBOAAAd
+QwBPAE0ATQBJAFMAUwBJAE8ATgBBAEIATABFAAAPVABBAFgAQQBCAEwARQAAIUEAQwBDAE8AVQBO
+AFQASQBOAEcAUABFAFIASQBPAEQAAB9HAEwAQQBDAEMATwBVAE4AVABOAFUATQBCAEUAUgAAJUcA
+TABTAFUAQgBBAEMAQwBPAFUATgBUAE4AVQBNAEIARQBSAAATRABBAFQAQQBPAFcATgBFAFIAAAlU
+AFkAUABFAAATRgBJAFgARQBEAEMATwBTAFQAABlHAEwATwBCAEEATABTAFkATgBDAEkARAAAC0EA
+UABQAEkARAAACVQASQBDAEsAACFDAE8ATQBNAE8ARABJAFQAWQBHAFIATwBVAFAASQBEAAAVQQBD
+AFQASQBWAEUARgBMAEEARwAAJVMARQBMAEwASQBOAEcAQQBMAEwATwBXAEUARABGAEwAQQBHAAAf
+VQBOAEkAVABPAEYATQBFAEEAUwBVAFIARQBJAEQAABlTAEUATABMAEkATgBHAFUATwBNAEkARAAA
+IVMARQBMAEwASQBOAEcAVQBPAE0ATgBVAE0AQgBFAFIAAB1DAEwAQQBTAFMASQBGAEkAQwBBAFQA
+SQBPAE4AABtDAE8ATQBNAE8ARABJAFQAWQBUAFkAUABFAAAVTQBBAFMASQBUAEUATQBLAEUAWQAA
+B1UAUABDAAATTQBBAFMASQBUAEUATQBJAEQAABdXAEEAUgBFAEgATwBVAFMARQBJAEQAABNDAE8A
+TQBQAEEATgBZAEkARAAAE1EAVABZAE8ATgBIAEEATgBEAAAZUQBUAFkAQQBWAEEASQBMAEEAQgBM
+AEUAABVTAFUAUgBQAEwAVQBTAFEAVABZAAATUQBUAFkATwBOAEgATwBMAEQAABtNAEEAWABTAFQA
+TwBDAEsATABFAFYARQBMAAAxTQB5AC4AUgBlAHMAbwB1AHIAYwBlAHMALgBNAHkAUgBlAHMAbwB1
+AHIAYwBlAHMAAACPaNixKkuNRY3ja6N0XHW8AAi3elxWGTTgiQiwP19/EdUKOgMgAAEDAAABBAAA
+EgwHBhUSGAESDAQAABIIBwYVEhgBEggEAAASEQcGFRIYARIRBAAAEhQHBhUSGAESFAQIABIMBAgA
+EggECAASEQQIABIUBCABAhwDIAAIBCAAEhUDIAAOAh4ABxABAR4AHgAHMAEBARAeAAITAAQgABMA
+BwYVEhkBEwAEKAATAAiJhF3NgIDMkQcgAgESIR0IAyAAAgQgABElAygADgMoAAIEKAARJQMoAAgD
+BhIkAwYSKAYgAgEIEiEFIAEBEhwDBhIpBSABARIpBCAAEi0EKAASLQMGEjEDBhI1BAAAEjEEAAAS
+NQUAAQESNQQIABIxBAgAEjUDBhI0AgYcBAAAEjQECAASNAUgAQERQQgBAAEAAAAAAAUgAgEODhcB
+AApNeVRlbXBsYXRlBzguMC4wLjAAAAQBAAAABhUSGAESDAYVEhgBEggGFRIYARIRBhUSGAESFAQH
+ARIMBAcBEggEBwESEQQHARIUBCABAQ4QAQALTXkuQ29tcHV0ZXIAAAwBAAdNeS5Vc2VyAAATAQAO
+TXkuQXBwbGljYXRpb24AABMBAA5NeS5XZWJTZXJ2aWNlcwAABAABHBwDBwECAwcBCAYAARIVEV0E
+BwESFQMHAQ4FEAEAHgAECgEeAAQHAR4AByAEAQ4ODg5hAQA0U3lzdGVtLldlYi5TZXJ2aWNlcy5Q
+cm90b2NvbHMuU29hcEh0dHBDbGllbnRQcm90b2NvbBJDcmVhdGVfX0luc3RhbmNlX18TRGlzcG9z
+ZV9fSW5zdGFuY2VfXwAAAAYVEhgBEwAGFRIZARMABAoBEwAFIAEBEwAGBwITABMABCABAQIFAQAA
+AAADBhIhAwYdCAQgAQ4IBCABAggFIAERJQgEBwERJQQgAQgIBSABHQgIBCAAEnEEIAASdQUgARJ5
+CAQHARItBCAAEn0GIAESgIEcAyAAHAQAAQ4cBgADDg4ODgcgBAEODg4IBiABARGAqQYgAQERgK0G
+IAEBEYCxDCAFARwcEYCtEYCxCAUgABKAtQYgARKAuRwFAAARgMEEIAEBHAQGEoDJBSACARwcBgAB
+ARKAkQ8HBRKAiRKAjQ4SgJESgI0FIAASgNUHIAIBDhKA1QYHAhIxEjEEBwESNQgBAAIAAAAAAAQA
+AQEcBAcBEjQEIAEBCAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEMAQAH
+MS4wLjAuMAAAKQEAJGE2OTJkNDQ2LWU5NDYtNGQ4MC1iM2QyLTAzYjM5NTUxNjc3OQAABQEAAQAA
+HwEAGkNvcHlyaWdodCBAIE1pY3Jvc29mdCAyMDEyAAAvAQAqU0NfZDdhN2I0NjVlOTU0NDIxZWJk
+OWQwNmExNzdhN2IzMGIudmJwcm9qAAAOAQAJTWljcm9zb2Z0AAAAALBsAAAAAAAAAAAAAM5sAAAA
+IAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAbAAAAAAAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2Nv
+cmVlLmRsbAAAAAAA/yUAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAwAAACgAAIAOAAAASAAAgBAAAABgAACA
+AAAAAAAAAAAAAAAAAAACAAIAAAB4AACAAwAAAJAAAIAAAAAAAAAAAAAAAAAAAAEAAH8AAKgAAIAA
+AAAAAAAAAAAAAAAAAAEAAQAAAMAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAANgAAAAAAAAAAAAAAAAA
+AAAAAAEAAAAAAOgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAPgAAAAAAAAAAAAAAAAAAAAAAAEAAAAA
+AAgBAAAghQAA6AIAAAAAAAAAAAAACIgAACgBAAAAAAAAAAAAADCJAAAiAAAAAAAAAAAAAAAYgQAA
+CAQAAAAAAAAAAAAACAQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAAAL0E7/4A
+AAEAAAABAAAAAAAAAAEAAAAAAD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAAAQBWAGEA
+cgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAAAAAAAACw
+BGgDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAEQDAAABADAAMAAwADAAMAA0AGIA
+MAAAADQACgABAEMAbwBtAHAAYQBuAHkATgBhAG0AZQAAAAAATQBpAGMAcgBvAHMAbwBmAHQAAACA
+ACsAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBDAF8AZAA3AGEANwBiADQA
+NgA1AGUAOQA1ADQANAAyADEAZQBiAGQAOQBkADAANgBhADEANwA3AGEANwBiADMAMABiAC4AdgBi
+AHAAcgBvAGoAAAAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4A
+MAAAAIAALwABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AZAA3AGEANwBiADQANgA1
+AGUAOQA1ADQANAAyADEAZQBiAGQAOQBkADAANgBhADEANwA3AGEANwBiADMAMABiAC4AdgBiAHAA
+cgBvAGoALgBkAGwAbAAAAAAAXAAbAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBv
+AHAAeQByAGkAZwBoAHQAIABAACAATQBpAGMAcgBvAHMAbwBmAHQAIAAyADAAMQAyAAAAAACIAC8A
+AQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AZAA3AGEANwBiADQANgA1
+AGUAOQA1ADQANAAyADEAZQBiAGQAOQBkADAANgBhADEANwA3AGEANwBiADMAMABiAC4AdgBiAHAA
+cgBvAGoALgBkAGwAbAAAAAAAeAArAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAEMAXwBk
+ADcAYQA3AGIANAA2ADUAZQA5ADUANAA0ADIAMQBlAGIAZAA5AGQAMAA2AGEAMQA3ADcAYQA3AGIA
+MwAwAGIALgB2AGIAcAByAG8AagAAAAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBu
+AAAAMQAuADAALgAwAC4AMAAAADgACAABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4A
+AAAxAC4AMAAuADAALgAwAAAAKAAAACAAAABAAAAAAQAEAAAAAACAAgAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAIAAAIAAAACAgACAAAAAgACAAICAAACAgIAAwMDAAAAA/wAA/wAAAP//AP8AAAD/AP8A
+//8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAHd3d3d3d3d3d3d3d3d3cARERERERERERERERERERHAE////////////
+//////RwBP/////////////////0cAT/////////////////9HAE//////////////////RwBP//
+///////////////0cAT/////////////////9HAE//////////////////RwBP//////////////
+///0cAT/////////////////9HAE//////////////////RwBP/////////////////0cAT/////
+////////////9HAE//////////////////RwBP/////////////////0cAT/////////////////
+9HAE//////////////////RwBP/////////////////0cAT/////////////////9HAEiIiIiIiI
+iIiIiIiIiIRwBEREREREREREREREREREcARMTExMTExMTExOzs5JdHAEzMzMzMzMzMzMzMzMzMQA
+AERERERERERERERERERAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAP/////////////////////AAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAA
+AAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAA
+AYAAAAPAAAAH////////////////KAAAABAAAAAgAAAAAQAEAAAAAADAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAIAAAIAAAACAgACAAAAAgACAAICAAACAgIAAwMDAAAAA/wAA/wAAAP//AP8AAAD/
+AP8A//8AAP///wAAAAAAAAAAAAd3d3d3d3d3REREREREREdP///////4R0////////hHT///////
++EdP///////4R0////////hHT///////+EdP///////4R0////////hHSIiIiIiIiEdMzMzMzMzM
+R8RERERERETAAAAAAAAAAAAAAAAAAAAAAP//AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA//8AAP//AAAAAAEAAgAgIBAAAQAEAOgCAAACABAQEAAB
+AAQAKAEAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAGAAAAwAAADgPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAMAAAA4DEAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property>
-<property id="163" name="VSTAProjectName" dataType="System.String" state="default" isArray="false" description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package." typeConverter="NOTBROWSABLE" UITypeEditor="" containsID="false" expressionType="None">SC_748737a7753c4d9f8c4c616d27f89b65</property>
-<property id="164" name="ScriptLanguage" dataType="System.String" state="default" isArray="false" description="Specifies the programming language used by the script." typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages, Microsoft.SqlServer.VSTAScriptingLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" UITypeEditor="" containsID="false" expressionType="None">CSharp</property>
-<property id="165" name="ReadOnlyVariables" dataType="System.String" state="default" isArray="false" description="Specifies a comma-separated list of read-only variables." typeConverter="" UITypeEditor="Microsoft.SqlServer.Dts.Pipeline.ScriptUIVariablePickerDlg, Microsoft.SqlServer.TxScript, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" containsID="false" expressionType="None">User::SLXConnectionString</property>
-<property id="166" name="ReadWriteVariables" dataType="System.String" state="default" isArray="false" description="Specifies a comma-separated list of read/write variables." typeConverter="" UITypeEditor="Microsoft.SqlServer.Dts.Pipeline.ScriptUIVariablePickerDlg, Microsoft.SqlServer.TxScript, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" containsID="false" expressionType="None"></property>
-<property id="167" name="BreakpointCollection" dataType="System.String" state="default" isArray="true" description="List of breakpoints present on the script." typeConverter="NOTBROWSABLE" UITypeEditor="" containsID="false" expressionType="None"><arrayElements arrayElementCount="0"/></property>
-<property id="168" name="UserComponentTypeName" dataType="System.String" state="default" isArray="false" description="" typeConverter="" UITypeEditor="" containsID="false" expressionType="None">Microsoft.SqlServer.Dts.Pipeline.ScriptComponentHost, Microsoft.SqlServer.TxScript, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property></properties>
+AAAAAAAAAAAAAAA=]]></arrayElement></arrayElements></property>
+<property id="234" name="VSTAProjectName" dataType="System.String" state="default" isArray="false" description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package." typeConverter="NOTBROWSABLE" UITypeEditor="" containsID="false" expressionType="None">SC_d7a7b465e954421ebd9d06a177a7b30b</property>
+<property id="235" name="ScriptLanguage" dataType="System.String" state="default" isArray="false" description="Specifies the programming language used by the script." typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages, Microsoft.SqlServer.VSTAScriptingLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" UITypeEditor="" containsID="false" expressionType="None">VisualBasic</property>
+<property id="236" name="ReadOnlyVariables" dataType="System.String" state="default" isArray="false" description="Specifies a comma-separated list of read-only variables." typeConverter="" UITypeEditor="Microsoft.SqlServer.Dts.Pipeline.ScriptUIVariablePickerDlg, Microsoft.SqlServer.TxScript, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" containsID="false" expressionType="None">User::SLXConnectionString</property>
+<property id="237" name="ReadWriteVariables" dataType="System.String" state="default" isArray="false" description="Specifies a comma-separated list of read/write variables." typeConverter="" UITypeEditor="Microsoft.SqlServer.Dts.Pipeline.ScriptUIVariablePickerDlg, Microsoft.SqlServer.TxScript, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" containsID="false" expressionType="None"></property>
+<property id="238" name="BreakpointCollection" dataType="System.String" state="default" isArray="true" description="List of breakpoints present on the script." typeConverter="NOTBROWSABLE" UITypeEditor="" containsID="false" expressionType="None"><arrayElements arrayElementCount="0"/></property>
+<property id="239" name="UserComponentTypeName" dataType="System.String" state="default" isArray="false" description="" typeConverter="" UITypeEditor="" containsID="false" expressionType="None">Microsoft.SqlServer.Dts.Pipeline.ScriptComponentHost, Microsoft.SqlServer.TxScript, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property></properties>
 <connections>
-<connection id="217" name="Connection" description="SLX" connectionManagerID="{657A6B25-EF21-4283-9508-C4DF1CF1649C}"/></connections>
+<connection id="288" name="Connection" description="SLX" connectionManagerID="{657A6B25-EF21-4283-9508-C4DF1CF1649C}"/></connections>
 <inputs>
-<input id="159" name="Input 0" description="" hasSideEffects="true" dangling="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><inputColumns>
-<inputColumn id="171" name="" description="" lineageId="20" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="172" name="" description="" lineageId="23" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="173" name="" description="" lineageId="26" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="174" name="" description="" lineageId="29" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="175" name="" description="" lineageId="32" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="176" name="" description="" lineageId="35" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="177" name="" description="" lineageId="38" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="178" name="" description="" lineageId="41" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="179" name="" description="" lineageId="44" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="180" name="" description="" lineageId="47" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="181" name="" description="" lineageId="50" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="182" name="" description="" lineageId="53" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="183" name="" description="" lineageId="56" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="184" name="" description="" lineageId="59" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="185" name="" description="" lineageId="62" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="186" name="" description="" lineageId="65" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="187" name="" description="" lineageId="68" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="188" name="" description="" lineageId="71" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="189" name="" description="" lineageId="74" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="190" name="" description="" lineageId="77" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="191" name="" description="" lineageId="80" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="192" name="" description="" lineageId="83" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="193" name="" description="" lineageId="86" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="194" name="" description="" lineageId="89" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="195" name="" description="" lineageId="92" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="196" name="" description="" lineageId="95" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="197" name="" description="" lineageId="98" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="198" name="" description="" lineageId="101" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="199" name="" description="" lineageId="104" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="200" name="" description="" lineageId="107" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="201" name="" description="" lineageId="110" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="202" name="" description="" lineageId="113" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="203" name="" description="" lineageId="116" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="204" name="" description="" lineageId="119" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="205" name="" description="" lineageId="122" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="206" name="" description="" lineageId="125" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="207" name="" description="" lineageId="128" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="208" name="" description="" lineageId="131" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="209" name="" description="" lineageId="134" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="210" name="" description="" lineageId="137" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="211" name="" description="" lineageId="140" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="212" name="" description="" lineageId="143" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="213" name="" description="" lineageId="146" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="214" name="" description="" lineageId="149" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="215" name="" description="" lineageId="152" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<inputColumn id="216" name="" description="" lineageId="155" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<input id="230" name="Input 0" description="" hasSideEffects="true" dangling="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><inputColumns>
+<inputColumn id="242" name="" description="" lineageId="20" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="243" name="" description="" lineageId="23" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="244" name="" description="" lineageId="26" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="245" name="" description="" lineageId="29" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="246" name="" description="" lineageId="32" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="247" name="" description="" lineageId="35" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="248" name="" description="" lineageId="38" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="249" name="" description="" lineageId="41" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="250" name="" description="" lineageId="44" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="251" name="" description="" lineageId="47" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="252" name="" description="" lineageId="50" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="253" name="" description="" lineageId="53" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="254" name="" description="" lineageId="56" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="255" name="" description="" lineageId="59" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="256" name="" description="" lineageId="62" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="257" name="" description="" lineageId="65" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="258" name="" description="" lineageId="68" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="259" name="" description="" lineageId="71" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="260" name="" description="" lineageId="74" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="261" name="" description="" lineageId="77" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="262" name="" description="" lineageId="80" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="263" name="" description="" lineageId="83" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="264" name="" description="" lineageId="86" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="265" name="" description="" lineageId="89" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="266" name="" description="" lineageId="92" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="267" name="" description="" lineageId="95" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="268" name="" description="" lineageId="98" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="269" name="" description="" lineageId="101" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="270" name="" description="" lineageId="104" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="271" name="" description="" lineageId="107" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="272" name="" description="" lineageId="110" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="273" name="" description="" lineageId="113" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="274" name="" description="" lineageId="116" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="275" name="" description="" lineageId="119" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="276" name="" description="" lineageId="122" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="277" name="" description="" lineageId="125" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="278" name="" description="" lineageId="128" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="279" name="" description="" lineageId="131" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="280" name="" description="" lineageId="134" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="281" name="" description="" lineageId="137" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="282" name="" description="" lineageId="140" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="283" name="" description="" lineageId="143" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="284" name="" description="" lineageId="146" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="285" name="" description="" lineageId="149" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="286" name="" description="" lineageId="152" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<inputColumn id="287" name="" description="" lineageId="155" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
 </inputColumns><externalMetadataColumns isUsed="False"/></input>
 </inputs>
 </component>
 </components>
 <paths>
-<path id="169" name="OLE DB Source Output" description="" startId="11" endId="159"/>
+<path id="240" name="OLE DB Source Output" description="" startId="11" endId="230"/>
 </paths></pipeline></DTS:ObjectData></DTS:Executable>
 <DTS:PrecedenceConstraint>
 <DTS:Property DTS:Name="Value">0</DTS:Property>
@@ -2509,8 +2491,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property
 <DTS:Property DTS:Name="CreationName">SSIS.Package.2</DTS:Property>
 <DTS:Property DTS:Name="DisableEventHandlers">0</DTS:Property>
 <DTS:PackageVariable>
-<DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;TaskHost xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsDataFlowDiagram&gt;&lt;dwd:BoundingTop&gt;2011&lt;/dwd:BoundingTop&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
-  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="12" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="17806" y="11695" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
+<DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;TaskHost xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsDataFlowDiagram&gt;&lt;dwd:BoundingTop&gt;2567&lt;/dwd:BoundingTop&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
+  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="17" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="17806" y="11695" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
     &lt;font&gt;
       &lt;ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" /&gt;
     &lt;/font&gt;
@@ -2521,7 +2503,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property
   &lt;layoutmanager&gt;
     &lt;ddsxmlobj /&gt;
   &lt;/layoutmanager&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="OLE DB Source" left="4419" top="2011" logicalid="4" controlid="4" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="OLE DB Source" left="4366" top="2567" logicalid="4" controlid="4" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2533,19 +2515,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Executes a custom script." left="4525" top="5106" logicalid="5" controlid="5" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Executes a custom script." left="5980" top="6535" logicalid="14" controlid="14" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
     &lt;layoutobject&gt;
       &lt;ddsxmlobj&gt;
-        &lt;property name="LogicalObject" value="{0CB0CDE9-6F21-4871-A5D2-970AFC261412}/components/157" vartype="8" /&gt;
+        &lt;property name="LogicalObject" value="{0CB0CDE9-6F21-4871-A5D2-970AFC261412}/components/228" vartype="8" /&gt;
         &lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="5819" top="2776" logicalid="6" controlid="6" masterid="0" hint1="0" hint2="0" width="905" height="2830" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="5766" top="3332" logicalid="15" controlid="15" masterid="0" hint1="0" hint2="0" width="2413" height="3703" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobj&gt;
         &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
@@ -2553,29 +2535,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property
     &lt;/control&gt;
     &lt;layoutobject&gt;
       &lt;ddsxmlobj&gt;
-        &lt;property name="LogicalObject" value="{0CB0CDE9-6F21-4871-A5D2-970AFC261412}/paths/169" vartype="8" /&gt;
+        &lt;property name="LogicalObject" value="{0CB0CDE9-6F21-4871-A5D2-970AFC261412}/paths/240" vartype="8" /&gt;
         &lt;property name="Virtual" value="0" vartype="11" /&gt;
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="4" destid="5" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="6218" y="3175" /&gt;
-      &lt;point x="6218" y="4140" /&gt;
-      &lt;point x="6324" y="4140" /&gt;
-      &lt;point x="6324" y="5106" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="4" destid="14" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
+      &lt;point x="6165" y="3731" /&gt;
+      &lt;point x="6165" y="5133" /&gt;
+      &lt;point x="7779" y="5133" /&gt;
+      &lt;point x="7779" y="6535" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{0CB0CDE9-6F21-4871-A5D2-970AFC261412}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{9F0EDED3-9338-493B-B756-4B191373D902}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{F63DD15B-F6CC-42A0-9564-A895276E4307}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;OLE DB Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Input 0&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
-<DTS:Property DTS:Name="ObjectName">{0CB0CDE9-6F21-4871-A5D2-970AFC261412}-169</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{4F7E1CCB-FB41-4E1C-9D2E-AE03CBCD2F33}</DTS:Property>
+<DTS:Property DTS:Name="ObjectName">{0CB0CDE9-6F21-4871-A5D2-970AFC261412}-240</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{8382D88B-7BB5-4C00-92F8-C5AA948DB0E2}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
@@ -2638,14 +2620,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;151	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;Table&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;151	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{318D1B41-9E52-4D03-AA6C-ECC192F684F3}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{06097A99-0414-4792-88AA-092B1BF3456C}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{3C846BDD-68A4-4524-B97E-7F6E5F54D696}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;OLE DB Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;OLE DB Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{318D1B41-9E52-4D03-AA6C-ECC192F684F3}-330</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{D88BE12A-9F92-4AAF-BABA-99472CB22933}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{952586E1-84D3-4BDC-B63E-D60D4BB5381F}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
@@ -2708,14 +2690,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;28	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;Table&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;28	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{62996070-8872-4933-955F-05F2B0FBDB66}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{8377CF04-C084-46BC-9F2F-9172B77EA288}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{6DD98022-8322-4DE2-B688-FE2A2EBC5D07}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;OLE DB Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;OLE DB Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{62996070-8872-4933-955F-05F2B0FBDB66}-45</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{DA1151F7-0AEE-4CC2-934A-352696F9FF9B}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{4FFDE8D4-4436-40EF-93CC-15DB10F65420}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
@@ -2732,21 +2714,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsEventHandlerDiagram&gt;&lt;/DtsEventHandler&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{6DBA4302-C162-455D-8174-C93775B48D0B}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{405030FA-D091-498B-8DC9-E71B7339A28E}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{86DE614C-43D4-4015-AFEC-192A8EDCDA3F}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PrecedenceConstraint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:EvalOp&gt;Constraint&lt;/dwd:EvalOp&gt;&lt;/PrecedenceConstraint&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{B0FB6E28-4398-44B4-ADD2-7682F5782C98}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{C9129685-14F6-47C2-B4F8-93A3C7CEB1FD}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{7111D648-0D45-4BFA-82BC-0C66B8864500}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PrecedenceConstraint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:EvalOp&gt;Constraint&lt;/dwd:EvalOp&gt;&lt;/PrecedenceConstraint&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{B8AEAA03-0441-4D33-A630-671E054019FB}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{9933A431-8A52-4BAE-A2CE-5DE7435D246F}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{332AB590-2231-481E-9FC4-5465E843471E}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
@@ -2857,7 +2839,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsControlFlowDiagram&gt;&lt;/Package&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{DD1D2767-E026-46D2-82EA-334683255EC3}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{085CBC66-C378-4095-96A8-2D34C0450E12}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{A8820939-1863-45F4-AEFD-21B0D1948E6A}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
@@ -2968,6 +2950,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement></arrayElements></property
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsControlFlowDiagram&gt;&lt;/Package&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">package-diagram</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{2CEB4468-B902-409D-94B0-14EFB4B238F0}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{F7C0C144-C589-4DED-B16A-5E720B054CD6}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable></DTS:Executable>
