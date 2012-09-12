@@ -27,6 +27,7 @@ FROM         dbo.vdvStockStatus INNER JOIN
                       dbo.vdvItem ON dbo.vdvStockStatus.ItemKey = dbo.vdvItem.ItemKey LEFT OUTER JOIN
                       Saleslogix_Test.sysdba.PRODUCT AS Prod ON dbo.vdvStockStatus.CompanyID = Prod.COMPANYID AND dbo.vdvStockStatus.ItemID = Prod.ACTUALID AND 
                       dbo.vdvStockStatus.WhseID = Prod.WAREHOUSEID
+WHERE     (Prod.PRODUCTID IS NULL)
 
 GO
 

@@ -32,12 +32,12 @@
           <ConfigurationSetting>
             <Id>Live EAB Slx</Id>
             <Name>Live EAB Slx</Name>
-            <Value xsi:type="xsd:string">Provider=SLXOLEDB.1;Data Source=EAB;Persist Security Info=True;Password=;User ID=;Initial Catalog=EAB</Value>
+            <Value xsi:type="xsd:string">Provider=SLXOLEDB.1;Data Source=Athena;Persist Security Info=True;User ID=;Initial Catalog=SALESLOGIX_TEST</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>Live EAB App</Id>
             <Name>Live EAB App</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=SQLSERVER2008;Persist Security Info=True;Password=;User ID=;Initial Catalog=LiveEAB_app</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=Apollo;Persist Security Info=True;Password=;User ID=;Initial Catalog=mas500_tst_app</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionProviderMappings />
