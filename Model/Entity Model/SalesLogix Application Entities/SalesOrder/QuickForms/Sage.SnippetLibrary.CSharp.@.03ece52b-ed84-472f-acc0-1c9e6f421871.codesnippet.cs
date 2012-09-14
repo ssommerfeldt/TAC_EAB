@@ -40,8 +40,8 @@ namespace Sage.BusinessRules.CodeSnippets
 			Sage.Entity.Interfaces.ISalesOrder salesOrder = form.CurrentEntity as Sage.Entity.Interfaces.ISalesOrder;
 			if (salesOrder != null)
 			{
-				bool bInsertMode = ((salesOrder.PersistentState | Sage.Platform.Orm.Interfaces.PersistentState.New) == salesOrder.PersistentState);
-				form.btnAddCustomProduct.Visible = !bInsertMode;
+				//bool bInsertMode = ((salesOrder.PersistentState | Sage.Platform.Orm.Interfaces.PersistentState.New) == salesOrder.PersistentState);
+				//form.btnAddCustomProduct.Visible = !bInsertMode;
 			}
         }
     }

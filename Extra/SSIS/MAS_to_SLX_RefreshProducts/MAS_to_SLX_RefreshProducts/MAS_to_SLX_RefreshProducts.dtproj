@@ -9,7 +9,16 @@
   </Database>
   <Cubes />
   <Dimensions />
-  <DataSources />
+  <DataSources>
+    <ProjectItem>
+      <Name>Mas500.ds</Name>
+      <FullPath>Mas500.ds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SALESLOGIX.ds</Name>
+      <FullPath>SALESLOGIX.ds</FullPath>
+    </ProjectItem>
+  </DataSources>
   <DataSourceViews />
   <MiningModels />
   <Roles />
@@ -19,9 +28,31 @@
       <Name>Development</Name>
       <Options>
         <OutputPath>bin</OutputPath>
-        <ConnectionMappings />
+        <ConnectionMappings>
+          <ConfigurationSetting>
+            <Id>Mas500</Id>
+            <Name>Mas500</Name>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=APOLLO;Persist Security Info=True;Password=;User ID=;Initial Catalog=mas500_tst_app</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>SALESLOGIX TEST</Id>
+            <Name>SALESLOGIX TEST</Name>
+            <Value xsi:type="xsd:string">Provider=SLXOLEDB.1;Data Source=Athena;Persist Security Info=True;User ID=;Initial Catalog=SALESLOGIX_TEST</Value>
+          </ConfigurationSetting>
+        </ConnectionMappings>
         <ConnectionProviderMappings />
-        <ConnectionSecurityMappings />
+        <ConnectionSecurityMappings>
+          <ConfigurationSetting>
+            <Id>Mas500</Id>
+            <Name>Mas500</Name>
+            <Value xsi:type="xsd:int">1</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>SALESLOGIX TEST</Id>
+            <Name>SALESLOGIX TEST</Name>
+            <Value xsi:type="xsd:int">1</Value>
+          </ConfigurationSetting>
+        </ConnectionSecurityMappings>
         <DatabaseStorageLocations />
       </Options>
     </Configuration>
