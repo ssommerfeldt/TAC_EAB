@@ -95,15 +95,17 @@ namespace EAB_Custom {
             soHeader.FreightAmt = 0;
 
             //get the accountfinancial data
-            if (salesOrder.Account.AccountFinancial != null) {
-                soHeader.CustID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
-                soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type.Substring(0, 4).ToUpper(); //get from mas
+            if (salesOrder.Account != null) {
+                if (salesOrder.Account.AccountFinancial != null) {
+                    soHeader.CustID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
+                    soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type.Substring(0, 4).ToUpper(); //get from mas
 
-                //soHeader.DfltShipToCustAddrID = salesOrder.ShippingAddress.Address.MASAddrKey.ToString(); //change this to mas id
-                soHeader.DfltShipToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
-                //soHeader.BillToCustAddrID = salesOrder.BillingAddress.Address.MASAddrKey.ToString(); //change to mas id
-                soHeader.BillToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
-                soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                    //soHeader.DfltShipToCustAddrID = salesOrder.ShippingAddress.Address.MASAddrKey.ToString(); //change this to mas id
+                    soHeader.DfltShipToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
+                    //soHeader.BillToCustAddrID = salesOrder.BillingAddress.Address.MASAddrKey.ToString(); //change to mas id
+                    soHeader.BillToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
+                    soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                }
             }
 
             soHeader.CurrID = salesOrder.CurrencyCode;
@@ -161,12 +163,10 @@ namespace EAB_Custom {
                     soLine.ExtCmnt = null;
                     soLine.FOBID = salesOrder.Fob;
                     //soLine.FreightAmt = salesOrder.Freight; //do not use
-                    soLine.FreightAmt = 0;
-                    soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
+                    soLine.FreightAmt = 0;                    
                     soLine.Hold = "0";
                     soLine.HoldReason = null;
-                    soLine.ItemAliasID = null;
-                    soLine.ItemID = item.Product.MasItemID; //item key from mas
+                    soLine.ItemAliasID = null;                    
                     soLine.KitComponent = null;
                     soLine.MAS90LineIndex = null;
                     soLine.OrigOrdered = item.Quantity;
@@ -189,29 +189,42 @@ namespace EAB_Custom {
                     soLine.ShipDate = salesOrder.OrderDate.Value.AddDays(2);
                     soLine.ShipMethID = null;
                     soLine.ShipPriority = 3;
-                    soLine.ShipToAddrLine1 = salesOrder.ShippingAddress.Address1;
-                    soLine.ShipToAddrLine2 = salesOrder.ShippingAddress.Address2;
-                    soLine.ShipToAddrLine3 = salesOrder.ShippingAddress.Address3;
-                    soLine.ShipToAddrLine4 = salesOrder.ShippingAddress.Address4;
-                    soLine.ShipToAddrLine5 = "";
-                    soLine.ShipToAddrName = salesOrder.ShippingAddress.Address.MASAddrKey.ToString();//get from MAS
-                    soLine.ShipToCity = salesOrder.ShippingAddress.City;
-                    soLine.ShipToCountryID = salesOrder.ShippingAddress.Country;
-                    soLine.ShipToPostalCode = salesOrder.ShippingAddress.PostalCode;
-                    soLine.ShipToStateID = salesOrder.ShippingAddress.State;
+                    if (salesOrder.ShippingAddress != null) {
+                        if (salesOrder.ShippingAddress.Address != null) {
+                            soLine.ShipToAddrName = salesOrder.ShippingAddress.Address.MASAddrKey.ToString();//get from MAS
+                        }
+                        soLine.ShipToAddrLine1 = salesOrder.ShippingAddress.Address1;
+                        soLine.ShipToAddrLine2 = salesOrder.ShippingAddress.Address2;
+                        soLine.ShipToAddrLine3 = salesOrder.ShippingAddress.Address3;
+                        soLine.ShipToAddrLine4 = salesOrder.ShippingAddress.Address4;
+                        soLine.ShipToAddrLine5 = "";                       
+                        soLine.ShipToCity = salesOrder.ShippingAddress.City;
+                        soLine.ShipToCountryID = salesOrder.ShippingAddress.Country;
+                        soLine.ShipToPostalCode = salesOrder.ShippingAddress.PostalCode;
+                        soLine.ShipToStateID = salesOrder.ShippingAddress.State;
+                    }
                     soLine.Status = "Open";
                     soLine.STaxClassID = null;
                     soLine.TradeDiscAmt = 0;
                     soLine.TradeDiscPct = null;
                     soLine.TranNo = "0";
-                    soLine.UnitMeasID = item.Product.Unit; //get this from mas
+
+                    if (item.Product != null) {
+                        soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
+                        soLine.ItemID = item.Product.MasItemID; //item key from mas
+                        soLine.UnitMeasID = item.Product.Unit; //get this from mas
+                    }
                     //soLine.UnitPrice = Math.Round((Double)item.Price, 2); //wrong price, use price * margin
                     soLine.UnitPrice = Math.Round((Double)item.CalculatedPrice, 2, MidpointRounding.AwayFromZero);
                     soLine.UserFld1 = null;
                     soLine.UserFld2 = null;
                     soLine.VendorID = soHeader.CustID;
-                    soLine.WarehouseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname; //get this from mas
                     soLine.WillCall = null;
+                    if (salesOrder.UserWareHouse != null) {
+                        if (salesOrder.UserWareHouse.Sitereference != null) {
+                            soLine.WarehouseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname; //get this from mas
+                        }
+                    }                   
 
                     soLine.Save();
 
@@ -236,23 +249,28 @@ namespace EAB_Custom {
             toHeader.CloseDate = DateTime.Now;
 
             //get the accountfinancial data
-            if (salesOrder.Account.AccountFinancial != null) {
-                if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
-                    toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
-                } else {
-                    toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+            if (salesOrder.Account != null) {
+                if (salesOrder.Account.AccountFinancial != null) {
+                    if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                        toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                    } else {
+                        toHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                    }
                 }
-
             }
             if (salesOrder.SourceSLXSite == null) {
                 throw new Exception("Error: Destination Warehouse not specified.");
             } else {
-                toHeader.RcvgWhseID = salesOrder.SourceSLXSite.Sitereference.Siterefdisplayname; //get this from mas
+                if (salesOrder.SourceSLXSite.Sitereference != null) {
+                    toHeader.RcvgWhseID = salesOrder.SourceSLXSite.Sitereference.Siterefdisplayname; //get this from mas
+                }
             }
             if (salesOrder.UserWareHouse == null) {
                 throw new Exception("Error: Source Warehouse not specified.");
             } else {
-                toHeader.ShipWhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname; //get this from mas
+                if (salesOrder.UserWareHouse.Sitereference != null) {
+                    toHeader.ShipWhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname; //get this from mas
+                }
             }
 
             toHeader.ReqDelvDate = DateTime.Now.AddDays(10);
@@ -284,8 +302,10 @@ namespace EAB_Custom {
                     toLine.TrnsfrOrderLineID = 0; //Set this to unique number (for this order) during integration.
                     toLine.TrnsfrLineNo = (short)item.LineNumber; //sequence number    
 
-                    toLine.ItemID = item.Product.MasItemID; //set to itemid from mas
-                    toLine.UoM = item.Product.Unit; //set to unit of measure from mas
+                    if (item.Product != null) {
+                        toLine.ItemID = item.Product.MasItemID; //set to itemid from mas
+                        toLine.UoM = item.Product.Unit; //set to unit of measure from mas
+                    }
                     toLine.QtyOrd = item.Quantity;
                     toLine.SurchargeFixedAmt = 0;
                     toLine.SurchargePct = 0;
@@ -327,14 +347,16 @@ namespace EAB_Custom {
                         
 
             //get the accountfinancial data
-            if (salesOrder.Account.AccountFinancial != null) {
-                soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
-                soHeader.VendorID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
+            if (salesOrder.Account != null) {
+                if (salesOrder.Account.AccountFinancial != null) {
+                    soHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                    soHeader.VendorID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
+                }
             }
             //exit if wareouse not specified
             if (salesOrder.UserWareHouse == null) {
-                        throw new Exception("Error: Source Warehouse not specified.");
-                    }
+                throw new Exception("Error: Source Warehouse not specified.");
+            }
 
             soHeader.Save();
 
@@ -370,11 +392,12 @@ namespace EAB_Custom {
                     //soLine.FreightAmt = salesOrder.Freight; //do not use
                     soLine.FreightAmt = 0;
 
-                    if (String.IsNullOrEmpty(item.Product.GlAccountNumber)) { throw new Exception("GL Account Number is required"); }
-                    soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas
-                    
-                    soLine.ItemID = item.Product.MasItemID; //item key from mas
-
+                    if (item.Product != null) {
+                        if (String.IsNullOrEmpty(item.Product.GlAccountNumber)) { throw new Exception("GL Account Number is required"); }
+                        soLine.GLAcctNo = item.Product.GlAccountNumber; //get this from mas                    
+                        soLine.ItemID = item.Product.MasItemID; //item key from mas
+                        soLine.UnitMeasID = item.Product.Unit; //get this from mas
+                    }
                     soLine.OrigOrdered = item.Quantity;
                     //soLine.OrigPromiseDate = salesOrder.DatePromised;
                     soLine.OrigPromiseDate = salesOrder.OrderDate.Value.AddDays(10);
@@ -389,17 +412,18 @@ namespace EAB_Custom {
                     soLine.QtyRtrnReplacement = 0;
                     soLine.RequestDate = salesOrder.OrderDate;
                     soLine.Status = "Open";
+                    soLine.TranNo = "0";
 
                     //get the accountfinancial data
-                    if (salesOrder.Account.AccountFinancial != null) {
-                        if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
-                            soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
-                        } else {
-                            soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                    if (salesOrder.Account != null) {
+                        if (salesOrder.Account.AccountFinancial != null) {
+                            if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                                soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                            } else {
+                                soLine.TargetCompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                            }
                         }
-
-                    }
-                    soLine.TranNo = "0";
+                    }                    
                     
                     if (item.CalculatedPrice == null) {
                         soLine.UnitCost = 0;
@@ -408,14 +432,16 @@ namespace EAB_Custom {
                         soLine.UnitCost = Math.Round((Double)item.CalculatedPrice, 2, MidpointRounding.AwayFromZero);
                         soLine.ExtAmt = Math.Round((Double)item.CalculatedPrice * (Double)item.Quantity, 2, MidpointRounding.AwayFromZero);
                     }
-                    soLine.UnitMeasID = item.Product.Unit; //get this from mas
+                    
                     soLine.UserFld1 = null;
                     soLine.STaxClassID = "Taxable";
                     
                     if (salesOrder.UserWareHouse == null) {
                         throw new Exception("Error: Source Warehouse not specified.");
                     } else {
-                        soLine.ShipToWhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname; //get this from mas
+                        if (salesOrder.UserWareHouse.Sitereference != null) {
+                            soLine.ShipToWhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname; //get this from mas
+                        }
                     }
 
                     soLine.Save();
@@ -429,7 +455,6 @@ namespace EAB_Custom {
             //submit order to mas            
             //Adjusts Inventory on hand            
             try {
-
                 Sage.Entity.Interfaces.IStgInvtTranBatch_TAC tranHeader =
                         Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgInvtTranBatch_TAC),
                         Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgInvtTranBatch_TAC;
@@ -438,11 +463,17 @@ namespace EAB_Custom {
                 tranHeader.BatchID = 0;
                 //tranHeader.BComment = salesOrder.Comments;
                 tranHeader.BDate = DateTime.Now;
-                tranHeader.WhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname;
+                if (salesOrder.UserWareHouse != null) {
+                    if (salesOrder.UserWareHouse.Sitereference != null) {
+                        tranHeader.WhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname;
+                    }
+                }
 
                 //get the accountfinancial data
-                if (salesOrder.Account.AccountFinancial != null) {
-                    tranHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                if (salesOrder.Account != null) {
+                    if (salesOrder.Account.AccountFinancial != null) {
+                        tranHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                    }
                 }
 
                 tranHeader.Save();
@@ -581,18 +612,19 @@ namespace EAB_Custom {
                     break;
             }
                         
-            plHeader.TranNo = "0"; 
+            plHeader.TranNo = "0";
             plHeader.TranDate = DateTime.Now;
             plHeader.SalesOrderId = salesOrder.Id.ToString();
 
             //get the accountfinancial data
-            if (salesOrder.Account.AccountFinancial != null) {
-                if (salesOrder.Account.AccountFinancial.CustomerId.Length > 12) {
-                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId.Substring(0, 12); //get from mas
-                } else {
-                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId;
+            if (salesOrder.Account != null) {
+                if (salesOrder.Account.AccountFinancial != null) {
+                    if (salesOrder.Account.AccountFinancial.CustomerId.Length > 12) {
+                        plHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId.Substring(0, 12); //get from mas
+                    } else {
+                        plHeader.CompanyID = salesOrder.Account.AccountFinancial.CustomerId;
+                    }
                 }
-
             }
 
             //plHeader.ProcessStatus = 0;
@@ -614,17 +646,18 @@ namespace EAB_Custom {
                 plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value                
                 plLine.SOLineNo = item.LineNumber; //sequence number    
 
-                //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
-                plLine.ProductId = item.Product.Id.ToString();
+                if (item.Product != null) {
+                    //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                    plLine.ProductId = item.Product.Id.ToString();
+                    plLine.UnitMeasID = item.Product.Unit;
+                }
 
                 plLine.QtyOnBO = 0;
                 plLine.QtyOrd = Decimal.Parse(item.Quantity.ToString());
                 plLine.QtyShip = Decimal.Parse(item.Quantity.ToString());
                 plLine.ShipDate = salesOrder.OrderDate;
-
                 plLine.CompanyID = plHeader.CompanyID;
-                plLine.UnitMeasID = item.Product.Unit;
-
+                
                 //plLine.ProcessStatus = 0;
                 //plLine.SessionKey = 0;
                 //plLine.SubmitDate = null;
@@ -633,7 +666,6 @@ namespace EAB_Custom {
                 //plLine.OrderKey = null;
 
                 plLine.Save();
-
             }
             //redirect to new picking list
             result = plHeader.Id.ToString();
@@ -661,13 +693,14 @@ namespace EAB_Custom {
             plHeader.Status = "Packing List"; 
 
             //get the accountfinancial data
-            if (salesOrder.Account.AccountFinancial != null) {
-                if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
-                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
-                } else {
-                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+            if (salesOrder.Account != null) {
+                if (salesOrder.Account.AccountFinancial != null) {
+                    if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                        plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                    } else {
+                        plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                    }
                 }
-
             }
 
             //plHeader.ProcessStatus = 0;
@@ -723,19 +756,26 @@ namespace EAB_Custom {
 
             plHeader.PostDate = DateTime.Now;
             plHeader.SalesOrderId = salesOrder.Id.ToString();
+            plHeader.Status = "Open";
+            //plHeader.PONum = "How to get?";
             
             //get the accountfinancial data
-            if (salesOrder.Account.AccountFinancial != null) {
-                if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
-                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
-                } else {
-                    plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+            if (salesOrder.Account != null) {
+                if (salesOrder.Account.AccountFinancial != null) {
+                    if (salesOrder.Account.AccountFinancial.Companycode.Length > 3) {
+                        plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode.Substring(0, 3); //get from mas
+                    } else {
+                        plHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
+                    }
                 }
-
             }
-            //plHeader.PONum = "How to get?";
-            plHeader.WhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname;
-            plHeader.Status = "Open";
+           
+            if (salesOrder.UserWareHouse != null) {
+                if (salesOrder.UserWareHouse.Sitereference != null) {
+                    plHeader.WhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname;
+                }
+            }
+            
 
             plHeader.Save();
 
@@ -753,10 +793,12 @@ namespace EAB_Custom {
                     //plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value                
                     plLine.POLineNo = item.LineNumber; //sequence number    
 
-                    //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
-                    plLine.ProductId = item.Product.Id.ToString();
-                    plLine.UnitMeasID = item.Product.Unit;
-                    plLine.QtyRcvd = Decimal.Parse(item.Quantity.ToString());
+                    if (item.Product != null) {
+                        //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                        plLine.ProductId = item.Product.Id.ToString();
+                        plLine.UnitMeasID = item.Product.Unit;
+                        plLine.QtyRcvd = Decimal.Parse(item.Quantity.ToString());
+                    }
 
                     plLine.Save();
                 }

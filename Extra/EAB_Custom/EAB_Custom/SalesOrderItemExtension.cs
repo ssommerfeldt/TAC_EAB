@@ -56,30 +56,38 @@ namespace EAB_Custom {
             Sage.Platform.RepositoryHelper<IStockCardItems> rep1 = Sage.Platform.EntityFactory.GetRepositoryHelper<IStockCardItems>();
             Sage.Platform.Repository.ICriteria crit1 = rep1.CreateCriteria();
 
-            crit1.Add(rep1.EF.Eq("Accountid", salesorderitem.SalesOrder.Account.Id));
-            crit1.Add(rep1.EF.Eq("Productid", salesorderitem.Product.Id));
+            if (salesorderitem.SalesOrder != null) {
+                if (salesorderitem.SalesOrder.Account != null) {
+                    crit1.Add(rep1.EF.Eq("Accountid", salesorderitem.SalesOrder.Account.Id));
+                    
+                    if (salesorderitem.Product != null) {
+                        crit1.Add(rep1.EF.Eq("Productid", salesorderitem.Product.Id));
 
-            double margin = 0;
-            foreach (IStockCardItems scard in crit1.List<IStockCardItems>()) {
-                margin = scard.Margin ?? 0;
-                break;
+
+                        double margin = 0;
+                        foreach (IStockCardItems scard in crit1.List<IStockCardItems>()) {
+                            margin = scard.Margin ?? 0;
+                            break;
+                        }
+
+                        salesorderitem.Price = Math.Round(listPrice, 2);
+                        salesorderitem.Discount = margin;
+                        salesorderitem.CalculatedPrice = Math.Round((Decimal)listPrice - ((Decimal)listPrice * (Decimal)margin), 2, MidpointRounding.AwayFromZero);
+                        salesorderitem.ExtendedPrice = Math.Round((Double)salesorderitem.CalculatedPrice * (Double)salesorderitem.Quantity, 2, MidpointRounding.AwayFromZero);
+                        salesorderitem.UPC = salesorderitem.Product.UPC;
+                        
+                        //Set a value on salesorder to recalculate totals on save
+                        salesorderitem.SalesOrder.Tick = salesorderitem.SalesOrder.Tick + 1 ?? 1;
+                    }
+                }
             }
-
-            salesorderitem.Price = Math.Round(listPrice, 2);
-            salesorderitem.Discount = margin;
-            salesorderitem.CalculatedPrice = Math.Round((Decimal)listPrice - ((Decimal)listPrice * (Decimal)margin), 2, MidpointRounding.AwayFromZero);
-            salesorderitem.ExtendedPrice = Math.Round((Double)salesorderitem.CalculatedPrice * (Double)salesorderitem.Quantity, 2, MidpointRounding.AwayFromZero);
-            salesorderitem.UPC = salesorderitem.Product.UPC;
-            //salesorderitem.Product.
-
-            //Set a value on salesorder to recalculate totals on save
-            salesorderitem.SalesOrder.Tick = salesorderitem.SalesOrder.Tick + 1 ?? 1;
         }
 
 
         public static void SaveProductToSalesOrderItem(ISalesOrderItem salesorderitem) {
 
             if (salesorderitem.Product != null) {
+
                 //item.SalesOrder = salesorder;
                 salesorderitem.ActualID = salesorderitem.Product.ActualId;
                 salesorderitem.Description = salesorderitem.Product.Description;
@@ -89,32 +97,36 @@ namespace EAB_Custom {
                 //get margin from category
                 salesorderitem.Discount = 0;
 
-                String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
-                sql += " FROM PRODUCT";
-                sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
-                sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
-                sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
-                sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
-                sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
+                if (salesorderitem.SalesOrder != null) {
+                    if (salesorderitem.SalesOrder.Account != null) {
 
-                Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
-                using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
-                    conn.Open();
-                    using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
-                        OleDbDataReader reader = cmd.ExecuteReader();
-                        //loop through the reader
-                        while (reader.Read()) {
-                            try {
-                                salesorderitem.Discount = (Double)reader["MARGIN"];
-                            } catch (Exception) {
-                                //no catch?
-                                salesorderitem.Discount = 0;
+                        String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
+                        sql += " FROM PRODUCT";
+                        sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
+                        sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
+                        sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
+                        sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
+                        sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
+
+                        Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+                        using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
+                            conn.Open();
+                            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
+                                OleDbDataReader reader = cmd.ExecuteReader();
+                                //loop through the reader
+                                while (reader.Read()) {
+                                    try {
+                                        salesorderitem.Discount = (Double)reader["MARGIN"];
+                                    } catch (Exception) {
+                                        //no catch?
+                                        salesorderitem.Discount = 0;
+                                    }
+                                }
+                                reader.Close();
                             }
                         }
-                        reader.Close();
                     }
                 }
-
 
                 //get msrp price
                 salesorderitem.Price = 0;

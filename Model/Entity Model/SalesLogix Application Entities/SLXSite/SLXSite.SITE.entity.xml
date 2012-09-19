@@ -200,5 +200,18 @@
         <StandardIdDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmCodeSnippetProperty" id="56cacea4-8810-44f6-a939-a5d703d4b388" lastModifiedUtc="2012-09-17T21:09:23.2302506Z" name="SiteCodeId" audited="false" hasGet="true" hasSet="false" returnType="System.String" propertyMethodId="537641ed-822c-462a-a49d-ed31fc178f7b">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmCodeSnippetProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="6380b485-b76f-4cb2-953c-2008f39ff781">
+        <CustomPropertyDataType />
+      </SystemDataType>
+      <code><![CDATA[]]></code>
+    </property>
   </properties>
 </entity>

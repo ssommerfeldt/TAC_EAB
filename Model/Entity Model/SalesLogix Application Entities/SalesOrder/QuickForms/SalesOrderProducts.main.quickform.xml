@@ -121,8 +121,9 @@ if (salesOrder != null)
         closed = (salesOrder.Status.ToUpper().Equals(GetLocalResourceObject("SalesOrderStatus_Closed").ToString().ToUpper()) ||
             salesOrder.Status.ToUpper().Equals(GetLocalResourceObject("SalesOrderStatus_Transmitted").ToString().ToUpper()));
     }
-    btnAddCustomProduct.Visible = btnAddCustomProduct.Visible && !closed && !erpSalesOrder;
-    btnLockAll.Visible = !closed && isIntegrated && lockPriceAccess && !erpSalesOrder;
+    // btnAddCustomProduct.Visible = btnAddCustomProduct.Visible && !closed && !erpSalesOrder;
+    btnAddCustomProduct.Visible = false;
+	btnLockAll.Visible = !closed && isIntegrated && lockPriceAccess && !erpSalesOrder;
     btnUnlockAll.Visible = !closed && isIntegrated && lockPriceAccess && !erpSalesOrder;
     btnRenumber.Visible = !closed && !erpSalesOrder && salesOrder.Id != null;
 }]]></CSharpCodeSnippet>
