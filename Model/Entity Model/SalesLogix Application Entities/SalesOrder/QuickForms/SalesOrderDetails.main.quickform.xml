@@ -37,13 +37,14 @@
 
 //Bind the warehouse seed value to the user
 //lkpWarehouse.SeedValue = Sage.SalesLogix.API.MySlx.Security.CurrentSalesLogixUser.Id.ToString();
-Sage.SalesLogix.Security.SLXUserService usersvc = (Sage.SalesLogix.Security.SLXUserService)Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Security.IUserService>();
-Sage.Entity.Interfaces.IUser user = usersvc.GetUser();
-lkpUserWareHouse.SeedValue = salesOrder.AccountManager.Id.ToString ();
-lkpSourceWareHouse.SeedValue = salesOrder.AccountManager.Id.ToString (); 			
-
-lkpUserWareHouse.LookupResultValue = salesOrder.UserWareHouse;
-lkpSourceWareHouse.LookupResultValue = salesOrder.SourceSLXSite ;
+//Sage.SalesLogix.Security.SLXUserService usersvc = (Sage.SalesLogix.Security.SLXUserService)Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Security.IUserService>();
+//Sage.Entity.Interfaces.IUser user = usersvc.GetUser();
+if(salesOrder.AccountManager != null) {
+	lkpUserWareHouse.SeedValue = salesOrder.AccountManager.Id.ToString ();
+	lkpSourceWareHouse.SeedValue = salesOrder.AccountManager.Id.ToString (); 			
+}
+//lkpUserWareHouse.LookupResultValue = salesOrder.UserWareHouse;
+//lkpSourceWareHouse.LookupResultValue = salesOrder.SourceSLXSite ;
 
 if (salesOrder.OrderType == "Transfer Order" || salesOrder.OrderType == "Inventory Order")
 {
