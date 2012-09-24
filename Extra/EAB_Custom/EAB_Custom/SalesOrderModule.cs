@@ -57,55 +57,54 @@ namespace EAB_Custom {
         private void SetTabVisibility() {
             try {
                 // Get the current record using the entity context service.
-                ISalesOrder salesOrder = EntityFactory.GetById<ISalesOrder>(EntityService.EntityID.ToString());
-                if (salesOrder != null) {
-                    // These 2 lines get the tab collection for the page.
-                    PageWorkItem workItem = PageWorkItemLocator.GetPageWorkItem();
-                    TabWorkspace tabWorkspace = workItem.Workspaces["TabControl"] as TabWorkspace;
-                                        
-                    if (salesOrder.Account.Type == "Distributor") {
-                        //Show the Reciept of goods tab
-                        tabWorkspace.Hide("ReceiptOfGoodsGrid", false);
+                if (EntityService != null) {
+                    ISalesOrder salesOrder = EntityFactory.GetById<ISalesOrder>(EntityService.EntityID.ToString());
+                    if (salesOrder != null) {
+                        // These 2 lines get the tab collection for the page.
+                        PageWorkItem workItem = PageWorkItemLocator.GetPageWorkItem();
+                        TabWorkspace tabWorkspace = workItem.Workspaces["TabControl"] as TabWorkspace;
 
-                    } else {
-                        //Hide the Reciept of goods tab
-                        tabWorkspace.Hide("ReceiptOfGoodsGrid", true);
+                        if (salesOrder.Account.Type == "Distributor") {
+                            //Show the Reciept of goods tab
+                            tabWorkspace.Hide("ReceiptOfGoodsGrid", false);
+
+                        } else {
+                            //Hide the Reciept of goods tab
+                            tabWorkspace.Hide("ReceiptOfGoodsGrid", true);
+                        }
+
+                        //show/hide the product tabs
+                        switch (salesOrder.OrderType) {
+                            case ("Sales Order"):
+                                tabWorkspace.Hide("SalesOrderProducts", false);
+                                tabWorkspace.Hide("ReturnProductsGrid", true);
+                                tabWorkspace.Hide("TransferProductsGrid", true);
+                                break;
+                            case ("Purchase Order"):
+                                tabWorkspace.Hide("SalesOrderProducts", false);
+                                tabWorkspace.Hide("ReturnProductsGrid", true);
+                                tabWorkspace.Hide("TransferProductsGrid", true);
+                                break;
+                            case ("Transfer Order"):
+                                tabWorkspace.Hide("SalesOrderProducts", true);
+                                tabWorkspace.Hide("ReturnProductsGrid", true);
+                                tabWorkspace.Hide("TransferProductsGrid", false);
+                                break;
+                            case ("Return Order"):
+                                tabWorkspace.Hide("SalesOrderProducts", true);
+                                tabWorkspace.Hide("ReturnProductsGrid", false);
+                                tabWorkspace.Hide("TransferProductsGrid", true);
+                                break;
+                            case ("Inventory Order"):
+                                tabWorkspace.Hide("SalesOrderProducts", false);
+                                tabWorkspace.Hide("ReturnProductsGrid", true);
+                                tabWorkspace.Hide("TransferProductsGrid", true);
+                                break;
+                            default:
+                                break;
+                        }
                     }
-
-                    //show/hide the product tabs
-                    switch (salesOrder.OrderType) {
-                        case ("Sales Order"):
-                            tabWorkspace.Hide("SalesOrderProducts", false);
-                            tabWorkspace.Hide("ReturnProductsGrid", true);
-                            tabWorkspace.Hide("TransferProductsGrid", true);
-                            break;
-                        case("Purchase Order"):
-                            tabWorkspace.Hide("SalesOrderProducts", false);
-                            tabWorkspace.Hide("ReturnProductsGrid", true);
-                            tabWorkspace.Hide("TransferProductsGrid", true);
-                            break;
-                        case ("Transfer Order"):
-                            tabWorkspace.Hide("SalesOrderProducts", true);
-                            tabWorkspace.Hide("ReturnProductsGrid", true);
-                            tabWorkspace.Hide("TransferProductsGrid", false);
-                            break;
-                        case("Return Order"):
-                            tabWorkspace.Hide("SalesOrderProducts", true);
-                            tabWorkspace.Hide("ReturnProductsGrid", false);
-                            tabWorkspace.Hide("TransferProductsGrid", true);
-                            break;
-                        case ("Inventory Order"):
-                            tabWorkspace.Hide("SalesOrderProducts", false);
-                            tabWorkspace.Hide("ReturnProductsGrid", true);
-                            tabWorkspace.Hide("TransferProductsGrid", true);
-                            break;
-                        default:
-                            break;
-                    }
-
-                }                 
-                   
-
+                }
             } catch (Exception e) {
                 Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
                 eh.HandleException(e, false);                
