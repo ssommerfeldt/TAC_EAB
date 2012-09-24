@@ -19,6 +19,7 @@ using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.Security;
 using Sage.Platform.WebPortal.Workspaces.Tab;
 using Sage.Platform.Repository;
+using System.Data;
 
 
 
@@ -50,21 +51,55 @@ namespace EAB_Custom
                 item.Margin = Margin;
                 item.Save();
 
-
+               
             }
+
         }
+
+        public static string GetUserWarhouseQueryString(String Userid)
+        {
+            String SQL = "SELECT     SITE.SITECODE ";
+            SQL += "                      FROM         USERWHSE INNER JOIN";
+            SQL += "                                            SITE ON USERWHSE.SITEID = SITE.SITEID";
+            SQL += "                      WHERE     (USERWHSE.USERID = '" + Userid + "')";
+
+            String returnValue = "(";
+            
+
+            // Generate In SQL statement
+            Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+            //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+            using (OleDbConnection conn = new OleDbConnection(datasvc.GetConnectionString()))
+            {
+                conn.Open();
+                using (OleDbCommand cmd = new OleDbCommand(SQL, conn))
+                {
+                    OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (r.Read())
+                    {
+                        returnValue += "'"+ r["SITECODE"].ToString()+ "',";
+                    }
+                    r.Close();
+                }
+            }
+
+            return returnValue+= "'')";
+        }
+
         public static void AddProductGroupItems(IStockCardItems stockcarditems, String CategoryID, IAccount Account, Double Margin)
         {
             //Add Update the Product Category Margin
             AddEditAccountProductGroup(Account.Id.ToString(), CategoryID, Margin);
+            string CompanyID = GetField<string>("ISNULL(MASCOMPANYID,'')","USERSECURITY","USERID='" + Account.AccountManager.Id.ToString () + "'");
+            string WareHouseIN = GetUserWarhouseQueryString(Account.AccountManager.Id.ToString());
 
             String SQL = "SELECT     PRODUCT.PRODUCTID, PRODUCT.ACTUALID, PRODUCT.DESCRIPTION, TIMPRODCATEGORY.TIMPRODCATEGORYID, ";
             SQL += "                      TIMPRODCATEGORY.PRODCATEGORYID,COMPANYID";
             SQL += " FROM         PRODUCT INNER JOIN";
             SQL += " TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY INNER JOIN";
             SQL += " TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
-            SQL += " WHERE     (TIMPRODCATEGORY.TIMPRODCATEGORYID = '" + CategoryID + "')";
-            SQL += " AND (sysdba.PRODUCT.PRODUCTID NOT IN";
+            SQL += " WHERE     (TIMPRODCATEGORY.TIMPRODCATEGORYID = '" + CategoryID + "') AND (sysdba.PRODUCT.COMPANYID = '" +CompanyID + "')";
+            SQL += " AND (sysdba.PRODUCT.WAREHOUSEID in "+ WareHouseIN + ") AND (sysdba.PRODUCT.PRODUCTID NOT IN";
             SQL += "              (SELECT     PRODUCTID";
             SQL += "                FROM          sysdba.STOCKCARDITEMS";
             SQL += "                WHERE      (ACCOUNTID = '" +Account.Id.ToString() + "')))";
