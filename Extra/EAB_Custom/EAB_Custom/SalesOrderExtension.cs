@@ -860,7 +860,9 @@ namespace EAB_Custom {
 
                         //get the user's warehouseid, the id may not match the object reference, use the id as correct
                         String userWarehouseID = "";
-                        if (salesorder.UserWHSEID == salesorder.UserWareHouse.Id.ToString()) {
+                        if (String.IsNullOrEmpty(salesorder.UserWHSEID) && salesorder.UserWareHouse != null) {
+                            userWarehouseID = salesorder.UserWareHouse.SiteCodeId;
+                        } else if (salesorder.UserWHSEID == salesorder.UserWareHouse.Id.ToString()) {
                             userWarehouseID = salesorder.UserWareHouse.SiteCodeId;
                         } else {
                             //lookup id from site
