@@ -858,35 +858,56 @@ namespace EAB_Custom {
                 foreach (IStockCardItems scitem in crit.List<IStockCardItems>()) {
                     if (scitem.Product != null) {
 
-                        //add the products to the salesorder
-                        Sage.Entity.Interfaces.ISalesOrderItem item =
-                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
-                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
+                        //get the user's warehouseid, the id may not match the object reference, use the id as correct
+                        String userWarehouseID = "";
+                        if (String.IsNullOrEmpty(salesorder.UserWHSEID) && salesorder.UserWareHouse != null) {
+                            userWarehouseID = salesorder.UserWareHouse.SiteCodeId;
+                        } else if (salesorder.UserWHSEID == salesorder.UserWareHouse.Id.ToString()) {
+                            userWarehouseID = salesorder.UserWareHouse.SiteCodeId;
+                        } else {
+                            //lookup id from site
+                            Sage.Entity.Interfaces.ISLXSite _UserWareHouse = 
+                                Sage.Platform.EntityFactory.GetById<Sage.Entity.Interfaces.ISLXSite>(salesorder.UserWHSEID);
+                            if (_UserWareHouse != null) {
+                                userWarehouseID = _UserWareHouse.SiteCodeId;
+                            }
+                        }
 
-                        item.SalesOrder = salesorder;
+                        //Only add products in the selected warehouse
+                        if (!String.IsNullOrEmpty(userWarehouseID) && userWarehouseID == scitem.Product.WarehouseID) {
 
-                        item.Description = scitem.ProductDescription;
-                        item.Discount = scitem.Margin;
-                        item.ExtendedPrice = 0; //due to quantity 0                    
-                        item.Quantity = 0; //set to 0 initially                   
+                            //add the products to the salesorder
+                            Sage.Entity.Interfaces.ISalesOrderItem item =
+                            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
+                            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
+
+                            item.SalesOrder = salesorder;
+
+                            item.Description = scitem.ProductDescription;
+                            item.Discount = scitem.Margin;
+                            item.ExtendedPrice = 0; //due to quantity 0                    
+                            item.Quantity = 0; //set to 0 initially                   
 
 
-                        item.ActualID = scitem.Product.ActualId;
-                        item.Family = scitem.Product.Family;
-                        item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
-                        item.ProductName = scitem.Product.Name;
-                        item.Program = scitem.Product.Program;
-                        item.Case = scitem.Product.Unit;
-                        item.Product = scitem.Product;
-                        
-                        salesorder.SalesOrderItems.Add(item);
-                        item.Save();
-                        //break;
+                            item.ActualID = scitem.Product.ActualId;
+                            item.Family = scitem.Product.Family;
+                            item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
+                            item.ProductName = scitem.Product.Name;
+                            item.Program = scitem.Product.Program;
+                            item.Case = scitem.Product.Unit;
+                            item.Product = scitem.Product;
+
+                            salesorder.SalesOrderItems.Add(item);
+                            item.Save();
+                            //break;
+                        }
                     }
                 }
                 //salesorder.Save();
             }
         }
+      
+
 
     }
 }

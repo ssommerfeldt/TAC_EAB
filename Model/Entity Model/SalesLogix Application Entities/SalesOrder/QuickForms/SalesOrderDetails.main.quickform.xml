@@ -236,13 +236,44 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);]]></CSharpCodeSnippet></Act
       </Properties>
       <ControlDefinition>
         <Properties>
-          <Property name="Control" type="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls"><QFSLXLookup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>1</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>lkpUserWareHouse</ControlId><DataBindings /><ControlLabelPlacement>left</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><OnChangeAction><ResourceKey>lkpUserWareHouse</ResourceKey><RootActionName>CSharpSnippetAction</RootActionName><Action><CSharpCodeSnippet><![CDATA[// TAC Code Here
-    Sage.Entity.Interfaces.IUSERWHSE   _UserWareHouse = Sage.Platform.EntityFactory.GetById<Sage.Entity.Interfaces.IUSERWHSE>(lkpUserWareHouse.LookupResultValue.ToString());
-    Sage.Entity.Interfaces.ISalesOrder  salesorder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder ;
-    salesorder.UserWHSEID   = _UserWareHouse.Siteid;
-    salesorder.Save();
-    ScriptManager.RegisterStartupScript(this, GetType(), "refresh", "window.setTimeout('window.location.reload(true);',50);", true);
-    //Response.Redirect(Request.Url.ToString());]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnChangeAction><LookupImage /><LookupDialogWidth xsi:nil="true" /><LookupDialogHeight xsi:nil="true" /><LookupBindingMode>String</LookupBindingMode><LookupResultValue xsi:type="xsd:string" /><SeedProperty>USERID</SeedProperty><SeedValue /><Required>false</Required><DropDownDisplayProperty /><AllowClearingResult>false</AllowClearingResult><OverrideSeedOnSearch>false</OverrideSeedOnSearch><LookupEntityName>USERWHSE</LookupEntityName><LookupEntityTypeName>Sage.Entity.Interfaces.IUSERWHSE, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName><AutoPostBack>false</AutoPostBack><EnableHyperLinking>false</EnableHyperLinking><InitializeLookup>false</InitializeLookup><LookupProperties><LookupProperty><PropertyName>SLXSite.Attention</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Attention</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>SLXSite.Sitecode</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Sitecode</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty></LookupProperties><LookupPreFilters /></QFSLXLookup></Property>
+          <Property name="Control" type="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls"><QFSLXLookup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>1</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>lkpUserWareHouse</ControlId><DataBindings /><ControlLabelPlacement>left</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><OnChangeAction><ResourceKey>lkpUserWareHouse</ResourceKey><RootActionName>CSharpSnippetAction</RootActionName><Action><CSharpCodeSnippet><![CDATA[    // User Warehouse OnChangeAction
+    Sage.Entity.Interfaces.IUSERWHSE _UserWareHouse = Sage.Platform.EntityFactory.GetById<Sage.Entity.Interfaces.IUSERWHSE>(lkpUserWareHouse.LookupResultValue.ToString());
+    Sage.Entity.Interfaces.ISalesOrder salesorder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder ;
+
+    if (salesorder.UserWHSEID != _UserWareHouse.Siteid) {
+         salesorder.UserWHSEID = _UserWareHouse.Siteid;
+        //salesorder.UserWareHouse = _UserWareHouse.SLXSite;
+        //salesorder.Save();
+
+        //remove all products that don't match the warehouse
+        ArrayList toRemove = new ArrayList();
+
+        foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesorder.SalesOrderItems) {
+            if (item.Product == null) {
+                //product not found, remove item
+                toRemove.Add(item);
+            } else {
+                if (item.Product.WarehouseID != _UserWareHouse.SLXSite.SiteCodeId) {
+                    toRemove.Add(item);
+                }
+            }
+        }
+
+        foreach (Sage.Entity.Interfaces.ISalesOrderItem item in toRemove) {
+            salesorder.SalesOrderItems.Remove(item);
+            item.Delete();
+        }
+        salesorder.Save();
+
+        //for a salesorder, add products from the stock card
+        if (salesorder.OrderType == "Sales Order") {
+            salesorder.AddStockcardProducts();
+        }
+        salesorder.Save();
+
+        ScriptManager.RegisterStartupScript(this, GetType(), "refresh", "window.setTimeout('window.location.reload(true);',50);", true);
+        //Response.Redirect(Request.Url.ToString());
+	}]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>DialogOK</DialogActionResult><PerformsUpdate>True</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnChangeAction><LookupImage /><LookupDialogWidth xsi:nil="true" /><LookupDialogHeight xsi:nil="true" /><LookupBindingMode>String</LookupBindingMode><LookupResultValue xsi:type="xsd:string" /><SeedProperty>USERID</SeedProperty><SeedValue /><Required>false</Required><DropDownDisplayProperty /><AllowClearingResult>false</AllowClearingResult><OverrideSeedOnSearch>false</OverrideSeedOnSearch><LookupEntityName>USERWHSE</LookupEntityName><LookupEntityTypeName>Sage.Entity.Interfaces.IUSERWHSE, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName><AutoPostBack>false</AutoPostBack><EnableHyperLinking>false</EnableHyperLinking><InitializeLookup>false</InitializeLookup><LookupProperties><LookupProperty><PropertyName>SLXSite.Attention</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Attention</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>SLXSite.Sitecode</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Sitecode</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty></LookupProperties><LookupPreFilters /></QFSLXLookup></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>
