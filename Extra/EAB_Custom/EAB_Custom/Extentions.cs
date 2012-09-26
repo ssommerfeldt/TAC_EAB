@@ -259,7 +259,7 @@ namespace EAB_Custom
                 //No National Pricing Exists
                 // Try to get Default pricing...
                 //
-                tmpMargin = GetField<String>("Isnull(PctAdj,'0')", "vDefaultPriceGroupMargin", "ProdPriceGroupID = '" + ProdCategoryID + "' AND WhseID IN " + GetUserWarhouseQueryString(Account.AccountManager.Id.ToString()));
+                tmpMargin = GetField<String>("Isnull(PctAdj,'0')", "vDefaultPriceGroupMargin", "ProdPriceGroupID = '" + ProdCategoryID + "'");// AND WhseID IN " + GetUserWarhouseQueryString(Account.AccountManager.Id.ToString()));
                 if (tmpMargin == string.Empty || tmpMargin == null )
                 {
                     result = 0;
