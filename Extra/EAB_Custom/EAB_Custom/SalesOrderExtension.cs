@@ -20,6 +20,11 @@ namespace EAB_Custom {
 
 
         public static void SubmitOrder(ISalesOrder salesOrder) {
+            //don't allow already submitted order to resubmit
+            if (salesOrder.Status == "Transmitted to Accounting") {
+                throw new Exception("This order has already been submitted. Change the status to resubmit.");
+            }
+
             //Determine which order to submit and pass through
             switch (salesOrder.OrderType) {
                 case "Sales Order":
@@ -78,6 +83,7 @@ namespace EAB_Custom {
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSalesOrder_TAC;
 
             soHeader.SalesOrderID = salesOrder.Id.ToString();
+            soHeader.UserFld1 = salesOrder.SalesOrderNumber;
             soHeader.TranNo = "0";
             soHeader.TranDate = DateTime.Now;
             soHeader.TradeDiscAmt = null;
@@ -99,7 +105,7 @@ namespace EAB_Custom {
                 if (salesOrder.Account.AccountFinancial != null) {
                     soHeader.CustID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
                     soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type.Substring(0, 4).ToUpper(); //get from mas
-
+                    
                     //soHeader.DfltShipToCustAddrID = salesOrder.ShippingAddress.Address.MASAddrKey.ToString(); //change this to mas id
                     soHeader.DfltShipToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
                     //soHeader.BillToCustAddrID = salesOrder.BillingAddress.Address.MASAddrKey.ToString(); //change to mas id
@@ -230,6 +236,11 @@ namespace EAB_Custom {
 
                 }
             }
+
+            //Update the salesorder
+            salesOrder.Status = "Transmitted to Accounting";
+            salesOrder.Save();
+
         }
 
         private static void SubmitTransferOrder(ISalesOrder salesOrder) {
@@ -318,6 +329,10 @@ namespace EAB_Custom {
 
                 }
             }
+
+            //Update the salesorder
+            salesOrder.Status = "Transmitted to Accounting";
+            salesOrder.Save();
         }
 
         private static void SubmitPurchaseOrder(ISalesOrder salesOrder) {
@@ -342,7 +357,7 @@ namespace EAB_Custom {
             soHeader.TranCmnt = null;
             soHeader.TranNo = "0";
             soHeader.TranDate = DateTime.Now;
-            soHeader.UserFld1 = null;
+            soHeader.UserFld1 = salesOrder.SalesOrderNumber;
             soHeader.VendClassID = null;
                         
 
@@ -448,6 +463,9 @@ namespace EAB_Custom {
 
                 }
             }
+            //Update the salesorder
+            salesOrder.Status = "Transmitted to Accounting";
+            salesOrder.Save();
         }
 
 
@@ -531,6 +549,10 @@ namespace EAB_Custom {
                         transaction.Save();
                     }
                 }
+                //Update the salesorder
+                salesOrder.Status = "Transmitted to Accounting";
+                salesOrder.Save();
+
             } catch (Exception ex) {
                 //DialogService.ShowMessage("Error Creating Transaction: " + transactionID + " " + ex.Message);
                 Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
