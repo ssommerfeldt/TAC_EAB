@@ -5,10 +5,10 @@ FROM         sysdba.ADDRESSREFERENCE INNER JOIN
 Select * from LiveEAB_app.dbo.tarCustaddr, LiveEAB_app.dbo.tarCustAddr
 
 Update sysdba.ADDRESS
-SET    MASADDRKEY= LiveEAB_app.dbo.tarCustAddr.AddrKey
+SET    MASADDRKEY= mas500_tst_app.dbo.tarCustAddr.AddrKey
 FROM         sysdba.ADDRESS INNER JOIN
                       sysdba.ADDRESSREFERENCE ON sysdba.ADDRESS.ADDRESSID = sysdba.ADDRESSREFERENCE.ADDRESSID INNER JOIN
-                      LiveEAB_app.dbo.tarCustAddr ON sysdba.ADDRESSREFERENCE.ADDRESSREFDISPLAYNAME = LiveEAB_app.dbo.tarCustAddr.CustAddrID
+                      mas500_tst_app.dbo.tarCustAddr ON sysdba.ADDRESSREFERENCE.ADDRESSREFDISPLAYNAME = mas500_tst_app.dbo.tarCustAddr.CustAddrID
 
 
 
@@ -19,3 +19,10 @@ FROM         sysdba.ACCOUNT INNER JOIN
                       mas500_tst_app.dbo.ERPLinkCustomer ON 
                       sysdba.ACCOUNTREFERENCE.ACCOUNTREFDISPLAYNAME = mas500_tst_app.dbo.ERPLinkCustomer.CustID LEFT OUTER JOIN
                       sysdba.USERINFO ON mas500_tst_app.dbo.ERPLinkCustomer.SperID = sysdba.USERINFO.ACCOUNTINGUSERID
+
+Update sysdba.ACCOUNT                      
+SET     SECCODEID= sysdba.SECCODE.SECCODEID 
+FROM         sysdba.ACCOUNT INNER JOIN
+                      sysdba.USERINFO ON sysdba.ACCOUNT.ACCOUNTMANAGERID = sysdba.USERINFO.USERID INNER JOIN
+                      sysdba.SECCODE ON sysdba.USERINFO.USERNAME = sysdba.SECCODE.SECCODEDESC
+                   
