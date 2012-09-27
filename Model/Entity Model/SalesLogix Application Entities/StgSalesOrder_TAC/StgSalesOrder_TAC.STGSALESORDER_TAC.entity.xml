@@ -391,5 +391,19 @@
         <StandardIdDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="844c1828-e7f1-44f1-9339-e79e7fd92513" lastModifiedUtc="2012-09-27T21:58:25.4754794Z" name="UserFld1" audited="false" columnName="USERFLD1" maxLength="15" precision="0" scale="0" ordinal="29" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>15</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
   </properties>
 </entity>
