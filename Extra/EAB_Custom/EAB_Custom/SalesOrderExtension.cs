@@ -287,7 +287,7 @@ namespace EAB_Custom {
             toHeader.ReqDelvDate = DateTime.Now.AddDays(10);
             toHeader.SchdShipDate = DateTime.Now.AddDays(2);
             toHeader.ShipMethID = null;            
-            toHeader.TranCmnt = null;
+            toHeader.TranCmnt = salesOrder.SalesOrderNumber;
             toHeader.TranDate = DateTime.Now;
             toHeader.TranNo = "0";
             toHeader.TransitWhseID = null;
@@ -308,6 +308,7 @@ namespace EAB_Custom {
                     toLine.Stgtrnsfrorder_tacId = toHeader.Id.ToString();
                     toLine.SalesOrderID = salesOrder.Id.ToString();
                     toLine.SalesOrderItemID = item.Id.ToString();
+                    //toLine.TranCmnt = salesOrder.SalesOrderNumber;
 
                     toLine.TrnsfrOrderID = 0; //set this to unique int number (global) during integration - same as header value
                     toLine.TrnsfrOrderLineID = 0; //Set this to unique number (for this order) during integration.
@@ -326,7 +327,6 @@ namespace EAB_Custom {
                     toLine.SessionKey = 0;
 
                     toLine.Save();
-
                 }
             }
 
@@ -492,8 +492,7 @@ namespace EAB_Custom {
                     if (salesOrder.Account.AccountFinancial != null) {
                         tranHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
                     }
-                }
-
+                }                
                 tranHeader.Save();
 
                 foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
@@ -506,6 +505,7 @@ namespace EAB_Custom {
                         transaction.Stginvttranbatch_tacId = tranHeader.Id.ToString();
                         transaction.SalesOrderID = salesOrder.Id.ToString();
                         transaction.SalesOrderItemID = item.Id.ToString();
+                        transaction.TranCmnt = salesOrder.SalesOrderNumber;
 
                         //Determine Transaction Type
                         int transactionType = 0;
@@ -541,8 +541,7 @@ namespace EAB_Custom {
                                 transaction.GLAcctNo = "";
                             }
                         }
-                                               
-                        transaction.TranCmnt = "";
+                                                
                         transaction.CompanyID = tranHeader.CompanyID;
                         transaction.ProcessStatus = 0;
 

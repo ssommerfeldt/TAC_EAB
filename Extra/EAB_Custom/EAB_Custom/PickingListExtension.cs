@@ -21,7 +21,7 @@ namespace EAB_Custom {
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOPicklist_TAC),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOPicklist_TAC;
 
-            plHeader.PickingListID = pickinglist.Id.ToString();
+            plHeader.PickingListID = pickinglist.Id.ToString();            
             plHeader.RowKey = 0; //set this to unique int number (global) during integration
             plHeader.TranType = 801;
             plHeader.TranNo = "0";
