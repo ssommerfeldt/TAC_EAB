@@ -250,7 +250,8 @@ namespace EAB_Custom
         public static void GetDefaultMargin(IStockCardItems stockcarditems,String TIMPRODCATEGORYID,IAccount Account, out Double result)
         {
              
-            String  tmpMargin;
+            string  tmpMargin;
+            string tmpDefaultMasterWhse;
             string ProdCategoryID = GetField<String>("Isnull(PRODCATEGORYID,'')","TIMPRODCATEGORY","TIMPRODCATEGORYID='" + TIMPRODCATEGORYID + "'");
             tmpMargin = GetField<String>("IsNull(PctAdj,'')", "vNationalAccountMargin", "CustID='" + Account.AccountFinancial.CustomerId + "' AND CompanyID ='" + Account.AccountFinancial.Companycode + "' AND  ProdPriceGroupID=' " + ProdCategoryID + "'");
 
@@ -258,8 +259,8 @@ namespace EAB_Custom
             {
                 //No National Pricing Exists
                 // Try to get Default pricing...
-                //
-                tmpMargin = GetField<String>("Isnull(PctAdj,'0')", "vDefaultPriceGroupMargin", "ProdPriceGroupID = '" + ProdCategoryID + "'");// AND WhseID IN " + GetUserWarhouseQueryString(Account.AccountManager.Id.ToString()));
+                tmpDefaultMasterWhse = GetField<string>("MASTERWAREHOUSE", "MASMASTERWAREHOUSE", "COMPANYID ='" + Account.AccountManager.MascompanyId + "'");
+                tmpMargin = GetField<String>("Isnull(PctAdj,'0')", "vDefaultPriceGroupMargin", "ProdPriceGroupID = '" + ProdCategoryID + "' AND WhseID = '" + tmpDefaultMasterWhse + "'");
                 if (tmpMargin == string.Empty || tmpMargin == null )
                 {
                     result = 0;
