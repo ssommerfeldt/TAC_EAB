@@ -88,7 +88,7 @@ namespace EAB_Custom
         public static double GetDefaultNationalPricingMargin(String CustomerId, string CompanyID, string ProdPriceGroupID)
         {
             //dbltmpMargin = GetField<decimal>("IsNull(PctAdj,'0')", "vNationalAccountMargin", "CustID='" + Account.AccountFinancial.CustomerId + "' AND CompanyID ='" + Account.AccountFinancial.Companycode + "' AND  ProdPriceGroupID=' " + ProdCategoryID + "'");
-            String SQL = "Select IsNull(PctAdj,'0') as Margin From sysdba.vNationalAccountMargin where CustID='" + CustomerId + "' AND CompanyID ='" + CompanyID  + "' AND  ProdPriceGroupID=' " + ProdPriceGroupID  + "'";
+            String SQL = "Select IsNull(PctAdj,'0') as Margin From sysdba.vNationalAccountMargin where CustID='" + CustomerId + "' AND CompanyID ='" + CompanyID  + "' AND  ProdPriceGroupID= '" + ProdPriceGroupID  + "'";
 
             double returnValue = 0.0; //Intialzie
 
