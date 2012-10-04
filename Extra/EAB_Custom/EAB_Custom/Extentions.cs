@@ -58,9 +58,10 @@ namespace EAB_Custom
 
         public static string GetUserWarhouseQueryString(String Userid)
         {
-            String SQL = "SELECT     SITE.SITECODE ";
-            SQL += "                      FROM         USERWHSE INNER JOIN";
-            SQL += "                                            SITE ON USERWHSE.SITEID = SITE.SITEID";
+            String SQL = "SELECT      sysdba.SITEREFERENCE.SITEREFDISPLAYNAME ";
+            SQL += " FROM         sysdba.USERWHSE INNER JOIN ";
+            SQL += " sysdba.SITE ON sysdba.USERWHSE.SITEID = sysdba.SITE.SITEID INNER JOIN ";
+            SQL += "                      sysdba.SITEREFERENCE ON sysdba.SITE.SITEID = sysdba.SITEREFERENCE.SITEID";
             SQL += "                      WHERE     (USERWHSE.USERID = '" + Userid + "')";
 
             String returnValue = "(";
@@ -77,7 +78,7 @@ namespace EAB_Custom
                     OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                     while (r.Read())
                     {
-                        returnValue += "'" + r["SITECODE"].ToString() + "',";
+                        returnValue += "'" + r["SITEREFDISPLAYNAME"].ToString() + "',";
                     }
                     r.Close();
                 }
