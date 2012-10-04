@@ -41,7 +41,7 @@
           <ConfigurationSetting>
             <Id>Live EAB App</Id>
             <Name>Live EAB App</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=SQLSERVER2008;Password=;User ID=;Initial Catalog=LiveEAB_app</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=SQLSERVER2008;Persist Security Info=True;Password=;User ID=;Initial Catalog=LiveEAB_app</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>EAB SLX Native SQL</Id>
