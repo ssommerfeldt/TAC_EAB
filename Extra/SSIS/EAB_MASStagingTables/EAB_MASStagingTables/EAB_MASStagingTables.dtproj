@@ -11,12 +11,16 @@
   <Dimensions />
   <DataSources>
     <ProjectItem>
-      <Name>Live EAB Slx.ds</Name>
-      <FullPath>Live EAB Slx.ds</FullPath>
+      <Name>EAB SLX Provider.ds</Name>
+      <FullPath>EAB SLX Provider.ds</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Live EAB App.ds</Name>
-      <FullPath>Live EAB App.ds</FullPath>
+      <Name>EAB MAS.ds</Name>
+      <FullPath>EAB MAS.ds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>EAB SLX Native SQL.ds</Name>
+      <FullPath>EAB SLX Native SQL.ds</FullPath>
     </ProjectItem>
   </DataSources>
   <DataSourceViews />
@@ -32,12 +36,17 @@
           <ConfigurationSetting>
             <Id>Live EAB Slx</Id>
             <Name>Live EAB Slx</Name>
-            <Value xsi:type="xsd:string">Provider=SLXOLEDB.1;Data Source=Athena;Persist Security Info=True;User ID=;Initial Catalog=SALESLOGIX_TEST</Value>
+            <Value xsi:type="xsd:string">Provider=SLXOLEDB.1;Data Source=EAB;Persist Security Info=True;User ID=;Initial Catalog=EABTEST2;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>Live EAB App</Id>
             <Name>Live EAB App</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=Apollo;Persist Security Info=True;Password=;User ID=;Initial Catalog=mas500_tst_app</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=SQLSERVER2008;Password=;User ID=;Initial Catalog=LiveEAB_app</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>EAB SLX Native SQL</Id>
+            <Name>EAB SLX Native SQL</Name>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=SQLSERVER2008;Persist Security Info=True;Password=;User ID=;Initial Catalog=EAB_SLXTest2</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionProviderMappings />
@@ -50,6 +59,11 @@
           <ConfigurationSetting>
             <Id>Live EAB App</Id>
             <Name>Live EAB App</Name>
+            <Value xsi:type="xsd:int">1</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>EAB SLX Native SQL</Id>
+            <Name>EAB SLX Native SQL</Name>
             <Value xsi:type="xsd:int">1</Value>
           </ConfigurationSetting>
         </ConnectionSecurityMappings>

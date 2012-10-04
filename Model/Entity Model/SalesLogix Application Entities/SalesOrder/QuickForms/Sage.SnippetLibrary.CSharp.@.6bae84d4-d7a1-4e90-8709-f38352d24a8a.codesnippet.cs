@@ -61,11 +61,16 @@ namespace Sage.BusinessRules.CodeSnippets
                 bool closed = false;
                 if (salesOrder.Status != null)
                 {
-                    closed =
+					//Removed to allow status to be changed if set to transmitted
+                   // closed =
+                   //     (salesOrder.Status.ToUpper().Equals(
+                   //         form.GetResource("SalesOrderStatus_Closed").ToString().ToUpper()) ||
+                   //      salesOrder.Status.ToUpper().Equals(
+                   //          form.GetResource("SalesOrderStatus_Transmitted").ToString().ToUpper()));
+					
+					closed =
                         (salesOrder.Status.ToUpper().Equals(
-                            form.GetResource("SalesOrderStatus_Closed").ToString().ToUpper()) ||
-                         salesOrder.Status.ToUpper().Equals(
-                             form.GetResource("SalesOrderStatus_Transmitted").ToString().ToUpper()));
+                            form.GetResource("SalesOrderStatus_Closed").ToString().ToUpper()));
                 }
                 //if this is a Sales Order that synced from the accounting system or the Sales Order has been submitted then we disable it
                 bool isOpen = false;
