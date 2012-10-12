@@ -205,7 +205,15 @@ namespace EAB_Custom {
                         soLine.ShipToAddrLine4 = salesOrder.ShippingAddress.Address4;
                         soLine.ShipToAddrLine5 = "";                       
                         soLine.ShipToCity = salesOrder.ShippingAddress.City;
-                        soLine.ShipToCountryID = salesOrder.ShippingAddress.Country;
+                        if (salesOrder.ShippingAddress.Country.Length > 3) {
+                            if (salesOrder.ShippingAddress.Country.ToUpper().Substring(0, 1) == "U") {
+                                soLine.ShipToCountryID = "USA";
+                            } else {
+                                soLine.ShipToCountryID = "CAN";
+                            }
+                        } else {
+                            soLine.ShipToCountryID = salesOrder.ShippingAddress.Country;
+                        }
                         soLine.ShipToPostalCode = salesOrder.ShippingAddress.PostalCode;
                         soLine.ShipToStateID = salesOrder.ShippingAddress.State;
                     }
