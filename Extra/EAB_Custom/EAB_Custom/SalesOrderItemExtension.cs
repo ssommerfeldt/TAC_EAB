@@ -154,5 +154,77 @@ namespace EAB_Custom {
 
             }
         }
+
+
+         public static void UPCSearch(ISalesOrderItem salesorderitem) {
+            if (!String.IsNullOrEmpty (salesorderitem.UPC)) {
+                //Clear the current product
+                salesorderitem.Product = null;
+
+                //Lookup UPC from products
+                Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IProduct> f = Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IProduct>();
+                Sage.Platform.Repository.ICriteria crit = f.CreateCriteria();
+
+                if (salesorderitem.SalesOrder.UserWareHouse != null) {
+                    crit.Add(f.EF.Eq("WarehouseID", salesorderitem.SalesOrder.UserWareHouse.SiteCodeId));
+                    crit.Add(f.EF.Eq("UPC", salesorderitem.UPC));
+
+                    if (salesorderitem.SalesOrder.OrderType == "Return Order") {
+                        crit.Add(f.EF.Like("Family", "Exchangeable%"));
+                    }
+
+                    foreach (Sage.Entity.Interfaces.IProduct product in crit.List<Sage.Entity.Interfaces.IProduct>()) {
+                        salesorderitem.Product = product;
+                        salesorderitem.ActualID = product.ActualId;
+
+                        //save the product found to salesorder
+                        SaveProductToSalesOrderItem(salesorderitem);
+
+                        break;
+                    }
+                }
+                if (salesorderitem.Product == null) {
+                    throw new Exception("UPC not found.             ");
+                }        
+            }            
+        }
+
+
+        public static void SKUSearch(ISalesOrderItem salesorderitem) {
+            if (!String.IsNullOrEmpty (salesorderitem.ActualID)) {
+                //Clear the current product
+                salesorderitem.Product = null;
+
+                //Lookup SKU from products
+                Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IProduct> f = Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IProduct>();
+                Sage.Platform.Repository.ICriteria crit = f.CreateCriteria();
+
+                if (salesorderitem.SalesOrder.UserWareHouse != null) {
+                    crit.Add(f.EF.Eq("WarehouseID", salesorderitem.SalesOrder.UserWareHouse.SiteCodeId));
+                    crit.Add(f.EF.Eq("ActualId", salesorderitem.ActualID));
+
+                    if (salesorderitem.SalesOrder.OrderType == "Return Order") {
+                        crit.Add(f.EF.Like("Family", "Exchangeable%"));
+                    }
+
+                    foreach (Sage.Entity.Interfaces.IProduct product in crit.List<Sage.Entity.Interfaces.IProduct>()) {
+                        salesorderitem.Product = product;
+                        salesorderitem.ActualID = product.ActualId;
+
+                        //save the product found to salesorder
+                        SaveProductToSalesOrderItem(salesorderitem);
+
+                        break;
+                    }
+                }
+                if (salesorderitem.Product == null) {
+                    throw new Exception("SKU not found.             ");
+                }
+            }
+        }
+
+    
+
+
     }
 }
