@@ -25,12 +25,8 @@
     if (DialogService.ChildInsertInfo != null) {
         if (_parent != null) {
             Sage.Entity.Interfaces.ISalesOrder salesOrder = _parent as Sage.Entity.Interfaces.ISalesOrder;
-            string userWarehouse = "";
-			if(salesOrder.UserWareHouse.Sitecode.Length > 3) {
-				userWarehouse = salesOrder.UserWareHouse.Sitecode.Substring(0, 3);
-			} else {
-				userWarehouse = salesOrder.UserWareHouse.Sitecode;	
-			}
+            string userWarehouse = salesOrder.UserWareHouse.SiteCodeId;
+			
             //LookupPreFilter warehouse = new LookupPreFilter("Warehouse", userWarehouse);
             //warehouse.CondOperator = "=";
             //warehouse.PropertyName = "WarehouseID";

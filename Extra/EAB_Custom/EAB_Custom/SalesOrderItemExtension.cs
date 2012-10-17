@@ -170,7 +170,7 @@ namespace EAB_Custom {
                     crit.Add(f.EF.Eq("UPC", salesorderitem.UPC));
 
                     if (salesorderitem.SalesOrder.OrderType == "Return Order") {
-                        crit.Add(f.EF.Like("Family", "Exchangeable%"));
+                        crit.Add(f.EF.Eq("Family", "Exchange Returns"));
                     }
 
                     foreach (Sage.Entity.Interfaces.IProduct product in crit.List<Sage.Entity.Interfaces.IProduct>()) {
@@ -204,7 +204,7 @@ namespace EAB_Custom {
                     crit.Add(f.EF.Eq("ActualId", salesorderitem.ActualID));
 
                     if (salesorderitem.SalesOrder.OrderType == "Return Order") {
-                        crit.Add(f.EF.Like("Family", "Exchangeable%"));
+                        crit.Add(f.EF.Eq("Family", "Exchange Returns"));
                     }
 
                     foreach (Sage.Entity.Interfaces.IProduct product in crit.List<Sage.Entity.Interfaces.IProduct>()) {
