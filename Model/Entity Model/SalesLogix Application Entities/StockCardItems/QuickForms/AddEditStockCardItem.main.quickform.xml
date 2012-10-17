@@ -18,7 +18,19 @@
       <ResourceKey>8e11c223-604c-4e1e-a013-0427cba01802</ResourceKey>
       <RootActionName>CSharpSnippetAction</RootActionName>
       <Action>
-        <CSharpCodeSnippet><![CDATA[// TAC Code here]]></CSharpCodeSnippet>
+        <CSharpCodeSnippet><![CDATA[// TAC Code here
+ Sage.Entity.Interfaces.IStockCardItems _entity = BindingSource.Current as Sage.Entity.Interfaces.IStockCardItems;
+    if (_entity != null)
+    {
+		if(_entity.Product != null)
+		{
+			txtUPC.Text = _entity.Product.ActualId ;	
+		}
+		else
+		{
+			txtUPC.Text = "";
+		}
+	}]]></CSharpCodeSnippet>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
       <RunOnEveryRePaint>False</RunOnEveryRePaint>
