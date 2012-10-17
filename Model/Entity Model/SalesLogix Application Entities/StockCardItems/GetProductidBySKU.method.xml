@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="556e51ae-128b-45d5-8446-17c1aafb2e4a" lastModifiedUtc="2012-10-16T22:42:58.826875Z" name="GetProductidBySKU" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="aae152eb-96a7-483e-b209-57be5511a32c" paramName="SKU" sequence="0" paramType="String" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="9f4f919f-c218-4352-892c-1de7139990d5" lastModifiedUtc="2012-10-17T19:52:25.76625Z" targetType="EAB_Custom.Extentions, EAB_Custom" targetMethod="GetProductidBySKU" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>
