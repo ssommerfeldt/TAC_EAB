@@ -89,7 +89,7 @@ namespace EAB_Custom
         public static double GetDefaultNationalPricingMargin(String CustomerId, string CompanyID, string ProdPriceGroupID)
         {
             //dbltmpMargin = GetField<decimal>("IsNull(PctAdj,'0')", "vNationalAccountMargin", "CustID='" + Account.AccountFinancial.CustomerId + "' AND CompanyID ='" + Account.AccountFinancial.Companycode + "' AND  ProdPriceGroupID=' " + ProdCategoryID + "'");
-            String SQL = "Select IsNull(PctAdj,'0') as Margin From sysdba.vNationalAccountMargin where CustID='" + CustomerId + "' AND CompanyID ='" + CompanyID  + "' AND  ProdPriceGroupID= '" + ProdPriceGroupID  + "'";
+            String SQL = "Select IsNull(PctAdj,'0') as Margin From sysdba.vNationalAccountMargin where CustID='" + CustomerId + "' AND CompanyID ='" + CompanyID + "' AND  ProdPriceGroupID= '" + ProdPriceGroupID + "'";
 
             double returnValue = 0.0; //Intialzie
 
@@ -105,7 +105,7 @@ namespace EAB_Custom
                     OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                     while (r.Read())
                     {
-                        returnValue = Convert.ToDouble( r["Margin"]);
+                        returnValue = Convert.ToDouble(r["Margin"]);
                     }
                     r.Close();
                 }
@@ -114,7 +114,7 @@ namespace EAB_Custom
             return returnValue;
         }
 
-         public static double GetDefaultProductProgramMargin( string ProdCategoryID, string MasterWhseID)
+        public static double GetDefaultProductProgramMargin(string ProdCategoryID, string MasterWhseID)
         {
             //dbltmpMargin = GetField<decimal>("Isnull(PctAdj,'0')", "vDefaultPriceGroupMargin", "ProdPriceGroupID = '" + ProdCategoryID + "' AND WhseID = '" + tmpDefaultMasterWhse + "'");
             String SQL = "Select IsNull(PctAdj,'0') as Margin From sysdba.vDefaultPriceGroupMargin where ProdPriceGroupID = '" + ProdCategoryID + "' AND WhseID = '" + MasterWhseID + "'";
@@ -133,7 +133,7 @@ namespace EAB_Custom
                     OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                     while (r.Read())
                     {
-                        returnValue = Convert.ToDouble( r["Margin"]);
+                        returnValue = Convert.ToDouble(r["Margin"]);
                     }
                     r.Close();
                 }
@@ -152,7 +152,7 @@ namespace EAB_Custom
             String SQL = "SELECT     sysdba.PRODUCT.PRODUCTID, sysdba.PRODUCT.ACTUALID, sysdba.PRODUCT.DESCRIPTION, sysdba.PRODUCT.COMPANYID, ";
             SQL += "                       sysdba.TIMPRODPRICEGROUP.TIMPRODPRICEGROUPID";
             SQL += " FROM         sysdba.PRODUCT INNER JOIN";
-            SQL += "                       sysdba.TIMPRODPRICEGROUP ON sysdba.PRODUCT.MASPRODPRICEGROUPKEY = sysdba.TIMPRODPRICEGROUP.ProdPriceGroupKey" ;
+            SQL += "                       sysdba.TIMPRODPRICEGROUP ON sysdba.PRODUCT.MASPRODPRICEGROUPKEY = sysdba.TIMPRODPRICEGROUP.ProdPriceGroupKey";
             SQL += " WHERE     (TIMPRODPRICEGROUP.TIMPRODPRICEGROUPID = '" + CategoryID + "') AND (sysdba.PRODUCT.COMPANYID = '" + CompanyID + "')";
             SQL += " AND (sysdba.PRODUCT.WAREHOUSEID in " + WareHouseIN + ") AND (sysdba.PRODUCT.PRODUCTID NOT IN";
             SQL += "              (SELECT     PRODUCTID";
@@ -247,7 +247,7 @@ namespace EAB_Custom
                     }
                 }
 
-                
+
 
             }
 
@@ -302,9 +302,9 @@ namespace EAB_Custom
         //=============================================================================
         // Need to send in Account as Parameter as the stockcarditem Account is null
         //============================================================================
-        public static void GetDefaultMargin(IStockCardItems stockcarditems,String TIMPRODCATEGORYID,IAccount Account, out Double result)
+        public static void GetDefaultMargin(IStockCardItems stockcarditems, String TIMPRODCATEGORYID, IAccount Account, out Double result)
         {
-             
+
             double dbltmpMargin;
             string tmpDefaultMasterWhse;
             string ProdCategoryID = GetField<String>("Isnull(ProdPriceGroupID,'')", "TIMPRODPRICEGROUP", "TIMPRODPRICEGROUPID='" + TIMPRODCATEGORYID + "'");
@@ -336,6 +336,19 @@ namespace EAB_Custom
             }
         }
 
+        public static void GetProductidBySKU(IStockCardItems stockcarditems, String SKU, out String result)
+        {
+            /////============================================================
+            //// NOTE this does NOT use the UPC... it is using the SKU
+            //===============================================================
+            string CompanyID = GetField<string>("ISNULL(MASCOMPANYID,'')", "USERSECURITY", "USERID='" + stockcarditems.Account.AccountManager.Id.ToString() + "'");
+            string WareHouseIN = GetUserWarhouseQueryString(stockcarditems.Account.AccountManager.Id.ToString());
+
+
+            string Productid = GetField<string>("productid", "PRODUCT", " COMPANYID = '" + CompanyID + "' and ACTUALID = '" + SKU + "' AND WAREHOUSEID in " + WareHouseIN);
+            
+            result = Productid;
+        }
 
         #region Utility
 
@@ -351,7 +364,7 @@ namespace EAB_Custom
                 using (OleDbCommand cmd = new OleDbCommand(sql, conn))
                 {
                     object fieldval = cmd.ExecuteScalar();
-                   return fieldval == DBNull.Value ? default(T) : (T)fieldval;
+                    return fieldval == DBNull.Value ? default(T) : (T)fieldval;
                 }
             }
         }
