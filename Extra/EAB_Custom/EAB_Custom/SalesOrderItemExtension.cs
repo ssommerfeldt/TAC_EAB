@@ -169,8 +169,11 @@ namespace EAB_Custom {
                     crit.Add(f.EF.Eq("WarehouseID", salesorderitem.SalesOrder.UserWareHouse.SiteCodeId));
                     crit.Add(f.EF.Eq("UPC", salesorderitem.UPC));
 
+                    //For returns on show return items. for all others do not show returns or bulk
                     if (salesorderitem.SalesOrder.OrderType == "Return Order") {
                         crit.Add(f.EF.Eq("Family", "Exchange Returns"));
+                    } else {
+                        crit.Add(f.EF.And(f.EF.Ne("Family", "Exchange Returns"), f.EF.Ne("Family", "Bulk Products")));                        
                     }
 
                     foreach (Sage.Entity.Interfaces.IProduct product in crit.List<Sage.Entity.Interfaces.IProduct>()) {
@@ -205,6 +208,8 @@ namespace EAB_Custom {
 
                     if (salesorderitem.SalesOrder.OrderType == "Return Order") {
                         crit.Add(f.EF.Eq("Family", "Exchange Returns"));
+                    } else {
+                        crit.Add(f.EF.And(f.EF.Ne("Family", "Exchange Returns"), f.EF.Ne("Family", "Bulk Products")));
                     }
 
                     foreach (Sage.Entity.Interfaces.IProduct product in crit.List<Sage.Entity.Interfaces.IProduct>()) {
