@@ -201,5 +201,19 @@
         <StandardIdDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="e785ca58-9ab7-4bf7-98b3-4c213baccce7" lastModifiedUtc="2012-10-19T20:51:07.0065189Z" name="SalesOrderNumber" audited="false" columnName="SALESORDERNUMBER" maxLength="50" precision="0" scale="0" ordinal="15" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
+        <TextDataType>
+          <Length>50</Length>
+        </TextDataType>
+      </SystemDataType>
+    </property>
   </properties>
 </entity>

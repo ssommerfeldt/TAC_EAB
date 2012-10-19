@@ -252,13 +252,8 @@ namespace EAB_Custom {
         }
 
         private static void SubmitTransferOrder(ISalesOrder salesOrder) {
-            //submit order to mas
-            //Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
-
-            //Salesorder header
-            //Sage.Entity.Interfaces.IStgSalesOrder_TAC soHeader =
-            //        Sage.Platform.EntityFactory.Create(typeof(Sage.SalesLogix.Entities.StgSalesOrder_TAC),
-            //        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSalesOrder_TAC;
+            //submit order to mas            
+            //header
             Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC toHeader =
             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC),
             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgTrnsfrOrder_TAC;
@@ -475,8 +470,7 @@ namespace EAB_Custom {
             salesOrder.Status = "Transmitted to Accounting";
             salesOrder.Save();
         }
-
-
+        
         private static void SubmitInventoryAdjustment(ISalesOrder salesOrder) {
             //submit order to mas            
             //Adjusts Inventory on hand            
@@ -487,8 +481,9 @@ namespace EAB_Custom {
 
                 tranHeader.SalesOrderID = salesOrder.Id.ToString();
                 tranHeader.BatchID = 0;
-                //tranHeader.BComment = salesOrder.Comments;
+                tranHeader.BComment = salesOrder.SalesOrderNumber;
                 tranHeader.BDate = DateTime.Now;
+
                 if (salesOrder.UserWareHouse != null) {
                     if (salesOrder.UserWareHouse.Sitereference != null) {
                         tranHeader.WhseID = salesOrder.UserWareHouse.Sitereference.Siterefdisplayname;
@@ -664,37 +659,40 @@ namespace EAB_Custom {
             plHeader.Save();
 
             foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
+                //don't add items with 0 quantity
+                if (item.Quantity <= 0) {
 
-                //Transfer order line items
-                Sage.Entity.Interfaces.IPickingListItem plLine =
-                        Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IPickingListItem),
-                        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IPickingListItem;
+                    //Picking list line items
+                    Sage.Entity.Interfaces.IPickingListItem plLine =
+                            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IPickingListItem),
+                            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IPickingListItem;
 
-                plLine.PickingListId = plHeader.Id.ToString();
+                    plLine.PickingListId = plHeader.Id.ToString();
 
-                plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value                
-                plLine.SOLineNo = item.LineNumber; //sequence number    
+                    plLine.RowKey = 0; //set this to unique int number (global) during integration - same as header value                
+                    plLine.SOLineNo = item.LineNumber; //sequence number    
 
-                if (item.Product != null) {
-                    //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
-                    plLine.ProductId = item.Product.Id.ToString();
-                    plLine.UnitMeasID = item.Product.Unit;
+                    if (item.Product != null) {
+                        //plLine.ItemID = item.Product.MASITEMKEY.ToString(); //set to itemid from mas
+                        plLine.ProductId = item.Product.Id.ToString();
+                        plLine.UnitMeasID = item.Product.Unit;
+                    }
+
+                    plLine.QtyOnBO = 0;
+                    plLine.QtyOrd = Decimal.Parse(item.Quantity.ToString());
+                    plLine.QtyShip = Decimal.Parse(item.Quantity.ToString());
+                    plLine.ShipDate = salesOrder.OrderDate;
+                    plLine.CompanyID = plHeader.CompanyID;
+
+                    //plLine.ProcessStatus = 0;
+                    //plLine.SessionKey = 0;
+                    //plLine.SubmitDate = null;
+                    //plLine.ProcessDate = null;
+                    //plLine.SOLineKey = null;
+                    //plLine.OrderKey = null;
+
+                    plLine.Save();
                 }
-
-                plLine.QtyOnBO = 0;
-                plLine.QtyOrd = Decimal.Parse(item.Quantity.ToString());
-                plLine.QtyShip = Decimal.Parse(item.Quantity.ToString());
-                plLine.ShipDate = salesOrder.OrderDate;
-                plLine.CompanyID = plHeader.CompanyID;
-                
-                //plLine.ProcessStatus = 0;
-                //plLine.SessionKey = 0;
-                //plLine.SubmitDate = null;
-                //plLine.ProcessDate = null;
-                //plLine.SOLineKey = null;
-                //plLine.OrderKey = null;
-
-                plLine.Save();
             }
             //redirect to new picking list
             result = plHeader.Id.ToString();

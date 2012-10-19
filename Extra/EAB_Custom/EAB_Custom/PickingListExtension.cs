@@ -26,6 +26,7 @@ namespace EAB_Custom {
             plHeader.TranType = 801;
             plHeader.TranNo = "0";
             plHeader.TranDate = pickinglist.TranDate;
+            plHeader.SalesOrderNumber = pickinglist.SalesOrder.SalesOrderNumber;
             
             plHeader.CompanyID = pickinglist.CompanyID; //get this from mas
 
