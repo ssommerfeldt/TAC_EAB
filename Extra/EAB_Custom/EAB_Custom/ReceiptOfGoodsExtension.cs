@@ -23,7 +23,7 @@ namespace EAB_Custom {
 
             rgHeader.ReceiptOfGoodsID = receiptofgoods.Id.ToString();
             rgHeader.RowKey = 0; //set this to unique int number (global) during integration
-            rgHeader.BatchCmnt = null;
+            rgHeader.BatchCmnt = receiptofgoods.SalesOrder.SalesOrderNumber;
             rgHeader.BatchNo = 0;
             rgHeader.BatchType = 1101;
             rgHeader.Hold = 0;
