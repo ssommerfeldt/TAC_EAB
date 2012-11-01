@@ -428,5 +428,70 @@
         </TextDataType>
       </SystemDataType>
     </property>
+    <property xsi:type="OrmCodeSnippetProperty" id="764844e2-d5f7-40e7-840c-d96853688dc8" lastModifiedUtc="2012-10-31T20:36:23.609375Z" name="Qty0MonthsAgo" audited="false" hasGet="true" hasSet="false" returnType="System.String" propertyMethodId="5b852746-d3b3-4a56-9233-26a31fbf6d2f">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmCodeSnippetProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="6380b485-b76f-4cb2-953c-2008f39ff781">
+        <CustomPropertyDataType />
+      </SystemDataType>
+      <code><![CDATA[]]></code>
+    </property>
+    <property xsi:type="OrmCodeSnippetProperty" id="15aabb2c-ab86-40f1-84ac-5310eedb3249" lastModifiedUtc="2012-10-31T20:36:56.640625Z" name="Qty1MonthsAgo" audited="false" hasGet="true" hasSet="false" returnType="System.String" propertyMethodId="376100dd-68c3-48ca-856c-3c6f4c4aecc0">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmCodeSnippetProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="6380b485-b76f-4cb2-953c-2008f39ff781">
+        <CustomPropertyDataType />
+      </SystemDataType>
+      <code><![CDATA[]]></code>
+    </property>
+    <property xsi:type="OrmCodeSnippetProperty" id="9343be65-11db-470c-8777-82d564f07943" lastModifiedUtc="2012-10-31T20:37:53.734375Z" name="Qty2MonthsAgo" audited="false" hasGet="true" hasSet="false" returnType="System.String" propertyMethodId="9850a452-22ec-4eaf-968d-c973038c47d6">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmCodeSnippetProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="6380b485-b76f-4cb2-953c-2008f39ff781">
+        <CustomPropertyDataType />
+      </SystemDataType>
+      <code><![CDATA[]]></code>
+    </property>
+    <property xsi:type="OrmCodeSnippetProperty" id="2e5b4adf-c5a7-4447-8226-c78791064ffd" lastModifiedUtc="2012-10-31T20:38:35.046875Z" name="Qty3MonthsAgo" audited="false" hasGet="true" hasSet="false" returnType="System.String" propertyMethodId="57c0f3de-d297-4fb1-a674-b1a044122203">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmCodeSnippetProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="6380b485-b76f-4cb2-953c-2008f39ff781">
+        <CustomPropertyDataType />
+      </SystemDataType>
+      <code><![CDATA[]]></code>
+    </property>
+    <property xsi:type="OrmCodeSnippetProperty" id="68657eb3-9aa2-4fd6-a016-71043c3ba595" lastModifiedUtc="2012-10-31T20:40:51.890625Z" name="Qty4MonthsAgo" audited="false" hasGet="true" hasSet="false" returnType="System.String" propertyMethodId="4395512e-ad5b-4f91-a6e6-7f382696454e">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmCodeSnippetProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="6380b485-b76f-4cb2-953c-2008f39ff781">
+        <CustomPropertyDataType />
+      </SystemDataType>
+      <code><![CDATA[]]></code>
+    </property>
   </properties>
 </entity>

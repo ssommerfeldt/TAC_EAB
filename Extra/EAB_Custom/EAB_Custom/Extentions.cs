@@ -53,6 +53,13 @@ namespace EAB_Custom
 
 
             }
+            Sage.Entity.Interfaces.ISalesOrderItem SOItem;
+            //SOItem.SalesOrder.SalesOrderNumber 
+            //SOItem.SalesOrder.OrderDate 
+            //SOItem.Quantity
+            //SOItem.SalesOrder.Account.Id = 'MyID' ;
+            //SOItem.Product.Id = 'MyID'; 
+
 
         }
 
@@ -150,7 +157,7 @@ namespace EAB_Custom
             string WareHouseIN = GetUserWarhouseQueryString(Account.AccountManager.Id.ToString());
 
             String SQL = "SELECT     sysdba.PRODUCT.PRODUCTID, sysdba.PRODUCT.ACTUALID, sysdba.PRODUCT.DESCRIPTION, sysdba.PRODUCT.COMPANYID, ";
-            SQL += "                       sysdba.TIMPRODPRICEGROUP.TIMPRODPRICEGROUPID";
+            SQL += "                       sysdba.TIMPRODPRICEGROUP.TIMPRODPRICEGROUPID, sysdba.TIMPRODPRICEGROUP.Description AS PriceGroupDescription ";
             SQL += " FROM         sysdba.PRODUCT INNER JOIN";
             SQL += "                       sysdba.TIMPRODPRICEGROUP ON sysdba.PRODUCT.MASPRODPRICEGROUPKEY = sysdba.TIMPRODPRICEGROUP.ProdPriceGroupKey";
             SQL += " WHERE     (TIMPRODPRICEGROUP.TIMPRODPRICEGROUPID = '" + CategoryID + "') AND (sysdba.PRODUCT.COMPANYID = '" + CompanyID + "')";
@@ -177,13 +184,14 @@ namespace EAB_Custom
                             Sage.Entity.Interfaces.IStockCardItems item = Sage.Platform.EntityFactory.Create<Sage.Entity.Interfaces.IStockCardItems>();
                             item.Accountid = Account.Id.ToString();
                             item.AccountName = Account.AccountName;
+                            item.SeccodeId = Account.Owner.Id.ToString(); //ssommerfeldt Nov 1, 2012  Needed to Secure the StockCard. 
 
 
                             item.Productid = tmpProduct.Id.ToString();
                             item.ProductDescription = tmpProduct.Description;
 
                             item.TIMPRODCATEGORYID = CategoryID;
-                            item.CategoryName = reader["TIMPRODPRICEGROUPID"].ToString();
+                            item.CategoryName = reader["PriceGroupDescription"].ToString();
 
                             item.CompanyID = reader["COMPANYID"].ToString();
                             //item
@@ -202,6 +210,7 @@ namespace EAB_Custom
                     }
                     reader.Close();
                 }
+               
 
             }
 

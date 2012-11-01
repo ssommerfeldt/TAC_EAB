@@ -228,6 +228,72 @@ namespace EAB_Custom {
             }
         }
 
+        public static void GetQty0MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty1MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty2MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty3MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty4MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty5MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty6MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty7MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty8MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty9MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty10MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty11MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+        public static void GetQty12MonthsAgoStep(ISalesOrderItem salesorderitem, out System.String result)
+        {
+            // TODO: Complete business rule implementation
+            result = "";
+        }
+
     
 
 
