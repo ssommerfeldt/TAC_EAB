@@ -924,6 +924,8 @@ namespace EAB_Custom {
                             item.Case = scitem.Product.Unit;
                             item.Product = scitem.Product;
 
+                            item.MaxStockLevel = scitem.MaxStockLevel; //ssommerfeldt Nov 2 2012
+
                             salesorder.SalesOrderItems.Add(item);
                             item.Save();
                             //break;
