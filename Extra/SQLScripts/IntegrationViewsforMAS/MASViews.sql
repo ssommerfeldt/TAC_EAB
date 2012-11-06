@@ -220,10 +220,10 @@ SELECT     'Customer' AS TYPE, Source.CustName AS ACCOUNT, Source.ContactPhone A
                       { fn UCASE(Source.CustName) } AS ACCOUNT_UC, 'F' AS DONOTSOLICIT, 'MAS500' AS IMPORTSOURCE, Source.CustKey AS MASCUSTKEY, 
                       'ADMIN' AS CREATEUSER, GETDATE() AS CREATEDATE, 'ADMIN' AS MODIFYUSER, GETDATE() AS MODIFYDATE, SLXAccount.ADDRESSID, 
                       SLXAccount.ACCOUNTID, SLXAccount.SHIPPINGID
-FROM         LiveEAB_SLX.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
+FROM         SalesLogix_TEST.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
                       dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC AS Source ON SLXUserinfo.ACCOUNTINGUSERID = Source.SperID LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.ACCOUNT AS SLXAccount ON Source.CustKey = SLXAccount.MASCUSTKEY
+                      SalesLogix_TEST.sysdba.ACCOUNT AS SLXAccount ON Source.CustKey = SLXAccount.MASCUSTKEY
 WHERE     (SLXAccount.ACCOUNTID IS NULL)
 
 
@@ -242,10 +242,10 @@ SELECT     SLXAccount.ACCOUNTID, SLXAccount.CREATEUSER, SLXAccount.CREATEDATE, S
                       Source.PrimaryAddrSperName AS SALESPERSON, Source.CustClassName AS CUSTOMER_TYPE, Source.CreditLimit AS CREDIT_LIMIT, 
                       Source.AvgDaysToPay AS AVG_DAYS_TO_PAY, Source.AvgDaysPastDue AS AVG_DAYS_OVERDUE, Source.Balance AS BALANCE_FORWARD, 
                       Source.CustID AS CUSTOMERID, Source.CompanyID AS COMPANYCODE, Source.Balance AS CURRENTBALANCE
-FROM         LiveEAB_SLX.sysdba.ACCOUNTFINANCIAL AS SLXAccountFinancial RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.ACCOUNT AS SLXAccount ON SLXAccountFinancial.ACCOUNTID = SLXAccount.ACCOUNTID RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
+FROM         SalesLogix_TEST.sysdba.ACCOUNTFINANCIAL AS SLXAccountFinancial RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.ACCOUNT AS SLXAccount ON SLXAccountFinancial.ACCOUNTID = SLXAccount.ACCOUNTID RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
                       dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC AS Source ON SLXUserinfo.ACCOUNTINGUSERID = Source.SperID ON 
                       SLXAccount.MASCUSTKEY = Source.CustKey
 WHERE     (SLXAccountFinancial.ACCOUNTID IS NULL)
@@ -264,11 +264,11 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_ACCOUNTaccountsummary_TAC]
 AS
 SELECT     SLXAccount.ACCOUNTID, SLXAccount.TYPE, SLXAccount.ACCOUNT, SLXAccount.SECCODEID, SLXAccount.MODIFYDATE, SLXAccount.MODIFYUSER, 
                       SLXAccount.CREATEDATE, SLXAccount.CREATEUSER
-FROM         LiveEAB_SLX.sysdba.ACCOUNT AS SLXAccount LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.ACCOUNTSUMMARY AS SLXAccountSummary ON 
+FROM         SalesLogix_TEST.sysdba.ACCOUNT AS SLXAccount LEFT OUTER JOIN
+                      SalesLogix_TEST.sysdba.ACCOUNTSUMMARY AS SLXAccountSummary ON 
                       SLXAccount.ACCOUNTID = SLXAccountSummary.ACCOUNTID RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
                       dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC AS Source ON SLXUserinfo.ACCOUNTINGUSERID = Source.SperID ON 
                       SLXAccount.MASCUSTKEY = Source.CustKey
 WHERE     (SLXAccountSummary.ACCOUNTID IS NULL)
@@ -289,11 +289,11 @@ SELECT     SLXACCOUNT.ACCOUNTID AS ENTITYID, dbo.tarCustAddr.CustAddrID AS DESCR
                       dbo.tciAddress.AddrLine4 AS ADDRESS4, dbo.tciAddress.AddrName AS ERPNAME, dbo.tarCustAddr.AddrKey AS MASADDRKEY
 FROM         dbo.tarCustAddr INNER JOIN
                       dbo.tciAddress ON dbo.tarCustAddr.AddrKey = dbo.tciAddress.AddrKey INNER JOIN
-                      LiveEAB_SLX.sysdba.ACCOUNT AS SLXACCOUNT ON dbo.tarCustAddr.CustKey = SLXACCOUNT.MASCUSTKEY LEFT OUTER JOIN
+                      SalesLogix_TEST.sysdba.ACCOUNT AS SLXACCOUNT ON dbo.tarCustAddr.CustKey = SLXACCOUNT.MASCUSTKEY LEFT OUTER JOIN
                       dbo.tciContact ON dbo.tarCustAddr.DfltCntctKey = dbo.tciContact.CntctKey
 WHERE     (dbo.tarCustAddr.AddrKey NOT IN
                           (SELECT     MASADDRKEY
-                            FROM          LiveEAB_SLX.sysdba.ADDRESS AS ADDRESS_1
+                            FROM          SalesLogix_TEST.sysdba.ADDRESS AS ADDRESS_1
                             WHERE      (MASADDRKEY IS NOT NULL)))
 
 GO
@@ -491,10 +491,10 @@ SELECT     SLXAccount.ADDRESSID, SLXAccount.ACCOUNTID AS ENTITYID, 'Primary' AS 
                       'T' AS ISMAILING, GETDATE() AS CREATEDATE, 'ADMIN' AS CREATEUSER, GETDATE() AS MODIFYDATE, 'ADMIN' AS MODIFYUSER, 
                       Source.PrimaryAddrLine3 AS ADDRESS3, Source.PrimaryAddrLine4 AS ADDRESS4, Source.PrimaryAddrName AS ERPNAME, 
                       Source.PrimaryAddrKey AS MASADDRKEY
-FROM         LiveEAB_SLX.sysdba.ADDRESS AS SLXAddress RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.ACCOUNT AS SLXAccount ON SLXAddress.ADDRESSID = SLXAccount.ADDRESSID RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
+FROM         SalesLogix_TEST.sysdba.ADDRESS AS SLXAddress RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.ACCOUNT AS SLXAccount ON SLXAddress.ADDRESSID = SLXAccount.ADDRESSID RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
                       dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC AS Source ON SLXUserinfo.ACCOUNTINGUSERID = Source.SperID ON 
                       SLXAccount.MASCUSTKEY = Source.CustKey
 WHERE     (SLXAddress.ADDRESSID IS NULL)
@@ -513,10 +513,10 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_ACCOUNTerptradingaccount_TAC]
 AS
 SELECT     SLXAccount.ACCOUNTID, SLXAccount.CREATEUSER, SLXAccount.CREATEDATE, SLXAccount.MODIFYUSER, SLXAccount.MODIFYDATE, 
                       SLXAccount.SECCODEID
-FROM         LiveEAB_SLX.sysdba.ERPTRADINGACCOUNT AS SLXErpTradingAccount RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.ACCOUNT AS SLXAccount ON SLXErpTradingAccount.ACCOUNTID = SLXAccount.ACCOUNTID RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
+FROM         SalesLogix_TEST.sysdba.ERPTRADINGACCOUNT AS SLXErpTradingAccount RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.ACCOUNT AS SLXAccount ON SLXErpTradingAccount.ACCOUNTID = SLXAccount.ACCOUNTID RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
                       dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC AS Source ON SLXUserinfo.ACCOUNTINGUSERID = Source.SperID ON 
                       SLXAccount.MASCUSTKEY = Source.CustKey
 WHERE     (SLXErpTradingAccount.ACCOUNTID IS NULL)
@@ -541,10 +541,10 @@ SELECT     'Customer' AS TYPE, SLXAccount.ACCOUNTID, SLXAccount.ACCOUNT, 'T' AS 
                       LEN(Source.ContactName))) } AS LASTNAME_UC, 'F' AS DONOTSOLICIT, 'F' AS DONOTEMAIL, 'F' AS DONOTPHONE, 'F' AS DONOTMAIL, 
                       'F' AS DONOTFAX, 'MAS500' AS IMPORTSOURCE, SUBSTRING(Source.ContactName, 1, NULLIF (CHARINDEX(' ', Source.ContactName) - 1, - 1)) 
                       AS SALUTATION, Source.ContactName AS MASCONTACTNAME, Source.MASContactId AS MACCONTACTID
-FROM         LiveEAB_SLX.sysdba.CONTACT AS SLXContact RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.ACCOUNT AS SLXAccount ON SLXContact.ACCOUNTID = SLXAccount.ACCOUNTID RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
+FROM         SalesLogix_TEST.sysdba.CONTACT AS SLXContact RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.ACCOUNT AS SLXAccount ON SLXContact.ACCOUNTID = SLXAccount.ACCOUNTID RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME RIGHT OUTER JOIN
                       dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC AS Source ON SLXUserinfo.ACCOUNTINGUSERID = Source.SperID ON 
                       SLXAccount.MASCUSTKEY = Source.CustKey
 WHERE     (SLXContact.CONTACTID IS NULL)
@@ -566,13 +566,13 @@ SELECT     SLXContact.ADDRESSID, SLXContact.CONTACTID AS ENTITYID, 'Primary' AS 
                       Source.PrimaryAddrLine3 AS ADDRESS3, Source.PrimaryAddrLine4 AS ADDRESS4, Source.PrimaryAddrName AS ERPNAME, 
                       Source.PrimaryAddrKey AS MASADDRKEY
 FROM         dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC AS Source RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.CONTACT AS SLXContact LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.ADDRESS AS SLXAddress ON SLXContact.ADDRESSID = SLXAddress.ADDRESSID ON 
+                      SalesLogix_TEST.sysdba.CONTACT AS SLXContact LEFT OUTER JOIN
+                      SalesLogix_TEST.sysdba.ADDRESS AS SLXAddress ON SLXContact.ADDRESSID = SLXAddress.ADDRESSID ON 
                       Source.MASContactId = SLXContact.MACCONTACTID LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
-                      LiveEAB_SLX.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME ON 
+                      SalesLogix_TEST.sysdba.SECCODE AS SLXSeccode RIGHT OUTER JOIN
+                      SalesLogix_TEST.sysdba.USERINFO AS SLXUserinfo ON SLXSeccode.SECCODEDESC = SLXUserinfo.USERNAME ON 
                       Source.SperID = SLXUserinfo.ACCOUNTINGUSERID LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.ACCOUNT AS SLXAccount ON Source.CustKey = SLXAccount.MASCUSTKEY
+                      SalesLogix_TEST.sysdba.ACCOUNT AS SLXAccount ON Source.CustKey = SLXAccount.MASCUSTKEY
 WHERE     (SLXAddress.ADDRESSID IS NULL)
 
 GO
@@ -646,7 +646,7 @@ FROM         (SELECT     ISNULL(CONVERT(varchar(255), CAST(PRODUCTID AS char)), 
                                                    GLSUBACCOUNTNUMBER, DATAOWNER, TYPE, FIXEDCOST, GLOBALSYNCID, APPID, TICK, COMMODITYGROUPID, ACTIVEFLAG, 
                                                    SELLINGALLOWEDFLAG, UNITOFMEASUREID, SELLINGUOMID, SELLINGUOMNUMBER, CLASSIFICATION, COMMODITYTYPE, MASITEMKEY, UPC, 
                                                    MASITEMID, WAREHOUSEID, COMPANYID, QTYONHAND, QTYAVAILABLE, SURPLUSQTY, QTYONHOLD, MAXSTOCKLEVEL
-                            FROM          LiveEAB_SLX.sysdba.PRODUCT) AS TMPDESTINATION ON TMPSOURCE.MYID <> TMPDESTINATION.MYID AND 
+                            FROM          SalesLogix_TEST.sysdba.PRODUCT) AS TMPDESTINATION ON TMPSOURCE.MYID <> TMPDESTINATION.MYID AND 
                       TMPSOURCE.PRODUCTID = TMPDESTINATION.PRODUCTID
 
 
@@ -682,7 +682,7 @@ FROM         dbo.vdvStockStatus INNER JOIN
                       dbo.timItemUnitOfMeas ON dbo.vdvStockStatus.StockUnitMeasKey = dbo.timItemUnitOfMeas.TargetUnitMeasKey AND 
                       dbo.vdvStockStatus.ItemKey = dbo.timItemUnitOfMeas.ItemKey LEFT OUTER JOIN
                       dbo.vdvItem ON dbo.vdvStockStatus.ItemKey = dbo.vdvItem.ItemKey LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.PRODUCT AS Prod ON dbo.vdvStockStatus.CompanyID = Prod.COMPANYID AND dbo.vdvStockStatus.ItemID = Prod.ACTUALID AND 
+                      SalesLogix_TEST.sysdba.PRODUCT AS Prod ON dbo.vdvStockStatus.CompanyID = Prod.COMPANYID AND dbo.vdvStockStatus.ItemID = Prod.ACTUALID AND 
                       dbo.vdvStockStatus.WhseID = Prod.WAREHOUSEID
 WHERE     (Prod.PRODUCTID IS NULL)
 
@@ -700,7 +700,7 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_TarCustomer_TAC]
 AS
 SELECT    dbo.tarCustomer.*,SLX.TARCUSTOMERID 
 FROM         dbo.tarCustomer LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.TARCUSTOMER AS SLX ON dbo.tarCustomer.CustKey  = SLX.CustKey 
+                      SalesLogix_TEST.sysdba.TARCUSTOMER AS SLX ON dbo.tarCustomer.CustKey  = SLX.CustKey 
 WHERE     (SLX.TARCUSTOMERID  IS NULL)
 GO
 
@@ -716,7 +716,7 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_tarNationalAcct_TAC]
 AS
 SELECT    dbo.tarNationalAcct.*,SLX.TARNATIONALACCTID  
 FROM         dbo.tarNationalAcct  LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.tarNationalAcct AS SLX ON dbo.tarNationalAcct.NationalAcctKey  = SLX.NationalAcctKey 
+                      SalesLogix_TEST.sysdba.tarNationalAcct AS SLX ON dbo.tarNationalAcct.NationalAcctKey  = SLX.NationalAcctKey 
 WHERE     (SLX.TARNATIONALACCTID   IS NULL)
 GO
 
@@ -731,7 +731,7 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_tarNationalAcctLevel_TAC]
 AS
 SELECT    dbo.tarNationalAcctLevel.*,SLX.TARNATIONALACCTLEVELID  
 FROM         dbo.tarNationalAcctLevel   LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.tarNationalAcctLevel AS SLX ON dbo.tarNationalAcctLevel.NationalAcctLevelKey  = SLX.NationalAcctLevelKey 
+                      SalesLogix_TEST.sysdba.tarNationalAcctLevel AS SLX ON dbo.tarNationalAcctLevel.NationalAcctLevelKey  = SLX.NationalAcctLevelKey 
 WHERE     (SLX.TARNATIONALACCTLEVELID    IS NULL)
 GO
 
@@ -746,7 +746,7 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_timNatAcctProdGrpPrc_TAC]
 AS
 SELECT    dbo.timNatAcctProdGrpPrc.*,SLX.TIMNATACCTPRODGRPPRCID   
 FROM         dbo.timNatAcctProdGrpPrc    LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.timNatAcctProdGrpPrc AS SLX ON dbo.timNatAcctProdGrpPrc.CustProdGrpPrcKey  = SLX.CustProdGrpPrcKey  
+                      SalesLogix_TEST.sysdba.timNatAcctProdGrpPrc AS SLX ON dbo.timNatAcctProdGrpPrc.CustProdGrpPrcKey  = SLX.CustProdGrpPrcKey  
 WHERE     (SLX.TIMNATACCTPRODGRPPRCID     IS NULL)
 GO
 
@@ -761,7 +761,7 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_timPriceBreak_TAC]
 AS
 SELECT    dbo.timPriceBreak.*,SLX.TIMPRICEBREAKID    
 FROM         dbo.timPriceBreak     LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.timPriceBreak AS SLX ON dbo.timPriceBreak.PricingKey   = SLX.PricingKey   
+                      SalesLogix_TEST.sysdba.timPriceBreak AS SLX ON dbo.timPriceBreak.PricingKey   = SLX.PricingKey   
 WHERE     (SLX.TIMPRICEBREAKID      IS NULL)
 
 GO
@@ -777,7 +777,7 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_timPriceSheet_TAC]
 AS
 SELECT    dbo.timPriceSheet.*,SLX.TIMPRICESHEETID     
 FROM         dbo.timPriceSheet      LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.timPriceSheet AS SLX ON dbo.timPriceSheet.ItemKey   = SLX.ITEMKEY    
+                      SalesLogix_TEST.sysdba.timPriceSheet AS SLX ON dbo.timPriceSheet.ItemKey   = SLX.ITEMKEY    
 WHERE     (SLX.TIMPRICESHEETID       IS NULL)
 GO
 
@@ -792,7 +792,7 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_timPricing_TAC]
 AS
 SELECT    dbo.timPricing.*,SLX.TIMPRICINGID      
 FROM         dbo.timPricing       LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.timPricing AS SLX ON dbo.timPricing.PricingKey   = SLX.PricingKey    
+                      SalesLogix_TEST.sysdba.timPricing AS SLX ON dbo.timPricing.PricingKey   = SLX.PricingKey    
 WHERE     (SLX.TIMPRICINGID        IS NULL)
 
 GO
@@ -809,7 +809,7 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_timProdPriceGroup_TAC]
 AS
 SELECT    dbo.timProdPriceGroup.*,SLX.TIMPRODPRICEGROUPID       
 FROM         dbo.timProdPriceGroup       LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.timProdPriceGroup AS SLX ON dbo.timProdPriceGroup.ProdPriceGroupKey   = SLX.ProdPriceGroupKey    
+                      SalesLogix_TEST.sysdba.timProdPriceGroup AS SLX ON dbo.timProdPriceGroup.ProdPriceGroupKey   = SLX.ProdPriceGroupKey    
 WHERE     (SLX.TIMPRODPRICEGROUPID        IS NULL)
 GO
 
@@ -827,7 +827,7 @@ SELECT     dbo.timProdPriceGroupPrice.ProdPriceGroupPriceKey, dbo.timProdPriceGr
                       dbo.timProdPriceGroupPrice.ExpirationDate, dbo.timProdPriceGroupPrice.PricingKey, dbo.timProdPriceGroupPrice.ProdPriceGroupKey, 
                       dbo.timProdPriceGroupPrice.UpdateCounter, dbo.timProdPriceGroupPrice.WhseKey, SLX.TIMPRODPRICEGROUPPRICEID
 FROM         dbo.timProdPriceGroupPrice LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.TIMPRODPRICEGROUPPRICE AS SLX ON 
+                      SalesLogix_TEST.sysdba.TIMPRODPRICEGROUPPRICE AS SLX ON 
                       dbo.timProdPriceGroupPrice.ProdPriceGroupPriceKey = SLX.ProdPriceGroupPriceKey
 WHERE     (SLX.TIMPRODPRICEGROUPPRICEID IS NULL)
 
@@ -844,7 +844,7 @@ CREATE VIEW [dbo].[vdvMAS_to_SLX_timWarehouse_TAC]
 AS
 SELECT    dbo.timWarehouse.*,SLX.TIMWAREHOUSEID        
 FROM         dbo.timWarehouse        LEFT OUTER JOIN
-                      LiveEAB_SLX.sysdba.timWarehouse AS SLX ON dbo.timWarehouse.WhseKey   = SLX.WhseKey     
+                      SalesLogix_TEST.sysdba.timWarehouse AS SLX ON dbo.timWarehouse.WhseKey   = SLX.WhseKey     
 WHERE     (SLX.TIMWAREHOUSEID         IS NULL)
 GO
 
