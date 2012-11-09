@@ -53,7 +53,7 @@ namespace EAB_Custom
 
 
             }
-            Sage.Entity.Interfaces.ISalesOrderItem SOItem;
+            //Sage.Entity.Interfaces.ISalesOrderItem SOItem;
             //SOItem.SalesOrder.SalesOrderNumber 
             //SOItem.SalesOrder.OrderDate 
             //SOItem.Quantity
