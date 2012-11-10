@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections;
 using Sage.Entity.Interfaces;
 using NHibernate;
+using Sage.Platform.ComponentModel;
 
 namespace EAB_Custom {
     public class PickingListItemExtension {
@@ -62,6 +63,26 @@ namespace EAB_Custom {
                     throw new Exception("SKU not found.             ");
                 }
             }
+        }
+
+
+        public static void OnBeforeQtyShipChanged(IPickingListItem pickinglistitem, ExtendedPropertyChangedEventArgs args) {
+            //the shipping quantity cannot be more than the ordered quantity
+            if (args.NewValue != args.OldValue) {
+                if ((decimal)args.NewValue < 0 || (decimal)args.NewValue > pickinglistitem.QtyOrd) {
+                    //ship quantity not valid
+                    if (args.OldValue == null) {
+                        args.NewValue = 0;
+                    } else {
+                        args.NewValue = args.OldValue;
+                    }
+                    throw new Exception("You cannot ship more than the ordered " + Math.Round((decimal)pickinglistitem.QtyOrd) 
+                        + " of the item " + pickinglistitem.ActualId);
+                }
+                               
+                
+            }
+
         }
 
     }

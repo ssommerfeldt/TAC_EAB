@@ -130,7 +130,7 @@
         <DoubleDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="b56d8486-f905-4216-8090-53546a1d53fc" lastModifiedUtc="2008-04-14T16:16:38.2640558Z" name="Quantity" audited="false" columnName="QUANTITY" maxLength="0" precision="53" scale="0" ordinal="9" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="b56d8486-f905-4216-8090-53546a1d53fc" lastModifiedUtc="2012-11-09T23:19:37.4824517Z" name="Quantity" audited="false" onBeforeChangeMethodId="d13fb28f-7399-43fe-8987-997393aba233" columnName="QUANTITY" maxLength="0" precision="53" scale="0" ordinal="9" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">

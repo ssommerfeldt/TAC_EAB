@@ -100,7 +100,7 @@ namespace EAB_Custom {
             //soHeader.FreightAmt = salesOrder.Freight;
             soHeader.FreightAmt = 0;
             soHeader.CustPONO = salesOrder.CustomerPurchaseOrderNumber;
-            soHeader.PrimarySperID = Sage.SalesLogix.API.MySlx.Security.CurrentSalesLogixUser.UserName;
+            soHeader.PrimarySperID = Sage.SalesLogix.API.MySlx.Security.CurrentSalesLogixUser.UserInfo.AccountingUserId;
 
             //get the accountfinancial data
             if (salesOrder.Account != null) {

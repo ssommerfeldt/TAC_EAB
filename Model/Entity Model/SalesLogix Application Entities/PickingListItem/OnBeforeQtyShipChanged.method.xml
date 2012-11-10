@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="2c5c0e84-5dde-44c6-bcb7-c22d982acb60" lastModifiedUtc="2012-11-09T21:47:06.950536Z" name="OnBeforeQtyShipChanged" methodType="PropertyEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="e2100a38-2572-45e7-ad4e-1236f44474d8" lastModifiedUtc="2012-11-09T21:47:04.2561216Z" targetType="EAB_Custom.PickingListItemExtension, EAB_Custom" targetMethod="OnBeforeQtyShipChanged" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>

@@ -7,6 +7,7 @@ using Sage.Entity.Interfaces;
 using NHibernate;
 using System.Data.OleDb;
 using System.Data;
+using Sage.Platform.ComponentModel;
 
 
 
@@ -145,7 +146,7 @@ namespace EAB_Custom {
                     eh.HandleException(ex, false);
                 }
 
-                salesorderitem.Quantity = 1; //set to 1 initially
+                salesorderitem.Quantity = 0; //set to 0 initially
                 salesorderitem.ExtendedPrice = salesorderitem.Price * salesorderitem.Quantity * salesorderitem.Discount;
                 salesorderitem.ProductName = salesorderitem.Product.Name;
                 salesorderitem.Program = salesorderitem.Product.Program;
@@ -227,6 +228,25 @@ namespace EAB_Custom {
                     throw new Exception("SKU not found.             ");
                 }
             }
+        }
+
+
+        public static void OnBeforeQuantityChanged(ISalesOrderItem salesorderitem, ExtendedPropertyChangedEventArgs args) {
+            //the quantity cannot be more than the quantity available
+            if (args.NewValue != args.OldValue) {
+                if ((double)args.NewValue < 0 || (double)args.NewValue > salesorderitem.Product.QtyAvailable) {
+                    //quantity not valid
+                    if (args.OldValue == null) {
+                        args.NewValue = 0;
+                    } else {
+                        args.NewValue = args.OldValue;
+                    }
+                    string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
+                    errormsg += " of the item " + salesorderitem.ActualID.ToString();
+                    throw new Exception(errormsg);
+                }
+            }
+
         }
 
         private static string GetSalesHistoryByIndex(int Index, string Accountid, string Productid)
