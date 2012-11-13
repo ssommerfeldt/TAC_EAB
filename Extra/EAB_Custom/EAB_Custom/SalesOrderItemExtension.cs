@@ -234,16 +234,18 @@ namespace EAB_Custom {
         public static void OnBeforeQuantityChanged(ISalesOrderItem salesorderitem, ExtendedPropertyChangedEventArgs args) {
             //the quantity cannot be more than the quantity available
             if (args.NewValue != args.OldValue) {
-                if ((double)args.NewValue < 0 || (double)args.NewValue > salesorderitem.Product.QtyAvailable) {
-                    //quantity not valid
-                    if (args.OldValue == null) {
-                        args.NewValue = 0;
-                    } else {
-                        args.NewValue = args.OldValue;
+                if (salesorderitem.Product != null) {
+                    if ((double)args.NewValue < 0 || (double)args.NewValue > salesorderitem.Product.QtyAvailable) {
+                        //quantity not valid
+                        if (args.OldValue == null) {
+                            args.NewValue = 0;
+                        } else {
+                            args.NewValue = args.OldValue;
+                        }
+                        string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
+                        errormsg += " of the item " + salesorderitem.ActualID.ToString();
+                        throw new Exception(errormsg);
                     }
-                    string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
-                    errormsg += " of the item " + salesorderitem.ActualID.ToString();
-                    throw new Exception(errormsg);
                 }
             }
 
