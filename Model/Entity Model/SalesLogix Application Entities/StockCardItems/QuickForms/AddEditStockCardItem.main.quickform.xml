@@ -79,18 +79,21 @@ Sage.Entity.Interfaces.IStockCardItems _entity = BindingSource.Current as Sage.E
     Sage.Entity.Interfaces.IStockCardItems _entity = BindingSource.Current as Sage.Entity.Interfaces.IStockCardItems;
     if (_entity != null)
     {
-        _entity.TIMPRODCATEGORYID = _entity.Product.Timprodpricegroup.Id.ToString();
-        _entity.CategoryName = _entity.Product.Timprodpricegroup.Description ;
-        Double tmpDbl = _entity.GetDefaultMargin(_entity.Product.Timprodpricegroup.Id.ToString(), _entity.Account );
-        if (tmpDbl == 0)
+		if (_entity.Product.Timprodpricegroup!= null)
         {
-            // do Nothing as there is no Default Margin
+            _entity.TIMPRODCATEGORYID = _entity.Product.Timprodpricegroup.Id.ToString();
+            _entity.CategoryName = _entity.Product.Timprodpricegroup.Description;
+            Double tmpDbl = _entity.GetDefaultMargin(_entity.Product.Timprodpricegroup.Id.ToString(), _entity.Account);
+            if (tmpDbl == 0)
+            {
+                // do Nothing as there is no Default Margin
 
-        }
-        else
-        {
-            _entity.Margin = tmpDbl;
-            Margin.Text = tmpDbl.ToString();
+            }
+            else
+            {
+                _entity.Margin = tmpDbl;
+                Margin.Text = tmpDbl.ToString();
+            }
         }
     }
      ]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnChangeAction><LookupImage /><LookupDialogWidth xsi:nil="true" /><LookupDialogHeight xsi:nil="true" /><LookupBindingMode>Object</LookupBindingMode><LookupResultValue xsi:type="xsd:string" /><SeedProperty>WarehouseID</SeedProperty><SeedValue /><Required>false</Required><DropDownDisplayProperty /><AllowClearingResult>false</AllowClearingResult><OverrideSeedOnSearch>false</OverrideSeedOnSearch><LookupEntityName>Product</LookupEntityName><LookupEntityTypeName>Sage.Entity.Interfaces.IProduct, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName><AutoPostBack>false</AutoPostBack><EnableHyperLinking>false</EnableHyperLinking><InitializeLookup>false</InitializeLookup><LookupProperties><LookupProperty><PropertyName>ActualId</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>ActualId (Actual Id)</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Description</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Description</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Family</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Family</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Status</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>Status</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>Vlueproductmsrp.Listprice</PropertyName><PropertyType>System.Decimal</PropertyType><PropertyHeader>MSRP</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString>{0:C}</PropertyFormatString><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>CompanyID</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>CompanyID</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty><LookupProperty><PropertyName>WarehouseID</PropertyName><PropertyType>System.String</PropertyType><PropertyHeader>WarehouseID</PropertyHeader><PropertyFormat>None</PropertyFormat><PropertyFormatString /><UseAsResult>true</UseAsResult><ExcludeFromFilters>false</ExcludeFromFilters><HideCondition /></LookupProperty></LookupProperties><LookupPreFilters><LookupPreFilter><LookupEntityName>IProduct</LookupEntityName><PropertyType>System.String</PropertyType><OperatorCode>=</OperatorCode><PickListName /><PropertyName>CompanyID</PropertyName><FilterValue>EAB</FilterValue></LookupPreFilter><LookupPreFilter><LookupEntityName>IProduct</LookupEntityName><PropertyType>System.String</PropertyType><OperatorCode>x%x</OperatorCode><PickListName /><PropertyName>WarehouseID</PropertyName><FilterValue>'ONT','900'</FilterValue></LookupPreFilter><LookupPreFilter><LookupEntityName>IProduct</LookupEntityName><PropertyType>System.String</PropertyType><OperatorCode>!=</OperatorCode><PickListName /><PropertyName>Family</PropertyName><FilterValue>Bulk Products</FilterValue></LookupPreFilter><LookupPreFilter><LookupEntityName>IProduct</LookupEntityName><PropertyType>System.String</PropertyType><OperatorCode>!=</OperatorCode><PickListName /><PropertyName>Family</PropertyName><FilterValue>Exchange Returns</FilterValue></LookupPreFilter></LookupPreFilters></QFSLXLookup></Property>
@@ -212,7 +215,7 @@ Sage.Entity.Interfaces.IStockCardItems _entity = BindingSource.Current as Sage.E
       </Properties>
       <ControlDefinition>
         <Properties>
-          <Property name="Control" type="Sage.Platform.QuickForms.QFControls.QFHqlDataSource, Sage.Platform.QuickForms.QFControls"><QFHqlDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>5</Row><IsReadOnly>false</IsReadOnly><Visible>false</Visible><HotKey>48</HotKey><TabIndex>0</TabIndex><ControlId>hqlDS</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><From>SalesOrderItem SOItem</From><Where>SOItem.Product.Id = 'MyID' and SOItem.SalesOrder.Account.Id = 'MyID'</Where><Columns><SelectField><DataField>SOItem.SalesOrder.SalesOrderNumber</DataField><Alias>SalesOrder</Alias></SelectField><SelectField><DataField>SOItem.SalesOrder.OrderDate</DataField><Alias>OrderDate</Alias></SelectField><SelectField><DataField>SOItem.Quantity</DataField><Alias>Qty</Alias></SelectField></Columns><Parameters /><OrderBy>SOItem.SalesOrder.OrderDate desc</OrderBy><Distinct>false</Distinct></QFHqlDataSource></Property>
+          <Property name="Control" type="Sage.Platform.QuickForms.QFControls.QFHqlDataSource, Sage.Platform.QuickForms.QFControls"><QFHqlDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>8</Row><IsReadOnly>false</IsReadOnly><Visible>false</Visible><HotKey>48</HotKey><TabIndex>0</TabIndex><ControlId>hqlDS</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><From>SalesOrderItem SOItem</From><Where>SOItem.Product.Id = 'MyID' and SOItem.SalesOrder.Account.Id = 'MyID'</Where><Columns><SelectField><DataField>SOItem.SalesOrder.SalesOrderNumber</DataField><Alias>SalesOrder</Alias></SelectField><SelectField><DataField>SOItem.SalesOrder.OrderDate</DataField><Alias>OrderDate</Alias></SelectField><SelectField><DataField>SOItem.Quantity</DataField><Alias>Qty</Alias></SelectField></Columns><Parameters /><OrderBy>SOItem.SalesOrder.OrderDate desc</OrderBy><Distinct>false</Distinct></QFHqlDataSource></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>
