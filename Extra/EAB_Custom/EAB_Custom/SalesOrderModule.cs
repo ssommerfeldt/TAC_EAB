@@ -67,13 +67,15 @@ namespace EAB_Custom {
                                 TabWorkspace tabWorkspace = workItem.Workspaces["TabControl"] as TabWorkspace;
                                 if (tabWorkspace != null) {
 
-                                    if (salesOrder.Account.Type == "Distributor") {
-                                        //Show the Reciept of goods tab
-                                        tabWorkspace.Hide("ReceiptOfGoodsGrid", false);
+                                    if (salesOrder.Account != null) {
+                                        if (salesOrder.Account.Type == "Distributor") {
+                                            //Show the Reciept of goods tab
+                                            tabWorkspace.Hide("ReceiptOfGoodsGrid", false);
 
-                                    } else {
-                                        //Hide the Reciept of goods tab
-                                        tabWorkspace.Hide("ReceiptOfGoodsGrid", true);
+                                        } else {
+                                            //Hide the Reciept of goods tab
+                                            tabWorkspace.Hide("ReceiptOfGoodsGrid", true);
+                                        }
                                     }
 
                                     //show/hide the product tabs
