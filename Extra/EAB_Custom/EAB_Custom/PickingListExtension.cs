@@ -16,29 +16,29 @@ namespace EAB_Custom {
 
 
         private static void SubmitPickinglisttoMas(IPickingList pickinglist) {
+            try {
+                Sage.Entity.Interfaces.IStgSOPicklist_TAC plHeader =
+                Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOPicklist_TAC),
+                Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOPicklist_TAC;
 
-            Sage.Entity.Interfaces.IStgSOPicklist_TAC plHeader =
-            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOPicklist_TAC),
-            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSOPicklist_TAC;
+                plHeader.PickingListID = pickinglist.Id.ToString();
+                plHeader.RowKey = 0; //set this to unique int number (global) during integration
+                plHeader.TranType = 801;
+                plHeader.TranNo = "0";
+                plHeader.TranDate = pickinglist.TranDate;
+                plHeader.SalesOrderNumber = pickinglist.SalesOrder.SalesOrderNumber;
 
-            plHeader.PickingListID = pickinglist.Id.ToString();            
-            plHeader.RowKey = 0; //set this to unique int number (global) during integration
-            plHeader.TranType = 801;
-            plHeader.TranNo = "0";
-            plHeader.TranDate = pickinglist.TranDate;
-            plHeader.SalesOrderNumber = pickinglist.SalesOrder.SalesOrderNumber;
-            
-            plHeader.CompanyID = pickinglist.CompanyID; //get this from mas
+                plHeader.CompanyID = pickinglist.CompanyID; //get this from mas
 
-            plHeader.ProcessStatus = 0;
-            plHeader.SessionKey = 0;
-            plHeader.SubmitDate = null;
-            plHeader.ProcessDate = null;
+                plHeader.ProcessStatus = 0;
+                plHeader.SessionKey = 0;
+                plHeader.SubmitDate = null;
+                plHeader.ProcessDate = null;
 
-            plHeader.Save();
+                plHeader.Save();
 
-            foreach (Sage.Entity.Interfaces.IPickingListItem item in pickinglist.PickingListItems) {
-                
+                foreach (Sage.Entity.Interfaces.IPickingListItem item in pickinglist.PickingListItems) {
+
                     //Transfer order line items
                     Sage.Entity.Interfaces.IStgSOPicklistLine_TAC plLine =
                             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOPicklistLine_TAC),
@@ -81,6 +81,10 @@ namespace EAB_Custom {
 
                     plLine.Save();
                 }
+
+            } catch (Exception e) {
+                throw new Exception("Order (" + pickinglist.SalesOrder.SalesOrderNumber + "): Error Submitting Packing List: " + e.Message, e);
+            }
             
         }
 

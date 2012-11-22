@@ -22,120 +22,13 @@ namespace EAB_Custom {
 
 
         public static void GetStockCardPricing(ISalesOrderItem salesorderitem) {
-            // Set the pricing from stock card
-
-            //ISalesOrderItem soi = Sage.Platform.EntityFactory.GetById<ISalesOrderItem>(salesorderitem.Id);
-
-            double listPrice = 0;
-            //IVlueproductmsrp prodPrice = Sage.Platform.EntityFactory.GetById<IVlueproductmsrp>(salesorderitem.Product.Id);
-            //if (prodPrice != null) {
-            //    listPrice = (double)prodPrice.Listprice;
-            //}
-            //Sage.Platform.RepositoryHelper<IVproductpricesheet> rep = Sage.Platform.EntityFactory.GetRepositoryHelper<IVproductpricesheet>();
-            //Sage.Platform.Repository.ICriteria crit = rep.CreateCriteria();
-
-            ////crit.Add(rep.EF.Eq("Productid", salesorderitem.Product.Id));
-
-            //foreach (IVproductpricesheet item in crit.List<IVproductpricesheet>()) {
-            //    listPrice = (double)item.Listprice;
-            //    break;
-            //}
             try {
-                if (salesorderitem.Product != null) {
-                    if (salesorderitem.Product.Vproductpricesheet != null) {
-                        listPrice = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
-                    } else {
-                        //price not found
-                    }
-                }
-            } catch (Exception ex) {
-                //vproductpricesheet record not found
-                Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
-                eh.HandleException(ex, false);
-            }
-
-
-            Sage.Platform.RepositoryHelper<IStockCardItems> rep1 = Sage.Platform.EntityFactory.GetRepositoryHelper<IStockCardItems>();
-            Sage.Platform.Repository.ICriteria crit1 = rep1.CreateCriteria();
-
-            if (salesorderitem.SalesOrder != null) {
-                if (salesorderitem.SalesOrder.Account != null) {
-                    crit1.Add(rep1.EF.Eq("Accountid", salesorderitem.SalesOrder.Account.Id));
-                    
-                    if (salesorderitem.Product != null) {
-                        crit1.Add(rep1.EF.Eq("Productid", salesorderitem.Product.Id));
-
-
-                        double margin = 0;
-                        foreach (IStockCardItems scard in crit1.List<IStockCardItems>()) {
-                            margin = scard.Margin ?? 0;
-                            break;
-                        }
-
-                        salesorderitem.Price = Math.Round(listPrice, 2);
-                        salesorderitem.Discount = margin;
-                        salesorderitem.CalculatedPrice = Math.Round((Decimal)listPrice - ((Decimal)listPrice * (Decimal)margin), 2, MidpointRounding.AwayFromZero);
-                        salesorderitem.ExtendedPrice = Math.Round((Double)salesorderitem.CalculatedPrice * (Double)salesorderitem.Quantity, 2, MidpointRounding.AwayFromZero);
-                        salesorderitem.UPC = salesorderitem.Product.UPC;
-                        
-                        //Set a value on salesorder to recalculate totals on save
-                        salesorderitem.SalesOrder.Tick = salesorderitem.SalesOrder.Tick + 1 ?? 1;
-                    }
-                }
-            }
-        }
-
-
-        public static void SaveProductToSalesOrderItem(ISalesOrderItem salesorderitem) {
-
-            if (salesorderitem.Product != null) {
-
-                //item.SalesOrder = salesorder;
-                salesorderitem.ActualID = salesorderitem.Product.ActualId;
-                salesorderitem.Description = salesorderitem.Product.Description;
-                salesorderitem.Family = salesorderitem.Product.Family;
-                salesorderitem.UPC = salesorderitem.Product.UPC;
-
-                //get margin from category
-                salesorderitem.Discount = 0;
-
-                if (salesorderitem.SalesOrder != null) {
-                    if (salesorderitem.SalesOrder.Account != null) {
-
-                        String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
-                        sql += " FROM PRODUCT";
-                        sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
-                        sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
-                        sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
-                        sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
-                        sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
-
-                        Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
-                        using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
-                            conn.Open();
-                            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
-                                OleDbDataReader reader = cmd.ExecuteReader();
-                                //loop through the reader
-                                while (reader.Read()) {
-                                    try {
-                                        salesorderitem.Discount = (Double)reader["MARGIN"];
-                                    } catch (Exception) {
-                                        //no catch?
-                                        salesorderitem.Discount = 0;
-                                    }
-                                }
-                                reader.Close();
-                            }
-                        }
-                    }
-                }
-
-                //get msrp price
-                salesorderitem.Price = 0;
+                // Set the pricing from stock card
+                double listPrice = 0;
                 try {
                     if (salesorderitem.Product != null) {
                         if (salesorderitem.Product.Vproductpricesheet != null) {
-                            salesorderitem.Price = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
+                            listPrice = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
                         } else {
                             //price not found
                         }
@@ -143,17 +36,115 @@ namespace EAB_Custom {
                 } catch (Exception ex) {
                     //vproductpricesheet record not found
                     Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
-                    eh.HandleException(ex, false);
+                    eh.HandleException(new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
                 }
 
-                salesorderitem.Quantity = 0; //set to 0 initially
-                salesorderitem.ExtendedPrice = salesorderitem.Price * salesorderitem.Quantity * salesorderitem.Discount;
-                salesorderitem.ProductName = salesorderitem.Product.Name;
-                salesorderitem.Program = salesorderitem.Product.Program;
-                salesorderitem.UnitOfMeasureId = salesorderitem.Product.UnitOfMeasureId.Trim();
 
-                //item.GetStockCardPricing();			
+                Sage.Platform.RepositoryHelper<IStockCardItems> rep1 = Sage.Platform.EntityFactory.GetRepositoryHelper<IStockCardItems>();
+                Sage.Platform.Repository.ICriteria crit1 = rep1.CreateCriteria();
 
+                if (salesorderitem.SalesOrder != null) {
+                    if (salesorderitem.SalesOrder.Account != null) {
+                        crit1.Add(rep1.EF.Eq("Accountid", salesorderitem.SalesOrder.Account.Id));
+
+                        if (salesorderitem.Product != null) {
+                            crit1.Add(rep1.EF.Eq("Productid", salesorderitem.Product.Id));
+
+
+                            double margin = 0;
+                            foreach (IStockCardItems scard in crit1.List<IStockCardItems>()) {
+                                margin = scard.Margin ?? 0;
+                                break;
+                            }
+
+                            salesorderitem.Price = Math.Round(listPrice, 2);
+                            salesorderitem.Discount = margin;
+                            salesorderitem.CalculatedPrice = Math.Round((Decimal)listPrice - ((Decimal)listPrice * (Decimal)margin), 2, MidpointRounding.AwayFromZero);
+                            salesorderitem.ExtendedPrice = Math.Round((Double)salesorderitem.CalculatedPrice * (Double)salesorderitem.Quantity, 2, MidpointRounding.AwayFromZero);
+                            salesorderitem.UPC = salesorderitem.Product.UPC;
+
+                            //Set a value on salesorder to recalculate totals on save
+                            salesorderitem.SalesOrder.Tick = salesorderitem.SalesOrder.Tick + 1 ?? 1;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                throw new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + e.Message, e);
+            }
+        }
+
+
+        public static void SaveProductToSalesOrderItem(ISalesOrderItem salesorderitem) {
+            try {
+                if (salesorderitem.Product != null) {
+
+                    //item.SalesOrder = salesorder;
+                    salesorderitem.ActualID = salesorderitem.Product.ActualId;
+                    salesorderitem.Description = salesorderitem.Product.Description;
+                    salesorderitem.Family = salesorderitem.Product.Family;
+                    salesorderitem.UPC = salesorderitem.Product.UPC;
+
+                    //get margin from category
+                    salesorderitem.Discount = 0;
+
+                    if (salesorderitem.SalesOrder != null) {
+                        if (salesorderitem.SalesOrder.Account != null) {
+
+                            String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
+                            sql += " FROM PRODUCT";
+                            sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
+                            sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
+                            sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
+                            sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
+                            sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
+
+                            Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+                            using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
+                                conn.Open();
+                                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
+                                    OleDbDataReader reader = cmd.ExecuteReader();
+                                    //loop through the reader
+                                    while (reader.Read()) {
+                                        try {
+                                            salesorderitem.Discount = (Double)reader["MARGIN"];
+                                        } catch (Exception) {
+                                            //no catch?
+                                            salesorderitem.Discount = 0;
+                                        }
+                                    }
+                                    reader.Close();
+                                }
+                            }
+                        }
+                    }
+
+                    //get msrp price
+                    salesorderitem.Price = 0;
+                    try {
+                        if (salesorderitem.Product != null) {
+                            if (salesorderitem.Product.Vproductpricesheet != null) {
+                                salesorderitem.Price = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
+                            } else {
+                                //price not found
+                            }
+                        }
+                    } catch (Exception ex) {
+                        //vproductpricesheet record not found
+                        Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                        eh.HandleException(new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
+                    }
+
+                    salesorderitem.Quantity = 0; //set to 0 initially
+                    salesorderitem.ExtendedPrice = salesorderitem.Price * salesorderitem.Quantity * salesorderitem.Discount;
+                    salesorderitem.ProductName = salesorderitem.Product.Name;
+                    salesorderitem.Program = salesorderitem.Product.Program;
+                    salesorderitem.UnitOfMeasureId = salesorderitem.Product.UnitOfMeasureId.Trim();
+
+                    //item.GetStockCardPricing();			
+
+                }
+            } catch (Exception e) {
+                throw new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + e.Message, e);
             }
         }
 
