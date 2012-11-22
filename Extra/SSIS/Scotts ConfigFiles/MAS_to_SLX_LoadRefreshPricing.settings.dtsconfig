@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <DTSConfiguration>
 	<DTSConfigurationHeading>
-		<DTSConfigurationFileInfo GeneratedBy="SLX754LATEST\Administrator" GeneratedFromPackageName="MAS_toSLX_AccountRefresh" GeneratedFromPackageID="{9D99A365-F57F-4018-A46C-870E92895DE5}" GeneratedDate="11/21/2012 11:43:54 AM"/>
+		<DTSConfigurationFileInfo GeneratedBy="SLX754LATEST\Administrator" GeneratedFromPackageName="MAS_SLX_LoadRefreshPricing" GeneratedFromPackageID="{0A823068-3B67-425E-8505-EA6A866E3677}" GeneratedDate="11/22/2012 8:35:21 AM"/>
 	</DTSConfigurationHeading>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[ConnectionString]" ValueType="String">
-		<ConfiguredValue>Data Source=SLX754LATEST;User ID=sa;Initial Catalog=LiveEAB_MAS;Provider=SQLNCLI10.1;Auto Translate=False;Application Name=SSIS-MAS_toSLX_AccountRefresh-{A1807B55-42ED-406B-B5D7-748E3C1E45B5}SLX754LATEST.LiveEAB_MAS;</ConfiguredValue>
+		<ConfiguredValue>Data Source=SLX754LATEST;User ID=sa;Initial Catalog=LiveEAB_MAS;Provider=SQLNCLI10.1;Auto Translate=False;Application Name=SSIS-MAS_SLX_LoadRefreshPricing-{42DA42D2-2728-4E61-8742-9CB19ACCF09D}SLX754LATEST.LiveEAB_MAS;</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[Description]" ValueType="String">
 		<ConfiguredValue></ConfiguredValue>
@@ -31,13 +31,13 @@
 		<ConfiguredValue>sa</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ConnectionString]" ValueType="String">
-		<ConfiguredValue>Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
+		<ConfiguredValue>Data Source=SLX754LATEST;User ID=admin;Initial Catalog=LiveEAB_SLX;Provider=SLXOLEDB.1;Persist Security Info=True;Integrated Security=SSPI;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Description]" ValueType="String">
 		<ConfiguredValue></ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[InitialCatalog]" ValueType="String">
-		<ConfiguredValue>LIVEEAB_SLX</ConfiguredValue>
+		<ConfiguredValue>LiveEAB_SLX</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Name]" ValueType="String">
 		<ConfiguredValue>SLX</ConfiguredValue>
@@ -57,31 +57,31 @@
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[UserName]" ValueType="String">
 		<ConfiguredValue>admin</ConfiguredValue>
 	</Configuration>
-	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[Description]" ValueType="String">
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Description]" ValueType="String">
 		<ConfiguredValue></ConfiguredValue>
 	</Configuration>
-	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[EvaluateAsExpression]" ValueType="Boolean">
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[EvaluateAsExpression]" ValueType="Boolean">
 		<ConfiguredValue>0</ConfiguredValue>
 	</Configuration>
-	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[Expression]" ValueType="String">
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Expression]" ValueType="String">
 		<ConfiguredValue></ConfiguredValue>
 	</Configuration>
-	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[IncludeInDebugDump]" ValueType="Boolean">
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[IncludeInDebugDump]" ValueType="Boolean">
 		<ConfiguredValue>0</ConfiguredValue>
 	</Configuration>
-	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[Name]" ValueType="String">
-		<ConfiguredValue>SLXOLEDBConnectionString</ConfiguredValue>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Name]" ValueType="String">
+		<ConfiguredValue>SLXConString</ConfiguredValue>
 	</Configuration>
-	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[Namespace]" ValueType="String">
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Namespace]" ValueType="String">
 		<ConfiguredValue>User</ConfiguredValue>
 	</Configuration>
-	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[RaiseChangedEvent]" ValueType="Boolean">
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[RaiseChangedEvent]" ValueType="Boolean">
 		<ConfiguredValue>0</ConfiguredValue>
 	</Configuration>
-	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[ReadOnly]" ValueType="Boolean">
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[ReadOnly]" ValueType="Boolean">
 		<ConfiguredValue>0</ConfiguredValue>
 	</Configuration>
-	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[Value]" ValueType="String">
-		<ConfiguredValue>Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;</ConfiguredValue>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Value]" ValueType="String">
+		<ConfiguredValue>Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
 	</Configuration>
 </DTSConfiguration>
