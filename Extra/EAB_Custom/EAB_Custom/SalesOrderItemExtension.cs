@@ -223,23 +223,29 @@ namespace EAB_Custom {
 
 
         public static void OnBeforeQuantityChanged(ISalesOrderItem salesorderitem, ExtendedPropertyChangedEventArgs args) {
-            //the quantity cannot be more than the quantity available
-            if (args.NewValue != args.OldValue) {
-                if (salesorderitem.Product != null) {
-                    if ((double)args.NewValue < 0 || (double)args.NewValue > salesorderitem.Product.QtyAvailable) {
-                        //quantity not valid
-                        if (args.OldValue == null) {
-                            args.NewValue = 0;
-                        } else {
-                            args.NewValue = args.OldValue;
+            //Quantity check does not apply to return orders
+            if (salesorderitem.SalesOrder.OrderType.ToUpper() != "RETURN ORDER") {
+
+                //For all other types, the quantity cannot be more than the quantity available
+                if (args.NewValue != args.OldValue) {
+                    if (salesorderitem.Product != null) {
+                        if ((double)args.NewValue < 0 || (double)args.NewValue > salesorderitem.Product.QtyAvailable) {
+                            //quantity not valid
+                            if (args.OldValue == null) {
+                                args.NewValue = 0;
+                            } else {
+                                args.NewValue = args.OldValue;
+                            }
+                            string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
+                            errormsg += " of the item " + salesorderitem.ActualID.ToString();
+                            throw new Exception(errormsg);
                         }
-                        string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
-                        errormsg += " of the item " + salesorderitem.ActualID.ToString();
-                        throw new Exception(errormsg);
                     }
                 }
-            }
 
+            }
+            //Update the extended Price
+            salesorderitem.CalculateExtendedPrice();
         }
 
         private static string GetSalesHistoryByIndex(int Index, string Accountid, string Productid)
