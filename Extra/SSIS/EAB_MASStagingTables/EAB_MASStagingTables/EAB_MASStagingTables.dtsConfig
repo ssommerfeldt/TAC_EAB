@@ -3,7 +3,7 @@
     <DTSConfigurationFileInfo GeneratedBy="EAB\pgarratt" GeneratedFromPackageName="EAB_MASUpdateStagingTables" GeneratedFromPackageID="{EBE4796F-63E7-48E4-8210-5E64515FF210}" GeneratedDate="10/4/2012 11:56:07 AM" />
   </DTSConfigurationHeading>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[ConnectionString]" ValueType="String">
-    <ConfiguredValue>Data Source=SQLSERVER2008;User ID=admin;Initial Catalog=LiveEAB_app;Provider=SQLNCLI10.1;Persist Security Info=True;</ConfiguredValue>
+    <ConfiguredValue>Data Source=SQLServer2008;User ID=admin;Initial Catalog=LiveEAB_app;Provider=SQLNCLI10.1;Persist Security Info=True;</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[Description]" ValueType="String">
     <ConfiguredValue></ConfiguredValue>
@@ -24,19 +24,19 @@
     <ConfiguredValue>0</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[ServerName]" ValueType="String">
-    <ConfiguredValue>SQLSERVER2008</ConfiguredValue>
+    <ConfiguredValue>SQLServer2008</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[UserName]" ValueType="String">
     <ConfiguredValue>admin</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[ConnectionString]" ValueType="String">
-    <ConfiguredValue>Data Source=SQLSERVER2008;User ID=sysdba;Initial Catalog=EAB_SLXTest;Provider=SQLNCLI10.1;Persist Security Info=True;</ConfiguredValue>
+    <ConfiguredValue>Data Source=SQLServer2008;User ID=sysdba;Initial Catalog=EAB_SLXTEST;Provider=SQLNCLI10.1;Persist Security Info=True;</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[Description]" ValueType="String">
     <ConfiguredValue></ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[InitialCatalog]" ValueType="String">
-    <ConfiguredValue>EAB_SLXTest</ConfiguredValue>
+    <ConfiguredValue>EAB_SLXTEST</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[Name]" ValueType="String">
     <ConfiguredValue>EAB SLX Native SQL</ConfiguredValue>
@@ -51,25 +51,25 @@
     <ConfiguredValue>0</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[ServerName]" ValueType="String">
-    <ConfiguredValue>SQLSERVER2008</ConfiguredValue>
+    <ConfiguredValue>SQLServer2008</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[UserName]" ValueType="String">
     <ConfiguredValue>sysdba</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[ConnectionString]" ValueType="String">
-    <ConfiguredValue>Data Source=EAB;User ID=admin;Initial Catalog=EABTEST;Provider=SLXOLEDB.1;Persist Security Info=True;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</ConfiguredValue>
+    <ConfiguredValue>Data Source=SQLServer2008;User ID=sysdba;Initial Catalog=EAB_SLXTEST;Provider=SQLNCLI10.1;Persist Security Info=True;</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[Description]" ValueType="String">
     <ConfiguredValue></ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[InitialCatalog]" ValueType="String">
-    <ConfiguredValue>EABTEST</ConfiguredValue>
+    <ConfiguredValue>EAB_SLXTEST</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[Name]" ValueType="String">
     <ConfiguredValue>EAB SLX Provider</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[Password]" ValueType="String">
-    <ConfiguredValue></ConfiguredValue>
+    <ConfiguredValue>masterkey</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[ProtectionLevel]" ValueType="Int32">
     <ConfiguredValue>1</ConfiguredValue>
@@ -78,9 +78,9 @@
     <ConfiguredValue>0</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[ServerName]" ValueType="String">
-    <ConfiguredValue>EAB</ConfiguredValue>
+    <ConfiguredValue>SQLServer2008</ConfiguredValue>
   </Configuration>
   <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[UserName]" ValueType="String">
-    <ConfiguredValue>admin</ConfiguredValue>
+    <ConfiguredValue>sysdba</ConfiguredValue>
   </Configuration>
 </DTSConfiguration>
