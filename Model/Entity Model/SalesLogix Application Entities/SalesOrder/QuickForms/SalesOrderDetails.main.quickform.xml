@@ -54,12 +54,23 @@ if (salesOrder.SourceSLXSite != null) {
 if (salesOrder.OrderType == "Transfer Order" || salesOrder.OrderType == "Inventory Order")
 {
 	lkpSourceWareHouse.Visible = true;
-	 lkpSourceWareHouse_lbl.Visible = true;
+	lkpSourceWareHouse_lbl.Visible = true;
 }
 else
 {
 	lkpSourceWareHouse.Visible = false;
-	 lkpSourceWareHouse_lbl.Visible = false;
+	lkpSourceWareHouse_lbl.Visible = false;
+}
+
+if (salesOrder.OrderType == "Sales Order" )
+{
+	txtDiscount.Visible = true;
+	txtDiscount_lbl.Visible = true;
+}
+else
+{
+	txtDiscount.Visible = false;
+	txtDiscount_lbl.Visible = false;
 }
 
 //disable the submit order button if order already submitted
