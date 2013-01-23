@@ -73,12 +73,8 @@ namespace EAB_Custom {
         private static void SubmitSalesOrder(ISalesOrder salesOrder) {
             try {
                 //submit order to mas
-                //Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
-
+                
                 //Salesorder header
-                //Sage.Entity.Interfaces.IStgSalesOrder_TAC soHeader =
-                //        Sage.Platform.EntityFactory.Create(typeof(Sage.SalesLogix.Entities.StgSalesOrder_TAC),
-                //        Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSalesOrder_TAC;
                 Sage.Entity.Interfaces.IStgSalesOrder_TAC soHeader =
                 Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSalesOrder_TAC),
                 Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.IStgSalesOrder_TAC;
@@ -86,8 +82,7 @@ namespace EAB_Custom {
                 soHeader.SalesOrderID = salesOrder.Id.ToString();
                 soHeader.UserFld1 = salesOrder.SalesOrderNumber;
                 soHeader.TranNo = "0";
-                soHeader.TranDate = DateTime.Now;
-                soHeader.TradeDiscAmt = null;
+                soHeader.TranDate = DateTime.Now;                
                 soHeader.STaxAmt = null;
                 soHeader.Status = "Open";
                 soHeader.SessionKey = 0;
@@ -102,6 +97,13 @@ namespace EAB_Custom {
                 soHeader.FreightAmt = 0;
                 soHeader.CustPONO = salesOrder.CustomerPurchaseOrderNumber;
                 soHeader.PrimarySperID = Sage.SalesLogix.API.MySlx.Security.CurrentSalesLogixUser.UserInfo.AccountingUserId;
+                
+                //Set the discount amount from discount percentage
+                //if (salesOrder.Discount == null || salesOrder.Discount == 0) {
+                    soHeader.TradeDiscAmt = null;
+                //} else {
+                //    soHeader.TradeDiscAmt = (Double)TruncateDecimal((Decimal)salesOrder.Discount * (Decimal)soHeader.OpenAmt, 2);
+                //}
 
                 //get the accountfinancial data
                 if (salesOrder.Account != null) {
@@ -169,6 +171,9 @@ namespace EAB_Custom {
                         double extendedAmount = (Double)item.CalculatedPrice * (Double)item.Quantity;
                         soLine.ExtAmt = Math.Round(extendedAmount, 2, MidpointRounding.AwayFromZero);
 
+                        soLine.TradeDiscAmt = (Double)Math.Round((Decimal)salesOrder.Discount * (Decimal)soLine.ExtAmt, 2, MidpointRounding.ToEven);
+                        soLine.TradeDiscPct = null;
+
                         soLine.ExtCmnt = null;
                         soLine.FOBID = salesOrder.Fob;
                         //soLine.FreightAmt = salesOrder.Freight; //do not use
@@ -221,9 +226,7 @@ namespace EAB_Custom {
                             soLine.ShipToStateID = salesOrder.ShippingAddress.State;
                         }
                         soLine.Status = "Open";
-                        soLine.STaxClassID = null;
-                        soLine.TradeDiscAmt = 0;
-                        soLine.TradeDiscPct = null;
+                        soLine.STaxClassID = null;                        
                         soLine.TranNo = "0";
 
                         if (item.Product != null) {
