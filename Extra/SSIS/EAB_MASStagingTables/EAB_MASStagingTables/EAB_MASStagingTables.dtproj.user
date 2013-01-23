@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataTransformationsUserConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <CreateDeploymentUtility>true</CreateDeploymentUtility>
+        <StartObjectID>EAB_MASUpdateStagingTables.dtsx</StartObjectID>
+        <Run64BitRuntime>false</Run64BitRuntime>
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>Live EAB Slx</Id>
+            <Name>Live EAB Slx</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANsEKb/m5mk227OlQXUDwCAAAAAAaAAAATABpAHYAZQAgAEUAQQBCACAAUwBsAHgAAAAQZgAAAAEAACAAAAAidRqT44DnZ1oYRbGJV5PsdaOMsP9IZO0oz+Dpx1u/lgAAAAAOgAAAAAIAACAAAAD5rFqX+mDMJnuw8Qcnavz1Hcgo9Tk23JbcPs8CYC3PcBAAAAAy9uACLmHISL3zDjrzxxERQAAAAH+d0470bJ37czf9K6IRRFt2DpEfP52iYA0LdI+AQQF0hFl4y7tAAir2ACd+vbiUFrQwlQ+omCX3VXtnMkM/ssE=</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>Live EAB App</Id>
+            <Name>Live EAB App</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANsEKb/m5mk227OlQXUDwCAAAAAAaAAAATABpAHYAZQAgAEUAQQBCACAAQQBwAHAAAAAQZgAAAAEAACAAAAAnpTOYQZqX37rf6lmLwrirlkHeNjM2VIpbD9yjC+cRmAAAAAAOgAAAAAIAACAAAACEwRbeI+Esl3D/G46U/AZ6yo9oKTVvwD/v3GS4gkwnAxAAAADIRAhhXn3Pt0s6Jeo7iMZgQAAAACJuSrDAcq0agXXm71P0v7eY5jALRmKyvBqo29wZq7nnoW26BLLQ7mCWoULoqq11DCpjPmjDfoAw0l+5mAXpoeY=</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>{7F4B7815-3012-42F7-B8A4-AFE73E273609}</Id>
+            <Name>{7F4B7815-3012-42F7-B8A4-AFE73E273609}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUl5FQnnH10GxceLGVgheOgAAAABOAAAAewA3AEYANABCADcAOAAxADUALQAzADAAMQAyAC0ANAAyAEYANwAtAEIAOABBADQALQBBAEYARQA3ADMARQAyADcAMwA2ADAAOQB9AAAAA2YAAMAAAAAQAAAAh3jpg/GjSyGAQdW+wIIn7gAAAAAEgAAAoAAAABAAAAB1VqKSjYwaI6f1zpMYmoAVCAAAAC3MIU4u24HJFAAAAGi3M8f+vzskHZ3D8HGiv0NY+UR/</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>EAB SLX Native SQL</Id>
+            <Name>EAB SLX Native SQL</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANsEKb/m5mk227OlQXUDwCAAAAAAmAAAARQBBAEIAIABTAEwAWAAgAE4AYQB0AGkAdgBlACAAUwBRAEwAAAAQZgAAAAEAACAAAADk3UDZcIfvyoUZeU8+jWltoUcMu4q139jSyQg0fgNChgAAAAAOgAAAAAIAACAAAADKS8djtU51qL1oaXhijZkpjuJ/aHBE+kCwapkr/PxqOBAAAAB+83FndZ+nN590ikKoJLiXQAAAABe7EQZTIsOMc7aIth92ovC1bmVJs2mgymM71fuM6HETW5nkqvnxnJEsY6hgdcjHDZ4dpgz3Kd4uVtsYprhTU/M=</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>{9A97C71F-DAE5-43F6-9052-9AB912FA2BA6}</Id>
+            <Name>{9A97C71F-DAE5-43F6-9052-9AB912FA2BA6}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANsEKb/m5mk227OlQXUDwCAAAAABOAAAAewA5AEEAOQA3AEMANwAxAEYALQBEAEEARQA1AC0ANAAzAEYANgAtADkAMAA1ADIALQA5AEEAQgA5ADEAMgBGAEEAMgBCAEEANgB9AAAAEGYAAAABAAAgAAAAHh6cNRbiTyvm5qh6pMwMEWb9Fz4VGM+zCLLSgbpZpP0AAAAADoAAAAACAAAgAAAAqoRST6E9vQYR0phoEr+dKCBKXuvIe5b+ebpeA6AEw58QAAAAawkeQijSyefvrYF6WjyEXkAAAAAh2zo2TqwPdMn8k9jo5cjWNkGuz3RE/eKpPK/EUfXgeHjM9cCYYzk5zoWJ0xsHqs+glXUoL2YHUs6Dv0l8ag5E</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>Live EAB Slx</Id>
+            <Name>Live EAB Slx</Name>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>Live EAB App</Id>
+            <Name>Live EAB App</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANsEKb/m5mk227OlQXUDwCAAAAAAaAAAATABpAHYAZQAgAEUAQQBCACAAQQBwAHAAAAAQZgAAAAEAACAAAADlWs8MavTcRJd+29I5M8AT6U4tiWAcbGaZ2+z1EQpAvgAAAAAOgAAAAAIAACAAAAD2vgg8EcoHbC974h+Qyh4Ld5Zd6ZwlMcVUAzjttVnouhAAAADKaYjqdkaiTmAmeqP3JxX3QAAAABOFH+vJXDJGV+w6+3rFODDF0gkiRPUkUmLzOnDG82Xc6b1lQf60pv8hk3sQ3fIU4GHN4FvsCleLj2HXchIMLKM=</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>{7F4B7815-3012-42F7-B8A4-AFE73E273609}</Id>
+            <Name>{7F4B7815-3012-42F7-B8A4-AFE73E273609}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUl5FQnnH10GxceLGVgheOgAAAABOAAAAewA3AEYANABCADcAOAAxADUALQAzADAAMQAyAC0ANAAyAEYANwAtAEIAOABBADQALQBBAEYARQA3ADMARQAyADcAMwA2ADAAOQB9AAAAA2YAAMAAAAAQAAAATa55BQb/FQs/9GEEwZ3dFQAAAAAEgAAAoAAAABAAAAC4YbSHcUt0z79Q0W0BSy6wGAAAAPWIHhXcHETah04G8b2FqQsmTV1T3gap2hQAAACULZPzmFZU8NgKSaGiTVsCBQ3cPg==</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>EAB SLX Native SQL</Id>
+            <Name>EAB SLX Native SQL</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANsEKb/m5mk227OlQXUDwCAAAAAAmAAAARQBBAEIAIABTAEwAWAAgAE4AYQB0AGkAdgBlACAAUwBRAEwAAAAQZgAAAAEAACAAAAA+I7ElB8BIAmQfhMdyne6F/Ii3GX6gDWiNNGJ4xCRERAAAAAAOgAAAAAIAACAAAACKA7mqSvvmXjYGnl9U2rQdO9Vm5gLGPDw7OOQlnJww+iAAAABfJUOOHI7aYtZrVSUUgE7HrYTRka4CkxzZKfLwKwMzWEAAAABakAhdvmlrbjCO0Etk+UvIy5pz0zJxH34tvCxs+SCAHNQ6FP+GtYl+gda3TbiYhEWLpmmexcPMTwASGVJhQYXP</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>{9A97C71F-DAE5-43F6-9052-9AB912FA2BA6}</Id>
+            <Name>{9A97C71F-DAE5-43F6-9052-9AB912FA2BA6}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAANsEKb/m5mk227OlQXUDwCAAAAABOAAAAewA5AEEAOQA3AEMANwAxAEYALQBEAEEARQA1AC0ANAAzAEYANgAtADkAMAA1ADIALQA5AEEAQgA5ADEAMgBGAEEAMgBCAEEANgB9AAAAEGYAAAABAAAgAAAAajZodOykEaB99HqgjFLGnKOWiY/2GoYKiL4X54WZUuoAAAAADoAAAAACAAAgAAAAITCI4FiotUeS1uoJfbpp9Bx2AziQUp+jK9UPQ6ITxw8QAAAAdrkH0XpJwF9edzZzJnQ9wkAAAABw4qzt8NGgC3NgLQkucbj/yXrclxbsHU3ojXzYLzv5oDN/ytQwTMLwvG0KDd95XW8krH6wOomu9tLSkRru/cqs</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <OfflineMode>false</OfflineMode>
+        <ProgressReporting>true</ProgressReporting>
+      </Options>
+    </Configuration>
+  </Configurations>
+</DataTransformationsUserConfiguration>

@@ -133,7 +133,7 @@
         </DecimalDataType>
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="389412d2-80de-4faf-82ee-31ae57a354ef" lastModifiedUtc="2012-07-17T16:12:11.5517109Z" name="QtyShip" audited="false" columnName="QTYSHIP" maxLength="0" precision="17" scale="4" ordinal="10" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="389412d2-80de-4faf-82ee-31ae57a354ef" lastModifiedUtc="2012-11-09T21:43:52.8733941Z" name="QtyShip" audited="false" onBeforeChangeMethodId="2c5c0e84-5dde-44c6-bcb7-c22d982acb60" columnName="QTYSHIP" maxLength="0" precision="17" scale="4" ordinal="10" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">

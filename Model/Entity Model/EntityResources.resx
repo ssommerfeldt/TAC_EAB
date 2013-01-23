@@ -12501,11 +12501,11 @@
   <data name="StockCardItems.DisplayNamePlural" xml:space="preserve">
     <value>StockCardItems</value>
   </data>
-  <data name="Account.StockCardItemss.DisplayName" xml:space="preserve">
-    <value>StockCardItems</value>
-  </data>
   <data name="StockCardItems.Account.DisplayName" xml:space="preserve">
     <value>Account</value>
+  </data>
+  <data name="Account.StockCards.DisplayName" xml:space="preserve">
+    <value>StockCards</value>
   </data>
   <data name="StockCardItems.Product.DisplayName" xml:space="preserve">
     <value>Product</value>
@@ -14207,5 +14207,230 @@
   </data>
   <data name="USERWHSE.DisplayNamePlural" xml:space="preserve">
     <value>USERWHSE</value>
+  </data>
+  <data name="Product.WarehouseID.DisplayName" xml:space="preserve">
+    <value>WarehouseID</value>
+  </data>
+  <data name="Product.CompanyID.DisplayName" xml:space="preserve">
+    <value>CompanyID</value>
+  </data>
+  <data name="Product.SLXSite.DisplayName" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="SLXSite.Product.DisplayName" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="SLXSite.SiteCodeId.DisplayName" xml:space="preserve">
+    <value>SiteCodeId</value>
+  </data>
+  <data name="Product.QtyOnHand.DisplayName" xml:space="preserve">
+    <value>QtyOnHand</value>
+  </data>
+  <data name="Product.QtyAvailable.DisplayName" xml:space="preserve">
+    <value>QtyAvailable</value>
+  </data>
+  <data name="Product.SurplusQty.DisplayName" xml:space="preserve">
+    <value>SurplusQty</value>
+  </data>
+  <data name="Product.QtyOnHold.DisplayName" xml:space="preserve">
+    <value>QtyOnHold</value>
+  </data>
+  <data name="Product.MaxStockLevel.DisplayName" xml:space="preserve">
+    <value>MaxStockLevel</value>
+  </data>
+  <data name="Product.Filter.Warehouse.DisplayName" xml:space="preserve">
+    <value>Warehouse</value>
+  </data>
+  <data name="Product.Filter.Company.DisplayName" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="Vlueproductgroup.WarehouseId.DisplayName" xml:space="preserve">
+    <value>Warehouse Id</value>
+  </data>
+  <data name="Vlueproductgroup.UserId.DisplayName" xml:space="preserve">
+    <value>User Id</value>
+  </data>
+  <data name="StgSalesOrder_TAC.UserFld1.DisplayName" xml:space="preserve">
+    <value>UserFld1</value>
+  </data>
+  <data name="Vlueproductgroup.Description.DisplayName" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Timprodpricegroup.DisplayName" xml:space="preserve">
+    <value>Timprodpricegroup</value>
+  </data>
+  <data name="Timprodpricegroup.Timprodpricegroupid.DisplayName" xml:space="preserve">
+    <value>Timprodpricegroupid</value>
+  </data>
+  <data name="Timprodpricegroup.ModifyUser.DisplayName" xml:space="preserve">
+    <value>Modifyuser</value>
+  </data>
+  <data name="Timprodpricegroup.ModifyDate.DisplayName" xml:space="preserve">
+    <value>Modifydate</value>
+  </data>
+  <data name="Timprodpricegroup.CreateUser.DisplayName" xml:space="preserve">
+    <value>Createuser</value>
+  </data>
+  <data name="Timprodpricegroup.CreateDate.DisplayName" xml:space="preserve">
+    <value>Createdate</value>
+  </data>
+  <data name="Timprodpricegroup.Prodpricegroupkey.DisplayName" xml:space="preserve">
+    <value>Prodpricegroupkey</value>
+  </data>
+  <data name="Timprodpricegroup.Companyid.DisplayName" xml:space="preserve">
+    <value>Companyid</value>
+  </data>
+  <data name="Timprodpricegroup.Description.DisplayName" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Timprodpricegroup.Prodpricegroupid.DisplayName" xml:space="preserve">
+    <value>Prodpricegroupid</value>
+  </data>
+  <data name="Timprodpricegroup.Updatecounter.DisplayName" xml:space="preserve">
+    <value>Updatecounter</value>
+  </data>
+  <data name="Product.MASProdPriceGroupKey.DisplayName" xml:space="preserve">
+    <value>MASProdPriceGroupKey</value>
+  </data>
+  <data name="Product.Timprodpricegroup.DisplayName" xml:space="preserve">
+    <value>Timprodpricegroup</value>
+  </data>
+  <data name="Timprodpricegroup.Product.DisplayName" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="Vluestockcardproduct.DisplayName" xml:space="preserve">
+    <value>Vluestockcardproduct</value>
+  </data>
+  <data name="Vluestockcardproduct.Productid.DisplayName" xml:space="preserve">
+    <value>Productid</value>
+  </data>
+  <data name="Vluestockcardproduct.Warehouseid.DisplayName" xml:space="preserve">
+    <value>Warehouseid</value>
+  </data>
+  <data name="Vluestockcardproduct.Name.DisplayName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Vluestockcardproduct.Description.DisplayName" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Vluestockcardproduct.Actualid.DisplayName" xml:space="preserve">
+    <value>Actualid</value>
+  </data>
+  <data name="Vluestockcardproduct.Family.DisplayName" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="Vluestockcardproduct.Status.DisplayName" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Vluestockcardproduct.Masprodpricegroupkey.DisplayName" xml:space="preserve">
+    <value>Masprodpricegroupkey</value>
+  </data>
+  <data name="Vluestockcardproduct.Maxstocklevel.DisplayName" xml:space="preserve">
+    <value>Maxstocklevel</value>
+  </data>
+  <data name="Vluestockcardproduct.Qtyonhold.DisplayName" xml:space="preserve">
+    <value>Qtyonhold</value>
+  </data>
+  <data name="Vluestockcardproduct.Surplusqty.DisplayName" xml:space="preserve">
+    <value>Surplusqty</value>
+  </data>
+  <data name="Vluestockcardproduct.Qtyavailable.DisplayName" xml:space="preserve">
+    <value>Qtyavailable</value>
+  </data>
+  <data name="Vluestockcardproduct.Qtyonhand.DisplayName" xml:space="preserve">
+    <value>Qtyonhand</value>
+  </data>
+  <data name="Vluestockcardproduct.Companyid.DisplayName" xml:space="preserve">
+    <value>Companyid</value>
+  </data>
+  <data name="Vluestockcardproduct.Userid.DisplayName" xml:space="preserve">
+    <value>Userid</value>
+  </data>
+  <data name="StgSOPicklist_TAC.SalesOrderNumber.DisplayName" xml:space="preserve">
+    <value>SalesOrderNumber</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder4.DisplayName" xml:space="preserve">
+    <value>LastOrder4</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder3.DisplayName" xml:space="preserve">
+    <value>LastOrder3</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder2.DisplayName" xml:space="preserve">
+    <value>LastOrder2</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder.DisplayName" xml:space="preserve">
+    <value>LastOrder</value>
+  </data>
+  <data name="StockCardItems.LastOrder4.DisplayName" xml:space="preserve">
+    <value>LastOrder4</value>
+  </data>
+  <data name="StockCardItems.LastOrder2.DisplayName" xml:space="preserve">
+    <value>LastOrder2</value>
+  </data>
+  <data name="StockCardItems.LastOrder3.DisplayName" xml:space="preserve">
+    <value>LastOrder3</value>
+  </data>
+  <data name="StockCardItems.LastOrder5.DisplayName" xml:space="preserve">
+    <value>LastOrder5</value>
+  </data>
+  <data name="StockCardItems.LastOrder6.DisplayName" xml:space="preserve">
+    <value>LastOrder6</value>
+  </data>
+  <data name="StockCardItems.LastOrder7.DisplayName" xml:space="preserve">
+    <value>LastOrder</value>
+  </data>
+  <data name="StockCardItems.LastOrder8.DisplayName" xml:space="preserve">
+    <value>LastOrder8</value>
+  </data>
+  <data name="StockCardItems.LastOrder9.DisplayName" xml:space="preserve">
+    <value>LastOrder9</value>
+  </data>
+  <data name="StockCardItems.LastOrder10.DisplayName" xml:space="preserve">
+    <value>LastOrder10</value>
+  </data>
+  <data name="StockCardItems.LastOrder11.DisplayName" xml:space="preserve">
+    <value>LastOrder11</value>
+  </data>
+  <data name="StockCardItems.LastOrder12.DisplayName" xml:space="preserve">
+    <value>LastOrder12</value>
+  </data>
+  <data name="StockCardItems.SeccodeId.DisplayName" xml:space="preserve">
+    <value>SECCODEID</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder5.DisplayName" xml:space="preserve">
+    <value>LastOrder5</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder6.DisplayName" xml:space="preserve">
+    <value>LastOrder6</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder7.DisplayName" xml:space="preserve">
+    <value>LastOrder7</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder8.DisplayName" xml:space="preserve">
+    <value>LastOrder8</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder9.DisplayName" xml:space="preserve">
+    <value>LastOrder9</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder10.DisplayName" xml:space="preserve">
+    <value>LastOrder10</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder11.DisplayName" xml:space="preserve">
+    <value>LastOrder11</value>
+  </data>
+  <data name="SalesOrderItem.LastOrder12.DisplayName" xml:space="preserve">
+    <value>LastOrder12</value>
+  </data>
+  <data name="SalesOrderItem.MaxStockLevel.DisplayName" xml:space="preserve">
+    <value>Max_StockLevel</value>
+  </data>
+  <data name="StockCardItems.MaxStockLevel.DisplayName" xml:space="preserve">
+    <value>Max_StockLevel</value>
+  </data>
+  <data name="StgSalesOrder_TAC.PrimarySperID.DisplayName" xml:space="preserve">
+    <value>PrimarySperID</value>
+  </data>
+  <data name="StgSalesOrder_TAC.CustPONO.DisplayName" xml:space="preserve">
+    <value>CustPONO</value>
   </data>
 </root>

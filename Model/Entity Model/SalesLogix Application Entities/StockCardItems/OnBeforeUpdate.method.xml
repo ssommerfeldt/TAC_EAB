@@ -13,6 +13,12 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets />
+  <postExecuteTargets>
+    <methodTarget id="2772d667-ce79-460f-8414-3cb065bb7090" lastModifiedUtc="2012-09-24T20:10:02.84375Z" targetType="EAB_Custom.Extentions, EAB_Custom" targetMethod="OnBeforeUpdateStockCardItem" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
   <postFlushTargets />
 </method>

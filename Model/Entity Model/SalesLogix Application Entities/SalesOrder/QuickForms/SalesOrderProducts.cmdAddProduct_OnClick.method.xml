@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="a5db8f64-d122-476d-a820-71f83d7ff3a2" lastModifiedUtc="2012-09-07T17:07:47.3705391Z" name="cmdAddProduct_OnClick" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="SalesOrderProducts">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="06977b2c-01d2-473f-9124-445efcb46355" paramName="form" sequence="0" paramType="ISalesOrderProducts" />
+    <OrmEntityMethodParam id="f1c5f2bd-7ce0-4c90-b6cd-af62269ef2bf" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>

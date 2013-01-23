@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="df3d1e85-bab0-45a4-9395-2ef166356135" lastModifiedUtc="2012-10-17T16:34:59.3025717Z" name="UPCSearch" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="9ce0095d-9c76-47f3-b6cb-670f5da9e3aa" lastModifiedUtc="2012-10-17T16:34:51.2921961Z" targetType="EAB_Custom.SalesOrderItemExtension, EAB_Custom" targetMethod="UPCSearch" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>

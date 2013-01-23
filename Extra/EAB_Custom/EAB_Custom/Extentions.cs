@@ -19,6 +19,7 @@ using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.Security;
 using Sage.Platform.WebPortal.Workspaces.Tab;
 using Sage.Platform.Repository;
+using System.Data;
 
 
 
@@ -30,11 +31,11 @@ namespace EAB_Custom
         private static void AddEditAccountProductGroup(string Accountid, string CategoryID, Double Margin)
         {
             //Find if accou
-            string ID = Extentions.GetField<string>("ACCOUNTPRODUCTCATEGORYID", "ACCOUNTPRODUCTCATEGORY", "PRODUCTCATEGORYID = '" + CategoryID  + "' AND ACCOUNTID ='" + Accountid +"'");
+            string ID = Extentions.GetField<string>("ACCOUNTPRODUCTCATEGORYID", "ACCOUNTPRODUCTCATEGORY", "PRODUCTCATEGORYID = '" + CategoryID + "' AND ACCOUNTID ='" + Accountid + "'");
             if (ID != string.Empty)
             {
-               //Create the New Item
-                Sage.Entity.Interfaces.IAccountProductCategory  item = Sage.Platform.EntityFactory.Create<Sage.Entity.Interfaces.IAccountProductCategory>();
+                //Create the New Item
+                Sage.Entity.Interfaces.IAccountProductCategory item = Sage.Platform.EntityFactory.Create<Sage.Entity.Interfaces.IAccountProductCategory>();
                 item.Accountid = Accountid;
                 item.ProductCategoryID = CategoryID;
                 item.Margin = Margin;
@@ -44,30 +45,126 @@ namespace EAB_Custom
             }
             else
             {
-               // uPDATE Existing
+                // uPDATE Existing
                 Sage.Entity.Interfaces.IAccountProductCategory item = Sage.Platform.EntityFactory.GetById<Sage.Entity.Interfaces.IAccountProductCategory>(ID);
-                
+
                 item.Margin = Margin;
                 item.Save();
 
 
             }
+            //Sage.Entity.Interfaces.ISalesOrderItem SOItem;
+            //SOItem.SalesOrder.SalesOrderNumber 
+            //SOItem.SalesOrder.OrderDate 
+            //SOItem.Quantity
+            //SOItem.SalesOrder.Account.Id = 'MyID' ;
+            //SOItem.Product.Id = 'MyID'; 
+
+
         }
+
+        public static string GetUserWarhouseQueryString(String Userid)
+        {
+            String SQL = "SELECT      sysdba.SITEREFERENCE.SITEREFDISPLAYNAME ";
+            SQL += " FROM         sysdba.USERWHSE INNER JOIN ";
+            SQL += " sysdba.SITE ON sysdba.USERWHSE.SITEID = sysdba.SITE.SITEID INNER JOIN ";
+            SQL += "                      sysdba.SITEREFERENCE ON sysdba.SITE.SITEID = sysdba.SITEREFERENCE.SITEID";
+            SQL += "                      WHERE     (USERWHSE.USERID = '" + Userid + "')";
+
+            String returnValue = "(";
+
+
+            // Generate In SQL statement
+            Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+            //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+            using (OleDbConnection conn = new OleDbConnection(datasvc.GetConnectionString()))
+            {
+                conn.Open();
+                using (OleDbCommand cmd = new OleDbCommand(SQL, conn))
+                {
+                    OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (r.Read())
+                    {
+                        returnValue += "'" + r["SITEREFDISPLAYNAME"].ToString() + "',";
+                    }
+                    r.Close();
+                }
+            }
+
+            return returnValue += "'')";
+        }
+        public static double GetDefaultNationalPricingMargin(String CustomerId, string CompanyID, string ProdPriceGroupID)
+        {
+            //dbltmpMargin = GetField<decimal>("IsNull(PctAdj,'0')", "vNationalAccountMargin", "CustID='" + Account.AccountFinancial.CustomerId + "' AND CompanyID ='" + Account.AccountFinancial.Companycode + "' AND  ProdPriceGroupID=' " + ProdCategoryID + "'");
+            String SQL = "Select IsNull(PctAdj,'0') as Margin From sysdba.vNationalAccountMargin where CustID='" + CustomerId + "' AND CompanyID ='" + CompanyID + "' AND  ProdPriceGroupID= '" + ProdPriceGroupID + "'";
+
+            double returnValue = 0.0; //Intialzie
+
+
+            // Generate In SQL statement
+            Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+            //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+            using (OleDbConnection conn = new OleDbConnection(datasvc.GetConnectionString()))
+            {
+                conn.Open();
+                using (OleDbCommand cmd = new OleDbCommand(SQL, conn))
+                {
+                    OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (r.Read())
+                    {
+                        returnValue = Convert.ToDouble(r["Margin"]);
+                    }
+                    r.Close();
+                }
+            }
+
+            return returnValue;
+        }
+
+        public static double GetDefaultProductProgramMargin(string ProdCategoryID, string MasterWhseID)
+        {
+            //dbltmpMargin = GetField<decimal>("Isnull(PctAdj,'0')", "vDefaultPriceGroupMargin", "ProdPriceGroupID = '" + ProdCategoryID + "' AND WhseID = '" + tmpDefaultMasterWhse + "'");
+            String SQL = "Select IsNull(PctAdj,'0') as Margin From sysdba.vDefaultPriceGroupMargin where ProdPriceGroupID = '" + ProdCategoryID + "' AND WhseID = '" + MasterWhseID + "'";
+
+            double returnValue = 0.0; //Intialzie
+
+
+            // Generate In SQL statement
+            Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+            //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+            using (OleDbConnection conn = new OleDbConnection(datasvc.GetConnectionString()))
+            {
+                conn.Open();
+                using (OleDbCommand cmd = new OleDbCommand(SQL, conn))
+                {
+                    OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (r.Read())
+                    {
+                        returnValue = Convert.ToDouble(r["Margin"]);
+                    }
+                    r.Close();
+                }
+            }
+
+            return returnValue;
+        }
+
         public static void AddProductGroupItems(IStockCardItems stockcarditems, String CategoryID, IAccount Account, Double Margin)
         {
             //Add Update the Product Category Margin
             AddEditAccountProductGroup(Account.Id.ToString(), CategoryID, Margin);
+            string CompanyID = GetField<string>("ISNULL(MASCOMPANYID,'')", "USERSECURITY", "USERID='" + Account.AccountManager.Id.ToString() + "'");
+            string WareHouseIN = GetUserWarhouseQueryString(Account.AccountManager.Id.ToString());
 
-            String SQL = "SELECT     PRODUCT.PRODUCTID, PRODUCT.ACTUALID, PRODUCT.DESCRIPTION, TIMPRODCATEGORY.TIMPRODCATEGORYID, ";
-            SQL += "                      TIMPRODCATEGORY.PRODCATEGORYID,COMPANYID";
-            SQL += " FROM         PRODUCT INNER JOIN";
-            SQL += " TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY INNER JOIN";
-            SQL += " TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
-            SQL += " WHERE     (TIMPRODCATEGORY.TIMPRODCATEGORYID = '" + CategoryID + "')";
-            SQL += " AND (sysdba.PRODUCT.PRODUCTID NOT IN";
+            String SQL = "SELECT     sysdba.PRODUCT.PRODUCTID, sysdba.PRODUCT.ACTUALID, sysdba.PRODUCT.DESCRIPTION, sysdba.PRODUCT.COMPANYID, ";
+            SQL += "                       sysdba.TIMPRODPRICEGROUP.TIMPRODPRICEGROUPID, sysdba.TIMPRODPRICEGROUP.Description AS PriceGroupDescription ";
+            SQL += " FROM         sysdba.PRODUCT INNER JOIN";
+            SQL += "                       sysdba.TIMPRODPRICEGROUP ON sysdba.PRODUCT.MASPRODPRICEGROUPKEY = sysdba.TIMPRODPRICEGROUP.ProdPriceGroupKey";
+            SQL += " WHERE     (TIMPRODPRICEGROUP.TIMPRODPRICEGROUPID = '" + CategoryID + "') AND (sysdba.PRODUCT.COMPANYID = '" + CompanyID + "')";
+            SQL += " AND (sysdba.PRODUCT.WAREHOUSEID in " + WareHouseIN + ") AND (sysdba.PRODUCT.PRODUCTID NOT IN";
             SQL += "              (SELECT     PRODUCTID";
             SQL += "                FROM          sysdba.STOCKCARDITEMS";
-            SQL += "                WHERE      (ACCOUNTID = '" +Account.Id.ToString() + "')))";
+            SQL += "                WHERE      (ACCOUNTID = '" + Account.Id.ToString() + "')))";
 
             //Get Products That are not allready in the Accounts Stockcard, By Group
             Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
@@ -87,13 +184,14 @@ namespace EAB_Custom
                             Sage.Entity.Interfaces.IStockCardItems item = Sage.Platform.EntityFactory.Create<Sage.Entity.Interfaces.IStockCardItems>();
                             item.Accountid = Account.Id.ToString();
                             item.AccountName = Account.AccountName;
+                            item.SeccodeId = Account.Owner.Id.ToString(); //ssommerfeldt Nov 1, 2012  Needed to Secure the StockCard. 
 
 
                             item.Productid = tmpProduct.Id.ToString();
                             item.ProductDescription = tmpProduct.Description;
 
                             item.TIMPRODCATEGORYID = CategoryID;
-                            item.CategoryName = reader["PRODCATEGORYID"].ToString();
+                            item.CategoryName = reader["PriceGroupDescription"].ToString();
 
                             item.CompanyID = reader["COMPANYID"].ToString();
                             //item
@@ -105,18 +203,161 @@ namespace EAB_Custom
                         }
                         catch (Exception)
                         {
-
-
+                           
+                           
                         }
 
                     }
                     reader.Close();
                 }
+               
 
             }
 
         }
 
+        // Example of target method signature
+        public static void OnBeforeInsertStockCardItem(IStockCardItems StockCardItems, ISession session)
+        {
+            if (StockCardItems.ProductDescription == null)
+            {
+                StockCardItems.ProductDescription = StockCardItems.Product.Description;
+                StockCardItems.CompanyID = StockCardItems.Product.CompanyID;
+                StockCardItems.AccountName = StockCardItems.Account.AccountName;
+
+
+
+                //String CategoryID = GetField<String>("TIMPRODCATITEMID","TIMPRODCATITEM","ITEMKEY='" + StockCardItems.Product.MASITEMKEY + "'");
+                String SQL = "SELECT     sysdba.TIMPRODCATITEM.TIMPRODCATITEMID, Isnull(sysdba.TIMPRODCATEGORY.PRODCATEGORYID,'') as PRODCATEGORYID, sysdba.TIMPRODCATITEM.PRODCATEGORYKEY,  ";
+                SQL += "    sysdba.TIMPRODCATITEM.ITEMKEY";
+                SQL += " FROM         sysdba.TIMPRODCATITEM LEFT OUTER JOIN";
+                SQL += "          sysdba.TIMPRODCATEGORY ON sysdba.TIMPRODCATITEM.PRODCATEGORYKEY = sysdba.TIMPRODCATEGORY.PARENTPRODCATKEY";
+                SQL += " WHERE     (sysdba.TIMPRODCATITEM.ITEMKEY = '" + StockCardItems.Product.MASITEMKEY + "')";
+
+
+
+                // Generate In SQL statement
+                Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+                //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+                using (OleDbConnection conn = new OleDbConnection(datasvc.GetConnectionString()))
+                {
+                    conn.Open();
+                    using (OleDbCommand cmd = new OleDbCommand(SQL, conn))
+                    {
+                        OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                        while (r.Read())
+                        {
+                            StockCardItems.TIMPRODCATEGORYID = r["TIMPRODCATITEMID"].ToString();
+                            StockCardItems.CategoryName = r["PRODCATEGORYID"].ToString();
+                            //AddEditAccountProductGroup(StockCardItems.Accountid.ToString(), StockCardItems.TIMPRODCATEGORYID.ToString(), (Double)StockCardItems.Margin);
+
+                        }
+                        r.Close();
+                    }
+                }
+
+
+
+            }
+
+        }
+
+        // Example of target method signature
+        public static void OnBeforeUpdateStockCardItem(IStockCardItems StockCardItems, ISession session)
+        {
+            if (StockCardItems.ProductDescription == null)
+            {
+                StockCardItems.ProductDescription = StockCardItems.Product.Description;
+                StockCardItems.CompanyID = StockCardItems.Product.CompanyID;
+                StockCardItems.AccountName = StockCardItems.Account.AccountName;
+
+
+
+                //String CategoryID = GetField<String>("TIMPRODCATITEMID","TIMPRODCATITEM","ITEMKEY='" + StockCardItems.Product.MASITEMKEY + "'");
+                String SQL = "SELECT     sysdba.TIMPRODCATITEM.TIMPRODCATITEMID, Isnull(sysdba.TIMPRODCATEGORY.PRODCATEGORYID,'') as PRODCATEGORYID, sysdba.TIMPRODCATITEM.PRODCATEGORYKEY,  ";
+                SQL += "    sysdba.TIMPRODCATITEM.ITEMKEY";
+                SQL += " FROM         sysdba.TIMPRODCATITEM LEFT OUTER JOIN";
+                SQL += "          sysdba.TIMPRODCATEGORY ON sysdba.TIMPRODCATITEM.PRODCATEGORYKEY = sysdba.TIMPRODCATEGORY.PARENTPRODCATKEY";
+                SQL += " WHERE     (sysdba.TIMPRODCATITEM.ITEMKEY = '" + StockCardItems.Product.MASITEMKEY + "')";
+
+
+
+                // Generate In SQL statement
+                Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+                //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+                using (OleDbConnection conn = new OleDbConnection(datasvc.GetConnectionString()))
+                {
+                    conn.Open();
+                    using (OleDbCommand cmd = new OleDbCommand(SQL, conn))
+                    {
+                        OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                        while (r.Read())
+                        {
+                            StockCardItems.TIMPRODCATEGORYID = r["TIMPRODCATITEMID"].ToString();
+                            StockCardItems.CategoryName = r["PRODCATEGORYID"].ToString();
+                            //AddEditAccountProductGroup(StockCardItems.Accountid.ToString(), StockCardItems.TIMPRODCATEGORYID.ToString(), (Double)StockCardItems.Margin);
+
+                        }
+                        r.Close();
+                    }
+                }
+
+
+
+            }
+
+        }
+        // Example of target method signature
+        //=============================================================================
+        // Need to send in Account as Parameter as the stockcarditem Account is null
+        //============================================================================
+        public static void GetDefaultMargin(IStockCardItems stockcarditems, String TIMPRODCATEGORYID, IAccount Account, out Double result)
+        {
+
+            double dbltmpMargin;
+            string tmpDefaultMasterWhse;
+            string ProdCategoryID = GetField<String>("Isnull(ProdPriceGroupID,'')", "TIMPRODPRICEGROUP", "TIMPRODPRICEGROUPID='" + TIMPRODCATEGORYID + "'");
+            //dbltmpMargin = GetField<decimal>("IsNull(PctAdj,'0')", "vNationalAccountMargin", "CustID='" + Account.AccountFinancial.CustomerId + "' AND CompanyID ='" + Account.AccountFinancial.Companycode + "' AND  ProdPriceGroupID=' " + ProdCategoryID + "'");
+            dbltmpMargin = GetDefaultNationalPricingMargin(Account.AccountFinancial.CustomerId, Account.AccountFinancial.Companycode, ProdCategoryID);
+            if (dbltmpMargin == 0)
+            {
+                //No National Pricing Exists
+                // Try to get Default pricing...
+                tmpDefaultMasterWhse = GetField<string>("MASTERWAREHOUSE", "MASMASTERWAREHOUSE", "COMPANYID ='" + Account.AccountManager.MascompanyId + "'");
+                //dbltmpMargin = GetField<decimal>("Isnull(PctAdj,'0')", "vDefaultPriceGroupMargin", "ProdPriceGroupID = '" + ProdCategoryID + "' AND WhseID = '" + tmpDefaultMasterWhse + "'");
+                dbltmpMargin = GetDefaultProductProgramMargin(ProdCategoryID, tmpDefaultMasterWhse);
+
+                if (dbltmpMargin == 0)
+                {
+                    result = 0;
+                }
+                else
+                {
+                    // Found
+                    result = Convert.ToDouble(dbltmpMargin);
+                }
+            }
+            else
+            {
+
+                //National pricing Found
+                result = Convert.ToDouble(dbltmpMargin);
+            }
+        }
+
+        public static void GetProductidBySKU(IStockCardItems stockcarditems, String SKU, out String result)
+        {
+            /////============================================================
+            //// NOTE this does NOT use the UPC... it is using the SKU
+            //===============================================================
+            string CompanyID = GetField<string>("ISNULL(MASCOMPANYID,'')", "USERSECURITY", "USERID='" + stockcarditems.Account.AccountManager.Id.ToString() + "'");
+            string WareHouseIN = GetUserWarhouseQueryString(stockcarditems.Account.AccountManager.Id.ToString());
+
+
+            string Productid = GetField<string>("productid", "PRODUCT", " COMPANYID = '" + CompanyID + "' and ACTUALID = '" + SKU + "' AND WAREHOUSEID in " + WareHouseIN);
+            
+            result = Productid;
+        }
 
         #region Utility
 

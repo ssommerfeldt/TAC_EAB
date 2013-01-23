@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmPropertyMethod" id="537641ed-822c-462a-a49d-ed31fc178f7b" lastModifiedUtc="2012-09-17T21:08:17.0168586Z" name="GetSiteCodeId" returnType="System.String" methodType="PropertyAccessor" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmPropertyMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="ec1bda36-e804-4df8-9f1d-c4bf4595cd81" lastModifiedUtc="2012-09-17T21:09:29.1529594Z" targetType="Sage.BusinessRules.CodeSnippets.SLXSiteBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="GetSiteCodeId" active="true" codeSnippetId="98a65e1b-c5be-44df-ab88-850e9142509d">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+  <postFlushTargets />
+</method>
