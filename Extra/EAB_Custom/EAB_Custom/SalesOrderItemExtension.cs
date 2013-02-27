@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Collections;
 using Sage.Entity.Interfaces;
-using NHibernate;
 using System.Data.OleDb;
 using System.Data;
 using Sage.Platform.ComponentModel;
@@ -16,7 +12,7 @@ namespace EAB_Custom {
 
 
         public static void OnBeforeInsertGetPricing(Sage.Entity.Interfaces.ISalesOrderItem salesorderitem, NHibernate.ISession session) {
-            GetStockCardPricing(salesorderitem);
+            //GetStockCardPricing(salesorderitem);
             //salesorderitem.CalculateExtendedPrice();
         }
 
@@ -78,70 +74,105 @@ namespace EAB_Custom {
             try {
                 if (salesorderitem.Product != null) {
 
-                    //item.SalesOrder = salesorder;
-                    salesorderitem.ActualID = salesorderitem.Product.ActualId;
-                    salesorderitem.Description = salesorderitem.Product.Description;
-                    salesorderitem.Family = salesorderitem.Product.Family;
-                    salesorderitem.UPC = salesorderitem.Product.UPC;
+                    //exclude products that are already in the order, this is used for add only
+                    var existsInOrder = (from p in salesorderitem.SalesOrder.SalesOrderItems
+                                  where p.ActualID.Equals(salesorderitem.Product.ActualId)
+                                  select p).Count() > 0;
+                    if (existsInOrder == true) {
+                        throw new Exception("Order already contains this product, use the edit function instead.");
+                    } else {
 
-                    //get margin from category
-                    salesorderitem.Discount = 0;
+                        //item.SalesOrder = salesorder;
+                        salesorderitem.ActualID = salesorderitem.Product.ActualId;
+                        salesorderitem.Description = salesorderitem.Product.Description;
+                        salesorderitem.Family = salesorderitem.Product.Family;
+                        salesorderitem.UPC = salesorderitem.Product.UPC;
 
-                    if (salesorderitem.SalesOrder != null) {
-                        if (salesorderitem.SalesOrder.Account != null) {
+                        //get margin from category
+                        salesorderitem.Discount = 0;
 
-                            String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
-                            sql += " FROM PRODUCT";
-                            sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
-                            sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
-                            sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
-                            sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
-                            sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
+                        if (salesorderitem.SalesOrder != null) {
+                            if (salesorderitem.SalesOrder.Account != null) {
 
-                            Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
-                            using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
-                                conn.Open();
-                                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
-                                    OleDbDataReader reader = cmd.ExecuteReader();
-                                    //loop through the reader
-                                    while (reader.Read()) {
-                                        try {
-                                            salesorderitem.Discount = (Double)reader["MARGIN"];
-                                        } catch (Exception) {
-                                            //no catch?
-                                            salesorderitem.Discount = 0;
+                                String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
+                                sql += " FROM PRODUCT";
+                                sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
+                                sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
+                                sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
+                                sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
+                                sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
+
+                                Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+                                using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
+                                    conn.Open();
+                                    using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
+                                        OleDbDataReader reader = cmd.ExecuteReader();
+                                        //loop through the reader
+                                        while (reader.Read()) {
+                                            try {
+                                                salesorderitem.Discount = (Double)reader["MARGIN"];
+                                            } catch (Exception) {
+                                                //no catch?
+                                                salesorderitem.Discount = 0;
+                                            }
                                         }
+                                        reader.Close();
                                     }
-                                    reader.Close();
                                 }
                             }
                         }
-                    }
 
-                    //get msrp price
-                    salesorderitem.Price = 0;
-                    try {
-                        if (salesorderitem.Product != null) {
-                            if (salesorderitem.Product.Vproductpricesheet != null) {
-                                salesorderitem.Price = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
-                            } else {
-                                //price not found
+                        //get msrp price                    
+                        double listPrice = 0;
+                        try {
+                            if (salesorderitem.Product != null) {
+                                if (salesorderitem.Product.Vproductpricesheet != null) {
+                                    listPrice = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
+                                } else {
+                                    //price not found
+                                }
                             }
+                        } catch (Exception ex) {
+                            //vproductpricesheet record not found
+                            Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                            eh.HandleException(new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
                         }
-                    } catch (Exception ex) {
-                        //vproductpricesheet record not found
-                        Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
-                        eh.HandleException(new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
-                    }
 
-                    salesorderitem.Quantity = 0; //set to 0 initially
-                    salesorderitem.ExtendedPrice = salesorderitem.Price * salesorderitem.Quantity * salesorderitem.Discount;
-                    salesorderitem.ProductName = salesorderitem.Product.Name;
-                    salesorderitem.Program = salesorderitem.Product.Program;
-                    salesorderitem.UnitOfMeasureId = salesorderitem.Product.UnitOfMeasureId.Trim();
 
-                    //item.GetStockCardPricing();			
+                        if (salesorderitem.SalesOrder.OrderType == "Return Order") {
 
+                            //find the new item, id is the same as return except last char
+                            string newProductSKU = salesorderitem.Product.ActualId.Substring(
+                                                        0, salesorderitem.Product.ActualId.Length - 1);
+                            double newProductPrice = 0;
+                            Sage.Platform.RepositoryHelper<IProduct> rep = Sage.Platform.EntityFactory.GetRepositoryHelper<IProduct>();
+                            Sage.Platform.Repository.ICriteria crit = rep.CreateCriteria();
+                            crit.Add(rep.EF.Like("ActualId", newProductSKU + "_"));
+                            foreach (Sage.Entity.Interfaces.IProduct newProduct in crit.List<Sage.Entity.Interfaces.IProduct>()) {
+                                newProductPrice = (double)newProduct.Vproductpricesheet.Listprice;
+                                break;
+                            }
+
+                            //return item price is new item price - return item price
+                            salesorderitem.Price = Math.Round(newProductPrice - listPrice, 2);
+
+                        } else {
+                            //all other types are set to price
+                            salesorderitem.Price = Math.Round(listPrice, 2);
+                        }
+
+                        salesorderitem.Quantity = 0; //set to 0 initially
+                        salesorderitem.ProductName = salesorderitem.Product.Name;
+                        salesorderitem.Program = salesorderitem.Product.Program;
+                        salesorderitem.UnitOfMeasureId = salesorderitem.Product.UnitOfMeasureId.Trim();
+
+                        //Use the built in price calculator instead of local
+                        //salesorderitem.CalculatedPrice = Math.Round((Decimal)listPrice - ((Decimal)listPrice * (Decimal)salesorderitem.Discount), 2, MidpointRounding.AwayFromZero);
+                        //salesorderitem.CalculatedPrice = (salesorderitem.Discount > 0)?(decimal)(salesorderitem.Price * salesorderitem.Discount):(decimal)salesorderitem.Price;
+                        //salesorderitem.ExtendedPrice = Math.Round((Double)salesorderitem.CalculatedPrice * (Double)salesorderitem.Quantity, 2, MidpointRounding.AwayFromZero);
+                        //salesorderitem.ExtendedPrice = 0; //salesorderitem.Price * salesorderitem.Quantity * salesorderitem.Discount;                                        
+                        salesorderitem.CalculateExtendedPrice();
+                    }   
                 }
             } catch (Exception e) {
                 throw new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + e.Message, e);
@@ -226,26 +257,48 @@ namespace EAB_Custom {
             //Quantity check does not apply to return orders
             if (salesorderitem.SalesOrder.OrderType.ToUpper() != "RETURN ORDER") {
 
-                //For all other types, the quantity cannot be more than the quantity available
-                if (args.NewValue != args.OldValue) {
-                    if (salesorderitem.Product != null) {
-                        if ((double)args.NewValue < 0 || (double)args.NewValue > salesorderitem.Product.QtyAvailable) {
-                            //quantity not valid
-                            if (args.OldValue == null) {
-                                args.NewValue = 0;
-                            } else {
-                                args.NewValue = args.OldValue;
+                if (salesorderitem.SalesOrder.OrderType.ToUpper() == "SALES ORDER") {
+                    //Set the quantity to no more than available, allow negatives                    
+                    if (args.NewValue != args.OldValue) {
+                        if (salesorderitem.Product != null) {
+                            if ((double)args.NewValue > salesorderitem.Product.QtyAvailable) {
+                                //quantity not valid
+                                if (args.OldValue == null) {
+                                    args.NewValue = 0;
+                                } else {
+                                    args.NewValue = args.OldValue;
+                                }
+                                string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
+                                errormsg += " of the item " + salesorderitem.ActualID.ToString();
+                                throw new ArgumentOutOfRangeException("Quantity", errormsg);
                             }
-                            string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
-                            errormsg += " of the item " + salesorderitem.ActualID.ToString();
-                            throw new Exception(errormsg);
+                        }
+                    }
+
+                } else {
+                    //For all other types, the quantity cannot be more than the quantity available, no negatives
+                    if (args.NewValue != args.OldValue) {
+                        if (salesorderitem.Product != null) {
+                            if ((double)args.NewValue < 0 || (double)args.NewValue > salesorderitem.Product.QtyAvailable) {
+                                //quantity not valid
+                                if (args.OldValue == null) {
+                                    args.NewValue = 0;
+                                } else {
+                                    args.NewValue = args.OldValue;
+                                }
+                                string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
+                                errormsg += " of the item " + salesorderitem.ActualID.ToString();
+                                errormsg += "\nOr less than 0 of any item.";
+                                throw new ArgumentOutOfRangeException("Quantity", errormsg);
+                            }
                         }
                     }
                 }
-
             }
             //Update the extended Price
-            salesorderitem.CalculateExtendedPrice();
+            if (args.NewValue != args.OldValue) {
+                salesorderitem.CalculateExtendedPrice();
+            }
         }
 
         private static string GetSalesHistoryByIndex(int Index, string Accountid, string Productid)

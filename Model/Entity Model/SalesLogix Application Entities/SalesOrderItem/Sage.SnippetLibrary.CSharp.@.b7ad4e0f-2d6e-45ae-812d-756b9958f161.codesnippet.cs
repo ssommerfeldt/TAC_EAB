@@ -41,7 +41,8 @@ namespace Sage.BusinessRules.CodeSnippets
             decimal price = 0M;
     		decimal discount = salesOrderItem.Discount.HasValue ? Convert.ToDecimal(salesOrderItem.Discount.Value) : 0M;
     		price = (salesOrderItem.Price == 0.0) ? (salesOrderItem.CalculatedPrice.HasValue ? salesOrderItem.CalculatedPrice.Value : 0M) : (salesOrderItem.Price.HasValue ? ((decimal) salesOrderItem.Price.Value) : ((decimal) 0.0));
-    		salesOrderItem.CalculatedPrice = new decimal?(Math.Round((decimal)(price - (price * discount)), 2, MidpointRounding.AwayFromZero));
+    		//price = (decimal)salesOrderItem.Price;
+			salesOrderItem.CalculatedPrice = new decimal?(Math.Round((decimal)(price - (price * discount)), 2, MidpointRounding.AwayFromZero));
 			
 			decimal num3 = salesOrderItem.CalculatedPrice.HasValue ? salesOrderItem.CalculatedPrice.Value : 0M;
     		decimal num4 = salesOrderItem.Quantity.HasValue ? Convert.ToDecimal(salesOrderItem.Quantity.Value) : 0M;

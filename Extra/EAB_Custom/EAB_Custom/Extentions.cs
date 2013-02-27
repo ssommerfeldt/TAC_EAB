@@ -1,24 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Sage.Entity.Interfaces;
-using Sage.Platform;
 using System.Data.OleDb;
-using System.Text.RegularExpressions;
 using NHibernate;
-using Sage.Platform.ChangeManagement;
-using Sage.Platform.Security;
-
-
-using Sage.Platform.Application;
-using Sage.Platform.Application.UI;
-using Sage.Platform.WebPortal.Services;
-using Sage.Platform.WebPortal.Workspaces;
-using Sage.Platform.WebPortal.SmartParts;
-using Sage.SalesLogix.Security;
-using Sage.Platform.WebPortal.Workspaces.Tab;
-using Sage.Platform.Repository;
 using System.Data;
 
 

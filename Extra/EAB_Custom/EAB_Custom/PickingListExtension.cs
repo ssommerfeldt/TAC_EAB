@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections;
 using Sage.Entity.Interfaces;
-using NHibernate;
 
 namespace EAB_Custom {
     public class PickingListExtension {
