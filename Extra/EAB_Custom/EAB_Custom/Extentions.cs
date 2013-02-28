@@ -209,6 +209,24 @@ namespace EAB_Custom
                             item.Margin = Margin;
                             item.Save();
 
+                            // Fix the Last Order Date Fields
+                            item.LastOrder = item.GetLastOrderX(1);
+                            item.LastOrder2 = item.GetLastOrderX(2);
+                            item.LastOrder3 = item.GetLastOrderX(3);
+                            item.LastOrder4 = item.GetLastOrderX(4);
+                            item.LastOrder5 = item.GetLastOrderX(5);
+                            item.LastOrder6 = item.GetLastOrderX(6);
+                            item.LastOrder7 = item.GetLastOrderX(7);
+                            item.LastOrder8 = item.GetLastOrderX(8);
+                            item.LastOrder9 = item.GetLastOrderX(9);
+                            item.LastOrder10 = item.GetLastOrderX(10);
+                            item.LastOrder11 = item.GetLastOrderX(11);
+                            item.LastOrder12 = item.GetLastOrderX(12);
+                            item.Save();
+
+
+                            
+
 
                         }
                         catch (Exception)

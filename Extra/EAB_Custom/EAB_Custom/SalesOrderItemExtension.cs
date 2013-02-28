@@ -415,7 +415,54 @@ namespace EAB_Custom {
             // TODO: Complete business rule implementation
             result = GetSalesHistoryByIndex(12, salesorderitem.SalesOrder.Account.Id.ToString(), salesorderitem.Product.Id.ToString());
         }
-    
+
+        public static void TACOnAfterUpdate(ISalesOrderItem salesorderitem)
+        {
+            //Find the Matching StockCard Item
+            // Update The LastOrder Fields
+            Sage.Platform.RepositoryHelper<IStockCardItems> rep1 = Sage.Platform.EntityFactory.GetRepositoryHelper<IStockCardItems>();
+            Sage.Platform.Repository.ICriteria crit1 = rep1.CreateCriteria();
+
+            if (salesorderitem.SalesOrder != null)
+            {
+                if (salesorderitem.SalesOrder.Account != null)
+                {
+                    crit1.Add(rep1.EF.Eq("Accountid", salesorderitem.SalesOrder.Account.Id));
+
+                    if (salesorderitem.Product != null)
+                    {
+                        crit1.Add(rep1.EF.Eq("Productid", salesorderitem.Product.Id));
+
+
+
+                        foreach (IStockCardItems scard in crit1.List<IStockCardItems>())
+                        {
+                            scard.LastOrder = scard.GetLastOrderX(1);
+                            scard.LastOrder2 = scard.GetLastOrderX(2);
+                            scard.LastOrder3 = scard.GetLastOrderX(3);
+                            scard.LastOrder4 = scard.GetLastOrderX(4);
+                            scard.LastOrder5 = scard.GetLastOrderX(5);
+                            scard.LastOrder6 = scard.GetLastOrderX(6);
+                            scard.LastOrder7 = scard.GetLastOrderX(7);
+                            scard.LastOrder8 = scard.GetLastOrderX(8);
+                            scard.LastOrder9 = scard.GetLastOrderX(9);
+                            scard.LastOrder10 = scard.GetLastOrderX(10);
+                            scard.LastOrder11 = scard.GetLastOrderX(11);
+                            scard.LastOrder12 = scard.GetLastOrderX(12);
+                            scard.Save();
+                            break;
+                        }
+
+
+                    }
+                }
+            }
+        }
+
+        //public static void TACOnAfterInsert(ISalesOrderItem salesorderitem)
+        //{
+           // Not Needed to Update LastOrder Here because the Qty's are allways Zero and it doesn't update zero Qty's
+        //}
 
 
     }

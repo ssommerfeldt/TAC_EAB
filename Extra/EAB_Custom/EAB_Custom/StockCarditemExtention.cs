@@ -8,6 +8,13 @@ namespace EAB_Custom
 {
     public class StockCarditemExtention
     {
+
+        // Example of target method signature
+        public static void GetLastOrderX(IStockCardItems stockcarditems, Int32  MyIndex, out String result)
+        {
+
+            result = GetSalesHistoryByIndex(MyIndex, stockcarditems.Accountid, stockcarditems.Productid);
+        }
         private static string GetSalesHistoryByIndex(int Index, string Accountid, string Productid)
         {
             string SQL = "SELECT     SUM(sysdba.SALESORDERITEMS.QUANTITY) AS Qty, sysdba.SALESORDER.ACCOUNTID, sysdba.SALESORDER.ORDERDATE, ";
@@ -59,65 +66,65 @@ namespace EAB_Custom
 
             
         }
-        public static void GetLastOrderStep(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(1, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder2Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(2, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder3Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(3, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder4Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(4, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder5Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(5, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder6Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(6, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder7Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(7, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder8Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(8, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder9Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(9, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder10Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(10, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrde11Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(11, stockcarditems.Accountid, stockcarditems.Productid);
-        }
-        public static void GetLastOrder12Step(IStockCardItems stockcarditems, out System.String result)
-        {
-            // TODO: Complete business rule implementation
-            result = GetSalesHistoryByIndex(12, stockcarditems.Accountid, stockcarditems.Productid);
-        }
+        //public static void GetLastOrderStep(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(1, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder2Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(2, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder3Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(3, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder4Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(4, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder5Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(5, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder6Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(6, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder7Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(7, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder8Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(8, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder9Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(9, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder10Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(10, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrde11Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(11, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
+        //public static void GetLastOrder12Step(IStockCardItems stockcarditems, out System.String result)
+        //{
+        //    // TODO: Complete business rule implementation
+        //    result = GetSalesHistoryByIndex(12, stockcarditems.Accountid, stockcarditems.Productid);
+        //}
     }
 }
