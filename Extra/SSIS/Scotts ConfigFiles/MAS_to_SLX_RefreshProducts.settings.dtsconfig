@@ -31,7 +31,7 @@
 		<ConfiguredValue>sa</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXOledb].Properties[ConnectionString]" ValueType="String">
-		<ConfiguredValue>Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
+		<ConfiguredValue>Provider=SLXOLEDB.1;Password="password";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXOledb].Properties[Description]" ValueType="String">
 		<ConfiguredValue></ConfiguredValue>
@@ -43,7 +43,7 @@
 		<ConfiguredValue>SLXOledb</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXOledb].Properties[Password]" ValueType="String">
-		<ConfiguredValue></ConfiguredValue>
+		<ConfiguredValue>password</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXOledb].Properties[ProtectionLevel]" ValueType="Int32">
 		<ConfiguredValue>1</ConfiguredValue>
@@ -109,6 +109,6 @@
 		<ConfiguredValue>0</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConnectionString].Properties[Value]" ValueType="String">
-		<ConfiguredValue>Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
+		<ConfiguredValue>Provider=SLXOLEDB.1;Password="password";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
 	</Configuration>
 </DTSConfiguration>
