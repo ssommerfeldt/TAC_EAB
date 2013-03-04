@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <DTSConfiguration>
 	<DTSConfigurationHeading>
-		<DTSConfigurationFileInfo GeneratedBy="SLX754LATEST\Administrator" GeneratedFromPackageName="MAS_toSLX_AccountRefresh" GeneratedFromPackageID="{9D99A365-F57F-4018-A46C-870E92895DE5}" GeneratedDate="11/21/2012 11:43:54 AM"/>
+		<DTSConfigurationFileInfo GeneratedBy="SLX754LATEST\Administrator" GeneratedFromPackageName="MAS_toSLX_AccountRefresh" GeneratedFromPackageID="{9D99A365-F57F-4018-A46C-870E92895DE5}" GeneratedDate="3/1/2013 3:49:15 PM"/>
 	</DTSConfigurationHeading>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[ConnectionString]" ValueType="String">
 		<ConfiguredValue>Data Source=SLX754LATEST;User ID=sa;Initial Catalog=LiveEAB_MAS;Provider=SQLNCLI10.1;Auto Translate=False;Application Name=SSIS-MAS_toSLX_AccountRefresh-{A1807B55-42ED-406B-B5D7-748E3C1E45B5}SLX754LATEST.LiveEAB_MAS;</ConfiguredValue>
@@ -31,7 +31,7 @@
 		<ConfiguredValue>sa</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ConnectionString]" ValueType="String">
-		<ConfiguredValue>Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
+		<ConfiguredValue>Data Source=SLX754LATEST;User ID=admin;Initial Catalog=LIVEEAB_SLX;Provider=SLXOLEDB.1;Persist Security Info=True;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Description]" ValueType="String">
 		<ConfiguredValue></ConfiguredValue>
@@ -43,7 +43,7 @@
 		<ConfiguredValue>SLX</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Password]" ValueType="String">
-		<ConfiguredValue></ConfiguredValue>
+		<ConfiguredValue>password</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ProtectionLevel]" ValueType="Int32">
 		<ConfiguredValue>1</ConfiguredValue>
@@ -82,6 +82,6 @@
 		<ConfiguredValue>0</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXOLEDBConnectionString].Properties[Value]" ValueType="String">
-		<ConfiguredValue>Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;</ConfiguredValue>
+		<ConfiguredValue>Provider=SLXOLEDB.1;Password="password";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;</ConfiguredValue>
 	</Configuration>
 </DTSConfiguration>
