@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sage.Entity.Interfaces;
+using System.Data.OleDb;
 
 
 
@@ -943,15 +944,34 @@ namespace EAB_Custom {
 
                                 item.SalesOrder = salesorder;
 
-                                item.Description = scitem.ProductDescription;
-                                item.Discount = scitem.Margin;
+                                //get msrp price                                  
+                                double listPrice = 0;
+                                try {
+                                    if (scitem.Product != null) {
+                                        if (scitem.Product.Vproductpricesheet != null) {
+                                            listPrice = (double)scitem.Product.Vproductpricesheet.Listprice;
+                                        } else {
+                                            //price not found
+                                        }
+                                    }
+                                } catch (Exception ex) {
+                                    //vproductpricesheet record not found
+                                    Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                                    eh.HandleException(new Exception("Order (" + item.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
+                                }
+                                //item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
+                                item.Price = listPrice;
+
+                                //get the margin                                
+                                item.Discount = scitem.Margin;                      
+                                
                                 item.ExtendedPrice = 0; //due to quantity 0                    
                                 item.Quantity = 0; //set to 0 initially                   
-
-
+                                
                                 item.ActualID = scitem.Product.ActualId;
+                                item.Description = scitem.ProductDescription;
                                 item.Family = scitem.Product.Family;
-                                item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
+                                
                                 item.ProductName = scitem.Product.Name;
                                 item.Program = scitem.Product.Program;
                                 item.Case = scitem.Product.Unit;
