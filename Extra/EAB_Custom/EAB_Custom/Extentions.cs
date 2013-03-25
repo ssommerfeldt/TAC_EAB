@@ -103,6 +103,33 @@ namespace EAB_Custom
 
             return returnValue;
         }
+        public static double GetDefaultDealerDistributorPricingMargin(String CustomerId, string CompanyID, string ProdPriceGroupID)
+        {
+            //dbltmpMargin = GetField<decimal>("IsNull(PctAdj,'0')", "vNationalAccountMargin", "CustID='" + Account.AccountFinancial.CustomerId + "' AND CompanyID ='" + Account.AccountFinancial.Companycode + "' AND  ProdPriceGroupID=' " + ProdCategoryID + "'");
+            String SQL = "Select IsNull(PctAdj,'0') as Margin From sysdba.vDistributorDealerAccountMargin where CustID='" + CustomerId + "' AND CompanyID ='" + CompanyID + "' AND  ProdPriceGroupID= '" + ProdPriceGroupID + "'";
+
+            double returnValue = 0.0; //Intialzie
+
+
+            // Generate In SQL statement
+            Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+            //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+            using (OleDbConnection conn = new OleDbConnection(datasvc.GetConnectionString()))
+            {
+                conn.Open();
+                using (OleDbCommand cmd = new OleDbCommand(SQL, conn))
+                {
+                    OleDbDataReader r = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (r.Read())
+                    {
+                        returnValue = Convert.ToDouble(r["Margin"]);
+                    }
+                    r.Close();
+                }
+            }
+
+            return returnValue;
+        }
 
         public static double GetDefaultProductProgramMargin(string ProdCategoryID, string MasterWhseID)
         {
@@ -181,6 +208,24 @@ namespace EAB_Custom
 
                             item.Margin = Margin;
                             item.Save();
+
+                            // Fix the Last Order Date Fields
+                            item.LastOrder = item.GetLastOrderX(1);
+                            item.LastOrder2 = item.GetLastOrderX(2);
+                            item.LastOrder3 = item.GetLastOrderX(3);
+                            item.LastOrder4 = item.GetLastOrderX(4);
+                            item.LastOrder5 = item.GetLastOrderX(5);
+                            item.LastOrder6 = item.GetLastOrderX(6);
+                            item.LastOrder7 = item.GetLastOrderX(7);
+                            item.LastOrder8 = item.GetLastOrderX(8);
+                            item.LastOrder9 = item.GetLastOrderX(9);
+                            item.LastOrder10 = item.GetLastOrderX(10);
+                            item.LastOrder11 = item.GetLastOrderX(11);
+                            item.LastOrder12 = item.GetLastOrderX(12);
+                            item.Save();
+
+
+                            
 
 
                         }
@@ -305,11 +350,19 @@ namespace EAB_Custom
             if (dbltmpMargin == 0)
             {
                 //No National Pricing Exists
-                // Try to get Default pricing...
-                tmpDefaultMasterWhse = GetField<string>("MASTERWAREHOUSE", "MASMASTERWAREHOUSE", "COMPANYID ='" + Account.AccountManager.MascompanyId + "'");
-                //dbltmpMargin = GetField<decimal>("Isnull(PctAdj,'0')", "vDefaultPriceGroupMargin", "ProdPriceGroupID = '" + ProdCategoryID + "' AND WhseID = '" + tmpDefaultMasterWhse + "'");
-                dbltmpMargin = GetDefaultProductProgramMargin(ProdCategoryID, tmpDefaultMasterWhse);
+                //========================================================================
+                // Try to get Distributor  Dealer  Default Pricing
+                //========================================================================
+                dbltmpMargin = GetDefaultDealerDistributorPricingMargin(Account.AccountFinancial.CustomerId, Account.AccountFinancial.Companycode, ProdCategoryID); 
+                if (dbltmpMargin == 0)
+                {
+                    // Try to get Default pricing...
+                    tmpDefaultMasterWhse = GetField<string>("MASTERWAREHOUSE", "MASMASTERWAREHOUSE", "COMPANYID ='" + Account.AccountManager.MascompanyId + "'");
+                    //dbltmpMargin = GetField<decimal>("Isnull(PctAdj,'0')", "vDefaultPriceGroupMargin", "ProdPriceGroupID = '" + ProdCategoryID + "' AND WhseID = '" + tmpDefaultMasterWhse + "'");
+                    dbltmpMargin = GetDefaultProductProgramMargin(ProdCategoryID, tmpDefaultMasterWhse);
 
+                   
+                }
                 if (dbltmpMargin == 0)
                 {
                     result = 0;
@@ -319,6 +372,9 @@ namespace EAB_Custom
                     // Found
                     result = Convert.ToDouble(dbltmpMargin);
                 }
+
+
+               
             }
             else
             {
