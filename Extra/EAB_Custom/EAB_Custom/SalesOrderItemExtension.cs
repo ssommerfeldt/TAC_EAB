@@ -90,7 +90,6 @@ namespace EAB_Custom {
 
                         //get margin from category
                         salesorderitem.Discount = 0;
-
                         if (salesorderitem.SalesOrder != null) {
                             if (salesorderitem.SalesOrder.Account != null) {
 
@@ -165,6 +164,7 @@ namespace EAB_Custom {
                         salesorderitem.ProductName = salesorderitem.Product.Name;
                         salesorderitem.Program = salesorderitem.Product.Program;
                         salesorderitem.UnitOfMeasureId = salesorderitem.Product.UnitOfMeasureId.Trim();
+                        salesorderitem.Case = salesorderitem.Product.Unit;
 
                         //Use the built in price calculator instead of local
                         //salesorderitem.CalculatedPrice = Math.Round((Decimal)listPrice - ((Decimal)listPrice * (Decimal)salesorderitem.Discount), 2, MidpointRounding.AwayFromZero);
