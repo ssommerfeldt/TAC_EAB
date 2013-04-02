@@ -231,10 +231,10 @@ Sage.Entity.Interfaces.IStockCardItems _entity = BindingSource.Current as Sage.E
                 QFButton.Enabled  = true; //Save Button Hide
                 
                 _entity.Product = Product;
-                _entity.ProductDescription = Product.Description;
+                _entity.ProductDescription = Product.Name ; //Use the Short Description Name 
                 lueProduct.LookupResultValue = Product;
-                lueProduct.Text = Product.Description;
-                lueProduct2.Text = Product.Description;
+                lueProduct.Text = Product.Name ;
+                lueProduct2.Text = Product.Name ;
                 //=================================================================
                 // Call LuProduct Changed as this does several things as well
                 //=================================================================
