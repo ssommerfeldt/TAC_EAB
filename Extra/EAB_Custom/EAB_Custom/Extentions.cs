@@ -198,7 +198,7 @@ namespace EAB_Custom
 
 
                             item.Productid = tmpProduct.Id.ToString();
-                            item.ProductDescription = tmpProduct.Description;
+                            item.ProductDescription = tmpProduct.Name ;
 
                             item.TIMPRODCATEGORYID = CategoryID;
                             item.CategoryName = reader["PriceGroupDescription"].ToString();
