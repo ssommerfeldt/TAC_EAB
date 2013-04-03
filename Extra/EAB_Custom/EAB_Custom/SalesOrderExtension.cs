@@ -936,7 +936,6 @@ namespace EAB_Custom {
                     foreach (IStockCardItems scitem in crit.List<IStockCardItems>()) {
                         if (scitem.Product != null) {
 
-
                             ////Only add products in the selected warehouse
                             //if (!String.IsNullOrEmpty(userWarehouseID) && userWarehouseID == scitem.Product.WarehouseID) {
 
@@ -982,12 +981,9 @@ namespace EAB_Custom {
                             item.MaxStockLevel = scitem.MaxStockLevel; //ssommerfeldt Nov 2 2012
 
                             salesorder.SalesOrderItems.Add(item);
-                            item.Save();
-                            //break;
-                            //}
+                            item.Save();                            
                         }
-                    }
-                    //salesorder.Save();
+                    }                    
                 }
             } catch (Exception e) {
                 throw new Exception("Order (" + salesorder.SalesOrderNumber + "): " + e.Message, e);

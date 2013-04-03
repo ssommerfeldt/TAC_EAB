@@ -87,39 +87,53 @@ namespace EAB_Custom {
                         salesorderitem.Description = salesorderitem.Product.Description;
                         salesorderitem.Family = salesorderitem.Product.Family;
                         salesorderitem.UPC = salesorderitem.Product.UPC;
+                                                
+                        ////get margin from category 
+                        //salesorderitem.Discount = 0;
+                        //if (salesorderitem.SalesOrder != null) {
+                        //    if (salesorderitem.SalesOrder.Account != null) {
 
-                        //get margin from category
-                        salesorderitem.Discount = 0;
-                        if (salesorderitem.SalesOrder != null) {
-                            if (salesorderitem.SalesOrder.Account != null) {
+                        //        String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
+                        //        sql += " FROM PRODUCT";
+                        //        sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
+                        //        sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
+                        //        sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
+                        //        sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
+                        //        sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
 
-                                String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
-                                sql += " FROM PRODUCT";
-                                sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
-                                sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
-                                sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
-                                sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
-                                sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
+                        //        Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+                        //        using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
+                        //            conn.Open();
+                        //            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
+                        //                OleDbDataReader reader = cmd.ExecuteReader();
+                        //                //loop through the reader
+                        //                while (reader.Read()) {
+                        //                    try {
+                        //                        salesorderitem.Discount = (Double)reader["MARGIN"];
+                        //                    } catch (Exception) {
+                        //                        //no catch?
+                        //                        salesorderitem.Discount = 0;
+                        //                    }
+                        //                }
+                        //                reader.Close();
+                        //            }
+                        //        }
+                        //    }
+                        //}
 
-                                Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
-                                using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
-                                    conn.Open();
-                                    using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
-                                        OleDbDataReader reader = cmd.ExecuteReader();
-                                        //loop through the reader
-                                        while (reader.Read()) {
-                                            try {
-                                                salesorderitem.Discount = (Double)reader["MARGIN"];
-                                            } catch (Exception) {
-                                                //no catch?
-                                                salesorderitem.Discount = 0;
-                                            }
-                                        }
-                                        reader.Close();
-                                    }
-                                }
-                            }
+                        //Get margin from extension method
+                        double margin = 0;                
+                        if(salesorderitem.Product.Timprodpricegroup != null
+                            && salesorderitem.SalesOrder != null
+                            && salesorderitem.SalesOrder.Account != null) {
+
+                                //Extentions.GetDefaultMargin(null,
+                                //                        salesorderitem.Product.Timprodpricegroup.Id.ToString(),
+                                //                        salesorderitem.SalesOrder.Account,
+                                //                        out margin);
                         }
+                        salesorderitem.Discount = margin;
+
 
                         //get msrp price                    
                         double listPrice = 0;
@@ -140,18 +154,18 @@ namespace EAB_Custom {
 
                         if (salesorderitem.SalesOrder.OrderType == "Return Order") {
 
-                            //find the new item, id is the same as return except last char
-                            string newProductSKU = salesorderitem.Product.ActualId.Substring(
-                                                        0, salesorderitem.Product.ActualId.Length - 1);
                             double newProductPrice = 0;
-                            Sage.Platform.RepositoryHelper<IProduct> rep = Sage.Platform.EntityFactory.GetRepositoryHelper<IProduct>();
-                            Sage.Platform.Repository.ICriteria crit = rep.CreateCriteria();
-                            crit.Add(rep.EF.Like("ActualId", newProductSKU + "_"));
-                            foreach (Sage.Entity.Interfaces.IProduct newProduct in crit.List<Sage.Entity.Interfaces.IProduct>()) {
-                                newProductPrice = (double)newProduct.Vproductpricesheet.Listprice;
-                                break;
+                            if (salesorderitem.SalesOrder.Account != null) {
+                                //find the new item, id is the same as return except last char                            
+                                IProduct newProduct = FindProductByReturnProduct(salesorderitem.Product, salesorderitem.SalesOrder.Account);
+                                                                
+                                if (newProduct.Vproductpricesheet != null) {
+                                    newProductPrice = (double)newProduct.Vproductpricesheet.Listprice;
+                                } else {
+                                    //price not found                                
+                                }
                             }
-
+                            
                             //return item price is new item price - return item price
                             salesorderitem.Price = Math.Round(newProductPrice - listPrice, 2);
 
@@ -300,6 +314,53 @@ namespace EAB_Custom {
                 salesorderitem.CalculateExtendedPrice();
             }
         }
+
+
+
+        public static IProduct FindProductByReturnProduct(IProduct returnProduct, IAccount account) {
+
+            //find the new item, id is the same as return except last char
+            string newProductSKU = returnProduct.ActualId.Substring(0, returnProduct.ActualId.Length - 1);
+            string newProductSearchSKU = newProductSKU;
+            
+            //for EBU companies or internal company purchases U is added to the sku
+            if (returnProduct.CompanyID == "EBU" || account.InternalAccount == true) {
+                newProductSearchSKU += "_U";
+            } else {
+                //regular account
+                newProductSearchSKU += "_";
+            }
+            
+            Sage.Platform.RepositoryHelper<IProduct> rep = Sage.Platform.EntityFactory.GetRepositoryHelper<IProduct>();
+            Sage.Platform.Repository.ICriteria crit = rep.CreateCriteria();           
+
+            crit.Add(rep.EF.Like("ActualId", newProductSearchSKU));
+            crit.Add(rep.EF.Ne("ActualId", returnProduct.ActualId));
+            crit.Add(rep.EF.Eq("CompanyID", returnProduct.CompanyID));
+            crit.Add(rep.EF.Eq("WarehouseID", returnProduct.WarehouseID));
+
+            if (crit.List<Sage.Entity.Interfaces.IProduct>().Count > 0) {
+
+                foreach (Sage.Entity.Interfaces.IProduct newProduct in crit.List<Sage.Entity.Interfaces.IProduct>()) {
+                    return newProduct;
+                }
+            } else {
+                //Product not found in warehouse, try in all db.
+                crit.List<Sage.Entity.Interfaces.IProduct>().Clear();
+                rep.CreateCriteria();
+                crit.Add(rep.EF.Like("ActualId", newProductSearchSKU));
+                crit.Add(rep.EF.Ne("ActualId", returnProduct.ActualId));
+                crit.Add(rep.EF.Eq("CompanyID", returnProduct.CompanyID));
+
+                foreach (Sage.Entity.Interfaces.IProduct newProduct in crit.List<Sage.Entity.Interfaces.IProduct>()) {
+                    return newProduct;
+                }
+            }
+
+            //product not found, return null
+            return null;
+        }
+
 
         private static string GetSalesHistoryByIndex(int Index, string Accountid, string Productid)
         {
