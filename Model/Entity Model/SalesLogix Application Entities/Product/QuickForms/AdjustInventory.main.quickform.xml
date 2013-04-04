@@ -18,6 +18,13 @@
     <QuickFormElement>
       <Properties>
         <Property name="EntityMappingType" type="System.String">Property</Property>
+        <Property name="EntityTypeName" type="System.String"></Property>
+        <Property name="EntityNamespace" type="System.String"></Property>
+        <Property name="EntityAssemblyName" type="System.String"></Property>
+        <Property name="DefaultNamespace" type="System.String"></Property>
+        <Property name="AssemblyName" type="System.String"></Property>
+        <Property name="EntityReferenceName" type="System.String"></Property>
+        <Property name="DesignerDisplayMember" type="System.String"></Property>
       </Properties>
       <ControlDefinition>
         <Properties>
@@ -28,6 +35,13 @@
     <QuickFormElement>
       <Properties>
         <Property name="EntityMappingType" type="System.String">Property</Property>
+        <Property name="EntityTypeName" type="System.String"></Property>
+        <Property name="EntityNamespace" type="System.String"></Property>
+        <Property name="EntityAssemblyName" type="System.String"></Property>
+        <Property name="DefaultNamespace" type="System.String"></Property>
+        <Property name="AssemblyName" type="System.String"></Property>
+        <Property name="EntityReferenceName" type="System.String"></Property>
+        <Property name="DesignerDisplayMember" type="System.String"></Property>
       </Properties>
       <ControlDefinition>
         <Properties>
@@ -38,6 +52,13 @@
     <QuickFormElement>
       <Properties>
         <Property name="EntityMappingType" type="System.String">Property</Property>
+        <Property name="EntityTypeName" type="System.String"></Property>
+        <Property name="EntityNamespace" type="System.String"></Property>
+        <Property name="EntityAssemblyName" type="System.String"></Property>
+        <Property name="DefaultNamespace" type="System.String"></Property>
+        <Property name="AssemblyName" type="System.String"></Property>
+        <Property name="EntityReferenceName" type="System.String"></Property>
+        <Property name="DesignerDisplayMember" type="System.String"></Property>
       </Properties>
       <ControlDefinition>
         <Properties>
@@ -148,12 +169,13 @@
         transaction.BatchID = tranHeader.BatchID;
         transaction.TranType = transactionType;
         transaction.TranDate = DateTime.Now;
-        transaction.ItemID = product.MASITEMKEY.ToString();
+        //transaction.ItemID = product.MASITEMKEY.ToString();
+		transaction.ItemID = product.MasItemID;
         transaction.Qty = quantity;
-        transaction.UoM = "";
+        transaction.UoM = product.Unit;
         transaction.UnitCost = (Double)product.Vlueproductmsrp.Listprice;
         transaction.TranAmt = transaction.UnitCost * transaction.Qty;
-        transaction.GLAcctNo = "";
+        transaction.GLAcctNo = product.GlAccountNumber;
         transaction.TranCmnt = "";
         transaction.CompanyID = tranHeader.CompanyID;
         transaction.ProcessStatus = 0;
@@ -202,6 +224,13 @@
     <QuickFormElement>
       <Properties>
         <Property name="EntityMappingType" type="System.String">Property</Property>
+        <Property name="EntityTypeName" type="System.String"></Property>
+        <Property name="EntityNamespace" type="System.String"></Property>
+        <Property name="EntityAssemblyName" type="System.String"></Property>
+        <Property name="DefaultNamespace" type="System.String"></Property>
+        <Property name="AssemblyName" type="System.String"></Property>
+        <Property name="EntityReferenceName" type="System.String"></Property>
+        <Property name="DesignerDisplayMember" type="System.String"></Property>
       </Properties>
       <ControlDefinition>
         <Properties>
@@ -212,6 +241,13 @@
     <QuickFormElement>
       <Properties>
         <Property name="EntityMappingType" type="System.String">Property</Property>
+        <Property name="EntityTypeName" type="System.String"></Property>
+        <Property name="EntityNamespace" type="System.String"></Property>
+        <Property name="EntityAssemblyName" type="System.String"></Property>
+        <Property name="DefaultNamespace" type="System.String"></Property>
+        <Property name="AssemblyName" type="System.String"></Property>
+        <Property name="EntityReferenceName" type="System.String"></Property>
+        <Property name="DesignerDisplayMember" type="System.String"></Property>
       </Properties>
       <ControlDefinition>
         <Properties>
