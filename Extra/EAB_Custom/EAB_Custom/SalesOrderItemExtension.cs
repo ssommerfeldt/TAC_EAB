@@ -127,10 +127,10 @@ namespace EAB_Custom {
                             && salesorderitem.SalesOrder != null
                             && salesorderitem.SalesOrder.Account != null) {
 
-                                //Extentions.GetDefaultMargin(null,
-                                //                        salesorderitem.Product.Timprodpricegroup.Id.ToString(),
-                                //                        salesorderitem.SalesOrder.Account,
-                                //                        out margin);
+                                Extentions.GetDefaultMargin(null,
+                                                        salesorderitem.Product.Timprodpricegroup.Id.ToString(),
+                                                        salesorderitem.SalesOrder.Account,
+                                                        out margin);
                         }
                         salesorderitem.Discount = margin;
 
@@ -164,10 +164,24 @@ namespace EAB_Custom {
                                 } else {
                                     //price not found                                
                                 }
+
+                                //Get  return margin from extension method
+                                double returnmargin = 0;
+                                if (newProduct.Timprodpricegroup != null
+                                    && salesorderitem.SalesOrder != null
+                                    && salesorderitem.SalesOrder.Account != null) {
+
+                                    Extentions.GetDefaultMargin(null,
+                                                            newProduct.Timprodpricegroup.Id.ToString(),
+                                                            salesorderitem.SalesOrder.Account,
+                                                            out returnmargin);
+                                }
+                                salesorderitem.Discount = returnmargin;
                             }
                             
                             //return item price is new item price - return item price
                             salesorderitem.Price = Math.Round(newProductPrice - listPrice, 2);
+                                                        
 
                         } else {
                             //all other types are set to price
