@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Sage.Entity.Interfaces;
 using System.Data.OleDb;
+using NHibernate;
+using Sage.Platform.Application;
 
 
 
@@ -944,46 +946,54 @@ namespace EAB_Custom {
                             Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
                             Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
 
+                            //use common function to add salesorderitem
                             item.SalesOrder = salesorder;
-
-                            //get msrp price                                  
-                            double listPrice = 0;
-                            try {
-                                if (scitem.Product.Vproductpricesheet != null) {
-                                    listPrice = (double)scitem.Product.Vproductpricesheet.Listprice;
-                                } else {
-                                    //price not found
-                                }
-                            } catch (Exception ex) {
-                                //vproductpricesheet record not found
-                                Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
-                                eh.HandleException(new Exception("Order (" + item.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
-                            }
-                            //item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
-                            item.Price = listPrice;
-
-                            //get the margin                                
-                            item.Discount = scitem.Margin;
-
-                            item.ExtendedPrice = 0; //due to quantity 0                    
-                            item.Quantity = 0; //set to 0 initially                   
-
-                            item.ActualID = scitem.Product.ActualId;
-                            item.UPC = scitem.Product.UPC;
-                            item.Description = scitem.ProductDescription;
-                            item.Family = scitem.Product.Family;
-
-                            item.ProductName = scitem.Product.Name;
-                            item.Program = scitem.Product.Program;
-                            item.Case = scitem.Product.Unit;
                             item.Product = scitem.Product;
-                            item.UnitOfMeasureId = scitem.Product.UnitOfMeasureId.Trim();
                             item.MaxStockLevel = scitem.MaxStockLevel; //ssommerfeldt Nov 2 2012
+                            item.SaveProductToSalesOrderItem();
+                            item.Save();
 
                             salesorder.SalesOrderItems.Add(item);
-                            item.Save();                            
+
+
+                            ////get msrp price                                  
+                            //double listPrice = 0;
+                            //try {
+                            //    if (scitem.Product.Vproductpricesheet != null) {
+                            //        listPrice = (double)scitem.Product.Vproductpricesheet.Listprice;
+                            //    } else {
+                            //        //price not found
+                            //    }
+                            //} catch (Exception ex) {
+                            //    //vproductpricesheet record not found
+                            //    Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                            //    eh.HandleException(new Exception("Order (" + item.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
+                            //}
+                            ////item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
+                            //item.Price = listPrice;
+
+                            ////get the margin                                
+                            //item.Discount = scitem.Margin;
+
+                            //item.ExtendedPrice = 0; //due to quantity 0                    
+                            //item.Quantity = 0; //set to 0 initially                   
+
+                            //item.ActualID = scitem.Product.ActualId;
+                            //item.UPC = scitem.Product.UPC;
+                            //item.Description = scitem.ProductDescription;
+                            //item.Family = scitem.Product.Family;
+
+                            //item.ProductName = scitem.Product.Name;
+                            //item.Program = scitem.Product.Program;
+                            //item.Case = scitem.Product.Unit;
+                            //item.Product = scitem.Product;
+                            //item.UnitOfMeasureId = scitem.Product.UnitOfMeasureId.Trim();
+                            //item.MaxStockLevel = scitem.MaxStockLevel; //ssommerfeldt Nov 2 2012
+
+                            //salesorder.SalesOrderItems.Add(item);
+                            //item.Save();                            
                         }
-                    }                    
+                    }
                 }
             } catch (Exception e) {
                 throw new Exception("Order (" + salesorder.SalesOrderNumber + "): " + e.Message, e);
@@ -992,5 +1002,52 @@ namespace EAB_Custom {
 
 
 
+        public static bool OnBeforeInsertStep2(ISalesOrder salesOrder, ISession session) {
+
+            SetOrderTotals(salesOrder);
+            return true;
+        }
+
+        public static bool OnBeforeUpdateStep2(ISalesOrder salesOrder, ISession session) {
+
+            SetOrderTotals(salesOrder);
+            return true;
+        }
+
+        public static void SetOrderTotals(ISalesOrder salesOrder) {
+            double adjPrice = GetAdjustedPrice(salesOrder);
+            double total = GetSalesOrderGrandTotal(salesOrder);
+            salesOrder.OrderTotal = adjPrice;
+            salesOrder.GrandTotal = total;
+            //salesOrder.SalesOrderTotal = total;
+        }
+
+        public static double GetAdjustedPrice(ISalesOrder salesOrder) {
+            double adjprice = 0d;
+            foreach (ISalesOrderItem item in salesOrder.SalesOrderItems) {
+                //sum the prices from all items
+                //adjprice += SalesOrderItemExtension.CalculateAdjustedPrice(item);
+                adjprice += item.ExtendedPrice ?? 0d;
+            }
+            return adjprice;
+        }
+
+        public static double GetSalesOrderGrandTotal(ISalesOrder salesOrder) {
+            double total = salesOrder.OrderTotal.HasValue ? salesOrder.OrderTotal.Value : 0.0;
+            total = salesOrder.Discount.HasValue ? (total - (total * salesOrder.Discount.Value)) : total;
+            total += salesOrder.Freight.HasValue ? salesOrder.Freight.Value : 0.0;
+            return (total + (salesOrder.Tax.HasValue ? (total * salesOrder.Tax.Value) : 0.0));
+        }
+
+        /// <summary>
+        /// Use this value to get the calculated order total
+        /// </summary>
+        /// <param name="salesorder"></param>
+        /// <param name="result"></param>
+        public static void GetSalesOrderTotal(ISalesOrder salesorder, out System.Double result) {
+            salesorder.OrderTotal = new double?(GetAdjustedPrice(salesorder));
+            salesorder.GrandTotal = new double?(GetSalesOrderGrandTotal(salesorder));
+            result = salesorder.GrandTotal ?? 0d;
+        }
     }
 }
