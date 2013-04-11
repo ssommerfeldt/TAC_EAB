@@ -1018,15 +1018,13 @@ namespace EAB_Custom {
             double adjPrice = GetAdjustedPrice(salesOrder);
             double total = GetSalesOrderGrandTotal(salesOrder);
             salesOrder.OrderTotal = adjPrice;
-            salesOrder.GrandTotal = total;
-            //salesOrder.SalesOrderTotal = total;
+            salesOrder.GrandTotal = total;            
         }
 
         public static double GetAdjustedPrice(ISalesOrder salesOrder) {
             double adjprice = 0d;
             foreach (ISalesOrderItem item in salesOrder.SalesOrderItems) {
-                //sum the prices from all items
-                //adjprice += SalesOrderItemExtension.CalculateAdjustedPrice(item);
+                //sum the prices from all items                
                 adjprice += item.ExtendedPrice ?? 0d;
             }
             return adjprice;
@@ -1049,5 +1047,20 @@ namespace EAB_Custom {
             salesorder.GrandTotal = new double?(GetSalesOrderGrandTotal(salesorder));
             result = salesorder.GrandTotal ?? 0d;
         }
+
+        ///// <summary>
+        ///// Assigns the Sales Order type.
+        ///// </summary>
+        ///// <param name="form">The Sales Order details form.</param>
+        ///// <param name="args">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        //public static void btnSaveSalesOrder_OnClickStep(ISalesOrderDetails form, EventArgs args) {
+        //    ISalesOrder salesOrder = form.CurrentEntity as ISalesOrder;
+        //    if (salesOrder != null && !form.rdgSOType.IsReadOnly) {
+        //        salesOrder.IsQuote = !String.IsNullOrEmpty(form.rdgSOType.SelectedValue) && Convert.ToBoolean(form.rdgSOType.SelectedValue);
+        //        salesOrder.Save();
+        //    }
+        //}
+
+
     }
 }
