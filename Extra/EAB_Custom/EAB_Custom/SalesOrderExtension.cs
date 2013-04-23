@@ -128,8 +128,8 @@ namespace EAB_Custom {
                 soHeader.Save();
 
                 foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
-                    //only create item if quantity > 0
-                    if (item.Quantity > 0) {
+                    //only create item if quantity != 0
+                    if (item.Quantity != 0) {
                         //Sales order line items
                         Sage.Entity.Interfaces.IStgSOLine_TAC soLine =
                                 Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOLine_TAC),
@@ -940,21 +940,26 @@ namespace EAB_Custom {
 
                             ////Only add products in the selected warehouse
                             //if (!String.IsNullOrEmpty(userWarehouseID) && userWarehouseID == scitem.Product.WarehouseID) {
+                            try {
+                                //add the products to the salesorder
+                                Sage.Entity.Interfaces.ISalesOrderItem item =
+                                Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
+                                Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
 
-                            //add the products to the salesorder
-                            Sage.Entity.Interfaces.ISalesOrderItem item =
-                            Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
-                            Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
+                                //use common function to add salesorderitem
+                                item.SalesOrder = salesorder;
+                                item.Product = scitem.Product;
+                                item.MaxStockLevel = scitem.MaxStockLevel; //ssommerfeldt Nov 2 2012
+                                item.SaveProductToSalesOrderItem();
+                                item.Save();
 
-                            //use common function to add salesorderitem
-                            item.SalesOrder = salesorder;
-                            item.Product = scitem.Product;
-                            item.MaxStockLevel = scitem.MaxStockLevel; //ssommerfeldt Nov 2 2012
-                            item.SaveProductToSalesOrderItem();
-                            item.Save();
+                                salesorder.SalesOrderItems.Add(item);
 
-                            salesorder.SalesOrderItems.Add(item);
-
+                            } catch (Exception ex) {
+                                //handle errors to allow other items to process
+                                Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                                eh.HandleException(new Exception("Order (" + salesorder.SalesOrderNumber + "): " + ex.Message, ex), false);
+                            }
 
                             ////get msrp price                                  
                             //double listPrice = 0;

@@ -345,42 +345,48 @@ namespace EAB_Custom {
 
 
         public static void OnBeforeQuantityChanged(ISalesOrderItem salesorderitem, ExtendedPropertyChangedEventArgs args) {
+            if (args.NewValue == null) {
+                args.NewValue = 0d;
+            }
             //Quantity check does not apply to return orders
             if (salesorderitem.SalesOrder.OrderType.ToUpper() != "RETURN ORDER") {
 
                 if (salesorderitem.SalesOrder.OrderType.ToUpper() == "SALES ORDER") {
-                    //Set the quantity to no more than available, allow negatives                    
-                    if (args.NewValue != args.OldValue) {
-                        if (salesorderitem.Product != null) {
-                            if ((double)args.NewValue > salesorderitem.Product.QtyAvailable) {
-                                //quantity not valid
-                                if (args.OldValue == null) {
-                                    args.NewValue = 0;
-                                } else {
-                                    args.NewValue = args.OldValue;
+                    //Set the quantity to no more than available, allow negatives  
+                    if ((double)args.NewValue > 0) {
+                        if (args.NewValue != args.OldValue) {
+                            if (salesorderitem.Product != null) {
+                                if ((double)args.NewValue > salesorderitem.Product.QtyAvailable) {
+                                    //quantity not valid
+                                    if (args.OldValue == null) {
+                                        args.NewValue = 0;
+                                    } else {
+                                        args.NewValue = args.OldValue;
+                                    }
+                                    string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
+                                    errormsg += " of the item " + salesorderitem.ActualID.ToString();
+                                    throw new ArgumentOutOfRangeException("Quantity", errormsg);
                                 }
-                                string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
-                                errormsg += " of the item " + salesorderitem.ActualID.ToString();
-                                throw new ArgumentOutOfRangeException("Quantity", errormsg);
                             }
                         }
                     }
-
                 } else {
                     //For all other types, the quantity cannot be more than the quantity available, no negatives
-                    if (args.NewValue != args.OldValue) {
-                        if (salesorderitem.Product != null) {
-                            if ((double)args.NewValue < 0 || (double)args.NewValue > salesorderitem.Product.QtyAvailable) {
-                                //quantity not valid
-                                if (args.OldValue == null) {
-                                    args.NewValue = 0;
-                                } else {
-                                    args.NewValue = args.OldValue;
+                    if ((double)args.NewValue != 0) {
+                        if (args.NewValue != args.OldValue) {
+                            if (salesorderitem.Product != null) {
+                                if ((double)args.NewValue < 0 || (double)args.NewValue > salesorderitem.Product.QtyAvailable) {
+                                    //quantity not valid
+                                    if (args.OldValue == null) {
+                                        args.NewValue = 0;
+                                    } else {
+                                        args.NewValue = args.OldValue;
+                                    }
+                                    string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
+                                    errormsg += " of the item " + salesorderitem.ActualID.ToString();
+                                    errormsg += "\nOr less than 0 of any item.";
+                                    throw new ArgumentOutOfRangeException("Quantity", errormsg);
                                 }
-                                string errormsg = "You cannot order more than the available " + Math.Round((double)salesorderitem.Product.QtyAvailable);
-                                errormsg += " of the item " + salesorderitem.ActualID.ToString();
-                                errormsg += "\nOr less than 0 of any item.";
-                                throw new ArgumentOutOfRangeException("Quantity", errormsg);
                             }
                         }
                     }
