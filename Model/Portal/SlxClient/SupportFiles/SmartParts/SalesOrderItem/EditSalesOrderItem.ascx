@@ -403,7 +403,7 @@ protected override void OnAddEntityBindings() {
         Sage.Platform.WebPortal.Binding.WebEntityBinding UPCTextBinding = new Sage.Platform.WebPortal.Binding.WebEntityBinding("UPC", UPC, "Text");
         BindingSource.Bindings.Add(UPCTextBinding);
                     // numQuantity2.Text Binding
-        Sage.Platform.WebPortal.Binding.WebEntityBinding numQuantity2TextBinding = new Sage.Platform.WebPortal.Binding.WebEntityBinding("Product.QtyOnHand", numQuantity2, "Text");
+        Sage.Platform.WebPortal.Binding.WebEntityBinding numQuantity2TextBinding = new Sage.Platform.WebPortal.Binding.WebEntityBinding("Product.QtyAvailable", numQuantity2, "Text");
         BindingSource.Bindings.Add(numQuantity2TextBinding);
                     // pklFamily.PickListValue Binding
         Sage.Platform.WebPortal.Binding.WebEntityBinding pklFamilyPickListValueBinding = new Sage.Platform.WebPortal.Binding.WebEntityBinding("Family", pklFamily, "PickListValue");
