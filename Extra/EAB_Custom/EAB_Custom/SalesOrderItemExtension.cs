@@ -282,6 +282,7 @@ namespace EAB_Custom {
 
                 if (salesorderitem.SalesOrder.UserWareHouse != null) {
                     crit.Add(f.EF.Eq("WarehouseID", salesorderitem.SalesOrder.UserWareHouse.SiteCodeId));
+                    crit.Add(f.EF.Ne("Status", "Deleted"));
                     crit.Add(f.EF.Eq("UPC", salesorderitem.UPC));
 
                     //For returns on show return items. for all others do not show returns or bulk
@@ -319,6 +320,7 @@ namespace EAB_Custom {
 
                 if (salesorderitem.SalesOrder.UserWareHouse != null) {
                     crit.Add(f.EF.Eq("WarehouseID", salesorderitem.SalesOrder.UserWareHouse.SiteCodeId));
+                    crit.Add(f.EF.Ne("Status", "Deleted"));
                     crit.Add(f.EF.Eq("ActualId", salesorderitem.ActualID));
 
                     if (salesorderitem.SalesOrder.OrderType == "Return Order") {

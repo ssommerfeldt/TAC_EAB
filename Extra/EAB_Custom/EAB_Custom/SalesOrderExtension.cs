@@ -932,7 +932,7 @@ namespace EAB_Custom {
                     crit.Add(f.EF.Eq("Accountid", salesorder.Account.Id.ToString()));
                     crit.CreateAlias("Product", "p");
                     crit.Add(f.EF.Eq("p.WarehouseID", userWarehouseID));
-                    //crit.Add(f.EF.Eq("Status", "PickingList"));
+                    crit.Add(f.EF.Ne("p.Status", "Deleted"));
 
                     //result = crit.List<Sage.Entity.Interfaces.IPickingList>();
                     foreach (IStockCardItems scitem in crit.List<IStockCardItems>()) {
