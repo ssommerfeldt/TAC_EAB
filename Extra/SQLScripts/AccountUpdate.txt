@@ -1,0 +1,43 @@
+Update sysdba.ADDRESS 
+SET    ADDRESS1 =  mas500_tst_app.dbo.tciAddress.AddrLine1,
+
+ADDRESS2=   mas500_tst_app.dbo.tciAddress.AddrLine2,
+ CITY = mas500_tst_app.dbo.tciAddress.City, 
+ STATE = mas500_tst_app.dbo.tciAddress.StateID,
+ POSTALCODE = mas500_tst_app.dbo.tciAddress.PostalCode, 
+                     COUNTRY = mas500_tst_app.dbo.tciAddress.CountryID  
+                     
+FROM         sysdba.ADDRESS INNER JOIN
+                      mas500_tst_app.dbo.tciAddress ON sysdba.ADDRESS.MASADDRKEY = mas500_tst_app.dbo.tciAddress.AddrKey
+go 
+
+Update sysdba.ACCOUNT                       
+SET     MAINPHONE =   mas500_tst_app.dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC.ContactPhone,
+		FAX = mas500_tst_app.dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC.ContactFax 
+                     
+FROM         sysdba.ACCOUNT INNER JOIN
+                      mas500_tst_app.dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC ON 
+                      sysdba.ACCOUNT.MASCUSTKEY = mas500_tst_app.dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC.CustKey
+
+go
+
+Update sysdba.ACCOUNT 
+SET     sysdba.ACCOUNT.STATUS= 
+Case mas500_tst_app.dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC.Status 
+					 
+                     when 1 then 'Active' 
+                     when 2 then 'InActive' 
+                     when 3 then 'Temporary' 
+                     when 4 then 'Delete' 
+                    end
+FROM         sysdba.ACCOUNT INNER JOIN
+                      mas500_tst_app.dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC ON 
+                      sysdba.ACCOUNT.MASCUSTKEY = mas500_tst_app.dbo.vdvMAS_TO_SLX_ERPLinkCustomer_TAC.CustKey
+
+go
+
+Update sysdba.ACCOUNT                       
+Set seccodeid = 'ADMIN' from sysdba.ACCOUNT 
+where STATUS  in (   'InActive' ,
+                     'Temporary' ,
+                      'Delete' )

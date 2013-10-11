@@ -29,7 +29,7 @@ if(type=='percent'&&result){result=[result,' ',cultureOptions.PercentSymbol].joi
 return result;}}
 function IsAllowedNavigationKey(charCode){return(charCode==8||charCode==9||charCode==46||charCode==37||charCode==39);}
 function RestrictToNumeric(e,groupSeparator,decimalSeparator){if(navigator.userAgent.indexOf("Firefox")>=0){if(e.keyCode&&IsAllowedNavigationKey(e.keyCode))return true;}
-var code=e.charCode||e.keyCode;return((code>=48&&code<=57)||code==groupSeparator||code==decimalSeparator);}
+var code=e.charCode||e.keyCode;return((code>=48&&code<=57)||code==groupSeparator||code==decimalSeparator||code==45);}
 function GetResourceValue(resource,defval){var val=resource;if((val==null)||(val.length==0)){val=defval;}
 return val;}
 var JSON;if(!JSON){JSON={};}

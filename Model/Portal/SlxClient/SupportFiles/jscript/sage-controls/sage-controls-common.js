@@ -165,7 +165,8 @@ if (typeof(Sage) != "undefined") {
             result = [result, ' ', cultureOptions.PercentSymbol].join("");
         }
 
-        return result;
+        //return result;
+		return num;
     }
 }
 
@@ -187,7 +188,7 @@ function RestrictToNumeric(e, groupSeparator, decimalSeparator) {
     var code = e.charCode || e.keyCode;
     return ((code >= 48 && code <= 57)  // 0-9
         || code == groupSeparator       // localized
-        || code == decimalSeparator);   // localized
+        || code == decimalSeparator || code == 45);   // localized
 }
 
 function GetResourceValue(resource, defval) {

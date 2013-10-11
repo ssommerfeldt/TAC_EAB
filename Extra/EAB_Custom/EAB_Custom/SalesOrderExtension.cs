@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections;
 using Sage.Entity.Interfaces;
+using System.Data.OleDb;
 using NHibernate;
+using Sage.Platform.Application;
 
 
 
@@ -15,7 +14,7 @@ namespace EAB_Custom {
             decimal step = (decimal)Math.Pow(10, precision);
             int tmp = (int)Math.Truncate(step * value);
             return tmp / step;
-        } 
+        }
 
 
 
@@ -40,14 +39,14 @@ namespace EAB_Custom {
                     switch (salesOrder.AccountManager.Eabrelationship.Trim()) {
                         case "Distributor":
                             //Distributor
-                            SubmitInventoryAdjustment(salesOrder);                            
+                            SubmitInventoryAdjustment(salesOrder);
                             break;
                         case "Sales Rep":
                             //Sales Rep
                             SubmitPurchaseOrder(salesOrder);
                             break;
                         default:
-                            throw new Exception("Order (" + salesOrder.SalesOrderNumber + "): Error Reading Account Manager Relationship"); 
+                            throw new Exception("Order (" + salesOrder.SalesOrderNumber + "): Error Reading Account Manager Relationship");
                     }
                     break;
                 case "Inventory Order":
@@ -61,7 +60,7 @@ namespace EAB_Custom {
                             SubmitTransferOrder(salesOrder);
                             break;
                         default:
-                            throw new Exception("Order (" + salesOrder.SalesOrderNumber + "): Error Reading Account Manager Relationship");                            
+                            throw new Exception("Order (" + salesOrder.SalesOrderNumber + "): Error Reading Account Manager Relationship");
                     }
                     break;
                 default:
@@ -73,7 +72,7 @@ namespace EAB_Custom {
         private static void SubmitSalesOrder(ISalesOrder salesOrder) {
             try {
                 //submit order to mas
-                
+
                 //Salesorder header
                 Sage.Entity.Interfaces.IStgSalesOrder_TAC soHeader =
                 Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSalesOrder_TAC),
@@ -82,7 +81,7 @@ namespace EAB_Custom {
                 soHeader.SalesOrderID = salesOrder.Id.ToString();
                 soHeader.UserFld1 = salesOrder.SalesOrderNumber;
                 soHeader.TranNo = "0";
-                soHeader.TranDate = DateTime.Now;                
+                soHeader.TranDate = DateTime.Now;
                 soHeader.STaxAmt = null;
                 soHeader.Status = "Open";
                 soHeader.SessionKey = 0;
@@ -97,10 +96,10 @@ namespace EAB_Custom {
                 soHeader.FreightAmt = 0;
                 soHeader.CustPONO = salesOrder.CustomerPurchaseOrderNumber;
                 soHeader.PrimarySperID = Sage.SalesLogix.API.MySlx.Security.CurrentSalesLogixUser.UserInfo.AccountingUserId;
-                
+
                 //Set the discount amount from discount percentage
                 //if (salesOrder.Discount == null || salesOrder.Discount == 0) {
-                    soHeader.TradeDiscAmt = null;
+                soHeader.TradeDiscAmt = null;
                 //} else {
                 //    soHeader.TradeDiscAmt = (Double)TruncateDecimal((Decimal)salesOrder.Discount * (Decimal)soHeader.OpenAmt, 2);
                 //}
@@ -129,8 +128,8 @@ namespace EAB_Custom {
                 soHeader.Save();
 
                 foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
-                    //only create item if quantity > 0
-                    if (item.Quantity > 0) {
+                    //only create item if quantity != 0
+                    if (item.Quantity != 0) {
                         //Sales order line items
                         Sage.Entity.Interfaces.IStgSOLine_TAC soLine =
                                 Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.IStgSOLine_TAC),
@@ -226,7 +225,7 @@ namespace EAB_Custom {
                             soLine.ShipToStateID = salesOrder.ShippingAddress.State;
                         }
                         soLine.Status = "Open";
-                        soLine.STaxClassID = null;                        
+                        soLine.STaxClassID = null;
                         soLine.TranNo = "0";
 
                         if (item.Product != null) {
@@ -487,7 +486,7 @@ namespace EAB_Custom {
                 throw new Exception("Order (" + salesOrder.SalesOrderNumber + "): " + e.Message, e);
             }
         }
-        
+
         private static void SubmitInventoryAdjustment(ISalesOrder salesOrder) {
             //submit order to mas            
             //Adjusts Inventory on hand            
@@ -512,7 +511,7 @@ namespace EAB_Custom {
                     if (salesOrder.Account.AccountFinancial != null) {
                         tranHeader.CompanyID = salesOrder.Account.AccountFinancial.Companycode;
                     }
-                }                
+                }
                 tranHeader.Save();
 
                 foreach (Sage.Entity.Interfaces.ISalesOrderItem item in salesOrder.SalesOrderItems) {
@@ -545,7 +544,7 @@ namespace EAB_Custom {
 
                         //product info
                         if (item.Product != null) {
-                            transaction.ItemID = item.Product.MasItemID;                            
+                            transaction.ItemID = item.Product.MasItemID;
                             transaction.UoM = item.Product.Unit;
 
                             //msrp price
@@ -561,7 +560,7 @@ namespace EAB_Custom {
                                 transaction.GLAcctNo = "";
                             }
                         }
-                                                
+
                         transaction.CompanyID = tranHeader.CompanyID;
                         transaction.ProcessStatus = 0;
 
@@ -909,6 +908,21 @@ namespace EAB_Custom {
                     //save the salesorder
                     salesorder.Save();
 
+                    //get the user's warehouseid, the id may not match the object reference, use the id as correct
+                    String userWarehouseID = "";
+                    if (String.IsNullOrEmpty(salesorder.UserWHSEID) && salesorder.UserWareHouse != null) {
+                        userWarehouseID = salesorder.UserWareHouse.SiteCodeId;
+                    } else if (salesorder.UserWHSEID == salesorder.UserWareHouse.Id.ToString()) {
+                        userWarehouseID = salesorder.UserWareHouse.SiteCodeId;
+                    } else {
+                        //lookup id from site
+                        Sage.Entity.Interfaces.ISLXSite _UserWareHouse =
+                            Sage.Platform.EntityFactory.GetById<Sage.Entity.Interfaces.ISLXSite>(salesorder.UserWHSEID);
+                        if (_UserWareHouse != null) {
+                            userWarehouseID = _UserWareHouse.SiteCodeId;
+                        }
+                    }
+
                     //List the stock card items            
                     Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IStockCardItems> f =
                         Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IStockCardItems>();
@@ -916,66 +930,141 @@ namespace EAB_Custom {
 
 
                     crit.Add(f.EF.Eq("Accountid", salesorder.Account.Id.ToString()));
-                    //crit.Add(f.EF.Eq("Status", "PickingList"));
+                    crit.CreateAlias("Product", "p");
+                    crit.Add(f.EF.Eq("p.WarehouseID", userWarehouseID));
+                    crit.Add(f.EF.Ne("p.Status", "Deleted"));
 
                     //result = crit.List<Sage.Entity.Interfaces.IPickingList>();
                     foreach (IStockCardItems scitem in crit.List<IStockCardItems>()) {
                         if (scitem.Product != null) {
 
-                            //get the user's warehouseid, the id may not match the object reference, use the id as correct
-                            String userWarehouseID = "";
-                            if (String.IsNullOrEmpty(salesorder.UserWHSEID) && salesorder.UserWareHouse != null) {
-                                userWarehouseID = salesorder.UserWareHouse.SiteCodeId;
-                            } else if (salesorder.UserWHSEID == salesorder.UserWareHouse.Id.ToString()) {
-                                userWarehouseID = salesorder.UserWareHouse.SiteCodeId;
-                            } else {
-                                //lookup id from site
-                                Sage.Entity.Interfaces.ISLXSite _UserWareHouse =
-                                    Sage.Platform.EntityFactory.GetById<Sage.Entity.Interfaces.ISLXSite>(salesorder.UserWHSEID);
-                                if (_UserWareHouse != null) {
-                                    userWarehouseID = _UserWareHouse.SiteCodeId;
-                                }
-                            }
-
-                            //Only add products in the selected warehouse
-                            if (!String.IsNullOrEmpty(userWarehouseID) && userWarehouseID == scitem.Product.WarehouseID) {
-
+                            ////Only add products in the selected warehouse
+                            //if (!String.IsNullOrEmpty(userWarehouseID) && userWarehouseID == scitem.Product.WarehouseID) {
+                            try {
                                 //add the products to the salesorder
                                 Sage.Entity.Interfaces.ISalesOrderItem item =
                                 Sage.Platform.EntityFactory.Create(typeof(Sage.Entity.Interfaces.ISalesOrderItem),
                                 Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules) as Sage.Entity.Interfaces.ISalesOrderItem;
 
+                                //use common function to add salesorderitem
                                 item.SalesOrder = salesorder;
-
-                                item.Description = scitem.ProductDescription;
-                                item.Discount = scitem.Margin;
-                                item.ExtendedPrice = 0; //due to quantity 0                    
-                                item.Quantity = 0; //set to 0 initially                   
-
-
-                                item.ActualID = scitem.Product.ActualId;
-                                item.Family = scitem.Product.Family;
-                                item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
-                                item.ProductName = scitem.Product.Name;
-                                item.Program = scitem.Product.Program;
-                                item.Case = scitem.Product.Unit;
                                 item.Product = scitem.Product;
-
                                 item.MaxStockLevel = scitem.MaxStockLevel; //ssommerfeldt Nov 2 2012
+                                item.SaveProductToSalesOrderItem();
+                                item.Save();
 
                                 salesorder.SalesOrderItems.Add(item);
-                                item.Save();
-                                //break;
+
+                            } catch (Exception ex) {
+                                //handle errors to allow other items to process
+                                Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                                eh.HandleException(new Exception("Order (" + salesorder.SalesOrderNumber + "): " + ex.Message, ex), false);
                             }
+
+                            ////get msrp price                                  
+                            //double listPrice = 0;
+                            //try {
+                            //    if (scitem.Product.Vproductpricesheet != null) {
+                            //        listPrice = (double)scitem.Product.Vproductpricesheet.Listprice;
+                            //    } else {
+                            //        //price not found
+                            //    }
+                            //} catch (Exception ex) {
+                            //    //vproductpricesheet record not found
+                            //    Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                            //    eh.HandleException(new Exception("Order (" + item.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
+                            //}
+                            ////item.Price = Math.Round((Double)scitem.Product.Price, 2, MidpointRounding.AwayFromZero);
+                            //item.Price = listPrice;
+
+                            ////get the margin                                
+                            //item.Discount = scitem.Margin;
+
+                            //item.ExtendedPrice = 0; //due to quantity 0                    
+                            //item.Quantity = 0; //set to 0 initially                   
+
+                            //item.ActualID = scitem.Product.ActualId;
+                            //item.UPC = scitem.Product.UPC;
+                            //item.Description = scitem.ProductDescription;
+                            //item.Family = scitem.Product.Family;
+
+                            //item.ProductName = scitem.Product.Name;
+                            //item.Program = scitem.Product.Program;
+                            //item.Case = scitem.Product.Unit;
+                            //item.Product = scitem.Product;
+                            //item.UnitOfMeasureId = scitem.Product.UnitOfMeasureId.Trim();
+                            //item.MaxStockLevel = scitem.MaxStockLevel; //ssommerfeldt Nov 2 2012
+
+                            //salesorder.SalesOrderItems.Add(item);
+                            //item.Save();                            
                         }
                     }
-                    //salesorder.Save();
                 }
             } catch (Exception e) {
                 throw new Exception("Order (" + salesorder.SalesOrderNumber + "): " + e.Message, e);
             }
         }
-      
+
+
+
+        public static bool OnBeforeInsertStep2(ISalesOrder salesOrder, ISession session) {
+
+            SetOrderTotals(salesOrder);
+            return true;
+        }
+
+        public static bool OnBeforeUpdateStep2(ISalesOrder salesOrder, ISession session) {
+
+            SetOrderTotals(salesOrder);
+            return true;
+        }
+
+        public static void SetOrderTotals(ISalesOrder salesOrder) {
+            double adjPrice = GetAdjustedPrice(salesOrder);
+            double total = GetSalesOrderGrandTotal(salesOrder);
+            salesOrder.OrderTotal = adjPrice;
+            salesOrder.GrandTotal = total;            
+        }
+
+        public static double GetAdjustedPrice(ISalesOrder salesOrder) {
+            double adjprice = 0d;
+            foreach (ISalesOrderItem item in salesOrder.SalesOrderItems) {
+                //sum the prices from all items                
+                adjprice += item.ExtendedPrice ?? 0d;
+            }
+            return adjprice;
+        }
+
+        public static double GetSalesOrderGrandTotal(ISalesOrder salesOrder) {
+            double total = salesOrder.OrderTotal.HasValue ? salesOrder.OrderTotal.Value : 0.0;
+            total = salesOrder.Discount.HasValue ? (total - (total * salesOrder.Discount.Value)) : total;
+            total += salesOrder.Freight.HasValue ? salesOrder.Freight.Value : 0.0;
+            return (total + (salesOrder.Tax.HasValue ? (total * salesOrder.Tax.Value) : 0.0));
+        }
+
+        /// <summary>
+        /// Use this value to get the calculated order total
+        /// </summary>
+        /// <param name="salesorder"></param>
+        /// <param name="result"></param>
+        public static void GetSalesOrderTotal(ISalesOrder salesorder, out System.Double result) {
+            salesorder.OrderTotal = new double?(GetAdjustedPrice(salesorder));
+            salesorder.GrandTotal = new double?(GetSalesOrderGrandTotal(salesorder));
+            result = salesorder.GrandTotal ?? 0d;
+        }
+
+        ///// <summary>
+        ///// Assigns the Sales Order type.
+        ///// </summary>
+        ///// <param name="form">The Sales Order details form.</param>
+        ///// <param name="args">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        //public static void btnSaveSalesOrder_OnClickStep(ISalesOrderDetails form, EventArgs args) {
+        //    ISalesOrder salesOrder = form.CurrentEntity as ISalesOrder;
+        //    if (salesOrder != null && !form.rdgSOType.IsReadOnly) {
+        //        salesOrder.IsQuote = !String.IsNullOrEmpty(form.rdgSOType.SelectedValue) && Convert.ToBoolean(form.rdgSOType.SelectedValue);
+        //        salesOrder.Save();
+        //    }
+        //}
 
 
     }

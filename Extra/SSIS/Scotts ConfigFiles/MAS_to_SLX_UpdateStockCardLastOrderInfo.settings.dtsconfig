@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<DTSConfiguration>
+	<DTSConfigurationHeading>
+		<DTSConfigurationFileInfo GeneratedBy="SLX754LATEST\Administrator" GeneratedFromPackageName="MAS_to_SLXUpdateStockCardLastOrderInfo" GeneratedFromPackageID="{3DD4CCD8-4F0C-4EA0-8C30-89BACF520A4A}" GeneratedDate="2/28/2013 4:32:36 PM"/>
+	</DTSConfigurationHeading>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=SLX754LATEST;User ID=admin;Initial Catalog=LIVEEAB_SLX;Provider=SLXOLEDB.1;Persist Security Info=True;Integrated Security=SSPI;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Description]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[InitialCatalog]" ValueType="String">
+		<ConfiguredValue>LIVEEAB_SLX</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Name]" ValueType="String">
+		<ConfiguredValue>SLX</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Password]" ValueType="String">
+		<ConfiguredValue>password</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ProtectionLevel]" ValueType="Int32">
+		<ConfiguredValue>1</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[RetainSameConnection]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ServerName]" ValueType="String">
+		<ConfiguredValue>SLX754LATEST</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[UserName]" ValueType="String">
+		<ConfiguredValue>admin</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXNative].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=SLX754LATEST;User ID=sysdba;Initial Catalog=LiveEAB_SLX;Provider=SQLNCLI10.1;Auto Translate=False;Application Name=SSIS-MAS_to_SLXUpdateStockCardLastOrderInfo-{77FAED43-0CFC-4936-8069-21AC0F871BB3}SLX754LATEST.LiveEAB_MAS;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXNative].Properties[Description]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXNative].Properties[InitialCatalog]" ValueType="String">
+		<ConfiguredValue>LiveEAB_SLX</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXNative].Properties[Name]" ValueType="String">
+		<ConfiguredValue>SLXNative</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXNative].Properties[Password]" ValueType="String">
+		<ConfiguredValue>masterkey</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXNative].Properties[ProtectionLevel]" ValueType="Int32">
+		<ConfiguredValue>1</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXNative].Properties[RetainSameConnection]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXNative].Properties[ServerName]" ValueType="String">
+		<ConfiguredValue>SLX754LATEST</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLXNative].Properties[UserName]" ValueType="String">
+		<ConfiguredValue>sysdba</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Description]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[EvaluateAsExpression]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Expression]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[IncludeInDebugDump]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Name]" ValueType="String">
+		<ConfiguredValue>SLXConString</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Namespace]" ValueType="String">
+		<ConfiguredValue>User</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[RaiseChangedEvent]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[ReadOnly]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Value]" ValueType="String">
+		<ConfiguredValue>Provider=SLXOLEDB.1;Password="password";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
+	</Configuration>
+</DTSConfiguration>

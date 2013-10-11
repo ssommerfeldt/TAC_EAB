@@ -10,8 +10,8 @@
 <DTS:Property DTS:Name="PackagePriorityClass">0</DTS:Property>
 <DTS:Property DTS:Name="VersionMajor">1</DTS:Property>
 <DTS:Property DTS:Name="VersionMinor">0</DTS:Property>
-<DTS:Property DTS:Name="VersionBuild">45</DTS:Property>
-<DTS:Property DTS:Name="VersionGUID">{AC0DFF5A-CD94-4474-9547-529DAA3A1F5B}</DTS:Property>
+<DTS:Property DTS:Name="VersionBuild">55</DTS:Property>
+<DTS:Property DTS:Name="VersionGUID">{E9907A27-3BE2-478C-8E02-DB8031D225B3}</DTS:Property>
 <DTS:Property DTS:Name="EnableConfig">-1</DTS:Property>
 <DTS:Property DTS:Name="CheckpointFileName"></DTS:Property>
 <DTS:Property DTS:Name="SaveCheckpoints">0</DTS:Property>
@@ -35,10 +35,10 @@
 <DTS:Property DTS:Name="ConnectionString">Data Source=SLX754Latest;User ID=admin;Initial Catalog=LIVEEAB_SLX;Provider=SLXOLEDB.1;Persist Security Info=True;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</DTS:Property></DTS:ConnectionManager></DTS:ObjectData></DTS:ConnectionManager>
 <DTS:Configuration>
 <DTS:Property DTS:Name="ConfigurationType">1</DTS:Property>
-<DTS:Property DTS:Name="ConfigurationString">C:\SSIS\MAS_to_SLX_RefreshProducts.settings.dtsconfig</DTS:Property>
+<DTS:Property DTS:Name="ConfigurationString">C:\TAC\SSIS\MAS_to_SLX_RefreshProducts.settings.dtsconfig</DTS:Property>
 <DTS:Property DTS:Name="ConfigurationVariable"></DTS:Property>
 <DTS:Property DTS:Name="ObjectName">Configuration 1</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{733B197B-C0FB-455B-A69E-645DDD0BC076}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{6F5ECC47-13D3-470B-9B87-E4117F901D8D}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:Configuration>
 <DTS:Property DTS:Name="LastModifiedProductVersion">10.50.1600.1</DTS:Property>
@@ -70,7 +70,7 @@
 <DTS:Property DTS:Name="Namespace">User</DTS:Property>
 <DTS:Property DTS:Name="ReadOnly">0</DTS:Property>
 <DTS:Property DTS:Name="RaiseChangedEvent">0</DTS:Property>
-<DTS:Property DTS:Name="IncludeInDebugDump">2345</DTS:Property><DTS:VariableValue DTS:DataType="8">Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</DTS:VariableValue>
+<DTS:Property DTS:Name="IncludeInDebugDump">2345</DTS:Property><DTS:VariableValue DTS:DataType="8">Provider=SLXOLEDB.1;Password="password";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</DTS:VariableValue>
 <DTS:Property DTS:Name="ObjectName">SLXConnectionString</DTS:Property>
 <DTS:Property DTS:Name="DTSID">{86224FEB-D5DE-4291-A662-51B53BD52EB2}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
@@ -332,131 +332,131 @@ AND vdvStockStatus.WhseID = Prod.WarehouseID</property>
 <outputColumn id="14" name="ErrorColumn" description="" lineageId="14" precision="0" scale="0" length="0" dataType="i4" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="2" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/></outputColumns><externalMetadataColumns isUsed="False"/></output>
 </outputs>
 </component>
-<component id="151" name="OLE DB Destination" componentClassID="{5A0B62E8-D91D-49F5-94A5-7BE58DE508F0}" description="OLE DB Destination" localeId="-1" usesDispositions="true" validateExternalMetadata="True" version="4" pipelineVersion="0" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4">
+<component id="354" name="OLE DB Destination" componentClassID="{5A0B62E8-D91D-49F5-94A5-7BE58DE508F0}" description="OLE DB Destination" localeId="-1" usesDispositions="true" validateExternalMetadata="True" version="4" pipelineVersion="0" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4">
 <properties>
-<property id="152" name="CommandTimeout" dataType="System.Int32" state="default" isArray="false" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">0</property>
-<property id="153" name="OpenRowset" dataType="System.String" state="default" isArray="false" description="Specifies the name of the database object used to open a rowset." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">"sysdba"."PRODUCT"</property>
-<property id="154" name="OpenRowsetVariable" dataType="System.String" state="default" isArray="false" description="Specifies the variable that contains the name of the database object used to open a rowset." typeConverter="" UITypeEditor="" containsID="false" expressionType="None"></property>
-<property id="155" name="SqlCommand" dataType="System.String" state="default" isArray="false" description="The SQL command to be executed." typeConverter="" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" containsID="false" expressionType="None"></property>
-<property id="156" name="DefaultCodePage" dataType="System.Int32" state="default" isArray="false" description="Specifies the column code page to use when code page information is unavailable from the data source." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">1252</property>
-<property id="157" name="AlwaysUseDefaultCodePage" dataType="System.Boolean" state="default" isArray="false" description="Forces the use of the DefaultCodePage property value when describing character data." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">false</property>
-<property id="158" name="AccessMode" dataType="System.Int32" state="default" isArray="false" description="Specifies the mode used to access the database." typeConverter="AccessMode" UITypeEditor="" containsID="false" expressionType="None">0</property>
-<property id="160" name="FastLoadKeepIdentity" dataType="System.Boolean" state="default" isArray="false" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">false</property>
-<property id="161" name="FastLoadKeepNulls" dataType="System.Boolean" state="default" isArray="false" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">false</property>
-<property id="162" name="FastLoadOptions" dataType="System.String" state="default" isArray="false" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." typeConverter="" UITypeEditor="" containsID="false" expressionType="None"></property>
-<property id="163" name="FastLoadMaxInsertCommitSize" dataType="System.Int32" state="default" isArray="false" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">2147483647</property></properties>
+<property id="355" name="CommandTimeout" dataType="System.Int32" state="default" isArray="false" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">0</property>
+<property id="356" name="OpenRowset" dataType="System.String" state="default" isArray="false" description="Specifies the name of the database object used to open a rowset." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">"sysdba"."PRODUCT"</property>
+<property id="357" name="OpenRowsetVariable" dataType="System.String" state="default" isArray="false" description="Specifies the variable that contains the name of the database object used to open a rowset." typeConverter="" UITypeEditor="" containsID="false" expressionType="None"></property>
+<property id="358" name="SqlCommand" dataType="System.String" state="default" isArray="false" description="The SQL command to be executed." typeConverter="" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" containsID="false" expressionType="None"></property>
+<property id="359" name="DefaultCodePage" dataType="System.Int32" state="default" isArray="false" description="Specifies the column code page to use when code page information is unavailable from the data source." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">1252</property>
+<property id="360" name="AlwaysUseDefaultCodePage" dataType="System.Boolean" state="default" isArray="false" description="Forces the use of the DefaultCodePage property value when describing character data." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">false</property>
+<property id="361" name="AccessMode" dataType="System.Int32" state="default" isArray="false" description="Specifies the mode used to access the database." typeConverter="AccessMode" UITypeEditor="" containsID="false" expressionType="None">0</property>
+<property id="363" name="FastLoadKeepIdentity" dataType="System.Boolean" state="default" isArray="false" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">false</property>
+<property id="364" name="FastLoadKeepNulls" dataType="System.Boolean" state="default" isArray="false" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">false</property>
+<property id="365" name="FastLoadOptions" dataType="System.String" state="default" isArray="false" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." typeConverter="" UITypeEditor="" containsID="false" expressionType="None"></property>
+<property id="366" name="FastLoadMaxInsertCommitSize" dataType="System.Int32" state="default" isArray="false" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">2147483647</property></properties>
 <connections>
-<connection id="159" name="OleDbConnection" description="The OLE DB runtime connection used to access the database." connectionManagerID="{657A6B25-EF21-4283-9508-C4DF1CF1649C}"/></connections>
+<connection id="362" name="OleDbConnection" description="The OLE DB runtime connection used to access the database." connectionManagerID="{657A6B25-EF21-4283-9508-C4DF1CF1649C}"/></connections>
 <inputs>
-<input id="164" name="OLE DB Destination Input" description="" hasSideEffects="true" dangling="false" errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" truncationRowDisposition="NotUsed"><inputColumns>
-<inputColumn id="219" name="" description="" lineageId="17" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="170" mappedColumnId="0"/>
-<inputColumn id="220" name="" description="" lineageId="20" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="171" mappedColumnId="0"/>
-<inputColumn id="221" name="" description="" lineageId="23" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="172" mappedColumnId="0"/>
-<inputColumn id="222" name="" description="" lineageId="26" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="173" mappedColumnId="0"/>
-<inputColumn id="223" name="" description="" lineageId="29" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="174" mappedColumnId="0"/>
-<inputColumn id="224" name="" description="" lineageId="32" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="179" mappedColumnId="0"/>
-<inputColumn id="225" name="" description="" lineageId="35" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="180" mappedColumnId="0"/>
-<inputColumn id="226" name="" description="" lineageId="38" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="181" mappedColumnId="0"/>
-<inputColumn id="227" name="" description="" lineageId="41" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="182" mappedColumnId="0"/>
-<inputColumn id="228" name="" description="" lineageId="44" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="183" mappedColumnId="0"/>
-<inputColumn id="229" name="" description="" lineageId="47" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="184" mappedColumnId="0"/>
-<inputColumn id="230" name="" description="" lineageId="50" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="185" mappedColumnId="0"/>
-<inputColumn id="231" name="" description="" lineageId="53" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="186" mappedColumnId="0"/>
-<inputColumn id="232" name="" description="" lineageId="56" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="187" mappedColumnId="0"/>
-<inputColumn id="233" name="" description="" lineageId="59" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="188" mappedColumnId="0"/>
-<inputColumn id="234" name="" description="" lineageId="62" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="189" mappedColumnId="0"/>
-<inputColumn id="235" name="" description="" lineageId="65" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="190" mappedColumnId="0"/>
-<inputColumn id="236" name="" description="" lineageId="68" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="191" mappedColumnId="0"/>
-<inputColumn id="237" name="" description="" lineageId="71" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="192" mappedColumnId="0"/>
-<inputColumn id="238" name="" description="" lineageId="74" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="193" mappedColumnId="0"/>
-<inputColumn id="239" name="" description="" lineageId="77" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="194" mappedColumnId="0"/>
-<inputColumn id="240" name="" description="" lineageId="80" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="195" mappedColumnId="0"/>
-<inputColumn id="241" name="" description="" lineageId="83" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="196" mappedColumnId="0"/>
-<inputColumn id="242" name="" description="" lineageId="86" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="197" mappedColumnId="0"/>
-<inputColumn id="243" name="" description="" lineageId="89" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="198" mappedColumnId="0"/>
-<inputColumn id="244" name="" description="" lineageId="92" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="199" mappedColumnId="0"/>
-<inputColumn id="245" name="" description="" lineageId="95" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="200" mappedColumnId="0"/>
-<inputColumn id="246" name="" description="" lineageId="98" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="201" mappedColumnId="0"/>
-<inputColumn id="247" name="" description="" lineageId="101" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="202" mappedColumnId="0"/>
-<inputColumn id="248" name="" description="" lineageId="104" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="203" mappedColumnId="0"/>
-<inputColumn id="249" name="" description="" lineageId="107" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="204" mappedColumnId="0"/>
-<inputColumn id="250" name="" description="" lineageId="110" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="205" mappedColumnId="0"/>
-<inputColumn id="251" name="" description="" lineageId="113" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="206" mappedColumnId="0"/>
-<inputColumn id="252" name="" description="" lineageId="116" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="207" mappedColumnId="0"/>
-<inputColumn id="253" name="" description="" lineageId="119" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="208" mappedColumnId="0"/>
-<inputColumn id="254" name="" description="" lineageId="122" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="209" mappedColumnId="0"/>
-<inputColumn id="255" name="" description="" lineageId="125" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="210" mappedColumnId="0"/>
-<inputColumn id="256" name="" description="" lineageId="128" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="211" mappedColumnId="0"/>
-<inputColumn id="257" name="" description="" lineageId="131" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="212" mappedColumnId="0"/>
-<inputColumn id="258" name="" description="" lineageId="332" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="213" mappedColumnId="0"/>
-<inputColumn id="259" name="" description="" lineageId="335" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="214" mappedColumnId="0"/>
-<inputColumn id="260" name="" description="" lineageId="338" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="215" mappedColumnId="0"/>
-<inputColumn id="261" name="" description="" lineageId="341" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="216" mappedColumnId="0"/>
-<inputColumn id="262" name="" description="" lineageId="344" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="217" mappedColumnId="0"/>
-<inputColumn id="263" name="" description="" lineageId="347" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="218" mappedColumnId="0"/>
-<inputColumn id="353" name="" description="" lineageId="351" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="349" mappedColumnId="0"/>
+<input id="367" name="OLE DB Destination Input" description="" hasSideEffects="true" dangling="false" errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" truncationRowDisposition="NotUsed"><inputColumns>
+<inputColumn id="423" name="" description="" lineageId="17" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="373" mappedColumnId="0"/>
+<inputColumn id="424" name="" description="" lineageId="20" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="374" mappedColumnId="0"/>
+<inputColumn id="425" name="" description="" lineageId="23" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="375" mappedColumnId="0"/>
+<inputColumn id="426" name="" description="" lineageId="26" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="376" mappedColumnId="0"/>
+<inputColumn id="427" name="" description="" lineageId="29" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="377" mappedColumnId="0"/>
+<inputColumn id="428" name="" description="" lineageId="32" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="382" mappedColumnId="0"/>
+<inputColumn id="429" name="" description="" lineageId="35" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="383" mappedColumnId="0"/>
+<inputColumn id="430" name="" description="" lineageId="38" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="384" mappedColumnId="0"/>
+<inputColumn id="431" name="" description="" lineageId="41" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="385" mappedColumnId="0"/>
+<inputColumn id="432" name="" description="" lineageId="44" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="386" mappedColumnId="0"/>
+<inputColumn id="433" name="" description="" lineageId="47" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="387" mappedColumnId="0"/>
+<inputColumn id="434" name="" description="" lineageId="50" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="388" mappedColumnId="0"/>
+<inputColumn id="435" name="" description="" lineageId="53" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="389" mappedColumnId="0"/>
+<inputColumn id="436" name="" description="" lineageId="56" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="390" mappedColumnId="0"/>
+<inputColumn id="437" name="" description="" lineageId="59" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="391" mappedColumnId="0"/>
+<inputColumn id="438" name="" description="" lineageId="62" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="392" mappedColumnId="0"/>
+<inputColumn id="439" name="" description="" lineageId="65" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="393" mappedColumnId="0"/>
+<inputColumn id="440" name="" description="" lineageId="68" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="394" mappedColumnId="0"/>
+<inputColumn id="441" name="" description="" lineageId="71" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="395" mappedColumnId="0"/>
+<inputColumn id="442" name="" description="" lineageId="74" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="396" mappedColumnId="0"/>
+<inputColumn id="443" name="" description="" lineageId="77" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="397" mappedColumnId="0"/>
+<inputColumn id="444" name="" description="" lineageId="80" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="398" mappedColumnId="0"/>
+<inputColumn id="445" name="" description="" lineageId="83" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="399" mappedColumnId="0"/>
+<inputColumn id="446" name="" description="" lineageId="86" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="400" mappedColumnId="0"/>
+<inputColumn id="447" name="" description="" lineageId="89" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="401" mappedColumnId="0"/>
+<inputColumn id="448" name="" description="" lineageId="92" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="402" mappedColumnId="0"/>
+<inputColumn id="449" name="" description="" lineageId="95" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="403" mappedColumnId="0"/>
+<inputColumn id="450" name="" description="" lineageId="98" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="404" mappedColumnId="0"/>
+<inputColumn id="451" name="" description="" lineageId="101" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="405" mappedColumnId="0"/>
+<inputColumn id="452" name="" description="" lineageId="104" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="406" mappedColumnId="0"/>
+<inputColumn id="453" name="" description="" lineageId="107" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="407" mappedColumnId="0"/>
+<inputColumn id="454" name="" description="" lineageId="110" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="408" mappedColumnId="0"/>
+<inputColumn id="455" name="" description="" lineageId="113" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="409" mappedColumnId="0"/>
+<inputColumn id="456" name="" description="" lineageId="116" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="410" mappedColumnId="0"/>
+<inputColumn id="457" name="" description="" lineageId="119" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="411" mappedColumnId="0"/>
+<inputColumn id="458" name="" description="" lineageId="122" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="412" mappedColumnId="0"/>
+<inputColumn id="459" name="" description="" lineageId="125" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="413" mappedColumnId="0"/>
+<inputColumn id="460" name="" description="" lineageId="128" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="414" mappedColumnId="0"/>
+<inputColumn id="461" name="" description="" lineageId="131" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="415" mappedColumnId="0"/>
+<inputColumn id="463" name="" description="" lineageId="332" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="416" mappedColumnId="0"/>
+<inputColumn id="464" name="" description="" lineageId="335" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="417" mappedColumnId="0"/>
+<inputColumn id="465" name="" description="" lineageId="338" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="418" mappedColumnId="0"/>
+<inputColumn id="466" name="" description="" lineageId="341" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="419" mappedColumnId="0"/>
+<inputColumn id="467" name="" description="" lineageId="344" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="420" mappedColumnId="0"/>
+<inputColumn id="468" name="" description="" lineageId="347" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="421" mappedColumnId="0"/>
+<inputColumn id="469" name="" description="" lineageId="351" usageType="readOnly" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="422" mappedColumnId="0"/>
 </inputColumns><externalMetadataColumns isUsed="True">
-<externalMetadataColumn id="169" name="PRODUCTID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="170" name="NAME" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="171" name="DESCRIPTION" description="" precision="0" scale="0" length="0" dataType="text" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="172" name="ACTUALID" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="173" name="FAMILY" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="174" name="PRICE" description="" precision="17" scale="4" length="0" dataType="numeric" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="175" name="CREATEDATE" description="" precision="0" scale="0" length="0" dataType="dbTimeStamp" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="176" name="CREATEUSER" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="177" name="MODIFYDATE" description="" precision="0" scale="0" length="0" dataType="dbTimeStamp" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="178" name="MODIFYUSER" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="179" name="PRODUCTGROUP" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="180" name="STATUS" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="181" name="UNIT" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="182" name="STOCKVOLUME" description="" precision="0" scale="0" length="0" dataType="r4" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="183" name="STOCKWEIGHT" description="" precision="0" scale="0" length="0" dataType="r4" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="184" name="STOCKITEM" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="185" name="PROGRAM" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="186" name="SUPPLIER" description="" precision="0" scale="0" length="128" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="187" name="VENDOR" description="" precision="0" scale="0" length="128" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="188" name="SITEID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="189" name="WAREHOUSELOCATION" description="" precision="0" scale="0" length="10" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="190" name="COMMISSIONABLE" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="191" name="TAXABLE" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="192" name="ACCOUNTINGPERIOD" description="" precision="0" scale="0" length="6" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="193" name="GLACCOUNTNUMBER" description="" precision="0" scale="0" length="10" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="194" name="GLSUBACCOUNTNUMBER" description="" precision="0" scale="0" length="24" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="195" name="DATAOWNER" description="" precision="0" scale="0" length="2" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="196" name="TYPE" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="197" name="FIXEDCOST" description="" precision="17" scale="4" length="0" dataType="numeric" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="198" name="GLOBALSYNCID" description="" precision="0" scale="0" length="36" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="199" name="APPID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="200" name="TICK" description="" precision="0" scale="0" length="0" dataType="i4" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="201" name="COMMODITYGROUPID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="202" name="ACTIVEFLAG" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="203" name="SELLINGALLOWEDFLAG" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="204" name="UNITOFMEASUREID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="205" name="SELLINGUOMID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="206" name="SELLINGUOMNUMBER" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="207" name="CLASSIFICATION" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="208" name="COMMODITYTYPE" description="" precision="0" scale="0" length="32" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="209" name="MASITEMKEY" description="" precision="0" scale="0" length="0" dataType="i4" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="210" name="UPC" description="" precision="0" scale="0" length="32" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="211" name="MASITEMID" description="" precision="0" scale="0" length="30" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="212" name="WAREHOUSEID" description="" precision="0" scale="0" length="3" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="213" name="COMPANYID" description="" precision="0" scale="0" length="3" dataType="str" codePage="1252" mappedColumnId="0"/>
-<externalMetadataColumn id="214" name="QTYONHAND" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="215" name="QTYAVAILABLE" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="216" name="SURPLUSQTY" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="217" name="QTYONHOLD" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="218" name="MAXSTOCKLEVEL" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
-<externalMetadataColumn id="349" name="MASPRODPRICEGROUPKEY" description="" precision="0" scale="0" length="32" dataType="str" codePage="1252" mappedColumnId="0"/></externalMetadataColumns></input>
+<externalMetadataColumn id="372" name="PRODUCTID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="373" name="NAME" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="374" name="DESCRIPTION" description="" precision="0" scale="0" length="0" dataType="text" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="375" name="ACTUALID" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="376" name="FAMILY" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="377" name="PRICE" description="" precision="17" scale="4" length="0" dataType="numeric" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="378" name="CREATEDATE" description="" precision="0" scale="0" length="0" dataType="dbTimeStamp" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="379" name="CREATEUSER" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="380" name="MODIFYDATE" description="" precision="0" scale="0" length="0" dataType="dbTimeStamp" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="381" name="MODIFYUSER" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="382" name="PRODUCTGROUP" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="383" name="STATUS" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="384" name="UNIT" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="385" name="STOCKVOLUME" description="" precision="0" scale="0" length="0" dataType="r4" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="386" name="STOCKWEIGHT" description="" precision="0" scale="0" length="0" dataType="r4" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="387" name="STOCKITEM" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="388" name="PROGRAM" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="389" name="SUPPLIER" description="" precision="0" scale="0" length="128" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="390" name="VENDOR" description="" precision="0" scale="0" length="128" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="391" name="SITEID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="392" name="WAREHOUSELOCATION" description="" precision="0" scale="0" length="10" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="393" name="COMMISSIONABLE" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="394" name="TAXABLE" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="395" name="ACCOUNTINGPERIOD" description="" precision="0" scale="0" length="6" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="396" name="GLACCOUNTNUMBER" description="" precision="0" scale="0" length="10" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="397" name="GLSUBACCOUNTNUMBER" description="" precision="0" scale="0" length="24" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="398" name="DATAOWNER" description="" precision="0" scale="0" length="2" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="399" name="TYPE" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="400" name="FIXEDCOST" description="" precision="17" scale="4" length="0" dataType="numeric" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="401" name="GLOBALSYNCID" description="" precision="0" scale="0" length="36" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="402" name="APPID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="403" name="TICK" description="" precision="0" scale="0" length="0" dataType="i4" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="404" name="COMMODITYGROUPID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="405" name="ACTIVEFLAG" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="406" name="SELLINGALLOWEDFLAG" description="" precision="0" scale="0" length="1" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="407" name="UNITOFMEASUREID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="408" name="SELLINGUOMID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="409" name="SELLINGUOMNUMBER" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="410" name="CLASSIFICATION" description="" precision="0" scale="0" length="64" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="411" name="COMMODITYTYPE" description="" precision="0" scale="0" length="32" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="412" name="MASITEMKEY" description="" precision="0" scale="0" length="0" dataType="i4" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="413" name="UPC" description="" precision="0" scale="0" length="32" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="414" name="MASITEMID" description="" precision="0" scale="0" length="30" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="415" name="WAREHOUSEID" description="" precision="0" scale="0" length="3" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="416" name="COMPANYID" description="" precision="0" scale="0" length="3" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="417" name="QTYONHAND" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="418" name="QTYAVAILABLE" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="419" name="SURPLUSQTY" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="420" name="QTYONHOLD" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="421" name="MAXSTOCKLEVEL" description="" precision="0" scale="0" length="0" dataType="r8" codePage="0" mappedColumnId="0"/>
+<externalMetadataColumn id="422" name="MASPRODPRICEGROUPKEY" description="" precision="0" scale="0" length="32" dataType="str" codePage="1252" mappedColumnId="0"/></externalMetadataColumns></input>
 </inputs>
 <outputs>
-<output id="165" name="OLE DB Destination Error Output" description="" exclusionGroup="1" synchronousInputId="164" deleteOutputOnPathDetached="false" hasSideEffects="false" dangling="false" isErrorOut="true" isSorted="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><outputColumns>
-<outputColumn id="166" name="ErrorCode" description="" lineageId="166" precision="0" scale="0" length="0" dataType="i4" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="1" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
-<outputColumn id="167" name="ErrorColumn" description="" lineageId="167" precision="0" scale="0" length="0" dataType="i4" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="2" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/></outputColumns><externalMetadataColumns isUsed="False"/></output>
+<output id="368" name="OLE DB Destination Error Output" description="" exclusionGroup="1" synchronousInputId="367" deleteOutputOnPathDetached="false" hasSideEffects="false" dangling="false" isErrorOut="true" isSorted="false" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed"><outputColumns>
+<outputColumn id="369" name="ErrorCode" description="" lineageId="369" precision="0" scale="0" length="0" dataType="i4" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="1" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/>
+<outputColumn id="370" name="ErrorColumn" description="" lineageId="370" precision="0" scale="0" length="0" dataType="i4" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="2" errorOrTruncationOperation="" errorRowDisposition="NotUsed" truncationRowDisposition="NotUsed" externalMetadataColumnId="0" mappedColumnId="0"/></outputColumns><externalMetadataColumns isUsed="False"/></output>
 </outputs>
 </component>
 </components>
 <paths>
-<path id="330" name="OLE DB Source Output" description="" startId="11" endId="164"/>
+<path id="371" name="OLE DB Source Output" description="" startId="11" endId="367"/>
 </paths></pipeline></DTS:ObjectData></DTS:Executable>
 <DTS:Executable DTS:ExecutableType="SSIS.Pipeline.2">
 <DTS:Property DTS:Name="ExecutionLocation">0</DTS:Property>
@@ -591,7 +591,7 @@ where productid not in (Select productid from sysdba.productprogram)</property>
 <component id="1" name="OLE DB Source" componentClassID="{BCEFE59B-6819-47F7-A125-63753B33ABB7}" description="OLE DB Source" localeId="-1" usesDispositions="true" validateExternalMetadata="True" version="7" pipelineVersion="0" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7">
 <properties>
 <property id="2" name="CommandTimeout" dataType="System.Int32" state="default" isArray="false" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">0</property>
-<property id="3" name="OpenRowset" dataType="System.String" state="default" isArray="false" description="Specifies the name of the database object used to open a rowset." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">[dbo].[vdvMAS_to_SLX_Products_Changed_TAC]</property>
+<property id="3" name="OpenRowset" dataType="System.String" state="default" isArray="false" description="Specifies the name of the database object used to open a rowset." typeConverter="" UITypeEditor="" containsID="false" expressionType="None">[dbo].[vdvMAS_to_SLX_Products_TAC_Changed]</property>
 <property id="4" name="OpenRowsetVariable" dataType="System.String" state="default" isArray="false" description="Specifies the variable that contains the name of the database object used to open a rowset." typeConverter="" UITypeEditor="" containsID="false" expressionType="None"></property>
 <property id="5" name="SqlCommand" dataType="System.String" state="default" isArray="false" description="The SQL command to be executed." typeConverter="" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" containsID="false" expressionType="None">Select * from vdvMAS_to_SLX_Products_Changed_TAC</property>
 <property id="6" name="SqlCommandVariable" dataType="System.String" state="default" isArray="false" description="The variable that contains the SQL command to be executed." typeConverter="" UITypeEditor="" containsID="false" expressionType="None"></property>
@@ -650,7 +650,7 @@ where productid not in (Select productid from sysdba.productprogram)</property>
 <outputColumn id="302" name="QtyOnHold" description="" lineageId="302" precision="16" scale="8" length="0" dataType="numeric" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="0" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" truncationRowDisposition="FailComponent" externalMetadataColumnId="301" mappedColumnId="0"/>
 <outputColumn id="305" name="MaxStockLevel" description="" lineageId="305" precision="16" scale="8" length="0" dataType="numeric" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="0" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" truncationRowDisposition="FailComponent" externalMetadataColumnId="304" mappedColumnId="0"/>
 <outputColumn id="308" name="ProdPriceGroupKey" description="" lineageId="308" precision="0" scale="0" length="0" dataType="i4" codePage="0" sortKeyPosition="0" comparisonFlags="0" specialFlags="0" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" truncationRowDisposition="FailComponent" externalMetadataColumnId="307" mappedColumnId="0"/></outputColumns><externalMetadataColumns isUsed="True">
-<externalMetadataColumn id="16" name="MYID" description="" precision="0" scale="0" length="8000" dataType="str" codePage="1252" mappedColumnId="0"/>
+<externalMetadataColumn id="16" name="MYID" description="" precision="0" scale="0" length="5610" dataType="str" codePage="1252" mappedColumnId="0"/>
 <externalMetadataColumn id="19" name="PRODUCTID" description="" precision="0" scale="0" length="12" dataType="str" codePage="1252" mappedColumnId="0"/>
 <externalMetadataColumn id="22" name="NAME" description="" precision="0" scale="0" length="40" dataType="str" codePage="1252" mappedColumnId="0"/>
 <externalMetadataColumn id="25" name="DESCRIPTION" description="" precision="0" scale="0" length="255" dataType="str" codePage="1252" mappedColumnId="0"/>
@@ -1821,30 +1821,23 @@ Public Class ScriptMain
     Public Overrides Sub Input0_ProcessInputRow(ByVal Row As Input0Buffer)
         '
         ' Add your code here
-        '
         Dim objConn As New ADODB.Connection()
         Dim objRS As New ADODB.Recordset
-        Dim strSQL As String = "SELECT * FROM PRODUCT WHERE PRODUCTID ='" & Row.PRODUCTID.ToString & "'"   'Get A Blank Recordset
+        Dim strSQL As String = "SELECT * FROM PRODUCT WHERE PRODUCTID ='" & Row.PRODUCTID & "'"   'Get A Blank Recordset
+
 
         Try
-            objConn.Open(Me.Variables.SLXConnectionString)
+            objConn.Open(Variables.SLXConnectionString)
             With objRS
                 .CursorLocation = ADODB.CursorLocationEnum.adUseClient
                 .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
                 .LockType = ADODB.LockTypeEnum.adLockOptimistic
                 .Open(strSQL, objConn)
-                If .EOF Then
+                If Not .EOF Then
                     '=============================================
-                    ' Insert
+                    ' Update
                     '=============================================
-                   
 
-                Else
-                   
-                    .Fields("MODIFYDATE").Value = Now
-                    .Fields("MODIFYUSER").Value = "ADMIN"
-
-                    '.Fields("PRODUCTID").Value = Row.PRODUCTID
                     .Fields("NAME").Value = Row.NAME
                     .Fields("DESCRIPTION").Value = Row.DESCRIPTION
                     .Fields("ACTUALID").Value = Row.ACTUALID
@@ -1853,45 +1846,49 @@ Public Class ScriptMain
                     .Fields("PRODUCTGROUP").Value = Row.PRODUCTGROUP
                     .Fields("STATUS").Value = Row.STATUS
                     .Fields("UNIT").Value = Row.UNIT
-                    .Fields("STOCKVOLUME").Value = Row.STOCKVOLUME
-                    .Fields("STOCKWEIGHT").Value = Row.STOCKWEIGHT
-                    .Fields("STOCKITEM").Value = Row.STOCKITEM
-                    .Fields("PROGRAM").Value = Row.PROGRAM
-                    .Fields("SUPPLIER").Value = Row.SUPPLIER
-                    .Fields("VENDOR").Value = Row.VENDOR
-                    .Fields("SITEID").Value = Row.SITEID
-                    .Fields("WAREHOUSELOCATION").Value = Row.WAREHOUSELOCATION
-                    .Fields("COMMISSIONABLE").Value = Row.COMMISSIONABLE
-                    .Fields("TAXABLE").Value = Row.TAXABLE
-                    .Fields("ACCOUNTINGPERIOD").Value = Row.ACCOUNTINGPERIOD
+                    '.Fields("STOCKVOLUME").Value = Row.STOCKVOLUME
+                    '.Fields("STOCKWEIGHT").Value = Row.STOCKWEIGHT
+                    '.Fields("STOCKITEM").Value = Row.STOCKITEM
+                    '.Fields("PROGRAM").Value = Row.PROGRAM
+                    '.Fields("SUPPLIER").Value = Row.SUPPLIER
+                    '.Fields("VENDOR").Value = Row.VENDOR
+                    '.Fields("SITEID").Value = Row.SITEID
+                    '.Fields("WAREHOUSELOCATION").Value = Row.WAREHOUSELOCATION
+                    '.Fields("COMMISSIONABLE").Value = Row.COMMISSIONABLE
+                    '.Fields("TAXABLE").Value = Row.TAXABLE
+                    '.Fields("ACCOUNTINGPERIOD").Value = Row.ACCOUNTINGPERIOD
                     .Fields("GLACCOUNTNUMBER").Value = Row.GLACCOUNTNUMBER
-                    .Fields("GLSUBACCOUNTNUMBER").Value = Row.GLSUBACCOUNTNUMBER
-                    .Fields("DATAOWNER").Value = Row.DATAOWNER
-                    .Fields("TYPE").Value = Row.TYPE
-                    .Fields("FIXEDCOST").Value = Row.FIXEDCOST
-                    .Fields("GLOBALSYNCID").Value = Row.GLOBALSYNCID
-                    .Fields("APPID").Value = Row.APPID
-                    .Fields("TICK").Value = Row.TICK
-                    .Fields("COMMODITYGROUPID").Value = Row.COMMODITYGROUPID
-                    .Fields("ACTIVEFLAG").Value = Row.ACTIVEFLAG
-                    .Fields("SELLINGALLOWEDFLAG").Value = Row.SELLINGALLOWEDFLAG
+                    '.Fields("GLSUBACCOUNTNUMBER").Value = Row.GLSUBACCOUNTNUMBER
+                    '.Fields("DATAOWNER").Value = Row.DATAOWNER
+                    '.Fields("TYPE").Value = Row.TYPE
+                    '.Fields("FIXEDCOST").Value = Row.FIXEDCOST
+                    '.Fields("GLOBALSYNCID").Value = Row.GLOBALSYNCID
+                    '.Fields("APPID").Value = Row.APPID
+                    '.Fields("TICK").Value = Row.TICK
+                    '.Fields("COMMODITYGROUPID").Value = Row.COMMODITYGROUPID
+                    '.Fields("ACTIVEFLAG").Value = Row.ACTIVEFLAG
+                    '.Fields("SELLINGALLOWEDFLAG").Value = Row.SELLINGALLOWEDFLAG
                     .Fields("UNITOFMEASUREID").Value = Row.UNITOFMEASUREID
-                    .Fields("SELLINGUOMID").Value = Row.SELLINGUOMID
-                    .Fields("SELLINGUOMNUMBER").Value = Row.SELLINGUOMNUMBER
-                    .Fields("CLASSIFICATION").Value = Row.CLASSIFICATION
-                    .Fields("COMMODITYTYPE").Value = Row.COMMODITYTYPE
+                    '.Fields("SELLINGUOMID").Value = Row.SELLINGUOMID
+                    '.Fields("SELLINGUOMNUMBER").Value = Row.SELLINGUOMNUMBER
+                    '.Fields("CLASSIFICATION").Value = Row.CLASSIFICATION
+                    '.Fields("COMMODITYTYPE").Value = Row.COMMODITYTYPE
                     .Fields("MASITEMKEY").Value = Row.MASITEMKEY
                     .Fields("UPC").Value = Row.UPC
                     .Fields("MASITEMID").Value = Row.MASITEMID
                     .Fields("WAREHOUSEID").Value = Row.WAREHOUSEID
-                    .Fields("COMPANYID").Value = Row.COMPANYID
-                    .Fields("QTYONHAND").Value = Row.QTYONHAND
-                    .Fields("QTYAVAILABLE").Value = Row.QTYAVAILABLE
-                    .Fields("SURPLUSQTY").Value = Row.SURPLUSQTY
-                    .Fields("QTYONHOLD").Value = Row.QTYONHOLD
-                    .Fields("MAXSTOCKLEVEL").Value = Row.MaxStockLevel
-                    .Fields("MASPRODPRICEGROUPKEY").Value = Row.ProdPriceGroupKey
-                    
+                    .Fields("CompanyID").Value = Row.CompanyID
+                    .Fields("QtyOnHand").Value = Row.QtyOnHand
+                    .Fields("QtyAvailable").Value = Row.QtyAvailable
+                    .Fields("SurplusQty").Value = Row.SurplusQty
+                    .Fields("QtyOnHold").Value = Row.QtyOnHold
+                    .Fields("MaxStockLevel").Value = Row.MaxStockLevel
+                    .Fields("MASProdPriceGroupKey").Value = Row.ProdPriceGroupKey
+                
+
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
                     .Update()              ' Move to next record
                 End If
 
@@ -1907,23 +1904,24 @@ Public Class ScriptMain
             'Dim ErrorMessage As String = ""
             'ErrorMessage = " SubjectID =" & SubjectID & " RecordID=" & ID & "  Error Updating " & Field & " Value= " & Value & "....." & ex.Message & " " & Now
             'WriteErrorLog(SubjectID, ID, Field, Value, ex.Message)
-            'Console.WriteLine(ex.Message)
+
 
         End Try
+
     End Sub
 
 End Class
 ]]></arrayElement></arrayElements></property>
 <property id="233" name="BinaryCode" dataType="System.String" state="cdata" isArray="true" description="Stores the binary representation of the component" typeConverter="" UITypeEditor="" containsID="false" expressionType="None"><arrayElements arrayElementCount="2"><arrayElement dataType="System.String"><![CDATA[\bin\sc_d7a7b465e954421ebd9d06a177a7b30b.vbproj.dll]]></arrayElement><arrayElement dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAIIdrFAAAAAAAAAAAOAAAiELAQgAAFAAAAAMAAAAAAAA/m0A
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAKxMQ1EAAAAAAAAAAOAAAiELAQgAAEoAAAAMAAAAAAAAXmgA
 AAAgAAAAgAAAAABAAAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAADAAAAAAgAAAAAAAAIAQIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAKRtAABXAAAAAIAAAFgJAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAAxoAABPAAAAAIAAAFgJAAAAAAAAAAAAAAAAAAAA
 AAAAAKAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAABE4AAAAgAAAAUAAAAAIA
-AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAFgJAAAAgAAAAAoAAABSAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAKAAAAACAAAAXAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADg
-bQAAAAAAAEgAAAACAAUAADYAAKQ3AAABAAAAAAAAAFAgAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAZEgAAAAgAAAASgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAFgJAAAAgAAAAAoAAABMAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAKAAAAACAAAAVgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABA
+aAAAAAAAAEgAAAACAAUAxDIAAEg1AAABAAAAAAAAAFAgAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5S
 ZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFs
 LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGlt
@@ -1987,347 +1985,320 @@ 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
-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
-AAYAwCwAAAAABghMCq4ABgDYLAAAAAAGCGEKsgAGAPwsAAAAAAYIcwquAAYAFC0AAAAABgiMCmgA
-BgA4LQAAAAAGCKIKrgAGAFAtAAAAAIYAvwquAAYAaC0AAAAAhgDHCq4ABgCALQAAAAAGGJMBEwAG
-AKAtAAAAAEYCSBDQAAYAwC0AAAAARgNdENcACADULQAAAABGA3EQ1wAJANgtAAAAAAYYkwHhAAoA
-6C0AAAAABggKEecACwAULgAAAAAGGJMB4QALACQuAAAAAAYIJBFxAAwAUC4AAAAABhiTARMADABY
-LgAAAABGAlAREwAMAGAuAAAAAEYCWxETAAwAaC4AAAAARgJxENcADAAoNQAAAAADGJMBEwANADA1
-AAAAABYIvRH5AA0AbDUAAAAAFgjREf4ADQCANQAAAAAWCN0RAwENAIg1AAAAABEYzgEXAA4AnDUA
-AAAABhiTARMADgCkNQAAAAAWCDkSGgEOAAAAAQCPAgAAAQDIAgAAAQDIAgAAAQC/AwAAAgDGAwAA
-AQBVEAAAAgC/AwAAAQC/AwAAAQCIEAAAAQCcEAAAAQCcEAAAAQCIEAAAAQDpEQkAkwETAHkAkwEk
-AYkAkwEzAREAkwETAJEAkwETACQAkwETACwAkwETADQAkwETADwAkwETACQA5QKLACwA5QKLADQA
-5QKLADwA5QKLAJkAkwETAKEAkwETAKkAkwGGAbEAmRPRARkAiAJjABkAkQJoACkAuhPeARkAqgJx
-AMEA1hPuARkAkwETAMkAkwH+AUQALgOQAEwAORKLAEwAABR7AkwAkwETANEAkwGIAjkAkwGmADkA
-vwOTAjkAxgOXAkEAPRSbAjkARxSgAkEAThSlAkEAWRSwAjkAvwquADkAxwquANkAkwGIAlEAkwET
-AFEAeBS1AlEA7xS7AuEAKBXAAukAYRXFAvEAbxXnAFEAlhXQAvkAvBXVAgEBORLcAgkBqgLgAlEA
-UBETAFEAWxETACkBkwETADEBkwETADkBqgJxADkBERblAkEBJBbsAkkBRxb0AkkBaRb7AkkBhRYC
-A0kBJBYJA0kBkhauAEkBoRYWA2kBvBUcA3kBxxYjA3EBABQpA5EB6REuA0kB7xYzA0kB9hYTAEEB
-9hYTAJkBCBc5A5kBGBcXAKEBkwETACkAWhdQA2EAkwFWA3EAkwETALEBgBdzA7EBhhdzA7kBkwET
-AMEBkwF9A8kBkwETANEBkwGGAdkBkwGGAeEBkwGGAekBkwGGAfEBkwGGAfkBkwGGAQECkwGGAQkC
-kwGGASkAgwCzAS4AqwIHBC4AwwIHBC4AowLnAy4AgwKLAy4AmwKNAi4AswI3BC4AuwKNAi4AewKC
-Ay4AiwKqAy4AkwK3Ay4A6wCNAi4AOwHhA0AAKwBRAUAAEwAqAUMAEwAqAUMAGwA5AUkAgwCfAWMA
-EwAqAWMAGwA5AWkAgwDEAYAAKwBRAYMAcwBRAYMAGwA5AYMAewBRAYkAgwCLAaAAKwBRAaMAEwAq
-AaMAwwAGAsAAKwBRAcMAEwAqAcMA6wCNAuAAKwBRAeMAOwGNAgABEwAqAQABKwBRAQMBOwGNAiAB
-EwAqASABKwBRAUABKwBRAUABEwAqAWABKwBRAWABEwAqAWMBOwGNAmMBQwJRAYABKwBRAaABKwBR
-AcABEwAqAcABKwBRAeABKwBRAQACEwAqAQACKwBRAckMEwBqA+kMEwBqAwkNcwJRAcAOOwGNAgAP
-OwGNAnIBdwF8AYEB1gHaAeUB6gH5AfkBgQLqAdYB6gHWAeoB1gHqAdYB6gHWAasC1gHqAdYB6gHW
-AeoB1gHaAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHaAdYB2gHWAeoB1gHaAdYB
-2gHWAdoB1gHaAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHqAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHa
-AdYB6gHWAeoB1gHqAdYB6gHWAasC1gGrAtYBqwLWAasC1gGrAtYB2gHWAdYB1gHLAuoBQANeA2UD
-eAMEAAEABgAFAAcABgAJAGQACgBlAAwAZgANAGgAAAC3AU8AAABwAlQAAAAfAlkAAAB8Al4AAAA4
-A5gAAADTCrcAAADdCrsAAADuCrcAAADzCrsAAAD/CrcAAAALC7sAAAAeC7cAAAAnC7sAAAA3C7cA
-AAA+C7sAAABMC78AAABSC7sAAABfC7cAAABsC7sAAACAC7cAAACHC7sAAACVC7cAAACaC7sAAACm
-C8QAAACyC7sAAADFC8QAAADRC7sAAADkC8QAAADuC7sAAAD/C8QAAAAHDLsAAAAWDMQAAAAfDLsA
-AAAvDMQAAAA2DLsAAABEDMQAAABLDLsAAABZDMQAAABrDLsAAACEDMQAAACTDLsAAACpDMQAAACx
-DLsAAADADMQAAADRDLsAAADpDLcAAAD5DLsAAAAQDcQAAAAjDbsAAAA9DcQAAABHDbsAAABYDcQA
-AABdDbsAAABpDcQAAABzDbsAAACEDcQAAACRDbsAAAClDcQAAACrDbsAAAC4DcQAAAC9DbsAAADJ
-DcQAAADaDbsAAADyDcQAAAD9DbsAAAAPDrcAAAAiDrsAAAA8DsQAAABMDrsAAABjDsQAAABwDrsA
-AACEDsQAAACVDrsAAACtDsQAAAC8DrsAAADSDsQAAADgDrsAAAD1DsQAAAAAD7sAAAASD7cAAAAW
-D7sAAAAhD7cAAAArD7sAAAA8D7cAAABID7sAAABbD7cAAABlD7sAAAB2D78AAACAD7sAAACRD78A
-AACeD7sAAACyD78AAAC9D7sAAADPD78AAADZD7sAAADqD78AAAD4D7sAAAANEMQAAAAfELsAAAAZ
-EewAAAA8EbcAAAB4EQkBAADvEQ4BAADpER8BAgAEAAMAAgAFAAUAAgAGAAcAAgAHAAkAAgAPAAsA
-AgASAA0AAgATAA8AAgAUABEAAgAVABMAAgAWABUAAgAXABcAAgAYABkAAgAZABsAAgAaAB0AAgAb
-AB8AAgAcACEAAgAdACMAAgAeACUAAgAfACcAAgAgACkAAgAhACsAAgAiAC0AAgAjAC8AAgAkADEA
-AgAlADMAAgAmADUAAgAnADcAAgAoADkAAgApADsAAgAqAD0AAgArAD8AAgAsAEEAAgAtAEMAAgAu
-AEUAAgAvAEcAAgAwAEkAAgAxAEsAAgAyAE0AAgAzAE8AAgA0AFEAAgA1AFMAAgA2AFUAAgA3AFcA
-AgA4AFkAAgA5AFsAAgA6AF0AAgA7AF8AAgA8AGEAAgA9AGMAAgA+AGUAAgA/AGcAAgBAAGkAAgBB
-AGsAAgBCAG0AAgBDAG8AAgBEAHEAAgBFAHMAAgBGAHUAAgBHAHcAAgBIAHkAAgBJAHsAAgBKAH0A
-AgBLAH8AAgBMAIEAAgBNAIMAAgBOAIUAAgBPAIcAAgBQAIkAAgBRAIsAAgBSAI0AAgBTAI8AAgBU
-AJEAAgBVAJMAAgBWAJUAAgBXAJcAAgBYAJkAAgBZAJsAAgBaAJ0AAgBbAJ8AAgBcAKEAAgBdAKMA
-AgBeAKUAAgBfAKcAAgBgAKkAAgBhAKsAAgBiAK0AAgBjAK8AAgBkALEAAgBlALMAAgBmALUAAgBn
-ALcAAgBoALkAAgBpALsAAgBqAL0AAgBrAL8AAgBsAMEAAgBtAMMAAgBuAMUAAgBvAMcAAgB3AMkA
-AgB5AMsAAgB/AM0AAgCAAM8AAQCBAM8AAgCEANEAdQB1AIgAVgFdAWQBawFoAm8CBIAAAAEAAAAA
-AAAAAAAAAAAAsAAAAAIAAAAAAAAAAAAAAAEACgAAAAAACAAAAAAAAAAAAAAACgATAAAAAAAKAAAA
-AAAAAAAAAACdAEQDAAAAAAoAAAAAAAAAAAAAAJ0AjwMAAAAACgAAAAAAAAAAAAAAnQCmEAAAAAAC
-AAAAAAAAAAAAAAABAMABAAAAAAoAAAAAAAAAAAAAAJ0AiRQAAAAABwAAAOQMAAAAAAAACgDRFQAA
-AAAAAAAAAQAAAKgXAAAFAAQABgAEAAAAEAAMAMYCAAAQABkAxgIAAAAAGwDGAi0A9AEtAHYCAAAA
-AAA8TW9kdWxlPgBtc2NvcmxpYgBNaWNyb3NvZnQuVmlzdWFsQmFzaWMATXlBcHBsaWNhdGlvbgBT
-Q19kN2E3YjQ2NWU5NTQ0MjFlYmQ5ZDA2YTE3N2E3YjMwYi52YnByb2ouTXkATXlDb21wdXRlcgBN
-eVByb2plY3QATXlXZWJTZXJ2aWNlcwBUaHJlYWRTYWZlT2JqZWN0UHJvdmlkZXJgMQBJbnB1dDBC
-dWZmZXIAU0NfZDdhN2I0NjVlOTU0NDIxZWJkOWQwNmExNzdhN2IzMGIudmJwcm9qAFVzZXJDb21w
-b25lbnQAQ29ubmVjdGlvbnMAVmFyaWFibGVzAFNjcmlwdE1haW4ATXlSZXNvdXJjZXMAU0NfZDdh
-N2I0NjVlOTU0NDIxZWJkOWQwNmExNzdhN2IzMGIudmJwcm9qLk15LlJlc291cmNlcwBNeVNldHRp
-bmdzAE1pY3Jvc29mdC5WaXN1YWxCYXNpYy5BcHBsaWNhdGlvblNlcnZpY2VzAEFwcGxpY2F0aW9u
-QmFzZQAuY3RvcgBNaWNyb3NvZnQuVmlzdWFsQmFzaWMuRGV2aWNlcwBDb21wdXRlcgBTeXN0ZW0A
-T2JqZWN0AC5jY3RvcgBnZXRfQ29tcHV0ZXIAbV9Db21wdXRlck9iamVjdFByb3ZpZGVyAGdldF9B
-cHBsaWNhdGlvbgBtX0FwcE9iamVjdFByb3ZpZGVyAFVzZXIAZ2V0X1VzZXIAbV9Vc2VyT2JqZWN0
-UHJvdmlkZXIAZ2V0X1dlYlNlcnZpY2VzAG1fTXlXZWJTZXJ2aWNlc09iamVjdFByb3ZpZGVyAEFw
-cGxpY2F0aW9uAFdlYlNlcnZpY2VzAEVxdWFscwBvAEdldEhhc2hDb2RlAFR5cGUAR2V0VHlwZQBU
-b1N0cmluZwBDcmVhdGVfX0luc3RhbmNlX18AVABpbnN0YW5jZQBEaXNwb3NlX19JbnN0YW5jZV9f
-AGdldF9HZXRJbnN0YW5jZQBNaWNyb3NvZnQuVmlzdWFsQmFzaWMuTXlTZXJ2aWNlcy5JbnRlcm5h
-bABDb250ZXh0VmFsdWVgMQBtX0NvbnRleHQAR2V0SW5zdGFuY2UATWljcm9zb2Z0LlNxbFNlcnZl
-ci5UeFNjcmlwdABNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZQBTY3JpcHRCdWZmZXIA
-TWljcm9zb2Z0LlNxbFNlcnZlci5QaXBlbGluZUhvc3QAUGlwZWxpbmVCdWZmZXIAQnVmZmVyAEJ1
-ZmZlckNvbHVtbkluZGV4ZXMAZ2V0X1BST0RVQ1RJRABnZXRfUFJPRFVDVElEX0lzTnVsbABnZXRf
-TkFNRQBnZXRfTkFNRV9Jc051bGwAZ2V0X0RFU0NSSVBUSU9OAGdldF9ERVNDUklQVElPTl9Jc051
-bGwAZ2V0X0FDVFVBTElEAGdldF9BQ1RVQUxJRF9Jc051bGwAZ2V0X0ZBTUlMWQBnZXRfRkFNSUxZ
-X0lzTnVsbABEZWNpbWFsAGdldF9QUklDRQBnZXRfUFJJQ0VfSXNOdWxsAGdldF9QUk9EVUNUR1JP
-VVAAZ2V0X1BST0RVQ1RHUk9VUF9Jc051bGwAZ2V0X1NUQVRVUwBnZXRfU1RBVFVTX0lzTnVsbABn
-ZXRfVU5JVABnZXRfVU5JVF9Jc051bGwAZ2V0X1NUT0NLVk9MVU1FAGdldF9TVE9DS1ZPTFVNRV9J
-c051bGwAZ2V0X1NUT0NLV0VJR0hUAGdldF9TVE9DS1dFSUdIVF9Jc051bGwAZ2V0X1NUT0NLSVRF
-TQBnZXRfU1RPQ0tJVEVNX0lzTnVsbABnZXRfUFJPR1JBTQBnZXRfUFJPR1JBTV9Jc051bGwAZ2V0
-X1NVUFBMSUVSAGdldF9TVVBQTElFUl9Jc051bGwAZ2V0X1ZFTkRPUgBnZXRfVkVORE9SX0lzTnVs
-bABnZXRfU0lURUlEAGdldF9TSVRFSURfSXNOdWxsAGdldF9XQVJFSE9VU0VMT0NBVElPTgBnZXRf
-V0FSRUhPVVNFTE9DQVRJT05fSXNOdWxsAGdldF9DT01NSVNTSU9OQUJMRQBnZXRfQ09NTUlTU0lP
-TkFCTEVfSXNOdWxsAGdldF9UQVhBQkxFAGdldF9UQVhBQkxFX0lzTnVsbABnZXRfQUNDT1VOVElO
-R1BFUklPRABnZXRfQUNDT1VOVElOR1BFUklPRF9Jc051bGwAZ2V0X0dMQUNDT1VOVE5VTUJFUgBn
-ZXRfR0xBQ0NPVU5UTlVNQkVSX0lzTnVsbABnZXRfR0xTVUJBQ0NPVU5UTlVNQkVSAGdldF9HTFNV
-QkFDQ09VTlROVU1CRVJfSXNOdWxsAGdldF9EQVRBT1dORVIAZ2V0X0RBVEFPV05FUl9Jc051bGwA
-Z2V0X1RZUEUAZ2V0X1RZUEVfSXNOdWxsAGdldF9GSVhFRENPU1QAZ2V0X0ZJWEVEQ09TVF9Jc051
-bGwAZ2V0X0dMT0JBTFNZTkNJRABnZXRfR0xPQkFMU1lOQ0lEX0lzTnVsbABnZXRfQVBQSUQAZ2V0
-X0FQUElEX0lzTnVsbABnZXRfVElDSwBnZXRfVElDS19Jc051bGwAZ2V0X0NPTU1PRElUWUdST1VQ
-SUQAZ2V0X0NPTU1PRElUWUdST1VQSURfSXNOdWxsAGdldF9BQ1RJVkVGTEFHAGdldF9BQ1RJVkVG
-TEFHX0lzTnVsbABnZXRfU0VMTElOR0FMTE9XRURGTEFHAGdldF9TRUxMSU5HQUxMT1dFREZMQUdf
-SXNOdWxsAGdldF9VTklUT0ZNRUFTVVJFSUQAZ2V0X1VOSVRPRk1FQVNVUkVJRF9Jc051bGwAZ2V0
-X1NFTExJTkdVT01JRABnZXRfU0VMTElOR1VPTUlEX0lzTnVsbABnZXRfU0VMTElOR1VPTU5VTUJF
-UgBnZXRfU0VMTElOR1VPTU5VTUJFUl9Jc051bGwAZ2V0X0NMQVNTSUZJQ0FUSU9OAGdldF9DTEFT
-U0lGSUNBVElPTl9Jc051bGwAZ2V0X0NPTU1PRElUWVRZUEUAZ2V0X0NPTU1PRElUWVRZUEVfSXNO
-dWxsAGdldF9NQVNJVEVNS0VZAGdldF9NQVNJVEVNS0VZX0lzTnVsbABnZXRfVVBDAGdldF9VUENf
-SXNOdWxsAGdldF9NQVNJVEVNSUQAZ2V0X01BU0lURU1JRF9Jc051bGwAZ2V0X1dBUkVIT1VTRUlE
-AGdldF9XQVJFSE9VU0VJRF9Jc051bGwAZ2V0X0NvbXBhbnlJRABnZXRfQ29tcGFueUlEX0lzTnVs
-bABnZXRfUXR5T25IYW5kAGdldF9RdHlPbkhhbmRfSXNOdWxsAGdldF9RdHlBdmFpbGFibGUAZ2V0
-X1F0eUF2YWlsYWJsZV9Jc051bGwAZ2V0X1N1cnBsdXNRdHkAZ2V0X1N1cnBsdXNRdHlfSXNOdWxs
-AGdldF9RdHlPbkhvbGQAZ2V0X1F0eU9uSG9sZF9Jc051bGwAZ2V0X01heFN0b2NrTGV2ZWwAZ2V0
-X01heFN0b2NrTGV2ZWxfSXNOdWxsAGdldF9Qcm9kUHJpY2VHcm91cEtleQBnZXRfUHJvZFByaWNl
-R3JvdXBLZXlfSXNOdWxsAE5leHRSb3cARW5kT2ZSb3dzZXQAUFJPRFVDVElEAFBST0RVQ1RJRF9J
-c051bGwATkFNRQBOQU1FX0lzTnVsbABERVNDUklQVElPTgBERVNDUklQVElPTl9Jc051bGwAQUNU
-VUFMSUQAQUNUVUFMSURfSXNOdWxsAEZBTUlMWQBGQU1JTFlfSXNOdWxsAFBSSUNFAFBSSUNFX0lz
-TnVsbABQUk9EVUNUR1JPVVAAUFJPRFVDVEdST1VQX0lzTnVsbABTVEFUVVMAU1RBVFVTX0lzTnVs
-bABVTklUAFVOSVRfSXNOdWxsAFNUT0NLVk9MVU1FAFNUT0NLVk9MVU1FX0lzTnVsbABTVE9DS1dF
-SUdIVABTVE9DS1dFSUdIVF9Jc051bGwAU1RPQ0tJVEVNAFNUT0NLSVRFTV9Jc051bGwAUFJPR1JB
-TQBQUk9HUkFNX0lzTnVsbABTVVBQTElFUgBTVVBQTElFUl9Jc051bGwAVkVORE9SAFZFTkRPUl9J
-c051bGwAU0lURUlEAFNJVEVJRF9Jc051bGwAV0FSRUhPVVNFTE9DQVRJT04AV0FSRUhPVVNFTE9D
-QVRJT05fSXNOdWxsAENPTU1JU1NJT05BQkxFAENPTU1JU1NJT05BQkxFX0lzTnVsbABUQVhBQkxF
-AFRBWEFCTEVfSXNOdWxsAEFDQ09VTlRJTkdQRVJJT0QAQUNDT1VOVElOR1BFUklPRF9Jc051bGwA
-R0xBQ0NPVU5UTlVNQkVSAEdMQUNDT1VOVE5VTUJFUl9Jc051bGwAR0xTVUJBQ0NPVU5UTlVNQkVS
-AEdMU1VCQUNDT1VOVE5VTUJFUl9Jc051bGwAREFUQU9XTkVSAERBVEFPV05FUl9Jc051bGwAVFlQ
-RQBUWVBFX0lzTnVsbABGSVhFRENPU1QARklYRURDT1NUX0lzTnVsbABHTE9CQUxTWU5DSUQAR0xP
-QkFMU1lOQ0lEX0lzTnVsbABBUFBJRABBUFBJRF9Jc051bGwAVElDSwBUSUNLX0lzTnVsbABDT01N
-T0RJVFlHUk9VUElEAENPTU1PRElUWUdST1VQSURfSXNOdWxsAEFDVElWRUZMQUcAQUNUSVZFRkxB
-R19Jc051bGwAU0VMTElOR0FMTE9XRURGTEFHAFNFTExJTkdBTExPV0VERkxBR19Jc051bGwAVU5J
-VE9GTUVBU1VSRUlEAFVOSVRPRk1FQVNVUkVJRF9Jc051bGwAU0VMTElOR1VPTUlEAFNFTExJTkdV
-T01JRF9Jc051bGwAU0VMTElOR1VPTU5VTUJFUgBTRUxMSU5HVU9NTlVNQkVSX0lzTnVsbABDTEFT
-U0lGSUNBVElPTgBDTEFTU0lGSUNBVElPTl9Jc051bGwAQ09NTU9ESVRZVFlQRQBDT01NT0RJVFlU
-WVBFX0lzTnVsbABNQVNJVEVNS0VZAE1BU0lURU1LRVlfSXNOdWxsAFVQQwBVUENfSXNOdWxsAE1B
-U0lURU1JRABNQVNJVEVNSURfSXNOdWxsAFdBUkVIT1VTRUlEAFdBUkVIT1VTRUlEX0lzTnVsbABD
-b21wYW55SUQAQ29tcGFueUlEX0lzTnVsbABRdHlPbkhhbmQAUXR5T25IYW5kX0lzTnVsbABRdHlB
-dmFpbGFibGUAUXR5QXZhaWxhYmxlX0lzTnVsbABTdXJwbHVzUXR5AFN1cnBsdXNRdHlfSXNOdWxs
-AFF0eU9uSG9sZABRdHlPbkhvbGRfSXNOdWxsAE1heFN0b2NrTGV2ZWwATWF4U3RvY2tMZXZlbF9J
-c051bGwAUHJvZFByaWNlR3JvdXBLZXkAUHJvZFByaWNlR3JvdXBLZXlfSXNOdWxsAFNjcmlwdENv
-bXBvbmVudABQcm9jZXNzSW5wdXQASW5wdXRJRABJbnB1dDBfUHJvY2Vzc0lucHV0AElucHV0MF9Q
-cm9jZXNzSW5wdXRSb3cAUm93AFBhcmVudENvbXBvbmVudABDb21wb25lbnQATWljcm9zb2Z0LlNx
-bFNlcnZlci5EVFNSdW50aW1lV3JhcABNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lLldy
-YXBwZXIASURUU0Nvbm5lY3Rpb25NYW5hZ2VyMTAwAGdldF9Db25uZWN0aW9uAENvbm5lY3Rpb24A
-Z2V0X1NMWENvbm5lY3Rpb25TdHJpbmcAU0xYQ29ubmVjdGlvblN0cmluZwBQcmVFeGVjdXRlAFBv
-c3RFeGVjdXRlAFN5c3RlbS5SZXNvdXJjZXMAUmVzb3VyY2VNYW5hZ2VyAF9yZXNNZ3IAU3lzdGVt
-Lkdsb2JhbGl6YXRpb24AQ3VsdHVyZUluZm8AX3Jlc0N1bHR1cmUAZ2V0X1Jlc291cmNlTWFuYWdl
-cgBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQBWYWx1ZQBDdWx0dXJlAFN5c3RlbS5Db25maWd1cmF0
-aW9uAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAG1fVmFsdWUAbV9TeW5jT2JqZWN0AGdldF9WYWx1
-ZQBTeXN0ZW0uQ29tcG9uZW50TW9kZWwARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEVkaXRvckJy
-b3dzYWJsZVN0YXRlAFN5c3RlbS5Db2RlRG9tLkNvbXBpbGVyAEdlbmVyYXRlZENvZGVBdHRyaWJ1
-dGUAU3lzdGVtLkRpYWdub3N0aWNzAERlYnVnZ2VySGlkZGVuQXR0cmlidXRlAE1pY3Jvc29mdC5W
-aXN1YWxCYXNpYy5Db21waWxlclNlcnZpY2VzAFN0YW5kYXJkTW9kdWxlQXR0cmlidXRlAEhpZGVN
-b2R1bGVOYW1lQXR0cmlidXRlAFN5c3RlbS5Db21wb25lbnRNb2RlbC5EZXNpZ24ASGVscEtleXdv
-cmRBdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBSdW50aW1lSGVscGVy
-cwBHZXRPYmplY3RWYWx1ZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBBY3Rp
-dmF0b3IAQ3JlYXRlSW5zdGFuY2UATXlHcm91cENvbGxlY3Rpb25BdHRyaWJ1dGUAc2V0X1ZhbHVl
-AFN5c3RlbS5SdW50aW1lLkludGVyb3BTZXJ2aWNlcwBDb21WaXNpYmxlQXR0cmlidXRlAEdldFN0
-cmluZwBJc051bGwAR2V0RGVjaW1hbABHZXRJbnQzMgBDTFNDb21wbGlhbnRBdHRyaWJ1dGUAR2V0
-Q29sdW1uSW5kZXhlcwBNaWNyb3NvZnQuU3FsU2VydmVyLkRUU1BpcGVsaW5lV3JhcABNaWNyb3Nv
-ZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZS5XcmFwcGVyAElEVFNDb21wb25lbnRNZXRhRGF0YTEw
-MABnZXRfQ29tcG9uZW50TWV0YURhdGEASURUU1J1bnRpbWVDb25uZWN0aW9uQ29sbGVjdGlvbjEw
-MABnZXRfUnVudGltZUNvbm5lY3Rpb25Db2xsZWN0aW9uAElEVFNSdW50aW1lQ29ubmVjdGlvbjEw
-MABHZXRPYmplY3RCeUlEAGdldF9Db25uZWN0aW9uTWFuYWdlcgBJRFRTVmFyaWFibGVzMTAwAGdl
-dF9SZWFkT25seVZhcmlhYmxlcwBJRFRTVmFyaWFibGUxMDAAZ2V0X0l0ZW0AQ29udmVyc2lvbnMA
-QURPREIAUmVjb3Jkc2V0AEV4Y2VwdGlvbgBDb25uZWN0aW9uQ2xhc3MAUmVjb3Jkc2V0Q2xhc3MA
-U3RyaW5nAENvbmNhdABfQ29ubmVjdGlvbgBPcGVuAF9SZWNvcmRzZXQAQ3Vyc29yTG9jYXRpb25F
-bnVtAHNldF9DdXJzb3JMb2NhdGlvbgBDdXJzb3JUeXBlRW51bQBzZXRfQ3Vyc29yVHlwZQBMb2Nr
-VHlwZUVudW0Ac2V0X0xvY2tUeXBlAGdldF9FT0YARmllbGRzAGdldF9GaWVsZHMARmllbGQARGF0
-ZUFuZFRpbWUARGF0ZVRpbWUAZ2V0X05vdwBJbnQzMgBTeXN0ZW0uUmVmbGVjdGlvbgBNaXNzaW5n
-AFVwZGF0ZQBDbG9zZQBQcm9qZWN0RGF0YQBTZXRQcm9qZWN0RXJyb3IAQ2xlYXJQcm9qZWN0RXJy
-b3IAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHkAZ2V0X0Fz
-c2VtYmx5AFN5c3RlbS5UaHJlYWRpbmcATW9uaXRvcgBFbnRlcgBFeGl0AERlYnVnZ2VyTm9uVXNl
-ckNvZGVBdHRyaWJ1dGUAU0NfZDdhN2I0NjVlOTU0NDIxZWJkOWQwNmExNzdhN2IzMGIudmJwcm9q
-LlJlc291cmNlcy5yZXNvdXJjZXMAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBSdW50
-aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBBc3NlbWJseUZpbGVWZXJzaW9uQXR0cmlidXRlAEd1
-aWRBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRB
-dHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0
-ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAU0Nf
-ZDdhN2I0NjVlOTU0NDIxZWJkOWQwNmExNzdhN2IzMGIudmJwcm9qLmRsbAAAACdTAEwAWABDAG8A
-bgBuAGUAYwB0AGkAbwBuAFMAdAByAGkAbgBnAABRUwBFAEwARQBDAFQAIAAqACAARgBSAE8ATQAg
-AFAAUgBPAEQAVQBDAFQAIABXAEgARQBSAEUAIABQAFIATwBEAFUAQwBUAEkARAAgAD0AJwABAycA
-AQEAFU0ATwBEAEkARgBZAEQAQQBUAEUAABVNAE8ARABJAEYAWQBVAFMARQBSAAALQQBEAE0ASQBO
-AAAJTgBBAE0ARQAAF0QARQBTAEMAUgBJAFAAVABJAE8ATgAAEUEAQwBUAFUAQQBMAEkARAAADUYA
-QQBNAEkATABZAAALUABSAEkAQwBFAAAZUABSAE8ARABVAEMAVABHAFIATwBVAFAAAA1TAFQAQQBU
-AFUAUwAACVUATgBJAFQAABdTAFQATwBDAEsAVgBPAEwAVQBNAEUAABdTAFQATwBDAEsAVwBFAEkA
-RwBIAFQAABNTAFQATwBDAEsASQBUAEUATQAAD1AAUgBPAEcAUgBBAE0AABFTAFUAUABQAEwASQBF
-AFIAAA1WAEUATgBEAE8AUgAADVMASQBUAEUASQBEAAAjVwBBAFIARQBIAE8AVQBTAEUATABPAEMA
-QQBUAEkATwBOAAAdQwBPAE0ATQBJAFMAUwBJAE8ATgBBAEIATABFAAAPVABBAFgAQQBCAEwARQAA
-IUEAQwBDAE8AVQBOAFQASQBOAEcAUABFAFIASQBPAEQAAB9HAEwAQQBDAEMATwBVAE4AVABOAFUA
-TQBCAEUAUgAAJUcATABTAFUAQgBBAEMAQwBPAFUATgBUAE4AVQBNAEIARQBSAAATRABBAFQAQQBP
-AFcATgBFAFIAAAlUAFkAUABFAAATRgBJAFgARQBEAEMATwBTAFQAABlHAEwATwBCAEEATABTAFkA
-TgBDAEkARAAAC0EAUABQAEkARAAACVQASQBDAEsAACFDAE8ATQBNAE8ARABJAFQAWQBHAFIATwBV
-AFAASQBEAAAVQQBDAFQASQBWAEUARgBMAEEARwAAJVMARQBMAEwASQBOAEcAQQBMAEwATwBXAEUA
-RABGAEwAQQBHAAAfVQBOAEkAVABPAEYATQBFAEEAUwBVAFIARQBJAEQAABlTAEUATABMAEkATgBH
-AFUATwBNAEkARAAAIVMARQBMAEwASQBOAEcAVQBPAE0ATgBVAE0AQgBFAFIAAB1DAEwAQQBTAFMA
-SQBGAEkAQwBBAFQASQBPAE4AABtDAE8ATQBNAE8ARABJAFQAWQBUAFkAUABFAAAVTQBBAFMASQBU
-AEUATQBLAEUAWQAAB1UAUABDAAATTQBBAFMASQBUAEUATQBJAEQAABdXAEEAUgBFAEgATwBVAFMA
-RQBJAEQAABNDAE8ATQBQAEEATgBZAEkARAAAE1EAVABZAE8ATgBIAEEATgBEAAAZUQBUAFkAQQBW
-AEEASQBMAEEAQgBMAEUAABVTAFUAUgBQAEwAVQBTAFEAVABZAAATUQBUAFkATwBOAEgATwBMAEQA
-ABtNAEEAWABTAFQATwBDAEsATABFAFYARQBMAAApTQBBAFMAUABSAE8ARABQAFIASQBDAEUARwBS
-AE8AVQBQAEsARQBZAAAxTQB5AC4AUgBlAHMAbwB1AHIAYwBlAHMALgBNAHkAUgBlAHMAbwB1AHIA
-YwBlAHMAAAAAANrsNvxorXdFvNkV7s6FEcAACLd6XFYZNOCJCLA/X38R1Qo6AyAAAQMAAAEEAAAS
-DAcGFRIYARIMBAAAEggHBhUSGAESCAQAABIRBwYVEhgBEhEEAAASFAcGFRIYARIUBAgAEgwECAAS
-CAQIABIRBAgAEhQEIAECHAMgAAgEIAASFQMgAA4CHgAHEAEBHgAeAAcwAQEBEB4AAhMABCAAEwAH
-BhUSGQETAAQoABMACImEXc2AgMyRByACARIhHQgDIAACBCAAESUDKAAOAygAAgQoABElAygACAMG
-EiQDBhIoBiACAQgSIQUgAQESHAMGEikFIAEBEikEIAASLQQoABItAwYSMQMGEjUEAAASMQQAABI1
-BQABARI1BAgAEjEECAASNQMGEjQCBhwEAAASNAQIABI0BSABARFBCAEAAQAAAAAABSACAQ4OFwEA
-Ck15VGVtcGxhdGUHOC4wLjAuMAAABAEAAAAGFRIYARIMBhUSGAESCAYVEhgBEhEGFRIYARIUBAcB
-EgwEBwESCAQHARIRBAcBEhQEIAEBDhMBAA5NeS5XZWJTZXJ2aWNlcwAAEwEADk15LkFwcGxpY2F0
-aW9uAAAQAQALTXkuQ29tcHV0ZXIAAAwBAAdNeS5Vc2VyAAAEAAEcHAMHAQIDBwEIBgABEhURXQQH
-ARIVAwcBDgUQAQAeAAQKAR4ABAcBHgAHIAQBDg4ODmEBADRTeXN0ZW0uV2ViLlNlcnZpY2VzLlBy
-b3RvY29scy5Tb2FwSHR0cENsaWVudFByb3RvY29sEkNyZWF0ZV9fSW5zdGFuY2VfXxNEaXNwb3Nl
-X19JbnN0YW5jZV9fAAAABhUSGAETAAYVEhkBEwAECgETAAUgAQETAAYHAhMAEwAEIAEBAgUBAAAA
-AAMGEiEDBh0IBCABDggEIAECCAUgARElCAQHARElBCABCAgFIAEdCAgEIAAScQQgABJ1BSABEnkI
-BAcBEi0EIAASfQYgARKAgRwDIAAcBAABDhwGAAMODg4OByAEAQ4ODggGIAEBEYCpBiABARGArQYg
-AQERgLEMIAUBHBwRgK0RgLEIBSAAEoC1BiABEoC5HAUAABGAwQQgAQEcBAYSgMkFIAIBHBwGAAEB
-EoCRDwcFEoCJEoCNDhKAkRKAjQUgABKA1QcgAgEOEoDVBgcCEjESMQQHARI1CAEAAgAAAAAABAAB
-ARwEBwESNAQgAQEICAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQwBAAcx
-LjAuMC4wAAApAQAkYTY5MmQ0NDYtZTk0Ni00ZDgwLWIzZDItMDNiMzk1NTE2Nzc5AAAFAQABAAAf
-AQAaQ29weXJpZ2h0IEAgTWljcm9zb2Z0IDIwMTIAAC8BACpTQ19kN2E3YjQ2NWU5NTQ0MjFlYmQ5
-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
+LwAACm8wAAAKKDEAAAoqHgIocgAABioeAigyAAAKKh4CKDMAAAoqGzAGAFsDAABuAAARczQAAAoK
+czUAAAoLcikAAHADbxIAAAZyewAAcCg2AAAKDAYCewcAAARveQAABnJ/AABwcn8AAHAVbzcAAAoH
+EwQRBBlvOAAAChEEGG85AAAKEQQZbzoAAAoRBAgGFRUVbzsAAAoRBG88AAAKOsUCAAARBG89AAAK
+coEAAHBvPgAACgNvFAAABm8/AAAKEQRvPQAACnKLAABwbz4AAAoDbxYAAAZvPwAAChEEbz0AAApy
+owAAcG8+AAAKA28YAAAGbz8AAAoRBG89AAAKcrUAAHBvPgAACgNvGgAABm8/AAAKEQRvPQAACnLD
+AABwbz4AAAoDbxwAAAaMCQAAAW8/AAAKEQRvPQAACnLPAABwbz4AAAoDbx4AAAZvPwAAChEEbz0A
+AApy6QAAcG8+AAAKA28gAAAGbz8AAAoRBG89AAAKcvcAAHBvPgAACgNvIgAABm8/AAAKEQRvPQAA
+CnIBAQBwbz4AAAoDbzoAAAZvPwAAChEEbz0AAApyIQEAcG8+AAAKA29QAAAGjC8AAAFvPwAAChEE
+bz0AAApyQQEAcG8+AAAKA29aAAAGjC8AAAFvPwAAChEEbz0AAApyVwEAcG8+AAAKA29cAAAGbz8A
+AAoRBG89AAAKcl8BAHBvPgAACgNvXgAABm8/AAAKEQRvPQAACnJzAQBwbz4AAAoDb2AAAAZvPwAA
+ChEEbz0AAApyiwEAcG8+AAAKA29iAAAGbz8AAAoRBG89AAAKcp8BAHBvPgAACgNvZAAABowJAAAB
+bz8AAAoRBG89AAAKcrMBAHBvPgAACgNvZgAABowJAAABbz8AAAoRBG89AAAKcs0BAHBvPgAACgNv
+aAAABowJAAABbz8AAAoRBG89AAAKcuMBAHBvPgAACgNvagAABowJAAABbz8AAAoRBG89AAAKcvcB
+AHBvPgAACgNvbAAABowJAAABbz8AAAoRBG89AAAKchMCAHBvPgAACgNvbgAABowvAAABbz8AAAoR
+BG89AAAKcj0CAHBvPgAACihAAAAKjDEAAAFvPwAAChEEbz0AAApyUwIAcG8+AAAKcmkCAHBvPwAA
+ChEEfkEAAAp+QQAACm9CAAAKEQRvQwAAChQTBAZvRAAAChQLFAreDiUoRQAACg0oRgAACt4AKgBB
+GAAAAAAAACIAAAAqAwAATAMAAA4AAAAkAAABHgIoFwAACioTMAIALQAAAG8AABF+CgAABC0gcnUC
+AHDQDAAAAigUAAAKb0gAAApzSQAACgsHgAoAAAR+CgAABCoAAAATMAEABgAAAHAAABF+CwAABCoA
+AB4CgAsAAAQqQnMXAAAKKBEAAAqADQAABCoAAAAeAihKAAAKKhswAQA/AAAAcQAAEX4MAAAELTJ+
+DQAABCgRAAAKKEsAAAp+DAAABC0cc4MAAAaADAAABN4Qfg0AAAQoEQAACihMAAAK3H4MAAAEKgAB
+DAAAAgAdAAwpABAAAAABQlNKQgEAAQAAAAAADAAAAHYyLjAuNTA3MjcAAAAABQBsAAAAwBQAACN+
+AAAsFQAAHBkAACNTdHJpbmdzAAAAAEguAACoAgAAI1VTAPAwAAAQAAAAI0dVSUQAAAAAMQAASAQA
+ACNCbG9iAAAAAAAAAAIAAAFXFaIJCQ8AAAD6ATMAFgAAAQAAAEEAAAANAAAADQAAAIQAAAANAAAA
+VwAAADkAAABxAAAABwAAAGgAAABpAAAACQAAAAEAAAAIAAAAAQAAAAIAAAADAAAAAgAAAAAA7BgB
+AAAAAAAKAIMBWQEKALcBmQEGAMcBwAEKAB8CWQEGAJ0CwAEKAB8D9QIOAIIDYQMSALADYQMGAHsE
+wAEOADgQYQMWAPEQyRAGAHgRZxEGAKURkBEaAAwS9xEaAFkSQxIaAHISQxIaAJ8ShxIGAMkSthIK
+AAgT4RIKACATEwAaAFUTOBMGAIoTahMGAKgTwAEGAMwTwAEKAOUTEwAGACkUChQGAGIUwAEeANYU
+rRQeAAUVrRQeAEgVrRQWAIUVyRAWAKwVyRAKAMUV4RIiABkR0RUiANcV0RUGAOEVwAEiAOsV0RUi
+APsV0RUGAAoWwAEiABgW0RUiACkW0RUiADQW0RUiAFoW0RUiAHgW0RUiAJoW0RUiAKwW0RUGALIW
+wAEKALgWEwAGAMQWwAEGAOcW1RYKAPwW4RIOACoXYQMGAFEX1RYGAHgXZxcGAIsXthIGAOcXahMG
+AAcYahMGACUY1RYGAEIYChQGAFAY1RYGAGsY1RYGAIYY1RYGAJ8Y1RYGALgY1RYGANUY1RYAAAAA
+AQAAAAAAAQABAAAAAAApADcABQABAAEAAAAAAGUANwAJAAEAAgAAARAAcAA3AA0AAQADAAUBAAB6
+AAAADQAFAAgABQEAAIgAAAANAAUADwABAAAAowCwAB0ABgARAAEAAADbALAAKQAGAHIAAQAAAOkA
+sAANAAgAdgABAAAA9QCwAA0ACQB4AAEAAAD/ALAAIAAKAHoAAAAAAAoBFgENAAoAfgAAARAATgGw
+ADkADACCADEA4gEgADEACwItADEALQI6ADEAUgJHACEALgOQAAYA6QDIAAYA9QDMAAEAjBDdAAEA
+jBDdABEAiBHxABEAsRH1ABEAJBITAREALBIXAQghAAAAAAYYkwETAAEAECEAAAAABhiTARMAAQAY
+IQAAAAARGM4BFwABAEQhAAAAABMI1QEbAAEAXCEAAAAAEwj7ASgAAQB0IQAAAAATCCQCNQABAIwh
+AAAAABMIQgJCAAEApCEAAAAARgKIAmMAAQDAIQAAAABGApECaAACANQhAAAAAIMAogJsAAIA7CEA
+AAAARgKqAnEAAgAAIgAAAAARALMCeAACABwiAAAAAAEA0QKAAAMAOCIAAAAABhiTARMABABAIgAA
+AAADCOUCiwAEAHQiAAAAAAYYkwETAAQAiCIAAAAABhiTAaYABACUIgAAAAAGCNoDcQAGALQiAAAA
+AAYI6AOuAAYAyCIAAAAABgj9A3EABgDoIgAAAAAGCAYErgAGAPwiAAAAAAYIFgRxAAYAHCMAAAAA
+BggmBK4ABgAwIwAAAAAGCD0EcQAGAFAjAAAAAAYISgSuAAYAZCMAAAAABgheBHEABgCEIwAAAAAG
+CGkErgAGAJgjAAAAAAYIgwSyAAYAuCMAAAAABgiNBK4ABgDMIwAAAAAGCJ4EcQAGAOwjAAAAAAYI
+rwSuAAYAACQAAAAABgjHBHEABgAgJAAAAAAGCNIErgAGADQkAAAAAAYI5ARxAAYAVCQAAAAABgjt
+BK4ABgBoJAAAAAAGCP0EaAAGAIwkAAAAAAYIDQWuAAYApCQAAAAABggkBWgABgDIJAAAAAAGCDQF
+rgAGAOAkAAAAAAYISwVoAAYABCUAAAAABghZBa4ABgAcJQAAAAAGCG4FaAAGAEAlAAAAAAYIegWu
+AAYAWCUAAAAABgiNBWgABgB8JQAAAAAGCJoFrgAGAJQlAAAAAAYIrgVoAAYAuCUAAAAABgi5Ba4A
+BgDQJQAAAAAGCMsFaAAGAPQlAAAAAAYI1gWuAAYADCYAAAAABgjoBWgABgAwJgAAAAAGCP4FrgAG
+AEgmAAAAAAYIGwZoAAYAbCYAAAAABgguBq4ABgCEJgAAAAAGCEgGaAAGAKgmAAAAAAYIVAauAAYA
+wCYAAAAABghnBmgABgDkJgAAAAAGCHwGrgAGAPwmAAAAAAYImAZxAAYAICcAAAAABgisBq4ABgA4
+JwAAAAAGCMcGaAAGAFwnAAAAAAYI3gauAAYAdCcAAAAABgj8BmgABgCYJwAAAAAGCAoHrgAGALAn
+AAAAAAYIHwdoAAYA1CcAAAAABggoB64ABgDsJwAAAAAGCDgHaAAGABAoAAAAAAYIRgeuAAYAKCgA
+AAAABghbB2gABgBMKAAAAAAGCGwHrgAGAGQoAAAAAAYIhAdoAAYAiCgAAAAABgiOB64ABgCgKAAA
+AAAGCJ8HaAAGAMQoAAAAAAYIqAeuAAYA3CgAAAAABgi4B2gABgAAKQAAAAAGCM0HrgAGABgpAAAA
+AAYI6QdoAAYAPCkAAAAABgj4B64ABgBUKQAAAAAGCA4IcQAGAHgpAAAAAAYIJQiuAAYAkCkAAAAA
+BghDCGgABgC0KQAAAAAGCFcIrgAGAMwpAAAAAAYIcghoAAYA8CkAAAAABgiDCK4ABgAIKgAAAAAG
+CJsIaAAGACwqAAAAAAYIsAiuAAYARCoAAAAABgjMCGgABgBoKgAAAAAGCN8IrgAGAIAqAAAAAAYI
++QhoAAYApCoAAAAABggLCa4ABgC8KgAAAAAGCCQJaAAGAOAqAAAAAAYIMwmuAAYA+CoAAAAABghJ
+CXEABgAcKwAAAAAGCFEJrgAGADQrAAAAAAYIYAlxAAYAWCsAAAAABghuCa4ABgBwKwAAAAAGCIMJ
+cQAGAJQrAAAAAAYIkwmuAAYArCsAAAAABgiqCXEABgDQKwAAAAAGCLgJrgAGAOgrAAAAAAYIzQmy
+AAYADCwAAAAABgjbCa4ABgAkLAAAAAAGCPAJsgAGAEgsAAAAAAYIAQquAAYAYCwAAAAABggZCrIA
+BgCELAAAAAAGCCgKrgAGAJwsAAAAAAYIPgqyAAYAwCwAAAAABghMCq4ABgDYLAAAAAAGCGEKsgAG
+APwsAAAAAAYIcwquAAYAFC0AAAAABgiMCmgABgA4LQAAAAAGCKIKrgAGAFAtAAAAAIYAvwquAAYA
+aC0AAAAAhgDHCq4ABgCALQAAAAAGGJMBEwAGAKAtAAAAAEYCSBDQAAYAwC0AAAAARgNdENcACADU
+LQAAAABGA3EQ1wAJANgtAAAAAAYYkwHhAAoA6C0AAAAABggKEecACwAULgAAAAAGGJMB4QALACQu
+AAAAAAYIJBFxAAwAUC4AAAAABhiTARMADABYLgAAAABGAlAREwAMAGAuAAAAAEYCWxETAAwAaC4A
+AAAARgJxENcADADsMQAAAAADGJMBEwANAPQxAAAAABYIvRH5AA0AMDIAAAAAFgjREf4ADQBEMgAA
+AAAWCN0RAwENAEwyAAAAABEYzgEXAA4AYDIAAAAABhiTARMADgBoMgAAAAAWCDkSGgEOAAAAAQCP
+AgAAAQDIAgAAAQDIAgAAAQC/AwAAAgDGAwAAAQBVEAAAAgC/AwAAAQC/AwAAAQCIEAAAAQCcEAAA
+AQCcEAAAAQCIEAAAAQDpEQkAkwETAHkAkwEkAYkAkwEzAREAkwETAJEAkwETACQAkwETACwAkwET
+ADQAkwETADwAkwETACQA5QKLACwA5QKLADQA5QKLADwA5QKLAJkAkwETAKEAkwETAKkAkwGGAbEA
+mRPRARkAiAJjABkAkQJoACkAuhPeARkAqgJxAMEA1hPuARkAkwETAMkAkwH+AUQALgOQAEwAORKL
+AEwAABR7AkwAkwETANEAkwGIAjkAkwGmADkAvwOTAjkAxgOXAkEAPRSbAjkARxSgAkEAThSlAkEA
+WRSwAjkAvwquADkAxwquANkAkwGIAlEAkwETAFEAeBS1AlEA7xS7AuEAKBXAAukAYRXFAvEAbxXn
+AFEAlhXQAvkAvBXVAgEBORLcAgkBqgLgAlEAUBETAFEAWxETACkBkwETADEBkwETADkBERblAkEB
+JBbsAkkBRxb0AkkBaRb7AkkBhRYCA0kBJBYJA0kBkhauAEkBoRYWA2kBvBUcA3EBABQjA4EBzRYo
+A5EB6REuA0kB7xYzA0kB9hYTAEEB9hYTAJkBCBc5A5kBGBcXAKEBkwETACkAWhdQA2EAkwFWA3EA
+kwETALEBgBdzA7EBhhdzA7kBkwETAMEBkwF9A8kBkwETANEBkwGGAdkBkwGGAeEBkwGGAekBkwGG
+AfEBkwGGAfkBkwGGAQECkwGGAQkCkwGGASkAgwCzAS4AowIHBC4AuwIHBC4AkwKNAi4AcwKCAy4A
+OwHhAy4AqwI3BC4AswKNAi4AmwLnAy4AewKLAy4AgwKqAy4AiwK3Ay4A6wCNAkAAKwBRAUAAEwAq
+AUMAEwAqAUMAGwA5AUkAgwCLAWMAGwA5AWMAEwAqAWkAgwDEAYAAKwBRAYMAGwA5AYMAcwBRAYMA
+ewBRAYkAgwCfAaAAKwBRAaMAEwAqAaMAwwAGAsAAKwBRAcMA6wCNAsMAEwAqAeAAKwBRAeMAOwGN
+AgABEwAqAQABKwBRAQMBOwGNAiABEwAqASABKwBRAUABKwBRAUABEwAqAWABKwBRAWABEwAqAWMB
+OwJRAWMBOwGNAoABKwBRAaABKwBRAcABEwAqAcABKwBRAeABKwBRAQACKwBRAQACEwAqAckMEwBq
+A+kMEwBqAwkNawJRAcAOOwGNAgAPOwGNAnIBdwF8AYEB1gHaAeUB6gH5AfkBgQLqAdYB6gHWAeoB
+1gHqAdYB6gHWAasC1gHqAdYB6gHWAeoB1gHaAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHaAdYB2gHW
+AdoB1gHaAdYB2gHWAeoB1gHaAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHaAdYB2gHWAdoB1gHqAdYB
+2gHWAdoB1gHaAdYB2gHWAdoB1gHaAdYB6gHWAeoB1gHqAdYB6gHWAasC1gGrAtYBqwLWAasC1gGr
+AtYB2gHWAdYB1gHLAuoBQANeA2UDeAMEAAEABgAFAAcABgAJAGQACgBlAAwAZgANAGgAAAC3AU8A
+AABwAlQAAAAfAlkAAAB8Al4AAAA4A5gAAADTCrcAAADdCrsAAADuCrcAAADzCrsAAAD/CrcAAAAL
+C7sAAAAeC7cAAAAnC7sAAAA3C7cAAAA+C7sAAABMC78AAABSC7sAAABfC7cAAABsC7sAAACAC7cA
+AACHC7sAAACVC7cAAACaC7sAAACmC8QAAACyC7sAAADFC8QAAADRC7sAAADkC8QAAADuC7sAAAD/
+C8QAAAAHDLsAAAAWDMQAAAAfDLsAAAAvDMQAAAA2DLsAAABEDMQAAABLDLsAAABZDMQAAABrDLsA
+AACEDMQAAACTDLsAAACpDMQAAACxDLsAAADADMQAAADRDLsAAADpDLcAAAD5DLsAAAAQDcQAAAAj
+DbsAAAA9DcQAAABHDbsAAABYDcQAAABdDbsAAABpDcQAAABzDbsAAACEDcQAAACRDbsAAAClDcQA
+AACrDbsAAAC4DcQAAAC9DbsAAADJDcQAAADaDbsAAADyDcQAAAD9DbsAAAAPDrcAAAAiDrsAAAA8
+DsQAAABMDrsAAABjDsQAAABwDrsAAACEDsQAAACVDrsAAACtDsQAAAC8DrsAAADSDsQAAADgDrsA
+AAD1DsQAAAAAD7sAAAASD7cAAAAWD7sAAAAhD7cAAAArD7sAAAA8D7cAAABID7sAAABbD7cAAABl
+D7sAAAB2D78AAACAD7sAAACRD78AAACeD7sAAACyD78AAAC9D7sAAADPD78AAADZD7sAAADqD78A
+AAD4D7sAAAANEMQAAAAfELsAAAAZEewAAAA8EbcAAAB4EQkBAADvEQ4BAADpER8BAgAEAAMAAgAF
+AAUAAgAGAAcAAgAHAAkAAgAPAAsAAgASAA0AAgATAA8AAgAUABEAAgAVABMAAgAWABUAAgAXABcA
+AgAYABkAAgAZABsAAgAaAB0AAgAbAB8AAgAcACEAAgAdACMAAgAeACUAAgAfACcAAgAgACkAAgAh
+ACsAAgAiAC0AAgAjAC8AAgAkADEAAgAlADMAAgAmADUAAgAnADcAAgAoADkAAgApADsAAgAqAD0A
+AgArAD8AAgAsAEEAAgAtAEMAAgAuAEUAAgAvAEcAAgAwAEkAAgAxAEsAAgAyAE0AAgAzAE8AAgA0
+AFEAAgA1AFMAAgA2AFUAAgA3AFcAAgA4AFkAAgA5AFsAAgA6AF0AAgA7AF8AAgA8AGEAAgA9AGMA
+AgA+AGUAAgA/AGcAAgBAAGkAAgBBAGsAAgBCAG0AAgBDAG8AAgBEAHEAAgBFAHMAAgBGAHUAAgBH
+AHcAAgBIAHkAAgBJAHsAAgBKAH0AAgBLAH8AAgBMAIEAAgBNAIMAAgBOAIUAAgBPAIcAAgBQAIkA
+AgBRAIsAAgBSAI0AAgBTAI8AAgBUAJEAAgBVAJMAAgBWAJUAAgBXAJcAAgBYAJkAAgBZAJsAAgBa
+AJ0AAgBbAJ8AAgBcAKEAAgBdAKMAAgBeAKUAAgBfAKcAAgBgAKkAAgBhAKsAAgBiAK0AAgBjAK8A
+AgBkALEAAgBlALMAAgBmALUAAgBnALcAAgBoALkAAgBpALsAAgBqAL0AAgBrAL8AAgBsAMEAAgBt
+AMMAAgBuAMUAAgBvAMcAAgB3AMkAAgB5AMsAAgB/AM0AAgCAAM8AAQCBAM8AAgCEANEAdQB1AIgA
+VgFdAWQBawFoAm8CBIAAAAEAAAAAAAAAAAAAAAAAsAAAAAIAAAAAAAAAAAAAAAEACgAAAAAACAAA
+AAAAAAAAAAAACgATAAAAAAAKAAAAAAAAAAAAAACdAEQDAAAAAAoAAAAAAAAAAAAAAJ0AjwMAAAAA
+CgAAAAAAAAAAAAAAnQCmEAAAAAACAAAAAAAAAAAAAAABAMABAAAAAAoAAAAAAAAAAAAAAJ0AiRQA
+AAAABwAAAOQMAAAAAAAACgDRFQAAAAAAAAAAAQAAAKgXAAAFAAQABgAEAAAAEAAMAMYCAAAQABkA
+xgIAAAAAGwDGAi0A9AEtAHYCAAAAPE1vZHVsZT4AbXNjb3JsaWIATWljcm9zb2Z0LlZpc3VhbEJh
+c2ljAE15QXBwbGljYXRpb24AU0NfZDdhN2I0NjVlOTU0NDIxZWJkOWQwNmExNzdhN2IzMGIudmJw
+cm9qLk15AE15Q29tcHV0ZXIATXlQcm9qZWN0AE15V2ViU2VydmljZXMAVGhyZWFkU2FmZU9iamVj
+dFByb3ZpZGVyYDEASW5wdXQwQnVmZmVyAFNDX2Q3YTdiNDY1ZTk1NDQyMWViZDlkMDZhMTc3YTdi
+MzBiLnZicHJvagBVc2VyQ29tcG9uZW50AENvbm5lY3Rpb25zAFZhcmlhYmxlcwBTY3JpcHRNYWlu
+AE15UmVzb3VyY2VzAFNDX2Q3YTdiNDY1ZTk1NDQyMWViZDlkMDZhMTc3YTdiMzBiLnZicHJvai5N
+eS5SZXNvdXJjZXMATXlTZXR0aW5ncwBNaWNyb3NvZnQuVmlzdWFsQmFzaWMuQXBwbGljYXRpb25T
+ZXJ2aWNlcwBBcHBsaWNhdGlvbkJhc2UALmN0b3IATWljcm9zb2Z0LlZpc3VhbEJhc2ljLkRldmlj
+ZXMAQ29tcHV0ZXIAU3lzdGVtAE9iamVjdAAuY2N0b3IAZ2V0X0NvbXB1dGVyAG1fQ29tcHV0ZXJP
+YmplY3RQcm92aWRlcgBnZXRfQXBwbGljYXRpb24AbV9BcHBPYmplY3RQcm92aWRlcgBVc2VyAGdl
+dF9Vc2VyAG1fVXNlck9iamVjdFByb3ZpZGVyAGdldF9XZWJTZXJ2aWNlcwBtX015V2ViU2Vydmlj
+ZXNPYmplY3RQcm92aWRlcgBBcHBsaWNhdGlvbgBXZWJTZXJ2aWNlcwBFcXVhbHMAbwBHZXRIYXNo
+Q29kZQBUeXBlAEdldFR5cGUAVG9TdHJpbmcAQ3JlYXRlX19JbnN0YW5jZV9fAFQAaW5zdGFuY2UA
+RGlzcG9zZV9fSW5zdGFuY2VfXwBnZXRfR2V0SW5zdGFuY2UATWljcm9zb2Z0LlZpc3VhbEJhc2lj
+Lk15U2VydmljZXMuSW50ZXJuYWwAQ29udGV4dFZhbHVlYDEAbV9Db250ZXh0AEdldEluc3RhbmNl
+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlw
+ZWxpbmUAU2NyaXB0QnVmZmVyAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVIb3N0AFBpcGVs
+aW5lQnVmZmVyAEJ1ZmZlcgBCdWZmZXJDb2x1bW5JbmRleGVzAGdldF9QUk9EVUNUSUQAZ2V0X1BS
+T0RVQ1RJRF9Jc051bGwAZ2V0X05BTUUAZ2V0X05BTUVfSXNOdWxsAGdldF9ERVNDUklQVElPTgBn
+ZXRfREVTQ1JJUFRJT05fSXNOdWxsAGdldF9BQ1RVQUxJRABnZXRfQUNUVUFMSURfSXNOdWxsAGdl
+dF9GQU1JTFkAZ2V0X0ZBTUlMWV9Jc051bGwARGVjaW1hbABnZXRfUFJJQ0UAZ2V0X1BSSUNFX0lz
+TnVsbABnZXRfUFJPRFVDVEdST1VQAGdldF9QUk9EVUNUR1JPVVBfSXNOdWxsAGdldF9TVEFUVVMA
+Z2V0X1NUQVRVU19Jc051bGwAZ2V0X1VOSVQAZ2V0X1VOSVRfSXNOdWxsAGdldF9TVE9DS1ZPTFVN
+RQBnZXRfU1RPQ0tWT0xVTUVfSXNOdWxsAGdldF9TVE9DS1dFSUdIVABnZXRfU1RPQ0tXRUlHSFRf
+SXNOdWxsAGdldF9TVE9DS0lURU0AZ2V0X1NUT0NLSVRFTV9Jc051bGwAZ2V0X1BST0dSQU0AZ2V0
+X1BST0dSQU1fSXNOdWxsAGdldF9TVVBQTElFUgBnZXRfU1VQUExJRVJfSXNOdWxsAGdldF9WRU5E
+T1IAZ2V0X1ZFTkRPUl9Jc051bGwAZ2V0X1NJVEVJRABnZXRfU0lURUlEX0lzTnVsbABnZXRfV0FS
+RUhPVVNFTE9DQVRJT04AZ2V0X1dBUkVIT1VTRUxPQ0FUSU9OX0lzTnVsbABnZXRfQ09NTUlTU0lP
+TkFCTEUAZ2V0X0NPTU1JU1NJT05BQkxFX0lzTnVsbABnZXRfVEFYQUJMRQBnZXRfVEFYQUJMRV9J
+c051bGwAZ2V0X0FDQ09VTlRJTkdQRVJJT0QAZ2V0X0FDQ09VTlRJTkdQRVJJT0RfSXNOdWxsAGdl
+dF9HTEFDQ09VTlROVU1CRVIAZ2V0X0dMQUNDT1VOVE5VTUJFUl9Jc051bGwAZ2V0X0dMU1VCQUND
+T1VOVE5VTUJFUgBnZXRfR0xTVUJBQ0NPVU5UTlVNQkVSX0lzTnVsbABnZXRfREFUQU9XTkVSAGdl
+dF9EQVRBT1dORVJfSXNOdWxsAGdldF9UWVBFAGdldF9UWVBFX0lzTnVsbABnZXRfRklYRURDT1NU
+AGdldF9GSVhFRENPU1RfSXNOdWxsAGdldF9HTE9CQUxTWU5DSUQAZ2V0X0dMT0JBTFNZTkNJRF9J
+c051bGwAZ2V0X0FQUElEAGdldF9BUFBJRF9Jc051bGwAZ2V0X1RJQ0sAZ2V0X1RJQ0tfSXNOdWxs
+AGdldF9DT01NT0RJVFlHUk9VUElEAGdldF9DT01NT0RJVFlHUk9VUElEX0lzTnVsbABnZXRfQUNU
+SVZFRkxBRwBnZXRfQUNUSVZFRkxBR19Jc051bGwAZ2V0X1NFTExJTkdBTExPV0VERkxBRwBnZXRf
+U0VMTElOR0FMTE9XRURGTEFHX0lzTnVsbABnZXRfVU5JVE9GTUVBU1VSRUlEAGdldF9VTklUT0ZN
+RUFTVVJFSURfSXNOdWxsAGdldF9TRUxMSU5HVU9NSUQAZ2V0X1NFTExJTkdVT01JRF9Jc051bGwA
+Z2V0X1NFTExJTkdVT01OVU1CRVIAZ2V0X1NFTExJTkdVT01OVU1CRVJfSXNOdWxsAGdldF9DTEFT
+U0lGSUNBVElPTgBnZXRfQ0xBU1NJRklDQVRJT05fSXNOdWxsAGdldF9DT01NT0RJVFlUWVBFAGdl
+dF9DT01NT0RJVFlUWVBFX0lzTnVsbABnZXRfTUFTSVRFTUtFWQBnZXRfTUFTSVRFTUtFWV9Jc051
+bGwAZ2V0X1VQQwBnZXRfVVBDX0lzTnVsbABnZXRfTUFTSVRFTUlEAGdldF9NQVNJVEVNSURfSXNO
+dWxsAGdldF9XQVJFSE9VU0VJRABnZXRfV0FSRUhPVVNFSURfSXNOdWxsAGdldF9Db21wYW55SUQA
+Z2V0X0NvbXBhbnlJRF9Jc051bGwAZ2V0X1F0eU9uSGFuZABnZXRfUXR5T25IYW5kX0lzTnVsbABn
+ZXRfUXR5QXZhaWxhYmxlAGdldF9RdHlBdmFpbGFibGVfSXNOdWxsAGdldF9TdXJwbHVzUXR5AGdl
+dF9TdXJwbHVzUXR5X0lzTnVsbABnZXRfUXR5T25Ib2xkAGdldF9RdHlPbkhvbGRfSXNOdWxsAGdl
+dF9NYXhTdG9ja0xldmVsAGdldF9NYXhTdG9ja0xldmVsX0lzTnVsbABnZXRfUHJvZFByaWNlR3Jv
+dXBLZXkAZ2V0X1Byb2RQcmljZUdyb3VwS2V5X0lzTnVsbABOZXh0Um93AEVuZE9mUm93c2V0AFBS
+T0RVQ1RJRABQUk9EVUNUSURfSXNOdWxsAE5BTUUATkFNRV9Jc051bGwAREVTQ1JJUFRJT04AREVT
+Q1JJUFRJT05fSXNOdWxsAEFDVFVBTElEAEFDVFVBTElEX0lzTnVsbABGQU1JTFkARkFNSUxZX0lz
+TnVsbABQUklDRQBQUklDRV9Jc051bGwAUFJPRFVDVEdST1VQAFBST0RVQ1RHUk9VUF9Jc051bGwA
+U1RBVFVTAFNUQVRVU19Jc051bGwAVU5JVABVTklUX0lzTnVsbABTVE9DS1ZPTFVNRQBTVE9DS1ZP
+TFVNRV9Jc051bGwAU1RPQ0tXRUlHSFQAU1RPQ0tXRUlHSFRfSXNOdWxsAFNUT0NLSVRFTQBTVE9D
+S0lURU1fSXNOdWxsAFBST0dSQU0AUFJPR1JBTV9Jc051bGwAU1VQUExJRVIAU1VQUExJRVJfSXNO
+dWxsAFZFTkRPUgBWRU5ET1JfSXNOdWxsAFNJVEVJRABTSVRFSURfSXNOdWxsAFdBUkVIT1VTRUxP
+Q0FUSU9OAFdBUkVIT1VTRUxPQ0FUSU9OX0lzTnVsbABDT01NSVNTSU9OQUJMRQBDT01NSVNTSU9O
+QUJMRV9Jc051bGwAVEFYQUJMRQBUQVhBQkxFX0lzTnVsbABBQ0NPVU5USU5HUEVSSU9EAEFDQ09V
+TlRJTkdQRVJJT0RfSXNOdWxsAEdMQUNDT1VOVE5VTUJFUgBHTEFDQ09VTlROVU1CRVJfSXNOdWxs
+AEdMU1VCQUNDT1VOVE5VTUJFUgBHTFNVQkFDQ09VTlROVU1CRVJfSXNOdWxsAERBVEFPV05FUgBE
+QVRBT1dORVJfSXNOdWxsAFRZUEUAVFlQRV9Jc051bGwARklYRURDT1NUAEZJWEVEQ09TVF9Jc051
+bGwAR0xPQkFMU1lOQ0lEAEdMT0JBTFNZTkNJRF9Jc051bGwAQVBQSUQAQVBQSURfSXNOdWxsAFRJ
+Q0sAVElDS19Jc051bGwAQ09NTU9ESVRZR1JPVVBJRABDT01NT0RJVFlHUk9VUElEX0lzTnVsbABB
+Q1RJVkVGTEFHAEFDVElWRUZMQUdfSXNOdWxsAFNFTExJTkdBTExPV0VERkxBRwBTRUxMSU5HQUxM
+T1dFREZMQUdfSXNOdWxsAFVOSVRPRk1FQVNVUkVJRABVTklUT0ZNRUFTVVJFSURfSXNOdWxsAFNF
+TExJTkdVT01JRABTRUxMSU5HVU9NSURfSXNOdWxsAFNFTExJTkdVT01OVU1CRVIAU0VMTElOR1VP
+TU5VTUJFUl9Jc051bGwAQ0xBU1NJRklDQVRJT04AQ0xBU1NJRklDQVRJT05fSXNOdWxsAENPTU1P
+RElUWVRZUEUAQ09NTU9ESVRZVFlQRV9Jc051bGwATUFTSVRFTUtFWQBNQVNJVEVNS0VZX0lzTnVs
+bABVUEMAVVBDX0lzTnVsbABNQVNJVEVNSUQATUFTSVRFTUlEX0lzTnVsbABXQVJFSE9VU0VJRABX
+QVJFSE9VU0VJRF9Jc051bGwAQ29tcGFueUlEAENvbXBhbnlJRF9Jc051bGwAUXR5T25IYW5kAFF0
+eU9uSGFuZF9Jc051bGwAUXR5QXZhaWxhYmxlAFF0eUF2YWlsYWJsZV9Jc051bGwAU3VycGx1c1F0
+eQBTdXJwbHVzUXR5X0lzTnVsbABRdHlPbkhvbGQAUXR5T25Ib2xkX0lzTnVsbABNYXhTdG9ja0xl
+dmVsAE1heFN0b2NrTGV2ZWxfSXNOdWxsAFByb2RQcmljZUdyb3VwS2V5AFByb2RQcmljZUdyb3Vw
+S2V5X0lzTnVsbABTY3JpcHRDb21wb25lbnQAUHJvY2Vzc0lucHV0AElucHV0SUQASW5wdXQwX1By
+b2Nlc3NJbnB1dABJbnB1dDBfUHJvY2Vzc0lucHV0Um93AFJvdwBQYXJlbnRDb21wb25lbnQAQ29t
+cG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRFRTUnVudGltZVdyYXAATWljcm9zb2Z0LlNxbFNl
+cnZlci5EdHMuUnVudGltZS5XcmFwcGVyAElEVFNDb25uZWN0aW9uTWFuYWdlcjEwMABnZXRfQ29u
+bmVjdGlvbgBDb25uZWN0aW9uAGdldF9TTFhDb25uZWN0aW9uU3RyaW5nAFNMWENvbm5lY3Rpb25T
+dHJpbmcAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQBTeXN0ZW0uUmVzb3VyY2VzAFJlc291cmNlTWFu
+YWdlcgBfcmVzTWdyAFN5c3RlbS5HbG9iYWxpemF0aW9uAEN1bHR1cmVJbmZvAF9yZXNDdWx0dXJl
+AGdldF9SZXNvdXJjZU1hbmFnZXIAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAVmFsdWUAQ3VsdHVy
+ZQBTeXN0ZW0uQ29uZmlndXJhdGlvbgBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBtX1ZhbHVlAG1f
+U3luY09iamVjdABnZXRfVmFsdWUAU3lzdGVtLkNvbXBvbmVudE1vZGVsAEVkaXRvckJyb3dzYWJs
+ZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBTeXN0ZW0uQ29kZURvbS5Db21waWxlcgBH
+ZW5lcmF0ZWRDb2RlQXR0cmlidXRlAFN5c3RlbS5EaWFnbm9zdGljcwBEZWJ1Z2dlckhpZGRlbkF0
+dHJpYnV0ZQBNaWNyb3NvZnQuVmlzdWFsQmFzaWMuQ29tcGlsZXJTZXJ2aWNlcwBTdGFuZGFyZE1v
+ZHVsZUF0dHJpYnV0ZQBIaWRlTW9kdWxlTmFtZUF0dHJpYnV0ZQBTeXN0ZW0uQ29tcG9uZW50TW9k
+ZWwuRGVzaWduAEhlbHBLZXl3b3JkQXR0cmlidXRlAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2Vy
+dmljZXMAUnVudGltZUhlbHBlcnMAR2V0T2JqZWN0VmFsdWUAUnVudGltZVR5cGVIYW5kbGUAR2V0
+VHlwZUZyb21IYW5kbGUAQWN0aXZhdG9yAENyZWF0ZUluc3RhbmNlAE15R3JvdXBDb2xsZWN0aW9u
+QXR0cmlidXRlAHNldF9WYWx1ZQBTeXN0ZW0uUnVudGltZS5JbnRlcm9wU2VydmljZXMAQ29tVmlz
+aWJsZUF0dHJpYnV0ZQBHZXRTdHJpbmcASXNOdWxsAEdldERlY2ltYWwAR2V0SW50MzIAQ0xTQ29t
+cGxpYW50QXR0cmlidXRlAEdldENvbHVtbkluZGV4ZXMATWljcm9zb2Z0LlNxbFNlcnZlci5EVFNQ
+aXBlbGluZVdyYXAATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUuV3JhcHBlcgBJRFRT
+Q29tcG9uZW50TWV0YURhdGExMDAAZ2V0X0NvbXBvbmVudE1ldGFEYXRhAElEVFNSdW50aW1lQ29u
+bmVjdGlvbkNvbGxlY3Rpb24xMDAAZ2V0X1J1bnRpbWVDb25uZWN0aW9uQ29sbGVjdGlvbgBJRFRT
+UnVudGltZUNvbm5lY3Rpb24xMDAAR2V0T2JqZWN0QnlJRABnZXRfQ29ubmVjdGlvbk1hbmFnZXIA
+SURUU1ZhcmlhYmxlczEwMABnZXRfUmVhZE9ubHlWYXJpYWJsZXMASURUU1ZhcmlhYmxlMTAwAGdl
+dF9JdGVtAENvbnZlcnNpb25zAEFET0RCAFJlY29yZHNldABFeGNlcHRpb24AQ29ubmVjdGlvbkNs
+YXNzAFJlY29yZHNldENsYXNzAFN0cmluZwBDb25jYXQAX0Nvbm5lY3Rpb24AT3BlbgBfUmVjb3Jk
+c2V0AEN1cnNvckxvY2F0aW9uRW51bQBzZXRfQ3Vyc29yTG9jYXRpb24AQ3Vyc29yVHlwZUVudW0A
+c2V0X0N1cnNvclR5cGUATG9ja1R5cGVFbnVtAHNldF9Mb2NrVHlwZQBnZXRfRU9GAEZpZWxkcwBn
+ZXRfRmllbGRzAEZpZWxkAEludDMyAERhdGVBbmRUaW1lAERhdGVUaW1lAGdldF9Ob3cAU3lzdGVt
+LlJlZmxlY3Rpb24ATWlzc2luZwBVcGRhdGUAQ2xvc2UAUHJvamVjdERhdGEAU2V0UHJvamVjdEVy
+cm9yAENsZWFyUHJvamVjdEVycm9yAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmli
+dXRlAEFzc2VtYmx5AGdldF9Bc3NlbWJseQBTeXN0ZW0uVGhyZWFkaW5nAE1vbml0b3IARW50ZXIA
+RXhpdABEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAFNDX2Q3YTdiNDY1ZTk1NDQyMWViZDlk
+MDZhMTc3YTdiMzBiLnZicHJvai5SZXNvdXJjZXMucmVzb3VyY2VzAENvbXBpbGF0aW9uUmVsYXhh
+dGlvbnNBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAQXNzZW1ibHlGaWxl
+VmVyc2lvbkF0dHJpYnV0ZQBHdWlkQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRl
+AEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3Nl
+bWJseUNvbXBhbnlBdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBBc3NlbWJs
+eVRpdGxlQXR0cmlidXRlAFNDX2Q3YTdiNDY1ZTk1NDQyMWViZDlkMDZhMTc3YTdiMzBiLnZicHJv
+ai5kbGwAAAAnUwBMAFgAQwBvAG4AbgBlAGMAdABpAG8AbgBTAHQAcgBpAG4AZwAAUVMARQBMAEUA
+QwBUACAAKgAgAEYAUgBPAE0AIABQAFIATwBEAFUAQwBUACAAVwBIAEUAUgBFACAAUABSAE8ARABV
+AEMAVABJAEQAIAA9ACcAAQMnAAEBAAlOAEEATQBFAAAXRABFAFMAQwBSAEkAUABUAEkATwBOAAAR
+QQBDAFQAVQBBAEwASQBEAAANRgBBAE0ASQBMAFkAAAtQAFIASQBDAEUAABlQAFIATwBEAFUAQwBU
+AEcAUgBPAFUAUAAADVMAVABBAFQAVQBTAAAJVQBOAEkAVAAAH0cATABBAEMAQwBPAFUATgBUAE4A
+VQBNAEIARQBSAAAfVQBOAEkAVABPAEYATQBFAEEAUwBVAFIARQBJAEQAABVNAEEAUwBJAFQARQBN
+AEsARQBZAAAHVQBQAEMAABNNAEEAUwBJAFQARQBNAEkARAAAF1cAQQBSAEUASABPAFUAUwBFAEkA
+RAAAE0MAbwBtAHAAYQBuAHkASQBEAAATUQB0AHkATwBuAEgAYQBuAGQAABlRAHQAeQBBAHYAYQBp
+AGwAYQBiAGwAZQAAFVMAdQByAHAAbAB1AHMAUQB0AHkAABNRAHQAeQBPAG4ASABvAGwAZAAAG00A
+YQB4AFMAdABvAGMAawBMAGUAdgBlAGwAAClNAEEAUwBQAHIAbwBkAFAAcgBpAGMAZQBHAHIAbwB1
+AHAASwBlAHkAABVNAE8ARABJAEYAWQBEAEEAVABFAAAVTQBPAEQASQBGAFkAVQBTAEUAUgAAC0EA
+RABNAEkATgAAMU0AeQAuAFIAZQBzAG8AdQByAGMAZQBzAC4ATQB5AFIAZQBzAG8AdQByAGMAZQBz
+AAAABFg6HJdhRkSjEllGZNyfrQAIt3pcVhk04IkIsD9ffxHVCjoDIAABAwAAAQQAABIMBwYVEhgB
+EgwEAAASCAcGFRIYARIIBAAAEhEHBhUSGAESEQQAABIUBwYVEhgBEhQECAASDAQIABIIBAgAEhEE
+CAASFAQgAQIcAyAACAQgABIVAyAADgIeAAcQAQEeAB4ABzABAQEQHgACEwAEIAATAAcGFRIZARMA
+BCgAEwAIiYRdzYCAzJEHIAIBEiEdCAMgAAIEIAARJQMoAA4DKAACBCgAESUDKAAIAwYSJAMGEigG
+IAIBCBIhBSABARIcAwYSKQUgAQESKQQgABItBCgAEi0DBhIxAwYSNQQAABIxBAAAEjUFAAEBEjUE
+CAASMQQIABI1AwYSNAIGHAQAABI0BAgAEjQFIAEBEUEIAQABAAAAAAAFIAIBDg4XAQAKTXlUZW1w
+bGF0ZQc4LjAuMC4wAAAEAQAAAAYVEhgBEgwGFRIYARIIBhUSGAESEQYVEhgBEhQEBwESDAQHARII
+BAcBEhEEBwESFAQgAQEOEwEADk15LkFwcGxpY2F0aW9uAAATAQAOTXkuV2ViU2VydmljZXMAABAB
+AAtNeS5Db21wdXRlcgAADAEAB015LlVzZXIAAAQAARwcAwcBAgMHAQgGAAESFRFdBAcBEhUDBwEO
+BRABAB4ABAoBHgAEBwEeAAcgBAEODg4OYQEANFN5c3RlbS5XZWIuU2VydmljZXMuUHJvdG9jb2xz
+LlNvYXBIdHRwQ2xpZW50UHJvdG9jb2wSQ3JlYXRlX19JbnN0YW5jZV9fE0Rpc3Bvc2VfX0luc3Rh
+bmNlX18AAAAGFRIYARMABhUSGQETAAQKARMABSABARMABgcCEwATAAQgAQECBQEAAAAAAwYSIQMG
+HQgEIAEOCAQgAQIIBSABESUIBAcBESUEIAEICAUgAR0ICAQgABJxBCAAEnUFIAESeQgEBwESLQQg
+ABJ9BiABEoCBHAMgABwEAAEOHAYAAw4ODg4HIAQBDg4OCAYgAQERgKkGIAEBEYCtBiABARGAsQwg
+BQEcHBGArRGAsQgFIAASgLUGIAESgLkcBCABARwFAAARgMUEBhKAyQUgAgEcHAYAAQESgJEPBwUS
+gIkSgI0OEoCREoCNBSAAEoDVByACAQ4SgNUGBwISMRIxBAcBEjUIAQACAAAAAAAEAAEBHAQHARI0
+BCABAQgIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBDAEABzEuMC4wLjAA
+ACkBACRhNjkyZDQ0Ni1lOTQ2LTRkODAtYjNkMi0wM2IzOTU1MTY3NzkAAAUBAAEAAB8BABpDb3B5
+cmlnaHQgQCBNaWNyb3NvZnQgMjAxMgAALwEAKlNDX2Q3YTdiNDY1ZTk1NDQyMWViZDlkMDZhMTc3
+YTdiMzBiLnZicHJvagAADgEACU1pY3Jvc29mdAAAAAA0aAAAAAAAAAAAAABOaAAAACAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAQGgAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA
+/yUAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwADAAAAKAAAgA4AAABIAACAEAAAAGAAAIAA
-AAAAAAAAAAAAAAAAAAIAAgAAAHgAAIADAAAAkAAAgAAAAAAAAAAAAAAAAAAAAQAAfwAAqAAAgAAA
-AAAAAAAAAAAAAAAAAQABAAAAwAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA2AAAAAAAAAAAAAAAAAAA
-AAAAAQAAAAAA6AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA+AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA
-CAEAACCFAADoAgAAAAAAAAAAAAAIiAAAKAEAAAAAAAAAAAAAMIkAACIAAAAAAAAAAAAAABiBAAAI
-BAAAAAAAAAAAAAAIBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv/gAA
-AQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYAYQBy
-AEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAAALAE
-aAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAARAMAAAEAMAAwADAAMAAwADQAYgAw
-AAAANAAKAAEAQwBvAG0AcABhAG4AeQBOAGEAbQBlAAAAAABNAGkAYwByAG8AcwBvAGYAdAAAAIAA
-KwABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAEMAXwBkADcAYQA3AGIANAA2
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwADAAAAKAAAgA4AAABIAACAEAAAAGAA
+AIAAAAAAAAAAAAAAAAAAAAIAAgAAAHgAAIADAAAAkAAAgAAAAAAAAAAAAAAAAAAAAQAAfwAAqAAA
+gAAAAAAAAAAAAAAAAAAAAQABAAAAwAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA2AAAAAAAAAAAAAAA
+AAAAAAAAAQAAAAAA6AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA+AAAAAAAAAAAAAAAAAAAAAAAAQAA
+AAAACAEAACCFAADoAgAAAAAAAAAAAAAIiAAAKAEAAAAAAAAAAAAAMIkAACIAAAAAAAAAAAAAABiB
+AAAIBAAAAAAAAAAAAAAIBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv
+/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYA
+YQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAA
+ALAEaAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAARAMAAAEAMAAwADAAMAAwADQA
+YgAwAAAANAAKAAEAQwBvAG0AcABhAG4AeQBOAGEAbQBlAAAAAABNAGkAYwByAG8AcwBvAGYAdAAA
+AIAAKwABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAEMAXwBkADcAYQA3AGIA
+NAA2ADUAZQA5ADUANAA0ADIAMQBlAGIAZAA5AGQAMAA2AGEAMQA3ADcAYQA3AGIAMwAwAGIALgB2
+AGIAcAByAG8AagAAAAAAMAAIAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADAA
+LgAwAAAAgAAvAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAEMAXwBkADcAYQA3AGIANAA2
 ADUAZQA5ADUANAA0ADIAMQBlAGIAZAA5AGQAMAA2AGEAMQA3ADcAYQA3AGIAMwAwAGIALgB2AGIA
-cAByAG8AagAAAAAAMAAIAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADAALgAw
-AAAAgAAvAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAEMAXwBkADcAYQA3AGIANAA2ADUA
-ZQA5ADUANAA0ADIAMQBlAGIAZAA5AGQAMAA2AGEAMQA3ADcAYQA3AGIAMwAwAGIALgB2AGIAcABy
-AG8AagAuAGQAbABsAAAAAABcABsAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8A
-cAB5AHIAaQBnAGgAdAAgAEAAIABNAGkAYwByAG8AcwBvAGYAdAAgADIAMAAxADIAAAAAAIgALwAB
-AE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwBkADcAYQA3AGIANAA2ADUA
-ZQA5ADUANAA0ADIAMQBlAGIAZAA5AGQAMAA2AGEAMQA3ADcAYQA3AGIAMwAwAGIALgB2AGIAcABy
-AG8AagAuAGQAbABsAAAAAAB4ACsAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfAGQA
-NwBhADcAYgA0ADYANQBlADkANQA0ADQAMgAxAGUAYgBkADkAZAAwADYAYQAxADcANwBhADcAYgAz
-ADAAYgAuAHYAYgBwAHIAbwBqAAAAAAA0AAgAAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4A
-AAAxAC4AMAAuADAALgAwAAAAOAAIAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIAcwBpAG8AbgAA
-ADEALgAwAC4AMAAuADAAAAAoAAAAIAAAAEAAAAABAAQAAAAAAIACAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAgAAAgAAAAICAAIAAAACAAIAAgIAAAICAgADAwMAAAAD/AAD/AAAA//8A/wAAAP8A/wD/
-/wAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAd3d3d3d3d3d3d3d3d3dwBEREREREREREREREREREcAT/////////////
-////9HAE//////////////////RwBP/////////////////0cAT/////////////////9HAE////
-//////////////RwBP/////////////////0cAT/////////////////9HAE////////////////
-//RwBP/////////////////0cAT/////////////////9HAE//////////////////RwBP//////
-///////////0cAT/////////////////9HAE//////////////////RwBP/////////////////0
-cAT/////////////////9HAE//////////////////RwBP/////////////////0cASIiIiIiIiI
-iIiIiIiIhHAERERERERERERERERERERwBExMTExMTExMTE7Ozkl0cATMzMzMzMzMzMzMzMzMxAAA
-REREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAA/////////////////////8AAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAA
-AYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAAB
-gAAAA8AAAAf///////////////8oAAAAEAAAACAAAAABAAQAAAAAAMAAAAAAAAAAAAAAAAAAAAAA
+cAByAG8AagAuAGQAbABsAAAAAABcABsAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABD
+AG8AcAB5AHIAaQBnAGgAdAAgAEAAIABNAGkAYwByAG8AcwBvAGYAdAAgADIAMAAxADIAAAAAAIgA
+LwABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwBkADcAYQA3AGIANAA2
+ADUAZQA5ADUANAA0ADIAMQBlAGIAZAA5AGQAMAA2AGEAMQA3ADcAYQA3AGIAMwAwAGIALgB2AGIA
+cAByAG8AagAuAGQAbABsAAAAAAB4ACsAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBf
+AGQANwBhADcAYgA0ADYANQBlADkANQA0ADQAMgAxAGUAYgBkADkAZAAwADYAYQAxADcANwBhADcA
+YgAzADAAYgAuAHYAYgBwAHIAbwBqAAAAAAA0AAgAAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBv
+AG4AAAAxAC4AMAAuADAALgAwAAAAOAAIAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIAcwBpAG8A
+bgAAADEALgAwAC4AMAAuADAAAAAoAAAAIAAAAEAAAAABAAQAAAAAAIACAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAgAAAgAAAAICAAIAAAACAAIAAgIAAAICAgADAwMAAAAD/AAD/AAAA//8A/wAAAP8A
-/wD//wAA////AAAAAAAAAAAAB3d3d3d3d3dERERERERER0////////hHT///////+EdP///////4
-R0////////hHT///////+EdP///////4R0////////hHT///////+EdIiIiIiIiIR0zMzMzMzMxH
-xERERERERMAAAAAAAAAAAAAAAAAAAAAA//8AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAABAAD//wAA//8AAAAAAQACACAgEAABAAQA6AIAAAIAEBAQAAEA
-BAAoAQAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+/wD//wAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAd3d3d3d3d3d3d3d3d3dwBEREREREREREREREREREcAT/////////
+////////9HAE//////////////////RwBP/////////////////0cAT/////////////////9HAE
+//////////////////RwBP/////////////////0cAT/////////////////9HAE////////////
+//////RwBP/////////////////0cAT/////////////////9HAE//////////////////RwBP//
+///////////////0cAT/////////////////9HAE//////////////////RwBP//////////////
+///0cAT/////////////////9HAE//////////////////RwBP/////////////////0cASIiIiI
+iIiIiIiIiIiIhHAERERERERERERERERERERwBExMTExMTExMTE7Ozkl0cATMzMzMzMzMzMzMzMzM
+xAAAREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAA/////////////////////8AAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAAB
+gAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGA
+AAABgAAAA8AAAAf///////////////8oAAAAEAAAACAAAAABAAQAAAAAAMAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAgAAAgAAAAICAAIAAAACAAIAAgIAAAICAgADAwMAAAAD/AAD/AAAA//8A/wAA
+AP8A/wD//wAA////AAAAAAAAAAAAB3d3d3d3d3dERERERERER0////////hHT///////+EdP////
+///4R0////////hHT///////+EdP///////4R0////////hHT///////+EdIiIiIiIiIR0zMzMzM
+zMxHxERERERERMAAAAAAAAAAAAAAAAAAAAAA//8AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAD//wAA//8AAAAAAQACACAgEAABAAQA6AIAAAIAEBAQ
+AAEABAAoAQAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAYAAADAAAAAA+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAYAAADAAAAGA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -2336,7 +2307,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
+AAAAAAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
 <property id="234" name="VSTAProjectName" dataType="System.String" state="default" isArray="false" description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package." typeConverter="NOTBROWSABLE" UITypeEditor="" containsID="false" expressionType="None">SC_d7a7b465e954421ebd9d06a177a7b30b</property>
 <property id="235" name="ScriptLanguage" dataType="System.String" state="default" isArray="false" description="Specifies the programming language used by the script." typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages, Microsoft.SqlServer.VSTAScriptingLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" UITypeEditor="" containsID="false" expressionType="None">VisualBasic</property>
 <property id="236" name="ReadOnlyVariables" dataType="System.String" state="default" isArray="false" description="Specifies a comma-separated list of read-only variables." typeConverter="" UITypeEditor="Microsoft.SqlServer.Dts.Pipeline.ScriptUIVariablePickerDlg, Microsoft.SqlServer.TxScript, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" containsID="false" expressionType="None">User::SLXConnectionString</property>
@@ -2431,9 +2402,9 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
 <DTS:Property DTS:Name="DisableEventHandlers">0</DTS:Property>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;TaskHost xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsDataFlowDiagram&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
-  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="10" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="33285" y="20003" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
+  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="16" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="38312" y="20003" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
     &lt;font&gt;
-      &lt;ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" /&gt;
+      &lt;ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" /&gt;
     &lt;/font&gt;
     &lt;mouseicon&gt;
       &lt;ddsxmlobjectstreamwrapper binary="6c74000000000000" /&gt;
@@ -2442,7 +2413,7 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
   &lt;layoutmanager&gt;
     &lt;ddsxmlobj /&gt;
   &lt;/layoutmanager&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="OLE DB Source" left="2223" top="3016" logicalid="4" controlid="1" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Truncation may occur due to retrieving data from database column &amp;quot;STATUS&amp;quot; with a length of 255 to da..." left="2223" top="3016" logicalid="4" controlid="1" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2487,102 +2458,73 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;View&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{0CB0CDE9-6F21-4871-A5D2-970AFC261412}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{B924DE86-57CA-4885-8F73-EB717517DDBE}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{0D5402D4-34DA-40BA-88AB-412579D0F8E6}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;OLE DB Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Input 0&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{0CB0CDE9-6F21-4871-A5D2-970AFC261412}-240</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{73A5AAD1-604F-4CDD-96D8-CA5E81E48779}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{9D1E3745-A768-4FF1-9ED6-B1E6C00B5D35}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;TaskHost xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsDataFlowDiagram&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
-  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="11" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="33285" y="20003" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
+  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="11" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="38312" y="20003" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
     &lt;font&gt;
       &lt;ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" /&gt;
     &lt;/font&gt;
-    &lt;mouseicon&gt;
-      &lt;ddsxmlobjectstreamwrapper binary="6c74000000000000" /&gt;
+    &lt;mouseicon&gt;&lt;ddsxmlobjectstreamwrapper binary="6c74000000000000" /&gt;
     &lt;/mouseicon&gt;
   &lt;/diagram&gt;
-  &lt;layoutmanager&gt;
-    &lt;ddsxmlobj /&gt;
+  &lt;layoutmanager&gt;&lt;ddsxmlobj /&gt;
   &lt;/layoutmanager&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="OLE DB Source" left="2223" top="3016" logicalid="4" controlid="1" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
-    &lt;control&gt;
-      &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="OLE DB Source" left="1344" top="1000" logicalid="4" controlid="1" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
-    &lt;layoutobject&gt;
-      &lt;ddsxmlobj&gt;
-        &lt;property name="LogicalObject" value="{318D1B41-9E52-4D03-AA6C-ECC192F684F3}/components/1" vartype="8" /&gt;
+    &lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="{318D1B41-9E52-4D03-AA6C-ECC192F684F3}/components/1" vartype="8" /&gt;
         &lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Cannot retrieve the column code page info from the OLE DB provider.  If the component supports the &amp;quot;..." left="2144" top="6322" logicalid="5" controlid="2" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
-    &lt;control&gt;
-      &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Cannot retrieve the column code page info from the OLE DB provider.  If the component supports the &amp;quot;..." left="1000" top="4281" logicalid="5" controlid="2" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
-    &lt;layoutobject&gt;
-      &lt;ddsxmlobj&gt;
-        &lt;property name="LogicalObject" value="{318D1B41-9E52-4D03-AA6C-ECC192F684F3}/components/151" vartype="8" /&gt;
+    &lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="{318D1B41-9E52-4D03-AA6C-ECC192F684F3}/components/354" vartype="8" /&gt;
         &lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="3544" top="3781" logicalid="6" controlid="3" masterid="0" hint1="0" hint2="0" width="878" height="3041" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
-    &lt;control&gt;
-      &lt;ddsxmlobj&gt;
-        &lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1"&gt;
-          &lt;adornment percentpos="50" controlid="7" width="423" height="423" side="1" behavior="2" himetric="1110" distfromline="175" startobj="0" x="4158" y="5426" visible="1" allowoverlap="1" usepercent="1" /&gt;
-        &lt;/polyline&gt;
+  &lt;ddscontrol controlprogid="MSDDS.Polyline" left="2400" top="1765" logicalid="6" controlid="3" masterid="0" hint1="0" hint2="0" width="1143" height="3016" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobj&gt;&lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/control&gt;
-    &lt;layoutobject&gt;
-      &lt;ddsxmlobj&gt;
-        &lt;property name="LogicalObject" value="{318D1B41-9E52-4D03-AA6C-ECC192F684F3}/paths/330" vartype="8" /&gt;
+    &lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="{318D1B41-9E52-4D03-AA6C-ECC192F684F3}/paths/371" vartype="8" /&gt;
         &lt;property name="Virtual" value="0" vartype="11" /&gt;
         &lt;property name="VisibleAP" value="0" vartype="3" /&gt;
       &lt;/ddsxmlobj&gt;
     &lt;/layoutobject&gt;
-    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="1" destid="2" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;
-      &lt;point x="4022" y="4180" /&gt;
-      &lt;point x="4022" y="5251" /&gt;
-      &lt;point x="3943" y="5251" /&gt;
-      &lt;point x="3943" y="6322" /&gt;
+    &lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout100" sourceid="1" destid="2" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;&lt;point x="3143" y="2164" /&gt;
+      &lt;point x="3143" y="3222" /&gt;
+      &lt;point x="2799" y="3222" /&gt;
+      &lt;point x="2799" y="4281" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" left="4158" top="5426" logicalid="10" controlid="7" masterid="3" hint1="0" hint2="0" width="423" height="423" noresize="1" nomove="1" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="1" selectable="0" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="1" groupcollapsed="0" tabstop="0" visible="1" snaptogrid="0"&gt;
-    &lt;control&gt;
-      &lt;ddsxmlobjectstreaminitwrapper binary="00080000a7010000a7010000" /&gt;
-    &lt;/control&gt;
-    &lt;layoutobject&gt;
-      &lt;ddsxmlobj&gt;
-        &lt;property name="VisualizerAdornment" value="-1" vartype="11" /&gt;
-      &lt;/ddsxmlobj&gt;
-    &lt;/layoutobject&gt;
-    &lt;shape groupshapeid="0" groupnode="0" /&gt;
-  &lt;/ddscontrol&gt;
-&lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;151	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;Table&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;151	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;View&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
+&lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;354	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;Table&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;354	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;151	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;Table&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;151	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;View&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{318D1B41-9E52-4D03-AA6C-ECC192F684F3}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{3A1CE852-C9F9-4D7F-BA60-5142CC2C5551}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{7198D59B-81F4-43D0-8526-94D798B7D16D}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;OLE DB Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;OLE DB Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
-<DTS:Property DTS:Name="ObjectName">{318D1B41-9E52-4D03-AA6C-ECC192F684F3}-330</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{3B2B36F3-A746-4C10-A785-EF02A13DF6FB}</DTS:Property>
+<DTS:Property DTS:Name="ObjectName">{318D1B41-9E52-4D03-AA6C-ECC192F684F3}-371</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{C87DDD4E-6ACD-40AB-B921-0F514558DCA0}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;TaskHost xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsDataFlowDiagram&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
-  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="10" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="23283" y="9102" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
+  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="10" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="38312" y="20003" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
     &lt;font&gt;
       &lt;ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" /&gt;
     &lt;/font&gt;
@@ -2624,14 +2566,14 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;28	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;Table&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;1	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;28	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{62996070-8872-4933-955F-05F2B0FBDB66}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{88649AE6-17FA-44D6-80B5-3427B094F0FC}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{FA58D73A-66AA-4776-8D19-E8305E3ADB52}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;OLE DB Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;OLE DB Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{62996070-8872-4933-955F-05F2B0FBDB66}-45</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{87382D65-ECAE-4689-A8A3-E5E4667F7A2E}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{793A6872-9912-4E5B-B34A-5CB6355C1481}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
@@ -2648,26 +2590,26 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsEventHandlerDiagram&gt;&lt;/DtsEventHandler&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{6DBA4302-C162-455D-8174-C93775B48D0B}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{906492A7-0A25-4C82-990A-C4EE8C0EE88F}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{8922D6BB-11D9-41F8-92B7-723371769C8A}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PrecedenceConstraint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:EvalOp&gt;Constraint&lt;/dwd:EvalOp&gt;&lt;/PrecedenceConstraint&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{B0FB6E28-4398-44B4-ADD2-7682F5782C98}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{78B7AD5F-568E-4859-AF09-93574C9357C6}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{98A7299F-B856-4EC9-A4E8-0E9E737ACAF8}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;PrecedenceConstraint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:EvalOp&gt;Constraint&lt;/dwd:EvalOp&gt;&lt;/PrecedenceConstraint&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{B8AEAA03-0441-4D33-A630-671E054019FB}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{1890E610-01CE-4F3E-8902-3E3DE6F66FB7}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{11A68EB7-78CD-4431-BD83-A3D878823D46}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;Package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsControlFlowDiagram&gt;&lt;dwd:BoundingLeft&gt;-73&lt;/dwd:BoundingLeft&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
-  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="15" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="33285" y="20929" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
+  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="15" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="38312" y="20929" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
     &lt;font&gt;
       &lt;ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" /&gt;
     &lt;/font&gt;
@@ -2696,7 +2638,7 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Truncation may occur due to inserting data from data flow column &amp;quot;WAREHOUSEID&amp;quot; with a length of 6 to..." left="260" top="1450" logicalid="8" controlid="2" masterid="1" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="The external columns for component &amp;quot;OLE DB Source&amp;quot; (1) are out of synchronization with the data sour..." left="260" top="1450" logicalid="8" controlid="2" masterid="1" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2738,7 +2680,7 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
       &lt;point x="2059" y="3143" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Data Flow Task" left="365" top="5081" logicalid="11" controlid="5" masterid="1" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="The external columns for component &amp;quot;OLE DB Source&amp;quot; (1) are out of synchronization with the data sour..." left="365" top="5081" logicalid="11" controlid="5" masterid="1" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2773,12 +2715,12 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsControlFlowDiagram&gt;&lt;/Package&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">{DD1D2767-E026-46D2-82EA-334683255EC3}</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{7A5E2A60-4487-4773-8651-5604695A0B59}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{30C843E3-4F20-42CE-920C-855931D41D2E}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable>
 <DTS:PackageVariable>
 <DTS:Property DTS:Name="PackageVariableValue" DTS:DataType="8">&lt;Package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsControlFlowDiagram&gt;&lt;dwd:BoundingLeft&gt;-73&lt;/dwd:BoundingLeft&gt;&lt;dwd:Layout&gt;&lt;dds&gt;
-  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="15" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="33285" y="20929" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
+  &lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout100" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout100" version="7" nextobject="15" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="38312" y="20929" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;
     &lt;font&gt;
       &lt;ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" /&gt;
     &lt;/font&gt;
@@ -2807,7 +2749,7 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
     &lt;/layoutobject&gt;
     &lt;shape groupshapeid="0" groupnode="0" /&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Truncation may occur due to inserting data from data flow column &amp;quot;WAREHOUSEID&amp;quot; with a length of 6 to..." left="260" top="1450" logicalid="8" controlid="2" masterid="1" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="The external columns for component &amp;quot;OLE DB Source&amp;quot; (1) are out of synchronization with the data sour..." left="260" top="1450" logicalid="8" controlid="2" masterid="1" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2849,7 +2791,7 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
       &lt;point x="2059" y="3143" /&gt;
     &lt;/connector&gt;
   &lt;/ddscontrol&gt;
-  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Data Flow Task" left="365" top="5081" logicalid="11" controlid="5" masterid="1" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
+  &lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="The external columns for component &amp;quot;OLE DB Source&amp;quot; (1) are out of synchronization with the data sour..." left="365" top="5081" logicalid="11" controlid="5" masterid="1" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;
     &lt;control&gt;
       &lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;
     &lt;/control&gt;
@@ -2884,6 +2826,6 @@ AAAAAAAAAAAAAA==]]></arrayElement></arrayElements></property>
 &lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsControlFlowDiagram&gt;&lt;/Package&gt;</DTS:Property>
 <DTS:Property DTS:Name="Namespace">dts-designer-1.0</DTS:Property>
 <DTS:Property DTS:Name="ObjectName">package-diagram</DTS:Property>
-<DTS:Property DTS:Name="DTSID">{820D8984-B0F3-4494-A07F-1C007323474A}</DTS:Property>
+<DTS:Property DTS:Name="DTSID">{819F0022-5ABC-4F73-BC41-6A25E0156AF4}</DTS:Property>
 <DTS:Property DTS:Name="Description"></DTS:Property>
 <DTS:Property DTS:Name="CreationName"></DTS:Property></DTS:PackageVariable></DTS:Executable>

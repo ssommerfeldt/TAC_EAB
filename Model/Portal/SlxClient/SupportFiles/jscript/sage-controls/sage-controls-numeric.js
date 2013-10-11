@@ -1,4 +1,4 @@
-﻿if (typeof dojo !== 'undefined') {
+if (typeof dojo !== 'undefined') {
     dojo.require("Sage.Utility");
     dojo.require("dojo.number");
 }
@@ -89,6 +89,6 @@ if (!Sage.UI.Numeric) {
             formatted = this.currValue;
         }
         control.value = formatted;
-        this.currValue = formatted;
+        this.currValue = formatted;		
     };
 }

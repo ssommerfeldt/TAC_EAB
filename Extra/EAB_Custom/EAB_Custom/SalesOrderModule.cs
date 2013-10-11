@@ -1,24 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Sage.Platform.WebPortal;
-using Sage.SalesLogix.Client.GroupBuilder.Controls;
-using Sage.Platform.WebPortal.Services;
-using Sage.Platform.WebPortal.SmartParts;
-using Sage.Platform.WebPortal.Workspaces;
 using Sage.Platform.WebPortal.Workspaces.Tab;
-using System.Web;
-using Sage.SalesLogix.Security;
-using Sage.SalesLogix.Web;
-using Sage.Platform.Security;
 using Sage.Entity.Interfaces;
 using Sage.Platform;
 using Sage.Platform.Application;
-using Sage.Platform.Application.UI;
 using Sage.Platform.Application.UI.Web;
-using Sage.Platform.Repository;
-using System.Linq;
 
 
 namespace EAB_Custom {

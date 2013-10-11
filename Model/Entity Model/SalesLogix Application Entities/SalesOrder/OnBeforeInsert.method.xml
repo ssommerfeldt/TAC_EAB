@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="fcac4378-0fea-49c2-a806-8560cd52b9fd" lastModifiedUtc="2008-01-15T20:26:01.5407779Z" name="OnBeforeInsert" returnType="void" methodType="CrudEvent" actionType="None" returnMode="None" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="fcac4378-0fea-49c2-a806-8560cd52b9fd" lastModifiedUtc="2008-01-15T20:26:01.5407779Z" name="OnBeforeInsert" methodType="CrudEvent" actionType="None" returnMode="None">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -13,6 +13,12 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets />
+  <postExecuteTargets>
+    <methodTarget id="8f5510f3-c91c-405c-8bf8-3bd182ee25d5" lastModifiedUtc="2013-04-10T22:09:20.1231172Z" targetType="EAB_Custom.SalesOrderExtension, EAB_Custom" targetMethod="OnBeforeInsertStep2" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
   <postFlushTargets />
 </method>

@@ -596,5 +596,29 @@
         <IntegerDataType />
       </SystemDataType>
     </property>
+    <property xsi:type="OrmFieldProperty" id="7dfc6c71-e92e-44e0-9f24-d34326412663" lastModifiedUtc="2013-04-09T21:24:55.812744Z" name="OrigProductPrice" audited="false" columnName="ORIGPRODUCTPRICE" maxLength="0" precision="53" scale="0" ordinal="32" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="f37c635c-9fbf-40d8-98d5-750a54a3cca1">
+        <DoubleDataType />
+      </SystemDataType>
+    </property>
+    <property xsi:type="OrmFieldProperty" id="56ceb4f2-38d1-4028-9e6c-cdb41df2eb8e" lastModifiedUtc="2013-04-09T21:24:55.8146998Z" name="OrigProductDiscount" audited="false" columnName="ORIGPRODUCTDISCOUNT" maxLength="0" precision="53" scale="0" ordinal="33" isReadOnly="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
+          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+            <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+        </extendee>
+      </ExtendedPropertiesCollection>
+      <SystemDataType guid="f37c635c-9fbf-40d8-98d5-750a54a3cca1">
+        <DoubleDataType />
+      </SystemDataType>
+    </property>
   </properties>
 </entity>
