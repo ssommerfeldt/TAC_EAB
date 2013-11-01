@@ -56,11 +56,11 @@ namespace EAB_Custom {
                 }
 
             salesOrder.Save();
-
-            if (!String.IsNullOrEmpty(type) && type == "SO") {
-                //Add stock card products
-                salesOrder.AddStockcardProducts();
-            }
+            //ssommerfeldt Remove this functionality as it is too slow for Large stock Cards Oct 31, 2013
+            //if (!String.IsNullOrEmpty(type) && type == "SO") {
+            //    //Add stock card products
+            //    salesOrder.AddStockcardProducts();
+            //}
 
             //return the new id
             result = salesOrder.Id.ToString();
