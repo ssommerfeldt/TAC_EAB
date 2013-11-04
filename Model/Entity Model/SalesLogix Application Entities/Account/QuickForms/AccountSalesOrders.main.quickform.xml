@@ -110,13 +110,106 @@
       </Properties>
       <ControlDefinition>
         <Properties>
-          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>cmdAddSalesOrder</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>StandardButton</ButtonType><Image /><OnClientClick /><OnClickAction><ResourceKey>cmdAddSalesOrder</ResourceKey><RootActionName>CSharpSnippetAction</RootActionName><Action><CSharpCodeSnippet><![CDATA[	//Create Sales Order
+          <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>cmdAddSalesOrder</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>StandardButton</ButtonType><Image /><OnClientClick /><OnClickAction><ResourceKey>cmdAddSalesOrder</ResourceKey><RootActionName>CSharpSnippetAction</RootActionName><Action><CSharpCodeSnippet><![CDATA[//Create Sales Order
 	Sage.Entity.Interfaces.IAccount account = this.BindingSource.Current as Sage.Entity.Interfaces.IAccount;
 	
 	string salesOrderId = account.CreateSalesOrder("SO");
-	
+    
+    // Update the 
+    // ==================================================================================================================
+    // TAC Code here needed to use this method for Performance reasons only as the Entity Model is too Slow
+    //====================================================================================================================
+    string pSQL = "Update SALESORDERITEMS Set SalesOrderid = '" + salesOrderId + "' where TacAccountid = '" + account.Id.ToString() + "' and SalesOrderID = 'TEMP'";
+    string SQL_iCountAccountStockCardItems = "Select Count(*) from sysdba.StockCardItems where Accountid = '" + account.Id.ToString () + "'";
+    string SQL_iCountSalesOrderItems = "Select Count(*) from sysdba.SalesOrderItems  where TacAccountid = '" + account.Id.ToString() + "' and SalesOrderID = 'TEMP'";
+    int iCountAccountStockCardItems = 0;
+    int iCountSalesOrderItems =0;
+        Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+        using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+        {
+            conn.Open();
+
+            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(SQL_iCountAccountStockCardItems, conn))
+            {
+            //Check to see if the Accounts Stock Cards Match the Current Number of SalesOrderItems
+                iCountAccountStockCardItems = (int)cmd.ExecuteScalar();
+               
+            }
+            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(SQL_iCountSalesOrderItems, conn))
+            {
+                //Check to see if the Accounts Stock Cards Match the Current Number of SalesOrderItems
+                iCountSalesOrderItems = (int)cmd.ExecuteScalar();
+
+            }
+            if (iCountAccountStockCardItems == iCountSalesOrderItems)
+            {
+                // Counts are the Same so Run the Update Statement
+                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(pSQL, conn))
+                {
+                    //Update the Temp Items
+                    cmd.ExecuteNonQuery();
+
+                }
+
+            }
+            else
+            {
+                //Counts are not the Same so Run Process to  create or Update them
+                //==============================================================================
+                // Create new TEMP SalesItems using External Executable
+                //==============================================================================
+                string apPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
+
+                System.Diagnostics.Process process1 = new System.Diagnostics.Process();
+                process1.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden; //Hidden window
+
+                // Set the directory where the file resides
+
+                process1.StartInfo.WorkingDirectory = apPath + "Bin";
+                // Set the filename name of the file you want to open
+
+                process1.StartInfo.FileName = apPath + "Bin\\EABItemUpdater.exe";
+                string myargs = "\"-Accountid=" + account.Id.ToString() + "`" + datasvc.GetConnectionString() + "\"";
+
+                process1.StartInfo.Arguments = myargs;
+                // Start the process
+                process1.Start();
+                process1.WaitForExit();
+                // Counts are the Same Now so Run the Update Statement
+                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(pSQL, conn))
+                {
+                    //Update the Temp Items
+                    cmd.ExecuteNonQuery();
+
+                }
+                
+            }
+        }
+    
+    //==============================================================================
+    // Create new TEMP SalesItems using External Executable
+    //==============================================================================
+        string apPath1 = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
+        
+        System.Diagnostics.Process process2 = new System.Diagnostics.Process();
+        process2.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden; //Hidden window
+    
+        // Set the directory where the file resides
+
+        process2.StartInfo.WorkingDirectory = apPath1 + "Bin";
+        // Set the filename name of the file you want to open
+
+        process2.StartInfo.FileName = apPath1 +  "Bin\\EABItemUpdater.exe";
+        string myargs1 = "\"-Accountid=" +account.Id.ToString () + "`"+ datasvc.GetConnectionString()+ "\"";
+        
+        process2.StartInfo.Arguments = myargs1;
+        // Start the process
+        process2.Start();
+       // Do Not Wait for Exit
+    
 	//redirect to new salesorder
-	Response.Redirect(String.Format("SalesOrder.aspx?entityId={0}", salesOrderId));]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnClickAction></QFButton></Property>
+	Response.Redirect(String.Format("SalesOrder.aspx?entityId={0}", salesOrderId));
+]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnClickAction></QFButton></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>
