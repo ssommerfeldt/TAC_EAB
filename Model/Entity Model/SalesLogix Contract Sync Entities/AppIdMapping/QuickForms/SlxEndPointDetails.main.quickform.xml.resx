@@ -112,18 +112,18 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtSlxEndPoint.Caption" xml:space="preserve">
-    <value>SalesLogix Feed:</value>
+    <value>Saleslogix Feed:</value>
   </data>
   <data name="txtName.Caption" xml:space="preserve">
     <value>Display Name:</value>
   </data>
-  <data name="QFTextBox.Caption" xml:space="preserve">
+  <data name="txtUserName.Caption" xml:space="preserve">
     <value>User Name:</value>
   </data>
   <data name="txtPassword.Caption" xml:space="preserve">
@@ -135,10 +135,25 @@
   <data name="btnSave.Caption" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="chkRestrictToSingleAccount.Caption" xml:space="preserve">
-    <value>Restrict account promotion to single accounting system</value>
+  <data name="chkUseSSL.Caption" xml:space="preserve">
+    <value>Use SSL (Secure Socket Layer)</value>
   </data>
-  <data name="chkManageUI.Caption" xml:space="preserve">
-    <value>Allow accounting system to manage Sales Orders</value>
+  <data name="txtServer.Caption" xml:space="preserve">
+    <value>Server:</value>
+  </data>
+  <data name="btnUpdateSyncDigest.ToolTip" xml:space="preserve">
+    <value>Validates sync digest records contain latest resources</value>
+  </data>
+  <data name="txtPort.Caption" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="txtSDataPortal.Caption" xml:space="preserve">
+    <value>Data Portal:</value>
+  </data>
+  <data name="btnTest.Caption" xml:space="preserve">
+    <value>Test Link</value>
+  </data>
+  <data name="txtStatus.Caption" xml:space="preserve">
+    <value>Status:</value>
   </data>
 </root>

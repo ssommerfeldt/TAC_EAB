@@ -32,7 +32,7 @@
       </selectProcessor>
     </processor>
     <processor type="Sage.Platform.Mashups.Processors.QueryProcessor, Sage.Platform.Mashups">
-      <queryProcessor name="TicketActivityQuery" location="320, 40" expanded="True" width="240" continueOnError="False" query="select CompletedDate, DateDue, AssignedDate, ModifyDate, ShortDescription, ActivityDescription, Id&#xD;&#xA;from TicketActivity a&#xD;&#xA;where a.Ticket.Id = :TicketId&#xD;&#xA;and (ActivityTypeCode != 'k6UJ9A000033') and (a.ShortDescription is not null&#xD;&#xA;or a.ActivityDescription is not null)&#xD;&#xA;order by a.CreateDate Desc" maximumResults="800">
+      <queryProcessor name="TicketActivityQuery" location="320, 40" expanded="True" width="240" continueOnError="False" query="select CompletedDate, DateDue, AssignedDate, ModifyDate, ShortDescription, ActivityDescription, Id&#xD;&#xA;from TicketActivity a&#xD;&#xA;where a.Ticket.Id = :TicketId&#xD;&#xA;and (a.ShortDescription is not null&#xD;&#xA;or a.ActivityDescription is not null)&#xD;&#xA;order by a.CreateDate Desc" maximumResults="800">
         <parameters>
           <parameter id="e954cd6b-22ab-4a45-b9fe-e6a97ae6139f" name="TicketId" expression="EntityId" />
         </parameters>
@@ -41,8 +41,8 @@
     <processor type="Sage.Platform.Mashups.Processors.SelectProcessor, Sage.Platform.Mashups">
       <selectProcessor name="TicketActivityPreSelect" location="320, 260" expanded="True" width="240" continueOnError="False" type="Append">
         <properties>
-          <property id="33786dcb-e62c-4b2d-925f-9c5a5f0abdad" expression="TimelessStart(Coalesce(CompletedDate, DateDue, AssignedDate, ModifyDate))" alias="Start" />
-          <property id="01b0ab75-0103-4e62-a46f-0f3eedc83461" expression="TimelessEnd(Coalesce(CompletedDate, DateDue, AssignedDate, ModifyDate))" alias="End" />
+          <property id="33786dcb-e62c-4b2d-925f-9c5a5f0abdad" expression="Coalesce(AssignedDate, CreateDate)" alias="Start" />
+          <property id="01b0ab75-0103-4e62-a46f-0f3eedc83461" expression="Coalesce(CompletedDate, DateDue, ModifyDate)" alias="End" />
         </properties>
       </selectProcessor>
     </processor>

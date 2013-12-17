@@ -1,6 +1,8 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="./" MadCap:RuntimeFileType="DefaultCSH" MadCap:HelpSystemFileName="WebCustomerPortal.xml" MadCap:PathToSkinFolder="Data/SkinWebHelp2/" MadCap:InPreviewMode="False">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="./" MadCap:RuntimeFileType="DefaultCSH" MadCap:HelpSystemFileName="WebCustomerPortal.xml" MadCap:PathToSkinFolder="Data/SkinCustomerPortal/" MadCap:InPreviewMode="False">
+    <!-- saved from url=(0014)about:internet -->
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>WebHelp</title>
         <script type="text/javascript" src="Content/SkinSupport/MadCapAll.js">
         </script>
@@ -164,8 +166,20 @@ function LookupCSHDataFromMapID( id, OnCompleteFunc )
     {
         helpSystem.LookupCSHID(id, function (idInfo)
         {
+            if (idInfo.Topic != null)
+            {
+                var myPathUrl = new CMCUrl(helpSystem.GetPath());
+                var idUrl = new CMCUrl(idInfo.Topic);
+                var relUrl = idUrl.ToRelative(myPathUrl);
+
+                cshShortcutData.topic = relUrl.FullPath;
+            }
+            else
+            {
+                cshShortcutData.topic = null;
+            }
+
             cshShortcutData.cshID = id;
-            cshShortcutData.topic = idInfo.Topic;
             cshShortcutData.skinName = idInfo.Skin;
 
             OnCompleteFunc(cshShortcutData);

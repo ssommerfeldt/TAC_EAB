@@ -14,7 +14,7 @@
        var updateEntityResultCtrl = document.getElementById(updateEntityResultId);
        var updateMessageCtrl = document.getElementById(updateMessageId);
             
-       //Prompt user to update enity related addresses   
+       //Prompt user to update entity related addresses   
        if(confirm(updateMessageCtrl.value))
        {
             updateEntityResultCtrl.value = "True";

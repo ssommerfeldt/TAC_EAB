@@ -1,15 +1,16 @@
 using System;
+using System.Globalization;
 using System.Web;
 using System.Web.UI;
 using Sage.Platform.Application;
 using Sage.Entity.Interfaces;
 using Sage.Platform.WebPortal;
 using Sage.SalesLogix.Security;
-using log4net;
 using Sage.Platform.Security;
 using Sage.Platform.Application.UI;
 using Sage.SalesLogix.PickLists;
 using Sage.Platform.WebPortal.SmartParts;
+using TimeZone = Sage.Platform.TimeZone;
 using System.Text;
 
 public partial class SmartParts_Ticket_SendTicketEmail : EntityBoundSmartPartInfoProvider
@@ -126,10 +127,14 @@ public partial class SmartParts_Ticket_SendTicketEmail : EntityBoundSmartPartInf
         String ticketRef = String.Empty;
         if (ticket != null)
         {
+            IContextService context = ApplicationContext.Current.Services.Get<IContextService>(true);
+            TimeZone timeZone = (TimeZone)context.GetContext("TimeZone");
+            string datePattern = CultureInfo.CurrentCulture.DateTimeFormat.FullDateTimePattern;
+
             emailBody = (ticket.ReceivedDate == null) ? String.Empty : string.Format(GetLocalResourceObject("SendTicketEmail_EmailBody_Received").ToString(),
-                ticket.ReceivedDate.Value, "%0A%0A");
+                timeZone.UTCDateTimeToLocalTime((DateTime)ticket.ReceivedDate).ToString(datePattern), "%0A%0A");
             emailBody += (ticket.CompletedDate == null) ? String.Empty : string.Format(GetLocalResourceObject("SendTicketEmail_EmailBody_Completed").ToString(),
-                ticket.CompletedDate.Value, "%0A%0A");
+                timeZone.UTCDateTimeToLocalTime((DateTime)ticket.CompletedDate).ToString(datePattern), "%0A%0A");
             if (ticket.TicketProblem != null)
                 emailBody += (ticket.TicketProblem.Notes == null) ? String.Empty : string.Format(GetLocalResourceObject("SendTicketEmail_EmailBody_Description").ToString(),
                     "%0A", HttpUtility.UrlEncode(ticket.TicketProblem.Notes.Trim()), "%0A%0A");
@@ -162,17 +167,7 @@ public partial class SmartParts_Ticket_SendTicketEmail : EntityBoundSmartPartInf
     /// </summary>
     protected override void OnFormBound()
     {
-        object sender = this;
-        EventArgs e = EventArgs.Empty;
-
-        SLXUserService service = ApplicationContext.Current.Services.Get<IUserService>(true) as SLXUserService;
-        if (service != null)
-        {
-            IUser UserContext = service.GetUser();
-            //if (UserContext != null && UserContext.Manager != null && UserContext.Manager.UserInfo != null)
-            //    lblManagerName.Text = UserContext.Manager.UserInfo.FirstName + " " + UserContext.Manager.UserInfo.LastName;
-        }
-        base.OnFormBound();
+        ClientBindingMgr.RegisterDialogCancelButton(btnCancel);
     }
 
     /// <summary>
@@ -180,15 +175,12 @@ public partial class SmartParts_Ticket_SendTicketEmail : EntityBoundSmartPartInf
     /// </summary>
     protected override void OnWireEventHandlers()
     {
-        if (ScriptManager.GetCurrent(this.Page) != null)
-        {
-            cmdSendEmail.Click += new EventHandler(DialogService.CloseEventHappened);
-        }
-        base.OnWireEventHandlers();
+        cmdSendEmail.Click += DialogService.CloseEventHappened;
+        btnCancel.Click += DialogService.CloseEventHappened;
     }
 
     /// <summary>
-    /// Override this method to add bindings to the currrently bound smart part
+    /// Override this method to add bindings to the currently bound smart part
     /// </summary>
     protected override void OnAddEntityBindings()
     {

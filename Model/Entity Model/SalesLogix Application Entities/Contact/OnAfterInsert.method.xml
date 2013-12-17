@@ -13,12 +13,6 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets>
-    <methodTarget id="5c5ea4b8-9d47-48d0-81d7-a7814d929f03" lastModifiedUtc="2011-11-03T23:24:43.9474034Z" targetType="Sage.SalesLogix.Contact.Rules, Sage.SalesLogix.BusinessRules" targetMethod="LinkContact" active="true">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
-      </ExtendedPropertiesCollection>
-    </methodTarget>
-  </postExecuteTargets>
+  <postExecuteTargets />
   <postFlushTargets />
 </method>

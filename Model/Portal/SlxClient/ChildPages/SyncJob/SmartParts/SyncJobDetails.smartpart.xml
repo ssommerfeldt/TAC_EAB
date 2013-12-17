@@ -5,6 +5,8 @@
   <SmartPart>\Entity Model\SalesLogix Contract Sync Entities\SyncJob\QuickForms\SyncJobDetails.main.quickform.xml</SmartPart>
   <TargetWorkspace>MainContent</TargetWorkspace>
   <ShowInMode>Detail</ShowInMode>
-  <Properties />
+  <Properties>
+    <Property Name="HelpTopic" TypeConverter="">syncjobdetailview</Property>
+  </Properties>
   <AllowRoles />
 </SmartPartMapping>

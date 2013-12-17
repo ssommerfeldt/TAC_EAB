@@ -1,4 +1,5 @@
 using System;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using NHibernate;
 using Sage.Entity.Interfaces;
+using Sage.Platform.Diagnostics;
 using Sage.SalesLogix.Web.Controls;
 using Sage.SalesLogix.Security;
 using Sage.Platform.WebPortal.Services;
@@ -25,6 +27,7 @@ using Sage.SalesLogix.Activity;
 
 public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBoundSmartPartInfoProvider , IScriptControl
 {
+    private const string LastOpportunity = "Opportunity_SalesProcess_Last_Opportunity";
     private ISalesProcesses _salesProcess = null;
     private IOpportunity _opportunity = null;
 
@@ -117,7 +120,7 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         ddLSalesProcess.Attributes.Add("onchange", "return onSalesProcessChange();");
         cmdSelectContactNext.Attributes.Add("onclick", "return onSelectContactNext();");
         cmdSelectUserNext.Attributes.Add("onclick", "return onSelectUserNext();");
-        cmdCompleteStep.Attributes.Add("onclick", "return doPostBack(this);");
+        cmdCompleteStep.Attributes.Add("onclick", "Sys.WebForms.PageRequestManager.getInstance().add_initializeRequest(showSalesProcessLoading);");
         base.OnWireEventHandlers();
     }
     /// <summary>
@@ -257,24 +260,43 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         }
     }
 
+    private void UpdateSessionInfo()
+    {
+        Session[LastOpportunity] = EntityContext.EntityID.ToString();
+    }
+
+    private bool HandlingCurrentOpportunity()
+    {
+        var lastId = (string) Session[LastOpportunity];
+        if (!string.IsNullOrEmpty(lastId))
+        {
+            var currentId = EntityContext.EntityID.ToString();
+            return (currentId == lastId);
+        }
+        return false;
+    }
+
     /// <summary>
     /// Loads the sales process drop down.
     /// </summary>
     private void LoadSalesProcessDropDown()
     {
-        ddLSalesProcess.Items.Clear();
-        IList<Plugin> pluginList = null;
-        pluginList = Helpers.GetSalesProcessPluginList();
-        ListItem item = new ListItem();
-        item.Text = GetLocalResourceObject("SalesProcess_None").ToString();
-        item.Value = "NONE";
-        ddLSalesProcess.Items.Add(item);
-        foreach (Plugin plugin in pluginList)
+        if (IsPostBack == false || HandlingCurrentOpportunity() == false)
         {
-            item = new ListItem();
-            item.Text = plugin.Name;
-            item.Value = plugin.PluginId;
+            ddLSalesProcess.Items.Clear();
+            IList<Plugin> pluginList = null;
+            pluginList = Helpers.GetSalesProcessPluginList();
+            ListItem item = new ListItem();
+            item.Text = GetLocalResourceObject("SalesProcess_None").ToString();
+            item.Value = "NONE";
             ddLSalesProcess.Items.Add(item);
+            foreach (Plugin plugin in pluginList)
+            {
+                item = new ListItem();
+                item.Text = plugin.Name;
+                item.Value = plugin.PluginId;
+                ddLSalesProcess.Items.Add(item);
+            }
         }
     }
 
@@ -299,34 +321,54 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
     /// <param name="salesProcessAudits">The sales process audits.</param>
     private void LoadStagesDropDown(IList<ISalesProcessAudit> salesProcessAudits)
     {
-        ddlStages.Items.Clear();
-        if (salesProcessAudits == null)
+        if (IsPostBack == false || HandlingCurrentOpportunity() == false)
         {
-            LoadSnapShot(null);
-            return;
+            UpdateSessionInfo();
+            ddlStages.Items.Clear();
+            if (salesProcessAudits == null)
+            {
+                LoadSnapShot(null);
+                return;
+            }
+            
+            int currentStageIndex = -1;
+            int i = -1;
+            foreach (ISalesProcessAudit spAudit in salesProcessAudits)
+            {
+                if (spAudit.ProcessType == "STAGE")
+                {
+                    ListItem item = new ListItem();
+                    item.Text = string.Format("{0}.{1} {2}%", spAudit.StageOrder, spAudit.StageName, spAudit.Probability.ToString());
+                    item.Value = spAudit.Id.ToString();
+                    ddlStages.Items.Add(item);
+                    i++;
+                    if (spAudit.IsCurrent == true)
+                    {
+                        LoadSnapShot(spAudit);
+                        currentStageIndex = i;
+                    }
+                }
+            }
+            ddlStages.SelectedIndex = currentStageIndex;
         }
+    }
 
-        int currentStageIndex = -1;
-        int i = -1;
-        foreach (ISalesProcessAudit spAudit in salesProcessAudits)
+    private void UpdateSnapShot()
+    {
+        ISalesProcesses salesProcess = Helpers.GetSalesProcess(this.EntityContext.EntityID.ToString());
+        this._salesProcess = salesProcess;
+        IList<ISalesProcessAudit> list = salesProcess.GetSalesProcessAudits();
+        foreach (ISalesProcessAudit spAudit in list)
         {
             if (spAudit.ProcessType == "STAGE")
             {
-                ListItem item = new ListItem();
-                item.Text = string.Format("{0}.{1} {2}%", spAudit.StageOrder, spAudit.StageName, spAudit.Probability.ToString());
-                item.Value = spAudit.Id.ToString();
-                ddlStages.Items.Add(item);
-                i++;
                 if (spAudit.IsCurrent == true)
                 {
                     LoadSnapShot(spAudit);
-                    currentStageIndex = i;
                 }
             }
         }
-        ddlStages.SelectedIndex = currentStageIndex;
     }
-
     /// <summary>
     /// Loads the snap shot.
     /// </summary>
@@ -379,6 +421,7 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         salesProcess.InitSalesProcess(pluginID, opportunityId);
         IPanelRefreshService refresher = PageWorkItem.Services.Get<IPanelRefreshService>();
         refresher.RefreshAll();
+        this.UpdateSnapShot();
     }
 
     /// <summary>
@@ -407,6 +450,7 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         }
         IPanelRefreshService refresher = PageWorkItem.Services.Get<IPanelRefreshService>();
         refresher.RefreshAll();
+        this.UpdateSnapShot();
     }
 
     /// <summary>
@@ -496,6 +540,7 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         string[] args = stepContextValue.Split(new Char[] { ':' });
         string spaid = args[0];
         ISalesProcesses salesProcess = Helpers.GetSalesProcess(this.EntityContext.EntityID.ToString());
+
         if (args[1] == "False")
         {
             string result = salesProcess.CanCompleteStep(spaid);
@@ -518,6 +563,8 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         }
         IPanelRefreshService refresher = PageWorkItem.Services.Get<IPanelRefreshService>();
         refresher.RefreshAll();
+
+        this.UpdateSnapShot();
     }
 
     /// <summary>
@@ -648,15 +695,29 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         }
         catch (Exception ex)
         {
-            result = ex.Message;
+            if (ErrorHelper.CanShowExceptionMessage(ex))
+            {
+                result = ex.Message;
+            }
+            else
+            {
+                log.Error(
+                    string.Format("The call to SmartParts_OpportunitySalesProcess_SalesProcess.DoAction('{0}') failed",
+                                  spAudit), ex);
+                result = Resources.SalesLogix.WereSorryMsg;
+            }
         }
 
         if (DialogService != null)
         {
             if (!string.IsNullOrEmpty(result))
             {
-                string msg = string.Format(GetLocalResourceObject("MSG_ProcessActionResult").ToString(), spAudit.StepName, result);
-                DialogService.ShowMessage(msg);
+                // MSG_ProcessActionResult: For step |B|{0}|/B| : + NewLine + {1}
+                string msg =
+                    HttpUtility.HtmlEncode(string.Format(GetLocalResourceObject("MSG_ProcessActionResult").ToString(),
+                                                         spAudit.StepName, result)).Replace("|B|", "<b>").Replace(
+                                                             "|/B|", "</b>").Replace(Environment.NewLine, "<br />");
+                DialogService.ShowHtmlMessage(msg);
             }
         }
     }
@@ -690,13 +751,9 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
             throw new Exception(GetLocalResourceObject("Error_ContactNotFound").ToString());
         if (strAutoSchedule == "F")
         {
-            //Show the user the new Activity.
-
-            IActivity activity = (Activity)_salesProcess.ScheduleActivity(step.Id.ToString(), _opportunity, leader, contact, false);
-            Session["activitysession"] = activity;
-            Dictionary<string, string> args = new Dictionary<string, string>();
-            args.Add("type", activity.Type.ToString());
-            Link.ScheduleActivity(args);
+            //This will now be processed by the web service and then calle the client side script to open the activity dialog. 
+            IActivity activity = (Activity)_salesProcess.ScheduleActivity(step.Id.ToString(), _opportunity, leader, contact, true);
+            result = string.Format(GetLocalResourceObject("MSG_ActivityScheduled").ToString(), contact.FirstName, contact.LastName);
         }
         else
         {

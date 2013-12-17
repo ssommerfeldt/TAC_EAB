@@ -1,7 +1,7 @@
 // {{MadCap}} //////////////////////////////////////////////////////////////////
 // Copyright: MadCap Software, Inc - www.madcapsoftware.com ////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-// <version>7.0.0.0</version>
+// <version>8.0.0.0</version>
 ////////////////////////////////////////////////////////////////////////////////
 
 //    Syntax:
@@ -130,6 +130,12 @@ function FMCOpenHelp2( webHelpFileUrl, id, skinName, searchQuery, firstPick )
 
 	            if (topic)
 	            {
+	                var myPathUrl = new CMCUrl(helpSystem.GetPath());
+	                var idUrl = new CMCUrl(idInfo.Topic);
+	                var relUrl = idUrl.ToRelative(myPathUrl);
+
+	                topic = relUrl.FullPath;
+
 	                if (cshString.indexOf("#") != -1)
 	                {
 	                    cshString += "|";
@@ -309,7 +315,7 @@ function CMCAliasFile( xmlFile, helpSystem, OnLoadFunc )
 {
 	// Private member variables
 
-	var mXmlDoc		= null;
+	var mRootNode	= null;
 	var mHelpSystem	= helpSystem;
 	var mNameMap	= null;
 	var mIDMap		= null;
@@ -328,7 +334,8 @@ function CMCAliasFile( xmlFile, helpSystem, OnLoadFunc )
 	{
 	    function OnLoad(xmlDoc)
 	    {
-	        mXmlDoc = xmlDoc;
+            if (xmlDoc)
+	            mRootNode = xmlDoc.documentElement;
 
 	        OnCompleteFunc();
 	    }
@@ -389,6 +396,8 @@ function CMCAliasFile( xmlFile, helpSystem, OnLoadFunc )
 				{
 					topic = id;
 				}
+
+                found = true;
 			}
 			else
 			{
@@ -409,9 +418,9 @@ function CMCAliasFile( xmlFile, helpSystem, OnLoadFunc )
 
 		if ( !skin )
 		{
-			if ( mXmlDoc )
+		    if (mRootNode)
 			{
-				skin = mXmlDoc.documentElement.getAttribute( "DefaultSkinName" );
+			    skin = mRootNode.getAttribute("DefaultSkinName");
 			}
 		}
 		
@@ -455,12 +464,12 @@ function CMCAliasFile( xmlFile, helpSystem, OnLoadFunc )
 	{
 		if ( mNameMap == null )
 		{
-			if ( mXmlDoc )
+		    if (mRootNode)
 			{
 				mNameMap = new CMCDictionary();
 				mIDMap = new CMCDictionary();
-				
-				var maps	= mXmlDoc.documentElement.getElementsByTagName( "Map" );
+
+				var maps = mRootNode.getElementsByTagName("Map");
 
 				for ( var i = 0; i < maps.length; i++ )
 				{
@@ -509,7 +518,6 @@ function CMCHelpSystem( parentSubsystem, parentPath, xmlFile, tocPath, browseSeq
 	var mSelf				= this;
 	var mParentSubsystem	= parentSubsystem;
 	var mPath				= parentPath;
-	var mXmlDoc 			= null;
 	var mSubsystems			= new Array();
 	var mTocPath			= tocPath;
 	var mBrowseSequencePath	= browseSequencePath;
@@ -560,9 +568,7 @@ function CMCHelpSystem( parentSubsystem, parentPath, xmlFile, tocPath, browseSeq
 	            }
 	        }
 
-	        mXmlDoc = xmlDoc;
-
-	        mExists = mXmlDoc != null;
+	        mExists = xmlDoc != null;
 
 	        if (!mExists)
 	        {
@@ -570,18 +576,18 @@ function CMCHelpSystem( parentSubsystem, parentPath, xmlFile, tocPath, browseSeq
 	            return;
 	        }
 
-	        mSelf.TargetType = mXmlDoc.documentElement.getAttribute("TargetType");
-	        mSelf.SkinFolder = new CMCUrl(mXmlDoc.documentElement.getAttribute("Skin")).ToFolder().FullPath;
-	        mSelf.SkinTemplateFolder = mXmlDoc.documentElement.getAttribute("SkinTemplateFolder");
-	        mSelf.DefaultStartTopic = mXmlDoc.documentElement.getAttribute("DefaultUrl");
-	        mSelf.InPreviewMode = FMCGetAttributeBool(mXmlDoc.documentElement, "InPreviewMode", false);
-	        mSelf.LiveHelpOutputId = mXmlDoc.documentElement.getAttribute("LiveHelpOutputId");
-	        mSelf.LiveHelpServer = mXmlDoc.documentElement.getAttribute("LiveHelpServer");
+	        mSelf.TargetType = xmlDoc.documentElement.getAttribute("TargetType");
+	        mSelf.SkinFolder = new CMCUrl(xmlDoc.documentElement.getAttribute("Skin")).ToFolder().FullPath;
+	        mSelf.SkinTemplateFolder = xmlDoc.documentElement.getAttribute("SkinTemplateFolder");
+	        mSelf.DefaultStartTopic = xmlDoc.documentElement.getAttribute("DefaultUrl");
+	        mSelf.InPreviewMode = FMCGetAttributeBool(xmlDoc.documentElement, "InPreviewMode", false);
+	        mSelf.LiveHelpOutputId = xmlDoc.documentElement.getAttribute("LiveHelpOutputId");
+	        mSelf.LiveHelpServer = xmlDoc.documentElement.getAttribute("LiveHelpServer");
 	        mSelf.LiveHelpEnabled = mSelf.LiveHelpOutputId != null;
 	        mSelf.IsWebHelpPlus = mSelf.TargetType == "WebHelpPlus" && document.location.protocol.StartsWith("http", false);
 
-	        var moveOutputContentToRoot = FMCGetAttributeBool(mXmlDoc.documentElement, "MoveOutputContentToRoot", false);
-	        var makeFileLowerCase = FMCGetAttributeBool(mXmlDoc.documentElement, "MakeFileLowerCase", false);
+	        var moveOutputContentToRoot = FMCGetAttributeBool(xmlDoc.documentElement, "MoveOutputContentToRoot", false);
+	        var makeFileLowerCase = FMCGetAttributeBool(xmlDoc.documentElement, "MakeFileLowerCase", false);
 	        var contentFolder = "";
 
 	        if (!moveOutputContentToRoot)
@@ -595,17 +601,19 @@ function CMCHelpSystem( parentSubsystem, parentPath, xmlFile, tocPath, browseSeq
 	        }
 
 	        mSelf.ContentFolder = contentFolder;
-	        mSelf.UseCustomTopicFileExtension = FMCGetAttributeBool(mXmlDoc.documentElement, "UseCustomTopicFileExtension", false);
-	        mSelf.CustomTopicFileExtension = FMCGetAttribute(mXmlDoc.documentElement, "CustomTopicFileExtension");
+	        mSelf.UseCustomTopicFileExtension = FMCGetAttributeBool(xmlDoc.documentElement, "UseCustomTopicFileExtension", false);
+	        mSelf.CustomTopicFileExtension = FMCGetAttribute(xmlDoc.documentElement, "CustomTopicFileExtension");
 
-	        mSelf.GlossaryUrl = GetGlossaryUrl(mXmlDoc);
-	        mSelf.SearchFilterSetUrl = GetDataFileUrl(mXmlDoc, "SearchFilterSet");
+	        mSelf.GlossaryUrl = GetGlossaryUrl(xmlDoc);
+	        mSelf.SearchFilterSetUrl = GetDataFileUrl(xmlDoc, "SearchFilterSet");
+	        mSelf.HasBrowseSequences = xmlDoc.documentElement.getAttribute("BrowseSequence") != null;
+	        mSelf.HasToc = xmlDoc.documentElement.getAttribute("Toc") != null;
 
-	        var subsystemsNodes = mXmlDoc.getElementsByTagName("Subsystems");
+	        var subsystemsNodes = xmlDoc.getElementsByTagName("Subsystems");
 
 	        if (subsystemsNodes.length > 0 && subsystemsNodes[0].getElementsByTagName("Url").length > 0)
 	        {
-	            var urlNodes = mXmlDoc.getElementsByTagName("Subsystems")[0].getElementsByTagName("Url");
+	            var urlNodes = xmlDoc.getElementsByTagName("Subsystems")[0].getElementsByTagName("Url");
 
 	            var completed = 0;
 	            var length = urlNodes.length;
@@ -652,7 +660,11 @@ function CMCHelpSystem( parentSubsystem, parentPath, xmlFile, tocPath, browseSeq
 	
 	this.GetFullTocPath = function( tocType, href )
 	{
-		var subsystem = this.GetHelpSystem( href );
+	    var subsystem = this.GetHelpSystem(href);
+
+	    if (subsystem == null)
+	        return null;
+
 		var fullTocPath = new Object();
 
 		fullTocPath.tocPath = this.GetTocPath( tocType );
@@ -777,40 +789,51 @@ function CMCHelpSystem( parentSubsystem, parentPath, xmlFile, tocPath, browseSeq
 	    {
 	        function OnLookupCSHID(idInfo)
 	        {
+	            if (found)
+	                return;
+
+	            completed++;
+
 	            if (idInfo.Found)
 	            {
-	                if (i > 0)
-	                {
-	                    var myPathUrl = new CMCUrl(mSelf.GetPath());
-	                    var subPathUrl = new CMCUrl(subsystem.GetPath());
-	                    var relUrl = subPathUrl.ToRelative(myPathUrl);
-
-	                    idInfo.Topic = relUrl.FullPath + idInfo.Topic;
-	                }
+	                found = true;
 
 	                OnCompleteFunc(idInfo);
 
 	                return;
 	            }
 
-	            if (i < length)
-	            {
-	                subsystem = mSubsystems[i];
-	                i++;
-	                subsystem.LookupCSHID(id, OnLookupCSHID);
-	            }
-	            else
+	            if (completed == length)
 	            {
 	                OnCompleteFunc(cshIDInfo);
 	            }
 	        }
 
-	        var i = 0;
-	        var length = mSubsystems.length;
-	        var subsystem = null;
 	        var cshIDInfo = mAliasFile.LookupID(id);
 
-	        OnLookupCSHID(cshIDInfo);
+	        if (cshIDInfo.Found)
+	        {
+	            if (cshIDInfo.Topic != null)
+	                cshIDInfo.Topic = mSelf.GetPath() + cshIDInfo.Topic;
+
+	            OnCompleteFunc(cshIDInfo);
+
+	            return;
+	        }
+
+	        if (mSubsystems.length == 0)
+	        {
+	            OnCompleteFunc(cshIDInfo);
+	            return;
+	        }
+
+	        var found = false;
+	        var completed = 0;
+
+	        for (var i = 0, length = mSubsystems.length; i < length; i++)
+	        {
+	            mSubsystems[i].LookupCSHID(id, OnLookupCSHID);
+	        }
 	    });
 	};
 	
@@ -950,16 +973,6 @@ function CMCHelpSystem( parentSubsystem, parentPath, xmlFile, tocPath, browseSeq
 	            subsystem.GetMergedIndex(OnGetMergedIndexComplete);
 	        }
 	    });
-	};
-    
-	this.HasBrowseSequences	= function()
-	{
-		return mXmlDoc.documentElement.getAttribute("BrowseSequence") != null;
-	};
-    
-	this.HasToc				= function()
-	{
-	    return mXmlDoc.documentElement.getAttribute("Toc") != null;
 	};
     
 	this.IsMerged       = function()
@@ -1518,11 +1531,11 @@ function CMCHelpSystem( parentSubsystem, parentPath, xmlFile, tocPath, browseSeq
 		    OnCompleteFunc();
 		    return;
 		}
-        
-		mConceptMap = new CMCDictionary();
 
 		CMCXmlParser.GetXmlDoc(mPath + "Data/Concepts.xml", true, function (xmlDoc)
 		{
+		    mConceptMap = new CMCDictionary();
+
 		    var xmlHead = xmlDoc.documentElement;
 
 		    for (var i = 0; i < xmlHead.childNodes.length; i++)
@@ -1757,7 +1770,7 @@ function CMCTocFile( helpSystem, tocType )
 	var mHelpSystem				= helpSystem;
 	var mTocType				= tocType;
 	var mInitialized			= false;
-	var mXmlDoc					= null;
+	var mRootNode				= null;
 	var mInitOnCompleteFuncs	= new Array();
 	var mTocPath				= null;
 	var mTocHref				= null;
@@ -1810,8 +1823,8 @@ function CMCTocFile( helpSystem, tocType )
 		function OnLoadTocComplete( xmlDoc )
 		{
 			mInitialized = true;
-			
-			mXmlDoc = xmlDoc;
+
+			mRootNode = xmlDoc.documentElement;
 
 			InitOnComplete();
 		}
@@ -2075,7 +2088,7 @@ function CMCTocFile( helpSystem, tocType )
 		
 		function OnInit()
 		{
-			onCompleteFunc( mXmlDoc.documentElement );
+		    onCompleteFunc(mRootNode);
 		}
 	};
 	
@@ -2103,8 +2116,8 @@ function CMCTocFile( helpSystem, tocType )
 					steps.splice( steps.length - 1, 1 );
 				}
 			}
-			
-			var tocNode = mXmlDoc.documentElement;
+
+            var tocNode = mRootNode;
 
 			for ( var i = 0, length = steps.length; i < length; i++ )
 			{
@@ -2240,8 +2253,8 @@ function CMCTocFile( helpSystem, tocType )
 			if ( tocNode != null )
 			{
 				var currNode = tocNode;
-				
-				while ( currNode.parentNode != mXmlDoc.documentElement )
+
+				while (currNode.parentNode != mRootNode)
 				{
 					currNode = currNode.parentNode;
 				}
@@ -2823,6 +2836,8 @@ function CMCXmlParser( args, LoadFunc, loadContextObj )
     {
         if (mSelf.mXmlDoc.readyState == 4)
         {
+            mSelf.mXmlDoc.onreadystatechange = CMCXmlParser.Noop;
+
             var xmlDoc = null;
 
             if (mSelf.mXmlDoc.documentElement != null)
@@ -2845,6 +2860,8 @@ function CMCXmlParser( args, LoadFunc, loadContextObj )
     {
         if (mSelf.mXmlHttp.readyState == 4)
         {
+            mSelf.mXmlHttp.onreadystatechange = CMCXmlParser.Noop;
+
             var xmlDoc = null;
 
             if (mSelf.mXmlHttp.responseXML != null && mSelf.mXmlHttp.responseXML.documentElement != null)
@@ -2949,8 +2966,8 @@ CMCXmlParser.prototype.Load	= function( xmlFile, async )
 {
 	var xmlDoc			= null;
 	var protocolType	= document.location.protocol;
-	
-	if ( protocolType == "file:" || protocolType == "mk:" || protocolType == "app:" )
+
+	if (protocolType == "file:" || protocolType == "mk:" || protocolType == "ms-its:" || protocolType == "app:")
 	{
 		xmlDoc = this.LoadLocal( xmlFile, async );
 	}
@@ -2970,6 +2987,10 @@ CMCXmlParser.MicrosoftXmlDomProgID = null;
 CMCXmlParser.MicrosoftXmlHttpProgID = null;
 
 // Static member functions
+
+CMCXmlParser.Noop = function ()
+{
+};
 
 CMCXmlParser.GetMicrosoftXmlDomObject = function()
 {
@@ -3281,16 +3302,24 @@ String.prototype.EndsWith = function( str, caseSensitive )
 
 String.prototype.Contains = function( str, caseSensitive )
 {
-	var value1	= this;
-	var value2	= str;
-	
-	if ( !caseSensitive )
-	{
-		value1 = value1.toLowerCase();
-		value2 = value2.toLowerCase();
-	}
-	
-	return value1.indexOf( value2 ) != -1;
+    var value1 = caseSensitive ? this : this.toLowerCase();
+
+    if (FMCIsArray(str))
+    {
+        for (var i = 0, length = str.length; i < length; i++)
+        {
+            var value2 = caseSensitive ? str[i] : str[i].toLowerCase();
+
+            if (value1.indexOf(value2) != -1)
+                return true;
+        }
+
+        return false;
+    }
+
+    var value2 = caseSensitive ? str : str.toLowerCase();
+
+    return value1.indexOf(value2) != -1;
 }
 
 String.prototype.Equals = function( str, caseSensitive )

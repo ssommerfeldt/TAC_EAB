@@ -1,13 +1,12 @@
 
-var EmailTicket = function (contactEmail, assignedToEmail, acctMgrEmail, myMgrEmail, emailSubject, emailBody)
-{
-    this.contactEmail = contactEmail
+var EmailTicket = function(contactEmail, assignedToEmail, acctMgrEmail, myMgrEmail, emailSubject, emailBody) {
+    this.contactEmail = contactEmail;
     this.assignedToEmail = assignedToEmail;
     this.acctMgrEmail = acctMgrEmail;
     this.myMgrEmail = myMgrEmail;
     this.emailSubject = emailSubject;
     this.emailBody = emailBody;
-}
+};
 
 function SendTicketEmail(emailType, emailContact, emailAssignedTo, emailAccountMgr, emailMyManager)
 {
@@ -40,8 +39,34 @@ function SendTicketEmail(emailType, emailContact, emailAssignedTo, emailAccountM
     {
         emailBody = this.emailBody;
     }
-    var sEmail = String.format("mailto:{0}?subject={1}&body={2}&cc={3}", addressTo, this.emailSubject, emailBody, addressCC);
-    location.href = sEmail;
+
+    var subject = this.emailSubject;
+    
+    require(['Sage/Utility/Email', 'dojo/_base/array'], function(email, array) {
+        var toAddresses = [];
+        var ccAddresses = [];   
+        if (addressTo !== '') {
+            toAddresses = addressTo.split(';');
+            array.forEach(toAddresses, function(address, idx) {                
+                toAddresses[idx] = decodeURIComponent(address).trim();
+            });
+        }
+        if (addressCC !== '') {
+            ccAddresses = addressCC.split(';');
+            array.forEach(ccAddresses, function(address, idx) {
+                ccAddresses[idx] = decodeURIComponent(address).trim();
+            });     
+        }
+        email.writeEmail(
+            {
+                to: toAddresses,
+                cc: ccAddresses,
+                bcc: []
+            },
+            decodeURIComponent(subject),
+            decodeURIComponent(emailBody),
+            false, 1);
+    });
 }
 
 EmailTicket.prototype.SendTicketEmail = SendTicketEmail;   

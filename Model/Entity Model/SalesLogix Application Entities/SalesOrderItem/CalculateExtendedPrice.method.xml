@@ -7,7 +7,12 @@
   <parameter />
   <preExecuteTargets />
   <methodTargets>
-    <methodTarget id="362e54d7-155c-45e1-9679-ff152b396447" lastModifiedUtc="2013-04-10T16:55:49.5191283Z" targetType="EAB_Custom.SalesOrderItemExtension, EAB_Custom" targetMethod="CalculateExtendedPrice" active="true">
+    <methodTarget id="857fb7ff-b757-4200-9c08-2b801432aa05" lastModifiedUtc="2009-05-19T20:14:54.9252508Z" targetType="Sage.SalesLogix.SalesOrder.SalesOrderItem, Sage.SalesLogix.BusinessRules" targetMethod="CalculateExtendedPrice" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget id="362e54d7-155c-45e1-9679-ff152b396447" lastModifiedUtc="2013-12-17T06:35:45.49829Z" targetType="EAB_Custom.SalesOrderItemExtension, EAB_Custom" targetMethod="CalculateExtendedPrice" active="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>

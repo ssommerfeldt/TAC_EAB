@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="12528ef8-5441-49cc-9810-0c957789a87c" lastModifiedUtc="2007-10-26T23:28:51.339301Z" name="Complete" returnType="IHistory" methodType="Rule" actionType="None" returnMode="Object" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="12528ef8-5441-49cc-9810-0c957789a87c" lastModifiedUtc="2007-10-26T23:28:51.339301Z" name="Complete" returnType="IHistory" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
@@ -11,18 +12,17 @@
   </parameter>
   <preExecuteTargets />
   <methodTargets>
-    <methodTarget id="c4de2850-c8a6-4b93-9db8-385529c42d06" lastModifiedUtc="0001-01-01T00:00:00" targetType="Sage.SalesLogix.Activity.Activity, Sage.SalesLogix.Activity" targetMethod="CompleteActivity" active="true">
+    <methodTarget id="c4de2850-c8a6-4b93-9db8-385529c42d06" lastModifiedUtc="2013-02-05T23:41:21.4710407Z" targetType="Sage.SalesLogix.Activity.Activity, Sage.SalesLogix.Activity" targetMethod="CompleteActivity" active="false">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget id="7c17491c-4b2a-4750-8bd7-bbc86303e500" lastModifiedUtc="2013-09-26T22:49:05.0424986Z" targetType="Sage.SalesLogix.Activity.BusinessRules.Activity.Rules, Sage.SalesLogix.Activity" targetMethod="CompleteActivity" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets>
-    <methodTarget id="f877f27d-0ff4-47e0-9ce0-9ea77b95ce90" lastModifiedUtc="0001-01-01T00:00:00" targetType="Sage.SalesLogix.TicketActivity.Rules, Sage.SalesLogix.BusinessRules" targetMethod="AddTicketActivityFromCompletedActivity" active="true">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
-      </ExtendedPropertiesCollection>
-    </methodTarget>
-  </postExecuteTargets>
+  <postExecuteTargets />
   <postFlushTargets />
 </method>

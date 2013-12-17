@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:fileTags="Translation Status.Support files" MadCap:tocPath="" MadCap:medium="non-print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="WebClient.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Understanding Email Integration</title>
+        <link href="../Resources/TableStyles/Borders.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/SALESLOGIX.CSS" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <h1><a name="kanchor536"></a>Understanding Email Integration</h1>
+        <p>The e-mail integration features provide the ability to send e-mail messages 
+ from <span class="MyVariablesProduct Name">Saleslogix</span> using a supported external e-mail system or to send e-mail messages from an external e-mail system to one or more <span class="MyVariablesProduct Name">Saleslogix</span> contacts or leads and record them as <span class="MyVariablesProduct Name">Saleslogix</span> history items.</p>
+        <p class="subheading">E-mail Integration</p>
+        <ul>
+            <li value="1">Send SLX button 
+ adds a history record in the <span class="MyVariablesSLX Client">Saleslogix Client</span>.</li>
+            <li value="2">Save e-mail attachments 
+ to <span class="MyVariablesProduct Name">Saleslogix</span>.</li>
+            <li value="3">Records to <span class="MyVariablesProduct Name">Saleslogix</span> 
+ History from your inbox or sent items.</li>
+            <li value="4">Drag and drop e-mail messages 
+ to the <span class="MyVariablesProduct Name">Saleslogix</span> History tab.</li>
+            <li value="5">Use the <span class="MyVariablesProduct Name">Saleslogix</span> 
+ Address book.</li>
+            <li value="6">Attach <span class="MyVariablesProduct Name">Saleslogix</span> 
+ Library documents to  e-mail messages.</li>
+            <li value="7"><a name="kanchor537"></a>Attach a <span class="MyVariablesProduct Name">Saleslogix</span> 
+ Contact vCard in  e-mail messages.</li>
+            <li value="8">You can also send a <span class="MyVariablesProduct Name">Saleslogix</span> contact’s information 
+ in vCard format from Outlook.</li>
+            <li value="9"> Include attachments from the Attachments tab by dragging them into the message.</li>
+        </ul>
+        <p class="subheading">Important Information about E-mail Integration</p>
+        <p>When you use the e-mail integration features, keep the following in 
+ mind:</p>
+        <ul>
+            <li value="1"><span class="SLXBold">Typing contacts’ names:</span> If you type part or all of 
+ a contact’s name in the To box, and more than one contact is found, the 
+ first found contact’s e-mail address is used. In addition, if your company 
+ uses Oracle as the database platform, you must type uppercase/lowercase 
+ letters accurately to locate a contact's name.</li>
+            <li value="2"><span class="SLXBold">Recording Notes/History from a message you are sending:</span> 
+ The Send SLX button appears on each e-mail message you compose in your e-mail system. 
+ Click this button to send your message and record notes/history information. 
+ The message is recorded to the Notes/History tab for each <span class="MyVariablesProduct Name">Saleslogix</span> 
+ contact or lead and any associated account. <span class="MyVariablesProduct Name">Saleslogix</span> locates the 
+ contact or lead based on a matching e-mail address. For example, if you compose 
+ a message in Outlook to jsmith@smithco.com and click Send SLX, <span class="MyVariablesProduct Name">Saleslogix</span> 
+ looks for a contact or lead containing the same e-mail address, and if 
+ it is found, records the message to notes/history. If a matching e-mail 
+ address is not found, a dialog box appears stating that the contact was 
+ not found and no notes/history will be recorded. (However, you can record 
+ the notes/history by dragging the message from your e-mail system to the <span class="MyVariablesProduct Name">Saleslogix</span> 
+ Client.) If more than one contact is found, you are prompted to choose 
+ a contact to receive the notes/history information.<br />If the message includes attachment(s), you are prompted to keep a copy 
+ of the attachment(s) in <span class="MyVariablesProduct Name">Saleslogix</span>. If you click Yes, a link to the 
+ attachment is added to the Attachments tab for each contact or lead. </li>
+            <li value="3"><span class="SLXBold">Recording Notes/History from a message you receive:</span> 
+ The Record to History button  appears in the main Outlook 
+ window. Select a message and click Record to History (on the Tools menu), 
+ or drag the message from Outlook to the <span class="MyVariablesProduct Name">Saleslogix</span> contact record. 
+ Attachments are recorded as described previously for the Send SLX button.</li>
+            <li value="4"><span class="SLXBold">Excluding contacts from your organization:</span> Your system 
+ administrator can set up domain name exclusion rules to prevent notes/history 
+ records from being recorded for some contacts (such as employees at your 
+ company). The same rules apply when messages are automatically flagged 
+ for follow up. For more information, consult your system administrator 
+ or refer to the Administrator Help topic "Adding a Domain Exclusion".</li>
+            <li value="5"><span class="SLXBold">Sending messages without a connection to the Exchange server:</span> 
+ The <span class="MyVariablesProduct Name">Saleslogix</span> Address Book in Outlook is not dependent on a connection 
+ to the host Exchange server, but rather on the connection to the database (Network or Remote). When you click the Send SLX button, the message is recorded to notes/history in <span class="MyVariablesProduct Name">Saleslogix</span>; however, 
+ the message remains in your Outlook Outbox until a connection is made 
+ to the Exchange server.</li>
+            <li value="6"><span class="SLXBold">Sending messages with <span class="MyVariablesProduct Name">Saleslogix</span> closed:</span> If the <span class="MyVariablesProduct Name">Saleslogix</span> Windows Client is closed when you click the Send SLX or Record to History 
+ button, a temp file is written to a temporary directory. When you open 
+ the <span class="MyVariablesSLX Client">Saleslogix Client</span>, the notes/history information is recorded.</li>
+        </ul>
+        <p class="RelatedTopics">Related Topics</p>
+        <p><a href="../Outlook/slxoutlook.htm">Introducing Outlook Integration</a>
+        </p>
+        <p><a href="../Outlook/Configuring_Outlook_Sync.htm">Configuring Outlook Sync and Outlook Integration</a>
+        </p>
+        <p>&#160;</p>
+        <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/Borders.css');width: 100%;border-left-style: solid;border-left-width: 0px;border-left-color: #000000;border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;margin-left: 0;margin-right: auto;" class="TableStyle_Borders" cellspacing="0">
+            <col style="width: 100%;" />
+            <tbody>
+                <tr MadCap:conditions="">
+                    <td style="font-size: 8pt;border-left-style: solid;border-left-width: 0px;border-right-style: solid;border-right-width: 0px;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;" class="TableStyle_Borders_Body_0_0_RowEnd_ColEnd">
+                        <p style="font-family: Verdana;font-size: 8pt;"><a href="../General/feedback.htm">Tell us how we can make the Help better</a>.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

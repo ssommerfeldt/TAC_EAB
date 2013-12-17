@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Sage.Entity.Interfaces;
 using Sage.Platform.Application;
 using Sage.Platform.Application.UI;
 using Sage.Platform.ComponentModel;
+using Sage.Platform.Orm.Interfaces;
 using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.Services.Integration;
-using ApplicationException = Sage.Common.Exceptions.ApplicationException;
+using Sage.SalesLogix.Services.PotentialMatch;
 using SmartPartInfoProvider = Sage.Platform.WebPortal.SmartParts.SmartPartInfoProvider;
 
 public partial class MergeChildren : SmartPartInfoProvider
@@ -15,6 +18,32 @@ public partial class MergeChildren : SmartPartInfoProvider
     private IntegrationManager _integrationManager;
     private Boolean _loadResults = true;
     private MergeContactsStateInfo _mergeContactsStateInfo;
+    private MergeArguments _sessionMergeArguments;
+
+    /// <summary>
+    /// Gets or sets the session merge provider.
+    /// </summary>
+    /// <value>The session merge provider.</value>
+    public MergeArguments SessionMergeArguments
+    {
+        get
+        {
+            if (_sessionMergeArguments == null)
+            {
+                if (DialogService.DialogParameters.ContainsKey("mergeArguments"))
+                {
+                    MergeArguments mergeArguments = DialogService.DialogParameters["mergeArguments"] as MergeArguments;
+                    if (mergeArguments.MergeProvider == null)
+                    {
+                        MergeArguments.GetMergeProvider(mergeArguments);
+                    }
+                    _sessionMergeArguments = mergeArguments;
+                }
+            }
+            return _sessionMergeArguments;
+        }
+        set { _sessionMergeArguments = value; }
+    }
 
     /// <summary>
     /// Gets the integration manager.
@@ -61,9 +90,9 @@ public partial class MergeChildren : SmartPartInfoProvider
     protected override void OnWireEventHandlers()
     {
         base.OnWireEventHandlers();
-        btnNext.Click += new EventHandler(btnNext_OnClick);
-        btnBack.Click += new EventHandler(btnBack_OnClick);
-        btnCancel.Click += new EventHandler(DialogService.CloseEventHappened);
+        btnNext.Click += btnNext_OnClick;
+        btnBack.Click += btnBack_OnClick;
+        btnCancel.Click += DialogService.CloseEventHappened;
     }
 
     /// <summary>
@@ -73,11 +102,8 @@ public partial class MergeChildren : SmartPartInfoProvider
     protected override void OnLoad(EventArgs e)
     {
         base.OnLoad(e);
-        if (Visible)
-        {
-            _mergeContactsStateInfo = ContextService.GetContext("MergeContactsStateInfo") as MergeContactsStateInfo ??
-                                      new MergeContactsStateInfo();
-        }
+        _mergeContactsStateInfo = ContextService.GetContext("MergeContactsStateInfo") as MergeContactsStateInfo ??
+                                  new MergeContactsStateInfo();
     }
 
     /// <summary>
@@ -86,7 +112,20 @@ public partial class MergeChildren : SmartPartInfoProvider
     /// <param name="e">An <see cref="T:System.EventArgs"/> object that contains the event data.</param>
     protected override void OnPreRender(EventArgs e)
     {
-        if (_loadResults)
+        string targetName = string.Empty;
+        string sourceName = string.Empty;
+        if (_loadResults && DialogService.DialogParameters.ContainsKey("mergeArguments"))
+        {
+            grdLinkedRecords.DataSource = SessionMergeArguments.MatchingRecordView.MatchedContacts;
+            grdLinkedRecords.DataBind();
+            grdTargetRecords.DataSource = SessionMergeArguments.MatchingRecordView.TargetContacts;
+            grdTargetRecords.DataBind();
+            grdSourceRecords.DataSource = SessionMergeArguments.MatchingRecordView.SourceContacts;
+            grdSourceRecords.DataBind();
+            targetName = SessionMergeArguments.MergeProvider.Target.EntityData.ToString();
+            sourceName = SessionMergeArguments.MergeProvider.Source.EntityData.ToString();
+        }
+        else if (_loadResults)
         {
             grdLinkedRecords.DataSource = IntegrationManager.MatchedContacts;
             grdLinkedRecords.DataBind();
@@ -94,14 +133,15 @@ public partial class MergeChildren : SmartPartInfoProvider
             grdTargetRecords.DataBind();
             grdSourceRecords.DataSource = IntegrationManager.SourceContacts;
             grdSourceRecords.DataBind();
-
-            lblSlxRecords.Text = String.Format(GetLocalResourceObject("UnlinkedSlxRecords.Caption").ToString(),
-                                               GetLocalResourceObject("lblContacts.Caption"),
-                                               IntegrationManager.TargetMapping.Name);
-            lblTargetRecords.Text = String.Format(GetLocalResourceObject("UnlinkedErpRecords.Caption").ToString(),
-                                                  GetLocalResourceObject("lblContacts.Caption"),
-                                                  IntegrationManager.SourceMapping.Name);
+            targetName = IntegrationManager.SourceMapping.Name;
+            sourceName = IntegrationManager.TargetMapping.Name;
         }
+        lblSourceRecords.Text = String.Format(GetLocalResourceObject("UnlinkedRecords.Caption").ToString(),
+                                           GetLocalResourceObject("lblContacts.Caption"),
+                                           sourceName);
+        lblTargetRecords.Text = String.Format(GetLocalResourceObject("UnlinkedRecords.Caption").ToString(),
+                                              GetLocalResourceObject("lblContacts.Caption"),
+                                              targetName);
     }
 
     /// <summary>
@@ -111,32 +151,40 @@ public partial class MergeChildren : SmartPartInfoProvider
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void btnLink_Click(object sender, EventArgs e)
     {
-        if (_mergeContactsStateInfo.SelectedRowTargetIndex != null &&
-            _mergeContactsStateInfo.SelectedRowSourceIndex != null)
+        if (_mergeContactsStateInfo.SelectedRowTargetIndex == null || _mergeContactsStateInfo.SelectedRowSourceIndex == null)
         {
-            IntegrationManager.MatchingInfoAddMatchedChildPair(_mergeContactsStateInfo.SelectedSourceId,
-                                                               _mergeContactsStateInfo.SelectedTargetId);
-            IList<ComponentView> matchedContacts = IntegrationManager.MatchedContacts;
-            string[] propertyNames = new[]
-                                         {
-                                             "sourceId", "targetId", "firstName", "lastName"
-                                         };
-            object[] propertyValues = new[]
-                                          {
-                                              _mergeContactsStateInfo.SelectedSourceId,
-                                              _mergeContactsStateInfo.SelectedTargetId,
-                                              _mergeContactsStateInfo.FirstName,
-                                              _mergeContactsStateInfo.LastName
-                                          };
-            ComponentView view = new ComponentView(propertyNames, propertyValues);
-            matchedContacts.Add(view);
-            IntegrationManager.SourceContacts.RemoveAt((int) _mergeContactsStateInfo.SelectedRowSourceIndex);
-            IntegrationManager.TargetContacts.RemoveAt((int) _mergeContactsStateInfo.SelectedRowTargetIndex);
+            throw new ValidationException(GetLocalResourceObject("Error_SourceTargetNotSelected").ToString());
+        }
+        if (_loadResults && DialogService.DialogParameters.ContainsKey("mergeArguments"))
+        {
+            SessionMergeArguments.MatchingRecordView.MatchedContacts.Add(GetMatchedContact());
+            SessionMergeArguments.MatchingRecordView.SourceContacts.RemoveAt((int)_mergeContactsStateInfo.SelectedRowSourceIndex);
+            SessionMergeArguments.MatchingRecordView.TargetContacts.RemoveAt((int)_mergeContactsStateInfo.SelectedRowTargetIndex);
         }
         else
         {
-            throw new ApplicationException(GetLocalResourceObject("Error_SourceTargetNotSelected").ToString());
+            IntegrationManager.MatchingInfoAddMatchedChildPair(_mergeContactsStateInfo.SelectedSourceId, _mergeContactsStateInfo.SelectedTargetId);
+            IList<ComponentView> matchedContacts = IntegrationManager.MatchedContacts;
+            matchedContacts.Add(GetMatchedContact());
+            IntegrationManager.SourceContacts.RemoveAt((int)_mergeContactsStateInfo.SelectedRowSourceIndex);
+            IntegrationManager.TargetContacts.RemoveAt((int)_mergeContactsStateInfo.SelectedRowTargetIndex);
         }
+    }
+
+    private ComponentView GetMatchedContact()
+    {
+        var propertyNames = new[]
+            {
+                "sourceId", "targetId", "firstName", "lastName"
+            };
+        var propertyValues = new object[]
+            {
+                _mergeContactsStateInfo.SelectedSourceId,
+                _mergeContactsStateInfo.SelectedTargetId,
+                _mergeContactsStateInfo.FirstName,
+                _mergeContactsStateInfo.LastName
+            };
+        return new ComponentView(propertyNames, propertyValues);
     }
 
     protected void grdLinkedRecords_OnRowCommand(object sender, GridViewCommandEventArgs e)
@@ -147,12 +195,24 @@ public partial class MergeChildren : SmartPartInfoProvider
         switch (e.CommandName.ToUpper())
         {
             case "SELECT":
-                grdMatchDetails.DataSource = IntegrationManager.GetExtendedContactDetails(sourceId, targetId);
+                lblExtendedDetails.Visible = true;
+                grdMatchDetails.DataSource = DialogService.DialogParameters.ContainsKey("mergeArguments")
+                                                 ? SessionMergeArguments.MatchingRecordView.GetExtendedContactDetails(
+                                                     sourceId, targetId)
+                                                 : IntegrationManager.GetExtendedContactDetails(sourceId, targetId);
                 grdMatchDetails.DataBind();
                 break;
             case "UNLINK":
-                IntegrationManager.MatchingInfoRemoveMatchedChildPair(sourceId, targetId);
-                IntegrationManager.MatchedContacts.RemoveAt(rowIndex);
+                if (DialogService.DialogParameters.ContainsKey("mergeArguments"))
+                {
+                    SessionMergeArguments.MatchingRecordView.RemoveMatchedContact(sourceId, targetId);
+                    SessionMergeArguments.MatchingRecordView.MatchedContacts.RemoveAt(rowIndex);
+                }
+                else
+                {
+                    IntegrationManager.MatchingInfoRemoveMatchedChildPair(sourceId, targetId);
+                    IntegrationManager.MatchedContacts.RemoveAt(rowIndex);
+                }
                 break;
         }
     }
@@ -160,10 +220,8 @@ public partial class MergeChildren : SmartPartInfoProvider
     protected void grdSourceRecords_OnRowCommand(object sender, GridViewCommandEventArgs e)
     {
         int rowIndex = Convert.ToInt32(e.CommandArgument);
-        _mergeContactsStateInfo.SelectedRowTargetIndex = rowIndex;
+        _mergeContactsStateInfo.SelectedRowSourceIndex = rowIndex;
         _mergeContactsStateInfo.SelectedSourceId = grdSourceRecords.DataKeys[rowIndex].Values[0].ToString();
-        _mergeContactsStateInfo.FirstName = grdSourceRecords.DataKeys[rowIndex].Values[1].ToString();
-        _mergeContactsStateInfo.LastName = grdSourceRecords.DataKeys[rowIndex].Values[2].ToString();
         ContextService.SetContext("MergeContactsStateInfo", _mergeContactsStateInfo);
     }
 
@@ -171,8 +229,23 @@ public partial class MergeChildren : SmartPartInfoProvider
     {
         int rowIndex = Convert.ToInt32(e.CommandArgument);
         _mergeContactsStateInfo.SelectedTargetId = grdTargetRecords.DataKeys[rowIndex].Values[0].ToString();
-        _mergeContactsStateInfo.SelectedRowSourceIndex = rowIndex;
+        _mergeContactsStateInfo.SelectedRowTargetIndex = rowIndex;
+        var dataKey = grdTargetRecords.DataKeys[rowIndex];
+        if (dataKey != null && dataKey.Values != null)
+        {
+            _mergeContactsStateInfo.FirstName = dataKey.Values[1] as string;
+            _mergeContactsStateInfo.LastName = dataKey.Values[2] as string;
+        }
         ContextService.SetContext("MergeContactsStateInfo", _mergeContactsStateInfo);
+    }
+
+    /// <summary>
+    /// Gets the name of the table.
+    /// </summary>
+    /// <returns></returns>
+    private static String GetEntityName(Type entity)
+    {
+        return entity.Name.Substring(1, entity.Name.Length - 1);
     }
 
     /// <summary>
@@ -182,19 +255,47 @@ public partial class MergeChildren : SmartPartInfoProvider
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void btnNext_OnClick(object sender, EventArgs e)
     {
-        int height = 250;
-        int width = 500;
-        if (IntegrationManager.MergeData())
+        lblExtendedDetails.Visible = false;
+        ContextService.RemoveContext("MergeContactsStateInfo");
+        if (DialogService.DialogParameters.ContainsKey("mergeArguments"))
         {
-            IntegrationManager.LinkChildren = true;
-            IntegrationManager.LinkOperatingCompany();
+            if (SessionMergeArguments.TargetEntityType == typeof (IAccount) && SessionMergeArguments.MatchingRecordView.MatchedContacts.Count > 0)
+            {
+                ShowDialog("MergeContactAddress", GetLocalResourceObject("LinkContactAddresses.Caption").ToString(), 600, 1300);
+            }
+            else
+            {
+                SessionMergeArguments.MergeProvider.AssignMatchedChildren(SessionMergeArguments.MatchingRecordView);
+                if (Sage.SalesLogix.BusinessRules.BusinessRuleHelper.MergeRecords(SessionMergeArguments))
+                {
+                    using (new Sage.Platform.Orm.SessionScopeWrapper(true))
+                    {
+                        Type type = SessionMergeArguments.MergeProvider.Target.EntityType;
+                        string entityId = SessionMergeArguments.MergeProvider.Source.EntityId;
+                        IPersistentEntity source = Sage.Platform.EntityFactory.GetById(type, entityId) as IPersistentEntity;
+                        source.Delete();
+                        EntityService.RemoveEntityHistory(type, source);
+                        Response.Redirect(String.Format("{0}.aspx", GetEntityName(type)));
+                    }
+                }
+            }
         }
-        if (!String.IsNullOrEmpty(IntegrationManager.LinkAccountError))
+        else
         {
-            height = 500;
-            width = 750;
+            int height = 250;
+            int width = 500;
+            if (IntegrationManager.MergeData())
+            {
+                IntegrationManager.LinkChildren = true;
+                IntegrationManager.LinkOperatingCompany();
+            }
+            if (!String.IsNullOrEmpty(IntegrationManager.LinkAccountError))
+            {
+                height = 500;
+                width = 750;
+            }
+            ShowDialog("LinkResults", GetLocalResourceObject("LinkToAccounting.Caption").ToString(), height, width);
         }
-        ShowDialog("LinkResults", GetLocalResourceObject("LinkToAccounting.Caption").ToString(), height, width);
     }
 
     /// <summary>
@@ -204,10 +305,18 @@ public partial class MergeChildren : SmartPartInfoProvider
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void btnBack_OnClick(object sender, EventArgs e)
     {
-        string caption = IntegrationManager.DataViewMappings.Count > 0
-                     ? GetLocalResourceObject("MergeRecordsDialog_Differences.Caption").ToString()
-                     : GetLocalResourceObject("MergeRecordsDialog_NoDifferences.Caption").ToString();
-        ShowDialog("MergeRecords", caption, 480, 900);
+        lblExtendedDetails.Visible = false;
+        if (IntegrationManager != null)
+        {
+            var caption = IntegrationManager.DataViewMappings.Count > 0
+                          ? GetLocalResourceObject("MergeRecordsDialog_Differences.Caption").ToString()
+                          : GetLocalResourceObject("MergeRecordsDialog_NoDifferences.Caption").ToString();
+            ShowDialog("MergeRecords", caption, 650, 650);
+        }
+        else
+        {
+            ShowDialog("MergeAddress", GetLocalResourceObject("LinkAddress.Caption").ToString(), 600, 1200);
+        }
     }
 
     /// <summary>
@@ -233,6 +342,7 @@ public partial class MergeChildren : SmartPartInfoProvider
     /// </summary>
     protected override void OnClosing()
     {
+        ContextService.RemoveContext("MergeContactsStateInfo");
         _loadResults = false;
     }
 

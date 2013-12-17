@@ -2,7 +2,6 @@ CMCXmlParser._FilePathToXmlStringMap.Add(
 	'Stylesheet',
 	'<?xml version=\"1.0\" encoding=\"utf-8\"?>' +
 	'<Stylesheet>' +
-	'    <!-- saved from url=(0014)about:internet -->' +
 	'    <Styles>' +
 	'        <Style Name=\"ToolbarItem\">' +
 	'            <Classes>' +
@@ -169,7 +168,6 @@ CMCXmlParser._FilePathToXmlStringMap.Add(
 	'                <StyleClass Name=\"TopicRatings\">' +
 	'                    <Properties>' +
 	'                        <Property Name=\"EmptyIcon\">url(\'resources:WebHelp/Default.flwht/Images/Rating0.gif\')</Property>' +
-	'                        <Property Name=\"HalfFullIcon\">url(\'resources:WebHelp/Default.flwht/Images/RatingGold50.gif\')</Property>' +
 	'                        <Property Name=\"FullIcon\">url(\'resources:WebHelp/Default.flwht/Images/RatingGold100.gif\')</Property>' +
 	'                        <Property Name=\"RatingSubmittedMessage\">Thank you for submitting your rating!</Property>' +
 	'                        <Property Name=\"ControlType\">TopicRatings</Property>' +

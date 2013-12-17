@@ -31,13 +31,13 @@
         <td></td>
         <td>
             <div class="wizardsectiontitle">
-                <asp:Label ID="lblTargetRecords" runat="server"></asp:Label>
+                <asp:Label ID="lblSourceRecords" runat="server"></asp:Label>
             </div>
         </td>
         <td></td>
         <td>
             <div class="wizardsectiontitle">
-                <asp:Label ID="lblSlxRecords" runat="server"></asp:Label>
+                <asp:Label ID="lblTargetRecords" runat="server"></asp:Label>
             </div>
         </td>
         <td></td>
@@ -45,18 +45,15 @@
     <tr>
         <td></td>
         <td>
-            <asp:Panel runat="server" ID="pnlSourceRecords" Height="150px">
+            <asp:Panel runat="server" ID="pnlSourceRecords" Height="210px">
                 <SalesLogix:SlxGridView runat="server" ID="grdSourceRecords" GridLines="None" AutoGenerateColumns="false"
                     CellPadding="4" ResizableColumns="True" DataKeyNames="Id,firstName,lastName" ShowEmptyTable="true"
                     CssClass="datagrid" ExpandableRows="false" EmptyTableRowText="<%$ resources: EmptyTableRowText %>"
                     EnableViewState="false" OnRowCommand="grdSourceRecords_OnRowCommand"  RowStyle-CssClass="rowlt" 
-                    PagerStyle-CssClass="gridPager" SelectedRowStyle-CssClass="rowSelected"
-                    AlternatingRowStyle-CssClass="rowdk" >
+                    PagerStyle-CssClass="gridPager" Height="210" AlternatingRowStyle-CssClass="rowdk" >
                     <Columns>
                         <asp:BoundField DataField="Id" Visible="false"/>
-                        <asp:CommandField ShowSelectButton="true" SelectText="<%$ resources: Grid.Select.Text %>"
-                            ButtonType="link" >
-              	        </asp:CommandField>
+                        <asp:CommandField ShowSelectButton="true" SelectText="<%$ resources: Grid.Select.Text %>" ButtonType="link"></asp:CommandField>
                         <asp:BoundField DataField="firstName" HeaderText="<%$ resources: Grid_FirstName_Column %>" />
                         <asp:BoundField DataField="lastName" HeaderText="<%$ resources: Grid_LastName_Column %>" />
                         <asp:BoundField DataField="city" HeaderText="<%$ resources: Grid_City_Column %>" />
@@ -68,6 +65,7 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="email" HeaderText="<%$ resources: Grid_Email_Column %>" />
                     </Columns>
+                    <SelectedRowStyle backcolor="#CEE6FA" />
                 </SalesLogix:SlxGridView>
             </asp:Panel>
             <br />
@@ -77,13 +75,12 @@
                 OnClick="btnLink_Click" CssClass="slxbutton" />
         </td>
         <td>
-            <asp:Panel runat="server" ID="pnlTarget" Height="150px">
+            <asp:Panel runat="server" ID="pnlTarget" Height="210px">
                 <SalesLogix:SlxGridView runat="server" ID="grdTargetRecords" GridLines="None" AutoGenerateColumns="false"
-                    CellPadding="4" ResizableColumns="True" DataKeyNames="Id" ShowEmptyTable="true" CssClass="datagrid"
+                    CellPadding="4" ResizableColumns="True" DataKeyNames="Id,firstName,lastName" ShowEmptyTable="true" CssClass="datagrid"
                     ExpandableRows="false" EnableViewState="false" OnRowCommand="grdTargetRecords_OnRowCommand"
                     EmptyTableRowText="<%$ resources: EmptyTableRowText %>" RowStyle-CssClass="rowlt"
-                    PagerStyle-CssClass="gridPager" SelectedRowStyle-CssClass="rowSelected"
-                    AlternatingRowStyle-CssClass="rowdk" >
+                    PagerStyle-CssClass="gridPager" Height="210" AlternatingRowStyle-CssClass="rowdk" >
                     <Columns>
                         <asp:BoundField DataField="Id" Visible="false"/>
                         <asp:CommandField ShowSelectButton="true" SelectText="<%$ resources: Grid.Select.Text %>"
@@ -100,6 +97,7 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="email" HeaderText="<%$ resources: Grid_Email_Column %>" />
                     </Columns>
+                    <SelectedRowStyle backcolor="#CEE6FA" />
                 </SalesLogix:SlxGridView>
             </asp:Panel>
             <br />
@@ -108,22 +106,25 @@
     </tr>
     <tr>
         <td></td>
-        <td colspan="3">
+        <td>
             <div class="wizardsectiontitle">
-                <asp:Label ID="lblLinkedRecords" runat="server"></asp:Label>
+                <asp:Label ID="lblLinkedRecords" runat="server" Text="<%$ resources: lblLinkedRecords.Caption %>"></asp:Label>
             </div>
         </td>
-        <td></td>
+        <td colspan="2">
+            <div class="wizardsectiontitle">
+                <asp:Label ID="lblExtendedDetails" runat="server" Text="<%$ resources: lblExtendedDetails.Caption %>" Visible="False"></asp:Label>
+            </div>
+        </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <asp:Panel runat="server" ID="pnlLinkedRecords" Height="200px">
+            <asp:Panel runat="server" ID="pnlLinkedRecords" Height="180px">
                 <SalesLogix:SlxGridView runat="server" ID="grdLinkedRecords" GridLines="None" AutoGenerateColumns="false" CellPadding="4"
                     ResizableColumns="True" DataKeyNames="SourceId,TargetId" ShowEmptyTable="true" ExpandableRows="false" CssClass="datagrid"
                     EnableViewState="false" OnRowCommand="grdLinkedRecords_OnRowCommand" EmptyTableRowText="<%$ resources: EmptyTableRowText %>"
-                    RowStyle-CssClass="rowlt" PagerStyle-CssClass="gridPager" SelectedRowStyle-CssClass="rowSelected"
-                    AlternatingRowStyle-CssClass="rowdk" >
+                    RowStyle-CssClass="rowlt" PagerStyle-CssClass="gridPager" Height="180" AlternatingRowStyle-CssClass="rowdk" >
                     <Columns>
                         <asp:BoundField DataField="Id" Visible="false"/>
                         <asp:CommandField ShowSelectButton="true" SelectText="<%$ resources: Grid.Select.Text %>"
@@ -133,20 +134,22 @@
                         <asp:BoundField DataField="firstName" HeaderText="<%$ resources: Grid_FirstName_Column %>" />
                         <asp:BoundField DataField="lastName" HeaderText="<%$ resources: Grid_LastName_Column %>" />
                     </Columns>
+                    <SelectedRowStyle backcolor="#CEE6FA" />
                 </SalesLogix:SlxGridView>
             </asp:Panel>
         </td>
         <td colspan="2">
-            <asp:Panel runat="server" ID="pnlMatchDetails" Height="200px">
-                <SalesLogix:SlxGridView runat="server" ID="grdMatchDetails" GridLines="None" AutoGenerateColumns="false"
+            <asp:Panel runat="server" ID="pnlMatchDetails" Height="180px">
+                <SalesLogix:SlxGridView runat="server" ID="grdMatchDetails" GridLines="None" AutoGenerateColumns="false" Height="180"
                     CellPadding="4" ResizableColumns="True" ShowEmptyTable="true" ExpandableRows="false" CssClass="datagrid"
                     EnableViewState="false" EmptyTableRowText="<%$ resources: EmptyTableRowText %>" RowStyle-CssClass="rowlt"
-                    PagerStyle-CssClass="gridPager" SelectedRowStyle-CssClass="rowSelected" AlternatingRowStyle-CssClass="rowdk" >
+                    PagerStyle-CssClass="gridPager" AlternatingRowStyle-CssClass="rowdk" >
                     <Columns>
                         <asp:BoundField DataField="property" HeaderText="<%$ resources: Grid_Property_Column %>" />
                         <asp:BoundField DataField="sourceData" HeaderText="<%$ resources: Grid_Source_Column %>" />
                         <asp:BoundField DataField="targetData" HeaderText="<%$ resources: Grid_Target_Column %>" />
                     </Columns>
+                    <SelectedRowStyle backcolor="#CEE6FA" />
                 </SalesLogix:SlxGridView>
             </asp:Panel>
         </td>

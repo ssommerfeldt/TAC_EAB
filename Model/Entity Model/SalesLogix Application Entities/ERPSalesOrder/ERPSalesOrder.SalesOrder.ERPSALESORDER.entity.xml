@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="29a7a7d1-ff65-4dfe-b53a-406692005b35" lastModifiedUtc="2012-10-12T21:18:30.6033511Z" manageSchema="false" tableName="ERPSALESORDER" name="ERPSalesOrder" isExtension="true" parentEntityId="9b47425f-3b70-4f38-a4cf-574c64d46086" audited="false" onBeforeInsertMethodId="89f736fb-58e4-404c-92e9-321d3dcd42df" onAfterInsertMethodId="353d33c9-fdfe-4ab2-a655-e75ba004ccac" onBeforeUpdateMethodId="3f85195f-f772-4d84-ab67-c5ad348a2ca3" onAfterUpdateMethodId="3de375ed-597f-49e6-a577-62677a3175bc" onBeforeDeleteMethodId="d37d81b7-c042-4a5f-a2cb-947990a0f3a3" onAfterDeleteMethodId="f8223b07-1101-48c2-a6b4-81cba512fd34" onCreateId="799dcef3-09b1-4553-8e68-8a816c5fc119">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="29a7a7d1-ff65-4dfe-b53a-406692005b35" lastModifiedUtc="2013-12-17T06:36:30.95489Z" manageSchema="true" tableName="ERPSALESORDER" name="ERPSalesOrder" isExtension="true" parentEntityId="9b47425f-3b70-4f38-a4cf-574c64d46086" audited="false" onBeforeInsertMethodId="89f736fb-58e4-404c-92e9-321d3dcd42df" onAfterInsertMethodId="353d33c9-fdfe-4ab2-a655-e75ba004ccac" onBeforeUpdateMethodId="3f85195f-f772-4d84-ab67-c5ad348a2ca3" onAfterUpdateMethodId="3de375ed-597f-49e6-a577-62677a3175bc" onBeforeDeleteMethodId="d37d81b7-c042-4a5f-a2cb-947990a0f3a3" onAfterDeleteMethodId="f8223b07-1101-48c2-a6b4-81cba512fd34" onCreateId="799dcef3-09b1-4553-8e68-8a816c5fc119">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
       <extender guid="1589723d-0536-4bf3-bdd7-3f6f7fe165d0">
         <OrmEntityMetadataExtension>
-          <StringExpression>${SalesOrderId}</StringExpression>
-          <HistoryTypeName />
+          <HistoryTypeName>inherit</HistoryTypeName>
           <IsHistoryTable>false</IsHistoryTable>
         </OrmEntityMetadataExtension>
       </extender>
@@ -20,7 +19,7 @@
     <keyReference id="c6136724-b9ee-47ed-897c-4333801e6791" ordinalPosition="1" />
   </keyProperties>
   <properties>
-    <property xsi:type="OrmFieldProperty" id="c6136724-b9ee-47ed-897c-4333801e6791" lastModifiedUtc="2010-05-25T07:40:04.9008833Z" name="SalesOrderId" description="Extension identifier linking this row to the SalesOrder table." audited="false" isNullable="false" columnName="SALESORDERID" maxLength="12" precision="0" scale="0" ordinal="0" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="c6136724-b9ee-47ed-897c-4333801e6791" lastModifiedUtc="2012-06-04T15:06:26.2053539Z" name="SalesOrderId" description="Extension identifier linking this row to the SalesOrder table." audited="false" isNullable="false" include="false" columnName="SALESORDERID" maxLength="12" precision="0" scale="0" ordinal="0" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">

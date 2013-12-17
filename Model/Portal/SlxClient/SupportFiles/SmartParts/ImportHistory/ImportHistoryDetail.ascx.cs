@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Data.OleDb;
-using System.Drawing;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
 using Sage.Entity.Interfaces;
 using Sage.SalesLogix.Services.Import;
 using Sage.Platform.WebPortal.SmartParts;
@@ -17,7 +7,6 @@ using Sage.Platform.Repository;
 using Sage.Platform.Data;
 using Sage.Platform.Application;
 using Sage.Platform;
-using Sage.Platform.WebPortal.Services;
 using Sage.Platform.Application.UI;
 
 public partial class SmartParts_ImportHistory_ImportHistoryDetail : EntityBoundSmartPartInfoProvider
@@ -32,7 +21,7 @@ public partial class SmartParts_ImportHistory_ImportHistoryDetail : EntityBoundS
     }
 
     /// <summary>
-    /// Override this method to add bindings to the currrently bound smart part
+    /// Override this method to add bindings to the currently bound smart part
     /// </summary>
     protected override void OnAddEntityBindings()
     {
@@ -139,9 +128,9 @@ public partial class SmartParts_ImportHistory_ImportHistoryDetail : EntityBoundS
                     SetProcessState(importHistory.Id.ToString(), Enum.GetName(typeof(ImportProcessState), ImportProcessState.Abort), "Aborted");
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            //throw new ApplicationException("Error getting process state");
+            log.Error("The call to AbortImport() failed.", ex);
         }
     }
 
@@ -174,10 +163,10 @@ public partial class SmartParts_ImportHistory_ImportHistoryDetail : EntityBoundS
                     cmd.ExecuteNonQuery();
                     slxTransaction.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     slxTransaction.Rollback();
-                    throw new Exception(ex.Message);
+                    throw;
                 }
             }
         }
@@ -220,8 +209,9 @@ public partial class SmartParts_ImportHistory_ImportHistoryDetail : EntityBoundS
                         cmdAbort.Visible = true;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    log.Error("Unexpected error in LoadForm().", ex);
                     cmdAbort.Visible = false;
                 }
             }

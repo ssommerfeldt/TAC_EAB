@@ -76,6 +76,21 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
+    <methodTarget id="a4bf2654-ee1a-4aeb-8f5c-025dda3d6872" lastModifiedUtc="2013-07-30T15:59:41.4025557Z" targetType="Sage.SalesLogix.Account.Rules, Sage.SalesLogix.BusinessRules" targetMethod="MergeAccount_MoveErpEmailAddresses" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget id="aba22659-d425-470c-ad43-e040ab8393a8" lastModifiedUtc="2013-07-30T15:59:55.967012Z" targetType="Sage.SalesLogix.Account.Rules, Sage.SalesLogix.BusinessRules" targetMethod="MergeAccount_MoveErpPhoneNumbers" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget id="ea5b24d9-0975-45b0-a2c5-208e23b449be" lastModifiedUtc="2013-07-30T16:00:18.619277Z" targetType="Sage.SalesLogix.Account.Rules, Sage.SalesLogix.BusinessRules" targetMethod="MergeAccount_DeleteLinkedChildren" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
   </postExecuteTargets>
   <postFlushTargets />
 </method>

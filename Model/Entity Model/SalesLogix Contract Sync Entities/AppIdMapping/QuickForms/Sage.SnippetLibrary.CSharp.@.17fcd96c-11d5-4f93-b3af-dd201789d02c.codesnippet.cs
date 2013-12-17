@@ -34,23 +34,23 @@ using Sage.SalesLogix.API;
 namespace Sage.BusinessRules.CodeSnippets
 {
 	/// <summary>
-    /// This is called on the save action of the Accounting System page.
-    /// </summary>
-    public static partial class AddEditAccountingSystemEventHandlers
-    {
+	/// This is called on the save action of the Accounting System page.
+	/// </summary>
+	public static partial class AddEditAccountingSystemEventHandlers
+	{
 		/// <summary>
-    	/// Encrypts the accounting systems end point password.
-    	/// </summary>
-    	/// <param name="form">The Accounting System details form.</param>
-    	/// <param name="args">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        public static void cmdOK_OnClickStep(IAddEditAccountingSystem form, EventArgs args)
-        {
-            IAppIdMapping appIdMapping = form.CurrentEntity as IAppIdMapping;
-			if (appIdMapping != null)
-			{
+		/// Encrypts the accounting systems end point password.
+		/// </summary>
+		/// <param name="form">The Accounting System details form.</param>
+		/// <param name="args">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+		public static void cmdOK_OnClickStep(IAddEditLink form, EventArgs args)
+		{
+			IAppIdMapping appIdMapping = form.CurrentEntity as IAppIdMapping;
+			if (appIdMapping != null) {
 				appIdMapping.EncryptAccountingSystemPassword(form.txtPassword.Text);
+				appIdMapping.ValidateEndPoint();
+				appIdMapping.Save();
 			}
-			appIdMapping.Save();
-        }
-    }
+		}
+	}
 }

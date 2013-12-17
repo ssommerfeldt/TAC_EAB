@@ -7,7 +7,12 @@
   <parameter />
   <preExecuteTargets />
   <methodTargets>
-    <methodTarget xsi:type="OrmMethodTargetSnippet" id="4e29edd8-f342-4126-914b-4e0f22ebce03" lastModifiedUtc="2012-12-07T19:20:10.0898195Z" targetType="Sage.BusinessRules.CodeSnippets.SalesOrderItemBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="CalcPriceFromProgramPriceStep" active="true" codeSnippetId="a048b410-6b3c-468d-b3e5-e4f1b8a17d99">
+    <methodTarget id="3b11dc39-5a43-48e9-8b4d-8b15c4689c9d" lastModifiedUtc="2009-05-19T20:11:09.0776683Z" targetType="Sage.SalesLogix.SalesOrder.SalesOrderItem, Sage.SalesLogix.BusinessRules" targetMethod="CalcPriceFromProgramPrice" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="4e29edd8-f342-4126-914b-4e0f22ebce03" lastModifiedUtc="2013-12-17T06:35:45.3572819Z" targetType="Sage.BusinessRules.CodeSnippets.SalesOrderItemBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="CalcPriceFromProgramPriceStep" active="false" codeSnippetId="a048b410-6b3c-468d-b3e5-e4f1b8a17d99">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
       </ExtendedPropertiesCollection>

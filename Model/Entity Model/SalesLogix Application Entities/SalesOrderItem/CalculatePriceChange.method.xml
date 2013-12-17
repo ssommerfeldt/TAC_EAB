@@ -7,7 +7,12 @@
   <parameter />
   <preExecuteTargets />
   <methodTargets>
-    <methodTarget xsi:type="OrmMethodTargetSnippet" id="47fb78cf-ca5b-4988-85df-ce1fdfab0fd6" lastModifiedUtc="2013-02-26T23:57:56.5357288Z" targetType="Sage.BusinessRules.CodeSnippets.SalesOrderItemBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="CalculatePriceChangeStep" active="true" codeSnippetId="4c64143f-693e-4c67-a8e4-f0dafe1d9af6">
+    <methodTarget id="793973e2-58f7-44fc-98f7-6cba0c27fe58" lastModifiedUtc="2010-08-04T18:19:36.3796913Z" targetType="Sage.SalesLogix.SalesOrder.SalesOrderItem, Sage.SalesLogix.BusinessRules" targetMethod="CalculatePriceChange" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="47fb78cf-ca5b-4988-85df-ce1fdfab0fd6" lastModifiedUtc="2013-12-17T06:35:45.5262916Z" targetType="Sage.BusinessRules.CodeSnippets.SalesOrderItemBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="CalculatePriceChangeStep" active="false" codeSnippetId="4c64143f-693e-4c67-a8e4-f0dafe1d9af6">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
       </ExtendedPropertiesCollection>
