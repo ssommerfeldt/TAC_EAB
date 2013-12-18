@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <DTSConfiguration>
 	<DTSConfigurationHeading>
-		<DTSConfigurationFileInfo GeneratedBy="SLX754LATEST\Administrator" GeneratedFromPackageName="MAS_SLX_LoadRefreshPricing" GeneratedFromPackageID="{0A823068-3B67-425E-8505-EA6A866E3677}" GeneratedDate="11/22/2012 8:35:21 AM"/>
+		<DTSConfigurationFileInfo GeneratedBy="SLX81RC\Administrator" GeneratedFromPackageName="MAS_SLX_LoadRefreshPricing" GeneratedFromPackageID="{0A823068-3B67-425E-8505-EA6A866E3677}" GeneratedDate="12/17/2013 12:04:31 PM"/>
 	</DTSConfigurationHeading>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[ConnectionString]" ValueType="String">
-		<ConfiguredValue>Data Source=SLX754LATEST;User ID=sa;Initial Catalog=LiveEAB_MAS;Provider=SQLNCLI10.1;Auto Translate=False;Application Name=SSIS-MAS_SLX_LoadRefreshPricing-{42DA42D2-2728-4E61-8742-9CB19ACCF09D}SLX754LATEST.LiveEAB_MAS;</ConfiguredValue>
+		<ConfiguredValue>Data Source=SLX81RC;User ID=sa;Initial Catalog=EAB_MAS;Provider=SQLNCLI10.1;Auto Translate=False;Application Name=SSIS-MAS_SLX_LoadRefreshPricing-{42DA42D2-2728-4E61-8742-9CB19ACCF09D}SLX81RC.EAB_MAS;</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[Description]" ValueType="String">
 		<ConfiguredValue></ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[InitialCatalog]" ValueType="String">
-		<ConfiguredValue>LiveEAB_MAS</ConfiguredValue>
+		<ConfiguredValue>EAB_MAS</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[Name]" ValueType="String">
 		<ConfiguredValue>MAS500</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[Password]" ValueType="String">
-		<ConfiguredValue>d00035289</ConfiguredValue>
+		<ConfiguredValue>p@55w0rd</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[ProtectionLevel]" ValueType="Int32">
 		<ConfiguredValue>1</ConfiguredValue>
@@ -25,25 +25,25 @@
 		<ConfiguredValue>0</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[ServerName]" ValueType="String">
-		<ConfiguredValue>SLX754LATEST</ConfiguredValue>
+		<ConfiguredValue>SLX81RC</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[UserName]" ValueType="String">
 		<ConfiguredValue>sa</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ConnectionString]" ValueType="String">
-		<ConfiguredValue>Data Source=SLX754LATEST;User ID=admin;Initial Catalog=LiveEAB_SLX;Provider=SLXOLEDB.1;Persist Security Info=True;Integrated Security=SSPI;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</ConfiguredValue>
+		<ConfiguredValue>Data Source=SLX81RC;User ID=admin;Initial Catalog=EAB_SLX;Provider=SLXOLEDB.1;Persist Security Info=True;Integrated Security=SSPI;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Description]" ValueType="String">
 		<ConfiguredValue></ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[InitialCatalog]" ValueType="String">
-		<ConfiguredValue>LiveEAB_SLX</ConfiguredValue>
+		<ConfiguredValue>EAB_SLX</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Name]" ValueType="String">
 		<ConfiguredValue>SLX</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Password]" ValueType="String">
-		<ConfiguredValue>password</ConfiguredValue>
+		<ConfiguredValue></ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ProtectionLevel]" ValueType="Int32">
 		<ConfiguredValue>1</ConfiguredValue>
@@ -52,7 +52,7 @@
 		<ConfiguredValue>0</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ServerName]" ValueType="String">
-		<ConfiguredValue>SLX754LATEST</ConfiguredValue>
+		<ConfiguredValue>SLX81RC</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[UserName]" ValueType="String">
 		<ConfiguredValue>admin</ConfiguredValue>
@@ -82,6 +82,6 @@
 		<ConfiguredValue>0</ConfiguredValue>
 	</Configuration>
 	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::SLXConString].Properties[Value]" ValueType="String">
-		<ConfiguredValue>Provider=SLXOLEDB.1;Password="password";Persist Security Info=True;User ID=admin;Initial Catalog=LIVEEAB_SLX;Data Source=SLX754Latest;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
+		<ConfiguredValue>Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=EAB_SLX;Data Source=SLX81RC;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConfiguredValue>
 	</Configuration>
 </DTSConfiguration>
