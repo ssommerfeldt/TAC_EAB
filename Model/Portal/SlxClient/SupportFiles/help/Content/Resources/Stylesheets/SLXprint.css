@@ -1,4 +1,4 @@
-/*<meta />*/
+/*<meta fileTags="Translation Status.Support files" />*/
 
 p.MyStyle
 {
@@ -316,6 +316,17 @@ p.TOC1
 	MadCap|tocProxy
 	{
 		border-top-color: #ffffff;
+	}
+
+	li
+	{
+		list-style-type: inherit;
+		list-style: inherit;
+	}
+
+	ol
+	{
+		list-style: decimal;
 	}
 }
 
@@ -1177,26 +1188,6 @@ a.GlossaryPageTerm
 	mc-hyphenate: never;
 }
 
-a:visited
-{
-	mc-hyphenate: never;
-}
-
-a:link
-{
-	mc-hyphenate: never;
-}
-
-a:hover
-{
-	mc-hyphenate: never;
-}
-
-a:focus
-{
-	mc-hyphenate: never;
-}
-
 a
 {
 	mc-hyphenate: never;
@@ -1479,5 +1470,25 @@ MadCap|xref.StepNumber
 	font-size: inherit;
 	color: #000000;
 	mc-format: '{paranumonly}';
+}
+
+a:link
+{
+	mc-hyphenate: never;
+}
+
+a:visited
+{
+	mc-hyphenate: never;
+}
+
+a:focus
+{
+	mc-hyphenate: never;
+}
+
+a:hover
+{
+	mc-hyphenate: never;
 }
 

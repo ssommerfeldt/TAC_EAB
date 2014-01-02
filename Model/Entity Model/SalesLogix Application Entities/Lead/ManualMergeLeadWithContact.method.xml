@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3aa99157-101b-4497-9577-f6568775a1b8" lastModifiedUtc="2008-06-07T23:09:49.9292854Z" name="ManualMergeLeadWithContact" methodType="Rule" actionType="None" returnMode="None">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3aa99157-101b-4497-9577-f6568775a1b8" lastModifiedUtc="2013-05-23T21:35:00.3457125Z" name="ManualMergeLeadWithContact" methodType="Rule" actionType="None" returnMode="None">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -16,6 +16,12 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets />
+  <postExecuteTargets>
+    <methodTarget id="a1bc3d83-b118-451f-9244-fe8b154c2318" lastModifiedUtc="2013-09-05T15:40:29.472477Z" targetType="Sage.SalesLogix.Lead.IntegrationRules, Sage.SalesLogix.BusinessRules" targetMethod="ManualMergeToContactIntegrationUpdates" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
   <postFlushTargets />
 </method>

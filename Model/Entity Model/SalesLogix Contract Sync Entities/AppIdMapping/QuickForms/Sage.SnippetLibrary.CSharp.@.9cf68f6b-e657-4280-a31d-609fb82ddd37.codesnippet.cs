@@ -1,5 +1,5 @@
 /*
- * This metadata is used by the Sage platform.  Do not remove.
+ * This metadata is used by the Saleslogix platform.  Do not remove.
 <snippetHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9cf68f6b-e657-4280-a31d-609fb82ddd37">
  <assembly>Sage.SnippetLibrary.CSharp</assembly>
  <name>btnSave_OnClickStep</name>
@@ -38,7 +38,7 @@ namespace Sage.BusinessRules.CodeSnippets
     public static partial class SlxEndPointDetailsEventHandlers
     {
 		/// <summary>
-    	/// Encrypts the SalesLogix end points password.
+    	/// Encrypts the Saleslogix end points password.
     	/// </summary>
     	/// <param name="form">The Accounting Integration details form.</param>
     	/// <param name="args">The <see cref="System.EventArgs"/> instance containing the event data.</param>
@@ -47,6 +47,10 @@ namespace Sage.BusinessRules.CodeSnippets
             IAppIdMapping appIdMapping = form.CurrentEntity as IAppIdMapping;
 			if (appIdMapping != null)
 			{
+				if (appIdMapping.EndPointURL.Contains(":<port>"))
+		        {
+		            appIdMapping.EndPointURL = appIdMapping.EndPointURL.Replace(":<port>", string.Empty);
+		        }
 				appIdMapping.EncryptAccountingSystemPassword(form.txtPassword.Text);
 			}
 			appIdMapping.Save();

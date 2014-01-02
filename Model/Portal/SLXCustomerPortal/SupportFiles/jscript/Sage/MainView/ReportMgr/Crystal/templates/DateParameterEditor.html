@@ -1,0 +1,26 @@
+﻿<div>
+    <div dojoattachpoint="promptParameterContainer" style="border: 1px solid #B5BCC7; padding: 10px">
+        <div style="border-bottom: 1px solid #B5BCC7; padding-bottom: 5px">
+            <div style="float: left">
+                <label for="values">{%= Sage.Utility.htmlEncode($._promptParameter.promptText) %}</label>
+            </div>
+            <div style="float: right">
+                <label>{%= Sage.Utility.htmlEncode($._promptParameter.parameterFieldName) %}</label>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+
+        <div dojoattachpoint="divMinMaxMessage" style="padding-top: 5px;">
+            <span dojoattachpoint="spanMinMaxMessage">&nbsp;</span>
+        </div>
+
+        <div dojoattachpoint="divDate" style="padding-top: 5px;">
+            <div shouldPublishMarkDirty="false" dojoType="Sage.UI.Controls.DateTimePicker" dojoAttachPoint="dtDate" displayDate="true" displayTime="false" label="From:" required="true" style="width:250px"></div>
+        </div>
+
+        <div dojoattachpoint="divValidationMessage" style="padding-top: 5px; color:red">
+            <span dojoattachpoint="spanValidationMessage">&nbsp;</span>
+        </div>
+
+    </div>
+</div>

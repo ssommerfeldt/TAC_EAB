@@ -4,7 +4,7 @@
 // {{MadCap}} //////////////////////////////////////////////////////////////////
 // Copyright: MadCap Software, Inc - www.madcapsoftware.com ////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-// <version>7.0.0.0</version>
+// <version>8.0.0.0</version>
 ////////////////////////////////////////////////////////////////////////////////
 */
 
@@ -272,71 +272,9 @@ footnoteBlock
 
 a.MCToggler_0
 {
-	color: #0000ff;
+	text-decoration: none;
 	margin-top: 3pt;
-	text-decoration: none;
-}
-
-a.MCToggler_0:link
-{
 	color: #0000ff;
-	margin-top: 3pt;
-	text-decoration: none;
-}
-
-a.MCToggler_0:visited
-{
-	color: #0000ff;
-	margin-top: 3pt;
-	text-decoration: none;
-}
-
-a.MCToggler_0:hover
-{
-	
-}
-
-a.MCToggler_0:focus
-{
-	
-}
-
-span.MCExpanding_0
-{
-	color: #0000ff;
-}
-
-a.MCExpandingHead_0
-{
-	text-decoration: none;
-	color: #0000ff;
-}
-
-a.MCExpandingHead_0:link
-{
-	text-decoration: none;
-	color: #0000ff;
-}
-
-a.MCExpandingHead_0:visited
-{
-	text-decoration: none;
-	color: #0000ff;
-}
-
-a.MCExpandingHead_0:hover
-{
-	
-}
-
-a.MCExpandingHead_0:focus
-{
-	
-}
-
-span.MCExpandingBody_0
-{
-	color: #000000;
 }
 
 div.MCDropDown_0
@@ -346,31 +284,73 @@ div.MCDropDown_0
 
 a.MCDropDownHotSpot_0
 {
-	text-decoration: none;
-	color: #0000ff;
-	font-size: inherit;
 	font-color: #008b8b;
+	font-size: inherit;
+	color: #0000ff;
+	text-decoration: none;
+}
+
+div.MCDropDownHead_0
+{
+	margin-top: 3pt;
+	color: #0000ff;
+	text-decoration: none;
+}
+
+span.MCExpanding_0
+{
+	color: #0000ff;
+}
+
+a.MCExpandingHead_0
+{
+	color: #0000ff;
+	text-decoration: none;
+}
+
+span.MCExpandingBody_0
+{
+	color: #000000;
+}
+
+a.MCToggler_0:link
+{
+	text-decoration: none;
+	margin-top: 3pt;
+	color: #0000ff;
+}
+
+a.MCToggler_0:visited
+{
+	text-decoration: none;
+	margin-top: 3pt;
+	color: #0000ff;
+}
+
+a.MCToggler_0:focus
+{
+	
+}
+
+a.MCToggler_0:hover
+{
+	
 }
 
 a.MCDropDownHotSpot_0:link
 {
-	text-decoration: none;
-	color: #0000ff;
-	font-size: inherit;
 	font-color: #008b8b;
+	font-size: inherit;
+	color: #0000ff;
+	text-decoration: none;
 }
 
 a.MCDropDownHotSpot_0:visited
 {
-	text-decoration: none;
-	color: #0000ff;
-	font-size: inherit;
 	font-color: #008b8b;
-}
-
-a.MCDropDownHotSpot_0:hover
-{
-	
+	font-size: inherit;
+	color: #0000ff;
+	text-decoration: none;
 }
 
 a.MCDropDownHotSpot_0:focus
@@ -378,10 +358,30 @@ a.MCDropDownHotSpot_0:focus
 	
 }
 
-div.MCDropDownHead_0
+a.MCDropDownHotSpot_0:hover
 {
-	text-decoration: none;
+	
+}
+
+a.MCExpandingHead_0:link
+{
 	color: #0000ff;
-	margin-top: 3pt;
+	text-decoration: none;
+}
+
+a.MCExpandingHead_0:visited
+{
+	color: #0000ff;
+	text-decoration: none;
+}
+
+a.MCExpandingHead_0:focus
+{
+	
+}
+
+a.MCExpandingHead_0:hover
+{
+	
 }
 

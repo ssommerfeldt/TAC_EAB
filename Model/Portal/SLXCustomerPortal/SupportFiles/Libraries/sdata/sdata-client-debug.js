@@ -1247,7 +1247,7 @@
         executeRequest: function(request, options, ajax) {
             /// <param name="request" type="Sage.SData.Client.SDataBaseRequest">request object</param>
             
-            // todo: temporary fix for SalesLogix Dynamic Adapter only supporting json selector in format parameter
+            // todo: temporary fix for Saleslogix Dynamic Adapter only supporting json selector in format parameter
             if (this.json) request.setQueryArg('format', 'json');
 
             var o = S.apply({
@@ -1331,8 +1331,8 @@
 
             if (options.httpMethodOverride)
             {
-                // todo: temporary fix for SalesLogix Dynamic Adapter only supporting json selector in format parameter
-                // todo: temporary fix for `X-HTTP-Method-Override` and the SalesLogix Dynamic Adapter
+                // todo: temporary fix for Saleslogix Dynamic Adapter only supporting json selector in format parameter
+                // todo: temporary fix for `X-HTTP-Method-Override` and the Saleslogix Dynamic Adapter
                 if (this.json) request.setQueryArg('format', 'json');
 
                 ajax.headers['X-HTTP-Method-Override'] = 'GET';
@@ -1628,7 +1628,7 @@
 
             for (var fqPropertyName in value)
             {
-                if (fqPropertyName.charAt(0) === '@') continue;
+                if (fqPropertyName[0] === '@') continue;
                 
                 firstChild = value[fqPropertyName];
                 break; // will always ever be one property, either an entity, or an array of
@@ -1656,7 +1656,7 @@
 
             for (var fqPropertyName in entity)
             {
-                if (fqPropertyName.charAt(0) === '@') continue;
+                if (fqPropertyName[0] === '@') continue;
 
                 var hasNS = nsRE.exec(fqPropertyName),
                     propertyNS = hasNS ? hasNS[1] : false,
@@ -1693,7 +1693,7 @@
         convertEntityCollection: function(ns, name, collection) {
             for (var fqPropertyName in collection)
             {
-                if (fqPropertyName.charAt(0) === '@') continue;
+                if (fqPropertyName[0] === '@') continue;
 
                 var hasNS = nsRE.exec(fqPropertyName),
                     propertyNS = hasNS ? hasNS[1] : false,
@@ -1741,7 +1741,7 @@
 
             for (var propertyName in entity)
             {
-                if (propertyName.charAt(0) === '$') continue;
+                if (propertyName[0] === '$') continue;
 
                 var value = entity[propertyName];
 

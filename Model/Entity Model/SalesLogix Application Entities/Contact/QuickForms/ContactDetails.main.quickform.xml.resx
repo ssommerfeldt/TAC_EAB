@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cmdSaveContactDetails.Caption" xml:space="preserve">
     <value>Save</value>
@@ -164,9 +164,6 @@
   </data>
   <data name="chkDoNotFax.Caption" xml:space="preserve">
     <value>Do not Fax</value>
-  </data>
-  <data name="lnkAccountName.Caption" xml:space="preserve">
-    <value>Account:</value>
   </data>
   <data name="cboPreferredContact.Caption" xml:space="preserve">
     <value>Preferred  Contact:</value>
@@ -243,10 +240,10 @@
   <data name="cboPreferredContact_item0.Text" xml:space="preserve">
     <value>Unknown</value>
   </data>
-  <data name="cmdCopyContact.Caption" xml:space="preserve">
+  <data name="cmdCopyToClipboard.Caption" xml:space="preserve">
     <value>Copy</value>
   </data>
-  <data name="cmdCopyContact.ToolTip" xml:space="preserve">
+  <data name="cmdCopyToClipboard.ToolTip" xml:space="preserve">
     <value>Copy Contact Information to Clipboard</value>
   </data>
   <data name="cmdReset.Caption" xml:space="preserve">
@@ -278,5 +275,26 @@
   </data>
   <data name="nmeContactName.ButtonToolTip" xml:space="preserve">
     <value>Edit</value>
+  </data>
+  <data name="QFButton2.Caption" xml:space="preserve">
+    <value>Copy Contact</value>
+  </data>
+  <data name="cmdCopyContact.ToolTip" xml:space="preserve">
+    <value>Duplicate Contact</value>
+  </data>
+  <data name="a358db35-34b4-4de7-9a36-0eaec33da264.DialogTitleOverride" xml:space="preserve">
+    <value>Duplicate Contact</value>
+  </data>
+  <data name="ee3027fb-0e00-4c1d-8e7f-c6b48787afb4.DialogTitleOverride" xml:space="preserve">
+    <value>Move Contact</value>
+  </data>
+  <data name="btnMoveContactError" xml:space="preserve">
+    <value>The contact has been changed and must be saved before it can be moved to a new account.</value>
+  </data>
+  <data name="btnCopyContactError" xml:space="preserve">
+    <value>The contact has been changed and must be saved before it can be copied to a new account.</value>
+  </data>
+  <data name="lueAccountName.Caption" xml:space="preserve">
+    <value>Account:</value>
   </data>
 </root>

@@ -5,6 +5,8 @@
   <SmartPart>\Entity Model\SalesLogix Contract Sync Entities\SyncResult\QuickForms\SyncResultDetail.main.quickform.xml</SmartPart>
   <TargetWorkspace>MainContent</TargetWorkspace>
   <ShowInMode>Detail</ShowInMode>
-  <Properties />
+  <Properties>
+    <Property Name="HelpTopic" TypeConverter="">synchistorydetailview</Property>
+  </Properties>
   <AllowRoles />
 </SmartPartMapping>

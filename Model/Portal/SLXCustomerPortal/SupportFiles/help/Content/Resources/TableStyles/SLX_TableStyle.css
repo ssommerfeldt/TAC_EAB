@@ -1,70 +1,73 @@
+/*<meta fileTags="Translation Status.Support files" />*/
+
 /* MadCap Table Style: */
 
-/*<meta />*/
-
-mcTableStyle {
-	name: SLX_TableStyle; 
-	border-collapse: collapse; 
-	border-left-style: solid; 
-	border-left-width: 1px; 
-	border-left-color: #000000; 
-	border-right-style: solid; 
-	border-right-width: 1px; 
-	border-right-color: #000000; 
-	border-top-style: solid; 
-	border-top-width: 1px; 
-	border-top-color: #000000; 
-	border-bottom-style: solid; 
-	border-bottom-width: 1px; 
-	border-bottom-color: #000000; 
-	margin-left: 3pt; 
-	margin-right: 3pt; 
-	margin-top: 4pt; 
-	margin-bottom: 4pt; 
+mcTableStyle
+{
+	name: SLX_TableStyle;
+	border-collapse: collapse;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #000000;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #000000;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #000000;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #000000;
+	margin-left: 3pt;
+	margin-right: 3pt;
+	margin-top: 4pt;
+	margin-bottom: 4pt;
 }
 
-mcTableColumnStyle {
-	span: 1; 
-	separator-style: solid; 
-	separator-width: 0px; 
-	separator-color: #000000; 
+mcTableColumnStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 0px;
+	separator-color: #000000;
 }
 
-mcTableHeadStyle {
-	span: 1; 
-	separator-style: solid; 
-	separator-width: 1px; 
-	separator-color: #000000; 
-	background-color: #bdcee7; 
-	font-weight: bold; 
-	text-align: center; 
-	font-style: normal; 
-	font-family: Verdana; 
+mcTableHeadStyle
+{
+	span: 1;
+	separator-style: solid;
+	separator-width: 1px;
+	separator-color: #000000;
+	background-color: #bdcee7;
+	font-weight: bold;
+	text-align: center;
+	font-style: normal;
+	font-family: Verdana;
 }
 
-mcTableBodyStyle {
-	span: 1; 
-	font-weight: normal; 
-	separator-style: solid; 
-	separator-width: 1px; 
-	separator-color: #000000; 
-	background-color: #ffffff; 
-	font-family: Verdana; 
-	color: #000000; 
-	font-size: 8pt; 
-}
-
-mcTableFootStyle {
-	span: 0; 
-	separator-style: solid; 
-	separator-width: 0px; 
-	separator-color: #000000; 
-}
-
- 
- 
 /* Cell Styles: */
- 
+
+mcTableBodyStyle
+{
+	span: 1;
+	font-weight: normal;
+	separator-style: solid;
+	separator-width: 1px;
+	separator-color: #000000;
+	background-color: #ffffff;
+	font-family: Verdana;
+	color: #000000;
+	font-size: 8pt;
+}
+
+mcTableFootStyle
+{
+	span: 0;
+	separator-style: solid;
+	separator-width: 0px;
+	separator-color: #000000;
+}
+
 .TableStyle_SLX_TableStyle
 {
 	border-left-style: solid;
@@ -92,8 +95,7 @@ mcTableFootStyle {
 {
 	font-family: Verdana;
 	font-weight: bold;
-	font-size: xx-small
-	font-style: normal;
+	font-size: xx-small font-style;
 	text-align: center;
 	background-color: #bdcee7;
 	padding-left: 0px;
@@ -107,7 +109,7 @@ mcTableFootStyle {
 	font-family: Verdana;
 	font-weight: bold;
 	font-style: normal;
-	font-size: xx-small
+	font-size: xx-small;
 }
 
 .TableStyle_SLX_TableStyle_Head_0_0_RowSep_ColSep
@@ -629,5 +631,4 @@ mcTableFootStyle {
 {
 	
 }
-
 

@@ -2,7 +2,6 @@ CMCXmlParser._FilePathToXmlStringMap.Add(
 	'Concepts',
 	'<?xml version=\"1.0\" encoding=\"utf-8\"?>' +
 	'<CatapultTargetConcepts>' +
-	'    <!-- saved from url=(0014)about:internet -->' +
 	'    <ConceptEntry Term=\"accounting\">' +
 	'        <ConceptLink Title=\"User Profile Employee Tab\" Link=\"/Content/Admin_useradmin/User_Detail_View_Employee_Tab.htm#aanchor2\" UsedConditions=\"\" LocalConditions=\"\" />' +
 	'    </ConceptEntry>' +

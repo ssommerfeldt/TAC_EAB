@@ -1,0 +1,20 @@
+﻿<div>
+    <div dojoattachpoint="promptParameterContainer" style="border: 1px solid #B5BCC7; padding: 10px">
+        <div style="border-bottom: 1px solid #B5BCC7; padding-bottom: 5px">
+            <div style="float: left">
+                <label for="values">{%= Sage.Utility.htmlEncode($._promptParameter.promptText) %}</label>
+            </div>
+            <div style="float: right">
+                <label>{%= Sage.Utility.htmlEncode($._promptParameter.parameterFieldName) %}</label>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <div style="padding-top: 5px;">
+            <select dojotype="dijit.form.Select" dojoattachpoint="cmbValues" style="width: 150px">
+            </select>
+        </div>
+        <div dojoattachpoint="divValidationMessage" style="padding-top: 5px; color:red">
+            <span dojoattachpoint="spanValidationMessage">&nbsp;</span>
+        </div>
+    </div>
+</div>

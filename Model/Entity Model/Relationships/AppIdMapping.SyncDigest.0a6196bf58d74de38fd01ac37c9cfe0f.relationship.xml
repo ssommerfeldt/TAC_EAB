@@ -1,20 +1,28 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0a6196bf-58d7-4de3-8fd0-1ac37c9cfe0f" lastModifiedUtc="2010-09-15T15:59:45.3738952Z" parentEntityId="1d244d2a-99c6-4235-ac38-caaa73eef74e" childEntityId="3849fe99-3ee0-49f5-84ab-b6f716219687" cascadeOption="SaveUpdateDelete">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0a6196bf-58d7-4de3-8fd0-1ac37c9cfe0f" lastModifiedUtc="2013-06-26T01:46:50.40056Z" parentEntityId="1d244d2a-99c6-4235-ac38-caaa73eef74e" childEntityId="3849fe99-3ee0-49f5-84ab-b6f716219687" cascadeOption="SaveUpdateDelete">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="e4eb9106-e502-421b-8db3-80e587775906" lastModifiedUtc="2010-01-27T21:36:38.1651539Z" name="SyncDigests" audited="false">
+  <parentProperty id="e4eb9106-e502-421b-8db3-80e587775906" lastModifiedUtc="2013-06-26T01:33:58.7564245Z" name="SyncDigests" audited="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="1c173999-4a1c-406a-a3be-e87325442592" lastModifiedUtc="2010-01-27T21:36:38.2271601Z" name="AppIdMapping" audited="false">
+  <childProperty id="1c173999-4a1c-406a-a3be-e87325442592" lastModifiedUtc="2013-06-26T01:46:50.40056Z" name="AppIdMapping" audited="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />

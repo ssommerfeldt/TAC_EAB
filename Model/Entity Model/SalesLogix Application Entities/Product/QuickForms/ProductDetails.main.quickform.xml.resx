@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtName.Caption" xml:space="preserve">
     <value>Name:</value>
@@ -168,34 +168,22 @@
   <data name="lueUnitOfMeasure.Caption" xml:space="preserve">
     <value>Unit of Measure:</value>
   </data>
-  <data name="UPC.Caption" xml:space="preserve">
-    <value>UPC:</value>
-  </data>
-  <data name="Warehouse.Caption" xml:space="preserve">
-    <value>Warehouse:</value>
+  <data name="WarehouseID.Caption" xml:space="preserve">
+    <value>WarehouseID</value>
   </data>
   <data name="CompanyID.Caption" xml:space="preserve">
-    <value>Company ID:</value>
+    <value>CompanyID</value>
   </data>
-  <data name="UnitCost.Caption" xml:space="preserve">
-    <value>Unit Cost:</value>
+  <data name="Listprice.Caption" xml:space="preserve">
+    <value>Listprice</value>
   </data>
-  <data name="Qtyonhand.Caption" xml:space="preserve">
-    <value>Quantity On Hand:</value>
+  <data name="QtyOnHand.Caption" xml:space="preserve">
+    <value>QtyOnHand</value>
   </data>
-  <data name="Qtyavailable.Caption" xml:space="preserve">
-    <value>Quantity Available:</value>
+  <data name="QtyAvailable.Caption" xml:space="preserve">
+    <value>QtyAvailable</value>
   </data>
-  <data name="txtComment.Caption" xml:space="preserve">
-    <value>Comment:</value>
-  </data>
-  <data name="cmdAdjustinventory.Caption" xml:space="preserve">
-    <value>Adjust Inventory On Hand</value>
-  </data>
-  <data name="cmdAdjustinventory.ToolTip" xml:space="preserve">
-    <value>Adjust Inventory On Hand</value>
-  </data>
-  <data name="709c7ff5-385f-4c28-b701-2bb78b4af366.DialogTitleOverride" xml:space="preserve">
-    <value>Adjust Inventory On Hand</value>
+  <data name="UPC.Caption" xml:space="preserve">
+    <value>UPC</value>
   </data>
 </root>

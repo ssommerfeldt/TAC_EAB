@@ -1,20 +1,28 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e1959def-b09a-4851-8d85-6024a455e533" lastModifiedUtc="2010-03-26T21:33:59.5035075Z" parentEntityId="750a7f26-3604-467b-94fe-249370231df4" childEntityId="4ef7b8ac-e632-4824-8052-4305fc2bdd53">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e1959def-b09a-4851-8d85-6024a455e533" lastModifiedUtc="2013-03-15T04:35:42.1937374Z" parentEntityId="750a7f26-3604-467b-94fe-249370231df4" childEntityId="4ef7b8ac-e632-4824-8052-4305fc2bdd53">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="92628cbb-9b54-49b3-bbc9-2435383c0e94" lastModifiedUtc="2010-03-26T21:33:52.7088281Z" name="ERPEmailAddresses" audited="false">
+  <parentProperty id="92628cbb-9b54-49b3-bbc9-2435383c0e94" lastModifiedUtc="2013-03-15T04:33:56.254678Z" name="ERPEmailAddresses" audited="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="66e3f9a2-2e24-41a0-8320-37965c911831" lastModifiedUtc="2010-03-26T21:33:56.1191691Z" name="Contact" audited="false" include="false">
+  <childProperty id="66e3f9a2-2e24-41a0-8320-37965c911831" lastModifiedUtc="2013-03-15T04:33:56.254678Z" name="Contact" audited="false" include="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />

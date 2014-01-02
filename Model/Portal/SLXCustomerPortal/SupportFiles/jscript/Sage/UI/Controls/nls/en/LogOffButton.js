@@ -1,0 +1,3 @@
+define((
+{ logOffText: 'Log Off' }
+));

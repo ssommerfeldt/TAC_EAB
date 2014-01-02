@@ -21,10 +21,12 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
 using Sage.Platform.Application;
+using Sage.Platform.Application.Diagnostics;
 using Sage.Platform.Application.UI;
 using Sage.Platform.Application.UI.Web;
 using Sage.Platform.Configuration;
 using Sage.Platform.Data;
+using Sage.Platform.Diagnostics;
 using Sage.Platform.EntityBinding;
 using Sage.Platform.Orm;
 using Sage.Platform.Orm.Entities;
@@ -43,7 +45,7 @@ namespace ${portal.PortalAlias}
     public partial class ${page.PageAlias}Page : $baseType
     {
         static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private const string LargeImageUrl = $tools.GetLargeImageUrl($page).to_quote;
+        private const string ImageClass = $tools.GetPageImageClassName($page).to_quote;
 
         ScriptManager _scriptManager;
 
@@ -57,11 +59,7 @@ namespace ${portal.PortalAlias}
         public IUIElementAdapterFactoryCatalog AdapterCatalog
         {
             get { return _adapterCatalog; }
-            set
-            {
-                _adapterCatalog = value;
-                _adapterCatalog.RegisterFactory(new NavItemCollectionUIAdapterFactory());
-            }
+            set { _adapterCatalog = value; }
         }
 
         /// <summary>
@@ -82,7 +80,7 @@ namespace ${portal.PortalAlias}
                 base.OnPreInit(e);
                 if (!SecuredActionService.HasAccess($page.AppliedSecurity.to_quote))
                 {
-                    throw new ApplicationException(Resources.SalesLogix.Error_NoAccess);
+                    throw new RoleAccessDeniedException(Resources.SalesLogix.Error_NoAccess);
                 }
                 IDataService data = ApplicationContext.Current.Services.Get<IDataService>();
                 if(data != null)
@@ -133,6 +131,9 @@ namespace ${portal.PortalAlias}
                 LoadSmartParts();
                 LoadTasklets();
                 LoadModules();
+#if($page.IncludeScript.Length > 0)
+                LoadIncludeScript();
+#end
             }
             catch(Exception ex)
             {
@@ -146,17 +147,17 @@ namespace ${portal.PortalAlias}
             HtmlContainerControl localTitle = this.Master.FindControl("localTitle") as HtmlContainerControl;
             if (localTitle == null) return;
 
-            string img = !string.IsNullOrEmpty(this.TitleBar.Image) ?
-                string.Format("<img src='{0}' />", ResolveUrl(this.TitleBar.Image)) : string.Empty;
-            localTitle.InnerHtml = string.Format("<span id='PageTitle'>{0} {1}</span>", img, this.TitleBar.Text);
+            var img = !string.IsNullOrEmpty(TitleBar.Image)
+                          ? string.Format("<div class=\"Global_Images icon24x24 {0}\"> </div>", this.TitleBar.Image)
+                          : string.Empty;
+            localTitle.InnerHtml = string.Format("<span id=\"PageTitle\">{0} <span id=\"PageTitleText\">{1}</span></span>", img, this.TitleBar.Text);
         }
         #endregion
 
         #region Helper Methods
         private void SetTitleBar()
         {
-            string text = GetResource("PageTitle");
-            this.Title = Resources.Portal.PortalTitle + " - " + text;
+            string text = GetResource("PageTitle");            
 
 #if($baseType == "Sage.Platform.WebPortal.EntityPage")
             IEntityContextService entityContext = this.PageWorkItem.Services.Get<IEntityContextService>();
@@ -176,16 +177,18 @@ namespace ${portal.PortalAlias}
             }
 
 #end
+			this.Title = Resources.Portal.PortalTitle + " - " + text;
+
             if (string.IsNullOrEmpty(text))
                 text = Resources.Portal.PortalTitle;
 
             if (String.IsNullOrEmpty(this.TitleBar.Text))
             {
-                this.TitleBar.Text = Server.HtmlEncode(text);
+                TitleBar.Text = Server.HtmlEncode(text);
             }
             if (String.IsNullOrEmpty(this.TitleBar.Image))
             {
-                this.TitleBar.Image = LargeImageUrl;
+                TitleBar.Image = ImageClass;
             }
         }
 
@@ -211,6 +214,17 @@ namespace ${portal.PortalAlias}
                 }
             }
         }
+
+#if($page.IncludeScript.Length > 0)
+        void LoadIncludeScript()
+        {	
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("Page_IncludeScript"))
+            {
+                ScriptManager.RegisterClientScriptInclude(this, GetType(), "Page_IncludeScript", Page.ResolveUrl("$tools.ToAppRelative($page.IncludeScript)"));
+            }
+        }
+#end
+
         void LoadMenu()
         {
             foreach (KeyValuePair<string, IWorkspace> wsPair in this.PageWorkItem.Workspaces)
@@ -225,13 +239,14 @@ namespace ${portal.PortalAlias}
                         ${menu.ItemId}.ID = $menu.ItemId.to_quote;
 #set($spInfoId = "${menu.ItemId}Info")
                         WebToolbarSmartPartInfo $spInfoId = new WebToolbarSmartPartInfo(GetResource($tools.ToAppRelative($menu.ToRelativeUserControlPath()).to_quote, "Text"),GetResource($tools.ToAppRelative($menu.ToRelativeUserControlPath()).to_quote, "Description"))
-                        { SmallImagePath = $tools.ResolveImageUrl($menu.SmallImageUrl).to_quote,LargeImagePath = $tools.ResolveImageUrl($menu.LargeImageUrl).to_quote};
+                        { SmallImagePath = $tools.ResolveImageUrl($menu.SmallImageUrl).to_quote,LargeImagePath = $tools.ResolveImageUrl($menu.LargeImageUrl).to_quote, LargeImageClass = $tools.ImageToCssClass($menu.LargeImageUrl).to_quote, SmallImageClass = $tools.ImageToCssClass($menu.SmallImageUrl).to_quote};
                         wsPair.Value.Show($menu.ItemId, $spInfoId);
                     }
 #end
                 }
             }
         }
+
         void LoadSmartParts()
         {
 #foreach ($sp in $page.SmartParts)
@@ -327,7 +342,7 @@ namespace ${portal.PortalAlias}
         }
         bool CanBeExtensionSite(Control c)
         {
-            foreach (IUIElementAdapterFactory factory in _adapterCatalog.Factories)
+            foreach (IUIElementAdapterFactory factory in AdapterCatalog.Factories)
             {
                 if (factory.Supports(c))
                     return true;
@@ -343,7 +358,8 @@ namespace ${portal.PortalAlias}
                     {
                         ID = "portalScriptManager",
                         EnableScriptLocalization = true,
-                        EnableScriptGlobalization = true
+                        EnableScriptGlobalization = true,
+                        AllowCustomErrorsRedirect = false
                     };
                 _scriptManager.AsyncPostBackError += new EventHandler<AsyncPostBackErrorEventArgs>(_scriptManager_AsyncPostBackError);
                 form.Controls.AddAt(0, _scriptManager);
@@ -377,30 +393,61 @@ namespace ${portal.PortalAlias}
             }
             return null;
         }
+
         void _scriptManager_AsyncPostBackError(object sender, AsyncPostBackErrorEventArgs e)
         {
-            log.Error("Unhandled exception occurred during async postback.", e.Exception);
+            var exception = e != null ? e.Exception : null;
 
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append(e.Exception.Message);
-
-            Exception innerEx = e.Exception.InnerException;
-            int verbositycheck = 0;
-            while (innerEx != null)
+            if (IsAuthenticatedEx() == ErrorHelper.ResultKind.False)
             {
-                sb.Append(": <br />");
-                sb.Append(innerEx.Message);
-
-                if (innerEx is ValidationException)
+                if (log.IsWarnEnabled && ErrorHelper.LogAuthenticationRedirects())
                 {
-                    _scriptManager.AsyncPostBackErrorMessage = innerEx.Message;
-                    return;
+                    log.WarnEx("The user is either not authenticated yet or their authentication has been revoked (e.g. the ASP.NET Session may have ended).", EventIds.AdHocEvents.WarnAuthenticationRedirect, exception);
                 }
-
-                innerEx = innerEx.InnerException;
-                if (verbositycheck++ > 3) { break; }
+                Server.ClearError();
+                var message = (ErrorHelper.LooksLikeAjaxRequest(Request)) ?
+                                  string.Format("${{{0}}}", ErrorHelper.MitigationType.AjaxLoginRedirect)
+                                  : string.Format("${{{0}}}", ErrorHelper.MitigationType.LoginRedirect);
+                _scriptManager.AsyncPostBackErrorMessage = message;
+                if (ErrorHelper.LooksLikeAjaxRequest(Request) == false)
+                {
+                    LoginRedirect(false, null);
+                }
+                return;
             }
-            _scriptManager.AsyncPostBackErrorMessage = sb.ToString();
+
+            if (exception == null) return;
+
+            var fullException = exception;
+
+            var eKind = ErrorHelper.GetTargetedException(fullException, out exception);
+
+            var eMitigationType = ErrorHelper.GetMitigationType(eKind, Request);
+
+            var sSlxErrorId = ErrorHelper.GetNewLoggingId();
+
+            if (ErrorHelper.ExceptionMustBeLogged(eKind))
+            {
+                ErrorHelper.LogException(fullException, Request, log, string.Format("{0} unhandled exception during async postback", ErrorHelper.GetCurrentEventLogSource()), sSlxErrorId, ErrorHelper.GetCurrentEventLogSource());
+            }
+
+            Server.ClearError();
+
+            switch (eMitigationType)
+            {
+                case ErrorHelper.MitigationType.AjaxLoginRedirect:
+                    _scriptManager.AsyncPostBackErrorMessage = string.Format("${{{0}}}", ErrorHelper.MitigationType.AjaxLoginRedirect);
+                    break;
+
+                case ErrorHelper.MitigationType.LoginRedirect:
+                    _scriptManager.AsyncPostBackErrorMessage = string.Format("${{{0}}}", ErrorHelper.MitigationType.LoginRedirect);
+                    LoginRedirect(false, sSlxErrorId);
+                    break;
+
+                default:
+                    _scriptManager.AsyncPostBackErrorMessage = ErrorHelper.GetErrorMessageContent(exception, Request, eKind, sSlxErrorId, true, true, Resources.SalesLogix.MailDetailsLink);
+                    break;
+            }
         }
 
         void InitMode()

@@ -30,7 +30,7 @@ public partial class SmartParts_ImportHistory_ImportHistoryLog : EntityBoundSmar
     }
 
     /// <summary>
-    /// Override this method to add bindings to the currrently bound smart part
+    /// Override this method to add bindings to the currently bound smart part
     /// </summary>
     protected override void OnAddEntityBindings()
     {

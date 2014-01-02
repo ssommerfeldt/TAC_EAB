@@ -1,33 +1,24 @@
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Data.OleDb;
-using System.Linq;
 using Sage.Entity.Interfaces;
-using Sage.Platform.Application.Services;
-using Sage.SalesLogix.WebUserOptions;
-using Sage.SalesLogix;
 using Sage.Platform.Application;
-using Sage.SalesLogix.Plugins;
+using Sage.Platform.Application.Services;
 using Sage.Platform.Application.UI;
 using Sage.Platform.Orm;
+using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.Client.GroupBuilder;
-using Sage.SalesLogix.Entities;
+using Sage.SalesLogix.Plugins;
+using Sage.SalesLogix.WebUserOptions;
 
 /// <summary>
 /// Group options are stored in useroptions under category DefaultGroup, name Entity name.  The lan default groups are stored under
 /// category DefaultGroup, name MainviewFamily|MainViewName
 /// </summary>
-public partial class GroupTabOptionsPage : System.Web.UI.UserControl, ISmartPartInfoProvider
+public partial class GroupTabOptionsPage : UserControl, ISmartPartInfoProvider
 {
     /// <summary>
     /// Saves the options.
@@ -51,11 +42,13 @@ public partial class GroupTabOptionsPage : System.Web.UI.UserControl, ISmartPart
         }
         userOption.SetCommonOption("autoFitColumns", "GroupGridView",
                                    cbAutoFitColumns.Checked.ToString(CultureInfo.InvariantCulture), false);
+
+        userOption.SetCommonOption("defaultLookupCondition", "DefaultLookupCondition", ddlDefaultSearchCondition.SelectedValue, false);
     }
 
-    private string GetFamNameFromId(string id)
+    private static string GetFamNameFromId(string id)
     {
-        System.Collections.Generic.IList<Plugin> GroupList = PluginManager.GetPluginList(PluginType.ACOGroup, true, false);
+        var GroupList = PluginManager.GetPluginList(PluginType.ACOGroup, true, false);
         foreach (Plugin grp in GroupList)
             if (grp.PluginId == id)
                 return String.Format("{0}:{1}", grp.Family, grp.Name);
@@ -79,7 +72,7 @@ public partial class GroupTabOptionsPage : System.Web.UI.UserControl, ISmartPart
             family = ddlMainView.SelectedItem.Value;
         }
 
-        System.Collections.Generic.IList<Plugin> GroupList = PluginManager.GetPluginList(GroupInfo.GetGroupPluginType(family), true, false);
+        var GroupList = PluginManager.GetPluginList(GroupInfo.GetGroupPluginType(family), true, false);
         for (int i = GroupList.Count - 1; i >= 0; i--)
         {
             if (GroupList[i].Family.ToLower() != family.ToLower())
@@ -91,7 +84,6 @@ public partial class GroupTabOptionsPage : System.Web.UI.UserControl, ISmartPart
             {
                 GroupList[i].DisplayName = GroupList[i].Name;
             }
-
         }
 
         /***** Name Collistion with Blob.PluginId *****************************************************/
@@ -119,12 +111,20 @@ public partial class GroupTabOptionsPage : System.Web.UI.UserControl, ISmartPart
             if ((grp.Family.ToLower() == defLayoutGroup.Split(':')[0].ToLower()) && (grp.Name == defLayoutGroup.Split(':')[1]))
                 Utility.SetSelectedValue(ddlLookupLayoutGroup, grp.PluginId);
 
-        bool autoFitColumns;
         string autoFitColumnsValue = userOption.GetCommonOption("autoFitColumns", "GroupGridView");
-        if (!Boolean.TryParse(autoFitColumnsValue, out autoFitColumns))
-            autoFitColumns = true;
-
+        bool autoFitColumns = Utility.StringToBool(autoFitColumnsValue);
         cbAutoFitColumns.Checked = autoFitColumns;
+
+        string defaultLookupCondition = userOption.GetCommonOption("defaultLookupCondition", "DefaultLookupCondition");
+        ddlDefaultSearchCondition.ClearSelection();
+        foreach (ListItem item in ddlDefaultSearchCondition.Items)
+        {
+            if (string.Equals(item.Value, defaultLookupCondition))
+            {
+                item.Selected = true;
+                break;
+            }
+        }
     }
 
     private string DefaultGroupOptionName()
@@ -158,12 +158,12 @@ public partial class GroupTabOptionsPage : System.Web.UI.UserControl, ISmartPart
     private static void AddFamiliesToList(SortedList MVList, PluginType aType)
     {
         IList<Plugin> aList = PluginManager.GetPluginList(aType, true, false);
-        string EntityAssemblyqualifiedName = (typeof(IAccount)).AssemblyQualifiedName;
+        string EntityAssemblyqualifiedName = typeof(IAccount).AssemblyQualifiedName;
         foreach (Plugin grp in aList)
         {
             string family = grp.Family;
             family = GroupInfo.GetEntityName(family);
-            System.Type familytype = Type.GetType(EntityAssemblyqualifiedName.Replace("Account", family), false, true);
+            var familytype = Type.GetType(EntityAssemblyqualifiedName.Replace("Account", family), false, true);
             if (familytype != null)
             {
                 string famname = familytype.GetDisplayName();
@@ -176,13 +176,6 @@ public partial class GroupTabOptionsPage : System.Web.UI.UserControl, ISmartPart
         }
     }
 
-    private static string CapFirst(string val)
-    {
-        if (string.IsNullOrEmpty(val))
-            return string.Empty;
-        return val.Substring(0, 1).ToUpper() + val.Substring(1).ToLower();
-    }
-
     /// <summary>
     /// Gets the smart part info.
     /// </summary>
@@ -190,14 +183,13 @@ public partial class GroupTabOptionsPage : System.Web.UI.UserControl, ISmartPart
     /// <returns></returns>
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
-        Sage.Platform.WebPortal.SmartParts.ToolsSmartPartInfo tinfo = new Sage.Platform.WebPortal.SmartParts.ToolsSmartPartInfo();
+        var tinfo = new ToolsSmartPartInfo();
         tinfo.Description = GetLocalResourceObject("PageDescription.Text").ToString();
         tinfo.Title = GetLocalResourceObject("PageDescription.Title").ToString();
-        foreach (Control c in this.LitRequest_RTools.Controls)
+        foreach (Control c in LitRequest_RTools.Controls)
         {
             tinfo.RightTools.Add(c);
         }
         return tinfo;
     }
-
 }

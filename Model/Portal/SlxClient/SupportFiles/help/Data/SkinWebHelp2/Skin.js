@@ -1,15 +1,13 @@
 CMCXmlParser._FilePathToXmlStringMap.Add(
 	'Skin',
 	'<?xml version=\"1.0\" encoding=\"utf-8\"?>' +
-	'<CatapultSkin Version=\"1\" Title=\"Sage SalesLogix Web Client Help\" AutoSyncTOC=\"false\" Tabs=\"TOC,Index,Search,Favorites\" Top=\"0px\" Left=\"424px\" Width=\"600px\" Height=\"738px\" DefaultTab=\"Search\" Bottom=\"0px\" Right=\"0px\" Anchors=\"Left,Right,Top,Bottom,Width,Height\" UseDefaultBrowserSetup=\"True\" NavigationLinkTop=\"true\" NavigationLinkBottom=\"false\" conditions=\"\" EnableAboutBox=\"false\" UseBrowserDefaultSize=\"true\">' +
+	'<CatapultSkin Version=\"1\" Title=\"Saleslogix Web Client Help\" AutoSyncTOC=\"true\" Tabs=\"TOC,Index,Search,Favorites\" Width=\"568px\" Height=\"623px\" DefaultTab=\"TOC\" Anchors=\"Right,Width,Height\" Right=\"8px\" UseBrowserDefaultSize=\"true\" Bottom=\"50px\" EnableAboutBox=\"false\">' +
 	'    <!-- saved from url=(0014)about:internet -->' +
-	'    <HtmlHelpOptions ShowMenuBar=\"true\" TopmostWindowStyle=\"False\" AutoShowNavigationPane=\"False\" EnableButtonCaptions=\"false\" NavigationPaneWidth=\"180\" Buttons=\"Hide,Back,Forward,Print\" HideNavigationOnStartup=\"false\" />' +
-	'    <Toc LinesBetweenItems=\"True\" LinesFromRoot=\"False\" SingleClick=\"True\" PlusMinusSquares=\"False\" AlwaysShowSelection=\"False\" UseFolderIcons=\"False\" ImageListWidth=\"16\" BinaryStorage=\"False\" />' +
+	'    <HtmlHelpOptions ShowMenuBar=\"false\" TopmostWindowStyle=\"false\" AutoShowNavigationPane=\"false\" EnableButtonCaptions=\"false\" AdvancedSearch=\"false\" NavigationPaneWidth=\"215\" Buttons=\"Hide,Back,Forward,Print\" HideNavigationOnStartup=\"false\" />' +
+	'    <Toc LinesBetweenItems=\"true\" LinesFromRoot=\"true\" SingleClick=\"false\" PlusMinusSquares=\"true\" AlwaysShowSelection=\"true\" UseFolderIcons=\"false\" ImageListWidth=\"\" BinaryStorage=\"false\" />' +
 	'    <Stylesheet Link=\"Stylesheet.xml\">' +
 	'    </Stylesheet>' +
-	'    <Toolbar EnableCustomLayout=\"true\" Buttons=\"AddTopicToFavorites|Separator|ToggleNavigationPane|Separator|Back|Separator|Forward|Separator|Print|Separator|ExpandAll|Separator|CollapseAll|Separator|RemoveHighlight\" ExcludeAccordionTitle=\"false\">' +
-	'        <Script />' +
-	'    </Toolbar>' +
-	'    <WebHelpOptions NavigationPaneWidth=\"231\" HideNavigationOnStartup=\"false\" VisibleAccordionItemCount=\"3\" NavigationPanePosition=\"Left\" />' +
+	'    <Toolbar EnableCustomLayout=\"true\" Buttons=\"SelectTOC|SelectIndex|SelectSearch|AddTopicToFavorites|Separator|Back|Forward|ExpandAll|CollapseAll|Print|RemoveHighlight\" />' +
+	'    <WebHelpOptions NavigationPanePosition=\"Left\" VisibleAccordionItemCount=\"3\" />' +
 	'</CatapultSkin>'
 );

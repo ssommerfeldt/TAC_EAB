@@ -1,6 +1,6 @@
 /*
  * SageSalesLogixCommon
- * Copyright(c) 2009, Sage Software.
+ * Copyright(c) 2009, SalesLogix, N.A., LLC..
  * 
  * 
  */
