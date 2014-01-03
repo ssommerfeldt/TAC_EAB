@@ -21,7 +21,7 @@
             Else
                 Dim separators2 As String = "="
                 Dim args2() As String = args(0).Split(separators2.ToCharArray)
-                If args2(0) = "-Accountid" Then
+                If args2(0) = Chr(34) & "-Accountid" Then
                     '============================================================
                     ' -a means Account switch next Parameter is the Accountid
                     '=============================================================
