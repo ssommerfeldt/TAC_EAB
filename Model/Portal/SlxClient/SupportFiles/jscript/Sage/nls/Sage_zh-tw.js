@@ -413,12 +413,6 @@ define('Sage/TaskPane/nls/zh/SecuredActionTasklet',{});
 'Sage/TaskPane/nls/zh-tw/SecuredActionTasklet':function(){
 define('Sage/TaskPane/nls/zh-tw/SecuredActionTasklet',{});
 },
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/zh/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/zh/SyncedListPanelConfig',{});
-},
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/zh-tw/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/zh-tw/SyncedListPanelConfig',{});
-},
 'Sage/UI/Dashboard/nls/zh/DashboardTabController':function(){
 define('Sage/UI/Dashboard/nls/zh/DashboardTabController',{});
 },
@@ -856,6 +850,12 @@ define('Sage/MainView/SecurityMgr/nls/zh/SecurityProfile',{});
 },
 'Sage/MainView/SecurityMgr/nls/zh-tw/SecurityProfile':function(){
 define('Sage/MainView/SecurityMgr/nls/zh-tw/SecurityProfile',{});
+},
+'Sage/MainView/ReportMgr/nls/zh/ReportWizardController':function(){
+define('Sage/MainView/ReportMgr/nls/zh/ReportWizardController',{});
+},
+'Sage/MainView/ReportMgr/nls/zh-tw/ReportWizardController':function(){
+define('Sage/MainView/ReportMgr/nls/zh-tw/ReportWizardController',{});
 },
 'Sage/QuickForms/Design/Editors/nls/zh/UserAdvancedPropertyEditor':function(){
 define('Sage/QuickForms/Design/Editors/nls/zh/UserAdvancedPropertyEditor',{});

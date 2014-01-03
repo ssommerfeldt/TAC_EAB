@@ -1,5 +1,5 @@
 define({
-    txtCreateDate_Caption: 'Create Date:',
+    txtCreateDate_Caption: 'Data di creazione:',
     txtReportType_Caption: 'Tipo rapporto:',
     txtOutputFormat_Caption: 'Formato output:',
     txtRunAsUser_Caption: 'Esegui come:',

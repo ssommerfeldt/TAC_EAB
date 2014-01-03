@@ -206,9 +206,6 @@ define('Sage/UI/nls/cs/Dialogs',{});
 'Sage/TaskPane/nls/cs/SecuredActionTasklet':function(){
 define('Sage/TaskPane/nls/cs/SecuredActionTasklet',{});
 },
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/cs/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/cs/SyncedListPanelConfig',{});
-},
 'Sage/UI/Dashboard/nls/cs/DashboardTabController':function(){
 define('Sage/UI/Dashboard/nls/cs/DashboardTabController',{});
 },
@@ -427,6 +424,9 @@ define('Sage/MainView/IntegrationContract/nls/cs/SalesQuoteRTDV',{});
 },
 'Sage/MainView/SecurityMgr/nls/cs/SecurityProfile':function(){
 define('Sage/MainView/SecurityMgr/nls/cs/SecurityProfile',{});
+},
+'Sage/MainView/ReportMgr/nls/cs/ReportWizardController':function(){
+define('Sage/MainView/ReportMgr/nls/cs/ReportWizardController',{});
 },
 'Sage/QuickForms/Design/Editors/nls/cs/UserAdvancedPropertyEditor':function(){
 define('Sage/QuickForms/Design/Editors/nls/cs/UserAdvancedPropertyEditor',{});

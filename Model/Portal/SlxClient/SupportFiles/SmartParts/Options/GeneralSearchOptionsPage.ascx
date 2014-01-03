@@ -230,7 +230,7 @@
             <td></td>
             <td>
                 <div style="position:relative;">
-                    <div id="enhancementsNotInstalledOptions" onclick="Sage.installDesktopFeatures();">
+                    <div id="enhancementsNotInstalledOptions"   onclick="Sage.installDesktopFeatures();">
 			            <span class="enhancements">
 			                <asp:Label ID="lblInstallEnhancements" runat="server" Text="<%$ resources: lblInstallEnhancements.Text %>"></asp:Label>
 			            </span>
@@ -238,6 +238,11 @@
                     <div id="enhancementsInstalledOptions" style="display:none;" onclick="Sage.installDesktopFeatures();">
 			            <span class="enhancements">
 			                <asp:Label ID="EnhancementsInstalled" runat="server" Text="<%$ resources: lblEnhancementsInstalled.Text %>"></asp:Label>
+			            </span>
+			        </div>
+                     <div id="enhancementsNotSupportedOptions"  style="display:none;" >
+			            <span class="enhancements">
+			                <asp:Label ID="EnhancementsNotSupportedOptions" runat="server" Text="<%$ resources: lblEnhancementsNotSupported.Text %>"></asp:Label>
 			            </span>
 			        </div>
                     <span class="findOutMoreOptions"> <SalesLogix:PageLink runat="server" ID="findoutmorelink" LinkType="HelpFileName" NavigateUrl="desktopintegration" Text="<%$ resources: FindOutMore %>" CssClass="findoutmoretext" Target="MCWebHelp" ></SalesLogix:PageLink></span>
@@ -379,23 +384,38 @@
         var address = 'ActivexInfo.aspx';
         var win = window.open(address, 'AlarmMgrWin', 'width=425,height=425,directories=no,location=no,menubar=no,status=yes,scrollbars=yes,resizable=yes,titlebar=no,toolbar=no');
     }
-    $(document).ready(function () {
-        initGears();
-        //DoGeneralSearchOptionsPage_init();
-        if (Sage.gears) {
-            console.log('Sage.gears is not null');
-            //to disable the Enhance Saleslogix button, remove the comments from the following line:
-            //$(".enhanceButton").attr('disabled', 'disabled');
 
-            //to hide the whole thing...
-            //$('#ExtFeatures').css('visibility','hidden');
 
-            //to hide the "click to download" message:
-            //$('.clicktodownload').css('visibility', 'hidden');
-            //change the message:
-            //$('.clicktodownload').text(LoginStrings.EnhancementsAreInstalled || 'Enhancements have been installed');
-            $('#enhancementsNotInstalledOptions').css('display', 'none');
-            $('#enhancementsInstalledOptions').css('display', '');
-        }
+ //   $(document).ready(function() {
+    require(['dojo/ready','dojo/dom', 'dojo/dom-style','Sage/BrowserSupport'], function(ready, dom, domStyle, browserSupport) {
+        ready(function() {
+            var osInfo = browserSupport().getOSInfo();
+            initGears();
+            //DoGeneralSearchOptionsPage_init();
+            if (Sage.gears) {
+                console.log('Sage.gears is not null');
+                //to disable the Enhance Saleslogix button, remove the comments from the following line:
+                //$(".enhanceButton").attr('disabled', 'disabled');
+
+                //to hide the whole thing...
+                //$('#ExtFeatures').css('visibility','hidden');
+
+                //to hide the "click to download" message:
+                //$('.clicktodownload').css('visibility', 'hidden');
+                //change the message:
+                //$('.clicktodownload').text(LoginStrings.EnhancementsAreInstalled || 'Enhancements have been installed');
+                //$('#enhancementsNotInstalledOptions').css('display', 'none');
+               // $('#enhancementsInstalledOptions').css('display', '');
+
+                domStyle.set(dom.byId('enhancementsNotInstalledOptions'), 'display', 'none');
+                domStyle.set(dom.byId('enhancementsInstalledOptions'), 'display', '');
+
+            }
+            if (osInfo.OSName !== "Windows") {
+                domStyle.set(dom.byId('enhancementsNotSupportedOptions'), 'display', '');
+                domStyle.set(dom.byId('enhancementsNotInstalledOptions'), 'display', 'none');
+                domStyle.set(dom.byId('enhancementsInstalledOptions'), 'display', 'none');
+            }
+        });
     });
 </script>

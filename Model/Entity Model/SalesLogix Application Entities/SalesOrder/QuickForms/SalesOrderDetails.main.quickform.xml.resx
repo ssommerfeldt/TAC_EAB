@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtComment.Caption" xml:space="preserve">
     <value>Comments:</value>
@@ -244,13 +244,13 @@
     <value>Main Phone</value>
   </data>
   <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value />
+    <value>Type</value>
   </data>
   <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
     <value>Sub-Type</value>
   </data>
   <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value />
+    <value>Status</value>
   </data>
   <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
     <value>City</value>
@@ -307,16 +307,16 @@
     <value>Requested By:</value>
   </data>
   <data name="lueRequestedBy.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Contact Name (Last, First)</value>
+    <value>Name</value>
   </data>
   <data name="lueRequestedBy.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Account Name</value>
+    <value>Account</value>
   </data>
   <data name="lueRequestedBy.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Address City</value>
+    <value>City</value>
   </data>
   <data name="lueRequestedBy.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Address State</value>
+    <value>State</value>
   </data>
   <data name="lueRequestedBy.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
     <value>Work Phone</value>
@@ -343,7 +343,7 @@
     <value>Transmitted To Accounting</value>
   </data>
   <data name="a326dce0-6c90-44fb-94da-fe45082b90b0.Title" xml:space="preserve">
-    <value>Sage SalesLogix</value>
+    <value>Saleslogix</value>
   </data>
   <data name="a326dce0-6c90-44fb-94da-fe45082b90b0.Message" xml:space="preserve">
     <value>The selected Account must be promoted to the selected ERP Application before saving.</value>
@@ -411,76 +411,13 @@
   <data name="erpStatus_Rejected" xml:space="preserve">
     <value>Rejected</value>
   </data>
-  <data name="lkpWarehouse.Caption" xml:space="preserve">
-    <value>Warehouse:</value>
+  <data name="lueOpportunity.LookupProperties.CreateDate.PropertyHeader" xml:space="preserve">
+    <value>Create Date</value>
   </data>
-  <data name="lkpWarehouse.LookupProperties.SLXSite.Attention.PropertyHeader" xml:space="preserve">
-    <value>Warehouse</value>
+  <data name="dtpDueDate.ButtonToolTip" xml:space="preserve">
+    <value>Calendar</value>
   </data>
-  <data name="cmdSubmitOrder.Caption" xml:space="preserve">
-    <value>Submit Order</value>
-  </data>
-  <data name="cmdSubmitOrder.ToolTip" xml:space="preserve">
-    <value>Submit Order</value>
-  </data>
-  <data name="18f05b01-c8f0-43e1-960e-b80f594e7c06.Message" xml:space="preserve">
-    <value>Order Submitted</value>
-  </data>
-  <data name="QFButton.Caption" xml:space="preserve">
-    <value>Print Order Confirmation</value>
-  </data>
-  <data name="bf188876-6ce4-44b4-997f-06db0a5c0601.Title" xml:space="preserve">
-    <value>Print to PDF</value>
-  </data>
-  <data name="bf188876-6ce4-44b4-997f-06db0a5c0601.Message" xml:space="preserve">
-    <value>Print to PDF not available yet.</value>
-  </data>
-  <data name="cmdStockCard.Caption" xml:space="preserve">
-    <value>Stock Card</value>
-  </data>
-  <data name="cmdPrintPickingList.Caption" xml:space="preserve">
-    <value>Print Picking List..</value>
-  </data>
-  <data name="lkpSourceWareHouse.LookupProperties.SLXSite.Sitecode.PropertyHeader" xml:space="preserve">
-    <value>Sitecode</value>
-  </data>
-  <data name="lkpSourceWareHouse.LookupProperties.SLXSite.Attention.PropertyHeader" xml:space="preserve">
-    <value>Attention</value>
-  </data>
-  <data name="lkpUserWareHouse.LookupProperties.SLXSite.Attention.PropertyHeader" xml:space="preserve">
-    <value>Attention</value>
-  </data>
-  <data name="lkpUserWareHouse.LookupProperties.SLXSite.Sitecode.PropertyHeader" xml:space="preserve">
-    <value>Sitecode</value>
-  </data>
-  <data name="lkpUserWareHouse.Caption" xml:space="preserve">
-    <value>User Warehouse:</value>
-  </data>
-  <data name="lkpSourceWareHouse.Caption" xml:space="preserve">
-    <value>Source Warehouse:</value>
-  </data>
-  <data name="lkpUserWareHouse.ActionConfirmationMessage" xml:space="preserve">
-    <value>Warning: Changing the warehouse removes all products from the order. Do you wish to continue?</value>
-  </data>
-  <data name="a9c3f339-6b72-43c3-8d17-e5e8b02c22b2.Message" xml:space="preserve">
-    <value>Warning: Changing the warehouse removes all products from the order. Do you wish to continue?</value>
-  </data>
-  <data name="a9c3f339-6b72-43c3-8d17-e5e8b02c22b2.Title" xml:space="preserve">
-    <value>Warning</value>
-  </data>
-  <data name="lkpUserWareHouse.ToolTip" xml:space="preserve">
-    <value>Warning: Changing the warehouse removes all products from the order.</value>
-  </data>
-  <data name="lkpUserWareHouse.ButtonToolTip" xml:space="preserve">
-    <value>Warning: Changing the warehouse removes all products from the order.</value>
-  </data>
-  <data name="ac197e05-78c2-47d1-8799-64f67da6e515.Message" xml:space="preserve">
-    <value>Order Submitted</value>
-  </data>
-  <data name="txtDiscount.Caption" xml:space="preserve">
-    <value>Discount (%):</value>
-  </data>
-  <data name="QFButton2.Caption" xml:space="preserve">
-    <value>save2</value>
+  <data name="dtpDueDate.Caption" xml:space="preserve">
+    <value>Due Date:</value>
   </data>
 </root>

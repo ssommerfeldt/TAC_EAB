@@ -112,6 +112,11 @@ function (
             if (this._conditionOptions.conditions.length > 0) {
                 this.cmbConditionPresets.attr('value', Enumerations.ConditionPreset.Custom);
             }
+
+            //Set default connector
+            if (this._conditionOptions.conditionsConnector) {
+                this.cmbConnector.attr('value', this._conditionOptions.conditionsConnector);
+            }
         },
 
         //------------------------------------------------
@@ -229,37 +234,14 @@ function (
             this.grdCrystalConditions.setStore(store);
         },
 
-        _initializeConnectorDropdown: function () {
-
-            //console.log("CrystalReportConditionsDialog._initializeConnectorDropdown");
-            var items = [
-                {
-                    value: Enumerations.ReportConditionConnector.And,
-                    caption: nlsResources.txtAll
-                },
-                {
-                    value: Enumerations.ReportConditionConnector.Or,
-                    caption: nlsResources.txtAny
-                }
-            ];
-            var data = {
-                identifier: 'value',
-                label: 'caption',
-                items: items
-            };
-
-            var store = new ItemFileWriteStore({ data: data });
-            this.cmbConnector.setStore(store);
-            this.cmbConnector.startup();
-            if (this._conditionOptions.conditionsConnector) {
-                this.cmbConnector.attr('value', this._conditionOptions.conditionsConnector);
-            }
-
-        },
 
         //------------------------------------------------
         //Internal functions.
         //------------------------------------------------
+
+        _getDialogTitle: function () {
+            return this._nlsResources.txtDialogTitle + " [" + this._reportMetadata.displayName + "]";
+        },
 
         _getWizardStepResult: function () {
             this._conditionOptions.conditions = this._getConditions();

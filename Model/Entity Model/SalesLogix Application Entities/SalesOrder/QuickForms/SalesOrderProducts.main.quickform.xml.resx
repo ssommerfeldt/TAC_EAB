@@ -112,19 +112,19 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="grdItems.Save.ToolTip" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="grdItems.Delete.ToolTip" xml:space="preserve">
-    <value>Delete Selected Records</value>
+    <value>Remove</value>
   </data>
   <data name="grdItems.Cancel.ToolTip" xml:space="preserve">
-    <value>Revert Changes</value>
+    <value>Reset</value>
   </data>
   <data name="btnAddCustomProduct.ToolTip" xml:space="preserve">
     <value>Add Custom Product...</value>
@@ -208,7 +208,7 @@
     <value>Add Product from Package</value>
   </data>
   <data name="luProduct.LookupDialogTitle" xml:space="preserve">
-    <value>Add Products</value>
+    <value>Lookup Products</value>
   </data>
   <data name="luPackage.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Description</value>
@@ -307,7 +307,7 @@
     <value />
   </data>
   <data name="luProduct.DialogButtonText" xml:space="preserve">
-    <value>Add Products</value>
+    <value>Add Selected</value>
   </data>
   <data name="grdItems.e1a69123-3261-4eac-b1cc-8ce21ff52c2e.ColumnHeading" xml:space="preserve">
     <value> </value>
@@ -381,43 +381,7 @@
   <data name="grdItems.ff4abcfa-992a-4721-8841-c0c0b6e89485.ColumnHeading" xml:space="preserve">
     <value>Extended Price</value>
   </data>
-  <data name="grdItems.484637f5-30a6-4588-92b1-e32f69510fb4.ColumnHeading" xml:space="preserve">
-    <value>UPC</value>
-  </data>
-  <data name="grdItems.718d1e2f-b158-47d8-958d-732c16c58a3e.ColumnHeading" xml:space="preserve">
-    <value>UPC</value>
-  </data>
-  <data name="grdItems.f405b064-c26a-414b-86b3-855a47ace2a4.ColumnHeading" xml:space="preserve">
-    <value>SKU</value>
-  </data>
-  <data name="grdItems.89dde4ba-017f-4b48-a475-1dbff0490c1b.ColumnHeading" xml:space="preserve">
-    <value>Unit</value>
-  </data>
-  <data name="luProduct.LookupProperties.UPC.PropertyHeader" xml:space="preserve">
-    <value>UPC</value>
-  </data>
-  <data name="luProduct.LookupProperties.WarehouseID.PropertyHeader" xml:space="preserve">
-    <value>Warehouse ID</value>
-  </data>
-  <data name="cmdAddProduct.Caption" xml:space="preserve">
-    <value>Add Product</value>
-  </data>
-  <data name="cmdAddProduct.ToolTip" xml:space="preserve">
-    <value>Add Product</value>
-  </data>
-  <data name="35bcdfcb-61df-432f-a950-635223878c1b.DialogTitleOverride" xml:space="preserve">
-    <value>Add Product</value>
-  </data>
-  <data name="grdItems.fefa474f-e28a-4837-a374-ee2910aaccc1.ColumnHeading" xml:space="preserve">
-    <value>Warehouse</value>
-  </data>
-  <data name="grdItems.913de698-8761-4e66-960a-5cc960b7aeda.ColumnHeading" xml:space="preserve">
-    <value>Quantity</value>
-  </data>
-  <data name="grdItems.e184a405-36df-4981-bcbf-6bef44702e45.ColumnHeading" xml:space="preserve">
-    <value>LastOrder</value>
-  </data>
-  <data name="grdItems.109a9fea-a4ac-4fd6-ac3e-6cd49e07ae7e.ColumnHeading" xml:space="preserve">
-    <value>QtyAvailable</value>
+  <data name="error_ZeroBasePrice" xml:space="preserve">
+    <value>You cannot add a discount to a product, which does not contain a base price.</value>
   </data>
 </root>

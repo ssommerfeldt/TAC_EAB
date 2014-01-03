@@ -1104,9 +1104,6 @@ define("Sage/TaskPane/nls/fr/SecuredActionTasklet", (
 { addToRoleTitle: 'Ajouter au rôle' }
 ));
 },
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/fr/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/fr/SyncedListPanelConfig',{});
-},
 'Sage/UI/Dashboard/nls/fr/DashboardTabController':function(){
 define("Sage/UI/Dashboard/nls/fr/DashboardTabController", (
 { newTabText: 'Nouvel Onglet',
@@ -2452,6 +2449,18 @@ define("Sage/MainView/SecurityMgr/nls/fr/SecurityProfile", (
   description_Text: 'Description',
   profileType_Text: 'Type de profil' }
 ));
+},
+'Sage/MainView/ReportMgr/nls/fr/ReportWizardController':function(){
+﻿define("Sage/MainView/ReportMgr/nls/fr/ReportWizardController", {
+    txtLoadingScheduleDetails: 'Loading Schedule Details',
+    txtError: 'Error',
+    txtCannotDetermineReportId: 'Cannot determine report id.',
+    txtCannotDetermineReportNameOrFamily: 'Cannot determine report name or family.',
+    txtLoading: 'Loading ',
+    txtLoadingReport: 'Loading Report',
+    txtSorryAnErrorOccuredLoadingReport: 'Sorry, an error occured loading report: ${0} ${1}.'
+
+});
 },
 'Sage/QuickForms/Design/Editors/nls/fr/UserAdvancedPropertyEditor':function(){
 define("Sage/QuickForms/Design/Editors/nls/fr/UserAdvancedPropertyEditor", (

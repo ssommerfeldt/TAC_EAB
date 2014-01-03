@@ -583,6 +583,10 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
                 SetDisplayProperties();
             }
         }
+        catch (UserObservableException)
+        {
+            throw;
+        }
         catch (Exception ex)
         {
             var sSlxErrorId = ErrorHelper.GetNewLoggingId();

@@ -9,10 +9,17 @@
 <script type="text/javascript">
         require(["dojo/ready", "dojo/_base/array", "dojo/has", "dojo/dom", "dojo/dom-style", "dojo/_base/sniff", 'Sage/BrowserSupport', 'dojo/i18n!Sage/UI/nls/Login'], function (ready, array, has, dom, domStyle, _sniff, browserSupport, loginStrings) {
             ready(function () {
-        initGears();
+                var osInfo = browserSupport().getOSInfo();
+                initGears();
+
         if (Sage.gears) {
             domStyle.set(dom.byId('enhancementsNotInstalled'), 'display', 'none');
             domStyle.set(dom.byId('enhancementsInstalled'), 'display', '');
+        }
+        if (osInfo.OSName !== "Windows") {
+            domStyle.set(dom.byId('enhancementsNotSupported'), 'display', '');
+            domStyle.set(dom.byId('enhancementsNotInstalled'), 'display', 'none');
+            domStyle.set(dom.byId('enhancementsInstalled'), 'display', 'none');
         }
 
         sessionStorage.clear();
@@ -83,6 +90,8 @@
                 browserCompatibilityCheck(has('chrome'), browserSupport().getBrowserCompatibilityInfo('chrome'));
                 browserCompatibilityCheck(has('opera'), browserSupport().getBrowserCompatibilityInfo('opera'));
                 browserCompatibilityCheck(has('safari'), browserSupport().getBrowserCompatibilityInfo('safari'));
+
+
     });
         });
         function toggleLearnMore() {
@@ -98,6 +107,7 @@
 	<Keys>
 		<SalesLogix:ResourceKeyName Key="EnhancementsInstalled" />
         <SalesLogix:ResourceKeyName Key="EnhancementsInstall" />
+        <SalesLogix:ResourceKeyName Key="EnhancementsNotSupported" />
 	</Keys>
 </SalesLogix:ScriptResourceProvider>
     <div id="browserUnsupportedDiv" style='display:none; font-family:Arial,Verdana,Sans-serif; font-size:0.8em;'>
@@ -168,6 +178,11 @@
 			            <div id="enhancementsInstalled" style="display:none;" onclick="Sage.installDesktopFeatures();">
 			                <span class="enhancements">
 			                    <asp:Label ID="EnhancementsInstalled" runat="server" Text="<%$ resources: EnhancementsInstalled %>"></asp:Label>
+			                </span>
+			            </div>
+                         <div id="enhancementsNotSupported" style="display:none;">
+			                <span class="enhancements">
+			                    <asp:Label ID="EnhancementsNotSupported" runat="server" Text="<%$ resources: EnhancementsNotSupported %>"></asp:Label>
 			                </span>
 			            </div>
 			            <span class="findOutMore">

@@ -48,7 +48,6 @@ namespace Sage.BusinessRules.CodeSnippets
 			if (salesOrder != null && !form.rdgSOType.IsReadOnly)
 			{
                 salesOrder.IsQuote = !String.IsNullOrEmpty(form.rdgSOType.SelectedValue) && Convert.ToBoolean(form.rdgSOType.SelectedValue);
-				salesOrder.SetOrderTotals();
 				salesOrder.Save();
 			}
         }

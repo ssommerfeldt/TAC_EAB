@@ -130,7 +130,7 @@ function (
                 storeOptions: {
                     resourceKind: 'users',
                     include: ['UserInfo'],
-                    sort: [{ attribute: 'UserInfo.UserName'}]
+                    sort: [{ attribute: 'UserInfo.UserName' }]
                 },
                 isModal: true,
                 preFilters: [],
@@ -164,7 +164,7 @@ function (
         _getExportOptions: function () {
             this._exportOptions.description = this.txtScheduleDescription.get('value');
             this._exportOptions.outputFormat = this.cmbOutputFormat.value;
-            this._exportOptions.runAsUserId = this.lkpRunAsUserId.selectedObject ? this.lkpRunAsUserId.selectedObject.$key : null;            
+            this._exportOptions.runAsUserId = this.lkpRunAsUserId.selectedObject ? this.lkpRunAsUserId.selectedObject.$key : null;
             return this._exportOptions;
         },
         _getScheduleOptions: function () {
@@ -209,10 +209,10 @@ function (
         },
         _getDialogTitle: function () {
             if (this._scheduleOptions.executionType === enumerations.ExecutionType.OnDemand) {
-                return this._nlsResources.txtDialogTitle;
+                return this._nlsResources.txtDialogTitle + " [" + this._reportMetadata.displayName + "]";
             }
             else {
-                return this._nlsResources.txtDialogTitleScheduling;
+                return this._nlsResources.txtDialogTitleScheduling + " [" + this._reportMetadata.displayName + "]";
             }
         }
     });
