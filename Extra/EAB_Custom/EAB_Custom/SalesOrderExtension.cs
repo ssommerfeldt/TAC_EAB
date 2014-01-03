@@ -5,8 +5,6 @@ using System.Data.OleDb;
 using NHibernate;
 using Sage.Platform.Application;
 
-
-
 namespace EAB_Custom {
     public class SalesOrderExtension {
 
@@ -15,8 +13,7 @@ namespace EAB_Custom {
             int tmp = (int)Math.Truncate(step * value);
             return tmp / step;
         }
-
-
+        
 
         public static void SubmitOrder(ISalesOrder salesOrder) {
             //don't allow already submitted order to resubmit
@@ -108,7 +105,11 @@ namespace EAB_Custom {
                 if (salesOrder.Account != null) {
                     if (salesOrder.Account.AccountFinancial != null) {
                         soHeader.CustID = salesOrder.Account.AccountFinancial.CustomerId; //get from mas
-                        soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type.Substring(0, 4).ToUpper(); //get from mas
+                        if (salesOrder.Account.AccountFinancial.Customer_Type == null) {
+                            throw new ArgumentNullException("Customer_Type");
+                        } else {
+                            soHeader.CustClassID = salesOrder.Account.AccountFinancial.Customer_Type.Substring(0, 4).ToUpper(); //get from mas
+                        }
 
                         //soHeader.DfltShipToCustAddrID = salesOrder.ShippingAddress.Address.MASAddrKey.ToString(); //change this to mas id
                         soHeader.DfltShipToCustAddrID = salesOrder.Account.AccountFinancial.CustomerId;
