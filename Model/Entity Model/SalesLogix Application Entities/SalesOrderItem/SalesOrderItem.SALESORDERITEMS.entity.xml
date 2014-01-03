@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="897f4970-c7f6-4667-9dd3-dfb814b03f3a" lastModifiedUtc="2013-12-17T06:35:44.9452584Z" manageSchema="true" tableName="SALESORDERITEMS" name="SalesOrderItem" displayPropertyId="32153977-0e65-4b9c-bada-029c19dccf12" isExtension="false" audited="false" onBeforeInsertMethodId="0bc48883-6ae0-4196-acf4-ec83f8d17008" onAfterInsertMethodId="eb16e096-3ffd-4995-b000-38ca06b3c79e" onBeforeUpdateMethodId="28548e1e-812d-42d7-acc8-bbd8777a54ad" onAfterUpdateMethodId="d55c9a00-581e-4a10-a802-b3dbf2e1da42" onBeforeDeleteMethodId="c4675a80-1fe2-4a15-aa2c-ab7086a10dee" onAfterDeleteMethodId="d81e2749-1135-4eea-bcfd-940805bffa2d" onCreateId="6b23ef38-ed22-444f-8b9c-31d2d001bb68">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="897f4970-c7f6-4667-9dd3-dfb814b03f3a" lastModifiedUtc="2014-01-03T18:20:46.3972074Z" manageSchema="true" tableName="SALESORDERITEMS" name="SalesOrderItem" displayPropertyId="32153977-0e65-4b9c-bada-029c19dccf12" isExtension="false" audited="false" onBeforeInsertMethodId="0bc48883-6ae0-4196-acf4-ec83f8d17008" onAfterInsertMethodId="eb16e096-3ffd-4995-b000-38ca06b3c79e" onBeforeUpdateMethodId="28548e1e-812d-42d7-acc8-bbd8777a54ad" onAfterUpdateMethodId="d55c9a00-581e-4a10-a802-b3dbf2e1da42" onBeforeDeleteMethodId="c4675a80-1fe2-4a15-aa2c-ab7086a10dee" onAfterDeleteMethodId="d81e2749-1135-4eea-bcfd-940805bffa2d" onCreateId="6b23ef38-ed22-444f-8b9c-31d2d001bb68">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
@@ -428,7 +428,7 @@
         </TextDataType>
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="85f8047f-25d3-4ccd-9ee8-856a9dd38caa" lastModifiedUtc="2013-12-17T06:35:44.9442583Z" name="UPC" audited="false" columnName="UPC" maxLength="32" precision="0" scale="0" ordinal="30" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="85f8047f-25d3-4ccd-9ee8-856a9dd38caa" lastModifiedUtc="2014-01-03T18:20:46.3932071Z" name="UPC" audited="false" columnName="UPC" maxLength="32" precision="0" scale="0" ordinal="30" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -598,7 +598,7 @@
       </SystemDataType>
       <code><![CDATA[]]></code>
     </property>
-    <property xsi:type="OrmFieldProperty" id="e87e965a-e063-4252-af63-53661af32e94" lastModifiedUtc="2013-12-17T06:35:44.9452584Z" name="MaxStockLevel" audited="false" columnName="MAX_STOCKLEVEL" maxLength="0" precision="10" scale="0" ordinal="31" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="e87e965a-e063-4252-af63-53661af32e94" lastModifiedUtc="2014-01-03T18:20:46.3952072Z" name="MaxStockLevel" audited="false" columnName="MAX_STOCKLEVEL" maxLength="0" precision="10" scale="0" ordinal="31" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -610,7 +610,7 @@
         <IntegerDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="7dfc6c71-e92e-44e0-9f24-d34326412663" lastModifiedUtc="2013-12-17T06:35:44.9452584Z" name="OrigProductPrice" audited="false" columnName="ORIGPRODUCTPRICE" maxLength="0" precision="53" scale="0" ordinal="32" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="7dfc6c71-e92e-44e0-9f24-d34326412663" lastModifiedUtc="2014-01-03T18:20:46.3962073Z" name="OrigProductPrice" audited="false" columnName="ORIGPRODUCTPRICE" maxLength="0" precision="53" scale="0" ordinal="32" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -622,7 +622,7 @@
         <DoubleDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="56ceb4f2-38d1-4028-9e6c-cdb41df2eb8e" lastModifiedUtc="2013-12-17T06:35:44.9452584Z" name="OrigProductDiscount" audited="false" columnName="ORIGPRODUCTDISCOUNT" maxLength="0" precision="53" scale="0" ordinal="33" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="56ceb4f2-38d1-4028-9e6c-cdb41df2eb8e" lastModifiedUtc="2014-01-03T18:20:46.3972074Z" name="OrigProductDiscount" audited="false" columnName="ORIGPRODUCTDISCOUNT" maxLength="0" precision="53" scale="0" ordinal="33" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
