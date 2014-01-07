@@ -1104,6 +1104,9 @@ define("Sage/TaskPane/nls/ru/SecuredActionTasklet", (
 { addToRoleTitle: 'Добавить к роли' }
 ));
 },
+'Sage/Extensions/Activity/ActivityListCustomTabs/nls/ru/SyncedListPanelConfig':function(){
+define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/ru/SyncedListPanelConfig',{});
+},
 'Sage/UI/Dashboard/nls/ru/DashboardTabController':function(){
 define("Sage/UI/Dashboard/nls/ru/DashboardTabController", (
 { newTabText: 'Новая закладка',
@@ -2448,18 +2451,6 @@ define("Sage/MainView/SecurityMgr/nls/ru/SecurityProfile", (
   description_Text: 'Описание',
   profileType_Text: 'Тип профиля' }
 ));
-},
-'Sage/MainView/ReportMgr/nls/ru/ReportWizardController':function(){
-﻿define("Sage/MainView/ReportMgr/nls/ru/ReportWizardController", {
-    txtLoadingScheduleDetails: 'Loading Schedule Details',
-    txtError: 'Error',
-    txtCannotDetermineReportId: 'Cannot determine report id.',
-    txtCannotDetermineReportNameOrFamily: 'Cannot determine report name or family.',
-    txtLoading: 'Loading ',
-    txtLoadingReport: 'Loading Report',
-    txtSorryAnErrorOccuredLoadingReport: 'Sorry, an error occured loading report: ${0} ${1}.'
-
-});
 },
 'Sage/QuickForms/Design/Editors/nls/ru/UserAdvancedPropertyEditor':function(){
 define("Sage/QuickForms/Design/Editors/nls/ru/UserAdvancedPropertyEditor", (

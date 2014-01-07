@@ -7,7 +7,7 @@
       <ResourceKey>bf48998d-0a7a-4649-9b73-71b442ebf292</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
-          <MethodName>quickformload0</MethodName>
+          <MethodName />
           <CSharpCodeSnippet>Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
 if (salesOrder != null)
 {
@@ -111,8 +111,9 @@ if (salesOrder != null)
         closed = (salesOrder.Status.ToUpper().Equals(GetLocalResourceObject("SalesOrderStatus_Closed").ToString().ToUpper()) ||
             salesOrder.Status.ToUpper().Equals(GetLocalResourceObject("SalesOrderStatus_Transmitted").ToString().ToUpper()));
     }
-    btnAddCustomProduct.Visible = btnAddCustomProduct.Visible &amp;&amp; !closed &amp;&amp; !erpSalesOrder;
-    btnLockAll.Visible = !closed &amp;&amp; isIntegrated &amp;&amp; lockPriceAccess &amp;&amp; !erpSalesOrder;
+    // btnAddCustomProduct.Visible = btnAddCustomProduct.Visible &amp;&amp; !closed &amp;&amp; !erpSalesOrder;
+    btnAddCustomProduct.Visible = false;
+	btnLockAll.Visible = !closed &amp;&amp; isIntegrated &amp;&amp; lockPriceAccess &amp;&amp; !erpSalesOrder;
     btnUnlockAll.Visible = !closed &amp;&amp; isIntegrated &amp;&amp; lockPriceAccess &amp;&amp; !erpSalesOrder;
     btnRenumber.Visible = !closed &amp;&amp; !erpSalesOrder &amp;&amp; salesOrder.Id != null;
 }</CSharpCodeSnippet>
@@ -129,7 +130,7 @@ if (salesOrder != null)
       <ResourceKey>90791539-c253-4402-a54f-0860cfbe893a</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CodeSnippetActionItem, Sage.Platform.QuickForms">
         <CodeSnippetActionItem methodId="a9a32432-7fbd-4971-bde0-0740a2aadcb4">
-          <MethodName>quickformload1</MethodName>
+          <MethodName />
         </CodeSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -142,9 +143,7 @@ if (salesOrder != null)
   </LoadActions>
   <Name>SalesOrderProducts</Name>
   <ClientScriptIncludes />
-  <ClientResourceKeys>
-    <string>error_ZeroBasePrice</string>
-  </ClientResourceKeys>
+  <ClientResourceKeys />
   <ExtendedProperties />
   <HelpFile />
   <ReadOnly>false</ReadOnly>
@@ -186,6 +185,7 @@ if (salesOrder != null)
           <GetPredicate />
         </ResourceKind>
         <PathSegments />
+        <PageSize>100</PageSize>
         <Columns>
           <QFSDataEditCol>
             <StyleScheme />
@@ -198,7 +198,7 @@ if (salesOrder != null)
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <DialogSpecs>
               <SmartPart>EditSalesOrderItem</SmartPart>
-              <Height>375</Height>
+              <Height>800</Height>
               <Width>600</Width>
               <Top>0</Top>
               <Left>0</Left>
@@ -226,7 +226,7 @@ if (salesOrder != null)
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <DialogSpecs>
               <SmartPart>ICEditSalesOrderItem</SmartPart>
-              <Height>750</Height>
+              <Height>700</Height>
               <Width>700</Width>
               <Top>0</Top>
               <Left>0</Left>
@@ -266,13 +266,61 @@ if (salesOrder != null)
             <ColumnId>530b7cdb-cef1-4e94-a46a-cf8d931ff779</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>Ascending</SortDirection>
+            <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
             <SortField>LineNumber</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
             <HideCondition />
             <Width>3</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>Quantity</DataField>
+            <ColumnId>913de698-8761-4e66-960a-5cc960b7aeda</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>Quantity</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>true</IsEditable>
+            <HideCondition />
+            <Width>3</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ActualID</DataField>
+            <ColumnId>f405b064-c26a-414b-86b3-855a47ace2a4</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>ActualID</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>5</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>UPC</DataField>
+            <ColumnId>718d1e2f-b158-47d8-958d-732c16c58a3e</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>UPC</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>8</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
@@ -292,22 +340,6 @@ if (salesOrder != null)
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
-          <QFEditableCol>
-            <StyleScheme />
-            <DataField>Family</DataField>
-            <ColumnId>506f0947-d9d3-441f-bfed-329263b9df81</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>Family</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition />
-            <Width>-1</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
           <QFSDataLookupCol>
             <StyleScheme />
             <DataField>Program</DataField>
@@ -320,7 +352,7 @@ if (salesOrder != null)
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>true</IsEditable>
             <HideCondition>function () {
-    return isIntegrationContractEnabled();
+    return true; // isIntegrationContractEnabled();
 }</HideCondition>
             <Width>-1</Width>
             <CustomFormatter />
@@ -344,7 +376,7 @@ if (salesOrder != null)
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
             <HideCondition />
-            <Width>10</Width>
+            <Width>4</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode />
@@ -362,9 +394,9 @@ if (salesOrder != null)
             <IsSortable>true</IsSortable>
             <SortField>Discount</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
+            <IsEditable>false</IsEditable>
             <HideCondition />
-            <Width>-1</Width>
+            <Width>4</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <DecimalDigits>
@@ -385,7 +417,7 @@ if (salesOrder != null)
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>true</IsEditable>
             <HideCondition />
-            <Width>10</Width>
+            <Width>4</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode />
@@ -407,7 +439,7 @@ if (salesOrder != null)
             <HideCondition>function () {
     return !isMultiCurrencyEnabled();
 }</HideCondition>
-            <Width>10</Width>
+            <Width>4</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode>SalesOrder.CurrencyCode</CurrentCode>
@@ -415,92 +447,22 @@ if (salesOrder != null)
             <ExchangeRateType>EntityRate</ExchangeRateType>
             <DecimalDigits>-1</DecimalDigits>
           </QFSDataCurrencyCol>
-          <QFSDataNumericCol>
+          <QFEditableCol>
             <StyleScheme />
-            <DataField>Quantity</DataField>
-            <ColumnId>0fd9479b-1d6f-497f-a870-26efbf44550d</ColumnId>
-            <HorizontalAlignment>right</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>Quantity</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
-            <HideCondition />
-            <Width>-1</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-            <DecimalDigits>
-              <DecimalDigits>0</DecimalDigits>
-              <Strict>false</Strict>
-            </DecimalDigits>
-            <FormatType>Number</FormatType>
-          </QFSDataNumericCol>
-          <QFSDataLookupCol>
-            <StyleScheme />
-            <DataField>UnitOfMeasure</DataField>
-            <ColumnId>eef3d53b-092f-4f1b-9429-22cfd8dd2bf4</ColumnId>
+            <DataField>Product.Unit</DataField>
+            <ColumnId>89dde4ba-017f-4b48-a475-1dbff0490c1b</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>UnitOfMeasure</SortField>
+            <SortField>Product.Unit</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
-            <HideCondition>function () {
-    return !isIntegrationContractEnabled();
-}</HideCondition>
-            <Width>-1</Width>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>4</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
-            <SeedOnRowEntity>false</SeedOnRowEntity>
-            <SeedOnRelatedEntity />
-            <ConditionalWhere>function () {
-	        var sCondition = '';
-	        var showError = function (msg) {
-	            var msgService = Sage.Services.getService("WebClientMessageService");
-	            if (msgService != null &amp;&amp; typeof msgService !== "undefined") {
-	                msgService.showClientError(msg);
-	            }
-	            else {
-	                alert(msg);
-	            }
-	        }
-	        var service = Sage.Services.getService("IntegrationContractService");
-	        if (service != null &amp;&amp; typeof service !== "undefined") {
-	            if (service.isIntegrationEnabled) {
-	                var bFoundOperatingCompany = false;
-	                var bFoundSlxPriceList = false;
-	                var clientContextService = Sage.Services.getService("ClientContextService");
-	                if (clientContextService != null &amp;&amp; typeof clientContextService !== "undefined") {
-	                    if (clientContextService.containsKey("OperatingCompany")) {
-	                        var sOperatingCompanyId = clientContextService.getValue("OperatingCompany");
-	                        bFoundOperatingCompany = (dojo.isString(sOperatingCompanyId) &amp;&amp; String(sOperatingCompanyId).length == 12);
-	                        if (bFoundOperatingCompany) {
-	                            sCondition = 'AppId eq "' + sOperatingCompanyId + '" ' + "And ActiveFlag eq true";
-	                        }
-	                    }
-	                    var sError = "";
-	                    if (!bFoundOperatingCompany) {
-	                        sError = "The Operating Company could not be determined.";
-	                        showError(sError);
-	                        throw new Error(sError);
-	                    }
-	                }
-	                else {
-	                    sError = "The ClientContextService is unavailable.";
-	                    showError(sError);
-	                    throw new Error(sError);
-	                }
-	            }
-	        }
-	        return sCondition;
-        }
-</ConditionalWhere>
-            <ResourceKind>unitsOfMeasure</ResourceKind>
-            <LookupBindingMode>Object</LookupBindingMode>
-            <LookupDisplayProperty>Name</LookupDisplayProperty>
-          </QFSDataLookupCol>
+          </QFEditableCol>
           <QFSDataCurrencyCol>
             <StyleScheme />
             <DataField>ExtendedPrice</DataField>
@@ -515,7 +477,7 @@ if (salesOrder != null)
             <HideCondition>function () {
     return isMultiCurrencyEnabled();
 }</HideCondition>
-            <Width>10</Width>
+            <Width>4</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode />
@@ -537,7 +499,7 @@ if (salesOrder != null)
             <HideCondition>function () {
     return !isMultiCurrencyEnabled();
 }</HideCondition>
-            <Width>10</Width>
+            <Width>4</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode>SalesOrder.CurrencyCode</CurrentCode>
@@ -584,6 +546,53 @@ if (salesOrder != null)
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>Product.WarehouseID</DataField>
+            <ColumnId>fefa474f-e28a-4837-a374-ee2910aaccc1</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>Product.WarehouseID</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>4</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>LastOrder</DataField>
+            <ColumnId>e184a405-36df-4981-bcbf-6bef44702e45</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>LastOrder</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>8</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>Product.QtyAvailable</DataField>
+            <ColumnId>109a9fea-a4ac-4fd6-ac3e-6cd49e07ae7e</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>4</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
         </Columns>
         <ConditionalWhere>function() { return 'SalesOrder.Id eq "' + Sage.Utility.getCurrentEntityId() + '"'; }</ConditionalWhere>
         <Select>
@@ -592,55 +601,56 @@ if (salesOrder != null)
           <string>SalesOrder.CurrencyCode</string>
           <string>SalesOrder.OperatingCompany.Id</string>
           <string>SalesOrder.SlxPriceList.Id</string>
-          <string>UnitOfMeasure.Id</string>
-          <string>UnitOfMeasure.Name</string>
-          <string>UnitOfMeasure.AppId</string>
         </Select>
         <Include>
           <string>SalesOrder</string>
           <string>Product</string>
-          <string>UnitOfMeasure</string>
         </Include>
         <FeedCategory>InternalAppEntities</FeedCategory>
         <OnGetMappingId />
         <ParentRelationshipPropertyName>SalesOrder</ParentRelationshipPropertyName>
-        <ChildRelationshipPropertyName>Product,UnitOfMeasure</ChildRelationshipPropertyName>
+        <ChildRelationshipPropertyName>Product</ChildRelationshipPropertyName>
         <OnDataChange>function (entity, attribute, oldValue, newValue) {
     if (oldValue === newValue) {
         return;
     }
     if (attribute === 'Discount') {
-		if (entity.Price == 0) {
-			entity.Discount = 0;
-		 	Sage.UI.Dialogs.showError(error_ZeroBasePrice);
-		} else {
-		 	entity.CalculatedPrice = entity.Price - (entity.Price * entity.Discount);
-		}
+        entity.CalculatedPrice = entity.Price - (entity.Price * entity.Discount);
     } else if (attribute === 'CalculatedPrice') {
-		if (entity.Price == 0) {
-            entity.Discount = 0;
-        } else {
-            entity.Discount = 1 - entity.CalculatedPrice / entity.Price;
+        var calculated = 0;
+        if (entity.Price &gt; 0) {
+            calculated = (entity.Price - entity.CalculatedPrice) / entity.Price;
         }
+        entity.Discount = Math.round(calculated * 10000) / 10000;
     }
-    if ((attribute === 'Discount') || (attribute === 'CalculatedPrice') || (attribute === 'Quantity')) {
-        entity.ExtendedPrice = entity.CalculatedPrice * entity.Quantity;
+    if ((attribute === 'Discount') || (attribute === 'CalculatedPrice')) {
+        //entity.ExtendedPrice = entity.CalculatedPrice * entity.Quantity;
+        entity.ExtendedPrice = (entity.Price - (entity.Price * entity.Discount)) * entity.Quantity;        
     }
+	// ssommerfeldt Removed the need to reduce Quantity
+    //if (attribute === 'Quantity') {
+    //	if (newValue &gt; entity.Product.QtyAvailable) {
+    //    	alert('Error: You cannot order more than the available: ' + entity.Product.QtyAvailable + ' of the item: ' + entity.ActualID);
+    //            entity.Quantity = oldValue;
+    //    } else {
+    //            entity.ExtendedPrice = (entity.Price - (entity.Price * entity.Discount)) * entity.Quantity; 
+    //    }
+    // }
     if (attribute === 'Program') {
         if (!entity.Product || typeof entity.Product.$key === 'undefined') {
             /* Custom product (FreeText). */
             entity.Program = null;
             return;
         }
-        var sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/productPrograms?select=Price&amp;where=Product.Id eq '${0}' and Program eq '${1}'&amp;format=json",
-        [entity.Product.$key, escape(newValue)]);
-        dojo.xhrGet({
-            cache: false,
-            preventCache: true,
-            handleAs: 'json',
+        var sUrl = String.format("slxdata.ashx/slx/dynamic/-/productPrograms?select=Price&amp;where=Product.Id eq '{0}' and Program eq '{1}'&amp;format=json&amp;_t={2}",
+                    entity.Product.$key, newValue, new Date().getTime().toString());
+        $.ajax({
+            type: "GET",
+            async: false,
+            contentType: "application/json",
             url: sUrl,
-			sync: true,
-            load: function (programPrice) {
+            dataType: 'json',
+            success: function (programPrice) {
                 if (programPrice.$resources != null &amp;&amp; programPrice.$resources.length == 1) {
                     entity.Price = programPrice.$resources[0].Price;
                     entity.CalculatedPrice = entity.Price - (entity.Price * entity.Discount);
@@ -649,59 +659,27 @@ if (salesOrder != null)
             },
             data: {},
             error: function (request, status, error) {
-                var sError = dojo.string.substitute("There was an error opening ${0}. StatusText: ${1}; StatusCode: ${2}.", [sUrl, request.statusText, request.status]);
+                var sError = String.format("There was an error opening {0}. StatusText: {1}; StatusCode: {2}.", sUrl, request.statusText, request.status);
                 if (dojo.isString(request.responseText)) {
                     if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
                         var oSDataError = dojo.fromJson(request.responseText);
                         if (dojo.isArray(oSDataError)) {
-                            sError = dojo.string.substitute("There was an error opening ${0}. Severity: ${1}; SDataCode: ${2}; Message: ${3}; ApplicationCode: ${4}; StatusText: ${5}; StatusCode: ${6}.",
-                            [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
+                            sError = String.format("There was an error opening {0}. Severity: {1}; SDataCode: {2}; Message: {3}; ApplicationCode: {4}; StatusText: {5}; StatusCode: {6}.",
+                                        sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status);
                         }
                     }
                 }
-                Sage.UI.Dialogs.showError(sError);
+                Ext.Msg.show({
+                    title: "Sage SalesLogix",
+                    msg: sError,
+                    buttons: Ext.Msg.OK,
+                    icon: Ext.MessageBox.ERROR
+                });
             }
         })
     }
-    if (attribute === 'UnitOfMeasure') {
-        if (!isIntegrationContractEnabled()) return;
-        if (!entity.Product) return;
-        var sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/slxPrices?select=Price,Currency&amp;where=UnitOfMeasure.Id eq '${0}' and AppId eq '${1}' and Product.Id eq '${2}' and SlxPriceList.Id eq '${3}' and ActiveFlag = true&amp;format=json&amp;_t=${4}",
-            [newValue.$key, entity.SalesOrder.OperatingCompany.$key, entity.Product.$key, entity.SalesOrder.SlxPriceList.$key, (new Date().getTime().toString())]);
-        dojo.xhrGet({
-            cache: false,
-            preventCache: true,
-            handleAs: 'json',
-            url: sUrl,
-            load: function (slxPrice) {
-                if (slxPrice.$resources != null &amp;&amp; slxPrice.$resources.length == 1) {
-                    entity.Price = slxPrice.$resources[0].Price;
-                    entity.CalculatedPrice = entity.Price - (entity.Price * entity.Discount);
-                    entity.ExtendedPrice = entity.CalculatedPrice * entity.Quantity;
-                }
-                else {
-                    entity.Price = 0;
-                    entity.CalculatedPrice = 0;
-                    entity.ExtendedPrice = 0;
-                }
-				grid.update();
-            },
-            data: {},
-            error: function (request, status, error) {
-                var sError = dojo.string.substitute("There was an error opening ${0}. StatusText: ${1}; StatusCode: ${2}.", [sUrl, request.statusText, request.status]);
-                if (dojo.isString(request.responseText)) {
-                    if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
-                        var oSDataError = dojo.fromJson(request.responseText);
-                        if (dojo.isArray(oSDataError)) {
-                            sError = dojo.string.substitute("There was an error opening ${0}. Severity: ${1}; SDataCode: ${2}; Message: ${3}; ApplicationCode: ${4}; StatusText: ${5}; StatusCode: ${6}.",
-                    [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
-                        }
-                    }
-                }
-                Sage.UI.Dialogs.showError(sError);
-            }
-        })
-    }
+    
+      
 }</OnDataChange>
         <OnAdd />
         <Tools>
@@ -711,603 +689,60 @@ if (salesOrder != null)
             <DisplayInInsert>false</DisplayInInsert>
             <MergePosition>Default</MergePosition>
             <MergeControlId />
-            <OnClick>function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack('MainContent', ''); } }</OnClick>
+            <OnClick>function () {
+            try {
+                if (Sage.Utility.getModeId() !== 'insert') {
+                    __doPostBack('MainContent', '');
+                }
+            } catch (err) {
+                alert(err.Message);
+            }
+        }</OnClick>
             <StyleScheme />
             <AppliedSecurity />
           </SDataGridSaveTool>
-          <SDataGridAddRelationTool>
-            <Name>Relate</Name>
-            <Image />
-            <DisplayInInsert>true</DisplayInInsert>
-            <MergePosition>Default</MergePosition>
-            <MergeControlId />
-            <OnClick>//default add relationship behavior</OnClick>
-            <StyleScheme />
-            <AppliedSecurity />
-            <LookupButton>
-              <Column>0</Column>
-              <Row>0</Row>
-              <HotKey>0</HotKey>
-              <TabIndex>0</TabIndex>
-              <ControlId>luProduct</ControlId>
-              <DataBindings />
-              <ControlLabelPlacement>left</ControlLabelPlacement>
-              <ExtendedProperties />
-              <CaptionAlignment>left</CaptionAlignment>
-              <StyleScheme />
-              <OnChangeAction>
-                <ResourceKey>db915983-f6ce-4e4f-99a0-a1a332a6b7cd</ResourceKey>
-                <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-                  <NoActionActionItem>
-                    <MethodName />
-                  </NoActionActionItem>
-                </Action>
-                <IsDialogCloseAction>False</IsDialogCloseAction>
-                <RunOnEveryRePaint>False</RunOnEveryRePaint>
-                <DialogActionResult>NoResult</DialogActionResult>
-                <PerformsUpdate>False</PerformsUpdate>
-                <AppliedSecurity />
-                <RefreshData>False</RefreshData>
-              </OnChangeAction>
-              <Required>false</Required>
-              <LookupImage>[Localization!Global_Images:add_products_16x16]</LookupImage>
-              <LookupDialogWidth xsi:nil="true" />
-              <LookupDialogHeight xsi:nil="true" />
-              <LookupDisplayMode>ButtonOnly</LookupDisplayMode>
-              <LookupBindingMode>Object</LookupBindingMode>
-              <LookupResultValue xsi:type="xsd:string" />
-              <AddEmptyListItem>false</AddEmptyListItem>
-              <AllowClearingResult>false</AllowClearingResult>
-              <AppendStringValues>false</AppendStringValues>
-              <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
-              <LookupEntityName>Product</LookupEntityName>
-              <LookupEntityTypeName>Sage.Entity.Interfaces.IProduct, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
-              <AutoPostBack>false</AutoPostBack>
-              <EnableHyperLinking>false</EnableHyperLinking>
-              <InitializeLookup>false</InitializeLookup>
-              <LookupProperties>
-                <LookupProperty>
-                  <PropertyName>Name</PropertyName>
-                  <PropertyType>System.String</PropertyType>
-                  <PropertyHeader>Name</PropertyHeader>
-                  <PropertyFormat>None</PropertyFormat>
-                  <PropertyFormatString />
-                  <UseAsResult>true</UseAsResult>
-                  <ExcludeFromFilters>false</ExcludeFromFilters>
-                  <IsSortable>true</IsSortable>
-                  <HideCondition />
-                </LookupProperty>
-                <LookupProperty>
-                  <PropertyName>Family</PropertyName>
-                  <PropertyType>System.String</PropertyType>
-                  <PropertyHeader>Family</PropertyHeader>
-                  <PropertyFormat>None</PropertyFormat>
-                  <PropertyFormatString />
-                  <UseAsResult>true</UseAsResult>
-                  <ExcludeFromFilters>false</ExcludeFromFilters>
-                  <IsSortable>true</IsSortable>
-                  <HideCondition />
-                </LookupProperty>
-                <LookupProperty>
-                  <PropertyName>Status</PropertyName>
-                  <PropertyType>System.String</PropertyType>
-                  <PropertyHeader>Status</PropertyHeader>
-                  <PropertyFormat>None</PropertyFormat>
-                  <PropertyFormatString />
-                  <UseAsResult>true</UseAsResult>
-                  <ExcludeFromFilters>false</ExcludeFromFilters>
-                  <IsSortable>true</IsSortable>
-                  <HideCondition />
-                </LookupProperty>
-                <LookupProperty>
-                  <PropertyName>ActualId</PropertyName>
-                  <PropertyType>System.String</PropertyType>
-                  <PropertyHeader>SKU</PropertyHeader>
-                  <PropertyFormat>None</PropertyFormat>
-                  <PropertyFormatString />
-                  <UseAsResult>true</UseAsResult>
-                  <ExcludeFromFilters>false</ExcludeFromFilters>
-                  <IsSortable>true</IsSortable>
-                  <HideCondition />
-                </LookupProperty>
-              </LookupProperties>
-              <LookupPreFilters />
-              <LookupSelectionMode>Multi</LookupSelectionMode>
-              <OnSelection>function (items) {
-      if (!items.length) return;
-      dojo.require('Sage.UI.Dialogs');
-      var undefinedAccountingSystem = "Products cannot be added to the Sales Order because the Accounting System or Price List is undefined. Please close this message and the Add Product lookup to return to the main window.";
-            var grid = dijit.byId('SalesOrderProductsgrdItems');
-            if (grid &amp;&amp; grid.store) {
-                var recordCount = grid.rowCount;
-                var iCurrentCount = 0;
-                var iTotalCount = 0;
-                var oService = Sage.Services.getService("IntegrationContractService");
-                var bIsICEnabled = (typeof oService !== "undefined" &amp;&amp; oService != null &amp;&amp; oService.isIntegrationEnabled);
-                var sAppId = "";
-                if (bIsICEnabled) {
-                    var sOperatingCompanyId = "";
-                    var sPriceListId = "";
-                    var clientContextService = Sage.Services.getService("ClientContextService");
-                    if (clientContextService != null &amp;&amp; typeof clientContextService !== "undefined") {
-                        if (clientContextService.containsKey("OperatingCompany")) {
-                            sOperatingCompanyId = clientContextService.getValue("OperatingCompany");
-                            if (dojo.isString(sOperatingCompanyId) &amp;&amp; String(sOperatingCompanyId).length == 12) {
-                                sAppId = sOperatingCompanyId;
-                            }
-                        }
-                        if (clientContextService.containsKey("SlxPriceList")) {
-                            var sValue = clientContextService.getValue("SlxPriceList");
-                            if (dojo.isString(sValue) &amp;&amp; String(sValue).length == 12) {
-                                sPriceListId = sValue;
-                            }
-                        }
-                    }
-                    if (sAppId === "" || sPriceListId === "") {
-                        Sage.UI.Dialogs.showError(undefinedAccountingSystem);
-                        return;
-                    }
-                }
-                var arrItems = [];
-                grid.store.newItem({ onComplete: function (soItem) {
-                    var addProduct = function (prod, refresh, quantity) {
-                        var sSelect = "select=Id,ActualId,CommodityType,Description,Family,Name,";
-                        sSelect += (bIsICEnabled) ? "UnitOfMeasure/Id,UnitOfMeasure/Name,Prices/Price,Prices/Currency,Prices/UnitOfMeasure,Prices/SlxPriceList,Prices/SlxPriceList.Id" : "ProductProgram/Program,ProductProgram/Price,ProductProgram/DefaultProgram";
-                        var sWhere = dojo.string.substitute("where=Id eq '${0}'", [prod.$key]);
-                        sWhere += (bIsICEnabled) ? dojo.string.substitute(" and UnitOfMeasure eq Prices.UnitOfMeasure and Prices.SlxPriceList.Id eq '${0}' and Prices.AppId eq '${1}' and Prices.ActiveFlag = true", [sPriceListId, sAppId]) : "";
-                        var sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/products?${0}&amp;${1}&amp;format=json&amp;_t=${2}",
-                                        [sSelect, sWhere, (new Date().getTime().toString())]);
-                        $.ajax({
-                            type: "GET",
-                            contentType: "application/json",
-                            url: sUrl,
-                            dataType: 'json',
-                            success: function (prodResponse) {
-                                var bIsICEnabled = isIntegrationContractEnabled();
-                                if (prodResponse.$resources == null || prodResponse.$resources.length == 0) {
-                                    if (bIsICEnabled) {
-                                        /* Check without using an SlxPriceList.Id. */
-                                        sSelect = "select=Id,ActualId,CommodityType,Description,Family,Name,";
-                                        sSelect += "UnitOfMeasure/Id,UnitOfMeasure/Name,Prices/Price,Prices/Currency,Prices/UnitOfMeasure";
-                                        sWhere = dojo.string.substitute("where=Id eq '${0}'", [prod.$key]);
-                                        sWhere += dojo.string.substitute(" and UnitOfMeasure eq Prices.UnitOfMeasure and Prices.AppId eq '${0}' and Prices.ActiveFlag = true", [sAppId]);
-                                        sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/products?${0}&amp;${1}&amp;format=json&amp;_t=${2}",
-                                            [sSelect, sWhere, (new Date().getTime().toString())]);
-                                        $.ajax({
-                                            type: "GET",
-                                            async: false,
-                                            contentType: "application/json",
-                                            url: sUrl,
-                                            dataType: 'json',
-                                            success: function (prodResponse) {
-                                                if (prodResponse.$resources == null || prodResponse.$resources.length == 0) {
-                                                    var newEntity = {};
-                                                    var product = prod;
-                                                    //Insert mode check
-                                                    if (Sage.Utility.getModeId() === 'insert') {
-                                                        product.$cacheID = new Date().getTime();
-                                                    }
-                                                    else {
-                                                        soItem.SalesOrder = { $key: Sage.Utility.getCurrentEntityId() };
-                                                    }
-                                                    soItem.Product = {};
-                                                    delete product.index;
-                                                    Sage.Utility.extend(soItem.Product, product);
-                                                    soItem.Product.Family = product.Family;
-                                                    soItem.ActualId = product.ActualId;
-                                                    soItem.CommodityType = product.CommodityType;
-                                                    soItem.Discount = 0;
-                                                    soItem.Family = product.Family;
-                                                    soItem.ProductName = product.Name;
-                                                    soItem.Quantity = quantity;
-                                                    soItem.LineNumber = recordCount += 1;
-                                                    if (bIsICEnabled) {
-                                                        product.Price = 0; // Required because of Sage.Utility.extend().
-                                                        soItem.Price = 0;
-                                                        soItem.ExtendedPrice = 0;
-                                                        soItem.CalculatedPrice = 0;
-                                                    }
-                                                    else {
-                                                        soItem.Price = product.Price;
-                                                        soItem.ExtendedPrice = product.Price;
-                                                        soItem.CalculatedPrice = product.Price;
-                                                    }
-                                                    delete product.$key;
-                                                    delete product.$name;
-                                                    delete product.$url;
-                                                    Sage.Utility.extend(true, newEntity, soItem, product);
-                                                    arrItems.push(newEntity);
-                                                    iCurrentCount++;
-                                                    if (iCurrentCount === iTotalCount) {
-                                                        grid.createItems(arrItems, function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); } });
-                                                    }
-                                                }
-                                                else {
-                                                    if (prodResponse.$resources != null &amp;&amp; prodResponse.$resources.length &gt; 0) {
-                                                        for (var x = 0; x &lt; prodResponse.$resources.length; x++) {
-                                                            var newEntity = {};
-                                                            var product = prodResponse.$resources[x];
-                                                            //Insert mode check
-                                                            if (Sage.Utility.getModeId() === 'insert') {
-                                                                product.$cacheID = new Date().getTime();
-                                                            }
-                                                            else {
-                                                                soItem.SalesOrder = { $key: Sage.Utility.getCurrentEntityId() };
-                                                            }
-                                                            soItem.Product = {};
-                                                            delete product.index;
-                                                            Sage.Utility.extend(soItem.Product, product);
-                                                            soItem.ActualId = product.ActualId;
-                                                            soItem.CommodityType = product.CommodityType;
-                                                            soItem.Discount = 0;
-                                                            soItem.Family = product.Family;
-                                                            soItem.ProductName = product.Name;
-                                                            soItem.Quantity = quantity;
-                                                            soItem.LineNumber = recordCount += 1;
-                                                            var price = 0;
-                                                            soItem.UnitOfMeasure = product.UnitOfMeasure;
-                                                            product.Price = 0; // Required because of Sage.Utility.extend().
-                                                            soItem.Price = 0;
-                                                            soItem.ExtendedPrice = 0;
-                                                            soItem.CalculatedPrice = 0;
-                                                            soItem.Program = null;
-                                                            if (prodResponse.$resources[x].Prices != null &amp;&amp;
-                                                            prodResponse.$resources[x].Prices.$resources != null &amp;&amp;
-                                                            prodResponse.$resources[x].Prices.$resources.length &gt; 0) {
-                                                                for (var j = 0; j &lt; prodResponse.$resources[x].Prices.$resources.length; j++) {
-                                                                    if (prodResponse.$resources[x].Prices.$resources[j].UnitOfMeasure.$key === product.UnitOfMeasure.$key) {
-                                                                        if (prodResponse.$resources[x].Prices.$resources[j].Price != null) {
-                                                                            price = prodResponse.$resources[x].Prices.$resources[j].Price;
-                                                                        }
-                                                                        product.Price = price; // Required because of Sage.Utility.extend().
-                                                                        soItem.Price = price;
-                                                                        soItem.ExtendedPrice = price;
-                                                                        soItem.CalculatedPrice = price;
-                                                                        break;
-                                                                    }
-                                                                }
-                                                            }
-                                                            delete product.$key;
-                                                            delete product.$name;
-                                                            delete product.$url;
-                                                            Sage.Utility.extend(true, newEntity, soItem, product);
-                                                            arrItems.push(newEntity);
-                                                            iCurrentCount++;
-                                                            if (iCurrentCount === iTotalCount) {
-                                                                grid.createItems(arrItems, function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); } });
-                                                            }
-                                                        }
-                                                    }
-                                                    else {
-                                                        iTotalCount--;
-                                                        if (iCurrentCount === iTotalCount) {
-                                                            grid.createItems(arrItems, function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); } });
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            data: {},
-                                            error: function (request, status, error) {
-                                                if (iTotalCount &gt; 0) {
-                                                    iTotalCount--;
-                                                }
-                                                var sError = dojo.string.substitute("There was an error opening ${0}. StatusText: ${1}; StatusCode: ${2}.", [sUrl, request.statusText, request.status]);
-                                                if (dojo.isString(request.responseText)) {
-                                                    if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
-                                                        var oSDataError = dojo.fromJson(request.responseText);
-                                                        if (dojo.isArray(oSDataError)) {
-                                                            sError = dojo.string.substitute("There was an error opening ${0}. Severity: ${1}; SDataCode: ${2}; Message: ${3}; ApplicationCode: {4}; StatusText: ${5}; StatusCode: ${6}.",
-                                        [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
-                                                        }
-                                                    }
-                                                }
-                                                Sage.UI.Dialogs.showError(sError);
-                                            }
-                                        })
-                                    }
-                                    else {
-                                        var newEntity = {};
-                                        var product = prod;
-                                        //Insert mode check
-                                        if (Sage.Utility.getModeId() === 'insert') {
-                                            product.$cacheID = new Date().getTime();
-                                        }
-                                        else {
-                                            soItem.SalesOrder = { $key: Sage.Utility.getCurrentEntityId() };
-                                        }
-                                        soItem.Product = {};
-                                        delete product.index;
-                                        Sage.Utility.extend(soItem.Product, product);
-                                        soItem.Product.Family = product.Family;
-                                        soItem.ActualId = product.ActualId;
-                                        soItem.CommodityType = product.CommodityType;
-                                        soItem.Discount = 0;
-                                        soItem.Family = product.Family;
-                                        soItem.ProductName = product.Name;
-                                        soItem.Quantity = quantity;
-                                        soItem.LineNumber = recordCount += 1;
-                                        if (bIsICEnabled) {
-                                            product.Price = 0; // Required because of Sage.Utility.extend().
-                                            soItem.Price = 0;
-                                            soItem.ExtendedPrice = 0;
-                                            soItem.CalculatedPrice = 0;
-                                        }
-                                        else {
-                                            soItem.Price = product.Price;
-                                            soItem.ExtendedPrice = product.Price;
-                                            soItem.CalculatedPrice = product.Price;
-                                        }
-                                        delete product.$key;
-                                        delete product.$name;
-                                        delete product.$url;
-                                        Sage.Utility.extend(true, newEntity, soItem, product);
-                                        arrItems.push(newEntity);
-                                        iCurrentCount++;
-                                        if (iCurrentCount === iTotalCount) {
-                                            grid.createItems(arrItems, function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); } });
-                                        }
-                                    }
-                                }
-                                else {
-                                    if (prodResponse.$resources != null &amp;&amp; prodResponse.$resources.length &gt; 0) {
-                                        for (var x = 0; x &lt; prodResponse.$resources.length; x++) {
-                                            var newEntity = {};
-                                            var product = prodResponse.$resources[x];
-                                            //Insert mode check
-                                            if (Sage.Utility.getModeId() === 'insert') {
-                                                product.$cacheID = new Date().getTime();
-                                            }
-                                            else {
-                                                soItem.SalesOrder = { $key: Sage.Utility.getCurrentEntityId() };
-                                            }
-                                            soItem.Product = {};
-                                            delete product.index;
-                                            Sage.Utility.extend(soItem.Product, product);
-                                            soItem.ActualId = product.ActualId;
-                                            soItem.CommodityType = product.CommodityType;
-                                            soItem.Discount = 0;
-                                            soItem.Family = product.Family;
-                                            soItem.ProductName = product.Name;
-                                            soItem.Quantity = quantity;
-                                            soItem.LineNumber = recordCount += 1;
-                                            var price = 0;
-                                            if (bIsICEnabled) {
-                                                /* IC */
-                                                soItem.UnitOfMeasure = product.UnitOfMeasure;
-                                                product.Price = 0; // Required because of Sage.Utility.extend().
-                                                soItem.Price = 0;
-                                                soItem.ExtendedPrice = 0;
-                                                soItem.CalculatedPrice = 0;
-                                                soItem.Program = null;
-                                                if (prodResponse.$resources[x].Prices != null &amp;&amp;
-                                                            prodResponse.$resources[x].Prices.$resources != null &amp;&amp;
-                                                            prodResponse.$resources[x].Prices.$resources.length &gt; 0) {
-                                                    for (var j = 0; j &lt; prodResponse.$resources[x].Prices.$resources.length; j++) {
-                                                        if (prodResponse.$resources[x].Prices.$resources[j].UnitOfMeasure.$key === product.UnitOfMeasure.$key) {
-                                                            if (prodResponse.$resources[x].Prices.$resources[j].Price != null) {
-                                                                price = prodResponse.$resources[x].Prices.$resources[j].Price;
-                                                            }
-                                                            product.Price = price; // Required because of Sage.Utility.extend().
-                                                            soItem.Price = price;
-                                                            soItem.ExtendedPrice = price;
-                                                            soItem.CalculatedPrice = price;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            else {
-                                                /* NON-IC */
-                                                product.Price = 0; // Required because of Sage.Utility.extend().
-                                                soItem.UnitOfMeasure = null;
-                                                soItem.Price = 0;
-                                                soItem.ExtendedPrice = 0;
-                                                soItem.CalculatedPrice = 0;
-                                                soItem.Program = null;
-                                                if (prodResponse.$resources[x].ProductProgram != null &amp;&amp;
-                                                            prodResponse.$resources[x].ProductProgram.$resources != null &amp;&amp;
-                                                            prodResponse.$resources[x].ProductProgram.$resources.length &gt; 0) {
-                                                    for (var j = 0; j &lt; prodResponse.$resources[x].ProductProgram.$resources.length; j++) {
-                                                        /* Grab the price for the default program. */
-                                                        if (prodResponse.$resources[x].ProductProgram.$resources[j].DefaultProgram) {
-                                                            if (prodResponse.$resources[x].ProductProgram.$resources[j].Price != null) {
-                                                                price = prodResponse.$resources[x].ProductProgram.$resources[j].Price;
-                                                            }
-                                                            product.Price = price; // Required because of Sage.Utility.extend().
-                                                            soItem.Price = price;
-                                                            soItem.ExtendedPrice = price;
-                                                            soItem.CalculatedPrice = price;
-                                                            soItem.Program = prodResponse.$resources[x].ProductProgram.$resources[j].Program;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            delete product.$key;
-                                            delete product.$name;
-                                            delete product.$url;
-                                            Sage.Utility.extend(true, newEntity, soItem, product);
-                                            arrItems.push(newEntity);
-                                            iCurrentCount++;
-                                            if (iCurrentCount === iTotalCount) {
-                                                grid.createItems(arrItems, function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); } });
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        iTotalCount--;
-                                        if (iCurrentCount === iTotalCount) {
-                                            grid.createItems(arrItems, function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); } });
-                                        }
-                                    }
-                                }
-                            },
-                            data: {},
-                            error: function (request, status, error) {
-                                if (iTotalCount &gt; 0) {
-                                    iTotalCount--;
-                                }
-                                var sError = dojo.string.substitute("There was an error opening ${0}. StatusText: ${1}; StatusCode: ${2}.", [sUrl, request.statusText, request.status]);
-                                if (dojo.isString(request.responseText)) {
-                                    if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
-                                        var oSDataError = dojo.fromJson(request.responseText);
-                                        if (dojo.isArray(oSDataError)) {
-                                            sError = dojo.string.substitute("There was an error opening ${0}. Severity: ${1}; SDataCode: ${2}; Message: ${3}; ApplicationCode: ${4}; StatusText: ${5}; StatusCode: ${6}.",
-                                                            [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
-                                        }
-                                    }
-                                }
-                                Sage.UI.Dialogs.showError(sError);
-                            }
-                        })
-                    }
-                    var getTotalCount = function () {
-                        var iResult = 0;
-                        var i;
-                        for (i = 0; i &lt; items.length; i += 1) {
-                            var item = items[i];
-                            if (item.ProdPackageKitType === 'PKG') {
-                                for (var j = 0; j &lt; item.PackageKitChildViews.$resources.length; j++) {
-                                    iResult++;
-                                }
-                            } else {
-                                iResult++;
-                            }
-                        }
-                        return iResult;
-                    }
-                    iTotalCount = getTotalCount();
-                    var iCount = 0;
-                    var i;
-                    for (i = 0; i &lt; items.length; i += 1) {
-                        var quantity = 1;
-                        var item = items[i];
-                        if (item.ProdPackageKitType === 'PKG') {
-                            for (var j = 0; j &lt; item.PackageKitChildViews.$resources.length; j++) {
-                                var prod = item.PackageKitChildViews.$resources[j];
-                                prod.$key = item.PackageKitChildViews.$resources[j].ProductId;
-                                if (prod.Quantity != null) {
-                                    quantity = prod.Quantity;
-                                }
-                                iCount++;
-                                addProduct(prod, true, quantity);
-                            }
-                        } else {
-                            iCount++;
-                            addProduct(item, true, quantity);
-                        }
-                    }
-                }
-                });
-            }
-        }</OnSelection>
-              <AdditionalSelectFields>
-                <string>ProductId</string>
-                <string>ProdPackageKitType</string>
-                <string>CommodityType</string>
-                <string>Program</string>
-                <string>AppId</string>
-                <string>Quantity</string>
-                <string>ActiveFlag</string>
-              </AdditionalSelectFields>
-              <ChildEntity>PackageKitChildViews</ChildEntity>
-              <LookupResourceName>ProdPackageKitView</LookupResourceName>
-              <ConditionalWhere>function () {
-                var sCondition = '';
-                var showError = function (msg) {
-                    var msgService = Sage.Services.getService("WebClientMessageService");
-                    if (msgService != null &amp;&amp; typeof msgService !== "undefined") {
-                        msgService.showClientError(msg);
-                    }
-                    else {
-                        alert(msg);
-                    }
-                }
-                var service = Sage.Services.getService("IntegrationContractService");
-                if (service != null &amp;&amp; typeof service !== "undefined") {
-                    if (service.isIntegrationEnabled) {
-                        var bFoundOperatingCompany = false;
-                        var bFoundSlxPriceList = false;
-                        var clientContextService = Sage.Services.getService("ClientContextService");
-                        if (clientContextService != null &amp;&amp; typeof clientContextService !== "undefined") {
-                            if (clientContextService.containsKey("OperatingCompany")) {
-                                var sOperatingCompanyId = clientContextService.getValue("OperatingCompany");
-                                bFoundOperatingCompany = (dojo.isString(sOperatingCompanyId) &amp;&amp; String(sOperatingCompanyId).length == 12);
-                                if (bFoundOperatingCompany) {
-                                    sCondition = 'AppId eq "' + sOperatingCompanyId + '" ' + "And ActiveFlag eq true";
-                                }
-                            }
-                            var sError = "";
-                            if (!bFoundOperatingCompany) {
-                                sError = "The Operating Company could not be determined.";
-                                showError(sError);
-                                throw new Error(sError);
-                            }
-                        }
-                        else {
-                            sError = "The ClientContextService is unavailable.";
-                            showError(sError);
-                            throw new Error(sError);
-                        }
-                    }
-                }
-                return sCondition;
-            }
-</ConditionalWhere>
-              <ConditionalShow>function () {
-            var oResult = { result: true, reason: '' };
-            var service = Sage.Services.getService('IntegrationContractService');
-            if (service != null &amp;&amp; typeof service !== 'undefined') {
-                if (service.isIntegrationEnabled) {
-                    var bFoundOperatingCompany = false;
-                    var bFoundSlxPriceList = false;
-                    var clientContextService = Sage.Services.getService('ClientContextService');
-                    if (clientContextService != null &amp;&amp; typeof clientContextService !== 'undefined') {
-                        if (clientContextService.containsKey('OperatingCompany')) {
-                            var sOperatingCompanyId = clientContextService.getValue('OperatingCompany');
-                            bFoundOperatingCompany = (dojo.isString(sOperatingCompanyId) &amp;&amp; String(sOperatingCompanyId).length == 12);
-                        }
-                        if (clientContextService.containsKey('SlxPriceList')) {
-                            var sSlxPriceListId = clientContextService.getValue('SlxPriceList');
-                            bFoundSlxPriceList = (dojo.isString(sSlxPriceListId) &amp;&amp; String(sSlxPriceListId).length == 12);
-                        }
-                        if (!bFoundOperatingCompany || !bFoundSlxPriceList) {
-                            oResult.result = false;
-                            oResult.reason = 'Products cannot be added to the Sales Order because the Accounting System or Price List is undefined.';
-                        }
-                    }
-                    else {
-                        oResult.result = false;
-                        oResult.reason = 'The ClientContextService is unavailable.';
-                    }
-                }
-            }
-            return oResult;
-        }</ConditionalShow>
-            </LookupButton>
-          </SDataGridAddRelationTool>
-          <SDataGridDeleteTool>
-            <Name>Delete</Name>
-            <Image>[Localization!Global_Images:Delete_16x16]</Image>
-            <DisplayInInsert>true</DisplayInInsert>
-            <MergePosition>After</MergePosition>
-            <MergeControlId>btnRenumber</MergeControlId>
-            <OnClick>function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack('MainContent', ''); } }</OnClick>
-            <StyleScheme />
-            <AppliedSecurity />
-          </SDataGridDeleteTool>
           <SDataGridCancelTool>
             <Name>Cancel</Name>
             <Image>[Localization!Global_Images:Reset_16x16]</Image>
             <DisplayInInsert>false</DisplayInInsert>
-            <MergePosition>After</MergePosition>
-            <MergeControlId>btnRenumber</MergeControlId>
+            <MergePosition>Default</MergePosition>
+            <MergeControlId />
             <OnClick>//default Cancel behavior</OnClick>
             <StyleScheme />
             <AppliedSecurity />
           </SDataGridCancelTool>
+          <SDataGridDeleteTool>
+            <Name>Delete</Name>
+            <Image>[Localization!Global_Images:Delete_16x16]</Image>
+            <DisplayInInsert>false</DisplayInInsert>
+            <MergePosition>Default</MergePosition>
+            <MergeControlId />
+            <OnClick>function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack('MainContent', ''); } }</OnClick>
+            <StyleScheme />
+            <AppliedSecurity />
+          </SDataGridDeleteTool>
         </Tools>
       </QFSDataGrid>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls">
+      <QFDataSource>
+        <Column>0</Column>
+        <Row>1</Row>
+        <Visible>false</Visible>
+        <HotKey>48</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>dsSalesOrderItems</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <EntityTypeName>SalesOrderItem</EntityTypeName>
+        <GetByMethod />
+        <GetByProperty>SalesOrderItems</GetByProperty>
+        <UseSmartSelection>false</UseSmartSelection>
+        <DataOptional>false</DataOptional>
+      </QFDataSource>
     </Control>
   </Controls>
   <ToolControls>
@@ -1345,28 +780,54 @@ if (salesOrder != null)
         <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>btnAddCustomProduct</ControlId>
+        <ControlId>cmdAddProduct</ControlId>
         <DataBindings />
         <ControlLabelPlacement>none</ControlLabelPlacement>
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <ButtonType>Icon</ButtonType>
-        <Image>[Localization!Global_Images:add_custom_product_16x16]</Image>
+        <Image>[Localization!Global_Images:plus_16x16]</Image>
         <OnClientClick />
         <OnClickAction>
-          <ResourceKey>btnAddCustomProduct</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.CodeSnippetActionItem, Sage.Platform.QuickForms">
-            <CodeSnippetActionItem methodId="7d07e7b1-40e3-4f4b-860e-c3c20e506df3">
-              <MethodName>btnAddCustomProduct_ClickAction</MethodName>
-            </CodeSnippetActionItem>
+          <ResourceKey>cmdAddProduct</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName />
+              <CSharpCodeSnippet>    //Add Sales Products
+    Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
+    if (_entity != null) {
+        object _parent = GetParentEntity();
+        if (DialogService.ChildInsertInfo != null) {
+            if (_parent != null) {
+                if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+                    DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                }
+            }
+        }
+    }
+    
+    
+if (DialogService != null)
+{
+  // InsertChildDialogActionItem
+  DialogService.SetSpecs(400, 600, "AddSalesProducts", GetLocalResourceObject("35bcdfcb-61df-432f-a950-635223878c1b.DialogTitleOverride").ToString() );
+  DialogService.EntityType = typeof(Sage.Entity.Interfaces.ISalesOrderItem); 
+  DialogService.SetChildIsertInfo(
+    typeof(Sage.Entity.Interfaces.ISalesOrderItem),
+    typeof(Sage.Entity.Interfaces.ISalesOrder),
+    typeof(Sage.Entity.Interfaces.ISalesOrderItem).GetProperty("SalesOrder"),
+    typeof(Sage.Entity.Interfaces.ISalesOrder).GetProperty("SalesOrderItems"));
+  DialogService.ShowDialog();
+}</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>True</PerformsUpdate>
+          <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
-          <RefreshData>True</RefreshData>
+          <RefreshData>False</RefreshData>
         </OnClickAction>
       </QFButton>
     </Control>
@@ -1374,6 +835,7 @@ if (salesOrder != null)
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
+        <Visible>false</Visible>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>btnLockAll</ControlId>
@@ -1395,7 +857,7 @@ if (salesOrder != null)
               <PassResultsToNextAction>False</PassResultsToNextAction>
               <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
                 <RefreshDataAction>
-                  <MethodName>btnLockAll_ClickActionBRC</MethodName>
+                  <MethodName />
                 </RefreshDataAction>
               </OnComplete>
             </BusinessRuleActionItem>
@@ -1413,6 +875,7 @@ if (salesOrder != null)
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
+        <Visible>false</Visible>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>btnUnlockAll</ControlId>
@@ -1434,7 +897,7 @@ if (salesOrder != null)
               <PassResultsToNextAction>False</PassResultsToNextAction>
               <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
                 <RefreshDataAction>
-                  <MethodName>btnUnlockAll_ClickActionBRC</MethodName>
+                  <MethodName />
                 </RefreshDataAction>
               </OnComplete>
             </BusinessRuleActionItem>
@@ -1452,6 +915,8 @@ if (salesOrder != null)
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
+        <Enabled>false</Enabled>
+        <Visible>false</Visible>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>btnRenumber</ControlId>
@@ -1473,7 +938,7 @@ if (salesOrder != null)
               <PassResultsToNextAction>False</PassResultsToNextAction>
               <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
                 <RefreshDataAction>
-                  <MethodName>btnRenumber_ClickActionBRC</MethodName>
+                  <MethodName />
                 </RefreshDataAction>
               </OnComplete>
             </BusinessRuleActionItem>
@@ -1487,6 +952,38 @@ if (salesOrder != null)
         </OnClickAction>
       </QFButton>
     </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>btnAddCustomProduct</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>StandardButton</ButtonType>
+        <Image />
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>btnAddCustomProduct</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
   </ToolControls>
   <Columns>
     <ColumnStyle>
@@ -1495,6 +992,10 @@ if (salesOrder != null)
     </ColumnStyle>
   </Columns>
   <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>
       <Height>35</Height>

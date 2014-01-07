@@ -5,6 +5,7 @@ define([
     'dojo/_base/declare',
     'dojo/i18n!./nls/SchedulesListPanelConfig',
     'Sage/Utility/Jobs',
+    'Sage/MainView/ReportMgr/ReportManagerFormatter',
     'Sage/UI/Columns/DateTime',
     'dojo/_base/lang'
 ],
@@ -14,16 +15,17 @@ function (
     declare,
     nlsResources,
     jobUtility,
+    ReportManagerFormatter,
     slxDateTimeColumn,
     dojoLang
 ) {
     var schedulesListPanelConfig = declare('Sage.MainView.ReportMgr.SchedulesListPanelConfig', [baseListPanelConfig], {
         _listId: 'Schedules',
         _resourceKind: 'triggers',
+        _nlsResources: nlsResources,
         _contextMenu: 'ReportManagerListContextMenu',
         _currentListContextSubMenu: 'ReportSchedulesListContextMenu',
         constructor: function () {
-            dojoLang.mixin(this, nlsResources);
             //Get SData Service for Scheduling endpoint, set service for ExecutionsListPanelConfig
             var jobService = Sage.Services.getService('JobService');
             this._service = jobService.getSchedulingSDataService();
@@ -42,18 +44,20 @@ function (
         },
         _getStructure: function () {
             return [
-                { field: 'job', name: this.colJobName, width: '100px', formatter: jobUtility.formatJobDescription },
-                { field: '$descriptor', name: this.colNameDescription, width: '100px' },
-                { field: 'user', name: this.colNameRunAsUser, width: '100px', formatter: jobUtility.formatUser },
-                { field: 'startTimeUtc', type: slxDateTimeColumn, name: this.colNameStartTimeUtc, width: '100px' },
-                { field: 'endTimeUtc', type: slxDateTimeColumn, name: this.colNameEndTimeUtc, width: '100px' },
-                { field: 'priority', name: this.colNamePriority, width: '100px' },
-                { field: 'status', name: this.colNameStatus, width: '100px' },
-                { field: 'timesTriggered', name: this.colNameExecutionCount, width: '100px' }
+                { field: 'job', name: nlsResources.colJobName, width: '100px', formatter: jobUtility.formatJobDescription },
+                { field: '$descriptor', name: nlsResources.colNameDescription, width: '100px' },
+                { field: '_item', name: nlsResources.colNameTemplate, width: '100px', formatter: ReportManagerFormatter.formatTemplateName },
+                { field: 'user', name: nlsResources.colNameRunAsUser, width: '100px', formatter: jobUtility.formatUser },
+                { field: 'startTimeUtc', type: slxDateTimeColumn, name: nlsResources.colNameStartTimeUtc, width: '100px' },
+                { field: 'endTimeUtc', type: slxDateTimeColumn, name: nlsResources.colNameEndTimeUtc, width: '100px' },
+                { field: 'priority', name: nlsResources.colNamePriority, width: '100px' },
+                { field: 'status', name: nlsResources.colNameStatus, width: '100px' },
+                { field: 'timesTriggered', name: nlsResources.colNameExecutionCount, width: '100px' }
             ];
         },
         _getSelect: function () {
-            return ['$key', 'job', 'user', 'startTimeUtc', 'endTimeUtc', 'repeatCount', 'repeatInterval', 'priority', 'status', 'timesTriggered'];
+            //Needed to set an empty select clause, otherwise the parameters collection is empty. We need the parameters collection to show the template name.
+            return ""; //['$key', 'job', 'user', 'startTimeUtc', 'endTimeUtc', 'repeatCount', 'repeatInterval', 'priority', 'status', 'timesTriggered', 'parameters'];
         },
         _getInclude: function () {
             var includes = ['$descriptors,$key'];
@@ -63,7 +67,7 @@ function (
             return "jobId like 'Saleslogix.Reporting%'";
         },
         _getSort: function () {
-            var sort = [{ attribute: 'job'}];
+            var sort = [{ attribute: 'job' }];
             return sort;
         },
         _getSummaryListRequestConfig: function () {

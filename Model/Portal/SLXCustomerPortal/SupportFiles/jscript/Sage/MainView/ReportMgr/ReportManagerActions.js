@@ -88,11 +88,8 @@ function (
             if (!key) {
                 dialogs.showInfo(nlsResources.txtSelectRecord);
             } else {
-                var listView = dijit.byId('list');
-                var reportDisplayName = listView.get('list').selection.getFirstSelected().displayName;
                 var options = {
                     reportId: key,
-                    reportDisplayName: reportDisplayName,
                     reportOptions: {
                         wizardOptions: {},
                         scheduleOptions: {
@@ -111,11 +108,8 @@ function (
             if (!key) {
                 dialogs.showInfo(nlsResources.txtSelectRecord);
             } else {
-                var listView = dijit.byId('list');
-                var reportDisplayName = listView.get('list').selection.getFirstSelected().displayName;
                 var options = {
                     reportId: key,
-                    reportDisplayName: reportDisplayName,
                     reportOptions: {
                         wizardOptions: {},
                         scheduleOptions: {

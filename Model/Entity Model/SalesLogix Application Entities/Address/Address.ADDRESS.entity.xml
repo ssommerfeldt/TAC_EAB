@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9e78204b-7eab-4274-9137-34e5cd2c3433" lastModifiedUtc="2014-01-03T18:20:43.4200371Z" manageSchema="true" tableName="ADDRESS" name="Address" displayPropertyId="02300f74-6d7b-47c9-9fb6-c79f06b02032" isExtension="false" cacheUsage="ReadWrite" audited="true" onBeforeInsertMethodId="6345d9b5-c524-47f3-a5d0-0c3457950289" onAfterInsertMethodId="ec29daa2-649a-47c1-afc6-477d5a425a69" onBeforeUpdateMethodId="2610df13-011a-4427-b023-a0eeac300293" onAfterUpdateMethodId="fbc94cc8-5f1f-4eea-abeb-24374132b5ad" onBeforeDeleteMethodId="f6a0a597-78c9-40cb-ac44-b8ce2c0364ea" onAfterDeleteMethodId="f5189ed6-e39b-466c-b0de-1c89c0b1c824" onCreateId="65182945-5eba-44b0-965c-8dd2f6e4909b">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9e78204b-7eab-4274-9137-34e5cd2c3433" lastModifiedUtc="2013-12-20T15:38:35.8706752Z" manageSchema="true" tableName="ADDRESS" name="Address" displayPropertyId="02300f74-6d7b-47c9-9fb6-c79f06b02032" isExtension="false" cacheUsage="ReadWrite" audited="true" onBeforeInsertMethodId="6345d9b5-c524-47f3-a5d0-0c3457950289" onAfterInsertMethodId="ec29daa2-649a-47c1-afc6-477d5a425a69" onBeforeUpdateMethodId="2610df13-011a-4427-b023-a0eeac300293" onAfterUpdateMethodId="fbc94cc8-5f1f-4eea-abeb-24374132b5ad" onBeforeDeleteMethodId="f6a0a597-78c9-40cb-ac44-b8ce2c0364ea" onAfterDeleteMethodId="f5189ed6-e39b-466c-b0de-1c89c0b1c824" onCreateId="65182945-5eba-44b0-965c-8dd2f6e4909b">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
@@ -480,7 +480,7 @@
         </TextDataType>
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="048642e7-8fd3-4d4c-bbcb-01b26a64a748" lastModifiedUtc="2014-01-03T18:20:43.4200371Z" name="MASAddrKey" audited="false" columnName="MASADDRKEY" maxLength="0" precision="10" scale="0" ordinal="28" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="048642e7-8fd3-4d4c-bbcb-01b26a64a748" lastModifiedUtc="2013-12-20T15:38:35.8706752Z" name="MASAddrKey" audited="false" columnName="MASADDRKEY" maxLength="0" precision="10" scale="0" ordinal="28" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
