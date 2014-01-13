@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="43504e4d-2fa1-4cb5-b747-1c62d1ae24f0" lastModifiedUtc="2014-01-03T18:21:06.8413767Z" manageSchema="true" tableName="vProductPriceSheet" name="Vproductpricesheet" isExtension="false" audited="false" onBeforeInsertMethodId="71d0c846-7a2c-42f5-90bb-cd4df24c73cf" onAfterInsertMethodId="e8f41daf-65bb-4071-94f7-99603d252179" onBeforeUpdateMethodId="f3c72ec8-e51a-4937-afa1-5f7c2fa493ac" onAfterUpdateMethodId="74a66a25-1cac-4f90-aaa6-d5758898b30c" onBeforeDeleteMethodId="f8e8624f-88f6-47dd-bdf6-838d18de1761" onAfterDeleteMethodId="d7cfad33-10fd-494c-a649-9fde10f8f71a" onCreateId="84a40ad3-d293-4650-a231-bb41ab0a499f">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="43504e4d-2fa1-4cb5-b747-1c62d1ae24f0" lastModifiedUtc="2013-12-20T15:40:03.6737548Z" manageSchema="true" tableName="vProductPriceSheet" name="Vproductpricesheet" isExtension="false" audited="false" onBeforeInsertMethodId="71d0c846-7a2c-42f5-90bb-cd4df24c73cf" onAfterInsertMethodId="e8f41daf-65bb-4071-94f7-99603d252179" onBeforeUpdateMethodId="f3c72ec8-e51a-4937-afa1-5f7c2fa493ac" onAfterUpdateMethodId="74a66a25-1cac-4f90-aaa6-d5758898b30c" onBeforeDeleteMethodId="f8e8624f-88f6-47dd-bdf6-838d18de1761" onAfterDeleteMethodId="d7cfad33-10fd-494c-a649-9fde10f8f71a" onCreateId="84a40ad3-d293-4650-a231-bb41ab0a499f">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
@@ -17,7 +17,7 @@
     <keyReference id="be041286-166d-4e8e-aad9-1157935c9732" ordinalPosition="1" />
   </keyProperties>
   <properties>
-    <property xsi:type="OrmFieldProperty" id="be041286-166d-4e8e-aad9-1157935c9732" lastModifiedUtc="2014-01-03T18:21:06.8383765Z" name="Productid" audited="false" isNullable="false" columnName="PRODUCTID" maxLength="12" precision="0" scale="0" ordinal="0" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="be041286-166d-4e8e-aad9-1157935c9732" lastModifiedUtc="2013-12-20T15:40:03.6620104Z" name="Productid" audited="false" isNullable="false" columnName="PRODUCTID" maxLength="12" precision="0" scale="0" ordinal="0" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -29,7 +29,7 @@
         <StandardIdDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="5746b0da-3549-4278-a8bc-3a4d7b310f20" lastModifiedUtc="2014-01-03T18:21:06.8393766Z" name="Listprice" audited="false" columnName="LISTPRICE" maxLength="0" precision="17" scale="4" ordinal="1" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="5746b0da-3549-4278-a8bc-3a4d7b310f20" lastModifiedUtc="2013-12-20T15:40:03.6688613Z" name="Listprice" audited="false" columnName="LISTPRICE" maxLength="0" precision="17" scale="4" ordinal="1" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -44,7 +44,7 @@
         </DecimalDataType>
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="b3a252a5-c440-4f95-a5b8-2aa69dee202d" lastModifiedUtc="2014-01-03T18:21:06.8413767Z" name="Whsekey" audited="false" columnName="WHSEKEY" maxLength="0" precision="5" scale="0" ordinal="2" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="b3a252a5-c440-4f95-a5b8-2aa69dee202d" lastModifiedUtc="2013-12-20T15:40:03.6737548Z" name="Whsekey" audited="false" columnName="WHSEKEY" maxLength="0" precision="5" scale="0" ordinal="2" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">

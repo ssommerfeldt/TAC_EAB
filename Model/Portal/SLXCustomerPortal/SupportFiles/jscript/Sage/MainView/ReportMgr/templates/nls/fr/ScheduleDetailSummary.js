@@ -1,12 +1,11 @@
 define({
-    txtScheduleName_Caption: "Nom de l'emploi:",
+    txtScheduleName_Caption: "Job Name:",
     txtDescription_Caption: "Description :",
     txtRunAsUser_Caption: "Exécuter comme :",
-    txtScheduledBy_Caption: "Prévu par:",
+    txtScheduledBy_Caption: "Scheduled By:",
     txtOutputFormat_Caption: "Format de sortie :",
     txtFrequency_Caption: "Fréquence :",
     txtUser_Caption: "Auteur :",
     txtLastExecutionDate_Caption: "Dernière exécution :",
-    txtExecutionCount_Caption: "Nombre d'exécutions :",
-    txtReportName_Caption: "Rapport:"
+    txtExecutionCount_Caption: "Nombre d'exécutions :"
 });

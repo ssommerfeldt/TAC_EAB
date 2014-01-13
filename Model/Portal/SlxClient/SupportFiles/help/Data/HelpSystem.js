@@ -1,7 +1,7 @@
 CMCXmlParser._FilePathToXmlStringMap.Add(
 	'HelpSystem',
 	'<?xml version=\"1.0\" encoding=\"utf-8\"?>' +
-	'<WebHelpSystem DefaultUrl=\"Content/Common/slxoverview.htm\" Toc=\"Data/Toc.xml\" Index=\"Data/Index.xml\" Concepts=\"Data/Concepts.xml\" Glossary=\"Content/Glossary.htm\" SearchDatabase=\"Data/Search.xml\" Alias=\"Data/Alias.xml\" Synonyms=\"Data/Synonyms.xml\" Skin=\"Data/SkinWebHelp2/Skin.xml\" Skins=\"AOI,CustomerPortal,DesktopMgr,IC,Integrations,lntellisync,MailMerge,main,OutlookSync,PDF,QueryBuilder,SalesClient,SpeedSearchClient,WebHelp2\" BuildTime=\"12/17/2013 4:59:47 PM\" BuildVersion=\"8.1.1.0\" TargetType=\"WebHelp\" SkinTemplateFolder=\"Skin/\" InPreviewMode=\"false\" MoveOutputContentToRoot=\"false\" MakeFileLowerCase=\"false\" UseCustomTopicFileExtension=\"false\">' +
+	'<WebHelpSystem DefaultUrl=\"Content/Common/slxoverview.htm\" Toc=\"Data/Toc.xml\" Index=\"Data/Index.xml\" Concepts=\"Data/Concepts.xml\" Glossary=\"Content/Glossary.htm\" SearchDatabase=\"Data/Search.xml\" Alias=\"Data/Alias.xml\" Synonyms=\"Data/Synonyms.xml\" Skin=\"Data/SkinWebHelp2/Skin.xml\" Skins=\"AOI,CustomerPortal,DesktopMgr,IC,Integrations,lntellisync,MailMerge,main,OutlookSync,PDF,QueryBuilder,SalesClient,SpeedSearchClient,WebHelp2\" BuildTime=\"12/10/2013 5:22:26 PM\" BuildVersion=\"8.1.1.0\" TargetType=\"WebHelp\" SkinTemplateFolder=\"Skin/\" InPreviewMode=\"false\" MoveOutputContentToRoot=\"false\" MakeFileLowerCase=\"false\" UseCustomTopicFileExtension=\"false\">' +
 	'    <Subsystems>' +
 	'        <Url Source=\"Subsystems/WebClient11/WebClient11.mcwebhelp\" TocPath=\"Administration|Integrations|Accounting Integration\" />' +
 	'        <Url Source=\"Subsystems/WebClient6/WebClient6.mcwebhelp\" TocPath=\"Administration\" />' +

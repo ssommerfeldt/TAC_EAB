@@ -126,8 +126,8 @@
   <data name="luProduct.LookupProperties.AppId.PropertyHeader" xml:space="preserve">
     <value>ИД прилож.</value>
   </data>
-  <data name="grdItems.7f833917-f742-4ea5-99ac-79fd7e66af4a.ColumnHeading" xml:space="preserve">
-    <value> </value>
+  <data name="grdItems.28d57a8b-13ca-47c0-b41e-d969ed17dc28.ColumnHeading" xml:space="preserve">
+    <value>Догов. цена</value>
   </data>
   <data name="erpStatus_Rejected" xml:space="preserve">
     <value>Отвергнуто</value>
@@ -168,14 +168,11 @@
   <data name="grdItems.eae77157-0570-48d4-bd9a-d78df7b84496.ColumnHeading" xml:space="preserve">
     <value>Заблокирован</value>
   </data>
-  <data name="grdItems.96a895c5-dda4-4060-8386-ade5a720b091.Text" xml:space="preserve">
-    <value>Изменить</value>
+  <data name="btnRenumber.Caption" xml:space="preserve">
+    <value>Перенумеравать элементы</value>
   </data>
   <data name=".LookupProperties.Status.PropertyHeader" xml:space="preserve">
     <value>Статус</value>
-  </data>
-  <data name="grdItems.a8c6d9fd-1bde-4d02-b2a8-f56adc076935.ColumnHeading" xml:space="preserve">
-    <value> </value>
   </data>
   <data name="luProduct.LookupDialogTitle" xml:space="preserve">
     <value>Поиск продуктов</value>
@@ -185,9 +182,6 @@
   </data>
   <data name="grdItems.e1a69123-3261-4eac-b1cc-8ce21ff52c2e.Text" xml:space="preserve">
     <value>Изменить</value>
-  </data>
-  <data name="grdItems.eef3d53b-092f-4f1b-9429-22cfd8dd2bf4.ColumnHeading" xml:space="preserve">
-    <value>Единица</value>
   </data>
   <data name="luProduct.ToolTip" xml:space="preserve">
     <value>Добавить продукт</value>
@@ -204,20 +198,11 @@
   <data name="btnLockAll.ToolTip" xml:space="preserve">
     <value>Блокировать все элементы</value>
   </data>
-  <data name="grdItems.28d57a8b-13ca-47c0-b41e-d969ed17dc28.ColumnHeading" xml:space="preserve">
-    <value>Догов. цена</value>
-  </data>
   <data name="grdItems.b0fc2ecd-742c-4a7e-8012-afebc395c56e.Text" xml:space="preserve">
     <value>Изменить</value>
   </data>
-  <data name="btnRenumber.Caption" xml:space="preserve">
-    <value>Перенумеравать элементы</value>
-  </data>
   <data name="grdItems.Save.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
-  </data>
-  <data name="grdItems.96a895c5-dda4-4060-8386-ade5a720b091.ColumnHeading" xml:space="preserve">
-    <value> </value>
   </data>
   <data name="grdItems.983c7b9b-3c12-48e3-add2-73ff8cd065c2.ColumnHeading" xml:space="preserve">
     <value>Скидка</value>
@@ -309,8 +294,8 @@
   <data name="fa9f648f-24ba-4937-b26a-ec8ea9e558b6.DialogTitleOverride" xml:space="preserve">
     <value>Изменить Продукт</value>
   </data>
-  <data name="grdItems.5c4a57c9-4dd2-4c9d-9c37-be2ddc445878.ColumnHeading" xml:space="preserve">
-    <value>Цена</value>
+  <data name="grdItems.eef3d53b-092f-4f1b-9429-22cfd8dd2bf4.ColumnHeading" xml:space="preserve">
+    <value>Единица</value>
   </data>
   <data name="grdItems.e3166b21-f996-4454-83a8-addf72b5207e.ColumnHeading" xml:space="preserve">
     <value>Заблокирован</value>
@@ -318,8 +303,8 @@
   <data name="grdItems.96ea69f9-3c31-4071-bfef-541b5cd5bc50.ColumnHeading" xml:space="preserve">
     <value>Цена</value>
   </data>
-  <data name="grdItems.3160cbc2-c14d-4e58-94c9-5277e17b3951.ColumnHeading" xml:space="preserve">
-    <value> </value>
+  <data name="grdItems.96a895c5-dda4-4060-8386-ade5a720b091.Text" xml:space="preserve">
+    <value>Изменить</value>
   </data>
   <data name="btnUnlockAll.Caption" xml:space="preserve">
     <value>Разблокировать все элементы</value>
@@ -345,20 +330,20 @@
   <data name="luPackage.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Описание</value>
   </data>
+  <data name="error_ZeroBasePrice" xml:space="preserve">
+    <value>Невозможно добавить скидку на продукт, который не имеет базовой цены.</value>
+  </data>
   <data name="f90438ad-a72d-4613-97b7-51421c40a3ae.DialogTitleOverride" xml:space="preserve">
     <value>Изменить Продукт</value>
   </data>
   <data name="d9b07a4f-deb8-465c-a53f-3f30460cfa96.DialogTitleOverride" xml:space="preserve">
     <value>Изменить Продукт</value>
   </data>
-  <data name="error_ZeroBasePrice" xml:space="preserve">
-    <value>Невозможно добавить скидку на продукт, который не имеет базовой цены.</value>
+  <data name="grdItems.5c4a57c9-4dd2-4c9d-9c37-be2ddc445878.ColumnHeading" xml:space="preserve">
+    <value>Цена</value>
   </data>
   <data name="f842ee53-0b9f-43c7-858c-57afa8508f76.DialogTitleOverride" xml:space="preserve">
     <value>Изменить Продукт</value>
-  </data>
-  <data name="grdItems.e1a69123-3261-4eac-b1cc-8ce21ff52c2e.ColumnHeading" xml:space="preserve">
-    <value> </value>
   </data>
   <data name="btnUnlockAll.ToolTip" xml:space="preserve">
     <value>Разблокировать все элементы</value>

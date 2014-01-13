@@ -1035,17 +1035,17 @@ define("Sage/UI/Controls/nls/en/Name", (
 define('Sage/UI/Controls/nls/en-nz/Name',{});
 },
 'Sage/MainView/JobMgr/nls/en/ExecutionsListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/en/ExecutionsListPanelConfig", (
-{ loadingText: 'Loading...',
-  colNameJobName: 'Type',
-  colNameUser: 'User',
-  colNamePhase: 'Phase',
-  colNamePhaseDetail: 'Phase Detail',
-  colNameProgress: 'Progress',
-  colNameElapsed: 'Elapsed Time',
-  colNameStatus: 'Status',
-  colNameResult: 'Result' }
-));
+define("Sage/MainView/JobMgr/nls/en/ExecutionsListPanelConfig", {
+    loadingText: 'Loading...',
+    colNameJobName: 'Type',
+    colNameUser: 'User',
+    colNamePhase: 'Phase',
+    colNamePhaseDetail: 'Phase Detail',
+    colNameProgress: 'Progress',
+    colNameElapsed: 'Elapsed Time',
+    colNameStatus: 'Status',
+    colNameResult: 'Result'
+});
 },
 'Sage/MainView/JobMgr/nls/en-nz/ExecutionsListPanelConfig':function(){
 define('Sage/MainView/JobMgr/nls/en-nz/ExecutionsListPanelConfig',{});
@@ -1323,6 +1323,15 @@ define("Sage/TaskPane/nls/en/SecuredActionTasklet", (
 },
 'Sage/TaskPane/nls/en-nz/SecuredActionTasklet':function(){
 define('Sage/TaskPane/nls/en-nz/SecuredActionTasklet',{});
+},
+'Sage/Extensions/Activity/ActivityListCustomTabs/nls/en/SyncedListPanelConfig':function(){
+define("Sage/Extensions/Activity/ActivityListCustomTabs/nls/en/SyncedListPanelConfig", (
+{ colCreateSource: 'Create Source',
+  colLastSyncDate: 'Last Synced' }
+));
+},
+'Sage/Extensions/Activity/ActivityListCustomTabs/nls/en-nz/SyncedListPanelConfig':function(){
+define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/en-nz/SyncedListPanelConfig',{});
 },
 'Sage/UI/Dashboard/nls/en/DashboardTabController':function(){
 define("Sage/UI/Dashboard/nls/en/DashboardTabController", (
@@ -2090,17 +2099,17 @@ define("Sage/UI/nls/en/NotesHistoryList", (
 define('Sage/UI/nls/en-nz/NotesHistoryList',{});
 },
 'Sage/MainView/ReportMgr/nls/en/HistoryListPanelConfig':function(){
-define("Sage/MainView/ReportMgr/nls/en/HistoryListPanelConfig", (
-{ colNameDate: 'Date',
-  colNameScheduleName: 'Description',
-  colNameExecutionType: 'Execution Type',
-  colNameRunAs: 'Run As',
-  colNameScheduledBy: 'Scheduled By',
-  colNameReportName: 'Report',
-  colNameSize: 'File Size',
-  colNameOutputFormat: 'Output Format',
-  colNameReportType: 'Type' }
-));
+define("Sage/MainView/ReportMgr/nls/en/HistoryListPanelConfig", {
+    colNameDate: 'Date',
+    colNameScheduleName: 'Description',
+    colNameExecutionType: 'Execution Type',
+    colNameRunAs: 'Run As',
+    colNameScheduledBy: 'Scheduled By',
+    colNameReportName: 'Report',
+    colNameSize: 'File Size',
+    colNameOutputFormat: 'Output Format',
+    colNameReportType: 'Type'
+});
 },
 'Sage/MainView/ReportMgr/nls/en-nz/HistoryListPanelConfig':function(){
 define('Sage/MainView/ReportMgr/nls/en-nz/HistoryListPanelConfig',{});
@@ -2146,16 +2155,16 @@ define("Sage/MainView/ReportMgr/Common/nls/en/_WizardDialogBase", (
 define('Sage/MainView/ReportMgr/Common/nls/en-nz/_WizardDialogBase',{});
 },
 'Sage/MainView/JobMgr/nls/en/SchedulesListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/en/SchedulesListPanelConfig", (
-{ colNameTriggerName: 'Schedule',
-  colNameJobName: 'Job Name',
-  colNameUser: 'Scheduled By',
-  colNameStartTimeUtc: 'Start Time',
-  colNameEndTimeUtc: 'End Time',
-  colNamePriority: 'Priority',
-  colNameStatus: 'Status',
-  colNameTimesTriggered: 'Execution Count' }
-));
+define("Sage/MainView/JobMgr/nls/en/SchedulesListPanelConfig", {
+    colNameTriggerName: 'Schedule',
+    colNameJobName: 'Job Name',
+    colNameUser: 'Scheduled By',
+    colNameStartTimeUtc: 'Start Time',
+    colNameEndTimeUtc: 'End Time',
+    colNamePriority: 'Priority',
+    colNameStatus: 'Status',
+    colNameTimesTriggered: 'Execution Count'
+});
 },
 'Sage/MainView/JobMgr/nls/en-nz/SchedulesListPanelConfig':function(){
 define('Sage/MainView/JobMgr/nls/en-nz/SchedulesListPanelConfig',{});
@@ -2870,21 +2879,6 @@ define("Sage/MainView/SecurityMgr/nls/en/SecurityProfile", (
 'Sage/MainView/SecurityMgr/nls/en-nz/SecurityProfile':function(){
 define('Sage/MainView/SecurityMgr/nls/en-nz/SecurityProfile',{});
 },
-'Sage/MainView/ReportMgr/nls/en/ReportWizardController':function(){
-﻿define("Sage/MainView/ReportMgr/nls/en/ReportWizardController", {
-    txtLoadingScheduleDetails: 'Loading Schedule Details',
-    txtError: 'Error',
-    txtCannotDetermineReportId: 'Cannot determine report id.',
-    txtCannotDetermineReportNameOrFamily: 'Cannot determine report name or family.',
-    txtLoading: 'Loading ',
-    txtLoadingReport: 'Loading Report',
-    txtSorryAnErrorOccuredLoadingReport: 'Sorry, an error occured loading report: ${0} ${1}.'
-
-});
-},
-'Sage/MainView/ReportMgr/nls/en-nz/ReportWizardController':function(){
-define('Sage/MainView/ReportMgr/nls/en-nz/ReportWizardController',{});
-},
 'Sage/QuickForms/Design/Editors/nls/en/UserAdvancedPropertyEditor':function(){
 define("Sage/QuickForms/Design/Editors/nls/en/UserAdvancedPropertyEditor", (
 { titleText: 'Advanced',
@@ -3273,16 +3267,18 @@ define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/en-nz/LeadLookupConfig',{})
 },
 'Sage/MainView/ReportMgr/nls/en/SchedulesListPanelConfig':function(){
 define("Sage/MainView/ReportMgr/nls/en/SchedulesListPanelConfig", (
-{ colJobName: 'Job Name',
-  colNameDescription: 'Description',
-  colNameRunAsUser: 'Scheduled By',
-  colNameLastExecutionDate: 'Last Run',
-  colNameExecutionCount: 'Execution Count',
-  colNameStartTimeUtc: 'Start Time',
-  colNameEndTimeUtc: 'End Time',
-  colNamePriority: 'Priority',
-  colNameStatus: 'Status',
-  colNameTemplate: 'Template' }
+{
+    colJobName: 'Job Name',
+    colNameDescription: 'Description',
+    colNameRunAsUser: 'Scheduled By',
+    colNameLastExecutionDate: 'Last Run',
+    colNameExecutionCount: 'Execution Count',
+    colNameStartTimeUtc: 'Start Time',
+    colNameEndTimeUtc: 'End Time',
+    colNamePriority: 'Priority',
+    colNameStatus: 'Status',
+    colNameTemplate: 'Template'
+}
 ));
 },
 'Sage/MainView/ReportMgr/nls/en-nz/SchedulesListPanelConfig':function(){

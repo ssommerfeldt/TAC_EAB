@@ -4,7 +4,6 @@ define([
     'dojo/string',
     'dojo/json',
     'dojo/_base/array',
-    'dojo/i18n!./nls/ReportWizardController',
     'Sage/Reporting/Enumerations',
     'Sage/Utility',
     'Sage/MainView/ReportMgr/Crystal/CrystalReportWizardController'
@@ -14,7 +13,6 @@ function (
     dojoString,
     dojoJson,
     dojoArray,
-    nlsResources,
     Enumerations,
     Utility,
     CrystalReportWizardController
@@ -26,7 +24,6 @@ function (
         * @param {Object} options - Options for the function.
         * @param {string} options.reportId - The id of the report to be executed. Example: 'p6UJ9A0003V8'.
         * @param {string} options.triggerId - The id of the schedule to be edited. Example: 'fb66f331‐0a42‐4209‐a8b9‐d4acbce0da69'.
-        * @param {string} options.reportDisplayName - The display name of the report to be executed. Used for setting the title of the loading dialog. Example: 'Account Details'.
         * @param {Object} [options.reportOptions] - Report-specific options. These vary depending on the report type. See the corresponding wizard controller for more info.
         */
         startWizard: function (options) {
@@ -35,7 +32,7 @@ function (
             }
             if (options.reportId) {
                 //We are launching a new execution
-                this._getReportMetadata(options.reportId, options.reportOptions, options.reportDisplayName);
+                this._getReportMetadata(options.reportId, options.reportOptions);
             }
             else {
                 if (options.triggerId) {
@@ -54,7 +51,7 @@ function (
         */
         _getReportSchedule: function (triggerId) {
             var self = this;
-            this._showLoadingIndicator(nlsResources.txtLoadingScheduleDetails);
+            this._showLoadingIndicator('Loading Schedule Details'); //TODO: NLS
             var options = {
                 triggerId: triggerId,
                 success: function (entry) {
@@ -64,7 +61,7 @@ function (
                 failure: function (xhr) {
                     self._closeLoadingIndicator();
                     var errorMsg = self._getErrorMessage(xhr);
-                    Dialogs.showError(errorMsg, nlsResources.txtError);                                        
+                    Dialogs.showError(errorMsg, 'Error'); //TODO: NLS                                        
                 }
             };
             //var jobService = Sage.Services.getService('JobService');
@@ -139,19 +136,18 @@ function (
                     this._getReportMetadata(reportId, reportOptions);
                 }
                 else {
-                    Dialogs.showError(nlsResources.txtCannotDetermineReportId);
+                    Dialogs.showError('Cannot determine report id.'); //TODO: NLS
                 }
             } else {
-                Dialogs.showError(nlsResources.txtCannotDetermineReportNameOrFamily);
+                Dialogs.showError('Cannot determine report name or family.'); //TODO: NLS   
             }
         },
         /**
         * Async load of Report details.
         */
-        _getReportMetadata: function (reportId, reportOptions, reportDisplayName) {
+        _getReportMetadata: function (reportId, reportOptions) {
             var self = this;
-            var loadingIndicatorTitle = reportDisplayName ? nlsResources.txtLoading + reportDisplayName : nlsResources.txtLoadingReport;
-            this._showLoadingIndicator(loadingIndicatorTitle);
+            this._showLoadingIndicator('Loading Report'); //TODO: NLS
             var options = {
                 reportId: reportId,
                 success: function (entry) {
@@ -160,7 +156,7 @@ function (
                 failure: function (xhr) {
                     self._closeLoadingIndicator();
                     var errorMsg = self._getErrorMessage(xhr);
-                    Dialogs.showError(errorMsg, nlsResources.txtError);                                     
+                    Dialogs.showError(errorMsg, 'Error'); //TODO: NLS                                        
                 }
             };
             var reportingService = Sage.Services.getService('ReportingService');
@@ -169,7 +165,7 @@ function (
         _getErrorMessage: function (xhr) {
             var errorMsg = "";
             if (xhr && xhr.status && xhr.statusText) {
-                errorMsg = dojoString.substitute(nlsResources.txtSorryAnErrorOccuredLoadingReport, [xhr.status, xhr.statusText]);
+                errorMsg = dojoString.substitute("Sorry, an error occured loading report: ${0} ${1}.", [xhr.status, xhr.statusText]); //TODO: NLS
             }
             return errorMsg;
         },

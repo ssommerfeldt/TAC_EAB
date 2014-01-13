@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="90de18c4-830f-49f7-94a3-bca01394c2d2" lastModifiedUtc="2014-01-03T18:21:04.8602634Z" manageSchema="true" tableName="vluePRODUCTMSRP" name="Vlueproductmsrp" isExtension="false" audited="false" onBeforeInsertMethodId="a6b0877f-ba2d-4788-81da-85e3393c3667" onAfterInsertMethodId="61480228-d63c-4db4-9777-37f02ec7a037" onBeforeUpdateMethodId="c15fd23b-0752-446b-99b2-3d3deb2b2cc4" onAfterUpdateMethodId="2db2b6da-b025-4d56-8e7a-cefebe9b736b" onBeforeDeleteMethodId="7e5b0f5c-435e-4bde-b735-ae6ffb7d2fc0" onAfterDeleteMethodId="86577775-4100-4fca-8194-8ee6c877554c" onCreateId="01053e81-0247-43cd-98c0-004efc051edb">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="90de18c4-830f-49f7-94a3-bca01394c2d2" lastModifiedUtc="2013-12-20T15:39:58.6012305Z" manageSchema="true" tableName="vluePRODUCTMSRP" name="Vlueproductmsrp" isExtension="false" audited="false" onBeforeInsertMethodId="a6b0877f-ba2d-4788-81da-85e3393c3667" onAfterInsertMethodId="61480228-d63c-4db4-9777-37f02ec7a037" onBeforeUpdateMethodId="c15fd23b-0752-446b-99b2-3d3deb2b2cc4" onAfterUpdateMethodId="2db2b6da-b025-4d56-8e7a-cefebe9b736b" onBeforeDeleteMethodId="7e5b0f5c-435e-4bde-b735-ae6ffb7d2fc0" onAfterDeleteMethodId="86577775-4100-4fca-8194-8ee6c877554c" onCreateId="01053e81-0247-43cd-98c0-004efc051edb">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
@@ -17,7 +17,7 @@
     <keyReference id="a27d901e-b731-42e7-a2b2-a14fdb9043e4" ordinalPosition="1" />
   </keyProperties>
   <properties>
-    <property xsi:type="OrmFieldProperty" id="a27d901e-b731-42e7-a2b2-a14fdb9043e4" lastModifiedUtc="2014-01-03T18:21:04.8582633Z" name="Productid" audited="false" isNullable="false" columnName="PRODUCTID" maxLength="12" precision="0" scale="0" ordinal="0" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="a27d901e-b731-42e7-a2b2-a14fdb9043e4" lastModifiedUtc="2013-12-20T15:39:58.5943803Z" name="Productid" audited="false" isNullable="false" columnName="PRODUCTID" maxLength="12" precision="0" scale="0" ordinal="0" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -29,7 +29,7 @@
         <StandardIdDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="8794dcde-79a7-43d1-afd1-15bece617aaa" lastModifiedUtc="2014-01-03T18:21:04.8592633Z" name="Listprice" audited="false" columnName="LISTPRICE" maxLength="0" precision="17" scale="4" ordinal="1" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="8794dcde-79a7-43d1-afd1-15bece617aaa" lastModifiedUtc="2013-12-20T15:39:58.6002519Z" name="Listprice" audited="false" columnName="LISTPRICE" maxLength="0" precision="17" scale="4" ordinal="1" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">

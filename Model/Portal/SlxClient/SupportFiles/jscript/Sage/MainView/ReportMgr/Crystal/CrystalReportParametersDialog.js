@@ -117,10 +117,6 @@ function (
         //Internal functions.
         //------------------------------------------------
 
-        _getDialogTitle: function () {
-            return this._nlsResources.txtDialogTitle + " [" + this._reportMetadata.displayName + "]";
-        },
-
         _getWizardStepResult: function () {
             var parameters = [];
             dojoArray.forEach(this._parameterWidgets, function (widget, i) {

@@ -1311,6 +1311,12 @@ define("Sage/TaskPane/nls/it/SecuredActionTasklet", (
 'Sage/TaskPane/nls/it-ch/SecuredActionTasklet':function(){
 define('Sage/TaskPane/nls/it-ch/SecuredActionTasklet',{});
 },
+'Sage/Extensions/Activity/ActivityListCustomTabs/nls/it/SyncedListPanelConfig':function(){
+define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/it/SyncedListPanelConfig',{});
+},
+'Sage/Extensions/Activity/ActivityListCustomTabs/nls/it-ch/SyncedListPanelConfig':function(){
+define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/it-ch/SyncedListPanelConfig',{});
+},
 'Sage/UI/Dashboard/nls/it/DashboardTabController':function(){
 define("Sage/UI/Dashboard/nls/it/DashboardTabController", (
 { newTabText: 'Nuova tabulazione',
@@ -2874,21 +2880,6 @@ define("Sage/MainView/SecurityMgr/nls/it/SecurityProfile", (
 },
 'Sage/MainView/SecurityMgr/nls/it-ch/SecurityProfile':function(){
 define('Sage/MainView/SecurityMgr/nls/it-ch/SecurityProfile',{});
-},
-'Sage/MainView/ReportMgr/nls/it/ReportWizardController':function(){
-﻿define("Sage/MainView/ReportMgr/nls/it/ReportWizardController", {
-    txtLoadingScheduleDetails: 'Loading Schedule Details',
-    txtError: 'Error',
-    txtCannotDetermineReportId: 'Cannot determine report id.',
-    txtCannotDetermineReportNameOrFamily: 'Cannot determine report name or family.',
-    txtLoading: 'Loading ',
-    txtLoadingReport: 'Loading Report',
-    txtSorryAnErrorOccuredLoadingReport: 'Sorry, an error occured loading report: ${0} ${1}.'
-
-});
-},
-'Sage/MainView/ReportMgr/nls/it-ch/ReportWizardController':function(){
-define('Sage/MainView/ReportMgr/nls/it-ch/ReportWizardController',{});
 },
 'Sage/QuickForms/Design/Editors/nls/it/UserAdvancedPropertyEditor':function(){
 define("Sage/QuickForms/Design/Editors/nls/it/UserAdvancedPropertyEditor", (

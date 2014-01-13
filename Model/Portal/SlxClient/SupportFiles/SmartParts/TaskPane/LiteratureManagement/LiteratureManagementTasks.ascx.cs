@@ -212,7 +212,7 @@ public partial class SmartParts_TaskPane_LiteratureManagementTasks : UserControl
         {
             noLabels = "No Labels";
         }
-        LabelsDropdown.Items.Add(new ListItem(noLabels, string.Empty));
+        LabelsDropdown.Items.Add(new ListItem("", noLabels));
 
         //Load available label reports
         var reportList = PluginManager.GetPluginList(PluginType.CrystalReport, true, false);
@@ -220,12 +220,7 @@ public partial class SmartParts_TaskPane_LiteratureManagementTasks : UserControl
         {
             if (!string.IsNullOrEmpty(report.DataCode) && report.DataCode.InvariantEquals("CONTACT") && report.Family.InvariantEquals("LABELS"))
             {
-                var name = report.Name;
-                if (!string.IsNullOrEmpty(report.DisplayName))
-                {
-                    name = report.DisplayName;
-                }
-                LabelsDropdown.Items.Add(new ListItem(name, report.PluginId));
+                LabelsDropdown.Items.Add(new ListItem(report.PluginId, report.Name));
             }
         }
     }

@@ -85,8 +85,8 @@ function (
         formatPluginName: function (item) {
             return Sage.MainView.ReportMgr.ReportManagerFormatter._getParameterValue(item.parameters, "PluginName");
         },
-        formatTemplateName: function (parameters) {
-            return Sage.MainView.ReportMgr.ReportManagerFormatter._getParameterValue(parameters, "TemplateName");
+        formatTemplateName: function (item) {
+            return Sage.MainView.ReportMgr.ReportManagerFormatter._getParameterValue(item.parameters, "TemplateName");
         },
         formatOutputFormat: function (item) {
             return Sage.MainView.ReportMgr.ReportManagerFormatter._getParameterValue(item.parameters, "OutputFormat");
