@@ -1,0 +1,740 @@
+<?xml version="1.0"?>
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1460bd14-b9b9-4245-a474-76ba22a6e15e" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+  <ActiveControl />
+  <ImagePath />
+  <LoadActions />
+  <Name>ProductSearch</Name>
+  <ClientScriptIncludes />
+  <ClientResourceKeys />
+  <ExtendedProperties />
+  <HelpFile />
+  <ReadOnly>false</ReadOnly>
+  <GeneratePrintView>false</GeneratePrintView>
+  <Controls>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXLookup>
+        <ColumnSpan>2</ColumnSpan>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>2</TabIndex>
+        <ControlId>Product</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>Product</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>Product_ChangeAction</MethodName>
+              <CSharpCodeSnippet>//onchange event - need to update the parent property before running business rule
+	Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
+    if (_entity != null) {
+        object _parent = GetParentEntity();
+        if (DialogService.ChildInsertInfo != null) {
+            if (_parent != null) {
+                if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+                    DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                }
+            }
+        }
+    }
+
+
+ 	object[] objarray = new object[] { this.BindingSource.Current };
+     Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.SaveProductToSalesOrderItem", objarray);
+	
+    
+    //update the form with the results
+    if (_entity != null) {
+        //_entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
+        Product.LookupResultValue = _entity.Product;        
+        Description.Text = _entity.Description;        
+        UPC.Text = _entity.UPC;
+        SKU.Text = _entity.ActualID;
+        txtFamily.Text = _entity.Family;
+        numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
+        Price.Text = _entity.Price.GetValueOrDefault().ToString();
+        Discount.Text = _entity.Discount.GetValueOrDefault().ToString();
+        ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
+        Page.Session.Add("CurrentItem", _entity);    
+    }
+  Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher != null) {
+      refresher.RefreshAll();
+    }
+    else {  
+      Response.Redirect(Request.Url.ToString());
+    }
+	
+	UPC.Focus();</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+        <LookupImage />
+        <LookupDialogWidth xsi:nil="true" />
+        <LookupDialogHeight xsi:nil="true" />
+        <LookupBindingMode>Object</LookupBindingMode>
+        <LookupResultValue xsi:type="xsd:string" />
+        <SeedProperty>WarehouseID</SeedProperty>
+        <SeedValue />
+        <DropDownDisplayProperty />
+        <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
+        <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
+        <LookupEntityName>Product</LookupEntityName>
+        <LookupEntityTypeName>Sage.Entity.Interfaces.IProduct, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
+        <AutoPostBack>false</AutoPostBack>
+        <EnableHyperLinking>false</EnableHyperLinking>
+        <InitializeLookup>false</InitializeLookup>
+        <LookupProperties>
+          <LookupProperty>
+            <PropertyName>ActualId</PropertyName>
+            <PropertyType>System.String</PropertyType>
+            <PropertyHeader>SKU</PropertyHeader>
+            <PropertyFormat>None</PropertyFormat>
+            <PropertyFormatString />
+            <UseAsResult>true</UseAsResult>
+            <ExcludeFromFilters>false</ExcludeFromFilters>
+            <IsSortable>true</IsSortable>
+            <HideCondition />
+          </LookupProperty>
+          <LookupProperty>
+            <PropertyName>UPC</PropertyName>
+            <PropertyType>System.String</PropertyType>
+            <PropertyHeader>UPC</PropertyHeader>
+            <PropertyFormat>None</PropertyFormat>
+            <PropertyFormatString />
+            <UseAsResult>false</UseAsResult>
+            <ExcludeFromFilters>false</ExcludeFromFilters>
+            <IsSortable>true</IsSortable>
+            <HideCondition />
+          </LookupProperty>
+          <LookupProperty>
+            <PropertyName>Name</PropertyName>
+            <PropertyType>System.String</PropertyType>
+            <PropertyHeader>Name</PropertyHeader>
+            <PropertyFormat>None</PropertyFormat>
+            <PropertyFormatString />
+            <UseAsResult>false</UseAsResult>
+            <ExcludeFromFilters>false</ExcludeFromFilters>
+            <IsSortable>true</IsSortable>
+            <HideCondition />
+          </LookupProperty>
+          <LookupProperty>
+            <PropertyName>Description</PropertyName>
+            <PropertyType>System.String</PropertyType>
+            <PropertyHeader>Description</PropertyHeader>
+            <PropertyFormat>None</PropertyFormat>
+            <PropertyFormatString />
+            <UseAsResult>false</UseAsResult>
+            <ExcludeFromFilters>false</ExcludeFromFilters>
+            <IsSortable>true</IsSortable>
+            <HideCondition />
+          </LookupProperty>
+          <LookupProperty>
+            <PropertyName>Price</PropertyName>
+            <PropertyType>System.Decimal</PropertyType>
+            <PropertyHeader>Price</PropertyHeader>
+            <PropertyFormat>None</PropertyFormat>
+            <PropertyFormatString />
+            <UseAsResult>false</UseAsResult>
+            <ExcludeFromFilters>false</ExcludeFromFilters>
+            <IsSortable>true</IsSortable>
+            <HideCondition />
+          </LookupProperty>
+          <LookupProperty>
+            <PropertyName>Unit</PropertyName>
+            <PropertyType>System.String</PropertyType>
+            <PropertyHeader>Unit</PropertyHeader>
+            <PropertyFormat>None</PropertyFormat>
+            <PropertyFormatString />
+            <UseAsResult>false</UseAsResult>
+            <ExcludeFromFilters>false</ExcludeFromFilters>
+            <IsSortable>true</IsSortable>
+            <HideCondition />
+          </LookupProperty>
+          <LookupProperty>
+            <PropertyName>WarehouseID</PropertyName>
+            <PropertyType>System.String</PropertyType>
+            <PropertyHeader>Warehouse ID</PropertyHeader>
+            <PropertyFormat>None</PropertyFormat>
+            <PropertyFormatString />
+            <UseAsResult>false</UseAsResult>
+            <ExcludeFromFilters>false</ExcludeFromFilters>
+            <IsSortable>true</IsSortable>
+            <HideCondition />
+          </LookupProperty>
+        </LookupProperties>
+        <LookupPreFilters>
+          <LookupPreFilter>
+            <LookupEntityName>IProduct</LookupEntityName>
+            <PropertyType>System.String</PropertyType>
+            <OperatorCode>!=</OperatorCode>
+            <PickListName />
+            <PropertyName>Family</PropertyName>
+            <FilterValue>Exchange Returns</FilterValue>
+          </LookupPreFilter>
+          <LookupPreFilter>
+            <LookupEntityName>IProduct</LookupEntityName>
+            <PropertyType>System.String</PropertyType>
+            <OperatorCode>!=</OperatorCode>
+            <PickListName />
+            <PropertyName>Family</PropertyName>
+            <FilterValue>Bulk Products</FilterValue>
+          </LookupPreFilter>
+          <LookupPreFilter>
+            <LookupEntityName>IProduct</LookupEntityName>
+            <PropertyType>System.String</PropertyType>
+            <OperatorCode>!=</OperatorCode>
+            <PickListName />
+            <PropertyName>Status</PropertyName>
+            <FilterValue>Deleted</FilterValue>
+          </LookupPreFilter>
+        </LookupPreFilters>
+      </QFSLXLookup>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <ColumnSpan>2</ColumnSpan>
+        <Column>0</Column>
+        <Row>1</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>50</TabIndex>
+        <ControlId>Description</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>2147483647</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>Description</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>2</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>1</TabIndex>
+        <ControlId>SKU</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>64</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>SKU</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>SKU_ChangeAction</MethodName>
+              <CSharpCodeSnippet>//SKU onchange
+    //Search for the SKU
+    Sage.Entity.Interfaces.ISalesOrderItem searchItem = Sage.Platform.EntityFactory.Create&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;(Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules);
+    searchItem.SalesOrder = GetParentEntity() as Sage.Entity.Interfaces.ISalesOrder;
+    searchItem.ActualID = SKU.Text;
+    Sage.Entity.Interfaces.ISalesOrderItem _entity = null;
+    try {
+        object result = searchItem.SKUSearch();
+        
+        _entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
+        if (_entity != null) {
+            object _parent = GetParentEntity();
+            if (DialogService.ChildInsertInfo != null) {
+                if (_parent != null) {
+                    if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+                        DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                    }
+                }
+            }
+        }
+    } catch (Exception ex) {
+        DialogService.ShowMessage(ex.Message);
+    }
+    
+    //update the form with the results
+    if (_entity != null) {
+        Product.LookupResultValue = _entity.Product;
+        Description.Text = _entity.Description;
+        UPC.Text = _entity.UPC;
+        txtFamily.Text = _entity.Family;
+        if (_entity.Quantity &lt; 1) {
+            numQuantity.Text = "";
+        } else {
+            numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
+        }
+        Price.Text = _entity.Price.GetValueOrDefault().ToString();
+        Discount.Text = _entity.Discount.GetValueOrDefault().ToString();
+        ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
+        //this.BindingSource.Current = _entity; 
+        Page.Session.Add("CurrentItem", _entity);    
+    }
+    //object[] objarray = new object[] { this.BindingSource.Current };
+    //Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.SKUSearch", objarray);
+    ////Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.SaveProductToSalesOrderItem", objarray);
+    Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher != null) {
+      refresher.RefreshAll();
+    }
+    else {  
+      Response.Redirect(Request.Url.ToString());
+    }
+	numQuantity.Focus();</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>3</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>UPC</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>32</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>UPC</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>UPC_ChangeAction</MethodName>
+              <CSharpCodeSnippet>//UPC onchange
+    Sage.Entity.Interfaces.ISalesOrderItem searchItem = Sage.Platform.EntityFactory.Create&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;(Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules);
+    searchItem.SalesOrder = GetParentEntity() as Sage.Entity.Interfaces.ISalesOrder;
+    searchItem.UPC = UPC.Text;
+    Sage.Entity.Interfaces.ISalesOrderItem _entity = null;
+    try {
+        object result = searchItem.UPCSearch();
+
+        _entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
+        if (_entity != null) {
+            object _parent = GetParentEntity();
+            if (DialogService.ChildInsertInfo != null) {
+                if (_parent != null) {
+                    if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+                        DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                    }
+                }
+            }
+        }
+    } catch (Exception ex) {
+        DialogService.ShowMessage(ex.Message);
+    }	
+	
+    
+    //update the form with the results
+    if (_entity != null) {        
+        Product.LookupResultValue = _entity.Product;        
+        Description.Text = _entity.Description;        
+        UPC.Text = _entity.UPC;
+        SKU.Text = _entity.ActualID;
+        txtFamily.Text = _entity.Family;
+        if (_entity.Quantity &lt; 0) {
+            numQuantity.Text = "";
+        } else {
+            numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
+        }
+        Price.Text = _entity.Price.GetValueOrDefault().ToString();
+        Discount.Text = _entity.Discount.GetValueOrDefault().ToString();
+        ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();      
+                
+    }
+	
+	Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher != null) {
+      refresher.RefreshAll();
+    }
+    else {  
+      Response.Redirect(Request.Url.ToString());
+    }
+	numQuantity.Focus();</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>4</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>51</TabIndex>
+        <ControlId>txtFamily</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>32</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>txtFamily</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>1</Column>
+        <Row>2</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>3</TabIndex>
+        <ControlId>numQuantity</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>numQuantity</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>numQuantity_ChangeAction</MethodName>
+              <CSharpCodeSnippet> Sage.Entity.Interfaces.ISalesOrderItem _entity = Page.Session["CurrentItem"] as Sage.Entity.Interfaces.ISalesOrderItem;
+     //object[] objarray = new object[] { this.BindingSource.Current };
+     //Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.CalculateExtendedPrice", objarray);
+
+     if (_entity != null) {
+        _entity.Quantity = Double.Parse(numQuantity.Text);
+
+        //_entity.CalculateExtendedPrice();
+        //ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
+        //ExtendedPrice.Text = _entity.CalculateExtendedPrice().ToString();
+        ExtendedPrice.Text = ((double)_entity.CalculatedPrice.GetValueOrDefault() * _entity.Quantity.GetValueOrDefault()).ToString();
+    }
+    Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher != null) {
+      refresher.RefreshAll();
+    }
+    else {  
+      Response.Redirect(Request.Url.ToString());
+    }
+</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXCurrency, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXCurrency>
+        <Column>1</Column>
+        <Row>3</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>52</TabIndex>
+        <ControlId>Price</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>Price</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+        <CurrentCode />
+        <ExchangeRate>1</ExchangeRate>
+        <ExchangeRateType>BaseRate</ExchangeRateType>
+        <DecimalDigits>-1</DecimalDigits>
+      </QFSLXCurrency>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXNumeric, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXNumeric>
+        <Column>1</Column>
+        <Row>4</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>53</TabIndex>
+        <ControlId>Discount</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>Discount</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+        <DecimalDigits>
+          <Strict>false</Strict>
+        </DecimalDigits>
+        <FormatType>Percent</FormatType>
+      </QFSLXNumeric>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXCurrency, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXCurrency>
+        <Column>1</Column>
+        <Row>5</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>54</TabIndex>
+        <ControlId>ExtendedPrice</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>ExtendedPrice</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+        <CurrentCode />
+        <ExchangeRate>1</ExchangeRate>
+        <ExchangeRateType>BaseRate</ExchangeRateType>
+        <DecimalDigits>-1</DecimalDigits>
+      </QFSLXCurrency>
+    </Control>
+  </Controls>
+  <ToolControls>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>25cded1f4d434eb7f01a28df8b4b4b</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>e08fb04eac644ba39b41cc2c8cee607d</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>cmdSaveAndNew</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:Save_New16x16]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>cmdSaveAndNew</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>cmdSaveAndNew_ClickAction</MethodName>
+              <CSharpCodeSnippet>//Save and New Button
+ Sage.Entity.Interfaces.ISalesOrderItem _entity = Page.Session["CurrentItem"] as Sage.Entity.Interfaces.ISalesOrderItem;
+    if (_entity != null) {
+        //object _parent = GetParentEntity();
+        //if (DialogService.ChildInsertInfo != null) {
+        //    if (_parent != null) {
+        //        if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+        //            DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+        //        }
+        //    }
+        //}       
+        bool shouldSave = true;
+        Sage.Platform.WebPortal.EntityPage page = Page as Sage.Platform.WebPortal.EntityPage;
+        if (page != null) {
+            if (IsInDialog() &amp;&amp; page.ModeId.ToUpper() == "INSERT") {
+                shouldSave = false;
+            }
+        }
+        if (_entity != null) {
+            if (shouldSave) {                
+                _entity.Save();
+            }
+        }
+
+        //if (_parent != null) {
+        //    if (DialogService.ChildInsertInfo != null) {
+        //        if (DialogService.ChildInsertInfo.ParentsCollectionProperty != null) {
+        //            System.Reflection.MethodInfo _add = DialogService.ChildInsertInfo.ParentsCollectionProperty.PropertyType.GetMethod("Add");
+        //            _add.Invoke(DialogService.ChildInsertInfo.ParentsCollectionProperty.GetValue(_parent, null), new object[] { _entity });
+        //        }
+        //    }
+        //}
+    }
+    
+    //reset the screen for the next search
+    Page.Session.Remove("CurrentItem");
+    Product.LookupResultValue = null;
+    Description.Text = "";
+	SKU.Text = "";
+    UPC.Text = "";
+    txtFamily.Text = "";
+    numQuantity.Text = "";
+    Price.Text = "";
+    Discount.Text = "";
+    ExtendedPrice.Text = "";
+
+    Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher != null) {
+        refresher.RefreshAll();
+    } else {
+        Response.Redirect(Request.Url.ToString());
+    }
+    
+    UPC.Focus();</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
+  </ToolControls>
+  <Columns>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>50</Width>
+    </ColumnStyle>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>50</Width>
+    </ColumnStyle>
+  </Columns>
+  <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+  </Rows>
+  <Description />
+  <UseEntityNameAsTitle>true</UseEntityNameAsTitle>
+  <EntityTypeName>ISalesOrderItem</EntityTypeName>
+  <DefaultNamespace>Sage.Entity.Interfaces</DefaultNamespace>
+  <AssemblyName>Sage.Entity.Interfaces</AssemblyName>
+</QuickForm>
