@@ -17,7 +17,7 @@
         <Column>0</Column>
         <Row>0</Row>
         <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
+        <TabIndex>2</TabIndex>
         <ControlId>Product</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -29,7 +29,7 @@
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
               <MethodName>Product_ChangeAction</MethodName>
-              <CSharpCodeSnippet>	//onchange event - need to update the parent property before running business rule
+              <CSharpCodeSnippet>//onchange event - need to update the parent property before running business rule
 	Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
     if (_entity != null) {
         object _parent = GetParentEntity();
@@ -53,22 +53,31 @@
         Product.LookupResultValue = _entity.Product;        
         Description.Text = _entity.Description;        
         UPC.Text = _entity.UPC;
-		SKU.Text = _entity.ActualID;
+        SKU.Text = _entity.ActualID;
         txtFamily.Text = _entity.Family;
         numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
         Price.Text = _entity.Price.GetValueOrDefault().ToString();
         Discount.Text = _entity.Discount.GetValueOrDefault().ToString();
-        ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();      
-                
-    }</CSharpCodeSnippet>
+        ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
+        Page.Session.Add("CurrentItem", _entity);    
+    }
+  Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher != null) {
+      refresher.RefreshAll();
+    }
+    else {  
+      Response.Redirect(Request.Url.ToString());
+    }
+	
+	UPC.Focus();</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>True</PerformsUpdate>
+          <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
-          <RefreshData>True</RefreshData>
+          <RefreshData>False</RefreshData>
         </OnChangeAction>
         <Required>false</Required>
         <LookupImage />
@@ -201,7 +210,7 @@
         <Row>1</Row>
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
+        <TabIndex>50</TabIndex>
         <ControlId>Description</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -231,7 +240,7 @@
         <Column>0</Column>
         <Row>2</Row>
         <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
+        <TabIndex>1</TabIndex>
         <ControlId>SKU</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -245,45 +254,57 @@
             <CSharpSnippetActionItem>
               <MethodName>SKU_ChangeAction</MethodName>
               <CSharpCodeSnippet>//SKU onchange
-	Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
-    if (_entity != null) {
-        object _parent = GetParentEntity();
-        if (DialogService.ChildInsertInfo != null) {
-            if (_parent != null) {
-                if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
-                    DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+    //Search for the SKU
+    Sage.Entity.Interfaces.ISalesOrderItem searchItem = Sage.Platform.EntityFactory.Create&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;(Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules);
+    searchItem.SalesOrder = GetParentEntity() as Sage.Entity.Interfaces.ISalesOrder;
+    searchItem.ActualID = SKU.Text;
+    Sage.Entity.Interfaces.ISalesOrderItem _entity = null;
+    try {
+        object result = searchItem.SKUSearch();
+        
+        _entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
+        if (_entity != null) {
+            object _parent = GetParentEntity();
+            if (DialogService.ChildInsertInfo != null) {
+                if (_parent != null) {
+                    if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+                        DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                    }
                 }
             }
         }
+    } catch (Exception ex) {
+        DialogService.ShowMessage(ex.Message);
     }
     
-    //Search for the SKU
-    _entity.ActualID = SKU.Text;
-    object result = _entity.SKUSearch();
-    
     //update the form with the results
-    if (result != null) {
-        _entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
-        Product.LookupResultValue = _entity.Product;        
-        Description.Text = _entity.Description;        
+    if (_entity != null) {
+        Product.LookupResultValue = _entity.Product;
+        Description.Text = _entity.Description;
         UPC.Text = _entity.UPC;
         txtFamily.Text = _entity.Family;
-        numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
+        if (_entity.Quantity &lt; 1) {
+            numQuantity.Text = "";
+        } else {
+            numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
+        }
         Price.Text = _entity.Price.GetValueOrDefault().ToString();
         Discount.Text = _entity.Discount.GetValueOrDefault().ToString();
-        ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();      
-                
+        ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
+        //this.BindingSource.Current = _entity; 
+        Page.Session.Add("CurrentItem", _entity);    
     }
     //object[] objarray = new object[] { this.BindingSource.Current };
     //Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.SKUSearch", objarray);
     ////Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.SaveProductToSalesOrderItem", objarray);
-  Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
     if (refresher != null) {
       refresher.RefreshAll();
     }
     else {  
       Response.Redirect(Request.Url.ToString());
-    }</CSharpCodeSnippet>
+    }
+	numQuantity.Focus();</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -314,44 +335,64 @@
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
               <MethodName>UPC_ChangeAction</MethodName>
-              <CSharpCodeSnippet>	//UPC onchange
-	Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
-    if (_entity != null) {
-        object _parent = GetParentEntity();
-        if (DialogService.ChildInsertInfo != null) {
-            if (_parent != null) {
-                if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
-                    DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+              <CSharpCodeSnippet>//UPC onchange
+    Sage.Entity.Interfaces.ISalesOrderItem searchItem = Sage.Platform.EntityFactory.Create&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;(Sage.Platform.EntityCreationOption.DoNotExecuteBusinessRules);
+    searchItem.SalesOrder = GetParentEntity() as Sage.Entity.Interfaces.ISalesOrder;
+    searchItem.UPC = UPC.Text;
+    Sage.Entity.Interfaces.ISalesOrderItem _entity = null;
+    try {
+        object result = searchItem.UPCSearch();
+
+        _entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
+        if (_entity != null) {
+            object _parent = GetParentEntity();
+            if (DialogService.ChildInsertInfo != null) {
+                if (_parent != null) {
+                    if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+                        DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                    }
                 }
             }
         }
-    }
-		
-	//Search for the UPC    
-	_entity.UPC = UPC.Text;
-    object result = _entity.UPCSearch();
+    } catch (Exception ex) {
+        DialogService.ShowMessage(ex.Message);
+    }	
+	
     
     //update the form with the results
-    if (result != null) {
-        _entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
+    if (_entity != null) {        
         Product.LookupResultValue = _entity.Product;        
         Description.Text = _entity.Description;        
         UPC.Text = _entity.UPC;
+        SKU.Text = _entity.ActualID;
         txtFamily.Text = _entity.Family;
-        numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
+        if (_entity.Quantity &lt; 0) {
+            numQuantity.Text = "";
+        } else {
+            numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
+        }
         Price.Text = _entity.Price.GetValueOrDefault().ToString();
         Discount.Text = _entity.Discount.GetValueOrDefault().ToString();
         ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();      
                 
-    }</CSharpCodeSnippet>
+    }
+	
+	Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher != null) {
+      refresher.RefreshAll();
+    }
+    else {  
+      Response.Redirect(Request.Url.ToString());
+    }
+	numQuantity.Focus();</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>True</PerformsUpdate>
+          <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
-          <RefreshData>True</RefreshData>
+          <RefreshData>False</RefreshData>
         </OnChangeAction>
         <Required>false</Required>
       </QFTextBox>
@@ -363,7 +404,7 @@
         <IsReadOnly>true</IsReadOnly>
         <Visible>false</Visible>
         <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
+        <TabIndex>51</TabIndex>
         <ControlId>txtFamily</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -393,7 +434,7 @@
         <Column>1</Column>
         <Row>2</Row>
         <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
+        <TabIndex>3</TabIndex>
         <ControlId>numQuantity</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -405,20 +446,26 @@
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
               <MethodName>numQuantity_ChangeAction</MethodName>
-              <CSharpCodeSnippet>     Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
+              <CSharpCodeSnippet> Sage.Entity.Interfaces.ISalesOrderItem _entity = Page.Session["CurrentItem"] as Sage.Entity.Interfaces.ISalesOrderItem;
      //object[] objarray = new object[] { this.BindingSource.Current };
      //Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.CalculateExtendedPrice", objarray);
 
-     _entity.CalculateExtendedPrice();
-     ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
+     if (_entity != null) {
+        _entity.Quantity = Double.Parse(numQuantity.Text);
 
+        //_entity.CalculateExtendedPrice();
+        //ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
+        //ExtendedPrice.Text = _entity.CalculateExtendedPrice().ToString();
+        ExtendedPrice.Text = ((double)_entity.CalculatedPrice.GetValueOrDefault() * _entity.Quantity.GetValueOrDefault()).ToString();
+    }
     Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
     if (refresher != null) {
       refresher.RefreshAll();
     }
     else {  
       Response.Redirect(Request.Url.ToString());
-    }</CSharpCodeSnippet>
+    }
+</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -437,7 +484,7 @@
         <Row>3</Row>
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
+        <TabIndex>52</TabIndex>
         <ControlId>Price</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -471,7 +518,7 @@
         <Row>4</Row>
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
+        <TabIndex>53</TabIndex>
         <ControlId>Discount</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -505,7 +552,7 @@
         <Row>5</Row>
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
+        <TabIndex>54</TabIndex>
         <ControlId>ExtendedPrice</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -562,6 +609,91 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
       </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>cmdSaveAndNew</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:Save_New16x16]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>cmdSaveAndNew</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>cmdSaveAndNew_ClickAction</MethodName>
+              <CSharpCodeSnippet>//Save and New Button
+ Sage.Entity.Interfaces.ISalesOrderItem _entity = Page.Session["CurrentItem"] as Sage.Entity.Interfaces.ISalesOrderItem;
+    if (_entity != null) {
+        //object _parent = GetParentEntity();
+        //if (DialogService.ChildInsertInfo != null) {
+        //    if (_parent != null) {
+        //        if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+        //            DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+        //        }
+        //    }
+        //}       
+        bool shouldSave = true;
+        Sage.Platform.WebPortal.EntityPage page = Page as Sage.Platform.WebPortal.EntityPage;
+        if (page != null) {
+            if (IsInDialog() &amp;&amp; page.ModeId.ToUpper() == "INSERT") {
+                shouldSave = false;
+            }
+        }
+        if (_entity != null) {
+            if (shouldSave) {                
+                _entity.Save();
+            }
+        }
+
+        //if (_parent != null) {
+        //    if (DialogService.ChildInsertInfo != null) {
+        //        if (DialogService.ChildInsertInfo.ParentsCollectionProperty != null) {
+        //            System.Reflection.MethodInfo _add = DialogService.ChildInsertInfo.ParentsCollectionProperty.PropertyType.GetMethod("Add");
+        //            _add.Invoke(DialogService.ChildInsertInfo.ParentsCollectionProperty.GetValue(_parent, null), new object[] { _entity });
+        //        }
+        //    }
+        //}
+    }
+    
+    //reset the screen for the next search
+    Page.Session.Remove("CurrentItem");
+    Product.LookupResultValue = null;
+    Description.Text = "";
+	SKU.Text = "";
+    UPC.Text = "";
+    txtFamily.Text = "";
+    numQuantity.Text = "";
+    Price.Text = "";
+    Discount.Text = "";
+    ExtendedPrice.Text = "";
+
+    Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher != null) {
+        refresher.RefreshAll();
+    } else {
+        Response.Redirect(Request.Url.ToString());
+    }
+    
+    UPC.Focus();</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
     </Control>
   </ToolControls>
   <Columns>
