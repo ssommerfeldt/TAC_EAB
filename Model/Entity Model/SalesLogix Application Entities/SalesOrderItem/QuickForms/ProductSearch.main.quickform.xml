@@ -48,11 +48,12 @@
 	
     
     //update the form with the results
-    if (result != null) {
+    if (_entity != null) {
         //_entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
         Product.LookupResultValue = _entity.Product;        
         Description.Text = _entity.Description;        
         UPC.Text = _entity.UPC;
+		SKU.Text = _entity.ActualID;
         txtFamily.Text = _entity.Family;
         numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
         Price.Text = _entity.Price.GetValueOrDefault().ToString();
@@ -288,9 +289,9 @@
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>True</PerformsUpdate>
+          <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
-          <RefreshData>True</RefreshData>
+          <RefreshData>False</RefreshData>
         </OnChangeAction>
         <Required>false</Required>
       </QFTextBox>
@@ -423,9 +424,9 @@
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>True</PerformsUpdate>
+          <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
-          <RefreshData>True</RefreshData>
+          <RefreshData>False</RefreshData>
         </OnChangeAction>
         <Required>false</Required>
       </QFTextBox>
@@ -540,7 +541,7 @@
         <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>925cded1f4d434eb7f01a28df8b4b4b</ControlId>
+        <ControlId>25cded1f4d434eb7f01a28df8b4b4b</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />
