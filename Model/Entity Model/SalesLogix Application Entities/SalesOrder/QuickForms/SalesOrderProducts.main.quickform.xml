@@ -286,7 +286,7 @@ protected void UpdateFilterList() {
           <GetPredicate />
         </ResourceKind>
         <PathSegments />
-        <PageSize>100</PageSize>
+        <PageSize>1000</PageSize>
         <Columns>
           <QFSDataEditCol>
             <StyleScheme />
@@ -856,7 +856,7 @@ protected void UpdateFilterList() {
         <EntityTypeName>SalesOrderItem</EntityTypeName>
         <GetByMethod />
         <GetByProperty>SalesOrderItems</GetByProperty>
-        <UseSmartSelection>false</UseSmartSelection>
+        <UseSmartSelection>true</UseSmartSelection>
         <DataOptional>false</DataOptional>
       </QFDataSource>
     </Control>
