@@ -310,37 +310,39 @@ namespace EAB_Custom {
 
 
         public static void SKUSearch(ISalesOrderItem salesorderitem) {
-            if (!String.IsNullOrEmpty(salesorderitem.ActualID)) {
-                //Clear the current product
-                salesorderitem.Product = null;
+            if (salesorderitem != null) {
+                if (!String.IsNullOrEmpty(salesorderitem.ActualID)) {
+                    //Clear the current product
+                    salesorderitem.Product = null;
 
-                //Lookup SKU from products
-                Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IProduct> f = Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IProduct>();
-                Sage.Platform.Repository.ICriteria crit = f.CreateCriteria();
+                    //Lookup SKU from products
+                    Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IProduct> f = Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IProduct>();
+                    Sage.Platform.Repository.ICriteria crit = f.CreateCriteria();
 
-                if (salesorderitem.SalesOrder.UserWareHouse != null) {
-                    crit.Add(f.EF.Eq("WarehouseID", salesorderitem.SalesOrder.UserWareHouse.SiteCodeId));
-                    crit.Add(f.EF.Ne("Status", "Deleted"));
-                    crit.Add(f.EF.Eq("ActualId", salesorderitem.ActualID));
+                    if (salesorderitem.SalesOrder.UserWareHouse != null) {
+                        crit.Add(f.EF.Eq("WarehouseID", salesorderitem.SalesOrder.UserWareHouse.SiteCodeId));
+                        crit.Add(f.EF.Ne("Status", "Deleted"));
+                        crit.Add(f.EF.Eq("ActualId", salesorderitem.ActualID));
 
-                    if (salesorderitem.SalesOrder.OrderType == "Return Order") {
-                        crit.Add(f.EF.Eq("Family", "Exchange Returns"));
-                    } else {
-                        crit.Add(f.EF.And(f.EF.Ne("Family", "Exchange Returns"), f.EF.Ne("Family", "Bulk Products")));
+                        if (salesorderitem.SalesOrder.OrderType == "Return Order") {
+                            crit.Add(f.EF.Eq("Family", "Exchange Returns"));
+                        } else {
+                            crit.Add(f.EF.And(f.EF.Ne("Family", "Exchange Returns"), f.EF.Ne("Family", "Bulk Products")));
+                        }
+
+                        foreach (Sage.Entity.Interfaces.IProduct product in crit.List<Sage.Entity.Interfaces.IProduct>()) {
+                            salesorderitem.Product = product;
+                            salesorderitem.ActualID = product.ActualId;
+
+                            //save the product found to salesorder
+                            SaveProductToSalesOrderItem(salesorderitem);
+
+                            break;
+                        }
                     }
-
-                    foreach (Sage.Entity.Interfaces.IProduct product in crit.List<Sage.Entity.Interfaces.IProduct>()) {
-                        salesorderitem.Product = product;
-                        salesorderitem.ActualID = product.ActualId;
-
-                        //save the product found to salesorder
-                        SaveProductToSalesOrderItem(salesorderitem);
-
-                        break;
+                    if (salesorderitem.Product == null) {
+                        throw new Exception("SKU not found.             ");
                     }
-                }
-                if (salesorderitem.Product == null) {
-                    throw new Exception("SKU not found.             ");
                 }
             }
         }

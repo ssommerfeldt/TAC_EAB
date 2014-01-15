@@ -7,7 +7,7 @@
       <ResourceKey>bf48998d-0a7a-4649-9b73-71b442ebf292</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
-          <MethodName />
+          <MethodName>quickformload0</MethodName>
           <CSharpCodeSnippet>Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
 if (salesOrder != null)
 {
@@ -130,8 +130,91 @@ if (salesOrder != null)
       <ResourceKey>90791539-c253-4402-a54f-0860cfbe893a</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CodeSnippetActionItem, Sage.Platform.QuickForms">
         <CodeSnippetActionItem methodId="a9a32432-7fbd-4971-bde0-0740a2aadcb4">
-          <MethodName />
+          <MethodName>quickformload1</MethodName>
         </CodeSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+    <FormActionDefinition>
+      <ResourceKey>172c582e-2c20-41c2-a59c-6bc66503b4ee</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName>quickformload2</MethodName>
+          <CSharpCodeSnippet>//this is a placeholder for aa
+}
+
+protected override void OnLoad(EventArgs e) {
+    base.OnLoad(e);
+    AddGridFilters();
+}
+
+protected void AddGridFilters() {
+    //Add Dynamic Grid filters
+    //Modified 2014-1-8 PG
+    //On load of the page query the products and add a filter checkbox for each distinct family
+
+    //Add hidden Field
+    //HiddenField hid = new HiddenField();
+    //hid.ID = "hidCheckedFilters";
+    //hid.ClientIDMode = System.Web.UI.ClientIDMode.Static;
+    //QFControlsList.Controls.Add(hid);
+
+    //Add filter title
+    Label lbl = new Label();
+    lbl.Text = "Filters: ";
+    lbl.ID = "lblFilter";
+    QFControlsList.Controls.Add(lbl);
+
+    Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
+    if (salesOrder != null) {
+        var families = (from i in salesOrder.SalesOrderItems
+                        orderby i.Family
+                        select i.Family).Distinct();
+
+        int j = 0;
+        foreach (string f in families) {
+
+            //create a checkbox               
+            SLXCheckBox chk = new SLXCheckBox();
+            chk.ID = "chkFamily" + j;
+            chk.Checked = false;
+            chk.Text = f;
+            chk.CssClass = "slxlabel alignleft checkboxRight";
+            chk.AutoPostBack = true;
+            chk.CheckedChanged += new EventHandler(CheckBox_CheckedChanged);
+            QFControlsList.Controls.Add(chk);
+            j++;
+        }
+        //fill the hidden field with default values
+        UpdateFilterList();
+    }
+    //Modified 2014-1-8 PG
+
+}
+protected void CheckBox_CheckedChanged(object sender, EventArgs e) {
+    UpdateFilterList();
+}
+
+protected void UpdateFilterList() {
+        //Update the hidden box for each of the checked filters
+        hidCheckedFilters.Value = "";        
+        foreach (Control ctrl in QFControlsList.Controls) {
+            if (ctrl.GetType() == typeof(SLXCheckBox)) {
+                if ((ctrl as SLXCheckBox).Checked == true) {
+                    hidCheckedFilters.Value += "\"" +(ctrl as SLXCheckBox).Text + "\", ";                    
+                }
+            }
+        }
+        if (hidCheckedFilters.Value.Length &gt; 2) {
+            //Remove the last 2 characters
+            hidCheckedFilters.Value = hidCheckedFilters.Value.Remove(hidCheckedFilters.Value.Length - 2);            
+        }</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
       <RunOnEveryRePaint>False</RunOnEveryRePaint>
@@ -149,10 +232,28 @@ if (salesOrder != null)
   <ReadOnly>false</ReadOnly>
   <GeneratePrintView>false</GeneratePrintView>
   <Controls>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFControlsList, Sage.Platform.QuickForms.QFControls">
+      <QFControlsList>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFControlsList</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <Caption />
+        <Controls>
+          <ControlsCollection />
+        </Controls>
+      </QFControlsList>
+    </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.SDataGrid.QFSDataGrid, Sage.SalesLogix.QuickForms.QFControls">
       <QFSDataGrid>
         <Column>0</Column>
-        <Row>0</Row>
+        <Row>1</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>grdItems</ControlId>
@@ -594,7 +695,22 @@ if (salesOrder != null)
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
         </Columns>
-        <ConditionalWhere>function() { return 'SalesOrder.Id eq "' + Sage.Utility.getCurrentEntityId() + '"'; }</ConditionalWhere>
+        <ConditionalWhere>function () {
+            //Modified 2014-1-8 PG
+            var whereclause = 'SalesOrder.Id eq "' + Sage.Utility.getCurrentEntityId() + '"';
+
+            //Add a filter condition on Family from the dynamic checkboxes which populate a hidden field.
+            //var familyList = document.getElementById('hidCheckedFilters').value;            
+            var familyList = document.getElementById('TabControl_element_SalesOrderProducts_element_view_SalesOrderProducts_SalesOrderProducts_hidCheckedFilters').value;
+            //alert(familyList);
+            if (familyList.length &gt; 0) {
+                whereclause += ' and Family not in (' + familyList + ')';
+            }
+
+            //return 'SalesOrder.Id eq "' + Sage.Utility.getCurrentEntityId() + '"';
+            return whereclause;
+            //Modified 2014-1-8 PG
+        }</ConditionalWhere>
         <Select>
           <string>Id</string>
           <string>Product.Id</string>
@@ -744,8 +860,81 @@ if (salesOrder != null)
         <DataOptional>false</DataOptional>
       </QFDataSource>
     </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFHidden, Sage.Platform.QuickForms.QFControls">
+      <QFHidden>
+        <Column>0</Column>
+        <Row>0</Row>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>hidCheckedFilters</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFHidden>
+    </Control>
   </Controls>
   <ToolControls>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFButton</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:plus_16x16]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>QFButton</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>QFButton_ClickAction</MethodName>
+              <CSharpCodeSnippet>//Product Search
+    
+    Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
+    if (_entity != null) {
+        object _parent = GetParentEntity();
+        if (DialogService.ChildInsertInfo != null) {
+            if (_parent != null) {
+                if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+                    DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                }
+            }
+        }
+    }
+    
+    
+if (DialogService != null)
+{
+  // InsertChildDialogActionItem
+  DialogService.SetSpecs(400, 600, "ProductSearch", GetLocalResourceObject("35bcdfcb-61df-432f-a950-635223878c1b.DialogTitleOverride").ToString() );
+  DialogService.EntityType = typeof(Sage.Entity.Interfaces.ISalesOrderItem); 
+  DialogService.SetChildIsertInfo(
+    typeof(Sage.Entity.Interfaces.ISalesOrderItem),
+    typeof(Sage.Entity.Interfaces.ISalesOrder),
+    typeof(Sage.Entity.Interfaces.ISalesOrderItem).GetProperty("SalesOrder"),
+    typeof(Sage.Entity.Interfaces.ISalesOrder).GetProperty("SalesOrderItems"));
+  DialogService.ShowDialog();
+}</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
       <QFElementSpacer>
         <Column>0</Column>
@@ -793,7 +982,7 @@ if (salesOrder != null)
           <ResourceKey>cmdAddProduct</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
-              <MethodName />
+              <MethodName>cmdAddProduct_ClickAction</MethodName>
               <CSharpCodeSnippet>    //Add Sales Products
     Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
     if (_entity != null) {
@@ -857,7 +1046,7 @@ if (DialogService != null)
               <PassResultsToNextAction>False</PassResultsToNextAction>
               <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
                 <RefreshDataAction>
-                  <MethodName />
+                  <MethodName>btnLockAll_ClickActionBRC</MethodName>
                 </RefreshDataAction>
               </OnComplete>
             </BusinessRuleActionItem>
@@ -897,7 +1086,7 @@ if (DialogService != null)
               <PassResultsToNextAction>False</PassResultsToNextAction>
               <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
                 <RefreshDataAction>
-                  <MethodName />
+                  <MethodName>btnUnlockAll_ClickActionBRC</MethodName>
                 </RefreshDataAction>
               </OnComplete>
             </BusinessRuleActionItem>
@@ -938,7 +1127,7 @@ if (DialogService != null)
               <PassResultsToNextAction>False</PassResultsToNextAction>
               <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
                 <RefreshDataAction>
-                  <MethodName />
+                  <MethodName>btnRenumber_ClickActionBRC</MethodName>
                 </RefreshDataAction>
               </OnComplete>
             </BusinessRuleActionItem>

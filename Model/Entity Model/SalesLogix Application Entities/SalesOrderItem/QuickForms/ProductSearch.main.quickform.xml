@@ -259,7 +259,7 @@
     searchItem.SalesOrder = GetParentEntity() as Sage.Entity.Interfaces.ISalesOrder;
     searchItem.ActualID = SKU.Text;
     Sage.Entity.Interfaces.ISalesOrderItem _entity = null;
-    try {
+    //try {
         object result = searchItem.SKUSearch();
         
         _entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
@@ -273,9 +273,9 @@
                 }
             }
         }
-    } catch (Exception ex) {
-        DialogService.ShowMessage(ex.Message);
-    }
+   // } catch (Exception ex) {
+   //     DialogService.ShowMessage(ex.Message);
+   // }
     
     //update the form with the results
     if (_entity != null) {
@@ -588,7 +588,7 @@
         <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>25cded1f4d434eb7f01a28df8b4b4b</ControlId>
+        <ControlId>5cded1f4d434eb7f01a28df8b4b4b</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />
