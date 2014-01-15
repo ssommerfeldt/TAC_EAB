@@ -17,7 +17,7 @@
         <Column>0</Column>
         <Row>0</Row>
         <HotKey>0</HotKey>
-        <TabIndex>2</TabIndex>
+        <TabIndex>3</TabIndex>
         <ControlId>Product</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -240,7 +240,7 @@
         <Column>0</Column>
         <Row>2</Row>
         <HotKey>0</HotKey>
-        <TabIndex>1</TabIndex>
+        <TabIndex>2</TabIndex>
         <ControlId>SKU</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -259,7 +259,7 @@
     searchItem.SalesOrder = GetParentEntity() as Sage.Entity.Interfaces.ISalesOrder;
     searchItem.ActualID = SKU.Text;
     Sage.Entity.Interfaces.ISalesOrderItem _entity = null;
-    try {
+    //try {
         object result = searchItem.SKUSearch();
         
         _entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
@@ -273,9 +273,9 @@
                 }
             }
         }
-    } catch (Exception ex) {
-        DialogService.ShowMessage(ex.Message);
-    }
+   // } catch (Exception ex) {
+   //     DialogService.ShowMessage(ex.Message);
+   // }
     
     //update the form with the results
     if (_entity != null) {
@@ -322,7 +322,7 @@
         <Column>0</Column>
         <Row>3</Row>
         <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
+        <TabIndex>1</TabIndex>
         <ControlId>UPC</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -340,7 +340,7 @@
     searchItem.SalesOrder = GetParentEntity() as Sage.Entity.Interfaces.ISalesOrder;
     searchItem.UPC = UPC.Text;
     Sage.Entity.Interfaces.ISalesOrderItem _entity = null;
-    try {
+    //try {
         object result = searchItem.UPCSearch();
 
         _entity = result as Sage.Entity.Interfaces.ISalesOrderItem;
@@ -354,9 +354,9 @@
                 }
             }
         }
-    } catch (Exception ex) {
-        DialogService.ShowMessage(ex.Message);
-    }	
+    //} catch (Exception ex) {
+    //    DialogService.ShowMessage(ex.Message);
+    //}	
 	
     
     //update the form with the results
@@ -434,7 +434,7 @@
         <Column>1</Column>
         <Row>2</Row>
         <HotKey>0</HotKey>
-        <TabIndex>3</TabIndex>
+        <TabIndex>4</TabIndex>
         <ControlId>numQuantity</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
@@ -588,7 +588,7 @@
         <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>25cded1f4d434eb7f01a28df8b4b4b</ControlId>
+        <ControlId>5cded1f4d434eb7f01a28df8b4b4b</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />
@@ -633,14 +633,14 @@
               <CSharpCodeSnippet>//Save and New Button
  Sage.Entity.Interfaces.ISalesOrderItem _entity = Page.Session["CurrentItem"] as Sage.Entity.Interfaces.ISalesOrderItem;
     if (_entity != null) {
-        //object _parent = GetParentEntity();
-        //if (DialogService.ChildInsertInfo != null) {
-        //    if (_parent != null) {
-        //        if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
-        //            DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
-        //        }
-        //    }
-        //}       
+        object _parent = GetParentEntity();
+        if (DialogService.ChildInsertInfo != null) {
+            if (_parent != null) {
+                if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
+                    DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                }
+            }
+        }       
         bool shouldSave = true;
         Sage.Platform.WebPortal.EntityPage page = Page as Sage.Platform.WebPortal.EntityPage;
         if (page != null) {
@@ -648,20 +648,40 @@
                 shouldSave = false;
             }
         }
-        if (_entity != null) {
-            if (shouldSave) {                
-                _entity.Save();
-            }
-        }
 
-        //if (_parent != null) {
-        //    if (DialogService.ChildInsertInfo != null) {
-        //        if (DialogService.ChildInsertInfo.ParentsCollectionProperty != null) {
-        //            System.Reflection.MethodInfo _add = DialogService.ChildInsertInfo.ParentsCollectionProperty.PropertyType.GetMethod("Add");
-        //            _add.Invoke(DialogService.ChildInsertInfo.ParentsCollectionProperty.GetValue(_parent, null), new object[] { _entity });
-        //        }
-        //    }
-        //}
+        //Check to see if product already exists in the order
+        var existsInOrder = from p in _entity.SalesOrder.SalesOrderItems
+                            where p.ActualID.Equals(_entity.Product.ActualId)
+                            select p;
+        
+        if (existsInOrder.Count() &gt; 0) {
+            //If an existing item is requested, update the quantity  
+            foreach (Sage.Entity.Interfaces.ISalesOrderItem item in existsInOrder) {
+                item.Quantity = _entity.Quantity;
+
+                Sage.Entity.Interfaces.ISalesOrderItem dbitem =
+                    Sage.Platform.EntityFactory.GetById&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;(item.Id);
+                dbitem.Quantity = _entity.Quantity;
+                dbitem.Save();                
+            }
+            
+        } else {
+            //item not found, save normally 
+            if (_entity != null) {
+                if (shouldSave) {
+                    _entity.Save();
+                }
+            }
+
+            //if (_parent != null) {
+            //    if (DialogService.ChildInsertInfo != null) {
+            //        if (DialogService.ChildInsertInfo.ParentsCollectionProperty != null) {
+            //            System.Reflection.MethodInfo _add = DialogService.ChildInsertInfo.ParentsCollectionProperty.PropertyType.GetMethod("Add");
+            //            _add.Invoke(DialogService.ChildInsertInfo.ParentsCollectionProperty.GetValue(_parent, null), new object[] { _entity });
+            //        }
+            //    }
+            //}
+        }
     }
     
     //reset the screen for the next search

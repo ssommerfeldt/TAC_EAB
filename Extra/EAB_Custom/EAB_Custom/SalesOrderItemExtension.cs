@@ -69,149 +69,152 @@ namespace EAB_Custom {
             }
         }
 
-
         public static void SaveProductToSalesOrderItem(ISalesOrderItem salesorderitem) {
             try {
                 if (salesorderitem.Product != null) {
 
                     //exclude products that are already in the order, this is used for add only
-                    var existsInOrder = (from p in salesorderitem.SalesOrder.SalesOrderItems
-                                         where p.ActualID.Equals(salesorderitem.Product.ActualId)
-                                         select p).Count() > 0;
-                    if (existsInOrder == true) {
-                        throw new Exception("Order already contains this product, use the edit function instead.");
+                    var existsInOrder = from p in salesorderitem.SalesOrder.SalesOrderItems
+                                        where p.ActualID.Equals(salesorderitem.Product.ActualId)
+                                        select p;
+                    if (existsInOrder.Count() > 0) {
+                        //    //throw new Exception("Order already contains this product, use the edit function instead.");
+                        //    //Modified 2014-1-10 PG
+                        //    //If an existing item is requested, load values from salesorder
+
+                        //salesorderitem.Quantity = 0; //don't change quantity
                     } else {
-
-                        //item.SalesOrder = salesorder;
-                        salesorderitem.ActualID = salesorderitem.Product.ActualId;
-                        salesorderitem.Description = salesorderitem.Product.Description;
-                        salesorderitem.Family = salesorderitem.Product.Family;
-                        salesorderitem.UPC = salesorderitem.Product.UPC;
-
                         salesorderitem.Quantity = 0; //set to 0 initially
-                        salesorderitem.ProductName = salesorderitem.Product.Name;
-                        salesorderitem.Program = salesorderitem.Product.Program;
-                        salesorderitem.UnitOfMeasureId = salesorderitem.Product.UnitOfMeasureId.Trim();
-                        salesorderitem.Case = salesorderitem.Product.Unit;
-                        
-
-                        ////get margin from category 
-                        //salesorderitem.Discount = 0;
-                        //if (salesorderitem.SalesOrder != null) {
-                        //    if (salesorderitem.SalesOrder.Account != null) {
-
-                        //        String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
-                        //        sql += " FROM PRODUCT";
-                        //        sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
-                        //        sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
-                        //        sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
-                        //        sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
-                        //        sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
-
-                        //        Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
-                        //        using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
-                        //            conn.Open();
-                        //            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
-                        //                OleDbDataReader reader = cmd.ExecuteReader();
-                        //                //loop through the reader
-                        //                while (reader.Read()) {
-                        //                    try {
-                        //                        salesorderitem.Discount = (Double)reader["MARGIN"];
-                        //                    } catch (Exception) {
-                        //                        //no catch?
-                        //                        salesorderitem.Discount = 0;
-                        //                    }
-                        //                }
-                        //                reader.Close();
-                        //            }
-                        //        }
-                        //    }
-                        //}
-
-                        //Get margin from extension method
-                        double margin = 0;
-                        if (salesorderitem.Product.Timprodpricegroup != null
-                            && salesorderitem.SalesOrder != null
-                            && salesorderitem.SalesOrder.Account != null) {
-
-                            Extentions.GetDefaultMargin(null,
-                                                    salesorderitem.Product.Timprodpricegroup.Id.ToString(),
-                                                    salesorderitem.SalesOrder.Account,
-                                                    out margin);
-                        }
-                        salesorderitem.Discount = margin;
-
-
-                        //get msrp price                    
-                        double listPrice = 0;
-                        try {
-                            if (salesorderitem.Product != null) {
-                                if (salesorderitem.Product.Vproductpricesheet != null) {
-                                    listPrice = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
-                                } else {
-                                    //price not found
-                                }
-                            }
-                        } catch (Exception ex) {
-                            //vproductpricesheet record not found
-                            Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
-                            eh.HandleException(new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
-                        }
-                        salesorderitem.Price = Math.Round(listPrice, 2);
-
-
-
-                        if (salesorderitem.SalesOrder.OrderType == "Return Order") {
-
-                            if (salesorderitem.SalesOrder.Account != null) {
-
-                                //find the new item, id is the same as return except last char                                
-                                double newProductPrice = 0;
-                                double returnmargin = 0;
-                                try {
-                                    IProduct newProduct = FindProductByReturnProduct(salesorderitem.Product, salesorderitem.SalesOrder.Account);
-
-                                    if (newProduct.Vproductpricesheet != null) {
-                                        newProductPrice = (double)newProduct.Vproductpricesheet.Listprice;
-                                    } else {
-                                        //price not found                                
-                                    }
-
-                                    if (newProduct.Timprodpricegroup != null
-                                    && salesorderitem.SalesOrder != null
-                                    && salesorderitem.SalesOrder.Account != null) {
-
-                                        Extentions.GetDefaultMargin(null,
-                                                                newProduct.Timprodpricegroup.Id.ToString(),
-                                                                salesorderitem.SalesOrder.Account,
-                                                                out returnmargin);
-                                    }
-
-                                } catch (Exception ex) {
-                                    //vproductpricesheet record not found
-                                    Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
-                                    eh.HandleException(new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
-                                }
-                                //return item price is new item price - return item price
-                                salesorderitem.OrigProductPrice = Math.Round(newProductPrice, 2);
-
-                                //Get return margin from extension method                                
-                                salesorderitem.OrigProductDiscount = returnmargin;
-
-                            }
-                        }
-
-                        //calculate the adjusted and extended prices
-                        salesorderitem.CalculatedPrice = CalculateAdjustedPrice(salesorderitem);
-                        CalculateExtendedPrice(salesorderitem);
-
                     }
+
+                    //item.SalesOrder = salesorder;
+                    salesorderitem.ActualID = salesorderitem.Product.ActualId;
+                    salesorderitem.Description = salesorderitem.Product.Description;
+                    salesorderitem.Family = salesorderitem.Product.Family;
+                    salesorderitem.UPC = salesorderitem.Product.UPC;
+
+                    salesorderitem.ProductName = salesorderitem.Product.Name;
+                    salesorderitem.Program = salesorderitem.Product.Program;
+                    salesorderitem.UnitOfMeasureId = salesorderitem.Product.UnitOfMeasureId.Trim();
+                    salesorderitem.Case = salesorderitem.Product.Unit;
+
+                    ////get margin from category 
+                    //salesorderitem.Discount = 0;
+                    //if (salesorderitem.SalesOrder != null) {
+                    //    if (salesorderitem.SalesOrder.Account != null) {
+
+                    //        String sql = "SELECT ACCOUNTPRODUCTCATEGORY.MARGIN";
+                    //        sql += " FROM PRODUCT";
+                    //        sql += " INNER JOIN TIMPRODCATITEM ON PRODUCT.MASITEMKEY = TIMPRODCATITEM.ITEMKEY";
+                    //        sql += " INNER JOIN TIMPRODCATEGORY ON TIMPRODCATITEM.PRODCATEGORYKEY = TIMPRODCATEGORY.PRODCATEGORYKEY";
+                    //        sql += " INNER JOIN ACCOUNTPRODUCTCATEGORY ON TIMPRODCATEGORY.TIMPRODCATEGORYID = ACCOUNTPRODUCTCATEGORY.PRODUCTCATEGORYID";
+                    //        sql += " Where ProductId = '" + salesorderitem.Product.Id.ToString() + "'";
+                    //        sql += " And AccountId = '" + salesorderitem.SalesOrder.Account.Id.ToString() + "'";
+
+                    //        Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Data.IDataService>();
+                    //        using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString())) {
+                    //            conn.Open();
+                    //            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(sql, conn)) {
+                    //                OleDbDataReader reader = cmd.ExecuteReader();
+                    //                //loop through the reader
+                    //                while (reader.Read()) {
+                    //                    try {
+                    //                        salesorderitem.Discount = (Double)reader["MARGIN"];
+                    //                    } catch (Exception) {
+                    //                        //no catch?
+                    //                        salesorderitem.Discount = 0;
+                    //                    }
+                    //                }
+                    //                reader.Close();
+                    //            }
+                    //        }
+                    //    }
+                    //}
+
+                    //Get margin from extension method
+                    double margin = 0;
+                    if (salesorderitem.Product.Timprodpricegroup != null
+                        && salesorderitem.SalesOrder != null
+                        && salesorderitem.SalesOrder.Account != null) {
+
+                        Extentions.GetDefaultMargin(null,
+                                                salesorderitem.Product.Timprodpricegroup.Id.ToString(),
+                                                salesorderitem.SalesOrder.Account,
+                                                out margin);
+                    }
+                    salesorderitem.Discount = margin;
+
+
+                    //get msrp price                    
+                    double listPrice = 0;
+                    try {
+                        if (salesorderitem.Product != null) {
+                            if (salesorderitem.Product.Vproductpricesheet != null) {
+                                listPrice = (double)salesorderitem.Product.Vproductpricesheet.Listprice;
+                            } else {
+                                //price not found
+                            }
+                        }
+                    } catch (Exception ex) {
+                        //vproductpricesheet record not found
+                        Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                        eh.HandleException(new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
+                    }
+                    salesorderitem.Price = Math.Round(listPrice, 2);
+
+
+
+                    if (salesorderitem.SalesOrder.OrderType == "Return Order") {
+
+                        if (salesorderitem.SalesOrder.Account != null) {
+
+                            //find the new item, id is the same as return except last char                                
+                            double newProductPrice = 0;
+                            double returnmargin = 0;
+                            try {
+                                IProduct newProduct = FindProductByReturnProduct(salesorderitem.Product, salesorderitem.SalesOrder.Account);
+
+                                if (newProduct.Vproductpricesheet != null) {
+                                    newProductPrice = (double)newProduct.Vproductpricesheet.Listprice;
+                                } else {
+                                    //price not found                                
+                                }
+
+                                if (newProduct.Timprodpricegroup != null
+                                && salesorderitem.SalesOrder != null
+                                && salesorderitem.SalesOrder.Account != null) {
+
+                                    Extentions.GetDefaultMargin(null,
+                                                            newProduct.Timprodpricegroup.Id.ToString(),
+                                                            salesorderitem.SalesOrder.Account,
+                                                            out returnmargin);
+                                }
+
+                            } catch (Exception ex) {
+                                //vproductpricesheet record not found
+                                Sage.Platform.Application.Exceptions.EventLogExceptionHandler eh = new Sage.Platform.Application.Exceptions.EventLogExceptionHandler();
+                                eh.HandleException(new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + ex.Message, ex), false);
+                            }
+                            //return item price is new item price - return item price
+                            salesorderitem.OrigProductPrice = Math.Round(newProductPrice, 2);
+
+                            //Get return margin from extension method                                
+                            salesorderitem.OrigProductDiscount = returnmargin;
+
+                        }
+                    }
+
+                    //calculate the adjusted and extended prices
+                    salesorderitem.CalculatedPrice = CalculateAdjustedPrice(salesorderitem);
+                    CalculateExtendedPrice(salesorderitem);
+
                 }
+                //}
             } catch (Exception e) {
                 throw new Exception("Order (" + salesorderitem.SalesOrder.SalesOrderNumber + "): " + e.Message, e);
             }
         }
-
+        
 
         public static decimal CalculateAdjustedPrice(ISalesOrderItem salesOrderItem) {
 
@@ -267,11 +270,12 @@ namespace EAB_Custom {
 
             }
 
-        }       
+        }
 
-       
 
-        public static void UPCSearch(ISalesOrderItem salesorderitem) {
+
+        public static void UPCSearch(ISalesOrderItem salesorderitem, out object result) {
+            result = null;
             if (!String.IsNullOrEmpty(salesorderitem.UPC)) {
                 //Clear the current product
                 salesorderitem.Product = null;
@@ -296,9 +300,31 @@ namespace EAB_Custom {
                         salesorderitem.Product = product;
                         salesorderitem.ActualID = product.ActualId;
 
-                        //save the product found to salesorder
-                        SaveProductToSalesOrderItem(salesorderitem);
+                        //Modified 2014-1-10 PG
+                        //products that are already in the order, return the existing product                    
+                        var existsInOrder = from p in salesorderitem.SalesOrder.SalesOrderItems
+                                            where p.ActualID.Equals(salesorderitem.Product.ActualId)
+                                            select p;
 
+                        if (existsInOrder.Count() > 0) {
+                            //throw new Exception("Order already contains this product, use the edit function instead.");                            
+                            //If an existing item is requested, load values from salesorder                            
+
+                            foreach (ISalesOrderItem item in existsInOrder) {
+                                item.Product = product;
+                                item.ActualID = product.ActualId;
+
+                                //save the product found to salesorder
+                                SaveProductToSalesOrderItem(item);
+                                result = item;
+                            }
+
+                        } else {
+
+                            //save the product found to salesorder
+                            SaveProductToSalesOrderItem(salesorderitem);
+                            result = salesorderitem;
+                        }
                         break;
                     }
                 }
@@ -309,7 +335,8 @@ namespace EAB_Custom {
         }
 
 
-        public static void SKUSearch(ISalesOrderItem salesorderitem) {
+        public static void SKUSearch(ISalesOrderItem salesorderitem, out object result) {
+            result = null;
             if (!String.IsNullOrEmpty(salesorderitem.ActualID)) {
                 //Clear the current product
                 salesorderitem.Product = null;
@@ -333,9 +360,32 @@ namespace EAB_Custom {
                         salesorderitem.Product = product;
                         salesorderitem.ActualID = product.ActualId;
 
-                        //save the product found to salesorder
-                        SaveProductToSalesOrderItem(salesorderitem);
+                        //Modified 2014-1-10 PG
+                        //products that are already in the order, return the existing product                    
+                        var existsInOrder = from p in salesorderitem.SalesOrder.SalesOrderItems
+                                            where p.ActualID.Equals(salesorderitem.Product.ActualId)
+                                            select p;
 
+                        if (existsInOrder.Count() > 0) {
+                            //throw new Exception("Order already contains this product, use the edit function instead.");                            
+                            //If an existing item is requested, load values from salesorder                            
+
+                            foreach (ISalesOrderItem item in existsInOrder) {
+                                item.Product = product;
+                                item.ActualID = product.ActualId;
+
+                                //save the product found to salesorder
+                                SaveProductToSalesOrderItem(item);
+                                result = item;
+                            }
+
+
+                        } else {
+
+                            //save the product found to salesorder
+                            SaveProductToSalesOrderItem(salesorderitem);
+                            result = salesorderitem;
+                        }
                         break;
                     }
                 }
