@@ -184,7 +184,7 @@ protected void AddGridFilters() {
             chk.ID = "chkFamily" + j;
             chk.Checked = false;
             chk.Text = f;
-            chk.CssClass = "slxlabel alignleft checkboxRight";
+            chk.CssClass = "slxlabel alignleft checkboxRight";			
             chk.AutoPostBack = true;
             chk.CheckedChanged += new EventHandler(CheckBox_CheckedChanged);
             QFControlsList.Controls.Add(chk);
@@ -877,6 +877,34 @@ protected void UpdateFilterList() {
     </Control>
   </Controls>
   <ToolControls>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId />
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId />
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
       <QFButton>
         <Column>0</Column>
@@ -935,38 +963,11 @@ if (DialogService != null)
         </OnClickAction>
       </QFButton>
     </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
-      <QFElementSpacer>
-        <Column>0</Column>
-        <Row>0</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId />
-        <DataBindings />
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-      </QFElementSpacer>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
-      <QFElementSpacer>
-        <Column>0</Column>
-        <Row>0</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId />
-        <DataBindings />
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-      </QFElementSpacer>
-    </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
+        <Visible>false</Visible>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>cmdAddProduct</ControlId>
