@@ -2,7 +2,33 @@
 <QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1460bd14-b9b9-4245-a474-76ba22a6e15e" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
   <ActiveControl />
   <ImagePath />
-  <LoadActions />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>238e5cc7-b0f1-4ada-a334-39e414d777bc</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName>quickformload0</MethodName>
+          <CSharpCodeSnippet>//reset the screen for the next search
+    Page.Session.Remove("CurrentItem");
+    Product.LookupResultValue = null;
+    Description.Text = "";
+	SKU.Text = "";
+    UPC.Text = "";
+    txtFamily.Text = "";
+    numQuantity.Text = "";
+    Price.Text = "";
+    Discount.Text = "";
+    ExtendedPrice.Text = "";</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
   <Name>ProductSearch</Name>
   <ClientScriptIncludes />
   <ClientResourceKeys />
@@ -29,9 +55,13 @@
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
               <MethodName>Product_ChangeAction</MethodName>
-              <CSharpCodeSnippet>//onchange event - need to update the parent property before running business rule
-	Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
-    if (_entity != null) {
+              <CSharpCodeSnippet>//onchange event - need to update the parent property before running business rule    
+    Sage.Entity.Interfaces.ISalesOrderItem _entity = null;
+    
+    Sage.Entity.Interfaces.IProduct selectedProduct = Product.LookupResultValue as Sage.Entity.Interfaces.IProduct;
+    if (selectedProduct != null) {
+        _entity = Sage.Platform.EntityFactory.Create&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;();
+       
         object _parent = GetParentEntity();
         if (DialogService.ChildInsertInfo != null) {
             if (_parent != null) {
@@ -40,12 +70,10 @@
                 }
             }
         }
+
+        _entity.Product = selectedProduct;
+        _entity.SaveProductToSalesOrderItem();
     }
-
-
- 	object[] objarray = new object[] { this.BindingSource.Current };
-     Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.SaveProductToSalesOrderItem", objarray);
-	
     
     //update the form with the results
     if (_entity != null) {
@@ -69,7 +97,7 @@
       Response.Redirect(Request.Url.ToString());
     }
 	
-	UPC.Focus();</CSharpCodeSnippet>
+	numQuantity.Focus();</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -374,7 +402,7 @@
         Price.Text = _entity.Price.GetValueOrDefault().ToString();
         Discount.Text = _entity.Discount.GetValueOrDefault().ToString();
         ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();      
-                
+        Page.Session.Add("CurrentItem", _entity);        
     }
 	
 	Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
@@ -446,17 +474,18 @@
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
               <MethodName>numQuantity_ChangeAction</MethodName>
-              <CSharpCodeSnippet> Sage.Entity.Interfaces.ISalesOrderItem _entity = Page.Session["CurrentItem"] as Sage.Entity.Interfaces.ISalesOrderItem;
+              <CSharpCodeSnippet>Sage.Entity.Interfaces.ISalesOrderItem _entity = Page.Session["CurrentItem"] as Sage.Entity.Interfaces.ISalesOrderItem;
      //object[] objarray = new object[] { this.BindingSource.Current };
      //Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.CalculateExtendedPrice", objarray);
 
      if (_entity != null) {
         _entity.Quantity = Double.Parse(numQuantity.Text);
 
-        //_entity.CalculateExtendedPrice();
-        //ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
+        _entity.CalculateExtendedPrice();
+        ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
         //ExtendedPrice.Text = _entity.CalculateExtendedPrice().ToString();
-        ExtendedPrice.Text = ((double)_entity.CalculatedPrice.GetValueOrDefault() * _entity.Quantity.GetValueOrDefault()).ToString();
+        //ExtendedPrice.Text = ((double)_entity.CalculatedPrice.GetValueOrDefault() * _entity.Quantity.GetValueOrDefault()).ToString();
+		Page.Session["CurrentItem"] = _entity;
     }
     Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
     if (refresher != null) {
@@ -464,8 +493,7 @@
     }
     else {  
       Response.Redirect(Request.Url.ToString());
-    }
-</CSharpCodeSnippet>
+    }</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -623,7 +651,7 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <ButtonType>Icon</ButtonType>
-        <Image>[Localization!Global_Images:Save_New16x16]</Image>
+        <Image>[Localization!Global_Images:Save_Clear16x16]</Image>
         <OnClientClick />
         <OnClickAction>
           <ResourceKey>cmdSaveAndNew</ResourceKey>
@@ -657,11 +685,10 @@
         if (existsInOrder.Count() &gt; 0) {
             //If an existing item is requested, update the quantity  
             foreach (Sage.Entity.Interfaces.ISalesOrderItem item in existsInOrder) {
-                item.Quantity = _entity.Quantity;
-
                 Sage.Entity.Interfaces.ISalesOrderItem dbitem =
                     Sage.Platform.EntityFactory.GetById&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;(item.Id);
                 dbitem.Quantity = _entity.Quantity;
+				dbitem.ExtendedPrice = _entity.ExtendedPrice;
                 dbitem.Save();                
             }
             
@@ -709,6 +736,39 @@
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>cmdSaveandClose</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:Save_16x16]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>cmdSaveandClose</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>cmdSaveandClose_ClickAction</MethodName>
+              <CSharpCodeSnippet>//Call the same save routine as save and new, but then close the form
+cmdSaveAndNew_ClickAction(sender, e);</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>DialogOK</DialogActionResult>
           <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
           <RefreshData>False</RefreshData>
