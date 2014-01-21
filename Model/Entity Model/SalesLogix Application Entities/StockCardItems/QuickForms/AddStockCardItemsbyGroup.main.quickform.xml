@@ -7,7 +7,7 @@
       <ResourceKey>41cd1417-e6e9-4e4a-8eca-b36ebcb34452</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
-          <MethodName />
+          <MethodName>quickformload0</MethodName>
           <CSharpCodeSnippet>// TAC Code Here
 //Get Current user
  //   Sage.SalesLogix.Security.SLXUserService usersvc = (Sage.SalesLogix.Security.SLXUserService)Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.Security.IUserService&gt;();
@@ -25,11 +25,11 @@
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
-      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <RunOnEveryRePaint>True</RunOnEveryRePaint>
       <DialogActionResult>NoResult</DialogActionResult>
       <PerformsUpdate>False</PerformsUpdate>
       <AppliedSecurity />
-      <RefreshData>False</RefreshData>
+      <RefreshData>True</RefreshData>
     </FormActionDefinition>
   </LoadActions>
   <Name>AddStockCardItemsbyGroup</Name>
@@ -101,7 +101,7 @@
           <ResourceKey>lueProductGroup</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
-              <MethodName />
+              <MethodName>lueProductGroup_ChangeAction</MethodName>
               <CSharpCodeSnippet>// TAC Code Here 
 Sage.Entity.Interfaces.IStockCardItems entity = (Sage.Entity.Interfaces.IStockCardItems)this.BindingSource.Current;
     Sage.Entity.Interfaces.IAccount Account = (Sage.Entity.Interfaces.IAccount)this.GetParentEntity();
@@ -207,7 +207,7 @@ Sage.Entity.Interfaces.IStockCardItems entity = (Sage.Entity.Interfaces.IStockCa
             <OperatorCode>!=</OperatorCode>
             <PickListName />
             <PropertyName />
-            <FilterValue> </FilterValue>
+            <FilterValue />
           </LookupPreFilter>
         </LookupPreFilters>
       </QFSLXLookup>
@@ -320,7 +320,7 @@ Sage.Entity.Interfaces.IStockCardItems entity = (Sage.Entity.Interfaces.IStockCa
           <ResourceKey>QFButton</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
-              <MethodName />
+              <MethodName>QFButton_ClickAction</MethodName>
               <CSharpCodeSnippet>// TAC Code Here
     Sage.Entity.Interfaces.IStockCardItems entity = (Sage.Entity.Interfaces.IStockCardItems)this.BindingSource.Current;
     Sage.Entity.Interfaces.IAccount Account = (Sage.Entity.Interfaces.IAccount)this.GetParentEntity();
@@ -328,16 +328,22 @@ Sage.Entity.Interfaces.IStockCardItems entity = (Sage.Entity.Interfaces.IStockCa
 
 
     entity.AddProductGroupItems(txtProductCategoryid.Text , Account, Double.Parse(Margin.Text));
-ScriptManager.RegisterStartupScript(this, GetType(), "refresh", "window.setTimeout('window.location.reload(true);',50);", true);
-</CSharpCodeSnippet>
+//ScriptManager.RegisterStartupScript(this, GetType(), "refresh", "window.setTimeout('window.location.reload(true);',50);", true);
+ Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher != null) {
+      refresher.RefreshAll();
+    }
+    else {  
+      Response.Redirect(Request.Url.ToString());
+    }</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
+          <DialogActionResult>DialogOK</DialogActionResult>
+          <PerformsUpdate>True</PerformsUpdate>
           <AppliedSecurity />
-          <RefreshData>False</RefreshData>
+          <RefreshData>True</RefreshData>
         </OnClickAction>
       </QFButton>
     </Control>
