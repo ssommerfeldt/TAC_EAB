@@ -7,7 +7,7 @@
       <ResourceKey>7f8cbbdd-6b4b-4ed3-a961-136b3e6dc434</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
-          <MethodName />
+          <MethodName>quickformload0</MethodName>
           <CSharpCodeSnippet>// TAC Code Here
     //Get Current user
        Sage.SalesLogix.Security.SLXUserService usersvc = (Sage.SalesLogix.Security.SLXUserService)Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.Security.IUserService&gt;();
@@ -105,11 +105,11 @@
         <LookupPreFilters>
           <LookupPreFilter>
             <LookupEntityName>IAccount</LookupEntityName>
-            <PropertyType />
+            <PropertyType>System.String</PropertyType>
             <OperatorCode>!=</OperatorCode>
             <PickListName />
-            <PropertyName />
-            <FilterValue>""</FilterValue>
+            <PropertyName>AccountName</PropertyName>
+            <FilterValue> </FilterValue>
           </LookupPreFilter>
         </LookupPreFilters>
       </QFSLXLookup>
@@ -163,7 +163,7 @@
           <ResourceKey>QFButton</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
-              <MethodName />
+              <MethodName>QFButton_ClickAction</MethodName>
               <CSharpCodeSnippet>// TAC Code Here
     //==============================================================================
     // Create new TEMP SalesItems using External Executable
