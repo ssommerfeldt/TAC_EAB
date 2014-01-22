@@ -377,5 +377,84 @@ Module StockCardFunctions
         Return returnValue
     End Function
 
+    Sub AddEditStockCardItem(ByVal SourceStockCardID As String, ByVal TargetAccountid As String, ByVal strSLXConnectionString As String)
+        '============================================================
+        ' get Default Data row from StockCard and Product info
+        '============================================================
+        Dim MyDataRow As DataRow = GetCopyStockCard(SourceStockCardID, strSLXConnectionString)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM STOCKCARDITEMS WHERE ACCOUNTID = '" & TargetAccountid & "' AND PRODUCTID ='" & MyDataRow("PRODUCTID") & "'"
+
+        ' //Extended price = price - (price * discount) * quantity
+        Try
+            objConn.Open(strSLXConnectionString)
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If .EOF Then
+                    'adding
+                    .AddNew()
+                    '.Fields("STOCKCARDITEMSID").Value = Application.BasicFunctions.GetIDFor("STOCKCARDITEMS")                    .Fields("ACCOUNTID").Value = TargetAccountid                    '.Fields("CREATEUSER").Value = ""                    '.Fields("CREATEDATE").Value = ""                    '.Fields("MODIFYUSER").Value = ""                    '.Fields("MODIFYDATE").Value = ""                    .Fields("PRODUCTID").Value = MyDataRow("PRODUCTID")                    .Fields("MARGIN").Value = MyDataRow("MARGIN")                    .Fields("TIMPRODCATEGORYID").Value = MyDataRow("TIMPRODCATEGORYID")                    .Fields("CATEGORYNAME").Value = MyDataRow("CATEGORYNAME")                    .Fields("ACCOUNTNAME").Value = MyDataRow("ACCOUNTNAME")                    .Fields("PRODUCTDESCRIPTION").Value = MyDataRow("PRODUCTDESCRIPTION")                    .Fields("COMPANYID").Value = MyDataRow("COMPANYID")                    .Fields("SECCODEID").Value = MyDataRow("SECCODEID")                    .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")                    '.Fields("LASTORDER").Value = ""                    '.Fields("LASTORDER2").Value = ""                    '.Fields("LASTORDER3").Value = ""                    '.Fields("LASTORDER4").Value = ""                    '.Fields("LASTORDER5").Value = ""                    '.Fields("LASTORDER6").Value = ""                    '.Fields("LASTORDER7").Value = ""                    '.Fields("LASTORDER8").Value = ""                    '.Fields("LASTORDER9").Value = ""                    '.Fields("LASTORDER10").Value = ""                    '.Fields("LASTORDER11").Value = ""                    '.Fields("LASTORDER12").Value = ""
+                    
+
+                Else
+                    '=======================================
+                    'updating
+                    '=======================================
+                    '.Fields("STOCKCARDITEMSID").Value = Application.BasicFunctions.GetIDFor("STOCKCARDITEMS")                    '.Fields("ACCOUNTID").Value = ""                    '.Fields("CREATEUSER").Value = ""                    '.Fields("CREATEDATE").Value = ""                    .Fields("MODIFYUSER").Value = "ADMIN"                    .Fields("MODIFYDATE").Value = Now                    .Fields("PRODUCTID").Value = MyDataRow("PRODUCTID")                    .Fields("MARGIN").Value = MyDataRow("MARGIN")                    .Fields("TIMPRODCATEGORYID").Value = MyDataRow("TIMPRODCATEGORYID")                    .Fields("CATEGORYNAME").Value = MyDataRow("CATEGORYNAME")                    .Fields("ACCOUNTNAME").Value = MyDataRow("ACCOUNTNAME")                    .Fields("PRODUCTDESCRIPTION").Value = MyDataRow("PRODUCTDESCRIPTION")                    .Fields("COMPANYID").Value = MyDataRow("COMPANYID")                    .Fields("SECCODEID").Value = MyDataRow("SECCODEID")                    .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")                    '.Fields("LASTORDER").Value = ""                    '.Fields("LASTORDER2").Value = ""                    '.Fields("LASTORDER3").Value = ""                    '.Fields("LASTORDER4").Value = ""                    '.Fields("LASTORDER5").Value = ""                    '.Fields("LASTORDER6").Value = ""                    '.Fields("LASTORDER7").Value = ""                    '.Fields("LASTORDER8").Value = ""                    '.Fields("LASTORDER9").Value = ""                    '.Fields("LASTORDER10").Value = ""                    '.Fields("LASTORDER11").Value = ""                    '.Fields("LASTORDER12").Value = ""
+
+                End If
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+        '====================================================
+        
+
+    End Sub
+    Function GetCopyStockCard(ByVal StockCardItemID, ByVal strConn) As DataRow
+        Dim objConn As New OleDbConnection(strConn)
+        Dim returnDataRow As DataRow
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "  SELECT     * "
+            SQL = SQL & " FROM         sysdba.STOCKCARDITEMS AS sci "
+            SQL = SQL & " WHERE     (sci.STOCKCARDITEMSID = '" & StockCardItemID & "')"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+            ' There is only One Row but this seemed like the easiest way to get a Data Row.
+            For Each row As DataRow In dt.Rows
+                returnDataRow = row
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Dim EventMessage As String
+            EventMessage = ex.Message & Chr(10) & Chr(13) & "In GetCopyStockCard"
+            WriteStatusLog(EventMessage)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+
+        Return returnDataRow
+    End Function
+
 
 End Module
