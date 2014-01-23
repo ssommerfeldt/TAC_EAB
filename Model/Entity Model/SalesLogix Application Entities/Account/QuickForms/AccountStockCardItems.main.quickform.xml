@@ -2,7 +2,74 @@
 <QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d8c2a451-f9e2-4fcc-b5ca-282981e5c243" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
   <ActiveControl />
   <ImagePath />
-  <LoadActions />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>9d1a2318-a96d-41c7-9042-022c34bc2d5e</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName />
+          <CSharpCodeSnippet>// TAC Code Here
+
+
+        Sage.Entity.Interfaces.IAccount account = this.BindingSource.Current as Sage.Entity.Interfaces.IAccount;
+        string SQL = "SELECT    distinct sysdba.PRODUCT.WAREHOUSEID";
+        SQL += " FROM         sysdba.STOCKCARDITEMS INNER JOIN";
+        SQL += "                      sysdba.PRODUCT ON sysdba.STOCKCARDITEMS.PRODUCTID = sysdba.PRODUCT.PRODUCTID";
+        SQL += "                      Where ACCOUNTID = '" + account.Id.ToString() + "'";
+
+        cboWareHouse.Items.Clear();
+
+        // Generate In SQL statement
+        Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.Data.IDataService&gt;();
+        //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+        using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
+        {
+            conn.Open();
+            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(SQL, conn))
+            {
+                System.Data.OleDb.OleDbDataReader r = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                while (r.Read())
+                {
+                    cboWareHouse.Items.Add(r["WAREHOUSEID"].ToString());
+
+                    //returnValue = r["TotalQty"].ToString(); 
+
+                }
+                r.Close();
+            }
+        }
+
+        // Make the account id available to the grid's condition
+        var ccs = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+        ccs.CurrentContext["WareHouseId"] = "";
+
+        if (cboWareHouse.SelectedIndex != -1)
+        {
+            if (cboWareHouse.Items.Count &gt; 0)
+            {
+                // User Has  Selected Something
+                ccs.CurrentContext["WareHouseId"] = cboWareHouse.Items[cboWareHouse.SelectedIndex].Text;
+            }
+        }
+        else
+        {
+            if (cboWareHouse.Items.Count &gt; 0)
+            {
+                // User Has NOT Selected Anything
+                ccs.CurrentContext["WareHouseId"] = cboWareHouse.Items[0].Text;
+            }
+        }
+</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
   <Name>AccountStockCardItems</Name>
   <ClientScriptIncludes />
   <ClientResourceKeys />
@@ -142,10 +209,58 @@
         </OnRowSelectedAction>
       </QFDataGrid>
     </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFListBox, Sage.Platform.QuickForms.QFControls">
+      <QFListBox>
+        <Column>0</Column>
+        <Row>1</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>cboWareHouse</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <SelectedIndex>-1</SelectedIndex>
+        <Items />
+        <OnChangeAction>
+          <ResourceKey>cboWareHouse</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>cboWareHouse_ChangeAction</MethodName>
+              <CSharpCodeSnippet>// TAC Code Here
+    // User Has  Selected Something
+    var ccs = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+    ccs.CurrentContext["WareHouseId"] = cboWareHouse.Items[cboWareHouse.SelectedIndex].Text;
+
+    Sage.Platform.WebPortal.Services.IPanelRefreshService refresher1 = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    if (refresher1 != null)
+    {
+        refresher1.RefreshAll();
+    }
+    else
+    {
+        Response.Redirect(Request.Url.ToString());
+    }</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <DataSource />
+        <TextField />
+        <ValueField />
+        <MultiSelect>false</MultiSelect>
+      </QFListBox>
+    </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.SDataGrid.QFSDataGrid, Sage.SalesLogix.QuickForms.QFControls">
       <QFSDataGrid>
         <Column>0</Column>
-        <Row>1</Row>
+        <Row>2</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>gdrStockCrdItems</ControlId>
@@ -328,7 +443,20 @@
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
         </Columns>
-        <ConditionalWhere>function() { return 'Account.Id eq "' + Sage.Utility.getCurrentEntityId() + '"'; }</ConditionalWhere>
+        <ConditionalWhere>function() { 
+ //TAC Code Here
+			             var clientContextService = Sage.Services.getService("ClientContextService");
+			             var warehouseid = clientContextService.getValue("WareHouseId");
+			             var strReturn = '';
+			             if (warehouseid == '') {
+			                 strReturn = 'Account.Id eq "' + Sage.Utility.getCurrentEntityId() + '"';
+			             }
+			             else {
+			                 strReturn = 'Account.Id eq "' + Sage.Utility.getCurrentEntityId() + '" and Product.WarehouseID eq "' + warehouseid + '"';
+			             }
+			             return strReturn;
+
+}</ConditionalWhere>
         <Select>
           <string>Id</string>
           <string>Product.Id</string>
@@ -396,6 +524,45 @@
     </Control>
   </Controls>
   <ToolControls>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>cmdCopyStockCard</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:Import_Leads_24x24]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>cmdCopyStockCard</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.InsertChildDialogActionItem, Sage.Platform.QuickForms">
+            <InsertChildDialogActionItem>
+              <SmartPart>CopyStockCard</SmartPart>
+              <Height>400</Height>
+              <Width>600</Width>
+              <Top>0</Top>
+              <Left>0</Left>
+              <ResourceKey>a7a45ed5-867a-4e61-9111-10c50435daa7</ResourceKey>
+              <ParentRelationshipPropertyName>Account</ParentRelationshipPropertyName>
+              <DataSource>dsStockCardItemss</DataSource>
+              <CenterDialog>True</CenterDialog>
+            </InsertChildDialogActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
       <QFElementSpacer>
         <Column>0</Column>
@@ -487,7 +654,7 @@
               <Width>600</Width>
               <Top>0</Top>
               <Left>0</Left>
-              <ResourceKey>1fbccfae-9d1b-4778-b818-063bb2b77c67</ResourceKey>
+              <ResourceKey>2a93ad03-cb9a-469c-aacb-e7afcd34e18a</ResourceKey>
               <ParentRelationshipPropertyName>Account</ParentRelationshipPropertyName>
               <DataSource>dsStockCardItemss</DataSource>
               <CenterDialog>True</CenterDialog>
@@ -496,9 +663,9 @@
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>True</PerformsUpdate>
+          <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
-          <RefreshData>True</RefreshData>
+          <RefreshData>False</RefreshData>
         </OnClickAction>
       </QFButton>
     </Control>
