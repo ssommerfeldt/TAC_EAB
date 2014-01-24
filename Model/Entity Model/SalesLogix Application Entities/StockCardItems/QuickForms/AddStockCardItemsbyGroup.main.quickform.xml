@@ -320,7 +320,7 @@ Sage.Entity.Interfaces.IStockCardItems entity = (Sage.Entity.Interfaces.IStockCa
           <ResourceKey>QFButton</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
-              <MethodName />
+              <MethodName>QFButton_ClickAction</MethodName>
               <CSharpCodeSnippet>// TAC Code Here
     Sage.Entity.Interfaces.IStockCardItems entity = (Sage.Entity.Interfaces.IStockCardItems)this.BindingSource.Current;
     Sage.Entity.Interfaces.IAccount Account = (Sage.Entity.Interfaces.IAccount)this.GetParentEntity();
