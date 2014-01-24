@@ -84,6 +84,9 @@
         SKU.Text = _entity.ActualID;
         txtFamily.Text = _entity.Family;
         numQuantity.Text = _entity.Quantity.GetValueOrDefault().ToString();
+		if(numQuantity.Text == "0") {
+			numQuantity.Text = "";
+		}
         Price.Text = _entity.Price.GetValueOrDefault().ToString();
         Discount.Text = _entity.Discount.GetValueOrDefault().ToString();
         ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
@@ -479,8 +482,12 @@
      //Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ISalesOrderItem&gt;("SalesOrderItem.CalculateExtendedPrice", objarray);
 
      if (_entity != null) {
-        _entity.Quantity = Double.Parse(numQuantity.Text);
-
+		if(numQuantity.Text == "" ) {
+			_entity.Quantity = 0;
+		} else {
+        	_entity.Quantity = Double.Parse(numQuantity.Text);
+		}
+		
         _entity.CalculateExtendedPrice();
         ExtendedPrice.Text = _entity.ExtendedPrice.GetValueOrDefault().ToString();
         //ExtendedPrice.Text = _entity.CalculateExtendedPrice().ToString();
@@ -616,7 +623,7 @@
         <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>5cded1f4d434eb7f01a28df8b4b4b</ControlId>
+        <ControlId>cded1f4d434eb7f01a28df8b4b4b</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />
