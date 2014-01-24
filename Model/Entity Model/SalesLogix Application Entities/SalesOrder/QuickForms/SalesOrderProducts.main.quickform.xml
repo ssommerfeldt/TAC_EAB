@@ -709,7 +709,7 @@ protected void UpdateFilterList() {
             <Width>8</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
-            <DateOnly>false</DateOnly>
+            <DateOnly>true</DateOnly>
           </QFSDataDateTimeCol>
         </Columns>
         <ConditionalWhere>function () {
@@ -885,6 +885,41 @@ protected void UpdateFilterList() {
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>hidCheckedFilters</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFHidden>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls">
+      <QFDataSource>
+        <Column>0</Column>
+        <Row>1</Row>
+        <Visible>false</Visible>
+        <HotKey>48</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>dsSalesOrderItems2</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <EntityTypeName>SalesOrderItem</EntityTypeName>
+        <GetByMethod />
+        <GetByProperty>SalesOrderItems</GetByProperty>
+        <UseSmartSelection>true</UseSmartSelection>
+        <DataOptional>false</DataOptional>
+      </QFDataSource>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFHidden, Sage.Platform.QuickForms.QFControls">
+      <QFHidden>
+        <Column>0</Column>
+        <Row>0</Row>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>hidCheckedFilters2</ControlId>
         <DataBindings />
         <ControlLabelPlacement>none</ControlLabelPlacement>
         <ExtendedProperties />
