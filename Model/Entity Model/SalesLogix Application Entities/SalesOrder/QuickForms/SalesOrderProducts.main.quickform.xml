@@ -694,6 +694,23 @@ protected void UpdateFilterList() {
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
+          <QFSDataDateTimeCol>
+            <StyleScheme />
+            <DataField>ModifyDate</DataField>
+            <ColumnId>cebab5b5-2612-4def-899c-9cd80371c7ca</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>Descending</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>ModifyDate</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>8</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <DateOnly>true</DateOnly>
+          </QFSDataDateTimeCol>
         </Columns>
         <ConditionalWhere>function () {
             //Modified 2014-1-8 PG
@@ -868,6 +885,41 @@ protected void UpdateFilterList() {
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>hidCheckedFilters</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFHidden>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls">
+      <QFDataSource>
+        <Column>0</Column>
+        <Row>1</Row>
+        <Visible>false</Visible>
+        <HotKey>48</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>dsSalesOrderItems2</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <EntityTypeName>SalesOrderItem</EntityTypeName>
+        <GetByMethod />
+        <GetByProperty>SalesOrderItems</GetByProperty>
+        <UseSmartSelection>true</UseSmartSelection>
+        <DataOptional>false</DataOptional>
+      </QFDataSource>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFHidden, Sage.Platform.QuickForms.QFControls">
+      <QFHidden>
+        <Column>0</Column>
+        <Row>0</Row>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>hidCheckedFilters2</ControlId>
         <DataBindings />
         <ControlLabelPlacement>none</ControlLabelPlacement>
         <ExtendedProperties />

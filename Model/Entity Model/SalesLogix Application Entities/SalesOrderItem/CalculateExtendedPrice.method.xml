@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d05308b5-94ad-4b91-81e0-f6f53b6057d8" lastModifiedUtc="2014-01-13T19:25:46.7351901Z" name="CalculateExtendedPrice" returnType="Double" methodType="Rule" actionType="None" returnMode="Object">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d05308b5-94ad-4b91-81e0-f6f53b6057d8" lastModifiedUtc="2014-01-24T00:37:56.8233552Z" name="CalculateExtendedPrice" methodType="Rule" actionType="None" returnMode="None">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -7,7 +7,7 @@
   <parameter />
   <preExecuteTargets />
   <methodTargets>
-    <methodTarget id="857fb7ff-b757-4200-9c08-2b801432aa05" lastModifiedUtc="2009-05-19T20:14:54.9252508Z" targetType="Sage.SalesLogix.SalesOrder.SalesOrderItem, Sage.SalesLogix.BusinessRules" targetMethod="CalculateExtendedPrice" active="true">
+    <methodTarget id="b9be4870-6131-4315-a0c1-a45cd429d752" lastModifiedUtc="2014-01-24T18:26:26.3182392Z" targetType="EAB_Custom.SalesOrderItemExtension, EAB_Custom" targetMethod="CalculateExtendedPrice" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
