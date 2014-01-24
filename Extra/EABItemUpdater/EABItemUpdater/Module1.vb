@@ -26,6 +26,7 @@ Module Module1
         ParseCommandLine(s(1), _RoutinType, _strCon, _Args)
 
         WriteStatusLog("Started RoutineType " & _RoutinType & " " & Now.ToString)
+        'WriteStatusLog(s(1))
 
         '=========================================================
         ' Get Users AccountManagerId's WareHouse 
@@ -41,7 +42,7 @@ Module Module1
             Case "Account"
                 Dim separators2 As String = "="
                 Dim args2() As String = _Args.Split(separators2.ToCharArray)
-                If args2(0) = Chr(34) & "-Accountid" Then
+                If args2(0) = "-Accountid" Then
                     '============================================================
                     ' -a means Account switch next Parameter is the Accountid
                     '=============================================================

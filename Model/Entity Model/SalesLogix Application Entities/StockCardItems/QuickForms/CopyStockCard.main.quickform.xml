@@ -109,7 +109,7 @@
             <OperatorCode>!=</OperatorCode>
             <PickListName />
             <PropertyName>AccountName</PropertyName>
-            <FilterValue> </FilterValue>
+            <FilterValue />
           </LookupPreFilter>
         </LookupPreFilters>
       </QFSLXLookup>
@@ -136,7 +136,7 @@
         <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>9a45ac05c80454eb918096a6d3343d4</ControlId>
+        <ControlId>a45ac05c80454eb918096a6d3343d4</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />
@@ -163,7 +163,7 @@
           <ResourceKey>QFButton</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
-              <MethodName>QFButton_ClickAction</MethodName>
+              <MethodName />
               <CSharpCodeSnippet>// TAC Code Here
     //==============================================================================
     // Create new TEMP SalesItems using External Executable
@@ -188,6 +188,15 @@
     // Start the process
     process1.Start();
     process1.WaitForExit();
+    
+    //===========================================================================
+    // Cache SalesOrderItems in the Background
+    //============================================================================
+    string myargs2 = "\"-Accountid=" + lueTargetAccount.LookupResultValue.ToString() + "`" + datasvc.GetConnectionString() + "\"";
+    process1.StartInfo.Arguments = myargs2;
+    // Start the process
+    process1.Start();
+    
     //redirect to new salesorder
     Response.Redirect(String.Format("Account.aspx?entityId={0}", lueTargetAccount.LookupResultValue.ToString()));
                 
