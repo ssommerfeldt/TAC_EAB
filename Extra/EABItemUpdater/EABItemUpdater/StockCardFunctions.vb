@@ -146,7 +146,7 @@ Module StockCardFunctions
         Try
             objConn.Open()
             Dim SQL As String
-            SQL = "  SELECT     sci.STOCKCARDITEMSID, 'TEMP' AS SALESORDERID, p.NAME AS PRODUCT, p.FAMILY, sci.PRODUCTID, p.ACTUALID, p.DESCRIPTION, p.UNIT, "
+            SQL = "  SELECT     sci.STOCKCARDITEMSID, 'TEMP' AS SALESORDERID, p.NAME AS PRODUCT,  sci.CATEGORYNAME as FAMILY, sci.PRODUCTID, p.ACTUALID, p.DESCRIPTION, p.UNIT, "
             SQL = SQL & " 'StandarLine' AS LINETYPE, p.UNITOFMEASUREID, p.UPC, ISNULL(sci.MAX_STOCKLEVEL, 0) AS MAX_STOCKLEVEL, "
             SQL = SQL & "                     sci.ACCOUNTID AS TACACCOUNTID, sci.STOCKCARDITEMSID AS TACSTOCKCARDITEMID, "
             SQL = SQL & "                     sysdba.TIMPRODPRICEGROUP.TIMPRODPRICEGROUPID"
@@ -400,14 +400,66 @@ Module StockCardFunctions
                 If .EOF Then
                     'adding
                     .AddNew()
-                    '.Fields("STOCKCARDITEMSID").Value = Application.BasicFunctions.GetIDFor("STOCKCARDITEMS")                    .Fields("ACCOUNTID").Value = TargetAccountid                    '.Fields("CREATEUSER").Value = ""                    '.Fields("CREATEDATE").Value = ""                    '.Fields("MODIFYUSER").Value = ""                    '.Fields("MODIFYDATE").Value = ""                    .Fields("PRODUCTID").Value = MyDataRow("PRODUCTID")                    .Fields("MARGIN").Value = MyDataRow("MARGIN")                    .Fields("TIMPRODCATEGORYID").Value = MyDataRow("TIMPRODCATEGORYID")                    .Fields("CATEGORYNAME").Value = MyDataRow("CATEGORYNAME")                    .Fields("ACCOUNTNAME").Value = MyDataRow("ACCOUNTNAME")                    .Fields("PRODUCTDESCRIPTION").Value = MyDataRow("PRODUCTDESCRIPTION")                    .Fields("COMPANYID").Value = MyDataRow("COMPANYID")                    .Fields("SECCODEID").Value = MyDataRow("SECCODEID")                    .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")                    '.Fields("LASTORDER").Value = ""                    '.Fields("LASTORDER2").Value = ""                    '.Fields("LASTORDER3").Value = ""                    '.Fields("LASTORDER4").Value = ""                    '.Fields("LASTORDER5").Value = ""                    '.Fields("LASTORDER6").Value = ""                    '.Fields("LASTORDER7").Value = ""                    '.Fields("LASTORDER8").Value = ""                    '.Fields("LASTORDER9").Value = ""                    '.Fields("LASTORDER10").Value = ""                    '.Fields("LASTORDER11").Value = ""                    '.Fields("LASTORDER12").Value = ""
-                    
+                    '.Fields("STOCKCARDITEMSID").Value = Application.BasicFunctions.GetIDFor("STOCKCARDITEMS")
+                    .Fields("ACCOUNTID").Value = TargetAccountid
+                    '.Fields("CREATEUSER").Value = ""
+                    '.Fields("CREATEDATE").Value = ""
+                    '.Fields("MODIFYUSER").Value = ""
+                    '.Fields("MODIFYDATE").Value = ""
+                    .Fields("PRODUCTID").Value = MyDataRow("PRODUCTID")
+                    .Fields("MARGIN").Value = MyDataRow("MARGIN")
+                    .Fields("TIMPRODCATEGORYID").Value = MyDataRow("TIMPRODCATEGORYID")
+                    .Fields("CATEGORYNAME").Value = MyDataRow("CATEGORYNAME")
+                    .Fields("ACCOUNTNAME").Value = MyDataRow("ACCOUNTNAME")
+                    .Fields("PRODUCTDESCRIPTION").Value = MyDataRow("PRODUCTDESCRIPTION")
+                    .Fields("COMPANYID").Value = MyDataRow("COMPANYID")
+                    .Fields("SECCODEID").Value = MyDataRow("SECCODEID")
+                    .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")
+                    '.Fields("LASTORDER").Value = ""
+                    '.Fields("LASTORDER2").Value = ""
+                    '.Fields("LASTORDER3").Value = ""
+                    '.Fields("LASTORDER4").Value = ""
+                    '.Fields("LASTORDER5").Value = ""
+                    '.Fields("LASTORDER6").Value = ""
+                    '.Fields("LASTORDER7").Value = ""
+                    '.Fields("LASTORDER8").Value = ""
+                    '.Fields("LASTORDER9").Value = ""
+                    '.Fields("LASTORDER10").Value = ""
+                    '.Fields("LASTORDER11").Value = ""
+                    '.Fields("LASTORDER12").Value = ""
+
 
                 Else
                     '=======================================
                     'updating
                     '=======================================
-                    '.Fields("STOCKCARDITEMSID").Value = Application.BasicFunctions.GetIDFor("STOCKCARDITEMS")                    '.Fields("ACCOUNTID").Value = ""                    '.Fields("CREATEUSER").Value = ""                    '.Fields("CREATEDATE").Value = ""                    .Fields("MODIFYUSER").Value = "ADMIN"                    .Fields("MODIFYDATE").Value = Now                    .Fields("PRODUCTID").Value = MyDataRow("PRODUCTID")                    .Fields("MARGIN").Value = MyDataRow("MARGIN")                    .Fields("TIMPRODCATEGORYID").Value = MyDataRow("TIMPRODCATEGORYID")                    .Fields("CATEGORYNAME").Value = MyDataRow("CATEGORYNAME")                    .Fields("ACCOUNTNAME").Value = MyDataRow("ACCOUNTNAME")                    .Fields("PRODUCTDESCRIPTION").Value = MyDataRow("PRODUCTDESCRIPTION")                    .Fields("COMPANYID").Value = MyDataRow("COMPANYID")                    .Fields("SECCODEID").Value = MyDataRow("SECCODEID")                    .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")                    '.Fields("LASTORDER").Value = ""                    '.Fields("LASTORDER2").Value = ""                    '.Fields("LASTORDER3").Value = ""                    '.Fields("LASTORDER4").Value = ""                    '.Fields("LASTORDER5").Value = ""                    '.Fields("LASTORDER6").Value = ""                    '.Fields("LASTORDER7").Value = ""                    '.Fields("LASTORDER8").Value = ""                    '.Fields("LASTORDER9").Value = ""                    '.Fields("LASTORDER10").Value = ""                    '.Fields("LASTORDER11").Value = ""                    '.Fields("LASTORDER12").Value = ""
+                    '.Fields("STOCKCARDITEMSID").Value = Application.BasicFunctions.GetIDFor("STOCKCARDITEMS")
+                    '.Fields("ACCOUNTID").Value = ""
+                    '.Fields("CREATEUSER").Value = ""
+                    '.Fields("CREATEDATE").Value = ""
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("PRODUCTID").Value = MyDataRow("PRODUCTID")
+                    .Fields("MARGIN").Value = MyDataRow("MARGIN")
+                    .Fields("TIMPRODCATEGORYID").Value = MyDataRow("TIMPRODCATEGORYID")
+                    .Fields("CATEGORYNAME").Value = MyDataRow("CATEGORYNAME")
+                    .Fields("ACCOUNTNAME").Value = MyDataRow("ACCOUNTNAME")
+                    .Fields("PRODUCTDESCRIPTION").Value = MyDataRow("PRODUCTDESCRIPTION")
+                    .Fields("COMPANYID").Value = MyDataRow("COMPANYID")
+                    .Fields("SECCODEID").Value = MyDataRow("SECCODEID")
+                    .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")
+                    '.Fields("LASTORDER").Value = ""
+                    '.Fields("LASTORDER2").Value = ""
+                    '.Fields("LASTORDER3").Value = ""
+                    '.Fields("LASTORDER4").Value = ""
+                    '.Fields("LASTORDER5").Value = ""
+                    '.Fields("LASTORDER6").Value = ""
+                    '.Fields("LASTORDER7").Value = ""
+                    '.Fields("LASTORDER8").Value = ""
+                    '.Fields("LASTORDER9").Value = ""
+                    '.Fields("LASTORDER10").Value = ""
+                    '.Fields("LASTORDER11").Value = ""
+                    '.Fields("LASTORDER12").Value = ""
 
                 End If
 
@@ -421,9 +473,11 @@ Module StockCardFunctions
 
         End Try
         '====================================================
-        
+
+
 
     End Sub
+
     Function GetCopyStockCard(ByVal StockCardItemID, ByVal strConn) As DataRow
         Dim objConn As New OleDbConnection(strConn)
         Dim returnDataRow As DataRow

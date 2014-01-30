@@ -23,7 +23,12 @@ Module Module1
         Dim _RoutinType As String = ""
         Dim _Args As String = ""
 
-        ParseCommandLine(s(1), _RoutinType, _strCon, _Args)
+        Try
+            ParseCommandLine(s(1), _RoutinType, _strCon, _Args)
+        Catch ex As Exception
+            WriteStatusLog(ex.Message.ToString & " " & Now.ToString)
+        End Try
+
 
         WriteStatusLog("Started RoutineType " & _RoutinType & " " & Now.ToString)
         'WriteStatusLog(s(1))
@@ -40,15 +45,20 @@ Module Module1
             Case "All"
                 ProcessAllAccounts(_strCon)
             Case "Account"
-                Dim separators2 As String = "="
-                Dim args2() As String = _Args.Split(separators2.ToCharArray)
-                If args2(0) = "-Accountid" Then
-                    '============================================================
-                    ' -a means Account switch next Parameter is the Accountid
-                    '=============================================================
-                    _Accountid = args2(1)
-                End If
-                ProcessAccount(_Accountid, _strCon)
+                Try
+                    Dim separators2 As String = "="
+                    Dim args2() As String = _Args.Split(separators2.ToCharArray)
+                    If args2(0) = "-Accountid" Then
+                        '============================================================
+                        ' -a means Account switch next Parameter is the Accountid
+                        '=============================================================
+                        _Accountid = args2(1)
+                    End If
+                    ProcessAccount(_Accountid, _strCon)
+                Catch ex As Exception
+                    WriteStatusLog(ex.Message.ToString & " " & Now.ToString)
+                End Try
+                
 
             Case "CopyStockCard"
                 Dim strArgs As String = _Args.Replace("-CopyStockCard", String.Empty) ' Clean out the Copy Part
@@ -144,7 +154,8 @@ Module Module1
 
     Sub ProcessCopyStockCardItems(ByVal SourceAccountid As String, ByVal TargetAccountid As String, ByVal strConn As String)
     
-        Dim strSQL As String = "SELECT * FROM STOCKCARDITEMS WHERE ACCOUNTID ='" & SourceAccountid & "'"        
+        Dim strSQL As String = "SELECT * FROM STOCKCARDITEMS WHERE ACCOUNTID ='" & SourceAccountid & "'"
+
         Dim i As Integer = 0
         strConn = strConn.Replace("Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;TIMEZONE=NONE;SVRCERT=12345;ACTIVITYSECURITY=OFF" & Chr(34), "Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;")
 
@@ -172,7 +183,11 @@ Module Module1
             'WriteToEventLog(EventMessage, , Diagnostics.EventLogEntryType.Error)
         Finally
             If objConn.State = Data.ConnectionState.Open Then objConn.Close()
-        End Try                  
+        End Try
+
+
+
+
 
     End Sub
 

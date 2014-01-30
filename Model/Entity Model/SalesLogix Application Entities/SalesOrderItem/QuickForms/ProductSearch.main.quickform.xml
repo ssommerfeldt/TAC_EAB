@@ -493,14 +493,17 @@
         //ExtendedPrice.Text = _entity.CalculateExtendedPrice().ToString();
         //ExtendedPrice.Text = ((double)_entity.CalculatedPrice.GetValueOrDefault() * _entity.Quantity.GetValueOrDefault()).ToString();
 		Page.Session["CurrentItem"] = _entity;
+		//Call the same save routine as save and new, but then close the form
+		cmdSaveAndNew_ClickAction(sender, e);
     }
-    Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
-    if (refresher != null) {
-      refresher.RefreshAll();
-    }
-    else {  
-      Response.Redirect(Request.Url.ToString());
-    }</CSharpCodeSnippet>
+	
+    //Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
+    //if (refresher != null) {
+    //  refresher.RefreshAll();
+    //}
+    //else {  
+    //  Response.Redirect(Request.Url.ToString());
+    //}</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
