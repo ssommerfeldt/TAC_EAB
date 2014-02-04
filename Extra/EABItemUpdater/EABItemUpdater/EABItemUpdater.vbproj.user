@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>"-Accountid=AEAB3A00012O`Provider=SLXOLEDB.1;Data Source=SLX81GOLD;Persist Security Info=True;Password=dc;User ID=dc;Initial Catalog=EAB_SLX;Extended Properties=PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=12345;TIMEZONE=NONE;ACTIVITYSECURITY=OFF"</StartArguments>
+    <StartArguments>"-Accountid=AEAB3A00014K`Provider=SLXOLEDB.1;Persist Security Info=True;Password=;User ID=ADMIN;Initial Catalog=EAB_SLX;Data Source=SLX81GOLD;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;TIMEZONE=NONE;";"
+
+</StartArguments>
   </PropertyGroup>
 </Project>

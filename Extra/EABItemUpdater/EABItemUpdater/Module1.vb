@@ -31,7 +31,7 @@ Module Module1
 
 
         WriteStatusLog("Started RoutineType " & _RoutinType & " " & Now.ToString)
-        'WriteStatusLog(s(1))
+        WriteStatusLog(s(1))
 
         '=========================================================
         ' Get Users AccountManagerId's WareHouse 
