@@ -116,39 +116,85 @@ Module Module1
 
     Sub ProcessAccount(ByVal Accountid As String, ByVal strConn As String)
        
-            Dim SQL As String
-        SQL = " Select  s.STOCKCARDITEMSID"
-            SQL = SQL & " FROM         sysdba.STOCKCARDITEMS AS s INNER JOIN "
-            SQL = SQL & "                      sysdba.PRODUCT AS p1_ ON s.PRODUCTID = p1_.PRODUCTID"
-            SQL = SQL & " WHERE     (s.ACCOUNTID = '" & Accountid & "') AND (NOT (p1_.STATUS = 'Deleted'))"
-            'MsgBox(SQL)
+
+        '====================================================================================
+        ' New Functionality to only have a single WareHouse on the StockCard but 
+        '  The Order Needs to have all the Products for AccountManagers WareHouses
+        '====================================================================================
+
+      
         Dim i As Integer = 0
         strConn = strConn.Replace("Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;TIMEZONE=NONE;SVRCERT=12345;ACTIVITYSECURITY=OFF" & Chr(34), "Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;")
-
         '===================================================
+        '==================================================       
         Dim objConn As New OleDbConnection(strConn)
 
-       
         Try
             objConn.Open()
+            Dim SQL As String
+            SQL = "  SELECT     s.STOCKCARDITEMSID, p.PRODUCTID, p.WAREHOUSEID, 'TEMP' AS SALESORDERID, p.NAME AS PRODUCT, "
+            SQL = SQL & "                      s.CATEGORYNAME AS FAMILY,  p.ACTUALID, p.DESCRIPTION, p.UNIT, 'StandarLine' AS LINETYPE, p.UNITOFMEASUREID, p.UPC, "
+            SQL = SQL & "                      ISNULL(s.MAX_STOCKLEVEL, 0) AS MAX_STOCKLEVEL, s.ACCOUNTID AS TACACCOUNTID, s.STOCKCARDITEMSID AS TACSTOCKCARDITEMID,  s.DISTRIBUTORMARGIN, s.DISTRIBUTORPRICE, s.LISTPRICE, "
+            SQL = SQL & "          s.DEALERPRICE, s.MARGIN"
+            SQL = SQL & " FROM         sysdba.USERWHSE INNER JOIN"
+            SQL = SQL & " sysdba.SITE ON sysdba.USERWHSE.SITEID = sysdba.SITE.SITEID INNER JOIN"
+            SQL = SQL & "                      sysdba.SITEREFERENCE ON sysdba.SITE.SITEID = sysdba.SITEREFERENCE.SITEID INNER JOIN"
+            SQL = SQL & "                      sysdba.PRODUCT AS p ON sysdba.SITEREFERENCE.SITEREFDISPLAYNAME = p.WAREHOUSEID INNER JOIN"
+            SQL = SQL & "                      sysdba.STOCKCARDITEMS AS s INNER JOIN"
+            SQL = SQL & "                      sysdba.PRODUCT ON s.PRODUCTID = sysdba.PRODUCT.PRODUCTID INNER JOIN"
+            SQL = SQL & "                      sysdba.ACCOUNT ON s.ACCOUNTID = sysdba.ACCOUNT.ACCOUNTID ON sysdba.USERWHSE.USERID = sysdba.ACCOUNT.ACCOUNTMANAGERID AND "
+            SQL = SQL & "            p.ACTUALID = sysdba.PRODUCT.ACTUALID"
+            SQL = SQL & " WHERE     (s.ACCOUNTID = '" & Accountid & "') AND (NOT (p.STATUS = 'Deleted'))"
+            SQL = SQL & " Order by FAMILY , ACTUALID , WAREHOUSEID "
+
+            'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
-            Dim objReader As OleDbDataReader = objCMD.ExecuteReader()
-            If objReader.HasRows Then
-                Do While objReader.Read()
-                    i = i + 1
-                    AddEditSalesOrderItemFromStockCardItem(objReader.GetString(0), strConn, i)
-                    Console.WriteLine("Processes line " & i)
-                Loop
-               
-            End If
-            objReader.Close()
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                'returnDataRow = row
+                i = i + 1
+                AddEditSalesOrderItemFromStockCardItem(row, strConn, i.ToString(), Accountid)
+                Console.WriteLine("Processes line " & i)
+            Next row
+
         Catch ex As Exception
-            'Dim EventMessage As String
-            'EventMessage = ex.Message & Chr(10) & Chr(13) & "In Class CreateTicket " & "FindContactIDFromEmail Line 281"
-            'WriteToEventLog(EventMessage, , Diagnostics.EventLogEntryType.Error)
+            'MsgBox(ex.Message)
+            Dim EventMessage As String
+            EventMessage = ex.Message & Chr(10) & Chr(13) & "In ProcessSingleAccount"
+            WriteStatusLog(EventMessage)
         Finally
-            If objConn.State = Data.ConnectionState.Open Then objConn.Close()
+            If objConn.State = ConnectionState.Open Then objConn.Close()
         End Try
+        objConn = Nothing
+
+        'SQL = " Select  s.STOCKCARDITEMSID"
+        '    SQL = SQL & " FROM         sysdba.STOCKCARDITEMS AS s INNER JOIN "
+        '    SQL = SQL & "                      sysdba.PRODUCT AS p1_ ON s.PRODUCTID = p1_.PRODUCTID"
+        '    SQL = SQL & " WHERE     (s.ACCOUNTID = '" & Accountid & "') AND (NOT (p1_.STATUS = 'Deleted'))"
+        'MsgBox(SQL)
+        'Dim objConn As New OleDbConnection(strConn)
+        'Try
+        '    objConn.Open()
+        '    Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+        '    Dim objReader As OleDbDataReader = objCMD.ExecuteReader()
+        '    If objReader.HasRows Then
+        '        Do While objReader.Read()
+        '            i = i + 1
+        '            AddEditSalesOrderItemFromStockCardItem(objReader.GetString(0), strConn, i)
+        '            Console.WriteLine("Processes line " & i)
+        '        Loop
+
+        '    End If
+        '    objReader.Close()
+        'Catch ex As Exception
+        '    'Dim EventMessage As String
+        '    'EventMessage = ex.Message & Chr(10) & Chr(13) & "In Class CreateTicket " & "FindContactIDFromEmail Line 281"
+        '    'WriteToEventLog(EventMessage, , Diagnostics.EventLogEntryType.Error)
+        'Finally
+        '    If objConn.State = Data.ConnectionState.Open Then objConn.Close()
+        'End Try
 
     End Sub
 
@@ -177,6 +223,13 @@ Module Module1
 
             End If
             objReader.Close()
+
+            '===================================================
+            ' Process Account and Create Temp SalesOrderItems
+            '===================================================
+            ProcessAccount(TargetAccountid, strConn)
+
+
         Catch ex As Exception
             'Dim EventMessage As String
             'EventMessage = ex.Message & Chr(10) & Chr(13) & "In Class CreateTicket " & "FindContactIDFromEmail Line 281"

@@ -2,25 +2,25 @@
 
 Module StockCardFunctions
 
-    Sub AddEditSalesOrderItemFromStockCardItem(ByVal StockCardItemId As String, ByVal strConnection As String, ByVal LineNumber As String)
+    Sub AddEditSalesOrderItemFromStockCardItem(MyDataRow As DataRow, ByVal strConnection As String, ByVal LineNumber As String, ByVal Accountid As String)
 
         '============================================================
         ' get Default Data row from StockCard and Product info
         '============================================================
-        Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
         '=======================
         'Retrieving a recordset:
         '=======================
         Dim objConn As New ADODB.Connection()
         Dim objRS As New ADODB.Recordset
-        Dim strSQL As String = "SELECT * FROM SALESORDERITEMS WHERE SALESORDERID = 'TEMP' AND TACSTOCKCARDITEMID ='" & StockCardItemId & "'"
+        Dim strSQL As String = "SELECT * FROM SALESORDERITEMS WHERE SALESORDERID = 'TEMP' AND PRODUCTID ='" & MyDataRow("PRODUCTID") & "' AND TACACCOUNTID = '" & Accountid & "'"
 
         '=================================================================
         ' TAC Calculations
         '=================================================================
-        Dim Discount As Double = GetDefaultMargin(MyDataRow("TACSTOCKCARDITEMID"), MyDataRow("TIMPRODPRICEGROUPID"), MyDataRow("TACACCOUNTID"), strConnection)
-        Dim ListPrice As Double = Convert.ToDouble(GetField("LISTPRICE", "vProductPriceSheet", "PRODUCTID ='" & MyDataRow("PRODUCTID") & "'", strConnection))
-        Dim CalculatedPrice As Double = CalculateAdjustedPrice(ListPrice, Discount)
+        Dim Discount As Double = CDbl(MyDataRow("MARGIN")) 'GetDefaultMargin(MyDataRow("TACSTOCKCARDITEMID"), MyDataRow("TIMPRODPRICEGROUPID"), MyDataRow("TACACCOUNTID"), strConnection)
+        Dim ListPrice As Double = CDbl(MyDataRow("LISTPRICE")) 'Convert.ToDouble(GetField("LISTPRICE", "vProductPriceSheet", "PRODUCTID ='" & MyDataRow("PRODUCTID") & "'", strConnection))
+        Dim CalculatedPrice As Double = CDbl(MyDataRow("DEALERPRICE")) 'CalculateAdjustedPrice(ListPrice, Discount)
         ' //Extended price = price - (price * discount) * quantity
         Try
             objConn.Open(strConnection)
@@ -68,11 +68,7 @@ Module StockCardFunctions
                     '.Fields("ORIGPRODUCTDISCOUNT").Value = ""
                     .Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID")
                     .Fields("TACSTOCKCARDITEMID").Value = MyDataRow("TACSTOCKCARDITEMID")
-                    'Try
-                    '    .Fields("HRVStudyGroup_2006").Value = True
-                    'Catch ex As Exception
-
-                    'End Try
+                  
 
                 Else
                     '=======================================
@@ -427,6 +423,10 @@ Module StockCardFunctions
                     '.Fields("LASTORDER10").Value = ""
                     '.Fields("LASTORDER11").Value = ""
                     '.Fields("LASTORDER12").Value = ""
+                    .Fields("DISTRIBUTORMARGIN").Value = MyDataRow("DISTRIBUTORMARGIN")
+                    .Fields("DISTRIBUTORPRICE").Value = MyDataRow("DISTRIBUTORPRICE")
+                    .Fields("LISTPRICE").Value = MyDataRow("LISTPRICE")
+                    .Fields("DEALERPRICE").Value = MyDataRow("DEALERPRICE")
 
 
                 Else
@@ -460,6 +460,10 @@ Module StockCardFunctions
                     '.Fields("LASTORDER10").Value = ""
                     '.Fields("LASTORDER11").Value = ""
                     '.Fields("LASTORDER12").Value = ""
+                    .Fields("DISTRIBUTORMARGIN").Value = MyDataRow("DISTRIBUTORMARGIN")
+                    .Fields("DISTRIBUTORPRICE").Value = MyDataRow("DISTRIBUTORPRICE")
+                    .Fields("LISTPRICE").Value = MyDataRow("LISTPRICE")
+                    .Fields("DEALERPRICE").Value = MyDataRow("DEALERPRICE")
 
                 End If
 
