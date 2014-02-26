@@ -32,12 +32,12 @@ Module StockCardFunctions
                 If .EOF Then
                     'adding
                     .AddNew()
-                    '.Fields("SALESORDERITEMSID").Value = Application.BasicFunctions.GetIDFor("SALESORDERITEMS")
+                    .Fields("SALESORDERITEMSID").Value = GetNewSLXID("SALESORDERTIEMS", strConnection) 'Application.BasicFunctions.GetIDFor("SALESORDERITEMS")
                     .Fields("SALESORDERID").Value = "TEMP"
-                    '.Fields("CREATEUSER").Value = ""
-                    '.Fields("CREATEDATE").Value = ""
-                    '.Fields("MODIFYUSER").Value = ""
-                    '.Fields("MODIFYDATE").Value = ""
+                    .Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("CREATEDATE").Value = Now 'System.DateTime.UtcNow
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
                     .Fields("PRODUCT").Value = MyDataRow("PRODUCT")
                     '.Fields("PROGRAM").Value = ""
                     .Fields("PRICE").Value = ListPrice  '===============TAC Calculated
@@ -68,6 +68,10 @@ Module StockCardFunctions
                     '.Fields("ORIGPRODUCTDISCOUNT").Value = ""
                     .Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID")
                     .Fields("TACSTOCKCARDITEMID").Value = MyDataRow("TACSTOCKCARDITEMID")
+
+                    .Fields("ORIGPRODUCTPRICE").Value = MyDataRow("ORIGPRODUCTPRICE") 'ssommerfeldt February 24, 2014
+                    .Fields("ORIGPRODUCTDISCOUNT").Value = MyDataRow("ORIGPRODUCTDISCOUNT") ' ssommerfeldt February 24, 2014
+
                   
 
                 Else
@@ -78,8 +82,8 @@ Module StockCardFunctions
                     .Fields("SALESORDERID").Value = "TEMP"
                     '.Fields("CREATEUSER").Value = ""
                     '.Fields("CREATEDATE").Value = ""
-                    '.Fields("MODIFYUSER").Value = ""
-                    '.Fields("MODIFYDATE").Value = ""
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now 'System.DateTime.UtcNow
                     .Fields("PRODUCT").Value = MyDataRow("PRODUCT")
                     '.Fields("PROGRAM").Value = ""
                     .Fields("PRICE").Value = ListPrice  '===============TAC Calculated
@@ -110,6 +114,9 @@ Module StockCardFunctions
                     '.Fields("ORIGPRODUCTDISCOUNT").Value = ""
                     .Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID")
                     .Fields("TACSTOCKCARDITEMID").Value = MyDataRow("TACSTOCKCARDITEMID")
+
+                    .Fields("ORIGPRODUCTPRICE").Value = MyDataRow("ORIGPRODUCTPRICE") 'ssommerfeldt February 24, 2014
+                    .Fields("ORIGPRODUCTDISCOUNT").Value = MyDataRow("ORIGPRODUCTDISCOUNT") ' ssommerfeldt February 24, 2014
 
                 End If
 

@@ -135,7 +135,7 @@ Module Module1
             SQL = "  SELECT     s.STOCKCARDITEMSID, p.PRODUCTID, p.WAREHOUSEID, 'TEMP' AS SALESORDERID, p.NAME AS PRODUCT, "
             SQL = SQL & "                      s.CATEGORYNAME AS FAMILY,  p.ACTUALID, p.DESCRIPTION, p.UNIT, 'StandarLine' AS LINETYPE, p.UNITOFMEASUREID, p.UPC, "
             SQL = SQL & "                      ISNULL(s.MAX_STOCKLEVEL, 0) AS MAX_STOCKLEVEL, s.ACCOUNTID AS TACACCOUNTID, s.STOCKCARDITEMSID AS TACSTOCKCARDITEMID,  s.DISTRIBUTORMARGIN, s.DISTRIBUTORPRICE, s.LISTPRICE, "
-            SQL = SQL & "          s.DEALERPRICE, s.MARGIN"
+            SQL = SQL & "          s.DEALERPRICE, s.MARGIN , s.ORIGPRODUCTPRICE, s.ORIGPRODUCTDISCOUNT"
             SQL = SQL & " FROM         sysdba.USERWHSE INNER JOIN"
             SQL = SQL & " sysdba.SITE ON sysdba.USERWHSE.SITEID = sysdba.SITE.SITEID INNER JOIN"
             SQL = SQL & "                      sysdba.SITEREFERENCE ON sysdba.SITE.SITEID = sysdba.SITEREFERENCE.SITEID INNER JOIN"
@@ -243,6 +243,24 @@ Module Module1
 
 
     End Sub
+
+    Public Function GetNewSLXID(ByVal TableName As String, ByVal strConn As String) As String
+        Dim objRS As New ADODB.Recordset
+
+        Try
+            'Get a new id for a table and return that id
+            objRS.Open("SLX_DBIDS(" & TableName & ",1)", strConn)
+            GetNewSLXID = objRS.Fields(0).Value
+        Catch ex As Exception
+            GetNewSLXID = ""
+            'LogErrors("PartsHandlerExtractor - GetNewSLXID", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objRS.State = ADODB.ObjectStateEnum.adStateOpen Then
+                objRS.Close()
+                objRS = Nothing
+            End If
+        End Try
+    End Function
 
 
 
