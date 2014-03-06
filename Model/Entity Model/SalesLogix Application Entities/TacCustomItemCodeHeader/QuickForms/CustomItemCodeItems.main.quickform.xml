@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="2713a70f-3ee9-4040-a279-00660237a690" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+  <ActiveControl />
+  <ImagePath />
+  <LoadActions />
+  <Name>CustomItemCodeItems</Name>
+  <ClientScriptIncludes />
+  <ClientResourceKeys />
+  <ExtendedProperties />
+  <HelpFile />
+  <ReadOnly>false</ReadOnly>
+  <GeneratePrintView>false</GeneratePrintView>
+  <Controls>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDataGrid, Sage.SalesLogix.QuickForms.QFControls">
+      <QFDataGrid>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>grdTacCustomItemCodeItemss</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <DataSource>dsTacCustomItemCodeItemss</DataSource>
+        <EnablePaging>false</EnablePaging>
+        <EnableSorting>false</EnableSorting>
+        <Columns>
+          <QFDataGridCol>
+            <StyleScheme />
+            <DataField>CustomItemCode</DataField>
+            <ColumnId>0b453e0b-56fe-4e63-8f0a-6df3c3a6d5f8</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <SortField>CustomItemCode</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+          </QFDataGridCol>
+          <QFDataGridCol>
+            <StyleScheme />
+            <DataField>ItemNo</DataField>
+            <ColumnId>b24414ef-9b97-47b4-8d08-5e7a4fc0f2d8</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <SortField>ItemNo</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+          </QFDataGridCol>
+          <QFEditCol>
+            <StyleScheme />
+            <DataField />
+            <ColumnId>4d3cefc0-af86-49af-8dec-56fa7ad41d6b</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <DialogSpecs>
+              <SmartPart>AddEditCustomItemCode</SmartPart>
+              <Height>400</Height>
+              <Width>600</Width>
+              <Top>0</Top>
+              <Left>0</Left>
+              <EntityType>TacCustomItemCodeItems</EntityType>
+              <ResourceKey>ba7a62a4-a85a-4e6d-bc48-f054fde30f47</ResourceKey>
+              <CenterDialog>True</CenterDialog>
+            </DialogSpecs>
+            <AppliedSecurity />
+          </QFEditCol>
+          <QFDeleteCol>
+            <StyleScheme />
+            <DataField />
+            <ColumnId>18aa4ca5-fd03-469c-80a7-cd37bc18ea32</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <BusinessRule>Delete</BusinessRule>
+            <BusinessRuleObjectName>TacCustomItemCodeItems</BusinessRuleObjectName>
+            <BusinessRuleParameters />
+            <AppliedSecurity />
+          </QFDeleteCol>
+        </Columns>
+        <RenderVertical>false</RenderVertical>
+        <OnRowSelectedAction>
+          <ResourceKey>grdTacCustomItemCodeItemss</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnRowSelectedAction>
+      </QFDataGrid>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls">
+      <QFDataSource>
+        <Column>0</Column>
+        <Row>1</Row>
+        <Visible>false</Visible>
+        <HotKey>48</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>dsTacCustomItemCodeItemss</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <EntityTypeName>TacCustomItemCodeItems</EntityTypeName>
+        <GetByMethod />
+        <GetByProperty>TacCustomItemCodeItemss</GetByProperty>
+        <UseSmartSelection>true</UseSmartSelection>
+        <DataOptional>false</DataOptional>
+      </QFDataSource>
+    </Control>
+  </Controls>
+  <ToolControls>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>ec0d25bffd1049639e3e68ab63fc19cc</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>a8d3f5d0497e4906bc310e046c87efff</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFButton</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:plus_16x16]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>QFButton</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.InsertChildDialogActionItem, Sage.Platform.QuickForms">
+            <InsertChildDialogActionItem>
+              <SmartPart>AddEditCustomItemCode</SmartPart>
+              <Height>400</Height>
+              <Width>600</Width>
+              <Top>0</Top>
+              <Left>0</Left>
+              <ResourceKey>cfff2f4f-99d9-4012-ab60-8c3ee784e715</ResourceKey>
+              <ParentRelationshipPropertyName>TacCustomItemCodeHeader</ParentRelationshipPropertyName>
+              <DataSource>dsTacCustomItemCodeItemss</DataSource>
+              <CenterDialog>True</CenterDialog>
+            </InsertChildDialogActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
+  </ToolControls>
+  <Columns>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>100</Width>
+    </ColumnStyle>
+  </Columns>
+  <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>100</Height>
+    </RowStyle>
+  </Rows>
+  <Description />
+  <UseEntityNameAsTitle>true</UseEntityNameAsTitle>
+  <EntityTypeName>ITacCustomItemCodeHeader</EntityTypeName>
+  <DefaultNamespace>Sage.Entity.Interfaces</DefaultNamespace>
+  <AssemblyName>Sage.Entity.Interfaces</AssemblyName>
+</QuickForm>

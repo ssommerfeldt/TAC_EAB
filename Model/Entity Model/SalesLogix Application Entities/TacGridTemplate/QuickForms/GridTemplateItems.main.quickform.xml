@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="cc4ea80c-b402-48d7-8274-0dba8f25bca5" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+  <ActiveControl />
+  <ImagePath />
+  <LoadActions />
+  <Name>GridTemplateItems</Name>
+  <ClientScriptIncludes />
+  <ClientResourceKeys />
+  <ExtendedProperties />
+  <HelpFile />
+  <ReadOnly>false</ReadOnly>
+  <GeneratePrintView>false</GeneratePrintView>
+  <Controls>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDataGrid, Sage.SalesLogix.QuickForms.QFControls">
+      <QFDataGrid>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>grdTacGridTemplateFieldss</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <DataSource>dsTacGridTemplateFieldss</DataSource>
+        <EnablePaging>false</EnablePaging>
+        <EnableSorting>false</EnableSorting>
+        <Columns>
+          <QFDataGridCol>
+            <StyleScheme />
+            <DataField>Caption</DataField>
+            <ColumnId>5904b819-eeaf-41f3-8d9b-7758f86d611d</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <SortField>Caption</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+          </QFDataGridCol>
+          <QFDataGridCol>
+            <StyleScheme />
+            <DataField>FieldName</DataField>
+            <ColumnId>cf1536fd-ea09-4356-915e-605027073f39</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <SortField>FieldName</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+          </QFDataGridCol>
+          <QFEditCol>
+            <StyleScheme />
+            <DataField />
+            <ColumnId>4f774dec-9ab9-4341-8d9b-b5e9b9078886</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <DialogSpecs>
+              <SmartPart>AddEditGridTemplateFields</SmartPart>
+              <Height>400</Height>
+              <Width>600</Width>
+              <Top>0</Top>
+              <Left>0</Left>
+              <EntityType>TacGridTemplateFields</EntityType>
+              <ResourceKey>786b2b79-72de-497c-b08a-f7acbde63ac8</ResourceKey>
+              <CenterDialog>True</CenterDialog>
+            </DialogSpecs>
+            <AppliedSecurity />
+          </QFEditCol>
+          <QFDeleteCol>
+            <StyleScheme />
+            <DataField />
+            <ColumnId>e1de1ee4-9d38-4f4b-ac75-94775c7268a0</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <BusinessRule>Delete</BusinessRule>
+            <BusinessRuleObjectName>TacGridTemplate</BusinessRuleObjectName>
+            <BusinessRuleParameters />
+            <AppliedSecurity />
+          </QFDeleteCol>
+        </Columns>
+        <RenderVertical>false</RenderVertical>
+        <OnRowSelectedAction>
+          <ResourceKey>grdTacGridTemplateFieldss</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnRowSelectedAction>
+      </QFDataGrid>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls">
+      <QFDataSource>
+        <Column>0</Column>
+        <Row>1</Row>
+        <Visible>false</Visible>
+        <HotKey>48</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>dsTacGridTemplateFieldss</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <EntityTypeName>TacGridTemplateFields</EntityTypeName>
+        <GetByMethod />
+        <GetByProperty>TacGridTemplateFieldss</GetByProperty>
+        <UseSmartSelection>true</UseSmartSelection>
+        <DataOptional>false</DataOptional>
+      </QFDataSource>
+    </Control>
+  </Controls>
+  <ToolControls>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>a9f3905e2ced4d05aaa92cc3afbc6f26</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>d8aaa2845574445ad1e060f545df336</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFButton</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:plus_16x16]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>QFButton</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.InsertChildDialogActionItem, Sage.Platform.QuickForms">
+            <InsertChildDialogActionItem>
+              <SmartPart>AddEditGridTemplateFields</SmartPart>
+              <Height>400</Height>
+              <Width>600</Width>
+              <Top>0</Top>
+              <Left>0</Left>
+              <ResourceKey>a57ab0d9-ebcd-47c6-b8e1-92e96870e727</ResourceKey>
+              <ParentRelationshipPropertyName>TacGridTemplate</ParentRelationshipPropertyName>
+              <DataSource>dsTacGridTemplateFieldss</DataSource>
+              <CenterDialog>True</CenterDialog>
+            </InsertChildDialogActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
+  </ToolControls>
+  <Columns>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>100</Width>
+    </ColumnStyle>
+  </Columns>
+  <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>100</Height>
+    </RowStyle>
+  </Rows>
+  <Description />
+  <UseEntityNameAsTitle>true</UseEntityNameAsTitle>
+  <EntityTypeName>ITacGridTemplate</EntityTypeName>
+  <DefaultNamespace>Sage.Entity.Interfaces</DefaultNamespace>
+  <AssemblyName>Sage.Entity.Interfaces</AssemblyName>
+</QuickForm>
