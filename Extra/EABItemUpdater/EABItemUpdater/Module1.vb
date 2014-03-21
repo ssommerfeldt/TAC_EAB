@@ -26,8 +26,10 @@ Module Module1
         Dim _RoutinType As String = ""
         Dim _Args As String = ""
 
+
         Try
-            ParseCommandLine(s(1), _RoutinType, _strCon, _Args)
+                ParseCommandLine(s(1), _RoutinType, _strCon, _Args)
+                'WriteStatusLog(_Args & _strCon)
         Catch ex As Exception
             WriteStatusLog(ex.Message.ToString & " " & Now.ToString)
         End Try
@@ -77,7 +79,7 @@ Module Module1
 
         End Select
 
-            WriteStatusLog("Finnished RoutineType " & _RoutinType & " " & Now.ToString)
+        WriteStatusLog("Finnished RoutineType " & _RoutinType & " " & Now.ToString)
         Catch ex As Exception
             MsgBox(ex.Message & ex.InnerException.ToString)
         End Try
