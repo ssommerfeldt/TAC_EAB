@@ -45,7 +45,8 @@ Module Module1
         '==========================================================
         ' Get Current StockCard Items
         '==========================================================
-        Dim SQL = ""
+            Dim SQL = ""
+
         Select Case _RoutinType
             Case "All"
                 ProcessAllAccounts(_strCon)
