@@ -3,6 +3,9 @@
 Module Module1
 
     Sub Main()
+        Try
+
+       
         '=====================================================================================================================================
         ' Ensure the Commandline args are Enclosed by Double Quotes othersize it parses the Connection string into separate Arguments"
         '=====================================================================================================================================
@@ -23,8 +26,10 @@ Module Module1
         Dim _RoutinType As String = ""
         Dim _Args As String = ""
 
+
         Try
-            ParseCommandLine(s(1), _RoutinType, _strCon, _Args)
+                ParseCommandLine(s(1), _RoutinType, _strCon, _Args)
+                'WriteStatusLog(_Args & _strCon)
         Catch ex As Exception
             WriteStatusLog(ex.Message.ToString & " " & Now.ToString)
         End Try
@@ -40,7 +45,8 @@ Module Module1
         '==========================================================
         ' Get Current StockCard Items
         '==========================================================
-        Dim SQL = ""
+            Dim SQL = ""
+
         Select Case _RoutinType
             Case "All"
                 ProcessAllAccounts(_strCon)
@@ -58,7 +64,7 @@ Module Module1
                 Catch ex As Exception
                     WriteStatusLog(ex.Message.ToString & " " & Now.ToString)
                 End Try
-                
+
 
             Case "CopyStockCard"
                 Dim strArgs As String = _Args.Replace("-CopyStockCard", String.Empty) ' Clean out the Copy Part
@@ -75,6 +81,9 @@ Module Module1
         End Select
 
         WriteStatusLog("Finnished RoutineType " & _RoutinType & " " & Now.ToString)
+        Catch ex As Exception
+            MsgBox(ex.Message & ex.InnerException.ToString)
+        End Try
 
 
 
