@@ -47,6 +47,7 @@ Module Module1
         '==========================================================
             Dim SQL = ""
 
+
         Select Case _RoutinType
             Case "All"
                 ProcessAllAccounts(_strCon)
