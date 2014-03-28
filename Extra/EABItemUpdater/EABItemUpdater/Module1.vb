@@ -154,8 +154,10 @@ Module Module1
             SQL = SQL & "                      sysdba.PRODUCT ON s.PRODUCTID = sysdba.PRODUCT.PRODUCTID INNER JOIN"
             SQL = SQL & "                      sysdba.ACCOUNT ON s.ACCOUNTID = sysdba.ACCOUNT.ACCOUNTID ON sysdba.USERWHSE.USERID = sysdba.ACCOUNT.ACCOUNTMANAGERID AND "
             SQL = SQL & "            p.ACTUALID = sysdba.PRODUCT.ACTUALID"
-            SQL = SQL & " WHERE     (s.ACCOUNTID = '" & Accountid & "') AND (NOT (p.STATUS = 'Deleted'))"
+            SQL = SQL & " WHERE     (s.ACCOUNTID = '" & Accountid & "')AND (p.STATUS <> 'Deleted') AND (p.FAMILY <> 'Exchange Returns') AND (p.FAMILY <> 'Bulk Products')"
             SQL = SQL & " Order by FAMILY , ACTUALID , WAREHOUSEID "
+
+
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
