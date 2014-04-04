@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Data.SqlClient
+Imports System.Data.OleDb
 
 Module Module1
 
@@ -36,38 +37,519 @@ Module Module1
         'Call GetUserID()
         'Call GetPartsHandlerData("Account")
         'Call GetPartsHandlerData("History")
+        Console.WriteLine("------ New Products Start ------")
+        Call Process_NewProducts()
+        Console.WriteLine("------ Ne ProductProgram Start ------")
+        Call Process_NewPRODUCTPROGRAM()
+
+        Console.WriteLine("------ NeW SITE Start ------")
+        Call Process_NewSITE()
+
+        Console.WriteLine("------ Products Changed Start ------")
+        Call Process_ChangedProducts()
+        'Console.WriteLine("------ SalesOrderItems Start ------")
 
         Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
     End Sub
 
-    Private Sub GetSourceData()
-        Dim MASconnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSage500Constr)
-        Dim SLXConnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
-        ' get the source data
-        '=================================================================
-        ' Source SQL for Products
 
-        Using sourceConnection As New SqlConnection(MASconnectionString)
-            Dim myCommand As New SqlCommand("SELECT * FROM Products_Archive", sourceConnection)
-            sourceConnection.Open()
-            Dim reader As SqlDataReader = myCommand.ExecuteReader()
+   
 
-            ' open the destination data
-            Using destinationConnection As New SqlConnection(connectionString)
-                ' open the connection
-                destinationConnection.Open()
+    Private Sub Process_NewProducts()
 
-                Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
-                    bulkCopy.BatchSize = 500
-                    bulkCopy.NotifyAfter = 1000
-                    ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
-                    bulkCopy.DestinationTableName = "Products_Latest"
-                    bulkCopy.WriteToServer(reader)
-                End Using
-            End Using
-            reader.Close()
-        End Using
+        Dim i As Integer = 0
+        '===================================================
+        Dim ProductId As String = ""
+        'Dim ShippingId As String = ""
+        'Dim BillingId As String = ""
+        '==================================================       
+        Dim objConn As New OleDbConnection(strSage500Constr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "Select * from vdvMAS_to_SLX_Products_TAC"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                ProductId = GetNewSLXID("PRODUCT", strSLXConstr)
+                i = i + 1
+                AddEditPRODUCT(row, ProductId)
+
+                Console.WriteLine("Processes PRODUCT " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "PRODUCT ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
     End Sub
+
+    Public Sub AddEditPRODUCT(MyDataRow As DataRow, ByVal Productid As String)
+        '============================================================
+        ' get Default Data row from StockCard and Product info
+        '============================================================
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM PRODUCT WHERE PRODUCTID = '" & Productid & "'"
+
+
+        Try
+            objConn.Open(strSLXConstr)
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If .EOF Then
+                    'adding
+                    .AddNew()
+
+                    .Fields("CREATEDATE").Value = Now
+                    .Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    .Fields("PRODUCTID").Value = Productid
+
+                    .Fields("NAME").Value = MyDataRow("NAME")
+                    .Fields("DESCRIPTION").Value = MyDataRow("DESCRIPTION")
+                    .Fields("ACTUALID").Value = MyDataRow("ACTUALID")
+                    .Fields("FAMILY").Value = MyDataRow("FAMILY")
+                    .Fields("PRICE").Value = MyDataRow("PRICE")
+                    .Fields("PRODUCTGROUP").Value = MyDataRow("PRODUCTGROUP")
+                    .Fields("STATUS").Value = MyDataRow("STATUS")
+                    .Fields("UNIT").Value = MyDataRow("UNIT")
+                    .Fields("STOCKVOLUME").Value = MyDataRow("STOCKVOLUME")
+                    .Fields("STOCKWEIGHT").Value = MyDataRow("STOCKWEIGHT")
+                    .Fields("STOCKITEM").Value = MyDataRow("STOCKITEM")
+                    .Fields("PROGRAM").Value = MyDataRow("PROGRAM")
+                    .Fields("SUPPLIER").Value = MyDataRow("SUPPLIER")
+                    .Fields("VENDOR").Value = MyDataRow("VENDOR")
+                    .Fields("SITEID").Value = MyDataRow("SITEID")
+                    .Fields("WAREHOUSELOCATION").Value = MyDataRow("WAREHOUSELOCATION")
+                    .Fields("COMMISSIONABLE").Value = MyDataRow("COMMISSIONABLE")
+                    .Fields("TAXABLE").Value = MyDataRow("TAXABLE")
+                    .Fields("ACCOUNTINGPERIOD").Value = MyDataRow("ACCOUNTINGPERIOD")
+                    .Fields("GLACCOUNTNUMBER").Value = MyDataRow("GLACCOUNTNUMBER")
+                    .Fields("GLSUBACCOUNTNUMBER").Value = MyDataRow("GLSUBACCOUNTNUMBER")
+                    .Fields("DATAOWNER").Value = MyDataRow("DATAOWNER")
+                    .Fields("TYPE").Value = MyDataRow("TYPE")
+                    .Fields("FIXEDCOST").Value = MyDataRow("FIXEDCOST")
+                    .Fields("GLOBALSYNCID").Value = MyDataRow("GLOBALSYNCID")
+                    .Fields("APPID").Value = MyDataRow("APPID")
+                    .Fields("TICK").Value = MyDataRow("TICK")
+                    .Fields("COMMODITYGROUPID").Value = MyDataRow("COMMODITYGROUPID")
+                    .Fields("ACTIVEFLAG").Value = MyDataRow("ACTIVEFLAG")
+                    .Fields("SELLINGALLOWEDFLAG").Value = MyDataRow("SELLINGALLOWEDFLAG")
+                    .Fields("UNITOFMEASUREID").Value = MyDataRow("UNITOFMEASUREID")
+                    .Fields("SELLINGUOMID").Value = MyDataRow("SELLINGUOMID")
+                    .Fields("SELLINGUOMNUMBER").Value = MyDataRow("SELLINGUOMNUMBER")
+                    .Fields("CLASSIFICATION").Value = MyDataRow("CLASSIFICATION")
+                    .Fields("COMMODITYTYPE").Value = MyDataRow("COMMODITYTYPE")
+                    .Fields("MASITEMKEY").Value = MyDataRow("MASITEMKEY")
+                    .Fields("UPC").Value = MyDataRow("UPC")
+                    .Fields("MASITEMID").Value = MyDataRow("MASITEMID")
+                    .Fields("WAREHOUSEID").Value = MyDataRow("WAREHOUSEID")
+                    .Fields("CompanyID").Value = MyDataRow("CompanyID")
+                    .Fields("QtyOnHand").Value = MyDataRow("QtyOnHand")
+                    .Fields("QtyAvailable").Value = MyDataRow("QtyAvailable")
+                    .Fields("SurplusQty").Value = MyDataRow("SurplusQty")
+                    .Fields("QtyOnHold").Value = MyDataRow("QtyOnHold")
+                    .Fields("MaxStockLevel").Value = MyDataRow("MaxStockLevel")
+                    .Fields("MASProdPriceGroupKey").Value = MyDataRow("ProdPriceGroupKey")
+                 
+
+
+
+                Else
+                    '=======================================
+                    'updating
+                    '=======================================
+                    '.Fields("CREATEDATE").Value = Now
+                    '.Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    '.Fields("PRODUCTID").Value = Productid
+
+                    .Fields("NAME").Value = MyDataRow("NAME")
+                    '.Fields("DESCRIPTION").Value = MyDataRow("DESCRIPTION") ' Can Compare on TEXT Fields 
+                    .Fields("ACTUALID").Value = MyDataRow("ACTUALID")
+                    .Fields("FAMILY").Value = MyDataRow("FAMILY")
+                    .Fields("PRICE").Value = MyDataRow("PRICE")
+                    .Fields("PRODUCTGROUP").Value = MyDataRow("PRODUCTGROUP")
+                    .Fields("STATUS").Value = MyDataRow("STATUS")
+                    .Fields("UNIT").Value = MyDataRow("UNIT")
+                    .Fields("STOCKVOLUME").Value = MyDataRow("STOCKVOLUME")
+                    .Fields("STOCKWEIGHT").Value = MyDataRow("STOCKWEIGHT")
+                    .Fields("STOCKITEM").Value = MyDataRow("STOCKITEM")
+                    .Fields("PROGRAM").Value = MyDataRow("PROGRAM")
+                    .Fields("SUPPLIER").Value = MyDataRow("SUPPLIER")
+                    .Fields("VENDOR").Value = MyDataRow("VENDOR")
+                    .Fields("SITEID").Value = MyDataRow("SITEID")
+                    .Fields("WAREHOUSELOCATION").Value = MyDataRow("WAREHOUSELOCATION")
+                    .Fields("COMMISSIONABLE").Value = MyDataRow("COMMISSIONABLE")
+                    .Fields("TAXABLE").Value = MyDataRow("TAXABLE")
+                    .Fields("ACCOUNTINGPERIOD").Value = MyDataRow("ACCOUNTINGPERIOD")
+                    .Fields("GLACCOUNTNUMBER").Value = MyDataRow("GLACCOUNTNUMBER")
+                    .Fields("GLSUBACCOUNTNUMBER").Value = MyDataRow("GLSUBACCOUNTNUMBER")
+                    .Fields("DATAOWNER").Value = MyDataRow("DATAOWNER")
+                    .Fields("TYPE").Value = MyDataRow("TYPE")
+                    .Fields("FIXEDCOST").Value = MyDataRow("FIXEDCOST")
+                    .Fields("GLOBALSYNCID").Value = MyDataRow("GLOBALSYNCID")
+                    .Fields("APPID").Value = MyDataRow("APPID")
+                    .Fields("TICK").Value = MyDataRow("TICK")
+                    .Fields("COMMODITYGROUPID").Value = MyDataRow("COMMODITYGROUPID")
+                    .Fields("ACTIVEFLAG").Value = MyDataRow("ACTIVEFLAG")
+                    .Fields("SELLINGALLOWEDFLAG").Value = MyDataRow("SELLINGALLOWEDFLAG")
+                    .Fields("UNITOFMEASUREID").Value = MyDataRow("UNITOFMEASUREID")
+                    .Fields("SELLINGUOMID").Value = MyDataRow("SELLINGUOMID")
+                    .Fields("SELLINGUOMNUMBER").Value = MyDataRow("SELLINGUOMNUMBER")
+                    .Fields("CLASSIFICATION").Value = MyDataRow("CLASSIFICATION")
+                    .Fields("COMMODITYTYPE").Value = MyDataRow("COMMODITYTYPE")
+                    .Fields("MASITEMKEY").Value = MyDataRow("MASITEMKEY")
+                    .Fields("UPC").Value = MyDataRow("UPC")
+                    .Fields("MASITEMID").Value = MyDataRow("MASITEMID")
+                    .Fields("WAREHOUSEID").Value = MyDataRow("WAREHOUSEID")
+                    .Fields("CompanyID").Value = MyDataRow("CompanyID")
+                    .Fields("QtyOnHand").Value = MyDataRow("QtyOnHand")
+                    .Fields("QtyAvailable").Value = MyDataRow("QtyAvailable")
+                    .Fields("SurplusQty").Value = MyDataRow("SurplusQty")
+                    .Fields("QtyOnHold").Value = MyDataRow("QtyOnHold")
+                    .Fields("MaxStockLevel").Value = MyDataRow("MaxStockLevel")
+                    .Fields("MASProdPriceGroupKey").Value = MyDataRow("ProdPriceGroupKey")
+
+                End If
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+
+        End Try
+    End Sub
+
+
+    Private Sub Process_NewPRODUCTPROGRAM()
+
+        Dim i As Integer = 0
+        '===================================================
+        Dim ProductProgramId As String = ""
+        '==================================================       
+        Dim objConn As New OleDbConnection(strSLXNativeConstr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "Select * from sysdba.vImport_newProductProgram"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                ProductProgramId = GetNewSLXID("PRODUCTPROGRAM", strSLXConstr)
+                i = i + 1
+                AddEditPRODUCTPROGRAM(row, ProductProgramId)
+
+                Console.WriteLine("Processes PRODUCTPROGRAM " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "PRODUCTprogram ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
+
+    Public Sub AddEditPRODUCTPROGRAM(MyDataRow As DataRow, ByVal ProductProgramId As String)
+        '============================================================
+        ' get Default Data row from StockCard and Product info
+        '============================================================
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM PRODUCTPROGRAM WHERE PRODUCTID = '" & ProductProgramId & "'"
+
+
+        Try
+            objConn.Open(strSLXConstr)
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If .EOF Then
+                    'adding
+                    .AddNew()
+
+                    .Fields("CREATEDATE").Value = Now
+                    .Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    .Fields("PRODUCTPROGRAMID").Value = ProductProgramId
+
+                    .Fields("PRODUCTID").Value = MyDataRow("PRODUCTID")
+                    .Fields("PROGRAM").Value = MyDataRow("PROGRAM")
+                    .Fields("PRICE").Value = MyDataRow("PRICE")
+                    .Fields("DEFAULTPROGRAM").Value = MyDataRow("DEFAULTPROGRAM")
+
+
+
+                Else
+                    '=======================================
+                    'updating
+                    '=======================================
+                    '.Fields("CREATEDATE").Value = Now
+                    '.Fields("CREATEUSER").Value = "ADMIN"
+                    '.Fields("MODIFYDATE").Value = Now
+                    '.Fields("MODIFYUSER").Value = "ADMIN"
+
+
+
+
+                End If
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+
+        End Try
+    End Sub
+
+
+    Private Sub Process_NewSITE()
+
+        Dim i As Integer = 0
+        '===================================================
+        Dim SiteID As String = ""
+        '==================================================       
+        Dim objConn As New OleDbConnection(strSLXNativeConstr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "Select * from sysdba.vImport_new_SITE"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                SiteID = GetNewSLXID("SITE", strSLXConstr)
+                i = i + 1
+                AddEditSITE(row, SiteID)
+
+                Console.WriteLine("Processes SITE " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "SITE ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
+
+    Public Sub AddEditSITE(MyDataRow As DataRow, ByVal SiteId As String)
+        '============================================================
+        ' get Default Data row from StockCard and Product info
+        '============================================================
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM SITE WHERE SITEID = '" & SiteId & "'"
+
+
+        Try
+            objConn.Open(strSLXConstr)
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If .EOF Then
+                    'adding
+                    .AddNew()
+
+                    .Fields("CREATEDATE").Value = Now
+                    .Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    .Fields("SITEID").Value = SiteId
+
+                    .Fields("ADDRESSID").Value = MyDataRow("ADDRESSID")
+                    .Fields("SITECODE").Value = MyDataRow("SITECODE")
+                    .Fields("SECCODEID").Value = MyDataRow("SECCODEID")
+
+
+
+                Else
+                    '=======================================
+                    'updating
+                    '=======================================
+                    '.Fields("CREATEDATE").Value = Now
+                    '.Fields("CREATEUSER").Value = "ADMIN"
+                    '.Fields("MODIFYDATE").Value = Now
+                    '.Fields("MODIFYUSER").Value = "ADMIN"
+
+
+
+
+                End If
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+
+        End Try
+    End Sub
+
+    Private Sub Process_ChangedProducts()
+
+        Dim i As Integer = 0
+        '===================================================
+        Dim ProductId As String = ""
+        'Dim ShippingId As String = ""
+        'Dim BillingId As String = ""
+        '==================================================       
+        Dim objConn As New OleDbConnection(strSage500Constr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "Select * from vdvMAS_to_SLX_Products_TAC_Changed"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                'ProductId = GetNewSLXID("PRODUCT", strSLXConstr)
+                i = i + 1
+                AddEditPRODUCT(row, row("PRODUCTID"))
+
+                Console.WriteLine("Processes PRODUCT Changed" & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "PRODUCT Changes ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
+
+
+
+
+
+
+    'Private Sub CleanTempDir()
+
+
+    '    Dim sql As String = "Truncate table dbo.tmpX3SalesOrderItems"
+    '    Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+    '    Using conn As New SqlConnection(strConnection)
+    '        Dim cmd As New SqlCommand(sql, conn)
+
+    '        Try
+    '            conn.Open()
+    '            cmd.ExecuteNonQuery()
+    '        Catch ex As Exception
+    '            Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+    '            Console.WriteLine(ex.Message)
+    '        Finally
+    '            If conn.State = ConnectionState.Open Then
+    '                conn.Close()
+    '            End If
+    '        End Try
+    '    End Using
+
+
+    'End Sub
+
+    'Private Sub GetSourceData()
+    '    Dim X3connectionString As String = CleanBulkLoadNativeSQLConnectionString(strSageX3Constr)
+    '    Dim SLXConnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+    '    Dim strSourceSQL As String
+    '    strSourceSQL = "SELECT     SO.ZMAGID_0 , SIH.AMTNOTL_0, SIH.AMTTAX_0, SIH.TAX_0, SIH.BPR_0 AS BPCUSTNUM, SID.INVDAT_0 AS INVDATE, SID.NUM_0 AS INVOICE, "
+    '    strSourceSQL = strSourceSQL & "             SID.SOHNUM_0 AS SALESORDER, PRD.ITMREF_0 AS ITEMNO, PRD.TCLCOD_0 AS PRDCATG, SID.SALFCY_0 AS LOC, SID.QTY_0 AS QTYSOLD, "
+    '    strSourceSQL = strSourceSQL & "               SID.GROPRI_0 AS SALESAMT, SID.CPRPRI_0 AS COSTAMT, SID.PFM_0 AS GROSSMARGIN, SID.PFM_0 / (CASE GROPRI_0 WHEN 0 THEN 1 ELSE GROPRI_0 END) "
+    '    strSourceSQL = strSourceSQL & "               * 100 AS PERCENTMARGIN, CAST(SIH.ROWID AS VARCHAR(32)) + '-' + CAST(SID.ROWID AS VARCHAR(32)) AS X3ID, CAST(SIH.BPR_0 AS varchar(32)) "
+    '    strSourceSQL = strSourceSQL & "               + '-' + CAST(SIV.BPAADD_0 AS Varchar(32)) AS X3BPCustAddrId, SIV.BPAADD_0, BPA.BPAADDLIG_0, BPA.BPAADDLIG_1, BPA.BPAADDLIG_2, BPA.POSCOD_0, "
+    '    strSourceSQL = strSourceSQL & " BPA.CTY_0, BPA.SAT_0, BPA.CRY_0"
+    '    strSourceSQL = strSourceSQL & " FROM         LIVE.SORDER AS SO RIGHT OUTER JOIN"
+    '    strSourceSQL = strSourceSQL & "               LIVE.SINVOICED AS SID ON SO.SOHNUM_0 = SID.SOHNUM_0 RIGHT OUTER JOIN"
+    '    strSourceSQL = strSourceSQL & "               LIVE.SINVOICE AS SIH ON SID.NUM_0 = SIH.NUM_0 LEFT OUTER JOIN"
+    '    strSourceSQL = strSourceSQL & "               LIVE.SINVOICEV AS SIV ON SIH.NUM_0 = SIV.NUM_0 LEFT OUTER JOIN"
+    '    strSourceSQL = strSourceSQL & "               LIVE.BPADDRESS AS BPA ON BPA.BPANUM_0 = SIH.BPR_0 AND BPA.BPAADD_0 = SIV.BPAADD_0 LEFT OUTER JOIN"
+    '    strSourceSQL = strSourceSQL & "               LIVE.ITMMASTER AS PRD ON PRD.ITMREF_0 = SID.ITMREF_0"
+    '    strSourceSQL = strSourceSQL & "  WHERE(SID.GROPRI_0 Is Not NULL)"
+
+    '    ' get the source data
+    '    '=================================================================
+
+
+    '    Using sourceConnection As New SqlConnection(X3connectionString)
+    '        Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
+    '        sourceConnection.Open()
+    '        Dim reader As SqlDataReader = myCommand.ExecuteReader()
+
+    '        ' open the destination data
+    '        Using destinationConnection As New SqlConnection(SLXConnectionString)
+    '            ' open the connection
+    '            destinationConnection.Open()
+
+    '            Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
+    '                bulkCopy.BatchSize = 500
+    '                bulkCopy.NotifyAfter = 1000
+    '                ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
+    '                bulkCopy.DestinationTableName = "tmpX3SalesOrderItems"
+    '                bulkCopy.WriteToServer(reader)
+    '            End Using
+    '        End Using
+    '        reader.Close()
+    '    End Using
+    'End Sub
 
 
 
