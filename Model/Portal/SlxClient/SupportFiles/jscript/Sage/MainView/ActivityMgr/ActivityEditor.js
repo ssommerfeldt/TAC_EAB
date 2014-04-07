@@ -1712,7 +1712,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             }
         },
         _timelessChange: function () {
-            this._setDisabledByTimlessValue();
+            this._setDisabledByTimlessValue();            
             if (this.mode === 'Complete' || this.mode === 'CompleteUnscheduled') {
                 if (this.cb_TimelessComplete.get('checked')) {
                     var schedDate = this.dtp_scheduledDate.get('value');
@@ -1723,6 +1723,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                    
                 }
             } else {
+                utility.setValue(this._activityData, 'TimelessChanged', true);
                 if (this.cb_Timeless.get('checked')) {
                     var d = this.dtp_startDate.get('value');
                     d.setHours(0);
@@ -2138,6 +2139,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             //console.log("_successfulActivityAttendeeSave");
             if (this._activityData.LeaderChanged) {
                 activity.LeaderChanged = true;
+            }
+            if (this._activityData.TimelessChanged) {
+                activity.TimelessChanged = true;
             }
             this._activityData = activity;
             var isNew = false;

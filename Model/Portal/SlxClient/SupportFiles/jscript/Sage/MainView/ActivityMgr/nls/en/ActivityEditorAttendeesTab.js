@@ -10,5 +10,7 @@ define((
   header_Notes: 'Notes',
   tooltip_speedSearch: 'Add Participant',
   tooltip_AddContact: 'Add Contact',
-  tooltip_AddLead: 'Add Lead' }
+  tooltip_AddLead: 'Add Lead',
+  tooltip_Delete: "Delete"
+}
 ));

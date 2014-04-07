@@ -10,5 +10,7 @@ define((
   header_Notes: 'Notes',
   tooltip_speedSearch: 'Ajouter un participant',
   tooltip_AddContact: "Ajout un contact",
-  tooltip_AddLead: 'Ajouter un lead' }
+  tooltip_AddLead: 'Ajouter un lead',
+  tooltip_Delete: "Supprimer"
+}
 ));

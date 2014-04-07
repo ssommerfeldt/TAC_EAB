@@ -295,12 +295,13 @@ define("Sage/MainView/nls/en/ActivityManager", (
 define('Sage/MainView/nls/en-jm/ActivityManager',{});
 },
 'Sage/Services/nls/en/JobService':function(){
-define("Sage/Services/nls/en/JobService", (
-{ txtInvalidParameter: 'Invalid parameter: \'${0}\'.',
-  txtTriggerJobError: 'Sorry an error occured triggering job \'${0}\': ${1} ${2}.',
-  txtScheduleJobError: 'Sorry an error occured scheduling job \'${0}\': ${1} ${2}.',
-  txtUnexpectedError: 'Sorry an error occured: ${0} ${1}.' }
-));
+define(
+"Sage/Services/nls/en/JobService", { 
+    txtInvalidParameter: 'Invalid parameter: \'${0}\'.',
+    txtTriggerJobError: 'Sorry an error occurred triggering job \'${0}\': ${1} ${2}.',
+    txtScheduleJobError: 'Sorry an error occurred scheduling job \'${0}\': ${1} ${2}.',
+    txtUnexpectedError: 'Sorry an error occurred: ${0} ${1}.'
+});
 },
 'Sage/Services/nls/en-jm/JobService':function(){
 define('Sage/Services/nls/en-jm/JobService',{});
@@ -367,7 +368,11 @@ define("Sage/MainView/ActivityMgr/nls/en/QuickCompleteEditor", (
   btnCloseText: 'Close',
   btnHelpText: 'Help',
   resultCompletedText: 'Complete',
-  titleText: 'Quick Complete' }
+  titleText: 'Quick Complete',
+  actionMessage: 'Only activities that you have permission to complete will be completed.',
+  completeMessage: 'Complete all {0} selected activities:',
+  processingMessage: 'Processing all {0} selected activities please wait...'
+}
 ));
 },
 'Sage/MainView/ActivityMgr/nls/en-jm/QuickCompleteEditor':function(){
@@ -574,7 +579,7 @@ define('Sage/UI/nls/en-jm/OwnerType',{});
 define("Sage/TaskPane/nls/en/LeadTasksTasklet", (
 { updateLeadsTitle: 'Update Leads',
   deleteLeadsTitle: 'Delete Leads',
-  deleteJobError: 'Sorry an error occured during the delete lead job: ${0}',
+  deleteJobError: 'Sorry an error occurred during the delete lead job: ${0}',
   confirmDeleteLeads: 'Are you sure you want to delete the selected records?' }
 ));
 },
@@ -951,7 +956,8 @@ define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/en/ContactLookupConfig", (
   colTitle: 'Title',
   colAccount: 'Account',
   colWorkPhone: 'Work Phone',
-  colEmail: 'Email' }
+  colEmail: 'Email',
+  dialogTitleText: 'Lookup Contacts'}
 ));
 },
 'Sage/MainView/ActivityMgr/AttendeeLookup/nls/en-jm/ContactLookupConfig':function(){
@@ -1035,17 +1041,17 @@ define("Sage/UI/Controls/nls/en/Name", (
 define('Sage/UI/Controls/nls/en-jm/Name',{});
 },
 'Sage/MainView/JobMgr/nls/en/ExecutionsListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/en/ExecutionsListPanelConfig", {
-    loadingText: 'Loading...',
-    colNameJobName: 'Type',
-    colNameUser: 'User',
-    colNamePhase: 'Phase',
-    colNamePhaseDetail: 'Phase Detail',
-    colNameProgress: 'Progress',
-    colNameElapsed: 'Elapsed Time',
-    colNameStatus: 'Status',
-    colNameResult: 'Result'
-});
+define("Sage/MainView/JobMgr/nls/en/ExecutionsListPanelConfig", (
+{ loadingText: 'Loading...',
+  colNameJobName: 'Type',
+  colNameUser: 'User',
+  colNamePhase: 'Phase',
+  colNamePhaseDetail: 'Phase Detail',
+  colNameProgress: 'Progress',
+  colNameElapsed: 'Elapsed Time',
+  colNameStatus: 'Status',
+  colNameResult: 'Result' }
+));
 },
 'Sage/MainView/JobMgr/nls/en-jm/ExecutionsListPanelConfig':function(){
 define('Sage/MainView/JobMgr/nls/en-jm/ExecutionsListPanelConfig',{});
@@ -1324,15 +1330,6 @@ define("Sage/TaskPane/nls/en/SecuredActionTasklet", (
 'Sage/TaskPane/nls/en-jm/SecuredActionTasklet':function(){
 define('Sage/TaskPane/nls/en-jm/SecuredActionTasklet',{});
 },
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/en/SyncedListPanelConfig':function(){
-define("Sage/Extensions/Activity/ActivityListCustomTabs/nls/en/SyncedListPanelConfig", (
-{ colCreateSource: 'Create Source',
-  colLastSyncDate: 'Last Synced' }
-));
-},
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/en-jm/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/en-jm/SyncedListPanelConfig',{});
-},
 'Sage/UI/Dashboard/nls/en/DashboardTabController':function(){
 define("Sage/UI/Dashboard/nls/en/DashboardTabController", (
 { newTabText: 'New Tab',
@@ -1474,7 +1471,7 @@ define("Sage/MainView/IntegrationContract/nls/en/SalesOrderRTDV", (
   grdDeliveries_Carrier: 'Carrier',
   grdDeliveries_CarrierReference: 'Carrier Reference',
   grdDeliveries_ExceptionReason: 'Exception Reason',
-  errorERPRequest: 'An occured occured opening accounting systems sales order detail view. ',
+  errorERPRequest: 'An error occurred opening accounting systems sales order detail view. ',
   errorERPRequestDetails: '${0}, ${1} Request: ${2}',
   btnCloseCaption: 'Close' }
 ));
@@ -1613,15 +1610,15 @@ define("Sage/Extensions/Activity/ListPanelOverrides/nls/en/AllOpenListPanelConfi
 define('Sage/Extensions/Activity/ListPanelOverrides/nls/en-jm/AllOpenListPanelConfig',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/en/MultiselectNumberParameterEditor':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/en/MultiselectNumberParameterEditor", (
-{ txtPleaseSpecifyNumberBetween: 'Please specify a number value between {0} and {1}.',
-  txtPleaseSpecifyNumberLesser: 'Please specify a number value less than or equal to {0}.',
-  txtPleaseSpecifyNumberGreater: 'Please specify a number value greater than or equal to {0}.',
-  txtPleaseSpecifyValue: 'Please specify a number value.',
-  lblAvailableValues_Caption: 'Available Values:',
-  lblSelectedValues_Caption: 'Selected Values:',
-  lblEnterValue_Caption: 'Enter a Value:' }
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/en/MultiselectNumberParameterEditor", {
+    txtPleaseSpecifyNumberBetween: 'Please specify a numeric value between {0} and {1}.',
+    txtPleaseSpecifyNumberLesser: 'Please specify a numeric value less than or equal to {0}.',
+    txtPleaseSpecifyNumberGreater: 'Please specify a numeric value greater than or equal to {0}.',
+    txtPleaseSpecifyValue: 'Please specify a numeric value.',
+    lblAvailableValues_Caption: 'Available Values:',
+    lblSelectedValues_Caption: 'Selected Values:',
+    lblEnterValue_Caption: 'Enter a Value:'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/en-jm/MultiselectNumberParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/en-jm/MultiselectNumberParameterEditor',{});
@@ -1833,7 +1830,7 @@ define("Sage/MainView/Opportunity/nls/en/UpdateOpportunities", (
   lookupRegionColText: 'Region',
   lookupTypeColText: 'Type',
   errorUnspecifiedValue: 'Please specify a value before continuing.',
-  errorRequestingJobMgr: 'An error occured performing update: ${0}' }
+  errorRequestingJobMgr: 'An error occurred performing update: ${0}' }
 ));
 },
 'Sage/MainView/Opportunity/nls/en-jm/UpdateOpportunities':function(){
@@ -1923,12 +1920,12 @@ define("Sage/TaskPane/nls/en/UserTasklet", (
 define('Sage/TaskPane/nls/en-jm/UserTasklet',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/en/NumberParameterEditor':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/en/NumberParameterEditor", (
-{ txtPleaseSpecifyNumberBetween: 'Please specify a Number value between {0} and {1}.',
-  txtPleaseSpecifyNumberLesser: 'Please specify a Number value less than or equal to {0}.',
-  txtPleaseSpecifyNumberGreater: 'Please specify a Number value greater than or equal to {0}.',
-  txtPleaseSpecifyValue: 'Please specify a Number value.' }
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/en/NumberParameterEditor", {
+    txtPleaseSpecifyNumberBetween: 'Please specify a numeric value between {0} and {1}.',
+    txtPleaseSpecifyNumberLesser: 'Please specify a numeric value less than or equal to {0}.',
+    txtPleaseSpecifyNumberGreater: 'Please specify a numeric value greater than or equal to {0}.',
+    txtPleaseSpecifyValue: 'Please specify a numeric value.'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/en-jm/NumberParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/en-jm/NumberParameterEditor',{});
@@ -1962,7 +1959,7 @@ define("Sage/MainView/Opportunity/nls/en/OpportunityStatistics", (
   averageDaysOpen: 'Average # of Days Open',
   rangeEstClose: 'Range of Est. Close (Min - Max)',
   btnClose_Caption: 'Close',
-  errorRequestingStatistics: 'Sorry an error occured attempting to request opportunity statistics.' }
+  errorRequestingStatistics: 'Sorry an error occurred attempting to request opportunity statistics.' }
 ));
 },
 'Sage/MainView/Opportunity/nls/en-jm/OpportunityStatistics':function(){
@@ -2099,17 +2096,17 @@ define("Sage/UI/nls/en/NotesHistoryList", (
 define('Sage/UI/nls/en-jm/NotesHistoryList',{});
 },
 'Sage/MainView/ReportMgr/nls/en/HistoryListPanelConfig':function(){
-define("Sage/MainView/ReportMgr/nls/en/HistoryListPanelConfig", {
-    colNameDate: 'Date',
-    colNameScheduleName: 'Description',
-    colNameExecutionType: 'Execution Type',
-    colNameRunAs: 'Run As',
-    colNameScheduledBy: 'Scheduled By',
-    colNameReportName: 'Report',
-    colNameSize: 'File Size',
-    colNameOutputFormat: 'Output Format',
-    colNameReportType: 'Type'
-});
+define("Sage/MainView/ReportMgr/nls/en/HistoryListPanelConfig", (
+{ colNameDate: 'Date',
+  colNameScheduleName: 'Description',
+  colNameExecutionType: 'Execution Type',
+  colNameRunAs: 'Run As',
+  colNameScheduledBy: 'Scheduled By',
+  colNameReportName: 'Report',
+  colNameSize: 'File Size',
+  colNameOutputFormat: 'Output Format',
+  colNameReportType: 'Type' }
+));
 },
 'Sage/MainView/ReportMgr/nls/en-jm/HistoryListPanelConfig':function(){
 define('Sage/MainView/ReportMgr/nls/en-jm/HistoryListPanelConfig',{});
@@ -2155,16 +2152,16 @@ define("Sage/MainView/ReportMgr/Common/nls/en/_WizardDialogBase", (
 define('Sage/MainView/ReportMgr/Common/nls/en-jm/_WizardDialogBase',{});
 },
 'Sage/MainView/JobMgr/nls/en/SchedulesListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/en/SchedulesListPanelConfig", {
-    colNameTriggerName: 'Schedule',
-    colNameJobName: 'Job Name',
-    colNameUser: 'Scheduled By',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Priority',
-    colNameStatus: 'Status',
-    colNameTimesTriggered: 'Execution Count'
-});
+define("Sage/MainView/JobMgr/nls/en/SchedulesListPanelConfig", (
+{ colNameTriggerName: 'Schedule',
+  colNameJobName: 'Job Name',
+  colNameUser: 'Scheduled By',
+  colNameStartTimeUtc: 'Start Time',
+  colNameEndTimeUtc: 'End Time',
+  colNamePriority: 'Priority',
+  colNameStatus: 'Status',
+  colNameTimesTriggered: 'Execution Count' }
+));
 },
 'Sage/MainView/JobMgr/nls/en-jm/SchedulesListPanelConfig':function(){
 define('Sage/MainView/JobMgr/nls/en-jm/SchedulesListPanelConfig',{});
@@ -2498,19 +2495,19 @@ define("Sage/QuickForms/Design/Editors/nls/en/DataGridAdvancedPropertyEditor", (
 define('Sage/QuickForms/Design/Editors/nls/en-jm/DataGridAdvancedPropertyEditor',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/en/DateRangeParameterEditor':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/en/DateRangeParameterEditor", (
-{ txtNoLowerValue: 'No lower value',
-  txtNoUpperValue: 'No upper value',
-  txtIncludeThisValue: 'Include this value',
-  txtFrom: 'From:',
-  txtTo: 'To:',
-  txtPleaseSpecifyFromValue: 'Please specify From value',
-  txtPleaseSpecifyToValue: 'Please specify To value',
-  txtPleaseSpecifyDateBetween: 'Please specify a Date value between {0} and {1}.',
-  txtPleaseSpecifyDateLesser: 'Please specify a Date value less than or equal to {0}.',
-  txtPleaseSpecifyDateGreater: 'Please specify a Date value greater than or equal to {0}.',
-  txtFromMustBeLessThanOrEqualToTo: 'From value must be less than or equal to To value.' }
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/en/DateRangeParameterEditor", {
+    txtNoLowerValue: 'No lower value',
+    txtNoUpperValue: 'No upper value',
+    txtIncludeThisValue: 'Include this value',
+    txtFrom: 'From:',
+    txtTo: 'To:',
+    txtPleaseSpecifyFromValue: 'Please specify From value',
+    txtPleaseSpecifyToValue: 'Please specify To value',
+    txtPleaseSpecifyDateBetween: 'Please specify a date value between {0} and {1}.',
+    txtPleaseSpecifyDateLesser: 'Please specify a date value less than or equal to {0}.',
+    txtPleaseSpecifyDateGreater: 'Please specify a date value greater than or equal to {0}.',
+    txtFromMustBeLessThanOrEqualToTo: 'From value must be less than or equal to To value.'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/en-jm/DateRangeParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/en-jm/DateRangeParameterEditor',{});
@@ -2524,12 +2521,12 @@ define("Sage/MainView/ReportMgr/nls/en/BaseListPanelConfig", (
 define('Sage/MainView/ReportMgr/nls/en-jm/BaseListPanelConfig',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/en/DateParameterEditor':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/en/DateParameterEditor", (
-{ txtPleaseSpecifyDateBetween: 'Please specify a Date value between {0} and {1}.',
-  txtPleaseSpecifyDateLesser: 'Please specify a Date value less than or equal to {0}.',
-  txtPleaseSpecifyDateGreater: 'Please specify a Date value greater than or equal to {0}.',
-  txtPleaseSpecifyValue: 'Please specify a Date value.' }
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/en/DateParameterEditor", {
+    txtPleaseSpecifyDateBetween: 'Please specify a date value between {0} and {1}.',
+    txtPleaseSpecifyDateLesser: 'Please specify a date value less than or equal to {0}.',
+    txtPleaseSpecifyDateGreater: 'Please specify a date value greater than or equal to {0}.',
+    txtPleaseSpecifyValue: 'Please specify a date value.'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/en-jm/DateParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/en-jm/DateParameterEditor',{});
@@ -2665,7 +2662,7 @@ define("Sage/MainView/Contact/nls/en/ContactSearchForDuplicates", (
   ContactSummaryView_Title: 'Summary View - Contact',
   AccountSummaryView_Title: 'Summary View - Account',
   closeText: 'Close',
-  errorLoadingSummaryView: 'An error occured loading summary view: ${0}' }
+  errorLoadingSummaryView: 'An error occurred loading summary view: ${0}' }
 ));
 },
 'Sage/MainView/Contact/nls/en-jm/ContactSearchForDuplicates':function(){
@@ -2859,7 +2856,7 @@ define("Sage/MainView/IntegrationContract/nls/en/SalesQuoteRTDV", (
   grdDeliveries_Carrier: 'Carrier',
   grdDeliveries_CarrierReference: 'Carrier Reference',
   grdDeliveries_ExceptionReason: 'Exception Reason',
-  errorERPRequest: 'An error occured opening accounting systems sales quote detail view. ',
+  errorERPRequest: 'An error occurred opening accounting systems sales quote detail view. ',
   errorERPRequestDetails: '${0}, ${1} Request: ${2}',
   btnCloseCaption: 'Close' }
 ));
@@ -2878,6 +2875,20 @@ define("Sage/MainView/SecurityMgr/nls/en/SecurityProfile", (
 },
 'Sage/MainView/SecurityMgr/nls/en-jm/SecurityProfile':function(){
 define('Sage/MainView/SecurityMgr/nls/en-jm/SecurityProfile',{});
+},
+'Sage/MainView/ReportMgr/nls/en/ReportWizardController':function(){
+﻿define("Sage/MainView/ReportMgr/nls/en/ReportWizardController", {
+    txtLoadingScheduleDetails: 'Loading Schedule Details',
+    txtError: 'Error',
+    txtCannotDetermineReportId: 'Cannot determine report id.',
+    txtCannotDetermineReportNameOrFamily: 'Cannot determine report name or family.',
+    txtLoading: 'Loading ',
+    txtLoadingReport: 'Loading Report',
+    txtSorryAnErrorOccuredLoadingReport: 'Sorry, an error occurred loading report: ${0} ${1}.'
+});
+},
+'Sage/MainView/ReportMgr/nls/en-jm/ReportWizardController':function(){
+define('Sage/MainView/ReportMgr/nls/en-jm/ReportWizardController',{});
 },
 'Sage/QuickForms/Design/Editors/nls/en/UserAdvancedPropertyEditor':function(){
 define("Sage/QuickForms/Design/Editors/nls/en/UserAdvancedPropertyEditor", (
@@ -3098,7 +3109,9 @@ define("Sage/MainView/ActivityMgr/nls/en/ActivityEditorAttendeesTab", (
   header_Notes: 'Notes',
   tooltip_speedSearch: 'Add Participant',
   tooltip_AddContact: 'Add Contact',
-  tooltip_AddLead: 'Add Lead' }
+  tooltip_AddLead: 'Add Lead',
+  tooltip_Delete: "Delete"
+}
 ));
 },
 'Sage/MainView/ActivityMgr/nls/en-jm/ActivityEditorAttendeesTab':function(){
@@ -3137,16 +3150,16 @@ define("Sage/MainView/ActivityMgr/nls/en/ActivityCalendar", (
 define('Sage/MainView/ActivityMgr/nls/en-jm/ActivityCalendar',{});
 },
 'Sage/Utility/nls/en/Jobs':function(){
-define("Sage/Utility/nls/en/Jobs", (
-{ errorMessage: 'Sorry, an error occured during the execution of job \'${0}\': ${1} ${2}.',
-  jobCompletedSuccessfully: 'The job has completed successfully.',
-  unexpectedErrorMessage: 'Sorry, an unexpected error occured during the execution of job \'${0}\'.',
-  repeatIndefinitely: 'Repeat indefinitely',
-  cancelButtonCaption: 'Cancel',
-  defaultProgressDialogTitle: 'Running Job',
-  closeButtonCaption: 'Close',
-  filtersAppliedError: 'This job cannot run when filters are applied. Please clear all filters and try again.' }
-));
+define("Sage/Utility/nls/en/Jobs", { 
+    errorMessage: 'Sorry, an error occurred during the execution of job \'${0}\': ${1} ${2}.',
+    jobCompletedSuccessfully: 'The job has completed successfully.',
+    unexpectedErrorMessage: 'Sorry, an unexpected error occurred during the execution of job \'${0}\'.',
+    repeatIndefinitely: 'Repeat indefinitely',
+    cancelButtonCaption: 'Cancel',
+    defaultProgressDialogTitle: 'Running Job',
+    closeButtonCaption: 'Close',
+    filtersAppliedError: 'This job cannot run when filters are applied. Please clear all filters and try again.'
+});
 },
 'Sage/Utility/nls/en-jm/Jobs':function(){
 define('Sage/Utility/nls/en-jm/Jobs',{});
@@ -3259,7 +3272,9 @@ define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/en/LeadLookupConfig", (
   colTitle: 'Title',
   colCompany: 'Company',
   colWorkPhone: 'Work Phone',
-  colEmail: 'Email' }
+  colEmail: 'Email',
+  dialogTitleText: 'Lookup Leads'
+}
 ));
 },
 'Sage/MainView/ActivityMgr/AttendeeLookup/nls/en-jm/LeadLookupConfig':function(){
@@ -3267,18 +3282,16 @@ define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/en-jm/LeadLookupConfig',{})
 },
 'Sage/MainView/ReportMgr/nls/en/SchedulesListPanelConfig':function(){
 define("Sage/MainView/ReportMgr/nls/en/SchedulesListPanelConfig", (
-{
-    colJobName: 'Job Name',
-    colNameDescription: 'Description',
-    colNameRunAsUser: 'Scheduled By',
-    colNameLastExecutionDate: 'Last Run',
-    colNameExecutionCount: 'Execution Count',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Priority',
-    colNameStatus: 'Status',
-    colNameTemplate: 'Template'
-}
+{ colJobName: 'Job Name',
+  colNameDescription: 'Description',
+  colNameRunAsUser: 'Scheduled By',
+  colNameLastExecutionDate: 'Last Run',
+  colNameExecutionCount: 'Execution Count',
+  colNameStartTimeUtc: 'Start Time',
+  colNameEndTimeUtc: 'End Time',
+  colNamePriority: 'Priority',
+  colNameStatus: 'Status',
+  colNameTemplate: 'Template' }
 ));
 },
 'Sage/MainView/ReportMgr/nls/en-jm/SchedulesListPanelConfig':function(){
@@ -3454,15 +3467,15 @@ define("Sage/QuickForms/Design/nls/en/PropertyEditorContainer", (
 define('Sage/QuickForms/Design/nls/en-jm/PropertyEditorContainer',{});
 },
 'Sage/Services/nls/en/ReportingService':function(){
-define("Sage/Services/nls/en/ReportingService", (
-{ txtUnsupportedReportType: 'Unsupported report type: ${0}.',
-  txtUnexpectedError: 'Sorry an error occured: ${0} ${1}.',
-  invalidEntityError: 'The entity ID has not been defined or could not be determined.',
-  invalidReportPluginError: 'The report plugin ID has not been defined or could not be determined.',
-  invalidTableNameError: 'The table name has not been defined or could not be determined.',
-  noDefaultReportError: 'A default report could not be located for the current entity.',
-  reportCannotBeShownError: 'The report cannot be shown.' }
-));
+define("Sage/Services/nls/en/ReportingService", {
+    txtUnsupportedReportType: 'Unsupported report type: ${0}.',
+    txtUnexpectedError: 'Sorry an error occurred: ${0} ${1}.',
+    invalidEntityError: 'The entity ID has not been defined or could not be determined.',
+    invalidReportPluginError: 'The report plugin ID has not been defined or could not be determined.',
+    invalidTableNameError: 'The table name has not been defined or could not be determined.',
+    noDefaultReportError: 'A default report could not be located for the current entity.',
+    reportCannotBeShownError: 'The report cannot be shown.'
+});
 },
 'Sage/Services/nls/en-jm/ReportingService':function(){
 define('Sage/Services/nls/en-jm/ReportingService',{});
@@ -3835,10 +3848,11 @@ define("Sage/MainView/ReportMgr/nls/en/ReportManagerActions", (
   confirm_ReportHistory: 'report history record',
   txtYes: 'Yes',
   txtNo: 'No',
-  deleteJobError: 'Sorry an error occured during the deletion process: ${0}',
+  deleteJobError: 'Sorry an error occurred during the deletion process: ${0}',
   txtDeleteHistory: 'Deleting history records',
   txtDeleteTitle: 'Delete History',
-  txtErrorDeleteReport: 'An error occured deleting report: ${0}' }
+  txtErrorDeleteReport: 'An error occurred deleting report: ${0}'
+}
 ));
 },
 'Sage/MainView/ReportMgr/nls/en-jm/ReportManagerActions':function(){
@@ -3973,7 +3987,7 @@ define("Sage/TaskPane/nls/en/CommonTasksTasklet", (
   exportToFile_Cancel: 'Cancel',
   exportToFile_DialogTitle: 'Export to File',
   exportToExcel_Caption: 'Exporting to Excel',
-  errorRequestingJobMgr: 'An error occured requesting job manager: ${0}',
+  errorRequestingJobMgr: 'An error occurred requesting job manager: ${0}',
   errorExecutionAction: 'An error occurred executing action ${0}',
   exportProcessingJobMsg: 'Processing export, you may continue waiting for completion, or go to the reports view to open your file.' }
 ));

@@ -35,7 +35,7 @@ define((
   My_Dashboard: 'Eigenes Cockpit',
   Sales: 'Vertrieb',
   Group_List_Description: 'Zeigt eine Liste mit Gruppendatensätzen nach Entität an. Z. B. eine Gruppe aktiver Kampagnen.',
-  Welcome_Description: 'Zeigt eine Einführung in Sage SalesLogix mit einem Link zum Hilfethema "Einführung in Sage SalesLogix für Web“.',
+  Welcome_Description: 'Zeigt eine Einführung in Saleslogix mit einem Link zum Hilfethema "Einführung in Saleslogix für Web“.',
   Line_Chart_Description: 'Zeigt Daten als Reihe von Datenpunkten an, die durch eine Linie verbunden sind. Sinnvoll, wenn die Daten viele Gruppen oder Kategorien darstellen.',
   Bar_Chart_Description: 'Zeigt Daten als Gruppe waagerechter Balken an. Sinnvoll beim Vergleichen verschiedener Datenmengen.',
   Column_Chart_Description: 'Zeigt Daten als Gruppe senkrechter Balken nach Kategorie gruppiert an. Sinnvoll zum Aufzeigen von Datenänderungen über einen Zeitraum oder zum Veranschaulichen von Vergleichen zwischen Elementen.',
@@ -43,8 +43,8 @@ define((
   Pie_Chart_Description: 'Zeigt Daten als Anteile des Ganzen an. Jeder Wert wird als Prozentsatz des Ganzen berechnet. Dieses Diagramm weist keine Achsen auf.',
   Recently_Viewed_Description: 'Zeigt Verknüpfungen zu zuletzt angezeigten Datensätzen mit einem Symbol an, das den Typ angibt. Z. B. Firma oder Kontakt.',
   Todays_Activities_Description: 'Zeigt Verknüpfungen zu Ihren Aktivitäten für den heutigen Tag an.',
-  Links_Description: 'Zeigt von Ihnen erstellte Verknüpfungen an. Z. B. Verknüpfungen zu einer Detailansicht in Sage SalesLogix oder zu einer externen Website.',
-  SData_Feed_Description: 'Zeigt einen Web-Feed mithilfe von SData(Sage Data)-Feeds  an. Z. B. einen Feed aus Ihrer Buchhaltungsintegration oder der Saleslogix-Datenbank.',
+  Links_Description: 'Zeigt von Ihnen erstellte Verknüpfungen an. Z. B. Verknüpfungen zu einer Detailansicht in Saleslogix oder zu einer externen Website.',
+  SData_Feed_Description: 'Zeigt einen Web-Feed mithilfe von SData(Saleslogix Data)-Feeds  an. Z. B. einen Feed aus Ihrer Buchhaltungsintegration oder der Saleslogix-Datenbank.',
   Web_Feed_Description: 'Zeigt RSS- oder Atom-Feed-Informationen an.',
   Website_Description: 'Zeigt eine Webseite Ihrer Wahl an.' }
 ));

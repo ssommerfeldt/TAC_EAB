@@ -1,11 +1,9 @@
-﻿define((
-{
-    txtPleaseSpecifyNumberBetween: 'Please specify a number value between {0} and {1}.',
-    txtPleaseSpecifyNumberLesser: 'Please specify a number value less than or equal to {0}.',
-    txtPleaseSpecifyNumberGreater: 'Please specify a number value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a number value.',
-    lblAvailableValues_Caption: 'Available Values:',
-    lblSelectedValues_Caption: 'Selected Values:',
-    lblEnterValue_Caption: 'Enter a Value:'
-}
-));
+﻿define({
+    txtPleaseSpecifyNumberBetween: 'Пожалуйста, сформулируйте числовое значение от {0} и {1}.',
+    txtPleaseSpecifyNumberLesser: 'Пожалуйста, сформулируйте числовое значение меньше или равное {0}.',
+    txtPleaseSpecifyNumberGreater: 'Пожалуйста, сформулируйте числовое значение, большее или равное {0}.',
+    txtPleaseSpecifyValue: 'Пожалуйста, сформулируйте числовое значение.',
+    lblAvailableValues_Caption: 'Доступные значения:',
+    lblSelectedValues_Caption: 'Отдельные значения:',
+    lblEnterValue_Caption: 'Введите значение:'
+});

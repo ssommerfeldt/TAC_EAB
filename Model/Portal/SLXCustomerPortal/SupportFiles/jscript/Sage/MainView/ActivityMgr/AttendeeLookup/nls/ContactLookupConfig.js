@@ -20,7 +20,8 @@ function (LanguageList, lang) {
             colTitle: 'Title',
             colAccount: 'Account',
             colWorkPhone: 'Work Phone',
-            colEmail: 'Email'
+            colEmail: 'Email',
+            dialogTitleText: 'Lookup Contacts'
         }
     };
     return lang.mixin(LanguageList, nls);

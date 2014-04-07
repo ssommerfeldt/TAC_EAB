@@ -26,9 +26,9 @@ define({
     lblThirdDay: '3',
     lblFourthDay: '4',
     lblCronExpressionText: 'Cron-выражение',
-    txtInvalidScheduleTitle: 'Invalid Schedule',
-    txtInvalidDatesMessage: 'The end time must be after the start time. Please correct this information before continuing.',
-    txtInvalidScheduleTime: 'The start and end times specified will prevent this schedule from running. Please correct this information before continuing.',
-    txtInvalidStartDate: 'A start date is required. Please specify a start date before continuing.',
-    txtInvalidEndDate: 'A end date is required. Please specify a end date before continuing'
+    txtInvalidScheduleTitle: 'Неверный Расписание',
+    txtInvalidDatesMessage: 'Время окончания должно быть после времени начала. Пожалуйста, исправьте эту информацию, прежде чем продолжить.',
+    txtInvalidScheduleTime: 'Начальная и конечная раз указанные предотвратит этот график запуск. Пожалуйста, исправьте эту информацию, прежде чем продолжить.',
+    txtInvalidStartDate: 'Дата начала требуется. Пожалуйста, указать дату начала, прежде чем продолжить.',
+    txtInvalidEndDate: 'Дата окончания не требуется. Введи Конечная дата, прежде чем продолжить.'
 });

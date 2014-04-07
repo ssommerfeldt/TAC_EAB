@@ -137,15 +137,7 @@ if (integration != null)
               <CenterDialog>True</CenterDialog>
             </DialogSpecs>
             <AppliedSecurity>Entities/AuthenticationProvider/Edit</AppliedSecurity>
-            <HideCondition>function () {
-	var clientContextService = Sage.Services.getService('ClientContextService');
-	if (clientContextService != null) {
-	    if (clientContextService.containsKey('IntegrationAuthType')) {
-	        return clientContextService.getValue('IntegrationAuthType') === 'Basic';
-	    }
-	}
-	return false;
-}</HideCondition>
+            <HideCondition>function () { return true; }</HideCondition>
             <Width>6</Width>
           </QFSDataEditCol>
           <QFSDataCheckBoxCol>

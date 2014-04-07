@@ -11,8 +11,7 @@ function (LanguageList, lang) {
             txtCannotDetermineReportNameOrFamily: 'Cannot determine report name or family.',
             txtLoading: 'Loading ',
             txtLoadingReport: 'Loading Report',
-            txtSorryAnErrorOccuredLoadingReport: 'Sorry, an error occured loading report: ${0} ${1}.'
-
+            txtSorryAnErrorOccuredLoadingReport: 'Sorry, an error occurred loading report: ${0} ${1}.'
         }
     };
     return lang.mixin(LanguageList, nls);

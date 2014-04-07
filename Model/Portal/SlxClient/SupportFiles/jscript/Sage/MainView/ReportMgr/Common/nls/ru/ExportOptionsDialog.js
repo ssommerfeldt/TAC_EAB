@@ -1,15 +1,13 @@
-define((
-{
+define({
     txtDialogTitle: 'Параметры экспорта',
-    txtDialogTitleScheduling: 'Export And Scheduling Options',
+    txtDialogTitleScheduling: 'Экспорт и планирование Опции',
     cmdBack_Caption: '< Назад',
     cmdNext_Caption: 'Следующий>',
     cmdCancel_Caption: 'Отмена',
     txtName: 'Имя',
     txtSelectUser: 'Выберите польз.',
-    txtOK: 'ОК',
+    txtOK: 'Ок',
     txtOutputFormat_Caption: 'Формат',
     txtRunAs_Caption: 'Запуск от имени',
-    txtScheduleDescription_Caption: 'Description'
-}
-));
+    txtScheduleDescription_Caption: 'Описание'
+});

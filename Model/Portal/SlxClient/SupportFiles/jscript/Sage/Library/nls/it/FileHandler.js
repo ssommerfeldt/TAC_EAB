@@ -12,7 +12,7 @@ define((
   FileStatusError: 'Si è verificato un errore imprevisto durante il tentativo di aggiornare lo stato del file.',
   LogRequestError: 'Si è verificato un errore imprevisto durante il tentativo di accedere alla richiesta di sincronizzazione del documento.',
   No: 'No',
-  NoAccessMessage: "Non avete i diritti per aggiungere file alla libreria. Per ulteriori informazioni contattare amministratore di SalesLogix.",
+  NoAccessMessage: 'Non avete i diritti per aggiungere file alla libreria. Per ulteriori informazioni contattare l\'amministratore di Saleslogix.',
   Ordered: 'Ordinato',
   PleaseSelectFile: 'Selezionare un file.',
   PleaseWait: 'Attendere prego',

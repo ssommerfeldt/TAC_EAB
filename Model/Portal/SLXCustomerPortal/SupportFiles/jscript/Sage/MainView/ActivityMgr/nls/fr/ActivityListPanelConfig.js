@@ -18,5 +18,7 @@ define((
   colNameContactName: 'Nom',
   SnoozeAlarm: 'Alarme de mise en veille',
   DismissAlarm: "Ignorer alarme",
-  colNameUnConfirmStatus: 'Non confirmé' }
+  colNameUnConfirmStatus: 'Non confirmé',
+  colNameAssociationCount: 'Nombre de participants'
+}
 ));

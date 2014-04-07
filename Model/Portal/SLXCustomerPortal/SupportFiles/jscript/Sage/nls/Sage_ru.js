@@ -322,7 +322,11 @@ define("Sage/MainView/ActivityMgr/nls/ru/QuickCompleteEditor", (
   btnCloseText: 'Закрыть',
   btnHelpText: 'Помощь',
   resultCompletedText: 'Завершить',
-  titleText: 'Быстрое завершение' }
+  titleText: 'Быстрое завершение',
+  actionMessage: 'Только виды деятельности, которые вам позволено завершить будут завершены',
+  completeMessage: 'Заполните все {0} отдельных видов деятельности:',
+  processingMessage: 'Обработка всех {0} отдельных мероприятий пожалуйста, подождите ...'
+}
 ));
 },
 'Sage/Utility/File/nls/ru/DefaultDropHandler':function(){
@@ -375,7 +379,7 @@ define("Sage/UI/Alarms/nls/ru/AlarmPane", (
 define("Sage/TaskPane/nls/ru/LiteratureManagementTasks", (
 { errFulFillmentCancelled: 'Заполнение запроса на инф. материалы было отменено для LitReqId {0}.',
   errFulFillmentFailed: 'Запрос на инф. материалы не может быть заполнен для LitReqId {0}.',
-  errMailMergeService: 'Запрос на инф. материалы не может быть завершен т. к. не может быть загружен сервис рассылки почты. Это может произойти если не установлен Sage SalesLogix Desktop Integration или установлен неверно.',
+  errMailMergeService: 'Запрос на инф. материалы не может быть завершен т. к. не может быть загружен сервис рассылки почты. Это может произойти если не установлен  Saleslogix Desktop Integration или установлен неверно.',
   errFulFillmentRequest: 'Запрос на инф. материалы не может быть заполнен.',
   errFulFillmentRequestEx: 'Запрос на инф. материалы не может быть заполнен:',
   fulFillmentSuccess: 'Заполнение запрос на инф. материалы было успешно.' }
@@ -681,7 +685,15 @@ define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/SpeedSearchLookup", (
 { dialogTitle: 'Поиск участников',
   okText: 'Добавить выбранные',
   cancelText: 'Закрыть',
-  noDataText: 'Нет соответствующих записей.' }
+  noDataText: 'Нет соответствующих записей.',
+  srchBtnCaption: 'Поиск',
+  colName: 'Имя',
+  colType: 'Тип',
+  colAccount: 'Субъект/Компания',
+  colTitle: 'Должность',
+  colEmail: 'E-mail',
+  colWorkPhone: 'Раб. телефон'
+}
 ));
 },
 'Sage/UI/nls/ru/ConditionManager':function(){
@@ -741,7 +753,7 @@ define("Sage/UI/Dashboard/nls/ru/WidgetDefinition", (
   My_Dashboard: 'Моя аналитика',
   Sales: 'Продажи',
   Group_List_Description: 'Показывает список записей группы по сущности. Например, группу активных кампаний.',
-  Welcome_Description: 'Показывает введение в Sage SalesLogix со ссылкой на страницу помощи введения в Sage SalesLogix для ВЕБ.',
+  Welcome_Description: 'Показывает введение в Saleslogix со ссылкой на страницу помощи введения в Saleslogix для ВЕБ.',
   Line_Chart_Description: 'Показывает данные как серию точек данных связанных в линию. Полезно. когда данные представляют много групп или категорий.',
   Bar_Chart_Description: 'Показывает данные как набор горизонтальных прямоугольников. Полезно для сравнения нескольких наборов данных.',
   Column_Chart_Description: 'Показывает данные как набор вертикальных столбцев, сгруппированных по категориям. Полезно для показа изменений данных в период времени для иллюстрации сравнения элементов.',
@@ -749,8 +761,8 @@ define("Sage/UI/Dashboard/nls/ru/WidgetDefinition", (
   Pie_Chart_Description: 'Показывает данные как пропорцию от общего. Каждое значение вычисляется как процент от общего. Эта диаграмма не имет осей.',
   Recently_Viewed_Description: 'Показывает ссылки на недавно просмотренные записи с иконкой, определяющей тип. Например, Субъект или Контакт.',
   Todays_Activities_Description: 'Показывает ссылки на вашу активность сегодня.',
-  Links_Description: 'Показвает ссылку создаваемую вами. Например, к детальному представлению в SalesLogix или к внешнему Веб-сайту.',
-  SData_Feed_Description: 'Отображение веб-канала с использованием каналов данных SData (Sage Data), например канала бухгалтерской интеграции или базы данных Saleslogix.',
+  Links_Description: 'Показвает ссылку создаваемую вами. Например, к детальному представлению в Saleslogix или к внешнему Веб-сайту.',
+  SData_Feed_Description: 'Отображение веб-канала с использованием каналов данных SData (Saleslogix Data), например канала бухгалтерской интеграции или базы данных Saleslogix.',
   Web_Feed_Description: 'Отображение информации веб-канала RSS или Atom.',
   Website_Description: 'Отображение выбранного вами веб-сайта.' }
 ));
@@ -809,7 +821,15 @@ define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/ContactLookupConfig", (
   workphoneText: 'Раб. телефон',
   emailText: 'Эл.почта',
   dialogButtonText: 'Добавить выбранные',
-  cancelText: 'Закрыть' }
+  cancelText: 'Закрыть',
+  colFirstName: 'Имя',
+  colLastName: 'Фамилия',
+  colTitle: 'Название',
+  colAccount: 'Субъект',
+  colWorkPhone: 'Раб. телефон',
+  colEmail: 'Эл.почта',
+  dialogTitleText: 'Поиск Контакта'
+}
 ));
 },
 'Sage/QuickForms/Design/nls/ru/DataSourcePanel':function(){
@@ -877,7 +897,7 @@ define("Sage/UI/Controls/nls/ru/Name", (
 'Sage/MainView/JobMgr/nls/ru/ExecutionsListPanelConfig':function(){
 define("Sage/MainView/JobMgr/nls/ru/ExecutionsListPanelConfig", {
     loadingText: 'Загрузка...',
-    colNameJobName: 'Type',
+    colNameJobName: 'Тип',
     colNameUser: 'Пользователь',
     colNamePhase: 'Этап',
     colNamePhaseDetail: 'Подробности об этапе',
@@ -930,7 +950,7 @@ define("Sage/Library/nls/ru/FileHandler", (
   FileStatusError: 'Произошла неожиданная ошибка при попытке обновить статус файла.',
   LogRequestError: 'Произошел неожиданный сбой при записи в лог запроса документов синхронизации.',
   No: 'Нет',
-  NoAccessMessage: 'У вас нет разрешения на добавление файлов в библиотеку. Для получения дополнительной информации обратитесь к администратору Sage SalesLogix.',
+  NoAccessMessage: 'У вас нет разрешения на добавление файлов в библиотеку. Для получения дополнительной информации обратитесь к администратору Saleslogix.',
   Ordered: 'Упорядоченный',
   PleaseSelectFile: 'Пожалуйста, выберите файл.',
   PleaseWait: 'Пожалуйста, подождите',
@@ -1040,7 +1060,7 @@ define("Sage/MainView/JobMgr/nls/ru/RunJobDialog", {
     txtJobName_Caption: 'Имя задания',
     txtTriggerDescription_Caption: 'Описание',
     cmbScheduleType_Caption: 'Расписание:',
-    cmdOK_Caption: 'ОК',
+    cmdOK_Caption: 'Ок',
     cmdCancel_Caption: 'Отмена',
     txtInvalidNumber: 'Недопустимое число.',
     contentPaneParameters_Caption: 'Параметры',
@@ -1103,9 +1123,6 @@ define("Sage/UI/nls/ru/Dialogs", (
 define("Sage/TaskPane/nls/ru/SecuredActionTasklet", (
 { addToRoleTitle: 'Добавить к роли' }
 ));
-},
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/ru/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/ru/SyncedListPanelConfig',{});
 },
 'Sage/UI/Dashboard/nls/ru/DashboardTabController':function(){
 define("Sage/UI/Dashboard/nls/ru/DashboardTabController", (
@@ -1297,7 +1314,7 @@ define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportsFormatter", (
 },
 'Sage/Utility/File/nls/ru/DragDropWatcher':function(){
 define("Sage/Utility/File/nls/ru/DragDropWatcher", (
-{ query0: 'Функция, которую вы запрашиваете, требует модуль Sage SalesLogix <br> Desktop Integration.',
+{ query0: 'Функция, которую вы запрашиваете, требует модуль Saleslogix <br> Desktop Integration.',
   query1: 'Искать еще...',
   query2: 'Хотите установить эту функцию сейчас?',
   query3: 'Примечание: Этот модуль может быть установлен в любое время со страницы входа в систему или со страницы Параметры.' }
@@ -1348,17 +1365,15 @@ define("Sage/Extensions/Activity/ListPanelOverrides/nls/ru/AllOpenListPanelConfi
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectNumberParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectNumberParameterEditor", (
-{
-    txtPleaseSpecifyNumberBetween: 'Please specify a number value between {0} and {1}.',
-    txtPleaseSpecifyNumberLesser: 'Please specify a number value less than or equal to {0}.',
-    txtPleaseSpecifyNumberGreater: 'Please specify a number value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a number value.',
-    lblAvailableValues_Caption: 'Available Values:',
-    lblSelectedValues_Caption: 'Selected Values:',
-    lblEnterValue_Caption: 'Enter a Value:'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectNumberParameterEditor", {
+    txtPleaseSpecifyNumberBetween: 'Пожалуйста, сформулируйте числовое значение от {0} и {1}.',
+    txtPleaseSpecifyNumberLesser: 'Пожалуйста, сформулируйте числовое значение меньше или равное {0}.',
+    txtPleaseSpecifyNumberGreater: 'Пожалуйста, сформулируйте числовое значение, большее или равное {0}.',
+    txtPleaseSpecifyValue: 'Пожалуйста, сформулируйте числовое значение.',
+    lblAvailableValues_Caption: 'Доступные значения:',
+    lblSelectedValues_Caption: 'Отдельные значения:',
+    lblEnterValue_Caption: 'Введите значение:'
+});
 },
 'Sage/UI/nls/ru/ActivityScheduler':function(){
 define("Sage/UI/nls/ru/ActivityScheduler", (
@@ -1509,21 +1524,19 @@ define("Sage/MainView/ActivityMgr/nls/ru/ActivityGroupContextService", (
 ));
 },
 'Sage/MainView/ReportMgr/Common/nls/ru/ExportOptionsDialog':function(){
-define("Sage/MainView/ReportMgr/Common/nls/ru/ExportOptionsDialog", (
-{
+define("Sage/MainView/ReportMgr/Common/nls/ru/ExportOptionsDialog", {
     txtDialogTitle: 'Параметры экспорта',
-    txtDialogTitleScheduling: 'Export And Scheduling Options',
+    txtDialogTitleScheduling: 'Экспорт и планирование Опции',
     cmdBack_Caption: '< Назад',
     cmdNext_Caption: 'Следующий>',
     cmdCancel_Caption: 'Отмена',
     txtName: 'Имя',
     txtSelectUser: 'Выберите польз.',
-    txtOK: 'ОК',
+    txtOK: 'Ок',
     txtOutputFormat_Caption: 'Формат',
     txtRunAs_Caption: 'Запуск от имени',
-    txtScheduleDescription_Caption: 'Description'
-}
-));
+    txtScheduleDescription_Caption: 'Описание'
+});
 },
 'Sage/MainView/Opportunity/nls/ru/UpdateOpportunities':function(){
 define("Sage/MainView/Opportunity/nls/ru/UpdateOpportunities", (
@@ -1620,14 +1633,12 @@ define("Sage/TaskPane/nls/ru/UserTasklet", (
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/NumberParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/NumberParameterEditor", (
-{
-    txtPleaseSpecifyNumberBetween: 'Please specify a Number value between {0} and {1}.',
-    txtPleaseSpecifyNumberLesser: 'Please specify a Number value less than or equal to {0}.',
-    txtPleaseSpecifyNumberGreater: 'Please specify a Number value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a Number value.'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/NumberParameterEditor", {
+    txtPleaseSpecifyNumberBetween: 'Пожалуйста, сформулируйте числовое значение от {0} и {1}.',
+    txtPleaseSpecifyNumberLesser: 'Пожалуйста, сформулируйте числовое значение меньше или равное {0}.',
+    txtPleaseSpecifyNumberGreater: 'Пожалуйста, сформулируйте числовое значение, большее или равное {0}.',
+    txtPleaseSpecifyValue: 'Пожалуйста, сформулируйте числовое значение.'
+});
 },
 'Sage/UI/Alarms/nls/ru/ActivityAlarm':function(){
 define("Sage/UI/Alarms/nls/ru/ActivityAlarm", (
@@ -1659,42 +1670,42 @@ define("Sage/MainView/Opportunity/nls/ru/OpportunityStatistics", (
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionEditor':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionEditor", (
-{ dlgCrystalReportConditionDetails_Title: 'Добавить/изменить условия',
-  cmdOK_Caption: 'Ок',
-  cmdCancel_Caption: 'Отмена',
-  cmbConditionType_Caption: 'Поиск по',
-  txtInvalidParameterTitle: 'Недопустимый параметр',
-  txtInvalidParameterMessage: 'Недопустимый параметр: ${0}',
-  lkpUser_Caption: 'Пользователь',
-  lkpGroup_Caption: 'Группа',
-  txtSelectUser: 'Выберите польз.',
-  chkCurrentUser_Caption: 'Current User',
-  txtName: 'Имя',
-  txtOK: 'ОК',
-  txtSelectGroup: 'Выбрать Группу',
-  cmbDateRange_Caption: 'Временной диапазон',
-  cmbDateRange_SpecificDates_Caption: 'Точная дата',
-  cmbDateRange_ThisWeek_Caption: 'На этой неделе',
-  cmbDateRange_ThisMonth_Caption: 'В этом месяце',
-  cmbDateRange_ThisQuarter_Caption: 'В этот квартал',
-  cmbDateRange_ThisYear_Caption: 'В этом году',
-  cmbDateRange_LastWeek_Caption: 'Последняя неделя',
-  cmbDateRange_LastMonth_Caption: 'Прошлый месяц',
-  cmbDateRange_LastQuarter_Caption: 'Прошлый квартал',
-  cmbDateRange_LastYear_Caption: 'Прошлый год',
-  cmbDateRange_MonthToDate_Caption: 'Текущий месяц',
-  cmbDateRange_QuarterToDate_Caption: 'С начала квартала',
-  cmbDateRange_YearToDate_Caption: 'С начала года',
-  dtFromDate_Caption: 'От',
-  dtToDate_Caption: 'Кому',
-  cmbTable_Caption: 'Таблица',
-  cmbField_Caption: 'Поле',
-  cmbOperator_Caption: 'Оператор',
-  txtValue_Caption: 'Значение',
-  txtNumericValueFrom_Caption: 'От',
-  txtNumericValueTo_Caption: 'Кому' }
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionEditor", {
+    dlgCrystalReportConditionDetails_Title: 'Добавить/изменить условия',
+    cmdOK_Caption: 'Ок',
+    cmdCancel_Caption: 'Отмена',
+    cmbConditionType_Caption: 'Поиск по',
+    txtInvalidParameterTitle: 'Недопустимый параметр',
+    txtInvalidParameterMessage: 'Недопустимый параметр: ${0}',
+    lkpUser_Caption: 'Пользователь',
+    lkpGroup_Caption: 'Группа',
+    txtSelectUser: 'Выберите польз.',
+    chkCurrentUser_Caption: 'Текущий пользователь',
+    txtName: 'Имя',
+    txtOK: 'Ок',
+    txtSelectGroup: 'Выбрать Группу',
+    cmbDateRange_Caption: 'Временной диапазон',
+    cmbDateRange_SpecificDates_Caption: 'Точная дата',
+    cmbDateRange_ThisWeek_Caption: 'На этой неделе',
+    cmbDateRange_ThisMonth_Caption: 'В этом месяце',
+    cmbDateRange_ThisQuarter_Caption: 'В этот квартал',
+    cmbDateRange_ThisYear_Caption: 'В этом году',
+    cmbDateRange_LastWeek_Caption: 'Последняя неделя',
+    cmbDateRange_LastMonth_Caption: 'Прошлый месяц',
+    cmbDateRange_LastQuarter_Caption: 'Прошлый квартал',
+    cmbDateRange_LastYear_Caption: 'Прошлый год',
+    cmbDateRange_MonthToDate_Caption: 'Текущий месяц',
+    cmbDateRange_QuarterToDate_Caption: 'С начала квартала',
+    cmbDateRange_YearToDate_Caption: 'С начала года',
+    dtFromDate_Caption: 'От',
+    dtToDate_Caption: 'Кому',
+    cmbTable_Caption: 'Таблица',
+    cmbField_Caption: 'Поле',
+    cmbOperator_Caption: 'Оператор',
+    txtValue_Caption: 'Значение',
+    txtNumericValueFrom_Caption: 'От',
+    txtNumericValueTo_Caption: 'Кому'
+});
 },
 'Sage/MainView/IntegrationContract/nls/ru/AdvancedSearchOptions':function(){
 define("Sage/MainView/IntegrationContract/nls/ru/AdvancedSearchOptions", (
@@ -1773,22 +1784,20 @@ define("Sage/UI/nls/ru/NotesHistoryList", (
 'Sage/MainView/ReportMgr/nls/ru/HistoryListPanelConfig':function(){
 define("Sage/MainView/ReportMgr/nls/ru/HistoryListPanelConfig", {
     colNameDate: 'Дата',
-    colNameScheduleName: 'Description',
+    colNameScheduleName: 'Описание',
     colNameExecutionType: 'Тип выполнения',
     colNameRunAs: 'Запуск от имени',
     colNameScheduledBy: 'Запланировано от имени',
     colNameReportName: 'Отчет',
-    colNameSize: 'File Size',
+    colNameSize: 'Размер файла',
     colNameOutputFormat: 'Формат вывода',
-    colNameReportType: 'Type'
+    colNameReportType: 'Тип'
 });
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/BooleanParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/BooleanParameterEditor", (
-{   
-    txtPleaseSpecifyValue: 'Please specify a value.'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/BooleanParameterEditor", {
+    txtPleaseSpecifyValue: 'Пожалуйста, укажите значение.'
+});
 },
 'Sage/QuickForms/Design/nls/ru/UrlControlDesigner':function(){
 define("Sage/QuickForms/Design/nls/ru/UrlControlDesigner", (
@@ -1817,9 +1826,9 @@ define("Sage/MainView/ReportMgr/Common/nls/ru/_WizardDialogBase", (
 define("Sage/MainView/JobMgr/nls/ru/SchedulesListPanelConfig", {
     colNameTriggerName: 'Планировать',
     colNameJobName: 'Имя задания',
-    colNameUser: 'Scheduled By',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
+    colNameUser: 'Запланированные По',
+    colNameStartTimeUtc: 'время начала',
+    colNameEndTimeUtc: 'Время окончания',
     colNamePriority: 'Приоритет',
     colNameStatus: 'Статус',
     colNameTimesTriggered: 'Число выполнений'
@@ -1997,17 +2006,17 @@ define("Sage/QuickForms/Design/Editors/nls/ru/ComboBoxBasicPropertyEditor", (
 ));
 },
 'Sage/MainView/ReportMgr/nls/ru/ReportsListPanelConfig':function(){
-define("Sage/MainView/ReportMgr/nls/ru/ReportsListPanelConfig", (
-{ colNameReportName: 'Имя',
-  colNameType: 'Тип',
-  colNameTable: 'Таблица',
-  colNameCreateUser: 'Создано',
-  colNameCreateDate: 'Дата создания',
-  colNameLastExecutionDate: 'Последний запуск',
-  colNameLastExecutionUser: 'Последний запуск от имени',
-  colNameModifyUser: 'Кто обновил',
-  colNameModifyDate: 'Дата обновления' }
-));
+define("Sage/MainView/ReportMgr/nls/ru/ReportsListPanelConfig", {
+    colNameReportName: 'Имя',
+    colNameType: 'Тип',
+    colNameTable: 'Таблица',
+    colNameCreateUser: 'Создано',
+    colNameCreateDate: 'Дата создания',
+    colNameLastExecutionDate: 'Последний запуск',
+    colNameLastExecutionUser: 'Последний запуск от имени',
+    colNameModifyUser: 'Кто обновил',
+    colNameModifyDate: 'Дата обновления'
+});
 },
 'Sage/UI/Alarms/nls/ru/JobNotificationButton':function(){
 define("Sage/UI/Alarms/nls/ru/JobNotificationButton", (
@@ -2015,15 +2024,13 @@ define("Sage/UI/Alarms/nls/ru/JobNotificationButton", (
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportWizardController':function(){
-define(
-    "Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportWizardController", ({
-        txtOnDemandScheduleName: 'По запросу',
-        txtReportSuccessfullyScheduled: 'Расписание отчета составлено.',
-        txtDynamicParametersMessage: 'Reports with dynamic parameters are currently not supported.',
-        txtError: 'Error',
-        txtScheduleSuccessfullyUpdated: 'Schedule successfully updated.'
-    })
-);
+define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportWizardController", {
+    txtOnDemandScheduleName: 'По запросу',
+    txtReportSuccessfullyScheduled: 'Расписание отчета составлено.',
+    txtDynamicParametersMessage: 'Отчеты с динамическими параметрами в настоящее время не поддерживается.',
+    txtError: 'Ошибка',
+    txtScheduleSuccessfullyUpdated: 'Расписание успешно обновлены.'
+});
 },
 'Sage/MainView/JobMgr/nls/ru/JobDefinitionsListPanelConfig':function(){
 define("Sage/MainView/JobMgr/nls/ru/JobDefinitionsListPanelConfig", (
@@ -2084,11 +2091,9 @@ define("Sage/MainView/ActivityMgr/nls/ru/RecurringEditor", (
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportsUtility':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportsUtility", (
-{
-    txtCurrentUser: 'Current User'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportsUtility", {
+    txtCurrentUser: 'Текущий пользователь'
+});
 },
 'Sage/QuickForms/Design/Editors/nls/ru/DataGridAdvancedPropertyEditor':function(){
 define("Sage/QuickForms/Design/Editors/nls/ru/DataGridAdvancedPropertyEditor", (
@@ -2116,21 +2121,19 @@ define("Sage/QuickForms/Design/Editors/nls/ru/DataGridAdvancedPropertyEditor", (
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/DateRangeParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/DateRangeParameterEditor", (
-{
-    txtNoLowerValue: 'No lower value',
-    txtNoUpperValue: 'No upper value',
-    txtIncludeThisValue: 'Include this value',
-    txtFrom: 'From:',
-    txtTo: 'To:',
-    txtPleaseSpecifyFromValue: 'Please specify From value',
-    txtPleaseSpecifyToValue: 'Please specify To value',
-    txtPleaseSpecifyDateBetween: 'Please specify a Date value between {0} and {1}.',
-    txtPleaseSpecifyDateLesser: 'Please specify a Date value less than or equal to {0}.',
-    txtPleaseSpecifyDateGreater: 'Please specify a Date value greater than or equal to {0}.',
-    txtFromMustBeLessThanOrEqualToTo: 'From value must be less than or equal to To value.'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/DateRangeParameterEditor", {
+    txtNoLowerValue: 'Нет низкое значение',
+    txtNoUpperValue: 'Нет верхнее значение',
+    txtIncludeThisValue: 'Включите эту величину',
+    txtFrom: 'От:',
+    txtTo: 'Кому:',
+    txtPleaseSpecifyFromValue: 'Пожалуйста, сформулируйте От стоимости',
+    txtPleaseSpecifyToValue: 'Пожалуйста, сформулируйте Произвести оценку',
+    txtPleaseSpecifyDateBetween: 'Пожалуйста, сформулируйте значение даты между {0} и {1}.',
+    txtPleaseSpecifyDateLesser: 'Пожалуйста, сформулируйте дат значение, меньшее или равное {0}.',
+    txtPleaseSpecifyDateGreater: 'Пожалуйста, сформулируйте дат значение, большее или равное {0}.',
+    txtFromMustBeLessThanOrEqualToTo: 'От значение должно быть меньше или равно Для значения.'
+});
 },
 'Sage/MainView/ReportMgr/nls/ru/BaseListPanelConfig':function(){
 define("Sage/MainView/ReportMgr/nls/ru/BaseListPanelConfig", (
@@ -2138,14 +2141,12 @@ define("Sage/MainView/ReportMgr/nls/ru/BaseListPanelConfig", (
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/DateParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/DateParameterEditor", (
-{    
-    txtPleaseSpecifyDateBetween: 'Please specify a Date value between {0} and {1}.',
-    txtPleaseSpecifyDateLesser: 'Please specify a Date value less than or equal to {0}.',
-    txtPleaseSpecifyDateGreater: 'Please specify a Date value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a Date value.'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/DateParameterEditor", {
+    txtPleaseSpecifyDateBetween: 'Пожалуйста, сформулируйте значение даты между {0} и {1}.',
+    txtPleaseSpecifyDateLesser: 'Пожалуйста, сформулируйте дат значение, меньшее или равное {0}.',
+    txtPleaseSpecifyDateGreater: 'Пожалуйста, сформулируйте дат значение, большее или равное {0}.',
+    txtPleaseSpecifyValue: 'Пожалуйста, сформулируйте значение даты.'
+});
 },
 'Sage/QuickForms/Design/nls/ru/CurrencyControlDesigner':function(){
 define("Sage/QuickForms/Design/nls/ru/CurrencyControlDesigner", (
@@ -2452,6 +2453,17 @@ define("Sage/MainView/SecurityMgr/nls/ru/SecurityProfile", (
   profileType_Text: 'Тип профиля' }
 ));
 },
+'Sage/MainView/ReportMgr/nls/ru/ReportWizardController':function(){
+﻿define("Sage/MainView/ReportMgr/nls/ru/ReportWizardController", {
+    txtLoadingScheduleDetails: 'Загрузка Расписание Подробнее',
+    txtError: 'Ошибка',
+    txtCannotDetermineReportId: 'Невозможно определить идентификатор отчета.',
+    txtCannotDetermineReportNameOrFamily: 'Невозможно определить имя отчета или семью.',
+    txtLoading: 'Загрузка ...',
+    txtLoadingReport: 'Загрузка Сообщить',
+    txtSorryAnErrorOccuredLoadingReport: 'К сожалению, произошла ошибка загрузки отчета: ${0} ${1}.'
+});
+},
 'Sage/QuickForms/Design/Editors/nls/ru/UserAdvancedPropertyEditor':function(){
 define("Sage/QuickForms/Design/Editors/nls/ru/UserAdvancedPropertyEditor", (
 { titleText: 'Расширенный',
@@ -2536,17 +2548,16 @@ define("Sage/QuickForms/Design/Editors/nls/ru/CurrencyAdvancedPropertyEditor", (
 ));
 },
 'Sage/TaskPane/nls/ru/ReportManagerTasksTasklet':function(){
-define("Sage/TaskPane/nls/ru/ReportManagerTasksTasklet", (
-{ taskRunReport_Caption: 'Запустить отчет',
-  taskScheduleReport_Caption: 'Запланировать отчет',
-  taskDeleteReport_Caption: 'Удалить отчет',
-  taskDeleteSchedule_Caption: 'Удалить расписание',
-  taskEditSchedule_Caption: 'Edit Schedule',
-  taskDeleteHistory_Caption: 'Удаление истории',
-  txtRecordsSelected: 'record(s) selected',
-  txtClear: 'Clear'
-}
-));
+define("Sage/TaskPane/nls/ru/ReportManagerTasksTasklet", {
+    taskRunReport_Caption: 'Запустить отчет',
+    taskScheduleReport_Caption: 'Запланировать отчет',
+    taskDeleteReport_Caption: 'Удалить отчет',
+    taskDeleteSchedule_Caption: 'Удалить расписание',
+    taskEditSchedule_Caption: 'Редактировать расписание',
+    taskDeleteHistory_Caption: 'Удаление истории',
+    txtRecordsSelected: 'записей выбрано',
+    txtClear: 'Очистить'
+});
 },
 'Sage/UI/nls/ru/SLXPreviewGrid':function(){
 define("Sage/UI/nls/ru/SLXPreviewGrid", (
@@ -2630,7 +2641,9 @@ define("Sage/MainView/ActivityMgr/nls/ru/ActivityEditorAttendeesTab", (
   header_Notes: 'Заметки',
   tooltip_speedSearch: 'Добавить участника',
   tooltip_AddContact: 'Добавить контакт',
-  tooltip_AddLead: 'Добавить наводку' }
+  tooltip_AddLead: 'Добавить наводку',
+  tooltip_Delete: "Удалить"
+}
 ));
 },
 'Sage/UI/nls/ru/UserType':function(){
@@ -2738,12 +2751,12 @@ define("Sage/UI/nls/ru/ActivityList", (
 },
 'Sage/UI/Alarms/nls/ru/JobNotificationPopup':function(){
 ﻿define("Sage/UI/Alarms/nls/ru/JobNotificationPopup", {
-    title: 'Job Notifications',
+    title: 'Работа Уведомления',
     helpText: 'Помощь',
-    colNameJobName: 'Type',
+    colNameJobName: 'Тип',
     colNameProgress: 'Ход выполнения',
     colNameStatus: 'Статус',
-    colExecutionResult: 'Result'
+    colExecutionResult: 'Результат'
 });
 },
 'Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/LeadLookupConfig':function(){
@@ -2757,7 +2770,15 @@ define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/LeadLookupConfig", (
   workphoneText: 'Рабочий телефон',
   emailText: 'Эл.почта',
   dialogButtonText: 'Добавить выбранные',
-  cancelText: 'Закрыть' }
+  cancelText: 'Закрыть',
+  colFirstName: 'Имя',
+  colLastName: 'Фамилия',
+  colTitle: 'Название',
+  colCompany: 'Субъект',
+  colWorkPhone: 'Раб. телефон',
+  colEmail: 'Эл.почта',
+  dialogTitleText: 'Поиск Наводки'
+}
 ));
 },
 'Sage/MainView/ReportMgr/nls/ru/SchedulesListPanelConfig':function(){
@@ -2767,11 +2788,11 @@ define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/LeadLookupConfig", (
     colNameRunAsUser: 'Запуск от имени',
     colNameLastExecutionDate: 'Последний запуск',
     colNameExecutionCount: 'Число выполнений',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Priority',
-    colNameStatus: 'Status',
-    colNameTemplate: 'Template'
+    colNameStartTimeUtc: 'время начала',
+    colNameEndTimeUtc: 'Время окончания',
+    colNamePriority: 'Приоритет',
+    colNameStatus: 'Статус',
+    colNameTemplate: 'Шаблон'
 });
 },
 'Sage/QuickForms/Design/Editors/nls/ru/GenericAdvancedPropertyEditor':function(){
@@ -2895,14 +2916,12 @@ define("Sage/QuickForms/Design/nls/ru/GenericControlDesigner", (
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/StringParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/StringParameterEditor", (
-{
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/StringParameterEditor", {
     txtTheValueMustBeBetween: 'The value must be between {0} and {1} characters long.',
     txtTheMinimumLengthForThisField: 'The minimum length for this field is {0}.',
     txtTheMaximumLengthForThisField: 'The maximum length for this field is {0}.',
-    txtPleaseSpecifyValue: 'Please specify a value.'
-}
-));
+    txtPleaseSpecifyValue: 'Пожалуйста, укажите значение.'
+});
 },
 'Sage/QuickForms/Design/nls/ru/PropertyEditorContainer':function(){
 define("Sage/QuickForms/Design/nls/ru/PropertyEditorContainer", (
@@ -2956,7 +2975,9 @@ define("Sage/MainView/ActivityMgr/nls/ru/ActivityListPanelConfig", (
   colNameContactName: 'Имя',
   SnoozeAlarm: 'Отложить оповещение',
   DismissAlarm: 'Отклонить оповещение',
-  colNameUnConfirmStatus: 'Неподтвержденные' }
+  colNameUnConfirmStatus: 'Неподтвержденные',
+  colNameAssociationCount: 'Всего Участники'
+}
 ));
 },
 'Sage/UI/Controls/nls/ru/PickList':function(){
@@ -3068,26 +3089,25 @@ define("Sage/QuickForms/Design/Editors/nls/ru/CheckBoxAdvancedPropertyEditor", (
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionsDialog':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionsDialog", (
-{ txtDialogTitle: 'Выбор записей',
-  cmdBack_Caption: '< Назад',
-  cmdNext_Caption: 'Следующий>',
-  cmdCancel_Caption: 'Отмена',
-  grdCrystalConditions_ConditionType_Caption: 'Тип',
-  grdCrystalConditions_TableName_Caption: 'Таблица',
-  grdCrystalConditions_FieldName_Caption: 'Поле',
-  grdCrystalConditions_Operator_Caption: 'Оператор',
-  grdCrystalConditions_Value_Caption: 'Значение условия',
-  txtShowRecordsThatMatch: 'Показать совпадения: ',
-  txtMatch: 'Совпадение:',
-  txtOfTheFollowingConditions: 'по следующим условиям:',
-  txtAny: 'Любое',
-  txtAll: 'Все',
-  txtAllRecords: '[Все записи]',
-  txtSpecificConditions: '[Особые условия]',
-  txtCurrentUser: '[Current User]'
-}
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionsDialog", {
+    txtDialogTitle: 'Выбор записей',
+    cmdBack_Caption: '< Назад',
+    cmdNext_Caption: 'Следующий>',
+    cmdCancel_Caption: 'Отмена',
+    grdCrystalConditions_ConditionType_Caption: 'Тип',
+    grdCrystalConditions_TableName_Caption: 'Таблица',
+    grdCrystalConditions_FieldName_Caption: 'Поле',
+    grdCrystalConditions_Operator_Caption: 'Оператор',
+    grdCrystalConditions_Value_Caption: 'Значение условия',
+    txtShowRecordsThatMatch: 'Показать совпадения: ',
+    txtMatch: 'Совпадение:',
+    txtOfTheFollowingConditions: 'по следующим условиям:',
+    txtAny: 'Любое',
+    txtAll: 'Все',
+    txtAllRecords: '[Все записи]',
+    txtSpecificConditions: '[Особые условия]',
+    txtCurrentUser: '[Текущий пользователь]'
+});
 },
 'Sage/Extensions/Activity/ListPanelOverrides/nls/ru/ActivityListPanelConfig':function(){
 define("Sage/Extensions/Activity/ListPanelOverrides/nls/ru/ActivityListPanelConfig", (
@@ -3123,11 +3143,11 @@ define("Sage/UI/nls/ru/JobSchedulingWidget", {
     lblThirdDay: '3',
     lblFourthDay: '4',
     lblCronExpressionText: 'Cron-выражение',
-    txtInvalidScheduleTitle: 'Invalid Schedule',
-    txtInvalidDatesMessage: 'The end time must be after the start time. Please correct this information before continuing.',
-    txtInvalidScheduleTime: 'The start and end times specified will prevent this schedule from running. Please correct this information before continuing.',
-    txtInvalidStartDate: 'A start date is required. Please specify a start date before continuing.',
-    txtInvalidEndDate: 'A end date is required. Please specify a end date before continuing'
+    txtInvalidScheduleTitle: 'Неверный Расписание',
+    txtInvalidDatesMessage: 'Время окончания должно быть после времени начала. Пожалуйста, исправьте эту информацию, прежде чем продолжить.',
+    txtInvalidScheduleTime: 'Начальная и конечная раз указанные предотвратит этот график запуск. Пожалуйста, исправьте эту информацию, прежде чем продолжить.',
+    txtInvalidStartDate: 'Дата начала требуется. Пожалуйста, указать дату начала, прежде чем продолжить.',
+    txtInvalidEndDate: 'Дата окончания не требуется. Введи Конечная дата, прежде чем продолжить.'
 });
 },
 'Sage/UI/Controls/nls/ru/LogOffButton':function(){
@@ -3162,17 +3182,15 @@ define("Sage/QuickForms/Design/Editors/nls/ru/TextBoxAdvancedPropertyEditor", (
 ));
 },
 'Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectStringParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectStringParameterEditor", (
-{
-    txtTheValueMustBeBetween: 'The value must be between {0} and {1} characters long.',
-    txtTheMinimumLengthForThisField: 'The minimum length for this field is {0}.',
-    txtTheMaximumLengthForThisField: 'The maximum length for this field is {0}.',
-    txtPleaseSpecifyValue: 'Please specify a value.',
-    lblAvailableValues_Caption: 'Available Values:',
-    lblSelectedValues_Caption: 'Selected Values:',
-    lblEnterValue_Caption: 'Enter a Value:'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectStringParameterEditor", {
+    txtTheValueMustBeBetween: 'Значение должно быть между {0} и {1} долго символов.',
+    txtTheMinimumLengthForThisField: 'Минимальная длина этого поля {0}.',
+    txtTheMaximumLengthForThisField: 'Максимальная длина этого поля {0}.',
+    txtPleaseSpecifyValue: 'Пожалуйста, укажите значение.',
+    lblAvailableValues_Caption: 'Доступные значения:',
+    lblSelectedValues_Caption: 'Отдельные значения:',
+    lblEnterValue_Caption: 'Введите значение:'
+});
 },
 'Sage/MainView/ActivityMgr/nls/ru/EditEventEditor':function(){
 define("Sage/MainView/ActivityMgr/nls/ru/EditEventEditor", (
@@ -3225,17 +3243,17 @@ define("Sage/UI/Controls/nls/ru/DateTimePicker", (
 define(
 "Sage/MainView/ReportMgr/nls/ru/ReportManagerActions", {
     txtSelectRecord: 'Выберите запись из списка.',
-    txtInvalidSelectionCount: 'You must have at least one record selected before continuing.',
-    confirm_Deletion: 'Are you sure you want to delete the selected ${0}?',
-    confirm_Report: 'report',
-    confirm_Schedule: 'schedule',
-    confirm_ReportHistory: 'report history record',
-    txtYes: 'Yes',
-    txtNo: 'No',
-    deleteJobError: 'Sorry an error occured during the deletion process: ${0}',
-    txtDeleteHistory: 'Deleting history records',
-    txtDeleteTitle: 'Delete History',
-    txtErrorDeleteReport: 'An error occured deleting report: ${0}'
+    txtInvalidSelectionCount: 'Вы должны быть по крайней мере одна запись, выбранную прежде чем продолжить.',
+    confirm_Deletion: 'Вы уверены, что хотите удалить выбранный ${0}?',
+    confirm_Report: 'отчет',
+    confirm_Schedule: 'график',
+    confirm_ReportHistory: 'История отчет запись',
+    txtYes: 'Да',
+    txtNo: 'Нет',
+    deleteJobError: 'К сожалению произошла ошибка во время процесса удаления: ${0}',
+    txtDeleteHistory: 'Удаление записи журнала',
+    txtDeleteTitle: 'Удалить историю',
+    txtErrorDeleteReport: 'Произошла ошибка удаления отчета: ${0}'
 });
 },
 'Sage/UI/Alarms/nls/ru/AlarmPopup':function(){

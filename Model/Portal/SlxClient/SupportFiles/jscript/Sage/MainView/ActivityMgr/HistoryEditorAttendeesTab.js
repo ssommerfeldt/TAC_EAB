@@ -196,8 +196,8 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
                         onComplete: onComplete
                     },
                     slxContext: { 'workspace': '', tabId: '' },
-                    contextualCondition: function () {
-                        return 'HistoryId eq \'' + utility.getCurrentEntityId() + '\' and EntityType in (\'Contact\',\'Lead\')';
+                    contextualCondition: function () {                       
+                        return 'HistoryId eq \'' + utility.getCurrentEntityId() + '\' and ((SLXUserAssociationId in (\'\',null) and EntityType eq \'User\') or (EntityType in (\'Contact\',\'Lead\')))';
                     },
                     id: this.id + '_histAttendees',
                     rowsPerPage: 40

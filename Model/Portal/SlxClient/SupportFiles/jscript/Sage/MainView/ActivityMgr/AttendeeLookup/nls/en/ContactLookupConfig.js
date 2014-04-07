@@ -14,5 +14,6 @@ define((
   colTitle: 'Title',
   colAccount: 'Account',
   colWorkPhone: 'Work Phone',
-  colEmail: 'Email' }
+  colEmail: 'Email',
+  dialogTitleText: 'Lookup Contacts'}
 ));

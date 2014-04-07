@@ -8,5 +8,9 @@ define((
   btnCloseText: 'Chiudi',
   btnHelpText: 'Aiuto',
   resultCompletedText: 'Completa',
-  titleText: 'Completamento Rapido' }
+  titleText: 'Completamento Rapido',
+  actionMessage: 'Solo le attività che si è permesso di completare saranno completate.',
+  completeMessage: 'Completa tutti {0} attività selezionate:',
+  processingMessage: 'Elaborazione tutti {0} attività selezionate attendere prego ...'
+}
 ));

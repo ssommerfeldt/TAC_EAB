@@ -4,9 +4,9 @@
     colNameRunAsUser: 'Запуск от имени',
     colNameLastExecutionDate: 'Последний запуск',
     colNameExecutionCount: 'Число выполнений',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Priority',
-    colNameStatus: 'Status',
-    colNameTemplate: 'Template'
+    colNameStartTimeUtc: 'время начала',
+    colNameEndTimeUtc: 'Время окончания',
+    colNamePriority: 'Приоритет',
+    colNameStatus: 'Статус',
+    colNameTemplate: 'Шаблон'
 });

@@ -20,7 +20,8 @@ define([
         'dojo/ready',
         'dojo/json',
         'dojo/DeferredList',
-        'dojo/_base/Deferred'
+        'dojo/_base/Deferred',
+         'dojo/string'
     ], function (
         _Widget,
         _Container,
@@ -42,7 +43,8 @@ define([
         ready,
         json,
         DeferredList,
-        Deferred
+        Deferred,
+        dString
     ) {
         var widget = declare('Sage.UI.Filters.FilterPanel', [_Widget, _Container, _ServiceMixin, _Templated], {
             serviceMap: {
@@ -144,10 +146,10 @@ define([
                 this._filterGroup = value;
                 this._filterSubscriptions = [];
                 this._filterSubscriptions.push(
-                this.subscribe(dojo.string.substitute("/ui/filters/${0}/apply", [this._filterGroup]), lang.hitch(this, this._onApply)));
+                this.subscribe(dString.substitute("/ui/filters/${0}/apply", [this._filterGroup]), lang.hitch(this, this._onApply)));
 
                 this._filterSubscriptions.push(
-                this.subscribe(dojo.string.substitute("/ui/filters/${0}/change", [this._filterGroup]), lang.hitch(this, this._onChange)));
+                this.subscribe(dString.substitute("/ui/filters/${0}/change", [this._filterGroup]), lang.hitch(this, this._onChange)));
             },
             _getFilterGroupAttr: function () {
                 return this._filterGroup;
@@ -427,8 +429,8 @@ define([
                 var cacheKey, service, context, cacheData, data;
 
                 service = Sage.Services.getService("ClientGroupContext");
-                context = service && service.getContext();
-                cacheKey = "METADATA_FILTERS_" + context.CurrentGroupID;
+                context = service && service.getContext();               
+                cacheKey = dString.substitute("METADATA_FILTERS_${0}_${1}", [context.CurrentEntity, context.CurrentGroupID]);
 
                 cacheData = sessionStorage.getItem(cacheKey);
                 if (cacheData) {

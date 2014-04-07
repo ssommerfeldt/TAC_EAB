@@ -761,7 +761,7 @@ namespace Sage.Integration.Entity.Feeds
 {
     public class <#= entity.Name #>Feed : Feed<<#= entity.Name #>Entry>
     {
-        public const string DefaultTitle = "Sage Saleslogix | <#= sdataExt.PathName #>";
+        public const string DefaultTitle = "Saleslogix | <#= sdataExt.PathName #>";
         public const string ResourceName = "<#= entity.Name #>";
         public const string ResourcePath = "<#= sdataExt.PathName #>";
 

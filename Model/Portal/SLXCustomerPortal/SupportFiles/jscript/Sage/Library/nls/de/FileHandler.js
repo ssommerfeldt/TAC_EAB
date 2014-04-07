@@ -12,7 +12,7 @@ define((
   FileStatusError: 'Beim Versuch, den Dateistatus zu aktualisieren, trat ein unerwarteter Fehler auf.',
   LogRequestError: 'Beim Versuch, die Anforderung zur Dokumentsynchronisierung zu protokollieren, trat ein unerwarteter Fehler auf.',
   No: 'Nein',
-  NoAccessMessage: 'Sie verfügen nicht über die Berechtigung, Dateien zur Bibliothek hinzuzufügen. Weitere Informationen erhalten Sie von Ihrem Sage SalesLogix-Administrator.',
+  NoAccessMessage: 'Sie verfügen nicht über die Berechtigung, Dateien zur Bibliothek hinzuzufügen. Weitere Informationen erhalten Sie von Ihrem Saleslogix-Administrator.',
   Ordered: 'Angefordert',
   PleaseSelectFile: 'Wählen Sie eine Datei aus.',
   PleaseWait: 'Bitte warten',

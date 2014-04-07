@@ -215,6 +215,8 @@ Module Module1
                     .Fields("MASCUSTKEY").Value = MyDataRow("MASCUSTKEY")
                     .Fields("CURRENCYCODE").Value = MyDataRow("CURRENCYCODE")
                     '.Fields("ACCOUNTID").Value = MyDataRow("ACCOUNTID")
+                    .Fields("MASNationalAcctID").Value = MyDataRow("MASNationalAcctID")
+
 
 
                 End If

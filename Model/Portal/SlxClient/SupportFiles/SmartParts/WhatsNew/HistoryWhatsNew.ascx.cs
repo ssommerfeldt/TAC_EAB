@@ -96,7 +96,8 @@ public partial class SmartParts_HisWhatsNew_HisWhatsNew : UserControl, ISmartPar
         }
 
         SearchOptions.SearchDate = fromDate;
-        SearchOptions.UserIds.AddRange(UserCalendar.GetCalendarAccessUserList(CurrentUserId));
+        var calendarService = ApplicationContext.Current.Services.Get<ICalendarSecurityService>(true);
+        SearchOptions.UserIds.AddRange(calendarService.GetCalendarAccessUserIds(CurrentUserId));        
         
         //New History
         SearchOptions.SearchType = WhatsNewSearchOptions.SearchTypeEnum.New;

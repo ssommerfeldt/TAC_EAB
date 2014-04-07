@@ -4,9 +4,9 @@
     colNameRunAsUser: 'Ausführen als',
     colNameLastExecutionDate: 'Letzte Ausführung',
     colNameExecutionCount: 'Anzahl Ausführungen',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Priority',
+    colNameStartTimeUtc: 'Startzeit',
+    colNameEndTimeUtc: 'Endzeit',
+    colNamePriority: 'Priorität',
     colNameStatus: 'Status',
-    colNameTemplate: 'Template'
+    colNameTemplate: 'Schablone'
 });

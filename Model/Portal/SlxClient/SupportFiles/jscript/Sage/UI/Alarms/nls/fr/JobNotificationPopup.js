@@ -1,9 +1,9 @@
 ﻿define({
-    title: 'Job Notifications',
+    title: "Notifications d'emploi",
     helpText: 'Aide',
     colNameJobName: 'Type',
     colNameProgress: 'Progression',
     colNameStatus: 'Etat',
-    colExecutionResult: 'Result'
+    colExecutionResult: 'Résultat'
 });
 

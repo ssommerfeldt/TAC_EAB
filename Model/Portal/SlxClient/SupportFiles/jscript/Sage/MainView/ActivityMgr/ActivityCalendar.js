@@ -230,6 +230,8 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
 
 
                     }
+                } else if (data != null && data.TimelessChanged) {
+                    self._deleteFromSchedulerByActivity(data.$key);
                 }
             });
 

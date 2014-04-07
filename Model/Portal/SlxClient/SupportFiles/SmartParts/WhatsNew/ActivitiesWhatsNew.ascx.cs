@@ -81,8 +81,8 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
         if (!Visible) return;
 
         DateTime fromDate = GetLastWebUpdate();
-
-        SearchOptions.UserIds.AddRange(UserCalendar.GetCalendarAccessUserList(CurrentUserId));
+        var calendarService = ApplicationContext.Current.Services.Get<ICalendarSecurityService>(true); 
+        SearchOptions.UserIds.AddRange(calendarService.GetCalendarAccessUserIds(CurrentUserId));
         SearchOptions.StartDate = fromDate;
         if (!String.IsNullOrEmpty(grdNewActivities.SortExpression))
             SearchOptions.OrderBy = grdNewActivities.SortExpression;

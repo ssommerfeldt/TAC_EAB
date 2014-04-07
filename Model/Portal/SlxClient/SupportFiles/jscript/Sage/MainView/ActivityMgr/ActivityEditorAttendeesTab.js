@@ -169,7 +169,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                             id: 'attendeeDelete',
                             imageClass: 'icon_Delete_16x16',
                             handler: this.deleteAttendees,
-                            tooltip: "Delete",
+                            tooltip: this.tooltip_Delete,
                             scope: this
                         }
                     ];             

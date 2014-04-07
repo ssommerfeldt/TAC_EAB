@@ -1,5 +1,5 @@
-define((
-{ txtEdit: 'Modifica',
-  txtDelete: 'Elimina',
-  txtRangeValue: '${0} a ${1}' }
-));
+define({
+    txtEdit: 'Modifica',
+    txtDelete: 'Elimina',
+    txtRangeValue: '${0} di ${1}'
+});

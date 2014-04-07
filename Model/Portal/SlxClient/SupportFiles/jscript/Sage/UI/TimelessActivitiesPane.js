@@ -189,7 +189,7 @@ define([
             },
             refreshGrid: function (data) {
                 if (data !== null) {
-                    if (data.Timeless) {
+                    if (data.Timeless || data.TimelessChanged) {
                         this.userActivities = [];
                         this.grid.refresh();
                     }

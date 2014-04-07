@@ -19,7 +19,7 @@ function closeWin() {
     
 function addItem() {
     var vURL = 'addCalcField.aspx';
-    window.open(vURL, "addCalcField","dialog=yes,centerscreen=yes,width=600,height=440,status=no,toolbar=no,scrollbars=yes,modal=yes,title='addCalcField'");
+    window.open(vURL, "addCalcField","dialog=yes,centerscreen=yes,width=640,height=440,status=no,toolbar=no,scrollbars=yes,modal=yes,title='addCalcField'");
 }
 
 function calcFields_CallBack() {
@@ -46,7 +46,7 @@ function editItem() {
         var row = document.getElementById("grdCalcFields").rows[idx];
         calcFieldObj = row.calcFieldObj;
         var vURL = 'addCalcField.aspx?tbl=' + calcFieldObj.baseTable;
-        window.open(vURL, "addCalcField","dialog=yes,centerscreen=yes,width=600,height=440,status=no,toolbar=no,scrollbars=yes,modal=yes,title='addCalcField'");
+        window.open(vURL, "addCalcField","dialog=yes,centerscreen=yes,width=640,height=440,status=no,toolbar=no,scrollbars=yes,modal=yes,title='addCalcField'");
     }
 }
 

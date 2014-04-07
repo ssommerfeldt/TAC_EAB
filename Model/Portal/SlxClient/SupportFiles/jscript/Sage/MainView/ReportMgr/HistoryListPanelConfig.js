@@ -43,8 +43,7 @@ function (
         _getStructure: function () {
             return [
                 { field: 'CreateDate', name: this.colNameDate, width: '65px', type: dateTimeColumn },
-                { field: 'Description', name: this.colNameReportName, width: '125px', formatter: reportManagerFormatter.formatAttachment },
-                { field: 'ScheduleName', name: this.colNameScheduleName, width: '75px' },
+                { field: 'ScheduleName', name: this.colNameReportName, width: '125px', formatter: reportManagerFormatter.formatAttachment },
                 { field: 'ReportType', name: this.colNameReportType, width: '50px', formatter: reportManagerFormatter.formatReportType },
                 { field: 'ExecutionType', name: this.colNameExecutionType, width: '50px', formatter: reportManagerFormatter.formatExecutionType },
                 { field: 'DocumentType', name: this.colNameOutputFormat, width: '50px' },

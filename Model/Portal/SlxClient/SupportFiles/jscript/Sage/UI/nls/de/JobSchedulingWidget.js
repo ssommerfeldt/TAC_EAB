@@ -26,9 +26,9 @@ define({
     lblThirdDay: 'dritten',
     lblFourthDay: 'vierten',
     lblCronExpressionText: 'Cron-Ausdruck',
-    txtInvalidScheduleTitle: 'Invalid Schedule',
-    txtInvalidDatesMessage: 'The end time must be after the start time. Please correct this information before continuing.',
-    txtInvalidScheduleTime: 'The start and end times specified will prevent this schedule from running. Please correct this information before continuing.',
-    txtInvalidStartDate: 'A start date is required. Please specify a start date before continuing.',
-    txtInvalidEndDate: 'A end date is required. Please specify a end date before continuing'
+    txtInvalidScheduleTitle: 'Ungültige Spielplan',
+    txtInvalidDatesMessage: 'Die Endzeit muss nach dem Startzeitpunkt sein. Bitte korrigieren Sie diese Informationen, bevor Sie fortfahren.',
+    txtInvalidScheduleTime: 'Die angegebenen Start-und Endzeiten wird diesen Zeitplan nicht ausgeführt werden. Bitte korrigieren Sie diese Informationen, bevor Sie fortfahren.',
+    txtInvalidStartDate: 'Ein Starttermin ist nicht erforderlich. Bitte geben Sie ein Startdatum, bevor Sie fortfahren.',
+    txtInvalidEndDate: 'Ein Enddatum erforderlich. Bitte geben Sie ein Enddatum, bevor Sie fortfahren.'
 });

@@ -3,7 +3,7 @@ define({
     txtJobName_Caption: 'Имя задания',
     txtTriggerDescription_Caption: 'Описание',
     cmbScheduleType_Caption: 'Расписание:',
-    cmdOK_Caption: 'ОК',
+    cmdOK_Caption: 'Ок',
     cmdCancel_Caption: 'Отмена',
     txtInvalidNumber: 'Недопустимое число.',
     contentPaneParameters_Caption: 'Параметры',

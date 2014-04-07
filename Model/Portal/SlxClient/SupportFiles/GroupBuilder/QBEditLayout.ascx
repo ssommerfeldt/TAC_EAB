@@ -65,11 +65,11 @@
 							<option value="User"><asp:Localize ID="localizeUserName" runat="server" Text="<%$ resources: localizeUserName.Text %>" /></option>
 							<option value="User Type"><asp:Localize ID="localizeUserType" runat="server" Text="<%$ resources: localizeUserType.Text %>" /></option>
 							<option value="Phone"><asp:Localize ID="localizePhoneNumber" runat="server" Text="<%$ resources: localizePhoneNumber.Text %>" /></option>
-							<option value="Owner"><asp:Localize ID="localizeOwner" runat="server" Text="<%$ resources: localizeOwner.Text %>" />Owner</option>
-							<option value="Boolean"><asp:Localize ID="localizeBoolean" runat="server" Text="<%$ resources: localizeBoolean.Text %>" />Boolean</option>
+							<option value="Owner"><asp:Localize ID="localizeOwner" runat="server" Text="<%$ resources: localizeOwner.Text %>" /></option>
+							<option value="Boolean"><asp:Localize ID="localizeBoolean" runat="server" Text="<%$ resources: localizeBoolean.Text %>" /></option>
 							<option value="Positive Integer"><asp:Localize ID="localizePositiveInteger" runat="server" Text="<%$ resources: localizePositiveInteger.Text %>" /></option>
 							<option value="PickList Item"><asp:Localize ID="localizePickListItem" runat="server" Text="<%$ resources: localizePickListItem.Text %>" /></option>
-							<option value="Time Zone"><asp:Localize ID="localizeTimeZone" runat="server" Text="<%$ resources: localizeTimeZone.Text %>" />Time Zone</option>
+							<option value="Time Zone"><asp:Localize ID="localizeTimeZone" runat="server" Text="<%$ resources: localizeTimeZone.Text %>" /></option>
 						</select>
 					</td>
 				</tr>

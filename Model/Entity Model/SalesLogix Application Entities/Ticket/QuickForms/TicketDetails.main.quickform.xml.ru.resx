@@ -123,8 +123,8 @@
   <data name="phnWorkPhone.Caption" xml:space="preserve">
     <value>Телефон:</value>
   </data>
-  <data name="94481476-98b3-4e66-95e8-403a9121a6f7.Title" xml:space="preserve">
-    <value>SalesLogix</value>
+  <data name="pklStatusCode.Caption" xml:space="preserve">
+    <value>Статус:</value>
   </data>
   <data name="dplArea.Caption" xml:space="preserve">
     <value>Область:</value>
@@ -153,9 +153,6 @@
   <data name="lueContact.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
     <value>Субъект</value>
   </data>
-  <data name="6bb1b981-3938-4a7f-ab85-597eb2f4a587.Title" xml:space="preserve">
-    <value>SalesLogix</value>
-  </data>
   <data name="cmdAccountService.Caption" xml:space="preserve">
     <value>Служебная информация по субъекту</value>
   </data>
@@ -173,9 +170,6 @@
   </data>
   <data name="lueContact.LookupProperties.LastHistoryDate.PropertyHeader" xml:space="preserve">
     <value>Дата послед. истории</value>
-  </data>
-  <data name="lueContract.Caption" xml:space="preserve">
-    <value>Контракт:</value>
   </data>
   <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
     <value>Город</value>
@@ -225,8 +219,8 @@
   <data name="CompleteTicketActivity_Caption" xml:space="preserve">
     <value>Завершить дело по заявке</value>
   </data>
-  <data name="d10bff60-376a-4c61-88a9-9c7f7973a172.Title" xml:space="preserve">
-    <value>SalesLogix</value>
+  <data name="6bb1b981-3938-4a7f-ab85-597eb2f4a587.Message" xml:space="preserve">
+    <value>Статус заявки был изменен на закрытый,но есть открытые дела. Пожалуйста, завершите открытые дела.</value>
   </data>
   <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
     <value>Субъект</value>
@@ -258,9 +252,6 @@
   <data name="lueContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="pklStatusCode.Caption" xml:space="preserve">
-    <value>Статус:</value>
-  </data>
   <data name="pklPublicAccessCode.Caption" xml:space="preserve">
     <value>Общий доступ:</value>
   </data>
@@ -269,9 +260,6 @@
   </data>
   <data name="chkClosedOnFirst.Caption" xml:space="preserve">
     <value>Решена при первом обращении?</value>
-  </data>
-  <data name="6bb1b981-3938-4a7f-ab85-597eb2f4a587.Message" xml:space="preserve">
-    <value>Статус заявки был изменен на закрытый,но есть открытые дела. Пожалуйста, завершите открытые дела.</value>
   </data>
   <data name="lnkPrintViewLink.ToolTip" xml:space="preserve">
     <value>Вид печати</value>
@@ -288,8 +276,8 @@
   <data name="lveUrgency.Caption" xml:space="preserve">
     <value>Срочность:</value>
   </data>
-  <data name="lueAccount.LookupProperties.AccountManager.CreateUser.PropertyHeader" xml:space="preserve">
-    <value>Создать пользователя Менеджер субъекта</value>
+  <data name="lueContract.Caption" xml:space="preserve">
+    <value>Контракт:</value>
   </data>
   <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
     <value>Запись будет удалена без возможности восстановления</value>
@@ -318,6 +306,9 @@
   <data name="cmdDelete.Caption" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="lueAccount.LookupProperties.AccountManager.CreateUser.PropertyHeader" xml:space="preserve">
+    <value>Создать пользователя Менеджер субъекта</value>
+  </data>
   <data name="lueContact.Caption" xml:space="preserve">
     <value>Контакт:</value>
   </data>
@@ -325,7 +316,7 @@
     <value>Заявка {0} редактируется {1}. Можно добавить дело по заявке.</value>
   </data>
   <data name="f12baac1-873a-4872-80ca-c1a74333f703.Title" xml:space="preserve">
-    <value>SalesLogix</value>
+    <value>Saleslogix</value>
   </data>
   <data name="lueContract.LookupProperties.Remaining.PropertyHeader" xml:space="preserve">
     <value>Оставшееся</value>
@@ -340,7 +331,7 @@
     <value>Основной тел.</value>
   </data>
   <data name="a93c18b6-1f91-44bf-95d9-fd957094d548.Title" xml:space="preserve">
-    <value>SalesLogix</value>
+    <value>Saleslogix</value>
   </data>
   <data name="lueContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
     <value>Эл. почта</value>

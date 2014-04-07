@@ -1,0 +1,143 @@
+4/7/2014 10:17:27 PM
+INFO  2014-04-07 15:17:07,608 - Installing bundle...
+INFO  2014-04-07 15:17:07,639 - Performing pre-install.
+INFO  2014-04-07 15:17:07,655 - Installing model item: Default-SData-SalesLogix (\Entity Model\CodeTemplates\Entity\Default-SData-Saleslogix.sdata.codetemplate.xml)
+INFO  2014-04-07 15:17:07,702 - Successfully installed Default-SData-SalesLogix (\Entity Model\CodeTemplates\Entity\Default-SData-Saleslogix.sdata.codetemplate.xml)
+INFO  2014-04-07 15:17:07,717 - Installing context item: Saleslogix Application Entities (\Entity Model\Saleslogix Application Entities\SalesLogix Application Entities.T.package.xml)
+INFO  2014-04-07 15:17:07,827 - Successfully installed Saleslogix Application Entities (\Entity Model\Saleslogix Application Entities\SalesLogix Application Entities.T.package.xml)
+INFO  2014-04-07 15:17:07,873 - Installing context item: Contact (\Entity Model\Saleslogix Application Entities\Contact\Contact.CONTACT.entity.xml)
+INFO  2014-04-07 15:17:08,763 - Successfully installed Contact (\Entity Model\Saleslogix Application Entities\Contact\Contact.CONTACT.entity.xml)
+INFO  2014-04-07 15:17:08,763 - Installing model item: ContactDetails (\Entity Model\Saleslogix Application Entities\Contact\QuickForms\ContactDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:08,981 - Successfully installed ContactDetails (\Entity Model\Saleslogix Application Entities\Contact\QuickForms\ContactDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:08,981 - Installing context item: Integration (\Entity Model\Saleslogix Application Entities\Integration\Integration.INTEGRATION.entity.xml)
+INFO  2014-04-07 15:17:09,028 - Successfully installed Integration (\Entity Model\Saleslogix Application Entities\Integration\Integration.INTEGRATION.entity.xml)
+INFO  2014-04-07 15:17:09,043 - Installing model item: IntegrationLinks (\Entity Model\Saleslogix Application Entities\Integration\QuickForms\IntegrationLinks.main.quickform.xml)
+INFO  2014-04-07 15:17:09,059 - Successfully installed IntegrationLinks (\Entity Model\Saleslogix Application Entities\Integration\QuickForms\IntegrationLinks.main.quickform.xml)
+INFO  2014-04-07 15:17:09,059 - Installing context item: SalesOrder (\Entity Model\Saleslogix Application Entities\SalesOrder\SalesOrder.SALESORDER.entity.xml)
+INFO  2014-04-07 15:17:09,168 - Successfully installed SalesOrder (\Entity Model\Saleslogix Application Entities\SalesOrder\SalesOrder.SALESORDER.entity.xml)
+INFO  2014-04-07 15:17:09,168 - Installing model item: InsertSalesOrder (\Entity Model\Saleslogix Application Entities\SalesOrder\QuickForms\InsertSalesOrder.main.quickform.xml)
+INFO  2014-04-07 15:17:09,199 - Successfully installed InsertSalesOrder (\Entity Model\Saleslogix Application Entities\SalesOrder\QuickForms\InsertSalesOrder.main.quickform.xml)
+INFO  2014-04-07 15:17:09,215 - Installing model item: SalesOrderDetails (\Entity Model\Saleslogix Application Entities\SalesOrder\QuickForms\SalesOrderDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:09,246 - Successfully installed SalesOrderDetails (\Entity Model\Saleslogix Application Entities\SalesOrder\QuickForms\SalesOrderDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:09,246 - Installing context item: Ticket (\Entity Model\Saleslogix Application Entities\Ticket\Ticket.TICKET.entity.xml)
+INFO  2014-04-07 15:17:09,371 - Successfully installed Ticket (\Entity Model\Saleslogix Application Entities\Ticket\Ticket.TICKET.entity.xml)
+INFO  2014-04-07 15:17:09,387 - Installing model item: TicketDetails (\Entity Model\Saleslogix Application Entities\Ticket\QuickForms\TicketDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:09,418 - Successfully installed TicketDetails (\Entity Model\Saleslogix Application Entities\Ticket\QuickForms\TicketDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:09,418 - Installing model item: ASP.NET Portal Template (\Portal\PortalTemplates\AspNetPortalTemplate\AspNetPortalTemplate.portaltemplate.xml)
+INFO  2014-04-07 15:17:09,886 - Successfully installed ASP.NET Portal Template (\Portal\PortalTemplates\AspNetPortalTemplate\AspNetPortalTemplate.portaltemplate.xml)
+INFO  2014-04-07 15:17:09,901 - Installing context item: UI Portal Template (\Portal\PortalTemplates\UIPortalTemplate\UIPortalTemplate.portaltemplate.xml)
+INFO  2014-04-07 15:17:09,901 - Successfully installed UI Portal Template (\Portal\PortalTemplates\UIPortalTemplate\UIPortalTemplate.portaltemplate.xml)
+INFO  2014-04-07 15:17:09,917 - Installing context item: Saleslogix Client (\Portal\SlxClient\SlxClient.cabapp.ptl.xml)
+INFO  2014-04-07 15:17:10,666 - Successfully installed Saleslogix Client (\Portal\SlxClient\SlxClient.cabapp.ptl.xml)
+INFO  2014-04-07 15:17:10,666 - Installing context item: Reports (\Portal\SlxClient\ChildPages\ReportManager\ReportManager.page.xml)
+INFO  2014-04-07 15:17:10,681 - Successfully installed Reports (\Portal\SlxClient\ChildPages\ReportManager\ReportManager.page.xml)
+INFO  2014-04-07 15:17:10,681 - Installing model item: ReportManagerFilters (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\ReportManagerFilters.smartpart.xml)
+INFO  2014-04-07 15:17:10,697 - Successfully installed ReportManagerFilters (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\ReportManagerFilters.smartpart.xml)
+INFO  2014-04-07 15:17:10,728 - Installing model item: ReportManagerTasks (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\ReportManagerTasks.smartpart.xml)
+INFO  2014-04-07 15:17:10,744 - Successfully installed ReportManagerTasks (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\ReportManagerTasks.smartpart.xml)
+INFO  2014-04-07 15:17:10,744 - Installing model item: SDataListViewer (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\SDataListViewer.smartpart.xml)
+INFO  2014-04-07 15:17:10,775 - Successfully installed SDataListViewer (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\SDataListViewer.smartpart.xml)
+INFO  2014-04-07 15:17:10,775 - Installing model item: Secured Actions (\Portal\SlxClient\ChildPages\SecuredAction\SecuredAction.page.xml)
+INFO  2014-04-07 15:17:10,791 - Successfully installed Secured Actions (\Portal\SlxClient\ChildPages\SecuredAction\SecuredAction.page.xml)
+INFO  2014-04-07 15:17:10,806 - Installing model item: Report Manager (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ReportManagerListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:10,822 - Successfully installed Report Manager (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ReportManagerListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:10,837 - Installing model item: History List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\HistoryListContextMenu\HistoryListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:10,853 - Successfully installed History List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\HistoryListContextMenu\HistoryListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:10,853 - Installing model item: Delete History... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\HistoryListContextMenu\ContextMenuItems\mnuArchiveListDeleteArchive\mnuArchiveListDeleteArchive.contextmenu.xml)
+INFO  2014-04-07 15:17:10,884 - Successfully installed Delete History... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\HistoryListContextMenu\ContextMenuItems\mnuArchiveListDeleteArchive\mnuArchiveListDeleteArchive.contextmenu.xml)
+INFO  2014-04-07 15:17:10,884 - Installing model item: Schedules List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ReportSchedulesListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:10,915 - Successfully installed Schedules List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ReportSchedulesListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:10,915 - Installing model item: Delete Schedule... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ContextMenuItems\mnuSchedulesListDeleteSchedule\mnuSchedulesListDeleteSchedule.contextmenu.xml)
+INFO  2014-04-07 15:17:10,931 - Successfully installed Delete Schedule... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ContextMenuItems\mnuSchedulesListDeleteSchedule\mnuSchedulesListDeleteSchedule.contextmenu.xml)
+INFO  2014-04-07 15:17:10,947 - Installing model item: Edit Schedule... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ContextMenuItems\mnuSchedulesListEditSchedule\mnuSchedulesListEditSchedule.contextmenu.xml)
+INFO  2014-04-07 15:17:10,962 - Successfully installed Edit Schedule... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ContextMenuItems\mnuSchedulesListEditSchedule\mnuSchedulesListEditSchedule.contextmenu.xml)
+INFO  2014-04-07 15:17:10,978 - Installing model item: Reports List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportsListContextMenu\ReportsListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:10,993 - Successfully installed Reports List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportsListContextMenu\ReportsListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:10,993 - Installing model item: Run Report... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportsListContextMenu\ContextMenuItems\mnuReportsListRunReport\mnuReportsListRunReport.contextmenu.xml)
+INFO  2014-04-07 15:17:11,025 - Successfully installed Run Report... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportsListContextMenu\ContextMenuItems\mnuReportsListRunReport\mnuReportsListRunReport.contextmenu.xml)
+INFO  2014-04-07 15:17:11,025 - Installing model item: Integration (\Portal\SlxClient\NavGroups\navIntegration\navIntegration.navgroup.xml)
+INFO  2014-04-07 15:17:11,040 - Successfully installed Integration (\Portal\SlxClient\NavGroups\navIntegration\navIntegration.navgroup.xml)
+INFO  2014-04-07 15:17:11,056 - Installing context item: Saleslogix Customer Portal (\Portal\SLXCustomerPortal\SLXCustomerPortal.cabapp.ptl.xml)
+INFO  2014-04-07 15:17:11,087 - Successfully installed Saleslogix Customer Portal (\Portal\SLXCustomerPortal\SLXCustomerPortal.cabapp.ptl.xml)
+INFO  2014-04-07 15:17:11,087 - Saving model item: Default-SData-SalesLogix (\Entity Model\CodeTemplates\Entity\Default-SData-Saleslogix.sdata.codetemplate.xml)
+INFO  2014-04-07 15:17:11,103 - Successfully saved Default-SData-SalesLogix (\Entity Model\CodeTemplates\Entity\Default-SData-Saleslogix.sdata.codetemplate.xml)
+INFO  2014-04-07 15:17:11,103 - Saving context item: Saleslogix Application Entities (\Entity Model\Saleslogix Application Entities\SalesLogix Application Entities.T.package.xml)
+INFO  2014-04-07 15:17:11,118 - Successfully saved Saleslogix Application Entities (\Entity Model\Saleslogix Application Entities\SalesLogix Application Entities.T.package.xml)
+INFO  2014-04-07 15:17:11,118 - Saving context item: Contact (\Entity Model\Saleslogix Application Entities\Contact\Contact.CONTACT.entity.xml)
+INFO  2014-04-07 15:17:22,615 - Successfully saved Contact (\Entity Model\Saleslogix Application Entities\Contact\Contact.CONTACT.entity.xml)
+INFO  2014-04-07 15:17:22,631 - Saving model item: ContactDetails (\Entity Model\Saleslogix Application Entities\Contact\QuickForms\ContactDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:22,631 - Successfully saved ContactDetails (\Entity Model\Saleslogix Application Entities\Contact\QuickForms\ContactDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:22,647 - Saving context item: Integration (\Entity Model\Saleslogix Application Entities\Integration\Integration.INTEGRATION.entity.xml)
+INFO  2014-04-07 15:17:22,787 - Successfully saved Integration (\Entity Model\Saleslogix Application Entities\Integration\Integration.INTEGRATION.entity.xml)
+INFO  2014-04-07 15:17:22,787 - Saving model item: IntegrationLinks (\Entity Model\Saleslogix Application Entities\Integration\QuickForms\IntegrationLinks.main.quickform.xml)
+INFO  2014-04-07 15:17:22,803 - Successfully saved IntegrationLinks (\Entity Model\Saleslogix Application Entities\Integration\QuickForms\IntegrationLinks.main.quickform.xml)
+INFO  2014-04-07 15:17:22,803 - Saving context item: SalesOrder (\Entity Model\Saleslogix Application Entities\SalesOrder\SalesOrder.SALESORDER.entity.xml)
+INFO  2014-04-07 15:17:23,146 - Successfully saved SalesOrder (\Entity Model\Saleslogix Application Entities\SalesOrder\SalesOrder.SALESORDER.entity.xml)
+INFO  2014-04-07 15:17:23,146 - Saving model item: InsertSalesOrder (\Entity Model\Saleslogix Application Entities\SalesOrder\QuickForms\InsertSalesOrder.main.quickform.xml)
+INFO  2014-04-07 15:17:23,162 - Successfully saved InsertSalesOrder (\Entity Model\Saleslogix Application Entities\SalesOrder\QuickForms\InsertSalesOrder.main.quickform.xml)
+INFO  2014-04-07 15:17:23,162 - Saving model item: SalesOrderDetails (\Entity Model\Saleslogix Application Entities\SalesOrder\QuickForms\SalesOrderDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:23,177 - Successfully saved SalesOrderDetails (\Entity Model\Saleslogix Application Entities\SalesOrder\QuickForms\SalesOrderDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:23,177 - Saving context item: Ticket (\Entity Model\Saleslogix Application Entities\Ticket\Ticket.TICKET.entity.xml)
+INFO  2014-04-07 15:17:23,645 - Successfully saved Ticket (\Entity Model\Saleslogix Application Entities\Ticket\Ticket.TICKET.entity.xml)
+INFO  2014-04-07 15:17:23,645 - Saving model item: TicketDetails (\Entity Model\Saleslogix Application Entities\Ticket\QuickForms\TicketDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:23,661 - Successfully saved TicketDetails (\Entity Model\Saleslogix Application Entities\Ticket\QuickForms\TicketDetails.main.quickform.xml)
+INFO  2014-04-07 15:17:23,661 - Saving model item: ASP.NET Portal Template (\Portal\PortalTemplates\AspNetPortalTemplate\AspNetPortalTemplate.portaltemplate.xml)
+INFO  2014-04-07 15:17:23,676 - Successfully saved ASP.NET Portal Template (\Portal\PortalTemplates\AspNetPortalTemplate\AspNetPortalTemplate.portaltemplate.xml)
+INFO  2014-04-07 15:17:23,676 - Saving context item: UI Portal Template (\Portal\PortalTemplates\UIPortalTemplate\UIPortalTemplate.portaltemplate.xml)
+INFO  2014-04-07 15:17:23,692 - Successfully saved UI Portal Template (\Portal\PortalTemplates\UIPortalTemplate\UIPortalTemplate.portaltemplate.xml)
+INFO  2014-04-07 15:17:23,692 - Saving context item: Saleslogix Client (\Portal\SlxClient\SlxClient.cabapp.ptl.xml)
+INFO  2014-04-07 15:17:23,692 - Successfully saved Saleslogix Client (\Portal\SlxClient\SlxClient.cabapp.ptl.xml)
+INFO  2014-04-07 15:17:23,708 - Saving context item: Reports (\Portal\SlxClient\ChildPages\ReportManager\ReportManager.page.xml)
+INFO  2014-04-07 15:17:23,723 - Successfully saved Reports (\Portal\SlxClient\ChildPages\ReportManager\ReportManager.page.xml)
+INFO  2014-04-07 15:17:23,723 - Saving model item: ReportManagerFilters (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\ReportManagerFilters.smartpart.xml)
+INFO  2014-04-07 15:17:23,739 - Successfully saved ReportManagerFilters (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\ReportManagerFilters.smartpart.xml)
+INFO  2014-04-07 15:17:23,739 - Saving model item: ReportManagerTasks (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\ReportManagerTasks.smartpart.xml)
+INFO  2014-04-07 15:17:23,754 - Successfully saved ReportManagerTasks (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\ReportManagerTasks.smartpart.xml)
+INFO  2014-04-07 15:17:23,754 - Saving model item: SDataListViewer (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\SDataListViewer.smartpart.xml)
+INFO  2014-04-07 15:17:23,770 - Successfully saved SDataListViewer (Custom) (\Portal\SlxClient\ChildPages\ReportManager\SmartParts\SDataListViewer.smartpart.xml)
+INFO  2014-04-07 15:17:23,770 - Saving model item: Secured Actions (\Portal\SlxClient\ChildPages\SecuredAction\SecuredAction.page.xml)
+INFO  2014-04-07 15:17:23,786 - Successfully saved Secured Actions (\Portal\SlxClient\ChildPages\SecuredAction\SecuredAction.page.xml)
+INFO  2014-04-07 15:17:23,786 - Saving model item: Report Manager (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ReportManagerListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:23,801 - Successfully saved Report Manager (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ReportManagerListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:23,801 - Saving model item: History List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\HistoryListContextMenu\HistoryListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:23,817 - Successfully saved History List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\HistoryListContextMenu\HistoryListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:23,832 - Saving model item: Delete History... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\HistoryListContextMenu\ContextMenuItems\mnuArchiveListDeleteArchive\mnuArchiveListDeleteArchive.contextmenu.xml)
+INFO  2014-04-07 15:17:23,832 - Successfully saved Delete History... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\HistoryListContextMenu\ContextMenuItems\mnuArchiveListDeleteArchive\mnuArchiveListDeleteArchive.contextmenu.xml)
+INFO  2014-04-07 15:17:23,848 - Saving model item: Schedules List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ReportSchedulesListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:23,848 - Successfully saved Schedules List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ReportSchedulesListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:23,864 - Saving model item: Delete Schedule... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ContextMenuItems\mnuSchedulesListDeleteSchedule\mnuSchedulesListDeleteSchedule.contextmenu.xml)
+INFO  2014-04-07 15:17:23,879 - Successfully saved Delete Schedule... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ContextMenuItems\mnuSchedulesListDeleteSchedule\mnuSchedulesListDeleteSchedule.contextmenu.xml)
+INFO  2014-04-07 15:17:23,879 - Saving model item: Edit Schedule... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ContextMenuItems\mnuSchedulesListEditSchedule\mnuSchedulesListEditSchedule.contextmenu.xml)
+INFO  2014-04-07 15:17:23,895 - Successfully saved Edit Schedule... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportSchedulesListContextMenu\ContextMenuItems\mnuSchedulesListEditSchedule\mnuSchedulesListEditSchedule.contextmenu.xml)
+INFO  2014-04-07 15:17:23,895 - Saving model item: Reports List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportsListContextMenu\ReportsListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:23,910 - Successfully saved Reports List (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportsListContextMenu\ReportsListContextMenu.contextmenu.xml)
+INFO  2014-04-07 15:17:23,926 - Saving model item: Run Report... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportsListContextMenu\ContextMenuItems\mnuReportsListRunReport\mnuReportsListRunReport.contextmenu.xml)
+INFO  2014-04-07 15:17:23,926 - Successfully saved Run Report... (\Portal\SlxClient\ContextMenuItems\ReportManagerListContextMenu\ContextMenuItems\ReportsListContextMenu\ContextMenuItems\mnuReportsListRunReport\mnuReportsListRunReport.contextmenu.xml)
+INFO  2014-04-07 15:17:23,942 - Saving model item: Integration (\Portal\SlxClient\NavGroups\navIntegration\navIntegration.navgroup.xml)
+INFO  2014-04-07 15:17:23,942 - Successfully saved Integration (\Portal\SlxClient\NavGroups\navIntegration\navIntegration.navgroup.xml)
+INFO  2014-04-07 15:17:23,957 - Saving context item: Saleslogix Customer Portal (\Portal\SLXCustomerPortal\SLXCustomerPortal.cabapp.ptl.xml)
+INFO  2014-04-07 15:17:23,957 - Successfully saved Saleslogix Customer Portal (\Portal\SLXCustomerPortal\SLXCustomerPortal.cabapp.ptl.xml)
+INFO  2014-04-07 15:17:23,973 - Configuring installed items.
+INFO  2014-04-07 15:17:23,988 - Configuring ASP.NET Portal Template...
+INFO  2014-04-07 15:17:24,051 - Configuring UI Portal Template...
+INFO  2014-04-07 15:17:24,082 - Configuring Saleslogix Client...
+INFO  2014-04-07 15:17:24,098 - Configuring Reports...
+INFO  2014-04-07 15:17:26,297 - Configuring ReportManagerFilters (Custom)...
+INFO  2014-04-07 15:17:26,313 - Configuring ReportManagerTasks (Custom)...
+INFO  2014-04-07 15:17:26,313 - Configuring SDataListViewer (Custom)...
+INFO  2014-04-07 15:17:26,328 - Configuring Secured Actions...
+INFO  2014-04-07 15:17:26,328 - Configuring Report Manager...
+INFO  2014-04-07 15:17:26,406 - Configuring History List...
+INFO  2014-04-07 15:17:26,422 - Configuring Delete History......
+INFO  2014-04-07 15:17:26,438 - Configuring Schedules List...
+INFO  2014-04-07 15:17:26,438 - Configuring Delete Schedule......
+INFO  2014-04-07 15:17:26,469 - Configuring Edit Schedule......
+INFO  2014-04-07 15:17:26,484 - Configuring Reports List...
+INFO  2014-04-07 15:17:26,484 - Configuring Run Report......
+INFO  2014-04-07 15:17:26,500 - Configuring Integration...
+INFO  2014-04-07 15:17:26,547 - Configuring Saleslogix Customer Portal...
+INFO  2014-04-07 15:17:26,562 - Performing pre-commit to target project.
+INFO  2014-04-07 15:17:26,594 - Committing items to target project...
+INFO  2014-04-07 15:17:26,937 - Committing transactions...
+INFO  2014-04-07 15:17:27,810 - Copying bundle manifest to project.
+INFO  2014-04-07 15:17:31,149 - Install complete.

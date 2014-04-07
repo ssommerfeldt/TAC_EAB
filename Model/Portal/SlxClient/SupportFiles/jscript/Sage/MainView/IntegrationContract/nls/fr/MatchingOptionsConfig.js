@@ -1,7 +1,7 @@
 define((
 { matchingCaption: 'Modifier les critères de correspondance',
   matchingHeader: 'Critères de correspondance pour ',
-  matchingDescription: 'Ajouter ou supprimer des opérateurs pour définir le critère de correspondance pour tous les utilisateurs qui associent les enregistrements Sage SalesLogix à un système de comptabilité. Ces critères déterminent les résultats renvoyés lors de la recherche des enregistrements correspondants entre les systèmes de comptabilité.',
+  matchingDescription: 'Ajouter ou supprimer des opérateurs pour définir le critère de correspondance pour tous les utilisateurs qui associent les enregistrements Saleslogix à un système de comptabilité. Ces critères déterminent les résultats renvoyés lors de la recherche des enregistrements correspondants entre les systèmes de comptabilité.',
   propertyText: 'Propriété',
   operatorText: 'Opérateur',
   loadingText: 'Chargement ...',

@@ -424,15 +424,16 @@ window.QueryBuilderMain = (function () {
                         require(['dojo/_base/lang',
                             'dijit/registry',
                             'Sage/Link',
-                            'Sage/UI/Controls/_DialogHelpIconMixin'
+                            'Sage/UI/Controls/_DialogHelpIconMixin',
+                            'Sage/Utility'
                             ],
-                            function (lang, registry, Link, DialogHelpIconMixin) {
+                            function (lang, registry, Link, DialogHelpIconMixin, Utility) {
                                 var dialog = registry.byId('queryDialog');
                                 if (dialog) {
-                                    dialog.setContent(data);
+                                    dialog.setContent(Utility.htmlEncode(data));
                                     dialog.show();
                                 } else {
-                                    Sage.UI.Dialogs.alert(data);
+                                    Sage.UI.Dialogs.alert(Utility.htmlEncode(data));
                                     dialog = registry.byId('queryDialog');
                                     dialog.set('title', QueryBuilderMain.localizeViewSQLText);
                                     lang.mixin(dialog, new DialogHelpIconMixin());
@@ -927,7 +928,7 @@ window.QueryBuilderMain = (function () {
                 }
 
                 // Width must be set inline here or dojo will override it inline.
-                fieldLayoutHtml = '<table class="dndItem QueryBuilderLayout" style="width: 150px; min-width: 150px; max-width: 150px" ';
+                fieldLayoutHtml = '<table class="dndItem QueryBuilderLayout" style="width: 150px; min-width: 150px; max-width: 150px; white-space: nowrap" ';
                 fieldLayoutHtml += 'ondblclick="QueryBuilderMain.editLayout(event);" onclick="QueryBuilderMain.toggleSelection(event);" ';
                 fieldLayoutHtml += 'sel="F" ';
                 fieldLayoutHtml += 'title="' + queryBuilderMainResources.LayoutTooltip + '" ';

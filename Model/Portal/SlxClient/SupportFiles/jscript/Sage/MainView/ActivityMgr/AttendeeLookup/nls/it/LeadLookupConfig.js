@@ -8,5 +8,13 @@ define((
   workphoneText: 'Telefono Ufficio',
   emailText: 'E-Mail',
   dialogButtonText: 'Aggiungi il(i) Selezionato(i)',
-  cancelText: 'Chiudi' }
+  cancelText: 'Chiudi',
+  colFirstName: 'Nome',
+  colLastName: 'Cognome',
+  colTitle: 'Titolo',
+  colCompany: 'Azienda',
+  colWorkPhone: 'Tel. Ufficio',
+  colEmail: 'E-Mail',
+  dialogTitleText: 'Ricerca Nominativo'
+}
 ));

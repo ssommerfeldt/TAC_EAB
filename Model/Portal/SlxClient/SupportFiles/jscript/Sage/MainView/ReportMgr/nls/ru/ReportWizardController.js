@@ -1,10 +1,9 @@
 ﻿define({
-    txtLoadingScheduleDetails: 'Loading Schedule Details',
-    txtError: 'Error',
-    txtCannotDetermineReportId: 'Cannot determine report id.',
-    txtCannotDetermineReportNameOrFamily: 'Cannot determine report name or family.',
-    txtLoading: 'Loading ',
-    txtLoadingReport: 'Loading Report',
-    txtSorryAnErrorOccuredLoadingReport: 'Sorry, an error occured loading report: ${0} ${1}.'
-
+    txtLoadingScheduleDetails: 'Загрузка Расписание Подробнее',
+    txtError: 'Ошибка',
+    txtCannotDetermineReportId: 'Невозможно определить идентификатор отчета.',
+    txtCannotDetermineReportNameOrFamily: 'Невозможно определить имя отчета или семью.',
+    txtLoading: 'Загрузка ...',
+    txtLoadingReport: 'Загрузка Сообщить',
+    txtSorryAnErrorOccuredLoadingReport: 'К сожалению, произошла ошибка загрузки отчета: ${0} ${1}.'
 });

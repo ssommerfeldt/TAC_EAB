@@ -94,7 +94,7 @@ define((
   grdDeliveries_Carrier: 'Carrier',
   grdDeliveries_CarrierReference: 'Carrier Reference',
   grdDeliveries_ExceptionReason: 'Exception Reason',
-  errorERPRequest: 'An occured occured opening accounting systems sales order detail view. ',
+  errorERPRequest: 'An error occurred opening accounting systems sales order detail view. ',
   errorERPRequestDetails: '${0}, ${1} Request: ${2}',
   btnCloseCaption: 'Close' }
 ));

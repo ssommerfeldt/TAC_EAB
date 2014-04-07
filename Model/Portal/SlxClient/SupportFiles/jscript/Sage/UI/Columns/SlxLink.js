@@ -49,7 +49,8 @@ function (Format, Utility, declare, cellsBase) {
             if (this._layout.fieldType === "DateTime" && this._layout.format === "DateTime") {
                 var sDate = this.get ? this.get(inRowIndex, inItem) : (this.value || this.defaultValue);
                 if (dojo.isString(sDate) && convert.isDateString(sDate)) {
-                    var oDate = convert.toDateFromString(sDate);
+                    var useOffSet = Utility.getModeId() == "list";
+                    var oDate = convert.toDateFromString(sDate, useOffSet);
                     // Assumes UTC (i.e. SecTableDefs.DateTimeType == NULL or U).
                     // TODO: Get and cache the SecTableDefs.DateTimeType value.
                     oDate = new Date(oDate.getUTCFullYear(), oDate.getUTCMonth(), oDate.getUTCDate());
@@ -133,7 +134,6 @@ function (Format, Utility, declare, cellsBase) {
             //			}
             //			h.push('</select>');
             //			return h.join('');
-            //debugger;
         },
         format: function (inRowIndex, inItem) {
             // summary:

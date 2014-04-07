@@ -1,7 +1,6 @@
-define((
-{
+define({
     txtDialogTitle: 'Opzioni esportazione',
-    txtDialogTitleScheduling: 'Export And Scheduling Options',
+    txtDialogTitleScheduling: 'Esportazione e programmazione Opzioni',
     cmdBack_Caption: '< Indietro',
     cmdNext_Caption: 'Avanti >',
     cmdCancel_Caption: 'Annulla',
@@ -10,6 +9,5 @@ define((
     txtOK: 'OK',
     txtOutputFormat_Caption: 'Formato',
     txtRunAs_Caption: 'Esegui come',
-    txtScheduleDescription_Caption: 'Description'
-}
-));
+    txtScheduleDescription_Caption: 'Descrizione'
+});

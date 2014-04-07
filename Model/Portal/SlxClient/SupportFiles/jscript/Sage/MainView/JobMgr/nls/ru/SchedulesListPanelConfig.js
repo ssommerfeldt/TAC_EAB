@@ -1,9 +1,9 @@
 define({
     colNameTriggerName: 'Планировать',
     colNameJobName: 'Имя задания',
-    colNameUser: 'Scheduled By',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
+    colNameUser: 'Запланированные По',
+    colNameStartTimeUtc: 'время начала',
+    colNameEndTimeUtc: 'Время окончания',
     colNamePriority: 'Приоритет',
     colNameStatus: 'Статус',
     colNameTimesTriggered: 'Число выполнений'

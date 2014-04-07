@@ -26,9 +26,9 @@ define({
     lblThirdDay: 'terzo',
     lblFourthDay: 'quarto',
     lblCronExpressionText: 'Espressione Cron',
-    txtInvalidScheduleTitle: 'Invalid Schedule',
-    txtInvalidDatesMessage: 'The end time must be after the start time. Please correct this information before continuing.',
-    txtInvalidScheduleTime: 'The start and end times specified will prevent this schedule from running. Please correct this information before continuing.',
-    txtInvalidStartDate: 'A start date is required. Please specify a start date before continuing.',
-    txtInvalidEndDate: 'A end date is required. Please specify a end date before continuing'
+    txtInvalidScheduleTitle: 'Orario Valido',
+    txtInvalidDatesMessage: "L'ora di fine deve essere successiva all'ora di inizio. Si prega di correggere queste informazioni prima di continuare.",
+    txtInvalidScheduleTime: 'I tempi di inizio e di fine specificate impediranno questa pianificazione esecuzione. Si prega di correggere queste informazioni prima di continuare.',
+    txtInvalidStartDate: 'È necessaria una data di inizio. Si prega di specificare una data di inizio prima di continuare.',
+    txtInvalidEndDate: 'È necessaria una data di fine. Si prega di specificare una data di fine prima di continuare.'
 });

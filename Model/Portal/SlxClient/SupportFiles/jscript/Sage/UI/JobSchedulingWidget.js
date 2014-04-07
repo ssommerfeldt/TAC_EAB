@@ -527,6 +527,10 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, select, button, ima
                 dialogs.showError(this.txtInvalidDatesMessage, this.txtInvalidScheduleTitle);
                 return false;
             }
+            //if there is no toDate then validation is not required
+            if (!toDate) {
+                return true;
+            }
             fromDate = new Date(fromDate);
             toDate = new Date(toDate);
             switch (this.cboFrequency.get('value')) {

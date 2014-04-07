@@ -14,7 +14,10 @@ function (LanguageList, lang) {
             btnCloseText: 'Close',
             btnHelpText: 'Help',
             resultCompletedText: 'Complete',
-            titleText:'Quick Complete'
+            titleText: 'Quick Complete',
+            actionMessage: 'Only activities that you have permission to complete will be completed.',
+            completeMessage: 'Complete all {0} selected activities:',
+            processingMessage: 'Processing all {0} selected activities please wait...'
         }
     };
     return lang.mixin(LanguageList, nls);

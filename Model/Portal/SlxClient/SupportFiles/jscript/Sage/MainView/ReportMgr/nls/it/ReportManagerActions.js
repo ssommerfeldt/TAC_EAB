@@ -1,15 +1,15 @@
-define(
+﻿define(
 {
     txtSelectRecord: 'Selezionare un record nell elenco.',
-    txtInvalidSelectionCount: 'You must have at least one record selected before continuing.',
-    confirm_Deletion: 'Are you sure you want to delete the selected ${0}?',
-    confirm_Report: 'report',
-    confirm_Schedule: 'schedule',
-    confirm_ReportHistory: 'report history record',
-    txtYes: 'Yes',
+    txtInvalidSelectionCount: 'È necessario disporre di almeno un record selezionato prima di continuare.',
+    confirm_Deletion: 'Sei sicuro di voler cancellare la scelta ${0}?',
+    confirm_Report: 'rapporto',
+    confirm_Schedule: 'piano',
+    confirm_ReportHistory: 'record storico rapporto',
+    txtYes: 'Sì',
     txtNo: 'No',
-    deleteJobError: 'Sorry an error occured during the deletion process: ${0}',
-    txtDeleteHistory: 'Deleting history records',
-    txtDeleteTitle: 'Delete History',
-    txtErrorDeleteReport: 'An error occured deleting report: ${0}'
+    deleteJobError: 'Ci dispiace verificato un errore durante il processo di eliminazione: ${0}',
+    txtDeleteHistory: 'Eliminazione di record storia',
+    txtDeleteTitle: 'Elimina cronologia',
+    txtErrorDeleteReport: "Errore durante l'eliminazione di relazione: ${0}"
 });

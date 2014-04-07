@@ -1,11 +1,9 @@
-﻿define((
-{
-    txtTheValueMustBeBetween: 'The value must be between {0} and {1} characters long.',
-    txtTheMinimumLengthForThisField: 'The minimum length for this field is {0}.',
-    txtTheMaximumLengthForThisField: 'The maximum length for this field is {0}.',
-    txtPleaseSpecifyValue: 'Please specify a value.',
-    lblAvailableValues_Caption: 'Available Values:',
-    lblSelectedValues_Caption: 'Selected Values:',
-    lblEnterValue_Caption: 'Enter a Value:'
-}
-));
+﻿define({
+    txtTheValueMustBeBetween: 'Значение должно быть между {0} и {1} долго символов.',
+    txtTheMinimumLengthForThisField: 'Минимальная длина этого поля {0}.',
+    txtTheMaximumLengthForThisField: 'Максимальная длина этого поля {0}.',
+    txtPleaseSpecifyValue: 'Пожалуйста, укажите значение.',
+    lblAvailableValues_Caption: 'Доступные значения:',
+    lblSelectedValues_Caption: 'Отдельные значения:',
+    lblEnterValue_Caption: 'Введите значение:'
+});

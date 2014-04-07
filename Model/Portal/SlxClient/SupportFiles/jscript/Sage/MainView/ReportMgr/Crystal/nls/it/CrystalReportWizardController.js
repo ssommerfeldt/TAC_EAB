@@ -1,9 +1,7 @@
-define(
-    ({
-        txtOnDemandScheduleName: 'Su richiesta',
-        txtReportSuccessfullyScheduled: 'Rapporto pianificato.',
-        txtDynamicParametersMessage: 'Reports with dynamic parameters are currently not supported.',
-        txtError: 'Error',
-        txtScheduleSuccessfullyUpdated: 'Schedule successfully updated.'
-    })
-);
+define({
+    txtOnDemandScheduleName: 'Su richiesta',
+    txtReportSuccessfullyScheduled: 'Rapporto pianificato.',
+    txtDynamicParametersMessage: 'Report con parametri dinamici non sono attualmente supportate.',
+    txtError: 'Errore',
+    txtScheduleSuccessfullyUpdated: 'Programma aggiornato correttamente.'
+});

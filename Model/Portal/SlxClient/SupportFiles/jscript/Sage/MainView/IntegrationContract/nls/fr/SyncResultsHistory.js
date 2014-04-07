@@ -1,5 +1,5 @@
 define({
-    grdSyncHistory_StampDate: 'Date/Time',
-    grdSyncHistory_Status: 'Status',
-    grdSyncHistory_SyncNote: 'Sync Notes'
+    grdSyncHistory_StampDate: 'Date / Heure',
+    grdSyncHistory_Status: 'Statut',
+    grdSyncHistory_SyncNote: 'Synchroniser Les Notes'
 });

@@ -2,6 +2,7 @@
 dojo.require('Sage.UI.Dialogs');
 
 var DateValueClientID = QBAddConditionResources.DateValueClientID;
+var DijitDateValueClientID = QBAddConditionResources.DijitDateValueClientID;
 var DateValueFormat   = QBAddConditionResources.DateValueFormat;
 
 function QBAddCondition_Load() {
@@ -37,6 +38,7 @@ function QBAddCondition_Load() {
                         d = time.buildDateFromStr(QueryBuilderMain.currentCondition.value, DateValueFormat);
                     }
                     document.getElementById(DateValueClientID).value = d.fmtDate(DateValueFormat);
+                    dijit.byId(DijitDateValueClientID).set("value", d);
                     }
                 }
             }
@@ -60,6 +62,8 @@ function QBAddCondition_Load() {
             document.getElementById("chkLiteral").disabled = true;
             document.getElementById("chkCaseSensEdit").disabled = true;
             document.getElementById("btnBrowse").disabled = true;
+            document.getElementById(DateValueClientID).disabled = true;
+            dijit.byId(DijitDateValueClientID).set("disabled", true);
         }
         //Case Sensitive:
         document.getElementById("chkCaseSensEdit").checked = (QueryBuilderMain.currentCondition.casesens == 'true');
@@ -74,12 +78,14 @@ function QBAddCondition_operatorChanged() {
         document.getElementById("txtValueIs").value = '';
         document.getElementById("txtValueIs").disabled = true;
         document.getElementById(DateValueClientID).disabled = true;
+        dijit.byId(DijitDateValueClientID).set("disabled", true);
         document.getElementById("chkLiteral").disabled = true;
         document.getElementById("chkCaseSensEdit").disabled = true;
         document.getElementById("btnBrowse").disabled = true;
     } else {
         document.getElementById("txtValueIs").disabled = false;
         document.getElementById(DateValueClientID).disabled = false;
+        dijit.byId(DijitDateValueClientID).set("disabled", false);
         document.getElementById("chkLiteral").disabled = false;
         if (QueryBuilderMain.currentCondition.getTypeCode() != '16') {
             document.getElementById("chkCaseSensEdit").disabled = false;
@@ -93,6 +99,7 @@ function QBAddCondition_operatorChanged() {
             document.getElementById("textValueDiv").style.display = 'inline'; //show text box
             document.getElementById("dateValueDiv").style.display = 'none';   //hide date picker
             var currentVal = Number(QueryBuilderMain.currentCondition.value);
+            document.getElementById("btnBrowse").disabled = true;
             document.getElementById("txtValueIs").value = currentVal ? currentVal : '';
         } else {
             if (document.getElementById("chkLiteral").checked) {

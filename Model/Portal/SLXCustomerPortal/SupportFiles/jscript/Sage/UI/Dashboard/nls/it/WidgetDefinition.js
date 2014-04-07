@@ -35,16 +35,16 @@ define((
   My_Dashboard: 'Il mio cruscotto',
   Sales: 'Vendite',
   Group_List_Description: 'Visualizza un elenco di record raggruppati per entità. Ad esempio, un gruppo di campagne attive.',
-  Welcome_Description: 'Visualizza introduzione a Saleslogix con un collegamento argomento della guida Introduzione alla parte Web Sage SalesLogix',
+  Welcome_Description: 'Visualizza un\'introduzione a Saleslogix con un collegamento all\'argomento della guida Introduzione alla parte Web SalesLogix',
   Line_Chart_Description: 'Visualizza i dati sotto forma di punti connessi da una linea. Utile quando i dati rappresentano molti gruppi di categorie.',
   Bar_Chart_Description: 'Visualizza i dati sotto forma di barre orizzontali. Utile nel confronto dei dati.',
   Column_Chart_Description: 'Visualizza i dati sotto forma di barre verticali raggruppate per categoria. Utile per mostrare le modifiche ai dati in un determinato periodo di tempo o per illustrare confronti tra dati.',
   Funnel_Chart_Description: 'Visualizza i dati sotto forma di imbuto con proporzioni progressive. Il dato viene rappresentato come porzione del 100% e non ci sono assi.',
-  Pie_Chart_Description: 'Visualizza i dati come porzioni intero. Ciascun valore è calcolato come percentuale del totale. Questo grafico non ha assi.',
-  Recently_Viewed_Description: 'Visualizza i collegamenti ai record visitati di recente con icona che identifica il tipo di record stesso. Ad esempio, Azienda o Contatto.',
+  Pie_Chart_Description: 'Visualizza i dati come porzioni dell\'intero. Ciascun valore è calcolato come percentuale del totale. Questo grafico non ha assi.',
+  Recently_Viewed_Description: 'Visualizza i collegamenti ai record visitati di recente con un\'icona che identifica il tipo di record stesso. Ad esempio, Azienda o Contatto.',
   Todays_Activities_Description: 'Visualizza i collegamenti alle attività di oggi.',
-  Links_Description: 'Visualizza i collegamenti che hai creato. Ad esempio, a una vista di dettaglio SalesLogix o ad un sito esterno.',
-  SData_Feed_Description: 'Visualizza un feed Web utilizzando feed SData (Sage Data). Ad esempio, un feed integrazione contabilità o del database Saleslogix.',
+  Links_Description: 'Visualizza i collegamenti che hai creato. Ad esempio, a una vista di dettaglio Saleslogix o ad un sito esterno.',
+  SData_Feed_Description: 'Visualizza un feed Web utilizzando feed SData (Saleslogix Data). Ad esempio, un feed dell\'integrazione contabilità o del database Saleslogix.',
   Web_Feed_Description: 'Visualizza informazioni su feed RSS o Atom.',
-  Website_Description: 'Visualizza un sito Web scelto utente.' }
+  Website_Description: 'Visualizza un sito Web scelto dall\'utente.' }
 ));

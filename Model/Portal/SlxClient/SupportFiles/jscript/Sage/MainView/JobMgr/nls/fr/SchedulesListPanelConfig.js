@@ -1,9 +1,9 @@
 define({
     colNameTriggerName: 'Planification',
     colNameJobName: 'Nom de la tâche',
-    colNameUser: 'Scheduled By',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
+    colNameUser: 'Prévue Par',
+    colNameStartTimeUtc: 'Heure de début',
+    colNameEndTimeUtc: 'Heure de fin',
     colNamePriority: 'Priorité',
     colNameStatus: 'Etat',
     colNameTimesTriggered: 'Nombre exécutions'

@@ -23,5 +23,5 @@ define((
   ContactSummaryView_Title: 'Summary View - Contact',
   AccountSummaryView_Title: 'Summary View - Account',
   closeText: 'Close',
-  errorLoadingSummaryView: 'An error occured loading summary view: ${0}' }
+  errorLoadingSummaryView: 'An error occurred loading summary view: ${0}' }
 ));

@@ -97,8 +97,8 @@ function (
         show: function () {
 
             if (this.selectionContext) {
-                this.div_actionMessage.innerHTML = String.format('Only activities that you have permission to complete will be completed.');
-                this.div_cmdMessage.innerHTML = String.format('Complete all {0} selected activities:', this.selectionContext.count);
+                this.div_actionMessage.innerHTML = this.actionMessage;
+                this.div_cmdMessage.innerHTML = String.format(this.completeMessage, this.selectionContext.count);
                 this._dialog.set('title', this.titleText);
             }
 
@@ -116,7 +116,7 @@ function (
         _showProcessing: function () {
             dojo.style(this.cp_General.domNode, "display", "none");
             dojo.style(this.cp_processing.domNode, "display", "block");
-            this.div_processingMessage.innerHTML = String.format(' Processing all {0} selected activities please wait...', this._selectionContext.count);
+            this.div_processingMessage.innerHTML = String.format(this.processingMessage, this._selectionContext.count);
         },
 
         // ... region click/action handlers

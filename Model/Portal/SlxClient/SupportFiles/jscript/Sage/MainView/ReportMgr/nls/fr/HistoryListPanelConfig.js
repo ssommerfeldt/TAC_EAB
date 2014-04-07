@@ -5,7 +5,7 @@ define({
     colNameRunAs: 'Exécuter comme',
     colNameScheduledBy: 'Planifié par',
     colNameReportName: 'Rapport',
-    colNameSize: 'File Size',
+    colNameSize: 'Taille du fichier',
     colNameOutputFormat: 'Format de sortie',
     colNameReportType: 'Type'
 });

@@ -1,8 +1,6 @@
-﻿define((
-{
-    txtPleaseSpecifyNumberBetween: 'Please specify a Number value between {0} and {1}.',
-    txtPleaseSpecifyNumberLesser: 'Please specify a Number value less than or equal to {0}.',
-    txtPleaseSpecifyNumberGreater: 'Please specify a Number value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a Number value.'
-}
-));
+﻿define({
+    txtPleaseSpecifyNumberBetween: 'Bitte geben Sie einen numerischen Wert zwischen {0} und {1}.',
+    txtPleaseSpecifyNumberLesser: 'Bitte geben Sie einen numerischen Wert kleiner oder gleich {0}.',
+    txtPleaseSpecifyNumberGreater: 'Bitte geben Sie einen numerischen Wert, der größer oder gleich {0}.',
+    txtPleaseSpecifyValue: 'Bitte geben Sie einen numerischen Wert.'
+});

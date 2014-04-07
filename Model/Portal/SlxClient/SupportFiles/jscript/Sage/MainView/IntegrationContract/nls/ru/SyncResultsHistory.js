@@ -1,5 +1,5 @@
-define({
-    grdSyncHistory_StampDate: 'Date/Time',
-    grdSyncHistory_Status: 'Status',
-    grdSyncHistory_SyncNote: 'Sync Notes'
+﻿define({
+    grdSyncHistory_StampDate: 'Дата / Время',
+    grdSyncHistory_Status: 'Статус',
+    grdSyncHistory_SyncNote: 'Синхронизировать Заметки'
 });

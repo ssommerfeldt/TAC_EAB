@@ -1,5 +1,5 @@
-define((
-{ reportsTabDisplayName: 'Report',
-  schedulesTabDisplayName: 'Pianificazioni',
-  historyTabDisplayName: 'Cronologia' }
-));
+define({
+    reportsTabDisplayName: 'Rapporto',
+    schedulesTabDisplayName: 'Pianificazioni',
+    historyTabDisplayName: 'Cronologia'
+});

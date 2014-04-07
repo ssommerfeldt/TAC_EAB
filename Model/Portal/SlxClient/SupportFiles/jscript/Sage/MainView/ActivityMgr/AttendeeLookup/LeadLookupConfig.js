@@ -25,7 +25,7 @@ function (
             this.lookupName = 'Lead';
             this.lookupDisplayName = 'Lead Lookup';
             this.entityName = 'Lead';
-            this.dialogTitle = 'Lookup Leads',
+            this.dialogTitle = this.dialogTitleText,
             this.cells = null;
             this.cells = this.getCells();
             this.defaultCell = {

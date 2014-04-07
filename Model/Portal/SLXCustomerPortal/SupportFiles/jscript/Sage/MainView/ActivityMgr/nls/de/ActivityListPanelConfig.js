@@ -18,5 +18,7 @@ define((
   colNameContactName: 'Name',
   SnoozeAlarm: 'Alarm für die Wiedervorlage',
   DismissAlarm: 'Alarm ablehnen',
-  colNameUnConfirmStatus: 'Unbestätigt' }
+  colNameUnConfirmStatus: 'Unbestätigt',
+  colNameAssociationCount: 'Teilnehmer Graf'
+}
 ));

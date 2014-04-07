@@ -21,7 +21,7 @@ function browseField_valueSelected() {
         if (window.opener.document.getElementById("chkLiteral").checked) {
             window.opener.document.getElementById("txtValueIs").value = returnValue;            
         } else {
-            window.opener.document.getElementById(window.opener.DateValueClientID).value = returnValue;
+            window.opener.dijit.byId(window.opener.DijitDateValueClientID).set("value", new Date(time.fmtDotToSlash(returnValue)));
         }
     } else {
         window.opener.document.getElementById("txtValueIs").value = returnValue;

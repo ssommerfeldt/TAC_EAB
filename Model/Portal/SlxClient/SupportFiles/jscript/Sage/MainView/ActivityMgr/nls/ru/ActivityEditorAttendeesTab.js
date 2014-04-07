@@ -10,5 +10,7 @@ define((
   header_Notes: 'Заметки',
   tooltip_speedSearch: 'Добавить участника',
   tooltip_AddContact: 'Добавить контакт',
-  tooltip_AddLead: 'Добавить наводку' }
+  tooltip_AddLead: 'Добавить наводку',
+  tooltip_Delete: "Удалить"
+}
 ));

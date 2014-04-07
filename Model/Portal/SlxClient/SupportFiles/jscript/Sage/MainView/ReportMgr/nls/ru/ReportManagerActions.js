@@ -1,15 +1,15 @@
 define(
 {
     txtSelectRecord: 'Выберите запись из списка.',
-    txtInvalidSelectionCount: 'You must have at least one record selected before continuing.',
-    confirm_Deletion: 'Are you sure you want to delete the selected ${0}?',
-    confirm_Report: 'report',
-    confirm_Schedule: 'schedule',
-    confirm_ReportHistory: 'report history record',
-    txtYes: 'Yes',
-    txtNo: 'No',
-    deleteJobError: 'Sorry an error occured during the deletion process: ${0}',
-    txtDeleteHistory: 'Deleting history records',
-    txtDeleteTitle: 'Delete History',
-    txtErrorDeleteReport: 'An error occured deleting report: ${0}'
+    txtInvalidSelectionCount: 'Вы должны быть по крайней мере одна запись, выбранную прежде чем продолжить.',
+    confirm_Deletion: 'Вы уверены, что хотите удалить выбранный ${0}?',
+    confirm_Report: 'отчет',
+    confirm_Schedule: 'график',
+    confirm_ReportHistory: 'История отчет запись',
+    txtYes: 'Да',
+    txtNo: 'Нет',
+    deleteJobError: 'К сожалению произошла ошибка во время процесса удаления: ${0}',
+    txtDeleteHistory: 'Удаление записи журнала',
+    txtDeleteTitle: 'Удалить историю',
+    txtErrorDeleteReport: 'Произошла ошибка удаления отчета: ${0}'
 });

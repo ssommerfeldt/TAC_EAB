@@ -7,8 +7,9 @@ define((
   confirm_ReportHistory: 'report history record',
   txtYes: 'Yes',
   txtNo: 'No',
-  deleteJobError: 'Sorry an error occured during the deletion process: ${0}',
+  deleteJobError: 'Sorry an error occurred during the deletion process: ${0}',
   txtDeleteHistory: 'Deleting history records',
   txtDeleteTitle: 'Delete History',
-  txtErrorDeleteReport: 'An error occured deleting report: ${0}' }
+  txtErrorDeleteReport: 'An error occurred deleting report: ${0}'
+}
 ));

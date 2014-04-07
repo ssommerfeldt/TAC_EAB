@@ -9,5 +9,5 @@ define((
   averageDaysOpen: 'Average # of Days Open',
   rangeEstClose: 'Range of Est. Close (Min - Max)',
   btnClose_Caption: 'Close',
-  errorRequestingStatistics: 'Sorry an error occured attempting to request opportunity statistics.' }
+  errorRequestingStatistics: 'Sorry an error occurred attempting to request opportunity statistics.' }
 ));

@@ -26,7 +26,7 @@ function (
             this.lookupName = 'Contact';
             this.lookupDisplayName = 'Contact Lookup';
             this.entityName = 'Contact';
-            this.dialogTitle = 'Lookup Contacts',
+            this.dialogTitle = this.dialogTitleText,
             this.cells = null;
             this.cells = this.getCells();
             this.defaultCell = {

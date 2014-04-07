@@ -1,8 +1,8 @@
 ﻿define({
-    title: 'Job Notifications',
+    title: 'Работа Уведомления',
     helpText: 'Помощь',
-    colNameJobName: 'Type',
+    colNameJobName: 'Тип',
     colNameProgress: 'Ход выполнения',
     colNameStatus: 'Статус',
-    colExecutionResult: 'Result'
+    colExecutionResult: 'Результат'
 });

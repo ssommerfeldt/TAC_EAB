@@ -8,5 +8,13 @@ define((
   workphoneText: 'Téléphone professionnel',
   emailText: 'E-mail',
   dialogButtonText: 'Ajouter sélection',
-  cancelText: 'Fermer' }
+  cancelText: 'Fermer',
+  colFirstName: 'Prénom',
+  colLastName: 'Nom',
+  colTitle: 'Titre',
+  colAccount: 'Compte',
+  colWorkPhone: 'Téléphone professionnel',
+  colEmail: 'E-mail',
+  dialogTitleText: 'Recherche de leads'
+}
 ));

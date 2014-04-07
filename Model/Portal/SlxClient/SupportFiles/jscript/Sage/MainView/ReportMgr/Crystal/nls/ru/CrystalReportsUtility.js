@@ -1,5 +1,3 @@
-define((
-{
-    txtCurrentUser: 'Current User'
-}
-));
+﻿define({
+    txtCurrentUser: 'Текущий пользователь'
+});

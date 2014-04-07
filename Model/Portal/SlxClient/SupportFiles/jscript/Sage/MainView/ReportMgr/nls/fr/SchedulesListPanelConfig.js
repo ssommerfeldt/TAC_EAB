@@ -4,9 +4,9 @@
     colNameRunAsUser: 'Exécuter comme',
     colNameLastExecutionDate: 'Dernière exécution',
     colNameExecutionCount: 'Nombre exécutions',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Priority',
-    colNameStatus: 'Status',
-    colNameTemplate: 'Template'
+    colNameStartTimeUtc: 'Heure de début',
+    colNameEndTimeUtc: 'Heure de fin',
+    colNamePriority: 'Priorité',
+    colNameStatus: 'Statut',
+    colNameTemplate: 'Modèle'
 });

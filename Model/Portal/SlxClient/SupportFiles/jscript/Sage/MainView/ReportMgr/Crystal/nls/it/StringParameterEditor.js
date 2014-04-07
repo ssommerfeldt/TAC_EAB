@@ -1,8 +1,6 @@
-﻿define((
-{
-    txtTheValueMustBeBetween: 'The value must be between {0} and {1} characters long.',
-    txtTheMinimumLengthForThisField: 'The minimum length for this field is {0}.',
-    txtTheMaximumLengthForThisField: 'The maximum length for this field is {0}.',
-    txtPleaseSpecifyValue: 'Please specify a value.'
-}
-));
+﻿define({
+    txtTheValueMustBeBetween: 'Il valore deve essere compreso tra {0} e {1} caratteri a lungo.',
+    txtTheMinimumLengthForThisField: 'La lunghezza minima per questo campo è {0}.',
+    txtTheMaximumLengthForThisField: 'La lunghezza massima per questo campo è {0}.',
+    txtPleaseSpecifyValue: 'Si prega di specificare un valore.'
+});

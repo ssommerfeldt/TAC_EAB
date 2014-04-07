@@ -1,7 +1,7 @@
 define((
 { matchingCaption: 'Modifica i Criteri di Corrispondenza',
   matchingHeader: 'Corrisponde ai criteri per',
-  matchingDescription: 'Aggiungi o rimuovi operatori per definire il criterio di corrispondenza per tutti gli utenti che collegano record SalesLogix con un sistema contabile. Questo criterio determina i risultati restituiti quando si ricercano record corrispondenti tra i vari sistemi contabili.',
+  matchingDescription: 'Aggiungi o rimuovi operatori per definire il criterio di corrispondenza per tutti gli utenti che collegano record Saleslogix con un sistema contabile. Questo criterio determina i risultati restituiti quando si ricercano record corrispondenti tra i vari sistemi contabili.',
   propertyText: 'Proprietà',
   operatorText: 'Operatore',
   loadingText: 'Caricamento...',

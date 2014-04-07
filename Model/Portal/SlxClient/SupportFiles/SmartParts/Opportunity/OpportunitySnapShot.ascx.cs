@@ -582,13 +582,17 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
         switch (statusType)
         {
             case "ClosedWon":
-                return ReferenceEquals(opportunity.Status, GetLocalResourceObject("Status_ClosedWon")) || opportunity.Status == "Closed - Won";
+                var resourceObject = GetLocalResourceObject("Status_ClosedWon");
+                return resourceObject != null && (opportunity.Status == resourceObject.ToString() || opportunity.Status == "Closed - Won");
             case "ClosedLost":
-                return ReferenceEquals(opportunity.Status, GetLocalResourceObject("Status_ClosedLost")) || opportunity.Status == "Closed - Lost";
+                resourceObject = GetLocalResourceObject("Status_ClosedLost");
+                return resourceObject != null && (opportunity.Status == resourceObject.ToString() || opportunity.Status == "Closed - Lost");
             case "Open":
-                return ReferenceEquals(opportunity.Status, GetLocalResourceObject("Status_Open")) || opportunity.Status == "Open";
+                resourceObject = GetLocalResourceObject("Status_Open");
+                return resourceObject != null && (opportunity.Status == resourceObject.ToString() || opportunity.Status == "Open");
             case "Inactive":
-                return ReferenceEquals(opportunity.Status, GetLocalResourceObject("Status_Inactive")) || opportunity.Status == "Inactive";
+                resourceObject = GetLocalResourceObject("Status_Inactive");
+                return resourceObject != null && (opportunity.Status == resourceObject.ToString() || opportunity.Status == "Inactive");
         }
         return false;
     }

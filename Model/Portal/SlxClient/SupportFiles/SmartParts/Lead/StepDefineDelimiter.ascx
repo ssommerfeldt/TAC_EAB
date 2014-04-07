@@ -46,8 +46,8 @@
                 <asp:ListBox runat="server" ID="lbxQualifier" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" shouldPublishMarkDirty="false" SelectionMode="Single" Rows="1" AutoPostBack="true" Width="80px"
                      OnSelectedIndexChanged="lbxQualifier_SelectedIndexChanged">
                     <asp:ListItem Text="<%$ resources:lbxQualifier_Empty.Text %>" Value="\x000"></asp:ListItem>
-                    <asp:ListItem Text="<%$ resources:lbxQualifier_DoubleQuote.Text %>" Value="&quot;" Selected="True"></asp:ListItem>
-                    <asp:ListItem Text="<%$ resources:lbxQualifier_SingleQuote.Text %>" Value="'" ></asp:ListItem>
+                    <asp:ListItem Text='"' Value="&quot;" Selected="True"></asp:ListItem>
+                    <asp:ListItem Text="'" Value="'" ></asp:ListItem>
                     <asp:ListItem Text="<%$ resources:lbxQualifier_None.Text %>" Value="None"></asp:ListItem>
                 </asp:ListBox>
             </span>

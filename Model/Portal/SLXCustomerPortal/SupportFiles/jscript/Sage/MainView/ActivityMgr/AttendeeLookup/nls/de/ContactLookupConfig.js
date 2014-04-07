@@ -8,5 +8,13 @@ define((
   workphoneText: 'Geschäftliche Telefonnummer',
   emailText: 'E-Mail',
   dialogButtonText: 'Ausgewählte hinzufügen',
-  cancelText: 'Schließen' }
+  cancelText: 'Schließen',
+  colFirstName: 'Vorname',
+  colLastName: 'Nachname',
+  colTitle: 'Titel',
+  colAccount: 'Firma',
+  colWorkPhone: 'Geschäftliche Telefonnummer',
+  colEmail: 'E-Mail',
+  dialogTitleText: 'Kontakte suchen'
+}
 ));

@@ -1,6 +1,6 @@
 define({
     loadingText: 'Wird geladen...',
-    colNameJobName: 'Type',
+    colNameJobName: 'Typ',
     colNameUser: 'Benutzer',
     colNamePhase: 'Phase',
     colNamePhaseDetail: 'Phasendetail',

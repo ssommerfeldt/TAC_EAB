@@ -10,7 +10,7 @@ define((
   exportToFile_Cancel: 'Cancel',
   exportToFile_DialogTitle: 'Export to File',
   exportToExcel_Caption: 'Exporting to Excel',
-  errorRequestingJobMgr: 'An error occured requesting job manager: ${0}',
+  errorRequestingJobMgr: 'An error occurred requesting job manager: ${0}',
   errorExecutionAction: 'An error occurred executing action ${0}',
   exportProcessingJobMsg: 'Processing export, you may continue waiting for completion, or go to the reports view to open your file.' }
 ));

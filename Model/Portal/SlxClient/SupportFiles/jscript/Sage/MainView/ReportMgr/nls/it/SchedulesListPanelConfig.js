@@ -3,10 +3,10 @@
     colNameDescription: 'Descrizione',
     colNameRunAsUser: 'Esegui come',
     colNameLastExecutionDate: 'Ultima Esecuzione',
-    colNameExecutionCount: 'Numero esecuzioni',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Priority',
-    colNameStatus: 'Status',
-    colNameTemplate: 'Template'
+    colNameExecutionCount: 'Numero Esecuzioni',
+    colNameStartTimeUtc: 'Ora Inizio',
+    colNameEndTimeUtc: 'Ora Fine',
+    colNamePriority: 'Priorità',
+    colNameStatus: 'Stato',
+    colNameTemplate: 'Sagoma'
 });

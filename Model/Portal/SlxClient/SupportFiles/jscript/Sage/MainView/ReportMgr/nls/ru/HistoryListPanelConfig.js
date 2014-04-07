@@ -1,11 +1,11 @@
 define({
     colNameDate: 'Дата',
-    colNameScheduleName: 'Description',
+    colNameScheduleName: 'Описание',
     colNameExecutionType: 'Тип выполнения',
     colNameRunAs: 'Запуск от имени',
     colNameScheduledBy: 'Запланировано от имени',
     colNameReportName: 'Отчет',
-    colNameSize: 'File Size',
+    colNameSize: 'Размер файла',
     colNameOutputFormat: 'Формат вывода',
-    colNameReportType: 'Type'
+    colNameReportType: 'Тип'
 });

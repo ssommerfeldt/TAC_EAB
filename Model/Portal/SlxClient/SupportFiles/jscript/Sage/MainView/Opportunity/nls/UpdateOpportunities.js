@@ -29,7 +29,7 @@ function (LanguageList, lang) {
             lookupRegionColText: 'Region',
             lookupTypeColText: 'Type',
             errorUnspecifiedValue: 'Please specify a value before continuing.',
-            errorRequestingJobMgr: 'An error occured performing update: ${0}'
+            errorRequestingJobMgr: 'An error occurred performing update: ${0}'
         }
     };
     return lang.mixin(LanguageList, nls);

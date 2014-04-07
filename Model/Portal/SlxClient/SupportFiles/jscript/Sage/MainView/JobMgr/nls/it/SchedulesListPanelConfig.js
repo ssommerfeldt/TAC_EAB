@@ -1,10 +1,10 @@
 define({
     colNameTriggerName: 'Pianifica',
     colNameJobName: 'Nome Job',
-    colNameUser: 'Scheduled By',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
+    colNameUser: 'Programmato By',
+    colNameStartTimeUtc: 'Ora Inizio',
+    colNameEndTimeUtc: 'Ora Fine',
     colNamePriority: 'Priorità',
-    colNameStatus: 'Status',
+    colNameStatus: 'Stato',
     colNameTimesTriggered: 'Numero esecuzioni'
 });

@@ -1,11 +1,11 @@
 define({
     colNameDate: 'Datum',
-    colNameScheduleName: 'Description',
+    colNameScheduleName: 'Beschreibung',
     colNameExecutionType: 'Ausführungstyp',
     colNameRunAs: 'Ausführen als',
     colNameScheduledBy: 'Geplant durch',
     colNameReportName: 'Bericht',
-    colNameSize: 'File Size',
+    colNameSize: 'Größe der Datei',
     colNameOutputFormat: 'Ausgabeformat',
-    colNameReportType: 'Type'
+    colNameReportType: 'Typ'
 });

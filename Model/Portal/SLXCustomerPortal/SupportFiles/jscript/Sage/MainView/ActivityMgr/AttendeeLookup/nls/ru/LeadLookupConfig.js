@@ -8,5 +8,13 @@ define((
   workphoneText: 'Рабочий телефон',
   emailText: 'Эл.почта',
   dialogButtonText: 'Добавить выбранные',
-  cancelText: 'Закрыть' }
+  cancelText: 'Закрыть',
+  colFirstName: 'Имя',
+  colLastName: 'Фамилия',
+  colTitle: 'Название',
+  colCompany: 'Субъект',
+  colWorkPhone: 'Раб. телефон',
+  colEmail: 'Эл.почта',
+  dialogTitleText: 'Поиск Наводки'
+}
 ));

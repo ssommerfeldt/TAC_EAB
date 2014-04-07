@@ -18,5 +18,7 @@ define((
   colNameContactName: 'Имя',
   SnoozeAlarm: 'Отложить оповещение',
   DismissAlarm: 'Отклонить оповещение',
-  colNameUnConfirmStatus: 'Неподтвержденные' }
+  colNameUnConfirmStatus: 'Неподтвержденные',
+  colNameAssociationCount: 'Всего Участники'
+}
 ));

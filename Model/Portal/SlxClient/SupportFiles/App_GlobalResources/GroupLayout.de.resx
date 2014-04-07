@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CONTACT_CONTACTTYPE" xml:space="preserve">
     <value>Kontakttyp</value>
@@ -1412,5 +1412,293 @@
   </data>
   <data name="CALCFIELD_SALES_ORDER_NUMBER" xml:space="preserve">
     <value>Verkaufsauftragsnummer</value>
+  </data>
+  <data name="ACCOUNT_LASTSYNC" xml:space="preserve">
+    <value>Letzte Sync</value>
+  </data>
+  <data name="AREACATEGORYISSUE_AREA" xml:space="preserve">
+    <value>Bereich</value>
+  </data>
+  <data name="AREACATEGORYISSUE_CATEGORY" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="AREACATEGORYISSUE_CUSTOMER" xml:space="preserve">
+    <value>Kunde</value>
+  </data>
+  <data name="AREACATEGORYISSUE_DEFECT" xml:space="preserve">
+    <value>Defekt</value>
+  </data>
+  <data name="AREACATEGORYISSUE_ISSUE" xml:space="preserve">
+    <value>Ausgabe</value>
+  </data>
+  <data name="AREACATEGORYISSUE_TICKET" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="DEFECTACTIVITYRATE_DESCRIPTION" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="DEFECTACTIVITYRATE_RATEHOUR" xml:space="preserve">
+    <value>Preis / Stunde</value>
+  </data>
+  <data name="DEFECTACTIVITYRATE_TYPE" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="DEPARTMENTVIEW_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="INTEGRATION_AUTHORIZATIONTYPE" xml:space="preserve">
+    <value>Authorization Typ</value>
+  </data>
+  <data name="INTEGRATION_ENABLED" xml:space="preserve">
+    <value>Aktiviert</value>
+  </data>
+  <data name="INTEGRATION_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="INTEGRATION_SYNCENABLED" xml:space="preserve">
+    <value>Sync Aktiviert</value>
+  </data>
+  <data name="INTEGRATION_SYNCHANDLER" xml:space="preserve">
+    <value>Sync Handler</value>
+  </data>
+  <data name="INTEGRATION_SYNCINTERVALMINUTES" xml:space="preserve">
+    <value>Sync-Intervall (Minuten)</value>
+  </data>
+  <data name="INTEGRATION_SYNCRUNEND" xml:space="preserve">
+    <value>Sync End Run</value>
+  </data>
+  <data name="INTEGRATION_SYNCRUNSTART" xml:space="preserve">
+    <value>Sync Run Starten</value>
+  </data>
+  <data name="INTEGRATION_SYNCUSINGSDATA" xml:space="preserve">
+    <value>Synchronisieren Mit SData</value>
+  </data>
+  <data name="LITERATURE_AUTHOR" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="LITERATURE_COST" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  <data name="LITERATURE_FAMILY" xml:space="preserve">
+    <value>Familie</value>
+  </data>
+  <data name="LITERATURE_ITEMNUMBER" xml:space="preserve">
+    <value>Artikel-Nr</value>
+  </data>
+  <data name="LITERATURE_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="LITERATURE_ONHAND" xml:space="preserve">
+    <value>An Hand</value>
+  </data>
+  <data name="LITERATURE_REORDERQTY" xml:space="preserve">
+    <value>Reorder Menge</value>
+  </data>
+  <data name="OAUTHPROVIDER_PROVIDERNAME" xml:space="preserve">
+    <value>Anbieter-Name</value>
+  </data>
+  <data name="PACKAGES_CREATED" xml:space="preserve">
+    <value>Erstellt</value>
+  </data>
+  <data name="PACKAGES_LASTMODIFIED" xml:space="preserve">
+    <value>Zuletzt Geändert</value>
+  </data>
+  <data name="PACKAGES_MODIFIEDBY" xml:space="preserve">
+    <value>Geändert Von</value>
+  </data>
+  <data name="PACKAGES_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PACKAGES_STATUS" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="QUALIFICATION_CATEGORY_CREATED" xml:space="preserve">
+    <value>Erstellt</value>
+  </data>
+  <data name="QUALIFICATION_CATEGORY_MODIFIED" xml:space="preserve">
+    <value>Geändert</value>
+  </data>
+  <data name="QUALIFICATION_CATEGORY_MODIFIEDBY" xml:space="preserve">
+    <value>Geändert Von</value>
+  </data>
+  <data name="QUALIFICATION_CATEGORY_QUALIFICATION" xml:space="preserve">
+    <value>Qualifikation</value>
+  </data>
+  <data name="RMA_ACCOUNT" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="RMA_ASSIGNEDTO" xml:space="preserve">
+    <value>Zugewiesen An</value>
+  </data>
+  <data name="RMA_LASTMODIFIED" xml:space="preserve">
+    <value>Zuletzt Geändert</value>
+  </data>
+  <data name="RMA_PRIORITY" xml:space="preserve">
+    <value>Priorität</value>
+  </data>
+  <data name="RMA_REQUESTEDDATE" xml:space="preserve">
+    <value>Wunschtermin</value>
+  </data>
+  <data name="RMA_RETURNEDBY" xml:space="preserve">
+    <value>Durch Zurück</value>
+  </data>
+  <data name="RMA_RETURNID" xml:space="preserve">
+    <value>Zurück ID</value>
+  </data>
+  <data name="RMA_SHIPTO" xml:space="preserve">
+    <value>Ship To</value>
+  </data>
+  <data name="RMA_TYPE" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="SYNCJOB_ENDPOINT" xml:space="preserve">
+    <value>End Point</value>
+  </data>
+  <data name="SYNCJOB_ENDTIME" xml:space="preserve">
+    <value>Endzeit</value>
+  </data>
+  <data name="SYNCJOB_JOBNAME" xml:space="preserve">
+    <value>Job Name</value>
+  </data>
+  <data name="SYNCJOB_LINK" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="SYNCJOB_STARTTIME" xml:space="preserve">
+    <value>Startzeit</value>
+  </data>
+  <data name="SYNCRESULT_APPLICATION" xml:space="preserve">
+    <value>Anwendung</value>
+  </data>
+  <data name="SYNCRESULT_APPLICATIONCODE" xml:space="preserve">
+    <value>Anwendungscode</value>
+  </data>
+  <data name="SYNCRESULT_CREATEDATE" xml:space="preserve">
+    <value>Erstellungsdatum</value>
+  </data>
+  <data name="SYNCRESULT_DIAGNOSISCODE" xml:space="preserve">
+    <value>Diagnose-Code</value>
+  </data>
+  <data name="SYNCRESULT_ERRORMESSAGE" xml:space="preserve">
+    <value>Fehlermeldung</value>
+  </data>
+  <data name="SYNCRESULT_ERRORSEQUENCE" xml:space="preserve">
+    <value>Fehlerfolge</value>
+  </data>
+  <data name="SYNCRESULT_GLOBALSYNCID" xml:space="preserve">
+    <value>Globale Sync ID</value>
+  </data>
+  <data name="SYNCRESULT_HTTPSTATUS" xml:space="preserve">
+    <value>hTTP-Status</value>
+  </data>
+  <data name="SYNCRESULT_INTEGRATION" xml:space="preserve">
+    <value>Integration</value>
+  </data>
+  <data name="SYNCRESULT_LINK" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="SYNCRESULT_LOGCREATEDATE" xml:space="preserve">
+    <value>Melden Erstellungsdatum</value>
+  </data>
+  <data name="SYNCRESULT_RECEIVEDBY" xml:space="preserve">
+    <value>Empfangene Von</value>
+  </data>
+  <data name="SYNCRESULT_RECORD" xml:space="preserve">
+    <value>Rekord</value>
+  </data>
+  <data name="SYNCRESULT_RESOURCE" xml:space="preserve">
+    <value>Ressource</value>
+  </data>
+  <data name="SYNCRESULT_RESOURCETYPE" xml:space="preserve">
+    <value>Ressourcentyp</value>
+  </data>
+  <data name="SYNCRESULT_SENTFROM" xml:space="preserve">
+    <value>Sent From</value>
+  </data>
+  <data name="SYNCRESULT_SEVERITY" xml:space="preserve">
+    <value>Schwere</value>
+  </data>
+  <data name="SYNCRESULT_STARTTIME" xml:space="preserve">
+    <value>Startzeit</value>
+  </data>
+  <data name="SYNCRESULT_STATUS" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SYNCRESULT_SYNCHISTORY" xml:space="preserve">
+    <value>Sync-Verlauf</value>
+  </data>
+  <data name="SYNCRESULT_SYNCHISTORYJOBNAME" xml:space="preserve">
+    <value>Sync-Verlauf Job Name</value>
+  </data>
+  <data name="SYNCRESULT_SYNCJOB" xml:space="preserve">
+    <value>Sync Job</value>
+  </data>
+  <data name="SYNCRESULT_SYNCJOBNAME" xml:space="preserve">
+    <value>Sync Job Name</value>
+  </data>
+  <data name="SYNCRESULT_USER" xml:space="preserve">
+    <value>Benutzer</value>
+  </data>
+  <data name="TEAMVIEW_CREATED" xml:space="preserve">
+    <value>Erstellt</value>
+  </data>
+  <data name="TEAMVIEW_MODIFIED" xml:space="preserve">
+    <value>Geändert</value>
+  </data>
+  <data name="TEAMVIEW_MODIFIEDBY" xml:space="preserve">
+    <value>Geändert Von</value>
+  </data>
+  <data name="TEAMVIEW_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TICKETACTIVITYRATE_DESCRIPTION" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="TICKETACTIVITYRATE_RATEHOUR" xml:space="preserve">
+    <value>Preis / Stunde</value>
+  </data>
+  <data name="TICKETACTIVITYRATE_TYPE" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="TICKETAREAOWNER_AREA" xml:space="preserve">
+    <value>Bereich</value>
+  </data>
+  <data name="TICKETAREAOWNER_ASSIGNEDTO" xml:space="preserve">
+    <value>Zugewiesen An</value>
+  </data>
+  <data name="USERSECURITY_ACTIVE" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="USERSECURITY_DEPARTMENT" xml:space="preserve">
+    <value>Abteilung</value>
+  </data>
+  <data name="USERSECURITY_ENABLEDFORSYNC" xml:space="preserve">
+    <value>Für Sync Aktiviert</value>
+  </data>
+  <data name="USERSECURITY_INTEGRATION" xml:space="preserve">
+    <value>Integration</value>
+  </data>
+  <data name="USERSECURITY_INTEGRATIONENABLED" xml:space="preserve">
+    <value>Integration Aktiviert</value>
+  </data>
+  <data name="USERSECURITY_LOGINATTEMPTS" xml:space="preserve">
+    <value>Login-Versuche</value>
+  </data>
+  <data name="USERSECURITY_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="USERSECURITY_SITECODE" xml:space="preserve">
+    <value>Standortcode</value>
+  </data>
+  <data name="USERSECURITY_TEMPLATENAME" xml:space="preserve">
+    <value>Name der Vorlage</value>
+  </data>
+  <data name="USERSECURITY_TITLE" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="USERSECURITY_TYPE" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="USERSECURITY_USERNAME" xml:space="preserve">
+    <value>Benutzername</value>
   </data>
 </root>

@@ -26,7 +26,7 @@ function (LanguageList, lang) {
             btnCloseText: 'Close',
             lblImportHistoryLinkText: 'To see the import history results click the import number below:',
             lblImportLinkNumber: 'Import Number: ',
-            errorRequestImportHistory: 'An error occured execiting sdata request for endpoint importHistory.'
+            errorRequestImportHistory: 'An error occurred execiting sdata request for endpoint importHistory.'
         }
     };
     return lang.mixin(LanguageList, nls);

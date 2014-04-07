@@ -1,5 +1,3 @@
-﻿define((
-{   
-    txtPleaseSpecifyValue: 'Please specify a value.'
-}
-));
+﻿define({
+    txtPleaseSpecifyValue: 'Si prega di specificare un valore.'
+});

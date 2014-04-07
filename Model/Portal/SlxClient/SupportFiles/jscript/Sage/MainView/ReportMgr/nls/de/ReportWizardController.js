@@ -1,10 +1,9 @@
 ﻿define({
-    txtLoadingScheduleDetails: 'Loading Schedule Details',
-    txtError: 'Error',
-    txtCannotDetermineReportId: 'Cannot determine report id.',
-    txtCannotDetermineReportNameOrFamily: 'Cannot determine report name or family.',
-    txtLoading: 'Loading ',
-    txtLoadingReport: 'Loading Report',
-    txtSorryAnErrorOccuredLoadingReport: 'Sorry, an error occured loading report: ${0} ${1}.'
-
+    txtLoadingScheduleDetails: 'Lädt Plandetails',
+    txtError: 'Fehler',
+    txtCannotDetermineReportId: 'Kann nicht ermittelt werden id Bericht.',
+    txtCannotDetermineReportNameOrFamily: 'Berichtsnamen oder der Familie kann nicht bestimmt werden.',
+    txtLoading: 'Wird geladen ...',
+    txtLoadingReport: 'Loading',
+    txtSorryAnErrorOccuredLoadingReport: 'Leider ist ein Fehler beim Laden der Bericht: ${0} ${1}.'
 });

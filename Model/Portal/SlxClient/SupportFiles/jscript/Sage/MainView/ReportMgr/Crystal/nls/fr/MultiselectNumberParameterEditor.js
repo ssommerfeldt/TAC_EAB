@@ -1,11 +1,9 @@
-﻿define((
-{
-    txtPleaseSpecifyNumberBetween: 'Please specify a number value between {0} and {1}.',
-    txtPleaseSpecifyNumberLesser: 'Please specify a number value less than or equal to {0}.',
-    txtPleaseSpecifyNumberGreater: 'Please specify a number value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a number value.',
-    lblAvailableValues_Caption: 'Available Values:',
-    lblSelectedValues_Caption: 'Selected Values:',
-    lblEnterValue_Caption: 'Enter a Value:'
-}
-));
+﻿define({
+    txtPleaseSpecifyNumberBetween: "S'il vous plaît spécifier une valeur numérique comprise entre {0} et {1}.",
+    txtPleaseSpecifyNumberLesser: "S'il vous plaît spécifier une valeur numérique inférieure ou égale à {0}.",
+    txtPleaseSpecifyNumberGreater: "Please specify a numeric value greater than or equal to {0}.",
+    txtPleaseSpecifyValue: "S'il vous plaît spécifier une valeur.",
+    lblAvailableValues_Caption: 'Valeurs disponibles:',
+    lblSelectedValues_Caption: 'Valeurs sélectionnées:',
+    lblEnterValue_Caption: 'Entrez une valeur:'
+});

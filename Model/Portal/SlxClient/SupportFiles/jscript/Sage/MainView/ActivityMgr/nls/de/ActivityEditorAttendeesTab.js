@@ -10,5 +10,7 @@ define((
   header_Notes: 'Notizen',
   tooltip_speedSearch: 'Teilnehmer hinzufügen',
   tooltip_AddContact: 'Kontakt hinzufügen',
-  tooltip_AddLead: 'Lead hinzufügen' }
+  tooltip_AddLead: 'Lead hinzufügen',
+  tooltip_Delete: "Löschen"
+}
 ));

@@ -1,8 +1,6 @@
-﻿define((
-{    
-    txtPleaseSpecifyDateBetween: 'Please specify a Date value between {0} and {1}.',
-    txtPleaseSpecifyDateLesser: 'Please specify a Date value less than or equal to {0}.',
-    txtPleaseSpecifyDateGreater: 'Please specify a Date value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a Date value.'
-}
-));
+﻿define({
+    txtPleaseSpecifyDateBetween: 'Siete pregati di specificare un valore di data tra {0} e {1}.',
+    txtPleaseSpecifyDateLesser: 'Siete pregati di specificare un valore di data inferiore o uguale a {0}.',
+    txtPleaseSpecifyDateGreater: 'Siete pregati di specificare un valore di data maggiore o uguale a {0}.',
+    txtPleaseSpecifyValue: 'Siete pregati di specificare un valore di data.'
+});

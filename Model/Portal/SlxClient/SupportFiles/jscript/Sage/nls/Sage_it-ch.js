@@ -367,7 +367,11 @@ define("Sage/MainView/ActivityMgr/nls/it/QuickCompleteEditor", (
   btnCloseText: 'Chiudi',
   btnHelpText: 'Aiuto',
   resultCompletedText: 'Completa',
-  titleText: 'Completamento Rapido' }
+  titleText: 'Completamento Rapido',
+  actionMessage: 'Solo le attività che si è permesso di completare saranno completate.',
+  completeMessage: 'Completa tutti {0} attività selezionate:',
+  processingMessage: 'Elaborazione tutti {0} attività selezionate attendere prego ...'
+}
 ));
 },
 'Sage/MainView/ActivityMgr/nls/it-ch/QuickCompleteEditor':function(){
@@ -430,12 +434,12 @@ define('Sage/UI/Alarms/nls/it-ch/AlarmPane',{});
 },
 'Sage/TaskPane/nls/it/LiteratureManagementTasks':function(){
 define("Sage/TaskPane/nls/it/LiteratureManagementTasks", (
-{ errFulFillmentCancelled: 'stata cancellata evasione della richiesta di materiale informativo per Id {0}.',
-  errFulFillmentFailed: 'La richiesta di materiale informativo non può essere evasa per id {0}.',
-  errMailMergeService: 'La richiesta di materiale informativo non può essere evasa perchè non è possibile caricare il servizio di stampa unione. Questo può accadere se non è stata installata Integrazione Desktop SalesLogix o non è stata installata correttamente.',
+{ errFulFillmentCancelled: "E' stata cancellata l'evasione della richiesta di materiale informativo per l'Id {0}.",
+  errFulFillmentFailed: 'La richiesta di materiale informativo non può essere evasa per l\'id {0}.',
+  errMailMergeService: 'La richiesta di materiale informativo non può essere evasa perchè non è possibile caricare il servizio di stampa unione. Questo può accadere se non è stata installata l\'Integrazione Desktop Saleslogix o non è stata installata correttamente.',
   errFulFillmentRequest: 'La richiesta di materiale informativo non può essere evasa.',
   errFulFillmentRequestEx: 'Non è possibile evadere la seguente richiesta(e) di materiale informativo:',
-  fulFillmentSuccess: 'evasione della richiesta di materiale informativo è avvenuta con successo.' }
+  fulFillmentSuccess: 'L\'evasione della richiesta di materiale informativo è avvenuta con successo.' }
 ));
 },
 'Sage/TaskPane/nls/it-ch/LiteratureManagementTasks':function(){
@@ -792,7 +796,15 @@ define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/it/SpeedSearchLookup", (
 { dialogTitle: 'Lookup partecipanti',
   okText: 'Aggiungi il(i) Selezionato(i)',
   cancelText: 'Chiudi',
-  noDataText: 'Nessun record corrisponde ai criteri di selezione' }
+  noDataText: 'Nessun record corrisponde ai criteri di selezione',
+  srchBtnCaption: 'Cerca',
+  colName: 'Nome',
+  colType: 'Tipo',
+  colAccount: 'Azienda/Società',
+  colTitle: 'Titolo',
+  colEmail: 'E-Mail',
+  colWorkPhone: 'Tel. Ufficio'
+}
 ));
 },
 'Sage/MainView/ActivityMgr/AttendeeLookup/nls/it-ch/SpeedSearchLookup':function(){
@@ -858,18 +870,18 @@ define("Sage/UI/Dashboard/nls/it/WidgetDefinition", (
   My_Dashboard: 'Il mio cruscotto',
   Sales: 'Vendite',
   Group_List_Description: 'Visualizza un elenco di record raggruppati per entità. Ad esempio, un gruppo di campagne attive.',
-  Welcome_Description: 'Visualizza introduzione a Saleslogix con un collegamento argomento della guida Introduzione alla parte Web Sage SalesLogix',
+  Welcome_Description: 'Visualizza un\'introduzione a Saleslogix con un collegamento all\'argomento della guida Introduzione alla parte Web SalesLogix',
   Line_Chart_Description: 'Visualizza i dati sotto forma di punti connessi da una linea. Utile quando i dati rappresentano molti gruppi di categorie.',
   Bar_Chart_Description: 'Visualizza i dati sotto forma di barre orizzontali. Utile nel confronto dei dati.',
   Column_Chart_Description: 'Visualizza i dati sotto forma di barre verticali raggruppate per categoria. Utile per mostrare le modifiche ai dati in un determinato periodo di tempo o per illustrare confronti tra dati.',
   Funnel_Chart_Description: 'Visualizza i dati sotto forma di imbuto con proporzioni progressive. Il dato viene rappresentato come porzione del 100% e non ci sono assi.',
-  Pie_Chart_Description: 'Visualizza i dati come porzioni intero. Ciascun valore è calcolato come percentuale del totale. Questo grafico non ha assi.',
-  Recently_Viewed_Description: 'Visualizza i collegamenti ai record visitati di recente con icona che identifica il tipo di record stesso. Ad esempio, Azienda o Contatto.',
+  Pie_Chart_Description: 'Visualizza i dati come porzioni dell\'intero. Ciascun valore è calcolato come percentuale del totale. Questo grafico non ha assi.',
+  Recently_Viewed_Description: 'Visualizza i collegamenti ai record visitati di recente con un\'icona che identifica il tipo di record stesso. Ad esempio, Azienda o Contatto.',
   Todays_Activities_Description: 'Visualizza i collegamenti alle attività di oggi.',
-  Links_Description: 'Visualizza i collegamenti che hai creato. Ad esempio, a una vista di dettaglio SalesLogix o ad un sito esterno.',
-  SData_Feed_Description: 'Visualizza un feed Web utilizzando feed SData (Sage Data). Ad esempio, un feed integrazione contabilità o del database Saleslogix.',
+  Links_Description: 'Visualizza i collegamenti che hai creato. Ad esempio, a una vista di dettaglio Saleslogix o ad un sito esterno.',
+  SData_Feed_Description: 'Visualizza un feed Web utilizzando feed SData (Saleslogix Data). Ad esempio, un feed dell\'integrazione contabilità o del database Saleslogix.',
   Web_Feed_Description: 'Visualizza informazioni su feed RSS o Atom.',
-  Website_Description: 'Visualizza un sito Web scelto utente.' }
+  Website_Description: 'Visualizza un sito Web scelto dall\'utente.' }
 ));
 },
 'Sage/UI/Dashboard/nls/it-ch/WidgetDefinition':function(){
@@ -938,7 +950,15 @@ define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/it/ContactLookupConfig", (
   workphoneText: 'Tel. Ufficio',
   emailText: 'E-Mail',
   dialogButtonText: 'Aggiungi il(i) Selezionato(i)',
-  cancelText: 'Chiudi' }
+  cancelText: 'Chiudi',
+  colFirstName: 'Nome',
+  colLastName: 'Cognome',
+  colTitle: 'Titolo',
+  colAccount: 'Azienda',
+  colWorkPhone: 'Tel. Ufficio',
+  colEmail: 'E-Mail',
+  dialogTitleText: 'Ricerca Contatti'
+}
 ));
 },
 'Sage/MainView/ActivityMgr/AttendeeLookup/nls/it-ch/ContactLookupConfig':function(){
@@ -1086,7 +1106,7 @@ define("Sage/Library/nls/it/FileHandler", (
   FileStatusError: 'Si è verificato un errore imprevisto durante il tentativo di aggiornare lo stato del file.',
   LogRequestError: 'Si è verificato un errore imprevisto durante il tentativo di accedere alla richiesta di sincronizzazione del documento.',
   No: 'No',
-  NoAccessMessage: "Non avete i diritti per aggiungere file alla libreria. Per ulteriori informazioni contattare amministratore di SalesLogix.",
+  NoAccessMessage: 'Non avete i diritti per aggiungere file alla libreria. Per ulteriori informazioni contattare l\'amministratore di Saleslogix.',
   Ordered: 'Ordinato',
   PleaseSelectFile: 'Selezionare un file.',
   PleaseWait: 'Attendere prego',
@@ -1311,12 +1331,6 @@ define("Sage/TaskPane/nls/it/SecuredActionTasklet", (
 'Sage/TaskPane/nls/it-ch/SecuredActionTasklet':function(){
 define('Sage/TaskPane/nls/it-ch/SecuredActionTasklet',{});
 },
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/it/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/it/SyncedListPanelConfig',{});
-},
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/it-ch/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/it-ch/SyncedListPanelConfig',{});
-},
 'Sage/UI/Dashboard/nls/it/DashboardTabController':function(){
 define("Sage/UI/Dashboard/nls/it/DashboardTabController", (
 { newTabText: 'Nuova tabulazione',
@@ -1517,18 +1531,18 @@ define("Sage/UI/Filters/nls/it/EditFilterItems", (
 define('Sage/UI/Filters/nls/it-ch/EditFilterItems',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportsFormatter':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportsFormatter", (
-{ txtEdit: 'Modifica',
-  txtDelete: 'Elimina',
-  txtRangeValue: '${0} a ${1}' }
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportsFormatter", {
+    txtEdit: 'Modifica',
+    txtDelete: 'Elimina',
+    txtRangeValue: '${0} di ${1}'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportsFormatter':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportsFormatter',{});
 },
 'Sage/Utility/File/nls/it/DragDropWatcher':function(){
 define("Sage/Utility/File/nls/it/DragDropWatcher", (
-{ query0: 'La funzionalità richiesta richiede il Modulo Sage SalesLogix Desktop <br> Integration.',
+{ query0: 'La funzionalità richiesta richiede il Modulo Saleslogix Desktop <br> Integration.',
   query1: 'Maggiori informazioni...',
   query2: 'Desideri installare questa funzione ora?',
   query3: 'Nota: Questo modulo può essere installato in qualsiasi momento dalle pagine di connessione o opzioni.' }
@@ -1597,17 +1611,15 @@ define("Sage/Extensions/Activity/ListPanelOverrides/nls/it/AllOpenListPanelConfi
 define('Sage/Extensions/Activity/ListPanelOverrides/nls/it-ch/AllOpenListPanelConfig',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/MultiselectNumberParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/MultiselectNumberParameterEditor", (
-{
-    txtPleaseSpecifyNumberBetween: 'Please specify a number value between {0} and {1}.',
-    txtPleaseSpecifyNumberLesser: 'Please specify a number value less than or equal to {0}.',
-    txtPleaseSpecifyNumberGreater: 'Please specify a number value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a number value.',
-    lblAvailableValues_Caption: 'Available Values:',
-    lblSelectedValues_Caption: 'Selected Values:',
-    lblEnterValue_Caption: 'Enter a Value:'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/MultiselectNumberParameterEditor", {
+    txtPleaseSpecifyNumberBetween: 'Si prega di specificare un valore numerico compreso tra {0} e {1}.',
+    txtPleaseSpecifyNumberLesser: 'Si prega di specificare un valore numerico inferiore o uguale a {0}.',
+    txtPleaseSpecifyNumberGreater: 'Si prega di specificare un valore numerico maggiore o uguale a {0}.',
+    txtPleaseSpecifyValue: 'Si prega di specificare un valore numerico.',
+    lblAvailableValues_Caption: 'Valori disponibili:',
+    lblSelectedValues_Caption: 'Valori selezionati:',
+    lblEnterValue_Caption: 'Immettere un valore:'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/MultiselectNumberParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/MultiselectNumberParameterEditor',{});
@@ -1776,10 +1788,9 @@ define("Sage/MainView/ActivityMgr/nls/it/ActivityGroupContextService", (
 define('Sage/MainView/ActivityMgr/nls/it-ch/ActivityGroupContextService',{});
 },
 'Sage/MainView/ReportMgr/Common/nls/it/ExportOptionsDialog':function(){
-define("Sage/MainView/ReportMgr/Common/nls/it/ExportOptionsDialog", (
-{
+define("Sage/MainView/ReportMgr/Common/nls/it/ExportOptionsDialog", {
     txtDialogTitle: 'Opzioni esportazione',
-    txtDialogTitleScheduling: 'Export And Scheduling Options',
+    txtDialogTitleScheduling: 'Esportazione e programmazione Opzioni',
     cmdBack_Caption: '< Indietro',
     cmdNext_Caption: 'Avanti >',
     cmdCancel_Caption: 'Annulla',
@@ -1788,9 +1799,8 @@ define("Sage/MainView/ReportMgr/Common/nls/it/ExportOptionsDialog", (
     txtOK: 'OK',
     txtOutputFormat_Caption: 'Formato',
     txtRunAs_Caption: 'Esegui come',
-    txtScheduleDescription_Caption: 'Description'
-}
-));
+    txtScheduleDescription_Caption: 'Descrizione'
+});
 },
 'Sage/MainView/ReportMgr/Common/nls/it-ch/ExportOptionsDialog':function(){
 define('Sage/MainView/ReportMgr/Common/nls/it-ch/ExportOptionsDialog',{});
@@ -1911,14 +1921,12 @@ define("Sage/TaskPane/nls/it/UserTasklet", (
 define('Sage/TaskPane/nls/it-ch/UserTasklet',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/NumberParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/NumberParameterEditor", (
-{
-    txtPleaseSpecifyNumberBetween: 'Please specify a Number value between {0} and {1}.',
-    txtPleaseSpecifyNumberLesser: 'Please specify a Number value less than or equal to {0}.',
-    txtPleaseSpecifyNumberGreater: 'Please specify a Number value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a Number value.'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/NumberParameterEditor", {
+    txtPleaseSpecifyNumberBetween: 'Si prega di specificare un valore numerico compreso tra {0} e {1}.',
+    txtPleaseSpecifyNumberLesser: 'Si prega di specificare un valore numerico inferiore o uguale a {0}.',
+    txtPleaseSpecifyNumberGreater: 'Si prega di specificare un valore numerico maggiore o uguale a {0}.',
+    txtPleaseSpecifyValue: 'Si prega di specificare un valore numerico.'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/NumberParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/NumberParameterEditor',{});
@@ -1959,42 +1967,42 @@ define("Sage/MainView/Opportunity/nls/it/OpportunityStatistics", (
 define('Sage/MainView/Opportunity/nls/it-ch/OpportunityStatistics',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportConditionEditor':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportConditionEditor", (
-{ dlgCrystalReportConditionDetails_Title: 'Aggiungi/Modifica condizione',
-  cmdOK_Caption: 'OK',
-  cmdCancel_Caption: 'Annulla',
-  cmbConditionType_Caption: 'Accoppia per',
-  txtInvalidParameterTitle: 'Parametro non valido',
-  txtInvalidParameterMessage: 'Parametro non valido: ${0}',
-  lkpUser_Caption: 'Utente',
-  lkpGroup_Caption: 'Gruppo',
-  txtSelectUser: 'Seleziona utente',
-  chkCurrentUser_Caption: 'Current User',
-  txtName: 'Nome',
-  txtOK: 'OK',
-  txtSelectGroup: 'Seleziona Gruppo',
-  cmbDateRange_Caption: 'Intervallo data',
-  cmbDateRange_SpecificDates_Caption: 'Date Specifiche',
-  cmbDateRange_ThisWeek_Caption: 'Questa settimana',
-  cmbDateRange_ThisMonth_Caption: 'Questo mese',
-  cmbDateRange_ThisQuarter_Caption: 'Questo trimestre',
-  cmbDateRange_ThisYear_Caption: 'Quest anno',
-  cmbDateRange_LastWeek_Caption: 'Ultima settimana',
-  cmbDateRange_LastMonth_Caption: 'Ultimo mese',
-  cmbDateRange_LastQuarter_Caption: 'Ultimo trimestre',
-  cmbDateRange_LastYear_Caption: 'Ultimo anno',
-  cmbDateRange_MonthToDate_Caption: 'Mese alla data',
-  cmbDateRange_QuarterToDate_Caption: 'Trimestre alla data',
-  cmbDateRange_YearToDate_Caption: 'Anno alla data',
-  dtFromDate_Caption: 'Da',
-  dtToDate_Caption: 'A',
-  cmbTable_Caption: 'Tabella',
-  cmbField_Caption: 'Campo',
-  cmbOperator_Caption: 'Operatore',
-  txtValue_Caption: 'Valore',
-  txtNumericValueFrom_Caption: 'Da',
-  txtNumericValueTo_Caption: 'A' }
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportConditionEditor", {
+    dlgCrystalReportConditionDetails_Title: 'Aggiungi/Modifica condizione',
+    cmdOK_Caption: 'OK',
+    cmdCancel_Caption: 'Annulla',
+    cmbConditionType_Caption: 'Accoppia per',
+    txtInvalidParameterTitle: 'Parametro non valido',
+    txtInvalidParameterMessage: 'Parametro non valido: ${0}',
+    lkpUser_Caption: 'Utente',
+    lkpGroup_Caption: 'Gruppo',
+    txtSelectUser: 'Seleziona utente',
+    chkCurrentUser_Caption: 'Utente Corrente',
+    txtName: 'Nome',
+    txtOK: 'OK',
+    txtSelectGroup: 'Seleziona Gruppo',
+    cmbDateRange_Caption: 'Intervallo data',
+    cmbDateRange_SpecificDates_Caption: 'Date Specifiche',
+    cmbDateRange_ThisWeek_Caption: 'Questa settimana',
+    cmbDateRange_ThisMonth_Caption: 'Questo mese',
+    cmbDateRange_ThisQuarter_Caption: 'Questo trimestre',
+    cmbDateRange_ThisYear_Caption: 'Quest anno',
+    cmbDateRange_LastWeek_Caption: 'Ultima settimana',
+    cmbDateRange_LastMonth_Caption: 'Ultimo mese',
+    cmbDateRange_LastQuarter_Caption: 'Ultimo trimestre',
+    cmbDateRange_LastYear_Caption: 'Ultimo anno',
+    cmbDateRange_MonthToDate_Caption: 'Mese alla data',
+    cmbDateRange_QuarterToDate_Caption: 'Trimestre alla data',
+    cmbDateRange_YearToDate_Caption: 'Anno alla data',
+    dtFromDate_Caption: 'Da',
+    dtToDate_Caption: 'A',
+    cmbTable_Caption: 'Tabella',
+    cmbField_Caption: 'Campo',
+    cmbOperator_Caption: 'Operatore',
+    txtValue_Caption: 'Valore',
+    txtNumericValueFrom_Caption: 'Da',
+    txtNumericValueTo_Caption: 'A'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportConditionEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportConditionEditor',{});
@@ -2105,11 +2113,9 @@ define("Sage/MainView/ReportMgr/nls/it/HistoryListPanelConfig", {
 define('Sage/MainView/ReportMgr/nls/it-ch/HistoryListPanelConfig',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/BooleanParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/BooleanParameterEditor", (
-{   
-    txtPleaseSpecifyValue: 'Please specify a value.'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/BooleanParameterEditor", {
+    txtPleaseSpecifyValue: 'Si prega di specificare un valore.'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/BooleanParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/BooleanParameterEditor',{});
@@ -2150,11 +2156,11 @@ define('Sage/MainView/ReportMgr/Common/nls/it-ch/_WizardDialogBase',{});
 define("Sage/MainView/JobMgr/nls/it/SchedulesListPanelConfig", {
     colNameTriggerName: 'Pianifica',
     colNameJobName: 'Nome Job',
-    colNameUser: 'Scheduled By',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
+    colNameUser: 'Programmato By',
+    colNameStartTimeUtc: 'Ora Inizio',
+    colNameEndTimeUtc: 'Ora Fine',
     colNamePriority: 'Priorità',
-    colNameStatus: 'Status',
+    colNameStatus: 'Stato',
     colNameTimesTriggered: 'Numero esecuzioni'
 });
 },
@@ -2378,15 +2384,13 @@ define("Sage/UI/Alarms/nls/it/JobNotificationButton", (
 define('Sage/UI/Alarms/nls/it-ch/JobNotificationButton',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportWizardController':function(){
-define(
-    "Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportWizardController", ({
-        txtOnDemandScheduleName: 'Su richiesta',
-        txtReportSuccessfullyScheduled: 'Rapporto pianificato.',
-        txtDynamicParametersMessage: 'Reports with dynamic parameters are currently not supported.',
-        txtError: 'Error',
-        txtScheduleSuccessfullyUpdated: 'Schedule successfully updated.'
-    })
-);
+define("Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportWizardController", {
+    txtOnDemandScheduleName: 'Su richiesta',
+    txtReportSuccessfullyScheduled: 'Rapporto pianificato.',
+    txtDynamicParametersMessage: 'Report con parametri dinamici non sono attualmente supportate.',
+    txtError: 'Errore',
+    txtScheduleSuccessfullyUpdated: 'Programma aggiornato correttamente.'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportWizardController':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportWizardController',{});
@@ -2456,11 +2460,9 @@ define("Sage/MainView/ActivityMgr/nls/it/RecurringEditor", (
 define('Sage/MainView/ActivityMgr/nls/it-ch/RecurringEditor',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportsUtility':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportsUtility", (
-{
-    txtCurrentUser: 'Current User'
-}
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportsUtility", {
+    txtCurrentUser: 'Utente Corrente'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportsUtility':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportsUtility',{});
@@ -2494,21 +2496,19 @@ define("Sage/QuickForms/Design/Editors/nls/it/DataGridAdvancedPropertyEditor", (
 define('Sage/QuickForms/Design/Editors/nls/it-ch/DataGridAdvancedPropertyEditor',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/DateRangeParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/DateRangeParameterEditor", (
-{
-    txtNoLowerValue: 'No lower value',
-    txtNoUpperValue: 'No upper value',
-    txtIncludeThisValue: 'Include this value',
-    txtFrom: 'From:',
-    txtTo: 'To:',
-    txtPleaseSpecifyFromValue: 'Please specify From value',
-    txtPleaseSpecifyToValue: 'Please specify To value',
-    txtPleaseSpecifyDateBetween: 'Please specify a Date value between {0} and {1}.',
-    txtPleaseSpecifyDateLesser: 'Please specify a Date value less than or equal to {0}.',
-    txtPleaseSpecifyDateGreater: 'Please specify a Date value greater than or equal to {0}.',
-    txtFromMustBeLessThanOrEqualToTo: 'From value must be less than or equal to To value.'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/DateRangeParameterEditor", {
+    txtNoLowerValue: 'Nessun valore più basso',
+    txtNoUpperValue: 'Nessun valore superiore',
+    txtIncludeThisValue: 'Includere questo valore',
+    txtFrom: 'da:',
+    txtTo: 'a:',
+    txtPleaseSpecifyFromValue: 'Si prega di specificare Dal valore',
+    txtPleaseSpecifyToValue: 'Si prega di specificare di valore',
+    txtPleaseSpecifyDateBetween: 'Siete pregati di specificare un valore di data tra {0} e {1}.',
+    txtPleaseSpecifyDateLesser: 'Siete pregati di specificare un valore di data inferiore o uguale a {0}.',
+    txtPleaseSpecifyDateGreater: 'Siete pregati di specificare un valore di data maggiore o uguale a {0}.',
+    txtFromMustBeLessThanOrEqualToTo: 'Dal valore deve essere inferiore o uguale al valore.'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/DateRangeParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/DateRangeParameterEditor',{});
@@ -2522,14 +2522,12 @@ define("Sage/MainView/ReportMgr/nls/it/BaseListPanelConfig", (
 define('Sage/MainView/ReportMgr/nls/it-ch/BaseListPanelConfig',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/DateParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/DateParameterEditor", (
-{    
-    txtPleaseSpecifyDateBetween: 'Please specify a Date value between {0} and {1}.',
-    txtPleaseSpecifyDateLesser: 'Please specify a Date value less than or equal to {0}.',
-    txtPleaseSpecifyDateGreater: 'Please specify a Date value greater than or equal to {0}.',
-    txtPleaseSpecifyValue: 'Please specify a Date value.'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/DateParameterEditor", {
+    txtPleaseSpecifyDateBetween: 'Siete pregati di specificare un valore di data tra {0} e {1}.',
+    txtPleaseSpecifyDateLesser: 'Siete pregati di specificare un valore di data inferiore o uguale a {0}.',
+    txtPleaseSpecifyDateGreater: 'Siete pregati di specificare un valore di data maggiore o uguale a {0}.',
+    txtPleaseSpecifyValue: 'Siete pregati di specificare un valore di data.'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/DateParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/DateParameterEditor',{});
@@ -2881,6 +2879,20 @@ define("Sage/MainView/SecurityMgr/nls/it/SecurityProfile", (
 'Sage/MainView/SecurityMgr/nls/it-ch/SecurityProfile':function(){
 define('Sage/MainView/SecurityMgr/nls/it-ch/SecurityProfile',{});
 },
+'Sage/MainView/ReportMgr/nls/it/ReportWizardController':function(){
+﻿define("Sage/MainView/ReportMgr/nls/it/ReportWizardController", {
+    txtLoadingScheduleDetails: 'Caricamento Schedule Dettagli',
+    txtError: 'Errore',
+    txtCannotDetermineReportId: 'Impossibile determinare la relazione id.',
+    txtCannotDetermineReportNameOrFamily: 'Impossibile determinare il nome del report o in famiglia.',
+    txtLoading: 'Caricamento in corso ...',
+    txtLoadingReport: 'Loading Rapporto',
+    txtSorryAnErrorOccuredLoadingReport: 'Siamo spiacenti, si è verificato un errore rapporto di carico: ${0} ${1}.'
+});
+},
+'Sage/MainView/ReportMgr/nls/it-ch/ReportWizardController':function(){
+define('Sage/MainView/ReportMgr/nls/it-ch/ReportWizardController',{});
+},
 'Sage/QuickForms/Design/Editors/nls/it/UserAdvancedPropertyEditor':function(){
 define("Sage/QuickForms/Design/Editors/nls/it/UserAdvancedPropertyEditor", (
 { titleText: 'Avanzate',
@@ -2977,17 +2989,16 @@ define("Sage/QuickForms/Design/Editors/nls/it/CurrencyAdvancedPropertyEditor", (
 define('Sage/QuickForms/Design/Editors/nls/it-ch/CurrencyAdvancedPropertyEditor',{});
 },
 'Sage/TaskPane/nls/it/ReportManagerTasksTasklet':function(){
-define("Sage/TaskPane/nls/it/ReportManagerTasksTasklet", (
-{ taskRunReport_Caption: 'Esegui rapporto',
-  taskScheduleReport_Caption: 'Pianifica rapporto',
-  taskDeleteReport_Caption: 'Elimina rapporto',
-  taskDeleteSchedule_Caption: 'Elimina pianificazione',
-  taskEditSchedule_Caption: 'Edit Schedule',
-  taskDeleteHistory_Caption: 'Elimina cronologia',
-  txtRecordsSelected: 'record(s) selected',
-  txtClear: 'Clear'
-}
-));
+define("Sage/TaskPane/nls/it/ReportManagerTasksTasklet", {
+    taskRunReport_Caption: 'Esegui rapporto',
+    taskScheduleReport_Caption: 'Pianifica rapporto',
+    taskDeleteReport_Caption: 'Elimina rapporto',
+    taskDeleteSchedule_Caption: 'Elimina pianificazione',
+    taskEditSchedule_Caption: 'Modifica pianificazione',
+    taskDeleteHistory_Caption: 'Elimina cronologia',
+    txtRecordsSelected: 'record(s) selezionato',
+    txtClear: 'Pulisci'
+});
 },
 'Sage/TaskPane/nls/it-ch/ReportManagerTasksTasklet':function(){
 define('Sage/TaskPane/nls/it-ch/ReportManagerTasksTasklet',{});
@@ -3101,7 +3112,9 @@ define("Sage/MainView/ActivityMgr/nls/it/ActivityEditorAttendeesTab", (
   header_Notes: 'Nota',
   tooltip_speedSearch: 'Aggiungi partecipante',
   tooltip_AddContact: 'Aggiungi Contatto',
-  tooltip_AddLead: 'Aggiungi potenziale cliente' }
+  tooltip_AddLead: 'Aggiungi potenziale cliente',
+  tooltip_Delete: "Elimina"
+}
 ));
 },
 'Sage/MainView/ActivityMgr/nls/it-ch/ActivityEditorAttendeesTab':function(){
@@ -3233,12 +3246,12 @@ define('Sage/UI/nls/it-ch/ActivityList',{});
 },
 'Sage/UI/Alarms/nls/it/JobNotificationPopup':function(){
 ﻿define("Sage/UI/Alarms/nls/it/JobNotificationPopup", {
-    title: 'Job Notifications',
+    title: 'Notifiche di Lavoro',
     helpText: 'Aiuto',
-    colNameJobName: 'Type',
+    colNameJobName: 'Tipo',
     colNameProgress: 'Avanzamento',
-    colNameStatus: 'Status',
-    colExecutionResult: 'Result'
+    colNameStatus: 'Stato',
+    colExecutionResult: 'Risultato'
 });
 
 
@@ -3257,7 +3270,15 @@ define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/it/LeadLookupConfig", (
   workphoneText: 'Telefono Ufficio',
   emailText: 'E-Mail',
   dialogButtonText: 'Aggiungi il(i) Selezionato(i)',
-  cancelText: 'Chiudi' }
+  cancelText: 'Chiudi',
+  colFirstName: 'Nome',
+  colLastName: 'Cognome',
+  colTitle: 'Titolo',
+  colCompany: 'Azienda',
+  colWorkPhone: 'Tel. Ufficio',
+  colEmail: 'E-Mail',
+  dialogTitleText: 'Ricerca Nominativo'
+}
 ));
 },
 'Sage/MainView/ActivityMgr/AttendeeLookup/nls/it-ch/LeadLookupConfig':function(){
@@ -3269,12 +3290,12 @@ define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/it-ch/LeadLookupConfig',{})
     colNameDescription: 'Descrizione',
     colNameRunAsUser: 'Esegui come',
     colNameLastExecutionDate: 'Ultima Esecuzione',
-    colNameExecutionCount: 'Numero esecuzioni',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Priority',
-    colNameStatus: 'Status',
-    colNameTemplate: 'Template'
+    colNameExecutionCount: 'Numero Esecuzioni',
+    colNameStartTimeUtc: 'Ora Inizio',
+    colNameEndTimeUtc: 'Ora Fine',
+    colNamePriority: 'Priorità',
+    colNameStatus: 'Stato',
+    colNameTemplate: 'Sagoma'
 });
 },
 'Sage/MainView/ReportMgr/nls/it-ch/SchedulesListPanelConfig':function(){
@@ -3347,11 +3368,11 @@ define("Sage/QuickForms/Design/Editors/nls/it/ColumnBasicPropertyEditor", (
 define('Sage/QuickForms/Design/Editors/nls/it-ch/ColumnBasicPropertyEditor',{});
 },
 'Sage/MainView/ReportMgr/nls/it/ReportManagerGroupContextService':function(){
-define("Sage/MainView/ReportMgr/nls/it/ReportManagerGroupContextService", (
-{ reportsTabDisplayName: 'Report',
-  schedulesTabDisplayName: 'Pianificazioni',
-  historyTabDisplayName: 'Cronologia' }
-));
+define("Sage/MainView/ReportMgr/nls/it/ReportManagerGroupContextService", {
+    reportsTabDisplayName: 'Rapporto',
+    schedulesTabDisplayName: 'Pianificazioni',
+    historyTabDisplayName: 'Cronologia'
+});
 },
 'Sage/MainView/ReportMgr/nls/it-ch/ReportManagerGroupContextService':function(){
 define('Sage/MainView/ReportMgr/nls/it-ch/ReportManagerGroupContextService',{});
@@ -3360,7 +3381,7 @@ define('Sage/MainView/ReportMgr/nls/it-ch/ReportManagerGroupContextService',{});
 define("Sage/MainView/IntegrationContract/nls/it/MatchingOptionsConfig", (
 { matchingCaption: 'Modifica i Criteri di Corrispondenza',
   matchingHeader: 'Corrisponde ai criteri per',
-  matchingDescription: 'Aggiungi o rimuovi operatori per definire il criterio di corrispondenza per tutti gli utenti che collegano record SalesLogix con un sistema contabile. Questo criterio determina i risultati restituiti quando si ricercano record corrispondenti tra i vari sistemi contabili.',
+  matchingDescription: 'Aggiungi o rimuovi operatori per definire il criterio di corrispondenza per tutti gli utenti che collegano record Saleslogix con un sistema contabile. Questo criterio determina i risultati restituiti quando si ricercano record corrispondenti tra i vari sistemi contabili.',
   propertyText: 'Proprietà',
   operatorText: 'Operatore',
   loadingText: 'Caricamento...',
@@ -3431,14 +3452,12 @@ define("Sage/QuickForms/Design/nls/it/GenericControlDesigner", (
 define('Sage/QuickForms/Design/nls/it-ch/GenericControlDesigner',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/StringParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/StringParameterEditor", (
-{
-    txtTheValueMustBeBetween: 'The value must be between {0} and {1} characters long.',
-    txtTheMinimumLengthForThisField: 'The minimum length for this field is {0}.',
-    txtTheMaximumLengthForThisField: 'The maximum length for this field is {0}.',
-    txtPleaseSpecifyValue: 'Please specify a value.'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/StringParameterEditor", {
+    txtTheValueMustBeBetween: 'Il valore deve essere compreso tra {0} e {1} caratteri a lungo.',
+    txtTheMinimumLengthForThisField: 'La lunghezza minima per questo campo è {0}.',
+    txtTheMaximumLengthForThisField: 'La lunghezza massima per questo campo è {0}.',
+    txtPleaseSpecifyValue: 'Si prega di specificare un valore.'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/StringParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/StringParameterEditor',{});
@@ -3507,7 +3526,9 @@ define("Sage/MainView/ActivityMgr/nls/it/ActivityListPanelConfig", (
   colNameContactName: 'Nome',
   SnoozeAlarm: 'Posticipa Allarme',
   DismissAlarm: 'Ignora allarme',
-  colNameUnConfirmStatus: 'Non confermato' }
+  colNameUnConfirmStatus: 'Non confermato',
+  colNameAssociationCount: 'Numero totale dei partecipanti'
+}
 ));
 },
 'Sage/MainView/ActivityMgr/nls/it-ch/ActivityListPanelConfig':function(){
@@ -3646,26 +3667,25 @@ define("Sage/QuickForms/Design/Editors/nls/it/CheckBoxAdvancedPropertyEditor", (
 define('Sage/QuickForms/Design/Editors/nls/it-ch/CheckBoxAdvancedPropertyEditor',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportConditionsDialog':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportConditionsDialog", (
-{ txtDialogTitle: 'Seleziona record',
-  cmdBack_Caption: '< Indietro',
-  cmdNext_Caption: 'Avanti >',
-  cmdCancel_Caption: 'Annulla',
-  grdCrystalConditions_ConditionType_Caption: 'Tipo',
-  grdCrystalConditions_TableName_Caption: 'Tabella',
-  grdCrystalConditions_FieldName_Caption: 'Campo',
-  grdCrystalConditions_Operator_Caption: 'Operatore',
-  grdCrystalConditions_Value_Caption: 'Valore Condizione',
-  txtShowRecordsThatMatch: 'Mostra record corrispondenti a: ',
-  txtMatch: 'Corrispondenza:',
-  txtOfTheFollowingConditions: 'delle condizioni seguenti:',
-  txtAny: 'Alcune',
-  txtAll: 'Tutte',
-  txtAllRecords: '[Tutti i record]',
-  txtSpecificConditions: '[Condizioni specifiche]',
-  txtCurrentUser: '[Current User]'
-}
-));
+define("Sage/MainView/ReportMgr/Crystal/nls/it/CrystalReportConditionsDialog", {
+    txtDialogTitle: 'Seleziona record',
+    cmdBack_Caption: '< Indietro',
+    cmdNext_Caption: 'Avanti >',
+    cmdCancel_Caption: 'Annulla',
+    grdCrystalConditions_ConditionType_Caption: 'Tipo',
+    grdCrystalConditions_TableName_Caption: 'Tabella',
+    grdCrystalConditions_FieldName_Caption: 'Campo',
+    grdCrystalConditions_Operator_Caption: 'Operatore',
+    grdCrystalConditions_Value_Caption: 'Valore Condizione',
+    txtShowRecordsThatMatch: 'Mostra record corrispondenti a: ',
+    txtMatch: 'Corrispondenza:',
+    txtOfTheFollowingConditions: 'delle condizioni seguenti:',
+    txtAny: 'Alcune',
+    txtAll: 'Tutte',
+    txtAllRecords: '[Tutti i record]',
+    txtSpecificConditions: '[Condizioni specifiche]',
+    txtCurrentUser: '[Utente Corrente]'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportConditionsDialog':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/CrystalReportConditionsDialog',{});
@@ -3707,11 +3727,11 @@ define("Sage/UI/nls/it/JobSchedulingWidget", {
     lblThirdDay: 'terzo',
     lblFourthDay: 'quarto',
     lblCronExpressionText: 'Espressione Cron',
-    txtInvalidScheduleTitle: 'Invalid Schedule',
-    txtInvalidDatesMessage: 'The end time must be after the start time. Please correct this information before continuing.',
-    txtInvalidScheduleTime: 'The start and end times specified will prevent this schedule from running. Please correct this information before continuing.',
-    txtInvalidStartDate: 'A start date is required. Please specify a start date before continuing.',
-    txtInvalidEndDate: 'A end date is required. Please specify a end date before continuing'
+    txtInvalidScheduleTitle: 'Orario Valido',
+    txtInvalidDatesMessage: "L'ora di fine deve essere successiva all'ora di inizio. Si prega di correggere queste informazioni prima di continuare.",
+    txtInvalidScheduleTime: 'I tempi di inizio e di fine specificate impediranno questa pianificazione esecuzione. Si prega di correggere queste informazioni prima di continuare.',
+    txtInvalidStartDate: 'È necessaria una data di inizio. Si prega di specificare una data di inizio prima di continuare.',
+    txtInvalidEndDate: 'È necessaria una data di fine. Si prega di specificare una data di fine prima di continuare.'
 });
 },
 'Sage/UI/nls/it-ch/JobSchedulingWidget':function(){
@@ -3755,17 +3775,15 @@ define("Sage/QuickForms/Design/Editors/nls/it/TextBoxAdvancedPropertyEditor", (
 define('Sage/QuickForms/Design/Editors/nls/it-ch/TextBoxAdvancedPropertyEditor',{});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it/MultiselectStringParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/MultiselectStringParameterEditor", (
-{
-    txtTheValueMustBeBetween: 'The value must be between {0} and {1} characters long.',
-    txtTheMinimumLengthForThisField: 'The minimum length for this field is {0}.',
-    txtTheMaximumLengthForThisField: 'The maximum length for this field is {0}.',
-    txtPleaseSpecifyValue: 'Please specify a value.',
-    lblAvailableValues_Caption: 'Available Values:',
-    lblSelectedValues_Caption: 'Selected Values:',
-    lblEnterValue_Caption: 'Enter a Value:'
-}
-));
+﻿define("Sage/MainView/ReportMgr/Crystal/nls/it/MultiselectStringParameterEditor", {
+    txtTheValueMustBeBetween: 'Il valore deve essere compreso tra {0} e {1} caratteri a lungo.',
+    txtTheMinimumLengthForThisField: 'La lunghezza minima per questo campo è {0}.',
+    txtTheMaximumLengthForThisField: 'La lunghezza massima per questo campo è {0}.',
+    txtPleaseSpecifyValue: 'Si prega di specificare un valore.',
+    lblAvailableValues_Caption: 'Valori disponibili:',
+    lblSelectedValues_Caption: 'Valori selezionati:',
+    lblEnterValue_Caption: 'Immettere un valore:'
+});
 },
 'Sage/MainView/ReportMgr/Crystal/nls/it-ch/MultiselectStringParameterEditor':function(){
 define('Sage/MainView/ReportMgr/Crystal/nls/it-ch/MultiselectStringParameterEditor',{});
@@ -3827,20 +3845,20 @@ define("Sage/UI/Controls/nls/it/DateTimePicker", (
 define('Sage/UI/Controls/nls/it-ch/DateTimePicker',{});
 },
 'Sage/MainView/ReportMgr/nls/it/ReportManagerActions':function(){
-define(
+﻿define(
 "Sage/MainView/ReportMgr/nls/it/ReportManagerActions", {
     txtSelectRecord: 'Selezionare un record nell elenco.',
-    txtInvalidSelectionCount: 'You must have at least one record selected before continuing.',
-    confirm_Deletion: 'Are you sure you want to delete the selected ${0}?',
-    confirm_Report: 'report',
-    confirm_Schedule: 'schedule',
-    confirm_ReportHistory: 'report history record',
-    txtYes: 'Yes',
+    txtInvalidSelectionCount: 'È necessario disporre di almeno un record selezionato prima di continuare.',
+    confirm_Deletion: 'Sei sicuro di voler cancellare la scelta ${0}?',
+    confirm_Report: 'rapporto',
+    confirm_Schedule: 'piano',
+    confirm_ReportHistory: 'record storico rapporto',
+    txtYes: 'Sì',
     txtNo: 'No',
-    deleteJobError: 'Sorry an error occured during the deletion process: ${0}',
-    txtDeleteHistory: 'Deleting history records',
-    txtDeleteTitle: 'Delete History',
-    txtErrorDeleteReport: 'An error occured deleting report: ${0}'
+    deleteJobError: 'Ci dispiace verificato un errore durante il processo di eliminazione: ${0}',
+    txtDeleteHistory: 'Eliminazione di record storia',
+    txtDeleteTitle: 'Elimina cronologia',
+    txtErrorDeleteReport: "Errore durante l'eliminazione di relazione: ${0}"
 });
 
 },
