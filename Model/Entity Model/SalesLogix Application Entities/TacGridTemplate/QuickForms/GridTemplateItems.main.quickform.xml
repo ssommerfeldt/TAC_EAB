@@ -25,7 +25,7 @@
         <StyleScheme />
         <DataSource>dsTacGridTemplateFieldss</DataSource>
         <EnablePaging>false</EnablePaging>
-        <EnableSorting>false</EnableSorting>
+        <EnableSorting>true</EnableSorting>
         <Columns>
           <QFDataGridCol>
             <StyleScheme />
@@ -34,7 +34,7 @@
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
-            <IsSortable>false</IsSortable>
+            <IsSortable>true</IsSortable>
             <SortField>Caption</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
           </QFDataGridCol>
@@ -45,7 +45,7 @@
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
-            <IsSortable>false</IsSortable>
+            <IsSortable>true</IsSortable>
             <SortField>FieldName</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
           </QFDataGridCol>

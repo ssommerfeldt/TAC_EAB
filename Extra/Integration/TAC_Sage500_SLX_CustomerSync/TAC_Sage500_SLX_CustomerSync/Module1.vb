@@ -63,6 +63,9 @@ Module Module1
         Console.WriteLine("------ Changed Account  Start ------")
         Call Process_New_ACCOUNT_CHANGED()
 
+        Console.WriteLine("------ Changed Account Finnancial Start ------")
+        Call Process_Changed_ACCOUNTFINNANCIAL()
+
         Call LogErrors(PROJECTNAME, " TAC_Sage500_SLX_CustomerSync", "Process End", EventLogEntryType.Information)
     End Sub
 
@@ -215,7 +218,7 @@ Module Module1
                     .Fields("MASCUSTKEY").Value = MyDataRow("MASCUSTKEY")
                     .Fields("CURRENCYCODE").Value = MyDataRow("CURRENCYCODE")
                     '.Fields("ACCOUNTID").Value = MyDataRow("ACCOUNTID")
-                    .Fields("MASNationalAcctID").Value = MyDataRow("MASNationalAcctID")
+                    .Fields("MASNationalAcctID").Value = MyDataRow("NationalAcctID")
 
 
 
@@ -480,6 +483,45 @@ Module Module1
         objConn = Nothing
     End Sub
 
+    Private Sub Process_Changed_ACCOUNTFINNANCIAL()
+
+        Dim i As Integer = 0
+        '===================================================
+        Dim ACCOUNTFINANCIALid As String = ""
+        'Dim Addressid As String = ""
+        'Dim BillingId As String = ""
+        '==================================================       
+        Dim objConn As New OleDbConnection(strSage500Constr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "Select * from vdvMAS_to_SLX_ACCOUNTaccountfinancial_TAC_Changed"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                ACCOUNTFINANCIALid = row("ACCOUNTFINANCIALID")
+                'Addressid = GetNewSLXID("ADDRESS", strSLXConstr)
+
+                i = i + 1
+                AddEdit_ACCOUNTFINNANCIAL(row, ACCOUNTFINANCIALid)
+
+                Console.WriteLine("Changed ACCOUNTFINNANCIAL " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "ACCOUNTFINNANCIAL ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
+
     Public Sub AddEdit_ACCOUNTFINNANCIAL(ByVal MyDataRow As DataRow, ByVal ACCOUNTFINANCIALid As String)
         '============================================================
         ' get Default Data row from StockCard and Product info
@@ -532,6 +574,21 @@ Module Module1
                     '.Fields("CREATEUSER").Value = "ADMIN"
                     '.Fields("MODIFYDATE").Value = Now
                     '.Fields("MODIFYUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    '.Fields("ACCOUNTFINANCIALID").Value = ACCOUNTFINANCIALid
+                    .Fields("ACCOUNTID").Value = MyDataRow("ACCOUNTID")
+
+                    .Fields("SALESPERSON").Value = MyDataRow("SALESPERSON")
+                    .Fields("CUSTOMER_TYPE").Value = MyDataRow("CUSTOMER_TYPE")
+                    .Fields("CREDIT_LIMIT").Value = MyDataRow("CREDIT_LIMIT")
+                    .Fields("AVG_DAYS_TO_PAY").Value = MyDataRow("AVG_DAYS_TO_PAY")
+                    .Fields("AVG_DAYS_OVERDUE").Value = MyDataRow("AVG_DAYS_OVERDUE")
+                    .Fields("BALANCE_FORWARD").Value = MyDataRow("BALANCE_FORWARD")
+                    .Fields("CUSTOMERID").Value = MyDataRow("CUSTOMERID")
+                    .Fields("COMPANYCODE").Value = MyDataRow("COMPANYCODE")
+                    .Fields("CURRENTBALANCE").Value = MyDataRow("CURRENTBALANCE")
 
 
 
