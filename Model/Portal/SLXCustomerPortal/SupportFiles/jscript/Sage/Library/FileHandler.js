@@ -17,18 +17,34 @@ define([
         'dojo/parser',
         'dojo/string',
         'dojo/dom-construct',
+        'dojo/dom-attr',
         'dojo/_base/lang',
+        'dojo/_base/window',
         'dojo/i18n!./nls/FileHandler'
     ],
 // ReSharper disable InconsistentNaming    
     function (SDataServiceRegistry, RoleSecurityService, SystemOptions, File, Attachment, DragDropWatcher, DefaultDropHandler,
         FallbackFilePicker, LibraryDocument, DocumentProperties, Dialogs, Utility, ProgressBar, i18n, parser, dString,
-        domConstruct, dLang, nls) {
+        domConstruct, domAttr, dLang, dWindow, nls) {
 
         Sage.namespace('Library.FileHandler');
         dojo.mixin(Sage.Library.FileHandler, {
             _docPropsDlg: false,
             _fileInputBtn: false,
+            _createFileInputBtn: function() {
+                var self = this;
+                this._fileInputBtn = dWindow.doc.createElement('INPUT');
+                domAttr.set(this._fileInputBtn, {
+                    'type': 'file',
+                    'multiple': 'true',
+                    'accept': '*/*',
+                    'class': 'display-none',
+                    onchange: function (e) {
+                        self.handleHTML5Files(e);
+                    },
+                });
+                domConstruct.place(this._fileInputBtn, 'filePicker');
+            },
             _getNewRequest: function () {
                 var oRequest = new Sage.SData.Client.SDataSingleResourceRequest(Sage.Library.FileHandler._system);
                 oRequest.setResourceKind('libraryDocuments');
@@ -72,18 +88,9 @@ define([
                 if (Sage.Library.FileHandler.can.add || Sage.Library.FileHandler.can.manage) {
                     dojo.connect(DragDropWatcher, 'onFilesDropped', this, 'onFilesDropped');
                 }
-                var self = this;
-                this._fileInputBtn = dojo.doc.createElement('INPUT');
-                dojo.attr(this._fileInputBtn, {
-                    'type': 'file',
-                    'multiple': 'true',
-                    'accept': '*/*',
-                    'class': 'display-none',
-                    onchange: function (e) {
-                        self.handleHTML5Files(e);
-                    }
-                });
-                dojo.place(this._fileInputBtn, 'filePicker');
+
+                this._createFileInputBtn();
+
                 Sage.Utility.File.DefaultDropHandler.fileType = Sage.Utility.File.fileType.ftLibraryDocs;
             },
             addFiles: function () {
@@ -198,6 +205,12 @@ define([
                 if (this._fileInputBtn.files.length > 0) {
                     LibraryDocument.createDocuments(this._fileInputBtn.files);
                 }
+
+                // If the same file(s) are selected a second time without reloading the page, the onchange event that
+                // triggers this handler will not fire, as the value of the backing file input has not technically
+                // changed. To get around this, we need to destroy and recreate the input after it's been used to reset it.
+                domConstruct.destroy(Sage.Library.FileHandler._fileInputBtn);
+                this._createFileInputBtn();
             },
             handleAddButtonClicked: function (event) {
                 Sage.Library.FileHandler.addFiles();

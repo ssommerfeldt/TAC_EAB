@@ -10,3 +10,5 @@ Truncate Table sysdba.AccountFinancial
 Delete from sysdba.ADDRESS where ENTITYID in (Select CONTACTID from sysdba.CONTACT )
 Truncate Table sysdba.CONTACT
 
+
+

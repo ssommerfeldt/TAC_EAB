@@ -418,6 +418,11 @@ function (_TemplatedMixin,
             //  Listen to document click event and close popup if clicked out side
             var e = evt || window.event;
             var element = e.target || e.srcElement;
+            // Firefox can send text objects, which are too deep in DOM. 
+            // If that's the event target, we need the parentNode instead.
+            if (e.target.nodeType == 3) {
+                element = e.target.parentNode;
+            }
 
             //If clicked node is in the list child  nodes, return true
             //Else if there is a parent node, check the parent node(recursive)

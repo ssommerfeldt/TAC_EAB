@@ -2095,6 +2095,17 @@ define("Sage/UI/nls/en/NotesHistoryList", (
 'Sage/UI/nls/en-za/NotesHistoryList':function(){
 define('Sage/UI/nls/en-za/NotesHistoryList',{});
 },
+'Sage/Utility/nls/en/File':function(){
+﻿define("Sage/Utility/nls/en/File", {
+    unableToUploadText: 'Saleslogix Desktop Integration Module must be installed to use this feature.',
+    unknownSizeText: 'unknown',
+    largeFileWarningText: 'Warning: This request exceeds the size limit set by your administrator and failed to upload.',
+    largeFileWarningTitle: 'Warning'
+});
+},
+'Sage/Utility/nls/en-za/File':function(){
+define('Sage/Utility/nls/en-za/File',{});
+},
 'Sage/MainView/ReportMgr/nls/en/HistoryListPanelConfig':function(){
 define("Sage/MainView/ReportMgr/nls/en/HistoryListPanelConfig", (
 { colNameDate: 'Date',
@@ -2375,9 +2386,10 @@ define("Sage/MainView/ReportMgr/nls/en/ReportsListPanelConfig", (
 define('Sage/MainView/ReportMgr/nls/en-za/ReportsListPanelConfig',{});
 },
 'Sage/UI/Alarms/nls/en/JobNotificationButton':function(){
-define("Sage/UI/Alarms/nls/en/JobNotificationButton", (
-{ notificationToolTip: 'You have ${0} job notifications.' }
-));
+define("Sage/UI/Alarms/nls/en/JobNotificationButton", {
+    notificationToolTip: 'You have ${0} job notifications.',
+    notificationErrorToolTip: 'An error occured retrieving job notifications. Please contact your administrator.'
+});
 },
 'Sage/UI/Alarms/nls/en-za/JobNotificationButton':function(){
 define('Sage/UI/Alarms/nls/en-za/JobNotificationButton',{});

@@ -151,8 +151,8 @@ function (
                         groupListTasklet = dijit.byId('GroupList');
                     
                     var grpCtxService = Sage.Services.getService('ClientGroupContext');
-                    var context = grpCtxService.getContext();
-                    if (context.CurrentFamily === this._currentLayoutFamily) {
+                    var context = grpCtxService.getContext();                  
+                    if (context.CurrentFamily && this._currentLayoutFamily && context.CurrentFamily.toUpperCase() === this._currentLayoutFamily.toUpperCase()) {
                         aspect.after(grpCtxService, 'onCurrentGroupChanged', lang.hitch(this, function() {
                             topic.publish("/group/lookup/success", { 'conditions': this.getConditionsString() });
                         }));

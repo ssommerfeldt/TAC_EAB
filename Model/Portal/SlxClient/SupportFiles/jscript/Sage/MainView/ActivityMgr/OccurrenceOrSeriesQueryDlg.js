@@ -112,36 +112,24 @@ function (_Widget,
                 this._dialog.showLoading();
             }
             var select = ['Description', 'AccountName', 'ContactName', 'OpportunityName', 'StartDate', 'Type', 'Timeless', 'Recurring', 'RecurrenceState'];
-            if (this.activityId.length > 12) {
-                if (!this.store) {
-                    this.store = new SingleEntrySDataStore({
-                        include: [],
-                        select: select, // ['Description', 'AccountName', 'ContactName', 'OpportunityName', 'StartDate', 'Type', 'Timeless', 'Recurring', 'RecurrenceState'],
-                        resourceKind: 'activities',
-                        service: sDataServiceRegistry.getSDataService('system')
-                    });
-                }
-                if (this.activityId !== '') {
-                    this.store.fetch({
-                        predicate: '"' + this.activityId + '"',
-                        onComplete: this._receiveActivity,
-                        onError: this._failLoad,
-                        scope: this
-                    });
-                }
-            } else {
-                var req = new Sage.SData.Client.SDataResourceCollectionRequest(sDataServiceRegistry.getSDataService('system'))
-                .setResourceKind('activities')
-                .setQueryArg('select', select.join(','))
-                .setQueryArg('where', 'id eq \'' + this.activityId + '\'')
-                .setQueryArg('orderby', 'StartDate asc')
-                .setQueryArg('count', '1');
-                req.read({
-                    success: this._receiveActivities,
-                    failure: this._failLoad,
+           
+            if (!this.store) {
+                this.store = new SingleEntrySDataStore({
+                    include: [],
+                    select: select, // ['Description', 'AccountName', 'ContactName', 'OpportunityName', 'StartDate', 'Type', 'Timeless', 'Recurring', 'RecurrenceState'],
+                    resourceKind: 'activities',
+                    service: sDataServiceRegistry.getSDataService('system')
+                });
+            }
+            if (this.activityId !== '') {
+                this.store.fetch({
+                    predicate: '"' + this.activityId + '"',
+                    onComplete: this._receiveActivity,
+                    onError: this._failLoad,
                     scope: this
                 });
             }
+        
         },
         _receiveActivity: function (activity) {
             //debugger;
@@ -188,6 +176,10 @@ function (_Widget,
         _continueClick: function (e) {
             this.hide();
             if (this._thisOccurRadio.get('checked')) {
+                if (this.activityId.length <= 12) {
+                    var timeValue = (utility.Convert.toDateFromString(this.activity.StartDate).getTime() / 1000) + 62135596800;
+                    this.activityId = this.activityId + ";" + timeValue;
+                }
                 this.onSelectOccurrence(this.activityId, utility.Convert.toDateFromString(this.activity.StartDate), this.activityMemberId);
             } else {
                 this.onSelectSeries(this.activityId, this.activityMemberId);

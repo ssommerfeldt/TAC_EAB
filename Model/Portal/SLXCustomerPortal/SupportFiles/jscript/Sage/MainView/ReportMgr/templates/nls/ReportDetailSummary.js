@@ -1,7 +1,10 @@
-﻿define(
-    {
-        root:
-        ({
+﻿define([
+        'Sage/LanguageList',
+        'dojo/_base/lang'
+],
+function (languageList, lang) {
+    var nls = {
+        root: {
             txtReportName_Caption: 'Name:',
             txtReportType_Caption: 'Type:',
             txtTable_Caption: 'Table:',
@@ -15,5 +18,7 @@
             txtUseUserFilter_Caption: 'Use User Filter:',
             txtUseDateFilter_Caption: 'Use Date Filter:',
             txtFileName_Caption: 'File Name:'
-        })
-    });
+        }
+    };
+    return lang.mixin(languageList, nls);
+});

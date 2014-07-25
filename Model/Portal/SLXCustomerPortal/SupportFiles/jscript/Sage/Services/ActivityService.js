@@ -189,23 +189,30 @@ function (
         completeActivityOccurrence: function (id, startDate) {
             this._ensureEditor();
             if (id.indexOf(';') < 0) {
-                var req = new Sage.SData.Client.SDataResourceCollectionRequest(sDataServiceRegistry.getSDataService('system'))
-                .setResourceKind('activities')
-                .setQueryArg('select', 'StartDate')
-                .setQueryArg('where', 'id eq \'' + id + '\'')  //if there is a start date, we should add that here...
-                .setQueryArg('orderby', 'StartDate asc')
-                .setQueryArg('count', '1');
-                req.read({
-                    success: function (data) {
-                        var acts = data['$resources'];
-                        if (acts.length > 0) {
-                            this._activityEditor.set('mode', 'Complete');
-                            this._activityEditor.set('activityId', acts[0]['$key']);
-                            this._activityEditor.show();
-                        }
-                    },
-                    scope: this
-                });
+                var select = ['StartDate'];
+                var store = new SingleEntrySDataStore({
+                        include: [],
+                        select: select, 
+                        resourceKind: 'activities',
+                        service: sDataServiceRegistry.getSDataService('system')
+                    });
+                
+                if (id !== '') {
+                    store.fetch({
+                        predicate: '"' + id + '"',
+                        onComplete: function (activity) {
+                            if (activity) {
+
+                                var timeValue = (sageUtility.Convert.toDateFromString(activity.StartDate) / 1000) + 62135596800;
+                                var activityId = activity['$key'] + ";" + timeValue;
+                                this._activityEditor.set('mode', 'Complete');
+                                this._activityEditor.set('activityId', activityId);
+                                this._activityEditor.show();
+                            }
+                        },
+                        scope: this
+                    });
+                }
             } else {
                 this._activityEditor.set('mode', 'Complete');
                 this._activityEditor.set('activityId', id);

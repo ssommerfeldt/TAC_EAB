@@ -1,5 +1,9 @@
-﻿define(
-    {
+﻿define([
+        'Sage/LanguageList',
+        'dojo/_base/lang'
+],
+function (languageList, lang) {
+    var nls = {
         root: {
             txtJobName_Caption: 'Type:',
             txtUser_Caption: 'User:',
@@ -14,4 +18,6 @@
             txtStatus_Caption: 'Status:',
             txtResult_Caption: 'Result:'
         }
-    });
+    };
+    return lang.mixin(languageList, nls);
+});

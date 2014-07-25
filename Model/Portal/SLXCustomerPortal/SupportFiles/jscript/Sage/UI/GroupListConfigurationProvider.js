@@ -3,6 +3,7 @@ define([
         'Sage/_ConfigurationProvider',
         'Sage/Data/GroupLayoutSingleton',
         'Sage/Services/_ServiceMixin',
+        'Sage/Utility/_LocalStorageMixin',
         'Sage/UI/Columns/SlxLink',
         'Sage/UI/Columns/Boolean',
         'Sage/UI/Columns/DateTime',
@@ -24,6 +25,7 @@ function (
     _ConfigurationProvider,
     GroupLayoutSingleton,
     _ServiceMixin,
+    _LocalStorageMixin,
     slxLinkColumn,
     booleanColumn,
     dateTimeColumn,
@@ -40,13 +42,14 @@ function (
     lang,
     declare,
     i18n) {
-    var groupListConfigProvider = declare('Sage.UI.GroupListConfigurationProvider', [_ConfigurationProvider, _ServiceMixin], {
+    var groupListConfigProvider = declare('Sage.UI.GroupListConfigurationProvider', [_ConfigurationProvider, _ServiceMixin, _LocalStorageMixin], {
         serviceMap: {
             'groupContextService': 'ClientGroupContext'
         },
         service: null,
         _hasAdHocList: false,
         ROWS_PER_PAGE: 100,
+        _currentConfiguration: false,
 
         constructor: function (options) {
             this._adHocOnlyMenuItems = [];
@@ -90,6 +93,10 @@ function (
                 select.push(entry['keyField']);
             }
 
+            var iPickListAliasIndex = 0;
+            var iOwnerAliasIndex = 0;
+            var iUserAliasIndex = 0;
+
             for (i = 0; i < layout.length; i++) {
                 var item = layout[i];
                 select.push(item['alias']);
@@ -107,7 +114,7 @@ function (
                         if ((context) && (entity === context.CurrentTable)) {
                             entity = context.CurrentEntity;
                             keyField = context.CurrentTableKeyField;
-                        }
+                        }                     
                         select.push(keyField);
 
                         structure.push({
@@ -191,7 +198,7 @@ function (
                                     isWholeNumberPercent: false
                                 });
                                 break;
-                                
+
                             case 'Fixed':
                                 structure.push({
                                     field: item['alias'],
@@ -213,7 +220,8 @@ function (
                                 break;
 
                             case 'Owner':
-                                var ownerName = item['alias'] + 'NAME';
+                                var ownerName = item['alias'] + 'NAME' + iOwnerAliasIndex;
+                                iOwnerAliasIndex++;
                                 select.push(ownerName);
                                 structure.push({
                                     field: ownerName,
@@ -246,7 +254,8 @@ function (
                                 break;
 
                             case 'PickList Item':
-                                var pickName = item['alias'] + 'TEXT';
+                                var pickName = item['alias'] + 'TEXT' + iPickListAliasIndex;
+                                iPickListAliasIndex++;
                                 select.push(pickName);
                                 structure.push({
                                     field: pickName,
@@ -258,7 +267,8 @@ function (
                                 break;
 
                             case 'User':
-                                var userName = item['alias'] + 'NAME';
+                                var userName = item['alias'] + 'NAME' + iUserAliasIndex;
+                                iUserAliasIndex++;
                                 select.push(userName);
                                 structure.push({
                                     field: userName,
@@ -301,7 +311,7 @@ function (
                     }
                 } // end if(visable)
             } // end for loop
-
+            
             var store = new SDataStore({
                 service: this.service,
                 resourceKind: 'groups',
@@ -459,6 +469,9 @@ function (
             if (!this.summaryOptions) {
                 return false;
             }
+            if (!entry) {
+                entry = this._currentConfiguration;
+            }
             var store = new SDataStore({
                 service: this.service,
                 resourceKind: 'groups',
@@ -520,9 +533,13 @@ function (
             return false;
         },
         _createConfiguration: function (entry) {
+            this._currentConfiguration = entry;
+
+            var state = this.getFromLocalStorage('LISTPANEL_VIEWSTATE', this._getViewNS());
+
             return {
                 list: this._createConfigurationForList(entry),
-                summary: this._createConfigurationForSummary(entry),
+                summary: (state == 'summary') ? this._createConfigurationForSummary(entry) : false, //this._createConfigurationForSummary(entry),
                 detail: this._createConfigurationForDetail(entry)
             };
         },
@@ -547,6 +564,26 @@ function (
                 };
             }
 
+            return results;
+        },
+        _getViewNS: function () {
+            var ns = Sage.Groups.GroupManager.LOCALSTORE_NAMESPACE + '-' + this._getMainViewName();
+            return ns;
+        },
+        _getMainViewName: function () {
+            if (this._mainViewName) {
+                return this._mainViewName;
+            }
+            //if not defined then use the group context.
+            var service = Sage.Services.getService("ClientGroupContext"),
+                results = -1,
+                context = null;
+            if (service) {
+                context = service.getContext();
+                if (context) {
+                    results = context.CurrentEntity;
+                }
+            }
             return results;
         }
     });

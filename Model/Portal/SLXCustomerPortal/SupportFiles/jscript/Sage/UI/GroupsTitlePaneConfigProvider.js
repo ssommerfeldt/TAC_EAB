@@ -69,7 +69,8 @@ function (
                 service: service,
                 resourceKind: 'groups',
                 include: [],
-                sort: [{ attribute: 'displayName', descending: false}]
+                sort: [{ attribute: 'displayName', descending: false }],
+                select : ['$key','$descriptor','name','isHidden','family','displayName']
             });
 
             gSvc = Sage.Services.getService('ClientGroupContext');
@@ -126,6 +127,7 @@ function (
             return {
                 store: this.store,
                 selectedTabId: context.CurrentGroupID,
+                selectedTabName: context.CurrentName,
                 tabKeyProperty: '$key',
                 tabNameProperty: '$descriptor', // group display name
                 tabGroupNameProperty: 'name', // group name

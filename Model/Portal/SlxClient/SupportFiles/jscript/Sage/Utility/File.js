@@ -2,20 +2,19 @@
 define([
     'Sage/UI/Dialogs',
     'dojo/number',
-    'dojo/_base/lang'
+    'dojo/_base/lang',
+    'dojo/i18n!./nls/File'
 ],
-function (dialogs, dNumber,lang) {
+function (dialogs, dNumber, lang, nlsStrings) {
     Sage.namespace('Utility.File');
     Sage.Utility.File = {
         fileType: {
             ftAttachment: 0,
             ftLibraryDocs: 1
         },
-        unableToUploadText: 'Saleslogix Desktop Integration Module must be installed to use this feature.',
-        unknownSizeText: 'unknown',
+        
         supportsHTML5File: (window.File && window.FileReader && window.FileList && window.Blob),
-        largeFileWarningText: 'Warning: This request exceed the size limit set by your administrator and fail to upload.',
-        largeFileWarningTitle: 'Warning',
+
         fileUploadOptions: { maxFileSize: 4000000 },
         init: function (options) {
             if (options) {
@@ -25,8 +24,8 @@ function (dialogs, dNumber,lang) {
         isFileSizeAllowed: function (files) {
             var l = 0;
             var maxfileSize = Sage.Utility.File.fileUploadOptions.maxFileSize;
-            var title = Sage.Utility.File.largeFileWarningTitle;
-            var msg = Sage.Utility.File.largeFileWarningText;
+            var title = nlsStrings.largeFileWarningTitle;
+            var msg = nlsStrings.largeFileWarningText;
             for (var i = 0; i < files.length; i++) {
                 if (files[i].size === 0) {
                     // do nothing.
@@ -300,7 +299,7 @@ function (dialogs, dNumber,lang) {
             }
         },
         _showUnableToUploadError: function () {
-            dialogs.showError(this.unableToUploadText);
+            dialogs.showError(nlsStrings.unableToUploadText);
         },
         formatFileSize: function (size) {
             size = parseInt(size, 10);
@@ -308,7 +307,7 @@ function (dialogs, dNumber,lang) {
                 return '0 KB';
             }
             if (!size || size < 0) {
-                return this.unknownSizeText;
+                return nlsStrings.unknownSizeText;
             }
             if (size < 1024) {
                 return '1 KB';

@@ -7,14 +7,10 @@ define([
     'Sage/Data/WritableSDataStore',
     'Sage/MainView/Contact/ContactUserAssociationEditor',
     'dojo/_base/declare',
-    'Sage/UI/Dialogs',
-    'dojo/string',
-    'Sage/UI/MenuItem',
-    'dijit/Menu',
-    'dijit/popup'
+    'Sage/UI/Dialogs'
 ],
 function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, SingleEntrySDataStore, WritableSDataStore, ContactUserAssociationEditor, declare,
-    Dialogs, dString, MenuItem, dijitMenu, dijitPopup) {
+    dialogs) {
     var contactTasksTasklet = declare('Sage.TaskPane.ContactTasksTasklet', [_BaseTaskPaneTasklet, TaskPaneContent], {
         taskItems: [],
         oAuthProviders: null,
@@ -23,30 +19,29 @@ function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, SingleEntrySDataSt
             dojo.mixin(this, i18nStrings);
             this.taskItems = [
                 {
-                    taskId: 'Associate Contact', type: "Link", displayName: this.associateContactTitle, clientAction: 'contactTasksActions.associateContact();',
+                    taskId: 'Associate Contact', type: 'Link', displayName: this.associateContactTitle, clientAction: 'contactTasksActions.associateContact();',
                     securedAction: 'Entities/Contact/AssociateContact'
                 },
                 {
-                    taskId: 'Disassociate Contact', type: "Link", displayName: this.disAssociateContactTitle, clientAction: 'contactTasksActions.disAssociateContact();',
+                    taskId: 'Disassociate Contact', type: 'Link', displayName: this.disAssociateContactTitle, clientAction: 'contactTasksActions.disAssociateContact();',
                     securedAction: 'Entities/Contact/DisAssociateContact'
                 }
             ];
-        },       
-        associateContact: function (action) {
+        },
+        associateContact: function () {
             var self = this;
             this._selectionInfo = this.getSelectionInfo();
             if (this._selectionInfo.selectionCount === 0) {
-                Sage.UI.Dialogs.showError(this.singleSelectionErrorMessage);
-            }else if(this._selectionInfo.selectionCount > 1) {
-                Sage.UI.Dialogs.showError(this.multipleSelectionErrorMessage);
+                dialogs.showError(this.singleSelectionErrorMessage);
+            } else if (this._selectionInfo.selectionCount > 1) {
+                dialogs.showError(this.multipleSelectionErrorMessage);
             } else {
-                var selObj = { "selectionInfo": this._selectionInfo, "action": action };
-
+                var selObj = { "selectionInfo": this._selectionInfo, "action": 'associate' };
                 this._setupStore();
                 this._contactUserStore.fetch({
                     predicate: "ContactId eq '" + this._selectionInfo.selectedIds[0] + "'",
                     onComplete: function (contactData) {
-                        Sage.UI.Dialogs.showError(self.associationExistsMessage);
+                        dialogs.showError(self.associationExistsMessage);
                     },
                     onError: function () {
                         self.prepareSelectedRecords(this.associateContactActionItem(selObj));
@@ -54,23 +49,22 @@ function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, SingleEntrySDataSt
                     scope: this
                 });
             }
-        },     
+        },
         disAssociateContact: function () {
             this._selectionInfo = this.getSelectionInfo();
             if (this._selectionInfo.selectionCount === 0) {
-                Sage.UI.Dialogs.showError(this.noSelectionErrorMessage);
+                dialogs.showError(this.noSelectionErrorMessage);
             } else {
                 this.prepareSelectedRecords(this.confirmDisassociate(this));
             }
         },
         confirmDisassociate: function (self) {
             return function () {
-
                 var confirmMessage = self.confirmDisAssociate;
                 if (self._selectionInfo.selectionCount > 1) {
                     confirmMessage = self.confirmDisAssociateMultiple;
                 }
-                Dialogs.raiseQueryDialog(
+                dialogs.raiseQueryDialog(
                     self.disAssociateDialogTitle,
                     dojo.string.substitute(confirmMessage, [self._selectionInfo.selectionCount]),
                     function (result) {

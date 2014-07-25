@@ -638,6 +638,20 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
             }
             return dateLocale.format(eDate, { selector: 'date', datePattern: "MM/d/yy H:mm" });
         },
+        formatEventDateForCalendar: function (startDate, dateFormat) {
+            if (!startDate) {
+                return '';
+            }
+            if (Sage.Utility.Convert.isDateString(startDate)) {
+                startDate = Sage.Utility.Convert.toDateFromString(startDate);
+            }
+            var sDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), startDate.getHours(), startDate.getMinutes());
+          
+            if (dateFormat)
+                return dateLocale.format(sDate, { selector: 'date', datePattern: dateFormat });
+            else
+                return dateLocale.format(sDate, { selector: 'date', datePattern: "MM/d/yy H:mm" });
+        },
         formatEventDate: function (startDate) {
             if (!startDate) {
                 return '';

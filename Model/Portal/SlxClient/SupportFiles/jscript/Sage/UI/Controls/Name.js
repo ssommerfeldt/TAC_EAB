@@ -31,8 +31,6 @@ function (
     personNameTemplate
  ) {
 // ReSharper restore InconsistentNaming
-    //dojo.requireLocalization('Sage.UI.Controls', 'Name');
-
     /**
     * @class Class for name control TextBox with edit dialog.
     */
@@ -73,7 +71,6 @@ function (
         constructor: function (options) {
             options.id = options.clientId;
             this.resources = i18n.getLocalization('Sage.UI.Controls', 'Name');
-
             if (options.templateOverridePath && options.templateOverridePath.length > 0) {
                 try {
                     //Dynamic caching need to be obscured from the builder by using the dojo['cache'] calling method
@@ -84,12 +81,11 @@ function (
                     console.log('Could not load template:' + e.description);
                 }
             }
-            // this.inherited(arguments);
         },
         postCreate: function () {
-                this.getDotNetData();
-                if (!this['Name Prefix'].data || !this['Name Suffix'].data || !this['LastName Prefix'].data) {
-                    this.loadPickLists();
+            this.getDotNetData();
+            if (!this['Name Prefix'].data || !this['Name Suffix'].data || !this['LastName Prefix'].data) {
+                this.loadPickLists();
             }
             this.inherited(arguments);
         },
@@ -100,17 +96,13 @@ function (
 
             var pickListConfig = {
                 pickListName: 'Name Prefix', // Required
-                // storeOptions: {}, // Optional
-                // dataStore: {}, // Optional
                 canEditText: false,
                 itemMustExist: true,
                 maxLength: -1,
                 storeMode: 'text', // text, id, code
                 sort: true,
                 displayMode: 'AsControl',
-                // clientId: 'ASP.NET Control ClientID Here',
                 required: false,
-                //placeInNodeId: '',
                 autoPostBack: false
             };
 
@@ -144,7 +136,6 @@ function (
                 this.editDialog = new dialog({
                     title: this.resources.dialogTitle,
                     id: [this.id, '-Dialog'].join('')
-                    //                style: ['height:', dHeight, 'px;width:', dWidth, 'px;'].join('')
                 });
 
                 this.editDialog.set("content", this.dialogContent.apply({ id: this.id,
@@ -177,6 +168,12 @@ function (
         parseName: function (value) {
             var parseText = value.split(' ');
             var i, item;
+            var lastNamePrefix = '';
+            this.prefix = '';
+            this.first = '';
+            this.middle = '';
+            this.last = '';
+            this.suffix = '';
 
             //See if the first value is a prefix and shift it.        
             for (i = 0; i < this['Name Prefix'].data.items.$resources.length; i++) {
@@ -200,35 +197,32 @@ function (
                 }
             }
 
-            //If two values left check if first is 
-            if (parseText.length > 0) {
-                this.last = parseText[parseText.length - 1];
-                parseText.pop();
-            }
-
             //If the last item matches a LastName Prefix, append it to the last name
             if (parseText.length > 0) {
                 for (i = 0; i < this['LastName Prefix'].data.items.$resources.length; i++) {
                     item = this['LastName Prefix'].data.items.$resources[i];
                     if (item.text.toUpperCase() === parseText[parseText.length - 1].toUpperCase()) {
-                        this.last = [parseText[parseText.length - 1], this.last].join(' ');
+                        lastNamePrefix = parseText[parseText.length - 1] + ' ';
                         // Remove the suffix after it has been evaluated.
                         parseText.pop();
                         break;
                     }
                 }
             }
-
-            //If there are items remaining
-            if (parseText.length === 2) {
-                this.first = parseText[0];
-                this.middle = parseText[1];
+            //We may have up to three values left First, Middle, and Last
+            switch (parseText.length) {
+                case 3:
+                    this.first = parseText[0];
+                    this.middle = parseText[1];
+                    this.last = lastNamePrefix + parseText[2];
+                    break;
+                case 2:
+                    this.first = parseText[0];
+                    this.last = lastNamePrefix + parseText[1];
+                    break;
+                default:
+                    this.last = lastNamePrefix + parseText[0];
             }
-
-            if (parseText.length === 1) {
-                this.first = parseText[0];
-            }
-
         },
         getEditFields: function () {
             this.updateNameObj();

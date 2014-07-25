@@ -1782,6 +1782,14 @@ define("Sage/UI/nls/de/NotesHistoryList", (
   printedOnText: 'Gedruckt am' }
 ));
 },
+'Sage/Utility/nls/de/File':function(){
+﻿define("Sage/Utility/nls/de/File", {
+    unableToUploadText: 'SalesLogix Desktop Integration Module muss installiert sein, um dieses Feature zu verwenden.',
+    unknownSizeText: 'Unbekannt',
+    largeFileWarningText: 'Warnung: Diese Anforderung überschreitet die maximale Größe von Ihrem Administrator festgelegten und upload fehlgeschlagen.',
+    largeFileWarningTitle: 'Warnung'
+});
+},
 'Sage/MainView/ReportMgr/nls/de/HistoryListPanelConfig':function(){
 define("Sage/MainView/ReportMgr/nls/de/HistoryListPanelConfig", {
     colNameDate: 'Datum',
@@ -2921,7 +2929,8 @@ define("Sage/QuickForms/Design/nls/de/GenericControlDesigner", (
     txtTheValueMustBeBetween: 'Der Wert muss zwischen {0} und {1} Zeichen lang sein.',
     txtTheMinimumLengthForThisField: 'Die Mindestlänge für dieses Feld ist {0}.',
     txtTheMaximumLengthForThisField: 'Die maximale Länge für dieses Feld ist {0}.',
-    txtPleaseSpecifyValue: 'Bitte geben Sie einen Wert ein.'
+    txtPleaseSpecifyValue: 'Bitte geben Sie einen Wert ein.',
+    lblEnterValue_Caption: 'Geben Sie einen Wert:'
 });
 },
 'Sage/QuickForms/Design/nls/de/PropertyEditorContainer':function(){

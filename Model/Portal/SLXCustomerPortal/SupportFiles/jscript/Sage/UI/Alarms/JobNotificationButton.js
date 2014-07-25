@@ -112,7 +112,15 @@ function (
             this.pollInterval * 60000);
         },
         _countsFailed: function (req) {
+            this._button.set('label', ' ?');
+            this._button.set('title', notificationBtnStrings.notificationErrorToolTip);
+            this._button.disabled = true;
+            this._showNotificationButton();
             console.warn('could not acquire notification counts... %o', req);
+            try {
+                Sage.Utility.ErrorHandler._configuration.preemption.showUnhandledMessagingServiceExceptionMsg = false;
+            }
+            catch (e) { }
         },
         _initializeButton: function () {
             var notificationCount = this._getFromSessionStorage(this._notificationsCountKey) || 0;

@@ -1209,8 +1209,8 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
                 evtObj.location = eventJson.Location;
                 evtObj.text = eventJson.Type;
                 evtObj.userColor = this._currentUserColor[userId];
-                evtObj.start_date = utility.Activity.formatActivityStartDateForCalendar(eventJson.StartDate, "MM/d/yy 0:00",true);
-                evtObj.end_date = utility.Activity.formatActivityStartDateForCalendar(eventJson.EndDate, "MM/d/yy 24:00",true);
+                evtObj.start_date = utility.Activity.formatEventDateForCalendar(eventJson.StartDate, "MM/d/yy 0:00");
+                evtObj.end_date = utility.Activity.formatEventDateForCalendar(eventJson.EndDate, "MM/d/yy 24:00");
             }
             return evtObj;
         },

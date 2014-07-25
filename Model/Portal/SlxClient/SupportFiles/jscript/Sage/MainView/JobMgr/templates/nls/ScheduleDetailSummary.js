@@ -1,7 +1,10 @@
-﻿define(
-    {
-        root:
-        ({
+﻿define([
+        'Sage/LanguageList',
+        'dojo/_base/lang'
+],
+function (languageList, lang) {
+    var nls = {
+        root: {
             txtScheduleName_Caption: 'Schedule:',
             txtJobName_Caption: 'Job Name:',
             txtUser_Caption: 'Scheduled By:',
@@ -14,6 +17,7 @@
             txtPriority_Caption: 'Priority:',
             txtStatus_Caption: 'Status:',
             txtExecutionCount_Caption: 'Execution Count:'
-        })
-    }
-);
+        }
+    };
+    return lang.mixin(languageList, nls);
+});

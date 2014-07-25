@@ -76,6 +76,11 @@ function (topic, declare, _Widget, toolTip, baseSDataStore, util, tooltip, nls, 
         required: false,
 
         /**
+         * @property {number} tabIndex Sets value for tab order, defaults to 0.
+         */
+        tabIndex: 0,
+
+        /**
          * @property {string} placeInNodeId Place widget in this dom node.
          */
         placeInNodeId: '',

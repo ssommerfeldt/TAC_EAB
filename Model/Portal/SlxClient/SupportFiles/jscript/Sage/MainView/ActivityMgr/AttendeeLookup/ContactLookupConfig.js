@@ -40,8 +40,8 @@ function (
                 "defaultValue": ""
             };
             this.storeOptions = {
-                resourceKind: 'contacts',
-                select: ['LastName','FirstName','Title','Type','SlxUserAssociation/$key','Account/$key','Account/AccountName','ContactUser/Userid','Address/Timezone'],
+                resourceKind: 'contacts',              
+                select: ['LastName', 'FirstName', 'Title', 'Type', 'Account/$key', 'Account/AccountName', 'ContactUser/Userid', 'Address/Timezone'],
                 sort: [{ attribute: 'LastName' }]
             };
             this.preFilters = [];

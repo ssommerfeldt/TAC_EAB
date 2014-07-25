@@ -2096,6 +2096,17 @@ define("Sage/UI/nls/fr/NotesHistoryList", (
 'Sage/UI/nls/fr-be/NotesHistoryList':function(){
 define('Sage/UI/nls/fr-be/NotesHistoryList',{});
 },
+'Sage/Utility/nls/fr/File':function(){
+﻿define("Sage/Utility/nls/fr/File", {
+    unableToUploadText: 'SalesLogix Desktop Integration Module doit être installé pour utiliser cette fonctionnalité.',
+    unknownSizeText: 'Inconnu',
+    largeFileWarningText: 'ATTENTION : Cette demande dépasse la taille limite définie par votre administrateur et n\'a pas pu télécharger.',
+    largeFileWarningTitle: 'Avertissement'
+});
+},
+'Sage/Utility/nls/fr-be/File':function(){
+define('Sage/Utility/nls/fr-be/File',{});
+},
 'Sage/MainView/ReportMgr/nls/fr/HistoryListPanelConfig':function(){
 define("Sage/MainView/ReportMgr/nls/fr/HistoryListPanelConfig", {
     colNameDate: 'Date',
@@ -3456,7 +3467,8 @@ define('Sage/QuickForms/Design/nls/fr-be/GenericControlDesigner',{});
     txtTheValueMustBeBetween: 'La valeur doit être comprise entre {0} et {1} caractères.',
     txtTheMinimumLengthForThisField: 'La longueur minimum de ce champ est {0}.',
     txtTheMaximumLengthForThisField: 'La longueur maximale de ce champ est {0}.',
-    txtPleaseSpecifyValue: "S'il vous plaît spécifier une valeur."
+    txtPleaseSpecifyValue: "S'il vous plaît spécifier une valeur.",
+    lblEnterValue_Caption: 'Entrez une valeur:'
 });
 },
 'Sage/MainView/ReportMgr/Crystal/nls/fr-be/StringParameterEditor':function(){

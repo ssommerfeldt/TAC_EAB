@@ -1781,6 +1781,14 @@ define("Sage/UI/nls/ru/NotesHistoryList", (
   printedOnText: 'Напечатано на' }
 ));
 },
+'Sage/Utility/nls/ru/File':function(){
+﻿define("Sage/Utility/nls/ru/File", {
+    unableToUploadText: 'Для использования этой функции должен быть установлен модуль интеграции рабочего стола Saleslogix.',
+    unknownSizeText: 'Неизвестен',
+    largeFileWarningText: 'Предупреждение: запрос не смог быть загружен так как он превышает ограничение на размер установленное администратором. ',
+    largeFileWarningTitle: 'Предупреждение'
+});
+},
 'Sage/MainView/ReportMgr/nls/ru/HistoryListPanelConfig':function(){
 define("Sage/MainView/ReportMgr/nls/ru/HistoryListPanelConfig", {
     colNameDate: 'Дата',
@@ -2920,7 +2928,8 @@ define("Sage/QuickForms/Design/nls/ru/GenericControlDesigner", (
     txtTheValueMustBeBetween: 'The value must be between {0} and {1} characters long.',
     txtTheMinimumLengthForThisField: 'The minimum length for this field is {0}.',
     txtTheMaximumLengthForThisField: 'The maximum length for this field is {0}.',
-    txtPleaseSpecifyValue: 'Пожалуйста, укажите значение.'
+    txtPleaseSpecifyValue: 'Пожалуйста, укажите значение.',
+    lblEnterValue_Caption: 'Введите значение:'
 });
 },
 'Sage/QuickForms/Design/nls/ru/PropertyEditorContainer':function(){

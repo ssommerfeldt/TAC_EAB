@@ -66,7 +66,8 @@ Module StockCardFunctions
                     .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")
                     '.Fields("ORIGPRODUCTPRICE").Value = ""
                     '.Fields("ORIGPRODUCTDISCOUNT").Value = ""
-                    .Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID")
+                    '.Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID") ' rEMOVING THIS FIELD AS IT IS NOT NEEDED
+                    .Fields("ACCOUNTID").Value = MyDataRow("TACACCOUNTID")
                     .Fields("TACSTOCKCARDITEMID").Value = MyDataRow("TACSTOCKCARDITEMID")
 
                     .Fields("ORIGPRODUCTPRICE").Value = MyDataRow("ORIGPRODUCTPRICE") 'ssommerfeldt February 24, 2014
@@ -112,7 +113,8 @@ Module StockCardFunctions
                     .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")
                     '.Fields("ORIGPRODUCTPRICE").Value = ""
                     '.Fields("ORIGPRODUCTDISCOUNT").Value = ""
-                    .Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID")
+                    '.Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID")
+                    .Fields("ACCOUNTID").Value = MyDataRow("TACACCOUNTID")
                     .Fields("TACSTOCKCARDITEMID").Value = MyDataRow("TACSTOCKCARDITEMID")
 
                     .Fields("ORIGPRODUCTPRICE").Value = MyDataRow("ORIGPRODUCTPRICE") 'ssommerfeldt February 24, 2014

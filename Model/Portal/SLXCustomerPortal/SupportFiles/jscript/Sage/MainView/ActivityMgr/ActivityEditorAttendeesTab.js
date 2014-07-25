@@ -327,7 +327,8 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                             sort: [{ attribute: 'Name' }],
                             //newItemParentReferenceProperty: 'Activity',
                             onDataChange: onDataChange,
-                            onComplete: onComplete
+                            onComplete: onComplete,
+                            clearStoreCacheOnDelete: false
                           
                             
                         },
@@ -345,6 +346,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                         singleClickEdit: false,
                         enableCheckBoxSelection: false,                    
                         selectionMode: 'single'
+                       
 
                     };
 
@@ -1013,7 +1015,16 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     for (var i = 0; i < attendees.length; i++) {
                         var attendee = attendees[i];
                         if (!this._attendeeExists(attendee.EntityId)) {
-                            this._newItems.push(attendee);
+                            var index = -1;
+                            for (var j = 0, len = this._newItems.length; j < len; j++) {
+                                if (this._newItems[j]["$key"] === attendee["$key"]) {
+                                    index = j;
+                                    break;
+                                }
+                            }
+                            if (index === -1) {
+                                this._newItems.push(attendee);
+                            }
                             newAttendees.push(attendee);
                         }
                     }                    

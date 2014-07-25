@@ -101,8 +101,8 @@ function (
 
             var structure = [
                { field: 'Type', name: colNameType, type: Sage.MainView.ActivityMgr.EventListPanelConfig.EventTypeCell, width: '100px' },
-               { field: 'StartDate', name: colNameStartDate, type: ColumnsDateTime, dateOnly: true, width: '100px' },
-               { field: 'EndDate', name: colNameEndDate, type: ColumnsDateTime, dateOnly: true, width: '100px' },
+               { field: 'StartDate', name: colNameStartDate, type: ColumnsDateTime, dateOnly: true, utc: false, width: '100px' },
+               { field: 'EndDate', name: colNameEndDate, type: ColumnsDateTime, dateOnly: true, utc: false, width: '100px' },
                { field: 'User.UserInfo.UserName', name: colNameUser, width: '120px' },
                { field: 'Location', name: colNameLocation, width: '200px' },
                { field: 'Description', name: colNameDescription, width: '300px' }

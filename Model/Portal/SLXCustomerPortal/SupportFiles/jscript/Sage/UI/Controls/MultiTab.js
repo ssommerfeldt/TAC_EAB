@@ -1,16 +1,19 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 define([
         'dojo/_base/declare',
+        'dojo/dom',
         'dojo/ready',
         'dojo/aspect',
-        'dijit/layout/TabContainer'
+        'dijit/layout/TabContainer',
+        'dijit/registry'
 ],
-function (declare, ready, aspect, TabContainer) {
+function (declare, dom, ready, aspect, TabContainer, registry) {
     //summary
     // Override of dijit layout TabContainer.
     var multiTab = declare('Sage.UI.Controls.MultiTab', [TabContainer], {
         region: 'center',
         tabStrip: false,
+        hiddenFieldId: '',
         destroyRecursive: function () {
             if (this.tablist) {
                 this.tablist.destroy();
@@ -19,7 +22,7 @@ function (declare, ready, aspect, TabContainer) {
         },
         postCreate: function () {
             var parentContainerId = this.domNode.parentNode.id,
-               parentContainer = dijit.byId(parentContainerId),
+               parentContainer = registry.byId(parentContainerId),
                that = this;
             
             parentContainer.resize();
@@ -29,6 +32,15 @@ function (declare, ready, aspect, TabContainer) {
                     that._showChild(that.selectedChildWidget);
                 }
             }, 50);
+
+        },
+        startup: function() {
+            this.hiddenFieldId = this.id + '_tabstate';
+            var hiddenFieldDom = dom.byId(this.hiddenFieldId);
+            if (hiddenFieldDom.value !== '') {
+                registry.byId(this.id).selectChild(registry.byId(hiddenFieldDom.value));
+            }
+            this.inherited(arguments);
         }
     });
 

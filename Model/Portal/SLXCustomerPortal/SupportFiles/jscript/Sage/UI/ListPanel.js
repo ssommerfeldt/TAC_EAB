@@ -689,8 +689,11 @@ function (i18n,
             return selection;
         },
         _updateToolbarItemVisibility: function () {
-            dojo.toggleClass(this.domNode, 'list-panel-has-summary', this._hasConfigurationForSummary());
-            dojo.toggleClass(this.domNode, 'list-panel-has-detail', this._canShowDetailPane());
+            dojo.toggleClass(this.domNode, 'list-panel-has-summary', this._canShowSummaryLink());
+            dojo.toggleClass(this.domNode, 'list-panel-has-detail',this._canShowDetailPane());
+        },
+        _canShowSummaryLink : function(){
+            return (this._hasConfigurationForSummary() || (this._configurationProvider && this._configurationProvider.summaryOptions));
         },
         _canShowDetailPane: function () {
             return (this._hasConfigurationForDetail() && ((this._gridContainer.selectedChildWidget !== this._summaryGrid) || this.detailOnSummary));
@@ -1272,7 +1275,8 @@ function (i18n,
                 query;
             this._listMode = 'summary';
             if (!this._hasConfigurationForSummary()) {
-                return;
+                // return;
+                this._configuration.summary = this._configurationProvider._createConfigurationForSummary();
             }
 
             query = this._filterManager.createQuery();

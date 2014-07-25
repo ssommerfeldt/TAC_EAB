@@ -189,7 +189,7 @@ define([
             },
             refreshGrid: function (data) {
                 if (data !== null) {
-                    if (data.Timeless) {
+                    if (data.Timeless || data.TimelessChanged) {
                         this.userActivities = [];
                         this.grid.refresh();
                     }
@@ -243,7 +243,7 @@ define([
                             service: sDataServiceRegistry.getSDataService('dynamic'),
                             resourceKind: 'history',
                             include: ['$descriptors'],
-                            select: ['$key', 'Regarding', 'Description', 'AccountId', 'AccountName', 'ActivityId', 'ContactName', 'Recurring', 'StartDate', 'Timeless', 'Type', 'Priority', 'Leader/$key', 'PhoneNumber', 'LeadId', 'LeadName', 'LongNotes', 'Location', 'UserName'],
+                            select: ['$key', 'Regarding', 'Description', 'AccountId', 'AccountName', 'ActivityId', 'ContactName', 'Recurring', 'StartDate', 'Timeless', 'Type', 'Priority', 'PhoneNumber', 'LeadId', 'LeadName', 'LongNotes', 'Location', 'UserName'],
                             sort: [{ attribute: 'StartDate', descending: true}]
                         },
                         tools: [],

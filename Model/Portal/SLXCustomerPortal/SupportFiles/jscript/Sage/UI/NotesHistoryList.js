@@ -282,7 +282,7 @@ define([
                 storeOptions: {
                     select: ['Type', 'CompletedDate', 'UserName', 'AccountName', 'ContactName', 'ContactId', 'OpportunityName', 'OpportunityId', 'Description', 'LongNotes', 'Timeless', 'Result'],
                     resourceKind: 'history',
-                    sort: [{ attribute: 'CompletedDate'}]
+                    sort: [{ attribute: 'CompletedDate',descending : 'true'}]
                 },
                 //specifying sort here ^ means that this is always applied.  For example,
                 //  when the user sorts by Result, the items are grouped by sorted results, but

@@ -931,7 +931,9 @@ function (DataGrid,
                         store.deleteItem(selectedItems[i], scope);
                     }
                 }
-                store.clearCache();
+                if (!this.storeOptions.hasOwnProperty('clearStoreCacheOnDelete') || this.storeOptions.clearStoreCacheOnDelete === true) {
+                    store.clearCache();
+                }
             }
         },
         cancelChanges: function () {

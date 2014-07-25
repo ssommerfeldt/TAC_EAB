@@ -1,5 +1,9 @@
-﻿define(
-    {
+﻿define([
+        'Sage/LanguageList',
+        'dojo/_base/lang'
+],
+function (languageList, lang) {
+    var nls = {
         root: {
             txtCreateDate_Caption: "Create Date:",
             txtReportType_Caption: "Report Type:",
@@ -11,5 +15,6 @@
             txtFileSize_Caption: "File Size:",
             txtElapsedTime_Caption: "Elapsed Time:"
         }
-    }
-);
+    };
+    return lang.mixin(languageList, nls);
+});

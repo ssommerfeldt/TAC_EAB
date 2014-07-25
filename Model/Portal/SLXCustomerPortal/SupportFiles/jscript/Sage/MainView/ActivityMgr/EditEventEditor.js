@@ -346,13 +346,19 @@ function (
         },
         datesValid: function () {
             var startDate = this.tb_StartDate.value;
-            startDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), 0,0);
             var endDate = this.tb_EndDate.value;
-            endDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), 0, 0);
+            endDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), 0, 0);     
+
+            this._eventData.EndDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), new Date().getHours(), new Date().getMinutes(), new Date().getSeconds());
+            this._eventData.StartDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), new Date().getHours(), new Date().getMinutes(), new Date().getSeconds());
+
+            startDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), 0, 0);
+
             if (startDate > endDate) {
                 sageDialogs.showError(this.invaildDatesText);
                 return false;
             }
+
             return true;
         },
         // ... region click/action handlers
