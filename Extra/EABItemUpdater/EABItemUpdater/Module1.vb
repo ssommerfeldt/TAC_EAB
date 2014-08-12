@@ -137,6 +137,7 @@ Module Module1
         Dim i As Integer = 0
         strConn = strConn.Replace("Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;TIMEZONE=NONE;SVRCERT=12345;ACTIVITYSECURITY=OFF" & Chr(34), "Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;")
         '===================================================
+        CleanUpExisting(Accountid, strConn)
         '==================================================       
         Dim objConn As New OleDbConnection(strConn)
 
@@ -166,6 +167,8 @@ Module Module1
             For Each row As DataRow In dt.Rows
                 'returnDataRow = row
                 i = i + 1
+
+
                 AddEditSalesOrderItemFromStockCardItem(row, strConn, i.ToString(), Accountid)
                 Console.WriteLine("Processes line " & i)
             Next row
@@ -208,6 +211,15 @@ Module Module1
         'End Try
 
     End Sub
+    Sub CleanUpExisting(ByVal Accountid As String, ByVal ConnectionString As String)
+        Dim SQL As String = "Delete from sysdba.SalesOrderItems where Accountid = '" & Accountid & "' and Salesorderid ='TEMP'"
+        Using connection As New OleDbConnection(ConnectionString)
+            Dim command As New OleDbCommand(SQL, connection)
+            command.Connection.Open()
+            command.ExecuteNonQuery()
+        End Using
+    End Sub
+
 
     Sub ProcessCopyStockCardItems(ByVal SourceAccountid As String, ByVal TargetAccountid As String, ByVal strConn As String)
     

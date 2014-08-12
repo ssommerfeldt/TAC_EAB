@@ -20,7 +20,7 @@ Module StockCardFunctions
         '=================================================================
         Dim Discount As Double = CDbl(MyDataRow("MARGIN")) 'GetDefaultMargin(MyDataRow("TACSTOCKCARDITEMID"), MyDataRow("TIMPRODPRICEGROUPID"), MyDataRow("TACACCOUNTID"), strConnection)
         Dim ListPrice As Double = CDbl(MyDataRow("LISTPRICE")) 'Convert.ToDouble(GetField("LISTPRICE", "vProductPriceSheet", "PRODUCTID ='" & MyDataRow("PRODUCTID") & "'", strConnection))
-        Dim CalculatedPrice As Double = CDbl(MyDataRow("DEALERPRICE")) 'CalculateAdjustedPrice(ListPrice, Discount)
+        Dim CalculatedPrice As Decimal = CDec(MyDataRow("DEALERPRICE")) 'CalculateAdjustedPrice(ListPrice, Discount)
         ' //Extended price = price - (price * discount) * quantity
         Try
             objConn.Open(strConnection)
@@ -50,7 +50,7 @@ Module StockCardFunctions
                     .Fields("DESCRIPTION").Value = MyDataRow("DESCRIPTION")
                     .Fields("EXTENDEDPRICE").Value = "0"  '========== TAC Calculated Allways Zero Intially because there is no Quantity
                     .Fields("UNIT").Value = MyDataRow("UNIT")
-                    .Fields("CALCULATEDPRICE").Value = CalculatedPrice '===========TAC Caclulated
+                    .Fields("CALCULATEDPRICE").Value = System.Math.Round(CalculatedPrice, 2, MidpointRounding.AwayFromZero) '===========TAC Caclulated
                     '.Fields("GLOBALSYNCID").Value = ""
                     .Fields("LINENUMBER").Value = LineNumber
                     .Fields("LINETYPE").Value = MyDataRow("LINETYPE")
@@ -66,7 +66,7 @@ Module StockCardFunctions
                     .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")
                     '.Fields("ORIGPRODUCTPRICE").Value = ""
                     '.Fields("ORIGPRODUCTDISCOUNT").Value = ""
-                    '.Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID") ' rEMOVING THIS FIELD AS IT IS NOT NEEDED
+                    .Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID") ' rEMOVING THIS FIELD AS IT IS NOT NEEDED
                     .Fields("ACCOUNTID").Value = MyDataRow("TACACCOUNTID")
                     .Fields("TACSTOCKCARDITEMID").Value = MyDataRow("TACSTOCKCARDITEMID")
 
@@ -97,7 +97,7 @@ Module StockCardFunctions
                     .Fields("DESCRIPTION").Value = MyDataRow("DESCRIPTION")
                     .Fields("EXTENDEDPRICE").Value = "0"  '========== TAC Calculated Allways Zero Intially because there is no Quantity
                     .Fields("UNIT").Value = MyDataRow("UNIT")
-                    .Fields("CALCULATEDPRICE").Value = CalculatedPrice '===========TAC Caclulated
+                    .Fields("CALCULATEDPRICE").Value = System.Math.Round(CalculatedPrice, 2, MidpointRounding.AwayFromZero) '===========TAC Caclulated
                     '.Fields("GLOBALSYNCID").Value = ""
                     .Fields("LINENUMBER").Value = LineNumber
                     .Fields("LINETYPE").Value = MyDataRow("LINETYPE")
@@ -113,7 +113,7 @@ Module StockCardFunctions
                     .Fields("MAX_STOCKLEVEL").Value = MyDataRow("MAX_STOCKLEVEL")
                     '.Fields("ORIGPRODUCTPRICE").Value = ""
                     '.Fields("ORIGPRODUCTDISCOUNT").Value = ""
-                    '.Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID")
+                    .Fields("TACACCOUNTID").Value = MyDataRow("TACACCOUNTID")
                     .Fields("ACCOUNTID").Value = MyDataRow("TACACCOUNTID")
                     .Fields("TACSTOCKCARDITEMID").Value = MyDataRow("TACSTOCKCARDITEMID")
 
