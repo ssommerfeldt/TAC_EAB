@@ -286,7 +286,7 @@ Module Module1
         Try
             objConn.Open()
             Dim SQL As String
-            SQL = "Select Distinct  SALESORDERID, StatusTXT from vdvMAS_to_SLX_SalesOrder_TAC_CHANGED"
+            SQL = "Select Distinct  SALESORDERID, StatusTXT, TRANID from vdvMAS_to_SLX_SalesOrder_TAC_CHANGED"
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
@@ -358,6 +358,8 @@ Module Module1
                     '.Fields("PRODUCTID").Value = Productid
 
                     .Fields("MASSTATUS").Value = MyDataRow("StatusTXT")
+                    .Fields("MASNumber").Value = MyDataRow("TRANID")
+
                    
 
                 End If
