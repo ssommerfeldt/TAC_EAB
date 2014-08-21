@@ -128,7 +128,7 @@ Module StockCardFunctions
 
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            'MsgBox(ex.Message)
 
         End Try
 
@@ -482,7 +482,7 @@ Module StockCardFunctions
 
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            ' MsgBox(ex.Message)
 
         End Try
         '====================================================

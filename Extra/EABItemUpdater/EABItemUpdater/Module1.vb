@@ -83,7 +83,7 @@ Module Module1
 
         WriteStatusLog("Finnished RoutineType " & _RoutinType & " " & Now.ToString)
         Catch ex As Exception
-            MsgBox(ex.Message & ex.InnerException.ToString)
+            'MsgBox(ex.Message & ex.InnerException.ToString)
         End Try
 
 
@@ -137,7 +137,7 @@ Module Module1
         Dim i As Integer = 0
         strConn = strConn.Replace("Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;TIMEZONE=NONE;SVRCERT=12345;ACTIVITYSECURITY=OFF" & Chr(34), "Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;")
         '===================================================
-        CleanUpExisting(Accountid, strConn)
+        'CleanUpExisting(Accountid, strConn)  This causes problems as it is very commmon to have multiple instances of this running at the same time
         '==================================================       
         Dim objConn As New OleDbConnection(strConn)
 
