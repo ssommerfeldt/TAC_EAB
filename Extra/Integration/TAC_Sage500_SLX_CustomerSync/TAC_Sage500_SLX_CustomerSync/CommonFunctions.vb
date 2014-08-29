@@ -18,17 +18,17 @@ Module CommonFunctions
         Dim sb As New System.Text.StringBuilder
         'build the path\filename depending on the location of the config file
         'use "\documents and settings\All Users\application data" for the config file directory
-        sb.Append("C:\TAC\INTEGRATION\")
-        'add the product name
-        sb.Append("\")
-        'sb.Append(Application.Project)
-        sb.Append(ProjectName)
-        'create the directory if it isn't there
-        If Not IO.Directory.Exists(sb.ToString) Then
-            IO.Directory.CreateDirectory(sb.ToString)
-        End If
-        'finish building the file name
-        sb.Append("\")
+        'sb.Append("C:\TAC\INTEGRATION\")
+        ''add the product name
+        'sb.Append("\")
+        ''sb.Append(Application.Project)
+        'sb.Append(ProjectName)
+        ''create the directory if it isn't there
+        'If Not IO.Directory.Exists(sb.ToString) Then
+        '    IO.Directory.CreateDirectory(sb.ToString)
+        'End If
+        ''finish building the file name
+        'sb.Append("\")
         sb.Append(FileName)
 
         '===================================================================
