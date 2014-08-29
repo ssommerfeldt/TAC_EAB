@@ -35,8 +35,8 @@ Module Module1
         End Try
 
 
-        WriteStatusLog("Started RoutineType " & _RoutinType & " " & Now.ToString)
-        WriteStatusLog(s(1))
+            ' WriteStatusLog("Started RoutineType " & _RoutinType & " " & Now.ToString)
+            'WriteStatusLog(s(1))
 
         '=========================================================
         ' Get Users AccountManagerId's WareHouse 
@@ -76,12 +76,31 @@ Module Module1
                     strSourceAccountid = Trim(strSourceAccountid.Replace("""", String.Empty))
                     Dim strTargetAccountid As String = Trim(args2(1))
                     ProcessCopyStockCardItems(strSourceAccountid, strTargetAccountid, _strCon)
-                End If
+                    End If
+                Case "SingleStockCard"
+                    Try
+                        Dim LineNumber As String = ""
+                        Dim separators2 As String = "="
+                        Dim args2() As String = _Args.Split(separators2.ToCharArray)
+                        Dim StockCardId As String = ""
+                        If args2(0) = "-SingleStockCard" Then
+                            '============================================================
+                            ' -a means StockCardId switch next Parameter is the StockCardId
+                            '=============================================================
+                            Dim separators3 As String = ","
+                            Dim args3() As String = args2(1).Split(separators3.ToCharArray)
+                            StockCardId = args3(0)
+                            LineNumber = args3(1)
+                        End If
+                        ProcessSingleStockCardItem(StockCardId, LineNumber, _strCon)
+                    Catch ex As Exception
+                        WriteStatusLog(ex.Message.ToString & " " & Now.ToString)
+                    End Try
 
 
-        End Select
+            End Select
 
-        WriteStatusLog("Finnished RoutineType " & _RoutinType & " " & Now.ToString)
+            ' WriteStatusLog("Finnished RoutineType " & _RoutinType & " " & Now.ToString)
         Catch ex As Exception
             'MsgBox(ex.Message & ex.InnerException.ToString)
         End Try

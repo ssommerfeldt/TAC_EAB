@@ -16,6 +16,21 @@
         '  Routine Type
         '===============================================================
         Try
+            '    Select Case args(0)
+            '        Case "-All"
+            '            returnRoutineType = "All"
+            '        Case "-Accountid"
+            '            returnRoutineType = "Account"
+            '            returnArgs = args(0)
+
+            '        Case "-CopyStockCard"
+            '            returnRoutineType = "CopyStockCard"
+            '            returnArgs = args(0)
+            '        Case "-SingleStockCard"
+            '            returnRoutineType = "SingleStockCard"
+            '            returnArgs = args(0)
+            '    End Select
+
             If args(0) = "-All" Then
                 returnRoutineType = "All"
             ElseIf args(0).Contains("-Accountid") Then
@@ -35,7 +50,11 @@
             ElseIf args(0).Contains("-CopyStockCard") Then
                 returnRoutineType = "CopyStockCard"
                 returnArgs = args(0)
-               
+
+            ElseIf args(0).Contains("-SingleStockCard") Then
+                returnRoutineType = "SingleStockCard"
+                returnArgs = args(0)
+
 
 
             End If

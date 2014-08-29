@@ -523,5 +523,118 @@ Module StockCardFunctions
         Return returnDataRow
     End Function
 
+    Sub ProcessSingleStockCardItem(ByVal StockCardId As String, ByVal LineNumber As String, ByVal strConn As String)
+
+
+        '====================================================================================
+        ' New Functionality to only have a single WareHouse on the StockCard but 
+        '  The Order Needs to have all the Products for AccountManagers WareHouses
+        '====================================================================================
+        Dim Accountid As String = ""
+
+        Dim i As Integer = 0
+        strConn = strConn.Replace("Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;TIMEZONE=NONE;SVRCERT=12345;ACTIVITYSECURITY=OFF" & Chr(34), "Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;")
+        '===================================================
+        'CleanUpExisting(Accountid, strConn)  This causes problems as it is very commmon to have multiple instances of this running at the same time
+        '==================================================       
+        Dim objConn As New OleDbConnection(strConn)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "  SELECT     s.STOCKCARDITEMSID, p.PRODUCTID, p.WAREHOUSEID, 'TEMP' AS SALESORDERID, p.NAME AS PRODUCT, s.CATEGORYNAME AS FAMILY, p.ACTUALID, "
+            SQL = SQL & "                      p.DESCRIPTION, p.UNIT, 'StandarLine' AS LINETYPE, p.UNITOFMEASUREID, p.UPC, ISNULL(s.MAX_STOCKLEVEL, 0) AS MAX_STOCKLEVEL, "
+            SQL = SQL & "                      s.ACCOUNTID AS TACACCOUNTID, s.STOCKCARDITEMSID AS TACSTOCKCARDITEMID, s.DISTRIBUTORMARGIN, s.DISTRIBUTORPRICE, s.LISTPRICE, "
+            SQL = SQL & " s.DEALERPRICE, s.MARGIN, s.ORIGPRODUCTPRICE, s.ORIGPRODUCTDISCOUNT"
+            SQL = SQL & " FROM         sysdba.USERWHSE INNER JOIN"
+            SQL = SQL & " sysdba.SITE ON sysdba.USERWHSE.SITEID = sysdba.SITE.SITEID INNER JOIN"
+            SQL = SQL & " sysdba.STOCKCARDITEMS AS s INNER JOIN"
+            SQL = SQL & " sysdba.PRODUCT ON s.PRODUCTID = sysdba.PRODUCT.PRODUCTID INNER JOIN"
+            SQL = SQL & " sysdba.ACCOUNT ON s.ACCOUNTID = sysdba.ACCOUNT.ACCOUNTID ON sysdba.USERWHSE.USERID = sysdba.ACCOUNT.ACCOUNTMANAGERID INNER JOIN"
+            SQL = SQL & "                      sysdba.PRODUCT AS p ON sysdba.PRODUCT.ACTUALID = p.ACTUALID AND sysdba.SITE.SITECODE = p.WAREHOUSEID"
+            SQL = SQL & " WHERE     (s.STOCKCARDITEMSID = '" & StockCardId & "') And (USERWHSE.ISDEFAULT = 'T')"
+
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                'returnDataRow = row
+
+
+                Accountid = row("TACACCOUNTID")
+                'i = GetMaxLineNumber(Accountid, row("WAREHOUSEID"), strConn) + 1
+
+                AddEditSalesOrderItemFromStockCardItem(row, strConn, LineNumber, Accountid)
+                Console.WriteLine("Processes line " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Dim EventMessage As String
+            EventMessage = ex.Message & Chr(10) & Chr(13) & "In ProcessSingleAccount"
+            WriteStatusLog(EventMessage)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+
+
+
+    End Sub
+    'Function GetMaxLineNumber(ByVal AccountId As String, ByVal WareHouseId As String, ByVal strConn As String) As Integer
+
+
+    '    '====================================================================================
+    '    ' New Functionality to only have a single WareHouse on the StockCard but 
+    '    '  The Order Needs to have all the Products for AccountManagers WareHouses
+    '    '====================================================================================
+    '    'Dim Accountid As String = ""
+
+    '    Dim i As Integer = 0
+    '    strConn = strConn.Replace("Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;TIMEZONE=NONE;SVRCERT=12345;ACTIVITYSECURITY=OFF" & Chr(34), "Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;")
+    '    '===================================================
+    '    'CleanUpExisting(Accountid, strConn)  This causes problems as it is very commmon to have multiple instances of this running at the same time
+    '    '==================================================       
+    '    Dim objConn As New OleDbConnection(strConn)
+    '    Dim icount As Integer = 0
+    '    Try
+    '        objConn.Open()
+    '        Dim SQL As String
+    '        SQL = "  SELECT     COUNT(*) AS NumItems, sysdba.PRODUCT.WAREHOUSEID"
+    '        SQL = SQL & " FROM         sysdba.SALESORDERITEMS INNER JOIN "
+    '        SQL = SQL & " sysdba.PRODUCT ON sysdba.SALESORDERITEMS.PRODUCTID = sysdba.PRODUCT.PRODUCTID"
+    '        SQL = SQL & " WHERE     (sysdba.SALESORDERITEMS.ACCOUNTID = '" & AccountId & "') AND (sysdba.SALESORDERITEMS.SALESORDERID = 'TEMP') and WAREHOUSEID = '" & WareHouseId & "'"
+    '        SQL = SQL & " GROUP BY sysdba.PRODUCT.WAREHOUSEID"
+
+
+    '        'MsgBox(SQL)
+    '        Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+    '        Dim dt As New DataTable()
+    '        dt.Load(objCMD.ExecuteReader())
+
+    '        For Each row As DataRow In dt.Rows
+    '            'returnDataRow = row
+    '            icount = CInt(row("NumItems"))
+
+
+    '        Next row
+
+    '    Catch ex As Exception
+    '        'MsgBox(ex.Message)
+    '        Dim EventMessage As String
+    '        EventMessage = ex.Message & Chr(10) & Chr(13) & "In ProcessSingleAccount"
+    '        WriteStatusLog(EventMessage)
+    '    Finally
+    '        If objConn.State = ConnectionState.Open Then objConn.Close()
+    '    End Try
+    '    objConn = Nothing
+
+    '    Return icount
+
+    'End Function
+
 
 End Module
