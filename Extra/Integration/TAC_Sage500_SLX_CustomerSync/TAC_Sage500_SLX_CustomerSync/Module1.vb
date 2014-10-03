@@ -29,7 +29,7 @@ Module Module1
             'You must create an empty test.udl file in c:\ first. So, goto to c: - right click and New File - call it test.udl and then run the command above:
             'C:\Windows\syswow64\rundll32.exe "C:\Program Files (x86)\Common Files\System\Ole DB\oledb32.dll",OpenDSLFile C:\test.udl
 
-            Call LogErrors(PROJECTNAME, " TAC_Sage500_SLX_CustomerSync", "Problem with Connectin String so Exit", EventLogEntryType.Error)
+            Call LogErrors(PROJECTNAME, " TAC_Sage500_SLX_CustomerSync", "Problem with Connectin String so Exit SN - " & strSage500Constr & "S5 = " & strSage500Constr & " SX =" & strSLXConstr, EventLogEntryType.Error)
             Exit Sub
 
         End If

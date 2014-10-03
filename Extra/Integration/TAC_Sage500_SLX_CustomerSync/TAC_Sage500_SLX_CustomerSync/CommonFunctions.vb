@@ -29,7 +29,10 @@ Module CommonFunctions
         'End If
         ''finish building the file name
         'sb.Append("\")
-        sb.Append(FileName)
+        sb.Append(System.AppDomain.CurrentDomain.BaseDirectory() & "\" & FileName)
+        'Call LogErrors(ProjectName, " TAC_Sage500_SLX_CustomerSync", "Settings File --> " & sb.ToString, EventLogEntryType.Information)
+        'Call LogErrors(ProjectName, " TAC_Sage500_SLX_CustomerSync", "Settings File --> " & System.AppDomain.CurrentDomain.BaseDirectory() & sb.ToString, EventLogEntryType.Information)
+
 
         '===================================================================
         If System.IO.File.Exists(sb.ToString) Then
@@ -55,16 +58,21 @@ Module CommonFunctions
             Dim i As Integer = 1
             Do
                 line = sr.ReadLine()
+
                 If i = 3 Then
                     ConnectString = line
                 End If
                 i = i + 1 ' Increment the counter
             Loop Until line Is Nothing
             sr.Close()
+            'Call LogErrors(ProjectName, " TAC_Sage500_SLX_CustomerSync", ConnectString, EventLogEntryType.Information)
 
             Return ConnectString
 
         Catch Ex As Exception
+
+            'Call LogErrors(ProjectName, " TAC_Sage500_SLX_CustomerSync", Ex.Message, EventLogEntryType.Error)
+
             Return ""
         End Try
     End Function

@@ -3,7 +3,7 @@
   <Name>EAB SLX Provider</Name>
   <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
   <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
-  <ConnectionString>Provider=SLXOLEDB.1;Data Source=AstonHill2008;Persist Security Info=True;User ID=;Initial Catalog=EAB;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConnectionString>
+  <ConnectionString>Provider=SLXOLEDB.1;Data Source=Athena;Persist Security Info=True;User ID=;Initial Catalog=SALESLOGIXTEST;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</ConnectionString>
   <ConnectionStringSecurity>PasswordRemoved</ConnectionStringSecurity>
   <Timeout>PT0S</Timeout>
 </DataSource>

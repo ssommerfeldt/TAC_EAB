@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ProductVersion>10.50.4000.0</ProductVersion>
+  <ProductVersion>10.50.1600.1</ProductVersion>
   <SchemaVersion>9.0.1.0</SchemaVersion>
   <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
   <Database>
@@ -36,17 +36,17 @@
           <ConfigurationSetting>
             <Id>Live EAB Slx</Id>
             <Name>Live EAB Slx</Name>
-            <Value xsi:type="xsd:string">Provider=SLXOLEDB.1;Data Source=AstonHill2008;Persist Security Info=True;User ID=;Initial Catalog=EAB;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
+            <Value xsi:type="xsd:string">Provider=SLXOLEDB.1;Data Source=Athena;Persist Security Info=True;User ID=;Initial Catalog=SALESLOGIXTEST;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>Live EAB App</Id>
             <Name>Live EAB App</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=TACTSQ01\SQL2008;Persist Security Info=True;Password=;User ID=;Initial Catalog=LiveEAB_app_FromEAB_Server</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=APOLLO;Persist Security Info=True;Password=;User ID=;Initial Catalog=mas500_tst_app</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>EAB SLX Native SQL</Id>
             <Name>EAB SLX Native SQL</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=TACTSQ01\SQL2008;Persist Security Info=True;Password=;User ID=;Initial Catalog=EAB_SLX_Dec2013</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=Apollo;Persist Security Info=True;Password=;User ID=;Initial Catalog=SalesLogix_TEST</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionProviderMappings />

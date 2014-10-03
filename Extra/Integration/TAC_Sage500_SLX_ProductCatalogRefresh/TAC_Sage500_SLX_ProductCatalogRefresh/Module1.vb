@@ -37,6 +37,11 @@ Module Module1
         'Call GetUserID()
         'Call GetPartsHandlerData("Account")
         'Call GetPartsHandlerData("History")
+
+        Console.WriteLine("------ Product Cleanup Start ------")
+        'Call Process_CleanUPDuplicates()
+
+        '============================================================
         Console.WriteLine("------ New Products Start ------")
         Call Process_NewProducts()
         Console.WriteLine("------ Ne ProductProgram Start ------")
@@ -479,8 +484,215 @@ Module Module1
     End Sub
 
 
+   
+    Private Sub Process_CleanUPDuplicates()
+
+        Dim i As Integer = 0
+        Dim MasItemKey As String
+        Dim WareHouseId As String
+        Dim CompanyId As String
+
+        '===================================================
+        
+        Dim objConn As New OleDbConnection(strSLXNativeConstr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "Select distinct MASITEMKEY , WAREHOUSEID , COMPANYID  from sysdba.PRODUCT   "
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+
+                i = i + 1
+                MasItemKey = row("MASITEMKEY").ToString
+                WareHouseId = row("WAREHOUSEID").ToString
+                CompanyId = row("COMPANYID").ToString
+
+                Call ProcessMASItem(MasItemKey, WareHouseId, CompanyId)
+
+                Console.WriteLine("Clean Item " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "CleanUp ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
+
+    Public Sub ProcessMASItem(ByVal MasItemKey As String, ByVal WareHouseId As String, ByVal CompanyId As String)
+
+        Dim i As Integer = 0
+      
+        Dim toKeepProductid As String = ""
+        Dim Productid As String = ""
+         
+        Dim objConn As New OleDbConnection(strSLXNativeConstr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "SELECT * FROM  sysdba.PRODUCT WHERE     (MASITEMKEY = '" & MasItemKey & "') AND (WAREHOUSEID = '" & WareHouseId & "') AND (COMPANYID = '" & CompanyId & "')" ' sql you want to execute
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+
+                If i = 0 Then
+                    '=====================
+                    ' Keep the First One
+                    '=====================
+                    toKeepProductid = row("PRODUCTID").ToString
+                Else
+                    '============================
+                    ' Remove the Rest of them
+                    '============================
+                    Productid = row("PRODUCTID").ToString
+                    SQL = " Update sysdba.STOCKCARDITEMS Set PRODUCTID ='" & toKeepProductid & "' WHERE PRODUCTID ='" & Productid & "'"
+                    ExecuteSQLQuery(SQL)
+                    'UpdateStockCardItems(Productid, toKeepProductid)
+
+                    '===============================
+                    ' SalesOrderItems
+                    '===============================
+                    SQL = " Update sysdba.SALESORDERITEMS Set PRODUCTID ='" & toKeepProductid & "' WHERE PRODUCTID ='" & Productid & "'"
+                    ExecuteSQLQuery(SQL)
+
+                    '===============================
+                    ' product Program
+                    '===============================
+                    'Call Delete_ProductProgram(Productid)
+
+                    '======================================
+                    ' Delete Product
+                    '=======================================
+                    Call Delete_Product(Productid)
 
 
+                End If
+
+                i = i + 1
+               
+                Console.WriteLine("Clean Item " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "CleanUp ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
+
+    Sub ExecuteSQLQuery(ByVal SQL As String)
+        Dim objConn As New OleDbConnection(strSLXConstr)
+
+        Try
+            objConn.Open()
+            
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+
+            objCMD.ExecuteNonQuery()
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            'Call LogErrors(PROJECTNAME, "CleanUp ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+    End Sub
+    'Sub UpdateStockCardItems(ByVal OldProductid As String, ByVal NewProductid As String)
+    '    '=======================
+    '    'Retrieving a recordset:
+    '    '=======================
+    '    Dim objConn As New ADODB.Connection()
+    '    Dim objRS As New ADODB.Recordset
+    '    Dim strSQL As String = "SELECT * FROM sysdba.StockCardItems WHERE PRODUCTID = '" & OldProductid & "'"
+
+
+    '    Try
+    '        objConn.Open(strSLXConstr)
+    '        With objRS
+    '            .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+    '            .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+    '            .LockType = ADODB.LockTypeEnum.adLockOptimistic
+    '            .Open(strSQL, objConn)
+    '            For i = 0 To .RecordCount - 1          ' Loop
+    '                If Not (.EOF) Then
+    '                    .Fields("PRODUCTID").Value = NewProductid
+    '                    .Fields("MODIFYDATE").Value = Now
+    '                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+    '                    .Update()
+
+    '                    .MoveNext()
+
+
+
+    '                End If
+
+    '            Next
+
+
+    '            .Close()
+    '        End With
+
+
+    '    Catch ex As Exception
+    '        'MsgBox(ex.Message)
+
+    '    End Try
+
+    'End Sub
+    Public Sub Delete_Product(ByVal Productid As String)
+        '============================================================
+        ' get Default Data row from StockCard and Product info
+        '============================================================
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM sysdba.PRODUCT WHERE PRODUCTID = '" & Productid & "'"
+
+
+        Try
+            objConn.Open(strSLXConstr)
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If Not (.EOF) Then
+                    .Delete()
+
+
+
+
+                End If
+
+
+                .Close()
+            End With
+
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+
+        End Try
+    End Sub
 
 
     'Private Sub CleanTempDir()
