@@ -31,7 +31,8 @@ Module CommonFunctions
         'End If
         'finish building the file name
         'sb.Append("\")
-        sb.Append(FileName)
+        'sb.Append(FileName)
+        sb.Append(System.AppDomain.CurrentDomain.BaseDirectory() & "\" & FileName)
 
         '===================================================================
         If System.IO.File.Exists(sb.ToString) Then

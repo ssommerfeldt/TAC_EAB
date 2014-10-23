@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Data.SqlClient
 Imports System.Data.OleDb
+Imports System.Configuration
 
 Module Module1
 #Region " Declaration of Variables and Support Functions "
@@ -16,9 +17,12 @@ Module Module1
     Sub Main()
         Call LogErrors(PROJECTNAME, " - Main", "Process Start", EventLogEntryType.Information)
 
-        strSLXNativeConstr = GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
-        strMASConstr = GetConnection(PROJECTNAME, "Sage500Connection.udl")
-        strSLXConstr = GetConnection(PROJECTNAME, "SLXConnection.udl")
+        ' strSLXNativeConstr = GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
+        strSLXNativeConstr = My.Settings.SLXNativeConnection
+        'strMASConstr = GetConnection(PROJECTNAME, "Sage500Connection.udl")
+        strMASConstr = My.Settings.Sage500Connection
+        'strSLXConstr = GetConnection(PROJECTNAME, "SLXConnection.udl")
+        strSLXConstr = My.Settings.SLXConnection
 
         If strSLXConstr = "" Or strSLXNativeConstr = "" Or strMASConstr = "" Then
             '=============================================
