@@ -2,7 +2,7 @@
 
 Module StockCardFunctions
 
-    Sub AddEditSalesOrderItemFromStockCardItem(MyDataRow As DataRow, ByVal strConnection As String, ByVal LineNumber As String, ByVal Accountid As String)
+    Sub AddEditSalesOrderItemFromStockCardItem(MyDataRow As DataRow, ByVal strConnection As String, ByVal SalesOrderId As String, ByVal Accountid As String)
 
         '============================================================
         ' get Default Data row from StockCard and Product info
@@ -13,7 +13,7 @@ Module StockCardFunctions
         '=======================
         Dim objConn As New ADODB.Connection()
         Dim objRS As New ADODB.Recordset
-        Dim strSQL As String = "SELECT * FROM SALESORDERITEMS WHERE SALESORDERID = 'TEMP' AND PRODUCTID ='" & MyDataRow("PRODUCTID") & "' AND TACACCOUNTID = '" & Accountid & "'"
+        Dim strSQL As String = "SELECT * FROM SALESORDERITEMS WHERE SALESORDERID = '" & SalesOrderId & "' AND PRODUCTID ='" & MyDataRow("PRODUCTID") & "' AND TACACCOUNTID = '" & Accountid & "'"
 
         '=================================================================
         ' TAC Calculations
@@ -33,7 +33,7 @@ Module StockCardFunctions
                     'adding
                     .AddNew()
                     .Fields("SALESORDERITEMSID").Value = GetNewSLXID("SALESORDERTIEMS", strConnection) 'Application.BasicFunctions.GetIDFor("SALESORDERITEMS")
-                    .Fields("SALESORDERID").Value = "TEMP"
+                    .Fields("SALESORDERID").Value = SalesOrderId
                     .Fields("CREATEUSER").Value = "ADMIN"
                     .Fields("CREATEDATE").Value = Now 'System.DateTime.UtcNow
                     .Fields("MODIFYUSER").Value = "ADMIN"
@@ -52,7 +52,7 @@ Module StockCardFunctions
                     .Fields("UNIT").Value = MyDataRow("UNIT")
                     .Fields("CALCULATEDPRICE").Value = System.Math.Round(CalculatedPrice, 2, MidpointRounding.AwayFromZero) '===========TAC Caclulated
                     '.Fields("GLOBALSYNCID").Value = ""
-                    .Fields("LINENUMBER").Value = LineNumber
+                    '.Fields("LINENUMBER").Value = LineNumber
                     .Fields("LINETYPE").Value = MyDataRow("LINETYPE")
                     '.Fields("SLXLOCATIONID").Value = ""
                     .Fields("UNITOFMEASUREID").Value = MyDataRow("UNITOFMEASUREID")
@@ -73,14 +73,14 @@ Module StockCardFunctions
                     .Fields("ORIGPRODUCTPRICE").Value = MyDataRow("ORIGPRODUCTPRICE") 'ssommerfeldt February 24, 2014
                     .Fields("ORIGPRODUCTDISCOUNT").Value = MyDataRow("ORIGPRODUCTDISCOUNT") ' ssommerfeldt February 24, 2014
 
-                  
+
 
                 Else
                     '=======================================
                     'updating
                     '=======================================
                     '.Fields("SALESORDERITEMSID").Value = Application.BasicFunctions.GetIDFor("SALESORDERITEMS")
-                    .Fields("SALESORDERID").Value = "TEMP"
+                    .Fields("SALESORDERID").Value = SalesOrderId
                     '.Fields("CREATEUSER").Value = ""
                     '.Fields("CREATEDATE").Value = ""
                     .Fields("MODIFYUSER").Value = "ADMIN"
@@ -99,7 +99,7 @@ Module StockCardFunctions
                     .Fields("UNIT").Value = MyDataRow("UNIT")
                     .Fields("CALCULATEDPRICE").Value = System.Math.Round(CalculatedPrice, 2, MidpointRounding.AwayFromZero) '===========TAC Caclulated
                     '.Fields("GLOBALSYNCID").Value = ""
-                    .Fields("LINENUMBER").Value = LineNumber
+                    '.Fields("LINENUMBER").Value = LineNumber ' Do NOt Do Line Numbers
                     .Fields("LINETYPE").Value = MyDataRow("LINETYPE")
                     '.Fields("SLXLOCATIONID").Value = ""
                     .Fields("UNITOFMEASUREID").Value = MyDataRow("UNITOFMEASUREID")
@@ -268,12 +268,18 @@ Module StockCardFunctions
         Using conn As New OleDbConnection(SlxConnectionString)
             conn.Open()
             Using cmd As New OleDbCommand(sql, conn)
-                Dim fieldval As String = cmd.ExecuteScalar()
-                If IsDBNull(fieldval) Then
-                    Return Nothing
+
+                If IsDBNull(cmd.ExecuteScalar()) Then
+                    Return ""
 
                 Else
-                    Return fieldval
+                    Dim fieldval As String = cmd.ExecuteScalar()
+                    If fieldval = Nothing Then
+                        Return ""
+                    Else
+                        Return fieldval
+                    End If
+
                 End If
 
             End Using
