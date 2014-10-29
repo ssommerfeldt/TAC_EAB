@@ -8,4 +8,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <StartArguments>"-Accountid=AEAB3A0006ZT`Provider=SLXOLEDB.1;Persist Security Info=True;Password=;User ID=admin;Initial Catalog=EAB_SLX;Data Source=EAB;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";"</StartArguments>
+  </PropertyGroup>
 </Project>

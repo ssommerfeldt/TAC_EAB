@@ -28,6 +28,7 @@ Partial Class LoadingForm
         Me.startAsyncButton = New System.Windows.Forms.Button()
         Me.cancelAsyncButton = New System.Windows.Forms.Button()
         Me.lblMessage = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BackgroundWorker1
@@ -63,20 +64,30 @@ Partial Class LoadingForm
         'lblMessage
         '
         Me.lblMessage.AutoEllipsis = True
-        Me.lblMessage.BackColor = System.Drawing.Color.Red
+        Me.lblMessage.BackColor = System.Drawing.Color.LightGreen
         Me.lblMessage.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMessage.Location = New System.Drawing.Point(38, 15)
         Me.lblMessage.Name = "lblMessage"
-        Me.lblMessage.Size = New System.Drawing.Size(189, 48)
+        Me.lblMessage.Size = New System.Drawing.Size(209, 48)
         Me.lblMessage.TabIndex = 4
         Me.lblMessage.Text = "Updating..."
         Me.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 72)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(297, 13)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "V1.1         Please DO NOT  Modify StockCard  while updating"
         '
         'LoadingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(264, 94)
+        Me.ClientSize = New System.Drawing.Size(312, 90)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.resultlabel)
         Me.Controls.Add(Me.lblMessage)
         Me.Controls.Add(Me.cancelAsyncButton)
@@ -85,6 +96,7 @@ Partial Class LoadingForm
         Me.Name = "LoadingForm"
         Me.Text = "Please Wait..."
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
@@ -92,4 +104,5 @@ Partial Class LoadingForm
     Friend WithEvents startAsyncButton As System.Windows.Forms.Button
     Friend WithEvents cancelAsyncButton As System.Windows.Forms.Button
     Friend WithEvents lblMessage As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

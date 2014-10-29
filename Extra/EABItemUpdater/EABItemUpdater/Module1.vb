@@ -157,13 +157,59 @@ Module Module1
         strConn = strConn.Replace("Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;TIMEZONE=NONE;SVRCERT=12345;ACTIVITYSECURITY=OFF" & Chr(34), "Extended Properties=" & Chr(34) & "PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;")
         '===================================================
         'CleanUpExisting(Accountid, strConn)  This causes problems as it is very commmon to have multiple instances of this running at the same time
-        '==================================================       
+        '==================================================   
+
+        Dim SalesOrderId As String
+        SalesOrderId = GetField("SALESORDERID", "SALESORDER", "ACCOUNTID='" & Accountid & "' AND STATUS = 'TEMP DO NOT CHANGE' ", strConn)
+
+        If SalesOrderId = "" Then
+            SalesOrderId = CreateSalesOrder(Accountid, "SO", strConn)
+        End If
+        '========================================================
+
         Dim objConn As New OleDbConnection(strConn)
 
         Try
             objConn.Open()
             Dim SQL As String
-            SQL = "  SELECT     s.STOCKCARDITEMSID, p.PRODUCTID, p.WAREHOUSEID, 'TEMP' AS SALESORDERID, p.NAME AS PRODUCT, s.CATEGORYNAME AS FAMILY, p.ACTUALID, 
+            SQL = "  SELECT  SALESORDERID FROM SALESORDER WHERE ACCOUNTID = '" & Accountid & "' AND STATUS = 'TEMP DO NOT CHANGE'"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                'returnDataRow = row
+                i = i + 1
+
+
+                ProcessSalesOrderItemsforSalesOrder(row("SALESORDERID"), Accountid, strConn)
+
+                Console.WriteLine("Processes line " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Dim EventMessage As String
+            EventMessage = ex.Message & Chr(10) & Chr(13) & "In ProcessSingleAccount"
+            WriteStatusLog(EventMessage)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+
+    
+
+    End Sub
+    Sub ProcessSalesOrderItemsforSalesOrder(ByVal SalesOrderid As String, ByVal Accountid As String, strConn As String)
+        Dim i As Integer = 0
+        Dim objConn As New OleDbConnection(strConn)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "  SELECT     s.STOCKCARDITEMSID, p.PRODUCTID, p.WAREHOUSEID, 'TEMP' AS SALESORDERID, p.NAME AS PRODUCT, s.CATEGORYNAME AS FAMILY, p.ACTUALID, "
             SQL = SQL & "                      p.DESCRIPTION, p.UNIT, 'StandarLine' AS LINETYPE, p.UNITOFMEASUREID, p.UPC, ISNULL(s.MAX_STOCKLEVEL, 0) AS MAX_STOCKLEVEL, "
             SQL = SQL & "                      s.ACCOUNTID AS TACACCOUNTID, s.STOCKCARDITEMSID AS TACSTOCKCARDITEMID, s.DISTRIBUTORMARGIN, s.DISTRIBUTORPRICE, s.LISTPRICE, "
             SQL = SQL & " s.DEALERPRICE, s.MARGIN, s.ORIGPRODUCTPRICE, s.ORIGPRODUCTDISCOUNT"
@@ -188,7 +234,7 @@ Module Module1
                 i = i + 1
 
 
-                AddEditSalesOrderItemFromStockCardItem(row, strConn, i.ToString(), Accountid)
+                AddEditSalesOrderItemFromStockCardItem(row, strConn, SalesOrderid, Accountid)
                 Console.WriteLine("Processes line " & i)
             Next row
 
@@ -201,33 +247,6 @@ Module Module1
             If objConn.State = ConnectionState.Open Then objConn.Close()
         End Try
         objConn = Nothing
-
-        'SQL = " Select  s.STOCKCARDITEMSID"
-        '    SQL = SQL & " FROM         sysdba.STOCKCARDITEMS AS s INNER JOIN "
-        '    SQL = SQL & "                      sysdba.PRODUCT AS p1_ ON s.PRODUCTID = p1_.PRODUCTID"
-        '    SQL = SQL & " WHERE     (s.ACCOUNTID = '" & Accountid & "') AND (NOT (p1_.STATUS = 'Deleted'))"
-        'MsgBox(SQL)
-        'Dim objConn As New OleDbConnection(strConn)
-        'Try
-        '    objConn.Open()
-        '    Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
-        '    Dim objReader As OleDbDataReader = objCMD.ExecuteReader()
-        '    If objReader.HasRows Then
-        '        Do While objReader.Read()
-        '            i = i + 1
-        '            AddEditSalesOrderItemFromStockCardItem(objReader.GetString(0), strConn, i)
-        '            Console.WriteLine("Processes line " & i)
-        '        Loop
-
-        '    End If
-        '    objReader.Close()
-        'Catch ex As Exception
-        '    'Dim EventMessage As String
-        '    'EventMessage = ex.Message & Chr(10) & Chr(13) & "In Class CreateTicket " & "FindContactIDFromEmail Line 281"
-        '    'WriteToEventLog(EventMessage, , Diagnostics.EventLogEntryType.Error)
-        'Finally
-        '    If objConn.State = Data.ConnectionState.Open Then objConn.Close()
-        'End Try
 
     End Sub
     Sub CleanUpExisting(ByVal Accountid As String, ByVal ConnectionString As String)
