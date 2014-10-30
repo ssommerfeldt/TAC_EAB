@@ -117,7 +117,7 @@ Module Module1
             Dim SQL As String
             SQL = "  SELECT DISTINCT sysdba.ACCOUNT.ACCOUNTID"
             SQL = SQL & " FROM         sysdba.ACCOUNT INNER JOIN"
-            SQL = SQL & "                      sysdba.STOCKCARDITEMS ON sysdba.ACCOUNT.ACCOUNTID = sysdba.STOCKCARDITEMS.ACCOUNTID"
+        SQL = SQL & "                      sysdba.STOCKCARDITEMS ON sysdba.ACCOUNT.ACCOUNTID = sysdba.STOCKCARDITEMS.ACCOUNTID Where Accountmanagerid ='UEAB3A00000I'"
         Try
             objConn.Open()
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
