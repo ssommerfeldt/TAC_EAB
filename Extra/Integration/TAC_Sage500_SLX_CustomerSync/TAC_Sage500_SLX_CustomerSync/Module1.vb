@@ -18,9 +18,9 @@ Module Module1
     Sub Main()
         Call LogErrors(PROJECTNAME, " - TAC_Sage500_SLX_CustomerSync", "Process Start", EventLogEntryType.Information)
 
-        strSLXNativeConstr = GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
-        strSage500Constr = GetConnection(PROJECTNAME, "Sage500Connection.udl")
-        strSLXConstr = GetConnection(PROJECTNAME, "SLXConnection.udl")
+        strSLXNativeConstr = My.Settings.SLXNativeConstr 'GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
+        strSage500Constr = My.Settings.Sage500Constr 'GetConnection(PROJECTNAME, "Sage500Connection.udl")
+        strSLXConstr = My.Settings.SLXConstr ' GetConnection(PROJECTNAME, "SLXConnection.udl")
 
         If strSLXConstr = "" Or strSLXNativeConstr = "" Or strSage500Constr = "" Then
             '=============================================
@@ -62,6 +62,10 @@ Module Module1
 
         Console.WriteLine("------ Changed Account  Start ------")
         Call Process_New_ACCOUNT_CHANGED()
+
+        Console.WriteLine("------ Changed Account Address  Start ------")
+        Call Process_Changed_ACCOUNTADDRESS()
+
 
         Console.WriteLine("------ Changed Account Finnancial Start ------")
         Call Process_Changed_ACCOUNTFINNANCIAL()
@@ -213,12 +217,18 @@ Module Module1
                     .Fields("MAINPHONE").Value = MyDataRow("MAINPHONE")
                     .Fields("FAX").Value = MyDataRow("FAX")
                     '.Fields("SECCODEID").Value = MyDataRow("SECCODEID")
-                    .Fields("ACCOUNTMANAGERID").Value = MyDataRow("ACCOUNTMANAGERID")
+                    '.Fields("ACCOUNTMANAGERID").Value = MyDataRow("ACCOUNTMANAGERID")
                     .Fields("ACCOUNT_UC").Value = MyDataRow("ACCOUNT_UC")
                     .Fields("MASCUSTKEY").Value = MyDataRow("MASCUSTKEY")
                     .Fields("CURRENCYCODE").Value = MyDataRow("CURRENCYCODE")
                     '.Fields("ACCOUNTID").Value = MyDataRow("ACCOUNTID")
                     .Fields("MASNationalAcctID").Value = MyDataRow("NationalAcctID")
+
+                    Try
+                        .Fields("MASSALESPERSONID").Value = MyDataRow("MASSALESPERSONID")
+                    Catch ex As Exception
+
+                    End Try
 
 
 
@@ -648,6 +658,44 @@ Module Module1
         End Try
         objConn = Nothing
     End Sub
+    Private Sub Process_Changed_ACCOUNTADDRESS()
+
+        Dim i As Integer = 0
+        '===================================================
+        'Dim ACCOUNTFINANCIALid As String = ""
+        'Dim Addressid As String = ""
+        'Dim BillingId As String = ""
+        '==================================================       
+        Dim objConn As New OleDbConnection(strSage500Constr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "Select * from vdvMAS_to_SLX_ACCOUNTaddress_TAC_Changed"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                'ACCOUNTFINANCIALid = GetNewSLXID("ACCOUNTFINANCIAL", strSLXConstr)
+                'Addressid = GetNewSLXID("ADDRESS", strSLXConstr)
+
+                i = i + 1
+                AddEdit_ACCOUNTADDRESS(row, row("ADDRESSID"))
+
+                Console.WriteLine("Processes ADDDRESS " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "ADDRESS ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
 
     Public Sub AddEdit_ACCOUNTADDRESS(ByVal MyDataRow As DataRow, ByVal Addressid As String)
         '============================================================
@@ -704,8 +752,22 @@ Module Module1
                     '=======================================
                     '.Fields("CREATEDATE").Value = Now
                     '.Fields("CREATEUSER").Value = "ADMIN"
-                    '.Fields("MODIFYDATE").Value = Now
-                    '.Fields("MODIFYUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    .Fields("DESCRIPTION").Value = MyDataRow("DESCRIPTION")
+                    .Fields("ADDRESS1").Value = MyDataRow("ADDRESS1")
+                    .Fields("ADDRESS2").Value = MyDataRow("ADDRESS2")
+                    .Fields("CITY").Value = MyDataRow("CITY")
+                    .Fields("STATE").Value = MyDataRow("STATE")
+                    .Fields("POSTALCODE").Value = MyDataRow("POSTALCODE")
+                    .Fields("COUNTRY").Value = MyDataRow("COUNTRY")
+                    
+
+                    .Fields("ADDRESS3").Value = MyDataRow("ADDRESS3")
+                    .Fields("ADDRESS4").Value = MyDataRow("ADDRESS4")
+                    .Fields("ERPNAME").Value = MyDataRow("ERPNAME")
+                    .Fields("MASADDRKEY").Value = MyDataRow("MASADDRKEY")
 
 
 
