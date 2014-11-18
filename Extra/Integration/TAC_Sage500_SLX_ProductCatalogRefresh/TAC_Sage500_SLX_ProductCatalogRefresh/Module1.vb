@@ -18,9 +18,9 @@ Module Module1
     Sub Main()
         Call LogErrors(PROJECTNAME, " - Main", "Process Start", EventLogEntryType.Information)
 
-        strSLXNativeConstr = GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
-        strSage500Constr = GetConnection(PROJECTNAME, "Sage500Connection.udl")
-        strSLXConstr = GetConnection(PROJECTNAME, "SLXConnection.udl")
+        strSLXNativeConstr = My.Settings.SLXNativeConstr 'GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
+        strSage500Constr = My.Settings.Sage500Constr 'GetConnection(PROJECTNAME, "Sage500Connection.udl")
+        strSLXConstr = My.Settings.SLXConstr 'GetConnection(PROJECTNAME, "SLXConnection.udl")
 
         If strSLXConstr = "" Or strSLXNativeConstr = "" Or strSage500Constr = "" Then
             '=============================================
@@ -38,8 +38,14 @@ Module Module1
         'Call GetPartsHandlerData("Account")
         'Call GetPartsHandlerData("History")
 
-        Console.WriteLine("------ Product Cleanup Start ------")
-        'Call Process_CleanUPDuplicates()
+
+        Console.WriteLine("Move Temp into Compare")
+        Call Clean_Compare()
+        Call Move_Temp_To_Compare()
+        Console.WriteLine("Clean Temp table")
+        Call CleanTempDir()
+        Console.WriteLine("Get Source Data")
+        Call GetSourceData()
 
         '============================================================
         Console.WriteLine("------ New Products Start ------")
@@ -58,7 +64,148 @@ Module Module1
     End Sub
 
 
-   
+    Private Sub Clean_Compare()
+
+
+
+        Dim sql As String = "Truncate table MAS_TO_SLX_PRODUCT_ZCompare"
+        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+        Using conn As New SqlConnection(strConnection)
+            Dim cmd As New SqlCommand(sql, conn)
+            '==========================================================================
+            ' Clean Out the Compare Table 
+            '===========================================================================
+            Try
+                conn.Open()
+                cmd.ExecuteNonQuery()
+            Catch ex As Exception
+                Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+                Console.WriteLine(ex.Message)
+            Finally
+                If conn.State = ConnectionState.Open Then
+                    conn.Close()
+                End If
+            End Try
+
+            '==========================================================================
+
+        End Using
+
+
+    End Sub
+
+    Private Sub Move_Temp_To_Compare()
+
+
+        Dim sql As String
+        sql = "Insert into dbo.MAS_TO_SLX_PRODUCT_ZCompare"
+        sql = sql & " Select * from dbo.MAS_TO_SLX_PRODUCT_Temp"
+        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+        Using conn As New SqlConnection(strConnection)
+            Dim cmd As New SqlCommand(sql, conn)
+            '==========================================================================
+            ' Push all Records from Temp into Compare
+            '===========================================================================
+            Try
+                conn.Open()
+                cmd.ExecuteNonQuery()
+            Catch ex As Exception
+                Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+                Console.WriteLine(ex.Message)
+            Finally
+                If conn.State = ConnectionState.Open Then
+                    conn.Close()
+                End If
+            End Try
+
+
+        End Using
+
+
+    End Sub
+
+
+    Private Sub CleanTempDir()
+
+
+        Dim sql As String = "Truncate table dbo.MAS_TO_SLX_PRODUCT_Temp"
+        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+        Using conn As New SqlConnection(strConnection)
+            Dim cmd As New SqlCommand(sql, conn)
+
+            Try
+                conn.Open()
+                cmd.ExecuteNonQuery()
+            Catch ex As Exception
+                Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+                Console.WriteLine(ex.Message)
+            Finally
+                If conn.State = ConnectionState.Open Then
+                    conn.Close()
+                End If
+            End Try
+        End Using
+
+
+    End Sub
+
+
+    Private Sub GetSourceData()
+        Dim SourceconnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSage500Constr)
+        Dim SLXConnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+        Dim strSourceSQL As String
+
+        strSourceSQL = "SELECT     vdvStockStatus.ShortDesc AS NAME, timItemDescription.LongDesc AS DESCRIPTION, vdvStockStatus.ItemID AS ACTUALID, timItemClass.ItemClassName AS FAMILY, "
+        strSourceSQL = strSourceSQL & "                      timItem.StdPrice AS PRICE, tmpItemType.LocalText AS PRODUCTGROUP, CONVERT(varchar(255), tmpItemStatus.LocalText) AS STATUS, "
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus.UnitMeasID AS UNIT, NULL AS STOCKVOLUME, NULL AS STOCKWEIGHT, NULL AS STOCKITEM, NULL AS PROGRAM, NULL AS SUPPLIER, NULL "
+        strSourceSQL = strSourceSQL & "                      AS VENDOR, NULL AS SITEID, NULL AS WAREHOUSELOCATION, NULL AS COMMISSIONABLE, NULL AS TAXABLE, NULL AS ACCOUNTINGPERIOD, "
+        strSourceSQL = strSourceSQL & "                      tglAccount.GLAcctNo AS GLACCOUNTNUMBER, NULL AS GLSUBACCOUNTNUMBER, NULL AS DATAOWNER, NULL AS TYPE, NULL AS FIXEDCOST, NULL "
+        strSourceSQL = strSourceSQL & "                      AS GLOBALSYNCID, NULL AS APPID, NULL AS TICK, NULL AS COMMODITYGROUPID, NULL AS ACTIVEFLAG, 'T' AS SELLINGALLOWEDFLAG, "
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID, NULL AS SELLINGUOMID, NULL AS SELLINGUOMNUMBER, NULL AS CLASSIFICATION, NULL "
+        strSourceSQL = strSourceSQL & "                      AS COMMODITYTYPE, vdvStockStatus.ItemKey AS MASITEMKEY, timItemUnitOfMeas.UPC, vdvStockStatus.ItemID AS MASITEMID, "
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus.WhseID AS WAREHOUSEID, vdvStockStatus.CompanyID, vdvStockStatus.QtyOnHand, vdvStockStatus.QtyAvailable, vdvStockStatus.SurplusQty, "
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus.QtyOnHold, vdvStockStatus.MaxStockLevel, timItem.ProdPriceGroupKey"
+        strSourceSQL = strSourceSQL & " FROM         tglAccount LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      timInventory ON tglAccount.GLAcctKey = timInventory.InvtAcctKey RIGHT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus INNER JOIN"
+        strSourceSQL = strSourceSQL & "                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey ON timInventory.WhseKey = vdvStockStatus.WhseKey AND "
+        strSourceSQL = strSourceSQL & "                      timInventory.ItemKey = vdvStockStatus.ItemKey LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      timItemUnitOfMeas ON timItem.SalesUnitMeasKey = timItemUnitOfMeas.TargetUnitMeasKey AND timItem.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
+        strSourceSQL = strSourceSQL & "                            FROM          vListValidationString AS vListValidationString_1"
+        strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'Status')) AS tmpItemStatus ON timItem.Status = tmpItemStatus.DBValue LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
+        strSourceSQL = strSourceSQL & "                            FROM          vListValidationString"
+        strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey"
+
+
+        ' get the source data
+        '=================================================================
+
+
+        Using sourceConnection As New SqlConnection(SourceconnectionString)
+            Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
+            sourceConnection.Open()
+            Dim reader As SqlDataReader = myCommand.ExecuteReader()
+
+            ' open the destination data
+            Using destinationConnection As New SqlConnection(SLXConnectionString)
+                ' open the connection
+                destinationConnection.Open()
+
+                Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
+                    bulkCopy.BatchSize = 500
+                    bulkCopy.NotifyAfter = 1000
+                    ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
+                    bulkCopy.DestinationTableName = "MAS_TO_SLX_PRODUCT_Temp"
+                    bulkCopy.WriteToServer(reader)
+                End Using
+            End Using
+            reader.Close()
+        End Using
+    End Sub
 
     Private Sub Process_NewProducts()
 
@@ -68,12 +215,18 @@ Module Module1
         'Dim ShippingId As String = ""
         'Dim BillingId As String = ""
         '==================================================       
-        Dim objConn As New OleDbConnection(strSage500Constr)
+        Dim objConn As New OleDbConnection(strSLXNativeConstr)
 
         Try
             objConn.Open()
             Dim SQL As String
-            SQL = "Select * from vdvMAS_to_SLX_Products_TAC"
+            'SQL = "Select * from vdvMAS_to_SLX_Products_TAC" ' This View was in MAS but is now moved to SLX
+            SQL = "SELECT     MAS_TO_SLX_PRODUCT_Temp.*"
+            SQL = SQL & " FROM         MAS_TO_SLX_PRODUCT_Temp LEFT OUTER JOIN"
+            SQL = SQL & "                       sysdba.PRODUCT ON MAS_TO_SLX_PRODUCT_Temp.CompanyID = sysdba.PRODUCT.COMPANYID AND "
+            SQL = SQL & " MAS_TO_SLX_PRODUCT_Temp.WAREHOUSEID = sysdba.PRODUCT.WAREHOUSEID And"
+            SQL = SQL & " MAS_TO_SLX_PRODUCT_Temp.MASITEMKEY = sysdba.PRODUCT.MASITEMKEY"
+            SQL = SQL & " WHERE(sysdba.PRODUCT.PRODUCTID Is NULL)"
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
@@ -454,12 +607,12 @@ Module Module1
         'Dim ShippingId As String = ""
         'Dim BillingId As String = ""
         '==================================================       
-        Dim objConn As New OleDbConnection(strSage500Constr)
+        Dim objConn As New OleDbConnection(strSLXNativeConstr)
 
         Try
             objConn.Open()
             Dim SQL As String
-            SQL = "Select * from vdvMAS_to_SLX_Products_TAC_Changed"
+            SQL = "Select * from vdvMAS_to_SLX_PRODUCT_TAC_CHANGED"
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
