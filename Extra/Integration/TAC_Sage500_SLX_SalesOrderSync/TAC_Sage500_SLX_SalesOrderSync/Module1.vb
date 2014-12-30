@@ -36,13 +36,16 @@ Module Module1
 
         End If
 
-        Console.WriteLine("Move Temp into Compare")
-        Call Clean_SalesOrder_Compare()
-        Call Move_SalesOrder_Temp_To_Compare()
-        Console.WriteLine("Clean Temp table")
-        Call CleanTempDir()
-        Console.WriteLine("Get Source Data --Header")
+        'Console.WriteLine("Move Temp into Compare")
+
+        'Call Move_SalesOrder_Temp_To_Compare()
+        'Console.WriteLine("Clean Temp table")
+        'Call CleanTempDir()
+        'Console.WriteLine("Get Source Data --Header")
         '====================================================================================================
+        ' HEADER 
+        '====================================================================================================
+        ' MAS500 Query
         Dim SQLHeader As String = "SELECT     TranStatus, ShipKey AS Key1, UserFld1, TranStatusAsText, TranID"
         SQLHeader = SQLHeader & " FROM         vdvCustomerReturn"
         SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL)"
@@ -50,29 +53,89 @@ Module Module1
         SQLHeader = SQLHeader & " SELECT     Status, SOKey, UserFld1, "
         SQLHeader = SQLHeader & " CASE status WHEN '0' THEN 'Unacknoledged' WHEN '1' THEN 'Open' WHEN '2' THEN 'Inactive' WHEN '3' THEN 'Canceled' WHEN '4' THEN 'Closed' WHEN '5' THEN 'Incomplete'"
         SQLHeader = SQLHeader & " WHEN '6' THEN 'Pending Approval' END AS StatusTXT, TranID"
-        SQLHeader = SQLHeader & " FROM(tsoSalesOrder)"
+        SQLHeader = SQLHeader & " FROM tsoSalesOrder "
         SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL) AND (UserFld1 <> '')"
 
-        Call GetSourceData("SELECT * from vdvMAS_to_SLX_SalesOrderItemShipment_TAC", "MAS_to_SLX_SalesOrderItemShipment_TAC_temp")
-        Console.WriteLine("------ Salesorder Start ------")
-        Call Process_Changed_SalesOrder_Info()
+        '=================================================================================
+        ' 1. CLEAN COMPARE
+        '=================================================================================
+        Clean_Table("dbo.MAS_to_SLX_SalesOrderHEADER_TAC_zcompare", strSLXNativeConstr)
+        '=================================================================================
+        ' 2. MOVE TEMP TO COMPARE
+        '=================================================================================
+        Move_Temp_To_Compare("dbo.MAS_to_SLX_SalesOrderHEADER_TAC_zcompare", "dbo.MAS_to_SLX_SalesOrderHEADER_TAC_temp", strSLXNativeConstr)
+        '=================================================================================
+        ' 3. CLEAN TEMP
+        '=================================================================================
+        Clean_Table("dbo.MAS_to_SLX_SalesOrderHEADER_TAC_temp", strSLXNativeConstr)
+        '=================================================================================
+        ' 4. MOVE SOURCE TO TEMP
+        '=================================================================================
+        GetSourceData(SQLHeader, "dbo.MAS_to_SLX_SalesOrderHEADER_TAC_temp")
+        '=================================================================================
+        ' 5. Process Insert / Updates
+        '=================================================================================
+        Process_Changed_SalesOrderHEADER_Info()
+        ' 6. Process Deletes
+        '    DO NOT PROCESS DELETES
 
-        Console.WriteLine("------ Shipping Changes Start ------")
-        Call Process_ChangedShippingInfo()
 
+        '================================================================
+        '= LINE
+        '================================================================
+        Console.WriteLine("------ Line Changes Start ------")
+        ' MAS500 Query
+        Dim SQL_LINE As String = "-- SalesOrders Lines  " & vbCrLf
+        SQL_LINE = SQL_LINE & " SELECT     vdvShipmentLine.ItemKey, vdvShipmentLine.ShipDate, vdvShipmentLine.QtyShipped, vdvShipmentLine.SchdShipDate, tsoSalesOrder.TranID, "
+        SQL_LINE = SQL_LINE & " tsoSalesOrder.UserFld1"
+        SQL_LINE = SQL_LINE & " FROM         vdvShipmentLine INNER JOIN"
+        SQL_LINE = SQL_LINE & " tsoSalesOrder ON vdvShipmentLine.SOKey = tsoSalesOrder.SOKey"
+        SQL_LINE = SQL_LINE & " WHERE(tsoSalesOrder.UserFld1 Is Not NULL)"
+        SQL_LINE = SQL_LINE & vbCrLf
+        SQL_LINE = SQL_LINE & " Union"
+        SQL_LINE = SQL_LINE & " -- Customer Returns Lines" & vbCrLf
+        SQL_LINE = SQL_LINE & " SELECT     tsoShipLine.ItemKey, tsoShipment.PostDate, tsoShipLineDist.QtyShipped, tsoShipment.PostDate AS SchdShipDate, vdvCustomerReturn.TranID, "
+        SQL_LINE = SQL_LINE & " vdvCustomerReturn.UserFld1"
+        SQL_LINE = SQL_LINE & " FROM         vdvCustomerReturn INNER JOIN"
+        SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER JOIN"
+        SQL_LINE = SQL_LINE & "                       tsoShipLineDist ON tsoShipLine.ShipLineKey = tsoShipLineDist.ShipLineKey INNER JOIN"
+        SQL_LINE = SQL_LINE & "                       tsoShipment ON vdvCustomerReturn.ShipKey = tsoShipment.ShipKey"
+        SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.UserFld1 Is Not NULL)"
 
-        'Console.WriteLine("------ Address Start ------")
-        'Call Process_LEADAddress()
+        '=================================================================================
+        ' 1. CLEAN COMPARE
+        '=================================================================================
+        Clean_Table("dbo.MAS_to_SLX_SalesOrderLINE_TAC_zcompare", strSLXNativeConstr)
+        '=================================================================================
+        ' 2. MOVE TEMP TO COMPARE
+        '=================================================================================
+        Move_Temp_To_Compare("dbo.MAS_to_SLX_SalesOrderLINE_TAC_zcompare", "dbo.MAS_to_SLX_SalesOrderLINE_TAC_temp", strSLXNativeConstr)
+        '=================================================================================
+        ' 3. CLEAN TEMP
+        '=================================================================================
+        Clean_Table("dbo.MAS_to_SLX_SalesOrderLINE_TAC_temp", strSLXNativeConstr)
+        '=================================================================================
+        ' 4. MOVE SOURCE TO TEMP
+        '=================================================================================
+        GetSourceData(SQL_LINE, "dbo.MAS_to_SLX_SalesOrderLINE_TAC_temp")
+        '=================================================================================
+        ' 5. Process Insert / Updates
+        '=================================================================================
+        Process_Changed_SALESORDERLINE()
+        ' 6. Process Deletes
+        '    DO NOT PROCESS DELETES
+
 
 
         Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
     End Sub
 
-    Private Sub Clean_SalesOrder_Compare()
+    
+    Public Sub Clean_Table(strTable As String, ConnectionString As String)
 
 
-        Dim sql As String = "Truncate table dbo.MAS_to_SLX_SalesOrderItemShipment_TAC_zcompare"
-        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+        Dim sql As String = "Truncate table " & strTable
+        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(ConnectionString)
         Using conn As New SqlConnection(strConnection)
             Dim cmd As New SqlCommand(sql, conn)
             '==========================================================================
@@ -91,19 +154,19 @@ Module Module1
             End Try
 
             '==========================================================================
-           
+
         End Using
 
 
     End Sub
 
-    Private Sub Move_SalesOrder_Temp_To_Compare()
-
+    Private Sub Move_Temp_To_Compare(strCOMPARE_Table As String, strTEMP_Table As String, ConnectionString As String)
 
         Dim sql As String
-        sql = "Insert into dbo.MAS_to_SLX_SalesOrderItemShipment_TAC_zcompare"
-        sql = sql & " Select * from dbo.MAS_to_SLX_SalesOrderItemShipment_TAC_temp"
-        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+        sql = "Insert into " & strCOMPARE_Table
+        sql = sql & " Select * from " & strTEMP_Table
+
+        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(ConnectionString)
         Using conn As New SqlConnection(strConnection)
             Dim cmd As New SqlCommand(sql, conn)
             '==========================================================================
@@ -121,35 +184,12 @@ Module Module1
                 End If
             End Try
 
-            
+
         End Using
 
 
     End Sub
 
-    Private Sub CleanTempDir()
-
-
-        Dim sql As String = "Truncate table dbo.MAS_to_SLX_SalesOrderItemShipment_TAC_temp"
-        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
-        Using conn As New SqlConnection(strConnection)
-            Dim cmd As New SqlCommand(sql, conn)
-
-            Try
-                conn.Open()
-                cmd.ExecuteNonQuery()
-            Catch ex As Exception
-                Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
-                Console.WriteLine(ex.Message)
-            Finally
-                If conn.State = ConnectionState.Open Then
-                    conn.Close()
-                End If
-            End Try
-        End Using
-
-
-    End Sub
 
     Private Sub GetSourceData(ByVal strSourceSQL As String, ByVal strDestinationTableName As String)
         Dim SourceconnectionString As String = CleanBulkLoadNativeSQLConnectionString(strMASConstr)
@@ -186,20 +226,28 @@ Module Module1
     End Sub
 
 
-    Private Sub Process_ChangedShippingInfo()
+    Private Sub Process_Changed_SALESORDERLINE()
 
         Dim i As Integer = 0
         '===================================================
         Dim ProductId As String = ""
         'Dim ShippingId As String = ""
         'Dim BillingId As String = ""
+        Dim SalesOrderItemId As String = ""
         '==================================================       
         Dim objConn As New OleDbConnection(strSLXNativeConstr)
 
         Try
             objConn.Open()
             Dim SQL As String
-            SQL = "Select * from vdvMAS_to_SLX_SalesOrder_TAC_CHANGED"
+            SQL = "SELECT DISTINCT "
+            SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.ItemKey, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.ShipDate,"
+            SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.QtyShipped, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.SchdShipDate,"
+            SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.TranID, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1, tmpSO.SALESORDERID"
+            SQL = SQL & " FROM         vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED INNER JOIN"
+            SQL = SQL & "                           (SELECT     SALESORDERID, ALTERNATEKEYPREFIX + '-' + ALTERNATEKEYSUFFIX AS SalesOrderNumber"
+            SQL = SQL & "                             FROM          sysdba.SALESORDER) AS tmpSO ON vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1 = tmpSO.SalesOrderNumber"
+            SQL = SQL & " WHERE     (vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1 <> '') "
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
@@ -208,8 +256,9 @@ Module Module1
 
             For Each row As DataRow In dt.Rows
                 'ProductId = GetNewSLXID("PRODUCT", strSLXConstr)
+                SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
                 i = i + 1
-                AddEditSALESORDERITEM(row, row("SALESORDERITEMSID"))
+                AddEditSALESORDERITEM(row, SalesOrderItemId)
 
                 Console.WriteLine("Processes SalesorderItem Changed" & i)
             Next row
@@ -288,11 +337,11 @@ Module Module1
     End Sub
 
 
-    Private Sub Process_Changed_SalesOrder_Info()
+    Private Sub Process_Changed_SalesOrderHEADER_Info()
 
         Dim i As Integer = 0
         '===================================================
-        Dim ProductId As String = ""
+        'Dim ProductId As String = ""
         'Dim ShippingId As String = ""
         'Dim BillingId As String = ""
         '==================================================       
@@ -301,7 +350,7 @@ Module Module1
         Try
             objConn.Open()
             Dim SQL As String
-            SQL = "Select Distinct  SALESORDERID, StatusTXT, TRANID from vdvMAS_to_SLX_SalesOrder_TAC_CHANGED"
+            SQL = "Select * from vdvMAS_to_SLX_SalesOrderHEADER_TAC_CHANGED"
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
@@ -311,9 +360,9 @@ Module Module1
             For Each row As DataRow In dt.Rows
                 'ProductId = GetNewSLXID("PRODUCT", strSLXConstr)
                 i = i + 1
-                AddEditSALESORDER(row, row("SALESORDERID"))
+                AddEditSALESORDER(row, row("USERFLD1"))
 
-                Console.WriteLine("Processes Salesorder Changed " & i)
+                Console.WriteLine("Processes HEADER Changed " & i)
             Next row
 
         Catch ex As Exception
@@ -326,7 +375,7 @@ Module Module1
     End Sub
 
 
-    Public Sub AddEditSALESORDER(ByVal MyDataRow As DataRow, ByVal SALESORDERID As String)
+    Public Sub AddEditSALESORDER(ByVal MyDataRow As DataRow, ByVal strUserField1 As String)
         '============================================================
         ' get Default Data row from SALESORDERITEM SHIPPING INFO
         '============================================================
@@ -336,7 +385,7 @@ Module Module1
         '=======================
         Dim objConn As New ADODB.Connection()
         Dim objRS As New ADODB.Recordset
-        Dim strSQL As String = "SELECT * FROM SALESORDER WHERE SALESORDERID = '" & SALESORDERID & "'"
+        Dim strSQL As String = "SELECT * FROM SALESORDER WHERE SalesOrderNumber = '" & strUserField1 & "'"
 
 
         Try
@@ -372,10 +421,10 @@ Module Module1
 
                     '.Fields("PRODUCTID").Value = Productid
 
-                    .Fields("MASSTATUS").Value = MyDataRow("StatusTXT")
-                    .Fields("MASNumber").Value = MyDataRow("TRANID")
+                    .Fields("MASSTATUS").Value = MyDataRow("TranStatusAsText")
+                    .Fields("MASNumber").Value = MyDataRow("TranID")
 
-                   
+
 
                 End If
 
@@ -389,6 +438,74 @@ Module Module1
 
         End Try
     End Sub
+
+    Public Function GetSalesOrderItemID(SalesOrderId As String, ItemKey As String) As String
+
+
+        Dim sql As String = "SELECT     sysdba.SALESORDERITEMS.SALESORDERITEMSID "
+        sql = sql & " FROM         sysdba.SALESORDERITEMS INNER JOIN"
+        sql = sql & "                       sysdba.PRODUCT ON sysdba.SALESORDERITEMS.PRODUCTID = sysdba.PRODUCT.PRODUCTID"
+        sql = sql & " WHERE     (sysdba.SALESORDERITEMS.SALESORDERID = '" & SalesOrderId & "') and MASITEMKEY = '" & ItemKey & "'"
+
+        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+        Using conn As New SqlConnection(strConnection)
+            Dim cmd As New SqlCommand(sql, conn)
+            '==========================================================================
+            ' Clean Out the Compare Table 
+            '===========================================================================
+            Try
+                conn.Open()
+                If IsDBNull(cmd.ExecuteScalar()) Then
+                    Return ""
+
+                Else
+                    Dim fieldval As String = cmd.ExecuteScalar()
+                    If fieldval = Nothing Then
+                        Return ""
+                    Else
+                        Return fieldval
+                    End If
+
+                End If
+            Catch ex As Exception
+                Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+                Console.WriteLine(ex.Message)
+            Finally
+                If conn.State = ConnectionState.Open Then
+                    conn.Close()
+                End If
+            End Try
+
+            '==========================================================================
+
+        End Using
+
+
+    End Function
+
+    Public Function GetField(ByVal Field As String, ByVal Table As String, ByVal Where As String, ByVal SlxConnectionString As String) As String
+        Dim sql As String = String.Format("select {0} from {1} where {2}", Field, Table, (If(Where.Equals(String.Empty), "1=1", Where)))
+
+        Using conn As New OleDbConnection(SlxConnectionString)
+            conn.Open()
+            Using cmd As New OleDbCommand(sql, conn)
+
+                If IsDBNull(cmd.ExecuteScalar()) Then
+                    Return ""
+
+                Else
+                    Dim fieldval As String = cmd.ExecuteScalar()
+                    If fieldval = Nothing Then
+                        Return ""
+                    Else
+                        Return fieldval
+                    End If
+
+                End If
+
+            End Using
+        End Using
+    End Function
 
 
 
