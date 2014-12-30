@@ -41,18 +41,29 @@ Module Module1
         Call Move_SalesOrder_Temp_To_Compare()
         Console.WriteLine("Clean Temp table")
         Call CleanTempDir()
-        Console.WriteLine("Get Source Data")
-        Call GetSourceData()
+        Console.WriteLine("Get Source Data --Header")
+        '====================================================================================================
+        Dim SQLHeader As String = "SELECT     TranStatus, ShipKey AS Key1, UserFld1, TranStatusAsText, TranID"
+        SQLHeader = SQLHeader & " FROM         vdvCustomerReturn"
+        SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL)"
+        SQLHeader = SQLHeader & " UNION"
+        SQLHeader = SQLHeader & " SELECT     Status, SOKey, UserFld1, "
+        SQLHeader = SQLHeader & " CASE status WHEN '0' THEN 'Unacknoledged' WHEN '1' THEN 'Open' WHEN '2' THEN 'Inactive' WHEN '3' THEN 'Canceled' WHEN '4' THEN 'Closed' WHEN '5' THEN 'Incomplete'"
+        SQLHeader = SQLHeader & " WHEN '6' THEN 'Pending Approval' END AS StatusTXT, TranID"
+        SQLHeader = SQLHeader & " FROM(tsoSalesOrder)"
+        SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL) AND (UserFld1 <> '')"
+
+        Call GetSourceData("SELECT * from vdvMAS_to_SLX_SalesOrderItemShipment_TAC", "MAS_to_SLX_SalesOrderItemShipment_TAC_temp")
         Console.WriteLine("------ Salesorder Start ------")
         Call Process_Changed_SalesOrder_Info()
 
         Console.WriteLine("------ Shipping Changes Start ------")
         Call Process_ChangedShippingInfo()
 
-        
+
         'Console.WriteLine("------ Address Start ------")
         'Call Process_LEADAddress()
-       
+
 
         Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
     End Sub
@@ -140,12 +151,12 @@ Module Module1
 
     End Sub
 
-    Private Sub GetSourceData()
+    Private Sub GetSourceData(ByVal strSourceSQL As String, ByVal strDestinationTableName As String)
         Dim SourceconnectionString As String = CleanBulkLoadNativeSQLConnectionString(strMASConstr)
         Dim SLXConnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
-        Dim strSourceSQL As String
-       
-        strSourceSQL = " SELECT * from vdvMAS_to_SLX_SalesOrderItemShipment_TAC"
+        'Dim strSourceSQL As String
+
+        'strSourceSQL = " SELECT * from vdvMAS_to_SLX_SalesOrderItemShipment_TAC"
 
 
         ' get the source data
@@ -166,7 +177,7 @@ Module Module1
                     bulkCopy.BatchSize = 500
                     bulkCopy.NotifyAfter = 1000
                     ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
-                    bulkCopy.DestinationTableName = "MAS_to_SLX_SalesOrderItemShipment_TAC_temp"
+                    bulkCopy.DestinationTableName = strDestinationTableName
                     bulkCopy.WriteToServer(reader)
                 End Using
             End Using
