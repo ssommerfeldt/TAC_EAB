@@ -39,6 +39,7 @@ Module Module1
         '=====================================
         ' Call Each Table Main in Sequence
         '=====================================
+        Console.WriteLine("Start Processing MAS to SLX Pricing Changes")
         tarCustomerMain()
         tarNationalAcctMain()
         tarNationalAcctLevelMain()
@@ -53,6 +54,8 @@ Module Module1
         tarCustAddrMain()
         TACNATIONALACCTITEMEXCMain()
         TACInventoryItemEXCMain()
+
+        Call LogErrors(PROJECTNAME, " - Main", "Process Completed", EventLogEntryType.Information)
 
     End Sub
 

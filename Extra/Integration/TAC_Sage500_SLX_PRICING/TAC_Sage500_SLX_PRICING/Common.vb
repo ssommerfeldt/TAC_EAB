@@ -9,7 +9,7 @@ Module CommonFunctions
     Public Sub LogErrors(ByVal Project As String, ByVal Source As String, ByVal Entry As String, ByVal LogEntryType As System.Diagnostics.EventLogEntryType)
         Dim elog As New EventLog
         elog.Source = Source
-        'elog.WriteEntry(Project & " " & Entry, LogEntryType)
+        elog.WriteEntry(Project & " " & Entry, LogEntryType)
         elog.Dispose()
     End Sub
 

@@ -183,6 +183,7 @@ Module TACNATIONALACCTITEMEXC
                 'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
             Dim dt As New DataTable()
+            objCMD.CommandTimeout = 120 ' Set the TimeOut as this fails.
             dt.Load(objCMD.ExecuteReader())
 
             For Each row As DataRow In dt.Rows

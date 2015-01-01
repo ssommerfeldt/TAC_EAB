@@ -67,7 +67,7 @@ Module TACInventoryItemEXC
                 'ProductId = GetNewSLXID("PRODUCT", strSLXConstr)
                 'SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
                 i = i + 1
-                Id = row("CustKey")
+                Id = row("ItemKey")
                 AddEdit_TACInventoryItemEXC(row, Id)
 
                 Console.WriteLine("Processes TACInventoryItemEXC Changed " & i)

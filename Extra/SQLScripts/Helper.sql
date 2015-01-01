@@ -1,0 +1,1 @@
+Select ' .Fields("' + column_name + '").Value = MyDataRow("' + column_name + '")' from INFORMATION_SCHEMA.COLUMNS  where TABLE_NAME= 'TACInventoryItemEXC'
