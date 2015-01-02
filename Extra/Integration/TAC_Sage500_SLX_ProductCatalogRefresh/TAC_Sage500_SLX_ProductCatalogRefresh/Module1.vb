@@ -8,10 +8,10 @@ Module Module1
     '=================================================================
     ' Need to Set the Project for
     '=================================================================
-    Private PROJECTNAME As String = "TAC_Sage500_SLX_ProductCatalogRefresh"
-    Private strSage500Constr As String
-    Private strSLXNativeConstr As String
-    Private strSLXConstr As String
+    Public PROJECTNAME As String = "TAC_Sage500_SLX_ProductCatalogRefresh"
+    Public strSage500Constr As String
+    Public strSLXNativeConstr As String
+    Public strSLXConstr As String
 
 #End Region
 
@@ -59,6 +59,12 @@ Module Module1
         Console.WriteLine("------ Products Changed Start ------")
         Call Process_ChangedProducts()
         'Console.WriteLine("------ SalesOrderItems Start ------")
+
+        Console.WriteLine("------ Clean-up StockCards with Inactive Products Start ------")
+        Process_DELETE_InactiveStockCardProducts()
+
+        Console.WriteLine("------ Clean-up OrderItems with Inactive Products Start ------")
+        Process_DELETE_InactiveProductsfromOrders()
 
         Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
     End Sub

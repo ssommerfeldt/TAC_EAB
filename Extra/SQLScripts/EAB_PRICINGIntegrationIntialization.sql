@@ -862,7 +862,7 @@ as
 Select * from dbo.MAS_to_SLX_TACNATIONALACCTITEMEXC_temp
 Except
 Select * from dbo.MAS_to_SLX_TACNATIONALACCTITEMEXC_zcompare
-
+Go
 --===========================================================
 -- TACInventoryItemEXC
 --===========================================================
@@ -891,13 +891,13 @@ as
 Select * from dbo.MAS_to_SLX_TACInventoryItemEXC_temp
 Except
 Select * from dbo.MAS_to_SLX_TACInventoryItemEXC_zcompare
-
+Go
 --=================================================================================
 CREATE CLUSTERED INDEX [_dta_index_MAS_to_SLX_TACNATIONALACCTITEMEX_c_5_923866358__K1] ON [dbo].[MAS_to_SLX_TACNATIONALACCTITEMEXC_temp] 
 (
 	[WhseID] ASC
 )WITH (SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF) ON [PRIMARY]
-
+Go
 
 CREATE NONCLUSTERED INDEX [_dta_index_MAS_to_SLX_TACNATIONALACCTITEMEX_5_923866358__K1_2_4] ON [dbo].[MAS_to_SLX_TACNATIONALACCTITEMEXC_temp] 
 (
@@ -905,13 +905,13 @@ CREATE NONCLUSTERED INDEX [_dta_index_MAS_to_SLX_TACNATIONALACCTITEMEX_5_9238663
 )
 INCLUDE ( [ItemID],
 [CustID]) WITH (SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF) ON [PRIMARY]
-
+GO
 CREATE CLUSTERED INDEX [_dta_index_TACNATIONALACCTITEMEXC_c_5_502292849__K6] ON [sysdba].[TACNATIONALACCTITEMEXC] 
 (
 	[WHSEID] ASC
 )WITH (SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF) ON [PRIMARY]
 
-
+GO
 
 
 
