@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="strSLXNative" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Provider=SQLNCLI10.1;Password=masterkey;Persist Security Info=True;User ID=sysdba;Initial Catalog=SalesLogix_Production;Data Source=apollo;Initial File Name="";Server SPN=""</Value>
+    </Setting>
+    <Setting Name="SendtoEmails" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ssommerfeldt@theanswerco.com,Chris.Ross@eabtool.com,PGarratt@theanswerco.com,alex.scott@eabtool.com</Value>
+    </Setting>
+    <Setting Name="smtpPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="smtpHost" Type="System.String" Scope="User">
+      <Value Profile="(Default)">smtp.gmail.com</Value>
+    </Setting>
+    <Setting Name="smtpUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">donotreply.eabnotifications@gmail.com</Value>
+    </Setting>
+    <Setting Name="smtpPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Icecream1!</Value>
+    </Setting>
+    <Setting Name="FTPFileLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\SLXFTPSync\Outfiles</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
