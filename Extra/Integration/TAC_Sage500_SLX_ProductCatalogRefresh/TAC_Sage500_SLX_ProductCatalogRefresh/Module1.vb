@@ -614,7 +614,7 @@ Module Module1
         'Dim BillingId As String = ""
         '==================================================       
         Dim objConn As New OleDbConnection(strSLXNativeConstr)
-
+        Dim strReport As String = ""
         Try
             objConn.Open()
             Dim SQL As String
@@ -629,6 +629,18 @@ Module Module1
                 'ProductId = GetNewSLXID("PRODUCT", strSLXConstr)
                 i = i + 1
                 AddEditPRODUCT(row, row("PRODUCTID"))
+                '=================================================================================================
+                ' Aug 7, 2015 put in measurese to Notify Team if more than 20K Changes are being processed
+                '=================================================================================================
+                If i = 50 Then
+                    strReport = "<style>body{font-family: Verdana, Arial, Helvetica, sans-serif} td{font-weight: 550}</style>"
+                    strReport = strReport & " <body>"
+                    strReport = strReport & " <center><font size=+3 color=#000099>Product Sync Issue Suspected</font><br><font size=-2 color=#0000CC>" & Now.ToString & "</font></center>"
+                    strReport = strReport & " Product Sync has Process over the number of threshold number of changes there maybe a problem and this should be looked into and the processed stopped to ensure a large sync is not pushed out.<br><br>"
+                    strReport = strReport & "    <br><sup>*</sup><Font size=-1> Please look into this at your earliest convenience</font>"
+                    strReport = strReport & " </body>"
+                    SendSimpleEmail(My.Settings.SendtoEmails, strReport, "Product Sync Issue Suspected" & Now.ToString(), "")
+                End If
 
                 Console.WriteLine("Processes PRODUCT Changed" & i)
             Next row
@@ -640,6 +652,56 @@ Module Module1
             If objConn.State = ConnectionState.Open Then objConn.Close()
         End Try
         objConn = Nothing
+    End Sub
+
+    Private Sub SendSimpleEmail(ByVal EmailAddress As String, ByVal HtmlBody As String, ByVal Subject As String, ByVal AttachmentPath As String)
+        '============================================================
+        ' GET Mail  CREDENTIALS
+        '============================================================
+
+        'tmpRecpient.Email 
+        'Send Email 
+        Dim MyMailMessage As New System.Net.Mail.MailMessage()
+
+        'From requires an instance of the MailAddress type"
+
+        MyMailMessage.From = New System.Net.Mail.MailAddress(My.Settings.smtpUser, "EAB Notifications")
+
+        ' Add Read Reciept Headers
+        '============================================================================================================
+        '
+        'MyMailMessage.Headers.Add("Disposition-Notification-To", "<jaymeh@xitechnologies.com>")
+        '-------------------------------------------------------------------------------------------------------------
+
+        MyMailMessage.To.Add(EmailAddress)
+        MyMailMessage.Subject = Subject
+
+
+        MyMailMessage.Body = HtmlBody
+        MyMailMessage.IsBodyHtml = True
+
+        If AttachmentPath <> "" Then
+            MyMailMessage.Attachments.Add(New System.Net.Mail.Attachment(AttachmentPath))
+        End If
+        '=========================================================================================================
+        ' Send the Email
+        '=========================================================================================================
+        Dim SMTPServer As New System.Net.Mail.SmtpClient()
+        SMTPServer.UseDefaultCredentials = False
+        SMTPServer.Port = Convert.ToInt32(My.Settings.smtpPort)
+        'Hard Coded Server Port
+        SMTPServer.Host = My.Settings.smtpHost
+        SMTPServer.Credentials = New System.Net.NetworkCredential(My.Settings.smtpUser, My.Settings.smtpPassword)
+        SMTPServer.EnableSsl = True
+
+        Try
+
+            SMTPServer.Send(MyMailMessage)
+            'MessageBox.Show(ex.Message)
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
+
     End Sub
 
 

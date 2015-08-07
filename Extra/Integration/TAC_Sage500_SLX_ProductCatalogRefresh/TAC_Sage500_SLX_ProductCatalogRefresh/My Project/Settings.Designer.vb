@@ -57,8 +57,8 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=SA;Ini"& _ 
-            "tial Catalog=SalesLogix_Test;Data Source=APOLLO;Initial File Name="""";Server SPN="& _ 
-            """""")>  _
+            "tial Catalog=SalesLogix_PRODUCTION;Data Source=APOLLO;Initial File Name="""";Serve"& _ 
+            "r SPN=""""<")>  _
         Public Property SLXNativeConstr() As String
             Get
                 Return CType(Me("SLXNativeConstr"),String)
@@ -71,7 +71,7 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=sa;Ini"& _ 
-            "tial Catalog=mas500_tst_app;Data Source=APOLLO;Initial File Name="""";Server SPN="""& _ 
+            "tial Catalog=mas500_eab_app;Data Source=APOLLO;Initial File Name="""";Server SPN="""& _ 
             """")>  _
         Public Property Sage500Constr() As String
             Get
@@ -85,14 +85,74 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password="""";Persist Security Info=True;User ID=admin;Initial "& _ 
-            "Catalog=SALESLOGIXTest;Data Source=ATHENA;Extended Properties=""PORT=1706;LOG=ON;"& _ 
-            "CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
+            "Catalog=SALESLOGIX_PRODUCTION;Data Source=ATHENA;Extended Properties=""PORT=1706;"& _ 
+            "LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
         Public Property SLXConstr() As String
             Get
                 Return CType(Me("SLXConstr"),String)
             End Get
             Set
                 Me("SLXConstr") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("donotreply.eabnotifications@gmail.com")>  _
+        Public Property smtpUser() As String
+            Get
+                Return CType(Me("smtpUser"),String)
+            End Get
+            Set
+                Me("smtpUser") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("587")>  _
+        Public Property smtpPort() As String
+            Get
+                Return CType(Me("smtpPort"),String)
+            End Get
+            Set
+                Me("smtpPort") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")>  _
+        Public Property smtpHost() As String
+            Get
+                Return CType(Me("smtpHost"),String)
+            End Get
+            Set
+                Me("smtpHost") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Icecream1!")>  _
+        Public Property smtpPassword() As String
+            Get
+                Return CType(Me("smtpPassword"),String)
+            End Get
+            Set
+                Me("smtpPassword") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("ssommerfeldt@theanswerco.com")>  _
+        Public Property SendtoEmails() As String
+            Get
+                Return CType(Me("SendtoEmails"),String)
+            End Get
+            Set
+                Me("SendtoEmails") = value
             End Set
         End Property
     End Class

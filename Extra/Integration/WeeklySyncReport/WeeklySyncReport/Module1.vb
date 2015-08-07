@@ -13,7 +13,7 @@ Module Module1
         '''
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         '========================================================================================================
-
+        TruncateFileTable()
 
         ' Create the message header
         Dim strReport As String
@@ -150,7 +150,7 @@ Module Module1
     End Function
 
     Public Sub TruncateFileTable()
-        Dim sql As String = "TRUNCATE TABLE SYNC_REPORT"
+        Dim sql As String = "Delete from sync_Report" 'TRUNCATE TABLE SYNC_REPORT"
 
         Using conn As New OleDbConnection(My.Settings.strSLXNative)
             conn.Open()
