@@ -632,14 +632,15 @@ Module Module1
                 '=================================================================================================
                 ' Aug 7, 2015 put in measurese to Notify Team if more than 20K Changes are being processed
                 '=================================================================================================
-                If i = 50 Then
+                If i = 10000 Then
                     strReport = "<style>body{font-family: Verdana, Arial, Helvetica, sans-serif} td{font-weight: 550}</style>"
                     strReport = strReport & " <body>"
                     strReport = strReport & " <center><font size=+3 color=#000099>Product Sync Issue Suspected</font><br><font size=-2 color=#0000CC>" & Now.ToString & "</font></center>"
                     strReport = strReport & " Product Sync has Process over the number of threshold number of changes there maybe a problem and this should be looked into and the processed stopped to ensure a large sync is not pushed out.<br><br>"
-                    strReport = strReport & "    <br><sup>*</sup><Font size=-1> Please look into this at your earliest convenience</font>"
+                    strReport = strReport & "    <br><sup>*</sup><Font size=-1> Please look into this at your earliest convenience  </font>"
                     strReport = strReport & " </body>"
                     SendSimpleEmail(My.Settings.SendtoEmails, strReport, "Product Sync Issue Suspected" & Now.ToString(), "")
+                    Exit Sub
                 End If
 
                 Console.WriteLine("Processes PRODUCT Changed" & i)

@@ -58,7 +58,7 @@ Namespace My
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=SA;Ini"& _ 
             "tial Catalog=SalesLogix_PRODUCTION;Data Source=APOLLO;Initial File Name="""";Serve"& _ 
-            "r SPN=""""<")>  _
+            "r SPN=""""")>  _
         Public Property SLXNativeConstr() As String
             Get
                 Return CType(Me("SLXNativeConstr"),String)
