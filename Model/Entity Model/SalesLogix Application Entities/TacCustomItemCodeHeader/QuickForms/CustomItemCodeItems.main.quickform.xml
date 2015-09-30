@@ -25,7 +25,8 @@
         <StyleScheme />
         <DataSource>dsTacCustomItemCodeItemss</DataSource>
         <EnablePaging>false</EnablePaging>
-        <EnableSorting>false</EnableSorting>
+        <EnableSorting>true</EnableSorting>
+        <PageSize>50</PageSize>
         <Columns>
           <QFDataGridCol>
             <StyleScheme />
@@ -34,7 +35,7 @@
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
-            <IsSortable>false</IsSortable>
+            <IsSortable>true</IsSortable>
             <SortField>CustomItemCode</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
           </QFDataGridCol>
@@ -45,7 +46,7 @@
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
-            <IsSortable>false</IsSortable>
+            <IsSortable>true</IsSortable>
             <SortField>ItemNo</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
           </QFDataGridCol>
