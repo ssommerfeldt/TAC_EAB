@@ -56,8 +56,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=p@55w0rd;Persist Security Info=True;User ID=sa;Init"& _ 
-            "ial Catalog=EABMAS;Data Source=EAB;Initial File Name="""";Server SPN=""""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Integrated Security="""";Password=lambarena;Persist Security I"& _ 
+            "nfo=True;User ID=sa;Initial Catalog=mas500_tst_app;Data Source=APOLLO;Initial Fi"& _ 
+            "le Name="""";Server SPN=""""")>  _
         Public Property Sage500Connection() As String
             Get
                 Return CType(Me("Sage500Connection"),String)
@@ -70,8 +71,8 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password="""";Persist Security Info=True;User ID=admin;Initial "& _ 
-            "Catalog=EAB_SLX;Data Source=EAB;Extended Properties=""PORT=1706;LOG=ON;CASEINSENS"& _ 
-            "ITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
+            "Catalog=SALESLOGIXTEST;Data Source=ATHENA;Extended Properties=""PORT=1706;LOG=ON;"& _ 
+            "CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
         Public Property SLXConnection() As String
             Get
                 Return CType(Me("SLXConnection"),String)
@@ -83,8 +84,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=p@55w0rd;Persist Security Info=True;User ID=sa;Init"& _ 
-            "ial Catalog=EAB_SLX;Data Source=EAB;Initial File Name="""";Server SPN=""""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=SA;Ini"& _ 
+            "tial Catalog=SalesLogix_TEST;Data Source=APOLLO;Initial File Name="""";Server SPN="& _ 
+            """""")>  _
         Public Property SLXNativeConnection() As String
             Get
                 Return CType(Me("SLXNativeConnection"),String)

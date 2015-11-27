@@ -46,7 +46,13 @@ Module Module1
         Call Process_New_ERPTRADINGACCOUNT()
 
         Console.WriteLine("------ New AccountFinnancial Start ------")
-        Call Process_New_ACCOUNTFINNANCIAL()
+        Try
+            Call Process_New_ACCOUNTFINNANCIAL()
+        Catch ex As Exception
+
+        End Try
+
+
 
         Console.WriteLine("------ New AccountAddress Start ------")
         Call Process_New_ACCOUNTADDRESS()
@@ -139,7 +145,12 @@ Module Module1
                 'Addressid = GetNewSLXID("ADDRESS", strSLXConstr)
 
                 i = i + 1
-                AddEdit_ACCOUNT(row, row("ACCOUNTID"), "")
+                Try
+                    AddEdit_ACCOUNT(row, row("ACCOUNTID"), "")
+                Catch ex As Exception
+
+                End Try
+
 
                 Console.WriteLine("Processes Account CHANGED" & i)
             Next row

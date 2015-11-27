@@ -56,9 +56,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=SA;Ini"& _ 
-            "tial Catalog=SalesLogix_TEST;Data Source=APOLLO;Initial File Name="""";Server SPN="& _ 
-            """""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=sa;Ini"& _ 
+            "tial Catalog=SalesLogix_Production;Data Source=APOLLO;Initial File Name="""";Serve"& _ 
+            "r SPN=""""")>  _
         Public Property SLXNativeConstr() As String
             Get
                 Return CType(Me("SLXNativeConstr"),String)
@@ -71,7 +71,7 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=sa;Ini"& _ 
-            "tial Catalog=mas500_tst_app;Data Source=APOLLO;Initial File Name="""";Server SPN="""& _ 
+            "tial Catalog=mas500_eab_app;Data Source=APOLLO;Initial File Name="""";Server SPN="""& _ 
             """")>  _
         Public Property Sage500Constr() As String
             Get
@@ -85,8 +85,8 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password="""";Persist Security Info=True;User ID=admin;Initial "& _ 
-            "Catalog=SALESLOGIXTEST;Data Source=ATHENA;Extended Properties=""PORT=1706;LOG=ON;"& _ 
-            "CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
+            "Catalog=SALESLOGIX_PRODUCTION;Data Source=ATHENA;Extended Properties=""PORT=1706;"& _ 
+            "LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
         Public Property SLXConstr() As String
             Get
                 Return CType(Me("SLXConstr"),String)

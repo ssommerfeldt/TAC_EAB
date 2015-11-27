@@ -165,9 +165,18 @@ Module timPriceGroupPrice
             objConn.Open()
             Dim SQL As String
             ' Multiple Keys so Combine them via a String Compare
-            SQL = "Select * from sysdba.timPriceGroupPrice where Cast(WhseKey as varchar(32)) + Cast(CustPriceGroupKey as varchar(32)) + Cast(ProdPriceGroupKey as varchar(32))+ Cast(EffectiveDate as varchar(32)) "
-            SQL = SQL & " not in (Select Cast(WhseKey as varchar(32)) + Cast(CustPriceGroupKey as varchar(32)) + Cast(ProdPriceGroupKey as varchar(32))+ Cast(EffectiveDate as varchar(32)) from dbo.MAS_to_SLX_timPriceGroupPrice_temp)"
-
+            'SQL = "Select * from sysdba.timPriceGroupPrice where Cast(WhseKey as varchar(32)) + Cast(CustPriceGroupKey as varchar(32)) + Cast(ProdPriceGroupKey as varchar(32))+ Cast(EffectiveDate as varchar(32)) "
+            'SQL = SQL & " not in (Select Cast(WhseKey as varchar(32)) + Cast(CustPriceGroupKey as varchar(32)) + Cast(ProdPriceGroupKey as varchar(32))+ Cast(EffectiveDate as varchar(32)) from dbo.MAS_to_SLX_timPriceGroupPrice_temp)"
+            SQL = "SELECT *"
+            SQL = SQL & " FROM sysdba.timPriceGroupPrice a"
+            SQL = SQL & " WHERE NOT EXISTS ("
+            SQL = SQL & " SELECT *"
+            SQL = SQL & " FROM  MAS_to_SLX_timPriceGroupPrice_temp b"
+            SQL = SQL & "  WHERE(b.WhseKey = a.WhseKey)"
+            SQL = SQL & " AND b.CustPriceGroupKey  = a.CustPriceGroupKey  "
+            SQL = SQL & " AND b.ProdPriceGroupKey = a.ProdPriceGroupKey  "
+            SQL = SQL & " AND DATEADD(dd, DATEDIFF(dd, 0, b.EffectiveDate), 0) = DATEADD(dd, DATEDIFF(dd, 0, a.EffectiveDate), 0) "
+            SQL = SQL & " )"
 
 
             'MsgBox(SQL)
