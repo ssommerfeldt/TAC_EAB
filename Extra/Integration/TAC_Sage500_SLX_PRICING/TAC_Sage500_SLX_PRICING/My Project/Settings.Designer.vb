@@ -57,7 +57,7 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Integrated Security="""";Password=lambarena;Persist Security I"& _ 
-            "nfo=True;User ID=sa;Initial Catalog=mas500_tst_app;Data Source=APOLLO;Initial Fi"& _ 
+            "nfo=True;User ID=sa;Initial Catalog=mas500_slx_app;Data Source=APOLLO;Initial Fi"& _ 
             "le Name="""";Server SPN=""""")>  _
         Public Property Sage500Connection() As String
             Get
@@ -71,8 +71,8 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password="""";Persist Security Info=True;User ID=admin;Initial "& _ 
-            "Catalog=SALESLOGIXTEST;Data Source=ATHENA;Extended Properties=""PORT=1706;LOG=ON;"& _ 
-            "CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
+            "Catalog=SLX_TESTPREGOLIVE;Data Source=ATHENA;Extended Properties=""PORT=1706;LOG="& _ 
+            "ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
         Public Property SLXConnection() As String
             Get
                 Return CType(Me("SLXConnection"),String)
@@ -85,8 +85,8 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=SA;Ini"& _ 
-            "tial Catalog=SalesLogix_TEST;Data Source=APOLLO;Initial File Name="""";Server SPN="& _ 
-            """""")>  _
+            "tial Catalog=SLX_TESTPREGOLIVE;Data Source=APOLLO;Initial File Name="""";Server SP"& _ 
+            "N=""""")>  _
         Public Property SLXNativeConnection() As String
             Get
                 Return CType(Me("SLXNativeConnection"),String)

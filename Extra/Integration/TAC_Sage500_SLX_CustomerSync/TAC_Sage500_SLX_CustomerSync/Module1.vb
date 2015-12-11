@@ -525,13 +525,18 @@ Module Module1
             dt.Load(objCMD.ExecuteReader())
 
             For Each row As DataRow In dt.Rows
-                ACCOUNTFINANCIALid = row("ACCOUNTFINANCIALID")
-                'Addressid = GetNewSLXID("ADDRESS", strSLXConstr)
+                Try
+                    ACCOUNTFINANCIALid = row("ACCOUNTFINANCIALID")
+                    'Addressid = GetNewSLXID("ADDRESS", strSLXConstr)
 
-                i = i + 1
-                AddEdit_ACCOUNTFINNANCIAL(row, ACCOUNTFINANCIALid)
+                    i = i + 1
+                    AddEdit_ACCOUNTFINNANCIAL(row, ACCOUNTFINANCIALid)
 
-                Console.WriteLine("Changed ACCOUNTFINNANCIAL " & i)
+                    Console.WriteLine("Changed ACCOUNTFINNANCIAL " & i)
+                Catch ex As Exception
+
+                End Try
+               
             Next row
 
         Catch ex As Exception
