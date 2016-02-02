@@ -7,32 +7,32 @@ SELECT DISTINCT
                       CY.CYSales, 
                       LY.LYSales, 
                       ISNULL(LYFW.LYFWSales,0) as LYFWSales,
-                      CONVERT(VARCHAR(20), (ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) + '%' AS LYPercentChange,
+                      CONVERT(VARCHAR(20),  ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) + '%' AS LYPercentChange,
  		
- 					 CASE WHEN ((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) > 20 THEN '120%'
-						   WHEN ((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) < -5  THEN '95%'
-						   ELSE CONVERT(VARCHAR(20), 100+((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100)) + '%'
+ 					 CASE WHEN  (ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) > 20 THEN '120%'
+						   WHEN (ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) < -5  THEN '95%'
+						   ELSE CONVERT(VARCHAR(20), 100+(ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0))) + '%'
  					END AS  LYFWAdjustment,
 			 		tmpqtyOnhand.TotalQTYONHAND AS OnHand,
 			 		dp.MOQ,
 			 		SCI.MIN_STOCKLEVEL,
 			 		SCI.MAX_STOCKLEVEL,
 			 		
- 					ROUND((( ISNULL(LYFW.LYFWSales,0) * ((CASE WHEN ((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) > 20 THEN 120
-						   WHEN ((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) < -5  THEN 95
-						   ELSE 100+((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100)
+ 					ROUND((( ISNULL(LYFW.LYFWSales,0) *  ( (CASE WHEN  (ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) > 20 THEN 120
+						   WHEN (ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) < -5  THEN 95
+						   ELSE 100+(ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0))
  					END)/100)) - tmpqtyOnhand.TotalQTYONHAND),0) AS RecommendedOrder,
  					
- 					(ROUND((( ISNULL(LYFW.LYFWSales,0) * ((CASE WHEN ((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) > 20 THEN 120
-						   WHEN ((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) < -5  THEN 95
-						   ELSE 100+((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100)
+ 					(ROUND((( ISNULL(LYFW.LYFWSales,0) * ((CASE WHEN  (ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) > 20 THEN 120
+						   WHEN (ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) < -5  THEN 95
+						   ELSE 100+(ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0))
  					END)/100)) - tmpqtyOnhand.TotalQTYONHAND)/dp.MOQ,0) * dp.MOQ) as OrderQuantity,
  					
  					dp.DISTRIBUTORPRICE AS DistCost
  					
 			 	
 FROM         sysdba.PRODUCT AS p 
-						LEFT OUTER JOIN sysdba.TACDISTRIBUTORPRICING AS dp ON p.MASITEMKEY = dp.ITEMKEY 
+						LEFT OUTER JOIN sysdba.TACDISTRIBUTORPRICING AS dp ON p.ACTUALID = dp.ITEMID 
 						INNER JOIN sysdba.SALESORDERITEMS AS soi ON p.PRODUCTID = soi.PRODUCTID 
 						INNER JOIN sysdba.SALESORDER AS SO ON SO.SALESORDERID = soi.SALESORDERID
 						INNER JOIN

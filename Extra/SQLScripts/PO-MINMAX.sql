@@ -1,17 +1,17 @@
 
 
 --MIN/MAX
-SELECT DISTINCT 
-                      p.ACTUALID, p.NAME, 
+SELECT DISTINCT			p.PRODUCTID, SCI.STOCKCARDITEMSID,
+                       p.ACTUALID, p.NAME, 
                       p.WAREHOUSEID, 
                       CY.CYSales, 
                       LY.LYSales, 
                       ISNULL(LYFW.LYFWSales,0) as LYFWSales,
-                      CONVERT(VARCHAR(20), (ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) + '%' AS LYPercentChange,
+                      CONVERT  (VARCHAR(20), ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) + '%' AS LYPercentChange,
  		
- 					 CASE WHEN ((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) > 20 THEN '120%'
-						   WHEN ((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100) < -5  THEN '95%'
-						   ELSE CONVERT(VARCHAR(20), 100+((ISNULL(LYFW.LYFWSales, 0) - ISNULL(LY.LYSales, 0)) / LYFW.LYFWSales * 100)) + '%'
+ 					 CASE WHEN  ( ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) > 20 THEN '120%'
+						   WHEN ( ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0)) < -5  THEN '95%'
+						   ELSE CONVERT(VARCHAR(20), 100+( ROUND(((ISNULL(CY.CYSales, 0)/ LY.LYSales)-1)  * 100,0))) + '%'
  					END AS  LYFWAdjustment,
 			 		tmpqtyOnhand.TotalQTYONHAND AS OnHand,
 			 		dp.MOQ,
@@ -19,7 +19,7 @@ SELECT DISTINCT
 			 		SCI.MAX_STOCKLEVEL,
 			 		--CASE WHEN MinStock > OnHand THEN MaxStock ELSE 0 as RecommendedOrder
 			 		
- 					(CASE WHEN SCI.MIN_STOCKLEVEL > tmpqtyOnhand.TotalQTYONHAND THEN SCI.MIN_STOCKLEVEL ELSE 0 END) as RecommendedOrder,
+ 					(CASE WHEN SCI.MIN_STOCKLEVEL > tmpqtyOnhand.TotalQTYONHAND THEN SCI.MAX_STOCKLEVEL ELSE 0 END) as RecommendedOrder,
  					
  					(ROUND((CASE WHEN SCI.MIN_STOCKLEVEL > tmpqtyOnhand.TotalQTYONHAND THEN SCI.MIN_STOCKLEVEL ELSE 0 END)/dp.MOQ,0)*dp.MOQ) as OrderQuantity,
  					
@@ -32,10 +32,10 @@ FROM         sysdba.PRODUCT AS p
 						INNER JOIN sysdba.SALESORDER AS SO ON SO.SALESORDERID = soi.SALESORDERID
 						INNER JOIN
 						(
-							SELECT MAX(SCI.MIN_STOCKLEVEL) AS MIN_STOCKLEVEL, MAX(SCI.MAX_STOCKLEVEL) MAX_STOCKLEVEL, p.ACTUALID
+							SELECT MAX(SCI.MIN_STOCKLEVEL) AS MIN_STOCKLEVEL, MAX(SCI.MAX_STOCKLEVEL) MAX_STOCKLEVEL, p.ACTUALID, SCI.STOCKCARDITEMSID
 							FROM sysdba.PRODUCT AS p  INNER JOIN sysdba.STOCKCARDITEMS SCI ON p.PRODUCTID = SCI.PRODUCTID
 							Where ACCOUNTID = 'AEAB3A0004YD'
-							GROUP BY p.ACTUALID
+							GROUP BY p.ACTUALID, SCI.STOCKCARDITEMSID
 						) as SCI ON SCI.ACTUALID = p.ACTUALID
 						INNER JOIN
                           (SELECT     SUM(s.QUANTITY) AS CYSales, PRODUCT_2.ACTUALID
