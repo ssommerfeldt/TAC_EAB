@@ -828,14 +828,14 @@
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
       <QFSLXLookup>
         <Column>1</Column>
-        <Row>7</Row>
+        <Row>8</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>QFSLXLookup</ControlId>
+        <ControlId>lueDistributorAccount</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>DistributorAccountId</DataItemName>
+            <DataItemName>DistributorAccount</DataItemName>
             <ControlItemName>LookupResultValue</ControlItemName>
             <FormatString />
             <NullValueString />
@@ -846,11 +846,14 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>QFSLXLookup</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
+          <ResourceKey>lueDistributorAccount</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>lueDistributorAccount_ChangeAction</MethodName>
+              <CSharpCodeSnippet>// TAC Code Here
+
+// Make this work</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
@@ -863,12 +866,12 @@
         <LookupImage />
         <LookupDialogWidth xsi:nil="true" />
         <LookupDialogHeight xsi:nil="true" />
-        <LookupBindingMode>String</LookupBindingMode>
+        <LookupBindingMode>Object</LookupBindingMode>
         <LookupResultValue xsi:type="xsd:string" />
         <SeedProperty />
         <SeedValue />
         <DropDownDisplayProperty />
-        <AllowClearingResult>false</AllowClearingResult>
+        <AllowClearingResult>true</AllowClearingResult>
         <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Account</LookupEntityName>
@@ -892,17 +895,6 @@
             <PropertyName>Type</PropertyName>
             <PropertyType>System.String</PropertyType>
             <PropertyHeader>Type</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>Status</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>Status</PropertyHeader>
             <PropertyFormat>None</PropertyFormat>
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
