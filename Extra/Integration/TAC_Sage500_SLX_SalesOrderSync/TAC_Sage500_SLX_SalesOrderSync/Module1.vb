@@ -46,15 +46,15 @@ Module Module1
         ' HEADER 
         '====================================================================================================
         ' MAS500 Query
-        Dim SQLHeader As String = "SELECT     TranStatus, ShipKey AS Key1, UserFld1, TranStatusAsText, TranID"
+        Dim SQLHeader As String = "SELECT     TranStatus, ShipKey AS Key1, UserFld1,UserFld2, UserFld3,UserFld4, TranStatusAsText, TranID"
         SQLHeader = SQLHeader & " FROM         vdvCustomerReturn"
         SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL)"
         SQLHeader = SQLHeader & " UNION"
-        SQLHeader = SQLHeader & " SELECT     Status, SOKey, UserFld1, "
+        SQLHeader = SQLHeader & " SELECT     Status, SOKey, UserFld1, UserFld2 ,UserFld3,UserFld4,"
         SQLHeader = SQLHeader & " CASE status WHEN '0' THEN 'Unacknoledged' WHEN '1' THEN 'Open' WHEN '2' THEN 'Inactive' WHEN '3' THEN 'Canceled' WHEN '4' THEN 'Closed' WHEN '5' THEN 'Incomplete'"
         SQLHeader = SQLHeader & " WHEN '6' THEN 'Pending Approval' END AS StatusTXT, TranID"
         SQLHeader = SQLHeader & " FROM tsoSalesOrder "
-        SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL) AND (UserFld1 <> '')"
+        SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL) AND (UserFld1 <> '') "
 
         '=================================================================================
         ' 1. CLEAN COMPARE
@@ -87,7 +87,7 @@ Module Module1
         ' MAS500 Query
         Dim SQL_LINE As String = "-- SalesOrders Lines  " & vbCrLf
         SQL_LINE = SQL_LINE & " SELECT     vdvShipmentLine.ItemKey, vdvShipmentLine.ShipDate, vdvShipmentLine.QtyShipped, vdvShipmentLine.SchdShipDate, tsoSalesOrder.TranID, "
-        SQL_LINE = SQL_LINE & " tsoSalesOrder.UserFld1"
+        SQL_LINE = SQL_LINE & " tsoSalesOrder.UserFld1, tsoSalesOrder.UserFld2, tsoSalesOrder.UserFld3, tsoSalesOrder.UserFld4"
         SQL_LINE = SQL_LINE & " FROM         vdvShipmentLine INNER JOIN"
         SQL_LINE = SQL_LINE & " tsoSalesOrder ON vdvShipmentLine.SOKey = tsoSalesOrder.SOKey"
         SQL_LINE = SQL_LINE & " WHERE(tsoSalesOrder.UserFld1 Is Not NULL)"
@@ -95,7 +95,7 @@ Module Module1
         SQL_LINE = SQL_LINE & " Union"
         SQL_LINE = SQL_LINE & " -- Customer Returns Lines" & vbCrLf
         SQL_LINE = SQL_LINE & " SELECT     tsoShipLine.ItemKey, tsoShipment.PostDate, tsoShipLineDist.QtyShipped, tsoShipment.PostDate AS SchdShipDate, vdvCustomerReturn.TranID, "
-        SQL_LINE = SQL_LINE & " vdvCustomerReturn.UserFld1"
+        SQL_LINE = SQL_LINE & " vdvCustomerReturn.UserFld1,vdvCustomerReturn.UserFld2,vdvCustomerReturn.UserFld3,vdvCustomerReturn.UserFld4"
         SQL_LINE = SQL_LINE & " FROM         vdvCustomerReturn INNER JOIN"
         SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER JOIN"
         SQL_LINE = SQL_LINE & "                       tsoShipLineDist ON tsoShipLine.ShipLineKey = tsoShipLineDist.ShipLineKey INNER JOIN"
@@ -243,11 +243,13 @@ Module Module1
             SQL = "SELECT DISTINCT "
             SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.ItemKey, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.ShipDate,"
             SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.QtyShipped, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.SchdShipDate,"
-            SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.TranID, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1, tmpSO.SALESORDERID"
-            SQL = SQL & " FROM         vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED INNER JOIN"
+            SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.TranID, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1, tmpSO.SALESORDERID,"
+            SQL = SQL & " vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld2, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld3, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld4"
+            SQL = SQL & " FROM         vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED LEFT OUTER JOIN"
             SQL = SQL & "                           (SELECT     SALESORDERID, ALTERNATEKEYPREFIX + '-' + ALTERNATEKEYSUFFIX AS SalesOrderNumber"
             SQL = SQL & "                             FROM          sysdba.SALESORDER) AS tmpSO ON vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1 = tmpSO.SalesOrderNumber"
-            SQL = SQL & " WHERE     (vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1 <> '') "
+            SQL = SQL & " where (vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld3 IS NOT NULL) OR (tmpSO.SALESORDERID IS NOT NULL)"
+            'SQL = SQL & " WHERE     (vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1 <> '') "
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
@@ -256,9 +258,39 @@ Module Module1
 
             For Each row As DataRow In dt.Rows
                 'ProductId = GetNewSLXID("PRODUCT", strSLXConstr)
-                SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
+
                 i = i + 1
-                AddEditSALESORDERITEM(row, SalesOrderItemId)
+                'AddEditSALESORDERITEM(row, SalesOrderItemId)
+                If (IsDBNull(row("USERFLD3"))) Then
+                    ' Try  Userfield 1
+                    If Not IsDBNull(row("SALESORDERID")) Then
+                        Try
+                            SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
+                            AddEditSALESORDERITEM(row, SalesOrderItemId)
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+                    End If
+
+
+                Else
+                    'Good
+                    'AddEditSALESORDER(row, row("USERFLD3"), "SalesOrderId")
+                    Try
+                        SalesOrderItemId = GetSalesOrderItemID(row("USERFLD3"), row("ItemKey"))
+                        AddEditSALESORDERITEM(row, SalesOrderItemId)
+                        If (Not IsDBNull(row("USERFLD4"))) Then
+                            ' This Linked to a PickingList so We need to update the Header
+                            'AddEditPicklist(row, row("USERFLD4"), "PICKINGLISTID")
+                            AddEditPICKINGLISTITEM(row, SalesOrderItemId)
+
+                        End If
+                    Catch ex As Exception
+
+                    End Try
+
+
+                End If
 
                 Console.WriteLine("Processes SalesorderItem Changed" & i)
             Next row
@@ -335,6 +367,71 @@ Module Module1
 
         End Try
     End Sub
+    Public Sub AddEditPICKINGLISTITEM(ByVal MyDataRow As DataRow, ByVal SALESORDERITEMID As String)
+        '============================================================
+        ' get Default Data row from SALESORDERITEM SHIPPING INFO
+        '============================================================
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM PICKINGLISTITEM WHERE SALESORDERITEMID = '" & SALESORDERITEMID & "'"
+
+
+        Try
+            objConn.Open(strSLXConstr)
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                For i = 0 To .RecordCount - 1          ' Loop
+                    If .EOF Then
+                        'adding
+                        .AddNew()
+                        .Fields("PICKINGLISTITEMID").Value = GetNewSLXID("PICKINGLISTITEM", strSLXConstr)
+                        .Fields("CREATEDATE").Value = Now
+                        .Fields("CREATEUSER").Value = "ADMIN"
+                        .Fields("MODIFYDATE").Value = Now
+                        .Fields("MODIFYUSER").Value = "ADMIN"
+
+                        .Fields("SALESORDERITEMSID").Value = SALESORDERITEMID
+                        .Fields("SECCODEID").Value = "SYST00000001"
+                        .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
+                        .Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
+                        .Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
+
+                    Else
+                        '=======================================
+                        'updating
+                        '=======================================
+                        '.Fields("CREATEDATE").Value = Now
+                        '.Fields("CREATEUSER").Value = "ADMIN"
+                        .Fields("MODIFYDATE").Value = Now
+                        .Fields("MODIFYUSER").Value = "ADMIN"
+
+                        '.Fields("PRODUCTID").Value = Productid
+
+                        .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
+                        .Fields("MASQTYSHIPPED").Value = MyDataRow("QtyShipped")
+                        .Fields("MASSCHDSHIPDATE").Value = MyDataRow("SchdShipDate")
+
+                    End If
+                Next
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+
+        End Try
+    End Sub
+  
 
 
     Private Sub Process_Changed_SalesOrderHEADER_Info()
@@ -360,7 +457,19 @@ Module Module1
             For Each row As DataRow In dt.Rows
                 'ProductId = GetNewSLXID("PRODUCT", strSLXConstr)
                 i = i + 1
-                AddEditSALESORDER(row, row("USERFLD1"))
+                If (IsDBNull(row("USERFLD3"))) Then
+                    ' Try  Userfield 1
+                    AddEditSALESORDER(row, row("USERFLD1"), "SalesOrderNumber")
+                Else
+                    'Good
+                    AddEditSALESORDER(row, row("USERFLD3"), "SalesOrderId")
+                    If (Not IsDBNull(row("USERFLD4"))) Then
+                        ' This Linked to a PickingList so We need to update the Header
+                        AddEditPicklist(row, row("USERFLD4"), "PICKINGLISTID")
+                    End If
+
+                End If
+
 
                 Console.WriteLine("Processes HEADER Changed " & i)
             Next row
@@ -375,7 +484,7 @@ Module Module1
     End Sub
 
 
-    Public Sub AddEditSALESORDER(ByVal MyDataRow As DataRow, ByVal strUserField1 As String)
+    Public Sub AddEditSALESORDER(ByVal MyDataRow As DataRow, ByVal strUserField As String, ByVal IDName As String)
         '============================================================
         ' get Default Data row from SALESORDERITEM SHIPPING INFO
         '============================================================
@@ -385,7 +494,72 @@ Module Module1
         '=======================
         Dim objConn As New ADODB.Connection()
         Dim objRS As New ADODB.Recordset
-        Dim strSQL As String = "SELECT * FROM SALESORDER WHERE SalesOrderNumber = '" & strUserField1 & "'"
+        ' Dim strSQL As String = "SELECT * FROM SALESORDER WHERE SalesOrderNumber = '" & strUserField1 & "'"
+        Dim strSQL As String = "SELECT * FROM SALESORDER WHERE " & IDName & " = '" & strUserField & "'"
+
+
+        Try
+            objConn.Open(strSLXConstr)
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If .EOF Then
+                    'adding
+                    '.AddNew()
+
+                    '.Fields("CREATEDATE").Value = Now
+                    '.Fields("CREATEUSER").Value = "ADMIN"
+                    '.Fields("MODIFYDATE").Value = Now
+                    '.Fields("MODIFYUSER").Value = "ADMIN"
+
+                    '.Fields("SALESORDERITEMSID").Value = SALESORDERITEMID
+
+                    '.Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
+                    '.Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
+                    '.Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
+
+                Else
+                    '=======================================
+                    'updating
+                    '=======================================
+                    '.Fields("CREATEDATE").Value = Now
+                    '.Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    '.Fields("PRODUCTID").Value = Productid
+
+                    .Fields("MASSTATUS").Value = MyDataRow("TranStatusAsText")
+                    .Fields("MASNumber").Value = MyDataRow("TranID")
+
+
+
+                End If
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+
+        End Try
+    End Sub
+    Public Sub AddEditPicklist(ByVal MyDataRow As DataRow, ByVal strUserField As String, ByVal IDName As String)
+        '============================================================
+        ' get Default Data row from Picklist SHIPPING INFO
+        '============================================================
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        ' Dim strSQL As String = "SELECT * FROM SALESORDER WHERE SalesOrderNumber = '" & strUserField1 & "'"
+        Dim strSQL As String = "SELECT * FROM PICKINGLIST WHERE " & IDName & " = '" & strUserField & "'"
 
 
         Try
