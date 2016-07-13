@@ -387,7 +387,8 @@ Module Module1
                 .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
                 .LockType = ADODB.LockTypeEnum.adLockOptimistic
                 .Open(strSQL, objConn)
-                For i = 0 To .RecordCount - 1          ' Loop
+                For i = 0 To .RecordCount - 1          ' Loop
+
                     If .EOF Then
                         'adding
                         .AddNew()
