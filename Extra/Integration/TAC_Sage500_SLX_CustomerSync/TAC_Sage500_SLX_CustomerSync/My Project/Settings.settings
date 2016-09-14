@@ -9,7 +9,7 @@
       <Value Profile="(Default)">Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=sa;Initial Catalog=mas500_eab_app;Data Source=APOLLO;Initial File Name="";Server SPN=""</Value>
     </Setting>
     <Setting Name="SLXConstr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=SALESLOGIX_PRODUCTION;Data Source=ATHENA;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
+      <Value Profile="(Default)">Provider=SLXOLEDB.1;Password="lambarena76";Persist Security Info=True;User ID=admin;Initial Catalog=SALESLOGIX_PRODUCTION;Data Source=ATHENA;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
     </Setting>
   </Settings>
 </SettingsFile>

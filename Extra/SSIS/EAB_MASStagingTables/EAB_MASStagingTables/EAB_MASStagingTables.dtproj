@@ -36,7 +36,7 @@
           <ConfigurationSetting>
             <Id>Live EAB Slx</Id>
             <Name>Live EAB Slx</Name>
-            <Value xsi:type="xsd:string">Provider=SLXOLEDB.1;Data Source=Athena;Persist Security Info=True;User ID=;Initial Catalog=SALESLOGIXTEST;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
+            <Value xsi:type="xsd:string">Provider=SLXOLEDB.1;Data Source=Athena;Persist Security Info=True;User ID=;Initial Catalog=SALESLOGIXTEST;Locale Identifier=1252;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";Location=1252</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>Live EAB App</Id>
