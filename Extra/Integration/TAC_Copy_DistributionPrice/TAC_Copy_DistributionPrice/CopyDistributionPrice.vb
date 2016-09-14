@@ -53,9 +53,9 @@ Module CopyDistributionPrice
                 AddUpdateTACDISTRIBUTORPRICING(row, TACDistributorPricingID)
 
                 If isAdding = True Then
-                    Console.WriteLine("New distributor price ADDED..")
+                    Console.WriteLine("New distributor price ADDED.." & i)
                 Else
-                    Console.WriteLine("Distributor price UPDATED..")
+                    Console.WriteLine("Distributor price UPDATED.." & i)
                 End If
             Next row
             Console.WriteLine(ctrAddedRows & " New Distributor price have been added.")

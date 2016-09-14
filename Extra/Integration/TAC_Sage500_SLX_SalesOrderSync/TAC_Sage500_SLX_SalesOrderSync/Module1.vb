@@ -170,7 +170,7 @@ Module Module1
         Using conn As New SqlConnection(strConnection)
             Dim cmd As New SqlCommand(sql, conn)
             '==========================================================================
-            ' Push all Records from Temp into Compare
+            'sql Push all Records from Temp into Compare
             '===========================================================================
             Try
                 conn.Open()
