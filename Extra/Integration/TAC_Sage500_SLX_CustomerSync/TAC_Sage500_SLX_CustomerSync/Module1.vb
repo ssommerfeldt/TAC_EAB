@@ -589,7 +589,8 @@ Module Module1
                     .Fields("CUSTOMERID").Value = MyDataRow("CUSTOMERID")
                     .Fields("COMPANYCODE").Value = MyDataRow("COMPANYCODE")
                     .Fields("CURRENTBALANCE").Value = MyDataRow("CURRENTBALANCE")
-                    .Fields("CREDITLIMITUSED").Value = MyDataRow("CREDITLIMITUSED")
+                    '.Fields("CREDITLIMITUSED").Value = MyDataRow("CREDITLIMITUSED")
+                    .Fields("USECREDITLIMIT").Value = MyDataRow("CREDITLIMITUSED")
 
 
 
@@ -617,7 +618,8 @@ Module Module1
                     .Fields("COMPANYCODE").Value = MyDataRow("COMPANYCODE")
                     .Fields("CURRENTBALANCE").Value = MyDataRow("CURRENTBALANCE")
 
-                    .Fields("CREDITLIMITUSED").Value = MyDataRow("CREDITLIMITUSED")
+                    '.Fields("CREDITLIMITUSED").Value = MyDataRow("CREDITLIMITUSED")
+                    .Fields("USECREDITLIMIT").Value = MyDataRow("CREDITLIMITUSED")
 
 
                 End If

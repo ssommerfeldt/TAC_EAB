@@ -75,7 +75,7 @@ Module Module1
         '=================================================================================
         ' 5. Process Insert / Updates
         '=================================================================================
-        Process_Changed_SalesOrderHEADER_Info()
+        ' Process_Changed_SalesOrderHEADER_Info()
         ' 6. Process Deletes
         '    DO NOT PROCESS DELETES
 
@@ -85,19 +85,24 @@ Module Module1
         '================================================================
         Console.WriteLine("------ Line Changes Start ------")
         ' MAS500 Query
-        Dim SQL_LINE As String = "-- SalesOrders Lines  " & vbCrLf
+        Dim SQL_LINE As String = ""
         SQL_LINE = SQL_LINE & " SELECT     vdvShipmentLine.ItemKey, vdvShipmentLine.ShipDate, vdvShipmentLine.QtyShipped, vdvShipmentLine.SchdShipDate, tsoSalesOrder.TranID, "
-        SQL_LINE = SQL_LINE & " tsoSalesOrder.UserFld1, tsoSalesOrder.UserFld2, tsoSalesOrder.UserFld3, tsoSalesOrder.UserFld4"
+        SQL_LINE = SQL_LINE & "                       tsoSalesOrder.UserFld1, tsoSalesOrder.UserFld2, tsoSalesOrder.UserFld3, tsoSalesOrder.UserFld4, convert(decimal(16,8),tmpTotalQTYShipped.TotalQTYShipped) TotalQTYShipped"
         SQL_LINE = SQL_LINE & " FROM         vdvShipmentLine INNER JOIN"
-        SQL_LINE = SQL_LINE & " tsoSalesOrder ON vdvShipmentLine.SOKey = tsoSalesOrder.SOKey"
-        SQL_LINE = SQL_LINE & " WHERE(tsoSalesOrder.UserFld1 Is Not NULL)"
-        SQL_LINE = SQL_LINE & vbCrLf
-        SQL_LINE = SQL_LINE & " Union"
-        SQL_LINE = SQL_LINE & " -- Customer Returns Lines" & vbCrLf
+        SQL_LINE = SQL_LINE & "                       tsoSalesOrder ON vdvShipmentLine.SOKey = tsoSalesOrder.SOKey LEFT OUTER JOIN"
+        SQL_LINE = SQL_LINE & "                           (SELECT     SUM(tsoShipLineDist.QtyShipped) AS TotalQTYShipped, tsoShipLine.ItemKey, tsoSOLine.SOKey"
+        SQL_LINE = SQL_LINE & "                             FROM          tsoShipLineDist INNER JOIN"
+        SQL_LINE = SQL_LINE & "                                                    tsoShipLine ON tsoShipLineDist.ShipLineKey = tsoShipLine.ShipLineKey INNER JOIN"
+        SQL_LINE = SQL_LINE & "                                                    tsoShipment ON tsoShipLine.ShipKey = tsoShipment.ShipKey INNER JOIN"
+        SQL_LINE = SQL_LINE & "                                                    tsoSOLine ON tsoSOLine.SOLineKey = tsoShipLine.SOLineKey"
+        SQL_LINE = SQL_LINE & "                             GROUP BY tsoShipLine.ItemKey, tsoSOLine.SOKey) AS tmpTotalQTYShipped ON vdvShipmentLine.SOKey = tmpTotalQTYShipped.SOKey AND "
+        SQL_LINE = SQL_LINE & "         vdvShipmentLine.ItemKey = tmpTotalQTYShipped.ItemKey"
+        SQL_LINE = SQL_LINE & "         WHERE(tsoSalesOrder.UserFld1 Is Not NULL)"
+        SQL_LINE = SQL_LINE & "         UNION       "
         SQL_LINE = SQL_LINE & " SELECT     tsoShipLine.ItemKey, tsoShipment.PostDate, tsoShipLineDist.QtyShipped, tsoShipment.PostDate AS SchdShipDate, vdvCustomerReturn.TranID, "
-        SQL_LINE = SQL_LINE & " vdvCustomerReturn.UserFld1,vdvCustomerReturn.UserFld2,vdvCustomerReturn.UserFld3,vdvCustomerReturn.UserFld4"
+        SQL_LINE = SQL_LINE & "                       vdvCustomerReturn.UserFld1, vdvCustomerReturn.UserFld2, vdvCustomerReturn.UserFld3, vdvCustomerReturn.UserFld4, Convert(decimal(16,8),QtyShipped )as TotalQTYShipped"
         SQL_LINE = SQL_LINE & " FROM         vdvCustomerReturn INNER JOIN"
-        SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER JOIN"
+        SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER join"
         SQL_LINE = SQL_LINE & "                       tsoShipLineDist ON tsoShipLine.ShipLineKey = tsoShipLineDist.ShipLineKey INNER JOIN"
         SQL_LINE = SQL_LINE & "                       tsoShipment ON vdvCustomerReturn.ShipKey = tsoShipment.ShipKey"
         SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.UserFld1 Is Not NULL)"
@@ -121,7 +126,7 @@ Module Module1
         '=================================================================================
         ' 5. Process Insert / Updates
         '=================================================================================
-        Process_Changed_SALESORDERLINE()
+        'Process_Changed_SALESORDERLINE()
         ' 6. Process Deletes
         '    DO NOT PROCESS DELETES
 
@@ -326,19 +331,19 @@ Module Module1
                 .LockType = ADODB.LockTypeEnum.adLockOptimistic
                 .Open(strSQL, objConn)
                 If .EOF Then
-                    'adding
-                    '.AddNew()
+                    'adding()
+                    .AddNew()
 
-                    '.Fields("CREATEDATE").Value = Now
-                    '.Fields("CREATEUSER").Value = "ADMIN"
-                    '.Fields("MODIFYDATE").Value = Now
-                    '.Fields("MODIFYUSER").Value = "ADMIN"
+                    .Fields("CREATEDATE").Value = Now
+                    .Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+                    .Fields("SALESORDERID").Value = "TEMP"
+                    .Fields("SALESORDERITEMSID").Value = SALESORDERITEMID
 
-                    '.Fields("SALESORDERITEMSID").Value = SALESORDERITEMID
-
-                    '.Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
-                    '.Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
-                    '.Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
+                    .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
+                    .Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
+                    .Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
 
                 Else
                     '=======================================
@@ -508,18 +513,62 @@ Module Module1
                 .Open(strSQL, objConn)
                 If .EOF Then
                     'adding
-                    '.AddNew()
+                    .AddNew()
 
-                    '.Fields("CREATEDATE").Value = Now
-                    '.Fields("CREATEUSER").Value = "ADMIN"
-                    '.Fields("MODIFYDATE").Value = Now
-                    '.Fields("MODIFYUSER").Value = "ADMIN"
+                    .Fields("CREATEDATE").Value = Now
+                    .Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+                    If IDName = "SalesOrderNumber" Then
+                        '============================
+                        '=  SLXID has 4 Parts
+                        '=  t OL98 (userSITECODE)  A0 (Keybase) 12345(Base36 Number)
+                        '========================
+                        'Step 1 Get The  SiteCode
+                        Dim SiteCode As String
+                        SiteCode = GetSiteCode("ADMIN", strSLXConstr)
+                        'Step 2 Get the Keybase
+                        Dim Keybase
+                        'Keybase = GetSiteKeyBase(m_strConnection, SiteCode) 'GetKeyBase(txtConnString.Text, UserSiteCode)
+                        '============================================================================================
+                        ' Modified by ssommerfeldt September 21,  This is not Creating the TicketID's Correctly.
+                        '  Keybase is allways A0 for a Host database this means you have 56 Billion keys 
+                        '   On a Host when you run out of Keys you Generate a New SiteCode and you Start over
+                        '   On the Other hand a Remote User will have 60Million and the Key base can Change, This information is 
+                        '   Stored in a BLOB
+                        '==============================================================================================
+                        If IsHostDatabase(strSLXConstr) Then
+                            Keybase = "A0"
+                        Else
+                            '===============================
+                            ' Get the Keybase from the BLOB
+                            '===============================
+                            Dim UserSiteCode As String = ""
+                            UserSiteCode = GetUsersSiteCode("ADMIN", strSLXConstr)
+                            Keybase = GetKeyBase(strSLXConstr, UserSiteCode)
+                        End If
+                        'Step 3 Convert the DecValue2Base36 Digit
+                        'Parse the Last digets of the PrettyKey
+                        '001-00-000047
+                        .Fields("SALESORDERID").Value = ConvertToTicketID(SiteCode, Keybase, strUserField)
+                        .Fields("ACCOUNTID").Value = "TEMP"
+                        .Fields("SECCODEID").Value = "SYST00000001"
+                        .Fields("ALTERNATEKEYPREFIX").Value = Left(strUserField, strUserField.Length - InStrRev(strUserField, "-", -1))
+                        .Fields("ALTERNATEKEYSUFFIX").Value = Right(strUserField, InStrRev(strUserField, "-", -1) - 1)
 
-                    '.Fields("SALESORDERITEMSID").Value = SALESORDERITEMID
+                    End If
+                    If IDName = "SalesOrderId" Then
+                       
+                        .Fields("SALESORDERID").Value = strUserField
+                        .Fields("ACCOUNTID").Value = "TEMP"
+                        .Fields("SECCODEID").Value = "SYST00000001"
+                       
+                    End If
 
-                    '.Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
-                    '.Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
-                    '.Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
+
+                    .Fields("MASSTATUS").Value = MyDataRow("TranStatusAsText")
+                    .Fields("MASNumber").Value = MyDataRow("TranID")
+
 
                 Else
                     '=======================================
@@ -545,7 +594,7 @@ Module Module1
 
 
         Catch ex As Exception
-            'MsgBox(ex.Message)
+            Console.WriteLine(ex.Message)
 
         End Try
     End Sub

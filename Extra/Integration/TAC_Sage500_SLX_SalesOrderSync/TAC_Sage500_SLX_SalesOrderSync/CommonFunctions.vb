@@ -1,6 +1,8 @@
 ﻿
 Imports System.IO
 Imports System.Data.SqlClient
+Imports System.Data.OleDb
+Imports System.Text.RegularExpressions
 
 Module CommonFunctions
 
@@ -227,7 +229,192 @@ Module CommonFunctions
         Return strSQLConnString
     End Function
 
+    Public Function GetSiteCode(ByVal Userid As String, ByVal SLXConnectionString As String) As String
+        Dim ReturnSiteCode As String = ""
+        Dim oConn As New OleDbConnection(SLXConnectionString)
+        Dim SQL As String
+        SQL = "SELECT SITECODE FROM SYSTEMINFO "
+        Try
+            oConn.Open()
+            Dim oCmd As New OleDbCommand(SQL, oConn)
+            ReturnSiteCode = oCmd.ExecuteScalar
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            If oConn.State = Data.ConnectionState.Open Then oConn.Close()
+        End Try
+        Return Trim(ReturnSiteCode)
+    End Function
+    Public Function IsHostDatabase(ByVal SLXConnectionString As String) As Boolean
+        Dim strDBType As String = ""
+        Dim blnReturn As Boolean = False
+        Dim oConn As New OleDbConnection(SLXConnectionString)
+        Dim SQL As String
+        SQL = "SELECT DbType FROM SYSTEMINFO"
+        Try
+            oConn.Open()
+            Dim oCmd As New OleDbCommand(SQL, oConn)
+            strDBType = oCmd.ExecuteScalar
 
+            If strDBType = "1" Then
+                blnReturn = True ' Means Host database
+            Else
+                blnReturn = False
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            If oConn.State = Data.ConnectionState.Open Then oConn.Close()
+        End Try
+        Return blnReturn
+    End Function
+
+    Public Function GetUsersSiteCode(ByVal Userid As String, ByVal SLXConnectionString As String) As String
+        Dim ReturnSiteCode As String = ""
+        Dim oConn As New OleDbConnection(SLXConnectionString)
+        Dim SQL As String
+        SQL = "SELECT PRIMARYSITE FROM USERSECURITY WHERE USERID ='" & Userid & "'"
+        Try
+            oConn.Open()
+            Dim oCmd As New OleDbCommand(SQL, oConn)
+            ReturnSiteCode = oCmd.ExecuteScalar
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            If oConn.State = Data.ConnectionState.Open Then oConn.Close()
+        End Try
+        Return Trim(ReturnSiteCode)
+    End Function
+
+    Function GetKeyBase(ByVal SLXConnectionString As String, ByVal SITECODE As String) As String
+        Dim Conn As New OleDbConnection(SLXConnectionString)
+        ' Open connection
+        If Conn.State <> Data.ConnectionState.Open Then
+            Conn.Open()
+        End If
+        Dim SQL As String
+        Dim TempBlob As Byte() = Nothing
+        SQL = "SELECT data, DATALENGTH(data) as Size FROM SITEOPTIONS WHERE SITECODE = '" & SITECODE & "'"
+        Dim returnString As String = ""
+        Try
+            Dim SQLCommand As New OleDbCommand(SQL, Conn)
+            ' Construct a SQL string and a connection object
+            Dim cmd As OleDbCommand = New OleDbCommand(SQL, Conn)
+            Dim myAdapter As New OleDbDataAdapter(cmd)
+            Dim ds As New Data.DataSet
+            myAdapter.Fill(ds, "BLOB")
+            Dim myBLOB(CType(ds.Tables("BLOB").Rows(0).Item(1), Integer) - 1) As Byte
+            'Create a Byte array of the Length of the BLOB Field
+            'Create a memory stream object with an initial capacity of the size of the byte array 
+            Dim ms As New MemoryStream(myBLOB.Length)
+            CType(ds.Tables("BLOB").Rows(0).Item(0), Array).CopyTo(myBLOB, 0)
+            ' Write the contents of the byte array to memory (the MemoryWriter, ms, object). 
+            ms.Write(myBLOB, 0, myBLOB.Length)
+            ms.Close()
+            ms = Nothing
+            Dim strTemp As String = ""
+            TempBlob = myBLOB
+            Dim i
+            Dim BlobIndexvalue As Integer
+            For i = 0 To myBLOB.Length - 1
+                BlobIndexvalue = CInt(myBLOB(i))
+                If BlobIndexvalue < 32 Or BlobIndexvalue > 126 Then 'No Printable Text
+                    BlobIndexvalue = 95
+                End If
+                strTemp = strTemp & Chr(BlobIndexvalue)
+            Next
+
+            Dim sData As String = New System.Text.ASCIIEncoding().GetString(TempBlob)   ' ASCIIEncoding().GetString(CType(drow(DATA_COLUMN), Byte()))
+            returnString = strTemp
+
+            Dim Countpattern As String = "KeyBase_"
+            Dim CountMatchObj As Match
+            CountMatchObj = Regex.Match(strTemp, Countpattern, RegexOptions.IgnoreCase)
+            If CountMatchObj.Success Then
+                'MsgBox("Found at " & CountMatchObj.Index)
+                Dim myCharArray As Char()
+                myCharArray = strTemp.ToCharArray
+                Dim KeyBase As String
+                KeyBase = myCharArray(CountMatchObj.Index + 9) & myCharArray(CountMatchObj.Index + 10)
+                returnString = KeyBase
+            Else
+                returnString = "A0"
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message & "  " & ex.TargetSite.Name.ToString)
+        End Try
+        Return Trim(returnString)
+
+    End Function
+
+    Public Function ConvertToTicketID(ByVal SiteCode As String, ByVal KeyBase As String, ByVal PrettyKeySuffix As String) As String
+        Dim iPosition As Integer
+        iPosition = InStrRev(PrettyKeySuffix, "-", , CompareMethod.Text)
+        Dim strPrettySuffix As String
+        Dim iLength As Integer
+        iLength = PrettyKeySuffix.Length - iPosition
+        strPrettySuffix = Mid(PrettyKeySuffix, iPosition + 1, iLength)
+        Dim TicketIDSuffix As String
+        TicketIDSuffix = dec2baseN(CInt(strPrettySuffix), 36)
+        If TicketIDSuffix.Length < 5 Then
+            Dim i As Integer
+            For i = 0 To (5 - TicketIDSuffix.Length) - 1
+                'Add a Zero to the Beginning
+                TicketIDSuffix = "0" & TicketIDSuffix
+            Next
+        End If
+
+        Dim TicketID As String
+        TicketID = "t" & SiteCode & KeyBase & TicketIDSuffix
+        Return TicketID
+    End Function
+    Function baseN2dec(ByVal value, ByVal inBase)
+        'Converts any base to base 10
+
+        Dim strValue, i, x, y
+
+        strValue = StrReverse(CStr(UCase(value)))
+
+        For i = 0 To Len(strValue) - 1
+            x = Mid(strValue, i + 1, 1)
+            If Not IsNumeric(x) Then
+                y = y + ((Asc(x) - 65) + 10) * (inBase ^ i)
+            Else
+                y = y + ((inBase ^ i) * CInt(x))
+            End If
+        Next
+
+        baseN2dec = y
+
+    End Function
+    Function dec2baseN(ByVal value, ByVal outBase)
+        'Converts base 10 to any base
+
+        Dim q 'quotient
+        Dim r 'remainder
+        Dim m 'denominator
+        Dim y 'converted value
+
+        m = outBase
+        q = value
+
+        Do
+            r = q Mod m
+            q = Int(q / m)
+
+            If r >= 10 Then
+                r = Chr(65 + (r - 10))
+            End If
+
+            y = y & CStr(r)
+
+        Loop Until q = 0
+
+        dec2baseN = StrReverse(y)
+
+    End Function
 
 
 
