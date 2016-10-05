@@ -98,6 +98,7 @@ Module Module1
         SQL_LINE = SQL_LINE & "                             GROUP BY tsoShipLine.ItemKey, tsoSOLine.SOKey) AS tmpTotalQTYShipped ON vdvShipmentLine.SOKey = tmpTotalQTYShipped.SOKey AND "
         SQL_LINE = SQL_LINE & "         vdvShipmentLine.ItemKey = tmpTotalQTYShipped.ItemKey"
         SQL_LINE = SQL_LINE & "         WHERE(tsoSalesOrder.UserFld1 Is Not NULL)"
+        'SQL_LINE = SQL_LINE & "         WHERE(1=2)"
         SQL_LINE = SQL_LINE & "         UNION       "
         SQL_LINE = SQL_LINE & " SELECT     tsoShipLine.ItemKey, tsoShipment.PostDate, tsoShipLineDist.QtyShipped, tsoShipment.PostDate AS SchdShipDate, vdvCustomerReturn.TranID, "
         SQL_LINE = SQL_LINE & "                       vdvCustomerReturn.UserFld1, vdvCustomerReturn.UserFld2, vdvCustomerReturn.UserFld3, vdvCustomerReturn.UserFld4, Convert(decimal(16,8),QtyShipped )as TotalQTYShipped"
@@ -105,6 +106,7 @@ Module Module1
         SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER join"
         SQL_LINE = SQL_LINE & "                       tsoShipLineDist ON tsoShipLine.ShipLineKey = tsoShipLineDist.ShipLineKey INNER JOIN"
         SQL_LINE = SQL_LINE & "                       tsoShipment ON vdvCustomerReturn.ShipKey = tsoShipment.ShipKey"
+        ' SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.TranID  LIKE '%20366%')"
         SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.UserFld1 Is Not NULL)"
 
         '=================================================================================
@@ -126,7 +128,7 @@ Module Module1
         '=================================================================================
         ' 5. Process Insert / Updates
         '=================================================================================
-        'Process_Changed_SALESORDERLINE()
+        Process_Changed_SALESORDERLINE()
         ' 6. Process Deletes
         '    DO NOT PROCESS DELETES
 
@@ -249,7 +251,7 @@ Module Module1
             SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.ItemKey, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.ShipDate,"
             SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.QtyShipped, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.SchdShipDate,"
             SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.TranID, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1, tmpSO.SALESORDERID,"
-            SQL = SQL & " vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld2, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld3, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld4"
+            SQL = SQL & " vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld2, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld3, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld4, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.TotalQTYShipped"
             SQL = SQL & " FROM         vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED LEFT OUTER JOIN"
             SQL = SQL & "                           (SELECT     SALESORDERID, ALTERNATEKEYPREFIX + '-' + ALTERNATEKEYSUFFIX AS SalesOrderNumber"
             SQL = SQL & "                             FROM          sysdba.SALESORDER) AS tmpSO ON vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1 = tmpSO.SalesOrderNumber"
@@ -344,6 +346,8 @@ Module Module1
                     .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
                     .Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
                     .Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
+                    .Fields("TotalQTYShipped").Value = MyDataRow("TotalQTYShipped")
+
 
                 Else
                     '=======================================
@@ -359,6 +363,7 @@ Module Module1
                     .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
                     .Fields("MASQTYSHIPPED").Value = MyDataRow("QtyShipped")
                     .Fields("MASSCHDSHIPDATE").Value = MyDataRow("SchdShipDate")
+                    .Fields("TotalQTYShipped").Value = MyDataRow("TotalQTYShipped")
 
                 End If
 
@@ -677,7 +682,7 @@ Module Module1
         sql = sql & "               sysdba.PRODUCT ON sysdba.SALESORDERITEMS.PRODUCTID = sysdba.PRODUCT.PRODUCTID INNER JOIN"
         sql = sql & "                       sysdba.SALESORDER ON sysdba.SALESORDERITEMS.SALESORDERID = sysdba.SALESORDER.SALESORDERID INNER JOIN"
         sql = sql & "               sysdba.SITE ON sysdba.SALESORDER.USERWHSEID = sysdba.SITE.SITEID AND sysdba.PRODUCT.WAREHOUSEID = sysdba.SITE.SITECODE"
-        sql = sql & " WHERE     (sysdba.SALESORDERITEMS.SALESORDERID = '" & SalesOrderId & "') and (MASITEMKEY = '" & ItemKey & "')  AND  (sysdba.SALESORDERITEMS.QUANTITY > 0)"
+        sql = sql & " WHERE     (sysdba.SALESORDERITEMS.SALESORDERID = '" & SalesOrderId & "') and (MASITEMKEY = '" & ItemKey & "')  AND  (sysdba.SALESORDERITEMS.QUANTITY <> 0)"
 
         Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
         Using conn As New SqlConnection(strConnection)
