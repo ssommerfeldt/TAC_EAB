@@ -87,9 +87,22 @@ Module Module1
         ' MAS500 Query
         Dim SQL_LINE As String = ""
         SQL_LINE = SQL_LINE & " SELECT     vdvShipmentLine.ItemKey, vdvShipmentLine.ShipDate, vdvShipmentLine.QtyShipped, vdvShipmentLine.SchdShipDate, tsoSalesOrder.TranID, "
-        SQL_LINE = SQL_LINE & "                       tsoSalesOrder.UserFld1, tsoSalesOrder.UserFld2, tsoSalesOrder.UserFld3, tsoSalesOrder.UserFld4, convert(decimal(16,8),tmpTotalQTYShipped.TotalQTYShipped) TotalQTYShipped"
+        SQL_LINE = SQL_LINE & "                       tsoSalesOrder.UserFld1, tsoSalesOrder.UserFld2, tsoSalesOrder.UserFld3, tsoSalesOrder.UserFld4, CONVERT(decimal(16, 8), tmpTotalQTYShipped.TotalQTYShipped)"
+        SQL_LINE = SQL_LINE & "                        AS TotalQTYShipped, Convert(decimal(16,8),tmpQTYOrdered.TotalQTYOrdered) as TotalQTYOrdered , tmpQTYOrdered.StatusText,"
+        SQL_LINE = SQL_LINE & "                         CASE StatusText "
+        SQL_LINE = SQL_LINE & " 							WHEN 'Open' THEN "
+        SQL_LINE = SQL_LINE & " 								Convert(decimal(16,8),ABS(TotalQTYOrdered - CONVERT(decimal(16, 8), tmpTotalQTYShipped.TotalQTYShipped))) "
+        SQL_LINE = SQL_LINE & " 							WHEN 'Closed' THEN Convert(decimal(16,8),0) "
+        SQL_LINE = SQL_LINE & " 						END AS OpenQTY"
         SQL_LINE = SQL_LINE & " FROM         vdvShipmentLine INNER JOIN"
         SQL_LINE = SQL_LINE & "                       tsoSalesOrder ON vdvShipmentLine.SOKey = tsoSalesOrder.SOKey LEFT OUTER JOIN"
+        SQL_LINE = SQL_LINE & "                           (SELECT     SUM(tsoSOLineDist.QtyOrd) AS TotalQTYOrdered, timItem.ItemKey, tsoSOLine_1.SOKey, "
+        SQL_LINE = SQL_LINE & "                                                    CASE tsoSOlinedist.Status WHEN 1 THEN 'Open' WHEN 2 THEN 'Closed' END AS StatusText"
+        SQL_LINE = SQL_LINE & "                             FROM          tsoSOLineDist INNER JOIN"
+        SQL_LINE = SQL_LINE & "                                                    tsoSOLine AS tsoSOLine_1 ON tsoSOLine_1.SOLineKey = tsoSOLineDist.SOLineKey INNER JOIN"
+        SQL_LINE = SQL_LINE & "                                                    timItem ON tsoSOLine_1.ItemKey = timItem.ItemKey"
+        SQL_LINE = SQL_LINE & "                             GROUP BY timItem.ItemKey, tsoSOLine_1.SOKey, CASE tsoSOlinedist.Status WHEN 1 THEN 'Open' WHEN 2 THEN 'Closed' END) AS tmpQTYOrdered ON "
+        SQL_LINE = SQL_LINE & "                       vdvShipmentLine.SOKey = tmpQTYOrdered.SOKey AND vdvShipmentLine.ItemKey = tmpQTYOrdered.ItemKey LEFT OUTER JOIN"
         SQL_LINE = SQL_LINE & "                           (SELECT     SUM(tsoShipLineDist.QtyShipped) AS TotalQTYShipped, tsoShipLine.ItemKey, tsoSOLine.SOKey"
         SQL_LINE = SQL_LINE & "                             FROM          tsoShipLineDist INNER JOIN"
         SQL_LINE = SQL_LINE & "                                                    tsoShipLine ON tsoShipLineDist.ShipLineKey = tsoShipLine.ShipLineKey INNER JOIN"
@@ -97,15 +110,48 @@ Module Module1
         SQL_LINE = SQL_LINE & "                                                    tsoSOLine ON tsoSOLine.SOLineKey = tsoShipLine.SOLineKey"
         SQL_LINE = SQL_LINE & "                             GROUP BY tsoShipLine.ItemKey, tsoSOLine.SOKey) AS tmpTotalQTYShipped ON vdvShipmentLine.SOKey = tmpTotalQTYShipped.SOKey AND "
         SQL_LINE = SQL_LINE & "         vdvShipmentLine.ItemKey = tmpTotalQTYShipped.ItemKey"
-        SQL_LINE = SQL_LINE & "         WHERE(tsoSalesOrder.UserFld1 Is Not NULL)"
-        SQL_LINE = SQL_LINE & "         UNION       "
+        SQL_LINE = SQL_LINE & "         WHERE(tsoSalesOrder.UserFld1 Is Not NULL )  "
+        'SQL_LINE = SQL_LINE & "         WHERE(1=2)"
+        SQL_LINE = SQL_LINE & "         UNION"
         SQL_LINE = SQL_LINE & " SELECT     tsoShipLine.ItemKey, tsoShipment.PostDate, tsoShipLineDist.QtyShipped, tsoShipment.PostDate AS SchdShipDate, vdvCustomerReturn.TranID, "
-        SQL_LINE = SQL_LINE & "                       vdvCustomerReturn.UserFld1, vdvCustomerReturn.UserFld2, vdvCustomerReturn.UserFld3, vdvCustomerReturn.UserFld4, Convert(decimal(16,8),QtyShipped )as TotalQTYShipped"
+        SQL_LINE = SQL_LINE & "                       vdvCustomerReturn.UserFld1, vdvCustomerReturn.UserFld2, vdvCustomerReturn.UserFld3, vdvCustomerReturn.UserFld4, "
+        SQL_LINE = SQL_LINE & "                       CONVERT(decimal(16, 8), tsoShipLineDist.QtyShipped) AS TotalQTYShipped,"
+        SQL_LINE = SQL_LINE & "                       CONVERT(decimal(16, 8), tsoShipLineDist.QtyShipped) AS TotalQTYOrdered,"
+        SQL_LINE = SQL_LINE & "         'Closed' as StatusText,"
+        SQL_LINE = SQL_LINE & "                       Convert(decimal(16,8),0) as OpenQty"
         SQL_LINE = SQL_LINE & " FROM         vdvCustomerReturn INNER JOIN"
-        SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER join"
+        SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER JOIN"
         SQL_LINE = SQL_LINE & "                       tsoShipLineDist ON tsoShipLine.ShipLineKey = tsoShipLineDist.ShipLineKey INNER JOIN"
         SQL_LINE = SQL_LINE & "                       tsoShipment ON vdvCustomerReturn.ShipKey = tsoShipment.ShipKey"
+        'SQL_LINE = SQL_LINE & "         WHERE( 1=2)"
         SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.UserFld1 Is Not NULL)"
+        'SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.UserFld1  LIKE '%229-06-137629%')"
+
+
+
+
+        'SQL_LINE = SQL_LINE & " SELECT     vdvShipmentLine.ItemKey, vdvShipmentLine.ShipDate, vdvShipmentLine.QtyShipped, vdvShipmentLine.SchdShipDate, tsoSalesOrder.TranID, "
+        'SQL_LINE = SQL_LINE & "                       tsoSalesOrder.UserFld1, tsoSalesOrder.UserFld2, tsoSalesOrder.UserFld3, tsoSalesOrder.UserFld4, convert(decimal(16,8),tmpTotalQTYShipped.TotalQTYShipped) TotalQTYShipped"
+        'SQL_LINE = SQL_LINE & " FROM         vdvShipmentLine INNER JOIN"
+        'SQL_LINE = SQL_LINE & "                       tsoSalesOrder ON vdvShipmentLine.SOKey = tsoSalesOrder.SOKey LEFT OUTER JOIN"
+        'SQL_LINE = SQL_LINE & "                           (SELECT     SUM(tsoShipLineDist.QtyShipped) AS TotalQTYShipped, tsoShipLine.ItemKey, tsoSOLine.SOKey"
+        'SQL_LINE = SQL_LINE & "                             FROM          tsoShipLineDist INNER JOIN"
+        'SQL_LINE = SQL_LINE & "                                                    tsoShipLine ON tsoShipLineDist.ShipLineKey = tsoShipLine.ShipLineKey INNER JOIN"
+        'SQL_LINE = SQL_LINE & "                                                    tsoShipment ON tsoShipLine.ShipKey = tsoShipment.ShipKey INNER JOIN"
+        'SQL_LINE = SQL_LINE & "                                                    tsoSOLine ON tsoSOLine.SOLineKey = tsoShipLine.SOLineKey"
+        'SQL_LINE = SQL_LINE & "                             GROUP BY tsoShipLine.ItemKey, tsoSOLine.SOKey) AS tmpTotalQTYShipped ON vdvShipmentLine.SOKey = tmpTotalQTYShipped.SOKey AND "
+        'SQL_LINE = SQL_LINE & "         vdvShipmentLine.ItemKey = tmpTotalQTYShipped.ItemKey"
+        'SQL_LINE = SQL_LINE & "         WHERE(tsoSalesOrder.UserFld1 Is Not NULL)"
+        ''SQL_LINE = SQL_LINE & "         WHERE(1=2)"
+        'SQL_LINE = SQL_LINE & "         UNION       "
+        'SQL_LINE = SQL_LINE & " SELECT     tsoShipLine.ItemKey, tsoShipment.PostDate, tsoShipLineDist.QtyShipped, tsoShipment.PostDate AS SchdShipDate, vdvCustomerReturn.TranID, "
+        'SQL_LINE = SQL_LINE & "                       vdvCustomerReturn.UserFld1, vdvCustomerReturn.UserFld2, vdvCustomerReturn.UserFld3, vdvCustomerReturn.UserFld4, Convert(decimal(16,8),QtyShipped )as TotalQTYShipped"
+        'SQL_LINE = SQL_LINE & " FROM         vdvCustomerReturn INNER JOIN"
+        'SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER join"
+        'SQL_LINE = SQL_LINE & "                       tsoShipLineDist ON tsoShipLine.ShipLineKey = tsoShipLineDist.ShipLineKey INNER JOIN"
+        'SQL_LINE = SQL_LINE & "                       tsoShipment ON vdvCustomerReturn.ShipKey = tsoShipment.ShipKey"
+        '' SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.TranID  LIKE '%20366%')"
+        'SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.UserFld1 Is Not NULL)"
 
         '=================================================================================
         ' 1. CLEAN COMPARE
@@ -126,7 +172,7 @@ Module Module1
         '=================================================================================
         ' 5. Process Insert / Updates
         '=================================================================================
-        'Process_Changed_SALESORDERLINE()
+        Process_Changed_SALESORDERLINE()
         ' 6. Process Deletes
         '    DO NOT PROCESS DELETES
 
@@ -213,6 +259,7 @@ Module Module1
             sourceConnection.Open()
             Dim reader As SqlDataReader = myCommand.ExecuteReader()
 
+
             ' open the destination data
             Using destinationConnection As New SqlConnection(SLXConnectionString)
                 ' open the connection
@@ -220,7 +267,7 @@ Module Module1
 
                 Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
                     bulkCopy.BatchSize = 500
-                    bulkCopy.NotifyAfter = 1000
+                    bulkCopy.NotifyAfter = 1
                     ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
                     bulkCopy.DestinationTableName = strDestinationTableName
                     bulkCopy.WriteToServer(reader)
@@ -249,13 +296,17 @@ Module Module1
             SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.ItemKey, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.ShipDate,"
             SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.QtyShipped, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.SchdShipDate,"
             SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.TranID, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1, tmpSO.SALESORDERID,"
-            SQL = SQL & " vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld2, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld3, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld4"
+            SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld2, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld3,"
+            SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld4, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.TotalQTYShipped,"
+            SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.TotalQTYOrdered, vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.StatusText,"
+            SQL = SQL & "             vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.OpenQTY"
             SQL = SQL & " FROM         vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED LEFT OUTER JOIN"
             SQL = SQL & "                           (SELECT     SALESORDERID, ALTERNATEKEYPREFIX + '-' + ALTERNATEKEYSUFFIX AS SalesOrderNumber"
             SQL = SQL & "                             FROM          sysdba.SALESORDER) AS tmpSO ON vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1 = tmpSO.SalesOrderNumber"
-            SQL = SQL & " where (vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld3 IS NOT NULL) OR (tmpSO.SALESORDERID IS NOT NULL)"
-            'SQL = SQL & " WHERE     (vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld1 <> '') "
+            SQL = SQL & " WHERE     (vdvMAS_to_SLX_SalesOrderLINE_TAC_CHANGED.UserFld3 IS NOT NULL) OR"
+            SQL = SQL & "                       (tmpSO.SALESORDERID IS NOT NULL)"
 
+            Dim PickingListItemId As String = ""
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
             Dim dt As New DataTable()
@@ -266,36 +317,50 @@ Module Module1
 
                 i = i + 1
                 'AddEditSALESORDERITEM(row, SalesOrderItemId)
-                If (IsDBNull(row("USERFLD3"))) Then
-                    ' Try  Userfield 1
-                    If Not IsDBNull(row("SALESORDERID")) Then
-                        Try
-                            SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
-                            AddEditSALESORDERITEM(row, SalesOrderItemId)
-                        Catch ex As Exception
-                            MsgBox(ex.Message)
-                        End Try
-                    End If
-
-
+                '================================================================================================================================
+                ' First Check if Userfld4 has a value this means it is assigned to a Picking List and Does Not have a Direct Associated Order
+                ' Will need to Process the Pickinglist lines
+                '=================================================================================================================================
+                If (Not IsDBNull(row("USERFLD4"))) Then
+                    ' This Linked to a PickingList so We need to update the Header
+                    PickingListItemId = GetPickingListItemID(row("USERFLD4"), row("ItemKey"))
+                    AddEditPICKINGLISTITEM(row, PickingListItemId)
                 Else
-                    'Good
-                    'AddEditSALESORDER(row, row("USERFLD3"), "SalesOrderId")
-                    Try
-                        SalesOrderItemId = GetSalesOrderItemID(row("USERFLD3"), row("ItemKey"))
-                        AddEditSALESORDERITEM(row, SalesOrderItemId)
-                        If (Not IsDBNull(row("USERFLD4"))) Then
-                            ' This Linked to a PickingList so We need to update the Header
-                            'AddEditPicklist(row, row("USERFLD4"), "PICKINGLISTID")
-                            AddEditPICKINGLISTITEM(row, SalesOrderItemId)
-
+                    '====================================================
+                    ' Normal Order Lines
+                    '=====================================================
+                    If (IsDBNull(row("USERFLD3"))) Then
+                        ' Try  Userfield 1
+                        If Not IsDBNull(row("SALESORDERID")) Then
+                            Try
+                                SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
+                                AddEditSALESORDERITEM(row, SalesOrderItemId)
+                            Catch ex As Exception
+                                MsgBox(ex.Message)
+                            End Try
                         End If
-                    Catch ex As Exception
-
-                    End Try
 
 
+                    Else
+                        'Good
+                        'AddEditSALESORDER(row, row("USERFLD3"), "SalesOrderId")
+                        Try
+                            SalesOrderItemId = GetSalesOrderItemID(row("USERFLD3"), row("ItemKey"))
+                            AddEditSALESORDERITEM(row, SalesOrderItemId)
+                            If (Not IsDBNull(row("USERFLD4"))) Then
+                                ' This Linked to a PickingList so We need to update the Header
+                                'AddEditPicklist(row, row("USERFLD4"), "PICKINGLISTID")
+                                AddEditPICKINGLISTITEM(row, SalesOrderItemId)
+
+                            End If
+                        Catch ex As Exception
+
+                        End Try
+
+
+                    End If
                 End If
+              
 
                 Console.WriteLine("Processes SalesorderItem Changed" & i)
             Next row
@@ -344,6 +409,10 @@ Module Module1
                     .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
                     .Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
                     .Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
+                    .Fields("TotalQTYShipped").Value = MyDataRow("TotalQTYShipped")
+                    .Fields("STATUSTEXT").Value = MyDataRow("TotalQTYSSTATUSTEXThipped")
+                    .Fields("OPENQTY").Value = MyDataRow("OPENQTY")
+
 
                 Else
                     '=======================================
@@ -359,6 +428,10 @@ Module Module1
                     .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
                     .Fields("MASQTYSHIPPED").Value = MyDataRow("QtyShipped")
                     .Fields("MASSCHDSHIPDATE").Value = MyDataRow("SchdShipDate")
+                    .Fields("TotalQTYShipped").Value = MyDataRow("TotalQTYShipped")
+
+                    .Fields("STATUSTEXT").Value = MyDataRow("STATUSTEXT")
+                    .Fields("OPENQTY").Value = MyDataRow("OPENQTY")
 
                 End If
 
@@ -372,7 +445,7 @@ Module Module1
 
         End Try
     End Sub
-    Public Sub AddEditPICKINGLISTITEM(ByVal MyDataRow As DataRow, ByVal SALESORDERITEMID As String)
+    Public Sub AddEditPICKINGLISTITEM(ByVal MyDataRow As DataRow, ByVal PICKINGLISTITEMID As String)
         '============================================================
         ' get Default Data row from SALESORDERITEM SHIPPING INFO
         '============================================================
@@ -382,7 +455,7 @@ Module Module1
         '=======================
         Dim objConn As New ADODB.Connection()
         Dim objRS As New ADODB.Recordset
-        Dim strSQL As String = "SELECT * FROM PICKINGLISTITEM WHERE SALESORDERITEMID = '" & SALESORDERITEMID & "'"
+        Dim strSQL As String = "SELECT * FROM PICKINGLISTITEM WHERE PICKINGLISTITEMID = '" & PICKINGLISTITEMID & "'"
 
 
         Try
@@ -397,17 +470,17 @@ Module Module1
                     If .EOF Then
                         'adding
                         .AddNew()
-                        .Fields("PICKINGLISTITEMID").Value = GetNewSLXID("PICKINGLISTITEM", strSLXConstr)
-                        .Fields("CREATEDATE").Value = Now
-                        .Fields("CREATEUSER").Value = "ADMIN"
-                        .Fields("MODIFYDATE").Value = Now
-                        .Fields("MODIFYUSER").Value = "ADMIN"
+                        '.Fields("PICKINGLISTITEMID").Value = GetNewSLXID("PICKINGLISTITEM", strSLXConstr)
+                        '.Fields("CREATEDATE").Value = Now
+                        '.Fields("CREATEUSER").Value = "ADMIN"
+                        '.Fields("MODIFYDATE").Value = Now
+                        '.Fields("MODIFYUSER").Value = "ADMIN"
 
-                        .Fields("SALESORDERITEMSID").Value = SALESORDERITEMID
-                        .Fields("SECCODEID").Value = "SYST00000001"
-                        .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
-                        .Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
-                        .Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
+                        '.Fields("SALESORDERITEMSID").Value = SALESORDERITEMID
+                        '.Fields("SECCODEID").Value = "SYST00000001"
+                        '.Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
+                        '.Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
+                        '.Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
 
                     Else
                         '=======================================
@@ -423,6 +496,10 @@ Module Module1
                         .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
                         .Fields("MASQTYSHIPPED").Value = MyDataRow("QtyShipped")
                         .Fields("MASSCHDSHIPDATE").Value = MyDataRow("SchdShipDate")
+                        .Fields("TotalQTYShipped").Value = MyDataRow("TotalQTYShipped")
+
+                        .Fields("STATUSTEXT").Value = MyDataRow("STATUSTEXT")
+                        .Fields("OPENQTY").Value = MyDataRow("OPENQTY")
 
                     End If
                 Next
@@ -677,7 +754,56 @@ Module Module1
         sql = sql & "               sysdba.PRODUCT ON sysdba.SALESORDERITEMS.PRODUCTID = sysdba.PRODUCT.PRODUCTID INNER JOIN"
         sql = sql & "                       sysdba.SALESORDER ON sysdba.SALESORDERITEMS.SALESORDERID = sysdba.SALESORDER.SALESORDERID INNER JOIN"
         sql = sql & "               sysdba.SITE ON sysdba.SALESORDER.USERWHSEID = sysdba.SITE.SITEID AND sysdba.PRODUCT.WAREHOUSEID = sysdba.SITE.SITECODE"
-        sql = sql & " WHERE     (sysdba.SALESORDERITEMS.SALESORDERID = '" & SalesOrderId & "') and (MASITEMKEY = '" & ItemKey & "')  AND  (sysdba.SALESORDERITEMS.QUANTITY > 0)"
+        sql = sql & " WHERE     (sysdba.SALESORDERITEMS.SALESORDERID = '" & SalesOrderId & "') and (MASITEMKEY = '" & ItemKey & "')  AND  (sysdba.SALESORDERITEMS.QUANTITY <> 0)"
+
+        Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+        Using conn As New SqlConnection(strConnection)
+            Dim cmd As New SqlCommand(sql, conn)
+            '==========================================================================
+            ' Clean Out the Compare Table 
+            '===========================================================================
+            Try
+                conn.Open()
+                If IsDBNull(cmd.ExecuteScalar()) Then
+                    Return ""
+
+                Else
+                    Dim fieldval As String = cmd.ExecuteScalar()
+                    If fieldval = Nothing Then
+                        Return ""
+                    Else
+                        Return fieldval
+                    End If
+
+                End If
+            Catch ex As Exception
+                Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+                Console.WriteLine(ex.Message)
+            Finally
+                If conn.State = ConnectionState.Open Then
+                    conn.Close()
+                End If
+            End Try
+
+            '==========================================================================
+
+        End Using
+
+
+    End Function
+    Public Function GetPickingListItemID(ByVal PickingListId As String, ByVal ItemKey As String) As String
+
+        ' Old Way Fixed Oct 1, 2015
+
+       
+
+        Dim sql As String = " "
+        sql = sql & " SELECT     sysdba.PICKINGLISTITEM.PICKINGLISTITEMID"
+        sql = sql & " FROM         sysdba.PICKINGLISTITEM INNER JOIN"
+        sql = sql & "                       sysdba.PRODUCT ON sysdba.PICKINGLISTITEM.PRODUCTID = sysdba.PRODUCT.PRODUCTID INNER JOIN"
+        sql = sql & "                       sysdba.PICKINGLIST ON sysdba.PICKINGLISTITEM.PICKINGLISTID = sysdba.PICKINGLIST.PICKINGLISTID"
+        sql = sql & " WHERE     (sysdba.PICKINGLISTITEM.PICKINGLISTID = '" & PickingListId & "') AND (sysdba.PRODUCT.WAREHOUSEID = 'DEL') AND (sysdba.PRODUCT.MASITEMKEY = '" & ItemKey & "') AND"
+        sql = sql & "                        (sysdba.PICKINGLISTITEM.QTYORD <> 0)"
 
         Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
         Using conn As New SqlConnection(strConnection)
