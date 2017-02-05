@@ -75,7 +75,7 @@ Module Module1
         '=================================================================================
         ' 5. Process Insert / Updates
         '=================================================================================
-        ' Process_Changed_SalesOrderHEADER_Info()
+        Process_Changed_SalesOrderHEADER_Info()
         ' 6. Process Deletes
         '    DO NOT PROCESS DELETES
 
@@ -325,42 +325,41 @@ Module Module1
                     ' This Linked to a PickingList so We need to update the Header
                     PickingListItemId = GetPickingListItemID(row("USERFLD4"), row("ItemKey"))
                     AddEditPICKINGLISTITEM(row, PickingListItemId)
-                Else
-                    '====================================================
-                    ' Normal Order Lines
-                    '=====================================================
-                    If (IsDBNull(row("USERFLD3"))) Then
-                        ' Try  Userfield 1
-                        If Not IsDBNull(row("SALESORDERID")) Then
-                            Try
-                                SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
-                                AddEditSALESORDERITEM(row, SalesOrderItemId)
-                            Catch ex As Exception
-                                MsgBox(ex.Message)
-                            End Try
-                        End If
-
-
-                    Else
-                        'Good
-                        'AddEditSALESORDER(row, row("USERFLD3"), "SalesOrderId")
-                        Try
-                            SalesOrderItemId = GetSalesOrderItemID(row("USERFLD3"), row("ItemKey"))
-                            AddEditSALESORDERITEM(row, SalesOrderItemId)
-                            If (Not IsDBNull(row("USERFLD4"))) Then
-                                ' This Linked to a PickingList so We need to update the Header
-                                'AddEditPicklist(row, row("USERFLD4"), "PICKINGLISTID")
-                                AddEditPICKINGLISTITEM(row, SalesOrderItemId)
-
-                            End If
-                        Catch ex As Exception
-
-                        End Try
-
-
-                    End If
                 End If
-              
+                '====================================================
+                ' Normal Order Lines
+                '=====================================================
+                If (Not IsDBNull(row("USERFLD3"))) Then
+                    ' Try  Userfield 1
+                    If Not IsDBNull(row("SALESORDERID")) Then
+                        Try
+                            SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
+                            AddEditSALESORDERITEM(row, SalesOrderItemId)
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+                    End If
+
+
+                End If
+                'Good
+                'AddEditSALESORDER(row, row("USERFLD3"), "SalesOrderId")
+                'Try
+                '    SalesOrderItemId = GetSalesOrderItemID(row("USERFLD3"), row("ItemKey"))
+                '    AddEditSALESORDERITEM(row, SalesOrderItemId)
+                '    If (Not IsDBNull(row("USERFLD4"))) Then
+                '        ' This Linked to a PickingList so We need to update the Header
+                '        'AddEditPicklist(row, row("USERFLD4"), "PICKINGLISTID")
+                '        AddEditPICKINGLISTITEM(row, SalesOrderItemId)
+
+                '    End If
+                'Catch ex As Exception
+
+                'End Try
+
+
+               
+
 
                 Console.WriteLine("Processes SalesorderItem Changed" & i)
             Next row
