@@ -16,6 +16,23 @@ Module Module1
 #End Region
     Sub Main()
         Call LogErrors(PROJECTNAME, " - Main", "Process Start", EventLogEntryType.Information)
+        '========================================================================================
+        ' Ensure Single Instance application
+        '==========================================================================================
+
+        Dim appProc() As Process
+        Dim strModName, strProcName As String
+        strModName = Process.GetCurrentProcess.MainModule.ModuleName
+        strProcName = System.IO.Path.GetFileNameWithoutExtension(strModName)
+
+        appProc = Process.GetProcessesByName(strProcName)
+        If appProc.Length > 1 Then
+            Console.WriteLine("There is an instance of this application running.")
+            Exit Sub
+        Else
+            Console.WriteLine("There are no other instances running.")
+        End If
+        '==========================================================================================
 
         ' strSLXNativeConstr = GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
         strSLXNativeConstr = My.Settings.SLXNativeConnection
@@ -256,6 +273,7 @@ Module Module1
 
         Using sourceConnection As New SqlConnection(SourceconnectionString)
             Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
+            myCommand.CommandTimeout = 200 '200 Seconds
             sourceConnection.Open()
             Dim reader As SqlDataReader = myCommand.ExecuteReader()
 
@@ -309,6 +327,7 @@ Module Module1
             Dim PickingListItemId As String = ""
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            objCMD.CommandTimeout = 200 'set the default to 200 seconds
             Dim dt As New DataTable()
             dt.Load(objCMD.ExecuteReader())
 
