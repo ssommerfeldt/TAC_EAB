@@ -581,7 +581,7 @@ Module Module1
                     .Fields("ACCOUNTID").Value = MyDataRow("ACCOUNTID")
 
                     .Fields("SALESPERSON").Value = MyDataRow("SALESPERSON")
-                    .Fields("CUSTOMER_TYPE").Value = MyDataRow("CUSTOMER_TYPE")
+                    .Fields("CUSTOMER_TYPE").Value = Left(MyDataRow("CUSTOMER_TYPE"), 32)
                     .Fields("CREDIT_LIMIT").Value = MyDataRow("CREDIT_LIMIT")
                     .Fields("AVG_DAYS_TO_PAY").Value = MyDataRow("AVG_DAYS_TO_PAY")
                     .Fields("AVG_DAYS_OVERDUE").Value = MyDataRow("AVG_DAYS_OVERDUE")
@@ -609,7 +609,7 @@ Module Module1
                     .Fields("ACCOUNTID").Value = MyDataRow("ACCOUNTID")
 
                     .Fields("SALESPERSON").Value = MyDataRow("SALESPERSON")
-                    .Fields("CUSTOMER_TYPE").Value = MyDataRow("CUSTOMER_TYPE")
+                    .Fields("CUSTOMER_TYPE").Value = Left(MyDataRow("CUSTOMER_TYPE"), 32)
                     .Fields("CREDIT_LIMIT").Value = MyDataRow("CREDIT_LIMIT")
                     .Fields("AVG_DAYS_TO_PAY").Value = MyDataRow("AVG_DAYS_TO_PAY")
                     .Fields("AVG_DAYS_OVERDUE").Value = MyDataRow("AVG_DAYS_OVERDUE")
