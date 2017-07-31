@@ -11,5 +11,20 @@
     <Setting Name="SLXNativeConnection" Type="System.String" Scope="User">
       <Value Profile="(Default)">Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=SA;Initial Catalog=SLX_TESTPREGOLIVE;Data Source=APOLLO;Initial File Name="";Server SPN=""</Value>
     </Setting>
+    <Setting Name="smtpUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">donotreply.eabnotifications@gmail.com</Value>
+    </Setting>
+    <Setting Name="smtpPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="smtpHost" Type="System.String" Scope="User">
+      <Value Profile="(Default)">smtp.gmail.com</Value>
+    </Setting>
+    <Setting Name="smtpPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Icecream1!</Value>
+    </Setting>
+    <Setting Name="SendtoEmails" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ssommerfeldt@theanswerco.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

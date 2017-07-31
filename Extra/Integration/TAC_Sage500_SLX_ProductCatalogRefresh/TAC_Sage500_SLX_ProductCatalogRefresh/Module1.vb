@@ -16,57 +16,90 @@ Module Module1
 #End Region
 
     Sub Main()
-        Call LogErrors(PROJECTNAME, " - Main", "Process Start", EventLogEntryType.Information)
+        Try
 
-        strSLXNativeConstr = My.Settings.SLXNativeConstr 'GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
-        strSage500Constr = My.Settings.Sage500Constr 'GetConnection(PROJECTNAME, "Sage500Connection.udl")
-        strSLXConstr = My.Settings.SLXConstr 'GetConnection(PROJECTNAME, "SLXConnection.udl")
 
-        If strSLXConstr = "" Or strSLXNativeConstr = "" Or strSage500Constr = "" Then
-            '=============================================
-            ' Problem with the Connection String So Exit
-            '===============================================
-            'You must create an empty test.udl file in c:\ first. So, goto to c: - right click and New File - call it test.udl and then run the command above:
-            'C:\Windows\syswow64\rundll32.exe "C:\Program Files (x86)\Common Files\System\Ole DB\oledb32.dll",OpenDSLFile C:\test.udl
+            Call LogErrors(PROJECTNAME, " - Main", "Process Start", EventLogEntryType.Information)
 
-            Call LogErrors(PROJECTNAME, " - Main", "Problem with Connectin String so Exit", EventLogEntryType.Error)
+            strSLXNativeConstr = My.Settings.SLXNativeConstr 'GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
+            strSage500Constr = My.Settings.Sage500Constr 'GetConnection(PROJECTNAME, "Sage500Connection.udl")
+            strSLXConstr = My.Settings.SLXConstr 'GetConnection(PROJECTNAME, "SLXConnection.udl")
+
+            If strSLXConstr = "" Or strSLXNativeConstr = "" Or strSage500Constr = "" Then
+                '=============================================
+                ' Problem with the Connection String So Exit
+                '===============================================
+                'You must create an empty test.udl file in c:\ first. So, goto to c: - right click and New File - call it test.udl and then run the command above:
+                'C:\Windows\syswow64\rundll32.exe "C:\Program Files (x86)\Common Files\System\Ole DB\oledb32.dll",OpenDSLFile C:\test.udl
+
+                Call LogErrors(PROJECTNAME, " - Main", "Problem with Connectin String so Exit", EventLogEntryType.Error)
+                Exit Sub
+
+            End If
+            'Call GetRWPass()
+            'Call GetUserID()
+            'Call GetPartsHandlerData("Account")
+            'Call GetPartsHandlerData("History")
+            '=================================================================================================================================================================
+            ' TEST Connectivity to MAS.  This sometimes Fails but we have already moved and Cleaned out Temp so it Re-Syncs  Everything, Causing Large Syncs for Users
+            '=================================================================================================================================================================
+            If TESTSourceData() = False Then
+                '=================
+                ' Log Failure and Email 
+                ' Then Exit 
+                '==========================
+                Console.WriteLine("Failure executing Query to Mass")
+                Dim strReport As String
+                strReport = "<style>body{font-family: Verdana, Arial, Helvetica, sans-serif} td{font-weight: 550}</style>"
+                strReport = strReport & " <body>"
+                strReport = strReport & " <center><font size=+3 color=#000099>Product Sync Failed to Connect to MASS</font><br><font size=-2 color=#0000CC>" & Now.ToString & "</font></center>"
+                strReport = strReport & " Product Sync has Process over the number of threshold number of changes there maybe a problem and this should be looked into and the processed stopped to ensure a large sync is not pushed out.<br><br>"
+                strReport = strReport & "    <br><sup>*</sup><Font size=-1> Please look into this at your earliest convenience  </font>"
+                strReport = strReport & " </body>"
+                SendSimpleEmail(My.Settings.SendtoEmails, strReport, "Product Sync Issue Suspected" & Now.ToString(), "")
+                Exit Sub
+
+            End If
+
+            Console.WriteLine("Move Temp into Compare")
+            Call Clean_Compare()
+            Call Move_Temp_To_Compare()
+            Console.WriteLine("Clean Temp table")
+            Call CleanTempDir()
+            Console.WriteLine("Get Source Data")
+            Call GetSourceData()
+
+            '============================================================
+            Console.WriteLine("------ New Products Start ------")
+            Call Process_NewProducts()
+            Console.WriteLine("------ Ne ProductProgram Start ------")
+            Call Process_NewPRODUCTPROGRAM()
+
+            Console.WriteLine("------ NeW SITE Start ------")
+            Call Process_NewSITE()
+
+            Console.WriteLine("------ Products Changed Start ------")
+            Call Process_ChangedProducts()
+            'Console.WriteLine("------ SalesOrderItems Start ------")
+
+            Console.WriteLine("------ Clean-up StockCards with Inactive Products Start ------")
+            Process_DELETE_InactiveStockCardProducts()
+
+            Console.WriteLine("------ Clean-up OrderItems with Inactive Products Start ------")
+            Process_DELETE_InactiveProductsfromOrders()
+
+            Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
+        Catch ex As Exception
+            Dim strReport As String
+            strReport = "<style>body{font-family: Verdana, Arial, Helvetica, sans-serif} td{font-weight: 550}</style>"
+            strReport = strReport & " <body>"
+            strReport = strReport & " <center><font size=+3 color=#000099>Product Sync Crashed</font><br><font size=-2 color=#0000CC>" & Now.ToString & "</font></center>"
+            strReport = strReport & " Product Sync has Process over the number of threshold number of changes there maybe a problem and this should be looked into and the processed stopped to ensure a large sync is not pushed out.<br><br>"
+            strReport = strReport & "    <br><sup>*</sup><Font size=-1> Please look into this at your earliest convenience  </font>"
+            strReport = strReport & " </body>"
+            SendSimpleEmail(My.Settings.SendtoEmails, strReport, "Product Sync Issue Suspected" & Now.ToString(), "")
             Exit Sub
-
-        End If
-        'Call GetRWPass()
-        'Call GetUserID()
-        'Call GetPartsHandlerData("Account")
-        'Call GetPartsHandlerData("History")
-
-
-        Console.WriteLine("Move Temp into Compare")
-        Call Clean_Compare()
-        Call Move_Temp_To_Compare()
-        Console.WriteLine("Clean Temp table")
-        Call CleanTempDir()
-        Console.WriteLine("Get Source Data")
-        Call GetSourceData()
-
-        '============================================================
-        Console.WriteLine("------ New Products Start ------")
-        Call Process_NewProducts()
-        Console.WriteLine("------ Ne ProductProgram Start ------")
-        Call Process_NewPRODUCTPROGRAM()
-
-        Console.WriteLine("------ NeW SITE Start ------")
-        Call Process_NewSITE()
-
-        Console.WriteLine("------ Products Changed Start ------")
-        Call Process_ChangedProducts()
-        'Console.WriteLine("------ SalesOrderItems Start ------")
-
-        Console.WriteLine("------ Clean-up StockCards with Inactive Products Start ------")
-        Process_DELETE_InactiveStockCardProducts()
-
-        Console.WriteLine("------ Clean-up OrderItems with Inactive Products Start ------")
-        Process_DELETE_InactiveProductsfromOrders()
-
-        Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
+        End Try
     End Sub
 
 
@@ -213,6 +246,73 @@ Module Module1
         End Using
     End Sub
 
+    Private Function TESTSourceData() As Boolean
+        Dim SourceconnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSage500Constr)
+        Dim SLXConnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
+        Dim strSourceSQL As String
+
+        strSourceSQL = "SELECT     vdvStockStatus.ShortDesc AS NAME, timItemDescription.LongDesc AS DESCRIPTION, vdvStockStatus.ItemID AS ACTUALID, timItemClass.ItemClassName AS FAMILY, "
+        strSourceSQL = strSourceSQL & "                      timItem.StdPrice AS PRICE, tmpItemType.LocalText AS PRODUCTGROUP, CONVERT(varchar(255), tmpItemStatus.LocalText) AS STATUS, "
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus.UnitMeasID AS UNIT, NULL AS STOCKVOLUME, NULL AS STOCKWEIGHT, NULL AS STOCKITEM, NULL AS PROGRAM, NULL AS SUPPLIER, NULL "
+        strSourceSQL = strSourceSQL & "                      AS VENDOR, NULL AS SITEID, NULL AS WAREHOUSELOCATION, NULL AS COMMISSIONABLE, NULL AS TAXABLE, NULL AS ACCOUNTINGPERIOD, "
+        strSourceSQL = strSourceSQL & "                      tglAccount.GLAcctNo AS GLACCOUNTNUMBER, NULL AS GLSUBACCOUNTNUMBER, NULL AS DATAOWNER, NULL AS TYPE, NULL AS FIXEDCOST, NULL "
+        strSourceSQL = strSourceSQL & "                      AS GLOBALSYNCID, NULL AS APPID, NULL AS TICK, NULL AS COMMODITYGROUPID, NULL AS ACTIVEFLAG, 'T' AS SELLINGALLOWEDFLAG, "
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID, NULL AS SELLINGUOMID, NULL AS SELLINGUOMNUMBER, NULL AS CLASSIFICATION, NULL "
+        strSourceSQL = strSourceSQL & "                      AS COMMODITYTYPE, vdvStockStatus.ItemKey AS MASITEMKEY, timItemUnitOfMeas.UPC, vdvStockStatus.ItemID AS MASITEMID, "
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus.WhseID AS WAREHOUSEID, vdvStockStatus.CompanyID, vdvStockStatus.QtyOnHand, vdvStockStatus.QtyAvailable, vdvStockStatus.SurplusQty, "
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus.QtyOnHold, vdvStockStatus.MaxStockLevel, timItem.ProdPriceGroupKey"
+        strSourceSQL = strSourceSQL & " FROM         tglAccount LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      timInventory ON tglAccount.GLAcctKey = timInventory.InvtAcctKey RIGHT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      vdvStockStatus INNER JOIN"
+        strSourceSQL = strSourceSQL & "                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey ON timInventory.WhseKey = vdvStockStatus.WhseKey AND "
+        strSourceSQL = strSourceSQL & "                      timInventory.ItemKey = vdvStockStatus.ItemKey LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      timItemUnitOfMeas ON timItem.SalesUnitMeasKey = timItemUnitOfMeas.TargetUnitMeasKey AND timItem.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
+        strSourceSQL = strSourceSQL & "                            FROM          vListValidationString AS vListValidationString_1"
+        strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'Status')) AS tmpItemStatus ON timItem.Status = tmpItemStatus.DBValue LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
+        strSourceSQL = strSourceSQL & "                            FROM          vListValidationString"
+        strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"
+        strSourceSQL = strSourceSQL & "                      timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey"
+
+
+        ' get the source data
+        '=================================================================
+        Dim blnReturn As Boolean = False
+        Try
+
+       
+
+        Using sourceConnection As New SqlConnection(SourceconnectionString)
+            Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
+            sourceConnection.Open()
+            Dim reader As SqlDataReader = myCommand.ExecuteReader()
+
+            '' open the destination data
+            'Using destinationConnection As New SqlConnection(SLXConnectionString)
+            '    ' open the connection
+            '    destinationConnection.Open()
+
+            '    Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
+            '        bulkCopy.BatchSize = 500
+            '        bulkCopy.NotifyAfter = 1000
+            '        ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
+            '        bulkCopy.DestinationTableName = "MAS_TO_SLX_PRODUCT_Temp"
+            '        bulkCopy.WriteToServer(reader)
+            '    End Using
+                'End Using
+                blnReturn = True  ' Return True because we successfully read the data
+            reader.Close()
+
+            End Using
+        Catch ex As Exception
+            blnReturn = False ' Failed for some reason
+        End Try
+
+        Return blnReturn
+
+    End Function
     Private Sub Process_NewProducts()
 
         Dim i As Integer = 0
@@ -256,7 +356,7 @@ Module Module1
         objConn = Nothing
     End Sub
 
-    Public Sub AddEditPRODUCT(MyDataRow As DataRow, ByVal Productid As String)
+    Public Sub AddEditPRODUCT(ByVal MyDataRow As DataRow, ByVal Productid As String)
         '============================================================
         ' get Default Data row from StockCard and Product info
         '============================================================
@@ -333,7 +433,7 @@ Module Module1
                     .Fields("QtyOnHold").Value = MyDataRow("QtyOnHold")
                     .Fields("MaxStockLevel").Value = MyDataRow("MaxStockLevel")
                     .Fields("MASProdPriceGroupKey").Value = MyDataRow("ProdPriceGroupKey")
-                 
+
 
 
 
@@ -444,7 +544,7 @@ Module Module1
         objConn = Nothing
     End Sub
 
-    Public Sub AddEditPRODUCTPROGRAM(MyDataRow As DataRow, ByVal ProductProgramId As String)
+    Public Sub AddEditPRODUCTPROGRAM(ByVal MyDataRow As DataRow, ByVal ProductProgramId As String)
         '============================================================
         ' get Default Data row from StockCard and Product info
         '============================================================
@@ -543,7 +643,7 @@ Module Module1
         objConn = Nothing
     End Sub
 
-    Public Sub AddEditSITE(MyDataRow As DataRow, ByVal SiteId As String)
+    Public Sub AddEditSITE(ByVal MyDataRow As DataRow, ByVal SiteId As String)
         '============================================================
         ' get Default Data row from StockCard and Product info
         '============================================================
@@ -706,7 +806,7 @@ Module Module1
     End Sub
 
 
-   
+
     Private Sub Process_CleanUPDuplicates()
 
         Dim i As Integer = 0
@@ -715,7 +815,7 @@ Module Module1
         Dim CompanyId As String
 
         '===================================================
-        
+
         Dim objConn As New OleDbConnection(strSLXNativeConstr)
 
         Try
@@ -752,10 +852,10 @@ Module Module1
     Public Sub ProcessMASItem(ByVal MasItemKey As String, ByVal WareHouseId As String, ByVal CompanyId As String)
 
         Dim i As Integer = 0
-      
+
         Dim toKeepProductid As String = ""
         Dim Productid As String = ""
-         
+
         Dim objConn As New OleDbConnection(strSLXNativeConstr)
 
         Try
@@ -804,7 +904,7 @@ Module Module1
                 End If
 
                 i = i + 1
-               
+
                 Console.WriteLine("Clean Item " & i)
             Next row
 
@@ -822,7 +922,7 @@ Module Module1
 
         Try
             objConn.Open()
-            
+
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
 
