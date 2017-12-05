@@ -227,6 +227,7 @@ Module Module1
         Using sourceConnection As New SqlConnection(SourceconnectionString)
             Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
             sourceConnection.Open()
+            myCommand.CommandTimeout = 660
             Dim reader As SqlDataReader = myCommand.ExecuteReader()
 
             ' open the destination data
@@ -285,7 +286,8 @@ Module Module1
        
 
         Using sourceConnection As New SqlConnection(SourceconnectionString)
-            Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
+                Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
+                myCommand.CommandTimeout = 660
             sourceConnection.Open()
             Dim reader As SqlDataReader = myCommand.ExecuteReader()
 
