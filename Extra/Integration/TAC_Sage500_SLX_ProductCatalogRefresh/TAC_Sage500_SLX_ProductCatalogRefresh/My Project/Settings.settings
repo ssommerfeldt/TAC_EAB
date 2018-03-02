@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="SLXNativeConstr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=SA;Initial Catalog=SalesLogix_PRODUCTION;Data Source=APOLLO;Initial File Name="";Server SPN=""</Value>
+      <Value Profile="(Default)">Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=SA;Initial Catalog=SLX_TESTPREGOLIVE;Data Source=APOLLO;Initial File Name="";Server SPN=""</Value>
     </Setting>
     <Setting Name="Sage500Constr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=sa;Initial Catalog=mas500_eab_app;Data Source=APOLLO;Initial File Name="";Server SPN=""</Value>
+      <Value Profile="(Default)">Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=sa;Initial Catalog=mas500_slx_app;Data Source=APOLLO;Initial File Name="";Server SPN=""</Value>
     </Setting>
     <Setting Name="SLXConstr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Provider=SLXOLEDB.1;Password="lambarena76";Persist Security Info=True;User ID=admin;Initial Catalog=SALESLOGIX_PRODUCTION;Data Source=ATHENA;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
+      <Value Profile="(Default)">Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=SLX_TESTPREGOLIVE;Data Source=ATHENA;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
     </Setting>
     <Setting Name="smtpUser" Type="System.String" Scope="User">
       <Value Profile="(Default)">donotreply.eabnotifications@gmail.com</Value>
@@ -25,6 +25,68 @@
     </Setting>
     <Setting Name="SendtoEmails" Type="System.String" Scope="User">
       <Value Profile="(Default)">ssommerfeldt@theanswerco.com</Value>
+    </Setting>
+    <Setting Name="SourceQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT vdvStockStatus.ShortDesc AS NAME
+	,timItemDescription.LongDesc AS DESCRIPTION
+	,vdvStockStatus.ItemID AS ACTUALID
+	,timItemClass.ItemClassName AS FAMILY
+	,CONVERT(decimal(15,5),timItem.StdPrice) AS PRICE
+	,tmpItemType.LocalText AS PRODUCTGROUP
+	,CONVERT(VARCHAR(255), tmpItemStatus.LocalText) AS STATUS
+	,vdvStockStatus.UnitMeasID AS UNIT
+	,NULL AS STOCKVOLUME
+	,NULL AS STOCKWEIGHT
+	,NULL AS STOCKITEM
+	,NULL AS PROGRAM
+	,NULL AS SUPPLIER
+	,NULL AS VENDOR
+	,NULL AS SITEID
+	,NULL AS WAREHOUSELOCATION
+	,NULL AS COMMISSIONABLE
+	,NULL AS TAXABLE
+	,NULL AS ACCOUNTINGPERIOD
+	,tglAccount.GLAcctNo AS GLACCOUNTNUMBER
+	,NULL AS GLSUBACCOUNTNUMBER
+	,NULL AS DATAOWNER
+	,NULL AS TYPE
+	,NULL AS FIXEDCOST
+	,NULL AS GLOBALSYNCID
+	,NULL AS APPID
+	,NULL AS TICK
+	,NULL AS COMMODITYGROUPID
+	,NULL AS ACTIVEFLAG
+	,'T' AS SELLINGALLOWEDFLAG
+	,vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID
+	,NULL AS SELLINGUOMID
+	,NULL AS SELLINGUOMNUMBER
+	,NULL AS CLASSIFICATION
+	,NULL AS COMMODITYTYPE
+	,vdvStockStatus.ItemKey AS MASITEMKEY
+	,timItemUnitOfMeas.UPC
+	,vdvStockStatus.ItemID AS MASITEMID
+	,vdvStockStatus.WhseID AS WAREHOUSEID
+	,vdvStockStatus.CompanyID
+	,CONVERT(decimal(16,8),vdvStockStatus.QtyOnHand) as QtyOnHand
+	,CONVERT(decimal(16,8),vdvStockStatus.QtyAvailable) as QtyAvailable
+	,CONVERT(decimal(16,8),vdvStockStatus.SurplusQty) as SurplusQty
+	,CONVERT(decimal(16,8),vdvStockStatus.QtyOnHold) as QtyOnHold
+	,CONVERT(decimal(16,8),vdvStockStatus.MaxStockLevel) as MaxStockLevel
+	,timItem.ProdPriceGroupKey
+FROM         tglAccount LEFT OUTER JOIN
+                      timInventory ON tglAccount.GLAcctKey = timInventory.InvtAcctKey RIGHT OUTER JOIN
+                      vdvStockStatus INNER JOIN
+                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey ON timInventory.WhseKey = vdvStockStatus.WhseKey AND 
+                      timInventory.ItemKey = vdvStockStatus.ItemKey LEFT OUTER JOIN
+                      timItemUnitOfMeas ON timItem.SalesUnitMeasKey = timItemUnitOfMeas.TargetUnitMeasKey AND timItem.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN
+                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText
+                            FROM          vListValidationString AS vListValidationString_1
+                            WHERE      (TableName = 'timItem') AND (ColumnName = 'Status')) AS tmpItemStatus ON timItem.Status = tmpItemStatus.DBValue LEFT OUTER JOIN
+                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText
+                            FROM          vListValidationString
+                            WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN
+                      timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN
+                      timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey</Value>
     </Setting>
   </Settings>
 </SettingsFile>

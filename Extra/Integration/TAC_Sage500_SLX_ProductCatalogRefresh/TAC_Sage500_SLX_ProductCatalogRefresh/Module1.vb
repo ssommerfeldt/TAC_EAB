@@ -193,31 +193,32 @@ Module Module1
         Dim SourceconnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSage500Constr)
         Dim SLXConnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
         Dim strSourceSQL As String
+        strSourceSQL = My.Settings.SourceQuery
 
-        strSourceSQL = "SELECT     vdvStockStatus.ShortDesc AS NAME, timItemDescription.LongDesc AS DESCRIPTION, vdvStockStatus.ItemID AS ACTUALID, timItemClass.ItemClassName AS FAMILY, "
-        strSourceSQL = strSourceSQL & "                      timItem.StdPrice AS PRICE, tmpItemType.LocalText AS PRODUCTGROUP, CONVERT(varchar(255), tmpItemStatus.LocalText) AS STATUS, "
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus.UnitMeasID AS UNIT, NULL AS STOCKVOLUME, NULL AS STOCKWEIGHT, NULL AS STOCKITEM, NULL AS PROGRAM, NULL AS SUPPLIER, NULL "
-        strSourceSQL = strSourceSQL & "                      AS VENDOR, NULL AS SITEID, NULL AS WAREHOUSELOCATION, NULL AS COMMISSIONABLE, NULL AS TAXABLE, NULL AS ACCOUNTINGPERIOD, "
-        strSourceSQL = strSourceSQL & "                      tglAccount.GLAcctNo AS GLACCOUNTNUMBER, NULL AS GLSUBACCOUNTNUMBER, NULL AS DATAOWNER, NULL AS TYPE, NULL AS FIXEDCOST, NULL "
-        strSourceSQL = strSourceSQL & "                      AS GLOBALSYNCID, NULL AS APPID, NULL AS TICK, NULL AS COMMODITYGROUPID, NULL AS ACTIVEFLAG, 'T' AS SELLINGALLOWEDFLAG, "
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID, NULL AS SELLINGUOMID, NULL AS SELLINGUOMNUMBER, NULL AS CLASSIFICATION, NULL "
-        strSourceSQL = strSourceSQL & "                      AS COMMODITYTYPE, vdvStockStatus.ItemKey AS MASITEMKEY, timItemUnitOfMeas.UPC, vdvStockStatus.ItemID AS MASITEMID, "
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus.WhseID AS WAREHOUSEID, vdvStockStatus.CompanyID, vdvStockStatus.QtyOnHand, vdvStockStatus.QtyAvailable, vdvStockStatus.SurplusQty, "
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus.QtyOnHold, vdvStockStatus.MaxStockLevel, timItem.ProdPriceGroupKey"
-        strSourceSQL = strSourceSQL & " FROM         tglAccount LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      timInventory ON tglAccount.GLAcctKey = timInventory.InvtAcctKey RIGHT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus INNER JOIN"
-        strSourceSQL = strSourceSQL & "                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey ON timInventory.WhseKey = vdvStockStatus.WhseKey AND "
-        strSourceSQL = strSourceSQL & "                      timInventory.ItemKey = vdvStockStatus.ItemKey LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      timItemUnitOfMeas ON timItem.SalesUnitMeasKey = timItemUnitOfMeas.TargetUnitMeasKey AND timItem.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
-        strSourceSQL = strSourceSQL & "                            FROM          vListValidationString AS vListValidationString_1"
-        strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'Status')) AS tmpItemStatus ON timItem.Status = tmpItemStatus.DBValue LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
-        strSourceSQL = strSourceSQL & "                            FROM          vListValidationString"
-        strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey"
+        'strSourceSQL = "SELECT     vdvStockStatus.ShortDesc AS NAME, timItemDescription.LongDesc AS DESCRIPTION, vdvStockStatus.ItemID AS ACTUALID, timItemClass.ItemClassName AS FAMILY, "
+        'strSourceSQL = strSourceSQL & "                      timItem.StdPrice AS PRICE, tmpItemType.LocalText AS PRODUCTGROUP, CONVERT(varchar(255), tmpItemStatus.LocalText) AS STATUS, "
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.UnitMeasID AS UNIT, NULL AS STOCKVOLUME, NULL AS STOCKWEIGHT, NULL AS STOCKITEM, NULL AS PROGRAM, NULL AS SUPPLIER, NULL "
+        'strSourceSQL = strSourceSQL & "                      AS VENDOR, NULL AS SITEID, NULL AS WAREHOUSELOCATION, NULL AS COMMISSIONABLE, NULL AS TAXABLE, NULL AS ACCOUNTINGPERIOD, "
+        'strSourceSQL = strSourceSQL & "                      tglAccount.GLAcctNo AS GLACCOUNTNUMBER, NULL AS GLSUBACCOUNTNUMBER, NULL AS DATAOWNER, NULL AS TYPE, NULL AS FIXEDCOST, NULL "
+        'strSourceSQL = strSourceSQL & "                      AS GLOBALSYNCID, NULL AS APPID, NULL AS TICK, NULL AS COMMODITYGROUPID, NULL AS ACTIVEFLAG, 'T' AS SELLINGALLOWEDFLAG, "
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID, NULL AS SELLINGUOMID, NULL AS SELLINGUOMNUMBER, NULL AS CLASSIFICATION, NULL "
+        'strSourceSQL = strSourceSQL & "                      AS COMMODITYTYPE, vdvStockStatus.ItemKey AS MASITEMKEY, timItemUnitOfMeas.UPC, vdvStockStatus.ItemID AS MASITEMID, "
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.WhseID AS WAREHOUSEID, vdvStockStatus.CompanyID, vdvStockStatus.QtyOnHand, vdvStockStatus.QtyAvailable, vdvStockStatus.SurplusQty, "
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.QtyOnHold, vdvStockStatus.MaxStockLevel, timItem.ProdPriceGroupKey"
+        'strSourceSQL = strSourceSQL & " FROM         tglAccount LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timInventory ON tglAccount.GLAcctKey = timInventory.InvtAcctKey RIGHT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus INNER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey ON timInventory.WhseKey = vdvStockStatus.WhseKey AND "
+        'strSourceSQL = strSourceSQL & "                      timInventory.ItemKey = vdvStockStatus.ItemKey LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timItemUnitOfMeas ON timItem.SalesUnitMeasKey = timItemUnitOfMeas.TargetUnitMeasKey AND timItem.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
+        'strSourceSQL = strSourceSQL & "                            FROM          vListValidationString AS vListValidationString_1"
+        'strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'Status')) AS tmpItemStatus ON timItem.Status = tmpItemStatus.DBValue LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
+        'strSourceSQL = strSourceSQL & "                            FROM          vListValidationString"
+        'strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey"
 
 
         ' get the source data
@@ -227,7 +228,7 @@ Module Module1
         Using sourceConnection As New SqlConnection(SourceconnectionString)
             Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
             sourceConnection.Open()
-            myCommand.CommandTimeout = 660
+            myCommand.CommandTimeout = 1260
             Dim reader As SqlDataReader = myCommand.ExecuteReader()
 
             ' open the destination data
@@ -252,30 +253,32 @@ Module Module1
         Dim SLXConnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
         Dim strSourceSQL As String
 
-        strSourceSQL = "SELECT     vdvStockStatus.ShortDesc AS NAME, timItemDescription.LongDesc AS DESCRIPTION, vdvStockStatus.ItemID AS ACTUALID, timItemClass.ItemClassName AS FAMILY, "
-        strSourceSQL = strSourceSQL & "                      timItem.StdPrice AS PRICE, tmpItemType.LocalText AS PRODUCTGROUP, CONVERT(varchar(255), tmpItemStatus.LocalText) AS STATUS, "
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus.UnitMeasID AS UNIT, NULL AS STOCKVOLUME, NULL AS STOCKWEIGHT, NULL AS STOCKITEM, NULL AS PROGRAM, NULL AS SUPPLIER, NULL "
-        strSourceSQL = strSourceSQL & "                      AS VENDOR, NULL AS SITEID, NULL AS WAREHOUSELOCATION, NULL AS COMMISSIONABLE, NULL AS TAXABLE, NULL AS ACCOUNTINGPERIOD, "
-        strSourceSQL = strSourceSQL & "                      tglAccount.GLAcctNo AS GLACCOUNTNUMBER, NULL AS GLSUBACCOUNTNUMBER, NULL AS DATAOWNER, NULL AS TYPE, NULL AS FIXEDCOST, NULL "
-        strSourceSQL = strSourceSQL & "                      AS GLOBALSYNCID, NULL AS APPID, NULL AS TICK, NULL AS COMMODITYGROUPID, NULL AS ACTIVEFLAG, 'T' AS SELLINGALLOWEDFLAG, "
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID, NULL AS SELLINGUOMID, NULL AS SELLINGUOMNUMBER, NULL AS CLASSIFICATION, NULL "
-        strSourceSQL = strSourceSQL & "                      AS COMMODITYTYPE, vdvStockStatus.ItemKey AS MASITEMKEY, timItemUnitOfMeas.UPC, vdvStockStatus.ItemID AS MASITEMID, "
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus.WhseID AS WAREHOUSEID, vdvStockStatus.CompanyID, vdvStockStatus.QtyOnHand, vdvStockStatus.QtyAvailable, vdvStockStatus.SurplusQty, "
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus.QtyOnHold, vdvStockStatus.MaxStockLevel, timItem.ProdPriceGroupKey"
-        strSourceSQL = strSourceSQL & " FROM         tglAccount LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      timInventory ON tglAccount.GLAcctKey = timInventory.InvtAcctKey RIGHT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      vdvStockStatus INNER JOIN"
-        strSourceSQL = strSourceSQL & "                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey ON timInventory.WhseKey = vdvStockStatus.WhseKey AND "
-        strSourceSQL = strSourceSQL & "                      timInventory.ItemKey = vdvStockStatus.ItemKey LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      timItemUnitOfMeas ON timItem.SalesUnitMeasKey = timItemUnitOfMeas.TargetUnitMeasKey AND timItem.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
-        strSourceSQL = strSourceSQL & "                            FROM          vListValidationString AS vListValidationString_1"
-        strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'Status')) AS tmpItemStatus ON timItem.Status = tmpItemStatus.DBValue LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
-        strSourceSQL = strSourceSQL & "                            FROM          vListValidationString"
-        strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"
-        strSourceSQL = strSourceSQL & "                      timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey"
+        'strSourceSQL = "SELECT     vdvStockStatus.ShortDesc AS NAME, timItemDescription.LongDesc AS DESCRIPTION, vdvStockStatus.ItemID AS ACTUALID, timItemClass.ItemClassName AS FAMILY, "
+        'strSourceSQL = strSourceSQL & "                      timItem.StdPrice AS PRICE, tmpItemType.LocalText AS PRODUCTGROUP, CONVERT(varchar(255), tmpItemStatus.LocalText) AS STATUS, "
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.UnitMeasID AS UNIT, NULL AS STOCKVOLUME, NULL AS STOCKWEIGHT, NULL AS STOCKITEM, NULL AS PROGRAM, NULL AS SUPPLIER, NULL "
+        'strSourceSQL = strSourceSQL & "                      AS VENDOR, NULL AS SITEID, NULL AS WAREHOUSELOCATION, NULL AS COMMISSIONABLE, NULL AS TAXABLE, NULL AS ACCOUNTINGPERIOD, "
+        'strSourceSQL = strSourceSQL & "                      tglAccount.GLAcctNo AS GLACCOUNTNUMBER, NULL AS GLSUBACCOUNTNUMBER, NULL AS DATAOWNER, NULL AS TYPE, NULL AS FIXEDCOST, NULL "
+        'strSourceSQL = strSourceSQL & "                      AS GLOBALSYNCID, NULL AS APPID, NULL AS TICK, NULL AS COMMODITYGROUPID, NULL AS ACTIVEFLAG, 'T' AS SELLINGALLOWEDFLAG, "
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID, NULL AS SELLINGUOMID, NULL AS SELLINGUOMNUMBER, NULL AS CLASSIFICATION, NULL "
+        'strSourceSQL = strSourceSQL & "                      AS COMMODITYTYPE, vdvStockStatus.ItemKey AS MASITEMKEY, timItemUnitOfMeas.UPC, vdvStockStatus.ItemID AS MASITEMID, "
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.WhseID AS WAREHOUSEID, vdvStockStatus.CompanyID, vdvStockStatus.QtyOnHand, vdvStockStatus.QtyAvailable, vdvStockStatus.SurplusQty, "
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.QtyOnHold, vdvStockStatus.MaxStockLevel, timItem.ProdPriceGroupKey"
+        'strSourceSQL = strSourceSQL & " FROM         tglAccount LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timInventory ON tglAccount.GLAcctKey = timInventory.InvtAcctKey RIGHT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      vdvStockStatus INNER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey ON timInventory.WhseKey = vdvStockStatus.WhseKey AND "
+        'strSourceSQL = strSourceSQL & "                      timInventory.ItemKey = vdvStockStatus.ItemKey LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timItemUnitOfMeas ON timItem.SalesUnitMeasKey = timItemUnitOfMeas.TargetUnitMeasKey AND timItem.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
+        'strSourceSQL = strSourceSQL & "                            FROM          vListValidationString AS vListValidationString_1"
+        'strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'Status')) AS tmpItemStatus ON timItem.Status = tmpItemStatus.DBValue LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
+        'strSourceSQL = strSourceSQL & "                            FROM          vListValidationString"
+        'strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"
+        'strSourceSQL = strSourceSQL & "                      timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey"
+
+        strSourceSQL = My.Settings.SourceQuery
 
 
         ' get the source data
@@ -287,7 +290,7 @@ Module Module1
 
         Using sourceConnection As New SqlConnection(SourceconnectionString)
                 Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
-                myCommand.CommandTimeout = 660
+                myCommand.CommandTimeout = 1260
             sourceConnection.Open()
             Dim reader As SqlDataReader = myCommand.ExecuteReader()
 
@@ -734,16 +737,16 @@ Module Module1
                 '=================================================================================================
                 ' Aug 7, 2015 put in measurese to Notify Team if more than 20K Changes are being processed
                 '=================================================================================================
-                If i = 50000 Then
-                    strReport = "<style>body{font-family: Verdana, Arial, Helvetica, sans-serif} td{font-weight: 550}</style>"
-                    strReport = strReport & " <body>"
-                    strReport = strReport & " <center><font size=+3 color=#000099>Product Sync Issue Suspected</font><br><font size=-2 color=#0000CC>" & Now.ToString & "</font></center>"
-                    strReport = strReport & " Product Sync has Process over the number of threshold number of changes there maybe a problem and this should be looked into and the processed stopped to ensure a large sync is not pushed out.<br><br>"
-                    strReport = strReport & "    <br><sup>*</sup><Font size=-1> Please look into this at your earliest convenience  </font>"
-                    strReport = strReport & " </body>"
-                    SendSimpleEmail(My.Settings.SendtoEmails, strReport, "Product Sync Issue Suspected" & Now.ToString(), "")
-                    Exit Sub
-                End If
+                'If i = 100000 Then
+                '    strReport = "<style>body{font-family: Verdana, Arial, Helvetica, sans-serif} td{font-weight: 550}</style>"
+                '    strReport = strReport & " <body>"
+                '    strReport = strReport & " <center><font size=+3 color=#000099>Product Sync Issue Suspected</font><br><font size=-2 color=#0000CC>" & Now.ToString & "</font></center>"
+                '    strReport = strReport & " Product Sync has Process over the number of threshold number of changes there maybe a problem and this should be looked into and the processed stopped to ensure a large sync is not pushed out.<br><br>"
+                '    strReport = strReport & "    <br><sup>*</sup><Font size=-1> Please look into this at your earliest convenience  </font>"
+                '    strReport = strReport & " </body>"
+                '    SendSimpleEmail(My.Settings.SendtoEmails, strReport, "Product Sync Issue Suspected" & Now.ToString(), "")
+                '    Exit Sub
+                'End If
 
                 Console.WriteLine("Processes PRODUCT Changed" & i)
             Next row

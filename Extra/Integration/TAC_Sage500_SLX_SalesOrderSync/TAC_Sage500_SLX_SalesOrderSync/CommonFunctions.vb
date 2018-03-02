@@ -239,7 +239,7 @@ Module CommonFunctions
             Dim oCmd As New OleDbCommand(SQL, oConn)
             ReturnSiteCode = oCmd.ExecuteScalar
         Catch ex As Exception
-            MsgBox(ex.Message)
+            'MsgBox(ex.Message)
         Finally
             If oConn.State = Data.ConnectionState.Open Then oConn.Close()
         End Try
@@ -263,7 +263,7 @@ Module CommonFunctions
             End If
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            'MsgBox(ex.Message)
         Finally
             If oConn.State = Data.ConnectionState.Open Then oConn.Close()
         End Try
@@ -280,7 +280,7 @@ Module CommonFunctions
             Dim oCmd As New OleDbCommand(SQL, oConn)
             ReturnSiteCode = oCmd.ExecuteScalar
         Catch ex As Exception
-            MsgBox(ex.Message)
+            'MsgBox(ex.Message)
         Finally
             If oConn.State = Data.ConnectionState.Open Then oConn.Close()
         End Try
@@ -343,7 +343,7 @@ Module CommonFunctions
             End If
 
         Catch ex As Exception
-            MsgBox(ex.Message & "  " & ex.TargetSite.Name.ToString)
+            'MsgBox(ex.Message & "  " & ex.TargetSite.Name.ToString)
         End Try
         Return Trim(returnString)
 

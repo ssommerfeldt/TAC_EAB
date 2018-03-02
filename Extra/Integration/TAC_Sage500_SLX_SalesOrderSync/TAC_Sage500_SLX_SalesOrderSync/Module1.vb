@@ -93,6 +93,11 @@ Module Module1
         ' 5. Process Insert / Updates
         '=================================================================================
         Process_Changed_SalesOrderHEADER_Info()
+
+        '=============================================
+        ' Reconcile with changes made to Salesorders
+        '=============================================
+        'Reconcile_Changed_SalesOrderHEADER_Info()
         ' 6. Process Deletes
         '    DO NOT PROCESS DELETES
 
@@ -355,7 +360,7 @@ Module Module1
                             SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
                             AddEditSALESORDERITEM(row, SalesOrderItemId)
                         Catch ex As Exception
-                            MsgBox(ex.Message)
+                            'MsgBox(ex.Message)
                         End Try
                     End If
 
@@ -570,6 +575,56 @@ Module Module1
                     End If
 
                 End If
+
+
+                Console.WriteLine("Processes HEADER Changed " & i)
+            Next row
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "SalesOrder Changes ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
+
+    Private Sub Reconcile_Changed_SalesOrderHEADER_Info()
+
+        Dim i As Integer = 0
+        '===================================================
+        'Dim ProductId As String = ""
+        'Dim ShippingId As String = ""
+        'Dim BillingId As String = ""
+        '==================================================       
+        Dim objConn As New OleDbConnection(strSLXNativeConstr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "Select * from vdvMAS_to_SLX_SalesOrderHEADER_TAC_RECONCILE"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                'ProductId = GetNewSLXID("PRODUCT", strSLXConstr)
+                i = i + 1
+                AddEditSALESORDER(row, row("USERFLD1"), "SalesOrderNumber")
+                'If (IsDBNull(row("USERFLD3"))) Then
+                '    ' Try  Userfield 1
+                '    AddEditSALESORDER(row, row("USERFLD1"), "SalesOrderNumber")
+                'Else
+                '    'Good
+                '    AddEditSALESORDER(row, row("USERFLD3"), "SalesOrderId")
+                '    If (Not IsDBNull(row("USERFLD4"))) Then
+                '        ' This Linked to a PickingList so We need to update the Header
+                '        AddEditPicklist(row, row("USERFLD4"), "PICKINGLISTID")
+                '    End If
+
+                'End If
 
 
                 Console.WriteLine("Processes HEADER Changed " & i)
