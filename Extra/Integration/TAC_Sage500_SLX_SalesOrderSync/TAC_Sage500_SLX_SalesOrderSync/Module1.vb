@@ -12,10 +12,24 @@ Module Module1
     Private strMASConstr As String
     Private strSLXNativeConstr As String
     Private strSLXConstr As String
+    Private slXLogHeaderID As String
+    Private _hasErrors As Boolean
 
 #End Region
     Sub Main()
+        '===================================================
+        ' March 22, 2018 Advanced Logging added ssommerfeldt
+        '===================================================
+        _hasErrors = False  'Intialize
+        ' Get Database Id for Log
+        slXLogHeaderID = GetNewSLXID("TACSYNCJOB", My.Settings.SLXConnection)
+        Dim appPath As String
+        Dim appName As String
+        appName = System.Reflection.Assembly.GetExecutingAssembly.GetModules()(0).FullyQualifiedName
+        appPath = System.IO.Path.GetDirectoryName(appName)
+
         Call LogErrors(PROJECTNAME, " - Main", "Process Start", EventLogEntryType.Information)
+        TACSyncJob_Start(PROJECTNAME, appName, slXLogHeaderID)
         '========================================================================================
         ' Ensure Single Instance application
         '==========================================================================================
@@ -28,6 +42,8 @@ Module Module1
         appProc = Process.GetProcessesByName(strProcName)
         If appProc.Length > 1 Then
             Console.WriteLine("There is an instance of this application running.")
+            Call LogErrors(PROJECTNAME, " - Main", "Problem with Connectin String so Exit", EventLogEntryType.Error)
+            TACSyncJob_END("Completed - Process already running (Exit without Processing)", slXLogHeaderID)
             Exit Sub
         Else
             Console.WriteLine("There are no other instances running.")
@@ -49,6 +65,7 @@ Module Module1
             'C:\Windows\syswow64\rundll32.exe "C:\Program Files (x86)\Common Files\System\Ole DB\oledb32.dll",OpenDSLFile C:\test.udl
 
             Call LogErrors(PROJECTNAME, " - Main", "Problem with Connectin String so Exit", EventLogEntryType.Error)
+            TACSyncJob_END("Completed - ConnectionStrings issue (Exit without Processing)", slXLogHeaderID)
             Exit Sub
 
         End If
@@ -201,6 +218,11 @@ Module Module1
 
 
         Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
+        If _hasErrors Then
+            TACSyncJob_END("Completed - WITH ERROR", slXLogHeaderID)
+        Else
+            TACSyncJob_END("Completed - clean run", slXLogHeaderID)
+        End If
     End Sub
 
     
@@ -219,6 +241,8 @@ Module Module1
                 cmd.ExecuteNonQuery()
             Catch ex As Exception
                 Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+                Add_TACSyncJobERROR(ex, slXLogHeaderID)
+                _hasErrors = True 'Log Errors
                 Console.WriteLine(ex.Message)
             Finally
                 If conn.State = ConnectionState.Open Then
@@ -250,6 +274,9 @@ Module Module1
                 cmd.ExecuteNonQuery()
             Catch ex As Exception
                 Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+                Add_TACSyncJobERROR(ex, slXLogHeaderID)
+                _hasErrors = True 'Log Errors
+                Console.WriteLine(ex.Message)
                 Console.WriteLine(ex.Message)
             Finally
                 If conn.State = ConnectionState.Open Then
@@ -360,6 +387,9 @@ Module Module1
                             SalesOrderItemId = GetSalesOrderItemID(row("SALESORDERID"), row("ItemKey"))
                             AddEditSALESORDERITEM(row, SalesOrderItemId)
                         Catch ex As Exception
+                            Add_TACSyncJobERROR(ex, slXLogHeaderID)
+                            _hasErrors = True 'Log Errors
+                            Console.WriteLine(ex.Message)
                             'MsgBox(ex.Message)
                         End Try
                     End If
@@ -391,6 +421,9 @@ Module Module1
         Catch ex As Exception
             'MsgBox(ex.Message)
             Call LogErrors(PROJECTNAME, "SalesOrderItems Changes ", ex.Message, EventLogEntryType.Error)
+            Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(ex.Message)
         Finally
             If objConn.State = ConnectionState.Open Then objConn.Close()
         End Try
@@ -419,22 +452,25 @@ Module Module1
                 .LockType = ADODB.LockTypeEnum.adLockOptimistic
                 .Open(strSQL, objConn)
                 If .EOF Then
+                    '=================================================================
+                    ' March 22, 2018 Remove ability to Add Temp SalesOrderItems
+                    '=================================================================
                     'adding()
-                    .AddNew()
+                    '.AddNew()
 
-                    .Fields("CREATEDATE").Value = Now
-                    .Fields("CREATEUSER").Value = "ADMIN"
-                    .Fields("MODIFYDATE").Value = Now
-                    .Fields("MODIFYUSER").Value = "ADMIN"
-                    .Fields("SALESORDERID").Value = "TEMP"
-                    .Fields("SALESORDERITEMSID").Value = SALESORDERITEMID
+                    '.Fields("CREATEDATE").Value = Now
+                    '.Fields("CREATEUSER").Value = "ADMIN"
+                    '.Fields("MODIFYDATE").Value = Now
+                    '.Fields("MODIFYUSER").Value = "ADMIN"
+                    '.Fields("SALESORDERID").Value = "TEMP"
+                    '.Fields("SALESORDERITEMSID").Value = SALESORDERITEMID
 
-                    .Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
-                    .Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
-                    .Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
-                    .Fields("TotalQTYShipped").Value = MyDataRow("TotalQTYShipped")
-                    .Fields("STATUSTEXT").Value = MyDataRow("TotalQTYSSTATUSTEXThipped")
-                    .Fields("OPENQTY").Value = MyDataRow("OPENQTY")
+                    '.Fields("MASSHIPPEDDATE").Value = MyDataRow("ShipDate")
+                    '.Fields("masQtyShipped").Value = MyDataRow("QtyShipped")
+                    '.Fields("masSchdShipDate").Value = MyDataRow("SchdShipDate")
+                    '.Fields("TotalQTYShipped").Value = MyDataRow("TotalQTYShipped")
+                    '.Fields("STATUSTEXT").Value = MyDataRow("STATUSTEXT")
+                    '.Fields("OPENQTY").Value = MyDataRow("OPENQTY")
 
 
                 Else
@@ -465,6 +501,9 @@ Module Module1
 
         Catch ex As Exception
             'MsgBox(ex.Message)
+            Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(ex.Message)
 
         End Try
     End Sub
@@ -534,6 +573,9 @@ Module Module1
 
         Catch ex As Exception
             'MsgBox(ex.Message)
+            Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(ex.Message)
 
         End Try
     End Sub
@@ -583,6 +625,9 @@ Module Module1
         Catch ex As Exception
             'MsgBox(ex.Message)
             Call LogErrors(PROJECTNAME, "SalesOrder Changes ", ex.Message, EventLogEntryType.Error)
+            Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(ex.Message)
         Finally
             If objConn.State = ConnectionState.Open Then objConn.Close()
         End Try
@@ -633,6 +678,9 @@ Module Module1
         Catch ex As Exception
             'MsgBox(ex.Message)
             Call LogErrors(PROJECTNAME, "SalesOrder Changes ", ex.Message, EventLogEntryType.Error)
+            Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(ex.Message)
         Finally
             If objConn.State = ConnectionState.Open Then objConn.Close()
         End Try
@@ -744,6 +792,8 @@ Module Module1
 
 
         Catch ex As Exception
+            Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
             Console.WriteLine(ex.Message)
 
         End Try
@@ -808,6 +858,9 @@ Module Module1
 
 
         Catch ex As Exception
+            Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(ex.Message)
             'MsgBox(ex.Message)
 
         End Try
@@ -851,6 +904,8 @@ Module Module1
                 End If
             Catch ex As Exception
                 Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+                Add_TACSyncJobERROR(ex, slXLogHeaderID)
+                _hasErrors = True 'Log Errors
                 Console.WriteLine(ex.Message)
             Finally
                 If conn.State = ConnectionState.Open Then
@@ -900,6 +955,8 @@ Module Module1
                 End If
             Catch ex As Exception
                 Call LogErrors(PROJECTNAME, " - Main", ex.Message, EventLogEntryType.Error)
+                Add_TACSyncJobERROR(ex, slXLogHeaderID)
+                _hasErrors = True 'Log Errors
                 Console.WriteLine(ex.Message)
             Finally
                 If conn.State = ConnectionState.Open Then
@@ -937,6 +994,158 @@ Module Module1
             End Using
         End Using
     End Function
+
+    Public Sub TACSyncJob_Start(ByVal Desc As String, ByVal ExecutionPath As String, ByVal Id As String)
+        '============================================================
+        ' get Default Data row from StockCard and Product info
+        '============================================================
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM sysdba.TACSYNCJOB WHERE TACSYNCJOBID = '" & Id & "'"
+
+
+        Try
+            objConn.Open(My.Settings.SLXNativeConnection) ' Note Use the Native Client as we don't want to Sync This
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If .EOF Then
+                    'adding
+                    .AddNew()
+                    .Fields("TACSYNCJOBID").Value = Id
+                    .Fields("CREATEDATE").Value = Now
+                    .Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    .Fields("DESCRIPTION").Value = Desc
+                    .Fields("EXECUTIONPATH").Value = ExecutionPath
+                    .Fields("STATUS").Value = "Started"
+                    .Fields("STARTTIME").Value = Now
+                    '.Fields("ENDTIME").Value = ""
+
+                End If
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+        Catch ex As Exception
+            'Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(ex.Message)
+            'MsgBox(ex.Message)
+
+        End Try
+    End Sub
+    Public Sub TACSyncJob_END(ByVal Status As String, ByVal Id As String)
+        '============================================================
+        ' get Default Data row from StockCard and Product info
+        '============================================================
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM sysdba.TACSYNCJOB WHERE TACSYNCJOBID = '" & Id & "'"
+
+
+        Try
+            objConn.Open(My.Settings.SLXNativeConnection) ' Note use the Native client as we don't want to sync this.
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If .EOF Then
+                    'adding  Not Needed to End
+                    '.AddNew()
+
+                Else
+                    ' Updating
+                    '.Fields("TACSYNCJOBID").Value = Id
+                    '.Fields("CREATEDATE").Value = Now
+                    '.Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+
+                    '.Fields("DESCRIPTION").Value = Desc
+                    '.Fields("EXECUTIONPATH").Value = ExecutionPath
+                    .Fields("STATUS").Value = Status
+                    '.Fields("STARTTIME").Value = Now
+                    .Fields("ENDTIME").Value = Now
+
+                End If
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+        Catch ex As Exception
+            'Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(ex.Message)
+            'MsgBox(ex.Message)
+
+        End Try
+    End Sub
+    Public Sub Add_TACSyncJobERROR(ByVal ex As Exception, ByVal LogHeadId As String)
+        '============================================================
+        ' get Default Data row from StockCard and Product info
+        '============================================================
+        'Dim MyDataRow As DataRow = GetDetailsFromStockCard(StockCardItemId, strConnection)
+        '=======================
+        'Retrieving a recordset:
+        '=======================
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim strSQL As String = "SELECT * FROM sysdba.TACSYNCJOBERRORS WHERE 1=2"
+        Dim ID As String
+        Dim trace = New Diagnostics.StackTrace(ex, True)
+
+
+        Try
+            objConn.Open(My.Settings.SLXNativeConnection) 'NOTE Uses Native Client we don't want to Sync This
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(strSQL, objConn)
+                If .EOF Then
+                    'adding 
+                    .AddNew()
+                    .Fields("TACSYNCJOBERRORSID").Value = GetNewSLXID("TACSYNCJOBERRORS", My.Settings.SLXConnection)
+                    .Fields("TACSYNCJOBID").Value = LogHeadId
+                    .Fields("CREATEUSER").Value = "ADMIN"
+                    .Fields("CREATEDATE").Value = Now
+                    .Fields("MODIFYUSER").Value = "ADMIN"
+                    .Fields("MODIFYDATE").Value = Now
+                    .Fields("ERRORMESSAGE").Value = ex.Message
+                    .Fields("STACKTRACE").Value = trace.ToString
+                End If
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+        Catch reex As Exception
+            'Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(reex.Message)
+            'MsgBox(ex.Message)
+
+        End Try
+    End Sub
 
 
 

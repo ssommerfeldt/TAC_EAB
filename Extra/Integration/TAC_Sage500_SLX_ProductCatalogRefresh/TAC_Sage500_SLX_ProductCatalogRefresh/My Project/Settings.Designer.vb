@@ -57,8 +57,8 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=SA;Ini"& _ 
-            "tial Catalog=SLX_TESTPREGOLIVE;Data Source=APOLLO;Initial File Name="""";Server SP"& _ 
-            "N=""""")>  _
+            "tial Catalog=SalesLogix_Production;Data Source=APOLLO;Initial File Name="""";Serve"& _ 
+            "r SPN=""""")>  _
         Public Property SLXNativeConstr() As String
             Get
                 Return CType(Me("SLXNativeConstr"),String)
@@ -71,7 +71,7 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Password=lambarena;Persist Security Info=True;User ID=sa;Ini"& _ 
-            "tial Catalog=mas500_slx_app;Data Source=APOLLO;Initial File Name="""";Server SPN="""& _ 
+            "tial Catalog=mas500_eab_app;Data Source=APOLLO;Initial File Name="""";Server SPN="""& _ 
             """")>  _
         Public Property Sage500Constr() As String
             Get
@@ -84,9 +84,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password="""";Persist Security Info=True;User ID=admin;Initial "& _ 
-            "Catalog=SLX_TESTPREGOLIVE;Data Source=ATHENA;Extended Properties=""PORT=1706;LOG="& _ 
-            "ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password=""lambarena76"";Persist Security Info=True;User ID=adm"& _ 
+            "in;Initial Catalog=SalesLogix_Production;Data Source=ATHENA;Extended Properties="& _ 
+            """PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
         Public Property SLXConstr() As String
             Get
                 Return CType(Me("SLXConstr"),String)
@@ -196,7 +196,8 @@ Namespace My
             "tem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      timIte"& _ 
             "mClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
             "                  timItemDescription ON vdvStockStatus.ItemKey = timItemDescript"& _ 
-            "ion.ItemKey")>  _
+            "ion.ItemKey"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 WHERE vdvStockStatus.ItemID = '3243142'"&Global.Microsoft.VisualBasic.ChrW(9)&"and vdvSto"& _ 
+            "ckStatus.WhseID= '660' and"&Global.Microsoft.VisualBasic.ChrW(9)&"vdvStockStatus.CompanyID ='EAB'  ")>  _
         Public Property SourceQuery() As String
             Get
                 Return CType(Me("SourceQuery"),String)

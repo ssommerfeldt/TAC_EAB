@@ -416,6 +416,47 @@ Module CommonFunctions
 
     End Function
 
+    Function GetField(ByVal Field As String, ByVal Table As String, ByVal Where As String) As String
+        Dim sql As String = String.Format("select {0} from {1} where {2}", Field, Table, (If(Where.Equals(String.Empty), "1=1", Where)))
+        Using conn As OleDbConnection = New OleDbConnection(My.Settings.SLXNativeConstr)
+            conn.Open()
+            Using cmd As OleDbCommand = New OleDbCommand(sql, conn)
+                Dim fieldval As Object = cmd.ExecuteScalar()
+                Return fieldval
+            End Using
+        End Using
+    End Function
+
+    Function GetDataRow(ByVal SQL As String, ByVal IDName As String, ByVal ID As String) As DataRow
+        Dim i As Integer = 0
+        '===================================================
+        Dim SiteID As String = ""
+        '==================================================       
+        Dim objConn As New OleDbConnection(My.Settings.SLXNativeConstr)
+        Dim retunRow As DataRow
+        Try
+            objConn.Open()
+            Dim strSQL As String
+            strSQL = SQL & " WHERE " & IDName & "='" & ID & "'"
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(strSQL, objConn)
+            Dim dt As New DataTable()
+            dt.Load(objCMD.ExecuteReader())
+
+            For Each row As DataRow In dt.Rows
+                retunRow = row
+            Next row
+
+        Catch ex As Exception
+
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+        Return retunRow
+    End Function
+
    
   
 
