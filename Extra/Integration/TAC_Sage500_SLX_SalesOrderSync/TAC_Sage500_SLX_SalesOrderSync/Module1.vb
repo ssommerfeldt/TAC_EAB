@@ -216,6 +216,12 @@ Module Module1
         '    DO NOT PROCESS DELETES
 
 
+        '================================================================
+        '= CLEAN UP
+        '================================================================
+        Process_CleanUpUnUsedTransmittedSalesItems()
+
+
 
         Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
         If _hasErrors Then
@@ -225,8 +231,8 @@ Module Module1
         End If
     End Sub
 
-    
-    Public Sub Clean_Table(strTable As String, ConnectionString As String)
+
+    Public Sub Clean_Table(ByVal strTable As String, ByVal ConnectionString As String)
 
 
         Dim sql As String = "Truncate table " & strTable
@@ -257,7 +263,7 @@ Module Module1
 
     End Sub
 
-    Private Sub Move_Temp_To_Compare(strCOMPARE_Table As String, strTEMP_Table As String, ConnectionString As String)
+    Private Sub Move_Temp_To_Compare(ByVal strCOMPARE_Table As String, ByVal strTEMP_Table As String, ByVal ConnectionString As String)
 
         Dim sql As String
         sql = "Insert into " & strCOMPARE_Table
@@ -412,7 +418,7 @@ Module Module1
                 'End Try
 
 
-               
+
 
 
                 Console.WriteLine("Processes SalesorderItem Changed" & i)
@@ -579,7 +585,7 @@ Module Module1
 
         End Try
     End Sub
-  
+
 
 
     Private Sub Process_Changed_SalesOrderHEADER_Info()
@@ -756,11 +762,11 @@ Module Module1
 
                     End If
                     If IDName = "SalesOrderId" Then
-                       
+
                         .Fields("SALESORDERID").Value = strUserField
                         .Fields("ACCOUNTID").Value = "TEMP"
                         .Fields("SECCODEID").Value = "SYST00000001"
-                       
+
                     End If
 
 
@@ -866,7 +872,7 @@ Module Module1
         End Try
     End Sub
 
-    Public Function GetSalesOrderItemID(SalesOrderId As String, ItemKey As String) As String
+    Public Function GetSalesOrderItemID(ByVal SalesOrderId As String, ByVal ItemKey As String) As String
 
         ' Old Way Fixed Oct 1, 2015
 
@@ -923,7 +929,7 @@ Module Module1
 
         ' Old Way Fixed Oct 1, 2015
 
-       
+
 
         Dim sql As String = " "
         sql = sql & " SELECT     sysdba.PICKINGLISTITEM.PICKINGLISTITEMID"
@@ -1147,6 +1153,58 @@ Module Module1
         End Try
     End Sub
 
+    Private Sub Process_CleanUpUnUsedTransmittedSalesItems()
+
+        Dim i As Integer = 0
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim ID As String
+
+
+        Dim SQL As String = "Select SALESORDERITEMSID  from sysdba.SALESORDERITEMS where QUANTITY = 0 and SALESORDERID in (Select SALESORDERID  from sysdba.SALESORDER where STATUS ='Transmitted to Accounting'    and DATEDIFF (dd,TRANSMITDATE,getdate()) > 30  )"
+
+        Try
+            objConn.Open(My.Settings.SLXConnection) 'NOTE Uses Native Client we don't want to Sync This
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(SQL, objConn)
+
+                For i = 0 To .RecordCount - 1          ' Loop
+                    If Not (.BOF And .EOF) Then        ' Check not at end/beginning
+                        .Delete()
+
+                        .MoveNext()
+                        Console.WriteLine("Clean SalesItem " & i)
+
+                        If i = 2000 Then ' Max 2000 Items cleans
+                            Console.WriteLine("Reached Limit of 2000 Cleaned Items")
+                            Exit For
+                        End If
+                    End If
+
+                Next
+
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "SalesOrderItems Clean-up ", ex.Message, EventLogEntryType.Error)
+            Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            _hasErrors = True 'Log Errors
+            Console.WriteLine(ex.Message)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
 
 
 
