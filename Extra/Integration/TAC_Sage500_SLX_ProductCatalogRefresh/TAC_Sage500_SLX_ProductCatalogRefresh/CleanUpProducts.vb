@@ -81,6 +81,35 @@ Module CleanUpProducts
         objConn = Nothing
     End Sub
 
+    Public Sub Process_CleanUP()
+
+        Dim i As Integer = 0
+        '===================================================
+        Dim Id As String = ""
+        '==================================================       
+        Dim objConn As New OleDbConnection(strSLXNativeConstr)
+
+        Try
+            objConn.Open()
+            Dim SQL As String
+            SQL = "Delete from    MAS_TO_SLX_PRODUCT_Temp"
+            SQL = SQL & " where         MASITEMID + MASITEMID+WAREHOUSEID+CompanyID  in (          "
+            SQL = SQL & "           Select MASITEMID + MASITEMID+WAREHOUSEID+CompanyID from VProductsToReSync)"
+          
+
+            'MsgBox(SQL)
+            Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            objCMD.ExecuteNonQuery()
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            Call LogErrors(PROJECTNAME, "Clean UP ", ex.Message, EventLogEntryType.Error)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
+
 
     Public Sub delete_STOCKCARDITEMS(ByVal Id As String)
         '============================================================
