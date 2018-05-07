@@ -88,8 +88,8 @@ Module Module1
             Console.WriteLine("------ Clean-up OrderItems with Inactive Products Start ------")
             Process_DELETE_InactiveProductsfromOrders()
 
-            Console.WriteLine("------ Clean-up Products that are out of Sync for whatever reason ------")
-            Process_CleanUP()
+            'Console.WriteLine("------ Clean-up Products that are out of Sync for whatever reason ------")
+            'Process_CleanUP()
 
             Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
         Catch ex As Exception
