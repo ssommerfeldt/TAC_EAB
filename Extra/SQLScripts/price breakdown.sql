@@ -1,0 +1,21 @@
+--Select * from sysdba.SALESORDERITEMS where (ACTUALID = '1013814' or ACTUALID = '2100074') and QUANTITY <> 0 and ACCOUNTID = 'AEAB3A0006YZ'
+
+Select ORIGPRODUCTPRICE
+, ORIGPRODUCTDISCOUNT
+, PRICE
+, DISCOUNT
+, QUANTITY
+
+--OrigAdjPrice = RoundUp(OrigPrice - (OrigPrice * OrigMargin), 2)
+, ORIGPRODUCTPRICE  - (ORIGPRODUCTPRICE * ORIGPRODUCTDISCOUNT) As OriginalAdjustedPrice
+
+ 
+--Price = RoundUp(OrigAdjPrice - (ListPrice - (ListPrice * Discount)), 2)
+, (ORIGPRODUCTPRICE  - (ORIGPRODUCTPRICE * ORIGPRODUCTDISCOUNT)) - (PRICE - (PRICE * DISCOUNT)) As Price
+
+
+--ExtendedPrice = Round(Price * Quantity, 2)
+, (ORIGPRODUCTPRICE  - (ORIGPRODUCTPRICE * ORIGPRODUCTDISCOUNT)) - (PRICE - (PRICE * DISCOUNT)) * QUANTITY As ExtendedPrice
+
+from sysdba.SALESORDERITEMS 
+--where  (ACTUALID = '1013814' or ACTUALID = '2100074') and QUANTITY <> 0 and ACCOUNTID = 'AEAB3A0006YZ'

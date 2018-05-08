@@ -1,0 +1,2 @@
+Select MASITEMKEY  from sysdba.PRODUCT where ACTUALID = '1071372'and WAREHOUSEID = 'DEL'
+where MASITEMKEY= '161802'

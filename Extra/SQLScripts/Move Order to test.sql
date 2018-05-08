@@ -1,0 +1,10 @@
+
+Select * from sysdba.SALESORDER where SALESORDERID = 'QWSWXA101BI4'
+select * from sysdba.SALESORDERITEMS where SALESORDERID = 'QWSWXA101BI4'
+
+SELECT * FROM sysdba.StgSalesOrder_TAC where SALESORDERID = 'QWSWXA101BI4'
+SELECT * FROM sysdba.StgSOLine_TAC where SALESORDERID = 'QWSWXA101BI4'
+
+
+--Update sysdba.StgSalesOrder_TAC Set TRANNO = 0 Where SALESORDERID = 'QWSWXA101BI4'
+--Update sysdba.StgSOLine_TAC set TRANNO = 0 Where SALESORDERID = 'QWSWXA101BI4'
