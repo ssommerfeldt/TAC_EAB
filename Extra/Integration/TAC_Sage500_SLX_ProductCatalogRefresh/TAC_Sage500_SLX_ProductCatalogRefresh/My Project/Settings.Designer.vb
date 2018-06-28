@@ -196,14 +196,25 @@ Namespace My
             "tem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      timIte"& _ 
             "mClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
             "                  timItemDescription ON vdvStockStatus.ItemKey = timItemDescript"& _ 
-            "ion.ItemKey"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 WHERE vdvStockStatus.ItemID = '3243142'"&Global.Microsoft.VisualBasic.ChrW(9)&"and vdvSto"& _ 
-            "ckStatus.WhseID= '660' and"&Global.Microsoft.VisualBasic.ChrW(9)&"vdvStockStatus.CompanyID ='EAB'  ")>  _
+            "ion.ItemKey"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             ")>  _
         Public Property SourceQuery() As String
             Get
                 Return CType(Me("SourceQuery"),String)
             End Get
             Set
                 Me("SourceQuery") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("10000")>  _
+        Public Property MaxProductChanges() As String
+            Get
+                Return CType(Me("MaxProductChanges"),String)
+            End Get
+            Set
+                Me("MaxProductChanges") = value
             End Set
         End Property
     End Class

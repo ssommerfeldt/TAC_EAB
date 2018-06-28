@@ -87,7 +87,10 @@ FROM         tglAccount LEFT OUTER JOIN
                             WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN
                       timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN
                       timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey
-                 WHERE vdvStockStatus.ItemID = '3243142'	and vdvStockStatus.WhseID= '660' and	vdvStockStatus.CompanyID ='EAB'  </Value>
+             </Value>
+    </Setting>
+    <Setting Name="MaxProductChanges" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10000</Value>
     </Setting>
   </Settings>
 </SettingsFile>
