@@ -15,7 +15,7 @@ AutoLogout.process = function (minutes) {
     }
     if (minutes === this.LogoutDuration) {
         try {
-            window.location.href = 'Shutdown.axd';
+            window.location.href = 'Shutdown.axd?Source=AutoLogoff';
         } catch (e) { }
         return;
     }
@@ -56,7 +56,8 @@ Error.prototype.toMessage = function (xtraMsg, showFullStack) {
     if (!(sMsg.lastIndexOf(".") + 1 == sMsg.length)) {
         sMsg += ".";
     }
-    if (dojo.isIE) {
+
+    if (Sage.Utility.isIE) {
         var iNumber = this.number;
         if (isNaN(iNumber)) {
             iNumber = 0;

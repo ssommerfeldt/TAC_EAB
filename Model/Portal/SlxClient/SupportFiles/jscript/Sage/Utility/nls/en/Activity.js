@@ -1,4 +1,4 @@
-define((
+define("Sage/Utility/nls/en/Activity", (
 { ToDo: 'To-Do',
   PhoneCall: 'Phone Call',
   Meeting: 'Meeting',
@@ -15,6 +15,9 @@ define((
   Contact: 'Contact',
   Lead: 'Lead',
   New: 'New',
+  hr: 'hr',
+  h: 'h',
+  m: 'm',
   Change: 'Change',
   Deleted: 'Deleted',
   Confirm: 'Confirm',
@@ -24,5 +27,7 @@ define((
   Complete: 'Complete',
   confirmTypeChanged: 'Changed',
   confirmTypeConfirmed: 'Confirmed',
-  confirmTypeDeleted: 'Deleted' }
+  confirmTypeDeleted: 'Deleted',
+  timelessText: 'timeless'
+}
 ));

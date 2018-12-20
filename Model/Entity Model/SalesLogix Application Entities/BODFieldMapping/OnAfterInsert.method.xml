@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e57eeeb9-6e8b-44dc-9216-640f9d1abfe2" lastModifiedUtc="2014-11-07T13:57:46.1968Z" name="OnAfterInsert" methodType="CrudEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets>
+    <methodTarget id="0ae04940-303e-4c7e-82a6-09ed2e34f2f6" lastModifiedUtc="2015-06-12T15:13:38.1965474Z" targetType="Sage.SalesLogix.BODFieldMapping.Rules, Sage.SalesLogix.BusinessRules" targetMethod="UpdateOutboundTemplate" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget id="6dc25799-33a5-48c0-8f5f-934f3e2b267f" lastModifiedUtc="2015-07-24T12:57:39.9354775Z" targetType="Sage.SalesLogix.BODFieldMapping.Rules, Sage.SalesLogix.BusinessRules" targetMethod="OnAfterInsert" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
+</method>

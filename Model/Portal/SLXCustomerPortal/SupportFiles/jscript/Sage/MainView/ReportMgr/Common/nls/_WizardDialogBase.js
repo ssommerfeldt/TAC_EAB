@@ -1,12 +1,5 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            txtFinish: 'Finish'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/MainView/ReportMgr/Common/nls/_WizardDialogBase", {
+    root: {
+        txtFinish: 'Finish'
+    }
 });

@@ -1,23 +1,21 @@
-/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
+define("Sage/UI/ListPanel", [
+       'dojo/aspect',
        "dojo/i18n",
+       'dojo/dom-class',
        'dijit/layout/BorderContainer',
        'dijit/layout/StackContainer',
        'dijit/layout/ContentPane',
        'dijit/Toolbar',
        'dijit/ToolbarSeparator',
-       'dojox/grid/EnhancedGrid',
        'Sage/_Templated',
        'Sage/UI/Filters/FilterManager',
        'Sage/UI/ToolBarLabel',
        'dijit/Menu',
-       "dojox/grid/enhanced/plugins/Menu",
        'Sage/Utility',
        'dojox/storage/LocalStorageProvider',
        'Sage/UI/_DetailPane',
        'dijit/_Widget',
-       'dojox/grid/enhanced/plugins/IndirectSelection',
-       'Sage/UI/Grid/Plugins/ShowHideColumns',
        'dojo/_base/array',
        'dojo/_base/lang',
        'dojo/_base/declare',
@@ -26,26 +24,27 @@ define([
        'dojo/dom-geometry',
        'dijit/registry',
        'dojo/_base/connect',
-       'dojo/ready'
+       'dojo/ready',
+       'dojo/dom-construct',
+       'Sage/UI/Controls/Grid',
+       'dojo/query'
 ],
-function (i18n,
+function (aspect,
+         i18n,
+         domClass,
          borderContainer,
          stackContainer,
          contentPane,
          toolbar,
          toolbarSeperator,
-         enhancedGrid,
          _Templated,
          FilterManager,
          toolbarLabel,
          dijitMenu,
-         pluginMenu,
          util,
          LocalStorageProvider,
          _DetailPane,
          _Widget,
-         IndirectSelection,
-         ShowHideColumns,
          array,
          lang,
          declare,
@@ -54,7 +53,11 @@ function (i18n,
          domGeo,
          registry,
          connect,
-         ready) {
+         ready,
+         domConstruct,
+        Grid,
+        query
+        ) {
 
     var listPanel = declare('Sage.UI.ListPanel', [borderContainer, _Widget, _Templated], {
         widgetsInTemplate: true,
@@ -66,10 +69,13 @@ function (i18n,
         listTemplate: new Simplate([
             '<div data-dojo-type="dijit.layout.StackContainer" region="center" splitter="true" data-dojo-attach-point="_gridContainer">',
                 '<div data-dojo-type="dijit.layout.ContentPane" data-dojo-attach-point="_noConfigurationPane"></div>',
-                '<div id="{%= $.id %}_listGrid" columnReordering="true" class="listGrid" data-dojo-type="{%= $.gridType %}" data-dojo-attach-point="_listGrid" plugins="{menus:{selectedRegionMenu:\'_listContextmenu\', rowMenu:\'_listContextmenu\'}, indirectSelection: {%: $._indirectSelection%}, showHideColumns: true}" dojoAttachEvent="onRowClick:_onRowClick,onRowContextMenu:_onRowContextMenu,onSelected:_onSelectedInList,onSelectionChanged:_onSelectionChanged,onResizeColumn:_onResizeColumn,onHeaderCellClick:_onHeaderCellClick,onCellClick:_onCellClick,onRowDblClick:_onRowDblClick">',
+                '<div id="listGridPane" data-dojo-type="dijit.layout.ContentPane" data-dojo-attach-point="_listGridPane">',
+                '<div dojoattachpoint="_listGrid_Grid" class="HundredPercentHeight"></div>',
                 '<div data-dojo-type="dijit.Menu" id="_listContextmenu" dojotAttachPoint="_listContextmenu" style="display:none" ></div>',
                 '</div>',
-                '<div id="{%= $.id %}_summaryGrid" class="summaryGrid" data-dojo-type="{%= $.gridType %}" selectionMode="none" data-dojo-attach-point="_summaryGrid" dojoAttachEvent="onRowClick:_onRowClick,onRowContextMenu:_onRowContextMenu,onSelected:_onSelectedInSummary,onSelectionChanged:_onSelectionChanged"></div>',
+                '<div id="summaryGridPane" data-dojo-type="dijit.layout.ContentPane" data-dojo-attach-point="_summaryGridPane">',
+                '<div dojoattachpoint="_summaryGrid_Grid" class="HundredPercentHeight"~></div>',
+                '</div>',
             '</div>'
         ]),
         menuTemplate: new Simplate([
@@ -115,12 +121,13 @@ function (i18n,
         _filterSummary: null,
         _unsavedDataLabel: null,
         _forcedFilterPublish: false,
+        _selectionInfoObject: null,
+        _contextMenu: null,
         _listMode: 'list',
         helpTopicName: 'listview',
         gutters: false,
         toolbarStyle: '',
         // todo: might have to fix this issue: http://bugs.dojotoolkit.org/ticket/10930 if we support editing
-        gridType: 'dojox.grid.EnhancedGrid',
         initialGrid: 'list',
         filterGroup: 'default',
         detailVisible: false,
@@ -130,92 +137,26 @@ function (i18n,
         detailType: 'dijit.layout.ContentPane',
         autoConfigure: true,
         hasCheckBox: false,
-        autoFitColumns: true,
 
-        // i18n
-        listText: 'List',
-        summaryText: 'Summary',
-        detailText: 'Detail',
-        hideDetailText: 'Hide Detail',
-        unsavedDataText: '*unsaved data',
-        helpText: 'Help',
-        refreshText: 'Refresh',
-        ofText: 'of',
-        // end i18n
-
-        FILTER_UPDATE_DELAY: 1000,
-        STORE_KEY_COLUMN_SIZE: '_COLUMN_UNIT_WIDTH_',
+        FILTER_UPDATE_DELAY: 0,
         STORE_KEY_SORT_INFO: '_GRID_SORT_PROPS_',
-        STORE_KEY_LAYOUT_INFO: '_GRID_LAYOUT_PROPS_',
-        STORE_KEY_TOGGLE_INFO: '_GRID_TOTTLE_PROPS_',
         STORE_KEY_STORE_QUERY: '_STORE_QUERY_',
         STORE_KEY_VIEWSTATE: 'LISTPANEL_VIEWSTATE', // Key for view state - did we leave off in list or summary view?
         RECORD_WARNING_SIZE: 30000,
 
         constructor: function () {
             this.inherited(arguments);
-
-            //dojo.subscribe('/group/context/changed', lang.hitch(this, this._onLViewConfigChanging));
-            //dojo.subscribe('/ui/filterPanel/ready', lang.hitch(this, this._onFilterPanelReady));
-            //dojo.subscribe('/ui/filterManager/ready', lang.hitch(this, this._onFilterManagerReady));
-
-
         },
         postMixInProperties: function () {
             this.inherited(arguments);
             lang.mixin(this, nlsListPanel);
-            this._setupCheckBox();
-            this._setupAutoFit();
         },
         postCreate: function () {
             this.inherited(arguments);
-
             if (this._listGrid) {
-                this.connect(this._listGrid.scroller, 'scroll', this._onListScroll);
-                //this.connect(this._listGrid, 'canSort', this._onListCanSort);
-                this.connect(this._summaryGrid.scroller, 'scroll', this._onSummaryScroll);
-                this._listGrid.canSort = function (col) {
-                    var cells = this.layout.cells;
-                    var cell = cells[Math.abs(col) - 1];
-                    if (cell.nosort) {
-                        return false;
-                    }
-                    return true;
-                };
-
-                this._listGrid.columnReordering = true;
-                this._listGrid.selectionMode = 'extended';
-
-                // TODO: Use same storage for cell order and visibility
-                dojo.connect(this._listGrid, 'onMoveColumn', this, function (type, mapping, cols) {
-                    var cells = this._listGrid.layout.cells,
-                        results = [],
-                        i = 0,
-                        key = '';
-
-                    for (i = 0; i < cells.length; i++) {
-                        if (cells[i].field) {
-                            results.push(cells[i].field);
-                        }
-                    }
-
-                    key = this._getGridLayoutKey();
-                    this._saveToLocalStorage(key, results);
-                });
-
-                dojo.subscribe('/sage/ui/grid/columnToggle/' + this._listGrid.id, dojo.hitch(this, function (cell) {
-                    var cells = this._listGrid.layout.cells,
-                        results = [],
-                        i = 0,
-                        key = '';
-                    for (i = 0; i < cells.length; i++) {
-                        results.push({ field: cells[i].field, hidden: cells[i].hidden });
-                    }
-
-                    key = this._getGridColumnToggleKey();
-                    this._saveToLocalStorage(key, results);
-                }));
+                this._listGrid.setSelectionMode('extended');
             }
+
 
             this._gridContainer.selectChild(this._noConfigurationPane);
 
@@ -223,19 +164,20 @@ function (i18n,
                 this._detailPane.set('owner', this);
             }
 
-            this._setDetailPaneVisibility(false);
-            if(this._tbarOverflowLabel) {
+            this._setDetailPaneVisibility(false, false);
+            if (this._tbarOverflowLabel) {
                 this._tbarOverflowLabel.set('label', nlsListPanel.overflowText);
             }
 
             this._updateToolbarItemVisibility();
-        },
-        startup: function () {
-            this.inherited(arguments);
+            this._getGroupListUserOptions();
 
             if (this.autoConfigure) {
                 this.requestConfiguration();
             }
+        },
+        startup: function () {
+            this.inherited(arguments);
         },
         uninitialize: function () {
             this.inherited(arguments);
@@ -248,57 +190,114 @@ function (i18n,
                 this._configurationProvider.destroy();
             }
         },
-        getAppliedFilterCount: function() {
+        getAppliedFilterCount: function () {
             return this._filterManager && this._filterManager.getAppliedFilterCount();
         },
-        _setupCheckBox: function () {
-            // Load the grid checkbox selector plugin "indirectSelection"
-            // based on a user option.
+        _getGroupListUserOptions: function () {
             var service = Sage.Services.getService('UserOptions');
-            this._indirectSelection = 'false';
-
             if (service && service.get) {
                 service.get('GroupCheckboxEnabled', 'GroupGridView', lang.hitch(this, function (data) {
                     var groupCheckboxEnabled = data && data.value;
                     if (groupCheckboxEnabled === 'True' || groupCheckboxEnabled === 'T') {
-                        this._indirectSelection = '{ draggable: false}';
-                        this.hasCheckBox = true;
-                    } else {
-                        this.hasCheckBox = false;
+                        this._indirectSelection = true;
+                    }
+                    else {
+                        this._indirectSelection = false;
                     }
                 }), null, this, false);
             }
         },
-        _setupAutoFit: function () {
-            var service = Sage.Services.getService('UserOptions');
-            if (service && service.get) {
-                service.get('autoFitColumns', 'GroupGridView', lang.hitch(this, function (data) {
-                    var val = data && data.value;
-                    if (val === 'True' || val === 'T') {
-                        this.autoFitColumns = true;
-                    } else {
-                        this.autoFitColumns = false;
-                    }
-                }), null, this, false);
-            }
-        },
-        _setSortInfo: function (store) {
+        _getSortingInfo: function () {
             var key = this._getGridSortKey(),
-                sortProps = this._getFromLocalStorage(key);
+            sortProps = this._getFromLocalStorage(key), // this can be NULL
+            tempdsc = false,
+            config = this._configuration;
             if (sortProps) {
-                if (sortProps.descending) {
-                    this._listGrid.sortInfo = (sortProps.cellIndex + 1) * -1;
-                } else {
-                    this._listGrid.sortInfo = sortProps.cellIndex + 1;
+                if (sortProps.descending === true) {
+                    tempdsc = true;
                 }
+            } else { // ListPanelConfig files have their args contained in _configuration, so check if there is a sort rule here.
+                if (config && config._sort && config._sort.length && config._sort.length > 0) {
+                    sortProps = config._sort[0];
+                    if (sortProps.descending === true) {
+                        tempdsc = true;
+                    }
+                }
+            }
+            if (sortProps) {
+                sortProps.descending = tempdsc;
+            }
+            return sortProps;
+        },
+        _getSortInfo: function () {
+            var key = this._getGridSortKey(),
+            sortProps = this._getFromLocalStorage(key), // this can be NULL
+        tempdsc = false,
+        config = this._configuration;
+            if (sortProps) {
+                if (sortProps.descending === true) {
+                    tempdsc = true;
+                }
+            } else { // ListPanelConfig files have their args contained in _configuration, so check if there is a sort rule here.
+                if (config && config._sort && config._sort.length && config._sort.length > 0) {
+                    sortProps = config._sort[0];
+                    if (sortProps.descending === true) {
+                        tempdsc = true;
+                    }
+                }
+            }
+            if (sortProps) {
+                this._selectionInfoObject.sortDirection = (tempdsc) ? "descending" : "ascending";
+                this._selectionInfoObject.sortField = sortProps.attribute;
+                sortProps.descending = tempdsc;
+            }
+            return sortProps;
+        },
+        _setSortInfo: function () {
+            var config = this._configuration,
+    sortProps = this._getSortInfo();
+            if (this._listGrid._grid.store) {
+                if (sortProps) {
+                    this._listGrid.setSort(sortProps.attribute, sortProps.descending);
+                }
+            }
+        },
+        _queryStore: function (query, options) {
+            var config = this._configuration,
+                        sortProps = this._getSortInfo();
+            if (sortProps) {
+                if (!lang.isArray(sortProps)) {
+                    sortProps = [sortProps];
+                }
+                options.sort = sortProps;
+            }
+            this._listGrid.setStore(config.list.store, query, options);
+        },
 
-                store.sort = [sortProps];
+        _CheckForCustomReferenceInSort: function (sort) {
+            var columnsArry = this._listGrid.columns, retField = false;
+            for (var i = 0; i < columnsArry.length; i++) {
+                var customSort = typeof (columnsArry[i].customSort);
+                switch (customSort) {
+                    case "object":
+                        var cSort = null;
+                        if (dojo.isArray(columnsArry[i].customSort)) {
+                            cSort = columnsArry[i].customSort[0];
+                        } else {
+                            cSort = columnsArry[i].customSort;
+                        }
+                        retField = (cSort.attribute && sort === cSort.attribute);
+
+                        break;
+                    case "string":
+                        retField = (sort === columnsArry[i].customSort);
+                        break;
+                }
+                if (retField) {
+                    return columnsArry[i].field;
+                }
             }
-            else {
-                // If sorting isn't in local storage, we still need to clear the sort column
-                // in the grid, otherwise the sorted column will carry over
-                this._listGrid.sortInfo = 0;
-            }
+            return sort;
         },
         _setSummarySortInfo: function (store) {
             var key = this._getGridSortKey(),
@@ -307,147 +306,20 @@ function (i18n,
                 store.sort = [sortProps];
             }
         },
+
+        // TODO: Update. Method should modify structure with stored widths if they exist.
         _setColumnSizes: function (structure) {
-            var cells = structure;
 
-            if (structure[0].cells) {
-                cells = structure[0].cells[0];
-            }
-
-            array.forEach(cells, function (item) {
-                if (item && item.field) {
-                    var key = this._getColumnSizeKey(item.field),
-                        value = this._getFromLocalStorage(key);
-                    if (value) {
-                        item.width = value;
-                    }
-                }
-            }, this);
-        },
-        /* {{{
-        * Calculates the percentage of the grid columns against the original layout width,
-        * and then applies that percentage against the grid containers parent. This will run
-        * on initial load and on resize events.
-        *
-        }}}*/
-        _doAutoFitColumns: function () {
-            if (!this.autoFitColumns) {
-                return;
-            }
-
-            var structure = this._listGrid.get('structure'),
-                cells = structure,
-                layoutWidth = 0,
-                dimensions,
-                realWidth,
-                checkBoxOffset = 0;
-
-            if (structure && structure[0].cells) {
-                cells = structure[0].cells[0];
-            }
-
-            array.forEach(cells, function (item) {
-                if (item && item.field) {
-                    var key = this._getColumnSizeKey(item.field),
-                        value = this._getFromLocalStorage(key);
-                    if (value) {
-                        item.width = value;
-                    }
-                    if (!this._isFieldHidden(item.field)) {
-                    layoutWidth += parseInt(item.width, 10);
-                    }
-                }
-            }, this);
-
-            dimensions = domGeo.getContentBox('list'); /* dimensions of the parent container */
-            realWidth = dimensions.w;
-
-            // If check box selection is enabled, calc the offset
-            if (this.hasCheckBox) {
-                checkBoxOffset = 200;
-            } else {
-                checkBoxOffset = 155;
-            }
-
-            realWidth = realWidth - checkBoxOffset;
-
-            array.forEach(cells, function (item) {
-                var width,
-                    pct,
-                    newWidth;
-                if (item && item.field && !this._isFieldHidden(item.field)) {
-                    width = parseInt(item.width, 10);
-                    pct = width / layoutWidth;
-                    newWidth = Math.round(realWidth * pct);
-                    item.width = newWidth + 'px';
-                }
-            }, this);
-
-            this._listGrid.set('structure', structure);
-            this._updateColumnVisibility();
         },
         _updateStructureFromLocalStore: function () {
-            var key = this._getGridLayoutKey(),
-                structure = this._listGrid.structure,
-                fields = this._getFromLocalStorage(key),
-                cells;
-
-            if (fields) {
-                cells = structure[0].cells[0];
-                if (cells) {
-                    cells.sort(function (a, b) {
-                        var aIndex = array.indexOf(fields, a.field),
-                            bIndex = array.indexOf(fields, b.field);
-
-                        if (aIndex > bIndex) {
-                            return 1;
-                        }
-
-                        if (aIndex < bIndex) {
-                            return -1;
-                        }
-
-                        return 0;
-
-                    });
-                }
-
-                this._listGrid.set('structure', structure);
-            }
-
-            this._updateColumnVisibility();
         },
-        _isFieldHidden: function(field) {
-            var toggleKey, toggleFields, hidden;
-            toggleKey = this._getGridColumnToggleKey();
-            toggleFields = this._getFromLocalStorage(toggleKey);
-            hidden = false;
-            if (toggleFields) {
-                array.forEach(toggleFields, lang.hitch(this, function (item) {
-                    if (item.field === field) {
-                        hidden = item.hidden;
-                    }
-                }));
-            }
-            return hidden;
+        _isFieldHidden: function (field) {
         },
         _updateColumnVisibility: function () {
-            var toggleKey, toggleFields;
-            toggleKey = this._getGridColumnToggleKey();
-            toggleFields = this._getFromLocalStorage(toggleKey);
-            if (toggleFields) {
-                array.forEach(this._listGrid.layout.cells, lang.hitch(this, function (cell) {
-                    array.forEach(toggleFields, lang.hitch(this, function (item) {
-                        if (item.field === cell.field) {
-                            this._listGrid.layout.setColumnVisibility(cell.index, !item.hidden);
-                        }
-                    }));
-                }));
 
-            }
         },
         _handleConfigurationChange: function () {
-            this._listGrid.selection.clear();
+            this.clearSelection();
             if (this._detailPane) {
                 this._detailPane.clear();
             }
@@ -501,8 +373,11 @@ function (i18n,
 
             // Delay for at least 1 second without input (matches checkbox filter)
             var lazyRefresh = util.debounce(lang.hitch(this, this._onFilterRefresh), this.FILTER_UPDATE_DELAY);
-            this._filterSubscriptions.push(this.subscribe(dojo.string.substitute("/ui/filters/${0}/refresh", [this._filterGroup]), lazyRefresh));
+            this._filterSubscriptions.push(this.subscribe(dojo.string.substitute("/ui/filters/${0}/refresh", [this._filterGroup]), this._onFilterRefresh));
             this._ensureApplyFilterWasPublished();
+        },
+        getTotalSelectionCount: function () {
+            return this._selectionInfoObject.selectionCount;
         },
         _ensureApplyFilterWasPublished: function (direct) {
             // Hack: If we missed the filters/apply event, we will force the group context service to fire it.
@@ -515,8 +390,8 @@ function (i18n,
             if (context && context.AppliedFilterInfo) {
                 service.publishFiltersApplied(context.AppliedFilterInfo);
             }
-            if (this._filterManager && direct && service.applyFilters) {               
-               service.applyFilters(this._filterManager);              
+            if (this._filterManager && direct && service.applyFilters) {
+                service.applyFilters(this._filterManager);
             }
             this._forcedFilterPublish = true;
         },
@@ -542,7 +417,8 @@ function (i18n,
         _onFilterRefresh: function (applied, definitionSet, manager) {
             // todo: add support for summary view
             // todo: turn this off when no filters are applied
-            this._listGrid.selection.clear();
+            console.log("LISTPANEL: filters refreshed");
+            this.clearSelection();
             if (this._detailPane) {
                 this._detailPane.clear();
             }
@@ -551,14 +427,14 @@ function (i18n,
 
             if (this._listMode === 'summary' && this._hasConfigurationForSummary()) {
                 this._summaryGrid.queryOptions = this._summaryGrid.queryOptions || {};
-                this._summaryGrid.filter(query);
+                this._summaryGrid.setFilter(query);
             } else {
 
                 this._listGrid.queryOptions = this._listGrid.queryOptions || {};
                 this._listGrid.queryOptions.httpMethodOverride = !!query;
-                this._listGrid.filter(query, true);
+                this._listGrid.setFilter(query);
             }
-            this._saveToLocalStorage(key, { store: this._listGrid.store, query: query });
+            this._saveToLocalStorage(key, { store: this._dojoxStore, query: query });
         },
         _setConfigurationAttr: function (configuration) {
             this._applyConfiguration(configuration);
@@ -591,7 +467,80 @@ function (i18n,
             this._configuration = configuration;
             this._gridContainer.selectChild(this._noConfigurationPane);
 
+            if (!this._listGrid) {
+                this._listGrid = new Grid({
+                    // Grid features
+                    columnHiding: true,
+                    columnResizing: true,
+                    columnReordering: true,
+                    rowSelection: true,
+                    indirectSelection: this._indirectSelection,
+                    keyboardNavigation: true,
 
+                    // Grid behavior properties 
+                    id: "listGrid",
+                    minRowsPerPage: 100,
+                    farOffRemoval: 1000,
+                    queryRowsOverlap: 0,
+                    forceAutoId: true,
+                    placeHolder: this._listGrid_Grid,
+                    pagingMethod: "throttleDelayed",
+                    queryOptions: this._configuration.list.queryOptions,
+                    sort: this._configuration.list.sort,
+
+                    // Event handlers
+                    onContextActivate: lang.hitch(this._configurationProvider, this._configuration.list.onSelectedRegionContextMenu),
+                    onRowDblClick: lang.hitch(this, this._onRowDblClick),
+                    onSelection: lang.hitch(this, this._addToSelectionInfo),
+                    onDeselection: lang.hitch(this, this._removeFromSelectionInfo),
+                    onGridSort: lang.hitch(this, this._onSort),
+                    onColumnResize: lang.hitch(this, this._onColumnResize),
+                    onLoadComplete: lang.hitch(this, this._onGridLoadComplete)
+                });
+            }
+
+            if (!this._summaryGrid) {
+                this._summaryGrid = new Grid({
+                    // Grid features
+                    columnHiding: false,
+                    columnResizing: false,
+                    columnReordering: false,
+                    rowSelection: true,
+                    indirectSelection: false,
+                    keyboardNavigation: false,
+
+                    // Grid behavior properties 
+                    id: "summaryGrid",
+                    minRowsPerPage: 50,
+                    queryRowsOverlap: 1,
+                    placeHolder: this._summaryGrid_Grid,
+                    pagingMethod: "throttleDelayed",
+
+                    // Event handlers
+                    onRowDblClick: lang.hitch(this, this._onRowDblClick),
+                    onSelection: lang.hitch(this, this._addToSelectionInfo),
+                    onDeselection: lang.hitch(this, this._removeFromSelectionInfo),
+                    onGridSort: lang.hitch(this, this._onSort),
+                    onColumnResize: lang.hitch(this, this._onColumnResize),
+                    onLoadComplete: lang.hitch(this, this._onGridLoadComplete)
+                });
+            }
+
+            if (!this.selectionInfoObject) {
+                this._selectionInfoObject = {
+                    hasCompositeKey: false,
+                    key: "list",
+                    keyField: "", // pull from layout.
+                    mode: "selection", // set to "selection'?
+                    ranges: [], // old EXT backwards compatibility? do we need this?
+                    recordCount: 0, // total records for group set.
+                    selectedIds: [],
+                    selectionCount: 0, // total selected records
+                    selections: [],
+                    sortDirection: "",
+                    sortField: ""
+                };
+            }
             if (this.initialGrid === 'list' && this._hasConfigurationForList()) {
                 this.showList();
             }
@@ -609,13 +558,29 @@ function (i18n,
             this._applyToolBar();
 
             if (this._configuration && this._configuration.list && this._configuration.list.selectionMode && this._configuration.list.selectionMode === 'single') {
-                this._listGrid.selection.setMode('single');
+                this._listGrid.setSelectionMode("single");
             } else if (this._configuration && this._configuration.list && this._configuration.list.selectionMode && this._configuration.list.selectionMode === 'none') {
-                this._listGrid.selection.setMode('none');
+                this._listGrid.setSelectionMode("none");
             } else {
-                this._listGrid.selection.setMode('extended');
+                this._listGrid.setSelectionMode("extended");
             }
-            
+            var cMenuItems = this._configuration.list.selectedRegionContextMenuItems || [];
+
+            this._contextMenu = new dijitMenu({
+                targetNodeIds: [this._listGrid.domNode]
+            });
+            for (var i = 0; i < cMenuItems.length; i++) {
+                this._contextMenu.addChild(cMenuItems[i]);
+            }
+            var groupContextSvc = Sage.Services.getService('ClientGroupContext');
+            this._selectionInfoObject.keyField = (groupContextSvc) ? groupContextSvc.getContext().CurrentTableKeyField || '' : '';
+            if (this._configuration.hasCompositeKey) {
+                this._selectionInfoObject.hasCompositeKey = this._configuration.hasCompositeKey;
+            }
+            else {
+                this._selectionInfoObject.hasCompositeKey = false;
+            }
+
         },
         _applyToolBar: function () {
             var toolBarItems, i, items;
@@ -652,7 +617,8 @@ function (i18n,
 
             this._toolbarApplied = true;
         },
-        _setDetailPaneVisibility: function (value) {
+        _setDetailPaneVisibility: function (value, saveState) {
+            var selfAware = this;
             if (value) {
                 if (this._hasConfigurationForDetail() && !this._isConfigurationActiveForDetail()) {
                     if (this._detailPane.isInstanceOf(_DetailPane)) {
@@ -663,36 +629,31 @@ function (i18n,
                 }
                 this._detailButton.set('label', this.hideDetailText);
                 this.addChild(this._detailPane);
+
                 //Set the first selected Record on the list grid.
-                var selected = this._getSelection(0);
-                if (selected) {
-                    this._detailPane._onSelected(selected.rowIndex, selected, this._listGrid);
-                }
-                else {
+                var selected = this._listGrid.getSelectedRowData();
+                if (selected.length > 0) {
+                    this._detailPane._onSelected(0, selected[selected.length - 1], this._listGrid);
+                } else {
                     this._detailPane.clear();
                 }
 
+                if (saveState && this._hasConfigurationForDetail() && this._configuration.detailStateKey) {
+                    sessionStorage.setItem(this._configuration.detailStateKey, 'true');
+                }
             } else {
                 this._detailButton.set('label', this.detailText);
                 this.removeChild(this._detailPane);
-            }
-        },
-        _getSelection: function (index) {
-            var sels = this._listGrid.selection.getSelected();
-            var selection = null;
-            for (var i = 0; i < sels.length; i++) {
-                if (index == i) {
-                    selection = sels[i];
-                    return selection;
+                if (saveState && this._hasConfigurationForDetail() && this._configuration.detailStateKey) {
+                    sessionStorage.setItem(this._configuration.detailStateKey, 'false');
                 }
             }
-            return selection;
         },
         _updateToolbarItemVisibility: function () {
-            dojo.toggleClass(this.domNode, 'list-panel-has-summary', this._canShowSummaryLink());
-            dojo.toggleClass(this.domNode, 'list-panel-has-detail',this._canShowDetailPane());
+            domClass.toggle(this.domNode, 'list-panel-has-summary', this._canShowSummaryLink());
+            domClass.toggle(this.domNode, 'list-panel-has-detail', this._canShowDetailPane());
         },
-        _canShowSummaryLink : function(){
+        _canShowSummaryLink: function () {
             return (this._hasConfigurationForSummary() || (this._configurationProvider && this._configurationProvider.summaryOptions));
         },
         _canShowDetailPane: function () {
@@ -719,131 +680,51 @@ function (i18n,
         _isConfigurationActiveForDetail: function () {
             return (this._hasConfigurationForDetail() && this._configuration.detail.active);
         },
-        _onRowClick: function (e) {
-            this.onRowClick(e.rowIndex, e.grid.getItem(e.rowIndex), e.grid);
-        },
-        _onRowContextMenu: function (e) {
-            var selection = e.grid.selection,
-                selected = selection.getSelected();
 
-            if (selected.length === 0) {
-                selection.select(e.rowIndex);
-            }
 
-            this.onRowContextMenu(e.rowIndex, e.grid.getItem(e.rowIndex), e.grid);
-        },
-        _onSelectedInList: function (index) {
-            this.onSelected(index, this._listGrid.getItem(index), this._listGrid);
-        },
-        _onSelectedInSummary: function (index) {
-            this.onSelected(index, this._summaryGrid.getItem(index), this._summaryGrid);
-        },
-        _onSelectionChanged: function () {
-            dojo.publish('/sage/ui/list/selectionChanged', this);
-            this.onSelectionChanged();
-        },
-        _onResizeColumn: function (columnIndex) {
-            // Handle size storage
-            var grid = this._listGrid,
-                cell = grid.getCell(columnIndex),
-                value = cell.unitWidth,
-                key = this._getColumnSizeKey(cell.field);
 
-            this._saveToLocalStorage(key, value);
-            this._doAutoFitColumns();
+        // **** EVENT HANDLERS FOR WHEN GRID STATE CHANGES AND SHOULD BE SAVED
+        _onColumnResize: function (evt) {
         },
-        _onHeaderCellClick: function (e) {
+        _onSort: function (e) {
             // Handle sort storage
             var grid = this._listGrid,
                 key = this._getGridSortKey(),
-                value,
-                sortProps = grid.getSortProps();
+                cell = grid._grid.cell(e),
+                existingSortInfo = this._getSortInfo(),
+                sortInfo = null, column = null;
 
-            grid.selection.clear();
+            grid.clearSelection();
 
-            if (sortProps && sortProps.length > 0) {
-                // sortProps is an array of objects:
-                // { attribute: 'Cell Name', descending: true/false }
-                value = sortProps[0];
-                value.cellIndex = e.cell.index;
-
-                //if cell has no sort then don't save.
-                if (e.cell.nosort) { return; }
-
-                grid.setSortIndex(value.cellIndex, !value.descending);
-                this._saveToLocalStorage(key, value);
+            if (cell !== null && typeof cell.column !== "undefined" && typeof cell.column.customSort !== "undefined") {
+                e.preventDefault();
+                column = cell.column;
+                sortInfo = lang.mixin(column.customSort, { descending: false });
+                if (existingSortInfo && existingSortInfo.attribute === sortInfo.attribute) {
+                    if (existingSortInfo.descending === true) {
+                        sortInfo.descending = false;
+                    } else {
+                        sortInfo.descending = true;
+                    }
+                }
+                grid._grid.set('sort', sortInfo.attribute, sortInfo.descending);
+                grid._grid.updateSortArrow([{ attribute: column.field, descending: sortInfo.descending }], false);
             }
+
+            if (sortInfo === null) {
+                sortInfo = e.sort[0];
+            }
+            this._saveToLocalStorage(key, sortInfo);
         },
+        // TODO: _onMoveColumn
+        // **** END EVENT HANDLERS FOR WHEN GRID STATE CHANGES AND SHOULD BE SAVED
         _onRowDblClick: function (e) {
             if (this._configuration.list.onNavigateToDefaultItem) {
-                if (e.rowIndex > -1) {
-                    var item = e.grid._by_idx[e.rowIndex].item;
-                    this._configuration.list.onNavigateToDefaultItem(item);
-                }
+                this._configuration.list.onNavigateToDefaultItem(e.data);
             }
         },
-        _onCellClick: function (e) {
-            var i,
-                inc = 1,
-                selected = e.grid.selection.isSelected(e.rowIndex),
-                newSelected;
 
-            if (has('ie') > 8) {
-                try {
-                    var selection = document.getSelection();
-                    if (selection && selection.removeAllRanges) {
-                        selection.removeAllRanges();
-                    }
-                } catch (err) { }
-            }
-            // If we click the other cells, "pretend" we clicked the row select cell checkbox
-            if (e.grid.rowSelectCell) {
-                if (e.grid.rowSelectCell.index !== e.cell.index) {
-                    if (e.shiftKey === true && e.grid.rowSelectCell.lastClickRowIdx !== e.rowIndex) {
-                        // Shift is being held, select from previous click to this
-                        // last 0 -> current 10 we need to increment up (set inc to positive)
-                        // last 10 -> current 0 we need to increment down (set inc to negative)
-                        if (e.grid.rowSelectCell.lastClickRowIdx > e.rowIndex) {
-                            inc = -1;
-                        }
-
-                        for (i = e.grid.rowSelectCell.lastClickRowIdx; i !== e.rowIndex; i += inc) {
-                            e.grid.rowSelectCell.toggleRow(i, true);
-                        }
-
-                        e.grid.rowSelectCell.toggleRow(e.rowIndex, true);
-                    } else {
-                        e.grid.rowSelectCell.toggleRow(e.rowIndex, !selected);
-                        if (this._shouldShowDetailPane() && selected) {
-                            newSelected = this._getSelection(0);
-                            if (newSelected) {
-                                this._detailPane._onSelected(newSelected.rowIndex, newSelected, e.grid);
-                            }
-                            else {
-                                this._detailPane.clear();
-                            }
-                        }
-                    }
-
-                    e.grid.rowSelectCell.lastClickRowIdx = e.rowIndex;
-                }
-                else {
-                    if (this._shouldShowDetailPane() && selected) {
-                        // This is a hack since the selection from the check box is changed some where else.
-                        // So we clear it to get the next selection then set it back so the event form the check box un togeles the selection correctly.
-                        e.grid.rowSelectCell.toggleRow(e.rowIndex, !selected);
-                        newSelected = this._getSelection(0);
-                        e.grid.rowSelectCell.toggleRow(e.rowIndex, selected);
-                        if (newSelected) {
-                            this._detailPane._onSelected(newSelected.rowIndex, newSelected, e.grid);
-                        }
-                        else {
-                            this._detailPane.clear();
-                        }
-                    }
-                }
-            }
-        },
+        // **** UTILITY FUNCTIONS TO DO WITH SAVING THINGS TO LOCAL STORAGE
         _saveToLocalStorage: function (key, value, namespace) {
             var localStore;
             key = this._alterKeyForLookupResults(key);
@@ -883,13 +764,14 @@ function (i18n,
 
             return results;
         },
-        _alterKeyForLookupResults: function(key) {
-            if((/LOOKUPRESULTS/).test(key)) {
+        _alterKeyForLookupResults: function (key) {
+            if ((/LOOKUPRESULTS/).test(key)) {
                 var currentEntityId = this._getMainViewName();
                 key = key.replace('LOOKUPRESULTS', 'LOOKUPRESULTS' + (currentEntityId != -1 ? currentEntityId : ''));
             }
             return key;
         },
+        // TODO: Should be utility?
         _makeValidNamespace: function (ns) {
             // This is similar to the regex dojo uses to validate a valid namespace,
             // except we replace anything that would be invalid with a dash.
@@ -906,7 +788,7 @@ function (i18n,
         },
         _getGroupID: function () {
             var service = Sage.Services.getService("ClientGroupContext"),
-                results = -1,
+    results = -1,
                 context = null;
             if (service) {
                 context = service.getContext();
@@ -924,7 +806,7 @@ function (i18n,
             //if not defined then use the group context.
             var service = Sage.Services.getService("ClientGroupContext"),
                 results = -1,
-                context = null;
+    context = null;
             if (service) {
                 context = service.getContext();
                 if (context) {
@@ -933,19 +815,8 @@ function (i18n,
             }
             return results;
         },
-        _getColumnSizeKey: function (columnName) {
-            var stripped = columnName.replace(/[\.\$]/g, '_'),
-                id = this._listGrid.id + '_' + this._configuration.list.id + '_' + this.STORE_KEY_COLUMN_SIZE + stripped;
-            return id;
-        },
         _getGridSortKey: function () {
             return this._keyGen(this.STORE_KEY_SORT_INFO);
-        },
-        _getGridLayoutKey: function () {
-            return this._keyGen(this.STORE_KEY_LAYOUT_INFO);
-        },
-        _getGridColumnToggleKey: function () {
-            return this._keyGen(this.STORE_KEY_TOGGLE_INFO);
         },
         _getViewStateKey: function () {
             return this.STORE_KEY_VIEWSTATE;
@@ -954,155 +825,41 @@ function (i18n,
             var id = this.STORE_KEY_STORE_QUERY + this._getGroupID();
             return id;
         },
+        // TODO: Utility?
         _keyGen: function (keyPart) {
             var id = this._listGrid.id + keyPart + this._configuration.list.id;
             return id;
         },
-        _onListScroll: function () {
-            this._onScroll(this._listGrid.scroller);
-        },
-        _onSummaryScroll: function () {
-            this._onScroll(this._summaryGrid.scroller);
-        },
-        _onScroll: function (scroller) {
-            var firstrow,
-                lastrow,
-                count,
-                lbl;
+        // **** END UTILITY FUNCTIONS TO DO WITH SAVING THINGS TO LOCAL STORAGE
 
-            if (scroller.rowCount >= this.RECORD_WARNING_SIZE) {
-                this._tbarOverflowLabel.domNode.style.display = "block";
-            }
-            else {
-                this._tbarOverflowLabel.domNode.style.display = "none";
-            }
-            if (this._tbarLabel) {
-                count = scroller.rowCount;
-                if (count <= 0) {
-                    firstrow = 0;
-                    lastrow = 0;
-                    count = 0;
-                } else {
-                    firstrow = (scroller.firstVisibleRow === 0) ? 1 : scroller.firstVisibleRow + 1;
-                    lastrow = (scroller.lastVisibleRow >= scroller.rowCount) ? scroller.rowCount : scroller.lastVisibleRow + 1;
-                }
-
-                lbl = dojo.string.substitute('${0} ${1} - ${2} ${3} ${4}', [this.displayingText, firstrow, lastrow, this.ofText, count]);
-                this._tbarLabel.set('label', lbl);
-            }
-        },
+        // TODO: This is re-implemented everywhere. Should be a base item.
         _markDirty: function (entity) {
-            // this doesn't work because dojo renders the html for the row after this event has run.
-            // So, we need to override the render row and check if the entity is dirty and add the
-            // class at that point.
-            //				if (entity) {
-            //					var idx = this._listGrid.getItemIndex(entity);
-            //					if (idx && idx > -1) {
-            //						var row = this._listGrid.getRowNode(idx);
-            //						//row = row.firstChild;
-            //						if (row) {
-            //							dojo.addClass(row, 'row_unsaved_changes');
-            //						}
-            //					}
-            //				}
             this._unsavedDataLabel.set('style', 'display:inline');
         },
+        // TODO: This is re-implemented everywhere. Should be a base item.
         _markClean: function () {
             this._unsavedDataLabel.set('style', 'display:none');
         },
-        getTotalSelectionCount: function () {
-            var totalCount = 0,
-                sel;
 
-            if (this._listMode === 'list') {
-                this._configuration.list.active = true; //active is getting nulled out some how?
-            }
-
-
-            if (!this._isConfigurationActiveForList() || !this._listGrid) {
-                return [];  //selections only valid for list mode
-            }
-
-            sel = this._listGrid.selection;
-            if (sel) {
-                totalCount = sel.getSelectedCount();
-            }
-
-            return totalCount;
-        },
         getSelectionInfo: function (includeEntity) {
-            var recordCount,
-                selectionCount,
-                selectionKey,
-                mode,
-                selections,
-                groupContextSvc,
-                keyField,
-                hasCompositeKey,
-                sels,
-                selectedIds = [],
-                i,
-                selectionInfo;
+            //selectionInfo = {
+            //    key: selectionKey,
+            //    mode: mode,
+            //    selectionCount: selectionCount,
+            //    recordCount: recordCount,
+            //    sortDirection: '', // sortDirection,  //ToDo: find these... <---<<<   <---<<<
+            //    sortField: '', // sortField,
+            //    keyField: keyField,
+            //    hasCompositeKey: hasCompositeKey,
+            //    ranges: [], // ranges, //ranges are leftover from the Ext grid - the dojo grid does not use ranges, when a large range is selected, it fetches all the data...
+            //    selections: selections,
+            //    selectedIds: selectedIds
+            //};
 
-            if (this._listMode === 'list') { //active is getting nulled out some how?
-                this._configuration.list.active = true;
-            }
-
-            if (!this._isConfigurationActiveForList() || !this._listGrid) {
-                return [];  //selections only valid for list mode
-            }
-
-            recordCount = this._listGrid.rowCount || 0;
-            selectionCount = this.getTotalSelectionCount();
-            selectionKey = this.id;
-            mode = 'selection';
-            selections = [];
-            groupContextSvc = Sage.Services.getService('ClientGroupContext');
-            keyField = (groupContextSvc) ? groupContextSvc.getContext().CurrentTableKeyField || '' : '';
-            if (this._configuration.hasCompositeKey) {
-                hasCompositeKey = this._configuration.hasCompositeKey;
-            }
-            else {
-
-                hasCompositeKey = false;
-            }
-
-            sels = this._listGrid.selection.getSelected();
-            selectedIds = [];
-
-            for (i = 0; i < sels.length; i++) {
-                if (sels[i]) {
-                    var selectionsObj = {
-                        rn: 0, //ToDo: do we need SLXRN?  No, but removing requires modifications to Sage.SalesLogix.SelectionService, which could potentially break customizations
-                        id: sels[i][keyField]
-                    };
-                    if (includeEntity) {
-                        selectionsObj['entity'] = sels[i];
-                    }
-                    selections.push(selectionsObj);
-                    //we still want to store the ids as an array
-                    selectedIds.push(sels[i][keyField]);
-                }
-            }
-
-            selectionInfo = {
-                key: selectionKey,
-                mode: mode,
-                selectionCount: selectionCount,
-                recordCount: recordCount,
-                sortDirection: '', // sortDirection,  //ToDo: find these... <---<<<   <---<<<
-                sortField: '', // sortField,
-                keyField: keyField,
-                hasCompositeKey: hasCompositeKey,
-                ranges: [], // ranges, //ranges are leftover from the Ext grid - the dojo grid does not use ranges, when a large range is selected, it fetches all the data...
-                selections: selections,
-                selectedIds: selectedIds
-            };
-
-            return selectionInfo;
+            return this._selectionInfoObject;
         },
         requestConfiguration: function () {
-            ready(lang.hitch(this, function() {
+            ready(lang.hitch(this, function () {
                 if (this._configurationProvider) {
                     this._configurationProvider.requestConfiguration({
                         success: lang.hitch(this, this._applyConfiguration),
@@ -1110,6 +867,11 @@ function (i18n,
                     });
                 }
             }));
+        },
+        clearSelection: function () {
+            if (this._listGrid) {
+                this._listGrid.clearSelection();
+            }
         },
         refreshView: function () {
             if (this._configuration.rebuildOnRefresh) {
@@ -1125,16 +887,14 @@ function (i18n,
             }
 
             if (!listId) {
-                this._listGrid._refresh();
+                this._listGrid.refresh();
             } else {
                 if (this._configuration._listId === listId) {
-                    this._listGrid._refresh();
+                    this._listGrid.refresh();
                 }
             }
 
-            if (this._listGrid && this._listGrid.selection) {
-                this._listGrid.selection.clear();
-            }
+            this.clearSelection();
 
             if (this._detailPane) {
                 this._detailPane.clear();
@@ -1142,182 +902,121 @@ function (i18n,
         },
         refreshSummary: function () {
             if (this._hasConfigurationForSummary() && (this._listMode !== 'list')) {
-                this._summaryGrid._refresh();
+                this._summaryGrid.refresh();
             }
         },
+        // TODO: Why isn't this using the help mixin?
         showHelp: function () {
             util.openHelp(this.helpTopicName);
         },
+
         refreshGrid: function () {
             // Fired from refreshButton
-            this._listGrid.selection.clear();
+            this.clearSelection();
             this.refreshList();
             this.refreshSummary();
         },
+
         showList: function () {
             var query,
                 queryOptions,
-                regionChildItems,
                 menuItem,
                 i,
-                cMenu,
-                cMenuItems,
-                curChildItems,
                 store,
                 key,
                 viewStateKey,
                 centerContent;
 
             this._listMode = 'list';
-
             if (!this._hasConfigurationForList()) {
                 return;
             }
 
             viewStateKey = this._getViewStateKey();
-            this._saveToLocalStorage(viewStateKey, 'list', this._getViewNS());
-
-            this._ensureApplyFilterWasPublished(true);
+            //this._ensureApplyFilterWasPublished(true);
 
             query = this._filterManager.createQuery();
             key = this._getStoreQueryKey();
-            queryOptions = this._listGrid.queryOptions || {};
+
+            queryOptions = this._configuration.list.queryOptions || [];
             queryOptions.httpMethodOverride = !!query;
-            this._setSortInfo(this._configuration.list.store);
 
+
+            // TODO: This needs to be reflected in items passed to the grid options, so move it.
             if (this._configuration.list.rowsPerPage > 0) {
-                this._listGrid.set('rowsPerPage', this._configuration.list.rowsPerPage);
+                //this._listGrid.set('rowsPerPage', this._configuration.list.rowsPerPage);
             }
 
-            //this._listGrid.setStore(this._configuration.list.store, query, queryOptions);
-            //Broke this out of setStore() method so the grid would not refresh untill the structure isset for sort order,
-            //and then refesh grid after structure is set.
-            this._listGrid._setStore(this._configuration.list.store);
-            this._listGrid._setQuery(query, queryOptions);
-            //
-            this._saveToLocalStorage(key, { store: this._configuration.list.store, query: query });
-            if (this._listGrid.structure !== this._configuration.list.structure) {
-                this._setColumnSizes(this._configuration.list.structure);
-                this._listGrid.set('structure', this._configuration.list.structure);
-                this._doAutoFitColumns();
-                // override structure from local storage (if any)
-                this._updateStructureFromLocalStore();
-            }
+            this._listGrid.setStore(null, null);
+            this._listGrid.STORE_NS = this._getGroupNS();
+            this._listGrid.setColumns(this._configuration.list.structure);
 
-            //Refresh grid since we are going around the setStore method and using _setStore instead.
-            this._listGrid._refresh(true);
+            this._selectionInfoObject.keyField = this._configuration.list.store.idProperty;
+            this._dojoxStore = this._configuration.list.dojoxStore;
 
+            this._queryStore(query, queryOptions);
+            this._gridContainer.selectChild(this._listGridPane);
+
+            this._listGrid.setRowRenderFunction();
+            this._listGrid.setHeaderVisibility(true);
+
+            this._configuration.list.active = true;
+            this._setDetailPaneVisibility(this._shouldShowDetailPane(), false);
+            this._updateToolbarItemVisibility();
             if (!this._isConfigurationActiveForList()) {
                 if (this._dataChangeWatchers.length > 0) {
                     array.forEach(this._dataChangeWatchers, dojo.disconnect);
                     this._dataChangeWatchers = [];
                 }
 
-
                 if (this._configuration.list.formatterScope && (this._listGrid.formatterScope !== this._configuration.list.formatterScope)) {
                     this._listGrid.set('formatterScope', this._configuration.list.formatterScope);
                 }
-
-                if (this._configuration.rebuildMenus) {
-                    regionChildItems = this._listGrid.selectedRegionMenu.getChildren();
-                    for (i = 0; i < regionChildItems.length; i++) {
-                        menuItem = regionChildItems[i];
-                        this._listGrid.selectedRegionMenu.removeChild(menuItem);
-                    }
-                }
-
-                cMenuItems = this._configuration.list.selectedRegionContextMenuItems || [];
-                if (cMenuItems.length > 0) {
-                    curChildItems = this._listGrid.selectedRegionMenu.getChildren();
-                    if (curChildItems.length !== cMenuItems.length) {
-                        cMenu = this._listGrid.selectedRegionMenu;
-                        for (i = 0; i < cMenuItems.length; i++) {
-                            cMenu.addChild(cMenuItems[i]);
-                        }
-
-                        if (this._configuration.list.onSelectedRegionContextMenu) {
-                            if (this._contextConnects) {
-                                array.forEach(this._contextConnects, dojo.disconnect);
-                            }
-                            this._contextConnects = [];
-                            this._contextConnects.push(dojo.connect(this._listGrid, 'onRowContextMenu', this._configurationProvider, this._configuration.list.onSelectedRegionContextMenu));
-                        }
-                    }
-                }
-
-                store = this._listGrid.store;
-                if (store && store !== null) {
-                    if (store.features.hasOwnProperty('dojo.data.api.Write')) {
-                        this._dataChangeWatchers.push(dojo.connect(store, 'onSet', this, function (entity, attribute, oldValue, newValue) {
-                            if (oldValue !== newValue) {
-                                this._markDirty(entity);
-                            }
-                        }));
-
-                        if (store.onDataReset) {
-                            this._dataChangeWatchers.push(dojo.connect(store, 'onDataReset', this, '_markClean'));
-                        }
-                    }
-                }
-
-                //this._configuration.list.active = true;
             }
-            this._configuration.list.active = true;
-            this._gridContainer.selectChild(this._listGrid);
-            this._setDetailPaneVisibility(this._shouldShowDetailPane());
-            this._updateToolbarItemVisibility();
 
-            centerContent = registry.byId('centerContent');
-            //connect.connect(centerContent, 'resize', this, this._doAutoFitColumns, false);
+            var sortOrder = this._getSortingInfo();
+            if (sortOrder) {
+                if (!lang.isArray(sortOrder)) {
+                    sortOrder = [sortOrder];
+                }
+                for (var idx = 0; idx < sortOrder.length; idx++) {
+                    sortOrder[idx].attribute = this._CheckForCustomReferenceInSort(sortOrder[idx].attribute);
+                }
+                this._listGrid._grid.updateSortArrow(sortOrder, true);
+            }
+
+            viewStateKey = this._getViewStateKey();
+            this._saveToLocalStorage(viewStateKey, 'list', this._getViewNS());
         },
         showSummary: function () {
-            var viewStateKey,
-                query;
+            var viewStateKey;
+            //    query;
             this._listMode = 'summary';
+
+            //    this.clearSelection();
+            this._summaryGrid.setStore(null, null);
+
+            this._setDetailPaneVisibility(this._shouldShowDetailPane(), false);
+            this._updateToolbarItemVisibility();
+
+
+            var query = this._filterManager.createQuery();
             if (!this._hasConfigurationForSummary()) {
                 // return;
                 this._configuration.summary = this._configurationProvider._createConfigurationForSummary();
             }
-
-            query = this._filterManager.createQuery();
-
-            this._setSummarySortInfo(this._configuration.summary.store);
-
-            this._summaryGrid.setStore(this._configuration.summary.store, query);
-            this._summaryGrid.setStructure(this._configuration.summary.structure);
-            // For some reason the lastVisibleRow index is 0 unless resize is called...
-            dojo.connect(this._summaryGrid, '_onFetchComplete', this, lang.hitch(this, function () { this._summaryGrid.resize(); }));
-
-            if (this._listGrid.selection) {
-                this._listGrid.selection.clear();
-            }
+            this._summaryGrid.setRowRenderFunction(lang.hitch(this, function (obj) {
+                return this._configuration.summary.formatterScope.formatSummary(obj[this._configuration.summary.keyField]);
+            }));
+            this._summaryGrid.setColumns(this._configuration.summary.columns);
+            this._summaryGrid.setStore(this._configuration.summary.store, query, this._configuration.summary.queryOptions);
 
 
-            if (!this._isConfigurationActiveForSummary()) {
-                viewStateKey = this._getViewStateKey();
-                this._saveToLocalStorage(viewStateKey, 'summary', this._getViewNS());
+            this._gridContainer.selectChild(this._summaryGridPane);
 
-                if (this._configuration.summary.hasOwnProperty('rowHeight')) {
-                    this._summaryGrid.set('rowHeight', this._configuration.summary.rowHeight);
-                }
-
-                if (this._configuration.summary.hasOwnProperty('rowsPerPage')) {
-                    this._summaryGrid.set('rowsPerPage', this._configuration.summary.rowsPerPage);
-                }
-
-                if (this._configuration.summary.hasOwnProperty('formatterScope')) {
-                    this._summaryGrid.set('formatterScope', this._configuration.summary.formatterScope);
-                }
-
-                this._summaryGrid.canSort = function (col) {
-                    return false;
-                };
-                this._configuration.summary.active = true;
-            }
-
-            this._gridContainer.selectChild(this._summaryGrid);
-            this._setDetailPaneVisibility(this._shouldShowDetailPane());
-            this._updateToolbarItemVisibility();
+            this._summaryGrid.setHeaderVisibility(false);
+            viewStateKey = this._getViewStateKey();
+            this._saveToLocalStorage(viewStateKey, 'summary', this._getViewNS());
         },
         toggleDetail: function () {
             if (!this._hasConfigurationForDetail()) {
@@ -1326,74 +1025,165 @@ function (i18n,
 
             this.detailVisible = !this.detailVisible;
 
-            this._setDetailPaneVisibility(this._shouldShowDetailPane());
+            this._setDetailPaneVisibility(this._shouldShowDetailPane(), true);
+        },
+        _updateRecordCountText: function () {
+            var currRecordCount = 0;
+            this._selectionInfoObject.recordCount = this._listGrid.totalRecords;
+            if (this._listMode === 'list' && this._hasConfigurationForList) {
+                currRecordCount = this._listGrid.totalRecords;
+            }
+            if (this._listMode === 'summary' && this._hasConfigurationForSummary()) {
+                currRecordCount = this._summaryGrid.totalRecords;
+            }
+            this._tbarLabel.set('label', nlsListPanel.totalRecordsText + currRecordCount);
+        },
+        onGridLoadComplete: function (evt) {
+        },
+        _onGridLoadComplete: function (evt) {
+            this._updateRecordCountText();
+            if (this._configurationProvider && this._configurationProvider.listPanelConfiguration &&
+                    this._configurationProvider.listPanelConfiguration.list && (this._configurationProvider.listPanelConfiguration.list.defaultSelectFirst === true)) {
+                this._listGrid._grid.select(query(".dgrid-row", this._listGrid.domNode)[0]);
+        }
+            this.onGridLoadComplete(evt);
         },
         onRowClick: function (index, row, grid) {
         },
+        _onRowClick: function (e) {
+            this.onRowClick(e.rowIndex, e.grid.getItem(e.rowIndex), e.grid);
+        },
         onRowContextMenu: function (index, row, grid) {
         },
+        _onRowContextMenu: function (e) {
+            var selection = e.grid.selection,
+                selected = selection.getSelected();
+
+            if (selected.length === 0) {
+                selection.select(e.rowIndex);
+            }
+
+            this.onRowContextMenu(e.rowIndex, e.grid.getItem(e.rowIndex), e.grid);
+        },
+        // the detail section selection is handled else where by listening for this function to be called.
         onSelected: function (index, row, grid) {
         },
-        onSelectionChanged: function () {
+        _onSelected: function (index, row, grid) {
+            if (this._shouldShowDetailPane()) {
+                this._detailPane.clear();
+            }
+            this.onSelected(index, row, grid);
+        },
+        onSelectionChanged: function (evt) {
+        },
+        _onSelectionChanged: function (evt) {
+            var isDeselect = evt.type.indexOf("deselect") >= 0,
+                isSelect = evt.type.indexOf("select") && !isDeselect;
+            if (isSelect) {
+                this._onSelected(this._listGrid.getSelectedRowId(), evt.rows[0].data, this._listGrid);
+            }
+            this.onSelectionChanged(evt);
+        },
+        _addToSelectionInfo: function (evt) {
+            var sels = evt.rows;
+
+            for (var i = 0; i < sels.length; i++) {
+                var sels_item = sels[i];
+                if (sels_item) {
+                    var entityId = sels_item.data[this._selectionInfoObject.keyField];
+                    this._selectionInfoObject.selectedIds.push(entityId);
+                    this._selectionInfoObject.selections.push({ "id": entityId, "rn": sels_item.id, "entity": sels_item.data });
+                }
+            }
+
+            this._selectionInfoObject.selectionCount = this._selectionInfoObject.selectedIds.length;
+
+            dojo.publish('/sage/ui/list/selectionChanged', this);
+            this._onSelectionChanged(evt);
+        },
+        _removeFromSelectionInfo: function (evt) {
+            var desels = evt.rows;
+
+            for (var i = 0; i < desels.length; i++) {
+                if (desels[i]) {
+                    this._selectionInfoObject.selectedIds.splice(this._selectionInfoObject.selectedIds.indexOf(desels[i], 1));
+                    var index = this._selectionInfoObject.selections.map(function (e) { return e.id; }).indexOf(desels[i]);
+                    this._selectionInfoObject.selections.splice(index, 1);
+                }
+            }
+            this._selectionInfoObject.selectionCount = this._selectionInfoObject.selectedIds.length;
+
+            dojo.publish('/sage/ui/list/selectionChanged', this);
+            this._onSelectionChanged(evt);
         },
         resolveProperty: function (propertyName, dataPath /* optional */) {
             var list = this._configuration && this._configuration.list,
                 layout = list && list.layout,
-                tableAliases = (list && list.tableAliases) || {},
-                i,
-                item,
-                table,
-                tableAlias,
-                propertyPathSplit,
-                propertyNameSplit,
-                joinChars = ['<', '>'];
-
+                tableAliases = (list && list.tableAliases) || {};
 
             if (layout) {
                 // todo: cache this information
-                for (i = 0; i < layout.length; i++) {
-                    item = layout[i];
-
-                    // Extract the property name out if in form:
-                    // Account.AccountName
-                    propertyPathSplit = item.propertyPath && item.propertyPath.split('.');
-                    if (propertyPathSplit && propertyPathSplit.length === 2) {
-                        propertyPathSplit = propertyPathSplit[1];
-                    } else if (propertyPathSplit && propertyPathSplit.length === 1) {
-                        propertyPathSplit = propertyPathSplit[0];
-                    }
-
-                    propertyNameSplit = propertyName && propertyName.split('.');
-                    if (propertyNameSplit && propertyNameSplit.length === 2) {
-                        propertyNameSplit = propertyNameSplit[1];
-                    } else if (propertyNameSplit && propertyNameSplit.length === 1) {
-                        propertyNameSplit = propertyNameSplit[0];
-                    }
-
-                    // The filter datapath will be inner, compare against that
-                    if (item.dataPath) {
-                        array.forEach(joinChars, function (c) {
-                            item.dataPath = item.dataPath.replace(c, '=');
-                        });
-                    }
-
-                    if (item.propertyPath === propertyName || (dataPath && item.dataPath === dataPath) || propertyPathSplit === propertyNameSplit) {
-                        if (/^[a-z]\d+_/i.test(item.alias)) {
-                            return item.alias;
-                        }
-
-                        table = item.dataPath && item.dataPath.split(':')[0];
-                        tableAlias = table && tableAliases[table.toUpperCase()];
-                        if (tableAlias) {
-                            return tableAlias + '.' + item.alias;
-                        }
-
-                        return item.alias;
+                var alias = this._getAlias(propertyName, layout, tableAliases, false);
+                if (alias) {
+                    return alias;
+                } else {
+                    alias = this._getAlias(propertyName, layout, tableAliases, true);
+                    if (alias) {
+                        return alias;
+                    } else {
+                        return propertyName;
                     }
                 }
             }
-
+            if (this._configuration && typeof (this._configuration.resolveProperty) === 'function') {
+                return this._configuration.resolveProperty(propertyName, dataPath);
+            }
             return propertyName;
+        },
+        propertyFormat: function (propertyName) {
+            var list = this._configuration && this._configuration.list,
+                layout = list && list.layout,
+                tableAliases = (list && list.tableAliases) || {};
+
+            if (layout) {
+                var i, item;
+                for (i = 0; i < layout.length; i++) {
+                    item = layout[i];
+                    if (item.propertyPath === propertyName) {
+                        return item.format;
+                    }
+                }
+            }
+            return null;
+        },
+        _getAlias: function (propertyName, layout, tableAliases, splitPath) {
+            var i, item, table, tableAlias, propertyPathSplit, layoutProperty;
+
+            for (i = 0; i < layout.length; i++) {
+                item = layout[i];
+                layoutProperty = item.propertyPath;
+                if (layoutProperty === null) {
+                    continue;
+                }
+                if (splitPath) {
+                    propertyPathSplit = item.propertyPath && item.propertyPath.split('.');
+                    if (propertyPathSplit.length === 2) {
+                        layoutProperty = propertyPathSplit[1];
+                    }
+                }
+                if (layoutProperty === propertyName) {
+                    if (/^[a-z]\d+_/i.test(item.alias)) {
+                        return item.alias;
+                    }
+                    table = item.dataPath && item.dataPath.split(':')[0];
+                    tableAlias = table && tableAliases[table.toUpperCase()];
+                    if (tableAlias) {
+                        return tableAlias + '.' + item.alias;
+                    }
+                    return item.alias;
+                }
+            }
+            return null;
         }
     });
 

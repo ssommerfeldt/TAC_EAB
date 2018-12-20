@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="53825125-eb28-41f8-920b-9fce27a16298" disablePageValidation="false">
+  <PageAlias>MarketoLead</PageAlias>
+  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <InheritTemplate>false</InheritTemplate>
+  <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
+  <Properties>
+    <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.IMarketoLead,Sage.Entity.Interfaces</Property>
+  </Properties>
+  <TemplateProperties>
+    <Property Name="IncludeMiddlePane" TypeConverter="">True</Property>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">False</Property>
+    <Property Name="MainContentWorkspace_IncludeCollapseButton" TypeConverter="">True</Property>
+    <Property Name="IncludeTaskPane" TypeConverter="">True</Property>
+  </TemplateProperties>
+  <IsDefaultPage>false</IsDefaultPage>
+  <ExcludedGlobalModules />
+  <AppliedSecurity />
+  <IncludeScript />
+</PortalPage>

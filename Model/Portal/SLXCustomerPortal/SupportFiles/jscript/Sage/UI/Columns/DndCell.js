@@ -1,5 +1,7 @@
+require({cache:{
+'url:Sage/UI/Columns/templates/DndCell.html':"<div>\r\n    <div data-dojo-type=\"dojo.dnd.Source\" dojoAttachPoint=\"sourceNode\" copyOnly=\"true\" accept=\"\">\r\n        <div class=\"dojoDndItem\" dojoAttachPoint=\"dndItem\"></div>\r\n    </div>\r\n</div>\r\n"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Columns/DndCell", [
     'dijit/_Widget',
     'dijit/_Templated',
     'dojo/dnd/Source',

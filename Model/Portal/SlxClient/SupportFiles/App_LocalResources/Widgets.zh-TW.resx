@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="editorTitleBar" xml:space="preserve">
+    <value>橫條圖設定</value>
+  </data>
+  <data name="editorTitleCol" xml:space="preserve">
+    <value>直條圖設定</value>
+  </data>
+  <data name="editorTitleFun" xml:space="preserve">
+    <value>漏斗圖設定</value>
+  </data>
+  <data name="editorTitleLine" xml:space="preserve">
+    <value>折線圖設定</value>
+  </data>
+  <data name="editorTitlePie" xml:space="preserve">
+    <value>圓形圖設定</value>
+  </data>
+  <data name="emptyDimension" xml:space="preserve">
+    <value>選取維度</value>
+  </data>
+  <data name="emptyEntity" xml:space="preserve">
+    <value>選取實體</value>
+  </data>
+  <data name="emptyGroup" xml:space="preserve">
+    <value>選取群組</value>
+  </data>
+  <data name="emptyMetric" xml:space="preserve">
+    <value>選取計量</value>
+  </data>
+  <data name="five" xml:space="preserve">
+    <value>五</value>
+  </data>
+  <data name="lblCaption" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="lblDimension" xml:space="preserve">
+    <value>維度</value>
+  </data>
+  <data name="lblEntity" xml:space="preserve">
+    <value>實體</value>
+  </data>
+  <data name="lblGoal" xml:space="preserve">
+    <value>目標</value>
+  </data>
+  <data name="lblGroup" xml:space="preserve">
+    <value>群組</value>
+  </data>
+  <data name="lblLegend" xml:space="preserve">
+    <value>顯示圖例</value>
+  </data>
+  <data name="lblMaxLength" xml:space="preserve">
+    <value>名稱長度上限</value>
+  </data>
+  <data name="lblMetric" xml:space="preserve">
+    <value>計量</value>
+  </data>
+  <data name="lblNames" xml:space="preserve">
+    <value>顯示名稱</value>
+  </data>
+  <data name="lblOther" xml:space="preserve">
+    <value>新增「其他」的圖塊</value>
+  </data>
+  <data name="lblSlices" xml:space="preserve">
+    <value>圖塊數目</value>
+  </data>
+  <data name="lblLimit" xml:space="preserve">
+    <value>限制</value>
+  </data>
+  <data name="lblTitle" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="lblTruncate" xml:space="preserve">
+    <value>截斷名稱</value>
+  </data>
+  <data name="lblXaxis" xml:space="preserve">
+    <value>X 軸</value>
+  </data>
+  <data name="lblYaxis" xml:space="preserve">
+    <value>Y 軸</value>
+  </data>
+  <data name="loading" xml:space="preserve">
+    <value>正在載入，請稍候...</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="ten" xml:space="preserve">
+    <value>十</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="noData" xml:space="preserve">
+    <value>伺服器無法取得資料。請檢查您的設定選項。</value>
+  </data>
+  <data name="viewGroup" xml:space="preserve">
+    <value>檢視群組</value>
+  </data>
+  <data name="addLink" xml:space="preserve">
+    <value>新增連結</value>
+  </data>
+  <data name="editorTitleGroupList" xml:space="preserve">
+    <value>群組清單設定</value>
+  </data>
+  <data name="editorTitleLinks" xml:space="preserve">
+    <value>連結設定</value>
+  </data>
+  <data name="editorTitleTodaysActivities" xml:space="preserve">
+    <value>今日的活動設定</value>
+  </data>
+  <data name="iconUrl" xml:space="preserve">
+    <value>圖示 URL</value>
+  </data>
+  <data name="linkText" xml:space="preserve">
+    <value>連結文字</value>
+  </data>
+  <data name="linkUrl" xml:space="preserve">
+    <value>連結 URL</value>
+  </data>
+  <data name="noDataToDisplay" xml:space="preserve">
+    <value>沒有資料可供顯示。</value>
+  </data>
+  <data name="numberOfActivites" xml:space="preserve">
+    <value>活動數目</value>
+  </data>
+  <data name="lblNumberOfRecords" xml:space="preserve">
+    <value>記錄數目</value>
+  </data>
+  <data name="recentlyViewed" xml:space="preserve">
+    <value>最近檢視</value>
+  </data>
+  <data name="lblTarget" xml:space="preserve">
+    <value>目標</value>
+  </data>
+  <data name="timeless" xml:space="preserve">
+    <value>無指定時間</value>
+  </data>
+  <data name="todaysActivities" xml:space="preserve">
+    <value>今日的活動</value>
+  </data>
+  <data name="viewAllActivities" xml:space="preserve">
+    <value>檢視我今日的所有活動</value>
+  </data>
+  <data name="lblVisibleRecords" xml:space="preserve">
+    <value>可見的記錄</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>歡迎使用</value>
+  </data>
+  <data name="welcomeH2" xml:space="preserve">
+    <value>歡迎使用 Infor CRM</value>
+  </data>
+  <data name="welcomeHelpLinkText" xml:space="preserve">
+    <value>按一下此處以瞭解使用此系統的方式</value>
+  </data>
+  <data name="welcomeP1" xml:space="preserve">
+    <value>Infor CRM 可透過網頁管理銷售週期的各個層面。除了追蹤聯絡人、客戶、銷售線索、商機、記錄單及活動之外，使用者有權存取工具來進行報告、將程序自動化，以及使用郵件合併來建立電子郵件、傳真及信件。</value>
+  </data>
+  <data name="Access_to_Sage_SalesLogix_Online_Support" xml:space="preserve">
+    <value>存取線上支援</value>
+  </data>
+  <data name="Access_to_Sage_SalesLogix_University" xml:space="preserve">
+    <value>存取 Saleslogix University</value>
+  </data>
+  <data name="Be_a_part_of_the_Sage_SalesLogix_Community" xml:space="preserve">
+    <value>成為社群的一分子</value>
+  </data>
+  <data name="Do_You_Know___" xml:space="preserve">
+    <value>您是否知道...</value>
+  </data>
+  <data name="How_to_add_an_Opportunity" xml:space="preserve">
+    <value>如何新增商機</value>
+  </data>
+  <data name="How_to_add_a_New_Account" xml:space="preserve">
+    <value>如何加入新客戶</value>
+  </data>
+  <data name="How_to_add_a_New_Contact" xml:space="preserve">
+    <value>如何加入新的聯絡人</value>
+  </data>
+  <data name="How_to_change_my_personal_options" xml:space="preserve">
+    <value>如何變更我的個人選項</value>
+  </data>
+  <data name="How_to_create_a_group_using_Query_Builder" xml:space="preserve">
+    <value>如何使用查詢產生器建立群組</value>
+  </data>
+  <data name="How_to_use_Mail_Merge" xml:space="preserve">
+    <value>如何使用郵件合併</value>
+  </data>
+  <data name="Insert_New_Account" xml:space="preserve">
+    <value>插入新客戶</value>
+  </data>
+  <data name="Insert_New_Contact" xml:space="preserve">
+    <value>插入新聯絡人</value>
+  </data>
+  <data name="Leads_Created" xml:space="preserve">
+    <value>已建立銷售線索</value>
+  </data>
+  <data name="lblLinks" xml:space="preserve">
+    <value>連結</value>
+  </data>
+  <data name="My_Activity_trend" xml:space="preserve">
+    <value>我的活動趨勢</value>
+  </data>
+  <data name="My_Completed_Activities_by_Type" xml:space="preserve">
+    <value>我完成的活動類型比例</value>
+  </data>
+  <data name="My_Notes" xml:space="preserve">
+    <value>我的備註</value>
+  </data>
+  <data name="My_Pipeline" xml:space="preserve">
+    <value>我的管線</value>
+  </data>
+  <data name="My_Top_Opportunities" xml:space="preserve">
+    <value>我的最佳商機</value>
+  </data>
+  <data name="Number_of_activities_completed" xml:space="preserve">
+    <value>已完成的活動數目</value>
+  </data>
+  <data name="Open_Opportunities" xml:space="preserve">
+    <value>未結商機</value>
+  </data>
+  <data name="Potential" xml:space="preserve">
+    <value>潛力</value>
+  </data>
+  <data name="Quick_Actions" xml:space="preserve">
+    <value>快速動作</value>
+  </data>
+  <data name="Recent_Lead_Creation_History" xml:space="preserve">
+    <value>最近的銷售線索建立歷程記錄</value>
+  </data>
+  <data name="Schedule_a_Meeting" xml:space="preserve">
+    <value>排程會議</value>
+  </data>
+  <data name="Schedule_a_Phone_Call" xml:space="preserve">
+    <value>排程電話</value>
+  </data>
+  <data name="Share_Your_Product_Ideas" xml:space="preserve">
+    <value>分享您的產品概念</value>
+  </data>
+  <data name="View_Activities" xml:space="preserve">
+    <value>檢視活動</value>
+  </data>
+  <data name="Visit_the_Sage_SalesLogix_Website" xml:space="preserve">
+    <value>瀏覽 Infor CRM 網站</value>
+  </data>
+  <data name="Today_s_Activities" xml:space="preserve">
+    <value>今日的活動</value>
+  </data>
+  <data name="Active_Campaigns" xml:space="preserve">
+    <value>進行中行銷活動</value>
+  </data>
+  <data name="By_Sum_Of_Sales_Potential" xml:space="preserve">
+    <value>依據銷售潛力加總</value>
+  </data>
+  <data name="My_Dashboard" xml:space="preserve">
+    <value>我的儀表板</value>
+  </data>
+  <data name="Sales" xml:space="preserve">
+    <value>銷售</value>
+  </data>
+  <data name="Bar_Chart" xml:space="preserve">
+    <value>長條圖</value>
+  </data>
+  <data name="Column_Chart" xml:space="preserve">
+    <value>直條圖</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>預設</value>
+  </data>
+  <data name="Displays_an_introduction_to_Sage_SalesLogix_with_a_link_to_the_help_topic_Introducing_Sage_SalesLogix_for_Web_" xml:space="preserve">
+    <value>顯示 Saleslogix 簡介，並含有「適用於網頁的 Saleslogix 簡介」說明主題的連結。</value>
+  </data>
+  <data name="Displays_a_list_of_group_records_by_entity__For_example__a_group_of_active_campaigns_" xml:space="preserve">
+    <value>依實體顯示群組記錄清單。例如，進行中行銷活動的群組。</value>
+  </data>
+  <data name="Displays_data_as_a_series_of_data_points_connected_by_a_line__Useful_when_the_data_represents_many_groups_or_categories_" xml:space="preserve">
+    <value>將資料顯示為一連串的資料點 (透過線條連接)。這在資料代表許多群組或類別時非常實用。</value>
+  </data>
+  <data name="Displays_data_as_a_set_of_horizontal_bars__Useful_for_comparing_several_sets_of_data_" xml:space="preserve">
+    <value>將資料顯示為一組橫列。這在比較數組資料時非常實用。</value>
+  </data>
+  <data name="Displays_data_as_a_set_of_vertical_bars_grouped_by_category__Useful_for_showing_data_changes_over_a_period_of_time_or_for_illustrating_comparisons_among_items_" xml:space="preserve">
+    <value>將資料顯示為一組依類別群組的直列。這在顯示經過一段時間之後的資料變更或說明項目間之比較時非常實用。</value>
+  </data>
+  <data name="Displays_data_as_progressive_proportions_in_a_funnel_shape__The_data_is_represented_as_portions_of_100___and_there_are_no_axes_" xml:space="preserve">
+    <value>將資料顯示為漏斗形狀的漸進式比例。資料會以百分比表示，而且沒有座標軸。</value>
+  </data>
+  <data name="Displays_data_as_proportions_of_the_whole__Each_value_is_calculated_as_a_percentage_of_the_total__This_chart_has_no_axes_" xml:space="preserve">
+    <value>將資料顯示為整體的比例。每個值都會計算為總和的百分比。此圖沒有座標軸。</value>
+  </data>
+  <data name="Displays_links_to_recently_viewed_records_with_an_icon_that_identifies_the_type__For_example__Account_or_Contact_" xml:space="preserve">
+    <value>顯示最近檢視記錄的連結，且含有可識別該類型的圖示。例如，客戶或聯絡人。</value>
+  </data>
+  <data name="Displays_links_to_your_activities_for_today_" xml:space="preserve">
+    <value>顯示您今日活動的連結。</value>
+  </data>
+  <data name="Displays_links_you_create__For_example__to_a_detail_view_in_Sage_SalesLogix_or_to_an_external_Web_site_" xml:space="preserve">
+    <value>顯示您建立的連結。例如，連結至 Saleslogix 中的詳細資料檢視，或連結至外部網站。</value>
+  </data>
+  <data name="Funnel_Chart" xml:space="preserve">
+    <value>漏斗圖</value>
+  </data>
+  <data name="Group_List" xml:space="preserve">
+    <value>群組清單</value>
+  </data>
+  <data name="Line_Chart" xml:space="preserve">
+    <value>折線圖</value>
+  </data>
+  <data name="Pie_Chart" xml:space="preserve">
+    <value>圓形圖</value>
+  </data>
+  <data name="Recently_Viewed" xml:space="preserve">
+    <value>最近檢視</value>
+  </data>
+  <data name="Todays_Activities" xml:space="preserve">
+    <value>今日活動</value>
+  </data>
+  <data name="Widget_description_goes_here" xml:space="preserve">
+    <value>請將小組件描述放置於此</value>
+  </data>
+  <data name="Invalid_character" xml:space="preserve">
+    <value>無效的字元</value>
+  </data>
+  <data name="lblAdd" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="lblDelete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="lblDisplayLabels" xml:space="preserve">
+    <value>顯示標籤</value>
+  </data>
+  <data name="lblLabelLength" xml:space="preserve">
+    <value>標籤長度</value>
+  </data>
+  <data name="lblSubtitle" xml:space="preserve">
+    <value>副標題</value>
+  </data>
+  <data name="lblTruncateLabels" xml:space="preserve">
+    <value>截斷標籤</value>
+  </data>
+  <data name="NoRecordsSelected" xml:space="preserve">
+    <value>未選取任何記錄。</value>
+  </data>
+  <data name="txtDeleteConfirm" xml:space="preserve">
+    <value>您確定要刪除這 {0} 個項目?</value>
+  </data>
+  <data name="txtNoActivities" xml:space="preserve">
+    <value>沒有活動可供顯示。</value>
+  </data>
+  <data name="txtDefaultWidgetEditorAlert" xml:space="preserve">
+    <value>已按下編輯器按鈕!</value>
+  </data>
+  <data name="welcomeGettingStarted" xml:space="preserve">
+    <value>入門指南</value>
+  </data>
+  <data name="welcomeQuickReference" xml:space="preserve">
+    <value>快速參考卡</value>
+  </data>
+  <data name="welcomeWebClientHelp" xml:space="preserve">
+    <value>網頁用戶端線上說明</value>
+  </data>
+  <data name="activitiesDestination" xml:space="preserve">
+    <value>檢視活動</value>
+  </data>
+  <data name="lblLoading" xml:space="preserve">
+    <value>載入中...</value>
+  </data>
+  <data name="groupListError" xml:space="preserve">
+    <value>載入群組 ${0} 時發生錯誤。請確定該群組存在，而且您有權可以存取它們。</value>
+  </data>
+</root>

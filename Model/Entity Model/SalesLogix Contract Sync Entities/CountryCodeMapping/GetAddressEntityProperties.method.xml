@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="26dc135b-8d2d-42cb-84d3-e942905761ed" lastModifiedUtc="2017-07-26T07:21:55.2236243Z" name="GetAddressEntityProperties" returnType="String" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="0180a0ce-92a9-405b-a000-d1de1290e254" lastModifiedUtc="2017-07-26T07:24:09.647256Z" targetType="Sage.SalesLogix.CountryCodeMapping.Rules, Sage.SalesLogix.BusinessRules" targetMethod="GetAddressEntityProperties" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

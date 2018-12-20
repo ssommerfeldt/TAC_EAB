@@ -35,7 +35,7 @@ public partial class PortalUser : System.Web.UI.UserControl
         }
     }
 
-    [ServiceDependency(Type = typeof(IUserService), Required = true)]
+    [ServiceDependency(Type = typeof(IUserService))]
     public IWebPortalUserService UserService
     {
         get

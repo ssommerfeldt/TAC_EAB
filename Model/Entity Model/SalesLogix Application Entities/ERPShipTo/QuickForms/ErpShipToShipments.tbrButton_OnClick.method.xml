@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="a8737234-d7f6-4200-864b-c564482ab57c" lastModifiedUtc="2017-07-08T17:37:28.5862325Z" name="tbrButton_OnClick" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="ErpShipToShipments">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="980b2066-a83c-4365-8f69-2b7524eecdd8" paramName="form" sequence="0" paramType="IErpShipToShipments" />
+    <OrmEntityMethodParam id="f856a4bc-b6bb-4fb0-a2b7-dc207f6a4380" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

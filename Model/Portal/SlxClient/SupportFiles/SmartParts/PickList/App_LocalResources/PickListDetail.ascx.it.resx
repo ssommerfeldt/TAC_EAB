@@ -117,47 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnSave.Caption" xml:space="preserve">
-    <value>Salva</value>
+  <data name="txtPicklistName.Caption" xml:space="preserve">
+    <value>Nome:</value>
   </data>
-  <data name="chkIsManaged.Caption" xml:space="preserve">
-    <value>Applica le opzioni all'elenco di selezione Web</value>
+  <data name="chkRequired.Caption" xml:space="preserve">
+    <value>Voce obbligatoria</value>
+  </data>
+  <data name="chkAllowMulltiple.Caption" xml:space="preserve">
+    <value>Consenti selezioni multiple</value>
   </data>
   <data name="chkMustMatch.Caption" xml:space="preserve">
-    <value>Il testo deve coincidere con una voce dell'elenco</value>
-  </data>
-  <data name="chkUsersCanEdit.Caption" xml:space="preserve">
-    <value>Gli utenti possono modificare le voci</value>
+    <value>Il testo deve corrispondere a un elemento dell'elenco</value>
   </data>
   <data name="chkSorted.Caption" xml:space="preserve">
     <value>In ordine alfabetico</value>
   </data>
-  <data name="txtTestList.Caption" xml:space="preserve">
-    <value>Prova quest'elenco:</value>
+  <data name="chkUsersCanEdit.Caption" xml:space="preserve">
+    <value>Gli utenti possono modificare elementi</value>
   </data>
   <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
-    <value>Voci</value>
+    <value>Elementi</value>
   </data>
-  <data name="lblWindowsMsg1" xml:space="preserve">
-    <value>(Solo versione Windows)</value>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value>Salva</value>
   </data>
   <data name="btnDelete.Caption" xml:space="preserve">
     <value>Elimina</value>
   </data>
-  <data name="txtPicklistName.Caption" xml:space="preserve">
-    <value>Nome:</value>
-  </data>
-  <data name="lblWindowsMsg2" xml:space="preserve">
-    <value>(Le opzioni si applicano in automatico agli elenchi di selezione)</value>
-  </data>
-  <data name="chkRequired.Caption" xml:space="preserve">
-    <value>Voce richiesta</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Eliminare</value>
   </data>
   <data name="btnNew.Caption" xml:space="preserve">
-    <value>Nuovo Elenco di Selezione</value>
+    <value>Nuovo elenco di selezione</value>
   </data>
-  <data name="lblWebOnly" xml:space="preserve">
-    <value>Solo Web:</value>
+  <data name="chkIsManaged.Caption" xml:space="preserve">
+    <value>Applica le opzioni all'elenco di selezione Web</value>
+  </data>
+  <data name="txtTestList.Caption" xml:space="preserve">
+    <value>Verifica quest'elenco:</value>
   </data>
   <data name="txtCurrentDefaultValue.Caption" xml:space="preserve">
     <value>Valore predefinito corrente:</value>
@@ -165,10 +162,13 @@
   <data name="lblOptions" xml:space="preserve">
     <value>Opzioni:</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare</value>
+  <data name="lblWebOnly" xml:space="preserve">
+    <value>Solo Web:</value>
   </data>
-  <data name="chkAllowMulltiple.Caption" xml:space="preserve">
-    <value>Consenti selezioni multiple</value>
+  <data name="lblWindowsMsg1" xml:space="preserve">
+    <value>(Solo versione Windows)</value>
+  </data>
+  <data name="lblWindowsMsg2" xml:space="preserve">
+    <value>(Le opzioni si applicano automaticamente agli elenchi di selezione)</value>
   </data>
 </root>

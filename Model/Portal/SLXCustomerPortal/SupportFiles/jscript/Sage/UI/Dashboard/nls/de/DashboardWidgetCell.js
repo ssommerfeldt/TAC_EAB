@@ -1,5 +1,5 @@
-define((
-{ closeTooltipText: 'Schließen',
-  minimizeTooltipText: 'Minimieren',
-  settingsTooltipText: 'Einstellungen' }
-));
+define("Sage/UI/Dashboard/nls/de/DashboardWidgetCell", {
+    "closeTooltipText": "Schließen",
+    "minimizeTooltipText": "Minimieren",
+    "settingsTooltipText": "Einstellungen"
+});

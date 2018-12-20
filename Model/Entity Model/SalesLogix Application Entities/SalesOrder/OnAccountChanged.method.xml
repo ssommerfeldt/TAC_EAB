@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="fb821829-d3d6-4efc-9be2-7ca14bedff9f" lastModifiedUtc="2009-04-15T22:46:43.8733778Z" name="OnAccountChanged" methodType="Rule" actionType="None" returnMode="None">
   <extendedMetaData />
-  <metadata>
-    <dict />
-  </metadata>
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
@@ -16,6 +13,11 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets />
-  <postFlushTargets />
+  <postExecuteTargets>
+    <methodTarget id="a6080912-9ac7-4566-827b-f8965b86c743" lastModifiedUtc="2015-10-26T19:13:43.5194461Z" targetType="Sage.SalesLogix.SalesOrder.SalesOrder, Sage.SalesLogix.BusinessRules" targetMethod="OnAccountChange" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
 </method>

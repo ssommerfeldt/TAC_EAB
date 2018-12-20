@@ -1,9 +1,17 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="bc87c963-56da-459a-94a8-f237a836af46" name="OnBeforeInsert" returnType="void" methodType="CrudEvent" actionType="None" returnMode="BooleanOR" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="bc87c963-56da-459a-94a8-f237a836af46" lastModifiedUtc="2015-08-24T15:23:51.0208897Z" name="OnBeforeInsert" methodType="CrudEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
+  <preExecuteTargets />
   <methodTargets>
+    <methodTarget id="b850316f-6a4c-4170-bc5b-df7bc5e31c83" lastModifiedUtc="2015-08-27T19:11:09.4456629Z" targetType="Sage.SalesLogix.ExchangeRate.Rules, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeInsert" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
   </methodTargets>
+  <postExecuteTargets />
 </method>

@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/templates/nls/en/LitRequestSummary", (
 { txtSendDate_Caption: 'Send:',
   txtScheduled_Caption: 'Scheduled:',
   txtStatus_Caption: 'Status:',

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f5b194bf-b425-455f-86df-91ca91c11e3f" lastModifiedUtc="2017-04-07T07:04:59.3829593Z" parentEntityId="346916af-ef95-45b7-bffb-45855eb9e959" childEntityId="12f84384-d716-415a-9b4f-824fd43ecc6b">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship">
+      <extender guid="14807bef-c0cc-4b6d-a517-8388ed8ac2a6">
+        <OrmRelationshipBulkActionExtension />
+      </extender>
+    </extendee>
+  </ExtendedPropertiesCollection>
+  <parentProperty id="3da46d5b-2ccd-43ff-8ba7-d5a7dc25d827" lastModifiedUtc="2017-04-07T07:04:56.8748154Z" name="ContactAccountingEntities" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="fcef9434-e6da-44cf-9ea8-c854ddb7f337" lastModifiedUtc="2017-04-07T07:04:56.8758161Z" name="BackOffice" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="f45f1b03-5413-4279-8f60-e4c41cf9cf9a" parentPropertyId="09e49c79-5a44-4992-9749-007eac9b15f7" childPropertyId="1c095fd4-aae1-47dc-b5db-2d3bfc8ba277" ordinal="0" />
+  </column>
+</relationship>

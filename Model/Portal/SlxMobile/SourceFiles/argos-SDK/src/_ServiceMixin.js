@@ -14,36 +14,37 @@
  */
 
 /**
- * @class Sage.Platform.Mobile._ServiceMixin
+ * @class argos._ServiceMixin
  * @alternateClassName _ServiceMixin
  * @deprecated
  */
-define('Sage/Platform/Mobile/_ServiceMixin', [
-    'dojo/_base/declare'
-], function(
-    declare
-) {
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
 
-    return declare('Sage.Platform.Mobile._ServiceMixin', null, {
-        serviceMap: null,
-        constructor: function() {
-            var map = this.serviceMap;
-            console.log(map);
-            if (map)
-            {
-                for (var property in map)
-                {
-                    if (this[property]) continue; /* skip any that were explicitly mixed in */
+const __class = declare('argos._ServiceMixin', null, {
+  serviceMap: null,
+  constructor: function constructor() {
+    const map = this.serviceMap;
+    if (map) {
+      for (const property in map) {
+        if (map.hasOwnProperty(property)) {
+          if (this[property]) {
+            continue; /* skip any that were explicitly mixed in */
+          }
 
-                    this[property] = this._resolveService(map[property]);
-                }
-            }
-        },
-        _resolveService: function(specification) {
-            if (specification && specification.type === 'sdata')
-                return App.getService(specification.name);
-
-            return App.getService(specification);
+          this[property] = this._resolveService(map[property]);
         }
-    });
+      }
+    }
+  },
+  _resolveService: function _resolveService(specification) {
+    if (specification && specification.type === 'sdata') {
+      return App.getService(specification.name);
+    }
+
+    return App.getService(specification);
+  },
 });
+
+lang.setObject('Sage.Platform.Mobile._ServiceMixin', __class);
+export default __class;

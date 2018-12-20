@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="grdSalesPersons.599ce2ae-77b2-4d0a-b251-0c6381e510b9.ColumnHeading" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="grdSalesPersons.4389acdd-a58c-4d5a-a914-587098e91434.ColumnHeading" xml:space="preserve">
+    <value>主要電話</value>
+  </data>
+  <data name="grdSalesPersons.190e6e11-476c-4e01-b273-807d474f057a.ColumnHeading" xml:space="preserve">
+    <value>主要電話</value>
+  </data>
+  <data name="grdSalesPersons.2ba0041f-6e52-4628-a878-6ab571350a1a.ColumnHeading" xml:space="preserve">
+    <value>電子郵件</value>
+  </data>
+  <data name="grdSalesPersons.22e4028e-d5da-4e32-80a8-430fe2ae1619.ColumnHeading" xml:space="preserve">
+    <value>ERP 狀態</value>
+  </data>
+  <data name="grdSalesPersons.58beb9b2-4c42-4654-bc9f-e3ba62f5a682.ColumnHeading" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="grdSalesPersons.07bf913d-6e35-4ee0-984e-a2b29f02f0f5.ColumnHeading" xml:space="preserve">
+    <value>城市</value>
+  </data>
+  <data name="grdSalesPersons.a6cfc43d-815e-4a59-9c82-86ac4b7a08f4.ColumnHeading" xml:space="preserve">
+    <value>省/州</value>
+  </data>
+  <data name="grdSalesPersons.e48c79f5-2821-48d3-a4e3-583795906509.ColumnHeading" xml:space="preserve">
+    <value>國家/地區</value>
+  </data>
+  <data name="grdSalesPersons.8ad3c181-da48-44be-8a9a-1ac04cb83367.ColumnHeading" xml:space="preserve">
+    <value>郵遞區號</value>
+  </data>
+  <data name="grdSalesPersons.9ad8f93d-65d7-4463-895f-b9f217c00eb5.ColumnHeading" xml:space="preserve">
+    <value>角色</value>
+  </data>
+  <data name="grdSalesPersons.c968e416-53e2-4629-94c5-a47452980843.Text" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="grdSalesPersons.5559b8ff-793b-4d00-8c01-33684c3df683.ColumnHeading" xml:space="preserve">
+    <value>角色</value>
+  </data>
+  <data name="grdSalesPersons.a7f97d8e-6464-4749-9816-0a50894f4481.ColumnHeading" xml:space="preserve">
+    <value>ERP 人員 ID</value>
+  </data>
+  <data name="grdSalesPersons.c968e416-53e2-4629-94c5-a47452980843.ColumnHeading" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="grdSalesPersons.e690625a-1555-4c85-b6ed-e0aeb4c056ac.ColumnHeading" xml:space="preserve">
+    <value>ERP 狀態</value>
+  </data>
+  <data name="grdSalesPersons.3470138d-63ba-48cb-afd4-ceecbb83952c.ColumnHeading" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+</root>

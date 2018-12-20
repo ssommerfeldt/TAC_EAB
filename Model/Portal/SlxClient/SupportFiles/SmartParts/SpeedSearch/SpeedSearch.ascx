@@ -8,17 +8,17 @@
         <SalesLogix:PageLink ID="SpeedSearchHelpLink" runat="server" LinkType="HelpFileName" ToolTip="<%$ resources: Portal, Help_ToolTip %>" Target="Help" NavigateUrl="speedsearch.aspx" ImageUrl="~/images/icons/Help_16x16.png"></SalesLogix:PageLink></asp:Panel>
 </div>
 
-<div style="padding-left:10px;padding-top:10px;padding-bottom:10px;">
+<div style="padding:10px 0 10px 10px">
     <asp:HiddenField ID="CurrentPageIndex" runat="server"/>
     <asp:HiddenField ID="TotalCount" runat="server"/>
     <asp:Label ID="RequestLabel" Style="z-index: 101" runat="server" CssClass="slxlabel" Text="Keywords:" meta:resourcekey="SpeedSearch_Label_Keywords"></asp:Label>
-    <asp:TextBox ID="SearchRequest" Style="z-index: 102" runat="server" CssClass="slxtext" Width="79%" onkeydown="javascript:HandleEnterKeyEvent(event)"></asp:TextBox>
-    <asp:HyperLink ID="btnAdvanced" runat="server" Text="Advanced" NavigateUrl="javascript:ToggleAdvanced()" style="padding-left:5px;padding-right:5px;" meta:resourcekey="SpeedSearch_href_Advanced"></asp:HyperLink></td>     
+    <asp:TextBox ID="SearchRequest" Style="z-index: 102" runat="server" CssClass="slxtext" Width="76%" onkeydown="javascript:HandleEnterKeyEvent(event)"></asp:TextBox>
+    <asp:HyperLink ID="btnAdvanced" runat="server" Text="Advanced" NavigateUrl="javascript:ToggleAdvanced()" style="padding-left:5px;padding-right:5px;" meta:resourcekey="SpeedSearch_href_Advanced"></asp:HyperLink>     
     <asp:Button ID="SearchButton" Style="z-index: 103; left: 16px; 
          top: 108px" runat="server" Text="Search" CssClass="slxbutton" 
          OnClick="SearchButton_Click" meta:resourcekey="SpeedSearch_Button_Search" UseSubmitBehavior="true"></asp:Button>
 </div>
-<div id="Advanced" style="display:none">
+<div id="Advanced" style="display:none;min-width:890px;" >
     <div style="width:25%;padding:10px; float:left;">
         <div class="Clear">
             <asp:Label ID="lblSearchMethod" Style="z-index: 101" runat="server" CssClass="slxlabel" Text="Search Method" meta:resourcekey="SpeedSearch_Label_SearchMethod"></asp:Label>
@@ -33,7 +33,7 @@
         </asp:DropDownList>
         </div>
         <div class="Clear">
-            <asp:CheckBoxList ID="SearchFlags" runat="server" CssClass="speedSearchSearchFlags">
+            <asp:CheckBoxList ID="SearchFlags" runat="server" CssClass="speedSearchSearchFlags inforCheckboxList">
                 <asp:ListItem Selected="True" Text="Root" meta:resourcekey="SpeedSearch_ListItem_SearchFlags_Root"></asp:ListItem>
                 <asp:ListItem Text="Thesaurus" meta:resourcekey="SpeedSearch_ListItem_SearchFlags_Thes"></asp:ListItem>
                 <asp:ListItem Text="Sounds Like" meta:resourcekey="SpeedSearch_ListItem_SearchFlags_Sounds"></asp:ListItem>
@@ -105,7 +105,7 @@
                      </asp:HyperLink>&nbsp;&nbsp;<asp:HyperLink ID="HyperLink6" runat="server" Target="_top" NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "RelationLink4") %>'>
 									<%# DataBinder.Eval(Container.DataItem, "RelationName4") %>
                      </asp:HyperLink></font><br>
-                  <div id="SynopsisPane<%# DataBinder.Eval(Container.DataItem, "DisplayName") %>">
+                  <div id="SynopsisPane<%# HttpUtility.HtmlEncode(DataBinder.Eval(Container.DataItem, "DisplayName")) %>">
                   <%# DataBinder.Eval(Container.DataItem, "Synopsis") %>
                   <font color="green" style="font-size: x-small;">
                      <asp:HyperLink ID="Hyperlink2" runat="server" Target="_doc" NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "DirectLink") %>'>
@@ -120,7 +120,7 @@
                   </div>
                   <a href="javascript:GetPreviewDoc('<%# DataBinder.Eval(Container, "ItemIndex") %>', '<%# DataBinder.Eval(Container.DataItem, "AllowPreview") %>')" style="color:red" id="lblPreview"><%= GetLocalResourceObject("SpeedSearch_Preview_Link") %></a>
                   <%--<label id="lblPreview" style="cursor: hand; color: red; text-decoration: underline; float:left" onclick="GetPreviewDoc('<%# DataBinder.Eval(Container, "ItemIndex") %>', '<%# DataBinder.Eval(Container.DataItem, "AllowPreview") %>')" ><%= GetLocalResourceObject("SpeedSearch_Preview_Link") %></label>--%>
-                  <label id="lblReturnResult" style="cursor: hand; color: red; text-decoration: underline; float:left; margin-left:10px; display:<%# DataBinder.Eval(Container.DataItem, "DisplayReturnResult") %>" onclick="ReturnResult('<%# DataBinder.Eval(Container, "ItemIndex") %>')" ><%= GetLocalResourceObject("SpeedSearch_ReturnResult_Link") %></label>
+                  <label id="lblReturnResult" style="cursor: pointer; color: red; text-decoration: underline; float:left; margin-left:10px; display:<%# DataBinder.Eval(Container.DataItem, "DisplayReturnResult") %>" onclick="ReturnResult('<%# DataBinder.Eval(Container, "ItemIndex") %>')" ><%= GetLocalResourceObject("SpeedSearch_ReturnResult_Link") %></label>
                </ItemTemplate>
                <FooterStyle HorizontalAlign="Left" VerticalAlign="Top"></FooterStyle>
             </asp:TemplateColumn>

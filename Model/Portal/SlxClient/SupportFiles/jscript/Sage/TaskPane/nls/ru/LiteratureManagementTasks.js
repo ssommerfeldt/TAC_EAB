@@ -1,8 +1,8 @@
-define((
-{ errFulFillmentCancelled: 'Заполнение запроса на инф. материалы было отменено для LitReqId {0}.',
-  errFulFillmentFailed: 'Запрос на инф. материалы не может быть заполнен для LitReqId {0}.',
-  errMailMergeService: 'Запрос на инф. материалы не может быть завершен т. к. не может быть загружен сервис рассылки почты. Это может произойти если не установлен  Saleslogix Desktop Integration или установлен неверно.',
-  errFulFillmentRequest: 'Запрос на инф. материалы не может быть заполнен.',
-  errFulFillmentRequestEx: 'Запрос на инф. материалы не может быть заполнен:',
-  fulFillmentSuccess: 'Заполнение запрос на инф. материалы было успешно.' }
-));
+define("Sage/TaskPane/nls/ru/LiteratureManagementTasks", {
+    "errFulFillmentCancelled": "Выполнение запроса литературы было отменено для LitReqId {0}.",
+    "errFulFillmentFailed": "Невозможно выполнить запрос литературы для LitReqId {0}.",
+    "errMailMergeService": "Невозможно выполнить запрос литературы, так как невозможно загрузить службу слияния. Это может произойти, если программа CRM Office Integration не установлена или установка выполнена неверно.",
+    "errFulFillmentRequest": "Не удалось выполнить запрос литературы.",
+    "errFulFillmentRequestEx": "Невозможно выполнить следующие запросы литературы:",
+    "fulFillmentSuccess": "Запроса литературы выполнен."
+});

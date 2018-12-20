@@ -1,6 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/Services/ActivityService", [
         'Sage/UI/Dialogs',
         'Sage/MainView/ActivityMgr/ActivityEditor',
         'Sage/MainView/ActivityMgr/EditEventEditor',
@@ -63,7 +63,7 @@ function (
             if (!this._activityEditor) {
                 this._activityEditor = new this.activityEditorType({ id: 'activityEditor' });
                 this.onActivityEditorCreated(this._activityEditor);
-            }
+           }
         },
         onActivityEditorCreated: function (editor) { },
         _ensureEventEditor: function () {
@@ -121,6 +121,11 @@ function (
                 isRecurring = this._getRecurringFromGridSelection();
             }
             if (!id) { return; }
+            if ((id.length === 12) && ((typeof isRecurring === 'undefined') || isRecurring === null)) {
+
+                this._resolveActivityOccurence(id, memberId);
+                return;
+            }
             if (id.length === 12 && !isRecurring) {
                 this._ensureEditor();
                 this._activityEditor.set('mode', 'Update');
@@ -130,6 +135,32 @@ function (
             } else {
                 this.editOccurrenceOrSeriesQuery(id, memberId);
             }
+        },
+        _resolveActivityOccurence: function(id, memberId) {
+
+            var req = new Sage.SData.Client.SDataResourceCollectionRequest(sDataServiceRegistry.getSDataService('dynamic'));
+            req.setResourceKind('activities');
+            req.setQueryArg('select', 'Recurring');
+            req.setQueryArg('where', dString.substitute('Id eq \'${0}\'', [id]));
+            req.setQueryArg('precedence', '0');
+            req.read({
+                success: function(activities) {
+                    var Recurring;
+                    if (activities['$resources'] && activities['$resources'].length > 0) {
+                        Recurring = activities['$resources'][0].Recurring;
+                        if (Recurring) {
+                            this.editActivity(id, true, memberId);
+                        } else {
+                            this.editActivity(id, false, memberId);
+                        }
+                    }
+                },
+                failure: function() {
+                    console.warn('could not find activity :' + id );
+                },
+                scope: this
+            });
+
         },
         editOccurrence: function (id, startDate, memberId) {
             this._ensureEditor();
@@ -152,6 +183,7 @@ function (
             this._editOccSeriesDlg.set('activityId', id);
             this._editOccSeriesDlg.show();
         },
+
         editTempActivity: function (id) {
             this._ensureEditor();
             this._activityEditor.set('mode', 'deleteOnCancel');
@@ -192,11 +224,11 @@ function (
                 var select = ['StartDate'];
                 var store = new SingleEntrySDataStore({
                         include: [],
-                        select: select, 
+                        select: select,
                         resourceKind: 'activities',
                         service: sDataServiceRegistry.getSDataService('system')
                     });
-                
+
                 if (id !== '') {
                     store.fetch({
                         predicate: '"' + id + '"',
@@ -1643,7 +1675,7 @@ function (
                                 cleanData['$resources'].push(resourceActView);
                                 continue;
                             } //end if
-                        } //end for 
+                        } //end for
                     } //end if
                 } //end for
             } //end if
@@ -1893,7 +1925,7 @@ function (
     }); // end dojo declare
 
     /**
-    * Make an instance of this service available to the 
+    * Make an instance of this service available to the
     * Sage.Services.getService method.
     */
     if (!Sage.Services.hasService('ActivityService')) {

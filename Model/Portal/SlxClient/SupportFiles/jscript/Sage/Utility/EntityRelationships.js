@@ -1,5 +1,5 @@
-﻿/*globals define, Sage, window, dojo */
-define([
+/*globals define, Sage, window, dojo */
+define("Sage/Utility/EntityRelationships", [
     'Sage/Data/SingleEntrySDataStore',
     'Sage/Data/SDataServiceRegistry',
     'Sage/UI/Dialogs',
@@ -127,7 +127,7 @@ define([
             _getOpportunityRelationships: function (id, callback, scope) {
                 var req = this._getRequest('opportunities', id);
                 req.setQueryArg('include', 'Account,Contacts,$descriptors');
-                req.setQueryArg('select', 'Account,Contacts/IsPrimary');
+                req.setQueryArg('select', 'Account,Contacts/IsPrimary,Contacts/Contact/Id');
                 req.read({
                     success: function (opp) {
                         var obj = {
@@ -140,16 +140,16 @@ define([
                         var contactName = '';
                         var contacts = opp.Contacts.$resources;
                         if (contacts.length > 0) {
-                            contactId = contacts[0].$key;
+                            contactId = contacts[0].Contact.$key;
                         }
                         for (var i = 0; i < contacts.length; i++) {
                             if (contacts[i].IsPrimary) {
-                                contactId = contacts[i].$key;
-                                contactName =  Utility.getValue(contacts[i], '$descriptor');
+                                contactId = contacts[i].Contact.$key;
+                                contactName = Utility.getValue(contacts[i].Contact, '$descriptor');
                             }
                         }
                         obj['ContactId'] = contactId;
-                        obj['ContactName'] =  contactName;
+                        obj['ContactName'] = contactName;
                         callback.call(scope || this, obj);
                     },
                     failure: function () {

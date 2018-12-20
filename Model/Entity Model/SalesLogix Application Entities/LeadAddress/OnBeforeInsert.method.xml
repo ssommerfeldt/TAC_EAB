@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="48fd4916-8ce3-4254-86f5-f97f692a8db7" name="OnBeforeInsert" returnType="void" methodType="CrudEvent" actionType="None" returnMode="BooleanOR" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="48fd4916-8ce3-4254-86f5-f97f692a8db7" lastModifiedUtc="2015-12-17T14:41:34.1426293Z" name="OnBeforeInsert" methodType="CrudEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
   <preExecuteTargets />
-  <methodTargets>
-    <methodTarget id="1e6daa3a-fb1d-47cc-bb1c-acc499c859dd" targetType="Sage.Platform.Orm.DefaultCRUDEventHandler, Sage.Platform" targetMethod="OnBeforeInsert" active="true">
+  <methodTargets />
+  <postExecuteTargets>
+    <methodTarget id="29879604-7575-4ce8-aaa5-c3964a276268" lastModifiedUtc="2015-12-18T15:18:44.6509756Z" targetType="Sage.SalesLogix.Lead.LeadAddress, Sage.SalesLogix.BusinessRules" targetMethod="ValidateCountryCode" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
-  </methodTargets>
-  <postExecuteTargets />
-  <postFlushTargets />
+  </postExecuteTargets>
 </method>

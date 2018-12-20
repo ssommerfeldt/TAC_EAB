@@ -1,4 +1,4 @@
-define((
+define("Sage/Groups/nls/en/GroupManager", (
 { ConfirmDeleteMessage: 'Are you sure you want to delete the current group?',
   ConfirmDeleteFmtMessage: 'Are you sure you want to delete this group: ${0}',
   InvalidSortStringMessage: 'Error: Invalid sort string - ',

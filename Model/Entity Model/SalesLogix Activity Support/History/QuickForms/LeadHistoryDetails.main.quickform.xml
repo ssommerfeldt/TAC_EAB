@@ -47,7 +47,7 @@ else
     }
 }
 
-CreateUser.Text = GetLocalResourceObject("rsScheduledOn") + " " + createdate + " " + GetLocalResourceObject("rsBy") + " " + userName + " " + GetLocalResourceObject("rsOriginallyFor") + " " + startDate;
+CreateUser.Text = String.Format(GetLocalResourceObject("rsScheduledOnBy") , createdate , userName , startDate);
 
 var userService = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Security.IUserService>(true);
 string currentUserId = userService.UserId;

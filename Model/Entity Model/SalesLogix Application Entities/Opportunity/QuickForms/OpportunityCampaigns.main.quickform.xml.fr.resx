@@ -117,61 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="grdCampaigns.15d16c78-95dc-4007-8e3a-1f86ac3d880e.ColumnHeading" xml:space="preserve">
+    <value>Nom de la campagne</value>
+  </data>
+  <data name="grdCampaigns.15d16c78-95dc-4007-8e3a-1f86ac3d880e.FormatString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdCampaigns.52857363-635c-4794-a3f6-79e8dcb7ecb5.ColumnHeading" xml:space="preserve">
+    <value>Code de la campagne</value>
+  </data>
+  <data name="grdCampaigns.52857363-635c-4794-a3f6-79e8dcb7ecb5.FormatString" xml:space="preserve">
+    <value />
+  </data>
   <data name="grdCampaigns.41f8121c-d2eb-4047-8a73-ae13cbd35c70.ColumnHeading" xml:space="preserve">
     <value>Date de début</value>
   </data>
-  <data name="lueAssociateCampaign.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Gestionnaire</value>
+  <data name="grdCampaigns.17d8d40e-7e77-4d59-98cc-7245c8cc395b.ColumnHeading" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
+  <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.FormatString" xml:space="preserve">
+    <value />
   </data>
   <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.ConfirmationMessage" xml:space="preserve">
-    <value>Etes-vous sûr de vouloir désassocier cette campagne ?</value>
+    <value>Souhaitez-vous vraiment désassocier cette campagne ?</value>
   </data>
-  <data name="grdCampaigns.8c4fdbca-209f-4ee9-a206-9582edc128ae.ColumnHeading" xml:space="preserve">
+  <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="grdCampaigns.EmptyTableRowText" xml:space="preserve">
+    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
+  </data>
+  <data name="lueAssociateCampaign.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
+    <value>Code de la campagne</value>
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
     <value>Nom de la campagne</value>
   </data>
-  <data name="lueAssociateCampaign.LookupProperties.CreateDate.PropertyHeader" xml:space="preserve">
-    <value>Date de création</value>
-  </data>
-  <data name="lueAssociateCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
-    <value>Date de fin</value>
+  <data name="lueAssociateCampaign.LookupProperties.CallToAction.PropertyHeader" xml:space="preserve">
+    <value>Action appelée</value>
   </data>
   <data name="lueAssociateCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
     <value>Date de début</value>
   </data>
   <data name="lueAssociateCampaign.LookupProperties.CalendarDisplay.PropertyHeader" xml:space="preserve">
-    <value>Affichage du calendrier</value>
-  </data>
-  <data name="grdCampaigns.15d16c78-95dc-4007-8e3a-1f86ac3d880e.ColumnHeading" xml:space="preserve">
-    <value>Nom de la campagne</value>
-  </data>
-  <data name="lueAssociateCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
-    <value>Nom de la campagne</value>
-  </data>
-  <data name="lueAssociateCampaign.ButtonToolTip" xml:space="preserve">
-    <value>Associer une campagne</value>
-  </data>
-  <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.Text" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="lueAssociateCampaign.LookupProperties.CallToAction.PropertyHeader" xml:space="preserve">
-    <value>Action appelée</value>
-  </data>
-  <data name="lueAssociateCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
-    <value>Code de la campagne</value>
-  </data>
-  <data name="grdCampaigns.EmptyTableRowText" xml:space="preserve">
-    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
+    <value>Affichage de l'agenda</value>
   </data>
   <data name="lueAssociateCampaign.LookupProperties.EndingDate.PropertyHeader" xml:space="preserve">
     <value>Date de fin</value>
   </data>
-  <data name="grdCampaigns.17d8d40e-7e77-4d59-98cc-7245c8cc395b.ColumnHeading" xml:space="preserve">
+  <data name="lueAssociateCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
     <value>Date de fin</value>
   </data>
-  <data name="grdCampaigns.52857363-635c-4794-a3f6-79e8dcb7ecb5.ColumnHeading" xml:space="preserve">
-    <value>Code de la campagne</value>
+  <data name="lueAssociateCampaign.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueAssociateCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Etat</value>
+  <data name="lueAssociateCampaign.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Responsable</value>
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties.CreateDate.PropertyHeader" xml:space="preserve">
+    <value>Date de création</value>
+  </data>
+  <data name="lueAssociateCampaign.ButtonToolTip" xml:space="preserve">
+    <value>Associer une campagne</value>
+  </data>
+  <data name="grdCampaigns.8c4fdbca-209f-4ee9-a206-9582edc128ae.ColumnHeading" xml:space="preserve">
+    <value>Nom de la campagne</value>
   </data>
 </root>

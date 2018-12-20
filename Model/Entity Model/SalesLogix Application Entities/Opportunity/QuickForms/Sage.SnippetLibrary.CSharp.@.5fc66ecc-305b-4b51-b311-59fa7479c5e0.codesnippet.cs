@@ -1,5 +1,5 @@
 /*
- * This metadata is used by the Sage platform.  Do not remove.
+ * This metadata is used by the Saleslogix platform.  Do not remove.
 <snippetHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5fc66ecc-305b-4b51-b311-59fa7479c5e0">
  <assembly>Sage.SnippetLibrary.CSharp</assembly>
  <name>cmdCancel_OnClickStep1</name>
@@ -20,7 +20,6 @@
 </snippetHeader>
 */
 
-
 #region Usings
 using System;
 using Sage.Entity.Interfaces;
@@ -40,15 +39,15 @@ namespace Sage.BusinessRules.CodeSnippets
         /// </summary>
         /// <param name="form">the instance of the OpportunityClosedWon dialog</param>
         /// <param name="args">empty</param>
-        public static void cmdCancel_OnClickStep1( IOpportunityClosedWon form,  EventArgs args)
+        public static void cmdCancel_OnClickStep1(IOpportunityClosedWon form, EventArgs args)
         {
             IOpportunity opportunity = form.CurrentEntity as IOpportunity;
             if (!(opportunity.Closed ?? false))
 			{
-			    object resOpen = System.Web.HttpContext.GetGlobalResourceObject("Opportunity", "Opp_Status_Open");
+			    object resOpen = form.GetResource("Opp_Status_Open").ToString();
                 if (resOpen != null)
 			    {
-                    opportunity.Status = resOpen.ToString(); //"Open";
+                    opportunity.Status = resOpen.ToString();
 			    }
 			}
         }

@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Controls/LogOffButton", [
         "dijit/MenuBar",
         "Sage/UI/MenuItem",
         'Sage/UI/MenuBarItem',
@@ -23,7 +23,7 @@ function (MenuBar, MenuItem, MenuBarItem, i18nStrings, declare) {
                 id: 'btnLogOff',
                 onClick: function () {
                     try {
-                        window.location.href = 'Shutdown.axd';
+                        window.location.href = 'Shutdown.axd?Source=LogOffButton';
                     } catch (e) { } //ie throws an error when the user clicks cancel on the "are you sure" dialog.
                 }
             }));

@@ -8,6 +8,8 @@ using Sage.Platform.Diagnostics;
 using Sage.Platform.Security;
 using Sage.Platform.WebPortal.Services;
 using Sage.Platform.WebPortal.SmartParts;
+using Sage.SalesLogix.BusinessRules;
+using Sage.SalesLogix.HighLevelTypes;
 using Sage.SalesLogix.Services.Import;
 using Sage.SalesLogix.Services.Import.Actions;
 using Telerik.Web.UI;
@@ -225,6 +227,12 @@ public partial class StepSelectFile : UserControl
             Page.Session["importManager"] = importManager;
         }
         IsImportPathValid();
+        var value = BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+        if (!String.IsNullOrEmpty(value))
+        {
+            var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+            lueLeadSource.LookupPreFilters.Add(leadSourcePreFilter);
+        }
     }
 
     /// <summary>
@@ -379,9 +387,9 @@ public partial class StepSelectFile : UserControl
     private byte[] GetData(UploadedFile file)
     {
         int fileLen = file.ContentLength;
-        byte[] Data = new byte[fileLen];
-        file.InputStream.Read(Data, 0, fileLen);
-        return Data;
+        byte[] data = new byte[fileLen];
+        file.InputStream.Read(data, 0, fileLen);
+        return data;
     }
 
     /// <summary>

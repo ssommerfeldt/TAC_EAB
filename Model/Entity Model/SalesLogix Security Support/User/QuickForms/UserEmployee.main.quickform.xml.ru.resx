@@ -117,74 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtAccountingId.Caption" xml:space="preserve">
-    <value>ИД субъекта:</value>
+  <data name="phFax.Caption" xml:space="preserve">
+    <value>Факс:</value>
   </data>
-  <data name="dtPBirthDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="addrWork.AddressToolTip" xml:space="preserve">
-    <value>Сопоставления поиска</value>
-  </data>
-  <data name="dtpHireDate.ToolTip" xml:space="preserve">
-    <value>День рождения</value>
-  </data>
-  <data name="addrWork.ButtonToolTip" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="txtSSN.Caption" xml:space="preserve">
-    <value>SSN:</value>
-  </data>
-  <data name="dtPBirthDate.ToolTip" xml:space="preserve">
-    <value>День рождения</value>
-  </data>
-  <data name="addrHome.ButtonToolTip" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="phHome.Caption" xml:space="preserve">
-    <value>Домашний тел.:</value>
-  </data>
-  <data name="btnSave.Caption" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="phWorkPhone.Caption" xml:space="preserve">
+    <value>Рабочий телефон:</value>
   </data>
   <data name="QFHorizontalSeparator2.Caption" xml:space="preserve">
     <value> Личное</value>
   </data>
-  <data name="addrWork.Caption" xml:space="preserve">
-    <value>Адрес:</value>
+  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
+    <value> Рабочий</value>
   </data>
-  <data name="txtCompany.Caption" xml:space="preserve">
-    <value>Компания:</value>
-  </data>
-  <data name="dtpHireDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="phWorkPhone.Caption" xml:space="preserve">
-    <value>Раб. телефон:</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="phFax.Caption" xml:space="preserve">
-    <value>Факс:</value>
-  </data>
-  <data name="dtpHireDate.Caption" xml:space="preserve">
-    <value>Дата найма:</value>
-  </data>
-  <data name="txtAssetDesc.Caption" xml:space="preserve">
-    <value>Описание актива:</value>
-  </data>
-  <data name="txtEmployeeNum.Caption" xml:space="preserve">
-    <value>Сотрудник №:</value>
-  </data>
-  <data name="addrHome.Caption" xml:space="preserve">
-    <value>Адрес:</value>
-  </data>
-  <data name="txtSpouse.Caption" xml:space="preserve">
-    <value>Супруг(а):</value>
-  </data>
-  <data name="txtAssetNum.Caption" xml:space="preserve">
-    <value>№ актива:</value>
+  <data name="phMobile.Caption" xml:space="preserve">
+    <value>Мобильный телефон:</value>
   </data>
   <data name="phPager.Caption" xml:space="preserve">
     <value>Пейджер:</value>
@@ -192,19 +138,73 @@
   <data name="phDirect.Caption" xml:space="preserve">
     <value>Основной:</value>
   </data>
-  <data name="phMobile.Caption" xml:space="preserve">
-    <value>Мобильный тел.:</value>
+  <data name="txtPinNumber.Caption" xml:space="preserve">
+    <value>PIN:</value>
   </data>
-  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
-    <value>Работа</value>
+  <data name="txtAccountingId.Caption" xml:space="preserve">
+    <value>ИД системы учета:</value>
   </data>
-  <data name="addrHome.AddressToolTip" xml:space="preserve">
-    <value>Сопоставления поиска</value>
+  <data name="txtEmployeeNum.Caption" xml:space="preserve">
+    <value>№ сотрудника:</value>
+  </data>
+  <data name="txtAssetNum.Caption" xml:space="preserve">
+    <value>№ проданного товара:</value>
+  </data>
+  <data name="txtAssetDesc.Caption" xml:space="preserve">
+    <value>Описание проданного товара:</value>
+  </data>
+  <data name="phHome.Caption" xml:space="preserve">
+    <value>Домашний телефон:</value>
+  </data>
+  <data name="dtpHireDate.Caption" xml:space="preserve">
+    <value>Дата найма:</value>
+  </data>
+  <data name="txtSSN.Caption" xml:space="preserve">
+    <value>SSN:</value>
+  </data>
+  <data name="txtSpouse.Caption" xml:space="preserve">
+    <value>Супруг/супруга:</value>
+  </data>
+  <data name="dtPBirthDate.ToolTip" xml:space="preserve">
+    <value>День рождения</value>
+  </data>
+  <data name="addrWork.Caption" xml:space="preserve">
+    <value>Адрес:</value>
+  </data>
+  <data name="addrHome.Caption" xml:space="preserve">
+    <value>Адрес:</value>
+  </data>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="dtPBirthDate.Caption" xml:space="preserve">
     <value>Дата рождения:</value>
   </data>
-  <data name="txtPinNumber.Caption" xml:space="preserve">
-    <value>ПИН #:</value>
+  <data name="dtpHireDate.ToolTip" xml:space="preserve">
+    <value>День рождения</value>
+  </data>
+  <data name="txtCompany.Caption" xml:space="preserve">
+    <value>Компания:</value>
+  </data>
+  <data name="addrWork.AddressToolTip" xml:space="preserve">
+    <value>MapQuest</value>
+  </data>
+  <data name="addrWork.ButtonToolTip" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="addrHome.AddressToolTip" xml:space="preserve">
+    <value>MapQuest</value>
+  </data>
+  <data name="addrHome.ButtonToolTip" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="dtPBirthDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dtpHireDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
   </data>
 </root>

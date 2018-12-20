@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/ControlDesignerRegistry", [
     'dojo/_base/lang',
     './GenericControlDesigner',
     './HiddenControlDesigner',
@@ -64,8 +64,10 @@ define([
         'f4ca6023-9f5f-4e41-8571-50ba94e8f233': TextBoxControlDesigner, /* memo */
         '76c537a8-8b08-4b35-84cf-fa95c6c133b0': TextBoxControlDesigner, /* unicode text */
         'b2ed309e-ea89-4eef-8051-6244987953a4': TextBoxControlDesigner, /* unicode memo */
+        'f750817f-73ad-4bf3-b2de-bd0f5cc47dfd': TextBoxControlDesigner, /* calculated string */
         '47f90249-e4c8-4564-9ae6-e1fa9904f8b8': NumericControlDesigner, /* integer */
         'f37c635c-9fbf-40d8-98d5-750a54a3cca1': NumericControlDesigner, /* number */
+        '44bc190a-99f3-4fa9-98a3-d5b2336d6e7c': NumericControlDesigner, /* calculated number */
         'a6bf2690-3477-4a18-9849-56abf8693934': NumericControlDesigner, /* single */
         '2596d57d-89d6-4b72-9036-b18c64c5324c': NumericControlDesigner, /* decimal */
         '6b0b3d51-0728-4b67-9473-52836a81da53': NumericControlDesigner, /* short */

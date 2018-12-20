@@ -1,0 +1,39 @@
+﻿<style>
+    .infor-crm-application-widget-prospects-div .infor-crm-prospect-heading {
+        color: #368AC0 !important;
+    }
+    .infor-crm-application-widget-prospects-div .infor-crm-prospect-main-list-view-search-header {
+        height:36px !important;
+    }
+    .infor-crm-application-widget-prospects-div .infor-crm-prospect-main-list-view {
+        height: calc(100% - 36px) !important;
+    }
+</style>
+
+<div ng-controller="infor.crm.prospect.ProspectController as ctrl">
+    <div class="card-content infor-crm-application-widget-prospects-div">
+        <div class="listview-search">
+            <input xi-searchfield 
+                   class="searchfield"
+                   ng-model="ctrl.searchText"
+                   ng-change="ctrl.searchProspects()"
+                   ng-model-options="{ debounce: 200 }"
+                   placeholder="{{ctrl.localization.searchPlaceholder}}"/>
+        </div>
+        
+        <div class="listview is-selectable infor-crm-prospect-main-list-view" xi-listview="{dataset: ctrl.prospects}">
+            <ul>
+                <li ng-repeat="prospect in ctrl.prospects" 
+                    ng-click="ctrl.onSelectProspect(prospect)">
+                    <div style="background-color:{{prospect.color}}" class="round info badge float-left">{{prospect.badge}}</div>
+                    <div style="padding-left:40px;">
+                        <p class="listview-heading infor-crm-prospect-heading">{{prospect.accountName}}</p>
+                        <p class="listview-subheading">{{prospect.businessDescription}}</p>
+                        <p class="listview-subheading">{{prospect.city}}, {{prospect.country}}</p>
+                        <p class="listview-subheading">{{prospect.phone}}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

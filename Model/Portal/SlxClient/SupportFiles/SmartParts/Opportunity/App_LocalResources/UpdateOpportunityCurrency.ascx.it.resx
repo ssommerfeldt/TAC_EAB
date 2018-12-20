@@ -118,45 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="chkLockRate_rsc.Text" xml:space="preserve">
-    <value>Blocca il tasso per questa Opportunità</value>
+    <value>Blocca il tasso per questa opportunità</value>
   </data>
-  <data name="LPDescription_rsc.PropertyHeader" xml:space="preserve">
-    <value>Descrizione</value>
+  <data name="lblChange_rsc.Text" xml:space="preserve">
+    <value>Modifica tasso di cambio in </value>
   </data>
-  <data name="ThisRateCurrent_rsc" xml:space="preserve">
-    <value>(Questo tasso corrente come di {0} )</value>
+  <data name="lblConvertedPotential_rsc.Text" xml:space="preserve">
+    <value>Conversione potenziale - Da: </value>
   </data>
   <data name="lblTo_rsc.Text" xml:space="preserve">
     <value>A: </value>
   </data>
-  <data name="RateAssignedOn_rsc" xml:space="preserve">
-    <value>(Tasso assegnato il {0} )</value>
+  <data name="lblWillChange_rsc.Text" xml:space="preserve">
+    <value>Apportando questa modifica i seguenti elementi dell'opportunità saranno convertiti</value>
   </data>
   <data name="LPCurrencyCode_rsc.PropertyHeader" xml:space="preserve">
     <value>Codice valuta</value>
   </data>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>OK</value>
+  <data name="LPDescription_rsc.PropertyHeader" xml:space="preserve">
+    <value>Descrizione</value>
   </data>
-  <data name="lblConvertedPotential_rsc.Text" xml:space="preserve">
-    <value>converti potenziale - Da: </value>
+  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
+    <value>Tasso</value>
+  </data>
+  <data name="OppsCurrentRate_rsc" xml:space="preserve">
+    <value>Il tasso corrente dell'opportunità è {0} al {1}</value>
+  </data>
+  <data name="RateAssignedOn_rsc" xml:space="preserve">
+    <value>(Tasso assegnato il {0})</value>
+  </data>
+  <data name="ThisRateCurrent_rsc" xml:space="preserve">
+    <value>(Tasso valido a partire dal {0})</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Annulla</value>
   </data>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="Error_ChangingExchangeRate" xml:space="preserve">
-    <value>Errore durante il cambio del tasso di cambio.</value>
-  </data>
-  <data name="lblChange_rsc.Text" xml:space="preserve">
-    <value>Cambia Tariffa in  </value>
-  </data>
-  <data name="lblWillChange_rsc.Text" xml:space="preserve">
-    <value>Facendo questo cambiamento potrebbe convertire dell'Opportunità</value>
-  </data>
-  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
-    <value>Tariffa</value>
-  </data>
-  <data name="OppsCurrentRate_rsc" xml:space="preserve">
-    <value>Il tasso corrente di questa Opportunità è {0} al {1}</value>
+    <value>Errore nella modifica del tasso di cambio.</value>
   </data>
 </root>

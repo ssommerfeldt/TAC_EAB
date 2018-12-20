@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/GenericControlDesigner", [
     'dojo/string',
     'dojo/_base/declare',
     'dojo/_base/lang',

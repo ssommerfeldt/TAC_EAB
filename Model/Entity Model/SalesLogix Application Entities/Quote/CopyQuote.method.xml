@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e42d2329-a49f-42d5-a559-41fc187788a3" lastModifiedUtc="2015-11-14T03:06:55.3978958Z" name="CopyQuote" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="f7ff6de4-bf67-427e-9dd4-b31eefdbb413" paramName="newQuote" sequence="0" paramType="IQuote">
+      <description>The new Quote to copy to</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets>
+    <methodTarget id="169c0642-76ce-4b4d-a98b-7474398a73b7" lastModifiedUtc="2015-11-18T16:25:27.6737752Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="CopyQuoteItems" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </preExecuteTargets>
+  <methodTargets>
+    <methodTarget id="d2c1af81-a23e-47a5-bb98-489b35de2a21" lastModifiedUtc="2015-10-04T18:40:36.1451136Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="CopyQuote" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

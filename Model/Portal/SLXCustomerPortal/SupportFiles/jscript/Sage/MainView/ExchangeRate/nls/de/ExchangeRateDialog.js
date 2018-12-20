@@ -1,0 +1,20 @@
+define("Sage/MainView/ExchangeRate/nls/de/ExchangeRateDialog", {
+    "lblUpdateCurrency": "Währung aktualisieren",
+    "lblSelectEntity": "Aktualisierte Währung anwenden auf",
+    "lblSalesOrders": "Verkaufsaufträge",
+    "lblOpportunities": "Verkaufschancen",
+    "lblQuotes": "Angebote",
+    "lblOK": "OK",
+    "lblCancel": "Abbrechen",
+    "lblClose": "Schließen",
+    "updateRecords_Caption": "Entitäts-Wechselkurse werden aktualisiert",
+    "job_Description": "Bei der Aktualisierung der Entitäts-Wechselkurse sind ein oder mehrere Fehler aufgetreten",
+    "errorRequestingJobMgr": "Bei der Aktualisierung ist ein Fehler aufgetreten: ${0}",
+    "lblRecordsToUpdate": "Anzahl der zu aktualisierenden Datensätze",
+    "lblLockedUpdate": "Datensätze mit gesperrten Kursen werden nicht aktualisiert",
+    "lblNote": "Notiz",
+    "OpenOrder": "Offener Auftrag",
+    "SalesOrder": "Verkaufsauftrag",
+    "Open": "Offen",
+    "New": "Neu"
+});

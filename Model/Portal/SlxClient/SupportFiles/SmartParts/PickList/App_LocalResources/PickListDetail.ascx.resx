@@ -112,13 +112,16 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtPicklistName.Caption" xml:space="preserve">
-    <value>Name:</value>
+    <value>Name</value>
+  </data>
+  <data name="lblDefaultLanguage.Caption" xml:space="preserve">
+    <value>Default Language</value>
   </data>
   <data name="chkRequired.Caption" xml:space="preserve">
     <value>Required entry</value>
@@ -154,21 +157,54 @@
     <value>Apply options to Web pick list</value>
   </data>
   <data name="txtTestList.Caption" xml:space="preserve">
-    <value>Test this list:</value>
+    <value>Test this list</value>
   </data>
   <data name="txtCurrentDefaultValue.Caption" xml:space="preserve">
-    <value>Current default value:</value>
+    <value>Current default value</value>
   </data>
   <data name="lblOptions" xml:space="preserve">
-    <value>Options:</value>
+    <value>Options</value>
   </data>
   <data name="lblWebOnly" xml:space="preserve">
-    <value>Web Only:</value>
+    <value>Web Only</value>
   </data>
   <data name="lblWindowsMsg1" xml:space="preserve">
     <value>(Windows version only)</value>
   </data>
   <data name="lblWindowsMsg2" xml:space="preserve">
-    <value>(Options automatically apply to windows pick lists)</value>
+    <value>(Options automatically apply to Windows pick lists)</value>
+  </data>
+  <data name="lblLangauageFallBack" xml:space="preserve">
+    <value>Language Fallback Hierarchy</value>
+  </data>
+  <data name="txtLangauageFallBack.Caption" xml:space="preserve">
+    <value>Language Fallback Hierarchy</value>
+  </data>
+  <data name="txtTestFilter.Caption" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="txtTestType.Caption" xml:space="preserve">
+    <value>Bound Type In Form</value>
+  </data>
+  <data name="vCode.Caption" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="vId.Caption" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="vText.Caption" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="btnClearCache.Caption" xml:space="preserve">
+    <value>Reload Picklist</value>
+  </data>
+  <data name="cboBoundLanguage.Caption" xml:space="preserve">
+    <value>Bound Language</value>
+  </data>
+  <data name="chkFilterByLanguage.Caption" xml:space="preserve">
+    <value>Filter By Language</value>
+  </data>
+  <data name="btnReset.ToolTip" xml:space="preserve">
+    <value>Reset</value>
   </data>
 </root>

@@ -1,9 +1,9 @@
-define((
-{ btnOkayText: 'ОК',
-  btnCancelText: 'Отмена',
-  btnCloseText: 'Закрыть',
-  btnHelpText: 'Помощь',
-  processingText: 'Обработка запроса, пожалуйста, подождите...',
-  failureText: 'К сожалению, действие не удалось т.к. произошла ошибка.',
-  titleText: 'Процесс' }
-));
+define("Sage/Services/nls/ru/ActivityActionProcessor", {
+    "btnOkayText": "OК",
+    "btnCancelText": "Отмена",
+    "btnCloseText": "Закрыть",
+    "btnHelpText": "Справка",
+    "processingText": "Обработка запроса, подождите...",
+    "failureText": "Не удалось выполнить действие, возникла ошибка.",
+    "titleText": "Процесс"
+});

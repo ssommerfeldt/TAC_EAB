@@ -1,0 +1,31 @@
+﻿<div ng-controller="infor.crm.ContractSettingController as ctrl">
+    <div class="field">
+        <label for="infor-crm-contract-title-setting">{{ctrl.titleText}}</label>
+        <div class="searchfield-wrapper">
+            <input ng-readonly="!ctrl.isTitleEditEnabled || ctrl.isTitleLocked" id="grouplist-widget-titletext" ng-change="ctrl.settingsChanged()" ng-model="ctrl.widgetTitle" />
+            <button class="btn-icon" ng-click="ctrl.onClickIsLocked()" ng-disabled="!ctrl.isTitleUnlockable">
+                <svg ng-if="!ctrl.isTitleLocked" class="icon close" focusable="false">
+                    <use xlink:href="#icon-unlocked"></use>
+                </svg>
+                <svg ng-if="ctrl.isTitleLocked" class="icon close" focusable="false">
+                    <use xlink:href="#icon-locked"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="field" ng-if="ctrl.isLimitCountVisible">
+        <label for="infor-crm-contract-limit-setting">{{ctrl.limitText}}</label>
+        <input ng-disabled="!ctrl.isLimitCountEnabled" ng-model="ctrl.limitCount" id="infor-crm-contract-limit-setting" type="text" data-validate="required" xi-validate
+                data-mask-mode="number"  xi-mask="ctrl.maskCustDefOptions" />
+    </div>
+    <div class="field">
+        <label class="label">{{ctrl.lblGroup}}</label>
+        <div xi-busy="ctrl.isGroupBusy"></div>
+        <select id="grouplist-widget-groupdropdown" ng-model="ctrl.groupValue" ng-options="option.name for option in ctrl.groupOptions"
+                class="dropdown" xi-drop-down ng-change="ctrl.groupChanged()"  data-validate="required" xi-validate></select>
+    </div>
+    <div class="field">
+        <label for="infor-crm-contract-logicalId-setting" class="label">{{ctrl.lblLogicalId}}</label>
+        <input ng-model="ctrl.logicalId" id="infor-crm-contract-logicalId-setting" type="text" />
+    </div>
+</div>

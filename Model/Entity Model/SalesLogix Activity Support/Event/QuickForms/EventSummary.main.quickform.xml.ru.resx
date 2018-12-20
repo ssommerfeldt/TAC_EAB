@@ -117,19 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EndDate.Caption" xml:space="preserve">
+    <value>Дата окончания:</value>
+  </data>
   <data name="StartDate.Caption" xml:space="preserve">
     <value>Дата начала:</value>
   </data>
-  <data name="txtLocation.Caption" xml:space="preserve">
-    <value>Размещение:</value>
+  <data name="txtheader.Caption" xml:space="preserve">
+    <value />
   </data>
-  <data name="EndDate.Caption" xml:space="preserve">
-    <value>Дата окончания:</value>
+  <data name="txtheader.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.getEventListSummaryHeaderHtml($.entity)%}</value>
+  </data>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Описание:</value>
   </data>
   <data name="txtUser.Caption" xml:space="preserve">
     <value>Пользователь:</value>
   </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Описание:</value>
+  <data name="txtLocation.Caption" xml:space="preserve">
+    <value>Местоположение:</value>
   </data>
 </root>

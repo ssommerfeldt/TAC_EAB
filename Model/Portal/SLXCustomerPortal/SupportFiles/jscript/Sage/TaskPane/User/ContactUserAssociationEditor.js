@@ -1,5 +1,7 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+require({cache:{
+'url:Sage/TaskPane/User/templates/ContactUserAssociationEditor.html':"[\r\n'<div>',\r\n    '<div data-dojo-type=\"dijit.Dialog\" title=\"{%= $.dialogTitleText %}\" dojoAttachPoint=\"_dialog\" dojoAttachEvent=\"onCancel:_close\">',\r\n        '<div data-dojo-type=\"dijit.form.Form\" id=\"{%= $.id %}_frmContactUserAssociation\">',\r\n            '<table cellspacing=\"20\">',\r\n                '<tr>',\r\n                    '<td colspan=\"2\">',\r\n                        '<label>{%= $.associateContactText %}</label>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td>',\r\n                        '<div>',\r\n                            '<label>{%= $.user_Caption %}</label>',\r\n                        '</div>',\r\n                    '</td>',\r\n                    '<td>',\r\n                         '<div dojoAttachPoint=\"divContactLookupContainer\">',\r\n                            '<div data-dojo-type=\"dijit.layout.ContentPane\" label=\"{%= $.update_To_Caption %}\" id=\"{%= $.id %}_luAccountMgr\" dojoAttachPoint=\"contactLookup_Container\" allowClearingResult=\"false\" class=\"removePadding\"></div>',\r\n                        '</div>',\r\n                    '</td>',\r\n                '</tr>',            \r\n            \r\n            '</table>',\r\n            '<div class=\"button-bar\" align=\"right\">',\r\n                '<div data-dojo-type=\"dijit.form.Button\" id=\"{%= $.id%}_btn_OK\" name=\"btn_OK\" dojoAttachPoint=\"btn_OK\" dojoAttachEvent=\"onClick:_okClick\">{%= $.btnOK_Caption %}</div>',\r\n                '<div data-dojo-type=\"dijit.form.Button\" id=\"{%= $.id%}_btn_Cancel\" name=\"btn_Cancel\" dojoAttachPoint=\"btn_Cancel\" dojoAttachEvent=\"onClick:_close\">{%= $.btnCancel_Caption %}</div>',\r\n            '</div>',\r\n        '</div>',\r\n    '</div>',\r\n'</div>'\r\n]\r\n"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/User/ContactUserAssociationEditor", [
         'dojo/_base/declare',
         'dojo/i18n!./nls/ContactUserAssociationEditor',
         'Sage/Data/SingleEntrySDataStore',
@@ -108,44 +110,30 @@ function (declare, i18nStrings, singleEntrySDataStore,writableSDataStore, sDataS
                 id: '_contactLookup',
                 structure: [
                     {
-                        defaultCell: {
-                            "sortable": true,
-                            "width": "150px",
-                            "editable": false,
-                            "propertyType": "System.String",
-                            "excludeFromFilters": false,
-                            "useAsResult": false,
-                            "pickListName": null,
-                            "defaultValue": ""
-                        },
-                        cells: [
-                            {
-                                "name": this.lookupFirstNameColText,
-                                "field": 'FirstName',
-                                "sortable": true
-                            },{
-                                "name": this.lookupLastNameColText,
-                                "field": 'LastName',
-                                "sortable": true
-                            }, {
-                                "name": this.lookupTitleColText,
-                                "field": 'Title',
-                                "sortable": true
-                            }, {
-                                "name": this.lookupAccountColText,
-                                "field": 'AccountName',
-                                "sortable": true
-                            }, {
-                                "name": this.lookupWorkPhoneColText,
-                                "field": 'WorkPhone',
-                                "sortable": true
-                            }, {
-                                "name": this.lookupEmailText,
-                                "field": 'Email',
-                                "sortable": true
-                            }                           
-                        ]
-                    }
+                        "label": this.lookupFirstNameColText,
+                        "field": 'FirstName',
+                        "sortable": true
+                    },{
+                        "label": this.lookupLastNameColText,
+                        "field": 'LastName',
+                        "sortable": true
+                    }, {
+                        "label": this.lookupTitleColText,
+                        "field": 'Title',
+                        "sortable": true
+                    }, {
+                        "label": this.lookupAccountColText,
+                        "field": 'AccountName',
+                        "sortable": true
+                    }, {
+                        "label": this.lookupWorkPhoneColText,
+                        "field": 'WorkPhone',
+                        "sortable": true
+                    }, {
+                        "label": this.lookupEmailText,
+                        "field": 'Email',
+                        "sortable": true
+                    }                           
                 ],
                 gridOptions: {                   
                     contextualShow: '',

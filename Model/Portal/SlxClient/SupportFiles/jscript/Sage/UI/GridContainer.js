@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/GridContainer", [
        'dojox/layout/GridContainer',
        'dojo/_base/declare'
 ],

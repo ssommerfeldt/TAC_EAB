@@ -1,8 +1,34 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="75bfb8ab-1580-4224-b440-6de45592671b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="75bfb8ab-1580-4224-b440-6de45592671b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-05-18T15:36:12.1128088Z">
   <ActiveControl />
   <ImagePath />
-  <LoadActions />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>6b4d8a71-4201-4abd-bab8-f00dc2f1ff28</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName>quickformload0</MethodName>
+          <CSharpCodeSnippet>var ret = BindingSource.Current as IReturn;
+var mappingService = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;(true);
+bool isIntegrationEnabled = mappingService.IsIntegrationEnabled();
+lueErpShipTo.Visible = isIntegrationEnabled;
+lueErpShipTo_lbl.Visible = isIntegrationEnabled;
+lueShipTo.Visible = !isIntegrationEnabled;
+lueShipTo_lbl.Visible = !isIntegrationEnabled;
+lueCarrier.Visible = isIntegrationEnabled;
+lueCarrier_lbl.Visible = isIntegrationEnabled;
+pklShipVia.Visible = !isIntegrationEnabled;
+pklShipVia_lbl.Visible = !isIntegrationEnabled;</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
   <Name>ReturnShipToDetail</Name>
   <ClientScriptIncludes />
   <ClientResourceKeys />
@@ -11,135 +37,260 @@
   <ReadOnly>false</ReadOnly>
   <GeneratePrintView>false</GeneratePrintView>
   <Controls>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSLXLookup>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFControlsList, Sage.Platform.QuickForms.QFControls">
+      <QFControlsList>
         <Column>0</Column>
         <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>lueShipTo</ControlId>
-        <DataBindings>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>ShipTo</DataItemName>
-            <ControlItemName>LookupResultValue</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-        </DataBindings>
+        <ControlId>ctrlstErpShipTo</ControlId>
+        <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
-        <OnChangeAction>
-          <ResourceKey>lueShipTo</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
-            <BusinessRuleActionItem>
-              <BusinessRule>OnSetShipContact</BusinessRule>
-              <Object>Return</Object>
-              <Parameters />
-              <PassResultsToNextAction>False</PassResultsToNextAction>
-              <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-                <NoActionActionItem>
-                  <MethodName />
-                </NoActionActionItem>
-              </OnComplete>
-            </BusinessRuleActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnChangeAction>
-        <Required>false</Required>
-        <LookupImage />
-        <LookupDialogWidth xsi:nil="true" />
-        <LookupDialogHeight xsi:nil="true" />
-        <LookupBindingMode>Object</LookupBindingMode>
-        <LookupResultValue xsi:type="xsd:string" />
-        <SeedProperty />
-        <SeedValue />
-        <DropDownDisplayProperty />
-        <AllowClearingResult>false</AllowClearingResult>
-        <AppendStringValues>false</AppendStringValues>
-        <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
-        <LookupEntityName>Contact</LookupEntityName>
-        <LookupEntityTypeName>Sage.Entity.Interfaces.IContact, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
-        <AutoPostBack>false</AutoPostBack>
-        <EnableHyperLinking>true</EnableHyperLinking>
-        <InitializeLookup>false</InitializeLookup>
-        <LookupProperties>
-          <LookupProperty>
-            <PropertyName>NameLF</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>Name</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>AccountName</PropertyName>
-            <PropertyType />
-            <PropertyHeader>Account</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>Address.City</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>City</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>Address.State</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>State</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>WorkPhone</PropertyName>
-            <PropertyType />
-            <PropertyHeader>Work Phone</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>Email</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>E-mail</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-        </LookupProperties>
-        <LookupPreFilters />
-      </QFSLXLookup>
+        <Caption />
+        <Controls>
+          <ControlsCollection>
+            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
+              <QFSLXLookup>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>lueShipTo</ControlId>
+                <DataBindings>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>ShipTo</DataItemName>
+                    <ControlItemName>LookupResultValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>Account.Id</DataItemName>
+                    <ControlItemName>SeedValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                </DataBindings>
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <OnChangeAction>
+                  <ResourceKey>lueShipTo</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                    <NoActionActionItem>
+                      <MethodName />
+                    </NoActionActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnChangeAction>
+                <Required>false</Required>
+                <LookupImage />
+                <LookupDialogWidth xsi:nil="true" />
+                <LookupDialogHeight xsi:nil="true" />
+                <LookupBindingMode>Object</LookupBindingMode>
+                <LookupResultValue xsi:type="xsd:string" />
+                <SeedProperty>Account.Id</SeedProperty>
+                <SeedValue />
+                <DropDownDisplayProperty />
+                <AllowClearingResult>false</AllowClearingResult>
+                <AppendStringValues>false</AppendStringValues>
+                <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
+                <LookupEntityName>Contact</LookupEntityName>
+                <LookupEntityTypeName>Sage.Entity.Interfaces.IContact, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
+                <AutoPostBack>false</AutoPostBack>
+                <EnableHyperLinking>true</EnableHyperLinking>
+                <InitializeLookup>true</InitializeLookup>
+                <LookupProperties>
+                  <LookupProperty>
+                    <PropertyName>Name</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>Name</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>Address.City</PropertyName>
+                    <PropertyType>SalesLogix.PickList</PropertyType>
+                    <PropertyHeader>City</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>Address.State</PropertyName>
+                    <PropertyType>SalesLogix.PickList</PropertyType>
+                    <PropertyHeader>State</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>MainPhone</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>Main Phone</PropertyHeader>
+                    <PropertyFormat>Phone</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>Email</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>E-Mail</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                </LookupProperties>
+                <LookupPreFilters />
+              </QFSLXLookup>
+            </Control>
+            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
+              <QFSLXLookup>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>lueErpShipTo</ControlId>
+                <DataBindings>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>ErpShipTo</DataItemName>
+                    <ControlItemName>LookupResultValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>Account.Id</DataItemName>
+                    <ControlItemName>SeedValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                </DataBindings>
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <OnChangeAction>
+                  <ResourceKey>lueErpShipTo</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                    <NoActionActionItem>
+                      <MethodName />
+                    </NoActionActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnChangeAction>
+                <Required>false</Required>
+                <LookupImage />
+                <LookupDialogWidth xsi:nil="true" />
+                <LookupDialogHeight xsi:nil="true" />
+                <LookupBindingMode>Object</LookupBindingMode>
+                <LookupResultValue xsi:type="xsd:string" />
+                <SeedProperty>ErpShipToAccounts.Account.Id</SeedProperty>
+                <SeedValue />
+                <DropDownDisplayProperty />
+                <AllowClearingResult>false</AllowClearingResult>
+                <AppendStringValues>false</AppendStringValues>
+                <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
+                <LookupEntityName>ERPShipTo</LookupEntityName>
+                <LookupEntityTypeName>Sage.Entity.Interfaces.IERPShipTo, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
+                <AutoPostBack>false</AutoPostBack>
+                <EnableHyperLinking>true</EnableHyperLinking>
+                <InitializeLookup>true</InitializeLookup>
+                <LookupProperties>
+                  <LookupProperty>
+                    <PropertyName>Name</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>Name</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>Address.City</PropertyName>
+                    <PropertyType>SalesLogix.PickList</PropertyType>
+                    <PropertyHeader>City</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>Address.State</PropertyName>
+                    <PropertyType>SalesLogix.PickList</PropertyType>
+                    <PropertyHeader>State</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>MainPhone</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>Main Phone</PropertyHeader>
+                    <PropertyFormat>Phone</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>Email</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>E-Mail</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                </LookupProperties>
+                <LookupPreFilters />
+              </QFSLXLookup>
+            </Control>
+          </ControlsCollection>
+        </Controls>
+      </QFControlsList>
     </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPhone, Sage.SalesLogix.QuickForms.QFControls">
       <QFSLXPhone>
@@ -217,57 +368,10 @@
         <Required>false</Required>
       </QFSLXEmail>
     </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSLXPickList>
-        <Column>0</Column>
-        <Row>3</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>pklShipVia</ControlId>
-        <DataBindings>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>ShipViaCode</DataItemName>
-            <ControlItemName>PickListValue</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-        </DataBindings>
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <OnChangeAction>
-          <ResourceKey>pklShipVia</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnChangeAction>
-        <Required>false</Required>
-        <AutoPostBack>false</AutoPostBack>
-        <PickListName>Delivery Methods</PickListName>
-        <StorageMode>ID</StorageMode>
-        <NameFormatString />
-        <AllowMultiples>false</AllowMultiples>
-        <AlphaSort>false</AlphaSort>
-        <MustExistInList>false</MustExistInList>
-        <NoneEditable>false</NoneEditable>
-        <PickListId />
-        <ValueStoredAsText>false</ValueStoredAsText>
-      </QFSLXPickList>
-    </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
       <QFTextBox>
         <Column>0</Column>
-        <Row>4</Row>
+        <Row>3</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtTrackingnum</ControlId>
@@ -300,6 +404,147 @@
         </OnChangeAction>
         <Required>false</Required>
       </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFControlsList, Sage.Platform.QuickForms.QFControls">
+      <QFControlsList>
+        <Column>0</Column>
+        <Row>4</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>ctrlstShipVia</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <Caption />
+        <Controls>
+          <ControlsCollection>
+            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
+              <QFSLXPickList>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>pklShipVia</ControlId>
+                <DataBindings>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>ShipViaCode</DataItemName>
+                    <ControlItemName>PickListValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                </DataBindings>
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <OnChangeAction>
+                  <ResourceKey>pklShipVia</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                    <NoActionActionItem>
+                      <MethodName />
+                    </NoActionActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnChangeAction>
+                <Required>false</Required>
+                <AutoPostBack>false</AutoPostBack>
+                <PickListName>Delivery Methods</PickListName>
+                <StorageMode>ID</StorageMode>
+                <NameFormatString />
+                <AllowMultiples>false</AllowMultiples>
+                <AlphaSort>false</AlphaSort>
+                <MustExistInList>false</MustExistInList>
+                <NoneEditable>false</NoneEditable>
+                <PickListId />
+                <PickListFilter />
+                <ValueStoredAsText>false</ValueStoredAsText>
+              </QFSLXPickList>
+            </Control>
+            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
+              <QFSLXLookup>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>lueCarrier</ControlId>
+                <DataBindings>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>Carrier</DataItemName>
+                    <ControlItemName>LookupResultValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>ErpLogicalId</DataItemName>
+                    <ControlItemName>SeedValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                </DataBindings>
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <OnChangeAction>
+                  <ResourceKey>lueCarrier</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                    <NoActionActionItem>
+                      <MethodName />
+                    </NoActionActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnChangeAction>
+                <Required>false</Required>
+                <LookupImage />
+                <LookupDialogWidth xsi:nil="true" />
+                <LookupDialogHeight xsi:nil="true" />
+                <LookupBindingMode>Object</LookupBindingMode>
+                <LookupResultValue xsi:type="xsd:string" />
+                <SeedProperty>ErpLogicalId</SeedProperty>
+                <SeedValue />
+                <DropDownDisplayProperty />
+                <AllowClearingResult>false</AllowClearingResult>
+                <AppendStringValues>false</AppendStringValues>
+                <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
+                <LookupEntityName>Carrier</LookupEntityName>
+                <LookupEntityTypeName>Sage.Entity.Interfaces.ICarrier, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
+                <AutoPostBack>false</AutoPostBack>
+                <EnableHyperLinking>true</EnableHyperLinking>
+                <InitializeLookup>true</InitializeLookup>
+                <LookupProperties>
+                  <LookupProperty>
+                    <PropertyName>CarrierName</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>Carrier</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                </LookupProperties>
+                <LookupPreFilters />
+              </QFSLXLookup>
+            </Control>
+          </ControlsCollection>
+        </Controls>
+      </QFControlsList>
     </Control>
     <Control typeName="Sage.Platform.QuickForms.QFControls.QFHorizontalSeparator, Sage.Platform.QuickForms.QFControls">
       <QFHorizontalSeparator>
@@ -916,10 +1161,6 @@
     </ColumnStyle>
   </Columns>
   <Rows>
-    <RowStyle>
-      <SizeType>Absolute</SizeType>
-      <Height>35</Height>
-    </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>
       <Height>35</Height>

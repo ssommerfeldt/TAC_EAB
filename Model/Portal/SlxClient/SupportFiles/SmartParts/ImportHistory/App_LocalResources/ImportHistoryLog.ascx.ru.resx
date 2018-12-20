@@ -117,55 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdHistoryLog.Description.ColumnHeading" xml:space="preserve">
-    <value>Описание</value>
+  <data name="grdHistoryLog.EmptyTableRowText" xml:space="preserve">
+    <value>Нет элементов журнала истории импорта для отображения.</value>
   </data>
-  <data name="itemType.Merged" xml:space="preserve">
-    <value>Объединенный</value>
-  </data>
-  <data name="GoTo" xml:space="preserve">
-    <value>Перейти</value>
-  </data>
-  <data name="grdHistoryLog.IsResolved.ColumnHeading" xml:space="preserve">
-    <value>Решенные</value>
-  </data>
-  <data name="itemType.Duplicate" xml:space="preserve">
-    <value>Дубликат</value>
-  </data>
-  <data name="grdHistoryLog.TimeStamp.ColumnHeading" xml:space="preserve">
-    <value>Шаблон времени</value>
-  </data>
-  <data name="grdHistoryLog.ResolvedDescription.ColumnHeading" xml:space="preserve">
-    <value>Описание решенных.</value>
-  </data>
-  <data name="grdHistoryLog.ResolvedDate.ColumnHeading" xml:space="preserve">
-    <value>Дата решения</value>
-  </data>
-  <data name="itemType.Info" xml:space="preserve">
-    <value>Информация</value>
-  </data>
-  <data name="ContactEntityName" xml:space="preserve">
-    <value>Контакт</value>
-  </data>
-  <data name="itemType.Warning" xml:space="preserve">
-    <value>Предупреждение</value>
-  </data>
-  <data name="grdHistoryLog.RecordNumber.ColumnHeading" xml:space="preserve">
-    <value>Номер записи</value>
+  <data name="grdHistoryLog.Type.ColumnHeading" xml:space="preserve">
+    <value>Тип</value>
   </data>
   <data name="grdHistoryLog.Record.ColumnHeading" xml:space="preserve">
     <value>Запись</value>
   </data>
-  <data name="LeadEntityName" xml:space="preserve">
-    <value>Наводка</value>
+  <data name="grdHistoryLog.RecordNumber.ColumnHeading" xml:space="preserve">
+    <value>Номер записи</value>
+  </data>
+  <data name="grdHistoryLog.TimeStamp.ColumnHeading" xml:space="preserve">
+    <value>Метка времени</value>
+  </data>
+  <data name="grdHistoryLog.Description.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="ContactEntityName" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="grdHistoryLog.IsResolved.ColumnHeading" xml:space="preserve">
+    <value>Решенные</value>
+  </data>
+  <data name="grdHistoryLog.ResolvedDate.ColumnHeading" xml:space="preserve">
+    <value>Дата решения</value>
+  </data>
+  <data name="grdHistoryLog.ResolvedDescription.ColumnHeading" xml:space="preserve">
+    <value>Описание решенных.</value>
+  </data>
+  <data name="itemType.Duplicate" xml:space="preserve">
+    <value>Дубликат</value>
   </data>
   <data name="itemType.Error" xml:space="preserve">
     <value>Ошибка</value>
   </data>
-  <data name="grdHistoryLog.EmptyTableRowText" xml:space="preserve">
-    <value>Нет элементов лога истории импорта для отображения.</value>
+  <data name="itemType.Info" xml:space="preserve">
+    <value>Информация</value>
   </data>
-  <data name="grdHistoryLog.Type.ColumnHeading" xml:space="preserve">
-    <value>Тип</value>
+  <data name="itemType.Merged" xml:space="preserve">
+    <value>Объединено</value>
+  </data>
+  <data name="itemType.Warning" xml:space="preserve">
+    <value>Предупреждение</value>
+  </data>
+  <data name="LeadEntityName" xml:space="preserve">
+    <value>Заинтересованное лицо</value>
+  </data>
+  <data name="ResolvedEntity" xml:space="preserve">
+    <value>{0}:EntityID={1}</value>
+  </data>
+  <data name="GoTo" xml:space="preserve">
+    <value>Перейти к</value>
   </data>
 </root>

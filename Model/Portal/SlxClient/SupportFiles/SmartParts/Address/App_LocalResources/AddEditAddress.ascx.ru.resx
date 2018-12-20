@@ -117,82 +117,86 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblAddressType.Text" xml:space="preserve">
-    <value>Тип адреса:</value>
-  </data>
-  <data name="lblAddress3.Text" xml:space="preserve">
-    <value>Квартира/Офис:</value>
-  </data>
-  <data name="DialogTitleAccountEdit" xml:space="preserve">
-    <value>Изменить адрес субъекта</value>
-  </data>
   <data name="lblPrimary.Text" xml:space="preserve">
-    <value>Основной расчетный адрес:</value>
-  </data>
-  <data name="lblState.Text" xml:space="preserve">
-    <value>Регион/Обл.:</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>ОК</value>
-  </data>
-  <data name="DefaultDescription" xml:space="preserve">
-    <value>Почтовый адрес</value>
-  </data>
-  <data name="lblAddress1.Text" xml:space="preserve">
-    <value>Улица:</value>
-  </data>
-  <data name="DialogTitleAccountAdd" xml:space="preserve">
-    <value>Добавить адрес субъекта</value>
-  </data>
-  <data name="DialogTitleEdit" xml:space="preserve">
-    <value>Изменить адрес</value>
-  </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>ОК</value>
-  </data>
-  <data name="lblShipping.Text" xml:space="preserve">
-    <value>Основной адрес доставки:</value>
-  </data>
-  <data name="lblPrimaryAddr.Text" xml:space="preserve">
-    <value>Основной:</value>
-  </data>
-  <data name="DialogTitleAdd" xml:space="preserve">
-    <value>Добавить адрес</value>
-  </data>
-  <data name="txtCounty.Text" xml:space="preserve">
-    <value>Округ</value>
-  </data>
-  <data name="lblCountry.Text" xml:space="preserve">
-    <value>Страна:</value>
-  </data>
-  <data name="lblSalutation.Text" xml:space="preserve">
-    <value>Адресат(ы):</value>
-  </data>
-  <data name="UpdateMessage" xml:space="preserve">
-    <value>Один или более Контактов имеют одинаковый адрес в этой огранизации. Вы хотите обновить совпадающие адреса контактов?</value>
-  </data>
-  <data name="lblPostalCode.Text" xml:space="preserve">
-    <value>Индекс:</value>
-  </data>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
+    <value>Основной адрес для счета:</value>
   </data>
   <data name="lblDecription.Text" xml:space="preserve">
     <value>Описание:</value>
   </data>
-  <data name="DialogTitleContactEdit" xml:space="preserve">
-    <value>Редактировать адрес контакта</value>
+  <data name="lblAddress1.Text" xml:space="preserve">
+    <value>Адрес 1:</value>
   </data>
-  <data name="btnCancel.ToolTip" xml:space="preserve">
-    <value>Отмена</value>
+  <data name="lblAddress2.Text" xml:space="preserve">
+    <value>Адрес 2:</value>
   </data>
-  <data name="DialogTitleContactAdd" xml:space="preserve">
-    <value>Добавить адрес контакта</value>
+  <data name="lblAddress3.Text" xml:space="preserve">
+    <value>Адрес 3:</value>
+  </data>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>OК</value>
   </data>
   <data name="lblCity.Text" xml:space="preserve">
     <value>Город:</value>
   </data>
-  <data name="lblAddress2.Text" xml:space="preserve">
-    <value>Дом:</value>
+  <data name="lblCountry.Text" xml:space="preserve">
+    <value>Страна:</value>
+  </data>
+  <data name="lblPostalCode.Text" xml:space="preserve">
+    <value>Почтовый индекс:</value>
+  </data>
+  <data name="lblSalutation.Text" xml:space="preserve">
+    <value>Адресат:</value>
+  </data>
+  <data name="lblShipping.Text" xml:space="preserve">
+    <value>Основной адрес доставки:</value>
+  </data>
+  <data name="lblState.Text" xml:space="preserve">
+    <value>Регион:</value>
+  </data>
+  <data name="DefaultDescription" xml:space="preserve">
+    <value>Почтовый адрес</value>
+  </data>
+  <data name="DialogTitleAccountAdd" xml:space="preserve">
+    <value>Добавить адрес клиента</value>
+  </data>
+  <data name="DialogTitleAccountEdit" xml:space="preserve">
+    <value>Редактировать адрес клиента</value>
+  </data>
+  <data name="DialogTitleAdd" xml:space="preserve">
+    <value>Добавить адрес</value>
+  </data>
+  <data name="DialogTitleContactAdd" xml:space="preserve">
+    <value>Добавить адрес контакта</value>
+  </data>
+  <data name="DialogTitleContactEdit" xml:space="preserve">
+    <value>Редактировать адрес контакта</value>
+  </data>
+  <data name="DialogTitleEdit" xml:space="preserve">
+    <value>Редактировать адрес</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AddEditAddress_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>AddEditAddress_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="UpdateMessage" xml:space="preserve">
+    <value>Один или более контактов имеют одинаковый адрес в качестве этого клиента. Обновить совпадающие адреса контактов?</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="btnCancel.ToolTip" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="lblAddressType.Text" xml:space="preserve">
+    <value>Тип адреса:</value>
+  </data>
+  <data name="lblPrimaryAddr.Text" xml:space="preserve">
+    <value>Основной:</value>
+  </data>
+  <data name="txtCounty.Text" xml:space="preserve">
+    <value>Район</value>
   </data>
 </root>

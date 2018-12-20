@@ -1,15 +1,13 @@
-define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            selectAllText: 'Select All',
-            dialogTitle: 'Edit Filters',
-            okText: 'OK',
-            cancelText: 'Cancel'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/Filters/nls/EditFilters", {
+    root: {
+        selectAllText: 'Select All',
+        dialogTitle: 'Edit Filters',
+        okText: 'OK',
+        cancelText: 'Cancel'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

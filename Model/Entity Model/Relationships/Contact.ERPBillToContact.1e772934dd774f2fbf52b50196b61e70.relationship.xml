@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1e772934-dd77-4f2f-bf52-b50196b61e70" lastModifiedUtc="2014-12-09T23:44:42.9146647Z" parentEntityId="750a7f26-3604-467b-94fe-249370231df4" childEntityId="6ad5b309-54ac-464d-abcb-5ec5ee08419c">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="39197ae2-b16e-4ed3-8926-b13446f10426" lastModifiedUtc="2014-12-09T23:44:31.776551Z" name="ErpBillToContacts" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="686dd74e-1df5-4af8-a832-689451cb5b38" lastModifiedUtc="2014-12-09T23:44:42.9146647Z" name="Contact" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="7bc81c86-8172-4db0-89e1-df6fb8f6bb59" parentPropertyId="67fe9234-a814-4d79-a813-01046c1ae19d" childPropertyId="173262b4-7c0d-40e6-9f35-23c78eccacc1" ordinal="0" />
+  </column>
+</relationship>

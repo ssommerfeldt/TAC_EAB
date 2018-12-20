@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<SchedulerTrigger xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="60136e99-2022-4a5a-a089-a149ce55c1f9">
+  <InstanceId>66318495ff134dab8cb24060c15eb7f4</InstanceId>
+  <JobId>9115e5a1fd8a41f7a3a3d93478aff5fc</JobId>
+  <Name>IONInboxJob.Every15Seconds</Name>
+  <StartTimeUtc xsi:nil="true" />
+  <EndTimeUtc xsi:nil="true" />
+  <CronExpression>0/15 * * * * ? *</CronExpression>
+  <Priority xsi:nil="true" />
+  <Parameters></Parameters>
+</SchedulerTrigger>

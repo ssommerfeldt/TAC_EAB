@@ -1,11 +1,12 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Services/JobService", [
+    'Sage/Utility',
     'Sage/UI/Dialogs',
     'dojo/_base/declare',
     'dojo/string',
     'dojo/i18n!./nls/JobService'
 ],
-function (dialogs, declare, dojoString, nlsStrings) {
+function (utility, dialogs, declare, dojoString, nlsStrings) {
     /**
     * Declare the JobService class.
     * @constructor
@@ -61,11 +62,11 @@ function (dialogs, declare, dojoString, nlsStrings) {
                         options.success(result);
                     }
                 },
-                failure: function (xhr) {
+                failure: function (xhr, sdata) {
                     var errorMsg = "getJobDefinition: " + dojoString.substitute(nlsStrings.txtUnexpectedError, [xhr.status, xhr.statusText]);
                     console.log(errorMsg);
                     if (options.failure) {
-                        options.failure(xhr);
+                        options.failure(xhr, sdata);
                     }
                 }
             });
@@ -110,11 +111,11 @@ function (dialogs, declare, dojoString, nlsStrings) {
                         options.success(result);
                     }
                 },
-                failure: function (xhr) {
+                failure: function (xhr, sdata) {
                     var errorMsg = 'getExecution: ' + dojoString.substitute(nlsStrings.txtUnexpectedError, [xhr.status, xhr.statusText]);
                     console.error(errorMsg);
                     if (options.failure) {
-                        options.failure(xhr);
+                        options.failure(xhr, sdata);
                     }
                 }
             });
@@ -157,11 +158,11 @@ function (dialogs, declare, dojoString, nlsStrings) {
                         options.success(result);
                     }
                 },
-                failure: function (xhr) {
+                failure: function (xhr, sdata) {
                     var errorMsg = dojoString.substitute(nlsStrings.txtTriggerJobError, [options.key, xhr.status, xhr.statusText]);
                     console.error(errorMsg);
                     if (options.failure) {
-                        options.failure(xhr);
+                        options.failure(xhr, sdata);
                     }
                 }
             });
@@ -215,12 +216,12 @@ function (dialogs, declare, dojoString, nlsStrings) {
                         options.success(result);
                     }
                 },
-                failure: function (xhr) {
+                failure: function (xhr, sdata) {
                     var errorMsg = dojoString.substitute(nlsStrings.txtScheduleJobError, [options.key, xhr.status, xhr.statusText]);
                     console.error(errorMsg);
 
                     if (options.failure) {
-                        options.failure(xhr);
+                        options.failure(xhr, sdata);
                     }
                 }
             }); // jshint ignore:line
@@ -255,11 +256,11 @@ function (dialogs, declare, dojoString, nlsStrings) {
                         options.success(result);
                     }
                 },
-                failure: function (xhr) {
+                failure: function (xhr, sdata) {
                     var errorMsg = 'getExecution: ' + dojoString.substitute(nlsStrings.txtUnexpectedError, [xhr.status, xhr.statusText]);
                     console.error(errorMsg);
                     if (options.failure) {
-                        options.failure(xhr);
+                        options.failure(xhr, sdata);
                     }
                 }
             });
@@ -308,35 +309,47 @@ function (dialogs, declare, dojoString, nlsStrings) {
                         options.success(result);
                     }
                 },
-                failure: function (xhr) {
+                failure: function (xhr, sdata) {
                     var errorMsg = dojoString.substitute(nlsStrings.txtScheduleJobError, [options.key, xhr.status, xhr.statusText]);
                     console.log(errorMsg);
 
                     if (options.failure) {
-                        options.failure(xhr);
+                        options.failure(xhr, sdata);
                     }
                 }
             });
         },
-        deleteScheduledJob: function (key) {
+        deleteScheduledJob: function (key, def) {
             if (!key) {
                 return false;
             }
 
+            var defer = (typeof def === "object" && def !== null);
+
             var schedulingService = this.getSchedulingSDataService();
             var request = new Sage.SData.Client.SDataApplicationRequest(schedulingService);
             request.setApplicationName('$app');
+            request.setQueryArg('format', 'json');
+            request.setQueryArg('hasErrorHandler', 'true');
             request.setResourceKind(dojoString.substitute("triggers('${0}')", [key]));
 
-            var sUrl = request.uri;
             dojo.xhrDelete({
                 handleAs: 'json',
-                url: sUrl,
-                error: function (xhr) {
-                    dialogs.showError(dojoString.substitute(nlsStrings.txtTriggerJobError, [key, xhr.status, xhr.statusText]));
-                    return false;
+                url: request.uri.toString(),
+                preventCache: true,
+                load: function(data) {
+                    if (defer) {
+                        def.callback(data);
+                    }
+                },
+                error: function(error, ioargs) {
+                    utility.ErrorHandler.handleHttpError(error, ioargs);
+                    if (defer) {
+                        def.errback(error);
+                    }
                 }
             });
+           
             return true;
         },
         /**
@@ -381,11 +394,11 @@ function (dialogs, declare, dojoString, nlsStrings) {
                         options.success(result);
                     }
                 },
-                failure: function (xhr) {
+                failure: function (xhr, sdata) {
                     var errorMsg = dojoString.substitute(nlsStrings.txtTriggerJobError, [options.key, xhr.status, xhr.statusText]);
                     console.error(errorMsg);
                     if (options.failure) {
-                        options.failure(xhr);
+                        options.failure(xhr, sdata);
                     }
                 }
             });

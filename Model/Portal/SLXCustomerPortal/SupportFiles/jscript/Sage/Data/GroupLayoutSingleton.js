@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
-define([
+define("Sage/Data/GroupLayoutSingleton", [
         'dojo/_base/declare',
         'dojo/_base/array',
         'dojo/_base/lang',
@@ -13,7 +13,7 @@ function (
         lang,
         SDataServiceRegistry,
         ready,
-        json
+        json        
     ) {
     var m = declare('Sage.Data.GroupLayoutSingleton', null, {
         data: {},
@@ -75,12 +75,19 @@ function (
 
             request.setResourceKind('groups');
             request.setResourceSelector(groupPredicate);
-            request.setQueryArg('include', 'layout,tableAliases');
+            request.setQueryArg('include', 'layout,layout/dateTimeType,tableAliases');
 
             request.read({
                 success: lang.hitch(this, this._onSuccess, groupId),
                 failure: lang.hitch(this, this._onFailure, groupId)
             });
+        },
+        clearCache: function () {
+            var allKeys = Object.keys(sessionStorage);
+            var groupLayoutPattern = new RegExp('^'+this._baseCacheKey);
+            var groupLayoutKeys = array.filter(allKeys, function (item) { return item.match(groupLayoutPattern) !== null; });
+            array.forEach(groupLayoutKeys, function(item) { sessionStorage.removeItem(item); });
+            this.data = {};            
         },
         _onSuccess: function(groupId, data) {
             var regOnSuccess = this._registeredOnSuccess[groupId];

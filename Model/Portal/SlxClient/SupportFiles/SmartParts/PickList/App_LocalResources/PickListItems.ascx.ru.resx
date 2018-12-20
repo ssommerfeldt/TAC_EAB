@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,31 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grd_Delete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="grd_Order.HeaderText" xml:space="preserve">
-    <value>№</value>
-  </data>
-  <data name="grd_Text.HeaderText" xml:space="preserve">
-    <value>Текст</value>
-  </data>
-  <data name="ConfirmMessage" xml:space="preserve">
-    <value>Вы действительно хотите удалить?</value>
-  </data>
-  <data name="grd_Default.HeaderText" xml:space="preserve">
-    <value>По умолчанию</value>
-  </data>
-  <data name="grd_Code.HeaderText" xml:space="preserve">
-    <value>Код</value>
+  <data name="grdPicklistItems.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
   <data name="btnAdd.ToolTip" xml:space="preserve">
     <value>Добавить элемент</value>
   </data>
-  <data name="grdPicklistItems.EmptyTableRowText" xml:space="preserve">
-    <value>Нет записей, соответствующих критериям отбора.</value>
+  <data name="ConfirmMessage" xml:space="preserve">
+    <value>Действительно удалить?</value>
+  </data>
+  <data name="grd_Delete.Text" xml:space="preserve">
+    <value>Удалить</value>
   </data>
   <data name="grd_Edit.Text" xml:space="preserve">
-    <value>Изменить</value>
+    <value>Редактировать</value>
+  </data>
+  <data name="grd_Code.HeaderText" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="grd_Default.HeaderText" xml:space="preserve">
+    <value>Является значением по умолчанию</value>
+  </data>
+  <data name="grd_Order.HeaderText" xml:space="preserve">
+    <value>Заказ</value>
+  </data>
+  <data name="grd_Text.HeaderText" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="grd_Filter.HeaderText" xml:space="preserve">
+    <value>Фильтр</value>
   </data>
 </root>

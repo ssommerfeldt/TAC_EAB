@@ -1,7 +1,7 @@
-define((
-{ cancelCaption: 'Отмена',
-  dialogCaption: 'Выберите шаблон',
-  invalidOptionsText: 'Параметр options или options.onSelect определены не корректно.',
-  loadingText: 'Загрузка. Пожалуйста подождите...',
-  okCaption: 'Ок' }
-));
+define("Sage/MailMerge/nls/ru/Templates", {
+    "cancelCaption": "Отмена",
+    "dialogCaption": "Выберите шаблон",
+    "invalidOptionsText": "Параметр функции или options.onSelect не заданы или заданы неправильно.",
+    "loadingText": "Загрузка, подождите...",
+    "okCaption": "OК"
+});

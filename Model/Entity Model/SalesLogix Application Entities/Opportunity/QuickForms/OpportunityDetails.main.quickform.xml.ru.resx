@@ -117,190 +117,148 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueAccount.Caption" xml:space="preserve">
-    <value>Субъект:</value>
-  </data>
-  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
-    <value>Подтип</value>
-  </data>
-  <data name="cmdDelete.ToolTip" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="luePriceList.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="cmdCopyOpportunity.Caption" xml:space="preserve">
-    <value>Копирование сделки</value>
-  </data>
-  <data name="lueReseller.LookupProperties.AccountManager.UserName.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="luePriceList.Caption" xml:space="preserve">
-    <value>Прайс-лист:</value>
-  </data>
-  <data name="lueAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Сделка:</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="cmdSave.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="lueReseller.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+  <data name="cmdDelete.Caption" xml:space="preserve">
+    <value>Удалить</value>
   </data>
-  <data name="lueReseller.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
-    <value>Подтип</value>
+  <data name="cmdDelete.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
   </data>
-  <data name="luePriceList.LookupProperties.Name.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
+  <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Данная запись будет удалена без возможности восстановления.</value>
   </data>
-  <data name="lueERPApplication.LookupDialogTitle" xml:space="preserve">
-    <value>Поиск системы учета</value>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Возможность:</value>
+  </data>
+  <data name="txtNotes.Caption" xml:space="preserve">
+    <value>Комментарии:</value>
   </data>
   <data name="chkAddToForecast.Caption" xml:space="preserve">
-    <value>Добавить в Прогноз:</value>
-  </data>
-  <data name="lueERPApplication.LookupProperties.Name.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
+    <value>Добавить в прогноз:</value>
   </data>
   <data name="dtpEstimatedClose.Caption" xml:space="preserve">
-    <value>План. закрыт.:</value>
+    <value>Ожидаемое закрытие:</value>
   </data>
-  <data name="pklStatus.Caption" xml:space="preserve">
-    <value>Статус:</value>
+  <data name="lueAccount.Caption" xml:space="preserve">
+    <value>Клиент:</value>
+  </data>
+  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Основной телефон</value>
   </data>
   <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
     <value>Тип</value>
   </data>
-  <data name="lueReseller.Caption" xml:space="preserve">
-    <value>Партнер:</value>
-  </data>
-  <data name="cmdReset.ToolTip" xml:space="preserve">
-    <value>Сброс</value>
-  </data>
-  <data name="lueReseller.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Доступ</value>
-  </data>
-  <data name="lueReseller.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
+  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Подтип</value>
   </data>
   <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
     <value>Статус</value>
   </data>
-  <data name="lueReseller.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
-  </data>
-  <data name="lueReseller.LookupProperties.Owner.Description.PropertyHeader" xml:space="preserve">
-    <value>Доступ</value>
-  </data>
-  <data name="lueReseller.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="pklCloseProbability.Caption" xml:space="preserve">
-    <value>Вероят. закрытия:</value>
-  </data>
-  <data name="luePriceList.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
-    <value>Дата окончания</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Доступ</value>
-  </data>
-  <data name="luePriceList.LookupDialogTitle" xml:space="preserve">
-    <value>Поиск прайс-листа</value>
-  </data>
-  <data name="luePriceList.LookupProperties.PriceListType.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="cmdCopyOpportunity.ToolTip" xml:space="preserve">
-    <value>Копировать</value>
-  </data>
-  <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Запись будет удалена без возможности восстановления</value>
-  </data>
-  <data name="usrUser.Caption" xml:space="preserve">
-    <value>Менеджер:</value>
-  </data>
-  <data name="lueERPApplication.Caption" xml:space="preserve">
-    <value>Система учета:</value>
-  </data>
-  <data name="lueReseller.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
+  <data name="lueReseller.Caption" xml:space="preserve">
+    <value>Посредник:</value>
   </data>
   <data name="lueReseller.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="Reseller_rsc" xml:space="preserve">
-    <value>Партнер</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
-  </data>
-  <data name="txtNotes.Caption" xml:space="preserve">
-    <value>Комм-рии:</value>
-  </data>
-  <data name="cmdReset.Caption" xml:space="preserve">
-    <value>Сброс</value>
-  </data>
-  <data name="lueAccount.LookupProperties.AccountManager.UserName.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="luePriceList.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
-    <value>Дата начала</value>
-  </data>
-  <data name="lueReseller.LookupProperties.Owner.CreateUser.PropertyHeader" xml:space="preserve">
-    <value>Доступ</value>
-  </data>
-  <data name="luePriceList.LookupProperties.Currency.PropertyHeader" xml:space="preserve">
-    <value>Валюта</value>
-  </data>
-  <data name="lueERPApplication.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="luePriceList.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="txtComments.Caption" xml:space="preserve">
-    <value>Комм-рии:</value>
-  </data>
-  <data name="lueERPApplication.LookupProperties.EndPointURL.PropertyHeader" xml:space="preserve">
-    <value>URL Конечной точки</value>
-  </data>
-  <data name="dtpEstimatedClose.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
+    <value>Клиент</value>
   </data>
   <data name="lueReseller.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
     <value>Город</value>
   </data>
-  <data name="lueReseller.LUPF.SubType" xml:space="preserve">
-    <value>Партнер</value>
+  <data name="lueReseller.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
   </data>
-  <data name="cmdDelete.Caption" xml:space="preserve">
-    <value>Удалить</value>
+  <data name="lueReseller.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Основной телефон</value>
   </data>
-  <data name="luePriceList.LookupProperties.ActiveFlag.PropertyHeader" xml:space="preserve">
-    <value>Флаг активности</value>
+  <data name="lueReseller.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="lueReseller.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="lueReseller.LookupProperties.AccountManager.UserName.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="lueReseller.LookupProperties.Owner.CreateUser.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="pklCloseProbability.Caption" xml:space="preserve">
+    <value>Вероятность закрытия</value>
+  </data>
+  <data name="pklStatus.Caption" xml:space="preserve">
+    <value>Статус:</value>
+  </data>
+  <data name="usrUser.Caption" xml:space="preserve">
+    <value>Менеджер по клиентам:</value>
+  </data>
+  <data name="cmdReset.Caption" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="cmdReset.ToolTip" xml:space="preserve">
+    <value>Сброс</value>
   </data>
   <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
     <value>Город</value>
   </data>
+  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="lueAccount.LookupProperties.AccountManager.UserName.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="lueReseller.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Подтип</value>
+  </data>
+  <data name="lueReseller.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="lueReseller.LookupProperties.Owner.Description.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="lueAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="lueReseller.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="lueReseller.LUPF.SubType" xml:space="preserve">
+    <value>Посредник</value>
+  </data>
+  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
   <data name="usrUser.ButtonToolTip" xml:space="preserve">
     <value>Найти</value>
   </data>
-  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
-    <value>Основной тел.</value>
+  <data name="lueReseller.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
   </data>
-  <data name="lueReseller.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
-    <value>Основной тел.</value>
+  <data name="dtpEstimatedClose.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
   </data>
-  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
+  <data name="txtComments.Caption" xml:space="preserve">
+    <value>Комментарии:</value>
+  </data>
+  <data name="cmdCopyOpportunity.Caption" xml:space="preserve">
+    <value>Копирование возможности</value>
+  </data>
+  <data name="cmdCopyOpportunity.ToolTip" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="lueAccount.LookupProperties.ErpAccountingEntityId.PropertyHeader" xml:space="preserve">
+    <value>ИД сущности системы учета</value>
+  </data>
+  <data name="lueAccount.LookupProperties.ErpLogicalId.PropertyHeader" xml:space="preserve">
+    <value>Логический ИД</value>
   </data>
 </root>

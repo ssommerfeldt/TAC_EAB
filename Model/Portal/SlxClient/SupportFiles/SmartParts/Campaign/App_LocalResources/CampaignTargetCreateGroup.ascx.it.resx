@@ -117,23 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbxGroupType_Contact.Text" xml:space="preserve">
-    <value>Contatto</value>
-  </data>
-  <data name="rdgGroupMembers_SelectedTargets.Text" xml:space="preserve">
-    <value>Target Campagna Selezionati</value>
-  </data>
   <data name="lblGroupType.Caption" xml:space="preserve">
-    <value>Tipo Gruppo:</value>
-  </data>
-  <data name="error_NoDataSourceFound" xml:space="preserve">
-    <value>L'Origine dati non è stata trovata.</value>
+    <value>Tipo gruppo:</value>
   </data>
   <data name="lblGroupName.Caption" xml:space="preserve">
-    <value>Nome Gruppo:</value>
+    <value>Nome gruppo:</value>
   </data>
-  <data name="rdgGroupMembers_AllTargets.Text" xml:space="preserve">
-    <value>Tutti Target Campagna</value>
+  <data name="lblGroupMembers.Caption" xml:space="preserve">
+    <value>Membri gruppo:</value>
   </data>
   <data name="cmdOK.Caption" xml:space="preserve">
     <value>OK</value>
@@ -141,16 +132,37 @@
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Annulla</value>
   </data>
-  <data name="lbxGroupType_Lead.Text" xml:space="preserve">
-    <value>Nominativo</value>
+  <data name="lbxGroupType_Lead.Value" xml:space="preserve">
+    <value>Lead</value>
   </data>
-  <data name="error_NoTargetsFound" xml:space="preserve">
-    <value>L'elenco non contiene alcun target per il tipo {0}.</value>
+  <data name="lbxGroupType_Lead.Text" xml:space="preserve">
+    <value>Lead</value>
+  </data>
+  <data name="lbxGroupType_Contact.Value" xml:space="preserve">
+    <value>Contatto</value>
+  </data>
+  <data name="lbxGroupType_Contact.Text" xml:space="preserve">
+    <value>Contatto</value>
+  </data>
+  <data name="rdgGroupMembers_SelectedTargets.Value" xml:space="preserve">
+    <value>Destinatari selezionati</value>
+  </data>
+  <data name="rdgGroupMembers_SelectedTargets.Text" xml:space="preserve">
+    <value>Destinatari campagna selezionati</value>
+  </data>
+  <data name="rdgGroupMembers_AllTargets.Value" xml:space="preserve">
+    <value>Tutti i destinatari</value>
+  </data>
+  <data name="rdgGroupMembers_AllTargets.Text" xml:space="preserve">
+    <value>Tutti i destinatari della campagna</value>
+  </data>
+  <data name="error_NoDataSourceFound" xml:space="preserve">
+    <value>L’origine dati non è stata trovata.</value>
   </data>
   <data name="error_NoGroupName" xml:space="preserve">
     <value>Devi specificare un nome gruppo prima di continuare.</value>
   </data>
-  <data name="lblGroupMembers.Caption" xml:space="preserve">
-    <value>Membri Gruppo:</value>
+  <data name="error_NoTargetsFound" xml:space="preserve">
+    <value>L'elenco non contiene alcun destinatario per il tipo {0}.</value>
   </data>
 </root>

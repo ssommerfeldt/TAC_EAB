@@ -1,6 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/TaskPane/ActivityTaskPaneItem", [
        'dijit/_Widget',
        'dijit/_TemplatedMixin',
        'dojo/_base/declare'
@@ -22,7 +22,7 @@ var activityTaskPaneItem = declare("Sage.TaskPane.ActivityTaskPaneItem", [_Widge
         templateString: '<a dojoAttachPoint="linkTextNode" href="#"></a>',
         attributeMap: dojo.delegate(dijit._Widget.prototype.attributeMap, {
             linkText: { node: 'linkTextNode', type: 'innerHTML' }, 
-            action: { node: 'linkTextNode', type: 'attribute', attribute: 'href' }                   
+            action: { node: 'linkTextNode', type: 'attribute', attribute: 'onclick' }                   
         }),
    
        // this section relates to showing the link

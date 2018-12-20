@@ -1,4 +1,4 @@
-define([
+define("Sage/Reporting/main", [
     'Sage/Reporting/Enumerations'
     ], function() {
 	// module:

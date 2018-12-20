@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="dd595584-f3bc-4c91-836c-371234a35774" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="dd595584-f3bc-4c91-836c-371234a35774" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-10-27T22:20:26.3329271Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -7,20 +7,26 @@
       <ResourceKey>c61c649f-3ac7-4141-83d5-a3a361efaec9</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
-          <MethodName />
-          <CSharpCodeSnippet> if (DialogService.DialogParameters.Count &gt; 0 &amp;&amp; (DialogService.DialogParameters.ContainsKey("ExchangeRateType")))
- {
-     Sage.Platform.Controls.ExchangeRateTypeEnum rateType = (Sage.Platform.Controls.ExchangeRateTypeEnum)Enum.Parse(typeof(Sage.Platform.Controls.ExchangeRateTypeEnum), DialogService.DialogParameters["ExchangeRateType"].ToString());
-  
-     string exchangeRateCode = DialogService.DialogParameters["ExchangeRateCode"].ToString();
-     double exchangeRate = System.Convert.ToDouble(DialogService.DialogParameters["ExchangeRate"]);
-      Sage.Entity.Interfaces.IOpportunity opp = BindingSource.Current as Sage.Entity.Interfaces.IOpportunity;
-     curActualAmount.DisplayCurrencyCode = true;
-     curActualAmount.ExchangeRate = exchangeRate;
-     curActualAmount.CurrentCode = exchangeRateCode;
-     curActualAmount.ExchangeRateType = rateType;
-     curActualAmount.Text = System.Convert.ToString(opp.ActualAmount);
- } </CSharpCodeSnippet>
+          <MethodName>quickformload0</MethodName>
+          <CSharpCodeSnippet>var systemInfo = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.SalesLogix.Services.ISystemOptionsService&gt;(true);
+string baseCode = "";
+if (!string.IsNullOrEmpty(systemInfo.BaseCurrency))
+{
+    baseCode = systemInfo.BaseCurrency;
+}
+curActualAmount.CurrentCode = baseCode;
+if (DialogService.DialogParameters.Count &gt; 0 &amp;&amp; (DialogService.DialogParameters.ContainsKey("ExchangeRateType")))
+{
+	Sage.Entity.Interfaces.IOpportunity opp = BindingSource.Current as Sage.Entity.Interfaces.IOpportunity;
+    Sage.Platform.Controls.ExchangeRateTypeEnum rateType = (Sage.Platform.Controls.ExchangeRateTypeEnum) Enum.Parse(typeof (Sage.Platform.Controls.ExchangeRateTypeEnum), DialogService.DialogParameters["ExchangeRateType"].ToString());
+    string exchangeRateCode = DialogService.DialogParameters["ExchangeRateCode"].ToString();
+    double exchangeRate = System.Convert.ToDouble(DialogService.DialogParameters["ExchangeRate"]);
+    curActualAmount.DisplayCurrencyCode = true;
+    curActualAmount.ExchangeRate = exchangeRate;
+    curActualAmount.CurrentCode = exchangeRateCode;
+    curActualAmount.ExchangeRateType = rateType;
+    curActualAmount.Text = System.Convert.ToString(opp.ActualAmount);
+}</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -169,6 +175,7 @@
         <MustExistInList>true</MustExistInList>
         <NoneEditable>true</NoneEditable>
         <PickListId>kSYST0000362</PickListId>
+        <PickListFilter />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -235,7 +242,7 @@
           <ResourceKey>5cf9ac66-cdf1-4b94-b5e7-a79ec2488b06</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CodeSnippetActionItem, Sage.Platform.QuickForms">
             <CodeSnippetActionItem methodId="da8e6de2-a18d-4034-a34b-23b98f094d3f">
-              <MethodName />
+              <MethodName>lueCompetitorReplaced_ChangeAction</MethodName>
             </CodeSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -443,7 +450,7 @@
                   <ResourceKey>cmdCancel</ResourceKey>
                   <Action typeName="Sage.Platform.QuickForms.ActionItems.CodeSnippetActionItem, Sage.Platform.QuickForms">
                     <CodeSnippetActionItem methodId="0ddaf688-e306-4cae-8934-e912b7a3ed3a">
-                      <MethodName />
+                      <MethodName>cmdCancel_ClickAction</MethodName>
                     </CodeSnippetActionItem>
                   </Action>
                   <IsDialogCloseAction>False</IsDialogCloseAction>

@@ -16,14 +16,13 @@
 
 <asp:Panel runat="server" ID="pnlSearchForDuplicates" Visible="true">
     <table id="SourceSnapShot" border="0" cellpadding="0" cellspacing="0" class="Bevel ExtendWidth">
-        <col width="33%" /><col width="33%" />
+        <col width="33%" /><col width="33%" /><col width="33%" />
         <tr>            
             <td colspan="3">
-                <span class="lbl">
+                <span>
                     <asp:Label ID="lblLead" runat="server" Text=""></asp:Label>
                 </span>
             </td>
-            <td></td>
         </tr>
        <tr>
             <td>
@@ -35,7 +34,7 @@
                 <span class="lbl">
                     <asp:Label ID="lblCompany" runat="server" Text="<%$ resources: lblCompany.Caption %>" AssociatedControlID="lblValueCompany"></asp:Label>
                 </span>
-                <span>
+                <span class="lbl">
                     <asp:Label ID="lblValueCompany" runat="server" Text=""></asp:Label>
                 </span>
             </td>
@@ -43,7 +42,7 @@
                 <span class="lbl">
                     <asp:Label ID="lblEmail" runat="server" Text="<%$ resources: lblEmail.Caption %>" AssociatedControlID="lblValueEmail"></asp:Label>
                 </span>
-                <span>
+                <span class="lbl">
                     <asp:Label ID="lblValueEmail" runat="server" Text=""></asp:Label>
                 </span>
             </td>
@@ -58,7 +57,7 @@
                 <span class="lbl">
                     <asp:Label ID="lblTitle" runat="server" Text="<%$ resources: lblTitle.Caption %>" AssociatedControlID="lblValueTitle"></asp:Label>
                 </span>
-                <span>
+                <span class="lbl">
                     <asp:Label ID="lblValueTitle" runat="server" Text=""></asp:Label>
                 </span>
             </td>
@@ -66,7 +65,7 @@
                 <span class="lbl">
                     <asp:Label ID="lblWeb" runat="server" Text="<%$ resources: lblWeb.Caption %>" AssociatedControlID="lblValueWeb"></asp:Label>
                 </span>
-                <span>
+                <span class="lbl">
                     <asp:Label ID="lblValueWeb" runat="server" Text=""></asp:Label>
                 </span>
             </td>
@@ -121,20 +120,10 @@
                 </td>
                 <td>
                     <div runat="server" id="divSearchTypes" style="display:none">
-                        <span>
-                            <asp:CheckBox ID="chkContacts" runat="server" Checked="true" />
-                        </span>
-                        <span class="lblright" style="padding-right:40px">
-                            <asp:Label ID="lblContacts" runat="server" AssociatedControlID="chkContacts" 
-                                Text="<%$ resources: lblContacts.Caption %>"> </asp:Label>
-                        </span>
-                        <span>
-                            <asp:CheckBox ID="chkLeads" runat="server" Checked="true" />
-                        </span>
-                        <span class="lblright">
-                            <asp:Label ID="lblleads" runat="server" AssociatedControlID="chkLeads" 
-                                Text="<%$ resources: lblLeads.Caption %>"></asp:Label>
-                        </span>
+                        <input type="checkbox" ID="chkContacts" runat="server" class="inforCheckbox" checked="true" ClientIDMode="static"/>
+                        <asp:Label ID="lblContacts" AssociatedControlID="chkContacts" runat="server" CssClass="inforCheckboxLabel noColon label" Text="<%$ resources: lblContacts.Caption %>"></asp:Label>
+                        <input type="checkbox" ID="chkLeads" runat="server" class="inforCheckbox" checked="true" ClientIDMode="static"/>
+                        <asp:Label ID="lblleads" AssociatedControlID="chkLeads" runat="server" CssClass="inforCheckboxLabel noColon label" Text="<%$ resources: lblLeads.Caption %>"></asp:Label>
                     </div>
                 </td>
                 <td></td>
@@ -161,7 +150,7 @@
                 <td></td>
                 <td></td>
                 <td colspan="2">
-                    <asp:CheckBoxList ID="chklstFilters" runat="server" RepeatColumns="5" RepeatDirection="Horizontal" Width="100%"></asp:CheckBoxList>
+                    <asp:CheckBoxList ID="chklstFilters" runat="server" RepeatColumns="5" RepeatDirection="Horizontal" Width="100%" CssClass="inforCheckboxList"></asp:CheckBoxList>
                 </td>
             </tr>
             <tr>
@@ -206,7 +195,7 @@
         <tr>
             <td>
                 <SalesLogix:SlxGridView ID="grdMatches" runat="server" ResizableColumns="false" PageSize="5"
-                    AllowPaging="false" DataKeyNames="Id,EntityType" Width="100%" height="120px" AllowSorting="false"
+                    AllowPaging="false" DataKeyNames="Id,EntityType" Width="100%" height="100px" AllowSorting="false"
                     ShowEmptyTable="true" UseSLXPagerTemplate="false" AutoGenerateColumns="false" CellPadding="4"
                     CssClass="datagrid" EmptyTableRowText="<%$ resources: grdMatches.EmptyTableRowText %>"
                     EnableViewState="false" ExpandableRows="False" GridLines="Both" PagerStyle-CssClass="gridPager"
@@ -293,7 +282,7 @@
             </td>
             <td>
                 <span>
-                    <asp:CheckBox ID="chkCreateOpportunity" runat="server" />
+                    <asp:CheckBox ID="chkCreateOpportunity" runat="server" CssClass="inforAspCheckBox" Text="&nbsp;"/>
                 </span>
                 <span class="lblright">
                     <asp:Label ID="lblCreateOpportunity" runat="server" AssociatedControlID="chkCreateOpportunity" 
@@ -330,7 +319,7 @@
                     <SalesLogix:SlxGridView runat="server" ID="grdMerge" AllowPaging="false" GridLines="Both" CssClass="datagrid"
                         AutoGenerateColumns="False" DataKeyNames="PropertyMapId" CellPadding="4" PageSize="5"
                         OnRowDataBound="grdMerge_RowDataBound" OnSelectedIndexChanged="grdMerge_SelectedIndexChanged"
-                        EnableViewState="false" ExpandableRows="false" ResizableColumns="false" Height="450px" Width="100%"
+                        EnableViewState="false" ExpandableRows="false" ResizableColumns="false" Height="400px" Width="100%"
                         AlternatingRowStyle-CssClass="rowdk" RowStyle-CssClass="rowlt">
                         <Columns>
                             <asp:BoundField DataField="PropertyMapId" Visible="false" />
@@ -375,7 +364,7 @@
             </tr>
         </table>
         <br/>
-        <div style="padding-right:20px; text-align:right" >
+        <div style="text-align:right" >
             <asp:Panel runat="server" ID="ctrlstButtons" CssClass="controlslist qfActionContainer">
                 <asp:Button runat="server" ID="btnMerge" CssClass="slxbutton" Onclick="btnMerge_Click" ToolTip="Merge" Text="<%$ resources: cmdMerge.Caption %>" />
                 <asp:Button runat="server" ID="btnCancel" CssClass="slxbutton" ToolTip="Cancel" Text="<%$ resources: cmdCancel.Caption %>" onclick="btnCancel_Click" />

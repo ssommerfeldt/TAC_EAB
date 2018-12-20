@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e1c7e5f7-4abd-47ca-8620-1fb29007fd88" lastModifiedUtc="2017-04-10T14:06:08.8016617Z" parentEntityId="74db5922-cc9a-4f77-875d-2ccb78a39864" childEntityId="7d72de74-b7f3-4740-8782-1f1a09192ab0">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship">
+      <extender guid="14807bef-c0cc-4b6d-a517-8388ed8ac2a6">
+        <OrmRelationshipBulkActionExtension />
+      </extender>
+    </extendee>
+  </ExtendedPropertiesCollection>
+  <parentProperty id="7b29ee11-3136-4ffb-b7fc-33c9c2392468" lastModifiedUtc="2017-04-10T14:06:00.2703277Z" name="IONWorkflowMappings" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="eaf68418-766a-4c26-983b-a222fcc34564" lastModifiedUtc="2017-04-10T14:06:08.8016617Z" name="IONWorkflowDefinition" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="0d7fed93-7567-44e4-af61-7e1f5ab337e8" parentPropertyId="231daa07-e925-4784-9b74-c14b86a98e4d" childPropertyId="62f48e54-0a4a-4a31-b9bd-ed41f591d194" ordinal="0" />
+  </column>
+</relationship>

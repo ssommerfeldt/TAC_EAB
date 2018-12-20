@@ -117,122 +117,104 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SpeedSearch_Button_Search.Text" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
   <data name="SpeedSearch_Description" xml:space="preserve">
     <value>SpeedSearch</value>
   </data>
-  <data name="SpeedSearch_href_Standard.Text" xml:space="preserve">
-    <value>Standard</value>
-  </data>
-  <data name="SpeedSearch_Error_Keyword_Required" xml:space="preserve">
-    <value>La requête de recherche doit contenir un mot-clé.</value>
-  </data>
-  <data name="SpeedSearch_Label_SearchMethod.Text" xml:space="preserve">
-    <value>Méthode de recherche</value>
-  </data>
-  <data name="SpeedSearch_Paging_Button_First.AlternateText" xml:space="preserve">
-    <value>Première page</value>
-  </data>
-  <data name="SpeedSearch_Grid_Header_Score.HeaderText" xml:space="preserve">
-    <value>Score</value>
-  </data>
-  <data name="SpeedSearch_ListItem_MaxResults_All.Text" xml:space="preserve">
-    <value>Tous</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_Natural.Text" xml:space="preserve">
-    <value>Language naturel</value>
-  </data>
-  <data name="SpeedSearch_Title" xml:space="preserve">
-    <value>SpeedSearch</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_And.Text" xml:space="preserve">
-    <value>Rechercher tous les mots (ET)</value>
+  <data name="SpeedSearch_Filter_Like" xml:space="preserve">
+    <value>Comme</value>
   </data>
   <data name="SpeedSearch_Filter_Within" xml:space="preserve">
     <value>Dans</value>
   </data>
-  <data name="SpeedSearch_Paging_Button_Prev.ToolTip" xml:space="preserve">
-    <value>Page précédente</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_Bool.Text" xml:space="preserve">
-    <value>Booleén (ET, OU, NON)</value>
-  </data>
   <data name="SpeedSearch_Grid_Header_Document.HeaderText" xml:space="preserve">
     <value>Document</value>
   </data>
-  <data name="SpeedSearch_ListItem_MaxResults_500.Text" xml:space="preserve">
-    <value>500 premiers</value>
+  <data name="SpeedSearch_Grid_Header_Score.HeaderText" xml:space="preserve">
+    <value>Score</value>
   </data>
-  <data name="SpeedSearch_ListItem_SearchFlags_Sounds.Text" xml:space="preserve">
-    <value>Ressemble à</value>
+  <data name="SpeedSearch_Grid_Header_Source.HeaderText" xml:space="preserve">
+    <value>Source</value>
   </data>
   <data name="SpeedSearch_href_Advanced.Text" xml:space="preserve">
     <value>Avancé</value>
   </data>
+  <data name="SpeedSearch_href_Standard.Text" xml:space="preserve">
+    <value>Standard</value>
+  </data>
   <data name="SpeedSearch_Image_Reset.AlternateText" xml:space="preserve">
     <value>Réinitialiser</value>
   </data>
-  <data name="SpeedSearch_ListItem_MaxResults_100.Text" xml:space="preserve">
-    <value>100 premiers</value>
-  </data>
-  <data name="SpeedSearch_Result_NoLongerExists" xml:space="preserve">
-    <value>{0} : {1} n'existe plus ou vous n'y avez pas accès.</value>
-  </data>
-  <data name="SpeedSearch_Result_NoAccess" xml:space="preserve">
-    <value>Accès refusé.</value>
-  </data>
-  <data name="SpeedSearch_Label_Keywords.Text" xml:space="preserve">
-    <value>Mots clés:</value>
-  </data>
-  <data name="SpeedSearch_Paging_Button_First.ToolTip" xml:space="preserve">
-    <value>Première page</value>
-  </data>
-  <data name="SpeedSearch_Paging_Button_Last.ToolTip" xml:space="preserve">
-    <value>Dernière page</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchFlags_Root.Text" xml:space="preserve">
-    <value>Racine</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_Phrase.Text" xml:space="preserve">
-    <value>Rechercher l'expression exacte</value>
-  </data>
-  <data name="SpeedSearch_Paging_Button_Next.ToolTip" xml:space="preserve">
-    <value>Page suivante</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_Or.Text" xml:space="preserve">
-    <value>Rechercher n'importe quel mot (OU)</value>
-  </data>
-  <data name="SpeedSearch_Filter_Like" xml:space="preserve">
-    <value>comme</value>
-  </data>
-  <data name="SpeedSearch_Label_Lookin.Text" xml:space="preserve">
-    <value>Regarder dans</value>
-  </data>
-  <data name="SpeedSearch_Label_MaxResults.Text" xml:space="preserve">
-    <value>Résultats maximum :</value>
+  <data name="SpeedSearch_Image_ResultUsed.AlternateText" xml:space="preserve">
+    <value>Marquer cet élément comme utile.</value>
   </data>
   <data name="SpeedSearch_Label_FilterBy.Text" xml:space="preserve">
     <value>Filtrer par</value>
   </data>
-  <data name="SpeedSearch_Error_Index_Required" xml:space="preserve">
-    <value>Au moins un index doit être sélectionné pour faire une recherche</value>
-  </data>
-  <data name="SpeedSearch_Label_PagingLabel" xml:space="preserve">
-    <value>Enregistrements {0} - {1} sur {2}</value>
-  </data>
-  <data name="SpeedSearch_Button_Search.Text" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
   <data name="SpeedSearch_Label_FrequentlyUsed" xml:space="preserve">
-    <value>Souvent utilisé :</value>
+    <value>Souvent utilisé :</value>
   </data>
-  <data name="SpeedSearch_Paging_Button_Last.AlternateText" xml:space="preserve">
-    <value>Dernière page</value>
+  <data name="SpeedSearch_Label_Keywords.Text" xml:space="preserve">
+    <value>Mots clés :</value>
+  </data>
+  <data name="SpeedSearch_Label_Lookin.Text" xml:space="preserve">
+    <value>Rechercher dans</value>
+  </data>
+  <data name="SpeedSearch_Label_MaxResults.Text" xml:space="preserve">
+    <value>Résultats maximum :</value>
   </data>
   <data name="SpeedSearch_Label_NoResults" xml:space="preserve">
     <value>Votre recherche n'a donné aucun résultat.</value>
   </data>
-  <data name="SpeedSearch_ReturnResult_Link" xml:space="preserve">
-    <value>Retourner un résultat</value>
+  <data name="SpeedSearch_Label_PagingLabel" xml:space="preserve">
+    <value>Enregistrements {0} - {1} sur {2}</value>
+  </data>
+  <data name="SpeedSearch_Label_SearchMethod.Text" xml:space="preserve">
+    <value>Méthode de recherche</value>
+  </data>
+  <data name="SpeedSearch_ListItem_MaxResults_100.Text" xml:space="preserve">
+    <value>100 premiers</value>
+  </data>
+  <data name="SpeedSearch_ListItem_MaxResults_25.Text" xml:space="preserve">
+    <value>25 premiers</value>
+  </data>
+  <data name="SpeedSearch_ListItem_MaxResults_500.Text" xml:space="preserve">
+    <value>500 premiers</value>
+  </data>
+  <data name="SpeedSearch_ListItem_MaxResults_All.Text" xml:space="preserve">
+    <value>Tout</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchFlags_Root.Text" xml:space="preserve">
+    <value>Racine</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchFlags_Sounds.Text" xml:space="preserve">
+    <value>Similarité</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchFlags_Thes.Text" xml:space="preserve">
+    <value>Thésaurus</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_And.Text" xml:space="preserve">
+    <value>Rechercher tous les mots (ET)</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_Bool.Text" xml:space="preserve">
+    <value>Booléen (ET, OU, NON)</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_Natural.Text" xml:space="preserve">
+    <value>Langage naturel</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_Or.Text" xml:space="preserve">
+    <value>Rechercher n'importe quel mot (OU)</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_Phrase.Text" xml:space="preserve">
+    <value>Rechercher l'expression exacte</value>
+  </data>
+  <data name="SpeedSearch_Paging_Button_First.AlternateText" xml:space="preserve">
+    <value>Première page</value>
+  </data>
+  <data name="SpeedSearch_Paging_Button_Last.AlternateText" xml:space="preserve">
+    <value>Dernière page</value>
   </data>
   <data name="SpeedSearch_Paging_Button_Next.AlternateText" xml:space="preserve">
     <value>Page suivante</value>
@@ -240,22 +222,40 @@
   <data name="SpeedSearch_Paging_Button_Prev.AlternateText" xml:space="preserve">
     <value>Page précédente</value>
   </data>
-  <data name="SpeedSearch_ListItem_SearchFlags_Thes.Text" xml:space="preserve">
-    <value>Thésaurus</value>
+  <data name="SpeedSearch_Preview_Link" xml:space="preserve">
+    <value>Aperçu...</value>
   </data>
-  <data name="SpeedSearch_ListItem_MaxResults_25.Text" xml:space="preserve">
-    <value>25 premiers</value>
+  <data name="SpeedSearch_Result_NoAccess" xml:space="preserve">
+    <value>Accès refusé.</value>
   </data>
-  <data name="SpeedSearch_Grid_Header_Source.HeaderText" xml:space="preserve">
-    <value>Source</value>
+  <data name="SpeedSearch_Result_NoLongerExists" xml:space="preserve">
+    <value>{0} : {1} n'existe plus ou vous n'y avez pas accès.</value>
+  </data>
+  <data name="SpeedSearch_ReturnResult_Link" xml:space="preserve">
+    <value>Retourner un résultat</value>
+  </data>
+  <data name="SpeedSearch_Title" xml:space="preserve">
+    <value>SpeedSearch</value>
   </data>
   <data name="SpeedSearch_Preview_Blocked_Error" xml:space="preserve">
     <value>Aperçu bloqué par un bloqueur de fenêtre contextuelle</value>
   </data>
-  <data name="SpeedSearch_Image_ResultUsed.AlternateText" xml:space="preserve">
-    <value>Marquer cet élément comme utile.</value>
+  <data name="SpeedSearch_Paging_Button_First.ToolTip" xml:space="preserve">
+    <value>Première page</value>
   </data>
-  <data name="SpeedSearch_Preview_Link" xml:space="preserve">
-    <value>Aperçu...</value>
+  <data name="SpeedSearch_Paging_Button_Last.ToolTip" xml:space="preserve">
+    <value>Dernière page</value>
+  </data>
+  <data name="SpeedSearch_Paging_Button_Next.ToolTip" xml:space="preserve">
+    <value>Page suivante</value>
+  </data>
+  <data name="SpeedSearch_Paging_Button_Prev.ToolTip" xml:space="preserve">
+    <value>Page précédente</value>
+  </data>
+  <data name="SpeedSearch_Error_Index_Required" xml:space="preserve">
+    <value>Au moins un index doit être sélectionné pour faire une recherche</value>
+  </data>
+  <data name="SpeedSearch_Error_Keyword_Required" xml:space="preserve">
+    <value>La requête de recherche doit contenir un mot-clé.</value>
   </data>
 </root>

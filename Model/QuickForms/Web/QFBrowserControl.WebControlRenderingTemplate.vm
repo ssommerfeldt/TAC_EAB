@@ -6,12 +6,12 @@
 <script runat="server" type="text/C#">
 	protected void set${qfcontrol.ControlId}Context(object sender, EventArgs e)
 	{
-		Sage.Platform.WebPortal.SmartParts.SmartPart sp = ${qfcontrol.ControlId} as Sage.Platform.WebPortal.SmartParts.SmartPart;
+		var sp = ${qfcontrol.ControlId} as Sage.Platform.WebPortal.SmartParts.SmartPart;
 		if (sp != null)
 		{
 			sp.InitSmartPart(ParentWorkItem, PageWorkItem.Services.Get<Sage.Platform.Application.UI.Web.IPageWorkItemLocator>());
 			sp.DialogService = DialogService;
-			Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPart esp = sp as Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPart;
+			var esp = sp as Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPart;
 			if (esp != null)
 			{
                 esp.InitEntityBoundSmartPart(PageWorkItem.Services.Get<Sage.Platform.Application.IEntityContextService>());

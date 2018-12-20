@@ -1,0 +1,20 @@
+define("Sage/MainView/ExchangeRate/nls/it/ExchangeRateDialog", {
+    "lblUpdateCurrency": "Aggiorna valuta",
+    "lblSelectEntity": "Applica la valuta aggiornata a",
+    "lblSalesOrders": "Ordini di vendita",
+    "lblOpportunities": "Opportunità",
+    "lblQuotes": "Offerte",
+    "lblOK": "OK",
+    "lblCancel": "Annulla",
+    "lblClose": "Chiudi",
+    "updateRecords_Caption": "Aggiornamento entità tassi di cambio",
+    "job_Description": "Errori durante l'aggiornamento dell'entità tasso di cambio",
+    "errorRequestingJobMgr": "Si è verificato un errore durante l'esecuzione dell'aggiornamento: ${0}",
+    "lblRecordsToUpdate": "Numero di record da aggiornare",
+    "lblLockedUpdate": "I record con tariffe bloccate non saranno aggiornati",
+    "lblNote": "Nota",
+    "OpenOrder": "Ordine aperto",
+    "SalesOrder": "Ordine di vendita",
+    "Open": "Apri",
+    "New": "Nuovo"
+});

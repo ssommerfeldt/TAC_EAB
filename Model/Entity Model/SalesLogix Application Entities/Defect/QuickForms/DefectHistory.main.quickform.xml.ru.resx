@@ -117,70 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdJournal.ec1673c5-7bb6-42ee-9122-3ed3e46221ff.ColumnHeading" xml:space="preserve">
-    <value>Старое значение</value>
-  </data>
-  <data name="lueDetailName.Caption" xml:space="preserve">
-    <value>Обновлено:</value>
-  </data>
-  <data name="grdJournal.111da4d8-11ff-4e0d-a674-e922cde28fa5.ColumnHeading" xml:space="preserve">
-    <value>Новое значение</value>
-  </data>
-  <data name="lueOwnedBy.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+  <data name="hzsAuditTrail.Caption" xml:space="preserve">
+    <value>Контрольный журнал</value>
   </data>
   <data name="grdJournal.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="lueDetailName.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="hzsAuditTrail.Caption" xml:space="preserve">
-    <value>Аудит</value>
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
   <data name="grdJournal.a0f26035-d737-4fe1-adb1-95c3d5087f21.ColumnHeading" xml:space="preserve">
     <value>Дата создания</value>
   </data>
-  <data name="dteCompletedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="lueReportedName.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+  <data name="grdJournal.0dfbbc5c-b9cf-4fbe-8855-5eacb1ea2d7e.ColumnHeading" xml:space="preserve">
+    <value>Пользователь</value>
   </data>
   <data name="grdJournal.8bff987f-93d5-4e05-a254-8c9beec6e4aa.ColumnHeading" xml:space="preserve">
     <value>Поле изменено</value>
   </data>
-  <data name="lueOwnedBy.Caption" xml:space="preserve">
-    <value>Закреплено:</value>
-  </data>
   <data name="grdJournal.48f86f0f-27b8-46dd-b8e5-fbf15dbb2663.ColumnHeading" xml:space="preserve">
     <value>Заметки</value>
   </data>
-  <data name="dteReportedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
+  <data name="lueReportedName.Caption" xml:space="preserve">
+    <value>Автор отчета:</value>
+  </data>
+  <data name="lueCreatedName.Caption" xml:space="preserve">
+    <value>Автор:</value>
+  </data>
+  <data name="lueDetailName.Caption" xml:space="preserve">
+    <value>Подробности автора обновления:</value>
+  </data>
+  <data name="lueUpdatedName.Caption" xml:space="preserve">
+    <value>Автор обновления:</value>
   </data>
   <data name="lueCompletedName.Caption" xml:space="preserve">
-    <value>Завершено:</value>
+    <value>Кем завершено:</value>
   </data>
-  <data name="lueUpdatedName.ButtonToolTip" xml:space="preserve">
+  <data name="lueOwnedBy.Caption" xml:space="preserve">
+    <value>Закреплено:</value>
+  </data>
+  <data name="grdJournal.ec1673c5-7bb6-42ee-9122-3ed3e46221ff.ColumnHeading" xml:space="preserve">
+    <value>Старое значение</value>
+  </data>
+  <data name="grdJournal.111da4d8-11ff-4e0d-a674-e922cde28fa5.ColumnHeading" xml:space="preserve">
+    <value>Новое значение</value>
+  </data>
+  <data name="lueReportedName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueCompletedName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueOwnedBy.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dteReportedDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dteCompletedDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueCreatedName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueUpdatedName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueDetailName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpCreatedDate.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpModifyDate.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpDetailDate.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueReportedName.ButtonToolTip" xml:space="preserve">
     <value>Найти</value>
   </data>
   <data name="lueCompletedName.ButtonToolTip" xml:space="preserve">
     <value>Найти</value>
   </data>
-  <data name="lueUpdatedName.Caption" xml:space="preserve">
-    <value>Изменено:</value>
+  <data name="lueOwnedBy.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
   </data>
-  <data name="grdJournal.0dfbbc5c-b9cf-4fbe-8855-5eacb1ea2d7e.ColumnHeading" xml:space="preserve">
-    <value>Пользователь</value>
+  <data name="dteReportedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dteCompletedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
   </data>
   <data name="lueCreatedName.ButtonToolTip" xml:space="preserve">
     <value>Найти</value>
   </data>
-  <data name="lueReportedName.Caption" xml:space="preserve">
-    <value>Сообщено:</value>
+  <data name="lueUpdatedName.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
   </data>
-  <data name="lueCreatedName.Caption" xml:space="preserve">
-    <value>Создал:</value>
+  <data name="lueDetailName.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dtpCreatedDate.ButtonToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpModifyDate.ButtonToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

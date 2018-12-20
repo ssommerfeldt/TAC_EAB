@@ -1,86 +1,27 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import SearchWidget from 'argos/SearchWidget';
+import getResource from 'argos/I18n';
+
+const resource = getResource('speedSearchWidget');
+
+/**
+ * @class crm.SpeedSearchWidget
+ *
+ * @mixins argos._Templated
+ *
  */
-define('Mobile/SalesLogix/SpeedSearchWidget', [
-    'dojo/_base/declare',
-    'dojo/_base/lang',
-    'dojo/_base/event',
-    'dojo/dom-class',
-    'dijit/_Widget',
-    'Sage/Platform/Mobile/_Templated'
-], function(
-    declare,
-    lang,
-    event,
-    domClass,
-    _Widget,
-    _Templated
-) {
-    return declare('Mobile.SalesLogix.SpeedSearchWidget', [_Widget, _Templated], {
-        attributeMap: {
-            queryValue: {node: 'queryNode', type: 'attribute', attribute: 'value'}
-        },
-        widgetTemplate: new Simplate([
-            '<div class="search-widget">',
-            '<div class="table-layout">',
-                '<div><input type="text" placeholder="{%= $.searchText %}" name="query" class="query" autocorrect="off" autocapitalize="off" data-dojo-attach-point="queryNode" data-dojo-attach-event="onfocus:_onFocus,onblur:_onBlur,onkeypress:_onKeyPress" /></div>',
-                '<div class="hasButton"><button class="clear-button" tabindex="-1" data-dojo-attach-event="onclick: _onClearClick"></button></div>',
-                '<div class="hasButton"><button class="subHeaderButton searchButton" data-dojo-attach-event="click: search">{%= $.searchText %}</button></div>',
-            '</div>',
-            '</div>'
-        ]),
-        queryNode: null,
+const __class = declare('crm.SpeedSearchWidget', [SearchWidget], {
+  /**
+   * @property {String} searchText The placeholder text for the input.
+   */
+  searchText: resource.searchText,
 
-        searchText: 'SpeedSearch',
-
-        _setQueryValueAttr: function(value) {
-            this._onFocus();
-            this.queryNode.value = value;
-        },
-        clear: function() {
-            domClass.remove(this.domNode, 'search-active');
-            this.set('queryValue', '');
-        },
-        search: function() {
-            var queryTerm = this.getQuery();
-            if (!lang.trim(queryTerm)) {
-                return;
-            }
-
-            this.onSearchExpression(queryTerm, this);
-        },
-        getQuery: function() {
-            return this.queryNode.value;
-        },
-        configure: function(options) {
-            lang.mixin(this, options);
-        },
-        _onClearClick: function(evt) {
-            event.stop(evt);
-            this.clear();
-            this.queryNode.focus();
-            this.queryNode.click();
-        },
-        _onBlur: function() {
-            domClass.toggle(this.domNode, 'search-active', !!this.queryNode.value);
-        },
-        _onFocus: function() {
-            domClass.add(this.domNode, 'search-active');
-        },
-        _onKeyPress: function(evt) {
-            if (evt.keyCode == 13 || evt.keyCode == 10) {
-                event.stop(evt);
-                this.queryNode.blur();
-                this.search();
-            }
-        },
-        /**
-         * The event that fires when the search widget provides an explicit search query
-         * @param expression
-         * @param widget
-         */
-        onSearchExpression: function(expression, widget) {
-        }
-    });
+  _setQueryValueAttr: function _setQueryValueAttr(value) {
+    this._onFocus();
+    this.queryNode.value = value;
+  },
 });
 
+lang.setObject('Mobile.SalesLogix.SpeedSearchWidget', __class);
+export default __class;

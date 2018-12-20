@@ -5,18 +5,7 @@
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
-  <preExecuteTargets>
-    <methodTarget id="c61299d3-d336-4d0f-adbf-984971171e5a" lastModifiedUtc="2011-09-21T03:49:40.1229992Z" targetType="Sage.SalesLogix.AreaCategoryIssue.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ValidateProperties" active="true">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
-      </ExtendedPropertiesCollection>
-    </methodTarget>
-    <methodTarget id="58387e02-b59d-4a9e-a455-6ffe4a43d0e8" lastModifiedUtc="2011-09-21T03:50:00.7621797Z" targetType="Sage.SalesLogix.AreaCategoryIssue.Rules, Sage.SalesLogix.BusinessRules" targetMethod="IsDuplicate" active="true">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
-      </ExtendedPropertiesCollection>
-    </methodTarget>
-  </preExecuteTargets>
+  <preExecuteTargets />
   <methodTargets>
     <methodTarget id="c52a762d-9261-496b-a14f-1c9ca4d75087" lastModifiedUtc="2011-09-21T03:47:28.8384902Z" targetType="Sage.SalesLogix.AreaCategoryIssue.Rules, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeInsert" active="true">
       <ExtendedPropertiesCollection>
@@ -25,5 +14,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

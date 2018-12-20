@@ -27,24 +27,22 @@
 #region Usings
 using System;
 using Sage.Entity.Interfaces;
-using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class SalesOrderItemBusinessRules
     {
-        public static void GetProductInfoStep( ISalesOrderItem salesorderitem, out System.String result)
+        public static void GetProductInfoStep(ISalesOrderItem salesorderitem, out String result)
         {
             result = salesorderitem.ProductName;
-			if(salesorderitem.Product != null)
+			if (salesorderitem.Product != null)
 			{
-			  if(string.IsNullOrEmpty(salesorderitem.ProductName))
-			  {
-			     result = salesorderitem.Product.Name;
-			  }		
-			}		
+			    if (string.IsNullOrEmpty(salesorderitem.ProductName))
+			    {
+			        result = salesorderitem.Product.Name;
+			    }
+			}
         }
     }
 }

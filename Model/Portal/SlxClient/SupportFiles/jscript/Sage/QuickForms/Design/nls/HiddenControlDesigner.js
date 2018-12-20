@@ -1,12 +1,5 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            displayNameText: "Hidden Text"
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/QuickForms/Design/nls/HiddenControlDesigner", {
+    root: {
+        displayNameText: "Hidden Text"
+    }
 });

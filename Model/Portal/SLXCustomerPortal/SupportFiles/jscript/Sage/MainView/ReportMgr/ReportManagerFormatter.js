@@ -1,12 +1,13 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/ReportManagerFormatter", [
     'Sage/Utility',
     'dojo/date/locale',
     'dojo/number',
     'dojo/string',
     'dojo/_base/array',
     'dojo/i18n!./nls/ReportManagerFormatter',
-    'Sage/Reporting/Enumerations'
+    'Sage/Reporting/Enumerations',
+    'dojo/_base/lang'
 ],
 function (
     slxUtility,
@@ -15,17 +16,17 @@ function (
     dojoString,
     dojoArray,
     nlsResources,
-    enumerations
+    enumerations,
+    lang
 ) {
-    Sage.namespace('Sage.MainView.ReportMgr.ReportManagerFormatter');
-    dojo.mixin(Sage.MainView.ReportMgr.ReportManagerFormatter, {
+    var __class = lang.setObject('Sage.MainView.ReportMgr.ReportManagerFormatter', lang.mixin({}, {
         _isNumeric: function (value) {
             return !isNaN(parseFloat(value)) && isFinite(value);
         },
         formatDate: function (value) {
             if (slxUtility.Convert.isDateString(value)) {
                 var date = slxUtility.Convert.toDateFromString(value);
-                return locale.format(date, { selector: 'datetime', fullYear: true });
+                return locale.format(date, { selector: 'datetime', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
             }
             return "";
         },
@@ -85,8 +86,8 @@ function (
         formatPluginName: function (item) {
             return Sage.MainView.ReportMgr.ReportManagerFormatter._getParameterValue(item.parameters, "PluginName");
         },
-        formatTemplateName: function (item) {
-            return Sage.MainView.ReportMgr.ReportManagerFormatter._getParameterValue(item.parameters, "TemplateName");
+        formatTemplateName: function (parameters) {
+            return Sage.MainView.ReportMgr.ReportManagerFormatter._getParameterValue(parameters, "TemplateName");
         },
         formatOutputFormat: function (item) {
             return Sage.MainView.ReportMgr.ReportManagerFormatter._getParameterValue(item.parameters, "OutputFormat");
@@ -100,11 +101,11 @@ function (
         formatCronExpression: function (item) {
             return item.cronExpression; //TODO: to be implemented
         },
-        formatAttachment: function (value, rowIndex, cell) {
-            var item = this.grid.getItem(rowIndex);
-            return dojoString.substitute('<a href="javascript: Sage.Utility.File.Attachment.getAttachment(\'${0}\');" title="${1}">${1}</a>', [item.AttachId, item.ScheduleName]);
+        formatAttachment: function (item, value, cell, options) {
+            //var item = this.grid.getItem(rowIndex);
+            cell.innerHTML = dojoString.substitute('<a href="javascript: Sage.Utility.File.Attachment.getAttachment(\'${0}\');" title="${1}">${1}</a>', [item.AttachId, item.ScheduleName]);
         },
-        formatExecutionType: function (value, rowIndex, cell) {
+        formatExecutionType: function (value) {
             return enumerations.getExecutionTypeCaption(value);
         },
         formatReportType: function (value) {
@@ -118,6 +119,7 @@ function (
                 return '';
             }
         }
-    });
+    }));
+    lang.setObject('Sage.MainView.ReportMgr.ReportManagerFormatter', __class);
     return Sage.MainView.ReportMgr.ReportManagerFormatter;
 });

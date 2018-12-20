@@ -16,7 +16,7 @@ public partial class SmartParts_Process_ScheduleProcess : EntityBoundSmartPartIn
 
     private IList<Plugin> PluginList { get; set; }
 
-    [ServiceDependency(Type = typeof(IEntityHistoryService), Required = true)]
+    [ServiceDependency]
     public IEntityHistoryService EntityHistoryService { get; set; }
 
     public override Type EntityType
@@ -118,22 +118,18 @@ public partial class SmartParts_Process_ScheduleProcess : EntityBoundSmartPartIn
             if (cboProcessType.DataSource != null)
             {
                 Plugin selectedPlugin = ((IList<Plugin>) cboProcessType.DataSource)[cboProcessType.SelectedIndex];
-                object[] objarray = new[]
-                                        {
-                                            lueContactToScheduleFor.LookupResultValue,
+                ((IContact) lueContactToScheduleFor.LookupResultValue).ScheduleProcess(
                                             selectedPlugin.PluginId,
                                             selectedPlugin.Family,
                                             selectedPlugin.Name,
-                                            ownProcessOwner.LookupResultValue
-                                        };
-                Sage.Platform.Orm.DynamicMethodLibraryHelper.Instance.Execute("Contact.ScheduleProcess", objarray);
+                                            (IUser) ownProcessOwner.LookupResultValue);
                 DialogService.CloseEventHappened(sender, e);
                 IPanelRefreshService refresher = PageWorkItem.Services.Get<IPanelRefreshService>(true);
                 refresher.RefreshTabWorkspace();
             }
             else
             {
-                DialogService.ShowMessage(GetLocalResourceObject("Error_ProcessTypes").ToString(), "SalesLogix");
+                DialogService.ShowMessage(GetLocalResourceObject("Error_ProcessTypes").ToString());
             }
         }
         catch (Exception ex)

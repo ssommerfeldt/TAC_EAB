@@ -5,15 +5,15 @@
 <style type="text/css">
     #<%= ClientID %> .x-panel-body
     {
-    	height: 200px;
+        height: 200px;
     }
     #TaskPane_item_GroupListTasklet_pane
     {
-    	padding: 0px;
+        padding: 0px;
     }
     .displayNone
     {
-    	display: none;
+        display: none;
     }
 </style>
 <div id="GroupList_node"></div>

@@ -117,61 +117,358 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtProductName.Text" xml:space="preserve">
-    <value>Продукт:</value>
+  <data name="txtDiscount.Caption" xml:space="preserve">
+    <value>Скидка</value>
   </data>
-  <data name="txtPriceLevel.Caption" xml:space="preserve">
-    <value>Уровень цены:</value>
+  <data name="curExtendedPrice.Caption" xml:space="preserve">
+    <value>Полная сумма (в базовой валюте)</value>
   </data>
-  <data name="lstbxPriceLevel.Caption" xml:space="preserve">
-    <value>Уровень цены:</value>
+  <data name="curPrice.Caption" xml:space="preserve">
+    <value>Базовый</value>
   </data>
   <data name="txtProductName.Caption" xml:space="preserve">
-    <value>Продукт:</value>
+    <value>Продукт</value>
+  </data>
+  <data name="txtProgram.Caption" xml:space="preserve">
+    <value>Уровень цены</value>
   </data>
   <data name="numQuantity.Caption" xml:space="preserve">
-    <value>Кол-во:</value>
+    <value>Количество</value>
+  </data>
+  <data name="btnOK.Caption" xml:space="preserve">
+    <value>OК</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="curCalculatedPrice.Caption" xml:space="preserve">
+    <value>Скорректированная (базовая)</value>
+  </data>
+  <data name="curDocCalculatedPrice.Caption" xml:space="preserve">
+    <value>Скорректировано (заказ на продажу)</value>
+  </data>
+  <data name="txtProductName.Text" xml:space="preserve">
+    <value>Продукт</value>
+  </data>
+  <data name="txtPriceLevel.Caption" xml:space="preserve">
+    <value>Уровень цены</value>
+  </data>
+  <data name="pklFamily.Caption" xml:space="preserve">
+    <value>Семейство</value>
+  </data>
+  <data name="txtSKU.Caption" xml:space="preserve">
+    <value>Единица учета</value>
+  </data>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="txtLineNumber.Caption" xml:space="preserve">
+    <value>Номер строки</value>
+  </data>
   <data name="Closed_Caption" xml:space="preserve">
     <value>Закрыть</value>
   </data>
-  <data name="txtLineNumber.Caption" xml:space="preserve">
-    <value>Линия:</value>
+  <data name="curErpPrice.Caption" xml:space="preserve">
+    <value>Базовый:</value>
   </data>
-  <data name="txtProgram.Caption" xml:space="preserve">
+  <data name="QFMultiTab_Page_1.Caption" xml:space="preserve">
+    <value>Подробности ERP</value>
+  </data>
+  <data name="QFMultiTab_Page_2.Caption" xml:space="preserve">
+    <value>Подстроки</value>
+  </data>
+  <data name="pklStatus.Caption" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="txtPOReference.Caption" xml:space="preserve">
+    <value>Ссылка заказа на покупку</value>
+  </data>
+  <data name="grdSubItems.87c07947-1a2b-4add-8873-44d6330174e5.ColumnHeading" xml:space="preserve">
+    <value>Номер подстроки</value>
+  </data>
+  <data name="grdSubItems.7766af81-0da2-4ec7-8b5b-ce7cf2b6f7f9.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="grdSubItems.39ca1bc4-9bae-4efc-8c70-60d5760ce05b.ColumnHeading" xml:space="preserve">
+    <value>ЕИ</value>
+  </data>
+  <data name="grdSubItems.8e98b062-5432-4fcc-a566-a6881f801536.ColumnHeading" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="grdSubItems.3f90e469-7639-40b3-a172-f5bc96ab9062.ColumnHeading" xml:space="preserve">
+    <value>Заметка</value>
+  </data>
+  <data name="grdSubItems.7daa7c9a-8993-4daa-8feb-89c18ebb3b11.ColumnHeading" xml:space="preserve">
+    <value>Количество в базовой ЕИ</value>
+  </data>
+  <data name="dtePromisedDelivery.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dtePromisedShipDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dteRequiredDelivery.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dteStatusDate.Caption" xml:space="preserve">
+    <value>Дата статуса</value>
+  </data>
+  <data name="txtUnitPriceUOM.Caption" xml:space="preserve">
+    <value>ЕИ цены за единицу</value>
+  </data>
+  <data name="txtPricePerQtyUOM.Caption" xml:space="preserve">
+    <value>ЕИ цены за количество</value>
+  </data>
+  <data name="numOpenQty.Caption" xml:space="preserve">
+    <value>Открытое количество</value>
+  </data>
+  <data name="txtOpemUOM.Caption" xml:space="preserve">
+    <value>ЕИ открытого количества</value>
+  </data>
+  <data name="numShippedQty.Caption" xml:space="preserve">
+    <value>Доставленное количество</value>
+  </data>
+  <data name="txtShippedUOM.Caption" xml:space="preserve">
+    <value>ЕИ доставленного количества</value>
+  </data>
+  <data name="chkBackOrdered.Caption" xml:space="preserve">
+    <value>Недопоставлено</value>
+  </data>
+  <data name="chkDropShip.Caption" xml:space="preserve">
+    <value>Прямая доставка</value>
+  </data>
+  <data name="chkPartialShipAllowed.Caption" xml:space="preserve">
+    <value>Частичная доставка разрешена</value>
+  </data>
+  <data name="chkFixedPrice.Caption" xml:space="preserve">
+    <value>Элемент фиксированной цены</value>
+  </data>
+  <data name="chkRushRequest.Caption" xml:space="preserve">
+    <value>Срочный запрос</value>
+  </data>
+  <data name="chkSubstituteItem.Caption" xml:space="preserve">
+    <value>Изделие на замену</value>
+  </data>
+  <data name="pklIncoTerm.Caption" xml:space="preserve">
+    <value>Инкотермс</value>
+  </data>
+  <data name="txtUpcId.Caption" xml:space="preserve">
+    <value>ИД универсального товарного кода</value>
+  </data>
+  <data name="lueShipTo.LookupProperties.ErpAccountingEntityId.PropertyHeader" xml:space="preserve">
+    <value>ИД сущности системы учета</value>
+  </data>
+  <data name="lueShipTo.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="lueShipTo.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="grdSubLines.29645b41-cc56-4d44-a984-525202f8b6c5.ColumnHeading" xml:space="preserve">
+    <value>Количество в базовой ЕИ</value>
+  </data>
+  <data name="grdSubLines.03ef3cc1-b324-4eaa-8481-b24ddcd73ce6.ColumnHeading" xml:space="preserve">
+    <value>Заметка</value>
+  </data>
+  <data name="grdSubLines.f9089da0-b920-409a-9c40-8c2969d4cf8c.ColumnHeading" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="grdSubLines.ba0d1b20-2bd0-4335-89ec-813dca23ac34.ColumnHeading" xml:space="preserve">
+    <value>ЕИ</value>
+  </data>
+  <data name="grdSubLines.2d172260-60f8-4d6a-acdd-6613ee301ec9.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="grdSubLines.553ff206-087a-48d3-b83d-4624d26649b1.ColumnHeading" xml:space="preserve">
+    <value>Номер подстроки</value>
+  </data>
+  <data name="dtePromisedDelivery.Caption" xml:space="preserve">
+    <value>Ожидаемая поставка</value>
+  </data>
+  <data name="dteRequiredDelivery.Caption" xml:space="preserve">
+    <value>Требуемая поставка</value>
+  </data>
+  <data name="dtePromisedShipDate.Caption" xml:space="preserve">
+    <value>Ожидаемая доставка</value>
+  </data>
+  <data name="dteStatusDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="numPricePerQuantity.Caption" xml:space="preserve">
+    <value>Цена за количество</value>
+  </data>
+  <data name="grdSubLines.f66fe39a-c975-463d-934e-b8200e680093.ColumnHeading" xml:space="preserve">
+    <value>Цена в документе</value>
+  </data>
+  <data name="tabErpItemDetails_Page_3.Caption" xml:space="preserve">
+    <value>Скидка/надбавки</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.ac6d6c6c-27a6-44c4-9c75-0ca69aeb00f0.ColumnHeading" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="1ed517f3-9619-403a-8644-5c54dc953e4f.DialogTitleOverride" xml:space="preserve">
+    <value>Редактировать элемент скидки/надбавки</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.a2ae082f-ad2a-49e8-9fc8-9c61bfced0bf.ColumnHeading" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.c89efdf0-c937-40af-9287-0f1c7cf5573c.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.e9e1518a-c073-423a-a838-110d3494b384.ColumnHeading" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.f284efde-3179-442d-9807-1fd9801289aa.ColumnHeading" xml:space="preserve">
+    <value>Ставка</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.a099e3b1-1894-4a6a-910a-391bff6acfdd.ColumnHeading" xml:space="preserve">
+    <value>Код причины</value>
+  </data>
+  <data name="grdDiscountChargeItems.8970dd64-2c70-44f4-8951-079fbbcb2049.ColumnHeading" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="grdDiscountChargeItems.bdaabae2-12e9-4e4d-82d3-3c747af45c3a.ColumnHeading" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="grdDiscountChargeItems.4c074d08-56b6-4ae1-b79f-70049e076a09.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="grdDiscountChargeItems.32c1d39a-0c25-4e21-9073-86a27c6fa36e.ColumnHeading" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="grdDiscountChargeItems.71b4e6b8-008e-49c8-a9a1-839386f63800.ColumnHeading" xml:space="preserve">
+    <value>Ставка</value>
+  </data>
+  <data name="grdDiscountChargeItems.2ea4842d-c0d8-4436-83ff-a8d3f470c21d.ColumnHeading" xml:space="preserve">
+    <value>Код причины</value>
+  </data>
+  <data name="056b1d24bc4deb88984435bb5476f9.Caption" xml:space="preserve">
+    <value>Продукт</value>
+  </data>
+  <data name=".da02dc78-8d56-456b-890b-84bd100e44a9.ColumnHeading" xml:space="preserve">
+    <value>Продукт</value>
+  </data>
+  <data name=".cd47c8ad-76b1-4f1a-9323-159a92d12d90.ColumnHeading" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name=".89b6d69f-a120-4978-87ae-a8322e41c055.ColumnHeading" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name=".028ede2a-b759-4a12-928d-3ba9cb72975c.ColumnHeading" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name=".b931be49-b820-4bd3-8a6c-63171cfefcbe.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name=".a9aeefff-a9a2-4387-bd8d-c0530282e5da.ColumnHeading" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name=".8e1d2125-e0ce-4472-801c-e5c72e790dcf.ColumnHeading" xml:space="preserve">
+    <value>Ставка</value>
+  </data>
+  <data name=".7c5c959e-fc2e-4cf1-ba94-7392a7e75b34.ColumnHeading" xml:space="preserve">
+    <value>Код причины</value>
+  </data>
+  <data name="714aa869-9924-4dea-9084-6a6204a01f48.DialogTitleOverride" xml:space="preserve">
+    <value>Редактировать элемент скидки/надбавки</value>
+  </data>
+  <data name="lueShipTo.Caption" xml:space="preserve">
+    <value>Грузополучатель</value>
+  </data>
+  <data name="tabErpItemDetails_Page_4.Caption" xml:space="preserve">
+    <value>Стоимость</value>
+  </data>
+  <data name="tabErpItemDetails_Page_5.Caption" xml:space="preserve">
+    <value>Стоимость</value>
+  </data>
+  <data name="tabErpItemDetails_Page_6.Caption" xml:space="preserve">
+    <value>Подробности</value>
+  </data>
+  <data name="tabErpItemDetails_Page_7.Caption" xml:space="preserve">
+    <value>Доставить</value>
+  </data>
+  <data name="txtLineType.Caption" xml:space="preserve">
+    <value>Тип строки</value>
+  </data>
+  <data name="pklType.Caption" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="numErpQuantity.Caption" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="lstbxPriceLevel.Caption" xml:space="preserve">
     <value>Уровень цены:</value>
   </data>
-  <data name="txtSKU.Caption" xml:space="preserve">
-    <value>Единица учета:</value>
+  <data name="curDocExtendedPrice.Caption" xml:space="preserve">
+    <value>Полная сумма (заказ на продажу)</value>
   </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Описание:</value>
+  <data name="curErpDocCalculatedPrice.Caption" xml:space="preserve">
+    <value>Скорректировано (заказ на продажу)</value>
   </data>
-  <data name="txtDiscount.Caption" xml:space="preserve">
-    <value>Скидка:</value>
+  <data name="curErpDocExtendedPrice.Caption" xml:space="preserve">
+    <value>Полная сумма (заказ на продажу)</value>
   </data>
-  <data name="curCalculatedPrice.Caption" xml:space="preserve">
-    <value>Уточненная цена:</value>
+  <data name="curErpCalculatedPrice.Caption" xml:space="preserve">
+    <value>Скорректированная (базовая)</value>
   </data>
-  <data name="SalesOrderStatus_Closed" xml:space="preserve">
-    <value>Закрыта</value>
+  <data name="curErpExtendedPrice.Caption" xml:space="preserve">
+    <value>Полная сумма (в базовой валюте)</value>
   </data>
-  <data name="btnOK.Caption" xml:space="preserve">
-    <value>Ок</value>
+  <data name="lueUnitOfMeasure.Caption" xml:space="preserve">
+    <value>Единица измерения</value>
   </data>
-  <data name="curMCCalcPrice.Caption" xml:space="preserve">
-    <value>Уточненная цена:</value>
+  <data name="lueUnitOfMeasure.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
   </data>
-  <data name="pklFamily.Caption" xml:space="preserve">
-    <value>Семейство:</value>
+  <data name="lueUnitOfMeasure.LookupProperties.ShortName.PropertyHeader" xml:space="preserve">
+    <value>Краткое имя</value>
   </data>
-  <data name="curExtendedPrice.Caption" xml:space="preserve">
-    <value>Сумма:</value>
+  <data name="lueUnitOfMeasure.LookupProperties.UOMType.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
   </data>
-  <data name="curPrice.Caption" xml:space="preserve">
-    <value>Цена:</value>
+  <data name="lueUnitOfMeasure.LookupProperties.ActiveFlag.PropertyHeader" xml:space="preserve">
+    <value>Активно</value>
+  </data>
+  <data name="lueUnitOfMeasure.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="txtErpLineNumber.Caption" xml:space="preserve">
+    <value>Номер строки</value>
+  </data>
+  <data name=".Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabErpItemDetails_Page_8.Caption" xml:space="preserve">
+    <value>Распределенные налоги</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.1eea5171-03d5-4f50-8c0c-22b8902d9f86.ColumnHeading" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.cd316801-0950-4170-b809-bc318bf50682.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.49b6b023-a6ce-4e0f-842d-caebaf6944a3.ColumnHeading" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.13244da6-66be-4db8-abb3-19208032e450.ColumnHeading" xml:space="preserve">
+    <value>Ставка</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.992d8688-deb0-46f8-b647-3c9e44ed9ad7.ColumnHeading" xml:space="preserve">
+    <value>Код причины</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.8fe8ec4f-b56c-4471-8d49-617b26902b13.ColumnHeading" xml:space="preserve">
+    <value>Сумма корректировки единицы документа</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.3a0e1254-6f82-49ed-a012-06797d282f28.ColumnHeading" xml:space="preserve">
+    <value>Сумма корректировки единицы</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.71e9c4cf-7bd8-4ae7-8338-e0e065de5ca4.ColumnHeading" xml:space="preserve">
+    <value>Метод расчета</value>
+  </data>
+  <data name="txtNotes.Caption" xml:space="preserve">
+    <value>Заметки</value>
+  </data>
+  <data name="txtNotes.Text" xml:space="preserve">
+    <value />
   </data>
 </root>

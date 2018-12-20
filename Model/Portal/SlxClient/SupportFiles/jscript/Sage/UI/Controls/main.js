@@ -1,4 +1,4 @@
-define([
+define("Sage/UI/Controls/main", [
     "Sage/UI/Controls/_customSelectMixin",
     "Sage/UI/Controls/_DialogHelpIconMixin",
     "Sage/UI/Controls/Address",
@@ -13,6 +13,10 @@ define([
     "Sage/UI/Controls/DropDownSelectUser",
     "Sage/UI/Controls/DurationSelect",
     "Sage/UI/Controls/Email",
+    "Sage/UI/Controls/EntityInfoToolTip",
+    "Sage/UI/Controls/FieldAttributeControlFactory",
+    "Sage/UI/Controls/FieldPropertyObject",
+    "Sage/UI/Controls/FieldStore",
     "Sage/UI/Controls/HelpMenu",
     "Sage/UI/Controls/LogOffButton",
     "Sage/UI/Controls/Lookup",
@@ -24,11 +28,18 @@ define([
     "Sage/UI/Controls/Phone",
     "Sage/UI/Controls/PickList",
     "Sage/UI/Controls/PickListAsText",
+    "Sage/UI/Controls/PropertyDropDown",
+    "Sage/UI/Controls/PropertyStore",
+    "Sage/UI/Controls/PickListAsText",
     "Sage/UI/Controls/Select",        
     "Sage/UI/Controls/SimpleTextarea",
     "Sage/UI/Controls/SingleSelectPickList",
     "Sage/UI/Controls/SummaryAggregate",
-    "Sage/UI/Controls/TextBox"
+    "Sage/UI/Controls/TextBox",
+    "Sage/UI/Controls/PropertyStore",
+    "Sage/UI/Controls/PropertyDropDown",
+    "Sage/UI/Controls/Grid",
+    "Sage/UI/Controls/GridParts/main"
     ], function() {
 	// module:
         // Sage/UI/Controls

@@ -42,6 +42,8 @@ var cachedEntities = model.Packages
     <session-factory>
       <property name="cache.use_query_cache">true</property>
       <property name="query.substitutions">true 'T', false 'F', True 'T', False 'F'</property>
+      <property name="query.factory_class">Sage.Platform.Security.SecuredQueryTranslatorFactory, Sage.Platform</property>
+      <property name="proxyfactory.factory_class">Sage.Platform.Security.SecuredProxyFactoryFactory, Sage.Platform</property>
 
       <!-- Cache Settings -->
 

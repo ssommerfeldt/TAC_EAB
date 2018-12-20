@@ -117,17 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtReturnId.Caption" xml:space="preserve">
+    <value>ID reso:</value>
+  </data>
+  <data name="luTicketId.Caption" xml:space="preserve">
+    <value>ID ticket:</value>
+  </data>
+  <data name="luAccount.Caption" xml:space="preserve">
+    <value>Azienda:</value>
+  </data>
+  <data name="luContact.Caption" xml:space="preserve">
+    <value>Contatto:</value>
+  </data>
+  <data name="txtReason.Caption" xml:space="preserve">
+    <value>Motivo:</value>
+  </data>
+  <data name="txtPO.Caption" xml:space="preserve">
+    <value>OdA cliente:</value>
+  </data>
+  <data name="pklStatus.Caption" xml:space="preserve">
+    <value>Stato:</value>
+  </data>
+  <data name="pklType.Caption" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+  <data name="pklPriority.Caption" xml:space="preserve">
+    <value>Priorità:</value>
+  </data>
+  <data name="dtpExpectedBy.Caption" xml:space="preserve">
+    <value>Atteso da:</value>
+  </data>
+  <data name="ownAssignedTo.Caption" xml:space="preserve">
+    <value>Assegnato a:</value>
+  </data>
   <data name="userCreatedBy.Caption" xml:space="preserve">
     <value>Creato da:</value>
   </data>
-  <data name="luAccount.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
+  <data name="ownerClosedBy.Caption" xml:space="preserve">
+    <value>Chiuso da:</value>
   </data>
-  <data name="luContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Salva</value>
   </data>
-  <data name="luTicketId.Caption" xml:space="preserve">
-    <value>ID Ticket:</value>
+  <data name="luTicketId.LookupProperties.TicketNumber.PropertyHeader" xml:space="preserve">
+    <value>ID ticket</value>
+  </data>
+  <data name="luTicketId.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Azienda</value>
+  </data>
+  <data name="luTicketId.LookupProperties.Subject.PropertyHeader" xml:space="preserve">
+    <value>Oggetto</value>
   </data>
   <data name="luContact.LookupProperties.LastName.PropertyHeader" xml:space="preserve">
     <value>Cognome</value>
@@ -135,148 +174,109 @@
   <data name="luContact.LookupProperties.FirstName.PropertyHeader" xml:space="preserve">
     <value>Nome</value>
   </data>
-  <data name="luAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="txtPO.Caption" xml:space="preserve">
-    <value>Num. Ordine del Cliente:</value>
-  </data>
-  <data name="dtpAssignedTo.ButtonToolTip" xml:space="preserve">
-    <value>Calendario</value>
-  </data>
-  <data name="luAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
-    <value>Sotto-Tipo</value>
-  </data>
-  <data name="luContact.Caption" xml:space="preserve">
-    <value>Contatto:</value>
-  </data>
-  <data name="ownerClosedBy.Caption" xml:space="preserve">
-    <value>Chiuso da:</value>
-  </data>
-  <data name="dtpCloseDate.ButtonToolTip" xml:space="preserve">
-    <value>Calendario</value>
-  </data>
-  <data name="userCreatedBy.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="luContact.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="luTicketId.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Azienda</value>
-  </data>
-  <data name="btnSave.Caption" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="luContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Città</value>
-  </data>
-  <data name="luTicketId.LookupProperties.Area.PropertyHeader" xml:space="preserve">
-    <value>Area</value>
-  </data>
-  <data name="luAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Azienda</value>
-  </data>
-  <data name="luContact.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Azienda</value>
+  <data name="luContact.LookupProperties.Title.PropertyHeader" xml:space="preserve">
+    <value>Titolo</value>
   </data>
   <data name="luContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Tel. Ufficio</value>
-  </data>
-  <data name="ownAssignedTo.Caption" xml:space="preserve">
-    <value>Assegnato a:</value>
-  </data>
-  <data name="luTicketId.LookupProperties.Contact.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Contatto</value>
-  </data>
-  <data name="luAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Resp. Azienda</value>
-  </data>
-  <data name="luTicketId.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="luAccount.Caption" xml:space="preserve">
-    <value>Azienda:</value>
-  </data>
-  <data name="luTicketId.LookupProperties.Urgency.Description.PropertyHeader" xml:space="preserve">
-    <value>Urgenza</value>
+    <value>Telefono ufficio</value>
   </data>
   <data name="btnDelete.Caption" xml:space="preserve">
     <value>Elimina</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Stai per eliminare definitivamente questo record.</value>
-  </data>
-  <data name="luContact.LookupProperties.Title.PropertyHeader" xml:space="preserve">
-    <value>Titolo</value>
-  </data>
-  <data name="txtReason.Caption" xml:space="preserve">
-    <value>Motivo:</value>
-  </data>
-  <data name="luAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="dtpExpectedBy.ButtonToolTip" xml:space="preserve">
-    <value>Calendario</value>
-  </data>
-  <data name="luContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
-    <value>E-mail</value>
-  </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Elimina</value>
   </data>
-  <data name="luTicketId.LookupProperties.Subject.PropertyHeader" xml:space="preserve">
-    <value>Oggetto</value>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value>Salva</value>
   </data>
-  <data name="luTicketId.LookupProperties.TicketNumber.PropertyHeader" xml:space="preserve">
-    <value>ID Ticket</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Si sta per eliminare definitivamente questo record.</value>
   </data>
   <data name="luContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
     <value>Nome</value>
   </data>
-  <data name="pklPriority.Caption" xml:space="preserve">
-    <value>Priorità:</value>
+  <data name="luContact.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Azienda</value>
+  </data>
+  <data name="luContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="luContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="luContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="luTicketId.LookupProperties.Contact.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Contatto</value>
+  </data>
+  <data name="luTicketId.LookupProperties.Contact.WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>Telefono ufficio</value>
+  </data>
+  <data name="luTicketId.LookupProperties.StatusCode.PropertyHeader" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="luTicketId.LookupProperties.Urgency.Description.PropertyHeader" xml:space="preserve">
+    <value>Urgenza</value>
+  </data>
+  <data name="luTicketId.LookupProperties.Area.PropertyHeader" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="luTicketId.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="luAccount.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="luContact.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="dtpExpectedBy.ButtonToolTip" xml:space="preserve">
+    <value>Calendario</value>
   </data>
   <data name="ownAssignedTo.ButtonToolTip" xml:space="preserve">
     <value>Trova</value>
   </data>
-  <data name="luTicketId.LookupProperties.Contact.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Tel. Ufficio</value>
-  </data>
-  <data name="txtReturnId.Caption" xml:space="preserve">
-    <value>ID Reso:</value>
-  </data>
-  <data name="luAccount.LookupProperties.UserInfo.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Resp. Azienda</value>
-  </data>
-  <data name="luAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
+  <data name="userCreatedBy.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
   </data>
   <data name="ownerClosedBy.ButtonToolTip" xml:space="preserve">
     <value>Trova</value>
   </data>
+  <data name="dtpAssignedTo.ButtonToolTip" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="dtpCloseDate.ButtonToolTip" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="luAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Azienda</value>
+  </data>
   <data name="luAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
     <value>Città</value>
   </data>
-  <data name="luAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Proprietario</value>
-  </data>
-  <data name="dtpExpectedBy.Caption" xml:space="preserve">
-    <value>Atteso Da:</value>
-  </data>
-  <data name="pklStatus.Caption" xml:space="preserve">
-    <value>Status:</value>
-  </data>
-  <data name="luTicketId.LookupProperties.StatusCode.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
+  <data name="luAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Provincia</value>
   </data>
   <data name="luAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
     <value>Telefono principale</value>
   </data>
-  <data name="pklType.Caption" xml:space="preserve">
-    <value>Tipo:</value>
+  <data name="luAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="luAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Sottotipo</value>
+  </data>
+  <data name="luAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="luAccount.LookupProperties.UserInfo.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Acct manager</value>
+  </data>
+  <data name="luAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Proprietario</value>
+  </data>
+  <data name="luAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Acct manager</value>
   </data>
 </root>

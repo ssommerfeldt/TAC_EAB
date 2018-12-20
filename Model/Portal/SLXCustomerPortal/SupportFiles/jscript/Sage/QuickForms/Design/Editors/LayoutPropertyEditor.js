@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/Editors/LayoutPropertyEditor", [
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dijit/layout/ContentPane',
@@ -90,7 +90,7 @@ define([
 
             try
             {
-                this._designer.set('row', parseInt(value) || 0);
+                this._designer.set('row', parseInt(value, 10) || 0);
             }
             catch (e)
             {
@@ -106,7 +106,7 @@ define([
 
             try
             {
-                this._designer.set('column', parseInt(value) || 0);
+                this._designer.set('column', parseInt(value, 10) || 0);
             }
             catch (e)
             {
@@ -122,7 +122,7 @@ define([
 
             try
             {
-                this._designer.set('rowSpan', parseInt(value) || 1);
+                this._designer.set('rowSpan', parseInt(value, 10) || 1);
             }
             catch (e)
             {
@@ -138,7 +138,7 @@ define([
 
             try
             {
-                this._designer.set('columnSpan', parseInt(value) || 1);
+                this._designer.set('columnSpan', parseInt(value, 10) || 1);
             }
             catch (e)
             {

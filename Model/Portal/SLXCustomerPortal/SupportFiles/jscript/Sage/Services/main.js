@@ -1,6 +1,7 @@
-define([
+define("Sage/Services/main", [
     "Sage/Services/_ServiceMixin",
     "Sage/Services/ActivityAction",
+    "Sage/Services/ApplicationStateService",
     "Sage/Services/UserOptions",
     "Sage/Services/ActivityActionProcessor",
     "Sage/Services/ActivityService",
@@ -12,7 +13,11 @@ define([
     "Sage/Services/SelectionContextService",
     "Sage/Services/SystemOptions",
     "Sage/Services/JobService",
-    "Sage/Services/ReportingService"
+    "Sage/Services/EntityService",
+    "Sage/Services/ReportingService",
+    "Sage/Services/PickListService",
+    "Sage/Services/CultureService",
+    "Sage/Services/LocalStorageService"
     ], function() {
 	// module:
         // Sage/Services/main

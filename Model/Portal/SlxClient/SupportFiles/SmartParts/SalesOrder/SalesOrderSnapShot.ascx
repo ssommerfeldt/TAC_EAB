@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="SalesOrderSnapShot.ascx.cs" Inherits="SalesOrderSnapShot" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeFile="SalesOrderSnapShot.ascx.cs" Inherits="SalesOrderSnapShot" %>
 <%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls" TagPrefix="SalesLogix" %>
 <%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls.Lookup" TagPrefix="SalesLogix" %>
 <%@ Register Assembly="Sage.SalesLogix.HighLevelTypes" Namespace="Sage.SalesLogix.HighLevelTypes" TagPrefix="SalesLogix" %>
@@ -43,11 +43,11 @@
             </td>
             <td runat="server" id="rowBaseSubTotal" class="snapshot-column alignright">
                 <SalesLogix:Currency runat="server" ID="curBaseSubTotal" DisplayMode="AsText" ExchangeRateType="BaseRate"
-                    DisplayCurrencyCode="false">
+                    DisplayCurrencyCode="true">
                 </SalesLogix:Currency>
             </td>
             <td id="rowSOSubTotal" runat="server" visible="false" class="snapshot-column alignright">
-                <SalesLogix:Currency runat="server" ID="curSubTotal" DisplayMode="AsText" ExchangeRateType="EntityRate"
+                <SalesLogix:Currency runat="server" ID="curSubTotal" DisplayMode="AsText" ExchangeRateType="BaseRate"
                     DisplayCurrencyCode="true">
                 </SalesLogix:Currency>
             </td>
@@ -57,7 +57,7 @@
                 </SalesLogix:Currency>
             </td>
         </tr>
-        <tr>
+        <tr id="rowDiscount">
             <td class="snapshot-column">
                 <asp:LinkButton ID="lnkDiscount" runat="server" Text="<%$ resources: lnkDiscount.Caption %>"
                     OnClick="ShowDetailsView_OnClick">
@@ -65,7 +65,7 @@
             </td>
             <td class="snapshot-column alignright">
                 <SalesLogix:Currency runat="server" ID="curBaseDiscount" DisplayMode="AsText" ExchangeRateType="BaseRate"
-                    DisplayCurrencyCode="false">
+                    DisplayCurrencyCode="true">
                 </SalesLogix:Currency>
             </td>
             <td id="rowSODiscount" runat="server" visible="false" class="snapshot-column alignright">
@@ -79,7 +79,7 @@
                 </SalesLogix:Currency>
             </td>
         </tr>
-        <tr>
+        <tr id="rowShipping">
             <td class="snapshot-column">
                 <asp:LinkButton ID="lnkShipping" runat="server" Text="<%$ resources: lblShipping.Caption %>"
                     OnClick="ShowDetailsView_OnClick">
@@ -87,7 +87,7 @@
             </td>
             <td class="snapshot-column alignright">
                 <SalesLogix:Currency runat="server" ID="curBaseShipping" DisplayMode="AsText" ExchangeRateType="BaseRate"
-                    DisplayCurrencyCode="false">
+                    DisplayCurrencyCode="true">
                 </SalesLogix:Currency>
             </td>
             <td id="rowSOShipping" runat="server" visible="false" class="snapshot-column alignright">
@@ -101,7 +101,7 @@
                 </SalesLogix:Currency>
             </td>
         </tr>
-        <tr>
+        <tr id="rowTax">
             <td class="snapshot-column">
                 <asp:LinkButton ID="lnkTaxRate" runat="server" Text="<%$ resources: lnkTax.Caption %>"
                     OnClick="ShowDetailsView_OnClick">
@@ -109,9 +109,8 @@
             </td>
             <td class="snapshot-column alignright">
                 <SalesLogix:Currency runat="server" ID="curBaseTax" DisplayMode="AsText" ExchangeRateType="BaseRate"
-                    DisplayCurrencyCode="false">
+                    DisplayCurrencyCode="true">
                 </SalesLogix:Currency>
-                <asp:Label runat="server" ID="lblBaseRatePercentage" Enabled="false"></asp:Label>
             </td>
             <td id="rowSOTax" runat="server" visible="false" class="snapshot-column alignright">
                 <SalesLogix:Currency runat="server" ID="curTax" DisplayMode="AsText" ExchangeRateType="EntityRate"
@@ -132,11 +131,11 @@
             </td>
             <td class="snapshot-column alignright">
                 <SalesLogix:Currency runat="server" ID="curBaseTotal" DisplayMode="AsText" ExchangeRateType="BaseRate"
-                    DisplayCurrencyCode="false">
+                    DisplayCurrencyCode="true">
                 </SalesLogix:Currency>
             </td>
             <td id="rowSOTotal" runat="server" visible="false" class="snapshot-column alignright">
-                <SalesLogix:Currency runat="server" ID="curTotal" DisplayMode="AsText" ExchangeRateType="EntityRate"
+                <SalesLogix:Currency runat="server" ID="curTotal" DisplayMode="AsText" ExchangeRateType="BaseRate"
                     DisplayCurrencyCode="true">
                 </SalesLogix:Currency>
             </td>
@@ -148,26 +147,25 @@
         </tr>
     </table>
     <br />
-    <table id="tblMultiCurrency" runat="server" border="0" cellpadding="0" cellspacing="0" width="100%" visible="false">
-        <col width="100%" />
+    <table id="tblMultiCurrency" runat="server" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
-                <div class=" lbl alignleft">
+                <div class="lbl alignleft">
                     <asp:Label ID="lueCurrencyCode_lbl" AssociatedControlID="lueCurrencyCode" runat="server"
                         Text="<%$ resources: lueCurrencyCode.Caption %>" >
                     </asp:Label>
                 </div>
-                <div class="textcontrol lookup">
+                <div class="lbl alignleft">
                     <SalesLogix:LookupControl runat="server" ID="lueCurrencyCode" ToolTip="<%$ resources: lueCurrencyCode.ToolTip %>" LookupEntityName="ExchangeRate"
                         LookupEntityTypeName="Sage.Entity.Interfaces.IExchangeRate, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
                         LookupDisplayMode="HyperText" OnLookupResultValueChanged="CurrencyCode_OnChange" AutoPostBack="true" LookupBindingMode="String"
-                        InitializeLookup="true" >
+                        InitializeLookup="true" SeedProperty="Period.Id" >
                         <LookupProperties>
                             <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueCurrencyCode.Description.PropertyHeader %>" PropertyName="Description"
                                 PropertyType="System.String" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
                             </SalesLogix:LookupProperty>
-                            <SalesLogix:LookupProperty PropertyHeader="Currency Code" PropertyName="Id" PropertyFormat="None" PropertyType="System.String"
-                                UseAsResult="True">
+                            <SalesLogix:LookupProperty IsSortable="False" PropertyHeader="<%$ resources: lueCurrencyCode.CurrencyCode.PropertyHeader %>" 
+                                PropertyName="CurrencyCode" PropertyFormat="None" PropertyType="System.String" UseAsResult="True">
                             </SalesLogix:LookupProperty>
                             <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueCurrencyCode.Rate.PropertyHeader %>" PropertyName="Rate"
                                 PropertyType="System.Double" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
@@ -186,7 +184,7 @@
                         Text="<%$ resources: txtExchangeRate.Caption %>">
                     </asp:Label>
                 </div>
-                <div runat="server" id="divExchangeRateLabel" class="textcontrol">
+                <div runat="server" id="divExchangeRateLabel" class="lbl alignleft">
                     <asp:Label runat="server" ID="lblExchangeRateValue" Enabled="false"></asp:Label>
                 </div>
                 <div runat="server" id="divExchangeRateText" class="textcontrol" style="width:65px">
@@ -198,12 +196,28 @@
         <tr>
             <td>
                 <div class="lbl alignleft">
-                    <asp:Label ID="lblExchangeRateDate" AssociatedControlID="dtpExchangeRateDate" runat="server"
+                    <asp:Label ID="lblExchangeRateDate" AssociatedControlID="dtpExchangeRateDate" runat="server" 
                         Text="<%$ resources: dtpExchangeRateDate.Caption %>">
                     </asp:Label>
                 </div>
-                <div>
-                    <SalesLogix:DateTimePicker runat="server" ID="dtpExchangeRateDate" DisplayMode="AsText"></SalesLogix:DateTimePicker>
+                <div class="datepicker textcontrol">
+                    <SalesLogix:DateTimePicker runat="server" ID="dtpExchangeRateDate" DisplayMode="AsText" DisplayTime="false"></SalesLogix:DateTimePicker>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table id="tblSyncState" runat="server" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <div class="lbl alignleft">
+                    <asp:Label ID="lblSyncState" runat="server" Text="<%$ resources: lblSyncStateNoPendingChanges %>" Visible="false"></asp:Label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="lbl alignleft">
+                    <asp:Label ID="lblPendingChanges" runat="server" Text="<%$ resources: lblSyncStatePendingChanges %>" ForeColor="red" Visible="False"></asp:Label>
                 </div>
             </td>
         </tr>

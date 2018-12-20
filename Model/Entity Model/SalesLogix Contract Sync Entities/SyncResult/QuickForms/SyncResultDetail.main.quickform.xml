@@ -63,11 +63,11 @@
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>txtResourceType</ControlId>
+        <ControlId>txtJob</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>ResourceType</DataItemName>
+            <DataItemName>RunName</DataItemName>
             <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
@@ -78,7 +78,7 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>txtResourceType</ResourceKey>
+          <ResourceKey>txtJob</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -139,11 +139,11 @@
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>txtJob</ControlId>
+        <ControlId>txtSeverity</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>RunName</DataItemName>
+            <DataItemName>Severity</DataItemName>
             <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
@@ -154,7 +154,7 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>txtJob</ResourceKey>
+          <ResourceKey>txtSeverity</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -177,11 +177,11 @@
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>txtHttpStatus</ControlId>
+        <ControlId>txtResourceType</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>HttpStatus</DataItemName>
+            <DataItemName>ResourceType</DataItemName>
             <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
@@ -192,7 +192,46 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>txtHttpStatus</ResourceKey>
+          <ResourceKey>txtResourceType</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>5</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFTextBox3</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>EntityType</DataItemName>
+            <ControlItemName>Text</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>64</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>QFTextBox3</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -212,7 +251,7 @@
       <QFTextBox>
         <ColumnSpan>2</ColumnSpan>
         <Column>0</Column>
-        <Row>5</Row>
+        <Row>6</Row>
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
@@ -251,7 +290,7 @@
       <QFHorizontalSeparator>
         <ColumnSpan>2</ColumnSpan>
         <Column>0</Column>
-        <Row>6</Row>
+        <Row>7</Row>
         <HotKey>48</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>QFHorizontalSeparator</ControlId>
@@ -268,7 +307,7 @@
         <ColumnSpan>2</ColumnSpan>
         <RowSpan>3</RowSpan>
         <Column>0</Column>
-        <Row>7</Row>
+        <Row>8</Row>
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
@@ -286,6 +325,7 @@
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
+        <MaxLength>255</MaxLength>
         <Lines>3</Lines>
         <OnChangeAction>
           <ResourceKey>txtErrorMessage</ResourceKey>
@@ -308,7 +348,7 @@
       <QFHorizontalSeparator>
         <ColumnSpan>2</ColumnSpan>
         <Column>0</Column>
-        <Row>10</Row>
+        <Row>11</Row>
         <HotKey>48</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>QFHorizontalSeparator2</ControlId>
@@ -325,7 +365,7 @@
         <ColumnSpan>2</ColumnSpan>
         <RowSpan>10</RowSpan>
         <Column>0</Column>
-        <Row>11</Row>
+        <Row>12</Row>
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
@@ -343,6 +383,7 @@
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
+        <MaxLength>2147483647</MaxLength>
         <Lines>10</Lines>
         <OnChangeAction>
           <ResourceKey>txtStackTrace</ResourceKey>
@@ -365,7 +406,7 @@
       <QFHorizontalSeparator>
         <ColumnSpan>2</ColumnSpan>
         <Column>0</Column>
-        <Row>21</Row>
+        <Row>22</Row>
         <HotKey>48</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>QFHorizontalSeparator3</ControlId>
@@ -382,7 +423,7 @@
         <ColumnSpan>2</ColumnSpan>
         <RowSpan>10</RowSpan>
         <Column>0</Column>
-        <Row>22</Row>
+        <Row>23</Row>
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
@@ -400,6 +441,7 @@
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
+        <MaxLength>2147483647</MaxLength>
         <Lines>10</Lines>
         <OnChangeAction>
           <ResourceKey>QFTextBox</ResourceKey>
@@ -481,11 +523,11 @@
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>txtSentFrom</ControlId>
+        <ControlId>QFTextBox7</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>SyncedFrom.Name</DataItemName>
+            <DataItemName>SyncedFrom.EndPointURL</DataItemName>
             <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
@@ -496,7 +538,7 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>txtSentFrom</ResourceKey>
+          <ResourceKey>QFTextBox7</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -557,11 +599,11 @@
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>txtSeverity</ControlId>
+        <ControlId>txtDiagnosisCode</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>Severity</DataItemName>
+            <DataItemName>DiagnosisCode</DataItemName>
             <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
@@ -572,7 +614,7 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>txtSeverity</ResourceKey>
+          <ResourceKey>txtDiagnosisCode</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -595,11 +637,11 @@
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>txtDiagnosisCode</ControlId>
+        <ControlId>txtHttpStatus</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>DiagnosisCode</DataItemName>
+            <DataItemName>HttpStatus</DataItemName>
             <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
@@ -610,7 +652,46 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>txtDiagnosisCode</ResourceKey>
+          <ResourceKey>txtHttpStatus</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>1</Column>
+        <Row>5</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFTextBox4</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>EntityValue</DataItemName>
+            <ControlItemName>Text</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>128</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>QFTextBox4</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -712,6 +793,10 @@
     </ColumnStyle>
   </Columns>
   <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>
       <Height>35</Height>

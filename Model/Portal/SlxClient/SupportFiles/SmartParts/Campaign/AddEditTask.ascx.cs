@@ -47,7 +47,7 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
         BindingSource.Bindings.Add(new Sage.Platform.WebPortal.Binding.WebEntityBinding("BudgetAmount", slxCurEstimatedCost, "Text"));
         BindingSource.Bindings.Add(new Sage.Platform.WebPortal.Binding.WebEntityBinding("DateAssigned", dtAssignedDate, "DateTimeValue", "", null));
         //We need this so we can default the percenatage to 100%. the bindigs actually formats the percentage. 
-        BindingSource.OnCurrentEntitySet += new EventHandler(BindingSource_IntOnCurrentEntitySet);
+        BindingSource.OnCurrentEntitySet += BindingSource_IntOnCurrentEntitySet;
     }
 
     /// <summary>
@@ -64,14 +64,10 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
     /// </summary>
     protected override void OnWireEventHandlers()
     {
-        cmdSave.Click += new EventHandler(cmdSave_OnClick);
-        cmdSave.Click += new EventHandler(DialogService.CloseEventHappened);
-        cmdCancel.Click += new EventHandler(DialogService.CloseEventHappened);
-        rdbUser.Attributes.Add("onClick", "return Sage.UI.Forms.AddEditTask.onAssignToTypeChange(0);");
-        rdbDepartment.Attributes.Add("onClick", "return Sage.UI.Forms.AddEditTask.onAssignToTypeChange(1);");
-        rdbContact.Attributes.Add("onClick", "return Sage.UI.Forms.AddEditTask.onAssignToTypeChange(2);");
-        rdbOther.Attributes.Add("onClick", "return Sage.UI.Forms.AddEditTask.onAssignToTypeChange(3);");
-        rdbNone.Attributes.Add("onClick", "return Sage.UI.Forms.AddEditTask.onAssignToTypeChange(4);");
+        cmdSave.Click += cmdSave_OnClick;
+        cmdSave.Click += DialogService.CloseEventHappened;
+        cmdCancel.Click += DialogService.CloseEventHappened;
+        rdgAssignTo.Attributes.Add("onClick", "return Sage.UI.Forms.AddEditTask.onAssignToTypeChange();");
         base.OnWireEventHandlers();
     }
 
@@ -115,14 +111,14 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
         }
         else
         {
-            script.Append("dojo.ready(function () {Sage.UI.Forms.AddEditTask.init(" + GetWorkSpace() + ");");
+            script.Append("require(['dojo/ready'], function(ready) { ready(function () {Sage.UI.Forms.AddEditTask.init(" + GetWorkSpace() + "); }); });");
         }
         ScriptManager.RegisterStartupScript(this, GetType(), "initialize_AddEditTask", script.ToString(), true);
     }
 
     private string GetWorkSpace()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.Append("{");
         sb.AppendFormat("opt0ID:'{0}',", opt0.ClientID);
         sb.AppendFormat("opt1ID:'{0}',", opt1.ClientID);
@@ -130,6 +126,7 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
         sb.AppendFormat("opt3ID:'{0}',", opt3.ClientID);
         sb.AppendFormat("opt4ID:'{0}',", opt4.ClientID);
         sb.AppendFormat("ownerTypeID:'{0}',", txtOwnerType.ClientID);
+        sb.AppendFormat("assignToID:'{0}',", rdgAssignTo.UniqueID);
         sb.Append("}");
         return sb.ToString();
     }
@@ -141,7 +138,7 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
     /// <returns></returns>
     public override ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
-        ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
+        var tinfo = new ToolsSmartPartInfo();
         if (BindingSource != null)
         {
             if (BindingSource.Current != null)
@@ -176,11 +173,11 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void cmdSave_OnClick(object sender, EventArgs e)
     {
-        ICampaignTask task = BindingSource.Current as ICampaignTask;
+        var task = BindingSource.Current as ICampaignTask;
         ResolveOwner(task);
         task.Save();
 
-        IPanelRefreshService refresher = PageWorkItem.Services.Get<IPanelRefreshService>();
+        var refresher = PageWorkItem.Services.Get<IPanelRefreshService>();
         refresher.RefreshAll();
     }
 
@@ -191,11 +188,10 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
     {
         if (_task.Id == null) //Insert task
         {
-            //Need to move this to a bussiness rule
             _task.Campaign = (ICampaign)_parentEntity;
             _task.Status = GetLocalResourceObject("Status_Open").ToString();
             _task.DateAssigned = DateTime.UtcNow;
-            _task.PercentComplete = 0; //set 0%
+            _task.PercentComplete = 0;
             _task.OwnerName = GetDefaultAssignToName();
             _task.OwnerType = "0"; //TeamUser
             _task.ActualHours = 0;
@@ -209,7 +205,7 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
         }
         else //Update task
         {
-            if (_mode == "Complete")//Complete the task.
+            if (_mode == "Complete")
             {
                 _task.CompletedDate = DateTime.UtcNow;
                 _task.Status = GetLocalResourceObject("Status_Completed").ToString();
@@ -233,29 +229,34 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
         opt3.Style.Add("display", "none");
         opt4.Style.Add("display", "none");
 
-        string s = _task.OwnerType;//slxBool Value used as enumeration
-        txtOwnerType.Text = s;
+        string ownerType = _task.OwnerType;//slxBool Value used as enumeration
+        txtOwnerType.Text = ownerType;
         LoadDepartmentDropDown();
-        switch (s)
+        switch (ownerType)
         {
             case "0":
                 opt0.Style.Add("display", "blocked");
                 slxOwner.Text = _task.OwnerName;
+                rdgAssignTo.SelectedIndex = 0;
                 break;
             case "1":
                 opt1.Style.Add("display", "blocked");
                 ddlDepartments.SelectedValue = _task.OwnerName;
+                rdgAssignTo.SelectedIndex = 1;
                 break;
             case "2":
                 opt2.Style.Add("display", "blocked");
-                luContact.Text = _task.OwnerName;
+                luContact.LookupResultValue = _task.OwnerName;
+                rdgAssignTo.SelectedIndex = 2;
                 break;
             case "3":
                 opt3.Style.Add("display", "blocked");
                 txtOther.Text = _task.OwnerName;
+                rdgAssignTo.SelectedIndex = 3;
                 break;
             case "4":
                 opt4.Style.Add("display", "blocked");
+                rdgAssignTo.SelectedIndex = 4;
                 break;
             default:
                 opt0.Style.Add("display", "blocked");
@@ -270,26 +271,26 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
     /// <param name="task">The task.</param>
     private void ResolveOwner(ICampaignTask task)
     {
-        string ownerType = Request.Form[txtOwnerType.ClientID.Replace("_", "$")];
+        string ownerType = Request.Form[string.Concat("ctl00$ctl00$", txtOwnerType.ClientID.Replace("_", "$"))];
         task.OwnerType = ownerType;
         string ownerName = string.Empty;
-        string Id = string.Empty;
+        string id;
         switch (ownerType)
         {
             case "0":
-                Id = slxOwner.ClientID + "_LookupText";
-                ownerName = Request.Form[Id.Replace("_", "$")];
+                id = slxOwner.ClientID + "_LookupText";
+                ownerName = Request.Form[string.Concat("ctl00$ctl00$", id.Replace("_", "$"))];
                 break;
             case "1":
-                Id = ddlDepartments.ClientID;
-                ownerName = Request.Form[Id.Replace("_", "$")];
+                id = ddlDepartments.ClientID;
+                ownerName = Request.Form[string.Concat("ctl00$ctl00$", id.Replace("_", "$"))];
                 break;
             case "2":
-                Id = luContact.ClientID + "_LookupText";
-                ownerName = Request.Form[Id.Replace("_", "$")];
+                id = luContact.ClientID + "_LookupText";
+                ownerName = Request.Form[string.Concat("ctl00$ctl00$", id.Replace("_", "$"))];
                 break;
             case "3":
-                ownerName = Request.Form[txtOther.ClientID.Replace("_", "$")];
+                ownerName = Request.Form[string.Concat("ctl00$ctl00$", txtOther.ClientID.Replace("_", "$"))];
                 break;
             case "4":
                 ownerName = "";
@@ -304,11 +305,8 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
     private void LoadDepartmentDropDown()
     {
         ddlDepartments.Items.Clear();
-        IList<IOwner> departmentList = GetDepartments();
-        ListItem item = new ListItem();
-        item.Text = string.Empty;
-        item.Value = string.Empty;
-        item.Selected = true;
+        var departmentList = GetDepartments();
+        var item = new ListItem {Text = string.Empty, Value = string.Empty, Selected = true};
         ddlDepartments.Items.Add(item);
         foreach (Owner owner in departmentList)
         {
@@ -324,23 +322,19 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
     /// <returns></returns>
     private ICampaignStage GetCampaignStage(string stageId)
     {
-        ICampaignStage stage = null;
         using (new SessionScopeWrapper())
         {
-            stage = EntityFactory.GetById<ICampaignStage>(stageId);
+            return EntityFactory.GetById<ICampaignStage>(stageId);
         }
-        return stage;
     }
 
     /// <summary>
     /// Gets the departments.
     /// </summary>
     /// <returns></returns>
-    private IList<IOwner> GetDepartments()
+    private IEnumerable<IOwner> GetDepartments()
     {
-        IList<IOwner> results = new List<IOwner>();
-        results = Owner.GetByOwnerType(OwnerType.Department);
-        return results;
+        return Owner.GetByOwnerType(OwnerType.Department);
     }
 
     /// <summary>
@@ -349,10 +343,8 @@ public partial class SmartParts_Campaign_AddEditTask : EntityBoundSmartPartInfoP
     /// <returns></returns>
     private string GetDefaultAssignToName()
     {
-        IUser user = null;
-        SLXUserService service = ApplicationContext.Current.Services.Get<IUserService>() as SLXUserService;
-        IUser currentUser = service.GetUser();
-        user = currentUser;
-        return user.ToString();
+        var service = (SLXUserService) ApplicationContext.Current.Services.Get<IUserService>(true);
+        var currentUser = service.GetUser();
+        return currentUser.ToString();
     }
 }

@@ -1,10 +1,13 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="cb0a28f7-f465-41d7-8b67-9d67ba232013" lastModifiedUtc="2008-01-28T21:02:55.7730111Z" name="CopyDefect" returnType="void" methodType="Rule" actionType="None" returnMode="None" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="cb0a28f7-f465-41d7-8b67-9d67ba232013" lastModifiedUtc="2008-01-28T21:02:55.7730111Z" name="CopyDefect" methodType="Rule" actionType="None" returnMode="None">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
-  <parameter />
+  <parameter>
+    <OrmEntityMethodParam id="2551c5b9-fa15-45c9-aab3-235da99cf9f6" paramName="newDefect" sequence="0" paramType="IDefect" />
+    <OrmEntityMethodParam id="1a392b92-73e7-45a0-a55a-7ea519962ce1" paramName="requestId" sequence="0" paramType="String" />
+  </parameter>
   <preExecuteTargets />
   <methodTargets>
     <methodTarget id="34ab19fd-0c19-47d8-8eb6-502d12e10cc4" lastModifiedUtc="2008-01-28T21:02:51.1168207Z" targetType="Sage.SalesLogix.Defect.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CopyDefect" active="true">
@@ -14,5 +17,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

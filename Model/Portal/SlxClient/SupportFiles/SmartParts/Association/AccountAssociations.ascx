@@ -6,7 +6,7 @@
     <asp:Panel ID="AccountAssociations_LTools" runat="server"></asp:Panel>
     <asp:Panel ID="AccountAssociations_CTools" runat="server"></asp:Panel>
     <asp:Panel ID="AccountAssociations_RTools" runat="server">
-    <asp:ImageButton runat="server" ID="btnAddAssociation" ToolTip="Add Association" ImageUrl="~\images\icons\plus_16X16.gif" meta:resourcekey="btnAdd" />
+    <asp:Button runat="server" ID="btnAddAssociation" ToolTip="Add Association" CssClass="Global_Images icon16x16 icon_plus_16x16" meta:resourcekey="btnAdd" />
         <SalesLogix:PageLink ID="lnkAssociationChangeHelp" runat="server" LinkType="HelpFileName" ToolTip="<%$ resources: Portal, Help_ToolTip %>"
             Target="Help" NavigateUrl="associationstab.aspx" ImageUrl="~/ImageResource.axd?scope=global&type=Global_Images&key=Help_16x16">
         </SalesLogix:PageLink>

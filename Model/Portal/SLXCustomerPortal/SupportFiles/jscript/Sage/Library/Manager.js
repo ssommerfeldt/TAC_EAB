@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, Link */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, Link */
+define("Sage/Library/Manager", [
         'Sage/Data/SDataServiceRegistry',
         'Sage/Library/FileHandler',
         'Sage/Library/FolderHandler',
@@ -7,12 +7,11 @@ define([
         'Sage/Services/SystemOptions',
         'Sage/UI/Dialogs',
         'Sage/Utility',
-        'dojox/grid/DataGrid',
         'Sage/UI/ImageButton',
         'dijit/Toolbar',
         'dijit/Tree',
         'dijit/tree/ForestStoreModel',
-        'dojo/data/ItemFileReadStore',
+        'dojo/data/ItemFileWriteStore',
         'dojo/i18n',
         'dojo/string',
         'dojo/_base/array',
@@ -20,15 +19,19 @@ define([
         'dojo/dom-construct',
         'dojo/_base/lang',
         'dojo/i18n!./nls/Manager',
-        'dojox/widget/Standby'
-    ],
+        'dojox/widget/Standby',
+        'Sage/UI/GridView',
+        'dojo/store/Memory',
+        'dojo/_base/connect',
+        'dojo/domReady!'
+],
 // ReSharper disable InconsistentNaming
     function (SDataServiceRegistry, FileHandler, FolderHandler, RoleSecurityService, SystemOptions,
-        Dialogs, Utility, DataGrid, Button, Toolbar, Tree, ForestStoreModel, ItemFileReadStore, i18n, dString,
-        dArray, dLocale, domConstruct, dLang, nls, Standby) {
+        Dialogs, Utility, Button, Toolbar, Tree, ForestStoreModel, ItemFileWriteStore, i18n, dString,
+        dArray, dLocale, domConstruct, lang, nls, Standby, GridView, Memory, dConnect) {
 
         Sage.namespace('Library.Manager');
-        dojo.mixin(Sage.Library.Manager, {
+        lang.mixin(Sage.Library.Manager, {
             _convert: Utility.Convert,
             _grid: null,
             _remote: false,
@@ -37,6 +40,7 @@ define([
             _standby: false,
             _system: null,
             _tree: null,
+            _memory: null,
             _addButtonToToolbar: function (btn, toolbar) {
                 toolbar.addChild(new Button({
                     label: btn.label,
@@ -51,71 +55,62 @@ define([
             },
             _createGrid: function () {
                 var self = this;
-                this._grid = new DataGrid({
-                    store: new ItemFileReadStore({ data: { items: []} }),
+                this._memory = new Memory({ data: [] });
+
+                var options = {
+                    store: this._memory,
                     id: 'libraryGrid',
-                    structure: [{
-                        field: '_item',
-                        name: self.resources.File,
+                    columns: [{
+                        field: 'fileName',
+                        label: self.resources.File,
                         formatter: self._renderFileName,
-                        width: '160px',
-                        sortField: 'fileName'
+                        width: '160px'
                     }, {
                         field: 'fileSize',
-                        name: self.resources.Size,
+                        label: self.resources.Size,
                         formatter: self._renderSize,
                         width: '50px'
                     }, {
                         field: 'createDate',
-                        name: self.resources.Created,
+                        label: self.resources.Created,
                         formatter: self._renderDate,
                         width: '60px'
                     }, {
                         field: 'revisionDate',
-                        name: self.resources.Revised,
+                        label: self.resources.Revised,
                         formatter: self._renderDate,
                         width: '60px'
                     }, {
-                        field: '_item',
-                        name: self.resources.Expires,
+                        field: 'expires',
+                        label: self.resources.Expires,
                         formatter: self._renderExpires,
-                        width: '60px',
-                        sortField: 'expireDate'
+                        width: '60px'
                     }, {
                         field: 'description',
-                        name: self.resources.Description,
+                        label: self.resources.Description,
                         width: '150px'
-                    }]
-                });
+                    }],
+                    placeHolder: 'libraryGridPlaceHolder',
+                    columnHiding: true,
+                    columnResizing: true,
+                    columnReordering: true,
+                    selectionMode: 'single',
+                    rowSelection: true,
+                    classNames: 'dgrid-autoheight'
+                };
                 if (this._remote) {
                     var oStatusColumn = {
                         field: 'status',
-                        name: 'Status',
+                        label: 'Status',
                         formatter: self._renderStatus,
                         width: '150px'
                     };
-                    this._grid.structure.splice(1, 0, oStatusColumn);
-                    this._grid.setStructure(this._grid.structure);
+                    options.columns.unshift(oStatusColumn);
                 }
-                // Override the grid's getSortProps function so that we can sort correctly when
-                // binding to _item. The sortField property is a custom property added to help
-                // sort using the appropriate field in the data store.
-                var fnGetSortProps = this._grid.getSortProps;
-                this._grid.getSortProps = function () {
-                    var info = dojo.hitch(self._grid, fnGetSortProps)();
-                    if (info && typeof info !== 'undefined') {
-                        if (info[0] && info[0]['attribute'] === '_item') {
-                            var cell = self._grid.getCell(self._grid.getSortIndex());
-                            if (cell && typeof cell !== 'undefined' && cell.hasOwnProperty('sortField')) {
-                                info[0]['attribute'] = cell.sortField;
-                            }
-                        }
-                        return info;
-                    }
-                    return null;
-                };
-                dojo.byId('libraryGridPlaceHolder').appendChild(this._grid.domNode);
-                this._grid.startup();
+
+                this._grid = new GridView(options);
+                this._showLoading();
+                this._grid.createGridView();
             },
             _createGridToolbar: function () {
                 var gridtoolbar = new Toolbar({}, 'gridToolbar');
@@ -202,10 +197,10 @@ define([
                     if (!value) {
                         return '';
                     }
-                    if (dojo.isString(value) && Sage.Library.Manager._convert.isDateString(value)) {
+                    if (lang.isString(value) && Sage.Library.Manager._convert.isDateString(value)) {
                         var date = Sage.Library.Manager._convert.toDateFromString(value);
                         date = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
-                        return dojo.date.locale.format(date, { selector: 'date' });
+                        return dLocale.format(date, { selector: 'date', locale: Sys.CultureInfo.CurrentCulture.name });
                     }
                     return '';
                 } catch (e) {
@@ -215,12 +210,12 @@ define([
                     return '';
                 }
             },
-            _renderExpires: function (item, meta, record) {
+            _renderExpires: function (item, data) {
                 try {
-                    if (item.expires[0] !== true) {
+                    if (data.expires[0] !== true) {
                         return Sage.Library.Manager.resources.Never;
                     }
-                    return Sage.Library.Manager._renderDate(item.expireDate[0]);
+                    return Sage.Library.Manager._renderDate(data.expireDate[0]);
                 } catch (e) {
                     if (typeof console !== 'undefined') {
                         console.error('_renderExpires: %o', e);
@@ -228,43 +223,43 @@ define([
                     return '';
                 }
             },
-            _renderFileName: function (item, index, record) {
+            _renderFileName: function (item, data) {
                 try {
                     if (!Sage.Library.Manager._remote) {
                         return dString.substitute('<a id="document_${0}" href="slxdata.ashx/slx/system/-/libraryDocuments(\'${0}\')/file" target="FileWin">${1}</a>',
-                            [item.$key[0], item.fileName[0] || '']);
+                            [data.$key, data.fileName || '']);
                     } else {
-                        switch (item.status[0]) {
+                        switch (data.status) {
                             case 'Available':
                                 //DNL 'A'
                                 // The document is available to order.                                  
                                 return dString.substitute('<a id="document_${0}" href="javascript:Sage.Library.Manager._handleOrderDocRequest(\'${0}\', \'Ordered\');">${1}</a>',
-                                [item.$key[0], item.fileName[0] || '']);
+                                    [data.$key, data.fileName || '']);
                             case 'Revised':
                                 //DNL 'R'
                                 // The document has been revised and can be ordered.
                                 // The revised document has been ordered.
                                 return dString.substitute('<a id="document_${0}" href="javascript:Sage.Library.Manager._handleOrderDocRequest(\'${0}\', \'RevisionOrdered\');">${1}</a>',
-                                [item.$key[0], item.fileName[0] || '']);
+                            [data.$key, data.fileName || '']);
                             case 'Ordered':
                                 //DNL 'O'
                                 // The document has been ordered but has not been delivered via sync.                                 
                             case 'RevisionOrdered':
                                 //DNL 'V'
                                 return dString.substitute('<a id="document_${0}" href="javascript:Sage.Library.Manager._handleReorderDocRequest(\'${0}\');">${1}</a>',
-                                [item.$key[0], item.fileName[0] || '']);
+                        [data.$key, data.fileName || '']);
                             case 'Delivered':
                                 //DNL 'D'
                                 // The document has been delivered via sync but has not been read.
                                 return dString.substitute('<a id="document_${0}" href="javascript:Sage.Library.Manager._handleDeliveredDocRequest(\'${0}\');">${1}</a>',
-                                [item.$key[0], item.fileName[0] || '']);
+                            [data.$key, data.fileName || '']);
                             case 'DeliveredRead':
                                 //DNL 'L' // Allow launch.
                                 // The document has been delivered via sync and has been read.
                                 return dString.substitute('<a id="document_${0}" href="slxdata.ashx/slx/system/-/libraryDocuments(\'${0}\')/file" target="FileWin">${1}</a>',
-                                [item.$key[0], item.fileName[0] || '']);
+                            [data.$key, data.fileName || '']);
                             default:
-                                return item.fileName[0] || '';
+                                return data.fileName || '';
                         }
                     }
                 } catch (e) {
@@ -332,15 +327,16 @@ define([
                     }
                 }, 1);
             },
-            resources: {},
+            resources: {
+            },
             init: function () {
                 Sage.Library.Manager._roles = Sage.Services.getService('RoleSecurityService');
                 Sage.Library.Manager._system = SDataServiceRegistry.getSDataService('system');
-                dLang.mixin(Sage.Library.Manager.resources, nls);
-                dojo.subscribe('/sage/library/manager/libraryDirs/refresh', function () {
+                lang.mixin(Sage.Library.Manager.resources, nls);
+                dConnect.subscribe('/sage/library/manager/libraryDirs/refresh', function () {
                     Sage.Library.Manager.refreshDirs();
                 });
-                dojo.subscribe('/sage/library/manager/libraryDocuments/refresh', function (item) {
+                dConnect.subscribe('/sage/library/manager/libraryDocuments/refresh', function (item) {
                     Sage.Library.Manager.refreshGrid(item);
                 });
             },
@@ -358,7 +354,7 @@ define([
                                 console.error('Unable to determine SystemOptions.DbType.');
                             }
                         },
-                        this
+                                    this
                     );
                 } else {
                     this._createView();
@@ -367,150 +363,190 @@ define([
                     }
                 }
             },
+
+
+
             getDirs: function (onComplete) {
+
                 var self = this;
                 var oRequest = new Sage.SData.Client.SDataResourceCollectionRequest(this._system);
                 oRequest.setResourceKind('libraryDirectories');
                 oRequest.setQueryArg('orderBy', 'fullPath');
                 oRequest.setQueryArg('format', 'json');
                 //Increasing the count to 200(default is 100) as the tree can't be refreshed asynchronously from store and we are recreating the tree structure every time
-                oRequest.setQueryArg('count', 200);
+                oRequest.setQueryArg('count', 0);
+                oRequest.read({
+                    success: function (feed) {
+                        var totalResults = feed.$totalResults;
+                        self.getAllDirs(onComplete, totalResults);
+                    },
+                    failure: function (xhr, sdata) {
+                        Utility.ErrorHandler.handleHttpError(xhr, sdata, {
+                            message: self.resources.DirectoryInformationError
+                        });
+                    }
+                });
+                return true;
+            },
+            getAllDirs: function (onComplete, totalResultsCount) {
+                var self = this;
+                var oRequest = new Sage.SData.Client.SDataResourceCollectionRequest(this._system);
+                oRequest.setResourceKind('libraryDirectories');
+                oRequest.setQueryArg('orderBy', 'fullPath');
+                oRequest.setQueryArg('format', 'json');
+                
+                oRequest.setQueryArg('count', totalResultsCount);
                 oRequest.read({
                     success: function (feed) {
                         var arrDirs = feed['$resources'];
-                        if (arrDirs && dojo.isArray(arrDirs) && arrDirs.length > 0) {
+                        if (arrDirs && lang.isArray(arrDirs)) {
+                            if (arrDirs.length > 0) {
+                              // Locals
+                              var arrDepthMap, oData, iMaxDepth = 0, bAlteredCollection = false;
 
-                            // Locals
-                            var arrDepthMap, oData, iMaxDepth = 0, bAlteredCollection = false;
+                              try {
 
-                            try {
+                                  // Utility function to retrieve the parent of dir.
+                                  var fnGetParent = function (dir) {
+                                      var arrResult = dArray.filter(arrDepthMap[(dir.depth - 2)].items, function (item) {
+                                          return (item.$key == dir.parentId);
+                                      });
+                                      // Length will always be 1 if there is a result.
+                                      if (arrResult.length == 1) {
+                                          return arrResult[0];
+                                      }
+                                      return null;
+                                  };
 
-                                // Utility function to retrieve the parent of dir.
-                                var fnGetParent = function (dir) {
-                                    var arrResult = dojo.filter(arrDepthMap[(dir.depth - 2)].items, function (item) {
-                                        return (item.$key == dir.parentId);
-                                    });
-                                    // Length will always be 1 if there is a result.
-                                    if (arrResult.length == 1) {
-                                        return arrResult[0];
-                                    }
-                                    return null;
-                                };
+                                  // 1. Remove any directories that do not exist (arrDirs[i].found is not reliable).
+                                  for (var i = arrDirs.length - 1; i >= 0; i--) {
+                                      if (this._remote === false && arrDirs[i].directoryExists === false) {
+                                          arrDirs.splice(i, 1);
+                                      }
+                                  }
 
-                                // 1. Remove any directories that do not exist (arrDirs[i].found is not reliable).
-                                for (var i = arrDirs.length - 1; i >= 0; i--) {
-                                    if (this._remote === false && arrDirs[i].directoryExists === false) {
-                                        arrDirs.splice(i, 1);
-                                    }
+                                  // 2. Fix the root parentId and fullPath. The root should be the first item under MSSQL and the last under Oracle.
+                                  dArray.some(arrDirs, function (dir) {
+                                      if (dir.parentId.trim() == '0') {
+                                          // Remove padding of parentId.
+                                          dir.parentId = '0';
+                                          // Fix NULL issue (Oracle).
+                                          dir.fullPath = '';
+                                          // Mark the root.
+                                          dir.root = true;
+                                          // Store the rootId.
+                                          self._rootId = dir.$key;
+                                          // Break.
+                                          return true;
+                                      } else {
+                                          return false;
+                                      }
+                                  });
+
+                                  // 3. Calculate the folder depth for each record.
+                                  dArray.forEach(arrDirs, function (dir) {
+                                      // Fix bad library records that were inserted.
+                                      if (dir.root !== true && dir.fullPath.indexOf('\\') !== 0) {
+                                          dir.fullPath = '\\' + dir.fullPath;
+                                          bAlteredCollection = true;
+                                          if (typeof console !== 'undefined') {
+                                              console.warn('Fixed dir.fullPath: %o (%o)', dir.fullPath, dir.$key);
+                                          }
+                                      }
+                                      // dir.depth will always be 1 or higher (except for the root).
+                                      dir.depth = dir.fullPath.split('\\').length;
+                                      if (dir.depth > iMaxDepth) {
+                                          iMaxDepth = dir.depth;
+                                      }
+                                  });
+
+                                  // 4. Resort by fullPath if any fullPath values had to be modified.
+                                  if (bAlteredCollection) {
+                                      arrDirs.sort(function (dir1, dir2) {
+                                          return (dir1.fullPath.toLocaleUpperCase().localeCompare(dir2.fullPath.toLocaleUpperCase()));
+                                      });
+                                  }
+
+                                  // 5. Sort the dirs by depth.
+                                  arrDirs.sort(function (dir1, dir2) {
+                                      return dir1.depth - dir2.depth;
+                                  });
+
+                                  // 6. Map each dir based on depth (performance enhancement for large libraries).
+                                  arrDepthMap = new Array(iMaxDepth);
+                                  dArray.forEach(arrDepthMap, function (item, idx) {
+                                      arrDepthMap[idx] = {
+                                          items: []
+                                      };
+                                  });
+                                  dArray.forEach(arrDirs, function (dir) {
+                                      arrDepthMap[dir.depth - 1].items.push(dir);
+                                  });
+
+                                  // 7. Build up the tree dirs one level at a time.
+                                  dArray.forEach(arrDirs, function (dir, idx) {
+                                      if (idx === 0) {
+                                          if (dir.root !== true) {
+                                              throw new Error(dString.substitute(self.resources.InvalidRoot, [dir.directoryName, dir.$key]));
+                                          }
+                                          dir.id = dir.$key;
+                                          dir.items = [];
+                                          oData = dir;
+                                      } else {
+                                          // This should always be true unless we have bad library data.
+                                          if (dir.depth > 1) {
+                                              switch (dir.depth) {// jshint ignore:line
+                                                  // First level of children added to the root.
+                                                  case 2:
+                                                      dir.id = dir.$key;
+                                                      dir.children = [];
+                                                      oData.items.push(dir);
+                                                      break;
+                                                      // Other levels below the first level of children.
+                                                  default:
+                                                      var oParent = fnGetParent(dir);
+                                                      if (oParent !== null) {
+                                                          dir.id = dir.$key;
+                                                          dir.children = [];
+                                                          if (!oParent.children) {
+                                                              oParent.children = [];
+                                                          }
+                                                          oParent.children.push(dir);
+                                                      } else {
+                                                          if (typeof console !== 'undefined') {
+                                                              console.warn('Could not locate parent directory for %o', dir);
+                                                          }
+                                                      }
+                                                      break;
+                                              }
+                                          }
+                                      }
+                                  });
+
+                                  if (typeof onComplete === 'function') {
+                                      onComplete(oData);
+                                  }
+
+                              } catch (e) {
+                                  Sage.UI.Dialogs.showError(self.resources.LibraryDataError + ' ' + e);
+                              }
+                            } else {
+                                // No directories in the array
+                                if (typeof console !== 'undefined') {
+                                    console.warn("No directories in Library.");
                                 }
 
-                                // 2. Fix the root parentId and fullPath. The root should be the first item under MSSQL and the last under Oracle.                       
-                                dojo.some(arrDirs, function (dir) {
-                                    if (dir.parentId.trim() == '0') {
-                                        // Remove padding of parentId.
-                                        dir.parentId = '0';
-                                        // Fix NULL issue (Oracle).
-                                        dir.fullPath = '';
-                                        // Mark the root.
-                                        dir.root = true;
-                                        // Store the rootId.
-                                        self._rootId = dir.$key;
-                                        // Break.
-                                        return true;
-                                    } else {
-                                        return false;
-                                    }
-                                });
-
-                                // 3. Calculate the folder depth for each record.
-                                dojo.forEach(arrDirs, function (dir) {
-                                    // Fix bad library records that were inserted.
-                                    if (dir.root !== true && dir.fullPath.indexOf('\\') !== 0) {
-                                        dir.fullPath = '\\' + dir.fullPath;
-                                        bAlteredCollection = true;
-                                        if (typeof console !== 'undefined') {
-                                            console.warn('Fixed dir.fullPath: %o (%o)', dir.fullPath, dir.$key);
-                                        }
-                                    }
-                                    // dir.depth will always be 1 or higher (except for the root).
-                                    dir.depth = dir.fullPath.split('\\').length;
-                                    if (dir.depth > iMaxDepth) {
-                                        iMaxDepth = dir.depth;
-                                    }
-                                });
-
-                                // 4. Resort by fullPath if any fullPath values had to be modified.
-                                if (bAlteredCollection) {
-                                    arrDirs.sort(function (dir1, dir2) {
-                                        return (dir1.fullPath.toLocaleUpperCase().localeCompare(dir2.fullPath.toLocaleUpperCase()));
-                                    });
-                                }
-
-                                // 5. Sort the dirs by depth.
-                                arrDirs.sort(function (dir1, dir2) {
-                                    return dir1.depth - dir2.depth;
-                                });
-
-                                // 6. Map each dir based on depth (performance enhancement for large libraries).
-                                arrDepthMap = new Array(iMaxDepth);
-                                dojo.forEach(arrDepthMap, function (item, idx) {
-                                    arrDepthMap[idx] = { items: [] };
-                                });
-                                dojo.forEach(arrDirs, function (dir) {
-                                    arrDepthMap[dir.depth - 1].items.push(dir);
-                                });
-
-                                // 7. Build up the tree dirs one level at a time.
-                                dojo.forEach(arrDirs, function (dir, idx) {
-                                    if (idx === 0) {
-                                        if (dir.root !== true) {
-                                            throw new Error(dString.substitute(self.resources.InvalidRoot, [dir.directoryName, dir.$key]));
-                                        }
-                                        dir.id = dir.$key;
-                                        dir.items = [];
-                                        oData = dir;
-                                    } else {
-                                        // This should always be true unless we have bad library data.
-                                        if (dir.depth > 1) {
-                                            switch (dir.depth) {// jshint ignore:line
-                                                // First level of children added to the root.                                                                                                                                                                                                                                                                                                                                                                                                                                            
-                                                case 2:
-                                                    dir.id = dir.$key;
-                                                    dir.children = [];
-                                                    oData.items.push(dir);
-                                                    break;
-                                                // Other levels below the first level of children.                                                                                                                                                                                                                                                                                                                                                                                                                                             
-                                                default:
-                                                    var oParent = fnGetParent(dir);
-                                                    if (oParent !== null) {
-                                                        dir.id = dir.$key;
-                                                        dir.children = [];
-                                                        if (!oParent.children) {
-                                                            oParent.children = [];
-                                                        }
-                                                        oParent.children.push(dir);
-                                                    } else {
-                                                        if (typeof console !== 'undefined') {
-                                                            console.warn('Could not locate parent directory for %o', dir);
-                                                        }
-                                                    }
-                                                    break;
-                                            }
-                                        }
-                                    }
-                                });
-
+                                // Fire the completion handler so that we don't get stuck
                                 if (typeof onComplete === 'function') {
-                                    onComplete(oData);
+                                    onComplete(null);
                                 }
-
-                            } catch (e) {
-                                Sage.UI.Dialogs.showError(self.resources.LibraryDataError + ' ' + e);
                             }
                         }
                     },
                     failure: function (xhr, sdata) {
-                        Utility.ErrorHandler.handleHttpError(xhr, sdata, { message: self.resources.DirectoryInformationError });
+                        Utility.ErrorHandler.handleHttpError(xhr, sdata, {
+                            message: self.resources.DirectoryInformationError
+                        });
                     }
                 });
                 return true;
@@ -519,16 +555,16 @@ define([
                 var id = this.getRootId();
                 if (item && item.id && item.root !== true) {
                     id = item.id;
-                    if (dojo.isArray(id)) {
+                    if (lang.isArray(id)) {
                         id = id[0];
                     }
                     if (typeof console !== 'undefined') {
                         console.debug('getOpenFolderId - item.id: %o', id);
                     }
                 }
-                else if (this._tree.attr("selectedItem")) {
+                else if (this._tree && this._tree.attr("selectedItem")) {
                     id = this._tree.attr("selectedItem").id;
-                    if (dojo.isArray(id)) {
+                    if (lang.isArray(id)) {
                         id = id[0];
                     }
                     if (typeof console !== 'undefined') {
@@ -555,75 +591,155 @@ define([
                         if (self._tree) {
                             self._tree.destroyRecursive();
                         }
-                        var oStore = new ItemFileReadStore({ data: data });
-                        var oModel = new ForestStoreModel({
-                            store: oStore,
-                            rootId: data.$key,
-                            rootLabel: Sage.Library.Manager.resources.Library,
-                            labelAttr: 'directoryName',
-                            childrenAttrs: ['children']
-                        });
-                        var oTreeDiv = new dojo.create('div', { id: 'libraryTree' });
-                        self._tree = new dijit.Tree({
-                            model: oModel,
-                            onClick: Sage.Library.FolderHandler.handleFolderClicked,
-                            persist: false,
-                            _createTreeNode: function (args) {
-                                // Create a unique ID that can be used by automated testing.
-                                args.id = 'dijit__TreeNode_' + args.item.id;
-                                return new dijit._TreeNode(args);
-                            },
-                            rootId: data.$key
-                        },
-                            oTreeDiv
-                        );
-                        var hTreeOnLoad = dojo.connect(self._tree, 'onLoad', function () {
-                            dojo.disconnect(hTreeOnLoad);
-                            self.refreshGrid();
-                        });
-                        dojo.place(self._tree.domNode, 'libraryTreeRoot', 'after');
+                        // Make sure we have some data to process
+                        if (data) {
+                          var oStore = new ItemFileWriteStore({ data: data });
+                          var oModel = new ForestStoreModel({
+                              store: oStore,
+                              rootId: data.$key,
+                              rootLabel: Sage.Library.Manager.resources.Library,
+                              labelAttr: 'directoryName',
+                              childrenAttrs: ['children']
+                          });
+                          var oTreeDiv = new domConstruct.create('div', { id: 'libraryTree' });
+                          self._tree = new Tree({
+                              model: oModel,
+                              onClick: Sage.Library.FolderHandler.handleFolderClicked,
+                              persist: false,
+                              _createTreeNode: function (args) {
+                                  // Create a unique ID that can be used by automated testing.
+                                  args.id = 'dijit__TreeNode_' + args.item.id;
+                                  return new Tree._TreeNode(args);
+                              },
+                              rootId: data.$key
+                          },
+                                      oTreeDiv
+                                  );
+                          var hTreeOnLoad = dConnect.connect(self._tree, 'onLoad', function () {
+                              dConnect.disconnect(hTreeOnLoad);
+                              self.refreshGrid();
+                          });
+                          domConstruct.place(self._tree.domNode, 'libraryTreeRoot', 'after');
+                        } else {
+                          // Just refresh the Grid
+                          self.refreshGrid();
+                        }
                     }
-                );
+             );
             },
             refreshGrid: function (item) {
                 var self = this;
-                var id = this.getOpenFolderId(item);
+                var id = this.getOpenFolderId(item);                
+                // Did we get anything?
+                if (!id) {
+                    self._hideLoading();
+                    return;
+                }
+
                 var oRequest = new Sage.SData.Client.SDataResourceCollectionRequest(this._system);
                 oRequest.setResourceKind('libraryDocuments');
                 oRequest.setQueryArg('where', dString.substitute('directory.Id eq \'${0}\'', [id]));
                 oRequest.setQueryArg('orderBy', 'fileName');
                 oRequest.setQueryArg('format', 'json');
+                // allows us to limit a file grab and to get more if needed 
+                oRequest.setQueryArg('startIndex', 1);
+                oRequest.setQueryArg('count', 0);
                 this._showLoading();
                 oRequest.read({
                     success: function (feed) {
+                        try{
+                            var totalResults = feed.$totalResults;                            
+                            self.refreshAllGrid(item, 1, totalResults);
+                        } finally {
+                            
+                        }                        
+                    },
+                    failure: function (xhr, sdata) {
+                        self._hideLoading();
+                        Utility.ErrorHandler.handleHttpError(xhr, sdata, {
+                            message: self.resources.DocumentInformationError
+                        });
+                    }
+                });
+            },
+            refreshAllGrid: function (item, start, count) {
+                var self = this;
+                var id = this.getOpenFolderId(item);
+
+                // Did we get anything?
+                if (!id) {
+                    self._hideLoading();
+                    return;
+                }
+
+                // set up default values for "paging"
+                var defaultPageSize = 100;
+                count = count || defaultPageSize;
+                start = start || 1;
+
+                if (start == 1 && item)// if a folder was selected and on the first page.
+                {
+                    // reset the files list to blank.
+                    self._memory = new Memory({
+                        data: []
+                    });
+                    this._grid.refresh();
+                }
+
+                var oRequest = new Sage.SData.Client.SDataResourceCollectionRequest(this._system);
+                oRequest.setResourceKind('libraryDocuments');
+                oRequest.setQueryArg('where', dString.substitute('directory.Id eq \'${0}\'', [id]));
+                oRequest.setQueryArg('orderBy', 'fileName');
+                oRequest.setQueryArg('format', 'json');
+                // allows us to limit a file grab and to get more if needed 
+                oRequest.setQueryArg('startIndex', start);
+                oRequest.setQueryArg('count', count);
+                self._showLoading();
+                oRequest.read({
+                    success: function (feed) {
+
+                        var totalResults = 0;
+
                         try {
-                            var files = { items: feed['$resources'] || [] };
+                            totalResults = feed.$totalResults;
+                            var files = {
+                                items: feed['$resources'] || []
+                            };
+                            var data = [];
+
                             // Remove any documents that do not exist (files.items[i].found is not reliable).
-                            for (var i = files.items.length - 1; i >= 0; i--) {
+                            for (var i = 0; i < files.items.length; i++) {
                                 if (files.items[i].fileExists === false) {
                                     // If the user is [not] a remote user.
-                                    if (!self._remote) {
-                                        files.items.splice(i, 1);
-                                    } else {
+                                    if (self._remote) {
                                         // If the user [is] a remote user.
                                         if (files.items[i].status === 'Delivered' /* DNL */ || files.items[i].status === 'DeliveredRead' /* DNL */) {
                                             // If the file was not found, but has been delivered or delivered and then read, change the status to Available
                                             // so that the document can be requested again by the user.
                                             files.items[i].status = 'Available'; //DNL
-                                            Sage.Library.FileHandler.updateRemoteStatus(files.items[i].$key, 'Available'); //DNL                                    
+                                            FileHandler.updateRemoteStatus(files.items[i].$key, 'Available'); //DNL                                    
                                         }
                                     }
                                 }
+                                if (files.items[i].$key) {
+                                    //add files from the resource list to the file grid on screen
+                                    data.push(files.items[i]);
+                                }
                             }
-                            var oStore = new ItemFileReadStore({ data: files });
-                            self._grid.setStore(oStore);
+                            self._memory = new Memory({
+                                data: data, idProperty: '$key'
+                            });
+                            self._grid.grid.setStore(self._memory);
+
                         } finally {
                             self._hideLoading();
-                        }
+                        }                        
                     },
                     failure: function (xhr, sdata) {
                         self._hideLoading();
-                        Utility.ErrorHandler.handleHttpError(xhr, sdata, { message: self.resources.DocumentInformationError });
+                        Utility.ErrorHandler.handleHttpError(xhr, sdata, {
+                            message: self.resources.DocumentInformationError
+                        });
                     }
                 });
             }
@@ -634,4 +750,4 @@ define([
         return Sage.Library.Manager;
     }
 );
-    
+

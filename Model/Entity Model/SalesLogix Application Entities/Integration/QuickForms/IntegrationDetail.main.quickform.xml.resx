@@ -130,46 +130,34 @@
     <value>Reset</value>
   </data>
   <data name="txtIntegration.Caption" xml:space="preserve">
-    <value>Integration:</value>
+    <value>Integration</value>
   </data>
   <data name="pklAuthType.ButtonToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="pklAuthType.Caption" xml:space="preserve">
-    <value>Authentication Type:</value>
+    <value>Authentication Type</value>
   </data>
   <data name="pklSyncMethod.Caption" xml:space="preserve">
-    <value>Sync Method:</value>
+    <value>Sync Method</value>
   </data>
   <data name="pklLinkType.Caption" xml:space="preserve">
-    <value>Link Type:</value>
+    <value>Link Type</value>
   </data>
   <data name="chkEnabled.Caption" xml:space="preserve">
-    <value>Enabled:</value>
+    <value>Enabled</value>
   </data>
   <data name="txtSyncHandler.Caption" xml:space="preserve">
-    <value>Sync Handler:</value>
+    <value>Sync Handler</value>
   </data>
   <data name="AuthorizationType_OAuth" xml:space="preserve">
     <value>OAuth</value>
   </data>
-  <data name="numSyncInterval.Caption" xml:space="preserve">
-    <value>Sync Every:</value>
-  </data>
-  <data name="dteStartTime.Caption" xml:space="preserve">
-    <value>Run sync between:</value>
-  </data>
-  <data name="dteEndTime.Caption" xml:space="preserve">
-    <value>and</value>
-  </data>
-  <data name="lblMinutes.Text" xml:space="preserve">
-    <value>minutes</value>
-  </data>
   <data name="txtClientId.Caption" xml:space="preserve">
-    <value>Client ID:</value>
+    <value>Client ID</value>
   </data>
   <data name="txtSecret.Caption" xml:space="preserve">
-    <value>Secret:</value>
+    <value>Secret</value>
   </data>
   <data name="lnkClientIdHelp.Caption" xml:space="preserve">
     <value>  </value>
@@ -185,5 +173,86 @@
   </data>
   <data name="IntegrationLinkType_Admin" xml:space="preserve">
     <value>Admin Link</value>
+  </data>
+  <data name="btnDeleteStatusRecords.Caption" xml:space="preserve">
+    <value>Reset Inbox Status</value>
+  </data>
+  <data name="QFTextBoxVersion.Caption" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="QFTextBoxVersion.ToolTip" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="emlEmailAddress.Caption" xml:space="preserve">
+    <value>Service User</value>
+  </data>
+  <data name="emlEmailAddress.ButtonToolTip" xml:space="preserve">
+    <value>Service User</value>
+  </data>
+  <data name="txtEmailPassword.Caption" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="btnVerifyConnectivity.Caption" xml:space="preserve">
+    <value>Verify Connectivity</value>
+  </data>
+  <data name="Delete_Success_Msg" xml:space="preserve">
+    <value>Successfully deleted the system inbox status records.</value>
+  </data>
+  <data name="Delete_SysInbox_ConfirmMsg" xml:space="preserve">
+    <value>You are about to permanently delete all records from the system inbox status. Are you sure you want to continue?</value>
+  </data>
+  <data name="JobServiceRunning_Msg" xml:space="preserve">
+    <value>The job service must be stopped prior to running this action.</value>
+  </data>
+  <data name="txtAdminUserName.Caption" xml:space="preserve">
+    <value>Domain User Name </value>
+  </data>
+  <data name="txtDomain.Caption" xml:space="preserve">
+    <value>Domain</value>
+  </data>
+  <data name="lblText.Text" xml:space="preserve">
+    <value>Type your Microsoft Exchange service user credentials. You may also type your domain user credentials.</value>
+  </data>
+  <data name="btnScheduleExchangeRate.Caption" xml:space="preserve">
+    <value>Schedule Rates Download and Refresh</value>
+  </data>
+  <data name="btnTestUrl.Caption" xml:space="preserve">
+    <value>Test Link</value>
+  </data>
+  <data name="txtProviderConfiguration.Caption" xml:space="preserve">
+    <value>Provider Configuration</value>
+  </data>
+  <data name="txtProviderConfiguration.Text" xml:space="preserve">
+    <value>https://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.xchange where pair in ("USDEUR")&amp;format=json&amp;env=store://datatables.org/alltableswithkeys&amp;callback=</value>
+  </data>
+  <data name="21c5e4fd-2038-4293-863a-728be899be44.Title" xml:space="preserve">
+    <value>Provider Configuration Validation</value>
+  </data>
+  <data name="21c5e4fd-2038-4293-863a-728be899be44.Message" xml:space="preserve">
+    <value>Provider Configuration is valid.</value>
+  </data>
+  <data name="d818f9e3-389a-47b0-bf32-3e945932fc74.Message" xml:space="preserve">
+    <value>Provider Configuration is invalid.</value>
+  </data>
+  <data name="d818f9e3-389a-47b0-bf32-3e945932fc74.Title" xml:space="preserve">
+    <value>Provider Configuration Validation</value>
+  </data>
+  <data name="txtPreviousTime.Caption" xml:space="preserve">
+    <value>Last Run</value>
+  </data>
+  <data name="txtNextTime.Caption" xml:space="preserve">
+    <value>Next Scheduled Run</value>
+  </data>
+  <data name="lblMakrketo.Text" xml:space="preserve">
+    <value>Do not enable for Oracle Databases.</value>
+  </data>
+  <data name="cboProvider.Caption" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="lblMarketoMessage.Text" xml:space="preserve">
+    <value>Do not enable for Oracle Databases</value>
+  </data>
+  <data name="lblMarketo.Text" xml:space="preserve">
+    <value>Do not enable for Oracle Databases</value>
   </data>
 </root>

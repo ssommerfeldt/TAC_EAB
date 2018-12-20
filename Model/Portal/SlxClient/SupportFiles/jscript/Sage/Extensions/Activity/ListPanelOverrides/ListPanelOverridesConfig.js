@@ -1,5 +1,5 @@
-﻿/*globals define  */
-define([],
+/*globals define  */
+define("Sage/Extensions/Activity/ListPanelOverrides/ListPanelOverridesConfig", [],
 function () {    
     return {
         "overrideConfigs": [

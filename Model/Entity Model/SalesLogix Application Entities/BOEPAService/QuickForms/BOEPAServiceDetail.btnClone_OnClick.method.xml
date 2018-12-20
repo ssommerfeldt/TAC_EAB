@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="39d9fb85-e2a9-42e6-9f9b-67c87b20ae91" lastModifiedUtc="2016-03-29T17:30:45.3801264Z" name="btnClone_OnClick" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="BOEPAServiceDetail">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="5e7d1ed3-2531-4305-a3a6-2afe100c027b" paramName="form" sequence="0" paramType="IBOEPAServiceDetail" />
+    <OrmEntityMethodParam id="4d0b5899-6c20-474d-82da-6c515087c193" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

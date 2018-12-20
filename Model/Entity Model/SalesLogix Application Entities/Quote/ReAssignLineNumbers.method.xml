@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d33050e1-4ff7-4196-8515-51094a061bf2" lastModifiedUtc="2015-10-06T17:49:02.316268Z" name="ReAssignLineNumbers" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="562153b1-308b-4833-8c66-6a05e8b4df21" lastModifiedUtc="2015-10-06T17:48:58.9489313Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="ReAssignLineNumbers" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

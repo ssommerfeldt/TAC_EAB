@@ -1,0 +1,20 @@
+define("Sage/MainView/ExchangeRate/nls/ru/ExchangeRateDialog", {
+    "lblUpdateCurrency": "Обновить валюту",
+    "lblSelectEntity": "Применить обновленную валюту к",
+    "lblSalesOrders": "Заказы на продажу",
+    "lblOpportunities": "Возможности",
+    "lblQuotes": "Предложения",
+    "lblOK": "OК",
+    "lblCancel": "Отмена",
+    "lblClose": "Закрыть",
+    "updateRecords_Caption": "Обновление валютных курсов сущности",
+    "job_Description": "При обновлении валютного курса сущности возникли ошибки",
+    "errorRequestingJobMgr": "Ошибка при выполнении обновления: ${0}",
+    "lblRecordsToUpdate": "Количество записей для обновления",
+    "lblLockedUpdate": "Записи с заблокированными ставками не будут обновлены",
+    "lblNote": "Заметка",
+    "OpenOrder": "Открытый заказ",
+    "SalesOrder": "Заказ на продажу",
+    "Open": "Открыть",
+    "New": "Новый"
+});

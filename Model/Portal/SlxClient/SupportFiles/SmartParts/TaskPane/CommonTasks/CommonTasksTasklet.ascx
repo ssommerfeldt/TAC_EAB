@@ -3,7 +3,7 @@
 <%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls.Lookup" TagPrefix="SalesLogix" %>
 <%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls.ScriptResourceProvider" TagPrefix="SalesLogix" %>
 
-<asp:HiddenField ID="hfSelections" runat="server" Value="" />
+<asp:HiddenField ID="hfSelections" runat="server" Value="" ClientIDMode="Predictable" />
 <asp:UpdatePanel UpdateMode="Conditional" runat="server" ID="SAG">
 <ContentTemplate>
     <span runat="server" id='selectionDisplay' class="task-pane-item-common-selectioncount">
@@ -29,7 +29,7 @@
             </ItemTemplate>
         </asp:Repeater>
     </ul>
-    <asp:Button ID="tskExportToExcel" runat="server" style="display:none;" />
+    <asp:Button UseSubmitBehavior="False" ID="tskExportToExcel" runat="server" style="display:none;" />
 
     <script type="text/javascript">
         var commonTaskActions;
@@ -60,7 +60,8 @@
                         if (!commonTaskActions) {
                             commonTaskActions = new CommonTasksTasklet({
                                 id: "commonTaskActions",
-                                clientId: "<%= ClientID %>"
+                                clientId: "<%= ClientID %>",
+                                excelSupported: true
                             });
                         }
 
@@ -75,7 +76,7 @@
                                 on(clearSel, 'click', function () {
                                     var listPanel = dijit.byId('list');
                                     if (listPanel) {
-                                        listPanel._listGrid.selection.clear();
+                                        listPanel.clearSelection();
                                     }
                                 });
                             }

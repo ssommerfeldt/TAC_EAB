@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTo.Caption" xml:space="preserve">
-    <value>A:</value>
-  </data>
-  <data name="lblChange.Caption" xml:space="preserve">
-    <value>Cambia Tariffa in </value>
-  </data>
-  <data name="lblCurrentRate.Caption" xml:space="preserve">
-    <value>(Questo tasso corrente come di {0} )</value>
-  </data>
-  <data name="Rate.Caption" xml:space="preserve">
-    <value>Tariffa</value>
-  </data>
   <data name="chkLockRate.Caption" xml:space="preserve">
-    <value>Blocca il tasso per questo Ordine di Vendita</value>
-  </data>
-  <data name="Error_ChangingExchangeRate" xml:space="preserve">
-    <value>Errore durante il cambio del tasso di cambio.</value>
-  </data>
-  <data name="lblSalesOrderCurrentRate.Caption" xml:space="preserve">
-    <value>Il tasso corrente di questo Ordine di Vendita è {0} al {1}</value>
-  </data>
-  <data name="lblWillChange.Caption" xml:space="preserve">
-    <value>Facendo questo cambiamento potrebbe convertire di questo Ordine di Vendita</value>
-  </data>
-  <data name="lblConvertedPotential.Caption" xml:space="preserve">
-    <value>Converti Potenziale - Da:</value>
-  </data>
-  <data name="lblRateDate.Caption" xml:space="preserve">
-    <value>(Tasso assegnato il {0} )</value>
+    <value>Blocca il tasso per questo ordine di vendita</value>
   </data>
   <data name="CurrencyCode.Caption" xml:space="preserve">
     <value>Codice valuta</value>
   </data>
   <data name="Description.Caption" xml:space="preserve">
     <value>Descrizione</value>
+  </data>
+  <data name="Error_ChangingExchangeRate" xml:space="preserve">
+    <value>Errore nella modifica del tasso di cambio.</value>
+  </data>
+  <data name="lblChange.Caption" xml:space="preserve">
+    <value>Modifica tasso di cambio in </value>
+  </data>
+  <data name="lblConvertedPotential.Caption" xml:space="preserve">
+    <value>Conversione potenziale - Da:</value>
+  </data>
+  <data name="lblCurrentRate.Caption" xml:space="preserve">
+    <value>(Tasso valido a partire dal {0})</value>
+  </data>
+  <data name="lblRateDate.Caption" xml:space="preserve">
+    <value>(Tasso assegnato il {0})</value>
+  </data>
+  <data name="lblSalesOrderCurrentRate.Caption" xml:space="preserve">
+    <value>Il tasso corrente dell'ordine di vendita è {0} al {1}</value>
+  </data>
+  <data name="lblTo.Caption" xml:space="preserve">
+    <value>A:</value>
+  </data>
+  <data name="lblWillChange.Caption" xml:space="preserve">
+    <value>Apportando questa modifica i seguenti elementi dell'ordine di vendita saranno convertiti</value>
+  </data>
+  <data name="Rate.Caption" xml:space="preserve">
+    <value>Tasso</value>
   </data>
 </root>

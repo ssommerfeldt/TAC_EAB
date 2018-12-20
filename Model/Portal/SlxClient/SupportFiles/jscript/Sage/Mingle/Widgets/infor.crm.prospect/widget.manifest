@@ -1,0 +1,33 @@
+﻿{
+    "widgetId": "infor.crm.prospect",
+    "type": "inline",
+    "name": "CRM Prospect",
+    "version": "1.0.3.0",
+    "category": "application",
+    "applicationLogicalId": "lid://infor.crm",
+    "requiresConfig": true,
+    "settings": [
+     {
+        "name": "limitCount",
+        "labelId": "limitCount",
+        "type": "string",
+        "defaultValue": "10"
+      },
+	    {
+        "name": "applicationLogicalId",
+        "labelId": "Application Logical Id"
+      }
+	  ],
+    "localization": {
+      "en-US": {
+        "widgetTitle": "CRM Top Prospects",
+        "widgetDescription": "Displays a list of my prospects",
+        "errorOccured": "Error occurred",
+        "viewGroup": "View Group",
+        "searchPlaceholder": "Search Prospects",
+        "settingTitle": "Title",
+        "settingLimit": "Limit",
+        "settingCrmLogicalId": "CRM Logical ID" 
+      }
+    }
+}

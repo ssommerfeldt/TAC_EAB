@@ -117,40 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="curCost.Caption" xml:space="preserve">
-    <value>Стоимость:</value>
-  </data>
-  <data name="txtAbrevDescription.Caption" xml:space="preserve">
-    <value>Сокращенное описание:</value>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value />
   </data>
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Описание:</value>
-  </data>
-  <data name="dtpSourceDate.Caption" xml:space="preserve">
-    <value>Дата:</value>
-  </data>
-  <data name="btnInsertSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="btnDelete.Caption" xml:space="preserve">
+    <value>Удалить</value>
   </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Описание:</value>
+  </data>
+  <data name="txtAbrevDescription.Caption" xml:space="preserve">
+    <value>Сокращенное описание:</value>
+  </data>
   <data name="pklType.Caption" xml:space="preserve">
     <value>Тип:</value>
-  </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Источник наводки  будет удален без возможности восстановления</value>
   </data>
   <data name="pklStatus.Caption" xml:space="preserve">
     <value>Статус:</value>
   </data>
+  <data name="curCost.Caption" xml:space="preserve">
+    <value>Расходы:</value>
+  </data>
+  <data name="dtpSourceDate.Caption" xml:space="preserve">
+    <value>Дата:</value>
+  </data>
   <data name="dtpSourceDate.ButtonToolTip" xml:space="preserve">
     <value>Календарь</value>
   </data>
-  <data name="btnDelete.Caption" xml:space="preserve">
-    <value>Удалить</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Данный источник заинтересованного лица будет удален без возможности восстановления</value>
+  </data>
+  <data name="btnInsertSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
 </root>

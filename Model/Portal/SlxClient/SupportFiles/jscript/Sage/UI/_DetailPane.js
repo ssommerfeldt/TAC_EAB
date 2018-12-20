@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/_DetailPane", [
         'dijit/_Widget',
         'dojo/_base/declare'
 ],

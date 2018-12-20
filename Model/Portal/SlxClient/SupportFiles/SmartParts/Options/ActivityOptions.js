@@ -9,7 +9,10 @@
            var pastDue = dojo.byId(this._workSpace.chkPastDueID);
           
        },
+       toggleIncludeAttendee: function() {
+           var includeAttendee = dojo.byId(this._workSpace.chkIncludeAttendeeID);
 
+       },
        toggleAutoRolloverMeeting: function(){
            var timeless = dojo.byId(this._workSpace.chkTimelessMeetingID);
            var rollover = dojo.byId(this._workSpace.chkRolloverMeetingID);

@@ -117,32 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Err_Complete" xml:space="preserve">
+    <value>Vous n'êtes pas autorisé à utiliser tous les éléments sélectionnés.</value>
+  </data>
+  <data name="Err_Reject" xml:space="preserve">
+    <value>Vous n'êtes pas autorisé à rejeter tous les éléments sélectionnés.</value>
+  </data>
+  <data name="Err_Selection" xml:space="preserve">
+    <value>Au moins un enregistrement doit être sélectionné avant d'exécuter cette action.</value>
+  </data>
+  <data name="Err_SelectionContext" xml:space="preserve">
+    <value>Impossible de récupérer le contexte de sélection.</value>
+  </data>
   <data name="Err_SelectionService" xml:space="preserve">
     <value>Impossible de trouver le service de sélection.</value>
   </data>
   <data name="LitTask_NoLabels" xml:space="preserve">
     <value>Aucune étiquette</value>
   </data>
-  <data name="TaskText_PrintLabels" xml:space="preserve">
-    <value>Imprimer les étiquettes</value>
-  </data>
-  <data name="Err_Complete" xml:space="preserve">
-    <value>Vous n'êtes pas autorisé à utiliser tous les éléments sélectionnés.</value>
-  </data>
-  <data name="Err_Selection" xml:space="preserve">
-    <value>Au moins un enregistrement doit être sélectionné avant d'exécuter cette action.</value>
+  <data name="TaskText_Complete" xml:space="preserve">
+    <value>Terminer</value>
   </data>
   <data name="TaskText_Fulfill" xml:space="preserve">
     <value>Réaliser</value>
   </data>
-  <data name="TaskText_Complete" xml:space="preserve">
-    <value>Terminer</value>
-  </data>
-  <data name="Err_SelectionContext" xml:space="preserve">
-    <value>Impossible de récupérer le contexte de sélection.</value>
-  </data>
-  <data name="Err_Reject" xml:space="preserve">
-    <value>Vous n'êtes pas autorisé à rejeter tous les éléments sélectionnés.</value>
+  <data name="TaskText_PrintLabels" xml:space="preserve">
+    <value>Imprimer des étiquettes</value>
   </data>
   <data name="TaskText_Refresh" xml:space="preserve">
     <value>Actualiser</value>

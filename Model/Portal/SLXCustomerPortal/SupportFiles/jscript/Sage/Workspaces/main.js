@@ -1,4 +1,4 @@
-define([
+define("Sage/Workspaces/main", [
     "Sage/Workspaces/Dialog"
 ], function() {
     // module:

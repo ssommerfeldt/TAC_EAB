@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<SchedulerTrigger xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f5ca45b8-6202-4fa3-902e-cfdf24a669af">
+  <InstanceId>548c01d5aa804ce481ceb52d1b926e2a</InstanceId>
+  <JobId>f830ee11744c4962b2f4cd8420d55aa5</JobId>
+  <Name>IONWorkflowJob.Every15Seconds</Name>
+  <StartTimeUtc xsi:nil="true" />
+  <EndTimeUtc xsi:nil="true" />
+  <CronExpression>0/15 * * * * ? *</CronExpression>
+  <Priority xsi:nil="true" />
+  <Parameters />
+</SchedulerTrigger>

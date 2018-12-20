@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="901b9f5d-180a-4cb0-88ae-f1a23a059886" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="901b9f5d-180a-4cb0-88ae-f1a23a059886" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-12-16T21:16:28.0336956Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -7,7 +7,7 @@
       <ResourceKey>3968105a-b7b8-49a2-8849-2b5903a11ef4</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
-          <MethodName />
+          <MethodName>quickformload0</MethodName>
           <CSharpCodeSnippet>Sage.Entity.Interfaces.ILead lead = this.BindingSource.Current as Sage.Entity.Interfaces.ILead;
 if (lead != null)
 {
@@ -23,8 +23,15 @@ if (lead != null)
 	bool doNotSolicit = System.Convert.ToBoolean(lead.DoNotSolicit);
     bool doNotEmail = System.Convert.ToBoolean(lead.DoNotEmail);
     emlEmail.Enabled = (!doNotSolicit &amp;&amp; !doNotEmail);
-		
-}</CSharpCodeSnippet>
+	
+	var value = Sage.SalesLogix.BusinessRules.BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+	if (!String.IsNullOrEmpty(value))
+	{
+	 	var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+	 	lueLeadSource.LookupPreFilters.Add(leadSourcePreFilter);
+	}
+}
+cmdConvertLead.Style.Add("white-space", "normal");</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -157,6 +164,7 @@ if (lead != null)
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId>kSYST0000387</PickListId>
+        <PickListFilter />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -416,6 +424,7 @@ if (lead != null)
         <MustExistInList>false</MustExistInList>
         <NoneEditable>true</NoneEditable>
         <PickListId>kSYST0000390</PickListId>
+        <PickListFilter />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -537,7 +546,7 @@ if (lead != null)
           <ResourceKey>0a3842cd-4137-4958-8cd9-bcd4eeb208b5</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.MessageActionItem, Sage.Platform.QuickForms">
             <MessageActionItem>
-              <MethodName />
+              <MethodName>chkDoNotSolicit_ChangeAction</MethodName>
               <ResourceKey>fefa1626-002f-4eab-a3a5-8f74f337a6e9</ResourceKey>
             </MessageActionItem>
           </Action>
@@ -582,7 +591,7 @@ if (lead != null)
           <ResourceKey>56870ce0-a500-46bb-a315-3c4c01ee6a32</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.MessageActionItem, Sage.Platform.QuickForms">
             <MessageActionItem>
-              <MethodName />
+              <MethodName>chkDoNotEmail_ChangeAction</MethodName>
               <ResourceKey>481bc6c9-06df-4e1f-923a-d1f77b01737b</ResourceKey>
             </MessageActionItem>
           </Action>
@@ -886,17 +895,7 @@ if (lead != null)
             <HideCondition />
           </LookupProperty>
         </LookupProperties>
-        <LookupPreFilters>
-          <LookupPreFilter>
-            <LookupEntityName>ILeadSource</LookupEntityName>
-            <PropertyType>System.String</PropertyType>
-            <OperatorCode>=</OperatorCode>
-            <PickListName />
-            <PropertyName>Status</PropertyName>
-            <FilterValue>Active</FilterValue>
-            <TranslateFilterValue>true</TranslateFilterValue>
-          </LookupPreFilter>
-        </LookupPreFilters>
+        <LookupPreFilters />
       </QFSLXLookup>
     </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
@@ -1065,7 +1064,7 @@ if (lead != null)
               <ValidationMethod>IsCompanyNameAssigned</ValidationMethod>
               <OnFail typeName="Sage.Platform.QuickForms.ActionItems.MessageActionItem, Sage.Platform.QuickForms">
                 <MessageActionItem>
-                  <MethodName />
+                  <MethodName>cmdConvertLead_ClickActionF</MethodName>
                   <ResourceKey>db9a6317-7f1e-4220-bac0-681479bab985</ResourceKey>
                 </MessageActionItem>
               </OnFail>
@@ -1206,7 +1205,7 @@ if (lead != null)
                   <PassResultsToNextAction>False</PassResultsToNextAction>
                   <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RedirectActionItem, Sage.Platform.QuickForms">
                     <RedirectActionItem>
-                      <MethodName />
+                      <MethodName>cmdDeleteLead_ClickActionBRCBRC</MethodName>
                       <RawURL />
                       <MainViewEntityName>Lead</MainViewEntityName>
                       <UseCurrentIdInLink>false</UseCurrentIdInLink>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, JobManagerGroupContextService */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, JobManagerGroupContextService */
+define("Sage/MainView/JobManager", [
     'Sage/UI/SDataMainViewConfigurationProvider',
     'Sage/UI/ListPanel',
     'Sage/Utility',

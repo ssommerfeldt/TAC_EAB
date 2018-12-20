@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, TabControl */
-define([
+define("Sage/UI/SLXPreviewGrid/Grid", [
     'Sage/UI/EditableGrid',
     'dijit/layout/BorderContainer',
     'dijit/form/SimpleTextarea',

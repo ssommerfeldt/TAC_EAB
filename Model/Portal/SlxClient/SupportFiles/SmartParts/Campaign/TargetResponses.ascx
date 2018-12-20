@@ -20,9 +20,9 @@
 
 <div id="tr_filterDiv" style="display:none" runat="server">   
     <table border="0" cellpadding="1" cellspacing="0" class="formtable">
-        <col width="10%" />
-        <col width="35%" />
-        <col width="25%" />
+        <col width="5%" />
+        <col width="45%" />
+        <col width="30%" />
         <col width="20%" />
         <tr id="row0">
             <td id="row0col1">
@@ -32,11 +32,11 @@
             </td>
             <td id="row0col2">
                 <div class="lbl">
-                    <asp:CheckBox runat="server" ID="chkContacts" CssClass="checkbox" Checked="true" EnableViewState="true"
+                    <asp:CheckBox runat="server" ID="chkContacts" CssClass="inforAspCheckBox" Checked="true" EnableViewState="true"
                         Text="<%$ resources: chkContacts.Caption %>" />
                 </div>
                 <div class="lbl">
-                    <asp:CheckBox runat="server" ID="chkLeads" CssClass="checkbox" Checked="true" EnableViewState="true"
+                    <asp:CheckBox runat="server" ID="chkLeads" CssClass="inforAspCheckBox" Checked="true" EnableViewState="true"
                         Text="<%$ resources: chkLeads.Caption %>" />
                 </div>
             </td>
@@ -47,7 +47,7 @@
             <td></td>
             <td id="row1col1">
                 <div class="lbl">
-                    <asp:CheckBox runat="server" ID="chkLeadSource" CssClass="checkbox" EnableViewState="true"
+                    <asp:CheckBox runat="server" ID="chkLeadSource" CssClass="inforAspCheckBox" EnableViewState="true"
                         Text="<%$ resources: chkLeadSource.Caption %>" />
                 </div>
                 <div class="textcontrol select">
@@ -58,7 +58,7 @@
             </td>
             <td id="row1col5">
                 <div class="lbl">
-                    <asp:CheckBox runat="server" ID="chkStage" CssClass="checkbox" EnableViewState="true"
+                    <asp:CheckBox runat="server" ID="chkStage" CssClass="inforAspCheckBox" EnableViewState="true"
                         Text="<%$ resources: chkStage.Caption %>"  />
                 </div>
                 <div class="textcontrol select">
@@ -74,7 +74,7 @@
             <td id="row2col1"></td>
             <td id="row2col2">
                 <div class="lbl">
-                    <asp:CheckBox runat="server" ID="chkMethod" CssClass="checkbox" EnableViewState="true"
+                    <asp:CheckBox runat="server" ID="chkMethod" CssClass="inforAspCheckBox" EnableViewState="true"
                         Text="<%$ resources: chkMethod.Caption %>" />
                 </div>
                                 <div class="textcontrol select">
@@ -84,7 +84,7 @@
             </td>
             <td id="row2col4">
                 <div class="lbl">
-                    <asp:CheckBox runat="server" ID="chkName" CssClass="checkbox" EnableViewState="true"
+                    <asp:CheckBox runat="server" ID="chkName" CssClass="inforAspCheckBox" EnableViewState="true"
                         Text="<%$ resources: chkName.Caption %>" />
                 </div>
                 <div class="textcontrol">
@@ -104,7 +104,7 @@
     <tr class="mainContentHeader">
         <td>
             <div class="slxlabel aligncenter">
-                <asp:CheckBox runat="server" ID="chkDisplayResults" CssClass="checkbox" OnCheckedChanged="chkDisplayResults_CheckedChanged"
+                <asp:CheckBox runat="server" ID="chkDisplayResults" CssClass="inforAspCheckBox" OnCheckedChanged="chkDisplayResults_CheckedChanged"
                     AutoPostBack="true" Text="<%$ resources: chkDisplayResults.Caption %>" />
             </div>
         </td>

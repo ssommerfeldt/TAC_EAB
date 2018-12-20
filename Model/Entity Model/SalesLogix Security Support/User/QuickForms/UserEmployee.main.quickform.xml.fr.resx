@@ -117,74 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtAccountingId.Caption" xml:space="preserve">
-    <value>ID de comptabilité :</value>
-  </data>
-  <data name="dtPBirthDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
-  </data>
-  <data name="addrWork.AddressToolTip" xml:space="preserve">
-    <value>MapQuest</value>
-  </data>
-  <data name="dtpHireDate.ToolTip" xml:space="preserve">
-    <value>Date de naissance</value>
-  </data>
-  <data name="addrWork.ButtonToolTip" xml:space="preserve">
-    <value>Modifier</value>
-  </data>
-  <data name="txtSSN.Caption" xml:space="preserve">
-    <value>N° Insee :</value>
-  </data>
-  <data name="dtPBirthDate.ToolTip" xml:space="preserve">
-    <value>Date de naissance</value>
-  </data>
-  <data name="addrHome.ButtonToolTip" xml:space="preserve">
-    <value>Modifier</value>
-  </data>
-  <data name="phHome.Caption" xml:space="preserve">
-    <value>N° de téléphone domicile :</value>
-  </data>
-  <data name="btnSave.Caption" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
-  <data name="QFHorizontalSeparator2.Caption" xml:space="preserve">
-    <value>Personnel</value>
-  </data>
-  <data name="addrWork.Caption" xml:space="preserve">
-    <value>Adresse :</value>
-  </data>
-  <data name="txtCompany.Caption" xml:space="preserve">
-    <value>Société :</value>
-  </data>
-  <data name="dtpHireDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
-  </data>
-  <data name="phWorkPhone.Caption" xml:space="preserve">
-    <value>N° de téléphone prof. :</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
   <data name="phFax.Caption" xml:space="preserve">
     <value>Fax :</value>
   </data>
-  <data name="dtpHireDate.Caption" xml:space="preserve">
-    <value>Date d'embauche :</value>
+  <data name="phWorkPhone.Caption" xml:space="preserve">
+    <value>Téléphone professionnel :</value>
   </data>
-  <data name="txtAssetDesc.Caption" xml:space="preserve">
-    <value>Description du bien :</value>
+  <data name="QFHorizontalSeparator2.Caption" xml:space="preserve">
+    <value> Personnel</value>
   </data>
-  <data name="txtEmployeeNum.Caption" xml:space="preserve">
-    <value>N° de salarié :</value>
+  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
+    <value> Bureau</value>
   </data>
-  <data name="addrHome.Caption" xml:space="preserve">
-    <value>Adresse :</value>
-  </data>
-  <data name="txtSpouse.Caption" xml:space="preserve">
-    <value>Conjoint :</value>
-  </data>
-  <data name="txtAssetNum.Caption" xml:space="preserve">
-    <value>Bien n° :</value>
+  <data name="phMobile.Caption" xml:space="preserve">
+    <value>Téléphone portable :</value>
   </data>
   <data name="phPager.Caption" xml:space="preserve">
     <value>Pager :</value>
@@ -192,19 +138,73 @@
   <data name="phDirect.Caption" xml:space="preserve">
     <value>Direct :</value>
   </data>
-  <data name="phMobile.Caption" xml:space="preserve">
-    <value>Mobile :</value>
+  <data name="txtPinNumber.Caption" xml:space="preserve">
+    <value>ID :</value>
   </data>
-  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
-    <value>Bureau</value>
+  <data name="txtAccountingId.Caption" xml:space="preserve">
+    <value>ID de comptabilité :</value>
+  </data>
+  <data name="txtEmployeeNum.Caption" xml:space="preserve">
+    <value>N° de salarié :</value>
+  </data>
+  <data name="txtAssetNum.Caption" xml:space="preserve">
+    <value>N° d'actif</value>
+  </data>
+  <data name="txtAssetDesc.Caption" xml:space="preserve">
+    <value>Description de l'actif :</value>
+  </data>
+  <data name="phHome.Caption" xml:space="preserve">
+    <value>Téléphone personnel :</value>
+  </data>
+  <data name="dtpHireDate.Caption" xml:space="preserve">
+    <value>Date d'embauche :</value>
+  </data>
+  <data name="txtSSN.Caption" xml:space="preserve">
+    <value>N° INSEE :</value>
+  </data>
+  <data name="txtSpouse.Caption" xml:space="preserve">
+    <value>Conjoint :</value>
+  </data>
+  <data name="dtPBirthDate.ToolTip" xml:space="preserve">
+    <value>Date de naissance</value>
+  </data>
+  <data name="addrWork.Caption" xml:space="preserve">
+    <value>Adresse :</value>
+  </data>
+  <data name="addrHome.Caption" xml:space="preserve">
+    <value>Adresse :</value>
+  </data>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="dtPBirthDate.Caption" xml:space="preserve">
+    <value>Date de naissance :</value>
+  </data>
+  <data name="dtpHireDate.ToolTip" xml:space="preserve">
+    <value>Date de naissance</value>
+  </data>
+  <data name="txtCompany.Caption" xml:space="preserve">
+    <value>Société :</value>
+  </data>
+  <data name="addrWork.AddressToolTip" xml:space="preserve">
+    <value>MapQuest</value>
+  </data>
+  <data name="addrWork.ButtonToolTip" xml:space="preserve">
+    <value>Modifier</value>
   </data>
   <data name="addrHome.AddressToolTip" xml:space="preserve">
     <value>MapQuest</value>
   </data>
-  <data name="dtPBirthDate.Caption" xml:space="preserve">
-    <value>Date de naissance :</value>
+  <data name="addrHome.ButtonToolTip" xml:space="preserve">
+    <value>Modifier</value>
   </data>
-  <data name="txtPinNumber.Caption" xml:space="preserve">
-    <value>ID :</value>
+  <data name="dtPBirthDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="dtpHireDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
   </data>
 </root>

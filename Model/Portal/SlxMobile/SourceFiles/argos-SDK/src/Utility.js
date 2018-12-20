@@ -12,116 +12,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import lang from 'dojo/_base/lang';
+
+const util = ICRMCommonSDK.utility;
 
 /**
- * @class Sage.Platform.Mobile.Utility
+ * @class argos.Utility
  * Utility provides functions that are more javascript enhancers than application related code.
  * @alternateClassName Utility
  * @singleton
  */
-define('Sage/Platform/Mobile/Utility', [
-    'dojo/_base/lang',
-    'dojo/_base/array'
-], function(
-    lang,
-    array
-) {
-    var nameToPathCache = {};
-    var nameToPath = function(name) {
-        if (typeof name !== 'string' || name === '.' || name === '') return []; // '', for compatibility
-        if (nameToPathCache[name]) return nameToPathCache[name];
-        var parts = name.split('.');
-        var path = [];
-        for (var i = 0; i < parts.length; i++)
-        {
-            var match = parts[i].match(/([a-zA-Z0-9_$]+)\[([^\]]+)\]/);
-            if (match)
-            {
-                path.push(match[1]);
-                if (/^\d+$/.test(match[2]))
-                    path.push(parseInt(match[2], 10));
-                else
-                    path.push(match[2]);
-            }
-            else
-            {
-                path.push(parts[i]);
-            }
-        }
-
-        nameToPathCache[name] = path.reverse();
-        return nameToPathCache[name];
-    };
-
-    return lang.setObject('Sage.Platform.Mobile.Utility', {
-        memoize: function(fn, keyFn) {
-            var cache = {};
-            keyFn = keyFn || (function(value) { return value; });
-
-            return function() {
-                var key = keyFn.apply(this, arguments);
-                if (cache[key]) {
-                    return cache[key];
-                } else {
-                    cache[key] = fn.apply(this, arguments);
-                    return cache[key];
-                }
-            };
-        },
-        getValue: function(o, name, defaultValue) {
-            var path = nameToPath(name).slice(0);
-            var current = o;
-            while (current && path.length > 0)
-            {
-                var key = path.pop();
-                if (typeof current[key] !== 'undefined')
-                    current = current[key];
-                else
-                    return typeof defaultValue !== 'undefined' ? defaultValue : null;
-            }
-            return current;
-        },
-        setValue: function(o, name, val) {
-            var current = o;
-            var path = nameToPath(name).slice(0);
-            while ((typeof current !== "undefined") && path.length > 1)
-            {
-                var key = path.pop();
-                if (path.length > 0)
-                {
-                    var next = path[path.length - 1];
-                    current = current[key] = (typeof current[key] !== "undefined")
-                        ? current[key]
-                        : (typeof next === "number")
-                            ? []
-                            : {};
-                }
-            }
-            if (typeof path[0] !== "undefined")
-                current[path[0]] = val;
-            return o;
-        },
-        expand: function(scope, expression) {
-            if (typeof expression === 'function')
-                return expression.apply(scope, Array.prototype.slice.call(arguments, 2));
-            else
-                return expression;
-        },
-        roundNumberTo: function(number, precision) {
-            var k = Math.pow(10, precision);
-            return (Math.round(number * k) / k);
-        },
-        /**
-         * @function
-         * Utility function to join fields within a Simplate template.
-         */
-        joinFields: function(seperator, fields) {
-            var results;
-            results = array.filter(fields, function(item) {
-                return item !== null && typeof item !== 'undefined' && item !== '';
-            });
-
-            return results.join(seperator);
-        }
-    });
+const __class = lang.setObject('argos.Utility', {
+  /**
+   * Replaces a single `"` with two `""` for proper SData query expressions.
+   * @param {String} searchQuery Search expression to be escaped.
+   * @return {String}
+   */
+  escapeSearchQuery: util.escapeSearchQuery,
+  memoize: util.memoize,
+  debounce: util.debounce,
+  getValue: util.getValue,
+  setValue: util.setValue,
+  expand: util.expand,
+  roundNumberTo: util.roundNumberTo,
+  /**
+   * @function
+   * Utility function to join fields within a Simplate template.
+   */
+  joinFields: util.joinFields,
+  /**
+   * Sanitizes an Object so that JSON.stringify will work without errors by discarding non-stringable keys.
+   * @param {Object} obj Object to be cleansed of non-stringify friendly keys/values.
+   * @return {Object} Object ready to be JSON.stringified.
+   */
+  sanitizeForJson: util.sanitizeForJson,
 });
+
+lang.setObject('Sage.Platform.Mobile.Utility', __class);
+export default __class;

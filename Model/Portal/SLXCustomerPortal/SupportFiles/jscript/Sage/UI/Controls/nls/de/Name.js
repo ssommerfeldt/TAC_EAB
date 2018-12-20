@@ -1,11 +1,11 @@
-define((
-{ okText: 'OK',
-  cancelText: 'Abbrechen',
-  dialogTitle: 'Name bearbeiten',
-  prefixText: 'Präfix:',
-  nameFirstText: 'Vorname:',
-  nameMiddleText: 'Zweiter Vorname:',
-  nameLastText: 'Nachname:',
-  suffixText: 'Suffix:',
-  buttonTooltip: 'Bearbeiten' }
-));
+define("Sage/UI/Controls/nls/de/Name", {
+    "okText": "OK",
+    "cancelText": "Abbrechen",
+    "dialogTitle": "Name bearbeiten",
+    "prefixText": "Anrede/Titel:",
+    "nameFirstText": "Vorname:",
+    "nameMiddleText": "Zweiter Vorname:",
+    "nameLastText": "Nachname:",
+    "suffixText": "Namenszusatz:",
+    "buttonTooltip": "Bearbeiten"
+});

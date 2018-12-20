@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/TaskPaneItem", [
        'dijit/_Widget',
        'dijit/_TemplatedMixin',
        'dojo/_base/declare'
@@ -19,10 +19,10 @@ function (_Widget, _TemplatedMixin, declare) {
         postCreate: function (options) {
             this.checkSecurityAccess();
         },
-        templateString: '<a dojoAttachPoint="linkTextNode" href="#"></a>',
+        templateString: '<span class="activity-type-link" dojoAttachPoint="linkTextNode"></span>',
         attributeMap: dojo.delegate(_Widget.prototype.attributeMap, {
             linkText: { node: 'linkTextNode', type: 'innerHTML' },
-            action: { node: 'linkTextNode', type: 'attribute', attribute: 'href' }
+            action: { node: 'linkTextNode', type: 'attribute', attribute: 'onclick' }
         }),
         // this section relates to processing the link
         setActionList: function () {
@@ -97,6 +97,10 @@ function (_Widget, _TemplatedMixin, declare) {
                 });
             }
             dojo.style(this.domNode, { "display": displayMode });
+            if (displayMode === 'none' && this.domNode.nextSibling && this.domNode.nextSibling.nodeName === 'BR') {
+                // Prevent empty space between items.
+                dojo.style(this.domNode.nextSibling, { "display": displayMode });
+            }
         }
     });
     return taskPaneItem;

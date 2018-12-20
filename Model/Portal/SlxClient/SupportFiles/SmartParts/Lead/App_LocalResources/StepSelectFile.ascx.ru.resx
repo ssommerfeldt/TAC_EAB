@@ -117,47 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblRequiredMsg.Caption" xml:space="preserve">
-    <value>*  Отмечены обязательные поля</value>
-  </data>
-  <data name="radProgress_Uploaded" xml:space="preserve">
-    <value>Загружено </value>
-  </data>
-  <data name="uplFile.Tooltip" xml:space="preserve">
-    <value>Укажите размещение файла для загрузки</value>
-  </data>
-  <data name="chkAddToGroup.Caption" xml:space="preserve">
-    <value>Добавить импортированные наводки в спец. группу</value>
+  <data name="lblFile.Caption" xml:space="preserve">
+    <value>Файл списка заинтересованных лиц:</value>
   </data>
   <data name="ownDefaultOwner.Caption" xml:space="preserve">
-    <value>Доступ по умолч.:</value>
+    <value>Владелец по умолчанию:</value>
   </data>
-  <data name="lblSelectFileHeader.Caption" xml:space="preserve">
-    <value>Выберите файл, содержащий информацию по наводкам.</value>
+  <data name="lueLeadSource.Caption" xml:space="preserve">
+    <value>Источник заинтересованного лица по умолчанию:</value>
   </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Активн.</value>
+  <data name="lueLeadSource.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
-  <data name="UploadFile_File" xml:space="preserve">
-    <value>Файл: </value>
+  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
   </data>
   <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Описание</value>
   </data>
-  <data name="rdbAddToAdHocGroup.Caption" xml:space="preserve">
-    <value>Добавить в существующую спец. группу</value>
+  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Код источника</value>
   </data>
-  <data name="lblLeadGroup.Caption" xml:space="preserve">
-    <value>Группа наводок:</value>
+  <data name="uplFile.Tooltip" xml:space="preserve">
+    <value>Укажите размещение файла для загрузки</value>
   </data>
-  <data name="lblFile.Caption" xml:space="preserve">
-    <value>Файл со списком наводок:</value>
+  <data name="UploadFile_File" xml:space="preserve">
+    <value>Файл: </value>
   </data>
-  <data name="lblCurrentFile.Caption" xml:space="preserve">
-    <value>Текущий файл списка наводок:</value>
-  </data>
-  <data name="Error_InvalidImportPath" xml:space="preserve">
-    <value>Импорт не может быть продолжен пока не установлен правильный путь к вложениям. Обратитесь к администратору.</value>
+  <data name="UploadFile_Process" xml:space="preserve">
+    <value>Обработано </value>
   </data>
   <data name="lblImportFile.Caption" xml:space="preserve">
     <value>Выбранный файл импорта:</value>
@@ -165,19 +153,31 @@
   <data name="radProgress_Cancel" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
+  <data name="radProgress_Uploaded" xml:space="preserve">
+    <value>Загружено </value>
   </data>
-  <data name="UploadFile_Process" xml:space="preserve">
-    <value>Обработано </value>
+  <data name="lblSelectFileHeader.Caption" xml:space="preserve">
+    <value>Выберите файл, содержащий информацию о заинтересованных лицах.</value>
+  </data>
+  <data name="lblLeadGroup.Caption" xml:space="preserve">
+    <value>Группа заинтересованных лиц:</value>
+  </data>
+  <data name="rdbAddToAdHocGroup.Caption" xml:space="preserve">
+    <value>Добавить в существующую специальную группу</value>
+  </data>
+  <data name="chkAddToGroup.Caption" xml:space="preserve">
+    <value>Добавить импортированных заинтересованных лиц в специальную группу</value>
+  </data>
+  <data name="lblRequiredMsg.Caption" xml:space="preserve">
+    <value>* Отмечает обязательные поля</value>
   </data>
   <data name="rdbCreateAdHocGroup.Caption" xml:space="preserve">
-    <value>Создать новую спец. группу</value>
+    <value>Создать новую специальную группу</value>
   </data>
-  <data name="lueLeadSource.Caption" xml:space="preserve">
-    <value>Ист. наводки по умолч.:</value>
+  <data name="lblCurrentFile.Caption" xml:space="preserve">
+    <value>Текущий файл списка заинтересованных лиц:</value>
   </data>
-  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Код источника</value>
+  <data name="Error_InvalidImportPath" xml:space="preserve">
+    <value>Импорт не может быть продолжен пока не установлен правильный путь к вложениям. Обратитесь к администратору.</value>
   </data>
 </root>

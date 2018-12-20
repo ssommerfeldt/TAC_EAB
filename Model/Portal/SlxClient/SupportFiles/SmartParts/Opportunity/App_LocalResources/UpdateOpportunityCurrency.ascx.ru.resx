@@ -118,45 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="chkLockRate_rsc.Text" xml:space="preserve">
-    <value>Зафиксировать частоту для этой Возможности</value>
+    <value>Зафиксировать ставку для этой возможности</value>
   </data>
-  <data name="LPDescription_rsc.PropertyHeader" xml:space="preserve">
-    <value>Описание</value>
+  <data name="lblChange_rsc.Text" xml:space="preserve">
+    <value>Изменить ставку на </value>
   </data>
-  <data name="ThisRateCurrent_rsc" xml:space="preserve">
-    <value>(Курс по состоянию на текущий {0} )</value>
+  <data name="lblConvertedPotential_rsc.Text" xml:space="preserve">
+    <value>преобразовать потенциал — из: </value>
   </data>
   <data name="lblTo_rsc.Text" xml:space="preserve">
-    <value>на: </value>
+    <value>До: </value>
   </data>
-  <data name="RateAssignedOn_rsc" xml:space="preserve">
-    <value>(Курс, назначенный на  {0} )</value>
+  <data name="lblWillChange_rsc.Text" xml:space="preserve">
+    <value>Это изменение ведет к преобразованию данной возможности</value>
   </data>
   <data name="LPCurrencyCode_rsc.PropertyHeader" xml:space="preserve">
     <value>Код валюты</value>
   </data>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>Ок</value>
+  <data name="LPDescription_rsc.PropertyHeader" xml:space="preserve">
+    <value>Описание</value>
   </data>
-  <data name="lblConvertedPotential_rsc.Text" xml:space="preserve">
-    <value>Изменить потенциал-с: </value>
+  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
+    <value>Ставка</value>
+  </data>
+  <data name="OppsCurrentRate_rsc" xml:space="preserve">
+    <value>Текущая ставка возможности составляет {0} на {1}</value>
+  </data>
+  <data name="RateAssignedOn_rsc" xml:space="preserve">
+    <value>(Курс, назначенный {0})</value>
+  </data>
+  <data name="ThisRateCurrent_rsc" xml:space="preserve">
+    <value>(Этот курс по состоянию на {0})</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OК</value>
+  </data>
   <data name="Error_ChangingExchangeRate" xml:space="preserve">
     <value>Ошибка при изменении курса валют.</value>
-  </data>
-  <data name="lblChange_rsc.Text" xml:space="preserve">
-    <value>Изменить курс на  </value>
-  </data>
-  <data name="lblWillChange_rsc.Text" xml:space="preserve">
-    <value>Это изменение проебразует Возможности</value>
-  </data>
-  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
-    <value>Курс</value>
-  </data>
-  <data name="OppsCurrentRate_rsc" xml:space="preserve">
-    <value>Текущая ставка по сделке составляет {0} на {1}</value>
   </data>
 </root>

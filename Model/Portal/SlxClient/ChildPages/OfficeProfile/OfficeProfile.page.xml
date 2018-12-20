@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="654114aa-4259-4564-9f25-427b726512b4" disablePageValidation="false">
+  <PageAlias>OfficeProfile</PageAlias>
+  <TemplateUrl>Masters\admin.master</TemplateUrl>
+  <InheritTemplate>false</InheritTemplate>
+  <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
+  <Properties>
+    <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.IOfficeProfile, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</Property>
+  </Properties>
+  <TemplateProperties>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">false</Property>
+  </TemplateProperties>
+  <IsDefaultPage>false</IsDefaultPage>
+  <ExcludedGlobalModules />
+  <AppliedSecurity />
+  <IncludeScript />
+</PortalPage>

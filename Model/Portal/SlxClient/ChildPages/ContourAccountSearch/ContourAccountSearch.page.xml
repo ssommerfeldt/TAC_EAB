@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0a1e64b7-67e8-4dd4-a49b-860a1680621e" disablePageValidation="false">
+  <PageAlias>ContourAccountSearch</PageAlias>
+  <SmallImage>[Localization!Global_Images:AccountProximitySearch]</SmallImage>
+  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <InheritTemplate>false</InheritTemplate>
+  <InheritsFrom>Sage.Platform.WebPortal.WebPortalPage, Sage.Platform.WebPortal</InheritsFrom>
+  <Properties />
+  <TemplateProperties>
+    <Property Name="IncludeMiddlePane" TypeConverter="">False</Property>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">False</Property>
+    <Property Name="MainContentWorkspace_IncludeCollapseButton" TypeConverter="">False</Property>
+    <Property Name="IncludeTaskPane" TypeConverter="">False</Property>
+  </TemplateProperties>
+  <IsDefaultPage>false</IsDefaultPage>
+  <ExcludedGlobalModules />
+  <AppliedSecurity />
+  <IncludeScript />
+</PortalPage>

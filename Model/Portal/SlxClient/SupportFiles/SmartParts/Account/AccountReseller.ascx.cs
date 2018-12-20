@@ -14,7 +14,7 @@ public partial class SmartParts_AccountReseller : EntityBoundSmartPartInfoProvid
 {
     private IAccount _account;
 
-    [ServiceDependency(Type = typeof(IEntityContextService), Required = true)]
+    [ServiceDependency]
     public IEntityContextService EntityService { get; set; }
 
     public override Type EntityType

@@ -1,0 +1,11 @@
+define('dijit/nls/dijit_uk-ua',{
+'dijit/nls/loading':{"loadingState":"Завантаження...","errorState":"Сталася помилка","_localized":{}}
+,
+'dijit/nls/common':{"buttonOk":"OK","buttonCancel":"Скасувати","buttonSave":"Зберегти","itemClose":"Закрити","_localized":{}}
+,
+'dijit/_editor/nls/commands':{"bold":"Напівжирний","copy":"Копіювати","cut":"Вирізати","delete":"Видалити","indent":"Відступ","insertHorizontalRule":"Горизонтальне правило","insertOrderedList":"Нумерований список","insertUnorderedList":"Список з маркерами","italic":"Курсив","justifyCenter":"По центру","justifyFull":"Вирівняти","justifyLeft":"По лівому краю","justifyRight":"По правому краю","outdent":"Зменшити відступ","paste":"Вставити","redo":"Повторити","removeFormat":"Видалити формат","selectAll":"Вибрати всі","strikethrough":"Закреслений","subscript":"Надрядковий знак","superscript":"Надрядковий знак","underline":"Підкреслений","undo":"Скасувати","unlink":"Видаліть посилання","createLink":"Створити посилання","toggleDir":"Перемкнути напрямок","insertImage":"Вставити зображення","insertTable":"Вставити/змінити таблицю","toggleTableBorder":"Перемкнути рамки таблиці","deleteTable":"Видалити таблицю","tableProp":"Властивість таблиці","htmlToggle":"Вихідний текст HTML","foreColor":"Колір тексту","hiliteColor":"Колір фону","plainFormatBlock":"Формат абзацу","formatBlock":"Формат абзацу","fontSize":"Розмір шрифту","fontName":"Назва шрифту","tabIndent":"Табуляція","fullScreen":"Повноекранний режим","viewSource":"Переглянути вихідний текст HTML","print":"Друк","newPage":"Створити сторінку","systemShortcut":"Дія \"${0}\" доступна у вашому браузері лише за допомогою клавіш швидкого доступу. Використовуйте ${1}.","ctrlKey":"ctrl+${0}","appleKey":"⌘${0}","_localized":{}}
+,
+'dijit/form/nls/validate':{"invalidMessage":"Введено невірне значення.","missingMessage":"Це значення є обов'язковим.","rangeMessage":"Це значення за межами діапазону.","_localized":{}}
+,
+'dijit/form/nls/ComboBox':{"previousMessage":"Попередні варіанти","nextMessage":"Додаткові варіанти","_localized":{}}
+});

@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueAddDepartmentMember.ButtonToolTip" xml:space="preserve">
-    <value>Добавить участника в отдел</value>
+  <data name="UserName.Caption" xml:space="preserve">
+    <value>Имя пользователя</value>
   </data>
-  <data name="grdUsers.1fd0e20a-ef4b-4ec4-bbb5-2f5168e1a513.ColumnHeading" xml:space="preserve">
-    <value>Последнее изменение</value>
+  <data name="ManagerId.Caption" xml:space="preserve">
+    <value>ИД менеджера</value>
+  </data>
+  <data name="grdMembers.b792e2c9-dacc-4853-b79d-8044107c9ac2.ColumnHeading" xml:space="preserve">
+    <value>Имя пользователя</value>
   </data>
   <data name="grdMembers.8155a75c-aec9-4d6f-966c-8beef5cec533.ColumnHeading" xml:space="preserve">
     <value>ИД менеджера</value>
@@ -129,97 +132,106 @@
   <data name="lueAddDepartmentMember.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="grdMembers.2c3a38c1-f716-4f5a-b700-f40e7987882c.ColumnHeading" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.Department.PropertyHeader" xml:space="preserve">
-    <value>Отдел</value>
-  </data>
-  <data name="grdUsers.ba15e853-4a08-46db-9582-2b00899f9a24.ConfirmationMessage" xml:space="preserve">
-    <value>Вы действительно хотите удалить этого участника?</value>
+  <data name="lueAddDepartmentMember.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
   <data name="lueAddDepartmentMember.ToolTip" xml:space="preserve">
     <value>Добавить участника в отдел</value>
   </data>
-  <data name="grdUsers.ba15e853-4a08-46db-9582-2b00899f9a24.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="grdMembers.463701ca-8ff2-43c1-a864-c673dec0100b.ColumnHeading" xml:space="preserve">
-    <value>Имя Команды</value>
-  </data>
-  <data name="grdMembers.0dbef834-f6a7-4e0e-b7ef-710ee9b6b938.ColumnHeading" xml:space="preserve">
-    <value>Команда</value>
-  </data>
-  <data name="ManagerId.Caption" xml:space="preserve">
-    <value>ИД менеджера</value>
-  </data>
-  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
-    <value>Регион</value>
-  </data>
-  <data name="grdUsers.b792e2c9-dacc-4853-b79d-8044107c9ac2.ColumnHeading" xml:space="preserve">
-    <value>Пользователь</value>
-  </data>
-  <data name="grdMembers.d6016bfc-0528-4763-8c5e-891b3981be43.ColumnHeading" xml:space="preserve">
-    <value>Профиль безопасности</value>
-  </data>
-  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.LastName.PropertyHeader" xml:space="preserve">
-    <value>Фамилия</value>
-  </data>
-  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="lueAddDepartmentMember.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="lueAddDepartmentMember.LookupDialogTitle" xml:space="preserve">
-    <value>Поиск пользователя</value>
-  </data>
-  <data name="grdUsers.8155a75c-aec9-4d6f-966c-8beef5cec533.ColumnHeading" xml:space="preserve">
-    <value>ИД менеджера</value>
-  </data>
-  <data name="grdUsers.5da82489-1fba-4e1f-9913-0e270e863659.Text" xml:space="preserve">
-    <value>Исключить</value>
+  <data name="lueAddDepartmentMember.ButtonToolTip" xml:space="preserve">
+    <value>Добавить участника в отдел</value>
   </data>
   <data name="lueAddDepartmentMember.LookupProperties.UserInfo.FirstName.PropertyHeader" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="grdMembers.8b6e5251-3e4b-459a-8114-471c7a34b5ff.ColumnHeading" xml:space="preserve">
-    <value>Имя</value>
+  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.LastName.PropertyHeader" xml:space="preserve">
+    <value>Фамилия</value>
   </data>
-  <data name="grdMembers.bfba721b-8b97-4afa-b081-accd61df6887.ColumnHeading" xml:space="preserve">
-    <value>Тип</value>
+  <data name="grdUsers.5da82489-1fba-4e1f-9913-0e270e863659.Text" xml:space="preserve">
+    <value>Удалить</value>
   </data>
-  <data name="grdMembers.b792e2c9-dacc-4853-b79d-8044107c9ac2.ColumnHeading" xml:space="preserve">
-    <value>Пользователь</value>
+  <data name="grdUsers.b792e2c9-dacc-4853-b79d-8044107c9ac2.ColumnHeading" xml:space="preserve">
+    <value>Имя пользователя</value>
   </data>
-  <data name="grdMembers.1029b5b9-8bbf-4005-b5de-5dc67f72beaa.ColumnHeading" xml:space="preserve">
-    <value>Имя</value>
+  <data name="grdUsers.8155a75c-aec9-4d6f-966c-8beef5cec533.ColumnHeading" xml:space="preserve">
+    <value>ИД менеджера</value>
   </data>
-  <data name="grdMembers.289c9959-b3a3-4c90-a911-c12882cccecb.ColumnHeading" xml:space="preserve">
-    <value>Последнее изменение</value>
+  <data name="grdUsers.ba15e853-4a08-46db-9582-2b00899f9a24.ConfirmationMessage" xml:space="preserve">
+    <value>Действительно удалить этого участника?</value>
   </data>
-  <data name="UserName.Caption" xml:space="preserve">
-    <value>Пользователь</value>
-  </data>
-  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Имя Пользователя</value>
+  <data name="grdUsers.ba15e853-4a08-46db-9582-2b00899f9a24.Text" xml:space="preserve">
+    <value>Удалить</value>
   </data>
   <data name="grdUsers.ade1c1dd-d83a-4261-a6ea-f004594559f1.ColumnHeading" xml:space="preserve">
     <value>Создано</value>
   </data>
-  <data name="grdMembers.btnRemoveFromTeam.ToolTip" xml:space="preserve">
-    <value>Исключить</value>
+  <data name="grdUsers.1fd0e20a-ef4b-4ec4-bbb5-2f5168e1a513.ColumnHeading" xml:space="preserve">
+    <value>Последнее изменение</value>
   </data>
   <data name="grdUsers.565ac373-7d4d-4b01-9041-f1b4dc80d481.ColumnHeading" xml:space="preserve">
-    <value>Изменено</value>
+    <value>Автор изменения</value>
+  </data>
+  <data name="grdUsers.984c2a17-c1e5-43c6-b56b-7d4e45b57fe1.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.Department.PropertyHeader" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="grdUsers.ade1c1dd-d83a-4261-a6ea-f004594559f1.FormatString" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="grdUsers.1fd0e20a-ef4b-4ec4-bbb5-2f5168e1a513.FormatString" xml:space="preserve">
+    <value>{0:g}</value>
+  </data>
+  <data name="ConfirmRemoveFromDepartment" xml:space="preserve">
+    <value>Удалить выбранных участников из отдела?</value>
+  </data>
+  <data name="lueAddDepartmentMember.LookupDialogTitle" xml:space="preserve">
+    <value>Поиск пользователя</value>
+  </data>
+  <data name="lueAddDepartmentMember.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="grdMembers.btnRemoveFromTeam.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="grdMembers.1029b5b9-8bbf-4005-b5de-5dc67f72beaa.ColumnHeading" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="grdMembers.ba2d83bf-74cc-4580-b255-e69b2ca9008e.ColumnHeading" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="grdMembers.463701ca-8ff2-43c1-a864-c673dec0100b.ColumnHeading" xml:space="preserve">
+    <value>Имя команды</value>
+  </data>
+  <data name="grdMembers.0dbef834-f6a7-4e0e-b7ef-710ee9b6b938.ColumnHeading" xml:space="preserve">
+    <value>Команда</value>
+  </data>
+  <data name="grdMembers.289c9959-b3a3-4c90-a911-c12882cccecb.ColumnHeading" xml:space="preserve">
+    <value>Последнее изменение</value>
   </data>
   <data name="grdMembers.d81642fa-d355-4f94-b430-3d2a517c507d.ColumnHeading" xml:space="preserve">
     <value>Создано</value>
   </data>
-  <data name="grdUsers.984c2a17-c1e5-43c6-b56b-7d4e45b57fe1.Text" xml:space="preserve">
-    <value>Исключить</value>
+  <data name="grdMembers.d6016bfc-0528-4763-8c5e-891b3981be43.ColumnHeading" xml:space="preserve">
+    <value>Профиль безопасности</value>
   </data>
-  <data name="grdMembers.ba2d83bf-74cc-4580-b255-e69b2ca9008e.ColumnHeading" xml:space="preserve">
-    <value>Изменено</value>
+  <data name="grdMembers.bfba721b-8b97-4afa-b081-accd61df6887.ColumnHeading" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="grdMembers.8b6e5251-3e4b-459a-8114-471c7a34b5ff.ColumnHeading" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="grdMembers.2c3a38c1-f716-4f5a-b700-f40e7987882c.ColumnHeading" xml:space="preserve">
+    <value>Менеджер</value>
+  </data>
+  <data name="lueAddDepartmentMember.LookupProperties.UserInfo.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Имя пользователя</value>
   </data>
 </root>

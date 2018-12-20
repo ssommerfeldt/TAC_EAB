@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/Opportunity/nls/en/OpportunityStatistics", (
 { opportunityStatistics_Caption: 'Opportunity Statistics',
   loadingMessge: 'Loading...',
   opportunityCount: '# of Opportunities',
@@ -9,5 +9,5 @@ define((
   averageDaysOpen: 'Average # of Days Open',
   rangeEstClose: 'Range of Est. Close (Min - Max)',
   btnClose_Caption: 'Close',
-  errorRequestingStatistics: 'Sorry an error occured attempting to request opportunity statistics.' }
+  errorRequestingStatistics: 'Sorry an error occurred attempting to request opportunity statistics.' }
 ));

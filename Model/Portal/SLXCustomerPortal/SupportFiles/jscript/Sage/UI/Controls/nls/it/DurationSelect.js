@@ -1,8 +1,8 @@
-define((
-{ minuteText: 'minuto',
-  minutesText: 'Minuti',
-  hourText: 'ora',
-  hoursText: 'ore',
-  dayText: 'giorno',
-  daysText: 'Giorni' }
-));
+define("Sage/UI/Controls/nls/it/DurationSelect", {
+    "minuteText": "minuto",
+    "minutesText": "minuti",
+    "hourText": "ora",
+    "hoursText": "ore",
+    "dayText": "giorno",
+    "daysText": "giorni"
+});

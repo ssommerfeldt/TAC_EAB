@@ -1,8 +1,60 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d8eb6792-f4ba-4c6a-adb2-6217519d4757" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d8eb6792-f4ba-4c6a-adb2-6217519d4757" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-09-22T10:33:59.5740824Z">
   <ActiveControl />
   <ImagePath />
-  <LoadActions />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>83af8ce5-e0ba-4fbd-a0f3-e2cae018570b</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName>quickformload0</MethodName>
+          <CSharpCodeSnippet>var contact = (IContact) BindingSource.Current;
+var mappingService = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;(true);
+bool isIntegrationEnabled = mappingService.IsIntegrationEnabled();
+if (isIntegrationEnabled)
+{
+    var fls = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.Security.IFieldLevelSecurityService&gt;(true);
+    if (fls != null)
+    {
+        var access = fls.GetAccessForProperty(contact, "Address1");
+        adrContactAddress.ReadOnly = (access == Sage.Platform.Security.FieldAccess.ReadOnly);
+        access = fls.GetAccessForProperty(contact, "FirstName");
+        if (access == Sage.Platform.Security.FieldAccess.ReadOnly)
+        {
+            nmeContactName.ReadOnly = true;
+        }
+    }
+}
+
+bool isSalesIntelligenceEnabled = mappingService.IsSalesIntelligenceEnabled();
+using (var session = new Sage.Platform.Orm.SessionScopeWrapper())
+{
+    var dataValue = session.QueryOver&lt;Sage.Entity.Interfaces.ICustomSetting&gt;()
+            .Where(i =&gt; i.Category == "Sales Intelligence" &amp;&amp; i.Description == "Contact")
+            .Select(i =&gt; i.DataValue)
+            .SingleOrDefault&lt;string&gt;();
+    bool siEnabledForEntity = false; 
+    if (!String.IsNullOrEmpty(dataValue))
+    {
+		siEnabledForEntity = dataValue == "True";
+    }
+
+    if (!siEnabledForEntity || !isSalesIntelligenceEnabled)
+    {
+        txtPropensityScore.Visible = false;
+        txtPropensityScore_lbl.Visible = false;
+    }
+}</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
   <Name>ContactDetails</Name>
   <ClientScriptIncludes />
   <ClientResourceKeys>
@@ -24,22 +76,8 @@
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>Prefix</DataItemName>
-            <ControlItemName>NamePrefix</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
             <DataItemName>FirstName</DataItemName>
             <ControlItemName>NameFirst</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>MiddleName</DataItemName>
-            <ControlItemName>NameMiddle</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -52,8 +90,50 @@
           </QuickFormPropertyDataBindingDefinition>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>MiddleName</DataItemName>
+            <ControlItemName>NameMiddle</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Prefix</DataItemName>
+            <ControlItemName>NamePrefix</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>LocationCode</DataItemName>
+            <ControlItemName>NamePrefixLanguage</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>True</DataItemName>
+            <ControlItemName>NamePrefixLanguageFilters</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
             <DataItemName>Suffix</DataItemName>
             <ControlItemName>NameSuffix</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>LocationCode</DataItemName>
+            <ControlItemName>NameSuffixLanguage</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>True</DataItemName>
+            <ControlItemName>NameSuffixLanguageFilters</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -63,10 +143,14 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <NamePrefix />
+        <NamePrefixLanguage />
+        <NamePrefixLanguageFilters>false</NamePrefixLanguageFilters>
         <NameFirst />
         <NameMiddle />
         <NameLast />
         <NameSuffix />
+        <NameSuffixLanguage />
+        <NameSuffixLanguageFilters>false</NameSuffixLanguageFilters>
         <OnChangeAction>
           <ResourceKey>nmeContactName</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
@@ -129,6 +213,7 @@
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Account</LookupEntityName>
         <LookupEntityTypeName>Sage.Entity.Interfaces.IAccount, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -178,11 +263,15 @@
         <PickListName>Title</PickListName>
         <StorageMode>Text</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>true</AlphaSort>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId>kSYST0000385</PickListId>
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -287,6 +376,13 @@
           </QuickFormPropertyDataBindingDefinition>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Address.CountryCode</DataItemName>
+            <ControlItemName>AddressCountryCode</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
             <DataItemName>Address.County</DataItemName>
             <ControlItemName>AddressCounty</ControlItemName>
             <FormatString />
@@ -310,6 +406,27 @@
             <DataSourceID>MainEntity</DataSourceID>
             <DataItemName>Address.Address3</DataItemName>
             <ControlItemName>AddressDesc3</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Address.Address4</DataItemName>
+            <ControlItemName>AddressDesc4</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Address.Address5</DataItemName>
+            <ControlItemName>AddressDesc5</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Address.Address6</DataItemName>
+            <ControlItemName>AddressDesc6</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -392,10 +509,14 @@
         <AddressDesc1 />
         <AddressDesc2 />
         <AddressDesc3 />
+        <AddressDesc4 />
+        <AddressDesc5 />
+        <AddressDesc6 />
         <AddressCity />
         <AddressState />
         <AddressPostalCode />
         <AddressCountry />
+        <AddressCountryCode />
         <AddressCounty />
         <AddressSalutation />
         <OnChangeAction>
@@ -761,6 +882,7 @@
         <TextField />
         <ValueField />
         <MultiSelect>false</MultiSelect>
+        <MaxHeight>200</MaxHeight>
       </QFListBox>
     </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXEmail, Sage.SalesLogix.QuickForms.QFControls">
@@ -877,58 +999,15 @@
         <PickListName>Contact Type</PickListName>
         <StorageMode>Text</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>true</AlphaSort>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId>kSYST0000380</PickListId>
-        <ValueStoredAsText>true</ValueStoredAsText>
-      </QFSLXPickList>
-    </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSLXPickList>
-        <Column>1</Column>
-        <Row>10</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>pklContactStatus</ControlId>
-        <DataBindings>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>Status</DataItemName>
-            <ControlItemName>PickListValue</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-        </DataBindings>
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <OnChangeAction>
-          <ResourceKey>pklContactStatus</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnChangeAction>
-        <Required>false</Required>
-        <AutoPostBack>false</AutoPostBack>
-        <PickListName>Contact Status</PickListName>
-        <StorageMode>Text</StorageMode>
-        <NameFormatString />
-        <AllowMultiples>false</AllowMultiples>
-        <AlphaSort>true</AlphaSort>
-        <MustExistInList>false</MustExistInList>
-        <NoneEditable>false</NoneEditable>
-        <PickListId>kSYST0000379</PickListId>
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -1220,6 +1299,95 @@
           <RefreshData>False</RefreshData>
         </OnChangeAction>
       </QFCheckBox>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXPickList>
+        <Column>2</Column>
+        <Row>9</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>pklContactStatus</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Status</DataItemName>
+            <ControlItemName>PickListValue</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>pklContactStatus</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+        <AutoPostBack>false</AutoPostBack>
+        <PickListName>Contact Status</PickListName>
+        <StorageMode>Text</StorageMode>
+        <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
+        <AllowMultiples>false</AllowMultiples>
+        <AlphaSort>true</AlphaSort>
+        <MustExistInList>false</MustExistInList>
+        <NoneEditable>false</NoneEditable>
+        <PickListId>kSYST0000379</PickListId>
+        <PickListFilter />
+        <DefaultLanguage />
+        <ValueStoredAsText>true</ValueStoredAsText>
+      </QFSLXPickList>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>2</Column>
+        <Row>10</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>txtPropensityScore</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>SICustomers.Score</DataItemName>
+            <ControlItemName>Text</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>txtPropensityScore</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
     </Control>
   </Controls>
   <ToolControls>

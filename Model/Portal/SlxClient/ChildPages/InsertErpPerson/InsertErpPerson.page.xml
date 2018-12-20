@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="38c37bea-2037-4007-a753-cd13336fb2c8">
+  <PageAlias>InsertErpPerson</PageAlias>
+  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <InheritTemplate>false</InheritTemplate>
+  <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
+  <Properties>
+    <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.IERPPerson, Sage.Entity.Interfaces</Property>
+  </Properties>
+  <TemplateProperties>
+    <Property Name="IncludeTaskPane" TypeConverter="">False</Property>
+  </TemplateProperties>
+  <IsDefaultPage>false</IsDefaultPage>
+  <ExcludedGlobalModules />
+  <AppliedSecurity>Entities/ErpPerson/Add</AppliedSecurity>
+  <IncludeScript />
+</PortalPage>

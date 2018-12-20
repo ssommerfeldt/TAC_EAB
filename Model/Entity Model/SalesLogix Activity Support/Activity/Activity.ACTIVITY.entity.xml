@@ -1,5 +1,5 @@
-﻿<?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="53edfc8b-8699-4608-89e0-3a3d5a4980ac" lastModifiedUtc="2010-10-05T00:53:29.9299843Z" manageSchema="true" tableName="ACTIVITY" name="Activity" displayPropertyId="b152ce82-ab7c-4ff9-896b-a5962615ceed" isExtension="false" cacheUsage="ReadWrite" audited="true" onBeforeInsertMethodId="2441a266-7d0f-43cc-bbf4-4f0423b6e429" onAfterInsertMethodId="5ddf34ee-783f-4e78-bd73-f95cefca56a8" onBeforeUpdateMethodId="9d78c82a-9adb-4972-8531-4ec1d5e81bcd" onAfterUpdateMethodId="cb310c9b-7661-4b69-b364-8768b0554d91" onBeforeDeleteMethodId="493f646d-b1ae-4328-8c9f-c525bce89211" onAfterDeleteMethodId="591273da-fe7f-43f4-9ba5-c48aecb771fa" onCreateId="9da54433-2fb3-4c2a-b000-dd0f48951dc1">
+<?xml version="1.0"?>
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="53edfc8b-8699-4608-89e0-3a3d5a4980ac" lastModifiedUtc="2015-07-06T14:30:22.9812866Z" manageSchema="true" tableName="ACTIVITY" name="Activity" displayPropertyId="b152ce82-ab7c-4ff9-896b-a5962615ceed" isExtension="false" cacheUsage="ReadWrite" audited="true" onBeforeInsertMethodId="2441a266-7d0f-43cc-bbf4-4f0423b6e429" onAfterInsertMethodId="5ddf34ee-783f-4e78-bd73-f95cefca56a8" onBeforeUpdateMethodId="9d78c82a-9adb-4972-8531-4ec1d5e81bcd" onAfterUpdateMethodId="cb310c9b-7661-4b69-b364-8768b0554d91" onBeforeDeleteMethodId="493f646d-b1ae-4328-8c9f-c525bce89211" onCreateId="9da54433-2fb3-4c2a-b000-dd0f48951dc1">
   <extendedMetaData>
     <i>
       <n>NHibernate.Mapping.AlternateConcreteClass</n>
@@ -17,6 +17,12 @@
       <extender guid="76aa0e24-2c8f-3b71-a1f9-ca6db3db4459">
         <OrmEntitySDataExtension generateFeed="true" pathName="activities" lastUpdatedPropertyId="0b56697e-e18f-43e9-80e1-31539c55fca1" canPost="true" canPut="true" canDelete="true" />
       </extender>
+      <extender guid="7ba306ee-9fbc-4c61-98be-bcfd895410ee">
+        <OrmEntityImportExtension />
+      </extender>
+      <extender guid="0878d6db-0383-4cd2-ae88-0e1f6cf9ecd5">
+        <OrmEntityBulkActionExtension />
+      </extender>
     </extendee>
   </ExtendedPropertiesCollection>
   <keyProperties>
@@ -29,6 +35,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
@@ -40,6 +52,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -55,6 +73,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
@@ -66,6 +90,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -79,6 +109,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="92432b4d-8206-4a96-ba7b-e4cbd374f148">
@@ -90,6 +126,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -103,24 +145,43 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="92432b4d-8206-4a96-ba7b-e4cbd374f148">
         <TrueFalseDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="6a523080-f8bb-4e3a-a754-d6c941825873" lastModifiedUtc="2007-11-20T00:37:27.9294832Z" name="Category" audited="false" columnName="CATEGORY" maxLength="64" precision="0" scale="0" ordinal="11" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="6a523080-f8bb-4e3a-a754-d6c941825873" lastModifiedUtc="2015-07-06T14:20:43.6802866Z" name="Category" audited="false" columnName="CATEGORY" maxLength="64" precision="0" scale="0" ordinal="11" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
-      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
-        <TextDataType>
+      <SystemDataType guid="b71918bf-fac1-4b62-9ed5-0b0294bc9900">
+        <PickListDataType>
+          <PickListName>Meeting Category Codes</PickListName>
+          <ValueStoredAsText>true</ValueStoredAsText>
+          <Storage>Text</Storage>
+          <AllowMultiples>false</AllowMultiples>
+          <MustExistInList>true</MustExistInList>
+          <NoneEditable>false</NoneEditable>
+          <AlphaSort>false</AlphaSort>
           <Length>64</Length>
-        </TextDataType>
+        </PickListDataType>
       </SystemDataType>
     </property>
     <property xsi:type="OrmFieldProperty" id="33d602d2-e94c-45b0-8da9-ff5d588ce387" lastModifiedUtc="2007-11-20T00:37:28.6482424Z" name="ContactId" audited="false" columnName="CONTACTID" maxLength="12" precision="0" scale="0" ordinal="3" isReadOnly="false">
@@ -129,23 +190,35 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
         <StandardIdDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="884e777a-7eda-4c10-93de-8f3abd10b8ad" lastModifiedUtc="2009-08-11T17:15:28.6903466Z" name="ContactName" audited="false" columnName="CONTACTNAME" maxLength="64" precision="0" scale="0" ordinal="7" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="884e777a-7eda-4c10-93de-8f3abd10b8ad" lastModifiedUtc="2015-04-27T14:11:54.2345751Z" name="ContactName" audited="false" columnName="CONTACTNAME" maxLength="64" precision="0" scale="0" ordinal="7" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
         <TextDataType>
-          <Length>64</Length>
+          <Length>128</Length>
         </TextDataType>
       </SystemDataType>
     </property>
@@ -154,6 +227,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -167,24 +246,43 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
         <StandardIdDataType />
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="b152ce82-ab7c-4ff9-896b-a5962615ceed" lastModifiedUtc="2007-11-20T00:37:34.4139412Z" name="Description" audited="false" columnName="DESCRIPTION" maxLength="64" precision="0" scale="0" ordinal="14" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="b152ce82-ab7c-4ff9-896b-a5962615ceed" lastModifiedUtc="2017-11-07T17:13:46.7190797Z" name="Description" audited="false" columnName="DESCRIPTION" maxLength="64" precision="0" scale="0" ordinal="14" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
-      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
-        <TextDataType>
-          <Length>64</Length>
-        </TextDataType>
+      <SystemDataType guid="b71918bf-fac1-4b62-9ed5-0b0294bc9900">
+        <PickListDataType>
+          <PickListName>Meeting Regarding</PickListName>
+          <ValueStoredAsText>true</ValueStoredAsText>
+          <Storage>Text</Storage>
+          <AllowMultiples>false</AllowMultiples>
+          <MustExistInList>false</MustExistInList>
+          <NoneEditable>false</NoneEditable>
+          <AlphaSort>false</AlphaSort>
+          <Length>255</Length>
+        </PickListDataType>
       </SystemDataType>
     </property>
     <property xsi:type="OrmFieldProperty" id="1703785e-2549-47f6-a623-e7f2d47cd919" lastModifiedUtc="0001-01-01T00:00:00" name="Duration" audited="false" isNullable="false" columnName="DURATION" maxLength="0" precision="10" scale="0" ordinal="13" isReadOnly="false">
@@ -192,6 +290,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -204,6 +308,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -219,6 +329,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
@@ -232,6 +348,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -247,6 +369,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
@@ -261,6 +389,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
@@ -272,6 +406,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -287,6 +427,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="f4ca6023-9f5f-4e41-8571-50ba94e8f233">
@@ -301,6 +447,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="1f08f2eb-87c8-443b-a7c2-a51f590923f5">
@@ -313,6 +465,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
@@ -324,6 +482,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -339,6 +503,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
@@ -350,6 +520,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -365,6 +541,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="1f08f2eb-87c8-443b-a7c2-a51f590923f5">
@@ -377,6 +559,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
@@ -385,18 +573,31 @@
         </TextDataType>
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="076e246d-dad4-4971-82b6-4f349ed572ed" lastModifiedUtc="2007-11-20T00:38:08.7112552Z" name="Priority" audited="false" columnName="PRIORITY" maxLength="64" precision="0" scale="0" ordinal="10" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="076e246d-dad4-4971-82b6-4f349ed572ed" lastModifiedUtc="2015-07-06T14:12:22.6502399Z" name="Priority" audited="false" columnName="PRIORITY" maxLength="64" precision="0" scale="0" ordinal="10" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
-      <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
-        <TextDataType>
+      <SystemDataType guid="b71918bf-fac1-4b62-9ed5-0b0294bc9900">
+        <PickListDataType>
+          <PickListName>Priorities</PickListName>
+          <ValueStoredAsText>true</ValueStoredAsText>
+          <Storage>Text</Storage>
+          <AllowMultiples>false</AllowMultiples>
+          <MustExistInList>true</MustExistInList>
+          <NoneEditable>false</NoneEditable>
+          <AlphaSort>false</AlphaSort>
           <Length>64</Length>
-        </TextDataType>
+        </PickListDataType>
       </SystemDataType>
     </property>
     <property xsi:type="OrmFieldProperty" id="d917ca3a-678d-4884-85d1-0c76150f408e" lastModifiedUtc="2007-11-20T00:38:11.8675456Z" name="ProcessId" audited="false" columnName="PROCESSID" maxLength="12" precision="0" scale="0" ordinal="18" isReadOnly="false">
@@ -404,6 +605,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -416,6 +623,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -431,6 +644,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
@@ -445,6 +664,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="47f90249-e4c8-4564-9ae6-e1fa9904f8b8">
@@ -456,6 +681,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -469,6 +700,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="47f90249-e4c8-4564-9ae6-e1fa9904f8b8">
@@ -481,6 +718,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="92432b4d-8206-4a96-ba7b-e4cbd374f148">
@@ -492,6 +735,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -507,6 +756,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="92432b4d-8206-4a96-ba7b-e4cbd374f148">
@@ -518,6 +773,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -531,6 +792,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
@@ -542,6 +809,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -557,6 +830,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="92432b4d-8206-4a96-ba7b-e4cbd374f148">
@@ -568,6 +847,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -607,6 +892,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
@@ -620,6 +911,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -635,6 +932,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
@@ -649,6 +952,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
@@ -660,6 +969,9 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmCustomProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -680,6 +992,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="47f90249-e4c8-4564-9ae6-e1fa9904f8b8">
@@ -691,6 +1009,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -706,6 +1030,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
@@ -720,6 +1050,12 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="3ca925e1-4b76-4621-a39c-a0d4cb7327d5">
@@ -731,6 +1067,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>
@@ -744,22 +1086,16 @@
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
           </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
+          </extender>
         </extendee>
       </ExtendedPropertiesCollection>
       <SystemDataType guid="30053f5a-8d40-4db1-b185-1e4128eb26cc">
         <StandardIdDataType />
-      </SystemDataType>
-    </property>
-    <property xsi:type="OrmFieldProperty" id="116facba-118d-40b3-8265-8ce9a94fbca5" lastModifiedUtc="2013-02-26T19:54:52.2908362Z" name="AttendeeCount" audited="false" columnName="ATTENDEECOUNT" maxLength="0" precision="10" scale="0" ordinal="55" isReadOnly="false">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
-          <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
-            <OrmEntityPropertySDataExtension generate="true" />
-          </extender>
-        </extendee>
-      </ExtendedPropertiesCollection>
-      <SystemDataType guid="47f90249-e4c8-4564-9ae6-e1fa9904f8b8">
-        <IntegerDataType />
       </SystemDataType>
     </property>
     <property xsi:type="OrmFieldProperty" id="638bef8a-5eb8-432d-a7ce-59bf0414e534" lastModifiedUtc="2013-10-17T22:28:17.8378205Z" name="ChangeKey" audited="false" columnName="CHANGEKEY" maxLength="36" precision="0" scale="0" ordinal="54" isReadOnly="false">
@@ -767,6 +1103,12 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
             <OrmEntityPropertySDataExtension generate="true" />
+          </extender>
+          <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+            <OrmEntityPropertyImportExtension />
+          </extender>
+          <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+            <OrmEntityPropertyBulkActionExtension />
           </extender>
         </extendee>
       </ExtendedPropertiesCollection>

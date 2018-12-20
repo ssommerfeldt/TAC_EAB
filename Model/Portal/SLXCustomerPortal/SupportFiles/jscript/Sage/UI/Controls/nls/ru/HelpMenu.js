@@ -1,7 +1,7 @@
-define((
-{ helpText: 'Помощь',
-  aboutText: 'О программе',
-  webClientHelpText: 'Помощь по Веб-клиенту',
-  gettingStartedText: 'Руководство к началу работы',
-  quickReferenceText: 'Краткое справочное руководство' }
-));
+define("Sage/UI/Controls/nls/ru/HelpMenu", {
+    "helpText": "Справка",
+    "aboutText": "О программе",
+    "webClientHelpText": "Справка веб-клиента",
+    "gettingStartedText": "Руководство по началу работы",
+    "quickReferenceText": "Краткое справочное руководство"
+});

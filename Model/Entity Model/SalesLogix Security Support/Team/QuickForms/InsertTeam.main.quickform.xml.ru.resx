@@ -117,70 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DefaultOwner.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
-    <value>Регион</value>
+  <data name="DefaultOwner.Caption" xml:space="preserve">
+    <value>Владелец:</value>
+  </data>
+  <data name="OwnerDescription.Caption" xml:space="preserve">
+    <value>Имя:</value>
+  </data>
+  <data name="securityProfileLookup.Caption" xml:space="preserve">
+    <value>Профиль безопасности по умолчанию:</value>
   </data>
   <data name="DefaultOwner.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Имя Пользователя</value>
+    <value>Имя пользователя</value>
+  </data>
+  <data name="addManagerCheckBox.Caption" xml:space="preserve">
+    <value>Автоматически добавлять менеджера пользователя в команду</value>
+  </data>
+  <data name="addManagerCheckBox.ToolTip" xml:space="preserve">
+    <value>Кроме владельца команды, добавляет менеджера владельца в команду</value>
+  </data>
+  <data name="DuplicateOwnerTitle" xml:space="preserve">
+    <value>Дубликат команды</value>
+  </data>
+  <data name="DuplicateOwnerMessage" xml:space="preserve">
+    <value>Имя команды уже задействовано. Выберите другое имя.</value>
+  </data>
+  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="InvalidNameMessage" xml:space="preserve">
+    <value>Имя команды пусто или содержит недопустимые символы.</value>
+  </data>
+  <data name="InvalidNameMessageTitle" xml:space="preserve">
+    <value>Неверное имя команды</value>
+  </data>
+  <data name="DefaultOwner.LookupProperties.UserName.PropertyHeader" xml:space="preserve">
+    <value>Пользователь</value>
   </data>
   <data name="DefaultOwner.LookupProperties.Title.PropertyHeader" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="DefaultOwner.LookupProperties.Department.PropertyHeader" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="DefaultOwner.LookupProperties.Region.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="DefaultOwner.LookupDialogTitle" xml:space="preserve">
+    <value>Поиск пользователя</value>
+  </data>
+  <data name="SaveButton.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
+    <value>Поиск профиля безопасности</value>
+  </data>
+  <data name="DefaultOwner.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
     <value>Название</value>
   </data>
   <data name="DefaultOwner.LookupProperties.UserInfo.Department.PropertyHeader" xml:space="preserve">
     <value>Отдел</value>
   </data>
-  <data name="InvalidNameMessageTitle" xml:space="preserve">
-    <value>Неверное имя команды</value>
-  </data>
-  <data name="DefaultOwner.LookupProperties.Department.PropertyHeader" xml:space="preserve">
-    <value>Отдел</value>
-  </data>
-  <data name="SaveButton.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="DefaultOwner.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
   </data>
   <data name="DefaultOwner.LookupProperties.Type.PropertyHeader" xml:space="preserve">
     <value>Тип</value>
   </data>
-  <data name="securityProfileLookup.Caption" xml:space="preserve">
-    <value>Стандартный профиль безопасности:</value>
-  </data>
-  <data name="DefaultOwner.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="DefaultOwner.LookupDialogTitle" xml:space="preserve">
-    <value>Поиск пользователя</value>
-  </data>
-  <data name="DefaultOwner.LookupProperties.Region.PropertyHeader" xml:space="preserve">
-    <value>Регион</value>
-  </data>
-  <data name="addManagerCheckBox.Caption" xml:space="preserve">
-    <value>Автоматическое добавление менеджера пользователя в команду</value>
-  </data>
-  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
-    <value>Поиск профиля безопасности</value>
-  </data>
-  <data name="InvalidNameMessage" xml:space="preserve">
-    <value>Имя команды пусто или  содержит недопустимые символы.</value>
-  </data>
-  <data name="OwnerDescription.Caption" xml:space="preserve">
-    <value>Имя:</value>
-  </data>
-  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
-    <value>Профиль</value>
-  </data>
-  <data name="DuplicateOwnerTitle" xml:space="preserve">
-    <value>Дубликат команды</value>
-  </data>
-  <data name="DefaultOwner.LookupProperties.UserName.PropertyHeader" xml:space="preserve">
-    <value>Пользователь</value>
-  </data>
-  <data name="addManagerCheckBox.ToolTip" xml:space="preserve">
-    <value>Кроме куратора команды, добавляет менеджера куратора в команду</value>
-  </data>
-  <data name="DuplicateOwnerMessage" xml:space="preserve">
-    <value>Имя команды уже задействовано.  Выберите другое имя.</value>
-  </data>
-  <data name="DefaultOwner.Caption" xml:space="preserve">
-    <value>Доступ:</value>
+  <data name="DefaultOwner.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

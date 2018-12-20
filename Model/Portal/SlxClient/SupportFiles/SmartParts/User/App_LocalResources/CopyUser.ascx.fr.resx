@@ -117,17 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmCopyMessage" xml:space="preserve">
-    <value>Voulez-vous vraiment copier cet utilisateur ?</value>
-  </data>
-  <data name="ExceededLicensesMessage" xml:space="preserve">
-    <value>Le nombre de licences {0} disponibles a été dépassé.</value>
-  </data>
-  <data name="GenericErrorMessage" xml:space="preserve">
-    <value>Erreur lors de la copie de l'utilisateur.</value>
-  </data>
   <data name="CancelButton.Caption" xml:space="preserve">
     <value>Annuler</value>
+  </data>
+  <data name="ConfirmCopyMessage" xml:space="preserve">
+    <value>Souhaitez-vous vraiment copier cet utilisateur ?</value>
+  </data>
+  <data name="CopyOfNameTemplate" xml:space="preserve">
+    <value>Copie de</value>
   </data>
   <data name="ErrorCannotCopyRetiredUser" xml:space="preserve">
     <value>Les utilisateurs désactivés ne peuvent pas être copiés.</value>
@@ -135,10 +132,13 @@
   <data name="ErrorMessageTitle" xml:space="preserve">
     <value>Impossible de copier l'utilisateur</value>
   </data>
+  <data name="ExceededLicensesMessage" xml:space="preserve">
+    <value>Le nombre de licences {0} disponibles a été dépassé.</value>
+  </data>
+  <data name="GenericErrorMessage" xml:space="preserve">
+    <value>Erreur lors de la copie de l'utilisateur.</value>
+  </data>
   <data name="OkButton.Caption" xml:space="preserve">
     <value>OK</value>
-  </data>
-  <data name="CopyOfNameTemplate" xml:space="preserve">
-    <value>Copie de</value>
   </data>
 </root>

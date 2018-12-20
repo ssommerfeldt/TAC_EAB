@@ -3,6 +3,8 @@ using System.Web.UI;
 using Sage.Platform.WebPortal.Services;
 using Sage.Platform.Application.UI;
 using Sage.Platform.WebPortal.SmartParts;
+using Sage.SalesLogix.BusinessRules;
+using Sage.SalesLogix.HighLevelTypes;
 using Sage.SalesLogix.Services.Import.Actions;
 using Sage.SalesLogix.Services.Import;
 using Sage.Entity.Interfaces;
@@ -192,6 +194,12 @@ public partial class ImportActionAddResponse :EntityBoundSmartPartInfoProvider
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
+        var value = BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+        if (!String.IsNullOrEmpty(value))
+        {
+            var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+            lueResponseLeadSource.LookupPreFilters.Add(leadSourcePreFilter);
+        }
     }
 
     /// <summary>

@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/TextBox", [
     'dijit/form/TextBox',
     'dojo/_base/declare'
 ],
@@ -34,7 +34,7 @@ function (TextBox, declare) {
         */
         forceFocus: function (val) {
             this.set('value', val);
-            this.set('class', 'txt-ss');
+            this.set('class', 'txt-ss-watermark');
         },
         /**
         * Listener for the blur event. The control

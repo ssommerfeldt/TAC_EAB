@@ -1,5 +1,7 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+require({cache:{
+'url:Sage/MainView/ActivityMgr/templates/ActivityEditor.html':"[\r\n'<div>',\r\n    '<div dojoType=\"dijit.Dialog\" id=\"activityDialog\" title=\"\" dojoAttachPoint=\"_dialog\" dojoAttachEvent=\"onHide:_onDlgHide\">',\r\n        '<div class=\"activity-dialog\">',  //body\r\n            '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"1\" labelWidth=\"{%= $.labelWidth %}\" dojoAttachPoint=\"regardingContainer\">',\r\n                '<select id=\"pk_Regarding\" label=\"{%= $.regardingText %}\" id=\"{%= $.id %}_pk_Regarding\" shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.SingleSelectPickList\" dojoAttachPoint=\"pk_Regarding\" canEditText=\"true\" itemMustExist=\"false\" maxLength=\"255\"></select>',          \r\n    '<div dojoType=\"dijit.form.TextBox\" label=\"{%= $.locationText %}\" id=\"{%= $.id %}_tb_Location\" dojoAttachPoint=\"tb_Location\" maxLength=\"255\" ></div>',\r\n            '</div>', //first tablecontainer 1 col\r\n        //Dates section for add/edit mode..................\r\n            '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"2\" labelWidth=\"{%= $.labelWidth %}\" dojoAttachPoint=\"dateSection_AddEdit\">',\r\n                '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" id=\"{%= $.id %}_dtp_startDate\" dojoAttachPoint=\"dtp_startDate\" displayDate=\"true\" displayTime=\"true\" label=\"{%= $.startTimeText %}\"></div>',\r\n                '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DurationSelect\" label=\"{%= $.durationText %}\" id=\"{%= $.id %}_sel_Duration\" dojoAttachPoint=\"sel_Duration\" includeDisablingCheckbox=\"false\" valuesAreAfterStart=\"true\"></div>',\r\n                '<div dojoType=\"dijit.layout.ContentPane\" label=\"\" class=\"remove-padding\">',\r\n                    '<div dojoType=\"dijit.form.CheckBox\" label=\"{%= $.timeLessText %}\" id=\"{%= $.id %}_cb_Timeless\" dojoAttachPoint=\"cb_Timeless\" ></div>',\r\n                    '<label class=\"checkbox-label\" for=\"{%= $.id %}_cb_Timeless\">{%= $.timeLessText %}</label>',\r\n                '</div>',\r\n                '<div dojoType=\"dojox.layout.TableContainer\" label=\"{%= $.alarmText %}\" cols=\"2\" showLabels=\"false\" class=\"removeExtraSpace\" dojoAttachPoint=\"alarmContainer\">',\r\n                    '<div dojoType=\"dijit.form.CheckBox\" id=\"{%= $.id %}_cb_Alarm\" dojoAttachPoint=\"cb_Alarm\" ></div>',\r\n                    '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DurationSelect\" id=\"{%= $.id %}_sel_AlarmDur\" dojoAttachPoint=\"sel_AlarmDur\" valuesAreAfterStart=\"false\" ></div>',\r\n                '</div>',\r\n                '<div dojoType=\"dijit.layout.ContentPane\" label=\"\" class=\"remove-padding\">',\r\n                    '<div dojoType=\"dijit.form.CheckBox\" label=\"\" id=\"{%= $.id %}_cb_AutoRollover\" dojoAttachPoint=\"cb_AutoRollover\"></div>',\r\n                    '<label class=\"checkbox-label\" for=\"{%= $.id %}_cb_AutoRollover\">{%= $.rolloverText %}</label>',\r\n                '</div>',\r\n            '</div>',\r\n        //Dates section for complete mode...................\r\n            '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"2\" labelWidth=\"{%= $.labelWidth %}\" dojoAttachPoint=\"dateSection_Complete\">',\r\n                '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" id=\"{%= $.id %}_dtp_completedDate\" dojoAttachPoint=\"dtp_completedDate\" displayDate=\"true\" displayTime=\"true\" label=\"{%= $.completedText %}\"></div>',\r\n                '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" id=\"{%= $.id %}_dtp_scheduledDate\" dojoAttachPoint=\"dtp_scheduledDate\" displayDate=\"true\" displayTime=\"true\" label=\"{%= $.scheduledText %}\"></div>',\r\n                '<div dojoType=\"dijit.layout.ContentPane\" label=\"\" class=\"remove-padding\">',\r\n                    '<div dojoType=\"dijit.form.CheckBox\" label=\"{%= $.timeLessText %}\" id=\"{%= $.id %}_cb_TimelessComplete\" dojoAttachPoint=\"cb_TimelessComplete\" ></div>',\r\n                    '<label class=\"checkbox-label\" for=\"{%= $.id %}_cb_TimelessComplete\">{%= $.timeLessText %}</label>',\r\n                '</div>',\r\n                '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DurationSelect\" label=\"{%= $.durationText %}\" id=\"{%= $.id %}_sel_DurationComplete\" dojoAttachPoint=\"sel_DurationComplete\" includeDisablingCheckbox=\"false\" valuesAreAfterStart=\"true\"></div>',\r\n            '</div>',\r\n\r\n            '<div dojoType=\"dijit.layout.TabContainer\" id=\"{%= $.id %}_tc_EditActivity\"  dojoAttachPoint=\"tc_EditActivity\" class=\"tab-container\" doLayout=\"false\">',\r\n/*  General Tab   */\r\n                '<div dojoType=\"dijit.layout.ContentPane\" id=\"{%= $.id %}_cp_General\" title=\"{%= $.tabNameGeneralText %}\" class=\"tabContent remove-padding\" dojoAttachPoint=\"cp_General\">',\r\n                    '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"1\" labelWidth=\"{%= $.labelWidth %}\" dojoAttachPoint=\"resultContainer\" class=\"bottom-border-section add-padding\">', \r\n                        '<select shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.SingleSelectPickList\" label=\"{%= $.resultText %}\" id=\"{%= $.id %}_pl_Result\"  name=\"pl_Result\" dojoAttachPoint=\"pl_Result\" canEditText=\"true\" itemMustExist=\"false\" maxLength=\"64\"></select>',\r\n                    '</div>',\r\n                    '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"4\" labelWidth=\"70\" baseClass=\"contact-lead-radios\" >',\r\n                        '<input dojoType=\"dijit.form.RadioButton\" type=\"radio\" name=\"contactOrLead\" label=\"{%= $.contactText %}\" value=\"contact\" id=\"{%= $.id %}_rdo_Contact\" dojoAttachPoint=\"rdo_Contact\" dojoAttachEvent=\"onChange:_setContactLeadVisibility\" checked=\"true\" />',\r\n                        '<input dojoType=\"dijit.form.RadioButton\" type=\"radio\" name=\"contactOrLead\" label=\"{%= $.leadText %}\" value=\"lead\" id=\"{%= $.id %}_rdo_Lead\" dojoAttachPoint=\"rdo_Lead\" />',\r\n                    '</div>',\r\n                    '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"2\" labelWidth=\"{%= $.labelWidth %}\" dojoAttachPoint=\"contactContainer\" baseClass=\"bottom-border-section\">',\r\n\r\n                        '<div dojoType=\"dijit.layout.ContentPane\" label=\"{%= $.nameText %}\" dojoAttachPoint=\"container_ContactLup\" class=\"remove-padding lookup-container\"></div>',\r\n                        '<div dojoType=\"dijit.layout.ContentPane\" label=\"{%= $.opportunityText %}\" dojoAttachPoint=\"container_OppLup\" class=\"remove-padding lookup-container\"></div>',\r\n                        '<div dojoType=\"dijit.layout.ContentPane\" label=\"{%= $.accountText %}\" dojoAttachPoint=\"container_AccountLup\"  class=\"remove-padding lookup-container\"></div>',\r\n                        '<div dojoType=\"dijit.layout.ContentPane\" label=\"{%= $.ticketText %}\" dojoAttachPoint=\"container_TicketLup\"  class=\"remove-padding lookup-container\"></div>',\r\n                    '</div>',\r\n                    '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"2\" labelWidth=\"{%= $.labelWidth %}\" dojoAttachPoint=\"leadContainer\"  baseClass=\"bottom-border-section\" class=\"display-none\">',\r\n                        '<div dojoType=\"dijit.layout.ContentPane\" label=\"{%= $.nameText %}\" dojoAttachPoint=\"container_LeadLup\"  class=\"remove-padding lookup-container\"></div>',\r\n                        '<input dojoType=\"dijit.form.TextBox\" id=\"{%= $.id %}_tb_LeadCompanyName\" label=\"{%= $.companyText %}\" dojoAttachPoint=\"tb_LeadCompanyName\" readonly=\"true\" />',\r\n                    '</div>',\r\n                    '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"2\" labelWidth=\"{%= $.labelWidth %}\" class=\"bottom-border-section\" dojoAttachPoint=\"categoryContainer\" >',\r\n                        '<select label=\"{%= $.priorityText %}\" id=\"{%= $.id %}_pk_Priority\" shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.SingleSelectPickList\" dojoAttachPoint=\"pk_Priority\" canEditText=\"true\" itemMustExist=\"false\" pickListName=\"Priorities\" sort=\"false\" maxLength=\"64\" style=\"width: {%= 472 - $.labelWidth %}px;\" ></select>',\r\n                        '<div dojoType=\"dijit.layout.ContentPane\" label=\"{%= $.leaderText %}\" dojoAttachPoint=\"container_LeaderLup\" class=\"remove-padding lookup-container\" style=\"width: {%= 472 - $.labelWidth %}px;\"></div>',\r\n                        '<select label=\"{%= $.categoryText %}\" id=\"{%= $.id %}_pk_Category\" shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.SingleSelectPickList\" dojoAttachPoint=\"pk_Category\" canEditText=\"true\" itemMustExist=\"false\" maxLength=\"64\" style=\"width: {%= 472 - $.labelWidth %}px;\"></select>',\r\n                        '<div dojoType=\"dijit.layout.ContentPane\" label=\"&nbsp;\" class=\"dijitTextBox\" style=\"border-width:0px\">&nbsp;</div>',\r\n                    '</div>',\r\n                    '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"1\" labelWidth=\"{%= $.labelWidth %}\" class=\"valigntop\" dojoAttachPoint=\"notesContainer\">',\r\n                        '<textarea dojoType=\"dijit.form.SimpleTextarea\" id=\"{%= $.id %}_ta_Notes\" label=\"{%= $.notesText %}\" dojoAttachPoint=\"ta_Notes\" class=\"notes-text\"></textarea>',\r\n                    '</div>',\r\n                '</div>',  // end general tab\r\n/* Availability Tab   */\r\n                '<div dojoType=\"dijit.layout.ContentPane\" id=\"{%= $.id %}_cp_Availability\" title=\"{%= $.tabNameAvailabilityText %}\" class=\"tabContent remove-padding\" dojoAttachPoint=\"cp_Availability\" dojoAttachEvent=\"onShow:_onShowAvailabilityTab\">',\r\n                    '<div dojoType=\"dijit.Toolbar\" region=\"top\" splitter=\"false\" class=\"right-tools\" >',  // list-panel-tbar\r\n                        '<div dojoType=\"dijit.layout.ContentPane\" dojoAttachPoint=\"container_ResourcesLup\" class=\"remove-padding\"></div>',\r\n                    '</div>',\r\n/* Scheduler ........... */\r\n                    '<div id=\"scheduler_here\" class=\"dhx_cal_container\" style=\"width:100%;height:230px;\">',\r\n                        '<div class=\"dhx_cal_navline\">',\r\n                            '<div class=\"dhx_cal_prev_timeline_button\" style=\"right:50px;\">&nbsp;</div>',\r\n\t\t\t                '<div class=\"dhx_cal_next_timeline_button\" style=\"right:19px;\">&nbsp;</div>',\r\n//'<div class=\"dhx_cal_today_button\"></div>',\r\n\t\t\t                '<div class=\"dhx_cal_date\"></div>',\r\n//'<div class=\"dhx_cal_tab\" name=\"day_tab\" style=\"right:204px;\"></div>',\r\n//'<div class=\"dhx_cal_tab\" name=\"week_tab\" style=\"right:140px;\"></div>',\r\n                            '<div class=\"dhx_cal_tab\" name=\"timeline_tab\" style=\"right:280px;\"></div>',\r\n//'<div class=\"dhx_cal_tab\" name=\"month_tab\" style=\"right:76px;\"></div>',\r\n\t\t                '</div>',\r\n\t\t                '<div class=\"dhx_cal_header\"></div>',\r\n\t\t                '<div class=\"dhx_cal_data\"></div>',\r\n                    '</div>',\r\n                '</div>',\r\n/* Recurring Tab  */\r\n                '<div dojoType=\"dijit.layout.ContentPane\" id=\"{%= $.id %}_cp_Recurring\" title=\"{%= $.recurringText %}\" class=\"tabContent\" dojoAttachPoint=\"cp_Recurring\" dojoAttachEvent=\"onShow:_showRecurringTab\">',\r\n                    '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.MainView.ActivityMgr.RecurringEditor\" id=\"{%= $.id %}_recEd\" labelWidth=\"{%= $.labelWidth - 20 %}\" dojoAttachPoint=\"_recurringEditor\"></div>',\r\n                '</div>',\r\n/* Attachments Tab  */\r\n                '<div dojoType=\"dijit.layout.ContentPane\" id=\"{%= $.id %}_cp_Attachments\" title=\"{%= $.tabNameAttachmentsText %}\" class=\"tabContent remove-padding\" dojoAttachPoint=\"cp_Attachments\">',\r\n                    '<div id=\"{%= $.id %}_attachmentsGridPlaceholder\" dojoAttachPoint=\"_attachmentGridPlaceholder\" style=\"width:100%;height:100%;\" ></div>',\r\n                '</div>',  //end attachments tab\r\n            '</div>',  //tab container\r\n/* Buttons       */\r\n        // Add/edit activity buttons\r\n            '<table class=\"activity-dialog-followup\" id=\"add_edit_buttons\" dojoAttachPoint=\"add_edit_buttons\">',\r\n                '<tr>',\r\n                    '<td class=\"alignleft\">',\r\n                        '<div class=\"scheduled-by-label\" dojoAttachPoint=\"lbl_ScheduledBy\"></div>',\r\n                    '</td><td class=\"alignright\">',\r\n                        '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_Complete\" name=\"btn_Complete\" dojoAttachPoint=\"btn_Complete\" dojoAttachEvent=\"onClick:_completeClick\">{%= $.completeBtnText %}</div>',\r\n                        '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_Delete\" name=\"btn_Delete\" dojoAttachPoint=\"btn_Delete\" dojoAttachEvent=\"onClick:_deleteClick\">{%= $.deleteText %}</div>',\r\n                        '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>',\r\n                        '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_OK\" name=\"btn_OK\" dojoAttachPoint=\"btn_OK\" dojoAttachEvent=\"onClick:_okClick\">{%= $.okText %}</div>',\r\n                        '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_Cancel\" name=\"btn_Cancel\" dojoAttachPoint=\"btn_Cancel\" dojoAttachEvent=\"onClick:_cancelClick\">{%= $.cancelText %}</div>',\r\n                    '</td>',\r\n                '</tr>',\r\n            '</table>',\r\n\r\n\r\n        //complete activity buttons\r\n            '<table class=\"activity-dialog-followup display-none\" id=\"complete_buttons\" dojoAttachPoint=\"complete_buttons\">',\r\n                '<tr>',\r\n                    '<col width=\"50%\" /><col width=\"50%\" />',\r\n                    '<td class=\"alignleft\">',\r\n                        '<div dojoType=\"dojox.layout.TableContainer\" orientation=\"horiz\" cols=\"1\" labelWidth=\"{%= $.labelWidth %}\" >',\r\n                            '<select label=\"{%= $.followupText %}\" id=\"sel_Followup\" dojoType=\"dijit.form.ComboBox\" dojoAttachPoint=\"sel_Followup\">',\r\n                                '<option value=\"none\" selected=\"selected\">{%= $.noneText %}</option>',\r\n                                '<option value=\"phone\">{%= Sage.Utility.Activity.getActivityTypeName(\"atPhoneCall\") %}</option>',\r\n                                '<option value=\"meeting\">{%= Sage.Utility.Activity.getActivityTypeName(\"atAppointment\") %}</option>',\r\n                                '<option value=\"todo\">{%= Sage.Utility.Activity.getActivityTypeName(\"atToDo\") %}</option>',\r\n                            '</select>',\r\n                            '<div dojoType=\"dijit.layout.ContentPane\" label=\"\" class=\"remove-padding\">',\r\n                                '<div dojoType=\"dijit.form.CheckBox\" label=\"\" id=\"ck_coAttachments\" dojoAttachPoint=\"ck_coAttachments\" ></div>',\r\n                                '<label class=\"checkbox-label\" for=\"{%= $.id %}_ck_coAttachments\">{%= $.carryOverAttachmentsText %}</label>',\r\n                            '</div>',\r\n                            '<div dojoType=\"dijit.layout.ContentPane\" label=\"\" class=\"remove-padding\">',\r\n                                '<div dojoType=\"dijit.form.CheckBox\" label=\"\" id=\"ck_coNotes\" dojoAttachPoint=\"ck_coNotes\" ></div>',\r\n                                '<label class=\"checkbox-label\" for=\"{%= $.id %}_ck_coNotes\">{%= $.carryOverNotesText %}</label>',\r\n                            '</div>',\r\n                        '</div>',\r\n                    '</td><td class=\"alignright valignbottom\" rowspan=\"2\">',\r\n                        '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_asScheduled\" name=\"btn_asScheduled\" dojoAttachPoint=\"btn_asScheduled\" dojoAttachEvent=\"onClick:_asScheduledClick\">{%= $.asScheduledText %}</div>',\r\n                        '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_Now\" name=\"btn_Now\" dojoAttachPoint=\"btn_Now\" dojoAttachEvent=\"onClick:_nowClick\">{%= $.nowText %}</div>',\r\n                        '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_CancelComplete\" name=\"btn_Cancel\" dojoAttachPoint=\"btn_CancelComplete\" dojoAttachEvent=\"onClick:_cancelClick\">{%= $.cancelText %}</div>',\r\n                    '</td>',\r\n                '</tr><tr>',\r\n                    '<td class=\"alignleft\" >',\r\n                        '<div class=\"scheduled-by-label\" dojoAttachPoint=\"lbl_ScheduledByComp\"></div>',\r\n                    '</td>',\r\n                '</tr>',\r\n            '</table>',\r\n\r\n\r\n\r\n        //Confirmations button bar...\r\n            '<table class=\"button-bar display-none\" id=\"confirmation_edit_buttons\" dojoAttachPoint=\"confirmation_edit_buttons\">',\r\n                '<tr>',\r\n                    '<td class=\"alignleft\" style=\"width:{%= $.labelWidth %}px;\">',\r\n                        '<label for=\"{%= $.id %}_ta_confirmationResponse\" id=\"responseLabel\" dojoAttachPoint=\"responseLabel\">{%= $.responseText %}</label>',\r\n                    '</td>',\r\n                    '<td class=\"alignleft\">',\r\n                        '<textarea dojoType=\"dijit.form.SimpleTextarea\" id=\"{%= $.id %}_ta_confirmationResponse\" dojoAttachPoint=\"ta_confirmationResponse\" class=\"notes-text dijitTextBox\" maxLength=\"128\" ></textarea>',\r\n                    '</td><td class=\"alignright valignbottom\">',\r\n                        '<span id=\"newConfButtons\" dojoAttachPoint=\"newConfButtons\">',\r\n                            '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_accept\" name=\"btn_accept\" dojoAttachPoint=\"btn_accept\" dojoAttachEvent=\"onClick:_acceptConfClick\">{%= $.acceptText %}</div>',\r\n                            '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_decline\" name=\"btn_decline\" dojoAttachPoint=\"btn_decline\" dojoAttachEvent=\"onClick:_declineClick\">{%= $.declineText %}</div>',\r\n                            '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_cancelConf\" name=\"btn_cancelConf\" dojoAttachPoint=\"btn_cancelConf\" dojoAttachEvent=\"onClick:_cancelClick\">{%= $.cancelText %}</div>',\r\n                        '</span>',\r\n                        '<span id=\"otherConfButtons\" dojoAttachPoint=\"otherConfButtons\" class=\"display-none\">',\r\n                            '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_deleteConf\" name=\"btn_deleteConf\" dojoAttachPoint=\"btn_deleteConf\" dojoAttachEvent=\"onClick:_deleteConfClick\">{%= $.deleteConfText %}</div>',\r\n                            '<div dojoType=\"dijit.form.Button\" id=\"{%= $.id %}_btn_closeConf\" name=\"btn_closeConf\" dojoAttachPoint=\"btn_closeConf\" dojoAttachEvent=\"onClick:_cancelClick\">{%= $.closeText %}</div>',\r\n                        '</span>',\r\n                    '</td>',\r\n                '</tr>',\r\n            '</table>',\r\n        '</div>', //body\r\n    '</div>',  //dialog\r\n'</div>' //root node\r\n]\r\n"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ActivityMgr/ActivityEditor", [
     'dijit/_Widget',
     'Sage/_Templated',
     'dojo/_base/declare',
@@ -24,14 +26,16 @@ define([
     'dojo/text!./templates/ActivityEditor.html',
     'dojo/dom-class',
     'Sage/Utility/UserOptions',
-    "dijit/focus",
-    'dojo/_base/lang',
-     'Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab',
-     'dijit/layout/ContentPane',
-     'dojo/on',
+    'dijit/focus',
+    'dojo/aspect',
+    'Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab',
+    'dijit/layout/ContentPane',
+    'dojo/dom-style',
+    'dojo/on',
+    'dojo/dom-geometry',
 
     'dijit/Toolbar',
-    'dijit/layout/TabContainer',    
+    'dijit/layout/TabContainer',
     'dijit/form/Textarea',
     'dojox/layout/TableContainer',
     'dijit/layout/BorderContainer',
@@ -47,8 +51,8 @@ define([
 ],
 function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, utility, _DialogHelpIconMixin,
     dojoLang, _DialogLoadingMixin, activityUtility, dojoDate, locale, dString, sageDialogs, tooltip, AttachmentList,
-    sDataServiceRegistry, fileUtility, attachmentUtility, Lookup, activityEditorStrings, template, domClass, userOptionsUtility, focusUtil, lang,
-    ActivityEditorAttendeesTab, ContentPane, on) {
+    sDataServiceRegistry, fileUtility, attachmentUtility, Lookup, activityEditorStrings, template, domClass, userOptionsUtility, focusUtil, aspect,
+    ActivityEditorAttendeesTab, ContentPane, domStyle, on, domGeometry) {
     var activityEditor = declare('Sage.MainView.ActivityMgr.ActivityEditor', [_Widget, _Templated], {
         activityId: '',
         activityMemberId: '',
@@ -108,6 +112,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         noEditDisableList: ['pk_Regarding', 'tb_Location', 'dtp_startDate', 'sel_Duration', 'cb_Timeless', 'cb_AutoRollover', 'rdo_Contact', 'rdo_Lead', 'lup_Account', 'lup_Contact', 'lup_Opportunity', 'lup_Ticket', 'lup_Lead', 'pk_Priority', 'lup_Leader', 'pk_Category'], // 'cb_Alarm', 'btn_OK', 'sel_AlarmDur',
         _readOnlyMode: false,
         _isProcessing: false,
+        _DHTMLXLibraryTimePattern:'',
         eventConnections: [],
         activityDefaultValues: {},
         widgetsInTemplate: true,
@@ -155,7 +160,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 position: ['below']
             });
             dojo.connect(this.dtp_scheduledDate, 'onChange', this, function () {
-                this._asScheduledTooltip.set('label', locale.format(this.dtp_scheduledDate.get('value'), { selector: 'datetime', fullYear: true }));
+                this._asScheduledTooltip.set('label', locale.format(this.dtp_scheduledDate.get('value'), { selector: 'datetime', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name }));
             });
 
             this._nowTooltip = new tooltip({
@@ -164,29 +169,23 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 position: ['below']
             });
             dojo.connect(this.dtp_completedDate, 'onChange', this, function () {
-                this._nowTooltip.set('label', locale.format(this.dtp_completedDate.get('value'), { selector: 'datetime', fullYear: true }));
+                this._nowTooltip.set('label', locale.format(this.dtp_completedDate.get('value'), { selector: 'datetime', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name }));
             });
 
             dojo.subscribe('/entity/activityAttendee/primaryChanged', this, this.primaryChanged);
             dojo.subscribe('/entity/activityAttendee/add', this, this._updateActivityAttendeeETag);
             dojo.subscribe('/entity/activityAttendee/delete', this, this._updateActivityAttendeeETag);
         },
-
-
-
-
         primaryChanged: function (currentEntity, type, checked) {
             var entity = dojoLang.clone(currentEntity);
             entity["attendeeTab"] = true;
             entity["$descriptor"] = entity["Name"];
             entity["$key"] = entity["EntityId"];
-            var self = this;
             if (entity.EntityType == "Contact") {
                 if (!entity["Account"]) {
                     entity["Account"] = { "$key": entity["AccountId"], "AccountName": entity["AccountName"] || entity["Company"] };
                 }
                 entity["ContactId"] = entity["EntityId"];
-
 
                 if (entity["PrimaryChecked"]) {
                     this.rdo_Contact.set('checked', true);
@@ -198,11 +197,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 } else {
                     this.lup_Contact.set('selectedObject', null);
                 }
-
-                // this._contactChanged(entity, true);
             } else if (entity.EntityType == "Lead") {
-
-
                 entity["Company"] = entity["AccountName"];
                 entity["LeadFullName"] = entity["Name"];
                 entity["LeadId"] = entity["EntityId"];
@@ -216,14 +211,8 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 } else {
                     this.lup_Lead.set('selectedObject', null);
                 }
-
-            }            
-
+            }
         },
-
-
-
-
         isFirstOpen: true,
         show: function (mixinProperties) {
             this._isProcessing = false;
@@ -235,11 +224,8 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 this._ensureLookupsCreated();
                 this.connect(this._recurringEditor, 'onStartDateChanged', this._recurringStartDateChanged);
                 this.connect(this._recurringEditor, 'onRecurPeriodChanged', this._recurringPeriodChanged);
-
                 this.connect(this._dialog, 'onHide', this._cleanOnClose);
-                //ToDo: This makes it so you cannot type in the followup control, but it also
-                // causes you to not be able to tab to it...
-                //this.sel_Followup.textbox.disabled = true;
+                this._ensureAttachmentList();
             }
             //Reset the duration selector.
             this.sel_AlarmDur.resetItems();
@@ -273,11 +259,10 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         _onDlgHide: function () {
             this.onHide();
-        },       
+        },
         onHide: function () {
             this.attendeesTab._dialogHide();
             this._cleanOnClose();
-            // this.hide();
         },
         _cleanOnClose: function () {
             var svc = Sage.Services.getService('ClientEntityContext');
@@ -298,10 +283,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this._hideLookupTooltip(this.lup_Ticket);
             this._hideLookupTooltip(this.lup_Lead);
             this._hideLookupTooltip(this.lup_Leader);
-
         },
         _hideLookupTooltip: function (control) {
-            if(control) {
+            if (control) {
                 control.hideTooltip();
             }
         },
@@ -309,7 +293,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         // ... region - Activity data methods   .....................
         _updateActivityETag: function (attachment) {
-            //listener for attachment record changes.  
+            //listener for attachment record changes.
             if (attachment) {
                 this._activityData.AttachmentCount++;
             } else {
@@ -328,11 +312,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 });
             }
         },
-
         _updateActivityAttendeeETag: function (count) {
             if (this._dialog.open && this.activityId) {
                 this.AttCount = count;
-                var self = this;
                 var req = new Sage.SData.Client.SDataSingleResourceRequest(sDataServiceRegistry.getSDataService('system'));
                 req.setResourceKind('activities');
                 req.setResourceSelector('"' + this.activityId + '"');
@@ -349,7 +331,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 });
             }
         },
-        _ensureAttendeesTab : function(){
+        _ensureAttendeesTab: function () {
             if (!this.attendeesTab || this.mode != this.attendeesTab.editorMode || this.activityId !== this.attendeesTab._activityId) {
                 this._addAttendeesTab(this.mode);
                 this.userNotificationId = null;
@@ -365,40 +347,34 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     dijit.byId(this.attendeesTab.lup_Contact.id).destroyRecursive();
                 }
                 dijit.byId("attendeesTabPane").destroyRecursive();
-
                 this.attendeesTab = null;
             }
             var options = { editorMode: mode };
-            var _attendeesTab = this.attendeesTab = new ActivityEditorAttendeesTab(options);
+            var attendeesTab = this.attendeesTab = new ActivityEditorAttendeesTab(options);
             // Create a new ContentPane with the association tab as the contents
             var cp = new ContentPane({
                 id: 'attendeesTabPane',
                 title: this.tabNameParticipants,
                 'class': 'tabContent remove-padding'
-            }, _attendeesTab.domNode);
+            }, attendeesTab.domNode);
 
-            //Add Assocation ContentPane to table container that is already defined in the activity editor
+            //Add Association ContentPane to table container that is already defined in the activity editor
             this.tc_EditActivity.addChild(cp);
-            _attendeesTab.actEditor = this;
+            attendeesTab.actEditor = this;
             var editable = true;
             if ((this.mode === 'Confirm') || this._isOccurence()) {
                 editable = false;
             }
-            _attendeesTab.startup(!editable);
-
-            var _self = this;
-
+            attendeesTab.startup(!editable);
             on(cp, 'show', function () {
                 if (editable) {
-                    _attendeesTab.setToReadOnly(false);
+                    attendeesTab.setToReadOnly(false);
+                } else {
+                    attendeesTab.setToReadOnly(true);
                 }
-                else {
-                    _attendeesTab.setToReadOnly(true);
-                }
-                _attendeesTab._tabShow();
+                attendeesTab._tabShow();
             });
-        },     
-
+        },
         _getHelpTopicByMode: function () {
             switch (this.mode) {
                 case 'Confirm':
@@ -425,7 +401,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             }
         },
         _setModeAttr: function (mode) {
-            //console.log('setModeAttr: ' + mode);
+            var idx;
             this.mode = mode;
             //set correct button bar...
             this._showCorrectButtonBar(mode);
@@ -482,25 +458,24 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 domClass.remove(this.btn_Delete.domNode, 'display-none');
                 domClass.remove(this.btn_Complete.domNode, 'display-none');
             }
-            if (mode === 'Complete' || mode === 'CompleteUnscheduled') {  // show appropriate info for completing activities 
+            if (mode === 'Complete' || mode === 'CompleteUnscheduled') { // show appropriate info for completing activities
                 //date section
                 domClass.add(this.dateSection_AddEdit.domNode, 'display-none');
                 domClass.remove(this.dateSection_Complete.domNode, 'display-none');
                 //result picklist
                 domClass.remove(this.resultContainer.domNode, 'display-none');
                 //Recurring tab
-                var idx = this.tc_EditActivity.getIndexOfChild(this.cp_Recurring);
+                idx = this.tc_EditActivity.getIndexOfChild(this.cp_Recurring);
                 if (idx > 0) {
                     this.tc_EditActivity.removeChild(this.cp_Recurring);
-                    var self = this;
-                    window.setTimeout(function () { self._dialog.resize(); }, 10);
+                    window.setTimeout(dojo.hitch(this, function () { this._dialog.resize(); }, 10));
                 }
                 if (this._dialog.open) {
-                    // if the dialog is open, we already have the activity record and 
-                    // the form is bound to it.  We won't be requesting the activity again 
+                    // if the dialog is open, we already have the activity record and
+                    // the form is bound to it.  We won't be requesting the activity again
                     // so just run the initialization stuff...
                     this._setUI();
-                    this._completeModeManualBind();  //sets default values on non-bound controls.
+                    this._completeModeManualBind(); //sets default values on non-bound controls.
                 }
                 //set default follow-up activity values...
                 var fupType = this._options.followUp.defaultFollowUpType;
@@ -514,26 +489,23 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     this._ensureAttendeesTab();
                 }
 
-            } else {  // show appropriate information for adding, editing activities as well as displaying info for confirmations
+            } else { // show appropriate information for adding, editing activities as well as displaying info for confirmations
                 //date section
                 domClass.add(this.dateSection_Complete.domNode, 'display-none');
                 domClass.remove(this.dateSection_AddEdit.domNode, 'display-none');
                 //result picklist
                 domClass.add(this.resultContainer.domNode, 'display-none');
                 //Recurring tab
-                var idx = this.tc_EditActivity.getIndexOfChild(this.cp_Recurring);
+                idx = this.tc_EditActivity.getIndexOfChild(this.cp_Recurring);
                 if (idx < 0) {
                     var insIdx = this.tc_EditActivity.getIndexOfChild(this.cp_Attachments);
                     this.tc_EditActivity.addChild(this.cp_Recurring, insIdx);
-                    var self = this;
-                    window.setTimeout(function () { self._dialog.resize(); }, 10);
+                    window.setTimeout(dojo.hitch(this, function () { this._dialog.resize(); }, 10));
                 }
             }
             if (this._dialog.helpIcon) {
                 this._dialog.set('helpTopic', this._getHelpTopicByMode());
             }
-
-           
         },
         _setActivityIdAttr: function (activityId) {
             activityId = activityId || '';
@@ -542,11 +514,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             if (activityId !== '') {
                 this.historyId = '';
                 this._loadData();
-
                 //MAA update
-                this._ensureAttendeesTab();               
+                this._ensureAttendeesTab();
             }
-           
         },
         _getActivityIdAttr: function () {
             return this.activityId;
@@ -639,9 +609,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             for (var i = 0; i < opts.length; i++) {
                 var opt = opts[i];
                 var appliesTo = (opt.category === 'ActivityMeetingOptions') ? 'atAppointment' :
-                                (opt.category === 'ActivityPhoneOptions') ? 'atPhoneCall' :
-                                (opt.category === 'ActivityToDoOptions') ? 'atToDo' :
-                                (opt.category === 'ActivityPersonalOptions') ? 'atPersonal' : false;
+                (opt.category === 'ActivityPhoneOptions') ? 'atPhoneCall' :
+                (opt.category === 'ActivityToDoOptions') ? 'atToDo' :
+                (opt.category === 'ActivityPersonalOptions') ? 'atPersonal' : false;
                 if (appliesTo && this._options[appliesTo] && opt.value) {
                     switch (opt.name) {
                         case 'AlarmLead':
@@ -736,13 +706,11 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             };
         },
         _loadData: function () {
-            //console.log('_loadData');
             if (this._dialog._standby) {
                 this._dialog.showLoading();
             }
             this._resetDataProps();
             if (this._activityStore) {
-                //this._resetAttendeesList();
                 if (this.mode === 'New') {
                     this._activityStore.newItem({
                         onComplete: function (act) {
@@ -765,7 +733,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         _receivedActivity: function (activity) {
             this._activityData = activity;
             if ((this._currentUserActivityStore) && (this.mode !== 'New') && (this.mode != 'CompleteUnscheduled')) {
-                //if it is a single occurence of a recurring activity, the id will have a date code appended with semicolon.
+                //if it is a single occurrence of a recurring activity, the id will have a date code appended with semicolon.
                 var id = this.activityId || activity.$key;
                 id = (id.indexOf(';') > 0) ? id.substring(0, 12) : id;
                 var membId = this.activityMemberId || this._currentUserId;
@@ -830,20 +798,19 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this.attendeesTab._activityId = activity.$key;
             if (activity.details) {
                 this._activityData.AttendeeCount = activity.details.AttendeeCount;
-            }           
+            }
             if (this.mode == 'Confirm') {
-                this.attendeesTab._grid.refresh()
+                this.attendeesTab._grid.refresh();
             }
         },
         _receivedUserActivity: function (userActivity) {
-            //console.log('user activity: %o', userActivity);
             if (this._dialog._standby) {
                 this._dialog.hideLoading();
             }
             this._currentUserActivityData = userActivity;
 
             // if the activity is created in the LAN client, the ALARM and ALARMTIME values are null
-            // apparantly the lan client handles this, so we have to too.
+            // apparently the LAN client handles this, so we have to too.
             if (userActivity.Alarm === null) {
                 userActivity.Alarm = this._activityData.Alarm;
             }
@@ -854,7 +821,6 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 Alarm: userActivity.Alarm,
                 AlarmTime: utility.Convert.toDateFromString(userActivity.AlarmTime)
             };
-
             this._bindUserActivity();
         },
         _loadNotification: function () {
@@ -880,6 +846,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             if (this._dialog._standby) {
                 this._dialog.showLoading();
             }
+            this._resetDataProps();
             if (this._historyStore) {
                 if (!this.historyId) {
                     this._historyStore.newItem({
@@ -935,7 +902,8 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                         this._setUIAsUnConfirmed();
                     }
                 },
-                failure: function () { },
+                failure: function () {
+                },
                 scope: this
             });
         },
@@ -978,7 +946,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 alarmdur = parseInt(alarmdur, 10);
             }
 
-            //get the date from the activity again, since it might have been overriden by default values...
+            //get the date from the activity again, since it might have been overridden by default values...
             var d = utility.Convert.toDateFromString(utility.getValue(this._activityData, 'StartDate'));
             var alarmTime = this._getAlarmTime(d, alarmdur, this._activityData.Timeless);
             utility.setValue(this._activityData, 'AlarmTime', utility.Convert.toIsoStringFromDate(alarmTime));
@@ -991,19 +959,16 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             utility.setValue(this._activityData, 'Leader', ldr);
 
             if (this.activityDefaultValues.hasOwnProperty('carryOverAttachmentsFrom')) {
-                var self = this, histId = this.activityDefaultValues['carryOverAttachmentsFrom']
-                window.setTimeout(function () {
-                    self.doCarryOverAttachments(histId);
-                }, 1000);
+                window.setTimeout(dojo.hitch(this, function () {
+                    this.doCarryOverAttachments(this.activityDefaultValues['carryOverAttachmentsFrom']);
+                }, 1000));
             }
 
             if (this.activityDefaultValues.hasOwnProperty('carryOverParticipantsFrom')) {
-                var self1 = this, historyId = this.activityDefaultValues['carryOverParticipantsFrom']
-                window.setTimeout(function () {
-                    self1._getHistoryAttendees(histId);
-                }, 1000);
+                window.setTimeout(dojo.hitch(this, function () {
+                    this._getHistoryAttendees(this.activityDefaultValues['carryOverParticipantsFrom']);
+                }, 1000));
             }
-            
         },
         _noUserActivity: function () {
             this._bindUserActivity();
@@ -1012,7 +977,6 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             if (this._dialog._standby) {
                 this._dialog.hideLoading();
             }
-            console.warn('error requesting data %o', arguments);
             sageDialogs.showError(this.failedLoadingDataMsg);
             this.hide();
         },
@@ -1022,96 +986,101 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 this._bindingMgr = false;
             }
             this._bindingMgr = new BindingsManager({
-                defaultBinding: { boundEntity: this._activityData },
+                defaultBinding: {
+                    boundEntity: this._activityData
+                },
                 items: [
-                {
-                    boundWidget: this.tb_Location,
-                    entityProperty: 'Location'
-                }, {
-                    boundWidget: this.pk_Regarding,
-                    entityProperty: 'Description',
-                    onChange: dojo.hitch(this, '_descriptionChanged')
-                }, {
-                    boundWidget: this.pk_Category,
-                    entityProperty: 'Category'
-                }, {
-                    boundWidget: this.pk_Priority,
-                    entityProperty: 'Priority'
-                }, {
-                    boundWidget: this.ta_Notes,
-                    entityProperty: 'LongNotes',
-                    onChange: dojo.hitch(this, '_notesChanged')
-                }, {
-                    boundWidget: this.dtp_startDate,
-                    dataType: 'date',
-                    entityProperty: 'StartDate',
-                    onChange: dojo.hitch(this, '_startDateChanged')
-                }, {
-                    boundWidget: this.sel_Duration,
-                    entityProperty: 'Duration'
-                }, {
-                    boundWidget: this.sel_Duration,
-                    entityProperty: 'StartDate',
-                    widgetProperty: 'startTime',
-                    dataType: 'date',
-                    twoWay: false
-                }, {
-                    boundWidget: this.sel_AlarmDur,
-                    entityProperty: 'StartDate',
-                    widgetProperty: 'startTime',
-                    dataType: 'date',
-                    twoWay: false
-                }, {
-                    boundWidget: this.cb_Timeless,
-                    entityProperty: 'Timeless',
-                    widgetProperty: 'checked',
-                    onChange: dojo.hitch(this, '_timelessChange')
-                }, {
-                    boundWidget: this.cb_AutoRollover,
-                    entityProperty: 'Rollover',
-                    widgetProperty: 'checked'
-                }, {
-                    boundWidget: this.dtp_scheduledDate,
-                    dataType: 'date',
-                    entityProperty: 'StartDate'
-                }, {
-                    boundWidget: this.sel_DurationComplete,
-                    entityProperty: 'Duration'
-                }, {
-                    boundWidget: this.sel_DurationComplete,
-                    entityProperty: 'StartDate',
-                    widgetProperty: 'startTime',
-                    dataType: 'date',
-                    twoWay: false
-                }, {
-                    boundWidget: this.cb_TimelessComplete,
-                    entityProperty: 'Timeless',
-                    widgetProperty: 'checked',
-                    onChange: dojo.hitch(this, '_timelessChange')
-                }
-            ]
+                    {
+                        boundWidget: this.tb_Location,
+                        entityProperty: 'Location'
+                    }, {
+                        boundWidget: this.pk_Regarding,
+                        entityProperty: 'Description',
+                        onChange: dojo.hitch(this, '_descriptionChanged')
+                    }, {
+                        boundWidget: this.pk_Category,
+                        entityProperty: 'Category'
+                    }, {
+                        boundWidget: this.pk_Priority,
+                        entityProperty: 'Priority'
+                    }, {
+                        boundWidget: this.ta_Notes,
+                        entityProperty: 'LongNotes',
+                        onChange: dojo.hitch(this, '_notesChanged')
+                    }, {
+                        boundWidget: this.dtp_startDate,
+                        dataType: 'date',
+                        entityProperty: 'StartDate',
+                        onChange: dojo.hitch(this, '_startDateChanged')
+                    }, {
+                        boundWidget: this.sel_Duration,
+                        entityProperty: 'Duration'
+                    }, {
+                        boundWidget: this.sel_Duration,
+                        entityProperty: 'StartDate',
+                        widgetProperty: 'startTime',
+                        dataType: 'date',
+                        twoWay: false
+                    }, {
+                        boundWidget: this.sel_AlarmDur,
+                        entityProperty: 'StartDate',
+                        widgetProperty: 'startTime',
+                        dataType: 'date',
+                        twoWay: false
+                    }, {
+                        boundWidget: this.cb_Timeless,
+                        entityProperty: 'Timeless',
+                        widgetProperty: 'checked',
+                        onChange: dojo.hitch(this, '_timelessChange')
+                    }, {
+                        boundWidget: this.cb_AutoRollover,
+                        entityProperty: 'Rollover',
+                        widgetProperty: 'checked'
+                    }, {
+                        boundWidget: this.dtp_scheduledDate,
+                        dataType: 'date',
+                        entityProperty: 'StartDate'
+                    }, {
+                        boundWidget: this.sel_DurationComplete,
+                        entityProperty: 'Duration'
+                    }, {
+                        boundWidget: this.sel_DurationComplete,
+                        entityProperty: 'StartDate',
+                        widgetProperty: 'startTime',
+                        dataType: 'date',
+                        twoWay: false
+                    }, {
+                        boundWidget: this.cb_TimelessComplete,
+                        entityProperty: 'Timeless',
+                        widgetProperty: 'checked',
+                        onChange: dojo.hitch(this, '_timelessChange')
+                    }
+                ]
             });
         },
-
         _createUABindings: function () {
             //if it is new or the current user is not a member, bind the alarm and alarm duration fields to the activity record - otherwise, bind them
-            // to the user-activity...            
+            // to the user-activity...
             this._uaBindingMgr = new BindingsManager({
-                items: [{
-                    boundWidget: this.cb_Alarm,
-                    entityProperty: 'Alarm',
-                    widgetProperty: 'checked',
-                    onChange: dojo.hitch(this, '_alarmCheckChanged')
-                }]
+                items: [
+                    {
+                        boundWidget: this.cb_Alarm,
+                        entityProperty: 'Alarm',
+                        widgetProperty: 'checked',
+                        onChange: dojo.hitch(this, '_alarmCheckChanged')
+                    }
+                ]
             });
         },
         _createNotificationBindings: function () {
             this._notificationBindingMgr = new BindingsManager({
-                items: [{
-                    boundWidget: this.ta_confirmationResponse,
-                    entityProperty: 'Notes',
-                    boundEntity: this._notificationData
-                }]
+                items: [
+                    {
+                        boundWidget: this.ta_confirmationResponse,
+                        entityProperty: 'Notes',
+                        boundEntity: this._notificationData
+                    }
+                ]
             });
         },
         _bind: function () {
@@ -1144,19 +1113,19 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         _manualBind: function () {
             //because there are not relationships to several related entities, we have to manually bind to keep the denormalized data in sync...
-            //console.log('_manualBind');
             if (this._activityData) {
-                this._isBinding = true;  //this prevents the change event handlers from overwriting values that we are going to set here...
+                var act, mockContact, mockLead;
+                this._isBinding = true; //this prevents the change event handlers from overwriting values that we are going to set here...
                 //for example, the account change handler removes the contact, opp, and ticket values.
                 // account...
-                var act = this._activityData;
+                act = this._activityData;
                 var mockAcctObj = this._isNullOrWhitespace(act.AccountId) ? null : {
                     '$key': act.AccountId,
                     '$descriptor': act.AccountName
                 };
                 this.lup_Account.set('selectedObject', mockAcctObj);
                 // contact...
-                var mockContact = this._isNullOrWhitespace(act.ContactId) ? null : {
+                mockContact = this._isNullOrWhitespace(act.ContactId) ? null : {
                     '$key': act.ContactId,
                     '$descriptor': act.ContactName
                 };
@@ -1177,14 +1146,13 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 this.lup_Ticket.set('selectedObject', mockTick);
 
                 // lead...
-                var mockLead = this._isNullOrWhitespace(act.LeadId) ? null : {
+                mockLead = this._isNullOrWhitespace(act.LeadId) ? null : {
                     '$key': act.LeadId,
                     '$descriptor': act.LeadName
                 };
 
                 this.lup_Lead.set('selectedObject', mockLead);
                 this.tb_LeadCompanyName.set('value', this._isNullOrWhitespace(act.LeadId) ? '' : act.AccountName);
-
                 this._updateLookupSeedValues(act.AccountId);
 
                 // Leader...
@@ -1196,41 +1164,34 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 }
                 var alarmTime = Sage.Utility.Convert.toDateFromString(this._activityData.AlarmTime);
                 this.sel_AlarmDur.set('timeValue', alarmTime);
-
-
                 this._completeModeManualBind();
-
                 this._isBinding = false;
-
 
                 //MAA update
                 if (this.mode == 'New' || this.mode === 'CompleteUnscheduled') {
                     if (this._activityData) {
-                        var act = this._activityData;
+                        act = this._activityData;
 
                         // contact...
-                        var mockContact = this._isNullOrWhitespace(act.ContactId) ? null : {
+                        mockContact = this._isNullOrWhitespace(act.ContactId) ? null : {
                             '$key': act.ContactId,
                             '$descriptor': act.ContactName
                         };
                         this.attendeesTab._addContactAttendee(mockContact);
 
                         // lead...
-                        var mockLead = this._isNullOrWhitespace(act.LeadId) ? null : {
+                        mockLead = this._isNullOrWhitespace(act.LeadId) ? null : {
                             '$key': act.LeadId,
                             '$descriptor': act.LeadName
                         };
                         this.attendeesTab._addLeadAttendee(mockLead);
-
                     }
                 }
             }
         },
         _completeModeManualBind: function () {
             if (this.mode === 'Complete' || this.mode === 'CompleteUnscheduled') {
-
                 this.dtp_completedDate.set('value', new Date());
-
                 this.pl_Result.set('value', this.completeText);
                 if (this.mode === 'Complete') {
                     this.pl_Result.focus();
@@ -1281,45 +1242,36 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             }
         },
         _accountChanged: function (newAcct) {
-
-            if (this._isBinding) { return; }
+            if (this._isBinding) {
+                return;
+            }
 
             var newId = (newAcct) ? newAcct['$key'] : '';
             var newActName = (newAcct) ? newAcct['$descriptor'] : '';
-
             var act = this._activityData;
             var mustSetContact = this._isNullOrWhitespace(act.ContactId);
 
             act.AccountId = newId;
             act.AccountName = newActName;
-            act.ContactId = null;
-            act.ContactName = '';
             act.PhoneNumber = '';
-            act.OpportunityId = null;
-            act.OpportunityName = '';
-            act.TicketId = null;
-            act.TicketNumber = '';
             act.LeadId = null;
             act.LeadName = '';
 
             this._isBinding = true;
-            this.lup_Contact.set('selectedObject', null);
-            this.lup_Opportunity.set('selectedObject', null);
-            this.lup_Ticket.set('selectedObject', null);
             this.lup_Lead.set('selectedObject', null);
             this.tb_LeadCompanyName.set('value', '');
             this._updateLookupSeedValues(newId);
-
             this.lup_Lead.set('selectedObject', null);
             this.tb_LeadCompanyName.set('value', '');
             if (mustSetContact) {
+                act.ContactId = '';
+                act.ContactName = '';
+                this.lup_Contact.set('selectedObject', null);
                 this._setContactToCurrentAccountPrimary();
             }
             this._isBinding = false;
         },
         _contactChanged: function (newContact) {
-            //if (this._isBinding) { return; }
-
             if (!this._isBinding) {
                 var act = this._activityData;
                 if (!newContact) {
@@ -1336,6 +1288,8 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 act.LeadId = null;
                 act.LeadName = '';
 
+                var actAccountEmpty = this._isNullOrWhitespace(act.AccountName);
+
                 //set associated account
                 act.AccountId = newContact.Account['$key'];
                 act.AccountName = newContact.Account.AccountName;
@@ -1343,7 +1297,11 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 this._updateLookupSeedValues(newContact.Account['$key']);
 
                 this._isBinding = true;
-                this.lup_Account.set('selectedObject', { '$key': newContact.Account['$key'], '$descriptor': newContact.Account.AccountName });
+                if (actAccountEmpty) {
+                    this.lup_Account.set('selectedObject', {
+                        '$key': newContact.Account['$key'], '$descriptor': newContact.Account.AccountName
+                    });
+                }
                 this.lup_Lead.set('selectedObject', null);
                 this.tb_LeadCompanyName.set('value', '');
                 this._isBinding = false;
@@ -1363,18 +1321,18 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     this.attendeesTab._addContactAttendee(newContact);
                 }
             }
-
-
         },
         _opportunityChanged: function (newOpp) {
-            if (this._isBinding) { return; }
+            if (this._isBinding) {
+                return;
+            }
             /*
             The logic for when the opportunity changes is like this...
             - If there is already a contact and account selected, and the opportunity is associated to the same account - do nothing
             - If there is no contact or account selected for the activity - or the account is different do the following:
             - Set the account to the associated account and:
             - If ONE associated contact is marked IsPrimary = true set the contact to it.
-            - if more than one associated contact is marked primary, or none are marked primary, 
+            - if more than one associated contact is marked primary, or none are marked primary,
             -if one of these is primary for the account and use it
             -if not, just grab the first one.
             -if there are no contacts associate with the opportunity, use the account's primary contact.
@@ -1390,28 +1348,35 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             act.OpportunityName = newOpp['$descriptor'];
 
             if (this._isNullOrWhitespace(act.AccountId) || act.AccountId !== newOpp.Account['$key']) {
-
                 //set the associated account...
+                var actAccountEmpty = this._isNullOrWhitespace(act.AccountName);
+                var actContactEmpty = this._isNullOrWhitespace(act.ContactName);
                 act.AccountId = newOpp.Account['$key'];
                 act.AccountName = newOpp.Account.AccountName;
                 act.LeadId = null;
                 act.LeadName = '';
 
                 this._updateLookupSeedValues(newOpp.Account['$key']);
-
                 this._isBinding = true;
-                this.lup_Account.set('selectedObject', { '$key': newOpp.Account['$key'], '$descriptor': newOpp.Account.AccountName });
-                //remove contact for now, then when we find the primary, we'll set it again.
-                this.lup_Contact.set('selectedObject', null);
+                if (actAccountEmpty) {
+                    this.lup_Account.set('selectedObject', {
+                        '$key': newOpp.Account['$key'], '$descriptor': newOpp.Account.AccountName
+                    });
+                }
                 this.lup_Lead.set('selectedObject', null);
                 this.tb_LeadCompanyName.set('value', '');
                 this._isBinding = false;
-
-                this._setContactBasedOnOpportunity();
+                if (actContactEmpty) {
+                    //remove contact for now, then when we find the primary, we'll set it again.
+                    this.lup_Contact.set('selectedObject', null);
+                    this._setContactBasedOnOpportunity();
+                }
             }
         },
         _ticketChanged: function (newTick) {
-            if (this._isBinding) { return; }
+            if (this._isBinding) {
+                return;
+            }
             var act = this._activityData;
             if (!newTick) {
                 act.TicketId = null;
@@ -1423,6 +1388,8 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             act.TicketNumber = newTick['$descriptor'];
             //update account and contact, if there isn't an account - or if the account is different from the ticket's account
             if (this._isNullOrWhitespace(act.AccountId) || act.AccountId !== newTick.Account['$key']) {
+                var actAccountEmpty = this._isNullOrWhitespace(act.AccountName);
+                var actContactEmpty = this._isNullOrWhitespace(act.ContactName);
                 act.AccountId = newTick.Account['$key'];
                 act.AccountName = newTick.Account['AccountName'];
                 act.LeadId = null;
@@ -1436,17 +1403,25 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 act.PhoneNumber = Sage.Utility.getValue(newTick, 'Contact.WorkPhone');
 
                 this._isBinding = true;
-                this.lup_Account.set('selectedObject', { '$key': newTick.Account['$key'], '$descriptor': newTick.Account['AccountName'] });
-                this.lup_Contact.set('selectedObject', { '$key': newTick.Contact['$key'], '$descriptor': newTick.Contact['NameLF'] });
+                if (actAccountEmpty) {
+                    this.lup_Account.set('selectedObject', {
+                        '$key': newTick.Account['$key'], '$descriptor': newTick.Account['AccountName']
+                    });
+                }
+                if (actContactEmpty) {
+                    this.lup_Contact.set('selectedObject', {
+                        '$key': newTick.Contact['$key'], '$descriptor': newTick.Contact['NameLF']
+                    });
+                }
                 this.lup_Lead.set('selectedObject', null);
                 this.tb_LeadCompanyName.set('value', '');
                 this._isBinding = false;
-                // In case I have to change it back to the account's primary...
-                //this._setContactToCurrentAccountPrimary();
             }
         },
         _leadChanged: function (newLead) {
-            if (this._isBinding) { return; }
+            if (this._isBinding) {
+                return;
+            }
             var act = this._activityData;
             if (!newLead) {
                 act.LeadId = null;
@@ -1478,15 +1453,17 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this.tb_LeadCompanyName.set('value', newLead['Company']);
 
             //MAA update
-            if (this._isBinding) { return; }
+            if (this._isBinding) {
+                return;
+            }
             if (newLead && newLead['$key'] && !newLead['attendeeTab']) {
                 this.attendeesTab._addLeadAttendee(newLead);
-                //this.attendeesTab._removeContactAttendee();
             }
-
         },
         _leaderChanged: function (newLeader) {
-            if (this._isBinding) { return; }
+            if (this._isBinding) {
+                return;
+            }
             var oldLeaderId = this._activityData.Leader['$key'] || this._activityData['UserId'];
             if (newLeader) {
                 var key = newLeader['$key'].substr(0, 12);
@@ -1558,8 +1535,8 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             resourceSegment['predicate'] = '"' + this._activityData.AccountId + '"';
             req.uri.setPathSegment(pathIdx + 1, 'Contacts');
             req.setQueryArg('select', 'NameLF,IsPrimary,WorkPhone');
-            req.setQueryArg('orderby', 'IsPrimary desc');  //rather than selecting "where IsPrimary", do it this way so we at least get something - if there is one that is primary, it will come back, otherwise, we'll just get one.
-            req.setQueryArg('count', '1');  //only need one...
+            req.setQueryArg('orderby', 'IsPrimary desc'); //rather than selecting "where IsPrimary", do it this way so we at least get something - if there is one that is primary, it will come back, otherwise, we'll just get one.
+            req.setQueryArg('count', '1'); //only need one...
             req.read({
                 success: function (data) {
                     var contacts = data['$resources'];
@@ -1584,7 +1561,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         _rebindToCurrentContact: function () {
             this._isBinding = true;
-            this.lup_Contact.set('selectedObject', { '$key': this._activityData.ContactId, '$descriptor': this._activityData.ContactName });
+            this.lup_Contact.set('selectedObject', {
+                '$key': this._activityData.ContactId, '$descriptor': this._activityData.ContactName
+            });
             this._isBinding = false;
         },
         _updateLookupSeedValues: function (newSeed) {
@@ -1608,7 +1587,6 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this._setContactLeadVisibility();
             this._setScheduledByLabel();
         },
-
         _checkSecurityAccess: function (accessFor, accessTo, callback, scope) {
             this.accessData = false;
             if (!this._accessStore) {
@@ -1629,7 +1607,6 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 scope: this
             });
         },
-
         _setUIForActivityType: function (actType) {
             this.pk_Regarding.set('pickListName', activityUtility.getActivityPicklistName('Regarding', actType));
             this.pk_Category.set('pickListName', activityUtility.getActivityPicklistName('Category', actType));
@@ -1643,17 +1620,16 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             if (this.mode !== 'Confirm') {
                 var editAllowed = this._activityData.AllowEdit;
                 var deleteAllowed = this._activityData.AllowDelete;
-                
+
                 //Users can edit only alarm time if its not the leader's instance
                 if (this.activityMemberId && this.activityMemberId !== this._activityData.Leader.$key) {
                     editAllowed = false;
                     deleteAllowed = false;
                 }
                 this._bulkSetProperty(this, this.noEditDisableList, 'disabled', (!editAllowed));
-                
+
                 //Textarea Disabled doesn't allow scrolling in IE, so make it read only
                 this.ta_Notes.set('readonly', !editAllowed);
-
 
                 //To allow members to update their alarmtime even if they don't have edit access to leader's calendar
                 if ((this.activityMemberId && this._memberSecurityData[this.activityMemberId] && this._memberSecurityData[this.activityMemberId].AllowEdit) || this.activityMemberId === this._currentUserId || this._activityData['UserId'] === this._currentUserId) {
@@ -1683,7 +1659,6 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 return;
             }
             var tless = this._activityData['Timeless'];
-            //this.cb_AutoRollover.set('disabled', !tless);
             this._handleAutoRolloverState();
             this.dtp_startDate.set('displayTime', !tless);
             var editAllowed = this._activityData.AllowEdit;
@@ -1712,7 +1687,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             }
         },
         _timelessChange: function () {
-            this._setDisabledByTimlessValue();            
+            this._setDisabledByTimlessValue();
             if (this.mode === 'Complete' || this.mode === 'CompleteUnscheduled') {
                 if (this.cb_TimelessComplete.get('checked')) {
                     var schedDate = this.dtp_scheduledDate.get('value');
@@ -1720,31 +1695,29 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     schedDate.setMinutes(0);
                     schedDate.setSeconds(5);
                     this.dtp_scheduledDate.set('value', schedDate);
-                   
                 }
             } else {
+                var leadTime;
+                var alarmTime;
+                var d = this.dtp_startDate.get('value');
                 utility.setValue(this._activityData, 'TimelessChanged', true);
                 if (this.cb_Timeless.get('checked')) {
-                    var d = this.dtp_startDate.get('value');
                     d.setHours(0);
                     d.setMinutes(0);
                     d.setSeconds(5);
                     this.dtp_startDate.set('value', d);
-                    var leadTime = this._getAlarmLeadTime();
-                    var alarmTime = this._getAlarmTime(d, leadTime, true);
+                    leadTime = this._getAlarmLeadTime();
+                    alarmTime = this._getAlarmTime(d, leadTime, true);
                     this.sel_AlarmDur.set('startTime', d);
                     this.sel_AlarmDur.set('timeValue', alarmTime);
-                    //utility.setValue(this._activityData, 'AlarmTime', utility.Convert.toIsoStringFromDate(alarmTime));
-                }
-                else {
-                    var d = this.dtp_startDate.get('value');
+                } else {
                     var nowDate = activityUtility.roundDateToNextQuarterHour(new Date());
                     var min = nowDate.getMinutes();
                     var hour = nowDate.getHours();
                     var newDate = new Date(d.getFullYear(), d.getMonth(), d.getDate(), hour, min);
                     this.dtp_startDate.set('value', newDate);
-                    var leadTime = this._getAlarmLeadTime();
-                    var alarmTime = this._getAlarmTime(newDate, leadTime, false);
+                    leadTime = this._getAlarmLeadTime();
+                    alarmTime = this._getAlarmTime(newDate, leadTime, false);
                     this.sel_AlarmDur.set('startTime', newDate);
                     this.sel_AlarmDur.set('timeValue', alarmTime);
                 }
@@ -1768,7 +1741,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             var leadTime = this._getAlarmLeadTime();
             var alarmTime = this._getAlarmTime(newStartDate, leadTime, this.cb_Timeless.get('checked'));
             this.sel_AlarmDur.set('timeValue', alarmTime);
-            
+
             //let the duration picker calculate the new alarm time, then set it back to the activity or user activity...
             var act = (this._currentUserActivityData) ? this._currentUserActivityData : this._activityData;
             Sage.Utility.setValue(act, 'AlarmTime', Sage.Utility.Convert.toIsoStringFromDate(this.sel_AlarmDur.get('timeValue')));
@@ -1785,11 +1758,10 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         _getAlarmTime: function (startDate, leadTime, timeless) {
             var alarmTime = dojoDate.add(startDate, 'minute', leadTime * -1);
             if (timeless === true) {
-                alarmTime = new Date(startDate.getFullYear(), startDate.getMonth(),startDate.getDate());
-                alarmTime = dojoDate.add(alarmTime, 'minute', leadTime * -1);               
+                alarmTime = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+                alarmTime = dojoDate.add(alarmTime, 'minute', leadTime * -1);
             }
             return alarmTime;
-
         },
         _getAlarmLeadTime: function () {
             var leadTime = '15';
@@ -1804,9 +1776,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             }
             return leadTime;
         },
-
         _setHasAlarmUI: function (newValue) {
-               
             if (typeof newValue === 'undefined') {
                 newValue = Sage.Utility.getValue(this._currentUserActivityData || this._activityData, 'Alarm');
             }
@@ -1814,22 +1784,38 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         _setContactLeadVisibility: function () {
             var cVisible = this.rdo_Contact.get('checked');
-
             domClass.remove((cVisible) ? this.contactContainer.domNode : this.leadContainer.domNode, 'display-none');
             domClass.add((cVisible) ? this.leadContainer.domNode : this.contactContainer.domNode, 'display-none');
         },
         _formatHeader: function () {
-            //'${actionText} ${activityType} - ${description}',
             var action = '';
             var activityType = activityUtility.getActivityTypeName(this._activityData['Type'] || 'atAppointment');
             switch (this.mode) {
                 case 'New':
-                    action = this.scheduleText;
-                    break;
+                    if(this._activityData['Type'] === 'atAppointment')
+							action = this.scheduleMeeting;
+						else if(this._activityData['Type'] === 'atPhoneCall')
+							action = this.schedulePhonecall;
+						else 
+							action = this.scheduleTodo;
+						break;
                 case 'Complete':
                 case 'CompleteUnscheduled':
-                    action = this.completeText;
-                    break;
+                    if(this._activityData['Type'] === 'atAppointment')
+							action = this.completeMeeting;
+						else if(this._activityData['Type'] === 'atPhoneCall')
+							action = this.completePhonecall;
+						else 
+							action = this.completeTodo;
+						break;
+				case 'Update':
+                    if(this._activityData['Type'] === 'atAppointment')
+							action = this.updateMeeting;
+						else if(this._activityData['Type'] === 'atPhoneCall')
+							action = this.updatePhoneCall;
+						else 
+							action = this.updateToDo;
+						break;
             }
             if (this.mode === 'Confirm') {
                 if (!this._notificationData) {
@@ -1857,7 +1843,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                         }
                         var fmttext = (confType === 'New') ? this.newConfirmationHeaderFormatText : this.otherConfimationHeaderFormatText;
                         this._setHeader(dString.substitute(fmttext, {
-                            activityType: activityType,
+                            activityType: '',
                             actionText: action,
                             user: user['UserName'] || user['$descriptor']
                         }));
@@ -1866,14 +1852,13 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             } else {
                 this._setHeader(dString.substitute(this.dialogHeaderFormatText, {
                     actionText: action,
-                    activityType: activityType,
-                    description: this._activityData['Description'] || ''
+                    activityType: '',
+                    description: utility.htmlEncode(this._activityData['Description']) || ''
                 }));
             }
-
         },
         _setHeader: function (headerText) {
-            var html = dString.substitute('<div class="Global_Images icon16x16 ${0}" > </div>&nbsp;<span class="activity-dialog-title">${1}</span>', [activityUtility.getActivityImageClass(this._activityData['Type'] || 'atAppointment', 'small'), headerText]);
+            var html = dString.substitute('<div class="Global_Images icon16x16 ${0}" > </div>&nbsp;<span class="activity-dialog-title" style="max-width: 975px; text-overflow: ellipsis;">${1}</span>', [activityUtility.getActivityImageClass(this._activityData['Type'] || 'atAppointment', 'small'), headerText]);
             this._dialog.titleNode.innerHTML = html;
         },
         _setScheduledByLabel: function () {
@@ -1894,8 +1879,8 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 this._getUserInfoFor(createUser, function (user) {
                     lbl = dString.substitute(fmtStr, {
                         user: user['$descriptor'],
-                        date: locale.format(createDate, { selector: 'date', fullYear: true }),
-                        startDate: locale.format(startDate, { selector: 'date', fullYear: true })
+                        date: locale.format(createDate, { selector: 'date', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name }),
+                        startDate: locale.format(startDate, { selector: 'date', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name })
                     });
                     dojo.html.set(this.lbl_ScheduledBy, lbl);
                     dojo.html.set(this.lbl_ScheduledByComp, lbl);
@@ -1905,8 +1890,14 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
 
             lbl = dString.substitute(fmtStr, {
                 user: createUser,
-                date: locale.format(createDate, { selector: 'date', fullYear: true }),
-                startDate: locale.format(startDate, { selector: 'date', fullYear: true })
+                date: locale.format(createDate, {
+                    selector: 'date', fullYear: true,
+                    locale: Sys.CultureInfo.CurrentCulture.name
+                }),
+                startDate: locale.format(startDate, {
+                    selector: 'date', fullYear: true,
+                    locale: Sys.CultureInfo.CurrentCulture.name
+                })
             });
             dojo.html.set(this.lbl_ScheduledBy, lbl);
             dojo.html.set(this.lbl_ScheduledByComp, lbl);
@@ -1916,7 +1907,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 var request = new Sage.SData.Client.SDataSingleResourceRequest(Sage.Data.SDataServiceRegistry.getSDataService('dynamic', false, true, true)); //go ahead and cache this...
                 request.setResourceKind('userInfo');
                 request.setResourceSelector("'" + userId + "'");
-                //using precedence of 0 we only get $descriptor which is <lastname, firstname>, 
+                //using precedence of 0 we only get $descriptor which is <lastname, firstname>,
                 //...but do we want the UserName property which is <firstname lastname>???
                 request.setQueryArg('precedence', '0');
                 request.read({
@@ -1930,46 +1921,11 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this._recurringEditor.onTabShow();
             this._recurringEditor._setReadOnly(!this._canEdit());
         },
-        _showAttachmentsTab: function () {
-            var self = this;
-            window.setTimeout(function () {
-                self._ensureAttachmentList();
-            }, 100);
-        },
         _ensureAttachmentList: function () {
-            if (!this._attachmentList) {
-                this._attachmentList = new AttachmentList({
-                    workspace: '',
-                    tabId: '',
-                    placeHolder: this.id + '_attachmentsGridPlaceholder',
-                    parentRelationshipName: 'activityId'
-                });
-                var self = this;
-                this._attachmentList.startup(function () {
-                    if (self.cp_Attachments) {
-                        self.cp_Attachments.resize();
-                    }
-                    if (self._canEdit()) {
-                        self._attachmentList.setToReadOnly(false);
-                    }
-                    else {
-                        self._attachmentList.setToReadOnly(true);
-                    }
-
-                });
-            } else {
-
-                if (this._canEdit()) {
-                    this._attachmentList.setToReadOnly(false);
-                }
-                else {
-                    this._attachmentList.setToReadOnly(true);
-                }
-                this._attachmentList.resetEntityContext();
-            }
-
+            on(this.cp_Attachments, 'show', dojo.hitch(this, function () {
+                this._createAttachmentList();
+            }));
         },
-
         // ... endregion UI interactions
 
         // ... region click/action handlers
@@ -1998,19 +1954,34 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this._updateAttendeesAndComplete(dojoDate.add(this.dtp_scheduledDate.get('value'), "minute", this._activityData.Duration));
         },
         _nowClick: function () {
-           this._updateAttendeesAndComplete(this.dtp_completedDate.get('value'));            
+            this._updateAttendeesAndComplete(this.dtp_completedDate.get('value'));
         },
         _updateAttendeesAndComplete: function (completedDate) {
-            if (this.mode === 'Complete') {
-                var self = this;
-                var deferred = this.attendeesTab._activitySaved();
-                deferred.then(function (value) {
-                    //console.log("_successfulComplete deferred");
-                    self._completeActivity(completedDate);
-                });
-            } else {
+            if (this.mode === 'CompleteUnscheduled') {
+                var alarmTime = this.sel_AlarmDur.get('timeValue');
+                //Alarm Time should never have a timeless date so fix it duration picker adds it.
+                if (alarmTime.getSeconds() === 5) {
+                    alarmTime = new Date(alarmTime.getFullYear(), alarmTime.getMonth(), alarmTime.getDate(), alarmTime.getHours(), alarmTime.getMinutes(), 0);
+                }
+                this._createActivityForNewOrCompleteUnscheduled(alarmTime, dojoLang.partial(this._preCompleteActivity, completedDate), this._failedActivitySave, this);
+            }
+            else if (this.mode === 'Complete') {
+                this._preCompleteActivity(completedDate, null);
+            }
+            else {
                 this._completeActivity(completedDate);
             }
+        },
+        _preCompleteActivity: function (completedDate, data) {
+            var self = this;
+            if (data) {
+                this._activityData = data;
+            }
+            this._saveUserActivitiesAndResources(true);
+            var deferred = this.attendeesTab._activitySaved(this._activityData);
+            deferred.then(function (value) {
+                self._completeActivity(completedDate);
+            });
         },
         _completeActivity: function (completedDate) {
             if (this._isProcessing) {
@@ -2021,56 +1992,40 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             to get the template:
             http://localhost:17966/SlxClient/slxdata.ashx/slx/system/-/activities/$service/complete/$template?format=json
             */
-            if (this.mode === 'Complete') {
-                var payload = {
-                    "$name": "Complete",
-                    "request": {
-                        "entity": this._activityData,
-                        "userId": this._currentUserId,
-                        "result": this.pl_Result.get('value'),
-                        "resultCode": this.pl_Result.get('code'),
-                        "completeDate": utility.Convert.toIsoStringFromDate(completedDate)
-                    }
-                };
+            var payload = {
+                "$name": "Complete",
+                "request": {
+                    "entity": this._activityData,
+                    "userId": this._currentUserId,
+                    "result": this.pl_Result.get('value'),
+                    "resultCode": this.pl_Result.get('code'),
+                    "completeDate": utility.Convert.toIsoStringFromDate(completedDate)
+                }
+            };
 
-                var request = new Sage.SData.Client.SDataServiceOperationRequest(sDataServiceRegistry.getSDataService('system'))
-	                .setResourceKind('activities')
-	                .setOperationName('Complete');
-                request.execute(payload, {
-                    success: this._successfulComplete,
-                    failure: this._failedComplete,
-                    scope: this
-                });
-            } else if (this.mode === 'CompleteUnscheduled') {
-                var histStore = new SingleEntrySDataStore({
-                    include: ['$descriptors'],
-                    resourceKind: 'history',
-                    service: sDataServiceRegistry.getSDataService('dynamic')
-                });
-                utility.setValue(this._activityData, 'CompletedDate', utility.Convert.toIsoStringFromDate(completedDate));
-                utility.setValue(this._activityData, 'Result', this.pl_Result.get('value'));
-                utility.setValue(this._activityData, 'ResultCode', this.pl_Result.get('code'));
-                histStore.saveNewEntity(this._activityData, this._successfulComplete, this._failedComplete, this);
-            }
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(sDataServiceRegistry.getSDataService('system'))
+                .setResourceKind('activities')
+                .setOperationName('Complete');
+            request.execute(payload, {
+                success: this._successfulComplete,
+                failure: this._failedComplete,
+                scope: this
+            });
         },
         _okClick: function () {
             var activeElement = focusUtil.curNode;
-            if(activeElement){
+
+            // IE8 has an issue where the value is saved before the blur realizes the value has changed, run the saveAndClose
+            var aspectHandle = aspect.after(activeElement, "blur", dojoLang.hitch(this, function () {
+                this._saveAndClose();
+                aspectHandle.remove();
+            }));
+            if (activeElement) {
                 activeElement.blur();
             }
-            // IE8 has an issue where the value is saved before the blur realizes the value has changed
-            //  and setting a timeout of 1 is enough for the change to be seen after the blur
-            setTimeout(lang.hitch(this, function() {
-            this._saveAndClose();
-            }), 1);
         },
-        _saveAndClose: function () {
-            var alarmTime = this.sel_AlarmDur.get('timeValue');
-            //Alarm Time should never have a timeless date so fix it duration picker adds it.
-            if (alarmTime.getSeconds() === 5) {
-                alarmTime = new Date(alarmTime.getFullYear(), alarmTime.getMonth(), alarmTime.getDate(), alarmTime.getHours(), alarmTime.getMinutes(), 0);
-            }
-            if (this.mode === 'New') {
+        _createActivityForNewOrCompleteUnscheduled: function (alarmTime, _success, _failur, context) {
+            if (this.mode === 'New' || this.mode === 'CompleteUnscheduled') {
                 if (this._attachmentList) {
                     var attachments = this._attachmentList.getNewAttachments();
                     if (attachments.length > 0) {
@@ -2080,8 +2035,26 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 this._currentUserActivitySaved = true;
                 utility.setValue(this._activityData, 'Alarm', this.cb_Alarm.get('checked'));
                 utility.setValue(this._activityData, 'AlarmTime', utility.Convert.toIsoStringFromDate(alarmTime));
-                this._activityStore.saveNewEntity(this._activityData, this._successfulActivitySave, this._failedActivitySave, this);
-            } else {
+                if (this._activityData['AccountId'] === "")
+                    this._activityData['AccountId'] = null;
+                if (this._activityData['ContactId'] === "")
+                    this._activityData['ContactId'] = null;
+                this._activityStore.saveNewEntity(this._activityData, _success, _failur, context);
+            }
+        },
+        _saveAndClose: function () {
+            if (this._isProcessing) {
+                return;
+            }
+            this._isProcessing = true;
+
+            var alarmTime = this.sel_AlarmDur.get('timeValue');
+            //Alarm Time should never have a timeless date so fix it duration picker adds it.
+            if (alarmTime.getSeconds() === 5) {
+                alarmTime = new Date(alarmTime.getFullYear(), alarmTime.getMonth(), alarmTime.getDate(), alarmTime.getHours(), alarmTime.getMinutes(), 0);
+            }
+            this._createActivityForNewOrCompleteUnscheduled(alarmTime, this._successfulActivitySave, this._failedActivitySave, this);
+            if (this.mode !== 'New' && this.mode !== 'CompleteUnscheduled') {
                 this._activityData.Attachment = this._activityData.AttachmentCount > 0 ? true : false;
                 if (this._currentUserActivityData) {
                     //if it hasn't changed, don't bother posting...
@@ -2091,52 +2064,65 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                         utility.setValue(this._activityData, 'Alarm', this.cb_Alarm.get('checked'));
                         utility.setValue(this._activityData, 'AlarmTime', utility.Convert.toIsoStringFromDate(alarmTime));
                         this._currentUserActivitySaved = true;
+                        if (this._activityData.AllowEdit) {
+                            this._saveActivity();
+                        }
                     } else if ((this._tempUAData) && (this._tempUAData.Alarm === this._currentUserActivityData.Alarm
-                            && this._tempUAData.AlarmTime.getTime() === alarmTime.getTime())) {
+                        && this._tempUAData.AlarmTime.getTime() === alarmTime.getTime())) {
                         this._currentUserActivitySaved = true;
+                        if (this._activityData.AllowEdit) {
+                            this._saveActivity();
+                        }
                     } else {
                         delete (this._currentUserActivityData.Activity);
                         this._currentUserActivityData.AlarmTime = utility.Convert.toIsoStringFromDate(alarmTime);
-                        this._currentUserActivityStore.save({
-                            scope: this,
-                            success: this._successfulCurrentUserActivitySave,
-                            failure: this._failedUserActivitySave
-                        });
+                        this._saveUserActivity();
                     }
                 } else {
                     utility.setValue(this._activityData, 'AlarmTime', utility.Convert.toIsoStringFromDate(alarmTime));
                     this._currentUserActivitySaved = true;
+                    if (this._activityData.AllowEdit) {
+                        this._saveActivity();
+                    }
                 }
-                if (this._activityData.AllowEdit) {
-                    this._activityStore.save({
-                        scope: this,
-                        success: this._successfulActivitySave,
-                        failure: this._failedActivitySave
-                    });
-                } else {
-                    this._activitySaved = true;
-                    this._userActivitiesSaved = true;
-                    this._resourcesSaved = true;
-                    this._resourcesRemoved = true;
-                    this._attachmentsSaved = true;
-                    this._hideIfComplete();
-                }
+                this._ensureActivitySave();
+            }
+        },
+        _saveUserActivity: function () {
+            if (this._currentUserActivityStore) {
+                this._currentUserActivityStore.save({
+                    scope: this,
+                    success: this._successfulCurrentUserActivitySave,
+                    failure: this._failedUserActivitySave
+                });
+            }
+        },
+        _saveActivity: function () {
+            if (this._activityStore) {
+                this._activityStore.save({
+                    scope: this,
+                    success: this._successfulActivitySave,
+                    failure: this._failedActivitySave
+                });
+            }
+        },
+        _ensureActivitySave: function () {
+            if (!this._activityData.AllowEdit) {
+                this._activitySaved = true;
+                this._userActivitiesSaved = true;
+                this._resourcesSaved = true;
+                this._resourcesRemoved = true;
+                this._attachmentsSaved = true;
+                this._hideIfComplete();
             }
         },
         _successfulActivitySave: function (activity) {
-            //console.log("_successfulActivitySave");
-            var self = this;
-            var _arguments = arguments;
             var deferred = this.attendeesTab._activitySaved(activity);
-            deferred.then(function (value) {              
-                //console.log("_successfulActivitySave deferred then");
-                self._successfulActivityAttendeeSave(activity);               
-            });
-
+            deferred.then(dojo.hitch(this, function (value) {
+                this._successfulActivityAttendeeSave(activity);
+            }));
         },
         _successfulActivityAttendeeSave: function (activity) {
-            //create user_activity and resourceschedule items...
-            //console.log("_successfulActivityAttendeeSave");
             if (this._activityData.LeaderChanged) {
                 activity.LeaderChanged = true;
             }
@@ -2144,16 +2130,24 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 activity.TimelessChanged = true;
             }
             this._activityData = activity;
+            this._saveUserActivitiesAndResources();
+
+            this._activitySaved = true;
+            this._ensureActivitySave();
+            this._hideIfComplete();
+        },
+        _saveUserActivitiesAndResources: function (suppressEvent) {
             var isNew = false;
+            var publishEvent = !suppressEvent;
             var svc = Sage.Services.getService('ClientEntityContext');
             svc.clearTemporaryContext();
-            if (this.activityId === '') {
-                dojo.publish('/entity/activity/create', [this._activityData, this]);
+            if (!this.activityId) {
                 isNew = true;
             }
-            this.activityId = activity['$key'];  //Set this so that new UserActivities and ResourceSchedules can reference the parent...
+            
+            this.activityId = this._activityData['$key']; //Set this so that new UserActivities and ResourceSchedules can reference the parent...
             var hasMembers = false, hasResources = false;
-            var ldr = activity.Leader['$key'];
+            var ldr = this._activityData.Leader['$key'];
             for (var i = 0; i < this._newAttendeesData.length; i++) {
                 hasMembers = (hasMembers || (this._newAttendeesData[i]['Type'] === 'User' && this._newAttendeesData[i]['$key'] !== ldr));
                 hasResources = (hasResources || this._newAttendeesData[i]['Type'] === 'Resource');
@@ -2162,7 +2156,8 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 var uareq = new Sage.SData.Client.SDataTemplateResourceRequest(sDataServiceRegistry.getSDataService('system'));
                 uareq.setResourceKind('userActivities');
                 uareq.read({
-                    success: this._onGetUserActivityTemplate,
+                    async: false,
+                    success: dojoLang.partial(this._onGetUserActivityTemplate),
                     failure: this._failedUserActivitySave,
                     scope: this
                 });
@@ -2173,6 +2168,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 var resreq = new Sage.SData.Client.SDataTemplateResourceRequest(Sage.Data.SDataServiceRegistry.getSDataService('dynamic'));
                 resreq.setResourceKind('resourceSchedules');
                 resreq.read({
+                    async: false,
                     success: this._onGetResourceScheduleTemplate,
                     failure: this._failedUserActivitySave,
                     scope: this
@@ -2193,13 +2189,15 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             } else {
                 this._resourcesRemoved = true;
             }
+
+            if (isNew && publishEvent) {
+                dojo.publish('/entity/activity/create', [this._activityData, this]);
+            }
+
             if (!this._completeAfterSaving && !isNew) {
                 //we're just switching to complete mode, no need for other things to update UI yet...
-                //console.log('finished saving;... mode: ' + this.mode);
-                dojo.publish('/entity/activity/change', [activity, this]);
+                dojo.publish('/entity/activity/change', [this._activityData, this]);
             }
-            this._activitySaved = true;
-            this._hideIfComplete();
         },
         _saveAttachments: function (attachments, histId) {
             this._attachmentRequests = attachments.length;
@@ -2208,11 +2206,10 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 var req = new Sage.SData.Client.SDataSingleResourceRequest(sDataServiceRegistry.getSDataService('system'));
                 req.setResourceKind('attachments');
                 req.setResourceSelector('\'' + att.$key + '\'');
-                if(histId) {
+                if (histId) {
                     att.historyId = histId;
-                }
-                else {
-                att.activityId = this.activityId;
+                } else {
+                    att.activityId = this.activityId;
                 }
                 for (var p in this._activityData) {
                     if (p.substring(p.length - 2) === 'Id' && p !== 'UserId') {
@@ -2226,7 +2223,6 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     failure: this._failedAttachmentSave,
                     scope: this
                 });
-
             }
         },
         _removeAttachments: function () {
@@ -2240,31 +2236,53 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 req.setResourceKind('attachments');
                 req.setResourceSelector('\'' + att.$key + '\'');
                 req['delete'](att, {
-                    success: function () { },
-                    failure: function () { },
+                    success: function () {
+                    },
+                    failure: function () {
+                    },
                     scope: this
                 });
             }
         },
         getRelationshipsForAttachments: function () {
-            var obj = {};
+            var obj = {
+            };
             for (var p in this._activityData) {
                 if (p.substring(p.length - 2) === 'Id' && p !== 'UserId') {
                     var attProp = p.substring(0, 1).toLowerCase() + p.substring(1);
                     obj[attProp] = this._activityData[p];
                 }
             }
-            if (this.mode === 'New' && !fileUtility.supportsHTML5File && !Sage.gears) {
+            if (this.mode === 'New' && !fileUtility.supportsHTML5File && !slx.desktop) {
                 this._tempIdForAttachments = this._makeTempID();
                 obj['activityId'] = this._tempIdForAttachments;
             }
             return obj;
         },
         doCarryOverAttachments: function (histId) {
-            this._ensureAttachmentList();
+            //this._ensureAttachmentList();
             attachmentUtility.getAttachmentTemplate(function (template) {
                 this._getHistoryAttachments(histId, template);
             }, this);
+        },
+        _createAttachmentList: function () {
+            var newAttachmentList = false;
+            if (!this._attachmentList) {
+                newAttachmentList = true;
+                this._attachmentList = new AttachmentList({
+                    workspace: '',
+                    tabId: '',
+                    placeHolder: this.id + '_attachmentsGridPlaceholder',
+                    parentRelationshipName: 'activityId'
+                });
+                this._attachmentList.startup(dojo.hitch(this, function () {
+                    this.cp_Attachments.resize();
+                }));
+            }
+            this._attachmentList.setToReadOnly(!this._canEdit());
+            if (newAttachmentList || this.mode != 'New') {
+                window.setTimeout(this._attachmentList.resetEntityContext(), 100);
+            }
         },
         _getHistoryAttachments: function (histId, template) {
             var histReq = new Sage.SData.Client.SDataResourceCollectionRequest(sDataServiceRegistry.getSDataService('system'));
@@ -2306,15 +2324,17 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                                 scope: this
                             });
                         }
+                        this._createAttachmentList();
                     }
                 },
-                failure: function () { },
+                failure: function () {
+                },
                 scope: this
             });
         },
         //For followup activity
         //Get attendees from historyattendees and add it to Participants tab
-        _getHistoryAttendees : function(historyId){
+        _getHistoryAttendees: function (historyId) {
             var histReq = new Sage.SData.Client.SDataResourceCollectionRequest(sDataServiceRegistry.getSDataService('dynamic'));
             histReq.setResourceKind('historyAttendees');
             histReq.setQueryArg('where', 'HistoryId eq \'' + historyId + '\'');
@@ -2329,22 +2349,18 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                                 $descriptor: items[i].Name,
                                 general: false
                             };
-
                             var newItem = dojoLang.mixin(items[i], mixin);
                             attendees.push(newItem);
                         }
                     }
                     this.attendeesTab._addAttendeesToStore(attendees);
-                    
                 },
                 failure: function () {
                     console.log("Error getting historyAttendees for follow up activity");
                 },
                 scope: this
-                });  
-
+            });
         },
-
         _makeTempID: function () {
             if (!this._tempIdForAttachments) {
                 var uid = this._currentUserId;
@@ -2371,7 +2387,11 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         _successfulCurrentUserActivitySave: function (userActivity) {
             this._currentUserActivitySaved = true;
-            dojo.publish('/entity/userActivity/change', [userActivity, this]);
+            if (this._activityData.AllowEdit) {
+                this._saveActivity();
+            } else {
+                dojo.publish('/entity/userActivity/change', [userActivity, this]);
+            }
             this._hideIfComplete();
         },
         _successfulActivityDelete: function () {
@@ -2385,27 +2405,22 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         //When completing an unscheduled activity, create historyAttendee records directly
         _successfulComplete: function (history) {
-            //console.log("_successfulComplete");
             if (this.mode === 'CompleteUnscheduled') {
                 var self = this;
                 var _arguments = arguments;
                 var deferred = this.attendeesTab._historySaved(history);
-                deferred.then(function (value) {                   
-                    //console.log("_successfulComplete deferred");
-                    self._successfulAttendeesComplete(history);                  
+                deferred.then(function (value) {
+                    self._successfulAttendeesComplete(history);
                 });
             } else {
-                //console.log("_successfulComplete 1");
                 this._successfulAttendeesComplete(history);
             }
         },
         _successfulAttendeesComplete: function (request) {
-            //console.log("_successfulAttendeesComplete");
-            this._isProcessing = false;
             var svc = Sage.Services.getService('ClientEntityContext');
             svc.clearTemporaryContext();
             var hist = request;
-            if (this.mode === 'Complete') {
+            if (this.mode === 'Complete' || this.mode === 'CompleteUnscheduled') {
                 if (request.Response) {
                     hist = request.Response;
                 }
@@ -2416,12 +2431,11 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             }
             dojo.publish('/entity/history/create', [hist, this]);
             var histId = null;
-            if (this.mode === 'Complete') {
+            if (this.mode === 'Complete' || this.mode === 'CompleteUnscheduled') {
                 if (request.Response) {
                     histId = request.Response.HistoryId;
                 }
-            }
-            else {
+            } else {
                 histId = hist.$key;
             }
             if (this._attachmentList) {
@@ -2457,7 +2471,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             window.setTimeout(function () {
                 var actsvc = Sage.Services.getService('ActivityService');
                 if (actsvc) {
-                    actsvc.scheduleActivity({ 'type': followUp, 'preConfigured': actMixin });
+                    actsvc.scheduleActivity({
+                        'type': followUp, 'preConfigured': actMixin
+                    });
                 }
             }, 250);
         },
@@ -2490,33 +2506,30 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         _failedActivitySave: function (request) {
             var msg = activityUtility.findFailedRequestMessage(request, this.couldNotSaveErrorText);
-
-            console.log('an error occured saving activity %o', request);
+            console.log('an error occurred saving activity %o', request);
             sageDialogs.showError(msg);
             this._completeAfterSaving = false;
         },
         _failedActivityDelete: function (request) {
             var msg = activityUtility.findFailedRequestMessage(request, this.couldNotDeleteErrorText);
-
-            console.log('an error occured deleting %o', request);
+            console.log('an error occurred deleting %o', request);
             sageDialogs.showError(msg);
             this._completeAfterSaving = false;
         },
         _failedUserActivitySave: function (request) {
             var msg = activityUtility.findFailedRequestMessage(request, this.couldNotSaveErrorText);
-            console.log('an error occured saving user activity %o', request);
+            console.log('an error occurred saving user activity %o', request);
             sageDialogs.showError(msg);
         },
         _failedResourceSave: function (request) {
-            console.warn('an error occured saving resources %o', request);
+            console.warn('an error occurred saving resources %o', request);
             var msg = activityUtility.findFailedRequestMessage(request, this.couldNotSaveErrorText);
             sageDialogs.showError(msg);
         },
         _failedComplete: function (request) {
             var msg = activityUtility.findFailedRequestMessage(request, this.couldNotCompleteErrorText);
-            console.log('an error occured completing activity %o', request);
+            console.log('an error occurred completing activity %o', request);
             sageDialogs.showError(msg);
-            this._isProcessing = false;
         },
         _onGetUserActivityTemplate: function (userActivity) {
             this._userActivitiesRequestCount = 0;
@@ -2530,9 +2543,13 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 if (nat['Type'] === 'User' && nat['$key'] !== ldr) {
                     var newua = dojo.mixin({}, userActivity);
                     var setVals = {
-                        User: { '$key': nat['$key'] },
+                        User: {
+                            '$key': nat['$key']
+                        },
                         ActivityId: this.activityId,
-                        Activity: { '$key': this.activityId },
+                        Activity: {
+                            '$key': this.activityId
+                        },
                         Alarm: act.Alarm,
                         AlarmTime: utility.Convert.toIsoStringFromDate(alarmtime),
                         Status: 'asUnconfirmed'
@@ -2542,6 +2559,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     req.setResourceKind('userActivities');
                     this._userActivitiesRequestCount++;
                     req.create(newua, {
+                        async: false,
                         success: function (savedUserActivity) {
                             this._userActivitiesRequestCount--;
                             dojo.publish('/entity/userActivity/create', [savedUserActivity, this]);
@@ -2635,7 +2653,8 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
 
                 var options = {
                     success: scopeObj.notify,
-                    aborted: function () { },
+                    aborted: function () {
+                    },
                     failure: this._failedResourceSave,
                     scope: scopeObj
                 };
@@ -2650,7 +2669,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         _hideIfComplete: function () {
             if (this._activitySaved && this._userActivitiesSaved && this._currentUserActivitySaved
-                    && this._resourcesSaved && this._resourcesRemoved && this._attachmentsSaved) {
+                && this._resourcesSaved && this._resourcesRemoved && this._attachmentsSaved) {
                 var actId = this.activityId;
                 if (this._completeAfterSaving) {
                     this._completeAfterSaving = false;
@@ -2698,7 +2717,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     userId = this._notificationData.ToUser.$key;
                 }
             }
-            var actObj = { 'activityId': activityId, 'userId': userId };
+            var actObj = {
+                'activityId': activityId, 'userId': userId
+            };
             return actObj;
         },
         _successfulAcceptConfirmation: function () {
@@ -2730,94 +2751,17 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             var self = this;
             if (dojo.byId("lu_lead_btnClearResult")) {
                 dojo.connect(dojo.byId("lu_lead_btnClearResult"), 'onclick', null, function () {
-                    console.log("remove lead");
                     self.attendeesTab.unCheckPrimary();
                 }, true);
-
             }
             if (dojo.byId("lu_contact_btnClearResult")) {
-
                 dojo.connect(dojo.byId("lu_contact_btnClearResult"), 'onclick', null, function () {
-                    console.log("remove contact");
                     self.attendeesTab.unCheckPrimary();
                 }, true);
-
             }
         },
         createAccountLookup: function () {
-            this.accountLookupConfig = {
-                id: '_activityAcc',
-                structure: [
-                    {
-                        "cells": [
-                            {
-                                "name": this.accountText,
-                                "field": "AccountName"
-                            },
-                            {
-                                "name": this.cityText,
-                                "field": "Address.City"
-                            },
-                            {
-                                "name": this.stateText,
-                                "field": "Address.State"
-                            },
-                            {
-                                "name": this.mainPhoneText,
-                                "field": "MainPhone"
-                            },
-                            {
-                                "name": this.typeText,
-                                "field": "Type"
-                            },
-                            {
-                                "name": this.subTypeText,
-                                "field": "SubType"
-                            },
-                            {
-                                "name": this.statusText,
-                                "field": "Status"
-                            },
-                            {
-                                "name": this.acctMgrText,
-                                "field": "AccountManager.UserInfo.UserName"
-                            },
-                            {
-                                "name": this.ownerText,
-                                "field": "Owner.OwnerDescription"
-                            }
-                        ],
-                        "defaultCell": {
-                            "sortable": true,
-                            "width": "150px",
-                            "editable": false,
-                            "propertyType": "System.String",
-                            "excludeFromFilters": false,
-                            "useAsResult": false,
-                            "pickListName": null,
-                            "defaultValue": ""
-                        }
-                    }
-                ],
-                gridOptions: {
-                    contextualCondition: '',
-                    contextualShow: '',
-                    selectionMode: 'single'
-                },
-                storeOptions: {
-                    resourceKind: 'accounts',
-                    sort: [{ attribute: 'AccountName'}]
-                },
-                isModal: true,
-                seedProperty: '',
-                seedValue: '',
-                overrideSeedValueOnSearch: false,
-                initializeLookup: false,
-                preFilters: [],
-                returnPrimaryKey: true,
-                dialogTitle: this.lookupActText,
-                dialogButtonText: this.okText
-            },
+            this.createAccountLookupConfig();
             this.lup_Account = new Lookup({
                 id: 'lu_account',
                 allowClearingResult: true,
@@ -2828,51 +2772,107 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this.eventConnections.push(dojo.connect(this.lup_Account, 'onChange', this, '_accountChanged'));
             dojo.place(this.lup_Account.domNode, this.container_AccountLup.domNode, 'only');
         },
-        createContactLookup: function () {
-            this.contactLookupConfig = {
-                id: '_activityContact',
+        createAccountLookupConfig: function () {
+            this.accountLookupConfig = {
+                id: '_activityAcc',
                 structure: [
-                    { defaultCell: {
-                        "sortable": true,
-                        "width": "150px",
-                        "editable": false,
-                        "propertyType": "System.String",
-                        "excludeFromFilters": false,
-                        "useAsResult": false,
-                        "pickListName": null,
-                        "defaultValue": ""
+                    {
+                        "label": this.accountText,
+                        "field": "AccountName"
                     },
-                        cells: [
-                        {
-                            name: this.nameText,
-                            field: 'NameLF'
-                        }, {
-                            name: this.accountText,
-                            field: 'Account.AccountName'
-                        }, {
-                            name: this.cityText,
-                            field: 'Address.City'
-                        }, {
-                            name: this.stateText,
-                            field: 'Address.State'
-                        }, {
-                            name: this.workphoneText,
-                            field: 'WorkPhone'
-                        }, {
-                            name: this.emailText,
-                            field: 'Email'
-                        }
-                    ]
-                    }],
+                            {
+                                "label": this.cityText,
+                                "field": "Address.City"
+                            },
+                            {
+                                "label": this.stateText,
+                                "field": "Address.State"
+                            },
+                            {
+                                "label": this.mainPhoneText,
+                                "field": "MainPhone"
+                            },
+                            {
+                                "label": this.typeText,
+                                "field": "Type"
+                            },
+                            {
+                                "label": this.subTypeText,
+                                "field": "SubType"
+                            },
+                            {
+                                "label": this.statusText,
+                                "field": "Status"
+                            },
+                            {
+                                "label": this.acctMgrText,
+                                "field": "AccountManager.UserInfo.UserName"
+                            },
+                            {
+                                "label": this.ownerText,
+                                "field": "Owner.OwnerDescription"
+                            }
+                ],
                 gridOptions: {
                     contextualCondition: '',
                     contextualShow: '',
-                    selectionMode: 'single'
+                    selectionMode: 'single',
+                    columnResizing: true
+                },
+                storeOptions: {
+                    resourceKind: 'accounts',
+                    sort: [{
+                        attribute: 'AccountName'
+                    }]
+                },
+                isModal: true,
+                seedProperty: '',
+                seedValue: '',
+                overrideSeedValueOnSearch: false,
+                initializeLookup: false,
+                preFilters: [],
+                returnPrimaryKey: true,
+                dialogTitle: this.lookupActText,
+                dialogButtonText: this.okText
+            };
+            return this.accountLookupConfig;
+        },
+        createContactLookupConfig: function () {
+            this.contactLookupConfig = {
+                id: '_activityContact',
+                structure: [
+                    {
+                        label: this.nameText,
+                        field: 'NameLF'
+                    }, {
+                        label: this.accountText,
+                        field: 'Account.AccountName'
+                    }, {
+                        label: this.cityText,
+                        field: 'Address.City'
+                    }, {
+                        label: this.stateText,
+                        field: 'Address.State'
+                    }, {
+                        label: this.workphoneText,
+                        field: 'WorkPhone'
+                    }, {
+                        label: this.emailText,
+                        field: 'Email'
+                    }
+                ],
+                gridOptions: {
+                    contextualCondition: '',
+                    contextualShow: '',
+                    selectionMode: 'single',
+                    columnResizing: true
                 },
                 storeOptions: {
                     resourceKind: 'contacts',
                     select: ['Address/Timezone'],
-                    sort: [{ attribute: 'NameLF'}]
+                    sort: [{
+                        attribute: 'NameLF'
+                    }]
                 },
                 isModal: true,
                 seedProperty: 'Account.Id',
@@ -2884,6 +2884,10 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 dialogTitle: this.lookupContactText,
                 dialogButtonText: this.okText
             };
+            return this.contactLookupConfig;
+        },
+        createContactLookup: function () {
+            this.createContactLookupConfig();
             this.lup_Contact = new Lookup({
                 id: 'lu_contact',
                 allowClearingResult: true,
@@ -2894,52 +2898,41 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this.eventConnections.push(dojo.connect(this.lup_Contact, 'onChange', this, '_contactChanged'));
             dojo.place(this.lup_Contact.domNode, this.container_ContactLup.domNode, 'only');
         },
-        createOpportunityLookup: function () {
+        createOpportunityLookupConfig: function () {
             this.opportunityLookupConfig = {
                 id: '_activityOpp',
                 structure: [
                     {
-                        defaultCell: {
-                            "sortable": true,
-                            "width": "150px",
-                            "editable": false,
-                            "propertyType": "System.String",
-                            "excludeFromFilters": false,
-                            "useAsResult": false,
-                            "pickListName": null,
-                            "defaultValue": ""
-                        },
-                        cells: [
-                            {
-                                name: this.descriptionText,
-                                field: 'Description'
-                            }, {
-                                name: this.acctMgrText,
-                                field: 'AccountManager.UserInfo.UserName'
-                            }, {
-                                name: this.accountText,
-                                field: 'Account.AccountName'
-                            }, {
-                                name: this.stageText,
-                                field: 'Stage'
-                            }, {
-                                name: this.statusText,
-                                field: 'Status'
-                            }, {
-                                name: this.ownerText,
-                                field: 'Owner.OwnerDescription'
-                            }
-                        ]
+                        label: this.descriptionText,
+                        field: 'Description'
+                    }, {
+                        label: this.acctMgrText,
+                        field: 'AccountManager.UserInfo.UserName'
+                    }, {
+                        label: this.accountText,
+                        field: 'Account.AccountName'
+                    }, {
+                        label: this.stageText,
+                        field: 'Stage'
+                    }, {
+                        label: this.statusText,
+                        field: 'Status'
+                    }, {
+                        label: this.ownerText,
+                        field: 'Owner.OwnerDescription'
                     }
                 ],
                 gridOptions: {
                     contextualCondition: '',
                     contextualShow: '',
-                    selectionMode: 'single'
+                    selectionMode: 'single',
+                    columnResizing: true
                 },
                 storeOptions: {
                     resourceKind: 'opportunities',
-                    sort: [{ attribute: 'Description'}]
+                    sort: [{
+                        attribute: 'Description'
+                    }]
                 },
                 isModal: true,
                 seedProperty: 'Account.Id',
@@ -2951,6 +2944,10 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 dialogTitle: this.lookupOpportunityText,
                 dialogButtonText: this.okText
             };
+            return this.opportunityLookupConfig;
+        },
+        createOpportunityLookup: function () {
+            this.createOpportunityLookupConfig();
             this.lup_Opportunity = new Lookup({
                 id: 'lu_opportunity',
                 allowClearingResult: true,
@@ -2961,59 +2958,47 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this.eventConnections.push(dojo.connect(this.lup_Opportunity, 'onChange', this, '_opportunityChanged'));
             dojo.place(this.lup_Opportunity.domNode, this.container_OppLup.domNode, 'only');
         },
-        createTicketLookup: function () {
+        createTicketLookupConfig: function () {
             this.ticketLookupConfig = {
                 id: '_activityTicket',
                 structure: [
                     {
-                        defaultCell: {
-                            "sortable": true,
-                            "width": "150px",
-                            "editable": false,
-                            "propertyType": "System.String",
-                            "excludeFromFilters": false,
-                            "useAsResult": false,
-                            "pickListName": null,
-                            "defaultValue": ""
-                        },
-                        cells: [
-                            {
-                                name: this.ticketNumberText,
-                                field: 'TicketNumber'
-                            }, {
-                                name: this.accountText,
-                                field: 'Account.AccountName'
-                            }, {
-                                name: this.nameText,
-                                field: 'Contact.NameLF'
-                            }, {
-                                name: this.phoneText,
-                                field: 'Contact.WorkPhone'//,
-                                //'styles': 'text-align: right;'
-                            }, {
-                                name: this.statusText,
-                                field: 'StatusCode',
-                                pickListName: 'Ticket Status',
-                                propertyType: 'SalesLogix.PickList',
-                                type: Sage.UI.Columns.PickList
-                            }, {
-                                name: this.urgencyText,
-                                field: 'Urgency.Description'
-                            }, {
-                                name: this.areaText,
-                                field: 'Area'
-                            }
-                        ]
+                        label: this.ticketNumberText,
+                        field: 'TicketNumber'
+                    }, {
+                        label: this.accountText,
+                        field: 'Account.AccountName'
+                    }, {
+                        label: this.nameText,
+                        field: 'Contact.NameLF'
+                    }, {
+                        label: this.phoneText,
+                        field: 'Contact.WorkPhone'
+                    }, {
+                        label: this.statusText,
+                        field: 'StatusCode',
+                        pickListName: 'Ticket Status',
+                        propertyType: 'SalesLogix.PickList',
+                        type: 'Sage.UI.Columns.PickList'
+                    }, {
+                        label: this.urgencyText,
+                        field: 'Urgency.Description'
+                    }, {
+                        label: this.areaText,
+                        field: 'Area'
                     }
                 ],
                 gridOptions: {
                     contextualCondition: '',
                     contextualShow: '',
-                    selectionMode: 'single'
+                    selectionMode: 'single',
+                    columnResizing: true
                 },
                 storeOptions: {
                     resourceKind: 'tickets',
-                    sort: [{ attribute: 'TicketNumber'}]
+                    sort: [{
+                        attribute: 'TicketNumber'
+                    }]
                 },
                 isModal: true,
                 seedProperty: 'Account.Id',
@@ -3025,6 +3010,10 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 dialogTitle: this.lookupTicketText,
                 dialogButtonText: this.okText
             };
+            return this.ticketLookupConfig;
+        },
+        createTicketLookup: function () {
+            this.createTicketLookupConfig();
             this.lup_Ticket = new Lookup({
                 id: 'lu_ticket',
                 allowClearingResult: true,
@@ -3035,60 +3024,48 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this.eventConnections.push(dojo.connect(this.lup_Ticket, 'onChange', this, '_ticketChanged'));
             dojo.place(this.lup_Ticket.domNode, this.container_TicketLup.domNode, 'only');
         },
-        createLeadLookup: function () {
+        createLeadLookupConfig: function () {
             this.leadLookupConfig = {
                 id: '_activityLead',
                 structure: [
                     {
-                        defaultCell: {
-                            "sortable": true,
-                            "width": "150px",
-                            "editable": false,
-                            "propertyType": "System.String",
-                            "excludeFromFilters": false,
-                            "useAsResult": false,
-                            "pickListName": null,
-                            "defaultValue": ""
-                        },
-                        cells: [
-                            {
-                                name: this.leadFullNameText,
-                                field: 'LeadFullName'
-                            }, {
-                                name: this.companyText,
-                                field: 'Company'
-                            }, {
-                                name: this.cityText,
-                                field: 'Address.City'
-                            }, {
-                                name: this.stateText,
-                                field: 'Address.State'
-                            }, {
-                                name: this.postalText,
-                                field: 'Address.PostalCode'
-                            }, {
-                                name: this.statusText,
-                                field: 'Status'
-                            }, {
-                                name: this.workphoneText,
-                                field: 'WorkPhone'//,
-                                //'styles': 'text-align: right;'
-                            }, {
-                                name: this.ownerText,
-                                field: 'Owner.OwnerDescription'
-                            }
-                        ]
+                        label: this.leadFullNameText,
+                        field: 'LeadFullName'
+                    }, {
+                        label: this.companyText,
+                        field: 'Company'
+                    }, {
+                        label: this.cityText,
+                        field: 'Address.City'
+                    }, {
+                        label: this.stateText,
+                        field: 'Address.State'
+                    }, {
+                        label: this.postalText,
+                        field: 'Address.PostalCode'
+                    }, {
+                        label: this.statusText,
+                        field: 'Status'
+                    }, {
+                        label: this.workphoneText,
+                        field: 'WorkPhone'
+                    }, {
+                        label: this.ownerText,
+                        field: 'Owner.OwnerDescription'
                     }
                 ],
                 gridOptions: {
                     contextualCondition: '',
                     contextualShow: '',
-                    selectionMode: 'single'
+                    selectionMode: 'single',
+                    columnResizing: true
                 },
                 storeOptions: {
                     resourceKind: 'leads',
                     select: ['Address/Timezone'],
-                    sort: [{ attribute: 'LeadFullName'}]
+                    sort: [{
+                        attribute: 'LeadFullName'
+                    }]
                 },
                 isModal: true,
                 initialLookup: false,
@@ -3097,6 +3074,10 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 dialogTitle: this.lookupLeadText,
                 dialogButtonText: this.okText
             };
+            return this.leadLookupConfig;
+        },
+        createLeadLookup: function () {
+            this.createLeadLookupConfig();
             this.lup_Lead = new Lookup({
                 id: 'lu_lead',
                 allowClearingResult: true,
@@ -3107,24 +3088,19 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this.eventConnections.push(dojo.connect(this.lup_Lead, 'onChange', this, '_leadChanged'));
             dojo.place(this.lup_Lead.domNode, this.container_LeadLup.domNode, 'only');
         },
-        createLeaderlookup: function () {
-            var leaderLookupConfig = {
+        createLeaderLookupConfig: function () {
+            this.leaderLookupConfig = {
                 id: '_activityLeader',
                 structure: [
                     {
-                        cells:
-                            [
-                                {
-                                    name: this.nameText,
-                                    field: 'Name',
-                                    sortable: true,
-                                    width: "400px",
-                                    editable: false,
-                                    propertyType: "System.String",
-                                    excludeFromFilters: false,
-                                    defaultValue: ""
-                                }
-                            ]
+                        label: this.nameText,
+                        field: 'Name',
+                        sortable: true,
+                        width: "400px",
+                        editable: false,
+                        propertyType: "System.String",
+                        excludeFromFilters: false,
+                        defaultValue: ""
                     }
                 ],
                 gridOptions: {
@@ -3132,11 +3108,14 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                         return 'AllowAdd AND (AccessId eq \'' + utility.getClientContextByKey('userID') + '\' OR AccessId eq \'EVERYONE\') AND Type eq \'User\'';
                     },
                     contextualShow: '',
-                    selectionMode: 'single'
+                    selectionMode: 'single',
+                    columnResizing: true
                 },
                 storeOptions: {
                     resourceKind: 'activityresourceviews',
-                    sort: [{ attribute: 'Name'}]
+                    sort: [{
+                        attribute: 'Name'
+                    }]
                 },
                 isModal: true,
                 preFilters: [],
@@ -3144,69 +3123,62 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 dialogTitle: this.lookupLeaderText,
                 dialogButtonText: this.okText
             };
+            return this.leaderLookupConfig;
+        },
+        createLeaderlookup: function () {
+            this.createLeaderLookupConfig();
             this.lup_Leader = new Lookup({
                 id: 'lu_leader',
                 readonly: true,
-                config: leaderLookupConfig
+                config: this.leaderLookupConfig
             });
             this.eventConnections.push(dojo.connect(this.lup_Leader, 'onChange', this, '_leaderChanged'));
             dojo.place(this.lup_Leader.domNode, this.container_LeaderLup.domNode, 'only');
         },
-        createResourcesLookup: function () {
+        createResourcesLookupConfig: function () {
             this.resourcesLookupConfig = {
                 id: '_activityResources',
                 btnToolTip: this.lookupResourcesText,
                 structure: [
                     {
-                        defaultCell: {
-                            "sortable": true,
-                            "width": "150px",
-                            "editable": false,
-                            "propertyType": "System.String",
-                            "excludeFromFilters": false,
-                            "useAsResult": false,
-                            "pickListName": null,
-                            "defaultValue": ""
-                        },
-                        cells:
-                        [
-                            {
-                                name: this.nameText,
-                                field: 'Name'
-                            }, {
-                                name: this.typeText,
-                                field: 'Type',
-                                width: '100px'
-                            }, {
-                                name: this.locationText,
-                                field: 'IsLocation',
-                                propertyType: 'System.Boolean',
-                                format: function (inRowIndex, inItem) {
-                                    //console.log('a: ' + a + 'b: ' + b + 'c: ' + c);
-                                    var type = utility.getValue(inItem, 'Type');
-                                    if (!type) {
-                                        return this.defaultValue;
-                                    }
-                                    if (type === 'User') {
-                                        return '';
-                                    }
-                                    return (inItem['IsLocation'] === null || inItem['IsLocation'] === 'false') ? this.noText : this.yesText;
-                                }
-                            }, {
-                                name: this.descriptionText,
-                                field: 'Subtype',
-                                width: '200px'
+                        label: this.nameText,
+                        field: 'Name'
+                    }, {
+                        label: this.typeText,
+                        field: 'Type',
+                        width: '100px'
+                    }, {
+                        label: this.locationText,
+                        field: 'IsLocation',
+                        propertyType: 'System.Boolean',
+                        format: function (inRowIndex, inItem) {
+                            var type = utility.getValue(inItem, 'Type');
+                            if (!type) {
+                                return this.defaultValue;
                             }
-                        ]
+                            if (type === 'User') {
+                                return '';
+                            }
+                            return (inItem['IsLocation'] === null || inItem['IsLocation'] === 'false') ? this.noText : this.yesText;
+                        }
+                    }, {
+                        label: this.descriptionText,
+                        field: 'Subtype',
+                        width: '200px'
                     }
                 ],
                 gridOptions: {
+                    columnResizing: true
                 },
                 displayMode: 5,
                 storeOptions: {
                     resourceKind: 'activityresourceviews',
                     select: ['AccessId', 'ResourceId', 'AllowAdd', 'AllowEdit', 'AllowDelete'],
-                    sort: [{ attribute: 'Type' }, { attribute: 'Name'}]
+                    sort: [{
+                        attribute: 'Type'
+                    }, {
+                        attribute: 'Name'
+                    }]
                 },
                 isModal: true,
                 initialLookup: false,
@@ -3224,12 +3196,15 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     this.lookupDialog.hide();
                 }
             };
+            return this.resourcesLookupConfig;
+        },
+        createResourcesLookup: function () {
+            this.createResourcesLookupConfig();
             this.lup_Resources = new Sage.UI.SDataLookup(this.resourcesLookupConfig);
             //override cancel text to close, as there is a logic in SDataLookup.js to change this text: defect#: 13092318
             this.lup_Resources.cancelText = this.lup_Resources.closeText;
             dojo.place(this.lup_Resources.domNode, this.container_ResourcesLup.domNode, 'only');
         },
-
         //end region lookup configs
 
         //Availability Tab functionality...
@@ -3238,41 +3213,41 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
 
             if (!this._schedulerInitialized) {
                 // to override scheduler's create activity functionality:
-                scheduler.showLightbox = function () { return false; };
+                scheduler.showLightbox = function () {
+                    return false;
+                };
 
                 //for re-rendering the timeline when the left or right arrow clicked
                 scheduler.config.timelineStep = 30; // get it from user option??
                 scheduler.config.timelineStart = (this._options.calendar.dayStartTime * 2);
                 scheduler.config.timelineSize = ((this._options.calendar.dayEndTime - this._options.calendar.dayStartTime) * 2);
+                this._setTimePatternForDHTMLXLibrary();
 
                 scheduler.createTimelineView({
                     name: "timeline",
                     x_unit: "minute",
-                    x_date: "%g:%i",
+                    x_date: this._DHTMLXLibraryTimePattern,
                     x_step: scheduler.config.timelineStep,
                     x_start: scheduler.config.timelineStart,
                     x_size: scheduler.config.timelineSize,
-                    //x_length:  96,  //show the whole day
                     y_unit: [],
                     y_property: "section_id",
                     render: "bar",
                     section_autoheight: false,
-                    dy: 30  //min-height
+                    dx: 100,
+                    dy: 30 //min-height
                 });
                 scheduler.init('scheduler_here', new Date(), 'timeline');
                 //don't allow dragging of activities...
-                scheduler.attachEvent('onBeforeDrag', function () { return false; });
+                scheduler.attachEvent('onBeforeDrag', function () {
+                    return false;
+                });
                 //don't allow double clicking to create activity
                 scheduler.config.dblclick_create = false;
 
-                /*Added to highlight the current event timeline columns
-                var act = this._activityData;
-                var sd = Sage.Utility.Convert.toDateFromString(act['StartDate']);
-                var ed = dojoDate.add(sd, 'minute', act['Duration']);
-
-                //Used in dhtmlxscheduler_timeline.js to highlight the current events timeline columns
-                scheduler.config.currentEventStartTime = sd;
-                scheduler.config.currentEventEndTime = ed;*/
+                scheduler.templates.day_date = function (dt) {
+                    return activityUtility.formatLongDate(dt);
+                };
 
                 var self = this;
 
@@ -3294,19 +3269,21 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
 
         _loadAttendeesData: function () {
             this._availabilityShowing = true;
-            if (this.mode === 'New') {
+            if (this.mode === 'New' || this.mode === 'CompleteUnscheduled') {
                 //create a mock attendee for the leader so it can be loaded into the list...
                 var ldr = this.lup_Leader.get('selectedObject');
                 var leaderName = ldr['$descriptor'],
                     leaderId = ldr['$key'].substr(0, 12);
-                this.addMembers([{
-                    $descriptor: leaderName,
-                    $key: leaderId,
-                    IsLocation: false,
-                    Name: leaderName,
-                    Subtype: '',
-                    Type: 'User'
-                }]);
+                this.addMembers([
+                    {
+                        $descriptor: leaderName,
+                        $key: leaderId,
+                        IsLocation: false,
+                        Name: leaderName,
+                        Subtype: '',
+                        Type: 'User'
+                    }
+                ]);
                 return;
             }
             var actid = this.activityId;
@@ -3317,7 +3294,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 console.warn('could not find activityid for query to get attendee data');
                 return;
             }
-            realActivityId = actid.substr(0, 12);
+            var realActivityId = actid.substr(0, 12);
 
             var req = new Sage.SData.Client.SDataNamedQueryRequest(Sage.Data.SDataServiceRegistry.getSDataService('mashups'))
                 .setApplicationName('$app')
@@ -3333,13 +3310,13 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         },
         _attendeesTemplate: new Simplate([
             '<table class="attendee-item">',
-                '<tr>',
-                    '<td class="attendee-name">{%= $.name %}</td>',
-                    '{% if (($.isNotLeader) && ($.allowDelete)) { %}',
-                        '<td class="remove-attendee" id="{%= $.id %}"><img src="images/icons/Delete_16x16.png" alt="{%= $.removeText %}" title="{%= $.removeText %}" onclick="{%= $.deleteCode %}" /></td>',
-                    '{% } %}',
-                    '<td class="attendee-status"><img src="{%= $.img %}" alt="{%= $.imgToolTipText %}" title="{%= $.imgToolTipText %}"/></td>',
-                '</tr>',
+            '<tr>',
+            '<td class="attendee-name">{%= $.name %}</td>',
+            '{% if (($.isNotLeader) && ($.allowDelete)) { %}',
+            '<td class="remove-attendee" id="{%= $.id %}"><img src="images/icons/Delete_16x16.png" alt="{%= $.removeText %}" title="{%= $.removeText %}" onclick="{%= $.deleteCode %}" /></td>',
+            '{% } %}',
+            '<td class="attendee-status"><img src="{%= $.img %}" alt="{%= $.imgToolTipText %}" title="{%= $.imgToolTipText %}"/></td>',
+            '</tr>',
             '</table>'
         ]),
         _onReceiveAttendees: function (data) {
@@ -3363,8 +3340,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 dojo.disconnect(this._deleteAttendeeConnects[i]);
             }
             this._deleteAttendeeConnects = [];
-            var y_units = [];
-            var leaderYUnit = {};
+            var yUnits = [];
+            var leaderYUnit = {
+            };
             var memberUnits = [];
             var resourceUnits = [];
             var leaderId = this._activityData.Leader['$key'].trim();
@@ -3401,10 +3379,10 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     resourceUnits.push(yUnit);
                 }
             }
-            y_units = (leaderYUnit.key) ? [leaderYUnit].concat(memberUnits.concat(resourceUnits)) : memberUnits.concat(resourceUnits);
+            yUnits = (leaderYUnit.key) ? [leaderYUnit].concat(memberUnits.concat(resourceUnits)) : memberUnits.concat(resourceUnits);
             for (i = 0; i < this._newAttendeesData.length; i++) {
 
-                y_units.push({
+                yUnits.push({
                     key: this._newAttendeesData[i]['$key'],
                     label: this._attendeesTemplate.apply({
                         name: this._newAttendeesData[i]['Name'],
@@ -3432,24 +3410,24 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                     scheduler.config.timelineStart = st;
                 }
             }
-            var self = this;
+            this._setTimePatternForDHTMLXLibrary();
             scheduler.createTimelineView({
                 name: "timeline",
                 x_unit: "minute",
-                x_date: "%g:%i",
+                x_date: this._DHTMLXLibraryTimePattern,
                 x_step: scheduler.config.timelineStep,
                 x_start: scheduler.config.timelineStart,
                 x_size: scheduler.config.timelineSize,
                 //x_length:  96,  //show the whole day
-                y_unit: y_units,
+                y_unit: yUnits,
                 y_property: "section_id",
                 render: "bar",
                 section_autoheight: false,
-                dy: 30  //min-height
+                dx: 100,
+                dy: 30 //min-height
             });
 
             scheduler.setCurrentView(this._getActivityStartDate(), 'timeline');
-
         },
         _updateLocation: function (newLocation, isAdd) {
             var location = this._activityData.Location;
@@ -3480,7 +3458,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             this.tb_Location.set('value', location);
         },
         _removeMember: function (args) {
-            var i
+            var i;
             var id = args.memberId;
             var lst = [];
             for (i = 0; i < this._attendeesData.length; i++) {
@@ -3516,19 +3494,19 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             //this._requestAvailability();
             /* sample return obj...
             [{
-            $descriptor: 'Lois Tomlin',  //and other sdata fields...
-            $key: 'UDEMO...',
-            IsLocation: false,
-            Name: 'Lois Tomlin',
-            Subtype: '....',
-            Type: 'User'
-            },{
-            $descriptor: 'Room 10',
-            $key: 'RDEMO...',
-            IsLocation: true,
-            Name: 'Room 10',
-            Subtype: '....',
-            Type: 'Resource'
+                $descriptor: 'Lois Tomlin',  //and other sdata fields...
+                $key: 'UDEMO...',
+                IsLocation: false,
+                Name: 'Lois Tomlin',
+                Subtype: '....',
+                Type: 'User'
+                },{
+                $descriptor: 'Room 10',
+                $key: 'RDEMO...',
+                IsLocation: true,
+                Name: 'Room 10',
+                Subtype: '....',
+                Type: 'Resource'
             }]
             */
             var userIds = [];
@@ -3587,14 +3565,16 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 }
             }
             //add the new one...
-            this.addMembers([{
-                $descriptor: newLeader['$descriptor'],
-                $key: newLeader['$key'],
-                IsLocation: false,
-                Name: newLeader['$descriptor'],
-                Subtype: '',
-                Type: 'User'
-            }]);
+            this.addMembers([
+                {
+                    $descriptor: newLeader['$descriptor'],
+                    $key: newLeader['$key'],
+                    IsLocation: false,
+                    Name: newLeader['$descriptor'],
+                    Subtype: '',
+                    Type: 'User'
+                }
+            ]);
         },
         _requestAvailability: function () {
             if (this._attendeesData.length < 1 && this._newAttendeesData.length < 1) {
@@ -3660,7 +3640,9 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
                 var isCurrentEvent = (item["activityId"] == this.activityId) ? true : false;
                 var stDate = Sage.Utility.Convert.toDateFromString(item['startDate']);
                 var eDate = dojoDate.add(stDate, 'minute', item['duration']);
-                scheduler.addEvent(stDate, eDate, item['description'], null, { section_id: item['itemId'], activity_Id: item['activityId'], current_event: isCurrentEvent });
+                scheduler.addEvent(stDate, eDate, item['description'], null, {
+                    section_id: item['itemId'], activity_Id: item['activityId'], current_event: isCurrentEvent
+                });
             }
         },
         reRenderTimeline: function (direction) {
@@ -3680,7 +3662,7 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             var stDate = this.dtp_startDate.get('value');
             if (newStart.getMonth() === stDate.getMonth() &&
                 newStart.getDate() === stDate.getDate() &&
-                    newStart.getFullYear() === stDate.getFullYear()) {
+                newStart.getFullYear() === stDate.getFullYear()) {
                 return;
             }
             if (this._activityData.StartDate) {
@@ -3708,12 +3690,27 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             }
             return true;
         },
+        _setTimePatternForDHTMLXLibrary: function(){
+            /* https://docs.dhtmlx.com/scheduler/settings_format.html
+            The time related formats, we interestd in are
+            %g - the hour based on the 12-hour clock without a leading zero ( 1 to 12 );
+            %G - the hour based on the 24-hour clock without a leading zero ( 0 to 23 ); 
+            %A - displays AM (for times from midnight until noon) and PM (for times from noon till midnight).
+            */
+            var shortTimeFormat = Sys.CultureInfo.CurrentCulture.dateTimeFormat.ShortTimePattern;
+            var is24HrFormat = shortTimeFormat.indexOf('H') !== -1;
+            if (!is24HrFormat) {
+                // Use am & pm.
+                this._DHTMLXLibraryTimePattern = '%g:%i %a';
+            } else {
+                this._DHTMLXLibraryTimePattern = '%G:%i';
+            }            
+        },
         _emptyActivity: {
             "$key": "",
             "AccountId": null,
             "AccountName": "",
             "ActivityBasedOn": null,
-            //"ActivityId": "",
             "Alarm": false,
             "AlarmTime": utility.Convert.toIsoStringFromDate(new Date()),
             "Attachment": false,
@@ -3754,7 +3751,6 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
             "UserDef1": null,
             "UserDef2": null,
             "UserDef3": null,
-            //"UserId": "",
             "AttachmentCount": null,
             "Location": null,
             "EndDate": "",
@@ -3765,5 +3761,4 @@ function (_Widget, _Templated, declare, SingleEntrySDataStore, BindingsManager, 
         }
     });
     return activityEditor;
-
 });

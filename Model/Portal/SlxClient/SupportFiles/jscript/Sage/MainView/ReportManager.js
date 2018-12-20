@@ -1,20 +1,16 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportManager", [
     'Sage/UI/SDataMainViewConfigurationProvider',
-    'Sage/UI/ListPanel',
-    'Sage/Utility',
     'Sage/MainView/ReportMgr/ReportManagerGroupContextService',
-    //'Sage/MainView/ReportMgr/FilterConfigurationProvider', //TODO: implement filters - if this is uncommented, an ugly error is displayed in chrome's console
+    'Sage/MainView/ReportMgr/FilterConfigurationProvider',
     'dojo/_base/declare',
     'Sage/MainView/ReportMgr/ReportManagerActions', //Load this module to make it available globally on the report manager main view
     'Sage/MainView/ReportMgr/ReportWizardController' //Load this module to make it available globally on the report manager main view
 ],
 function (
     SDataMainViewConfigurationProvider,
-    listPanel,
-    sageUtility,
     ReportManagerGroupContextService,
-    //FilterConfigurationProvider, //TODO: implement filters - if this is uncommented, an ugly error is displayed in chrome's console
+    FilterConfigurationProvider,
     declare
 ) {
     var reportManager = declare('Sage.MainView.ReportManager', SDataMainViewConfigurationProvider, {
@@ -23,18 +19,16 @@ function (
         _mainViewName: 'ReportManager',
         store: false,        
         constructor: function (options) {
-			//Set current group context
             var grpContextSvc = Sage.Services.getService('ClientGroupContext');
-            if (!grpContextSvc || grpContextSvc.declaredClass !== 'Sage.MainView.ReportMgr.ReportManagerGroupContextService') {                
+            if (!grpContextSvc || grpContextSvc.declaredClass !== 'Sage.MainView.ReportMgr.ReportManagerGroupContextService') {
                 grpContextSvc = new ReportManagerGroupContextService();
-				Sage.Services.removeService('ClientGroupContext');
+                Sage.Services.removeService('ClientGroupContext');
                 Sage.Services.addService('ClientGroupContext', grpContextSvc);
             }
             var ctx = grpContextSvc.getContext();
             this._currentTabId = ctx.CurrentGroupID;
             this._currentTabDescription = ctx.CurrentName;
 
-			//Set title panel configuration
             this.titlePaneConfiguration = {
                 tabs: this._getTabsConfig(),
                 menu: this._getMenuConfig(),
@@ -42,9 +36,8 @@ function (
             };
             dojo.subscribe('/group/context/changed', this, '_onCurrentGroupChanged');
         },
-		_getListPanelConfig: function () {
-		
-			var grpContextSvc = Sage.Services.getService('ClientGroupContext');
+        _getListPanelConfig: function () {
+            var grpContextSvc = Sage.Services.getService('ClientGroupContext');
             if (grpContextSvc) {
                 this.listPanelConfiguration = grpContextSvc.getCurrentListConfig();
                 this.store = this.listPanelConfiguration.list.store;                
@@ -52,20 +45,17 @@ function (
             }			
             return this.listPanelConfiguration;
         },
-		//OK
         requestConfiguration: function (options) {
             if (options.success) {
                 options.success.call(options.scope || this, this._getListPanelConfig(), this);
             }
         },
-		//OK
         requestTitlePaneConfiguration: function (options) {
             if (options.success) {
                 options.success.call(options.scope || this, this.titlePaneConfiguration, this);
             }
         },
-		//OK
-		_getTabsConfig: function () {
+        _getTabsConfig: function () {
             var tabsConfig = {
                 store: false,
                 selectedTabId: this._currentTabId,
@@ -79,31 +69,31 @@ function (
             };
             return tabsConfig;
         },
-		//Returns the list of tabs used by the report manager (note they are all static)
+        //Returns the list of tabs used by the report manager (note they are all static)
         _getStaticTabs: function () {
             var grpContextSvc = Sage.Services.getService('ClientGroupContext');
-            var staticTabs = grpContextSvc.getStaticTabs();
-            return staticTabs;
+            return grpContextSvc.getStaticTabs();
         },
-		//Handles the onTabSelect event configured in _getTabsConfig
-		_onTabSelected: function (tab) {
-			var grpContextSvc = Sage.Services.getService('ClientGroupContext');
+        //Handles the onTabSelect event configured in _getTabsConfig
+        _onTabSelected: function (tab) {
+            var grpContextSvc = Sage.Services.getService('ClientGroupContext');
             if (grpContextSvc) {
-				var ctx = grpContextSvc.getContext();
-				var id = tab.id || tab;
-				if (ctx.CurrentGroupID === id) {
+                var ctx = grpContextSvc.getContext();
+                var id = tab.id || tab;
+                if (ctx.CurrentGroupID === id) {
                     return;
-                }				
-				grpContextSvc.setCurrentGroup(id, tab.title); //This triggers the '/group/context/changed' event
+                }
+                grpContextSvc._currentListConfiguration = null;
+                grpContextSvc.setCurrentGroup(id, tab.title); //This triggers the '/group/context/changed' event
             }
         },
-		//Required to handle '/group/context/changed' event
+        //Required to handle '/group/context/changed' event
         _onCurrentGroupChanged: function (args) {
-			var context = args.current;
-			this._currentTabId = context.CurrentGroupID;
+            var context = args.current;
+            this._currentTabId = context.CurrentGroupID;
             this._currentTabDescription = context.CurrentName;
 			
-			if (dijit.byId('GroupTabs').selectedChildWidget.id !== context.CurrentGroupID) {
+            if (dijit.byId('GroupTabs').selectedChildWidget.id !== context.CurrentGroupID) {
                 dijit.byId('GroupTabs').selectChild(context.CurrentGroupID);
             }
         },

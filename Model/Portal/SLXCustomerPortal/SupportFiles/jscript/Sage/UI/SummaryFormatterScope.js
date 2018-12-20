@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/SummaryFormatterScope", [
         'Sage/UI/SummaryContainer',
         'Sage/Data/SummaryViewDataManager',
         'Sage/UI/Controls/SummaryAggregate',
@@ -27,10 +27,10 @@ function (summaryContainer, SummaryViewDataManager, SummaryAggregate, lang, decl
             }
             Sage.Services.addService('SummaryViewDataManager', this.dataManager);
         },
-        formatSummary: function (value, idx) {
+        formatSummary: function (value) {
 
             var widget,
-                id = idx + '_sum_' + value;
+                id = '_sum_' + value;
 
             if (value === null) {
                 return '';
@@ -44,14 +44,6 @@ function (summaryContainer, SummaryViewDataManager, SummaryAggregate, lang, decl
                 this._setupDataManager();
             }
 
-            //widget = dijit.byId(id);
-            //if (!widget) {
-            //     widget = new summaryContainer({
-            //         id: id,
-            //         templateLocation: this.templateLocation
-            //     });
-            // }
-
             widget = dijit.byId(id);
             if (widget) {
                 widget.destroy();
@@ -62,8 +54,7 @@ function (summaryContainer, SummaryViewDataManager, SummaryAggregate, lang, decl
             });
 
             this.dataManager.requestData(value, widget, this.requestConfiguration);
-            this.widgets[idx] = widget;
-            return this.widgets[idx];
+            return widget.domNode;
 
         },
         preFetchResources: function () {

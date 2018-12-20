@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtSecuredAction.ToolTip" xml:space="preserve">
-    <value>Percorso dell'azione protetta.</value>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Salva</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare questa azione protetta?  Devi eliminare da AppArchitect qualsiasi riferimento all'azione protetta eliminata altrimenti gli elementi non saranno accessibili da nessuno al di fuori dell'Administrator.</value>
+  <data name="btnInsertSave.ToolTip" xml:space="preserve">
+    <value>Salva e crea nuovo</value>
   </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Elimina</value>
@@ -129,13 +129,13 @@
   <data name="txtDescription.Caption" xml:space="preserve">
     <value>Descrizione:</value>
   </data>
+  <data name="txtSecuredAction.ToolTip" xml:space="preserve">
+    <value>Percorso per l'azione protetta.</value>
+  </data>
   <data name="txtSecuredAction.Caption" xml:space="preserve">
     <value>Nome:</value>
   </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="btnInsertSave.ToolTip" xml:space="preserve">
-    <value>Salva &amp; Nuovo</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Eliminare questa azione protetta? È necessario rimuovere tutti i riferimenti all'azione protetta eliminata da AppArchitect, altrimenti gli elementi protetti saranno accessibili solo all'Amministratore.</value>
   </data>
 </root>

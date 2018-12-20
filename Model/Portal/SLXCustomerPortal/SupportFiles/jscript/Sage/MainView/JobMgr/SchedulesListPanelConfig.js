@@ -1,11 +1,13 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/JobMgr/SchedulesListPanelConfig", [
     'Sage/MainView/JobMgr/BaseListPanelConfig',
     'Sage/MainView/JobMgr/SDataSummaryFormatterScope',
     'dojo/_base/declare',
     'dojo/i18n!./nls/SchedulesListPanelConfig',
     'dojo/_base/lang',
-    'Sage/Utility/Jobs'
+    'Sage/Utility/Jobs',
+    'dojo/i18n!./templates/nls/SchedulesListSummary',
+    'dojo/i18n!./templates/nls/ScheduleDetailSummary'
 ],
 function (
     baseListPanelConfig,
@@ -37,14 +39,14 @@ function (
         },
         _getStructure: function () {
             return [
-                { field: '$descriptor', name: this.colNameTriggerName, width: '100px' },
-                { field: 'job', name: this.colNameJobName, width: '100px', formatter: jobUtility.formatJobDescription },
-                { field: 'user', name: this.colNameUser, width: '100px', formatter: jobUtility.formatUser },
-                { field: 'startTimeUtc', name: this.colNameStartTimeUtc, width: '100px', formatter: jobUtility.formatDate },
-                { field: 'endTimeUtc', name: this.colNameEndTimeUtc, width: '100px', formatter: jobUtility.formatDate },
-                { field: 'priority', name: this.colNamePriority, width: '100px' },
-                { field: 'status', name: this.colNameStatus, width: '100px' },
-                { field: 'timesTriggered', name: this.colNameTimesTriggered, width: '100px' }
+                { field: '$descriptor', label: this.colNameTriggerName, width: '100px' },
+                { field: 'job', label: this.colNameJobName, width: '100px', formatter: jobUtility.formatJobDescription },
+                { field: 'user', label: this.colNameUser, width: '100px', formatter: jobUtility.formatUser },
+                { field: 'startTimeUtc', label: this.colNameStartTimeUtc, width: '100px', formatter: jobUtility.formatDate },
+                { field: 'endTimeUtc', label: this.colNameEndTimeUtc, width: '100px', formatter: jobUtility.formatDate },
+                { field: 'priority', label: this.colNamePriority, width: '100px' },
+                { field: 'status', label: this.colNameStatus, width: '100px' },
+                { field: 'timesTriggered', label: this.colNameTimesTriggered, width: '100px' }
             ];
         },
         _getSelect: function () {
@@ -100,9 +102,12 @@ function (
             var detailConfig = {
                 resourceKind: this._resourceKind,
                 requestConfiguration: requestConfig,
-                templateLocation: 'MainView/JobMgr/Templates/ScheduleDetailSummary.html'
+                templateLocation: 'MainView/JobMgr/templates/ScheduleDetailSummary.html'
             };
             return detailConfig;
+        },
+        _getSummaryConfig: function () {
+            return false;
         },
         _getToolBars: function () {
             var toolBars = { items: [] };

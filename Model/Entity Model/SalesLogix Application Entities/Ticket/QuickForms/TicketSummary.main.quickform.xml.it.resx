@@ -117,41 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="agcDefects_grid.b4c33bae-fc23-45b0-8d97-9497ee5503a6.ColumnHeading" xml:space="preserve">
-    <value>Difetto</value>
-  </data>
-  <data name="agcDefects.PopupCaptionFmt" xml:space="preserve">
-    <value>Difetti per {0}</value>
-  </data>
   <data name="lnkAccount.Caption" xml:space="preserve">
     <value>Azienda:</value>
-  </data>
-  <data name="lnkContract.Caption" xml:space="preserve">
-    <value>Contratto:</value>
-  </data>
-  <data name="agcTicketActivities_grid.b14c644e-1cb4-46a6-b25c-43c6364ffa04.ColumnHeading" xml:space="preserve">
-    <value>Totale Parcella</value>
-  </data>
-  <data name="lueUrgency.Caption" xml:space="preserve">
-    <value>Urgenza:</value>
-  </data>
-  <data name="dtpNeededDate.ButtonToolTip" xml:space="preserve">
-    <value>Calendario</value>
-  </data>
-  <data name="pklStatus.Caption" xml:space="preserve">
-    <value>Status:</value>
-  </data>
-  <data name="agcReturns.PopupCaptionFmt" xml:space="preserve">
-    <value>Resi per {0}</value>
-  </data>
-  <data name="agcReturns_grid.7ce29fa2-2910-47f9-be37-67a662d9a0f7.ColumnHeading" xml:space="preserve">
-    <value>Status</value>
   </data>
   <data name="lnkContact.Caption" xml:space="preserve">
     <value>Contatto:</value>
   </data>
+  <data name="phnContactWork.Caption" xml:space="preserve">
+    <value>Telefono:</value>
+  </data>
+  <data name="lnkContract.Caption" xml:space="preserve">
+    <value>Contratto:</value>
+  </data>
+  <data name="dtpNeededDate.Caption" xml:space="preserve">
+    <value>Termine previsto:</value>
+  </data>
+  <data name="pklStatus.Caption" xml:space="preserve">
+    <value>Stato:</value>
+  </data>
+  <data name="lueUrgency.Caption" xml:space="preserve">
+    <value>Urgenza:</value>
+  </data>
+  <data name="agcRelatedAssets.Caption" xml:space="preserve">
+    <value>Beni correlati:</value>
+  </data>
+  <data name="agcDefects.Caption" xml:space="preserve">
+    <value>Difetti:</value>
+  </data>
+  <data name="agcReturns.Caption" xml:space="preserve">
+    <value>Resi:</value>
+  </data>
+  <data name="agcTicketActivities.Caption" xml:space="preserve">
+    <value>Attività ticket:</value>
+  </data>
+  <data name="agcRelatedAssets_grid.07d96202-c3fb-4130-9c31-a949c8adcc50.ColumnHeading" xml:space="preserve">
+    <value>Prodotto</value>
+  </data>
   <data name="agcRelatedAssets_grid.ec60dc4c-2888-4990-a352-c552ecae7e68.ColumnHeading" xml:space="preserve">
-    <value>Numero Seriale</value>
+    <value>Numero di serie</value>
+  </data>
+  <data name="agcDefects_grid.b4c33bae-fc23-45b0-8d97-9497ee5503a6.ColumnHeading" xml:space="preserve">
+    <value>Difetto</value>
+  </data>
+  <data name="agcReturns_grid.1bf8b8af-81c8-4f45-80ac-39a5dc081d54.ColumnHeading" xml:space="preserve">
+    <value>ID reso</value>
+  </data>
+  <data name="agcTicketActivities_grid.b14c644e-1cb4-46a6-b25c-43c6364ffa04.ColumnHeading" xml:space="preserve">
+    <value>Totale attività</value>
   </data>
   <data name="agcTicketActivities_grid.c4dee66b-9363-4378-b62b-11722a95cb4a.ColumnHeading" xml:space="preserve">
     <value>Descrizione</value>
@@ -159,34 +171,22 @@
   <data name="agcRelatedAssets.PopupCaptionFmt" xml:space="preserve">
     <value>Beni per {0}</value>
   </data>
-  <data name="phnContactWork.Caption" xml:space="preserve">
-    <value>Telefono:</value>
+  <data name="agcDefects.PopupCaptionFmt" xml:space="preserve">
+    <value>Difetti per {0}</value>
   </data>
-  <data name="dtpNeededDate.Caption" xml:space="preserve">
-    <value>Data limite:</value>
-  </data>
-  <data name="agcReturns_grid.1bf8b8af-81c8-4f45-80ac-39a5dc081d54.ColumnHeading" xml:space="preserve">
-    <value>ID Reso</value>
+  <data name="agcReturns.PopupCaptionFmt" xml:space="preserve">
+    <value>Resi per {0}</value>
   </data>
   <data name="agcTicketActivities.PopupCaptionFmt" xml:space="preserve">
-    <value>Attività Ticket per {0}</value>
+    <value>Attività ticket per {0}</value>
   </data>
-  <data name="agcRelatedAssets_grid.07d96202-c3fb-4130-9c31-a949c8adcc50.ColumnHeading" xml:space="preserve">
-    <value>Prodotto</value>
+  <data name="dtpNeededDate.ButtonToolTip" xml:space="preserve">
+    <value>Calendario</value>
   </data>
-  <data name="agcTicketActivities.Caption" xml:space="preserve">
-    <value>Attività Ticket:</value>
-  </data>
-  <data name="agcRelatedAssets.Caption" xml:space="preserve">
-    <value>Beni associati:</value>
+  <data name="agcReturns_grid.7ce29fa2-2910-47f9-be37-67a662d9a0f7.ColumnHeading" xml:space="preserve">
+    <value>Stato</value>
   </data>
   <data name="agcDefects_grid.f393b449-27c5-4310-8528-a4868dd5e58f.ColumnHeading" xml:space="preserve">
     <value>Oggetto</value>
-  </data>
-  <data name="agcReturns.Caption" xml:space="preserve">
-    <value>Resi:</value>
-  </data>
-  <data name="agcDefects.Caption" xml:space="preserve">
-    <value>Difetti:</value>
   </data>
 </root>

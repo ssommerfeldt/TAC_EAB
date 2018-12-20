@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BackOfficeName.Caption" xml:space="preserve">
+    <value>Nome back office</value>
+  </data>
+  <data name="BOEPAServic.Caption" xml:space="preserve">
+    <value>Servizio PD BOE</value>
+  </data>
+  <data name="IONUserName.Caption" xml:space="preserve">
+    <value>Nome utente ION</value>
+  </data>
+  <data name="PersistentState.Caption" xml:space="preserve">
+    <value>Stato persistente</value>
+  </data>
+  <data name="PricingEngineType.Caption" xml:space="preserve">
+    <value>Tipo di motore prezzi</value>
+  </data>
+  <data name="grdBackOffices.da341e3e-b892-499d-bb8e-4ca7053343b3.ColumnHeading" xml:space="preserve">
+    <value>Nome back office</value>
+  </data>
+  <data name="grdBackOffices.1c9e1ff1-ac69-4879-b7a9-681bdf983658.ColumnHeading" xml:space="preserve">
+    <value>Servizio PD BOE</value>
+  </data>
+  <data name="grdBackOffices.e9c8b7f3-c520-4658-863d-78032a7fadd6.ColumnHeading" xml:space="preserve">
+    <value>Modello di richiesta</value>
+  </data>
+  <data name="grdBackOffices.f603ed07-21c5-4af7-aa88-ea34cde1906e.ColumnHeading" xml:space="preserve">
+    <value>È personalizzato</value>
+  </data>
+  <data name="grdBackOffices.2504ceb9-0c09-442f-9c7d-5dbf0dab11c5.ColumnHeading" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="grdBackOffices.1bb7551a-3a06-4995-935c-e800c0d295a2.ColumnHeading" xml:space="preserve">
+    <value>Servizio PD BOE</value>
+  </data>
+  <data name="grdBackOffices.9f77c242-2cb3-4be4-82f8-0aa1da2364bc.ColumnHeading" xml:space="preserve">
+    <value>È attivo</value>
+  </data>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Aggiungi servizio PD BOE</value>
+  </data>
+  <data name="300c4567-ad2f-4bf6-87ec-b36dd4ad5c2c.DialogTitleOverride" xml:space="preserve">
+    <value>Aggiungi/Modifica servizio PD BOE</value>
+  </data>
+  <data name="grdBackOffices.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdBackOffices.823ac85d-ba64-4261-9cbb-24357f181fa0.ColumnHeading" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="grdBackOffices.9f16802b-c32b-47f0-bc05-d45870ffc53d.ColumnHeading" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="grdBackOffices.9550ddf5-0960-4baf-8be5-ded39922eef2.ColumnHeading" xml:space="preserve">
+    <value>È attivo</value>
+  </data>
+  <data name="grdBackOffices.d1a5d56c-6900-44fa-86d2-288f65821d3f.ColumnHeading" xml:space="preserve">
+    <value>È personalizzato</value>
+  </data>
+  <data name="grdBackOffices.d93f14e4-ad4a-43a9-8dcd-51b5c2b2db86.ColumnHeading" xml:space="preserve">
+    <value>Nome azione</value>
+  </data>
+  <data name="5e0d8333-139e-4b2c-9c83-1bcd15c60c76.DialogTitleOverride" xml:space="preserve">
+    <value>Aggiungi servizio prezzi</value>
+  </data>
+  <data name="grdBackOffices.Delete.ToolTip" xml:space="preserve">
+    <value>Elimina servizio PD</value>
+  </data>
+  <data name="grdBackOffices.611b4c07-d5fc-49a9-96f0-19ff3616ffc3.ColumnHeading" xml:space="preserve">
+    <value>Nome servizio</value>
+  </data>
+  <data name="grdBackOffices.d92768b6-2c71-404f-bcb4-1cb701b3e410.ColumnHeading" xml:space="preserve">
+    <value>Azione</value>
+  </data>
+</root>

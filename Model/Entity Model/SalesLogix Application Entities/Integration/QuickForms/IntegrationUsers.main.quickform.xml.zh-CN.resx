@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="grdUsers.54fb01a9-10a4-4883-856c-927744dde02d.ColumnHeading" xml:space="preserve">
+    <value>启用同步</value>
+  </data>
+  <data name="grdUsers.c71fa552-e713-4b8f-a839-f0b352c1804c.ColumnHeading" xml:space="preserve">
+    <value>用户名:</value>
+  </data>
+  <data name="grdUsers.a46d8081-5c68-4020-9bf2-0c8dc3fdf6c3.ColumnHeading" xml:space="preserve">
+    <value>用户类型</value>
+  </data>
+  <data name="grdUsers.2acc77c9-abfe-41cf-a8d5-a025adb64ee6.ColumnHeading" xml:space="preserve">
+    <value>部门</value>
+  </data>
+  <data name="grdUsers.43c32e14-eb8e-467d-ae89-bfb058b739a5.ColumnHeading" xml:space="preserve">
+    <value>集成映射</value>
+  </data>
+  <data name="btnAddUser.Caption" xml:space="preserve">
+    <value>添加用户</value>
+  </data>
+  <data name="btnAddUser.ToolTip" xml:space="preserve">
+    <value>添加用户</value>
+  </data>
+  <data name="grdUsers.Delete.ToolTip" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.ButtonToolTip" xml:space="preserve">
+    <value>添加用户</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.DialogButtonText" xml:space="preserve">
+    <value>添加所选项</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupDialogTitle" xml:space="preserve">
+    <value>查找用户</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.Division.PropertyHeader" xml:space="preserve">
+    <value>分部</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
+    <value>区域</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="grdUsers.Save.ToolTip" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="grdUsers.Cancel.ToolTip" xml:space="preserve">
+    <value>还原更改</value>
+  </data>
+  <data name="grdUsers.5a60b41f-90eb-4616-8e68-09d14df226d0.ColumnHeading" xml:space="preserve">
+    <value>用户</value>
+  </data>
+  <data name="error_MissingLinkId" xml:space="preserve">
+    <value>您未定义链接或者定义了多个链接。当集成链接类型设置为“管理员”时，必须定义单个集成链接。请在继续之前更正此问题。</value>
+  </data>
+  <data name="grdUsers.ac6a74da-29de-4f92-b965-863bde38235c.ColumnHeading" xml:space="preserve">
+    <value>电子邮件地址</value>
+  </data>
+  <data name="grdUsers.efa55979-1ad4-4a2c-ad45-3e140603a091.ColumnHeading" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="grdUsers.153dd899-7fd1-41f3-be49-66774a5c2c7f.ColumnHeading" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.Email.PropertyHeader" xml:space="preserve">
+    <value>UserInfo 电子邮件</value>
+  </data>
+  <data name="grdUsers.c7143c55-1271-4378-99df-ad05aa412339.ColumnHeading" xml:space="preserve">
+    <value>验证</value>
+  </data>
+  <data name="grdUsers.Authentication.ToolTip" xml:space="preserve">
+    <value>验证邮箱的访问权限</value>
+  </data>
+  <data name="grdUsers.b68e8a94-57b4-4a7f-8a21-cfb207d02dc6.ColumnHeading" xml:space="preserve">
+    <value>上次同步日期</value>
+  </data>
+  <data name="grdUsers.898b76cc-4561-4005-b820-1c6d228f18e1.ColumnHeading" xml:space="preserve">
+    <value>上次同步日期</value>
+  </data>
+  <data name="grdUsers.678bed67-4e85-4253-b276-8f308fce8640.ColumnHeading" xml:space="preserve">
+    <value>上次同步日期</value>
+  </data>
+  <data name="grdUsers.3aae4c3b-4c42-4119-9bcd-6b8e402fd84d.ColumnHeading" xml:space="preserve">
+    <value>上次同步日期</value>
+  </data>
+  <data name="grdUsers.68e9fff4-04c2-4439-85ad-d18bc26db59a.ColumnHeading" xml:space="preserve">
+    <value>上次同步日期</value>
+  </data>
+  <data name="grdUsers.d6550fe0-9947-4f69-bee8-22ed831c79c5.ColumnHeading" xml:space="preserve">
+    <value>电子邮件地址</value>
+  </data>
+  <data name="grdUsers.f262728e-0566-4b19-ada6-2b9807e0a762.ColumnHeading" xml:space="preserve">
+    <value>上次同步日期</value>
+  </data>
+  <data name="grdUsers.97df8ba9-f880-4e99-959b-7938e27ad85c.ColumnHeading" xml:space="preserve">
+    <value>上次同步日期</value>
+  </data>
+  <data name="grdUsers.05de185a-a49a-41e6-942b-f5eca0a7ea6c.ColumnHeading" xml:space="preserve">
+    <value>Last Sync Date Cust</value>
+  </data>
+</root>

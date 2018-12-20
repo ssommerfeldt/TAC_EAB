@@ -4,7 +4,7 @@
 <div style="display:none">
     <asp:Panel ID="SyncResultsHistory_RTools" runat="server">
         <SalesLogix:PageLink ID="lnkSyncResultsHistoryHelp" runat="server" LinkType="HelpFileName"
-            ToolTip="<%$ resources: Portal, Help_ToolTip %>" Target="Help" NavigateUrl="Sync_Results_History"
+            ToolTip="<%$ resources: Portal, Help_ToolTip %>" Target="Help" NavigateUrl="SyncHistoryTab"
             ImageUrl="~/ImageResource.axd?scope=global&type=Global_Images&key=Help_16x16">
         </SalesLogix:PageLink>
     </asp:Panel>

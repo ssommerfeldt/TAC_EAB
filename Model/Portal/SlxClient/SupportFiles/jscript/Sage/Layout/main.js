@@ -1,4 +1,4 @@
-define([
+define("Sage/Layout/main", [
     //"Sage/Layout/Wizard",
     "Sage/Layout/ContentPane",
     "Sage/Layout/TabContainer",

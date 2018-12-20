@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5c2cfee8-7e3e-4f21-820d-87d8834f508a" lastModifiedUtc="2016-06-20T15:59:19.3971823Z" name="PriceQuoteHeader" returnType="String" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="a86d2647-bc7e-43e5-9326-f8642c7660ea" paramName="options" sequence="0" paramType="String">
+      <description>Options required to call the pricing and availability service.</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="c6a4c1bb-4a9e-4676-9b2b-adcf1ea8c893" lastModifiedUtc="2016-06-17T23:40:46.8580235Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="PriceQuoteHeader" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/Common/_WizardDialogBase", [
     'dojo/_base/declare',
     'dojo/topic',
     'dojo/_base/lang',
@@ -8,7 +8,7 @@ define([
     'Sage/MainView/ReportMgr/ReportManagerUtility',
     'Sage/Reporting/Enumerations',
     'dojo/i18n!./nls/_WizardDialogBase',
-    'Sage/UI/Controls/_DialogHelpIconMixin',
+    'Sage/UI/Controls/_DialogHelpIconMixin'
 ],
 function (
     declare,

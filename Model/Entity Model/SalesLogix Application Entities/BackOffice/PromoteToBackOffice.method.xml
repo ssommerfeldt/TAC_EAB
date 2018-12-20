@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="894dbaf0-1270-4eb0-94a5-1b0b1accfe83" lastModifiedUtc="2016-01-29T02:05:48.1201629Z" name="PromoteToBackOffice" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="872754e9-0787-4152-b7fd-da005c2290e6" paramName="entityName" sequence="0" paramType="String">
+      <description>The name of the entity being promoted</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="b5eff4cf-5dcc-4567-a1d6-f0e524e005e2" paramName="entityId" sequence="0" paramType="String">
+      <description>The id of the entity being promoted</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="d57d6767-63c1-44dc-820c-afd2beac5c8b" paramName="logicalId" sequence="0" paramType="String">
+      <description>The logical id of the back office</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="54e453f6-85ed-4fb8-ac59-81bdf04feb56" paramName="accountingEntityId" sequence="0" paramType="String">
+      <description>The accounting entity id</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="07d129fe-20ac-43be-90f1-74326cdeff78" lastModifiedUtc="2015-11-12T01:43:08.1921076Z" targetType="Sage.SalesLogix.BackOffice.Rules, Sage.SalesLogix.BusinessRules" targetMethod="PromoteToBackOffice" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

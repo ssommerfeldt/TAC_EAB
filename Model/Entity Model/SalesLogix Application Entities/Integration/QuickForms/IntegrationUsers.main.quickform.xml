@@ -8,29 +8,7 @@
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload0</MethodName>
-          <CSharpCodeSnippet>Sage.Entity.Interfaces.IIntegration integration = BindingSource.Current as Sage.Entity.Interfaces.IIntegration;
-if (integration != null)
-{
-
-    var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
-    if (clientContextService != null)
-    {
-        string appId = string.Empty;
-        if (integration.IntegrationLinks.Count == 1)
-        {
-            appId = integration.IntegrationLinks.FirstOrDefault().Id.ToString();
-        }
-		
-        if (clientContextService.CurrentContext.ContainsKey("IntegrationLinkId"))
-        {
-            clientContextService.CurrentContext["IntegrationLinkId"] = appId;
-        }
-        else
-        {
-            clientContextService.CurrentContext.Add("IntegrationLinkId", appId);
-        }
-    }
-}</CSharpCodeSnippet>
+          <CSharpCodeSnippet></CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -108,22 +86,22 @@ if (integration != null)
             <HideCondition />
             <Width>-1</Width>
           </QFSDataLinkCol>
-          <QFEditableCol>
+          <QFSDataEmailCol>
             <StyleScheme />
-            <DataField>User.Type</DataField>
-            <ColumnId>a46d8081-5c68-4020-9bf2-0c8dc3fdf6c3</ColumnId>
+            <DataField>EmailAddress</DataField>
+            <ColumnId>d6550fe0-9947-4f69-bee8-22ed831c79c5</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>User.Type</SortField>
+            <SortField>EmailAddress</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
+            <IsEditable>true</IsEditable>
             <HideCondition />
             <Width>-1</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
+          </QFSDataEmailCol>
           <QFEditableCol>
             <StyleScheme />
             <DataField>User.UserInfo.Department</DataField>
@@ -142,31 +120,89 @@ if (integration != null)
           </QFEditableCol>
           <QFEditableCol>
             <StyleScheme />
-            <DataField>ExternalIdentifier</DataField>
-            <ColumnId>43c32e14-eb8e-467d-ae89-bfb058b739a5</ColumnId>
+            <DataField>Authentication</DataField>
+            <ColumnId>c7143c55-1271-4378-99df-ad05aa412339</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>ExternalIdentifier</SortField>
+            <SortField>Authentication</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
+            <IsEditable>false</IsEditable>
             <HideCondition />
-            <Width>30</Width>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField />
+            <ColumnId>f262728e-0566-4b19-ada6-2b9807e0a762</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <SortField>AppIdMapping</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter>function(value, item) {
+			                 var request = new Sage.SData.Client.SDataSingleResourceRequest(Sage.Data.SDataServiceRegistry.getSDataService('dynamic'));
+			                 request.setResourceKind('syncLastDateView');
+			                 var appId = item.AppIdMapping.$key;			                 
+			                 request.setResourceSelector(dojo.string.substitute("'${0}'", [appId]));
+			                 var returnValue = null;			                
+			                 request.read({
+			                     async: false,
+			                     success: function(entry) {			                        
+			                         var createDate = null;
+			                         if(Sage.Utility.Convert.isDateString(entry.CreateDate)) {
+			                             createDate = Sage.Utility.Convert.toDateFromString(entry.CreateDate);
+			                             createDate = dojo.date.locale.format(createDate, { locale: Sys.CultureInfo.CurrentCulture.name });
+			                         }			                         			                         
+			                         returnValue = createDate;
+			                     },
+			                     failure: function() {
+			                         console.log("SDataSingleResourceRequest failed on syncLastDateView");
+			                     },
+			                 });
+			                 return returnValue;
+			             } </CustomFormatter>
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>AppIdMapping.Id</DataField>
+            <ColumnId>6f9aa9d6-d081-451e-95cd-86812b04a77c</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition>function()
+{return true;}</HideCondition>
+            <Width>-1</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
         </Columns>
-        <ConditionalWhere>function() { return 'Integration.Id eq "' + Sage.Utility.getCurrentEntityId() + '"'; }</ConditionalWhere>
-        <Select>
-          <string>User.Id</string>
-        </Select>
+        <ConditionalWhere />
+        <Select />
         <Include />
         <FeedCategory>InternalAppEntities</FeedCategory>
         <OnGetMappingId />
         <ParentRelationshipPropertyName>Integration</ParentRelationshipPropertyName>
-        <ChildRelationshipPropertyName>Users</ChildRelationshipPropertyName>
-        <OnDataChange />
+        <ChildRelationshipPropertyName>User</ChildRelationshipPropertyName>
+        <OnDataChange>function(entity, attribute, oldValue, newValue) {
+	if (oldValue === newValue) {
+	    return;
+	}
+	if (attribute === 'EmailAddress') {
+	    entity.Authentication = null;
+	}
+}</OnDataChange>
         <OnAdd />
         <Tools>
           <SDataGridSaveTool>
@@ -177,7 +213,7 @@ if (integration != null)
             <MergeControlId>Entities/IntegrationLink/Edit</MergeControlId>
             <OnClick />
             <StyleScheme />
-            <AppliedSecurity />
+            <AppliedSecurity>Entities/UserIntegrationMaps/Edit</AppliedSecurity>
           </SDataGridSaveTool>
           <SDataGridAddRelationTool>
             <Name>Relate</Name>
@@ -187,7 +223,7 @@ if (integration != null)
             <MergeControlId>Entities/IntegrationLink/Add</MergeControlId>
             <OnClick>//default add relationship behavior</OnClick>
             <StyleScheme />
-            <AppliedSecurity />
+            <AppliedSecurity>Entities/UserIntegrationMaps/Add</AppliedSecurity>
             <LookupButton>
               <Column>0</Column>
               <Row>0</Row>
@@ -274,21 +310,32 @@ if (integration != null)
                   <IsSortable>true</IsSortable>
                   <HideCondition />
                 </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>UserInfo.Email</PropertyName>
+                  <PropertyType>System.String</PropertyType>
+                  <PropertyHeader>UserInfo Email</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>false</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <IsSortable>false</IsSortable>
+                  <HideCondition>function(){return true;}</HideCondition>
+                </LookupProperty>
               </LookupProperties>
               <LookupPreFilters />
               <LookupSelectionMode>Multi</LookupSelectionMode>
               <OnSelection>function (items) {
-    var appId = '';
-    var clientContextService = Sage.Services.getService('ClientContextService');
-    if (clientContextService != null &amp;&amp; typeof clientContextService !== 'undefined') {
-        if (clientContextService.containsKey('IntegrationLinkId')) {
-            appId = clientContextService.getValue('IntegrationLinkId');
-        }
-    }
-    if (appId === '') {
-        Sage.UI.Dialogs.showError(IntegrationUsersResources['error_MissingLinkId']);
-        return;
-    }
+    //var appId = '';
+    //var clientContextService = Sage.Services.getService('ClientContextService');
+    //if (clientContextService != null &amp;&amp; typeof clientContextService !== 'undefined') {
+    //    if (clientContextService.containsKey('IntegrationLinkId')) {
+    //        appId = clientContextService.getValue('IntegrationLinkId');
+    //    }
+    //}
+    //if (appId === '') {
+    //    Sage.UI.Dialogs.showError(IntegrationUsersResources['error_MissingLinkId']);
+    //    return;
+    //}
     var entities = [];
     for (var i = 0; i &lt; items.length; i++) {
         var userMap = {};
@@ -304,10 +351,11 @@ if (integration != null)
             continue;
 
         userMap.Integration = { $key: Sage.Utility.getCurrentEntityId() };
-		userMap.AppId = appId;
-        userMap.Enabled = 'T';
+		//userMap.AppId = appId;
+        userMap.Enabled = true;
         userMap.User = {};
         Sage.Utility.extend(userMap.User, items[i]);
+		userMap.EmailAddress = userMap.User.UserInfo.Email;
         delete userMap.$key;
         delete userMap.$name;
         delete userMap.$url;
@@ -345,8 +393,34 @@ if (integration != null)
             <MergeControlId />
             <OnClick />
             <StyleScheme />
-            <AppliedSecurity>Entities/IntegrationLink/Delete</AppliedSecurity>
+            <AppliedSecurity>Entities/UserIntegrationMaps/Delete</AppliedSecurity>
           </SDataGridDeleteTool>
+          <SDataGridTool>
+            <Name>Authentication</Name>
+            <Image>[Localization!Global_Images:complete_activity_16x16]</Image>
+            <DisplayInInsert>false</DisplayInInsert>
+            <MergePosition>Default</MergePosition>
+            <MergeControlId />
+            <OnClick>function () {     
+      var options = {
+          closable: true,
+          title: "Validating access to mailboxes",
+          key: "Saleslogix.Exchange.MailboxValidationJob.ValidateMailboxes",
+          //parameters: parameters,
+         complete: function (result) {
+              grid.refresh();
+          },
+          failure: function (result) {
+		   	  grid.refresh();
+              console.log(result);
+              Sage.UI.Dialogs.showError(result.result);
+          }
+      };
+      Sage.Utility.Jobs.triggerJobAndDisplayProgressDialog(options);      
+  }</OnClick>
+            <StyleScheme />
+            <AppliedSecurity />
+          </SDataGridTool>
         </Tools>
       </QFSDataGrid>
     </Control>

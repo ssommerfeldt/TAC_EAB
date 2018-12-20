@@ -1,11 +1,14 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, MasterPageLinks */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, MasterPageLinks */
+define("Sage/Link", [
     'Sage/UI/Dialogs',
     'Sage/Utility',
     'Sage/Services/ActivityService',
-    'dojo/string'
+    'Sage/Services/EntityService',
+    'dojo/string',
+    'Sage/MainView/EntityMgr/EntityWizard/EntityWizardController'
+
 ],
-function (dialogs, utility, ActivityService, dojoString) {
+function (dialogs, utility, ActivityService, EntityService, dojoString, entityWizardController) {
     Sage.namespace('Link');
     Sage.Link = {
         entityDetail: function (kind, id) {
@@ -27,8 +30,14 @@ function (dialogs, utility, ActivityService, dojoString) {
                             return;
                         }
                     }
-                    var url = dojoString.substitute('${0}.aspx?entityid=${1}&modeid=Detail', [kind, id]);
-                    document.location = url;
+                            if (utility.isEQEnabled() && kind.toUpperCase() == 'QUOTE')
+                            {
+                               Sage.Utility.showDetailForm(kind,id);
+                            }
+                            else{
+                                var url = dojoString.substitute('${0}.aspx?entityid=${1}&modeid=Detail', [kind, id]);
+                                document.location = url;
+                            }
                     break;
             }
         },
@@ -141,7 +150,11 @@ function (dialogs, utility, ActivityService, dojoString) {
         },
         editActivityIfConfirmed: function (id, isRecurring) {
             var activityService = Sage.Services.getService('ActivityService');
-            activityService.editActivityIfConfirmed(id, isRecurring);              
+            activityService.editActivityIfConfirmed(id, isRecurring);
+        },
+        editEntityOptions: function (id, isRecurring) {
+            var entityService = Sage.Services.getService('EntityService');
+            entityService.editEntityOptions(id, isRecurring);
         },
         editActivityOccurrence: function (id, recurDate) {
             Sage.ClientLinkHandler.request({ request: 'EditActivityOccurrence', id: id, recurDate: recurDate });
@@ -264,6 +277,31 @@ function (dialogs, utility, ActivityService, dojoString) {
                 Sage.ClientLinkHandler.request({ request: 'Administration', type: 'RedirectToUser', kind: entityType, id: entityId });
             else
                 window.location.href = entityType + ".aspx?entityId=" + entityId;
+        },
+        redirectUrl: function (requestOptions, resourceKind) {
+            var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
+                .setResourceKind(resourceKind)
+                .setOperationName(requestOptions.businessRuleMethod);
+
+            request.execute(requestOptions.entry, {
+                success: function (result) {
+                    window.location.href = result.response.Result;
+                },
+                failure: function (result) {
+                    Sage.UI.Dialogs.showError(result);
+                }
+            });
+        },
+        createNewEntity: function () {
+            var entityWizard = new entityWizardController();
+            entityWizard.startWizard();
+        },
+        ClearSystemOptionsCache: function () {
+            var svc = Sage.Services.getService('SystemOptions');
+            if (svc) {
+                svc.clearCache();
+            }
         }
     };
     window.Link = Sage.Link;

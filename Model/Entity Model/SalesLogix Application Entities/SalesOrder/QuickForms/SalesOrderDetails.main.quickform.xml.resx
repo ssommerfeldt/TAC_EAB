@@ -118,31 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtComment.Caption" xml:space="preserve">
-    <value>Comments:</value>
-  </data>
-  <data name="lueRequestedBy.ButtonToolTip" xml:space="preserve">
-    <value>Find</value>
+    <value>Comments</value>
   </data>
   <data name="lueOpportunity.Caption" xml:space="preserve">
-    <value>Opportunity:</value>
+    <value>Opportunity</value>
   </data>
   <data name="lueOpportunity.ButtonToolTip" xml:space="preserve">
     <value>Find</value>
-  </data>
-  <data name="pklStatus.Caption" xml:space="preserve">
-    <value>Status:</value>
   </data>
   <data name="dtpOrderDate.ButtonToolTip" xml:space="preserve">
     <value>Calendar</value>
   </data>
   <data name="dtpOrderDate.Caption" xml:space="preserve">
-    <value>Date Requested:</value>
-  </data>
-  <data name="pklType.Caption" xml:space="preserve">
-    <value>Type:</value>
+    <value>Date Requested</value>
   </data>
   <data name="txtCustPO.Caption" xml:space="preserve">
-    <value>Customer PO:</value>
+    <value>Purchase Order:</value>
   </data>
   <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
     <value>Account</value>
@@ -156,9 +147,6 @@
   <data name="addBilling.AddressToolTip" xml:space="preserve">
     <value>MapQuest</value>
   </data>
-  <data name="dtpDateCreated.Caption" xml:space="preserve">
-    <value>Date Created:</value>
-  </data>
   <data name="addShipping.AddressToolTip" xml:space="preserve">
     <value>MapQuest</value>
   </data>
@@ -169,7 +157,7 @@
     <value>Address:</value>
   </data>
   <data name="pklShipping.Caption" xml:space="preserve">
-    <value>Ship Via:</value>
+    <value>Ship Via</value>
   </data>
   <data name="lueAccountShipping.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
     <value>Account Name</value>
@@ -199,7 +187,7 @@
     <value>Owner</value>
   </data>
   <data name="lueOpportunity.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>UserInfo Username</value>
+    <value>User Info User name</value>
   </data>
   <data name="lueOpportunity.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Description</value>
@@ -220,7 +208,7 @@
     <value>Acct Manager</value>
   </data>
   <data name="dtpPromisedDate.Text" xml:space="preserve">
-    <value>Date Promised:</value>
+    <value>Date Promised</value>
   </data>
   <data name="btnSaveSalesOrder.Caption" xml:space="preserve">
     <value>Save</value>
@@ -239,6 +227,9 @@
   </data>
   <data name="lueAccount.Caption" xml:space="preserve">
     <value>Account:</value>
+  </data>
+  <data name="ValidationError_AccountPromoted" xml:space="preserve">
+    <value>Account must be promoted for product pricing to be available.</value>
   </data>
   <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
     <value>Main Phone</value>
@@ -259,7 +250,7 @@
     <value>State</value>
   </data>
   <data name="lueAccount.LookupProperties.AccountManager.UserName.PropertyHeader" xml:space="preserve">
-    <value>AcctManager</value>
+    <value>Account Manager</value>
   </data>
   <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
     <value>Owner</value>
@@ -279,11 +270,8 @@
   <data name="dtpOrderDate.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="dtpDateCreated.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="dtpPromisedDate.Caption" xml:space="preserve">
-    <value>Date Promised:</value>
+    <value>Date Promised</value>
   </data>
   <data name="dtpPromisedDate.ToolTip" xml:space="preserve">
     <value />
@@ -303,95 +291,23 @@
   <data name="btnCopy.ToolTip" xml:space="preserve">
     <value>Copy</value>
   </data>
-  <data name="lueRequestedBy.Caption" xml:space="preserve">
-    <value>Requested By:</value>
-  </data>
-  <data name="lueRequestedBy.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="lueRequestedBy.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Account</value>
-  </data>
-  <data name="lueRequestedBy.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>City</value>
-  </data>
-  <data name="lueRequestedBy.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>State</value>
-  </data>
-  <data name="lueRequestedBy.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Work Phone</value>
-  </data>
-  <data name="lueRequestedBy.LookupProperties.Email.PropertyHeader" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="usrAccountManager.Caption" xml:space="preserve">
-    <value>Account Manager:</value>
-  </data>
-  <data name="usrAccountManager.ButtonToolTip" xml:space="preserve">
-    <value>Find</value>
-  </data>
   <data name="SalesOrderStatus_Closed" xml:space="preserve">
     <value>Closed</value>
-  </data>
-  <data name="dtpDateCreated.ButtonToolTip" xml:space="preserve">
-    <value>Calendar</value>
-  </data>
-  <data name="luePriceList.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
-    <value>Start Date</value>
   </data>
   <data name="SalesOrderStatus_Transmitted" xml:space="preserve">
     <value>Transmitted To Accounting</value>
   </data>
   <data name="a326dce0-6c90-44fb-94da-fe45082b90b0.Title" xml:space="preserve">
-    <value>Saleslogix</value>
+    <value>Infor CRM</value>
   </data>
   <data name="a326dce0-6c90-44fb-94da-fe45082b90b0.Message" xml:space="preserve">
     <value>The selected Account must be promoted to the selected ERP Application before saving.</value>
-  </data>
-  <data name="luePriceList.LookupProperties.Currency.PropertyHeader" xml:space="preserve">
-    <value>Currency</value>
-  </data>
-  <data name="luePriceList.LookupProperties.PriceListType.PropertyHeader" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="luePriceList.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="luePriceList.LookupProperties.Name.PropertyHeader" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="luePriceList.Caption" xml:space="preserve">
-    <value>Price List:</value>
-  </data>
-  <data name="lueERPApplication.ButtonToolTip" xml:space="preserve">
-    <value>Find</value>
-  </data>
-  <data name="luePriceList.ButtonToolTip" xml:space="preserve">
-    <value>Find</value>
-  </data>
-  <data name="lueERPApplication.Caption" xml:space="preserve">
-    <value>Accounting System:</value>
-  </data>
-  <data name="luePriceList.LookupDialogTitle" xml:space="preserve">
-    <value>Lookup Price List</value>
-  </data>
-  <data name="lueERPApplication.LookupDialogTitle" xml:space="preserve">
-    <value>Lookup Accounting System</value>
-  </data>
-  <data name="luePriceList.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
-    <value>End Date</value>
   </data>
   <data name="txtERPPrettyKey.Caption" xml:space="preserve">
     <value>Accounting Order #:</value>
   </data>
   <data name="txtComments.Caption" xml:space="preserve">
     <value>Comments</value>
-  </data>
-  <data name="lueERPApplication.LookupProperties.Name.PropertyHeader" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="lueERPApplication.LookupProperties.Enabled.PropertyHeader" xml:space="preserve">
-    <value>Enabled</value>
   </data>
   <data name="rdgSOType_item1.Text" xml:space="preserve">
     <value>Quote</value>
@@ -418,6 +334,36 @@
     <value>Calendar</value>
   </data>
   <data name="dtpDueDate.Caption" xml:space="preserve">
-    <value>Due Date:</value>
+    <value>Due Date</value>
+  </data>
+  <data name="lueQuote.Caption" xml:space="preserve">
+    <value>Quote</value>
+  </data>
+  <data name="lueQuote.DialogButtonText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtOrderNumber.Caption" xml:space="preserve">
+    <value>Order ID</value>
+  </data>
+  <data name="pklOrderStatus.Caption" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="chkBackOrdered.Caption" xml:space="preserve">
+    <value>Back Ordered</value>
+  </data>
+  <data name="txtCustomerRFQ.Caption" xml:space="preserve">
+    <value>Customer RFQ:</value>
+  </data>
+  <data name="lueAccount.LookupProperties.ErpAccountingEntityId.PropertyHeader" xml:space="preserve">
+    <value>Accounting Entity ID</value>
+  </data>
+  <data name="lueAccount.LookupProperties.ErpLogicalId.PropertyHeader" xml:space="preserve">
+    <value>Logical ID</value>
+  </data>
+  <data name="QFTextBox.Caption" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="imgAccValidation.ToolTip" xml:space="preserve">
+    <value>Account must be promoted for product pricing to be available.</value>
   </data>
 </root>

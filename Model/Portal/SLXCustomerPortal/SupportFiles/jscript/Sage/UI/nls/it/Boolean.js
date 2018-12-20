@@ -1,3 +1,4 @@
-define((
-{ yesText: 'Sì', noText: 'No' }
-));
+define("Sage/UI/nls/it/Boolean", {
+    "yesText": "Sì",
+    "noText": "No"
+});

@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/Editors/NonVisibleAdvancedPropertyEditor", [
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dijit/layout/ContentPane',

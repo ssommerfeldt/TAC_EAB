@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Library/FileHandler", [
         'Sage/Data/SDataServiceRegistry',
         'Sage/Services/RoleSecurityService',
         'Sage/Services/SystemOptions',
@@ -21,7 +21,7 @@ define([
         'dojo/_base/lang',
         'dojo/_base/window',
         'dojo/i18n!./nls/FileHandler'
-    ],
+],
 // ReSharper disable InconsistentNaming    
     function (SDataServiceRegistry, RoleSecurityService, SystemOptions, File, Attachment, DragDropWatcher, DefaultDropHandler,
         FallbackFilePicker, LibraryDocument, DocumentProperties, Dialogs, Utility, ProgressBar, i18n, parser, dString,
@@ -31,7 +31,7 @@ define([
         dojo.mixin(Sage.Library.FileHandler, {
             _docPropsDlg: false,
             _fileInputBtn: false,
-            _createFileInputBtn: function() {
+            _createFileInputBtn: function () {
                 var self = this;
                 this._fileInputBtn = dWindow.doc.createElement('INPUT');
                 domAttr.set(this._fileInputBtn, {
@@ -41,7 +41,7 @@ define([
                     'class': 'display-none',
                     onchange: function (e) {
                         self.handleHTML5Files(e);
-                    },
+                    }
                 });
                 domConstruct.place(this._fileInputBtn, 'filePicker');
             },
@@ -98,14 +98,7 @@ define([
                     Sage.Library.FileHandler.showAccessError();
                     return;
                 }
-                if (Sage.gears && Sage.gears.factory) {
-                    var desktop = Sage.gears.factory.create('beta.desktop');
-                    desktop.openFiles(function (files) {
-                        if (files && files.length > 0) {
-                            LibraryDocument.createDocuments(files);
-                        }
-                    });
-                } else if (File.supportsHTML5File) {
+                if (File.supportsHTML5File) {
                     // Calls handleHTML5Files().
                     Sage.Library.FileHandler._fileInputBtn.click();
                 } else {
@@ -190,9 +183,9 @@ define([
                     }
                     var grid = dijit.byId('libraryGrid');
                     if (grid) {
-                        var selrow = grid.selection.getSelected();
-                        if (selrow && selrow.length > 0) {
-                            return selrow[0][attribute][0];
+                        var selrow = grid.grid.selectedItem;
+                        if (selrow) {
+                            return selrow[attribute];
                         }
                     }
                     return false;

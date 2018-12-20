@@ -38,7 +38,9 @@
         this.wids = [];
         this.key = '';
         this.expandHandle = null;
-
+        this.cookieMock = {
+            getCookie: function (strParam) { return false; }
+        };
         this.__idIndexer = 0;
         this.HeaderRow = null;
         var tbl = dom.byId(gridID);
@@ -319,7 +321,7 @@
     };
 
     slxdatagrid.prototype.getWidthsFromCookie = function () {
-        var widthcookie =  cookie.getCookie('GRIDCW');
+        var widthcookie =  (cookie || this.cookieMock).getCookie('GRIDCW');
         if (widthcookie) {
             var grids = widthcookie.split('||');
             for (var i = 0; i < grids.length; i++) {
@@ -339,7 +341,7 @@
 
     slxdatagrid.prototype.setWidthsToCookie = function() {
         this.getCurrentWidths(); // make sure the wids array is up-to-date.
-        var widthcookie = cookie.getCookie('GRIDCW');
+        var widthcookie = (cookie || this.cookieMock).getCookie('GRIDCW');
         if (widthcookie) {
             var grids = widthcookie.split('||');
             widthcookie = '';

@@ -1,5 +1,12 @@
+require({cache:{
+'url:Sage/UI/Controls/templates/PickListAsText.html':"<div>\r\n    <span id=\"${id}-Span\" data-dojo-attach-point=\"textSpan\"></span>\r\n</div>\r\n"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+
+/**
+ * @class Sage.UI.Controls.PickListAsText
+ * Class for single select picklists.
+ */
+define("Sage/UI/Controls/PickListAsText", [
        'dijit/_Widget',
        'dijit/_Templated',
        'dojo/data/ItemFileReadStore',
@@ -10,9 +17,6 @@ define([
        'dojo/_base/declare'
 ],
 function (_Widget, _Templated, itemFileReadStore, objectStore, memory, pickList, template, declare) {
-    /**
-     * @class Class for single select picklists.
-     */
     var widget = declare('Sage.UI.Controls.PickListAsText', [pickList, _Widget, _Templated], {
 
         /**
@@ -69,21 +73,23 @@ function (_Widget, _Templated, itemFileReadStore, objectStore, memory, pickList,
                 var existingId = dojo.byId(this.codeId);
 
                 // TODO: Refactor this
-                if (existingText && existingText.value) {
-                    //this is here when the server control added it to the dom with a value in it
-                    this.initialValue = existingText.value;
-                    this.textSpan.innerHTML = this.initialValue;
-                }
-
-                if (!this.initialCode && existingId && existingId.value) {
-                    this.initialCode = existingId.value;
-                }
-
-                if (this.initialCode){
-                    var storeItem = this.getStoreItemById(this.initialCode);
-                    if(storeItem) {
-                        this.initialValue = storeItem.text;
+                if (items[0]) {
+                    if (existingText && existingText.value) {
+                        //this is here when the server control added it to the dom with a value in it
+                        this.initialValue = existingText.value;
                         this.textSpan.innerHTML = this.initialValue;
+                    }
+
+                    if (!this.initialCode && existingId && existingId.value) {
+                        this.initialCode = existingId.value;
+                    }
+
+                    if (this.initialCode){
+                        var storeItem = this.getStoreItemById(this.initialCode);
+                        if(storeItem) {
+                            this.initialValue = storeItem.text;
+                            this.textSpan.innerHTML = this.initialValue;
+                        }
                     }
                 }
             }), function (e) {
@@ -96,7 +102,7 @@ function (_Widget, _Templated, itemFileReadStore, objectStore, memory, pickList,
             if(this.storeData) {
                 dojo.forEach(this.storeData.items, function(item, index, array) {
                     //console.log(item.id + ' === ' + id);
-                    if(item.id === id) {
+                    if (item.id === id || item.code === id) {
                         results = item;
                     }
                 } ,this);

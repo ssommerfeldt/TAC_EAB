@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmUserLookupEntityFilter" id="f00bc1f4-688a-4251-b1f8-0d4498e64a23" lastModifiedUtc="2015-01-10T01:38:47.3397649Z" filterName="CountryCode" propertyName="Address.CountryCode">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmUserLookupEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <operators>
+    <operator>Equal</operator>
+    <operator>StartsWith</operator>
+  </operators>
+</entityFilter>

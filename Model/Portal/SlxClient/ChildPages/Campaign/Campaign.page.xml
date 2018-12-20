@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d6d91946-ebc0-4a28-a6f1-a8a94a2c6aa2">
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d6d91946-ebc0-4a28-a6f1-a8a94a2c6aa2" disablePageValidation="false">
   <PageAlias>Campaign</PageAlias>
   <SmallImage>[Localization!Global_Images:campaigns_16x16]</SmallImage>
   <LargeImage>[Localization!Global_Images:campaigns_24x24]</LargeImage>
@@ -10,7 +10,7 @@
     <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.ICampaign, Sage.Entity.Interfaces</Property>
   </Properties>
   <TemplateProperties>
-    <Property Name="IncludeMoreTabsTab" TypeConverter="">False</Property>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">True</Property>
   </TemplateProperties>
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />

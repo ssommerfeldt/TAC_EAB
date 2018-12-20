@@ -117,17 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmptyRow_lz" xml:space="preserve">
-    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
-  </data>
-  <data name="ScheduledFor_lz" xml:space="preserve">
-    <value>Planifié pour</value>
-  </data>
   <data name="Account_Company" xml:space="preserve">
     <value>Compte/Société</value>
   </data>
-  <data name="User_lz" xml:space="preserve">
-    <value>Utilisateur</value>
+  <data name="Activities_Caption" xml:space="preserve">
+    <value>Activités</value>
+  </data>
+  <data name="ActivityType_lz" xml:space="preserve">
+    <value>Type d'activité</value>
   </data>
   <data name="Added_lz" xml:space="preserve">
     <value>Ajouté</value>
@@ -135,8 +132,41 @@
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
+  <data name="EmptyRow_lz" xml:space="preserve">
+    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
+  </data>
+  <data name="Lead" xml:space="preserve">
+    <value>Lead</value>
+  </data>
+  <data name="Meeting_Type" xml:space="preserve">
+    <value>Rendez-vous</value>
+  </data>
+  <data name="Modified" xml:space="preserve">
+    <value>Modifié</value>
+  </data>
   <data name="ModifiedActivities_Caption" xml:space="preserve">
     <value>Activités modifiées</value>
+  </data>
+  <data name="Name_lz" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="NewActivities_Caption" xml:space="preserve">
+    <value>Nouvelles activités</value>
+  </data>
+  <data name="Note_Type" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="Personal_Type" xml:space="preserve">
+    <value>Activité personnelle</value>
+  </data>
+  <data name="Phone_Type" xml:space="preserve">
+    <value>Appel téléphonique</value>
+  </data>
+  <data name="Regarding_lz" xml:space="preserve">
+    <value>Objet</value>
+  </data>
+  <data name="ScheduledFor_lz" xml:space="preserve">
+    <value>Planifié pour</value>
   </data>
   <data name="ToDo_Type" xml:space="preserve">
     <value>Tâche à faire</value>
@@ -144,37 +174,7 @@
   <data name="Type_lz" xml:space="preserve">
     <value>Type</value>
   </data>
-  <data name="Meeting_Type" xml:space="preserve">
-    <value>Rendez-vous</value>
-  </data>
-  <data name="ActivityType_lz" xml:space="preserve">
-    <value>Type d'activité</value>
-  </data>
-  <data name="Phone_Type" xml:space="preserve">
-    <value>Appel</value>
-  </data>
-  <data name="Personal_Type" xml:space="preserve">
-    <value>Activité personnelle</value>
-  </data>
-  <data name="Activities_Caption" xml:space="preserve">
-    <value>Activités</value>
-  </data>
-  <data name="Note_Type" xml:space="preserve">
-    <value>Note</value>
-  </data>
-  <data name="Lead" xml:space="preserve">
-    <value>Lead</value>
-  </data>
-  <data name="NewActivities_Caption" xml:space="preserve">
-    <value>Nouvelles activités</value>
-  </data>
-  <data name="Modified" xml:space="preserve">
-    <value>Modifié</value>
-  </data>
-  <data name="Name_lz" xml:space="preserve">
-    <value>Nom</value>
-  </data>
-  <data name="Regarding_lz" xml:space="preserve">
-    <value>Objet</value>
+  <data name="User_lz" xml:space="preserve">
+    <value>Utilisateur</value>
   </data>
 </root>

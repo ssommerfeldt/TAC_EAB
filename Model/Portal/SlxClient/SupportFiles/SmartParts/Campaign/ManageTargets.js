@@ -1,7 +1,11 @@
 Sage.namespace("Sage.UI.Forms");
+//var tabSetFlag = "";//
+
 Sage.UI.Forms.ManageTargets = {
+    tabSetFlag: "",
     _workSpace: {},
     init: function (workSpace) {
+        this.keepTabActive();
         this._workSpace = workSpace;
         var self = this;
         window.setTimeout(function () {
@@ -18,13 +22,27 @@ Sage.UI.Forms.ManageTargets = {
                 });
             }
         }, 250);
+
+        this.tabSetFlag = "";
     },
+
+    //keep the tab actived after porform a post back
+    keepTabActive: function () {
+        if (this.tabSetFlag == "TabLookupTarget")
+        { this.onTabLookupTargetClick();}
+        if (this.tabSetFlag == "TabAddFromGroup")
+        { this.onTabAddFromGroupClick(); }
+        else { this.onTabLookupTargetClick(); }
+    },
+
     onTabLookupTargetClick: function () {
         this.setDivDisplay(this._workSpace.mt_divLookupTargetsId, "inline");
         this.setDivDisplay(this._workSpace.mt_divAddFromGroupId, "none");
 
         this.setTabDisplay(this._workSpace.mt_tabLookupTargetId, "tws-tab-button tws-active-tab-button");
         this.setTabDisplay(this._workSpace.mt_tabAddFromGroupId, "tws-tab-button");
+
+        this.tabSetFlag = "TabLookupTarget";//
     },
     onTabAddFromGroupClick: function () {
         this.setDivDisplay(this._workSpace.mt_divAddFromGroupId, "inline");
@@ -32,6 +50,8 @@ Sage.UI.Forms.ManageTargets = {
 
         this.setTabDisplay(this._workSpace.mt_tabAddFromGroupId, "tws-tab-button tws-active-tab-button");
         this.setTabDisplay(this._workSpace.mt_tabLookupTargetId, "tws-tab-button");
+
+        this.tabSetFlag = "TabAddFromGroup";//
     },
     setDivDisplay: function (divId, display) {
         var control = dojo.byId(divId);

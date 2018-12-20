@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Controls/DependencyLookup", [
        'dijit/Dialog',
        'Sage/UI/Controls/DependControl',
        'dojo/_base/declare'

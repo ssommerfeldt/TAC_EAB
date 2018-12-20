@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/Crystal/CrystalReportsFormatter", [
     'dojo/_base/declare',
     'dojo/i18n!./nls/CrystalReportsFormatter',
     'Sage/Reporting/Enumerations',
@@ -43,8 +43,8 @@ function (
                     return descriptor;
                 case String(Enumerations.ReportConditionType.DateRange):
                     if (item.operator === Enumerations.ReportConditionOperator.IsInTheRange) {
-                        startDate = dateLocale.format(item.fromRange, { selector: 'datetime', fullYear: true });
-                        endDate = dateLocale.format(item.toRange, { selector: 'datetime', fullYear: true });
+                        startDate = dateLocale.format(item.fromRange, { selector: 'datetime', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
+                        endDate = dateLocale.format(item.toRange, { selector: 'datetime', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
                         rangeValue = dojoString.substitute(nlsResources.txtRangeValue, [startDate, endDate]);
                         return rangeValue;
                     }
@@ -68,13 +68,13 @@ function (
                             break;//Needed to avoid JSHint validation error
                         case Enumerations.FieldDataTypes.DateTime:
                             if (operator == Enumerations.ReportConditionOperator.IsInTheRange) {
-                                startDate = dateLocale.format(item.fromRange, { selector: 'datetime', fullYear: true });
-                                endDate = dateLocale.format(item.toRange, { selector: 'datetime', fullYear: true });
+                                startDate = dateLocale.format(item.fromRange, { selector: 'datetime', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
+                                endDate = dateLocale.format(item.toRange, { selector: 'datetime', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
                                 rangeValue = dojoString.substitute(nlsResources.txtRangeValue, [startDate, endDate]);
                                 return rangeValue;
                             }
                             else {
-                                var formattedDate = dateLocale.format(item.value, { selector: 'datetime', fullYear: true });
+                                var formattedDate = dateLocale.format(item.value, { selector: 'datetime', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
                                 return formattedDate;
                             }
                             break;//Needed to avoid JSHint validation error

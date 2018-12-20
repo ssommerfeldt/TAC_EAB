@@ -1,4 +1,3 @@
-//>>built
 define(
 "dojo/cldr/nls/rm/number", //begin v1.x content
 {
@@ -6,7 +5,7 @@ define(
 	"percentSign": "%",
 	"exponential": "E",
 	"scientificFormat": "#E0",
-	"percentFormat": "#,##0 %",
+	"percentFormat": "#,##0 %",
 	"list": ";",
 	"infinity": "∞",
 	"minusSign": "−",
@@ -14,7 +13,7 @@ define(
 	"nan": "NaN",
 	"perMille": "‰",
 	"decimalFormat": "#,##0.###",
-	"currencyFormat": "#,##0.00 ¤",
+	"currencyFormat": "#,##0.00 ¤",
 	"plusSign": "+"
 }
 //end v1.x content

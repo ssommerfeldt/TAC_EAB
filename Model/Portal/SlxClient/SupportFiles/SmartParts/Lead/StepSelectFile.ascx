@@ -8,7 +8,7 @@
 <input id="importProcessId" type="hidden" runat="server" enableviewstate="true" />
 <input id="txtConfirmUpload" type="hidden" runat="server" />
 
-<div runat="server" id="divMainContent" style="width: 450px">
+<div runat="server" id="divMainContent" style="width: 550px">
     <div id="Div1" runat="server" class="Bevel ExtendWidth">
         <table runat="server" id="tblSelectFile" border="0" cellpadding="0" class="formtable" cellspacing="0" >
             <tr>
@@ -87,9 +87,6 @@
                                 </SalesLogix:LookupProperty>
                             </LookupProperties>
                             <LookupPreFilters>
-                                <SalesLogix:LookupPreFilter PropertyName="Status" PropertyType="System.String" OperatorCode="=" 
-                                    FilterValue="<%$ resources: LeadSource.LUPF.Status %>">
-                                </SalesLogix:LookupPreFilter>
                             </LookupPreFilters>
                         </SalesLogix:LookupControl>
                     </div>

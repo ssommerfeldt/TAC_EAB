@@ -35,71 +35,60 @@ namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class UserDetailsEventHandlers
     {
-        public static void OnLoad1Step( IUserDetails form,  EventArgs args)
+        public static void OnLoad1Step(IUserDetails form, EventArgs args)
         {
-            
 			IUser user = form.CurrentEntity as IUser;
 
 		    form.lblLicenseCount.Text = MySlx.Security.GetLicenseInfoMsg(user.Type);
-		     
-		   
-		   bool isEnabled = EnableUI(user);
-		   form.UserName.Enabled = isEnabled;
-		   form.lbxUserType.Enabled = isEnabled;
-		   form.chkLoginActive.Enabled = isEnabled;
-		   form.cbxIsUserManager.Enabled = isEnabled;
-		   form.slxUserManager.Enabled = isEnabled;
-		   form.pnName.Enabled = isEnabled;	
-		   form.pklDivision.Enabled = isEnabled;
-		   form.pklREegion.Enabled = isEnabled;
-		   form.btnChangePassword.Enabled = EnablePassword(user);
+
+		    bool isEnabled = EnableUI(user);
+		    form.UserName.Enabled = isEnabled;
+		    form.lbxUserType.Enabled = isEnabled;
+		    form.chkLoginActive.Enabled = isEnabled;
+		    form.cbxIsUserManager.Enabled = isEnabled;
+		    form.slxUserManager.Enabled = isEnabled;
+		    form.pnName.Enabled = isEnabled;
+		    form.pklDivision.Enabled = isEnabled;
+		    form.pklREegion.Enabled = isEnabled;
+		    form.btnChangePassword.Enabled = EnablePassword(user);
 		
-			if(user.Type == UserType.AddOn)
+			if (user.Type == UserType.AddOn)
 			{
-			   form.cbxIsUserManager.Enabled = false;			
+			   form.cbxIsUserManager.Enabled = false;
 			}
-			if(user.Type == UserType.Template)
+			else if (user.Type == UserType.Template)
 			{
-			     form.lbxUserType.Enabled = false;
-				 form.chkLoginActive.Enabled = false;
-		         form.QFSLXEmail.Enabled = false;
-				 form.pklUserTitle.Enabled = false;
-		         form.btnChangePassword.Enabled = false;
-				 form.cbxIsUserManager.Enabled = false;	
+			    form.lbxUserType.Enabled = false;
+				form.chkLoginActive.Enabled = false;
+		        form.QFSLXEmail.Enabled = false;
+				form.pklUserTitle.Enabled = false;
+		        form.btnChangePassword.Enabled = false;
+				form.cbxIsUserManager.Enabled = false;
 			}
-		    if(user.Type == UserType.WebViewer)
+		    else if (user.Type == UserType.WebViewer)
 			{
-			     form.cbxIsUserManager.Enabled = false;	
+			    form.cbxIsUserManager.Enabled = false;
 			}
-			 
-            if(user.Id.ToString().TrimEnd() != "ADMIN")
+
+            if (user.Id.ToString().TrimEnd() != "ADMIN")
             {
                 if (form.lbxUserType.Items.Count == 9)
                 {
                     // removes the Administrator type
 					form.lbxUserType.Items.RemoveAt(8);
                 }
-            }
+            }			
+			
         }
-		
+
 		public static bool EnablePassword(IUser user)
 		{
-			bool returnVal = false;
-			if (MySlx.Security.CurrentSalesLogixUser.UserName == "ADMIN" || user.UserName != "ADMIN")
-			   returnVal = true;
-			
-			return returnVal;
+			return MySlx.Security.CurrentSalesLogixUser.UserName == "ADMIN" || user.UserName != "ADMIN";
 		}
-		
-		
+
 		public static bool EnableUI(IUser user)
 		{
-			bool returnVal = false;
-		   if(user.UserName != "ADMIN")
-			   returnVal = true;
-		   
-			return returnVal;
-		
+			return user.UserName != "ADMIN";
 		}
     }
 }

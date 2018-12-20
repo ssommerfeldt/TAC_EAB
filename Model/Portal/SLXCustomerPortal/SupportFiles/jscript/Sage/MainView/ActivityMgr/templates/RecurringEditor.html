@@ -1,4 +1,4 @@
-﻿
+
 ['<div>',
     '<table style="width:100%">',
         '<tr>',
@@ -55,7 +55,7 @@
                             '<input dojoType="Sage.UI.NumberTextBox" shouldPublishMarkDirty="false" value="1" constraints="{places: 0, type: \'decimal\'}" dojoAttachPoint="_weeklyEveryText" class="small-inline-textbox" dojoAttachEvent="onChange:_intervalChanged" />',
                             '<span class="padded-inline-label">{%= $.weeksOnText %}</span>',
                         '</div>',
-                        '<div style="white-space:normal;padding-bottom:10px;">',
+                        '<div style="white-space:normal;padding-bottom:10px;margin:5px 0 0 20px;">',
                             '<span class="no-wrap">',
                                 '<input dojoType="dijit.form.CheckBox" type="checkbox" name="chkMonday" value="mon" id="{%= $.id %}_chkMonday" dojoAttachPoint="_chkMonday" dojoAttachEvent="onClick:_dayChecked" />',
                                 '<label for="{%= $.id %}_chkMonday" class="padded-inline-label">{%= $.monText %}</label>',
@@ -137,7 +137,7 @@
                             '<select dojoType="dijit.form.Select" maxHeight="300" dojoAttachPoint="_yearDatesSelect" dojoAttachEvent="onChange:_yearlyRecurDateChanged"></select>',
                         '</div>',
                         '<div>',
-                            '<div class="recurring-radio-label" style="min-width:{%= ($.labelWidth - 3) %}px;">',
+                            '<div class="recurring-radio-label" style="min-width:{%= $.labelWidth  %}px;">',
                                 '<input dojoType="dijit.form.RadioButton" type="radio" name="yearlyOn" value="yearlyOnThe" id="{%= $.id %}_rdoYearlyOnThe" dojoAttachPoint="_rdoYearlyOnThe" />',
                                 '<label for="{%= $.id %}_rdoYearlyOnThe" class="padded-inline-label">{%= $.theText %}</label>',
                             '</div>',

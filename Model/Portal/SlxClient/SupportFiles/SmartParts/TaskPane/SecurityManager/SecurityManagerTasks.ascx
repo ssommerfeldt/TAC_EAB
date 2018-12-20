@@ -2,9 +2,9 @@
 
 <script type="text/javascript">
     var securityManagerTasksActions;
-    require(['Sage/TaskPane/SecurityManagerTasksTasklet'],
-        function (SecurityManagerTasksTasklet) {
-            dojo.ready(function () {
+    require(['Sage/TaskPane/SecurityManagerTasksTasklet', 'dojo/ready'],
+        function (SecurityManagerTasksTasklet, ready) {
+            ready(function () {
                 if (!securityManagerTasksActions) {
                     securityManagerTasksActions = new SecurityManagerTasksTasklet({
                         id: "securityManagerTasksActions",
@@ -33,7 +33,7 @@
                         <label for="Type"><%= GetLocalResourceObject("SPType")%>:</label>
                     </td>
                     <td>
-                        <select dojoType="dijit.form.Select" name="profileType" id="secDlg_Type" style="width:98%; box-sizing:border-box; -moz-box-sizing:border-box;">
+                        <select dojoType="dijit.form.Select" name="profileType" id="secDlg_Type" style="width:100%; box-sizing:border-box; -moz-box-sizing:border-box;">
                             <option value="UserDefined"><%= GetLocalResourceObject("User")%></option>
                             <option value="System"><%= GetLocalResourceObject("System")%></option>
                         </select>

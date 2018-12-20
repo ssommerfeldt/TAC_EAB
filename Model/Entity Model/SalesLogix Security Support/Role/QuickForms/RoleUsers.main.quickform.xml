@@ -237,7 +237,11 @@
             <DisplayInInsert>false</DisplayInInsert>
             <MergePosition>Default</MergePosition>
             <MergeControlId />
-            <OnClick />
+            <OnClick>
+              function (userData) {
+              dojo.publish('service/RoleSecurity/cacheClear');
+              }
+            </OnClick>
             <StyleScheme />
             <AppliedSecurity />
           </SDataGridDeleteTool>

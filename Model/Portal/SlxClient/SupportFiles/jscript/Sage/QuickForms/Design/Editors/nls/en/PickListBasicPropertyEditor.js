@@ -1,4 +1,4 @@
-define((
+define("Sage/QuickForms/Design/Editors/nls/en/PickListBasicPropertyEditor", (
 { titleText: 'Basic',
   appearanceText: 'Appearance',
   behaviorText: 'Behavior',

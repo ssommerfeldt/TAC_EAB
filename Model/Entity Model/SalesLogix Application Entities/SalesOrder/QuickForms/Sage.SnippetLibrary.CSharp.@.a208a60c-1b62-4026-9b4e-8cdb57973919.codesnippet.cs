@@ -1,5 +1,5 @@
 /*
- * This metadata is used by the Sage platform.  Do not remove.
+ * This metadata is used by the Saleslogix platform.  Do not remove.
 <snippetHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a208a60c-1b62-4026-9b4e-8cdb57973919">
  <assembly>Sage.SnippetLibrary.CSharp</assembly>
  <name>OnLoad1Step</name>
@@ -25,9 +25,6 @@
   <reference>
    <assemblyName>Sage.SalesLogix.dll</assemblyName>
   </reference>
-  <reference>
-   <assemblyName>Sage.SalesLogix.HighLevelTypes.dll</assemblyName>
-  </reference>
  </references>
 </snippetHeader>
 */
@@ -38,9 +35,10 @@ using System;
 using System.Collections.Generic;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
-using Sage.SalesLogix.SelectionService;
+using Sage.Platform;
 using Sage.Platform.Application;
+using Sage.Platform.SData;
+using Sage.SalesLogix.SelectionService;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
@@ -50,30 +48,8 @@ namespace Sage.BusinessRules.CodeSnippets
         public static void OnLoad1Step(IInsertSalesOrder form, EventArgs args)
         {
             ISalesOrder so = form.CurrentEntity as ISalesOrder;
-            if (so == null) return;
-            if (String.IsNullOrEmpty(form.rdgSOType.SelectedValue))
-            {
-                form.rdgSOType.SelectedValue = "SalesOrder";
-            }
-            Sage.Platform.SData.IAppIdMappingService oMappingService = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.SData.IAppIdMappingService>(false);
-            if (oMappingService != null && oMappingService.IsIntegrationEnabled())
-			{
-				if (!so.CanChangeOperatingCompany())
-				{
-					form.lueERPApplication.Enabled = false;
-					form.luePriceList.Enabled = false;
-				}
-				else 
-				{
-					form.lueERPApplication.Enabled = true;
-                    form.luePriceList.Enabled = (form.lueERPApplication.LookupResultValue != null);
-				}				
-			}
-            else
-            {
-                form.clIntegrationContract.Visible = false;
-            }
-
+            if (so == null) return;            
+            IAppIdMappingService mappingService = ApplicationContext.Current.Services.Get<IAppIdMappingService>(false);
             ISelectionService srv = ApplicationContext.Current.Services.Get<ISelectionService>(true);
             if (srv != null)
             {
@@ -84,7 +60,7 @@ namespace Sage.BusinessRules.CodeSnippets
                     if (sels.Count > 0)
                     {
                         string newContactId = sels[0];
-                        IContact newContact = Sage.Platform.EntityFactory.GetById<IContact>(newContactId);
+                        IContact newContact = EntityFactory.GetById<IContact>(newContactId);
                         IAccount newAccount = newContact.Account;
                         so.Account = newAccount;
                         so.AccountManager = newAccount.AccountManager;
@@ -95,14 +71,14 @@ namespace Sage.BusinessRules.CodeSnippets
 
                         if (so.BillingAddress == null)
                         {
-                            ISalesOrderAddress billAddr = Sage.Platform.EntityFactory.Create<ISalesOrderAddress>();
+                            ISalesOrderAddress billAddr = EntityFactory.Create<ISalesOrderAddress>();
                             so.BillingAddress = billAddr;
                         }
                         so.SetSalesOrderBillingAddress(newContact.Address);
 
                         if (so.ShippingAddress == null)
                         {
-                            ISalesOrderAddress shipAddr = Sage.Platform.EntityFactory.Create<ISalesOrderAddress>();
+                            ISalesOrderAddress shipAddr = EntityFactory.Create<ISalesOrderAddress>();
                             so.ShippingAddress = shipAddr;
                         }
                         so.SetSalesOrderShippingAddress(newContact.Address);

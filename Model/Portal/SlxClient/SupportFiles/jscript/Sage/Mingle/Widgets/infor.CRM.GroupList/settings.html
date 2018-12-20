@@ -1,0 +1,59 @@
+﻿<div ng-controller="crm.inforCRMGroupListCustomSettingsCtrl as ctrl">
+    <div class="row">
+        <div class="field">
+            <label for="infor-sample-custom-ui-metadata-title-setting">{{ctrl.textTitle}}</label>
+            <div class="searchfield-wrapper">
+                <input ng-readonly="!ctrl.titleEditEnabled || ctrl.isTitleLocked" id="grouplist-widget-titletext" ng-change="ctrl.settingsChanged()" ng-model="ctrl.widgetTitle" />
+                <button class="btn-icon" ng-click="ctrl.onClickIsLocked()" ng-disabled="!ctrl.isTitleUnlockable">
+                    <svg ng-if="!ctrl.isTitleLocked" class="icon close" focusable="false">
+                        <use xlink:href="#icon-unlocked"></use>
+                    </svg>
+                    <svg ng-if="ctrl.isTitleLocked" class="icon close" focusable="false">
+                        <use xlink:href="#icon-locked"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="field">
+            <label class="label required">{{ctrl.textEntity}}</label>
+            <select id="grouplist-widget-entitydropdown" ng-model="ctrl.entityValue" ng-options="option.value for option in ctrl.entityOptions"
+                    class="dropdown" xi-drop-down ng-change="ctrl.entityChanged()" data-validate="required" xi-validate></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="field">
+            <label class="label required">{{ctrl.textGroup}}</label>
+            <div xi-busy="ctrl.isEntityBusy"></div>
+            <select id="grouplist-widget-groupdropdown" ng-model="ctrl.groupValue" ng-options="option.name for option in ctrl.groupOptions"
+                    class="dropdown" xi-drop-down ng-change="ctrl.groupChanged()" xi-busy="ctrl.isGroupBusy" data-validate="required" xi-validate></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="field" style="margin-bottom:10px;">
+            <label class="label">{{ctrl.textSelectFields}}</label>
+            <div style="max-width:310px;min-height:150px;border:1px solid #bdbdbd;padding:10px 0 0 10px;" xi-busy="ctrl.isFiltersBusy">
+                <div style="width:120px;float:left;" class="field" ng-repeat="item in ctrl.displayFields">
+                    <input type="checkbox" ng-disabled="(!item.selected && ctrl.isLimitReached()) || $index == 0|| $index == 1 || item.text == 'Status' || item.text == 'Active'"
+                           class="checkbox" ng-click="ctrl.settingsChanged()" id="{{item.id}}" ng-model="item.selected" style="width:10px;height:10px;">
+                    <label for="{{item.id}}" class="checkbox-label">{{item.text}}</label>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="field">
+            <label for="limitCount" class="label required">{{ctrl.textLimit}}</label>
+            <input ng-model="ctrl.limitCount" id="grouplist-widget-limitcounttext" name="limitCount" type="text" data-validate="required" xi-validate
+                    xi-mask data-mask-mode="number" data-mask="##" />
+        </div>
+    </div>
+    <div class="row">
+        <div ng-hide="ctrl.hideLogicalIdSelect" class="field">
+            <label class="label required">{{ctrl.textCRMLogicalID}}</label>
+            <select id="grouplist-widget-appdropdown" ng-model="ctrl.logicalIdSelected" ng-options="option.name for option in ctrl.logicalIdValues" class="dropdown" xi-drop-down data-validate="required" xi-validate></select>
+        </div>
+    </div>
+</div>

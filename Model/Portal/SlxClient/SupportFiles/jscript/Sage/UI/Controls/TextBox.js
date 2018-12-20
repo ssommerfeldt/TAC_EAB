@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/TextBox", [
        'dijit/form/ValidationTextBox',
        'dojo/dom-class',
        'dojo/query',

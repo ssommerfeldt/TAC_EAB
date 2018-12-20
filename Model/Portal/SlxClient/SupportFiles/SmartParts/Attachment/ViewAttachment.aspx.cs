@@ -13,22 +13,6 @@ using System.Text.RegularExpressions;
 
 public partial class ViewAttachment : System.Web.UI.Page
 {
-    /// <summary>
-    /// The type of attachment link.
-    /// </summary>
-    private enum AttachmentLink
-    {
-        /// <summary>
-        /// Create a file name based on the attachment description.
-        /// </summary>
-        alDescription,
-        /// <summary>
-        /// Create a file name based on the attachment file name.
-        /// </summary>
-        alFileName
-    }
-
-
     private const string commonHtmlFmt = @"
 <html xmlns=""http://www.w3.org/1999/xhtml"">
 <head>
@@ -45,12 +29,6 @@ public partial class ViewAttachment : System.Web.UI.Page
 </body>
 </html>
 ";
-
-    /// <summary>
-    /// The default type of attachment file name to create when the user clicks the attachment hyperlink.
-    /// This value can be set here.
-    /// </summary>
-    private const AttachmentLink AttachmentLinkType = AttachmentLink.alDescription;
 
     /// <summary>
     /// Handles the Load event of the Page control.
@@ -71,11 +49,11 @@ public partial class ViewAttachment : System.Web.UI.Page
     /// <summary>
     /// Gets the type of the attachment.
     /// </summary>
-    /// <param name="DataType">Type of the data.</param>
+    /// <param name="dataType">Type of the data.</param>
     /// <returns></returns>
-    protected static string GetAttachmentType(string DataType)
+    protected static string GetAttachmentType(string dataType)
     {
-        switch (DataType)
+        switch (dataType)
         {
             case "R":
                 return "Attachment";
@@ -104,7 +82,7 @@ public partial class ViewAttachment : System.Web.UI.Page
         return Path.GetExtension(file);
     }
 
-    private bool IsRemote()
+    private static bool IsRemote()
     {
         var optionSvc = ApplicationContext.Current.Services.Get<Sage.SalesLogix.Services.ISystemOptionsService>(true);
         int dbType = optionSvc.DbType;
@@ -115,9 +93,9 @@ public partial class ViewAttachment : System.Web.UI.Page
     {
         if (IsRemote())
         {
-            string DataType = GetAttachmentType(Request.QueryString["DataType"]);
+            var dataType = GetAttachmentType(Request.QueryString["DataType"]);
             var fileId = Request.QueryString["fileId"];
-            if (DataType == "Library")
+            if (dataType == "Library")
             {
                 //set status
                 var libraryDoc = EntityFactory.GetById<ILibraryDocs>(fileId);
@@ -141,7 +119,7 @@ public partial class ViewAttachment : System.Web.UI.Page
                 WriteFileSyncRequested();
                 return;
             }
-            if (DataType == "Attachment")
+            if (dataType == "Attachment")
             {
                 var attachment = EntityFactory.GetById<IAttachment>(fileId);
                 if (attachment != null)
@@ -268,8 +246,8 @@ public partial class ViewAttachment : System.Web.UI.Page
             }
 
             string filePath = String.Empty;
-            string DataType = GetAttachmentType(Request.QueryString["DataType"]);
-            if (DataType.Equals("Library"))
+            string dataType = GetAttachmentType(Request.QueryString["DataType"]);
+            if (dataType.Equals("Library"))
             {
                 fileId = Request.QueryString["FileId"];
                 //can't use query string to get library directory as Whats New attachment/documents won't contain that property
@@ -294,7 +272,7 @@ public partial class ViewAttachment : System.Web.UI.Page
                 filePath = Sage.SalesLogix.Attachment.Rules.GetAttachmentPath();
             }
 
-            if (DataType.Equals("Template"))
+            if (dataType.Equals("Template"))
                 filePath += "Word Templates/";
 
             string tempPath = Sage.SalesLogix.Attachment.Rules.GetTempAttachmentPath();
@@ -354,7 +332,7 @@ public partial class ViewAttachment : System.Web.UI.Page
                                 bCanUseFullFileName = false;
                             }
 
-                            if (bCanUseFullFileName.Equals(false))
+                            if (!bCanUseFullFileName)
                             {
                                 int iExtLength = strExtPart.Length;
                                 int iCopyLength = 20 - iExtLength;
@@ -453,13 +431,9 @@ public partial class ViewAttachment : System.Web.UI.Page
     /// </returns>
     private bool IsMozilla()
     {
-        string strUpperUserAgent = Request.UserAgent;
-        if (!string.IsNullOrEmpty(strUpperUserAgent))
-        {
-            return ((strUpperUserAgent.Contains("MOZILLA")).Equals(true) &&
-                    (strUpperUserAgent.Contains("COMPATIBLE;")).Equals(false));
-        }
-        return false;
+        return !string.IsNullOrEmpty(Request.UserAgent) &&
+               Request.UserAgent.Contains("MOZILLA") &&
+               !Request.UserAgent.Contains("COMPATIBLE;");
     }
 
     /// <summary>

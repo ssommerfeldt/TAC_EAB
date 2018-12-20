@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="35d3f304-4718-4514-b0a6-2b520d98bca5" lastModifiedUtc="2017-09-06T12:29:12.003083Z" name="RemoveFromMarketo" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="5970e11e-d50e-4459-84c9-31229a92ccc1" lastModifiedUtc="2017-09-06T12:29:10.1974071Z" targetType="SalesLogix.Integration.Marketo.Rules.UserRules, SalesLogix.Integration.Marketo" targetMethod="RemoveFromMarketo" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -3,53 +3,43 @@
 <head>
   <meta charset="utf-8">
   <title>Jasmine Spec Runner</title>
-<% with (scripts) { %>
- <% jasmine.forEach(function(script) { %>
-   <script type="text/javascript" src="<%= script %>"></script>
- <% }); %>
- 
-  <% vendor.forEach(function(script) { %>
-   <script type="text/javascript" src="<%= script %>"></script>
- <% }); %>
- 
- <% helpers.forEach(function(script) { %>
-   <script type="text/javascript" src="<%= script %>"></script>
- <% }); %>
- 
- <% reporters.forEach(function(script) { %>
-   <script type="text/javascript" src="<%= script %>"></script>
- <% }); %>
-<% }; %>
+  <% with (scripts) { %>
+    <% [].concat(polyfills, jasmine, vendor, helpers).forEach(function(script){ %>
+    <script src="<%= script %>"></script>
+    <% }) %>
 
-  <!-- JSON -->
-  <script type="text/javascript" src="libraries/json2.js"></script>
-
-  <!-- ReUI -->
-  <script type="text/javascript">
-  reConfig = {
-      autoInit: false,
-      legacyMode: false,
-      showInitialPage: false,
-      updateBackButtonText: false
-  };
-  </script>
-  <script type="text/javascript" src="libraries/reui/reui.js"></script>
-
+  <% }; %>
   <!-- SData Client Library -->
   <script type="text/javascript" src="libraries/sdata/sdata-client-dependencies-debug.js"></script>
   <script type="text/javascript" src="libraries/sdata/sdata-client-debug.js"></script>
 
-  <!-- Moment.js -->
-  <script type="text/javascript" src="libraries/moment/min/moment.min.js"></script>
-
   <!-- Simplate -->
   <script type="text/javascript" src="libraries/Simplate.js"></script>
 
-  <!-- Overthrow -->
-  <script type="text/javascript" src="libraries/overthrow/overthrow.js"></script>
-
   <!-- canvas2image for when HTMLCanvasElement.prototype.toDataURL isn't available -->
   <script type="text/javascript" src="libraries/canvas2image.js"></script>
+
+  <!-- PouchDB -->
+  <script type="text/javascript" src="libraries/PouchDB/pouchdb-4.0.3.min.js"></script>
+
+  <!-- Deep Diff -->
+  <script type="text/javascript" src="libraries/deep-diff/deep-diff-0.2.0.min.js"></script>
+
+  <!-- Rx.js -->
+  <script src="libraries/rx/rx.all.js"></script>
+
+  <!-- Babel -->
+  <script type="text/javascript" src="libraries/babel/browser-polyfill.min.js"></script>
+
+  <!-- moment -->
+  <script type="text/javascript" src="libraries/moment/moment-with-locales.js"></script>
+
+  <!-- L20N.js -->
+  <script type="text/javascript" src="libraries/l20n/l20n.js"></script>
+
+  <!-- ICRM Common, depends on moment -->
+  <script type="text/javascript" src="libraries/icrm/common.bundle.js"></script>
+  <script type="text/javascript" src="libraries/icrm/customization.bundle.js"></script>
 
   <!-- Dojo -->
   <script type="text/javascript" src="libraries/dojo/dojo/dojo.js" data-dojo-config="parseOnLoad:false, async:true"></script>
@@ -59,14 +49,14 @@
         packages: [
             { name: 'dojo', location: 'libraries/dojo/dojo' },
             { name: 'dijit', location: 'libraries/dojo/dijit' },
-            { name: 'dojox', location: 'libraries/dojo/dojox' },
             { name: 'snap', location: 'libraries/snap', main: 'snap' },
-            { name: 'moment', location: 'libraries/moment', main: 'moment' },
-            { name: 'Sage/Platform/Mobile', location: 'src' },
+            { name: 'argos', location: '.grunt/grunt-contrib-jasmine/src-out' },// istanbul outputs the instrumented to this temp folder
             { name: 'tests', location: 'tests' }
         ],
-        paths: {
-            'Sage/Platform/Mobile': 'src'
+        map: {
+            '*': {
+                'Sage/Platform/Mobile': 'argos'
+            }
         }
   });
   </script>
@@ -74,40 +64,57 @@
   <link rel="stylesheet" type="text/css" href="<%= style %>">
   <% }); %>
 
+
+
 </head>
 <body>
   <script type="text/javascript">
-  <% with (scripts) { %>
-  require([
-  <% specs.forEach(function(spec) { %>
-    '<%= spec.replace("./tests", "tests").replace(".js", "") %>',
-  <% }); %>
-  ], function() {
-      var jasmineEnv = jasmine.getEnv();
-      jasmineEnv.updateInterval = 1000;
+  function buildContext() {
+        var filePaths = {
+          './localization/locales/argos': [
+            'strings.l20n',
+            'regional.l20n'
+          ]
+        };
+        var supportedLocales = [
+          'en'
+        ];
+        var ctx = L20n.getContext();
+        var defaultLocale = 'en';
+        var currentLocale = 'en';
 
-      var htmlReporter = new jasmine.HtmlReporter();
-
-      jasmineEnv.addReporter(htmlReporter);
-
-      jasmineEnv.specFilter = function(spec) {
-        return htmlReporter.specFilter(spec);
-      };
-
-      var currentWindowOnload = window.onload;
-
-      window.onload = function() {
-        if (currentWindowOnload) {
-          currentWindowOnload();
-        }
-        execJasmine();
-      };
-
-      function execJasmine() {
-        jasmineEnv.execute();
+        Object.keys(filePaths).forEach(function(path) {
+          var files = filePaths[path];
+          files.forEach(function(file) {
+            ctx.linkResource(function(locale) {
+              return [path, locale, file].join('/');
+            });
+          });
+        });
+        ctx.registerLocales(defaultLocale, supportedLocales);
+        ctx.requestLocales(currentLocale);
+        window.localeContext = ctx;
+        window.defaultLocaleContext = ctx;
+        return ctx;
       }
-  });
-  <% }; %>
+
+      <% with (scripts) { %>
+        var ctx = buildContext();
+        ctx.ready(function() {
+          require([
+          <% specs.forEach(function(spec) { %>
+            '<%= spec.replace("./tests", "tests").replace(".js", "") %>',
+          <% }); %>
+          ]);
+        });
+
+        require([
+          '<%= boot %>',
+          '<%= reporters[0] %>',
+          '<%= reporters[1] %>'
+        ]);
+
+      <% }; %>
   </script>
 </body>
 </html>

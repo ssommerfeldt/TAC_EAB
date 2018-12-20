@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/RecurringEditor", (
 { activityOccurrsText: 'This activity occurs...',
   onceText: 'Once',
   dailyText: 'Daily',

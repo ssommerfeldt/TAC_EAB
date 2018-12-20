@@ -117,31 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Yes" xml:space="preserve">
-    <value>Oui</value>
-  </data>
-  <data name="DefaultUnknownFileName" xml:space="preserve">
-    <value>Fichier inconnu</value>
-  </data>
-  <data name="OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>Non</value>
-  </data>
-  <data name="Error_RequestedFileNotFoundFmt" xml:space="preserve">
-    <value>Le fichier demandé : {0} est introuvable sur le serveur.</value>
-  </data>
-  <data name="RequestFileMsg" xml:space="preserve">
-    <value>Ce fichier n'a pas été téléchargé. Voulez-vous le télécharger lors de votre prochaine connexion ?</value>
-  </data>
   <data name="Error_FileInUse_lz" xml:space="preserve">
-    <value>Impossible d'ouvrir le fichier car il est actuellement utilisé.</value>
+    <value>Impossible d'ouvrir le fichier, car il est actuellement utilisé.</value>
   </data>
   <data name="Error_NoFileRequested_lz" xml:space="preserve">
     <value>Aucun fichier n'a été demandé.</value>
   </data>
+  <data name="Error_RequestedFileNotFoundFmt" xml:space="preserve">
+    <value>Le fichier demandé : {0} est introuvable sur le serveur.</value>
+  </data>
+  <data name="DefaultUnknownFileName" xml:space="preserve">
+    <value>Fichier inconnu</value>
+  </data>
   <data name="FileRequested" xml:space="preserve">
     <value>Le fichier a été demandé et sera disponible lors de votre prochaine connexion.</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RequestFileMsg" xml:space="preserve">
+    <value>Ce fichier n'a pas été téléchargé. Voulez-vous le télécharger la prochaine fois que vous vous connecterez ?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
   </data>
 </root>

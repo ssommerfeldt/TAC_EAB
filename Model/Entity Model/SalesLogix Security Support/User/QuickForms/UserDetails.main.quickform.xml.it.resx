@@ -117,124 +117,259 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtTemplateUsed.Caption" xml:space="preserve">
-    <value>Modello Usato:</value>
-  </data>
-  <data name="slxUserManager.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
-    <value>Titolo</value>
-  </data>
-  <data name="lbxUserType_item3.Text" xml:space="preserve">
-    <value>Solo Web</value>
-  </data>
-  <data name="2bdc68c4-023e-438c-abf2-a4494281f68a.DialogTitleOverride" xml:space="preserve">
-    <value>Cambia password</value>
-  </data>
-  <data name="lbxUserType_item8.Text" xml:space="preserve">
-    <value>Amministratore</value>
-  </data>
-  <data name="pklDivision.Caption" xml:space="preserve">
-    <value>Divisione:</value>
+  <data name="UserName.Caption" xml:space="preserve">
+    <value>Nome utente</value>
   </data>
   <data name="btnChangePassword.Caption" xml:space="preserve">
-    <value>   Cambia Password  </value>
-  </data>
-  <data name="slxUserManager.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Nome Utente</value>
-  </data>
-  <data name="btnDelete.ToolTip" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="lbxUserType_item1.Text" xml:space="preserve">
-    <value>Remoto</value>
+    <value> Cambia password </value>
   </data>
   <data name="chkLoginActive.Caption" xml:space="preserve">
-    <value>Connessione Abilitata:</value>
+    <value>Accesso abilitato:</value>
   </data>
-  <data name="slxUserManager.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="btnSave.Caption" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="pnName.Caption" xml:space="preserve">
-    <value>Nome:</value>
-  </data>
-  <data name="slxDepartment.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="lbxUserType_item6.Text" xml:space="preserve">
-    <value>Modello</value>
-  </data>
-  <data name="slxUserManager.LookupProperties.IsManager.PropertyHeader" xml:space="preserve">
-    <value>Manager</value>
-  </data>
-  <data name="slxUserManager.Caption" xml:space="preserve">
-    <value>Responsabile:</value>
-  </data>
-  <data name="btnDelete.Caption" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="pklUserTitle.Caption" xml:space="preserve">
-    <value>Titolo:</value>
-  </data>
-  <data name="dtpPasswordDate.Caption" xml:space="preserve">
-    <value>Password aggiornata:</value>
-  </data>
-  <data name="pklREegion.Caption" xml:space="preserve">
-    <value>Regione:</value>
-  </data>
-  <data name="QFSLXEmail.ButtonToolTip" xml:space="preserve">
-    <value>E-Mail</value>
-  </data>
-  <data name="lbxUserType_item4.Text" xml:space="preserve">
-    <value>Concorrente</value>
-  </data>
-  <data name="QFSLXEmail.Caption" xml:space="preserve">
-    <value>E-mail:</value>
-  </data>
-  <data name="lbxUserType.Caption" xml:space="preserve">
-    <value>Tipo Utente:</value>
-  </data>
-  <data name="btnCopy.Caption" xml:space="preserve">
-    <value>Copia</value>
-  </data>
-  <data name="c7526bb8-5d51-43b9-8efb-7a1b53d219c0.Message" xml:space="preserve">
-    <value>Non è possibile convertire un utente in un Modello</value>
-  </data>
-  <data name="lbxUserType_item2.Text" xml:space="preserve">
-    <value>Web Viewer</value>
-  </data>
-  <data name="c7526bb8-5d51-43b9-8efb-7a1b53d219c0.Title" xml:space="preserve">
-    <value>Tipo Utente Non valido</value>
-  </data>
-  <data name="lbxUserType_item7.Text" xml:space="preserve">
-    <value>Add On</value>
-  </data>
-  <data name="slxUserManager.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="UserName.Caption" xml:space="preserve">
-    <value>Nome utente:</value>
-  </data>
-  <data name="btnAdd.Caption" xml:space="preserve">
-    <value>Aggiungi</value>
-  </data>
-  <data name="cbxIsUserManager.Caption" xml:space="preserve">
-    <value>L'Utente è un Manager</value>
-  </data>
-  <data name="lbxUserType_item0.Text" xml:space="preserve">
-    <value>Rete</value>
-  </data>
-  <data name="btnCopy.ToolTip" xml:space="preserve">
-    <value>Copia</value>
+  <data name="txtTemplateUsed.Caption" xml:space="preserve">
+    <value>Modello utilizzato</value>
   </data>
   <data name="pnName.ButtonToolTip" xml:space="preserve">
     <value>Nome</value>
   </data>
+  <data name="pnName.Caption" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="pklUserTitle.Caption" xml:space="preserve">
+    <value>Titolo</value>
+  </data>
+  <data name="QFSLXEmail.Caption" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="lbxUserType.Caption" xml:space="preserve">
+    <value>Tipo di utente</value>
+  </data>
+  <data name="pklDivision.Caption" xml:space="preserve">
+    <value>Divisione</value>
+  </data>
+  <data name="pklREegion.Caption" xml:space="preserve">
+    <value>Regione</value>
+  </data>
+  <data name="slxUserManager.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="slxUserManager.Caption" xml:space="preserve">
+    <value>Responsabile</value>
+  </data>
+  <data name="cbxIsUserManager.Caption" xml:space="preserve">
+    <value>L’utente è un responsabile</value>
+  </data>
+  <data name="btnAdd.Caption" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="2bdc68c4-023e-438c-abf2-a4494281f68a.DialogTitleOverride" xml:space="preserve">
+    <value>Cambia password</value>
+  </data>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="btnDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnDelete.ToolTip" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnCopy.Caption" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="btnCopy.ToolTip" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="lbxUserType_item8.Text" xml:space="preserve">
+    <value>Amministratore</value>
+  </data>
+  <data name="lbxUserType_item7.Text" xml:space="preserve">
+    <value>Con accesso a comp. aggiuntivi</value>
+  </data>
+  <data name="lbxUserType_item6.Text" xml:space="preserve">
+    <value>Modello</value>
+  </data>
   <data name="lbxUserType_item5.Text" xml:space="preserve">
-    <value>Ritirato</value>
+    <value>Disattivato</value>
+  </data>
+  <data name="lbxUserType_item4.Text" xml:space="preserve">
+    <value>Simultaneo</value>
+  </data>
+  <data name="lbxUserType_item3.Text" xml:space="preserve">
+    <value>Solo Web</value>
+  </data>
+  <data name="lbxUserType_item2.Text" xml:space="preserve">
+    <value>Visualizzatore Web</value>
+  </data>
+  <data name="lbxUserType_item1.Text" xml:space="preserve">
+    <value>Remoto</value>
+  </data>
+  <data name="lbxUserType_item0.Text" xml:space="preserve">
+    <value>Di rete</value>
+  </data>
+  <data name="slxDepartment.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="slxDepartment.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpPasswordDate.Caption" xml:space="preserve">
+    <value>Password aggiornata</value>
+  </data>
+  <data name="QFSLXEmail.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxUserManager.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Nome utente</value>
+  </data>
+  <data name="slxUserManager.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
+    <value>Titolo</value>
+  </data>
+  <data name="slxUserManager.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxUserManager.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="c7526bb8-5d51-43b9-8efb-7a1b53d219c0.Message" xml:space="preserve">
+    <value>Non è possibile convertire l'utente in un modello</value>
+  </data>
+  <data name="c7526bb8-5d51-43b9-8efb-7a1b53d219c0.Title" xml:space="preserve">
+    <value>Tipo utente non valido</value>
+  </data>
+  <data name="slxUserManager.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="slxUserManager.LookupProperties.IsManager.PropertyHeader" xml:space="preserve">
+    <value>Responsabile</value>
+  </data>
+  <data name="QFSLXEmail.ButtonToolTip" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="txtFedIdentity.Caption" xml:space="preserve">
+    <value>Identità federata</value>
+  </data>
+  <data name="chkLoginActive.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkLoginActive.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserName.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserName.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pnName.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pnName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklUserTitle.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklUserTitle.ButtonToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklUserTitle.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="QFSLXEmail.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lbxUserType.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lbxUserType.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtFedIdentity.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtFedIdentity.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtFedIdentity.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblLicenseCount.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblLicenseCount.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnChangePassword.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnChangePassword.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpPasswordDate.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpPasswordDate.ButtonToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpPasswordDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTemplateUsed.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTemplateUsed.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTemplateUsed.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklREegion.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklREegion.ButtonToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklREegion.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklDivision.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklDivision.ButtonToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklDivision.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxUserManager.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxUserManager.LookupDialogTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxUserManager.DialogButtonText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbxIsUserManager.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbxIsUserManager.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name=".ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name=".Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnSave.ActionConfirmationMessage" xml:space="preserve">
+    <value />
   </data>
 </root>

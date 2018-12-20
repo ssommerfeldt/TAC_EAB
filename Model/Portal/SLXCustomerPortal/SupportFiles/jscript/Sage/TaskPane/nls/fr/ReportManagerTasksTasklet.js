@@ -1,11 +1,10 @@
-define((
-{ taskRunReport_Caption: 'Exécuter le rapport',
-  taskScheduleReport_Caption: 'Planifier le rapport',
-  taskDeleteReport_Caption: 'Supprimer le rapport',
-  taskDeleteSchedule_Caption: 'Supprimer le planning',
-  taskEditSchedule_Caption: 'Edit Schedule',
-  taskDeleteHistory_Caption: 'Supprimer historique',
-  txtRecordsSelected: 'record(s) selected',
-  txtClear: 'Clear'
-}
-));
+define("Sage/TaskPane/nls/fr/ReportManagerTasksTasklet", {
+    "taskRunReport_Caption": "Exécuter le rapport",
+    "taskScheduleReport_Caption": "Planifier le rapport",
+    "taskDeleteReport_Caption": "Supprimer le rapport",
+    "taskDeleteSchedule_Caption": "Supprimer la planification",
+    "taskEditSchedule_Caption": "Modifier la planification",
+    "taskDeleteHistory_Caption": "Supprimer l'historique",
+    "txtRecordsSelected": "enregistrement(s) sélectionné(s)",
+    "txtClear": "Effacer"
+});

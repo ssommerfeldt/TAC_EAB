@@ -117,11 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressGrid_Country.HeaderText" xml:space="preserve">
-    <value>Страна</value>
+  <data name="AddressGrid_State.HeaderText" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="AddressGrid_PostalCode.HeaderText" xml:space="preserve">
+    <value>Почтовый индекс</value>
+  </data>
+  <data name="AddressGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <data name="AddressGrid_Primary.HeaderText" xml:space="preserve">
+    <value>Основной адрес для счета</value>
+  </data>
+  <data name="AddressGrid_Shipping.HeaderText" xml:space="preserve">
+    <value>Основной адрес доставки</value>
+  </data>
+  <data name="AddressGrid_Description.HeaderText" xml:space="preserve">
+    <value>Описание</value>
   </data>
   <data name="AddressGrid_Address1.HeaderText" xml:space="preserve">
     <value>Улица</value>
+  </data>
+  <data name="AddressGrid_City.HeaderText" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="AddressGrid_Edit.Text" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="AddressGrid_Attention.HeaderText" xml:space="preserve">
+    <value>Адресат</value>
+  </data>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Добавить адрес</value>
+  </data>
+  <data name="AddressGrid_Country.HeaderText" xml:space="preserve">
+    <value>Страна</value>
   </data>
   <data name="DeleteAddressMessage" xml:space="preserve">
     <value>Выбранный адрес не может быть удален, так как отмечен в качестве основного и ли адреса доставки. Чтобы удалить адрес нужно отметить другой адрес как основной или доставки. Если нет доступных адресов, нужно создать другой адрес</value>
@@ -129,46 +159,16 @@
   <data name="AddressGrid_Delete.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="SaveChanges" xml:space="preserve">
-    <value>Вы должны сохранить отложенные изменения перед изменением адреса.</value>
-  </data>
-  <data name="AddressGrid_PostalCode.HeaderText" xml:space="preserve">
-    <value>Индекс</value>
-  </data>
-  <data name="btnAdd.ToolTip" xml:space="preserve">
-    <value>Добавить адрес</value>
-  </data>
-  <data name="AddressGrid_PrimaryAddress.HeaderText" xml:space="preserve">
-    <value>Основной</value>
-  </data>
-  <data name="AddressGrid_Attention.HeaderText" xml:space="preserve">
-    <value>Адресат(ы)</value>
-  </data>
-  <data name="AddressGrid_Description.HeaderText" xml:space="preserve">
-    <value>Описание</value>
-  </data>
   <data name="ConfirmMessage" xml:space="preserve">
-    <value>Вы действительно хотите удалить?</value>
+    <value>Действительно удалить?</value>
   </data>
-  <data name="AddressGrid_Primary.HeaderText" xml:space="preserve">
-    <value>Основной расчетный адрес</value>
-  </data>
-  <data name="AddressGrid_Edit.Text" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="AddressGrid_City.HeaderText" xml:space="preserve">
-    <value>Город</value>
-  </data>
-  <data name="AddressGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="AddressGrid_State.HeaderText" xml:space="preserve">
-    <value>Область</value>
-  </data>
-  <data name="AddressGrid_Shipping.HeaderText" xml:space="preserve">
-    <value>Основной адрес доставки</value>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Необходимо сохранить отложенные изменения перед изменением адреса.</value>
   </data>
   <data name="AddressGrid_AddressType_HeaderText" xml:space="preserve">
     <value>Тип адреса</value>
+  </data>
+  <data name="AddressGrid_PrimaryAddress.HeaderText" xml:space="preserve">
+    <value>Основной</value>
   </data>
 </root>

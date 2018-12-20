@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0769e335-438d-4973-bdd0-24de707f579b" lastModifiedUtc="2017-05-26T16:23:51.1382605Z" name="GetMarketoEmailActivity" returnType="object" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="4ade0631-8f2f-45a3-bc7b-3a6bb492df00" lastModifiedUtc="2017-06-22T14:40:12.6234774Z" targetType="SalesLogix.Integration.Marketo.Rules.ContactRules, SalesLogix.Integration.Marketo" targetMethod="GetContactEmails" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

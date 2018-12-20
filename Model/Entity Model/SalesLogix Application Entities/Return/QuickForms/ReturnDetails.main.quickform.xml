@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="54088513-ec81-41f4-b888-80a163a857c5" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="54088513-ec81-41f4-b888-80a163a857c5" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-01-05T13:25:27.9670676Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
@@ -53,7 +53,6 @@
       <QFSLXLookup>
         <Column>0</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>luTicketId</ControlId>
@@ -102,6 +101,7 @@
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Ticket</LookupEntityName>
         <LookupEntityTypeName>Sage.Entity.Interfaces.ITicket, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -235,6 +235,7 @@
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Account</LookupEntityName>
         <LookupEntityTypeName>Sage.Entity.Interfaces.IAccount, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -349,7 +350,6 @@
       <QFSLXLookup>
         <Column>0</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>luContact</ControlId>
@@ -397,6 +397,7 @@
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Contact</LookupEntityName>
         <LookupEntityTypeName>Sage.Entity.Interfaces.IContact, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -478,7 +479,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>4</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtReason</ControlId>
@@ -516,7 +516,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>5</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtPO</ControlId>
@@ -554,7 +553,6 @@
       <QFSLXPickList>
         <Column>1</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>pklStatus</ControlId>
@@ -603,6 +601,7 @@
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -610,7 +609,6 @@
       <QFSLXPickList>
         <Column>1</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>pklType</ControlId>
@@ -651,6 +649,7 @@
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -658,7 +657,6 @@
       <QFSLXPickList>
         <Column>1</Column>
         <Row>2</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>pklPriority</ControlId>
@@ -699,6 +697,7 @@
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -706,7 +705,6 @@
       <QFDateTimePicker>
         <Column>1</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dtpExpectedBy</ControlId>
@@ -751,7 +749,6 @@
       <QFSLXOwner>
         <Column>1</Column>
         <Row>4</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>ownAssignedTo</ControlId>
@@ -841,7 +838,6 @@
       <QFSLXOwner>
         <Column>1</Column>
         <Row>6</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>ownerClosedBy</ControlId>
@@ -881,7 +877,6 @@
       <QFDateTimePicker>
         <Column>2</Column>
         <Row>4</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dtpAssignedTo</ControlId>
@@ -971,7 +966,6 @@
       <QFDateTimePicker>
         <Column>2</Column>
         <Row>6</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dtpCloseDate</ControlId>
@@ -1018,7 +1012,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -1033,7 +1026,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -1048,7 +1040,6 @@
       <QFSLXGroupNavigator>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>48</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>QFSLXGroupNavigator</ControlId>
@@ -1063,7 +1054,6 @@
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>btnSave</ControlId>
@@ -1103,7 +1093,6 @@
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>btnDelete</ControlId>

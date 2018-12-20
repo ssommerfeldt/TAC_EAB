@@ -1,8 +1,8 @@
-define((
-{ errFulFillmentCancelled: "E' stata cancellata l'evasione della richiesta di materiale informativo per l'Id {0}.",
-  errFulFillmentFailed: 'La richiesta di materiale informativo non può essere evasa per l\'id {0}.',
-  errMailMergeService: 'La richiesta di materiale informativo non può essere evasa perchè non è possibile caricare il servizio di stampa unione. Questo può accadere se non è stata installata l\'Integrazione Desktop Saleslogix o non è stata installata correttamente.',
-  errFulFillmentRequest: 'La richiesta di materiale informativo non può essere evasa.',
-  errFulFillmentRequestEx: 'Non è possibile evadere la seguente richiesta(e) di materiale informativo:',
-  fulFillmentSuccess: 'L\'evasione della richiesta di materiale informativo è avvenuta con successo.' }
-));
+define("Sage/TaskPane/nls/it/LiteratureManagementTasks", {
+    "errFulFillmentCancelled": "Evasione della richiesta di documentazione annullata per LitReqId {0}.",
+    "errFulFillmentFailed": "La richiesta di documentazione non può essere evasa per LitReqId {0}.",
+    "errMailMergeService": "Impossibile evadere le richieste di documentazione perché il servizio di stampa unione non è stato caricato. Questo può accadere se CRM Office Integration non è installato o non è installato correttamente.",
+    "errFulFillmentRequest": "Impossibile evadere le richieste di documentazione.",
+    "errFulFillmentRequestEx": "Non è possibile evadere le seguenti richieste di documentazione:",
+    "fulFillmentSuccess": "L'evasione della richiesta di documentazione è stata eseguita con successo."
+});

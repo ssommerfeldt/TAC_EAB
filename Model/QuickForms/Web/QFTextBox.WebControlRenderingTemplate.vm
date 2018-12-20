@@ -1,14 +1,12 @@
+#set ($controlClass = "")
+#if($IsPrintView)#set ($controlClass = "lbl") #end
 #if(${qfcontrol.Caption} != "")
-#if($qfcontrol.ControlLabelPlacement == "left")
- <div class="#if(${qfcontrol.ColumnSpan} == 2)twocollbl#else lbl#end#if(${qfcontrol.ColumnSpan} > 2) colspan3#end#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end" #if($IsPrintView)style="margin-top:.5em;"#end>
-   <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
- </div>
-#elseif($qfcontrol.ControlLabelPlacement == "top")
- <div class="lbltop#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
-   <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
- </div>
-#end #end
- <div #if(${qfcontrol.ColumnSpan} == 2 || ${qfcontrol.ControlLabelPlacement} == "top") class="twocoltextcontrol" #elseif(${qfcontrol.ColumnSpan} > 2) class="threecoltextcontrol" #else class="textcontrol" #end #if($IsPrintView)style="margin-top:.5em;"#end >
+<div class="#if(${qfcontrol.ColumnSpan} == 2)twocollbl#else lbl#end#if(${qfcontrol.ColumnSpan} > 2) colspan3#end alignright" runat="server">
+<asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
+</div>
+#end
+#if(${qfcontrol.ColumnSpan} == 2) #set ($controlClass = "${controlClass} twocoltextcontrol") #elseif(${qfcontrol.ColumnSpan} > 2) #set ($controlClass = "${controlClass} threecoltextcontrol") #else #set ($controlClass = "${controlClass} textcontrol") #end
+<div class="$controlClass" runat="server">
 #if($IsPrintView)<asp:Label runat="server" ID="$qfcontrol.ControlId" style="white-space:normal" #if($qfcontrol.Text != "")Text="<%$ resources: ${qfcontrol.ControlId}.Text %>" #end />
 #else
 <asp:TextBox runat="server" ID="$qfcontrol.ControlId" #if(!$qfcontrol.Enabled)Enabled="false" #end
@@ -16,6 +14,7 @@
 #if($qfcontrol.IsReadOnly)ReadOnly="true" #end
 #if($qfcontrol.Text != "")Text="<%$ resources: ${qfcontrol.ControlId}.Text %>" #end
 #if($qfcontrol.ToolTip != "")ToolTip="<%$ resources: ${qfcontrol.ControlId}.ToolTip %>" #end
+#if($qfcontrol.UserDateStamp)UserDateStamp="true" #end
 #if($qfcontrol.Lines > 1) Rows="${qfcontrol.GetLines()}" TextMode="MultiLine" Columns="40" dojoType="Sage.UI.Controls.SimpleTextarea" #if($qfcontrol.MaxLength > 0)MultiLineMaxLength="$qfcontrol.MaxLength" #end
 #elseif($qfcontrol.Lines <= 1) dojoType="Sage.UI.Controls.TextBox" #if($qfcontrol.MaxLength > 0)MaxLength="$qfcontrol.MaxLength" #end
 #end
@@ -27,9 +26,4 @@
 #if($qfcontrol.TextMode == "Password")TextMode="$qfcontrol.TextMode" #end
 #if($qfcontrol.HasActionCode)AutoPostBack="true" #end />
 #end
-  </div>
-#if((${qfcontrol.Caption} != "") && ($qfcontrol.ControlLabelPlacement == "right"))
- <div class="lblright#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
-   <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!${qfcontrol.Visible})Visible="false" #end></asp:Label>
- </div>
-#end
+</div>

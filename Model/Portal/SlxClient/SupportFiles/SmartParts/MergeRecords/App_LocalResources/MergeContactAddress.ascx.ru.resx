@@ -117,82 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Grid_State_Column" xml:space="preserve">
-    <value>Область</value>
-  </data>
   <data name="btnBack.Caption" xml:space="preserve">
     <value>&lt; Назад</value>
-  </data>
-  <data name="Grid_Primary_Column" xml:space="preserve">
-    <value>Основной</value>
-  </data>
-  <data name="UnlinkedRecords.Caption" xml:space="preserve">
-    <value>Отвязать {0} от {1}</value>
-  </data>
-  <data name="LinkContacts.Caption" xml:space="preserve">
-    <value>Связать контакты</value>
-  </data>
-  <data name="btnNext_Merge.Caption" xml:space="preserve">
-    <value>Слияние</value>
-  </data>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="Grid_Address2_Column" xml:space="preserve">
-    <value>Адрес2</value>
-  </data>
-  <data name="lblLinkedContacts.Caption" xml:space="preserve">
-    <value>Связанные контакты</value>
-  </data>
-  <data name="lblSourceAddress.Caption" xml:space="preserve">
-    <value>Исходные адреса</value>
-  </data>
-  <data name="LinkedAddresses.Caption" xml:space="preserve">
-    <value>Связанные адреса контактов (следующие записи будут объединены)</value>
-  </data>
-  <data name="lblTargetAddress.Caption" xml:space="preserve">
-    <value>Целевые адреса</value>
-  </data>
-  <data name="NoContactSelected.Caption" xml:space="preserve">
-    <value>Выберите связанный контакт выше, чтобы просмотреть связанные адреса.</value>
-  </data>
-  <data name="btnNext.Caption" xml:space="preserve">
-    <value>Следующий&gt;</value>
-  </data>
-  <data name="Error_SourceTargetNotSelected" xml:space="preserve">
-    <value>Выберите и цель и источник перед продолжением.</value>
-  </data>
-  <data name="Grid_Email_Column" xml:space="preserve">
-    <value>Эл. почта</value>
-  </data>
-  <data name="Grid.Select.Text" xml:space="preserve">
-    <value>Выбрать</value>
-  </data>
-  <data name="Grid_TargetContactName_Column" xml:space="preserve">
-    <value>Целевой контакт</value>
-  </data>
-  <data name="Grid_City_Column" xml:space="preserve">
-    <value>Город</value>
-  </data>
-  <data name="Grid_SourceContactName_Column" xml:space="preserve">
-    <value>Исходный контакт</value>
-  </data>
-  <data name="lblDescription.Caption" xml:space="preserve">
-    <value>Выберите связанный контакт, а затем выберите адрес, который нужно связать с этим связанным контактом.</value>
   </data>
   <data name="btnLink.Caption" xml:space="preserve">
     <value>Ссылка</value>
   </data>
+  <data name="btnNext.Caption" xml:space="preserve">
+    <value>Дальше &gt;</value>
+  </data>
   <data name="EmptyTableRowText" xml:space="preserve">
-    <value>Нет записей совпадающих с выбранным критерием фильтра.</value>
+    <value>Нет записей, совпадающих с выбранными критериями фильтра.</value>
+  </data>
+  <data name="Error_SourceTargetNotSelected" xml:space="preserve">
+    <value>Выберите и цель и источник перед продолжением.</value>
+  </data>
+  <data name="Grid.Select.Text" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="Grid_Address1_Column" xml:space="preserve">
+    <value>Адрес 1</value>
+  </data>
+  <data name="Grid_Address2_Column" xml:space="preserve">
+    <value>Адрес 2</value>
+  </data>
+  <data name="Grid_City_Column" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="Grid_Primary_Column" xml:space="preserve">
+    <value>Основной</value>
+  </data>
+  <data name="Grid_State_Column" xml:space="preserve">
+    <value>Регион</value>
   </data>
   <data name="Grid_Unlink.Column" xml:space="preserve">
     <value>Разъединить</value>
   </data>
-  <data name="Grid_Address1_Column" xml:space="preserve">
-    <value>Адрес1</value>
+  <data name="lblDescription.Caption" xml:space="preserve">
+    <value>Выберите связанный контакт, а затем выберите адрес, который нужно связать с этим связанным контактом.</value>
+  </data>
+  <data name="Grid_Email_Column" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="Grid_SourceContactName_Column" xml:space="preserve">
+    <value>Исходный контакт</value>
+  </data>
+  <data name="Grid_TargetContactName_Column" xml:space="preserve">
+    <value>Целевой контакт</value>
   </data>
   <data name="Grid_WorkPhone_Column" xml:space="preserve">
-    <value>Раб. телефон</value>
+    <value>Рабочий телефон</value>
+  </data>
+  <data name="lblSourceAddress.Caption" xml:space="preserve">
+    <value>Адреса источника</value>
+  </data>
+  <data name="lblTargetAddress.Caption" xml:space="preserve">
+    <value>Адреса цели</value>
+  </data>
+  <data name="UnlinkedRecords.Caption" xml:space="preserve">
+    <value>"{0}" разъединено от "{1}"</value>
+  </data>
+  <data name="LinkContacts.Caption" xml:space="preserve">
+    <value>Связать контакты</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="LinkedAddresses.Caption" xml:space="preserve">
+    <value>Связанные адреса контактов (следующие записи будут объединены)</value>
+  </data>
+  <data name="NoContactSelected.Caption" xml:space="preserve">
+    <value>Выберите связанный контакт выше, чтобы просмотреть связанные адреса.</value>
+  </data>
+  <data name="btnNext_Merge.Caption" xml:space="preserve">
+    <value>Объединение</value>
+  </data>
+  <data name="lblLinkedContacts.Caption" xml:space="preserve">
+    <value>Связанные контакты</value>
   </data>
 </root>

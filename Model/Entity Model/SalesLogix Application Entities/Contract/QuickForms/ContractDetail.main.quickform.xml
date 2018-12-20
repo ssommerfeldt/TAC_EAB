@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c62dedf5-5041-4a9a-bfd6-10c37a479a1f" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c62dedf5-5041-4a9a-bfd6-10c37a479a1f" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2015-11-24T16:45:06.3152147Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -15,25 +15,34 @@ Sage.SalesLogix.PickLists.PickList picklist =
 if (picklist != null)
 {
     string value = picklist.Text.ToUpper();
-    if (value == GetLocalResourceObject("ContractType_Dollars").ToString().ToUpper())
+	numQuantity.Visible = false;
+	numQuantityWithDecimal.Visible = false;
+    curQuantity.Visible = false;
+    numRemaining.Visible = false;
+	numRemainingWithDecimal.Visible = false;
+    curRemaining.Visible = false;
+    if (String.Equals(value, GetLocalResourceObject("ContractType_Dollars").ToString(), StringComparison.OrdinalIgnoreCase))
     {
-        numQuantity.Visible = false;
         curQuantity.Visible = true;
-        numRemaining.Visible = false;
         curRemaining.Visible = true;
     }
+	else if(String.Equals(value, GetLocalResourceObject("ContractType_Days").ToString(), StringComparison.OrdinalIgnoreCase) || String.Equals(value, GetLocalResourceObject("ContractType_Hours").ToString(), StringComparison.OrdinalIgnoreCase))
+	{
+		numQuantityWithDecimal.Visible = true;
+		numRemainingWithDecimal.Visible = true;
+	}
     else
     {
-        curQuantity.Visible = false;
         numQuantity.Visible = true;
-        curRemaining.Visible = false;
         numRemaining.Visible = true;
     }
 }
 curQuantity_lbl.Visible = curQuantity.Visible;
 numQuantity_lbl.Visible = numQuantity.Visible;
+numQuantityWithDecimal_lbl.Visible = numQuantityWithDecimal.Visible;
 curRemaining_lbl.Visible = curRemaining.Visible;
-numRemaining_lbl.Visible = numRemaining.Visible;</CSharpCodeSnippet>
+numRemaining_lbl.Visible = numRemaining.Visible;
+numRemainingWithDecimal_lbl.Visible = numRemainingWithDecimal.Visible;</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -179,6 +188,7 @@ numRemaining_lbl.Visible = numRemaining.Visible;</CSharpCodeSnippet>
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Account</LookupEntityName>
         <LookupEntityTypeName>Sage.Entity.Interfaces.IAccount, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -341,6 +351,7 @@ numRemaining_lbl.Visible = numRemaining.Visible;</CSharpCodeSnippet>
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Contact</LookupEntityName>
         <LookupEntityTypeName>Sage.Entity.Interfaces.IContact, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -560,6 +571,7 @@ numRemaining_lbl.Visible = numRemaining.Visible;</CSharpCodeSnippet>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
         <ValueStoredAsText>false</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -617,6 +629,7 @@ numRemaining_lbl.Visible = numRemaining.Visible;</CSharpCodeSnippet>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
         <ValueStoredAsText>false</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -921,6 +934,57 @@ numRemaining_lbl.Visible = numRemaining.Visible;</CSharpCodeSnippet>
                 <FormatType>Number</FormatType>
               </QFSLXNumeric>
             </Control>
+            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXNumeric, Sage.SalesLogix.QuickForms.QFControls">
+              <QFSLXNumeric>
+                <Column>0</Column>
+                <Row>0</Row>
+                <Visible>false</Visible>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>numQuantityWithDecimal</ControlId>
+                <DataBindings>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>Period</DataItemName>
+                    <ControlItemName>Text</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                </DataBindings>
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <OnChangeAction>
+                  <ResourceKey>numQuantityWithDecimal</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
+                    <BusinessRuleActionItem>
+                      <BusinessRule>OnQuantityChanged</BusinessRule>
+                      <Object>Contract</Object>
+                      <Parameters />
+                      <PassResultsToNextAction>False</PassResultsToNextAction>
+                      <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                        <NoActionActionItem>
+                          <MethodName />
+                        </NoActionActionItem>
+                      </OnComplete>
+                    </BusinessRuleActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnChangeAction>
+                <Required>false</Required>
+                <DecimalDigits>
+                  <DecimalDigits>1</DecimalDigits>
+                  <Strict>false</Strict>
+                </DecimalDigits>
+                <FormatType>Number</FormatType>
+              </QFSLXNumeric>
+            </Control>
           </ControlsCollection>
         </Controls>
       </QFControlsList>
@@ -1020,6 +1084,50 @@ numRemaining_lbl.Visible = numRemaining.Visible;</CSharpCodeSnippet>
                 </OnChangeAction>
                 <Required>false</Required>
                 <DecimalDigits>
+                  <Strict>false</Strict>
+                </DecimalDigits>
+                <FormatType>Number</FormatType>
+              </QFSLXNumeric>
+            </Control>
+            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXNumeric, Sage.SalesLogix.QuickForms.QFControls">
+              <QFSLXNumeric>
+                <Column>0</Column>
+                <Row>0</Row>
+                <IsReadOnly>true</IsReadOnly>
+                <Visible>false</Visible>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>numRemainingWithDecimal</ControlId>
+                <DataBindings>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>Remaining</DataItemName>
+                    <ControlItemName>Text</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                </DataBindings>
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <OnChangeAction>
+                  <ResourceKey>numRemainingWithDecimal</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                    <NoActionActionItem>
+                      <MethodName />
+                    </NoActionActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnChangeAction>
+                <Required>false</Required>
+                <DecimalDigits>
+                  <DecimalDigits>1</DecimalDigits>
                   <Strict>false</Strict>
                 </DecimalDigits>
                 <FormatType>Number</FormatType>

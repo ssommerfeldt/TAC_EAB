@@ -46,6 +46,26 @@
     </tr>
     <tr>
         <td>
+            <div class="lbl alignleft">
+                <asp:Label ID="txtFilter_lbl" AssociatedControlID="txtFilter" runat="server" Text="<%$ resources: txtFilter.Caption %>" ></asp:Label>
+            </div>
+            <div class="textcontrol">
+                <asp:TextBox runat="server" ID="txtFilter" Rows="1" dojoType="Sage.UI.Controls.TextBox"></asp:TextBox>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="lbl alignleft">
+                <asp:Label ID="lblLanguage" AssociatedControlID="cboLanguage" runat="server" Text="<%$ resources: cboLanguage.Caption %>" ></asp:Label>
+            </div>
+            <div class="textcontrol picklist">
+                <asp:ListBox  runat="server" ID="cboLanguage" SelectionMode="Single" Rows="1" AutoPostBack="false" class="dijitselect dropdown"/>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
             <div class="slxlabel alignleft checkbox">
                 <SalesLogix:SLXCheckBox runat="server" ID="chkIsDefaultItem" CssClass="" Text="<%$ resources: chkIsDefaultItem.Caption %>" TextAlign="right" />
             </div>
@@ -55,8 +75,7 @@
         <td>
             <asp:Panel runat="server" ID="QFControlsList" CssClass="controlslist qfActionContainer">
                 <asp:Button ID="btnSaveNew" Text="<%$ resources: btnSaveNew.Caption %>" runat="server" CssClass="slxbutton" />
-                <asp:Button ID="btnOK" Text="<%$ resources: btnOK.Caption %>" runat="server" CssClass="slxbutton"
-                    OnClientClick="var x = new Sage.UI.Controls.PickList({});x.clear(x._storageNameSpace);" />
+                <asp:Button ID="btnOK" Text="<%$ resources: btnOK.Caption %>" runat="server" CssClass="slxbutton" OnClientClick="(removePickListCache())()" />
                 <asp:Button ID="btnCancel" Text="<%$ resources: btnCancel.Caption %>" runat="server" CssClass="slxbutton" />
             </asp:Panel>
         </td>

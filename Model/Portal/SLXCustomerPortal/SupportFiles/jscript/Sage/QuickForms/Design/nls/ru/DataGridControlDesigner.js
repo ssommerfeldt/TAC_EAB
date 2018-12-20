@@ -1,4 +1,4 @@
-define((
-{ displayNameText: 'Грид данных',
-  emptyTableRowStringText: 'Нет соответствующих записей.' }
-));
+define("Sage/QuickForms/Design/nls/ru/DataGridControlDesigner", {
+    "displayNameText": "Сетка данных",
+    "emptyTableRowStringText": "Нет записей, соответствующих критериям выбора."
+});

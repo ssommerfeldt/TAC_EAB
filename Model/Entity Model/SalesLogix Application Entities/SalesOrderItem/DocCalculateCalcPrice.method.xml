@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="4442f98f-51bb-4783-a755-80d362a421b2" lastModifiedUtc="2015-12-31T17:26:10.5968072Z" name="DocCalculateCalcPrice" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="bbe8ee2e-1713-4377-98b2-0c6af793b3e6" lastModifiedUtc="2015-12-31T17:26:08.7256201Z" targetType="Sage.SalesLogix.SalesOrder.SalesOrderItem, Sage.SalesLogix.BusinessRules" targetMethod="DocCalculateCalcPrice" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

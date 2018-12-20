@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="QFTextBox5.Caption" xml:space="preserve">
-    <value>Статус:</value>
+  <data name="txtJobNumber.Caption" xml:space="preserve">
+    <value>Номер задания:</value>
+  </data>
+  <data name="QFDateTimePicker.ButtonToolTip" xml:space="preserve">
+    <value>Дата начала:</value>
+  </data>
+  <data name="QFDateTimePicker.Caption" xml:space="preserve">
+    <value>Дата начала:</value>
+  </data>
+  <data name="QFDateTimePicker2.Caption" xml:space="preserve">
+    <value>Дата завершения:</value>
+  </data>
+  <data name="QFSLXUser.Caption" xml:space="preserve">
+    <value>Начавший:</value>
+  </data>
+  <data name="QFTextBox.Caption" xml:space="preserve">
+    <value>Тип сущности:</value>
+  </data>
+  <data name="QFTextBox2.Caption" xml:space="preserve">
+    <value>Количество исходных:</value>
   </data>
   <data name="QFTextBox3.Caption" xml:space="preserve">
-    <value>К-во обработанных:</value>
+    <value>Количество обработанных</value>
+  </data>
+  <data name="QFTextBox4.Caption" xml:space="preserve">
+    <value>Количество дубликатов</value>
+  </data>
+  <data name="QFTextBox5.Caption" xml:space="preserve">
+    <value>Статус:</value>
   </data>
   <data name="QFTextBox6.Caption" xml:space="preserve">
     <value>Описание задания:</value>
@@ -129,55 +153,34 @@
   <data name="btnSubmitNewJob.Caption" xml:space="preserve">
     <value>Сформировать новое задание</value>
   </data>
-  <data name="dgDeDupResults.ff8fcd6d-cda1-4ba6-a248-aa30d055cf46.ColumnHeading" xml:space="preserve">
-    <value>Тип источника</value>
-  </data>
-  <data name="txtJobNumber.Caption" xml:space="preserve">
-    <value>Номер задания:</value>
-  </data>
-  <data name="dgDeDupResults.7e5d6d22-412e-490f-92a5-cbea31258e6e.Text" xml:space="preserve">
-    <value>Решение</value>
-  </data>
-  <data name="QFDateTimePicker.ButtonToolTip" xml:space="preserve">
-    <value>Дата начала:</value>
-  </data>
-  <data name="error_RecordNotFound" xml:space="preserve">
-    <value>Не удается найти запись.</value>
-  </data>
-  <data name="ResultDetail_DialogCaption" xml:space="preserve">
-    <value>Решение дубликатов записей</value>
-  </data>
-  <data name="btnDelete.ToolTip" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
   <data name="btnSubmitNewJob.ToolTip" xml:space="preserve">
     <value>Сформировать новое задание</value>
   </data>
   <data name="txtSourceDesc.Caption" xml:space="preserve">
     <value>Описание источника:</value>
   </data>
-  <data name="QFDateTimePicker.Caption" xml:space="preserve">
-    <value>Дата начала:</value>
+  <data name="dgDeDupResults.ff8fcd6d-cda1-4ba6-a248-aa30d055cf46.ColumnHeading" xml:space="preserve">
+    <value>Тип источника</value>
   </data>
-  <data name="QFSLXUser.Caption" xml:space="preserve">
-    <value>Начато:</value>
-  </data>
-  <data name="error_JobResultResolved" xml:space="preserve">
-    <value>Результаты совпадения уже отражены. Других действий не предусмотрено.</value>
-  </data>
-  <data name="QFTextBox4.Caption" xml:space="preserve">
-    <value>Кол-во дубликатов:</value>
+  <data name="dgDeDupResults.7e5d6d22-412e-490f-92a5-cbea31258e6e.Text" xml:space="preserve">
+    <value>Развернуть</value>
   </data>
   <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Запись будет удалена без возможности восстановления</value>
+    <value>Данная запись будет удалена без возможности восстановления.</value>
   </data>
-  <data name="QFTextBox2.Caption" xml:space="preserve">
-    <value>Кол-во исходных:</value>
+  <data name="ResultDetail_DialogCaption" xml:space="preserve">
+    <value>Решение записей-дубликатов</value>
   </data>
-  <data name="QFTextBox.Caption" xml:space="preserve">
-    <value>Тип сущности:</value>
+  <data name="error_JobResultResolved" xml:space="preserve">
+    <value>Результаты совпадения уже объединены. Других действий не предусмотрено.</value>
   </data>
-  <data name="QFDateTimePicker2.Caption" xml:space="preserve">
-    <value>Дата завершения:</value>
+  <data name="btnDelete.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="error_RecordNotFound" xml:space="preserve">
+    <value>Не удалось найти запись.</value>
+  </data>
+  <data name="QFTextBox4.Text" xml:space="preserve">
+    <value />
   </data>
 </root>

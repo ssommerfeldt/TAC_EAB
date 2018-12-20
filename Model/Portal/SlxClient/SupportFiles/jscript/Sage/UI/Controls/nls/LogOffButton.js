@@ -1,12 +1,10 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            logOffText: 'Log Off'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/Controls/nls/LogOffButton", {
+    root: {
+        logOffText: 'Sign Off'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

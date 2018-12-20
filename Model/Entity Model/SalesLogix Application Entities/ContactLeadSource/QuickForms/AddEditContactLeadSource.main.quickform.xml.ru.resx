@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AbbrevDescription.Caption" xml:space="preserve">
     <value>Сокращение:</value>
@@ -123,46 +123,52 @@
   <data name="Type.Caption" xml:space="preserve">
     <value>Тип:</value>
   </data>
+  <data name="Status.Caption" xml:space="preserve">
+    <value>Статус:</value>
+  </data>
+  <data name="LeadDate.Caption" xml:space="preserve">
+    <value>Дата заинтересованного лица:</value>
+  </data>
+  <data name="SourceDate.Caption" xml:space="preserve">
+    <value>Дата источника</value>
+  </data>
   <data name="lueDescription.Caption" xml:space="preserve">
     <value>Описание:</value>
   </data>
-  <data name="okButton.Caption" xml:space="preserve">
-    <value>ОК</value>
-  </data>
-  <data name="lueDescription.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Код источника</value>
-  </data>
-  <data name="SourceDate.Caption" xml:space="preserve">
-    <value>Дата источника:</value>
-  </data>
-  <data name="SourceDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="lueDescription.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="lueDescription.LUPF.Status" xml:space="preserve">
-    <value>Активный</value>
+  <data name="lueDescription.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
   </data>
   <data name="lueDescription.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Описание</value>
   </data>
-  <data name="Status.Caption" xml:space="preserve">
-    <value>Статус:</value>
+  <data name="lueDescription.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Код источника</value>
   </data>
-  <data name="LeadDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
+  <data name="lueDescription.LookupProperties.SourceDate.PropertyHeader" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueDescription.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
+  <data name="lueDescription.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="actionContainer.Caption" xml:space="preserve">
+    <value />
   </data>
   <data name="cancelButton.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="LeadDate.Caption" xml:space="preserve">
-    <value>Дата наводки:</value>
+  <data name="okButton.Caption" xml:space="preserve">
+    <value>OК</value>
   </data>
-  <data name="lueDescription.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
+  <data name="lueDescription.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="LeadDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="SourceDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="lueDescription.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
   </data>
 </root>

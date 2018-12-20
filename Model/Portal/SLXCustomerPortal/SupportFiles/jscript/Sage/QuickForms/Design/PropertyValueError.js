@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/PropertyValueError", [
     'dojo/string',
     'dojo/_base/lang'
 ], function(string, lang) {

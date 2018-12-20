@@ -50,24 +50,8 @@ public class FormHelper
 
     public static string GetConfirmDeleteScript()
     {
-        return string.Format("return confirm('{0}');", PortalUtil.JavaScriptEncode(SalesLogix.ConfirmDelete));
+        return string.Format("return confirm('{0}');", PortalUtil.JavaScriptEncode(Resources.SalesLogix.ConfirmDelete));
     }
-
-    ///// <summary>
-    ///// Gets the system info option.
-    ///// </summary>
-    ///// <param name="optionName">Name of the option.</param>
-    ///// <returns></returns>
-    //public static Boolean GetSystemInfoOption(String optionName)
-    //{
-        //This function has been depricated, use ISystemOptionsService instead.
-        //SystemInformation systemInfo = SystemInformationRules.GetSystemInfo();
-        //DelphiStreamReader stream = new DelphiStreamReader(systemInfo.Data);
-        //TValueType valueType;
-        //if (stream.FindProperty(optionName, out valueType))
-        //    return valueType.Equals(TValueType.vaTrue);
-        //return false;
-    //}
 
     /// <summary>
     /// Adds the base and user currency rates to client context.
@@ -87,11 +71,7 @@ public class FormHelper
         var baseCode = optionSvc.BaseCurrency;
         if (!string.IsNullOrEmpty(baseCode))
         {
-            //Set the rate from My Rate code.
-            var erBase = EntityFactory.GetById<IExchangeRate>(baseCode);
-            var baseRate = erBase.Rate.GetValueOrDefault(1).ToString();
-            if (baseRate == "0") baseRate = "1";
-            //Set Base Rate and Code on the service.
+            var baseRate = "1";
             if (ccs.CurrentContext.ContainsKey("BaseRateCode"))
             {
                 ccs.CurrentContext["BaseRateCode"] = baseCode;
@@ -119,7 +99,8 @@ public class FormHelper
         if (!string.IsNullOrEmpty(userExCode))
         {
             //Set the rate from My Rate code.
-            var er = EntityFactory.GetById<IExchangeRate>(userExCode);
+            var er = EntityFactory.GetRepository<IExchangeRate>().FindFirstByProperty("CurrencyCode", userExCode);
+            if (er == null) return;
             var userExRate = er.Rate.GetValueOrDefault(1).ToString();
             if (userExRate == "0") userExRate = "1";
             //Set My Rate and Code on the service.

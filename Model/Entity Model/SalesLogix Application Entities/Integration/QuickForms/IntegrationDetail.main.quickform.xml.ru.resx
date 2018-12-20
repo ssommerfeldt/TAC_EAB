@@ -117,70 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lnkClientIdHelp.Text" xml:space="preserve">
-    <value>Где можно получить эту информацию?</value>
-  </data>
-  <data name="IntegrationLinkType_Admin" xml:space="preserve">
-    <value>Связь "Администратор"</value>
-  </data>
-  <data name="txtSyncHandler.Caption" xml:space="preserve">
-    <value>Обработчик синхронизации:</value>
-  </data>
-  <data name="pklSyncMethod.Caption" xml:space="preserve">
-    <value>Метод синхронизации:</value>
-  </data>
-  <data name="lblMinutes.Text" xml:space="preserve">
-    <value>минут</value>
-  </data>
-  <data name="AuthorizationType_OAuth" xml:space="preserve">
-    <value>OAuth</value>
-  </data>
-  <data name="AuthorizationType_OAuth2" xml:space="preserve">
-    <value>OAuth2</value>
-  </data>
   <data name="btnSave.Caption" xml:space="preserve">
     <value>Сохранить</value>
-  </data>
-  <data name="numSyncInterval.Caption" xml:space="preserve">
-    <value>Синхронизировать кажд.:</value>
-  </data>
-  <data name="chkEnabled.Caption" xml:space="preserve">
-    <value>Включить синхронизацию:</value>
-  </data>
-  <data name="txtSecret.Caption" xml:space="preserve">
-    <value>Секрет:</value>
-  </data>
-  <data name="txtClientId.Caption" xml:space="preserve">
-    <value>ИД клиента:</value>
-  </data>
-  <data name="pklAuthType.Caption" xml:space="preserve">
-    <value>Тип аутентификации:</value>
-  </data>
-  <data name="lnkClientIdHelp.Caption" xml:space="preserve">
-    <value>  </value>
-  </data>
-  <data name="btnReset.ToolTip" xml:space="preserve">
-    <value>Сброс</value>
-  </data>
-  <data name="pklLinkType.Caption" xml:space="preserve">
-    <value>Тип связи:</value>
-  </data>
-  <data name="AuthorizationType_OAuth1" xml:space="preserve">
-    <value>OAuth1</value>
   </data>
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="txtIntegration.Caption" xml:space="preserve">
-    <value>Интеграция:</value>
-  </data>
-  <data name="dteStartTime.Caption" xml:space="preserve">
-    <value>Запустить синхронизацию между:</value>
-  </data>
-  <data name="dteEndTime.Caption" xml:space="preserve">
-    <value>и</value>
-  </data>
   <data name="btnReset.Caption" xml:space="preserve">
     <value>Сброс</value>
+  </data>
+  <data name="btnReset.ToolTip" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="txtIntegration.Caption" xml:space="preserve">
+    <value>Интеграция</value>
+  </data>
+  <data name="pklAuthType.ButtonToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklAuthType.Caption" xml:space="preserve">
+    <value>Тип аутентификации</value>
+  </data>
+  <data name="pklSyncMethod.Caption" xml:space="preserve">
+    <value>Метод синхронизации</value>
+  </data>
+  <data name="pklLinkType.Caption" xml:space="preserve">
+    <value>Тип ссылки</value>
+  </data>
+  <data name="chkEnabled.Caption" xml:space="preserve">
+    <value>Активировано</value>
+  </data>
+  <data name="txtSyncHandler.Caption" xml:space="preserve">
+    <value>Обработчик синхронизации</value>
+  </data>
+  <data name="AuthorizationType_OAuth" xml:space="preserve">
+    <value>OAuth</value>
+  </data>
+  <data name="txtClientId.Caption" xml:space="preserve">
+    <value>ИД клиента</value>
+  </data>
+  <data name="txtSecret.Caption" xml:space="preserve">
+    <value>Секретный код</value>
+  </data>
+  <data name="lnkClientIdHelp.Caption" xml:space="preserve">
+    <value>  </value>
+  </data>
+  <data name="lnkClientIdHelp.Text" xml:space="preserve">
+    <value>Где можно получить эту информацию?</value>
+  </data>
+  <data name="AuthorizationType_OAuth1" xml:space="preserve">
+    <value>OAuth1</value>
+  </data>
+  <data name="AuthorizationType_OAuth2" xml:space="preserve">
+    <value>OAuth2</value>
+  </data>
+  <data name="IntegrationLinkType_Admin" xml:space="preserve">
+    <value>Связь "Администратор"</value>
+  </data>
+  <data name="btnDeleteStatusRecords.Caption" xml:space="preserve">
+    <value>Сбросить статус входящих</value>
+  </data>
+  <data name="QFTextBoxVersion.Caption" xml:space="preserve">
+    <value>Версия</value>
+  </data>
+  <data name="QFTextBoxVersion.ToolTip" xml:space="preserve">
+    <value>Версия</value>
+  </data>
+  <data name="emlEmailAddress.Caption" xml:space="preserve">
+    <value>Пользователь службы</value>
+  </data>
+  <data name="emlEmailAddress.ButtonToolTip" xml:space="preserve">
+    <value>Пользователь службы</value>
+  </data>
+  <data name="txtEmailPassword.Caption" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="btnVerifyConnectivity.Caption" xml:space="preserve">
+    <value>Проверить подключение</value>
+  </data>
+  <data name="Delete_Success_Msg" xml:space="preserve">
+    <value>Записи статуса входящих сообщений системы удалены.</value>
+  </data>
+  <data name="Delete_SysInbox_ConfirmMsg" xml:space="preserve">
+    <value>Все записи будут удалены из статуса входящих сообщений системы без возможности восстановления. Действительно продолжить?</value>
+  </data>
+  <data name="JobServiceRunning_Msg" xml:space="preserve">
+    <value>Перед выполнением этой операции необходимо остановить службу заданий.</value>
+  </data>
+  <data name="txtAdminUserName.Caption" xml:space="preserve">
+    <value>Имя пользователя домена </value>
+  </data>
+  <data name="txtDomain.Caption" xml:space="preserve">
+    <value>Домен</value>
+  </data>
+  <data name="lblText.Text" xml:space="preserve">
+    <value>Введите учетные данные пользователя службы Exchange. Можно также ввести ваши учетные данные пользователя домена.</value>
   </data>
 </root>

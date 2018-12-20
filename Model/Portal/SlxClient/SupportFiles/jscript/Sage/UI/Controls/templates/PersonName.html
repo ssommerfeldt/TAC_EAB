@@ -13,8 +13,12 @@ Basic formatting example: {%= $.id %}
                     dojoAttachPoint="_valueBox"
                     pickListName="Name Prefix"
                     storeMode="text"
+                    noDataLoad="false"
+                    useCache="false"
+                    boundLanguage="{%= $.prefixLanguage %}"
+                    filterByLanguage="{%= $.prefixLanguageFilters %}"
                     name="{%= $.NamePrefix %}" 
-                    style="width: 150px;display: inline-block"
+                    style="display: inline-block"
                     shouldPublishMarkDirty="false" />
                 </td>
             </tr>
@@ -55,8 +59,12 @@ Basic formatting example: {%= $.id %}
                     dojoAttachPoint="_valueBox"
                     pickListName="Name Suffix"
                     storeMode="text"
+                    noDataLoad="false"
+                    useCache="false"
+                    boundLanguage="{%= $.suffixLanguage %}"
+                    filterByLanguage="{%= $.suffixLanguageFilters %}"
                     name="{%= $.NameSuffix %}"
-                    style="width: 150px;display: inline-block"
+                    style="display: inline-block"
                     shouldPublishMarkDirty="false" />
                 </td>
             </tr>

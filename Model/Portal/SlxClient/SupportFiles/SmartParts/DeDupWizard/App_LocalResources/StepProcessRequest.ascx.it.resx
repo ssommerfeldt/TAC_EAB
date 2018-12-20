@@ -112,78 +112,37 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Job_Status_Completed" xml:space="preserve">
-    <value>Completato</value>
+  <data name="ProcessingMsg" xml:space="preserve">
+    <value>È possibile passare a un'altra vista mentre il processo di verifica dei duplicati è in corso o fare clic sul numero di processo di seguito per visualizzare i risultati:</value>
   </data>
-  <data name="Job_StartInfo" xml:space="preserve">
-    <value>{0} da {1}</value>
-  </data>
-  <data name="processingMessage" xml:space="preserve">
-    <value>Elaborazione record {0} di {1} - ({2}%)</value>
-  </data>
-  <data name="Current_User_Unknown" xml:space="preserve">
-    <value>Sconosciuto</value>
+  <data name="lblDuplicateCount.Caption" xml:space="preserve">
+    <value>Duplicati:</value>
   </data>
   <data name="lblPrimary_Progress.Caption" xml:space="preserve">
-    <value>Ricerca duplicati in corso...</value>
-  </data>
-  <data name="lblCompleteDate.Caption" xml:space="preserve">
-    <value>Data Completamento:</value>
-  </data>
-  <data name="Job_Status_InProcess" xml:space="preserve">
-    <value>Elaborazione in corso...</value>
+    <value>Ricerca dei duplicati in corso. Attendere...</value>
   </data>
   <data name="cmdAbort.Caption" xml:space="preserve">
     <value>Interrompi</value>
   </data>
   <data name="lblJobNumber.Caption" xml:space="preserve">
-    <value>Numero Job:</value>
-  </data>
-  <data name="ViewJobResultsMsg" xml:space="preserve">
-    <value>Per vedere i risultati fare clic sul numero job sotto:</value>
-  </data>
-  <data name="AbortedMsg" xml:space="preserve">
-    <value>Il job è stato interrotto.</value>
-  </data>
-  <data name="ViewJobResultsMsgWithErrors" xml:space="preserve">
-    <value>Si sono verificati uno o più errori durante il processo di controllo dei duplicati.</value>
-  </data>
-  <data name="msgCancelDeDupProcess" xml:space="preserve">
-    <value>Sei sicuro di voler annullare questo processo?</value>
-  </data>
-  <data name="lblStartDate.Caption" xml:space="preserve">
-    <value>Data iniziale:</value>
+    <value>Numero processo:</value>
   </data>
   <data name="CompletedMsg" xml:space="preserve">
-    <value>Il job ha terminato.</value>
+    <value>Il processo è stato completato.</value>
   </data>
-  <data name="lblDuplicateCount.Caption" xml:space="preserve">
-    <value>Duplicati:</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DeDupProgress_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>DeDupProgress_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="lblStart.Caption" xml:space="preserve">
-    <value>Iniziato:</value>
+  <data name="msgCancelDeDupProcess" xml:space="preserve">
+    <value>Annullare il processo?</value>
   </data>
-  <data name="ProcessingMsg" xml:space="preserve">
-    <value>E' possibile spostarsi su un'altra vista mentre il processo di controllo dei duplicati continua oppure per visualizzare i risultati fare clic sul numero job sotto:</value>
-  </data>
-  <data name="lblProcessed.Caption" xml:space="preserve">
-    <value>Importato:</value>
-  </data>
-  <data name="lblTotalProcessed.Caption" xml:space="preserve">
-    <value>Processato:</value>
-  </data>
-  <data name="error_JobAborted" xml:space="preserve">
-    <value>Il job è stato interrotto.</value>
-  </data>
-  <data name="lblStartedBy.Caption" xml:space="preserve">
-    <value>Iniziato Da:</value>
-  </data>
-  <data name="lblIJobName.Caption" xml:space="preserve">
-    <value>Nome Job:</value>
+  <data name="processingMessage" xml:space="preserve">
+    <value>Elaborazione del record {0} di {1} - ({2}%)</value>
   </data>
 </root>

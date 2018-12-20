@@ -117,35 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtDuration.Caption" xml:space="preserve">
-    <value>Длительность:</value>
+  <data name="QFTextBox.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.getConfirmSummaryHeaderHtml($.entity, 'listl')%}</value>
   </data>
-  <data name="slxPhone.Caption" xml:space="preserve">
-    <value>Телефон:</value>
-  </data>
-  <data name="lnkOpportunityName.Caption" xml:space="preserve">
-    <value>Сделка:</value>
+  <data name="slxFromUser.ButtonToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="slxFromUser.Caption" xml:space="preserve">
     <value>От:</value>
   </data>
   <data name="txtLocation.Caption" xml:space="preserve">
-    <value>Размещение:</value>
+    <value>Местоположение:</value>
   </data>
   <data name="txtStartDate.Caption" xml:space="preserve">
     <value>Дата начала:</value>
   </data>
+  <data name="txtStartDate.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatActivityStartDate($.entity.activity_startdate_2, $.entity.activity_timeless_2)%}</value>
+  </data>
+  <data name="txtDuration.Caption" xml:space="preserve">
+    <value>Длительность:</value>
+  </data>
+  <data name="txtDuration.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatDuration($.entity.activity_duration_2, $.entity.activity_timeless_2)%}</value>
+  </data>
   <data name="slxLeader.Caption" xml:space="preserve">
-    <value>Руководитель:</value>
+    <value>Организатор:</value>
   </data>
   <data name="lnkContactName.Caption" xml:space="preserve">
     <value>Контакт:</value>
   </data>
+  <data name="slxPhone.Caption" xml:space="preserve">
+    <value>Телефон:</value>
+  </data>
   <data name="lnkAccountName.Caption" xml:space="preserve">
-    <value>Субъект:</value>
+    <value>Клиент:</value>
   </data>
   <data name="txtNotes.Caption" xml:space="preserve">
     <value>Заметки:</value>
+  </data>
+  <data name="lnkOpportunityName.Caption" xml:space="preserve">
+    <value>Возможность:</value>
   </data>
   <data name="lnkTicket.Caption" xml:space="preserve">
     <value>Заявка:</value>

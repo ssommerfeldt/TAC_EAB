@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1f2c9dab-f230-414d-850d-2f7b72ecabcc" lastModifiedUtc="2016-06-06T11:04:31.9685183Z" name="SORPromote" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="94543063-a727-4817-992c-7c9837ca9270" paramName="entityName" sequence="0" paramType="String" />
+    <OrmEntityMethodParam id="b285a76f-7258-4c51-97e7-1a19e5ab2976" paramName="entityId" sequence="0" paramType="String" />
+    <OrmEntityMethodParam id="910b4999-210c-4dd3-ab2e-f43f5c2acae2" paramName="logicalId" sequence="0" paramType="String" />
+    <OrmEntityMethodParam id="2d2b2676-1173-41aa-93ab-70862f7ef6d5" paramName="accountingEntityId" sequence="0" paramType="String" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="b85ee395-f976-43d1-8492-c6e0294076b0" lastModifiedUtc="2016-06-06T10:59:04.1617035Z" targetType="Sage.SalesLogix.BackOffice.Rules, Sage.SalesLogix.BusinessRules" targetMethod="SORPromote" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

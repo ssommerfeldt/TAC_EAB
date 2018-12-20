@@ -1,11 +1,11 @@
-define((
-{ administratorText: 'Amministratore',
-  templateText: 'Modello',
-  remoteText: 'Remoto',
-  webOnlyText: 'Solo Web',
-  retiredText: 'Ritirato',
-  concurrentText: 'Concorrente',
-  webViewerText: 'Web Viewer',
-  networkText: 'Rete',
-  addOnUserText: 'Utente Add-on' }
-));
+define("Sage/UI/nls/it/UserType", {
+    "administratorText": "Amministratore",
+    "templateText": "Modello",
+    "remoteText": "Remoto",
+    "webOnlyText": "Solo Web",
+    "retiredText": "Disattivato",
+    "concurrentText": "Simultaneo",
+    "webViewerText": "Visualizzatore Web",
+    "networkText": "Di rete",
+    "addOnUserText": "Utente con accesso a comp. aggiuntivi"
+});

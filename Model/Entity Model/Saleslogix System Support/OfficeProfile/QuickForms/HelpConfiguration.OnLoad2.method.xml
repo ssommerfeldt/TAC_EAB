@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="6298b934-f4f7-41f8-af16-bd019dcd413d" lastModifiedUtc="2016-02-12T23:20:00.0058685Z" name="OnLoad2" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="HelpConfiguration">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="2ef969b1-ec95-4be5-b474-7404c1dd0e9a" paramName="form" sequence="0" paramType="IHelpConfiguration" />
+    <OrmEntityMethodParam id="a436b468-91af-4ca1-9c84-bcaf9db6740e" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

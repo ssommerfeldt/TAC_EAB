@@ -117,64 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailSubject" xml:space="preserve">
-    <value>Детали ошибки SalesLogix (Номер ошибки: {0})</value>
+  <data name="Actions" xml:space="preserve">
+    <value>Действия:</value>
   </data>
-  <data name="ExceptionSource" xml:space="preserve">
-    <value>Источник: {0}.</value>
-  </data>
-  <data name="ShowDetails" xml:space="preserve">
-    <value>Отобразить детали</value>
+  <data name="AuthTokenNullExceptionMsg" xml:space="preserve">
+    <value>Маркер аутентификации имеет значение NULL.</value>
   </data>
   <data name="CannotCompleteRequest" xml:space="preserve">
-    <value>Извините, ваш запрос не может быть завершен</value>
+    <value>Не удалось выполнить запрос.</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Данная запись будет удалена без возможности восстановления.</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Авторские права © Infor, 2016. Все права сохранены. www.infor.com</value>
+  </data>
+  <data name="EmailSubject" xml:space="preserve">
+    <value>Подробности исключения Saleslogix (ИД ошибки Saleslogix: {0})</value>
+  </data>
+  <data name="Error_NoAccess" xml:space="preserve">
+    <value>К сожалению, у вас нет доступа к выбранной странице.</value>
+  </data>
+  <data name="Exception" xml:space="preserve">
+    <value>Исключение: {0}</value>
   </data>
   <data name="ExceptionIntercepted" xml:space="preserve">
     <value>Было перехвачено необработанное серверное исключение. {0}</value>
   </data>
-  <data name="ReturnLink" xml:space="preserve">
-    <value>Возврат в приложение</value>
-  </data>
-  <data name="MailDetailsLink" xml:space="preserve">
-    <value>Детали отказа для администратора</value>
-  </data>
-  <data name="ExceptionTargetSite" xml:space="preserve">
-    <value>Целевой сайт: {0}.</value>
-  </data>
-  <data name="ExceptionType" xml:space="preserve">
-    <value>Тип ошибки: {0}.</value>
-  </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>Copyright © 1997 - 2009 Sage Software, Inc. Все права защищены.</value>
-  </data>
-  <data name="AuthTokenNullExceptionMsg" xml:space="preserve">
-    <value>Маркер аутентификации пуст.</value>
-  </data>
-  <data name="Exception" xml:space="preserve">
-    <value>Ошибка: {0}</value>
-  </data>
-  <data name="ConfirmDelete" xml:space="preserve">
-    <value>Запись будет удалена без возможности восстановления</value>
-  </data>
-  <data name="SlxErrorId" xml:space="preserve">
-    <value>Номер ошибки SalesLogix: {0}.</value>
-  </data>
-  <data name="Error_NoAccess" xml:space="preserve">
-    <value>Извините, вы не имеете доступ к выбранной странице.</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Действия:</value>
-  </data>
   <data name="ExceptionPageTitle" xml:space="preserve">
-    <value>Сбой в работе SalesLogix</value>
+    <value>Исключение Saleslogix</value>
+  </data>
+  <data name="ExceptionSource" xml:space="preserve">
+    <value>Источник: {0}.</value>
   </data>
   <data name="ExceptionStackTrace" xml:space="preserve">
     <value>Трассировка стека: {0}.</value>
   </data>
-  <data name="WereSorryMsg" xml:space="preserve">
-    <value>К сожалению, произошла ошибка. Если возможно, попробуйте еще раз</value>
+  <data name="ExceptionTargetSite" xml:space="preserve">
+    <value>Сайт цели: {0}.</value>
+  </data>
+  <data name="ExceptionType" xml:space="preserve">
+    <value>Тип ошибки: {0}.</value>
+  </data>
+  <data name="ExceptionUrl" xml:space="preserve">
+    <value>URL-адрес: {0}</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>Помощь</value>
+    <value>Справка</value>
+  </data>
+  <data name="MailDetailsLink" xml:space="preserve">
+    <value>Отправить подробности этого исключения администратору</value>
+  </data>
+  <data name="ReturnLink" xml:space="preserve">
+    <value>Возврат в приложение</value>
+  </data>
+  <data name="ShowDetails" xml:space="preserve">
+    <value>Отобразить детали</value>
+  </data>
+  <data name="SlxErrorId" xml:space="preserve">
+    <value>ИД ошибки Saleslogix: {0}.</value>
+  </data>
+  <data name="WereSorryMsg" xml:space="preserve">
+    <value>К сожалению, возникла ошибка. Если возможно, повторите попытку</value>
   </data>
 </root>

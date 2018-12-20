@@ -117,23 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblCreateAccount.Caption" xml:space="preserve">
-    <value>Erstellen Sie ein Kundenkonto in &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
-  </data>
-  <data name="Error_SDataRequest" xml:space="preserve">
-    <value>Fehler beim Abrufen übereinstimmender Entitäten über SData. Weitere Informationen erhalten Sie bei Ihrem Systemadministrator.</value>
-  </data>
-  <data name="grdMatches.Status.ColumnHeading" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="lblSearchResults.Caption" xml:space="preserve">
-    <value>Suchergebnisse für &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
-  </data>
-  <data name="lblResultsMsg.Caption" xml:space="preserve">
-    <value>Es wurde mehr als ein überstimmendes Kundenkonto gefunden. Sie haben folgende Möglichkeiten:</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Zurück</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Abbrechen</value>
+  </data>
+  <data name="btnNext.Caption" xml:space="preserve">
+    <value>Weiter &gt;</value>
   </data>
   <data name="Dialog.Caption" xml:space="preserve">
     <value>Verknüpfung zur Buchhaltung</value>
@@ -141,43 +132,52 @@
   <data name="error_NoAccountSelected" xml:space="preserve">
     <value>Sie müssen eine übereinstimmende Firma auswählen, um fortzufahren.</value>
   </data>
-  <data name="lblNoMatchesCreateNew.Caption" xml:space="preserve">
-    <value>Erstellen Sie ein neues Kundenkonto für &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
+  <data name="grdMatches.Account.ColumnHeading" xml:space="preserve">
+    <value>Firma</value>
   </data>
-  <data name="rdbCreateNew.Caption" xml:space="preserve">
-    <value>Erstellen Sie einen neuen Kundendatensatz im Buchhaltungssystem</value>
+  <data name="grdMatches.Status.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="grdMatches.Type.ColumnHeading" xml:space="preserve">
     <value>Typ</value>
   </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Verknüpfung zur Buchhaltung - Daten zusammenführen - Keine Unterschiede</value>
-  </data>
-  <data name="lblSearchNoResults.Caption" xml:space="preserve">
-    <value>Suchergebnisse</value>
-  </data>
-  <data name="btnNext.Caption" xml:space="preserve">
-    <value>Weiter &gt;</value>
-  </data>
-  <data name="rdbRefineSearch.Caption" xml:space="preserve">
-    <value>Verfeinern oder erweitern Sie die Suche nach einem bestehenden Konto</value>
-  </data>
-  <data name="grdMatches.Account.ColumnHeading" xml:space="preserve">
-    <value>Firma</value>
-  </data>
-  <data name="rdbLinkAccount.Caption" xml:space="preserve">
-    <value>Verknüpfen Sie &lt;span class="boldtext"&gt;{0}&lt;/span&gt; mit &lt;span class="boldtext"&gt;{1}&lt;/span&gt; &lt;span class="italictext"&gt;(beträgt die Übereinstimmung nicht 100%, ist eine Zusammenführung notwendig)&lt;/span&gt;:</value>
+  <data name="lblCreateAccount.Caption" xml:space="preserve">
+    <value>Ein Kundenkonto in &lt;span class="boldtext"&gt;{0}&lt;/span&gt; erstellen</value>
   </data>
   <data name="lblNoMatches.Caption" xml:space="preserve">
     <value>Es wurden keine Übereinstimmungen gefunden, die den ausgewählten Suchkriterien entsprechen.</value>
   </data>
-  <data name="Error_TradingAccount_Linked" xml:space="preserve">
-    <value>Das ausgewählte Handelskonto ist bereits mit dem SalesLogix-Konto '{0}' verknüpft. Ein SalesLogix-Konto kann nicht mit demselben Handelskonto verknüpft werden.</value>
+  <data name="lblNoMatchesCreateNew.Caption" xml:space="preserve">
+    <value>Neues Kundenkonto für &lt;span class="boldtext"&gt;{0}&lt;/span&gt; erstellen</value>
   </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Zurück</value>
+  <data name="lblResultsMsg.Caption" xml:space="preserve">
+    <value>Es wurde mehr als ein überstimmendes Kundenkonto gefunden. Sie haben folgende Möglichkeiten:</value>
+  </data>
+  <data name="lblSearchNoResults.Caption" xml:space="preserve">
+    <value>Suchergebnisse</value>
+  </data>
+  <data name="lblSearchResults.Caption" xml:space="preserve">
+    <value>Suchergebnisse für &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
+  </data>
+  <data name="rdbCreateNew.Caption" xml:space="preserve">
+    <value>Neuen Kundendatensatz im Buchhaltungssystem erstellen</value>
+  </data>
+  <data name="rdbLinkAccount.Caption" xml:space="preserve">
+    <value>Verknüpfen Sie &lt;span class="boldtext"&gt;{0}&lt;/span&gt; mit &lt;span class="boldtext"&gt;{1}&lt;/span&gt; &lt;span class="italictext"&gt;(beträgt die Übereinstimmung nicht 100 %, ist eine Zusammenführung notwendig)&lt;/span&gt;:</value>
+  </data>
+  <data name="rdbRefineSearch.Caption" xml:space="preserve">
+    <value>Verfeinern oder erweitern Sie die Suche nach einem bestehenden Konto</value>
   </data>
   <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
     <value>Verknüpfung zur Buchhaltung - Daten zusammenführen - Festgestellte Unterschiede</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Verknüpfung zur Buchhaltung - Daten zusammenführen - Keine Unterschiede</value>
+  </data>
+  <data name="Error_TradingAccount_Linked" xml:space="preserve">
+    <value>Das ausgewählte Handelskonto ist bereits mit der Saleslogix-Firma '{0}' verknüpft. Eine Saleslogix-Firma kann nicht mit demselben Handelskonto verknüpft werden.</value>
+  </data>
+  <data name="Error_SDataRequest" xml:space="preserve">
+    <value>Fehler beim Abrufen übereinstimmender Entitäten über SData. Weitere Informationen erhalten Sie bei Ihrem Systemadministrator.</value>
   </data>
 </root>

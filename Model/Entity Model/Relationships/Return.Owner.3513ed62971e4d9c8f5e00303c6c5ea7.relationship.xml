@@ -18,7 +18,7 @@
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRelationProperty" id="1efc6dad-5a8e-4251-845e-c25b8616a9b7" name="Property1" displayCategory="Intermediate" displayName="Property1" cultureName="en-US" isNullable="true" include="false">
+  <childProperty xsi:type="OrmRelationProperty" id="1efc6dad-5a8e-4251-845e-c25b8616a9b7" name="Property1" displayCategory="Intermediate" displayName="Property1" cultureName="en-US" isNullable="true" include="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="4fc827e6-aa9d-4b12-b836-d0871bc288b8">

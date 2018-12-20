@@ -1,0 +1,1 @@
+define("Sage/MainView/GroupMgr/templates/nls/de/ReleasesListSummary", {});

@@ -1,9 +1,10 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Dashboard/DashboardWidget", [
         'dojo/_base/declare',
         'Sage/UI/Dashboard/WidgetDefinition',
         'dojo/i18n',
         'dojo/_base/lang',
+        'dojo/string',
         'dijit/form/TextBox',
         'dijit/form/CheckBox',
         'dojox/charting/widget/Chart2D',
@@ -12,14 +13,15 @@ define([
         'dojox/charting/action2d/Tooltip',
         'dojox/charting/action2d/Magnify',
         'dojox/charting/widget/Legend',
-        'dojox/charting/themes/Julie',
+        'Sage/UI/Dashboard/ChartingTheme',
         'dojo/i18n!./nls/DashboardWidget'
     ],
 function (
         declare,
         widgetDefinition,
         i18n,
-        lang
+        lang,
+        string
     ) {
     var widget = declare('Sage.UI.Dashboard.DashboardWidget', null, {
         constructor: function (config) {
@@ -100,6 +102,32 @@ function (
             }));
         },
         _setInstanceData: function (data) {
+            // pre-existing group list widgets do not have the tableName as part of their widgetOptions, so look it up and add it.
+            var relativeName = this.parentCell.widgetOptions.name.replace(' ', '_');
+            if (relativeName === "Group_List" && !this.parentCell.widgetOptions.tableName && this.parentCell.widgetOptions.resource) {
+                console.log("Need to grab the table name for %o.%o", this.parentCell.widgetOptions.title, relativeName);
+
+                var request = new Sage.SData.Client.SDataResourceCollectionRequest(Sage.Data.SDataServiceRegistry.getSDataService('metadata'));
+                request.setResourceKind("entities");
+                request.setQueryArg('startIndex', 0);
+                request.setQueryArg('count', 1);
+                request.setQueryArg('select', 'tableName');
+                request.setQueryArg('where', string.substitute("name eq '${0}'", [this.parentCell.widgetOptions.resource]));
+                request.setQueryArg('format', 'JSON');
+                request.read({
+                    scope: this,
+                    async: false,
+                    success: function (data) {
+                        console.log(data);
+                        if (data.$resources[0].tableName) {
+                            this.parentCell.widgetOptions.tableName = data.$resources[0].tableName;
+                        }
+                    },
+                    failure: function (data) {
+                        console.warn('request has errored %o', request);
+                    }
+                });
+            }
             // check for isStatic, and if true then just inject the 
             // return from the html() method
             if (this.definition.isStatic) {

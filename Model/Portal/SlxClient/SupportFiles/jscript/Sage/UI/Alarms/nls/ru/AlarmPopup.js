@@ -1,8 +1,8 @@
-define((
-{ title: 'Оповещения',
-  alarmsText: 'Оповещения',
-  unconfirmedText: 'Неподтвержденные',
-  deleteText: 'Удалить выбранное',
-  helpText: 'Помощь',
-  completeText: 'Завершить выбранные дела' }
-));
+define("Sage/UI/Alarms/nls/ru/AlarmPopup", {
+    "title": "Предупреждения",
+    "alarmsText": "Оповещения",
+    "unconfirmedText": "Не подтверждено",
+    "deleteText": "Удалить выбранные",
+    "helpText": "Справка",
+    "completeText": "Завершить выбранные действия"
+});

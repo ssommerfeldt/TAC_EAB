@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="4def0b39-6f73-4c01-a414-6d6ef559e10f" lastModifiedUtc="2016-02-02T23:03:59.7438893Z" name="SaveOrphanedCountryAlias" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="f2243d7e-b69a-4418-b0dc-81ec2407b618" paramName="countryCodeMappingId" sequence="0" paramType="String">
+      <description>country name used to match alias to country code</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="53d912b7-fbf5-4785-8755-7f40f2ca3ca4" lastModifiedUtc="2016-02-02T23:23:38.8691616Z" targetType="Sage.SalesLogix.CountryCodeMapping.CountryAlias, Sage.SalesLogix.BusinessRules" targetMethod="SaveOrphanedCountryAlias" active="true" description="Saves a country code mapping id to a country alias">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

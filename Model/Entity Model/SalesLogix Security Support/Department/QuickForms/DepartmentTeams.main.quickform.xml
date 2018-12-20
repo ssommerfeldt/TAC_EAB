@@ -68,8 +68,7 @@
             <IsEditable>false</IsEditable>
             <HideCondition />
             <Width>12</Width>
-            <CustomFormatter>function (value, row, cell) {
-   var item = cell.grid.getItem(row);
+            <CustomFormatter>function (value, item) {
    var profileId = item.OwnerSecurityProfile.$key;
    var parentId = item.Parent.$key;
    var childId = item.Child.$key;
@@ -158,7 +157,7 @@
             <OnClick>function () {
          // Invoke the RemoveFromTeam business rule for each team selected
          var grid = this;
-         var selectedItems = grid.selection.getSelected();
+         var selectedItems = grid.getSelectedRowData();
          if (selectedItems.length &lt; 1) {
              alert(grid.noSelectionsText);
              return;
@@ -166,13 +165,12 @@
          if (!confirm(dojo.query("input[name$=ConfirmRemoveFromTeamText]")[0].value))
              return;
          var store = grid.store;
-         grid.showLoading();
          var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
          var processOne = function (i) {
              var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
 	            .setResourceKind('departments')
 	            .setOperationName('RemoveFromTeam');
-             var id = store.getValue(selectedItems[i], "$key");
+             var id = selectedItems[i].$key; //store.getValue(selectedItems[i], "$key");
              var entry = {
                  "$name": "RemoveFromTeam",
                  "request": {

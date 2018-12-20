@@ -107,7 +107,7 @@ public partial class AddToTeam : Sage.Platform.WebPortal.SmartParts.SmartPartInf
                         {
                             throw new Sage.Platform.Application.ValidationException(GetLocalResourceObject("InvalidUserContext").ToString());
                         }
-                        Sage.SalesLogix.Team.Rules.SetAddManagerWithMemberOption(targetTeam, chkAddManager.Checked ? bool.TrueString : bool.FalseString);
+                        Sage.SalesLogix.Team.Rules.SetAddManagerWithMemberOption(chkAddManager.Checked ? bool.TrueString : bool.FalseString);
                         targetTeam.AddMember(selectedUser.DefaultOwner);
                     }
                 }
@@ -234,9 +234,8 @@ public partial class AddToTeam : Sage.Platform.WebPortal.SmartParts.SmartPartInf
         Type context = GetContext();
         if (context == typeof(IUser))
         {
-            ITeam team = Sage.Platform.EntityFactory.Create<ITeam>();
             bool addManager;
-            Sage.SalesLogix.Team.Rules.GetAddManagerWithMemberOption(team, out addManager);
+            Sage.SalesLogix.Team.Rules.GetAddManagerWithMemberOption(out addManager);
             chkAddManager.Checked = addManager;
         }
         else

@@ -117,67 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbxQualifier_SingleQuote.Text" xml:space="preserve">
-    <value>'</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="error_PreviewData" xml:space="preserve">
-    <value>Возникла ошибка при загрузки данных предпросмотра. {0}</value>
-  </data>
-  <data name="QFCheckBox.Caption" xml:space="preserve">
-    <value>Первая строка содержит имена полей</value>
+  <data name="lblDelimiter.Caption" xml:space="preserve">
+    <value>Выберите соответствующий разделитель и посмотрите ниже как ваш текст будет выглядеть.</value>
   </data>
   <data name="rdgpDelimiter.Caption" xml:space="preserve">
-    <value>Выберите разделитель, который будет отделять ваши поля:</value>
+    <value>Выберите разделитель для разделения полей:</value>
   </data>
-  <data name="rdgpDelimiter_Comma.Text" xml:space="preserve">
-    <value>Запятая</value>
-  </data>
-  <data name="error_MissingImportFile" xml:space="preserve">
-    <value>Не удается найти загруженный файл импорта.</value>
+  <data name="rdgpDelimiter_Other.Text" xml:space="preserve">
+    <value>Другое</value>
   </data>
   <data name="rdgpDelimiter_Space.Text" xml:space="preserve">
     <value>Пробел</value>
   </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="lblGridPreview.Caption" xml:space="preserve">
-    <value>Просмотр (первые пять записей):</value>
+  <data name="rdgpDelimiter_Comma.Text" xml:space="preserve">
+    <value>Запятая</value>
   </data>
   <data name="rdgpDelimiter_Semicolon.Text" xml:space="preserve">
     <value>Точка с запятой</value>
   </data>
-  <data name="lbxQualifier_DoubleQuote.Text" xml:space="preserve">
-    <value>"</value>
-  </data>
-  <data name="lblDelimiter.Caption" xml:space="preserve">
-    <value>Выберите соответствующий разделитель и посмотрите ниже как ваш текст будет выглядеть.</value>
-  </data>
-  <data name="lbxQualifier_None.Text" xml:space="preserve">
-    <value>&lt;нет&gt;</value>
-  </data>
   <data name="rdgpDelimiter_Tab.Text" xml:space="preserve">
     <value>Табуляция</value>
   </data>
-  <data name="cmdCancel_Close" xml:space="preserve">
-    <value>Закрыть</value>
-  </data>
-  <data name="rdgpDelimiter_Other.Text" xml:space="preserve">
-    <value>Другой</value>
-  </data>
-  <data name="error_ImportManager" xml:space="preserve">
-    <value>Возникла ошибка при создании экземпляра менеджера импорта.</value>
-  </data>
-  <data name="grdPreview.EmptyTableRowText" xml:space="preserve">
-    <value>Возникла ошибка при разборе файла импорта.</value>
+  <data name="QFCheckBox.Caption" xml:space="preserve">
+    <value>Первая строка содержит имена полей</value>
   </data>
   <data name="chkFirstRow.Caption" xml:space="preserve">
     <value>Первая строка содержит имена полей</value>
   </data>
   <data name="lbxQualifier.Caption" xml:space="preserve">
     <value>Квалификатор текста:</value>
+  </data>
+  <data name="lbxQualifier_None.Text" xml:space="preserve">
+    <value>&lt;нет&gt;</value>
+  </data>
+  <data name="lbxQualifier_SingleQuote.Text" xml:space="preserve">
+    <value>"</value>
+  </data>
+  <data name="lbxQualifier_DoubleQuote.Text" xml:space="preserve">
+    <value>"</value>
+  </data>
+  <data name="lbxQualifier_Empty.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblGridPreview.Caption" xml:space="preserve">
+    <value>Просмотр (первые пять записей):</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="grdPreview.EmptyTableRowText" xml:space="preserve">
+    <value>Возникла ошибка при разборе файла импорта.</value>
+  </data>
+  <data name="error_MissingImportFile" xml:space="preserve">
+    <value>Не удалось найти загруженный файл импорта.</value>
+  </data>
+  <data name="error_ImportManager" xml:space="preserve">
+    <value>Возникла ошибка при создании экземпляра менеджера импорта.</value>
+  </data>
+  <data name="error_PreviewData" xml:space="preserve">
+    <value>Возникла ошибка при загрузке данных предварительного просмотра. {0}</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="cmdCancel_Close" xml:space="preserve">
+    <value>Закрыть</value>
   </data>
 </root>

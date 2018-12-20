@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/nls/en/FormMgrDetailPane", (
 { layoutTabText: 'Layout',
   propertiesTabText: 'Properties',
   toolsTabText: 'Tool Bar',

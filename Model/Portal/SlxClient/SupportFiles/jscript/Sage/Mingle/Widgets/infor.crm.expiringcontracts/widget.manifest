@@ -1,0 +1,47 @@
+﻿{
+    "widgetId": "infor.crm.contracts",
+    "type": "inline",
+    "name": "CRM Contracts",
+    "version": "2.0.0.9",
+    "category": "application",
+    "applicationLogicalId": "lid://infor.crm",
+    "requiresConfig": true,
+    "settings": [
+     {
+        "name": "group",
+        "labelId": "Group"
+      },{
+        "name": "applicationLogicalId",
+        "labelId": "Application LogicalId"
+      },{
+        "name": "limitCount",
+        "labelId": "limitCount",
+        "type": "string",
+        "defaultValue": "10"
+      }
+	  ],
+    "localization": {
+      "en-US": {
+        "widgetTitle": "CRM Contracts",
+        "widgetDescription": "Displays a list of all contracts",
+        "errorOccured": "Error occurred",
+        "viewGroup": "View Group",
+        "searchPlaceholder": "Search Contracts",
+        "settingTitle": "Title",
+        "settingLimit": "Limit",
+        "lblBackToList": "Back to List",
+        "lblExpirationDate": "Expiration Date",
+        "lblAmount": "Amount",
+        "lblType": "Type",
+        "lblContacts": "Contacts",
+        "lblLogicalId": "CRM Logical ID",
+        "limitText": "Limit",
+        "titleText": "Title",
+        "lblGroup": "Group",
+        "lblOwner": "Owner",
+        "lblExpDate": "Exp. Date",
+        "lblDesc": "Description",
+        "lblReference": "Reference"
+      }
+    }
+}

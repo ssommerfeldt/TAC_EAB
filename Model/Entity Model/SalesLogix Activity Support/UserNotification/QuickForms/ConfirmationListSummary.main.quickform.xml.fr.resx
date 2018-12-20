@@ -117,23 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtDuration.Caption" xml:space="preserve">
-    <value>Durée :</value>
+  <data name="QFTextBox.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.getConfirmSummaryHeaderHtml($.entity, 'listl')%}</value>
   </data>
-  <data name="slxPhone.Caption" xml:space="preserve">
-    <value>N° de téléphone :</value>
-  </data>
-  <data name="lnkOpportunityName.Caption" xml:space="preserve">
-    <value>Opportunité :</value>
+  <data name="slxFromUser.ButtonToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="slxFromUser.Caption" xml:space="preserve">
-    <value>De :</value>
+    <value>De :</value>
   </data>
   <data name="txtLocation.Caption" xml:space="preserve">
-    <value>Emplacement :</value>
+    <value>Emplacement :</value>
   </data>
   <data name="txtStartDate.Caption" xml:space="preserve">
     <value>Date de début :</value>
+  </data>
+  <data name="txtStartDate.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatActivityStartDate($.entity.activity_startdate_2, $.entity.activity_timeless_2)%}</value>
+  </data>
+  <data name="txtDuration.Caption" xml:space="preserve">
+    <value>Durée :</value>
+  </data>
+  <data name="txtDuration.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatDuration($.entity.activity_duration_2, $.entity.activity_timeless_2)%}</value>
   </data>
   <data name="slxLeader.Caption" xml:space="preserve">
     <value>Responsable :</value>
@@ -141,13 +147,19 @@
   <data name="lnkContactName.Caption" xml:space="preserve">
     <value>Contact :</value>
   </data>
+  <data name="slxPhone.Caption" xml:space="preserve">
+    <value>Téléphone :</value>
+  </data>
   <data name="lnkAccountName.Caption" xml:space="preserve">
     <value>Compte :</value>
   </data>
   <data name="txtNotes.Caption" xml:space="preserve">
     <value>Notes :</value>
   </data>
+  <data name="lnkOpportunityName.Caption" xml:space="preserve">
+    <value>Opportunité :</value>
+  </data>
   <data name="lnkTicket.Caption" xml:space="preserve">
-    <value>Ticket :</value>
+    <value>Ticket :</value>
   </data>
 </root>

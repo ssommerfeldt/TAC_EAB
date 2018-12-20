@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, GroupManagerGroupContextService */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, GroupManagerGroupContextService */
+define("Sage/MainView/JobMgr/FilterConfigurationProvider", [
         'Sage/Services/_ServiceMixin',
         'Sage/_ConfigurationProvider',
         'Sage/Utility',

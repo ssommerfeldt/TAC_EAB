@@ -1,29 +1,53 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/MainView/ActivityMgr/AllOpenListPanelConfig", [
     'Sage/MainView/ActivityMgr/BaseListPanelConfig',
     'Sage/Utility',
     'Sage/Utility/Activity',
     'Sage/UI/SDataSummaryFormatterScope',
     'Sage/Data/BaseSDataStore',
-    'Sage/UI/Columns/DateTime',
+    'Sage/UI/Controls/GridParts/Columns/DateTime',
+    'Sage/UI/Controls/GridParts/Columns/ActivityType',
+    'Sage/UI/Controls/GridParts/Columns/ActivityDuration',
+    'Sage/UI/Controls/GridParts/Columns/ActivityName',
+    'Sage/UI/Controls/GridParts/Columns/ActivityConfirmStatus',
+    'Sage/UI/Controls/GridParts/Columns/ActivityAlarm',
+    'Sage/UI/Controls/GridParts/Columns/ActivityAttachment',
+    'Sage/UI/Controls/GridParts/Columns/ActivityRecurring',
+    'Sage/UI/Controls/GridParts/Columns/ActivityNameType',
+    'Sage/UI/Controls/GridParts/Columns/ActivityAccount',
+    'Sage/UI/Controls/GridParts/Columns/ActivityLeader',
     'Sage/Data/SDataServiceRegistry',
     'dojo/_base/declare',
-    'dojo/i18n!./nls/ActivityListPanelConfig'
+    'dojo/_base/connect',
+    'dojo/dom-construct',
+    'dojo/i18n!./nls/ActivityListPanelConfig',
+    'dojo/i18n!./templates/nls/AllOpenListSummary',                 // Bare import for template NLS dependency.
+    'dojo/i18n!./templates/nls/AllOpenDetailSummary',               // Bare import for template NLS dependency.
 ],
-
 function (
-    BaseListPanelConfig,
-    SageUtility,
-    UtilityActivity,
-    SDataSummaryFormatterScope,
-    BaseSDataStore,
-    ColumnsDateTime,
+    baseListPanelConfig,
+    sageUtility,
+    utilityActivity,
+    sDataSummaryFormatterScope,
+    baseSDataStore,
+    columnsDateTime,
+    ActivityType,
+    ActivityDuration,
+    ActivityName,
+    ActivityConfirmStatus,
+    ActivityAlarm,
+    ActivityAttachment,
+    ActivityRecurring,
+    ActivityNameType,
+    ActivityAccount,
+    ActivityLeader,
     sDataServiceRegistry,
     declare,
+    connect,
+    domConstruct,
     nlsResources
 ) {
-    var allOpenListPanelConfig = declare('Sage.MainView.ActivityMgr.AllOpenListPanelConfig', [BaseListPanelConfig], {
-
+    var allOpenListPanelConfig = declare('Sage.MainView.ActivityMgr.AllOpenListPanelConfig', [baseListPanelConfig], {
         constructor: function () {
             this._nlsResources = nlsResources;
             this._listId = 'allOpen';
@@ -43,61 +67,51 @@ function (
             this.summary = this._getSummaryConfig();
             this.detail = this._getDetailConfig();
             this.toolBar = this._getToolBars();
-            dojo.subscribe('/entity/activity/change', this._onListRefresh);
-            dojo.subscribe('/entity/activity/delete', this._onListRefresh);
-            dojo.subscribe('/entity/activity/create', this._onListRefresh);
+            connect.subscribe('/entity/activity/change', this._onListRefresh);
+            connect.subscribe('/entity/activity/delete', this._onListRefresh);
+            connect.subscribe('/entity/activity/create', this._onListRefresh);
         },
         _onListRefresh: function (event) {
             var activityService = Sage.Services.getService('ActivityService');
             activityService.refreshList('allopen');
         },
         _getSelect: function () {
-            var select = [
-                      '$key',
-                      'Attachment',
-                      'Timeless',
-                      'Recurring',
-                      'RecurIterations',
-                      'Alarm',
-                      'Type',
-                      'StartDate',
-                      'Duration',
-                      'ContactName',
-                      'ContactId',
-                      'LeadName',
-                      'LeadId',
-                      'AccountName',
-                      'AccountId',
-                      'Description',
-                      'Priority',
-                      'Leader',
-                      'RecurrenceState',
-                      'Details/AttendeeCount'
-                     ];
-            return select;
+            return [
+                '$key',
+                'Attachment',
+                'Timeless',
+                'Recurring',
+                'RecurIterations',
+                'Alarm',
+                'Type',
+                'StartDate',
+                'Duration',
+                'ContactName',
+                'ContactId',
+                'LeadName',
+                'LeadId',
+                'AccountName',
+                'AccountId',
+                'Description',
+                'Priority',
+                'Leader',
+                'RecurrenceState',
+                'AttendeeCount'
+            ];
         },
         _getInclude: function () {
-            var includes = ["$descriptors"];
-            return includes;
+            return ["$descriptors"];
         },
         _getSort: function () {
-            var sort = [
-               { attribute: 'StartDate', descending: true }
-            ];
-            return sort;
+            return [{ attribute: 'StartDate', descending: true }];
         },
         _getWhere: function () {
-            var where = ''; // (this._currentUserId) ? dojo.string.substitute('(UserActivities.UserId eq "${0}") and (Type ne "atLiterature" ) ', [this._currentUserId]) : '';          
-            // where = '(Type ne "atLiterature" ) and (UserActivities.Status ne "asDeclned" )';
-            where = '(Type ne "atLiterature" )';
-            return where;
+            return '(Type ne "atLiterature" )';
         },
-
         _getStructure: function () {
-
-            var colNameAttachment = "<div class='Global_Images icon16x16 icon_attach_to_16' title='" + this._nlsResources.colNameAttachment + "' />";  //this._nlsResources.colNameAttachment || 'Attachment';
-            var colNameRecurring = "<div class='Global_Images icon16x16 icon_recurring' title='" + this._nlsResources.colNameRecurring + "' />"; // this._nlsResources.colNameRecurring || 'Recurring';
-            var colNameAlarm = "<img style='width: 16px; height: 16px' src='images/icons/Alarm_16x16.gif' title='" + this._nlsResources.colNameAlarm + "' alt='" + this._nlsResources.colNameAlarm + "' />";  // this._nlsResources.colNameAlarm || 'Alarm';
+            var colNameAttachment = domConstruct.toDom("<div class='Global_Images icon16x16 icon_attach_to_16' title='" + this._nlsResources.colNameAttachment + "' />");
+            var colNameRecurring = domConstruct.toDom("<div class='Global_Images icon16x16 icon_recurring' title='" + this._nlsResources.colNameRecurring + "' />");
+            var colNameAlarm = domConstruct.toDom("<img src='images/icons/Alarm_16x16.gif' title='" + this._nlsResources.colNameAlarm + "' alt='" + this._nlsResources.colNameAlarm + "' />");
             var colNameType = this._nlsResources.colNameType || 'Type';
             var colNameStartDate = this._nlsResources.colNameStartDate || 'Start Date';
             var colNameDuration = this._nlsResources.colNameDuration || 'Duration';
@@ -109,143 +123,185 @@ function (
             var colNameContactName = this._nlsResources.colNameContactName || 'Name';
             var colNameAssociationCount = this._nlsResources.colNameAssociationCount || 'Participant Count';
 
-            var structure = [
-                { field: 'Alarm', name: colNameAlarm, type: UtilityActivity.activityAlarmCell, width: '20px' },
-                { field: 'Attachment', name: colNameAttachment, type: UtilityActivity.activityAttachCell, width: '20px' },
-                { field: 'Recurring', name: colNameRecurring, type: UtilityActivity.activityRecurringCell, width: '20px' },
-                { field: 'Type', name: colNameType, type: UtilityActivity.activityTypeCell, width: '90px' },
-                { field: 'StartDate', name: colNameStartDate, type: ColumnsDateTime, timelessField: 'Timeless', width: '100px' },
-                { field: 'Duration', name: colNameDuration, type: UtilityActivity.activityDurationCell, width: '40px' },
-                { field: 'ContactId', name: colNameTypeName, type: UtilityActivity.activityNameTypeCell, width: '40px' },
-                { field: 'ContactName', name: colNameContactName, type: UtilityActivity.activityNameCell, width: '200px' },
-                { field: 'AccountName', name: colNameAccount, type: UtilityActivity.activityAccountCell, width: '200px' },
-                { field: 'Description', name: colNameRegarding, width: '100px' },
-                { field: 'Priority', name: colNamePriority, width: '40px' },
-                { field: 'Leader', name: colNameUserId, type: UtilityActivity.activityLeaderCell, width: '200px' },
-                { field: 'Details.AttendeeCount',name: colNameAssociationCount,width: '90px' }
+            return [
+                {
+                    field: 'Alarm',
+                    renderHeaderCell: function () { return colNameAlarm; },
+                    type: ActivityAlarm,
+                    width: 20,
+                    className: 'cell-contents-icon'
+                },
+                {
+                    field: 'Attachment',
+                    renderHeaderCell: function () { return colNameAttachment; },
+                    label: "Attachment",
+                    type: ActivityAttachment,
+                    width: 20,
+                    className: 'cell-contents-icon'
+                },
+                {
+                    field: 'Recurring',
+                    renderHeaderCell: function () { return colNameRecurring; },
+                    type: ActivityRecurring,
+                    width: 20,
+                    className: 'cell-contents-icon'
+                },
+                {
+                    field: 'Type',
+                    label: colNameType,
+                    type: ActivityType,
+                    width: 90
+                },
+                {
+                    field: 'StartDate',
+                    label: colNameStartDate,
+                    type: columnsDateTime,
+                    timelessField: 'Timeless',
+                    width: 100
+                },
+                {
+                    field: 'Duration',
+                    label: colNameDuration,
+                    type: ActivityDuration,
+                    width: 40
+                },
+                {
+                    field: 'ContactId',
+                    label: colNameTypeName,
+                    type: ActivityNameType,
+                    width: 40
+                },
+                {
+                    field: 'ContactName',
+                    label: colNameContactName,
+                    type: ActivityName,
+                    width: 200
+                },
+                {
+                    field: 'AccountName',
+                    label: colNameAccount,
+                    type: ActivityAccount,
+                    width: 200
+                },
+                {
+                    field: 'Description',
+                    label: colNameRegarding,
+                    width: 100
+                },
+                {
+                    field: 'Priority',
+                    label: colNamePriority,
+                    width: 40
+                },
+                {
+                    field: 'Leader',
+                    label: colNameUserId,
+                    type: ActivityLeader,
+                    width: 200
+                },
+                {
+                    field: 'AttendeeCount',
+                    label: colNameAssociationCount,
+                    width: 90
+                }
             ];
-
-            return structure;
         },
-
-
         _getDetailConfig: function () {
-            //base class is calling _getFormatterScope();
-            //var formatScope = this._getFormatterScope();
-            var requestConfig = this._getSummaryDetailRequestConfig();
-            var detailConfig = {
+            return {
                 resourceKind: this._resourceKind,
-                requestConfiguration: requestConfig,
-                templateLocation: 'MainView/ActivityMgr/Templates/AllOpenDetailSummary.html'
+                requestConfiguration: this._getSummaryDetailRequestConfig(),
+                templateLocation: 'MainView/ActivityMgr/templates/AllOpenDetailSummary.html'
             };
-            return detailConfig;
-
         },
         _getSummaryListRequestConfig: function () {
-
-            var requestConfig = {
+            return {
                 resourceKind: this._resourceKind,
                 serviceName: 'system',
                 keyField: '$key',
                 select: [
-                      '$key',
-                      'Attachment',
-                      'Timeless',
-                      'Recurring',
-                      'RecurIterations',
-                      'Alarm',
-                      'Type',
-                      'StartDate',
-                      'Duration',
-                      'ContactName',
-                      'ContactId',
-                      'LeadName',
-                      'LeadId',
-                      'AccountName',
-                      'AccountId',
-                      'Description',
-                      'Priority',
-                      'Leader/$descriptor',
-                      'Location',
-                      'TicketId',
-                      'TicketNumber',
-                      'OpportunityId',
-                      'OpportunityName',
-                      'Notes',
-                      'RecurrenceState',
-                      'PhoneNumber',
-                      'Details/AttendeeCount'
-                 ],
+                    '$key',
+                    'Attachment',
+                    'Timeless',
+                    'Recurring',
+                    'RecurIterations',
+                    'Alarm',
+                    'Type',
+                    'StartDate',
+                    'Duration',
+                    'ContactName',
+                    'ContactId',
+                    'LeadName',
+                    'LeadId',
+                    'AccountName',
+                    'AccountId',
+                    'Description',
+                    'Priority',
+                    'Leader/$descriptor',
+                    'Location',
+                    'TicketId',
+                    'TicketNumber',
+                    'OpportunityId',
+                    'OpportunityName',
+                    'Notes',
+                    'RecurrenceState',
+                    'PhoneNumber',
+                    'AttendeeCount'
+                ],
                 include: ['$descriptors'],
                 useBatchRequest: true
             };
-            return requestConfig;
-
         },
         _getSummaryDetailRequestConfig: function () {
-            var requestConfig = {
+            return {
                 resourceKind: this._resourceKind,
                 serviceName: 'system',
                 keyField: '$key',
                 select: [
-                      '$key',
-                      'Attachment',
-                      'Timeless',
-                      'Recurring',
-                      'RecurIterations',
-                      'Alarm',
-                      'Type',
-                      'StartDate',
-                      'Duration',
-                      'ContactName',
-                      'ContactId',
-                      'LeadName',
-                      'LeadId',
-                      'AccountName',
-                      'AccountId',
-                      'Description',
-                      'Priority',
-                      'Leader/$descriptor',
-                      'Location',
-                      'TicketId',
-                      'TicketNumber',
-                      'OpportunityId',
-                      'OpportunityName',
-                      'LongNotes',
-                      'RecurrenceState',
-                      'PhoneNumber',
-                      'Details/AttendeeCount'
-                     ],
+                    '$key',
+                    'Attachment',
+                    'Timeless',
+                    'Recurring',
+                    'RecurIterations',
+                    'Alarm',
+                    'Type',
+                    'StartDate',
+                    'Duration',
+                    'ContactName',
+                    'ContactId',
+                    'LeadName',
+                    'LeadId',
+                    'AccountName',
+                    'AccountId',
+                    'Description',
+                    'Priority',
+                    'Leader/$descriptor',
+                    'Location',
+                    'TicketId',
+                    'TicketNumber',
+                    'OpportunityId',
+                    'OpportunityName',
+                    'LongNotes',
+                    'RecurrenceState',
+                    'PhoneNumber',
+                    'AttendeeCount'
+                ],
                 include: ['$descriptors'],
                 useBatchRequest: true
             };
-            return requestConfig;
-
         },
         _getFormatterScope: function () {
-            var requestConfig = this._getSummaryListRequestConfig();
-            var formatScope = new SDataSummaryFormatterScope({
+            return new sDataSummaryFormatterScope({
                 templateLocation: 'MainView/ActivityMgr/templates/AllOpenListSummary.html',
                 resetDataManager: true,
-                requestConfiguration: requestConfig
-
+                requestConfiguration: this._getSummaryListRequestConfig()
             });
-            return formatScope;
-
         },
-
         _getToolBars: function () {
-            var toolBars = { items: [] };
-            return toolBars;
+            return { items: [] };
         },
         getTimelessProperty: function (propertyName) {
             return "Timeless";
-
         }
-
-
     });
-
     return allOpenListPanelConfig;
-
 });

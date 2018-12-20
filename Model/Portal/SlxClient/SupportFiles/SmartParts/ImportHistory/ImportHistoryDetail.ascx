@@ -17,7 +17,7 @@
     <col width="50%" /><col width="50%" />
     <tr>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblImportId" runat="server" AssociatedControlID="txtImportId"
                     Text="<%$ resources: lblImportId.Caption %>">
                 </asp:Label>
@@ -28,7 +28,7 @@
         </td>
         
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblStartedBy" runat="server" AssociatedControlID="usrStartedBy" 
                     Text="<%$ resources: lblStartedBy.Caption %>">
                 </asp:Label>
@@ -40,7 +40,7 @@
     </tr>
     <tr>
        <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblImportFile" runat="server" AssociatedControlID="txtImportFileName"
                     Text="<%$ resources: lblImportFileName.Caption %>">
                 </asp:Label>
@@ -50,7 +50,7 @@
             </span>
         </td>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblStatus" runat="server" AssociatedControlID="txtStatus" Text="<%$ resources: lblStatus.Caption %>">
                 </asp:Label>
             </span>
@@ -62,7 +62,7 @@
     </tr>
      <tr>
         <td >
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblTotalRecord" AssociatedControlID="txtTotalRecords" runat="server"
                     Text="<%$ resources: lblTotalRecords.Caption %>">
                 </asp:Label>
@@ -72,7 +72,7 @@
             </span>
         </td>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
             </span>
             <span>
                 <asp:Button ID="cmdAbort" runat="server"  Visible="false" CssClass="slxButton" Text="<%$ resources: cmdAbort.Caption %>" OnClick="cmdAbort_OnClick" />
@@ -81,7 +81,7 @@
     </tr>
     <tr>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblTotalProcessed" AssociatedControlID="txtRecordsProcessed" runat="server"
                     Text="<%$ resources: lblRecordsProcessed.Caption %>">
                 </asp:Label>
@@ -91,7 +91,7 @@
             </span>
         </td>
         <td>
-           <span class="lbl">
+           <span class="lbl alignright">
                 <asp:Label ID="lblStartDate" runat="server" AssociatedControlID="dtpStartDate"
                     Text="<%$ resources: lblStartDate.Caption %>">
                 </asp:Label>
@@ -103,7 +103,7 @@
     </tr>
     <tr>  
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblTotalSuccess" AssociatedControlID="txtRecordsImported" runat="server"
                     Text="<%$ resources: lblRecordsSuccess.Caption %>">
                 </asp:Label>
@@ -113,7 +113,7 @@
             </span>
         </td>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblCompleteDate" runat="server" AssociatedControlID="dtpCompleteDate"
                     Text="<%$ resources: lblCompleteDate.Caption %>">
                 </asp:Label>
@@ -125,7 +125,7 @@
     </tr>
     <tr>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblTotalErrors" AssociatedControlID="txtTotalErrors" runat="server"
                     Text="<%$ resources: lblTotalErrors.Caption %>">
                 </asp:Label>
@@ -135,7 +135,7 @@
             </span>
         </td>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblTemplate" AssociatedControlID="txtTemplate" runat="server"
                     Text="<%$ resources: lblTemplate.Caption %>">
                 </asp:Label>
@@ -146,8 +146,20 @@
         </td>
     </tr>
     <tr> 
+        <td style="width:50%"> 
+        </td>
         <td>
-            <span class="lbl">
+             <span class="lbl alignright">
+                <asp:Label ID="Label3" AssociatedControlID="lnkLink" runat="server" Text=" "></asp:Label>
+            </span>
+            <span class="textcontrol" >
+                <asp:HyperLink runat="server" ID="lnkLink" Text="<%$ resources: lnklink.Caption %>" />
+            </span>
+        </td>
+    </tr>
+    <tr> 
+        <td>
+            <span class="lbl alignright">
                 <asp:Label ID="lblWarningCount" AssociatedControlID="txtWarningCount" runat="server"
                     Text="<%$ resources: lblWarningCount.Caption %>">
                 </asp:Label>
@@ -159,7 +171,7 @@
     </tr>
     <tr> 
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="Label1" AssociatedControlID="txtDuplicateCount" runat="server"
                     Text="<%$ resources: lblDuplicateCount.Caption %>">
                 </asp:Label>
@@ -171,7 +183,7 @@
     </tr>
     <tr> 
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="Label2" AssociatedControlID="txtMergedCount" runat="server"
                     Text="<%$ resources: lblMergedCount.Caption %>">
                 </asp:Label>

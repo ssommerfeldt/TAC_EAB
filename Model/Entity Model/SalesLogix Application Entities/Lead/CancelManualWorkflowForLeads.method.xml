@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="24f4840c-ee6f-4e28-9f11-e722eee3e687" lastModifiedUtc="2017-04-25T13:42:22.1865962Z" name="CancelManualWorkflowForLeads" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="c93d6f47-c06d-41de-a200-db571d730bb4" lastModifiedUtc="2017-04-25T13:42:18.9204105Z" targetType="Sage.SalesLogix.Lead.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CancelManualWorkflowForLeads" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

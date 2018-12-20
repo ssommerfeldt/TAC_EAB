@@ -169,10 +169,10 @@
     <value>Ticket:</value>
   </data>
   <data name="TicketId.LookupProperties.AlternateKeyPrefix.PropertyHeader" xml:space="preserve">
-    <value>AlternateKeyPrefix</value>
+    <value>Alternate Key Prefix</value>
   </data>
   <data name="TicketId.LookupProperties.AlternateKeySuffix.PropertyHeader" xml:space="preserve">
-    <value>AlternateKeySuffix</value>
+    <value>Alternate Key Suffix</value>
   </data>
   <data name="Result.Caption" xml:space="preserve">
     <value>Result:</value>
@@ -213,14 +213,8 @@
   <data name="2f82e3c8-250e-4f5a-affa-02a331012c26.ActionConfirmationMessage" xml:space="preserve">
     <value>You are about to permanently delete this record.</value>
   </data>
-  <data name="rsScheduledOn" xml:space="preserve">
-    <value>Scheduled on </value>
-  </data>
-  <data name="rsBy" xml:space="preserve">
-    <value>by</value>
-  </data>
-  <data name="rsOriginallyFor" xml:space="preserve">
-    <value>originally for </value>
+  <data name="rsScheduledOnBy" xml:space="preserve">
+    <value>Scheduled on {0} by {1} originally for {2} </value>
   </data>
   <data name="CarryOverAttachments.Caption" xml:space="preserve">
     <value>Carry Over Attachments</value>
@@ -313,7 +307,7 @@
     <value>Status</value>
   </data>
   <data name="AccountId.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>UserInfo Username</value>
+    <value>User Info User name</value>
   </data>
   <data name="AccountId.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
     <value>Acct Manager</value>

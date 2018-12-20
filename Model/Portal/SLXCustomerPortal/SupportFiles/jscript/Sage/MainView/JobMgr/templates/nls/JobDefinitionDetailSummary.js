@@ -1,13 +1,11 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (languageList, lang) {
-    var nls = {
-        root: {
-            txtJobName_Caption: 'Job Name:',
-            txtDescription_Caption: 'Description:'
-        }
-    };
-    return lang.mixin(languageList, nls);
+define("Sage/MainView/JobMgr/templates/nls/JobDefinitionDetailSummary", {
+    root: {
+        txtJobName_Caption: 'Job Name:',
+        txtDescription_Caption: 'Description:'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

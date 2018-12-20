@@ -1,7 +1,7 @@
-﻿<div>
-    <div data-dojo-type="dijit.Dialog" title="{%= $._nlsResources.txtDialogTitle %}" dojoattachpoint="_dialog" dojoattachevent="onCancel:_dialog_OnCancel" style="width: 600px;">
+<div>
+    <div data-dojo-type="dijit.Dialog" title="{%= $._getDialogTitle() %}" dojoattachpoint="_dialog" dojoattachevent="onCancel:_dialog_OnCancel" style="width: 600px;">
         <div data-dojo-type="dijit.form.Form">
-            <div style="height: 300px">
+            <div>
                 
                 <div>
                     <table cellspacing="5">
@@ -23,18 +23,17 @@
                                     <option value="Or">{%= $._nlsResources.txtAny %}</option>
                                     <option value="And">{%= $._nlsResources.txtAll %}</option>
                                 </select>
-                                <label>&nbsp;{%= $._nlsResources.txtOfTheFollowingConditions %}</label>
                             </td>
                         </tr>
                     </table>
                 </div>
 
-                <div dojoType="dijit.Toolbar" dojoAttachPoint="tbConditions" region="top" splitter="false" class="right-tools" >
+                <div dojoType="dijit.Toolbar" dojoAttachPoint="tbConditions" region="top" splitter="false" class="right-tools display-none">
                     <span dojoType="Sage.UI.ImageButton" icon="{%= $._btnPlusIconPath %}" title="{%= $._nlsResources.btnAddCondition_Caption %}" dojoAttachEvent="onClick:_btnAddCondition_Click" dojoAttachPoint="btnAddCondition"></span>
                 </div>                                  
                 
                 <div id="divGrdCrystalConditions" style="width:100%; height:200px; overflow:auto" >            
-                    <table data-dojo-type="dojox.grid.DataGrid" dojoAttachPoint="grdCrystalConditions" id="grdCrystalConditions" formatterScope="Sage.MainView.ReportMgr.Crystal.CrystalReportsFormatter">
+                    <table data-dojo-type="dojox.grid.DataGrid" dojoAttachPoint="grdCrystalConditions" id="grdCrystalConditions" class="display-none" formatterScope="Sage.MainView.ReportMgr.Crystal.CrystalReportsFormatter">
                         <thead>
                             <th field="conditionType" width="60px" formatter="formatConditionType" >{%= $._nlsResources.grdCrystalConditions_ConditionType_Caption %}</th>
                             <th field="table" width="80px">{%= $._nlsResources.grdCrystalConditions_TableName_Caption %}</th>

@@ -1,15 +1,10 @@
 #if(${qfcontrol.Caption} != "")
-#if($qfcontrol.ControlLabelPlacement == "left")
- <div class="#if(${qfcontrol.ColumnSpan} == 2)twocollbl#else lbl#end#if(${qfcontrol.ColumnSpan} > 2) colspan3#end#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
+ <div class="#if(${qfcontrol.ColumnSpan} == 2)twocollbl#else lbl#end#if(${qfcontrol.ColumnSpan} > 2) colspan3#end alignright">
    <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
  </div>   
-#elseif($qfcontrol.ControlLabelPlacement == "top")
- <div class="lbltop#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
-   <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
- </div>   
-#end #end
+#end
 #if($qfcontrol.LookupDisplayMode != "ButtonOnly")
- <div #if(${qfcontrol.ColumnSpan} == 2 || ${qfcontrol.ControlLabelPlacement} == "top") class="twocoltextcontrol lookup" #elseif(${qfcontrol.ColumnSpan} > 2) class="threecoltextcontrol lookup" #else #if($qfcontrol.LookupDisplayMode != "DropDownList") class="textcontrol lookup" #end #end >
+ <div #if(${qfcontrol.ColumnSpan} == 2) class="twocoltextcontrol lookup" #elseif(${qfcontrol.ColumnSpan} > 2) class="threecoltextcontrol lookup" #else #if($qfcontrol.LookupDisplayMode != "DropDownList") class="textcontrol lookup" #end #end >
 #end
 <SalesLogix:LookupControl runat="server" ID="${qfcontrol.ControlId}" #if($qfcontrol.HotKey != "")AccessKey="$qfcontrol.HotKey" #end
 #if($qfcontrol.ToolTip != "") ToolTip="<%$ resources: ${qfcontrol.ControlId}.ToolTip %>" #end
@@ -26,7 +21,7 @@
 #if(!$qfcontrol.ReturnPrimaryKey)ReturnPrimaryKey="false" #end
 #if($qfcontrol.EnableHyperLinking)EnableHyperLinking="true" #end
 #if($qfcontrol.InitializeLookup)InitializeLookup="true" #end
-#if($qfcontrol.HasActionCode || $qfcontrol.AutoPostBack)AutoPostBack="true" #end
+#if($qfcontrol.HasActionCode || $qfcontrol.AutoPostBack || $qfcontrol.EnableHyperLinking)AutoPostBack="true" #end
 #if($qfcontrol.Required)Required="true" #end
 #if($qfcontrol.TabIndex > 0)TabIndex="$qfcontrol.TabIndex" #end
 #if(!$qfcontrol.AddEmptyListItem)AddEmptyListItem="false" #end
@@ -41,7 +36,7 @@
 #if(${qfcontrol.LookupImage} != "")LookupImageURL="$generator.getImageResourceURL( ${qfcontrol.LookupImage} )" #end >
 <LookupProperties>
 #foreach($lprop in $qfcontrol.LookupProperties)
-<SalesLogix:LookupProperty PropertyHeader="$qfcontrol.GetHeader($lprop.PropertyName)" PropertyName="$lprop.PropertyName" PropertyType="$lprop.PropertyType" PropertyFormat="$lprop.PropertyFormat" PropertyFormatString="$lprop.PropertyFormatString" UseAsResult="$lprop.UseAsResult" ExcludeFromFilters="$lprop.ExcludeFromFilters"></SalesLogix:LookupProperty>
+<SalesLogix:LookupProperty PropertyHeader="$qfcontrol.GetHeader($lprop.PropertyName)" PropertyName="$lprop.PropertyName" PropertyType="$lprop.PropertyType" PropertyFormat="$lprop.PropertyFormat" PropertyFormatString="$lprop.PropertyFormatString" UseAsResult="$lprop.UseAsResult" ExcludeFromFilters="$lprop.ExcludeFromFilters" IsSortable="$lprop.IsSortable"></SalesLogix:LookupProperty>
 #end
 </LookupProperties>
 <LookupPreFilters>
@@ -55,11 +50,6 @@
 </SalesLogix:LookupControl>
 #if($qfcontrol.LookupDisplayMode != "ButtonOnly")
   </div>
-#end
-#if((${qfcontrol.Caption} != "") && ($qfcontrol.ControlLabelPlacement == "right"))
- <div class="lblright#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
-   <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
- </div>   
 #end
 #if($qfcontrol.DataBindings.Count == 0)
  $generator.addFormLoadCode("ClientBindingMgr.RegisterBoundControl(${qfcontrol.ControlID});")

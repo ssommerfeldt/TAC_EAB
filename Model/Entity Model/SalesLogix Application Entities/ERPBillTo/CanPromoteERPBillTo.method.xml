@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6c544311-3136-42f3-b83d-81b531b82fe6" lastModifiedUtc="2016-02-24T10:44:31.664863Z" name="CanPromoteERPBillTo" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="b52cb696-e08d-443e-ab14-a09c1bc2a802" lastModifiedUtc="2016-02-24T10:44:29.7347006Z" targetType="Sage.SalesLogix.ErpBillTo.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CanPromoteERPBillTo" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

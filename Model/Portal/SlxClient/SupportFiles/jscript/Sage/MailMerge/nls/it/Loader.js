@@ -1,3 +1,3 @@
-define((
-{ decodeFailed: 'Chiamata a DecodeMailMergeJsonFromUrl() non riuscita.' }
-));
+define("Sage/MailMerge/nls/it/Loader", {
+    "decodeFailed": "La chiamata a DecodeMailMergeJsonFromUrl() non è riuscita."
+});

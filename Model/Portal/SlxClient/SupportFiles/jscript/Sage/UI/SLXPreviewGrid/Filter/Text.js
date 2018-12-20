@@ -1,5 +1,5 @@
 /*globals define */
-define([
+define("Sage/UI/SLXPreviewGrid/Filter/Text", [
         'dijit/form/TextBox',
         'Sage/UI/SLXPreviewGrid/Filter/_previewGridFilterMixin',
         'dojo/_base/declare'

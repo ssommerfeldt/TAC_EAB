@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true"  CodeFile="MoveContact.ascx.cs" Inherits="SmartParts_Contact_MoveContact" %>
+<%@ Control Language="C#" AutoEventWireup="true"  CodeFile="MoveContact.ascx.cs" Inherits="SmartParts_Contact_MoveContact" %>
 <%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls" TagPrefix="SalesLogix" %>
 <%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls.Lookup" TagPrefix="SalesLogix" %>
 <%@ Register Assembly="Sage.SalesLogix.HighLevelTypes" Namespace="Sage.SalesLogix.HighLevelTypes" TagPrefix="SalesLogix" %>
@@ -61,7 +61,7 @@
                         <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyEmail.Text %>" PropertyType="System.String" PropertyName="Email"
                             PropertyFormat="None" UseAsResult="True">
                         </SalesLogix:LookupProperty>
-                        </LookupProperties>                                    
+                        </LookupProperties>
                         <LookupPreFilters>
                     </LookupPreFilters>
                 </SalesLogix:LookupControl>
@@ -150,11 +150,28 @@
         <td></td>
         <td colspan="4">
 		    <span class="slxlabel lblright checkbox">
-		        <asp:CheckBox ID="chkUseSourceAddressPhn" runat="server" Text="<%$ resources:chkUseSourceAddressPhn.Caption %>" Checked="True" />
+		        <asp:CheckBox ID="chkUseSourceAddressPhn" runat="server" Text="<%$ resources:chkUseSourceAddressPhn.Caption %>" Checked="True" CssClass="inforAspCheckbox"/>
 			</span>
 		</td>
 	</tr>
     <tr>
+        <td></td>
+            <td colspan="3">
+                <span class="slxlabel">
+                    <asp:Label ID="lblAssignToSameContact" runat="server" Text="<%$ resources:lblAssignToSameContact.Text %>"></asp:Label>
+                </span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="4">
+		        <span class="slxlabel lblright checkbox">
+		            <asp:CheckBox ID="chkAssignToSameContact" runat="server" Text="<%$ resources:chkAssignToSameContact.Caption %>" Checked="False" CssClass="inforAspCheckbox"/>
+			    </span>
+		    </td>
+	    </tr>
+        <tr>
         <td></td>
         <td colspan="4">
             <span class="errorText">
@@ -166,7 +183,7 @@
         <td colspan="3">
             <span class="slxlabel wizardsectiontext">
                 <asp:Label ID="lblReassign" runat="server" Text="<%$ resources:lblReassign.Text %>"></asp:Label>
-            </span>  
+            </span>
         </td>
         <td colspan="2"></td>
     </tr>
@@ -205,8 +222,8 @@
         </td>
         <td>
             <span class="textcontrol lookup width90">
-                <SalesLogix:LookupControl runat="server" ID="lueReassignActivity" LookupEntityName="Contact" SeedProperty="Account.Id" Enabled="False"
-                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false">
+                <SalesLogix:LookupControl runat="server" ID="lueReassignActivity" LookupEntityName="Contact" SeedProperty="Account.Id" Enabled="False" AllowClearingResult="True"
+                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false" AutoPostBack="true">
 				    <LookupProperties>
 				        <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyAccount.Text %>" PropertyType="System.String" PropertyName="AccountName"
                             PropertyFormat="None" UseAsResult="True">
@@ -226,7 +243,7 @@
                         <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyEmail.Text %>" PropertyType="System.String" PropertyName="Email"
                             PropertyFormat="None" UseAsResult="True">
                         </SalesLogix:LookupProperty>
-				    </LookupProperties>                                    
+				    </LookupProperties>
 				    <LookupPreFilters>
 				    </LookupPreFilters>
 				</SalesLogix:LookupControl>
@@ -263,8 +280,8 @@
         </td>
         <td>
             <span class="textcontrol lookup width90">
-                <SalesLogix:LookupControl runat="server" ID="lueReassignNotesHistory" LookupEntityName="Contact" SeedProperty="Account.Id"
-                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false">
+                <SalesLogix:LookupControl runat="server" ID="lueReassignNotesHistory" LookupEntityName="Contact" SeedProperty="Account.Id" AllowClearingResult="True"
+                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false" AutoPostBack="true">
 				    <LookupProperties>
 				        <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyAccount.Text %>" PropertyType="System.String" PropertyName="AccountName"
                             PropertyFormat="None" UseAsResult="True">
@@ -324,8 +341,8 @@
         </td>
         <td>
             <div class="textcontrol lookup width90">
-                <SalesLogix:LookupControl runat="server" ID="lueReassignOpenItems" LookupEntityName="Contact" SeedProperty="Account.Id"
-                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false">
+                <SalesLogix:LookupControl runat="server" ID="lueReassignOpenItems" LookupEntityName="Contact" SeedProperty="Account.Id" AllowClearingResult="True"
+                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false" AutoPostBack="true">
 				    <LookupProperties>
 				        <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyAccount.Text %>" PropertyType="System.String" PropertyName="AccountName"
                             PropertyFormat="None" UseAsResult="True">
@@ -345,7 +362,7 @@
                         <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyEmail.Text %>" PropertyType="System.String" PropertyName="Email"
                             PropertyFormat="None" UseAsResult="True">
                         </SalesLogix:LookupProperty>
-				    </LookupProperties>                                    
+				    </LookupProperties>
 				    <LookupPreFilters>
 				    </LookupPreFilters>
 				</SalesLogix:LookupControl>
@@ -373,7 +390,7 @@
         <td>
             <div class="textcontrol lookup width90">
                 <SalesLogix:LookupControl runat="server" ID="lueReassignClosedItems" LookupEntityName="Contact" SeedProperty="Account.Id" AllowClearingResult="True"
-                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false">
+                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false" AutoPostBack="true">
 				    <LookupProperties>
 				        <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyAccount.Text %>" PropertyType="System.String" PropertyName="AccountName"
                             PropertyFormat="None" UseAsResult="True">
@@ -393,7 +410,7 @@
                         <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyEmail.Text %>" PropertyType="System.String" PropertyName="Email"
                             PropertyFormat="None" UseAsResult="True">
                         </SalesLogix:LookupProperty>
-				    </LookupProperties>                                    
+				    </LookupProperties>
 				    <LookupPreFilters>
 				    </LookupPreFilters>
 				</SalesLogix:LookupControl>
@@ -421,7 +438,7 @@
         <td>
             <div class="textcontrol lookup width90">
                 <SalesLogix:LookupControl runat="server" ID="lueReassignSupportItems" LookupEntityName="Contact" SeedProperty="Account.Id"
-                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false">
+                    LookupEntityTypeName="Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities" EnableHyperLinking="false" AutoPostBack="true">
 				    <LookupProperties>
 				        <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyAccount.Text %>" PropertyType="System.String" PropertyName="AccountName"
                             PropertyFormat="None" UseAsResult="True">
@@ -441,7 +458,7 @@
                         <SalesLogix:LookupProperty PropertyHeader="<%$ resources:LookupPropertyEmail.Text %>" PropertyType="System.String" PropertyName="Email"
                             PropertyFormat="None" UseAsResult="True">
                         </SalesLogix:LookupProperty>
-				    </LookupProperties>                                    
+				    </LookupProperties>
 				    <LookupPreFilters>
 				    </LookupPreFilters>
 				</SalesLogix:LookupControl>

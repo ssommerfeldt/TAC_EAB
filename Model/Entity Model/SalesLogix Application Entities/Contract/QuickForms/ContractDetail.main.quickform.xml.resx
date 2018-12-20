@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lueAccount.Caption" xml:space="preserve">
     <value>Account:</value>
@@ -280,7 +280,7 @@
     <value>Status</value>
   </data>
   <data name="lueAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>AcctManager</value>
+    <value>Account Manager</value>
   </data>
   <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
     <value>Owner</value>
@@ -328,6 +328,12 @@
     <value>Remaining:</value>
   </data>
   <data name="curRemaining.Caption" xml:space="preserve">
+    <value>Remaining:</value>
+  </data>
+  <data name="numQuantityWithDecimal.Caption" xml:space="preserve">
+    <value>Quantity:</value>
+  </data>
+  <data name="numRemainingWithDecimal.Caption" xml:space="preserve">
     <value>Remaining:</value>
   </data>
 </root>

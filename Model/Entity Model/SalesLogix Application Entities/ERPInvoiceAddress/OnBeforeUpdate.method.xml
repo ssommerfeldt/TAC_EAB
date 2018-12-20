@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e00be189-a5bf-44c0-93bb-7eca6f51a940" lastModifiedUtc="2014-12-13T19:01:46.2545096Z" name="OnBeforeUpdate" methodType="CrudEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets>
+    <methodTarget id="4d7f07e2-d9f8-40b2-bffd-c6b7d2f7c1d4" lastModifiedUtc="2015-12-15T22:58:30.0879225Z" targetType="Sage.SalesLogix.ErpInvoiceAddress.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ValidateCountryCode" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
+</method>

@@ -117,79 +117,133 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BusinessDescription.Caption" xml:space="preserve">
-    <value>Desc. dell'Attività:</value>
-  </data>
-  <data name="Owner.Caption" xml:space="preserve">
-    <value>Proprietario:</value>
-  </data>
-  <data name="TollFree.Caption" xml:space="preserve">
-    <value>Num. verde:</value>
-  </data>
-  <data name="Division.Caption" xml:space="preserve">
-    <value>Divisione:</value>
-  </data>
-  <data name="cmdCopyAccount.ToolTip" xml:space="preserve">
-    <value>Copia informazioni Azienda negli Appunti</value>
-  </data>
-  <data name="pklType.Caption" xml:space="preserve">
-    <value>Tipo:</value>
-  </data>
-  <data name="Industry.Caption" xml:space="preserve">
-    <value>Settore:</value>
-  </data>
-  <data name="MainPhone.Caption" xml:space="preserve">
-    <value>Tel.Principale:</value>
-  </data>
-  <data name="WebAddress.Caption" xml:space="preserve">
-    <value>Web URL:</value>
-  </data>
-  <data name="cmdCopyAccount.Caption" xml:space="preserve">
-    <value>Copia</value>
-  </data>
-  <data name="AccManager.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="Address.ButtonToolTip" xml:space="preserve">
-    <value>Modifica</value>
-  </data>
   <data name="btnSaveAccount.Caption" xml:space="preserve">
     <value>Salva</value>
-  </data>
-  <data name="Status.Caption" xml:space="preserve">
-    <value>Status:</value>
-  </data>
-  <data name="btnDelete.Caption" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="cmdReset.Caption" xml:space="preserve">
-    <value>Reimposta</value>
-  </data>
-  <data name="AccountName.Caption" xml:space="preserve">
-    <value>Azienda:</value>
   </data>
   <data name="btnSaveAccount.ToolTip" xml:space="preserve">
     <value>Salva</value>
   </data>
-  <data name="Address.Caption" xml:space="preserve">
-    <value>Indirizzo:</value>
-  </data>
-  <data name="AccManager.Caption" xml:space="preserve">
-    <value>Responsabile</value>
-  </data>
-  <data name="cmdReset.ToolTip" xml:space="preserve">
-    <value>Reimposta</value>
-  </data>
-  <data name="Owner.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
+  <data name="btnDelete.Caption" xml:space="preserve">
+    <value>Elimina</value>
   </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Elimina</value>
   </data>
-  <data name="pklSubType.Caption" xml:space="preserve">
-    <value>Sotto Tipo:</value>
-  </data>
   <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Stai per eliminare in modo definitivo questa Azienda. Facendo questo rimuoverai tutti i contatti, opportunità e cronologia associati.</value>
+    <value>Si sta per eliminare definitivamente questa azienda. Se si continua, verranno rimossi anche tutti i contatti, le opportunità e la cronologia associati.</value>
+  </data>
+  <data name="AccountName.Caption" xml:space="preserve">
+    <value>Azienda</value>
+  </data>
+  <data name="Division.Caption" xml:space="preserve">
+    <value>Divisione</value>
+  </data>
+  <data name="BusinessDescription.Caption" xml:space="preserve">
+    <value>Descr. business</value>
+  </data>
+  <data name="Address.Caption" xml:space="preserve">
+    <value>Indirizzo</value>
+  </data>
+  <data name="Owner.Caption" xml:space="preserve">
+    <value>Proprietario</value>
+  </data>
+  <data name="MainPhone.Caption" xml:space="preserve">
+    <value>Principale</value>
+  </data>
+  <data name="Fax.Caption" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="TollFree.Caption" xml:space="preserve">
+    <value>Numero verde</value>
+  </data>
+  <data name="pklType.Caption" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="pklSubType.Caption" xml:space="preserve">
+    <value>Sottotipo</value>
+  </data>
+  <data name="Status.Caption" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="Industry.Caption" xml:space="preserve">
+    <value>Settore</value>
+  </data>
+  <data name="WebAddress.Caption" xml:space="preserve">
+    <value>URL Web</value>
+  </data>
+  <data name="AccManager.Caption" xml:space="preserve">
+    <value>Account manager</value>
+  </data>
+  <data name="cmdCopyAccount.Caption" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="cmdCopyAccount.ToolTip" xml:space="preserve">
+    <value>Copia informazioni azienda negli appunti</value>
+  </data>
+  <data name="Owner.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="AccManager.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="Address.AddressToolTip" xml:space="preserve">
+    <value>MapQuest</value>
+  </data>
+  <data name="Address.ButtonToolTip" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="WebAddress.ButtonToolTip" xml:space="preserve">
+    <value>WWW</value>
+  </data>
+  <data name="cmdReset.Caption" xml:space="preserve">
+    <value>Reimposta</value>
+  </data>
+  <data name="cmdReset.ToolTip" xml:space="preserve">
+    <value>Reimposta</value>
+  </data>
+  <data name="txtErpCustomerID.Caption" xml:space="preserve">
+    <value>ID cliente ERP</value>
+  </data>
+  <data name="pklErpStatus.Caption" xml:space="preserve">
+    <value>Stato ERP</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>AccountName (Nome azienda)</value>
+  </data>
+  <data name="lueParentAccount.Caption" xml:space="preserve">
+    <value>Azienda padre</value>
+  </data>
+  <data name="lueParentAccount.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Telefono principale</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Sottotipo</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueParentAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Account manager</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Proprietario</value>
+  </data>
+  <data name="txtPropensityScore.Caption" xml:space="preserve">
+    <value>Indice di probabilità di acquisto</value>
   </data>
 </root>

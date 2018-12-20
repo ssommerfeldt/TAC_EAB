@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a40cd3b3-e2f6-465e-9428-78af6985ac4c">
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a40cd3b3-e2f6-465e-9428-78af6985ac4c" disablePageValidation="false">
   <PageAlias>Product</PageAlias>
   <SmallImage>[Localization!Global_Images:product_16]</SmallImage>
   <LargeImage>[Localization!Global_Images:product_24]</LargeImage>
-  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <TemplateUrl>Masters\admin.master</TemplateUrl>
   <InheritTemplate>false</InheritTemplate>
   <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
   <Properties>
@@ -15,4 +15,5 @@
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />
   <AppliedSecurity>Entities/Product/View</AppliedSecurity>
+  <IncludeScript />
 </PortalPage>

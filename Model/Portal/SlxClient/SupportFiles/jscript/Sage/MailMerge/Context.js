@@ -1,4 +1,4 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 /*  ------------------------------------------------------------------------
 Saleslogix Desktop Integration
 Sage.MailMerge.Context 
@@ -8,7 +8,7 @@ This service class is used to access the current entity context
 information as related to mail merge.
 ------------------------------------------------------------------------ */
 
-define([
+define("Sage/MailMerge/Context", [
         "dojox/json/ref",
         "dojo/_base/declare"
     ],

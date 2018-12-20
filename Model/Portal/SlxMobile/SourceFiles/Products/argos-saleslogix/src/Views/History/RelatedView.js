@@ -1,69 +1,59 @@
-/* Copyright (c) 2010, Sage Software, Inc. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import RelatedViewWidget from 'argos/RelatedViewWidget';
+import getResource from 'argos/I18n';
+
+const resource = getResource('historyRelated');
+
+/**
+ * @class crm.Views.History.RelatedView
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * @extends argos.RelatedViewWidget
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * @requires argos.Convert
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @requires crm.Format
+ *
  */
+const __class = declare('crm.Views.History.RelatedView', [RelatedViewWidget], {
+  // Localization
+  regardingText: resource.regardingText,
+  byText: resource.byText,
+  titleText: resource.titleText,
 
-
-define('Mobile/SalesLogix/Views/History/RelatedView', [
-    'dojo/_base/declare',
-    'Mobile/SalesLogix/Format',
-    'Sage/Platform/Mobile/Convert',
-    'Sage/Platform/Mobile/RelatedViewWidget',
-    'moment'
-], function(
-    declare,
-    format,
-    convert,
-    RelatedViewWidget,
-    moment
-) {
-    return declare('Mobile.SalesLogix.Views.History.RelatedView', [RelatedViewWidget], {
-        regardingText: 'Regarding',
-        byText: 'wrote ',
-        id: 'relatedNotes',
-        icon: 'content/images/icons/journal_24.png',
-        itemIcon: 'content/images/icons/journal_24.png',
-        title: 'Notes',
-        detailViewId: 'history_detail',
-        listViewId: 'history_related',
-        listViewWhere: null,
-        enabled: true,
-        showTab: false,
-        enableActions: false,
-        showTotalInTab: false,
-        hideWhenNoData: true,
-        resourceKind: 'history',
-        select: ['Type','ModifyDate', 'CompleteDate', 'UserName', 'Description', 'Notes', 'AccountName'],
-        where:null ,
-        sort: 'ModifyDate desc',
-        pageSize: 3,
-        relatedItemIconTemplate: new Simplate([
-            '<div class="user-icon">{%: Mobile.SalesLogix.Format.formatUserInitial($.UserName) %}</div>'
-        ]),
-        relatedItemHeaderTemplate: new Simplate([
-           '<h4 ><strong>{%: $$.getDescription($) %} </strong></h4>',
-           '<h4>{%: Mobile.SalesLogix.Format.formatByUser($.UserName) %} {%: $$.byText %}  {%: Mobile.SalesLogix.Format.relativeDate($.ModifyDate, false) %}</h4>'
-        ]),
-        relatedItemDetailTemplate: new Simplate([
-               '<div class="note-text-wrap">',
-                '<h4>{%: $.Notes %} ... </h4>',
-              '</div>'
-        ]),
-        relatedViewHeaderTemplate: new Simplate([
-             '<div class="line-bar"></div>'
-        ]),
-        getDescription: function(entry) {
-            return (entry.Description)? entry.Description : entry.$descriptor;
-        }
-    });
+  id: 'relatedNotes',
+  detailViewId: 'history_detail',
+  listViewId: 'history_related',
+  listViewWhere: null,
+  enabled: true,
+  showTab: false,
+  enableActions: false,
+  showTotalInTab: false,
+  hideWhenNoData: true,
+  resourceKind: 'history',
+  select: ['Type', 'ModifyDate', 'CompleteDate', 'UserName', 'Description', 'Notes', 'AccountName'],
+  where: null,
+  sort: 'ModifyDate desc',
+  pageSize: 3,
+  relatedItemIconTemplate: new Simplate([
+    '<div class="user-icon">{%: crm.Format.formatUserInitial($.UserName) %}</div>',
+  ]),
+  relatedItemHeaderTemplate: new Simplate([
+    '<h4 ><strong>{%: $$.getDescription($) %} </strong></h4>',
+    '<h4>{%: crm.Format.formatByUser($.UserName) %} {%: $$.byText %}  {%: crm.Format.relativeDate($.ModifyDate, false) %}</h4>',
+  ]),
+  relatedItemDetailTemplate: new Simplate([
+    '<div class="note-text-wrap">',
+    '<h4>{%: $.Notes %} ... </h4>',
+    '</div>',
+  ]),
+  relatedViewHeaderTemplate: new Simplate([
+    '<div class="line-bar"></div>',
+  ]),
+  getDescription: function getDescription(entry) {
+    return (entry.Description) ? entry.Description : entry.$descriptor;
+  },
 });
+
+lang.setObject('Mobile.SalesLogix.Views.History.RelatedView', __class);
+export default __class;

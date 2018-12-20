@@ -1,5 +1,5 @@
-define((
-{ colNameJobName: 'Nome Job',
-  colNameDescription: 'Descrizione',
-  colNameType: 'Tipo' }
-));
+define("Sage/MainView/JobMgr/nls/it/JobDefinitionsListPanelConfig", {
+    "colNameJobName": "Nome processo",
+    "colNameDescription": "Descrizione",
+    "colNameType": "Tipo"
+});

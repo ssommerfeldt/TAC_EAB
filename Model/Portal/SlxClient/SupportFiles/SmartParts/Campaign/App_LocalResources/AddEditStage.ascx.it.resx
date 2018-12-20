@@ -117,127 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Priority_Normal" xml:space="preserve">
-    <value>Normale</value>
-  </data>
-  <data name="LeadSourceSourceDate.PropertyHeader" xml:space="preserve">
-    <value>Data origine</value>
-  </data>
-  <data name="LeadSourceAbbrev.PropertyHeader" xml:space="preserve">
-    <value>Codice sorgente</value>
-  </data>
-  <data name="btnAddTask.Text" xml:space="preserve">
-    <value>Aggiungi Compito...</value>
-  </data>
-  <data name="lblActualCost.Text" xml:space="preserve">
-    <value>Costo Attuale:</value>
+  <data name="lblTasks.Text" xml:space="preserve">
+    <value>Attività</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Descrizione:</value>
   </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Attivo</value>
+  <data name="lblStatus.Text" xml:space="preserve">
+    <value>Stato:</value>
   </data>
-  <data name="lblTasks.Text" xml:space="preserve">
-    <value>Compiti</value>
-  </data>
-  <data name="lblActual.Text" xml:space="preserve">
-    <value>Attuale</value>
-  </data>
-  <data name="CodeChangeMSG" xml:space="preserve">
-    <value>Se un codice campagna è cambiato su una vista di dettaglio della campagna o in una fase della campagna, ${0} codici campagna che potevano essere identici non corrisponderanno più. ${0}${0} Vuoi continuare?</value>
-  </data>
-  <data name="grdTasks_Description.HeaderText" xml:space="preserve">
-    <value>Descrizione</value>
-  </data>
-  <data name="lblEndDate.Text" xml:space="preserve">
-    <value>Data finale:</value>
-  </data>
-  <data name="LeadSourceType.PropertyHeader" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="DialogTitleAdd" xml:space="preserve">
-    <value>Aggiungi Fase</value>
-  </data>
-  <data name="LeadSource.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="LeadSourceDescription.PropertyHeader" xml:space="preserve">
-    <value>Descrizione</value>
-  </data>
-  <data name="lblEstimate.Text" xml:space="preserve">
-    <value>Stimato</value>
-  </data>
-  <data name="Status_Open" xml:space="preserve">
-    <value>Apri</value>
-  </data>
-  <data name="lblStartDate.Text" xml:space="preserve">
-    <value>Data iniziale:</value>
-  </data>
-  <data name="grdTasks_NoRecordFound.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
-  </data>
-  <data name="lblBudget.Text" xml:space="preserve">
-    <value>Bilancio</value>
-  </data>
-  <data name="DialogTitleComplete" xml:space="preserve">
-    <value>Completa Fase</value>
-  </data>
-  <data name="DefaultStatus" xml:space="preserve">
-    <value>Apri</value>
-  </data>
-  <data name="lblEstimatedHours.Text" xml:space="preserve">
-    <value>Ore Stimate:</value>
-  </data>
-  <data name="lblTaskHours.Text" xml:space="preserve">
-    <value>Ore Compito:</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="Status_Completed" xml:space="preserve">
-    <value>Completato</value>
+  <data name="lblLeadSource.Text" xml:space="preserve">
+    <value>Origine lead:</value>
   </data>
   <data name="lblCode.Text" xml:space="preserve">
     <value>Codice:</value>
   </data>
-  <data name="lblLeadSource.Text" xml:space="preserve">
-    <value>Fonte Nominativo:</value>
+  <data name="lblStartDate.Text" xml:space="preserve">
+    <value>Data di inizio:</value>
   </data>
-  <data name="grdTasks_Priority.HeaderText" xml:space="preserve">
-    <value>Priorità</value>
-  </data>
-  <data name="lblTaskCosts.Text" xml:space="preserve">
-    <value>Costi Compito:</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="lblEstimatedCost.Text" xml:space="preserve">
-    <value>Costo Stimato:</value>
+  <data name="lblEndDate.Text" xml:space="preserve">
+    <value>Data di fine:</value>
   </data>
   <data name="lblComment.Text" xml:space="preserve">
     <value>Commenti:</value>
   </data>
-  <data name="grdTasks_PercentComplete.HeaderText" xml:space="preserve">
-    <value>Percentuale Completamento</value>
-  </data>
   <data name="lblCosts.Text" xml:space="preserve">
     <value>Costi</value>
+  </data>
+  <data name="lblTaskCosts.Text" xml:space="preserve">
+    <value>Costi attività:</value>
+  </data>
+  <data name="lblTaskHours.Text" xml:space="preserve">
+    <value>Ore attività:</value>
+  </data>
+  <data name="DefaultStatus" xml:space="preserve">
+    <value>Aperto</value>
+  </data>
+  <data name="DialogTitleAdd" xml:space="preserve">
+    <value>Aggiungi fase</value>
+  </data>
+  <data name="DialogTitleComplete" xml:space="preserve">
+    <value>Completa fase</value>
   </data>
   <data name="DialogTitleEdit" xml:space="preserve">
     <value>Modifica fase</value>
   </data>
   <data name="DeleteMSG" xml:space="preserve">
-    <value>Elimina Compito</value>
+    <value>Elimina attività</value>
   </data>
-  <data name="lblStatus.Text" xml:space="preserve">
-    <value>Status:</value>
+  <data name="btnAddTask.Text" xml:space="preserve">
+    <value>Aggiungi attività...</value>
+  </data>
+  <data name="grdTasks_Description.HeaderText" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="grdTasks_PercentComplete.HeaderText" xml:space="preserve">
+    <value>Percentuale completamento</value>
+  </data>
+  <data name="grdTasks_Priority.HeaderText" xml:space="preserve">
+    <value>Priorità</value>
   </data>
   <data name="grdTasks_Status.HeaderText" xml:space="preserve">
-    <value>Status</value>
+    <value>Stato</value>
+  </data>
+  <data name="lblActual.Text" xml:space="preserve">
+    <value>Effettivo</value>
+  </data>
+  <data name="lblEstimate.Text" xml:space="preserve">
+    <value>Stimato</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="CodeChangeMSG" xml:space="preserve">
+    <value>Se un codice campagna viene modificato nella vista Dettagli campagna o in una fase della campagna, ${0} codici campagna che potevano essere identici non corrisponderanno più.${0}${0} Continuare?</value>
+  </data>
+  <data name="Priority_Normal" xml:space="preserve">
+    <value>Normale</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Completato</value>
+  </data>
+  <data name="Status_Open" xml:space="preserve">
+    <value>Aperta</value>
+  </data>
+  <data name="grdTasks_NoRecordFound.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
+  </data>
+  <data name="lblActualCost.Text" xml:space="preserve">
+    <value>Costo effettivo:</value>
   </data>
   <data name="lblActualHours.Text" xml:space="preserve">
-    <value>Ore Attuali:</value>
+    <value>Ore effettive:</value>
+  </data>
+  <data name="lblBudget.Text" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="lblEstimatedCost.Text" xml:space="preserve">
+    <value>Costo stimato:</value>
+  </data>
+  <data name="lblEstimatedHours.Text" xml:space="preserve">
+    <value>Ore stimate:</value>
+  </data>
+  <data name="LeadSourceAbbrev.PropertyHeader" xml:space="preserve">
+    <value>Codice origine</value>
+  </data>
+  <data name="LeadSourceDescription.PropertyHeader" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="LeadSourceSourceDate.PropertyHeader" xml:space="preserve">
+    <value>Data origine</value>
+  </data>
+  <data name="LeadSourceType.PropertyHeader" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="LeadSource.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
   </data>
 </root>

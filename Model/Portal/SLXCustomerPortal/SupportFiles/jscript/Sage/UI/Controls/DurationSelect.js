@@ -1,13 +1,14 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/DurationSelect", [
     'Sage/UI/Controls/_customSelectMixin',
     'Sage/Utility/Activity',
     'dojo/date',
+    'dojo/date/locale',
     'dojo/data/ItemFileReadStore',
     'dojo/i18n!./nls/DurationSelect',
     'dojo/_base/declare'
 ],
-function (_customSelectMixin, activityUtility, dojoDate, ItemFileReadStore, durSelectStrings, declare) {
+function (_customSelectMixin, activityUtility, dojoDate, dojoLocale, ItemFileReadStore, durSelectStrings, declare) {
     var durationSelect = declare('Sage.UI.Controls.DurationSelect', _customSelectMixin, {
         id: '',
         startTime: new Date(),
@@ -83,7 +84,7 @@ function (_customSelectMixin, activityUtility, dojoDate, ItemFileReadStore, durS
             var fmtOptions = {
                 amount: inc,
                 interval: (inc === 1) ? this.minuteText : this.minutesText,
-                endTime: dojoDate.locale.format(dateval, { selector: 'time' })
+                endTime: dojoLocale.format(dateval, { selector: 'time', locale: Sys.CultureInfo.CurrentCulture.name })
             };
             var fmtStr = this.labelFmt;
             if (inc > 59) {
@@ -103,7 +104,7 @@ function (_customSelectMixin, activityUtility, dojoDate, ItemFileReadStore, durS
                     var dayinc = Math.round(hourinc / 24);
                     fmtOptions['amount'] = dayinc;
                     fmtOptions['interval'] = (dayinc === 1) ? this.dayText : this.daysText;
-                    fmtOptions['endTime'] = dojoDate.locale.format(dateval, { selector: 'datetime' });
+                    fmtOptions['endTime'] = dojoLocale.format(dateval, { selector: 'datetime', locale: Sys.CultureInfo.CurrentCulture.name });
                 }
             }
             return dojo.string.substitute(fmtStr, fmtOptions);
@@ -121,7 +122,7 @@ function (_customSelectMixin, activityUtility, dojoDate, ItemFileReadStore, durS
                     newValue = newValue.replace(newMatches[0], '');
                 } else {
                     //they changed the time... can we parse it?
-                    var timeDate = dojoDate.locale.parse(newMatches[1], { selector: 'time' });
+                    var timeDate = dojoLocale.parse(newMatches[1], { selector: 'time' });
                     if (timeDate) {
                         timeDate.setFullYear(this.startTime.getFullYear());
                         timeDate.setMonth(this.startTime.getMonth());

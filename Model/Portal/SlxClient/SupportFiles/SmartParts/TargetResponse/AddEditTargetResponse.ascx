@@ -25,7 +25,7 @@
                     Text="<%$ resources: lblTargetType.Caption %>">
                 </asp:Label>
             </div>
-            <asp:RadioButtonList runat="server" ID="rdgTargetType" RepeatDirection="Horizontal" CssClass="slxlabel alignright" 
+            <asp:RadioButtonList runat="server" ID="rdgTargetType" RepeatDirection="Horizontal" CssClass="slxlabel alignright radio" 
                 AutoPostBack="true" >
                 <asp:ListItem Text="<%$ resources: rdgTargetType_item0.Text %>" Value="<%$ resources: rdgTargetType_item0.Value %>" />
                 <asp:ListItem Text="<%$ resources: rdgTargetType_item1.Text %>" Value="<%$ resources: rdgTargetType_item1.Value %>" />
@@ -212,9 +212,6 @@
                         </SalesLogix:LookupProperty>
                     </LookupProperties>
                     <LookupPreFilters>
-                        <SalesLogix:LookupPreFilter PropertyName="Status" PropertyType="System.String" OperatorCode="="
-                            FilterValue="<%$ resources: LeadSource.LUPF.Status %>">
-                        </SalesLogix:LookupPreFilter>
                     </LookupPreFilters>
                 </SalesLogix:LookupControl>
             </div>
@@ -254,30 +251,32 @@
         </td>
     </tr>
     <tr class="mainContentHeader">
-        <td colspan="2">
+        <td>
             <div>
                 <span id="hzsComments">
                     <asp:Localize ID="lclProducts" runat="server" Text="<%$ resources: lblProducts.Caption %>">Products</asp:Localize>
                 </span>
-                <SalesLogix:LookupControl runat="server" ID="lueAddProduct" ButtonToolTip="<%$ resources: lueAddProduct.ToolTip %>" LookupEntityName="Product"
-                    LookupEntityTypeName="Sage.Entity.Interfaces.IProduct, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
-                    LookupDisplayMode="ButtonOnly" AutoPostBack="true" LookupImageURL="~/ImageResource.axd?scope=global&type=Global_Images&key=plus_16x16"
-                    style="bottom:17px" >
-                    <LookupProperties>
-                        <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueAddProduct.LookupProperties.ActualId.PropertyHeader %>"
-                            PropertyName="ActualId" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
-                        </SalesLogix:LookupProperty>
-                        <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueAddProduct.LookupProperties.Name.PropertyHeader %>"
-                            PropertyName="Name" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
-                        </SalesLogix:LookupProperty>
-                        <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueAddProduct.LookupProperties.Status.PropertyHeader %>"
-                            PropertyName="Status" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
-                        </SalesLogix:LookupProperty>
-                    </LookupProperties>
-                    <LookupPreFilters>
-                    </LookupPreFilters>
-                </SalesLogix:LookupControl>
             </div>
+        </td>
+        <td class="rightTools">
+            <SalesLogix:LookupControl runat="server" ID="lueAddProduct" ButtonToolTip="<%$ resources: lueAddProduct.ToolTip %>" LookupEntityName="Product"
+                LookupEntityTypeName="Sage.Entity.Interfaces.IProduct, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+                LookupDisplayMode="ButtonOnly" AutoPostBack="true" LookupImageURL="~/ImageResource.axd?scope=global&type=Global_Images&key=plus_16x16"
+                style="bottom:17px" >
+                <LookupProperties>
+                    <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueAddProduct.LookupProperties.ActualId.PropertyHeader %>"
+                        PropertyName="ActualId" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
+                    </SalesLogix:LookupProperty>
+                    <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueAddProduct.LookupProperties.Name.PropertyHeader %>"
+                        PropertyName="Name" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
+                    </SalesLogix:LookupProperty>
+                    <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueAddProduct.LookupProperties.Status.PropertyHeader %>"
+                        PropertyName="Status" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
+                    </SalesLogix:LookupProperty>
+                </LookupProperties>
+                <LookupPreFilters>
+                </LookupPreFilters>
+            </SalesLogix:LookupControl>
         </td>
     </tr>
     <tr>

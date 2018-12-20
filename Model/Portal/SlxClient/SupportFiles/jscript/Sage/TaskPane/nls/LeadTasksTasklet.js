@@ -1,15 +1,15 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            updateLeadsTitle: 'Update Leads',
-            deleteLeadsTitle: 'Delete Leads',
-            deleteJobError: 'Sorry an error occurred during the delete lead job: ${0}',
-            confirmDeleteLeads: 'Are you sure you want to delete the selected records?'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/TaskPane/nls/LeadTasksTasklet", {
+    root: {
+        requestIONWorkFlowLeads: 'Request Workflow',
+        cancelIONWorkFlowItems: 'Cancel Workflow'
+    },
+    "de": false,
+    "en": true,
+    "fr": false,
+    "it": false,
+    "ru": false,
+    "es": false,
+    "pt": false,
+    "zh-cn": false,
+    "zh-tw":false
 });

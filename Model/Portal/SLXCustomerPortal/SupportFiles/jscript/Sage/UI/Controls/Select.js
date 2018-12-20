@@ -1,30 +1,35 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/Select", [
        'dijit/form/Select',
        'dojo/_base/declare',
        'dojo/has',
        'dojo/_base/sniff',
        'dojo/_base/connect',
        'dojo/dom-style',
-       'dojo/query'
+       'dojo/query',
+       'dojo/on',
+       'dojo/_base/lang'
 ],
-function (select, declare, has, _sniff, connect, domStyle, query) {
-    var widget = declare('Sage.UI.Controls.Select', [select], {
+function (Select, declare, has, _sniff, connect, domStyle, query, on, lang) {
+    var widget = declare('Sage.UI.Controls.Select', [Select], {
         _hClickBody: false,
         shouldPublishMarkDirty: true,
         autoPostBack: false,
         maxHeight: has('ie') ? 146 : 155,
+        constructor: function() {
+            this.own(on(document.body, 'click', lang.hitch(this, this.ensureClosed)));
+        },
+        ensureClosed: function() {
+            if (this.dropDown && this.dropDown.isShowingNow) {
+                this.dropDown.onCancel();
+            }
+        },
         postCreate: function () {
-            this.connect(this, 'onChange', this.onChanged);
+            this.own(on(this, 'change', lang.hitch(this, this.onChanged)));
             this.inherited(arguments);
         },
         destroy: function () {
             this.inherited(arguments);
-        },
-        onClickBody: function (e) {
-            if (has('ie') >= 9 && this._opened) {
-                this.closeDropDown();
-            }
         },
         _setDisplay: function(newDisplay) {
             this.inherited(arguments);
@@ -42,7 +47,7 @@ function (select, declare, has, _sniff, connect, domStyle, query) {
         //  if the length causes the control to extend beyond its container
         trimDisplayValue: function() {
             var nodes, i, len, node, controlWidth;
-            controlWidth = this.focusNode.style.width; 
+            controlWidth = this.focusNode.style.width;
 
             if (!controlWidth) {
                 return;
@@ -57,21 +62,9 @@ function (select, declare, has, _sniff, connect, domStyle, query) {
                     'overflow': 'hidden'
                 });
             }
-        },
-        closeDropDown: function (/*Boolean*/focus) {
-            if (has('ie') >= 9 && this._hClickBody) {
-                connect.disconnect(this._hClickBody);
-            }
-            this.inherited(arguments);
-        },
-        openDropDown: function () {
-            if (has('ie') >= 9) {
-                // WORKAROUND: Please see http://bugs.dojotoolkit.org/ticket/14408. This issue is still [not] fixed.
-                this._hClickBody = connect.connect(document.body, 'onclick', this, this.onClickBody);
-            }
-            this.inherited(arguments);
         }
     });
 
     return widget;
 });
+

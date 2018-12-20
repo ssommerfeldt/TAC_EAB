@@ -291,4 +291,16 @@
   <data name="lueCurrencyCode.CurrencyCode.PropertyHeader" xml:space="preserve">
     <value>Currency Code</value>
   </data>
+  <data name="lblPendingChanges.Caption" xml:space="preserve">
+    <value>The entity has pending changes. Please submit changes using the Promote link in the tasklet.</value>
+  </data>
+  <data name="lblSyncStateNoPendingChanges" xml:space="preserve">
+    <value>There are no pending changes since the last promotion on {0}.</value>
+  </data>
+  <data name="lblSyncStatePendingChanges" xml:space="preserve">
+    <value>There are pending changes since the last promotion on {0}, pricing information may be incorrect. Please submit changes using the Promote link in the Task Pane.</value>
+  </data>
+  <data name="lblSyncStateError" xml:space="preserve">
+    <value>An error occurred during the last sync cycle. Please refer to the Sync History tab for more information.</value>
+  </data>
 </root>

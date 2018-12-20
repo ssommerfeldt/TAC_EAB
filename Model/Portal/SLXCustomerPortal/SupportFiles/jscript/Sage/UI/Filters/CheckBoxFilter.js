@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Filters/CheckBoxFilter", [
        'dijit/_Widget',
        'dijit/_Contained',
        'dojo/NodeList-traverse',
@@ -61,7 +61,7 @@ function (
         widgetsInTemplate: false,
         widgetTemplate: new Simplate([
             '<div class="filter-type-checkbox filter-collapsed">',
-                '<h3 data-action="toggleExpand" data-dojo-attach-point="filterNameNode">{%: $.filter.displayName || $.filter.filterName %}',
+                '<h3 data-action="toggleExpand" data-dojo-attach-point="filterNameNode">{%: $.filter.$descriptor || $.filter.filterName %}',
                 '</h3>',
                 '<ul class="filter-loading-indicator"><li><span>{%: $.loadingText %}</span></li></ul>',
                 '<a href="#" class="filter-clear" data-dojo-attach-point="clearLinkNode">{%: $.clearText %}</a>',
@@ -95,15 +95,6 @@ function (
         appliedValues: null,
         parent: null,
         _originalActiveFilter: '',
-
-        // i18n
-        loadingText: 'Loading...',
-        moreText: 'Add/Remove Items',
-        clearText: 'Clear',
-        emptyText: '(empty)',
-        nullText: '(null)',
-        ofText: 'of',
-        // end i18n
 
         nullName: 'SLX_NULL',
         emptyName: 'SLX_EMPTY',
@@ -261,11 +252,7 @@ function (
                 queryParts.push(this._originalActiveFilter);
             }
 
-            if (queryParts.length > 1) {
-                q = queryParts.join(' AND ');
-            } else {
-                q = queryParts.join('');
-            }
+            q = queryParts.length > 1 ? queryParts.join(' AND ') : queryParts.join('');
 
             this.store.request.setQueryArg('_activeFilter', q);
         },
@@ -307,16 +294,83 @@ function (
                 return this.emptyText;
             }
 
-            if (this.configurationProvider) {
-                if (this.configurationProvider.getFilterFormatter) {
-                    var formatter = this.configurationProvider.getFilterFormatter(this.filter);
-                    if (formatter) {
-                        return formatter(value);
-                    }
+            if (this.filter.$descriptor === "Create Date") {
+                switch (name) {
+                    case 'Yesterday':
+                        value = this.filteroptionYesterday;
+                        break;
+                    case 'Today':
+                        value = this.filteroptionToday;
+                        break;
+                    case 'ThisWeek':
+                        value = this.filteroptionThisWeek;
+                        break;
+                    case 'ThisMonth':
+                        value = this.filteroptionThisMonth;
+                        break;
+                    case 'ThisQuarter':
+                        value = this.filteroptionThisQuarter;
+                        break;
+                    case 'ThisYear':
+                        value = this.filteroptionThisYear;
+                        break;
+                    case 'LastWeek':
+                        value = this.filteroptionLastWeek;
+                        break;
+                    case 'LastMonth':
+                        value = this.filteroptionLastMonth;
+                        break;
+                    case 'LastQuarter':
+                        value = this.filteroptionLastQuarter;
+                        break;
+                    case 'LastYear':
+                        value = this.filteroptionLastYear;
+                        break;
+                    case 'WeekToDate':
+                        value = this.filteroptionWeektoStart;
+                        break;
+                    case 'MonthToDate':
+                        value = this.filteroptionMonthtoStart;
+                        break;
+                    case 'QuarterToDate':
+                        value = this.filteroptionQtrtoStart;
+                        break;
+                    case 'YearToDate':
+                        value = this.filteroptionYeartoStart;             
+                }
+            } else if (this.filter.$descriptor === "Price") {
+                switch (name) {
+                    case '0 to 999':
+                        value = this.filteroption0To999;
+                        break;
+                    case '1000 to 9999':
+                        value = this.filteroption1000To9999;
+                        break;
+                    case '10,000 to 99,999':
+                        value = this.filteroption10000To99999;
+                        break;
+                    case '100,000 to 499,999':
+                        value = this.filteroption100000To499999;
+                        break;
+                    case '500,000 to 999,999':
+                        value = this.filteroption500000To999999;
+                        break;
+                    case '1,000,000 and higher':
+                        value = this.filteroption1000000AndHigher;
+                }
+            } else if (this.filter.$descriptor === "Active") {
+                switch (name) {
+                    case 'T':
+                        value = this.filteroptionT;
+                        break;
                 }
             }
 
-            return value;
+            if (value) {
+                return value;
+            } else {
+                return name;
+            }
         },
         _isDistinctFilter: function () {
             return this.filter &&
@@ -492,7 +546,7 @@ function (
                 this.set('content', this.output.join(''));
             }
             this._clearOutputEntries();
-            this.updateCounts();
+            this._updateCountsInPlace(items);
         },
         _transformFilterItemName: function (name) {
             var results = name;
@@ -502,7 +556,7 @@ function (
                 results = this.emptyName;
             }
 
-            return results.trim();
+            return results ? results.trim() : results;
         },
         _fixMissingItems: function () {
             /*
@@ -570,7 +624,7 @@ function (
             return filterManager;
         },
         resolveDeferred: function () {
-            if(this.deferred) {
+            if (this.deferred) {
                 // resolve() doesn't have a return, so deferred is set to null
                 //  (ensures this doesn't get hit when it's already resolved)
                 this.deferred = this.deferred.resolve();

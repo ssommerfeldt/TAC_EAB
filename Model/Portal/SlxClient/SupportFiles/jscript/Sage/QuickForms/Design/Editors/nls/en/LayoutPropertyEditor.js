@@ -1,4 +1,4 @@
-define((
+define("Sage/QuickForms/Design/Editors/nls/en/LayoutPropertyEditor", (
 { titleText: 'Layout',
   positionText: 'Position',
   sizeText: 'Size',

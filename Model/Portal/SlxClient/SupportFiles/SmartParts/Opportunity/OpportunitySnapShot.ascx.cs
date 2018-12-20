@@ -1,20 +1,28 @@
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
+using NHibernate;
+using NHibernate.Criterion;
+using NHibernate.Linq;
 using Sage.Entity.Interfaces;
 using Sage.Platform;
 using Sage.Platform.Application;
-using Sage.Platform.EntityBinding;
 using Sage.Platform.Repository;
 using Sage.Platform.WebPortal;
 using Sage.Platform.WebPortal.Binding;
 using Sage.Platform.WebPortal.Services;
 using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.BusinessRules;
-using Enumerable = System.Linq.Enumerable;
+using Sage.SalesLogix.HighLevelTypes;
 using TimeZone = Sage.Platform.TimeZone;
+using IQueryable = Sage.Platform.Repository.IQueryable;
 using Sage.SalesLogix.Services;
+using Sage.Platform.ChangeManagement;
+using Sage.Platform.Orm;
+using ICriteria = Sage.Platform.Repository.ICriteria;
+using IProjection = Sage.Platform.Repository.IProjection;
 
 public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoProvider
 {
@@ -32,7 +40,6 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// </summary>
     protected override void OnAddEntityBindings()
     {
-        BindingSource.Bindings.Add(new WebEntityBinding("ExchangeRateCode", lueCurrencyCode, "LookupResultValue", String.Empty, null));
         BindingSource.Bindings.Add(new WebEntityBinding("Weighted", curBaseWeighted, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("Weighted", curWeighted, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("Weighted", curMyCurWeighted, "Text"));
@@ -44,32 +51,32 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
 
         //Open Opportunity
         BindingSource.Bindings.Add(new WebEntityBinding("SalesPotential", curOpenBaseSalesPotential, "Text"));
-        BindingSource.Bindings.Add(new WebEntityBinding("SalesPotential", curOpenSalesPotential, "Text"));
+        BindingSource.Bindings.Add(new WebEntityBinding("DocSalesPotential", curOpenSalesPotential, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("SalesPotential", curMyCurSalesPotential, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("DateOpened", dtpDateOpened, "DateTimeValue", String.Empty, null));
 
         //Closed Won Opportunity
-        BindingSource.Bindings.Add(new WebEntityBinding("ActualAmount", curActualWon, "Text"));
+        BindingSource.Bindings.Add(new WebEntityBinding("DocActualAmount", curActualWon, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("ActualAmount", curMyCurActualWon, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("ActualAmount", curBaseActualWon, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("ActualClose", dtpClosedWonSummary, "DateTimeValue", String.Empty, null));
         BindingSource.Bindings.Add(new WebEntityBinding("Reason", pklReasonWon, "PickListValue"));
 
         //Closed Lost Opportunity
-        BindingSource.Bindings.Add(new WebEntityBinding("ActualAmount", curPotentialLost, "Text"));
+        BindingSource.Bindings.Add(new WebEntityBinding("DocActualAmount", curPotentialLost, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("ActualAmount", curMyCurPotentialLost, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("ActualAmount", curBasePotentialLost, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("ActualClose", dtpClosedLostSummary, "DateTimeValue", String.Empty, null));
         BindingSource.Bindings.Add(new WebEntityBinding("Reason", pklReasonLost, "PickListValue"));
 
-        ClientContextService clientcontext = PageWorkItem.Services.Get<ClientContextService>();
+        var clientcontext = PageWorkItem.Services.Get<ClientContextService>();
         if (clientcontext != null)
         {
             if (clientcontext.CurrentContext.ContainsKey(EntityPage.CONST_PREVIOUSENTITYIDKEY))
             {
-                foreach (IEntityBinding binding in BindingSource.Bindings)
+                foreach (var binding in BindingSource.Bindings)
                 {
-                    WebEntityBinding pBinding = binding as WebEntityBinding;
+                    var pBinding = binding as WebEntityBinding;
                     if (pBinding != null)
                         pBinding.IgnoreControlChanges = true;
                 }
@@ -85,14 +92,20 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     protected void Page_Load(object sender, EventArgs e)
     {
         SetMultiCurrencyDisplay();
+        var value = BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+        if (!String.IsNullOrEmpty(value))
+        {
+            var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+            lueLeadSourceOpen.LookupPreFilters.Add(leadSourcePreFilter);
+        }
     }
 
     protected void dtpDateOpened_DateTimeValueChanged(object sender, EventArgs e)
     {
-        IOpportunity opportunity = BindingSource.Current as IOpportunity;
-        opportunity.DateOpened = dtpDateOpened.DateTimeValue;
+        var opportunity = BindingSource.Current as IOpportunity;
         if (opportunity != null)
         {
+            opportunity.DateOpened = dtpDateOpened.DateTimeValue;
             lblSummary.Text = String.Format(GetLocalResourceObject("lblSummary.Caption").ToString(),
                                             opportunity.DaysOpen);
             lblSummaryActivity.Text =
@@ -103,7 +116,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
 
     private void SetMultiCurrencyDisplay()
     {
-        IOpportunity opportunity = BindingSource.Current as IOpportunity;
+        var opportunity = BindingSource.Current as IOpportunity;
         if (opportunity != null)
         {
             if (BusinessRuleHelper.IsMultiCurrencyEnabled())
@@ -111,7 +124,6 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
                 tblDetails.Border = 1;
                 tblDetails.Width = "100%";
                 UpdateMultiCurrencyExchangeRate(opportunity, opportunity.ExchangeRate.GetValueOrDefault(1));
-                tblMultiCurrency.Visible = true;
                 rowDetailsHeader.Visible = true;
                 colOppSalesPotential.Visible = true;
                 colMyCurSalesPotential.Visible = true;
@@ -124,6 +136,10 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
                 colActualWon.Style.Add(HtmlTextWriterStyle.PaddingRight, "0px");
                 colOpenSalesPotential.Style.Add(HtmlTextWriterStyle.PaddingRight, "0px");
                 colPotentialLost.Style.Add(HtmlTextWriterStyle.PaddingRight, "0px");
+            }
+            else
+            {
+                tblMultiCurrency.Visible = false;
             }
             if (GetOpportunityStatusMatch(opportunity, "ClosedWon"))
             {
@@ -194,7 +210,30 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// </summary>
     protected override void OnFormBound()
     {
-        var systemInfo = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.SalesLogix.Services.ISystemOptionsService>(true);
+        if (BusinessRuleHelper.IsMultiCurrencyEnabled())
+        {
+            var opportunity = BindingSource.Current as IOpportunity;
+            if (opportunity != null)
+            {
+                var oppState = opportunity as IChangedState;
+                ChangeSet changes = oppState.GetChangedState();
+                if (!changes.HasMemberChange("ExchangeRate"))
+                {
+                    hfExchangeRate.Value = "-1";
+                }
+                lueCurrencyCode.SeedValue = GetPeriodIdForCurrentDate();
+                lueCurrencyCode.LookupResultValue =
+                    EntityFactory.GetRepository<IExchangeRate>()
+                        .FindFirstByProperty("CurrencyCode", opportunity.ExchangeRateCode);
+				 var pendingChanges = opportunity.SyncStatus ==
+                                 Saleslogix.Integration.BOE.Common.Constants.SyncStatus.ChangesPending;
+				 lblSyncState.Visible = !string.IsNullOrEmpty(opportunity.ErpExtId) && !pendingChanges ;
+                 lblSyncState.Text = string.Format(GetLocalResourceObject("lblSyncStateNoPendingChanges").ToString(), opportunity.ModifyDate);
+				 lblPendingChanges.Visible = !string.IsNullOrEmpty(opportunity.ErpExtId) && pendingChanges && !string.IsNullOrEmpty(opportunity.ErpVariationId);
+                 lblPendingChanges.Text =  string.Format(GetLocalResourceObject("lblSyncStatePendingChanges").ToString(), opportunity.ModifyDate);
+            }
+        }
+        var systemInfo = ApplicationContext.Current.Services.Get<ISystemOptionsService>(true);
         chkLockRate.Enabled = systemInfo.LockOpportunityRate;
         if (systemInfo.ChangeOpportunityRate)
         {
@@ -205,7 +244,10 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
         {
             divExchangeRateLabel.Visible = true;
             divExchangeRateText.Visible = false;
-            lblExchangeRateValue.Text = numExchangeRateValue.Text;
+            if (!string.IsNullOrEmpty(numExchangeRateValue.Text))
+            {
+                lblExchangeRateValue.Text = Math.Round(Convert.ToDecimal(numExchangeRateValue.Text), 4).ToString();
+            }
         }
     }
 
@@ -215,7 +257,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <returns></returns>
     private string GetOpportunityCompetitors()
     {
-        IOpportunity opportunity = BindingSource.Current as IOpportunity;
+        var opportunity = BindingSource.Current as IOpportunity;
         string competitors = String.Empty;
         if (opportunity.Competitors != null)
         {
@@ -238,8 +280,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void OnClickSalesPotentialBaseRate(object sender, EventArgs e)
     {
-        var rateType = Sage.Platform.Controls.ExchangeRateTypeEnum.BaseRate;
-        EditSalesPotential(rateType);
+        EditSalesPotential(Sage.Platform.Controls.ExchangeRateTypeEnum.BaseRate);
     }
 
     /// <summary>
@@ -249,8 +290,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void OnClickSalesPotentialEntityRate(object sender, EventArgs e)
     {
-        var rateType = Sage.Platform.Controls.ExchangeRateTypeEnum.EntityRate;
-        EditSalesPotential(rateType);
+        EditSalesPotential(Sage.Platform.Controls.ExchangeRateTypeEnum.EntityRate);
     }
 
     /// <summary>
@@ -260,8 +300,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void OnClickSalesPotentialMyRate(object sender, EventArgs e)
     {
-        var rateType = Sage.Platform.Controls.ExchangeRateTypeEnum.MyRate;
-        EditSalesPotential(rateType);
+        EditSalesPotential(Sage.Platform.Controls.ExchangeRateTypeEnum.MyRate);
     }
 
     /// <summary>
@@ -271,8 +310,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void OnClickActualAmountBaseRate(object sender, EventArgs e)
     {
-        var rateType = Sage.Platform.Controls.ExchangeRateTypeEnum.BaseRate;
-        EditActualAmount(rateType);
+        EditActualAmount(Sage.Platform.Controls.ExchangeRateTypeEnum.BaseRate);
     }
 
     /// <summary>
@@ -282,8 +320,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void OnClickActualAmountEntityRate(object sender, EventArgs e)
     {
-        var rateType = Sage.Platform.Controls.ExchangeRateTypeEnum.EntityRate;
-        EditActualAmount(rateType);
+        EditActualAmount(Sage.Platform.Controls.ExchangeRateTypeEnum.EntityRate);
     }
 
     /// <summary>
@@ -293,8 +330,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void OnClickActualAmountMyRate(object sender, EventArgs e)
     {
-        var rateType = Sage.Platform.Controls.ExchangeRateTypeEnum.MyRate;
-        EditActualAmount(rateType);
+        EditActualAmount(Sage.Platform.Controls.ExchangeRateTypeEnum.MyRate);
     }
 
     /// <summary>
@@ -306,10 +342,10 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     {
         try
         {
-            IOpportunity opportunity = BindingSource.Current as IOpportunity;
+            var opportunity = BindingSource.Current as IOpportunity;
             if (opportunity != null)
             {
-                string scriptFmtString = @"dojo.require('Sage.Utility.Email');Sage.Utility.Email.writeEmail('{0}', '{1}', '{2}');";
+                const string scriptFmtString = @"dojo.require('Sage.Utility.Email');Sage.Utility.Email.writeEmail('{0}', '{1}', '{2}');";
                 string emailTo = String.Empty;
                 string subject = PortalUtil.JavaScriptEncode(String.Format(GetLocalResourceObject("lblEmailSubject.Caption").ToString(),
                                   opportunity.Description, opportunity.Account.AccountName));
@@ -324,6 +360,22 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
         {
             log.Error(ex);
         }
+    }
+	
+	public string GetPeriodIdForCurrentDate()
+    {
+        var periodId = String.Empty;
+        var currentdate = DateTime.UtcNow.Date;
+        using (ISession session = new SessionScopeWrapper())
+        {
+            var presentDatePeriod = session
+                    .Query<IPeriod>().ToList().Find(x => x.EffectiveFrom.Value.Date <= currentdate && x.ExpiresAfter.Value.Date >= currentdate);
+            if (presentDatePeriod != null)
+            {
+                periodId = presentDatePeriod.Id.ToString();
+            }
+        }
+        return periodId;
     }
 
     private string CheckForNullValue(object value)
@@ -344,8 +396,8 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <returns></returns>
     private string FormatEmailBody(IOpportunity opportunity)
     {
-        IContextService context = ApplicationContext.Current.Services.Get<IContextService>(true);
-        TimeZone timeZone = (TimeZone) context.GetContext("TimeZone");
+        var context = ApplicationContext.Current.Services.Get<IContextService>(true);
+        var timeZone = (TimeZone)context.GetContext("TimeZone");
         string datePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
 
         string oppProducts = String.Empty;
@@ -364,7 +416,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
                                    CheckForNullValue(opportunity.Reseller));
         emailBody += String.Format("{0} {1} \r\n", GetLocalResourceObject("EmailOppEstClose.Caption"),
                                    opportunity.EstimatedClose.HasValue
-                                       ? timeZone.UTCDateTimeToLocalTime((DateTime) opportunity.EstimatedClose).ToString
+                                       ? timeZone.UTCDateTimeToLocalTime((DateTime)opportunity.EstimatedClose).ToString
                                              (datePattern)
                                        : String.Empty);
         emailBody += String.Format("{0} {1} \r\n", GetLocalResourceObject("EmailOppCloseProb.Caption"),
@@ -372,14 +424,26 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
         emailBody += String.Format("{0} {1} \r\n\r\n", GetLocalResourceObject("EmailOppComments.Caption"),
                                    CheckForNullValue(opportunity.Notes));
         emailBody += String.Format("{0} \r\n", GetLocalResourceObject("EmailOppValue.Caption"));
-        //emailBody += BusinessRuleHelper.AccountingSystemHandlesSO()
-        //                 ? String.Format("{0} {1} \r\n", GetLocalResourceObject("EmailOppPotential.Caption"),
-        //                                 curERPOpenBaseSalesPotential.FormattedText)
-        //                 : String.Format("{0} {1} \r\n", GetLocalResourceObject("EmailOppPotential.Caption"),
-        //                                 curOpenBaseSalesPotential.FormattedText);
-        emailBody += String.Format("{0} {1} \r\n\r\n", GetLocalResourceObject("EmailOppWeighted.Caption"),
-                                   curBaseWeighted.FormattedText);
-        emailBody += String.Format("{0} \r\n", GetLocalResourceObject("EmailOppSummary.Caption"));
+        emailBody += String.Format("{0} {1} \r\n", GetLocalResourceObject("lblOpenSalesPotential.Caption"),
+                                   curOpenBaseSalesPotential.FormattedText);
+        emailBody += String.Format("{0} {1} \r\n", GetLocalResourceObject(
+                (oppWon || oppLost) 
+                ? "lblPotentialAmount.Caption"
+                : "EmailOppWeighted.Caption"),
+                (oppWon || oppLost) 
+                ? curBaseActualWon.FormattedText
+                : curBaseWeighted.FormattedText );
+
+        if(BusinessRuleHelper.IsMultiCurrencyEnabled())
+        {
+            emailBody += String.Format("{0} \r\n\r\n", 
+			String.Format(GetLocalResourceObject("EmailOppExchangeRate.Caption").ToString(),
+                                   opportunity.ExchangeRateCode,
+                                   opportunity.ExchangeRate.ToString(),
+                                   curOpenBaseSalesPotential.FormattedText));
+        } 
+
+        emailBody += String.Format("\r\n {0} \r\n", GetLocalResourceObject("EmailOppSummary.Caption"));
         if (oppWon || oppLost)
         {
             emailBody += String.Format("{0} \r\n",
@@ -462,17 +526,26 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void CurrencyCode_OnChange(object sender, EventArgs e)
     {
-        IOpportunity opportunity = BindingSource.Current as IOpportunity;
+        var opportunity = BindingSource.Current as IOpportunity;
         if (opportunity != null)
         {
-            IExchangeRate exchangeRate = EntityFactory.GetById<IExchangeRate>(lueCurrencyCode.LookupResultValue);
+            var exchangeRate = EntityFactory.GetById<IExchangeRate>(lueCurrencyCode.LookupResultValue);
+            var oppState = opportunity as IChangedState;
+            ChangeSet changes = oppState.GetChangedState();
+            if (!changes.HasMemberChange("ExchangeRate"))
+            {
+                hfExchangeRate.Value = "-1";
+            }
             if (exchangeRate != null)
             {
-                Double rate = exchangeRate.Rate.GetValueOrDefault(1);
-                opportunity.ExchangeRate = rate;
+                if (hfExchangeRate.Value == "-1")
+                {
+                    hfExchangeRate.Value = opportunity.ExchangeRate.ToString();
+                } 
+                opportunity.ExchangeRate = exchangeRate.Rate.GetValueOrDefault(1);
                 opportunity.ExchangeRateDate = DateTime.UtcNow;
-                opportunity.ExchangeRateCode = lueCurrencyCode.LookupResultValue.ToString();
-                UpdateMultiCurrencyExchangeRate(opportunity, rate);
+                opportunity.ExchangeRateCode = exchangeRate.CurrencyCode;
+                UpdateMultiCurrencyExchangeRate(opportunity, exchangeRate.Rate.GetValueOrDefault(1));
             }
         }
     }
@@ -484,12 +557,12 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void ExchangeRate_OnChange(object sender, EventArgs e)
     {
-        IOpportunity opportunity = BindingSource.Current as IOpportunity;
+        var opportunity = BindingSource.Current as IOpportunity;
         if (opportunity != null)
         {
             opportunity.ExchangeRate = Convert.ToDouble(String.IsNullOrEmpty(numExchangeRateValue.Text) ? "1" : numExchangeRateValue.Text);
             opportunity.ExchangeRateDate = DateTime.UtcNow;
-            UpdateMultiCurrencyExchangeRate(opportunity, opportunity.ExchangeRate.Value);
+            UpdateMultiCurrencyExchangeRate(opportunity, opportunity.ExchangeRate.GetValueOrDefault(1));
         }
     }
 
@@ -498,31 +571,48 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     /// </summary>
     /// <param name="opportunity">The opportunity.</param>
     /// <param name="exchangeRate">The exchange rate.</param>
-    private void UpdateMultiCurrencyExchangeRate(IOpportunity opportunity, Double exchangeRate)
+    private void UpdateMultiCurrencyExchangeRate(IOpportunity opportunity, double exchangeRate)
     {
+        var systemInfo = ApplicationContext.Current.Services.Get<ISystemOptionsService>(true);
+        string baseCode = "";
+        if (!string.IsNullOrEmpty(systemInfo.BaseCurrency))
+        {
+            baseCode = systemInfo.BaseCurrency;
+        }
+        var currencyCode = EntityFactory.GetById<IExchangeRate>(lueCurrencyCode.LookupResultValue);
+        string exhangeCode = currencyCode != null ? currencyCode.CurrencyCode : opportunity.ExchangeRateCode;
+
         string myCurrencyCode = BusinessRuleHelper.GetMyCurrencyCode();
-        IExchangeRate myExchangeRate =
-            EntityFactory.GetById<IExchangeRate>(String.IsNullOrEmpty(myCurrencyCode) ? "USD" : myCurrencyCode);
+        var myExchangeRate = EntityFactory.GetRepository<IExchangeRate>()
+            .FindFirstByProperty("CurrencyCode", String.IsNullOrEmpty(myCurrencyCode) ? "USD" : myCurrencyCode);
         double myRate = 0;
         if (myExchangeRate != null)
             myRate = myExchangeRate.Rate.GetValueOrDefault(1);
-        string currentCode = opportunity.ExchangeRateCode;
-        curOpenSalesPotential.CurrentCode = currentCode;
-        curOpenSalesPotential.ExchangeRate = exchangeRate;
+
+        curOpenBaseSalesPotential.CurrentCode = baseCode;
+        curBaseActualWon.CurrentCode = baseCode;
+        curBasePotentialLost.CurrentCode = baseCode;
+        curBaseWeighted.CurrentCode = baseCode;
+
+        curOpenSalesPotential.CurrentCode = exhangeCode;
+        //curOpenSalesPotential.ExchangeRate = exchangeRate;
+        curActualWon.CurrentCode = exhangeCode;
+        //curActualWon.ExchangeRate = exchangeRate;
+        curPotentialLost.CurrentCode = exhangeCode;
+        //curPotentialLost.ExchangeRate = exchangeRate;
+        curWeighted.CurrentCode = exhangeCode;
+        curWeighted.ExchangeRate = exchangeRate;
+
         curMyCurSalesPotential.CurrentCode = myCurrencyCode;
         curMyCurSalesPotential.ExchangeRate = myRate;
-        curActualWon.CurrentCode = currentCode;
-        curActualWon.ExchangeRate = exchangeRate;
         curMyCurActualWon.CurrentCode = myCurrencyCode;
         curMyCurActualWon.ExchangeRate = myRate;
-        curPotentialLost.CurrentCode = currentCode;
-        curPotentialLost.ExchangeRate = exchangeRate;
         curMyCurPotentialLost.CurrentCode = myCurrencyCode;
         curMyCurPotentialLost.ExchangeRate = myRate;
-        curWeighted.CurrentCode = currentCode;
-        curWeighted.ExchangeRate = exchangeRate;
         curMyCurWeighted.CurrentCode = myCurrencyCode;
         curMyCurWeighted.ExchangeRate = myRate;
+
+        opportunity.DocSalesPotential = (opportunity.SalesPotential ?? 0) * exchangeRate;
     }
 
     private void EditSalesPotential(Sage.Platform.Controls.ExchangeRateTypeEnum exchangeRateType)
@@ -532,7 +622,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
             DialogService.SetSpecs(200, 400, "EditSalesPotential");
             if (BusinessRuleHelper.IsMultiCurrencyEnabled())
             {
-                string exchangeRateCode = string.Empty;
+                string exchangeRateCode;
                 double exchangeRate = 0.0;
                 GetExchageRateData(exchangeRateType, out exchangeRateCode, out exchangeRate);
                 DialogService.DialogParameters.Clear();
@@ -548,7 +638,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
     {
         if (DialogService != null)
         {
-            IOpportunity entity = BindingSource.Current as IOpportunity;
+            var entity = BindingSource.Current as IOpportunity;
             if (GetOpportunityStatusMatch(entity, "ClosedWon"))
             {
                 DialogService.SetSpecs(200, 200, 400, 600, "OpportunityClosedWon", "", true);
@@ -564,7 +654,7 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
 
             if (BusinessRuleHelper.IsMultiCurrencyEnabled())
             {
-                string exchangeRateCode = string.Empty;
+                string exchangeRateCode;
                 double exchangeRate = 0.0;
                 GetExchageRateData(exchangeRateType, out exchangeRateCode, out exchangeRate);
                 DialogService.DialogParameters.Clear();
@@ -597,20 +687,24 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
         return false;
     }
 
-    private void GetExchageRateData(Sage.Platform.Controls.ExchangeRateTypeEnum exchangeRateType, out string exchangeRateCode, out double exchangeRate)
+    private void GetExchageRateData(Sage.Platform.Controls.ExchangeRateTypeEnum exchangeRateType,
+        out string exchangeRateCode, out double exchangeRate)
     {
         string _exchangeRateCode = string.Empty;
         double? _exchangeRate = 0.0;
         if (exchangeRateType == Sage.Platform.Controls.ExchangeRateTypeEnum.EntityRate)
         {
-            IOpportunity opp = BindingSource.Current as IOpportunity;
+            var opp = BindingSource.Current as IOpportunity;
             _exchangeRateCode = opp.ExchangeRateCode;
             _exchangeRate = opp.ExchangeRate;
         }
         if (exchangeRateType == Sage.Platform.Controls.ExchangeRateTypeEnum.MyRate)
         {
             _exchangeRateCode = BusinessRuleHelper.GetMyCurrencyCode();
-            IExchangeRate myExchangeRate = EntityFactory.GetById<IExchangeRate>(String.IsNullOrEmpty(_exchangeRateCode) ? "USD" : _exchangeRateCode);
+            var myExchangeRate =
+                EntityFactory.GetRepository<IExchangeRate>()
+                    .FindFirstByProperty("CurrencyCode",
+                        String.IsNullOrEmpty(_exchangeRateCode) ? "USD" : _exchangeRateCode);
             if (myExchangeRate != null)
             {
                 _exchangeRate = myExchangeRate.Rate.GetValueOrDefault(1);
@@ -620,7 +714,8 @@ public partial class SmartParts_OpportunitySnapShot : EntityBoundSmartPartInfoPr
         {
             var optionSvc = ApplicationContext.Current.Services.Get<ISystemOptionsService>(true);
             _exchangeRateCode = optionSvc.BaseCurrency;
-            IExchangeRate er = EntityFactory.GetById<IExchangeRate>(String.IsNullOrEmpty(_exchangeRateCode) ? "USD" : _exchangeRateCode);
+            var er = EntityFactory.GetRepository<IExchangeRate>()
+                .FindFirstByProperty("CurrencyCode", String.IsNullOrEmpty(_exchangeRateCode) ? "USD" : _exchangeRateCode);
             _exchangeRate = er.Rate.GetValueOrDefault(1);
             if (_exchangeRate.Equals(0))
             {

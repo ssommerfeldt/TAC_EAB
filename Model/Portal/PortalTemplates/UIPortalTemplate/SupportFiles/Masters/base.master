@@ -112,10 +112,10 @@
     {
         get
         {
-			IUserOptionsService _userOptions = ApplicationContext.Current.Services.Get<IUserOptionsService>();
-            if (_userOptions != null)
+            var userOptions = ApplicationContext.Current.Services.Get<IUserOptionsService>();
+            if (userOptions != null)
             {
-                return _userOptions.GetCommonOption("ShowUnsavedDataWarning", "web", false, "True", "Show Unsaved Data Warning") == "True";
+                return userOptions.GetCommonOption("ShowUnsavedDataWarning", "web", false, "True", "Show Unsaved Data Warning") == "True";
             }
             return false;
         }
@@ -163,7 +163,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-	<title>Sage SalesLogix</title>
+    <link rel="shortcut icon" type="image/png" href="~/inforLogo24x24.png" />
+    <link rel="icon" type="image/png" href="~/inforLogo24x24.png" />
+    <title>Infor CRM</title>
     <link rel="stylesheet" type="text/css" href="~/css/YUI/fonts.css" />
     <link rel="stylesheet" type="text/css" href="~/css/YUI/reset.css" />
     <link rel="stylesheet" type="text/css" href="~/css/SlxBase.css" />
@@ -174,7 +176,6 @@
 
     <script type="text/javascript" src="jscript/general.js"></script>
     <script type="text/javascript" src="jscript/cookiesobj.js"></script>
-    
 </head>
 <body>
     <form id="mainform" runat="server" action="javascript:void(0);">
@@ -191,16 +192,16 @@
               <div class="MainHeaderText">
                 <asp:Label ID="LoginName" runat="server" OnLoad="LoginName_Load" />
                 &nbsp;&nbsp;
-				<asp:Label ID="TodayIs" runat="server" Text="<%$ resources: TodayIs %>"></asp:Label>&nbsp;
+                <asp:Label ID="TodayIs" runat="server" Text="<%$ resources: TodayIs %>"></asp:Label>&nbsp;
                 <smartParts:CurrentDate ID="CurrentDate" runat="server" />
              </div>
             </div>
             <div class="MainHeaderToolBar">
                 <div id="ssDrowdown" class="ssdropdown" onmouseover="this.className='ssdropdownhighlite'" onmouseout="javascript:MenuBtnLeave(this)" onclick="javascript:ShowMenuItem()">
-						<asp:ImageButton ID="ImageButton1"  runat="server" Width="5" Height="3" ImageUrl="~/images/blue/menuDropDown.gif" ImageAlign="Middle" AlternateText="<%$ resources: Search %>"  />
+                        <asp:ImageButton ID="ImageButton1"  runat="server" Width="5" Height="3" ImageUrl="~/images/blue/menuDropDown.gif" ImageAlign="Middle" AlternateText="<%$ resources: Search %>"  />
                     </div>
                 <div id="SSButtons" class="ssbutton" onmouseover="this.className='ssbuttonhighlite'" onmouseout="this.className='ssbutton'">
-						<asp:ImageButton ID="Search1"  runat="server" Width="12" Height="12" ImageUrl="~/images/icons/Speed_Search_16x16.gif" ImageAlign="Middle" OnClick="Search1_Click" AlternateText="<%$ resources: Search %>"  />
+                        <asp:ImageButton ID="Search1"  runat="server" Width="12" Height="12" ImageUrl="~/images/icons/Speed_Search_16x16.gif" ImageAlign="Middle" OnClick="Search1_Click" AlternateText="<%$ resources: Search %>"  />
                     </div>
                 <div id="ssTextDiv" style="float:right;">
                     <asp:TextBox ID="SearchText" runat="server" style="width:150px;height:16px;padding-left:3px;" Text="<%$ resources: SpeedSearch %>" CssClass="tboxinfo" onfocus="checkSSText(this)" onkeydown="javascript:HandleEnterKeyMaster(event, this.id)"></asp:TextBox></div>
@@ -268,19 +269,19 @@
             <div class="MainHeaderDivLine">
             </div>
         </div>
-		<div id="asyncpostbackindicator" style="visibility:hidden;position:absolute;top:0.4em;right:10em;"><asp:Image ID="Image1" ImageUrl="~/images/loading_animation_liferay.gif" AlternateText="<%$ resources: Loading %>" runat="server" /></div>
+        <div id="asyncpostbackindicator" style="visibility:hidden;position:absolute;top:0.4em;right:10em;"><asp:Image ID="Image1" ImageUrl="~/images/loading_animation_liferay.gif" AlternateText="<%$ resources: Loading %>" runat="server" /></div>
         <div class="Clear"></div>
      <table border="0" cellpadding="0" cellspacing="0" width="100%">
-	  <col id="NavBarSpace" />
-	  <col />
-	  <tr>
-	   <td valign="top">
+      <col id="NavBarSpace" />
+      <col />
+      <tr>
+       <td valign="top">
         <div class="NavBar">
             <SalesLogix:ActivityReminder runat="server" ID="ActivityReminders" />
             <workSpace:NavWorkspace ID="NavBar" runat="server" ImagePosition="left">
             </workSpace:NavWorkspace>
         </div>
-	   </td>
+       </td>
        <td valign="top">
         <div id="MainWorkArea">
         <asp:Panel ID="content" runat="server">
@@ -290,12 +291,12 @@
             </ContentTemplate>
         </asp:UpdatePanel>
             <workSpace:TabWorkspace ID="TabControl" runat="server" IncludeMiddlePane="true" UseEmbeddedStyles="true" ></workSpace:TabWorkspace>
-		</asp:Panel>
-       </div>	   
-	   </td>
-	  </tr>
+        </asp:Panel>
+       </div>
+       </td>
+      </tr>
      </table>
-            
+
             <asp:UpdatePanel runat="server" ID="DialogUpdatePanel" ChildrenAsTriggers="true" UpdateMode="conditional">
                 <ContentTemplate>
                     <workSpace:DialogWorkspace runat="server" ID="DialogWorkspace"></workSpace:DialogWorkspace>
@@ -304,7 +305,7 @@
             <asp:UpdateProgress ID="mainformUpdateProgress" runat="server" AssociatedUpdatePanelID="mainformUpdatePanel">
                 <ProgressTemplate>
                     <div class="updateProgress">
-						<asp:Image ID="Image2" ImageUrl="~/images/loading_animation_liferay.gif" AlternateText="<%$ resources: Updating %>" runat="server" /><br />
+                        <asp:Image ID="Image2" ImageUrl="~/images/loading_animation_liferay.gif" AlternateText="<%$ resources: Updating %>" runat="server" /><br />
                         <asp:Localize runat="server" ID="lclzPleaseWait" Text="<%$ resources: PleaseWait %>">Please Wait...</asp:Localize>
                     </div>
                 </ProgressTemplate>
@@ -312,18 +313,18 @@
             <smartParts:UpdateProgressOverlayExtender ID="mainformUpdateProgressExtender" runat="server" ControlToOverlayID="content"
               TargetControlID="mainformUpdateProgress" OverlayType="control" CssClass="updateProgress" />
        <Services:WebClientMessageService ID="SageSLXMessage" runat="server" />
-	<div id="defaultErrorMessage" style="display:none; visibility:hidden"><asp:Localize ID="lclzUnspecifiedError" runat="server" Text="<%$ resources: UnspecifiedError %>"></asp:Localize></div>
+    <div id="defaultErrorMessage" style="display:none; visibility:hidden"><asp:Localize ID="lclzUnspecifiedError" runat="server" Text="<%$ resources: UnspecifiedError %>"></asp:Localize></div>
    </form>
 <script type="text/javascript">
 Sys.WebForms.PageRequestManager.getInstance().add_initializeRequest(showRequestIndicator);
 Sys.WebForms.PageRequestManager.getInstance().add_endRequest(hideRequestIndicator);
 function showRequestIndicator() {
-	var elem = document.getElementById("asyncpostbackindicator");
-	if (elem) { elem.style.visibility = "visible"; }
+    var elem = document.getElementById("asyncpostbackindicator");
+    if (elem) { elem.style.visibility = "visible"; }
 }
 function hideRequestIndicator(sender, args) {
-	var elem = document.getElementById("asyncpostbackindicator");
-	if (elem) { elem.style.visibility = "hidden"; }
+    var elem = document.getElementById("asyncpostbackindicator");
+    if (elem) { elem.style.visibility = "hidden"; }
    if (args.get_error() != undefined)
    {
        var errorMessage;
@@ -335,20 +336,20 @@ function hideRequestIndicator(sender, args) {
        {
            // Error occurred somewhere other than the server page.
            //errorMessage = 'An unspecified error occurred. ';
-    		var e = $get("defaultErrorMessage");
-			if (e) {
-				if (e.innerText) {
-					errorMessage = e.innerText;
-				} else {
-					for (var i = 0; i < e.childNodes.length; i++) {
-						if (e.childNodes[i].nodeType == 3) {
-							errorMessage = e.childNodes[i].nodeValue;
-							break;
-						}
-					}
-				}
-			}       
-		}
+            var e = $get("defaultErrorMessage");
+            if (e) {
+                if (e.innerText) {
+                    errorMessage = e.innerText;
+                } else {
+                    for (var i = 0; i < e.childNodes.length; i++) {
+                        if (e.childNodes[i].nodeType == 3) {
+                            errorMessage = e.childNodes[i].nodeValue;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
        args.set_errorHandled(true);
        var msgService = Sage.Services.getService("WebClientMessageService");
        if (msgService) { msgService.showClientMessage(errorMessage); }

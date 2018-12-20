@@ -121,13 +121,13 @@
     <value>Account</value>
   </data>
   <data name="FILTER_ACCOUNTID" xml:space="preserve">
-    <value>AccountID</value>
+    <value>Account ID</value>
   </data>
   <data name="FILTER_ACTUALCLOSE" xml:space="preserve">
-    <value>ActualClose</value>
+    <value>Actual Close</value>
   </data>
   <data name="FILTER_ACTUALID" xml:space="preserve">
-    <value>ActualId</value>
+    <value>Actual Id</value>
   </data>
   <data name="FILTER_AREA" xml:space="preserve">
     <value>Area</value>
@@ -145,19 +145,19 @@
     <value>City</value>
   </data>
   <data name="FILTER_CLOSEPROBABILITY" xml:space="preserve">
-    <value>CloseProbability</value>
+    <value>Close Probability</value>
   </data>
   <data name="FILTER_CONTACTID" xml:space="preserve">
-    <value>ContactID</value>
+    <value>Contact ID</value>
   </data>
   <data name="FILTER_CONTRACTTYPE" xml:space="preserve">
-    <value>ContractType</value>
+    <value>Contract Type</value>
   </data>
   <data name="FILTER_COUNTRY" xml:space="preserve">
     <value>Country</value>
   </data>
   <data name="FILTER_DATEPROMISED" xml:space="preserve">
-    <value>DatePromised</value>
+    <value>Date Promised</value>
   </data>
   <data name="FILTER_DATE_CREATED" xml:space="preserve">
     <value>Date Created</value>
@@ -181,7 +181,7 @@
     <value>File Name</value>
   </data>
   <data name="FILTER_FIRSTNAME" xml:space="preserve">
-    <value>FirstName</value>
+    <value>First Name</value>
   </data>
   <data name="FILTER_FIXED_IN" xml:space="preserve">
     <value>Fixed in</value>
@@ -190,34 +190,34 @@
     <value>Industry</value>
   </data>
   <data name="FILTER_LASTNAME" xml:space="preserve">
-    <value>LastName</value>
+    <value>Last Name</value>
   </data>
   <data name="FILTER_LAST_UPDATED" xml:space="preserve">
     <value>Last Updated</value>
   </data>
   <data name="FILTER_MIDDLENAME" xml:space="preserve">
-    <value>MiddleName</value>
+    <value>Middle Name</value>
   </data>
   <data name="FILTER_MOBILE" xml:space="preserve">
     <value>Mobile</value>
   </data>
   <data name="FILTER_OPPORTUNITYID" xml:space="preserve">
-    <value>OpportunityID</value>
+    <value>Opportunity ID</value>
   </data>
   <data name="FILTER_ORDERDATE" xml:space="preserve">
-    <value>OrderDate</value>
+    <value>Order Date</value>
   </data>
   <data name="FILTER_PHONE" xml:space="preserve">
     <value>Phone</value>
   </data>
   <data name="FILTER_POSTALCODE" xml:space="preserve">
-    <value>PostalCode</value>
+    <value>Postal Code</value>
   </data>
   <data name="FILTER_PRIORITY" xml:space="preserve">
     <value>Priority</value>
   </data>
   <data name="FILTER_PRODUCTNAME" xml:space="preserve">
-    <value>ProductName</value>
+    <value>Product Name</value>
   </data>
   <data name="FILTER_PROGRAM" xml:space="preserve">
     <value>Program</value>
@@ -235,16 +235,16 @@
     <value>Remaining</value>
   </data>
   <data name="FILTER_RETURNTYPE" xml:space="preserve">
-    <value>ReturnType</value>
+    <value>Return Type</value>
   </data>
   <data name="FILTER_RMA_DATE" xml:space="preserve">
     <value>RMA Date</value>
   </data>
   <data name="FILTER_SALESPOTENTIAL" xml:space="preserve">
-    <value>SalesPotential</value>
+    <value>Sales Potential</value>
   </data>
   <data name="FILTER_SHIPVIA" xml:space="preserve">
-    <value>ShipVia</value>
+    <value>Ship Via</value>
   </data>
   <data name="FILTER_SHIP_TO_NAME" xml:space="preserve">
     <value>Ship To Name</value>
@@ -259,7 +259,7 @@
     <value>Status</value>
   </data>
   <data name="FILTER_SUBTYPE" xml:space="preserve">
-    <value>SubType</value>
+    <value>Sub Type</value>
   </data>
   <data name="FILTER_SUMMARY" xml:space="preserve">
     <value>Summary</value>
@@ -268,13 +268,13 @@
     <value>Supplier</value>
   </data>
   <data name="FILTER_TICKETID" xml:space="preserve">
-    <value>TicketID</value>
+    <value>Ticket ID</value>
   </data>
   <data name="FILTER_TITLE" xml:space="preserve">
     <value>Title</value>
   </data>
   <data name="FILTER_TOLLFREE" xml:space="preserve">
-    <value>TollFree</value>
+    <value>Toll Free</value>
   </data>
   <data name="FILTER_TYPE" xml:space="preserve">
     <value>Type</value>
@@ -283,7 +283,55 @@
     <value>Vendor</value>
   </data>
   <data name="FILTER_WEBADDRESS" xml:space="preserve">
-    <value>WebAddress</value>
+    <value>Web Address</value>
+  </data>
+   <data name="FILTER_ERPEXTID" xml:space="preserve">
+    <value>ERP Ext ID</value>
+  </data>
+  <data name="FILTER_ERPSTATUS" xml:space="preserve">
+    <value>ERP Status</value>
+  </data>
+  <data name="FILTER_MAINPHONE" xml:space="preserve">
+    <value>Main Phone</value>
+  </data>
+  <data name="FILTER_ERPDOCUMENTDATE" xml:space="preserve">
+    <value>Erp Document Date</value>
+  </data>
+  <data name="FILTER_GRANDTOTAL" xml:space="preserve">
+    <value>Grand Total</value>
+  </data>
+  <data name="FILTER_CUSTOMERRFQNUMBER" xml:space="preserve">
+    <value>Customer Rfq Number</value>
+  </data>
+  <data name="FILTER_EXPECTEDDELIVERYDATE" xml:space="preserve">
+    <value>Expected Delivery Date</value>
+  </data>
+  <data name="FILTER_STARTDATE" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="FILTER_ENDDATE" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="FILTER_ERPRETURNNUMBER" xml:space="preserve">
+    <value>Erp Return Number</value>
+  </data>
+  <data name="FILTER_PROMISEDRETURNDATE" xml:space="preserve">
+    <value>Promised Return Date</value>
+  </data>
+  <data name="FILTER_REQUIREDRETURNDATE" xml:space="preserve">
+    <value>Required Return Date</value>
+  </data>
+  <data name="FILTER_ERPACTUALDELIVERYDATE" xml:space="preserve">
+    <value>Erp Actual Delivery Date</value>
+  </data>
+  <data name="FILTER_ERPACTUALSHIPDATE" xml:space="preserve">
+    <value>Erp Actual Ship Date</value>
+  </data>
+  <data name="FILTER_SHIPMENTNUMBER" xml:space="preserve">
+    <value>Shipment Number</value>
+  </data>
+  <data name="FILTER_SHIPMENTTOTALBASEAMOUNT" xml:space="preserve">
+    <value>Shipment Total Base Amount</value>
   </data>
   <data name="INDEX_ACCOUNT" xml:space="preserve">
     <value>Account</value>
@@ -296,6 +344,9 @@
   </data>
   <data name="INDEX_CONTACT" xml:space="preserve">
     <value>Contact</value>
+  </data>  
+  <data name="INDEX_Bill_To" xml:space="preserve">
+    <value>Bill To</value>
   </data>
   <data name="INDEX_CONTRACT" xml:space="preserve">
     <value>Contract</value>
@@ -312,6 +363,9 @@
   <data name="INDEX_HISTORY" xml:space="preserve">
     <value>History</value>
   </data>
+<data name="INDEX_Invoice" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
   <data name="INDEX_LEAD" xml:space="preserve">
     <value>Lead</value>
   </data>
@@ -321,15 +375,30 @@
   <data name="INDEX_OPPORTUNITY" xml:space="preserve">
     <value>Opportunity</value>
   </data>
+  <data name="INDEX_Pay_From" xml:space="preserve">
+    <value>Pay From</value>
+  </data>  
   <data name="INDEX_PRODUCT" xml:space="preserve">
     <value>Product</value>
+  </data>
+  <data name="INDEX_Quote" xml:space="preserve">
+    <value>Quote</value>
+  </data>  
+    <data name="INDEX_Receivable" xml:space="preserve">
+    <value>Receivable</value>
   </data>
   <data name="INDEX_RMA" xml:space="preserve">
     <value>RMA</value>
   </data>
   <data name="INDEX_SALESORDER" xml:space="preserve">
-    <value>SalesOrder</value>
+    <value>Sales Order</value>
   </data>
+  <data name="INDEX_Ship_To" xml:space="preserve">
+    <value>Ship To</value>
+  </data>  
+  <data name="INDEX_Shipment" xml:space="preserve">
+    <value>Shipment</value>
+  </data> 
   <data name="INDEX_STANDARD_PROBLEM" xml:space="preserve">
     <value>Standard Problem</value>
   </data>
@@ -339,4 +408,7 @@
   <data name="INDEX_TICKET_INTERNAL" xml:space="preserve">
     <value>Ticket Internal</value>
   </data>
-</root>
+  <data name="INDEX_Warehouse" xml:space="preserve">
+    <value>Warehouse</value>
+  </data>
+  </root>

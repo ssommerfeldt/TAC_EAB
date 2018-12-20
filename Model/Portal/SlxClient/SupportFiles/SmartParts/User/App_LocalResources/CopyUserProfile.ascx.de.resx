@@ -117,14 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SourceSelectionContainer.Caption" xml:space="preserve">
+    <value>Benutzer:</value>
+  </data>
+  <data name="SourceUserList.Caption" xml:space="preserve">
+    <value>Benutzer:</value>
+  </data>
   <data name="SourceTemplateList.Caption" xml:space="preserve">
     <value>Vorlage:</value>
+  </data>
+  <data name="SourceSelectionContainer_item1.Text" xml:space="preserve">
+    <value>Vorlage</value>
+  </data>
+  <data name="SourceSelectionContainer_item0.Text" xml:space="preserve">
+    <value>Vorhandener Benutzer</value>
+  </data>
+  <data name="OkButton.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="CancelButton.Caption" xml:space="preserve">
+    <value>Abbrechen</value>
   </data>
   <data name="chkGeneral.Caption" xml:space="preserve">
     <value>Allgemein</value>
   </data>
-  <data name="CancelButton.Caption" xml:space="preserve">
-    <value>Abbrechen</value>
+  <data name="chkEmployee.Caption" xml:space="preserve">
+    <value>Mitarbeiter</value>
+  </data>
+  <data name="chkSecurity.Caption" xml:space="preserve">
+    <value>Sicherheit</value>
   </data>
   <data name="chkTeams.Caption" xml:space="preserve">
     <value>Teams</value>
@@ -132,46 +153,25 @@
   <data name="chkFunctionSecurity.Caption" xml:space="preserve">
     <value>Funktionssicherheit</value>
   </data>
-  <data name="chkCustom.Caption" xml:space="preserve">
-    <value>Benutzerdefiniert</value>
+  <data name="chkCalendar.Caption" xml:space="preserve">
+    <value>Kalender</value>
   </data>
-  <data name="SourceSelectionContainer_item0.Text" xml:space="preserve">
-    <value>Vorhandener Benutzer</value>
+  <data name="chkClientOptions.Caption" xml:space="preserve">
+    <value>Clientoptionen (Clientsystem)</value>
   </data>
   <data name="chkServiceSupport.Caption" xml:space="preserve">
     <value>Service/Support</value>
   </data>
-  <data name="chkCalendar.Caption" xml:space="preserve">
-    <value>Kalender</value>
-  </data>
-  <data name="SourceSelectionContainer_item1.Text" xml:space="preserve">
-    <value>Vorlage</value>
-  </data>
-  <data name="chkSecurity.Caption" xml:space="preserve">
-    <value>Sicherheit</value>
-  </data>
-  <data name="confirmCopyProfile" xml:space="preserve">
-    <value>Möchten Sie diese Informationen wirklich kopieren?  Die überschriebenen Daten gehen verloren.</value>
-  </data>
-  <data name="OkButton.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="targetUserName" xml:space="preserve">
-    <value>Benutzer</value>
-  </data>
-  <data name="chkClientOptions.Caption" xml:space="preserve">
-    <value>Clientoptionen (Client-System)</value>
+  <data name="chkCustom.Caption" xml:space="preserve">
+    <value>Benutzerdefiniert</value>
   </data>
   <data name="targetUserGridCaption" xml:space="preserve">
     <value>Zielbenutzer:</value>
   </data>
-  <data name="chkEmployee.Caption" xml:space="preserve">
-    <value>Mitarbeiter</value>
+  <data name="targetUserName" xml:space="preserve">
+    <value>Benutzer</value>
   </data>
-  <data name="SourceUserList.Caption" xml:space="preserve">
-    <value>Benutzer:</value>
-  </data>
-  <data name="SourceSelectionContainer.Caption" xml:space="preserve">
-    <value>Benutzer:</value>
+  <data name="confirmCopyProfile" xml:space="preserve">
+    <value>Möchten Sie diese Informationen wirklich kopieren? Die überschriebenen Daten gehen verloren.</value>
   </data>
 </root>

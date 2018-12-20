@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Data/BaseSDataStore", [
         'Sage/Utility',
         'Sage/Data/SDataServiceRegistry',
         'dojo/_base/declare',
@@ -8,6 +8,7 @@ define([
 function (Utility, SDataServiceRegistry, declare, lang) {
     var baseStore = declare('Sage.Data.BaseSDataStore', null, {
         queryName: null,
+        ignoreETag: null,
         constructor: function (o) {
             lang.mixin(this, o);
             this.features = {
@@ -108,7 +109,6 @@ function (Utility, SDataServiceRegistry, declare, lang) {
 
             if (this.include && this.include.length > 0)
                 request.setQueryArg('include', this.include.join(','));
-
             if (this.sort) {
                 // add the "intrinsic" sort (specified in store options)
                 // take care not to re-add an attribute that is already specified in the context sort 
@@ -191,7 +191,7 @@ function (Utility, SDataServiceRegistry, declare, lang) {
         onSuccess: function (context, feed) {
             if (context.onBegin) {
                 if (typeof feed.$totalResults === 'undefined') {
-                    feed.$totalResults = 500000;
+                    feed.$totalResults = feed.$itemsPerPage + feed.$startIndex;// the previous value of 500000 allowed users to scroll past the last page.
                 }
                 context.onBegin.call(context.scope || this, feed.$totalResults, context);
             }

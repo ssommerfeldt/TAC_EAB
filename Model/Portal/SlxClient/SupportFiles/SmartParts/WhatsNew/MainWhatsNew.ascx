@@ -15,7 +15,7 @@
 	<tr>
 		<td colspan="2">
 		    <div class="lbl">
-			    <span class="slxlabel" style="padding-left:35px"><asp:Label ID="OppWNChanges_lz" AssociatedControlID="ChangeDate" runat="server" Text="<%$ resources : ChangesOnOrAfter %>"></asp:Label></span>
+			    <span class="slxlabel"><asp:Label ID="OppWNChanges_lz" AssociatedControlID="ChangeDate" runat="server" Text="<%$ resources : ChangesOnOrAfter %>"></asp:Label></span>
 			</div>
 		</td>
 	</tr>

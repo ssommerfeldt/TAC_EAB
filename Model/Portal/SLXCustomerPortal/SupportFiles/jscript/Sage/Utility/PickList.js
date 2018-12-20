@@ -1,5 +1,5 @@
 /*globals Sage, window, define, sessionStorage */
-define([
+define("Sage/Utility/PickList", [
         'dojo/_base/lang',
         'dojo/_base/declare',
         'Sage/Data/SDataServiceRegistry',
@@ -53,7 +53,7 @@ function (lang, declare, SDataServiceRegistry, json, _LocalStorageMixin, util) {
             localStorageDate.setMilliseconds(0);
             serverDate.setMilliseconds(0);
             return serverDate.valueOf() >= localStorageDate.valueOf();
-        },
+        }
     });
 
     Sage.namespace('Utility.PickList');

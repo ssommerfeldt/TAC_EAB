@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/Editors/main", [
     "Sage/QuickForms/Design/Editors/CheckBoxAdvancedPropertyEditor",
     "Sage/QuickForms/Design/Editors/CheckBoxBasicPropertyEditor",
     "Sage/QuickForms/Design/Editors/ColumnBasicPropertyEditor",

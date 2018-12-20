@@ -5,13 +5,7 @@
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
-  <preExecuteTargets>
-    <methodTarget id="5965bd60-2ab1-4b50-8382-b0ca0e4f2f55" lastModifiedUtc="2013-12-20T15:38:59.2694348Z" targetType="EAB_Custom.SalesOrderItemExtension, EAB_Custom" targetMethod="OnBeforeInsertGetPricing" active="true">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
-      </ExtendedPropertiesCollection>
-    </methodTarget>
-  </preExecuteTargets>
+  <preExecuteTargets />
   <methodTargets>
     <methodTarget id="e972db8e-ea85-4f5b-933f-4900ff6f0c09" lastModifiedUtc="2009-08-18T18:03:03.4324415Z" targetType="Sage.SalesLogix.SalesOrder.SalesOrderItem, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeInsert" active="true">
       <ExtendedPropertiesCollection>
@@ -20,5 +14,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

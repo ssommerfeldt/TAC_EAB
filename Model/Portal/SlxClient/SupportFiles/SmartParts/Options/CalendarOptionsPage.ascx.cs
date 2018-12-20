@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Sage.SalesLogix.WebUserOptions;
@@ -27,12 +28,12 @@ public partial class CalendarOptionsPage : Sage.Platform.WebPortal.SmartParts.Sm
         ddlDisplayContactAccount.DataValueField = options.DataValueField;
 
         ddlDayStart.DataSource = FormatDateTimeList(options.GetOptionsList("DayStart"));
-        ddlDayStart.DataTextField = options.DataValueField;
-        ddlDayStart.DataValueField = options.DataTextField;
+        ddlDayStart.DataTextField = options.DataTextField;
+        ddlDayStart.DataValueField = options.DataValueField;
 
         ddlDayEnd.DataSource = FormatDateTimeList(options.GetOptionsList("DayEnd"));
-        ddlDayEnd.DataTextField = options.DataValueField;
-        ddlDayEnd.DataValueField = options.DataTextField;
+        ddlDayEnd.DataTextField = options.DataTextField;
+        ddlDayEnd.DataValueField = options.DataValueField;
 
         // NEW to Sawgrass, not in LAN
         ddlDefaultInterval.DataSource = options.GetOptionsList("DefaultInterval");
@@ -55,6 +56,16 @@ public partial class CalendarOptionsPage : Sage.Platform.WebPortal.SmartParts.Sm
         chkPhoneNumber.Checked = false;
         chkRegarding.Checked = false;
         chkTime.Checked = false;
+
+        // set labels on day checkboxes
+        var dayNames = Thread.CurrentThread.CurrentCulture.DateTimeFormat.AbbreviatedDayNames;
+        chkSun.Text = dayNames[(int) DayOfWeek.Sunday];
+        chkMon.Text = dayNames[(int)DayOfWeek.Monday];
+        chkTue.Text = dayNames[(int)DayOfWeek.Tuesday];
+        chkWed.Text = dayNames[(int)DayOfWeek.Wednesday];
+        chkThu.Text = dayNames[(int)DayOfWeek.Thursday];
+        chkFri.Text = dayNames[(int)DayOfWeek.Friday];
+        chkSat.Text = dayNames[(int)DayOfWeek.Saturday];
 
         // set day checkboxes for common workweek
         chkMon.Checked = true;

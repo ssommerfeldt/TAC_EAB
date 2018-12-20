@@ -1,3 +1,3 @@
-define((
-{ loadingText: 'Caricamento...' }
-));
+define("Sage/QuickForms/Design/nls/it/DataSourcePanel", {
+    "loadingText": "Caricamento in corso..."
+});

@@ -1,4 +1,4 @@
-define((
+define("Sage/Library/nls/en/Manager", (
 { AddFiles: 'Add Files',
   AddFolder: 'Add Folder',
   Confirm: 'Confirm',

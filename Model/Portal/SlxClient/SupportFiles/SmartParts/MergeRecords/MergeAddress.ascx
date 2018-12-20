@@ -48,13 +48,13 @@
                 <SalesLogix:SlxGridView runat="server" ID="grdSourceRecords" GridLines="None" AutoGenerateColumns="false"
                     CellPadding="4" ResizableColumns="True" DataKeyNames="Id" ShowEmptyTable="true"
                     CssClass="datagrid" ExpandableRows="false" EmptyTableRowText="<%$ resources: EmptyTableRowText %>" Height="220"
-                    EnableViewState="false" OnRowCommand="grdSourceRecords_OnRowCommand" RowStyle-CssClass="rowlt" 
-                    PagerStyle-CssClass="gridPager" AlternatingRowStyle-CssClass="rowdk" >
+                    EnableViewState="false" OnRowCommand="grdSourceRecords_OnRowCommand" RowStyle-CssClass="rowlt"
+                    PagerStyle-CssClass="gridPager" AlternatingRowStyle-CssClass="rowdk" OnRowDataBound="grdSourceRecords_RowDataBound" >
                     <Columns>
                         <asp:BoundField DataField="Id" Visible="false"/>
                         <asp:CommandField ShowSelectButton="true" SelectText="<%$ resources: Grid.Select.Text %>"
                             ButtonType="link" >
-              	        </asp:CommandField>
+                        </asp:CommandField>
                         <asp:BoundField DataField="IsPrimary" HeaderText="<%$ resources: Grid_Primary_Column %>" />
                         <asp:BoundField DataField="Address1" HeaderText="<%$ resources: Grid_Address1_Column %>" />
                         <asp:BoundField DataField="Address2" HeaderText="<%$ resources: Grid_Address2_Column %>" />
@@ -76,12 +76,12 @@
                     CellPadding="4" ResizableColumns="True" DataKeyNames="Id" ShowEmptyTable="true" CssClass="datagrid"
                     ExpandableRows="false" EnableViewState="false" OnRowCommand="grdTargetRecords_OnRowCommand" Height="220"
                     EmptyTableRowText="<%$ resources: EmptyTableRowText %>" RowStyle-CssClass="rowlt" PagerStyle-CssClass="gridPager"
-                    AlternatingRowStyle-CssClass="rowdk" >
+                    AlternatingRowStyle-CssClass="rowdk" OnRowDataBound="grdTarget_RowDataBound" >
                     <Columns>
                         <asp:BoundField DataField="Id" Visible="false"/>
                         <asp:CommandField ShowSelectButton="true" SelectText="<%$ resources: Grid.Select.Text %>"
                             ButtonType="link" >
-              	        </asp:CommandField>
+                        </asp:CommandField>
                         <asp:BoundField DataField="IsPrimary" HeaderText="<%$ resources: Grid_Primary_Column %>" />
                         <asp:BoundField DataField="Address1" HeaderText="<%$ resources: Grid_Address1_Column %>" />
                         <asp:BoundField DataField="Address2" HeaderText="<%$ resources: Grid_Address2_Column %>" />
@@ -111,11 +111,12 @@
                 <SalesLogix:SlxGridView runat="server" ID="grdLinkedRecords" GridLines="None" AutoGenerateColumns="false" CellPadding="4"
                     ResizableColumns="True" DataKeyNames="sourceAddressId,targetAddressId" ShowEmptyTable="true" ExpandableRows="false" CssClass="datagrid"
                     EnableViewState="false" OnRowCommand="grdLinkedRecords_OnRowCommand" EmptyTableRowText="<%$ resources: EmptyTableRowText %>"
-                    RowStyle-CssClass="rowlt" PagerStyle-CssClass="gridPager" Height="170" AlternatingRowStyle-CssClass="rowdk" >
+                    RowStyle-CssClass="rowlt" PagerStyle-CssClass="gridPager" Height="170" AlternatingRowStyle-CssClass="rowdk"
+                    OnRowDataBound="grdLinkedRecords_RowDataBound" >
                     <Columns>
                         <asp:BoundField DataField="sourceAddressId" Visible="false"/>
                         <asp:BoundField DataField="targetAddressId" Visible="false"/>
-              	        <asp:ButtonField CommandName="Unlink" Text="<%$ resources: Grid_Unlink.Column %>" />
+                        <asp:ButtonField CommandName="Unlink" Text="<%$ resources: Grid_Unlink.Column %>" />
                         <asp:BoundField DataField="IsPrimary" HeaderText="<%$ resources: Grid_Primary_Column %>" />
                         <asp:BoundField DataField="Address1" HeaderText="<%$ resources: Grid_Address1_Column %>" />
                         <asp:BoundField DataField="Address2" HeaderText="<%$ resources: Grid_Address2_Column %>" />
@@ -129,11 +130,10 @@
     </tr>
 </table>
 <table border="0" cellpadding="1" cellspacing="0" class="formtable">
-    <col width="2%" />
-    <col width="50%" />
-    <col width="24%" />
-    <col width="24%" />
-    <col width="2%" />
+    <col width="4%" />
+    <col width="25%" />
+    <col width="46%" />
+    <col width="25%" />
     <tr>
         <td></td>
         <td></td>
@@ -148,6 +148,5 @@
                 <asp:Button runat="server" ID="btnCancel" Text="<%$ resources: btnCancel.Caption %>" CssClass="slxbutton" />
             </asp:Panel>
         </td>
-        <td></td>
     </tr>
 </table>

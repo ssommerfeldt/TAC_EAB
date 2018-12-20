@@ -1,16 +1,18 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-    'Sage/MainView/ReportMgr/BaseListPanelConfig',
-    'Sage/MainView/ReportMgr/ReportsSDataSummaryFormatterScope',    
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/ReportsListPanelConfig", [
+    'Sage/MainView/_BaseListPanelConfig',
+    'Sage/MainView/ReportMgr/ReportsSDataSummaryFormatterScope',
     'dojo/_base/declare',
     'dojo/i18n!./nls/ReportsListPanelConfig',
     'Sage/Data/SDataServiceRegistry',
-    'Sage/UI/Columns/DateTime',
+    'Sage/UI/Controls/GridParts/Columns/DateTime',
     'dojo/_base/lang',
-    'Sage/MainView/ReportMgr/ReportManagerFormatter'
+    'Sage/MainView/ReportMgr/ReportManagerFormatter',
+    'dojo/i18n!./templates/nls/ReportsListSummary',
+    'dojo/i18n!./templates/nls/ReportDetailSummary'
 ],
 function (
-    BaseListPanelConfig,
+    _BaseListPanelConfig,
     ReportsSDataSummaryFormatterScope,
     declare,
     nlsResources,
@@ -19,7 +21,7 @@ function (
     dojoLang,
     reportManagerFormatter
 ) {
-    var reportsListPanelConfig = declare('Sage.MainView.ReportMgr.ReportsListPanelConfig', [BaseListPanelConfig], {
+    var reportsListPanelConfig = declare('Sage.MainView.ReportMgr.ReportsListPanelConfig', [_BaseListPanelConfig], {
         keyField: "$key",
         _listId: 'Reports',
         _resourceKind: 'reports',
@@ -27,15 +29,15 @@ function (
         _currentListContextSubMenu: 'ReportsListContextMenu',
         constructor: function () {
             dojoLang.mixin(this, nlsResources);
-            //Get SData Service
             this._service = sDataServiceRegistry.getSDataService('system');
-
             //Set up query parameters
             this._structure = this._getStructure();
             this._select = this._getSelect();
             this._where = this._getWhere();
             this._include = this._getInclude();
             this._store = this._getStore();
+            this.sort = this._getSort();
+            this._sort = this._getSort();
             this.list = this._getListConfig();
             this.detail = this._getDetailConfig();
             this.toolBar = this._getToolBars();
@@ -43,15 +45,12 @@ function (
         },
         _getStructure: function () {
             return [
-                { field: 'displayName', name: this.colNameReportName, width: '100px' },
-                //{ field: 'ReportType', name: this.colNameType, width: '50px' }, //TODO: MIssing from endpoint
-                {field: 'mainTable', name: this.colNameTable, width: '50px', formatter: reportManagerFormatter.formatProperCase },
-                { field: 'createUser', name: this.colNameCreateUser, width: '50px', formatter: reportManagerFormatter.formatGetUserById },
-                { field: 'createDate', name: this.colNameCreateDate, width: '50px', type: dateTimeColumn },
-                //{ field: 'LastExecutionDate', name: this.colNameLastExecutionDate, width: '50px', type: DateTimeColumn }, //TODO: Missing from endpoint
-                //{ field: 'LastExecutionUserId', name: this.colNameLastExecutionUser, width: '50px', type: SlxUserColumn }, //TODO: Missing from endpoint
-                { field: 'modifyUser', name: this.colNameModifyUser, width: '50px', formatter: reportManagerFormatter.formatGetUserById },
-                { field: 'modifyDate', name: this.colNameModifyDate, width: '50px', type: dateTimeColumn }
+                { field: 'displayName', label: this.colNameReportName, width: '100px' },
+                { field: 'mainTable', label: this.colNameTable, width: '50px', formatter: reportManagerFormatter.formatProperCase },
+                { field: 'createUser', label: this.colNameCreateUser, width: '50px', formatter: reportManagerFormatter.formatGetUserById },
+                { field: 'createDate', label: this.colNameCreateDate, width: '50px', type: dateTimeColumn },
+                { field: 'modifyUser', label: this.colNameModifyUser, width: '50px', formatter: reportManagerFormatter.formatGetUserById },
+                { field: 'modifyDate', label: this.colNameModifyDate, width: '50px', type: dateTimeColumn }
             ];
         },
         _getSelect: function () {
@@ -61,7 +60,7 @@ function (
             return "";
         },
         _getSort: function () {
-            var sort = [{ attribute: 'displayName', descending: false}];
+            var sort = [{ attribute: 'displayName', descending: false }];
             return sort;
         },
         _getInclude: function () {
@@ -106,9 +105,12 @@ function (
             var detailConfig = {
                 resourceKind: this._resourceKind,
                 requestConfiguration: requestConfig,
-                templateLocation: 'MainView/ReportMgr/Templates/ReportDetailSummary.html'
+                templateLocation: 'MainView/ReportMgr/templates/ReportDetailSummary.html'
             };
             return detailConfig;
+        },
+        _getSummaryConfig: function () {
+            return false;
         },
         _getToolBars: function () {
             var toolBars = { items: [] };

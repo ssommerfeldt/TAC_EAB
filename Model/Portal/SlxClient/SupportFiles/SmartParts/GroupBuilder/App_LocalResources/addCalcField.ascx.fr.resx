@@ -117,55 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="localizeBaseTable.Text" xml:space="preserve">
-    <value>Table de base :</value>
-  </data>
-  <data name="localizeDescription.Text" xml:space="preserve">
-    <value>Description :</value>
-  </data>
-  <data name="localizeProperties.Text" xml:space="preserve">
-    <value>Propriétés</value>
-  </data>
   <data name="jsAliasNoSpace" xml:space="preserve">
     <value>Un alias ne peut contenir un espace.</value>
   </data>
   <data name="jsCannotSave" xml:space="preserve">
     <value>Impossible d'enregistrer un champ calculé avec des informations manquantes.</value>
   </data>
-  <data name="localizeCalculation.Text" xml:space="preserve">
-    <value>Calcul</value>
+  <data name="jsEditCalculatedField" xml:space="preserve">
+    <value>Modifier le champ calculé</value>
   </data>
-  <data name="localizeCalcType.Text" xml:space="preserve">
-    <value>Type de calcul :</value>
-  </data>
-  <data name="localizeNumeric.Text" xml:space="preserve">
-    <value>Numérique</value>
+  <data name="jsEnterAlias" xml:space="preserve">
+    <value>Entrez un alias pour ce calcul.</value>
   </data>
   <data name="jsEnterName" xml:space="preserve">
     <value>Entrez un nom pour ce calcul.</value>
   </data>
   <data name="jsErrorFieldNotFound" xml:space="preserve">
-    <value>Erreur : champ introuvable dans l'ensemble des champs :</value>
+    <value>Erreur : champ introuvable dans l'ensemble des champs :</value>
   </data>
-  <data name="localizeOK.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="jsNameUpperCase" xml:space="preserve">
+    <value>Un nom valide commence par une majuscule.</value>
   </data>
-  <data name="localizeNameAlias.Text" xml:space="preserve">
-    <value>Nom/Alias :</value>
+  <data name="localizeAddCalcField.Text" xml:space="preserve">
+    <value>Ajouter un champ calculé</value>
   </data>
-  <data name="jsEnterAlias" xml:space="preserve">
-    <value>Entrez un alias pour ce calcul.</value>
+  <data name="localizeBaseTable.Text" xml:space="preserve">
+    <value>Table de base :</value>
   </data>
-  <data name="localizeString.Text" xml:space="preserve">
-    <value>Chaîne</value>
+  <data name="localizeCalcType.Text" xml:space="preserve">
+    <value>Type de calcul :</value>
   </data>
-  <data name="jsEditCalculatedField" xml:space="preserve">
-    <value>Modifier le champ calculé</value>
+  <data name="localizeCalculation.Text" xml:space="preserve">
+    <value>Calcul</value>
   </data>
   <data name="localizeCancel.Text" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="localizeAddCalcField.Text" xml:space="preserve">
-    <value>Ajouter un champ calculé</value>
+  <data name="localizeDescription.Text" xml:space="preserve">
+    <value>Description :</value>
+  </data>
+  <data name="localizeNameAlias.Text" xml:space="preserve">
+    <value>Nom/Alias :</value>
+  </data>
+  <data name="localizeNumeric.Text" xml:space="preserve">
+    <value>Numérique</value>
+  </data>
+  <data name="localizeOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="localizeProperties.Text" xml:space="preserve">
+    <value>Propriétés</value>
+  </data>
+  <data name="localizeString.Text" xml:space="preserve">
+    <value>Chaîne</value>
   </data>
 </root>

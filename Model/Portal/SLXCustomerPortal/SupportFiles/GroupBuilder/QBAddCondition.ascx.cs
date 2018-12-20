@@ -30,8 +30,9 @@ namespace Sage.SalesLogix.Client.GroupBuilder
                 StringBuilder vJS = new StringBuilder(vScript);
 
                 vJS.Replace("@DateValueClientID", DateValue.ClientID + "_TXT");
+                vJS.Replace("@DijitDateValueClientID", DateValue.ClientID);
                 vJS.Replace("@DateValueFormat", DateValue.DateFormat);
-
+                //SEC GOOD
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "QBAddCondition", vJS.ToString(), true);
             }
         }

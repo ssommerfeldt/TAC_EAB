@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0"?>
-<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmDistinctEntityFilter" id="05e2b315-218b-4aff-809e-9a91d6730768" lastModifiedUtc="2008-11-07T18:21:25.203125Z" filterName="CreateDate" propertyName="CreateDate" characters="0">
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRangeEntityFilter" id="05e2b315-218b-4aff-809e-9a91d6730768" lastModifiedUtc="2015-07-29T23:28:17.4474314Z" filterName="CreateDate" propertyName="CreateDate" characters="1">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
-    <extendee type="Sage.Platform.Orm.Entities.OrmDistinctEntityFilter" />
+    <extendee type="Sage.Platform.Orm.Entities.OrmRangeEntityFilter" />
   </ExtendedPropertiesCollection>
+  <ranges id="c3d83690-f244-4cdd-99bd-798d30ff1a55" rangeName="SlxMonthly" />
 </entityFilter>

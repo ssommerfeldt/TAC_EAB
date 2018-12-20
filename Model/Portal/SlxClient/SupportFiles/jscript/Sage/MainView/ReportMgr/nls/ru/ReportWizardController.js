@@ -1,9 +1,9 @@
-﻿define({
-    txtLoadingScheduleDetails: 'Загрузка Расписание Подробнее',
-    txtError: 'Ошибка',
-    txtCannotDetermineReportId: 'Невозможно определить идентификатор отчета.',
-    txtCannotDetermineReportNameOrFamily: 'Невозможно определить имя отчета или семью.',
-    txtLoading: 'Загрузка ...',
-    txtLoadingReport: 'Загрузка Сообщить',
-    txtSorryAnErrorOccuredLoadingReport: 'К сожалению, произошла ошибка загрузки отчета: ${0} ${1}.'
+define("Sage/MainView/ReportMgr/nls/ru/ReportWizardController", {
+    "txtLoadingScheduleDetails": "Загрузка сведений о расписании",
+    "txtError": "Ошибка",
+    "txtCannotDetermineReportId": "Не удалось определить ИД отчета.",
+    "txtCannotDetermineReportNameOrFamily": "Не удалось определить имя или семейство отчета.",
+    "txtLoading": "Загрузка ",
+    "txtLoadingReport": "Загрузка отчета",
+    "txtSorryAnErrorOccuredLoadingReport": "При загрузке отчета возникла ошибка: ${0} ${1}."
 });

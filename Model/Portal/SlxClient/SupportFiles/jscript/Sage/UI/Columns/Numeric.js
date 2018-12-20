@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Columns/Numeric", [
     'Sage/UI/Controls/Numeric',
     'dojox/grid/cells/dijit',
     'dojo/_base/declare',

@@ -117,29 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="localizeBaseTable.Text" xml:space="preserve">
-    <value>Осн. таблица:</value>
-  </data>
-  <data name="localizeDescription.Text" xml:space="preserve">
-    <value>Описание:</value>
-  </data>
-  <data name="localizeProperties.Text" xml:space="preserve">
-    <value>Свойства</value>
-  </data>
   <data name="jsAliasNoSpace" xml:space="preserve">
-    <value>Алиас не может содержать пробелов.</value>
+    <value>Псевдоним не должен содержать пробелов.</value>
   </data>
   <data name="jsCannotSave" xml:space="preserve">
     <value>Не удалось сохранить вычисляемое поле с недостающей информацией.</value>
   </data>
-  <data name="localizeCalculation.Text" xml:space="preserve">
-    <value>Вычисление</value>
+  <data name="jsEditCalculatedField" xml:space="preserve">
+    <value>Редактировать вычисляемое поле</value>
   </data>
-  <data name="localizeCalcType.Text" xml:space="preserve">
-    <value>Тип вычислен.:</value>
-  </data>
-  <data name="localizeNumeric.Text" xml:space="preserve">
-    <value>Числовой</value>
+  <data name="jsEnterAlias" xml:space="preserve">
+    <value>Введите псевдоним для этого вычисления.</value>
   </data>
   <data name="jsEnterName" xml:space="preserve">
     <value>Введите название для этого вычисления.</value>
@@ -147,25 +135,40 @@
   <data name="jsErrorFieldNotFound" xml:space="preserve">
     <value>Ошибка: поле не найдено в списке возможных полей:</value>
   </data>
-  <data name="localizeOK.Text" xml:space="preserve">
-    <value>Ок</value>
+  <data name="jsNameUpperCase" xml:space="preserve">
+    <value>Допустимое имя должно начинаться с прописной буквы.</value>
   </data>
-  <data name="localizeNameAlias.Text" xml:space="preserve">
-    <value>Имя/Алиас:</value>
+  <data name="localizeAddCalcField.Text" xml:space="preserve">
+    <value>Добавить вычисляемое поле</value>
   </data>
-  <data name="jsEnterAlias" xml:space="preserve">
-    <value>Введите алиас для этого вычисления.</value>
+  <data name="localizeBaseTable.Text" xml:space="preserve">
+    <value>Базовая таблица:</value>
   </data>
-  <data name="localizeString.Text" xml:space="preserve">
-    <value>Строка</value>
+  <data name="localizeCalcType.Text" xml:space="preserve">
+    <value>Тип вычислен.:</value>
   </data>
-  <data name="jsEditCalculatedField" xml:space="preserve">
-    <value>Изменить вычисл. поле</value>
+  <data name="localizeCalculation.Text" xml:space="preserve">
+    <value>Вычисление</value>
   </data>
   <data name="localizeCancel.Text" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="localizeAddCalcField.Text" xml:space="preserve">
-    <value>Добавить вычисл. поле</value>
+  <data name="localizeDescription.Text" xml:space="preserve">
+    <value>Описание:</value>
+  </data>
+  <data name="localizeNameAlias.Text" xml:space="preserve">
+    <value>Имя/псевдоним:</value>
+  </data>
+  <data name="localizeNumeric.Text" xml:space="preserve">
+    <value>Числовой</value>
+  </data>
+  <data name="localizeOK.Text" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="localizeProperties.Text" xml:space="preserve">
+    <value>Свойства</value>
+  </data>
+  <data name="localizeString.Text" xml:space="preserve">
+    <value>Строка</value>
   </data>
 </root>

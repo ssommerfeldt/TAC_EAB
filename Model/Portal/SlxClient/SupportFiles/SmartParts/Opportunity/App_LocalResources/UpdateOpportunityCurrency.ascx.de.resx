@@ -118,45 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="chkLockRate_rsc.Text" xml:space="preserve">
-    <value>Die Gebühr für diese Verkaufschance sperren</value>
+    <value>Kurs für diese Verkaufschance sperren</value>
   </data>
-  <data name="LPDescription_rsc.PropertyHeader" xml:space="preserve">
-    <value>Beschreibung</value>
+  <data name="lblChange_rsc.Text" xml:space="preserve">
+    <value>Kurs ändern in </value>
   </data>
-  <data name="ThisRateCurrent_rsc" xml:space="preserve">
-    <value>(Dieser Gebührensatz ist aktuell ab {0} )</value>
+  <data name="lblConvertedPotential_rsc.Text" xml:space="preserve">
+    <value>Potential umrechnen - Von: </value>
   </data>
   <data name="lblTo_rsc.Text" xml:space="preserve">
-    <value>An: </value>
+    <value>In: </value>
   </data>
-  <data name="RateAssignedOn_rsc" xml:space="preserve">
-    <value>(Gebühr zugewiesen am {0} )</value>
+  <data name="lblWillChange_rsc.Text" xml:space="preserve">
+    <value>Mit dieser Änderung wird für diese Verkaufschance Folgendes umgerechnet:</value>
   </data>
   <data name="LPCurrencyCode_rsc.PropertyHeader" xml:space="preserve">
     <value>Währungscode</value>
   </data>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>OK</value>
+  <data name="LPDescription_rsc.PropertyHeader" xml:space="preserve">
+    <value>Beschreibung</value>
   </data>
-  <data name="lblConvertedPotential_rsc.Text" xml:space="preserve">
-    <value>Potential konvertieren - Von: </value>
+  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
+    <value>Kurs</value>
+  </data>
+  <data name="OppsCurrentRate_rsc" xml:space="preserve">
+    <value>Der aktuelle Kurs für diese Verkaufschance liegt bei {0} ({1}).</value>
+  </data>
+  <data name="RateAssignedOn_rsc" xml:space="preserve">
+    <value>(Kurs zugewiesen am {0} )</value>
+  </data>
+  <data name="ThisRateCurrent_rsc" xml:space="preserve">
+    <value>(Aktueller Kurs vom {0})</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="Error_ChangingExchangeRate" xml:space="preserve">
     <value>Fehler beim Ändern des Wechselkurses.</value>
-  </data>
-  <data name="lblChange_rsc.Text" xml:space="preserve">
-    <value>Kurs ändern in  </value>
-  </data>
-  <data name="lblWillChange_rsc.Text" xml:space="preserve">
-    <value>Diese Änderung konvertiert diese Verkaufschancen</value>
-  </data>
-  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
-    <value>Gebühr</value>
-  </data>
-  <data name="OppsCurrentRate_rsc" xml:space="preserve">
-    <value>Die aktuelle Gebühr dieser Verkaufschance beträgt {0} bei {1}</value>
   </data>
 </root>

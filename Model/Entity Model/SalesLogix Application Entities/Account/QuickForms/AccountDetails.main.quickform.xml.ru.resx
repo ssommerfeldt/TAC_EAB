@@ -117,88 +117,133 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Owner.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="Address.Caption" xml:space="preserve">
-    <value>Адрес:</value>
-  </data>
-  <data name="MainPhone.Caption" xml:space="preserve">
-    <value>Основной:</value>
-  </data>
-  <data name="WebAddress.ButtonToolTip" xml:space="preserve">
-    <value>WWW</value>
-  </data>
-  <data name="BusinessDescription.Caption" xml:space="preserve">
-    <value>Описание бизнеса:</value>
-  </data>
-  <data name="cmdCopyAccount.ToolTip" xml:space="preserve">
-    <value>Скопировать информацию о субъекте в буфер обмена</value>
-  </data>
-  <data name="AccManager.Caption" xml:space="preserve">
-    <value>Менеджер:</value>
-  </data>
-  <data name="pklType.Caption" xml:space="preserve">
-    <value>Тип:</value>
-  </data>
-  <data name="cmdReset.ToolTip" xml:space="preserve">
-    <value>Сброс</value>
-  </data>
-  <data name="TollFree.Caption" xml:space="preserve">
-    <value>Справочный тел.:</value>
-  </data>
-  <data name="AccountName.Caption" xml:space="preserve">
-    <value>Субъект:</value>
-  </data>
-  <data name="cmdCopyAccount.Caption" xml:space="preserve">
-    <value>Копировать</value>
-  </data>
-  <data name="btnDelete.Caption" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Клиент будет удален без возможности восстановления. Также будут удалены все связанные контакты, возможные сделки и история</value>
-  </data>
-  <data name="Address.ButtonToolTip" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="btnDelete.ToolTip" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="cmdReset.Caption" xml:space="preserve">
-    <value>Сброс</value>
-  </data>
-  <data name="AccManager.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="pklSubType.Caption" xml:space="preserve">
-    <value>Подтип:</value>
+  <data name="btnSaveAccount.Caption" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="btnSaveAccount.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="Fax.Caption" xml:space="preserve">
-    <value>Факс:</value>
+  <data name="btnDelete.Caption" xml:space="preserve">
+    <value>Удалить</value>
   </data>
-  <data name="btnSaveAccount.Caption" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="btnDelete.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
   </data>
-  <data name="Address.AddressToolTip" xml:space="preserve">
-    <value>Сопоставления поиска</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Клиент будет удален без возможности восстановления. Также будут удалены все связанные контакты, возможности и история</value>
   </data>
-  <data name="Owner.Caption" xml:space="preserve">
-    <value>Доступ:</value>
-  </data>
-  <data name="Industry.Caption" xml:space="preserve">
-    <value>Отрасль:</value>
-  </data>
-  <data name="WebAddress.Caption" xml:space="preserve">
-    <value>Веб URL:</value>
-  </data>
-  <data name="Status.Caption" xml:space="preserve">
-    <value>Статус:</value>
+  <data name="AccountName.Caption" xml:space="preserve">
+    <value>Клиент</value>
   </data>
   <data name="Division.Caption" xml:space="preserve">
-    <value>Подразделение:</value>
+    <value>Подразделение</value>
+  </data>
+  <data name="BusinessDescription.Caption" xml:space="preserve">
+    <value>Описание бизнеса</value>
+  </data>
+  <data name="Address.Caption" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Owner.Caption" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="MainPhone.Caption" xml:space="preserve">
+    <value>Основной</value>
+  </data>
+  <data name="Fax.Caption" xml:space="preserve">
+    <value>Факс</value>
+  </data>
+  <data name="TollFree.Caption" xml:space="preserve">
+    <value>Бесплатный справочный телефон</value>
+  </data>
+  <data name="pklType.Caption" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="pklSubType.Caption" xml:space="preserve">
+    <value>Подтип</value>
+  </data>
+  <data name="Status.Caption" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Industry.Caption" xml:space="preserve">
+    <value>Отрасль</value>
+  </data>
+  <data name="WebAddress.Caption" xml:space="preserve">
+    <value>URL-адрес веб-сайта</value>
+  </data>
+  <data name="AccManager.Caption" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="cmdCopyAccount.Caption" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="cmdCopyAccount.ToolTip" xml:space="preserve">
+    <value>Скопировать информацию о клиенте в буфер обмена</value>
+  </data>
+  <data name="Owner.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="AccManager.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="Address.AddressToolTip" xml:space="preserve">
+    <value>MapQuest</value>
+  </data>
+  <data name="Address.ButtonToolTip" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="WebAddress.ButtonToolTip" xml:space="preserve">
+    <value>WWW</value>
+  </data>
+  <data name="cmdReset.Caption" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="cmdReset.ToolTip" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="txtErpCustomerID.Caption" xml:space="preserve">
+    <value>ИД заказчика в ERP</value>
+  </data>
+  <data name="pklErpStatus.Caption" xml:space="preserve">
+    <value>Статус в ERP</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>AccountName (имя клиента)</value>
+  </data>
+  <data name="lueParentAccount.Caption" xml:space="preserve">
+    <value>Родительский клиент</value>
+  </data>
+  <data name="lueParentAccount.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Основной телефон</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Подтип</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueParentAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="txtPropensityScore.Caption" xml:space="preserve">
+    <value>Баллы вероятности покупки</value>
   </data>
 </root>

@@ -1,21 +1,19 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            colNameDate: 'Date',
-            colNameScheduleName: 'Description',
-            colNameExecutionType: 'Execution Type',
-            colNameRunAs: 'Run As',
-            colNameScheduledBy: 'Scheduled By',
-            colNameReportName: 'Report',
-            colNameSize: 'File Size',
-            colNameOutputFormat: 'Output Format',
-            colNameReportType: 'Type'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/MainView/ReportMgr/nls/HistoryListPanelConfig", {
+    root: {
+        colNameDate: 'Date',
+        colNameScheduleName: 'Description',
+        colNameExecutionType: 'Execution Type',
+        colNameRunAs: 'Run As',
+        colNameScheduledBy: 'Scheduled By',
+        colNameReportName: 'Report',
+        colNameSize: 'File Size',
+        colNameOutputFormat: 'Output Format',
+        colNameReportType: 'Type'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });
 

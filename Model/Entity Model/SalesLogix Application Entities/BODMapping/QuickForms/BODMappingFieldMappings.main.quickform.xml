@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a64afb10-d5ba-450f-8aae-e12ff4f77dfa" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-12-29T09:38:30.8329637Z">
+  <ActiveControl />
+  <ImagePath />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>34585e10-9777-4d47-9680-dc28e8af6729</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName>quickformload0</MethodName>
+          <CSharpCodeSnippet>var map = BindingSource.Current as IBODMapping;
+if (map != null)
+{
+    var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+    if (clientContextService != null)
+    {
+        clientContextService.CurrentContext["STDBackOfficeID"] = map.BackOffice.STDBackOfficeID;
+		clientContextService.CurrentContext["BackOfficeID"] = map.BackOffice.Id.ToString();
+    }
+	//btnAdd.Visible = map.BackOffice.Id.ToString() != map.BackOffice.STDBackOfficeID;
+}</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
+  <Name>BODMappingFieldMappings</Name>
+  <ClientScriptIncludes />
+  <ClientResourceKeys>
+    <string>error_StdBODFieldMappingReadOnly</string>
+    <string>insertBODFieldMapping_Caption</string>
+    <string>editBODFieldMapping_Caption</string>
+    <string>copyBODFieldMapping_Caption</string>
+    <string>edit_Caption</string>
+    <string>copy_Caption</string>
+    <string>customize_Caption</string>
+  </ClientResourceKeys>
+  <ExtendedProperties />
+  <HelpFile />
+  <ReadOnly>false</ReadOnly>
+  <GeneratePrintView>false</GeneratePrintView>
+  <Controls>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.SDataGrid.QFSDataGrid, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSDataGrid>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>grdFieldMapping</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <GenerateMember>false</GenerateMember>
+        <ReadOnlyCondition>False</ReadOnlyCondition>
+        <AppliedSecurity />
+        <RelateToPropertyName />
+        <PreviewField />
+        <ResourceKind>
+          <Name>bodMappingFieldMappingsView</Name>
+          <GetPredicate />
+        </ResourceKind>
+        <PathSegments />
+        <Columns>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField />
+            <ColumnId>82bbcc89-0c5d-41b3-a418-00007286b7b4</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter>function (value, item) {
+    var options = {
+        entityId: item.IsCustom ? item.$key: 'Insert',
+        entityType: 'Sage.Entity.Interfaces.IBODFieldMapping, Sage.Entity.Interfaces',
+        smartPart: 'AddEditBODFieldMapping',
+        dialogTitle: BODMappingFieldMappingsResources.editBODFieldMapping_Caption,
+		childInsertInfo: {
+			childType: 'Sage.Entity.Interfaces.IBODFieldMapping, Sage.Entity.Interfaces',
+			childRelationshipProperty: 'BODMapping',
+			parentType: 'Sage.Entity.Interfaces.IBODMapping, Sage.Entity.Interfaces',
+			parentRelationshipProperty: 'BODFieldMappings'
+		},
+		dialogParameters: item.IsCustom ? null : {
+			key: 'CloneFieldMapping',
+			value: item.$key
+		},
+        isCentered: true,
+        dialogTop: 0,
+        dialogHeight: 500,
+        dialogWidth: 900
+    };
+    return dojo.string.substitute("&lt;a id='cloneBODFieldMapping' href='javascript:Sage.Utility.loadDetailsDialog(${0});'&gt;${1}&lt;a&gt;",
+        [JSON.stringify(options), item.IsCustom ? BODMappingFieldMappingsResources.edit_Caption : BODMappingFieldMappingsResources.customize_Caption]);
+}</CustomFormatter>
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField />
+            <ColumnId>da95b13e-021e-4b00-912c-a615b833a586</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter>function (value, item) {
+    var options = {
+        entityType: 'Sage.Entity.Interfaces.IBODFieldMapping, Sage.Entity.Interfaces',
+		entityId: 'Insert',
+        smartPart: 'AddEditBODFieldMapping',
+        dialogTitle: BODMappingFieldMappingsResources.copyBODFieldMapping_Caption,
+		childInsertInfo: {
+			childType: 'Sage.Entity.Interfaces.IBODFieldMapping, Sage.Entity.Interfaces',
+			childRelationshipProperty: 'BODMapping',
+			parentType: 'Sage.Entity.Interfaces.IBODMapping, Sage.Entity.Interfaces',
+			parentRelationshipProperty: 'BODFieldMappings'
+		},
+		dialogParameters: {
+			key: 'CopyFieldMapping',
+			value: item.$key
+		},
+        isCentered: true,
+        dialogTop: 0,
+        dialogHeight: 500,
+        dialogWidth: 900
+    };
+    return dojo.string.substitute("&lt;a id='copyBODFieldMapping' href='javascript:Sage.Utility.loadDetailsDialog(${0});'&gt;${1}&lt;a&gt;",
+        [JSON.stringify(options), BODMappingFieldMappingsResources.copy_Caption]);
+}</CustomFormatter>
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFSDataLinkCol>
+            <StyleScheme />
+            <DataField>FieldMappingName</DataField>
+            <ColumnId>8890709f-13cb-43c0-a21e-193386dd6652</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>FieldMappingName</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <Destination />
+            <Image />
+            <EntityIdField>Id</EntityIdField>
+            <EntityTypeName>BODFieldMapping</EntityTypeName>
+            <Target />
+            <AppliedSecurity />
+            <HideCondition />
+            <Width>-1</Width>
+          </QFSDataLinkCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>Entity</DataField>
+            <ColumnId>a428f88c-199b-4874-878f-c9fa21c5bfd0</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>Entity</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>EntityXPath</DataField>
+            <ColumnId>4a007677-953f-43f1-bdeb-9e4bf44608f3</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>EntityXPath</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>Property</DataField>
+            <ColumnId>86024db6-5428-4ab2-acd1-7b65b2648654</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>Property</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>PropertyXPath</DataField>
+            <ColumnId>5aaa4179-10fa-4510-a997-b30e3c8c6898</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>PropertyXPath</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>SyncDirection</DataField>
+            <ColumnId>cce5ebc4-a64c-47c9-930d-652decb967e5</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>SyncDirection</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFSDataCheckBoxCol>
+            <StyleScheme />
+            <DataField>IsCustom</DataField>
+            <ColumnId>10ac08b7-bd4a-438a-aefd-adb015bac7ca</ColumnId>
+            <HorizontalAlignment>center</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>IsCustom</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFSDataCheckBoxCol>
+          <QFSDataCheckBoxCol>
+            <StyleScheme />
+            <DataField>IsActive</DataField>
+            <ColumnId>bed71f1a-9bbd-4042-a67a-e3e8fa930443</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>IsActive</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFSDataCheckBoxCol>
+        </Columns>
+        <ConditionalWhere>function () {return dojo.string.substitute("BmId eq '${0}'", [Sage.Utility.getCurrentEntityId()]);}</ConditionalWhere>
+        <Select />
+        <Include />
+        <FeedCategory>InternalAppEntities</FeedCategory>
+        <OnGetMappingId />
+        <ParentRelationshipPropertyName />
+        <ChildRelationshipPropertyName />
+        <OnDataChange />
+        <OnAdd />
+        <Tools>
+          <SDataGridCancelTool>
+            <Name>Cancel</Name>
+            <Image>[Localization!Global_Images:refresh]</Image>
+            <DisplayInInsert>false</DisplayInInsert>
+            <MergePosition>After</MergePosition>
+            <MergeControlId>btnAdd</MergeControlId>
+            <OnClick>//default Cancel behavior</OnClick>
+            <StyleScheme />
+            <AppliedSecurity />
+          </SDataGridCancelTool>
+        </Tools>
+      </QFSDataGrid>
+    </Control>
+  </Controls>
+  <ToolControls>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>c5511d29bc04f939db5dbe9795aab0f</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>ce2fdd27c664896a1e507be3c877904</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>btnAdd</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:plus_16x16]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>btnAdd</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>btnAdd_ClickAction</MethodName>
+              <CSharpCodeSnippet>if (DialogService != null) {
+  	DialogService.SetSpecs(500, 800, "AddEditBODFieldMapping", GetLocalResourceObject("6f8fa336-45fb-4a32-84a1-3a9c2212837c.DialogTitleOverride").ToString() );
+    DialogService.EntityType = typeof(Sage.Entity.Interfaces.IBODFieldMapping); 
+	DialogService.DialogParameters.Add("IsExtension", true);
+    DialogService.ShowDialog();
+}</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity>ENTITIES/BODFIELDMAPPING/ADD</AppliedSecurity>
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
+  </ToolControls>
+  <Columns>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>100</Width>
+    </ColumnStyle>
+  </Columns>
+  <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+  </Rows>
+  <Description />
+  <UseEntityNameAsTitle>false</UseEntityNameAsTitle>
+  <EntityTypeName>IBODMapping</EntityTypeName>
+  <DefaultNamespace>Sage.Entity.Interfaces</DefaultNamespace>
+  <AssemblyName>Sage.Entity.Interfaces</AssemblyName>
+</QuickForm>

@@ -1,0 +1,52 @@
+define("Sage/QuickForms/Design/Editors/nls/zh-cn/PickListAdvancedPropertyEditor", {
+    "titleText": "高级",
+    "appearanceText": "外观",
+    "behaviorText": "行为",
+    "controlInfoText": "控件信息",
+    "dataText": "数据",
+    "allowMultiplesText": "允许多选:",
+    "allowMultiplesTooltipText": "允许用户选择多项。",
+    "canEditTextText": "可编辑文本:",
+    "canEditTextTooltipText": "允许用户输入值。",
+    "controlIdText": "控件 ID:",
+    "controlIdTooltipText": "此控件的标识。",
+    "controlLabelPlacementText": "标签位置:",
+    "controlLabelPlacementTooltipText": "相对于控件的标签位置。",
+    "controlTypeText": "控件类型:",
+    "controlTypeTooltipText": "Saleslogix 控件类型。",
+    "defaultDataBindingText": "数据绑定:",
+    "defaultDataBindingTooltipText": "此控件使用的数据库中的数据字段。",
+    "displayModeText": "显示模式:",
+    "displayModeTooltipText": "控件的显示模式: 文本框、超链接或纯文本。",
+    "enabledText": "已启用:",
+    "enabledTooltipText": "允许用户与此控件交互。",
+    "maxLengthText": "最大长度:",
+    "maxLengthTooltipText": "用户可输入的最多字符数。",
+    "mustExistInListText": "项必须存在:",
+    "mustExistInListTooltipText": "要求输入的值位于列表中。",
+    "pickListNameText": "选择列表名称:",
+    "pickListNameTooltipText": "在输入数据时用户可从中进行选择的值列表的名称。",
+    "requiredText": "必需:",
+    "requiredTooltipText": "保存数据时必须提供值。",
+    "storageModeText": "存储模式:",
+    "storageModeTooltipText": "值的存储方式: 文本、ID 或代码。",
+    "visibleText": "可见:",
+    "visibleTooltipText": "在窗体上显示或隐藏此控件。",
+    "labelPlacementText": {
+        "left": "左侧",
+        "right": "右侧",
+        "top": "顶部",
+        "none": "无"
+    },
+    "displayModeTypeText": {
+        "AsControl": "作为控件",
+        "AsText": "作为文本",
+        "AsHyperlink": "作为超链接"
+    },
+    "storageModeTypeText": {
+        "Text": "文本",
+        "Id": "ID",
+        "Code": "代码"
+    },
+    "pickListRequestErrorText": "无法从服务器检索选择列表。"
+});

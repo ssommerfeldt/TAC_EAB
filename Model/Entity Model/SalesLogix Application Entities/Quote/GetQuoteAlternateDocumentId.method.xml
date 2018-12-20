@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="105c6775-5bbf-4442-91e2-2e5babc75eb4" lastModifiedUtc="2017-07-19T10:31:07.5694919Z" name="GetQuoteAlternateDocumentId" returnType="String" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="d011513b-ab28-4d56-8eeb-8b0ad5ff9046" paramName="quoteId" sequence="0" paramType="String" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="ef96246d-1ed4-4efb-90a3-5fbe61c1082b" lastModifiedUtc="2017-07-18T14:09:13.5936911Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="GetQuoteAlternateDocumentId" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

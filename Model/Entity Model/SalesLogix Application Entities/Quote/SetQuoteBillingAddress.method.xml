@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9311877e-3f33-469e-9934-1605dec7d7bb" lastModifiedUtc="2015-11-23T20:03:02.0370596Z" name="SetQuoteBillingAddress" returnType="IQuoteAddress" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="64308dc5-420f-4b17-899a-bab16cdb46ec" paramName="address" sequence="0" paramType="IAddress">
+      <description>Contacts primary address.</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="5c7b159a-6ff2-464d-895e-cdb2ebb39a6f" lastModifiedUtc="2015-11-23T20:02:58.8797439Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="SetQuoteBillingAddress" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

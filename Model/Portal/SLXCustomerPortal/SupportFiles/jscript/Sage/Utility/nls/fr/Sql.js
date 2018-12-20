@@ -1,3 +1,3 @@
-define((
-{ InvalidApostropheCount: 'Le nombre apostrophes dans la clause SQL IN est pas valide.' }
-));
+define("Sage/Utility/nls/fr/Sql", {
+    "InvalidApostropheCount": "Le nombre d'apostrophes dans la clause SQL IN n'est pas valide."
+});

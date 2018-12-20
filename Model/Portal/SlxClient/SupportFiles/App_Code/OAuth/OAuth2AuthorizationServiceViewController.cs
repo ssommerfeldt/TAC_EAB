@@ -26,7 +26,7 @@ public class OAuth2AuthorizationServiceViewController : AuthorizationServiceView
     protected override string GetAuthorizationUrl(string callbackUrl)
     {
         string baseUrl = provider.Host + provider.UserApprovalUrl;
-        string UrlData = provider.UserApprovalData;
+        string urlData = provider.UserApprovalData;
         string scopes = string.Empty;
 
         if (provider.OAuthProviderScopes.Count > 0)
@@ -35,16 +35,16 @@ public class OAuth2AuthorizationServiceViewController : AuthorizationServiceView
             scopes = HttpUtility.UrlEncode(scopes);
         }
 
-        UrlData = UrlData.Replace("{SCOPES}", scopes);
-        UrlData = UrlData.Replace("{CLIENTID}", provider.ClientId);
-        UrlData = UrlData.Replace("{REDIRECT_URI}", HttpUtility.UrlEncode(callbackUrl));
-        if (UrlData.Contains("{STATE}"))
+        urlData = urlData.Replace("{SCOPES}", scopes);
+        urlData = urlData.Replace("{CLIENTID}", provider.ClientId);
+        urlData = urlData.Replace("{REDIRECT_URI}", HttpUtility.UrlEncode(callbackUrl));
+        if (urlData.Contains("{STATE}"))
         {
             String state = Guid.NewGuid().ToString();
             HttpContext.Current.Session[Oauth2RequestStateSessionkey] = state;
-            UrlData = UrlData.Replace("{STATE}", state);
+            urlData = urlData.Replace("{STATE}", state);
         }
-        baseUrl += UrlData;
+        baseUrl += urlData;
         return baseUrl;
     }
 

@@ -117,34 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueMembers.Tooltip" xml:space="preserve">
-    <value>Aggiungi un team</value>
+  <data name="SourceTeamList.Caption" xml:space="preserve">
+    <value>Team:</value>
   </data>
-  <data name="PageTitle" xml:space="preserve">
-    <value>Membri del Team</value>
+  <data name="OkButton.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="CancelButton.Caption" xml:space="preserve">
     <value>Annulla</value>
   </data>
-  <data name="DeleteConfirmMessage" xml:space="preserve">
-    <value>conferma reso('Sei sicuro di voler rimuovere {0} dal team {1}?');</value>
+  <data name="cmdAdd.Caption" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="cmdAdd.ToolTip" xml:space="preserve">
+    <value>Aggiungi membro al team</value>
   </data>
   <data name="OwnerHeader" xml:space="preserve">
     <value>Nome</value>
   </data>
+  <data name="PageDescription" xml:space="preserve">
+    <value>Membri che appartengono al team</value>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Membri del team</value>
+  </data>
+  <data name="ProfileHeader" xml:space="preserve">
+    <value>Profilo sicurezza</value>
+  </data>
+  <data name="DeleteConfirmMessage" xml:space="preserve">
+    <value>richiesta di conferma ('Rimuovere {0} dal team {1}?')</value>
+  </data>
   <data name="lueMembers.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
     <value>Team</value>
   </data>
-  <data name="PageDescription" xml:space="preserve">
-    <value>Membri che appartengono a questo Team</value>
-  </data>
-  <data name="cmdAdd.ToolTip" xml:space="preserve">
-    <value>Aggiungi membro al Gruppo</value>
-  </data>
-  <data name="cmdAdd.Caption" xml:space="preserve">
-    <value>Aggiungi</value>
-  </data>
-  <data name="ProfileHeader" xml:space="preserve">
-    <value>Profilo Sicurezza</value>
+  <data name="lueMembers.Tooltip" xml:space="preserve">
+    <value>Aggiungi un team</value>
   </data>
 </root>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a28024a8-c87e-45b4-974f-e7b825ef2893" lastModifiedUtc="2015-02-11T16:49:35.913304Z" name="IsJobServiceRunning" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="98939348-98db-4948-b2cf-1dcad7f9ba64" lastModifiedUtc="2015-02-11T16:49:32.463649Z" targetType="Sage.SalesLogix.Integration.Rules, Sage.SalesLogix.BusinessRules" targetMethod="IsJobServiceRunning" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

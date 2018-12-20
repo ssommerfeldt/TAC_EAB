@@ -1,4 +1,4 @@
-define((
+define("Sage/QuickForms/Design/nls/en/DesignPanel", (
 { cultureListText: 
    { iv: '[invariant]',
      de_DE: 'de-DE',

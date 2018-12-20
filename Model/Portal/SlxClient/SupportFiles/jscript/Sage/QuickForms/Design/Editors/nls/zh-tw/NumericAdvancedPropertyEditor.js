@@ -1,0 +1,41 @@
+define("Sage/QuickForms/Design/Editors/nls/zh-tw/NumericAdvancedPropertyEditor", {
+    "titleText": "進階",
+    "appearanceText": "外觀",
+    "behaviorText": "行為",
+    "controlInfoText": "控制項資訊",
+    "dataText": "資料",
+    "controlIdText": "控制項 ID:",
+    "controlIdTooltipText": "這個控制項的 ID。",
+    "controlLabelPlacementText": "標籤位置:",
+    "controlLabelPlacementTooltipText": "標籤與控制項的相對位置。",
+    "controlTypeText": "控制項類型:",
+    "controlTypeTooltipText": "Saleslogix 控制項類型。",
+    "decimalDigitsText": "小數位數:",
+    "decimalDigitsTooltipText": "輸入資料時，小數點後面可以顯示和允許的位數。",
+    "defaultDataBindingText": "資料繫結:",
+    "defaultDataBindingTooltipText": "這個控制項所使用的資料庫的資料欄位。",
+    "enabledText": "已啟用:",
+    "enabledTooltipText": "允許使用者與這個控制項互動。",
+    "formatTypeText": "格式類型:",
+    "formatTypeTooltipText": "將數字轉換成字串時要使用的格式類型。",
+    "maxLengthText": "長度上限:",
+    "maxLengthTooltipText": "使用者可輸入的字元數上限。",
+    "requiredText": "必要:",
+    "requiredTooltipText": "儲存資料時需要一個值。",
+    "strictText": "嚴格:",
+    "strictTooltipText": "視需要在結尾以零來填補位數顯示。",
+    "visibleText": "可見:",
+    "visibleTooltipText": "在表單上顯示或隱藏這個控制項。",
+    "numberFormatText": {
+        "Number": "數字",
+        "Percent": "百分比",
+        "Decimal": "小數點",
+        "Scientific": "科學記號"
+    },
+    "labelPlacementText": {
+        "left": "靠左",
+        "right": "靠右",
+        "top": "靠上",
+        "none": "無"
+    }
+});

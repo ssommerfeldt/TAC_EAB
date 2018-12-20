@@ -117,51 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueAssociateTicket.LookupProperties.Contact.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Téléphone professionnel</value>
-  </data>
-  <data name="grdTickets.9bf656da-d7e7-4548-aea1-ee4f534ad6c5.ColumnHeading" xml:space="preserve">
-    <value>Compte</value>
-  </data>
-  <data name="09ad58d5-bbc2-4661-9958-358b728c3728.DuplicateAssociationMessage" xml:space="preserve">
-    <value>Ce ticket a déjà été associé au défaut.</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.AssignedTo.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Affecté à</value>
-  </data>
-  <data name="grdTickets.619d19e7-5041-48c9-9235-674195608f7c.Text" xml:space="preserve">
-    <value>Sélectionner</value>
-  </data>
-  <data name="txtSubject.Caption" xml:space="preserve">
-    <value>Objet</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.StatusCode.PropertyHeader" xml:space="preserve">
-    <value>Etat</value>
-  </data>
-  <data name="grdTickets.dc2c7ac9-9408-4400-b15f-d32d4f238399.ColumnHeading" xml:space="preserve">
-    <value>Date de réception</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.TicketNumber.PropertyHeader" xml:space="preserve">
-    <value>ID de ticket</value>
-  </data>
-  <data name="lueAssociateTicket.ButtonToolTip" xml:space="preserve">
-    <value>Associer un ticket</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.Contact.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Contact</value>
-  </data>
-  <data name="grdTickets.a9e5488e-26dc-431b-94b4-18b6f1514df9.ColumnHeading" xml:space="preserve">
-    <value>ID de ticket</value>
-  </data>
-  <data name="grdTickets.91701bdf-1c41-4bcf-92c9-0c7158b9b91b.ColumnHeading" xml:space="preserve">
-    <value>Echéance</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.Area.PropertyHeader" xml:space="preserve">
-    <value>Zone</value>
-  </data>
-  <data name="memResolution.Caption" xml:space="preserve">
-    <value>Résolution</value>
-  </data>
   <data name="grdTickets.EmptyTableRowText" xml:space="preserve">
     <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
   </data>
@@ -171,22 +126,70 @@
   <data name="grdTickets.5abc88c5-6391-4eae-b924-a00f0f1ee021.ColumnHeading" xml:space="preserve">
     <value>Priorité</value>
   </data>
-  <data name="lueAssociateTicket.LookupProperties.Urgency.Description.PropertyHeader" xml:space="preserve">
-    <value>Priorité</value>
+  <data name="grdTickets.a9e5488e-26dc-431b-94b4-18b6f1514df9.ColumnHeading" xml:space="preserve">
+    <value>ID de ticket</value>
+  </data>
+  <data name="grdTickets.5da526ca-9ac5-452f-9f48-74405ee66ea1.ColumnHeading" xml:space="preserve">
+    <value />
   </data>
   <data name="grdTickets.5da526ca-9ac5-452f-9f48-74405ee66ea1.Text" xml:space="preserve">
-    <value>Retirer</value>
+    <value>Supprimer</value>
   </data>
-  <data name="lueAssociateTicket.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+  <data name="grdTickets.5da526ca-9ac5-452f-9f48-74405ee66ea1.ConfirmationMessage" xml:space="preserve">
+    <value>Souhaitez-vous vraiment supprimer l'association avec le ticket sélectionné ?</value>
+  </data>
+  <data name="grdTickets.619d19e7-5041-48c9-9235-674195608f7c.Text" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="grdTickets.9bf656da-d7e7-4548-aea1-ee4f534ad6c5.ColumnHeading" xml:space="preserve">
     <value>Compte</value>
   </data>
-  <data name="memDescription.Caption" xml:space="preserve">
-    <value>Description</value>
+  <data name="grdTickets.dc2c7ac9-9408-4400-b15f-d32d4f238399.ColumnHeading" xml:space="preserve">
+    <value>Date de réception</value>
+  </data>
+  <data name="grdTickets.91701bdf-1c41-4bcf-92c9-0c7158b9b91b.ColumnHeading" xml:space="preserve">
+    <value>Date d'échéance</value>
   </data>
   <data name="lueAssociateTicket.ToolTip" xml:space="preserve">
     <value>Associer un ticket</value>
   </data>
-  <data name="grdTickets.5da526ca-9ac5-452f-9f48-74405ee66ea1.ConfirmationMessage" xml:space="preserve">
-    <value>Souhaitez-vous vraiment supprimer l'association avec le ticket sélectionné ?</value>
+  <data name="lueAssociateTicket.LookupProperties.TicketNumber.PropertyHeader" xml:space="preserve">
+    <value>ID de ticket</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.Contact.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.StatusCode.PropertyHeader" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.AssignedTo.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Affecté à</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.Contact.WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>Téléphone professionnel</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.Urgency.Description.PropertyHeader" xml:space="preserve">
+    <value>Priorité</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.Area.PropertyHeader" xml:space="preserve">
+    <value>Domaine</value>
+  </data>
+  <data name="txtSubject.Caption" xml:space="preserve">
+    <value>Objet</value>
+  </data>
+  <data name="memDescription.Caption" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="memResolution.Caption" xml:space="preserve">
+    <value>Résolution</value>
+  </data>
+  <data name="lueAssociateTicket.ButtonToolTip" xml:space="preserve">
+    <value>Associer un ticket</value>
+  </data>
+  <data name="09ad58d5-bbc2-4661-9958-358b728c3728.DuplicateAssociationMessage" xml:space="preserve">
+    <value>Ce ticket a déjà été associé au défaut.</value>
   </data>
 </root>

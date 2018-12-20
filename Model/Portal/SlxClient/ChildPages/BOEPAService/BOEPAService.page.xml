@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="093947e9-76c8-4051-aac5-3a23d44f7f8e" disablePageValidation="true">
+  <PageAlias>BOEPAService</PageAlias>
+  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <InheritTemplate>false</InheritTemplate>
+  <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
+  <Properties>
+    <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.IBOEPAService,Sage.Entity.Interfaces</Property>
+  </Properties>
+  <TemplateProperties>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">false</Property>
+    <Property Name="IncludeTaskPane" TypeConverter="">false</Property>
+  </TemplateProperties>
+  <IsDefaultPage>false</IsDefaultPage>
+  <ExcludedGlobalModules />
+  <AppliedSecurity />
+  <IncludeScript />
+</PortalPage>

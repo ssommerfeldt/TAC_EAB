@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/JobMgr/nls/en/RunJobDialog", (
 { dlgRunJob_Title: 'Run/Schedule Job',
   txtJobName_Caption: 'Job Name',
   txtTriggerDescription_Caption: 'Description',

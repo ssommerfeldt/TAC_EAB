@@ -1,10 +1,15 @@
+require({cache:{
+'url:Sage/UI/Controls/templates/MultiSelectPickList.html':"<div>\r\n    <input id=\"${id}-TextBox\" data-dojo-type=\"dijit.form.ValidationTextBox\" data-dojo-attach-point=\"textNode\" data-dojo-attach-event=\"onBlur: _onTextBlur\" tabindex=\"${tabIndex}\"/>\r\n    <div id=\"${id}-Button\" data-dojo-type=\"dijit.form.DropDownButton\" data-dojo-attach-point=\"dropDownButtonNode\">\r\n        <span></span>\r\n        <div class=\"multiSelectPickListDialog\" id=\"${id}-ToolTipDialog\" data-dojo-type=\"dijit.TooltipDialog\" data-dojo-attach-point=\"tooltipDialogNode\" data-dojo-attach-event=\"onClose: _onTooltipClose, onShow: _onTooltipShow\">\r\n            <div data-dojo-attach-point=\"tooltipContainer\" style=\"height:200px; width: 200px; overflow-y:auto;\">\r\n            \r\n            </div>\r\n            \r\n            <div style=\"width: 100%; text-align:right\">\r\n                <p>\r\n                    <button id=\"${id}-OKButton\" data-dojo-type=\"dijit.form.Button\" type=\"submit\" tabindex=\"${tabIndex}\">${okText}</button>\r\n                <p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/**
+ * @class Sage.UI.Controls.MultiSelectPickList
+ */
+define("Sage/UI/Controls/MultiSelectPickList", [
        'dojo/_base/array',
        'dijit/_TemplatedMixin',
        'dijit/_WidgetsInTemplateMixin',
        'dijit/_Widget',
-       'dijit/form/TextBox',
+       'dijit/form/ValidationTextBox',
        'dijit/form/DropDownButton',
        'dijit/form/CheckBox',
        'dijit/TooltipDialog',
@@ -30,73 +35,28 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
          *  sort: true,
          *  displayMode: 'AsControl',
          *  clientID: 'ASP.NET Control ClientID Here',
-         *  required: false
+         *  required: false,
+         *  tabIndex: 0
          * }
          *
          * @constructor
          */
+        cssClass: "",
         constructor: function(options) {
             if(options.clientId) {
                 this.id = options.clientId + '-MultipleSelectPickList';
+            }
+            if (options.cssClass) {
+                this.cssClass = options.cssClass;
             }
 
             this.inherited(arguments);
         },
         postCreate: function() {
             this._setupTooltips(this.dropDownButtonNode.domNode, this.textNode.domNode);
-            
-            var def = new dojo.Deferred(),
-                len;
-
-            this.getPickListData(def);
-
-            def.then(lang.hitch(this, function(data) {
-                if(typeof data === 'string') {
-                    this.textNode.set('value', data);
-                    this.dropDownButtonNode.disabled = true;
-                }
-
-                var items = [],
-                    len = data && data.items && data.items.$resources && data.items.$resources.length,
-                    i,
-                    item,
-                    existingText;
-                for(i = 0; i < len; i++) {
-                    item = data.items.$resources[i];
-                    items.push({
-                        id: item.$key,
-                        code: item.code,
-                        number: item.number,
-                        text: item.text
-                    });
-                }
-
-                this.storeData = {
-                    identifier: 'id',
-                    label: 'text',
-                    items: items
-                };
-
-                existingText = dojo.byId(this._textId);
-                if(existingText) {
-                    this.lastValidValue = existingText.value;
-                    this.initialValue = this.lastValidValue;
-                } else {
-                    if (items.length > 0) {
-                        this.lastValidValue = items[0].text;
-                    }
-                }
-
-                this.textNode.set('value', this.lastValidValue);
-                this.initialValues = this.lastValidValue.split(',');
-                this.lastValidValues = this.lastValidValue.split(',');
-
-                this._renderFormElements(items);
-
-            }), function(e) {
-                // errback
-                console.error(e);
-            });
+            var len;
+            if (this.required) { this.textNode.required = true; }
+            this._loadData();
 
             // Adjust control according to properties set in AA
 
@@ -112,9 +72,9 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
 
             if(this.get('itemMustExist')) {
                 this.textNode.isValid = lang.hitch(this, function(isFocused) {
-                    var currentVal = this.textNode.get('value'),
-                        split = currentVal.split(','),
-                        valid = false;
+                    var currentVal = this.textNode.get('value');
+                    var split = currentVal.split(',');
+                    var valid = false;
 
                     if (split.length === 1 && split[0] === '' && !this.required) {
                         // We split on an empty string (no selection), and the value was not required, so allow it
@@ -122,18 +82,23 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
                     } else {
                         //If every item in the multi-select picklist has a matching item in the store return 'true', else 'false'.
                         valid = array.every(split, function (itemText) {
-                            //If the item matches at least one item in the store return 'true', else, 'false.
-                            return array.some(this.storeData.items, 
-                                function (item) {
-                                     return item.text.trim() === itemText.trim();
-                                }, 
-                                this);
+                            var returnValue = false;
+                            var searchFor = itemText.trim();
+                            var x = 0;
+                            for (x = 0; x < this.storeData.items.length; x++) {
+                                var comparValue = this.storeData.items[x].text.trim();
+                                if (searchFor === comparValue) {
+                                    returnValue = true;
+                                    break;
+                                }
+                            }
+                            return returnValue;
                         }, this);
                     }
 
                     if(valid) {
                         this.lastValidValue = currentVal;
-                    } 
+                    }
 
                     if(isFocused) {
                         valid = true;
@@ -141,15 +106,22 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
 
                     if(!valid) {
                         // Attempt to restore last valid value.
-                        if(this.lastValidValue) {
-                            this.textNode.set('value', this.lastValidValue);
+                        if (this.lastValidValue) {
+                            currentVal = this.lastValidValue;
                             valid = true;
                         }
                     }
                     return valid;
                 });
             } else {
-                this.textNode.isValid = function(isFocused) { return true; };
+                this.textNode.isValid = function (isFocused) {
+                    if (this.required === true && this.value === '') { return false; }
+                    return true;
+                };
+            }
+
+            if (this.cssClass && this.cssClass.length > 0) {
+                this.textNode.domNode.className = this.cssClass + ' ' + this.textNode.domNode.className;
             }
 
             this.inherited(arguments);
@@ -184,13 +156,14 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
          */
         _storeHasItem: function(itemText) {
             var results = false;
-
-            results = array.some(this.storeData.items, function (item) {
-                if(item.text.trim() === itemText.trim()) {
-                    return true;
-                }
-                return false;
-            }, this);
+            if (this.storeData) {
+                results = array.some(this.storeData.items, function (item) {
+                    if (item.text.trim() === itemText.trim()) {
+                        return true;
+                    }
+                    return false;
+                }, this);
+            }
 
             return results;
         },
@@ -199,36 +172,33 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
          * Renders form elements in the tooltip dialog.
          * @function
          */
-        _renderFormElements: function(items) {
+        _renderFormElements: function (items) {
+
+            this._destroyItems();
+
             var node = this.tooltipContainer;
 
             array.forEach(items, function (item, index, array) {
                 var checkBox = new CheckBox({
-                        id: this.id + '_checkBox' + index,
-                        name: 'checkBox_' + item.text,
-                        value: item.text,
-                        checked: this._isItemSelected(item)
-                    }),
+                    id: this.id + '_checkBox' + index,
+                    name: 'checkBox_' + item.text,
+                    value: item.text,
+                    checked: this._isItemSelected(item)
+                }),
                     label;
 
                 checkBox.startup();
 
                 dojo.place(checkBox.domNode, node, 'last');
 
-                label = dojo.create(
-                    'label',
-                    {
-                        'for': checkBox.id
-                    },
-                    checkBox.domNode,
-                    'after');
+                label = dojo.create('label',{'for': checkBox.id},checkBox.domNode,'after');
 
                 label.innerHTML = item.text;
 
                 dojo.create('br', {}, label, 'after');
 
+
             }, this);
-            
         },
         _onTextBlur: function() {
             this._updateASPNETFields();
@@ -239,6 +209,7 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
                 var val = this.textNode.get('value');
                 if(val.trim() !== this.initialValue.trim()) {
                     this.setASPNETInputs(val, '', '');// TODO: Do we need to pass in array of id's here too?
+                    this._onChange(val);
                 }
             }
         },
@@ -299,7 +270,9 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
                     wid.set('checked', false);
                 }
             });
-
+            if (!this.storeData) {
+                return;
+            }
             array.forEach(this.storeData.items, function (item, index, array) {
                 if(this._isItemSelected(item)) {
                     dojo.query('input', this.tooltipContainer).forEach(function(node) {
@@ -312,7 +285,7 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
                     });
                 }
             }, this);
-            
+
         },
         // Display properties
         templateString: template,
@@ -346,7 +319,90 @@ function (array, _TemplatedMixin, _WidgetsInTemplateMixin, _Widget, TextBox, Dro
         /**
          * @property {array} itemsNotInStore Array of items that were entered but don't exist in the store.
          */
-        itemsNotInStore: null
+        itemsNotInStore: null,
+        _setPickListNameAttr: function (value) {
+            this.inherited(arguments);
+            this._loadData();
+        },
+        _getValueAttr: function () {
+            return this.textNode.get('value');
+        },
+        _setValueAttr: function (value) {
+            this.textNode.set('value', value);
+            if (value) {
+                this.initialValue = value;
+                this.initialValues = value.split(',');
+                this.lastValidValues = value.split(',');
+            }
+        },
+        _onChange: function (newVal) {
+            this.onChange(newVal);
+        },
+        _loadData: function () {
+            var def = new dojo.Deferred();
+            def.then(lang.hitch(this, function (data) {
+                if (typeof data === 'string') {
+                    this.textNode.set('value', data);
+                    this.dropDownButtonNode.disabled = true;
+                }
+
+                var items = [],
+                    len = data && data.items && data.items.$resources && data.items.$resources.length,
+                    i,
+                    item,
+                    existingText;
+                for (i = 0; i < len; i++) {
+                    item = data.items.$resources[i];
+                    items.push({
+                        id: item.$key,
+                        code: item.code,
+                        number: item.number,
+                        text: item.text
+                    });
+                }
+
+                this.storeData = {
+                    identifier: 'id',
+                    label: 'text',
+                    items: items
+                };
+
+                existingText = dojo.byId(this._textId);
+                if (items[0]) {
+                    if (existingText) {
+                        this.lastValidValue = existingText.value;
+                        this.initialValue = this.lastValidValue;
+                    } else {
+                        if (items.length > 0) {
+                            this.lastValidValue = items[0].text;
+                        }
+                    }
+
+                    this.textNode.set('value', this.lastValidValue);
+                    this.initialValues = this.lastValidValue.split(',');
+                    this.lastValidValues = this.lastValidValue.split(',');
+
+                    this._renderFormElements(items);
+                }
+
+            }), function (e) {
+                // errback
+                console.error(e);
+            });
+            this.getPickListData(def);
+        },
+        _destroyItems: function () {
+            dojo.query('input', this.tooltipContainer).forEach(function (node) {
+                var wid = dijit.byId(node.id);
+                if (wid) {
+                    wid.destroyRecursive();
+                }
+            });
+            dojo.empty(this.tooltipContainer);
+        },
+        onChange: function (newVal) {
+        }
+
     });
 
     return widget;

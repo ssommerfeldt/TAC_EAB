@@ -34,7 +34,7 @@ namespace Sage.BusinessRules.CodeSnippets
         /// </summary>
         /// <param name="returnaddress">The returnaddress.</param>
         /// <param name="result">The result.</param>
-        public static void GetFullAddress(IReturnAddress returnaddress, out System.String result)
+        public static void GetFullAddress(IReturnAddress returnaddress, out String result)
         {
             result = returnaddress.FormatFullReturnAddress();
         }

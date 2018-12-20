@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="ac4014ae-666c-48b4-868f-a9b66b98faac" lastModifiedUtc="2013-06-24T16:04:39.8065732Z" name="OnAfterUpdate" methodType="CrudEvent" actionType="None" returnMode="None">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c63535ff-1feb-4a0c-9275-27a9dd1b0066" lastModifiedUtc="2016-03-08T21:50:23.5133353Z" name="OnAfterUpdate" methodType="CrudEvent" actionType="None" returnMode="None">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -7,12 +7,11 @@
   <parameter />
   <preExecuteTargets />
   <methodTargets>
-    <methodTarget id="6bd3ea98-4fc8-47b0-9a54-30c078220e5b" lastModifiedUtc="2013-06-24T16:04:38.7145732Z" targetType="Sage.Platform.Orm.DefaultCRUDEventHandler, Sage.Platform" targetMethod="OnAfterUpdate" active="true">
+    <methodTarget id="1b244f63-8663-4ecc-a8bb-a42bae26b8b3" lastModifiedUtc="2016-03-08T21:50:19.8109651Z" targetType="Sage.SalesLogix.UserIntegrationMap.Rules, Sage.SalesLogix.BusinessRules" targetMethod="OnAfterUpdate" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

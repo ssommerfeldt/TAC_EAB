@@ -19,7 +19,7 @@ function tabClick(idx) {
         document.getElementById("tabpageProp").style.display = 'none';
         document.getElementById("tabCalc").style.fontWeight = 'bold';
         document.getElementById("tabpageCalc").style.display = 'inline';
-    }    
+    }
     currentTab = idx;
 }
 
@@ -34,21 +34,23 @@ function loadTree() {
 }
 
 function init() {
-       tabClick(0);
+    tabClick(0);
     if (window.opener) {
         if (window.opener.calcFieldObj) {
             calcFieldObj = window.opener.calcFieldObj;
             document.getElementById("txtName").value = calcFieldObj.name;
+            document.getElementById("txtName").disabled = true;
             document.getElementById("txtAlias").value = calcFieldObj.alias;
             document.getElementById("txtDescription").value = calcFieldObj.description;
             dijit.byId(addCalcFieldResources.lstBaseTable).attr("value", calcFieldObj.realTableName);
             dijit.byId("selCalcType").attr("value", calcFieldObj.calcType);
+            dijit.byId("selCalcType").disabled = true;
             buildDispHTML(calcFieldObj);
         }
     }
 }
 
-dojo.ready(function() {
+dojo.ready(function () {
     init();
 });
 
@@ -65,8 +67,8 @@ function buildDispHTML(calcFieldObj) {
     if (strPaths.indexOf('|') == 0) {
         strPaths = strPaths.replace('|', '');
     }
-    if (strPaths.lastIndexOf('|') == strPaths.length -1) {
-        strPaths = strPaths.substr(0, strPaths.length -1);
+    if (strPaths.lastIndexOf('|') == strPaths.length - 1) {
+        strPaths = strPaths.substr(0, strPaths.length - 1);
     }
     var paths = strPaths.split('|');
     for (var i = 0; i < paths.length; i++) {
@@ -74,11 +76,8 @@ function buildDispHTML(calcFieldObj) {
         fieldObj.datapath = paths[i];
         fieldObj.buildDisplayPath();
         var idx = i + 1;
-        var repVal = '<span contenteditable="false">';
-        repVal += fieldObj.displaypath;
-        repVal += '</span>';
-        dispHtml = dispHtml.replace('%' + idx, repVal);
-        
+        dispHtml = dispHtml.replace('%' + idx, '{' + fieldObj.displaypath.split('.')[1] + '}');
+
         fields.push(fieldObj);
     }
     document.getElementById("dispText").innerHTML = dispHtml;
@@ -88,6 +87,12 @@ function ok_click() {
     // validate required fields...
     if (document.getElementById("txtName").value == "") {
         Sage.UI.Dialogs.showInfo(addCalcFieldResources.jsEnterName);
+        tabClick(0);
+        document.getElementById("txtName").focus();
+        return;
+    }
+    if (document.getElementById("txtName").value.charAt(0) !== document.getElementById("txtName").value.charAt(0).toUpperCase()) {
+        Sage.UI.Dialogs.showInfo(addCalcFieldResources.jsNameUpperCase);
         tabClick(0);
         document.getElementById("txtName").focus();
         return;
@@ -117,10 +122,10 @@ function ok_click() {
     calcFieldObj.baseTable = dijit.byId(addCalcFieldResources.lstBaseTable).attr("value");
     calcFieldObj.realTableName = dijit.byId(addCalcFieldResources.lstBaseTable).attr("value");
     calcFieldObj.calcType = dijit.byId("selCalcType").attr("value");
-    parseCalculation(); //(sets paths, text, fieldCount, and displayText)
-    
+    calcFieldObj.displayText = document.getElementById("dispText").innerHTML;
+
     if (window.opener) {
-        window.opener.calcFieldXML = calcFieldObj.asXML();
+        window.opener.calcFieldObj = calcFieldObj;
         window.opener.calcFields_CallBack();
     }
     window.close();
@@ -141,8 +146,8 @@ function treeitem_click(aName, aType, aDispPath, aDataPath) {
     fieldObj.displayname = aName;
     fieldObj.displaypath = aDispPath;
     fields.push(fieldObj);
-    
-    document.getElementById("dispText").innerHTML += '<span contenteditable="false">' + aDispPath + '</span>';
+
+    document.getElementById("dispText").innerHTML += '{' + aName + '}';
 }
 
 function itemClicked(aName, aType, aDispPath, aDataPath) {
@@ -228,7 +233,7 @@ function replaceAll(aStr, aFrom, aTo) {
     if ((aFrom == aTo) || (aFrom == '')) {
         return res;
     }
-    while(res.indexOf(aFrom) > -1) {
+    while (res.indexOf(aFrom) > -1) {
         res = res.replace(aFrom, aTo);
     }
     return res;
@@ -246,6 +251,6 @@ function addFieldToCalc(aDispPath) {
     }
     if (!foundIt) {
         Sage.UI.Dialogs.showError(addCalcFieldResources.jsErrorFieldNotFound + aDispPath);
-    }		
+    }
 }
 

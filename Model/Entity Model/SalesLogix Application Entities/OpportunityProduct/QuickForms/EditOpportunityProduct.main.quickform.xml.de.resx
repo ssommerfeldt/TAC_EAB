@@ -112,48 +112,75 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="QFSLXCurrency.Caption" xml:space="preserve">
-    <value>Angepasster Preis (Benutzer):</value>
-  </data>
-  <data name="curExtendedPrice.Caption" xml:space="preserve">
-    <value>Erweitert:</value>
-  </data>
-  <data name="curMCCalcPrice.Caption" xml:space="preserve">
-    <value>Angepasster Preis (Benutzer):</value>
+  <data name="txtSort.Caption" xml:space="preserve">
+    <value>Position:</value>
   </data>
   <data name="txtName.Caption" xml:space="preserve">
     <value>Produkt:</value>
   </data>
-  <data name="btnOK.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="curPrice.Caption" xml:space="preserve">
-    <value>Basispreis:</value>
+  <data name="txtDiscount.Caption" xml:space="preserve">
+    <value>Rabatt:</value>
   </data>
   <data name="txtQuantity.Caption" xml:space="preserve">
     <value>Menge:</value>
   </data>
-  <data name="txtSort.Caption" xml:space="preserve">
-    <value>Eintrag:</value>
+  <data name="curPrice.Caption" xml:space="preserve">
+    <value>Basispreis:</value>
   </data>
   <data name="curCalculatedPrice.Caption" xml:space="preserve">
     <value>Angepasster Preis (Basis):</value>
   </data>
+  <data name="curExtendedPrice.Caption" xml:space="preserve">
+    <value>Gesamt:</value>
+  </data>
   <data name="QFListBox.Caption" xml:space="preserve">
     <value>Preisstufe:</value>
+  </data>
+  <data name="btnOK.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="curMCCalcPrice.Caption" xml:space="preserve">
+    <value>Angepasster Preis (Verkaufschance):</value>
+  </data>
+  <data name="curExtendedPrice.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="QFSLXCurrency.Caption" xml:space="preserve">
+    <value>Angepasster Preis (Benutzer):</value>
   </data>
   <data name="lstbxPriceLevel.Caption" xml:space="preserve">
     <value>Preisstufe:</value>
   </data>
-  <data name="txtDiscount.Caption" xml:space="preserve">
-    <value>Rabatt:</value>
+  <data name="grdSubLines.f8821ce3-e632-4f23-822f-ef105e89a826.ColumnHeading" xml:space="preserve">
+    <value>Notiz</value>
+  </data>
+  <data name="grdSubLines.58e3a3f0-d4ae-4e50-b410-bc8b02256beb.ColumnHeading" xml:space="preserve">
+    <value>Menge</value>
+  </data>
+  <data name="grdSubLines.f7c6fc3a-66f4-4d4e-84c1-cddbdcad63ad.ColumnHeading" xml:space="preserve">
+    <value>Preis in Transaktionswährung</value>
+  </data>
+  <data name="grdSubLines.546ae25c-5c7f-4b44-ba3a-63381dc2b1b5.ColumnHeading" xml:space="preserve">
+    <value>ME</value>
+  </data>
+  <data name="grdSubLines.6d6ce992-d5af-4150-ae6d-c225fa1f3e4d.ColumnHeading" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="grdSubLines.160d6cd3-1180-42ac-bbdf-5ddcbedea465.ColumnHeading" xml:space="preserve">
+    <value>Unterposition Nummer</value>
+  </data>
+  <data name="QFMultiTab_Page_1.Caption" xml:space="preserve">
+    <value>Unterpositionen</value>
+  </data>
+  <data name="grdSubLines.ee43f089-f419-471d-99a9-656495d5627b.ColumnHeading" xml:space="preserve">
+    <value>Basismaßeinheitsmenge</value>
   </data>
 </root>

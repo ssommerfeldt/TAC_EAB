@@ -1,26 +1,58 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/UserTasklet", [
     'dojo/i18n!./nls/UserTasklet',
     'Sage/TaskPane/_BaseTaskPaneTasklet',
     'Sage/TaskPane/TaskPaneContent',
+    'dojo/string',
     'Sage/Utility',
     'dojo/_base/declare',
     'Sage/TaskPane/User/ContactUserAssociationEditor',
-     'Sage/Data/SingleEntrySDataStore',
-     'Sage/UI/Dialogs'
+    'Sage/Data/SingleEntrySDataStore',
+    'Sage/UI/Dialogs',
+    'Sage/MainView/CopyUserProfile/CopyUserProfileController'
 ],
-function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, Utility, declare, ContactUserAssociationEditor, SingleEntrySDataStore, Dialogs) {
+function (
+    i18nStrings,
+    _BaseTaskPaneTasklet,
+    TaskPaneContent,
+    string,
+    Utility,
+    declare,
+    ContactUserAssociationEditor,
+    SingleEntrySDataStore,
+    Dialogs,
+    CopyUserProfileController
+) {
     var userTasklet = declare('Sage.TaskPane.UserTasklet', [_BaseTaskPaneTasklet, TaskPaneContent], {
         addToRoleTitle: 'Add to Role',
         resetUsersTitle: 'Reset Users',
         taskItems: [],
         constructor: function () {
             dojo.mixin(this, i18nStrings);
+			if (Utility.getModeId() === 'detail') {				
+				this.taskItems = [
+                    {
+                        taskId: 'promoteUsers', 
+						type: "Link", 
+						displayName: this.promoteTitle, 
+						clientAction: 'userTaskletActions.promoteUsers();',
+						securedAction: 'Entities/User/Promote'
+                    }
+                ];
+			
+        }else {
             this.taskItems = [
-                { taskId: 'AddToRole', type: "Link", displayName: this.addToRoleTitle, clientAction: 'userTaskletActions.addUsersToRole();',
-                    securedAction: 'Entities/User/Add'
+                { 
+					taskId: 'AddToRole', 
+					type: "Link", 
+					displayName: this.addToRoleTitle, 
+					clientAction: 'userTaskletActions.addUsersToRole();',
+					securedAction: 'Entities/User/Add'
                 },
                 { taskId: 'ResetUsers', type: "Link", displayName: this.resetUsersTitle, clientAction: 'userTaskletActions.resetUsers();',
+                    securedAction: 'Entities/User/Add'
+                },
+                { taskId: 'tskActionCopyUserProfile', type: "Link", displayName: this.taskText_CopyUserProfile, clientAction: 'userTaskletActions.actionCopyUserProfile();',
                     securedAction: 'Entities/User/Add'
                 },
                 { taskId: 'Associate Contact', type: "Link", displayName: this.associateContactTitle, clientAction: 'userTaskletActions.associateContact();',
@@ -28,8 +60,33 @@ function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, Utility, declare, 
                 },            
                 { taskId: 'Disassociate Contact', type: "Link", displayName: this.disAssociateContactTitle, clientAction: 'userTaskletActions.disAssociateContact();',
                     securedAction: 'Entities/User/DisAssociateUser'
+                },
+                { taskId: 'AddToTeamCaption',type: "Link", displayName: this.addToTeamCaption, clientAction:'commonTaskActions.prepareSelectedRecords(commonTaskActions.addToTeam);',
+                    securedAction: 'Entities/User/Add'
+                },
+                {
+                    taskId: 'tskRemoveFromAllTeams', type: "Link", displayName: this.removeFromAllTeamsCaption, clientAction: string.substitute('commonTaskActions.confirmBeforePrepareSelectedRecords(\'${0}\',commonTaskActions.removeFromAllTeams);', [this.areYouSure]),
+                    securedAction: 'Entities/User/Add'
+                },
+                {
+                    taskId: 'promoteUsers', 
+					type: "Link", 
+					displayName: this.promoteTitle, 
+					clientAction: 'userTaskletActions.promoteUsers();',
+					securedAction: 'Entities/User/Promote'
                 }
             ];
+		}
+        },
+        actionCopyUserProfile: function () {
+            this.getCurrentEntity();
+            
+            var callback = function () {
+                var copyUserProfileDialog = new CopyUserProfileController(this.currentEntityPrettyName, this.currentEntityTableName, this.selectionInfo);
+                copyUserProfileDialog.startDialog();
+            }.bind(this);
+
+            this.prepareSelectedRecords(callback);
         },
         resetUsers: function () {
             if (Utility.getModeId() === "detail") {
@@ -74,6 +131,7 @@ function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, Utility, declare, 
 
         associateContact: function (action) {
             var self = this;
+            if (!action) { action = 'associate'; }
             this._selectionInfo = this.getSelectionInfo();          
             if (this._selectionInfo.selectionCount === 0) {
                     Sage.UI.Dialogs.showError(this.singleSelectionErrorMessage);
@@ -170,8 +228,41 @@ function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, Utility, declare, 
                 },
                 scope: scope || this
             });
+        },		
+		promoteUsers: function(selectionInfo) {
+			this.prepareSelectedRecords(this.promoteSelectedUser(this.getSelectionInfo()));
+		},
+		promoteSelectedUser: function(selectionInfo) {
+			var self = this;
+            var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
+                .setResourceKind('Users')
+                .setOperationName('PromoteUser');
+            var entry = {
+                "$name": "PromoteUser",
+                "request": {					
+                    "entityIds": (selectionInfo.selectionCount > 0) ? selectionInfo.selectedIds.join(',') || '' : ''
+                }
+            };
+			
+            request.execute(entry, {
+                success: function () {
+                    console.log("success");
+					if(selectionInfo.selectionCount == 1)
+					{
+						Dialogs.showInfo(self.promotedsuccessfully);
+					}
+					else if(selectionInfo.selectionCount > 1){
+						Dialogs.showInfo(string.substitute(self.requestsuccessfullcompleted, [selectionInfo.selectionCount]));
+					}else{
+						Dialogs.showError(self.promoteNoneSelected);
+					}
+                },
+                failure: function () {
+                    console.log("Error promoting user");
+                }                
+            });
         }
-
     });
     return userTasklet;
 });

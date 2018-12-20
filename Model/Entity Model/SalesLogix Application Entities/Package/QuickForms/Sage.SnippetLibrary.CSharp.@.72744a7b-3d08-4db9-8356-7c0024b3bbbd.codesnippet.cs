@@ -1,5 +1,5 @@
 /*
- * This metadata is used by the Sage platform.  Do not remove.
+ * This metadata is used by the Saleslogix platform.  Do not remove.
 <snippetHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="72744a7b-3d08-4db9-8356-7c0024b3bbbd">
  <assembly>Sage.SnippetLibrary.CSharp</assembly>
  <name>OnLoadPackage</name>
@@ -26,13 +26,12 @@
 
 #region Usings
 using System;
-using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
 using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
-{	
+{
 	/// <summary>
     /// This is called on the load action of the package details form.
     /// </summary>
@@ -45,16 +44,11 @@ namespace Sage.BusinessRules.CodeSnippets
     	/// <param name="args">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         public static void OnLoadPackageForm(IPackageDetails form, EventArgs args)
         {
-            Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPart smartpart = form.NativeForm as Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPart;
-            Sage.Platform.WebPortal.EntityPage page = (Sage.Platform.WebPortal.EntityPage)smartpart.Page;
-			if (page != null)
-			{
-				bool bInsertMode = page.ModeId.ToUpper().Equals("INSERT");
-				form.btnDelete.Visible = !bInsertMode;
-				form.btnSave.Visible = !bInsertMode;
-				form.btnInsertSave.Visible = bInsertMode;
-                form.ctrlstCreateModProps.Visible = !bInsertMode;
-			}
+	        var insertMode = MySlx.MainView.IsNewEntity();
+	        form.btnDelete.Visible = !insertMode;
+	        form.btnSave.Visible = !insertMode;
+	        form.btnInsertSave.Visible = insertMode;
+	        form.ctrlstCreateModProps.Visible = !insertMode;
         }
     }
 }

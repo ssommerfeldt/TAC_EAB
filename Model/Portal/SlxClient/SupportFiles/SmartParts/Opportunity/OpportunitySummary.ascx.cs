@@ -27,7 +27,7 @@ using Sage.Entity.Interfaces;
 public partial class SmartParts_OpportunitySummary : EntityBoundSmartPartInfoProvider
 {
     private IEntityContextService _EntityService;
-    [ServiceDependency(Type = typeof(IEntityContextService),Required=true)]
+    [ServiceDependency]
     public IEntityContextService EntityService
     {
         get
@@ -38,7 +38,6 @@ public partial class SmartParts_OpportunitySummary : EntityBoundSmartPartInfoPro
         {
             _EntityService = value;
         }
-    
     }
 
     public override Type EntityType
@@ -67,41 +66,39 @@ public partial class SmartParts_OpportunitySummary : EntityBoundSmartPartInfoPro
          bool bFoundHistoryLetter = false;
          bool bFoundHistoryEmail = false;
          bool bFoundHistoryFax = false;
-         bool bFoundHistoryUpdate = false;
-
 
          NextCallDate.Text = string.Empty;
          NextCallUser.Text = string.Empty;
          NextCallRegarding.Text = string.Empty;
-         
+
          NextMeetDate.Text = string.Empty;
          NextMeetUser.Text = string.Empty;
          NextMeetRegarding.Text = string.Empty;
-         
+
          NextToDoDate.Text = string.Empty;
          NextToDoUser.Text = string.Empty;
          NextToDoRegarding.Text = string.Empty;
-         
+
          LastCallDate.Text = string.Empty;
          LastCallUser.Text = string.Empty;
          LastCallRegarding.Text = string.Empty;
-         
+
          LastMeetDate.Text = string.Empty;
          LastMeetUser.Text = string.Empty;
          LastMeetRegarding.Text = string.Empty;
-         
+
          LastToDoDate.Text = string.Empty;
          LastToDoUser.Text = string.Empty;
          LastToDoRegarding.Text = string.Empty;
-         
+
          LastLetterDate.Text = string.Empty;
          LastLetterUser.Text = string.Empty;
          LastLetterRegarding.Text = string.Empty;
-         
+
          LastEmailDate.Text = string.Empty;
          LastEmailUser.Text = string.Empty;
          LastEmailRegarding.Text = string.Empty;
-         
+
          LastFaxDate.Text = string.Empty;
          LastFaxUser.Text = string.Empty;
          LastFaxRegarding.Text = string.Empty;
@@ -109,56 +106,51 @@ public partial class SmartParts_OpportunitySummary : EntityBoundSmartPartInfoPro
          LastUpdateDate.Text = string.Empty;
          LastUpdateUser.Text = string.Empty;
 
-         IOpportunity opportunity = BindingSource.Current as IOpportunity;
-         string EntityID = opportunity.Id.ToString(); 
+         var opportunity = (IOpportunity) BindingSource.Current;
+         var entityId = opportunity.Id.ToString();
 
          IRepository<Activity> actRep = EntityFactory.GetRepository<Activity>();
          IQueryable qryableAct = (IQueryable)actRep;
          IExpressionFactory expAct = qryableAct.GetExpressionFactory();
          Sage.Platform.Repository.ICriteria critAct = qryableAct.CreateCriteria();
 
-         IList<Activity> ActivityList = critAct.Add(
-             expAct.Eq("OpportunityId", EntityID))
+         var activityList = critAct.Add(
+             expAct.Eq("OpportunityId", entityId))
              .AddOrder(expAct.Asc("StartDate"))
              .List<Activity>();
 
-         if (ActivityList != null)
+         if (activityList != null)
          {
-             foreach (Activity OppActivity in ActivityList)
+             foreach (Activity oppActivity in activityList)
              {
-                 switch (OppActivity.Type)
+                 switch (oppActivity.Type)
                  {
                      case ActivityType.atPhoneCall:
                          if (!bFoundActivityPhoneCall)
                          {
-                             NextCallDate.Text = OppActivity.StartDate.ToShortDateString();
-                             NextCallUser.Text = Sage.SalesLogix.Security.User.GetById(OppActivity.UserId).UserInfo.UserName;
-                             NextCallRegarding.Text = OppActivity.Description;
+                             NextCallDate.Text = oppActivity.StartDate.ToShortDateString();
+                             NextCallUser.Text = Sage.SalesLogix.Security.User.GetById(oppActivity.UserId).UserInfo.UserName;
+                             NextCallRegarding.Text = oppActivity.Description;
                              bFoundActivityPhoneCall = true;
-                             break;
                          }
                          break;
                      case ActivityType.atAppointment:
                          if (!bFoundActivityAppointment)
                          {
-                             NextMeetDate.Text = OppActivity.StartDate.ToShortDateString();
-                             NextMeetUser.Text = Sage.SalesLogix.Security.User.GetById(OppActivity.UserId).UserInfo.UserName;
-                             NextMeetRegarding.Text = OppActivity.Description;
+                             NextMeetDate.Text = oppActivity.StartDate.ToShortDateString();
+                             NextMeetUser.Text = Sage.SalesLogix.Security.User.GetById(oppActivity.UserId).UserInfo.UserName;
+                             NextMeetRegarding.Text = oppActivity.Description;
                              bFoundActivityAppointment = true;
-                             break;
                          }
                          break;
                      case ActivityType.atToDo:
                          if (!bFoundActivityToDo)
                          {
-                             NextToDoDate.Text = OppActivity.StartDate.ToShortDateString();
-                             NextToDoUser.Text = Sage.SalesLogix.Security.User.GetById(OppActivity.UserId).UserInfo.UserName;
-                             NextToDoRegarding.Text = OppActivity.Description;
+                             NextToDoDate.Text = oppActivity.StartDate.ToShortDateString();
+                             NextToDoUser.Text = Sage.SalesLogix.Security.User.GetById(oppActivity.UserId).UserInfo.UserName;
+                             NextToDoRegarding.Text = oppActivity.Description;
                              bFoundActivityToDo = true;
-                             break;
                          }
-                         break;
-                     default:
                          break;
                  }
              }
@@ -169,87 +161,75 @@ public partial class SmartParts_OpportunitySummary : EntityBoundSmartPartInfoPro
          IExpressionFactory expHis = qryableHis.GetExpressionFactory();
          Sage.Platform.Repository.ICriteria critHis = qryableHis.CreateCriteria();
 
-         IList<History> HistoryList = critHis.Add(
-             expHis.Eq("OpportunityId", EntityID))
+         var historyList = critHis.Add(
+             expHis.Eq("OpportunityId", entityId))
              .AddOrder(expHis.Desc("CompletedDate"))
              .List<History>();
 
-         if (HistoryList != null)
+         if (historyList != null)
          {
-             foreach (History OppHistory in HistoryList)
+             foreach (History oppHistory in historyList)
              {
-                 switch (OppHistory.Type)
+                 switch (oppHistory.Type)
                  {
                      case HistoryType.atPhoneCall:
                          if (!bFoundHistoryPhoneCall)
                          {
-                             LastCallDate.Text = OppHistory.CompletedDate.ToShortDateString();
-                             LastCallUser.Text = Sage.SalesLogix.Security.User.GetById(OppHistory.UserId).UserInfo.UserName;
-                             LastCallRegarding.Text = OppHistory.Description;
+                             LastCallDate.Text = oppHistory.CompletedDate.ToShortDateString();
+                             LastCallUser.Text = Sage.SalesLogix.Security.User.GetById(oppHistory.UserId).UserInfo.UserName;
+                             LastCallRegarding.Text = oppHistory.Description;
                              bFoundHistoryPhoneCall = true;
-                             break;
                          }
                          break;
                      case HistoryType.atAppointment:
                          if (!bFoundHistoryAppointment)
                          {
-                             LastMeetDate.Text = OppHistory.CompletedDate.ToShortDateString();
-                             LastMeetUser.Text = Sage.SalesLogix.Security.User.GetById(OppHistory.UserId).UserInfo.UserName;
-                             LastMeetRegarding.Text = OppHistory.Description;
+                             LastMeetDate.Text = oppHistory.CompletedDate.ToShortDateString();
+                             LastMeetUser.Text = Sage.SalesLogix.Security.User.GetById(oppHistory.UserId).UserInfo.UserName;
+                             LastMeetRegarding.Text = oppHistory.Description;
                              bFoundHistoryAppointment = true;
-                             break;
                          }
                          break;
                      case HistoryType.atToDo:
                          if (!bFoundHistoryToDo)
                          {
-                             LastToDoDate.Text = OppHistory.CompletedDate.ToShortDateString();
-                             LastToDoUser.Text = Sage.SalesLogix.Security.User.GetById(OppHistory.UserId).UserInfo.UserName;
-                             LastToDoRegarding.Text = OppHistory.Description;
+                             LastToDoDate.Text = oppHistory.CompletedDate.ToShortDateString();
+                             LastToDoUser.Text = Sage.SalesLogix.Security.User.GetById(oppHistory.UserId).UserInfo.UserName;
+                             LastToDoRegarding.Text = oppHistory.Description;
                              bFoundHistoryToDo = true;
-                             break;
                          }
                          break;
                      case HistoryType.atLiterature:
                          if (!bFoundHistoryLetter)
                          {
-                             LastLetterDate.Text = OppHistory.CompletedDate.ToShortDateString();
-                             LastLetterUser.Text = Sage.SalesLogix.Security.User.GetById(OppHistory.UserId).UserInfo.UserName;
-                             LastLetterRegarding.Text = OppHistory.Description;
+                             LastLetterDate.Text = oppHistory.CompletedDate.ToShortDateString();
+                             LastLetterUser.Text = Sage.SalesLogix.Security.User.GetById(oppHistory.UserId).UserInfo.UserName;
+                             LastLetterRegarding.Text = oppHistory.Description;
                              bFoundHistoryLetter = true;
-                             break;
                          }
                          break;
                      case HistoryType.atEMail:
                          if (!bFoundHistoryEmail)
                          {
-                             LastEmailDate.Text = OppHistory.CompletedDate.ToShortDateString();
-                             LastEmailUser.Text = Sage.SalesLogix.Security.User.GetById(OppHistory.UserId).UserInfo.UserName;
-                             LastEmailRegarding.Text = OppHistory.Description;
+                             LastEmailDate.Text = oppHistory.CompletedDate.ToShortDateString();
+                             LastEmailUser.Text = Sage.SalesLogix.Security.User.GetById(oppHistory.UserId).UserInfo.UserName;
+                             LastEmailRegarding.Text = oppHistory.Description;
                              bFoundHistoryEmail = true;
-                             break;
                          }
                          break;
                      case HistoryType.atFax:
                          if (!bFoundHistoryFax)
                          {
-                             LastFaxDate.Text = OppHistory.CompletedDate.ToShortDateString();
-                             LastFaxUser.Text = Sage.SalesLogix.Security.User.GetById(OppHistory.UserId).UserInfo.UserName;
-                             LastFaxRegarding.Text = OppHistory.Description;
+                             LastFaxDate.Text = oppHistory.CompletedDate.ToShortDateString();
+                             LastFaxUser.Text = Sage.SalesLogix.Security.User.GetById(oppHistory.UserId).UserInfo.UserName;
+                             LastFaxRegarding.Text = oppHistory.Description;
                              bFoundHistoryFax = true;
-                             break;
-                         }
-                         break;
-                     default:
-                         if (!bFoundHistoryUpdate)
-                         {
-                             break;
                          }
                          break;
                  }
              }
          }
-       
+
          DateTime md = new DateTime();
          if (opportunity.ModifyDate.HasValue)
          {

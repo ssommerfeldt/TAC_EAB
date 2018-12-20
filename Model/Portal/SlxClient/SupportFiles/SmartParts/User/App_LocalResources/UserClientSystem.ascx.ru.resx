@@ -117,52 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FaxTemplate.Caption" xml:space="preserve">
-    <value>Шаблон факса:</value>
-  </data>
-  <data name="hzsTemplates.Caption" xml:space="preserve">
-    <value>Основной шаблон</value>
-  </data>
-  <data name="listItemContactResource.Text" xml:space="preserve">
-    <value>Контакт</value>
-  </data>
-  <data name="LetterTemplate.Caption" xml:space="preserve">
-    <value>Базовый шаблон письма:</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="txtLetterBaseTemplate.Caption" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="listItemLeadResource.Text" xml:space="preserve">
-    <value>Наводка</value>
-  </data>
-  <data name="SelectTemplate.Caption" xml:space="preserve">
-    <value>Выберите шаблон</value>
-  </data>
-  <data name="chkbxAllowChange.Caption" xml:space="preserve">
-    <value>Разрешить  пользователю изменять эти установки</value>
-  </data>
-  <data name="EmailTemplate.Caption" xml:space="preserve">
-    <value>Основной шаблон для e-mail:</value>
-  </data>
-  <data name="lblTypeResource.Text" xml:space="preserve">
-    <value>Тип:</value>
-  </data>
   <data name="hzsDefaultOwner.Caption" xml:space="preserve">
-    <value>Доступ по умолчанию</value>
+    <value>Владелец по умолчанию</value>
+  </data>
+  <data name="ownAccount.Caption" xml:space="preserve">
+    <value>Клиенты:</value>
   </data>
   <data name="ownAccount.ButtonTooltip" xml:space="preserve">
     <value>Найти</value>
   </data>
-  <data name="ownAccount.Caption" xml:space="preserve">
-    <value>Субъекты:</value>
+  <data name="chkbxAllowChange.Caption" xml:space="preserve">
+    <value>Разрешить пользователю изменять эти настройки</value>
+  </data>
+  <data name="hzsTemplates.Caption" xml:space="preserve">
+    <value>Базовые шаблоны</value>
+  </data>
+  <data name="SelectTemplate.Caption" xml:space="preserve">
+    <value>Выбрать шаблон</value>
+  </data>
+  <data name="EmailTemplate.Caption" xml:space="preserve">
+    <value>Базовый шаблон электронного сообщения:</value>
   </data>
   <data name="txtEmailBaseTemplate.Caption" xml:space="preserve">
     <value>Найти</value>
   </data>
+  <data name="FaxTemplate.Caption" xml:space="preserve">
+    <value>Базовый шаблон факса:</value>
+  </data>
   <data name="txtFaxBaseTemplate.Caption" xml:space="preserve">
     <value>Найти</value>
+  </data>
+  <data name="LetterTemplate.Caption" xml:space="preserve">
+    <value>Базовый шаблон письма:</value>
+  </data>
+  <data name="txtLetterBaseTemplate.Caption" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="lblTypeResource.Text" xml:space="preserve">
+    <value>Тип:</value>
+  </data>
+  <data name="listItemContactResource.Text" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="listItemLeadResource.Text" xml:space="preserve">
+    <value>Заинтересованное лицо</value>
   </data>
 </root>

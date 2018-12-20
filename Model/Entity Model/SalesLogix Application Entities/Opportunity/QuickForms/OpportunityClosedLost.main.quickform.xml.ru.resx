@@ -120,20 +120,50 @@
   <data name="OpportunityClosedLost_0.Caption" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="cmdOKClosedLost.Caption" xml:space="preserve">
-    <value>Ок</value>
+  <data name="OpportunityClosedLost_0.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="txtNotes.Caption" xml:space="preserve">
+    <value>Комментарии:</value>
+  </data>
+  <data name="dtpActualClose.Caption" xml:space="preserve">
+    <value>Фактическое закрытие</value>
+  </data>
+  <data name="curActualAmount.Caption" xml:space="preserve">
+    <value>Фактическая сумма:</value>
+  </data>
+  <data name="pklReason.Caption" xml:space="preserve">
+    <value>Причина проигрыша:</value>
+  </data>
+  <data name="lueCompetitorLoss.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueCompetitorLoss.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
   <data name="lueCompetitorLoss.LookupProperties.CompetitorName.PropertyHeader" xml:space="preserve">
     <value>Конкурент</value>
   </data>
-  <data name="grdOppCompetitors.bf54f9d9-9fdb-45ca-b70c-d119b174e015.ColumnHeading" xml:space="preserve">
-    <value>Достоинства</value>
-  </data>
-  <data name="curActualAmount.Caption" xml:space="preserve">
-    <value>По факту:</value>
-  </data>
   <data name="lueCompetitorLoss.LookupProperties.Strengths.PropertyHeader" xml:space="preserve">
-    <value>Достоинства</value>
+    <value>Сильные стороны</value>
+  </data>
+  <data name="lueCompetitorLoss.LookupProperties.Rating.PropertyHeader" xml:space="preserve">
+    <value>Рейтинг</value>
+  </data>
+  <data name="cmdOKClosedLost.Caption" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="dtpActualClose.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="lueCompetitorLoss.ButtonToolTip" xml:space="preserve">
+    <value>Добавить конкурента...</value>
+  </data>
+  <data name="grdOppCompetitors.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
   <data name="grdOppCompetitors.55650761-543f-4a09-9a20-78fdaa1e50d9.ColumnHeading" xml:space="preserve">
     <value>Конкурент</value>
@@ -141,31 +171,7 @@
   <data name="grdOppCompetitors.df664a77-7cff-4ddb-83f3-b1c60f157bf6.ColumnHeading" xml:space="preserve">
     <value>Рейтинг</value>
   </data>
-  <data name="lueCompetitorLoss.ButtonToolTip" xml:space="preserve">
-    <value>Добавить конкурента...</value>
-  </data>
-  <data name="grdOppCompetitors.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="dtpActualClose.Caption" xml:space="preserve">
-    <value>Закрыто (факт):</value>
-  </data>
-  <data name="txtNotes.Caption" xml:space="preserve">
-    <value>Комм-рии:</value>
-  </data>
-  <data name="dtpActualClose.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="OpportunityClosedLost_0.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="pklReason.Caption" xml:space="preserve">
-    <value>Причина поражения:</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="lueCompetitorLoss.LookupProperties.Rating.PropertyHeader" xml:space="preserve">
-    <value>Рейтинг</value>
+  <data name="grdOppCompetitors.bf54f9d9-9fdb-45ca-b70c-d119b174e015.ColumnHeading" xml:space="preserve">
+    <value>Сильные стороны</value>
   </data>
 </root>

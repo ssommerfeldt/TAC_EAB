@@ -1,4 +1,4 @@
-define((
+define("Sage/QuickForms/Design/Editors/nls/en/DataGridBasicPropertyEditor", (
 { titleText: 'Basic',
   appearanceText: 'Appearance',
   behaviorText: 'Behavior',

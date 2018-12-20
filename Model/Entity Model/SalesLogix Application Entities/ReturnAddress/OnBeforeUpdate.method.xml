@@ -5,13 +5,7 @@
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
-  <preExecuteTargets>
-    <methodTarget id="9656ea37-179a-49f2-839d-0b25182bd2b3" lastModifiedUtc="2011-06-24T16:08:35.3154Z" targetType="Sage.SalesLogix.ReturnAddress.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ValidateCountryCode" active="true">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
-      </ExtendedPropertiesCollection>
-    </methodTarget>
-  </preExecuteTargets>
+  <preExecuteTargets />
   <methodTargets>
     <methodTarget id="a4708f8a-5167-4c19-87a3-dc51da0dbfde" lastModifiedUtc="2011-06-24T17:06:11.1794Z" targetType="Sage.SalesLogix.ReturnAddress.Rules, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeUpdate" active="true">
       <ExtendedPropertiesCollection>
@@ -19,6 +13,11 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets />
-  <postFlushTargets />
+  <postExecuteTargets>
+    <methodTarget id="44010226-b718-4bd6-a3a4-52861ab9cd80" lastModifiedUtc="2015-12-15T23:06:09.8058897Z" targetType="Sage.SalesLogix.ReturnAddress.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ValidateCountryCode" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
 </method>

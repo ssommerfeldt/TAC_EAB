@@ -117,73 +117,241 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblOpen.Text" xml:space="preserve">
-    <value>Apri</value>
+  <data name="AccountOpportunities_51_rsc.Caption" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblClosedWon.Text" xml:space="preserve">
-    <value>Chiusa - Vinta</value>
+  <data name="AccountOpportunities_51_rsc.EmptyDataText" xml:space="preserve">
+    <value />
   </data>
   <data name="AccountOpportunities_51_rsc.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
   </data>
-  <data name="grdReseller_Status.HeaderText" xml:space="preserve">
-    <value>Status</value>
+  <data name="AccountOpportunities_51_rsc.SortAscImageUrl" xml:space="preserve">
+    <value />
   </data>
-  <data name="Status_Open" xml:space="preserve">
-    <value>Apri</value>
+  <data name="AccountOpportunities_51_rsc.SortDescImageUrl" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblInactiveTotal.Text" xml:space="preserve">
-    <value>Totale:</value>
+  <data name="AccountOpportunities_51_rsc.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="Status_ClosedLost" xml:space="preserve">
-    <value>Chiusa - Persa</value>
+  <data name="crnClosedLostTotalResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="crnClosedWonTotalResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="crnInactiveTotalResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="crnOpenTotalResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdReseller_DaysOpen.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdReseller_DaysOpen.FooterText" xml:space="preserve">
+    <value />
   </data>
   <data name="grdReseller_DaysOpen.HeaderText" xml:space="preserve">
     <value>Giorni apertura</value>
   </data>
-  <data name="lblClosedLostTotal.Text" xml:space="preserve">
-    <value> Totale:</value>
+  <data name="grdReseller_OpportunityName.AccessibleHeaderText" xml:space="preserve">
+    <value />
   </data>
-  <data name="Status_Inactive" xml:space="preserve">
-    <value>Inattivo</value>
+  <data name="grdReseller_OpportunityName.FooterText" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblClosedLost.Text" xml:space="preserve">
-    <value>Chiusa - Persa</value>
+  <data name="grdReseller_OpportunityName.HeaderText" xml:space="preserve">
+    <value>Nome opportunità</value>
   </data>
-  <data name="lblClosedWonTotal.Text" xml:space="preserve">
-    <value>Totale:</value>
+  <data name="grdReseller_Potential.AccessibleHeaderText" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblClosedWonCount.Text" xml:space="preserve">
-    <value>Conteggio:</value>
-  </data>
-  <data name="lblClosedLostCount.Text" xml:space="preserve">
-    <value>Conteggio:</value>
-  </data>
-  <data name="Status_ClosedWon" xml:space="preserve">
-    <value>Chiusa - Vinta</value>
-  </data>
-  <data name="grdReseller_Probability.HeaderText" xml:space="preserve">
-    <value>Probabilità</value>
-  </data>
-  <data name="lblOpenTotal.Text" xml:space="preserve">
-    <value>Totale:</value>
-  </data>
-  <data name="lblInactive.Text" xml:space="preserve">
-    <value>Inattivo</value>
+  <data name="grdReseller_Potential.FooterText" xml:space="preserve">
+    <value />
   </data>
   <data name="grdReseller_Potential.HeaderText" xml:space="preserve">
     <value>Potenziale</value>
   </data>
-  <data name="linkAddOpportunity.ToolTip" xml:space="preserve">
-    <value>Inserisci nuova opportunità</value>
+  <data name="grdReseller_Probability.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdReseller_Probability.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdReseller_Probability.HeaderText" xml:space="preserve">
+    <value>Probabilità</value>
+  </data>
+  <data name="grdReseller_Status.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdReseller_Status.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdReseller_Status.HeaderText" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="lblClosedLost.Text" xml:space="preserve">
+    <value>Chiusa - Persa</value>
+  </data>
+  <data name="lblClosedLost.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblClosedLost_XResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblClosedLost_XResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblClosedLostCount.Text" xml:space="preserve">
+    <value>Conteggio:</value>
+  </data>
+  <data name="lblClosedLostCount.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblClosedLostTotal.Text" xml:space="preserve">
+    <value> Totale:</value>
+  </data>
+  <data name="lblClosedLostTotal.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblClosedWon.Text" xml:space="preserve">
+    <value>Chiusa - Acquisita</value>
+  </data>
+  <data name="lblClosedWon.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblClosedWon_XResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblClosedWon_XResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblClosedWonCount.Text" xml:space="preserve">
+    <value>Conteggio:</value>
+  </data>
+  <data name="lblClosedWonCount.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblClosedWonTotal.Text" xml:space="preserve">
+    <value>Totale:</value>
+  </data>
+  <data name="lblClosedWonTotal.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblInactive.Text" xml:space="preserve">
+    <value>Inattiva</value>
+  </data>
+  <data name="lblInactive.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblInactive_XResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblInactive_XResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lblInactiveCount.Text" xml:space="preserve">
     <value>Conteggio:</value>
   </data>
+  <data name="lblInactiveCount.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblInactiveTotal.Text" xml:space="preserve">
+    <value>Totale:</value>
+  </data>
+  <data name="lblInactiveTotal.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblOpen.Text" xml:space="preserve">
+    <value>Aperta</value>
+  </data>
+  <data name="lblOpen.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblOpen_XResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblOpen_XResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="lblOpenCount.Text" xml:space="preserve">
     <value>Conteggio:</value>
   </data>
-  <data name="grdReseller_OpportunityName.HeaderText" xml:space="preserve">
-    <value>Nome opportunità</value>
+  <data name="lblOpenCount.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblOpenTotal.Text" xml:space="preserve">
+    <value>Totale:</value>
+  </data>
+  <data name="lblOpenTotal.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkAddOpportunity.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkAddOpportunity.ToolTip" xml:space="preserve">
+    <value>Inserisci nuova opportunità</value>
+  </data>
+  <data name="lnkAccountResellerHelpResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PageLinkResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reseller_CToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reseller_CToolsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reseller_LToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reseller_LToolsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reseller_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reseller_RToolsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Status_ClosedLost" xml:space="preserve">
+    <value>Chiusa - Persa</value>
+  </data>
+  <data name="Status_ClosedWon" xml:space="preserve">
+    <value>Chiusa - Acquisita</value>
+  </data>
+  <data name="Status_Inactive" xml:space="preserve">
+    <value>Inattiva</value>
+  </data>
+  <data name="Status_Open" xml:space="preserve">
+    <value>Aperta</value>
+  </data>
+  <data name="txtClosedLostCountResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtClosedLostCountResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtClosedWonCountResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtClosedWonCountResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtInactiveCountResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtInactiveCountResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtOpenCountResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtOpenCountResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

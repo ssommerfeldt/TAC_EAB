@@ -1,12 +1,10 @@
-define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            helpTooltip: 'Help'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/Controls/nls/_DialogHelpIconMixin", {
+    root: {
+        helpTooltip: 'Help'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

@@ -26,7 +26,6 @@ public partial class SmartParts_TaskPane_Filters : System.Web.UI.UserControl, IS
     /// <returns></returns>
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
-        Sage.Platform.WebPortal.SmartParts.ToolsSmartPartInfo tinfo = new Sage.Platform.WebPortal.SmartParts.ToolsSmartPartInfo();
-        return tinfo;
+        return new Sage.Platform.WebPortal.SmartParts.ToolsSmartPartInfo();
     }
 }

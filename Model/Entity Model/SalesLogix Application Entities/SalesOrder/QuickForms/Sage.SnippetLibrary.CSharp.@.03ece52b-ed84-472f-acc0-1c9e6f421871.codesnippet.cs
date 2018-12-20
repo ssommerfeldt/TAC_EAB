@@ -28,7 +28,7 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
+using Sage.Platform.Orm.Interfaces;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
@@ -36,12 +36,12 @@ namespace Sage.BusinessRules.CodeSnippets
     public static partial class SalesOrderProductsEventHandlers
     {
         public static void OnLoadHandlerStep(ISalesOrderProducts form, EventArgs args)
-        {		    
-			Sage.Entity.Interfaces.ISalesOrder salesOrder = form.CurrentEntity as Sage.Entity.Interfaces.ISalesOrder;
+        {
+			ISalesOrder salesOrder = form.CurrentEntity as ISalesOrder;
 			if (salesOrder != null)
 			{
-				//bool bInsertMode = ((salesOrder.PersistentState | Sage.Platform.Orm.Interfaces.PersistentState.New) == salesOrder.PersistentState);
-				//form.btnAddCustomProduct.Visible = !bInsertMode;
+				bool bInsertMode = ((salesOrder.PersistentState | PersistentState.New) == salesOrder.PersistentState);
+				form.btnAddCustomProduct.Visible = !bInsertMode;
 			}
         }
     }

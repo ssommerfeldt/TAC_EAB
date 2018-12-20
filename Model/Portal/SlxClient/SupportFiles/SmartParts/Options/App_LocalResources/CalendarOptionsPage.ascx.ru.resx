@@ -117,26 +117,119 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="chkSun.Caption" xml:space="preserve">
-    <value>Вс</value>
+  <data name="ddlDefaultCalendarView.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnSaveResource1.AlternateText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnSaveResource1.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="CalendarOptsHelpLinkResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CalendarOptsHelpLinkResource1.ToolTip" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="CalendarOptsHelpLinkResource2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultActivityTypeResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblCalendarOptions.Text" xml:space="preserve">
+    <value>Параметры календаря</value>
+  </data>
+  <data name="lblCalendarOptionsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDayEnd.Text" xml:space="preserve">
+    <value>Конец дня:</value>
+  </data>
+  <data name="lblDayEndResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDayStart.Text" xml:space="preserve">
+    <value>Начало дня:</value>
+  </data>
+  <data name="lblDayStartResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefaultActivityType.Text" xml:space="preserve">
+    <value>Тип действия по умолчанию:</value>
+  </data>
+  <data name="lblDefaultActivityTypeResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefCalView.Text" xml:space="preserve">
+    <value>Календарь по умолчанию:</value>
+  </data>
+  <data name="lblDefCalViewResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefInterval.Text" xml:space="preserve">
+    <value>Интервал по умолчанию:</value>
+  </data>
+  <data name="lblDefIntervalResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDisplayContactAccount.Text" xml:space="preserve">
+    <value>Контакт/клиент:</value>
+  </data>
+  <data name="lblShowActivResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblShowHistResource1.Text" xml:space="preserve">
+    <value>Показать историю на календаре:</value>
+  </data>
+  <data name="lblShowHistResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblViewCalFor.Text" xml:space="preserve">
+    <value>Показать календарь для:</value>
+  </data>
+  <data name="lblViewCalForResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ATListItem1.None.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ATListItem2.PhoneCall.Text" xml:space="preserve">
+    <value>Звонок</value>
+  </data>
+  <data name="ATListItem3.Meeting.Text" xml:space="preserve">
+    <value>Встреча</value>
+  </data>
+  <data name="ATListItem4.ToDo.Text" xml:space="preserve">
+    <value>Дело</value>
+  </data>
+  <data name="LitRequest_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequest_RToolsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PageDescription.Text" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="PageDescription.Title" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="UserListResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lblFirstDayOfWeek.Text" xml:space="preserve">
     <value>Первый день недели:</value>
   </data>
-  <data name="DayOfWeek_Wednesday.Text" xml:space="preserve">
-    <value>Среда</value>
-  </data>
-  <data name="chkRegarding.Caption" xml:space="preserve">
-    <value>Тема</value>
+  <data name="DayOfWeek_Friday.Text" xml:space="preserve">
+    <value>Пятница</value>
   </data>
   <data name="DayOfWeek_Monday.Text" xml:space="preserve">
     <value>Понедельник</value>
   </data>
-  <data name="chkTue.Caption" xml:space="preserve">
-    <value>Вт</value>
-  </data>
-  <data name="lblRememberSelectedUsersNo.Text" xml:space="preserve">
-    <value>Нет</value>
+  <data name="DayOfWeek_Saturday.Text" xml:space="preserve">
+    <value>Суббота</value>
   </data>
   <data name="DayOfWeek_Sunday.Text" xml:space="preserve">
     <value>Воскресенье</value>
@@ -144,106 +237,79 @@
   <data name="DayOfWeek_Thursday.Text" xml:space="preserve">
     <value>Четверг</value>
   </data>
-  <data name="chkSat.Caption" xml:space="preserve">
-    <value>Сб</value>
+  <data name="DayOfWeek_Tuesday.Text" xml:space="preserve">
+    <value>Вторник</value>
   </data>
-  <data name="DayOfWeek_Friday.Text" xml:space="preserve">
-    <value>Пятница</value>
+  <data name="DayOfWeek_Wednesday.Text" xml:space="preserve">
+    <value>Среда</value>
   </data>
-  <data name="chkMon.Caption" xml:space="preserve">
-    <value>Пн</value>
+  <data name="lblNumberOfEvents.Text" xml:space="preserve">
+    <value>Количество событий в день/неделю:</value>
   </data>
-  <data name="chkTime.Caption" xml:space="preserve">
-    <value>Время</value>
+  <data name="chkRememberSelectedUsers.Checkbox" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblWorkWeek.Text" xml:space="preserve">
-    <value>Рабочая неделя:</value>
+  <data name="ddlDayStartResource1" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblDefInterval.Text" xml:space="preserve">
-    <value>Интервал по умолчанию:</value>
+  <data name="ddlDefaultCalendarViewResource1" xml:space="preserve">
+    <value />
   </data>
-  <data name="ATListItem4.ToDo.Text" xml:space="preserve">
-    <value>Дело</value>
+  <data name="ddlDefaultIntervalResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlFirstDayOfWeekResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlNumberOfEventsResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlShowHistoryOnDayViewResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDisplayContactAccountResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlUserListResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlRememberSelectedUsersResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlWeekBarsResource1" xml:space="preserve">
+    <value />
   </data>
   <data name="lblFirstWeekOfYear.Text" xml:space="preserve">
     <value>Первая неделя года:</value>
   </data>
+  <data name="lblRememberSelectedUsers.Text" xml:space="preserve">
+    <value>Запомнить выбранных пользователей:</value>
+  </data>
   <data name="lblWeekBars.Text" xml:space="preserve">
     <value>Недельная шкала:</value>
   </data>
-  <data name="DayOfWeek_Saturday.Text" xml:space="preserve">
-    <value>Суббота</value>
+  <data name="lblWorkWeek.Text" xml:space="preserve">
+    <value>Рабочая неделя:</value>
   </data>
-  <data name="chkOpportunity.Caption" xml:space="preserve">
-    <value>Сделка</value>
-  </data>
-  <data name="DayOfWeek_Tuesday.Text" xml:space="preserve">
-    <value>Вторник</value>
-  </data>
-  <data name="lblShowOnActivities.Text" xml:space="preserve">
-    <value>Показать по делу :</value>
-  </data>
-  <data name="btnSaveResource1.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="PageDescription.Text" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="lblDefaultActivityType.Text" xml:space="preserve">
-    <value>Тип дела по умолчанию:</value>
+  <data name="lblRememberSelectedUsersNo.Text" xml:space="preserve">
+    <value>Нет</value>
   </data>
   <data name="lblRememberSelectedUsersYes.Text" xml:space="preserve">
     <value>Да</value>
   </data>
-  <data name="ATListItem3.Meeting.Text" xml:space="preserve">
-    <value>Встреча</value>
-  </data>
-  <data name="lblShowHistResource1.Text" xml:space="preserve">
-    <value>Показать историю на календаре:</value>
-  </data>
-  <data name="lblNumberOfEvents.Text" xml:space="preserve">
-    <value>Количество событий на день/неделю:</value>
-  </data>
-  <data name="lblDayEnd.Text" xml:space="preserve">
-    <value>Конец дня:</value>
-  </data>
-  <data name="lblDayStart.Text" xml:space="preserve">
-    <value>Начало дня:</value>
-  </data>
-  <data name="chkFri.Caption" xml:space="preserve">
-    <value>Пт</value>
-  </data>
-  <data name="CalendarOptsHelpLinkResource1.ToolTip" xml:space="preserve">
-    <value>Помощь</value>
-  </data>
-  <data name="lblRememberSelectedUsers.Text" xml:space="preserve">
-    <value>Запомнить выбранных пользователей:</value>
-  </data>
-  <data name="chkWed.Caption" xml:space="preserve">
-    <value>Ср</value>
-  </data>
-  <data name="lblCalendarOptions.Text" xml:space="preserve">
-    <value>Параметры календаря</value>
-  </data>
-  <data name="lblViewCalFor.Text" xml:space="preserve">
-    <value>Показать календарь на:</value>
-  </data>
-  <data name="chkThu.Caption" xml:space="preserve">
-    <value>Чт</value>
-  </data>
-  <data name="lblDisplayContactAccount.Text" xml:space="preserve">
-    <value>Контакт/Субъект:</value>
+  <data name="chkOpportunity.Caption" xml:space="preserve">
+    <value>Возможность</value>
   </data>
   <data name="chkPhoneNumber.Caption" xml:space="preserve">
     <value>Номер телефона</value>
   </data>
-  <data name="ATListItem2.PhoneCall.Text" xml:space="preserve">
-    <value>Звонок</value>
+  <data name="chkRegarding.Caption" xml:space="preserve">
+    <value>Тема</value>
   </data>
-  <data name="lblDefCalView.Text" xml:space="preserve">
-    <value>Календарь по умолчанию:</value>
+  <data name="chkTime.Caption" xml:space="preserve">
+    <value>Время</value>
   </data>
-  <data name="PageDescription.Title" xml:space="preserve">
-    <value>Календарь</value>
+  <data name="lblShowOnActivities.Text" xml:space="preserve">
+    <value>Показать по действиям:</value>
   </data>
 </root>

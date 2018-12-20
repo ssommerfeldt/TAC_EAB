@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="38e04b4a-0523-4366-9e7a-0c1282464ddf" lastModifiedUtc="2015-01-12T16:46:24.5864717Z" parentEntityId="4bac0a27-7c4c-4a4c-bfd7-9f4a082b7632" childEntityId="b117ae85-be01-495d-a222-49daa49358cf">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="6bbb6fb6-c7b0-46b9-b53a-33d524b5d793" lastModifiedUtc="2015-01-12T16:46:15.3705502Z" name="ErpShipmentAddresses" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="efc628e4-c1f9-4c52-99dd-bc32ac1b9c7c" lastModifiedUtc="2015-01-12T16:46:22.3322463Z" name="ErpShipment" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="1f918526-d214-4255-8607-f7d031c952b8" parentPropertyId="56aaf0c9-e8e9-437c-9005-80aa60078e2f" childPropertyId="bbbd3f55-c5fd-4450-bdf7-929ee6c340cf" ordinal="0" />
+  </column>
+</relationship>

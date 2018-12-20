@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c0b57ddd-f33d-4218-9325-5a052dc80388" lastModifiedUtc="2016-05-16T15:36:38.6686446Z" name="RePriceLineItems" returnType="String" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="37876e7d-47b1-455f-89aa-45da9993e768" paramName="options" sequence="0" paramType="String">
+      <description>Options required to call the pricing and availability service.</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="36a21400-6c21-4da5-829f-5097eb60e2e6" lastModifiedUtc="2016-05-13T20:33:18.9528371Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="RePriceLineItems" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

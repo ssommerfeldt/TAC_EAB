@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Alarms/UnconfirmedPane", [
     'dijit/form/Button',
     'Sage/UI/Alarms/AlertPane',
     'Sage/UI/Alarms/UnconfirmedAlarm',

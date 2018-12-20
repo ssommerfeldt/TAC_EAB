@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmPropertyMethod" id="ee33f48f-4d53-4ce2-9ab1-786351f3ae11" lastModifiedUtc="2017-06-26T11:32:46.0921982Z" name="GetLastInterestingMoment" returnType="Sage.Entity.Interfaces.IMarketoLeadActivity" methodType="PropertyAccessor" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmPropertyMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="721b617c-4ad2-47b9-9dd4-5eefdbee2109" lastModifiedUtc="2017-06-26T11:32:50.9302713Z" targetType="Sage.BusinessRules.CodeSnippets.MarketoLeadBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="GetLastInterestingMomentStep" active="true" codeSnippetId="6501d72d-8521-45d4-93b8-428aa0c35e4a">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

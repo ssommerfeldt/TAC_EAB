@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/PickListControlDesigner", [
     'dojo/_base/declare',
     'dojo/_base/array',
     'dojo/_base/lang',
@@ -139,14 +139,29 @@ define([
         setupFor: function (propertyContext) {
             this.inherited(arguments);
 
-            this.set('allowMultiples', false);
-            this.set('canEditText', true);
+            var dtd = propertyContext['dataTypeData'];
+
+            var storage = dtd['Storage'];
+            storage = storage && storage.toLowerCase() !== "number" ? storage : "Text";
+            storage = storage.replace("Unicode", "");
+
+            var mustExistInList = dtd['MustExistInList'];
+            mustExistInList = mustExistInList || false;
+
+            var allowMultiples = dtd['AllowMultiples'];
+            allowMultiples = allowMultiples || false;
+
+            var canEditText = dtd['CanEditText'];
+            canEditText = canEditText === false ? canEditText : true;
+
+            this.set('allowMultiples', allowMultiples);
+            this.set('canEditText', canEditText);
             this.set('displayMode', 'AsControl');
             this.set('maxLength', propertyContext['data'].length || -1);
-            this.set('mustExistInList', false);
+            this.set('mustExistInList', mustExistInList);//false);
             this.set('required', false);
-            this.set('storageMode', 'Id');
-            this.set('pickListName', propertyContext['dataTypeData']['PickListName']);
+            this.set('storageMode', storage);//'Id');
+            this.set('pickListName', dtd['PickListName']);
 
             this.set('dataBindings', [{
                 $type: 'Sage.Platform.QuickForms.Controls.QuickFormPropertyDataBindingDefinition, Sage.Platform.QuickForms',

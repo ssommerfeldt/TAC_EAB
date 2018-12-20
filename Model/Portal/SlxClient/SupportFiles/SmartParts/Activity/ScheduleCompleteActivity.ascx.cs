@@ -1,22 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Linq;
+using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Text;
 using Sage.Entity.Interfaces;
 using Sage.Platform;
 using Sage.Platform.Application;
 using Sage.Platform.Application.UI;
-using Sage.Platform.EntityBinding;
-using Sage.Platform.Security;
-using Sage.Platform.WebPortal.Binding;
-using Sage.Platform.WebPortal.SmartParts;
-using Sage.SalesLogix.Activity;
-using Sage.SalesLogix.Entities;
-using TimeZone = Sage.Platform.TimeZone;
 using Sage.Platform.ComponentModel;
+using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.Web.Controls.Lookup;
+using TimeZone = Sage.Platform.TimeZone;
 
 public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundSmartPartInfoProvider
 {
@@ -29,23 +24,6 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
     {
         get { return _timeZone; }
         set { _timeZone = value; }
-    }
-
-    private static string CurrentUserId
-    {
-        get { return ApplicationContext.Current.Services.Get<IUserService>(true).UserId.Trim(); }
-    }
-
-    private LinkHandler _LinkHandler;
-
-    private LinkHandler Link
-    {
-        get
-        {
-            if (_LinkHandler == null)
-                _LinkHandler = new LinkHandler(Page);
-            return _LinkHandler;
-        }
     }
 
     #endregion
@@ -64,7 +42,6 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
         }
 
         btnContinue.Enabled = NewUnscheduledActivity.Checked;
-        //OpenActivities.Visible = false;
         divResults.Visible = false;
 
         if (CompleteScheduledActivity.Checked)
@@ -73,7 +50,7 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
             Session["entityName"] = lookup != null ? lookup.LookupEntityName : null;
             Session["entityId"] = lookup != null ? GetId(lookup.LookupResultValue) : null;
             OpenActivities.DataBind();
-            divResults.Visible = true; // OpenActivities.Rows.Count > 0;
+            divResults.Visible = true; 
         }
         if (Account.LookupResultValue != null)
         {
@@ -85,23 +62,23 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
         }
 
         ScriptManager.RegisterClientScriptInclude(this, GetType(), "ScheduleCompleteActivity", Page.ResolveUrl("~/SmartParts/Activity/ScheduleCompleteActivity.js"));
-            var script = new StringBuilder();   
-            if (Page.IsPostBack)
-            {
-                script.Append(" Sage.UI.Forms.ScheduleCompleteActivity.init(" + GetWorkSpace() + " );");
-            }
-            else 
-            {
-                script.Append("dojo.ready(function () {Sage.UI.Forms.ScheduleCompleteActivity.init(" + GetWorkSpace() + ");");
-            }
-            ScriptManager.RegisterStartupScript(this, GetType(), "initialize_ScheduleCompleteActivity", script.ToString(), true);
+        var script = new StringBuilder();
+        if (Page.IsPostBack)
+        {
+            script.Append(" Sage.UI.Forms.ScheduleCompleteActivity.init(" + GetWorkSpace() + " );");
+        }
+        else
+        {
+            script.Append("require(['dojo/ready'], function(ready) { " +
+                          "ready(function () { Sage.UI.Forms.ScheduleCompleteActivity.init(" + GetWorkSpace() + "); }); " +
+                          "});");
+        }
+        ScriptManager.RegisterStartupScript(this, GetType(), "initialize_ScheduleCompleteActivity", script.ToString(), true);
     }
 
-    private string GetWorkSpace() 
+    private string GetWorkSpace()
     {
-        
-               
-        StringBuilder sb =  new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         sb.Append("{");
         sb.AppendFormat("rdoContactID:'{0}',", rbContact.ClientID);
         sb.AppendFormat("rdoLeadID:'{0}',", rbContact.ClientID);
@@ -109,85 +86,13 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
         sb.AppendFormat("luAccountID:'{0}',", Account.ClientID);
         sb.AppendFormat("luContactID:'{0}',", Contact.ClientID);
         sb.AppendFormat("luOpportunityID:'{0}',", Opportunity.ClientID);
-        sb.AppendFormat("luTicketID:'{0}',",Ticket.ClientID);
+        sb.AppendFormat("luTicketID:'{0}',", Ticket.ClientID);
         sb.AppendFormat("luLeadID:'{0}',", LeadId.ClientID);
         sb.AppendFormat("btnCancelID:'{0}',", CancelButton.ClientID);
         sb.AppendFormat("divResultID:'{0}',", divResults.ClientID);
         sb.AppendFormat("txtCompanyID:'{0}',", Company.ClientID);
         sb.AppendFormat("resultHeight:'{0}'", "200");
-       
-      
-        sb.Append("}");       
-        
-        return sb.ToString();
-    }
-
-    private string GetArgs()
-    {
-                
-
-        string activityType = ActivityTypeButtonList.SelectedValue;
-        string accountId = "";
-        string accountName = "";
-        string contactId = "";
-        string contactName = "";
-        string oppId = "";
-        string oppName = "";
-        string ticketId = "";
-        string ticketNumber = "";
-        string leadId = "";
-
-
-        if (Account.LookupResultValue != null)
-        {
-            Account account = Account.LookupResultValue as Account;
-            if (account != null)
-                accountId = account.Id;
-        }
-
-        if (Contact.LookupResultValue != null)
-        {
-            Contact contact = Contact.LookupResultValue as Contact;
-            if (contact != null)
-                contactId = contact.Id;
-        }
-
-        if (Opportunity.LookupResultValue != null)
-        {
-            Opportunity opportunity = Opportunity.LookupResultValue as Opportunity;
-            if (opportunity != null)
-                oppId = opportunity.Id;
-        }
-
-        if (Ticket.LookupResultValue != null)
-        {
-            Ticket ticket = Ticket.LookupResultValue as Ticket;
-            if (ticket != null)
-                ticketId = ticket.Id;
-        }
-        if (LeadId.LookupResultValue != null)
-        {
-            Lead lead = LeadId.LookupResultValue as Lead;
-            if (lead != null)
-            {
-                leadId = lead.Id;
-            }
-        }
-
-        StringBuilder sb = new StringBuilder();
-        sb.Append("{");
-        sb.AppendFormat("Type:'{0}',", activityType);
-        sb.AppendFormat("AccountId:'{0}',", accountId);
-        sb.AppendFormat("AccountName:'{0}',", accountName);
-        sb.AppendFormat("ContactId:'{0}',", contactId);
-        sb.AppendFormat("ContactName:'{0}',", contactName);
-        sb.AppendFormat("OpportunityId:'{0}',", oppId);
-        sb.AppendFormat("OpportunityName:'{0}',", oppName);
-        sb.AppendFormat("TicketId:'{0}',", ticketId);
-        sb.AppendFormat("TicketNumber:'{0}',", ticketNumber);
-        sb.AppendFormat("LeadId:'{0}'", leadId);
         sb.Append("}");
-
         return sb.ToString();
     }
 
@@ -290,7 +195,7 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
         return null;
     }
 
-    private string GetId(object value)
+    private static string GetId(object value)
     {
         IComponentReference compRef = value as IComponentReference;
         if (compRef != null)
@@ -302,7 +207,7 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
 
     private void SetSeedValues()
     {
-        string seedValue = ((Account)(Account.LookupResultValue)).Id;
+        var seedValue = (string) ((IAccount) Account.LookupResultValue).Id;
         Contact.InitializeLookup = true;
         Contact.SeedValue = seedValue;
         Opportunity.InitializeLookup = true;
@@ -314,7 +219,6 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
 
     protected void OpenActivities_Sorting(object sender, GridViewSortEventArgs e)
     {
-
     }
 
     protected override void OnWireEventHandlers()
@@ -349,11 +253,9 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
         rbContact.Checked = !leadsVisible;
     }
 
-    protected static string BuildCompleteActivityNavigateURL(object ActivityID)
+    protected static string BuildCompleteActivityNavigateURL(object activityId)
     {
-        //return string.Format("javascript:Link.completeActivity('{0}')", ActivityID);
-        return string.Format("javascript:Sage.UI.Forms.ScheduleCompleteActivity.completeActivity('{0}')", ActivityID);
-       
+        return string.Format("javascript:Sage.UI.Forms.ScheduleCompleteActivity.completeActivity('{0}')", activityId);
     }
 
     #endregion
@@ -362,18 +264,20 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
 
     private void Ticket_LookupResultValueChanged(object sender, EventArgs e)
     {
-        Ticket ticket = (Ticket)Ticket.LookupResultValue;
+        var ticket = (ITicket)Ticket.LookupResultValue;
         if (ticket != null)
         {
-            Account.LookupResultValue = ticket.Account;
-            Opportunity.LookupResultValue = null;
+            if (Account.LookupResultValue == null)
+            {
+                Account.LookupResultValue = ticket.Account;
+            }
             SetContactFromPrimary(ticket.Account.Contacts);
         }
     }
 
     private void LeadId_LookupResultValueChanged(object sender, EventArgs e)
     {
-        Lead lead = (Lead)LeadId.LookupResultValue;
+        var lead = (ILead)LeadId.LookupResultValue;
         if (lead != null)
         {
             Company.Text = lead.Company;
@@ -386,52 +290,52 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
 
     private void Opportunity_LookupResultValueChanged(object sender, EventArgs e)
     {
-        Opportunity opportunity = (Opportunity)Opportunity.LookupResultValue;
+        var opportunity = (IOpportunity)Opportunity.LookupResultValue;
         if (opportunity != null)
         {
-            Account.LookupResultValue = opportunity.Account;
-            Ticket.LookupResultValue = null;
-            SetPrimaryContactFromOppContacts(opportunity);           
+            if (Account.LookupResultValue == null)
+            {
+                Account.LookupResultValue = opportunity.Account;
+            }
+            SetPrimaryContactFromOppContacts(opportunity);
         }
     }
 
     private void Account_LookupResultValueChanged(object sender, EventArgs e)
     {
-        Account account = (Account)Account.LookupResultValue;
+        var account = (IAccount)Account.LookupResultValue;
         if (account != null)
         {
-            Ticket.LookupResultValue = null;
-            Opportunity.LookupResultValue = null;
             SetContactFromPrimary(account.Contacts);
         }
     }
 
     private void SetContactFromPrimary(IEnumerable<IContact> contacts)
     {
-        Contact.LookupResultValue = GetPrimaryContact(contacts);
-        LeadId.LookupResultValue = null;
-    }
-
-    private void SetPrimaryContactFromOppContacts(Opportunity opportunity)
-    {
-        IContact contact = GetPrimaryOppContact(opportunity.Contacts);
-        if (contact == null) 
+        if (Contact.LookupResultValue == null)
         {
-            contact = GetPrimaryContact(opportunity.Account.Contacts);
+            Contact.LookupResultValue = GetPrimaryContact(contacts);
         }
-        Contact.LookupResultValue = contact; 
         LeadId.LookupResultValue = null;
     }
 
-    private Contact GetPrimaryContact(IEnumerable<IContact> contacts)
+    private void SetPrimaryContactFromOppContacts(IOpportunity opportunity)
     {
-        foreach (Contact c in contacts)
-            if (c.IsPrimary ?? false)
-                return c;
-        return null;
+        var contact = GetPrimaryOppContact(opportunity.Contacts) ??
+                      GetPrimaryContact(opportunity.Account.Contacts);
+        if (Contact.LookupResultValue == null)
+        {
+            Contact.LookupResultValue = contact;
+        }
+        LeadId.LookupResultValue = null;
     }
 
-    private IContact GetPrimaryOppContact(IEnumerable<IOpportunityContact> oppContacts)
+    private static IContact GetPrimaryContact(IEnumerable<IContact> contacts)
+    {
+        return contacts.FirstOrDefault(c => c.IsPrimary ?? false);
+    }
+
+    private static IContact GetPrimaryOppContact(IEnumerable<IOpportunityContact> oppContacts)
     {
         foreach (IOpportunityContact oc in oppContacts)
         {
@@ -445,15 +349,13 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
 
     private void Contact_LookupResultValueChanged(object sender, EventArgs e)
     {
-        Contact contact = (Contact)Contact.LookupResultValue;
-        if (contact != null)
+        var contact = (IContact)Contact.LookupResultValue;
+        if (contact != null && Account.LookupResultValue==null)
         {
             Account.LookupResultValue = contact.Account;
             LeadId.LookupResultValue = null;
         }
     }
-
-  
 
     #endregion
 
@@ -490,15 +392,14 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
 
     #region Private Helper Methods
 
-    protected string GetLocalDateTime(object StartDate, object TimeLess)
+    protected string GetLocalDateTime(object startDateObj, object timeLess)
     {
-        if ((bool)TimeLess)
+        DateTime startDate = Convert.ToDateTime(startDateObj);
+        if ((bool)timeLess)
         {
-            DateTime startDate = Convert.ToDateTime(StartDate);
-            string dateString = startDate.ToShortDateString() + " (timeless)";
-            return dateString;
+            return startDate.ToShortDateString() + " (timeless)";
         }
-        return _timeZone.UTCDateTimeToLocalTime(Convert.ToDateTime(StartDate)).ToString("g");
+        return _timeZone.UTCDateTimeToLocalTime(startDate).ToString("g");
     }
 
     protected string GetToolTip(object activityType)
@@ -527,23 +428,17 @@ public partial class SmartParts_Activity_ScheduleCompleteActivity : EntityBoundS
 
     protected static string GetImage(object activityType)
     {
-        string imageURL;
         switch ((ActivityType)activityType)
         {
             case ActivityType.atPhoneCall:
-                imageURL = "~/images/icons/Call_16x16.gif";
-                break;
+                return "~/images/icons/Call_16x16.gif";
             case ActivityType.atToDo:
-                imageURL = "~/images/icons/To_Do_16x16.gif";
-                break;
+                return "~/images/icons/To_Do_16x16.gif";
             case ActivityType.atPersonal:
-                imageURL = "~/images/icons/Personal_16x16.gif";
-                break;
+                return "~/images/icons/Personal_16x16.gif";
             default:
-                imageURL = "~/images/icons/Meeting_16x16.gif";
-                break;
+                return "~/images/icons/Meeting_16x16.gif";
         }
-        return imageURL;
     }
 
     #endregion

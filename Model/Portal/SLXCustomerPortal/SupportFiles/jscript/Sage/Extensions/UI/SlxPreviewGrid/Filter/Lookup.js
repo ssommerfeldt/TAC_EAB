@@ -1,6 +1,6 @@
-﻿
+
 /*globals Sage, dojo, define */
-define([
+define("Sage/Extensions/UI/SlxPreviewGrid/Filter/Lookup", [
     'dojo/_base/declare',
      'Sage/UI/SLXPreviewGrid/Filter/Lookup'
 ],

@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="_promptContactNotFoundResource1.Text" xml:space="preserve">
+    <value>&lt;span id='lblPromptConNotFound'&gt;关于未找到联系人或销售线索的提示&lt;/span&gt;</value>
+  </data>
+  <data name="_promptDuplicateContactsResource1.Text" xml:space="preserve">
+    <value>&lt;span id='lblPromptForDup'&gt;关于重复联系人或销售线索的提示&lt;/span&gt;</value>
+  </data>
+  <data name="_saveResource1.Text" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="btnFlushCache1.Text" xml:space="preserve">
+    <value>清除高速缓存</value>
+  </data>
+  <data name="chkUnsavedDataWarning.Text" xml:space="preserve">
+    <value>在离开含有未保存数据的视图时会发出警告</value>
+  </data>
+  <data name="cmdSave_rsc.AlternateText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cmdSave_rsc.ToolTip" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="ExtendedFeaturesResource1.Text" xml:space="preserve">
+    <value>了解更多信息</value>
+  </data>
+  <data name="ExtendedFeaturesResource2.Text" xml:space="preserve">
+    <value>扩展功能可能需要下载 -</value>
+  </data>
+  <data name="GeneralOptionsHelpLinkResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GeneralOptionsHelpLinkResource1.ToolTip" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="GeneralOptionsHelpLinkResource2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefaultAccountSearchResource1.Text" xml:space="preserve">
+    <value>默认客户搜索</value>
+  </data>
+  <data name="lblCurrentTimezone.Text" xml:space="preserve">
+    <value>设置您当地的时区</value>
+  </data>
+  <data name="lblDefaultContactSearchResource1.Text" xml:space="preserve">
+    <value>默认联系人搜索</value>
+  </data>
+  <data name="lblDefaultOppSearchResource1.Text" xml:space="preserve">
+    <value>默认销售机会搜索</value>
+  </data>
+  <data name="lblDefaultOwnerResource1.Text" xml:space="preserve">
+    <value>默认所有者/团队</value>
+  </data>
+  <data name="lblEmailBaseTemplateResource1.Text" xml:space="preserve">
+    <value>电子邮件基本模板</value>
+  </data>
+  <data name="lblEmailOptionsResource1.Text" xml:space="preserve">
+    <value>电子邮件选项</value>
+  </data>
+  <data name="lblFaxBaseTemplateResource1.Text" xml:space="preserve">
+    <value>传真基本模板</value>
+  </data>
+  <data name="lblFaxProviderResource1.Text" xml:space="preserve">
+    <value>传真设备或传真方式</value>
+  </data>
+  <data name="lblGenOptionsResource1.Text" xml:space="preserve">
+    <value>常规选项</value>
+  </data>
+  <data name="lblLetterBaseTemplateResource1.Text" xml:space="preserve">
+    <value>信函基本模板</value>
+  </data>
+  <data name="lblPromptForUnsavedData.Text" xml:space="preserve">
+    <value>提示未保存的数据</value>
+  </data>
+  <data name="lblLogToHistoryResource1.Text" xml:space="preserve">
+    <value>记录到历史中</value>
+  </data>
+  <data name="lblMyCurrencyResource1.Text" xml:space="preserve">
+    <value>我的货币</value>
+  </data>
+  <data name="lblRecentTemplatesResource1.Text" xml:space="preserve">
+    <value>写入菜单 - 最新模板</value>
+  </data>
+  <data name="lblSearchOptionsResource1.Text" xml:space="preserve">
+    <value>搜索选项</value>
+  </data>
+  <data name="lblShowOnStartupResource1.Text" xml:space="preserve">
+    <value>在启动时显示</value>
+  </data>
+  <data name="LitRequest_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="msgMenuRangeMessage" xml:space="preserve">
+    <value>必须输入 0 到 10 之间的数字作为“编写菜单 - 最近的模板”值。</value>
+  </data>
+  <data name="PageDescription.Text" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="PageDescription.Title" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="lblTimeZoneOptions.Text" xml:space="preserve">
+    <value>时区选项</value>
+  </data>
+  <data name="lblCheckboxEnabledResource.Text" xml:space="preserve">
+    <value>显示列表视图复选框</value>
+  </data>
+  <data name="lblAccessibilityOptions.Text" xml:space="preserve">
+    <value>辅助功能选项</value>
+  </data>
+  <data name="lblIntellisyncOptions.Text" xml:space="preserve">
+    <value>同步选项</value>
+  </data>
+  <data name="lblMailMergeTemplateOptions.Text" xml:space="preserve">
+    <value>邮件合并模板选项</value>
+  </data>
+  <data name="UseActiveMailResource.Text" xml:space="preserve">
+    <value>使用 ActiveMail (需要安装 ActiveX)</value>
+  </data>
+  <data name="lblIntellisyncResource1.Text" xml:space="preserve">
+    <value>联系人同步组</value>
+  </data>
+  <data name="adhoc_group_format" xml:space="preserve">
+    <value>{0} ({1} 个联系人)</value>
+  </data>
+  <data name="lblAutoLogoffResource1.Text" xml:space="preserve">
+    <value>启用自动注销</value>
+  </data>
+  <data name="lblLogOffAfterResource1.Text" xml:space="preserve">
+    <value>在以下时间后注销</value>
+  </data>
+  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
+    <value>费率</value>
+  </data>
+  <data name="PromptForUnsavedData" xml:space="preserve">
+    <value>提示未保存的数据</value>
+  </data>
+  <data name="UseActiveReportingResource.Text" xml:space="preserve">
+    <value>使用 ActiveReporting (需要安装 ActiveX 和 Crystal Runtime)</value>
+  </data>
+  <data name="MailMergeServiceError" xml:space="preserve">
+    <value>无法加载邮件合并服务。如果未安装或未正确安装 CRM Office Integration，则可能会发生这种情况。</value>
+  </data>
+  <data name="ClickToDownload" xml:space="preserve">
+    <value>单击此处可下载产品增强功能。</value>
+  </data>
+  <data name="EnhanceSalesLogix" xml:space="preserve">
+    <value>增强 Infor CRM...</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>了解更多信息...</value>
+  </data>
+  <data name="EnhancementsAreInstalled" xml:space="preserve">
+    <value>已安装增强功能</value>
+  </data>
+  <data name="lblTypeResource.Text" xml:space="preserve">
+    <value>类型:</value>
+  </data>
+  <data name="listItemContactResource.Text" xml:space="preserve">
+    <value>联系人</value>
+  </data>
+  <data name="listItemLeadResource.Text" xml:space="preserve">
+    <value>销售线索</value>
+  </data>
+  <data name="tooltipFind" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="clearSavedListData" xml:space="preserve">
+    <value>刷新选择列表数据</value>
+  </data>
+  <data name="lblEnhancementsInstalled.Text" xml:space="preserve">
+    <value>已安装 Office Integration</value>
+  </data>
+  <data name="lblInstallEnhancements.Text" xml:space="preserve">
+    <value>安装 Office Integration</value>
+  </data>
+  <data name="lblEnhancementsNotSupported.Text" xml:space="preserve">
+    <value>不支持 Office Integration</value>
+  </data>
+  <data name="lblEnhancements.Text" xml:space="preserve">
+    <value>Infor CRM 增强功能</value>
+  </data>
+  <data name="DefaultUserTimeStamp.Text" xml:space="preserve">
+    <value>备忘录字段中的默认用户名/时间戳:</value>
+  </data>
+  <data name="UnavailableOption" xml:space="preserve">
+    <value>该选项当前不可用。</value>
+  </data>
+  <data name="lblInstallxbar.Text" xml:space="preserve">
+    <value>为 Outlook 安装 Xbar</value>
+  </data>
+  <data name="lblxbarInstalled.Text" xml:space="preserve">
+    <value>已安装用于 Outlook 的 Xbar</value>
+  </data>
+  <data name="lblxbarNotSupported.Text" xml:space="preserve">
+    <value>不支持用于 Outlook 的 Xbar</value>
+  </data>
+</root>

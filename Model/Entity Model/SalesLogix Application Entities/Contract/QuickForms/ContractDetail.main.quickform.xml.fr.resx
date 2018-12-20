@@ -112,204 +112,228 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="curDiscount.Caption" xml:space="preserve">
-    <value>Remise :</value>
-  </data>
-  <data name="txtComments.Caption" xml:space="preserve">
-    <value>Commentaires :</value>
-  </data>
-  <data name="txtGracePeriod.Caption" xml:space="preserve">
-    <value>Jours de délai :</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Propriétaire</value>
-  </data>
-  <data name="pklContractType.Caption" xml:space="preserve">
-    <value>Type de contrat :</value>
-  </data>
-  <data name="cmdReset.ToolTip" xml:space="preserve">
-    <value>Réinitialiser</value>
-  </data>
   <data name="lueAccount.Caption" xml:space="preserve">
     <value>Compte :</value>
-  </data>
-  <data name="dtpPurchaseDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
-  </data>
-  <data name="cmdDelete.Caption" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="txtRemaining.Caption" xml:space="preserve">
-    <value>Restant :</value>
-  </data>
-  <data name="ContractType_Days" xml:space="preserve">
-    <value>Jours</value>
   </data>
   <data name="lueContact.Caption" xml:space="preserve">
     <value>Contact :</value>
   </data>
-  <data name="cmdCopy.ToolTip" xml:space="preserve">
-    <value>Copier un contract...</value>
+  <data name="pklService.Caption" xml:space="preserve">
+    <value>Service :</value>
   </data>
-  <data name="numQuantity.Caption" xml:space="preserve">
-    <value>Quantité :</value>
+  <data name="pklContractType.Caption" xml:space="preserve">
+    <value>Type de contrat :</value>
   </data>
-  <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Ville</value>
+  <data name="dtpStartDate.Caption" xml:space="preserve">
+    <value>Date de début :</value>
   </data>
-  <data name="lueAccount.LookupProperties.Address.Address2.PropertyHeader" xml:space="preserve">
-    <value>Autre adresse</value>
-  </data>
-  <data name="lueAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Resp. du compte</value>
-  </data>
-  <data name="lueContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Ville</value>
-  </data>
-  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
-    <value>Sous-Type</value>
-  </data>
-  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
-    <value>Tél. principal</value>
+  <data name="chkContractAfterTicket.Caption" xml:space="preserve">
+    <value>Commencer par le premier ticket</value>
   </data>
   <data name="dtpEndDate.Caption" xml:space="preserve">
-    <value>Expiration :</value>
+    <value>Expiration :</value>
   </data>
-  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Département</value>
+  <data name="txtGracePeriod.Caption" xml:space="preserve">
+    <value>Jours de délai :</value>
+  </data>
+  <data name="txtQuantity.Caption" xml:space="preserve">
+    <value>Quantité :</value>
   </data>
   <data name="numRemaining.Caption" xml:space="preserve">
     <value>Restant :</value>
   </data>
-  <data name="curRemaining.Caption" xml:space="preserve">
-    <value>Restant :</value>
-  </data>
-  <data name="lueAccount.LookupProperties.SeccodeId.PropertyHeader" xml:space="preserve">
-    <value>Propriétaire de compte</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Address.PostalCode.PropertyHeader" xml:space="preserve">
-    <value>Code postal</value>
-  </data>
-  <data name="ContractType_Dollars" xml:space="preserve">
-    <value>Valeur</value>
-  </data>
-  <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Vous êtes sur le point de supprimer définitivement cet enregistrement.</value>
-  </data>
   <data name="txtPONumber.Caption" xml:space="preserve">
-    <value>N° de BdC :</value>
+    <value>N° de BC :</value>
   </data>
-  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Compte</value>
+  <data name="dtpPurchaseDate.Caption" xml:space="preserve">
+    <value>Date d'achat :</value>
   </data>
-  <data name="ContractType_Hours" xml:space="preserve">
-    <value>Heures</value>
+  <data name="curListPrice.Caption" xml:space="preserve">
+    <value>Tarif :</value>
   </data>
-  <data name="lueAccount.LookupProperties.Address.Country.PropertyHeader" xml:space="preserve">
-    <value>Pays</value>
+  <data name="curDiscount.Caption" xml:space="preserve">
+    <value>Remise :</value>
   </data>
-  <data name="curQuantity.Caption" xml:space="preserve">
-    <value>Quantité :</value>
-  </data>
-  <data name="pklService.Caption" xml:space="preserve">
-    <value>Service :</value>
+  <data name="curContractAmount.Caption" xml:space="preserve">
+    <value>Montant du contrat :</value>
   </data>
   <data name="usrLastUpdatedBy.Caption" xml:space="preserve">
-    <value>Mise à jour par :</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Division.PropertyHeader" xml:space="preserve">
-    <value>Division</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Enregistrer</value>
+    <value>Mise à jour par :</value>
   </data>
   <data name="cmdCopy.Caption" xml:space="preserve">
     <value>Copier</value>
   </data>
-  <data name="dtpEndDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
+  <data name="cmdCopy.ToolTip" xml:space="preserve">
+    <value>Copier un contrat...</value>
   </data>
-  <data name="dtpStartDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
+  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Type de compte</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Division.PropertyHeader" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.PostalCode.PropertyHeader" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="lueAccount.LookupProperties.SeccodeId.PropertyHeader" xml:space="preserve">
+    <value>Propriétaire du compte</value>
+  </data>
+  <data name="lueAccount.LookupProperties.AccountManagerId.PropertyHeader" xml:space="preserve">
+    <value>Responsable du compte</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.Address1.PropertyHeader" xml:space="preserve">
+    <value>Adresse postale</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.Address2.PropertyHeader" xml:space="preserve">
+    <value>Autre adresse</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.Country.PropertyHeader" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="lueContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Nom</value>
   </data>
   <data name="lueContact.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
     <value>Compte</value>
   </data>
-  <data name="lueContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Département</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Address.Address1.PropertyHeader" xml:space="preserve">
-    <value>Adresse</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Type de compte</value>
+  <data name="lueContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>Téléphone professionnel</value>
   </data>
   <data name="lueContact.LookupProperties.IsServiceAuthorized.PropertyHeader" xml:space="preserve">
     <value>Autorisé</value>
   </data>
   <data name="dteUpdatedDate.Caption" xml:space="preserve">
-    <value>Date de mise à jour :</value>
+    <value>Date de mise à jour :</value>
   </data>
-  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
+  <data name="lueAccount.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="dtpStartDate.Caption" xml:space="preserve">
-    <value>Date de début :</value>
+  <data name="lueContact.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
+  <data name="usrLastUpdatedBy.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Nom</value>
+  <data name="dtpStartDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="chkContractAfterTicket.Caption" xml:space="preserve">
-    <value>Commencer par le premier ticket</value>
+  <data name="dtpEndDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueAccount.LookupProperties.AccountManagerId.PropertyHeader" xml:space="preserve">
-    <value>Responsable du compte</value>
-  </data>
-  <data name="usrLastUpdatedBy.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="cmdDateStamp.ToolTip" xml:space="preserve">
-    <value>Horodatage utilisateur</value>
-  </data>
-  <data name="dtpPurchaseDate.Caption" xml:space="preserve">
-    <value>Date d'achat :</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Etat</value>
+  <data name="dtpPurchaseDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="txtReference.Caption" xml:space="preserve">
     <value>N° de référence :</value>
   </data>
-  <data name="curContractAmount.Caption" xml:space="preserve">
-    <value>Montant du contrat :</value>
-  </data>
-  <data name="curListPrice.Caption" xml:space="preserve">
-    <value>Tarif :</value>
-  </data>
-  <data name="txtQuantity.Caption" xml:space="preserve">
-    <value>Quantité :</value>
-  </data>
-  <data name="lueContact.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
   <data name="chkActive.Caption" xml:space="preserve">
     <value>Actif</value>
   </data>
-  <data name="dteUpdatedDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
+  <data name="txtComments.Caption" xml:space="preserve">
+    <value>Commentaires :</value>
+  </data>
+  <data name="cmdDateStamp.ToolTip" xml:space="preserve">
+    <value>Horodatage utilisateur</value>
+  </data>
+  <data name="curQuantity.Caption" xml:space="preserve">
+    <value>Quantité :</value>
+  </data>
+  <data name="numQuantity.Caption" xml:space="preserve">
+    <value>Quantité :</value>
   </data>
   <data name="cmdReset.Caption" xml:space="preserve">
     <value>Réinitialiser</value>
   </data>
-  <data name="lueContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Téléphone professionnel</value>
+  <data name="cmdReset.ToolTip" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
+  <data name="cmdDelete.Caption" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Vous êtes sur le point de supprimer définitivement cet enregistrement.</value>
+  </data>
+  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Téléphone principal</value>
+  </data>
+  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Sous-type</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="lueAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Responsable du compte</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Propriétaire</value>
+  </data>
+  <data name="lueContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="lueContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="lueContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="lueContact.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="dtpStartDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="dtpEndDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="dtpPurchaseDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="usrLastUpdatedBy.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="dteUpdatedDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="ContractType_Days" xml:space="preserve">
+    <value>Jours</value>
+  </data>
+  <data name="ContractType_Dollars" xml:space="preserve">
+    <value>Valeur</value>
+  </data>
+  <data name="ContractType_Hours" xml:space="preserve">
+    <value>Heures</value>
+  </data>
+  <data name="txtRemaining.Caption" xml:space="preserve">
+    <value>Restant :</value>
+  </data>
+  <data name="curRemaining.Caption" xml:space="preserve">
+    <value>Restant :</value>
+  </data>
+  <data name="numQuantityWithDecimal.Caption" xml:space="preserve">
+    <value>Quantité :</value>
+  </data>
+  <data name="numRemainingWithDecimal.Caption" xml:space="preserve">
+    <value>Restant :</value>
   </data>
 </root>

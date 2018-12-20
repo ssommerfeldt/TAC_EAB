@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ReportMgr/nls/en/ReportsListPanelConfig", (
 { colNameReportName: 'Name',
   colNameType: 'Type',
   colNameTable: 'Table',

@@ -1,0 +1,53 @@
+{
+    "widgetId": "infor.crm.chart",
+    "type": "inline",
+    "name": "CRM Chart",
+    "version": "9.2.1.4",
+    "category": "application", 
+    "requiresConfig": true,
+    "settings": [
+      {
+        "name": "entity",
+        "labelId": "Entity"
+      },
+      {
+        "name": "group",
+        "labelId": "Group"
+      },
+      {
+        "name": "metric",
+        "labelId": "Metric"
+      },
+      {
+        "name": "chartType",
+        "labelId": "Chart Type"
+      },
+      {
+        "name": "limitCount",
+        "labelId": "Limit Count",
+        "type": "string",
+        "defaultValue": "10"
+      },
+      {
+        "name": "CRMLogicalID",
+        "labelId": "CRM Logical Id"
+      }
+	  ],
+    "localization": {
+        "en-US": {
+            "widgetTitle": "CRM Chart",
+            "widgetDescription": "CRM Chart Widget",
+            "noData": "No Matching Data",
+            "errorOccured": "Error Occured",
+            "titleText": "Title",
+            "textEntity": "Entity",
+            "textGroup": "Group",
+            "textDimension": "Dimension",
+            "textMetric": "Metric",
+            "textType": "Type",
+            "textLimit": "Limit",
+            "viewGroup": "View Group",
+            "textCRMLogicalID": "CRM Logical ID"
+        }
+    }
+}

@@ -117,154 +117,286 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblCarryOverNotes.Text" xml:space="preserve">
-    <value>Reporter les notes :</value>
+  <data name="txtAlarmDefaultLeadValueResource1" xml:space="preserve">
+    <value />
   </data>
-  <data name="liDisplayConfirmationsNo.Text" xml:space="preserve">
-    <value>Non</value>
+  <data name="ddlAlarmDefaultLeadResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblActivityType_ToDo.Text" xml:space="preserve">
-    <value>Tâche à faire</value>
+  <data name="ddlCarryOverAttachments.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblActivityType_PhoneCall.Text" xml:space="preserve">
-    <value>Appel</value>
+  <data name="ddlCarryOverNotes.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblDisplayPastDue.Text" xml:space="preserve">
-    <value>Afficher le montant échu :</value>
+  <data name="ddlDefaultFollowupActivityResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="chkAlarms.Caption" xml:space="preserve">
-    <value>Alarmes</value>
+  <data name="ddlDisplayAlarmsResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="chkDispAlertsInToolbar.Caption" xml:space="preserve">
-    <value>Affichage dans la barre d'outils</value>
+  <data name="ddlShowConfirmsResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="chkPastDue.Caption" xml:space="preserve">
-    <value>En retard</value>
+  <data name="ddlDisplayPastDueResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblInclude.Text" xml:space="preserve">
-    <value>Inclure :</value>
+  <data name="ddlDisplayRemindersResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblReminders.Text" xml:space="preserve">
-    <value>Rappels :</value>
+  <data name="ActAlarmHelpLinkResource1.Text" xml:space="preserve">
+    <value />
   </data>
   <data name="ActAlarmHelpLinkResource1.ToolTip" xml:space="preserve">
     <value>Aide</value>
   </data>
-  <data name="lblAlarmDefaultLead.Text" xml:space="preserve">
-    <value>Lead par défaut de l'alarme :</value>
+  <data name="ActAlarmHelpLinkResource2.Text" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblDefaultAlarm.Text" xml:space="preserve">
-    <value>Alarme par défaut</value>
+  <data name="btnSaveResource1.AlternateText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnSaveResource1.ToolTip" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="lblActivityOptions.Text" xml:space="preserve">
+    <value>Options d'activité</value>
+  </data>
+  <data name="lblActivityOptionsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmDefaultLead.Text" xml:space="preserve">
+    <value>Lead par défaut de l'alarme :</value>
+  </data>
+  <data name="lblAlarmLeadResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmOptsResource1.Text" xml:space="preserve">
+    <value>Options d'alarme</value>
+  </data>
+  <data name="lblAlarmOptsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmScanResource1.Text" xml:space="preserve">
+    <value>Fréquence d'analyse d'alarme :</value>
+  </data>
+  <data name="lblAlarmScanResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmSoundResource1.Text" xml:space="preserve">
+    <value>Evénement sonore d'alarme :</value>
+  </data>
+  <data name="lblAlarmSoundResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblCarryOverAttachments.Text" xml:space="preserve">
+    <value>Reporter les pièces jointes :</value>
+  </data>
+  <data name="lblCarryOverNotes.Text" xml:space="preserve">
+    <value>Reporter les notes :</value>
+  </data>
+  <data name="lblCarryOverResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefaultView.Text" xml:space="preserve">
+    <value>Vue par défaut :</value>
+  </data>
+  <data name="lblDefaultViewResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefaultFollowupActivity.Text" xml:space="preserve">
+    <value>Activité de suivi par défaut :</value>
+  </data>
+  <data name="lblDefFollowActivResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDisplayActivityReminders.Text" xml:space="preserve">
+    <value>Afficher les rappels d'activité :</value>
+  </data>
+  <data name="lblDisplayActivityRemindersResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblEnableAlarmsResource1.Text" xml:space="preserve">
+    <value>Activer les alarmes :</value>
+  </data>
+  <data name="lblEnableAlarmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblReminderOptions.Text" xml:space="preserve">
+    <value>Options de rappels</value>
+  </data>
+  <data name="lblReminderOptsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblShowActivitiesForResource1.Text" xml:space="preserve">
+    <value>Afficher les activités pour :</value>
+  </data>
+  <data name="lblShowActivitiesForResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lbDisplayAlarms.Text" xml:space="preserve">
+    <value>Afficher les alarmes :</value>
+  </data>
+  <data name="lblShowAlarmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lbDisplayConfirmations.Text" xml:space="preserve">
+    <value>Afficher les confirmations :</value>
+  </data>
+  <data name="ddlDisplayConfirmationsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDisplayPastDue.Text" xml:space="preserve">
+    <value>Afficher le montant échu :</value>
+  </data>
+  <data name="lblShowPastDueResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTimeFrameResource1.Text" xml:space="preserve">
+    <value>Intervalle de temps :</value>
+  </data>
+  <data name="lblTimeFrameResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="liDisplayAlarmsYes.Text" xml:space="preserve">
     <value>Oui</value>
   </data>
-  <data name="lblDefaultView.Text" xml:space="preserve">
-    <value>Vue par défaut :</value>
+  <data name="liDisplayAlarmsYes.Value" xml:space="preserve">
+    <value>Oui</value>
   </data>
   <data name="liDisplayAlarmsNo.Text" xml:space="preserve">
     <value>Non</value>
   </data>
-  <data name="lblDisplayActivityReminders.Text" xml:space="preserve">
-    <value>Afficher les rappels d'activité :</value>
+  <data name="liDisplayAlarmsNo.Value" xml:space="preserve">
+    <value>Non</value>
   </data>
-  <data name="PageDescription.Text" xml:space="preserve">
-    <value>Activité/Alarmes</value>
+  <data name="liDisplayConfirmationsYes.Text" xml:space="preserve">
+    <value>Oui</value>
   </data>
-  <data name="lblAlertIncludeOptions.Text" xml:space="preserve">
-    <value>Inclure :</value>
+  <data name="liDisplayConfirmationsYes.Value" xml:space="preserve">
+    <value>Oui</value>
   </data>
-  <data name="chkIncludeUnconfirmedActivities.Caption" xml:space="preserve">
-    <value>Activités non confirmées</value>
+  <data name="liDisplayConfirmationsNo.Text" xml:space="preserve">
+    <value>Non</value>
   </data>
-  <data name="ListItemResource8.Text" xml:space="preserve">
+  <data name="liDisplayConfirmationsNo.Value" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="liDisplayPastDueYes.Text" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="liDisplayPastDueYes.Value" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="liDisplayPastDueNo.Text" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="liDisplayPastDueNo.Value" xml:space="preserve">
     <value>Non</value>
   </data>
   <data name="ListItemResource7.Text" xml:space="preserve">
     <value>Oui</value>
   </data>
-  <data name="lblReminderOptions.Text" xml:space="preserve">
-    <value>Options de rappels</value>
+  <data name="ListItemResource7.Value" xml:space="preserve">
+    <value>Oui</value>
   </data>
-  <data name="chkAlertsPrompt.Caption" xml:space="preserve">
-    <value>Invite</value>
+  <data name="ListItemResource8.Text" xml:space="preserve">
+    <value>Non</value>
   </data>
-  <data name="chkDisplayInToolbar.Caption" xml:space="preserve">
-    <value>Affichage dans la barre d'outils</value>
+  <data name="ListItemResource8.Value" xml:space="preserve">
+    <value>Non</value>
   </data>
-  <data name="lblDefaultsPerActivity.Text" xml:space="preserve">
-    <value>Paramètres par défaut par type d'activité :</value>
+  <data name="LitRequest_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblActivityType_PersonalActivity.Text" xml:space="preserve">
-    <value>Activité personnelle</value>
+  <data name="LitRequest_RToolsResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblShowActivitiesForResource1.Text" xml:space="preserve">
-    <value>Afficher les activités pour :</value>
-  </data>
-  <data name="lblAlertsOptions.Text" xml:space="preserve">
-    <value>Alerte :</value>
-  </data>
-  <data name="chkUnconfirmedActivities.Caption" xml:space="preserve">
-    <value>Activités non confirmées</value>
-  </data>
-  <data name="lblDefaultFollowupActivity.Text" xml:space="preserve">
-    <value>Activité de suivi par défaut :</value>
-  </data>
-  <data name="lblActivityOptions.Text" xml:space="preserve">
-    <value>Options d'activité</value>
-  </data>
-  <data name="lblTimeFrameResource1.Text" xml:space="preserve">
-    <value>Intervalle de temps :</value>
-  </data>
-  <data name="lbDisplayAlarms.Text" xml:space="preserve">
-    <value>Afficher les alarmes :</value>
-  </data>
-  <data name="lbDisplayConfirmations.Text" xml:space="preserve">
-    <value>Afficher les confirmations :</value>
-  </data>
-  <data name="btnSaveResource1.ToolTip" xml:space="preserve">
-    <value>Enregistrer</value>
+  <data name="PageDescription.Text" xml:space="preserve">
+    <value>Activité/Alarmes</value>
   </data>
   <data name="PageDescription.Title" xml:space="preserve">
     <value>Activité/Alarmes</value>
   </data>
-  <data name="lblActivityType_Meeting.Text" xml:space="preserve">
-    <value>Rendez-vous</value>
+  <data name="ddlDefaultFollowupActivityResource1" xml:space="preserve">
+    <value />
   </data>
-  <data name="chkIncludeAlarms.Caption" xml:space="preserve">
-    <value>Alarmes</value>
+  <data name="ddlDefaultViewResource1" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblRemindersAlertsOptions.Text" xml:space="preserve">
-    <value>Options de rappels</value>
+  <data name="ddlDefaultDurationAmt1Resource1" xml:space="preserve">
+    <value />
   </data>
-  <data name="liDisplayPastDueNo.Text" xml:space="preserve">
-    <value>Non</value>
+  <data name="ddlDefaultDurationUnits1Resource1" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblAlarmOptsResource1.Text" xml:space="preserve">
-    <value>Options d'alarme</value>
+  <data name="ddlDefaultReminderAmt1Resource1" xml:space="preserve">
+    <value />
   </data>
-  <data name="liDisplayPastDueYes.Text" xml:space="preserve">
-    <value>Oui</value>
-  </data>
-  <data name="liDisplayConfirmationsYes.Text" xml:space="preserve">
-    <value>Oui</value>
-  </data>
-  <data name="lblEnableAlarmsResource1.Text" xml:space="preserve">
-    <value>Activer les alarmes :</value>
+  <data name="ddlDefaultReminderUnits1Resource1" xml:space="preserve">
+    <value />
   </data>
   <data name="lblActivityType.Text" xml:space="preserve">
     <value>Type d'activité</value>
   </data>
-  <data name="lblAlarmScanResource1.Text" xml:space="preserve">
-    <value>Fréquence d'analyse d'alarme :</value>
+  <data name="lblActivityType_Meeting.Text" xml:space="preserve">
+    <value>Rendez-vous</value>
   </data>
-  <data name="lblAlarmSoundResource1.Text" xml:space="preserve">
-    <value>Evénement sonore d'alarme :</value>
+  <data name="lblActivityType_PersonalActivity.Text" xml:space="preserve">
+    <value>Activité personnelle</value>
   </data>
-  <data name="lblCarryOverAttachments.Text" xml:space="preserve">
-    <value>Reporter les pièces jointes :</value>
+  <data name="lblActivityType_PhoneCall.Text" xml:space="preserve">
+    <value>Appel téléphonique</value>
+  </data>
+  <data name="lblActivityType_ToDo.Text" xml:space="preserve">
+    <value>Tâche à faire</value>
   </data>
   <data name="lblDefaultDuration.Text" xml:space="preserve">
     <value>Durée par défaut</value>
+  </data>
+  <data name="lblDefaultAlarm.Text" xml:space="preserve">
+    <value>Alarme par défaut</value>
+  </data>
+  <data name="lblDefaultsPerActivity.Text" xml:space="preserve">
+    <value>Paramètres par défaut par type d'activité :</value>
+  </data>
+  <data name="chkAlarms.Caption" xml:space="preserve">
+    <value>Alarmes</value>
+  </data>
+  <data name="chkPastDue.Caption" xml:space="preserve">
+    <value>En retard</value>
+  </data>
+  <data name="chkUnconfirmedActivities.Caption" xml:space="preserve">
+    <value>Activités non confirmées</value>
+  </data>
+  <data name="lblInclude.Text" xml:space="preserve">
+    <value>Inclure :</value>
+  </data>
+  <data name="lblRemindersAlertsOptions.Text" xml:space="preserve">
+    <value>Options de rappels et d'alertes</value>
+  </data>
+  <data name="chkAlertsPrompt.Caption" xml:space="preserve">
+    <value>Demander</value>
+  </data>
+  <data name="chkDispAlertsInToolbar.Caption" xml:space="preserve">
+    <value>Afficher dans la barre d'outils</value>
+  </data>
+  <data name="chkDisplayInToolbar.Caption" xml:space="preserve">
+    <value>Afficher dans la barre d'outils</value>
+  </data>
+  <data name="chkIncludeAlarms.Caption" xml:space="preserve">
+    <value>Alarmes</value>
+  </data>
+  <data name="chkIncludeUnconfirmedActivities.Caption" xml:space="preserve">
+    <value>Activités non confirmées</value>
+  </data>
+  <data name="lblAlertIncludeOptions.Text" xml:space="preserve">
+    <value>Inclure :</value>
+  </data>
+  <data name="lblAlertsOptions.Text" xml:space="preserve">
+    <value>Alertes :</value>
+  </data>
+  <data name="lblReminders.Text" xml:space="preserve">
+    <value>Rappels :</value>
   </data>
 </root>

@@ -1,8 +1,9 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/JobMgr/BaseListPanelConfig", [
     'Sage/_ConfigurationProvider',
     'Sage/Services/JobService',
     'Sage/Data/SDataServiceRegistry',
+    'Sage/Store/SData',
     'Sage/Data/SDataStore',
     'dijit/Menu',
     'dijit/PopupMenuItem',
@@ -16,6 +17,7 @@ function (
    _ConfigurationProvider,
    JobService,
    sDataServiceRegistry,
+   SDataGridStore,
    SDataStore,
    Menu,
    PopupMenuItem,
@@ -88,7 +90,7 @@ function (
             return listConfig;
         },
         _getStore: function () {
-            var store = new SDataStore({
+            var store = new SDataGridStore({
                 id: this._listId,
                 service: this._sDataService,
                 resourceKind: this._resourceKind,
@@ -120,7 +122,7 @@ function (
             return structure;
         },
         _getSummaryConfig: function () {
-            var store = new SDataStore({
+            var store = new SDataGridStore({
                 id: this._listId,
                 service: this._sDataService,
                 resourceKind: this._resourceKind,

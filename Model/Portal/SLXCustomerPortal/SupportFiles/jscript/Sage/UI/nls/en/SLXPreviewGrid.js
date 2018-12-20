@@ -1,3 +1,5 @@
-define((
-{ applyText: 'Apply', resetText: 'Reset', filterText: 'Filter' }
-));
+define("Sage/UI/nls/en/SLXPreviewGrid", {
+    applyText: 'Apply',
+    resetText: 'Reset',
+    filterText: 'Filter'
+});

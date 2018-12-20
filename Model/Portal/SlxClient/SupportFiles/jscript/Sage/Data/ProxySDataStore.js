@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Data/ProxySDataStore", [
         'Sage/Data/BaseSDataStore',
         'Sage/Data/SDataServiceRegistry',
         'dojo/_base/declare'

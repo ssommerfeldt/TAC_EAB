@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([],
+define("Sage/Array", [],
 function () {
     if (typeof Array.prototype.swap === 'undefined') {
         Array.prototype.swap = function (d, s) {

@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AbbrevDescription.Caption" xml:space="preserve">
     <value>Abbreviazione:</value>
@@ -123,46 +123,52 @@
   <data name="Type.Caption" xml:space="preserve">
     <value>Tipo:</value>
   </data>
-  <data name="lueDescription.Caption" xml:space="preserve">
-    <value>Descrizione:</value>
+  <data name="Status.Caption" xml:space="preserve">
+    <value>Stato:</value>
   </data>
-  <data name="okButton.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lueDescription.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Codice sorgente</value>
+  <data name="LeadDate.Caption" xml:space="preserve">
+    <value>Data lead:</value>
   </data>
   <data name="SourceDate.Caption" xml:space="preserve">
     <value>Data origine:</value>
   </data>
-  <data name="SourceDate.ButtonToolTip" xml:space="preserve">
-    <value>Calendario</value>
+  <data name="lueDescription.Caption" xml:space="preserve">
+    <value>Descrizione:</value>
   </data>
-  <data name="lueDescription.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="lueDescription.LUPF.Status" xml:space="preserve">
-    <value>Attivo</value>
+  <data name="lueDescription.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Tipo</value>
   </data>
   <data name="lueDescription.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Descrizione</value>
   </data>
-  <data name="Status.Caption" xml:space="preserve">
-    <value>Status:</value>
+  <data name="lueDescription.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Codice origine</value>
   </data>
-  <data name="LeadDate.ButtonToolTip" xml:space="preserve">
-    <value>Calendario</value>
+  <data name="lueDescription.LookupProperties.SourceDate.PropertyHeader" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueDescription.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
+  <data name="lueDescription.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="actionContainer.Caption" xml:space="preserve">
+    <value />
   </data>
   <data name="cancelButton.Caption" xml:space="preserve">
     <value>Annulla</value>
   </data>
-  <data name="LeadDate.Caption" xml:space="preserve">
-    <value>Data Nominativo:</value>
+  <data name="okButton.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="lueDescription.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Tipo</value>
+  <data name="lueDescription.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="LeadDate.ButtonToolTip" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="SourceDate.ButtonToolTip" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="lueDescription.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Stato</value>
   </data>
 </root>

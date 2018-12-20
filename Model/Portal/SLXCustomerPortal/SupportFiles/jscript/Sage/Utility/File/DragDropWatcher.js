@@ -1,4 +1,4 @@
-﻿/*globals Sage, dojo, define, window */
+/*globals Sage, dojo, define, window, slx, slx_installDesktopFeatures */
 define('Sage/Utility/File/DragDropWatcher', [
     'Sage/UI/Dialogs',
     'Sage/Utility/File',
@@ -16,8 +16,9 @@ function (Dialogs, FileUtil, dString, dragDropWatcherStrings, has, _sniff) {
         init: function (options) {
             Sage.Utility.File.DragDropWatcher.allowdDetailDrop = options.allowDetailDragDrop;
             Sage.Utility.File.DragDropWatcher.allowdListDrop = options.allowListDragDrop;
-            if (Sage.gears) {
-                this.desktop = Sage.gears.factory.create('beta.desktop');
+            /*
+            if (slx && slx.desktop) {
+                this.desktop = slx.desktop;
                 if (has('ie') < 11) {
                     dojo.connect(dojo.body(), 'ondragenter', this.handleGearsDragEnter);
                     dojo.connect(dojo.body(), 'ondragover', this.handleGearsDragOver);
@@ -35,7 +36,7 @@ function (Dialogs, FileUtil, dString, dragDropWatcherStrings, has, _sniff) {
                     dojo.connect(dojo.body(), 'dragleave', this.handleGearsDragLeave);
                     dojo.connect(dojo.body(), 'drop', this.handleGearsFileDrop);
                 }
-            } else {
+            } else */{
                 if (FileUtil.supportsHTML5File) {
                     dojo.connect(dojo.body(), 'dragenter', this.handleDragEnter);
                     dojo.connect(dojo.body(), 'dragover', this.handleDragOver);
@@ -86,9 +87,9 @@ function (Dialogs, FileUtil, dString, dragDropWatcherStrings, has, _sniff) {
                 }
             } else {
                 //maybe they came from Outlook, see if gears can help...
-                if (Sage.gears) {
-                    var desktop = Sage.gears.factory.create('beta.desktop');
-                    var data = desktop.getDragData(e, 'application/x-gears-files');
+                if (typeof slx !== 'undefined' && slx && slx.desktop) {
+                    var desktop = slx.desktop;
+                    var data = desktop.getDragData();
                     files = data && data.files;
                     if (files && files.length > 0) {
                         if (FileUtil.isFileSizeAllowed(files)) {
@@ -113,7 +114,7 @@ function (Dialogs, FileUtil, dString, dragDropWatcherStrings, has, _sniff) {
                     evt.stopPropagation();
                     evt.preventDefault();
                 }
-            } else if (has('ie') || dojo.isSafari || dojo.isChrome) {
+            } else if (Sage.Utility.isIE || dojo.isSafari || dojo.isChrome) {
                 if (!isDrop) {
                     if (typeof evt.stopPropagation === 'function') {
                         evt.stopPropagation();
@@ -137,20 +138,22 @@ function (Dialogs, FileUtil, dString, dragDropWatcherStrings, has, _sniff) {
             Sage.Utility.File.DragDropWatcher.finishDrag(e, false);
         },
         handleGearsFileDrop: function (e) {
-            Sage.Utility.File.DragDropWatcher.finishDrag(e, true);
-            var allow = Sage.Utility.File.DragDropWatcher._AllowDragDrop();
-            if (!allow) {
-                return;
-            }
-            var data = Sage.Utility.File.DragDropWatcher.desktop.getDragData(e, 'application/x-gears-files');
-            var target = e.target;
-            if (!target) {
-                target = e.srcElement;
-            }
-            var files = data && data.files;
-            if (files && files.length > 0) {
-                if (Sage.Utility.File.isFileSizeAllowed(files)) {
-                    Sage.Utility.File.DragDropWatcher.onFilesDropped(files, target);
+            if (typeof slx !== 'undefined' && slx && slx.desktop) {
+                Sage.Utility.File.DragDropWatcher.finishDrag(e, true);
+                var allow = Sage.Utility.File.DragDropWatcher._AllowDragDrop();
+                if (!allow) {
+                    return;
+                }
+                var data = slx.desktop.getDragData();
+                var target = e.target;
+                if (!target) {
+                    target = e.srcElement;
+                }
+                var files = data && data.files;
+                if (files && files.length > 0) {
+                    if (Sage.Utility.File.isFileSizeAllowed(files)) {
+                        Sage.Utility.File.DragDropWatcher.onFilesDropped(files, target);
+                    }
                 }
             }
         },
@@ -194,11 +197,11 @@ function (Dialogs, FileUtil, dString, dragDropWatcherStrings, has, _sniff) {
             var url = Sage.Link.getHelpUrl('desktopintegration');
             var html = dString.substitute('<table><tr><td><span> ${0} <a href="${1}">${2}</a><br><br>${3}<br><br><font style="font-style:italic">${4}<font></span></td></tr></table>', [query0, url, query1, query2, query3]);
             var queryOptions = {
-                title: 'Saleslogix',
+                title: 'Infor CRM',
                 query: html,
                 callbackFn: function (result) {
                     if (result) {
-                        Sage.installDesktopFeatures();
+                        slx_installDesktopFeatures();
                     }
                 },
                 yesText: null,

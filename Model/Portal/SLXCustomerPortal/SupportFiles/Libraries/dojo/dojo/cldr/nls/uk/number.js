@@ -1,8 +1,7 @@
-//>>built
 define(
 "dojo/cldr/nls/uk/number", //begin v1.x content
 {
-	"group": " ",
+	"group": " ",
 	"percentSign": "%",
 	"exponential": "Е",
 	"scientificFormat": "#E0",
@@ -11,12 +10,14 @@ define(
 	"infinity": "∞",
 	"minusSign": "-",
 	"decimal": ",",
+	"superscriptingExponent": "×",
 	"nan": "Не число",
 	"perMille": "‰",
 	"decimalFormat": "#,##0.###",
-	"currencyFormat": "#,##0.00 ¤",
+	"currencyFormat": "#,##0.00 ¤",
 	"plusSign": "+",
-	"decimalFormat-short": "000 трлн"
+	"decimalFormat-long": "000 трильйона",
+	"decimalFormat-short": "000 трлн"
 }
 //end v1.x content
 );

@@ -1,4 +1,4 @@
-define([
+define("Sage/Groups/main", [
     "Sage/Groups/GroupNavigator",
     "Sage/Groups/GroupContextService",
     "Sage/Groups/GroupLookup",

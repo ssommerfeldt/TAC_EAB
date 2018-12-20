@@ -1,20 +1,19 @@
+require({cache:{
+'url:Sage/templates/SpeedSearch.html':"<span>\r    <!-- the textbox -->\r    <input type=\"text\" id=\"txt_ss\" />\r    <!--the image button-->\r    <button id='ss-btn-image' type=\"button\" style=\"font-size:10px\"></button>\r    <button id='ss-btn-toggle' type=\"button\" style=\"font-size:10px\"></button>\r</span>\r"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-       'dijit/_TemplatedMixin',
-       'dijit/_WidgetsInTemplateMixin',
-       'dojo/i18n',
-       'dojo/text',
-       'dijit/_Widget',
-       'Sage/UI/TextBox',
-       'Sage/UI/ImageButton',
-       'Sage/UI/ToggleButton',
-       'dojo/i18n!./nls/SpeedSearch',
-       'dojo/text!../templates/SpeedSearch.html',
-       'dojo/_base/declare'
+define("Sage/UI/SpeedSearch", [
+    'dijit/_TemplatedMixin',
+    'dijit/_WidgetsInTemplateMixin',
+    'dojo/i18n',
+    'dijit/_Widget',
+    'Sage/UI/TextBox',
+    'Sage/UI/ImageButton',
+    'Sage/UI/ToggleButton',
+    'dojo/i18n!./nls/SpeedSearch',
+    'dojo/text!../templates/SpeedSearch.html',
+    'dojo/_base/declare'
 ],
-function (_TemplatedMixin, _WidgetsInTemplateMixin, i18n, text, _Widget, TextBox, ImageButton, ToggleButton, nls, template, declare) {
-    //dojo.requireLocalization('Sage.UI', 'SpeedSearch');
-
+function (_TemplatedMixin, _WidgetsInTemplateMixin, i18n, _Widget, TextBox, ImageButton, ToggleButton, nls, template, declare) {
     /**
     * @class Sage.UI.SpeedSearch
     * This class is a composite object made up of:
@@ -38,7 +37,6 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, i18n, text, _Widget, TextBox
         * create instances of the cosumed UI elemets and display them
         */
         postCreate: function () {
-
             var that = this;
             // Are we on the SpeedSearch page?
             var re = /SpeedSearch\.aspx|speedsearch\.aspx/;
@@ -90,13 +88,12 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, i18n, text, _Widget, TextBox
             if (this.queryObject) { txtbox.forceFocus(this.queryObject.terms); }
 
             var imgBtn = new ImageButton({
-                imageClass: 'icon_SpeedSearch_16x16',
+                imageClass: 'fa fa-search',
                 'class': 'quick-speedsearch-button',
                 onClick: function () {
                     that._goSearch(txtbox.getValue(), toggleBtn.getValue());
                 }
             }, 'ss-btn-image');
-
 
             this.inherited(arguments);
         },
@@ -106,8 +103,8 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, i18n, text, _Widget, TextBox
         */
         _goSearch: function (terms, type) {
             if (terms !== this.speedSearchText) {
-                window.location = "SpeedSearch.aspx?terms=" + terms +
-                    "&type=" + type;
+                window.setTimeout(function () {
+                    window.location = "SpeedSearch.aspx?terms=" + terms + "&type=" + type; }, 10);
             }
         },
         toggleAdv: function () {

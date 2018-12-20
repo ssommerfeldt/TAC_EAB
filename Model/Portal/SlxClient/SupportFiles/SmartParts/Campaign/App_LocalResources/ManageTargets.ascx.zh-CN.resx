@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblCaption.Text" xml:space="preserve">
+    <value>选择此销售活动的目标销售线索和客户联系人。</value>
+  </data>
+  <data name="lblIncludeType.Caption" xml:space="preserve">
+    <value>包含:</value>
+  </data>
+  <data name="rdgIncludeType_Contacts.Value" xml:space="preserve">
+    <value>联系人</value>
+  </data>
+  <data name="rdgIncludeType_Contacts.Text" xml:space="preserve">
+    <value>联系人(个人)</value>
+  </data>
+  <data name="rdgIncludeType_AccountsAll.Value" xml:space="preserve">
+    <value>AccountContacts</value>
+  </data>
+  <data name="rdgIncludeType_AccountsAll.Text" xml:space="preserve">
+    <value>客户(所有联系人)</value>
+  </data>
+  <data name="rdgIncludeType_Accounts.Value" xml:space="preserve">
+    <value>PrimaryAccount</value>
+  </data>
+  <data name="rdgIncludeType_Accounts.Text" xml:space="preserve">
+    <value>客户(仅限主要联系人)</value>
+  </data>
+  <data name="rdgIncludeType_Leads.Value" xml:space="preserve">
+    <value>销售线索</value>
+  </data>
+  <data name="rdgIncludeType_Leads.Text" xml:space="preserve">
+    <value>销售线索(不符合要求)</value>
+  </data>
+  <data name="cboCompany.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklIndustry.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboSIC.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkTitle.Caption" xml:space="preserve">
+    <value>标题:</value>
+  </data>
+  <data name="chkProducts.Caption" xml:space="preserve">
+    <value>拥有的产品:</value>
+  </data>
+  <data name="chkStatus.Caption" xml:space="preserve">
+    <value>状态:</value>
+  </data>
+  <data name="lblDoNotIncludes.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDoNotIncludes.Caption" xml:space="preserve">
+    <value>包含:</value>
+  </data>
+  <data name="chkSolicit.Caption" xml:space="preserve">
+    <value>请勿推销</value>
+  </data>
+  <data name="chkEmail.Caption" xml:space="preserve">
+    <value>请勿发送电子邮件</value>
+  </data>
+  <data name="chkFax.Caption" xml:space="preserve">
+    <value>请勿发送传真</value>
+  </data>
+  <data name="chkMail.Caption" xml:space="preserve">
+    <value>请勿邮寄</value>
+  </data>
+  <data name="chkCall.Caption" xml:space="preserve">
+    <value>请勿致电</value>
+  </data>
+  <data name="filter_GreaterThan.Value" xml:space="preserve">
+    <value>GreaterThan</value>
+  </data>
+  <data name="filter_GreaterThan.Text" xml:space="preserve">
+    <value>大于</value>
+  </data>
+  <data name="filter_LessThan.Value" xml:space="preserve">
+    <value>LessThan</value>
+  </data>
+  <data name="filter_LessThan.Text" xml:space="preserve">
+    <value>小于</value>
+  </data>
+  <data name="filter_EqualGreaterThan.Value" xml:space="preserve">
+    <value>EqualOrGreaterThan</value>
+  </data>
+  <data name="filter_EqualGreaterThan.Text" xml:space="preserve">
+    <value>等于或大于</value>
+  </data>
+  <data name="filter_EqualLessThan.Value" xml:space="preserve">
+    <value>EqualOrLessThan</value>
+  </data>
+  <data name="filter_EqualLessThan.Text" xml:space="preserve">
+    <value>等于或小于</value>
+  </data>
+  <data name="filter_NotEqualTo.Value" xml:space="preserve">
+    <value>NotEqualTo</value>
+  </data>
+  <data name="filter_NotEqualTo.Text" xml:space="preserve">
+    <value>不等于</value>
+  </data>
+  <data name="filter_EqualTo.Value" xml:space="preserve">
+    <value>EqualTo</value>
+  </data>
+  <data name="filter_EqualTo.Text" xml:space="preserve">
+    <value>等于</value>
+  </data>
+  <data name="filter_Contains.Value" xml:space="preserve">
+    <value>包含</value>
+  </data>
+  <data name="filter_Contains.Text" xml:space="preserve">
+    <value>包含</value>
+  </data>
+  <data name="filter_StartingWith.Value" xml:space="preserve">
+    <value>StartingWith</value>
+  </data>
+  <data name="filter_StartingWith.Text" xml:space="preserve">
+    <value>开始于</value>
+  </data>
+  <data name="lueProducts.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
+    <value>产品代码</value>
+  </data>
+  <data name="lueProducts.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>产品名称</value>
+  </data>
+  <data name="lueProducts.LookupProperties.Vendor.PropertyHeader" xml:space="preserve">
+    <value>供应商</value>
+  </data>
+  <data name="lueProducts.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkCity.Caption" xml:space="preserve">
+    <value>城市:</value>
+  </data>
+  <data name="chkState.Caption" xml:space="preserve">
+    <value>省/州</value>
+  </data>
+  <data name="chkZip.Caption" xml:space="preserve">
+    <value>邮政编码:</value>
+  </data>
+  <data name="chkLeadSource.Caption" xml:space="preserve">
+    <value>销售线索来源:</value>
+  </data>
+  <data name="chkImportSource.Caption" xml:space="preserve">
+    <value>导入来源:</value>
+  </data>
+  <data name="chkCreateDate.Caption" xml:space="preserve">
+    <value>创建日期:</value>
+  </data>
+  <data name="cmdHowMany.Caption" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="cmdSearch.Caption" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="cmdClearAll.Caption" xml:space="preserve">
+    <value>全部清除</value>
+  </data>
+  <data name="txtCity4.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>来源代码</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpCreateToDate.Caption" xml:space="preserve">
+    <value>至</value>
+  </data>
+  <data name="cmdAdd.Caption" xml:space="preserve">
+    <value>添加目标</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="grdTargets.FirstName.ColumnHeading" xml:space="preserve">
+    <value>名字</value>
+  </data>
+  <data name="grdTargets.LastName.ColumnHeading" xml:space="preserve">
+    <value>姓氏</value>
+  </data>
+  <data name="grdTargets.Company.ColumnHeading" xml:space="preserve">
+    <value>公司</value>
+  </data>
+  <data name="grdTargets.Email.ColumnHeading" xml:space="preserve">
+    <value>电子邮件</value>
+  </data>
+  <data name="grdTargets.City.ColumnHeading" xml:space="preserve">
+    <value>城市</value>
+  </data>
+  <data name="grdTargets.State.ColumnHeading" xml:space="preserve">
+    <value>省/州</value>
+  </data>
+  <data name="grdTargets.Zip.ColumnHeading" xml:space="preserve">
+    <value>邮政编码</value>
+  </data>
+  <data name="grdTargets.WorkPhone.ColumnHeading" xml:space="preserve">
+    <value>单位电话</value>
+  </data>
+  <data name="chkCompany.Caption" xml:space="preserve">
+    <value>公司名称:</value>
+  </data>
+  <data name="chkIndustry.Caption" xml:space="preserve">
+    <value>行业</value>
+  </data>
+  <data name="chkSIC.Caption" xml:space="preserve">
+    <value>标准行业分类:</value>
+  </data>
+  <data name="grdTargets.EmptyTableRowText" xml:space="preserve">
+    <value>没有与选择条件匹配的记录。</value>
+  </data>
+  <data name="HowManyTargets_Msg" xml:space="preserve">
+    <value>{0} 个目标</value>
+  </data>
+  <data name="error_NoTargetsSelected" xml:space="preserve">
+    <value>必须选择至少一个目标，然后才能继续。</value>
+  </data>
+  <data name="error_NoDataSource" xml:space="preserve">
+    <value>无法获取数据源。</value>
+  </data>
+  <data name="lblFailed.Caption" xml:space="preserve">
+    <value>失败:</value>
+  </data>
+  <data name="lblInserted.Caption" xml:space="preserve">
+    <value>已插入:</value>
+  </data>
+  <data name="lblPrimary.Caption" xml:space="preserve">
+    <value>正在插入目标...</value>
+  </data>
+  <data name="tabAddFromGroup.Caption" xml:space="preserve">
+    <value>从组中添加</value>
+  </data>
+  <data name="tabLookupTarget.Caption" xml:space="preserve">
+    <value>查找目标</value>
+  </data>
+  <data name="lblAddFromGroup.Text" xml:space="preserve">
+    <value>从现有组中选择此销售活动的目标销售线索或客户联系人。</value>
+  </data>
+  <data name="rdgContactGroup.Text" xml:space="preserve">
+    <value>联系人组:</value>
+  </data>
+  <data name="rdgContactGroup.Value" xml:space="preserve">
+    <value>联系人</value>
+  </data>
+  <data name="rdgLeadGroup.Text" xml:space="preserve">
+    <value>销售线索组:</value>
+  </data>
+  <data name="rdgLeadGroup.Value" xml:space="preserve">
+    <value>销售线索</value>
+  </data>
+  <data name="error_NoGroupSelected" xml:space="preserve">
+    <value>请选择组，然后再继续。</value>
+  </data>
+  <data name="QueryError" xml:space="preserve">
+    <value>执行搜索查询时出现错误。</value>
+  </data>
+  <data name="QueryErrorInvalidParameter" xml:space="preserve">
+    <value>其中一个查询参数错误。原因可能是更改了实体属性名称。</value>
+  </data>
+</root>

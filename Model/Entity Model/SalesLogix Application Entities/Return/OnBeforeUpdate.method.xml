@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="903df37f-dd1d-4993-a6dc-7f32e8d522ca" lastModifiedUtc="2008-01-23T22:30:13.719135Z" name="OnBeforeUpdate" returnType="void" methodType="CrudEvent" actionType="None" returnMode="None" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="903df37f-dd1d-4993-a6dc-7f32e8d522ca" lastModifiedUtc="2008-01-23T22:30:13.719135Z" name="OnBeforeUpdate" methodType="CrudEvent" actionType="None" returnMode="None">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -13,6 +13,11 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets />
-  <postFlushTargets />
+  <postExecuteTargets>
+    <methodTarget id="62ff6c5d-e200-4198-837e-118f8edca557" lastModifiedUtc="2015-11-05T20:01:06.9870787Z" targetType="Sage.SalesLogix.Return.Rules, Sage.SalesLogix.BusinessRules" targetMethod="SetPrettyKeyValue" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
 </method>

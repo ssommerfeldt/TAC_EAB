@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="09f528a4-9d61-4ea2-8b5b-a088011a9683" lastModifiedUtc="2015-12-21T09:29:41.299705Z" name="SetSalesOrderPayFromAddress" returnType="ISalesOrderAddress" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="984f2333-90c8-4db6-b62a-b1cf9ef62a88" paramName="address" sequence="0" paramType="IAddress">
+      <description>Contacts primary address.</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="483bb025-9a68-4579-ba04-0987d7d37562" lastModifiedUtc="2015-12-21T09:30:51.991768Z" targetType="Sage.SalesLogix.SalesOrder.SalesOrder, Sage.SalesLogix.BusinessRules" targetMethod="SetSalesOrderPayFromAddress" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

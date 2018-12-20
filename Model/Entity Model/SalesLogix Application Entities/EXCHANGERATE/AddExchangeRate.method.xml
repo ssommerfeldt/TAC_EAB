@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="984d6bf1-e8f3-4fe7-a430-9881e3d36eee" lastModifiedUtc="2017-08-31T10:03:42.1303063Z" name="AddExchangeRate" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="b8244d05-6695-416c-a1f2-8aa182d192ca" lastModifiedUtc="2017-08-31T10:05:34.14707Z" targetType="Sage.SalesLogix.ExchangeRate.Rules, Sage.SalesLogix.BusinessRules" targetMethod="AddExchangeRate" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

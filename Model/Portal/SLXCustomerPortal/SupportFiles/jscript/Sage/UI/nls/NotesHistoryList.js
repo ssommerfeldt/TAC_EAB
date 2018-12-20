@@ -1,33 +1,41 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            typeText: 'Type',
-            showDbChangesText: 'Show Database Changes',
-            selectAllText: 'Select All',
-            dateText: 'Date',
-            dateTimeText: 'Date/Time',
-            dateRangeText: 'Date Range',
-            userText: 'User',
-            accountText: 'Account',
-            contactText: 'Contact',
-            opportunityText: 'Opportunity',
-            regardingText: 'Regarding',
-            notesText: 'Notes',
-            resultText: 'Result',
-            categoryText: 'Category',
-            sendEmailText: 'Send via E-Mail',
-            sendToWordText: 'Send to Word',
-            addNoteText: 'Add Note',
-            completeAnActivityText: 'Complete an Activity',
-            helpText: 'Help',
-            pleaseSelectRecordsText: 'Please select one or more records',
-            UnableToFindWordMsg: 'Cannot start Microsoft Word.  Please check your security settings.',
-            printedOnText: 'Printed On'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/nls/NotesHistoryList", {
+    root: {
+        typeText: 'Type',
+        showDbChangesText: 'Show Database Changes',
+        selectAllText: 'Select All',
+        dateText: 'Date',
+        dateTimeText: 'Date/Time',
+        dateRangeText: 'Date Range',
+        userText: 'User',
+        accountText: 'Account',
+        contactText: 'Contact',
+        opportunityText: 'Opportunity',
+        regardingText: 'Regarding',
+        notesText: 'Notes',
+        resultText: 'Result',
+        categoryText: 'Category',
+        sendEmailText: 'Send via E-Mail',
+        sendToWordText: 'Send to Word',
+        addNoteText: 'Add Note',
+        completeAnActivityText: 'Complete an Activity',
+        helpText: 'Help',
+        pleaseSelectRecordsText: 'Please select one or more records',
+        UnableToFindWordMsg: 'Cannot start Microsoft Word.  Please check your security settings.',
+        printedOnText: 'Printed On',
+        errorNoData: "There aren't any Notes/History that can be shared to Ming.le.",
+        yesButtonText: 'Yes',
+        noButtonText: 'No',
+        salesLogixPageTitle: 'Infor CRM',
+        noRecordsSelectedProcessAll: "You haven't selected any records. All of the Notes/History, ${0} record(s), will be shared to Ming.le. Is it OK to proceed?",
+        errorShareMingle: 'There was an error sharing one or more Notes/History records to Ming.le.',
+        sharedToMingle: 'The Notes/History has been shared to Ming.le.',
+        sharingToMingle: 'Sharing to Ming.le',
+        shared: 'Shared',
+        pleaseWait: 'Please wait...',
+        failedToPost: 'Failed to post: ${0}; error: ${1}',
+        addressText: 'Address',
+        mainPhoneText: 'Main Phone',
+        tollFreeText: 'Toll Free',
+        contactPhoneText: 'Contact Phone'
+    }
 });

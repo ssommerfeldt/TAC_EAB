@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="266c2bdd-a857-4751-9bca-ce9093a7684d" lastModifiedUtc="2014-12-13T19:09:07.3196117Z" name="FormatFullInvoiceAddress" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="1f471e84-0727-41ed-9e16-cd17ddac6afa" lastModifiedUtc="2015-01-12T21:48:34.5276547Z" targetType="Sage.SalesLogix.ErpInvoiceAddress.Rules, Sage.SalesLogix.BusinessRules" targetMethod="FormatFullInvoiceAddress" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

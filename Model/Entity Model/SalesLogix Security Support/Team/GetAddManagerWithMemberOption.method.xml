@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9750a07b-4449-49a3-b78e-22c1b2e7a650" lastModifiedUtc="2010-06-02T21:42:43.2969235Z" name="GetAddManagerWithMemberOption" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9750a07b-4449-49a3-b78e-22c1b2e7a650" lastModifiedUtc="2015-06-25T15:42:02.5810498Z" name="GetAddManagerWithMemberOption" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -14,5 +14,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

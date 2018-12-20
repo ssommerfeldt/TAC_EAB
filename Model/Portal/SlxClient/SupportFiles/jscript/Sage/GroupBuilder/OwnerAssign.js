@@ -114,7 +114,7 @@ function buildReturnVal(optionlist) {
     var res = "";
     for (var i=0; i<optionlist.length; i++) {
         if (optionlist[i].selected)
-            res += "<owner><value>" + optionlist[i].value + "</value><name>" + optionlist[i].text + "</name></owner>";
+            res += "<owner><value>" + sanatizeForXML(optionlist[i].value) + "</value><name>" + sanatizeForXML(optionlist[i].text) + "</name></owner>";
     }
     return res;
 }
@@ -131,5 +131,11 @@ function ok_onclick() {
     }
     
     window.close();
+}
+function sanatizeForXML(str) {
+    if (typeof str !== 'string') { return str; }
+    if (!str) { return ''; }
+
+    return str.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 

@@ -1,8 +1,55 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="42814221-790f-4183-85a9-e76c9d9a3bb6" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="42814221-790f-4183-85a9-e76c9d9a3bb6" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-07-19T10:00:24.2707907Z">
   <ActiveControl />
   <ImagePath />
-  <LoadActions />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>c1f23470-6904-43d4-9aa8-41d188555650</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName>quickformload0</MethodName>
+          <CSharpCodeSnippet>var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;();
+if(clientContextService!=null &amp;&amp; clientContextService.IsMasterDataConsolidationEnabled())
+{
+	var mapping = BindingSource.Current as IAccount;
+	cboAccountingEntity.Items.Clear(); 
+	cboAccountingEntity.Items.Add(new ListItem { Text = "", Value = "" });
+	if(mapping!=null &amp;&amp; mapping.AccountAccountingEntities.Count&gt;0) 
+	{
+		foreach (Sage.Entity.Interfaces.IAccountAccountingEntity item in mapping.AccountAccountingEntities) 
+		{
+			if (item.BackOfficeAcctEntity!=null &amp;&amp; !cboAccountingEntity.Items.Contains(new ListItem { Text = item.BackOfficeAcctEntity.AcctEntityExtId, Value = item.BackOfficeAcctEntity.AcctEntityExtId }))
+			{
+				cboAccountingEntity.Items.Add(new ListItem { Text = item.BackOfficeAcctEntity.AcctEntityExtId, Value = item.BackOfficeAcctEntity.AcctEntityExtId });
+			}
+		}		     
+	}
+}
+if(clientContextService!=null &amp;&amp; !clientContextService.IsBackOfficeIntegrationEnabled())
+{
+	tbrButton.Visible=false;
+}
+pklStatus.PickListValue = string.Empty;
+cboAccountingEntity.SelectedValue = string.Empty;
+var clientContextServiceFilter = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+if (clientContextServiceFilter == null)
+    return;
+
+if (clientContextServiceFilter.CurrentContext.ContainsKey("Filter"))
+{
+    clientContextServiceFilter.CurrentContext.Remove("Filter");
+}
+</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
   <Name>AccountReturns</Name>
   <ClientScriptIncludes />
   <ClientResourceKeys />
@@ -11,11 +58,47 @@
   <ReadOnly>false</ReadOnly>
   <GeneratePrintView>false</GeneratePrintView>
   <Controls>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.SDataGrid.QFSDataGrid, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSDataGrid>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFListBox, Sage.Platform.QuickForms.QFControls">
+      <QFListBox>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>cboAccountingEntity</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <SelectedIndex>-1</SelectedIndex>
+        <Items />
+        <OnChangeAction>
+          <ResourceKey>cboAccountingEntity</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <DataSource />
+        <TextField />
+        <ValueField />
+        <MultiSelect>false</MultiSelect>
+        <MaxHeight>200</MaxHeight>
+      </QFListBox>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.SDataGrid.QFSDataGrid, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSDataGrid>
+        <ColumnSpan>3</ColumnSpan>
+        <Column>0</Column>
+        <Row>1</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>grdReturns</ControlId>
@@ -54,6 +137,21 @@
             <HideCondition />
             <Width>8</Width>
           </QFSDataLinkCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ErpAccountingEntityId</DataField>
+            <ColumnId>91bab4f1-cceb-498a-bb4a-89e6abb3d70d</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
           <QFSDataDateTimeCol>
             <StyleScheme />
             <DataField>CreateDate</DataField>
@@ -82,7 +180,9 @@
             <SortField>Status</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
-            <HideCondition />
+            <HideCondition>function () {
+  return isIntegrationContractEnabled();  
+}</HideCondition>
             <Width>8</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
@@ -119,8 +219,35 @@
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ErpStatus</DataField>
+            <ColumnId>5c42353f-4796-46e0-84a1-d30093ad8777</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>ErpStatus</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function () {
+  return !isIntegrationContractEnabled();  
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
         </Columns>
-        <ConditionalWhere />
+        <ConditionalWhere>function () {
+    var clientContextService = Sage.Services.getService("ClientContextService");
+    if (clientContextService.containsKey("Filter")) {
+        var indexOfFilter = clientContextService._indexOf("Filter");
+        var filterValue = clientContextService._items[indexOfFilter].itemVal;
+        if (filterValue !== "")
+            return dojo.string.substitute("Account.Id eq '${0}' and ${1}", [Sage.Utility.getCurrentEntityId(),  filterValue]);
+    }
+    return dojo.string.substitute("Account.Id eq '${0}'", [Sage.Utility.getCurrentEntityId()]);
+}</ConditionalWhere>
         <Select />
         <Include />
         <FeedCategory>InternalAppEntities</FeedCategory>
@@ -132,13 +259,181 @@
         <Tools />
       </QFSDataGrid>
     </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXPickList>
+        <Column>1</Column>
+        <Row>0</Row>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>pklStatus</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme>NegativeNumber</StyleScheme>
+        <MaxLength>64</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>pklStatus</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+        <AutoPostBack>false</AutoPostBack>
+        <PickListName>ErpReturnProductStatus</PickListName>
+        <StorageMode>Code</StorageMode>
+        <NameFormatString />
+        <AllowMultiples>false</AllowMultiples>
+        <AlphaSort>false</AlphaSort>
+        <CanEditText>false</CanEditText>
+        <MustExistInList>false</MustExistInList>
+        <NoneEditable>false</NoneEditable>
+        <PickListId />
+        <PickListFilter />
+        <ValueStoredAsText>false</ValueStoredAsText>
+      </QFSLXPickList>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFControlsList, Sage.Platform.QuickForms.QFControls">
+      <QFControlsList>
+        <Column>2</Column>
+        <Row>0</Row>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFControlsList</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <Caption />
+        <Controls>
+          <ControlsCollection>
+            <Control TypeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+              <QFButton>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>btnApply</ControlId>
+                <DataBindings />
+                <ControlLabelPlacement>none</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme>Bevel</StyleScheme>
+                <ButtonType>StandardButton</ButtonType>
+                <Image />
+                <OnClientClick />
+                <OnClickAction>
+                  <ResourceKey>btnApply</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                    <CSharpSnippetActionItem>
+                      <MethodName>btnApply_ClickAction</MethodName>
+                      <CSharpCodeSnippet>
+var filter = new System.Collections.Generic.List&lt;string&gt;();
+if (!string.IsNullOrEmpty(pklStatus.PickListValue))
+{
+    filter.Add(string.Format("ErpStatus eq '{0}'", pklStatus.PickListValue));
+}
+if (!string.IsNullOrEmpty(cboAccountingEntity.SelectedValue))
+{
+ filter.Add(string.Format("ErpAccountingEntityId eq '{0}'", cboAccountingEntity.SelectedValue));
+}
+
+
+var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+if (clientContextService == null)
+    return;
+
+if (clientContextService.CurrentContext.ContainsKey("Filter"))
+{
+    if (filter.Count == 0)
+    {
+        clientContextService.CurrentContext.Remove("Filter");
+    }
+    else
+    {
+        clientContextService.CurrentContext["Filter"] = string.Join(" and ", filter);
+    }
+}
+else if (filter.Count &gt; 0)
+{
+    clientContextService.CurrentContext.Add("Filter", string.Join(" and ", filter));
+}</CSharpCodeSnippet>
+                    </CSharpSnippetActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnClickAction>
+              </QFButton>
+            </Control>
+            <Control TypeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+              <QFButton>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>btnReset</ControlId>
+                <DataBindings />
+                <ControlLabelPlacement>none</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <ButtonType>StandardButton</ButtonType>
+                <Image />
+                <OnClientClick />
+                <OnClickAction>
+                  <ResourceKey>btnReset</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                    <CSharpSnippetActionItem>
+                      <MethodName>btnReset_ClickAction</MethodName>
+                      <CSharpCodeSnippet>pklStatus.PickListValue = string.Empty;
+cboAccountingEntity.SelectedValue = string.Empty;
+
+
+var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+if (clientContextService == null)
+    return;
+
+if (clientContextService.CurrentContext.ContainsKey("Filter"))
+{
+    clientContextService.CurrentContext.Remove("Filter");
+}
+</CSharpCodeSnippet>
+                    </CSharpSnippetActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnClickAction>
+              </QFButton>
+            </Control>
+          </ControlsCollection>
+        </Controls>
+      </QFControlsList>
+    </Control>
   </Controls>
   <ToolControls>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dd3c7edaa4144aaca7002236cc67a086</ControlId>
@@ -153,10 +448,9 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>491e883aec94fa2a3ae6f39c4a2735e</ControlId>
+        <ControlId>e883aec94fa2a3ae6f39c4a2735e</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />
@@ -164,17 +458,80 @@
         <StyleScheme />
       </QFElementSpacer>
     </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>tbrButton</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:Filter_16x16]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>tbrButton</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>tbrButton_ClickAction</MethodName>
+              <CSharpCodeSnippet>var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;();
+if(clientContextService!=null &amp;&amp; clientContextService.IsMasterDataConsolidationEnabled())
+{
+	if(cboAccountingEntity.Visible==false)
+	{
+		cboAccountingEntity.Visible=true;
+		cboAccountingEntity_lbl.Visible=true;
+	}
+	else{
+		cboAccountingEntity.Visible=false;
+		cboAccountingEntity_lbl.Visible=false;	
+	}
+}
+if(pklStatus.Visible==false)
+{
+	pklStatus.Visible=true;
+	pklStatus_lbl.Visible=true;
+	QFControlsList.Visible=true;
+}
+else{
+	pklStatus.Visible=false;
+	pklStatus_lbl.Visible=false;	
+	QFControlsList.Visible=false;
+}</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
   </ToolControls>
   <Columns>
     <ColumnStyle>
       <SizeType>Percent</SizeType>
-      <Width>100</Width>
+      <Width>45</Width>
+    </ColumnStyle>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>25</Width>
+    </ColumnStyle>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>20</Width>
     </ColumnStyle>
   </Columns>
   <Rows>
     <RowStyle>
       <SizeType>Absolute</SizeType>
-      <Height>35</Height>
+      <Height>20</Height>
     </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>

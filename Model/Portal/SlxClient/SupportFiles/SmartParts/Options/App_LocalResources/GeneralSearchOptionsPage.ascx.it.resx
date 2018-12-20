@@ -117,166 +117,199 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblAutoLogoffResource1.Text" xml:space="preserve">
-    <value>Abilita Disconnessione Automatica:</value>
+  <data name="_promptContactNotFoundResource1.Text" xml:space="preserve">
+    <value>&lt;span id='lblPromptConNotFound'&gt;Visualizza richiesta per contatto o lead non trovato&lt;/span&gt;</value>
   </data>
-  <data name="UseActiveReportingResource.Text" xml:space="preserve">
-    <value>Usa ActiveReporting (richiede ActiveX e Crystal Runtime)</value>
-  </data>
-  <data name="listItemContactResource.Text" xml:space="preserve">
-    <value>Contatto</value>
-  </data>
-  <data name="PageDescription.Title" xml:space="preserve">
-    <value>Generale</value>
-  </data>
-  <data name="lblPromptForUnsavedData.Text" xml:space="preserve">
-    <value>Avvisa in caso di dati non salvati:</value>
-  </data>
-  <data name="MailMergeServiceError" xml:space="preserve">
-    <value>Non è possibile caricare il servizio di stampa unione. Questo può accadere se non è stata installata l'Integrazione Desktop SalesLogix o non è stata installata correttamente.</value>
-  </data>
-  <data name="PromptForUnsavedData" xml:space="preserve">
-    <value>Chiedi prima di lasciare la pagina con dati non salvati.</value>
-  </data>
-  <data name="EnhanceSalesLogix" xml:space="preserve">
-    <value>Integrazione Desktop...</value>
-  </data>
-  <data name="UseActiveMailResource.Text" xml:space="preserve">
-    <value>Usa ActiveMail (richiede ActiveX)</value>
-  </data>
-  <data name="adhoc_group_format" xml:space="preserve">
-    <value>{0} ({1} Contatti)</value>
-  </data>
-  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
-    <value>Tariffa</value>
-  </data>
-  <data name="lblSearchOptionsResource1.Text" xml:space="preserve">
-    <value>Opzioni di ricerca</value>
-  </data>
-  <data name="msgMenuRangeMessage" xml:space="preserve">
-    <value>Devi inserire un numero tra 0 e 10 per il valore Menù Scrivi - Modelli recenti.</value>
-  </data>
-  <data name="btnFlushCache1.Text" xml:space="preserve">
-    <value>Pulisci Cache</value>
-  </data>
-  <data name="lblDefaultAccountSearchResource1.Text" xml:space="preserve">
-    <value>Cerca Azienda Predefinita:</value>
-  </data>
-  <data name="ExtendedFeaturesResource2.Text" xml:space="preserve">
-    <value>Funzionalità Estese possono richiedere uno scaricamento -</value>
-  </data>
-  <data name="lblLogToHistoryResource1.Text" xml:space="preserve">
-    <value>Connettiti alla Cronologia</value>
-  </data>
-  <data name="tooltipFind" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="lblDefaultOppSearchResource1.Text" xml:space="preserve">
-    <value>Cerca Opportunità Predefinita:</value>
-  </data>
-  <data name="lblGenOptionsResource1.Text" xml:space="preserve">
-    <value>Opzioni Generali</value>
-  </data>
-  <data name="lblFaxBaseTemplateResource1.Text" xml:space="preserve">
-    <value>Modello Fax Base:</value>
-  </data>
-  <data name="clearSavedListData" xml:space="preserve">
-    <value>Aggiornamento dati elenco di selezione</value>
-  </data>
-  <data name="lblIntellisyncOptions.Text" xml:space="preserve">
-    <value>Opzioni Intellisync:</value>
-  </data>
-  <data name="lblFaxProviderResource1.Text" xml:space="preserve">
-    <value>Provider Fax:</value>
-  </data>
-  <data name="lblMyCurrencyResource1.Text" xml:space="preserve">
-    <value>Mia Valuta:</value>
-  </data>
-  <data name="chkUnsavedDataWarning.Text" xml:space="preserve">
-    <value>Avvisa quando si sta abbandonando una vista con dati non salvati</value>
-  </data>
-  <data name="lblIntellisyncResource1.Text" xml:space="preserve">
-    <value>Gruppo di Contatti intellisync</value>
-  </data>
-  <data name="lblCheckboxEnabledResource.Text" xml:space="preserve">
-    <value>Visualizza vista elenco delle caselle di controllo:</value>
+  <data name="_promptDuplicateContactsResource1.Text" xml:space="preserve">
+    <value>&lt;span id='lblPromptForDup'&gt;Visualizza richiesta per contatti o lead duplicati&lt;/span&gt;</value>
   </data>
   <data name="_saveResource1.Text" xml:space="preserve">
     <value>Salva</value>
   </data>
-  <data name="lblEnhancementsInstalled.Text" xml:space="preserve">
-    <value>Integrazioni Installate</value>
+  <data name="btnFlushCache1.Text" xml:space="preserve">
+    <value>Cancella cache</value>
   </data>
-  <data name="lblEmailBaseTemplateResource1.Text" xml:space="preserve">
-    <value>Modello base E-mail:</value>
+  <data name="chkUnsavedDataWarning.Text" xml:space="preserve">
+    <value>Avvisa quando si sta abbandonando una vista con dati non salvati</value>
   </data>
-  <data name="PageDescription.Text" xml:space="preserve">
-    <value>Generale</value>
-  </data>
-  <data name="ExtendedFeaturesResource1.Text" xml:space="preserve">
-    <value>Maggiori informazioni</value>
-  </data>
-  <data name="lblMailMergeTemplateOptions.Text" xml:space="preserve">
-    <value>Opzioni modelli di stampa unione:</value>
-  </data>
-  <data name="lblEmailOptionsResource1.Text" xml:space="preserve">
-    <value>Opzioni E-mail:</value>
-  </data>
-  <data name="GeneralOptionsHelpLinkResource1.ToolTip" xml:space="preserve">
-    <value>Aiuto</value>
-  </data>
-  <data name="lblLetterBaseTemplateResource1.Text" xml:space="preserve">
-    <value>Modello documento base:</value>
-  </data>
-  <data name="lblTimeZoneOptions.Text" xml:space="preserve">
-    <value>Opzioni di fuso orario:</value>
-  </data>
-  <data name="listItemLeadResource.Text" xml:space="preserve">
-    <value>Nominativo</value>
-  </data>
-  <data name="FindOutMore" xml:space="preserve">
-    <value>Maggiori informazioni...</value>
-  </data>
-  <data name="_promptContactNotFoundResource1.Text" xml:space="preserve">
-    <value>&lt;span id='lblPromptConNotFound'&gt;Chiedi per contatto o nominativo non trovato&lt;/span&gt;</value>
-  </data>
-  <data name="EnhancementsAreInstalled" xml:space="preserve">
-    <value>Le integrazioni sono state installate</value>
-  </data>
-  <data name="lblRecentTemplatesResource1.Text" xml:space="preserve">
-    <value>Menù Scrivi - Modelli recenti:</value>
-  </data>
-  <data name="_promptDuplicateContactsResource1.Text" xml:space="preserve">
-    <value>&lt;span id='lblPromptForDup'&gt;Chiedi per contatti o nominativi duplicati&lt;/span&gt;</value>
-  </data>
-  <data name="lblShowOnStartupResource1.Text" xml:space="preserve">
-    <value>Visualizza all'avvio:</value>
-  </data>
-  <data name="lblInstallEnhancements.Text" xml:space="preserve">
-    <value>Installa le Integrazioni</value>
-  </data>
-  <data name="lblTypeResource.Text" xml:space="preserve">
-    <value>Tipo:</value>
-  </data>
-  <data name="ClickToDownload" xml:space="preserve">
-    <value>Fai clic per scaricare le integrazioni del prodotto.</value>
+  <data name="cmdSave_rsc.AlternateText" xml:space="preserve">
+    <value />
   </data>
   <data name="cmdSave_rsc.ToolTip" xml:space="preserve">
     <value>Salva</value>
   </data>
+  <data name="ExtendedFeaturesResource1.Text" xml:space="preserve">
+    <value>Maggiori informazioni</value>
+  </data>
+  <data name="ExtendedFeaturesResource2.Text" xml:space="preserve">
+    <value>Le funzionalità avanzate possono richiedere un download -</value>
+  </data>
+  <data name="GeneralOptionsHelpLinkResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GeneralOptionsHelpLinkResource1.ToolTip" xml:space="preserve">
+    <value>Guida</value>
+  </data>
+  <data name="GeneralOptionsHelpLinkResource2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefaultAccountSearchResource1.Text" xml:space="preserve">
+    <value>Ricerca azienda predefinita</value>
+  </data>
+  <data name="lblCurrentTimezone.Text" xml:space="preserve">
+    <value>Impostare fuso orario locale</value>
+  </data>
+  <data name="lblDefaultContactSearchResource1.Text" xml:space="preserve">
+    <value>Ricerca contatto predefinito</value>
+  </data>
+  <data name="lblDefaultOppSearchResource1.Text" xml:space="preserve">
+    <value>Ricerca opportunità predefinita</value>
+  </data>
+  <data name="lblDefaultOwnerResource1.Text" xml:space="preserve">
+    <value>Proprietario/team predefinito</value>
+  </data>
+  <data name="lblEmailBaseTemplateResource1.Text" xml:space="preserve">
+    <value>Modello base e-mail</value>
+  </data>
+  <data name="lblEmailOptionsResource1.Text" xml:space="preserve">
+    <value>Opzioni e-mail</value>
+  </data>
+  <data name="lblFaxBaseTemplateResource1.Text" xml:space="preserve">
+    <value>Modello base fax</value>
+  </data>
+  <data name="lblFaxProviderResource1.Text" xml:space="preserve">
+    <value>Provider servizio fax</value>
+  </data>
+  <data name="lblGenOptionsResource1.Text" xml:space="preserve">
+    <value>Opzioni generali</value>
+  </data>
+  <data name="lblLetterBaseTemplateResource1.Text" xml:space="preserve">
+    <value>Modello base lettera</value>
+  </data>
+  <data name="lblPromptForUnsavedData.Text" xml:space="preserve">
+    <value>Chiedi dati non salvati.</value>
+  </data>
+  <data name="lblLogToHistoryResource1.Text" xml:space="preserve">
+    <value>Accedi alla cronologia</value>
+  </data>
+  <data name="lblMyCurrencyResource1.Text" xml:space="preserve">
+    <value>Valuta personale</value>
+  </data>
+  <data name="lblRecentTemplatesResource1.Text" xml:space="preserve">
+    <value>Menu scrittura - Modelli recenti</value>
+  </data>
+  <data name="lblSearchOptionsResource1.Text" xml:space="preserve">
+    <value>Opzioni di ricerca</value>
+  </data>
+  <data name="lblShowOnStartupResource1.Text" xml:space="preserve">
+    <value>Visualizza all'avvio:</value>
+  </data>
+  <data name="LitRequest_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="msgMenuRangeMessage" xml:space="preserve">
+    <value>Devi inserire un numero tra 0 e 10 per il menu di scrittura - Modelli recenti.</value>
+  </data>
+  <data name="PageDescription.Text" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="PageDescription.Title" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="lblTimeZoneOptions.Text" xml:space="preserve">
+    <value>Opzioni fuso orario</value>
+  </data>
+  <data name="lblCheckboxEnabledResource.Text" xml:space="preserve">
+    <value>Visualizza caselle di controllo vista elenco</value>
+  </data>
+  <data name="lblAccessibilityOptions.Text" xml:space="preserve">
+    <value>Opzioni di accessibilità</value>
+  </data>
+  <data name="lblIntellisyncOptions.Text" xml:space="preserve">
+    <value>Opzioni di sincronizzazione</value>
+  </data>
+  <data name="lblMailMergeTemplateOptions.Text" xml:space="preserve">
+    <value>Opzioni modelli di stampa unione</value>
+  </data>
+  <data name="UseActiveMailResource.Text" xml:space="preserve">
+    <value>Usa ActiveMail (richiede ActiveX)</value>
+  </data>
+  <data name="lblIntellisyncResource1.Text" xml:space="preserve">
+    <value>Gruppo sincronizzazione contatti</value>
+  </data>
+  <data name="adhoc_group_format" xml:space="preserve">
+    <value>{0} ({1} contatti)</value>
+  </data>
+  <data name="lblAutoLogoffResource1.Text" xml:space="preserve">
+    <value>Abilita disconnessione automatica:</value>
+  </data>
   <data name="lblLogOffAfterResource1.Text" xml:space="preserve">
     <value>Disconnetti dopo</value>
   </data>
-  <data name="lblDefaultContactSearchResource1.Text" xml:space="preserve">
-    <value>Cerca Contatto Predefinito:</value>
+  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
+    <value>Tasso</value>
   </data>
-  <data name="lblCurrentTimezone.Text" xml:space="preserve">
-    <value>Impostare il fuso orario locale:</value>
+  <data name="PromptForUnsavedData" xml:space="preserve">
+    <value>Chiedi dati non salvati.</value>
   </data>
-  <data name="lblAccessibilityOptions.Text" xml:space="preserve">
-    <value>Opzioni di accessibilità:</value>
+  <data name="UseActiveReportingResource.Text" xml:space="preserve">
+    <value>Usa ActiveReporting (richiede ActiveX e Crystal Runtime)</value>
   </data>
-  <data name="lblDefaultOwnerResource1.Text" xml:space="preserve">
-    <value>Proprietario/Team Predefinito:</value>
+  <data name="MailMergeServiceError" xml:space="preserve">
+    <value>Impossibile caricare il servizio di stampa unione. Questo può accadere se CRM Office Integration non è installato o non è installato correttamente.</value>
+  </data>
+  <data name="ClickToDownload" xml:space="preserve">
+    <value>Fare clic per scaricare i miglioramenti del prodotto.</value>
+  </data>
+  <data name="EnhanceSalesLogix" xml:space="preserve">
+    <value>Migliora Infor CRM...</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>Maggiori informazioni...</value>
+  </data>
+  <data name="EnhancementsAreInstalled" xml:space="preserve">
+    <value>I miglioramenti sono stati installati</value>
+  </data>
+  <data name="lblTypeResource.Text" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+  <data name="listItemContactResource.Text" xml:space="preserve">
+    <value>Contatto</value>
+  </data>
+  <data name="listItemLeadResource.Text" xml:space="preserve">
+    <value>Lead</value>
+  </data>
+  <data name="tooltipFind" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="clearSavedListData" xml:space="preserve">
+    <value>Aggiornamento dati elenco di selezione</value>
+  </data>
+  <data name="lblEnhancementsInstalled.Text" xml:space="preserve">
+    <value>Office Integration installata</value>
+  </data>
+  <data name="lblInstallEnhancements.Text" xml:space="preserve">
+    <value>Installa Office Integration</value>
+  </data>
+  <data name="lblEnhancementsNotSupported.Text" xml:space="preserve">
+    <value>Modulo Office Integration non supportato:</value>
+  </data>
+  <data name="lblEnhancements.Text" xml:space="preserve">
+    <value>Miglioramenti di Infor CRM</value>
+  </data>
+  <data name="DefaultUserTimeStamp.Text" xml:space="preserve">
+    <value>Nome utente/indicatore di ora predefinito nei campi di tipo memo:</value>
+  </data>
+  <data name="UnavailableOption" xml:space="preserve">
+    <value>Questo opzione non è al momento disponibile.</value>
+  </data>
+  <data name="lblInstallxbar.Text" xml:space="preserve">
+    <value>Installa Xbar per Outlook</value>
+  </data>
+  <data name="lblxbarInstalled.Text" xml:space="preserve">
+    <value>Xbar per Outlook installata</value>
+  </data>
+  <data name="lblxbarNotSupported.Text" xml:space="preserve">
+    <value>Xbar per Outlook non supportata</value>
   </data>
 </root>

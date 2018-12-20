@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="3a385bce-9e1a-4408-9258-876863e9c1f4" lastModifiedUtc="2009-10-14T23:53:24.9239146Z" name="lueAssociateCompetitor_OnChange" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="OpportunityCompetitors">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="3a385bce-9e1a-4408-9258-876863e9c1f4" lastModifiedUtc="2009-10-14T23:53:24.9239146Z" name="lueAssociateCompetitor_OnChange" containerName="OpportunityCompetitors" methodType="Other" actionType="None" returnMode="None" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
@@ -17,5 +17,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

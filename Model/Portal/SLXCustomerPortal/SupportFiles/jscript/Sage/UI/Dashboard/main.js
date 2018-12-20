@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Dashboard/main", [
     "Sage/UI/Dashboard/BaseWidget",
     "Sage/UI/Dashboard/ChartingWidget",
     "Sage/UI/Dashboard/Dashboard",
@@ -7,7 +7,8 @@ define([
     "Sage/UI/Dashboard/DashboardTabController",
     "Sage/UI/Dashboard/DashboardWidget",
     "Sage/UI/Dashboard/DashboardWidgetCell",
-    "Sage/UI/Dashboard/WidgetDefinition"
+    "Sage/UI/Dashboard/WidgetDefinition",
+    "Sage/UI/Dashboard/ChartingTheme"
 ], function() {
 	// module:
         // Sage/UI/main

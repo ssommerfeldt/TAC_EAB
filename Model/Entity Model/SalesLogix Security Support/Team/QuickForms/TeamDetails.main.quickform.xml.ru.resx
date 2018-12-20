@@ -117,67 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="securityProfileLookup.Caption" xml:space="preserve">
-    <value>Профиль безопасности:</value>
-  </data>
-  <data name="saveButton.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
-    <value>Вы действительно хотите удалить эту команду?</value>
+  <data name="AddManagerCheckBox.Caption" xml:space="preserve">
+    <value>Автоматически добавлять менеджера пользователя в команду</value>
   </data>
   <data name="QFTextBox3.Caption" xml:space="preserve">
-    <value>Изменено:</value>
+    <value>Автор изменения:</value>
   </data>
-  <data name="AddManagerCheckBox.Caption" xml:space="preserve">
-    <value>Автоматическое добавление менеджера пользователя в команду</value>
-  </data>
-  <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Message" xml:space="preserve">
-    <value>Название команды отсутствует, неверно или дубликат.</value>
-  </data>
-  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
-    <value>Описание профиля</value>
-  </data>
-  <data name="8d19220b-99ab-4f83-a2ea-a155ce19a0fc.Message" xml:space="preserve">
-    <value>Команда не может быть удалена, т. к. она является владельцем субъектов.</value>
-  </data>
-  <data name="8d19220b-99ab-4f83-a2ea-a155ce19a0fc.Title" xml:space="preserve">
-    <value>Удаление не разрешено</value>
-  </data>
-  <data name="CannotDeleteTeamMessage" xml:space="preserve">
-    <value>Невозможно удалить команду, т.к. она связана с одним или более субъектом или контактом.</value>
-  </data>
-  <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Title" xml:space="preserve">
-    <value>Проверка закончилась неудачей</value>
-  </data>
-  <data name="copyButton.ToolTip" xml:space="preserve">
-    <value>Копировать Команду</value>
-  </data>
-  <data name="deleteButton.ToolTip" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="QFLabel.Text" xml:space="preserve">
-    <value>Профиль безопасности</value>
-  </data>
-  <data name="createDate.Caption" xml:space="preserve">
-    <value>Дата создания:</value>
-  </data>
-  <data name="Type_item0.Text" xml:space="preserve">
-    <value>Отдел</value>
-  </data>
-  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
-    <value>Поиск профиля безопасности</value>
+  <data name="LastModified.Caption" xml:space="preserve">
+    <value>Последнее изменение:</value>
   </data>
   <data name="OwnerDescription.Caption" xml:space="preserve">
     <value>Имя:</value>
   </data>
-  <data name="CannotDeleteTeamMessageTitle" xml:space="preserve">
-    <value>Невозможно удалить Команду</value>
-  </data>
   <data name="Type_item1.Text" xml:space="preserve">
     <value>Команда</value>
   </data>
-  <data name="LastModified.Caption" xml:space="preserve">
-    <value>Посл. изменение:</value>
+  <data name="Type_item0.Text" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="createDate.Caption" xml:space="preserve">
+    <value>Создано:</value>
+  </data>
+  <data name="QFLabel.Text" xml:space="preserve">
+    <value>Профиль безопасности</value>
+  </data>
+  <data name="copyButton.ToolTip" xml:space="preserve">
+    <value>Копировать команду</value>
+  </data>
+  <data name="securityProfileLookup.Caption" xml:space="preserve">
+    <value>Профиль безопасности:</value>
+  </data>
+  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
+    <value>Описание профиля</value>
+  </data>
+  <data name="CannotDeleteTeamMessage" xml:space="preserve">
+    <value>Невозможно удалить эту команду, так как она связана с одним или несколькими клиентами или контактами.</value>
+  </data>
+  <data name="CannotDeleteTeamMessageTitle" xml:space="preserve">
+    <value>Невозможно удалить команду</value>
+  </data>
+  <data name="8d19220b-99ab-4f83-a2ea-a155ce19a0fc.Message" xml:space="preserve">
+    <value>Невозможно удалить команду, так как она является владельцем клиентов.</value>
+  </data>
+  <data name="8d19220b-99ab-4f83-a2ea-a155ce19a0fc.Title" xml:space="preserve">
+    <value>Удаление не разрешено</value>
+  </data>
+  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
+    <value>Действительно удалить эту команду?</value>
+  </data>
+  <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Title" xml:space="preserve">
+    <value>Не удалось выполнить проверку</value>
+  </data>
+  <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Message" xml:space="preserve">
+    <value>Имя команды отсутствует, некорректное или является дубликатом.</value>
+  </data>
+  <data name="saveButton.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="deleteButton.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
+    <value>Поиск профиля безопасности</value>
   </data>
 </root>

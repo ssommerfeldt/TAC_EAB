@@ -100,7 +100,7 @@
                     <asp:Label ID="lblToStage" runat="server" AssociatedControlID="ddlTOStage" Text="<%$ resources: lblTo.Text %>"></asp:Label>
                 </div>
                 <div class="textcontrol">
-                    <asp:DropDownList ID="ddlToStage" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" AutoPostBack="false" Width="100px"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlToStage" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" AutoPostBack="false"></asp:DropDownList>
                 </div>
             </div>
             <div id="opt2" style="display:none" runat="server" >

@@ -117,88 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblLinkedRecords.Caption" xml:space="preserve">
-    <value>Collegamenti Sistema (I record seguenti verranno collegati e uniti in ciascun sistema.)</value>
-  </data>
-  <data name="Grid_WorkPhone_Column" xml:space="preserve">
-    <value>Tel. Ufficio</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Indietro</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Annulla</value>
   </data>
-  <data name="EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di filtro selezionati.</value>
-  </data>
-  <data name="LinkContactAddresses.Caption" xml:space="preserve">
-    <value>Collega indirizzi contatti</value>
-  </data>
-  <data name="Grid_LastName_Column" xml:space="preserve">
-    <value>Cognome</value>
-  </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Indietro</value>
-  </data>
-  <data name="Grid_City_Column" xml:space="preserve">
-    <value>Città</value>
-  </data>
   <data name="btnLink.Caption" xml:space="preserve">
     <value>Collegamento</value>
-  </data>
-  <data name="MergeContacts.Caption" xml:space="preserve">
-    <value>Unisci Contatti</value>
-  </data>
-  <data name="UnlinkedRecords.Caption" xml:space="preserve">
-    <value>Scollegato {0} da {1}</value>
-  </data>
-  <data name="Grid_FirstName_Column" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="LinkAddress.Caption" xml:space="preserve">
-    <value>Collega indirizzi</value>
-  </data>
-  <data name="lblContacts.Caption" xml:space="preserve">
-    <value>Contatti</value>
-  </data>
-  <data name="LinkToAccounting.Caption" xml:space="preserve">
-    <value>Collegamento a Sistema Contabile - Risultati</value>
-  </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Collegamento a Sistema Contabile - Fondi i Dati - Nessuna Differenza</value>
-  </data>
-  <data name="lblDescription.Caption" xml:space="preserve">
-    <value>Crea i collegamenti per fondere i record dei contatti sul sistema contabile con il proprio SalesLogix. I collegamenti di sistema sono stati fusi usando i propri criteri di corrispondenza.</value>
-  </data>
-  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Collegamento a Sistema Contabile - Fondi i Dati - Trovate Differenze</value>
-  </data>
-  <data name="Grid_Unlink.Column" xml:space="preserve">
-    <value>Scollega</value>
-  </data>
-  <data name="Grid_Email_Column" xml:space="preserve">
-    <value>E-mail</value>
   </data>
   <data name="btnNext.Caption" xml:space="preserve">
     <value>Avanti &gt;</value>
   </data>
-  <data name="Grid_Source_Column" xml:space="preserve">
-    <value>Origine</value>
+  <data name="Grid_City_Column" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="Grid_Email_Column" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Grid_FirstName_Column" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Grid_LastName_Column" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="Grid_WorkPhone_Column" xml:space="preserve">
+    <value>Telefono ufficio</value>
+  </data>
+  <data name="lblContacts.Caption" xml:space="preserve">
+    <value>Contatti</value>
+  </data>
+  <data name="lblLinkedRecords.Caption" xml:space="preserve">
+    <value>Contatti collegati (i record seguenti verranno uniti).</value>
+  </data>
+  <data name="Grid_Unlink.Column" xml:space="preserve">
+    <value>Scollega</value>
+  </data>
+  <data name="MergeContacts.Caption" xml:space="preserve">
+    <value>Unisci contatti</value>
+  </data>
+  <data name="MergeContactsDesc.Caption" xml:space="preserve">
+    <value>Collega contatti corrispondenti.</value>
+  </data>
+  <data name="UnlinkedRecords.Caption" xml:space="preserve">
+    <value>Scollegato {0} da {1}</value>
+  </data>
+  <data name="lblDescription.Caption" xml:space="preserve">
+    <value>Crea i collegamenti per unire i record dei contatti. Alcuni collegamenti sono stati trovati automaticamente usando i criteri di corrispondenza che hai definito.</value>
+  </data>
+  <data name="EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di filtro selezionati.</value>
   </data>
   <data name="Grid.Select.Text" xml:space="preserve">
     <value>Seleziona</value>
   </data>
-  <data name="lblExtendedDetails.Caption" xml:space="preserve">
-    <value>Dettagli Estesi</value>
+  <data name="Error_SourceTargetNotSelected" xml:space="preserve">
+    <value>Selezionare un record di "destinazione" e uno di "origine" prima di continuare.</value>
   </data>
   <data name="Grid_Property_Column" xml:space="preserve">
     <value>Proprietà</value>
   </data>
-  <data name="MergeContactsDesc.Caption" xml:space="preserve">
-    <value>Collegamento ai contatti corrispondenti.</value>
+  <data name="Grid_Source_Column" xml:space="preserve">
+    <value>Origine</value>
   </data>
   <data name="Grid_Target_Column" xml:space="preserve">
-    <value>Target</value>
+    <value>Destinazione</value>
   </data>
-  <data name="Error_SourceTargetNotSelected" xml:space="preserve">
-    <value>Selezionare sia una "destinazione" che "un'origine" prima di continuare.</value>
+  <data name="LinkToAccounting.Caption" xml:space="preserve">
+    <value>Collegamento a sistema contabile - Risultati</value>
+  </data>
+  <data name="LinkAddress.Caption" xml:space="preserve">
+    <value>Collega indirizzi</value>
+  </data>
+  <data name="lblExtendedDetails.Caption" xml:space="preserve">
+    <value>Dettagli estesi</value>
+  </data>
+  <data name="LinkContactAddresses.Caption" xml:space="preserve">
+    <value>Collega indirizzi contatti</value>
+  </data>
+  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
+    <value>Collegamento a sistema contabile - Unione dati - Rilevate differenze</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Collegamento a sistema contabile - Unione dati - Nessuna differenza</value>
   </data>
 </root>

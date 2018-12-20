@@ -27,6 +27,9 @@
     <ActionType TypeName="Sage.Platform.Deployment.AdminModule.GlobalImageSpriteDeploymentAction, Sage.Platform.Deployment.AdminModule">
       <Properties />
     </ActionType>
+    <ActionType TypeName="Sage.Platform.Deployment.AdminModule.GlobalResourceDeploymentAction, Sage.Platform.Deployment.AdminModule">
+      <Properties />
+    </ActionType>
   </DeploymentActions>
   <AuthenticationProvider />
   <TemplateUrl>Masters\base.master</TemplateUrl>

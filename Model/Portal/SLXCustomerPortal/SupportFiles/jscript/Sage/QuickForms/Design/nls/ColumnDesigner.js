@@ -1,12 +1,5 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            displayNameText: "Column"
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/QuickForms/Design/nls/ColumnDesigner", {
+    root: {
+        displayNameText: "Column"
+    }
 });

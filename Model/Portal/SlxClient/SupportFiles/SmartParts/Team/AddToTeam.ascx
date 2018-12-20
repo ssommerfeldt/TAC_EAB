@@ -46,7 +46,7 @@
        
      </tr>
      <tr>
-        <td><asp:CheckBox ID="chkAddManager" runat="server" Checked="true" AutoPostBack="false" Text="<%$ resources: chkAddManager.Label %>" /></td>
+        <td><asp:CheckBox ID="chkAddManager" runat="server" Checked="true" AutoPostBack="false" Text="<%$ resources: chkAddManager.Label %>" CssClass="inforAspCheckBox"/></td>
      </tr>
      <tr>
         <td>

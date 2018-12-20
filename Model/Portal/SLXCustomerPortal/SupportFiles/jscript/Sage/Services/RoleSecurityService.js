@@ -1,25 +1,36 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-    'dijit/_Widget',
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Services/RoleSecurityService", [
+   'dijit/_Widget',
     'Sage/Data/SDataServiceRegistry',
+    'Sage/Services/ApplicationStateService',
+    'Sage/Utility', // without this the SDataServiceRegistry.getSDataService seems to load the wrong context for Sage.Utility
     'Sage/Utility/_LocalStorageMixin',
-    'dojo/_base/declare'
+    'dojo/_base/declare',
+    'dojo/_base/connect',
+    'dojo/_base/lang',
+    'dojo/string'
 ],
-function (_Widget, SDataServiceRegistry, _LocalStorageMixin, declare) {
+function (_Widget, SDataServiceRegistry, ApplicationStateService, utility, _LocalStorageMixin, declare, connect, lang, string) {
     /**
-    * Declare the UserOptions class and append its methods and properties
-    * @constructor
-    */
+       * Declare the UserOptions class and append its methods and properties
+       * @constructor
+       */
     var widget = declare('Sage.Services.RoleSecurityService', [_Widget, _LocalStorageMixin], {
         _currentUserId: '',
         _accessListCache: false,
         _enabled: true,
         _nameSpace: 'Sage_SalesLogix_RoleSecurityService',
         _clearCache: false,
+        _state: null,
+        _clearCacheHandler: false,
         constructor: function (options) {
             this.inherited(arguments);
             dojo.mixin(this, options);
-            this._currentUserId = this._getCurrentUserId();           
+            this._currentUserId = this._getCurrentUserId();
+            this._state = new ApplicationStateService().addToListOfServices();
+            if (!this._clearCacheHandler) {
+                this._clearCacheHandler = connect.subscribe('service/RoleSecurity/cacheClear', lang.hitch(this, this.clearCache));
+            }
         },
         postCreate: function (options) {
             this._getFromCache();
@@ -91,12 +102,20 @@ function (_Widget, SDataServiceRegistry, _LocalStorageMixin, declare) {
             var me = this;
             var currentUserId = this._getCurrentUserId();
             var rsData = this.getFromLocalStorage(this._nameSpace, this._nameSpace);
-            if (rsData) {
+            var lastRead = localStorage.getItem(string.substitute("__${0}_modified_at", [this._nameSpace.replace(/_/g, "-")]));
+            var lastAltered = new Date();
+            var laCached = this._state.getApplicationState("RoleSecurity", null, "GetRoleSecurityStatus");
+            if (laCached && laCached.modifiedDate) {
+                lastAltered = laCached.modifiedDate;
+            }
+            lastAltered = utility.Convert.toDateFromString(lastAltered, true);
+            lastAltered = '"' + utility.Convert.toIsoStringFromDate(lastAltered) + '"';
+            if (rsData && lastAltered < lastRead) {
                 for (var i = 0; i < rsData.length; i++) {
                     if (rsData[i].userId === currentUserId) {
-                        if (this._clearCache) {
-                            this._clearCache = false;
+                        if (this._clearCache) { // if clear cache is set then just remove it, value will be returned below
                             rsData.splice(i, 1);
+                            i--;
                         }
                         else {
                             this._accessListCache = rsData[i];
@@ -109,22 +128,29 @@ function (_Widget, SDataServiceRegistry, _LocalStorageMixin, declare) {
                 if (!rsData) {
                     rsData = [];
                 }
+                // ensure there are no duplicate cache entries.
+                for (var i = 0; i < rsData.length; i++) {
+                    if (rsData[i].userId === currentUserId) {
+                        rsData.splice(i, 1);
+                        i--;
+                    }
+                }
                 me._accessListCache = userData;
                 rsData.push(userData);
-                me.saveToLocalStorage(me._nameSpace, rsData, me._nameSpace);
-            });
-            return false;
-        },
-        _loadUserAccessList: function (callBack) {
-            var request = new Sage.SData.Client.SDataServiceOperationRequest(Sage.Data.SDataServiceRegistry.getSDataService('system')) .setContractName('system') .setOperationName('getCurrentUser');
-            request.execute({}, {
 
+                me.saveToLocalStorage(me._nameSpace, rsData, me._nameSpace);
+            }, true);
+            return me._accessListCache;
+        },
+        _loadUserAccessList: function (callBack, async) {
+            async = async || false;
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(SDataServiceRegistry.getSDataService('system')).setContractName('system').setOperationName('getCurrentUser');
+            request.execute({}, {
+                async: async,
                 success: function (data) {
                     if (callBack) {
                         callBack(data.response);
                     }
-                    //console.warn('succsess role security');
-
                 },
                 failure: function (data) {
                     console.warn('Error reading request');
@@ -133,6 +159,10 @@ function (_Widget, SDataServiceRegistry, _LocalStorageMixin, declare) {
                 scope: this
             });
 
+        },
+        clearCache: function () {
+            var ns = this._nameSpace;
+            this.clear(ns.replace(/[^A-Za-z0-9]/g, '-'));
         }
 
     }); // end dojo declare

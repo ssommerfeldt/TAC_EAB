@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="cdf33ed6-07b5-4331-abb2-04b8ba6f1b31" lastModifiedUtc="2017-05-24T12:01:43.2836231Z" name="GetInterestingMoments" returnType="object" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="a6bd1bb2-e9ff-410a-8c84-a8c5a0f3c65c" lastModifiedUtc="2017-06-22T14:41:18.857642Z" targetType="SalesLogix.Integration.Marketo.Rules.ContactRules, SalesLogix.Integration.Marketo" targetMethod="GetContactMomements" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

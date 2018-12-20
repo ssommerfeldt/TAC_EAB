@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="cf51d798-3e6f-4ce8-911d-06a5d9f16441" lastModifiedUtc="2016-06-22T16:17:43.0239877Z" name="ValidateGeocodeProviderConfiguration" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="1e79d6ec-3af5-4ace-bd0d-093a0fa207b5" lastModifiedUtc="2016-06-22T16:17:38.84657Z" targetType="Sage.SalesLogix.GeocodeProviderConfiguration.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ValidateGeocodeProviderConfiguration" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

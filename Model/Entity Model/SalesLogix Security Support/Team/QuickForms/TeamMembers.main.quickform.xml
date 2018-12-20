@@ -64,8 +64,7 @@
             <IsEditable>false</IsEditable>
             <HideCondition />
             <Width>15</Width>
-            <CustomFormatter>function(v, row, cell) {
-  var item = cell.grid.getItem(row);
+            <CustomFormatter>function(v, item) {
   return "&lt;a href='javascript:Sage.Link.getTeamMemberLink(\"" + item.Child.Type + "\", \"" + item.Child.$key + "\")'&gt;" + 
     Sage.Utility.htmlEncode(v) + "&lt;/a&gt;";
 }</CustomFormatter>
@@ -84,8 +83,7 @@
             <IsEditable>false</IsEditable>
             <HideCondition />
             <Width>12</Width>
-            <CustomFormatter>function (value, row, cell) {
-   var item = cell.grid.getItem(row);
+            <CustomFormatter>function (value, item) {
    var profileId = item.OwnerSecurityProfile.$key;
    var parentId = item.Parent.$key;
    var childId = item.Child.$key;
@@ -188,24 +186,24 @@
             <DisplayInInsert>false</DisplayInInsert>
             <MergePosition>After</MergePosition>
             <MergeControlId>lueAddTeamMember</MergeControlId>
-            <OnClick>function () {
-         // Invoke the RemoveMember business rule for each team selected
-         var grid = this;
-         var selectedItems = grid.selection.getSelected();
-         if (selectedItems.length &lt; 1) {
+            <OnClick>
+              function () {
+              // Invoke the RemoveMember business rule for each team selected
+              var grid = this;
+              var selectedItems = grid.getSelectedRowData();
+              if (selectedItems.length &lt; 1) {
              alert(grid.noSelectionsText);
              return;
          }
          if (!confirm(TeamMembersResources['ConfirmRemoveFromTeam']))
              return;
          var store = grid.store;
-         grid.showLoading();
          var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
          var processOne = function (i) {
              var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
 	            .setResourceKind('teams')
 	            .setOperationName('RemoveMember');
-             var id = store.getValue(selectedItems[i], "$key");
+             var id = selectedItems[i].$key; //store.getValue(selectedItems[i], "$key");
              var entry = {
                  "$name": "RemoveMember",
                  "request": {

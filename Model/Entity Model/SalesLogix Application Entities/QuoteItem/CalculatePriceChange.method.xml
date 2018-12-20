@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0e1ebf38-808a-484c-8237-69e2ddbcfe10" lastModifiedUtc="2015-12-05T19:31:48.4095439Z" name="CalculatePriceChange" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="f4a02818-3c66-489a-82e3-8d598d4f5f6b" lastModifiedUtc="2015-12-05T19:31:46.480351Z" targetType="Sage.SalesLogix.Quote.QuoteItem, Sage.SalesLogix.BusinessRules" targetMethod="CalculatePriceChange" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -117,94 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="QFLabel.Text" xml:space="preserve">
-    <value>Benutzer ist Mitglied der folgenden Teams:</value>
+  <data name="ProfileDescription.Caption" xml:space="preserve">
+    <value>Profilbeschreibung</value>
   </data>
-  <data name="grdOwnerJoins.93ecc867-5ead-43e2-b412-781d62f2f720.ColumnHeading" xml:space="preserve">
+  <data name="OwnerDescription.Caption" xml:space="preserve">
     <value>Beschreibung des Zugriffsberechtigten</value>
-  </data>
-  <data name="grdTeams.d6016bfc-0528-4763-8c5e-891b3981be43.ColumnHeading" xml:space="preserve">
-    <value>Sicherheitsprofil</value>
   </data>
   <data name="CreateDate.Caption" xml:space="preserve">
     <value>Erstellungsdatum</value>
   </data>
+  <data name="ModifyDate.Caption" xml:space="preserve">
+    <value>Änderungsdatum</value>
+  </data>
+  <data name="ModifyUser.Caption" xml:space="preserve">
+    <value>Geändert von</value>
+  </data>
   <data name="grdOwnerJoins.907bfa47-f3b1-4925-bcb1-a5027ac760c3.ColumnHeading" xml:space="preserve">
     <value>Sicherheitsprofil</value>
   </data>
-  <data name="grdOwnerJoins.a3514749-50ff-473f-8cf6-ae752ebce1c8.ColumnHeading" xml:space="preserve">
-    <value>Zuletzt geändert</value>
-  </data>
-  <data name="lueAddTeam.LookupProperties.Owner.Type.PropertyHeader" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="grdTeams.463701ca-8ff2-43c1-a864-c673dec0100b.ColumnHeading" xml:space="preserve">
-    <value>Teamname</value>
-  </data>
-  <data name="grdTeams.0dbef834-f6a7-4e0e-b7ef-710ee9b6b938.ColumnHeading" xml:space="preserve">
-    <value>Team</value>
-  </data>
-  <data name="QFLabel.ToolTip" xml:space="preserve">
-    <value>Benutzer ist Mitglied der folgenden Teams</value>
-  </data>
-  <data name="lueAddTeam.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="ModifyDate.Caption" xml:space="preserve">
-    <value>Datum ändern</value>
-  </data>
-  <data name="lueAddTeam.ButtonToolTip" xml:space="preserve">
-    <value>Benutzer zu Team hinzufügen</value>
+  <data name="grdOwnerJoins.93ecc867-5ead-43e2-b412-781d62f2f720.ColumnHeading" xml:space="preserve">
+    <value>Beschreibung des Zugriffsberechtigten</value>
   </data>
   <data name="grdOwnerJoins.7021f760-73b2-40cf-860c-f29275fc6917.ColumnHeading" xml:space="preserve">
     <value>Erstellt</value>
   </data>
-  <data name="lueAddTeam.LookupDialogTitle" xml:space="preserve">
-    <value>Team suchen</value>
+  <data name="grdOwnerJoins.a3514749-50ff-473f-8cf6-ae752ebce1c8.ColumnHeading" xml:space="preserve">
+    <value>Zuletzt geändert</value>
   </data>
-  <data name="ConfirmRemoveFromTeam" xml:space="preserve">
-    <value>Soll der Benutzer aus dem bzw. den ausgewählten Teams entfernt werden?</value>
-  </data>
-  <data name="DeleteButton.ActionConfirmationMessage" xml:space="preserve">
-    <value>Möchten Sie diesen Benutzer wirklich aus dem ausgewählten Team entfernen?</value>
-  </data>
-  <data name="grdTeams.d81642fa-d355-4f94-b430-3d2a517c507d.ColumnHeading" xml:space="preserve">
-    <value>Erstellt</value>
-  </data>
-  <data name="grdTeams_AddRelationTool.LookupProperties.SeccodeDesc.PropertyHeader" xml:space="preserve">
-    <value>Beschreibung Sicherheitscode (Beschreibung)</value>
-  </data>
-  <data name="grdTeams.ba2d83bf-74cc-4580-b255-e69b2ca9008e.ColumnHeading" xml:space="preserve">
+  <data name="grdOwnerJoins.89baa811-f748-4329-b93b-d170b58bb35e.ColumnHeading" xml:space="preserve">
     <value>Geändert von</value>
   </data>
   <data name="lueAddTeam.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
     <value>Team</value>
   </data>
-  <data name="grdOwnerJoins.89baa811-f748-4329-b93b-d170b58bb35e.ColumnHeading" xml:space="preserve">
-    <value>Geändert von</value>
-  </data>
-  <data name="grdTeams.289c9959-b3a3-4c90-a911-c12882cccecb.ColumnHeading" xml:space="preserve">
-    <value>Zuletzt geändert</value>
-  </data>
-  <data name="grdTeams_AddRelationTool.LookupProperties.Owner.Type.PropertyHeader" xml:space="preserve">
-    <value>Typ des Zugriffsberechtigten</value>
-  </data>
-  <data name="OwnerDescription.Caption" xml:space="preserve">
-    <value>Beschreibung des Zugriffsberechtigten</value>
-  </data>
   <data name="grdOwnerJoins.c696cbfa-19bd-4470-a0b3-75b2ff528fa2.Text" xml:space="preserve">
     <value>Entfernen</value>
+  </data>
+  <data name="DeleteButton.ActionConfirmationMessage" xml:space="preserve">
+    <value>Möchten Sie diesen Benutzer wirklich aus dem ausgewählten Team entfernen?</value>
+  </data>
+  <data name="grdTeams.463701ca-8ff2-43c1-a864-c673dec0100b.ColumnHeading" xml:space="preserve">
+    <value>Teamname</value>
+  </data>
+  <data name="QFLabel.Text" xml:space="preserve">
+    <value>Benutzer ist Mitglied der folgenden Teams:</value>
+  </data>
+  <data name="QFLabel.ToolTip" xml:space="preserve">
+    <value>Benutzer ist Mitglied der folgenden Teams</value>
+  </data>
+  <data name="grdOwnerJoins.7021f760-73b2-40cf-860c-f29275fc6917.FormatString" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="grdOwnerJoins.a3514749-50ff-473f-8cf6-ae752ebce1c8.FormatString" xml:space="preserve">
+    <value>{0:g}</value>
   </data>
   <data name="grdTeams.btnRemoveFromTeam.ToolTip" xml:space="preserve">
     <value>Entfernen</value>
   </data>
-  <data name="ProfileDescription.Caption" xml:space="preserve">
-    <value>Profilbeschreibung</value>
+  <data name="ConfirmRemoveFromTeam" xml:space="preserve">
+    <value>Soll der Benutzer aus dem bzw. den ausgewählten Teams entfernt werden?</value>
+  </data>
+  <data name="lueAddTeam.ButtonToolTip" xml:space="preserve">
+    <value>Benutzer zu Team hinzufügen</value>
+  </data>
+  <data name="lueAddTeam.LookupDialogTitle" xml:space="preserve">
+    <value>Team suchen</value>
+  </data>
+  <data name="lueAddTeam.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="grdTeams.0dbef834-f6a7-4e0e-b7ef-710ee9b6b938.ColumnHeading" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="grdTeams.d6016bfc-0528-4763-8c5e-891b3981be43.ColumnHeading" xml:space="preserve">
+    <value>Sicherheitsprofil</value>
+  </data>
+  <data name="grdTeams.d81642fa-d355-4f94-b430-3d2a517c507d.ColumnHeading" xml:space="preserve">
+    <value>Erstellt</value>
+  </data>
+  <data name="grdTeams.289c9959-b3a3-4c90-a911-c12882cccecb.ColumnHeading" xml:space="preserve">
+    <value>Zuletzt geändert</value>
+  </data>
+  <data name="grdTeams.ba2d83bf-74cc-4580-b255-e69b2ca9008e.ColumnHeading" xml:space="preserve">
+    <value>Geändert von</value>
   </data>
   <data name="lueAddTeam.LookupProperties.SeccodeDesc.PropertyHeader" xml:space="preserve">
     <value>Beschreibung</value>
   </data>
-  <data name="ModifyUser.Caption" xml:space="preserve">
-    <value>Geändert von</value>
+  <data name="lueAddTeam.LookupProperties.Owner.Type.PropertyHeader" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="grdTeams_AddRelationTool.LookupProperties.Owner.Type.PropertyHeader" xml:space="preserve">
+    <value>Typ des Zugriffsberechtigten</value>
+  </data>
+  <data name="grdTeams_AddRelationTool.LookupProperties.SeccodeDesc.PropertyHeader" xml:space="preserve">
+    <value>SeccodeDesc (Beschreibung)</value>
   </data>
 </root>

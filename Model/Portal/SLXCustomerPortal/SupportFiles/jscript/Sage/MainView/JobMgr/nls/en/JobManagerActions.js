@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/JobMgr/nls/en/JobManagerActions", (
 { txtInterruptExecutionMessage: 'A signal has been sent to the job to cancel execution.',
   txtInterruptExecutionTitle: 'Cancel Job',
   txtInterruptExecutionConfirmationMessage: 'Are you sure you want to cancel execution of job ${0}?',

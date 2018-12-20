@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b344c484-75e8-4321-b320-46f598f40315">
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b344c484-75e8-4321-b320-46f598f40315" disablePageValidation="false">
   <PageAlias>TicketActivityRate</PageAlias>
   <SmallImage>[Localization!Global_Images:TicketActivityRate_16x16]</SmallImage>
   <LargeImage>[Localization!Global_Images:TicketActivityRate_24x24]</LargeImage>
@@ -9,7 +9,10 @@
   <Properties>
     <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.ITicketActivityRate, Sage.Entity.Interfaces</Property>
   </Properties>
-  <TemplateProperties />
+  <TemplateProperties>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">false</Property>
+    <Property Name="IncludeMiddlePane" TypeConverter="">False</Property>
+  </TemplateProperties>
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />
   <AppliedSecurity>Entities/TicketActivityRate/View</AppliedSecurity>

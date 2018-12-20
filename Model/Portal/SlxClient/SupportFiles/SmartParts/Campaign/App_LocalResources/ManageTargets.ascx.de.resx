@@ -117,208 +117,268 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="chkEmail.Caption" xml:space="preserve">
-    <value>Keine E-Mails</value>
-  </data>
-  <data name="chkCompany.Caption" xml:space="preserve">
-    <value>Unternehmensname:</value>
-  </data>
-  <data name="lblPrimary.Caption" xml:space="preserve">
-    <value>Ziele werden eingefügt...</value>
-  </data>
-  <data name="lueProducts.LookupProperties.Name.PropertyHeader" xml:space="preserve">
-    <value>Produktname</value>
-  </data>
-  <data name="grdTargets.FirstName.ColumnHeading" xml:space="preserve">
-    <value>Vorname</value>
-  </data>
-  <data name="chkCity.Caption" xml:space="preserve">
-    <value>Stadt:</value>
-  </data>
-  <data name="cmdHowMany.Caption" xml:space="preserve">
-    <value>Wie viele?</value>
-  </data>
-  <data name="cmdAdd.Caption" xml:space="preserve">
-    <value>Ziele hinzufügen</value>
-  </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Aktiv</value>
-  </data>
-  <data name="error_NoTargetsSelected" xml:space="preserve">
-    <value>Sie müssen mindestens ein Ziel auswählen, bevor Sie fortfahren.</value>
-  </data>
-  <data name="grdTargets.Email.ColumnHeading" xml:space="preserve">
-    <value>E-Mail</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Beschreibung</value>
-  </data>
-  <data name="rdgContactGroup.Text" xml:space="preserve">
-    <value>Kontaktgruppe:</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="chkMail.Caption" xml:space="preserve">
-    <value>Keine Briefe</value>
-  </data>
-  <data name="filter_EqualTo.Text" xml:space="preserve">
-    <value>Gleich</value>
-  </data>
-  <data name="filter_Contains.Text" xml:space="preserve">
-    <value>Enthält</value>
-  </data>
-  <data name="tabAddFromGroup.Caption" xml:space="preserve">
-    <value>Aus Gruppe hinzufügen</value>
-  </data>
-  <data name="chkStatus.Caption" xml:space="preserve">
-    <value>Status:</value>
-  </data>
-  <data name="rdgLeadGroup.Text" xml:space="preserve">
-    <value>Interessentengruppe:</value>
-  </data>
-  <data name="filter_StartingWith.Text" xml:space="preserve">
-    <value>Beginnend mit</value>
+  <data name="lblCaption.Text" xml:space="preserve">
+    <value>Wählen Sie Zielinteressenten und Kundenkontakte für diese Kampagne aus.</value>
   </data>
   <data name="lblIncludeType.Caption" xml:space="preserve">
-    <value>Folgendes einschließen:</value>
+    <value>Einschließen:</value>
   </data>
-  <data name="filter_EqualGreaterThan.Text" xml:space="preserve">
-    <value>Größer gleich</value>
-  </data>
-  <data name="chkFax.Caption" xml:space="preserve">
-    <value>Keine Faxe</value>
-  </data>
-  <data name="HowManyTargets_Msg" xml:space="preserve">
-    <value>{0} Ziele</value>
-  </data>
-  <data name="error_NoDataSource" xml:space="preserve">
-    <value>Datenquelle kann nicht abgerufen werden.</value>
-  </data>
-  <data name="grdTargets.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="tabLookupTarget.Caption" xml:space="preserve">
-    <value>Ziele suchen</value>
-  </data>
-  <data name="chkProducts.Caption" xml:space="preserve">
-    <value>Produkte gehören:</value>
-  </data>
-  <data name="lblDoNotIncludes.Caption" xml:space="preserve">
-    <value>Folgendes einschließen:</value>
-  </data>
-  <data name="lblInserted.Caption" xml:space="preserve">
-    <value>Eingefügt:</value>
-  </data>
-  <data name="grdTargets.State.ColumnHeading" xml:space="preserve">
-    <value>Bundesland/Kanton</value>
-  </data>
-  <data name="lblFailed.Caption" xml:space="preserve">
-    <value>Fehlgeschlagen:</value>
-  </data>
-  <data name="grdTargets.Company.ColumnHeading" xml:space="preserve">
-    <value>Unternehmen</value>
-  </data>
-  <data name="grdTargets.LastName.ColumnHeading" xml:space="preserve">
-    <value>Nachname</value>
-  </data>
-  <data name="rdgIncludeType_Leads.Text" xml:space="preserve">
-    <value>Interessenten (unqualifiziert)</value>
-  </data>
-  <data name="grdTargets.City.ColumnHeading" xml:space="preserve">
-    <value>Stadt</value>
-  </data>
-  <data name="chkState.Caption" xml:space="preserve">
-    <value>Bundes./Kanton:</value>
-  </data>
-  <data name="chkImportSource.Caption" xml:space="preserve">
-    <value>Importquelle:</value>
-  </data>
-  <data name="chkSIC.Caption" xml:space="preserve">
-    <value>BDI:</value>
-  </data>
-  <data name="filter_LessThan.Text" xml:space="preserve">
-    <value>Kleiner als</value>
-  </data>
-  <data name="filter_GreaterThan.Text" xml:space="preserve">
-    <value>Größer als</value>
-  </data>
-  <data name="rdgIncludeType_AccountsAll.Text" xml:space="preserve">
-    <value>Firmen (alle Kontakte)</value>
-  </data>
-  <data name="chkCreateDate.Caption" xml:space="preserve">
-    <value>Erstellungsdatum:</value>
+  <data name="rdgIncludeType_Contacts.Value" xml:space="preserve">
+    <value>Kontakte</value>
   </data>
   <data name="rdgIncludeType_Contacts.Text" xml:space="preserve">
     <value>Kontakte (einzeln)</value>
   </data>
-  <data name="chkLeadSource.Caption" xml:space="preserve">
-    <value>Interessentenquelle:</value>
+  <data name="rdgIncludeType_AccountsAll.Value" xml:space="preserve">
+    <value>AccountContacts</value>
   </data>
-  <data name="chkSolicit.Caption" xml:space="preserve">
-    <value>Keine Informationen erwünscht</value>
+  <data name="rdgIncludeType_AccountsAll.Text" xml:space="preserve">
+    <value>Firmen (alle Kontakte)</value>
   </data>
-  <data name="grdTargets.WorkPhone.ColumnHeading" xml:space="preserve">
-    <value>Geschäftliche Telefonnummer</value>
+  <data name="rdgIncludeType_Accounts.Value" xml:space="preserve">
+    <value>PrimaryAccount</value>
   </data>
-  <data name="cmdSearch.Caption" xml:space="preserve">
-    <value>Suchen</value>
+  <data name="rdgIncludeType_Accounts.Text" xml:space="preserve">
+    <value>Firmen (nur primärer Kontakt)</value>
   </data>
-  <data name="QueryErrorInvalidParameter" xml:space="preserve">
-    <value>Einer der Abfrageparameter war falsch.  Evtl. hat sich der Name einer Entitätseigenschaft geändert.</value>
+  <data name="rdgIncludeType_Leads.Value" xml:space="preserve">
+    <value>Interessenten</value>
   </data>
-  <data name="chkZip.Caption" xml:space="preserve">
-    <value>Postleitzahl:</value>
+  <data name="rdgIncludeType_Leads.Text" xml:space="preserve">
+    <value>Interessenten (unqualifiziert)</value>
   </data>
-  <data name="filter_EqualLessThan.Text" xml:space="preserve">
-    <value>Kleiner gleich</value>
+  <data name="cboCompany.Caption" xml:space="preserve">
+    <value />
   </data>
-  <data name="dtpCreateToDate.Caption" xml:space="preserve">
-    <value>bis</value>
+  <data name="pklIndustry.Caption" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblCaption.Text" xml:space="preserve">
-    <value>Wählen Sie Zielinteressenten und Kundenkontakte für diese Kampagne aus.</value>
-  </data>
-  <data name="grdTargets.Zip.ColumnHeading" xml:space="preserve">
-    <value>PLZ</value>
-  </data>
-  <data name="QueryError" xml:space="preserve">
-    <value>Fehler bei der Suchabfrage.</value>
-  </data>
-  <data name="lueProducts.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
-    <value>Produktcode</value>
+  <data name="cboSIC.Caption" xml:space="preserve">
+    <value />
   </data>
   <data name="chkTitle.Caption" xml:space="preserve">
     <value>Titel:</value>
   </data>
+  <data name="chkProducts.Caption" xml:space="preserve">
+    <value>Produkte gehören:</value>
+  </data>
+  <data name="chkStatus.Caption" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="lblDoNotIncludes.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDoNotIncludes.Caption" xml:space="preserve">
+    <value>Einschließen:</value>
+  </data>
+  <data name="chkSolicit.Caption" xml:space="preserve">
+    <value>Keine Informationen erwünscht</value>
+  </data>
+  <data name="chkEmail.Caption" xml:space="preserve">
+    <value>Keine E-Mails</value>
+  </data>
+  <data name="chkFax.Caption" xml:space="preserve">
+    <value>Keine Faxe</value>
+  </data>
+  <data name="chkMail.Caption" xml:space="preserve">
+    <value>Keine Briefe</value>
+  </data>
   <data name="chkCall.Caption" xml:space="preserve">
     <value>Keine Anrufe</value>
   </data>
+  <data name="filter_GreaterThan.Value" xml:space="preserve">
+    <value>GreaterThan</value>
+  </data>
+  <data name="filter_GreaterThan.Text" xml:space="preserve">
+    <value>Größer als</value>
+  </data>
+  <data name="filter_LessThan.Value" xml:space="preserve">
+    <value>LessThan</value>
+  </data>
+  <data name="filter_LessThan.Text" xml:space="preserve">
+    <value>Kleiner als</value>
+  </data>
+  <data name="filter_EqualGreaterThan.Value" xml:space="preserve">
+    <value>EqualOrGreaterThan</value>
+  </data>
+  <data name="filter_EqualGreaterThan.Text" xml:space="preserve">
+    <value>Größer gleich</value>
+  </data>
+  <data name="filter_EqualLessThan.Value" xml:space="preserve">
+    <value>EqualOrLessThan</value>
+  </data>
+  <data name="filter_EqualLessThan.Text" xml:space="preserve">
+    <value>Kleiner gleich</value>
+  </data>
+  <data name="filter_NotEqualTo.Value" xml:space="preserve">
+    <value>NotEqualTo</value>
+  </data>
   <data name="filter_NotEqualTo.Text" xml:space="preserve">
-    <value>Nicht gleich</value>
+    <value>Ungleich</value>
+  </data>
+  <data name="filter_EqualTo.Value" xml:space="preserve">
+    <value>EqualTo</value>
+  </data>
+  <data name="filter_EqualTo.Text" xml:space="preserve">
+    <value>Gleich</value>
+  </data>
+  <data name="filter_Contains.Value" xml:space="preserve">
+    <value>Enthält</value>
+  </data>
+  <data name="filter_Contains.Text" xml:space="preserve">
+    <value>Enthält</value>
+  </data>
+  <data name="filter_StartingWith.Value" xml:space="preserve">
+    <value>StartingWith</value>
+  </data>
+  <data name="filter_StartingWith.Text" xml:space="preserve">
+    <value>Beginnend mit</value>
+  </data>
+  <data name="lueProducts.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
+    <value>Produktcode</value>
+  </data>
+  <data name="lueProducts.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Produktname</value>
   </data>
   <data name="lueProducts.LookupProperties.Vendor.PropertyHeader" xml:space="preserve">
-    <value>Hersteller</value>
+    <value>Lieferant</value>
+  </data>
+  <data name="lueProducts.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkCity.Caption" xml:space="preserve">
+    <value>Stadt:</value>
+  </data>
+  <data name="chkState.Caption" xml:space="preserve">
+    <value>Bundesland/Kanton:</value>
+  </data>
+  <data name="chkZip.Caption" xml:space="preserve">
+    <value>Postleitzahl:</value>
+  </data>
+  <data name="chkLeadSource.Caption" xml:space="preserve">
+    <value>Interessentenquelle:</value>
+  </data>
+  <data name="chkImportSource.Caption" xml:space="preserve">
+    <value>Importquelle:</value>
+  </data>
+  <data name="chkCreateDate.Caption" xml:space="preserve">
+    <value>Erstellungsdatum:</value>
+  </data>
+  <data name="cmdHowMany.Caption" xml:space="preserve">
+    <value>Wie viele?</value>
+  </data>
+  <data name="cmdSearch.Caption" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="cmdClearAll.Caption" xml:space="preserve">
+    <value>Alle aufheben</value>
+  </data>
+  <data name="txtCity4.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
+    <value>Beschreibung</value>
   </data>
   <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
     <value>Quellcode</value>
   </data>
-  <data name="rdgIncludeType_Accounts.Text" xml:space="preserve">
-    <value>Firmen (nur Hauptkontakt)</value>
+  <data name="lueLeadSource.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
-  <data name="cmdClearAll.Caption" xml:space="preserve">
-    <value>Alle löschen</value>
+  <data name="dtpCreateToDate.Caption" xml:space="preserve">
+    <value>bis</value>
+  </data>
+  <data name="cmdAdd.Caption" xml:space="preserve">
+    <value>Ziele hinzufügen</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="grdTargets.FirstName.ColumnHeading" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="grdTargets.LastName.ColumnHeading" xml:space="preserve">
+    <value>Nachname</value>
+  </data>
+  <data name="grdTargets.Company.ColumnHeading" xml:space="preserve">
+    <value>Unternehmen</value>
+  </data>
+  <data name="grdTargets.Email.ColumnHeading" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="grdTargets.City.ColumnHeading" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="grdTargets.State.ColumnHeading" xml:space="preserve">
+    <value>Bundesland</value>
+  </data>
+  <data name="grdTargets.Zip.ColumnHeading" xml:space="preserve">
+    <value>PLZ</value>
+  </data>
+  <data name="grdTargets.WorkPhone.ColumnHeading" xml:space="preserve">
+    <value>Geschäftliche Telefonnummer</value>
+  </data>
+  <data name="chkCompany.Caption" xml:space="preserve">
+    <value>Unternehmensname:</value>
+  </data>
+  <data name="chkIndustry.Caption" xml:space="preserve">
+    <value>Branche</value>
+  </data>
+  <data name="chkSIC.Caption" xml:space="preserve">
+    <value>SIC:</value>
+  </data>
+  <data name="grdTargets.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  </data>
+  <data name="HowManyTargets_Msg" xml:space="preserve">
+    <value>{0} Ziele</value>
+  </data>
+  <data name="error_NoTargetsSelected" xml:space="preserve">
+    <value>Sie müssen mindestens ein Ziel auswählen, bevor Sie fortfahren.</value>
+  </data>
+  <data name="error_NoDataSource" xml:space="preserve">
+    <value>Datenquelle kann nicht abgerufen werden.</value>
+  </data>
+  <data name="lblFailed.Caption" xml:space="preserve">
+    <value>Fehlgeschlagen:</value>
+  </data>
+  <data name="lblInserted.Caption" xml:space="preserve">
+    <value>Eingefügt:</value>
+  </data>
+  <data name="lblPrimary.Caption" xml:space="preserve">
+    <value>Ziele werden eingefügt...</value>
+  </data>
+  <data name="tabAddFromGroup.Caption" xml:space="preserve">
+    <value>Aus Gruppe hinzufügen</value>
+  </data>
+  <data name="tabLookupTarget.Caption" xml:space="preserve">
+    <value>Ziele suchen</value>
   </data>
   <data name="lblAddFromGroup.Text" xml:space="preserve">
     <value>Wählen Sie Zielinteressenten oder Kundenkontakte für diese Kampagne aus einer bestehenden Gruppe aus.</value>
   </data>
+  <data name="rdgContactGroup.Text" xml:space="preserve">
+    <value>Kontaktgruppe:</value>
+  </data>
+  <data name="rdgContactGroup.Value" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="rdgLeadGroup.Text" xml:space="preserve">
+    <value>Interessentengruppe:</value>
+  </data>
+  <data name="rdgLeadGroup.Value" xml:space="preserve">
+    <value>Interessent</value>
+  </data>
   <data name="error_NoGroupSelected" xml:space="preserve">
     <value>Wählen Sie eine Gruppe aus, bevor Sie fortfahren.</value>
   </data>
-  <data name="chkIndustry.Caption" xml:space="preserve">
-    <value>Branche</value>
+  <data name="QueryError" xml:space="preserve">
+    <value>Fehler bei der Suchabfrage.</value>
+  </data>
+  <data name="QueryErrorInvalidParameter" xml:space="preserve">
+    <value>Einer der Abfrageparameter war falsch. Evtl. hat sich der Name einer Entitätseigenschaft geändert.</value>
   </data>
 </root>

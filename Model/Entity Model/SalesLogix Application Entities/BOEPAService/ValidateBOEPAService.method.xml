@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="55e56d9f-0249-4c18-99dc-b1df04010161" lastModifiedUtc="2016-03-31T03:33:10.7187463Z" name="ValidateBOEPAService" returnType="bool" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="0b8b65d7-22a0-4a1e-88e0-ca911d09d9a1" lastModifiedUtc="2016-03-31T20:36:45.8668183Z" targetType="Sage.SalesLogix.BOEPAService.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ValidateBOEPAService" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

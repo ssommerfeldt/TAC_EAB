@@ -117,14 +117,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddressCity_rsc" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="AddressPostal_rsc" xml:space="preserve">
+    <value>Codice postale</value>
+  </data>
+  <data name="AddressState_rsc" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Associate_rsc" xml:space="preserve">
+    <value>Associa</value>
+  </data>
   <data name="AssociateContacts_rsc.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
   </data>
-  <data name="LIPostal_rsc.Text" xml:space="preserve">
-    <value>Codice Postale</value>
+  <data name="Company_rsc" xml:space="preserve">
+    <value>Società</value>
   </data>
-  <data name="Phone_rsc" xml:space="preserve">
-    <value>Telefono</value>
+  <data name="ContactAccount_rsc" xml:space="preserve">
+    <value>Azienda</value>
+  </data>
+  <data name="ContactEmail_rsc" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="ContactManager_rsc" xml:space="preserve">
+    <value>Acct manager</value>
+  </data>
+  <data name="ContactMobile_rsc" xml:space="preserve">
+    <value>Cellulare</value>
+  </data>
+  <data name="ContactName_rsc" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="ContactOwner_rsc" xml:space="preserve">
+    <value>Proprietario</value>
+  </data>
+  <data name="ContactWorkPhone_rsc" xml:space="preserve">
+    <value>Ufficio</value>
+  </data>
+  <data name="Firstname_rsc" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="imgFindButton_rsc.ToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="LastName_rsc" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="lblLookupContacts_rsc.Text" xml:space="preserve">
+    <value>Ricerca contatti per:</value>
+  </data>
+  <data name="lblStartingWith_rsc.Text" xml:space="preserve">
+    <value>che inizia per:</value>
+  </data>
+  <data name="LICity_rsc.Text" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="LICompany_rsc.Text" xml:space="preserve">
+    <value>Società</value>
+  </data>
+  <data name="LIFirstName_rsc.Text" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="LILastName_rsc.Text" xml:space="preserve">
+    <value>Cognome</value>
   </data>
   <data name="LIOwner_rsc.Text" xml:space="preserve">
     <value>Proprietario</value>
@@ -132,82 +189,25 @@
   <data name="LIPhone_rsc.Text" xml:space="preserve">
     <value>Telefono</value>
   </data>
-  <data name="AddressState_rsc" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="LILastName_rsc.Text" xml:space="preserve">
-    <value>Cognome</value>
-  </data>
-  <data name="AddressPostal_rsc" xml:space="preserve">
-    <value>Codice Postale</value>
-  </data>
-  <data name="AddressCity_rsc" xml:space="preserve">
-    <value>Città</value>
+  <data name="LIPostal_rsc.Text" xml:space="preserve">
+    <value>Codice postale</value>
   </data>
   <data name="LIState_rsc.Text" xml:space="preserve">
-    <value>Status</value>
+    <value>Provincia</value>
   </data>
-  <data name="ContactEmail_rsc" xml:space="preserve">
-    <value>E-Mail</value>
-  </data>
-  <data name="LICompany_rsc.Text" xml:space="preserve">
-    <value>Società</value>
-  </data>
-  <data name="ContactOwner_rsc" xml:space="preserve">
-    <value>Proprietario</value>
-  </data>
-  <data name="LICity_rsc.Text" xml:space="preserve">
-    <value>Città</value>
+  <data name="LIStatus_rsc.Text" xml:space="preserve">
+    <value>Stato</value>
   </data>
   <data name="LIType_rsc.Text" xml:space="preserve">
     <value>Tipo</value>
   </data>
-  <data name="ContactName_rsc" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="ContactManager_rsc" xml:space="preserve">
-    <value>Resp. Azienda</value>
+  <data name="Phone_rsc" xml:space="preserve">
+    <value>Telefono</value>
   </data>
   <data name="Status_rsc" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="Associate_rsc" xml:space="preserve">
-    <value>Associa</value>
-  </data>
-  <data name="lblLookupContacts_rsc.Text" xml:space="preserve">
-    <value>Ricerca Contatto(i) per:</value>
-  </data>
-  <data name="ContactMobile_rsc" xml:space="preserve">
-    <value>Cellulare</value>
-  </data>
-  <data name="LIFirstName_rsc.Text" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="ContactAccount_rsc" xml:space="preserve">
-    <value>Azienda</value>
-  </data>
-  <data name="Firstname_rsc" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="ContactWorkPhone_rsc" xml:space="preserve">
-    <value>Lavoro</value>
-  </data>
-  <data name="LIStatus_rsc.Text" xml:space="preserve">
-    <value>Status</value>
+    <value>Stato</value>
   </data>
   <data name="Type_rsc" xml:space="preserve">
     <value>Tipo</value>
-  </data>
-  <data name="LastName_rsc" xml:space="preserve">
-    <value>Cognome</value>
-  </data>
-  <data name="lblStartingWith_rsc.Text" xml:space="preserve">
-    <value>che inizia per:</value>
-  </data>
-  <data name="imgFindButton_rsc.ToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="Company_rsc" xml:space="preserve">
-    <value>Società</value>
   </data>
 </root>

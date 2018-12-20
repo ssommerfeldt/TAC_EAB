@@ -112,48 +112,57 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtCategory.Caption" xml:space="preserve">
-    <value>Catégorie :</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
-  <data name="txtIssue.Caption" xml:space="preserve">
-    <value>Problème :</value>
-  </data>
-  <data name="cboArea.Caption" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="btnAdd.Caption" xml:space="preserve">
-    <value>Ajouter</value>
-  </data>
-  <data name="txtArea.Caption" xml:space="preserve">
-    <value>Zone :</value>
-  </data>
-  <data name="cboCategory.Caption" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="cboIssue.Caption" xml:space="preserve">
-    <value> </value>
-  </data>
-  <data name="chkDefect.Caption" xml:space="preserve">
-    <value>Défaut</value>
-  </data>
-  <data name="chkCustomer.Caption" xml:space="preserve">
+  <data name="QFCheckBox.Caption" xml:space="preserve">
     <value>Client</value>
   </data>
-  <data name="btnSave.Caption" xml:space="preserve">
-    <value>Enregistrer</value>
+  <data name="QFCheckBox1.Caption" xml:space="preserve">
+    <value>Défaut</value>
   </data>
-  <data name="chkTicket.Caption" xml:space="preserve">
+  <data name="QFCheckBox2.Caption" xml:space="preserve">
     <value>Ticket</value>
   </data>
-  <data name="btnDelete.Caption" xml:space="preserve">
+  <data name="dplArea1.DependentLookups.Area.PropertyDisplay" xml:space="preserve">
+    <value>Domaine :</value>
+  </data>
+  <data name="dplArea1.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="dplArea1.Caption" xml:space="preserve">
+    <value>Domaine :</value>
+  </data>
+  <data name="dplArea1.DependentLookups.Category.PropertyDisplay" xml:space="preserve">
+    <value>Catégorie :</value>
+  </data>
+  <data name="dplArea1.DependentLookups.Issue.PropertyDisplay" xml:space="preserve">
+    <value>Problème :</value>
+  </data>
+  <data name="dplArea1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dplArea1.DependentLookups..PropertyDisplay" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tbrSave.ToolTip" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="tbrDelete.ToolTip" xml:space="preserve">
     <value>Supprimer</value>
+  </data>
+  <data name="QFSLXOwner.Caption" xml:space="preserve">
+    <value>Affecter à :</value>
+  </data>
+  <data name="cmdSaveNew.ToolTip" xml:space="preserve">
+    <value>Enregistrer et nouveau</value>
+  </data>
+  <data name="cmdCopyACI.ToolTip" xml:space="preserve">
+    <value>Copier</value>
+  </data>
+  <data name="tbrDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Vous êtes sur le point de supprimer définitivement cet enregistrement.</value>
   </data>
 </root>

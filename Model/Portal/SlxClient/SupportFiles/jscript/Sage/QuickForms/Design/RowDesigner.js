@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/RowDesigner", [
     'dojo/string',
     'dojo/topic',
     'dojo/_base/declare',

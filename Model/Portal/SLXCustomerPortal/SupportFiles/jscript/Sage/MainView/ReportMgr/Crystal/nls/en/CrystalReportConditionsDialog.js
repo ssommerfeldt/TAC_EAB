@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ReportMgr/Crystal/nls/en/CrystalReportConditionsDialog", (
 { txtDialogTitle: 'Select Records',
   cmdBack_Caption: '< Back',
   cmdNext_Caption: 'Next >',
@@ -9,8 +9,7 @@ define((
   grdCrystalConditions_Operator_Caption: 'Operator',
   grdCrystalConditions_Value_Caption: 'Condition Value',
   txtShowRecordsThatMatch: 'Show records that match: ',
-  txtMatch: 'Match:',
-  txtOfTheFollowingConditions: 'of the following conditions:',
+  txtMatch: 'Match the following conditions:',
   txtAny: 'Any',
   txtAll: 'All',
   txtAllRecords: '[All Records]',

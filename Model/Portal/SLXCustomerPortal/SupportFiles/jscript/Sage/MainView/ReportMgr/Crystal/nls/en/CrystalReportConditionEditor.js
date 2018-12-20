@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ReportMgr/Crystal/nls/en/CrystalReportConditionEditor", (
 { dlgCrystalReportConditionDetails_Title: 'Add/Edit Condition',
   cmdOK_Caption: 'OK',
   cmdCancel_Caption: 'Cancel',

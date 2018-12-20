@@ -1,0 +1,23 @@
+define("Sage/MainView/Import/nls/zh-tw/ManageImportOptions", {
+    "dlgManageImportOptions_Title": "記錄匯入 - 選項",
+    "lstImportType_Caption": "您想如何處理這個檔案中的記錄?",
+    "lstImportOption_Insert": "如果找不到相符的記錄，就會新增記錄",
+    "txtOption_Insert": "如果根據定義的相符條件找不到現有的記錄，新聯絡人、客戶或地址記錄就會新增至資料庫。如果找到相符的記錄，就不會匯入記錄。",
+    "lstImportOption_Update": "如果找不到相符的記錄，就會更新記錄",
+    "txtOption_Update": "如果根據定義的相符條件找到現有的聯絡人、客戶或地址記錄，就會使用匯入的資訊來更新記錄。如果找不到相符的記錄，就不會匯入資訊。",
+    "lstImportOption_InsertUpdate": "新增或更新每一筆記錄",
+    "txtOption_InsertUpdate": "如果根據定義的相符條件找到現有的聯絡人、客戶或地址記錄，就會使用匯入的資訊來更新記錄。如果找不到相符的記錄，就會新增一筆新記錄。",
+    "txtMatchHeader_Caption": "定義相符條件:",
+    "txtOptionsHeader_Caption": "選項",
+    "defaultOwner_Caption": "預設擁有者:",
+    "lookupDefaultOwner_Caption": "查閱擁有者",
+    "lookupDescriptionColText": "描述",
+    "lookupTypeColText": "類型",
+    "createAdHoc_Caption": "建立新的臨時編組",
+    "existingAdHoc_Caption": "新增至現有臨時編組",
+    "errorNoAddHocGroupName": "請指定臨時編組名稱，才能繼續進行。",
+    "errorDuplicateAddHocGroupName": "請指定目前尚未在使用中的臨時編組名稱。",
+    "errorNoOwner": "請指定擁有者，才能繼續進行。",
+    "chkAccountName": "使用聯絡人名稱取代空白客戶名稱",
+    "match_Caption": "符合:"
+});

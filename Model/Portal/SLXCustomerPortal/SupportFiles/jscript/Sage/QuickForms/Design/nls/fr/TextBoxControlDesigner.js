@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'ZoneTexte' }
-));
+define("Sage/QuickForms/Design/nls/fr/TextBoxControlDesigner", {
+    "displayNameText": "TextBox"
+});

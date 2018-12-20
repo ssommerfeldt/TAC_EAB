@@ -1,0 +1,905 @@
+<?xml version="1.0"?>
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="4e68a4d1-97d2-4972-bb48-08176ff57425" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-09-22T10:43:38.3929751Z">
+  <ActiveControl />
+  <ImagePath />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>67327823-8e6a-4b3d-b522-5de78c3f075b</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName>quickformload0</MethodName>
+          <CSharpCodeSnippet>var mappingService = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;(true);
+bool isIntegrationEnabled = mappingService.IsIntegrationEnabled();
+ctrlstErpBillTo.Visible = isIntegrationEnabled;
+lueBillToContact.Visible = !isIntegrationEnabled;
+lueBillToContact_lbl.Visible = !isIntegrationEnabled;
+pklPaymentMethod.Visible = isIntegrationEnabled;
+pklPaymentMethod_lbl.Visible = isIntegrationEnabled;
+var quote = BindingSource.Current as IQuote;
+if (quote == null) return;
+bool selected = false;
+lstbxBillingAddress.Items.Clear();
+var closed = quote.IsClosed();
+if (quote.BillingContact != null || quote.BillTo != null)
+{
+    string contactId = string.Empty;
+    if (isIntegrationEnabled)
+    {
+        if (quote.BillTo != null) contactId = quote.BillTo.Id.ToString();
+    }
+    else
+    {
+        if (quote.BillingContact != null) contactId = quote.BillingContact.Id.ToString();
+    }
+    if (!string.IsNullOrEmpty(contactId))
+    {
+        var billingAddresses =
+            Sage.Platform.EntityFactory.GetRepository&lt;IAddress&gt;().FindByProperty(
+                "EntityId", contactId);
+        if (billingAddresses != null)
+        {
+            foreach (IAddress address in billingAddresses)
+            {
+                var billingItem = new ListItem {Text = address.Description, Value = address.Id.ToString()};
+                if (!selected &amp;&amp; quote.BillingAddress != null)
+                {
+                    billingItem.Selected = Equals(address.Description, quote.BillingAddress.Description);
+                    selected = billingItem.Selected;
+                }
+                lstbxBillingAddress.Items.Add(billingItem);
+            }
+        }
+    }
+}
+if (isIntegrationEnabled)
+{
+    var fls = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.Security.IFieldLevelSecurityService&gt;(true);
+    if (fls != null)
+    {
+        var access = fls.GetAccessForProperty(quote, "Address1");
+        addBilling.ReadOnly = (access == Sage.Platform.Security.FieldAccess.ReadOnly);
+    }
+}
+
+if (closed)
+{
+    addBilling.ReadOnly = true;
+    btnAddErpBillTo.Visible = false;
+    lueErpBillTo.ReadOnly = true;
+	txtAttention.ReadOnly = true;
+	lueBillToContact.ReadOnly = true;
+	lstbxBillingAddress.Enabled = false;
+	addBilling.ReadOnly = true;
+	tbrBilltoSave.Visible = false;
+}</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
+  <Name>QuoteBillTo</Name>
+  <ClientScriptIncludes />
+  <ClientResourceKeys />
+  <ExtendedProperties />
+  <HelpFile />
+  <ReadOnly>false</ReadOnly>
+  <GeneratePrintView>false</GeneratePrintView>
+  <Controls>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFPanel, Sage.Platform.QuickForms.QFControls">
+      <QFPanel>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>pnlBillTo</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <Caption />
+        <Rows>
+          <Row>
+            <SizeType>Absolute</SizeType>
+            <Height>35</Height>
+          </Row>
+          <Row>
+            <SizeType>Absolute</SizeType>
+            <Height>35</Height>
+          </Row>
+        </Rows>
+        <columns>
+          <column>
+            <SizeType>Percent</SizeType>
+            <Width>100</Width>
+          </column>
+        </columns>
+        <Controls>
+          <ControlsCollection>
+            <Control TypeName="Sage.Platform.QuickForms.QFControls.QFControlsList, Sage.Platform.QuickForms.QFControls">
+              <QFControlsList>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>ctrlstErpBillTo</ControlId>
+                <DataBindings />
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <Caption />
+                <Controls>
+                  <ControlsCollection>
+                    <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
+                      <QFSLXLookup>
+                        <Column>0</Column>
+                        <Row>0</Row>
+                        <HotKey>0</HotKey>
+                        <TabIndex>0</TabIndex>
+                        <ControlId>lueErpBillTo</ControlId>
+                        <DataBindings>
+                          <QuickFormPropertyDataBindingDefinition>
+                            <DataSourceID>MainEntity</DataSourceID>
+                            <DataItemName>BillTo</DataItemName>
+                            <ControlItemName>LookupResultValue</ControlItemName>
+                            <FormatString />
+                            <NullValueString />
+                          </QuickFormPropertyDataBindingDefinition>
+                          <QuickFormPropertyDataBindingDefinition>
+                            <DataSourceID>MainEntity</DataSourceID>
+                            <DataItemName>Account.Id</DataItemName>
+                            <ControlItemName>SeedValue</ControlItemName>
+                            <FormatString />
+                            <NullValueString />
+                          </QuickFormPropertyDataBindingDefinition>
+                        </DataBindings>
+                        <ControlLabelPlacement>left</ControlLabelPlacement>
+                        <ExtendedProperties />
+                        <CaptionAlignment>left</CaptionAlignment>
+                        <StyleScheme />
+                        <OnChangeAction>
+                          <ResourceKey>lueErpBillTo</ResourceKey>
+                          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                            <CSharpSnippetActionItem>
+                              <MethodName>lueErpBillTo_ChangeAction</MethodName>
+                              <CSharpCodeSnippet>var quote = BindingSource.Current as IQuote;
+bool selected = false;
+lstbxBillingAddress.Items.Clear();
+if (quote.BillTo != null)
+{
+	quote.BillingAddress = quote.SetQuoteBillingAddress(quote.BillTo.Address);
+    var billingAddresses =
+        Sage.Platform.EntityFactory.GetRepository&lt;IAddress&gt;().FindByProperty(
+            "EntityId", quote.BillTo.Id.ToString());
+    if (billingAddresses != null)
+    {
+        foreach (IAddress address in billingAddresses)
+        {
+            var billingItem = new ListItem {Text = address.Description, Value = address.Id.ToString()};
+            if (!selected)
+            {
+                billingItem.Selected = Equals(address.Description, quote.BillingAddress.Description);
+                selected = billingItem.Selected;
+            }
+            lstbxBillingAddress.Items.Add(billingItem);
+        }
+    }
+}</CSharpCodeSnippet>
+                            </CSharpSnippetActionItem>
+                          </Action>
+                          <IsDialogCloseAction>False</IsDialogCloseAction>
+                          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                          <DialogActionResult>NoResult</DialogActionResult>
+                          <PerformsUpdate>False</PerformsUpdate>
+                          <AppliedSecurity />
+                          <RefreshData>False</RefreshData>
+                        </OnChangeAction>
+                        <Required>false</Required>
+                        <LookupImage />
+                        <LookupDialogWidth xsi:nil="true" />
+                        <LookupDialogHeight xsi:nil="true" />
+                        <LookupBindingMode>Object</LookupBindingMode>
+                        <LookupResultValue xsi:type="xsd:string" />
+                        <SeedProperty>ErpBillToAccounts.Account.Id</SeedProperty>
+                        <SeedValue />
+                        <DropDownDisplayProperty />
+                        <AllowClearingResult>false</AllowClearingResult>
+                        <AppendStringValues>false</AppendStringValues>
+                        <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
+                        <LookupEntityName>ERPBillTo</LookupEntityName>
+                        <LookupEntityTypeName>Sage.Entity.Interfaces.IERPBillTo, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
+                        <AutoPostBack>false</AutoPostBack>
+                        <EnableHyperLinking>true</EnableHyperLinking>
+                        <InitializeLookup>true</InitializeLookup>
+                        <LookupProperties>
+                          <LookupProperty>
+                            <PropertyName>Name</PropertyName>
+                            <PropertyType>System.String</PropertyType>
+                            <PropertyHeader>Name</PropertyHeader>
+                            <PropertyFormat>None</PropertyFormat>
+                            <PropertyFormatString />
+                            <UseAsResult>false</UseAsResult>
+                            <ExcludeFromFilters>false</ExcludeFromFilters>
+                            <IsSortable>true</IsSortable>
+                            <HideCondition />
+                          </LookupProperty>
+                          <LookupProperty>
+                            <PropertyName>Address.City</PropertyName>
+                            <PropertyType>SalesLogix.PickList</PropertyType>
+                            <PropertyHeader>City</PropertyHeader>
+                            <PropertyFormat>None</PropertyFormat>
+                            <PropertyFormatString />
+                            <UseAsResult>false</UseAsResult>
+                            <ExcludeFromFilters>false</ExcludeFromFilters>
+                            <IsSortable>true</IsSortable>
+                            <HideCondition />
+                          </LookupProperty>
+                          <LookupProperty>
+                            <PropertyName>Address.State</PropertyName>
+                            <PropertyType>SalesLogix.PickList</PropertyType>
+                            <PropertyHeader>State</PropertyHeader>
+                            <PropertyFormat>None</PropertyFormat>
+                            <PropertyFormatString />
+                            <UseAsResult>false</UseAsResult>
+                            <ExcludeFromFilters>false</ExcludeFromFilters>
+                            <IsSortable>true</IsSortable>
+                            <HideCondition />
+                          </LookupProperty>
+                          <LookupProperty>
+                            <PropertyName>MainPhone</PropertyName>
+                            <PropertyType>System.String</PropertyType>
+                            <PropertyHeader>Main Phone</PropertyHeader>
+                            <PropertyFormat>Phone</PropertyFormat>
+                            <PropertyFormatString />
+                            <UseAsResult>false</UseAsResult>
+                            <ExcludeFromFilters>false</ExcludeFromFilters>
+                            <IsSortable>true</IsSortable>
+                            <HideCondition />
+                          </LookupProperty>
+                          <LookupProperty>
+                            <PropertyName>Email</PropertyName>
+                            <PropertyType>System.String</PropertyType>
+                            <PropertyHeader>E-Mail</PropertyHeader>
+                            <PropertyFormat>None</PropertyFormat>
+                            <PropertyFormatString />
+                            <UseAsResult>false</UseAsResult>
+                            <ExcludeFromFilters>false</ExcludeFromFilters>
+                            <IsSortable>true</IsSortable>
+                            <HideCondition />
+                          </LookupProperty>
+                        </LookupProperties>
+                        <LookupPreFilters />
+                      </QFSLXLookup>
+                    </Control>
+                    <Control TypeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+                      <QFButton>
+                        <Column>0</Column>
+                        <Row>0</Row>
+                        <HotKey>0</HotKey>
+                        <TabIndex>0</TabIndex>
+                        <ControlId>btnAddErpBillTo</ControlId>
+                        <DataBindings />
+                        <ControlLabelPlacement>none</ControlLabelPlacement>
+                        <ExtendedProperties />
+                        <CaptionAlignment>left</CaptionAlignment>
+                        <StyleScheme>leftoffset14</StyleScheme>
+                        <ButtonType>Icon</ButtonType>
+                        <Image>[Localization!Global_Images:plus_16x16]</Image>
+                        <OnClientClick />
+                        <OnClickAction>
+                          <ResourceKey>btnAddErpBillTo</ResourceKey>
+                          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                            <CSharpSnippetActionItem>
+                              <MethodName>btnAddErpBillTo_ClickAction</MethodName>
+                              <CSharpCodeSnippet>var quote = BindingSource.Current as IQuote;
+if (string.IsNullOrEmpty(quote.ErpLogicalId))
+{
+    DialogService.ShowMessage(GetLocalResourceObject("error_UnassignedLogicalId").ToString());
+    return;
+}
+DialogService.SetSpecs(300, 800, "AddEditErpBillTo", GetLocalResourceObject("2f11c539-0027-41a4-aa0b-0259d3cd3bce.DialogTitleOverride").ToString() );
+DialogService.EntityType = typeof(Sage.Entity.Interfaces.IERPBillTo); 
+DialogService.ShowDialog();</CSharpCodeSnippet>
+                            </CSharpSnippetActionItem>
+                          </Action>
+                          <IsDialogCloseAction>False</IsDialogCloseAction>
+                          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                          <DialogActionResult>NoResult</DialogActionResult>
+                          <PerformsUpdate>True</PerformsUpdate>
+                          <AppliedSecurity>ENTITIES/ERPBILLTO/ADD</AppliedSecurity>
+                          <RefreshData>False</RefreshData>
+                        </OnClickAction>
+                      </QFButton>
+                    </Control>
+                  </ControlsCollection>
+                </Controls>
+              </QFControlsList>
+            </Control>
+            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
+              <QFSLXLookup>
+                <Column>0</Column>
+                <Row>1</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>lueBillToContact</ControlId>
+                <DataBindings>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>BillingContact</DataItemName>
+                    <ControlItemName>LookupResultValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>Account.Id</DataItemName>
+                    <ControlItemName>SeedValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                </DataBindings>
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <OnChangeAction>
+                  <ResourceKey>lueBillToContact</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                    <CSharpSnippetActionItem>
+                      <MethodName>lueBillToContact_ChangeAction</MethodName>
+                      <CSharpCodeSnippet>var quote = BindingSource.Current as IQuote;
+if (quote != null &amp;&amp; quote.BillingContact != null)
+{
+	quote.BillingAddress = quote.SetQuoteBillingAddress(quote.BillingContact.Address);
+	quote.BillToName = quote.BillingContact.NameLF;
+	
+	bool selected = false;
+	lstbxBillingAddress.Items.Clear();
+	if (quote.BillingContact != null)
+	{
+	    var billingAddresses =
+	        Sage.Platform.EntityFactory.GetRepository&lt;IAddress&gt;().FindByProperty(
+	            "EntityId", quote.BillingContact.Id.ToString());
+	    if (billingAddresses != null)
+	    {
+	        foreach (IAddress address in billingAddresses)
+	        {
+	            var billingItem = new ListItem {Text = address.Description, Value = address.Id.ToString()};
+	            if (!selected)
+	            {
+	                billingItem.Selected = Equals(address.Description, quote.BillingAddress.Description);
+	                selected = billingItem.Selected;
+	            }
+	            lstbxBillingAddress.Items.Add(billingItem);
+	        }
+	    }
+	}
+}</CSharpCodeSnippet>
+                    </CSharpSnippetActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnChangeAction>
+                <Required>false</Required>
+                <LookupImage />
+                <LookupDialogWidth xsi:nil="true" />
+                <LookupDialogHeight xsi:nil="true" />
+                <LookupBindingMode>Object</LookupBindingMode>
+                <LookupResultValue xsi:type="xsd:string" />
+                <SeedProperty>Account.Id</SeedProperty>
+                <SeedValue />
+                <DropDownDisplayProperty />
+                <AllowClearingResult>false</AllowClearingResult>
+                <AppendStringValues>false</AppendStringValues>
+                <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
+                <LookupEntityName>Contact</LookupEntityName>
+                <LookupEntityTypeName>Sage.Entity.Interfaces.IContact, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
+                <AutoPostBack>false</AutoPostBack>
+                <EnableHyperLinking>true</EnableHyperLinking>
+                <InitializeLookup>true</InitializeLookup>
+                <LookupProperties>
+                  <LookupProperty>
+                    <PropertyName>NameLF</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>Name</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>AccountName</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>Account</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>Address.City</PropertyName>
+                    <PropertyType>SalesLogix.PickList</PropertyType>
+                    <PropertyHeader>City</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>Address.State</PropertyName>
+                    <PropertyType>SalesLogix.PickList</PropertyType>
+                    <PropertyHeader>State</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>WorkPhone</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>Work Phone</PropertyHeader>
+                    <PropertyFormat>Phone</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>true</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                  <LookupProperty>
+                    <PropertyName>Email</PropertyName>
+                    <PropertyType>System.String</PropertyType>
+                    <PropertyHeader>E-Mail</PropertyHeader>
+                    <PropertyFormat>None</PropertyFormat>
+                    <PropertyFormatString />
+                    <UseAsResult>false</UseAsResult>
+                    <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <IsSortable>false</IsSortable>
+                    <HideCondition />
+                  </LookupProperty>
+                </LookupProperties>
+                <LookupPreFilters />
+              </QFSLXLookup>
+            </Control>
+          </ControlsCollection>
+        </Controls>
+      </QFPanel>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFListBox, Sage.Platform.QuickForms.QFControls">
+      <QFListBox>
+        <Column>0</Column>
+        <Row>1</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>lstbxBillingAddress</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <SelectedIndex>-1</SelectedIndex>
+        <Items />
+        <OnChangeAction>
+          <ResourceKey>lstbxBillingAddress</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>lstbxBillingAddress_ChangeAction</MethodName>
+              <CSharpCodeSnippet>IQuote quote = BindingSource.Current as IQuote;
+if (quote != null)
+{
+    IAddress address = Sage.Platform.EntityFactory.GetById&lt;IAddress&gt;(lstbxBillingAddress.Text);
+    if (address != null &amp;&amp; quote.BillingAddress.Address != null)
+    {
+        if (address.Id.ToString() == quote.BillingAddress.Address.Id.ToString()) return;
+    }
+    if (address != null &amp;&amp; address.Description == lstbxBillingAddress.SelectedItem.Text) return;
+    quote.SetQuoteBillingAddress(address);
+}</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <DataSource />
+        <TextField />
+        <ValueField />
+        <MultiSelect>false</MultiSelect>
+        <MaxHeight>200</MaxHeight>
+      </QFListBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>2</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>txtAttention</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Salutation</DataItemName>
+            <ControlItemName>Text</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>txtAttention</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXAddress, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXAddress>
+        <RowSpan>5</RowSpan>
+        <Column>0</Column>
+        <Row>3</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>addBilling</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.City</DataItemName>
+            <ControlItemName>AddressCity</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Country</DataItemName>
+            <ControlItemName>AddressCountry</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.CountryCode</DataItemName>
+            <ControlItemName>AddressCountryCode</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.County</DataItemName>
+            <ControlItemName>AddressCounty</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Address1</DataItemName>
+            <ControlItemName>AddressDesc1</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Address2</DataItemName>
+            <ControlItemName>AddressDesc2</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Address3</DataItemName>
+            <ControlItemName>AddressDesc3</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Address4</DataItemName>
+            <ControlItemName>AddressDesc4</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Address5</DataItemName>
+            <ControlItemName>AddressDesc5</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Address6</DataItemName>
+            <ControlItemName>AddressDesc6</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Description</DataItemName>
+            <ControlItemName>AddressDescription</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.FullAddress</DataItemName>
+            <ControlItemName>AddressDisplay</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.PostalCode</DataItemName>
+            <ControlItemName>AddressPostalCode</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.Salutation</DataItemName>
+            <ControlItemName>AddressSalutation</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillingAddress.State</DataItemName>
+            <ControlItemName>AddressState</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <AddressDescriptionPickListId>kSYST0000013</AddressDescriptionPickListId>
+        <AddressDescriptionPickListName>Address Description (Contact)</AddressDescriptionPickListName>
+        <IsPrimaryVisible>false</IsPrimaryVisible>
+        <IsMailingVisible>false</IsMailingVisible>
+        <AddressDisplay />
+        <AddressDescription />
+        <PrimaryAddress>false</PrimaryAddress>
+        <AddressIsPrimary>false</AddressIsPrimary>
+        <AddressIsMailing>false</AddressIsMailing>
+        <AddressType />
+        <AddressDesc1 />
+        <AddressDesc2 />
+        <AddressDesc3 />
+        <AddressDesc4 />
+        <AddressDesc5 />
+        <AddressDesc6 />
+        <AddressCity />
+        <AddressState />
+        <AddressPostalCode />
+        <AddressCountry />
+        <AddressCountryCode />
+        <AddressCounty />
+        <AddressSalutation />
+        <OnChangeAction>
+          <ResourceKey>addBilling</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+      </QFSLXAddress>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXPickList>
+        <Column>1</Column>
+        <Row>0</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>pklPaymentMethod</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillTo.ErpLogicalId</DataItemName>
+            <ControlItemName>PickListFilter</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>BillTo.ErpPaymentMethod</DataItemName>
+            <ControlItemName>PickListValue</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>255</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>pklPaymentMethod</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+        <AutoPostBack>false</AutoPostBack>
+        <PickListName>Payment Methods</PickListName>
+        <StorageMode>Code</StorageMode>
+        <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
+        <AllowMultiples>false</AllowMultiples>
+        <AlphaSort>false</AlphaSort>
+        <MustExistInList>true</MustExistInList>
+        <NoneEditable>false</NoneEditable>
+        <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
+        <ValueStoredAsText>false</ValueStoredAsText>
+      </QFSLXPickList>
+    </Control>
+  </Controls>
+  <ToolControls>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>d7eaf9eedf42878c814ced23fb67ac</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>d77026adcecb4566a1b065471f2135d7</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>tbrBilltoSave</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>Icon</ButtonType>
+        <Image>[Localization!Global_Images:Save_16x16]</Image>
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>tbrBilltoSave</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
+            <BusinessRuleActionItem>
+              <BusinessRule>Save</BusinessRule>
+              <Object>Quote</Object>
+              <Parameters />
+              <PassResultsToNextAction>False</PassResultsToNextAction>
+              <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                <NoActionActionItem>
+                  <MethodName />
+                </NoActionActionItem>
+              </OnComplete>
+            </BusinessRuleActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>True</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
+  </ToolControls>
+  <Columns>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>50</Width>
+    </ColumnStyle>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>50</Width>
+    </ColumnStyle>
+  </Columns>
+  <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+  </Rows>
+  <Description />
+  <UseEntityNameAsTitle>true</UseEntityNameAsTitle>
+  <EntityTypeName>IQuote</EntityTypeName>
+  <DefaultNamespace>Sage.Entity.Interfaces</DefaultNamespace>
+  <AssemblyName>Sage.Entity.Interfaces</AssemblyName>
+</QuickForm>

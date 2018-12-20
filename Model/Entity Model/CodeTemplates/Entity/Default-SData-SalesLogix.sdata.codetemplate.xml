@@ -301,7 +301,9 @@ namespace Sage.Integration.Entity.Adapter
                         "<#= entity.Name #>.<#= method.MethodName #>",
                         () => new object[]
                             {
-                                GetEntity(<#= method.MethodName #>Entry.Request.Entity ?? new <#= entity.Name #>Entry {Key = <#= method.MethodName #>Entry.Request.<#= entity.Name #>Id}),
+<#   if (method.IsInstance) { #>
+                                GetServiceEntity(<#= method.MethodName #>Entry.Request.Entity, <#= method.MethodName #>Entry.Request.<#= entity.Name #>Id),
+<#   } #>
 <#   foreach (var param in method.MethodParameters) { #>
 <#    if (param.RuntimeParamType.Namespace == "Sage.Entity.Interfaces") { #>
 <#     if (IsEntityIncluded(OrmEntity.GetByName(method.Project, param.RuntimeParamType.Name.Substring(1)))) { #>
@@ -635,6 +637,66 @@ namespace Sage.Integration.Entity.Adapter
             base.CalculateETagHash(entity, include, hashInclude, ref hash);
         }
 
+        protected override IEnumerable<string> GetIncludedPropertyNames(InclusionNode include)
+        {
+<# if (properties.Count > 0) { #>
+            #region Properties
+<#  foreach (var prop in properties) { #>
+<#   var name = prop.PropertyName; #>
+<#   if (name != "Tick" && name != "ChangeKey") { #>
+            var <#= name #>Include = include != null ? include.GetChild("<#= name #>") : null;
+            if (InclusionNode.IsIncluded(include, <#= name #>Include, <#= (int) prop.DisplayCategory #>, true))
+            {
+<#    if (prop.DisplayCategory == DisplayCategory.Obsolete) { #>
+#pragma warning disable 612,618
+<#    } #>
+                yield return "<#= name #>";
+<#    if (prop.DisplayCategory == DisplayCategory.Obsolete) { #>
+#pragma warning restore 612,618
+<#    } #>
+            }
+<#  }} #>
+            #endregion
+<# } #>
+
+<# if (parents.Count > 0) { #>
+            #region M:1 Relationships
+<#  foreach (var relation in parents) { #>
+<#   var name = relation.ChildProperty.PropertyName; #>
+<#   var precedence = (int) relation.ChildProperty.DisplayCategory; #>
+<#   if (!IsEntityIncluded(relation.ParentEntity)) { #>
+<#    name += "Id"; #>
+<#   } #>
+            var <#= name #>Include = include != null ? include.GetChild("<#= name #>") : null;
+            if (InclusionNode.IsIncluded(include, <#= name #>Include, <#= precedence #>, true))
+            {
+                yield return "<#= name #>";
+            }
+<#  } #>
+            #endregion
+<# } #>
+
+<# if (children.Count > 0) { #>
+            #region 1:M Relationships
+<#  foreach (var relation in children) { #>
+<#   var name = relation.ParentProperty.PropertyName; #>
+<#   var precedence = (int) relation.ParentProperty.DisplayCategory; #>
+<#   if (relation.Cardinality != "1:M") { #>
+<#    if (!IsEntityIncluded(relation.ParentEntity)) { #>
+<#     name += "Id"; #>
+<#    } #>
+            var <#= name #>Include = include != null ? include.GetChild("<#= name #>") : null;
+            if (InclusionNode.IsIncluded(include, <#= name #>Include, <#= precedence #>, true))
+            {
+                yield return "<#= name #>";
+            }
+<#   } #>
+<#  } #>
+            #endregion
+<# } #>
+            yield break;
+        }
+
 <# if (entity.HasCompositeKey || generator.ToClrType(entity.KeyProperty) != "String") { #>
         protected override void ConvertKey(ref string name, ref object value)
         {
@@ -705,6 +767,11 @@ namespace Sage.Integration.Entity.Adapter
 <# } #>
 
 <# if (sdataExt.LastUpdatedProperty != null && IsPropertyIncluded(sdataExt.LastUpdatedProperty)) { #>
+        protected override string LastUpdatedName
+        {
+            get { return "<#= sdataExt.LastUpdatedProperty.PropertyName #>"; }
+        }
+
         protected override DateTime? GetLastUpdated(global::Sage.Entity.Interfaces.<#= entity.InterfaceName #> entity)
         {
 <#  var fieldProp = sdataExt.LastUpdatedProperty as OrmFieldProperty; #>
@@ -948,37 +1015,39 @@ namespace Sage.Integration.Entity.Feeds
                 get { return _serializerNamespaces; }
             }
 
+<#  if (method.IsInstance) { #>
             [SMERelationshipProperty(IncludeByDefault = true)]
             [XmlElement("entity")]
             public <#= entity.Name #>Entry Entity { get; set; }
 
             public string <#= entity.Name #>Id { get; set; }
-<#   foreach (var param in method.MethodParameters) { #>
-<#    if (param.RuntimeParamType.Namespace == "Sage.Entity.Interfaces") { #>
-<#     if (IsEntityIncluded(OrmEntity.GetByName(entity.Project, param.RuntimeParamType.Name.Substring(1)))) { #>
+<#  } #>
+<#  foreach (var param in method.MethodParameters) { #>
+<#   if (param.RuntimeParamType.Namespace == "Sage.Entity.Interfaces") { #>
+<#    if (IsEntityIncluded(OrmEntity.GetByName(entity.Project, param.RuntimeParamType.Name.Substring(1)))) { #>
             [SMERelationshipProperty(IncludeByDefault = true)]
             public <#= param.RuntimeParamType.Name.Substring(1) #>Entry <#= param.ParamName #> { get; set; }
-<#     } else { #>
-            public string <#= param.ParamName #> { get; set; }
-<#     } #>
 <#    } else { #>
-<#     var itemType = GetGenericCollectionItemType(param.RuntimeParamType); #>
-<#     if (itemType != null) { #>
+            public string <#= param.ParamName #> { get; set; }
+<#    } #>
+<#   } else { #>
+<#    var itemType = GetGenericCollectionItemType(param.RuntimeParamType); #>
+<#    if (itemType != null) { #>
             [SMERelationshipProperty(IncludeByDefault = true)]
-<#      if (itemType.Namespace == "Sage.Entity.Interfaces") { #>
-<#       if (IsEntityIncluded(OrmEntity.GetByName(entity.Project, itemType.Name.Substring(1)))) { #>
+<#     if (itemType.Namespace == "Sage.Entity.Interfaces") { #>
+<#      if (IsEntityIncluded(OrmEntity.GetByName(entity.Project, itemType.Name.Substring(1)))) { #>
             public <#= itemType.Name.Substring(1) #>Feed <#= param.ParamName #> { get; set; }
-<#       } else { #>
-            public List<string> <#= param.ParamName #> { get; set; }
-<#       } #>
 <#      } else { #>
-            public List<<#= itemType.Name #>> <#= param.ParamName #> { get; set; }
+            public List<string> <#= param.ParamName #> { get; set; }
 <#      } #>
 <#     } else { #>
-            public <#= param.ParamType #> <#= param.ParamName #> { get; set; }
+            public List<<#= itemType.Name #>> <#= param.ParamName #> { get; set; }
 <#     } #>
+<#    } else { #>
+            public <#= param.ParamType #> <#= param.ParamName #> { get; set; }
 <#    } #>
 <#   } #>
+<#  } #>
         }
 
 <#  if (method.RuntimeReturnType != typeof (void)) { #>

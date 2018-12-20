@@ -117,14 +117,62 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Grid_State_Column" xml:space="preserve">
-    <value>Status</value>
-  </data>
   <data name="btnBack.Caption" xml:space="preserve">
     <value>&lt; Indietro</value>
   </data>
+  <data name="btnLink.Caption" xml:space="preserve">
+    <value>Collegamento</value>
+  </data>
+  <data name="btnNext.Caption" xml:space="preserve">
+    <value>Avanti &gt;</value>
+  </data>
+  <data name="EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di filtro selezionati.</value>
+  </data>
+  <data name="Error_SourceTargetNotSelected" xml:space="preserve">
+    <value>Selezionare un record di "destinazione" e uno di "origine" prima di continuare.</value>
+  </data>
+  <data name="Grid.Select.Text" xml:space="preserve">
+    <value>Seleziona</value>
+  </data>
+  <data name="Grid_Address1_Column" xml:space="preserve">
+    <value>Indirizzo 1</value>
+  </data>
+  <data name="Grid_Address2_Column" xml:space="preserve">
+    <value>Indirizzo 2</value>
+  </data>
+  <data name="Grid_City_Column" xml:space="preserve">
+    <value>Città</value>
+  </data>
   <data name="Grid_Primary_Column" xml:space="preserve">
-    <value>Primario</value>
+    <value>Principale</value>
+  </data>
+  <data name="Grid_State_Column" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Grid_Unlink.Column" xml:space="preserve">
+    <value>Scollega</value>
+  </data>
+  <data name="lblDescription.Caption" xml:space="preserve">
+    <value>Seleziona un contatto collegato, quindi seleziona un indirizzo da collegare al contatto collegato.</value>
+  </data>
+  <data name="Grid_Email_Column" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Grid_SourceContactName_Column" xml:space="preserve">
+    <value>Contatto di origine</value>
+  </data>
+  <data name="Grid_TargetContactName_Column" xml:space="preserve">
+    <value>Contatto di destinazione</value>
+  </data>
+  <data name="Grid_WorkPhone_Column" xml:space="preserve">
+    <value>Telefono ufficio</value>
+  </data>
+  <data name="lblSourceAddress.Caption" xml:space="preserve">
+    <value>Indirizzi di origine</value>
+  </data>
+  <data name="lblTargetAddress.Caption" xml:space="preserve">
+    <value>Indirizzi di destinazione</value>
   </data>
   <data name="UnlinkedRecords.Caption" xml:space="preserve">
     <value>Scollegato {0} da {1}</value>
@@ -132,67 +180,19 @@
   <data name="LinkContacts.Caption" xml:space="preserve">
     <value>Collega contatti</value>
   </data>
-  <data name="btnNext_Merge.Caption" xml:space="preserve">
-    <value>Unisci</value>
-  </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Annulla</value>
-  </data>
-  <data name="Grid_Address2_Column" xml:space="preserve">
-    <value>Indirizzo2</value>
-  </data>
-  <data name="lblLinkedContacts.Caption" xml:space="preserve">
-    <value>Contatti collegati</value>
-  </data>
-  <data name="lblSourceAddress.Caption" xml:space="preserve">
-    <value>Indirizzi origine</value>
   </data>
   <data name="LinkedAddresses.Caption" xml:space="preserve">
     <value>Indirizzi contatti collegati (i record seguenti verranno uniti).</value>
   </data>
-  <data name="lblTargetAddress.Caption" xml:space="preserve">
-    <value>Indirizzi obiettivo</value>
-  </data>
   <data name="NoContactSelected.Caption" xml:space="preserve">
-    <value>Selezionare un contatto collegato sopra per visualizzare gli indirizzi associati.</value>
+    <value>Seleziona un contatto collegato sopra per visualizzare gli indirizzi associati.</value>
   </data>
-  <data name="btnNext.Caption" xml:space="preserve">
-    <value>Avanti &gt;</value>
+  <data name="btnNext_Merge.Caption" xml:space="preserve">
+    <value>Unisci</value>
   </data>
-  <data name="Error_SourceTargetNotSelected" xml:space="preserve">
-    <value>Selezionare sia una "destinazione" che "un'origine" prima di continuare.</value>
-  </data>
-  <data name="Grid_Email_Column" xml:space="preserve">
-    <value>E-mail</value>
-  </data>
-  <data name="Grid.Select.Text" xml:space="preserve">
-    <value>Seleziona</value>
-  </data>
-  <data name="Grid_TargetContactName_Column" xml:space="preserve">
-    <value>Contatto obiettivo</value>
-  </data>
-  <data name="Grid_City_Column" xml:space="preserve">
-    <value>Città</value>
-  </data>
-  <data name="Grid_SourceContactName_Column" xml:space="preserve">
-    <value>Contatto origine</value>
-  </data>
-  <data name="lblDescription.Caption" xml:space="preserve">
-    <value>Selezionare un contatto collegato, quindi selezionare un indirizzo da collegare a tale contatto collegato.</value>
-  </data>
-  <data name="btnLink.Caption" xml:space="preserve">
-    <value>Collegamento</value>
-  </data>
-  <data name="EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di filtro selezionati.</value>
-  </data>
-  <data name="Grid_Unlink.Column" xml:space="preserve">
-    <value>Scollega</value>
-  </data>
-  <data name="Grid_Address1_Column" xml:space="preserve">
-    <value>Indirizzo1</value>
-  </data>
-  <data name="Grid_WorkPhone_Column" xml:space="preserve">
-    <value>Tel. Ufficio</value>
+  <data name="lblLinkedContacts.Caption" xml:space="preserve">
+    <value>Contatti collegati</value>
   </data>
 </root>

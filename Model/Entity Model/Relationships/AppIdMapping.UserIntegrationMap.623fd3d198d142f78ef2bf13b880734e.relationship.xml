@@ -1,14 +1,20 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="623fd3d1-98d1-42f7-8ef2-bf13b880734e" lastModifiedUtc="2013-06-26T01:45:24.7576615Z" parentEntityId="1d244d2a-99c6-4235-ac38-caaa73eef74e" childEntityId="a040c483-7518-4580-a64e-b2c8b2a89de3">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="623fd3d1-98d1-42f7-8ef2-bf13b880734e" lastModifiedUtc="2015-04-28T16:23:20.5678588Z" parentEntityId="1d244d2a-99c6-4235-ac38-caaa73eef74e" childEntityId="a040c483-7518-4580-a64e-b2c8b2a89de3">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="dd7a5205-44f8-4a48-b390-ff40e3a9651b" lastModifiedUtc="2013-06-26T01:45:05.6705698Z" name="UserIntegrationMaps" audited="false">
+  <parentProperty id="dd7a5205-44f8-4a48-b390-ff40e3a9651b" lastModifiedUtc="2015-04-28T16:23:07.5318588Z" name="UserIntegrationMaps" audited="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
           <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
         </extender>
       </extendee>
     </ExtendedPropertiesCollection>
@@ -16,11 +22,17 @@
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="c71afb9c-37b6-4833-9c20-951f64e7ec48" lastModifiedUtc="2013-06-26T01:46:20.85287Z" name="AppIdMapping" audited="false">
+  <childProperty id="c71afb9c-37b6-4833-9c20-951f64e7ec48" lastModifiedUtc="2015-04-28T16:23:20.5668588Z" name="AppIdMapping" audited="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
           <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
         </extender>
       </extendee>
     </ExtendedPropertiesCollection>

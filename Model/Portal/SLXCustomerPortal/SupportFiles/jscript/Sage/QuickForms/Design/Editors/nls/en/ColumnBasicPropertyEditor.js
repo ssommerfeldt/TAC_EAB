@@ -1,4 +1,4 @@
-define((
+define("Sage/QuickForms/Design/Editors/nls/en/ColumnBasicPropertyEditor", (
 { titleText: 'Basic',
   appearanceText: 'Appearance',
   indexText: 'Index:',

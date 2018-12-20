@@ -1,8 +1,8 @@
-define((
-{ minuteText: 'минута',
-  minutesText: 'минут',
-  hourText: 'час',
-  hoursText: 'часа',
-  dayText: 'день',
-  daysText: 'дня' }
-));
+define("Sage/UI/Controls/nls/ru/DurationSelect", {
+    "minuteText": "минута",
+    "minutesText": "минуты",
+    "hourText": "час",
+    "hoursText": "часы",
+    "dayText": "день",
+    "daysText": "дн."
+});

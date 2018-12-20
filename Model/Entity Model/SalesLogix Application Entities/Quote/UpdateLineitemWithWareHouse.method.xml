@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="56910639-fd80-4c49-901b-135fb6b0897b" lastModifiedUtc="2016-02-19T05:57:56.3539616Z" name="UpdateLineitemWithWareHouse" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="ed681100-ee2c-4246-a84c-8da856de9ab2" paramName="options" sequence="0" paramType="String">
+      <description>Options required to update lineItem with selected warehouse.</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="7e179fa3-d81a-4c51-a36c-709275bb1ab1" lastModifiedUtc="2016-02-19T06:00:22.8753644Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="UpdateLineitemWithWareHouse" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -117,26 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="dgDeDupResults.f7e22454-5fcf-4230-a4f2-e2d3e1816316.ColumnHeading" xml:space="preserve">
+    <value>Suchdatensatz</value>
+  </data>
   <data name="dgDeDupResults.ff8fcd6d-cda1-4ba6-a248-aa30d055cf46.ColumnHeading" xml:space="preserve">
     <value>Quellentyp</value>
   </data>
   <data name="dgDeDupResults.1f118b59-59be-4cc5-b34c-3946d6ddfcb3.ColumnHeading" xml:space="preserve">
-    <value>Klärungsstatus</value>
-  </data>
-  <data name="dgDeDupResults.b5cdbe99-deee-4263-aab6-b5fddd1ee4bb.ColumnHeading" xml:space="preserve">
-    <value>Gefundene Übereinstimmungen</value>
+    <value>Status der Auflösung</value>
   </data>
   <data name="dgDeDupResults.91e08126-1be2-4b58-b29e-2e6f40e87b2b.ColumnHeading" xml:space="preserve">
     <value>Größte Übereinstimmung</value>
-  </data>
-  <data name="error_JobResultResolved" xml:space="preserve">
-    <value>Die Datensätze wurden bereits zusammengeführt.</value>
-  </data>
-  <data name="dgDeDupResults.4226ea1a-8d09-4c03-aefa-bc35450748cc.Text" xml:space="preserve">
-    <value>Auflösen</value>
-  </data>
-  <data name="error_RecordNotFound" xml:space="preserve">
-    <value>Datensatz wurde nicht gefunden.</value>
   </data>
   <data name="dgDeDupResults.e6216d84-33d1-408d-a79a-d07d84afc2bf.ColumnHeading" xml:space="preserve">
     <value>Datensatztyp</value>
@@ -147,13 +138,25 @@
   <data name="dgDeDupResults.7e5d6d22-412e-490f-92a5-cbea31258e6e.Text" xml:space="preserve">
     <value>Auflösen</value>
   </data>
-  <data name="dgDeDupResults.f7e22454-5fcf-4230-a4f2-e2d3e1816316.ColumnHeading" xml:space="preserve">
-    <value>Suchdatensatz</value>
+  <data name="dgDeDupResults.b5cdbe99-deee-4263-aab6-b5fddd1ee4bb.ColumnHeading" xml:space="preserve">
+    <value>Gefundene Übereinstimmungen</value>
+  </data>
+  <data name="dgDeDupResults.4226ea1a-8d09-4c03-aefa-bc35450748cc.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dgDeDupResults.4226ea1a-8d09-4c03-aefa-bc35450748cc.Text" xml:space="preserve">
+    <value>Auflösen</value>
+  </data>
+  <data name="error_JobResultResolved" xml:space="preserve">
+    <value>Die Datensätze wurden bereits zusammengeführt.</value>
+  </data>
+  <data name="ResultDetail_DialogCaption" xml:space="preserve">
+    <value>Doppelten Datensatz auflösen</value>
   </data>
   <data name="error_SourceDestUnavaliable" xml:space="preserve">
     <value>Quelle oder Ziel steht nicht mehr zum Zusammenführen zur Verfügung.</value>
   </data>
-  <data name="ResultDetail_DialogCaption" xml:space="preserve">
-    <value>Doppelten Datensatz auflösen</value>
+  <data name="error_RecordNotFound" xml:space="preserve">
+    <value>Datensatz wurde nicht gefunden.</value>
   </data>
 </root>

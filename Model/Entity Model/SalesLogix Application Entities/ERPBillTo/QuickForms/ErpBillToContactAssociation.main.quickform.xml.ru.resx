@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="City.Caption" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="State.Caption" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="Department.Caption" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="Email.Caption" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="Name.Caption" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="PrimaryLanguage.Caption" xml:space="preserve">
+    <value>Основной язык</value>
+  </data>
+  <data name="Title.Caption" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="WorkPhone.Caption" xml:space="preserve">
+    <value>Рабочий телефон</value>
+  </data>
+  <data name="grdContacts.6f83f43a-bcff-49bc-9abe-ae16fdb8cccf.ColumnHeading" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="grdContacts.fbe6975f-cc66-4f55-b9a2-f58babb36c9a.ColumnHeading" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="grdContacts.7dc637e0-ba26-420a-ab39-c8bad3ad19b5.ColumnHeading" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="grdContacts.38d2b992-9192-471b-b9d1-42da76d09c5f.ColumnHeading" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="grdContacts.3f03ad3d-9582-44f6-8ca3-41d647bd4625.ColumnHeading" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="grdContacts.774bc631-5ee5-4df5-b1c2-db8f0f1e87cb.ColumnHeading" xml:space="preserve">
+    <value>Основной язык</value>
+  </data>
+  <data name="grdContacts.71c2522b-5ed0-4a73-a85a-61f038370729.ColumnHeading" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="grdContacts.89528395-7278-415a-9798-7e80b07aa529.ColumnHeading" xml:space="preserve">
+    <value>Рабочий телефон</value>
+  </data>
+  <data name="grdContacts.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdContacts.02172f53-770f-4e8f-a076-402ed260dd24.ColumnHeading" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="grdContacts.54a12f73-295a-479a-ab33-76ee7384ac3c.ColumnHeading" xml:space="preserve">
+    <value>Основной</value>
+  </data>
+  <data name="grdContacts.446fec96-af4a-4850-8c6f-cac150865dff.ColumnHeading" xml:space="preserve">
+    <value>Рабочий телефон</value>
+  </data>
+  <data name="grdContacts.0df24c4a-c144-434c-8567-90a3104cfc2a.ColumnHeading" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="grdContacts.da13577d-f5f3-4c8f-ac77-f0d5ef391e63.ColumnHeading" xml:space="preserve">
+    <value>Рабочий телефон</value>
+  </data>
+  <data name="grdContacts.8fe693f2-b6d8-45ce-a033-9d61c9ced4ac.ColumnHeading" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="grdContacts.1c1c7e8f-19d5-4437-b63a-b5fa0b91a258.ColumnHeading" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="grdContacts.34ec48c1-cb60-48c2-8367-40b59e070d52.ColumnHeading" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="grdContacts.6f6f3744-1afc-4d62-a27b-d461b662d376.ColumnHeading" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="grdContacts.3efc34bc-dd37-402f-9ca6-a221a7b893fb.ColumnHeading" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="grdContacts.Delete.ToolTip" xml:space="preserve">
+    <value>Удалить выбранные контакты</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.Title.PropertyHeader" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>WorkPhone (рабочий телефон)</value>
+  </data>
+  <data name="lueAddContact.ButtonToolTip" xml:space="preserve">
+    <value>Связать контакт</value>
+  </data>
+  <data name="lueAddContact.DialogButtonText" xml:space="preserve">
+    <value>Добавить выбранное</value>
+  </data>
+  <data name="lueAddContact.LookupDialogTitle" xml:space="preserve">
+    <value>Поиск контакта</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.LastName.PropertyHeader" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.ErpExtId.PropertyHeader" xml:space="preserve">
+    <value>Внешний ИД в ERP</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.Account.ErpAccountingEntityId.PropertyHeader" xml:space="preserve">
+    <value>ИД сущности системы учета клиента в ERP</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.ErpAccountingEntityId.PropertyHeader" xml:space="preserve">
+    <value>ИД сущности системы учета в ERP</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="lueAddContact.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="8e82efc3-d0b9-4e98-8324-1d125b0eb512.DialogTitleOverride" xml:space="preserve">
+    <value>Добавить новый контакт</value>
+  </data>
+</root>

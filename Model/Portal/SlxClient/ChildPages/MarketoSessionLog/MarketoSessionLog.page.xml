@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6f77ccdf-468b-4cd0-9dec-72e0427d2bd6" disablePageValidation="false">
+  <PageAlias>MarketoSessionLog</PageAlias>
+  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <InheritTemplate>false</InheritTemplate>
+  <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
+  <Properties>
+    <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.IMarketoSessionLog,Sage.Entity.Interfaces</Property>
+  </Properties>
+  <TemplateProperties>
+    <Property Name="IncludeMiddlePane" TypeConverter="">False</Property>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">False</Property>
+    <Property Name="DefaultVisibleTabCount" TypeConverter="">7</Property>
+  </TemplateProperties>
+  <IsDefaultPage>false</IsDefaultPage>
+  <ExcludedGlobalModules />
+  <AppliedSecurity />
+  <IncludeScript />
+</PortalPage>

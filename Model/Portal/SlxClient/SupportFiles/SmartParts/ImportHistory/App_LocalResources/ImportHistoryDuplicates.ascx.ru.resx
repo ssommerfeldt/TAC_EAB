@@ -117,37 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdDuplicates.Record.ColumnHeading" xml:space="preserve">
-    <value>Запись</value>
-  </data>
-  <data name="Title.Resolve.Duplicate.ImportLead" xml:space="preserve">
-    <value>Решение дубликатов импорта наводки</value>
-  </data>
-  <data name="chkShowResults.Text" xml:space="preserve">
-    <value>Показать результаты</value>
-  </data>
-  <data name="grdDuplicates.Resolve.ColumnHeading" xml:space="preserve">
-    <value>Решение</value>
-  </data>
   <data name="grdDuplicates.EmptyTableRowText" xml:space="preserve">
     <value>Нет дубликатов для разрешения.</value>
-  </data>
-  <data name="LoadErrorMSG" xml:space="preserve">
-    <value>Представление разрешения дубликатов импорта наводок не доступно, пожалуйста, свяжитесь с системным администратором: {0}.</value>
-  </data>
-  <data name="grdDuplicates.TimeStamp.ColumnHeading" xml:space="preserve">
-    <value>Шаблон времени</value>
-  </data>
-  <data name="error_TransformingEntity" xml:space="preserve">
-    <value>Ошибка преобразования в объект сущности.</value>
-  </data>
-  <data name="grdDuplicates.RecordNumber.ColumnHeading" xml:space="preserve">
-    <value>Номер записи</value>
   </data>
   <data name="grdDuplicates.Type.ColumnHeading" xml:space="preserve">
     <value>Тип</value>
   </data>
+  <data name="grdDuplicates.Record.ColumnHeading" xml:space="preserve">
+    <value>Запись</value>
+  </data>
+  <data name="grdDuplicates.RecordNumber.ColumnHeading" xml:space="preserve">
+    <value>Номер записи</value>
+  </data>
+  <data name="grdDuplicates.TimeStamp.ColumnHeading" xml:space="preserve">
+    <value>Метка времени</value>
+  </data>
   <data name="grdDuplicates.Description.ColumnHeading" xml:space="preserve">
     <value>Описание</value>
+  </data>
+  <data name="error_TransformingEntity" xml:space="preserve">
+    <value>Ошибка преобразования в объект сущности.</value>
+  </data>
+  <data name="grdDuplicates.Resolve.ColumnHeading" xml:space="preserve">
+    <value>Развернуть</value>
+  </data>
+  <data name="Title.Resolve.Duplicate.ImportLead" xml:space="preserve">
+    <value>Развертка дубликатов импорта заинтересованных лиц</value>
+  </data>
+  <data name="LoadErrorMSG" xml:space="preserve">
+    <value>Развертка представления дубликатов импорта заинтересованных лиц недоступна, обратитесь к системному администратору. Идентификатор ошибкиSaleslogix: {0}.</value>
+  </data>
+  <data name="chkShowResults.Text" xml:space="preserve">
+    <value>Показать результаты</value>
   </data>
 </root>

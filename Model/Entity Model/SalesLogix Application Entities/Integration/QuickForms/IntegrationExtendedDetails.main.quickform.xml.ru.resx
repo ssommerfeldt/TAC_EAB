@@ -117,11 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="chkRequiresAccess.Caption" xml:space="preserve">
-    <value>Требует маркера доступа:</value>
-  </data>
-  <data name="txtRefreshData.Caption" xml:space="preserve">
-    <value>Строка для обновления данных:</value>
+  <data name="txtApprovalUrl.Caption" xml:space="preserve">
+    <value>Суффикс URL-адреса для утверждения:</value>
   </data>
   <data name="txtUserDataString.Caption" xml:space="preserve">
     <value>Строка данных пользователя:</value>
@@ -129,22 +126,25 @@
   <data name="chkRequiresRefreshToken.Caption" xml:space="preserve">
     <value>Требует маркера обновления:</value>
   </data>
-  <data name="txtAccessData.Caption" xml:space="preserve">
-    <value>Строка для доступа к данным:</value>
-  </data>
-  <data name="txtAccessUrl.Caption" xml:space="preserve">
-    <value>Суффикс URL для доступа:</value>
-  </data>
   <data name="txtMethod.Caption" xml:space="preserve">
     <value>Метод:</value>
   </data>
+  <data name="txtRefreshUrl.Caption" xml:space="preserve">
+    <value>Суффикс URL-адреса для обновления:</value>
+  </data>
+  <data name="txtRefreshData.Caption" xml:space="preserve">
+    <value>Строка для обновления данных:</value>
+  </data>
+  <data name="chkRequiresAccess.Caption" xml:space="preserve">
+    <value>Требует ключ доступа:</value>
+  </data>
+  <data name="txtAccessUrl.Caption" xml:space="preserve">
+    <value>Суффикс URL-адреса для доступа:</value>
+  </data>
+  <data name="txtAccessData.Caption" xml:space="preserve">
+    <value>Строка для доступа к данным:</value>
+  </data>
   <data name="txtAccessMethod.Caption" xml:space="preserve">
     <value>Метод:</value>
-  </data>
-  <data name="txtApprovalUrl.Caption" xml:space="preserve">
-    <value>Суффикс URL для утверждения:</value>
-  </data>
-  <data name="txtRefreshUrl.Caption" xml:space="preserve">
-    <value>Суффикс URL для обновления:</value>
   </data>
 </root>

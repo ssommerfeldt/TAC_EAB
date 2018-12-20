@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ActivityMgr/ActivityCalendar", [
       'Sage/Data/WritableSDataStore',
       'Sage/Data/SingleEntrySDataStore',
       'Sage/Data/SDataServiceRegistry',
@@ -9,8 +9,7 @@ define([
       'dojo/_base/lang',
       'dojo/_base/declare',
       'dojo/i18n!./nls/ActivityCalendar',
-      'Sage/Array'
-
+      'Sage/Array'    
 ],
 function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utility, dateLocale, dstring, lang, declare, nlsStrings) {
 
@@ -55,10 +54,10 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
             this._currentUserColor = [];
             this._nlsResources = nlsStrings;
             var formatEventStartDate = function (dt) {
-                return dojo.date.locale.format(new Date(dt), { selector: "date", datePattern: "EEE MMM d yyyy 00:00:00 ZZZZ" });
+                return dojo.date.locale.format(new Date(dt), { selector: "date", datePattern: "EEE MMM d yyyy 00:00:00 ZZZZ", locale: Sys.CultureInfo.CurrentCulture.name });
             };
             var formatEventEndDate = function (dt) {
-                return dojo.date.locale.format(new Date(dt), { selector: "date", datePattern: "EEE MMM d yyyy 24:00:00 ZZZZ" });
+                return dojo.date.locale.format(new Date(dt), { selector: "date", datePattern: "EEE MMM d yyyy 24:00:00 ZZZZ", locale: Sys.CultureInfo.CurrentCulture.name });
             };
             var formatEventData = function (data) {
                 var eventData = [{
@@ -566,21 +565,25 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
                     case 'week':
                         _startDate = this._formatDateToCompare(data.weekStartDate);
                         _endDate = this._formatDateToCompare(data.weekEndDate);
-                        if ((dojo.date.compare(_startDate, sDate, "date") >= 0 && dojo.date.compare(eDate, _endDate, "date") >= 0) ||
-                            (dojo.date.compare(sDate, _startDate, "date") >= 0 && dojo.date.compare(_endDate, eDate, "date") >= 0)) {
-                            resetQuery = false;
-                        } else {
+                        // Add one day to the week end date to get the whole day.
+                        _endDate = dojo.date.add(_endDate, "day", 1);
+                        if ((dojo.date.compare(_startDate, sDate, "date") < 0 || dojo.date.compare(_startDate, eDate, "date") > 0) ||
+                            (dojo.date.compare(_endDate, sDate, "date") < 0 || dojo.date.compare(_endDate, eDate, "date") > 0)) {
                             resetQuery = true;
+                        } else {
+                            resetQuery = false;
                         }
                         break;
                     case 'workweek':
                         _startDate = this._formatDateToCompare(data.workWeekStartDate);
                         _endDate = this._formatDateToCompare(data.workWeekEndDate);
-                        if ((dojo.date.compare(_startDate, sDate, "date") >= 0 && dojo.date.compare(eDate, _endDate, "date") >= 0) ||
-                            (dojo.date.compare(sDate, _startDate, "date") >= 0 && dojo.date.compare(_endDate, eDate, "date") >= 0)) {
-                            resetQuery = false;
-                        } else {
+                        // Add one day to the week end date to get the whole day.
+                        _endDate = dojo.date.add(_endDate, "day", 1);
+                        if ((dojo.date.compare(_startDate, sDate, "date") < 0 || dojo.date.compare(_startDate, eDate, "date") > 0) ||
+                            (dojo.date.compare(_endDate, sDate, "date") < 0 || dojo.date.compare(_endDate, eDate, "date") > 0)) {
                             resetQuery = true;
+                        } else {
+                            resetQuery = false;
                         }
                         break;
                     case 'month':
@@ -915,7 +918,7 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
             }
 
         },      
-        _getEvents: function (userId, color) {
+        _getEvents: function (userId, color, start, count) {
             if (userId == null) {
                 userId = utility.getClientContextByKey('userID');
             }
@@ -936,11 +939,40 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
                 });
             }
 
+			count = count || 100;
+            start = start || 0; // reset to start at 0 instead of 1
+
+            //Define custom object with current context and the userId being queried to pass the userId to call back function
+            var scopeObj = { 'me': this, 'userId': userId, 'start': start, 'count': count, 'color': color };
             this.eventsStore.fetch({
                 query: { conditions: dstring.substitute('UserId eq \'${0}\' and StartDate gt @${1}@ and StartDate lt @${2}@', [userId, this._dateRangeStart, this._dateRangeEnd]) },
                 onComplete: this._onEventsRequestComplete,
-                scope: this
+                onBegin: this._onEventsRequestBegin,
+                scope: scopeObj,
+                count: count,
+                start: start
             });
+        },
+ _onEventsRequestBegin: function (totalResults, contextscope) {
+            var _this = contextscope.scope.me;
+            var _queryUserId = contextscope.scope.userId;
+            var count = contextscope.scope.count;
+            var start = contextscope.scope.start;
+            var color = contextscope.scope.color;
+            var newStart = start + count; // to get new start value take start + count
+            var valuesLeft = totalResults - newStart; // how many more records still need to get
+            if (valuesLeft > 0) // we need to get more records if greater than 0, if less than 0, there may be an issue.
+            {
+                if (valuesLeft >= 100) // Limit get to 100 records at a time
+                {
+                    _this._getEvents(_queryUserId, color, newStart, 100);
+                }
+                else // unless there is less, then just grab the rest.
+                {
+                    _this._getEvents(_queryUserId, color, newStart, valuesLeft);
+                }
+            }
+
         },
         _getHistory: function (userId, color, start, count) {
             if (userId == null) {
@@ -1116,21 +1148,21 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
                 }
                 actObj.alarmTime = Sage.Utility.Convert.toDateFromString(actJson.AlarmTime);
                 actObj.duration = actJson.Duration;
-                actObj.description = actJson.Description;
+                actObj.description = utility.htmlEncode(actJson.Description);
                 actObj.contactId = actJson.ContactId;
                 actObj.contactName = actJson.ContactName;
                 actObj.accountId = actJson.AccountId;
                 actObj.accountName = actJson.AccountName;
                 actObj.leadId = actJson.LeadId;
                 actObj.leadName = actJson.LeadName;
-                actObj.regarding = actJson.Description;
+                actObj.regarding = '<span style="max-width:500px;display:block">' + utility.htmlEncode(actJson.Description) + '</span>';
                 actObj.priority = actJson.Priority;
-                actObj.notes = actJson.Notes;
+                actObj.notes = utility.htmlEncode(actJson.Notes);
                 actObj.phoneNumber = actJson.PhoneNumber;
                 actObj.opportunityId = actJson.OpportunityId;
                 actObj.opportunity = actJson.OpportunityName;
                 actObj.recurring = actJson.$key.indexOf(";") > 0 ? true : false;
-
+                
                 if (isLoggedInUser) {
                     actObj.allowDelete = true;
                     actObj.allowEdit = actJson.AllowEdit;
@@ -1146,7 +1178,7 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
 
 
                 actObj.attachment = actJson.Attachment;
-                actObj.location = actJson.Location;
+                actObj.location = utility.htmlEncode(actJson.Location);
                 switch (actJson.Type.toUpperCase()) {
                     case "ATTODO":
                         iconSrc = this.toDoIconUrl;
@@ -1275,12 +1307,15 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
             }
 
         },
-        _onEventsRequestComplete: function (eventsJson) {
+       _onEventsRequestComplete: function (eventsJson) {
             dojo.require('Sage.Utility');
             dojo.require("dojo.date.locale");
             if (eventsJson != null && eventsJson != undefined) {
-                this._schedulerEvents1 = [];
+
+                var _this = this.me;
+                _this._schedulerEvents1 = [];
                 var currentUserId = null;
+
                 for (var i = 0; i < eventsJson.length; i++) {
                     var eventObj = {};
 
@@ -1288,15 +1323,15 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
                         currentUserId = eventsJson[i]["User"]["$key"];
                     }
                     currentUserId = lang.trim(currentUserId);
-                    eventObj = this._formatEventObject(eventsJson[i], currentUserId);
+                    eventObj = _this._formatEventObject(eventsJson[i], currentUserId);
                     if (eventObj) {
-                        this._schedulerEvents1.push(eventObj);
+                        _this._schedulerEvents1.push(eventObj);
                     }
                 }
-                if (!this._userActivityData[currentUserId])
-                    this._userActivityData[currentUserId] = {};
-                this._userActivityData[currentUserId]["events"] = this._schedulerEvents1;
-                dojo.publish('/entity/activity/loadScheduler', [dojo.clone(this._schedulerEvents1), this]);
+                if (!_this._userActivityData[currentUserId])
+                    _this._userActivityData[currentUserId] = {};
+                _this._userActivityData[currentUserId]["events"] = _this._schedulerEvents1;
+                dojo.publish('/entity/activity/loadScheduler', [dojo.clone(_this._schedulerEvents1), _this]);
             }
         },
         _formatHistoryObject: function (userId, historyData, loggedInUser) {
@@ -1324,13 +1359,17 @@ function (writableSDataStore, singleEntrySDataStore, sDataServiceRegistry, utili
                 historyActivityObj.duration = historyData.Duration;
                 historyActivityObj.description = historyData.Description;
                 historyActivityObj.contactName = historyData.ContactName;
+				historyActivityObj.contactId = historyData.ContactId;
                 historyActivityObj.accountName = historyData.AccountName;
+				historyActivityObj.accountId = historyData.AccountId;
                 historyActivityObj.leadName = historyData.LeadName;
-                historyActivityObj.regarding = historyData.Description;
+				historyActivityObj.leadId = historyData.LeadId;
+                historyActivityObj.regarding = '<span style="max-width:500px;display:block">' + historyData.Description + '</span>';
                 historyActivityObj.priority = historyData.Priority;
                 historyActivityObj.notes = historyData.Notes;
                 historyActivityObj.location = historyData.Location;
                 historyActivityObj.opportunity = historyData.OpportunityName;
+				historyActivityObj.opportunityId = historyData.OpportunityId;
                 historyActivityObj.userColor = this._currentUserColor[userId];
                 historyActivityObj.confirmed = true;
 

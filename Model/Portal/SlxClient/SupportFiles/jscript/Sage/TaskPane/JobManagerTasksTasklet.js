@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/JobManagerTasksTasklet", [
     'dojo/i18n!./nls/JobManagerTasksTasklet',
     'dojo/_base/declare',
     'Sage/TaskPane/_BaseTaskPaneTasklet',
@@ -93,7 +93,7 @@ function(i18nStrings, declare, _BaseTaskPaneTasklet, TaskPaneContent, TaskPaneIt
                 });
             }
             dojo.parser.parse(self.taskletContainerNode);
-        },
+        }
     });
     return jobManagerTasksTasklet;
 });

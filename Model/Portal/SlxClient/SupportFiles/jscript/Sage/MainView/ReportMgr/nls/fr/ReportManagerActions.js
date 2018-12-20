@@ -1,15 +1,14 @@
-define(
-{
-    txtSelectRecord: 'Please selectionner juin fiche Dans La Liste.',
-    txtInvalidSelectionCount: 'Vous devez avoir au moins un enregistrement sélectionné avant de poursuivre.',
-    confirm_Deletion: 'Etes-vous sûr de vouloir effacer le sélectionné ${0}?',
-    confirm_Report: 'rapport',
-    confirm_Schedule: 'calendrier',
-    confirm_ReportHistory: 'report history record',
-    txtYes: 'Oui',
-    txtNo: 'Non',
-    deleteJobError: "Désolé, une erreur s'est produite pendant le processus de suppression: ${0}",
-    txtDeleteHistory: "Suppression d'enregistrements d'histoire",
-    txtDeleteTitle: "supprimer l'historique",
-    txtErrorDeleteReport: "Une erreur s'est produite suppression de l'accusé: ${0}"
+define("Sage/MainView/ReportMgr/nls/fr/ReportManagerActions", {
+    "txtSelectRecord": "Veuillez sélectionner un enregistrement dans la liste avant de continuer.",
+    "txtInvalidSelectionCount": "Vous devez sélectionner au moins un enregistrement pour pouvoir continuer.",
+    "confirm_Deletion": "Voulez-vous vraiment supprimer l'${0} sélectionné ?",
+    "confirm_Report": "Rapport",
+    "confirm_Schedule": "Planification",
+    "confirm_ReportHistory": "Enregistrement d'historique du rapport",
+    "txtYes": "Oui",
+    "txtNo": "Non",
+    "deleteJobError": "Une erreur s'est produite lors du processus de suppression : ${0}",
+    "txtDeleteHistory": "Suppression d'enregistrements d'historique",
+    "txtDeleteTitle": "Supprimer l'historique",
+    "txtErrorDeleteReport": "Une erreur s'est produite lors de la suppression du rapport : ${0}"
 });

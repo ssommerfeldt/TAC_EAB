@@ -117,41 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="securityProfileLookup.Caption" xml:space="preserve">
-    <value>Standardsicherheitsprofil:</value>
-  </data>
-  <data name="ModifyDate.Text" xml:space="preserve">
-    <value>Geändert</value>
-  </data>
-  <data name="bc271642-0466-4c43-a3ea-de5507f0b2e3.Message" xml:space="preserve">
-    <value>Die Abteilung kann nicht gelöscht werden, da sie über Mitglieder verfügt.  Entfernen Sie die Mitglieder, bevor Sie die Abteilung löschen.</value>
-  </data>
-  <data name="Type_item0.Text" xml:space="preserve">
-    <value>Abteilung</value>
-  </data>
   <data name="CreateDate.Caption" xml:space="preserve">
     <value>Erstellt:</value>
-  </data>
-  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
-    <value>Möchten Sie diese Abteilung wirklich löschen?</value>
   </data>
   <data name="ModifyDate.Caption" xml:space="preserve">
     <value>Zuletzt geändert:</value>
   </data>
-  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
-    <value>Profil</value>
+  <data name="QFSLXLookup.LookupProperties.ModifyUser.PropertyHeader" xml:space="preserve">
+    <value>ModifyUser (Geändert von)</value>
   </data>
-  <data name="deleteButton.ToolTip" xml:space="preserve">
-    <value>Löschen</value>
+  <data name="OwnerDescription.Caption" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="Type_item1.Text" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="Type_item0.Text" xml:space="preserve">
+    <value>Abteilung</value>
   </data>
   <data name="CreateDate.Text" xml:space="preserve">
     <value>Erstellt</value>
   </data>
-  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Message" xml:space="preserve">
-    <value>Abteilungsname fehlt, ist ungültig oder ist ein Duplikat.</value>
-  </data>
-  <data name="saveButton.ToolTip" xml:space="preserve">
-    <value>Speichern</value>
+  <data name="ModifyDate.Text" xml:space="preserve">
+    <value>Geändert</value>
   </data>
   <data name="QFSLXLookup.Caption" xml:space="preserve">
     <value>Geändert von:</value>
@@ -159,22 +147,34 @@
   <data name="QFLabel.Text" xml:space="preserve">
     <value>Sicherheitsprofil</value>
   </data>
-  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Title" xml:space="preserve">
-    <value>Validierung schlug fehl</value>
+  <data name="securityProfileLookup.Caption" xml:space="preserve">
+    <value>Standardsicherheitsprofil:</value>
   </data>
-  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
-    <value>Sicherheitsprofil suchen</value>
+  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
+    <value>Profil</value>
   </data>
-  <data name="QFSLXLookup.LookupProperties.ModifyUser.PropertyHeader" xml:space="preserve">
-    <value>Geändert von (Geändert von)</value>
+  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
+    <value>Möchten Sie diese Abteilung wirklich löschen?</value>
   </data>
-  <data name="OwnerDescription.Caption" xml:space="preserve">
-    <value>Name:</value>
+  <data name="bc271642-0466-4c43-a3ea-de5507f0b2e3.Message" xml:space="preserve">
+    <value>Die Abteilung kann nicht gelöscht werden, da sie über Mitglieder verfügt. Entfernen Sie die Mitglieder, bevor Sie die Abteilung löschen.</value>
   </data>
   <data name="bc271642-0466-4c43-a3ea-de5507f0b2e3.Title" xml:space="preserve">
     <value>Löschen nicht zulässig</value>
   </data>
-  <data name="Type_item1.Text" xml:space="preserve">
-    <value>Team</value>
+  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Title" xml:space="preserve">
+    <value>Validierungsfehler</value>
+  </data>
+  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Message" xml:space="preserve">
+    <value>Abteilungsname fehlt, ist ungültig oder ist ein Duplikat.</value>
+  </data>
+  <data name="deleteButton.ToolTip" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="saveButton.ToolTip" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
+    <value>Sicherheitsprofil suchen</value>
   </data>
 </root>

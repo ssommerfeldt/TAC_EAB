@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f758f085-8c3a-4154-8fb7-fa7232466f94" lastModifiedUtc="2017-05-03T20:36:26.1670334Z" name="RemoveWorkflowMapping" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="40d8ef77-e21d-4c83-9f95-ecf8152b6d38" paramName="id" sequence="0" paramType="String" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="2c235829-6639-436e-b2d9-d23212f7e24d" lastModifiedUtc="2017-05-03T20:36:07.8499821Z" targetType="Sage.SalesLogix.IONWorkflow.IonWorkflowMapping, Sage.SalesLogix.BusinessRules" targetMethod="RemoveWorkflowMapping" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

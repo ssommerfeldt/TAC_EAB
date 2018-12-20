@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="47a1ea5c-a1cd-4443-879a-c96aeef35373" lastModifiedUtc="2014-12-08T20:29:36.805453Z" parentEntityId="bc4ac6ae-25e2-4c4d-b049-b977eb026f59" childEntityId="9b47425f-3b70-4f38-a4cf-574c64d46086">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="7f5475e0-6750-4ef5-8039-4dea5756a7a8" lastModifiedUtc="2014-12-08T20:29:31.985453Z" name="SalesOrders" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="1779b28f-775b-4c69-85e1-438eb87d791e" lastModifiedUtc="2014-12-08T21:06:59.5499952Z" name="ErpPayFrom" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="4a4938e4-b506-46a1-b822-be6d7618c5b7" parentPropertyId="1198c2db-5f55-4dd1-b6b1-33bf67293d2d" childPropertyId="66d2c895-43b9-4280-842c-a025513996ad" ordinal="0" />
+  </column>
+</relationship>

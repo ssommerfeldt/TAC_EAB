@@ -1,0 +1,20 @@
+define("Sage/MainView/ExchangeRate/nls/zh-tw/ExchangeRateDialog", {
+    "lblUpdateCurrency": "更新貨幣",
+    "lblSelectEntity": "套用已更新貨幣至",
+    "lblSalesOrders": "銷售訂單",
+    "lblOpportunities": "商機",
+    "lblQuotes": "報價",
+    "lblOK": "確定",
+    "lblCancel": "取消",
+    "lblClose": "關閉",
+    "updateRecords_Caption": "更新實體匯率",
+    "job_Description": "更新實體匯率發生錯誤",
+    "errorRequestingJobMgr": "執行更新時發生錯誤: ${0}",
+    "lblRecordsToUpdate": "要更新的記錄數目",
+    "lblLockedUpdate": "將不會更新有已鎖定匯率的記錄",
+    "lblNote": "備註",
+    "OpenOrder": "未結訂單",
+    "SalesOrder": "銷售訂單",
+    "Open": "未結",
+    "New": "新增"
+});

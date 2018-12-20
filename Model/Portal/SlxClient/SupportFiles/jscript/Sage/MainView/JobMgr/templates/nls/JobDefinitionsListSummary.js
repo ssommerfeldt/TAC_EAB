@@ -1,11 +1,9 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (languageList, lang) {
-    var nls = {
-        root: {
-        }
-    };
-    return lang.mixin(languageList, nls);
+define("Sage/MainView/JobMgr/templates/nls/JobDefinitionsListSummary", {
+    root: {
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

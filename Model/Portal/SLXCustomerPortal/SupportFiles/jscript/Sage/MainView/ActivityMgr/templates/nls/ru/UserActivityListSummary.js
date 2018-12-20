@@ -1,16 +1,16 @@
-define((
-{ txtPhone_Caption: 'Телефон:',
-  lnkOpportunity_Caption: 'Сделка:',
-  txtStartTime_Caption: 'Время начала:',
-  lnkContactName_Caption: 'Контакт:',
-  lnkLeadName_Caption: 'Наводка:',
-  lnkTicket_Caption: 'Заявка:',
-  txtLocation_Caption: 'Размещение:',
-  txtLeader_Caption: 'Руководитель:',
-  txtDuration_Caption: 'Длительность:',
-  lnkAccountName_Caption: 'Субъект:',
-  lnkCompanyName_Caption: 'Компания:',
-  txtNotes_Caption: 'Заметки:',
-  btnComplete_Caption: 'Завершить',
-  lnkAttendeeCount_Caption: 'Число участников:' }
-));
+define("Sage/MainView/ActivityMgr/templates/nls/ru/UserActivityListSummary", {
+    "txtPhone_Caption": "Телефон:",
+    "lnkOpportunity_Caption": "Возможность:",
+    "txtStartTime_Caption": "Время начала:",
+    "lnkContactName_Caption": "Контакт:",
+    "lnkLeadName_Caption": "Заинтересованное лицо:",
+    "lnkTicket_Caption": "Заявка:",
+    "txtLocation_Caption": "Местоположение:",
+    "txtLeader_Caption": "Организатор:",
+    "txtDuration_Caption": "Длительность:",
+    "lnkAccountName_Caption": "Клиент:",
+    "lnkCompanyName_Caption": "Компания:",
+    "txtNotes_Caption": "Заметки:",
+    "btnComplete_Caption": "Завершить",
+    "lnkAttendeeCount_Caption": "Количество участников:"
+});

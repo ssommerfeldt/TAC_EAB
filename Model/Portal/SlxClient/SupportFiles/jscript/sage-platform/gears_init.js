@@ -32,73 +32,66 @@
 // issues. Applications that use the code below will continue to work seamlessly
 // when that happens.
 
-if (!window.Sage) {
-    Sage = {};
+if (!window.slx) {
+    //slx = {};
+    initGears();
 }
-Sage.OnGearsInitialized = [];
-Sage.installDesktopFeatures = function() {
-    top.location = "Libraries/DesktopIntegration/SlxDesktopIntegrationSetup.exe";
+
+if (!window.slxmm) {
+    initMailMerge();
 }
-//(function() {
+
+var slx_installDesktopFeatures = function() {
+    top.location = "Libraries/DesktopIntegration/OfficeIntegrationsetup.exe";
+}
+
+var xbar_installDesktopFeatures = function () {
+    top.location = "Libraries/DesktopIntegration/Infor CRM Xbar Setup.exe";
+}
+
+
+function initMailMerge() {
+    if (window.slxmm) {
+        return;
+    }
+
+    if ((typeof ActiveXObject !== 'undefined') || (window.navigator.userAgent.toLowerCase().indexOf("trident") >= 0))  {
+        // IE
+        try {
+            window.slxmm = new ActiveXObject('bho.slxmm');
+        } catch (e) { 
+            //oh well...
+            window.slxmm = {};
+        }
+    }
+    else
+    {
+        //everything but IE
+        window.slxmm = {active: false};
+    }
+}
+
 function initGears() {
-  // We are already defined. Hooray!
-  if (window.Sage && Sage.gears) {
-    return;
-  }
+    //nothing to do anymore...
+    //return; 
 
-  var factory = null;
-
-  // Firefox
-  if (typeof SageGearsFactory != 'undefined') {
-    factory = new SageGearsFactory();
-  } else {
-    // IE
-    try {
-      factory = new ActiveXObject('SageGears.Factory');
-      // privateSetGlobalObject is only required and supported on IE Mobile on
-      // WinCE.
-      if (factory.getBuildInfo().indexOf('ie_mobile') != -1) {
-        factory.privateSetGlobalObject(this);
-      }
-    } catch (e) {
-      // Safari
-      if ((typeof navigator.mimeTypes != 'undefined')
-           && navigator.mimeTypes["application/x-googlegears"]) {
-        factory = document.createElement("object");
-        factory.style.display = "none";
-        factory.width = 0;
-        factory.height = 0;
-        factory.type = "application/x-googlegears";
-        document.documentElement.appendChild(factory);
-        if(factory && (typeof factory.create == 'undefined')) {
-          // If NP_Initialize() returns an error, factory will still be created.
-          // We need to make sure this case doesn't cause Gears to appear to
-          // have been initialized.
-          factory = null;
-        }
-      }
+    if (window.slx) {
+        return;
     }
-  }
 
-  // !Do not! define any objects if Gears is not installed. This mimics the
-  // behavior of Gears defining the objects in the future.
-  if (!factory) {
-    return;
-  }
-
-  // Now set up the objects, being careful not to overwrite anything.
-  //
-  // Note: In Internet Explorer for Windows Mobile, you can't add properties to
-  // the window object. However, global objects are automatically added as
-  // properties of the window object in all browsers.
-
-
-  if (!Sage.gears) {
-    Sage.gears = {factory: factory};
-    if (Sage.OnGearsInitialized) {
-        for (var i = 0; i < Sage.OnGearsInitialized.length; i++) {
-            Sage.OnGearsInitialized[i]();
+    if ((typeof ActiveXObject !== 'undefined') || (window.navigator.userAgent.toLowerCase().indexOf("trident") >= 0))  {
+        // IE
+        try {
+            window.slx = new ActiveXObject('bho.slx');
+        } catch (e) { 
+            //oh well...
+            window.slx = {};
         }
     }
-  }
-}//)();
+    else
+    {
+        //everything but IE
+        window.slx = {};
+    }
+}
+

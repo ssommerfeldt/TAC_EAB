@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/CheckBoxControlDesigner", [
     'dojo/dom-class',
     'dojo/_base/declare',
     'dojo/_base/array',

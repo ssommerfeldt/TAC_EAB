@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a2a3d32f-0d59-4b2e-a595-61856a71eb9a" lastModifiedUtc="2016-03-03T21:22:08.1921365Z" name="CopyConfigGroup" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="ff40528f-46f2-46d2-8017-e21d1ea2e31c" lastModifiedUtc="2016-03-03T21:22:04.7784779Z" targetType="Sage.SalesLogix.IntegrationConfigGroup.IntegrationConfigGroup, Sage.SalesLogix.BusinessRules" targetMethod="CopyConfigGroup" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

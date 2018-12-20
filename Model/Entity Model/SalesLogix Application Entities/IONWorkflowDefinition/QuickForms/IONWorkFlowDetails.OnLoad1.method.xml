@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="3e39033f-0eda-44f2-8835-973abe1cc56f" lastModifiedUtc="2017-04-12T07:16:57.4385779Z" name="OnLoad1" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="IONWorkFlowDetails">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="85026204-a807-43cf-9ab9-6a9e9ae4c1d4" paramName="form" sequence="0" paramType="IIONWorkFlowDetails" />
+    <OrmEntityMethodParam id="38df9642-f168-4800-87ef-c379297dd85c" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

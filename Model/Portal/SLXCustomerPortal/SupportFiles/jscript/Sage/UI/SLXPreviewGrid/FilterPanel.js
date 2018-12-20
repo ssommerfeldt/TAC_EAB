@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/SLXPreviewGrid/FilterPanel", [
         'dijit/form/Button',
         'dijit/_Widget',
         'Sage/Utility/_LocalStorageMixin',
@@ -154,11 +154,18 @@ function (Button, _Widget, _LocalStorageMixin, previewGridStrings, declare) {
         /////////////////////////////////////
         // Private Helpers
 
-        _createFilter: function (filterConfig) {
+        _createFilter: function (column) {
             // summary:
             //  instantiate and return a filter widget
-            var c = filterConfig.widgetType;
-            return new c(filterConfig);
+            var c = column.widgetType;
+            var field = {
+                field: column.field,
+                lookupGridOptions: column.lookupGridOptions,
+                lookupStoreOptions: column.lookupStoreOptions,
+                lookupStructure: column.lookupStructure,
+                name: column.label
+            };
+            return new c(field);
         },
 
         _applyFilter: function () {

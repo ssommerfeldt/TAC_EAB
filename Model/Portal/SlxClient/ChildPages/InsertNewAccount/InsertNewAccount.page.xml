@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="8a3fa537-9c10-412d-b280-9fb08338392f">
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="8a3fa537-9c10-412d-b280-9fb08338392f" disablePageValidation="false">
   <PageAlias>InsertNewAccount</PageAlias>
   <LargeImage>[Localization!Global_Images:account_new_24x24]</LargeImage>
   <TemplateUrl>Masters\base.master</TemplateUrl>
@@ -14,4 +14,5 @@
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />
   <AppliedSecurity>Entities/Account/Add</AppliedSecurity>
+  <IncludeScript />
 </PortalPage>

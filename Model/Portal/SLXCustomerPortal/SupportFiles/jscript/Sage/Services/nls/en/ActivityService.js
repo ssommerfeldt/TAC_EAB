@@ -1,4 +1,4 @@
-define((
+define("Sage/Services/nls/en/ActivityService", (
 { txtErrorActionMsg: 'I\'m sorry, the action was not successful an error occurred.',
   txtActivity: 'activity',
   txtActivities: 'activities',
@@ -18,9 +18,9 @@ define((
   txtConfirmation: 'confirmation',
   txtConfirmations: 'confirmations',
   txtActionAcceptConfirmations: 'Accept Confirmations',
-  txtActionAcceptConfirmQuestion: 'Are you sure you want to accept the {0} selected {1}? This action can only be performed on New or Chnaged confirmations. All others will be ignored.',
+  txtActionAcceptConfirmQuestion: 'Are you sure you want to accept the {0} selected {1}? This action can only be performed on New or Changed confirmations. All others will be ignored.',
   txtDeclineConfirmations: 'Decline Confirmations',
-  txtActionDeclineConfrimQuestion: 'Are you sure you want to decline the {0} selected {1}? This action can only be performed on New or Chnaged confirmations. All others will be ignored.',
+  txtActionDeclineConfrimQuestion: 'Are you sure you want to decline the {0} selected {1}? This action can only be performed on New or Changed confirmations. All others will be ignored.',
   txtActionRemoveConfirmations: 'Delete Confirmations',
   txtActionRemoveConfirmationsQuestion: 'Are you sure you want to delete the {0} selected {1}? This action can only be performed on Leader, Declined or Deleted confirmations. All others will be ignored.',
   txtLiteratureRequest: 'literature request',

@@ -1,0 +1,140 @@
+﻿<style>
+    .infor-crm-contracts-widget .infor-crm-contract-heading {
+        color: #368AC0 !important;
+    }
+
+    .infor-crm-contracts-widget .infor-crm-contract-account-hyperlink {
+        line-height: 13px !important;
+        min-height: 13px !important;
+        margin-bottom: 5px !important;
+        display: inline-block;
+    }
+
+    .infor-crm-contracts-widget .infor-crm-contract-back-hyperlink {
+        border: 1px solid transparent;
+        border-bottom-color: #bdbdbd;
+        line-height: 16px;
+        padding: 9px 10px 9px 5px;
+    }
+
+    .infor-crm-contracts-widget .infor-crm-contract-detail-header {
+        padding: 10px 0 0 22px;
+        display: inline-block;
+    }
+
+    .infor-crm-contracts-widget .infor-crm-contract-overflow-ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100% - 100px);
+    }
+
+    .infor-crm-contracts-widget .infor-crm-contract-search {
+        height: 36px !important;
+    }
+
+    .infor-crm-contracts-widget .infor-crm-contract-main-list-view {
+        height: calc(100% - 36px) !important;
+    }
+
+    .infor-crm-contracts-widget .infor-crm-contract-detail-list-view {
+        height: calc(100% - 224px);
+        overflow: auto !important;
+    }
+
+    .infor-crm-contracts-widget td {
+         padding:10px 20px 10px 20px !important;
+    }
+</style>
+<div class="infor-crm-contracts-widget" ng-controller="infor.crm.contract.ContractController as ctrl">
+    <div class="card-content">
+        <div class="listview-search infor-crm-contract-search"
+             ng-show="!ctrl.isShowContacts">
+
+            <input xi-searchfield
+                   class="searchfield"
+                   ng-model="ctrl.searchText"
+                   ng-change="ctrl.searchOpporunities()"
+                   ng-model-options="{ debounce: 200 }"
+                   placeholder="{{ctrl.searchPlaceholder}}" />
+        </div>
+
+        <!--Main List-->
+        <div class="listview is-selectable infor-crm-contract-main-list-view" xi-listview="{dataset: ctrl.contracts}" ng-show="!ctrl.isShowContacts">
+            <ul>
+                <li ng-repeat="contract in ctrl.contracts"
+                    ng-click="ctrl.onSelectContract(contract)">
+                    <div style="background-color:{{contract.color}}" class="round info badge float-left">{{contract.badge}}</div>
+                    <div class="float-left">
+                        <p class="listview-heading infor-crm-contract-heading infor-crm-contract-overflow-ellipsis">{{contract.account}}</p>
+                    </div>
+                    <div class="float-left">
+                        <p class="listview-subheading infor-crm-contract-overflow-ellipsis">{{ctrl.lblDesc}}: {{contract.description}}</p>
+                    </div>
+                    <div class="l-pull-right">
+                        <p class="listview-micro">{{ctrl.lblExpDate}}</p>
+                        <p class="listview-subheading">{{contract.estimatedClose  | date: 'shortDate'}}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div style="border-bottom:1px solid #bdbdbd;" ng-show="ctrl.isShowContacts" class="lm-width-full">
+            <div class="infor-crm-contract-back-hyperlink">
+                <a ng-click="ctrl.onBack()" class="hyperlink">{{ctrl.lblBackToList}}</a>
+            </div>
+            <div class="infor-crm-contract-detail-header">
+                <label>{{ctrl.lblReference}} #: <a class="hyperlink infor-crm-contract-account-hyperlink" ng-click="ctrl.drilldownContract()">{{ctrl.selectedContract.key}}</a></label>
+            </div>
+
+            <table class="infor-crm-contracts-widget-details-div">
+                <tr>
+                    <td>
+                        <div class="field">
+                            <label class="listview-micro">{{ctrl.lblExpirationDate}}</label>
+                            <strong style="font-size:12px;">{{ctrl.selectedContract.estimatedClose | date: 'shortDate'}}</strong>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <label class="listview-micro">{{ctrl.lblType}}</label>
+                            <strong style="font-size:12px;">{{ctrl.selectedContract.TypeCodeText}}</strong>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <label class="listview-micro">{{ctrl.lblOwner}}</label>
+                            <strong style="font-size:12px;">{{ctrl.selectedContract.owner}}</strong>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <label class="listview-micro">{{ctrl.lblAmount}}</label>
+                            <strong style="font-size:12px;">{{ctrl.selectedContract.Amount | currency : '$' : 2}} </strong>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="padding:10px 0 0 20px" ng-show="ctrl.isShowContacts">
+            <label><a class="hyperlink infor-crm-contract-account-hyperlink" ng-click="ctrl.onSelectAccount()">{{ctrl.selectedContract.account}}</a></label>
+            <label ng-show="ctrl.selectedContract.street">{{ctrl.selectedContract.street}}</label>
+            <label ng-show="ctrl.selectedContract.city">{{ctrl.selectedContract.city}}, {{ctrl.selectedContract.country}}</label>
+        </div>
+
+        <div class="infor-crm-contract-detail-header" ng-show="ctrl.isShowContacts">
+            <strong>{{ctrl.lblContacts}}: {{ctrl.selectedContract.contacts.length}}</strong>
+        </div>
+        <div ng-show="ctrl.isShowContacts" class="listview is-selectable infor-crm-contract-detail-list-view" xi-listview="{dataset: ctrl.selectedContract.contacts}">
+            <ul>
+                <li ng-repeat="contact in ctrl.selectedContract.contacts" ng-click="ctrl.onSelectContact(contact)">
+                    <p class="listview-subheading">{{contact.name}}</p>
+                    <p class="listview-subheading">{{contact.title}}</p>
+                    <p class="listview-subheading l-pull-right">{{contact.phone}}</p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

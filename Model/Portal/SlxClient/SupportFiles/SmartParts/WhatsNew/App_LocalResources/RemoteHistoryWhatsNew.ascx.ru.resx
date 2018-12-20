@@ -117,49 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewHistory_Title" xml:space="preserve">
-    <value>Новые записи истории</value>
+  <data name="grdHistory_Account_ColumnHeader" xml:space="preserve">
+    <value>Клиент</value>
   </data>
   <data name="grdHistory_AddedBy_ColumnHeader" xml:space="preserve">
     <value>Добавлено</value>
   </data>
-  <data name="grdHistory_Regarding_ColumnHeader" xml:space="preserve">
-    <value>Тема</value>
-  </data>
-  <data name="grdUpdatedHistory_ChangedTo_ColumnHeader" xml:space="preserve">
-    <value>Кому</value>
-  </data>
-  <data name="grdHistory_DateAdded_ColumnHeader" xml:space="preserve">
-    <value>Дата добавления</value>
-  </data>
-  <data name="grdUpdatedHistory_ChangedDate_ColumnHeader" xml:space="preserve">
-    <value>Дата изменений</value>
-  </data>
-  <data name="grdUpdatedHistory_ChangedBy_ColumnHeader" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
-  <data name="grdUpdatedHistory_ChangedField_ColumnHeader" xml:space="preserve">
-    <value>Поле</value>
+  <data name="grdHistory_Completed_ColumnHeading" xml:space="preserve">
+    <value>Дата завершения</value>
   </data>
   <data name="grdHistory_Contact_ColumnHeader" xml:space="preserve">
     <value>Контакт</value>
   </data>
-  <data name="grdHistory_Completed_ColumnHeading" xml:space="preserve">
-    <value>Дата завершен.</value>
-  </data>
-  <data name="grdHistory_Account_ColumnHeader" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="ModifiedHistory_Title" xml:space="preserve">
-    <value>Измененные записи истории</value>
+  <data name="grdHistory_DateAdded_ColumnHeader" xml:space="preserve">
+    <value>Дата добавления</value>
   </data>
   <data name="grdHistory_EmptyRow" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <data name="grdHistory_Regarding_ColumnHeader" xml:space="preserve">
+    <value>Тема</value>
   </data>
   <data name="grdHistory_Type_ColumnHeading" xml:space="preserve">
     <value>Тип</value>
   </data>
+  <data name="grdUpdatedHistory_ChangedBy_ColumnHeader" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="grdUpdatedHistory_ChangedDate_ColumnHeader" xml:space="preserve">
+    <value>Дата изменения</value>
+  </data>
+  <data name="grdUpdatedHistory_ChangedField_ColumnHeader" xml:space="preserve">
+    <value>Поле</value>
+  </data>
   <data name="grdUpdatedHistory_ChangedFrom_ColumnHeader" xml:space="preserve">
     <value>От</value>
+  </data>
+  <data name="grdUpdatedHistory_ChangedTo_ColumnHeader" xml:space="preserve">
+    <value>Для</value>
+  </data>
+  <data name="ModifiedHistory_Title" xml:space="preserve">
+    <value>Измененные записи истории</value>
+  </data>
+  <data name="NewHistory_Title" xml:space="preserve">
+    <value>Новые записи истории</value>
   </data>
 </root>

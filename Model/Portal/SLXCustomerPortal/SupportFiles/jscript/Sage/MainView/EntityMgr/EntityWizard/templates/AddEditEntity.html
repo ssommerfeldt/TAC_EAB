@@ -1,0 +1,54 @@
+<div>
+    <div data-dojo-type="dijit.Dialog" title="New Entity Wizard" data-dojo-attach-point="_dialog" data-dojo-attach-event="onCancel:_btnCancel_OnClick" style="position:absolute;width: 625px;height:625px;">
+        <div data-dojo-type="dijit.form.Form" style="height:600px !important;" dojoattachpoint="Form">
+            <div style="">
+                <label style="font-weight:bold;" data-dojo-attach-point="lblSure">Are you sure ?</label>
+                <p>
+                    <label data-dojo-attach-point="lblThisStepCreateEntity">Completing this step will create the entities and necessary schema</label>
+                </p>
+                <hr />
+            </div>
+
+            <table style="padding-left:20px; padding-top:20px;">
+                <tr>
+                    <td style="text-align: right;">
+                        <label style="font-weight:bold; text-align: right;" data-dojo-attach-point="lblEntity">Entity : </label>
+                    </td>
+                    <td style="padding-left: 10px;">
+                        <label data-dojo-attach-point="createEntity"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top; padding-top:15px;text-align: right;">
+                        <span><label style="font-weight:bold;" data-dojo-attach-point="lblProperties">Properties : </label></span>
+                    </td>
+                    <td style="padding-left: 10px;">
+                        <ul class="properties" style="padding-left:0;"></ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <label style="font-weight:bold;" data-dojo-attach-point="lblRelatedEntity"></label>
+                    </td>
+                    <td style="padding-left: 10px;">
+                        <label data-dojo-attach-point="relatedEntity"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <label style="font-weight:bold;" data-dojo-attach-point="lblRelationType"></label>
+                    </td>
+                    <td style="padding-left: 10px;">
+                        <label data-dojo-attach-point="relationType"></label>
+                    </td>
+                </tr>
+            </table>
+
+            <div align="right" style="position:absolute;bottom:30px;width:90%;">
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnBack" data-dojo-attach-event="onClick:_btnBack_OnClick">< Back</div>
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnNext" data-dojo-attach-event="onClick:_btnNext_OnClick">Next ></div>
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnCancel" data-dojo-attach-event="onClick:_btnCancel_OnClick" style="margin-left:5px;">Cancel</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRangeEntityFilter" id="d695a8a3-250a-427e-b3c3-e001f9f567c3" lastModifiedUtc="2016-01-21T21:53:29.7923292Z" filterName="CreateDate" propertyName="CreateDate" characters="0">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRangeEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <ranges id="25d87037-f0c3-4ddf-9caa-1c67dc74aaec" rangeName="Yesterday" lower=":yesterdaystart" upper=":yesterdayend" />
+  <ranges id="fbf68e81-b392-48cc-b3af-29d315906cd7" rangeName="Today" lower=":todaystart" upper=":todayend" />
+  <ranges id="fa53f0ab-0920-4410-b7f7-14e7d588919c" rangeName="ThisWeek" lower=":thisweekstart" upper=":thisweekend" />
+  <ranges id="19512b0c-39d5-4f43-b0a5-e466a2758e43" rangeName="ThisMonth" lower=":thismonthstart" upper=":thismonthend" />
+  <ranges id="c497c016-c251-454a-8b2a-ce8c312a0669" rangeName="ThisQuarter" lower=":thisquarterstart" upper=":thisquarterend" />
+  <ranges id="70ecb045-0cca-49bd-ad4b-efd6180b802b" rangeName="ThisYear" lower=":thisyearstart" upper=":thisyearend" />
+  <ranges id="bb394801-b35f-4a6a-b8e5-3e1f5967dd26" rangeName="LastWeek" lower=":lastweekstart" upper=":lastweekend" />
+  <ranges id="01d2f8c2-b4c0-4749-8610-c4d80b8b34cc" rangeName="LastMonth" lower=":lastmonthstart" upper=":lastmonthend" />
+  <ranges id="50489dcc-52f6-4983-82c2-e9fe17c51a4f" rangeName="LastQuarter" lower=":lastquarterstart" upper=":lastquarterend" />
+  <ranges id="a02346c5-819c-47b9-9591-1e8ef8b7f620" rangeName="WeekToDate" lower=":thisweekstart" upper=":todayend" />
+  <ranges id="aa792488-7a34-4539-ba86-87217d89b686" rangeName="MonthToDate" lower=":thismonthstart" upper=":todayend" />
+  <ranges id="dd494957-c634-48e4-8995-db3701838197" rangeName="QuarterToDate" lower=":thisquarterstart" upper=":todayend" />
+  <ranges id="893e0c25-09ed-4f53-b33c-5a175b4c2bb9" rangeName="YearToDate" lower=":thisyearstart" />
+</entityFilter>

@@ -117,40 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="curCost.Caption" xml:space="preserve">
-    <value>Kosten:</value>
-  </data>
-  <data name="txtAbrevDescription.Caption" xml:space="preserve">
-    <value>Abk. Beschr.</value>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value />
   </data>
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Speichern</value>
   </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Beschreibung:</value>
-  </data>
-  <data name="dtpSourceDate.Caption" xml:space="preserve">
-    <value>Datum:</value>
-  </data>
-  <data name="btnInsertSave.ToolTip" xml:space="preserve">
-    <value>Speichern</value>
+  <data name="btnDelete.Caption" xml:space="preserve">
+    <value>Löschen</value>
   </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Löschen</value>
   </data>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Beschreibung:</value>
+  </data>
+  <data name="txtAbrevDescription.Caption" xml:space="preserve">
+    <value>Abgek. Beschr.</value>
+  </data>
   <data name="pklType.Caption" xml:space="preserve">
     <value>Typ:</value>
-  </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Sie sind im Begriff, diese Interessentenquelle permanent zu löschen.</value>
   </data>
   <data name="pklStatus.Caption" xml:space="preserve">
     <value>Status:</value>
   </data>
+  <data name="curCost.Caption" xml:space="preserve">
+    <value>Kosten:</value>
+  </data>
+  <data name="dtpSourceDate.Caption" xml:space="preserve">
+    <value>Datum:</value>
+  </data>
   <data name="dtpSourceDate.ButtonToolTip" xml:space="preserve">
     <value>Kalender</value>
   </data>
-  <data name="btnDelete.Caption" xml:space="preserve">
-    <value>Löschen</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Sie sind im Begriff, diese Interessentenquelle endgültig zu löschen.</value>
+  </data>
+  <data name="btnInsertSave.ToolTip" xml:space="preserve">
+    <value>Speichern</value>
   </data>
 </root>

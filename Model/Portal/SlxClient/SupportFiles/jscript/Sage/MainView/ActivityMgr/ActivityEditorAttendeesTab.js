@@ -1,4 +1,4 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
         'dojo',
         'dijit/_Widget',
@@ -38,34 +38,37 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
             actEditor: null,
             lup_Contact: null,
             lup_Lead: null,
-            self : null,
+            self: null,
             widgetsInTemplate: true,
             currentPrimaryEntityId: null,
             userContactAttendees: [],
             editorMode: null,
+            resourceKind: 'activityAttendees',
+            serviceName: 'dynamic',
             _activityId: null,
             _addedAttendees: null,
-            _uncheckItem : null,
+            _uncheckItem: null,
             _initialPrimaryContact: false,
             _gridStarted: false,
-            _timeZones  : [],
+            _timeZones: [],
+            _clearPrimary: false,
             constructor: function (options) {
                 lang.mixin(this, options);
                 lang.mixin(this, nlsStrings);
                 var self = this;
-                if (this._timeZones.length == 0) {
+                if (this._timeZones.length === 0) {
                     Sage.Utility.getTimeZones(function (result) {
                         self._timeZones = result;
                     });
                 }
             },
             //the template for the tab content is simply a placeholder for the grid created in code
-            widgetTemplate: new Simplate([             
+            widgetTemplate: new Simplate([
                 '<div>',
-                    '<div id="{%= $.id %}_attendeesGridPlaceholder" dojoAttachPoint="_attendeesGridPlaceholder" style="width:100%;height:100%"></div>',
+                    '<div id="{%= $.id %}_attendeesGridPlaceholder" dojoAttachPoint="_attendeesGridPlaceholder" style="width:100%;height:100%;min-height:225px"></div>',
                 '</div>'
             ]),
-            userContactList :[],
+            userContactList: [],
             //keep an internal list of new _attendee items as they are added
             _newItems: [],
             //this is called once by the code that adds the tab to the activity editor.
@@ -79,7 +82,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     return;
                 }
                 this._activityId = utility.getCurrentEntityId();
-                this._buildGrid(readOnly);     
+                this._buildGrid(readOnly);
 
                 //listen for when activities are saved so we can ensure the correct relationships and save the agenda
                 dojo.subscribe('/entity/activity/create', this, this._activitySaved);
@@ -91,8 +94,8 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 this.self = this;
                 var self = this;
             },
-            primaryClicked: function (entity) {               
-               // console.log("primaryClicked -> Name :" + entity.Name + ",oldValue :" + entity.IsPrimary + ",NewValue:" + entity.checked);
+            primaryClicked: function (entity) {
+                // console.log("primaryClicked -> Name :" + entity.Name + ",oldValue :" + entity.IsPrimary + ",NewValue:" + entity.checked);
 
                 entity['attendeeTab'] = true;
                 entity['PrimaryChecked'] = entity.checked;
@@ -118,8 +121,8 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 } else {
                     dojo.publish('/entity/activityAttendee/primaryChanged', [entity, this]);
                 }
-            },          
-            _primaryUnChecked: function (entity) {                
+            },
+            _primaryUnChecked: function (entity) {
                 if (this.currentPrimaryEntityId !== entityId) {
                     console.log("new primary");
                 } else {
@@ -138,67 +141,247 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 }
                 return displayName;
             },
-            _buildGrid: function (readOnly) {
+            createToolsConfig: function () {
                 //define the tools: an "add" button that calls our custom addItem and use the default "delete" functionality.
-                var tools = [];               
-                    tools = [
-                        {
-                            id: 'attendeeSpeedSearch',
-                            imageClass: 'icon_plus_16x16',
-                            handler: this.speedSearch,
-                            tooltip: this.tooltip_speedSearch,
-                            scope: this
-                        },
-                         {
-                             id: 'attendeeAddContact',
-                             // imageClass: 'icon_plus_16x16',
-                             icon: './images/icons/Contact_Lookup_16x23.png',
-                             handler: this.lookupContacts,
-                             tooltip: this.tooltip_AddContact,
-                             scope: this
-                         },
-                        {
-                            id: 'attendeeeAddLead',
-                            //imageClass: 'icon_plus_16x16',
-                            icon: './images/icons/Lead_Lookup_16x23.png',
-                            handler: this.lookupLeads,
-                            tooltip: this.tooltip_AddLead,
-                            scope: this
-                        },
-                        {
-                            id: 'attendeeDelete',
-                            imageClass: 'icon_Delete_16x16',
-                            handler: this.deleteAttendees,
-                            tooltip: this.tooltip_Delete,
-                            scope: this
-                        }
-                    ];             
-    
-                var self1 = this;
-                var onComplete = function (data, context) {
-                    array.forEach(data, function (item, i) {
-                        if (item["IsPrimary"]) {
-                            this.currentPrimaryEntityId = item["EntityId"];
-                        }
-                        if (item["TimeZone"]) {
-                            item["TimeZone"] = self1._getTimeZoneDisplayName(item["TimeZone"]);
-                        }
-                        //Rebind the edited but unsaved roles (to preserve the changed values between tab clicks)
-                        if (self1._grid && self1._grid.mode !== "insert" && self1._grid.store && self1._grid.store.dirtyDataCache.isDirty) {
-                            if (self1._grid.store.dirtyDataCache[item["$key"]]) {
-                                item["RoleName"] = self1._grid.store.dirtyDataCache[item["$key"]]["RoleName"];
-                                item["IsPrimary"] = self1._grid.store.dirtyDataCache[item["$key"]]["IsPrimary"];
-                                item["IsAttendee"] = self1._grid.store.dirtyDataCache[item["$key"]]["IsAttendee"];
-                            }
-                        }
-                       
-                    });                    
-                };               
-                var onDataChange = function (entity, field, newValue) {
-                    return;
-                };
-    
+                var tools = [];
+                tools = [
+                    {
+                        id: 'attendeeSpeedSearch',
+                        imageClass: 'icon_plus_16x16',
+                        handler: this.speedSearch,
+                        tooltip: this.tooltip_speedSearch,
+                        scope: this
+                    },
+                    {
+                        id: 'attendeeAddContact',
+                        imageClass: 'icon_Contact_Lookup_16x23',
+                        //icon: './images/icons/Contact_Lookup_16x23.png',
+                        handler: this.lookupContacts,
+                        tooltip: this.tooltip_AddContact,
+                        scope: this
+                    },
+                    {
+                        id: 'attendeeeAddLead',
+                        imageClass: 'icon_Lead_Lookup_16x23',
+                        //icon: './images/icons/Lead_Lookup_16x23.png',
+                        handler: this.lookupLeads,
+                        tooltip: this.tooltip_AddLead,
+                        scope: this
+                    },
+                    {
+                        id: 'attendeeDelete',
+                        imageClass: 'icon_Delete_16x16',
+                        handler: this.deleteAttendees,
+                        tooltip: this.tooltip_Delete,
+                        scope: this
+                    }
+                ];
+                return tools;
+            },
+            createColumnConfig: function (readOnly) {
+                var primaryColumn, roleColumn, isAttendeeColumn;
 
+                if (readOnly) {
+                    primaryColumn = {
+                        field: 'IsPrimary',
+                        name: this.header_Primary,
+                        width: '40px',
+                        type: Sage.Extensions.Activity.primaryContactCheckBox1
+                    };
+                    roleColumn = {
+                        field: 'RoleName',
+                        name: this.header_RoleName
+                    };
+                    isAttendeeColumn = {
+                        field: 'IsAttendee',
+                        name: this.header_Attendee,
+                        width: '70px',
+                        type: Sage.Extensions.Activity.isAttendeeCheckBox1
+                    };
+                } else {
+                    primaryColumn = {
+                        field: 'IsPrimary',
+                        name: this.header_Primary,
+                        width: '40px',
+                        editable: true,
+                        radioType: 'group',
+                        type: Sage.Extensions.UI.Columns.CheckBox,
+                        checkBoxClicked: this.primaryClicked
+                    };
+                    roleColumn = {
+                        field: 'RoleName',
+                        name: this.header_RoleName,
+                        pickListName: 'Attendee Role',
+                        width: '130px',
+                        type: Sage.Extensions.UI.Columns.PickListSelect,
+                        options: ["Decision Maker", "Gate Keeper", "Other"],
+                        editable: true
+                    };
+                    isAttendeeColumn = {
+                        field: 'IsAttendee',
+                        name: this.header_Attendee,
+                        width: '70px',
+                        editable: true,
+                        radioType: 'group',
+                        type: dojox.grid.cells.Bool
+                    };
+                }
+
+                //define the columns:
+                var columns = [
+                    {
+                        field: 'Name',
+                        name: this.header_Name,
+                        width: '150px',
+                        editable: false
+                    }, {
+                        field: 'AccountName',
+                        name: this.header_AccountName,
+                        width: '150px',
+                        editable: false
+                    }, {
+                        field: 'EntityType',
+                        name: this.header_Type,
+                        width: '60px',
+                        editable: false
+                    },
+                    primaryColumn,
+                    roleColumn,
+                    isAttendeeColumn,
+                    {
+                        field: 'PhoneNumber',
+                        name: this.header_Phone,
+                        width: '100px',
+                        editable: false
+                    }, {
+                        field: 'Email',
+                        name: this.header_Email,
+                        width: '150px',
+                        editable: false
+                    }, {
+                        field: 'TimeZone',
+                        name: this.header_TimeZone,
+                        width: '150px',
+                        editable: false
+                    }
+                ];
+                return columns;
+            },
+            getSelect: function () {
+                var select = [
+                  'EntityType',
+                  'EntityId',
+                  'IsPrimary',
+                  'Name',
+                  'Description',
+                  'Notes',
+                  'AccountId',
+                  'AccountName'
+                ];
+                return select;
+            },
+            getSort: function () {
+                var sort = [{ attribute: 'Name' }];
+                return sort;
+            },
+            contextualCondition: function () {
+                // console.log('contextualCondition' + 'Activity.id eq \'' + self._activityId + '\'');
+                var actId = this._activityId;
+                if (actId && actId.length > 12) {
+                    actId = actId.substr(0, 12);
+                }
+                return 'Activity.id eq \'' + actId + '\'';
+            },
+            getStoreOptions: function (readOnly) {
+                var self1 = this;
+                var options = {
+                    readOnly: readOnly,
+                    columns: this.createColumnConfig(readOnly),
+                    tools: this.createToolsConfig(readOnly),
+                    storeOptions: {
+                        service: sDataServiceRegistry.getSDataService(this.serviceName),
+                        resourceKind: this.resourceKind,
+                        select: this.getSelect(),
+                        sort: this.getSort(),
+                        //newItemParentReferenceProperty: 'Activity',
+                        onDataChange: lang.hitch(this, this.onGridDataChange),
+                        onComplete: lang.hitch(this, this.onGridComplete),
+                        clearStoreCacheOnDelete: false
+                    },
+                    slxContext: { 'workspace': '', tabId: '' },
+                    contextualCondition: lang.hitch(this, this.contextualCondition),
+                    id: this.id + '_attendees',
+                    rowsPerPage: 40,
+                    singleClickEdit: false,
+                    enableCheckBoxSelection: false,
+                    selectionMode: 'single'
+                };
+                //setting it to insert mode will have it use the writableStore.  This prevents the new
+                // items from being posted to the server without the relationship to Activity.  When the
+                // activity is saved, we will add the relationship and save the items at that point.
+                if (this.editorMode.indexOf('New') === 0 || this.editorMode === "CompleteUnscheduled") {
+                    options.storeOptions['isInsertMode'] = true;
+                }
+                return options;
+            },
+            onGridComplete: function (data, context) {
+                var self1 = this;
+                array.forEach(data, function (item, i) {
+                    if (item["IsPrimary"]) {
+                        this.currentPrimaryEntityId = item["EntityId"];
+                    }
+                    if (item["TimeZone"]) {
+                        item["TimeZone"] = self1._getTimeZoneDisplayName(item["TimeZone"]);
+                    }
+                    //Rebind the edited but unsaved roles (to preserve the changed values between tab clicks)
+                    if (self1._grid && self1._grid.mode !== "insert" && self1._grid.store && self1._grid.store.dirtyDataCache.isDirty) {
+                        if (self1._grid.store.dirtyDataCache[item["$key"]]) {
+                            item["RoleName"] = self1._grid.store.dirtyDataCache[item["$key"]]["RoleName"];
+                            item["IsPrimary"] = self1._grid.store.dirtyDataCache[item["$key"]]["IsPrimary"];
+                            item["IsAttendee"] = self1._grid.store.dirtyDataCache[item["$key"]]["IsAttendee"];
+                        }
+                    }
+                });
+            },
+            onGridDataChange: function (entity, field, newValue) {
+                return;
+            },
+            onGridBlur: function () {
+
+            },
+            //The "unsaved Data" message is not cleared as the "dirtyDataMsgID" is empty, overriding the method from EditableGrid.js
+            onGridMarkClean: function () {
+                if (this.dirtyDataMsgID) {
+                    var dirtyDataMsg = dojo.byId(this.dirtyDataMsgID);
+                    if (dirtyDataMsg) {
+                        dojo.style(dojo.byId(this.dirtyDataMsgID), 'display', 'none');
+                    }
+                }
+                var bindingMgr = Sage.Services.getService('ClientBindingManagerService');
+                if (bindingMgr) {
+                    bindingMgr.clearDirtyAjaxItem(this.id);
+                }
+            },
+            onGridMarkDirty: function () {
+                //Do not show the *unsaved message on top of the page
+            },
+            onGridFetchComplete: function () {
+                if (this._grid.mode != "insert" && this._uncheckItem) {
+                    //var chkBoxId = 'chk_IsPrimary_' + self._uncheckItem.EntityId;
+                    //console.log("checkbox click" + self._uncheckItem.Name);
+                    //dojo.byId(chkBoxId).click();
+                }
+                //Add the primary contact to grid
+                if (this._initialPrimaryContact && this._gridStarted) {
+                    //console.log("self._addPrimaryContact");
+                    this._addPrimaryContact();
+                    if (this._clearPrimary) {
+                        this.clearPrimary(this._grid, 'IsPrimary');
+                        this._clearPrimary = false;
+                    }
+                }
+            },
+            decalreCustomGridCell: function () {
                 declare("Sage.Extensions.Activity.primaryContactCheckBox1", dojox.grid.cells.Bool, {
                     format: function (index, inItem) {
                         var value = Sage.Utility.getValue(inItem, "IsPrimary");
@@ -221,212 +404,46 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     }
                 });
 
-                var primaryColumn = {};
-                var roleColumn = {};
-                var isAttendeeColumn = {};
-                if (readOnly) {                   
-                    primaryColumn =  {
-                        field: 'IsPrimary',
-                        name: this.header_Primary,
-                        width: '40px',
-                        type:Sage.Extensions.Activity.primaryContactCheckBox1                     
-                    };
-                    roleColumn = {
-                        field: 'RoleName',
-                        name: this.header_RoleName
-                    };
-                    isAttendeeColumn = {
-                        field: 'IsAttendee',
-                        name: this.header_Attendee,
-                        width: '70px',
-                        type: Sage.Extensions.Activity.isAttendeeCheckBox1
-                    };
-                }else{                
-                    primaryColumn = {
-                        field: 'IsPrimary',
-                        name: this.header_Primary,
-                        width: '40px',
-                        editable: true,
-                        radioType: 'group',
-                        type: Sage.Extensions.UI.Columns.CheckBox,
-                        checkBoxClicked: this.primaryClicked
+            },
+            _buildGrid: function (readOnly) {
+                //define the tools: an "add" button that calls our custom addItem and use the default "delete" functionality.
+                this.decalreCustomGridCell();
+                var actid = activityUtility.getCurrentActivityId();
+                this._activityId = this._activityId || actid;
 
-                    };
-                    roleColumn = {
-                        field: 'RoleName',
-                        name: this.header_RoleName,
-                        pickListName: 'Attendee Role',
-                        width: '130px',
-                        type: Sage.Extensions.UI.Columns.PickListSelect,
-                        options: ["Decison Maker", "Gate Keeper", "Other"],
-                        editable: true
-                    };
-                    isAttendeeColumn = {
-                        field: 'IsAttendee',
-                        name: this.header_Attendee,
-                        width: '70px',
-                        editable: true,
-                        radioType: 'group',
-                        type: dojox.grid.cells.Bool
+                //set up the rest of the grid options:
+                var options = this.getStoreOptions(readOnly);
 
-                    };
-                }
+                //create the grid
+                var grid = new SlxPreviewGrid.Grid(options, this._attendeesGridPlaceholder);
 
+                grid.setSortColumn('Name');
+                this._grid = grid._grid;
 
-                    //define the columns:
-                    var columns = [
-                        {
-                            field: 'Name',
-                            name: this.header_Name,
-                            width: '150px',
-                            editable: false                        
-                        }, {
-                            field: 'AccountName',
-                            name: this.header_AccountName,
-                            width: '150px',
-                            editable: false
-                        }, {
-                            field: 'EntityType',
-                            name: this.header_Type,
-                            width: '60px',
-                            editable: false
-                        },
-                        primaryColumn,
-                        roleColumn,
-                        isAttendeeColumn,
-                        {
-                            field: 'PhoneNumber',
-                            name: this.header_Phone,
-                            width: '100px',
-                            editable: false
-                        }, {
-                            field: 'Email',
-                            name: this.header_Email,
-                            width: '150px',
-                            editable: false
-                        }, {
-                            field: 'TimeZone',
-                            name: this.header_TimeZone,
-                            width: '150px',
-                            editable: false
-                        }                    
-                   
-                    ];
-                   
-                    var actid = activityUtility.getCurrentActivityId();
-                    this._activityId = this._activityId || actid;
+                dojo.connect(this._grid, 'onBlur', this, this.onGridBlur);
 
-                    //set up the rest of the grid options:
-                    var options = {
-                        columns: columns,
-                        tools: tools,
-                        storeOptions: {
-                            service: sDataServiceRegistry.getSDataService('dynamic'),
-                            resourceKind: 'activityAttendees',
-                            select: ['EntityType', 'EntityId', 'IsPrimary', 'Name', 'Description', 'Notes', 'AccountId','AccountName'],
-                            sort: [{ attribute: 'Name' }],
-                            //newItemParentReferenceProperty: 'Activity',
-                            onDataChange: onDataChange,
-                            onComplete: onComplete,
-                            clearStoreCacheOnDelete: false
-                          
-                            
-                        },
-                        slxContext: { 'workspace': '', tabId: '' },
-                        contextualCondition: function () {
-                            // console.log('contextualCondition' + 'Activity.id eq \'' + self._activityId + '\'');
-                            var actId = self._activityId;
-                            if(actId && actId.length >12){
-                                actId = actId.substr(0, 12);
-                            }
-                            return 'Activity.id eq \'' + actId + '\'';
-                        },
-                        id: this.id + '_attendees',
-                        rowsPerPage: 40,
-                        singleClickEdit: false,
-                        enableCheckBoxSelection: false,                    
-                        selectionMode: 'single'
-                       
-
-                    };
-
-                    if (readOnly) {
-                        options.readOnly = true;
-                    }
-
-                    //setting it to insert mode will have it use the writableStore.  This prevents the new
-                    // items from being posted to the server without the relationship to Activity.  When the
-                    // activity is saved, we will add the relationship and save the items at that point.
-                
-
-                    if (this.editorMode.indexOf('New') == 0 || this.editorMode === "CompleteUnscheduled") {
-                        options.storeOptions['isInsertMode'] = true;
-                    }
-                    //create the grid
-                    var grid = new SlxPreviewGrid.Grid(options, this._attendeesGridPlaceholder);
-
-                    grid.setSortColumn('Name');
-                    this._grid = grid._grid;
-                    var self = this;     
-
-                    dojo.connect(this._grid, 'onBlur', function () {                   
-                        if (self._grid.mode != "insert" && self._grid.store.dirtyDataCache.isDirty) {
-                            //alert("unsaved data");
-                         //   self._grid.saveChanges();
-                        }
-                    });
-
-                   
-                    //...and start it up
-                    grid.startup();
+                //...and start it up
+                grid.startup();
 
                 //The "unsaved Data" message is not cleared as the "dirtyDataMsgID" is empty, overriding the method from EditableGrid.js
-                    this._grid.markClean = function () {
-                        if (this.dirtyDataMsgID) {
-                            var dirtyDataMsg = dojo.byId(this.dirtyDataMsgID);
-                            if (dirtyDataMsg) {
-                                dojo.style(dojo.byId(this.dirtyDataMsgID), 'display', 'none');
-                            }
-                        }
-                        var bindingMgr = Sage.Services.getService('ClientBindingManagerService');
-                        if (bindingMgr) {
-                            bindingMgr.clearDirtyAjaxItem(this.id);
-                        }
-                    };
+                this._grid.markClean = this.onGridMarkClean;
+                this._grid.markDirty = this.onGridMarkDirty;
 
+                dojo.connect(this._grid, "_onFetchComplete", this, this.onGridFetchComplete);
+            },
 
-                    this._grid.markDirty = function () {
-                       //Do not show the *unsaved message on top of the page
-                    };
-
-
-                    dojo.connect(this._grid, "_onFetchComplete", function () {
-                       
-                        if (self._grid.mode != "insert" && self._uncheckItem) {
-                            //var chkBoxId = 'chk_IsPrimary_' + self._uncheckItem.EntityId;
-                            //console.log("checkbox click" + self._uncheckItem.Name);
-                            //dojo.byId(chkBoxId).click();
-                        }
-                        //Add the primary contact to grid 
-                        if (self._initialPrimaryContact && self._gridStarted) {
-                            //console.log("self._addPrimaryContact");
-                            self._addPrimaryContact();
-                        }
-                       
-                    });
-                },
-       
-            //Add Contact User to availability tab 
+            //Add Contact User to availability tab
             _addMemberToAvailabilityTab: function (memberData) {
                 var members = [];
                 members.push(memberData);
                 this.actEditor.addMembers(members);
             },
 
-            disableGrid: function(){
+            disableGrid: function () {
                 this._grid.readOnly = true;
                 this._grid.refresh();
             },
+
             //our handler for the "add" button
             saveGridChanges: function (callback) {
                 //If we are not in insert mode, we should save existing changes before creating new items.
@@ -438,35 +455,31 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 }
             },
 
-            //Contact and Lead look up 
+            //Contact and Lead look up
             speedSearch: function () {
                 var self = this;
-                if (!this._speedSearchLookup) {
-                    this._speedSearchLookup = new SpeedSearchLookup();
-                }
+                this._speedSearchLookup = new SpeedSearchLookup();
                 this._speedSearchLookup.showLookup();
 
                 this._speedSearchLookup.doSelected = function (items) {
                     self._processLookupResults(items);
-                    self._speedSearchLookup.hide();
-                }
+                };
             },
             lookupContacts: function () {
-                  this.lup_Contact.seedProperty = 'Account.Id',
-                  this.lup_Contact.seedValue = this.actEditor._activityData.AccountId;
-                  this.lup_Contact.query.conditions = '';
-                  this.lup_Contact.buildSDataStoreQueryForSeeding();
-                  this.lup_Contact._originalQueryConditions = this.lup_Contact.query.conditions;
-                  this.lup_Contact.cancelText = this.lup_Contact.closeText;
-                  this.lup_Contact.overrideSeedValueOnSearch = true;
-                  this.lup_Contact.showLookup();
-                  var handle = dojo.connect(this.lup_Contact.lookupDialog, 'onHide', this.lup_Contact, function () {
-                      dojo.disconnect(handle);
-                      if (this.seedValue) {
-                          this.resetGrid();
-                      }
-                  });
-
+                this.lup_Contact.seedProperty = 'Account.Id',
+                this.lup_Contact.seedValue = this.actEditor._activityData.AccountId;
+                this.lup_Contact.query.conditions = '';
+                this.lup_Contact.buildSDataStoreQueryForSeeding();
+                this.lup_Contact._originalQueryConditions = this.lup_Contact.query.conditions;
+                this.lup_Contact.cancelText = this.lup_Contact.closeText;
+                this.lup_Contact.overrideSeedValueOnSearch = true;
+                this.lup_Contact.showLookup();
+                var handle = dojo.connect(this.lup_Contact.lookupDialog, 'onHide', this.lup_Contact, function () {
+                    dojo.disconnect(handle);
+                    if (this.seedValue) {
+                        this.resetGrid();
+                    }
+                });
             },
             lookupLeads: function () {
                 this.lup_Lead.query.conditions = '';
@@ -491,7 +504,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                                 dojo.publish('/entity/activityAttendee/primaryChanged', [selectedItem, this]);
                             }
 
-                            //Remove the associated user from Availability tab 
+                            //Remove the associated user from Availability tab
                             if (selectedItems[i].EntityType == 'Contact') {
                                 var userId = self._checkUserContactAssociation(selectedItems[i].EntityId);
                                 if (userId) {
@@ -505,18 +518,20 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                             }
                         }
                     }
-                  
                 });
-
-            },           
-            _attendeeExists: function (entityId) {               
-                var count = this._grid.rowCount;               
+            },
+            _attendeeExists: function (entityId) {
+                var count = this._grid.rowCount;
+                // TODO: This check should be removed by avoiding duplicate addition to this._grid.store
+                if (count === 0 && typeof (this._grid.store.dataCacheToArray) !== 'undefined' && count !== this._grid.store.dataCacheToArray().length) {
+                    this._grid.store.deleteItem(this._grid.store.dataCacheToArray()[0]);
+                }
                 for (var i = 0; i < count; i++) {
                     var item = this._grid.getItem(i);
                     if (item.EntityId === entityId) {
                         return true;
                     }
-                }               
+                }
                 return false;
             },
             resetPrimary: function (entityId) {
@@ -528,43 +543,56 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     }
                 }
             },
-
-            unCheckPrimary: function (entityId) {
+            unCheckPrimary: function () {
                 if (this._grid.mode == "insert") {
                     this.resetPrimary();
                 } else {
+                    if (!this._gridStarted) {
+                        this._clearPrimary = true;
+                        return;
+                    }
                     var count = this._grid.rowCount;
                     for (var i = 0; i < count; i++) {
                         var item = this._grid.getItem(i);
-                        if (item.IsPrimary) {                           
+                        if (item.IsPrimary) {
                             //If edit mode, store the item to be unchecked and do the uncheck after the grid refreshes
-                            this._uncheckItem = item;                          
+                            this._uncheckItem = item;
+                            dojo.publish('/entity/activityAttendee/primaryChanged', [item, this]);
                         }
                     }
+                    this.clearPrimary(this._grid, 'IsPrimary');
                 }
             },
-            resetRows: function (grid, rowIndex, inAttrName, currentItem) {
-
+            clearPrimary: function (grid, inAttrName) {
                 var count = grid.rowCount;
                 for (var i = 0; i < count; i++) {
                     var item = grid.getItem(i);
+                    var chkBoxId = 'chk_' + inAttrName + '_' + item.EntityId;
+                    dojo.byId(chkBoxId).checked = false;
+                    grid.store.setValue(item, inAttrName, false);
+                }
+            },
+            resetRows: function (grid, rowIndex, inAttrName, currentItem) {
+                var count = grid.rowCount;
+                var chkBoxId = '';
+                for (var i = 0; i < count; i++) {
+                    var item = grid.getItem(i);
                     if (item && item.EntityId !== currentItem.EntityId) {
-                        var chkBoxId = 'chk_' + this.field + '_' + item.EntityId;
+                        chkBoxId = 'chk_' + this.field + '_' + item.EntityId;
                         dojo.byId(chkBoxId).checked = false;
                         grid.store.setValue(item, inAttrName, false);
                     } else if (item && item.EntityId === currentItem.EntityId) {
-                        var chkBoxId = 'chk_' + this.field + '_' + item.EntityId;
+                        chkBoxId = 'chk_' + this.field + '_' + item.EntityId;
                         //dojo.byId(chkBoxId).checked = false;
                         grid.store.setValue(item, inAttrName, true);
                     }
                 }
-
             },
             resetEntityContext: function () {
                 var parentRelationshipName = this.parentRelationshipName;
                 var entityId = utility.getCurrentEntityId();
                 if (parentRelationshipName === 'activityId') {
-                    entityId = entityId.substr(0, 12); // for reoccuring activity Ids;
+                    entityId = entityId.substr(0, 12); // for reoccurring activity Ids;
                 }
                 var contextualCondition = function () {
                     return (parentRelationshipName || '\'A\'') + ' eq \'' + entityId + '\'';
@@ -573,18 +601,18 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 this.refresh();
             },
             //Process result data retrieved from Speed Search look up and update the Grid
-            _processLookupResults: function (results) {        
+            _processLookupResults: function (results) {
                 var attendees = [];
                 var leadAttendees = [];
                 for (var i = 0; i < results.length; i++) {
-                    if (!this._attendeeExists(results[i].$key)) {                       
+                    if (!this._attendeeExists(results[i].$key)) {
                         attendees.push(this._setAttendeeEntity(results[i]));
                         if (results[i].type == "Contact") {
                             this._getSlxAssociation("Contact", results[i].$key, null, function (data) {
                                 if (data && data.length > 0 && data[0].UserId) {
                                     this._updateUserContactList(data[0].UserId, data[0].ContactId);
                                     this._getResourceData(utility.getClientContextByKey('userID'), data[0].UserId, this._addMemberToAvailabilityTab, this);
-                                }                               
+                                }
                             }, this);
                         }
                     }
@@ -592,10 +620,9 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 if (attendees.length > 0) {
                     this._addAttendeesToStore(attendees);
                 }
-              
             },
             //Process result data retrieved from Contact Look up and update the Grid
-            _processContactLookupResults: function (results) {               
+            _processContactLookupResults: function (results) {
                 var contactAttendees = [];
                 for (var i = 0; i < results.length; i++) {
                     if (!this._attendeeExists(results[i].$key)) {
@@ -619,7 +646,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 }
             },
             //Process result data retrieved from Lead Look up and update the Grid
-            _processLeadLookupResults: function (results) {                
+            _processLeadLookupResults: function (results) {
                 var leadAttendees = [];
                 for (var i = 0; i < results.length; i++) {
                     if (!this._attendeeExists(results[i].$key)) {
@@ -631,8 +658,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 }
                 if (leadAttendees.length > 0) {
                     this._addAttendeesToStore(leadAttendees);
-                }          
-                              
+                }
             },
             getFieldValue: function (fields, name) {
                 for (var i = 0; i < fields.length; i++) {
@@ -641,7 +667,6 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                         return field.fieldValue;
                     }
                 }
-
                 return '';
             },
             _setAttendeeEntity: function (results) {
@@ -686,15 +711,15 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                         if (attendeeEntity.TimeZone) {
                             attendeeEntity.TimeZone = this._getTimeZoneDisplayName(attendeeEntity.TimeZone);
                         }
-                    }                    
+                    }
                     attendeeEntity.PhoneNumber = results.WorkPhone;
                     attendeeEntity.RoleName = "";
                     attendeeEntity.general = false;
-                    
+
                 }
                 return attendeeEntity;
-            },           
-            //Get Current user's security access to the given User Id 
+            },
+            //Get Current user's security access to the given User Id
             _getResourceData: function (currentUserId, accessTo, callback, scope) {
                 this.accessData = false;
                 if (!this._accessStore) {
@@ -714,18 +739,16 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     },
                     scope: this
                 });
-            },          
-           
+            },
             //Check if the Contact/User is associated
-            _getSlxAssociation: function (type,entityId,scopeObj, callback, scope) {
+            _getSlxAssociation: function (type, entityId, scopeObj, callback, scope) {
                 this.accessData = false;
                 if (!this._associationStore) {
                     this._associationStore = new WritableSDataStore({
                         include: ['$descriptors'],
                         resourceKind: 'contactusers',
-                        select:['UserId','ContactId','Contact/Name','Contact/Email','Contact/WorkPhone','Contact/AccountName','User/Name'],
+                        select: ['UserId', 'ContactId', 'Contact/Name', 'Contact/Email', 'Contact/WorkPhone', 'Contact/AccountName', 'User/Name'],
                         service: sDataServiceRegistry.getSDataService('dynamic')
-
                     });
                 }
                 var _query = "";
@@ -735,9 +758,9 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     _query = dstring.substitute('UserId eq \'${0}\' ', [entityId]);
                 }
                 this._associationStore.fetch({
-                   
+
                     query: _query,
-                   
+
                     //predicate: "'" + accessTo + "-" + currentUserId + "'",
                     onComplete: function (accessData) {
                         callback.call(scope, accessData, scopeObj);
@@ -748,14 +771,14 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     scope: this
                 });
             },
-           //Maintain a local list of Contact User association
-            _updateUserContactList : function(userId, contactId){               
+            //Maintain a local list of Contact User association
+            _updateUserContactList: function (userId, contactId) {
                 if (!this.userContactList[userId]) {
                     this.userContactList[userId] = { "UserId": userId, "ContactId": contactId };
                 }
             },
             //Verify if the provided ContactIs has associated UserId
-            _checkUserContactAssociation: function(contactId){
+            _checkUserContactAssociation: function (contactId) {
                 var userId = false;
                 if (this.userContactList) {
                     for (var i in this.userContactList) {
@@ -767,20 +790,18 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 }
                 return userId;
             },
-          
-
-            /**         
-            * Gets called when members are added to Availability Tab.    
+            /**
+            * Gets called when members are added to Availability Tab.
             * If the member has associated Contact, add it to Attendees Tab.
-            * @param {String} userIds String array of Userids    
+            * @param {String} userIds String array of Userids
             */
             _addContactAttendees: function (userIds) {
-                
+
                 var deferredArray = [];
                 var len = userIds.length;
                 var self = this;
 
-                for (var i = 0; i < len; i++) {                   
+                for (var i = 0; i < len; i++) {
                     deferredArray.push(this._getAssociationData(userIds[i]));
                 }
 
@@ -797,12 +818,12 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     self.userContactAttendees = [];
                 });
             },
-            /**         
-            * Deferred method to get the assciation data if exists.    
+            /**
+            * Deferred method to get the association data if exists.
             * If the member has associated Contact, add it to Attendees Tab.
-            * @param {String} userId    
+            * @param {String} userId
             */
-            _getAssociationData:function(userId){
+            _getAssociationData: function (userId) {
                 var d = new Deferred();
                 var scopeObj = { "last": false };
                 //var self = this;
@@ -811,47 +832,45 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                         var attendeeEntity = null;
                         if (data[0].Contact) {
                             this._updateUserContactList(data[0].UserId, data[0].ContactId);
-                            attendeeEntity = this._setAttendeeEntityFromContactLead('Contact', data[0].Contact); 
+                            attendeeEntity = this._setAttendeeEntityFromContactLead('Contact', data[0].Contact);
                         }
                         d.resolve(attendeeEntity);
                     }
                 }, this);
 
-                return d;              
+                return d;
             },
-
-            _addPrimaryContact: function (contact) {                
-                if (this._initialPrimaryContact) {                   
-                    if (!this._attendeeExists(this._initialPrimaryContact["$key"])) {                      
-                        this._addContactAttendee(this._initialPrimaryContact);                        
+            _addPrimaryContact: function (contact) {
+                if (this._initialPrimaryContact) {
+                    if (!this._attendeeExists(this._initialPrimaryContact["$key"])) {
+                        this._addContactAttendee(this._initialPrimaryContact);
                     }
                 }
                 this._initialPrimaryContact = false;
             },
-
-           /**         
-           * Event listener for General Tab Contact update. 
-           * @param {object} contact    
-           */
-            _addContactAttendee: function (contact) {                
+            /**
+            * Event listener for General Tab Contact update.
+            * @param {object} contact
+            */
+            _addContactAttendee: function (contact) {
                 var attendees = [];
                 var attendee = null;
                 if (contact) {
                     this.resetPrimary(contact['$key']);
-                  
+
                     if (this._grid.mode !== "insert") {
-                   //    this._grid.saveChanges();
-                    }                    
+                        //    this._grid.saveChanges();
+                    }
                     if (contact.Account) {
                         contact.AccountName = contact.Account.AccountName;
                         attendee = this._setAttendeeEntityFromContactLead('Contact', contact);
                         attendee.IsPrimary = true;
                         attendee.general = true;
                         attendees.push(attendee);
-                       // this.saveGridChanges(this._addAttendeesToStore(attendees, true));
+                        // this.saveGridChanges(this._addAttendeesToStore(attendees, true));
                         this._addAttendeesToStore(attendees, true);
                     } else {
-                       // this._removeContactAttendee();
+                        // this._removeContactAttendee();
                         activityUtility._getContactData(contact.$key, function (data) {
                             if (data) {
                                 attendee = this._setAttendeeEntityFromContactLead('Contact', data);
@@ -862,7 +881,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                                 this._addAttendeesToStore(attendees, true);
                             }
                         }, this);
-                    }              
+                    }
                 }
             },
             _addLeadAttendee: function (lead) {
@@ -890,7 +909,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     }
                 }
             },
-            _removeAssociatedContact : function(userId){
+            _removeAssociatedContact: function (userId) {
                 if (this.userContactList[userId]) {
                     var self = this;
                     var contactId = this.userContactList[userId]["ContactId"];
@@ -911,17 +930,16 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     }
                 }
             },
-
             checkStoreItem: function (entityId) {
                 var self = this;
                 var deferred = new Deferred();
-              
+
                 this._grid.store.fetch({
                     onComplete: function (items) {
                         var storeItem = false;
                         dojo.forEach(items, function (item, index) {
                             if (item && item.EntityId == entityId) {
-                                storeItem = true;                                
+                                storeItem = true;
                             }
                         });
                         deferred.resolve(storeItem);
@@ -929,18 +947,17 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 });
                 return deferred;
             },
-       
             _removeContactAttendee: function () {
-                var self = this;              
-                this._grid.store.fetch({ 
-                    onComplete: function (items) { 
+                var self = this;
+                this._grid.store.fetch({
+                    onComplete: function (items) {
                         dojo.forEach(items, function (item, index) {
                             if (item && item.general && item.EntityType == "Contact") {
                                 self._grid.store.deleteItem(item);
                             }
                         })
-                    } 
-                }); 
+                    }
+                });
             },
             _removeLeadAttendee: function () {
                 var self = this;
@@ -954,14 +971,10 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     }
                 });
             },
-          
-
             _addLeadAttendees: function (leadIds) {
-
                 var grid = this._grid;
                 var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
                 var fnAdd = function () {
-
                     var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
                        .setResourceKind('activities')
                        .setOperationName('AddLeadAttendees');
@@ -971,45 +984,38 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                         "request": {
                             "ActivityId": actId,
                             "leadIds": leadIds.join()
-
                         }
                     };
                     request.execute(entry, {
                         success: function (result) {
                             grid.refresh();
-
                         },
                         failure: function (result) {
                             Sage.UI.Dialogs.showError(dojo.string.substitute("Error adding lead attendees", [result]));
                             grid.refresh();
                         }
                     });
-
                 };
                 if (leadIds.length > 0) {
                     grid.showLoading();
                     fnAdd();
                 }
             },
-            _getNewContactAttendees:function(){
-
+            _getNewContactAttendees: function () {
                 return this._newItems;
-
             },
-            setInitialPrimaryContact : function(contact){
-
+            setInitialPrimaryContact: function (contact) {
                 this._initialPrimaryContact = contact;
             },
             refreshGrid: function () {
                 this._grid.saveChanges();
                 this._grid.refresh();
-
             },
-            _addAttendeesToStore: function (attendees, fromGeneralTab) {              
+            _addAttendeesToStore: function (attendees, fromGeneralTab) {
                 var actid = utility.getCurrentEntityId();
                 var updated = false;
-                var self = this;                           
-               
+                var self = this;
+
                 if (this._grid.mode === 'insert' || !actid) {
                     var newAttendees = [];
                     for (var i = 0; i < attendees.length; i++) {
@@ -1017,7 +1023,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                         if (!this._attendeeExists(attendee.EntityId)) {
                             var index = -1;
                             for (var j = 0, len = this._newItems.length; j < len; j++) {
-                                if (this._newItems[j]["$key"] === attendee["$key"]) {
+                                if (this._newItems[j]["$key"] === attendee.EntityId) {
                                     index = j;
                                     break;
                                 }
@@ -1027,13 +1033,13 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                             }
                             newAttendees.push(attendee);
                         }
-                    }                    
+                    }
                     //if we are inserting the activity, just let the WritableStore cache it, we'll POST it later
                     this._grid.store.addItemsToCache(this, newAttendees);
-                   
+
                 } else {
-                    //if we are not in insert mode, the grid will have a WritableSDataStore, let it save the 
-                    //new item now so the refresh below will get the item.      
+                    //if we are not in insert mode, the grid will have a WritableSDataStore, let it save the
+                    //new item now so the refresh below will get the item.
                     var deferredArray = [];
                     //console.log("_addAttendeesToStore call deferred :");
                     for (var i = 0; i < attendees.length; i++) {
@@ -1043,21 +1049,20 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                             this._newItems.push(attendee);
                             attendee.Activity = { '$key': actid };
                             deferredArray.push(this._saveGridActivityAttendee(attendee));
-                        }                       
+                        }
                     }
                     var d1 = new DeferredList(deferredArray);
                     d1.then(function (results) {
                         //console.log("_addAttendeesToStore resolved :");
                         dojo.publish('/entity/activityAttendee/add', [results.length, this]);
-                        
-                        if (fromGeneralTab && attendees && attendees.length > 0) {
-                          //  self.resetPrimary(attendees[0]['EntityId']);
-                        }
-                    });                   
-                }
-                this._grid.refresh();               
-            },
 
+                        if (fromGeneralTab && attendees && attendees.length > 0) {
+                            //  self.resetPrimary(attendees[0]['EntityId']);
+                        }
+                    });
+                }
+                this._grid.refresh();
+            },
             _saveGridActivityAttendee: function (attendee) {
                 var d = new Deferred();
                 this._grid.store.saveNewEntity(attendee, function () {
@@ -1070,7 +1075,6 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 this);
                 return d;
             },
-
             _addAdhocAttendee: function () {
                 this._grid.store.newItem({
                     onComplete: function (attendee) {
@@ -1088,7 +1092,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                             //if we are inserting the activity, just let the WritableStore cache it, we'll POST it later
                             this._grid.store.addToCache(this, attendee, 1);
                         } else {
-                            //if we are not in insert mode, the grid will have a WritableSDataStore, let it save the 
+                            //if we are not in insert mode, the grid will have a WritableSDataStore, let it save the
                             //new item now so the refresh below will get the item.
                             this._grid.store.saveNewEntity(attendee);
                         }
@@ -1104,41 +1108,45 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 //console.log("_activitySaved1");
 
                 if (this._grid.mode === 'insert') {
-                    //If the grid is in insert mode, the activity was a new one so we need to set the 
+                    //If the grid is in insert mode, the activity was a new one so we need to set the
                     // relationship to the new Activity Id and then POST them
                     var actid = activity['$key'];
                     var count = 0;
                     var deferredArray = [];
+                    var selectedItems = [];
                     var primaryAttendee = null;
                     for (var i = 0; i < this._newItems.length; i++) {
                         count = i;
                         var itm = this._newItems[i];
-                        itm["Account"] = null;                       
+                        itm["Account"] = null;
                         itm['Activity'] = { '$key': actid };
-                        
+
                         if (!itm["IsPrimary"]) {
                             //POST ActivityAttendee only if it is non primary
-                            //Add it to deferred array to excecute
-                            deferredArray.push(this._saveActivityAttendee(itm));
+                            //Add it to deferred array to execute
+                            selectedItems.push(itm);
                         } else {
                             //UPDATE activity attendee if its primary
                             primaryAttendee = itm;
                         }
                     }
-
+                    if (selectedItems.length > 0) {
+                        deferredArray.push(this._saveActivityAttendees(selectedItems));
+                    }
                     this._newItems = [];
+                    if (primaryAttendee) {
+                        //The primary Contact/Lead will get inserted as part of Activity Insert by business rules
+                        //We need to update the columns isAttendee and Role name
+                        var def = this._updatePrimaryAttendee(primaryAttendee, activity)
+                        deferredArray.push(def);
+                    }
                     // create a DeferredList to aggregate the state
-                    //Wait until all the activity attendees getting saved, to get the correct count on the activity list view
-                    var d1 = new DeferredList(deferredArray);
+                    // Wait until all the activity attendees getting saved and primary is updated
+                    // to get the correct count on the activity list view
+                    var d1 = new DeferredList(deferredArray, false);
                     d1.then(function (results) {
                         deferred.resolve({ success: true });
                     });
-
-                    if (primaryAttendee) {
-                        //The primary Contact/Lead wil get inserted as part of Activity Insert by business rules
-                        //We need to update the columns isAttendee and Rolename
-                        this._updatePrimaryAttendee(primaryAttendee, actid);
-                    }
 
                 } else {
                     //Because the grid was not in insert mode, the items had the correct relationship
@@ -1151,8 +1159,8 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
 
                 return deferred;
             },
-
-            _updatePrimaryAttendee : function(attendee,activityId){
+            _updatePrimaryAttendee: function (attendee, activity) {
+                var deferred = new Deferred();
                 var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
                 var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
                     .setResourceKind('activities')
@@ -1160,7 +1168,7 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 var entry = {
                     "$name": "UpdatePrimaryActivityAttendee",
                     "request": {
-                        "ActivityId": activityId,
+                        "entity": activity,
                         "entityId": attendee.EntityId,
                         "isAttendee": attendee.IsAttendee,
                         "roleName": attendee.RoleName
@@ -1168,23 +1176,22 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 };
                 request.execute(entry, {
                     success: function (result) {
-                        
+                        deferred.resolve({ success: true });
                     },
                     failure: function (ex) {
-                        console.log("failed to Update Attendee" );                        
+                        console.log("failed to Update Attendee");
                     },
                     scope: this
                 });
+                return deferred;
             },
-                     
-
-            //Handler for history created 
+            //Handler for history created
             _historySaved: function (history) {
                 var deferred = new Deferred();
                 //console.log("_activitySaved1");
 
                 if (this._grid.mode === 'insert') {
-                    //If the grid is in insert mode, the activity was a new one so we need to set the 
+                    //If the grid is in insert mode, the activity was a new one so we need to set the
                     // relationship to the new Activity Id and then POST them
                     var histid = history['$key'];
                     var count = 0;
@@ -1195,13 +1202,12 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                         var itm = this._newItems[i];
                         itm["Account"] = null;
                         itm['History'] = { '$key': histid };
-                        
-                        if (entityId !== itm["EntityId"]) {                           
-                            //Add it to deferred array to excecute
+
+                        if (entityId !== itm["EntityId"]) {
+                            //Add it to deferred array to execute
                             deferredArray.push(this._saveHistoryAttendee(itm));
                             entityId = itm["EntityId"];
                         }
-                        
                     }
 
                     this._newItems = [];
@@ -1211,42 +1217,65 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                     d1.then(function (results) {
                         deferred.resolve({ success: true });
                     });
-
-                } 
+                }
 
                 return deferred;
             },
             _saveActivityAttendee: function (itm) {
-                var d = new Deferred();
+                var deferred = new Deferred();
                 var self = this;
                 var req = new Sage.SData.Client.SDataSingleResourceRequest(sDataServiceRegistry.getSDataService('dynamic'))
                            .setResourceKind('activityAttendees')
                            .create(itm, {
-                               success: function () {                                  
-                                   d.resolve("success");                                   
-                               },
-                               failure: function () {
-                                   console.log('item did not save');
-                               },
-                               scope:this
-                           });
-                return d;
-            },
-            _saveHistoryAttendee: function (itm) {
-                var d = new Deferred();
-                var self = this;
-                var req = new Sage.SData.Client.SDataSingleResourceRequest(sDataServiceRegistry.getSDataService('dynamic'))
-                           .setResourceKind('historyAttendees')
-                           .create(itm, {
                                success: function () {
-                                   d.resolve("success");
+                                   deferred.resolve("success");
                                },
                                failure: function () {
                                    console.log('item did not save');
                                },
                                scope: this
                            });
-                return d;
+                return deferred;
+            },
+            _saveActivityAttendees: function (selectedItems) {
+                var deferred = new Deferred();
+                var batchRequest = new Sage.SData.Client.SDataBatchRequest(sDataServiceRegistry.getSDataService('dynamic'));
+                batchRequest.setResourceKind('activityAttendees');
+                batchRequest.using(lang.hitch(this, function () {
+                    for (var i = 0; i < selectedItems.length; i++) {
+                        var request = new Sage.SData.Client.SDataSingleResourceRequest(sDataServiceRegistry.getSDataService('dynamic'));
+                        request.setResourceKind('activityAttendees');
+                        request['create'](selectedItems[i], { scope: this, ignoreETag: true });
+                    }
+                }));
+
+                batchRequest.commit({
+                    scope: this,
+                    ignoreETag: true,
+                    success: function (entry) {
+                        deferred.resolve("success");
+                    },
+                    failure: function (err) {
+                        console.error(err);
+                    }
+                });
+                return deferred;
+            },
+            _saveHistoryAttendee: function (itm) {
+                var deferred = new Deferred();
+                var self = this;
+                var req = new Sage.SData.Client.SDataSingleResourceRequest(sDataServiceRegistry.getSDataService('dynamic'))
+                           .setResourceKind('historyAttendees')
+                           .create(itm, {
+                               success: function () {
+                                   deferred.resolve("success");
+                               },
+                               failure: function () {
+                                   console.log('item did not save');
+                               },
+                               scope: this
+                           });
+                return deferred;
             },
 
             //Handler for when the activity dialog closes
@@ -1259,8 +1288,8 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                 this._uncheckItem = null;
                 this._gridStarted = false;
             },
-            destroy: function () {               
-                this.lup_Contact.destroy();          
+            destroy: function () {
+                this.lup_Contact.destroy();
                 this.lup_Lead.destroy();
                 this._gridStarted = false;
                 this.inherited(arguments);
@@ -1271,18 +1300,17 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
 
                     //check to see if the activity is a new one or not so we can set the grid
                     // to be in the correct "mode".
-                    var gridmode = this._grid.get('mode');              
+                    var gridmode = this._grid.get('mode');
                     if (this.editorMode.indexOf('New') == 0 || !this._activityId) {
                         this._grid.set('mode', 'insert');
                     } else {
                         this._grid.set('mode', '');
                     }
-                   
+
                     this._grid.refresh();
                     if (this.lup_Contact) {
                         this.lup_Contact.resetGrid();
                         this.lup_Contact.destroy();
-
                     }
 
                     if (this.lup_Lead) {
@@ -1292,8 +1320,6 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
 
                     this.createLookups();
                     this._gridStarted = true;
-                    
-
                 }
             },
             createLookups: function () {
@@ -1305,8 +1331,8 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
 
                         this.lup_Contact = contactLookup;
                         this.lup_Contact.doSelected = function (items) {
-                            self._processContactLookupResults(items);                           
-                            this.lookupDialog.hide();
+                            self._processContactLookupResults(items);
+                            //this.lookupDialog.hide();
                         }
                     }
                     var leadLookup = srvc.getLookupInstance("Lead", "activityLeadAttendee");
@@ -1314,19 +1340,18 @@ define('Sage/MainView/ActivityMgr/ActivityEditorAttendeesTab', [
                         this.lup_Lead = leadLookup;
                         leadLookup.doSelected = function (items) {
                             self._processLeadLookupResults(items);
-                            this.lookupDialog.hide();
+                            //this.lookupDialog.hide();
                         }
                     }
                 }
             },
             setToReadOnly: function (readOnly) {
-
                 var disableList = ['attendeeSpeedSearch',
                                  'attendeeAddContact',
                                  'attendeeeAddLead',
                                  'attendeeDelete'
                 ];
-                this._bulkSetProperty(this, disableList, 'disabled', readOnly);   
+                this._bulkSetProperty(this, disableList, 'disabled', readOnly);
             },
             _bulkSetProperty: function (ui, propsList, prop, val) {
                 for (var i = 0; i < propsList.length; i++) {

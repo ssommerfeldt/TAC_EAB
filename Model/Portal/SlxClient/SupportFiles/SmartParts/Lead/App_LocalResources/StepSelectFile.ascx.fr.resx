@@ -117,47 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblRequiredMsg.Caption" xml:space="preserve">
-    <value>*  Indique un champ obligatoire</value>
-  </data>
-  <data name="radProgress_Uploaded" xml:space="preserve">
-    <value>Téléchargé </value>
-  </data>
-  <data name="uplFile.Tooltip" xml:space="preserve">
-    <value>Naviguez jusqu'à l'emplacement du fichier à télécharger</value>
-  </data>
-  <data name="chkAddToGroup.Caption" xml:space="preserve">
-    <value>Ajouter des leads importés au groupe ad hoc</value>
+  <data name="lblFile.Caption" xml:space="preserve">
+    <value>Fichier de liste de leads :</value>
   </data>
   <data name="ownDefaultOwner.Caption" xml:space="preserve">
-    <value>Propriétaire par défaut :</value>
+    <value>Propriétaire par défaut :</value>
   </data>
-  <data name="lblSelectFileHeader.Caption" xml:space="preserve">
-    <value>Sélectionnez un fichier contenant des informations sur les leads pour commencer.</value>
+  <data name="lueLeadSource.Caption" xml:space="preserve">
+    <value>Source de lead par défaut :</value>
   </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Actif</value>
+  <data name="lueLeadSource.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
-  <data name="UploadFile_File" xml:space="preserve">
-    <value>Fichier :</value>
+  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="rdbAddToAdHocGroup.Caption" xml:space="preserve">
-    <value>Ajouter au groupe ad hoc existant</value>
+  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Code source</value>
   </data>
-  <data name="lblLeadGroup.Caption" xml:space="preserve">
-    <value>Groupe de leads :</value>
+  <data name="uplFile.Tooltip" xml:space="preserve">
+    <value>Naviguez jusqu'à l'emplacement du fichier à charger</value>
   </data>
-  <data name="lblFile.Caption" xml:space="preserve">
-    <value>Fichier de liste de leads :</value>
+  <data name="UploadFile_File" xml:space="preserve">
+    <value>Fichier : </value>
   </data>
-  <data name="lblCurrentFile.Caption" xml:space="preserve">
-    <value>Fichier de liste des leads en cours :</value>
-  </data>
-  <data name="Error_InvalidImportPath" xml:space="preserve">
-    <value>L'importation ne peut se poursuivre car le chemin d'accès à la pièce jointe est incorrect. Consultez votre administrateur.</value>
+  <data name="UploadFile_Process" xml:space="preserve">
+    <value>Traité </value>
   </data>
   <data name="lblImportFile.Caption" xml:space="preserve">
     <value>Fichier d'importation sélectionné :</value>
@@ -165,19 +153,31 @@
   <data name="radProgress_Cancel" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Type</value>
+  <data name="radProgress_Uploaded" xml:space="preserve">
+    <value>Chargé </value>
   </data>
-  <data name="UploadFile_Process" xml:space="preserve">
-    <value>Traité </value>
+  <data name="lblSelectFileHeader.Caption" xml:space="preserve">
+    <value>Sélectionnez un fichier contenant des informations sur les leads pour commencer.</value>
+  </data>
+  <data name="lblLeadGroup.Caption" xml:space="preserve">
+    <value>Groupe de leads :</value>
+  </data>
+  <data name="rdbAddToAdHocGroup.Caption" xml:space="preserve">
+    <value>Ajouter au groupe ad hoc existant</value>
+  </data>
+  <data name="chkAddToGroup.Caption" xml:space="preserve">
+    <value>Ajouter des leads importés au groupe ad hoc</value>
+  </data>
+  <data name="lblRequiredMsg.Caption" xml:space="preserve">
+    <value>* Indique un champ obligatoire</value>
   </data>
   <data name="rdbCreateAdHocGroup.Caption" xml:space="preserve">
     <value>Créer un nouveau groupe ad hoc</value>
   </data>
-  <data name="lueLeadSource.Caption" xml:space="preserve">
-    <value>Source de lead par défaut :</value>
+  <data name="lblCurrentFile.Caption" xml:space="preserve">
+    <value>Fichier de liste des leads actuels :</value>
   </data>
-  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Code source</value>
+  <data name="Error_InvalidImportPath" xml:space="preserve">
+    <value>L'importation ne peut se poursuivre car le chemin d'accès à la pièce jointe est incorrect. Consultez votre administrateur.</value>
   </data>
 </root>

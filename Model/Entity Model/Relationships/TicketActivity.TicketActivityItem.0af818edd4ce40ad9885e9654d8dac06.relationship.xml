@@ -1,20 +1,40 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0af818ed-d4ce-40ad-9885-e9654d8dac06" lastModifiedUtc="2007-12-14T18:22:14.2713616Z" cardinality="1:M" parentEntityId="26c9bbe4-349e-4170-a059-e5159bac1087" childEntityId="1f836363-c3ec-4ef6-85b6-126bf71aba79">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0af818ed-d4ce-40ad-9885-e9654d8dac06" lastModifiedUtc="2015-04-28T16:31:38.6845113Z" parentEntityId="26c9bbe4-349e-4170-a059-e5159bac1087" childEntityId="1f836363-c3ec-4ef6-85b6-126bf71aba79">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="e5680836-e5c6-47de-8931-696892124a58" lastModifiedUtc="0001-01-01T00:00:00" name="Items" audited="false" displayCategory="Intermediate" isNullable="true" include="true">
+  <parentProperty id="e5680836-e5c6-47de-8931-696892124a58" lastModifiedUtc="2015-04-28T16:31:34.1790608Z" name="Items" audited="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="7ab99219-d7fe-4b48-9dd3-135c65696650" lastModifiedUtc="2007-12-14T18:22:14.2557015Z" name="TicketActivity" audited="false" displayCategory="Intermediate" isNullable="false" include="true">
+  <childProperty id="7ab99219-d7fe-4b48-9dd3-135c65696650" lastModifiedUtc="2015-04-28T16:31:38.6845113Z" name="TicketActivity" audited="false" isNullable="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />

@@ -19,7 +19,24 @@
 .alignleft.checkbox label 
 {
     display: inline-block;
-    width: 40%;
+    /*commment below to allow label first and checkbox later */
+    float: left;
+    text-align: right;
+    width: 34%;
+    margin: 3px 14px 0 0 ;
+}
+/*reset from line 22*/
+#PickListDetailcontents .alignleft.checkbox label, #InsertContactcontents .alignleft.checkbox label
+{
+    float:none;
+    text-align:left;
+    margin:0;
+    white-space: nowrap;
+}
+
+
+.slxlabel.alignleft.checkbox {
+    padding-top:9px;
 }
 
 /* the class for areas that conain input type=radio  */
@@ -39,26 +56,37 @@
 	float : left;
 	width : 50%;
 	white-space : nowrap;
+    margin: 2px 0px;
 }
-
+div#MainWhatsNewcontents .textcontrol {
+  margin: 0 10px !important;
+}
+#DialogWorkspace_window .textcontrol {
+	width: 60%;
+}
+.textcontrol.phone.lbl {
+    width:34%;
+}
 .width90
 {
 	width : 90% !important;
 }
 
 .textcontrol INPUT, .textcontrol TEXTAREA {	
-	color: #000000;
-	font-size: 12px;
-	width : 95%;
-	background-color: #FFFFFF;
-	border: 1px solid #A8A9BE;
+	font-size: 14px;
+	width : 99%;
+	/*background-color: #FFFFFF;
+	border: 1px solid #A8A9BE;*/
 	font-style: normal;
 	margin : .1em 0em;
 	vertical-align : middle;
-	padding-left : 5px;
     text-overflow: ellipsis;
 }
-
+textarea {
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
 .textcontrol SELECT ,
 .textcontrol > table
 {
@@ -70,7 +98,7 @@
 
 .textcontrol > .dijitSelect
 {
-	height: 18px;
+	height: 34px;
 	width: 100%;	
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -79,11 +107,12 @@
 
 .TimeZoneList
 {
-	height: 18px;
+	height: 34px;
 	width: 50%;	
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+    float: left;
 }
 
 .TimeZoneList .dijitArrowButton
@@ -100,60 +129,74 @@
 INPUT[disabled], .textcontrol INPUT[disabled], .textcontrol TEXTAREA[disabled],
 .dependency INPUT[disabled], .dependency TEXTAREA[disabled]
 {
-	background-color : #f2f2f2;
-	color : #8B8B8B;
-	border: 1px solid #C8C9DE;
-	filter : Gray  Alpha(Opacity=80);
+	background-color : #e5e5e5;
+	color : #737373;
+	border: 1px solid #d2d2d2;
 	cursor : default;	
 	text-shadow: none;
 }
 SELECT[disabled]
 {
-	background-color : #f2f2f2;
-	color : #444444;
-	border: 1px solid #C8C9DE;
+	background-color : #e5e5e5;
+	color : #737373;
+	border: 1px solid #d2d2d2;
   	cursor : default;
 	opacity : 0.8;
 }
-.textcontrol INPUT[readonly], .textcontrol TEXTAREA[readonly],
+.textcontrol INPUT[readonly] {
+    color : #1a1a1a;
+    border: 1px solid #d2d2d2;
+    cursor : default;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing:border-box;
+}
+[id$="txtEmailBaseTemplate"],
+[id$="txtLetterBaseTemplate"],
+[id$="txtFaxBaseTemplate"] {
+height: 34px !important;
+}
+.inforSoHoXi .dijitDialog .textcontrol INPUT[readonly] {
+  background-color: transparent !important;
+}
+.dijitValidationContainer input[readonly].dijitValidationIcon {
+  border: none !important;
+}
+.textcontrol TEXTAREA[readonly],
 .dependency INPUT[readonly], .dependency TEXTAREA[readonly]
 {
-    background-color : #f2f2f2; /*original*/
-    color : #444444;
-    border: 1px solid #C8C9DE;
+    background-color : #e5e5e5; /*original*/
+    color : #1a1a1a;
+    border: 1px solid #d2d2d2;
     cursor : default;
-    opacity : 0.8;
     width: 100%;
     -moz-box-sizing: border-box;
     box-sizing:border-box;
 }
 
 div.dijitTextBoxReadOnly.dijitValidationTextBoxReadOnly.dijitReadOnly,
-div.dijitTextBoxDisabled.dijitDisabled,
 div.dijitTextBoxReadOnly.dijitComboBoxReadOnly.dijitReadOnly
 {
-	background-color : #f2f2f2 !important; 
-    color : #8B8B8B !important;
+	background-color : #e5e5e5 !important; 
+    color : #1a1a1a !important;
     cursor : default;
-	border: 1px solid #C8C9DE;
+	border: 1px solid #d2d2d2;
 }
-
+div.dijitTextBoxDisabled.dijitDisabled {
+    background-color : #e5e5e5 !important; 
+    color : #737373 !important;
+    cursor : default;
+	border: 1px solid #d2d2d2;
+}
 .textcontrol IMG 
 {
-	padding-left : 3px;
+	padding-left : 0px;
 }
 
-IMG 
-{
-	vertical-align : middle;
-}
-INPUT 
-{
-	vertical-align : middle;
-}
-SELECT 
-{
-	vertical-align : middle;
+input#MainContent_InsertLead_cmdMatchingRecords {
+  position: relative;
+  left: 58%;
+  float: left;
 }
 
 .twocoltextcontrol INPUT,
@@ -163,29 +206,29 @@ SELECT
 .threecoltextcontrol TEXTAREA,
 .threecoltextcontrol SELECT
 {	
-	color: #000000;
-	font-size: 12px;
+	color: #1a1a1a;
+	font-size: 14px;
 	width : 95%;
 	background-color: #FFFFFF;
-	border: 1px solid #A8A9BE;
+	border: 1px solid #999;
 	font-style: normal;
 	margin : .1em 0em;
 }
 
 .slxcontrol
 {
-	color: #000000;
-	font-size: 12px;
+	color: #1a1a1a;
+	font-size: 14px;
 	width : 55%;
 	background-color: #FFFFFF;
-	border: 1px solid #aaa;
+	border: 1px solid #999;
 	font-style: normal;
 	margin : .1em 0em;
 }
 
 .slxlinkcontrol 
 {
-	font-size : 12px;
+	font-size : 14px;
 	width : 48%;
 	font-style: normal;
 	margin : .2em 0em 0em .1em;
@@ -199,13 +242,13 @@ SELECT
 {
 	font-size: 12px;
 	font-style: normal;
-	border: 1px solid #aaa;
+	border: 1px solid #999;
 }
 
 .slxbutton 
 {
-	color: #000000;
-	border : solid 1px #aaa;
+	color: #1a1a1a;
+	border : solid 1px #999;
 	background-color: #E1E1DC;
 	cursor : pointer;
     text-align: center;
@@ -231,20 +274,22 @@ SELECT
 
 .formtable 
 {
-	margin : 15px 0px;
 	width : 100%;
 }
 
 .formtable TD 
 {
 	vertical-align : top;
-	padding-left : 5px;
-	padding-bottom: 5px; /*5px spacing between form elements*/
 }
 
+.dijitDialogPaneContent .formtable td, .formtable tr.mainContentHeader td 
+{
+    vertical-align:middle;
+}
+ 
 .tws-tab-view-body > .formtable 
 {
-    margin: 0px 0px 0px 0px;    
+    margin: 0px;    
     height: auto;
 }
 
@@ -256,32 +301,86 @@ SELECT
 
 
 /* labels................  */
+
 .twocollbl 
 {
-	width : 20%;
+	width : 17%; 
 	float : left;
-	text-align:left;
+	text-align:right;
 	font-size : 12px;
-	/*font-weight : bold;*/
-	padding-top : .3em;
+	padding-top : 14px;
+    margin-right: 13px;
+}
+.twocolremainder /* Used for spans that take up the rest of a two column row with a label */
+{
+	float : left;
+	font-size : 12px;
+	padding-top : .8em;
+    margin-right: 13px;
 }
 
 .slxlabel
 {
 	font-size : 12px;
-	/*font-weight : bold;*/
+}
+.Bevel .slxlabel {
+    text-align:left;
+}
+.Bevel td
+{
+    padding: 5px 5px 0;
+}
+.Bevel .dijitComboBox 
+{
+    height:inherit !important;
+}
+.Bevel .lbl 
+{
+    padding-top:12px;
+}
+
+.tws-tab-view-header .slxlabel,
+.tws-tab-view-header span[id$="_QFLabel"] {
+  padding-top: 0px !important;
+}
+.tws-tab-view-header span[id$="lblTabDescription"] {
+    position: relative;
+    top: 5px;
 }
 .lbl 
 {
-
 	float : left;
-	text-align:left;
 	font-size : 12px;
-	/*font-weight : bold;*/
-	padding-top : .3em;
-    width: 40%;
+	padding-top : 14px;
+    width: 34%;
+    white-space: normal;
+    margin-right: 14px;
 }
-
+.lbl + a 
+{
+    display: inline-block;
+    margin: 14px 0 10px;
+}
+.lbl + .slxlinkcontrol 
+{
+    margin-top: 10px;
+}
+.lbl + .lbl {
+    text-align:left !important;
+    width: 52%;
+    word-break: break-all;
+    word-break: break-word;
+}
+.textcontrol + .lbl {
+    clear:left;
+}
+.lbl + .checkbox {
+    margin-top: 8px;
+    display: inline-block;
+}
+td > .lbl:only-child:only-of-type {
+    width:90%;
+}
 .lblLicMsg 
 {
 	float : right;
@@ -289,18 +388,65 @@ SELECT
 	font-size : 11px;
 	font-weight :normal;
 	padding-top : .3em;
-    width: 60%;
+    width: 63%;
+}
+
+.tws-tab-view-body .lbl, .tws-tab-view-body .slxlabel {
+    text-align: right;
+    padding-top: 15px;
+    margin-right: 14px;
+}
+.tws-tab-view-body .header-label-help-configuration {
+    text-align: left;
+    padding-top: 15px;
+    margin-right: 14px;
+}
+.tws-tab-view-body .slxlabel.alignleft.checkbox {
+    text-align:left;
+}
+
+.tws-tab-view-body td:only-child .slxlabel.checkbox.checkboxRight {
+    text-align:left;
+}
+.lblcontrol 
+{
+    float : left;
+	width : 50%;
+	white-space : nowrap;
+    margin: 14px 0px;
+}
+.lbl + div > .radio 
+{
+    padding-top: 15px;
+}
+
+.lbl + .radio 
+{
+    clear:none;
+}
+.datagrid .lbl
+{
+    padding-top : 0px
+}
+.datepicker .lbl, .phone .lbl, .picklist .lbl, .textcontrol .lbl
+{
+  width: 100%;
+  margin-top: -2px;
+}
+.task-pane-item .dijitTitlePaneContentInner 
+{
+    padding: 5px 6px !important;
 }
 
 .errorText {
     font-weight: bold;
-    color: red;
+    color: #ed1c24;
     font-style: italic;
 }
 
 .colspan3
 {
-	width : 13.1%;
+	width : 11.1%;
 }
 
 .formtable .lblright 
@@ -317,25 +463,24 @@ SELECT
 	font-size : 11px;
 	/*font-weight : bold;*/
 	padding-top : .3em;
+    text-align: left;
 }
 
 /* Label alignment */
 .alignleft 
 {
-	text-align : left;
-	/* clear : both; <- If control is on left and label is on right, this causes issues
-                    Haven't noticed anything weird style-wise with this not set,
-                    but alternative should be found if it does cause problems */
+    text-align: left;
 }
 
 .alignright 
 {
-	text-align : right;
+	text-align : right !important;
+    white-space:inherit;
 }
 
 .aligncenter 
 {
-	text-align : center;
+	text-align : center !important;
 }
 .valignbottom 
 {
@@ -350,10 +495,7 @@ SELECT
 {
     clear : both;
 }
-.controlslist .lbl 
-{
-    padding-top : 3px;
-}
+
 .controlslist .padleft 
 {
     padding : 2px;
@@ -363,11 +505,12 @@ SELECT
     padding-bottom : 3px;
 }
 
-HR 
+hr 
 {
-	height : 1px;
-	color : #b5cbe0;
-	clear : both;
+	background-color: #ddd;
+    clear: both;
+    border: none;
+    height: 1px;
 }
 .timezone SELECT 
 {
@@ -381,8 +524,7 @@ HR
 	margin-left : 3px;
 	margin-right : 3px;
 }
-.timezone .TimeZoneLabel
-{
+.timezone .TimeZoneLabel {
 	font-size : 12px;
 	background-color: #FFFFFF;
 	border: 1px solid #aaa;
@@ -390,14 +532,25 @@ HR
 	margin : .2em 0em 0em .1em;
 	float : left;
 	width : 20%;
-	height : 18px;
+    height: 34px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
 }
-
+label[id$="tmzAddressTimeZone_lbl"] {
+    position: relative;
+    bottom: 5px;
+}
+.timezone > span > input {
+  float: left ;
+}
 .timezone .TimeZoneLabel TD
 {
 	vertical-align : middle;
 }
-
+div[id$="element_DefectReturns"] .formtable TD {
+    vertical-align: top;
+}
 
 /* dependency lookup control styles  */
 
@@ -425,12 +578,12 @@ HR
 .formtable .qfActionContainer
 {
 	text-align: right;
-	width: 90%; /* to match general field widths */
+	/* width: 90%; to match general field widths */
 	padding: 10px;
 }
 
 .formtable .qfButtonContainer {
-    padding-left: 3px;
+    margin: 6px 0 0 3px;
     display: inline;
 }
 
@@ -449,17 +602,30 @@ HR
     border-style:solid;
     border-width:1px;
     border-color: #c0c0c0;
-    padding:2px;
+    padding:8px;
     width:80%;
 }
 
 .Bevel.ExtendWidth {
     width: 100%;
 }
+div.Bevel.ExtendWidth 
+{
+    padding:0;
+}
+div.Bevel.ExtendWidth table
+{
+    margin:8px;
+}
 
 input[type="radio"], input[type="checkbox"]
 {
     margin-right:4px;
+}
+.wizardHeaderText {
+    font-size:14px;
+    font-weight: bold;
+    text-align: left;
 }
 
 .wizardsectiontitle
@@ -498,7 +664,7 @@ input[type="radio"], input[type="checkbox"]
 
 .dijitToolbarLabel 
 {
-    padding: 0px 4px 0px 8px;
+    padding: 0px 5px;
 }
 
 .numericReducedWidth {
@@ -865,4 +1031,57 @@ input[type="radio"], input[type="checkbox"]
 .SPcontrol > .dijitSelect .dijitArrowButton
 {
 	width: 16px;
+}
+label[id*="lueUseExistingAccount"] {
+  position: relative;
+  bottom: 13px;
+}
+#element_CampaignTargets .slxlabel {
+    padding: 12px 0 0 0;
+    float: left;
+}
+#CampaignDetailscontents .slxlabel {
+padding: 0 1em 0 0;
+}
+
+div[id$="Lookup-Condition-container"] {
+  padding: 0px !important;
+}
+
+div[id$="ctrlstReturnInfo"] > .slxlabel, div[id$="ctrlstShipTo"] > .slxlabel  {
+  margin-left:10px;
+  text-align: left;
+}
+
+.slxlabel > span[id$="lblBilling"], .slxlabel > span[id$="lblShipping"] {
+  float: left;
+}
+
+.slxlabel div[id$="lblSortPosition"]:only-child {
+    padding-top:10px;
+}
+form[id$="frmImportProgress"] label{ 
+    text-align:right;
+    padding-right:14px;
+}
+#SSSnapShot .lbl { 
+    margin:0;
+    padding:0;
+    width:auto !important;
+    float:none;
+}
+.salesProcess-snapShot .lbl 
+{
+    padding-top:0px;
+}
+
+#SourceSnapShot .phone .lbl 
+{
+    text-align:left
+}
+#SourceSnapShot .Bevel .lbl {
+    padding-top: 10px !important;
+}
+#lkpConditionGroup, #lkpConditionUser {
+    width:100%
 }

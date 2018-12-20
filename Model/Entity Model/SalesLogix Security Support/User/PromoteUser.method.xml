@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1d2d3dca-eb4b-427f-b83b-27bf433066f3" lastModifiedUtc="2016-09-29T13:09:09.0341676Z" name="PromoteUser" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="64384348-df00-4222-a437-5e9acf0b4517" paramName="entityIds" sequence="0" paramType="String" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="d067e665-3838-431c-a60d-b7b4f220ff5d" lastModifiedUtc="2016-09-29T08:36:35.1926911Z" targetType="Sage.SalesLogix.User.Rules, Sage.SalesLogix.BusinessRules" targetMethod="PromoteUser" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -9,14 +9,6 @@
 #end
 #set($Q = '"')
 <%@ Control Language="C#" ClassName="${generator.FormName}" Inherits="${pageType}" %>
-<%@ Register Assembly="Sage.SalesLogix.Client.GroupBuilder" Namespace="Sage.SalesLogix.Client.GroupBuilder" TagPrefix="SalesLogix" %>
-<%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls.PickList" TagPrefix="SalesLogix" %>
-<%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls" TagPrefix="SalesLogix" %>
-<%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls.DependencyLookup" TagPrefix="SalesLogix" %>
-<%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls.Lookup" TagPrefix="SalesLogix" %>
-<%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls.Timeline" TagPrefix="SalesLogix" %>
-<%@ Register Assembly="Sage.SalesLogix.HighLevelTypes" Namespace="Sage.SalesLogix.HighLevelTypes" TagPrefix="SalesLogix" %>
-<%@ Register Assembly="Sage.Platform.WebPortal" Namespace="Sage.Platform.WebPortal.SmartParts" TagPrefix="SalesLogix" %>
 #if($resourceKeys.Count > 0)
 <%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls.ScriptResourceProvider" TagPrefix="Saleslogix" %>
 #end
@@ -27,7 +19,7 @@
 #macro(controlAppliedSecurityState $control)
    #set ($appliedSecurity = $generator.getControlAppliedSecurity($control))
    #if ($appliedSecurity != "")
-      $generator.addToFormLoadCode("if (!RoleSecurityService.HasAccess($appliedSecurity.to_quote))")
+      $generator.addToFormLoadCode("if (RoleSecurityService != null && !RoleSecurityService.HasAccess($appliedSecurity.to_quote))")
       $generator.addToFormLoadCode("{")
       $generator.addToFormLoadCode("${control.ControlID}.Visible = false;")
       $generator.addToFormLoadCode("}")
@@ -93,7 +85,7 @@ $generator.parseControl($control)
   $generator.parseControl($tool)
  #end
  <SalesLogix:PageLink ID="btnEditForm" CssClass="adminEditFormButton" runat="server" LinkType="RelativePath" ToolTip="<%$ resources: Portal, EditForm_ToolTip %>" NavigateUrl="~/FormManager.aspx?entityid=${generator.FormName}&modeid=Detail" ImageUrl="~/ImageResource.axd?scope=global&type=Global_Images&key=form_manager_16x16"></SalesLogix:PageLink>
- $generator.addToFormLoadCode("if (!RoleSecurityService.HasAccess(${Q}Administration/Forms/View${Q}))")
+ $generator.addToFormLoadCode("if (RoleSecurityService != null && !RoleSecurityService.HasAccess(${Q}Administration/Forms/View${Q}))")
  $generator.addToFormLoadCode("{")
  $generator.addToFormLoadCode("btnEditForm.Visible = false;")
  $generator.addToFormLoadCode("}")
@@ -103,13 +95,12 @@ $generator.parseControl($control)
 #if ($resourceKeys.Count > 0)
 <SalesLogix:ScriptResourceProvider ID="${generator.FormName}Resources" runat="server">
 <Keys>
-	#foreach ($key in $resourceKeys) 
+	#foreach ($key in $resourceKeys)
 		<SalesLogix:ResourceKeyName Key="$key" />
 	#end
 </Keys>
 </SalesLogix:ScriptResourceProvider>
 #end
-
 
 <script runat="server" type="text/C#">
 /// <summary>
@@ -129,40 +120,25 @@ public override Type EntityType
 #if($bind.DataItemName != "--- Custom Element ---")
 #if($bind.DataSourceID == "MainEntity")
 #if(${generator.isIdentifierExpression("${bind.DataItemName}")})
-        // ${controlid}.${generator.GetControlPropertyName($bind, $control)} Binding
-        Sage.Platform.WebPortal.Binding.WebEntityBinding ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding = new Sage.Platform.WebPortal.Binding.WebEntityBinding("${generator.GetDataPropertyName($bind, $control)}", $controlid, "${generator.GetControlPropertyName($bind, $control)}"#if($bind.NullValueString != "" || $bind.FormatString != ""), "${bind.FormatString}", #if($bind.NullValueString == "null")null#else"${bind.NullValueString}"#end#end);
+var ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding = new WebEntityBinding("${generator.GetDataPropertyName($bind, $control)}", $controlid, "${generator.GetControlPropertyName($bind, $control)}"#if($bind.NullValueString != "" || $bind.FormatString != ""), "${bind.FormatString}", #if($bind.NullValueString == "null")null#else"${bind.NullValueString}"#end#end,#if(!${generator.isPrimaryBinding($bind, $control)})true #else false#end);
 #if(${generator.GetChangeEventName($bind, $control)} != "")
-        ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding.ChangeNotificationEventName = "${generator.GetChangeEventName($bind,$control)}";
+${controlid}${generator.GetControlPropertyName($bind, $control)}Binding.ChangeNotificationEventName = "${generator.GetChangeEventName($bind,$control)}";
 #end
-#if(!${generator.isPrimaryBinding($bind, $control)})
-        ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding.IgnoreFLSDisabling = true;
-#end
-        BindingSource.Bindings.Add(${controlid}${generator.GetControlPropertyName($bind, $control)}Binding);
+BindingSource.Bindings.Add(${controlid}${generator.GetControlPropertyName($bind, $control)}Binding);
 #else
-        // ${controlid}.${generator.GetControlPropertyName($bind, $control)} Binding
-        Sage.Platform.EntityBinding.ExpressionBinding ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding = new Sage.Platform.EntityBinding.ExpressionBinding("${bind.DataItemName}", $controlid, "${generator.GetControlPropertyName($bind, $control)}");
-        ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding.CompileExpression = false;
-        ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding.NegateBooleanValue = ${generator.GetInvertedControlPropertyValue($bind, $control)};
-        ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding.NullValue = #if($bind.NullValueString == "null")null#else"${bind.NullValueString}"#end;
-        BindingSource.Bindings.Add(${controlid}${generator.GetControlPropertyName($bind, $control)}Binding);
+var ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding = new ExpressionBinding("${bind.DataItemName}", $controlid, "${generator.GetControlPropertyName($bind, $control)}")
+   { CompileExpression = false, NegateBooleanValue = ${generator.GetInvertedControlPropertyValue($bind, $control)}, NullValue = #if($bind.NullValueString == "null")null#else"${bind.NullValueString}"#end };
+BindingSource.Bindings.Add(${controlid}${generator.GetControlPropertyName($bind, $control)}Binding);
 #end
 #else
 #if(${generator.isIdentifierExpression("${bind.DataItemName}")})
-        // ${controlid}.${generator.GetControlPropertyName($bind, $control)} Binding
-        Sage.Platform.WebPortal.Binding.WebEntityBinding ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding = new Sage.Platform.WebPortal.Binding.WebEntityBinding("${generator.GetDataPropertyName($bind, $control)}", $controlid, "${generator.GetControlPropertyName($bind, $control)}"#if($bind.NullValueString != "" || $bind.FormatString != ""), "${bind.FormatString}", #if($bind.NullValueString == "null")null#else"${bind.NullValueString}"#end#end);
-        ${bind.DataSourceID}.Bindings.Add(${controlid}${generator.GetControlPropertyName($bind, $control)}Binding);
+var ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding = new WebEntityBinding("${generator.GetDataPropertyName($bind, $control)}", $controlid, "${generator.GetControlPropertyName($bind, $control)}"#if($bind.NullValueString != "" || $bind.FormatString != ""), "${bind.FormatString}", #if($bind.NullValueString == "null")null#else"${bind.NullValueString}"#end#end);
+   ${bind.DataSourceID}.Bindings.Add(${controlid}${generator.GetControlPropertyName($bind, $control)}Binding);
 #else
-        // ${controlid}.${generator.GetControlPropertyName($bind, $control)} Binding
-        Sage.Platform.EntityBinding.ExpressionBinding ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding = new Sage.Platform.EntityBinding.ExpressionBinding("${bind.DataItemName}", $controlid, "${generator.GetControlPropertyName($bind, $control)}");
-        ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding.CompileExpression = false;
-        ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding.NegateBooleanValue = ${generator.GetInvertedControlPropertyValue($bind, $control)};
-        ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding.NullValue = #if($bind.NullValueString == "null")null#else"${bind.NullValueString}"#end;
+var ${controlid}${generator.GetControlPropertyName($bind, $control)}Binding = new ExpressionBinding("${bind.DataItemName}", $controlid, "${generator.GetControlPropertyName($bind, $control)}");
+   { CompileExpression = false, NegateBooleanValue = ${generator.GetInvertedControlPropertyValue($bind, $control)}, NullValue = #if($bind.NullValueString == "null")null#else"${bind.NullValueString}"#end };
         ${bind.DataSourceID}.Bindings.Add(${controlid}${generator.GetControlPropertyName($bind, $control)}Binding);
-#end
-#end
-#end
-#end
-
+#end #end #end #end
 #foreach($dscontrol in $dscontrols)
  $generator.parseControl($dscontrol)
 #end
@@ -171,11 +147,11 @@ public override Type EntityType
 protected override void OnAddEntityBindings() {
 #foreach($control in $controls)
  #if($control.ImplementsIEntityBindingProvider)
-  BindingSource.AddBindingProvider(${control.ControlId} as Sage.Platform.EntityBinding.IEntityBindingProvider);
+  BindingSource.AddBindingProvider(${control.ControlId});
  #end
  #if(($control.DataSource) && ($control.DataSource != "") && (${control.BoundCollectionPropertyName}))
   #if(${control.BoundCollectionPropertyName} != "")
-   ${control.DataSource}.Bindings.Add(new Sage.Platform.WebPortal.Binding.WebEntityListBinding("${control.BoundCollectionPropertyName}", ${control.ControlId} ));
+   ${control.DataSource}.Bindings.Add(new WebEntityListBinding("${control.BoundCollectionPropertyName}", ${control.ControlId} ));
    ${control.DataSource}.BindFieldNames = new String[] { ${control.GetDataFieldNames} };
   #else
    ${control.DataSource}.Bindings.Add(new Sage.Platform.Mashups.Web.WebMashupBinding(${control.ControlId}));
@@ -191,7 +167,6 @@ protected override void OnAddEntityBindings() {
   #if(($generator.IsPropertyShared($binding, $control)) && ($control.ControlLabelPlacement != "none") && ($control.Caption != ""))#set($ctlid = $control.LabelId)#genBinding($binding $ctlid) #end
  #end
 #end ##foreach control
-
 #foreach($dscontrol in $dscontrols)
  #set($control = $dscontrol)
  #foreach($binding in $dscontrol.DataBindings)
@@ -199,10 +174,9 @@ protected override void OnAddEntityBindings() {
   #genBinding($binding $ctlid)
  #end
  #if($dscontrol.ControlId != "MainEntity")
-   BindingSource.OnCurrentEntitySet += new EventHandler(${dscontrol.ControlId}_OnCurrentEntitySet);
+   BindingSource.OnCurrentEntitySet += ${dscontrol.ControlId}_OnCurrentEntitySet;
  #end
 #end ##foreach dscontrol
-
 #foreach($control in $ltools)
     #controlAppliedSecurityState($control)
 #end
@@ -242,21 +216,18 @@ $generator.getFormServerCode
 
 public override Sage.Platform.Application.UI.ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
 {
-    ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
+    var tinfo = new ToolsSmartPartInfo();
     #if(${isEntityForm} && ${quickform.UseEntityNameAsTitle})
-    if (BindingSource != null)
+    if (BindingSource != null && BindingSource.Current != null)
     {
-        if (BindingSource.Current != null)
-        {
-            tinfo.Description = BindingSource.Current.ToString();
-            tinfo.Title = BindingSource.Current.ToString();
-        }
+		tinfo.Description = BindingSource.Current.ToString();
+		tinfo.Title = BindingSource.Current.ToString();
     }
     #end
 
     foreach (Control c in Controls)
     {
-        SmartPartToolsContainer cont = c as SmartPartToolsContainer;
+        var cont = c as SmartPartToolsContainer;
         if (cont != null)
         {
             switch (cont.ToolbarLocation)
@@ -298,12 +269,15 @@ public override Sage.Platform.Application.UI.ISmartPartInfo GetSmartPartInfo(Typ
     return tinfo;
 }
 
-private ${interfaceType} _formAdapter;
+private ${formname}Adapter _formAdapter;
 
-public ${interfaceType} FormAdapter
+// For backward compat
+public ${formname}Adapter FormAdapter
 {
     get { return _formAdapter ?? (_formAdapter = new ${formname}Adapter(this)); }
 }
+// For easier programming model
+public ${formname}Adapter MyPage {get { return FormAdapter; }}
 
 public class ${formname}Adapter : ${adapterType}, Sage.Form.Interfaces.I${formname}
 {
@@ -321,15 +295,13 @@ public class ${formname}Adapter : ${adapterType}, Sage.Form.Interfaces.I${formna
 #foreach ($method in $generator.GetEventHandlers())
     public #if ($baseMemberNames.Contains($method.MethodName))new #end void ${method.MethodName}(System.EventArgs e)
     {
-        Sage.Platform.DynamicMethod.DynamicMethodLibrary lib = Sage.Platform.Orm.DynamicMethodLibraryHelper.Instance;
-        Object[] methodArgs = new Object[] { this, e };
-        lib.Execute("$method.ToString()", methodArgs);
+        var lib = Sage.Platform.Orm.DynamicMethodLibraryHelper.Instance;
+        lib.Execute("$method.ToString()", new object[] { this, e });
     }
 #end
 }
 
 </script>
-
 <script type="text/javascript">
 #foreach($control in $controls)$generator.getControlClientScript($control)#end
 #foreach($tool in $ltools)$generator.getControlClientScript($tool)#end

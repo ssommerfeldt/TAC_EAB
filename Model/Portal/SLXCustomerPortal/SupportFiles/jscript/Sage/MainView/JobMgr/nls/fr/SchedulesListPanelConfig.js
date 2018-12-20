@@ -1,10 +1,10 @@
-define({
-    colNameTriggerName: 'Planification',
-    colNameJobName: 'Nom de la tâche',
-    colNameUser: 'Scheduled By',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Priorité',
-    colNameStatus: 'Etat',
-    colNameTimesTriggered: 'Nombre exécutions'
+define("Sage/MainView/JobMgr/nls/fr/SchedulesListPanelConfig", {
+    "colNameTriggerName": "Planification",
+    "colNameJobName": "Nom de la tâche",
+    "colNameUser": "Planifié par",
+    "colNameStartTimeUtc": "Heure de début",
+    "colNameEndTimeUtc": "Heure de fin",
+    "colNamePriority": "Priorité",
+    "colNameStatus": "Etat",
+    "colNameTimesTriggered": "Nombre d'exécutions"
 });

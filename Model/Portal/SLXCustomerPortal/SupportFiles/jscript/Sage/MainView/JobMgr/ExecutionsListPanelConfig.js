@@ -1,12 +1,14 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/JobMgr/ExecutionsListPanelConfig", [
     'Sage/MainView/JobMgr/BaseListPanelConfig',
     'Sage/MainView/JobMgr/SDataSummaryFormatterScope',
     'dojo/_base/declare',
     'dojo/i18n!./nls/ExecutionsListPanelConfig',
     'dojo/_base/lang',
     'Sage/Utility/Jobs',
-    'dijit/ProgressBar'
+    'dijit/ProgressBar',
+    'dojo/i18n!./templates/nls/ExecutionsListSummary',
+    'dojo/i18n!./templates/nls/ExecutionDetailSummary'
 ],
 function (
     baseListPanelConfig,
@@ -39,14 +41,17 @@ function (
         },
         _getStructure: function () {
             var structure = [
-                { field: 'job', name: this.colNameJobName, width: '75px', formatter: jobUtility.formatJobDescription },
-                { field: 'user', name: this.colNameUser, width: '50px', formatter: jobUtility.formatUser },
-                { field: 'phase', name: this.colNamePhase, width: '50px' },
-                { field: 'phaseDetail', name: this.colNamePhaseDetail, width: '50px' },
-                { field: 'progress', name: this.colNameProgress, width: '50px', formatter: jobUtility.formatProgress },
-                { field: 'elapsed', name: this.colNameElapsed, width: '50px', formatter: jobUtility.formatElapsedTime },
-                { field: 'status', name: this.colNameStatus, width: '50px' },
-                { field: 'result', name: this.colNameResult, width: '50px' }
+                { field: 'job', label: this.colNameJobName, width: '75px', formatter: jobUtility.formatJobDescription },
+                { field: 'user', label: this.colNameUser, width: '50px', formatter: jobUtility.formatUser },
+                { field: 'phase', label: this.colNamePhase, width: '50px' },
+                { field: 'phaseDetail', label: this.colNamePhaseDetail, width: '50px' },
+                { field: 'progress', label: this.colNameProgress, width: '50px', renderCell: function (rowInfo, data, cellDom, queryOptions) {
+                        cellDom.appendChild(jobUtility.formatProgress(data));
+                    }
+                },
+                { field: 'elapsed', label: this.colNameElapsed, width: '50px', formatter: jobUtility.formatElapsedTime },
+                { field: 'status', label: this.colNameStatus, width: '50px' },
+                { field: 'result', label: this.colNameResult, width: '50px', formatter: jobUtility.formatJobResultGrid }
             ];
             return structure;
         },
@@ -58,7 +63,7 @@ function (
             return '';
         },
         _getSort: function () {
-            var sort = [{ attribute: 'job'}];
+            var sort = [{ attribute: 'job' }];
             return sort;
         },
         _getInclude: function () {
@@ -102,9 +107,12 @@ function (
             var detailConfig = {
                 resourceKind: this._resourceKind,
                 requestConfiguration: requestConfig,
-                templateLocation: 'MainView/JobMgr/Templates/ExecutionDetailSummary.html'
+                templateLocation: 'MainView/JobMgr/templates/ExecutionDetailSummary.html'
             };
             return detailConfig;
+        },
+        _getSummaryConfig: function () {
+            return false;
         },
         _getToolBars: function () {
             var toolBars = { items: [] };

@@ -117,148 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdStages.PercentComplete.ColumnHeading" xml:space="preserve">
-    <value>Prozent abgeschlossen</value>
-  </data>
-  <data name="StageGrid_Status.HeaderText" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="grdStages.DeleteStage.RowCommand" xml:space="preserve">
-    <value>Phase löschen</value>
-  </data>
   <data name="btnAddStage.ToolTip" xml:space="preserve">
     <value>Phase hinzufügen</value>
-  </data>
-  <data name="grdStages.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
-  </data>
-  <data name="grdStages.CompleteStage.RowCommand" xml:space="preserve">
-    <value>Phase abschließen</value>
-  </data>
-  <data name="StageGrid_NeededDate.HeaderText" xml:space="preserve">
-    <value>Fälligkeitsdatum</value>
-  </data>
-  <data name="StageGrid_Description.HeaderText" xml:space="preserve">
-    <value>Beschreibung</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Phasen/Aufgaben</value>
-  </data>
-  <data name="grdStages.NeededDate.ColumnHeading" xml:space="preserve">
-    <value>Fälligkeitsdatum</value>
-  </data>
-  <data name="DeleteStageMSG" xml:space="preserve">
-    <value>Möchten Sie diese Phase wirklich löschen?</value>
-  </data>
-  <data name="DialogCaption_EditStage" xml:space="preserve">
-    <value>Phase bearbeiten</value>
-  </data>
-  <data name="DialogCaption_AddStage" xml:space="preserve">
-    <value>Phase hinzufügen</value>
-  </data>
-  <data name="grdStages.EditTask.RowCommand" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="StagesAndTasks_ClientScript" xml:space="preserve">
-    <value>&lt;script type="text/javascript" language="Javascript" id="MANAGESTAGESCRIPT" &gt;
-&lt;!--
-
-function onCompleteStage(cmdCompleteCtrlId, stageContextCtrlId, stageContext)
-{
-    var cmdCtrl = dojo.byId(cmdCompleteCtrlId);
-    var stageContextCtrl = dojo.byId(stageContextCtrlId);
-    stageContextCtrl.value = stageContext;
-    spm_InvokeClickEvent(cmdCtrl);
-}
-
-function onSetCurrent(cmdSetCurrentCtrlId, currentContextCtrlId, currentContext)
-{
-    var cmdCtrl = dojo.byId(cmdSetCurrentCtrlId);
-    var currentContextCtrl = dojo.byId(currentContextCtrlId);
-    currentContextCtrl.value = currentContext;
-    spm_InvokeClickEvent(cmdCtrl);
-}
-
-function onCompleteStageWithDate(sender, cmdCompleteCtrlId, contextCtrlId, contextValue)
-{
-    var cmdCtrl = dojo.byId(cmdCompleteCtrlId);
-    var contextCtrl = dojo.byId(contextCtrlId);
-    contextCtrl.value = contextValue + ':' + sender.value;
-    spm_InvokeClickEvent(cmdCtrl);
-}
-
-function onStartStageWithDate(sender, cmdStartCtrlId, contextCtrlId, contextValue)
-{
-    var cmdCtrl = dojo.byId(cmdStartCtrlId);
-    var contextCtrl = dojo.byId(contextCtrlId);
-    contextCtrl.value = contextValue + ':' + sender.value;
-    spm_InvokeClickEvent(cmdCtrl);
-}
-
-function spm_InvokeClickEvent(control)
-{
-    if (dojo.isFF)
-    {
-        // FireFox
-        var e = document.createEvent("MouseEvents");
-        e.initEvent("click", true, true);
-        control.dispatchEvent(e);
-    }
-    else
-    {
-        // IE
-        control.click();
-    }
-}
-
-function saveState(context)
-{
-   if (Sage.Services)
-     { 
-         // Get the client side service:
-         var contextservice = Sage.Services.getService("ClientContextService");
-         // Check for a value:
-         if (contextservice.containsKey("STAGECHANGED"))
-         {
-             // set a value that currently exists:  
-             contextservice.setValue("STAGECHANGED", context);
-         } 
-         else
-         {
-             // add a new value:
-             contextservice.add("STAGECHANGED", context);
-         }
-     }
-}
---&gt;
-&lt;/script&gt;</value>
   </data>
   <data name="cmdAddStage.Text" xml:space="preserve">
     <value>Hinzufügen</value>
   </data>
-  <data name="DialogCaption_CompleteTask" xml:space="preserve">
-    <value>Aufgabe abschließen</value>
-  </data>
-  <data name="DialogCaption_EditTask" xml:space="preserve">
-    <value>Aufgabe bearbeiten</value>
-  </data>
-  <data name="DialogCaption_CompleteStage" xml:space="preserve">
-    <value>Phase abschließen</value>
-  </data>
-  <data name="grdStages.Status.ColumnHeading" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="grdStages.CompleteTask.RowCommand" xml:space="preserve">
-    <value>Abschließen</value>
-  </data>
-  <data name="DialogCaption_AddTask" xml:space="preserve">
-    <value>Aufgabe hinzufügen</value>
+  <data name="DeleteStageMSG" xml:space="preserve">
+    <value>Möchten Sie diese Phase wirklich löschen?</value>
   </data>
   <data name="DeleteTaskMSG" xml:space="preserve">
     <value>Möchten Sie diese Aufgabe wirklich löschen? </value>
   </data>
+  <data name="grdStages.AddTask.RowCommand" xml:space="preserve">
+    <value>Aufgabe hinzufügen</value>
+  </data>
+  <data name="grdStages.CompleteStage.RowCommand" xml:space="preserve">
+    <value>Phase abschließen</value>
+  </data>
+  <data name="grdStages.CompleteTask.RowCommand" xml:space="preserve">
+    <value>Abschließen</value>
+  </data>
+  <data name="grdStages.DeleteStage.RowCommand" xml:space="preserve">
+    <value>Phase löschen</value>
+  </data>
+  <data name="grdStages.DeleteTask.RowCommand" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="grdStages.Description.ColumnHeading" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
   <data name="grdStages.EditStage.RowCommand" xml:space="preserve">
     <value>Phase bearbeiten</value>
+  </data>
+  <data name="grdStages.EditTask.RowCommand" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="grdStages.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  </data>
+  <data name="grdStages.NeededDate.ColumnHeading" xml:space="preserve">
+    <value>Fälligkeitsdatum</value>
+  </data>
+  <data name="grdStages.PercentComplete.ColumnHeading" xml:space="preserve">
+    <value>Prozent abgeschlossen</value>
+  </data>
+  <data name="grdStages.Priority.ColumnHeading" xml:space="preserve">
+    <value>Priorität</value>
+  </data>
+  <data name="grdStages.Status.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Stage" xml:space="preserve">
+    <value>Phase</value>
+  </data>
+  <data name="StageGrid_Description.HeaderText" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="StageGrid_NeededDate.HeaderText" xml:space="preserve">
+    <value>Fälligkeitsdatum</value>
   </data>
   <data name="StageGrid_PercentComplete.HeaderText" xml:space="preserve">
     <value>Abgeschlossen</value>
@@ -266,19 +183,32 @@ function saveState(context)
   <data name="StageGrid_Priority.HeaderText" xml:space="preserve">
     <value>Priorität</value>
   </data>
-  <data name="grdStages.AddTask.RowCommand" xml:space="preserve">
+  <data name="StageGrid_Status.HeaderText" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="StagesAndTasks_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>StagesAndTasks_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Phasen/Aufgaben</value>
+  </data>
+  <data name="DialogCaption_AddStage" xml:space="preserve">
+    <value>Phase hinzufügen</value>
+  </data>
+  <data name="DialogCaption_AddTask" xml:space="preserve">
     <value>Aufgabe hinzufügen</value>
   </data>
-  <data name="grdStages.Description.ColumnHeading" xml:space="preserve">
-    <value>Beschreibung</value>
+  <data name="DialogCaption_EditStage" xml:space="preserve">
+    <value>Phase bearbeiten</value>
   </data>
-  <data name="grdStages.DeleteTask.RowCommand" xml:space="preserve">
-    <value>Löschen</value>
+  <data name="DialogCaption_EditTask" xml:space="preserve">
+    <value>Aufgabe bearbeiten</value>
   </data>
-  <data name="Stage" xml:space="preserve">
-    <value>Phase</value>
+  <data name="DialogCaption_CompleteStage" xml:space="preserve">
+    <value>Phase abschließen</value>
   </data>
-  <data name="grdStages.Priority.ColumnHeading" xml:space="preserve">
-    <value>Priorität</value>
+  <data name="DialogCaption_CompleteTask" xml:space="preserve">
+    <value>Aufgabe abschließen</value>
   </data>
 </root>

@@ -17,17 +17,17 @@
     </SalesLogix:PageLink>
  </SalesLogix:SmartPartToolsContainer>
 
-<table border="0" cellpadding="1" cellspacing="0" class="formtable">
+<table border="0" cellpadding="0" cellspacing="0" class="formtable">
   <col width="50%" /><col width="50%" />
 <tr>
     <td>  
-        <div class="lbl alignleft"><asp:Label ID="RequestUser_lz" meta:resourcekey="RequestUser_lz" AssociatedControlID="RequestUser" runat="server" Text="Requesed By:"></asp:Label></div>
-        <div class="textcontrol user">
+        <div class="lbl alignright" ><asp:Label ID="RequestUser_lz" meta:resourcekey="RequestUser_lz" AssociatedControlID="RequestUser" runat="server" Text="Requesed By:"></asp:Label></div>
+        <div class="lblcontrol user">
             <SalesLogix:SlxUserControl runat="server" ID="RequestUser" DisplayMode="AsText" />
         </div> 
     </td>
 	<td>  
-        <div class="lbl"><asp:Label ID="RequestDate_lz" meta:resourcekey="RequestDate_lz" AssociatedControlID="RequestDate" runat="server" Text="To Be Filled By:"></asp:Label></div>
+        <div class="lbl alignright"><asp:Label ID="RequestDate_lz" meta:resourcekey="RequestDate_lz" AssociatedControlID="RequestDate" runat="server" Text="To Be Filled By:"></asp:Label></div>
         <div class="textcontrol datepicker">
 			<SalesLogix:DateTimePicker runat="server" ID="RequestDate" Enabled="False" DisplayTime="False" AutoPostBack="False" DateTimeValue="01/01/0001 07:00:00" DisplayDate="True" DisplayMode="AsControl" Enable24HourTime="False" meta:resourcekey="RequestDateResource1" Text="3/16/2007" />
 		</div> 
@@ -35,14 +35,14 @@
 </tr>
 <tr>
 <td>  
-        <div class="lbl"><asp:Label ID="Description_lz" meta:resourcekey="Description_lz" AssociatedControlID="Description" runat="server" Text="Description:"></asp:Label></div>
+        <div class="lbl alignright"><asp:Label ID="Description_lz" meta:resourcekey="Description_lz" AssociatedControlID="Description" runat="server" Text="Description:"></asp:Label></div>
         <div class="textcontrol">
 <asp:TextBox runat="server" ID="Description" meta:resourcekey="DescriptionResource1"  />
 
 </div> 
 </td>
 <td>  
-        <div class="lbl"><asp:Label ID="Priority_lz" meta:resourcekey="Priority_lz" AssociatedControlID="Priority" runat="server" Text="Priority:"></asp:Label></div>
+        <div class="lbl alignright"><asp:Label ID="Priority_lz" meta:resourcekey="Priority_lz" AssociatedControlID="Priority" runat="server" Text="Priority:"></asp:Label></div>
         <div class="textcontrol">
 <asp:TextBox runat="server" ID="Priority" meta:resourcekey="PriorityResource1"  />
 
@@ -51,14 +51,14 @@
 </tr>
 <tr>
 <td>
-        <div class="lbl"><asp:Label ID="ContactName_lz" meta:resourcekey="ContactName_lz" AssociatedControlID="ContactName" runat="server" Text="Contact:"></asp:Label></div>
+        <div class="lbl alignright"><asp:Label ID="ContactName_lz" meta:resourcekey="ContactName_lz" AssociatedControlID="ContactName" runat="server" Text="Contact:"></asp:Label></div>
         
 <table class="slxlinkcontrol "><tr><td> <SalesLogix:PageLink runat="server" ID="ContactName" NavigateUrl="Contact" LinkType="EntityAlias" />
 </td></tr></table>
  
 </td>
 <td>  
-        <div class="lbl"><asp:Label ID="SendDate_lz" meta:resourcekey="SendDate_lz" AssociatedControlID="SendDate" runat="server" Text="Send by:"></asp:Label></div>
+        <div class="lbl alignright"><asp:Label ID="SendDate_lz" meta:resourcekey="SendDate_lz" AssociatedControlID="SendDate" runat="server" Text="Send by:"></asp:Label></div>
         <div class="textcontrol datepicker">
 <SalesLogix:DateTimePicker runat="server" ID="SendDate" Enabled="False" DisplayTime="False" AutoPostBack="False" DateTimeValue="01/01/0001 07:00:00" DisplayDate="True" DisplayMode="AsControl" Enable24HourTime="False" meta:resourcekey="SendDateResource1" Text="3/16/2007" />
 
@@ -67,12 +67,12 @@
 </tr>
 <tr>
 <td>  
-        <div class="lbl"><asp:Label ID="AccountName_lz" meta:resourcekey="AccountName_lz" AssociatedControlID="AccountName" runat="server" Text="Account:"></asp:Label></div>
+        <div class="lbl alignright"><asp:Label ID="AccountName_lz" meta:resourcekey="AccountName_lz" AssociatedControlID="AccountName" runat="server" Text="Account:"></asp:Label></div>
 <table class="slxlinkcontrol "><tr><td> <SalesLogix:PageLink runat="server" ID="AccountName" NavigateUrl="Account" LinkType="EntityAlias" />
 </td></tr></table>
 </td>
 <td>  
-        <div class="lbl"><asp:Label ID="FillStatus_lz" meta:resourcekey="FillStatus_lz" AssociatedControlID="FillStatus" runat="server" Text="Status:"></asp:Label></div>
+        <div class="lbl alignright"><asp:Label ID="FillStatus_lz" meta:resourcekey="FillStatus_lz" AssociatedControlID="FillStatus" runat="server" Text="Status:"></asp:Label></div>
         <div class="textcontrol">
 <asp:TextBox runat="server" ID="FillStatus" meta:resourcekey="FillStatusResource1"  />
 
@@ -81,14 +81,14 @@
 </tr>
 <tr>
 <td>  
-        <div class="lbl"><asp:Label ID="CoverName_lz" meta:resourcekey="CoverName_lz" AssociatedControlID="CoverName" runat="server" Text="Cover Letter:"></asp:Label></div>
+        <div class="lbl alignright"><asp:Label ID="CoverName_lz" meta:resourcekey="CoverName_lz" AssociatedControlID="CoverName" runat="server" Text="Cover Letter:"></asp:Label></div>
         <div class="textcontrol">
 <asp:TextBox runat="server" ID="CoverName" meta:resourcekey="CoverNameResource1"  />
 
 </div> 
 </td>
 <td>  
-        <div class="lbl"><asp:Label ID="FillDate_lz" meta:resourcekey="FillDate_lz" AssociatedControlID="FillDate" runat="server" Text="Fill Date:"></asp:Label></div>
+        <div class="lbl alignright"><asp:Label ID="FillDate_lz" meta:resourcekey="FillDate_lz" AssociatedControlID="FillDate" runat="server" Text="Fill Date:"></asp:Label></div>
         <div class="textcontrol datepicker">
 <SalesLogix:DateTimePicker runat="server" ID="FillDate" Enabled="False" DisplayTime="False" AutoPostBack="False" DateTimeValue="01/01/0001 07:00:00" DisplayDate="True" DisplayMode="AsControl" Enable24HourTime="False" meta:resourcekey="FillDateResource1" Text="3/16/2007" />
 
@@ -97,14 +97,14 @@
 </tr>
 <tr>
 <td>  
-        <div class="lbl"><asp:Label ID="TotalCost_lz" meta:resourcekey="TotalCost_lz" AssociatedControlID="TotalCost" runat="server" Text="Total Cost:"></asp:Label></div>
-        <div class="textcontrol currency">
+        <div class="lbl alignright"><asp:Label ID="TotalCost_lz" meta:resourcekey="TotalCost_lz" AssociatedControlID="TotalCost" runat="server" Text="Total Cost:"></asp:Label></div>
+        <div class="lblcontrol currency">
 <SalesLogix:Currency runat="server" ID="TotalCost" Enabled="false" ExchangeRateType="BaseRate" DisplayCurrencyCode="false" DisplayMode="AsText" />
 </div> 
 </td>
 <td>  
-    <div class="lbl"><asp:Label ID="FillUser_lz" meta:resourcekey="FillUser_lz" AssociatedControlID="FillUser" runat="server" Text="Fulfilled by:"></asp:Label></div>
-    <div class="textcontrol user">
+    <div class="lbl alignright"><asp:Label ID="FillUser_lz" meta:resourcekey="FillUser_lz" AssociatedControlID="FillUser" runat="server" Text="Fulfilled by:"></asp:Label></div>
+    <div class="lblcontrol user">
             <SalesLogix:SlxUserControl runat="server" ID="FillUser" DisplayMode="AsText" />
     </div> 
 </td>
@@ -142,7 +142,7 @@ meta:resourcekey="LitRequestForm_7_rsc"
 <script runat="server" type="text/C#">
     
     private IEntityContextService _EntityService;
-    [ServiceDependency(Type = typeof(IEntityContextService), Required = true)]
+    [ServiceDependency]
     public IEntityContextService EntityService
     {
         get
@@ -154,8 +154,6 @@ meta:resourcekey="LitRequestForm_7_rsc"
             _EntityService = value;
         }
     }
-
-
     
     protected override void InnerPageLoad(object sender, EventArgs e)
     {

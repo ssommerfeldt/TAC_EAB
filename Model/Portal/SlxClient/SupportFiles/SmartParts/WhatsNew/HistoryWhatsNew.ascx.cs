@@ -393,14 +393,9 @@ public partial class SmartParts_HisWhatsNew_HisWhatsNew : UserControl, ISmartPar
     /// <returns></returns>
 	public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
 	{
-		ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-
-        Label lbl = new Label();
-        lbl.Text = GetLocalResourceObject("History_Caption").ToString();
-
-        tinfo.LeftTools.Add(lbl);
+        ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
+        tinfo.Title = GetLocalResourceObject("History_Caption").ToString();
         tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Note_24x24.gif");
-
         return tinfo;
     }
 

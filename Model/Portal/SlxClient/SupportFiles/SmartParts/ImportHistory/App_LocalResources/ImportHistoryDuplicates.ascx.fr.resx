@@ -117,37 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdDuplicates.Record.ColumnHeading" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
-  <data name="Title.Resolve.Duplicate.ImportLead" xml:space="preserve">
-    <value>Résoudre les leads importés en double</value>
-  </data>
-  <data name="chkShowResults.Text" xml:space="preserve">
-    <value>Afficher les résultats</value>
-  </data>
-  <data name="grdDuplicates.Resolve.ColumnHeading" xml:space="preserve">
-    <value>Résoudre</value>
-  </data>
   <data name="grdDuplicates.EmptyTableRowText" xml:space="preserve">
     <value>Il n'existe aucun doublon à résoudre.</value>
-  </data>
-  <data name="LoadErrorMSG" xml:space="preserve">
-    <value>La vue de résolution des leads importés en double n'est pas disponible, veuillez contacter votre administrateur système. Id d'erreur SalesLogix : {0}.</value>
-  </data>
-  <data name="grdDuplicates.TimeStamp.ColumnHeading" xml:space="preserve">
-    <value>Horodatage</value>
-  </data>
-  <data name="error_TransformingEntity" xml:space="preserve">
-    <value>Erreur lors de la transformation en objet d'entité.</value>
-  </data>
-  <data name="grdDuplicates.RecordNumber.ColumnHeading" xml:space="preserve">
-    <value>Numéro d'enregistrement</value>
   </data>
   <data name="grdDuplicates.Type.ColumnHeading" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="grdDuplicates.Record.ColumnHeading" xml:space="preserve">
+    <value>Enregistrement</value>
+  </data>
+  <data name="grdDuplicates.RecordNumber.ColumnHeading" xml:space="preserve">
+    <value>Numéro d'enregistrement</value>
+  </data>
+  <data name="grdDuplicates.TimeStamp.ColumnHeading" xml:space="preserve">
+    <value>Horodatage</value>
+  </data>
   <data name="grdDuplicates.Description.ColumnHeading" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="error_TransformingEntity" xml:space="preserve">
+    <value>Erreur lors de la transformation en objet d'entité.</value>
+  </data>
+  <data name="grdDuplicates.Resolve.ColumnHeading" xml:space="preserve">
+    <value>Résoudre</value>
+  </data>
+  <data name="Title.Resolve.Duplicate.ImportLead" xml:space="preserve">
+    <value>Résoudre les leads importés en double</value>
+  </data>
+  <data name="LoadErrorMSG" xml:space="preserve">
+    <value>La vue de résolution des leads importés en double n'est pas disponible, veuillez contacter l'administrateur système. ID d'erreur Saleslogix : {0}.</value>
+  </data>
+  <data name="chkShowResults.Text" xml:space="preserve">
+    <value>Afficher les résultats</value>
   </data>
 </root>

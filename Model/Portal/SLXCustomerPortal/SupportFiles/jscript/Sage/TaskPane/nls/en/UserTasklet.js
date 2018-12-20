@@ -1,6 +1,8 @@
-define((
+define("Sage/TaskPane/nls/en/UserTasklet", (
 { addToRoleTitle: 'Add to Role',
   resetUsersTitle: 'Reset Users',
+  taskText_CopyUserProfile: 'Copy User Profile',
+  copyProfileNoneSelected: 'At Least one user needs to be selected!',
   associateContactTitle: 'Associate with Contact',
   disAssociateContactTitle: 'Disassociate from Contact',
   disAssociateDialogTitle: 'Disassociate from a Contact',
@@ -9,5 +11,11 @@ define((
   associationExistsMessage: 'The user you selected is already associated to a contact. To associate this user to a different contact, you must first disassociate the user and contact.',
   multipleSelectionErrorMessage: 'You can only perform this task for 1 user at a time. \n Please select a single user and select the task again.',
   noSelectionErrorMessage: 'You need to select at least one user to disassociate. \n Please select one or more user(s) and select the task again.',
-  singleSelectionErrorMessage: 'You need to select a user to disassociate. \n Please select a single user and select the task again.' }
+  singleSelectionErrorMessage: 'You need to select a user to disassociate. \n Please select a single user and select the task again.',
+  addToTeamCaption: 'Add to Team',
+  removeFromAllTeamsCaption: 'Remove from All Teams',
+  areYouSure: 'Are you sure you want to remove the selected member(s) from all teams?',
+  promoteNoneSelected: 'Please select at least one record',
+  requestsuccessfullcompleted: '${0} users were successfully submitted for promotion.',
+  promotedsuccessfully: 'The item got promoted successfully'}
 ));

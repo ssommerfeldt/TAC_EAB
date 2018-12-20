@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/nls/en/FormManager", (
 { nameText: 'Name',
   entityText: 'Entity',
   layoutText: 'Layout',

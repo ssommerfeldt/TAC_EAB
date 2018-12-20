@@ -1,5 +1,5 @@
-/* external script file                               */
-/* Copyright ©1997-2013                               */
+ï»¿/* external script file                               */
+/* Copyright 1997-2013                               */
 /* SalesLogix, N.A., LLC.                                */
 /* All Rights Reserved                                */
 /*  querybuilder.js                                   */
@@ -58,15 +58,15 @@ function fieldInfo() {
     this.fieldtypecode = ""; //the code of the field type
     this.fieldtypename = ""; //the name of the field type
     this.ishidden = "F";     //is this a hidden field
-            /*  code  : name          */
-            /*------------------------*/
-            /*	1     : String        */
-            /*	3     : Integer       */
-            /*	6     : Decimal       */
-            /*	11    : Date/Time     */
-            /*	16    : Memo/Blob     */
-            /*	calc  : Calculated    */
-            /*------------------------*/
+    /*  code  : name          */
+    /*------------------------*/
+    /*	1     : String        */
+    /*	3     : Integer       */
+    /*	6     : Decimal       */
+    /*	11    : Date/Time     */
+    /*	16    : Memo/Blob     */
+    /*	calc  : Calculated    */
+    /*------------------------*/
 }
 
 function fieldInfo_getTypeName() {
@@ -234,7 +234,7 @@ fieldInfo.prototype.buildDisplayPath = fieldInfo_buildDisplayPath;
 /* ------------------------------------------------------------------------------------------------------*/
 function layoutInfo(layoutXML) {
     /* Constructor for this class    */
-        
+
     this.QBObjectType = "layoutInfo";
     this.alias = "";         //the real column name           eg: MAINPHONE
     this.datapath = "";      //the real datapath              eg: CONTACT:ACCOUNTID=ACCOUNTID.ACCOUNT!MAINPHONE
@@ -247,13 +247,14 @@ function layoutInfo(layoutXML) {
     this.align = "";         //alignment of the data
     this.captalign = "";     //alignment of the caption
     this.format = "";        //SLFormat type
+    this.dataTypeData = "";  //contains a json formatted string of the selected property's data type information
     this.formatstring = "";  //Format String
     this.ishidden = false;   //Hidden field?
     this.visible = true;
-    
+
     this.weblink = false;
     this.cssclass = "";
-    
+
     if (layoutXML){
         var xmlDoc = getXMLDoc(layoutXML);
         if (xmlDoc) {
@@ -270,6 +271,9 @@ function layoutInfo(layoutXML) {
             this.datapath = getNodeText(xmlDoc.getElementsByTagName('datapath')[0]);
             this.displayname = getNodeText(xmlDoc.getElementsByTagName('displayname')[0]);
             this.displaypath = getNodeText(xmlDoc.getElementsByTagName('displaypath')[0]);
+            if (xmlDoc.getElementsByTagName('dataTypeData')[0]) {
+                this.dataTypeData = getNodeText(xmlDoc.getElementsByTagName('dataTypeData')[0]);
+            }
             if (xmlDoc.getElementsByTagName('visible')[0]) {
                 this.visible = (getNodeText(xmlDoc.getElementsByTagName('visible')[0]) == 'T');
             }
@@ -296,6 +300,7 @@ function layoutInfo_asXML() {
         res += '<align>' + this.align + '</align>';
         res += '<captalign>' + this.captalign + '</captalign>';
         res += '<format>' + this.format + '</format>';
+        res += '<dataTypeData>' + this.dataTypeData + '</dataTypeData>';
         res += '<formatstring><![CDATA[' + this.formatstring + ']]></formatstring>';
         res += '<visible>' + (this.visible ? 'T' : 'F') + '</visible>';
         res += '<weblink>' + (this.weblink ? 'T' : 'F') + '</weblink>';
@@ -309,6 +314,7 @@ function layoutInfo_asXML() {
         res += '<displaypath><![CDATA[' + this.displaypath + ']]></displaypath>';
         this.fieldtypecode = this.getTypeCode();
         res += '<fieldtype><![CDATA[' + this.fieldtypecode + ']]></fieldtype>';
+        res += '<dataTypeData>' + this.dataTypeData + '</dataTypeData>';
         res += '</hiddenfield>';
         res += '<weblink>' + (this.weblink ? 'T' : 'F') + '</weblink>';
         res += '<cssclass>' + this.cssclass + '</cssclass>';
@@ -375,9 +381,9 @@ function conditionInfo(condXML, paramXML) {
             this.fieldtypecode = getNodeText(xmlDoc.getElementsByTagName('fieldtype')[0]);
             this.fieldtypename = this.getTypeName();
             this.operator = getNodeText(xmlDoc.getElementsByTagName('operator')[0]);
-                        
+
             var valText = getNodeText(xmlDoc.getElementsByTagName('value')[0]);
-                     
+
             if ((paramXML) && (valText.toUpperCase().indexOf('VALUEPARAM') > 0)) {
                 var paramXmlDoc = getXMLDoc(paramXML);
                 var paramNodes = paramXmlDoc.getElementsByTagName('parameter');
@@ -385,10 +391,10 @@ function conditionInfo(condXML, paramXML) {
                 // look for matching parameter
                 for (var i=0; i< paramNodes.length; i++) {
                     if (getNodeText(paramNodes[i].getElementsByTagName('name')[0]).toUpperCase() == valText.toUpperCase().substring(1, valText.length)) {
-                    
-                       valText = getNodeText( paramNodes[i].getElementsByTagName('value')[0]);
+
+                        valText = getNodeText( paramNodes[i].getElementsByTagName('value')[0]);
                    
-                       switch (this.operator.trim().toUpperCase()) {
+                        switch (this.operator.trim().toUpperCase()) {
                             case ('STARTING WITH'):
                                 valText = valText.substring(0, valText.length - 1);
                                 break;
@@ -406,15 +412,15 @@ function conditionInfo(condXML, paramXML) {
                                     valText = valText.substring(0, valText.length - 1);
                                 }
                                 break;
-                       }
-                       break;
+                        }
+                        break;
                     }
                 }
             }
-            
+
             this.value = valText;
-            
-            
+
+
             this.connector = getNodeText(xmlDoc.getElementsByTagName('connector')[0]);
             this.connector = this.connector.trim();
             this.leftparens = getNodeText(xmlDoc.getElementsByTagName('leftparens')[0]);
@@ -488,6 +494,8 @@ function conditionInfo_buildOperatorSelectHTML(strName, strOnChange) {
     txt += '" name="';
     txt += strName;
     txt += '" style="width:155px"';
+    txt += '" class="dropdown"';
+
     if (strOnChange != '') {
         txt += 'onchange="' + strOnChange + '"';
     }
@@ -637,7 +645,7 @@ function calcFieldInfo_asXML() {
     ret += '<name><![CDATA[' + this.name + ']]></name>';
     ret += '<calculation><![CDATA[' + this.buildCalculation() + ']]></calculation>';
     ret += '<basetable>' + this.baseTable + '</basetable>';
-    ret += '<realTableName>' + this.realTableName + '</realTableName>';    
+    ret += '<realTableName>' + this.realTableName + '</realTableName>';
     ret += '<description><![CDATA[' + this.description + ']]></description>';
     ret += '</calcfield>';
     return ret;
@@ -650,7 +658,7 @@ function calcFieldInfo_parseCalculation(calcStr) {
     if (calcStr.lastIndexOf('|') == calcStr.length - 1) {
         calcStr = calcStr.substring(0, calcStr.length - 1);
     }
-    
+
     var parts = calcStr.split('|');
     if (parts.length > 2) {
         this.alias = parts[0];
@@ -758,25 +766,3 @@ function joinInfo_asXML() {
 joinInfo.prototype.asXML = joinInfo_asXML;
 
 //Other query builder functions...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

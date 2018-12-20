@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/Editors/TextBoxAdvancedPropertyEditor", [
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dijit/layout/ContentPane',

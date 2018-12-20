@@ -112,109 +112,115 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="dtpModifyDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="pklGender.Caption" xml:space="preserve">
-    <value>Пол:</value>
-  </data>
-  <data name="pklInterests.Caption" xml:space="preserve">
-    <value>Интересы:</value>
-  </data>
-  <data name="dtpBirthday.Caption" xml:space="preserve">
-    <value>День рождения:</value>
-  </data>
-  <data name="usrCreateUser.Caption" xml:space="preserve">
-    <value>Создано:</value>
-  </data>
-  <data name="txtImportSource.Caption" xml:space="preserve">
-    <value>Ист. импорта:</value>
-  </data>
-  <data name="usrCreateUser.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="pklCuisinePreference.Caption" xml:space="preserve">
-    <value>Предпоч. кухня:</value>
-  </data>
-  <data name="txtPreferredName.Caption" xml:space="preserve">
-    <value>Предпочитаемое имя:</value>
-  </data>
-  <data name="dtpModifyDate.Caption" xml:space="preserve">
-    <value>Дата изменения:</value>
-  </data>
-  <data name="pklMaritalStatus.Caption" xml:space="preserve">
-    <value>Супруж. статус:</value>
-  </data>
-  <data name="txtSpouse.Caption" xml:space="preserve">
-    <value>Супруг(а):</value>
-  </data>
-  <data name="usrModifyUser.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="txtPreviousEmployer.Caption" xml:space="preserve">
-    <value>Работодатель(и):</value>
-  </data>
-  <data name="dtpBirthday.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="emlEmail3.ButtonToolTip" xml:space="preserve">
-    <value>Эл. почта</value>
-  </data>
-  <data name="txtAlumni.Caption" xml:space="preserve">
-    <value>Выпускник:</value>
-  </data>
-  <data name="txtChildren.Caption" xml:space="preserve">
-    <value>Дети:</value>
-  </data>
-  <data name="txtEntityId.Caption" xml:space="preserve">
-    <value>ИД контакта:</value>
-  </data>
-  <data name="emlSecondaryEmail.Caption" xml:space="preserve">
-    <value>Эл. почта 2:</value>
-  </data>
-  <data name="dtpCreateDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="pklDepartment.Caption" xml:space="preserve">
-    <value>Отдел:</value>
-  </data>
-  <data name="phnPager.Caption" xml:space="preserve">
-    <value>Пейджер:</value>
-  </data>
-  <data name="usrModifyUser.Caption" xml:space="preserve">
-    <value>Изменил:</value>
-  </data>
-  <data name="txtReferral.Caption" xml:space="preserve">
-    <value>Рекомендован:</value>
-  </data>
-  <data name="pklNationality.Caption" xml:space="preserve">
-    <value>Национальность:</value>
-  </data>
-  <data name="emlEmail3.Caption" xml:space="preserve">
-    <value>Эл. почта 3:</value>
-  </data>
-  <data name="tmzAddressTimeZone.Caption" xml:space="preserve">
-    <value>Часовой пояс:</value>
-  </data>
   <data name="cmdSaveContactExtendedDetails.Caption" xml:space="preserve">
     <value>Сохранить</value>
-  </data>
-  <data name="dtpCreateDate.Caption" xml:space="preserve">
-    <value>Дата создания:</value>
   </data>
   <data name="cmdSaveContactExtendedDetails.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="txtSpouse.Caption" xml:space="preserve">
+    <value>Супруг/супруга:</value>
+  </data>
+  <data name="txtChildren.Caption" xml:space="preserve">
+    <value>Дети:</value>
+  </data>
+  <data name="txtAlumni.Caption" xml:space="preserve">
+    <value>Выпускник:</value>
+  </data>
+  <data name="txtPreviousEmployer.Caption" xml:space="preserve">
+    <value>Работодатели:</value>
+  </data>
+  <data name="txtReferral.Caption" xml:space="preserve">
+    <value>Кем рекомендован:</value>
+  </data>
+  <data name="txtEntityId.Caption" xml:space="preserve">
+    <value>ИД контакта</value>
+  </data>
+  <data name="txtImportSource.Caption" xml:space="preserve">
+    <value>Источник импорта:</value>
+  </data>
+  <data name="dtpBirthday.Caption" xml:space="preserve">
+    <value>День рождения:</value>
+  </data>
+  <data name="dtpCreateDate.Caption" xml:space="preserve">
+    <value>Дата создания:</value>
+  </data>
+  <data name="dtpModifyDate.Caption" xml:space="preserve">
+    <value>Дата изменения:</value>
+  </data>
+  <data name="emlSecondaryEmail.Caption" xml:space="preserve">
+    <value>Электронная почта 2:</value>
+  </data>
+  <data name="emlEmail3.Caption" xml:space="preserve">
+    <value>Электронная почта 3:</value>
+  </data>
+  <data name="phnPager.Caption" xml:space="preserve">
+    <value>Пейджер:</value>
+  </data>
+  <data name="pklInterests.Caption" xml:space="preserve">
+    <value>Интересы:</value>
+  </data>
+  <data name="pklCuisinePreference.Caption" xml:space="preserve">
+    <value>Предпочтительная кухня:</value>
+  </data>
+  <data name="pklDepartment.Caption" xml:space="preserve">
+    <value>Отдел:</value>
+  </data>
+  <data name="tmzAddressTimeZone.Caption" xml:space="preserve">
+    <value>Часовой пояс:</value>
+  </data>
+  <data name="usrCreateUser.Caption" xml:space="preserve">
+    <value>Автор:</value>
+  </data>
+  <data name="usrModifyUser.Caption" xml:space="preserve">
+    <value>Автор изменения:</value>
+  </data>
+  <data name="emlSecondaryEmail.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="emlEmail3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpBirthday.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
   <data name="emlSecondaryEmail.ButtonToolTip" xml:space="preserve">
-    <value>Эл. почта</value>
+    <value>Электронная почта</value>
+  </data>
+  <data name="emlEmail3.ButtonToolTip" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="usrCreateUser.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dtpCreateDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="usrModifyUser.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dtpModifyDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="txtPreferredName.Caption" xml:space="preserve">
+    <value>Предпочитаемое имя:</value>
+  </data>
+  <data name="pklGender.Caption" xml:space="preserve">
+    <value>Пол:</value>
+  </data>
+  <data name="pklMaritalStatus.Caption" xml:space="preserve">
+    <value>Семейное положение:</value>
   </data>
   <data name="pklCompanyContext.Caption" xml:space="preserve">
     <value>Контекст компании:</value>
+  </data>
+  <data name="pklNationality.Caption" xml:space="preserve">
+    <value>Национальность:</value>
   </data>
   <data name="pklLanguage.Caption" xml:space="preserve">
     <value>Язык:</value>

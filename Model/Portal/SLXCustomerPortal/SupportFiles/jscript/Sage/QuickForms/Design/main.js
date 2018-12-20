@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/main", [
     "Sage/QuickForms/Design/CheckBoxControlDesigner",
     "Sage/QuickForms/Design/ColumnDesigner",
     "Sage/QuickForms/Design/ComboBoxControlDesigner",

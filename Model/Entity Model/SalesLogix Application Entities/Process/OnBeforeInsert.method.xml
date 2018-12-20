@@ -5,7 +5,7 @@
   </ExtendedPropertiesCollection>
   <parameter />
   <methodTargets>
-    <methodTarget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="8bb09f22-091d-43c8-af31-4ef576af4f17" targetType="Sage.SalesLogix.Process.Rules, Sage.SalesLogix.BusinessRules" sequence="0" targetMethod="OnBeforeInsert" active="true">
+    <methodTarget id="8bb09f22-091d-43c8-af31-4ef576af4f17" targetType="Sage.SalesLogix.Process.Rules, Sage.SalesLogix.BusinessRules" sequence="0" targetMethod="OnBeforeInsert" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>

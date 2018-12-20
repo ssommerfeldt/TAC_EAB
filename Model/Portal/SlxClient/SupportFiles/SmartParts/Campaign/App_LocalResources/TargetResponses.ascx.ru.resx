@@ -112,99 +112,109 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblSearchCount.Caption" xml:space="preserve">
-    <value>Записей {0} - {1} из {2}</value>
-  </data>
-  <data name="cmdSearch.Caption" xml:space="preserve">
-    <value>Поиск</value>
-  </data>
-  <data name="chkContacts.Caption" xml:space="preserve">
-    <value>Контакты</value>
-  </data>
-  <data name="chkMethod.Caption" xml:space="preserve">
-    <value>Способ отклика:</value>
-  </data>
-  <data name="grdResponses.ConfirmDelete_Msg" xml:space="preserve">
-    <value>Вы действительно хотите удалить этот отклик?</value>
-  </data>
-  <data name="chkLeadSource.Caption" xml:space="preserve">
-    <value>Ист. наводки:</value>
-  </data>
-  <data name="lnkShowFilters.Text" xml:space="preserve">
-    <value>Показать фильтры</value>
+  <data name="grdResponses.Add.Column" xml:space="preserve">
+    <value>Добавить</value>
   </data>
   <data name="lblShow.Caption" xml:space="preserve">
     <value>Показать:</value>
   </data>
-  <data name="cmdReset.Caption" xml:space="preserve">
-    <value>Сброс</value>
-  </data>
-  <data name="error_InvalidTargetType" xml:space="preserve">
-    <value>Не удается определить тип выбранной цели.</value>
-  </data>
-  <data name="grdResponses.Method.ColumnHeading" xml:space="preserve">
-    <value>Способ отклика</value>
-  </data>
-  <data name="AddTargetResponse_DialogCaption" xml:space="preserve">
-    <value>Добавить целевой отклик</value>
-  </data>
-  <data name="EditTargetResponse_DialogCaption" xml:space="preserve">
-    <value>Редактировать цел. отклик</value>
-  </data>
-  <data name="grdResponses.Edit.Column" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="chkName.Caption" xml:space="preserve">
-    <value>Фамилия:</value>
-  </data>
-  <data name="chkDisplayResults.Caption" xml:space="preserve">
-    <value>Показать результаты при открытии</value>
-  </data>
-  <data name="lnkHideFilters.Text" xml:space="preserve">
-    <value>Скрыть фильтры</value>
-  </data>
-  <data name="grdResponses.Type.ColumnHeading" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="grdResponses.Delete.Column" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
   <data name="chkLeads.Caption" xml:space="preserve">
-    <value>Наводки</value>
+    <value>Заинтересованные лица</value>
   </data>
-  <data name="grdResponses.LeadSource.ColumnHeading" xml:space="preserve">
-    <value>Источник наводки</value>
+  <data name="chkContacts.Caption" xml:space="preserve">
+    <value>Контакты</value>
   </data>
-  <data name="grdResponses.Stage.ColumnHeading" xml:space="preserve">
-    <value>Стадия</value>
+  <data name="chkLeadSource.Caption" xml:space="preserve">
+    <value>Источник заинтересованного лица:</value>
   </data>
-  <data name="error_EntityContext" xml:space="preserve">
-    <value>Пропущен контекст текущей сущности</value>
+  <data name="chkMethod.Caption" xml:space="preserve">
+    <value>Способ ответа:</value>
   </data>
   <data name="chkStage.Caption" xml:space="preserve">
     <value>Стадия:</value>
   </data>
-  <data name="addResponse.ToolTip" xml:space="preserve">
-    <value>Добавить отклики программы</value>
+  <data name="chkName.Caption" xml:space="preserve">
+    <value>Фамилия</value>
   </data>
-  <data name="grdResponses.Add.Column" xml:space="preserve">
-    <value>Добавить</value>
+  <data name="cmdSearch.Caption" xml:space="preserve">
+    <value>Поиск</value>
   </data>
-  <data name="grdResponses.ResponseDate.ColumnHeading" xml:space="preserve">
-    <value>Дата отклика</value>
+  <data name="cmdReset.Caption" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="grdResponses.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <data name="chkDisplayResults.Caption" xml:space="preserve">
+    <value>Показать результаты при открытии</value>
   </data>
   <data name="grdResponses.Comments.ColumnHeading" xml:space="preserve">
     <value>Комментарии</value>
   </data>
-  <data name="grdResponses.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
+  <data name="grdResponses.Delete.Column" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="grdResponses.Edit.Column" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="grdResponses.LeadSource.ColumnHeading" xml:space="preserve">
+    <value>Источник заинтересованного лица</value>
+  </data>
+  <data name="grdResponses.Method.ColumnHeading" xml:space="preserve">
+    <value>Способ ответа</value>
   </data>
   <data name="grdResponses.Name.ColumnHeading" xml:space="preserve">
     <value>Имя</value>
+  </data>
+  <data name="grdResponses.ResponseDate.ColumnHeading" xml:space="preserve">
+    <value>Дата ответа</value>
+  </data>
+  <data name="grdResponses.Stage.ColumnHeading" xml:space="preserve">
+    <value>Стадия</value>
+  </data>
+  <data name="grdResponses.Type.ColumnHeading" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="grdResponses.ConfirmDelete_Msg" xml:space="preserve">
+    <value>Действительно удалить этот ответ?</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TargetResponses_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>TargetResponses_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="error_EntityContext" xml:space="preserve">
+    <value>Пропущен контекст текущей сущности</value>
+  </data>
+  <data name="addResponse.ToolTip" xml:space="preserve">
+    <value>Добавить ответ на кампанию</value>
+  </data>
+  <data name="lnkHideFilters.Text" xml:space="preserve">
+    <value>Скрыть фильтры</value>
+  </data>
+  <data name="lnkShowFilters.Text" xml:space="preserve">
+    <value>Показать фильтры</value>
+  </data>
+  <data name="error_InvalidTargetType" xml:space="preserve">
+    <value>Не удалось определить тип выбранной цели.</value>
+  </data>
+  <data name="lblSearchCount.Caption" xml:space="preserve">
+    <value>Записи {0} — {1} из {2}</value>
+  </data>
+  <data name="AddTargetResponse_DialogCaption" xml:space="preserve">
+    <value>Добавить целевой ответ</value>
+  </data>
+  <data name="EditTargetResponse_DialogCaption" xml:space="preserve">
+    <value>Редактировать целевой ответ</value>
+  </data>
+  <data name="grdResponses.Contact" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="grdResponses.Lead" xml:space="preserve">
+    <value>Заинтересованное лицо</value>
   </data>
 </root>

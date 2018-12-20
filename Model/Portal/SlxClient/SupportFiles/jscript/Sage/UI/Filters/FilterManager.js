@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Filters/FilterManager", [
         'dojo/_base/lang',
         'dojo/_base/declare',
         'dojo/_base/array',
@@ -16,8 +16,8 @@ function (
         dString,
         dojoDate,
         dateLocale,
-        Utility,
-        FiltersUtil) {
+        utility,
+        filtersUtil) {
     var widget = declare('Sage.UI.Filters.FilterManager', null, {
         _connects: null,
         _subscribes: null,
@@ -37,7 +37,7 @@ function (
             this._applied = {};
             this._definitionSet = {};
 
-            var filterStore = Utility.getValue(window, 'Sage.UI.DataStore.Filters'),
+            var filterStore = utility.getValue(window, 'Sage.UI.DataStore.Filters'),
                 applied = null,
                 definitionSet = null;
 
@@ -124,18 +124,20 @@ function (
             var key = definition && definition.$key,
                 container = null;
 
-            if (key) {
-                this._definitionSet[key] = definition;
-                this._applied[key] = this._applied[key] || {};
-                container = this._applied[key];
-                if ((definition.details.userLookupFilter) || (definition.details.lookupFilter)) {
-                    container['value'] = value;
-                }else if (value !== false) {
-                    container[name] = value;
-                } else {
-                    delete container[name];
+
+                if (key) {
+                    this._definitionSet[key] = definition;
+                    this._applied[key] = this._applied[key] || {};
+                    container = this._applied[key];
+                    if ((definition.details.userLookupFilter) || (definition.details.lookupFilter)) {
+                        container['value'] = value;
+                    } else if (value !== false) {
+                        container[name] = value;
+                    } else {
+                        delete container[name];
+                    }
                 }
-            }
+
 
             this._timeout = setTimeout(lang.hitch(this, this._onTimeout), this.refreshBufferDelay);
         },
@@ -146,16 +148,21 @@ function (
             quote = quote || '"';
             return expression.replace(quote, quote + quote);
         },
-        _transformValue: function (type, value, quote) {
+        _transformValue: function (type, value, quote, details) {
             if (value) {
                 quote = quote || '"';
-                if (type === 'string' || type === 'key' || type === 'enum' || type === 'boolean') {
-                    return quote + this._escapeString(value, quote) + quote;
-                }
 
                 if (type === 'date') {
-                    quote = '@';
-                    return quote + this._transformDate(value) + quote;
+                    if (details && details.distinctFilter) {
+                        return quote + this._escapeString(value, quote) + quote;
+                    }
+                    else {
+                        quote = '@';
+                        return quote + this._transformDate(value) + quote;
+                    }
+                }
+                else if (type === 'string' || type === 'key' || type === 'enum' || type === 'boolean' || type === 'unknown') {
+                    return quote + this._escapeString(value, quote) + quote;
                 }
             }
 
@@ -166,289 +173,28 @@ function (
                 parsedDate;
 
             if (this.specialDates.hasOwnProperty(value)) {
-                return Utility.Convert.toIsoStringFromDate(this.specialDates[value](today));
+                return utility.Convert.toIsoStringFromDate(this.specialDates[value](today));
             } else {
                 parsedDate = dateLocale.parse(value);
                 if (parsedDate) {
-                    return Utility.Convert.toIsoStringFromDate(parsedDate);
+                    return utility.Convert.toIsoStringFromDate(parsedDate);
                 } else {
                     return value;
                 }
             }
         },
         /* static object */
-        specialDates: {
-            // today and todaystart are the same
-            ':today': function (today) {
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':todaystart': function (today) {
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':todayend': function (today) {
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            // yesterday and yesterdaystart are the same
-            ':yesterday': function (today) {
-                today.setDate(today.getDate() - 1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':yesterdaystart': function (today) {
-                today.setDate(today.getDate() - 1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':yesterdayend': function (today) {
-                today.setDate(today.getDate() - 1);
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            // tomorrow and tomorrowstart are the same
-            ':tomorrow': function (today) {
-                today.setDate(today.getDate() + 1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':tomorrowstart': function (today) {
-                today.setDate(today.getDate() + 1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':tomorrowend': function (today) {
-                today.setDate(today.getDate() + 1);
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':thisweekstart': function (today) {
-                today.setDate(today.getDate() - today.getDay());
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':thisweekend': function (today) {
-                today.setDate(today.getDate() + (6 - today.getDay()));
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':thismonthstart': function (today) {
-                today.setDate(1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':thismonthend': function (today) {
-                today.setDate(dojoDate.getDaysInMonth(today));
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':thisyearstart': function (today) {
-                today.setDate(1);
-                today.setMonth(0);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':thisyearend': function (today) {
-                today.setDate(31);
-                today.setMonth(11);
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':thisquarterstart': function (today) {
-                // 1 | jan (0), feb (1), march (2)
-                // 2 | april (3), may (4), june (5)
-                // 3 | july (6), august (7), sept (8)
-                // 4 | oct (9), nov (10), dec (11)
-                var month = today.getMonth(),
-                    mod = month % 3;
-                today.setMonth(month - mod);
-                today.setDate(1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':thisquarterend': function (today) {
-                var month = today.getMonth(),
-                    mod = 2 - (month % 3);
-                today.setMonth(month + mod);
-                today.setDate(dojoDate.getDaysInMonth(today));
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':nextweekstart': function (today) {
-                today.setDate(today.getDate() + (7 - today.getDay()));
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':nextweekend': function (today) {
-                today.setDate(today.getDate() + (7 - today.getDay()) + 6);
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':nextmonthstart': function (today) {
-                today.setMonth(today.getMonth() + 1);
-                today.setDate(1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':nextmonthend': function (today) {
-                today.setMonth(today.getMonth() + 1);
-                today.setDate(1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':nextyearstart': function (today) {
-                today.setFullYear(today.getFullYear() + 1);
-                today.setMonth(0);
-                today.setDate(1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':nextyearend': function (today) {
-                today.setFullYear(today.getFullYear() + 1);
-                today.setMonth(11);
-                today.setDate(31);
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':nextquarterstart': function (today) {
-                var month = today.getMonth(),
-                    mod = 2 - (month % 3);
-                today.setMonth(month + mod + 1);
-                today.setDate(1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':nextquarterend': function (today) {
-                var month = today.getMonth(),
-                    mod = 2 - (month % 3);
-                today.setMonth(month + mod + 3);
-                today.setDate(dojoDate.getDaysInMonth(today));
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':lastweekstart': function (today) {
-                today.setDate(today.getDate() - today.getDay() - 7);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':lastweekend': function (today) {
-                today.setDate(today.getDate() - today.getDay() - 1);
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':lastmonthstart': function (today) {
-                today.setMonth(today.getMonth() - 1);
-                today.setDate(1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':lastmonthend': function (today) {
-                today.setMonth(today.getMonth() - 1);
-                today.setDate(dojoDate.getDaysInMonth(today));
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':lastyearstart': function (today) {
-                today.setFullYear(today.getFullYear() - 1);
-                today.setMonth(0);
-                today.setDate(1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':lastyearend': function (today) {
-                today.setFullYear(today.getFullYear() - 1);
-                today.setMonth(11);
-                today.setDate(31);
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            },
-            ':lastquarterstart': function (today) {
-                var month = today.getMonth(),
-                    mod = month % 3;
-                today.setMonth(month - mod - 3);
-                today.setDate(1);
-                today.setHours(0);
-                today.setMinutes(0);
-                today.setSeconds(0);
-                return today;
-            },
-            ':lastquarterend': function (today) {
-                var month = today.getMonth(),
-                    mod = month % 3;
-                today.setMonth(month - mod - 1);
-                today.setDate(dojoDate.getDaysInMonth(today));
-                today.setHours(23);
-                today.setMinutes(59);
-                today.setSeconds(59);
-                return today;
-            }
-        },
+        specialDates: utility.specialDates,
         resolveProperty: function (propertyName, dataPath /* optional */) {
             if (this._owner && this._owner.resolveProperty) {
                 return this._owner.resolveProperty(propertyName, dataPath);
+            }
+
+            return propertyName;
+        },
+        getPropertyFormat: function (propertyName) {
+            if (this._owner && this._owner.propertyFormat) {
+                return this._owner.propertyFormat(propertyName);
             }
 
             return propertyName;
@@ -464,7 +210,7 @@ function (
             return false;
         },
         resolveDataType: function (dataTypeId) {
-            return FiltersUtil.resolveDataType(dataTypeId);
+            return filtersUtil.resolveDataType(dataTypeId);
         },
         createRangeFragment: function (definition, propertyName, applied, dataPath) {
             var propertyType = this.resolveDataType(definition.propertyDataTypeId),
@@ -472,6 +218,7 @@ function (
                 details = definition.details.rangeFilter,
                 timelessProperty = false,
                 values = [],
+                emptyValue = null,
                 segments = [],
                 multiSegmentOperator = 'and',
                 sub = dString.substitute,
@@ -501,8 +248,8 @@ function (
                         var lowerTimelessDate = new Date(Date.now());
                         var upperTimelessDate = new Date(Date.now());
                         var quote = '@';
-                        var s_lowerTimelessDate = '';
-                        var s_upperTimelessDate = '';
+                        var sLowerTimelessDate = '';
+                        var sUpperTimelessDate = '';
 
                         if (range.lower === range.upper) {
                             values.push(this._transformValue(propertyType, range.lower));
@@ -513,7 +260,7 @@ function (
                                 lowerTimelessDate.setHours(0);
                                 lowerTimelessDate.setMinutes(0);
                                 lowerTimelessDate.setSeconds(0);
-                                s_lowerTimelessDate = quote + Utility.Convert.toIsoStringFromDateNonUTC(lowerTimelessDate) + quote;
+                                sLowerTimelessDate = quote + utility.Convert.toIsoStringFromDateNonUTC(lowerTimelessDate) + quote;
 
                             }
                             if (this.specialDates.hasOwnProperty(range.upper)) {
@@ -521,15 +268,15 @@ function (
                                 upperTimelessDate.setHours(23);
                                 upperTimelessDate.setMinutes(59);
                                 upperTimelessDate.setSeconds(59);
-                                s_upperTimelessDate = quote + Utility.Convert.toIsoStringFromDateNonUTC(upperTimelessDate) + quote;
+                                sUpperTimelessDate = quote + utility.Convert.toIsoStringFromDateNonUTC(upperTimelessDate) + quote;
                             }
                             options = [
                                 timelessProperty,
                                 transform(resolvedName),
                                 this._transformValue(propertyType, range.lower),
                                 this._transformValue(propertyType, range.upper),
-                                s_lowerTimelessDate,
-                                s_upperTimelessDate
+                                sLowerTimelessDate,
+                                sUpperTimelessDate
                             ];
 
                             if (range.lower === null) {
@@ -545,6 +292,8 @@ function (
                         if (range.lower === range.upper) {
                             if (range.lower !== null && typeof range.lower !== 'undefined') {
                                 values.push(this._transformValue(propertyType, range.lower));
+                            } else if (emptyValue === null) { // only needs to be set once per filter.
+                                emptyValue = sub('COALESCE(${0},${1}) eq ${1}', [resolvedName, '""']);
                             }
                         } else {
                             options = [
@@ -552,7 +301,6 @@ function (
                             this._transformValue(propertyType, range.lower),
                             this._transformValue(propertyType, range.upper)
                         ];
-
                             if (range.lower === null) {
                                 segments.push(sub('${0} le ${2}', options));
                             } else if (range.upper === null) {
@@ -560,7 +308,6 @@ function (
                             } else {
                                 segments.push(sub('${0} between ${1} and ${2}', options));
                             }
-
                             multiSegmentOperator = 'or';
                         }
                     }
@@ -575,16 +322,22 @@ function (
                             strippedValues.push(value.substring(0, characters + 1) + '"');
                         }
                     });
-
                     values = strippedValues;
                 }
-
                 segments.push(sub('${0} in (${1})', [transform(resolvedName), values.join(',')]));
             }
+            var retValue = segments.length > 0 ? '(' + segments.join(') ' + multiSegmentOperator + ' (') : false;
 
-            return segments.length > 0 ? '(' + segments.join(') ' + multiSegmentOperator + ' (') + ')' : false;
+            if (emptyValue !== null) {
+                var existing = retValue ? sub('${0}${1}', [retValue, ' OR ']) : '(';
+                retValue = sub('${0}${1})', [existing, emptyValue]);
+            } else {
+                retValue = retValue ? sub('${0})', [retValue]) : false;
+            }
+
+            return retValue;
         },
-        createDistinctFragment: function (definition, propertyName, applied, dataPath) {
+        createDistinctFragment: function(definition, propertyName, applied, dataPath) {
             var propertyType = this.resolveDataType(definition.propertyDataTypeId),
                 sub = dString.substitute,
                 name = null,
@@ -600,21 +353,27 @@ function (
                     } else if (name === this.emptyName) {
                         values.push("''");
                     } else {
-                        values.push(this._transformValue(propertyType, applied[name]));
+                        values.push(this._transformValue(propertyType, applied[name], null, definition.details));
                     }
                 }
             }
 
-            if(values.length > 0) {
-                results = sub('${0} in (${1})', [resolvedProperty, values.join(',')]);
+            if (values.length > 0) {
+                if (definition.$key == "HasFilter" && propertyName == "filters.filterType") {
+                    if (values.length > 0) {
+                        results = sub('${0} not in (${1})', [resolvedProperty, values.join(',')]);
+                    }
+                }
+                else {
+                    results = sub('${0} in (${1})', [resolvedProperty, values.join(',')]);
+                }
             }
 
             if (additional && values.length > 0) {
                 results = sub('(${0} or ${1})', [results, additional]);
             } else if (additional) {
-                results =  additional;
+                results = additional;
             }
-
             return results;
         },
         createLookupFragment: function (definition, propertyName, applied, dataPath) {
@@ -622,9 +381,7 @@ function (
                 operator,
                 value = '',
                 prop = this.resolveProperty(propertyName, dataPath),
-                results = '',
-                values = [],
-                name;
+                results = '';
                           
             if (applied.hasOwnProperty('value')) {
                 operator = applied['value'].operator;
@@ -635,17 +392,31 @@ function (
                 return false;
             }
             
+            if (propertyType === 'key') {
+                try{
+                    if (this.getPropertyFormat(propertyName) === 'User') {
+                        if (prop.indexOf(".") > -1) {
+                            prop = prop.split(".")[1];
+                        }
+                        prop = prop + 'NAME';
+                    }
+                }
+                catch(error){}
+            }
             if (typeof value === 'string') {
                 prop = 'upper(' + prop + ')';
                 value = value.toUpperCase();
             }
 
+            //Todo : Set the propertytypeid to string(ccc....) and remove this check
+            if (definition.filterName == "Display Name" || definition.filterName == "Entity Name")
+                propertyType = 'string';
+
             results = dString.substitute('${0} ${1}', [prop, this._transformLookupOperator(operator, value, propertyType)]);
             return results;
         },
         _transformLookupOperator: function (operator, value, propertyType) {
-            var results = '',
-                lhs,
+            var lhs,
                 rhs = '${0}';
 
             switch (operator) {
@@ -683,13 +454,13 @@ function (
                     lhs = 'eq';
                     break;
             }
-
-            // wrap string in quotes
-            if (propertyType === 'string' || propertyType === 'key') {
+			
+             // wrap string in quotes
+            if (propertyType === 'string' || propertyType === 'key' || propertyType === 'date') {
                 rhs = '"' + rhs + '"';
             }
 
-            // transform the right hand side
+			// transform the right hand side
             rhs = dString.substitute(rhs, [value]);
 
             // combine operator (lhs) with rhs and return
@@ -725,61 +496,77 @@ function (
                     }
                 }
             }
-
             return segments.length > 0 ? '(' + segments.join(') and (') + ')' : false;
         },
-        /*createQueryForJobs: function (tableName) {
-            var segments = [],
-                key,
-                applied,
-                appliedItem,
-                definition,
-                propertyName,
-                details,
-                segment,
-                dataPath,
-                resolvedName,
-                k;
+        createEntityManagerValueSet: function () {
+            var result = [],
+                 applied,
+                 definition,
+                 details,
+                 filterType,
+                 filter,
+                 name,
+                 key;
 
             for (key in this._applied) {
                 if (this._applied.hasOwnProperty(key)) {
                     applied = this._applied[key];
                     definition = this._definitionSet[key];
-                    propertyName = definition.propertyName;
                     details = definition.details;
-                    dataPath = definition.dataPath;
-                    resolvedName = this.resolveProperty(propertyName, dataPath);
-
-                    segment = {
-                        filterType: '',
-                        tableName: tableName,
-                        field: resolvedName,
-                        value: []
-                    };
-
-                    if (details.rangeFilter) {
-                        segment.filterType = 'Range';// TODO: Is this correct?
-                    } else if (details.distinctFilter) {
-                        segment.filterType = 'Distinct';
-                    } else if ((details.userLookupFilter) || (details.lookupFilter)) {
-                        segment.filterType = 'Lookup';// TODO: Is this correct?
+                    filterType = (details.rangeFilter && 'rangeValues') || (details.distinctFilter && 'distinctValues') || (details.userLookupFilter && 'lookupValues');
+                    filter = null;
+                    
+                    var obj = [];
+                    switch (filterType) {
+                        case 'rangeValues':
+                            obj = [];
+                            for (name in applied) {
+                                if (applied.hasOwnProperty(name)) {
+                                    obj.push(applied[name]);
+                                }
+                            }
+                            filter = { 'id': definition.$key };
+                            filter["distinctValues"] = [];
+                            filter["lookupValues"] = [];
+                            filter["rangeValues"] = obj;
+                            break;
+                        case 'distinctValues':
+                            for (name in applied) {
+                                obj = [];
+                                for (name in applied) {
+                                    if (applied.hasOwnProperty(name)) {
+                                        obj.push(applied[name]);
+                                    }
+                                }
+                                filter = { 'id': definition.$key };
+                                filter["distinctValues"] = obj;
+                                filter["lookupValues"] = [];
+                                filter["rangeValues"] = [];
+                            }
+                            break;
+                        case 'lookupValues':
+                            for (name in applied) {
+                                obj = [];
+                                for (name in applied) {
+                                    if (applied.hasOwnProperty(name)) {
+                                        obj.push(applied[name]);
+                                    }
+                                }
+                                filter = { 'id': definition.$key };
+                                filter["distinctValues"] = [];
+                                filter["lookupValues"] = obj;
+                                filter["rangeValues"] = [];
+                            }
+                            break;
+                        default:
+                            break;
                     }
-
-                    for (k in applied) {
-                        if (applied.hasOwnProperty(k)) {
-                            appliedItem = applied[k];
-                            segment.value.push(k);
-                        }
-                    }
-
-                    if (segment) {
-                        segments.push(segment);
-                    }
+                    if (filter !== null)
+                        result.push(filter);
                 }
             }
-
-            return segments;
-        },*/
+            return result;
+        },
         createValueSet: function () {
            var result = [],
                 applied,
@@ -811,7 +598,6 @@ function (
                                     filter.appliedValues.push(applied[name] && applied[name].rangeId);
                                 }
                             }
-
                             break;
                         case 'distinctFilter':
                             for (name in applied) {
@@ -819,7 +605,6 @@ function (
                                     filter.appliedValues.push(name);
                                 }
                             }
-
                             break;
                         case 'lookupFilter':
                             for (name in applied) {
@@ -830,18 +615,15 @@ function (
                                     }
                                 }
                             }
-
                             break;
                         default:
                             break;
                     }
-
                     result.push(filter);
                 }
             }
-
             return result;
-        }       
+        }
     });
 
     return widget;

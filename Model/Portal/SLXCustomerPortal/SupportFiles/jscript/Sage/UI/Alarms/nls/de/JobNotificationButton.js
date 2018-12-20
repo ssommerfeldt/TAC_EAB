@@ -1,3 +1,4 @@
-define((
-{ notificationToolTip: 'Sie haben ${0} Auftragsbenachrichtigungen.' }
-));
+define("Sage/UI/Alarms/nls/de/JobNotificationButton", {
+    "notificationToolTip": "Sie haben ${0} Auftragsbenachrichtigungen.",
+    "notificationErrorToolTip": "Beim Abruf der Auftragsbenachrichtigungen ist ein Fehler aufgetreten. Bitte wenden Sie sich an Ihren Administrator."
+});

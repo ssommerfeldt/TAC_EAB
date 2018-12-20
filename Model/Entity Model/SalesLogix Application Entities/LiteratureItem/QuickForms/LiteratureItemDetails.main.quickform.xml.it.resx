@@ -117,14 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
+  <data name="Authoredby.Caption" xml:space="preserve">
+    <value>Autore:</value>
   </data>
-  <data name="ModifyDate.Caption" xml:space="preserve">
-    <value>Modificato:</value>
+  <data name="Cost.Caption" xml:space="preserve">
+    <value>Costo:</value>
   </data>
   <data name="ExpireDate.Caption" xml:space="preserve">
     <value>Scadenza:</value>
+  </data>
+  <data name="Filename.Caption" xml:space="preserve">
+    <value>File:</value>
+  </data>
+  <data name="Itemfamily.Caption" xml:space="preserve">
+    <value>Famiglia:</value>
+  </data>
+  <data name="Itemname.Caption" xml:space="preserve">
+    <value>Nome:</value>
+  </data>
+  <data name="Itemnumber.Caption" xml:space="preserve">
+    <value>Numero articolo:</value>
+  </data>
+  <data name="ModifyDate.Caption" xml:space="preserve">
+    <value>Data di modifica:</value>
+  </data>
+  <data name="Qtyonhand.Caption" xml:space="preserve">
+    <value>Disponibile:</value>
+  </data>
+  <data name="Reorderqty.Caption" xml:space="preserve">
+    <value>Qtà di riordino:</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="btnOk.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Eliminare questo articolo?</value>
   </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Elimina</value>
@@ -132,34 +162,10 @@
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Salva</value>
   </data>
-  <data name="Reorderqty.Caption" xml:space="preserve">
-    <value>Q.tà riordino:</value>
-  </data>
-  <data name="Itemname.Caption" xml:space="preserve">
-    <value>Nome:</value>
-  </data>
-  <data name="Itemfamily.Caption" xml:space="preserve">
-    <value>Famiglia:</value>
-  </data>
-  <data name="Itemnumber.Caption" xml:space="preserve">
-    <value>Numero Voce:</value>
-  </data>
-  <data name="Authoredby.Caption" xml:space="preserve">
-    <value>Autore:</value>
-  </data>
-  <data name="ExpireDate.ButtonToolTip" xml:space="preserve">
+  <data name="ModifyDate.ButtonToolTip" xml:space="preserve">
     <value>Calendario</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Sei sicuro di voler cancellare questo oggetto?</value>
-  </data>
-  <data name="Cost.Caption" xml:space="preserve">
-    <value>Costo:</value>
-  </data>
-  <data name="Qtyonhand.Caption" xml:space="preserve">
-    <value>Disponibile:</value>
-  </data>
-  <data name="ModifyDate.ButtonToolTip" xml:space="preserve">
+  <data name="ExpireDate.ButtonToolTip" xml:space="preserve">
     <value>Calendario</value>
   </data>
 </root>

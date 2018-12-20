@@ -1,5 +1,7 @@
+require({cache:{
+'url:Sage/UI/Controls/templates/DropDownSelectUser.html':"<div>\r\n    <select data-dojo-type=\"Sage.UI.ComboBox\" shouldPublishMarkDirty=\"false\" dojoAttachPoint=\"comboBox\" dojoAttachEvent=\"onBlur: _onBlur\">\r\n    </select>\r\n</div>\r\n"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Controls/DropDownSelectUser", [
        'dijit/_TemplatedMixin',
        'dijit/_WidgetsInTemplateMixin',
        'dijit/_Widget',
@@ -25,13 +27,18 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileR
          * @property {object} storeOptions The data store options object. See default values in constructor.
          */
         storeOptions: null,
-        
+
         storeData: null,
-        
+
         // Display properties
         templateString: template,
         widgetsInTemplate: true,
-        
+
+        // Store Options
+        _position: 0,
+        _pageSize: 100,
+        _queryResults: null,
+
         /**
          * Takes the following options object: 
          * {
@@ -40,40 +47,43 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileR
          *
          * @constructor
          */
-        constructor: function(options) {
+        constructor: function (options) {
             this.storeOptions = options.storeOptions || {
-                    include: ['UserInfo'],
-                    select: [
-                        'Id',
-                        'UserName',
-                        'UserInfo/FirstName',
-                        'UserInfo/LastName',
-                        'Type'
-                    ],
-                    sort: [
-                        { attribute: 'UserInfo.LastName', descending: false }
-                    ],
-                    service: _SDataServiceRegistry.getSDataService('dynamic', false, true, true), 
-                    resourceKind: 'users'
+                include: ['UserInfo'],
+                select: [
+                    'Id',
+                    'UserName',
+                    'UserInfo/FirstName',
+                    'UserInfo/LastName',
+                    'Type'
+                ],
+                sort: [
+                    { attribute: 'UserInfo.LastName', descending: false }
+                ],
+                service: _SDataServiceRegistry.getSDataService('dynamic', false, true, true),
+                resourceKind: 'users'
             };
 
             this.dataStore = new baseSDataStore(this.storeOptions);
-            
+
             this.inherited(arguments);
         },
-        postCreate: function () {            
+        postCreate: function () {
             var def = new dojo.Deferred();
+            // Reset Store Variable
+            this._position = 0;
+            this._queryResults = null;
             this.getUserData(def);
 
-            def.then(dojo.hitch(this, function(data) {
-                if(!data) {
+            def.then(dojo.hitch(this, function (data) {
+                if (!data) {
                     return;
                 }
 
                 var items = [];
                 var count = data.length;
                 var item = null;
-                for(var i = 0; i < count; i++) {
+                for (var i = 0; i < count; i++) {
                     item = data[i];
                     if (item.Type !== 'Template') {
                         items.push({
@@ -89,32 +99,57 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileR
                     items: items
                 };
 
-                var tempStore = new itemFileReadStore({data: this.storeData});
+                var tempStore = new itemFileReadStore({ data: this.storeData });
                 this.comboBox.set('store', tempStore);
                 this.comboBox.set('searchAttr', 'text');
 
-            }), function(e) {
+            }), function (e) {
                 // errback
                 console.error(e);
             });
-            
+
             this.inherited(arguments);
         },
         /**
-         * @returns {object} SData users object with child UserInfo resource included. dojo.Deferred required as an argument.
+         * @returns {object} SData users objects with child UserInfo resource included. dojo.Deferred required as an argument.
          */
-        getUserData: function(deferred) {
+        getUserData: function (deferred) {
             this.dataStore.fetch({
-                onComplete: function(data) {
-                    deferred.callback(data);
+                count: this._pageSize,
+                start: this._position,
+                onComplete: function (data) {
+                    // Do we need to get more data?
+                    if (data.length === this._pageSize) {
+                        // Adjust the position
+                        this._position += this._pageSize;
+                        // Add to the array
+                        if (this._queryResults === null) {
+                            this._queryResults = data;
+                        } else {
+                            // This avoids creating an extra array
+                            this._queryResults.push.apply(this._queryResults, data);
+                        }//end if
+                        // Go again
+                        this.getUserData(deferred);
+                    } else {
+                        // Add to the array
+                        if (this._queryResults === null) {
+                            this._queryResults = data;
+                        } else {
+                            // This avoids creating an extra array
+                            this._queryResults.push.apply(this._queryResults, data);
+                        }//end if
+                        // Return to the caller
+                        deferred.callback(this._queryResults);
+                    }//end if
                 },
-                onError: function(e) {
+                onError: function (e) {
                     deferred.errback(e);
                 },
                 scope: this
             });
         },
-        _getValueAttr: function() {
+        _getValueAttr: function () {
             return this.comboBox.get('value');
         }
     });

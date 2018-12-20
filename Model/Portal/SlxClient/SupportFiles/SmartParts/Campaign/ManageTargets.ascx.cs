@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NHibernate;
@@ -14,12 +12,11 @@ using Sage.Platform.Application;
 using Sage.Platform.Application.UI;
 using Sage.Platform.ComponentModel;
 using Sage.Platform.Repository;
-using Sage.Platform.Scheduling;
 using Sage.Platform.WebPortal.SmartParts;
+using Sage.SalesLogix.BusinessRules;
 using Sage.SalesLogix.CampaignTarget;
 using Sage.SalesLogix.Client.GroupBuilder;
-using Sage.Scheduling.Client;
-using Telerik.Web.UI;
+using Sage.SalesLogix.HighLevelTypes;
 using ICriteria = Sage.Platform.Repository.ICriteria;
 using IQueryable = Sage.Platform.Repository.IQueryable;
 
@@ -93,9 +90,6 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
         return tinfo;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public class AddManageFilterStateInfo
     {
         public List<ComponentView> targetList = new List<ComponentView>();
@@ -132,7 +126,9 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
         }
         else
         {
-            script.Append("dojo.ready(function () {Sage.UI.Forms.ManageTargets.init(" + GetWorkSpace() + ");");
+            script.Append("require(['dojo/ready'], function(ready) { " +
+                          "ready(function () {Sage.UI.Forms.ManageTargets.init(" + GetWorkSpace() + "); }); " +
+                          "});");
         }
         ScriptManager.RegisterStartupScript(this, GetType(), "initialize_ManageTargets", script.ToString(), true);
     }
@@ -221,6 +217,12 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
         SetFilterControls(options);
         AddDistinctGroupItemsToList(lbxContactGroups, "Contact");
         AddDistinctGroupItemsToList(lbxLeadGroups, "Lead");
+        var value = BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+        if (!String.IsNullOrEmpty(value))
+        {
+            var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+            lueLeadSource.LookupPreFilters.Add(leadSourcePreFilter);
+        }
     }
 
     /// <summary>
@@ -373,7 +375,6 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
     /// <returns></returns>
     private IList GetLeadTargets()
     {
-        IList leadList;
         IQueryable query = (IQueryable) EntityFactory.GetRepository<ILead>();
         IExpressionFactory expressions = query.GetExpressionFactory();
         IProjections projections = query.GetProjectionsFactory();
@@ -391,10 +392,9 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
                                .Add(projections.Property("WorkPhone")));
 
         AddExpressionsCriteria(criteria, expressions);
-        leadList = criteria.List();
         // NOTE: The generic exception handler was removed since the exception was rethrown; this exception would be logged twice otherwise.
         // We may want to throw a UserObservableApplicationException in the future.
-        return leadList;
+        return criteria.List();
     }
 
     /// <summary>
@@ -445,7 +445,6 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
     /// <returns></returns>
     private IList GetContactTargets()
     {
-        IList contactList;
         IQueryable query = (IQueryable) EntityFactory.GetRepository<IContact>();
         IExpressionFactory expressions = query.GetExpressionFactory();
         IProjections projections = query.GetProjectionsFactory();
@@ -463,10 +462,9 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
                                .Add(projections.Property("address.PostalCode"))
                                .Add(projections.Property("WorkPhone")));
         AddExpressionsCriteria(criteria, expressions);
-        contactList = criteria.List();
         // NOTE: The generic exception handler was removed since the exception was rethrown; this exception would be logged twice otherwise.
         // We may want to throw a UserObservableApplicationException in the future.
-        return contactList;
+        return criteria.List();
     }
 
     /// <summary>
@@ -698,8 +696,8 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void AddFromGroup_OnClick(object sender, EventArgs e)
     {
-        string groupId = String.Empty;
-        string entityName = String.Empty;
+        string groupId;
+        string entityName;
         if (rdgAddFromGroup.SelectedIndex == 0)
         {
             entityName = "Lead";
@@ -751,7 +749,7 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
     /// </summary>
     /// <param name="dateTime">The date time value.</param>
     /// <returns></returns>
-    private DateTime? CheckForNullDate(DateTime? dateTime)
+    private static DateTime? CheckForNullDate(DateTime? dateTime)
     {
         return dateTime ?? (DateTime.UtcNow);
     }
@@ -843,14 +841,14 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
 
         options.ProdOwnedEnabled = chkProducts.Checked;
         options.ProdOwnedOperator = (FilterOperator)lbxProducts.SelectedIndex;
-        string prodOwnerID = lueProducts.ClientID + "_LookupText";
-        string prodOwner = Request.Form[prodOwnerID.Replace("_", "$")];
+        string prodOwnerId = lueProducts.ClientID + "_LookupText";
+        string prodOwner = Request.Form[prodOwnerId.Replace("_", "$")];
         options.ProdOwnedValue = prodOwner;
 
         options.LeadSourceEnabled = chkLeadSource.Checked;
         options.LeadSourceOperator = (FilterOperator)lbxLeadSource.SelectedIndex;
-        string leadSourceID = lueLeadSource.ClientID + "_LookupText";
-        string leadSource = Request.Form[leadSourceID.Replace("_", "$")];
+        string leadSourceId = lueLeadSource.ClientID + "_LookupText";
+        string leadSource = Request.Form[leadSourceId.Replace("_", "$")];
         options.LeadSourceValue = leadSource;
 
         options.StatusEnabled = chkStatus.Checked;
@@ -889,7 +887,7 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
     /// </summary>
     /// <param name="lbx">The LBX.</param>
     /// <param name="filterOperator">The filter operator.</param>
-    private void SetListBox(ListBox lbx, FilterOperator filterOperator)
+    private static void SetListBox(ListBox lbx, FilterOperator filterOperator)
     {
         lbx.SelectedIndex = (int)filterOperator;
     }
@@ -903,76 +901,22 @@ public partial class ManageTargets : EntityBoundSmartPartInfoProvider
     {
         if (_state != null && _state.targetList.Count > 0)
         {
-            var targetIds =_state.targetList
+            var targetIds = _state.targetList
                 .Select(componentView => componentView.VirtualComponentProperties.FirstOrDefault().Value.ToString())
                 .ToList();
-            var scheduler = ApplicationContext.Current.Services.Get<ISchedulerClientService>(true);
-            //scheduler.TriggerJob(
-            //    "Sage.SalesLogix.CampaignTarget.InsertJob",
-            //    new
-            //        {
-            //            CampaignId = EntityContext.EntityID.ToString(),
-            //            TargetType = _state.targetType,
-            //            TargetIds = targetIds.ToArray(),
-            //            GroupName = _state.groupName
-            //        });
 
-            //SetStartProcessInfo();
             InsertTargetManager insertManager = new InsertTargetManager();
             insertManager.CampaignId = EntityContext.EntityID.ToString();
             insertManager.TargetList = targetIds;
             insertManager.TargetType = _state.targetType;
             insertManager.GroupName = _state.groupName;
             insertManager.StartTargetInsertProcess();
-            //SetCompleteProcessInfo();
             Refresh();
         }
         else
         {
             DialogService.ShowMessage(GetLocalResourceObject("error_NoTargetsSelected").ToString());
         }
-    }
-
-    /// <summary>
-    /// Gets the arguments from the handler to set the progress indicator.
-    /// </summary>
-    /// <param name="args">The args.</param>
-    private void InsertTargetHandler(InsertProgressArgs args)
-    {
-        RadProgressContext insertProgress = RadProgressContext.Current;
-        insertProgress["myProgressInfo"] = "112";
-        insertProgress["PrimaryPercent"] = Convert.ToString(Math.Round(Decimal.Divide(args.ProcessedCount, args.RecordCount) * 100));
-        insertProgress["PrimaryValue"] = String.Format("({0})", args.ProcessedCount.ToString());
-        insertProgress["PrimaryTotal"] = String.Format("({0})", args.RecordCount.ToString());
-        insertProgress["SecondaryValue"] = String.Format("({0})", args.InsertedCount.ToString());
-        insertProgress["SecondaryTotal"] = String.Format("({0})", args.ErrorCount.ToString());
-        insertProgress["ProcessCompleted"] = "False";
-        Thread.Sleep(1000);
-    }
-
-    /// <summary>
-    /// Sets the complete process info.
-    /// </summary>
-    private void SetCompleteProcessInfo()
-    {
-        RadProgressContext insertProgress = RadProgressContext.Current;
-        insertProgress["ProcessCompleted"] = "True";
-        Page.Session["ImportingLeads"] = "True";
-        Thread.Sleep(1000);
-    }
-
-    /// <summary>
-    /// Sets the start process info.
-    /// </summary>
-    private void SetStartProcessInfo()
-    {
-        RadProgressContext insertProgress = RadProgressContext.Current;
-        insertProgress["PrimaryPercent"] = "0";
-        insertProgress["PrimaryValue"] = "0";
-        insertProgress["PrimaryTotal"] = "0";
-        insertProgress["SecondaryValue"] = "0";
-        insertProgress["SecondaryTotal"] = "0";
-        insertProgress["ProcessCompleted"] = "False";
     }
 
     #endregion

@@ -9,9 +9,9 @@
     <majorVersion>1</majorVersion>
     <minorVersion>0</minorVersion>
     <revision>0</revision>
-    <build>2</build>
+    <build>3</build>
     <autoIncrement>false</autoIncrement>
-    <installDate>0001-01-01T00:00:00</installDate>
+    <installDate>2018-05-02T20:48:29.4279067Z</installDate>
     <installPassword />
     <formatVersion>8.1.0.1146</formatVersion>
   </bundleProperties>
@@ -122,6 +122,14 @@
                                 <Url>\Entity Model\Saleslogix Security Support\User\QuickForms\UserDestinationWarehouses.main.quickform.xml</Url>
                                 <BundleItemType>ModelItem</BundleItemType>
                                 <Caption>UserDestinationWarehouses</Caption>
+                              </QuickFormBundleItem>
+                            </bundleItem>
+                            <bundleItem modelId="b2741b79-02a2-4f4c-81cd-c204f82cf41c" itemTypeName="Sage.Platform.QuickForms.BundleSupport.QuickFormBundleItem, Sage.Platform.QuickForms">
+                              <QuickFormBundleItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                                <ItemId>3477e9ca-7b80-47a2-afb8-728ef5d692d2</ItemId>
+                                <Url>\Entity Model\Saleslogix Security Support\User\QuickForms\UserDetails.main.quickform.xml</Url>
+                                <BundleItemType>ModelItem</BundleItemType>
+                                <Caption>UserDetails</Caption>
                               </QuickFormBundleItem>
                             </bundleItem>
                           </children>
@@ -883,70 +891,6 @@
                                 <SerializationOptions>RecurseChildren</SerializationOptions>
                                 <InstallOptions>RecurseChildren</InstallOptions>
                               </PropertyBundleItem>
-                              <children>
-                                <bundleItem modelId="a7bdd2d9-93b0-499d-9fd4-c3f7a5f94e28" itemTypeName="Sage.Platform.Orm.Entities.BundleSupport.BusinessRuleBundleItem, Sage.Platform">
-                                  <BusinessRuleBundleItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                                    <ItemId>537641ed-822c-462a-a49d-ed31fc178f7b</ItemId>
-                                    <Url>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml</Url>
-                                    <BundleItemType>ModelItem</BundleItemType>
-                                    <Caption>GetSiteCodeId</Caption>
-                                  </BusinessRuleBundleItem>
-                                  <children>
-                                    <bundleItem modelId="a7bdd2d9-93b0-499d-9fd4-c3f7a5f94e28" itemTypeName="Sage.Platform.Orm.Entities.BundleSupport.StepsSubFolderContext, Sage.Platform">
-                                      <StepsSubFolderContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                                        <ItemId>537641ed-822c-462a-a49d-ed31fc178f7bpre</ItemId>
-                                        <Url>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml::Pre Execute Steps</Url>
-                                        <BundleItemType>Container</BundleItemType>
-                                        <Caption>Pre Execute Steps</Caption>
-                                        <ParentUrl>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml</ParentUrl>
-                                        <CaptionKey>pre</CaptionKey>
-                                      </StepsSubFolderContext>
-                                    </bundleItem>
-                                    <bundleItem modelId="a7bdd2d9-93b0-499d-9fd4-c3f7a5f94e28" itemTypeName="Sage.Platform.Orm.Entities.BundleSupport.StepsSubFolderContext, Sage.Platform">
-                                      <StepsSubFolderContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                                        <ItemId>537641ed-822c-462a-a49d-ed31fc178f7bprimary</ItemId>
-                                        <Url>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml::Primary Steps</Url>
-                                        <BundleItemType>Container</BundleItemType>
-                                        <Caption>Primary Steps</Caption>
-                                        <ParentUrl>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml</ParentUrl>
-                                        <CaptionKey>primary</CaptionKey>
-                                      </StepsSubFolderContext>
-                                      <children>
-                                        <bundleItem modelId="a7bdd2d9-93b0-499d-9fd4-c3f7a5f94e28" itemTypeName="Sage.Platform.Orm.Entities.BundleSupport.BusinessRuleStepBundleItem, Sage.Platform">
-                                          <BusinessRuleStepBundleItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                                            <ItemId>ec1bda36-e804-4df8-9f1d-c4bf4595cd81</ItemId>
-                                            <Url>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml::Primary Steps::GetSiteCodeId</Url>
-                                            <BundleItemType>Other</BundleItemType>
-                                            <Caption>GetSiteCodeId</Caption>
-                                            <SerializationOptions>ProcessDependentUrls</SerializationOptions>
-                                            <InstallOptions>ProcessDependentUrls</InstallOptions>
-                                          </BusinessRuleStepBundleItem>
-                                        </bundleItem>
-                                      </children>
-                                    </bundleItem>
-                                    <bundleItem modelId="a7bdd2d9-93b0-499d-9fd4-c3f7a5f94e28" itemTypeName="Sage.Platform.Orm.Entities.BundleSupport.StepsSubFolderContext, Sage.Platform">
-                                      <StepsSubFolderContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                                        <ItemId>537641ed-822c-462a-a49d-ed31fc178f7bpost</ItemId>
-                                        <Url>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml::Post Execute Steps</Url>
-                                        <BundleItemType>Container</BundleItemType>
-                                        <Caption>Post Execute Steps</Caption>
-                                        <ParentUrl>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml</ParentUrl>
-                                        <CaptionKey>post</CaptionKey>
-                                      </StepsSubFolderContext>
-                                    </bundleItem>
-                                    <bundleItem modelId="a7bdd2d9-93b0-499d-9fd4-c3f7a5f94e28" itemTypeName="Sage.Platform.Orm.Entities.BundleSupport.StepsSubFolderContext, Sage.Platform">
-                                      <StepsSubFolderContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                                        <ItemId>537641ed-822c-462a-a49d-ed31fc178f7bpostflush</ItemId>
-                                        <Url>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml::Post Flush Steps</Url>
-                                        <BundleItemType>Container</BundleItemType>
-                                        <Caption>Post Flush Steps</Caption>
-                                        <ParentUrl>\Entity Model\Saleslogix Application Entities\SLXSite\GetSiteCodeId.method.xml</ParentUrl>
-                                        <CaptionKey>postflush</CaptionKey>
-                                      </StepsSubFolderContext>
-                                    </bundleItem>
-                                  </children>
-                                </bundleItem>
-                              </children>
                             </bundleItem>
                           </children>
                         </bundleItem>
@@ -6455,7 +6399,7 @@
                 <ItemId>861ac5fe-b571-4015-a55d-bf63e400e1e7</ItemId>
                 <Url>\Portal\SlxClient\SlxClient.cabapp.ptl.xml</Url>
                 <BundleItemType>Context</BundleItemType>
-                <Caption>Saleslogix Client</Caption>
+                <Caption>SlxClient</Caption>
               </ModelItemBundleItem>
               <children>
                 <bundleItem modelId="73d4e7d0-a7fa-40ae-8b45-1ad7ed954154" itemTypeName="Sage.Platform.WebPortal.Design.BundleSupport.ContainerBundleItem, Sage.Platform.WebPortal.Design">

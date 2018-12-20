@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Filters/GroupFilterConfigurationProvider", [
         'Sage/Services/_ServiceMixin',
         'Sage/_ConfigurationProvider',
         'Sage/Data/GroupLayoutSingleton',
@@ -65,7 +65,8 @@ define([
             request.setResourceSelector('"' + entityName + '"');
             request.setResourceProperty('filters');
             request.setQueryArg('count', this.FILTER_COUNT);
-
+            request.setQueryArg('orderby', 'displayName');
+			
             if (entityName === 'User') {
                 // This is a hack to get custom filters not in the layout (Roles and Teams).
                 captions.push('"Role"');

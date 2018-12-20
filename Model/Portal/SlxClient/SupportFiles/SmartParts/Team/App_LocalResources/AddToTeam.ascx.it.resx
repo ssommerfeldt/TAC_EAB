@@ -117,46 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LookupTeamPropertyHeader" xml:space="preserve">
-    <value>Team</value>
-  </data>
-  <data name="chkAddManager.Label" xml:space="preserve">
-    <value>Aggiungi automaticamente il responsabile dell'utente al team</value>
-  </data>
-  <data name="luTargetTeam.Caption" xml:space="preserve">
-    <value>Team Target:</value>
-  </data>
-  <data name="LookupTeamDialogTitle" xml:space="preserve">
-    <value>Ricerca Team</value>
-  </data>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
+  <data name="luTeam.Caption" xml:space="preserve">
+    <value>Team:</value>
   </data>
   <data name="btnOk.Caption" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="User" xml:space="preserve">
-    <value>utente</value>
-  </data>
-  <data name="InvalidUserContext" xml:space="preserve">
-    <value>Non è possibile aggiungere ad un team modelli od utenti ritirati.</value>
-  </data>
   <data name="Users" xml:space="preserve">
-    <value>utenti</value>
+    <value>Utenti</value>
   </data>
   <data name="Title_Add.Caption" xml:space="preserve">
     <value>Aggiungi {0} al team</value>
   </data>
+  <data name="luTargetTeam.Caption" xml:space="preserve">
+    <value>Team:</value>
+  </data>
   <data name="Add_Description" xml:space="preserve">
-    <value>Aggiungi il ({0}) selezionato {1}  al team seguente.</value>
+    <value>Aggiungi ({0}) {1} selezionato/i al team seguente.</value>
   </data>
   <data name="Department" xml:space="preserve">
     <value>reparto</value>
   </data>
+  <data name="Departments" xml:space="preserve">
+    <value>reparti</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Utente</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>team</value>
+  </data>
   <data name="Teams" xml:space="preserve">
     <value>team</value>
   </data>
-  <data name="Departments" xml:space="preserve">
-    <value>reparti</value>
+  <data name="InvalidUserContext" xml:space="preserve">
+    <value>Impossibile aggiungere a un team modelli o utenti disattivati.</value>
+  </data>
+  <data name="chkAddManager.Label" xml:space="preserve">
+    <value>Aggiungi automaticamente il responsabile dell'utente al team</value>
+  </data>
+  <data name="LookupTeamDialogTitle" xml:space="preserve">
+    <value>Ricerca team</value>
+  </data>
+  <data name="LookupTeamPropertyHeader" xml:space="preserve">
+    <value>Team</value>
   </data>
 </root>

@@ -3,8 +3,7 @@
 
 <div style="display:none">
     <asp:Panel ID="AccountMarketing_RTools" runat="server" meta:resourcekey="AccountMarketing_RToolsResource1">
-        <asp:ImageButton runat="server" ID="AddResponse" ToolTip="Add Campaign Response" 
-            ImageUrl="~/images/icons/plus_16x16.gif" meta:resourcekey="AddResponse_rsc" />
+        <asp:Button ID="AddResponse" runat="server" ToolTip="Add Campaign Response" meta:resourcekey="AddResponse_rsc" class="Global_Images icon16x16 icon_plus_16x16" />
         <SalesLogix:PageLink ID="lnkAccountMarketingHelp" runat="server" LinkType="HelpFileName"
             ToolTip="<%$ resources:Portal, Help_ToolTip %>" Target="Help" NavigateUrl="marketingtab.aspx"
             ImageUrl="~/ImageResource.axd?scope=global&amp;type=Global_Images&amp;key=Help_16x16" meta:resourcekey="lnkAccountMarketingHelpResource1"></SalesLogix:PageLink>

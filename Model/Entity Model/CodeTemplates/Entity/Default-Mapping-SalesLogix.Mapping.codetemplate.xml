@@ -28,8 +28,6 @@ var extenders = entity.ExtensionEntities.Where(extender => IsEntityIncluded(exte
 var properties = OrmEntity.GetIncludedProperties(entity).OfType<OrmFieldProperty>().ToList();
 var customProperties = generator.GetIncludedCustomProperties(entity).ToList();
 #>
-<# //Constants setup #>
-<# //composite key constants #>
 <# var ck_useRelationships = entity.HasCompleteCompositeKeyRelationships; #>
 <# var useAlternate = generator.HasMetaData(entity.ExtendedMetaData, "NHibernate.Mapping.AlternateConcreteClass"); #>
 <?xml version="1.0" encoding="utf-8" ?>
@@ -81,8 +79,6 @@ var customProperties = generator.GetIncludedCustomProperties(entity).ToList();
     </id>
 <# } #>
     <!-- Properties -->
-<# //Property section #>
-<# //columns is all the Columns in entity, minus any KeyColumns #>
 <# foreach (var property in properties) { #>
 <#  if (!property.IsKeyProperty || ck_useRelationships) { #>
 <#   var typeParams = property.DataType.HbmDataTypeParameters; #>
@@ -102,31 +98,31 @@ var customProperties = generator.GetIncludedCustomProperties(entity).ToList();
 <# if (children.Count > 0) { #>
     <!-- 1:M Relationships -->
 <#  foreach (var relation in children) { #>
+<#   var column = relation.Columns[0]; #>
 <#   if (relation.Cardinality == "1:M") { #>
     <set name="<#= relation.ParentProperty.PropertyName #>" cascade="<#= generator.ToCascadeString(relation) #>" lazy="true" batch-size="10" inverse="true" access="Sage.Platform.Collections.GenericAccessor, Sage.Platform">
-      <key column="<#= relation.Columns[0].ChildProperty.ColumnName #>" />
+      <key column="<#= column.ChildProperty.ColumnName #>" <# if (!column.ParentProperty.IsKeyProperty) { #> property-ref="<#= column.ParentProperty.Include ? column.ParentProperty.PropertyName : relation.ParentProperty.PropertyName #>" <# } #> />
       <one-to-many class="<#= generator.GetFullyQualifiedClassName(relation.ChildEntity) #>" />
     </set>
 <#   } else if (relation.Cardinality == "M:1") { #>
-    <many-to-one name="<#= relation.ParentProperty.PropertyName #>" cascade="save-update" class="<#= generator.GetFullyQualifiedClassName(relation.ChildEntity) #>" access="field.pascalcase-underscore" column="<#= relation.Columns[0].ParentProperty.ColumnName #>" <# if (!relation.Columns[0].ChildProperty.IsKeyProperty) { #> property-ref="<#= relation.Columns[0].ChildProperty.PropertyName #>" <# } #> not-null=<# if (relation.ParentProperty.IsNullable) { #> "false" <# } else { #> "true" <# } #> <# if (entity.HasCompositeKey && relation.Columns[0].ParentProperty.IsKeyProperty) { #> update="false" insert="false" <# } #> />
+    <many-to-one name="<#= relation.ParentProperty.PropertyName #>" class="<#= generator.GetFullyQualifiedClassName(relation.ChildEntity) #>" access="field.pascalcase-underscore" column="<#= column.ParentProperty.ColumnName #>" <# if (!column.ChildProperty.IsKeyProperty) { #> property-ref="<#= column.ChildProperty.Include ? column.ChildProperty.PropertyName : relation.ChildProperty.PropertyName #>" <# } #> not-null=<# if (relation.ParentProperty.IsNullable) { #> "false" <# } else { #> "true" <# } #> <# if (entity.HasCompositeKey && column.ParentProperty.IsKeyProperty) { #> update="false" insert="false" <# } #> cascade="save-update" />
 <#   } #>
 <#  } #>
 <# } #>
 <# if (parents.Count > 0) { #>
     <!-- M:1 Relationships -->
 <#  foreach (var relation in parents) { #>
+<#   var column = relation.Columns[0]; #>
 <#   if (relation.Cardinality == "1:M") { #>
-    <many-to-one name="<#= relation.ChildProperty.PropertyName #>" class="<#= generator.GetFullyQualifiedClassName(relation.ParentEntity) #>" access="field.pascalcase-underscore" column="<#= relation.Columns[0].ChildProperty.ColumnName #>" not-null=<# if (relation.ChildProperty.IsNullable) { #> "false" <# } else { #> "true" <# } #> <# if (entity.HasCompositeKey && relation.Columns[0].ParentProperty.IsKeyProperty) { #> update="false" insert="false" <# } #> />
+    <many-to-one name="<#= relation.ChildProperty.PropertyName #>" class="<#= generator.GetFullyQualifiedClassName(relation.ParentEntity) #>" access="field.pascalcase-underscore" column="<#= column.ChildProperty.ColumnName #>" <# if (!column.ParentProperty.IsKeyProperty) { #> property-ref="<#= column.ParentProperty.Include ? column.ParentProperty.PropertyName : relation.ParentProperty.PropertyName #>" <# } #> not-null=<# if (relation.ChildProperty.IsNullable) { #> "false" <# } else { #> "true" <# } #> <# if (entity.HasCompositeKey && column.ChildProperty.IsKeyProperty) { #> update="false" insert="false" <# } #> />
 <#   } else if (relation.Cardinality == "M:1") { #>
-    <many-to-one name="<#= relation.ChildProperty.PropertyName #>" class="<#= generator.GetFullyQualifiedClassName(relation.ParentEntity) #>" column="<#= relation.Columns[0].ChildProperty.ColumnName #>" property-ref="<#= relation.ParentProperty.PropertyName #>" optimistic-lock="false" />
+    <many-to-one name="<#= relation.ChildProperty.PropertyName #>" class="<#= generator.GetFullyQualifiedClassName(relation.ParentEntity) #>" access="field.pascalcase-underscore" column="<#= column.ChildProperty.ColumnName #>" <# if (!column.ParentProperty.IsKeyProperty) { #> property-ref="<#= column.ParentProperty.Include ? column.ParentProperty.PropertyName : relation.ParentProperty.PropertyName #>" <# } #> optimistic-lock="false" />
 <#   } #>
 <#  } #>
 <# } #>
-<# //Parent extension relationship #>
 <# if (entity.IsExtension && IsEntityIncluded(entity.ExtendedEntity)) { #>
     <one-to-one name="<#= entity.ExtendedEntity.Name #>" class="<#= generator.GetFullyQualifiedClassName(entity.ExtendedEntity) #>" constrained="true" access="field.pascalcase-underscore" />
 <# } #>
-<# //Child extensions #>
 <# foreach (var child in extenders) { #>
     <one-to-one name="<#= child.Name #>" class="<#= generator.GetFullyQualifiedClassName(child) #>" cascade="all" access="field.pascalcase-underscore" />
 <# } #>
@@ -154,7 +150,7 @@ private static string Addlength(OrmEntityProperty property) {
 #>
 <#+
 private static string DisableOptimistic(OrmFieldProperty property) {
-    if (property.IsReadOnly || property.ColumnName == "MODIFYDATE" || property.ColumnName == "MODIFYUSER" || property.ColumnName == "GLOBALSYNCID" || property.ColumnName == "APPID" || property.ColumnName == "TICK" || property.DataType is LongTextDataType || property.DataType is LongUnicodeTextDataType || property.DataType is BinaryDataType) {
+    if (property.IsReadOnly || property.ColumnName == "MODIFYDATE" || property.ColumnName == "MODIFYUSER" || property.ColumnName == "GLOBALSYNCID" || property.ColumnName == "CHANGEKEY" || property.ColumnName == "APPID" || property.ColumnName == "TICK" || property.DataType is LongTextDataType || property.DataType is LongUnicodeTextDataType || property.DataType is BinaryDataType) {
         return "optimistic-lock=\"false\"";
     }
     else {

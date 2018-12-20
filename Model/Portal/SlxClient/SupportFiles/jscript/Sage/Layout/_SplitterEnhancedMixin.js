@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Layout/_SplitterEnhancedMixin", [
         'dojo/_base/declare',
         'dojo/_base/connect',
         'dojox/storage/LocalStorageProvider',

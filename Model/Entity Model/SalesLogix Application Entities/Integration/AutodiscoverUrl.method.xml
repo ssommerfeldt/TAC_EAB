@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e800f281-740b-4f5f-83ab-d76dda0f9e00" lastModifiedUtc="2015-02-20T21:05:30.9419356Z" name="AutodiscoverUrl" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="b5499146-5409-492b-ad15-bc33c0b7c253" paramName="emailAddress" sequence="0" paramType="String">
+      <description>The admin email address</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="0742ec05-2f39-45b1-98b1-cf55b8890fac" lastModifiedUtc="2015-02-20T21:05:20.8059221Z" targetType="Sage.SalesLogix.Integration.Rules, Sage.SalesLogix.BusinessRules" targetMethod="AutodiscoverUrl" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

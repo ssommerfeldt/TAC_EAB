@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeFile="StepReview.ascx.cs" Inherits="StepReview" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeFile="StepReview.ascx.cs" Inherits="SmartParts_Lead_StepReview" %>
 
 <div style="display:none">
     <asp:Button runat="server" ID="cmdStartImportProcess" OnClick="cmdStartProcess_Click" Visible="True" />

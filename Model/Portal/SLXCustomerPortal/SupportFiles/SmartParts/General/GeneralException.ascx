@@ -10,15 +10,19 @@
         var exception = workItem.State[sSlxErrorId] as Exception;
         if (exception == null) return;
         var eKind = ErrorHelper.ExceptionKind.BaseException;
-        var eTmpKind = eKind;        
+        ErrorHelper.ExceptionKind eTmpKind;        
         var sKind = Page.Request.Params["kind"];
-        if ((!string.IsNullOrEmpty(sKind) && Enum.TryParse(sKind, out eTmpKind)).Equals(true))
+        if ((!string.IsNullOrEmpty(sKind) && Enum.TryParse(sKind, out eTmpKind)))
         {
             eKind = eTmpKind;
         }
+        string errorURL = Page.Request.QueryString["url"];
+        if (string.IsNullOrEmpty(errorURL))
+        {
+            errorURL = workItem.State["CurrentURL"] as string;
+        }
         ExceptionID.Text = ErrorHelper.GetErrorMessageContent(exception, Request, eKind, sSlxErrorId, true, true,
-                                                              Resources.SalesLogix.MailDetailsLink,
-                                                              Page.Request.QueryString["url"]);
+                                                              Resources.SalesLogix.MailDetailsLink, errorURL);
         workItem.State[sSlxErrorId] = null;
     }
 </script>

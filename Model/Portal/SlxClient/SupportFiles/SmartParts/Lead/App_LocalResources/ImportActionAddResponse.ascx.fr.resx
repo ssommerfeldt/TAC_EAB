@@ -112,93 +112,90 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Description courte</value>
-  </data>
-  <data name="lblInterestLevel.Caption" xml:space="preserve">
-    <value>Niveau d'intérêt :</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annuler</value>
-  </data>
-  <data name="pklResponseMethod.Caption" xml:space="preserve">
-    <value>Méthode réponse :</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
-    <value>Code de la campagne</value>
-  </data>
-  <data name="lueCampaign.ToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
-    <value>Date de début</value>
-  </data>
-  <data name="dtpResponseDate.ToolTip" xml:space="preserve">
-    <value>Agenda</value>
-  </data>
-  <data name="lblInterest.Caption" xml:space="preserve">
-    <value>Intérêt :</value>
-  </data>
-  <data name="pklResponseStatus.Caption" xml:space="preserve">
-    <value>Etat :</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Ajouter une réponse</value>
-  </data>
-  <data name="lueCampaign.Caption" xml:space="preserve">
-    <value>Campagne :</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Enregistrer</value>
   </data>
   <data name="cmdSave.ToolTip" xml:space="preserve">
     <value>Enregistrer</value>
   </data>
-  <data name="lueLeadSource.Caption" xml:space="preserve">
-    <value>Source du lead :</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Etat</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
-    <value>Date de fin</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
-    <value>Nom de la campagne</value>
-  </data>
   <data name="hzsComments.Caption" xml:space="preserve">
     <value>Commentaires</value>
+  </data>
+  <data name="lbxStages.Caption" xml:space="preserve">
+    <value>Phase :</value>
+  </data>
+  <data name="dtpResponseDate.Caption" xml:space="preserve">
+    <value>Date de la réponse :</value>
+  </data>
+  <data name="dtpResponseDate.ToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="pklResponseMethod.Caption" xml:space="preserve">
+    <value>Méthode de réponse :</value>
   </data>
   <data name="CampaignTargetStatus" xml:space="preserve">
     <value>Répondu</value>
   </data>
-  <data name="lbxStages.Caption" xml:space="preserve">
-    <value>Phase :</value>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="lueLeadSource.Caption" xml:space="preserve">
+    <value>Source du lead :</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Description courte</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="lueLeadSource.ToolTip" xml:space="preserve">
     <value>Rechercher</value>
   </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Actif</value>
+  <data name="lueCampaign.Caption" xml:space="preserve">
+    <value>Campagne :</value>
   </data>
-  <data name="dtpResponseDate.Caption" xml:space="preserve">
-    <value>Date de réponse :</value>
+  <data name="lueCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
+    <value>Code de la campagne</value>
   </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Enregistrer</value>
+  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
+    <value>Nom de la campagne</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="lueCampaign.ToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="lblInterest.Caption" xml:space="preserve">
+    <value>Intérêt :</value>
+  </data>
+  <data name="lblInterestLevel.Caption" xml:space="preserve">
+    <value>Niveau d'intérêt :</value>
+  </data>
+  <data name="pklResponseStatus.Caption" xml:space="preserve">
+    <value>Etat :</value>
   </data>
   <data name="DefaultResponseStatus" xml:space="preserve">
-    <value>Ouvrir</value>
+    <value>Ouvert(e)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Ajouter une réponse</value>
   </data>
 </root>

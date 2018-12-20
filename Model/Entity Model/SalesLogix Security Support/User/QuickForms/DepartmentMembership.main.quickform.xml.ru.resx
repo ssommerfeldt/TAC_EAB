@@ -117,59 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdDepartments.9f82b192-6e9a-4d05-bef5-14a5fe79bc42.ColumnHeading" xml:space="preserve">
-    <value>Создано</value>
-  </data>
-  <data name="QFLabel.Text" xml:space="preserve">
-    <value>Пользователь является членом следующих отделов</value>
-  </data>
-  <data name="grdDepartments.754cbfab-117f-4b69-9777-3a3cd9953823.ColumnHeading" xml:space="preserve">
-    <value>Отдел</value>
-  </data>
-  <data name="lueAddDepartment.LookupProperties.SeccodeType.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="lueAddDepartment.LookupDialogTitle" xml:space="preserve">
-    <value>Поиск отдела</value>
-  </data>
-  <data name="grdDepartments.btnRemoveFromDepartment.ToolTip" xml:space="preserve">
-    <value>Исключить</value>
-  </data>
-  <data name="grdDepartments.bd75fb01-da31-403e-bd75-125a5f15c48d.ColumnHeading" xml:space="preserve">
-    <value>Последнее изменение</value>
-  </data>
-  <data name="grdDepartments.598e98dd-e682-4b1b-a260-245167f63585.Text" xml:space="preserve">
-    <value>Исключить</value>
-  </data>
-  <data name="lueAddDepartment.ButtonToolTip" xml:space="preserve">
-    <value>Добавить отдел в команду</value>
-  </data>
-  <data name="grdDepartments.c3344641-05fa-4d35-8159-fe31e3ea5d01.ColumnHeading" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
-  <data name="grdDepartments.2293a2f7-2aa4-45fb-9c54-7ae63506a44d.ColumnHeading" xml:space="preserve">
-    <value>Создано</value>
-  </data>
-  <data name="ConfirmRemoveFromDept" xml:space="preserve">
-    <value>Вы уверены, что хотите удалить этот департамент?</value>
-  </data>
-  <data name="lueAddDepartment.LookupProperties.Id.PropertyHeader" xml:space="preserve">
-    <value>ИД</value>
+  <data name="OwnerDescription.Caption" xml:space="preserve">
+    <value>Описание владельца</value>
   </data>
   <data name="grdDepartments.90107e62-a6e1-4f46-a143-0abf457b9faf.ColumnHeading" xml:space="preserve">
     <value>Описание владельца</value>
   </data>
-  <data name="lueAddDepartment.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
+  <data name="grdDepartments.2293a2f7-2aa4-45fb-9c54-7ae63506a44d.ColumnHeading" xml:space="preserve">
+    <value>Создано</value>
   </data>
-  <data name="lueAddDepartment.LookupProperties.SeccodeDesc.PropertyHeader" xml:space="preserve">
-    <value>Отдел</value>
-  </data>
-  <data name="OwnerDescription.Caption" xml:space="preserve">
-    <value>Описание владельца</value>
+  <data name="grdDepartments.bd75fb01-da31-403e-bd75-125a5f15c48d.ColumnHeading" xml:space="preserve">
+    <value>Последнее изменение</value>
   </data>
   <data name="grdDepartments.acefa91c-1439-4e8d-87ff-e4e26a50f923.ColumnHeading" xml:space="preserve">
-    <value>Изменено</value>
+    <value>Автор изменения</value>
+  </data>
+  <data name="grdDepartments.bd75fb01-da31-403e-bd75-125a5f15c48d.FormatString" xml:space="preserve">
+    <value>{0:g}</value>
+  </data>
+  <data name="grdDepartments.2293a2f7-2aa4-45fb-9c54-7ae63506a44d.FormatString" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="grdDepartments.598e98dd-e682-4b1b-a260-245167f63585.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="QFLabel.Text" xml:space="preserve">
+    <value>Пользователь является членом следующих отделов</value>
+  </data>
+  <data name="QFLabel.ToolTip" xml:space="preserve">
+    <value>Пользователь является членом следующих отделов</value>
   </data>
   <data name="lueAddDepartment.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
     <value>Отдел</value>
@@ -177,7 +153,40 @@
   <data name="grdDepartments.6f42efe5-b956-4480-b51b-797941c1e558.ColumnHeading" xml:space="preserve">
     <value>Последнее изменение</value>
   </data>
-  <data name="QFLabel.ToolTip" xml:space="preserve">
-    <value>Пользователь является членом следующих отделов</value>
+  <data name="grdDepartments.9f82b192-6e9a-4d05-bef5-14a5fe79bc42.ColumnHeading" xml:space="preserve">
+    <value>Создано</value>
+  </data>
+  <data name="lueAddDepartment.ButtonToolTip" xml:space="preserve">
+    <value>Добавить отдел в команду</value>
+  </data>
+  <data name="ConfirmRemoveFromDept" xml:space="preserve">
+    <value>Действительно удалить этот отдел?</value>
+  </data>
+  <data name="grdDepartments.754cbfab-117f-4b69-9777-3a3cd9953823.ColumnHeading" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="grdDepartments.c3344641-05fa-4d35-8159-fe31e3ea5d01.ColumnHeading" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="lueAddDepartment.LookupDialogTitle" xml:space="preserve">
+    <value>Поиск отдела</value>
+  </data>
+  <data name="lueAddDepartment.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="lueAddDepartment.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAddDepartment.LookupProperties.Id.PropertyHeader" xml:space="preserve">
+    <value>ИД</value>
+  </data>
+  <data name="lueAddDepartment.LookupProperties.SeccodeDesc.PropertyHeader" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="lueAddDepartment.LookupProperties.SeccodeType.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="grdDepartments.btnRemoveFromDepartment.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
   </data>
 </root>

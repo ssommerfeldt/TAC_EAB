@@ -2,9 +2,9 @@
 
 <script type="text/javascript">
     var opportunityTasksActions;
-    require(['Sage/TaskPane/OpportunityTasksTasklet'],
-        function (OpportunityTasksTasklet) {
-            dojo.ready(function () {
+    require(['Sage/TaskPane/OpportunityTasksTasklet', 'dojo/ready'],
+        function (OpportunityTasksTasklet, ready) {
+            ready(function () {
                 if (!opportunityTasksActions) {
                     opportunityTasksActions = new OpportunityTasksTasklet({
                         id: "opportunityTasksActions",

@@ -1,0 +1,31 @@
+﻿{
+    "widgetId": "infor.crm.chart",
+    "type": "inline",
+    "name": "Infor CRM Chart",
+    "version": "1.0",
+    "category": "application", 
+  	"settings": [
+		  {
+			  "name": "SDataApiContext",
+			  "type": "string",
+			  "defaultValue": "CRMSData",
+			  "isReadOnly": true
+		  }
+	  ],
+    "localization": {
+        "en-US": {
+            "widgetTitle": "Graphique Infor CRM",
+            "widgetDescription": "Widget graphique Infor CRM",
+            "noData": "Pas de données correspondantes",
+            "notConfigured": "Widget non configuré",
+            "errorOccured": "Une erreur de liaison s'est produite",
+            "titleText": "Titre",
+            "textEntity": "Entité",
+            "textGroup": "Groupe",
+            "textDimension": "Dimension",
+            "textMetric": "Mesure",
+            "textType": "Type",
+            "textLimit": "Limite"
+        }
+    }
+}

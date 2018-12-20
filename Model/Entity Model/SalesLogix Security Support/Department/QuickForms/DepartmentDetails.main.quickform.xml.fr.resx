@@ -117,41 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="securityProfileLookup.Caption" xml:space="preserve">
-    <value>Profil de sécurité par défaut :</value>
-  </data>
-  <data name="ModifyDate.Text" xml:space="preserve">
-    <value>Modifié</value>
-  </data>
-  <data name="bc271642-0466-4c43-a3ea-de5507f0b2e3.Message" xml:space="preserve">
-    <value>Le service ne peut pas être supprimé car il comporte des membres.  Supprimez les membres avant de supprimer le service.</value>
-  </data>
-  <data name="Type_item0.Text" xml:space="preserve">
-    <value>Service</value>
-  </data>
   <data name="CreateDate.Caption" xml:space="preserve">
-    <value>Créé le :</value>
-  </data>
-  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
-    <value>Voulez-vous vraiment supprimer ce service ?</value>
+    <value>Créé le :</value>
   </data>
   <data name="ModifyDate.Caption" xml:space="preserve">
     <value>Dernière modification :</value>
   </data>
-  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
-    <value>Profil</value>
+  <data name="QFSLXLookup.LookupProperties.ModifyUser.PropertyHeader" xml:space="preserve">
+    <value>ModifyUser (Modifier l'utilisateur)</value>
   </data>
-  <data name="deleteButton.ToolTip" xml:space="preserve">
-    <value>Supprimer</value>
+  <data name="OwnerDescription.Caption" xml:space="preserve">
+    <value>Nom :</value>
+  </data>
+  <data name="Type_item1.Text" xml:space="preserve">
+    <value>Equipe</value>
+  </data>
+  <data name="Type_item0.Text" xml:space="preserve">
+    <value>Service</value>
   </data>
   <data name="CreateDate.Text" xml:space="preserve">
     <value>Créé</value>
   </data>
-  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Message" xml:space="preserve">
-    <value>Le nom du service est manquant, non valide ou en double.</value>
-  </data>
-  <data name="saveButton.ToolTip" xml:space="preserve">
-    <value>Enregistrer</value>
+  <data name="ModifyDate.Text" xml:space="preserve">
+    <value>Modifié</value>
   </data>
   <data name="QFSLXLookup.Caption" xml:space="preserve">
     <value>Modifié par :</value>
@@ -159,22 +147,34 @@
   <data name="QFLabel.Text" xml:space="preserve">
     <value>Profil de sécurité</value>
   </data>
-  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Title" xml:space="preserve">
-    <value>La validation a échoué</value>
+  <data name="securityProfileLookup.Caption" xml:space="preserve">
+    <value>Profil de sécurité par défaut :</value>
   </data>
-  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
-    <value>Recherche de profil de sécurité</value>
+  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
+    <value>Profil</value>
   </data>
-  <data name="QFSLXLookup.LookupProperties.ModifyUser.PropertyHeader" xml:space="preserve">
-    <value>ModifierUtilisateur (Modifier l'utilisateur)</value>
+  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
+    <value>Souhaitez-vous vraiment supprimer ce service ?</value>
   </data>
-  <data name="OwnerDescription.Caption" xml:space="preserve">
-    <value>Nom :</value>
+  <data name="bc271642-0466-4c43-a3ea-de5507f0b2e3.Message" xml:space="preserve">
+    <value>Le service ne peut pas être supprimé, car il comporte des membres. Supprimez les membres avant de supprimer le service.</value>
   </data>
   <data name="bc271642-0466-4c43-a3ea-de5507f0b2e3.Title" xml:space="preserve">
     <value>Suppression non autorisée</value>
   </data>
-  <data name="Type_item1.Text" xml:space="preserve">
-    <value>Equipe</value>
+  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Title" xml:space="preserve">
+    <value>La validation a échoué</value>
+  </data>
+  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Message" xml:space="preserve">
+    <value>Le nom du service est manquant, non valide ou en double.</value>
+  </data>
+  <data name="deleteButton.ToolTip" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="saveButton.ToolTip" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
+    <value>Rechercher un profil de sécurité</value>
   </data>
 </root>

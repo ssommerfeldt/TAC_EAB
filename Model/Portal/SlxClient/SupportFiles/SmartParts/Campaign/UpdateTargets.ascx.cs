@@ -448,7 +448,9 @@ public partial class SmartParts_Campaign_UpdateTargets : EntityBoundSmartPartInf
         }
         else
         {
-            script.Append("dojo.ready(function () {Sage.UI.Forms.UpdateTargets.init(" + GetWorkSpace() + ");");
+            script.Append("require(['dojo/ready'], function(ready) {" +
+                          "ready(function () { Sage.UI.Forms.UpdateTargets.init(" + GetWorkSpace() + "); });" +
+                          " });");
         }
         ScriptManager.RegisterStartupScript(this, GetType(), "initialize_UpdateTargets", script.ToString(), true);
     }

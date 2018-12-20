@@ -1,5 +1,7 @@
+require({cache:{
+'url:Sage/UI/Controls/templates/DateTimePicker.html':"<div class=\"dateTimePicker\">\r\n        <div dojoAttachPoint=\"tooltipContainer\">\r\n        \r\n            <div dojoAttachPoint=\"dateContainer\" class=\"dateTimePicker-dateContainer\">\r\n               \r\n                    <input id=\"${id}-Calendar\" data-dojo-type=\"Sage.UI.Calendar\"\r\n                        style=\"width:inherit;\"\r\n                        textAlign=\"${textAlign}\"\r\n                           type=\"text\" \r\n                           tabindex=\"0\"\r\n                           displayMode=\"popup\"\r\n                           dojoAttachPoint=\"dateNode\"\r\n                           dojoAttachEvent=\"onValueSelected:_onValueSelected,onBlur:_onCalendarBlur\">\r\n               \r\n            </div>\r\n            \r\n            <div dojoAttachPoint=\"timeZoneContainer\" class=\"dateTimePicker-timeZoneContainer\">\r\n               \r\n                    <label for=\"${id}-TimeStart\">${timeStartText}</label><br />\r\n                    <input id=\"${id}-TimeTextBox\" data-dojo-type=\"dijit.form.TimeTextBox\" \r\n                           style=\"width:16em;\"\r\n                           textAlign=\"${textAlign}\"\r\n                           tabindex=\"0\"\r\n                           type=\"text\" dojoAttachPoint=\"timeNode\"\r\n                           constraints=\"{locale:Sys.CultureInfo.CurrentCulture.name,timePattern:Sys.CultureInfo.CurrentCulture.dateTimeFormat.ShortTimePattern.replace('tt', 'a').replace('t', 'a')}\">\r\n                    <br /><br/>\r\n                    <label for=\"${id}-TzCalculator\">${timeZoneCalculatorText}</label>\r\n                    <div id=\"timeZoneCalucaltor\" class=\"dateTimePicker-timeZoneCalculator\">\r\n                       <p style=\"width:auto;margin-top:auto\">\r\n                            <label for=\"${id}-TzSelectSource\">${timeZoneSourceText}</label><br />\r\n                            <select id=\"${id}-TzSelectSource\" data-dojo-type=\"dijit.form.ComboBox\"  dojoAttachPoint=\"timeZoneSourceComboNode\" style=\"width:15em;\">\r\n                            </select>\r\n                            <br />\r\n                            <label for=\"${id}-TzSelectDest\">${timeZoneDestText}</label><br />\r\n                           <select id=\"${id}-TzSelectDest\" data-dojo-type=\"dijit.form.ComboBox\"  dojoAttachPoint=\"timeZoneDestComboNode\" style=\"width:15em;\">\r\n                           </select>\r\n                           <br/>\r\n                            <span id=\"${id}-ConvertResults\" dojoAttachPoint=\"convertResultsNode\" style=\"float:left;padding-top:5px;\">\r\n                        </span>\r\n                        </p><br/>\r\n                        <button id=\"${id}-Convert\" data-dojo-type=\"dijit.form.Button\" dojoAttachPoint=\"timeZoneConvertButtonNode\" type=\"button\" style=\"float:right\" dojoAttachEvent=\"onClick:_convertClicked\">\r\n                            ${convertText}\r\n                        </button>\r\n                       \r\n                        \r\n                    </div>\r\n               \r\n                <div class=\"button-bar alignright\" style=\"clear: both\">\r\n                    <button id=\"${id}-OKButton\" tabindex=\"0\" data-dojo-type=\"dijit.form.Button\" dojoAttachPoint=\"OKButtonNode\" type=\"button\" dojoAttachEvent=\"onClick:_okClicked\">\r\n                        ${okText}\r\n                    </button>\r\n                    <button id=\"${id}-CancelButton\" tabindex=\"0\" data-dojo-type=\"dijit.form.Button\" dojoAttachPoint=\"CancelButtonNode\" type=\"button\" dojoAttachEvent=\"onClick:_cancelClicked\">\r\n                        ${cancelText}\r\n                    </button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        \r\n    \r\n</div>\r\n\r\n"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
-define([
+define("Sage/UI/Controls/DateTimePicker", [
        'dijit/_TemplatedMixin',
        'dijit/_WidgetsInTemplateMixin',
        'dojo/fx',
@@ -122,7 +124,9 @@ function (_TemplatedMixin,
         startup: function () {
             this._started = true;
             this._messages = [];
-            this.focus();
+            if (typeof this.focus === 'function') {
+                this.focus();
+            }
             this.inherited(arguments);
         },
         uninitialize: function () {
@@ -214,16 +218,16 @@ function (_TemplatedMixin,
             dateString = selectedDate.toLocaleString();
 
             if(selectedSource && selectedDest) {
-            dojo.xhrGet({
-                url: dojo.string.substitute(url, [escape(selectedSource), escape(selectedDest), dateString, "false"]),
-                handleAs: 'json',
-                load: function (convertedDateString) {
-                    self.convertResultsNode.innerHTML = convertedDateString;  
-                },
-                error: function (err) {
-                    console.error(err);
-                }
-            });
+                dojo.xhrGet({
+                    url: dojo.string.substitute(url, [escape(selectedSource), escape(selectedDest), dateString, "false"]),
+                    handleAs: 'json',
+                    load: function (convertedDateString) {
+                        self.convertResultsNode.innerHTML = convertedDateString;
+                    },
+                    error: function (err) {
+                        console.error(err);
+                    }
+                });
             }
         },
         processTimeZones: function (data) {
@@ -312,6 +316,7 @@ function (_TemplatedMixin,
         dropdownIconClicked: false,
         popupElements: null,
         minDate: null,
+        cssClass: "",
         constructor: function (options) {
             //console.log("datetimepicker :: construct"); 
             this.buttonToolTip = nlsStrings.buttonToolTip;
@@ -320,8 +325,16 @@ function (_TemplatedMixin,
             this.documentClickHandle = [];
             this.dateOnlyHanlde = [];
             this.store = {}; // required by ComboBox - do not remove or IE8 error will occur.
+            if (options.cssClass) {
+                this.cssClass = options.cssClass;
+            }
 
             this.inherited(arguments);
+        },
+        postCreate: function () {
+            if (this.cssClass && this.cssClass.length > 0) {
+                this.domNode.className = this.cssClass + ' ' + this.domNode.className;
+            }
         },
         _onChanged: function (e) {
             if (this.shouldPublishMarkDirty) {
@@ -342,12 +355,12 @@ function (_TemplatedMixin,
                 hiddenField = thisDom.children[1];
                 if (hiddenTextField && hiddenField) {
                     valueForASPNet = this.getValueForASPNET();
-                    hiddenField.value = valueForASPNet; 
+                    hiddenField.value = valueForASPNet;
                     if (valueForASPNet === '') {
                         hiddenTextField.value = '';
                     }
                     if (hiddenField.onchange) {
-                    hiddenField.onchange();
+                        hiddenField.onchange();
                     }
                 }
             }
@@ -522,6 +535,8 @@ function (_TemplatedMixin,
                 options.selector = 'time';
             }
 
+            options.locale = Sys.CultureInfo.CurrentCulture.name;
+
             results = locale.format(selectedDate, options);
 
             if (this.renderAsHyperlink) {
@@ -611,8 +626,9 @@ function (_TemplatedMixin,
                 var selectorString = "date";
                 if (text.indexOf(":") > 0) {
                     selectorString = "datetime";
+					text=new Date(text).toLocaleString().replace(/:\d{2}\s/,' '); // NOTE THE COMMA -Assign comma for DateTime calendar 
                 }
-                currentLocale = currentLocale || dojoConfig.locale;
+                currentLocale = currentLocale || (Sys.CultureInfo.CurrentCulture.name || dojoConfig.locale);
                 parsedDate = dojo.date.locale.parse(text, { selector: selectorString, locale: currentLocale });
                 //console.log("minDate: %o,text: %o,parsedDate : %o,selectorString : %o, locale:%o", this.minDate, text, parsedDate, selectorString, dojoConfig.locale);
 
@@ -665,6 +681,12 @@ function (_TemplatedMixin,
 
             if (this.displayTime) {
                 this.dropDown.loadTimeZones();
+            }
+
+            if (this.dropDown.dateNode._selectedCells !== 'undefined' && this.dropDown.dateNode._selectedCells.length === 0)
+            {
+                var value = this.getDateValue();
+                this.dropDown.dateNode._markSelectedDates([value]);
             }
 
             focusUtil.focus(dojo.query('.dijitCalendarContainer', this.dropDown.dateContainer)[0]);

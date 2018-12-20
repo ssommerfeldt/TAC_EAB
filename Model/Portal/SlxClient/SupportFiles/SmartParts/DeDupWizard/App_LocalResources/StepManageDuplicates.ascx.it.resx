@@ -117,109 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Filter.Address.State" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="Filter.WebAddress" xml:space="preserve">
-    <value>Indirizzo Web</value>
-  </data>
-  <data name="chkCreateResponses.Caption" xml:space="preserve">
-    <value>Crea risposte per i record uniti</value>
-  </data>
-  <data name="Filter.EMail" xml:space="preserve">
-    <value>E-Mail</value>
-  </data>
-  <data name="lblConflicts.Caption" xml:space="preserve">
-    <value>Conflitti:</value>
-  </data>
-  <data name="Filter.WorkPhone" xml:space="preserve">
-    <value>Tel. Ufficio</value>
-  </data>
-  <data name="lbxConflicts_ExistingWins_Item" xml:space="preserve">
-    <value>Vince il record esistente</value>
-  </data>
-  <data name="Target.IAccount" xml:space="preserve">
-    <value>Azienda</value>
-  </data>
-  <data name="Filter.Title" xml:space="preserve">
-    <value>Titolo</value>
-  </data>
   <data name="chkAutoMergeDups.Caption" xml:space="preserve">
-    <value>Unione automatica record duplicati</value>
-  </data>
-  <data name="Filter.MainPhone" xml:space="preserve">
-    <value>Telefono Principale</value>
-  </data>
-  <data name="Filter.Address.PostalCode" xml:space="preserve">
-    <value>Codice Postale</value>
-  </data>
-  <data name="Filter.Account.Industry" xml:space="preserve">
-    <value>Settore</value>
-  </data>
-  <data name="Filter.TollFree" xml:space="preserve">
-    <value>Num. verde</value>
-  </data>
-  <data name="Filter.Industry" xml:space="preserve">
-    <value>Settore</value>
-  </data>
-  <data name="cmdMatchOptions.Caption" xml:space="preserve">
-    <value>Opzioni di Corrispondenza Avanzate...</value>
-  </data>
-  <data name="lblMatchTypes.Caption" xml:space="preserve">
-    <value>Tipo:</value>
-  </data>
-  <data name="Filter.Account.TollFree" xml:space="preserve">
-    <value>Num. verde</value>
-  </data>
-  <data name="lblContacts.Caption" xml:space="preserve">
-    <value>Contatto</value>
-  </data>
-  <data name="Filter.LastName" xml:space="preserve">
-    <value>Cognome</value>
-  </data>
-  <data name="Filter.FirstName" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="cmdRunTest.Caption" xml:space="preserve">
-    <value>Esegui il Test</value>
-  </data>
-  <data name="Filter.Company" xml:space="preserve">
-    <value>Azienda/Società</value>
+    <value>Duplicati uniti automaticamente</value>
   </data>
   <data name="chkCheckForDups.Caption" xml:space="preserve">
-    <value>Verifica Nominativi duplicati</value>
+    <value>Verifica lead duplicati</value>
   </data>
-  <data name="Filter.AccountName" xml:space="preserve">
-    <value>Azienda/Società</value>
+  <data name="chkCreateResponses.Caption" xml:space="preserve">
+    <value>Crea risposte per record uniti</value>
+  </data>
+  <data name="cmdMatchOptions.Caption" xml:space="preserve">
+    <value>Opzioni di corrispondenza avanzate...</value>
+  </data>
+  <data name="cmdRunTest.Caption" xml:space="preserve">
+    <value>Esegui verifica</value>
+  </data>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Definisce i criteri di corrispondenza per trovare potenziali duplicati.</value>
+  </data>
+  <data name="lblMatchFilters.Caption" xml:space="preserve">
+    <value>Seleziona filtri:</value>
   </data>
   <data name="lblMatchFiltersDesc.Caption" xml:space="preserve">
     <value>(Deve corrispondere a tutti i valori selezionati)</value>
   </data>
-  <data name="Target.ILead" xml:space="preserve">
-    <value>Nominativo</value>
+  <data name="lblMatchTypes.Caption" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+  <data name="lblRunTest.Caption" xml:space="preserve">
+    <value>Verifica il numero di duplicati rilevati (fino ai primi 100 record).</value>
+  </data>
+  <data name="lblContacts.Caption" xml:space="preserve">
+    <value>Contatto</value>
+  </data>
+  <data name="lblleads.Caption" xml:space="preserve">
+    <value>Lead</value>
+  </data>
+  <data name="lblConflicts.Caption" xml:space="preserve">
+    <value>Conflitti:</value>
+  </data>
+  <data name="lbxConflicts_ExistingWins_Item" xml:space="preserve">
+    <value>Il record esistente prevale</value>
   </data>
   <data name="lbxConflicts_ImportedWins_Item" xml:space="preserve">
-    <value>Vince il record importato</value>
+    <value>Il record importato prevale</value>
+  </data>
+  <data name="Filter.Address.City" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="Filter.Address.PostalCode" xml:space="preserve">
+    <value>Codice postale</value>
+  </data>
+  <data name="Filter.Address.State" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Filter.Company" xml:space="preserve">
+    <value>Azienda/società</value>
+  </data>
+  <data name="Filter.EMail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Filter.FirstName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Filter.Industry" xml:space="preserve">
+    <value>Settore</value>
+  </data>
+  <data name="Filter.LastName" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="Filter.Title" xml:space="preserve">
+    <value>Titolo</value>
+  </data>
+  <data name="Filter.TollFree" xml:space="preserve">
+    <value>Numero verde</value>
+  </data>
+  <data name="Filter.WebAddress" xml:space="preserve">
+    <value>Indirizzo Web</value>
+  </data>
+  <data name="Filter.WorkPhone" xml:space="preserve">
+    <value>Telefono ufficio</value>
   </data>
   <data name="chkCheckForDupsInFile.Caption" xml:space="preserve">
-    <value>Controlla i duplicati contenuti all'interno del file di importazione d'origine</value>
+    <value>Verifica i duplicati contenuti nel file di origine dell’importazione</value>
+  </data>
+  <data name="Filter.Account.Industry" xml:space="preserve">
+    <value>Settore</value>
+  </data>
+  <data name="Filter.Account.TollFree" xml:space="preserve">
+    <value>Numero verde</value>
+  </data>
+  <data name="Filter.AccountName" xml:space="preserve">
+    <value>Azienda/società</value>
+  </data>
+  <data name="Filter.MainPhone" xml:space="preserve">
+    <value>Telefono principale</value>
+  </data>
+  <data name="Target.IAccount" xml:space="preserve">
+    <value>Azienda</value>
   </data>
   <data name="Target.IContact" xml:space="preserve">
     <value>Contatto</value>
   </data>
-  <data name="lblleads.Caption" xml:space="preserve">
-    <value>Nominativo</value>
-  </data>
-  <data name="lblMatchFilters.Caption" xml:space="preserve">
-    <value>Filtri di Corrispondenza:</value>
-  </data>
-  <data name="lblRunTest.Caption" xml:space="preserve">
-    <value>Verifica quanti duplicati verranno trovati (Primi 100 records).</value>
-  </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Definisce i criteri di corrispondenza per trovare i duplicati potenziali.</value>
-  </data>
-  <data name="Filter.Address.City" xml:space="preserve">
-    <value>Città</value>
+  <data name="Target.ILead" xml:space="preserve">
+    <value>Lead</value>
   </data>
 </root>

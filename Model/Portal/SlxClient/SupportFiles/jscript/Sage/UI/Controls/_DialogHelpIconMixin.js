@@ -2,7 +2,7 @@
 /* 
 Mixin for creating a help icon in dijit/Dialogs (or anything that has a titleBar attach point)
 */
-define([
+define("Sage/UI/Controls/_DialogHelpIconMixin", [
         'dojo/_base/declare',
         'dojo/dom-construct',
         'dojo/dom-attr',

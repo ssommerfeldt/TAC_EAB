@@ -1,17 +1,28 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="029dc567-14ce-4d1e-9de1-41387ef2195f" name="ChangeAccountOwner" returnType="void" methodType="Rule" actionType="None" returnMode="None" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="029dc567-14ce-4d1e-9de1-41387ef2195f" lastModifiedUtc="2017-10-13T13:48:41.2795207Z" name="ChangeAccountOwner" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
   <preExecuteTargets />
   <methodTargets>
-    <methodTarget id="2e57da1f-178c-470f-a529-b26f45db29e7" targetType="Sage.SalesLogix.Account.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ChangeAccountOwner" active="true">
+    <methodTarget id="2e57da1f-178c-470f-a529-b26f45db29e7" lastModifiedUtc="0001-01-01T00:00:00" targetType="Sage.SalesLogix.Account.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ChangeAccountOwner" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets />
-  <postFlushTargets />
+  <postExecuteTargets>
+    <methodTarget id="c3ce4abe-e3f9-4060-805b-31bb130ed2a2" lastModifiedUtc="2017-10-17T18:21:15.4715233Z" targetType="Sage.SalesLogix.Account.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ChangeQuoteOwner" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget id="f2121ba6-42f5-4ff5-b782-d7fab22a5042" lastModifiedUtc="2017-10-17T18:21:45.3494091Z" targetType="Sage.SalesLogix.Account.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ChangeSalesOrderOwner" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
 </method>

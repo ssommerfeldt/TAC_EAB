@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define(['Sage/Utility', 'dojo/string'],
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Format", ['Sage/Utility', 'dojo/string'],
 function (utility, dString) {
 
     Sage.Format = {
@@ -54,9 +54,13 @@ function (utility, dString) {
         abbreviationFormatter: function (maxLength) {
             // summary:
             //  Return formatter function to be used to restrict length of a display
-            return function (value) {
-                if (!value || typeof (value) != "string" || value.length <= maxLength)
+            return function (value, data) {
+                if (value === null) {
+                    return '';
+                }
+                if (typeof (value) != "string" || value.length <= maxLength) {
                     return value;
+                }
                 value = value.substring(0, maxLength);
                 var ispace = value.lastIndexOf(" ");
                 if (ispace > 0 && ispace > value.length * 0.75) {
@@ -67,79 +71,118 @@ function (utility, dString) {
             };
         },
         Address: {
-            fullAddressFormatStrings: {
-                "USA": "${0}\r\n${1}\r\n${2}\r\n${3}, ${4} ${5}\r\n${6}",
-                "Japan": "${0}\r\n${1}${2}\r\n${3}, ${4} ${5}\r\n${6}"
-            },
-            formatDefault: function (address) {
-                var addr1F = '', addr2F = '', addr3F = '', cityF = '', stateF = '', postalCodeF = '', countryF = '';
-                var lineBreak = '\r\n';
-                for (var i = 0; i < address.length; i++) {
-                    //Build up the formatted string based on presence of values.
-                    switch (address[i].name) {
-                        case 'addr1':
-                            addr1F = (address[i].value.length > 0) ? address[i].value : '';
-                            break;
-                        case 'addr2':
-                            addr2F = (address[i].value.length > 0) ? [lineBreak, address[i].value].join('') : '';
-                            break;
-                        case 'addr3':
-                            addr3F = (address[i].value.length > 0) ? [lineBreak, address[i].value].join('') : '';
-                            break;
-                        case 'city':
-                            cityF = (address[i].value.length > 0) ? [lineBreak, address[i].value, ','].join('') : '';
-                            break;
-                        case 'state':
-                            var cityTest = (address[i - 1].value.length > 0) ? '' : lineBreak;
-                            stateF = (address[i].value.length > 0) ? [cityTest, ' ', address[i].value].join('') : '';
-                            break;
-                        case 'postalCode':
-                            postalCodeF = (address[i].value.length > 0) ? [' ', address[i].value].join('') : '';
-                            break;
-                        case 'country':
-                            countryF = (address[i].value.length > 0) ? [lineBreak, address[i].value].join('') : '';
-                            break;
-                    }
+            formatAddress: function (address, format) {
+				// summary: 
+				// Takes and array of address fields and formats them based on format.
+				// @param address: Array of addres fields.
+				// @param format: The country format should be the formatted.   
+				var lineBreak = '\r\n';
+				var formatString = '';
+				var addressLines = this.GetAddressLines(address);
+				var city = this.GetCity(address);
+				var state = this.GetState(address);
+				var zipCode = this.GetZipCode(address);
+				var county = this.GetCounty(address);	
+				var country = this.GetCountry(address);				
+				
+				//Replace %A i.e address lines
+				formatString = format.replace(/%A/g, addressLines);
+				//Replace %D i.e County or District					
+				formatString = formatString.replace(/%D/g, county); 
+				//Replace %C i.e City
+				formatString = formatString.replace(/%C/g, city); 
+				//Replace %Z i.e Zip code
+				formatString = formatString.replace(/%Z/g, zipCode); 
+				//Replace %S i.e State
+				formatString = formatString.replace(/%S/g, state);
+				if(format.indexOf('%A') === -1)
+				{
+					if(format === '')
+						formatString += addressLines === ''? '': addressLines;
+					else
+						formatString += addressLines === ''? '': lineBreak + addressLines;
+				}
+				if(format.indexOf('%C') === -1)
+					formatString += city === ''? '': lineBreak + city;				
+				if(format.indexOf('%S') === -1)
+					formatString += state === ''? '': lineBreak + state; 
+				if(format.indexOf('%Z') === -1)
+					formatString += zipCode === ''? '': lineBreak + zipCode;				
+				//Replace %n i.e line break
+				formatString = this.RemoveUnnecessaryChars(formatString);
+				// Now add country lastly to address string	
+				formatString = formatString + country;
+				//Now replace ^ with emptyto handle it for test type	
+				formatString = formatString.replace(/\^/g, '');
+				if (addressLines === '' && city === '' && county === '' &&
+                    state === '' &&	zipCode === '' && country === '')
+                {
+                    formatString = '';
                 }
-                return [addr1F, addr2F, addr3F, cityF, stateF, postalCodeF, countryF].join('');
-            },
-            formatAddress: function (address, byLocal) {
-                // summary: 
-                // Takes and array of address fields and formats them by local.
-                // @param address: Array of addres fields.
-                // @param byLocal: Determines whether the country code should determine the formatting.
-                var addr1 = '', addr2 = '', addr3 = '', city = '', state = '', postalCode = '', country = '';
-                var formattedAddress = '';
-                for (var i = 0; i < address.length; i++) {
-                    switch (address[i].name) {
-                        case 'addr1': addr1 = address[i].value; break;
-                        case 'addr2': addr2 = address[i].value; break;
-                        case 'addr3': addr3 = address[i].value; break;
-                        case 'city': city = address[i].value; break;
-                        case 'state': state = address[i].value; break;
-                        case 'postalCode': postalCode = address[i].value; break;
-                        case 'country': country = address[i].value; break;
-                    }
-                }
-
-                if (byLocal) {
-                    switch (country) {
-                        case 'USA':
-                            formattedAddress = this.formatDefault(address);
-                            break;
-                        case 'Japan':
-                            formattedAddress = dojo.string.substitute(this.fullAddressFormatStrings['Japan'],
-                            [addr1, addr2, addr3, city, state, postalCode, country]);
-                            break;
-                        default:
-                            formattedAddress = this.formatDefault(address);
-                    }
-                }
-                else {
-                    formattedAddress = this.formatDefault(address);
-                }
-                return formattedAddress;
-            }
+				return formatString;
+			},
+			RemoveUnnecessaryChars: function(formatString){
+				var format = '';
+				var lineBreak = '\r\n';
+				var addressArray = formatString.split('%n');
+				for(var i = 0; i < addressArray.length; i++)
+				{
+					var addressFormat = addressArray[i]; 
+					addressFormat = addressFormat.replace(/^\,|\,$/g, '');	
+					addressFormat = addressFormat.replace(/^\ |\ $/g, '');	
+					addressFormat = addressFormat.replace(/^\ - |\ - $/g, '');
+					addressFormat = addressFormat.replace(/^\-|\-$/g, '');
+					addressFormat = addressFormat.replace(/\/$/g, '');
+					if(addressFormat !== '')
+						format += addressFormat + lineBreak;
+				}
+				return format;
+			},
+			GetAddressLines: function(address){								
+				var lineBreak = '\r\n';
+				var addr1 = this.GetValueByObjectName(address,'addr1');
+				var addr2 = this.GetValueByObjectName(address,'addr2');
+				var addr3 = this.GetValueByObjectName(address,'addr3');
+				var addr4 = this.GetValueByObjectName(address,'addr4');
+				var addr5 = this.GetValueByObjectName(address,'addr5');
+				var addr6 = this.GetValueByObjectName(address,'addr6');
+				
+				var addressLines = addr1 !== '' ? addr1 : '';
+                addressLines += addr2 !== '' ? lineBreak + addr2 : '';
+                addressLines += addr3 !== '' ? lineBreak + addr3 : '';
+                addressLines += addr4 !== '' ? lineBreak + addr4 : '';
+                addressLines += addr5 !== '' ? lineBreak + addr5 : '';
+                addressLines += addr6 !== '' ? lineBreak + addr6 : '';
+				return addressLines;
+			},
+			GetCounty: function(address){ 
+				return this.GetValueByObjectName(address,'county');
+			},
+			GetCity: function(address){ 
+				return this.GetValueByObjectName(address,'city');
+			},
+			GetZipCode: function(address){ 
+				return this.GetValueByObjectName(address,'postalCode');
+			},
+			GetState: function(address){ 
+				return this.GetValueByObjectName(address,'state');
+			},
+			GetCountry: function(address)
+			{
+				return this.GetValueByObjectName(address,'country');
+			},
+			GetValueByObjectName: function(address, name)
+			{
+				var value = '';
+				var valueObj = address.filter(function( obj ) {
+					return obj.name === name;
+				});
+				if(valueObj.length > 0){
+					if(valueObj[0].value !== '')
+						value = valueObj[0].value;
+				}
+				return value;
+			}
         }
     };
     return Sage.Format;

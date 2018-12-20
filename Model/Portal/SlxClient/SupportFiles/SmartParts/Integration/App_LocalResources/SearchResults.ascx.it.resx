@@ -117,67 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblCreateAccount.Caption" xml:space="preserve">
-    <value>Crea un'Azienda Cliente in &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
-  </data>
-  <data name="Error_SDataRequest" xml:space="preserve">
-    <value>Errore nel recupero entità corrispondenti tramite SData. Consultare l'amministratore per maggiori informazioni.</value>
-  </data>
-  <data name="grdMatches.Status.ColumnHeading" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="lblSearchResults.Caption" xml:space="preserve">
-    <value>Risultati Ricerca per &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
-  </data>
-  <data name="lblResultsMsg.Caption" xml:space="preserve">
-    <value>E' stata trovata più di un'azienda cliente corrispondente. Sono disponibili le seguenti opzioni:</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Indietro</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Annulla</value>
   </data>
-  <data name="Dialog.Caption" xml:space="preserve">
-    <value>Collegamento a Sistema Contabile</value>
-  </data>
-  <data name="error_NoAccountSelected" xml:space="preserve">
-    <value>Per continuare è necessario selezionare un'azienda corrispondente.</value>
-  </data>
-  <data name="lblNoMatchesCreateNew.Caption" xml:space="preserve">
-    <value>Crea una nuova azienda Cliente per &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
-  </data>
-  <data name="rdbCreateNew.Caption" xml:space="preserve">
-    <value>Crea un nuovo record Cliente in contabilità</value>
-  </data>
-  <data name="grdMatches.Type.ColumnHeading" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Collegamento a Sistema Contabile - Fondi i Dati - Nessuna Differenza</value>
-  </data>
-  <data name="lblSearchNoResults.Caption" xml:space="preserve">
-    <value>Risultati Ricerca</value>
-  </data>
   <data name="btnNext.Caption" xml:space="preserve">
     <value>Avanti &gt;</value>
   </data>
-  <data name="rdbRefineSearch.Caption" xml:space="preserve">
-    <value>Raffina o espandi la ricerca per un'azienda esistente</value>
+  <data name="Dialog.Caption" xml:space="preserve">
+    <value>Collegamento a sistema contabile</value>
+  </data>
+  <data name="error_NoAccountSelected" xml:space="preserve">
+    <value>Prima di continuare è necessario selezionare un'azienda corrispondente.</value>
   </data>
   <data name="grdMatches.Account.ColumnHeading" xml:space="preserve">
     <value>Azienda</value>
   </data>
-  <data name="rdbLinkAccount.Caption" xml:space="preserve">
-    <value>Collega &lt;span class="boldtext"&gt;{0}&lt;/span&gt; a &lt;span class="boldtext"&gt;{1}&lt;/span&gt; &lt;span class="italictext"&gt;(se la corrispondenza non è al 100%, sarà necessaria la fusione)&lt;/span&gt;:</value>
+  <data name="grdMatches.Status.ColumnHeading" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="grdMatches.Type.ColumnHeading" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="lblCreateAccount.Caption" xml:space="preserve">
+    <value>Crea un'azienda cliente in &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
   </data>
   <data name="lblNoMatches.Caption" xml:space="preserve">
-    <value>Non è stato trovato alcun dato corrispondente ai criteri di ricerca.</value>
+    <value>Nessuna corrispondenza trovata in base ai criteri di ricerca.</value>
   </data>
-  <data name="Error_TradingAccount_Linked" xml:space="preserve">
-    <value>L'azienda di negoziazione selezionta è già collegata all'azienda SalesLogix'{0}'. Non si dovrebbe collegare un'azienda SalesLogix alla stessa azienda di negoziazione.</value>
+  <data name="lblNoMatchesCreateNew.Caption" xml:space="preserve">
+    <value>Crea una nuova azienda cliente per &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
   </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Indietro</value>
+  <data name="lblResultsMsg.Caption" xml:space="preserve">
+    <value>Sono state trovate più aziende cliente corrispondenti. Sono disponibili le seguenti opzioni:</value>
+  </data>
+  <data name="lblSearchNoResults.Caption" xml:space="preserve">
+    <value>Risultati della ricerca</value>
+  </data>
+  <data name="lblSearchResults.Caption" xml:space="preserve">
+    <value>I risultati della ricerca per &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
+  </data>
+  <data name="rdbCreateNew.Caption" xml:space="preserve">
+    <value>Crea un nuovo record cliente in contabilità</value>
+  </data>
+  <data name="rdbLinkAccount.Caption" xml:space="preserve">
+    <value>Il collegamento &lt;span class="boldtext"&gt;{0}&lt;/span&gt; a &lt;span class="boldtext"&gt;{1}&lt;/span&gt; &lt;span class="italictext"&gt;(se la corrispondenza è diversa dal 100%, sarà necessaria l'unione)&lt;/span&gt;:</value>
+  </data>
+  <data name="rdbRefineSearch.Caption" xml:space="preserve">
+    <value>Restringere o espandere i valori della ricerca per un'azienda esistente.</value>
   </data>
   <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Collegamento a Sistema Contabile - Fondi i Dati - Trovate Differenze</value>
+    <value>Collegamento a sistema contabile - Unione dati - Rilevate differenze</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Collegamento a sistema contabile - Unione dati - Nessuna differenza</value>
+  </data>
+  <data name="Error_TradingAccount_Linked" xml:space="preserve">
+    <value>L'azienda commerciale selezionata è già collegata all'azienda Saleslogix '{0}'. Non è possibile collegare un'azienda Saleslogix alla stessa azienda commerciale.</value>
+  </data>
+  <data name="Error_SDataRequest" xml:space="preserve">
+    <value>Errore nel recupero delle entità corrispondenti mediante SData. Consultare l'amministratore di sistema per maggiori informazioni.</value>
   </data>
 </root>

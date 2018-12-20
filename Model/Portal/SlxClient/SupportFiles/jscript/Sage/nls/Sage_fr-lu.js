@@ -1,4024 +1,589 @@
-require({cache:{
-'Sage/Utility/File/nls/fr/FallbackFilePicker':function(){
-define("Sage/Utility/File/nls/fr/FallbackFilePicker", (
-{ addLibraryFileText: 'Ajouter un fichier de bibliothèque',
-  attachFileText: 'Joindre un fichier',
-  descriptionText: 'Description',
-  uploadFileText: 'Pièce jointe',
-  okText: 'OK',
-  cancelText: 'Annuler',
-  invalidContext: 'Le(s) fichier(s) ne peu(ven)t pas être téléchargé(s) à extérieur de la bibliothèque de ventes.',
-  fileTooLargeError: 'importation du fichier a été annulée, car le fichier est trop volumineux.',
-  pleaseSelectFile: 'Veuillez abord sélectionner un fichier.',
-  slxErrorIdInfo: 'ID erreur Saleslogix : ' }
-));
-},
-'Sage/Utility/File/nls/fr-lu/FallbackFilePicker':function(){
-define('Sage/Utility/File/nls/fr-lu/FallbackFilePicker',{});
-},
-'Sage/UI/nls/fr/Boolean':function(){
-define("Sage/UI/nls/fr/Boolean", (
-{ yesText: 'Oui', noText: 'Non' }
-));
-},
-'Sage/UI/nls/fr-lu/Boolean':function(){
-define('Sage/UI/nls/fr-lu/Boolean',{});
-},
-'Sage/Services/nls/fr/ActivityService':function(){
-define("Sage/Services/nls/fr/ActivityService", (
-{ txtErrorActionMsg: 'Désolé, cette action a échoué car une erreur est survenue.',
-  txtActivity: 'Activité',
-  txtActivities: 'Activités',
-  txtActionDeleteActivites: 'Supprimer des activités',
-  txtActionDeleteActivitiesQuestion: 'Seules les activités que vous avez autorisation de supprimer seront supprimées.<P>Voulez-vous vraiment supprimer le/la {0} {1} sélectionné(e) ?',
-  txtAlarm: 'Alarme',
-  txtAlarms: 'Alarmes',
-  txtActionSnoozeAlarm: 'Alarme de mise en veille',
-  txtActionSnoozeQuestion: 'Voulez-vous vraiment mettre en veille le/la {0} {1} sélectionné(e) pour {2} ?',
-  txtActionSnoozeAllQuestion: 'Voulez-vous vraiment mettre en veille tous les {0} pour {1} ?',
-  txtActionDismissAlarms: 'Annuler les alarmes',
-  txtActionDismissAlarmsQuestion: 'Voulez-vous vraiment annuler la {0} {1} sélectionnée ?',
-  txtEvent: 'Evénement',
-  txtEvents: 'Evénements',
-  txtActionDeleteEvents: 'Supprimer les événements',
-  txtActionDeleteEventsQuestion: 'Seuls les événements que vous avez autorisation de supprimer seront supprimés.<P>Voulez-vous vraiment supprimer le {0} {1} sélectionné ?',
-  txtConfirmation: 'confirmations',
-  txtConfirmations: 'Confirmations',
-  txtActionAcceptConfirmations: 'Accepter les confirmations',
-  txtActionAcceptConfirmQuestion: 'Voulez-vous vraiment accepter les {0} {1} sélectionnés ? Cette action ne peut être effectuée que sur les nouvelles confirmations. Toutes les autres seront ignorées.',
-  txtDeclineConfirmations: 'Refuser les confirmations',
-  txtActionDeclineConfrimQuestion: 'Voulez-vous vraiment refuser la {0} {1} sélectionnée ? Cette action peut uniquement être effectuée sur les nouvelles confirmations. Toutes les autres seront ignorées.',
-  txtActionRemoveConfirmations: 'Supprimer les confirmations',
-  txtActionRemoveConfirmationsQuestion: 'Voulez-vous vraiment supprimer les {1} sélectionnées ({0}) ? Cette action peut uniquement être effectuée sur les confirmations de type Organisateur, Refusé ou Supprimé. Toutes les autres seront ignorées.',
-  txtLiteratureRequest: 'Demande de documentation',
-  txtLiteratureRequests: 'Demandes de documentation',
-  txtActionDeleteLiteratureRequests: 'Supprimer les demandes de documentation',
-  txtActionDeleteLiteratureRequestsQuestion: 'Seules les demandes de documentation que vous avez autorisation de supprimer seront supprimées. <P> Voulez-vous vraiment supprimer la {0} {1} sélectionnée ?' }
-));
-},
-'Sage/Services/nls/fr-lu/ActivityService':function(){
-define('Sage/Services/nls/fr-lu/ActivityService',{});
-},
-'Sage/UI/Controls/nls/fr/CopyToClipboard':function(){
-define("Sage/UI/Controls/nls/fr/CopyToClipboard", (
-{ closeText: 'Fermer',
-  dialogTitle: 'Copier le lien vers le Presse-papiers',
-  helpText: 'Sélectionnez le texte souhaité et appuyez sur Ctrl+C (Commande+C sur Mac) pour copier vers votre presse-papiers.',
-  textTab: 'Texte',
-  sourceTab: 'Source' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/CopyToClipboard':function(){
-define('Sage/UI/Controls/nls/fr-lu/CopyToClipboard',{});
-},
-'Sage/Utility/nls/fr/Activity':function(){
-define("Sage/Utility/nls/fr/Activity", (
-{ ToDo: 'Tâche à faire',
-  PhoneCall: 'Appel',
-  Meeting: 'Rendez-vous',
-  Personal: 'Activité personnelle',
-  Literature: 'Documentation',
-  Fax: 'Fax',
-  Letter: 'Lettre',
-  Note: 'Note',
-  Email: 'Envoyer par e-mail',
-  Document: 'Document',
-  DatabaseChange: 'Modification de la base de données',
-  Event: 'Evénement',
-  ScheduledEvent: 'Evénement planifié',
-  Contact: 'Contact',
-  Lead: 'Lead',
-  New: 'Nouveau',
-  Change: 'Modifier',
-  Deleted: 'Supprimé',
-  Confirm: 'Confirmer',
-  Decline: 'Refuser',
-  Unknown: 'Inconnu',
-  Leader: 'Responsable',
-  Complete: 'Terminer',
-  confirmTypeChanged: 'Modifié',
-  confirmTypeConfirmed: 'Confirmé',
-  confirmTypeDeleted: 'Supprimé' }
-));
-},
-'Sage/Utility/nls/fr-lu/Activity':function(){
-define('Sage/Utility/nls/fr-lu/Activity',{});
-},
-'Sage/QuickForms/Design/nls/fr/DesignPanel':function(){
-define("Sage/QuickForms/Design/nls/fr/DesignPanel", (
-{ cultureListText: 
-   { iv: '[Invariable]',
-     de_DE: 'de-DE',
-     fr_FR: 'fr-FR',
-     it_IT: 'it-IT',
-     ru_RU: 'ru-RU' },
-  helpText: 'Aide',
-  saveText: 'Enregistrer',
-  cultureText: 'Culture :',
-  loadingText: 'Chargement ...',
-  savingText: 'Enregistrement...',
-  saveErrorText: 'Une erreur est produite lors de enregistrement du formulaire.',
-  readErrorText: 'Impossible de charger le formulaire demandé.',
-  cultureReloadConfirmText: 'Des modifications ont pas été enregistrées. Souhaitez-vous vraiment recharger le formulaire avec une culture différente ?' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/DesignPanel':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/DesignPanel',{});
-},
-'Sage/UI/nls/fr/TimelessActivitiesPane':function(){
-define("Sage/UI/nls/fr/TimelessActivitiesPane", (
-{ header_complete: 'Terminer',
-  header_type: 'Type',
-  header_contact: 'Nom',
-  header_regarding: 'Objet',
-  tooltip_type: 'Type',
-  tooltip_contact: 'Contact',
-  tooltip_account: 'Compte',
-  tooltip_lead: 'Lead',
-  tooltip_phone: 'Téléphone',
-  tooltip_leader: 'Responsable',
-  tooltip_regarding: 'Objet',
-  tooltip_location: 'Emplacement',
-  tooltip_notes: 'Notes',
-  tooltip_company: 'Société' }
-));
-},
-'Sage/UI/nls/fr-lu/TimelessActivitiesPane':function(){
-define('Sage/UI/nls/fr-lu/TimelessActivitiesPane',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/ActivityEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/ActivityEditor", (
-{ labelWidth: '120',
-  tabNameGeneralText: 'Général',
-  tabNameAvailabilityText: 'Disponibilité',
-  tabNameAssociationsText: 'Associations',
-  tabNameRecurringText: 'Périodicité',
-  tabNameAttachmentsText: 'Pièces jointes',
-  tabNameNotesText: 'Notes',
-  scheduleText: 'Planification',
-  startTimeText: 'Heure de début',
-  timeLessText: 'Heure indéfinie',
-  alarmText: 'Alarme',
-  durationText: 'Durée',
-  rolloverText: 'Reporter automatiquement au jour suivant',
-  contactText: 'Contact',
-  accountText: 'Compte',
-  leadText: 'Lead',
-  opportunityText: 'Opportunité',
-  ticketText: 'Ticket',
-  companyText: 'Société',
-  regardingText: 'Objet',
-  notesText: 'Notes',
-  priorityText: 'Priorité',
-  leaderText: 'Responsable',
-  categoryText: 'Catégorie',
-  locationText: 'Emplacement',
-  dialogHeaderFormatText: '${actionText} ${activityType} - ${description}',
-  scheduledByFormatText: 'Planifié par ${user} le ${date}',
-  completeScheduledByFormatText: 'Planifié par ${user} le ${date} initialement pour ${startDate}',
-  newConfirmationHeaderFormatText: 'Confirmer ${activityType} planifié par ${user}',
-  otherConfimationHeaderFormatText: '${activityType} ${actionText} par ${user}',
-  acceptedText: 'Accepté',
-  declinedText: 'Refusé',
-  scheduledText: 'Planifié',
-  updatedText: 'Mis à jour',
-  deletedText: 'Supprimé',
-  cancelText: 'Annuler',
-  okText: 'OK',
-  completeText: 'Terminer',
-  completeBtnText: 'Terminer...',
-  completedText: 'Terminé',
-  deleteText: 'Supprimer',
-  lookupActText: 'Rechercher un compte',
-  lookupContactText: 'Rechercher un contact',
-  lookupOpportunityText: 'Rechercher une opportunité',
-  lookupTicketText: 'Rechercher un ticket',
-  lookupLeadText: 'Recherche un lead',
-  lookupLeaderText: 'Rechercher le responsable',
-  lookupResourcesText: 'Ajouter des membres et des ressources',
-  addResourceText: 'Ajouter sélection',
-  mainPhoneText: 'Tél. principal',
-  typeText: 'Type',
-  subTypeText: 'Sous-Type',
-  nameText: 'Nom',
-  cityText: 'Ville',
-  stateText: 'Département',
-  workphoneText: 'Téléphone professionnel',
-  emailText: 'E-mail',
-  acctMgrText: 'Resp. du compte',
-  descriptionText: 'Description',
-  stageText: 'Phase',
-  statusText: 'Etat',
-  ownerText: 'Propriétaire',
-  ticketNumberText: 'Numéro de ticket',
-  phoneText: 'Téléphone',
-  urgencyText: 'Priorité',
-  areaText: 'Zone',
-  recurringText: 'Périodicité',
-  resultText: 'Résultat',
-  followupText: 'Suivi',
-  noneText: 'Aucun',
-  carryOverAttachmentsText: 'Reporter les pièces jointes',
-  carryOverNotesText: 'Reporter les notes',
-  asScheduledText: 'Telle que planifiée',
-  nowText: 'Maintenant',
-  responseText: 'Taux de retours',
-  acceptText: 'Accepter',
-  declineText: 'Refuser',
-  deleteConfText: 'Confirmation de la suppression',
-  closeText: 'Fermer',
-  leadFullNameText: 'Nom',
-  postalText: 'Code postal',
-  failedLoadingDataMsg: 'Une erreur est survenue lors du chargement des données.',
-  removeText: 'Retirer',
-  noText: 'Non',
-  yesText: 'Oui',
-  areYouSureText: 'Vous êtes sur le point de supprimer définitivement cet enregistrement.',
-  couldNotSaveErrorText: 'Impossible de sauvegarder activité car une erreur est produite.',
-  couldNotDeleteErrorText: 'Impossible de supprimer activité car une erreur est produite.',
-  couldNotCompleteErrorText: 'Impossible de terminer activité car une erreur est produite.',
-  scheduleFollowUpErrorText: "Impossible de planifier le suivi, car ID historique a pas pu être déterminé.",
-  tabNameParticipants: 'Participants' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/ActivityEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/ActivityEditor',{});
-},
-'Sage/TaskPane/User/nls/fr/ContactUserAssociationEditor':function(){
-define("Sage/TaskPane/User/nls/fr/ContactUserAssociationEditor", (
-{ btnCancel_Caption: 'Annuler',
-  btnOK_Caption: 'OK',
-  dialogTitleText: 'Associer utilisateur au contact',
-  associateContactText: 'Associer utilisateur sélectionné au contact suivant',
-  user_Caption: 'Contact',
-  lookupContactText: 'Rechercher un contact',
-  lookupFirstNameColText: 'Prénom',
-  lookupLastNameColText: 'Nom',
-  lookupTitleColText: 'Titre',
-  lookupAccountColText: 'Compte',
-  lookupWorkPhoneColText: 'Téléphone professionnel',
-  lookupEmailText: 'E-mail',
-  disAssociateTitle: 'Dissocier un contact',
-  associationExistsMessage: 'Le contact que vous avez sélectionné est déjà associé à un utilisateur. Choisissez un autre contact.' }
-));
-},
-'Sage/TaskPane/User/nls/fr-lu/ContactUserAssociationEditor':function(){
-define('Sage/TaskPane/User/nls/fr-lu/ContactUserAssociationEditor',{});
-},
-'Sage/MainView/nls/fr/ActivityManager':function(){
-define("Sage/MainView/nls/fr/ActivityManager", (
-{ titleFmtString: '${0}',
-  tabDisplayNameActivity: 'Activités',
-  tabDisplayNameLit: 'Documentation',
-  tabDisplayNameEvent: 'Evénements',
-  tabDisplayNameConfirm: 'Confirmations',
-  activityColNameComplete: 'Terminer',
-  activityColNameAttachment: 'Pièce jointe',
-  activityColNameRecurring: 'Périodicité',
-  activityColNameAlarm: 'Alarme',
-  activityColNameType: 'Type d\rquote activité',
-  activityColNameStartDate: 'Date de début',
-  activityColNameDuration: 'Durée',
-  activityColNameContact: 'Contact',
-  activityColNameLead: 'Lead',
-  activityColNameAccount: 'Compte',
-  activityColNameRegarding: 'Objet',
-  activityColNamePriority: 'Priorité',
-  activityColNameUserId: 'Responsable',
-  activityTypePhone: 'Téléphone',
-  activityTypeCall: 'Appel',
-  activityTypeMeeting: 'Rendez-vous',
-  activityTypePersonal: 'Personnel' }
-));
-},
-'Sage/MainView/nls/fr-lu/ActivityManager':function(){
-define('Sage/MainView/nls/fr-lu/ActivityManager',{});
-},
-'Sage/Services/nls/fr/JobService':function(){
-define("Sage/Services/nls/fr/JobService", (
-{ txtInvalidParameter: 'Paramètre non valide : ${0}.',
-  txtTriggerJobError: 'Une erreur est survenue lors du déclenchement de action ${0} : ${1} ${2}.',
-  txtScheduleJobError: 'Une erreur est survenue lors de la planification de action ${0} : ${1} ${2}.',
-  txtUnexpectedError: 'Une erreur est survenue : ${0} ${1}.' }
-));
-},
-'Sage/Services/nls/fr-lu/JobService':function(){
-define('Sage/Services/nls/fr-lu/JobService',{});
-},
-'Sage/QuickForms/Design/nls/fr/NumericControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/NumericControlDesigner", (
-{ displayNameText: 'Numérique' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/NumericControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/NumericControlDesigner',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/_PropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/_PropertyEditor", (
-{ titleText: 'Propriétés' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/_PropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/_PropertyEditor',{});
-},
-'Sage/Services/nls/fr/ActivityActionProcessor':function(){
-define("Sage/Services/nls/fr/ActivityActionProcessor", (
-{ btnOkayText: 'OK',
-  btnCancelText: 'Annuler',
-  btnCloseText: 'Fermer',
-  btnHelpText: 'Aide',
-  processingText: 'Traitement de la demande en cours, veuillez patienter...',
-  failureText: 'Désolé, cette action a échoué car une erreur est survenue.',
-  titleText: 'Processus' }
-));
-},
-'Sage/Services/nls/fr-lu/ActivityActionProcessor':function(){
-define('Sage/Services/nls/fr-lu/ActivityActionProcessor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/TextBoxBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/TextBoxBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  linesText: 'Lignes :',
-  linesTooltipText: 'Nombre de lignes de texte affichées.',
-  isReadOnlyText: 'Lecture seule :',
-  isReadOnlyTooltipText: 'Ne permet pas les modifications.',
-  toolTipText: 'Info-bulle :',
-  toolTipTooltipText: 'Court texte aide concernant le contrôle.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/TextBoxBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/TextBoxBasicPropertyEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/QuickCompleteEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/QuickCompleteEditor", (
-{ lblResultText: 'Résultat :',
-  lblNoteText: 'Note  (ajouter à tous les articles):',
-  btnCompleteIndividuallyText: 'Individuellement',
-  btnAsScheduledText: 'Telle que planifiée',
-  btnCompleteNowText: 'Maintenant',
-  btnCancelText: 'Annuler',
-  btnCloseText: 'Fermer',
-  btnHelpText: 'Aide',
-  resultCompletedText: 'Terminer',
-  titleText: 'Saisie rapide',
-  actionMessage: 'Seules les activités que vous êtes autorisé à compléter seront terminés.',
-  completeMessage: 'Remplissez tous les {0} activités choisies:',
-  processingMessage: 'Traitement de tous les {0} certaines activités s\'il vous plaît patienter ...'
-}
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/QuickCompleteEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/QuickCompleteEditor',{});
-},
-'Sage/Utility/File/nls/fr/DefaultDropHandler':function(){
-define("Sage/Utility/File/nls/fr/DefaultDropHandler", (
-{ emailDroppedText: 'E-mail déplacé',
-  attachmentTitleText: 'Enregistrer les pièces jointes',
-  attachmentQuestionText: 'Voulez-vous conserver une copie de ces pièces jointes dans SalesLogix ? <br>Les pièces jointes seront stockées sous onglet Pièces jointes pour les entités concernées.' }
-));
-},
-'Sage/Utility/File/nls/fr-lu/DefaultDropHandler':function(){
-define('Sage/Utility/File/nls/fr-lu/DefaultDropHandler',{});
-},
-'Sage/Utility/File/nls/fr/AttachmentPropertiesEditForm':function(){
-define("Sage/Utility/File/nls/fr/AttachmentPropertiesEditForm", (
-{ fileText: 'Fichier',
-  descriptionText: 'Description',
-  sizeText: 'Taille',
-  attachDateText: 'Pièce jointe le',
-  attachedByText: 'Joint par',
-  uploadFileText: 'Sélectionner un autre fichier...',
-  editText: 'Modifier la pièce jointe',
-  okText: 'OK',
-  cancelText: 'Annuler',
-  browseText: 'Parcourir',
-  urlText: 'Url',
-  requestFailedMsg: 'opération demandée a pas pu être exécutée, veuillez réessayer ultérieurement.' }
-));
-},
-'Sage/Utility/File/nls/fr-lu/AttachmentPropertiesEditForm':function(){
-define('Sage/Utility/File/nls/fr-lu/AttachmentPropertiesEditForm',{});
-},
-'Sage/UI/Alarms/nls/fr/AlarmPane':function(){
-define("Sage/UI/Alarms/nls/fr/AlarmPane", (
-{ dismissAllText: 'Tout annuler',
-  dismissText: 'Annuler',
-  fiveMinText: '5 minutes',
-  tenMinText: '10 minutes',
-  fifteenMinText: '15 minutes',
-  thirtyMinText: '30 minutes',
-  oneHourText: '1 heure',
-  twoHourText: '2 heures',
-  fourHourText: '4 heures',
-  eightHourText: '8 heures',
-  oneDayText: '1 jour',
-  twoDayText: '2 jours',
-  threeDayText: '3 jours',
-  oneWeekText: '1 semaine',
-  twoWeekText: '2 semaines',
-  snoozeText: 'Mise en veille',
-  snoozeByText: 'Mettre en veille par :',
-  snoozeAllText: 'Mettre tout en veille',
-  showCalendarText: 'Afficher l’agenda' }
-));
-},
-'Sage/UI/Alarms/nls/fr-lu/AlarmPane':function(){
-define('Sage/UI/Alarms/nls/fr-lu/AlarmPane',{});
-},
-'Sage/TaskPane/nls/fr/LiteratureManagementTasks':function(){
-define("Sage/TaskPane/nls/fr/LiteratureManagementTasks", (
-{ errFulFillmentCancelled: 'La réalisation de la demande de documentation a été annulée pour IdDemDoc {0}.',
-  errFulFillmentFailed: 'La demande de documentation n\'a pas pu être complétée pour IdDemDoc {0}.',
-  errMailMergeService: 'L\'étape de processus de vente n\'a pas pu être achevée car le service de publipostage n\'a pas pu être chargé. Cela peut se produire si l\'intégration de bureau Saleslogix n\'est pas installée ou est installée de manière incorrecte.',
-  errFulFillmentRequest: 'Les demandes de documentation n\'ont pas pu être complétées.',
-  errFulFillmentRequestEx: 'Les demandes de documentation suivantes n\'ont pas pu être complétées :',
-  fulFillmentSuccess: 'La demande de documentation a été réalisée avec succès.' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/LiteratureManagementTasks':function(){
-define('Sage/TaskPane/nls/fr-lu/LiteratureManagementTasks',{});
-},
-'Sage/UI/Dashboard/nls/fr/DashboardWidget':function(){
-define("Sage/UI/Dashboard/nls/fr/DashboardWidget", (
-{ noQueryDataText: 'Le serveur a aucune donnée relative à la requête',
-  initializingText: 'Initialisation' }
-));
-},
-'Sage/UI/Dashboard/nls/fr-lu/DashboardWidget':function(){
-define('Sage/UI/Dashboard/nls/fr-lu/DashboardWidget',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/NumericAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/NumericAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlLabelPlacementText: 'Placement des étiquettes :',
-  controlLabelPlacementTooltipText: 'Position des étiquettes par rapport au contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  decimalDigitsText: 'Décimales :',
-  decimalDigitsTooltipText: 'Le nombre de chiffres après la virgule à afficher et à autoriser pour la saisie des données.',
-  defaultDataBindingText: 'Associations de données :',
-  defaultDataBindingTooltipText: 'Champ(s) de données dans la base de données utilisée par ce contrôle.',
-  enabledText: 'Activé :',
-  enabledTooltipText: 'Permet à utilisateur interagir avec ce contrôle.',
-  formatTypeText: 'Type de format :',
-  formatTypeTooltipText: 'Type de format à utiliser lors de la conversion un nombre en chaîne.',
-  maxLengthText: 'Longueur maxi :',
-  maxLengthTooltipText: 'Nombre maximal de caractères que utilisateur peut saisir.',
-  requiredText: 'Obligatoire :',
-  requiredTooltipText: 'Requiert une valeur lors de enregistrement des données.',
-  strictText: 'Strict :',
-  strictTooltipText: 'Affichage un nombre avec des zéros de fin si nécessaire.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.',
-  numberFormatText: 
-   { Number: 'Nombre',
-     Percent: 'Pourcentage',
-     Decimal: 'Décimal',
-     Scientific: 'Scientifique' },
-  labelPlacementText: { left: 'Gauche', right: 'Droite', top: 'Haut', none: 'Aucun' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/NumericAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/NumericAdvancedPropertyEditor',{});
-},
-'Sage/MainView/IntegrationContract/nls/fr/CustomerPaymentsRTDV':function(){
-define("Sage/MainView/IntegrationContract/nls/fr/CustomerPaymentsRTDV", (
-{ dialogCaption: 'Détails du paiement',
-  loadingText: 'Chargement ...',
-  lblReferenceCaption: 'Numéro de reçu :',
-  lblDateCaption: 'Date du paiement :',
-  lblProcessDateCaption: 'Date de traitement :',
-  lblNameCaption: 'Nom :',
-  lblTypeCaption: 'Type :',
-  lblStatusCaption: 'Etat :',
-  lblCurrencyCaption: 'Devise :',
-  lblTenderTypeCaption: 'Type de appel offre :',
-  lblTenderReferenceCaption: 'Référence de appel offre :',
-  lblNetTotalCaption: 'Total net :',
-  lblDiscountsCaption: 'Remises :',
-  lblChargesCaption: 'Frais :',
-  lblTaxesCaption: 'Taxes :',
-  lblGrossTotalCaption: 'Montant du paiement :',
-  lblSourceCaption: 'Source :',
-  lblTaxCodeCaption: 'Code de la taxe :',
-  grdPayments_Reference: 'Numéro de reçu',
-  grdPayments_Date: 'Date du paiement',
-  grdPayments_Type: 'Type',
-  grdPayments_Status: 'Etat',
-  grdPayments_GrossTotal: 'Montant du paiement',
-  grdPayments_Currency: 'Devise',
-  btnCloseCaption: 'Fermer' }
-));
-},
-'Sage/MainView/IntegrationContract/nls/fr-lu/CustomerPaymentsRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/fr-lu/CustomerPaymentsRTDV',{});
-},
-'Sage/UI/Filters/nls/fr/FilterPanel':function(){
-define("Sage/UI/Filters/nls/fr/FilterPanel", (
-{ editText: 'Modifier les filtres',
-  noneText: 'Aucun filtre sélectionné',
-  clearText: 'Effacer tout' }
-));
-},
-'Sage/UI/Filters/nls/fr-lu/FilterPanel':function(){
-define('Sage/UI/Filters/nls/fr-lu/FilterPanel',{});
-},
-'Sage/TaskPane/nls/fr/_BaseTaskPaneTasklet':function(){
-define("Sage/TaskPane/nls/fr/_BaseTaskPaneTasklet", (
-{ selectRecordsTitle: 'Sélection non valide',
-  selectRecords: 'Veuillez sélectionner un enregistrement avant de continuer.',
-  selectSingleRecord: 'Veuillez sélectionner un enregistrement avant de continuer.',
-  noRecordsSelectedProcessAll: 'Aucun enregistrement sélectionné. Le groupe entier, ${0}  enregistrements, sera supprimé. Continuer ?',
-  invalidSelectionTitle: 'Sélection non valide',
-  errorSelectionInfo: 'Une erreur est produite lors de la récupération informations concernant les enregistrements sélectionnés.',
-  errorNoData: 'Aucune donnée est disponible',
-  yesButtonText: 'Oui',
-  noButtonText: 'Non',
-  salesLogixPageTitle: 'SalesLogix',
-  okButtonText: 'OK',
-  cancelButtonText: 'Annuler' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/_BaseTaskPaneTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/_BaseTaskPaneTasklet',{});
-},
-'Sage/MainView/ReportMgr/nls/fr/ReportManagerFormatter':function(){
-define("Sage/MainView/ReportMgr/nls/fr/ReportManagerFormatter", (
-{ txtTrue: 'Vrai', txtFalse: 'Faux' }
-));
-},
-'Sage/MainView/ReportMgr/nls/fr-lu/ReportManagerFormatter':function(){
-define('Sage/MainView/ReportMgr/nls/fr-lu/ReportManagerFormatter',{});
-},
-'Sage/UI/nls/fr/OwnerType':function(){
-define("Sage/UI/nls/fr/OwnerType", (
-{ teamText: 'Equipe',
-  departmentText: 'Service',
-  systemText: 'Système',
-  userText: 'Utilisateur' }
-));
-},
-'Sage/UI/nls/fr-lu/OwnerType':function(){
-define('Sage/UI/nls/fr-lu/OwnerType',{});
-},
-'Sage/TaskPane/nls/fr/LeadTasksTasklet':function(){
-define("Sage/TaskPane/nls/fr/LeadTasksTasklet", (
-{ updateLeadsTitle: 'Mettre à jour le lead',
-  deleteLeadsTitle: 'Supprimer les leads',
-  deleteJobError: 'Désolé, une erreur est produite au cours de la tâche de suppression de lead : ${0}',
-  confirmDeleteLeads: 'Voulez-vous vraiment supprimer les enregistrements sélectionnés ?' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/LeadTasksTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/LeadTasksTasklet',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/SnoozeOptions':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/SnoozeOptions", (
-{ fiveMinText: '5 minutes',
-  tenMinText: '10 minutes',
-  fifteenMinText: '15 minutes',
-  thirtyMinText: '30 minutes',
-  oneHourText: '1 heure',
-  twoHourText: '2 heures',
-  fourHourText: '4 heures',
-  eightHourText: '8 heures',
-  oneDayText: '1 jour',
-  twoDayText: '2 jours',
-  threeDayText: '3 jours',
-  oneWeekText: '1 semaine',
-  twoWeekText: '2 semaines',
-  snoozeText: 'Mise en veille',
-  snoozeByText: 'Mettre en veille par :',
-  snoozeAllText: 'Mettre tout en veille',
-  snoozeTitle: 'Alarmes de mise en veille' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/SnoozeOptions':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/SnoozeOptions',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/OwnerAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/OwnerAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlLabelPlacementText: 'Placement des étiquettes :',
-  controlLabelPlacementTooltipText: 'Position des étiquettes par rapport au contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  defaultDataBindingText: 'Associations de données :',
-  defaultDataBindingTooltipText: 'Champ(s) de données dans la base de données utilisée par ce contrôle.',
-  enabledText: 'Activé :',
-  enabledTooltipText: 'Permet à utilisateur interagir avec ce contrôle.',
-  requiredText: 'Obligatoire :',
-  requiredTooltipText: 'Requiert une valeur lors de enregistrement des données.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.',
-  labelPlacementText: { left: 'Gauche', right: 'Droite', top: 'Haut', none: 'Aucun' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/OwnerAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/OwnerAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/NonVisibleAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/NonVisibleAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  controlInfoText: 'Info contrôle',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/NonVisibleAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/NonVisibleAdvancedPropertyEditor',{});
-},
-'Sage/MainView/IntegrationContract/nls/fr/InvoiceRTDV':function(){
-define("Sage/MainView/IntegrationContract/nls/fr/InvoiceRTDV", (
-{ dialogCaption: 'Détails de la facture',
-  loadingText: 'Chargement ...',
-  lblInvoiceCaption: 'Facture :',
-  lblNetTotalCaption: 'Montant de la facture :',
-  lblInvoiceDateCaption: 'Date de la facture :',
-  lblInvoiceDiscountAmountCaption: 'Remise :',
-  lblDueDateCaption: 'Date échéance :',
-  lblInvoiceDiscountPercentCaption: 'Pourcentage de remise :',
-  lblCustomerPOCaption: 'Commande client :',
-  lblCarrierTotalPriceCaption: 'Expédition :',
-  lblSettlementDiscountPercentCaption: 'Pourcentage de remise accordée :',
-  lblTaxCaption: 'Taxe :',
-  lblSettlementDiscountTermsCaption: 'Conditions de paiement :',
-  lblNotesCaption: 'Commentaires :',
-  lblOperatingCompanyCurrencyCaption: 'Devise de la société exploitation :',
-  lblCostTotalCaption: 'Coût total :',
-  lblOperatingCompanyCurrencyExchangeRateDateCaption: 'Date du taux de change :',
-  lblProfitTotalCaption: 'Total des bénéfices :',
-  lblOperatingCompanyCurrencyExchangeRateCaption: 'Taux de change :',
-  lblPriceListCaption: 'Liste de prix :',
-  lblOCCurrencyCaption: 'Devise de la société exploitation :',
-  lblCurrencyCaption: 'Devise :',
-  lblSalesPersonCaption: 'Représentant commercial :',
-  detailsTabTitle: 'Détails',
-  addressTabTitle: 'Adresses',
-  invoiceLinesTabTitle: 'Lignes de la facture',
-  paymentsTabTitle: 'Paiements',
-  deliveriesTabTitle: 'Livraisons',
-  grdInvoice_Name: 'Facture N°',
-  grdInvoice_Date: 'Date de la facture',
-  grdInvoice_Amount: 'Montant de la facture',
-  grdInvoice_PO: 'Commande client',
-  grdInvoice_PaymentTerms: 'Conditions de paiement',
-  grdInvoice_NetTotal: 'Total net',
-  grdInvoice_Tax: 'TVA',
-  grdAddress_Name: 'Description',
-  grdAddress_address1: 'Adresse 1',
-  grdAddress_address2: 'Adresse 2',
-  grdAddress_City: 'Ville',
-  grdAddress_State: 'Département',
-  grdAddress_Zip: 'Code postal',
-  grdItems_ActualPrice: 'Prix réel',
-  grdItems_ChargesTotal: 'Total des frais',
-  grdItems_Commodity: 'Marchandise',
-  grdItems_CommodityDimension: 'Dimension',
-  grdItems_CommodityVariant: 'Variable',
-  grdItems_DiscountTotal: 'Total de la remise',
-  grdItems_GrossTotal: 'Total brut',
-  grdItems_InitialPrice: 'Prix origine',
-  grdItems_Line: 'Numéro de la ligne',
-  grdItems_NetTotal: 'Total net',
-  grdItems_Quantity: 'Quantité',
-  grdItems_Status: 'Etat',
-  grdItems_TaxTotal: 'Montant de la taxe',
-  grdItems_Type: 'Type de la ligne',
-  grdItems_UnitOfMeasure: 'Unité',
-  grdPayments_Charges: 'Frais',
-  grdPayments_Currency: 'Devise',
-  grdPayments_Date: 'Date',
-  grdPayments_Discounts: 'Remises',
-  grdPayments_GrossTotal: 'Total brut',
-  grdPayments_Name: 'Nom',
-  grdPayments_NetTotal: 'Total net',
-  grdPayments_ProcessDate: 'Date de traitement',
-  grdPayments_Status: 'Etat',
-  grdPayments_Tax: 'Taxes',
-  grdPayments_TenderReference: 'Référence de appel offre',
-  grdPayments_TenderType: 'Type de appel offre',
-  grdPayments_Type: 'Type',
-  grdDeliveries_ActualDate: 'Date réelle',
-  grdDeliveries_ActualTime: 'Heure réelle',
-  grdDeliveries_Carrier: 'Transporteur',
-  grdDeliveries_CarrierReference: 'Référence du transporteur',
-  grdDeliveries_DeliveredQuantity: 'Quantité livrée',
-  grdDeliveries_ExceptionReason: 'Motif de exception',
-  grdDeliveries_Method: 'Méthode',
-  grdDeliveries_Number: 'Nombre',
-  grdDeliveries_RequestedDate: 'Date de la demande',
-  grdDeliveries_RequestedQuantity: 'Quantité demandée',
-  grdDeliveries_Status: 'Etat',
-  grdDeliveries_Type: 'Type',
-  btnCloseCaption: 'Fermer' }
-));
-},
-'Sage/MainView/IntegrationContract/nls/fr-lu/InvoiceRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/fr-lu/InvoiceRTDV',{});
-},
-'Sage/UI/nls/fr/SDataLookup':function(){
-define("Sage/UI/nls/fr/SDataLookup", (
-{ closeText: 'Fermer',
-  cancelText: 'Annuler',
-  loadingText: 'Chargement ...',
-  noDataText: 'Aucun enregistrement a été retourné' }
-));
-},
-'Sage/UI/nls/fr-lu/SDataLookup':function(){
-define('Sage/UI/nls/fr-lu/SDataLookup',{});
-},
-'Sage/QuickForms/Design/nls/fr/RowDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/RowDesigner", (
-{ displayNameText: 'Ligne' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/RowDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/RowDesigner',{});
-},
-'Sage/TaskPane/nls/fr/OpportunityTasksTasklet':function(){
-define("Sage/TaskPane/nls/fr/OpportunityTasksTasklet", (
-{ updateOpportunitiesTitle: 'Mettre à jour les opportunités',
-  opportunityStatisticsTitle: 'Statistiques de opportunité' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/OpportunityTasksTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/OpportunityTasksTasklet',{});
-},
-'Sage/UI/Filters/nls/fr/CheckBoxFilter':function(){
-define("Sage/UI/Filters/nls/fr/CheckBoxFilter", (
-{ loadingText: 'Chargement ...',
-  moreText: 'Modifier les éléments',
-  clearText: 'Effacer',
-  emptyText: '(Vide)',
-  nullText: '(Nul)',
-  ofText: '/' }
-));
-},
-'Sage/UI/Filters/nls/fr-lu/CheckBoxFilter':function(){
-define('Sage/UI/Filters/nls/fr-lu/CheckBoxFilter',{});
-},
-'Sage/Utility/File/nls/fr/LibraryDocument':function(){
-define("Sage/Utility/File/nls/fr/LibraryDocument", (
-{ failureNumber: 'Echec #${0} : ',
-  percentComplete: 'En cours de chargement, veuillez patienter...',
-  uploadError: 'Une erreur est produite lors de la tentative de téléchargement un ou plusieurs fichiers (non téléchargés : ${0}; téléchargés : ${1}).',
-  invalidContext: 'Le(s) fichier(s) ne peu(ven)t pas être téléchargé(s) à extérieur de la bibliothèque de ventes.',
-  unknownError: 'Une erreur inconnue est produite pendant le téléchargement un fichier.' }
-));
-},
-'Sage/Utility/File/nls/fr-lu/LibraryDocument':function(){
-define('Sage/Utility/File/nls/fr-lu/LibraryDocument',{});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr/SpeedSearchLookup':function(){
-define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr/SpeedSearchLookup", (
-{ dialogTitle: 'Participants à la recherche',
-  okText: 'Ajouter sélection',
-  cancelText: 'Fermer',
-  noDataText: 'Aucun enregistrement ne correspond aux critères de sélection' ,
-  srchBtnCaption: 'Rechercher',
-  colName: 'Nom',
-  colType: 'Type',
-  colAccount: 'Compte/Société',
-  colTitle: 'Titre',
-  colEmail: 'E-mail',
-  colWorkPhone: 'Téléphone professionel'
-}
-));
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr-lu/SpeedSearchLookup':function(){
-define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr-lu/SpeedSearchLookup',{});
-},
-'Sage/UI/nls/fr/ConditionManager':function(){
-define("Sage/UI/nls/fr/ConditionManager", (
-{ addimgalttext: 'Ajouter une condition',
-  hideimgalttext: 'Supprimer la condition',
-  addrowlabel: 'Rechercher par :',
-  hiderowlabel: 'Et :',
-  srchBtnCaption: 'Rechercher',
-  errorOperatorRequiresValue: 'L’opérateur requiert une valeur',
-  startingWith: 'commençant par',
-  endsWith: 'Finit par',
-  contains: 'contient',
-  equalTo: 'égal à',
-  notEqualTo: 'non égal à',
-  equalOrLessThan: 'Inférieur ou égal à',
-  equalOrGreaterThan: 'Supérieur ou égal à',
-  lessThan: 'Inférieur à',
-  greaterThan: 'Supérieur à' }
-));
-},
-'Sage/UI/nls/fr-lu/ConditionManager':function(){
-define('Sage/UI/nls/fr-lu/ConditionManager',{});
-},
-'Sage/UI/Dashboard/nls/fr/WidgetDefinition':function(){
-define("Sage/UI/Dashboard/nls/fr/WidgetDefinition", (
-{ defaultWidgetText: 'Modifier les paramètres du build',
-  settingsText: 'Paramètres',
-  viewGroupText: 'Afficher le groupe',
-  Bar_Chart: 'Graphiques à barres',
-  Column_Chart: 'Histogramme',
-  Group_List: 'Liste de groupe',
-  Pie_Chart: 'Graphique en secteurs',
-  Funnel_Chart: 'Graphique en entonnoir',
-  Line_Chart: 'Graphique en courbes',
-  SData_Feed: 'Flux SData',
-  Web_Feed: 'Flux Web',
-  Website: 'Site Web',
-  Default: 'Par défaut',
-  Links: 'Lien',
-  Recently_Viewed: 'Affiché récemment',
-  Todays_Activities: 'Activités du jour',
-  Today_s_Activities: 'Activités du jour',
-  Welcome: 'Bienvenue',
-  Closing_Opportunities: 'Opportunités en cours de fermeture',
-  Quick_Actions: 'Actions rapides',
-  Do_You_Know___: 'Savez-vous...',
-  All_Leads: 'Tous les leads',
-  My_Notes: 'Mes remarques',
-  Open_Opportunities: 'Opportunités ouvertes',
-  My_Top_Opportunities: 'Mes meilleures opportunités',
-  My_Pipeline: 'Mon pipeline',
-  Recent_Lead_Creation_History: 'Historique récent de création de leads',
-  My_Activity_trend: 'Les tendances de mon activité',
-  My_Completed_Activities_by_Type: 'Mes activités terminées par type',
-  Active_Campaigns: 'Campagnes actives',
-  All_Open_Opportunities: 'Toutes les opportunités ouvertes',
-  Top_Opportunities: 'Meilleures opportunités',
-  Open_Defect_Distribution: 'Distribution de défaut ouvert',
-  My_Dashboard: 'Mon tableau de bord',
-  Sales: 'Ventes',
-  Group_List_Description: 'Affiche une liste d’enregistrements de groupe par entité. Par exemple, un groupe de campagnes actives.',
-  Welcome_Description: 'Affiche une introduction à Saleslogix avec un lien vers la rubrique d’aide Introduction à Saleslogix for Web.',
-  Line_Chart_Description: 'Affiche des données sous la forme d’une série de points de données reliés par une courbe. Ceci est utile lorsque les données représentent plusieurs groupes ou plusieurs catégories.',
-  Bar_Chart_Description: 'Affiche des données sous la forme de groupe de barres horizontales. Ceci est utile pour comparer plusieurs ensembles de données.',
-  Column_Chart_Description: 'Affiche des données sous la forme d\'ensemble de barres verticales regroupées par catégorie. Ceci est utile pour afficher les modifications qui ont affecté les données pendant une période de temps donnée ou pour illustrer les comparaisons entre des éléments.',
-  Funnel_Chart_Description: 'Affiche les données en tant que proportions progressives sous la forme d’un entonnoir. Les données sont représentées en pourcentages et il n’y a pas d\'axe.',
-  Pie_Chart_Description: 'Affiche les données en tant que proportions d’un tout. Chaque valeur est calculée comme pourcentage du total. Ce graphique ne comporte pas d’axe.',
-  Recently_Viewed_Description: 'Affiche les liens vers les enregistrements récemment consultés, dont le type de fichier est indentifié par une icône. Par exemple,  un compte ou un contact.',
-  Todays_Activities_Description: 'Affiche les liens vers les activités du jour.',
-  Links_Description: 'Affiche les liens que vous avez créés. Par exemple, des liens vers une vue Détails dans Saleslogix ou vers un site Web externe.',
-  SData_Feed_Description: 'Affiche un flux Web dans les flux SData (Saleslogix Data). Par exemple, un flux de votre base de données Saleslogix ou de l\'intégration de comptabilité.',
-  Web_Feed_Description: 'Affiche des informations sur les flux RSS ou Atom.',
-  Website_Description: 'Affiche le site Web de votre choix.' }
-));
-},
-'Sage/UI/Dashboard/nls/fr-lu/WidgetDefinition':function(){
-define('Sage/UI/Dashboard/nls/fr-lu/WidgetDefinition',{});
-},
-'Sage/UI/nls/fr/SearchConditionWidget':function(){
-define("Sage/UI/nls/fr/SearchConditionWidget", (
-{ trueText: 'Vrai',
-  falseText: 'Faux',
-  networkText: 'Réseau',
-  remoteText: 'Distant',
-  webText: 'Web',
-  webViewerText: 'Visualiseur Web',
-  concurrentText: 'Simultané',
-  retiredText: 'Désactivé',
-  templateText: 'Modèle',
-  addonText: 'Add-on',
-  adminText: 'Admin',
-  userText: 'Utilisateur',
-  teamText: 'Equipe',
-  departmentText: 'Service',
-  systemText: 'Système' }
-));
-},
-'Sage/UI/nls/fr-lu/SearchConditionWidget':function(){
-define('Sage/UI/nls/fr-lu/SearchConditionWidget',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/GenericBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/GenericBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/GenericBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/GenericBasicPropertyEditor',{});
-},
-'Sage/MainView/JobMgr/nls/fr/JobManagerActions':function(){
-define("Sage/MainView/JobMgr/nls/fr/JobManagerActions", (
-{ txtInterruptExecutionMessage: 'Un signal a été envoyé à action afin en interrompre exécution.',
-  txtInterruptExecutionTitle: 'Annuler action',
-  txtInterruptExecutionConfirmationMessage: 'Voulez-vous vraiment annuler exécution de action ${0} ?',
-  txtYes: 'Oui',
-  txtNo: 'Non',
-  completedJobMessage: 'La tâche sélectionnée a déjà été exécutée.',
-  jobStatusComplete: 'Terminer',
-  error_NoRecordSelected: 'Vous devez sélectionner une fiche pour pouvoir continuer.',
-  confirm_ScheduleDeletion: 'Voulez-vous vraiment supprimer le planning sélectionné ?' }
-));
-},
-'Sage/MainView/JobMgr/nls/fr-lu/JobManagerActions':function(){
-define('Sage/MainView/JobMgr/nls/fr-lu/JobManagerActions',{});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr/ContactLookupConfig':function(){
-define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr/ContactLookupConfig", (
-{ contactText: 'Contact',
-  accountText: 'Compte',
-  lookupContactText: 'Rechercher un contact',
-  nameText: 'Nom',
-  cityText: 'Ville',
-  stateText: 'Département',
-  workphoneText: 'Téléphone professionnel',
-  emailText: 'E-mail',
-  dialogButtonText: 'Ajouter sélection',
-  cancelText: 'Fermer',
-  colFirstName: 'Prénom',
-  colLastName: 'Nom',
-  colTitle: 'Titre',
-  colAccount: 'Compte',
-  colWorkPhone: 'Téléphone professionnel',
-  colEmail: 'E-mail',
-  dialogTitleText: 'Recherche de leads'
-}
-));
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr-lu/ContactLookupConfig':function(){
-define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr-lu/ContactLookupConfig',{});
-},
-'Sage/QuickForms/Design/nls/fr/DataSourcePanel':function(){
-define("Sage/QuickForms/Design/nls/fr/DataSourcePanel", (
-{ loadingText: 'Chargement ...' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/DataSourcePanel':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/DataSourcePanel',{});
-},
-'Sage/Library/nls/fr/Manager':function(){
-define("Sage/Library/nls/fr/Manager", (
-{ AddFiles: 'Ajouter des fichiers',
-  AddFolder: 'Ajouter un dossier',
-  Confirm: 'Confirmer',
-  ConfirmDownload: "Le fichier a pas été téléchargé. Voulez-vous le télécharger lors de la prochaine synchronisation ?",
-  ConfirmDownloadReorder: "Le fichier a pas été téléchargé mais a déjà été commandé. Voulez-vous le recommander pour le télécharger lors de la prochaine synchronisation ?",
-  Created: 'Créé',
-  DeleteFolder: 'Supprimer le dossier',
-  DeleteSelectedFile: 'Supprimer le fichier sélectionné',
-  Description: 'Description',
-  DirectoryInformationError: 'Une erreur inattendue est survenue pendant la tentative de récupération des informations sur le répertoire.',
-  DocumentInformationError: 'Une erreur inattendue est survenue pendant la tentative de récupération des informations sur le document.',
-  EditFolder: 'Modifier le nom du dossier',
-  Expires: 'Expire le',
-  File: 'Fichier',
-  FileProperties: 'Propriétés du fichier',
-  Help: 'Aide',
-  InvalidRoot: 'Répertoire racine non valide : "${0}" (${1}).',
-  Library: 'Bibliothèque',
-  LibraryDataError: 'Une erreur inattendue est survenue pendant le traitement des données de répertoire de bibliothèque.',
-  Never: 'Jamais',
-  No: 'Non',
-  Revised: 'Révisé',
-  Size: 'Taille',
-  Yes: 'Oui' }
-));
-},
-'Sage/Library/nls/fr-lu/Manager':function(){
-define('Sage/Library/nls/fr-lu/Manager',{});
-},
-'Sage/UI/nls/fr/GroupsTitlePaneConfigProvider':function(){
-define("Sage/UI/nls/fr/GroupsTitlePaneConfigProvider", (
-{ groupText: 'Groupes',
-  addGroupButtonTooltip: 'Ajouter un groupe',
-  groupButtonTooltip: 'Gérer les groupes',
-  lookupText: 'Recherche',
-  lookupResultsText: 'Résultats de la recherche',
-  groupColumnText: 'Groupe',
-  visibleColumnText: 'Visible' }
-));
-},
-'Sage/UI/nls/fr-lu/GroupsTitlePaneConfigProvider':function(){
-define('Sage/UI/nls/fr-lu/GroupsTitlePaneConfigProvider',{});
-},
-'Sage/QuickForms/Design/nls/fr/NonVisibleControlContainer':function(){
-define("Sage/QuickForms/Design/nls/fr/NonVisibleControlContainer", (
-{ headerText: 'Contrôles non visuels' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/NonVisibleControlContainer':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/NonVisibleControlContainer',{});
-},
-'Sage/UI/Controls/nls/fr/Name':function(){
-define("Sage/UI/Controls/nls/fr/Name", (
-{ okText: 'OK',
-  cancelText: 'Annuler',
-  dialogTitle: 'Modifier le nom',
-  prefixText: 'Préfixe :',
-  nameFirstText: 'Prénom :',
-  nameMiddleText: '2e prénom :',
-  nameLastText: 'Nom :',
-  suffixText: 'Suffixe :',
-  buttonTooltip: 'Modifier' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/Name':function(){
-define('Sage/UI/Controls/nls/fr-lu/Name',{});
-},
-'Sage/MainView/JobMgr/nls/fr/ExecutionsListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/fr/ExecutionsListPanelConfig", {
-    loadingText: 'Chargement ...',
-    colNameJobName: 'Type',
-    colNameUser: 'Utilisateur',
-    colNamePhase: 'Phase',
-    colNamePhaseDetail: 'Détails de la phase',
-    colNameProgress: 'Progression',
-    colNameElapsed: 'Temps écoulé',
-    colNameStatus: 'Etat',
-    colNameResult: 'Résultat de exécution'
+define('Sage/nls/Sage_fr-lu',{
+'Sage/UI/nls/Dialogs':{"yesText":"Oui","noText":"Non","okText":"OK","cancelText":"Annuler","_localized":{}}
+,
+'Sage/Utility/nls/ErrorHandler':{"EmailContentL1":"Administrator","EmailContentL2":"${0} encountered an error at ${1}","EmailContentL3":"Please click the link below to view the Event Viewer error log for this error","HttpError":"There was an unknown error in response to a HTTP request.","_localized":{}}
+,
+'Sage/Utility/nls/Utility':{"dangerousValueWarn":"Une valeur de formulaire potentiellement dangereuse a été détectée. Veuillez éviter les combinaisons de caractères incorrectes. Exemple : \"&lt;script&gt;&lt;/script&gt;\" Évitez également d'utiliser des caractères non autorisés dans les noms de fichiers : \\ / : * ? \" &lt; &gt; | ","_localized":{}}
+,
+'Sage/Utility/nls/Activity':{"ToDo":"Tâche à faire","PhoneCall":"Appel téléphonique","Meeting":"Rendez-vous","Personal":"Activité personnelle","Literature":"Documentation","Fax":"Fax","Letter":"Lettre","Note":"Note","Email":"E-mail","Document":"Document","DatabaseChange":"Modification de la base de données","Event":"Evénement","ScheduledEvent":"Evénement planifié","Contact":"Contact","Lead":"Lead","New":"Nouveau","hr":"hr","h":"h","m":"m","Change":"Modifier","Deleted":"Supprimé","Confirm":"Confirmer","Decline":"Refuser","Unknown":"Inconnu","Leader":"Responsable","Complete":"Terminer","confirmTypeChanged":"Modifié","confirmTypeConfirmed":"Confirmé","confirmTypeDeleted":"Supprimé","timelessText":"Heure indéfinie","_localized":{}}
+,
+'Sage/UI/Controls/nls/_DialogHelpIconMixin':{"helpTooltip":"Aide","_localized":{}}
+,
+'Sage/UI/Controls/nls/PickList':{"okText":"OK","missingPickListText":"La PickList est introuvable","_localized":{}}
+,
+'Sage/UI/nls/SearchConditionWidget':{"trueText":"Vrai","falseText":"Faux","networkText":"Réseau","remoteText":"Distant","webText":"Web","webViewerText":"Visionneuse Web","concurrentText":"Simultané","retiredText":"Désactivé","templateText":"Modèle","addonText":"Module complémentaire","adminText":"Admin","userText":"Utilisateur","teamText":"Equipe","departmentText":"Service","systemText":"Système","_localized":{}}
+,
+'Sage/UI/nls/ConditionManager':{"addimgalttext":"Ajouter une condition","hideimgalttext":"Supprimer la condition","addrowlabel":"Rechercher par :","hiderowlabel":"Et :","srchBtnCaption":"Rechercher","errorOperatorRequiresValue":"L'opérateur requiert une valeur","startingWith":"Commençant par","endsWith":"Finit par","contains":"Contient","equalTo":"Egal à","notEqualTo":"Non égal à","equalOrLessThan":"Inférieur ou égal à","equalOrGreaterThan":"Supérieur ou égal à","lessThan":"Inférieur à","greaterThan":"Supérieur à","_localized":{}}
+,
+'Sage/UI/nls/SDataLookup':{"closeText":"Fermer","cancelText":"Annuler","loadingText":"Chargement...","noDataText":"Aucun enregistrement n'a été retourné","_localized":{}}
+,
+'dgrid/extensions/nls/columnHider':{"popupTriggerLabel":"Show or hide columns","popupLabel":"Show or hide columns","_localized":{}}
+,
+'dgrid/extensions/nls/pagination':{"status":"${start} - ${end} de ${total} résultats","gotoFirst":"Aller à la première page","gotoNext":"Aller à la page suivante","gotoPrev":"Aller à la page précédente","gotoLast":"Aller à la dernière page","gotoPage":"Aller à la page","jumpPage":"Aller à la page","rowsPerPage":"Number of rows per page","_localized":{}}
+,
+'Sage/UI/Controls/nls/Grid':{"loadingMessage":"Données en cours de chargement...","noDataMessage":"Aucun enregistrement ne correspond aux critères de sélection.","showMore":"Afficher plus","showLess":"Afficher moins","_localized":{}}
+,
+'Sage/UI/nls/EditableGrid':{"unsavedDataText":"*données non enregistrées","addText":"Ajouter","deleteText":"Supprimer","saveText":"Enregistrer","cancelText":"Annuler","noSelectionsText":"Aucun enregistrement n'est sélectionné.","confirmDeleteFmtTxt":"Voulez-vous vraiment supprimer ces ${0} éléments ?","yesText":"Oui","noText":"Non","createItemsInvalidArrayText":"Le paramètre des éléments dans Sage.UI.EditableGrid.createItems() doit être un tableau.","recordCountFormatString":"Enregistrements ${0} - ${1} sur ${2}","noDataMessage":"Aucun enregistrement ne correspond aux critères de sélection.","dirtyDataMessage":"Des données ne sont pas enregistrées. Si vous continuez, vous perdrez les modifications que vous avez effectuées.","okText":"OK","_localized":{}}
+,
+'Sage/Utility/nls/File':{"unableToUploadText":"CRM Office Integration Module doit être installé pour utiliser cette fonctionnalité.","unknownSizeText":"inconnu","largeFileWarningText":"Attention : cette demande dépasse la taille limite définie par votre administrateur et n'a pas pu être chargée.","largeFileWarningTitle":"Avertissement","_localized":{}}
+,
+'Sage/Utility/File/nls/DescriptionsForm':{"titleFmt":"Ajouter des pièces jointes à ${0}","titleLibraryDoc":"Ajouter des documents de la bibliothèque","fileNameText":"Nom et taille du fichier : ","descText":"Description :","okText":"OK","cancelText":"Annuler","_localized":{}}
+,
+'Sage/Utility/File/nls/Attachment':{"uploadingAttachments":"Chargement des pièces jointes","uploadCompleted":"Terminé","uploadingPleaseWait":"En cours de chargement, veuillez patienter...","uploadFailed":"Echec du chargement.","_localized":{}}
+,
+'Sage/UI/Controls/nls/DateTimePicker':{"okText":"OK","cancelText":"Annuler","convertDescription":"Comparez à un autre fuseau horaire.","convertText":"Comparer","calculatorText":"Calculateur de fuseau horaire","timeZoneSourceText":"Fuseau horaire actuel","timeZoneDestText":"Fuseau horaire de référence","buttonToolTip":"Agenda","timeStartText":"Heure","timeZoneCalculatorText":"Calculateur de fuseau horaire","_localized":{}}
+,
+'Sage/Utility/File/nls/AttachmentPropertiesEditForm':{"fileText":"Fichier","descriptionText":"Description","sizeText":"Taille","attachDateText":"Pièce jointe le","attachedByText":"Joint par","uploadFileText":"Sélectionner un autre fichier...","editText":"Modifier la pièce jointe","okText":"OK","cancelText":"Annuler","browseText":"Parcourir","urlText":"URL","requestFailedMsg":"L'opération demandée n'a pas pu être exécutée, veuillez réessayer ultérieurement.","_localized":{}}
+,
+'Sage/Utility/File/nls/FallbackFilePicker':{"addLibraryFileText":"Ajouter un fichier de bibliothèque","attachFileText":"Joindre un fichier","descriptionText":"Description","uploadFileText":"Pièce jointe","okText":"OK","cancelText":"Annuler","invalidContext":"Le ou les fichiers ne peuvent pas être chargés à l'extérieur de la bibliothèque de ventes.","fileTooLargeError":"Le chargement du fichier a été annulé car le fichier est trop volumineux.","pleaseSelectFile":"Veuillez d'abord sélectionner un fichier.","slxErrorIdInfo":"ID d'erreur Saleslogix : ","_localized":{}}
+,
+'Sage/Utility/File/nls/AddURLAttachment':{"descriptionText":"Description","urlText":"URL","titleText":"Ajouter URL jointe","okText":"OK","cancelText":"Annuler","requestFailedMsg":"L'opération demandée n'a pas pu être exécutée, veuillez réessayer ultérieurement.","urlBlankMsg":"L'URL et la propriété de description ne peuvent pas être vides.","_localized":{}}
+,
+'Sage/Utility/File/nls/GoogleDocPicker':{"googleDocumentsTitle":"Documents Google","couldNotOpenWindowMsg":"Impossible d'ouvrir la fenêtre d'authentification. Veuillez vérifier vos paramètres de bloqueur de fenêtres contextuelles.","_localized":{}}
+,
+'Sage/UI/nls/AttachmentList':{"attachmentText":"Pièce jointe","userText":"Utilisateur","modDateText":"Modifié le","dateRangeText":"Modifier la plage de dates","sizeText":"Taille","extensionText":"Extension de fichier","addFileText":"Ajouter un fichier","addUrlText":"Ajouter une URL","editText":"Modifier","helpText":"Aide","addGoogleText":"Ajouter un document Google","deleteText":"Supprimer","request":"Demander le fichier","delivered":"Livré","requested":"Demandé","available":"Disponible","_localized":{}}
+,
+'Sage/UI/nls/GridView':{"unsavedDataText":"*données non enregistrées","addText":"Ajouter","deleteText":"Supprimer","saveText":"Enregistrer","cancelText":"Annuler","editText":"Modifier","helpText":"Aide","noSelectionsText":"Aucun enregistrement n'est sélectionné.","confirmDeleteFmtTxt":"Voulez-vous vraiment supprimer ces ${0} éléments ?","yesText":"Oui","noText":"Non","createItemsInvalidArrayText":"Le paramètre des éléments dans Sage.UI.GridView.createItems() doit être un tableau.","noDataMessage":"Aucun enregistrement ne correspond aux critères de sélection.","dirtyDataMessage":"Des données ne sont pas enregistrées. Si vous continuez, vous perdrez les modifications que vous avez effectuées.","okText":"OK","totalRecordCountLabel":"Nombre total d'enregistrements : ${0}","toggleRows":"Afficher/masquer l'aperçu","_localized":{}}
+,
+'Sage/UI/nls/SLXPreviewGrid':{"applyText":"Appliquer","resetText":"Réinitialiser","filterText":"Filtrer","_localized":{}}
+,
+'Sage/UI/Controls/nls/EntityInfoToolTip':{"errorText":"Information introuvable.","loadingText":"Chargement...","noInfoText":"Aucune information à afficher.","mainText":"Principal :","faxText":"Fax :","tollFreeText":"Numéro vert :","urlText":"URL Web :","workText":"Professionnel :","mobileText":"Téléphone portable :","emailText":"E-mail :","contactNameText":"Nom :","phoneText":"Téléphone :","accountText":"Compte :","_localized":{}}
+,
+'Sage/UI/Controls/nls/Lookup':{"buttonToolTip":"Rechercher","closeButtonToolTip":"Supprimer","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityEditor':{"labelWidth":"100","tabNameGeneralText":"Général","tabNameAvailabilityText":"Disponibilité","tabNameAssociationsText":"Associations","tabNameRecurringText":"Récurrent","tabNameAttachmentsText":"Pièces jointes","tabNameNotesText":"Notes","scheduleText":"Planification","scheduleTodo":"Schedule To-Do","schedulePhonecall":"Schedule Phone Call","scheduleMeeting":"Schedule Meeting","startTimeText":"Heure de début","timeLessText":"Heure indéfinie","alarmText":"Alarme","durationText":"Durée","rolloverText":"Reporter automatiquement au jour suivant","contactText":"Contact","accountText":"Compte","leadText":"Lead","opportunityText":"Opportunité","ticketText":"Ticket","companyText":"Société","regardingText":"Objet","notesText":"Notes","priorityText":"Priorité","leaderText":"Responsable","categoryText":"Catégorie","locationText":"Emplacement","dialogHeaderFormatText":"${actionText} ${activityType} - ${description}","scheduledByFormatText":"Planifié par ${user} le ${date}","completeScheduledByFormatText":"Planifié par ${user} le ${date} initialement pour ${startDate}","newConfirmationHeaderFormatText":"Confirmer ${activityType} planifié par ${user}","otherConfimationHeaderFormatText":"${activityType} ${actionText} par ${user}","acceptedText":"Accepté","declinedText":"Refusé","scheduledText":"Planifié","updatedText":"Mis à jour","deletedText":"Supprimé","cancelText":"Annuler","okText":"OK","completeTodo":"Complete To-Do","completePhonecall":"Complete Phone Call","completeMeeting":"Complete Meeting","completeText":"Terminer","completeBtnText":"Terminer...","completedText":"Terminé","deleteText":"Supprimer","lookupActText":"Rechercher un compte","lookupContactText":"Rechercher un contact","lookupOpportunityText":"Rechercher une opportunité","lookupTicketText":"Rechercher un ticket","lookupLeadText":"Rechercher un lead","lookupLeaderText":"Rechercher le responsable","lookupResourcesText":"Ajouter des membres et des ressources","addResourceText":"Ajouter la sélection","mainPhoneText":"Téléphone principal","typeText":"Type","subTypeText":"Sous-type","nameText":"Nom","cityText":"Ville","stateText":"Département","workphoneText":"Téléphone professionnel","emailText":"E-mail","acctMgrText":"Resp. du compte","descriptionText":"Description","stageText":"Phase","statusText":"Etat","ownerText":"Propriétaire","ticketNumberText":"Numéro de ticket","phoneText":"Téléphone","urgencyText":"Priorité","areaText":"Domaine","recurringText":"Récurrent","resultText":"Résultat","followupText":"Suivi","noneText":"Aucun(e)","carryOverAttachmentsText":"Reporter les pièces jointes","carryOverNotesText":"Reporter les notes","asScheduledText":"Telle que planifiée","nowText":"Maintenant","responseText":"Taux de retours","acceptText":"Accepter","declineText":"Refuser","deleteConfText":"Confirmation de la suppression","closeText":"Fermer","leadFullNameText":"Nom","postalText":"Code postal","failedLoadingDataMsg":"Une erreur s'est produite lors du chargement des données.","removeText":"Supprimer","noText":"Non","yesText":"Oui","areYouSureText":"Vous êtes sur le point de supprimer définitivement cet enregistrement.","couldNotSaveErrorText":"Impossible d'enregistrer l'activité car une erreur s'est produite.","couldNotDeleteErrorText":"Impossible de supprimer l'activité car une erreur s'est produite.","couldNotCompleteErrorText":"Impossible de terminer l'activité car une erreur s'est produite.","scheduleFollowUpErrorText":"Impossible de planifier le suivi, car l'HistoryId n'a pas pu être déterminé.","tabNameParticipants":"Participants","updateToDo":"To-Do","updatePhoneCall":"Phone Call","updateMeeting":"Meeting","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/AttendeeLookup/nls/SpeedSearchLookup':{"dialogTitle":"Rechercher des participants","okText":"Ajouter la sélection","cancelText":"Fermer","noDataText":"Aucun enregistrement ne correspond aux critères de sélection","srchBtnCaption":"Rechercher","colName":"Nom","colType":"Type","colAccount":"Entreprise/Compte","colTitle":"Titre","colEmail":"E-mail","colWorkPhone":"Téléphone professionnel","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityEditorAttendeesTab':{"header_Name":"Nom","header_AccountName":"Compte/Société","header_Type":"Type","header_Primary":"Principal","header_RoleName":"Rôle","header_Phone":"Téléphone","header_Email":"E-mail","header_TimeZone":"Fuseau horaire","header_Notes":"Notes","tooltip_speedSearch":"Ajouter un participant","tooltip_AddContact":"Ajouter un contact","tooltip_AddLead":"Ajouter un lead","tooltip_Delete":"Supprimer","header_Attendee":"Est un participant","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/AttendeeLookup/nls/ContactLookupConfig':{"contactText":"Contact","accountText":"Compte","lookupContactText":"Rechercher un contact","nameText":"Nom","cityText":"Ville","stateText":"Département","workphoneText":"Téléphone professionnel","emailText":"E-mail","dialogButtonText":"Ajouter la sélection","cancelText":"Fermer","colFirstName":"Prénom","colLastName":"Nom","colTitle":"Titre","colAccount":"Compte","colWorkPhone":"Téléphone professionnel","colEmail":"E-mail","dialogTitleText":"Rechercher des contacts","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/AttendeeLookup/nls/LeadLookupConfig':{"contactText":"Contact","accountText":"Compte","lookupContactText":"Rechercher un contact","nameText":"Nom","cityText":"Ville","stateText":"Département","workphoneText":"Téléphone professionnel","emailText":"E-mail","dialogButtonText":"Ajouter la sélection","cancelText":"Fermer","colFirstName":"Prénom","colLastName":"Nom","colTitle":"Titre","colCompany":"Société","colWorkPhone":"Téléphone professionnel","colEmail":"E-mail","dialogTitleText":"Rechercher des Leads","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/RecurringEditor':{"activityOccurrsText":"Cette activité se produit…","onceText":"Une fois","dailyText":"Chaque jour","weeklyText":"Chaque semaine","monthlyText":"Chaque mois","yearlyText":"Chaque année","occursOnceText":"Cette activité ne se produit qu'une seule fois","everyText":"Chaque","daysText":"Jour(s)","daysAfterText":"Jour(s) après la fin","startRecurringText":"Démarrer la périodicité : ","endAfterText":"Terminer après","endOnText":"Terminer la périodicité","occurrencesText":"occurrences","weeksOnText":"Semaine(s) le","monText":"Lundi","tueText":"Mardi","wedText":"Mercredi","thurText":"Jeudi","friText":"Vendredi","satText":"Samedi","sunText":"Dimanche","weeksAfterText":"Semaine(s) après la fin","monthsOnText":"Mois le","monthsOnTheText":"Mois le","monthsAfterText":"Moi(s) après la fin","firstText":"1er","secondText":"2e","thirdText":"3e","fourthText":"4e","lastText":"Dernier","yearsOnText":"Année(s) le","yearsAfterText":"Année(s) après la fin","janText":"Janvier","febText":"Février","marText":"Mars","aprText":"Avril","mayText":"Mai","junText":"Juin","julText":"Juillet","augText":"Août","sepText":"Septembre","octText":"Octobre","novText":"Novembre","decText":"Décembre","theText":"Le","inText":"de","_localized":{}}
+,
+'Sage/UI/Controls/nls/DurationSelect':{"minuteText":"minute","minutesText":"minutes","hourText":"heure","hoursText":"heures","dayText":"jour","daysText":"jours","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/EditEventEditor':{"titleScheduleText":"Planifier un événement","titleEditText":"Modifier un événement","lblDayTypeText":"Type de jour :","lblStartDateText":"Date de début :","lblEndDateText":"Date de fin :","lblUserText":"Utilisateur :","lookupUserText":"Rechercher un utilisateur","lblCategoryText":"Catégorie :","lblLocationText":"Emplacement :","lblDescriptionText":"Description :","btnOkayText":"OK","btnCancelText":"Annuler","btnHelpText":"Aide","eventTypeActiveText":"Actif","eventTypeBusinessTripText":"Voyage d'affaires","eventTypeConferenceText":"Conférence","eventTypeHolidayText":"Férié","eventTypeOffText":"Inactif","eventTypeTradeShowText":"Salon commercial","eventTypeUnavailableText":"Non disponible","eventTypeVacationText":"Congé","errorText":"Impossible de créer l'événement car une erreur s'est produite.","invaildDatesText":"La date de fin ne peut être antérieure à la date de début.","nameText":"Nom","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/QuickCompleteEditor':{"lblResultText":"Résultat :","lblNoteText":"Note (ajouter à tous les articles) :","btnCompleteIndividuallyText":"Individuellement","btnAsScheduledText":"Telle que planifiée","btnCompleteNowText":"Maintenant","btnCancelText":"Annuler","btnCloseText":"Fermer","btnHelpText":"Aide","resultCompletedText":"Terminer","titleText":"Saisie rapide","actionMessage":"Seules les activités que vous êtes autorisé à exécuter seront terminées.","completeMessage":"Terminer les {0} activités sélectionnées :","processingMessage":"Traitement des {0} activités sélectionnées en cours, veuillez patienter…","_localized":{}}
+,
+'Sage/Services/nls/ActivityActionProcessor':{"btnOkayText":"OK","btnCancelText":"Annuler","btnCloseText":"Fermer","btnHelpText":"Aide","processingText":"Traitement de la demande en cours, veuillez patienter...","failureText":"Cette action a échoué car une erreur est survenue.","titleText":"Processus","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/HistoryEditor':{"labelWidth":"100","tabNameGeneralText":"Général","tabNameAttachmentsText":"Pièces jointes","scheduleText":"Planification","startTimeText":"Planifié","completedDateText":"Terminé","timeLessText":"Heure indéfinie","durationText":"Durée","contactText":"Contact","accountText":"Compte","leadText":"Lead","opportunityText":"Opportunité","ticketText":"Ticket","companyText":"Société","regardingText":"Objet","resultText":"Résultat","notesText":"Notes","noteText":"Note","priorityText":"Priorité","leaderText":"Responsable","categoryText":"Catégorie","locationText":"Emplacement","scheduledByFormatText":"Planifié par ${user} le ${date}","cancelText":"Annuler","okText":"OK","deleteText":"Supprimer","lookupActText":"Rechercher un compte","lookupContactText":"Rechercher un contact","lookupOpportunityText":"Rechercher une opportunité","lookupTicketText":"Rechercher un ticket","lookupLeadText":"Rechercher un lead","lookupLeaderText":"Rechercher le responsable","lookupResourcesText":"Recherche","mainPhoneText":"Téléphone principal","typeText":"Type","subTypeText":"Sous-type","nameText":"Nom","cityText":"Ville","stateText":"Département","workphoneText":"Téléphone professionnel","emailText":"E-mail","acctMgrText":"Resp. du compte","descriptionText":"Description","stageText":"Phase","statusText":"Etat","ownerText":"Propriétaire","ticketNumberText":"Numéro de ticket","phoneText":"Téléphone","urgencyText":"Priorité","areaText":"Domaine","recurringText":"Récurrent","followupText":"Suivi","noneText":"Aucun(e)","carryOverAttachmentsText":"Reporter les pièces jointes","carryOverNotesText":"Reporter les notes","asScheduledText":"Telle que planifiée","insertText":"Insérer","insertNoteText":"Insert Note","couldNotSaveErrorText":"Impossible d'enregistrer l'historique car une erreur s'est produite.","deleteMessage":"Vous êtes sur le point de supprimer définitivement cet enregistrement.","deleteTitle":"Supprimer l'historique","couldNotDeleteErrorText":"Impossible de supprimer l'historique car une erreur s'est produite.","postalText":"Code postal","tabNameParticipants":"Tous les participants","resultComplete":"Complete","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/HistoryEditorAttendeesTab':{"header_Name":"Nom","header_AccountName":"Compte/Société","header_Type":"Type","header_Primary":"Principal","header_RoleName":"Rôle","header_Phone":"Téléphone","header_Email":"E-mail","header_TimeZone":"Fuseau horaire","header_Notes":"Notes","header_Status":"Etat","header_Attendee":"Est un participant","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/OccurrenceOrSeriesQueryDlg':{"titleFmt":"${type} - ${description}","actDateText":"Date de l'activité :","contactText":"Contact :","accountText":"Compte :","opportunityText":"Opportunité :","editAllText":"Modifier toutes les occurrences","editOneText":"Modifier cette occurrence","completeAllText":"Terminer toutes les occurrences","completeOneText":"Terminer cette occurrence","deleteAllText":"Supprimer toutes les occurrences","deleteOneText":"Supprimer cette occurrence","continueText":"Continuer","failedToLoadMsg":"Impossible de charger l'activité","_localized":{}}
+,
+'Sage/Services/nls/ActivityService':{"txtErrorActionMsg":"Cette action a échoué car une erreur est survenue.","txtActivity":"Activité","txtActivities":"Activités","txtActionDeleteActivites":"Supprimer des activités","txtActionDeleteActivitiesQuestion":"Seules les activités que vous avez l'autorisation de supprimer seront supprimées.<P>Voulez-vous vraiment supprimer les {0} {1} sélectionnées ?","txtAlarm":"Alarme","txtAlarms":"Alarmes","txtActionSnoozeAlarm":"Mettre en veille l'alarme","txtActionSnoozeQuestion":"Voulez-vous vraiment mettre en veille les {0} {1} sélectionné(s)s pour {2} ?","txtActionSnoozeAllQuestion":"Voulez-vous vraiment mettre en veille tous les {0} pour {1} ?","txtActionDismissAlarms":"Annuler les alarmes","txtActionDismissAlarmsQuestion":"Voulez-vous vraiment annuler la {0} {1} sélectionnée ?","txtEvent":"Evénement","txtEvents":"Evénements","txtActionDeleteEvents":"Supprimer les événements","txtActionDeleteEventsQuestion":"Seuls les événements que vous avez l'autorisation de supprimer seront supprimés.<P>Voulez-vous vraiment supprimer le {0} {1} sélectionnés ?","txtConfirmation":"Confirmation","txtConfirmations":"Confirmations","txtActionAcceptConfirmations":"Accepter les confirmations","txtActionAcceptConfirmQuestion":"Voulez-vous vraiment accepter les {0} {1} sélectionnées ? Cette action ne peut être effectuée que sur les nouvelles confirmations ou les confirmations modifiées. Toutes les autres seront ignorées.","txtDeclineConfirmations":"Refuser les confirmations","txtActionDeclineConfrimQuestion":"Voulez-vous vraiment refuser les {0} {1} sélectionnées ? Cette action ne peut être effectuée que sur les nouvelles confirmations ou les confirmations modifiées. Toutes les autres seront ignorées.","txtActionRemoveConfirmations":"Supprimer les confirmations","txtActionRemoveConfirmationsQuestion":"Voulez-vous vraiment supprimer les {0} {1} sélectionnées ? Cette action peut uniquement être effectuée sur les confirmations de type Organisateur, Refusé ou Supprimé. Toutes les autres seront ignorées.","txtLiteratureRequest":"Demande de documentation","txtLiteratureRequests":"Demandes de documentation","txtActionDeleteLiteratureRequests":"Supprimer les demandes de documentation","txtActionDeleteLiteratureRequestsQuestion":"Seules les demandes de documentation que vous avez l'autorisation de supprimer seront supprimées. <P> Voulez-vous vraiment supprimer les {0} {1} sélectionnées ?","_localized":{}}
+,
+'Sage/MainView/EntityMgr/nls/_BaseEntityDetailContent':{"FilterTabTitle":"Filtres","MetricTabTitle":"Mesures","PropertyTabTitle":"Champs","CalcFieldTabTitle":"Champs calculés","EntityTabTitle":"Entités","RelationTabTitle":"Relations","dialogTitleAddField":"Ajouter un champ à l'entité ${0}","dialogTitleAddFilter":"Ajouter un filtre à l'entité ${0}","dialogTitleAddMetric":"Ajouter une mesure à l'entité ${0}","dialogTitleAddRelationship":"Ajouter une relation à l'entité ${0}","editDialogTitle":"Modifier ${0} dans l'entité ${1}","FilterDialogTitle":"Filtrer","MetricDialogTitle":"Mesure","PropertyDialogTitle":"Champ","RelationDialogTitle":"Relation","FilterGridColumnFilter":"Nom du filtre","MetricGridColumnMetric":"Nom de la mesure","FilterGridColumnDisplay":"Nom d'affichage","FilterGridColumnProperty":"Champ","FilterGridColumnType":"Mesure ou filtre","FilterGridColumnIsMetric":"Dans le tableau de bord","FilterGridColumnLastUpdated":"Dernière modification","FilterGridColumnDetails":"Type","FilterGridDetailsDistinctFilter":"Distinct","FilterGridDetailsDateDiffMetricFilter":"Mesure de différence de date","FilterGridDetailsRangeFilter":"Plage","FilterGridDetailsMetricFilter":"Mesure","FilterGridDetailsUserLookupFilter":"Rechercher un utilisateur","FilterGridDetailsLookupFilter":"Recherche","FilterGridDetailsCustom":"Personnalisé","GridHelp":"Aide","FilterGridAdd":"Ajouter un filtre","FilterGridRemove":"Supprimer le filtre","FilterGridEdit":"Modifier le filtre","MetricGridAdd":"Ajouter une mesure","MetricGridRemove":"Supprimer la mesure","MetricGridEdit":"Modifier la mesure","PropertyGridAdd":"Ajouter un champ","PropertyGridRemove":"Supprimer le champ","PropertyGridEdit":"Modifier le champ","CalculatedGridAdd":"Ajouter un champ calculé","CalculatedGridRemove":"Supprimer le champ calculé","CalculatedGridEdit":"Modifier le champ calculé","lblFilterName":"Nom du filtre","lblDisplayName":"Nom d'affichage","lblFilterDp":"Champs","lblTypeDp":"Type","lblCharacter":"Caractères","lblTypeSpecificContentBox":"Zone de contenu spécifique de type","lblSaveButton":"Enregistrer","lblCancelButton":"Annuler","lblOkButton":"OK","lblWarning":"Sélectionnez un élément.","confirmDeleteFmtTxt":"Voulez-vous vraiment supprimer ces ${0} éléments ?","filtersFor":"Filtres pour","metricsFor":"Mesures pour","propertyFor":"Champs pour","calculatedFor":"Champs calculés pour","defaultRangeRowValue":"Saisissez une valeur","customSql":"SQL personnalisé","displayName":"Nom d'affichage","lower":"Inférieur","rangeId":"ID de la plage","rangeName":"Nom de la plage","upper":"Supérieur","SUM":"Total (somme)","Contains":"Contient","StartsWith":"Commence par","EndsWith":"Finit par","LessThan":"Inférieur à","GreaterThan":"Supérieur à","LessThanEqual":"Inférieur ou égal à","GreaterThanEqual":"Supérieur ou égal à","Equal":"Est égal à","NotEqual":"Différent de","COUNT":"Nombre","AVG":"Moyenne","MIN":"Valeur minimale","MAX":"Valeur maximale","totalRecordCountLabel":"Nombre total d'enregistrements : ${0}","propertyName":"Nom","Description":"Description","propertyType":"Type","included":"Inclus","calculatedFields":"Calculé(e)(s)","generate":"Générer","key":"Clé","relationFor":"Relation pour","childEntity":"Enfant","childProperty":"Champ enfant","parentEntity":"Parent","parentProperty":"Champ parent","editable":"Modifiable","cardinality":"Cardinalité","relationship":"Relation","parentImport":"Importation parent","parentMatch":"Correspondance parent","parentAudit":"Audit parent","parentIncluded":"Inclus parent","childImport":"Importation enfant","childMatch":"Correspondance enfant","childAudit":"Audit enfant","childIncluded":"Enfant inclus","text":"Texte","memo":"Mémo","unicodeText":"Texte unicode","unicodeMemo":"Mémo unicode","integer":"Entier","double":"Double","single":"Unique","decimal":"Décimal","short":"Court","standardId":"ID standard","trueFalse":"Vrai / Faux","yesNo":"Oui/Non","boolean":"Booléen","dateTime":"Date/Heure","email":"E-mail","phone":"Téléphone","pickList":"Liste de sélection","owner":"Propriétaire","lookup":"Recherche","dependencyLookup":"Recherche de dépendance","char":"Caractère","enum_":"Enum","guid":"guid","byte":"Octet","binary":"Binaire","url":"Url","string":"Chaîne","number":"Nombre","notUniqueFor":"N'est pas unique pour","lblPluralName":"Afficher le nom au pluriel","lblTitle":"Titre","IsExtension":"Est une extension","AdvOptions":"Options avancées","lblImport":"Importer","lblMatch":"Faire correspondre","lblBulkUpdate":"Mise à jour en bloc","lblAudited":"Audité","lblPut":"Soumettre","lblPost":"Publication","lblDelete":"Supprimer","lblHistory":"Effectuer le suivi de l'historique jusqu'à","metricNotEditable":"Cette mesure n'est pas modifiable.","_localized":{}}
+,
+'Sage/MainView/EntityMgr/AddEditEntityDetail/nls/AddEditDialog':{"dialogTitleAddField":"Ajouter un champ à l'entité ${0}","dialogTitleAddFilter":"Ajouter un filtre à l'entité ${0}","dialogTitleAddMetric":"Ajouter une mesure à l'entité ${0}","dialogTitleAddRelationship":"Ajouter une relation à l'entité ${0}","editDialogTitle":"Modifier ${0} dans l'entité ${1}","lblFilter":"Filtrer","lblMetric":"Mesure","lblFilters":"Filtres","lblMetrics":"Mesures","lblDistinct":"Distinct","lblRange":"Plage","lblUserLookup":"Rechercher un utilisateur","lblAdd":"Ajouter","lblEdit":"Modifier","lblRemove":"Supprimer","lblHelp":"Aide","lblFilterName":"Nom du filtre","lblMetricName":"Nom de la mesure","lblDisplayName":"Nom d'affichage","lblName":"Nom","lblDisplay":"Affichage","lblCalculated":"Calculé(e)(s)","lblCalculation":"Calcul","lblDescription":"Description","lblFieldsName":"Nom des champs","lblCalculatedFieldsName":"Nom des champs calculés","lblFilterDp":"Champs","lblTypeDp":"Type","lblCharacter":"Caractères","lblFrom":"De","lblTo":"A","lblOperators":"Opérateurs","lblAggregation":"Agrégations","lblTypeSpecificContentBox":"Zone de contenu spécifique de type","lblSaveButton":"OK","lblCancelButton":"Annuler","DateDiffCheckerValue":"Mesure de différence de date","InvalidFilterName":"Nom de filtre non valide","InvalidRangeName":"Nom de plage non valide","RequiredFilterName":"Nom de filtre obligatoire","RequiredRangeName":"Nom de plage obligatoire","FieldMustBeANumber":"Le champ Caractère doit être un nombre entier","SelectAnItem":"Veuillez sélectionner un élément","ItemRequired":"Elément obligatoire","ItemInvalid":"Elément non valide","LowerMustBeLessThanUpper":"La valeur la plus basse doit être inférieure à la valeur la plus haute.","InvalidSpecialDateValue":"Invalid special date placeholder value.","defaultRangeRowValue":"Saisissez une valeur","totalRecordCountLabel":"Nombre total d'enregistrements : ${0}","lblNew":"Nouveau","lblExisting":"Existant","lblExistingCalc":"Champ calculé existant","validNameMsg":"Pour être valide, l'entrée doit commencer par une lettre majuscule. Elle <br> peut contenir des valeurs alphanumériques et des traits de soulignement.","propertyName":"Nom","displayName":"Affichage","dataTypeId":"Type","dataTypeData":"Attributs du type","length":"Longueur","scale":"Echelle","precision":"Précision","isIncluded":"Inclus","isReadOnly":"Lecture seule","displayCategory":"Afficher la catégorie","sdata":"Sdata","bulkAction":"Action en bloc","canBulkUpdate":"Peut effectuer une mise à jour en bloc","canImport":"Importer","canMatch":"Faire correspondre","generate":"Générer","audited":"Audité","notUniqueFor":"N'est pas unique pour","notUnique":"n'est pas unique","nlsCode":"Code NLS","nlsName":"Nom NLS","showTranslations":"Afficher les traductions","hideTranslations":"Masquer les traductions","standardIds":"ID standard","others":"Autre","SelectField":"Sélectionnez un champ !","SelectOneField":"Veuillez sélectionner un seul champ","parent":"Entité parent et champ Jointure","child":"Entité enfant et champ Jointure","cardinality":"Relation","cascade":"Cascade","includeParent":"Inclure une propriété de relation parente dans l'entité enfant","includeChild":"Inclure une propriété de relation enfant dans l'entité parent","existingRelaton":"Cette relation existe déjà !","_localized":{}}
+,
+'Sage/UI/Controls/nls/PropertyStore':{"text":"Texte","memo":"Mémo","unicodeText":"Texte Unicode","unicodeMemo":"Mémo Unicode","integer":"Entier","double":"Double","single":"Unique","decimal":"Décimal","short":"Court","standardId":"ID standard","trueFalse":"Vrai / Faux","yesNo":"Oui/Non","boolean":"Booléen","dateTime":"Date/Heure","email":"E-mail","phone":"Téléphone","pickList":"Liste de sélection","owner":"Propriétaire","lookup":"Recherche","dependencyLookup":"Recherche de dépendance","char":"Caractère","enum_":"Enum","guid":"Guid","byte":"Octet","binary":"Binaire","url":"URL","string":"Chaîne","number":"Nombre","calc":"Champ calculé","calcSF":"Chaîne calculée","calcNF":"Nombre calculé","_localized":{}}
+,
+'Sage/MainView/EntityMgr/EntityWizard/nls/_EntityWizardDialog':{"lblNewEntityWizard":"Assistant Nouvelle entité","lblCreateEntity":"Créer une entité","lblCreateEntityFromTable":"Créer une nouvelle entité à partir d'une table","lblEntityName":"Nom","lblDisplayName":"Affichage","lblPackage":"Package","lblEntityUsed":"Le nom de l'entité est déjà utilisé !","lblNext":"Suivant","lblCancel":"Annuler","lblBack":"Précédent","lblEnterProperties":"Entrer des champs","lblAddNewProperty":"Cliquez sur le bouton ajouter (+) pour ajouter de nouveaux champs à l'entité","lblPropertyName":"Nom du champ","lblDataType":"Type de données","lblLength":"Longueur","lblSure":"Etes-vous sûr ?","lblThisStepCreateEntity":"L'exécution de cette étape permet de créer des entités et le schéma nécessaire","lblEntity":"Entité","lblProperties":"Champs","lblStatus":"Etat","lblSuccess":"Opération réussie","lblSuccessMsg":"Opération réussie, entité créée avec succès.","lblError":"Erreur","lblFailed":"Echec","lblErrorMsg":"Erreur, échec de la création de l'entité !","lblFinish":"Terminer","lblInvalidEntry":"Pour être valide, l'entrée doit commencer par une lettre majuscule. Elle peut contenir des valeurs alphanumériques et des traits de soulignement.","lblRequired":"Obligatoire","lblErrorRelation":"Erreur lors de la création de relation avec","lblRelationship":"Relation principale","lblSelectEntity":"Sélectionnez si cette entité a une relation principale avec une autre entité","lblExistingEntity":"Lier à une entité existante","lblRelatedEntity":"Entité liée","lblRelationType":"Type lié","addFieldDialogTitle":"Ajouter un champ","editFieldDialogTitle":"Modifier le champ","noDeleteSysProps":"Impossible de supprimer les propriétés système","noEditSysProps":"Impossible de modifier les propriétés système","NoRecordsSelected":"Aucun enregistrement n'est sélectionné.","lblNullable":"Est nullable","ExtensionEntity":"1:1 - Extension Entity","ChildEntity":"1:M - Child Entity","CreateUser":"Créé par","CreateDate":"Date de création","ModifyUser":"Modifié par","ModifyDate":"Date de modification","_localized":{}}
+,
+'Sage/UI/Forms/nls/FormFromSData':{"addText":"Ajouter","deleteText":"Supprimer","saveText":"Enregistrer","cancelText":"Annuler","editText":"Modifier","helpText":"Aide","yesText":"Oui","noText":"Non","okText":"OK","allText":"ALL","newPickList":"Nouvelle liste de sélection","items":"Eléments de liste de sélection","number":"Commande","enterValue":"Saisir la valeur","lblMore":"Plus","picklistAlreadyExists":"Picklist '${0}' existe déjà.","messageOnSave":"La liste de sélection ${0} a été enregistrée. Veuillez continuer d'ajouter ou de modifier les informations de champ.","permissionsToView":"Vous n'êtes pas autorisé à afficher.","required":"Entrée obligatoire","allowMultiples":"Autoriser les sélections multiples","valueMustExist":"Le texte doit correspondre à un élément de la liste","alphaSorted":"Trié par ordre alphabétique","noneEditable":"Les utilisateurs ne peuvent pas modifier les éléments","LanguageCodeFilterPlaceHolder":"Filter by Language Code","PickListItemCodeUniqueException":"Picklist item codes must be unique","PickListItemCodeRequiredeException":"Picklist item codes are required","_localized":{}}
+,
+'Sage/UI/Controls/nls/FieldAttributeControlFactory':{"IsEncrypted":"Est crypté","Length":"Longueur","Precision":"Précision","Scale":"Echelle","LookupEntityName":"Rechercher le nom de l’entité","LookupGroup":"Rechercher le groupe","IsPercentage":"Est un pourcentage","Items":"Eléments","MultiSelect":"Sélection multiple","OverriddenName":"Nom remplacé","Storage":"Stockage","EnableHyperLinking":"Activer l'hyperlien","LookupPreFilters":"Rechercher dans les pré-filtres","EqualTo":"Egal à","NotEqualTo":"Non égal à","GreaterThanOrEqual":"Supérieur ou égal à","GreaterThan":"Supérieur à","LessThanOrEqual":"Inférieur ou égal à","LessThan":"Inférieur à","CondOperator":"Opérateur de condition","FilterValue":"Valeur du filtre","PropertyName":"Nom de propriété","LookupProperties":"Propriétés de recherche","ExcludeFromFilters":"Exclure des filtres","HideCondition":"Masquer la condition","IsSortable":"Peut être trié","PropertyFormat":"Format de propriété","None":"Aucun(e)","Phone":"Téléphone","User":"Utilisateur","PickList":"Liste de sélection","DateTime":"Date Heure","PropertyFormatString":"Chaîne du format de propriété","PropertyHeader":"En-tête de propriété","PropertyType":"Type de propriété","UseAsResult":"Utiliser comme résultat","ReturnPrimaryKey":"Clé principale retournée","AllowMultiples":"Autoriser les sélections multiples","AlphaSort":"Trier par ordre alphabétique","MustExistInList":"Doit exister dans la liste","NoneEditable":"Aucun élément n'est modifiable","PickListFilter":"Filtre de la liste de sélection","ValueStoredAsText":"Valeur stockée comme texte","Value":"Valeur","Display":"Affichage","Code":"Code","Name":"Nom","DisplayName":"Nom d'affichage","Template":"Calcul","Description":"Description","SortOrder":"Ordre de tri","lblNoFieldsInTemplate":"Veuillez ajouter une propriété d'entité au modèle avant d'appliquer un ordre de tri.","AddField":"Ajouter un champ","InUse":"En cours d'utilisation","NotInUse":"Non utilisé","CalculatedNumberInputError":"<p>Les entrées sont limitées aux noms de champs sélectionnés dans la liste déroulante<br/> et aux caractères suivants :<br/>&nbsp;&nbsp;&nbsp;&nbsp;'+','-','*','/','(', ni ')'<br/>&nbsp;&nbsp;&nbsp;&nbsp;qui correspondent aux valeurs de bouton au-dessus de la zone de texte.</p>","newPickList":"Nouvelle liste de sélection","add":"ajouter","substract":"soustraire","multiply":"multiplier","divide":"diviser","openParens":"Ouvrir la parenthèse","closeParens":"fermer la parenthèse","_localized":{}}
+,
+'Sage/Groups/nls/GroupNavigator':{"firstText":"Premier","previousText":"Précédent","nextText":"Suivant","lastText":"Dernier","listText":"Vue Liste","noRecordsText":"Aucun enregistrement","labelFmtText":"${0} sur ${1}","_localized":{}}
+,
+'Sage/Utility/nls/Email':{"RecipientInfoError":"Une erreur inattendue s'est produite lors de la tentative de lecture des informations du destinataire : ${0}","MailToProtocolError":"Une erreur s'est produite lors de la tentative de génération de l'e-mail à l'aide du protocole mailto: (href.length=${0}). Il peut être nécessaire de réduire le nombre de destinataires de l'e-mail. Erreur du navigateur : ${1}.","InvalidContextError":"La demande d'e-mail ne peut pas être traitée. Cette opération n'est prise en charge que pour les contacts ou les leads.","InvalidArgumentError":"La demande d'e-mail ne peut pas être traitée. Argument invalide.","FilteredOutMsg":"Tri : Non sollicitables : ${0} ; Non valides : ${1} ; Doublons : ${2}","AllInvalidEmailError":"La collection n'inclut pas d'entités avec une adresse e-mail valide ou sollicitable.","EmailFieldQueried":"Le champ e-mail interrogé était : ${0}.","EntityInfoError":"Echec lors de la tentative de récupération des informations de l'entité.","CapabilityModeError":"La possibilité d'écrire un e-mail à une sélection de groupes n'est disponible que dans les vues Listes.","CapabilityEntityError":"La possibilité d'écrire un e-mail à une sélection de groupes n'est disponible que pour les contacts ou les leads.","NoRowsSelectedError":"Aucune ligne n'est sélectionnée.","_localized":{}}
+,
+'Sage/Groups/nls/GroupManager':{"ConfirmDeleteMessage":"Voulez-vous vraiment supprimer le groupe actuel ?","ConfirmDeleteFmtMessage":"Voulez-vous vraiment supprimer ce groupe : ${0}","InvalidSortStringMessage":"Erreur : chaîne de tri non valide - ","InvalidConditionStringMessage":"Erreur : chaîne de condition non valide - ","InvalidLayoutConditionStringMessage":"Erreur : chaîne de présentation non valide - ","noneSelectedTitle":"Aucun enregistrement sélectionné","noneSelectedPromptFmt":"Aucun enregistrement sélectionné. Le groupe entier, ${0} enregistrement(s), sera ajouté. Continuer ?","noneSelectedRemovePromptFmt":"Aucun enregistrement sélectionné. Le groupe entier, ${0} enregistrement(s), sera supprimé. Continuer ?","noRecordsInGroup":"Aucun enregistrement ne peut être sélectionné dans ce groupe.","newGroupTitle":"Ajouter des enregistrements au nouveau groupe","newGroupNamePrompt":"${0} enregistrement(s) sélectionné(s) est (seront) ajouté(s) à ce nouveau groupe.<br><br>Nom du groupe :<br>${1}","newGroupRePrompt":"&nbsp;&nbsp;<i>Veuillez saisir un nom de groupe.</i>","invalidCharMsg":"Le nom ne peut pas contenir : / \\ : * ? \" <> | ni '","groupNameText":"Nom du groupe :","saveLookupDlgTitle":"Enregistrer les résultats de la recherche en tant que nouveau groupe","yesCaption":"Oui","noCaption":"Non","cancelCaption":"Annuler","okCaption":"OK","LOCALSTORE_NAMESPACE":"SageGroups","exportToExcel":"Cette méthode n'est plus disponible, consultez Sage.TaskPane.CommonTasksTasklet.exportToExcel.","createAdHocGroupJob_Description":"Groupe : ${0}","createAdHocGroupJob_Title":"Création du groupe","createAdHocGroupJobError":"Une erreur s'est produite lors de la création du groupe : ${0}","createAdHocGroupJobProcessingJobMsg":"Vous pouvez continuer à attendre la fin de l'opération ou fermer ce message. Vous recevrez une notification lorsque le groupe sera créé.","_localized":{}}
+,
+'Sage/Utility/nls/Jobs':{"errorMessage":"Une erreur est survenue lors de l'exécution de l'action '${0}' : ${1} ${2}.","jobCompletedSuccessfully":"La tâche a été correctement effectuée.","unexpectedErrorMessage":"Une erreur inattendue s'est produite lors de l'exécution de l'action '${0}'.","repeatIndefinitely":"Répéter indéfiniment","cancelButtonCaption":"Annuler","defaultProgressDialogTitle":"Exécution de la tâche en cours","closeButtonCaption":"Fermer","dataExpiredRefreshPage":"Les informations concernant l'action ont expiré, veuillez actualiser la page.","generalCheckJobService":"Les informations concernant l'action n'ont pas pu être demandées, veuillez vérifier le service de tâches.","JobServerviceOff":"Le service de tâches est actuellement indisponible, veuillez activer ou redémarrer le service.","_localized":{}}
+,
+'Sage/Groups/nls/GroupLookup':{"txtNoRecordsFound":"Aucun enregistrement trouvé.","_localized":{}}
+,
+'Sage/UI/nls/SearchMenuItem':{"findText":"Rechercher","clearText":"Effacer","_localized":{}}
+,
+'Sage/UI/nls/GroupsTitlePaneConfigProvider':{"groupText":"Groupes","addGroupButtonTooltip":"Ajouter un groupe","groupButtonTooltip":"Gérer les groupes","lookupText":"Recherche","lookupResultsText":"Résultats de la recherche","groupColumnText":"Nom du groupe","visibleColumnText":"Favori","groupOwner":"Propriétaire","exceedMaxGroupMsg":"Seuls ${0} groupes de favoris sont autorisés.","_localized":{}}
+,
+'Sage/Library/nls/DocumentProperties':{"Abstract":"Abstrait","Cancel":"Annuler","DocumentProperties":"Propriétés du document","Created":"Créé","Description":"Description","Directory":"Répertoire","DoNotExpire":"Toujours valide","Expires":"Expire le","FileName":"Nom du fichier","ForceDistribution":"Forcer la distribution de ce fichier","InvalidFileName":"Les noms de fichier ne peuvent pas contenir les caractères suivants : \\ / : * ? \" < > |","Never":"Jamais","OK":"OK","Revised":"Révisé","Size":"Taille","Status":"Etat","_localized":{}}
+,
+'Sage/Utility/File/nls/DragDropWatcher':{"query0":"La fonctionnalité que vous demandez requiert l'installation du module d'intégration de bureau <br> Saleslogix.","query1":"En savoir plus...","query2":"Voulez-vous installer cette fonctionnalité maintenant ?","query3":"Remarque : le module peut être installé à tout moment à partir des pages de connexion ou d'options.","_localized":{}}
+,
+'Sage/Utility/File/nls/LibraryDocument':{"failureNumber":"Echec #${0} : ","percentComplete":"En cours de chargement, veuillez patienter...","uploadError":"Une erreur s'est produite lors de la tentative de chargement d'un ou plusieurs fichiers (non chargés : ${0}; chargés : ${1}).","invalidContext":"Le ou les fichiers ne peuvent pas être chargés à l'extérieur de la bibliothèque de ventes.","unknownError":"Une erreur inconnue s'est produite pendant le chargement d'un fichier.","_localized":{}}
+,
+'Sage/Utility/File/nls/DefaultDropHandler':{"emailDroppedText":"E-mail abandonné","attachmentTitleText":"Enregistrer les pièces jointes","attachmentQuestionText":"Voulez-vous conserver une copie de ces pièces jointes dans Infor CRM ? <br />Les pièces jointes seront stockées sous l'onglet Pièces jointes pour les entités concernées.","mailComplete":"Complete","_localized":{}}
+,
+'Sage/Library/nls/FileHandler':{"AccessError":"Votre rôle ne vous permet pas d'exécuter cette action.","Available":"Disponible","Confirm":"Confirmer","DeleteFileCnfmFmt":"Voulez-vous vraiment supprimer le fichier \"${0}\" ?","Delivered":"Livré : Non lu","DeliveredRead":"Livré : Lu","DocumentPropertiesError":"Une erreur inattendue s'est produite lors de la tentative de récupération des propriétés du document.","DocumentPropertiesUpdateError":"Une erreur inattendue s'est produite lors de la tentative de mise à jour des propriétés du document.","DocumentUpdateConflictError":"Le fichier a été mis à jour par un autre utilisateur. Veuillez l'actualiser et réessayer.","FileDeleteError":"Une erreur inattendue s'est produite lors de la tentative de suppression d'un fichier.","FileStatusError":"Une erreur inattendue s'est produite lors de la tentative de mise à jour de l'état du fichier.","LogRequestError":"Une erreur inattendue s'est produite lors de la tentative de consignation de la demande de synchronisation du document.","No":"Non","NoAccessMessage":"Vous n'êtes pas autorisé à ajouter des fichiers à la bibliothèque. Contactez votre administrateur Saleslogix pour obtenir des informations supplémentaires.","Ordered":"Commandé","PleaseSelectFile":"Veuillez sélectionner un fichier.","PleaseWait":"Veuillez patienter","Revised":"Révisé","RevisionOrdered":"Révision commandée","UploadError":"Une erreur est survenue pendant la tentative de chargement d'un fichier.","Unknown":"Inconnu","Yes":"Oui","_localized":{}}
+,
+'Sage/Library/nls/FolderHandler':{"AccessError":"Votre rôle ne vous permet pas d'exécuter cette action.","AddFolderError":"Une erreur inattendue s'est produite lors de la tentative d'ajout d'un dossier de bibliothèque.","Cancel":"Annuler","Confirm":"Confirmer","DeleteFolderCnfmFmt":"Voulez-vous vraiment supprimer le dossier \"${0}\" et tout ce qu'il contient ?","DeleteFolderError":"Une erreur inattendue s'est produite lors de la tentative de suppression d'un dossier de bibliothèque.","DontDeleteRoot":"Veuillez ne pas effacer le dossier racine.","DontEditRoot":"Veuillez ne pas modifier le nom du dossier racine.","EnterFolderName":"Veuillez saisir le nom du nouveau dossier :","EnterNewFolderName":"Veuillez saisir le nouveau nom de ce dossier.","FolderUpdateConflictError":"Le dossier a été mis à jour par un autre utilisateur, veuillez l'actualiser et réessayer.","InvalidFolderName":"Les noms de dossier ne peuvent pas contenir les caractères suivants : \\ / : * ? \" < > |","NewFolder":"Nouveau dossier","No":"Non","OK":"OK","PleaseSelectFolder":"Veuillez sélectionner un dossier.","RenameFolderError":"Une erreur inattendue s'est produite lors du changement de nom d'un dossier de bibliothèque.","Yes":"Oui","_localized":{}}
+,
+'Sage/Library/nls/Manager':{"AddFiles":"Ajouter des fichiers","AddFolder":"Ajouter un dossier","Confirm":"Confirmer","ConfirmDownload":"Le fichier n'a pas été téléchargé. Voulez-vous le télécharger lors de la prochaine synchronisation ?","ConfirmDownloadReorder":"Le fichier n'a pas été téléchargé mais a déjà été commandé. Voulez-vous le recommander pour le télécharger lors de la prochaine synchronisation ?","Created":"Créé","DeleteFolder":"Supprimer le dossier","DeleteSelectedFile":"Supprimer le fichier sélectionné","Description":"Description","DirectoryInformationError":"Une erreur inattendue s'est produite lors de la tentative de récupération des informations sur le répertoire du document.","DocumentInformationError":"Une erreur inattendue s'est produite lors de la tentative de récupération des informations sur le document.","EditFolder":"Modifier le nom du dossier","Expires":"Expire le","File":"Fichier","FileProperties":"Propriétés du fichier","Help":"Aide","InvalidRoot":"Répertoire racine non valide : \"${0}\" (${1}).","Library":"Bibliothèque","LibraryDataError":"Une erreur inattendue s'est produite lors du traitement des données du répertoire de la bibliothèque.","Never":"Jamais","No":"Non","Revised":"Révisé","Size":"Taille","Yes":"Oui","_localized":{}}
+,
+'Sage/MailMerge/nls/Helper':{"destkopErrorsError":"Echec de l'appel à DesktopErrors().","mailMergeInfoStoreError":"Echec de l'appel à MailMergeInfoStore().","_localized":{}}
+,
+'Sage/MailMerge/nls/Service':{"selectContactCaption":"Sélectionner un contact","selectOppContactCaption":"Sélectionner un contact d'opportunité","selectLeadCaption":"Sélectionner un lead","errorAttachmentUpdate":"Impossible de mettre à jour la pièce jointe.","errorHistoryUpdate":"Impossible de mettre à jour l'historique.","errorXmlHttp":"Une erreur s'est produite lors du traitement de la demande de ${0}. ${1} (${2}).","_localized":{}}
+,
+'Sage/MailMerge/nls/Lookup':{"accountCaption":"Compte","companyCaption":"Société","contactTitle":"Sélectionner un contact","emailCaption":"E-mail","firstNameCaption":"Prénom","invalidOptionsText":"Le paramètre des options ou options.onSelect n'est pas défini ou est mal défini.","lastNameCaption":"Nom","leadTitle":"Sélectionner un lead","mobileCaption":"Téléphone portable","opportunityCaption":"Opportunité","workCaption":"Bureau","okText":"OK","_localized":{}}
+,
+'Sage/MailMerge/nls/Loader':{"decodeFailed":"Echec de l'appel à DecodeMailMergeJsonFromUrl().","_localized":{}}
+,
+'Sage/Services/nls/JobService':{"txtInvalidParameter":"Paramètre non valide : '${0}'.","txtTriggerJobError":"Une erreur est survenue lors du déclenchement de l'action '${0}' : ${1} ${2}.","txtScheduleJobError":"Une erreur est survenue lors de la planification de l'action '${0}' : ${1} ${2}.","txtUnexpectedError":"Une erreur s'est produite : ${0} ${1}.","_localized":{}}
+,
+'Sage/Services/nls/ReportingService':{"txtUnsupportedReportType":"Type de rapport non pris en charge : ${0}.","txtUnexpectedError":"Une erreur s'est produite : ${0} ${1}.","invalidEntityError":"Le serveur de création de rapport n'a pas été défini ou n'est pas correctement défini.","invalidReportPluginError":"L'ID du plugin de rapport n'a pas été défini ou n'est pas correctement défini.","invalidTableNameError":"Le nom de la table n'a pas été défini ou n'est pas correctement défini.","noDefaultReportError":"Impossible de localiser le rapport pour l'utilisateur actuel.","reportCannotBeShownError":"Impossible d'afficher le rapport.","_localized":{}}
+,
+'Sage/Reporting/nls/Enumerations':{"txtGroup":"Groupe","txtDateRange":"Plage de dates","txtUser":"Utilisateur","txtQuery":"Requête","txtIsGreaterThan":"Est supérieur à","txtIsLessThan":"Est inférieur à","txtIsInTheRange":"Est dans la plage","txtIsAfter":"Est après","txtIsBefore":"Est avant","txtContains":"Contient","txtStartsWith":"Commence par","txtEndsWith":"Finit par","txtIs":"Est","txtIsNot":"N'est pas","txtOnDemand":"A la demande","txtScheduled":"Planifié","txtCrystalReport":"Rapport Crystal","txtExportToFileReportType":"Exporter dans un fichier","txtUnknownReportType":"Inconnu","txtNoFormat":"Aucun format","txtPdf":"PDF","txtExcel":"Excel","txtExcelDataOnly":"Données Excel","txtCsv":"CSV","txtWord":"Word","txtXml":"XML","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportWizardController':{"txtLoadingScheduleDetails":"Chargement des détails de planification","txtError":"Erreur","txtCannotDetermineReportId":"Impossible de déterminer l'identifiant du rapport.","txtCannotDetermineReportNameOrFamily":"Impossible de déterminer le nom ou la famille du rapport.","txtLoading":"Chargement en cours ","txtLoadingReport":"Chargement du rapport","txtSorryAnErrorOccuredLoadingReport":"Une erreur s'est produite lors du chargement du rapport : ${0} ${1}.","displayNameAccountDetail":"Account Detail","displayNameContactDetail":"Contact Detail","displayNameOpportunityDetail":"Opportunity Detail","displayNameSupportDefect":"Support Defect","displayNameSupportTicket":"Support Ticket","displayNameSalesOrderDetail":"Sales Order Detail","displayNameQuoteDetail":"Quote Detail","displayNameQuotation":"Quotation","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportWizardController':{"txtOnDemandScheduleName":"A la demande","txtReportSuccessfullyScheduled":"Rapport planifié.","txtDynamicParametersMessage":"Les rapports contenant des paramètres dynamiques ne sont actuellement pas pris en charge.","txtError":"Erreur","txtScheduleSuccessfullyUpdated":"Planification mise à jour.","txtInvalidReportWithDynamicParameters":"Impossible d'exécuter ou de planifier le rapport \"${0} :${1}\", car il n'est pas valide. Raison(s) : ${2}","txtInvalidDynamicParameterDatasource":"Le paramètre dynamique \"${p.name}\" (\"${p.promptText}\") n'est actuellement pas pris en charge, car sa source de données requiert la saisie d'un paramètre.","txtInvalidDynamicParameterReason":"Le paramètre dynamique \"${p.name}\" (\"${p.promptText}\") est incorrect : ${p.invalidDynamicParameterReason}","txtInvalidDynamicParameterUnknownReason":"Le paramètre dynamique \"${p.name}\" (\"${p.promptText}\") est incorrect.","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportParametersDialog':{"txtDialogTitle":"Saisir les valeurs","cmdBack_Caption":"< Précédent","cmdNext_Caption":"Suivant >","cmdCancel_Caption":"Annuler","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerUtility':{"_localized":{}}
+,
+'Sage/MainView/ReportMgr/Common/nls/_WizardDialogBase':{"txtFinish":"Terminer","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/_ParameterEditorBase':{"txtPleaseSpecifyValue":"Veuillez indiquer une valeur.","lblAvailableValues_Caption":"Valeurs disponibles :","lblSelectedValues_Caption":"Valeurs sélectionnées :","lblEnterValue_Caption":"Saisir une valeur :","btnOK_Caption":"OK","txtTheValueMustBeBetween":"La valeur doit contenir entre {0} et {1} caractères.","txtTheMinimumLengthForThisField":"La longueur minimale pour ce champ est {0}.","txtTheMaximumLengthForThisField":"La longueur maximale pour ce champ est {0}.","txtPleaseSpecifyNumberBetween":"Veuillez indiquer une valeur numérique comprise entre {0} et {1}.","txtPleaseSpecifyNumberLesser":"Veuillez indiquer une valeur numérique inférieure ou égale à {0}.","txtPleaseSpecifyNumberGreater":"Veuillez indiquer une valeur numérique supérieure ou égale à {0}.","txtNoLowerValue":"Aucune valeur inférieure","txtNoUpperValue":"Aucune valeur supérieure","txtIncludeThisValue":"Inclure cette valeur","txtFrom":"De :","txtTo":"A :","txtPleaseSpecifyFromValue":"Veuillez spécifier une valeur pour la plage de début","txtPleaseSpecifyToValue":"Veuillez spécifier une valeur pour la plage de fin","txtPleaseSpecifyDateBetween":"Veuillez indiquer une valeur de date comprise entre {0} et {1}.","txtPleaseSpecifyDateLesser":"Veuillez indiquer une valeur de date inférieure ou égale à {0}.","txtPleaseSpecifyDateGreater":"Veuillez indiquer une valeur de date supérieure ou égale à {0}.","txtFromMustBeLessThanOrEqualToTo":"La valeur de plage de début doit être inférieure ou égale à la valeur de plage de fin.","txtStartOfRange":"Début de la plage :","txtEndOfRange":"Fin de la plage :","txtAddRange":"Ajouter une plage","lblSelectValue_Caption":"Sélectionner une valeur :","lblOrValue_Caption":"Ou","_localized":{}}
+,
+'Sage/UI/nls/TransferBoxWidget':{"searchFilterText":"Contient :","loadingText":"Chargement des options…","noResultsText":"Aucun résultat","btnAddTooltip":"Ajouter une ou plusieurs sélections","btnRemoveTooltip":"Supprimer une ou plusieurs sélections","btnRemoveAllTooltip":"Tout supprimer","availableValuesText":"Valeurs disponibles :","selectedValuesText":"Valeurs sélectionnées :","btnAddAllTooltip":"Tout ajouter","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportsUtility':{"txtCurrentUser":"Utilisateur actuel","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportConditionsDialog':{"txtDialogTitle":"Sélectionner les fiches","cmdBack_Caption":"< Précédent","cmdNext_Caption":"Suivant >","cmdCancel_Caption":"Annuler","grdCrystalConditions_ConditionType_Caption":"Type","grdCrystalConditions_TableName_Caption":"Table","grdCrystalConditions_FieldName_Caption":"Champ","grdCrystalConditions_Operator_Caption":"Opérateur","grdCrystalConditions_Value_Caption":"Valeur de condition","txtShowRecordsThatMatch":"Afficher les enregistrements qui correspondent à : ","txtMatch":"Correspondance :","txtAny":"N'importe lequel","txtAll":"Tout","txtAllRecords":"[Tous les enregistrements]","txtSpecificConditions":"[Conditions spécifiques]","txtCurrentUser":"[Utilisateur actuel]","txtOfTheFollowingConditions":"des conditions suivantes :","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportConditionEditor':{"dlgCrystalReportConditionDetails_Title":"Ajouter/modifier une condition","cmdOK_Caption":"OK","cmdCancel_Caption":"Annuler","cmbConditionType_Caption":"Rechercher par","txtInvalidParameterTitle":"Paramètre non valide","txtInvalidParameterMessage":"Paramètre non valide : ${0}","lkpUser_Caption":"Utilisateur","lkpGroup_Caption":"Groupe","txtSelectUser":"Sélectionner un utilisateur","chkCurrentUser_Caption":"Utilisateur actuel","txtName":"Nom","txtOK":"OK","txtSelectGroup":"Sélectionner un groupe","cmbDateRange_Caption":"Plage de dates","cmbDateRange_SpecificDates_Caption":"Dates spécifiques","cmbDateRange_ThisWeek_Caption":"Cette semaine","cmbDateRange_ThisMonth_Caption":"Ce mois","cmbDateRange_ThisQuarter_Caption":"Ce trimestre","cmbDateRange_ThisYear_Caption":"Cette année","cmbDateRange_LastWeek_Caption":"Semaine dernière","cmbDateRange_LastMonth_Caption":"Mois dernier","cmbDateRange_LastQuarter_Caption":"Trimestre dernier","cmbDateRange_LastYear_Caption":"Année dernière","cmbDateRange_MonthToDate_Caption":"Mois à ce jour","cmbDateRange_QuarterToDate_Caption":"Trimestre à ce jour","cmbDateRange_YearToDate_Caption":"Année à ce jour","dtFromDate_Caption":"De","dtToDate_Caption":"A","cmbTable_Caption":"Table","cmbField_Caption":"Champ","cmbOperator_Caption":"Opérateur","txtValue_Caption":"Valeur","txtNumericValueFrom_Caption":"De","txtNumericValueTo_Caption":"A","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportsFormatter':{"txtEdit":"Modifier","txtDelete":"Supprimer","txtRangeValue":"${0} à ${1}","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Common/nls/ExportOptionsDialog':{"txtDialogTitle":"Options d'export","txtDialogTitleScheduling":"Options d'export et de planification","cmdBack_Caption":"< Précédent","cmdNext_Caption":"Suivant >","cmdCancel_Caption":"Annuler","txtName":"Nom","txtSelectUser":"Sélectionner un utilisateur","txtOK":"OK","txtOutputFormat_Caption":"Format","txtRunAs_Caption":"Exécuter comme","txtScheduleDescription_Caption":"Description","_localized":{}}
+,
+'Sage/UI/nls/JobSchedulingWidget':{"lblCreateSchedule":"Créer une planification des tâches à exécuter","lblEveryText":"Chaque","lblOnText":"sur","lblOnTheText":"le","lblAtText":"à","lblMinutesPastHour":"minutes après l'heure","lblFromTimeText":"Exécuter du","lblToTimeText":"au","lblMinutesFrequency":"minutes","lblHourlyFrequency":"heure(s)","lblDailyFrequency":"jour","lblWeekDayFrequency":"jour de la semaine","lblWeeklyFrequency":"semaine","lblMonthlyFrequency":"mois","lblYearlyFrequency":"année","lblSunday":"Dimanche","lblMonday":"Lundi","lblTuesday":"Mardi","lblWednesday":"Mercredi","lblThursday":"Jeudi","lblFriday":"Vendredi","lblSaturday":"Samedi","lblFirstDay":"Premier","lblSecondDay":"Deuxième","lblThirdDay":"Troisième","lblFourthDay":"Quatrième","lblCronExpressionText":"Expression Cron","txtInvalidScheduleTitle":"Planification non valide","txtInvalidDatesMessage":"La date de fin doit être postérieure à la date de début. Veuillez la corriger avant de continuer.","txtInvalidScheduleTime":"Les dates de début et de fin spécifiées ne permettront pas à cette planification de s'exécuter. Veuillez les corriger avant de continuer.","txtInvalidStartDate":"Une date de début est requise. Veuillez en indiquer une avant de continuer.","txtInvalidEndDate":"Une date de fin est requise. Veuillez en indiquer une avant de continuer.","_localized":{}}
+,
+'Sage/UI/nls/ListPanel':{"listText":"Liste","summaryText":"Résumé","detailText":"Détail","hideDetailText":"Masquer les détails","unsavedDataText":"*données non enregistrées","helpText":"Aide","refreshText":"Actualiser","overflowText":"Votre recherche a renvoyé un grand nombre de résultats. Veuillez l'affiner en appliquant des filtres.","totalRecordsText":"Nombre total d'enregistrements : ","_localized":{}}
+,
+'Sage/UI/nls/TitleContentPane':{"reduceSelectedGroups":"Seuls ${0} groupes de favoris sont autorisés. Réduisez le nombre sélectionné.","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/BaseListPanelConfig':{"titleFmtString":"${0}","_localized":{}}
+,
+'Sage/UI/nls/SummaryContainer':{"loadingText":"Loading...","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityListPanelConfig':{"colNameComplete":"Terminer","colNameAttachment":"Pièce jointe","colNameRecurring":"Récurrent","colNameAlarm":"Alarme","colNameType":"Type d'activité","colNameStartDate":"Date de début","colNameDuration":"Durée","colNameContact":"Nom","colNameLead":"Lead","colNameAccount":"Compte/Société","colNameCompany":"Société","colNameRegarding":"Objet","colNamePriority":"Priorité","colNameUserId":"Responsable","colNameTimeless":"Heure indéfinie","colNameTypeName":"Type","colNameContactName":"Nom","SnoozeAlarm":"Mettre en veille l'alarme","DismissAlarm":"Ignorer l'alarme","colNameUnConfirmStatus":"Non confirmé","colNameAssociationCount":"Nombre de participants","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/UserActivityDetailSummary':{"txtPhone_Caption":"Téléphone :","lnkOpportunityName_Caption":"Opportunité :","txtStartTime_Caption":"Heure de début :","lnkContactName_Caption":"Contact :","lnkLeadName_Caption":"Lead :","lnkTicketNumber_Caption":"Ticket :","txtLocation_Caption":"Emplacement :","txtLeader_Caption":"Responsable :","txtDuration_Caption":"Durée :","lnkAccountName_Caption":"Compte :","lnkCompanyName_Caption":"Société :","txtNotes_Caption":"Notes :","btnComplete_Caption":"Terminer","txtAttendeeCount_Caption":"Nombre de participants :","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/UserActivityListSummary':{"txtPhone_Caption":"Téléphone :","lnkOpportunity_Caption":"Opportunité :","txtStartTime_Caption":"Heure de début :","lnkContactName_Caption":"Contact :","lnkLeadName_Caption":"Lead :","lnkTicket_Caption":"Ticket :","txtLocation_Caption":"Emplacement :","txtLeader_Caption":"Responsable :","txtDuration_Caption":"Durée :","lnkAccountName_Caption":"Compte :","lnkCompanyName_Caption":"Société :","txtNotes_Caption":"Notes :","btnComplete_Caption":"Terminer","lnkAttendeeCount_Caption":"Nombre de participants :","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/SnoozeOptions':{"fiveMinText":"5 minutes","tenMinText":"10 minutes","fifteenMinText":"15 minutes","thirtyMinText":"30 minutes","oneHourText":"1 heure","twoHourText":"2 heures","fourHourText":"4 heures","eightHourText":"8 heures","oneDayText":"1 jour","twoDayText":"2 jours","threeDayText":"3 jours","oneWeekText":"1 semaine","twoWeekText":"2 semaines","snoozeText":"Mettre en veille","snoozeByText":"Mettre en veille pour :","snoozeAllText":"Mettre tout en veille","snoozeTitle":"Mettre en veille les alarmes","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/AllOpenListSummary':{"txtPhone_Caption":"Téléphone :","lnkOpportunity_Caption":"Opportunité :","txtStartTime_Caption":"Heure de début :","lnkContactName_Caption":"Contact :","lnkLeadName_Caption":"Lead :","lnkTicket_Caption":"Ticket :","txtLocation_Caption":"Emplacement :","txtLeader_Caption":"Responsable :","txtDuration_Caption":"Durée :","lnkAccountName_Caption":"Compte :","lnkCompanyName_Caption":"Société :","txtNotes_Caption":"Notes :","btnComplete_Caption":"Terminer","lnkAttendeeCount_Caption":"Nombre de participants :","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/AllOpenDetailSummary':{"txtPhone_Caption":"Téléphone :","lnkOpportunityName_Caption":"Opportunité :","txtStartTime_Caption":"Heure de début :","lnkContactName_Caption":"Contact :","lnkLeadName_Caption":"Lead :","lnkTicketNumber_Caption":"Ticket :","txtLocation_Caption":"Emplacement :","txtLeader_Caption":"Responsable :","txtDuration_Caption":"Durée :","lnkAccountName_Caption":"Compte :","lnkCompanyName_Caption":"Société :","txtNotes_Caption":"Notes :","btnComplete_Caption":"Terminer","txtAttendeeCount_Caption":"Nombre de participants :","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ConfirmListPanelConfig':{"colNameType":"Type d'activité","colNameNotification":"Notification","colNameStartDate":"Date de début","colNameDuration":"Durée","colNameRegarding":"Objet","colNameFromUser":"De","colNameToUser":"Utilisateur destination","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/ConfirmationListSummary':{"txtPhone_Caption":"Téléphone :","lnkOpportunity_Caption":"Opportunité :","txtStartTime_Caption":"Heure de début :","lnkContactName_Caption":"Contact :","lnkLeadName_Caption":"Lead :","lnkTicket_Caption":"Ticket :","txtLocation_Caption":"Emplacement :","txtLeader_Caption":"Responsable :","txtDuration_Caption":"Durée :","lnkAccountName_Caption":"Compte :","lnkCompanyName_Caption":"Société :","txtNotes_Caption":"Notes :","btnComplete_Caption":"Terminer","txtFromUser_Caption":"De :","btnDelete_Caption":"Supprimer","btnDecline_Caption":"Refuser","btnAccept_Caption":"Accepter","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/ConfirmationDetailSummary':{"txtPhone_Caption":"Téléphone :","lnkOpportunity_Caption":"Opportunité :","txtStartTime_Caption":"Heure de début :","lnkContactName_Caption":"Contact :","lnkLeadName_Caption":"Lead :","lnkTicket_Caption":"Ticket :","txtLocation_Caption":"Emplacement :","txtLeader_Caption":"Responsable :","txtDuration_Caption":"Durée :","lnkAccountName_Caption":"Compte :","lnkCompanyName_Caption":"Société :","txtNotes_Caption":"Notes :","btnComplete_Caption":"Terminer","txtFromUser_Caption":"De :","btnDelete_Caption":"Supprimer","btnDecline_Caption":"Refuser","btnAccept_Caption":"Accepter","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/EventListPanelConfig':{"colNameType":"Type","colNameStartDate":"Date de début","colNameEndDate":"Date de fin","colNameDescription":"Description","colNameUser":"Utilisateur","colNameLocation":"Emplacement","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/EventSummary':{"txtStartDate_Caption":"Date de début :","txtEndDate_Caption":"Date de fin :","txtLocation_Caption":"Emplacement :","txtUser_Caption":"Utilisateur :","txtDescription_Caption":"Description :","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/LitRequestListPanelConfig':{"colNameView":"Affichage","colNameContact":"Contact","colNameDescription":"Description","colNameFillDate":"Renseigné","colNameFillStatus":"Etat","colNameOptions":"Options","colNamePriority":"Priorité","colNameReqestDate":"Date de la demande","colNameSendDate":"Date d'envoi","colNameSendVia":"Envoyer via","colNameTotalCost":"Coût total","colNameFillUser":"Renseigner l'utilisateur","colNameReqestUser":"Demandé par","colNameAccount":"Compte","colNamePostalCode":"Code postal","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/LitRequestSummary':{"txtSendDate_Caption":"Envoyer :","txtScheduled_Caption":"Planifié :","txtStatus_Caption":"Etat :","txtRequestedBy_Caption":"Demandé par :","lnkContact_Caption":"Contact :","txtPriority_Caption":"Priorité :","txtVia_Caption":"Envoyer via :","txtCost_Caption":"Coût total :","txtWorkPhone_Caption":"Téléphone professionnel :","txtPostalCode_Caption":"Code postal :","txtHomePhone_Caption":"Téléphone personnel","lnkAccount_Caption":"Compte :","txtRequestDate_Caption":"Demandé :","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityGroupContextService':{"activityTabDisplayName":"Mes activités","litTabDisplayName":"Documentation","eventTabDisplayName":"Evénements","confirmTabDisplayName":"Confirmations","pastDueTabDisplayName":"En retard","alarmTabDisplayName":"Alarmes","allOpenTabDisplayName":"Ouvert(e)s","_localized":{}}
+,
+'Sage/MainView/nls/ActivityManager':{"titleFmtString":"${0}","tabDisplayNameActivity":"Activités","tabDisplayNameLit":"Documentation","tabDisplayNameEvent":"Evénements","tabDisplayNameConfirm":"Confirmations","activityColNameComplete":"Terminer","activityColNameAttachment":"Pièce jointe","activityColNameRecurring":"Récurrent","activityColNameAlarm":"Alarme","activityColNameType":"ActivityType","activityColNameStartDate":"StartDate","activityColNameDuration":"Durée","activityColNameContact":"Contact","activityColNameLead":"Lead","activityColNameAccount":"Compte","activityColNameRegarding":"Objet","activityColNamePriority":"Priorité","activityColNameUserId":"Responsable","activityTypePhone":"Téléphone","activityTypeCall":"Appel","activityTypeMeeting":"Rendez-vous","activityTypePersonal":"Personnel","_localized":{}}
+,
+'Sage/Extensions/Activity/ListPanelOverrides/nls/ActivityListPanelConfig':{"colNameAssociationCount":"Nombre de participants","_localized":{}}
+,
+'Sage/Extensions/Activity/ListPanelOverrides/nls/AllOpenListPanelConfig':{"colNameAssociationCount":"Nombre de participants","_localized":{}}
+,
+'Sage/MainView/nls/SecurityManager':{"accessText":"Accès","columnText":"Colonne","entityText":"Entité","noAccessText":"Aucun accès","profilesText":"Profils","propertyText":"Propriété","securityManagerText":"Gestionnaire de sécurité","readOnlyText":"Lecture seule","readWriteText":"Lecture Ecriture","resetText":"Réinitialiser","saveText":"Enregistrer","tableText":"Table","descriptionText":"Description","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityCalendar':{"completedText":"(Terminé)","_localized":{}}
+,
+'Sage/MainView/Contact/nls/ContactSearchForDuplicates':{"svAccount_Caption":"Compte :","svCompany_Caption":"Société :","svEmail_Caption":"E-mail :","svName_Caption":"Nom :","svTitle_Caption":"Titre :","svType_Caption":"Type :","svSubType_Caption":"Sous-type :","svAccMgr_Caption":"Resp. du compte :","svHomePhone_Caption":"Téléphone personnel :","svWorkPhone_Caption":"Téléphone professionnel :","svMobilePhone_Caption":"Téléphone portable :","svStatus_Caption":"Etat :","svWebAddress_Caption":"Web :","svEntityAccount_Caption":"Compte","svEntityLead_Caption":"Lead","svEntityContact_Contact":"Contact","svTollFree_Caption":"Numéro vert :","svIndustry_Caption":"Secteur :","svDivision_Caption":"Division :","svMainPhone_Caption":"Téléphone principal :","LeadSummaryView_Title":"Vue Résumé - Lead","ContactSummaryView_Title":"Vue Résumé - Contact","AccountSummaryView_Title":"Vue Résumé - Compte","closeText":"Fermer","errorLoadingSummaryView":"Une erreur s'est produite lors du chargement de la vue Résumé : ${0}","_localized":{}}
+,
+'Sage/MainView/Contact/nls/ContactUserAssociationEditor':{"btnCancel_Caption":"Annuler","btnOK_Caption":"OK","dialogTitleText":"Associer un contact à un utilisateur","associateContactText":"Associer le contact sélectionné à l'utilisateur suivant","user_Caption":"Utilisateur","lookupUserText":"Rechercher un utilisateur","lookupNameColText":"Nom","lookupTitleColText":"Titre","lookupDepartmentColText":"Service","lookupRegionColText":"Région","lookupTypeColText":"Type","disAssociateTitle":"Dissocier d'un utilisateur","associationExistsMessage":"L'utilisateur sélectionné est déjà associé à un contact. Veuillez choisir un autre utilisateur.","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/MatchingOptionsConfig':{"matchingCaption":"Modifier les critères de correspondance","matchingHeader":"Critères de correspondance pour ","matchingDescription":"Ajouter ou supprimer des opérateurs pour définir le critère de correspondance pour tous les utilisateurs qui associent les enregistrements Saleslogix à un système de comptabilité. Ces critères déterminent les résultats renvoyés lors de la recherche des enregistrements correspondants entre les systèmes de comptabilité.","propertyText":"Propriété","operatorText":"Opérateur","loadingText":"Chargement...","filter_AddCondition":"Ajouter une condition","filter_RemoveCondition":"Supprimer la condition","error_InvalidEndpoint":"Veuillez spécifier un point de terminaison valide avant de continuer.","okText":"OK","cancelText":"Annuler","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/AdvancedSearchOptions':{"dialogCaption":"Lien vers la comptabilité","searchOptionsHeader":"Rechercher les correspondances dans ","searchOptionsText":"Les critères suivants ont été utilisés dans la recherche précédente. Modifiez les critères pour une nouvelle recherche. Cliquez sur OK pour commencer la recherche.","propertyText":"Propriété","operatorText":"Opérateur","searchText":"Valeur de recherche","loadingText":"Chargement...","loadingDisplay":"Recherche des résultats...","hideImgAltText":"Supprimer la condition","addImgAltText":"Ajouter une condition","okText":"OK","cancelText":"Annuler","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/BaseListPanelConfig':{"titleFmtString":"${0}","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/ExecutionsListPanelConfig':{"loadingText":"Chargement...","colNameJobName":"Type","colNameUser":"Utilisateur","colNamePhase":"Phase","colNamePhaseDetail":"Détails de la phase","colNameProgress":"Progression","colNameElapsed":"Temps écoulé","colNameStatus":"Etat","colNameResult":"Résultat","_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/ExecutionsListSummary':{"_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/ExecutionDetailSummary':{"txtJobName_Caption":"Type :","txtUser_Caption":"Utilisateur :","txtTriggerId_Caption":"Résultat :","txtScheduledStartTime_Caption":"Heure de début planifiée :","txtStartTime_Caption":"Heure de début effective :","txtPhase_Caption":"Phase :","txtPhaseDetail_Caption":"Détails de la phase :","txtProgress_Caption":"Progression :","txtElapsedTime_Caption":"Temps écoulé :","txtRemainingTime_Caption":"Temps restant :","txtStatus_Caption":"Etat :","txtResult_Caption":"Résultat :","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/JobDefinitionsListPanelConfig':{"colNameJobName":"Nom de la tâche","colNameDescription":"Description","colNameType":"Type","_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/JobDefinitionsListSummary':{"_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/JobDefinitionDetailSummary':{"txtJobName_Caption":"Nom de la tâche :","txtDescription_Caption":"Description :","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/SchedulesListPanelConfig':{"colNameTriggerName":"Planification","colNameJobName":"Nom de la tâche","colNameUser":"Planifié par","colNameStartTimeUtc":"Heure de début","colNameEndTimeUtc":"Heure de fin","colNamePriority":"Priorité","colNameStatus":"Etat","colNameTimesTriggered":"Nombre d'exécutions","_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/SchedulesListSummary':{"_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/ScheduleDetailSummary':{"txtScheduleName_Caption":"Planification :","txtJobName_Caption":"Nom de la tâche :","txtUser_Caption":"Planifié par :","txtRunAs_Caption":"Exécuter comme :","txtStartTime_Caption":"Heure de début :","txtEndTime_Caption":"Heure de fin :","txtNextRunTime_Caption":"Prochaine exécution :","txtRepeatCount_Caption":"Nombre de répétitions :","txtRepeatInterval_Caption":"Intervalle de répétition :","txtPriority_Caption":"Priorité :","txtStatus_Caption":"Etat :","txtExecutionCount_Caption":"Nombre d'exécutions :","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/JobManagerGroupContextService':{"executionsTabDisplayName":"Exécutions","jobDefinitionsTabDisplayName":"Définitions","schedulesTabDisplayName":"Planifications","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/RunJobDialog':{"dlgRunJob_Title":"Exécuter/planifier une tâche","txtJobName_Caption":"Nom de la tâche","txtTriggerDescription_Caption":"Description","cmbScheduleType_Caption":"Planification","cmdOK_Caption":"OK","cmdCancel_Caption":"Annuler","txtInvalidNumber":"Nombre non valide.","contentPaneParameters_Caption":"Paramètres","txtRunNow":"Exécuter maintenant","txtScheduledExecution":"Exécution planifiée","colName_Caption":"Nom","colValue_Caption":"Valeur","colDescription_Caption":"Description","txtInvalidParameterTitle":"Paramètre non valide","txtInvalidParameterMessage":"Paramètre non valide : ${0}","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/JobManagerActions':{"txtInterruptExecutionMessage":"Un signal a été envoyé à l'action afin d'en interrompre l'exécution.","txtInterruptExecutionTitle":"Annuler l'action","txtInterruptExecutionConfirmationMessage":"Voulez-vous vraiment annuler l'exécution de l'action ${0} ?","txtYes":"Oui","txtNo":"Non","completedJobMessage":"La tâche sélectionnée a déjà été exécutée.","jobStatusComplete":"Terminer","error_NoRecordSelected":"Vous devez sélectionner un enregistrement pour pouvoir continuer.","confirm_ScheduleDeletion":"Voulez-vous vraiment supprimer la planification sélectionnée ?","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportsListPanelConfig':{"colNameReportName":"Nom","colNameType":"Type","colNameTable":"Table","colNameCreateUser":"Créé par","colNameCreateDate":"Date de création","colNameLastExecutionDate":"Dernière exécution","colNameLastExecutionUser":"Dernière exécution par","colNameModifyUser":"Modifié par","colNameModifyDate":"Date de modification","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerFormatter':{"txtTrue":"Vrai","txtFalse":"Faux","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/ReportsListSummary':{"txtTrue":"Vrai","txtFalse":"Faux","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/ReportDetailSummary':{"txtReportName_Caption":"Nom :","txtReportType_Caption":"Type :","txtTable_Caption":"Table :","txtCreateUser_Caption":"Créé par :","txtCreateDate_Caption":"Date de création :","txtModifyUser_Caption":"Modifié par :","txtModifyDate_Caption":"Date de modification :","txtUserField_Caption":"Champ utilisateur :","txtDateField_Caption":"Champ date :","txtUseGroupFilter_Caption":"Utiliser le filtre de groupe :","txtUseUserFilter_Caption":"Utiliser le filtre d'utilisateur :","txtUseDateFilter_Caption":"Utiliser le filtre de date :","txtFileName_Caption":"Nom du fichier :","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/SchedulesListPanelConfig':{"colJobName":"Nom de la tâche","colNameDescription":"Description","colNameRunAsUser":"Planifié par","colNameLastExecutionDate":"Dernière exécution","colNameExecutionCount":"Nombre d'exécutions","colNameStartTimeUtc":"Heure de début","colNameEndTimeUtc":"Heure de fin","colNamePriority":"Priorité","colNameStatus":"Etat","colNameTemplate":"Modèle","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/SchedulesListSummary':{"txtTrue":"Vrai","txtFalse":"Faux","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/ScheduleDetailSummary':{"txtScheduleName_Caption":"Nom de la tâche :","txtDescription_Caption":"Description :","txtRunAsUser_Caption":"Exécuter comme :","txtScheduledBy_Caption":"Planifié par :","txtOutputFormat_Caption":"Format de sortie :","txtFrequency_Caption":"Fréquence :","txtUser_Caption":"Auteur :","txtLastExecutionDate_Caption":"Dernière exécution :","txtExecutionCount_Caption":"Nombre d'exécutions :","txtReportName_Caption":"Rapport :","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/HistoryListPanelConfig':{"colNameDate":"Date","colNameScheduleName":"Description","colNameExecutionType":"Type d'exécution","colNameRunAs":"Exécuter comme","colNameScheduledBy":"Planifié par","colNameReportName":"Rapport","colNameSize":"Taille de fichier","colNameOutputFormat":"Format de sortie","colNameReportType":"Type","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/HistoryListSummary':{"txtTrue":"Vrai","txtFalse":"Faux","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/HistoryDetailSummary':{"txtCreateDate_Caption":"Date de création :","txtReportType_Caption":"Type de rapport :","txtOutputFormat_Caption":"Format de sortie :","txtRunAsUser_Caption":"Exécuter comme :","txtExecutionType_Caption":"Type d'exécution :","txtScheduleName_Caption":"Description :","txtScheduledBy_Caption":"Planifié par :","txtFileSize_Caption":"Taille de fichier :","txtElapsedTime_Caption":"Temps écoulé :","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerGroupContextService':{"reportsTabDisplayName":"Rapports","schedulesTabDisplayName":"Planifications","historyTabDisplayName":"Historique","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerActions':{"txtSelectRecord":"Veuillez sélectionner un enregistrement dans la liste avant de continuer.","txtInvalidSelectionCount":"Vous devez sélectionner au moins un enregistrement pour pouvoir continuer.","confirm_Deletion":"Voulez-vous vraiment supprimer l'${0} sélectionné ?","confirm_Report":"Rapport","confirm_Schedule":"Planification","confirm_ReportHistory":"Enregistrement d'historique du rapport","txtYes":"Oui","txtNo":"Non","deleteJobError":"Une erreur s'est produite lors du processus de suppression : ${0}","txtDeleteHistory":"Suppression d'enregistrements d'historique","txtDeleteTitle":"Supprimer l'historique","txtErrorDeleteReport":"Une erreur s'est produite lors de la suppression du rapport : ${0}","_localized":{}}
+,
+'Sage/MainView/EntityMgr/nls/EntityListPanelConfig':{"colNameEntityName":"Nom","colNameType":"Type","colNameTable":"Table","colNameCreateUser":"Créé par","colNameCreateDate":"Date de création","colNameLastExecutionDate":"Dernière exécution","colNameLastExecutionUser":"Dernière exécution par","colNameModifyUser":"Modifié par","colNameModifyDate":"Date de modification","colNameEntityDisplayName":"Nom d'affichage","colNameEntityTableName":"Table","colNamePropertyCount":"Nombre de propriétés","colNameFilterCount":"Nombre de filtres","colNameMetricCount":"Nombre de mesures","colNamePackage":"Package","owner":"Propriétaire","assignTo":"Affecter à","newACI":"Nouveau domaine/catégorie/problème","insertACI":"Insérer domaine/catégorie/problème","autoAssign":"Auto-affectation","areaCatIssue":"Domaine/catégorie/problème","lookupACI":"Rechercher domaine/catégorie/problème","displayName":"Nom d'affichage","displayPluralName":"Afficher le nom au pluriel","Title":"Titre","IsExtension":"IsExtension","Audited":"Audité","OK":"OK","Cancel":"Annuler","_localized":{}}
+,
+'Sage/MainView/EntityMgr/templates/nls/EntityListSummary':{"txtTrue":"Vrai","txtFalse":"Faux","_localized":{}}
+,
+'Sage/MainView/EntityMgr/templates/nls/EntityDetailSummary':{"txtReportName_Caption":"Nom :","txtReportType_Caption":"Type :","txtTable_Caption":"Table :","txtCreateUser_Caption":"Créé par :","txtCreateDate_Caption":"Date de création :","txtModifyUser_Caption":"Modifié par :","txtModifyDate_Caption":"Date de modification :","txtUserField_Caption":"Champ utilisateur :","txtDateField_Caption":"Champ date :","txtUseGroupFilter_Caption":"Utiliser le filtre de groupe :","txtUseUserFilter_Caption":"Utiliser le filtre d'utilisateur :","txtUseDateFilter_Caption":"Utiliser le filtre de date :","txtFileName_Caption":"Nom du fichier :","_localized":{}}
+,
+'Sage/MainView/EntityMgr/nls/EntityManagerGroupContextService':{"entityTabDisplayName":"Entités","schedulesTabDisplayName":"Planifications","historyTabDisplayName":"Historique","filterName":"Nom","filterDisplayName":"Nom d'affichage","filterEntityName":"Nom de l'entité","filterModifiedDate":"Date de modification","filterHasMeasure":"A une mesure","filterHasMetric":"A une mesure","filterHasFilter":"A un filtre","_localized":{}}
+,
+'Sage/MainView/Options/nls/OptionsDialog':{"txtOptions":"Options","txtColumns":"Colonnes","txtZero":"(0 affiche toutes les colonnes de groupe)","txtHideOnSelection":"Masquer la liste de groupe étendue dans la sélection des enregistrements","txtDisplayExtendedGroupListOnLookup":"Afficher la liste de groupe étendue lors de la recherche","cmdOk_Caption":"OK","cmdCancel_Caption":"Annuler","txtListView":"Vue Liste","txtDetailView":"Vue Détails","txtStayInDetailViewOnLookup":"Rester en vue Détails lors de la recherche","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/ControlDesigner':{"displayNameText":"","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/_PropertyEditor':{"titleText":"Propriétés","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/LayoutPropertyEditor':{"titleText":"Présentation","positionText":"Emplacement","sizeText":"Taille","rowText":"Ligne :","rowTooltipText":"Numéro de ligne du contrôle.","columnText":"Colonne :","columnTooltipText":"Numéro de colonne du contrôle.","rowSpanText":"Largeur de ligne :","rowSpanTooltipText":"Nombre de cellules que le contrôle occupe verticalement.","columnSpanText":"Largeur de colonne :","columnSpanTooltipText":"Nombre de cellules que le contrôle occupe horizontalement.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/GenericBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/GenericAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","controlInfoText":"Info contrôle","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/GenericControlDesigner':{"displayNameText":"Inconnu","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/NonVisibleAdvancedPropertyEditor':{"titleText":"Avancé","controlInfoText":"Info contrôle","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/HiddenControlDesigner':{"displayNameText":"Texte masqué","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/TextBoxBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","linesText":"Lignes :","linesTooltipText":"Nombre de lignes de texte affichées.","isReadOnlyText":"Lecture seule :","isReadOnlyTooltipText":"Ne permet pas les modifications.","toolTipText":"Info-bulle :","toolTipTooltipText":"Court texte d'aide concernant le contrôle.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/TextBoxAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlLabelPlacementText":"Placement du libellé :","controlLabelPlacementTooltipText":"Position du libellé par rapport au contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","defaultDataBindingText":"Associations de données :","defaultDataBindingTooltipText":"Champ(s) de données dans la base de données utilisée par ce contrôle.","enabledText":"Activé :","enabledTooltipText":"Permet à l'utilisateur d'interagir avec ce contrôle.","maxLengthText":"Longueur max. :","maxLengthTooltipText":"Nombre maximal de caractères que l'utilisateur peut saisir.","requiredText":"Obligatoire :","requiredTooltipText":"Requiert une valeur lors de l'enregistrement des données.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","labelPlacementText":{"left":"Gauche","right":"Droite","top":"Haut","none":"Aucun(e)"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/TextBoxControlDesigner':{"displayNameText":"TextBox","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/UrlControlDesigner':{"displayNameText":"URL","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/PhoneControlDesigner':{"displayNameText":"Téléphone","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/EmailControlDesigner':{"displayNameText":"E-mail","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CheckBoxBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","isReadOnlyText":"Lecture seule :","isReadOnlyTooltipText":"Ne permet pas les modifications.","toolTipText":"Info-bulle :","toolTipTooltipText":"Court texte d'aide concernant le contrôle.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CheckBoxAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","checkedText":"Vérifié :","checkedTooltipText":"Définit l'état par défaut de la case à cocher comme sélectionnée.","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlLabelPlacementText":"Placement du libellé :","controlLabelPlacementTooltipText":"Position du libellé par rapport au contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","defaultDataBindingText":"Associations de données :","defaultDataBindingTooltipText":"Champ(s) de données dans la base de données utilisée par ce contrôle.","enabledText":"Activé :","enabledTooltipText":"Permet à l'utilisateur d'interagir avec ce contrôle.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","labelPlacementText":{"left":"Gauche","right":"Droite","top":"Haut","none":"Aucun(e)"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/CheckBoxControlDesigner':{"displayNameText":"Case à cocher","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/PickListBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","isReadOnlyText":"Lecture seule :","isReadOnlyTooltipText":"Ne permet pas les modifications.","toolTipText":"Info-bulle :","toolTipTooltipText":"Court texte d'aide concernant le contrôle.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/PickListAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","allowMultiplesText":"Autoriser les sélections multiples :","allowMultiplesTooltipText":"Permet à l'utilisateur de sélectionner plusieurs éléments.","canEditTextText":"Peut modifier le texte :","canEditTextTooltipText":"Permet à l'utilisateur de saisir une valeur.","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlLabelPlacementText":"Placement du libellé :","controlLabelPlacementTooltipText":"Position du libellé par rapport au contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","defaultDataBindingText":"Associations de données :","defaultDataBindingTooltipText":"Champ(s) de données dans la base de données utilisée par ce contrôle.","displayModeText":"Mode d'affichage :","displayModeTooltipText":"Mode d'affichage du contrôle : zone de texte, lien hypertexte ou texte brut.","enabledText":"Activé :","enabledTooltipText":"Permet à l'utilisateur d'interagir avec ce contrôle.","maxLengthText":"Longueur max. :","maxLengthTooltipText":"Nombre maximal de caractères que l'utilisateur peut saisir.","mustExistInListText":"L'élément doit exister :","mustExistInListTooltipText":"Nécessite que la valeur saisie soit dans la liste.","pickListNameText":"Nom de la liste de sélection :","pickListNameTooltipText":"Nom de la liste des valeurs que l'utilisateur peut sélectionner lors de la saisie des données.","requiredText":"Obligatoire :","requiredTooltipText":"Requiert une valeur lors de l'enregistrement des données.","storageModeText":"Mode de stockage :","storageModeTooltipText":"Façon dont la valeur est stockée : texte, id ou code.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","labelPlacementText":{"left":"Gauche","right":"Droite","top":"Haut","none":"Aucun(e)"},"displayModeTypeText":{"AsControl":"Comme contrôle","AsText":"Comme texte","AsHyperlink":"Comme lien hypertexte"},"storageModeTypeText":{"Text":"Texte","Id":"ID","Code":"Code"},"pickListRequestErrorText":"Impossible de récupérer les listes de sélection du serveur.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/PickListControlDesigner':{"displayNameText":"Liste de sélection","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/ComboBoxBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","isReadOnlyText":"Lecture seule :","isReadOnlyTooltipText":"Ne permet pas les modifications.","toolTipText":"Info-bulle :","toolTipTooltipText":"Court texte d'aide concernant le contrôle.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/ComboBoxAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","itemGroupText":"Eléments","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlLabelPlacementText":"Placement du libellé :","controlLabelPlacementTooltipText":"Position du libellé par rapport au contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","dataSourceText":"Source de données :","dataSourceTooltipText":"Source des données de ce contrôle, par exemple un autre contrôle ou une entité.","defaultDataBindingText":"Associations de données :","defaultDataBindingTooltipText":"Champ(s) de données dans la base de données utilisée par ce contrôle.","enabledText":"Activé :","enabledTooltipText":"Permet à l'utilisateur d'interagir avec ce contrôle.","itemsText":"Eléments :","itemsTooltipText":"Valeurs que l'utilisateur peut sélectionner.","textFieldText":"Champ de texte :","textFieldTooltipText":"Le nom du champ de source de données utilisé pour renseigner la partie texte visible des éléments de la liste.","valueFieldText":"Champ de valeur :","valueFieldTooltipText":"Le nom du champ de source de données utilisé pour renseigner la partie valeur des éléments de la liste.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","labelPlacementText":{"left":"Gauche","right":"Droite","top":"Haut","none":"Aucun(e)"},"hasItemsText":"Défini","noItemsText":"Non défini","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/ComboBoxControlDesigner':{"displayNameText":"ComboBox","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/UserBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","isReadOnlyText":"Lecture seule :","isReadOnlyTooltipText":"Ne permet pas les modifications.","toolTipText":"Info-bulle :","toolTipTooltipText":"Court texte d'aide concernant le contrôle.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/UserAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlLabelPlacementText":"Placement du libellé :","controlLabelPlacementTooltipText":"Position du libellé par rapport au contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","defaultDataBindingText":"Associations de données :","defaultDataBindingTooltipText":"Champ(s) de données dans la base de données utilisée par ce contrôle.","enabledText":"Activé :","enabledTooltipText":"Permet à l'utilisateur d'interagir avec ce contrôle.","lookupBindingModeText":"Mode d'association de la recherche :","lookupBindingModeTooltipText":"Indique si vous souhaitez effectuer une association à un objet d'entité ou à une valeur de chaîne.","requiredText":"Obligatoire :","requiredTooltipText":"Requiert une valeur lors de l'enregistrement des données.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","labelPlacementText":{"left":"Gauche","right":"Droite","top":"Haut","none":"Aucun(e)"},"bindingModeText":{"Object":"Objet","String":"Chaîne"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/UserControlDesigner':{"displayNameText":"Utilisateur","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/OwnerBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","isReadOnlyText":"Lecture seule :","isReadOnlyTooltipText":"Ne permet pas les modifications.","toolTipText":"Info-bulle :","toolTipTooltipText":"Court texte d'aide concernant le contrôle.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/OwnerAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlLabelPlacementText":"Placement du libellé :","controlLabelPlacementTooltipText":"Position du libellé par rapport au contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","defaultDataBindingText":"Associations de données :","defaultDataBindingTooltipText":"Champ(s) de données dans la base de données utilisée par ce contrôle.","enabledText":"Activé :","enabledTooltipText":"Permet à l'utilisateur d'interagir avec ce contrôle.","requiredText":"Obligatoire :","requiredTooltipText":"Requiert une valeur lors de l'enregistrement des données.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","labelPlacementText":{"left":"Gauche","right":"Droite","top":"Haut","none":"Aucun(e)"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/OwnerControlDesigner':{"displayNameText":"Propriétaire","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DateTimePickerBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","displayDateText":"Afficher la date :","displayDateTooltipText":"Afficher la partie date.","displayTimeText":"Afficher l'heure :","displayTimeTooltipText":"Afficher la partie heure.","isReadOnlyText":"Lecture seule :","isReadOnlyTooltipText":"Ne permet pas les modifications.","toolTipText":"Info-bulle :","toolTipTooltipText":"Court texte d'aide concernant le contrôle.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DateTimePickerAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","buttonToolTipText":"Info-bulle de bouton :","buttonToolTipTooltipText":"Info-bulle à afficher lorsque l'utilisateur déplace le curseur de la souris sur la partie bouton du contrôle.","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlLabelPlacementText":"Placement du libellé :","controlLabelPlacementTooltipText":"Position du libellé par rapport au contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","defaultDataBindingText":"Associations de données :","defaultDataBindingTooltipText":"Champ(s) de données dans la base de données utilisée par ce contrôle.","displayModeText":"Mode d'affichage :","displayModeTooltipText":"Mode d'affichage du contrôle : zone de texte, lien hypertexte ou texte brut.","enabledText":"Activé :","enabledTooltipText":"Permet à l'utilisateur d'interagir avec ce contrôle.","requiredText":"Obligatoire :","requiredTooltipText":"Requiert une valeur lors de l'enregistrement des données.","timelessText":"Heure indéfinie :","timelessTooltipText":"Utiliser la date sans heure et sans conversion DST.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","labelPlacementText":{"left":"Gauche","right":"Droite","top":"Haut","none":"Aucun(e)"},"displayModeTypeText":{"AsControl":"Comme contrôle","AsText":"Comme texte","AsHyperlink":"Comme lien hypertexte"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DateTimePickerControlDesigner':{"displayNameText":"Sélecteur de DateTime","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DataGridBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","dataText":"Données","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","pageSizeText":"Taille de la page :","pageSizeTooltipText":"Nombre d'enregistrements de la grille à afficher sur une seule page.","resizableColumnsText":"Colonnes redimensionnables :","resizableColumnsTooltipText":"Permet à l'utilisateur de redimensionner les colonnes.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DataGridAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","dataSourceText":"Source de données :","dataSourceTooltipText":"Source des données de ce contrôle, par exemple un autre contrôle ou une entité.","emptyTableRowText":"Texte de la ligne de la table vide :","emptyTableRowTooltipText":"Texte à afficher si aucune donnée n'est affichée dans la grille.","expandableRowsText":"Lignes extensibles :","expandableRowsTooltipText":"Permet à l'utilisateur d'étendre les lignes de la grille pour afficher plus de texte.","renderVerticalText":"Rendre vertical :","renderVerticalTooltipText":"Afficher les lignes de la grille comme des colonnes.","showSortIconText":"Afficher l'icône de tri :","showSortIconTooltipText":"Afficher l'icône de tri sur les colonnes triables.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DataGridControlDesigner':{"displayNameText":"Grille de données","emptyTableRowStringText":"Aucun enregistrement ne correspond aux critères de sélection.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/NumericBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","isReadOnlyText":"Lecture seule :","isReadOnlyTooltipText":"Ne permet pas les modifications.","toolTipText":"Info-bulle :","toolTipTooltipText":"Court texte d'aide concernant le contrôle.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/NumericAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlLabelPlacementText":"Placement du libellé :","controlLabelPlacementTooltipText":"Position du libellé par rapport au contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","decimalDigitsText":"Décimales :","decimalDigitsTooltipText":"Nombre de chiffres après la virgule à afficher et à autoriser pour la saisie des données.","defaultDataBindingText":"Associations de données :","defaultDataBindingTooltipText":"Champ(s) de données dans la base de données utilisée par ce contrôle.","enabledText":"Activé :","enabledTooltipText":"Permet à l'utilisateur d'interagir avec ce contrôle.","formatTypeText":"Type de format :","formatTypeTooltipText":"Type de format à utiliser lors de la conversion d'un nombre en chaîne.","maxLengthText":"Longueur max. :","maxLengthTooltipText":"Nombre maximal de caractères que l'utilisateur peut saisir.","requiredText":"Obligatoire :","requiredTooltipText":"Requiert une valeur lors de l'enregistrement des données.","strictText":"Strict :","strictTooltipText":"Affichage d'un nombre avec des zéros de fin si nécessaire.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","numberFormatText":{"Number":"Nombre","Percent":"Pourcentage","Decimal":"Décimal","Scientific":"Scientifique"},"labelPlacementText":{"left":"Gauche","right":"Droite","top":"Haut","none":"Aucun(e)"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/NumericControlDesigner':{"displayNameText":"Numérique","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DesignPanel':{"cultureListText":{"iv":"[Invariable]","de_DE":"de-DE","fr_FR":"fr-FR","it_IT":"it-IT","ru_RU":"ru-RU"},"helpText":"Aide","saveText":"Enregistrer","cultureText":"Culture :","loadingText":"Chargement...","savingText":"Enregistrement...","saveErrorText":"Une erreur s'est produite lors de l'enregistrement du formulaire.","readErrorText":"Impossible de charger le formulaire demandé.","cultureReloadConfirmText":"Des modifications n'ont pas été enregistrées. Souhaitez-vous vraiment recharger le formulaire avec une culture différente ?","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CurrencyBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","behaviorText":"Comportement","captionText":"Légende :","captionTooltipText":"Libellé à afficher sur le formulaire pour ce contrôle.","captionAlignmentText":"Alignement de la légende :","captionAlignmentTooltipText":"Justification du texte du libellé.","isReadOnlyText":"Lecture seule :","isReadOnlyTooltipText":"Ne permet pas les modifications.","toolTipText":"Info-bulle :","toolTipTooltipText":"Court texte d'aide concernant le contrôle.","alignmentText":{"left":"Gauche","center":"Centre","right":"Droite"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CurrencyAdvancedPropertyEditor':{"titleText":"Avancé","appearanceText":"Apparence","behaviorText":"Comportement","controlInfoText":"Info contrôle","dataText":"Données","controlIdText":"ID de contrôle :","controlIdTooltipText":"Identifiant pour ce contrôle.","controlLabelPlacementText":"Placement du libellé :","controlLabelPlacementTooltipText":"Position du libellé par rapport au contrôle.","controlTypeText":"Type de contrôle :","controlTypeTooltipText":"Type de contrôle Saleslogix.","decimalDigitsText":"Décimales :","decimalDigitsTooltipText":"Nombre de chiffres après la virgule à afficher et à autoriser pour la saisie des données.","defaultDataBindingText":"Associations de données :","defaultDataBindingTooltipText":"Champ(s) de données dans la base de données utilisée par ce contrôle.","displayCurrencyCodeText":"Afficher le code du taux de change :","displayCurrencyCodeTooltipText":"Afficher le code de devise de trois caractères lorsque l'option Multidevises est activée.","displayModeText":"Mode d'affichage :","displayModeTooltipText":"Mode d'affichage du contrôle : zone de texte, lien hypertexte ou texte brut.","enabledText":"Activé :","enabledTooltipText":"Permet à l'utilisateur d'interagir avec ce contrôle.","exchangeRateTypeText":"Type de taux de change :","exchangeRateTypeTooltipText":"Type de taux de change à afficher dans les champs devise.","maxLengthText":"Longueur max. :","maxLengthTooltipText":"Nombre maximal de caractères que l'utilisateur peut saisir.","requiredText":"Obligatoire :","requiredTooltipText":"Requiert une valeur lors de l'enregistrement des données.","visibleText":"Visible :","visibleTooltipText":"Afficher ou masquer ce contrôle sur le formulaire.","displayTypeText":{"AsHyperlink":"Comme lien hypertexte","AsControl":"Comme contrôle","AsText":"Comme texte"},"exchangeTypeText":{"BaseRate":"Taux de base","OpportunityRate":"Taux d'opportunité (déprécié)","MyRate":"Mon taux","SalesOrderRate":"Taux du bon de commande (Déprécié)","EntityRate":"Taux de l'entité"},"labelPlacementText":{"left":"Gauche","right":"Droite","top":"Haut","none":"Aucun(e)"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/CurrencyControlDesigner':{"displayNameText":"Devise","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/EditableGridControlDesigner':{"displayNameText":"Grille modifiable","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/RowBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","indexText":"Index :","indexTooltipText":"Numéro de la ligne ou colonne, à partir de zéro.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/RowDesigner':{"displayNameText":"Ligne","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/ColumnBasicPropertyEditor':{"titleText":"Base","appearanceText":"Apparence","indexText":"Index :","indexTooltipText":"Numéro de la ligne ou colonne, à partir de zéro.","widthText":"Largeur :","widthTooltipText":"Largeur de cette colonne de contrôles.","sizeTypeText":"Type de taille :","sizeTypeTooltipText":"Méthode de dimensionnement : absolu, taille auto ou en pourcentage.","rowSizeTypeText":{"Absolute":"Absolu","Percent":"Pourcentage","AutoSize":"Taille auto"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/ColumnDesigner':{"displayNameText":"Colonne","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/FormBasicPropertyEditor':{"titleText":"Base","generalText":"Général","activeControlText":"Contrôle actif :","activeControlTooltipText":"Contrôle sur lequel commence le curseur de l'utilisateur.","descriptionText":"Description :","descriptionTooltipText":"Description optionnelle de l'objet du formulaire.","nameText":"Nom :","nameTooltipText":"Identifiant de formulaire utilisé par le système.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/FormAdvancedPropertyEditor':{"titleText":"Avancé","generalText":"Général","useEntityNameAsTitleText":"Utiliser le nom de l'entité comme titre :","useEntityNameAsTitleTooltipText":"Utiliser le nom de l'entité courante comme titre de formulaire.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/FormUsagesPropertyEditor':{"titleText":"Utilisation","portalText":"Portail","viewText":"Affichage","modesText":"Modes","descriptionText":"Description","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/FormDesigner':{"displayNameText":"Formulaire","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DesignSurface':{"bisectionErrorText":"Ce placement provoquera le découpage d'un autre contrôle.","rowBoundsErrorText":"La ligne choisie est hors limites.","columnBoundsErrorText":"La colonne choisie est hors limites.","rowSpanBoundsErrorText":"La largeur de la ligne choisie est hors limites.","columnSpanBoundsErrorText":"La largeur de la colonne choisie est hors limites.","occupiedErrorText":"Il n'y a pas assez d'espace libre pour la taille choisie.","aboveText":"Au-dessus","belowText":"Au-dessous","leftText":"Gauche","rightText":"Droite","insertRowText":"Insérer une ligne","deleteRowText":"Supprimer une ligne","deleteColumnText":"Supprimer la colonne","insertColumnText":"Insérer une colonne","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/NonVisibleControlContainer':{"headerText":"Contrôles non visuels","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/PropertyEditorContainer':{"specificTitleFormatText":"Propriétés de ${0} (${1})","genericTitleFormatText":"Propriétés de ${0}","_localized":{}}
+,
+'Sage/MainView/nls/FormManager':{"nameText":"Nom","entityText":"Entité","layoutText":"Présentation","titleFmtString":"Concepteur de formulaire - ${0}","pageTitle":"Saleslogix - Concepteur de formulaire","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupsListPanelConfig':{"AdHoc":"Ad hoc","Dev":"Dev","Rel":"Partagé","Family":"Famille","Name":"Nom","DisplayName":"Nom d'affichage","Owner":"Propriétaire","SharedDate":"Date de partage","Type":"Type","CreateDate":"Date de création","ModifyDate":"Date de modification","Author":"Auteur","Company":"Société","Version":"Version","UserDefault":"Valeurs par défaut utilisateur","_localized":{}}
+,
+'Sage/UI/nls/Boolean':{"yesText":"Oui","noText":"Non","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupManagerActions':{"SelectRecordMsg":"Vous devez sélectionner au moins un enregistrement pour pouvoir continuer.","SelectRecordMsgSingle":"Vous devez sélectionner un seul enregistrement pour pouvoir continuer.","ConfirmDeletionMsg":"Voulez-vous vraiment ${0} la sélection de ${1} ?","SelectedGroups":"groupe(s) (partages compris)","SelectedReleases":"groupe(s) partagé(s)","SelectedStatistics":"Statistiques du groupe","Yes":"Oui","No":"Non","Reset":"Réinitialiser","Delete":"Supprimer","InvalidSelectedGroup":"Le groupe sélectionné est partagé. Sélectionnez un groupe non partagé dont vous êtes propriétaire ou que vous contrôlez.","NotDeveloperGroup":"Le groupe sélectionné n'est plus en cours de développement.","NotGroupOwner":"Vous n'êtes pas propriétaire du groupe sélectionné. Sélectionnez un groupe dont vous êtes propriétaire ou que vous contrôlez.","OK":"OK","SelectOwner":"Sélectionner le propriétaire","FirstName":"Prénom","LastName":"Nom","UserName":"Nom d'utilisateur","Type":"Type","ConfirmDeletionMsgSelectedGroups":"Are you sure you want to delete the selected group(s) (including shares)?","ConfirmResetMsgSelectedStatics":"Are you sure you want to reset the selected group statistics?","ConfirmDeletionMsgSelectedReleases":"Are you sure you want to delete the selected shared group(s)?","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupManagerFormatter':{"ACOGroup":"Groupe ACO","Group":"Groupe","Unknown":"Inconnu","Yes":"Oui","No":"Non","_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/GroupsListSummary':{"_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/GroupDetailSummary':{"txtGroupFamily_Caption":"Famille :","txtGroupName_Caption":"Nom :","txtGroupDisplayName_Caption":"Nom d'affichage :","txtGroupDescription_Caption":"Description :","txtGroupId_Caption":"ID :","txtGroupMainTable_Caption":"Table principale :","txtGroupEntityName_Caption":"Nom de l'entité :","txtGroupCreateDate_Caption":"Date de création :","txtGroupCreateUser_Caption":"Créé par :","txtGroupModifyDate_Caption":"Date de modification :","txtGroupModifyUser_Caption":"Modifié par :","txtGroupInstallationDate_Caption":"Date d'installation :","txtGroupShared_Caption":"Partagé :","txtGroupSharedDate_Caption":"Date de partage :","txtGroupOwner_Caption":"Propriétaire :","txtGroupUserId_Caption":"ID utilisateur :","txtGroupAdhoc_Caption":"Ad hoc :","txtGroupHidden_Caption":"Masqué :","txtGroupAuthor_Caption":"Auteur :","txtGroupCompany_Caption":"Société :","txtGroupCompanyVersion_Caption":"Version de la société :","txtGroupDev_Caption":"Dev :","txtGroupDataCode_Caption":"Code de données :","txtGroupType_Caption":"Type de groupe :","txtGroupUserDefault_Caption":"Valeurs par défaut utilisateur :","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/ReleasesListPanelConfig':{"Dev":"Dev","Rel":"Partagé","Family":"Famille","Name":"Nom","DisplayName":"Nom d'affichage","Owner":"Propriétaire","SharedDate":"Date de partage","Type":"Type","CreateDate":"Date de création","ModifyDate":"Date de modification","Author":"Auteur","Company":"Société","Version":"Version","SharedToName":"Partagé par Nom","SharedToType":"Partagé par Type","UserType":"UserType","BasedOn":"Basé sur","_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/ReleasesListSummary':{"_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/ReleasesDetailSummary':{"txtGroupFamily_Caption":"Famille :","txtGroupName_Caption":"Nom :","txtGroupDisplayName_Caption":"Nom d'affichage :","txtGroupDescription_Caption":"Description :","txtGroupId_Caption":"ID :","txtGroupMainTable_Caption":"Table principale :","txtGroupEntityName_Caption":"Nom de l'entité :","txtGroupCreateDate_Caption":"Date de création :","txtGroupCreateUser_Caption":"Créé par :","txtGroupModifyDate_Caption":"Date de modification :","txtGroupModifyUser_Caption":"Modifié par :","txtGroupInstallationDate_Caption":"Date d'installation :","txtGroupShared_Caption":"Partagé :","txtGroupSharedDate_Caption":"Date de partage :","txtGroupOwner_Caption":"Propriétaire :","txtGroupUserId_Caption":"ID utilisateur :","txtGroupAdhoc_Caption":"Ad hoc :","txtGroupHidden_Caption":"Masqué :","txtGroupAuthor_Caption":"Auteur :","txtGroupCompany_Caption":"Société :","txtGroupCompanyVersion_Caption":"Version de la société :","txtGroupDev_Caption":"Dev :","txtGroupDataCode_Caption":"Code de données :","txtGroupType_Caption":"Type de groupe :","txtGroupBasedOn_Caption":"Basé sur ID du groupe :","txtGroupReleasedToType_Caption":"Partagé par Type :","txtGroupReleasedTo_Caption":"Partagé par Nom :","txtGroupReleasedToTitle_Caption":"Partagé par Titre :","txtGroupReleasedToUserType_Caption":"Partagé avec type d'utilisateur :","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/StatisticsListPanelConfig':{"Dev":"Dev","Rel":"Partagé","Family":"Famille","Name":"Nom","DisplayName":"Nom d'affichage","Owner":"Propriétaire","OwnerUsage":"Utilisation propriétaire","ShareUsage":"Utilisation partage","SharedDate":"Date de partage","FirstUsedBy":"Premier utilisateur","FirstUsed":"Première utilisation","LastUsedBy":"Dernier utilisateur","LastUsed":"Dernière utilisation","Type":"Type","_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/StatisticsListSummary':{"_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/StatisticsDetailSummary':{"txtGroupFamily_Caption":"Famille :","txtGroupName_Caption":"Nom :","txtGroupDisplayName_Caption":"Nom d'affichage :","txtGroupOwner_Caption":"Propriétaire :","txtGroupOwnerUsageCount_Caption":"Nombre d'utilisations propriétaire :","txtGroupShared_Caption":"Partagé :","txtGroupShareUsageCount_Caption":"Nombre d'utilisations partage :","txtGroupSharedDate_Caption":"Date de partage :","txtGroupFirstUser_Caption":"Premier utilisateur :","txtGroupFirstUseDate_Caption":"Date de première utilisation :","txtGroupLastUser_Caption":"Dernier utilisateur :","txtGroupLastUseDate_Caption":"Date de dernière utilisation :","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupManagerGroupContextService':{"AllGroups":"Groupes","Shares":"Partages","UsageStatistics":"Utilisation","Performance":"Performances","Settings":"Paramètres","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/SyncResultsHistory':{"grdSyncHistory_RunName":"Historique de la synchronisation","grdSyncHistory_CreateDate":"Date de création","grdSyncHistory_Status":"Etat","grdSyncHistory_DiagnosisCode":"Code de diagnostic","grdSyncHistory_ErrorMessage":"Message d'erreur","grdSyncHistory_JobName":"Nom de la tâche","_localized":{}}
+,
+'Sage/MainView/Lead/nls/ImportLeadsWizard':{"yestText":"Oui","noText":"Non","confirmOverwriteFileMsg":"Vous avez sélectionné un fichier d'importation. Souhaitez-vous remplacer ce fichier ?","importProgressCaption":"Importation des résultats de processus","lblPrimaryProgress":"Traitement du fichier importé, veuillez patienter...","lblTotalRecords":"Nombre total d'enregistrements :","lblTotalRecordsProcessed":"Traité :","lblTotalRecordsImported":"Importé :","lblTotalRecordsMerged":"Fusionné :","lblTotalDuplicates":"Doublons :","lblTotalProjectedDuplicates":"Doublons projetés :","lblDuplicateRate":"Taux de doublons :","lblTotalErrors":"Erreurs :","calculatingText":"Calcul en cours, veuillez patienter...","importStatusProcessing":"Traitement en cours","importStatusCompleted":"Terminé","abortImportProcessStatus":"Abandonner","btnCancelText":"Abandonner","btnCloseText":"Fermer","lblImportHistoryLinkText":"Pour voir les résultats de l'historique d'importation, cliquez sur le numéro d'importation ci-dessous :","lblImportLinkNumber":"Numéro d'importation : ","errorRequestImportHistory":"Une erreur s'est produite lors de l'exécution de la demande sdata pour le point de terminaison importHistory.","_localized":{}}
+,
+'Sage/MainView/ExchangeRate/nls/ExchangeRateDialog':{"lblUpdateCurrency":"Mettre à jour la devise","lblSelectEntity":"Appliquer la devise mise à jour à","lblSalesOrders":"Bons de commande","lblOpportunities":"Opportunités","lblQuotes":"Devis","lblOK":"OK","lblCancel":"Annuler","lblClose":"Fermer","updateRecords_Caption":"Mise à jour de l'entité Taux de change","job_Description":"Erreur(s) de mise à jour de l'entité Taux de change","errorRequestingJobMgr":"Une erreur s'est produite lors de la mise à jour : ${0}","lblRecordsToUpdate":"Nombre d'enregistrements à mettre à jour","lblLockedUpdate":"Les enregistrements avec taux verrouillés ne seront pas mis à jour","lblNote":"Note","OpenOrder":"Commande en cours","SalesOrder":"Bon de commande","Open":"Ouvrir","New":"Nouveau","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/PromoteWidget':{"title_Caption":"Promotion ${0}","pageLoading_Caption":"Chargement...","createLink_Caption":"Créer un lien","selectOption_Caption":"Sélectionnez une option...","errorRequestListOptions":"Une erreur s'est produite lors de la demande ${0} : ${1}","errorBackOffices":"Back Offices","errorAccountingEntities":"Entités comptables","cancel_Caption":"Annuler","ok_Caption":"OK","close_Caption":"Fermer","accountingEntity_Caption":"Entité comptable","logicalId_Caption":"Back Office","promotionRequested_Caption":"Promotion demandée","errorRequiredData":"Veuillez entrer les valeurs manquantes avant de continuer.","errorPromotion":"Une erreur s'est produite lors de la promotion ${0} : ${1}","requestSuccessfullSubmitted":"${0} ${1} soumis avec succès pour la promotion","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/PricingAvailabilityWidget':{"title_Caption":"Disponible pour","pageLoading_Caption":"Chargement...","gridLoading_Caption":"Chargement des entrepôts...","gridNoResults_Caption":"Aucune information concernant les entrepôts n'a été trouvée.","grdColumn_ATPDate":"Disponible à la date promise","grdColumn_Warehouse":"Entrepôt","grdColumn_AvailableQty":"Quantité disponible","cancel_Caption":"Annuler","close_Caption":"Fermer","ok_Caption":"OK","errorPageLoading_Caption":"Echec de la demande avec des erreurs : ${0}","_localized":{}}
+,
+'Sage/MainView/CountryCodeMapping/nls/_CountryAliasConversionDialogBase':{"btnOK_Caption":"OK","btnBack_Caption":"< Précédent","btnNext_Caption":"Suivant >","btnCancel_Caption":"Annuler","btnClose_Caption":"Fermer","emptyListItem_Caption":"Veuillez sélectionner une option...","gridLoading_Caption":"Données en cours de chargement...","gridNoResults_Caption":"Aucun résultat trouvé","selectOption_Caption":"Sélectionnez une option...","_localized":{}}
+,
+'Sage/MainView/CountryCodeMapping/nls/CountryAliasConversion':{"dlgCountryAliasConverstion_Title":"Conversion de l'alias du pays","colAlias":"Alias de pays","colCountryCode":"Indicatif pays","grdLabel":"grdLabel","colUnmatchedAlias_Caption":"Alias du pays non mappé","btnSave_Caption":"OK","btnCancel_Caption":"Annuler","colCountryName":"Mappage des codes pays","colCountryNamePlaceHolder":"Sélectionner un pays","_localized":{}}
+,
+'Sage/ProximitySearch/nls/GeocodeModule':{"geocodeError":"Impossible de localiser l'adresse.","_localized":{}}
+,
+'Sage/ProximitySearch/nls/MapModule':{"microsoftError":"Script Microsoft non chargé","googleError":"Script Google non chargé","credentialsOrOverLimit":"Vos identifiants API sont non valides ou vous avez dépassé votre volume de requêtes","_localized":{}}
+,
+'Sage/ProximitySearch/nls/RouteModel':{"mileAbbrevText":"mi","kilometerAbbrevText":"km","_localized":{}}
+,
+'Sage/ProximitySearch/nls/RouteModule':{"inProgressError":"Appel Ajax impossible, un appel est déjà en cours","bingRouteOutOfRangeError":"Impossible de calculer un trajet pour plus de 25 ou moins de 2 destinations.","googleRouteOutOfRangeError":"Impossible de calculer un trajet pour plus de 10 ou moins de 2 destinations.","_localized":{}}
+,
+'Sage/ProximitySearch/nls/DirectionView':{"placeHolderText":"Cliquer sur « Itinéraire » pour afficher des indications complètes","_localized":{}}
+,
+'Sage/ProximitySearch/nls/PointEditModule':{"newPlaceText":"Nouvel emplacement temporaire","addPlaceText":"Ajouter un emplacement temporaire","okText":"OK","cancelText":"Annuler","nameText":"Nom :","addressText":"Adresse :","cityText":"Ville :","stateText":"Département :","postalCodeText":"Code postal :","countryText":"Pays :","helpText":"Le nom et un champ d'adresse seulement sont obligatoires","errorText":"Veuillez ajouter le nom et au moins un champ d'adresse","_localized":{}}
+,
+'Sage/ProximitySearch/nls/ToolbarModule':{"getDirectionsText":"Itinéraire","addPlaceText":"Ajouter un emplacement","selectAllText":"Sélectionner tout","deselectAllText":"Effacer tout","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DataSourcePanel':{"loadingText":"Chargement...","_localized":{}}
+,
+'Sage/TaskPane/nls/_BaseTaskPaneTasklet':{"selectRecordsTitle":"Sélection non valide","selectRecords":"Veuillez sélectionner un enregistrement avant de continuer.","selectSingleRecord":"Veuillez sélectionner un enregistrement avant de continuer.","noRecordsSelectedProcessAll":"Aucun enregistrement sélectionné. Le groupe entier sera traité jusqu'à la limite définie par votre administrateur, le cas échéant. Continuer ?","invalidSelectionTitle":"Sélection non valide","errorSelectionInfo":"Une erreur s'est produite lors de la récupération d'informations concernant les enregistrements sélectionnés.","errorNoData":"Aucune donnée n'est disponible","yesButtonText":"Oui","noButtonText":"Non","salesLogixPageTitle":"Infor CRM","okButtonText":"OK","cancelButtonText":"Annuler","confirmBulkDeleteJob":"Voulez-vous vraiment supprimer les enregistrements sélectionnés ?","deleteSelectedRecords":"Supprimer ${0}","deleteJobError":"Une erreur s'est produite pendant la tâche de suppression ${0} : ${1}","deleteBulkJobTitle":"Supprimer ${0}","promoteTitle":"Promouvoir","getOrderTotalTitle":"Obtenir le total de la commande","integrationNotEnabled":"Back Office Extension n'est pas activé","error_PricingRequest":"Une erreur s'est produite lors de la demande d'un service de prix : ${0}","workflowIntegrationNotEnabled":"ION Workflow Integration is not enabled","requestWorkflowSuccess":"Workflow has been requested.","cancelWorkflowSuccess":"Workflow has been cancelled.","requestWorkflowLog":"Unable to request workflow. Please refer to the error log for more details.","cancelWorkflowLog":"Unable to cancel workflow. Please refer to the error log for more details.","errorRequestWorkflow":"An error occurred when ${0} requests workflow: ${1}.","errorCancelWorkflow":"An error occurred when ${0} cancels workflow: ${1}.","_localized":{}}
+,
+'Sage/TaskPane/nls/UserTasklet':{"addToRoleTitle":"Add to Role","resetUsersTitle":"Reset Users","taskText_CopyUserProfile":"Copy User Profile","copyProfileNoneSelected":"At Least one user needs to be selected!","associateContactTitle":"Associate with Contact","disAssociateContactTitle":"Disassociate from Contact","disAssociateDialogTitle":"Disassociate from a Contact","confirmDisAssociate":"Are you sure you want to disassociate the ${0} selected user from an associated contact?","confirmDisAssociateMultiple":"Are you sure you want to disassociate the ${0} selected users from any associated contacts?","associationExistsMessage":"The user you selected is already associated to a contact. To associate this user to a different contact, you must first disassociate the user and contact.","multipleSelectionErrorMessage":"You can only perform this task for 1 user at a time. \n Please select a single user and select the task again.","noSelectionErrorMessage":"You need to select at least one user to disassociate. \n Please select one or more user(s) and select the task again.","singleSelectionErrorMessage":"You need to select a user to disassociate. \n Please select a single user and select the task again.","addToTeamCaption":"Add to Team","removeFromAllTeamsCaption":"Remove from All Teams","areYouSure":"Are you sure you want to remove the selected member(s) from all teams?","promoteNoneSelected":"Please select at least one record","requestsuccessfullcompleted":"${0} users were successfully submitted for promotion.","promotedsuccessfully":"The item got promoted successfully","_localized":{}}
+,
+'Sage/TaskPane/User/nls/ContactUserAssociationEditor':{"btnCancel_Caption":"Annuler","btnOK_Caption":"OK","dialogTitleText":"Associer l'utilisateur au contact","associateContactText":"Associer l'utilisateur sélectionné au contact suivant","user_Caption":"Contact","lookupContactText":"Rechercher un contact","lookupFirstNameColText":"Prénom","lookupLastNameColText":"Nom","lookupTitleColText":"Titre","lookupAccountColText":"Compte","lookupWorkPhoneColText":"Téléphone professionnel","lookupEmailText":"E-mail","disAssociateTitle":"Dissocier d'un contact","associationExistsMessage":"Le contact que vous avez sélectionné est déjà associé à un utilisateur. Choisissez un autre contact.","_localized":{}}
+,
+'Sage/MainView/CopyUserProfile/nls/_CopyUserProfileBase':{"btnOK_Caption":"OK","btnCancel_Caption":"Cancel","_localized":{}}
+,
+'Sage/MainView/CopyUserProfile/nls/CopyUserProfile':{"dlg_Title":"Copier le profil","dlg_Instructions":"Sélectionnez un profil utilisateur ou un modèle à copier vers d'autres utilisateurs. Le fait de copier le profil va écraser les paramètres actuels.","rad_SelectionLabel":"Copier le profil à partir de :","rad_UserBtn":"Utilisateur existant","rad_TemplateBtn":"Modèle","user_LookupLabel":"Utilisateur","template_LookupLabel":"Modèle","lookupUserNameColText":"Nom d'utilisateur","lookupTitleColText":"Titre","lookupDepartmentColText":"Service","lookupRegionColText":"Région","lookupUser_Caption":"L'utilisateur peut copier le profil à partir de :","lookupUserNameTemplateColText":"Modèle","chkGeneralLabel":"Général","chkCalendarLabel":"Agenda","chkEmployeeLabel":"Employé","chkClientLabel":"Options client (système client)","chkSecurityLabel":"Sécurité","chkServiceLabel":"Service/Assistance technique","chkTeamsLabel":"Equipes","txtJobDescriptor":"Copier le profil utilisateur","jobFailer":"Une erreur critique s'est produite","_localized":{}}
+,
+'Sage/TaskPane/nls/AccountingTasksTasklet':{"_localized":{}}
+,
+'Sage/TaskPane/nls/ActivityTaskConfigurationProvider':{"scheduleText":"Planification","eventText":"Evénement","phoneCallText":"Appel téléphonique","toDoText":"Tâche à faire","meetingText":"Rendez-vous","personalActivityText":"Activité personnelle","deleteConfirmationText":"Confirmation de la suppression","acceptConfirmationText":"Accepter la confirmation","declineConfirmationText":"Refuser la confirmation","completeActivityText":"Terminer l'activité","deleteActivityText":"Supprimer l'activité","deleteEventText":"Supprimer l'événement","scheduleEventText":"Planifier un événement","scheduleRequestText":"Planifier une demande","deleteRequestText":"Supprimer la demande","recordsSelectedText":"enregistrement(s) sélectionné(s)","clearText":"Effacer","_localized":{}}
+,
+'Sage/TaskPane/nls/CommonTasksTasklet':{"okButtonText":"OK","loadingText":"Chargement...","noPrimaryEmail":"Aucun e-mail principal n'est disponible","selectFileFormat":"Sélectionner un format de fichier :","exportToFile_OptionCSV":"CSV standard","exportToFile_OptionTab":"Délimitation par des tabulations (recommandé pour Microsoft Excel)","exportToFile_OptionExcel":"Excel","exportToFile_OptionSaveFormat":"Se souvenir de mon choix et ne plus me le demander.","exportToFile_OK":"OK","exportToFile_Cancel":"Annuler","exportToFile_DialogTitle":"Exporter","exportToExcel_Caption":"Exportation","errorRequestingJobMgr":"Une erreur s'est produite lors de l'interrogation du gestionnaire de tâches : ${0}","errorExecutionAction":"Une erreur s'est produite lors de l'exécution de l'action ${0}","exportProcessingJobMsg":"Traitement de l'exportation en cours. Vous pouvez attendre la fin de l'opération ou accéder aux rapports pour ouvrir votre fichier.","errorBulkActionNotSupported":"${0} ne prend pas en charge les mises à jour d'action en bloc. Veuillez contacter votre administrateur système.","errorBulkActionRequest":"Une erreur s'est produite lors de la demande d'options de mise à jour en bloc. Veuillez contacter votre administrateur système.","copyProfileNoneSelected":"Vous devez sélectionner au moins un utilisateur !","deleteJob_Description":"Erreur(s) de suppression en bloc","errorRequestEntityImportable":"Une erreur s'est produite lors de la récupération des attributs d'entité. ${0}","entityNotImportable":"${0} ne prend pas en charge l'importation. Veuillez contacter votre administrateur système.","_localized":{}}
+,
+'Sage/MainView/Import/nls/_WizardDialogBase':{"btnOK_Caption":"OK","btnBack_Caption":"< Précédent","btnNext_Caption":"Suivant >","btnCancel_Caption":"Annuler","btnClose_Caption":"Fermer","btnFinish_Caption":"Importer maintenant","emptyListItem_Caption":"Veuillez sélectionner une option...","lstTemplate_Caption":"Modèle d'importation :","gridLoading_Caption":"Données en cours de chargement...","gridNoResults_Caption":"Aucun résultat trouvé","selectOption_Caption":"Sélectionnez une option...","defaultAdHoc_Caption":"Importer ${0} ${1}","_localized":{}}
+,
+'Sage/MainView/Import/nls/SelectFile':{"dlgSelectFile_Title":"Importation des enregistrements - Charger des fichiers","txtSelectFile":"Sélectionnez un fichier contenant les données à importer.","btnUploadFile_Caption":"Sélectionner un fichier","txtUploadFile_Caption":"Aucune sélection de fichier","errorNoUploadFile":"Veuillez sélectionner un fichier à importer avant de continuer.","txtFileContents_Caption":"Le fichier '${0}' d'une taille de ${1} Ko a bien été chargé.","txtLoadTemplate_Caption":"Chargement des données de modèle.","lstImportOption_Insert":"Ajouter l'enregistrement si aucune correspondance n'a été trouvée","lstImportOption_Update":"Mettre à jour l'enregistrement en cas de correspondance","lstImportOption_InsertUpdate":"Ajouter ou mettre à jour chaque enregistrement","_localized":{}}
+,
+'Sage/MainView/Import/nls/DefineDelimiter':{"dlgDefineDelimiter_Title":"Importation des enregistrements - Définir le séparateur","txtHeader_Caption":"Un identificateur de texte et un séparateur par défaut ont été définis et les résultats sont disponibles dans le panneau d'aperçu. Si l'aperçu semble correct, vous pouvez continuer l'importation avec le séparateur et l'identificateur de texte actuels, ou vous pouvez choisir d'autres options jusqu'à obtenir des résultats satisfaisants.","txtChooseDelimiter":"Choisissez le séparateur pour vos champs :","rdoTabOption":"Tabulation","rdoSemicolonOption":"Point virgule","rdoCommaOption":"Virgule","rdoSpaceOption":"Espace","rdoOtherOption":"Autre","txtQualifier":"Indicateur de texte","chkFirstRowFieldNames":"La première ligne contient les noms de champs","txtPreview":"Un total de ${0} lignes et ${1} colonnes ont été identifiées dans le fichier chargé : voici un aperçu des cinq premiers enregistrements.","errorRequestFileOptions":"Une erreur s'est produite lors de la récupération des options du fichier. ${0}","_localized":{}}
+,
+'Sage/MainView/Import/nls/MapFields':{"dlgMapFields_Title":"Importation des enregistrements - Mapper des champs","txtHeader_Caption":"${0} champs sur ${1} sont mappés. Vous pouvez continuer l'importation avec les mappages actuels ou mapper les champs non mappés restants avant de continuer l'importation.","txtRequired_Caption":"Les champs suivants doivent être mappés pour pouvoir continuer : ${0}","btnUnMapped_Caption":"Afficher les champs non mappés (${0})","btnMapped_Caption":"Afficher les champs mappés (${0})","btnAll_Caption":"Afficher tous les champs (${0})","colImportField_Caption":"Importer le champ","colInforField_Caption":"Champ Infor CRM","colType_Caption":"Type de l'entité","errorRequestMappings":"Une erreur s'est produite lors de la récupération des mappages d'importation. ${0}","errorRequiredMappings":"Veuillez indiquer tous les mappages requis avant de poursuivre.","multipleDestinationPropTag_Is":"${0} is mapped to more than once","multipleDestinationPropTag_Are":"${0} are mapped to more than once","multipleDestinationPropTag":"est/sont mappé(s) sur plus d'une fois","_localized":{}}
+,
+'Sage/MainView/Import/nls/ManageImportOptions':{"dlgManageImportOptions_Title":"Importation des enregistrements - Options","lstImportType_Caption":"Que souhaitez-vous faire avec les enregistrements de ce fichier ?","lstImportOption_Insert":"Ajouter l'enregistrement si aucune correspondance n'a été trouvée","txtOption_Insert":"Un nouvel enregistrement de contact, de compte ou d'adresse sera ajouté à la base de données si les critères de correspondance définis ne renvoient aucun enregistrement existant. Si un enregistrement correspondant est trouvé, l'enregistrement ne sera pas importé.","lstImportOption_Update":"Mettre à jour l'enregistrement en cas de correspondance","txtOption_Update":"Si les critères de correspondance définis renvoient un enregistrement de contact, de compte ou d'adresse existant, l'enregistrement sera mis à jour avec les informations importées. Si aucun enregistrement correspondant n'est trouvé, les informations ne sont pas importées.","lstImportOption_InsertUpdate":"Ajouter ou mettre à jour chaque enregistrement","txtOption_InsertUpdate":"Si les critères de correspondance définis renvoient un enregistrement de contact, de compte ou d'adresse existant, l'enregistrement sera mis à jour avec les informations importées. Si aucun enregistrement correspondant n'est trouvé, un nouvel enregistrement sera ajouté.","txtMatchHeader_Caption":"Définir les critères de correspondance :","txtOptionsHeader_Caption":"Options","defaultOwner_Caption":"Propriétaire par défaut :","lookupDefaultOwner_Caption":"Rechercher un propriétaire","lookupDescriptionColText":"Description","lookupTypeColText":"Type","createAdHoc_Caption":"Créer un nouveau groupe ad hoc","existingAdHoc_Caption":"Ajouter au groupe ad hoc existant","errorNoAddHocGroupName":"Veuillez spécifier un nom de groupe ad hoc avant de continuer.","errorDuplicateAddHocGroupName":"Veuillez spécifier un nom de groupe ad hoc qui n'a pas encore été utilisé.","errorNoOwner":"Veuillez spécifier un propriétaire avant de continuer.","chkAccountName":"Utiliser un nom de contact à la place du nom de compte vide","match_Caption":"Correspondance :","_localized":{}}
+,
+'Sage/MainView/Import/nls/AddActions':{"dlgAddActions_Title":"Importation des enregistrements - Ajouter des actions","_localized":{}}
+,
+'Sage/MainView/Import/nls/Review':{"dlgMapFields_Title":"Importation des enregistrements - Importer l'aperçu détaillé","txtHeader_Caption":"Vérifiez vos modifications :","btnSaveTemplate_Caption":"Mettre à jour le modèle actuel","btnSaveAsTemplate_Caption":"Enregistrer en tant que modèle d'importation","txtJobTitle_Caption":"Importation de ${0}","txtJobDescriptor":"Importation ${0} : ${1}","errorJobFailed":"La tâche a échoué avec une erreur : ${0}","previewFileName_Caption":"Nom du fichier : ${0}","previewRecordCount_Caption":"Enregistrements trouvés : ${0}","previewAdHocGroup_Caption":"Groupe d'enregistrements : ${0}","previewImportDataMode":"Type d'importation : ${0}","btnBack_Edit_Caption":"Modifier","_localized":{}}
+,
+'Sage/MainView/Import/nls/ManageImportTemplate':{"dlgManageImportTemplate_Title":"Importation des enregistrements - Enregistrer le modèle","txtDescription_Caption":"Description :","txtImportTemplates_Caption":"Modèles d'importation :","colDelete":"Supprimer","colDescription":"Description","colEntityName":"Entité","colCreatedBy":"Créé par","colCreatedDate":"Date de création","colModifiedBy":"Modifié par","colModifiedDate":"Date de modification","btnSave_Caption":"Enregistrer","errorDeletingTemplate":"Une erreur s'est produite lors de la suppression du modèle d'importation : ${0}","errorNoTemplateDescription":"Veuillez ajouter une description du modèle avant d'enregistrer.","_localized":{}}
+,
+'Sage/UI/nls/BulkUpdateWidget':{"dlgBulkActionUpdate_Title":"Mise à jour d'action en bloc","pageLoading_Caption":"Chargement des options de propriété...","header_Caption":"Sélectionnez une propriété à mettre à jour.","header_NoPropertiesEnabled":"L'entité ${0} est activée pour les mises à jour en bloc. Cependant, aucune propriété n'a été activée. Veuillez contacter votre administrateur système pour plus d'informations","errorRequestPropertyOptions":"Une erreur s'est produite lors de la lecture des métadonnées pour l'entité ${0}. ${1}","errorEntityNotSupported":"L'entité ${0} ne prend pas en charge les mises à jour en bloc","update_Property_Caption":"Mettre à jour :","addProperty_Tooltip":"Ajouter une propriété","removeProperty_Tooltip":"Supprimer la propriété","no_Caption":"Non","yes_Caption":"Oui","days_Caption":"jours","moveOut_Caption":"Déplacer","moveTo_Caption":"A","moveDate_Backward":"En arrière","moveDate_Forward":"Suivant","update_To_Caption":"A :","lookupHeaderText":"Rechercher ${0}","lookupNameColText":"Nom","lookupTitleColText":"Titre","lookupDepartmentColText":"Service","lookupRegionColText":"Région","lookupTypeColText":"Type","lookupDescriptionColText":"Description","btnOK_Caption":"OK","btnCancel_Caption":"Annuler","errorUnspecifiedValue":"Veuillez indiquer une valeur avant de poursuivre ou supprimer la ligne non valide.","errorRequestingJobMgr":"Une erreur s'est produite lors de la mise à jour : ${0}","selectOption_Caption":"Sélectionnez une option...","updateRecords_Caption":"Mise à jour des enregistrements sélectionnés","chkScheduleJob_Caption":"Planifier cette mise à jour à une date/heure spécifiques.","lookup_Caption":"Recherche","job_Description":"Erreur(s) de mise à jour en bloc","errorDuplicateValue":"Propriété déjà sélectionnée","errorInvalidPropertyType":"Le type de propriété '${0}' n'est pas accepté pour les mises à jour en bloc.","calculatedField":"Champ calculé","standardId":"ID standard","unknownPropertyType":"Inconnu","_localized":{}}
+,
+'Sage/TaskPane/nls/ContactTasksTasklet':{"associateContactTitle":"Associer à l'utilisateur","disAssociateContactTitle":"Dissocier de l'utilisateur","disAssociateDialogTitle":"Dissocier d'un utilisateur","confirmDisAssociate":"Voulez-vous vraiment dissocier ${0} contact(s) sélectionné(s) d'un utilisateur associé ?","confirmDisAssociateMultiple":"Voulez-vous vraiment dissocier les ${0} contacts sélectionnés de tous les utilisateurs associés ?","associationExistsMessage":"Le contact sélectionné est déjà associé à un utilisateur. Pour associer ce contact à un autre utilisateur, vous devez tout d'abord dissocier le contact de l'utilisateur.","multipleSelectionErrorMessage":"Vous ne pouvez effectuer cette tâche que pour un contact à la fois. \n Veuillez sélectionner un seul contact, puis exécuter à nouveau la tâche.","noSelectionErrorMessage":"Vous devez sélectionner au moins un contact à dissocier. \n Veuillez sélectionner au moins un contact, puis exécuter à nouveau la tâche.","singleSelectionErrorMessage":"Vous devez sélectionner un contact à dissocier. \n Veuillez sélectionner un seul contact, puis exécuter à nouveau la tâche.","_localized":{}}
+,
+'Sage/TaskPane/nls/CountryTasksTasklet':{"countryAliasConversionTitle":"Faire correspondre les alias de pays orphelins","_localized":{}}
+,
+'Sage/TaskPane/nls/GroupListTasklet':{"GroupListOptionsTitle":"Options de la liste de groupe","maximizeTitle":"Etendre la liste de groupe","minimizeTitle":"Réduire la liste de groupe","_localized":{}}
+,
+'Sage/UI/nls/OwnerType':{"teamText":"Equipe","departmentText":"Service","systemText":"Système","userText":"Utilisateur","_localized":{}}
+,
+'Sage/UI/nls/UserType':{"administratorText":"Administrateur","templateText":"Modèle","remoteText":"Distant","webOnlyText":"Web uniquement","retiredText":"Désactivé","concurrentText":"Simultané","webViewerText":"Visionneuse Web","networkText":"Réseau","addOnUserText":"Utilisateur du module complémentaire","_localized":{}}
+,
+'Sage/TaskPane/nls/LiteratureManagementTasks':{"errFulFillmentCancelled":"La réalisation de la demande de documentation a été annulée pour LitReqId {0}.","errFulFillmentFailed":"La demande de documentation n'a pas pu être complétée pour LitReqId {0}.","errMailMergeService":"Les demandes de documentation n'ont pas pu aboutir, car le service de publipostage n'a pas pu être chargé. Cela peut se produire si le module CRM Office Integration n'est pas installé ou n'est pas correctement installé.","errFulFillmentRequest":"Les demandes de documentation n'ont pas pu aboutir.","errFulFillmentRequestEx":"Les demandes de documentation suivantes n'ont pas pu aboutir :","fulFillmentSuccess":"La demande de documentation a réussi.","_localized":{}}
+,
+'Sage/TaskPane/nls/QuoteTasksTasklet':{"hasErpStatus":"Les devis de statut Accordé, Annulé, Supprimé, Perdu, Remplacé ou Non approuvé ne peuvent pas être convertis.","newQuoteVersion":"Nouvelle version","generateProposal":"Générer une proposition","convertToSalesOrder":"Convertir en bon de commande","activateCurrentVersion":"Activer la version actuelle","errorGenerateProposal":"Une erreur s'est produite lors de la génération d'une proposition : ${0}","errorConvertWonQuote":"Une erreur s'est produite lors de la conversion d'un devis : ${0}","getOrderTotalTitle":"Obtenir total devis","rePriceQuote":"Actualiser le prix","promoteIONWorkFlowItems":"Request Workflow","cancelIONWorkFlowItems":"Cancel Workflow","_localized":{}}
+,
+'Sage/Utility/nls/PricingAndAvailability':{"status_NotConfigurable":"Non configurable","status_Completed":"Terminé","status_Error":"Erreur","status_PartiallySaved":"Enregistrer partiellement","status_Processing":"Traitement en cours","status_Queued":"En file d'attente","status_Configure":"Configurer","warehouse_Default":"Non affecté","error_PricingRequest":"Une erreur s'est produite lors de la demande d'un prix : ${0}","_localized":{}}
+,
+'Sage/TaskPane/nls/OpportunityTasksTasklet':{"opportunityStatisticsTitle":"Opportunity Statistics","addSalesOrder":"Add Sales Order","addQuote":"Convert To Quote","promoteTitle":"Promote","rePriceOpportunity":"Refresh Pricing","errorPromotion":"An error occurred during ${0} promotion: ${1}.","requestSuccessfullSubmitted":"The ${0}, ${1}, was successfully submitted for promotion","requestIONWFOpportunity":"Request Workflow","cancelIONWorkFlowItems":"Cancel Workflow","_localized":{}}
+,
+'Sage/MainView/Opportunity/nls/OpportunityStatistics':{"opportunityStatistics_Caption":"Statistiques de l'opportunité","loadingMessge":"Chargement...","opportunityCount":"Nombre d'opportunités","salesPotentialTotal":"Potentiel total des ventes (moyenne)","weightedPotentialTotal":"Total potentiel pondéré (moyenne)","averageCloseProbability":"Probabilité de clôture moyenne","actualAmountTotal":"Montant total réel (Moyenne)","averageDaysOpen":"Nbre moyen de jours ouverts","rangeEstClose":"Période de clôture est. (min - max)","btnClose_Caption":"Fermer","errorRequestingStatistics":"Une erreur s'est produite lors de la demande des statistiques d'opportunité.","_localized":{}}
+,
+'Sage/TaskPane/nls/SecuredActionTasklet':{"addToRoleTitle":"Ajouter au rôle","_localized":{}}
+,
+'Sage/TaskPane/nls/SecurityManagerTasksTasklet':{"addSecurityProfileTitle":"Ajouter le profil","editSecurityProfileTitle":"Modifier le profil","_localized":{}}
+,
+'Sage/MainView/SecurityMgr/nls/SecurityProfile':{"securityProfile_Caption":"Profil de sécurité","btnCancel_Caption":"Annuler","ok_Text":"OK","description_Text":"Description","profileType_Text":"Type de profil","_localized":{}}
+,
+'Sage/TaskPane/nls/JobManagerTasksTasklet':{"taskRunJob_Caption":"Créer une planification","taskEditTrigger_Caption":"Modifier la planification","taskCancelJob_Caption":"Annuler l'exécution de la tâche","taskDeleteScheduledJob_Caption":"Supprimer la planification","_localized":{}}
+,
+'Sage/TaskPane/nls/ReportManagerTasksTasklet':{"taskRunReport_Caption":"Exécuter le rapport","taskScheduleReport_Caption":"Planifier le rapport","taskDeleteReport_Caption":"Supprimer le rapport","taskDeleteSchedule_Caption":"Supprimer la planification","taskEditSchedule_Caption":"Modifier la planification","taskDeleteHistory_Caption":"Supprimer l'historique","txtRecordsSelected":"enregistrement(s) sélectionné(s)","txtClear":"Effacer","_localized":{}}
+,
+'Sage/TaskPane/nls/GroupManagerTasksTasklet':{"txtRecordsSelected":"enregistrement(s) sélectionné(s)","txtClear":"Effacer","txtDelete":"Supprimer","txtEdit":"Modifier","txtShare":"Partager","txtView":"Affichage","txtAssignOwner":"Réaffecter propriétaire","txtResetStatistics":"Réinitialiser les statistiques","txtDisableStatistics":"Désactiver les statistiques","txtToggleUserDefault":"Valeurs par défaut utilisateur","_localized":{}}
+,
+'Sage/TaskPane/nls/EntityTaskConfigurationProvider':{"NewEntity":"Nouvelle entité","CreateEntity":"Créer une entité","_localized":{}}
+,
+'Sage/TaskPane/nls/ExchangeRateTasksTasklet':{"lblupdateExchRate":"Mettre à jour le taux de change","lblBaseCurrency":"Devise de base","_localized":{}}
+,
+'Sage/TaskPane/nls/SalesOrderTasksTasklet':{"rePriceOrder":"Actualiser le prix","requestIONWFSalesOrder":"Request Workflow","cancelIONWorkFlowItems":"Cancel Workflow","_localized":{}}
+,
+'Sage/TaskPane/nls/SyncHistoryTasksTasklet':{"reprocessTitle":"Retraiter","purgeTitle":"Purger","_localized":{}}
+,
+'Sage/UI/Columns/nls/SlxEdit':{"editText":"Modifier","_localized":{}}
+,
+'Sage/UI/Controls/nls/Address':{"address1Text":"Adresse 1 :","address2Text":"Adresse 2 :","address3Text":"Adresse 3 :","cancelText":"Annuler","cityText":"Ville :","countryText":"Pays :","countyText":"Région :","descriptionText":"Description :","dialogTitle":"Adresse","isMailingText":"Expédition :","isPrimaryText":"Principale :","okText":"OK","postalCodeText":"Code postal :","salutationText":"Attention :","stateText":"Département :","imageEditToolTip":"Modifier","imageMapQuestToolTip":"MapQuest","isRequiredText":"The address requires these items: ","_localized":{}}
+,
+'Sage/UI/Controls/nls/CopyToClipboard':{"closeText":"Fermer","dialogTitle":"Copier le texte dans le Presse-papiers","helpText":"Sélectionnez le texte souhaité et appuyez sur Ctrl+C (Commande +C sur Mac) pour copier vers votre presse-papiers.","textTab":"Texte","sourceTab":"Source","_localized":{}}
+,
+'Sage/UI/Controls/nls/HelpMenu':{"helpText":"Aide","aboutText":"A propos de","webClientHelpText":"Aide du client Web","gettingStartedText":"Guide de mise en route","quickReferenceText":"Carte de référence rapide","_localized":{}}
+,
+'Sage/UI/Controls/nls/LogOffButton':{"logOffText":"Déconnexion","_localized":{}}
+,
+'Sage/UI/Controls/nls/Name':{"okText":"OK","cancelText":"Annuler","dialogTitle":"Modifier le nom","prefixText":"Préfixe :","nameFirstText":"Prénom :","nameMiddleText":"Deuxième prénom :","nameLastText":"Nom :","suffixText":"Suffixe :","buttonTooltip":"Modifier","_localized":{}}
+,
+'Sage/UI/Controls/GridParts/Columns/nls/SlxEdit':{"editText":"Modifier","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/WidgetDefinition':{"defaultWidgetText":"Modifier les paramètres de Widget","settingsText":"Paramètres","viewGroupText":"Afficher le groupe","Bar_Chart":"Graphique à barres","Column_Chart":"Histogramme","Group_List":"Liste de groupe","Pie_Chart":"Graphique à secteurs","Funnel_Chart":"Graphique en entonnoir","Line_Chart":"Graphique en courbes","SData_Feed":"Flux SData","Web_Feed":"Flux Web","Website":"Site Web","Default":"Par défaut","Links":"Liens","LinksSettings":"Links Settings","Recently_Viewed":"Affiché récemment","Todays_Activities":"Activités du jour","Today_s_Activities":"Activités du jour","Welcome":"Bienvenue","Closing_Opportunities":"Opportunités en cours de fermeture","Quick_Actions":"Actions rapides","Do_You_Know___":"Savez vous...","All_Leads":"Tous les leads","My_Notes":"Mes remarques","Open_Opportunities":"Opportunités ouvertes","My_Top_Opportunities":"Mes meilleures opportunités","My_Pipeline":"Mon pipeline","Recent_Lead_Creation_History":"Historique récent de création de leads","My_Activity_trend":"Les tendances de mon activité","My_Completed_Activities_by_Type":"Mes activités terminées par type","Active_Campaigns":"Campagnes actives","All_Open_Opportunities":"Toutes les opportunités ouvertes","Top_Opportunities":"Meilleures opportunités","Open_Defect_Distribution":"Distribution de défaut ouvert","My_Dashboard":"Mon tableau de bord","Sales":"Ventes","Group_List_Description":"Affiche une liste d'enregistrements de groupe par entité. Par exemple, un groupe de campagnes actives.","Welcome_Description":"Affiche une introduction à Saleslogix avec un lien vers la rubrique d'aide Introduction à Saleslogix pour le Web.","Line_Chart_Description":"Affiche des données sous la forme d'une série de points de données reliés par une courbe. Ceci est utile lorsque les données représentent plusieurs groupes ou plusieurs catégories.","Bar_Chart_Description":"Affiche des données sous la forme de barres horizontales. Ceci est utile pour comparer plusieurs ensembles de données.","Column_Chart_Description":"Affiche des données sous la forme de barres verticales regroupées par catégorie. Ceci est utile pour afficher les modifications effectuées sur les données pendant une période de temps donnée ou pour illustrer les comparaisons entre des éléments.","Funnel_Chart_Description":"Affiche les données en tant que proportions progressives sous la forme d'un entonnoir. Les données sont représentées en pourcentages et il n'y a pas d'axe.","Pie_Chart_Description":"Affiche les données en tant que proportions d’un tout. Chaque valeur est calculée comme pourcentage du total. Ce graphique ne comporte pas d'axe.","Recently_Viewed_Description":"Affiche les liens vers les enregistrements récemment consultés, dont le type est indiqué par une icône. Par exemple, un compte ou un contact.","Todays_Activities_Description":"Affiche les liens vers les activités du jour.","Links_Description":"Affiche les liens que vous avez créés. Par exemple, des liens vers une vue Détails dans Saleslogix ou vers un site Web externe.","SData_Feed_Description":"Affiche un flux Web dans les flux SData (Sage Data). Par exemple, un flux de votre base de données Saleslogix ou de l'intégration de comptabilité.","Web_Feed_Description":"Affiche des informations sur les flux RSS ou Atom.","Website_Description":"Affiche le site Web de votre choix.","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/DashboardTabController':{"newTabText":"Nouvel onglet","addContentText":"Ajouter du contenu","editOptionsText":"Modifier les options","hideTabText":"Masquer l'onglet","closeText":"Fermer","copyTabText":"Copier l'onglet","showTabText":"Afficher l'onglet","shareTabText":"Partager l'onglet","deleteTabText":"Supprimer un onglet","deleteTabConfirmText":"Voulez-vous vraiment supprimer cet onglet ?","descriptionText":"Description","everyoneText":"Tous les utilisateurs","saveTabText":"Enregistrer l'onglet","helpText":"Aide","addText":"Ajouter","invalidMessage":"Caractère non valide","invalidDuplicateMessage":"Le titre doit être unique.","invalidReservedWordMessage":"Dashboard is reserved tab name. Please change the name before continuing.","deleteText":"Supprimer","titleText":"Titre :","chooseTemplateText":"Choisir le modèle à utiliser :","oneColumnText":"Une colonne","twoColumnText":"Partage en deux colonnes","fatLeftText":"Deux colonnes plus grandes à gauche","fatRightText":"Deux colonnes plus grandes à droite","makeDefaultText":"Utiliser par défaut","releaseFetchErrorText":"Erreur lors de la récupération de la liste de diffusion.","releaseDeleteNoneSelected":"Aucun élément sélectionné.","releasedToText":"Diffusé à :","typeText":"Type","addLookup":"Ajouter","okButton":"OK","errorText":"Erreur","warningText":"Avertissement","permissionErrorText":"Erreur : l'utilisateur ne dispose pas des droits suffisants pour effectuer cette action.","permissionErrorPerformCopyText":"Voulez-vous créer une copie personnelle de cette page ?","yesText":"Oui","noText":"Non","DeletingReleasedWidget":"Voulez-vous vraiment supprimer cet onglet Tableau de bord ? Cet onglet est partagé avec un (des) utilisateur(s) ${0}. La suppression de cet onglet sera effective pour tous les utilisateurs.","Welcome":"Bienvenue","Dashboard":"Dashboard","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/DashboardWidgetCell':{"closeTooltipText":"Fermer","minimizeTooltipText":"Réduire","settingsTooltipText":"Paramètres","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/DashboardWidget':{"noQueryDataText":"Le serveur n'a aucune donnée relative à la requête ","initializingText":"Initialisation","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/Dashboard':{"newTabTitleText":"Nouveau titre d'onglet","inputTitleText":"Saisir un titre","copiedPageText":"Onglet copié","showText":"Afficher","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmCountDown':{"startsInText":"Commence dans","overduebyText":"En retard de","minuteText":"minute","minutesText":"minutes","hourText":"heure","hoursText":"heures","dayText":"jour","daysText":"jours","weekText":"semaine","weeksText":"semaines","monthText":"mois","monthsText":"mois","yearText":"année","yearsText":"ans","startsNowText":"Commence maintenant","_localized":{}}
+,
+'Sage/UI/Alarms/nls/ActivityAlarm':{"noSubjectText":"Aucun sujet","contactText":"Contact","accountText":"Compte","opportunityText":"Opportunité","leadText":"Lead","companyText":"Société","recurringText":"Récurrent","ticketText":"Ticket","leaderText":"Responsable","locationText":"Emplacement","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmButton':{"pastDueToolTipFmt":" ${0} activités sont en retard.","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmPane':{"dismissAllText":"Tout annuler","dismissText":"Annuler","fiveMinText":"5 minutes","tenMinText":"10 minutes","fifteenMinText":"15 minutes","thirtyMinText":"30 minutes","oneHourText":"1 heure","twoHourText":"2 heures","fourHourText":"4 heures","eightHourText":"8 heures","oneDayText":"1 jour","twoDayText":"2 jours","threeDayText":"3 jours","oneWeekText":"1 semaine","twoWeekText":"2 semaines","snoozeText":"Mettre en veille","snoozeByText":"Mettre en veille pour :","snoozeAllText":"Mettre tout en veille","showCalendarText":"Afficher l'agenda","_localized":{}}
+,
+'Sage/UI/Alarms/nls/UnconfirmedPane':{"showConfirmationsText":"Afficher les confirmations","showCalendarText":"Afficher l'agenda","acceptText":"Accepter","declineText":"Refuser","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmPopup':{"title":"Alertes","alarmsText":"Alarmes","unconfirmedText":"Non confirmé","deleteText":"Supprimer les sélections","helpText":"Aide","completeText":"Terminer les activités sélectionnées","_localized":{}}
+,
+'Sage/UI/Alarms/nls/JobNotificationButton':{"notificationToolTip":"Vous avez ${0} notifications de tâches.","notificationErrorToolTip":"Une erreur s'est produite lors de la récupération des notifications de tâches. Veuillez contacter votre administrateur.","_localized":{}}
+,
+'Sage/UI/Alarms/nls/JobNotificationPopup':{"title":"Notifications de tâches","helpText":"Aide","colNameJobName":"Type","colNameProgress":"Progression","colNameStatus":"Etat","colExecutionResult":"Résultat","executionStatusRunning":"En cours d'exécution","executionStatusComplete":"Terminer","executionStatusInterrupting":"Interruption","executionStatusInterrupted":"Interrompu","executionStatusError":"Erreur","executionStatusUndefined":"Non défini","_localized":{}}
+,
+'Sage/UI/SLXPreviewGrid/Filter/nls/Lookup':{"okText":"OK","_localized":{}}
+,
+'Sage/UI/nls/ActivityList':{"addMeetingText":"Planifier un rendez-vous","addPhoneCallText":"Planifier un appel téléphonique","addToDoText":"Planifier une tâche à faire","helpText":"Aide","completeText":"Terminer","typeText":"Type","startDateText":"Date/Heure","dateRangeText":"Plage de dates","durationText":"Durée","leaderText":"Responsable","contactText":"Contact","opportunityText":"Opportunité","descriptionText":"Objet","categoryText":"Catégorie","firstNameText":"Prénom","lastNameText":"Nom","_localized":{}}
+,
+'Sage/UI/nls/NotesHistoryList':{"typeText":"Type","showDbChangesText":"Afficher les modifications de la base de données","selectAllText":"Sélectionner tout","dateText":"Date","dateTimeText":"Date/Heure","dateRangeText":"Plage de dates","userText":"Utilisateur","accountText":"Compte","contactText":"Contact","opportunityText":"Opportunité","regardingText":"Objet","notesText":"Notes","resultText":"Résultat","categoryText":"Catégorie","sendEmailText":"Envoyer par E-mail","sendToWordText":"Envoyer vers Word","addNoteText":"Ajouter une note","completeAnActivityText":"Terminer une activité","helpText":"Aide","pleaseSelectRecordsText":"Veuillez sélectionner un ou plusieurs enregistrements","UnableToFindWordMsg":"Impossible de démarrer Microsoft Word. Vérifiez vos paramètres de sécurité.","printedOnText":"Imprimé le","errorNoData":"Il n'y a pas de notes ou d'historique à partager dans Ming.le.","yesButtonText":"Oui","noButtonText":"Non","salesLogixPageTitle":"Infor CRM","noRecordsSelectedProcessAll":"Vous n'avez sélectionné aucun enregistrement. Tous les enregistrement ${0} de note ou d'historique seront partagés dans Ming.le. Voulez-vous continuer ?","errorShareMingle":"Une erreur s'est produite lors du partage d'un ou de plusieurs enregistrements de note ou d'historique dans Ming.le.","sharedToMingle":"Partage des notes/de l'historique dans Ming.le.","sharingToMingle":"Partage dans Ming.le","shared":"Partagé","pleaseWait":"Veuillez patienter...","failedToPost":"Echec de la publication : ${0} ; erreur : ${1}","addressText":"Adresse","mainPhoneText":"Téléphone principal","tollFreeText":"Numéro vert","contactPhoneText":"Téléphone du contact","_localized":{}}
+,
+'Sage/Mingle/nls/UserService':{"_localized":{}}
+,
+'Sage/UI/Filters/nls/EditFilterItems':{"selectAllText":"Sélectionner tout","findItemText":"Chercher élément :","findText":"Rechercher","clearText":"Effacer","dialogTitle":"Modifier les éléments de filtre","okText":"OK","cancelText":"Annuler","_localized":{}}
+,
+'Sage/UI/Filters/nls/CheckBoxFilter':{"loadingText":"Chargement...","moreText":"Modifier les éléments","clearText":"Effacer","emptyText":"(Vide)","nullText":"(Nul)","ofText":"/","filterHasMetric":"A une mesure","filterHasFilter":"A un filtre","filteroptionYesterday":"Hier","filteroptionToday":"Aujourd'hui","filteroptionThisWeek":"Cette semaine","filteroptionThisMonth":"Ce mois","filteroptionThisQuarter":"Ce trimestre","filteroptionThisYear":"Cette année","filteroptionLastWeek":"Semaine dernière","filteroptionLastMonth":"Mois dernier","filteroptionLastQuarter":"Trimestre dernier","filteroptionLastYear":"Année dernière","filteroptionWeektoStart":"Semaine à ce jour","filteroptionMonthtoStart":"Mois à ce jour","filteroptionQtrtoStart":"Trimestre à ce jour","filteroptionYeartoStart":"Année à ce jour","filteroptionOlder":"Plus ancien","filteroption0To999":"0 à 999","filteroption1000To9999":"1 000 à 9 999","filteroption10000To99999":"10 000 à 99 999","filteroption100000To499999":"100 000 à 499 999","filteroption500000To999999":"500 000 à 999 999","filteroption1000000AndHigher":"1 000 000 et plus","filteroptionT":"T","_localized":{}}
+,
+'Sage/UI/Filters/nls/EditFilters':{"selectAllText":"Sélectionner tout","dialogTitle":"Modifier les filtres","okText":"OK","cancelText":"Annuler","_localized":{}}
+,
+'Sage/UI/Filters/nls/FilterPanel':{"editText":"Modifier les filtres","noneText":"Aucun filtre sélectionné","clearText":"Effacer tout","filterName":"Nom","filterDisplayName":"Nom d'affichage","filterEntityName":"Nom de l'entité","filterModifiedDate":"Date de modification","filterHasMetric":"A une mesure","filterHasFilter":"A un filtre","_localized":{}}
+,
+'Sage/UI/nls/SpeedSearch':{"standardText":"Standard","advancedText":"Avancé","speedSearchText":"SpeedSearch","_localized":{}}
+,
+'Sage/UI/nls/TimeZoneItem':{"buttonOKText":"OK","buttonCancelText":"Annuler","timeZoneText":"Fuseau horaire","timeZoneSettingsText":"Paramètres de fuseau horaire","setTimeZoneText":"Définir le fuseau horaire :","_localized":{}}
+,
+'Sage/UI/nls/ActivityScheduler':{"tooltipTime":"Heure","tooltipContactName":"Contact","tooltipAccountName":"Compte","tooltipCompanyName":"Société","tooltipLeadName":"Lead","tooltipPhoneNumber":"Téléphone","tooltipRegarding":"Objet","tooltipPriority":"Priorité","tooltipNotes":"Notes","tooltipType":"Type","tooltipDayType":"Type de jour","tooltipStartDate":"Date de début","tooltipEndDate":"Date de fin","tooltipLocation":"Emplacement","tooltipDescription":"Description","completedText":"(Terminé)","tooltipMoreActivities":"Cliquez pour plus d'activités","scheduler_dates":{"month_full":["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],"month_short":["Jan","Fév","Mar","Avr","Mai","Juin","Juil","Aoû","Sep","Oct","Nov","Déc"],"day_full":["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"],"day_short":["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"]},"scheduler_labels":{"dhx_cal_today_button":"Aujourd'hui","day_tab":"Jour","week_tab":"Semaine","workweek_tab":"Semaine de travail","month_tab":"Mois","new_event":"Nouvel événement","icon_save":"Enregistrer","icon_cancel":"Annuler","icon_details":"Détails","icon_edit":"Modifier","icon_delete":"Supprimer","confirm_closing":"","confirm_deleting":"L'événement sera supprimé de manière permanente. Voulez-vous continuer ?","section_description":"Description","section_time":"Période de temps","full_day":"Journée complète","confirm_recurring":"Voulez-vous modifier l'ensemble des événements répétés ?","section_recurring":"Répéter l'événement","button_recurring":"Désactivé","button_recurring_open":"Activé","agenda_tab":"Calendrier","date":"Date","description":"Description","year_tab":"Année","week_agenda_tab":"Calendrier"},"_localized":{}}
+,
+'Sage/UI/nls/TimelessActivitiesPane':{"header_complete":"Terminer","header_type":"Type","header_contact":"Nom","header_regarding":"Objet","tooltip_type":"Type","tooltip_contact":"Contact","tooltip_account":"Compte","tooltip_lead":"Lead","tooltip_phone":"Téléphone","tooltip_leader":"Responsable","tooltip_regarding":"Objet","tooltip_location":"Emplacement","tooltip_notes":"Notes","tooltip_company":"Société","_localized":{}}
+,
+'Sage/UI/nls/EditCalendarUsers':{"selectAllText":"Sélectionner tout","findItemText":"Rechercher un utilisateur :","findText":"Rechercher","clearText":"Effacer","dialogTitle":"Modifier les utilisateurs de l'agenda","okText":"OK","cancelText":"Annuler","maxUsersErrorMessage":"Vous ne pouvez pas sélectionner plus de ${0} utilisateurs (le vôtre inclus). Désélectionnez un des utilisateurs sélectionnés, puis réessayez.","updateErrorMessage":"Une erreur s'est produite lors de la mise à jour des utilisateurs de l'agenda","_localized":{}}
+,
+'Sage/UI/nls/CalendarUsersListPane':{"header_color":"Couleur","header_user":"Utilisateur","header_icon":"Icône","maxUsersErrorMessage":"Vous ne pouvez pas déplacer plus de ${0} agendas (le vôtre compris) en même temps. Effacez un des agendas sélectionnés et réessayez.","editUsersLinkText":"Modifier les utilisateurs de l'agenda","noUsersMessage":"Aucun utilisateur n'a été ajouté, ajoutez des utilisateurs en cliquant sur le lien 'Modifier les utilisateurs de l'agenda' ci-dessus","_localized":{}}
+,
+'Sage/Utility/nls/Dashboard':{"pageText":"Page","_localized":{}}
+,
+'Sage/Utility/nls/Sql':{"InvalidApostropheCount":"Le nombre d'apostrophes dans la clause SQL IN n'est pas valide.","_localized":{}}
+,
+'Sage/Utility/nls/IONWorkflowHelper':{"cancelWorkflowSuccess":"Workflow has been cancelled.","cancelWorkflowLog":"Unable to cancel workflow. Please refer to the error log for more details.","errorCancelWorkflow":"An error occurred when ${0} cancels workflow: ${1}.","_localized":{}}
 });
-},
-'Sage/MainView/JobMgr/nls/fr-lu/ExecutionsListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/fr-lu/ExecutionsListPanelConfig',{});
-},
-'Sage/QuickForms/Design/nls/fr/PhoneControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/PhoneControlDesigner", (
-{ displayNameText: 'Téléphone' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/PhoneControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/PhoneControlDesigner',{});
-},
-'Sage/MainView/Lead/nls/fr/UpdateLeads':function(){
-define("Sage/MainView/Lead/nls/fr/UpdateLeads", (
-{ updateMultipleLeads_Caption: 'Mettre à jour plusieurs opportunités',
-  labelWidth: '120',
-  btnCancel_Caption: 'Annuler',
-  ok_Text: 'OK',
-  update_To_Caption: 'A :',
-  update_Property_Caption: 'Mettre à jour :',
-  updateProp_Owner: 'Propriétaire',
-  lookupOwnerText: 'Rechercher un propriétaire :',
-  lookupDescriptionColText: 'Description',
-  updateProp_AcctMgr: 'Responsable du compte',
-  lookupActMgrText: 'Responsable du compte',
-  lookupNameColText: 'Nom',
-  lookupTitleColText: 'Titre',
-  lookupDepartmentColText: 'Service',
-  lookupRegionColText: 'Région',
-  lookupTypeColText: 'Type',
-  errorUnspecifiedValue: 'Veuillez spécifier un point de terminaison valide avant de continuer.',
-  errorRequestingJobMgr: 'Une erreur est produite lors de la requête sur le schéma.',
-  updateLeadsTitle: 'Mettre à jour le lead' }
-));
-},
-'Sage/MainView/Lead/nls/fr-lu/UpdateLeads':function(){
-define('Sage/MainView/Lead/nls/fr-lu/UpdateLeads',{});
-},
-'Sage/Library/nls/fr/FileHandler':function(){
-define("Sage/Library/nls/fr/FileHandler", (
-{ AccessError: 'Votre rôle ne vous permet pas d\'exécuter cette action.',
-  Available: 'Disponible',
-  Confirm: 'Confirmer',
-  DeleteFileCnfmFmt: 'Voulez-vous vraiment supprimer le fichier "${0}" ?',
-  Delivered: 'Livré : Non lu',
-  DeliveredRead: 'Livré : Lu',
-  DocumentPropertiesError: 'Une erreur inattendue est survenue pendant la tentative de récupération des propriétés du document.',
-  DocumentPropertiesUpdateError: 'Une erreur inattendue est survenue pendant la tentative de mise à jour des propriétés du document.',
-  DocumentUpdateConflictError: 'Le fichier a été mis à jour par un autre utilisateur. Veuillez l\'actualiser et réessayer.',
-  FileDeleteError: 'Une erreur inattendue est survenue lors de la tentative de suppression d\'un fichier.',
-  FileStatusError: 'Une erreur inattendue est survenue pendant la tentative de mise à jour de l\'état du fichier.',
-  LogRequestError: 'Une erreur inattendue est survenue pendant la tentative  de consignation de la demande de synchronisation du document.',
-  No: 'Non',
-  NoAccessMessage: 'Vous n\'avez pas l\'autorisation d\'ajouter des fichiers à la bibliothèque. Contactez votre administrateur Saleslogix pour obtenir des informations supplémentaires.',
-  Ordered: 'Commandé',
-  PleaseSelectFile: 'Veuillez sélectionner un fichier.',
-  PleaseWait: 'Veuillez patienter',
-  Revised: 'Révisé',
-  RevisionOrdered: 'Révision commandée',
-  UploadError: 'Une erreur est survenue pendant la tentative de téléchargement d\'un fichier.',
-  Unknown: 'Inconnu',
-  Yes: 'Oui' }
-));
-},
-'Sage/Library/nls/fr-lu/FileHandler':function(){
-define('Sage/Library/nls/fr-lu/FileHandler',{});
-},
-'Sage/UI/nls/fr/ListPanel':function(){
-define("Sage/UI/nls/fr/ListPanel", (
-{ listText: 'Liste',
-  summaryText: 'Résumé',
-  detailText: 'Détail',
-  hideDetailText: 'Masquer les détails',
-  unsavedDataText: '*données non enregistrées',
-  helpText: 'Aide',
-  refreshText: 'Actualiser',
-  displayingText: 'Affichage',
-  ofText: 'de',
-  overflowText: 'Votre recherche a renvoyé un grand nombre de résultats. Veuillez affiner en appliquant des filtres.' }
-));
-},
-'Sage/UI/nls/fr-lu/ListPanel':function(){
-define('Sage/UI/nls/fr-lu/ListPanel',{});
-},
-'Sage/Utility/nls/fr/Sql':function(){
-define("Sage/Utility/nls/fr/Sql", (
-{ InvalidApostropheCount: 'Le nombre apostrophes dans la clause SQL IN est pas valide.' }
-));
-},
-'Sage/Utility/nls/fr-lu/Sql':function(){
-define('Sage/Utility/nls/fr-lu/Sql',{});
-},
-'Sage/UI/Filters/nls/fr/EditFilters':function(){
-define("Sage/UI/Filters/nls/fr/EditFilters", (
-{ selectAllText: 'Sélectionner tous',
-  dialogTitle: 'Modifier les filtres',
-  okText: 'OK',
-  cancelText: 'Annuler' }
-));
-},
-'Sage/UI/Filters/nls/fr-lu/EditFilters':function(){
-define('Sage/UI/Filters/nls/fr-lu/EditFilters',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/FormUsagesPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/FormUsagesPropertyEditor", (
-{ titleText: 'Utilisation',
-  portalText: 'Portail',
-  viewText: 'Affichage',
-  modesText: 'Modes',
-  descriptionText: 'Description' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/FormUsagesPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/FormUsagesPropertyEditor',{});
-},
-'Sage/UI/Controls/nls/fr/DurationSelect':function(){
-define("Sage/UI/Controls/nls/fr/DurationSelect", (
-{ minuteText: 'minute',
-  minutesText: 'Minutes',
-  hourText: 'heure',
-  hoursText: 'Heures',
-  dayText: 'Jour',
-  daysText: 'Jours' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/DurationSelect':function(){
-define('Sage/UI/Controls/nls/fr-lu/DurationSelect',{});
-},
-'Sage/UI/Alarms/nls/fr/AlarmCountDown':function(){
-define("Sage/UI/Alarms/nls/fr/AlarmCountDown", (
-{ startsInText: 'Commence dans',
-  overduebyText: 'en retard de',
-  minuteText: 'minute',
-  minutesText: 'Minutes',
-  hourText: 'heure',
-  hoursText: 'Heures',
-  dayText: 'Jour',
-  daysText: 'Jours',
-  weekText: 'Semaine',
-  weeksText: 'semaines',
-  monthText: 'Mois',
-  monthsText: 'mois',
-  yearText: 'Année',
-  yearsText: 'ans',
-  startsNowText: 'Démarrer maintenant' }
-));
-},
-'Sage/UI/Alarms/nls/fr-lu/AlarmCountDown':function(){
-define('Sage/UI/Alarms/nls/fr-lu/AlarmCountDown',{});
-},
-'Sage/UI/nls/fr/AttachmentList':function(){
-define("Sage/UI/nls/fr/AttachmentList", (
-{ attachmentText: 'Pièce jointe',
-  userText: 'Utilisateur',
-  modDateText: 'Modifié le',
-  dateRangeText: 'Modifier la plage de dates',
-  sizeText: 'Taille',
-  extensionText: 'Extension de fichier',
-  addFileText: 'Ajouter un fichier',
-  addUrlText: 'Ajouter une URL',
-  editText: 'Modifier',
-  helpText: 'Aide',
-  addGoogleText: 'Ajouter un document Google',
-  deleteText: 'Supprimer',
-  request: 'Demander le fichier',
-  delivered: 'Envoyé',
-  requested: 'Demandé',
-  available: 'Disponible' }
-));
-},
-'Sage/UI/nls/fr-lu/AttachmentList':function(){
-define('Sage/UI/nls/fr-lu/AttachmentList',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/RowBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/RowBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  indexText: 'Index :',
-  indexTooltipText: 'Numéro de la ligne ou colonne, à partir de zéro.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/RowBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/RowBasicPropertyEditor',{});
-},
-'Sage/MainView/JobMgr/nls/fr/RunJobDialog':function(){
-define("Sage/MainView/JobMgr/nls/fr/RunJobDialog", {
-    dlgRunJob_Title: 'Exécuter/programmer une tâche',
-    txtJobName_Caption: 'Nom de la tâche',
-    txtTriggerDescription_Caption: 'Description',
-    cmbScheduleType_Caption: 'Planification :',
-    cmdOK_Caption: 'OK',
-    cmdCancel_Caption: 'Annuler',
-    txtInvalidNumber: 'Nombre non valide.',
-    contentPaneParameters_Caption: 'Paramètres',
-    txtRunNow: 'Exécuter maintenant',
-    txtScheduledExecution: 'Exécution programmée',
-    colName_Caption: 'Nom',
-    colValue_Caption: 'Valeur',
-    colDescription_Caption: 'Description',
-    txtInvalidParameterTitle: 'Paramètre non valide',
-    txtInvalidParameterMessage: 'Paramètre non valide : ${0}'
-});
-},
-'Sage/MainView/JobMgr/nls/fr-lu/RunJobDialog':function(){
-define('Sage/MainView/JobMgr/nls/fr-lu/RunJobDialog',{});
-},
-'Sage/QuickForms/Design/nls/fr/CheckBoxControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/CheckBoxControlDesigner", (
-{ displayNameText: 'Case à cocher' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/CheckBoxControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/CheckBoxControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/fr/EditableGridControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/EditableGridControlDesigner", (
-{ displayNameText: 'Grille modifiable' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/EditableGridControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/EditableGridControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/fr/HiddenControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/HiddenControlDesigner", (
-{ displayNameText: 'Texte masqué' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/HiddenControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/HiddenControlDesigner',{});
-},
-'Sage/UI/Dashboard/nls/fr/DashboardWidgetCell':function(){
-define("Sage/UI/Dashboard/nls/fr/DashboardWidgetCell", (
-{ closeTooltipText: 'Fermer',
-  minimizeTooltipText: 'Réduire',
-  settingsTooltipText: 'Paramètres' }
-));
-},
-'Sage/UI/Dashboard/nls/fr-lu/DashboardWidgetCell':function(){
-define('Sage/UI/Dashboard/nls/fr-lu/DashboardWidgetCell',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/UserBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/UserBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  isReadOnlyText: 'Lecture seule :',
-  isReadOnlyTooltipText: 'Ne permet pas les modifications.',
-  toolTipText: 'Info-bulle :',
-  toolTipTooltipText: 'Court texte aide concernant le contrôle.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/UserBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/UserBasicPropertyEditor',{});
-},
-'Sage/UI/nls/fr/Dialogs':function(){
-define("Sage/UI/nls/fr/Dialogs", (
-{ yesText: 'Oui',
-  noText: 'Non',
-  okText: 'OK',
-  cancelText: 'Annuler' }
-));
-},
-'Sage/UI/nls/fr-lu/Dialogs':function(){
-define('Sage/UI/nls/fr-lu/Dialogs',{});
-},
-'Sage/TaskPane/nls/fr/SecuredActionTasklet':function(){
-define("Sage/TaskPane/nls/fr/SecuredActionTasklet", (
-{ addToRoleTitle: 'Ajouter au rôle' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/SecuredActionTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/SecuredActionTasklet',{});
-},
-'Sage/UI/Dashboard/nls/fr/DashboardTabController':function(){
-define("Sage/UI/Dashboard/nls/fr/DashboardTabController", (
-{ newTabText: 'Nouvel Onglet',
-  addContentText: 'Ajouter du contenu',
-  editOptionsText: 'Modifier les options',
-  hideTabText: 'Masquer onglet',
-  closeText: 'Fermer',
-  copyTabText: 'Copier onglet',
-  showTabText: 'Afficher onglet',
-  shareTabText: 'Partager onglet',
-  deleteTabText: 'Supprimer un onglet',
-  deleteTabConfirmText: 'Voulez-vous vraiment supprimer cet onglet ?',
-  descriptionText: 'Description',
-  everyoneText: 'Tous les utilisateurs',
-  saveTabText: 'Enregistrer onglet',
-  helpText: 'Aide',
-  addText: 'Ajouter',
-  invalidMessage: 'Caractère non valide',
-  invalidDuplicateMessage: 'Le nom de la connexion doit être unique.',
-  deleteText: 'Supprimer',
-  titleText: 'Titre :',
-  chooseTemplateText: 'Choisir le modèle à utiliser :',
-  oneColumnText: 'Une colonne',
-  twoColumnText: 'Partage en deux colonnes',
-  fatLeftText: 'Deux colonnes plus grande à gauche',
-  fatRightText: 'Deux colonnes plus grande à droite',
-  makeDefaultText: 'Utiliser par défaut',
-  releaseFetchErrorText: 'Erreur lors de la récupération des propriétés disponibles.',
-  releaseDeleteNoneSelected: 'Aucun élément sélectionné.',
-  releasedToText: 'Diffusé à :',
-  typeText: 'Type',
-  addLookup: 'Ajouter',
-  okButton: 'OK',
-  errorText: 'Erreur',
-  warningText: 'Avertissement',
-  permissionErrorText: 'Erreur : utilisateur ne dispose pas des droits suffisants pour effectuer cette action.',
-  permissionErrorPerformCopyText: 'Voulez-vous créer une copie personnelle de cette page ?',
-  yesText: 'Oui',
-  noText: 'Non' }
-));
-},
-'Sage/UI/Dashboard/nls/fr-lu/DashboardTabController':function(){
-define('Sage/UI/Dashboard/nls/fr-lu/DashboardTabController',{});
-},
-'Sage/MainView/IntegrationContract/nls/fr/SalesOrderRTDV':function(){
-define("Sage/MainView/IntegrationContract/nls/fr/SalesOrderRTDV", (
-{ dialogCaption: 'Détails du bon de commande',
-  loadingText: 'Chargement ...',
-  lblSalesOrderCaption: 'Bon de commande :',
-  lblStatusCaption: 'Etat :',
-  lblGrossTotalCaption: 'Montant de la commande :',
-  lblOrderDateCaption: 'Date de la commande :',
-  lblTaxTotalCaption: 'Montant de la taxe :',
-  lblHoldStatusCaption: 'Statut en attente :',
-  lblCurrencyCaption: 'Devise :',
-  lblTypeCaption: 'Type :',
-  lblCostTotalCaption: 'Coût total :',
-  lblPONumberCaption: 'N° de BdC :',
-  lblProfitTotalCaption: 'Total des bénéfices :',
-  lblQuotationCaption: 'Devis :',
-  lblInvoiceStatusCaption: 'Statut de la facture :',
-  lblContactCaption: 'Contact :',
-  lblDeliveryDateCaption: 'Date de livraison :',
-  lblDueDateCaption: 'Date échéance :',
-  lblPriceListCaption: 'Liste de prix :',
-  lblCarrierCaption: 'Transporteur :',
-  lblNetTotalCaption: 'Total net :',
-  lblAllocationStatusCaption: 'Statut allocation :',
-  lblDiscountTotalCaption: 'Total de la remise :',
-  lblDeliveryStatusCaption: 'Statut de livraison :',
-  lblChargesTotalCaption: 'Total facturé :',
-  detailsTabTitle: 'Détails',
-  salesPersonsTabTitle: 'Représentant commercial :',
-  addressTabTitle: 'Adresses',
-  salesOrderLinesTabTitle: 'Lignes de commandes',
-  paymentsTabTitle: 'Paiements',
-  deliveriesTabTitle: 'Livraisons',
-  grdSalesOrder_Edit: 'Modifier',
-  grdSalesOrder_OrderNumber: 'Numéro de commande',
-  grdSalesOrder_OrderDate: 'Date de la commande',
-  grdSalesOrder_Status: 'Etat',
-  grdSalesOrder_HoldStatus: 'Statut en attente',
-  grdSalesOrder_Type: 'Type',
-  grdSalesOrder_PO: 'Numéro de BdC',
-  grdSalesOrder_NetTotal: 'Total net',
-  grdSalesOrder_DiscountTotal: 'Total de la remise',
-  grdSalesOrder_ChargesTotal: 'Total des frais',
-  grdSalesOrder_TaxTotal: 'Montant de la taxe',
-  grdSalesOrder_GrossTotal: 'Total brut',
-  grdSalesOrder_Currency: 'Devise',
-  grdSalesPersons_Name: 'Nom',
-  grdSalesPersons_Type: 'Type',
-  grdSalesPersons_Extension: 'Extension',
-  grdSalesPersons_Relationship: 'Relation',
-  grdAddress_Name: 'Nom',
-  grdAddress_Address1: 'Adresse 1',
-  grdAddress_Address2: 'Adresse 2',
-  grdAddress_City: 'Ville',
-  grdAddress_State: 'Département',
-  grdAddress_Zip: 'Code postal',
-  grdItems_Line: 'Numéro de la ligne',
-  grdItems_Type: 'Type',
-  grdItems_Commodity: 'Marchandise',
-  grdItems_CommodityVariant: 'Variable',
-  grdItems_CommodityDimension: 'Dimension',
-  grdItems_UnitOfMeasure: 'Unité',
-  grdItems_Location: 'Emplacement',
-  grdItems_PriceList: 'Liste des prix',
-  grdItems_Quantity: 'Quantité',
-  grdItems_InitialPrice: 'Prix origine',
-  grdItems_ActualPrice: 'Prix réel',
-  grdItems_NetTotal: 'Total net',
-  grdItems_ChargesTotal: 'Total des frais',
-  grdItems_DiscountTotal: 'Total de la remise',
-  grdItems_TaxTotal: 'Montant de la taxe',
-  grdItems_GrossTotal: 'Total brut',
-  grdPayments_Date: 'Date du paiement',
-  grdPayments_Name: 'Nom',
-  grdPayments_Type: 'Type',
-  grdPayments_Status: 'Etat',
-  grdPayments_NetTotal: 'Total net',
-  grdPayments_Discounts: 'Remises',
-  grdPayments_Charges: 'Frais',
-  grdPayments_Tax: 'TVA',
-  grdPayments_GrossTotal: 'Total brut',
-  grdPayments_Currency: 'Devise',
-  grdPayments_TenderType: 'Type de appel offre',
-  grdPayments_TenderReference: 'Référence de appel offre',
-  grdPayments_ProcessDate: 'Date exécution',
-  grdDeliveries_Number: 'Nombre',
-  grdDeliveries_Type: 'Type',
-  grdDeliveries_Status: 'Etat',
-  grdDeliveries_RequestedDate: 'Date de la demande',
-  grdDeliveries_ActualDate: 'Date réelle',
-  grdDeliveries_ActualTime: 'Heure réelle',
-  grdDeliveries_RequestedQuantity: 'Quantité demandée',
-  grdDeliveries_DeliveredQuantity: 'Quantité livrée',
-  grdDeliveries_Method: 'Méthode',
-  grdDeliveries_Carrier: 'Transporteur',
-  grdDeliveries_CarrierReference: 'Référence du transporteur',
-  grdDeliveries_ExceptionReason: 'Motif de exception',
-  errorERPRequest: 'Une erreur est produite lors de ouverture de affichage des détails du bon de commande traités par les sytèmes de comptabilité. ',
-  errorERPRequestDetails: '${0}, ${1} Demande : ${2}',
-  btnCloseCaption: 'Fermer' }
-));
-},
-'Sage/MainView/IntegrationContract/nls/fr-lu/SalesOrderRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/fr-lu/SalesOrderRTDV',{});
-},
-'Sage/QuickForms/Design/nls/fr/UserControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/UserControlDesigner", (
-{ displayNameText: 'Utilisateur' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/UserControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/UserControlDesigner',{});
-},
-'Sage/Groups/nls/fr/GroupNavigator':function(){
-define("Sage/Groups/nls/fr/GroupNavigator", (
-{ firstText: 'Aller au premier',
-  previousText: 'Précédent',
-  nextText: 'Suivant',
-  lastText: 'Aller au dernier',
-  listText: 'Vue Liste',
-  noRecordsText: 'Aucun enregistrement',
-  labelFmtText: '${0} sur ${1}' }
-));
-},
-'Sage/Groups/nls/fr-lu/GroupNavigator':function(){
-define('Sage/Groups/nls/fr-lu/GroupNavigator',{});
-},
-'Sage/Utility/File/nls/fr/AddURLAttachment':function(){
-define("Sage/Utility/File/nls/fr/AddURLAttachment", (
-{ descriptionText: 'Description',
-  urlText: 'Url',
-  titleText: 'Ajouter URL jointe',
-  okText: 'OK',
-  cancelText: 'Annuler',
-  requestFailedMsg: 'opération demandée a pas pu être exécutée, veuillez réessayer ultérieurement.',
-  urlBlankMsg: 'URL et la propriété de description ne peuvent pas être vides.' }
-));
-},
-'Sage/Utility/File/nls/fr-lu/AddURLAttachment':function(){
-define('Sage/Utility/File/nls/fr-lu/AddURLAttachment',{});
-},
-'Sage/UI/Filters/nls/fr/EditFilterItems':function(){
-define("Sage/UI/Filters/nls/fr/EditFilterItems", (
-{ selectAllText: 'Sélectionner tous',
-  findItemText: 'Chercher élément :',
-  findText: 'Rechercher',
-  clearText: 'Effacer',
-  dialogTitle: 'Modifier les éléments de filtre',
-  okText: 'OK',
-  cancelText: 'Annuler' }
-));
-},
-'Sage/UI/Filters/nls/fr-lu/EditFilterItems':function(){
-define('Sage/UI/Filters/nls/fr-lu/EditFilterItems',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportsFormatter':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportsFormatter", (
-{ txtEdit: 'Modifier',
-  txtDelete: 'Supprimer',
-  txtRangeValue: '${0} à ${1}' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportsFormatter':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportsFormatter',{});
-},
-'Sage/Utility/File/nls/fr/DragDropWatcher':function(){
-define("Sage/Utility/File/nls/fr/DragDropWatcher", (
-{ query0: 'La fonctionnalité que vous demandez requiert l\'installation du module d\'intégration de bureau <br> Saleslogix.',
-  query1: 'En savoir plus...',
-  query2: 'Voulez-vous installer cette fonctionnalité maintenant ?',
-  query3: 'Remarque : le module peut être installé à tout moment à partir des pages de connexion ou d\'options.' }
-));
-},
-'Sage/Utility/File/nls/fr-lu/DragDropWatcher':function(){
-define('Sage/Utility/File/nls/fr-lu/DragDropWatcher',{});
-},
-'Sage/QuickForms/Design/nls/fr/DesignSurface':function(){
-define("Sage/QuickForms/Design/nls/fr/DesignSurface", (
-{ bisectionErrorText: 'Ce placement provoquera le découpage un autre contrôle.',
-  rowBoundsErrorText: 'La ligne choisie est hors limites.',
-  columnBoundsErrorText: 'La colonne choisie est hors limites.',
-  rowSpanBoundsErrorText: 'La largeur de la ligne choisie est hors limites.',
-  columnSpanBoundsErrorText: 'La largeur de la colonne choisie est hors limites.',
-  occupiedErrorText: 'Il y a pas assez espace libre pour la taille choisie.' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/DesignSurface':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/DesignSurface',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/ConfirmListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/ConfirmListPanelConfig", (
-{ colNameType: "Type d'activité",
-  colNameNotification: 'Notification',
-  colNameStartDate: 'Date de début',
-  colNameDuration: 'Durée',
-  colNameRegarding: 'Objet',
-  colNameFromUser: 'De',
-  colNameToUser: "À utilisateur" }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/ConfirmListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/ConfirmListPanelConfig',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/FormAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/FormAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  generalText: 'Général',
-  useEntityNameAsTitleText: 'Utiliser le nom de entité comme titre :',
-  useEntityNameAsTitleTooltipText: 'Utiliser le nom de entité courante comme titre de formulaire.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/FormAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/FormAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/EventListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/EventListPanelConfig", (
-{ colNameType: 'Type',
-  colNameStartDate: 'Date de début',
-  colNameEndDate: 'Date de fin',
-  colNameDescription: 'Description',
-  colNameUser: 'Utilisateur',
-  colNameLocation: 'Emplacement' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/EventListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/EventListPanelConfig',{});
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/fr/AllOpenListPanelConfig':function(){
-define("Sage/Extensions/Activity/ListPanelOverrides/nls/fr/AllOpenListPanelConfig", (
-{ colNameAssociationCount: 'Nombre de participants' }
-));
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/fr-lu/AllOpenListPanelConfig':function(){
-define('Sage/Extensions/Activity/ListPanelOverrides/nls/fr-lu/AllOpenListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/MultiselectNumberParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/fr/MultiselectNumberParameterEditor", {
-    txtPleaseSpecifyNumberBetween: "S'il vous plaît spécifier une valeur numérique comprise entre {0} et {1}.",
-    txtPleaseSpecifyNumberLesser: "S'il vous plaît spécifier une valeur numérique inférieure ou égale à {0}.",
-    txtPleaseSpecifyNumberGreater: "Please specify a numeric value greater than or equal to {0}.",
-    txtPleaseSpecifyValue: "S'il vous plaît spécifier une valeur.",
-    lblAvailableValues_Caption: 'Valeurs disponibles:',
-    lblSelectedValues_Caption: 'Valeurs sélectionnées:',
-    lblEnterValue_Caption: 'Entrez une valeur:'
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/MultiselectNumberParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/MultiselectNumberParameterEditor',{});
-},
-'Sage/UI/nls/fr/ActivityScheduler':function(){
-define("Sage/UI/nls/fr/ActivityScheduler", (
-{ tooltipTime: 'Heure',
-  tooltipContactName: 'Contact',
-  tooltipAccountName: 'Compte',
-  tooltipCompanyName: 'Société',
-  tooltipLeadName: 'Lead',
-  tooltipPhoneNumber: 'Téléphone',
-  tooltipRegarding: 'Objet',
-  tooltipPriority: 'Priorité',
-  tooltipNotes: 'Notes',
-  tooltipType: 'Type',
-  tooltipDayType: 'Type de jour',
-  tooltipStartDate: 'Date de début',
-  tooltipEndDate: 'Date de fin',
-  tooltipLocation: 'Emplacement',
-  tooltipDescription: 'Description',
-  completedText: '(Terminé)',
-  tooltipMoreActivities: 'Cliquez pour plus activités',
-  scheduler_dates: 
-   { month_full: 
-      [ 'Janvier',
-        'Février',
-        'Mars',
-        'Avril',
-        'Mai',
-        'Juin',
-        'Juillet',
-        'Août',
-        'Septembre',
-        'Octobre',
-        'Novembre',
-        'Décembre' ],
-     month_short: 
-      [ 'Jan',
-        'Fév',
-        'Mar',
-        'Avr',
-        'Mai',
-        'Juin',
-        'Juil',
-        'Aoû',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Déc' ],
-     day_full: 
-      [ 'Dimanche',
-        'Lundi',
-        'Mardi',
-        'Mercredi',
-        'Jeudi',
-        'Vendredi',
-        'Samedi' ],
-     day_short: [ 'Dim', 'Lun', 'Mar', 'Merc', 'Jeu', 'Ven', 'Sam' ] },
-  scheduler_labels: 
-   { dhx_cal_today_button: 'Aujourd hui',
-     day_tab: 'Jour',
-     week_tab: 'Semaine',
-     workweek_tab: 'Semaine de travail',
-     month_tab: 'Mois',
-     new_event: 'Nouvel événement',
-     icon_save: 'Enregistrer',
-     icon_cancel: 'Annuler',
-     icon_details: 'Détails',
-     icon_edit: 'Modifier',
-     icon_delete: 'Supprimer',
-     confirm_closing: '',
-     confirm_deleting: 'événement sera supprimé de manière permanente. Voulez-vous continuer ?',
-     section_description: 'Description',
-     section_time: 'Période de temps',
-     full_day: 'Journée complète',
-     confirm_recurring: 'Voulez-vous modifier ensemble des événements répétés ?',
-     section_recurring: 'Répéter événement',
-     button_recurring: 'Désactivé',
-     button_recurring_open: 'Activé',
-     agenda_tab: 'Calendrier',
-     date: 'Date',
-     description: 'Description',
-     year_tab: 'Année',
-     week_agenda_tab: 'Calendrier' } }
-));
-},
-'Sage/UI/nls/fr-lu/ActivityScheduler':function(){
-define('Sage/UI/nls/fr-lu/ActivityScheduler',{});
-},
-'Sage/MainView/nls/fr/SecurityManager':function(){
-define("Sage/MainView/nls/fr/SecurityManager", (
-{ accessText: 'Accès',
-  columnText: 'Colonne',
-  entityText: 'Entité',
-  noAccessText: 'Aucun accès',
-  profilesText: 'Profils',
-  propertyText: 'Propriété',
-  securityManagerText: 'Gestionnaire de sécurité',
-  readOnlyText: 'Lecture seule',
-  readWriteText: 'Lecture Écriture',
-  resetText: 'Réinitialiser',
-  saveText: 'Enregistrer',
-  tableText: 'Table' }
-));
-},
-'Sage/MainView/nls/fr-lu/SecurityManager':function(){
-define('Sage/MainView/nls/fr-lu/SecurityManager',{});
-},
-'Sage/TaskPane/nls/fr/ActivityTaskConfigurationProvider':function(){
-define("Sage/TaskPane/nls/fr/ActivityTaskConfigurationProvider", (
-{ scheduleText: 'Planification',
-  eventText: 'Evénement',
-  phoneCallText: 'Appel',
-  toDoText: 'Tâche à faire',
-  meetingText: 'Rendez-vous',
-  personalActivityText: 'Activité personnelle',
-  deleteConfirmationText: 'Confirmation de la suppression',
-  acceptConfirmationText: 'Accepter la confirmation',
-  declineConfirmationText: 'Refuser la confirmation',
-  completeActivityText: 'Terminer activité',
-  deleteActivityText: 'Supprimer activité',
-  deleteEventText: 'Supprimer événement',
-  scheduleEventText: 'Planification un événement',
-  scheduleRequestText: 'Planifier une demande',
-  deleteRequestText: 'Supprimer la demande',
-  recordsSelectedText: 'enregistrement(s) sélectionné(s)',
-  clearText: 'Effacer' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/ActivityTaskConfigurationProvider':function(){
-define('Sage/TaskPane/nls/fr-lu/ActivityTaskConfigurationProvider',{});
-},
-'Sage/UI/Controls/nls/fr/EntityInfoToolTip':function(){
-define("Sage/UI/Controls/nls/fr/EntityInfoToolTip", (
-{ errorText: 'Information introuvable.',
-  loadingText: 'Chargement ...',
-  noInfoText: 'Aucune information à afficher.',
-  mainText: 'Principal :',
-  faxText: 'Fax :',
-  tollFreeText: 'Numéro vert :',
-  urlText: 'URL :',
-  workText: 'Professionnel :',
-  mobileText: 'Mobile :',
-  emailText: 'E-mail :',
-  contactNameText: 'Nom :',
-  phoneText: 'N° de téléphone :',
-  accountText: 'Compte :' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/EntityInfoToolTip':function(){
-define('Sage/UI/Controls/nls/fr-lu/EntityInfoToolTip',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/ActivityGroupContextService':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/ActivityGroupContextService", (
-{ activityTabDisplayName: 'Mes activités',
-  litTabDisplayName: 'Documentation',
-  eventTabDisplayName: 'Evénements',
-  confirmTabDisplayName: 'Confirmations',
-  pastDueTabDisplayName: 'En retard',
-  alarmTabDisplayName: 'Alarmes',
-  allOpenTabDisplayName: 'Toutes' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/ActivityGroupContextService':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/ActivityGroupContextService',{});
-},
-'Sage/MainView/ReportMgr/Common/nls/fr/ExportOptionsDialog':function(){
-define("Sage/MainView/ReportMgr/Common/nls/fr/ExportOptionsDialog", {
-    txtDialogTitle: 'Options exportation',
-    txtDialogTitleScheduling: "L'exportation et l'ordonnancement des options",
-    cmdBack_Caption: '< Précédent',
-    cmdNext_Caption: 'Suivant >',
-    cmdCancel_Caption: 'Annuler',
-    txtName: 'Nom',
-    txtSelectUser: 'Sélectionner un utilisateur',
-    txtOK: 'OK',
-    txtOutputFormat_Caption: 'Format',
-    txtRunAs_Caption: 'Exécuter comme',
-    txtScheduleDescription_Caption: 'Description'
-});
-},
-'Sage/MainView/ReportMgr/Common/nls/fr-lu/ExportOptionsDialog':function(){
-define('Sage/MainView/ReportMgr/Common/nls/fr-lu/ExportOptionsDialog',{});
-},
-'Sage/MainView/Opportunity/nls/fr/UpdateOpportunities':function(){
-define("Sage/MainView/Opportunity/nls/fr/UpdateOpportunities", (
-{ addToForecast_No: 'Non',
-  addToForecast_Yes: 'Oui',
-  btnCancel_Caption: 'Annuler',
-  btnOK_Caption: 'OK',
-  estimatedClose_Days: 'Jours',
-  estimatedClose_MoveOut: 'Déplacer',
-  estimatedClose_To: 'À',
-  moveEstCloseDate_Backward: 'Vers le haut',
-  moveEstCloseDate_Forward: 'Suivant',
-  update_To_Caption: 'A :',
-  update_Property_Caption: 'Mettre à jour :',
-  updateMultipleOpps_Caption: 'Mettre à jour les opportunités',
-  updateProp_AcctMgr: 'Responsable du compte',
-  updateProp_Comments: 'Commentaires',
-  updateProp_EstClose: 'Date de clôture approx.',
-  updateProp_Forecast: 'Ajouter à la prévision',
-  updateProp_Probability: 'Prob. de clôture %',
-  lookupActMgrText: 'Responsable du compte',
-  lookupNameColText: 'Nom',
-  lookupTitleColText: 'Titre',
-  lookupDepartmentColText: 'Service',
-  lookupRegionColText: 'Région',
-  lookupTypeColText: 'Type',
-  errorUnspecifiedValue: 'Veuillez spécifier un point de terminaison valide avant de continuer.',
-  errorRequestingJobMgr: 'Une erreur est produite lors de la mise à jour : ${0}' }
-));
-},
-'Sage/MainView/Opportunity/nls/fr-lu/UpdateOpportunities':function(){
-define('Sage/MainView/Opportunity/nls/fr-lu/UpdateOpportunities',{});
-},
-'Sage/UI/nls/fr/EditCalendarUsers':function(){
-define("Sage/UI/nls/fr/EditCalendarUsers", (
-{ selectAllText: 'Sélectionner tous',
-  findItemText: 'Rechercher un utilisateur :',
-  findText: 'Rechercher',
-  clearText: 'Effacer',
-  dialogTitle: 'Modifier les utilisateurs de agenda',
-  okText: 'OK',
-  cancelText: 'Annuler',
-  maxUsersErrorMessage: 'Vous ne pouvez pas sélectionner plus de ${0} utilisateurs (le vôtre inclus). Désélectionnez un des utilisateurs sélectionnés, puis réessayez.',
-  updateErrorMessage: 'Une erreur est survenue lors de la mise à jour des utilisateurs de agenda' }
-));
-},
-'Sage/UI/nls/fr-lu/EditCalendarUsers':function(){
-define('Sage/UI/nls/fr-lu/EditCalendarUsers',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportParametersDialog':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportParametersDialog", (
-{ txtDialogTitle: 'Saisir les valeurs',
-  cmdBack_Caption: '< Précédent',
-  cmdNext_Caption: 'Suivant >',
-  cmdCancel_Caption: 'Annuler' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportParametersDialog':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportParametersDialog',{});
-},
-'Sage/QuickForms/Design/nls/fr/DateTimePickerControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/DateTimePickerControlDesigner", (
-{ displayNameText: 'Sélecteur de DateHeure' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/DateTimePickerControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/DateTimePickerControlDesigner',{});
-},
-'Sage/UI/Controls/nls/fr/HelpMenu':function(){
-define("Sage/UI/Controls/nls/fr/HelpMenu", (
-{ helpText: 'Aide',
-  aboutText: 'A propos de',
-  webClientHelpText: 'Aide Client Web',
-  gettingStartedText: 'Guide de mise en route',
-  quickReferenceText: 'Carte de référence rapide' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/HelpMenu':function(){
-define('Sage/UI/Controls/nls/fr-lu/HelpMenu',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/LayoutPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/LayoutPropertyEditor", (
-{ titleText: 'Présentation',
-  positionText: 'Emplacement',
-  sizeText: 'Taille',
-  rowText: 'Ligne :',
-  rowTooltipText: 'Numéro de ligne du contrôle.',
-  columnText: 'Colonne :',
-  columnTooltipText: 'Numéro de colonne du contrôle.',
-  rowSpanText: 'Largeur de ligne :',
-  rowSpanTooltipText: 'Nombre de cellules que le contrôle occupe verticalement.',
-  columnSpanText: 'Largeur de colonne :',
-  columnSpanTooltipText: 'Nombre de cellules que le contrôle occupe horizontalement.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/LayoutPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/LayoutPropertyEditor',{});
-},
-'Sage/TaskPane/nls/fr/UserTasklet':function(){
-define("Sage/TaskPane/nls/fr/UserTasklet", (
-{ addToRoleTitle: 'Ajouter au rôle',
-  resetUsersTitle: 'Réinitialiser les utilisateurs',
-  associateContactTitle: 'Associer au contact',
-  disAssociateContactTitle: 'Dissocier du contact',
-  disAssociateDialogTitle: 'Dissocier un contact',
-  confirmDisAssociate: 'Voulez-vous vraiment dissocier ${0} utilisateur sélectionné du contact auquel il était associé ?',
-  confirmDisAssociateMultiple: 'Voulez-vous vraiment dissocier ${0} utilisateurs sélectionnés de tous les contacts auxquels ils étaient associés ?',
-  associationExistsMessage: 'utilisateur que vous avez sélectionné est déjà associé à un contact. Pour associer cet utilisateur à un autre contact, vous devez abord dissocier utilisateur du contact.',
-  multipleSelectionErrorMessage: 'Vous ne pouvez pas réaliser cette tâche pour plusieurs utilisateurs. \n Sélectionnez un seul utilisateur, puis exécutez de nouveau la tâche.',
-  noSelectionErrorMessage: 'Vous devez sélectionner au moins un utilisateur à dissocier. \n Veuillez sélectionner au moins un utilisateur, puis exécuter de nouveau la tâche.',
-  singleSelectionErrorMessage: 'Vous devez sélectionner un utilisateur à dissocier. \n Veuillez sélectionner un seul utilisateur, puis exécuter de nouveau la tâche.' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/UserTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/UserTasklet',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/NumberParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/fr/NumberParameterEditor", {
-    txtPleaseSpecifyNumberBetween: "S'il vous plaît spécifier une valeur numérique comprise entre {0} et {1}.",
-    txtPleaseSpecifyNumberLesser: "S'il vous plaît spécifier une valeur numérique inférieure ou égale à {0}.",
-    txtPleaseSpecifyNumberGreater: "S'il vous plaît spécifier une valeur numérique supérieure ou égale à {0}.",
-    txtPleaseSpecifyValue: "S'il vous plaît spécifier une valeur numérique."
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/NumberParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/NumberParameterEditor',{});
-},
-'Sage/UI/Alarms/nls/fr/ActivityAlarm':function(){
-define("Sage/UI/Alarms/nls/fr/ActivityAlarm", (
-{ noSubjectText: 'Aucun sujet',
-  contactText: 'Contact',
-  accountText: 'Compte',
-  opportunityText: 'Opportunité',
-  leadText: 'Lead',
-  companyText: 'Société',
-  recurringText: 'Périodicité',
-  ticketText: 'Ticket',
-  leaderText: 'Responsable',
-  locationText: 'Emplacement' }
-));
-},
-'Sage/UI/Alarms/nls/fr-lu/ActivityAlarm':function(){
-define('Sage/UI/Alarms/nls/fr-lu/ActivityAlarm',{});
-},
-'Sage/MainView/Opportunity/nls/fr/OpportunityStatistics':function(){
-define("Sage/MainView/Opportunity/nls/fr/OpportunityStatistics", (
-{ opportunityStatistics_Caption: 'Statistiques de opportunité',
-  loadingMessge: 'Chargement ...',
-  opportunityCount: 'Nombre opportunités',
-  salesPotentialTotal: 'Potentiel total des ventes (moyenne)',
-  weightedPotentialTotal: 'Total pondéré prévisionnel (moyenne)',
-  averageCloseProbability: 'Probabilité de clôture moyenne',
-  actualAmountTotal: 'Montant total réel (Moyenne)',
-  averageDaysOpen: 'Nbre moyen de jours ouverts',
-  rangeEstClose: 'Période de clôture est. (déb - fin)',
-  btnClose_Caption: 'Fermer',
-  errorRequestingStatistics: 'Désolé, une erreur est produite lors de la demande des statistiques opportunité.' }
-));
-},
-'Sage/MainView/Opportunity/nls/fr-lu/OpportunityStatistics':function(){
-define('Sage/MainView/Opportunity/nls/fr-lu/OpportunityStatistics',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportConditionEditor':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportConditionEditor", {
-    dlgCrystalReportConditionDetails_Title: 'Ajouter/modifier une condition',
-    cmdOK_Caption: 'OK',
-    cmdCancel_Caption: 'Annuler',
-    cmbConditionType_Caption: 'Rechercher par',
-    txtInvalidParameterTitle: 'Paramètre non valide',
-    txtInvalidParameterMessage: 'Paramètre non valide : ${0}',
-    lkpUser_Caption: 'Utilisateur',
-    lkpGroup_Caption: 'Groupe',
-    txtSelectUser: 'Sélectionner un utilisateur',
-    chkCurrentUser_Caption: 'Utilisateur Actuel',
-    txtName: 'Nom',
-    txtOK: 'OK',
-    txtSelectGroup: 'Sélectionner un groupe',
-    cmbDateRange_Caption: 'Intervalle de dates',
-    cmbDateRange_SpecificDates_Caption: 'Dates spécifiques',
-    cmbDateRange_ThisWeek_Caption: 'Cette semaine',
-    cmbDateRange_ThisMonth_Caption: 'Ce mois',
-    cmbDateRange_ThisQuarter_Caption: 'Ce trimestre',
-    cmbDateRange_ThisYear_Caption: 'Cette année',
-    cmbDateRange_LastWeek_Caption: 'Semaine dernière',
-    cmbDateRange_LastMonth_Caption: 'Mois dernier',
-    cmbDateRange_LastQuarter_Caption: 'Trimestre dernier',
-    cmbDateRange_LastYear_Caption: 'Année dernière',
-    cmbDateRange_MonthToDate_Caption: 'Mois à ce jour',
-    cmbDateRange_QuarterToDate_Caption: 'Trimestre à ce jour',
-    cmbDateRange_YearToDate_Caption: 'Année à ce jour',
-    dtFromDate_Caption: 'De',
-    dtToDate_Caption: 'À',
-    cmbTable_Caption: 'Table',
-    cmbField_Caption: 'Champ',
-    cmbOperator_Caption: 'Opérateur',
-    txtValue_Caption: 'Valeur',
-    txtNumericValueFrom_Caption: 'De',
-    txtNumericValueTo_Caption: 'À'
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportConditionEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportConditionEditor',{});
-},
-'Sage/MainView/IntegrationContract/nls/fr/AdvancedSearchOptions':function(){
-define("Sage/MainView/IntegrationContract/nls/fr/AdvancedSearchOptions", (
-{ dialogCaption: 'Lier à la comptabilité',
-  searchOptionsHeader: 'Rechercher les correspondances dans ',
-  searchOptionsText: 'Les critères suivants ont été utilisés dans la recherche précédente. Modifiez les critères pour une nouvelle recherche. Cliquez sur OK pour commencer la recherche.',
-  propertyText: 'Propriété',
-  operatorText: 'Opérateur',
-  searchText: 'Valeur de recherche',
-  loadingText: 'Chargement ...',
-  loadingDisplay: 'Recherche des résultats...',
-  hideImgAltText: 'Supprimer la condition',
-  addImgAltText: 'Ajouter une condition',
-  okText: 'OK',
-  cancelText: 'Annuler' }
-));
-},
-'Sage/MainView/IntegrationContract/nls/fr-lu/AdvancedSearchOptions':function(){
-define('Sage/MainView/IntegrationContract/nls/fr-lu/AdvancedSearchOptions',{});
-},
-'Sage/QuickForms/Design/nls/fr/ColumnDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/ColumnDesigner", (
-{ displayNameText: 'Colonne' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/ColumnDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/ColumnDesigner',{});
-},
-'Sage/UI/nls/fr/SearchMenuItem':function(){
-define("Sage/UI/nls/fr/SearchMenuItem", (
-{ findText: 'Rechercher',
-  clearText: 'Effacer',
-  showHiddenText: 'Afficher les éléments masqués : ' }
-));
-},
-'Sage/UI/nls/fr-lu/SearchMenuItem':function(){
-define('Sage/UI/nls/fr-lu/SearchMenuItem',{});
-},
-'Sage/Library/nls/fr/DocumentProperties':function(){
-define("Sage/Library/nls/fr/DocumentProperties", (
-{ Abstract: 'Abstrait',
-  Cancel: 'Annuler',
-  DocumentProperties: 'Propriétés du document',
-  Created: 'Créé',
-  Description: 'Description',
-  Directory: 'Répertoire',
-  DoNotExpire: 'Toujours valide',
-  Expires: 'Expire le',
-  FileName: 'Nom de fichier',
-  ForceDistribution: 'Forcer la distribution de ce fichier',
-  InvalidFileName: 'Un nom de fichier ne peut pas contenir les caractères suivants : \\ / : * ? " < > |',
-  Never: 'Jamais',
-  OK: 'OK',
-  Revised: 'Révisé',
-  Size: 'Taille',
-  Status: 'Etat' }
-));
-},
-'Sage/Library/nls/fr-lu/DocumentProperties':function(){
-define('Sage/Library/nls/fr-lu/DocumentProperties',{});
-},
-'Sage/UI/nls/fr/NotesHistoryList':function(){
-define("Sage/UI/nls/fr/NotesHistoryList", (
-{ typeText: 'Type',
-  showDbChangesText: 'Afficher les modifications de la base de données',
-  selectAllText: 'Sélectionner tous',
-  dateText: 'Date',
-  dateTimeText: 'Date/Heure',
-  dateRangeText: 'Intervalle de dates',
-  userText: 'Utilisateur',
-  accountText: 'Compte',
-  contactText: 'Contact',
-  opportunityText: 'Opportunité',
-  regardingText: 'Objet',
-  notesText: 'Notes',
-  resultText: 'Résultat',
-  categoryText: 'Catégorie',
-  sendEmailText: 'Envoyer par E-mail',
-  sendToWordText: 'Envoyer vers MS Word',
-  addNoteText: 'Ajouter une note',
-  completeAnActivityText: 'Terminer une activité',
-  helpText: 'Aide',
-  pleaseSelectRecordsText: 'Veuillez sélectionner un ou plusieurs enregistrements',
-  UnableToFindWordMsg: 'Impossible de démarrer Microsoft Word.  Vérifiez vos paramètres de sécurité.',
-  printedOnText: 'Imprimé le' }
-));
-},
-'Sage/UI/nls/fr-lu/NotesHistoryList':function(){
-define('Sage/UI/nls/fr-lu/NotesHistoryList',{});
-},
-'Sage/Utility/nls/fr/File':function(){
-﻿define("Sage/Utility/nls/fr/File", {
-    unableToUploadText: 'SalesLogix Desktop Integration Module doit être installé pour utiliser cette fonctionnalité.',
-    unknownSizeText: 'Inconnu',
-    largeFileWarningText: 'ATTENTION : Cette demande dépasse la taille limite définie par votre administrateur et n\'a pas pu télécharger.',
-    largeFileWarningTitle: 'Avertissement'
-});
-},
-'Sage/Utility/nls/fr-lu/File':function(){
-define('Sage/Utility/nls/fr-lu/File',{});
-},
-'Sage/MainView/ReportMgr/nls/fr/HistoryListPanelConfig':function(){
-define("Sage/MainView/ReportMgr/nls/fr/HistoryListPanelConfig", {
-    colNameDate: 'Date',
-    colNameScheduleName: 'Description',
-    colNameExecutionType: 'Type exécution',
-    colNameRunAs: 'Exécuter comme',
-    colNameScheduledBy: 'Planifié par',
-    colNameReportName: 'Rapport',
-    colNameSize: 'Taille du fichier',
-    colNameOutputFormat: 'Format de sortie',
-    colNameReportType: 'Type'
-});
-},
-'Sage/MainView/ReportMgr/nls/fr-lu/HistoryListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/fr-lu/HistoryListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/BooleanParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/fr/BooleanParameterEditor", {   
-    txtPleaseSpecifyValue: "S'il vous plaît spécifier une valeur."
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/BooleanParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/BooleanParameterEditor',{});
-},
-'Sage/QuickForms/Design/nls/fr/UrlControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/UrlControlDesigner", (
-{ displayNameText: 'Url' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/UrlControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/UrlControlDesigner',{});
-},
-'Sage/TaskPane/nls/fr/ContactTasksTasklet':function(){
-define("Sage/TaskPane/nls/fr/ContactTasksTasklet", (
-{ associateContactTitle: 'Associer à utilisateur',
-  disAssociateContactTitle: 'Dissocier de utilisateur',
-  disAssociateDialogTitle: 'Dissocier un utilisateur',
-  confirmDisAssociate: 'Voulez-vous vraiment dissocier le ${0} contact sélectionné un utilisateur associé?',
-  confirmDisAssociateMultiple: 'Voulez-vous vraiment dissocier les ${0} contacts sélectionnés de tous les utilisateurs associés?',
-  associationExistsMessage: 'Le contact sélectionné est déjà associé à un utilisateur. Pour associer ce contact à un autre utilisateur, vous devez tout abord dissocier le contact de utilisateur.',
-  multipleSelectionErrorMessage: 'Vous ne pouvez effectuer cette tâche que pour un contact à la fois.  \n Veuillez sélectionner un seul contact, puis exécuter à nouveau la tâche.',
-  noSelectionErrorMessage: 'Vous devez sélectionner au moins un contact à dissocier. \n Veuillez sélectionner au moins un contact, puis exécuter à nouveau la tâche.',
-  singleSelectionErrorMessage: 'Vous devez sélectionner un contact à dissocier. \n Veuillez sélectionner un seul contact, puis exécuter à nouveau la tâche.' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/ContactTasksTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/ContactTasksTasklet',{});
-},
-'Sage/MainView/ReportMgr/Common/nls/fr/_WizardDialogBase':function(){
-define("Sage/MainView/ReportMgr/Common/nls/fr/_WizardDialogBase", (
-{ txtFinish: 'Terminer' }
-));
-},
-'Sage/MainView/ReportMgr/Common/nls/fr-lu/_WizardDialogBase':function(){
-define('Sage/MainView/ReportMgr/Common/nls/fr-lu/_WizardDialogBase',{});
-},
-'Sage/MainView/JobMgr/nls/fr/SchedulesListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/fr/SchedulesListPanelConfig", {
-    colNameTriggerName: 'Planification',
-    colNameJobName: 'Nom de la tâche',
-    colNameUser: 'Prévue Par',
-    colNameStartTimeUtc: 'Heure de début',
-    colNameEndTimeUtc: 'Heure de fin',
-    colNamePriority: 'Priorité',
-    colNameStatus: 'Etat',
-    colNameTimesTriggered: 'Nombre exécutions'
-});
-},
-'Sage/MainView/JobMgr/nls/fr-lu/SchedulesListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/fr-lu/SchedulesListPanelConfig',{});
-},
-'Sage/Utility/File/nls/fr/GoogleDocPicker':function(){
-define("Sage/Utility/File/nls/fr/GoogleDocPicker", (
-{ googleDocumentsTitle: 'Documents Google',
-  couldNotOpenWindowMsg: 'Impossible ouvrir la fenêtre authentification. Veuillez vérifier vos paramètres de bloqueur de fenêtres contextuelles.' }
-));
-},
-'Sage/Utility/File/nls/fr-lu/GoogleDocPicker':function(){
-define('Sage/Utility/File/nls/fr-lu/GoogleDocPicker',{});
-},
-'Sage/QuickForms/Design/nls/fr/ComboBoxControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/ComboBoxControlDesigner", (
-{ displayNameText: 'Zone combinée' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/ComboBoxControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/ComboBoxControlDesigner',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/LitRequestListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/LitRequestListPanelConfig", (
-{ colNameView: 'Affichage',
-  colNameContact: 'Contact',
-  colNameDescription: 'Description',
-  colNameFillDate: 'Renseigné',
-  colNameFillStatus: 'Etat',
-  colNameOptions: 'Options',
-  colNamePriority: 'Priorité',
-  colNameReqestDate: 'Date de la demande',
-  colNameSendDate: 'Date envoi',
-  colNameSendVia: 'Envoyer via',
-  colNameTotalCost: 'Coût total',
-  colNameFillUser: 'Renseigner utilisateur',
-  colNameReqestUser: 'Demander un utilisateur',
-  colNameAccount: 'Compte',
-  colNamePostalCode: 'Code postal' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/LitRequestListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/LitRequestListPanelConfig',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/HistoryEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/HistoryEditor", (
-{ labelWidth: '120',
-  tabNameGeneralText: 'Général',
-  tabNameAttachmentsText: 'Pièces jointes',
-  scheduleText: 'Planification',
-  startTimeText: 'Planifié',
-  completedDateText: 'Terminé',
-  timeLessText: 'Heure indéfinie',
-  durationText: 'Durée',
-  contactText: 'Contact',
-  accountText: 'Compte',
-  leadText: 'Lead',
-  opportunityText: 'Opportunité',
-  ticketText: 'Ticket',
-  companyText: 'Société',
-  regardingText: 'Objet',
-  resultText: 'Résultat',
-  notesText: 'Notes',
-  priorityText: 'Priorité',
-  leaderText: 'Responsable',
-  categoryText: 'Catégorie',
-  locationText: 'Emplacement',
-  scheduledByFormatText: 'Planifié par ${user} le ${date}',
-  cancelText: 'Annuler',
-  okText: 'OK',
-  deleteText: 'Supprimer',
-  lookupActText: 'Rechercher un compte',
-  lookupContactText: 'Rechercher un contact',
-  lookupOpportunityText: 'Rechercher une opportunité',
-  lookupTicketText: 'Rechercher un ticket',
-  lookupLeadText: 'Recherche un lead',
-  lookupLeaderText: 'Rechercher le responsable',
-  lookupResourcesText: 'Recherche',
-  mainPhoneText: 'Tél. principal',
-  typeText: 'Type',
-  subTypeText: 'Sous-Type',
-  nameText: 'Nom',
-  cityText: 'Ville',
-  stateText: 'Département',
-  workphoneText: 'Téléphone professionnel',
-  emailText: 'E-mail',
-  acctMgrText: 'Resp. du compte',
-  descriptionText: 'Description',
-  stageText: 'Phase',
-  statusText: 'Etat',
-  ownerText: 'Propriétaire',
-  ticketNumberText: 'Numéro de ticket',
-  phoneText: 'Téléphone',
-  urgencyText: 'Priorité',
-  areaText: 'Zone',
-  recurringText: 'Périodicité',
-  followupText: 'Suivi',
-  noneText: 'Aucun',
-  carryOverAttachmentsText: 'Reporter les pièces jointes',
-  carryOverNotesText: 'Reporter les notes',
-  asScheduledText: 'Telle que planifiée',
-  insertText: 'Insérer',
-  couldNotSaveErrorText: 'Impossible de sauvegarder historique car une erreur est produite.',
-  deleteMessage: 'Vous êtes sur le point de supprimer définitivement cet enregistrement.',
-  deleteTitle: 'Supprimer historique',
-  couldNotDeleteErrorText: 'Impossible de supprimer historique car une erreur est produite.',
-  postalText: 'Code postal',
-  tabNameParticipants: 'Tous les participants' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/HistoryEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/HistoryEditor',{});
-},
-'Sage/Groups/nls/fr/GroupManager':function(){
-define("Sage/Groups/nls/fr/GroupManager", (
-{ ConfirmDeleteMessage: 'Voulez-vous vraiment supprimer le groupe actuel ?',
-  ConfirmDeleteFmtMessage: 'Voulez-vous vraiment supprimer ce groupe : ${0}',
-  InvalidSortStringMessage: 'Erreur : Chaîne de tri non valide - ',
-  InvalidConditionStringMessage: 'Erreur : Chaîne de condition non valide - ',
-  InvalidLayoutConditionStringMessage: 'Erreur : Chaîne de présentation non valide - ',
-  noneSelectedTitle: 'Aucun enregistrement sélectionné',
-  noneSelectedPromptFmt: 'Aucun enregistrement sélectionné. Le groupe entier, ${0} enregistrement(s), sera ajouté. Continuer ?',
-  noneSelectedRemovePromptFmt: 'Aucun enregistrement sélectionné. Le groupe entier, ${0} enregistrement(s), sera supprimé. Continuer ?',
-  noRecordsInGroup: 'Aucun enregistrement ne peut être sélectionné dans ce groupe.',
-  newGroupTitle: 'Ajouter des enregistrements au nouveau groupe',
-  newGroupNamePrompt: '${0} enregistrement(s) sélectionné(s) est (seront) ajouté(s) à ce nouveau groupe.<br><br>Nom du groupe :<br>${1}',
-  newGroupRePrompt: '&nbsp;&nbsp;<i>Veuillez entrer un nom de groupe.</i>',
-  invalidCharMsg: 'Le nom ne peut pas contenir : / \\ : * ? " <> | ni',
-  groupNameText: 'Nom de groupe :',
-  saveLookupDlgTitle: "Enregistrer les résultats de la recherche en tant que nouveau groupe",
-  yesCaption: 'Oui',
-  noCaption: 'Non',
-  cancelCaption: 'Annuler',
-  okCaption: 'OK',
-  LOCALSTORE_NAMESPACE: 'GroupesSage',
-  exportToExcel: "Cette méthode est plus disponible, consultez Sage.TaskPane.CommonTasksTasklet.exportToExcel." }
-));
-},
-'Sage/Groups/nls/fr-lu/GroupManager':function(){
-define('Sage/Groups/nls/fr-lu/GroupManager',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/DateTimePickerAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/DateTimePickerAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  buttonToolTipText: 'Info-bulle de bouton :',
-  buttonToolTipTooltipText: 'info-bulle à afficher lorsque utlisateur déplace le curseur de la souris sur la partie bouton du contrôle.',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlLabelPlacementText: 'Placement des étiquettes :',
-  controlLabelPlacementTooltipText: 'Position des étiquettes par rapport au contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  defaultDataBindingText: 'Associations de données :',
-  defaultDataBindingTooltipText: 'Champ(s) de données dans la base de données utilisée par ce contrôle.',
-  displayModeText: 'Mode affichage :',
-  displayModeTooltipText: 'Mode affichage du contrôle : zone de texte, lien hypertexte ou texte brut.',
-  enabledText: 'Activé :',
-  enabledTooltipText: 'Permet à utilisateur interagir avec ce contrôle.',
-  requiredText: 'Obligatoire :',
-  requiredTooltipText: 'Requiert une valeur lors de enregistrement des données.',
-  timelessText: 'Heure indéfinie :',
-  timelessTooltipText: 'Utiliser la date sans heure et sans conversion DST.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.',
-  labelPlacementText: { left: 'Gauche', right: 'Droite', top: 'Haut', none: 'Aucun' },
-  displayModeTypeText: 
-   { AsControl: 'Comme contrôle',
-     AsText: 'Comme texte',
-     AsHyperlink: 'Comme lien hypertexte' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/DateTimePickerAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/DateTimePickerAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/ComboBoxBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/ComboBoxBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  isReadOnlyText: 'Lecture seule :',
-  isReadOnlyTooltipText: 'Ne permet pas les modifications.',
-  toolTipText: 'Info-bulle :',
-  toolTipTooltipText: 'Court texte aide concernant le contrôle.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/ComboBoxBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/ComboBoxBasicPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/nls/fr/ReportsListPanelConfig':function(){
-define("Sage/MainView/ReportMgr/nls/fr/ReportsListPanelConfig", (
-{ colNameReportName: 'Nom',
-  colNameType: 'Type',
-  colNameTable: 'Table',
-  colNameCreateUser: 'Créé par',
-  colNameCreateDate: 'Date de création',
-  colNameLastExecutionDate: 'Dernière exécution',
-  colNameLastExecutionUser: 'Dernière exécution par',
-  colNameModifyUser: 'Modifié par',
-  colNameModifyDate: 'Date de modification' }
-));
-},
-'Sage/MainView/ReportMgr/nls/fr-lu/ReportsListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/fr-lu/ReportsListPanelConfig',{});
-},
-'Sage/UI/Alarms/nls/fr/JobNotificationButton':function(){
-define("Sage/UI/Alarms/nls/fr/JobNotificationButton", (
-{ notificationToolTip: 'Vous avez ${0} notifications de tâches.' }
-));
-},
-'Sage/UI/Alarms/nls/fr-lu/JobNotificationButton':function(){
-define('Sage/UI/Alarms/nls/fr-lu/JobNotificationButton',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportWizardController':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportWizardController", {
-    txtOnDemandScheduleName: 'À la demande',
-    txtReportSuccessfullyScheduled: 'Rapport bien planifié',
-    txtDynamicParametersMessage: 'Rapports avec les paramètres dynamiques sont actuellement pas pris en charge.',
-    txtError: 'Erreur',
-    txtScheduleSuccessfullyUpdated: 'Horaire mis à jour.'
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportWizardController':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportWizardController',{});
-},
-'Sage/MainView/JobMgr/nls/fr/JobDefinitionsListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/fr/JobDefinitionsListPanelConfig", (
-{ colNameJobName: 'Nom de la tâche',
-  colNameDescription: 'Description',
-  colNameType: 'Type' }
-));
-},
-'Sage/MainView/JobMgr/nls/fr-lu/JobDefinitionsListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/fr-lu/JobDefinitionsListPanelConfig',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/RecurringEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/RecurringEditor", (
-{ activityOccurrsText: 'Cette activité a lieu…',
-  onceText: 'Une fois',
-  dailyText: 'Quotidienne',
-  weeklyText: 'Hebdomadaire',
-  monthlyText: 'Mensuelle',
-  yearlyText: 'Annuelle',
-  occursOnceText: 'Cette activité ne se produit une seule fois',
-  everyText: 'Chaque',
-  daysText: 'Jour(s)',
-  daysAfterText: 'Jour(s) après la fin',
-  startRecurringText: 'Démarrer la périodicité : ',
-  endAfterText: 'Terminer après',
-  endOnText: 'Terminer la périodicité',
-  occurrencesText: 'occurrences',
-  weeksOnText: 'Semaine (s) sur',
-  monText: 'Lundi',
-  tueText: 'Mardi',
-  wedText: 'Mercredi',
-  thurText: 'Jeudi',
-  friText: 'Vendredi',
-  satText: 'Samedi',
-  sunText: 'Dimanche',
-  weeksAfterText: 'Semaine(s) après la fin',
-  monthsOnText: 'Mois le jour',
-  monthsOnTheText: 'Mois sur le',
-  monthsAfterText: 'Moi(s) après la fin',
-  firstText: '1er',
-  secondText: '2e',
-  thirdText: '3e',
-  fourthText: '4e',
-  lastText: 'Dernier',
-  yearsOnText: 'Année(s) sur',
-  yearsAfterText: 'Année(s) après la fin',
-  janText: 'Janvier',
-  febText: 'Février',
-  marText: 'Mars',
-  aprText: 'Avril',
-  mayText: 'Mai',
-  junText: 'Juin',
-  julText: 'Juillet',
-  augText: 'Août',
-  sepText: 'Septembre',
-  octText: 'Octobre',
-  novText: 'Novembre',
-  decText: 'Décembre',
-  theText: 'Le',
-  inText: 'Dans' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/RecurringEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/RecurringEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportsUtility':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportsUtility", {
-    txtCurrentUser: 'Utilisateur Actuel'
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportsUtility':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportsUtility',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/DataGridAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/DataGridAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  dataSourceText: 'Source de données :',
-  dataSourceTooltipText: 'Source des données de ce contrôle, par exemple un autre contrôle ou une entité.',
-  emptyTableRowText: 'Texte de la ligne de la table vide :',
-  emptyTableRowTooltipText: 'Texte à afficher si aucune donnée est affichée dans la grille.',
-  expandableRowsText: 'Lignes extensibles :',
-  expandableRowsTooltipText: 'Permet à utilisateur étendre les lignes de la grille pour afficher plus de texte.',
-  renderVerticalText: 'Rendre vertical :',
-  renderVerticalTooltipText: 'Afficher les lignes de la grille comme des colonnes.',
-  showSortIconText: 'Afficher icône de tri :',
-  showSortIconTooltipText: 'Afficher icône de tri sur les colonnes triables.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/DataGridAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/DataGridAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/DateRangeParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/fr/DateRangeParameterEditor", {
-    txtNoLowerValue: 'Aucune valeur',
-    txtNoUpperValue: 'Aucune valeur supérieure',
-    txtIncludeThisValue: 'Inclure cette valeur',
-    txtFrom: 'De:',
-    txtTo: 'pour:',
-    txtPleaseSpecifyFromValue: "S'il vous plaît spécifier De valeur",
-    txtPleaseSpecifyToValue: "S'il vous plaît spécifier la valeur à",
-    txtPleaseSpecifyDateBetween: "S'il vous plaît spécifier une valeur de date entre {0} et {1}.",
-    txtPleaseSpecifyDateLesser: "S'il vous plaît spécifier une valeur inférieure ou égale à {0} date.",
-    txtPleaseSpecifyDateGreater: "S'il vous plaît spécifier une valeur de date supérieure ou égale à {0}.",
-    txtFromMustBeLessThanOrEqualToTo: 'De valeur doit être inférieure ou égale à la valeur.'
-});
-
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/DateRangeParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/DateRangeParameterEditor',{});
-},
-'Sage/MainView/ReportMgr/nls/fr/BaseListPanelConfig':function(){
-define("Sage/MainView/ReportMgr/nls/fr/BaseListPanelConfig", (
-{ titleFmtString: '${0}' }
-));
-},
-'Sage/MainView/ReportMgr/nls/fr-lu/BaseListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/fr-lu/BaseListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/DateParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/fr/DateParameterEditor", {
-    txtPleaseSpecifyDateBetween: "S'il vous plaît spécifier une valeur de date entre {0} et {1}.",
-    txtPleaseSpecifyDateLesser: "S'il vous plaît spécifier une valeur inférieure ou égale à {0} jour.",
-    txtPleaseSpecifyDateGreater: "S'il vous plaît spécifier une valeur de date supérieure ou égale à {0}.",
-    txtPleaseSpecifyValue: "S'il vous plaît spécifier une valeur de date."
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/DateParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/DateParameterEditor',{});
-},
-'Sage/QuickForms/Design/nls/fr/CurrencyControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/CurrencyControlDesigner", (
-{ displayNameText: 'Devise' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/CurrencyControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/CurrencyControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/fr/DataGridControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/DataGridControlDesigner", (
-{ displayNameText: 'Grille de données',
-  emptyTableRowStringText: 'Aucun enregistrement ne correspond aux critères de sélection.' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/DataGridControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/DataGridControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/fr/PickListControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/PickListControlDesigner", (
-{ displayNameText: 'Liste de sélection' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/PickListControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/PickListControlDesigner',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/CheckBoxBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/CheckBoxBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  isReadOnlyText: 'Lecture seule :',
-  isReadOnlyTooltipText: 'Ne permet pas les modifications.',
-  toolTipText: 'Info-bulle :',
-  toolTipTooltipText: 'Court texte aide concernant le contrôle.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/CheckBoxBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/CheckBoxBasicPropertyEditor',{});
-},
-'Sage/Library/nls/fr/FolderHandler':function(){
-define("Sage/Library/nls/fr/FolderHandler", (
-{ AccessError: "Votre rôle ne vous permet pas exécuter cette action.",
-  AddFolderError: "Une erreur inattendue est survenue lors de la tentative ajout un dossier de bibliothèque.",
-  Cancel: 'Annuler',
-  Confirm: 'Confirmer',
-  DeleteFolderCnfmFmt: "Voulez-vous vraiment supprimer le dossier \"${0}\" et tout ce il contient ?",
-  DeleteFolderError: "Une erreur inattendue est survenue lors de la tentative de suppression un dossier de bibliothèque.",
-  DontDeleteRoot: 'Veuillez ne pas effacer le dossier racine.',
-  DontEditRoot: 'Veuillez ne pas modifier le nom du dossier racine.',
-  EnterFolderName: 'Veuillez saisir le nom du nouveau dossier :',
-  EnterNewFolderName: 'Veuillez saisir le nouveau nom de ce dossier.',
-  FolderUpdateConflictError: "Le dossier a été mis à jour par un autre utilisateur, veuillez actualiser et réessayer.",
-  InvalidFolderName: 'Un nom de dossier ne peut contenir aucun des caractères suivants : \\ / : * ? " < > |',
-  NewFolder: 'Nouveau dossier',
-  No: 'Non',
-  OK: 'OK',
-  PleaseSelectFolder: 'Veuillez sélectionner un dossier.',
-  RenameFolderError: "Une erreur inattendue est survenue lors du changement de nom un dossier de bibliothèque.",
-  Yes: 'Oui' }
-));
-},
-'Sage/Library/nls/fr-lu/FolderHandler':function(){
-define('Sage/Library/nls/fr-lu/FolderHandler',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/ComboBoxAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/ComboBoxAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  itemGroupText: 'Eléments',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlLabelPlacementText: 'Placement des étiquettes :',
-  controlLabelPlacementTooltipText: 'Position des étiquettes par rapport au contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  dataSourceText: 'Source de données :',
-  dataSourceTooltipText: 'Source des données de ce contrôle, par exemple un autre contrôle ou une entité.',
-  defaultDataBindingText: 'Associations de données :',
-  defaultDataBindingTooltipText: 'Champ(s) de données dans la base de données utilisée par ce contrôle.',
-  enabledText: 'Activé :',
-  enabledTooltipText: 'Permet à utilisateur interagir avec ce contrôle.',
-  itemsText: 'Éléments :',
-  itemsTooltipText: 'Valeurs que utilisateur peut sélectionner.',
-  textFieldText: 'Champ de texte :',
-  textFieldTooltipText: 'Le nom du champ de source de données utilisé pour renseigner la partie texte visible des éléments de la liste.',
-  valueFieldText: 'Champ de valeur :',
-  valueFieldTooltipText: 'Le nom du champ de source de données utilisé pour renseigner la partie valeur des éléments de la liste.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.',
-  labelPlacementText: { left: 'Gauche', right: 'Droite', top: 'Haut', none: 'Aucun' },
-  hasItemsText: 'Défini',
-  noItemsText: 'Non défini' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/ComboBoxAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/ComboBoxAdvancedPropertyEditor',{});
-},
-'Sage/MainView/Contact/nls/fr/ContactSearchForDuplicates':function(){
-define("Sage/MainView/Contact/nls/fr/ContactSearchForDuplicates", (
-{ svAccount_Caption: 'Compte :',
-  svCompany_Caption: 'Société :',
-  svEmail_Caption: 'E-mail :',
-  svName_Caption: 'Nom :',
-  svTitle_Caption: 'Titre :',
-  svType_Caption: 'Type :',
-  svSubType_Caption: 'Sous-type :',
-  svAccMgr_Caption: 'Resp. du compte :',
-  svHomePhone_Caption: 'N° de téléphone domicile :',
-  svWorkPhone_Caption: 'N° de téléphone prof. :',
-  svMobilePhone_Caption: 'Téléphone mobile :',
-  svStatus_Caption: 'Etat :',
-  svWebAddress_Caption: 'Web :',
-  svEntityAccount_Caption: 'Compte',
-  svEntityLead_Caption: 'Lead',
-  svEntityContact_Contact: 'Contact',
-  svTollFree_Caption: 'Numéro vert :',
-  svIndustry_Caption: 'Secteur :',
-  svDivision_Caption: 'Division :',
-  svMainPhone_Caption: 'Téléphone principal :',
-  LeadSummaryView_Title: 'Vue Résumé - Lead',
-  ContactSummaryView_Title: 'Vue Résumé - Contact',
-  AccountSummaryView_Title: 'Vue Résumé - Compte',
-  closeText: 'Fermer',
-  errorLoadingSummaryView: 'Une erreur est produite lors du chargement de la vue Résumé : ${0}' }
-));
-},
-'Sage/MainView/Contact/nls/fr-lu/ContactSearchForDuplicates':function(){
-define('Sage/MainView/Contact/nls/fr-lu/ContactSearchForDuplicates',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/DateTimePickerBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/DateTimePickerBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  displayDateText: 'Afficher la date :',
-  displayDateTooltipText: 'Afficher la partie date.',
-  displayTimeText: 'Afficher heure :',
-  displayTimeTooltipText: 'Afficher la partie heure.',
-  isReadOnlyText: 'Lecture seule :',
-  isReadOnlyTooltipText: 'Ne permet pas les modifications.',
-  toolTipText: 'Info-bulle :',
-  toolTipTooltipText: 'Court texte aide concernant le contrôle.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/DateTimePickerBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/DateTimePickerBasicPropertyEditor',{});
-},
-'Sage/TaskPane/nls/fr/AccountingTasksTasklet':function(){
-define("Sage/TaskPane/nls/fr/AccountingTasksTasklet", (
-{ updatePricingRecords: 'Vous ne pouvez sélectionner une seul enregistrement lorsque vous utilisez cette option.' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/AccountingTasksTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/AccountingTasksTasklet',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/DataGridBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/DataGridBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  dataText: 'Données',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  pageSizeText: 'Taille de la page :',
-  pageSizeTooltipText: 'Le nombre enregistrements de la grille à afficher sur une seule page.',
-  resizableColumnsText: 'Colonnes redimensionnables :',
-  resizableColumnsTooltipText: 'Permet à utilisateur de redimensionner les colonnes.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/DataGridBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/DataGridBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/CurrencyBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/CurrencyBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  isReadOnlyText: 'Lecture seule :',
-  isReadOnlyTooltipText: 'Ne permet pas les modifications.',
-  toolTipText: 'Info-bulle :',
-  toolTipTooltipText: 'Court texte aide concernant le contrôle.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/CurrencyBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/CurrencyBasicPropertyEditor',{});
-},
-'Sage/UI/nls/fr/EditableGrid':function(){
-define("Sage/UI/nls/fr/EditableGrid", (
-{ unsavedDataText: '*données non enregistrées',
-  addText: 'Ajouter',
-  deleteText: 'Supprimer',
-  saveText: 'Enregistrer',
-  cancelText: 'Annuler',
-  noSelectionsText: 'Aucun enregistrement est sélectionné.',
-  confirmDeleteFmtTxt: 'Voulez-vous vraiment supprimer ces ${0} éléments ?',
-  yesText: 'Oui',
-  noText: 'Non',
-  createItemsInvalidArrayText: 'Le paramètre des éléments dans Sage.UI.EditableGrid.createItems() doit être un tableau.',
-  recordCountFormatString: 'Enregistrements ${0} - ${1} sur ${2}',
-  noDataMessage: 'Aucun enregistrement ne correspond aux critères de sélection.',
-  dirtyDataMessage: 'Vous avez des données non-enregistrées.  Si vous continuez, vous perdrez les modifications que vous avez effectuées.',
-  okText: 'OK' }
-));
-},
-'Sage/UI/nls/fr-lu/EditableGrid':function(){
-define('Sage/UI/nls/fr-lu/EditableGrid',{});
-},
-'Sage/MainView/IntegrationContract/nls/fr/SalesQuoteRTDV':function(){
-﻿define(
-    "Sage/MainView/IntegrationContract/nls/fr/SalesQuoteRTDV", ({
-        dialogCaption: "Détails du devis",
-        loadingText: "Chargement ...",
-        lblSalesQuoteCaption: "Devis :",
-        lblStatusCaption: "Etat :",
-        lblGrossTotalCaption: "Montant du devis :",
-        lblQuoteDateCaption: "Date du devis :",
-        lblTaxTotalCaption: "Montant de la taxe :",
-        lblHoldStatusCaption: "Statut en attente :",
-        lblCurrencyCaption: "Devise :",
-        lblTypeCaption: "Type :",
-        lblCostTotalCaption: "Coût total :",
-        lblPONumberCaption: "N° de BdC :",
-        lblProfitTotalCaption: "Total des bénéfices :",
-        lblQuotationCaption: "Devis :",
-        lblInvoiceStatusCaption: "Statut de la facture :",
-        lblContactCaption: "Contact :",
-        lblDeliveryDateCaption: "Date de livraison :",
-        lblDueDateCaption: "Date d'échéance :",
-        lblPriceListCaption: "Liste de prix :",
-        lblCarrierCaption: "Transporteur :",
-        lblNetTotalCaption: "Total net :",
-        lblAllocationStatusCaption: "Statut d'allocation :",
-        lblDiscountTotalCaption: "Total de la remise :",
-        lblDeliveryStatusCaption: "Statut de livraison :",
-        lblChargesTotalCaption: "Total facturé :",
-        detailsTabTitle: "Détails",
-        salesPersonsTabTitle: "Représentant commercial :",
-        addressTabTitle: "Adresses",
-        salesQuoteLinesTabTitle: "Lignes du devis",
-        paymentsTabTitle: "Paiements",
-        deliveriesTabTitle: "Livraisons",
-        grdSalesQuote_Edit: "Modifier",
-        grdSalesQuote_QuoteNumber: "Numéro du devis",
-        grdSalesQuote_QuoteDate: "Date du devis",
-        grdSalesQuote_Status: "Etat",
-        grdSalesQuote_HoldStatus: "Statut en attente",
-        grdSalesQuote_Type: "Type",
-        grdSalesQuote_PO: "Numéro de BdC",
-        grdSalesQuote_NetTotal: "Total net",
-        grdSalesQuote_DiscountTotal: "Total de la remise",
-        grdSalesQuote_ChargesTotal: "Total des frais",
-        grdSalesQuote_TaxTotal: "Montant de la taxe",
-        grdSalesQuote_GrossTotal: "Total brut",
-        grdSalesQuote_Currency: "Devise",
-        grdSalesPersons_Name: "Nom",
-        grdSalesPersons_Type: "Type",
-        grdSalesPersons_Extension: "Extension",
-        grdSalesPersons_Relationship: "Relation",
-        grdAddress_Name: "Nom",
-        grdAddress_Address1: "Adresse 1",
-        grdAddress_Address2: "Adresse 2",
-        grdAddress_City: "Ville",
-        grdAddress_State: "Département",
-        grdAddress_Zip: "Code postal",
-        grdItems_Line: "Numéro de la ligne",
-        grdItems_Type: "Type",
-        grdItems_Commodity: "Marchandise",
-        grdItems_CommodityVariant: "Variable",
-        grdItems_CommodityDimension: "Dimension",
-        grdItems_UnitOfMeasure: "Unité",
-        grdItems_Location: "Emplacement",
-        grdItems_PriceList: "Liste des prix",
-        grdItems_Quantity: "Quantité",
-        grdItems_InitialPrice: "Prix d'origine",
-        grdItems_ActualPrice: "Prix réel",
-        grdItems_NetTotal: "Total net",
-        grdItems_ChargesTotal: "Total des frais",
-        grdItems_DiscountTotal: "Total de la remise",
-        grdItems_TaxTotal: "Montant de la taxe",
-        grdItems_GrossTotal: "Total brut",
-        grdPayments_Date: "Date du paiement",
-        grdPayments_Name: "Nom",
-        grdPayments_Type: "Type",
-        grdPayments_Status: "Etat",
-        grdPayments_NetTotal: "Total net",
-        grdPayments_Discounts: "Remises",
-        grdPayments_Charges: "Frais",
-        grdPayments_Tax: "TVA",
-        grdPayments_GrossTotal: "Total brut",
-        grdPayments_Currency: "Devise",
-        grdPayments_TenderType: "Type de l'appel d'offre",
-        grdPayments_TenderReference: "Référence de l'appel d'offre",
-        grdPayments_ProcessDate: "Date d'exécution",
-        grdDeliveries_Number: "Nombre",
-        grdDeliveries_Type: "Type",
-        grdDeliveries_Status: "Etat",
-        grdDeliveries_RequestedDate: "Date de la demande",
-        grdDeliveries_ActualDate: "Date réelle",
-        grdDeliveries_ActualTime: "Heure réelle",
-        grdDeliveries_RequestedQuantity: "Quantité demandée",
-        grdDeliveries_DeliveredQuantity: "Quantité livrée",
-        grdDeliveries_Method: "Méthode",
-        grdDeliveries_Carrier: "Transporteur",
-        grdDeliveries_CarrierReference: "Référence du transporteur",
-        grdDeliveries_ExceptionReason: "Motif de l'exception",
-        errorERPRequest: "Une erreur s'est produite lors de l'affichage des détails du devis des systèmes de comptabilité. ",
-        errorERPRequestDetails: "${0}, ${1} Demande : ${2}",
-        btnCloseCaption: "Fermer"
-    })
-);
-},
-'Sage/MainView/IntegrationContract/nls/fr-lu/SalesQuoteRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/fr-lu/SalesQuoteRTDV',{});
-},
-'Sage/MainView/SecurityMgr/nls/fr/SecurityProfile':function(){
-define("Sage/MainView/SecurityMgr/nls/fr/SecurityProfile", (
-{ securityProfile_Caption: 'Profil de sécurité',
-  btnCancel_Caption: 'Annuler',
-  ok_Text: 'OK',
-  description_Text: 'Description',
-  profileType_Text: 'Type de profil' }
-));
-},
-'Sage/MainView/SecurityMgr/nls/fr-lu/SecurityProfile':function(){
-define('Sage/MainView/SecurityMgr/nls/fr-lu/SecurityProfile',{});
-},
-'Sage/MainView/ReportMgr/nls/fr/ReportWizardController':function(){
-﻿define("Sage/MainView/ReportMgr/nls/fr/ReportWizardController", {
-    txtLoadingScheduleDetails: 'Chargement en annexe les détails',
-    txtError: 'Erreur',
-    txtCannotDetermineReportId: 'Impossible de déterminer le rapport id.',
-    txtCannotDetermineReportNameOrFamily: 'Vous ne pouvez pas déterminer le nom de rapport ou de la famille.',
-    txtLoading: 'Chargement en cours ...',
-    txtLoadingReport: 'Chargement rapport',
-    txtSorryAnErrorOccuredLoadingReport: 'Désolé, une erreur s\'est produite rapport de chargement: ${0} ${1}.'
-});
-},
-'Sage/MainView/ReportMgr/nls/fr-lu/ReportWizardController':function(){
-define('Sage/MainView/ReportMgr/nls/fr-lu/ReportWizardController',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/UserAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/UserAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlLabelPlacementText: 'Placement des étiquettes :',
-  controlLabelPlacementTooltipText: 'Position des étiquettes par rapport au contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  defaultDataBindingText: 'Associations de données :',
-  defaultDataBindingTooltipText: 'Champ(s) de données dans la base de données utilisée par ce contrôle.',
-  enabledText: 'Activé :',
-  enabledTooltipText: 'Permet à utilisateur interagir avec ce contrôle.',
-  lookupBindingModeText: 'Mode association de la recherche :',
-  lookupBindingModeTooltipText: 'Indique si vous souhaitez effectuer une association à un objet entité ou à une valeur de chaîne.',
-  requiredText: 'Obligatoire :',
-  requiredTooltipText: 'Requiert une valeur lors de enregistrement des données.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.',
-  labelPlacementText: { left: 'Gauche', right: 'Droite', top: 'Haut', none: 'Aucun' },
-  bindingModeText: { Object: 'Objet', String: 'Chaîne' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/UserAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/UserAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/nls/fr/ReportManagerUtility':function(){
-define("Sage/MainView/ReportMgr/nls/fr/ReportManagerUtility", (
-{}
-));
-},
-'Sage/MainView/ReportMgr/nls/fr-lu/ReportManagerUtility':function(){
-define('Sage/MainView/ReportMgr/nls/fr-lu/ReportManagerUtility',{});
-},
-'Sage/UI/nls/fr/SpeedSearch':function(){
-define("Sage/UI/nls/fr/SpeedSearch", (
-{ standardText: 'Standard',
-  advancedText: 'Avancé',
-  speedSearchText: 'SpeedSearch' }
-));
-},
-'Sage/UI/nls/fr-lu/SpeedSearch':function(){
-define('Sage/UI/nls/fr-lu/SpeedSearch',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/CurrencyAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/CurrencyAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlLabelPlacementText: 'Placement des étiquettes :',
-  controlLabelPlacementTooltipText: 'Position des étiquettes par rapport au contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  decimalDigitsText: 'Décimales :',
-  decimalDigitsTooltipText: 'Le nombre de chiffres après la virgule à afficher et à autoriser pour la saisie des données.',
-  defaultDataBindingText: 'Associations de données :',
-  defaultDataBindingTooltipText: 'Champ(s) de données dans la base de données utilisée par ce contrôle.',
-  displayCurrencyCodeText: 'Afficher le code du taux de change :',
-  displayCurrencyCodeTooltipText: 'Afficher le code de devise de trois caractères lorsque option Multidevises est activée.',
-  displayModeText: 'Mode affichage :',
-  displayModeTooltipText: 'Mode affichage du contrôle : zone de texte, lien hypertexte ou texte brut.',
-  enabledText: 'Activé :',
-  enabledTooltipText: 'Permet à utilisateur interagir avec ce contrôle.',
-  exchangeRateTypeText: 'Type de taux de change :',
-  exchangeRateTypeTooltipText: 'Type de taux de change à afficher dans les champs devise.',
-  maxLengthText: 'Longueur maxi :',
-  maxLengthTooltipText: 'Nombre maximal de caractères que utilisateur peut saisir.',
-  requiredText: 'Obligatoire :',
-  requiredTooltipText: 'Requiert une valeur lors de enregistrement des données.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.',
-  displayTypeText: 
-   { AsHyperlink: 'Comme lien hypertexte',
-     AsControl: 'Comme contrôle',
-     AsText: 'Comme texte' },
-  exchangeTypeText: 
-   { BaseRate: 'Taux de base',
-     OpportunityRate: 'Taux d’opportunité (Déprécié)',
-     MyRate: 'Mon taux',
-     SalesOrderRate: 'Taux du bon de commande (Déprécié)',
-     EntityRate: 'Taux de entité' },
-  labelPlacementText: { left: 'Gauche', right: 'Droite', top: 'Haut', none: 'Aucun' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/CurrencyAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/CurrencyAdvancedPropertyEditor',{});
-},
-'Sage/TaskPane/nls/fr/ReportManagerTasksTasklet':function(){
-define("Sage/TaskPane/nls/fr/ReportManagerTasksTasklet", { taskRunReport_Caption: 'Exécuter le rapport',
-    taskScheduleReport_Caption: 'Planifier le rapport',
-    taskDeleteReport_Caption: 'Supprimer le rapport',
-    taskDeleteSchedule_Caption: 'Supprimer le planning',
-    taskEditSchedule_Caption: 'Modifier le planning',
-    taskDeleteHistory_Caption: 'Supprimer historique',
-    txtRecordsSelected: 'enregistrement(s) sélectionné(s)',
-    txtClear: 'Effacer'
-});
-},
-'Sage/TaskPane/nls/fr-lu/ReportManagerTasksTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/ReportManagerTasksTasklet',{});
-},
-'Sage/UI/nls/fr/SLXPreviewGrid':function(){
-define("Sage/UI/nls/fr/SLXPreviewGrid", (
-{ applyText: 'Appliquer', resetText: 'Réinitialiser', filterText: 'Filtrer' }
-));
-},
-'Sage/UI/nls/fr-lu/SLXPreviewGrid':function(){
-define('Sage/UI/nls/fr-lu/SLXPreviewGrid',{});
-},
-'Sage/UI/Alarms/nls/fr/UnconfirmedPane':function(){
-define("Sage/UI/Alarms/nls/fr/UnconfirmedPane", (
-{ showConfirmationsText: 'Afficher les confirmations',
-  showCalendarText: 'Afficher l’agenda',
-  acceptText: 'Accepter',
-  declineText: 'Refuser' }
-));
-},
-'Sage/UI/Alarms/nls/fr-lu/UnconfirmedPane':function(){
-define('Sage/UI/Alarms/nls/fr-lu/UnconfirmedPane',{});
-},
-'Sage/Utility/nls/fr/Utility':function(){
-define("Sage/Utility/nls/fr/Utility", (
-{ dangerousValueWarn: 'Une valeur de formulaire potentiellement dangereuse a été détectée. Veuillez éviter les combinaisons de caractères incorrectes. Exemple : "&lt;script&gt;&lt;/script&gt;" Évitez également utiliser des caractères non autorisés dans les noms de fichiers : \\ / : * ? " &lt; &gt; | ' }
-));
-},
-'Sage/Utility/nls/fr-lu/Utility':function(){
-define('Sage/Utility/nls/fr-lu/Utility',{});
-},
-'Sage/QuickForms/Design/nls/fr/ControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/ControlDesigner", (
-{ displayNameText: '' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/ControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/ControlDesigner',{});
-},
-'Sage/UI/Controls/nls/fr/Address':function(){
-define("Sage/UI/Controls/nls/fr/Address", (
-{ address1Text: 'Adresse 1 :',
-  address2Text: 'Adresse 2 :',
-  address3Text: 'Adresse 3 :',
-  cancelText: 'Annuler',
-  cityText: 'Ville :',
-  countryText: 'Pays :',
-  countyText: 'Région :',
-  descriptionText: 'Description :',
-  dialogTitle: 'Adresse',
-  isMailingText: 'Expédition :',
-  isPrimaryText: 'Principal :',
-  okText: 'OK',
-  postalCodeText: 'Code postal :',
-  salutationText: 'Attention :',
-  stateText: 'Départem. :',
-  imageEditToolTip: 'Modifier',
-  imageMapQuestToolTip: 'MapQuest' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/Address':function(){
-define('Sage/UI/Controls/nls/fr-lu/Address',{});
-},
-'Sage/MainView/JobMgr/nls/fr/JobManagerGroupContextService':function(){
-define("Sage/MainView/JobMgr/nls/fr/JobManagerGroupContextService", (
-{ executionsTabDisplayName: 'Exécutions',
-  jobDefinitionsTabDisplayName: 'Définitions',
-  schedulesTabDisplayName: 'Planifications' }
-));
-},
-'Sage/MainView/JobMgr/nls/fr-lu/JobManagerGroupContextService':function(){
-define('Sage/MainView/JobMgr/nls/fr-lu/JobManagerGroupContextService',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/BaseListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/BaseListPanelConfig", (
-{ titleFmtString: '${0}' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/BaseListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/BaseListPanelConfig',{});
-},
-'Sage/QuickForms/Design/nls/fr/OwnerControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/OwnerControlDesigner", (
-{ displayNameText: 'Propriétaire' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/OwnerControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/OwnerControlDesigner',{});
-},
-'Sage/TaskPane/nls/fr/JobManagerTasksTasklet':function(){
-define("Sage/TaskPane/nls/fr/JobManagerTasksTasklet", (
-{ taskRunJob_Caption: 'Créer un planning',
-  taskEditTrigger_Caption: 'Modifier le planning',
-  taskCancelJob_Caption: 'Annuler exécution de la tâche',
-  taskDeleteScheduledJob_Caption: 'Supprimer le planning' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/JobManagerTasksTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/JobManagerTasksTasklet',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/ActivityEditorAttendeesTab':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/ActivityEditorAttendeesTab", (
-{ header_Name: 'Nom',
-  header_AccountName: 'Compte/Société',
-  header_Type: 'Type',
-  header_Primary: 'Principal',
-  header_RoleName: 'Rôle',
-  header_Phone: 'Téléphone',
-  header_Email: 'E-mail',
-  header_TimeZone: 'Fuseau horaire',
-  header_Notes: 'Notes',
-  tooltip_speedSearch: 'Ajouter un participant',
-  tooltip_AddContact: "Ajout un contact",
-  tooltip_AddLead: 'Ajouter un lead',
-  tooltip_Delete: "Supprimer"
-}
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/ActivityEditorAttendeesTab':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/ActivityEditorAttendeesTab',{});
-},
-'Sage/UI/nls/fr/UserType':function(){
-define("Sage/UI/nls/fr/UserType", (
-{ administratorText: 'Administrateur',
-  templateText: 'Modèle',
-  remoteText: 'Distant',
-  webOnlyText: 'Web uniquement',
-  retiredText: 'Désactivé',
-  concurrentText: 'Simultané',
-  webViewerText: 'Visualiseur Web',
-  networkText: 'Réseau',
-  addOnUserText: 'Utilisateur du module complémentaire' }
-));
-},
-'Sage/UI/nls/fr-lu/UserType':function(){
-define('Sage/UI/nls/fr-lu/UserType',{});
-},
-'Sage/QuickForms/Design/nls/fr/FormDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/FormDesigner", (
-{ displayNameText: 'Formulaire' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/FormDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/FormDesigner',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/ActivityCalendar':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/ActivityCalendar", (
-{ completedText: '(Terminé)' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/ActivityCalendar':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/ActivityCalendar',{});
-},
-'Sage/Utility/nls/fr/Jobs':function(){
-define("Sage/Utility/nls/fr/Jobs", (
-{ errorMessage: "Une erreur est survenue lors de exécution de action '${0}' : ${1} ${2}.",
-  jobCompletedSuccessfully: 'La tâche a été correctement effectuée.',
-  unexpectedErrorMessage: "Une erreur inattendue est produite lors de exécution de action '${0}'.",
-  repeatIndefinitely: 'Répéter indéfiniment',
-  cancelButtonCaption: 'Annuler',
-  defaultProgressDialogTitle: 'Exécution de action en cours',
-  closeButtonCaption: 'Fermer' }
-));
-},
-'Sage/Utility/nls/fr-lu/Jobs':function(){
-define('Sage/Utility/nls/fr-lu/Jobs',{});
-},
-'Sage/UI/Controls/nls/fr/_DialogHelpIconMixin':function(){
-define("Sage/UI/Controls/nls/fr/_DialogHelpIconMixin", (
-{ helpTooltip: 'Aide' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/_DialogHelpIconMixin':function(){
-define('Sage/UI/Controls/nls/fr-lu/_DialogHelpIconMixin',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/PickListAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/PickListAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  allowMultiplesText: 'Autoriser les sélections multiples :',
-  allowMultiplesTooltipText: 'Permet à utilisateur de sélectionner plusieurs éléments.',
-  canEditTextText: 'Peut modifier le texte :',
-  canEditTextTooltipText: 'Permet à utilisateur de saisir une valeur.',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlLabelPlacementText: 'Placement des étiquettes :',
-  controlLabelPlacementTooltipText: 'Position des étiquettes par rapport au contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  defaultDataBindingText: 'Associations de données :',
-  defaultDataBindingTooltipText: 'Champ(s) de données dans la base de données utilisée par ce contrôle.',
-  displayModeText: 'Mode affichage :',
-  displayModeTooltipText: 'Mode affichage du contrôle : zone de texte, lien hypertexte ou texte brut.',
-  enabledText: 'Activé :',
-  enabledTooltipText: 'Permet à utilisateur interagir avec ce contrôle.',
-  maxLengthText: 'Longueur maxi :',
-  maxLengthTooltipText: 'Nombre maximal de caractères que utilisateur peut saisir.',
-  mustExistInListText: 'élément doit exister :',
-  mustExistInListTooltipText: 'Nécessite que la valeur saisie soit dans la liste.',
-  pickListNameText: 'Nom de la liste de sélection :',
-  pickListNameTooltipText: 'Nom de la liste des valeurs que utilisateur peut sélectionner lors de la saisie des données.',
-  requiredText: 'Obligatoire :',
-  requiredTooltipText: 'Requiert une valeur lors de enregistrement des données.',
-  storageModeText: 'Mode de stockage :',
-  storageModeTooltipText: 'Façon dont la valeur est stockée : texte, id ou code.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.',
-  labelPlacementText: { left: 'Gauche', right: 'Droite', top: 'Haut', none: 'Aucun' },
-  displayModeTypeText: 
-   { AsControl: 'Comme contrôle',
-     AsText: 'Comme texte',
-     AsHyperlink: 'Comme lien hypertexte' },
-  storageModeTypeText: { Text: 'Texte', Id: 'ID', Code: 'Code' },
-  pickListRequestErrorText: 'Impossible de récupérer les listes de sélection du serveur.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/PickListAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/PickListAdvancedPropertyEditor',{});
-},
-'Sage/UI/nls/fr/ActivityList':function(){
-define("Sage/UI/nls/fr/ActivityList", (
-{ addMeetingText: 'Planifier un rendez-vous',
-  addPhoneCallText: 'Planifier un appel',
-  addToDoText: 'Planifier une tâche à faire',
-  helpText: 'Aide',
-  completeText: 'Terminer',
-  typeText: 'Type',
-  startDateText: 'Date/Heure',
-  dateRangeText: 'Intervalle de dates',
-  durationText: 'Durée',
-  leaderText: 'Responsable',
-  contactText: 'Contact',
-  opportunityText: 'Opportunité',
-  descriptionText: 'Objet',
-  categoryText: 'Catégorie',
-  firstNameText: 'Prénom',
-  lastNameText: 'Nom' }
-));
-},
-'Sage/UI/nls/fr-lu/ActivityList':function(){
-define('Sage/UI/nls/fr-lu/ActivityList',{});
-},
-'Sage/UI/Alarms/nls/fr/JobNotificationPopup':function(){
-﻿define("Sage/UI/Alarms/nls/fr/JobNotificationPopup", {
-    title: "Notifications d'emploi",
-    helpText: 'Aide',
-    colNameJobName: 'Type',
-    colNameProgress: 'Progression',
-    colNameStatus: 'Etat',
-    colExecutionResult: 'Résultat'
-});
-
-
-},
-'Sage/UI/Alarms/nls/fr-lu/JobNotificationPopup':function(){
-define('Sage/UI/Alarms/nls/fr-lu/JobNotificationPopup',{});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr/LeadLookupConfig':function(){
-define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr/LeadLookupConfig", (
-{ contactText: 'Contact',
-  accountText: 'Compte',
-  lookupContactText: 'Rechercher un contact',
-  nameText: 'Nom',
-  cityText: 'Ville',
-  stateText: 'Département',
-  workphoneText: 'Téléphone professionnel',
-  emailText: 'E-mail',
-  dialogButtonText: 'Ajouter sélection',
-  cancelText: 'Fermer',
-  colFirstName: 'Prénom',
-  colLastName: 'Nom',
-  colTitle: 'Titre',
-  colCompany: 'Compte',
-  colWorkPhone: 'Téléphone professionnel',
-  colEmail: 'E-mail',
-  dialogTitleText: 'Kontakte suchen'
-}
-));
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr-lu/LeadLookupConfig':function(){
-define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/fr-lu/LeadLookupConfig',{});
-},
-'Sage/MainView/ReportMgr/nls/fr/SchedulesListPanelConfig':function(){
-﻿define("Sage/MainView/ReportMgr/nls/fr/SchedulesListPanelConfig", {
-    colNameScheduleName: 'Planification',
-    colNameDescription: 'Description',
-    colNameRunAsUser: 'Exécuter comme',
-    colNameLastExecutionDate: 'Dernière exécution',
-    colNameExecutionCount: 'Nombre exécutions',
-    colNameStartTimeUtc: 'Heure de début',
-    colNameEndTimeUtc: 'Heure de fin',
-    colNamePriority: 'Priorité',
-    colNameStatus: 'Statut',
-    colNameTemplate: 'Modèle'
-});
-},
-'Sage/MainView/ReportMgr/nls/fr-lu/SchedulesListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/fr-lu/SchedulesListPanelConfig',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/GenericAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/GenericAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  controlInfoText: 'Info contrôle',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/GenericAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/GenericAdvancedPropertyEditor',{});
-},
-'Sage/UI/nls/fr/CalendarUsersListPane':function(){
-define("Sage/UI/nls/fr/CalendarUsersListPane", (
-{ header_color: 'Couleur',
-  header_user: 'Utilisateur',
-  maxUsersErrorMessage: 'Désolé, vous ne pouvez pas déplacer plus de ${0} agendas (le vôtre compris) en même temps. Effacez un des calendriers sélectionnés et réessayez.',
-  editUsersLinkText: 'Modifier les utilisateurs de agenda',
-  noUsersMessage: 'Aucun utilisateur a été ajouté, ajoutez des utilisateurs en cliquant sur le lien Modifier les utilisateurs de agenda ci-dessus' }
-));
-},
-'Sage/UI/nls/fr-lu/CalendarUsersListPane':function(){
-define('Sage/UI/nls/fr-lu/CalendarUsersListPane',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/PickListBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/PickListBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  isReadOnlyText: 'Lecture seule :',
-  isReadOnlyTooltipText: 'Ne permet pas les modifications.',
-  toolTipText: 'Info-bulle :',
-  toolTipTooltipText: 'Court texte aide concernant le contrôle.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/PickListBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/PickListBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/ColumnBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/ColumnBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  indexText: 'Index :',
-  indexTooltipText: 'Numéro de la ligne ou colonne, à partir de zéro.',
-  widthText: 'Largeur :',
-  widthTooltipText: 'Largeur de cette colonne de contrôles.',
-  sizeTypeText: 'Type de taille :',
-  sizeTypeTooltipText: 'Méthode de dimensionnement : absolu, taille auto ou en pour cent.',
-  rowSizeTypeText: 
-   { Absolute: 'Absolu',
-     Percent: 'Pourcentage',
-     AutoSize: 'Taille auto' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/ColumnBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/ColumnBasicPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/nls/fr/ReportManagerGroupContextService':function(){
-define("Sage/MainView/ReportMgr/nls/fr/ReportManagerGroupContextService", (
-{ reportsTabDisplayName: 'Rapports',
-  schedulesTabDisplayName: 'Planifications',
-  historyTabDisplayName: 'Historique' }
-));
-},
-'Sage/MainView/ReportMgr/nls/fr-lu/ReportManagerGroupContextService':function(){
-define('Sage/MainView/ReportMgr/nls/fr-lu/ReportManagerGroupContextService',{});
-},
-'Sage/MainView/IntegrationContract/nls/fr/MatchingOptionsConfig':function(){
-define("Sage/MainView/IntegrationContract/nls/fr/MatchingOptionsConfig", (
-{ matchingCaption: 'Modifier les critères de correspondance',
-  matchingHeader: 'Critères de correspondance pour ',
-  matchingDescription: 'Ajouter ou supprimer des opérateurs pour définir le critère de correspondance pour tous les utilisateurs qui associent les enregistrements Saleslogix à un système de comptabilité. Ces critères déterminent les résultats renvoyés lors de la recherche des enregistrements correspondants entre les systèmes de comptabilité.',
-  propertyText: 'Propriété',
-  operatorText: 'Opérateur',
-  loadingText: 'Chargement ...',
-  filter_AddCondition: 'Ajouter une condition',
-  filter_RemoveCondition: 'Supprimer la condition',
-  error_InvalidEndpoint: 'Veuillez spécifier un point de terminaison valide avant de continuer.',
-  okText: 'OK',
-  cancelText: 'Annuler' }
-));
-},
-'Sage/MainView/IntegrationContract/nls/fr-lu/MatchingOptionsConfig':function(){
-define('Sage/MainView/IntegrationContract/nls/fr-lu/MatchingOptionsConfig',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/FormBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/FormBasicPropertyEditor", (
-{ titleText: 'Basic',
-  generalText: 'Général',
-  activeControlText: 'Contrôle actif :',
-  activeControlTooltipText: 'Le contrôle sur lequel commence le curseur de utilisateur.',
-  descriptionText: 'Description :',
-  descriptionTooltipText: 'Description optionnelle de objet du formulaire.',
-  nameText: 'Nom :',
-  nameTooltipText: 'Identifiant de formulaire utilisé par le système.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/FormBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/FormBasicPropertyEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/OccurrenceOrSeriesQueryDlg':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/OccurrenceOrSeriesQueryDlg", (
-{ titleFmt: '${type} - ${description}',
-  actDateText: 'Date de activité :',
-  contactText: 'Contact :',
-  accountText: 'Compte :',
-  opportunityText: 'Opportunité :',
-  editAllText: 'Modifier toutes les occurrences',
-  editOneText: 'Modifier cette occurrence',
-  completeAllText: 'Terminer toutes les occurrences',
-  completeOneText: 'Terminer cette occurence',
-  deleteAllText: 'Supprimer toutes les occurrences',
-  deleteOneText: 'Supprimer cette occurrence',
-  continueText: 'Continuer',
-  failedToLoadMsg: 'Impossible de charger activité' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/OccurrenceOrSeriesQueryDlg':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/OccurrenceOrSeriesQueryDlg',{});
-},
-'Sage/Utility/File/nls/fr/Attachment':function(){
-﻿define(
-    "Sage/Utility/File/nls/fr/Attachment", ({
-        uploadingAttachments: 'Uploading attachments',
-        uploadCompleted: 'Completed',
-        uploadingPleaseWait: 'En cours de chargement, veuillez patienter...',
-        uploadFailed: 'Upload failed.'
-    })
-);
-},
-'Sage/Utility/File/nls/fr-lu/Attachment':function(){
-define('Sage/Utility/File/nls/fr-lu/Attachment',{});
-},
-'Sage/QuickForms/Design/nls/fr/GenericControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/GenericControlDesigner", (
-{ displayNameText: 'Inconnu' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/GenericControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/GenericControlDesigner',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/StringParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/fr/StringParameterEditor", {
-    txtTheValueMustBeBetween: 'La valeur doit être comprise entre {0} et {1} caractères.',
-    txtTheMinimumLengthForThisField: 'La longueur minimum de ce champ est {0}.',
-    txtTheMaximumLengthForThisField: 'La longueur maximale de ce champ est {0}.',
-    txtPleaseSpecifyValue: "S'il vous plaît spécifier une valeur.",
-    lblEnterValue_Caption: 'Entrez une valeur:'
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/StringParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/StringParameterEditor',{});
-},
-'Sage/QuickForms/Design/nls/fr/PropertyEditorContainer':function(){
-define("Sage/QuickForms/Design/nls/fr/PropertyEditorContainer", (
-{ specificTitleFormatText: '${0} Propriétés (${1})',
-  genericTitleFormatText: '${0} Propriétés' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/PropertyEditorContainer':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/PropertyEditorContainer',{});
-},
-'Sage/Services/nls/fr/ReportingService':function(){
-define("Sage/Services/nls/fr/ReportingService", (
-{ txtUnsupportedReportType: 'Type de rapport non pris en charge : ${0}.',
-  txtUnexpectedError: 'Une erreur est survenue : ${0} ${1}.',
-  invalidEntityError: 'identifiant de entité a pas été défini ou a pas pu être déterminé.',
-  invalidReportPluginError: 'identifiant du plug-in de rapport a pas été défini ou a pas pu être déterminé.',
-  invalidTableNameError: 'Le nom de la table a pas été défini ou a pas pu être déterminé.',
-  noDefaultReportError: 'Aucun rapport par défaut a pu être localisé pour entité active.',
-  reportCannotBeShownError: 'Impossible afficher le rapport.' }
-));
-},
-'Sage/Services/nls/fr-lu/ReportingService':function(){
-define('Sage/Services/nls/fr-lu/ReportingService',{});
-},
-'Sage/MailMerge/nls/fr/Helper':function(){
-define("Sage/MailMerge/nls/fr/Helper", (
-{ destkopErrorsError: 'L\rquote appel à ObtenirAliasTablePrincipale() a échoué.',
-  mailMergeInfoStoreError: 'L\rquote appel à ObtenirAliasTablePrincipale() a échoué.' }
-));
-},
-'Sage/MailMerge/nls/fr-lu/Helper':function(){
-define('Sage/MailMerge/nls/fr-lu/Helper',{});
-},
-'Sage/UI/Dashboard/nls/fr/Dashboard':function(){
-define("Sage/UI/Dashboard/nls/fr/Dashboard", (
-{ newTabTitleText: 'Nouvel Onglet',
-  inputTitleText: 'Saisir un titre',
-  copiedPageText: 'Onglet copié',
-  showText: 'Afficher' }
-));
-},
-'Sage/UI/Dashboard/nls/fr-lu/Dashboard':function(){
-define('Sage/UI/Dashboard/nls/fr-lu/Dashboard',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/ActivityListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/ActivityListPanelConfig", (
-{ colNameComplete: 'Terminer',
-  colNameAttachment: 'Pièce jointe',
-  colNameRecurring: 'Périodicité',
-  colNameAlarm: 'Alarme',
-  colNameType: "Type activité",
-  colNameStartDate: 'Date de début',
-  colNameDuration: 'Durée',
-  colNameContact: 'Nom',
-  colNameLead: 'Lead',
-  colNameAccount: 'Compte/Société',
-  colNameCompany: 'Société',
-  colNameRegarding: 'Objet',
-  colNamePriority: 'Priorité',
-  colNameUserId: 'Responsable',
-  colNameTimeless: 'Heure indéfinie',
-  colNameTypeName: 'Type',
-  colNameContactName: 'Nom',
-  SnoozeAlarm: 'Alarme de mise en veille',
-  DismissAlarm: "Ignorer alarme",
-  colNameUnConfirmStatus: 'Non confirmé',
-  colNameAssociationCount: 'Nombre de participants'
-}
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/ActivityListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/ActivityListPanelConfig',{});
-},
-'Sage/UI/Controls/nls/fr/PickList':function(){
-define("Sage/UI/Controls/nls/fr/PickList", (
-{ okText: 'OK',
-  missingPickListText: 'La liste de sélection est introuvable' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/PickList':function(){
-define('Sage/UI/Controls/nls/fr-lu/PickList',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/HistoryEditorAttendeesTab':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/HistoryEditorAttendeesTab", (
-{ header_Name: 'Nom',
-  header_AccountName: 'Compte/Société',
-  header_Type: 'Type',
-  header_Primary: 'Principal',
-  header_RoleName: 'Rôle',
-  header_Phone: 'Téléphone',
-  header_Email: 'E-mail',
-  header_TimeZone: 'Fuseau horaire',
-  header_Notes: 'Notes',
-  header_Status: 'Etat' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/HistoryEditorAttendeesTab':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/HistoryEditorAttendeesTab',{});
-},
-'Sage/Utility/nls/fr/Email':function(){
-define("Sage/Utility/nls/fr/Email", (
-{ RecipientInfoError: 'Une erreur inattendue est survenue lors de la tentative de lecture des informations du destinataire : ${0}',
-  MailToProtocolError: "Une erreur est survenue lors de la tentative de génération de e-mail à aide du mailto: protocol (href.length=${0}). Il faut peut-être réduire le nombre de destinataires de email. Erreur du navigateur : ${1}.",
-  InvalidContextError: "La demande e-mail ne peut pas être traitée. Cette opération est prise en charge que pour les contacts ou les leads.",
-  InvalidArgumentError: 'La demande e-mail ne peut pas être traitée. Argument invalide.',
-  FilteredOutMsg: 'Tri : Non-sollicitables : ${0}; Non-valides : ${1}; Doublons : ${2}',
-  AllInvalidEmailError: 'La collection inclut pas entités avec une adresse e-mail valide ou sollicitable.',
-  EmailFieldQueried: 'Le champ e-mail interrogé était : ${0}.',
-  EntityInfoError: 'Echec lors de la tentative de récupération des informations de entité.',
-  CapabilityModeError: 'La capacité écrire un e-mail à une sélection de groupes est disponible que dans la vue Listes.',
-  CapabilityEntityError: 'La capacité écrire un e-mail à une sélection de groupes est disponible que pour les contacts ou les leads.',
-  NoRowsSelectedError: 'Aucune ligne est sélectionnée.' }
-));
-},
-'Sage/Utility/nls/fr-lu/Email':function(){
-define('Sage/Utility/nls/fr-lu/Email',{});
-},
-'Sage/TaskPane/nls/fr/SecurityManagerTasksTasklet':function(){
-define("Sage/TaskPane/nls/fr/SecurityManagerTasksTasklet", (
-{ addSecurityProfileTitle: 'Ajouter le profil',
-  editSecurityProfileTitle: 'Modifier le profil' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/SecurityManagerTasksTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/SecurityManagerTasksTasklet',{});
-},
-'Sage/UI/nls/fr/TimeZoneItem':function(){
-define("Sage/UI/nls/fr/TimeZoneItem", (
-{ buttonOKText: 'OK',
-  buttonCancelText: 'Annuler',
-  timeZoneText: 'Fuseau horaire',
-  timeZoneSettingsText: 'Paramètres de fuseau horaire',
-  setTimeZoneText: 'Définir le fuseau horaire :' }
-));
-},
-'Sage/UI/nls/fr-lu/TimeZoneItem':function(){
-define('Sage/UI/nls/fr-lu/TimeZoneItem',{});
-},
-'Sage/UI/Columns/nls/fr/SlxEdit':function(){
-define("Sage/UI/Columns/nls/fr/SlxEdit", (
-{ editText: 'Modifier' }
-));
-},
-'Sage/UI/Columns/nls/fr-lu/SlxEdit':function(){
-define('Sage/UI/Columns/nls/fr-lu/SlxEdit',{});
-},
-'Sage/Reporting/nls/fr/Enumerations':function(){
-define("Sage/Reporting/nls/fr/Enumerations", (
-{ txtGroup: 'Groupe',
-  txtDateRange: 'Intervalle de dates',
-  txtUser: 'Utilisateur',
-  txtQuery: 'Requête',
-  txtIsGreaterThan: 'Est supérieur à',
-  txtIsLessThan: 'Est inférieur à',
-  txtIsInTheRange: 'Est compris dans intervalle',
-  txtIsAfter: 'Vient après',
-  txtIsBefore: 'Vient avant',
-  txtContains: 'contient',
-  txtStartsWith: 'Commence par',
-  txtEndsWith: 'Finit par',
-  txtIs: 'Est',
-  txtIsNot: 'N’est pas',
-  txtOnDemand: 'À la demande',
-  txtScheduled: 'Planifié',
-  txtCrystalReport: 'Crystal Report',
-  txtExportToFileReportType: 'Exporter vers un fichier',
-  txtUnknownReportType: 'Inconnu',
-  txtNoFormat: 'Aucun format',
-  txtPdf: 'PDF',
-  txtExcel: 'Excel',
-  txtCsv: 'CSV',
-  txtWord: 'Word',
-  txtXml: 'XML' }
-));
-},
-'Sage/Reporting/nls/fr-lu/Enumerations':function(){
-define('Sage/Reporting/nls/fr-lu/Enumerations',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/CheckBoxAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/CheckBoxAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  checkedText: 'Vérifié :',
-  checkedTooltipText: 'Définit état par défaut de la case à cocher comme sélectionnée.',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlLabelPlacementText: 'Placement des étiquettes :',
-  controlLabelPlacementTooltipText: 'Position des étiquettes par rapport au contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  defaultDataBindingText: 'Associations de données :',
-  defaultDataBindingTooltipText: 'Champ(s) de données dans la base de données utilisée par ce contrôle.',
-  enabledText: 'Activé :',
-  enabledTooltipText: 'Permet à utilisateur interagir avec ce contrôle.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.',
-  labelPlacementText: { left: 'Gauche', right: 'Droite', top: 'Haut', none: 'Aucun' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/CheckBoxAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/CheckBoxAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportConditionsDialog':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/fr/CrystalReportConditionsDialog", {
-    txtDialogTitle: 'Sélectionner les fiches',
-    cmdBack_Caption: '< Précédent',
-    cmdNext_Caption: 'Suivant >',
-    cmdCancel_Caption: 'Annuler',
-    grdCrystalConditions_ConditionType_Caption: 'Type',
-    grdCrystalConditions_TableName_Caption: 'Table',
-    grdCrystalConditions_FieldName_Caption: 'Champ',
-    grdCrystalConditions_Operator_Caption: 'Opérateur',
-    grdCrystalConditions_Value_Caption: 'Valeur de condition',
-    txtShowRecordsThatMatch: 'Afficher les fiches qui correspondent à :',
-    txtMatch: 'Correspondance :',
-    txtOfTheFollowingConditions: 'pour les conditions suivantes :',
-    txtAny: 'importe quel(le)',
-    txtAll: 'Tous',
-    txtAllRecords: '[Tous les enregistrements]',
-    txtSpecificConditions: '[Conditions spécifiques]',
-    txtCurrentUser: '[Utilisateur Actuel]'
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportConditionsDialog':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/CrystalReportConditionsDialog',{});
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/fr/ActivityListPanelConfig':function(){
-define("Sage/Extensions/Activity/ListPanelOverrides/nls/fr/ActivityListPanelConfig", (
-{ colNameAssociationCount: 'Nombre de participants' }
-));
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/fr-lu/ActivityListPanelConfig':function(){
-define('Sage/Extensions/Activity/ListPanelOverrides/nls/fr-lu/ActivityListPanelConfig',{});
-},
-'Sage/UI/nls/fr/JobSchedulingWidget':function(){
-define("Sage/UI/nls/fr/JobSchedulingWidget", {
-    lblCreateSchedule: 'Créer un planning de tâches à exécuter',
-    lblEveryText: 'Tous les',
-    lblOnText: 'le',
-    lblOnTheText: 'le',
-    lblAtText: 'à',
-    lblMinutesPastHour: 'minutes après heure',
-    lblFromTimeText: 'Exécuter depuis',
-    lblToTimeText: 'vers',
-    lblMinutesFrequency: 'minutes',
-    lblHourlyFrequency: 'heure(s)',
-    lblDailyFrequency: 'jour',
-    lblWeekDayFrequency: 'jour de la semaine',
-    lblWeeklyFrequency: 'semaine',
-    lblMonthlyFrequency: 'mois',
-    lblYearlyFrequency: 'année',
-    lblSunday: 'Dimanche',
-    lblMonday: 'Lundi',
-    lblTuesday: 'Mardi',
-    lblWednesday: 'Mercredi',
-    lblThursday: 'Jeudi',
-    lblFriday: 'Vendredi',
-    lblSaturday: 'Samedi',
-    lblFirstDay: 'premier',
-    lblSecondDay: 'deuxième',
-    lblThirdDay: 'troisième',
-    lblFourthDay: 'quatrième',
-    lblCronExpressionText: 'Expression Cron',
-    txtInvalidScheduleTitle: 'Horaire Valide',
-    txtInvalidDatesMessage: "L'heure de fin doit être postérieure à l'heure de début. S'il vous plaît corriger ces informations avant de continuer.",
-    txtInvalidScheduleTime: "Les heures de début et de fin spécifiées seront empêcher ce programme de s'exécuter. S'il vous plaît corriger ces informations avant de continuer.",
-    txtInvalidStartDate: "Une date de démarrage est nécessaire. S'il vous plaît spécifier une date de début avant de poursuivre.",
-    txtInvalidEndDate: "A la date de fin est nécessaire. S'il vous plaît spécifier une date de fin avant de poursuivre."
-});
-},
-'Sage/UI/nls/fr-lu/JobSchedulingWidget':function(){
-define('Sage/UI/nls/fr-lu/JobSchedulingWidget',{});
-},
-'Sage/UI/Controls/nls/fr/LogOffButton':function(){
-define("Sage/UI/Controls/nls/fr/LogOffButton", (
-{ logOffText: 'Déconnexion' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/LogOffButton':function(){
-define('Sage/UI/Controls/nls/fr-lu/LogOffButton',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/TextBoxAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/TextBoxAdvancedPropertyEditor", (
-{ titleText: 'Avancé',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  controlInfoText: 'Info contrôle',
-  dataText: 'Données',
-  controlIdText: 'ID de contrôle :',
-  controlIdTooltipText: 'Identifiant pour ce contrôle.',
-  controlLabelPlacementText: 'Placement des étiquettes :',
-  controlLabelPlacementTooltipText: 'Position des étiquettes par rapport au contrôle.',
-  controlTypeText: 'Type de contrôle :',
-  controlTypeTooltipText: 'Type de contrôle Saleslogix.',
-  defaultDataBindingText: 'Associations de données :',
-  defaultDataBindingTooltipText: 'Champ(s) de données dans la base de données utilisée par ce contrôle.',
-  enabledText: 'Activé :',
-  enabledTooltipText: 'Permet à utilisateur interagir avec ce contrôle.',
-  maxLengthText: 'Longueur maxi :',
-  maxLengthTooltipText: 'Nombre maximal de caractères que utilisateur peut saisir.',
-  requiredText: 'Obligatoire :',
-  requiredTooltipText: 'Requiert une valeur lors de enregistrement des données.',
-  visibleText: 'Visible :',
-  visibleTooltipText: 'Afficher ou masquer ce contrôle sur le formulaire.',
-  labelPlacementText: { left: 'Gauche', right: 'Droite', top: 'Haut', none: 'Aucun' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/TextBoxAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/TextBoxAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr/MultiselectStringParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/fr/MultiselectStringParameterEditor", {
-    txtTheValueMustBeBetween: 'La valeur doit être comprise entre {0} et {1} caractères.',
-    txtTheMinimumLengthForThisField: 'La longueur minimum de ce champ est {0}.',
-    txtTheMaximumLengthForThisField: 'La longueur maximale de ce champ est {0}.',
-    txtPleaseSpecifyValue: "S'il vous plaît spécifier une valeur.",
-    lblAvailableValues_Caption: 'Valeurs disponibles:',
-    lblSelectedValues_Caption: 'Valeurs sélectionnées:',
-    lblEnterValue_Caption: 'Entrez une valeur:'
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/fr-lu/MultiselectStringParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/fr-lu/MultiselectStringParameterEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/fr/EditEventEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/fr/EditEventEditor", (
-{ titleScheduleText: 'Planification un événement',
-  titleEditText: 'Modifier un événement',
-  lblDayTypeText: 'Type de jour :',
-  lblStartDateText: 'Date de début :',
-  lblEndDateText: 'Date de fin :',
-  lblUserText: 'Utilisateur :',
-  lookupUserText: 'Rechercher un utilisateur',
-  lblCategoryText: 'Catégorie :',
-  lblLocationText: 'Emplacement :',
-  lblDescriptionText: 'Description :',
-  btnOkayText: 'OK',
-  btnCancelText: 'Annuler',
-  btnHelpText: 'Aide',
-  eventTypeActiveText: 'Actif',
-  eventTypeBusinessTripText: 'Voyage affaires',
-  eventTypeConferenceText: 'Conférence',
-  eventTypeHolidayText: 'Congés',
-  eventTypeOffText: 'Désactivé',
-  eventTypeTradeShowText: 'Salon commercial',
-  eventTypeUnavailableText: 'Non disponible',
-  eventTypeVacationText: 'Vacances',
-  errorText: 'Impossible de créer événement car une erreur est produite.',
-  invaildDatesText: 'La date de fin ne peut être antérieure à la date de début.',
-  nameText: 'Nom' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/fr-lu/EditEventEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/fr-lu/EditEventEditor',{});
-},
-'Sage/MailMerge/nls/fr/Loader':function(){
-define("Sage/MailMerge/nls/fr/Loader", (
-{ decodeFailed: 'L\rquote appel à ObtenirAliasTablePrincipale() a échoué.' }
-));
-},
-'Sage/MailMerge/nls/fr-lu/Loader':function(){
-define('Sage/MailMerge/nls/fr-lu/Loader',{});
-},
-'Sage/UI/Controls/nls/fr/DateTimePicker':function(){
-define("Sage/UI/Controls/nls/fr/DateTimePicker", (
-{ okText: 'OK',
-  cancelText: 'Annuler',
-  convertDescription: 'Comparez avec un autre fuseau horaire.',
-  convertText: 'Comparer',
-  calculatorText: 'Calculateur de fuseau horaire',
-  timeZoneSourceText: 'Fuseau horaire actuel',
-  timeZoneDestText: 'Fuseau horaire de référence',
-  buttonToolTip: 'Agenda',
-  timeStartText: 'Heure',
-  timeZoneCalculatorText: 'Calculateur de fuseau horaire' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/DateTimePicker':function(){
-define('Sage/UI/Controls/nls/fr-lu/DateTimePicker',{});
-},
-'Sage/MainView/ReportMgr/nls/fr/ReportManagerActions':function(){
-define(
-"Sage/MainView/ReportMgr/nls/fr/ReportManagerActions", {
-    txtSelectRecord: 'Please selectionner juin fiche Dans La Liste.',
-    txtInvalidSelectionCount: 'Vous devez avoir au moins un enregistrement sélectionné avant de poursuivre.',
-    confirm_Deletion: 'Etes-vous sûr de vouloir effacer le sélectionné ${0}?',
-    confirm_Report: 'rapport',
-    confirm_Schedule: 'calendrier',
-    confirm_ReportHistory: 'report history record',
-    txtYes: 'Oui',
-    txtNo: 'Non',
-    deleteJobError: "Désolé, une erreur s'est produite pendant le processus de suppression: ${0}",
-    txtDeleteHistory: "Suppression d'enregistrements d'histoire",
-    txtDeleteTitle: "supprimer l'historique",
-    txtErrorDeleteReport: "Une erreur s'est produite suppression de l'accusé: ${0}"
-});
-},
-'Sage/MainView/ReportMgr/nls/fr-lu/ReportManagerActions':function(){
-define('Sage/MainView/ReportMgr/nls/fr-lu/ReportManagerActions',{});
-},
-'Sage/UI/Alarms/nls/fr/AlarmPopup':function(){
-define("Sage/UI/Alarms/nls/fr/AlarmPopup", (
-{ title: 'Alerte',
-  alarmsText: 'Alarmes',
-  unconfirmedText: 'Non confirmé',
-  deleteText: 'Supprimer les sélections',
-  helpText: 'Aide',
-  completeText: 'Terminer les activités sélectionnées' }
-));
-},
-'Sage/UI/Alarms/nls/fr-lu/AlarmPopup':function(){
-define('Sage/UI/Alarms/nls/fr-lu/AlarmPopup',{});
-},
-'Sage/MainView/Contact/nls/fr/ContactUserAssociationEditor':function(){
-define("Sage/MainView/Contact/nls/fr/ContactUserAssociationEditor", (
-{ btnCancel_Caption: 'Annuler',
-  btnOK_Caption: 'OK',
-  dialogTitleText: 'Associer un contact avec un utilisateur',
-  associateContactText: 'Associer le contact sélectionné avec utilisateur suivant',
-  user_Caption: 'Utilisateur',
-  lookupUserText: 'Rechercher un utilisateur',
-  lookupNameColText: 'Nom',
-  lookupTitleColText: 'Titre',
-  lookupDepartmentColText: 'Service',
-  lookupRegionColText: 'Région',
-  lookupTypeColText: 'Type',
-  disAssociateTitle: 'Dissocier un utilisateur',
-  associationExistsMessage: 'utilisateur sélectionné est déjà associé à un contact. Veuillez choisir un autre utilisateur.' }
-));
-},
-'Sage/MainView/Contact/nls/fr-lu/ContactUserAssociationEditor':function(){
-define('Sage/MainView/Contact/nls/fr-lu/ContactUserAssociationEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/OwnerBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/OwnerBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  isReadOnlyText: 'Lecture seule :',
-  isReadOnlyTooltipText: 'Ne permet pas les modifications.',
-  toolTipText: 'Info-bulle :',
-  toolTipTooltipText: 'Court texte aide concernant le contrôle.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/OwnerBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/OwnerBasicPropertyEditor',{});
-},
-'Sage/MainView/JobMgr/nls/fr/BaseListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/fr/BaseListPanelConfig", (
-{ titleFmtString: '${0}' }
-));
-},
-'Sage/MainView/JobMgr/nls/fr-lu/BaseListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/fr-lu/BaseListPanelConfig',{});
-},
-'Sage/QuickForms/Design/nls/fr/TextBoxControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/TextBoxControlDesigner", (
-{ displayNameText: 'ZoneTexte' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/TextBoxControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/TextBoxControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/fr/EmailControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/fr/EmailControlDesigner", (
-{ displayNameText: 'E-mail' }
-));
-},
-'Sage/QuickForms/Design/nls/fr-lu/EmailControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/fr-lu/EmailControlDesigner',{});
-},
-'Sage/UI/Controls/nls/fr/Lookup':function(){
-define("Sage/UI/Controls/nls/fr/Lookup", (
-{ buttonToolTip: 'Rechercher', closeButtonToolTip: 'Retirer' }
-));
-},
-'Sage/UI/Controls/nls/fr-lu/Lookup':function(){
-define('Sage/UI/Controls/nls/fr-lu/Lookup',{});
-},
-'Sage/Utility/File/nls/fr/DescriptionsForm':function(){
-define("Sage/Utility/File/nls/fr/DescriptionsForm", (
-{ titleFmt: 'Ajouter des pièces jointes à ${0}',
-  titleLibraryDoc: 'Ajouter des documents de la bibliothèque',
-  fileNameText: 'Nom et taille du fichier : ',
-  descText: 'Description :',
-  okText: 'OK',
-  cancelText: 'Annuler' }
-));
-},
-'Sage/Utility/File/nls/fr-lu/DescriptionsForm':function(){
-define('Sage/Utility/File/nls/fr-lu/DescriptionsForm',{});
-},
-'Sage/QuickForms/Design/Editors/nls/fr/NumericBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/fr/NumericBasicPropertyEditor", (
-{ titleText: 'Basic',
-  appearanceText: 'Apparence',
-  behaviorText: 'Comportement',
-  captionText: 'Légende :',
-  captionTooltipText: 'étiquette à afficher sur le formulaire pour ce contrôle.',
-  captionAlignmentText: 'Alignement de la légende :',
-  captionAlignmentTooltipText: 'Justification du texte de étiquette.',
-  isReadOnlyText: 'Lecture seule :',
-  isReadOnlyTooltipText: 'Ne permet pas les modifications.',
-  toolTipText: 'Info-bulle :',
-  toolTipTooltipText: 'Court texte aide concernant le contrôle.',
-  alignmentText: { left: 'Gauche', center: 'Centre', right: 'Droite' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/fr-lu/NumericBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/fr-lu/NumericBasicPropertyEditor',{});
-},
-'Sage/TaskPane/nls/fr/CommonTasksTasklet':function(){
-define("Sage/TaskPane/nls/fr/CommonTasksTasklet", (
-{ okButtonText: 'OK',
-  loadingText: 'Chargement ...',
-  noPrimaryEmail: 'Aucun e-mail principal est disponible',
-  selectFileFormat: 'Choisir un format de fichier :',
-  exportToFile_OptionCSV: 'CSV standard',
-  exportToFile_OptionTab: 'Délimitation par des tabulations (recommandé pour Microsoft Excel)',
-  exportToFile_OptionSaveFormat: 'Se souvenir de mon choix et ne plus me le demander.',
-  exportToFile_OK: 'OK',
-  exportToFile_Cancel: 'Annuler',
-  exportToFile_DialogTitle: 'Exporter vers un fichier',
-  exportToExcel_Caption: 'Exportation vers Excel en cours',
-  errorRequestingJobMgr: 'Une erreur est produite lors de interrogation du gestionnaire de tâches : ${0}',
-  errorExecutionAction: 'Une erreur est produite lors de exécution de la requête du serveur ${0}',
-  exportProcessingJobMsg: 'Traitement de exportation en cours. Vous pouvez patienter jusquà la fin de opération ou accéder aux rapports pour ouvrir votre fichier.' }
-));
-},
-'Sage/TaskPane/nls/fr-lu/CommonTasksTasklet':function(){
-define('Sage/TaskPane/nls/fr-lu/CommonTasksTasklet',{});
-},
-'Sage/Utility/nls/fr/Dashboard':function(){
-define("Sage/Utility/nls/fr/Dashboard", (
-{ pageText: 'Page' }
-));
-},
-'Sage/Utility/nls/fr-lu/Dashboard':function(){
-define('Sage/Utility/nls/fr-lu/Dashboard',{});
-}}});
-define("Sage/nls/Sage_fr-lu", [], 1);

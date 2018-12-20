@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/Editors/FormUsagesPropertyEditor", [
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/string',

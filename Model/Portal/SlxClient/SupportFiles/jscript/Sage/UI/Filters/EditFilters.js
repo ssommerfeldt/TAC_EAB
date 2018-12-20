@@ -1,5 +1,7 @@
+require({cache:{
+'url:Sage/UI/Filters/templates/EditFilters.html':"<div>\r\n    <div class=\"filter-dialog\" data-dojo-type=\"dijit.Dialog\" data-dojo-props=\"title:'${dialogTitle}'\" data-dojo-attach-point=\"dialogNode\">\r\n        <div class=\"filter-clear-all\">\r\n            <input data-dojo-attach-point=\"checkAll\" data-dojo-type=\"dijit.form.CheckBox\" />\r\n            <label>${selectAllText}</label>\r\n        </div>\r\n        <div class=\"filter-dialog-content\" data-dojo-attach-point=\"contentNode\">\r\n            \r\n        </div>\r\n        \r\n        <div class=\"button-bar alignright\">\r\n            <button data-dojo-attach-point=\"buttonOK\" data-dojo-attach-event=\"onClick:_onOKClick\" data-dojo-type=\"dijit.form.Button\">${okText}</button>\r\n            <button data-dojo-attach-point=\"buttonCancel\" data-dojo-attach-event=\"onClick:_onCancelClick\" data-dojo-type=\"dijit.form.Button\">${cancelText}</button>\r\n        </div>\r\n    </div>\r\n</div>"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Filters/EditFilters", [
         'dijit/_Widget',
         'dijit/_TemplatedMixin',
         'dijit/_WidgetsInTemplateMixin',
@@ -159,7 +161,7 @@ define([
         _onFetchItem: function(entry) {
             var type = entry.filterType,
                 filterName = entry.filterName,
-                displayName = entry.displayName || entry.filterName,
+                displayName = entry.$descriptor || entry.filterName,
                 id = filterName + '_check',
                 checkBox = new CheckBox({ 'id': id, 'label': filterName });// CheckBox label appears to be broken..
             

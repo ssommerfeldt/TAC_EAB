@@ -1,0 +1,11 @@
+define('dijit/nls/dijit_bg-bg',{
+'dijit/nls/loading':{"loadingState":"Зареждане...","errorState":"Съжаляваме, възникна грешка","_localized":{}}
+,
+'dijit/nls/common':{"buttonOk":"ОК","buttonCancel":"Отмени","buttonSave":"Запази","itemClose":"Затвори","_localized":{}}
+,
+'dijit/_editor/nls/commands':{"bold":"Получерен","copy":"Копирай","cut":"Изрежи","delete":"Изтрий","indent":"Отстъп","insertHorizontalRule":"Хоризонтална линия","insertOrderedList":"Номериран списък","insertUnorderedList":"Списък с водещи символи","italic":"Курсив","justifyCenter":"Центрирано подравняване","justifyFull":"Двустранно подравняване","justifyLeft":"Подравняване отляво","justifyRight":"Подравняване отдясно","outdent":"Обратен отстъп","paste":"Постави","redo":"Върни","removeFormat":"Премахни форматирането","selectAll":"Избери всички","strikethrough":"Зачеркване","subscript":"Долен индекс","superscript":"Горен индекс","underline":"Подчертаване","undo":"Отмени","unlink":"Премахване на връзка","createLink":"Създаване на връзка","toggleDir":"Превключване на посока","insertImage":"Вмъкване на изображение","insertTable":"Вмъкване/редактиране на таблица","toggleTableBorder":"Превключване на граница на таблица","deleteTable":"Изтриване на таблица","tableProp":"Свойство на таблица","htmlToggle":"HTML източник","foreColor":"Цвят на предния план","hiliteColor":"Цвят на фон","plainFormatBlock":"Стил на абзац","formatBlock":"Стил на абзац","fontSize":"Размер на шрифт","fontName":"Име на шрифт","tabIndent":"Отстъп на табулация","fullScreen":"Превключване на цял екран","viewSource":"Преглед на HTML източник","print":"Отпечатаване","newPage":"Нова страница","systemShortcut":"Действие \"${0}\" е достъпно във Вашия браузър само чрез използване на бърза клавишна комбинация. Използвайте ${1}.","ctrlKey":"ctrl+${0}","appleKey":"⌘${0}","_localized":{}}
+,
+'dijit/form/nls/validate':{"invalidMessage":"Въведената стойност е невалидна.","missingMessage":"Тази стойност се изисква.","rangeMessage":"Тази стойност е извън обхват.","_localized":{}}
+,
+'dijit/form/nls/ComboBox':{"previousMessage":"Предишни избори","nextMessage":"Повече избори","_localized":{}}
+});

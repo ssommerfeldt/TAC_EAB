@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/nls/en/ActivityManager", (
 { titleFmtString: '${0}',
   tabDisplayNameActivity: 'Activities',
   tabDisplayNameLit: 'Literature',

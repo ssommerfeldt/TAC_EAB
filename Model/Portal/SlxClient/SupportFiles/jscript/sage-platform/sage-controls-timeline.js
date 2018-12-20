@@ -95,57 +95,74 @@ function Timeline_IEFix() {
     }
 }
 
-function Timeline_GetMashupData(mashupName, queryName, timeLine, eventSource) {
-    dojo.require('Sage.Utility');
-    var service = Sage.Utility.getSDataService('mashups');
-    var request = new Sage.SData.Client.SDataNamedQueryRequest(service);
-    var clientService = Sage.Services.getService("ClientEntityContext");
-    var clientContext = clientService.getContext();
-    var entityId = clientContext.EntityId;
+function Timeline_GetMashupData(mashupName, queryName, timeLine, eventSource, start, count, initialData) {
+  count = count || 500;
+  start = start || 1;
+  dojo.require('Sage.Utility');
+  var service = Sage.Utility.getSDataService('mashups');
+  var request = new Sage.SData.Client.SDataNamedQueryRequest(service);
+  var clientService = Sage.Services.getService("ClientEntityContext");
+  var clientContext = clientService.getContext();
+  var entityId = clientContext.EntityId;
 
-    request.setApplicationName('$app');
-    request.setResourceKind('mashups');
-    request.uri.setCollectionPredicate("'" + mashupName + "'");
-    request.setQueryName('execute');
-    request.setQueryArg('_resultName', queryName);
-    request.setQueryArg('_EntityId', entityId);
+  request.setApplicationName('$app');
+  request.setResourceKind('mashups');
+  request.uri.setCollectionPredicate("'" + mashupName + "'");
+  request.setQueryName('execute');
+  request.setQueryArg('_resultName', queryName);
+  request.setQueryArg('_EntityId', entityId);
+  request.setQueryArg('startIndex', start);
+  request.setQueryArg('count', count);
 
-    request.read({
-        success: function (data) {
-            var events = [];
-            var json = {
-                events: []
-            };
-
-            var item;
-            var len = data.$resources.length;
-            for (var i = 0; i < len; i++) {
-                item = data.$resources[i];
-                json.events.push({
-                    start: Sage.Utility.Convert.toDateFromString(item.Start),
-                    end: Sage.Utility.Convert.toDateFromString(item.End),
-                    title: item.Title,
-                    description: item.Description,
-                    isDuration: true,
-                    link: item.Link,
-                    icon: item.Icon,
-                    color: item.Color,
-                    image: item.Thumbnail
-                });
-            }
-
-            eventSource.loadJSON(json, document.location.href);
-            if (dojo.isIE === 9) {
-                Timeline_IEFix();
-                $(".timeline-container").mousedown(function() {
-                    Timeline_IEFix();
-                });
-                $(".timeline-container").mouseup(function() {
-                    Timeline_IEFix();
-                });
-            }
-        },
-        failure: function (data) {
+  request.read({
+    success: function (data) {
+      var totalResults = data.$totalResults;
+      if (totalResults > 500 && totalResults > (start + count)) {
+        //if we have more data, make another request to get remaining
+        start = start == 1 ? (start + count) - 1 : start + count;
+        Timeline_GetMashupData(mashupName, queryName, timeLine, eventSource, start, (totalResults - start), data['$resources']);
+      } else {
+        if (initialData) {
+          initialData.push.apply(initialData, data['$resources']);
+        } else {
+          initialData = data['$resources'];
         }
-    });
+        var events = [];
+        var json = {
+          events: []
+        };
+
+        var item;
+        var len = initialData.length;
+        for (var i = 0; i < len; i++) {
+          item = initialData[i];
+          json.events.push({
+            start: Sage.Utility.Convert.toDateFromString(item.Start),
+            end: Sage.Utility.Convert.toDateFromString(item.End),
+            title: item.Title,
+            description: item.Description,
+            isDuration: true,
+            link: item.Link,
+            icon: item.Icon,
+            color: item.Color,
+            image: item.Thumbnail
+          });
+        }
+
+        eventSource.loadJSON(json, document.location.href);
+        if (dojo.isIE === 9) {
+          Timeline_IEFix();
+          $(".timeline-container").mousedown(function () {
+            Timeline_IEFix();
+          });
+          $(".timeline-container").mouseup(function () {
+            Timeline_IEFix();
+          });
+        };
+      }
+    },
+    failure: function () {
+      console.log('timeline request failed...');
+    }
+  });
 }

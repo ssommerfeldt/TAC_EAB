@@ -1,12 +1,12 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Layout/MainContentDetailsPane", [
         'dojo/_base/declare',
         'dojo/dom-style',
         'Sage/Layout/ContentPane'
 ],
 function (declare, domStyle, ContentPane) {
     var mainPane = declare('Sage.Layout.MainContentDetailsPane', [ContentPane], {
-        postCreate: function () {
+        postCreate: function() {
             this.inherited(arguments);
             // Maintain a unique storage id for each MainView.  Splitter should be positioned by view.
             var clientEntityContextSvc = Sage.Services.getService('ClientEntityContext');
@@ -18,13 +18,16 @@ function (declare, domStyle, ContentPane) {
         },
         mainPaneChildrenExist: true,
         tabPaneChildrenExist: true,
+        tabContentDivExists: true,
         noContentResize: function () {
             var dim = { h: this.domNode.scrollHeight, w: this.domNode.scrollWidth },
                 self = this;
             var adjustSplitter = function () {
                 // Minimize the empty pane and hide(do not destroy!) the splitter.
                 self.resize(dim);
-                domStyle.set(self._splitterWidget.domNode, 'display', 'none');
+                if (self._splitterWidget) {
+                    domStyle.set(self._splitterWidget.domNode, 'display', 'none');
+                }
             };
             //The Tab Pane does not contain any SmartParts.
             if (!this.tabPaneChildrenExist) {
@@ -37,9 +40,17 @@ function (declare, domStyle, ContentPane) {
                 dim = { h: 1, w: this.domNode.scrollWidth };
                 adjustSplitter();
             }
+
+            if(!this.tabContentDivExists) {
+                domStyle.set("mainContentDetails", "height", "100%");
+            }
         },
         startup: function () {
             var viewport = dijit.byId("Viewport");
+
+            var tabNode = dijit.byId("tabContent");
+            this.tabContentDivExists = (typeof(tabNode) !== 'undefined');
+
             //Check inside Main Content and Tabs to see if there are any SmartPart nodes.
             // Count all the child elements in the _inner div of the MainContent content div .
             // Then make sure that they are not QuickForm generated, i.e. '.formtable'
@@ -53,8 +64,9 @@ function (declare, domStyle, ContentPane) {
             else {
                 this.mainPaneChildrenExist = false;
             }
-            
-            this.tabPaneChildrenExist = (dijit.byId('tabContent').domNode.children.length > 0);
+
+            this.tabPaneChildrenExist = (this.tabContentDivExists) ? (tabNode.domNode.children.length > 0): false;
+
             // Set splitter to false to keep events from being connected in inherited startup.
             if (!this.tabPaneChildrenExist || !this.mainPaneChildrenExist) {
                 this.set('splitter', false);

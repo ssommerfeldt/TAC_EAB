@@ -1,0 +1,194 @@
+.marketoKpiContainer {
+  display:flex;
+  justify-content: center;
+}
+
+.marketoKpi{
+  margin : 5px;
+  display: flex;
+  height:60px;
+  border: 1px solid #AAA;
+  width:100px;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items:center;
+  background: #3c3c3c;
+  color:white;
+}
+
+.engagementImage {
+	width:30px;
+	height:12px;
+}
+.marketoKpiValue {
+  font-size: 1.5em;
+}
+
+.marketoKpiTitle {
+  padding: 5px;
+}
+
+.marketoLinkContainer {
+  width:150px;
+  padding:5px;
+  border: 1px Solid #444;
+  margin: 3px;
+  background:#555;
+  color:white;
+}
+
+.marketoLinkLabel {
+  width:100px;
+  font-size: 1em;
+  color:#ccc;
+}
+
+.marketoLink {
+  width:100px;
+  text-decoration:none;
+  color:white;
+}
+
+.marketoLinks {
+  display:flex;
+  width:100%;
+  align-items:center;
+  justify-content:center;
+}
+
+.small {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.smallTitle {
+  font-size:.5em !important;
+}
+
+.smallValue {
+  font-size: 1em !important;
+}
+
+.kpiPositive {
+  background: green !important;
+}
+.kpiNegative {
+  backound: red !important;
+}
+
+.marketoLink:hover {
+  background:#444;
+}
+
+.marketoLink a:hover {
+  color:#A0EAFF;
+}
+
+
+.marketoActivity {
+    width: 90%;
+    background: #EAEAEA;
+    color: black;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    list-style-type: none;
+    position: relative;
+    margin-top: 1px;
+}
+
+.marketoActivity:hover {
+	opacity: .75;
+	background: #005BB8;
+	color: white;
+}
+
+.marketoBodyText {
+    margin-top: 2px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.marketoBodyDateText {
+    margin-top: 2px;
+    font-size: .5em;
+}
+
+.marketoCardBody {
+}
+
+.marketoCardContent {
+}
+
+.marketoTitle {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.marketoTitleText {
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+
+.fa-envelope {
+	color: white;
+}
+.fa-cloud {
+color: white;
+}
+                    
+.fa-facebook {
+color: white;
+}
+.fa-dashboard {
+color: white;
+}
+.fa-bolt{
+color: white;
+}
+.fa-cogs {
+color: white;
+}
+.fa-envelope:hover {
+color: #ccc;
+}
+.fa-cloud:hover {
+color: #ccc;
+}
+                    
+.fa-facebook:hover {
+color: #ccc;
+}
+.fa-dashboard :hover{
+color: #ccc;
+}
+.fa-bolt:hover{
+color: #ccc;
+}
+.fa-cogs:hover {
+color: #ccc;
+}
+.fa-square {
+	color: black;
+}
+.fa-square:hover {
+	color:#333;
+}
+
+.imDateColumn {
+	margin:5px;
+	color:#aaa;
+	display:inline-block;
+	width:75px;
+}
+
+.imTypeColumn {
+	color: #aaa;
+	margin:5px;
+	display:inline-block;
+	width:110px;
+}
+
+.imDescriptionColumn {
+	margin:5px;
+}

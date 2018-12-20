@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/templates/nls/en/ConfirmationListSummary", (
 { txtPhone_Caption: 'Phone:',
   lnkOpportunity_Caption: 'Opportunity:',
   txtStartTime_Caption: 'Start Time:',

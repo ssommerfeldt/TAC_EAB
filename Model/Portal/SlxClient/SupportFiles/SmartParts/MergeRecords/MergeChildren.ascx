@@ -49,7 +49,7 @@
                 <SalesLogix:SlxGridView runat="server" ID="grdSourceRecords" GridLines="None" AutoGenerateColumns="false"
                     CellPadding="4" ResizableColumns="True" DataKeyNames="Id,firstName,lastName" ShowEmptyTable="true"
                     CssClass="datagrid" ExpandableRows="false" EmptyTableRowText="<%$ resources: EmptyTableRowText %>"
-                    EnableViewState="false" OnRowCommand="grdSourceRecords_OnRowCommand"  RowStyle-CssClass="rowlt" 
+                    EnableViewState="false" OnRowCommand="grdSourceRecords_OnRowCommand"  RowStyle-CssClass="rowlt"
                     PagerStyle-CssClass="gridPager" Height="210" AlternatingRowStyle-CssClass="rowdk" >
                     <Columns>
                         <asp:BoundField DataField="Id" Visible="false"/>
@@ -85,7 +85,7 @@
                         <asp:BoundField DataField="Id" Visible="false"/>
                         <asp:CommandField ShowSelectButton="true" SelectText="<%$ resources: Grid.Select.Text %>"
                             ButtonType="link" >
-              	        </asp:CommandField>
+                        </asp:CommandField>
                         <asp:BoundField DataField="firstName" HeaderText="<%$ resources: Grid_FirstName_Column %>" />
                         <asp:BoundField DataField="lastName" HeaderText="<%$ resources: Grid_LastName_Column %>" />
                         <asp:BoundField DataField="city" HeaderText="<%$ resources: Grid_City_Column %>" />
@@ -129,8 +129,8 @@
                         <asp:BoundField DataField="Id" Visible="false"/>
                         <asp:CommandField ShowSelectButton="true" SelectText="<%$ resources: Grid.Select.Text %>"
                             ButtonType="link" >
-              	        </asp:CommandField>
-              	        <asp:ButtonField CommandName="Unlink" Text="<%$ resources: Grid_Unlink.Column %>" />
+                        </asp:CommandField>
+                        <asp:ButtonField CommandName="Unlink" Text="<%$ resources: Grid_Unlink.Column %>" />
                         <asp:BoundField DataField="firstName" HeaderText="<%$ resources: Grid_FirstName_Column %>" />
                         <asp:BoundField DataField="lastName" HeaderText="<%$ resources: Grid_LastName_Column %>" />
                     </Columns>
@@ -157,11 +157,10 @@
     </tr>
 </table>
 <table border="0" cellpadding="1" cellspacing="0" class="formtable">
-    <col width="2%" />
-    <col width="50%" />
-    <col width="24%" />
-    <col width="24%" />
-    <col width="2%" />
+    <col width="4%" />
+    <col width="25%" />
+    <col width="46%" />
+    <col width="25%" />
     <tr>
         <td></td>
         <td></td>
@@ -176,6 +175,5 @@
                 <asp:Button runat="server" ID="btnCancel" Text="<%$ resources: btnCancel.Caption %>" CssClass="slxbutton" />
             </asp:Panel>
         </td>
-        <td></td>
     </tr>
 </table>

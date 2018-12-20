@@ -1,5 +1,5 @@
 /*
- * This metadata is used by the Sage platform.  Do not remove.
+ * This metadata is used by the Saleslogix platform.  Do not remove.
 <snippetHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="bfc5f815-7117-4bc4-a9c1-9ce11494d85c">
  <assembly>Sage.SnippetLibrary.CSharp</assembly>
  <name>OnLoad1Step</name>
@@ -26,7 +26,6 @@
 
 #region Usings
 using System;
-using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
 using Sage.SalesLogix.API;
 #endregion Usings
@@ -35,16 +34,11 @@ namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class QualificationCategoryDetailEventHandlers
     {
-        public static void OnLoad1Step( IQualificationCategoryDetail form,  EventArgs args)
+        public static void OnLoad1Step(IQualificationCategoryDetail form, EventArgs args)
         {
-			Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPart smartpart = form.NativeForm as Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPart;
-            Sage.Platform.WebPortal.EntityPage page = (Sage.Platform.WebPortal.EntityPage)smartpart.Page;
-			if (page != null)
-			{
-                bool bInsertMode = page.ModeId.ToUpper().Equals("INSERT");
-                form.btnDelete.Visible = !bInsertMode;
-                form.btnInsertSave.Visible = bInsertMode;
-			}
+            var insertMode = MySlx.MainView.IsInsertMode();
+            form.btnDelete.Visible = !insertMode;
+            form.btnInsertSave.Visible = insertMode;
         }
     }
 }

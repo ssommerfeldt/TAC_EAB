@@ -1,0 +1,23 @@
+define("Sage/MainView/ActivityMgr/nls/zh-tw/ActivityListPanelConfig", {
+    "colNameComplete": "完成",
+    "colNameAttachment": "附件",
+    "colNameRecurring": "週期性",
+    "colNameAlarm": "鬧鐘",
+    "colNameType": "活動類型",
+    "colNameStartDate": "開始日期",
+    "colNameDuration": "持續時間",
+    "colNameContact": "名稱",
+    "colNameLead": "銷售線索",
+    "colNameAccount": "客戶/公司",
+    "colNameCompany": "公司",
+    "colNameRegarding": "關於",
+    "colNamePriority": "優先順序",
+    "colNameUserId": "負責人",
+    "colNameTimeless": "無指定時間",
+    "colNameTypeName": "類型",
+    "colNameContactName": "名稱",
+    "SnoozeAlarm": "延期鬧鐘",
+    "DismissAlarm": "關閉鬧鐘",
+    "colNameUnConfirmStatus": "未確認",
+    "colNameAssociationCount": "參與者計數"
+});

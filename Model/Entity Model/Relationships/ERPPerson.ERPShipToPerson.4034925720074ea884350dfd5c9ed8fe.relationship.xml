@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="40349257-2007-4ea8-8435-0dfd5c9ed8fe" lastModifiedUtc="2014-12-09T22:42:32.5646772Z" parentEntityId="eb41ddb6-1f4d-436b-8192-b11542d5f985" childEntityId="a252c7d6-d37b-4b4a-8913-488a019d308e">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="67678edc-e93d-4c81-bcfb-79591c9e1f37" lastModifiedUtc="2014-12-09T22:42:15.3216772Z" name="ErpShipToPersons" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="c8bf483b-4964-45ee-bde7-67c9d833c04c" lastModifiedUtc="2014-12-09T22:42:19.4066772Z" name="ErpPerson" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="2b5e5ae4-b3d2-49f8-a6f6-efaac6b55566" parentPropertyId="a893ff62-e935-4b14-8b47-f4df187988ea" childPropertyId="4eab33de-acdf-491b-a2dc-22e257f5d56e" ordinal="0" />
+  </column>
+</relationship>

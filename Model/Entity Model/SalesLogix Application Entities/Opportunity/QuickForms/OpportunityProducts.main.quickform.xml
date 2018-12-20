@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="079c0dd1-96e9-41b2-8a37-93e1cbd6a923" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="079c0dd1-96e9-41b2-8a37-93e1cbd6a923" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-11-01T16:12:14.3253049Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -8,58 +8,16 @@
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload0</MethodName>
-          <CSharpCodeSnippet>Sage.Entity.Interfaces.IOpportunity opportunity = this.BindingSource.Current as Sage.Entity.Interfaces.IOpportunity;
+          <CSharpCodeSnippet>var opportunity = BindingSource.Current as IOpportunity;
 if (opportunity != null)
 {
-    Sage.Platform.SData.IAppIdMappingService mappingService =
-        Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;(
-            true);
-	if (mappingService.IsIntegrationEnabled())
-	{
-		var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
-		if (clientContextService != null)
-		{
-			// OperatingCompany
-			if (clientContextService.CurrentContext.ContainsKey("OperatingCompany"))
-			{
-                if (opportunity.OperatingCompany != null)
-                {
-				    clientContextService.CurrentContext["OperatingCompany"] = opportunity.OperatingCompany.Id.ToString();
-                }
-                else
-                {
-                    clientContextService.CurrentContext.Remove("OperatingCompany");
-                }
-			}
-			else
-			{
-                if (opportunity.OperatingCompany != null)
-                {
-                    clientContextService.CurrentContext.Add("OperatingCompany", opportunity.OperatingCompany.Id.ToString());
-                }
-			}
-			
-			// SlxPriceList
-			if (clientContextService.CurrentContext.ContainsKey("SlxPriceList"))
-			{
-                if (opportunity.SlxPriceList != null)
-                {
-				    clientContextService.CurrentContext["SlxPriceList"] = opportunity.SlxPriceList.Id.ToString();
-                }
-                else
-                {
-                    clientContextService.CurrentContext.Remove("SlxPriceList");
-                }
-			}
-			else
-			{
-                if (opportunity.SlxPriceList != null)
-                {
-                    clientContextService.CurrentContext.Add("SlxPriceList", opportunity.SlxPriceList.Id.ToString());
-                }
-			}						
-        }
-	}
+	var closed = opportunity.IsClosed();
+    var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+    if (clientContextService != null)
+    {
+        clientContextService.CurrentContext["IsClosed"] = closed.ToString();
+		clientContextService.CurrentContext["ExchangeRate"] = opportunity.ExchangeRate != null ? opportunity.ExchangeRate.ToString() : "1";
+    }
 }</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
@@ -72,7 +30,9 @@ if (opportunity != null)
     </FormActionDefinition>
   </LoadActions>
   <Name>OpportunityProducts</Name>
-  <ClientScriptIncludes />
+  <ClientScriptIncludes>
+    <string>jscript/Sage/Utility/PricingAndAvailability.js</string>
+  </ClientScriptIncludes>
   <ClientResourceKeys>
     <string>error_AccountingSystem_Undefined</string>
     <string>error_ClientContext_Undefined</string>
@@ -80,6 +40,15 @@ if (opportunity != null)
     <string>error_ExecutingRequest_Ext</string>
     <string>error_OperatingCompany_Undefined</string>
     <string>error_ZeroBasePrice</string>
+    <string>CPQStatus_Completed</string>
+    <string>CPQStatus_NotConfigurable</string>
+    <string>CPQStatus_Error</string>
+    <string>CPQStatus_PartiallySave</string>
+    <string>CPQStatus_Processing</string>
+    <string>CPQStatus_Queued</string>
+    <string>CPQStatus_Configure</string>
+    <string>error_PricingRequest</string>
+    <string>productStatus_Discontinued</string>
   </ClientResourceKeys>
   <ExtendedProperties />
   <HelpFile />
@@ -99,7 +68,12 @@ if (opportunity != null)
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <GenerateMember>false</GenerateMember>
-        <ReadOnlyCondition>False</ReadOnlyCondition>
+        <ReadOnlyCondition>function()
+{					
+	var clientContextService = Sage.Services.getService('ClientContextService');
+	var closed = clientContextService != null &amp;&amp; clientContextService.getValue("IsClosed");
+	return closed == 'True';
+}</ReadOnlyCondition>
         <AppliedSecurity />
         <RelateToPropertyName>Products</RelateToPropertyName>
         <PreviewField />
@@ -122,7 +96,7 @@ if (opportunity != null)
             <DialogSpecs>
               <SmartPart>EditOpportunityProduct</SmartPart>
               <Height>360</Height>
-              <Width>600</Width>
+              <Width>625</Width>
               <Top>0</Top>
               <Left>0</Left>
               <EntityType>OpportunityProduct</EntityType>
@@ -131,10 +105,11 @@ if (opportunity != null)
             </DialogSpecs>
             <AppliedSecurity>Entities/Opportunity/Edit</AppliedSecurity>
             <HideCondition>function () {
-    if (Sage.Utility.getModeId() === 'insert') {
-        return true;
-    }
-}</HideCondition>
+	if (Sage.Utility.getModeId() === 'insert') {
+		return true;
+	}
+}
+            </HideCondition>
             <Width>4</Width>
           </QFSDataEditCol>
           <QFEditableCol>
@@ -171,6 +146,33 @@ if (opportunity != null)
           </QFEditableCol>
           <QFEditableCol>
             <StyleScheme />
+            <DataField>Status</DataField>
+            <ColumnId>53fcc076-801f-4abd-a551-8be72ddc188b</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>Status</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition>function()
+{
+  return  !isCPQIntegrationEnabled();
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter>function (value, item) {
+                        var options = {
+                        item: item,
+                        resourceKind: 'opportunities',
+                        lineResourceKind: 'OpportunityProducts',
+                        securedAction: 'Entities/Opportunity/Configurator'
+                    }
+                    return Sage.Utility.PricingAndAvailability.requestCPQStatus(options);
+                     }</CustomFormatter>
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
             <DataField>Product.Family</DataField>
             <ColumnId>89fb1ecc-72a4-4f09-921b-29a9175daf56</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
@@ -197,7 +199,7 @@ if (opportunity != null)
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>true</IsEditable>
             <HideCondition>function () {
-    return isIntegrationContractEnabled();
+  return ((isIntegrationContractEnabled() &amp;&amp; !isLocalCRMPricingEnabled('Opportunity')) || isCPQIntegrationEnabled());  
 }</HideCondition>
             <Width>8</Width>
             <CustomFormatter />
@@ -209,6 +211,37 @@ if (opportunity != null)
             <LookupBindingMode>String</LookupBindingMode>
             <LookupDisplayProperty>Program</LookupDisplayProperty>
           </QFSDataLookupCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>Location.Name</DataField>
+            <ColumnId>5f147f84-0af4-40bc-9424-b9da3412a6e7</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>Location.Description</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function () {
+		return !(isBackOfficeIntegrationEnabled() &amp;&amp; !isLocalCRMPricingEnabled('Opportunity'));
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter>function (value, item) {
+	var options = {
+	item: item,
+	resourceKind: 'opportunities',
+	entityName: 'Opportunity',
+	entityId: Sage.Utility.getCurrentEntityId(),
+	childEntityName: 'OpportunityProduct',
+	childEntityIds: item.$key,
+	serviceName: 'AvailableToPromise',
+	gridId: this.grid.id,
+	configuredItem: !!item.Product &amp;&amp; item.Product.ErpConfiguredItem
+}
+	return Sage.Utility.PricingAndAvailability.buildWarehouseUrl(options);
+}</CustomFormatter>
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
           <QFSDataCurrencyCol>
             <StyleScheme />
             <DataField>Price</DataField>
@@ -240,12 +273,14 @@ if (opportunity != null)
             <SortField>Discount</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>true</IsEditable>
-            <HideCondition />
+            <HideCondition>function () {
+		return isIntegrationContractEnabled() &amp;&amp; !isLocalCRMPricingEnabled('Opportunity');
+}</HideCondition>
             <Width>6</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <DecimalDigits>
-              <DecimalDigits>2</DecimalDigits>
+              <DecimalDigits>6</DecimalDigits>
               <Strict>false</Strict>
             </DecimalDigits>
             <FormatType>Percent</FormatType>
@@ -260,7 +295,9 @@ if (opportunity != null)
             <IsSortable>true</IsSortable>
             <SortField>CalculatedPrice</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
+            <IsEditable>function () {
+		return !(isBackOfficeIntegrationEnabled() &amp;&amp; !isLocalCRMPricingEnabled('Opportunity'));
+}</IsEditable>
             <HideCondition />
             <Width>8</Width>
             <CustomFormatter />
@@ -272,23 +309,24 @@ if (opportunity != null)
           </QFSDataCurrencyCol>
           <QFSDataCurrencyCol>
             <StyleScheme />
-            <DataField>CalculatedPrice</DataField>
+            <DataField>DocCalculatedPrice</DataField>
             <ColumnId>0723086e-115c-4d05-aa21-e047d57c316a</ColumnId>
             <HorizontalAlignment>right</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>CalculatedPrice</SortField>
+            <SortField>DocCalculatedPrice</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
             <HideCondition>function () {
-    return !isMultiCurrencyEnabled();
-}</HideCondition>
+	return !isMultiCurrencyEnabled();
+}
+            </HideCondition>
             <Width>10</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode>Opportunity.ExchangeRateCode</CurrentCode>
-            <ExchangeRate>Opportunity.ExchangeRate</ExchangeRate>
+            <ExchangeRate />
             <ExchangeRateType>EntityRate</ExchangeRateType>
             <DecimalDigits>-1</DecimalDigits>
           </QFSDataCurrencyCol>
@@ -325,8 +363,8 @@ if (opportunity != null)
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
             <HideCondition>function () {
-    return isMultiCurrencyEnabled();
-}</HideCondition>
+	return isMultiCurrencyEnabled();
+} </HideCondition>
             <Width>10</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
@@ -337,30 +375,112 @@ if (opportunity != null)
           </QFSDataCurrencyCol>
           <QFSDataCurrencyCol>
             <StyleScheme />
-            <DataField>ExtendedPrice</DataField>
+            <DataField>DocExtendedPrice</DataField>
             <ColumnId>ceb64e60-2b36-42fe-8a84-491ad1bf158d</ColumnId>
             <HorizontalAlignment>right</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>ExtendedPrice</SortField>
+            <SortField>DocExtendedPrice</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
             <HideCondition>function () {
-    return !isMultiCurrencyEnabled();
-}</HideCondition>
+	return !isMultiCurrencyEnabled();
+}   </HideCondition>
             <Width>10</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode>Opportunity.ExchangeRateCode</CurrentCode>
-            <ExchangeRate>Opportunity.ExchangeRate</ExchangeRate>
+            <ExchangeRate />
             <ExchangeRateType>EntityRate</ExchangeRateType>
             <DecimalDigits>-1</DecimalDigits>
           </QFSDataCurrencyCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>Product.ErpConfiguredItem</DataField>
+            <ColumnId>e0a9a4fe-21b2-47b1-990b-e2fb3b071fed</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition>
+              function()
+              {return true;}
+            </HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ConfigurationID</DataField>
+            <ColumnId>c27ad8de-c774-4f2a-b133-f7c7b9ae3e15</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>ConfigurationID</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function()
+{  
+  return (!isBackOfficeIntegrationEnabled() || !isCPQIntegrationEnabled()); 
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ConfigurationDetailID</DataField>
+            <ColumnId>e74f7302-53c2-41e3-9579-bb94526aaf9b</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>ConfigurationDetailID</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function()
+{  
+  return (!isBackOfficeIntegrationEnabled() || !isCPQIntegrationEnabled()); 
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFSDataLookupCol>
+            <StyleScheme />
+            <DataField>UnitOfMeasure</DataField>
+            <ColumnId>b6d29123-77df-482a-b2c9-71ce6f5dd4d2</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>Ascending</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>UnitOfMeasure</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>True</IsEditable>
+            <HideCondition>function () {
+		return !(isBackOfficeIntegrationEnabled() &amp;&amp; !isLocalCRMPricingEnabled('Opportunity'));
+}
+</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <SeedOnRowEntity>true</SeedOnRowEntity>
+            <SeedOnRelatedEntity>Product</SeedOnRelatedEntity>
+            <ConditionalWhere />
+            <ResourceKind>unitsOfMeasure</ResourceKind>
+            <LookupBindingMode>Object</LookupBindingMode>
+            <LookupDisplayProperty>Name</LookupDisplayProperty>
+          </QFSDataLookupCol>
         </Columns>
         <ConditionalWhere>function() { return 'Opportunity.Id eq "' + Sage.Utility.getCurrentEntityId() + '"'; }</ConditionalWhere>
         <Select>
           <string>Id</string>
+          <string>Opportunity.ExchangeRateCode</string>
         </Select>
         <Include>
           <string>Opportunity</string>
@@ -369,13 +489,90 @@ if (opportunity != null)
         <OnGetMappingId />
         <ParentRelationshipPropertyName>Opportunity</ParentRelationshipPropertyName>
         <ChildRelationshipPropertyName>Product</ChildRelationshipPropertyName>
-        <OnDataChange>function (entity, attribute, oldValue, newValue) {
+        <OnDataChange>function (entity, attribute, oldValue, newValue,evt, grid) {
 	if (oldValue === newValue) {
         return;
     }
-    if (attribute === 'Program') {
+	var rate = 1;
+	var contextService = Sage.Services.getService("ClientContextService");
+	if (contextService != null) {
+		if (contextService.containsKey("ExchangeRate")) {
+			rate = contextService.getValue("ExchangeRate");
+		}
+	}
+	var oService = Sage.Services.getService("IntegrationContractService");
+	var isICEnabled = (typeof oService !== "undefined" &amp;&amp; oService != null &amp;&amp; oService.isIntegrationEnabled);
+	var isLocalOpportunityPriceEnabled = (oService &amp;&amp; oService.isOpportunityCRMPricingEnabled);
+	var requestPricingAvailability = function (prod, quantity, unitOfMeasureId) {
+	    var pricingOptions = {
+	        resourceKind: 'opportunities',
+	        operationName: 'RequestPricingAvailability',
+	        callback: function (pricingResponse) {
+	            if (pricingResponse) {
+	                var request = pricingResponse.Children[0];
+	                if (request) {
+	                    var errorProp = request.Properties['messageText'];
+                        var errorCode = request.Properties['ErrorCode'];
+	                  if (!(errorProp || errorCode)) {
+							Sage.Utility.PricingAndAvailability.updateItemResponsePricing(pricingResponse, entity);
+							evt.grid.updateDirty(evt.rowId, 'ExtendedPrice', entity['ExtendedPrice']);
+							grid.update(evt);
+							__doPostBack('MainContent', '');
+	                    }
+	                }
+	            }
+	        },
+	        product: prod,
+	        requestOptions: {
+				childEntityIds: prod.Product.$key,
+				childEntityName: 'Product',
+				itemEntityName: 'OpportunityProduct',
+				entityName: 'Opportunity',
+				itemId: prod.$key,
+				itemQuantity: quantity,
+				entityId: Sage.Utility.getCurrentEntityId(),
+				serviceName: 'OpportunityOrderLineTotal',
+				unitOfMeasureId: unitOfMeasureId,
+				autoSave: false
+	        }
+	    }
+	    Sage.Utility.PricingAndAvailability.requestPricingAvailability(pricingOptions);
+	}
+    switch (attribute) {
+    case 'Discount':
+        if (entity.Price == 0) {
+            entity.Discount = 0;
+            Sage.UI.Dialogs.showError(OpportunityProductsResources.error_ZeroBasePrice);
+        } else {
+            entity.CalculatedPrice = entity.Price - (entity.Price * newValue);
+			entity.DocCalculatedPrice = entity.CalculatedPrice * rate;
+        }
+        entity.ExtendedPrice = entity.CalculatedPrice * entity.Quantity;
+		entity.DocExtendedPrice = entity.ExtendedPrice * rate;
+        break;
+    case 'CalculatedPrice':
+			 entity.Discount = entity.Price == 0 ? 0 : 1 - newValue / entity.Price;
+			 entity.ExtendedPrice = newValue * entity.Quantity;
+             entity.DocExtendedPrice = entity.ExtendedPrice * rate;			 
+		     break;
+    case 'Quantity':
+	if(entity.Quantity&gt;0){
+		if (isICEnabled &amp;&amp; entity.Product &amp;&amp; entity.Product.ErpConfiguredItem===false &amp;&amp; !isLocalOpportunityPriceEnabled) {
+                 requestPricingAvailability(entity, newValue);
+             } else {
+		 	entity.ExtendedPrice = entity.CalculatedPrice * newValue;
+            entity.DocExtendedPrice = entity.ExtendedPrice * rate;
+		}	
+	}
+        break;
+	case 'UnitOfMeasure':
+            if (isICEnabled &amp;&amp; entity.Product &amp;&amp; entity.Product.ErpConfiguredItem===false &amp;&amp; !isLocalOpportunityPriceEnabled) {
+                requestPricingAvailability(entity, entity.Quantity, newValue.$key);
+            }
+            break;
+    case 'Program':
         var sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/productPrograms?select=Price&amp;where=Product.Id eq '${0}' and Program eq '${1}'&amp;format=json",
-            [entity.Product.$key, escape(newValue)]);
+                    [entity.Product.$key, escape(newValue)]);
         dojo.xhrGet({
             cache: false,
             preventCache: true,
@@ -384,47 +581,27 @@ if (opportunity != null)
             sync: true,
             load: function(programPrice) {
                 if (programPrice.$resources != null &amp;&amp; programPrice.$resources.length == 1) {
-                    entity.Price = programPrice.$resources[0].Price;
+                	entity.Price = programPrice.$resources[0].Price;
                     entity.CalculatedPrice = entity.Price - (entity.Price * entity.Discount);
                     entity.ExtendedPrice = entity.CalculatedPrice * entity.Quantity;
                 }
             },
-            data: { },
+            data: {},
             error: function(request, status, error) {
-                var sError = dojo.string.substitute(OpportunityProductsResources['error_ExecutingRequest'], [sUrl, request.statusText, request.status]);
+                var sError = dojo.string.substitute(OpportunityProductsResources.error_ExecutingRequest, [sUrl, request.statusText, request.status]);
                 if (dojo.isString(request.responseText)) {
                     if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
                         var oSDataError = dojo.fromJson(request.responseText);
                         if (dojo.isArray(oSDataError)) {
-                            sError = dojo.string.substitute(OpportunityProductsResources['error_ExecutingRequestExt'],
-                                [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
+                            sError = dojo.string.substitute(OpportunityProductsResources.error_ExecutingRequestExt,
+                            [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
                         }
                     }
                 }
                 Sage.UI.Dialogs.showError(sError);
             }
         });
-    }
-    if (attribute === 'Discount') {
-        var price = entity.Price;
-        if (price == 0) {
-            price = entity.CalculatedPrice;
-        }
-        if (price == 0) {
-            entity.Discount = 0;
-            Sage.UI.Dialogs.showError(error_ZeroBasePrice);
-        } else {
-            entity.CalculatedPrice = price - (price * entity.Discount);
-        }
-    } else if (attribute === 'CalculatedPrice') {
-        if (entity.Price == 0) {
-            entity.Discount = 0;
-        } else {
-            entity.Discount = 1 - entity.CalculatedPrice / entity.Price;
-        }
-    }
-    if ((attribute === 'Discount') || (attribute === 'CalculatedPrice') || (attribute === 'Quantity')) {
-        entity.ExtendedPrice = entity.CalculatedPrice * entity.Quantity;
+        break;
     }
 }</OnDataChange>
         <OnAdd />
@@ -498,6 +675,7 @@ if (opportunity != null)
                   <PropertyFormatString />
                   <UseAsResult>true</UseAsResult>
                   <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
                   <IsSortable>true</IsSortable>
                   <HideCondition />
                 </LookupProperty>
@@ -509,6 +687,7 @@ if (opportunity != null)
                   <PropertyFormatString />
                   <UseAsResult>true</UseAsResult>
                   <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
                   <IsSortable>true</IsSortable>
                   <HideCondition />
                 </LookupProperty>
@@ -520,6 +699,7 @@ if (opportunity != null)
                   <PropertyFormatString />
                   <UseAsResult>true</UseAsResult>
                   <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
                   <IsSortable>true</IsSortable>
                   <HideCondition />
                 </LookupProperty>
@@ -531,286 +711,135 @@ if (opportunity != null)
                   <PropertyFormatString />
                   <UseAsResult>true</UseAsResult>
                   <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
                   <IsSortable>true</IsSortable>
                   <HideCondition />
+                </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>ErpConfiguredItem</PropertyName>
+                  <PropertyType>System.Boolean</PropertyType>
+                  <PropertyHeader>Configured Item</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>false</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>true</IsSortable>
+                  <HideCondition>function () {
+    return !isIntegrationContractEnabled();
+}</HideCondition>
+                </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>ErpLogicalId</PropertyName>
+                  <PropertyType>System.String</PropertyType>
+                  <PropertyHeader>ERP Logical ID</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>false</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>true</IsSortable>
+                  <HideCondition>function () {
+    return !isIntegrationContractEnabled();
+}</HideCondition>
                 </LookupProperty>
               </LookupProperties>
               <LookupPreFilters />
               <LookupSelectionMode>Multi</LookupSelectionMode>
-              <OnSelection>function (items) {
-    dojo.require('Sage.UI.Dialogs');
-    var undefinedAccountingSystem = OpportunityProductsResources['error_AccountingSystem_Undefined'];
+              <OnSelection>function(items) {
     if (!items.length) return;
-    var bIsIcEnabled = isIntegrationContractEnabled();
+    var product;
+    var item;
+    var opportunityId = Sage.Utility.getCurrentEntityId();
     var grid = dijit.byId('OpportunityProductsgrdOppProducts');
     if (grid &amp;&amp; grid.store) {
+        var oService = Sage.Services.getService("IntegrationContractService");
+        var isICEnabled = (typeof oService !== "undefined" &amp;&amp; oService != null &amp;&amp; oService.isIntegrationEnabled);
         var recordCount = grid.rowCount;
         var iCurrentCount = 0;
         var iTotalCount = 0;
-        var sAppId = "";
-        if (bIsIcEnabled) {
-            var sOperatingCompanyId = "";
-            var sPriceListId = "";
-            var clientContextService = Sage.Services.getService("ClientContextService");
-            if (clientContextService != null &amp;&amp; typeof clientContextService !== "undefined") {
-                if (clientContextService.containsKey("OperatingCompany")) {
-                    sOperatingCompanyId = clientContextService.getValue("OperatingCompany");
-                    if (dojo.isString(sOperatingCompanyId) &amp;&amp; String(sOperatingCompanyId).length == 12) {
-                        sAppId = sOperatingCompanyId;
-                    }
-                }
-            }
-            if (sAppId === "") {
-                Sage.UI.Dialogs.showError(undefinedAccountingSystem);
-                return;
-            }
-        }
         var arrItems = [];
         grid.store.newItem({
             onComplete: function(oppProduct) {
-                var addProduct = function(prod, refresh, quantity) {
-                    var sSelect = "select=Id,Description,Family,Name,Unit,";
-                    sSelect += (bIsIcEnabled) ? "UnitOfMeasure/Id,Prices/Price,Prices/Currency,Prices/UnitOfMeasure,Prices/SlxPriceList,Prices/SlxPriceList.Id" : "ProductProgram/Program,ProductProgram/Price,ProductProgram/DefaultProgram";
-                    var sWhere = dojo.string.substitute("where=Id eq '${0}'", [prod.$key]);
-                    sWhere += (bIsIcEnabled) ? dojo.string.substitute(" and UnitOfMeasure eq Prices.UnitOfMeasure and Prices.SlxPriceList.Id eq '${0}' and Prices.AppId eq '${1}' and Prices.ActiveFlag = true", [sPriceListId, sAppId]) : "";
+                var productIds = '';
+                for (i = 0; i &lt; items.length; i += 1) {
+                    var quantity = 1;
+                    item = items[i];
+                    if (item.ProdPackageKitType === 'PKG') {
+                        for (var j = 0; j &lt; item.PackageKitChildViews.$resources.length; j++) {
+                            var prod = item.PackageKitChildViews.$resources[j];
+                            prod.$key = item.PackageKitChildViews.$resources[j].ProductId;
+                            if (productIds != '')
+                                productIds = productIds + ',' + prod.$key;
+                            else
+                                productIds = prod.$key;
+                        }
+                    } else {
+                        productIds = productIds != '' ? productIds + ',' + item.$key : item.$key;
+                    }
+                }
+                var addProduct = function(prod, refresh, quantity, exchangeRate, pricingResponse) {
+                    var select = "select=Id,ActualId,CommodityType,Description,Family,Name,UnitOfMeasure/Id,UnitOfMeasure/Name,";
+                    select += "ProductProgram/Program,ProductProgram/Price,ProductProgram/DefaultProgram";
+                    var where = dojo.string.substitute("where=Id eq '${0}'", [prod.$key]);				
                     var sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/products?${0}&amp;${1}&amp;format=json&amp;_t=${2}",
-                        [sSelect, sWhere, (new Date().getTime().toString())]);
-                    dojo.xhrGet({
+                    [select, where, (new Date().getTime().toString())]);
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
                         url: sUrl,
-                        cache: false,
-                        preventCache: true,
-                        handleAs: 'json',
-                        load: function(prodResponse) {
+                        dataType: 'json',
+                        success: function(prodResponse) {
+                            //below would indicate that the selected product did not meet the initial condition of the lookup, occurs when 
+                            //filtering on lookup control. To me this would indicate a defect in the conditional lookup control
                             if (prodResponse.$resources == null || prodResponse.$resources.length == 0) {
-                                if (bIsIcEnabled) {
-                                    /* Check without using an SlxPriceList.Id. */
-                                    sSelect = "select=Id,ActualId,CommodityType,Description,Family,Name,";
-                                    sSelect += "UnitOfMeasure/Id,UnitOfMeasure/Name,Prices/Price,Prices/Currency,Prices/UnitOfMeasure";
-                                    sWhere = dojo.string.substitute("where=Id eq '${0}'", [prod.$key]);
-                                    sWhere += dojo.string.substitute(" and UnitOfMeasure eq Prices.UnitOfMeasure and Prices.AppId eq '${0}' and Prices.ActiveFlag = true", [sAppId]);
-                                    sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/products?${0}&amp;${1}&amp;format=json&amp;_t=${2}",
-                                        [sSelect, sWhere, (new Date().getTime().toString())]);
-                                    dojo.xhrGet({
-                                        cache: false,
-                                        preventCache: true,
-                                        handleAs: 'json',
-                                        url: sUrl,
-                                        load: function(prodResponse) {
-                                            if (prodResponse.$resources == null || prodResponse.$resources.length == 0) {
-                                                var newEntity = { };
-                                                var product = prod;
-                                                //Insert mode check
-                                                if (Sage.Utility.getModeId() === 'insert') {
-                                                    product.$cacheID = new Date().getTime();
-                                                } else {
-                                                    oppProduct.Opportunity = { $key: Sage.Utility.getCurrentEntityId() };
-                                                }
-                                                oppProduct.Product = { };
-                                                delete product.index;
-                                                Sage.Utility.extend(oppProduct.Product, product);
-                                                oppProduct.Product.Family = product.Family;
-                                                oppProduct.Discount = 0;
-                                                oppProduct.Quantity = quantity;
-                                                oppProduct.Sort = recordCount += 1;
-
-                                                product.Price = 0;
-                                                oppProduct.Price = 0;
-                                                oppProduct.ExtendedPrice = 0;
-                                                oppProduct.CalculatedPrice = 0;
-
-                                                delete product.$key;
-                                                delete product.$name;
-                                                delete product.$url;
-                                                Sage.Utility.extend(true, newEntity, oppProduct, product);
-                                                arrItems.push(newEntity);
-                                                iCurrentCount++;
-                                                if (iCurrentCount === iTotalCount) {
-                                                    grid.createItems(arrItems, function() {
-                                                        if (Sage.Utility.getModeId() !== 'insert') {
-                                                            __doPostBack("MainContent", "");
-                                                        }
-                                                    });
-                                                }
-                                            } else {
-                                                if (prodResponse.$resources != null &amp;&amp; prodResponse.$resources.length &gt; 0) {
-                                                    for (var x = 0; x &lt; prodResponse.$resources.length; x++) {
-                                                        var newEntity = { };
-                                                        var product = prodResponse.$resources[x];
-                                                        //Insert mode check
-                                                        if (Sage.Utility.getModeId() === 'insert') {
-                                                            product.$cacheID = new Date().getTime();
-                                                        } else {
-                                                            oppProduct.Opportunity = { $key: Sage.Utility.getCurrentEntityId() };
-                                                        }
-                                                        oppProduct.Product = { };
-                                                        delete product.index;
-                                                        Sage.Utility.extend(oppProduct.Product, product);
-
-                                                        oppProduct.Discount = 0;
-                                                        oppProduct.Quantity = quantity;
-                                                        oppProduct.Sort = recordCount += 1;
-                                                        var price = 0;
-                                                        product.Price = 0;
-                                                        oppProduct.Price = 0;
-                                                        oppProduct.ExtendedPrice = 0;
-                                                        oppProduct.CalculatedPrice = 0;
-                                                        if (prodResponse.$resources[x].Prices != null &amp;&amp;
-                                                            prodResponse.$resources[x].Prices.$resources != null &amp;&amp;
-                                                                prodResponse.$resources[x].Prices.$resources.length &gt; 0) {
-                                                            for (var j = 0; j &lt; prodResponse.$resources[x].Prices.$resources.length; j++) {
-                                                                if (prodResponse.$resources[x].Prices.$resources[j].UnitOfMeasure.$key === product.UnitOfMeasure.$key) {
-                                                                    if (prodResponse.$resources[x].Prices.$resources[j].Price != null) {
-                                                                        price = prodResponse.$resources[x].Prices.$resources[j].Price;
-                                                                    }
-                                                                    product.Price = price;
-                                                                    oppProduct.Price = price;
-                                                                    oppProduct.ExtendedPrice = price;
-                                                                    oppProduct.CalculatedPrice = price;
-                                                                    break;
-                                                                }
-                                                            }
-                                                        }
-                                                        delete product.$key;
-                                                        delete product.$name;
-                                                        delete product.$url;
-                                                        Sage.Utility.extend(true, newEntity, oppProduct, product);
-                                                        arrItems.push(newEntity);
-                                                        iCurrentCount++;
-                                                        if (iCurrentCount === iTotalCount) {
-                                                            grid.createItems(arrItems, function() {
-                                                                if (Sage.Utility.getModeId() !== 'insert') {
-                                                                    __doPostBack("MainContent", "");
-                                                                }
-                                                            });
-                                                        }
-                                                    }
-                                                } else {
-                                                    iTotalCount--;
-                                                    if (iCurrentCount === iTotalCount) {
-                                                        grid.createItems(arrItems, function() {
-                                                            if (Sage.Utility.getModeId() !== 'insert') {
-                                                                __doPostBack("MainContent", "");
-                                                            }
-                                                        });
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        data: { },
-                                        error: function(request, status, error) {
-                                            if (iTotalCount &gt; 0) {
-                                                iTotalCount--;
-                                            }
-                                            var sError = dojo.string.substitute(OpportunityProductsResources['error_ExecutingRequest'], [sUrl, request.statusText, request.status]);
-                                            if (dojo.isString(request.responseText)) {
-                                                if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
-                                                    var oSDataError = dojo.fromJson(request.responseText);
-                                                    if (dojo.isArray(oSDataError)) {
-                                                        sError = dojo.string.substitute(OpportunityProductsResources['error_ExecutingRequestExt'],
-                                                            [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
-                                                    }
-                                                }
-                                            }
-                                            Sage.UI.Dialogs.showError(sError);
-                                        }
-                                    });
-                                } else {
-                                    var newEntity = { };
-                                    var product = prod;
-                                    //Insert mode check
-                                    if (Sage.Utility.getModeId() === 'insert') {
-                                        product.$cacheID = new Date().getTime();
-                                    } else {
-                                        oppProduct.Opportunity = { $key: Sage.Utility.getCurrentEntityId() };
-                                    }
-                                    oppProduct.Product = { };
-                                    delete product.index;
-                                    Sage.Utility.extend(oppProduct.Product, product);
-                                    oppProduct.Product.Family = product.Family;
-                                    oppProduct.Discount = 0;
-                                    oppProduct.Quantity = quantity;
-                                    oppProduct.Sort = recordCount += 1;
-                                    oppProduct.Price = product.Price;
-                                    oppProduct.ExtendedPrice = product.Price;
-                                    oppProduct.CalculatedPrice = product.Price;
-                                    delete product.$key;
-                                    delete product.$name;
-                                    delete product.$url;
-                                    Sage.Utility.extend(true, newEntity, oppProduct, product);
-                                    arrItems.push(newEntity);
-                                    iCurrentCount++;
-                                    if (iCurrentCount === iTotalCount) {
-                                        grid.createItems(arrItems, function() {
-                                            if (Sage.Utility.getModeId() !== 'insert') {
-                                                __doPostBack("MainContent", "");
-                                            }
-                                        });
-                                    }
-                                }
+                                alert("invalid product");
                             } else {
                                 if (prodResponse.$resources != null &amp;&amp; prodResponse.$resources.length &gt; 0) {
                                     for (var x = 0; x &lt; prodResponse.$resources.length; x++) {
-                                        var newEntity = { };
-                                        var product = prodResponse.$resources[x];
+                                        var newEntity = {};
+                                        product = prodResponse.$resources[x];
                                         //Insert mode check
                                         if (Sage.Utility.getModeId() === 'insert') {
                                             product.$cacheID = new Date().getTime();
                                         } else {
-                                            oppProduct.Opportunity = { $key: Sage.Utility.getCurrentEntityId() };
+                                            oppProduct.Opportunity = { $key: opportunityId };
                                         }
-                                        oppProduct.Product = { };
+                                        oppProduct.Product = {};
                                         delete product.index;
                                         Sage.Utility.extend(oppProduct.Product, product);
+                                        oppProduct.ActualId = product.ActualId;
+                                        oppProduct.CommodityType = product.CommodityType;
                                         oppProduct.Discount = 0;
+                                        oppProduct.Family = product.Family;
+                                        oppProduct.ProductName = product.Name;
                                         oppProduct.Quantity = quantity;
                                         oppProduct.Sort = recordCount += 1;
                                         var price = 0;
-                                        if (bIsIcEnabled) {
-                                            /* IC */
-                                            product.Price = 0;
-                                            oppProduct.Price = 0;
-                                            oppProduct.ExtendedPrice = 0;
-                                            oppProduct.CalculatedPrice = 0;
-                                            oppProduct.Program = null;
-                                            if (prodResponse.$resources[x].Prices != null &amp;&amp;
-                                                prodResponse.$resources[x].Prices.$resources != null &amp;&amp;
-                                                    prodResponse.$resources[x].Prices.$resources.length &gt; 0) {
-                                                for (var j = 0; j &lt; prodResponse.$resources[x].Prices.$resources.length; j++) {
-                                                    if (prodResponse.$resources[x].Prices.$resources[j].UnitOfMeasure.$key === product.UnitOfMeasure.$key) {
-                                                        if (prodResponse.$resources[x].Prices.$resources[j].Price != null) {
-                                                            price = prodResponse.$resources[x].Prices.$resources[j].Price;
-                                                        }
-                                                        product.Price = price;
-                                                        oppProduct.Price = price;
-                                                        oppProduct.ExtendedPrice = price;
-                                                        oppProduct.CalculatedPrice = price;
-                                                        break;
+                                        product.Price = 0; // Required because of Sage.Utility.extend().
+                                        oppProduct.UnitOfMeasure = product.UnitOfMeasure;
+                                        oppProduct.Price = 0;
+                                        oppProduct.ExtendedPrice = 0;
+										oppProduct.DocExtendedPrice = 0;
+                                        oppProduct.CalculatedPrice = 0;
+										oppProduct.DocCalculatedPrice = 0;
+                                        oppProduct.Program = null;
+                                        if (prodResponse.$resources[x].ProductProgram != null &amp;&amp;
+                                            prodResponse.$resources[x].ProductProgram.$resources != null &amp;&amp;
+                                            prodResponse.$resources[x].ProductProgram.$resources.length &gt; 0) {
+                                            for (var j = 0; j &lt; prodResponse.$resources[x].ProductProgram.$resources.length; j++) {
+                                                /* Grab the price for the default program. */
+                                                if (prodResponse.$resources[x].ProductProgram.$resources[j].DefaultProgram) {
+                                                    if (prodResponse.$resources[x].ProductProgram.$resources[j].Price != null) {
+                                                        price = prodResponse.$resources[x].ProductProgram.$resources[j].Price;
                                                     }
-                                                }
-                                            }
-                                        } else {
-                                            /* NON-IC */
-                                            product.Price = 0;
-                                            oppProduct.Price = 0;
-                                            oppProduct.ExtendedPrice = 0;
-                                            oppProduct.CalculatedPrice = 0;
-                                            oppProduct.Program = null;
-                                            if (prodResponse.$resources[x].ProductProgram != null &amp;&amp;
-                                                prodResponse.$resources[x].ProductProgram.$resources != null &amp;&amp;
-                                                    prodResponse.$resources[x].ProductProgram.$resources.length &gt; 0) {
-                                                for (var j = 0; j &lt; prodResponse.$resources[x].ProductProgram.$resources.length; j++) {
-                                                    /* Grab the price for the default program. */
-                                                    if (prodResponse.$resources[x].ProductProgram.$resources[j].DefaultProgram) {
-                                                        if (prodResponse.$resources[x].ProductProgram.$resources[j].Price != null) {
-                                                            price = prodResponse.$resources[x].ProductProgram.$resources[j].Price;
-                                                        }
-                                                        product.Price = price;
-                                                        oppProduct.Price = price;
-                                                        oppProduct.ExtendedPrice = price;
-                                                        oppProduct.CalculatedPrice = price;
-                                                        oppProduct.Program = prodResponse.$resources[x].ProductProgram.$resources[j].Program;
-                                                        break;
-                                                    }
+                                                    product.Price = price; // Required because of Sage.Utility.extend().
+                                                    oppProduct.CalculatedPrice = price;
+													oppProduct.DocCalculatedPrice = price * exchangeRate;
+                                                    oppProduct.ExtendedPrice = price;
+													oppProduct.DocExtendedPrice = oppProduct.DocCalculatedPrice;
+                                                    oppProduct.Program = prodResponse.$resources[x].ProductProgram.$resources[j].Program;
+                                                    break;
                                                 }
                                             }
                                         }
@@ -818,6 +847,18 @@ if (opportunity != null)
                                         delete product.$name;
                                         delete product.$url;
                                         Sage.Utility.extend(true, newEntity, oppProduct, product);
+										if (pricingResponse) {
+                                            var request = pricingResponse.Children[0];
+                                            if (request) {
+                                                var errorProp = request.Properties['messageText'];
+                                                var errorCode = request.Properties['ErrorCode'];
+                                                if (errorProp || errorCode) {
+                                                    Sage.UI.Dialogs.showError(dojo.string.substitute(OpportunityProductsResources.error_PricingRequest, [errorProp]));
+                                                } else {
+                                                   newEntity = Sage.Utility.PricingAndAvailability.updateItemResponsePricing(pricingResponse, newEntity);
+                                               	}
+                                            }
+                                        }
                                         arrItems.push(newEntity);
                                         iCurrentCount++;
                                         if (iCurrentCount === iTotalCount) {
@@ -828,33 +869,64 @@ if (opportunity != null)
                                             });
                                         }
                                     }
+                                } else {
+                                    iTotalCount--;
+                                    if (iCurrentCount === iTotalCount) {
+                                        grid.createItems(arrItems, function() {
+                                            if (Sage.Utility.getModeId() !== 'insert') {
+                                                __doPostBack("MainContent", "");
+                                            }
+                                        });
+                                    }
                                 }
                             }
                         },
-                        data: { },
+                        data: {},
                         error: function(request, status, error) {
                             if (iTotalCount &gt; 0) {
                                 iTotalCount--;
                             }
-                            var sError = dojo.string.substitute(OpportunityProductsResources['error_ExecutingRequest'], [sUrl, request.statusText, request.status]);
+                            var sError = dojo.string.substitute(OpportunityProductsResources.error_ExecutingRequest, [sUrl, request.statusText, request.status]);
                             if (dojo.isString(request.responseText)) {
                                 if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
                                     var oSDataError = dojo.fromJson(request.responseText);
                                     if (dojo.isArray(oSDataError)) {
-                                        sError = dojo.string.substitute(OpportunityProductsResources['error_ExecutingRequestExt'],
-                                            [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
+                                        sError = dojo.string.substitute(OpportunityProductsResources.error_ExecutingRequestExt,
+                                        [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
                                     }
                                 }
                             }
                             Sage.UI.Dialogs.showError(sError);
                         }
                     });
-                };
+                }
+                var getExchangeRate = function() {
+                    var rate = 1;
+					var origExchangeRate = -1;
+					if(dojo.byId("hfExchangeRate"))
+					{
+					    origExchangeRate = Number.parseFloat(dojo.byId("hfExchangeRate").value);
+					} 
+					if(origExchangeRate !== -1)
+					{
+						rate = origExchangeRate;
+					}
+					else
+					{
+	                    var contextService = Sage.Services.getService("ClientContextService");
+	                    if (contextService != null) {
+	                        if (contextService.containsKey("ExchangeRate")) {
+	                            rate = contextService.getValue("ExchangeRate");
+	                        }
+	                    }
+					}
+                    return rate;
+                }
                 var getTotalCount = function() {
                     var iResult = 0;
                     var i;
                     for (i = 0; i &lt; items.length; i += 1) {
-                        var item = items[i];
+                        item = items[i];
                         if (item.ProdPackageKitType === 'PKG') {
                             for (var j = 0; j &lt; item.PackageKitChildViews.$resources.length; j++) {
                                 iResult++;
@@ -864,104 +936,84 @@ if (opportunity != null)
                         }
                     }
                     return iResult;
-                };
+                }
+                var requestPricingAvailability = function(prod, quantity, exchangeRate) {
+                    var pricingOptions = {
+                        resourceKind: 'opportunities',
+                        operationName: 'RequestPricingAvailability',
+                        callback: function(pricingResponse) {
+                            addProduct(item, true, quantity, exchangeRate, pricingResponse);
+                        },
+                        product: item,
+						quantity: quantity,
+                        exchangeRate: exchangeRate,
+                        requestOptions: {
+							childEntityIds: productIds,
+							childEntityName: 'Product',
+							itemEntityName: 'OpportunityProduct',
+							entityName: 'Opportunity',
+							entityId: opportunityId,
+							serviceName: 'OrderLineTotal',
+							unitOfMeasureId: prod.UnitOfMeasure.$key
+                        }
+                    }
+                    Sage.Utility.PricingAndAvailability.requestPricingAvailability(pricingOptions);
+                }
                 iTotalCount = getTotalCount();
+                var exchangeRate = getExchangeRate();
                 var iCount = 0;
                 var i;
                 for (i = 0; i &lt; items.length; i += 1) {
-                    var quantity = 1;
-                    var item = items[i];
+                    var qty = 1;
+                    item = items[i];
                     if (item.ProdPackageKitType === 'PKG') {
                         for (var j = 0; j &lt; item.PackageKitChildViews.$resources.length; j++) {
                             var prod = item.PackageKitChildViews.$resources[j];
                             prod.$key = item.PackageKitChildViews.$resources[j].ProductId;
                             if (prod.Quantity != null) {
-                                quantity = prod.Quantity;
+                                qty = prod.Quantity;
                             }
                             iCount++;
-                            addProduct(prod, true, quantity);
+                            addProduct(prod, true, qty, exchangeRate);
                         }
                     } else {
                         iCount++;
-                        addProduct(item, true, quantity);
+                        addProduct(item, true, qty, exchangeRate);
                     }
                 }
             }
         });
     }
 }</OnSelection>
+              <OnClose>function(selectedItems) {
+	var service = Sage.Services.getService('IntegrationContractService');
+	if (!service.isBackOfficeIntegrationEnabled || service.isOpportunityCRMPricingEnabled || selectedItems &amp;&amp; selectedItems.length === 0) {
+	    return;
+	}
+	var requestOptions = {
+	    entityName: 'Opportunity',
+	    entityId: Sage.Utility.getCurrentEntityId(),
+	    selectedItems: selectedItems,
+	    resourceKind: 'opportunities',
+	    itemEntityName: 'OpportunityProduct',
+	    serviceName: 'OpportunityOrderLineTotal',
+		isGridRefresh:true,
+		AutoSave:true
+	};
+	Sage.Utility.PricingAndAvailability.doPricingAvailability(requestOptions);
+}</OnClose>
               <AdditionalSelectFields>
                 <string>ProductId</string>
                 <string>ProdPackageKitType</string>
-                <string>AppId</string>
+                <string>ErpLogicalId</string>
                 <string>Quantity</string>
-                <string>ActiveFlag</string>
+                <string>ErpStatus</string>
+                <string>Status</string>
               </AdditionalSelectFields>
               <ChildEntity>PackageKitChildViews</ChildEntity>
               <LookupResourceName>ProdPackageKitView</LookupResourceName>
-              <ConditionalWhere>function () {
-    var sCondition = '';
-    var showError = function(msg) {
-        var msgService = Sage.Services.getService("WebClientMessageService");
-        if (msgService != null &amp;&amp; typeof msgService !== "undefined") {
-            msgService.showClientError(msg);
-        } else {
-            Sage.UI.Dialogs.showError(msg);
-        }
-    };
-    var service = Sage.Services.getService("IntegrationContractService");
-    if (service != null &amp;&amp; typeof service !== "undefined") {
-        if (service.isIntegrationEnabled) {
-            var bFoundOperatingCompany = false;
-            var clientContextService = Sage.Services.getService("ClientContextService");
-            if (clientContextService != null &amp;&amp; typeof clientContextService !== "undefined") {
-                if (clientContextService.containsKey("OperatingCompany")) {
-                    var sOperatingCompanyId = clientContextService.getValue("OperatingCompany");
-                    bFoundOperatingCompany = (dojo.isString(sOperatingCompanyId) &amp;&amp; String(sOperatingCompanyId).length == 12);
-                    if (bFoundOperatingCompany) {
-                        sCondition = 'AppId eq "' + sOperatingCompanyId + '" ' + "And ActiveFlag eq true";
-                    }
-                }
-                var sError = OpportunityProductsResources['error_OperatingCompany_Undefined'];
-                if (!bFoundOperatingCompany) {
-                    showError(sError);
-                    throw new Error(sError);
-                }
-            } else {
-                sError = OpportunityProductsResources['error_ClientContext_Undefined'];
-                showError(sError);
-                throw new Error(sError);
-            }
-        }
-    }
-    return sCondition;
-}
-</ConditionalWhere>
-              <ConditionalShow>function () {
-    var oResult = { result: true, reason: '' };
-    var service = Sage.Services.getService('IntegrationContractService');
-    if (service != null &amp;&amp; typeof service !== 'undefined') {
-        if (service.isIntegrationEnabled) {
-            var bFoundOperatingCompany = false;
-            var clientContextService = Sage.Services.getService('ClientContextService');
-            if (clientContextService != null &amp;&amp; typeof clientContextService !== 'undefined') {
-                if (clientContextService.containsKey('OperatingCompany')) {
-                    var sOperatingCompanyId = clientContextService.getValue('OperatingCompany');
-                    bFoundOperatingCompany = (dojo.isString(sOperatingCompanyId) &amp;&amp; String(sOperatingCompanyId).length == 12);
-                }
-                if (!bFoundOperatingCompany) {
-                    oResult.result = false;
-                    oResult.reason = OpportunityProductsResources['error_AccountingSystem_Undefined'];
-                }
-            } else {
-                oResult.result = false;
-                oResult.reason = OpportunityProductsResources['error_ClientContext_Undefined'];
-            }
-        }
-    }
-    return oResult;
-}
-</ConditionalShow>
+              <ConditionalWhere>function() { return dojo.string.substitute("(ErpStatus ne 'Deleted' or ErpStatus eq null) and (Status ne '${0}' or Status eq null)", [OpportunityProductsResources.productStatus_Discontinued]); }</ConditionalWhere>
+              <ConditionalShow />
             </LookupButton>
           </SDataGridAddRelationTool>
           <SDataGridCancelTool>

@@ -1,0 +1,1 @@
+define("Sage/Mingle/nls/it/Feeds", {});

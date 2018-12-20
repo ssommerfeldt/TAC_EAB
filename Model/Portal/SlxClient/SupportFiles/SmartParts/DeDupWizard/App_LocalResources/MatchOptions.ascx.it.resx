@@ -117,46 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTo.Caption" xml:space="preserve">
-    <value>su</value>
-  </data>
-  <data name="lblFuzzyLevelNote.Caption" xml:space="preserve">
-    <value>Determina il numero di caratteri che possono essere differenti (Intervallo = da 1 a 10)</value>
-  </data>
   <data name="chkUseFuzzy.Caption" xml:space="preserve">
-    <value>Utilizza Fuzzy (trova le corrispondenze che sono errate)</value>
+    <value>Utilizza logica fuzzy (trova le corrispondenze con errori di ortografia)</value>
   </data>
-  <data name="lblDuplicate.Caption" xml:space="preserve">
-    <value>Duplicato</value>
+  <data name="chkUsePhonic.Caption" xml:space="preserve">
+    <value>Utilizza fonetica (trova le parole che hanno suono simile)</value>
   </data>
   <data name="chkUseStemming.Caption" xml:space="preserve">
-    <value>Utilizza i Derivati (ricerca altre forme grammaticali della parola)</value>
+    <value>Utilizza i derivati (ricerca altre forme grammaticali della parola)</value>
   </data>
-  <data name="lblLowValue.Caption" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Definizione Duplicati in base al Punteggio:</value>
-  </data>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>OK</value>
+  <data name="chkUseSynonym.Caption" xml:space="preserve">
+    <value>Utilizza i sinonimi (usa Thesaurus per trovare i sinonimi)</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Annulla</value>
   </data>
-  <data name="chkUseSynonym.Caption" xml:space="preserve">
-    <value>Utilizza i Sinonimi (usa Thesaurus per trovare i sinonimi)</value>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="lblNoDuplicate.Caption" xml:space="preserve">
-    <value>Non Duplicato</value>
+  <data name="lblDuplicate.Caption" xml:space="preserve">
+    <value>Duplica</value>
   </data>
   <data name="lblFuzzyLevel.Caption" xml:space="preserve">
-    <value>Livello senza Fuzzy:</value>
+    <value>Livello di approssimazione:</value>
   </data>
-  <data name="chkUsePhonic.Caption" xml:space="preserve">
-    <value>Utilizza la Fonetica (trova le parole che hanno suono simile)</value>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Definizione duplicati in base all’indice:</value>
+  </data>
+  <data name="lblNoDuplicate.Caption" xml:space="preserve">
+    <value>Non duplicato</value>
   </data>
   <data name="lblPossible.Caption" xml:space="preserve">
-    <value>Possibile Duplicato</value>
+    <value>Possibile duplicato</value>
+  </data>
+  <data name="lblTo.Caption" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MatchOptions_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>MatchOptions_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="lblFuzzyLevelNote.Caption" xml:space="preserve">
+    <value>Determina il numero di caratteri che possono essere differenti (Intervallo = da 1 a 10)</value>
+  </data>
+  <data name="lblHighValue.Caption" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="lblLowValue.Caption" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

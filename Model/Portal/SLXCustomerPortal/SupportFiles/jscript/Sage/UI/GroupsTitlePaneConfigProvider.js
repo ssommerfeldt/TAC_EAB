@@ -1,7 +1,8 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/GroupsTitlePaneConfigProvider", [
         'Sage/UI/_TitlePaneConfigProvider',
         'Sage/Data/BaseSDataStore',
+        'Sage/Store/SData',
         'Sage/UI/GroupMenuFmtScope',
         'Sage/UI/GridMenuItem',
         'Sage/Groups/GroupManager',
@@ -14,11 +15,13 @@ define([
         'Sage/UI/SearchMenuItem',
         'Sage/UI/ImageButton',
         'dojo/i18n!./nls/GroupsTitlePaneConfigProvider',
-        'dijit/popup'
+        'dijit/popup',
+        'dijit/form/CheckBox'
 ],
 function (
         _TitlePaneConfigProvider,
         BaseSDataStore,
+        SDataObjectStore,
         GroupMenuFmtScope,
         GridMenuItem,
         GroupManager,
@@ -31,7 +34,8 @@ function (
         SearchMenuItem,
         ImageButton,
         resource,
-        pm) {
+        pm,
+        CheckBox) {
     var provider = declare('Sage.UI.GroupsTitlePaneConfigProvider', _TitlePaneConfigProvider, {
         // summary:
         //      Implementation of Sage.UI._TitlePaneConfigProvider for use on SLX group based main views.
@@ -43,6 +47,7 @@ function (
         _requestOptions: false,
         _grpContextHandle: false,
         config: false,
+        gridMenuItem: null,
         requestTitlePaneConfiguration: function (options) {
             var service,
                 gSvc,
@@ -70,7 +75,7 @@ function (
                 resourceKind: 'groups',
                 include: [],
                 sort: [{ attribute: 'displayName', descending: false }],
-                select : ['$key','$descriptor','name','isHidden','family','displayName']
+                select: ['$key', '$descriptor', 'name', 'isHidden', 'userId', 'family', 'displayName', 'ownerlf']
             });
 
             gSvc = Sage.Services.getService('ClientGroupContext');
@@ -124,8 +129,15 @@ function (
         _getTabConfig: function () {
             var gSvc = Sage.Services.getService('ClientGroupContext'),
                 context = gSvc && gSvc.getContext();
+
             return {
-                store: this.store,
+                store: new BaseSDataStore({
+                    service: Sage.Data.SDataServiceRegistry.getSDataService('system'),
+                    resourceKind: 'groups',
+                    include: [],
+                    sort: [{ attribute: 'displayName', descending: false }],
+                    select: ['$key', '$descriptor', 'name', 'isHidden', 'userId', 'family', 'displayName']
+                }),
                 selectedTabId: context.CurrentGroupID,
                 selectedTabName: context.CurrentName,
                 tabKeyProperty: '$key',
@@ -134,15 +146,15 @@ function (
                 tabHiddenProperty: 'isHidden',
                 showTabContextMenus: true,
                 fetchParams: {
-                    query: string.substitute("upper(family) eq '${0}'", [context.CurrentFamily.toUpperCase()]),
-                    count: 1000,
+                    query: string.substitute("upper(family) eq '${0}' and isHidden eq false", [context.CurrentFamily.toUpperCase()]),
+                    count: this.getMaxNumOfFavoriteGroups(),
                     start: 0,
-                    sort: [{ attribute: 'displayName'}]
+                    sort: [{ attribute: 'isHidden', descending: false }, { attribute: 'displayName' }]
                 },
                 lookupButton: new ImageButton({
                     id: 'GroupLookupButton',
                     label: '',
-                    imageClass: 'icon_Find_16x16',
+                    imageClass: 'fa fa-search',
                     title: resource.lookupText,
                     onClick: function () {
                         var ctxService = Sage.Services.getService('ClientGroupContext'),
@@ -167,7 +179,7 @@ function (
                         return;
                     }
 
-                    id = (typeof child === "string") ? child : child.id;
+                    id = (typeof child === 'string') ? child : child.id;
                     ctxService = Sage.Services.getService('ClientGroupContext');
 
                     if (ctxService) {
@@ -185,7 +197,7 @@ function (
                     // they stay in detail mode. If they are in list mode already, do nothing.
                     var mode = Utility.getModeId(),
                         ctxService = Sage.Services.getService('ClientGroupContext'),
-                        tabs = dijit.byId("GroupTabs"),
+                        tabs = dijit.byId('GroupTabs'),
                         selectedId = '',
                         currentGroupId = '',
                         context = null,
@@ -235,7 +247,7 @@ function (
                 text: resource.groupText,
                 tooltip: resource.groupButtonTooltip,
                 addGroupTooltip: resource.addGroupButtonTooltip,
-                width: '350px',
+                width: '410px',
                 items: [
                     {
                         cls: '',
@@ -260,97 +272,145 @@ function (
                 fmtScope = new GroupMenuFmtScope({ store: this.store }),
                 query = {},
                 context = false,
-                svc = Sage.Services.getService('ClientGroupContext'),
-                key = 'GroupMenuShowHidden',
-                checkState = sessionStorage.getItem(key),
-                hidden = checkState !== 'true';
-
+                svc = Sage.Services.getService('ClientGroupContext');
             if (svc) {
                 context = svc.getContext();
                 if (context.CurrentEntity) {
                     query = string.substitute('upper(family) eq \'${0}\'', [context.CurrentFamily.toUpperCase()]);
                 }
             }
-            return new GridMenuItem({
+
+            var dGridStore = new SDataObjectStore({
+                service: that.store.service,
+                resourceKind: that.store.resourceKind,
+                include: that.store.include,
+                orderBy: 'isHidden,displayName',              
+                select: that.store.select,
+                where: query
+            });
+
+            this.gridMenuItem = new GridMenuItem({
                 gridOptions: {
                     id: 'groupsGridInMenu',
-                    store: that.store,
-                    rowsPerPage: 40,
-                    structure: [
-                        { name: '&nbsp;', field: '$key', formatter: 'fmtSelectedCol', width: '20px' },
+                    cssClass: 'groupsPopMenu',
+                    store: dGridStore,
+                    minRowsPerPage: 40,
+                    columns: [
                         {
-                            name: resource.groupColumnText,
-                            field: 'displayName',
-                            width: hidden ? '260px' : '205px'
+                            label: '',
+                            field: '$key',
+                            formatter: 'fmtSelectedCol',
+                            width: '40px',
+                            sortable: false
                         },
                         {
-                            name: resource.visibleColumnText,
+                            label: resource.groupColumnText,
+                            field: 'displayName',
+                            sortable: false
+                        },
+                        {
+                            label: resource.visibleColumnText,
                             field: 'isHidden',
                             formatter: 'fmtHideCol',
-                            width: '55px',
-                            hidden: hidden
+                            editor: CheckBox,
+                            get: function (item) {
+                                return !item[this.field];
+                            },
+                            editorArgs: {
+                                onClick: function (evt) {
+                                    var checked = this.get('checked'),
+                                        svc = Sage.Services.getService('RoleSecurityService');
+                                    var item = that.gridMenuItem.grid._grid.row(this.domNode).data;
+                                    if (svc.hasAccess('Entities/Group/Edit')) {
+                                        if (checked) {
+                                            var maxNumOfFavoriteGroups = that.getMaxNumOfFavoriteGroups();
+                                            var numOfFavoriteGroups = that.getNumOfFavoriteGroups(that.gridMenuItem.grid.store.dataCache);
+                                            if (numOfFavoriteGroups + 1 > maxNumOfFavoriteGroups) {
+                                                dojo.byId('exceedMaxGroupMsg').innerHTML = dojo.string.substitute(resource.exceedMaxGroupMsg, [maxNumOfFavoriteGroups]);
+                                                this.checked = false;
+                                            }
+                                            else {
+                                                Sage.Groups.GroupManager.UnHideGroup(item['$key'], true);
+                                            }
+                                        } else {
+                                            dojo.byId('exceedMaxGroupMsg').innerHTML = '';
+                                            Sage.Groups.GroupManager.HideGroup(item['$key'], true);
+                                        }
+                                    }
+                                    evt.stopPropagation();
+                                }
+                            },
+                            sortable: false
+                        },
+                        {
+                            label: resource.groupOwner,
+                            field: 'ownerlf',
+                            sortable: false
                         }
                     ],
-                    loadingMessage: 'Loading...',
                     noDataMessage: 'No records returned',
                     selectionMode: 'single',
-                    query: query,
-                    height: '400px',
-                    width: '275px',
                     formatterScope: fmtScope,
-                    _onCellClick: function (e) {
+                    columnResizing: true,
+                    setQueryOnStore: true,
+                    onDataChange: function (evt) {
+                        var gridParent = dijit.getEnclosingWidget(evt.target).getParent(),
+                                menu = gridParent && gridParent.getParent();
+
+                        if (!this.menuClosedHandle) {
+                            this.menuClosedHandle = menu.on('close', lang.hitch(this, function () {
+                                var titlePane = dijit.byId('titlePane');
+                                if (titlePane) {
+                                    titlePane.resetConfiguration();
+                                }
+                                this.menuClosedHandle.remove();
+                                this.menuClosedHandle = null;
+                            }));
+                        }
+                    },
+                    onHeaderClick: function (evt) {
+                        evt.stopPropagation();
+                    },
+                    onRowClick: function (evt, row, grid) {
                         if (!this.processingRequest) {
                             this.processingRequest = true;
                             // Change groups when the group name cell is clicked.
                             // Refresh the grid and cancel the bubble (so the menu does not close).
                             var record,
                                 ctxService,
-                                gridParent = e.grid.getParent(),
+                                gridParent = dijit.getEnclosingWidget(evt.target).getParent(),
                                 menu = gridParent && gridParent.getParent(),
                                 fetchHandle,
                                 groupChangeHandle,
                                 isGroupChanging = false,
                                 context;
-                                
+
                             if (!this.menuClosedHandle) {
                                 this.menuClosedHandle = menu.on('close', lang.hitch(this, function () {
-                                    var titlePane = dijit.byId('titlePane');
-                                    if(titlePane && !isGroupChanging) {
-                                        titlePane.resetConfiguration();
-                                    }
                                     this.processingRequest = false;
                                     this.menuClosedHandle.remove();
                                     this.menuClosedHandle = null;
                                 }));
                             }
 
-                            if (e.cell.index === 1) {
-                                record = e.grid.getItem(e.rowIndex);
-                                ctxService = Sage.Services.getService('ClientGroupContext');
-                                if (ctxService) {
-                                    context = ctxService.getContext();
-                                    var manageGroupsButton = dijit.byId('mnuGroupMenu');
+                            record = row.data;
+                            ctxService = Sage.Services.getService('ClientGroupContext');
+                            if (ctxService) {
+                                context = ctxService.getContext();
+                                var manageGroupsButton = dijit.byId('mnuGroupMenu');
 
-                                    if (context && context.CurrentGroupID === record.$key) {
-                                        manageGroupsButton._onClick(e);
+                                if (context && context.CurrentGroupID === record.$key) {
+                                    pm.close(menu);
+                                } else {
+                                    isGroupChanging = true;
+                                    groupChangeHandle = dojo.connect(ctxService, 'onCurrentGroupChanged', evt.grid, function () {
+                                        this.started = false; // Go ahead and refresh the grid when the popup is opened again
+                                        dojo.disconnect(groupChangeHandle);
+                                        manageGroupsButton._onClick(evt);
                                         pm.close(menu);
-                                    } else {
-                                        isGroupChanging = true;
-                                        groupChangeHandle = dojo.connect(ctxService, 'onCurrentGroupChanged', e.grid, function () {
-                                            this.started = false; // Go ahead and refresh the grid when the popup is opened again
-                                            dojo.disconnect(groupChangeHandle);
-                                            manageGroupsButton._onClick(e);
-                                            pm.close(menu);
-                                        });
-
-                                        ctxService.setCurrentGroup(record.$key);
-                                    }
+                                    });
+                                    ctxService.setCurrentGroup(record.$key);
                                 }
-
-                            } else {
-                                e.grid.started = false; // checkbox state will be enough to require a refresh on pop-up reopened
-                                this.processingRequest = false;
-                                e.stopPropagation();
                             }
                         }
                     }
@@ -358,9 +418,48 @@ function (
                 width: '300px',
                 height: '400px'
             });
+            return this.gridMenuItem;
         },
         _getGroupMenuSearch: function () {
             return new SearchMenuItem({});
+        },
+        getMaxNumOfFavoriteGroups: function () {
+            var maxNumofFavoriteGroups = 0;
+            var service = Sage.Utility.getSDataService('dynamic');
+            var request = new Sage.SData.Client.SDataSingleResourceRequest(service);
+            request.setResourceKind('officeProfiles');
+            request.setQueryArg('select', 'MaximumFavoriteGroups');
+            request.read({
+                async: false,
+                success: function (result) {
+                    maxNumofFavoriteGroups = result.MaximumFavoriteGroups;
+                },
+                failure: function (err) {
+                    Sage.UI.Dialogs.showError(err);
+                }
+            });
+            return maxNumofFavoriteGroups;
+        },
+        getNumOfFavoriteGroups: function () {
+            var numOfFavoriteGroups = 0;
+            var service = Sage.Data.SDataServiceRegistry.getSDataService('system');
+            var request = new Sage.SData.Client.SDataResourceCollectionRequest(service);
+            var groupContext = Sage.Services.getService('ClientGroupContext').getContext();
+            var currentFamily = groupContext.CurrentFamily.toUpperCase();
+            request.setResourceKind('groups');
+            request.setQueryArg('select', '$key');
+            request.setQueryArg('where', 'upper(family) eq \'' + currentFamily + '\' and isHidden eq false');
+            request.setQueryArg('upper(family)', currentFamily);
+            request.read({
+                async: false,
+                success: function (data) {
+                    numOfFavoriteGroups = data.$totalResults;
+                },
+                failure: function (err) {
+                    Sage.UI.Dialogs.showError(err);
+                }
+            });
+            return numOfFavoriteGroups;
         }
     });
 

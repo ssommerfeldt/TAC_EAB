@@ -1,17 +1,39 @@
-define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            loadingText: 'Loading...',
-            moreText: 'Edit Items',
-            clearText: 'Clear',
-            emptyText: '(Blank)',
-            nullText: '(Null)',
-            ofText: '/'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/Filters/nls/CheckBoxFilter", {
+    root: {
+        loadingText: 'Loading...',
+        moreText: 'Edit Items',
+        clearText: 'Clear',
+        emptyText: '(Blank)',
+        nullText: '(Null)',
+        ofText: '/',
+        filterHasMetric: 'Has Metric',
+        filterHasFilter: 'Has Filter',
+        filteroptionYesterday: 'Yesterday',
+        filteroptionToday: 'Today',
+        filteroptionThisWeek: 'This Week',
+        filteroptionThisMonth: 'This Months',
+        filteroptionThisQuarter: 'This Quarter',
+        filteroptionThisYear: 'This Year',
+        filteroptionLastWeek: 'Last Week',
+        filteroptionLastMonth: 'Last Month',
+        filteroptionLastQuarter: 'Last Quarter',
+        filteroptionLastYear: 'Last Year',
+		filteroptionWeektoStart: 'Week to Date',
+        filteroptionMonthtoStart: 'Month to Date',
+        filteroptionQtrtoStart: 'Quarter to Date',
+        filteroptionYeartoStart: 'Year to Date',
+        filteroptionOlder: 'Older',
+        filteroption0To999: '0 to 999',
+        filteroption1000To9999: '1000 to 9999',
+        filteroption10000To99999: '10,000 to 99,999',
+        filteroption100000To499999: '100,000 to 499,999',
+        filteroption500000To999999: '500,000 to 999,999',
+        filteroption1000000AndHigher: '1,000,000 and higher',
+        filteroptionT: 'T'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

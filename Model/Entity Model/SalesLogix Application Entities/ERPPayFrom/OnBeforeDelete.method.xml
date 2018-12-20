@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b2359acf-15cc-4973-a919-d0b7f15246f4" lastModifiedUtc="2016-03-03T18:09:15.9122761Z" name="OnBeforeDelete" methodType="CrudEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets>
+    <methodTarget id="75b1da9b-15e8-47f1-8468-7a1a48ebeb72" lastModifiedUtc="2016-03-03T18:09:14.5741423Z" targetType="Sage.SalesLogix.BusinessRules.BusinessRuleHelper, Sage.SalesLogix.BusinessRules" targetMethod="ValidateBOEDelete" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </preExecuteTargets>
+  <methodTargets />
+  <postExecuteTargets />
+</method>

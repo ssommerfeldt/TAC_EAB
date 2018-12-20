@@ -1,13 +1,9 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-
-
-    }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/TaskPane/nls/ActivityManagerTasklet", {
+    root: {
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

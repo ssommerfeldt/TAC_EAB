@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="8569ca26-0d24-4aaf-8b20-41dea68a8245" lastModifiedUtc="2016-02-24T10:45:29.6571444Z" name="CanPromoteERPPayFrom" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="78305081-5b89-40d1-a9a8-40e8620f1a36" lastModifiedUtc="2016-02-24T10:45:26.3289531Z" targetType="Sage.SalesLogix.ErpPayFrom.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CanPromoteERPPayFrom" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

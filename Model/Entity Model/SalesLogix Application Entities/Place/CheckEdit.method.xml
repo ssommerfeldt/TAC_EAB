@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b4dfe9e1-d5d3-46b9-8f14-514facf966ea" lastModifiedUtc="2016-09-06T17:05:46.9167031Z" name="CheckEdit" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="add39c11-9525-4cae-8e7c-c10bb68761ab" lastModifiedUtc="2016-09-06T17:05:12.5337031Z" targetType="Sage.SalesLogix.Place.Place, Sage.SalesLogix.BusinessRules" targetMethod="CheckEdit" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

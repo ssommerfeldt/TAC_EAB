@@ -117,85 +117,280 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FillUser_lz.Text" xml:space="preserve">
-    <value>Evaso Da:</value>
-  </data>
-  <data name="FillDate_lz.Text" xml:space="preserve">
-    <value>Data Evasione:</value>
-  </data>
-  <data name="TotalCost_lz.Text" xml:space="preserve">
-    <value>Costo Totale:</value>
-  </data>
-  <data name="BoundFieldResource2.HeaderText" xml:space="preserve">
-    <value>Costo</value>
-  </data>
-  <data name="FillStatus_lz.Text" xml:space="preserve">
-    <value>Status Evasione:</value>
-  </data>
-  <data name="ContactName_lz.Text" xml:space="preserve">
-    <value>Contatto:</value>
-  </data>
-  <data name="PageDescription_lz" xml:space="preserve">
-    <value>Richiesta materiale informativo</value>
-  </data>
-  <data name="SendDateResource1.Text" xml:space="preserve">
-    <value>16/03/2007</value>
-  </data>
-  <data name="RequestDateResource1.Text" xml:space="preserve">
-    <value>16/03/2007</value>
-  </data>
-  <data name="Priority_lz.Text" xml:space="preserve">
-    <value>Priorità:</value>
-  </data>
-  <data name="SendVia_lz.Text" xml:space="preserve">
-    <value>MezzoDiSpedizione</value>
-  </data>
-  <data name="Family_lz.HeaderText" xml:space="preserve">
-    <value>Famiglia</value>
-  </data>
-  <data name="btnDelLitRequest_rsc.ToolTip" xml:space="preserve">
-    <value>Elimina Richiesta materiale informativo</value>
-  </data>
-  <data name="SendDate_lz.Text" xml:space="preserve">
-    <value>Data invio:</value>
-  </data>
-  <data name="LiteratureRequest_lz" xml:space="preserve">
-    <value>Richiesta materiale informativo</value>
-  </data>
   <data name="AccountName_lz.Text" xml:space="preserve">
     <value>Azienda:</value>
   </data>
-  <data name="CoverName_lz.Text" xml:space="preserve">
-    <value>Lettera d'accompagnamento:</value>
+  <data name="AccountName_lz.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="RequestDate_lz.Text" xml:space="preserve">
-    <value>Data Richiesta:</value>
+  <data name="AccountNameResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AccountNameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource1.FooterText" xml:space="preserve">
+    <value />
   </data>
   <data name="BoundFieldResource1.HeaderText" xml:space="preserve">
     <value>Quantità</value>
   </data>
-  <data name="Creating_lz.Text" xml:space="preserve">
-    <value>Creazione</value>
+  <data name="BoundFieldResource2.AccessibleHeaderText" xml:space="preserve">
+    <value />
   </data>
-  <data name="ItemName_lz.HeaderText" xml:space="preserve">
-    <value>Nome Voce</value>
+  <data name="BoundFieldResource2.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BoundFieldResource2.HeaderText" xml:space="preserve">
+    <value>Costo</value>
+  </data>
+  <data name="btnDelLitRequest_rsc.AlternateText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnDelLitRequest_rsc.ToolTip" xml:space="preserve">
+    <value>Elimina richiesta documentazione</value>
   </data>
   <data name="ConfirmDeleteLiteratureRequest" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare la Richiesta di materiale informativo?</value>
+    <value>Eliminare la richiesta di documentazione?</value>
   </data>
-  <data name="RequestUser_lz.Text" xml:space="preserve">
-    <value>Richiesto da:</value>
+  <data name="ContactName_lz.Text" xml:space="preserve">
+    <value>Contatto:</value>
   </data>
-  <data name="FillDateResource1.Text" xml:space="preserve">
-    <value>16/03/2007</value>
+  <data name="ContactName_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ContactNameResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ContactNameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CoverName_lz.Text" xml:space="preserve">
+    <value>Lettera d'accompagnamento:</value>
+  </data>
+  <data name="CoverName_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CoverNameResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CoverNameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Creating_lz.Text" xml:space="preserve">
+    <value>Creazione in corso</value>
+  </data>
+  <data name="Creating_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreatingResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreatingResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="Description_lz.Text" xml:space="preserve">
     <value>Descrizione:</value>
   </data>
+  <data name="Description_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DescriptionResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DescriptionResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Family_lz.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Family_lz.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Family_lz.HeaderText" xml:space="preserve">
+    <value>Famiglia</value>
+  </data>
+  <data name="FillDate_lz.Text" xml:space="preserve">
+    <value>Data evasione:</value>
+  </data>
+  <data name="FillDate_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FillDateResource1.DateFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FillDateResource1.Text" xml:space="preserve">
+    <value>16/03/2007</value>
+  </data>
+  <data name="FillDateResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FillStatus_lz.Text" xml:space="preserve">
+    <value>Stato evasione:</value>
+  </data>
+  <data name="FillStatus_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FillStatusResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FillStatusResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FillUser_lz.Text" xml:space="preserve">
+    <value>Evasa da:</value>
+  </data>
+  <data name="FillUser_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FillUserResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FillUserResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemName_lz.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemName_lz.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemName_lz.HeaderText" xml:space="preserve">
+    <value>Nome elemento</value>
+  </data>
+  <data name="LiteratureRequest_lz" xml:space="preserve">
+    <value>Richiesta documentazione</value>
+  </data>
+  <data name="LitRequestForm_7_lz.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_7_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_7_rsc.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_7_rsc.EmptyDataText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_7_rsc.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun elemento di documentazione trovato.</value>
+  </data>
+  <data name="LitRequestForm_7_rsc.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_CToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_CToolsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_LToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_LToolsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequestForm_RToolsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="Options_lz.Text" xml:space="preserve">
     <value>Opzioni</value>
   </data>
-  <data name="LitRequestForm_7_rsc.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun Materiale informativo trovato.</value>
+  <data name="Options_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OptionsResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OptionsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PageDescription_lz" xml:space="preserve">
+    <value>Richiesta documentazione</value>
+  </data>
+  <data name="Priority_lz.Text" xml:space="preserve">
+    <value>Priorità:</value>
+  </data>
+  <data name="Priority_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PriorityResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PriorityResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RequestDate_lz.Text" xml:space="preserve">
+    <value>Data richiesta:</value>
+  </data>
+  <data name="RequestDate_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RequestDateResource1.DateFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RequestDateResource1.Text" xml:space="preserve">
+    <value>16/03/2007</value>
+  </data>
+  <data name="RequestDateResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RequestUser_lz.Text" xml:space="preserve">
+    <value>Richiesto da</value>
+  </data>
+  <data name="RequestUser_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RequestUserResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RequestUserResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SendDate_lz.Text" xml:space="preserve">
+    <value>Data invio:</value>
+  </data>
+  <data name="SendDate_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SendDateResource1.DateFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SendDateResource1.Text" xml:space="preserve">
+    <value>16/03/2007</value>
+  </data>
+  <data name="SendDateResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SendVia_lz.Text" xml:space="preserve">
+    <value>Modalità di invio</value>
+  </data>
+  <data name="SendVia_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SendViaResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SendViaResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalCost_lz.Text" xml:space="preserve">
+    <value>Costo totale:</value>
+  </data>
+  <data name="TotalCost_lz.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalCostResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalCostResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

@@ -117,14 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueProduct.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
-    <value>Единица учета</value>
+  <data name="hsRecProduct.Caption" xml:space="preserve">
+    <value>Полученный продукт</value>
   </data>
   <data name="lueReceivedProduct.Caption" xml:space="preserve">
     <value>Полученный продукт</value>
   </data>
-  <data name="txtRecSKU.Caption" xml:space="preserve">
-    <value>Код товара:</value>
+  <data name="hsShippedProduct.Caption" xml:space="preserve">
+    <value>Продукт доставки</value>
+  </data>
+  <data name="chkExists.Caption" xml:space="preserve">
+    <value>Существующий возврат:</value>
   </data>
   <data name="txtProductSKU.Caption" xml:space="preserve">
     <value>Код товара:</value>
@@ -132,73 +135,82 @@
   <data name="txtSerialNumber.Caption" xml:space="preserve">
     <value>Серийный номер:</value>
   </data>
-  <data name="lueProduct.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="chkExists.Caption" xml:space="preserve">
-    <value>Существующий возврат:</value>
-  </data>
-  <data name="lueProduct.LookupProperties.Name.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="dpShipDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="lueReceivedProduct.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
   <data name="dpShipDate.Caption" xml:space="preserve">
     <value>Дата доставки:</value>
-  </data>
-  <data name="lueReceivedProduct.LookupProperties.Received.PropertyHeader" xml:space="preserve">
-    <value>Получен</value>
-  </data>
-  <data name="lueReceivedProduct.LookupProperties.AccountProduct.SerialNumber.PropertyHeader" xml:space="preserve">
-    <value>Серийный номер</value>
-  </data>
-  <data name="hsShippedProduct.Caption" xml:space="preserve">
-    <value>Продукт доставки</value>
-  </data>
-  <data name="lueReceivedProduct.LookupProperties.ProductName.PropertyHeader" xml:space="preserve">
-    <value>Продукт</value>
-  </data>
-  <data name="txtRecSerialNumber.Caption" xml:space="preserve">
-    <value>Сериный номер:</value>
-  </data>
-  <data name="hsRecProduct.Caption" xml:space="preserve">
-    <value>Полученный продукт</value>
-  </data>
-  <data name="cmdClose.Caption" xml:space="preserve">
-    <value>Закрыть</value>
-  </data>
-  <data name="lueReceivedProduct.LookupProperties.ProductSerialNumber.PropertyHeader" xml:space="preserve">
-    <value>Серийный номер</value>
-  </data>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="lueReceivedProduct.LookupProperties.AccountProduct.ActualId.PropertyHeader" xml:space="preserve">
-    <value>Единица учета</value>
-  </data>
-  <data name="lueProduct.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="lueProduct.LookupProperties.DataOwner.PropertyHeader" xml:space="preserve">
-    <value>Владелец данных</value>
-  </data>
-  <data name="lueReceivedProduct.LookupProperties.ProductSKU.PropertyHeader" xml:space="preserve">
-    <value>Единица учета</value>
-  </data>
-  <data name="lueReceivedProduct.LookupProperties.AccountProduct.ProductName.PropertyHeader" xml:space="preserve">
-    <value>Продукт</value>
   </data>
   <data name="lueProduct.Caption" xml:space="preserve">
     <value>Продукт:</value>
   </data>
+  <data name="txtRecSKU.Caption" xml:space="preserve">
+    <value>Код товара:</value>
+  </data>
+  <data name="lueReceivedProduct.LookupProperties.ProductSKU.PropertyHeader" xml:space="preserve">
+    <value>Единица учета</value>
+  </data>
+  <data name="lueReceivedProduct.LookupProperties.ProductName.PropertyHeader" xml:space="preserve">
+    <value>Продукт</value>
+  </data>
+  <data name="lueReceivedProduct.LookupProperties.ProductSerialNumber.PropertyHeader" xml:space="preserve">
+    <value>Серийный номер</value>
+  </data>
+  <data name="lueProduct.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
+    <value>Единица учета</value>
+  </data>
+  <data name="lueProduct.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="lueProduct.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="lueProduct.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="txtRecSerialNumber.Caption" xml:space="preserve">
+    <value>Серийный номер:</value>
+  </data>
+  <data name="lueReceivedProduct.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueReceivedProduct.LookupProperties.AccountProduct.ProductName.PropertyHeader" xml:space="preserve">
+    <value>Продукт</value>
+  </data>
+  <data name="lueReceivedProduct.LookupProperties.AccountProduct.ActualId.PropertyHeader" xml:space="preserve">
+    <value>Единица учета</value>
+  </data>
+  <data name="lueReceivedProduct.LookupProperties.AccountProduct.SerialNumber.PropertyHeader" xml:space="preserve">
+    <value>Серийный номер</value>
+  </data>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="cmdClose.Caption" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="lueProduct.LookupProperties.DataOwner.PropertyHeader" xml:space="preserve">
+    <value>Владелец данных</value>
+  </data>
+  <data name="chkShipped.Caption" xml:space="preserve">
+    <value>Доставлено</value>
+  </data>
+  <data name="lueReceivedProduct.LookupProperties.Received.PropertyHeader" xml:space="preserve">
+    <value>Получено</value>
+  </data>
+  <data name="lueReceivedProduct.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueProduct.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dpShipDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueReceivedProduct.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
   <data name="lueProduct.ButtonToolTip" xml:space="preserve">
     <value>Найти</value>
   </data>
-  <data name="chkShipped.Caption" xml:space="preserve">
-    <value>Доставлен</value>
+  <data name="dpShipDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
   </data>
 </root>

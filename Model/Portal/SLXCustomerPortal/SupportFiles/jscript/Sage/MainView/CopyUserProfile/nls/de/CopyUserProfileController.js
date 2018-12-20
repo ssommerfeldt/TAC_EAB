@@ -1,0 +1,1 @@
+define("Sage/MainView/CopyUserProfile/nls/de/CopyUserProfileController", {});

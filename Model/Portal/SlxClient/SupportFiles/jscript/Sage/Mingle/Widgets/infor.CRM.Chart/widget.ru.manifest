@@ -1,0 +1,31 @@
+﻿{
+    "widgetId": "infor.crm.chart",
+    "type": "inline",
+    "name": "Infor CRM Chart",
+    "version": "1.0",
+    "category": "application", 
+  	"settings": [
+		  {
+			  "name": "SDataApiContext",
+			  "type": "string",
+			  "defaultValue": "CRMSData",
+			  "isReadOnly": true
+		  }
+	  ],
+    "localization": {
+        "en-US": {
+            "widgetTitle": "Диаграмма Infor CRM",
+            "widgetDescription": "Виджет диаграммы Infor CRM",
+            "noData": "Нет совпадающих данных",
+            "notConfigured": "Виджет не настроен",
+            "errorOccured": "Возникла ошибка",
+            "titleText": "Название",
+            "textEntity": "Сущность",
+            "textGroup": "Группа",
+            "textDimension": "Размерность",
+            "textMetric": "Метрика",
+            "textType": "Тип",
+            "textLimit": "Лимит"
+        }
+    }
+}

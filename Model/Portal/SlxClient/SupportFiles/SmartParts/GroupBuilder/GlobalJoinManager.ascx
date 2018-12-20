@@ -9,7 +9,7 @@
  <tr>
     <td colspan="2">
 	    <div style="position:relative;">
-        <div style="position:absolute; top:-23px; right:45px; ">
+        <div style="position:absolute; top:-32px; right:38px; ">
 			      <SalesLogix:PageLink ID="JoinHelpLink" runat="server" LinkType="HelpFileName" ToolTip="<%$ resources: Portal, Help_ToolTip %>" Target="Help" NavigateUrl="queryglobaljoinmanager.aspx" ImageUrl="~/images/icons/Help_16x16.png"></SalesLogix:PageLink>
 			</div>
             </div>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/SecurityMgr/SecurityProfile", [
         'dojo/i18n!./nls/SecurityProfile',
         'Sage/UI/Controls/_DialogHelpIconMixin',
         'dojo/_base/lang',

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/ReportManagerUtility", [
     'dojo/_base/xhr',
     'dojo/i18n!./nls/ReportManagerUtility',
     'Sage/Reporting/Enumerations'
@@ -154,6 +154,10 @@ function (
                         {
                             outputFormat: Enumerations.ReportExportFormat.Excel,
                             caption: Enumerations.nlsResources.txtExcel
+                        },
+                        {
+                            outputFormat: Enumerations.ReportExportFormat.ExcelDataOnly,
+                            caption: Enumerations.nlsResources.txtExcelDataOnly
                         },
                         {
                             outputFormat: Enumerations.ReportExportFormat.Csv,

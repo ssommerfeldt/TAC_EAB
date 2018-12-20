@@ -32,7 +32,7 @@ using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
-{	
+{
 	/// <summary>
     /// This is called when the service and support form is loaded.
     /// </summary>
@@ -49,19 +49,18 @@ namespace Sage.BusinessRules.CodeSnippets
 			IUser user = (IUser)form.CurrentEntity;
 			if (user != null)
 			{
-            	form.ctrlstTicketPrefix.Visible = user.Type.Equals(UserType.Remote);
-				if (user.Type.Equals(UserType.Remote))
+			    var isRemote = user.Type == UserType.Remote;
+			    form.ctrlstTicketPrefix.Visible = isRemote;
+				if (isRemote)
 				{
 					form.txtTicketPrefix.Text = user.GetRemoteUserPrefixKey();
 				}
-				
+
 				form.chkbxSpeedSearchSubmissions.Enabled = false;
 				object useApprovalProcess = MySlx.System.GetBranchOption("UseApprovalProcess");
-				if(useApprovalProcess != null)
+				if (useApprovalProcess != null)
 					form.chkbxSpeedSearchSubmissions.Enabled = Convert.ToBoolean(useApprovalProcess);
-				
 			}
-			
         }
     }
 }

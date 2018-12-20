@@ -54,9 +54,8 @@ var isRelationProperty = false;
 if (isHistory) {
     foreignPropertyName = metadata.ForeignIdProperty;
     var foreignProperty = entity.GetPropertyByPropertyName(foreignPropertyName);
-    isRelationProperty = (foreignProperty.GetType().Name == "OrmRelationProperty");
+    isRelationProperty = (foreignProperty is OrmRelationProperty);
 }
-var historyTypeName = metadata.HistoryTypeName;
 var hasDisplayProperty = (entity.DisplayProperty != null);
 
 //composite key constants

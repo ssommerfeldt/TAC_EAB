@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRangeEntityFilter" id="08e45582-f1e9-4c91-949a-0a7a9e391916" lastModifiedUtc="2014-12-14T19:07:25.2339332Z" filterName="ReceivableAmount" propertyName="ReceivableAmount" characters="0">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRangeEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <ranges id="ddd9e97f-8a84-4677-a802-36f859e98406" rangeName="0 to 999" upper="999" />
+  <ranges id="bec80a4d-64a1-45ca-9bd5-42ce9d3360bd" rangeName="1000 to 9999" lower="1000" upper="9999" />
+  <ranges id="b092d143-ac5e-45b4-b479-e904a55f0931" rangeName="10,000 to 99,999" lower="10000" upper="99999" />
+  <ranges id="42998b85-6428-436f-98de-71826b8072cd" rangeName="100,000 to 499,999" lower="100000" upper="499999" />
+  <ranges id="453feac9-b75a-4d1d-abee-98055b290ac6" rangeName="500,000 to 999,999" lower="500000" upper="999999" />
+  <ranges id="a1d34602-0502-4d5b-8d86-4e8c1640ed4e" rangeName="1,000,000 and higher" lower="1000000" />
+</entityFilter>

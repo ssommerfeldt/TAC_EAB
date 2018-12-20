@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/MainView/ActivityMgr/AttendeeLookup/ContactLookupConfig", [
      'Sage/MainView/ActivityMgr/AttendeeLookup/BaseLookupConfig',
      'Sage/UI/SDataLookup',
      'dojo/i18n!./nls/ContactLookupConfig',
@@ -14,14 +14,14 @@ function (
     lang
    ) {
     var associationLookupConfig = declare('Sage.MainView.ActivityMgr.AttendeeLookup.ContactLookupConfig', [BaseLookupConfig], {
-              
+
         constructor: function () {
             lang.mixin(this, nlsResources);
             //this._nlsResources = nlsResources;
             this.lookupType = SDataLookup;
             this._initConfig();
-         },
-        _initConfig: function(){
+        },
+        _initConfig: function () {
             this.id = '_contactLookup',
             this.lookupName = 'Contact';
             this.lookupDisplayName = 'Contact Lookup';
@@ -40,12 +40,12 @@ function (
                 "defaultValue": ""
             };
             this.storeOptions = {
-                resourceKind: 'contacts',              
+                resourceKind: 'contacts',
                 select: ['LastName', 'FirstName', 'Title', 'Type', 'Account/$key', 'Account/AccountName', 'ContactUser/Userid', 'Address/Timezone'],
                 sort: [{ attribute: 'LastName' }]
             };
             this.preFilters = [];
-            this.gridOptions = { };
+            this.gridOptions = {};
             this.query = {};
             this.displayMode = 5;
             this.isModal = true;
@@ -61,61 +61,57 @@ function (
             }
             this.cells = [
             {
-                name: this.colFirstName,
+                label: this.colFirstName,
                 field: 'FirstName'
-            },{
-                name: this.colLastName,
+            }, {
+                label: this.colLastName,
                 field: 'LastName'
             }, {
-                name: this.colTitle,
+                label: this.colTitle,
                 field: 'Title'
             }, {
-                name: this.colAccount,
+                label: this.colAccount,
                 field: 'AccountName'
             }, {
-                name: this.colWorkPhone,
+                label: this.colWorkPhone,
                 field: 'WorkPhone'
             }, {
-                name: this.colEmail,
+                label: this.colEmail,
                 field: 'Email'
             }];
             return this.cells;
         },
-        doSelected:function(items){
-            alert("overide the doSelect method")
+        doSelected: function (items) {
+            alert("override the doSelect method")
         },
         getConfig: function (uiid) {
 
             var sDataConfig = {
                 id: this.id + "_base_" + uiid,
                 btnToolTip: '',
-                structure: [
-                    {
-                        defaultCell: this.defaultCell,
-                        cells: this.cells,
-                    }],
+                structure: this.cells,
                 gridOptions: this.gridOptions,
                 displayMode: this.displayMode,
-                storeOptions: this.storeOptions, 
+                storeOptions: this.storeOptions,
                 isModal: this.isModal,
                 initialLookup: this.initialLookup,
                 preFilters: this.preFilters,
                 query: this.query,
-                seedValue : this.seedValue,
+                seedValue: this.seedValue,
                 seedProperty: this.seedProperty,
                 overrideSeedValueOnSearch: true,
                 dialogTitle: this.dialogTitle,
                 dialogButtonText: this.dialogButtonText,
                 doSelected: this.doSelected,
-                cancelText:this.cancelText
-            };           
+                cancelText: this.cancelText
+            };
 
             return sDataConfig;
-         },
+        },
 
         getLookupInstance: function (uiid) {
             var config = this.getConfig(uiid);
-            var lookup =  new this.lookupType(config);
+            var lookup = new this.lookupType(config);
             return lookup;
         }
 

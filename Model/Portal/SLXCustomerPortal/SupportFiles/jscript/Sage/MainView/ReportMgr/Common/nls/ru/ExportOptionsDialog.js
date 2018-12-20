@@ -1,15 +1,13 @@
-define((
-{
-    txtDialogTitle: 'Параметры экспорта',
-    txtDialogTitleScheduling: 'Export And Scheduling Options',
-    cmdBack_Caption: '< Назад',
-    cmdNext_Caption: 'Следующий>',
-    cmdCancel_Caption: 'Отмена',
-    txtName: 'Имя',
-    txtSelectUser: 'Выберите польз.',
-    txtOK: 'ОК',
-    txtOutputFormat_Caption: 'Формат',
-    txtRunAs_Caption: 'Запуск от имени',
-    txtScheduleDescription_Caption: 'Description'
-}
-));
+define("Sage/MainView/ReportMgr/Common/nls/ru/ExportOptionsDialog", {
+    "txtDialogTitle": "Параметры экспорта",
+    "txtDialogTitleScheduling": "Параметры экспорта и расписания",
+    "cmdBack_Caption": "< Назад",
+    "cmdNext_Caption": "Дальше >",
+    "cmdCancel_Caption": "Отмена",
+    "txtName": "Имя",
+    "txtSelectUser": "Выбрать пользователя",
+    "txtOK": "OК",
+    "txtOutputFormat_Caption": "Формат",
+    "txtRunAs_Caption": "Выполнить от имени",
+    "txtScheduleDescription_Caption": "Описание"
+});

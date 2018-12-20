@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Web.UI;
 using Sage.Entity.Interfaces;
@@ -52,7 +52,9 @@ public partial class SmartParts_Contact_MoveContact : EntityBoundSmartPartInfoPr
             }
             else
             {
-                script.Append("dojo.ready(function () {Sage.UI.Forms.MoveContact.init({workspace: '" + getMyWorkspace() + "'} ); });");
+                script.Append("require(['dojo/ready'], function(ready) {" +
+                              "ready(function() { Sage.UI.Forms.MoveContact.init({workspace: '" + getMyWorkspace() + "'}); });" +
+                              "});");
             }
             ScriptManager.RegisterStartupScript(this, GetType(), "initialize_MoveContact", script.ToString(), true);
         }
@@ -89,6 +91,7 @@ public partial class SmartParts_Contact_MoveContact : EntityBoundSmartPartInfoPr
         if (contact != null)
         {
             lueReassignOpenItems.LookupResultValue = contact;
+            lueReassignClosedItems.LookupResultValue = contact;
             lueReassignSupportItems.LookupResultValue = contact;
         }
     }
@@ -105,10 +108,11 @@ public partial class SmartParts_Contact_MoveContact : EntityBoundSmartPartInfoPr
                                              GetLocalResourceObject("ContactMove_ContactHasChanged"));
         cmdOK.Attributes.Add("onclick", "javascript: return confirm('" + GetLocalResourceObject("ConfirmMove.Text") + "');");
         lueTargetAccount.LookupResultValueChanged += lueTargetAccount_ChangeAction;
-        lueReassignNotesHistory.LookupResultValueChanged += LookupResultValueChanged_ChangeAction;
-        lueReassignOpenItems.LookupResultValueChanged += LookupResultValueChanged_ChangeAction;
-        lueReassignClosedItems.LookupResultValueChanged += LookupResultValueChanged_ChangeAction;
-        lueReassignSupportItems.LookupResultValueChanged += LookupResultValueChanged_ChangeAction;
+        lueReassignActivity.LookupResultValueChanged += lueReassignActivity_ChangeAction;
+        lueReassignNotesHistory.LookupResultValueChanged += lueReassignNotesHistory_ChangeAction;
+        lueReassignOpenItems.LookupResultValueChanged += lueReassignOpenItems_ChangeAction;
+        lueReassignClosedItems.LookupResultValueChanged += lueReassignClosedItems_ChangeAction;
+        lueReassignSupportItems.LookupResultValueChanged += lueReassignSupportItems_ChangeAction;
         rdbMoveHistory.CheckedChanged += rdgMoveNotesHistory_OnChanged;
         rdbDontMoveHistory.CheckedChanged += rdgMoveNotesHistory_OnChanged;
         base.OnWireEventHandlers();
@@ -146,9 +150,54 @@ public partial class SmartParts_Contact_MoveContact : EntityBoundSmartPartInfoPr
         lueReassignSupportItems.SeedValue = Contact.Account.Id.ToString();
     }
 
-    protected void LookupResultValueChanged_ChangeAction(object sender, EventArgs e)
+    protected void lueReassignActivity_ChangeAction(object sender, EventArgs e)
     {
         ClearErrors();
+        this.SetContactLookupValues(lueReassignActivity.LookupResultValue);
+    }
+
+    protected void lueReassignNotesHistory_ChangeAction(object sender, EventArgs e)
+    {
+        ClearErrors();
+        this.SetContactLookupValues(lueReassignNotesHistory.LookupResultValue);
+    }
+
+    protected void lueReassignOpenItems_ChangeAction(object sender, EventArgs e)
+    {
+        ClearErrors();
+        this.SetContactLookupValues(lueReassignOpenItems.LookupResultValue);
+    }
+
+    protected void lueReassignClosedItems_ChangeAction(object sender, EventArgs e)
+    {
+        ClearErrors();
+        this.SetContactLookupValues(lueReassignClosedItems.LookupResultValue);
+    }
+
+    protected void lueReassignSupportItems_ChangeAction(object sender, EventArgs e)
+    {
+        ClearErrors();
+        this.SetContactLookupValues(lueReassignSupportItems.LookupResultValue);
+    }
+
+    private bool updatingLookups = false;
+    private void SetContactLookupValues(object luResult)
+    {
+        if (chkAssignToSameContact.Checked && !updatingLookups)
+        {
+            updatingLookups = true;
+            if (rdbDontMoveActivity.Checked && lueReassignActivity.LookupResultValue != luResult)
+                lueReassignActivity.LookupResultValue = luResult;
+            if (rdbDontMoveHistory.Checked && lueReassignNotesHistory.LookupResultValue != luResult)
+                lueReassignNotesHistory.LookupResultValue = luResult;
+            if (lueReassignOpenItems.LookupResultValue != luResult)
+                lueReassignOpenItems.LookupResultValue = luResult;
+            if (lueReassignClosedItems.LookupResultValue != luResult)
+                lueReassignClosedItems.LookupResultValue = luResult;
+            if (lueReassignSupportItems.LookupResultValue != luResult)
+                lueReassignSupportItems.LookupResultValue = luResult;
+            updatingLookups = false;
+        }
     }
 
     protected void rdgMoveActivities_OnChanged(object sender, EventArgs e)
@@ -393,11 +442,28 @@ public partial class SmartParts_Contact_MoveContact : EntityBoundSmartPartInfoPr
 
     protected IContact GetAssignToContact()
     {
-        // get the primary contact for the source account - if it is not the current contact
-        IContact assignToContact = BusinessRuleHelper.GetPrimaryContact(Contact.Account);
-        if (assignToContact != null && !assignToContact.Equals(Contact))
+        if (!chkAssignToSameContact.Checked)
         {
-            return assignToContact;
+            // get the primary contact for the source account - if it is not the current contact
+            IContact assignToContact = BusinessRuleHelper.GetPrimaryContact(Contact.Account);
+            if (assignToContact != null && !assignToContact.Equals(Contact))
+            {
+                return assignToContact;
+            }
+        }
+        else
+        {
+            IContact assignToContact = (IContact)((lueReassignOpenItems.LookupResultValue != null) ?
+                lueReassignOpenItems.LookupResultValue :
+                ((lueReassignClosedItems.LookupResultValue != null) ?
+                lueReassignClosedItems.LookupResultValue :
+                ((lueReassignSupportItems.LookupResultValue != null) ?
+                lueReassignSupportItems.LookupResultValue :
+                BusinessRuleHelper.GetPrimaryContact(Contact.Account))));
+            if (assignToContact != null && !assignToContact.Equals(Contact))
+            {
+                return assignToContact;
+            }
         }
         return null;
     }

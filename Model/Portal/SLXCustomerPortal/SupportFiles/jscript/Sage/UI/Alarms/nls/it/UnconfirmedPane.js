@@ -1,6 +1,6 @@
-define((
-{ showConfirmationsText: 'Mostra Conferme',
-  showCalendarText: 'Mostra Calendario',
-  acceptText: 'Accetta',
-  declineText: 'Rifiuta' }
-));
+define("Sage/UI/Alarms/nls/it/UnconfirmedPane", {
+    "showConfirmationsText": "Mostra conferme",
+    "showCalendarText": "Mostra calendario",
+    "acceptText": "Accetta",
+    "declineText": "Rifiuta"
+});

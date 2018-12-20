@@ -117,49 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTemplates.Caption" xml:space="preserve">
-    <value>Modèles d'importation de leads :</value>
-  </data>
-  <data name="grdTemplates.Delete.Text" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Description :</value>
-  </data>
-  <data name="grdTemplates.DeleteConfirmation" xml:space="preserve">
-    <value>Voulez-vous vraiment supprimer ce modèle ?</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Enregistrer</value>
+  <data name="grdTemplates.EmptyTableRowText" xml:space="preserve">
+    <value>Aucun modèle n'est défini actuellement.</value>
   </data>
   <data name="grdTemplates.Description.ColumnHeading" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annuler</value>
+  <data name="grdTemplates.CreateDate.ColumnHeading" xml:space="preserve">
+    <value>Date de création</value>
   </data>
   <data name="grdTemplates.CreatedBy.ColumnHeading" xml:space="preserve">
-    <value>Créée par</value>
-  </data>
-  <data name="grdTemplates.ModifyUser.ColumnHeading" xml:space="preserve">
-    <value>Modifié par</value>
+    <value>Créé par</value>
   </data>
   <data name="grdTemplates.ModifyDate.ColumnHeading" xml:space="preserve">
     <value>Date de modification</value>
   </data>
+  <data name="grdTemplates.ModifyUser.ColumnHeading" xml:space="preserve">
+    <value>Modifié par</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Description :</value>
+  </data>
+  <data name="lblTemplates.Caption" xml:space="preserve">
+    <value>Modèles d'importation de leads :</value>
+  </data>
+  <data name="grdTemplates.Delete.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="grdTemplates.DeleteConfirmation" xml:space="preserve">
+    <value>Souhaitez-vous vraiment supprimer ce modèle ?</value>
+  </data>
   <data name="error_DuplicateTemplateDescription" xml:space="preserve">
     <value>La description du modèle saisie '{0}' est actuellement définie. Veuillez saisir une seule description.</value>
   </data>
-  <data name="grdTemplates.EmptyTableRowText" xml:space="preserve">
-    <value>Aucun modèle n'est défini actuellement.</value>
-  </data>
-  <data name="grdTemplates.CreateDate.ColumnHeading" xml:space="preserve">
-    <value>Date de création</value>
+  <data name="error_NoTemplateDescription" xml:space="preserve">
+    <value>Veuillez saisir une description du modèle avant de poursuivre.</value>
   </data>
   <data name="error_templateManager" xml:space="preserve">
     <value>Une erreur s'est produite lors du chargement du Gestionnaire de modèles. {0}</value>
   </data>
-  <data name="error_NoTemplateDescription" xml:space="preserve">
-    <value>Veuillez saisir une description du modèle avant de poursuivre.</value>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annuler</value>
   </data>
 </root>

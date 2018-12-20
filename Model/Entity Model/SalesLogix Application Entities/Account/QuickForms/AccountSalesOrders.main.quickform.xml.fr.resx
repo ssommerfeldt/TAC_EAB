@@ -117,61 +117,91 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdSalesOrders.772d4037-0107-4cd2-9812-1b7af967da29.ColumnHeading" xml:space="preserve">
-    <value>Mode d'expédition</value>
+  <data name="NameLF.Caption" xml:space="preserve">
+    <value>Nom, prénom</value>
   </data>
-  <data name="grdSalesOrders.d07bb56d-0baa-4b0e-ad31-2470b0126dfb.ColumnHeading" xml:space="preserve">
-    <value>Mode d'expédition</value>
-  </data>
-  <data name="grdSalesOrders.btnAddSalesOrder.ToolTip" xml:space="preserve">
-    <value>Insérer le bon de commande</value>
-  </data>
-  <data name="grdSalesOrders.30e419bf-d5b7-43ac-8eb1-277c486f59c7.ColumnHeading" xml:space="preserve">
-    <value>Commande client</value>
-  </data>
-  <data name="grdSalesOrders.Delete.ToolTip" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="grdSalesOrders.9c6e0ed3-b071-4db4-ad09-65e2c6e62614.ColumnHeading" xml:space="preserve">
-    <value>Contact pour l'expédition</value>
-  </data>
-  <data name="grdSalesOrders.f01ce137-e017-47c5-9a5e-7644db9ed01d.ColumnHeading" xml:space="preserve">
-    <value>Contact pour la facturation</value>
+  <data name="CustomerPurchaseOrderNumber.Caption" xml:space="preserve">
+    <value>Numéro de bon de commande du client</value>
   </data>
   <data name="SalesOrderNumber.Caption" xml:space="preserve">
     <value>Numéro du bon de commande</value>
   </data>
-  <data name="btnInserSalesOrder.ToolTip" xml:space="preserve">
-    <value>Insérer le bon de commande</value>
-  </data>
-  <data name="grdSalesOrders.98ef94f9-7ec9-4a26-85a6-80d718329f63.ColumnHeading" xml:space="preserve">
-    <value>Numéro du bon de commande</value>
-  </data>
-  <data name="grdSalesOrders.776cf92c-180a-4437-bd02-0aa109134b8b.ColumnHeading" xml:space="preserve">
-    <value>N° du bon de commande</value>
-  </data>
-  <data name="grdSalesOrders.52126107-e77d-4216-a3ce-f5e5e177b319.ColumnHeading" xml:space="preserve">
-    <value>Est devis</value>
-  </data>
-  <data name="grdSalesOrders.0cfc6bc3-1d80-4760-ac94-64d0a177c398.Text" xml:space="preserve">
-    <value>Modifier</value>
-  </data>
-  <data name="grdSalesOrders.7410d76d-21aa-4d48-aaea-9095c1d85966.ColumnHeading" xml:space="preserve">
-    <value>Etat</value>
+  <data name="ShipVia.Caption" xml:space="preserve">
+    <value>Mode d'expédition</value>
   </data>
   <data name="Status.Caption" xml:space="preserve">
     <value>Etat</value>
   </data>
-  <data name="ShipVia.Caption" xml:space="preserve">
-    <value>ModeD'Expédition</value>
+  <data name="grdSalesOrders.98ef94f9-7ec9-4a26-85a6-80d718329f63.ColumnHeading" xml:space="preserve">
+    <value>Numéro du bon de commande</value>
+  </data>
+  <data name="grdSalesOrders.d07bb56d-0baa-4b0e-ad31-2470b0126dfb.ColumnHeading" xml:space="preserve">
+    <value>Mode d'expédition</value>
+  </data>
+  <data name="grdSalesOrders.776cf92c-180a-4437-bd02-0aa109134b8b.ColumnHeading" xml:space="preserve">
+    <value>Numéro du bon de commande</value>
+  </data>
+  <data name="grdSalesOrders.7410d76d-21aa-4d48-aaea-9095c1d85966.ColumnHeading" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="grdSalesOrders.0cfc6bc3-1d80-4760-ac94-64d0a177c398.Text" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="btnInserSalesOrder.ToolTip" xml:space="preserve">
+    <value>Insérer un bon de commande</value>
   </data>
   <data name="grdSalesOrders.31709f7f-60cf-4c49-99a1-869846009171.ColumnHeading" xml:space="preserve">
     <value>Etat</value>
   </data>
-  <data name="NameLF.Caption" xml:space="preserve">
-    <value>NameLF</value>
+  <data name="grdSalesOrders.f01ce137-e017-47c5-9a5e-7644db9ed01d.ColumnHeading" xml:space="preserve">
+    <value>Contact pour la facturation</value>
   </data>
-  <data name="CustomerPurchaseOrderNumber.Caption" xml:space="preserve">
-    <value>Numéro de bon de commande du client</value>
+  <data name="grdSalesOrders.9c6e0ed3-b071-4db4-ad09-65e2c6e62614.ColumnHeading" xml:space="preserve">
+    <value>Contact pour l'expédition</value>
+  </data>
+  <data name="grdSalesOrders.772d4037-0107-4cd2-9812-1b7af967da29.ColumnHeading" xml:space="preserve">
+    <value>Mode d'expédition</value>
+  </data>
+  <data name="grdSalesOrders.30e419bf-d5b7-43ac-8eb1-277c486f59c7.ColumnHeading" xml:space="preserve">
+    <value>Bon de commande client</value>
+  </data>
+  <data name="grdSalesOrders.Delete.ToolTip" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="grdSalesOrders.btnAddSalesOrder.ToolTip" xml:space="preserve">
+    <value>Insérer un bon de commande</value>
+  </data>
+  <data name="grdSalesOrders.52126107-e77d-4216-a3ce-f5e5e177b319.ColumnHeading" xml:space="preserve">
+    <value>Est un devis</value>
+  </data>
+  <data name="grdSalesOrders.ede94acd-9ab4-4ceb-9de3-04d098363b29.ColumnHeading" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="grdSalesOrders.c5c2d1cd-e66d-41b4-a86e-b9d26ee5535b.ColumnHeading" xml:space="preserve">
+    <value>Date d'échéance</value>
+  </data>
+  <data name="grdSalesOrders.2882c7fb-5ecf-4872-9280-a9591df0efc2.ColumnHeading" xml:space="preserve">
+    <value>Bon de commande client</value>
+  </data>
+  <data name="grdSalesOrders.96d2e013-8c50-4dad-9d36-10861b1704ce.ColumnHeading" xml:space="preserve">
+    <value>Date promise</value>
+  </data>
+  <data name="grdSalesOrders.2cde2bcb-6a59-49b9-ab1f-3ead7cc4386f.ColumnHeading" xml:space="preserve">
+    <value>Total (bon de commande)</value>
+  </data>
+  <data name="grdSalesOrders.2de75a1b-20f9-4e7d-a937-8318594508b6.ColumnHeading" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="grdSalesOrders.5b56242a-f544-42ff-b457-4775c734d537.ColumnHeading" xml:space="preserve">
+    <value>Total général (bon de commande)</value>
+  </data>
+  <data name="grdSalesOrders.a953985a-ad76-437c-a57a-f67d8a9099ce.ColumnHeading" xml:space="preserve">
+    <value>Total général</value>
+  </data>
+  <data name="grdSalesOrders.0d0f55b3-b262-4193-abcf-80fbb35b0a67.ColumnHeading" xml:space="preserve">
+    <value>Ville d'expédition</value>
+  </data>
+  <data name="grdSalesOrders.7afbcb9a-a2cc-429b-8bf3-ab2c1900f7a3.ColumnHeading" xml:space="preserve">
+    <value>Date de la demande</value>
   </data>
 </root>

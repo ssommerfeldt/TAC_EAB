@@ -1,9 +1,9 @@
-﻿define({
-    txtLoadingScheduleDetails: 'Chargement en annexe les détails',
-    txtError: 'Erreur',
-    txtCannotDetermineReportId: 'Impossible de déterminer le rapport id.',
-    txtCannotDetermineReportNameOrFamily: 'Vous ne pouvez pas déterminer le nom de rapport ou de la famille.',
-    txtLoading: 'Chargement en cours ...',
-    txtLoadingReport: 'Chargement rapport',
-    txtSorryAnErrorOccuredLoadingReport: 'Désolé, une erreur s\'est produite rapport de chargement: ${0} ${1}.'
+define("Sage/MainView/ReportMgr/nls/fr/ReportWizardController", {
+    "txtLoadingScheduleDetails": "Chargement des détails de planification",
+    "txtError": "Erreur",
+    "txtCannotDetermineReportId": "Impossible de déterminer l'identifiant du rapport.",
+    "txtCannotDetermineReportNameOrFamily": "Impossible de déterminer le nom ou la famille du rapport.",
+    "txtLoading": "Chargement en cours ",
+    "txtLoadingReport": "Chargement du rapport",
+    "txtSorryAnErrorOccuredLoadingReport": "Une erreur s'est produite lors du chargement du rapport : ${0} ${1}."
 });

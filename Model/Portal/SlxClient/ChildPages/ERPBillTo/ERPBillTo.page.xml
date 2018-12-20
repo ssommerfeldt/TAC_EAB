@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="4cdb2ac6-4467-4078-825e-6685d6c5e978" disablePageValidation="false">
+  <PageAlias>ERPBillTo</PageAlias>
+  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <InheritTemplate>false</InheritTemplate>
+  <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
+  <Properties>
+    <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.IERPBillTo,Sage.Entity.Interfaces</Property>
+  </Properties>
+  <TemplateProperties />
+  <IsDefaultPage>false</IsDefaultPage>
+  <ExcludedGlobalModules />
+  <AppliedSecurity>Entities/ErpBillTo/View</AppliedSecurity>
+  <IncludeScript />
+</PortalPage>

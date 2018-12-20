@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/Data/SDataStore", [
     'dojo/_base/declare',
     'dojo/_base/lang'
 ],

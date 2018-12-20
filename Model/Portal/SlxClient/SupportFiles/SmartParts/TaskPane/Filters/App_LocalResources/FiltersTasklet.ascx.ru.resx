@@ -117,14 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BlankText" xml:space="preserve">
+    <value>(пусто)</value>
+  </data>
   <data name="ClearAll" xml:space="preserve">
     <value>Очистить все</value>
-  </data>
-  <data name="ShowAll" xml:space="preserve">
-    <value>... Все</value>
-  </data>
-  <data name="BlankText" xml:space="preserve">
-    <value>пустой</value>
   </data>
   <data name="DialogCancel" xml:space="preserve">
     <value>Отмена</value>
@@ -132,25 +129,28 @@
   <data name="DialogMessage" xml:space="preserve">
     <value>Выберите фильтры из следующих полей:</value>
   </data>
-  <data name="NullText" xml:space="preserve">
-    <value>нуль</value>
-  </data>
-  <data name="UndoFilters" xml:space="preserve">
-    <value>Отменить фильтры</value>
+  <data name="DialogOK" xml:space="preserve">
+    <value>OК</value>
   </data>
   <data name="DialogTitle" xml:space="preserve">
-    <value>Изменить фильтры</value>
+    <value>Редактировать фильтры</value>
+  </data>
+  <data name="EditTool.Text" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="NullText" xml:space="preserve">
+    <value>NULL</value>
   </data>
   <data name="SelectAll" xml:space="preserve">
     <value>Выбрать все</value>
   </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>... все</value>
+  </data>
   <data name="ShowMore" xml:space="preserve">
     <value>... еще</value>
   </data>
-  <data name="EditTool.Text" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="DialogOK" xml:space="preserve">
-    <value>Ок</value>
+  <data name="UndoFilters" xml:space="preserve">
+    <value>Отменить фильтры</value>
   </data>
 </root>

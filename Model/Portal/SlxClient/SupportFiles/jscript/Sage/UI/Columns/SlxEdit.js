@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Columns/SlxEdit", [
     'dojo/i18n!./nls/SlxEdit',
     'dojo/_base/declare'
 ],

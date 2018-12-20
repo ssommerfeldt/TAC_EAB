@@ -1,31 +1,31 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-    'Sage/MainView/ReportMgr/BaseListPanelConfig',
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/SchedulesListPanelConfig", [
+    'Sage/MainView/_BaseListPanelConfig',
     'Sage/MainView/ReportMgr/SchedulesSDataSummaryFormatterScope',
     'dojo/_base/declare',
     'dojo/i18n!./nls/SchedulesListPanelConfig',
     'Sage/Utility/Jobs',
-    'Sage/MainView/ReportMgr/ReportManagerFormatter',
-    'Sage/UI/Columns/DateTime',
-    'dojo/_base/lang'
+    'Sage/UI/Controls/GridParts/Columns/DateTime',
+    'dojo/_base/lang',
+    'dojo/i18n!./templates/nls/SchedulesListSummary',
+    'dojo/i18n!./templates/nls/ScheduleDetailSummary'
 ],
 function (
-    baseListPanelConfig,
+    _BaseListPanelConfig,
     SchedulesSDataSummaryFormatterScope,
     declare,
     nlsResources,
     jobUtility,
-    ReportManagerFormatter,
     slxDateTimeColumn,
     dojoLang
 ) {
-    var schedulesListPanelConfig = declare('Sage.MainView.ReportMgr.SchedulesListPanelConfig', [baseListPanelConfig], {
+    var schedulesListPanelConfig = declare('Sage.MainView.ReportMgr.SchedulesListPanelConfig', [_BaseListPanelConfig], {
         _listId: 'Schedules',
         _resourceKind: 'triggers',
-        _nlsResources: nlsResources,
         _contextMenu: 'ReportManagerListContextMenu',
         _currentListContextSubMenu: 'ReportSchedulesListContextMenu',
         constructor: function () {
+            dojoLang.mixin(this, nlsResources);
             //Get SData Service for Scheduling endpoint, set service for ExecutionsListPanelConfig
             var jobService = Sage.Services.getService('JobService');
             this._service = jobService.getSchedulingSDataService();
@@ -44,20 +44,18 @@ function (
         },
         _getStructure: function () {
             return [
-                { field: 'job', name: nlsResources.colJobName, width: '100px', formatter: jobUtility.formatJobDescription },
-                { field: '$descriptor', name: nlsResources.colNameDescription, width: '100px' },
-                { field: '_item', name: nlsResources.colNameTemplate, width: '100px', formatter: ReportManagerFormatter.formatTemplateName },
-                { field: 'user', name: nlsResources.colNameRunAsUser, width: '100px', formatter: jobUtility.formatUser },
-                { field: 'startTimeUtc', type: slxDateTimeColumn, name: nlsResources.colNameStartTimeUtc, width: '100px' },
-                { field: 'endTimeUtc', type: slxDateTimeColumn, name: nlsResources.colNameEndTimeUtc, width: '100px' },
-                { field: 'priority', name: nlsResources.colNamePriority, width: '100px' },
-                { field: 'status', name: nlsResources.colNameStatus, width: '100px' },
-                { field: 'timesTriggered', name: nlsResources.colNameExecutionCount, width: '100px' }
+                { field: 'job', label: this.colJobName, width: '100px', formatter: jobUtility.formatJobDescription },
+                { field: '$descriptor', label: this.colNameDescription, width: '100px' },
+                { field: 'user', label: this.colNameRunAsUser, width: '100px', formatter: jobUtility.formatUser },
+                { field: 'startTimeUtc', type: slxDateTimeColumn, label: this.colNameStartTimeUtc, width: '100px' },
+                { field: 'endTimeUtc', type: slxDateTimeColumn, label: this.colNameEndTimeUtc, width: '100px' },
+                { field: 'priority', label: this.colNamePriority, width: '100px' },
+                { field: 'status', label: this.colNameStatus, width: '100px' },
+                { field: 'timesTriggered', label: this.colNameExecutionCount, width: '100px' }
             ];
         },
         _getSelect: function () {
-            //Needed to set an empty select clause, otherwise the parameters collection is empty. We need the parameters collection to show the template name.
-            return ""; //['$key', 'job', 'user', 'startTimeUtc', 'endTimeUtc', 'repeatCount', 'repeatInterval', 'priority', 'status', 'timesTriggered', 'parameters'];
+            return ['$key', 'job', 'user', 'startTimeUtc', 'endTimeUtc', 'repeatCount', 'repeatInterval', 'priority', 'status', 'timesTriggered'];
         },
         _getInclude: function () {
             var includes = ['$descriptors,$key'];
@@ -106,8 +104,11 @@ function (
             return {
                 resourceKind: this._resourceKind,
                 requestConfiguration: this._getSummaryDetailRequestConfig(),
-                templateLocation: 'MainView/ReportMgr/Templates/ScheduleDetailSummary.html'
+                templateLocation: 'MainView/ReportMgr/templates/ScheduleDetailSummary.html'
             };
+        },
+        _getSummaryConfig: function () {
+            return false;
         },
         _getToolBars: function () {
             var toolBars = { items: [] };

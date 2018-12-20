@@ -117,47 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblRequiredMsg.Caption" xml:space="preserve">
-    <value>*  kennzeichnet ein Pflichtfeld</value>
-  </data>
-  <data name="radProgress_Uploaded" xml:space="preserve">
-    <value>Hochgeladen</value>
-  </data>
-  <data name="uplFile.Tooltip" xml:space="preserve">
-    <value>Zum Speicherort der hochzuladenden Datei wechseln</value>
-  </data>
-  <data name="chkAddToGroup.Caption" xml:space="preserve">
-    <value>Importierte Interessenten zu Ad-hoc-Gruppe hinzufügen</value>
+  <data name="lblFile.Caption" xml:space="preserve">
+    <value>Datei mit der Interessentenliste:</value>
   </data>
   <data name="ownDefaultOwner.Caption" xml:space="preserve">
     <value>Standardzugriffsberechtigter:</value>
   </data>
-  <data name="lblSelectFileHeader.Caption" xml:space="preserve">
-    <value>Wählen Sie zunächst eine Datei mit Interessenteninformationen aus.</value>
+  <data name="lueLeadSource.Caption" xml:space="preserve">
+    <value>Standard-Interessentenquelle:</value>
   </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Aktiv</value>
+  <data name="lueLeadSource.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
-  <data name="UploadFile_File" xml:space="preserve">
-    <value>Datei: </value>
+  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Typ</value>
   </data>
   <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Beschreibung</value>
   </data>
-  <data name="rdbAddToAdHocGroup.Caption" xml:space="preserve">
-    <value>Zu vorhandener Ad-hoc-Gruppe hinzufügen</value>
+  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Quellcode</value>
   </data>
-  <data name="lblLeadGroup.Caption" xml:space="preserve">
-    <value>Interessentengruppe:</value>
+  <data name="uplFile.Tooltip" xml:space="preserve">
+    <value>Zum Speicherort der hochzuladenden Datei wechseln</value>
   </data>
-  <data name="lblFile.Caption" xml:space="preserve">
-    <value>Datei mit der Interessentenliste:</value>
+  <data name="UploadFile_File" xml:space="preserve">
+    <value>Datei: </value>
   </data>
-  <data name="lblCurrentFile.Caption" xml:space="preserve">
-    <value>Datei mit aktueller Interessentenliste:</value>
-  </data>
-  <data name="Error_InvalidImportPath" xml:space="preserve">
-    <value>Der Import kann erst fortgesetzt werden, wenn der Anlagenpfad korrekt eingerichtet wurde. Bitte wenden Sie sich an den Administrator.</value>
+  <data name="UploadFile_Process" xml:space="preserve">
+    <value>Verarbeitet </value>
   </data>
   <data name="lblImportFile.Caption" xml:space="preserve">
     <value>Ausgewählte Importdatei:</value>
@@ -165,19 +153,31 @@
   <data name="radProgress_Cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Typ</value>
+  <data name="radProgress_Uploaded" xml:space="preserve">
+    <value>Hochgeladen </value>
   </data>
-  <data name="UploadFile_Process" xml:space="preserve">
-    <value>Verarbeitet </value>
+  <data name="lblSelectFileHeader.Caption" xml:space="preserve">
+    <value>Wählen Sie zunächst eine Datei mit Interessenteninformationen aus.</value>
+  </data>
+  <data name="lblLeadGroup.Caption" xml:space="preserve">
+    <value>Interessentengruppe:</value>
+  </data>
+  <data name="rdbAddToAdHocGroup.Caption" xml:space="preserve">
+    <value>Zu vorhandener Ad-hoc-Gruppe hinzufügen</value>
+  </data>
+  <data name="chkAddToGroup.Caption" xml:space="preserve">
+    <value>Importierte Interessenten zu Ad-hoc-Gruppe hinzufügen</value>
+  </data>
+  <data name="lblRequiredMsg.Caption" xml:space="preserve">
+    <value>* kennzeichnet ein Pflichtfeld.</value>
   </data>
   <data name="rdbCreateAdHocGroup.Caption" xml:space="preserve">
     <value>Neue Ad-hoc-Gruppe erstellen</value>
   </data>
-  <data name="lueLeadSource.Caption" xml:space="preserve">
-    <value>Standard-Interessentenquelle:</value>
+  <data name="lblCurrentFile.Caption" xml:space="preserve">
+    <value>Datei mit aktueller Interessentenliste:</value>
   </data>
-  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Quellcode</value>
+  <data name="Error_InvalidImportPath" xml:space="preserve">
+    <value>Der Import kann erst fortgesetzt werden, wenn der Anlagenpfad korrekt eingerichtet wurde. Bitte wenden Sie sich an den Administrator.</value>
   </data>
 </root>

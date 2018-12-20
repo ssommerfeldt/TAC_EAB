@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/_customSelectMixin", [
     'dijit/_Widget',
     'Sage/_Templated',
     'dijit/form/ComboBox',

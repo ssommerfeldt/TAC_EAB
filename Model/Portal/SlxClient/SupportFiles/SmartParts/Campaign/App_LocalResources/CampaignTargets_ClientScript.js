@@ -1,6 +1,5 @@
 <script language="javascript" type="text/javascript">
-    
-    var ct_selectedTargetCtrlId = "@txtSelectedTargetId";
+var ct_selectedTargetCtrlId = "@txtSelectedTargetId";
     var ct_selectedTargetsCtrlId = "@txtSelectedTargetsId";
     var ct_selectedTargetContextCtrlId = "@txtSelectedTargetContextId";
     var ct_objTargets = new Object();
@@ -102,7 +101,7 @@
     
     function ct_SetStyleDisplay(controlId, displayType)
     {
-        var control = document.getElementById(controlId)
+        var control = document.getElementById(controlId);
         if (control != null)
         {
             control.style.display = displayType;
@@ -128,7 +127,7 @@
     function onInitialTargetClick(gridInitialTargetCtrlId, newInitialTargetCtrlId, saveButtonId, targetId)
     {
         var value = false;
-        var grdInitTarget = document.getElementById(gridInitialTargetCtrlId)
+        var grdInitTarget = document.getElementById(gridInitialTargetCtrlId);
         if (grdInitTarget != null)
         {
             //get the changed value from the gridview
@@ -188,25 +187,30 @@
     {
        ct_objTargets = new Object();
        document.getElementById(ct_selectedTargetsCtrlId).value = '';
+       ct_SaveSelectState(ct_objTargets);
        return true;
     }
     
     
     function ct_OnTargetSelectClick(sender, targetId)
     {
-        ct_objTargets[targetId]= sender.checked
+        ct_objTargets[targetId]= sender.checked;
         ct_SaveSelectState(ct_objTargets);
     }
        
     function ct_SaveSelectState(targets)
     {
         var context = '<Targets>';
-        for (var Id in targets) 
-        {
+        for (var Id in targets) {
             context = context + "<Target Id='" + Id + "' Selected='" + targets[Id] + "'/>" ; 
         }
         context = context + '</Targets>';
-        document.getElementById(ct_selectedTargetsCtrlId).value = context;
+        var contextService = Sage.Services.getService("ClientContextService");
+        if (contextService.containsKey("ct_selectedTargetsCtrlId")) {
+            contextService.setValue("ct_selectedTargetsCtrlId", context);
+        } else {
+            contextService.add("ct_selectedTargetsCtrlId", context);
+        }
     }
 
     function ct_ShowHideFilters()

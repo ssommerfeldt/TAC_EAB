@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, $addHandler, $removeHandler */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, $addHandler, $removeHandler */
+define("Sage/Services/ClientBindingManagerService", [
     'dojo/_base/declare'
 ],
 function (declare) {
@@ -97,6 +97,7 @@ function (declare) {
             if ((this._WatchChanges) && (this.hasDirtyData()) && (this._ShowWarningOnPageExit)) {
                 if (confirm(this._PageExitWarningMessage)) {
                     this.clearDirtyStatus();
+					this._DirtyAjaxItems = [];
                     return true;
                 } else {
                     return false;
@@ -271,7 +272,8 @@ function (declare) {
         },
         setControlFocus: function (ctrlid) {
             var trySelect = function (elem) {
-                if ((typeof (elem.select) == "function") || (typeof (elem.select) == "object")) {
+                if (typeof elem === 'undefined') return false;
+                if ((elem && elem.select) && ((typeof (elem.select) == "function") || (typeof (elem.select) == "object"))) {
                     elem.select();
                     // IE needs focus as well as select, or
                     // TAB will move to Navigation bar
@@ -297,7 +299,6 @@ function (declare) {
                 // elem.select() doesn't always give focus to some composite controls
                 //  so custom logic may be necessary per input type
                 if (elem) {
-                    console.log($("#" + ctrlid + " INPUT"));
                     // If this is a drop-down, the button would be selected
                     //  For: Picklist control
                     if (dojo.hasClass(elem, "dijitArrowButtonInner")) {
@@ -334,7 +335,6 @@ function (declare) {
                         };
                         $removeHandler(elem, "change", this.markDirty);
                     } catch (e) {
-                        console.error(e);
                     }
                     //TODO: dojo.connect
                     $addHandler(elem, "change", this.markDirty);

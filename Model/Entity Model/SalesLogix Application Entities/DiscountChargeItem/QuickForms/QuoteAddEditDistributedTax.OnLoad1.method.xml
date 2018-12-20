@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="b6347753-2e81-4de2-83ce-6e118799a327" lastModifiedUtc="2016-05-03T19:33:41.845157Z" name="OnLoad1" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="QuoteAddEditDistributedTax">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="c3bdf181-5997-4361-b5f8-cad55fd2c823" paramName="form" sequence="0" paramType="IQuoteAddEditDistributedTax" />
+    <OrmEntityMethodParam id="80abb491-5e2f-489a-a611-b4102e0a849a" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, window, define */
-define([
+/*globals Sage, dojo, window, define */
+define("Sage/Groups/GroupContextService", [
         'Sage/Utility',
         'dojo/string',
         'Sage/Data/SDataServiceRegistry',
@@ -7,7 +7,7 @@ define([
         'dojo/_base/lang',
         'dojo/_base/declare',
         'dojo/_base/array'
-    ],
+],
 function (
         utility,
         dString,
@@ -42,7 +42,7 @@ function (
                 dojo.subscribe(dString.substitute("/ui/filters/default/refresh"), this, this._onDefaultFilterRefresh)
             );
 
-            ready(lang.hitch(this, function(){
+            ready(lang.hitch(this, function () {
                 if (!this.isContextRequired()) {
                     var context = utility.getValue(window, 'Sage.Groups._groupContext'),
                         container = utility.getValue(window, 'Sage.UI.DataStore.Filters');
@@ -68,17 +68,17 @@ function (
                 i,
                 j,
                 value;
-                
+
             for (i = 0; i < sourceDefinitionSet.length; i++) {
                 sourceItem = sourceDefinitionSet[i];
                 resultItem = {
-                        '$key': sourceItem['id'],
-                        '$partial': true,
-                        'filterName': sourceItem['filterName'],
-                        'displayName': sourceItem['displayName'],
-                        'propertyName': sourceItem['propertyName'],
-                        'propertyDataTypeId': sourceItem['propertyDataTypeId'],
-                        'details': {}
+                    '$key': sourceItem['id'],
+                    '$partial': true,
+                    'filterName': sourceItem['filterName'],
+                    'displayName': sourceItem['displayName'],
+                    'propertyName': sourceItem['propertyName'],
+                    'propertyDataTypeId': sourceItem['propertyDataTypeId'],
+                    'details': {}
                 };
 
                 if (sourceItem['filterType'] == 'rangeFilter') {
@@ -87,11 +87,11 @@ function (
                     };
                 }
                 if (sourceItem['filterType'] == 'lookupFilter') {
-                    resultItem['details']['lookupFilter'] = {};                    
+                    resultItem['details']['lookupFilter'] = {};
                 } else {
                     resultItem['details']['distinctFilter'] = {};
                 }
-                
+
                 resultDefinitionSet[sourceItem['id']] = resultItem;
             }
 
@@ -103,7 +103,7 @@ function (
                     value = sourceItem['rangeValues'][j];
                     resultItem[value['rangeName']] = lang.mixin({}, value);
                 }
-                
+
                 for (j = 0; j < sourceItem['distinctValues'].length; j++) {
                     value = sourceItem['distinctValues'][j];
                     if (typeof value === 'string') {
@@ -112,7 +112,7 @@ function (
                 }
                 for (j = 0; j < sourceItem['lookupValues'].length; j++) {
                     var lookuValue = sourceItem['lookupValues'][j];
-                    resultItem['value'] = lookuValue;               
+                    resultItem['value'] = lookuValue;
                 }
                 resultApplied[sourceItem['id']] = resultItem;
             }
@@ -143,7 +143,7 @@ function (
             return results;
         },
         createCompatibleContext: function (context) {
-            if(context['currentGroupId'] == 'LOOKUPRESULTS') {
+            if (context['currentGroupId'] == 'LOOKUPRESULTS') {
                 context['currentName'] = 'Lookup Results';
             }
             var compatibleContext = {
@@ -172,7 +172,7 @@ function (
             if (!context['appliedFilterInfo']) {
                 delete compatibleContext.AppliedFilterInfo;
             }
-            
+
             return compatibleContext;
         },
         _onDefaultFilterRefresh: function (applied, definitionSet, filterManager) {
@@ -185,11 +185,10 @@ function (
                         'filter': dojo.toJson(filterManager.createValueSet())
                     }
                 };
-                if((groupContext['CurrentGroupID'] === null)|| (groupContext['CurrentGroupID'] === ''))
-                {
-                   return;
-                }
-                
+            if ((groupContext['CurrentGroupID'] === null) || (groupContext['CurrentGroupID'] === '')) {
+                return;
+            }
+
             var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
                 .setOperationName('applyFilterToGroup');
 
@@ -238,15 +237,24 @@ function (
                 this.onContextSet(container._groupContext);
             }
         },
-        setCurrentGroup: function (groupId, groupName) {
+        setCurrentGroup: function (groupId, groupName, lookupCondition) {
+
             var context = this.getContext();
-            if (context && (context['CurrentGroupID'] === groupId)) {
-                if (groupId === 'LOOKUPRESULTS') {
-                    context['currentName'] = 'Lookup Results';
-                    //the conditions probably changed, so just fire onCurrentGroupChanged...
-                    this.onCurrentGroupChanged({ current: context });
+
+            if (context && (context['CurrentGroupID'] === groupId)) { //This condition is met when the user clicks on an item on the list view, the system loads the detail view, and setCurrentGroup is invoked. In this case, we are not actually "changing" group.
+              if (groupId === 'LOOKUPRESULTS') {
+                //If groupId is LOOKUPRESULTS, then if no lookupcondition or if no change in condition then, no need to refresh the list, just return - so that we can avoid double refresh for lookups.
+                if ((!lookupCondition) || (context.LookupResultsConditions === lookupCondition)) {
+                    return;
                 }
-                return;
+                context['currentName'] = 'Lookup Results';
+              }
+
+                //NRADDATZ: Needed to add this flag to avoid the Group Changed event being triggered twice the first time the page is loaded.
+                //For lookup results though, we still want the group change to trigger, since conditions (and the recordset matching them) probably changed.
+                if (groupId !== 'LOOKUPRESULTS') {
+                    this.doNotFireGroupChangedEvent = true;
+                }
             }
 
             //assume a groupID is coming in - and that it is an ID (not the name)...
@@ -275,7 +283,11 @@ function (
                 compatibleContext = context && this.createCompatibleContext(context);
             if (compatibleContext) this.setContext(compatibleContext);
 
-            this.onCurrentGroupChanged({ current: compatibleContext });
+            //NRADDATZ: Needed to add this flag to avoid the Group Changed event being triggered twice the first time the page is loaded.
+            if (!this.doNotFireGroupChangedEvent) {
+                this.onCurrentGroupChanged({ current: compatibleContext });
+            }
+            this.doNotFireGroupChangedEvent = false;
         },
         _onSetContextRequestFailure: function (response, o) {
         },
@@ -292,7 +304,7 @@ function (
                 // We need to apply the the change before publishing the applied filters Info
                 //The filter panel will check and see if the group is the same before appling the filter info.
                 this.publishFiltersApplied(options['current']['AppliedFilterInfo']);
-            }          
+            }
         },
         publishFiltersApplied: function (appliedFilterInfo) {
             // When the dom is ready publish that we have applied filters.
@@ -325,11 +337,11 @@ function (
             });
 
             Sage.Groups._groupContext.CurrentFamily = Sage.Groups._groupContext.CurrentFamily.toUpperCase();
-            
+
             store.fetch({
                 query: dojo.string.substitute("upper(family) eq '${CurrentFamily}' and isAdHoc", Sage.Groups._groupContext),
                 count: 1000,
-                sort: [{ attribute: 'name'}],
+                sort: [{ attribute: 'name' }],
                 start: 0,
                 onComplete: function (data) {
                     this._adHocGroupList = data;

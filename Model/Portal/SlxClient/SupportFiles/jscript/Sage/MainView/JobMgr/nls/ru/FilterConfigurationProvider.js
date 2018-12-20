@@ -1,3 +1,1 @@
-define((
-{}
-));
+define("Sage/MainView/JobMgr/nls/ru/FilterConfigurationProvider", {});

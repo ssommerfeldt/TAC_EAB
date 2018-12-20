@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="grdResponses.Add.Column" xml:space="preserve">
     <value>Add</value>
@@ -183,7 +183,7 @@
   <data name="grdResponses.ConfirmDelete_Msg" xml:space="preserve">
     <value>Are you sure you want to delete this response?</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="TargetResponses_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>TargetResponses_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -210,5 +210,11 @@
   </data>
   <data name="EditTargetResponse_DialogCaption" xml:space="preserve">
     <value>Edit Target Response</value>
+  </data>
+  <data name="grdResponses.Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="grdResponses.Lead" xml:space="preserve">
+    <value>Lead</value>
   </data>
 </root>

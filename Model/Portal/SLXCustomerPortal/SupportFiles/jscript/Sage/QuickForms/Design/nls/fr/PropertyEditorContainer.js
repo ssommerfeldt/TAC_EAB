@@ -1,4 +1,4 @@
-define((
-{ specificTitleFormatText: '${0} Propriétés (${1})',
-  genericTitleFormatText: '${0} Propriétés' }
-));
+define("Sage/QuickForms/Design/nls/fr/PropertyEditorContainer", {
+    "specificTitleFormatText": "Propriétés de ${0} (${1})",
+    "genericTitleFormatText": "Propriétés de ${0}"
+});

@@ -1,4 +1,4 @@
-define({
+define("Sage/Services/nls/en/ReportingService", {
     txtUnsupportedReportType: 'Unsupported report type: ${0}.',
     txtUnexpectedError: 'Sorry an error occurred: ${0} ${1}.',
     invalidEntityError: 'The entity ID has not been defined or could not be determined.',

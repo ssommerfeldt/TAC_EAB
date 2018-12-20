@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Alarms/JobNotificationPopup", [
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
     'dijit/_Widget',
@@ -57,7 +57,6 @@ function (
             }
         },
         _onNotificationRequestComplete: function () {
-            
             var count = this.context.query.scope.rowCount;
         },
         _loadNotifications: function () {
@@ -95,19 +94,6 @@ function (
         _onDblClick: function () {
         },
         _getColumnLayout: function () {
-            function formatJobLink(item, rowIndex, cell) {
-                //if this was a job which wrote to the result property the format the display as a link to open the attachment, the result should be
-                //in the format of a URI i.e. SlxAttachment\\ID or SlxReport\\ID
-                var result = cell.grid.store.getValue(item, 'result');
-                if (!result) return this.defaultValue;
-                var parts = result.split('://');
-                if (parts.length === 1) {
-                    return this.defaultValue;
-                }
-                return dString.substitute('<a href="javascript: Sage.Utility.File.Attachment.getAttachment(\'${1}\');" title="${0}">${0}</a>',
-                    [item.trigger ? item.trigger.$descriptor : '', parts[1]]);
-            }
-
             function formatProgress(progress) {
                 if (!progress || typeof progress !== "number") {
                     progress = 0;
@@ -119,13 +105,31 @@ function (
                 });
                 return progressBar;
             }
+            var formatStatus = dojo.hitch(this, function formatStatus(status) {
+                if (!status)
+                    return '';
+                switch (status) {
+                    case 'Running':
+                        return this.notificationPopupStrings.executionStatusRunning;
+                    case 'Complete':
+                        return this.notificationPopupStrings.executionStatusComplete;
+                    case 'Interrupting':
+                        return this.notificationPopupStrings.executionStatusInterrupting;
+                    case 'Interrupted':
+                        return this.notificationPopupStrings.executionStatusInterrupted;
+                    case 'Error':
+                        return this.notificationPopupStrings.executionStatusError;
+                    default:
+                        return this.notificationPopupStrings.executionStatusUndefined;
+                }
+            });
 
             var columns = [
                 { width: 10, field: '$key', name: ' ', sortable: false, hidden: true },
                 { width: 10, field: 'job', name: this.notificationPopupStrings.colNameJobName || 'Type', sortable: true, formatter: jobUtility.formatJobDescription },
                 { width: 8, field: 'progress', name: this.notificationPopupStrings.colNameProgress || 'Progress', formatter: formatProgress, sortable: false },
-                { width: 6, field: 'status', name: this.notificationPopupStrings.colNameStatus || 'Status', sortable: true },
-                { width: 24, field: '_item', name: this.notificationPopupStrings.colExecutionResult || 'Result', formatter: formatJobLink, sortable: false }];
+                { width: 6, field: 'status', name: this.notificationPopupStrings.colNameStatus || 'Status', formatter: formatStatus, sortable: true },
+                { width: 24, field: '_item', name: this.notificationPopupStrings.colExecutionResult || 'Result', formatter: jobUtility.formatJobResult, sortable: false }];
             return columns;
         },
         onClose: function () {

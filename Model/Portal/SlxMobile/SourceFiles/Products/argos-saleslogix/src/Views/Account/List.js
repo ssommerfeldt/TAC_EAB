@@ -1,186 +1,147 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import string from 'dojo/string';
+import action from '../../Action';
+import utility from 'argos/Utility';
+import List from 'argos/List';
+import _GroupListMixin from '../_GroupListMixin';
+import _MetricListMixin from '../_MetricListMixin';
+import _CardLayoutListMixin from '../_CardLayoutListMixin';
+import _RightDrawerListMixin from '../_RightDrawerListMixin';
+import MODEL_NAMES from '../../Models/Names';
+import getResource from 'argos/I18n';
+
+
+const resource = getResource('accountList');
+
+/**
+ * @class crm.Views.Account.List
+ *
+ * @extends argos.List
+ * @requires argos.List
+ * @requires argos.Format
+ * @requires argos.Utility
+ * @requires argos.Convert
+ *
+ * @requires crm.Action
+ * @requires crm.Views._GroupListMixin
+ * @requires crm.Views._MetricListMixin
+ * @requires crm.Views._CardLayoutListMixin
+ * @requires crm.Views._RightDrawerListMixin
+ *
  */
-define('Mobile/SalesLogix/Views/Account/List', [
-    'dojo/_base/declare',
-    'dojo/_base/array',
-    'dojo/string',
-    'Mobile/SalesLogix/Action',
-    'Sage/Platform/Mobile/Format',
-    'Sage/Platform/Mobile/Utility',
-    'Sage/Platform/Mobile/Convert',
-    'Mobile/SalesLogix/Views/History/RelatedView',
-    'Sage/Platform/Mobile/RelatedViewWidget',
-    'Sage/Platform/Mobile/List',
-    '../_MetricListMixin',
-    '../_CardLayoutListMixin',
-    '../_RightDrawerListMixin'
-], function(
-    declare,
-    array,
-    string,
-    action,
-    format,
-    utility,
-    Convert,
-    HistoryRelatedView,
-    RelatedViewWidget,
-    List,
-    _MetricListMixin,
-    _CardLayoutListMixin,
-    _RightDrawerListMixin
-) {
+const __class = declare('crm.Views.Account.List', [List, _RightDrawerListMixin, _MetricListMixin, _CardLayoutListMixin, _GroupListMixin], {
+  // Templates
+  itemTemplate: new Simplate([
+    '<h3>{%: $.AccountName %}</h3>',
+    '<h4>{%: $.Industry %}</h4>',
+    '<h4>',
+    '{%: $$.joinFields(" | ", [$.Type, $.SubType]) %}',
+    '</h4>',
+    '<h4>{%: $.AccountManager && $.AccountManager.UserInfo ? $.AccountManager.UserInfo.UserName : "" %}',
+    '{% if ($.Owner && $.Owner.OwnerDescription) { %} | {%: $.Owner.OwnerDescription %}{% } %}</h4>',
+    '<h4>{%: $.WebAddress %}</h4>',
+    '{% if ($.MainPhone) { %}',
+    '<h4>',
+    '{%: $$.phoneAbbreviationText %} <span class="href" data-action="callMain" data-key="{%: $.$key %}">{%: argos.Format.phone($.MainPhone) %}</span>',
+    '</h4>',
+    '{% } %}',
+    '{% if ($.Fax) { %}',
+    '<h4>',
+    '{%: $$.faxAbbreviationText + argos.Format.phone($.Fax) %}',
+    '</h4>',
+    '{% } %}',
+  ]),
+  groupsEnabled: true,
+  enableDynamicGroupLayout: true,
+  groupLayoutItemTemplate: new Simplate([
+    '<div style="float:left; ">',
+    '<h3><span class="group-label">{%= $$.getGroupFieldLabelByName($,"AccountName") %} </span><span class="group-entry"><strong>{%= $$.getGroupFieldValueByName($,"AccountName") %}</strong></span></h2>',
+    '<h4><span class="group-label">{%= $$.getGroupFieldLabelByName($,"MainPhone") %} </span><span class="group-entry">{%= $$.getGroupFieldValueByName($, "MainPhone") %}</span></h4>',
+    '</div><div style="float:left;">',
+    '<h4><span class="group-label">{%= $$.getGroupFieldLabelByName($,"Status") %} </span><span class="group-entry">{%= $$.getGroupFieldValueByName($, "Status") %}</span></h4>',
+    '<h4><span class="group-label">{%= $$.getGroupFieldLabelByName($,"Type") %} </span><span class="group-entry">{%= $$.getGroupFieldValueByName($, "Type") %}</span></h4>',
+    '</div>',
+  ]),
 
-    return declare('Mobile.SalesLogix.Views.Account.List', [List, _RightDrawerListMixin, _MetricListMixin, _CardLayoutListMixin], {
-        //Templates
-        itemTemplate: new Simplate([
-            '<h3>{%: $.AccountName %}</h3>',
-            '<h4>{%: $.Industry %}</h4>',
-            '<h4>',
-                '{%: $$.joinFields(" | ", [$.Type, $.SubType]) %}',
-            '</h4>',
-            '<h4>{%: $.AccountManager && $.AccountManager.UserInfo ? $.AccountManager.UserInfo.UserName : "" %} | {%: $.Owner.OwnerDescription %}</h4>',
-            '<h4>{%: $.WebAddress %}</h4>',
-            '{% if ($.MainPhone) { %}',
-                '<h4>',
-                    '{%: $$.phoneAbbreviationText + Sage.Platform.Mobile.Format.phone($.MainPhone) %}',
-                '</h4>',
-            '{% } %}',
-            '{% if ($.Fax) { %}',
-                '<h4>',
-                    '{%: $$.faxAbbreviationText + Sage.Platform.Mobile.Format.phone($.Fax) %}',
-                '</h4>',
-            '{% } %}'
-        ]),
 
-        joinFields: function(sep, fields) {
-            return utility.joinFields(sep, fields);
-        },
+  joinFields: function joinFields(sep, fields) {
+    return utility.joinFields(sep, fields);
+  },
 
-        //Localization
-        titleText: 'Accounts',
-        activitiesText: 'Activities',
-        notesText: 'Notes',
-        scheduleText: 'Schedule',
-        editActionText: 'Edit',
-        callMainActionText: 'Call Main',
-        viewContactsActionText: 'Contacts',
-        addNoteActionText: 'Add Note',
-        addActivityActionText: 'Add Activity',
-        addAttachmentActionText: 'Add Attachment',
-        phoneAbbreviationText: 'Phone: ',
-        faxAbbreviationText: 'Fax: ',
+  // Localization
+  titleText: resource.titleText,
+  activitiesText: resource.titleText,
+  notesText: resource.notesText,
+  scheduleText: resource.scheduleText,
+  editActionText: resource.editActionText,
+  callMainActionText: resource.callMainActionText,
+  viewContactsActionText: resource.viewContactsActionText,
+  addNoteActionText: resource.addNoteActionText,
+  addActivityActionText: resource.addActivityActionText,
+  addAttachmentActionText: resource.addAttachmentActionText,
+  phoneAbbreviationText: resource.phoneAbbreviationText,
+  faxAbbreviationText: resource.faxAbbreviationText,
+  offlineText: resource.offlineText,
 
-        //View Properties        
-        detailView: 'account_detail',
-        icon: 'content/images/icons/Company_24.png',
-        id: 'account_list',
-        security: 'Entities/Account/View',
-        insertView: 'account_edit',
-        queryOrderBy: 'AccountNameUpper',
-        insertSecurity: 'Entities/Account/Add',
-        querySelect: [
-            'AccountName',
-            'AccountManager/UserInfo/UserName',
-            'AccountManager/UserInfo/LastName',
-            'AccountManager/UserInfo/FirstName',
-            'Owner/OwnerDescription',
-            'MainPhone',
-            'WebAddress',
-            'Industry',
-            'LeadSource/Description',
-            'MainPhone',
-            'Fax',
-            'Status',
-            'SubType',
-            'Type',
-            'ModifyDate'
-        ],
-        resourceKind: 'accounts',
-        entityName: 'Account',
-        allowSelection: true,
-        enableActions: true,
-        pageSize: 10,
-        hashTagQueries: {
-            'my-accounts': function() {
-                return 'AccountManager.Id eq "' + App.context.user.$key + '"';
-            },
-            'active': 'Status eq "Active"',
-            'inactive': 'Status eq "Inactive"',
-            'suspect': 'Type eq "Suspect"',
-            'lead': 'Type eq "Lead"',
-            'prospect': 'Type eq "Prospect"',
-            'customer': 'Type eq "Customer"',
-            'partner': 'Type eq "Partner"',
-            'vendor': 'Type eq "Vendor"',
-            'influencer': 'Type eq "Influencer"',
-            'competitor': 'Type eq "Competitor"'
-        },
-        hashTagQueriesText: {
-            'my-accounts': 'my-accounts',
-            'active': 'active',
-            'inactive': 'inactive',
-            'suspect': 'suspect',
-            'lead': 'lead',
-            'prospect': 'prospect',
-            'customer': 'customer',
-            'partner': 'partner',
-            'vendor': 'vendor',
-            'influencer': 'influencer',
-            'competitor': 'competitor'
-        },
-        defaultSearchTerm: function() {
-            return '#' + this.hashTagQueriesText['my-accounts'];
-        },
-        createActionLayout: function() {
-            return this.actions || (this.actions = [{
-                id: 'edit',
-                icon: 'content/images/icons/edit_24.png',
-                label: this.editActionText,
-                action: 'navigateToEditView'
-            }, {
-                id: 'callMain',
-                icon: 'content/images/icons/Call_24x24.png',
-                label: this.callMainActionText,
-                enabled: action.hasProperty.bindDelegate(this, 'MainPhone'),
-                fn: action.callPhone.bindDelegate(this, 'MainPhone')
-            }, {
-                id: 'viewContacts',
-                icon: 'content/images/icons/Contacts_24x24.png',
-                label: this.viewContactsActionText,
-                fn: this.navigateToRelatedView.bindDelegate(this, 'contact_related', 'Account.id eq "${0}"')
-            }, {
-                id: 'addNote',
-                icon: 'content/images/icons/New_Note_24x24.png',
-                label: this.addNoteActionText,
-                fn: action.addNote.bindDelegate(this)
-            }, {
-                id: 'addActivity',
-                icon: 'content/images/icons/Schedule_ToDo_24x24.png',
-                label: this.addActivityActionText,
-                fn: action.addActivity.bindDelegate(this)
-            }, {
-                id: 'addAttachment',
-                icon: 'content/images/icons/Attachment_24.png',
-                label: this.addAttachmentActionText,
-                fn: action.addAttachment.bindDelegate(this)
-            }]
+  // View Properties
+  detailView: 'account_detail',
+  itemIconClass: 'fa fa-building-o fa-2x',
+  id: 'account_list',
+  security: 'Entities/Account/View',
+  insertView: 'account_edit',
+  insertSecurity: 'Entities/Account/Add',
+  entityName: 'Account',
+  allowSelection: true,
+  enableActions: true,
+  pageSize: 10,
+  offlineIds: null,
+  resourceKind: 'accounts',
+  modelName: MODEL_NAMES.ACCOUNT,
 
-            );
-        },
-        formatSearchQuery: function(searchQuery) {
-            return string.substitute('AccountNameUpper like "${0}%"', [this.escapeSearchQuery(searchQuery.toUpperCase())]);
-        },
-        createRelatedViewLayout: function() {
-            return this.relatedViews || (this.relatedViews = [{
-                widgetType: HistoryRelatedView,
-                id: 'account_relatedNotes',
-                autoLoad:true,
-                enabled: true,
-                relatedProperty:'AccountId',
-                where: function(entry) { return "AccountId eq '" + entry.$key + "' and Type ne 'atDatabaseChange'"; }
-            }]);
-        }
-    });
+  callMain: function callMain(params) {
+    this.invokeActionItemBy((a) => {
+      return a.id === 'callMain';
+    }, params.key);
+  },
+  createActionLayout: function createActionLayout() {
+    return this.actions || (this.actions = [{
+      id: 'edit',
+      cls: 'fa fa-pencil fa-2x',
+      label: this.editActionText,
+      security: 'Entities/Account/Edit',
+      action: 'navigateToEditView',
+    }, {
+      id: 'callMain',
+      cls: 'fa fa-phone-square fa-2x',
+      label: this.callMainActionText,
+      enabled: action.hasProperty.bindDelegate(this, 'MainPhone'),
+      fn: action.callPhone.bindDelegate(this, 'MainPhone'),
+    }, {
+      id: 'viewContacts',
+      label: this.viewContactsActionText,
+      fn: this.navigateToRelatedView.bindDelegate(this, 'contact_related', 'Account.id eq "${0}"'),
+    }, {
+      id: 'addNote',
+      cls: 'fa fa-edit fa-2x',
+      label: this.addNoteActionText,
+      fn: action.addNote.bindDelegate(this),
+    }, {
+      id: 'addActivity',
+      cls: 'fa fa-calendar fa-2x',
+      label: this.addActivityActionText,
+      fn: action.addActivity.bindDelegate(this),
+    }, {
+      id: 'addAttachment',
+      cls: 'fa fa-paperclip fa-2x',
+      label: this.addAttachmentActionText,
+      fn: action.addAttachment.bindDelegate(this),
+    }]);
+  },
+  formatSearchQuery: function formatSearchQuery(searchQuery) {
+    return string.substitute('AccountNameUpper like "${0}%"', [this.escapeSearchQuery(searchQuery.toUpperCase())]);
+  },
 });
 
+lang.setObject('Mobile.SalesLogix.Views.Account.List', __class);
+export default __class;

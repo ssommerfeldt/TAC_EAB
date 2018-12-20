@@ -6,7 +6,7 @@ using System.Text;
 
 public partial class SmartParts_Association_ContactAssociations : EntityBoundSmartPartInfoProvider //System.Web.UI.UserControl
 {
-    [ServiceDependency(Type = typeof(IEntityContextService), Required = true)]
+    [ServiceDependency]
     public IEntityContextService EntityService { get; set; }
 
     protected override void OnAddEntityBindings()

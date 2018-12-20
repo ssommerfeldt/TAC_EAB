@@ -112,123 +112,37 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Job_Status_Completed" xml:space="preserve">
-    <value>Заверш.</value>
-  </data>
-  <data name="Job_StartInfo" xml:space="preserve">
-    <value>{0} - {1}</value>
-  </data>
-  <data name="processingMessage" xml:space="preserve">
-    <value>Обработка записи {0} of {1} - ({2}%)</value>
-  </data>
-  <data name="Current_User_Unknown" xml:space="preserve">
-    <value>Неизвестен</value>
-  </data>
-  <data name="lblPrimary_Progress.Caption" xml:space="preserve">
-    <value>Пожалуйста, подождите, идет поиск дубликатов ...</value>
-  </data>
-  <data name="lblCompleteDate.Caption" xml:space="preserve">
-    <value>Дата завершен.:</value>
-  </data>
-  <data name="Job_Status_InProcess" xml:space="preserve">
-    <value>Обработка...</value>
-  </data>
-  <data name="Job_Status" xml:space="preserve">
-    <value>Статус: {0} </value>
-  </data>
-  <data name="lblJobNumber.Caption" xml:space="preserve">
-    <value>Номер задания:</value>
-  </data>
-  <data name="ViewJobResultsMsg" xml:space="preserve">
-    <value>Для просмотра результатов, кликните на номер задания ниже:</value>
-  </data>
-  <data name="AbortedMsg" xml:space="preserve">
-    <value>Задания отменены.</value>
-  </data>
-  <data name="ViewJobResultsMsgWithErrors" xml:space="preserve">
-    <value>Во время проверки дубликатов произошла одна или более ошибок.</value>
-  </data>
-  <data name="msgCancelDeDupProcess" xml:space="preserve">
-    <value>Вы уверены, что хотите отменить этот процесс?</value>
-  </data>
-  <data name="lblStartDate.Caption" xml:space="preserve">
-    <value>Дата нач.:</value>
-  </data>
-  <data name="CompletedMsg" xml:space="preserve">
-    <value>Задание завершено.</value>
+  <data name="ProcessingMsg" xml:space="preserve">
+    <value>Вы можете перейти в другое представление, пока идет процесс проверки дубликатов или посмотреть результаты, щелкнув номер задания ниже:</value>
   </data>
   <data name="lblDuplicateCount.Caption" xml:space="preserve">
     <value>Дубликаты:</value>
   </data>
-  <data name="lblStart.Caption" xml:space="preserve">
-    <value>Начат:</value>
-  </data>
-  <data name="ProcessingMsg" xml:space="preserve">
-    <value>Вы можите перейти в другое представление, пока идет процесс проверки дубликатов или посмотреть результаты, кликнув на номер задания ниже:</value>
-  </data>
-  <data name="DeDupProgress_ClientScript" xml:space="preserve">
-    <value>&lt;script language="javascript" type="text/javascript"&gt;
-
-var cmdCloseCtrlId = "@cmdCloseCtrlId";
-var _IsCompleted = false;
-
-function DeDup_InvokeClickEvent(control)
-{
-   if (document.createEvent)
-   {
-       // FireFox
-      var e = document.createEvent("MouseEvents");
-      e.initEvent("click", true, true);
-      control.dispatchEvent(e);      
-   }
-   else
-   {
-       // IE
-       control.click();
-   }
-}
-
-function DeDup_OnUpdateProgress(progressArea, args) {
-    if (typeof args === 'object' &amp;&amp; args !== null &amp;&amp; typeof args.get_progressData === 'function') {
-        var progData = args.get_progressData();
-        if (progData.ProcessCompleted === 'True') {
-            if (_IsCompleted) {
-                return false;
-            }
-            var elementStartCtrl = document.getElementById(cmdCloseCtrlId);
-            if (elementStartCtrl != null) {
-                DeDup_InvokeClickEvent(elementStartCtrl);
-            }
-            _IsCompleted = true;
-            return false;
-        }
-    }
-}
-
-&lt;/script&gt;
-</value>
-  </data>
-  <data name="lblProcessed.Caption" xml:space="preserve">
-    <value>Импортировано:</value>
-  </data>
-  <data name="lblTotalProcessed.Caption" xml:space="preserve">
-    <value>Обработано:</value>
-  </data>
-  <data name="error_JobAborted" xml:space="preserve">
-    <value>Задания отменены.</value>
+  <data name="lblPrimary_Progress.Caption" xml:space="preserve">
+    <value>Подождите, выполняется поиск дубликатов...</value>
   </data>
   <data name="cmdAbort.Caption" xml:space="preserve">
     <value>Прервать</value>
   </data>
-  <data name="lblStartedBy.Caption" xml:space="preserve">
-    <value>Начато:</value>
+  <data name="lblJobNumber.Caption" xml:space="preserve">
+    <value>Номер задания:</value>
   </data>
-  <data name="lblIJobName.Caption" xml:space="preserve">
-    <value>Имя задания:</value>
+  <data name="CompletedMsg" xml:space="preserve">
+    <value>Задание завершено.</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DeDupProgress_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>DeDupProgress_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="msgCancelDeDupProcess" xml:space="preserve">
+    <value>Действительно отменить этот процесс?</value>
+  </data>
+  <data name="processingMessage" xml:space="preserve">
+    <value>Обработка записи {0} из {1} — ({2}%)</value>
   </data>
 </root>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="802e36cb-4142-4565-b936-9a8b0bcdc78c" lastModifiedUtc="2017-06-16T14:11:34.0369835Z" name="QFButton_OnClick" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="EnableDEXDialog">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="03b2a3be-a772-4e40-8ad2-0233054a1dc8" paramName="form" sequence="0" paramType="IEnableDEXDialog" />
+    <OrmEntityMethodParam id="a7040720-67ae-410a-8bf0-d9bd29239141" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

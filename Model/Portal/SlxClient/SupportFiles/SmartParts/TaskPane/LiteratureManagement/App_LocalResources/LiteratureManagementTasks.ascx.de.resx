@@ -117,32 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Err_SelectionService" xml:space="preserve">
-    <value>Der Auswahldienst wurde nicht gefunden.</value>
-  </data>
-  <data name="LitTask_NoLabels" xml:space="preserve">
-    <value>Keine Etiketten</value>
-  </data>
-  <data name="TaskText_PrintLabels" xml:space="preserve">
-    <value>Etiketten drucken</value>
-  </data>
   <data name="Err_Complete" xml:space="preserve">
-    <value>Sie haben nicht die erforderliche Berechtigung, alle ausgewählten Einträge abzuschließen.</value>
+    <value>Sie haben nicht die erforderliche Berechtigung, alle ausgewählten Elemente abzuschließen.</value>
+  </data>
+  <data name="Err_Reject" xml:space="preserve">
+    <value>Sie haben nicht die erforderliche Berechtigung, alle ausgewählten Elemente abzulehnen.</value>
   </data>
   <data name="Err_Selection" xml:space="preserve">
     <value>Vor der Ausführung dieser Aktion muss mindestens ein Datensatz ausgewählt werden.</value>
   </data>
-  <data name="TaskText_Fulfill" xml:space="preserve">
-    <value>Erfüllen</value>
+  <data name="Err_SelectionContext" xml:space="preserve">
+    <value>Der Auswahlkontext konnte nicht abgerufen werden.</value>
+  </data>
+  <data name="Err_SelectionService" xml:space="preserve">
+    <value>Der Auswahldienst wurde nicht gefunden.</value>
+  </data>
+  <data name="LitTask_NoLabels" xml:space="preserve">
+    <value>Keine Bezeichnungen</value>
   </data>
   <data name="TaskText_Complete" xml:space="preserve">
     <value>Abschließen</value>
   </data>
-  <data name="Err_SelectionContext" xml:space="preserve">
-    <value>Der Auswahlkontext konnte nicht abgerufen werden.</value>
+  <data name="TaskText_Fulfill" xml:space="preserve">
+    <value>Erfüllen</value>
   </data>
-  <data name="Err_Reject" xml:space="preserve">
-    <value>Sie haben nicht die erforderliche Berechtigung, alle ausgewählten Einträge abzulehnen.</value>
+  <data name="TaskText_PrintLabels" xml:space="preserve">
+    <value>Etiketten drucken</value>
   </data>
   <data name="TaskText_Refresh" xml:space="preserve">
     <value>Aktualisieren</value>

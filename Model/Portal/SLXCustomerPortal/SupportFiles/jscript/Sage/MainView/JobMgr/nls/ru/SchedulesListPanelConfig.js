@@ -1,10 +1,10 @@
-define({
-    colNameTriggerName: 'Планировать',
-    colNameJobName: 'Имя задания',
-    colNameUser: 'Scheduled By',
-    colNameStartTimeUtc: 'Start Time',
-    colNameEndTimeUtc: 'End Time',
-    colNamePriority: 'Приоритет',
-    colNameStatus: 'Статус',
-    colNameTimesTriggered: 'Число выполнений'
+define("Sage/MainView/JobMgr/nls/ru/SchedulesListPanelConfig", {
+    "colNameTriggerName": "Расписание",
+    "colNameJobName": "Имя задания",
+    "colNameUser": "Запланировал",
+    "colNameStartTimeUtc": "Время начала",
+    "colNameEndTimeUtc": "Время окончания",
+    "colNamePriority": "Приоритет",
+    "colNameStatus": "Статус",
+    "colNameTimesTriggered": "Число выполнений"
 });

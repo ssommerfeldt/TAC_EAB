@@ -1,16 +1,17 @@
-define((
-{ cultureListText: 
-   { iv: '[Инвариантно]',
-     de_DE: 'de-DE',
-     fr_FR: 'fr-FR',
-     it_IT: 'it-IT',
-     ru_RU: 'ru-RU' },
-  helpText: 'Помощь',
-  saveText: 'Сохранить',
-  cultureText: 'Культура:',
-  loadingText: 'Загрузка...',
-  savingText: 'Сохранение...',
-  saveErrorText: 'Произошла ошибка при сохранении формы.',
-  readErrorText: 'Не удалось загрузить запрашиваемую форму.',
-  cultureReloadConfirmText: 'Имеются несохраненные изменения.  Вы уверены, что вы хотите, перезагрузить форму с другим языком?' }
-));
+define("Sage/QuickForms/Design/nls/ru/DesignPanel", {
+    "cultureListText": {
+        "iv": "[инвариантно]",
+        "de_DE": "de-DE",
+        "fr_FR": "fr-FR",
+        "it_IT": "it-IT",
+        "ru_RU": "ru-RU"
+    },
+    "helpText": "Справка",
+    "saveText": "Сохранить",
+    "cultureText": "Культура:",
+    "loadingText": "Загрузка...",
+    "savingText": "Сохранение...",
+    "saveErrorText": "Во время сохранения формы возникла ошибка.",
+    "readErrorText": "Не удалось загрузить запрошенную форму.",
+    "cultureReloadConfirmText": "Имеются несохраненные изменения. Действительно перезагрузить форму для другой культуры?"
+});

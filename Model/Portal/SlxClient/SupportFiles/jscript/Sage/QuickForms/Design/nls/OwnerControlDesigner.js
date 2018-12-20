@@ -1,12 +1,5 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            displayNameText: "Owner"
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/QuickForms/Design/nls/OwnerControlDesigner", {
+    root: {
+        displayNameText: "Owner"
+    }
 });

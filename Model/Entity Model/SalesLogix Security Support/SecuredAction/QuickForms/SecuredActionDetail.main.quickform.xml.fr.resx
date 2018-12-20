@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtSecuredAction.ToolTip" xml:space="preserve">
-    <value>Chemin d'accès vers l'action sécurisée.</value>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Enregistrer</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Voulez-vous vraiment supprimer l'action sécurisée ? Vous devez supprimer toutes les références à l'action sécurisée supprimée de l'application AppArchitect ou seul l'administrateur aura accès aux éléments sécurisés.</value>
+  <data name="btnInsertSave.ToolTip" xml:space="preserve">
+    <value>Enregistrer et nouveau</value>
   </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Supprimer</value>
@@ -129,13 +129,13 @@
   <data name="txtDescription.Caption" xml:space="preserve">
     <value>Description :</value>
   </data>
+  <data name="txtSecuredAction.ToolTip" xml:space="preserve">
+    <value>Chemin d'accès vers l'action sécurisée.</value>
+  </data>
   <data name="txtSecuredAction.Caption" xml:space="preserve">
-    <value>Nom :</value>
+    <value>Nom :</value>
   </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
-  <data name="btnInsertSave.ToolTip" xml:space="preserve">
-    <value>Enregistrer &amp; Nouveau</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Souhaitez-vous vraiment supprimer cette action sécurisée ? Vous devez supprimer toutes les références à l'action sécurisée supprimée de l'application AppArchitect ou seul l'administrateur aura accès aux éléments sécurisés.</value>
   </data>
 </root>

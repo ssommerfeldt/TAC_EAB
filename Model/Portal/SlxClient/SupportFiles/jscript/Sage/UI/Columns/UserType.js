@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Columns/UserType", [
     'Sage/Utility',
     'dojo/i18n!../nls/UserType',
     'dojo/_base/declare'

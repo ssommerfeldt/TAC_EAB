@@ -6,7 +6,7 @@
   <col width="33%" /><col width="33%" /><col width="33%" />
   <tr>
   <td>
-        <asp:Label CssClass="lbl" ID="lblContactName" runat="server" Text="Contact Name:" meta:resourcekey="lblContactResource" 
+        <asp:Label CssClass="lbl alignright"  ID="lblContactName" runat="server" Text="Contact Name:" meta:resourcekey="lblContactResource" 
             AssociatedControlID="txtContactName">
         </asp:Label>
         <span class="textcontrol">
@@ -14,7 +14,7 @@
         </span>
   </td>
   <td>
-        <asp:Label CssClass="lbl" ID="lblWorkPhone" runat="server" Text="Work Phone:" meta:resourcekey="lblPhoneResource"
+        <asp:Label CssClass="lbl alignright" ID="lblWorkPhone" runat="server" Text="Work Phone:" meta:resourcekey="lblPhoneResource"
             AssociatedControlID="phnWorkPhone"></asp:Label>
         <span class="textcontrol">
             <SalesLogix:Phone Enabled="false" ID="phnWorkPhone" runat="server"></SalesLogix:Phone>
@@ -24,7 +24,7 @@
 </tr>
 <tr>
 	<td>
-        <asp:Label CssClass="lbl" ID="lblCompanyName" runat="server" Text="Company Name:" meta:resourcekey="lblCompanyResource"
+        <asp:Label CssClass="lbl alignright" ID="lblCompanyName" runat="server" Text="Company Name:" meta:resourcekey="lblCompanyResource"
             AssociatedControlID="txtCompanyName">
         </asp:Label>
         <span class="textcontrol">
@@ -32,7 +32,7 @@
         </span>
 	</td>
 	<td>
-        <asp:Label CssClass="lbl" ID="lblEmail" runat="server" Text="Email:" meta:resourcekey="lblEmailResource"
+        <asp:Label CssClass="lbl alignright" ID="lblEmail" runat="server" Text="Email:" meta:resourcekey="lblEmailResource"
             AssociatedControlID="cmdEmail"></asp:Label>
         <span class="textcontrol">
             <SalesLogix:Email ID="cmdEmail" runat="server" Enabled="false" ToolTip="<%$ resources: cmdEmail.ToolTip %>"></SalesLogix:Email>

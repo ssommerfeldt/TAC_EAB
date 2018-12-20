@@ -507,9 +507,9 @@ public partial class ContactSearchForDuplicates : EntityBoundSmartPartInfoProvid
         if (e.CommandName.Equals("Open"))
         {
             int rowIndex = Convert.ToInt32(e.CommandArgument);
-            string Id = grdMatches.DataKeys[rowIndex].Values[0].ToString();
+            var id = grdMatches.DataKeys[rowIndex].Values[0].ToString();
             string entityName = grdMatches.DataKeys[rowIndex].Values[1].ToString();
-            Response.Redirect(string.Format("{0}.aspx?entityId={1}", entityName, Id));
+            Response.Redirect(string.Format("{0}.aspx?entityId={1}", entityName, id));
             DialogService.CloseEventHappened(sender, e);
         }
     }
@@ -524,15 +524,15 @@ public partial class ContactSearchForDuplicates : EntityBoundSmartPartInfoProvid
         if (e.CommandName.Equals("UseAccount"))
         {
             int rowIndex = Convert.ToInt32(e.CommandArgument);
-            string Id = grdAccountMatches.DataKeys[rowIndex].Value.ToString();
+            var id = grdAccountMatches.DataKeys[rowIndex].Value.ToString();
 
             if (!DialogService.DialogParameters.ContainsKey("JumpID"))
             {
-                DialogService.DialogParameters.Add("JumpID", Id);
+                DialogService.DialogParameters.Add("JumpID", id);
             }
             else
             {
-                DialogService.DialogParameters["JumpID"] = Id;
+                DialogService.DialogParameters["JumpID"] = id;
             }
             DialogService.CloseEventHappened(sender, e);
 
@@ -576,7 +576,7 @@ public partial class ContactSearchForDuplicates : EntityBoundSmartPartInfoProvid
     {
         return
             String.Format(
-                "<a id='lnkViewSummaryID_{0}' onClick='contactSearchForDuplicates.showSummaryView(\"{1}\",\"{2}\")' style='cursor:hand' />{3}</a> ",
+                "<a id='lnkViewSummaryID_{0}' onClick='contactSearchForDuplicates.showSummaryView(\"{1}\",\"{2}\")' style='cursor:pointer' />{3}</a> ",
                 entityId, entityType, entityId, GetLocalResourceObject("grdMatches.Open.ColumnHeading"));
     }
 
@@ -631,7 +631,7 @@ public partial class ContactSearchForDuplicates : EntityBoundSmartPartInfoProvid
     {
         NamedQueryInfo info = new NamedQueryInfo();
         info.Name = "LeadSearch";
-        string[] AliasCols = new string[]
+        var aliasCols = new string[]
                                  {
                                      "id", "name", "address_address1", "address_citystatezip", "homephone", "email",
                                      "company", "title", "type", "accountmanager_userinfo_firstname",
@@ -643,7 +643,7 @@ public partial class ContactSearchForDuplicates : EntityBoundSmartPartInfoProvid
         hql += "mainentity.Mobile, mainentity.WebAddress ";
         hql += "from Lead mainentity left join mainentity.Address left join mainentity.AccountManager";
         info.Hql = hql;
-        info.ColumnAliases = AliasCols;
+        info.ColumnAliases = aliasCols;
         return info;
     }
 
@@ -651,7 +651,7 @@ public partial class ContactSearchForDuplicates : EntityBoundSmartPartInfoProvid
     {
         NamedQueryInfo info = new NamedQueryInfo();
         info.Name = "AccountSearch";
-        string[] AliasCols = new string[]
+        var aliasCols = new string[]
                                  {
                                      "id", "name", "address_address1", "address_citystatezip", "mainphone", "email",
                                      "division", "type", "accountmanager_userinfo_firstname",
@@ -664,7 +664,7 @@ public partial class ContactSearchForDuplicates : EntityBoundSmartPartInfoProvid
         hql += "mainentity.Status, mainentity.SubType ";
         hql += "from Account mainentity left join mainentity.Address left join mainentity.AccountManager";
         info.Hql = hql;
-        info.ColumnAliases = AliasCols;
+        info.ColumnAliases = aliasCols;
         return info;
     }
 }

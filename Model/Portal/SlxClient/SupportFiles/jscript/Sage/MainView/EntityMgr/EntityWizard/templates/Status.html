@@ -1,0 +1,28 @@
+<div>
+    <div data-dojo-type="dijit.Dialog" title="New Entity Wizard" data-dojo-attach-point="_dialog" data-dojo-attach-event="onCancel:_btnCancel_OnClick" style="position:absolute;width: 625px;height:625px;">
+        <div data-dojo-type="dijit.form.Form" style="height:600px !important;" dojoattachpoint="Form">
+
+            <div style="">
+                <label style="font-weight:bold;" data-dojo-attach-point="lblCreateEntity">Create Entity</label>
+                <p><label data-dojo-attach-point="lblStatus">Status</label></p>
+                <hr />
+            </div>
+
+            <div style="padding-bottom: 30px;">
+                <p><label data-dojo-attach-point="statusLabel" style="font-weight: bold;"></label>
+                </p>
+                <p>
+                    <label data-dojo-attach-point="selectedRelStatus" style="font-weight: bold;"></label>
+                </p>
+                <p>
+                    <label data-dojo-attach-point="ownerStatus" style="font-weight: bold;"></label>
+                </p>
+            </div>
+
+
+            <div align="right" style="position:absolute;bottom:30px;width:90%;">
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnFinish" data-dojo-attach-event="onClick:_btnFinish_OnClick" style="margin-left:5px;">Finish</div>
+            </div>
+        </div>
+    </div>
+</div>

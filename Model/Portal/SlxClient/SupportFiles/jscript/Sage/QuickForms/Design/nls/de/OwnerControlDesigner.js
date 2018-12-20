@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Zugriffsberechtigter' }
-));
+define("Sage/QuickForms/Design/nls/de/OwnerControlDesigner", {
+    "displayNameText": "Zugriffsberechtigter"
+});

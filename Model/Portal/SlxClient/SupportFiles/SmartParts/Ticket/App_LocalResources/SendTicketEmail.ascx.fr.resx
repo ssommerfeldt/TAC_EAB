@@ -117,32 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SendTicketEmail_EmailBody_Received" xml:space="preserve">
-    <value>TICKET RECU : {0} {1}</value>
+  <data name="cmdSendEmail.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="SendTicketEmail_EmailMessageSubject" xml:space="preserve">
-    <value>N° de ticket : {0} {1} -- {2}</value>
-  </data>
-  <data name="SendTicketEmail_EmailBody_Resolution" xml:space="preserve">
-    <value>RESOLUTION :{0}{1} {2}</value>
-  </data>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Annuler</value>
-  </data>
-  <data name="lblSendTicketEmail_To.Caption" xml:space="preserve">
-    <value>A :</value>
-  </data>
-  <data name="SendTicketEmail_EmailBody_Completed" xml:space="preserve">
-    <value>TERMINE LE : {0} {1}</value>
-  </data>
-  <data name="lstOption_None.Caption" xml:space="preserve">
-    <value>Aucun</value>
-  </data>
-  <data name="lblSendTicketEmail_MyManager.Caption" xml:space="preserve">
-    <value>Mon responsable :</value>
-  </data>
-  <data name="SendTicketEmail_EmailBody_Description" xml:space="preserve">
-    <value>DESCRIPTION :{0}{1} {2}</value>
+  <data name="lblSendTicketEmail_AcctMgr.Caption" xml:space="preserve">
+    <value>Responsable du compte :</value>
   </data>
   <data name="lblSendTicketEmail_AssignedTo.Caption" xml:space="preserve">
     <value>Affecté à :</value>
@@ -150,16 +129,41 @@
   <data name="lblSendTicketEmail_Contact.Caption" xml:space="preserve">
     <value>Contact :</value>
   </data>
+  <data name="lblSendTicketEmail_EmailType.Caption" xml:space="preserve">
+    <value>Type d'e-mail :</value>
+  </data>
+  <data name="lblSendTicketEmail_MyManager.Caption" xml:space="preserve">
+    <value>Mon responsable :</value>
+  </data>
+  <data name="lblSendTicketEmail_To.Caption" xml:space="preserve">
+    <value>A :</value>
+  </data>
+  <data name="lstOption_None.Caption" xml:space="preserve">
+    <value>Aucun(e)</value>
+  </data>
   <data name="lstOption_TicketInfo.Caption" xml:space="preserve">
     <value>Informations sur le ticket</value>
   </data>
-  <data name="cmdSendEmail.Caption" xml:space="preserve">
-    <value>OK</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="SendTicketEmail_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>SendTicketEmail_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="lblSendTicketEmail_EmailType.Caption" xml:space="preserve">
-    <value>Type d'e-mail :</value>
+  <data name="SendTicketEmail_EmailBody_Completed" xml:space="preserve">
+    <value>DATE DE REALISATION : {0} {1}</value>
   </data>
-  <data name="lblSendTicketEmail_AcctMgr.Caption" xml:space="preserve">
-    <value>Responsable du compte :</value>
+  <data name="SendTicketEmail_EmailBody_Description" xml:space="preserve">
+    <value>DESCRIPTION :{0}{1} {2}</value>
+  </data>
+  <data name="SendTicketEmail_EmailBody_Received" xml:space="preserve">
+    <value>TICKET RECU :{0} {1}</value>
+  </data>
+  <data name="SendTicketEmail_EmailBody_Resolution" xml:space="preserve">
+    <value>RESOLUTION :{0}{1} {2}</value>
+  </data>
+  <data name="SendTicketEmail_EmailMessageSubject" xml:space="preserve">
+    <value>Ticket n°: {0} {1} -- {2}</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Annuler</value>
   </data>
 </root>

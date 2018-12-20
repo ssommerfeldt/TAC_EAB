@@ -112,93 +112,90 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Краткое описание</value>
-  </data>
-  <data name="lblInterestLevel.Caption" xml:space="preserve">
-    <value>Уровень интереса:</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="pklResponseMethod.Caption" xml:space="preserve">
-    <value>Способ отклика:</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
-    <value>Код кампании</value>
-  </data>
-  <data name="lueCampaign.ToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
-    <value>Дата начала</value>
-  </data>
-  <data name="dtpResponseDate.ToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="lblInterest.Caption" xml:space="preserve">
-    <value>Интерес:</value>
-  </data>
-  <data name="pklResponseStatus.Caption" xml:space="preserve">
-    <value>Статус:</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Добавить отклик</value>
-  </data>
-  <data name="lueCampaign.Caption" xml:space="preserve">
-    <value>Программа:</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="cmdSave.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="lueLeadSource.Caption" xml:space="preserve">
-    <value>Ист. наводки:</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
-    <value>Дата окончания</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
-    <value>Имя марк. программы</value>
-  </data>
   <data name="hzsComments.Caption" xml:space="preserve">
     <value>Комментарии</value>
-  </data>
-  <data name="CampaignTargetStatus" xml:space="preserve">
-    <value>Получен отклик</value>
   </data>
   <data name="lbxStages.Caption" xml:space="preserve">
     <value>Стадия:</value>
   </data>
+  <data name="dtpResponseDate.Caption" xml:space="preserve">
+    <value>Дата ответа:</value>
+  </data>
+  <data name="dtpResponseDate.ToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="pklResponseMethod.Caption" xml:space="preserve">
+    <value>Способ ответа:</value>
+  </data>
+  <data name="CampaignTargetStatus" xml:space="preserve">
+    <value>Получен ответ</value>
+  </data>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="lueLeadSource.Caption" xml:space="preserve">
+    <value>Источник заинтересованного лица:</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Краткое описание</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
   <data name="lueLeadSource.ToolTip" xml:space="preserve">
     <value>Найти</value>
   </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Активн.</value>
+  <data name="lueCampaign.Caption" xml:space="preserve">
+    <value>Кампания:</value>
   </data>
-  <data name="dtpResponseDate.Caption" xml:space="preserve">
-    <value>Дата отклика:</value>
+  <data name="lueCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
+    <value>Код кампании</value>
   </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
+    <value>Имя кампании</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="lueCampaign.ToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="lblInterest.Caption" xml:space="preserve">
+    <value>Интерес:</value>
+  </data>
+  <data name="lblInterestLevel.Caption" xml:space="preserve">
+    <value>Уровень интереса:</value>
+  </data>
+  <data name="pklResponseStatus.Caption" xml:space="preserve">
+    <value>Статус:</value>
   </data>
   <data name="DefaultResponseStatus" xml:space="preserve">
     <value>Открыть</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Добавить ответ</value>
   </data>
 </root>

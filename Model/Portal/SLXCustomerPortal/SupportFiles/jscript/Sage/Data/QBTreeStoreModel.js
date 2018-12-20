@@ -1,5 +1,5 @@
 /*globals Sage, define */
-define([
+define("Sage/Data/QBTreeStoreModel", [
         'dijit/tree/ForestStoreModel',
         'Sage/Data/SDataServiceRegistry',
         'dojo/string',
@@ -95,7 +95,7 @@ function (
                                 joinTypeMap = {
                                     'Left': '>',
                                     'Inner': '=',
-                                    'Right': '<',
+                                    'Right': '<'
                                 },
                                 joinType = joinTypeMap[joinTypeChar] || item.joinType;
                             item.dataPathSegment = dString.substitute("${0}${1}${2}.${3}", [item.fromField, joinType, item.toField, item.toTable]);
@@ -223,6 +223,21 @@ function (
                     updated.push(childItem);
                     store.setValue(newParentItem, parentAttr, updated);
                 }
+            }
+        },
+        // Overrides ForestStoreModel to not _requeryTop() since this is only desired when the root
+        // is modifiable (which for QueryBuilder it is not). Instead use the TreeStoreModel funciton call
+        onSetItem: function (item, attribute, /* Object|Array */ oldValue, /* Object|Array */ newValue) {
+            // Just use TreeStoreModel onSetItem function call instead
+            if (array.indexOf(this.childrenAttrs, attribute) != -1) {
+                // item's children list changed
+                this.getChildren(item, lang.hitch(this, function (children) {
+                    // See comments in onNewItem() about calling getChildren()
+                    this.onChildrenChange(item, children);
+                }));
+            } else {
+                // item's label/icon/etc. changed.
+                this.onChange(item);
             }
         }
     });

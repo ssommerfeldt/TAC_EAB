@@ -1,0 +1,27 @@
+Debug
+===========
+1) unzip the file Infor_HomepagesWidgetSDK_1.0.1_20160509.zip
+   open the project Widgets.sln from Samples folder
+
+2) Index.html : add/uncommnet the widget that you want to debug
+   Copy the latest code from Git to this project for that widget(html, ts, manifest files)
+
+3) If you are making IonAPI calls, run : StartIonApiProxy.cmd
+
+4) If you want to use chrome, open chrome with below command:
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --new-window --disable-web-security --ignore-certificate-errors --user-data-dir="%LOCALAPPDATA%\Google\Chrome\User Data\Default"  http://localhost:8080/index.html
+
+5) Run the project
+
+
+Publish
+============
+
+1) While publishing the widget to Mingle, need to create a zip file with below files:
+   .manifest
+   .html
+   .js
+   don't add any other files (like .ts)
+
+As the .js file is giving error in git for this location, i changed it to .js1. So while
+publishing the widget, rename back to .js

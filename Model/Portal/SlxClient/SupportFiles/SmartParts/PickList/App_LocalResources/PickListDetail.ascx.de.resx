@@ -117,47 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnSave.Caption" xml:space="preserve">
-    <value>Speichern</value>
-  </data>
-  <data name="chkIsManaged.Caption" xml:space="preserve">
-    <value>Optionen auf Web-Auswahlliste anwenden</value>
-  </data>
-  <data name="chkMustMatch.Caption" xml:space="preserve">
-    <value>Text muss mit einem Listeneintrag übereinstimmen</value>
-  </data>
-  <data name="chkUsersCanEdit.Caption" xml:space="preserve">
-    <value>Benutzer können Einträge bearbeiten</value>
-  </data>
-  <data name="chkSorted.Caption" xml:space="preserve">
-    <value>Alphabetisch sortiert</value>
-  </data>
-  <data name="txtTestList.Caption" xml:space="preserve">
-    <value>Diese Liste testen:</value>
-  </data>
-  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
-    <value>Einträge</value>
-  </data>
-  <data name="lblWindowsMsg1" xml:space="preserve">
-    <value>(Nur Windows-Version)</value>
-  </data>
-  <data name="btnDelete.Caption" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
   <data name="txtPicklistName.Caption" xml:space="preserve">
     <value>Name:</value>
-  </data>
-  <data name="lblWindowsMsg2" xml:space="preserve">
-    <value>(Optionen gelten automatisch für Windows-Auswahllisten)</value>
   </data>
   <data name="chkRequired.Caption" xml:space="preserve">
     <value>Erforderlicher Eintrag</value>
   </data>
+  <data name="chkAllowMulltiple.Caption" xml:space="preserve">
+    <value>Mehrfachauswahl zulassen</value>
+  </data>
+  <data name="chkMustMatch.Caption" xml:space="preserve">
+    <value>Text muss mit einem Listenelement übereinstimmen</value>
+  </data>
+  <data name="chkSorted.Caption" xml:space="preserve">
+    <value>Alphabetisch sortiert</value>
+  </data>
+  <data name="chkUsersCanEdit.Caption" xml:space="preserve">
+    <value>Benutzer können Elemente bearbeiten.</value>
+  </data>
+  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
+    <value>Elemente</value>
+  </data>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="btnDelete.Caption" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Möchten Sie Folgendes wirklich löschen</value>
+  </data>
   <data name="btnNew.Caption" xml:space="preserve">
     <value>Neue Auswahlliste</value>
   </data>
-  <data name="lblWebOnly" xml:space="preserve">
-    <value>Nur Web:</value>
+  <data name="chkIsManaged.Caption" xml:space="preserve">
+    <value>Optionen auf Web-Auswahlliste anwenden</value>
+  </data>
+  <data name="txtTestList.Caption" xml:space="preserve">
+    <value>Diese Liste testen:</value>
   </data>
   <data name="txtCurrentDefaultValue.Caption" xml:space="preserve">
     <value>Aktueller Standardwert:</value>
@@ -165,10 +162,13 @@
   <data name="lblOptions" xml:space="preserve">
     <value>Optionen:</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Möchten Sie Folgendes wirklich löschen</value>
+  <data name="lblWebOnly" xml:space="preserve">
+    <value>Nur Web:</value>
   </data>
-  <data name="chkAllowMulltiple.Caption" xml:space="preserve">
-    <value>Mehrfachauswahl zulassen</value>
+  <data name="lblWindowsMsg1" xml:space="preserve">
+    <value>(Nur Windows-Version)</value>
+  </data>
+  <data name="lblWindowsMsg2" xml:space="preserve">
+    <value>(Optionen gelten automatisch für Windows-Auswahllisten)</value>
   </data>
 </root>

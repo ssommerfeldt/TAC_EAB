@@ -1,14 +1,16 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/_BaseTaskPaneTasklet", [
     'Sage/UI/Dialogs',
     'dojo/i18n!./nls/_BaseTaskPaneTasklet',
-    'dojo/_base/declare'
+    'dojo/_base/declare',
+    'dojo/_base/lang'
 ],
-function (Dialogs, i18nStrings, declare) {
+function (Dialogs, i18nStrings, declare, lang) {
     var _baseTaskPaneTasklet = declare('Sage.TaskPane._BaseTaskPaneTasklet', null, {
         currentEntityId: '',
         currentEntityTableName: '',
         currentEntityType: '',
+        currentEntityDisplayName: '',
         contextService: null,
         selectedRecordActionCallback: '',
         selectionContainer: '_hfSelections',
@@ -49,6 +51,11 @@ function (Dialogs, i18nStrings, declare) {
                 return null;
             }
         },
+        confirmBeforePrepareSelectedRecords: function (message, callback) {
+            if (confirm(message)) {
+                this.prepareSelectedRecords(callback);
+            }
+        },
         //Allows the selected records to be processed before the code-behind action called from javascript.  In the case
         //of CopyProfile, the ItemCommand server-side event is also called when the user clicks on the CopyProfile link.  That is 
         //where the CopyProfile dialog is prepared and launched.
@@ -80,6 +87,7 @@ function (Dialogs, i18nStrings, declare) {
             }
             else {
                 if (this.selectionInfo.recordCount > 0) {
+                    this.selectionInfo.mode = "selection";
                     this.saveSelections(this.selectedRecordActionCallback, this.selectionInfo);
                 } else {
                     Dialogs.showInfo(this.errorNoData);
@@ -100,8 +108,9 @@ function (Dialogs, i18nStrings, declare) {
         },
         saveSelections: function (callback, selectionInfo) {
             if (selectionInfo !== null) {
-                var svc = Sage.Services.getService("SelectionContextService");
-                svc.setSelectionContext(selectionInfo.key, selectionInfo, callback);
+                var svc = Sage.Services.getService("SelectionContextService"),
+                key = [this.clientId, this.selectionContainer].join('');
+                svc.setSelectionContext(selectionInfo.key, selectionInfo, lang.partial(callback, key));
                 var selections = dojo.byId([this.clientId, this.selectionContainer].join(''));
                 if (selections) {
                     selections.value = selectionInfo.key;
@@ -127,6 +136,11 @@ function (Dialogs, i18nStrings, declare) {
                 this.currentEntityId = this.context.EntityId;
                 this.currentEntityType = this.context.EntityType;
                 this.currentEntityTableName = this.context.EntityTableName;
+                this.currentEntityDisplayName = this.context.DisplayName;
+                var entity = this.currentEntityType.split("Sage.Entity.Interfaces.I");
+                if (entity) {
+                    this.currentEntityPrettyName = entity[1];
+                }
             }
         },
         setSelectionCount: function () {
@@ -155,6 +169,14 @@ function (Dialogs, i18nStrings, declare) {
             if (grpContextSvc) {
                 var contextService = grpContextSvc.getContext();
                 return contextService.CurrentDisplayName;
+            }
+            return '';
+        },
+        getDefaultGroupId: function () {
+            var grpContextSvc = Sage.Services.getService('ClientGroupContext');
+            if (grpContextSvc) {
+                var contextService = grpContextSvc.getContext();
+                return contextService.DefaultGroupID;
             }
             return '';
         }

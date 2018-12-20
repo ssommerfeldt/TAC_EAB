@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmUserLookupEntityFilter" id="0ffee179-8e4e-4a79-aef6-d3cfb16b1ecf" lastModifiedUtc="2015-11-18T20:05:19.3750975Z" filterName="CurrencyCode" propertyName="CurrencyCode">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmUserLookupEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <operators>
+    <operator>StartsWith</operator>
+    <operator>Contains</operator>
+    <operator>Equal</operator>
+  </operators>
+</entityFilter>

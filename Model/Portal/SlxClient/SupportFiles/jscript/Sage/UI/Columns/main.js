@@ -1,4 +1,4 @@
-define([
+define("Sage/UI/Columns/main", [
     "Sage/UI/Columns/ActivityAlarm",
     "Sage/UI/Columns/UserType",
     "Sage/UI/Columns/ActivityType",
@@ -19,6 +19,7 @@ define([
     "Sage/UI/Columns/RadioGroup",
     "Sage/UI/Columns/SlxEdit",
     "Sage/UI/Columns/SlxLink",
+    "Sage/UI/Columns/SlxUser",
     "Sage/UI/Columns/TextBox"
     ], function() {
 	// module:

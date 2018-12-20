@@ -1,5 +1,7 @@
+require({cache:{
+'url:Sage/UI/Controls/templates/CopyToClipboard.html':"<div>\r\n    <div data-dojo-type=\"dijit.Dialog\" dojoAttachPoint=\"dialogNode\">\r\n        \r\n        <span>${helpText}</span>\r\n        <div style=\"width: 550px; height: 400px;\">\r\n            <div data-dojo-type=\"dijit.layout.TabContainer\" dojoAttachPoint=\"tabNode\" style=\"width: 100%; height: 100%;\">\r\n                <div data-dojo-type=\"dijit.layout.ContentPane\" title=\"${textTab}\">\r\n                    <div dojoAttachPoint=\"contentNode\"></div>\r\n                </div>\r\n            \r\n                <div data-dojo-type=\"dijit.layout.ContentPane\" title=\"${sourceTab}\">\r\n                    <textarea dojoAttachPoint=\"textNode\" data-dojo-type=\"dijit.form.SimpleTextarea\" style=\"width: 100%; height: 95%;\"></textarea>\r\n                </div>\r\n            </div>\r\n        </div>\r\n            \r\n        <div style=\"float:right;padding:8px 0px 8px 8px;\">\r\n            <button data-dojo-type=\"dijit.form.Button\" type=\"submit\" dojoAttachEvent=\"onClick:_closeClicked\">\r\n                ${closeText}\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Controls/CopyToClipboard", [
        'dijit/_TemplatedMixin',
        'dijit/_WidgetsInTemplateMixin',
        'dijit/_Widget',

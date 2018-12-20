@@ -1,32 +1,28 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-       'dojo/i18n',
-       'dijit/layout/ContentPane',
-       'dijit/layout/TabContainer',
-       'Sage/UI/Dashboard/DashboardTabController',
-       'Sage/UI/Dashboard/DashboardPage',
-       'Sage/Utility',
-       "dijit/Menu",
-       "dijit/MenuItem",
-       'dojo/_base/declare',
-       'dojo/i18n!./nls/DashboardTabController',
-       'dojo/i18n!./nls/Dashboard'
+define("Sage/UI/Dashboard/Dashboard", [
+    '../TabContainer',
+    'dojo/i18n',
+    'Sage/UI/Dashboard/DashboardTabController',
+    'Sage/UI/Dashboard/DashboardPage',
+    'Sage/Utility',
+    'Sage/UI/Dialogs',
+    "dijit/Menu",
+    "dijit/MenuItem",
+    'dojo/_base/declare',
+    'dojo/i18n!./nls/DashboardTabController',
+    'dojo/i18n!./nls/Dashboard'
 ],
-function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage, Utility, menu, menuItem, declare) {
-    //    dojo.requireLocalization("Sage.UI.Dashboard", "DashboardTabController");
-    //    dojo.requireLocalization("Sage.UI.Dashboard", "Dashboard");
-    //    dojo.requireLocalization("dijit", "common");
-
-    var widget = declare('Sage.UI.Dashboard.Dashboard', tabContainer, {
+function (TabContainer, i18n, DashboardTabController, DashboardPage, Utility, Dialogs, Menu, MenuItem, declare) {
+    var widget = declare('Sage.UI.Dashboard.Dashboard', [TabContainer], {
         //summary:
-        //		Initialize a container class to manage functionality for a user's 
+        //		Initialize a container class to manage functionality for a user's
         //		dashboard. The Dashboard class will manage the implementation of
-        //		the tab container dijit as well as functions which affect the 
+        //		the tab container dijit as well as functions which affect the
         //		dashboard as a whole. Individual tab pages will manage themselves
         //		through the DashboardPage class which Dashboard will consume
-        //options: Object 
+        //options: Object
         //		information about to the Dashboard/pages:
-        controllerWidget: 'Sage.UI.Dashboard.DashboardTabController',
+        controllerWidget: DashboardTabController,
         // for the show tabs dialog
         _stTableOuter: new Simplate([
             '<div id="stTable" class="show-tab-table"><table>',
@@ -63,7 +59,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
 
                     addContext = false;
 
-                    if (childTab && childTab.tabContent.style.display == 'none') {
+                    if (childTab && childTab.style.display === 'none') {
                         addContext = true;
                     }
                     else {
@@ -77,13 +73,13 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
                     this._contextMenu.destroyRecursive();
                 }
 
-                this._contextMenu = new menu({
+                this._contextMenu = new Menu({
                     id: this.id + "_ContextMenu",
                     dir: this.dir,
                     targetNodeIds: [this.domNode]
                 });
 
-                this._contextMenu.addChild(new menuItem({
+                this._contextMenu.addChild(new MenuItem({
                     label: this.newTabText,  //'New Tab'
                     dir: this.dir,
                     onClick: function () {
@@ -93,7 +89,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
                     }
                 }));
 
-                this._contextMenu.addChild(new menuItem({
+                this._contextMenu.addChild(new MenuItem({
                     label: this.showTabText, // 'Show Tab'
                     dir: this.dir,
                     onClick: dojo.hitch(this, function () {
@@ -154,7 +150,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
                 permission: true,
                 _childWidgets: []
             };
-            var newPage = new dashboardPage(obj);
+            var newPage = new DashboardPage(obj);
             this._childPages.push(newPage);
             this.addChild(this._childPages[this._childPages.length - 1]);
             // go to the new page
@@ -174,7 +170,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
                     var childTab = dijit.byId('Dashboard_tablist_' + this._childPages[i].id);
 
                     if (childTab) {
-                        dojo.style(childTab.tabContent, 'display', 'block');
+                        dojo.style(childTab, 'display', 'block');
                         found = true;
 
                         if (this.selectShownTab) {
@@ -205,7 +201,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
 
                         // If there is only 1 column, it may not be an array, which causes nothing to get rendered later
                         this.pages[i].Columns.Column = Utility.Convert.toArrayFromObject(this.pages[i].Columns.Column);
-                        this._childPages.push(new dashboardPage({
+                        this._childPages.push(new DashboardPage({
                             id: _id,
                             closable: true,
                             onClose: closeConfirm,
@@ -264,7 +260,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
             else if (page['@permission']) {
                 permission = page['@permission'];
             }
-            this._childPages.push(new dashboardPage({
+            this._childPages.push(new DashboardPage({
                 closable: true,
                 onClose: function () { return true; },
                 name: ttl, // name is the plugin name in the database
@@ -288,7 +284,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
             }
             this.addChild(this._childPages[len]); // NOT len-1
             // go to the page so we can save it correctly
-            this._childPages[len]._init();
+            this._childPages[len]._init(true);
             this._childPages[len].copyNotDrawn = true;
             //remove this from the hidden hash
             var uo = Sage.UI.DataStore.Dashboard.userOptions;
@@ -296,8 +292,9 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
                 delete uo.hidden[_id];
                 this._updateUserOptions();
             }
-
+            this._childPages[len]._setWidgetsToPage();
             this._childPages[len]._save();
+            this._childPages[len].pageRendered = true;
         },
         _copyPage: function (pg) {
             var d = new dijit.Dialog({
@@ -331,7 +328,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
                     }
 
                     var ttl = txtCopyName.value;
-                    var clone = pg._copy();
+                    var clone = pg.copy();
                     this._copyPageContent(clone, ttl);
                     d.hide();
                 });
@@ -379,7 +376,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
 
                     // If there is only 1 column, it may not be an array, which causes nothing to get rendered later
                     this.pages[i].Columns.Column = Utility.Convert.toArrayFromObject(this.pages[i].Columns.Column);
-                    this._childPages.push(new dashboardPage({
+                    this._childPages.push(new DashboardPage({
                         id: _id,
                         closable: true,
                         onClose: closeConfirm,
@@ -414,14 +411,14 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
                 }
             }
             // select the default tab if there was one
-            // (don't call selectChild() to do this, as the tabs not yet being
-            //  rendered results in failure)
             if (defIndex) {
                 this._childPages[defIndex].selected = true;
                 this._childPages[defIndex]._init();
+                this.selectChild(this._childPages[defIndex]);
             } else if (this._childPages.length > 0) {
                 this._childPages[0].selected = true;
                 this._childPages[0]._init();
+                this.selectChild(this._childPages[0]);
             }
 
             this.addRemovePageContextMenu();
@@ -450,8 +447,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
             var uo = Sage.UI.DataStore.Dashboard.userOptions;
             // same as _delete but store the data item (36) intact so that
             // the page can be 'shown'
-            var tabToHide = dijit.byId('Dashboard_tablist_' + pg.id);
-            dojo.style(tabToHide.tabContent, 'display', 'none');
+            this.closeChild(pg);
 
             if (this.selectedChildWidget == pg) {
                 this.selectFirstVisible();
@@ -524,26 +520,34 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
             var dashboardPages = this._childPages;
             var checkId = '';
 
+            if (title === this.Dashboard)
+            {
+                var opts = {
+                    title: this.warningText,
+                    query: this.invalidReservedWordMessage,
+                    yesText: this.okButton,
+                    style: { width: '300px' }
+                };
+                Dialogs.raiseQueryDialogExt(opts);
+                return false;
+            }
             if (tabId) {
                 checkId = tabId;
             }
 
             for (var i = 0; i < dashboardPages.length; i++) {
-                if (dashboardPages[i].id != checkId && !dashboardPages[i]._destroyed && dashboardPages[i].title === title) {
+                if (dashboardPages[i].id !== checkId && !dashboardPages[i]._destroyed && dashboardPages[i].title === title) {
                     isUnique = false;
-
-                    var opts = {
+                    var dialogOpts = {
                         title: this.warningText,
                         query: this.invalidDuplicateMessage,
                         yesText: this.okButton,
                         style: { width: '300px' }
                     };
-                    Sage.UI.Dialogs.raiseQueryDialogExt(opts);
-
+                    Dialogs.raiseQueryDialogExt(dialogOpts);
                     break;
                 }
             }
-
             return isUnique;
         },
         selectFirstVisible: function () {
@@ -552,7 +556,7 @@ function (i18n, contentPane, tabContainer, dashboardTabController, dashboardPage
             for (var i = 0; i < this._childPages.length; i++) {
                 var childTab = dijit.byId('Dashboard_tablist_' + this._childPages[i].id);
 
-                if (childTab && childTab.tabContent.style.display != 'none') {
+                if (childTab && childTab.style.display !== 'none') {
                     found = true;
                     this.selectChild(this._childPages[i]);
                     break;

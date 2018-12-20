@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/HistoryEditor", (
 { labelWidth: '100',
   tabNameGeneralText: 'General',
   tabNameAttachmentsText: 'Attachments',
@@ -16,6 +16,7 @@ define((
   regardingText: 'Regarding',
   resultText: 'Result',
   notesText: 'Notes',
+  noteText: 'Note',
   priorityText: 'Priority',
   leaderText: 'Leader',
   categoryText: 'Category',
@@ -55,10 +56,13 @@ define((
   carryOverNotesText: 'Carry Over Notes',
   asScheduledText: 'As Scheduled',
   insertText: 'Insert',
+  insertNoteText: 'Insert Note',
   couldNotSaveErrorText: 'We\'re sorry, the history could not be saved because an error occurred.',
   deleteMessage: 'You are about to permanently delete this record.',
   deleteTitle: 'Delete History',
   couldNotDeleteErrorText: 'We\'re sorry, the history could not be deleted because an error occurred.',
   postalText: 'Postal Code',
-  tabNameParticipants: 'All Participants' }
+  tabNameParticipants: 'All Participants',
+  resultComplete : 'Complete'
+  }
 ));

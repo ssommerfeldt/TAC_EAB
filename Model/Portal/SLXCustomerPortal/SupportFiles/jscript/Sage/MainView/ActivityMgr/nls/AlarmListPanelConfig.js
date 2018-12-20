@@ -1,11 +1,9 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/MainView/ActivityMgr/nls/AlarmListPanelConfig", {
+    root: {
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

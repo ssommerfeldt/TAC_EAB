@@ -1,13 +1,11 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            buttonToolTip: 'Find',
-            closeButtonToolTip: 'Remove'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/Controls/nls/Lookup", {
+    root: {
+        buttonToolTip: 'Find',
+        closeButtonToolTip: 'Remove'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

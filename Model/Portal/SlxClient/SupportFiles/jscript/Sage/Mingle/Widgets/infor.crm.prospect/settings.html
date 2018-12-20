@@ -1,0 +1,25 @@
+﻿<div ng-controller="infor.crm.prospect.ProspectSettingController as ctrl">
+    <div class="field">
+        <label for="infor-crm-prospect-title-setting">{{ctrl.localization.settingTitle}}</label>
+        <div class="searchfield-wrapper">
+            <input ng-readonly="!ctrl.isTitleEditEnabled || ctrl.isTitleLocked" id="grouplist-widget-titletext" ng-change="ctrl.settingsChanged()" ng-model="ctrl.widgetTitle" />
+            <button class="btn-icon" ng-click="ctrl.onClickIsLocked()" ng-disabled="!ctrl.isTitleUnlockable">
+                <svg ng-if="!ctrl.isTitleLocked" class="icon close" focusable="false">
+                    <use xlink:href="#icon-unlocked"></use>
+                </svg>
+                <svg ng-if="ctrl.isTitleLocked" class="icon close" focusable="false">
+                    <use xlink:href="#icon-locked"></use>
+                </svg>
+            </button>
+        </div>    
+    </div>
+    <div class="field" ng-if="ctrl.isLimitCountVisible">
+        <label for="infor-crm-prospect-limit-setting">{{ctrl.localization.settingLimit}}</label>
+        <input ng-disabled="!ctrl.isLimitCountEnabled" ng-model="ctrl.limitCount" id="infor-crm-prospect-limit-setting" type="text" data-validate="required" xi-validate
+                data-mask-mode="number"  xi-mask="ctrl.maskCustDefOptions" />
+    </div>
+    <div class="field">
+        <label for="infor-crm-prospect-logical-id">{{ctrl.localization.settingCrmLogicalId}}</label>
+        <input ng-model="ctrl.applicationLogicalId" id="infor-crm-prospect-logical-id" />
+    </div>
+</div>

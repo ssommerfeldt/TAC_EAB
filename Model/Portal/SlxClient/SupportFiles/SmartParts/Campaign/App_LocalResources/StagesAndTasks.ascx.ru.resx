@@ -117,94 +117,98 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdStages.PercentComplete.ColumnHeading" xml:space="preserve">
-    <value>Завершено</value>
-  </data>
-  <data name="StageGrid_Status.HeaderText" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="grdStages.DeleteStage.RowCommand" xml:space="preserve">
-    <value>Удалить стадию</value>
-  </data>
   <data name="btnAddStage.ToolTip" xml:space="preserve">
     <value>Добавить стадию</value>
-  </data>
-  <data name="grdStages.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="grdStages.CompleteStage.RowCommand" xml:space="preserve">
-    <value>Завершить стадию</value>
-  </data>
-  <data name="StageGrid_NeededDate.HeaderText" xml:space="preserve">
-    <value>Срок исполнения</value>
-  </data>
-  <data name="StageGrid_Description.HeaderText" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Стадии/Задачи</value>
-  </data>
-  <data name="grdStages.NeededDate.ColumnHeading" xml:space="preserve">
-    <value>Срок исполнения</value>
-  </data>
-  <data name="DeleteStageMSG" xml:space="preserve">
-    <value>Вы действительно хотите удалить эту стадию?</value>
-  </data>
-  <data name="DialogCaption_EditStage" xml:space="preserve">
-    <value>Измен. стадию</value>
-  </data>
-  <data name="DialogCaption_AddStage" xml:space="preserve">
-    <value>Добавить стадию</value>
-  </data>
-  <data name="grdStages.EditTask.RowCommand" xml:space="preserve">
-    <value>Изменить</value>
   </data>
   <data name="cmdAddStage.Text" xml:space="preserve">
     <value>Добавить</value>
   </data>
-  <data name="DialogCaption_CompleteTask" xml:space="preserve">
-    <value>Завершить задачу</value>
-  </data>
-  <data name="DialogCaption_EditTask" xml:space="preserve">
-    <value>Измен. задачу</value>
-  </data>
-  <data name="DialogCaption_CompleteStage" xml:space="preserve">
-    <value>Завершить стадию</value>
-  </data>
-  <data name="grdStages.Status.ColumnHeading" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="grdStages.CompleteTask.RowCommand" xml:space="preserve">
-    <value>Завершить</value>
-  </data>
-  <data name="DialogCaption_AddTask" xml:space="preserve">
-    <value>Добавить задачу</value>
+  <data name="DeleteStageMSG" xml:space="preserve">
+    <value>Действительно удалить эту стадию?</value>
   </data>
   <data name="DeleteTaskMSG" xml:space="preserve">
-    <value>Вы действительно хотите удалить эту задачу? </value>
-  </data>
-  <data name="grdStages.EditStage.RowCommand" xml:space="preserve">
-    <value>Измен. стадию</value>
-  </data>
-  <data name="StageGrid_PercentComplete.HeaderText" xml:space="preserve">
-    <value>Заверш.</value>
-  </data>
-  <data name="StageGrid_Priority.HeaderText" xml:space="preserve">
-    <value>Приоритет</value>
+    <value>Действительно удалить эту задачу? </value>
   </data>
   <data name="grdStages.AddTask.RowCommand" xml:space="preserve">
     <value>Добавить задачу</value>
   </data>
-  <data name="grdStages.Description.ColumnHeading" xml:space="preserve">
-    <value>Описание</value>
+  <data name="grdStages.CompleteStage.RowCommand" xml:space="preserve">
+    <value>Завершить стадию</value>
+  </data>
+  <data name="grdStages.CompleteTask.RowCommand" xml:space="preserve">
+    <value>Завершить</value>
+  </data>
+  <data name="grdStages.DeleteStage.RowCommand" xml:space="preserve">
+    <value>Удалить стадию</value>
   </data>
   <data name="grdStages.DeleteTask.RowCommand" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="Stage" xml:space="preserve">
-    <value>Стадия</value>
+  <data name="grdStages.Description.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="grdStages.EditStage.RowCommand" xml:space="preserve">
+    <value>Редактировать стадию</value>
+  </data>
+  <data name="grdStages.EditTask.RowCommand" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="grdStages.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <data name="grdStages.NeededDate.ColumnHeading" xml:space="preserve">
+    <value>Срок исполнения</value>
+  </data>
+  <data name="grdStages.PercentComplete.ColumnHeading" xml:space="preserve">
+    <value>Процент завершения</value>
   </data>
   <data name="grdStages.Priority.ColumnHeading" xml:space="preserve">
     <value>Приоритет</value>
+  </data>
+  <data name="grdStages.Status.ColumnHeading" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Stage" xml:space="preserve">
+    <value>Стадия</value>
+  </data>
+  <data name="StageGrid_Description.HeaderText" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="StageGrid_NeededDate.HeaderText" xml:space="preserve">
+    <value>Срок исполнения</value>
+  </data>
+  <data name="StageGrid_PercentComplete.HeaderText" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="StageGrid_Priority.HeaderText" xml:space="preserve">
+    <value>Приоритет</value>
+  </data>
+  <data name="StageGrid_Status.HeaderText" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="StagesAndTasks_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>StagesAndTasks_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Стадии/задачи</value>
+  </data>
+  <data name="DialogCaption_AddStage" xml:space="preserve">
+    <value>Добавить стадию</value>
+  </data>
+  <data name="DialogCaption_AddTask" xml:space="preserve">
+    <value>Добавить задачу</value>
+  </data>
+  <data name="DialogCaption_EditStage" xml:space="preserve">
+    <value>Редактировать стадию</value>
+  </data>
+  <data name="DialogCaption_EditTask" xml:space="preserve">
+    <value>Редактировать задачу</value>
+  </data>
+  <data name="DialogCaption_CompleteStage" xml:space="preserve">
+    <value>Завершение стадии</value>
+  </data>
+  <data name="DialogCaption_CompleteTask" xml:space="preserve">
+    <value>Завершение задачи</value>
   </data>
 </root>

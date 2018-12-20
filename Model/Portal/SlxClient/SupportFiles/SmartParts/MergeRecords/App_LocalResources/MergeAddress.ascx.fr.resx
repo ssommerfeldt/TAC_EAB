@@ -117,79 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Grid_State_Column" xml:space="preserve">
-    <value>Département</value>
-  </data>
-  <data name="LinkToAccounting.Caption" xml:space="preserve">
-    <value>Fusionner les contacts</value>
-  </data>
-  <data name="Grid_Primary_Column" xml:space="preserve">
-    <value>Principal</value>
-  </data>
-  <data name="UnlinkedRecords.Caption" xml:space="preserve">
-    <value>Dissocier {0} de {1}</value>
-  </data>
-  <data name="MergeAddress.Caption" xml:space="preserve">
-    <value>Fusionner les adresses</value>
-  </data>
-  <data name="btnNext_Merge.Caption" xml:space="preserve">
-    <value>Fusionner</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Précédent</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="Grid_Address2_Column" xml:space="preserve">
-    <value>Adresse 2</value>
-  </data>
-  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Fusionner les données - Différences trouvées</value>
-  </data>
-  <data name="lblSourceAddress.Caption" xml:space="preserve">
-    <value>Adresses source</value>
-  </data>
-  <data name="LinkedAddresses.Caption" xml:space="preserve">
-    <value>Adresses associées (Les fiches suivantes seront fusionnées.)</value>
-  </data>
-  <data name="lblTargetAddress.Caption" xml:space="preserve">
-    <value>Adresses cible</value>
-  </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Fusionner les données - Aucune différence</value>
+  <data name="btnLink.Caption" xml:space="preserve">
+    <value>Lien</value>
   </data>
   <data name="btnNext.Caption" xml:space="preserve">
     <value>Suivant &gt;</value>
   </data>
+  <data name="EmptyTableRowText" xml:space="preserve">
+    <value>Aucun enregistrement ne correspond aux critères de filtre sélectionnés.</value>
+  </data>
   <data name="Error_SourceTargetNotSelected" xml:space="preserve">
     <value>Veuillez sélectionner un enregistrement 'cible' et 'source' avant de continuer.</value>
-  </data>
-  <data name="lblLinkedRecords.Caption" xml:space="preserve">
-    <value>Liaisons des systèmes (les enregistrements suivants seront liés et fusionnés dans les deux systèmes).</value>
   </data>
   <data name="Grid.Select.Text" xml:space="preserve">
     <value>Sélectionner</value>
   </data>
-  <data name="MergeRecordsDialog_MergeRecords.Caption" xml:space="preserve">
-    <value>Fusionner les enregistrements</value>
+  <data name="Grid_Address1_Column" xml:space="preserve">
+    <value>Address1</value>
+  </data>
+  <data name="Grid_Address2_Column" xml:space="preserve">
+    <value>Address2</value>
   </data>
   <data name="Grid_City_Column" xml:space="preserve">
     <value>Ville</value>
   </data>
-  <data name="lblDescription.Caption" xml:space="preserve">
-    <value>Crée des liens pour fusionner les adresses de vos fiches.</value>
+  <data name="Grid_Primary_Column" xml:space="preserve">
+    <value>Principal</value>
   </data>
-  <data name="btnLink.Caption" xml:space="preserve">
-    <value>Lien</value>
-  </data>
-  <data name="EmptyTableRowText" xml:space="preserve">
-    <value>Aucun enregistrement ne correspond aux critères de filtre sélectionnés.</value>
+  <data name="Grid_State_Column" xml:space="preserve">
+    <value>Département</value>
   </data>
   <data name="Grid_Unlink.Column" xml:space="preserve">
     <value>Dissocier</value>
   </data>
-  <data name="Grid_Address1_Column" xml:space="preserve">
-    <value>Adresse 1</value>
+  <data name="lblDescription.Caption" xml:space="preserve">
+    <value>Crée des liens pour fusionner les adresses de vos fiches.</value>
   </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Précédent</value>
+  <data name="lblLinkedRecords.Caption" xml:space="preserve">
+    <value>Liaisons des systèmes (les enregistrements suivants seront liés et fusionnés dans les deux systèmes).</value>
+  </data>
+  <data name="MergeAddress.Caption" xml:space="preserve">
+    <value>Fusionner les adresses</value>
+  </data>
+  <data name="lblSourceAddress.Caption" xml:space="preserve">
+    <value>Adresses source</value>
+  </data>
+  <data name="UnlinkedRecords.Caption" xml:space="preserve">
+    <value>Dissocier {0} de {1}</value>
+  </data>
+  <data name="LinkToAccounting.Caption" xml:space="preserve">
+    <value>Fusionner les contacts</value>
+  </data>
+  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
+    <value>Fusionner les données - Différences trouvées</value>
+  </data>
+  <data name="MergeRecordsDialog_MergeRecords.Caption" xml:space="preserve">
+    <value>Fusionner les enregistrements</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Fusionner les données - Aucune différence</value>
+  </data>
+  <data name="lblTargetAddress.Caption" xml:space="preserve">
+    <value>Adresses cibles</value>
+  </data>
+  <data name="LinkedAddresses.Caption" xml:space="preserve">
+    <value>Adresses associées (les enregistrements suivants seront fusionnés.)</value>
+  </data>
+  <data name="btnNext_Merge.Caption" xml:space="preserve">
+    <value>Fusionner</value>
+  </data>
+  <data name="valueFalse" xml:space="preserve">
+    <value>Faux</value>
+  </data>
+  <data name="valueTrue" xml:space="preserve">
+    <value>Vrai</value>
   </data>
 </root>

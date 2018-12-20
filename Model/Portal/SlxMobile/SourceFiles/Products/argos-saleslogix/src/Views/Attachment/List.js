@@ -1,182 +1,196 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import string from 'dojo/string';
+import has from 'dojo/has';
+import utility from '../../Utility';
+import List from 'argos/List';
+import _LegacySDataListMixin from 'argos/_LegacySDataListMixin';
+import convert from 'argos/Convert';
+import _RightDrawerListMixin from '../_RightDrawerListMixin';
+import _CardLayoutListMixin from '../_CardLayoutListMixin';
+import getResource from 'argos/I18n';
+
+const resource = getResource('attachmentList');
+const hashTagResource = getResource('attachmentListHashTags');
+const dtFormatResource = getResource('attachmentListDateTimeFormat');
+
+/**
+ * @class crm.Views.Attachments.List
+ *
+ * @extends argos.List
+ * @mixins argos.List
+ * @mixins crm.Views._RightDrawerListMixin
+ * @mixins crm.Views._CardLayoutListMixin
+ * @mixins argos._LegacySDataListMixin
+ *
+ * @requires argos.List
+ * @requires argos._LegacySDataListMixin
+ * @requires argos.Convert
+ *
+ * @requires crm.Format
+ * @requires crm.Views._RightDrawerListMixin
+ * @requires crm.Views._CardLayoutListMixin
+ *
+ * @requires moment
+ *
  */
-define('Mobile/SalesLogix/Views/Attachment/List', [
-    'dojo/_base/declare',
-    'dojo/string',
-    'dojo/has',
-    'Mobile/SalesLogix/Format',
-    'Sage/Platform/Mobile/List',
-    'Sage/Platform/Mobile/Convert',
-    '../_RightDrawerListMixin',
-    '../_CardLayoutListMixin',
-    'moment'
-], function(
-    declare,
-    string,
-    has,
-    format,
-    List,
-    convert,
-    _RightDrawerListMixin,
-    _CardLayoutListMixin,
-    moment
-) {
+const __class = declare('crm.Views.Attachment.List', [List, _RightDrawerListMixin, _CardLayoutListMixin, _LegacySDataListMixin], {
+  // Templates
+  itemTemplate: new Simplate([
+    '{% if ($.dataType === "R") { %}',
+    '{%! $$.fileTemplate %}',
+    '{% } else { %}',
+    '{%! $$.urlTemplate %}',
+    '{% } %}',
+  ]),
+  fileTemplate: new Simplate([
+    '<h3><span>{%: $.description %}&nbsp;</span></h3>',
+    '<h4><span>({%: $$.uploadedOnText %} {%: crm.Format.relativeDate($.attachDate) %})&nbsp;</span>',
+    '<span>{%: crm.Format.fileSize($.fileSize) %} </span></h4>',
+    '<h4><span>{%: crm.Utility.getFileExtension($.fileName) %} </span></h4>',
+    '{% if($.user) { %}',
+    '<h4><span>{%: $.user.$descriptor  %}</span></h4>',
+    '{% } %}',
+  ]),
+  urlTemplate: new Simplate([
+    '<h3><span>{%: $.description %} &nbsp;</span></h3>',
+    '{% if ($.attachDate) { %}',
+    '<h4><span>({%: $$.uploadedOnText %} {%: crm.Format.relativeDate($.attachDate) %})&nbsp;</span></h4>',
+    '{% } %}',
+    '<h4><span>{%: $.url %}&nbsp;</span></h4>',
+    '{% if($.user) { %}',
+    '<h4><span>{%: $.user.$descriptor  %}</span></h4>',
+    '{% } %}',
+  ]),
 
-    return declare('Mobile.SalesLogix.Views.Attachment.List', [List, _RightDrawerListMixin, _CardLayoutListMixin], {
-        //Templates
+  // Localization
+  titleText: resource.titleText,
+  attachmentDateFormatText: dtFormatResource.attachmentDateFormatText,
+  attachmentDateFormatText24: dtFormatResource.attachmentDateFormatText24,
+  uploadedOnText: resource.uploadedOnText, // Uploaded 10 days ago
 
-        //used when card layout is no used used.
-        rowTemplate: new Simplate([
-            '<li data-action="activateEntry" data-key="{%= $.$key %}" data-descriptor="{%: $.$descriptor %}">',
-                '<button data-action="selectEntry" class="list-item-selector button">',
-                    '<img src="{%= $$.icon || $$.selectIcon %}" class="icon" />',
-                '</button>',
-                '<div class="list-item-content">{%! $$.itemTemplate %}</div>',
-            '</li>'
-        ]),
-        itemTemplate: new Simplate([
-           '{% if ($.dataType === "R") { %}',
-               '{%! $$.fileTemplate %}',
-           '{% } else { %}',
-              '{%! $$.urlTemplate %}',
-           '{% } %}'
-        ]),
-        fileTemplate: new Simplate([
-             '<h3><span>{%: $.description %}&nbsp;</span></h3>',
-             '<h4><span>({%: $$.uploadedOnText %} {%: Mobile.SalesLogix.Format.relativeDate($.attachDate) %})&nbsp;</span>',
-            '<span>{%: Mobile.SalesLogix.Format.fileSize($.fileSize) %} </span></h4>',
-            '<h4><span>{%: Mobile.SalesLogix.Utility.getFileExtension($.fileName) %} </span></h4>',
-            '{% if($.user) { %}',
-                '<h4><span>{%: $.user.$descriptor  %}</span></h4>',
-            '{% } %}'
-        ]),
-        urlTemplate: new Simplate([
-            '<h3><span>{%: $.description %} &nbsp;</span></h3>',
-            '{% if ($.attachDate) { %}',
-                '<h4><span>({%: $$.uploadedOnText %} {%: Mobile.SalesLogix.Format.relativeDate($.attachDate) %})&nbsp;</span></h4>',
-            '{% } %}',
-            '<h4><span>{%: $.url %}&nbsp;</span></h4>',
-            '{% if($.user) { %}',
-            '<h4><span>{%: $.user.$descriptor  %}</span></h4>',
-            '{% } %}'
-        ]),
+  // View Properties
+  id: 'attachment_list',
+  security: null,
+  enableActions: true,
+  detailView: 'view_attachment',
+  insertView: 'attachment_Add',
+  iconClass: 'fa fa-paperclip fa-lg',
+  queryOrderBy: 'attachDate desc',
+  querySelect: [
+    'description',
+    'user',
+    'createUser',
+    'attachDate',
+    'fileSize',
+    'fileName',
+    'url',
+    'fileExists',
+    'remoteStatus',
+    'dataType',
+    'ModifyDate',
+  ],
+  resourceKind: 'attachments',
+  contractName: 'system',
+  queryInclude: [
+    '$descriptors',
+    '$permissions',
+  ],
 
-        //Localization
-        titleText: 'Attachments',
-        attachmentDateFormatText: 'ddd M/D/YYYY hh:mm:ss',
-        uploadedOnText: 'Uploaded ',// Uploaded 10 days ago
+  hashTagQueries: {
+    url: "(fileName like '%.URL')",
+    binary: "(fileName not like '%.URL')",
+  },
+  hashTagQueriesText: {
+    url: hashTagResource.hashTagUrlText,
+    binary: hashTagResource.hashTagBinaryText,
+  },
+  createToolLayout: function createToolLayout() {
+    if (!has('html5-file-api')) {
+      this.insertView = null;
+    } else {
+      return this.inherited(arguments);
+    }
+  },
+  createRequest: function createRequest() {
+    const request = this.inherited(arguments);
+    request.setQueryArg('_includeFile', 'false');
+    return request;
+  },
+  formatSearchQuery: function formatSearchQuery(searchQuery) {
+    return string.substitute('upper(description) like "%${0}%"', [this.escapeSearchQuery(searchQuery.toUpperCase())]);
+  },
+  getLink: function getLink(attachment) {
+    let toReturn;
+    if (attachment.url) {
+      let href = attachment.url || '';
+      href = (href.indexOf('http') < 0) ? `http://${href}` : href;
+      toReturn = string.substitute('<a href="${0}" target="_blank" title="${1}">${2}</a>', [href, attachment.url, attachment.$descriptor]);
+    } else {
+      if (attachment.fileExists) {
+        toReturn = string.substitute('<a href="javascript: Sage.Utility.File.Attachment.getAttachment(\'${0}\');" title="${1}">${1}</a>', [attachment.$key, attachment.$descriptor]);
+      } else {
+        toReturn = attachment.$descriptor;
+      }
+    }
+    return toReturn;
+  },
+  itemIconClass: 'fa-file-o',
+  fileIconByType: {
+    xls: 'fa-file-excel-o',
+    xlsx: 'fa-file-excel-o',
+    doc: 'fa-file-word-o',
+    docx: 'fa-file-word-o',
+    ppt: 'fa-file-powerpoint-o',
+    pptx: 'fa-file-powerpoint-o',
+    txt: 'fa-file-text-o',
+    rtf: 'fa-file-text-o',
+    csv: 'fa-file-text-o',
+    pdf: 'fa-file-pdf-o',
+    zip: 'fa-file-zip-o',
+    png: 'fa-file-image-o',
+    jpg: 'fa-file-image-o',
+    gif: 'fa-file-image-o',
+    bmp: 'fa-file-image-o',
+  },
+  getItemIconClass: function getItemIconClass(entry) {
+    const fileName = entry && entry.fileName;
+    let type = utility.getFileExtension(fileName);
+    let cls = this.itemIconClass;
+    if (type) {
+      type = type.substr(1); // Remove the '.' from the ext.
+      const typeCls = this.fileIconByType[type];
+      if (typeCls) {
+        cls = typeCls;
+      }
+    }
+    if (cls) {
+      cls = `fa ${cls} fa-2x`;
+    }
+    return cls;
+  },
+  createIndicatorLayout: function createIndicatorLayout() {
+    return this.itemIndicators || (this.itemIndicators = [{
+      id: 'touched',
+      cls: 'fa fa-hand-o-up fa-lg',
+      label: 'Touched',
+      onApply: function onApply(entry, parent) {
+        this.isEnabled = parent.hasBeenTouched(entry);
+      },
+    }]);
+  },
+  hasBeenTouched: function hasBeenTouched(entry) {
+    if (entry.modifyDate) {
+      const modifiedDate = moment(convert.toDateFromString(entry.modifyDate));
+      const currentDate = moment().endOf('day');
+      const weekAgo = moment().subtract(1, 'weeks');
 
-        //View Properties       
-        id: 'attachment_list',
-        security: null,
-        enableActions: true,
-        detailView: 'view_attachment',
-        insertView: 'attachment_Add',
-        icon: 'content/images/icons/Attachment_24.png',
-        iconurl: 'content/images/icons/Attachment_URL_24.png',
-        queryOrderBy: 'attachDate desc',
-        querySelect:  [
-            'description',
-            'user',
-            'createUser',
-            'attachDate',
-            'fileSize',
-            'fileName',
-            'url',
-            'fileExists',
-            'remoteStatus',
-            'dataType',
-            'ModifyDate'
-        ],
-        resourceKind: 'attachments',
-        contractName: 'system',
-        queryInclude: ['$descriptors'],
-
-        hashTagQueries: {
-            'url': 'url ne null',
-            'binary': 'url eq null'
-        },
-        hashTagQueriesText: {
-            'url': 'url',
-            'binary': 'binary'
-        },
-
-        createToolLayout: function() {
-            if (!has('html5-file-api')) {
-                this.insertView = null;
-            } else {
-                return this.inherited(arguments);
-            }
-        },
-        createRequest: function() {
-            var request = this.inherited(arguments);
-            request.setQueryArg('_includeFile', 'false');
-            return request;
-        },
-        formatSearchQuery: function(searchQuery) {
-            return string.substitute('upper(description) like "%${0}%"', [this.escapeSearchQuery(searchQuery.toUpperCase())]);
-        },
-        getLink: function(attachment) {
-            if (attachment['url']) {
-                var href = attachment['url'] || '';
-                href = (href.indexOf('http') < 0) ? 'http://' + href : href;
-                return string.substitute('<a href="${0}" target="_blank" title="${1}">${2}</a>', [href, attachment['url'], attachment['$descriptor']]);
-            } else {
-                if (attachment['fileExists']) {
-                    return string.substitute('<a href="javascript: Sage.Utility.File.Attachment.getAttachment(\'${0}\');" title="${1}">${1}</a>',
-                        [attachment['$key'], attachment['$descriptor']]);
-                } else {
-                    return attachment['$descriptor'];
-                }
-            }
-        },
-        getItemIconSource: function(entry) {
-              return "content/images/icons/Attachment_48x48.png";
-        },
-        createIndicatorLayout: function() {
-            return this.itemIndicators || (this.itemIndicators = [{
-                id: 'touched',
-                icon: 'Touched_24x24.png',
-                label: 'Touched',
-                onApply: function(entry, parent) {
-                    this.isEnabled = parent.hasBeenTouched(entry);
-                }
-            }, {
-                id: 'attachmentIcon',
-                icon: '',
-                label: 'Activity',
-                onApply: function(entry, parent) {
-                    parent.applyActivityIndicator(entry, this);
-                }
-            }]
-            );
-        },
-        applyActivityIndicator: function(entry, indicator) {
-            var dataType = entry['dataType'];
-            indicator.isEnabled = true;
-            indicator.showIcon = true;
-            if (dataType === 'R') {
-                indicator.icon = "Attachment_24.png";
-                indicator.label = "file";
-                
-            } else {
-                indicator.icon = "Attachment_URL_24.png";
-                indicator.label = "url";
-            }
-        },
-        hasBeenTouched: function(entry) {
-            var modifiedDate, currentDate, weekAgo;
-            if (entry['modifyDate']) {
-                modifiedDate = moment(convert.toDateFromString(entry['modifyDate']));
-                currentDate = moment().endOf('day');
-                weekAgo = moment().subtract(1, 'weeks');
-
-                return modifiedDate.isAfter(weekAgo) &&
-                    modifiedDate.isBefore(currentDate);
-            }
-            return false;
-        }
-    });
+      return modifiedDate.isAfter(weekAgo) &&
+        modifiedDate.isBefore(currentDate);
+    }
+    return false;
+  },
 });
 
+lang.setObject('Mobile.SalesLogix.Views.Attachment.List', __class);
+export default __class;

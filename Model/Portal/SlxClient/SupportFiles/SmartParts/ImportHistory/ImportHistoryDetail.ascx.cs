@@ -195,6 +195,10 @@ public partial class SmartParts_ImportHistory_ImportHistoryDetail : EntityBoundS
             txtWarningCount.Text = importHistory.WarningCount.ToString();
             txtDuplicateCount.Text = importHistory.DuplicateCount.ToString();
             txtMergedCount.Text = importHistory.MergeCount.ToString();
+
+            var entityType = Type.GetType(importHistory.EntityType);
+            string entityName = entityType.Name[0] == 'I' ? entityType.Name.Substring(1) : entityType.Name;
+            lnkLink.NavigateUrl = string.Format(@"~/{0}.aspx?gid={1}&modeid=list", entityName, importHistory.PrimaryEntityGroup);
             if (!string.IsNullOrEmpty(importHistory.ProcessState))
             {
                 try

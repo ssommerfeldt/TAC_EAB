@@ -117,14 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtDuration.Caption" xml:space="preserve">
-    <value>Dauer:</value>
+  <data name="QFTextBox.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.getConfirmSummaryHeaderHtml($.entity, 'listl')%}</value>
   </data>
-  <data name="slxPhone.Caption" xml:space="preserve">
-    <value>Telefon:</value>
-  </data>
-  <data name="lnkOpportunityName.Caption" xml:space="preserve">
-    <value>Verkaufschance:</value>
+  <data name="slxFromUser.ButtonToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="slxFromUser.Caption" xml:space="preserve">
     <value>Von:</value>
@@ -133,7 +130,16 @@
     <value>Standort:</value>
   </data>
   <data name="txtStartDate.Caption" xml:space="preserve">
-    <value>Anfangsdatum:</value>
+    <value>Startdatum:</value>
+  </data>
+  <data name="txtStartDate.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatActivityStartDate($.entity.activity_startdate_2, $.entity.activity_timeless_2)%}</value>
+  </data>
+  <data name="txtDuration.Caption" xml:space="preserve">
+    <value>Dauer:</value>
+  </data>
+  <data name="txtDuration.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatDuration($.entity.activity_duration_2, $.entity.activity_timeless_2)%}</value>
   </data>
   <data name="slxLeader.Caption" xml:space="preserve">
     <value>Organisator:</value>
@@ -141,11 +147,17 @@
   <data name="lnkContactName.Caption" xml:space="preserve">
     <value>Kontakt:</value>
   </data>
+  <data name="slxPhone.Caption" xml:space="preserve">
+    <value>Telefon:</value>
+  </data>
   <data name="lnkAccountName.Caption" xml:space="preserve">
     <value>Firma:</value>
   </data>
   <data name="txtNotes.Caption" xml:space="preserve">
     <value>Notizen:</value>
+  </data>
+  <data name="lnkOpportunityName.Caption" xml:space="preserve">
+    <value>Verkaufschance:</value>
   </data>
   <data name="lnkTicket.Caption" xml:space="preserve">
     <value>Ticket:</value>

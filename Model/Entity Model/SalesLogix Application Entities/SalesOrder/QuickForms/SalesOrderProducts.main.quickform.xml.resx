@@ -121,25 +121,13 @@
     <value>Save</value>
   </data>
   <data name="grdItems.Delete.ToolTip" xml:space="preserve">
-    <value>Delete Selected Records</value>
+    <value>Remove</value>
   </data>
   <data name="grdItems.Cancel.ToolTip" xml:space="preserve">
-    <value>Revert Changes</value>
+    <value>Reset</value>
   </data>
   <data name="btnAddCustomProduct.ToolTip" xml:space="preserve">
     <value>Add Custom Product...</value>
-  </data>
-  <data name="btnLockAll.Caption" xml:space="preserve">
-    <value>Lock All Items</value>
-  </data>
-  <data name="btnLockAll.ToolTip" xml:space="preserve">
-    <value>Lock All Items</value>
-  </data>
-  <data name="btnUnlockAll.Caption" xml:space="preserve">
-    <value>Unlock All Items</value>
-  </data>
-  <data name="btnUnlockAll.ToolTip" xml:space="preserve">
-    <value>Unlock All Items</value>
   </data>
   <data name="btnRenumber.Caption" xml:space="preserve">
     <value>Renumber Items</value>
@@ -151,7 +139,7 @@
     <value>Add Custom Product</value>
   </data>
   <data name="grdItems.530b7cdb-cef1-4e94-a46a-cf8d931ff779.ColumnHeading" xml:space="preserve">
-    <value>Line #</value>
+    <value>Line Number</value>
   </data>
   <data name="SalesOrderStatus_Closed" xml:space="preserve">
     <value>Closed</value>
@@ -160,7 +148,7 @@
     <value>Product</value>
   </data>
   <data name="grdItems.506f0947-d9d3-441f-bfed-329263b9df81.ColumnHeading" xml:space="preserve">
-    <value>Family</value>
+    <value>Description</value>
   </data>
   <data name="grdItems.4e14a41d-5850-4a89-87c3-8a87a096f296.ColumnHeading" xml:space="preserve">
     <value>Price Level</value>
@@ -208,7 +196,7 @@
     <value>Add Product from Package</value>
   </data>
   <data name="luProduct.LookupDialogTitle" xml:space="preserve">
-    <value>Add Products</value>
+    <value>Lookup Products</value>
   </data>
   <data name="luPackage.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Description</value>
@@ -298,16 +286,16 @@
     <value>Discount</value>
   </data>
   <data name="grdItems.68096333-c869-44c2-9b19-51d9058e50d8.ColumnHeading" xml:space="preserve">
-    <value>Extended Price</value>
+    <value>Extended Price (Base)</value>
   </data>
   <data name="grdItems.5cd443a0-928c-44a2-86f2-a4246f8223c7.ColumnHeading" xml:space="preserve">
-    <value>Adj. Price</value>
+    <value>Adj. Price (Base)</value>
   </data>
   <data name="luProduct.Caption" xml:space="preserve">
     <value />
   </data>
   <data name="luProduct.DialogButtonText" xml:space="preserve">
-    <value>Add Products</value>
+    <value>Add Selected</value>
   </data>
   <data name="grdItems.e1a69123-3261-4eac-b1cc-8ce21ff52c2e.ColumnHeading" xml:space="preserve">
     <value> </value>
@@ -381,55 +369,64 @@
   <data name="grdItems.ff4abcfa-992a-4721-8841-c0c0b6e89485.ColumnHeading" xml:space="preserve">
     <value>Extended Price</value>
   </data>
-  <data name="grdItems.484637f5-30a6-4588-92b1-e32f69510fb4.ColumnHeading" xml:space="preserve">
-    <value>UPC</value>
+  <data name="error_ZeroBasePrice" xml:space="preserve">
+    <value>Cannot update discount when price is zero</value>
   </data>
-  <data name="grdItems.718d1e2f-b158-47d8-958d-732c16c58a3e.ColumnHeading" xml:space="preserve">
-    <value>UPC</value>
+  <data name="grdItems.a5c16453-4bc4-417a-9220-0208c6477155.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
   </data>
-  <data name="grdItems.f405b064-c26a-414b-86b3-855a47ace2a4.ColumnHeading" xml:space="preserve">
-    <value>SKU</value>
+  <data name="error_AccountingSystem_Undefined" xml:space="preserve">
+    <value>Products cannot be added to the Sales Order because the Accounting System is undefined.  Please define an Accounting System before continuing.</value>
   </data>
-  <data name="grdItems.89dde4ba-017f-4b48-a475-1dbff0490c1b.ColumnHeading" xml:space="preserve">
-    <value>Unit</value>
+  <data name="error_ClientContext_Undefined" xml:space="preserve">
+    <value>The client context service is undefined.</value>
   </data>
-  <data name="luProduct.LookupProperties.UPC.PropertyHeader" xml:space="preserve">
-    <value>UPC</value>
+  <data name="grdItems.1c2c0690-8c5a-4b09-95c0-60859427ef4d.ColumnHeading" xml:space="preserve">
+    <value>Price</value>
   </data>
-  <data name="luProduct.LookupProperties.WarehouseID.PropertyHeader" xml:space="preserve">
-    <value>Warehouse ID</value>
+  <data name="7a95abab-aa0a-4abb-98d6-363ab585457d.DialogTitleOverride" xml:space="preserve">
+    <value>Add Custom Product</value>
   </data>
-  <data name="cmdAddProduct.Caption" xml:space="preserve">
-    <value>Add Product</value>
+  <data name="luProduct.LookupProperties.ErpConfiguredItem.PropertyHeader" xml:space="preserve">
+    <value>Configured Item</value>
   </data>
-  <data name="cmdAddProduct.ToolTip" xml:space="preserve">
-    <value>Add Product</value>
-  </data>
-  <data name="35bcdfcb-61df-432f-a950-635223878c1b.DialogTitleOverride" xml:space="preserve">
-    <value>Add Product</value>
-  </data>
-  <data name="grdItems.fefa474f-e28a-4837-a374-ee2910aaccc1.ColumnHeading" xml:space="preserve">
+  <data name="grdItems.683c40a1-4afa-4b03-96c2-06e54df18fd7.ColumnHeading" xml:space="preserve">
     <value>Warehouse</value>
   </data>
-  <data name="grdItems.913de698-8761-4e66-960a-5cc960b7aeda.ColumnHeading" xml:space="preserve">
-    <value>Quantity</value>
+  <data name="grdItems.6282df6f-bce7-4d7d-a9d9-1adc77165026.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
   </data>
-  <data name="grdItems.e184a405-36df-4981-bcbf-6bef44702e45.ColumnHeading" xml:space="preserve">
-    <value>LastOrder</value>
+  <data name="grdItems.7e5c4214-796b-4013-bf3e-dd5d42b3fa08.ColumnHeading" xml:space="preserve">
+    <value>ERP Line Number</value>
   </data>
-  <data name="grdItems.109a9fea-a4ac-4fd6-ac3e-6cd49e07ae7e.ColumnHeading" xml:space="preserve">
-    <value>QtyAvailable</value>
+  <data name="error_PricingRequest" xml:space="preserve">
+    <value>An error occured requesting pricing service: ${0}</value>
   </data>
-  <data name="QFButton.Caption" xml:space="preserve">
-    <value>Add/Search Products</value>
+  <data name="grdItems.cd0a2117-86c5-43b9-b134-38f459a522c0.ColumnHeading" xml:space="preserve">
+    <value>Total</value>
   </data>
-  <data name="QFButton.ToolTip" xml:space="preserve">
-    <value>Add/Search Products</value>
+  <data name="luProduct.LookupProperties.UnitOfMeasure.Name.PropertyHeader" xml:space="preserve">
+    <value>Unit Of Measure</value>
   </data>
-  <data name="grdItems.9d868383-0406-4039-90e3-00e14831c33e.ColumnHeading" xml:space="preserve">
-    <value>Modified</value>
+  <data name="luProduct.LookupProperties.ErpLogicalId.PropertyHeader" xml:space="preserve">
+    <value>ERP Logical ID</value>
   </data>
-  <data name="grdItems.cebab5b5-2612-4def-899c-9cd80371c7ca.ColumnHeading" xml:space="preserve">
-    <value>Modified</value>
+  <data name="productStatus_Discontinued" xml:space="preserve">
+    <value>Discontinued</value>
+  </data>
+  <data name="grdItems.52117937-4434-4e81-b939-306e5dec6a3b.ColumnHeading" xml:space="preserve">
+    <value>Total (Base)</value>
+  </data>
+  <data name="luProduct.LookupProperties.ErpAccountingEntityId.PropertyHeader" xml:space="preserve">
+    <value>Accounting Entity</value>
+  </data>
+  <data name="luProduct.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdItems.7b511ac9-aa2b-4a8d-aa6d-105f9581f43a.ColumnHeading" xml:space="preserve">
+    <value>Configuration ID</value>
+  </data>
+  <data name="grdItems.c714f725-ab4e-4ad6-8c74-9a1f3b009c21.ColumnHeading" xml:space="preserve">
+    <value>Configuration Detail ID</value>
   </data>
 </root>

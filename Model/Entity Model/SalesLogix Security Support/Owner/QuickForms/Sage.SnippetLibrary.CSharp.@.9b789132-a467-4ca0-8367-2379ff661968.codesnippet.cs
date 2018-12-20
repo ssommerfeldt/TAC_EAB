@@ -28,7 +28,6 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets

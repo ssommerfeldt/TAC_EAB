@@ -117,58 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdContactMarketing.Name.Column" xml:space="preserve">
-    <value>Имя марк. программы</value>
-  </data>
-  <data name="ConfirmMessage_RemoveTargetAssociation" xml:space="preserve">
-    <value>Исключить контакт из будущих фаз кампании {0}?</value>
-  </data>
-  <data name="TargetStatus_Removed" xml:space="preserve">
-    <value>Исключено</value>
-  </data>
-  <data name="grdContactMarketing.StartDate.Column" xml:space="preserve">
-    <value>Дата начала</value>
-  </data>
-  <data name="grdContactMarketing.EmptyTableRow.Text" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
   <data name="AddResponse_rsc.ToolTip" xml:space="preserve">
-    <value>Добавить отклики программы</value>
-  </data>
-  <data name="ConfirmMessage_DeleteResponse" xml:space="preserve">
-    <value>Вы действительно хотите удалить этот отклик?</value>
+    <value>Добавить ответ на кампанию</value>
   </data>
   <data name="AddTargetResponse_DialogCaption" xml:space="preserve">
-    <value>Добавить целевой отклик</value>
+    <value>Добавить целевой ответ</value>
   </data>
-  <data name="EditTargetResponse_DialogCaption" xml:space="preserve">
-    <value>Редактировать цел. отклик</value>
+  <data name="ConfirmMessage_DeleteResponse" xml:space="preserve">
+    <value>Действительно удалить этот ответ?</value>
   </data>
-  <data name="grdContactMarketing.Stage.Column" xml:space="preserve">
-    <value>Стадия</value>
-  </data>
-  <data name="grdContactMarketing.Remove.Column" xml:space="preserve">
-    <value>Исключить</value>
+  <data name="ConfirmMessage_RemoveTargetAssociation" xml:space="preserve">
+    <value>Удалить контакт из будущих фаз кампании "{0}"?</value>
   </data>
   <data name="grdContactMarketing.Code.Column" xml:space="preserve">
     <value>Код кампании</value>
   </data>
-  <data name="grdContactMarketing.ResponseMethod.Column" xml:space="preserve">
-    <value>Способ отклика</value>
+  <data name="grdContactMarketing.Delete.Column" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="grdContactMarketing.Edit.Column" xml:space="preserve">
+    <value>Редактировать</value>
   </data>
   <data name="grdContactMarketing.EndDate.Column" xml:space="preserve">
     <value>Дата окончания</value>
   </data>
+  <data name="grdContactMarketing.Name.Column" xml:space="preserve">
+    <value>Имя кампании</value>
+  </data>
+  <data name="grdContactMarketing.Remove.Column" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="grdContactMarketing.ResponseDate.Column" xml:space="preserve">
+    <value>Дата ответа</value>
+  </data>
+  <data name="grdContactMarketing.ResponseMethod.Column" xml:space="preserve">
+    <value>Способ ответа</value>
+  </data>
+  <data name="grdContactMarketing.Stage.Column" xml:space="preserve">
+    <value>Стадия</value>
+  </data>
+  <data name="grdContactMarketing.StartDate.Column" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
   <data name="grdContactMarketing.Status.Column" xml:space="preserve">
     <value>Статус</value>
   </data>
-  <data name="grdContactMarketing.Edit.Column" xml:space="preserve">
-    <value>Изменить</value>
+  <data name="EditTargetResponse_DialogCaption" xml:space="preserve">
+    <value>Редактировать целевой ответ</value>
   </data>
-  <data name="grdContactMarketing.ResponseDate.Column" xml:space="preserve">
-    <value>Дата отклика</value>
+  <data name="TargetStatus_Removed" xml:space="preserve">
+    <value>Удалено</value>
   </data>
-  <data name="grdContactMarketing.Delete.Column" xml:space="preserve">
-    <value>Удалить</value>
+  <data name="grdContactMarketing.EmptyTableRow.Text" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
 </root>

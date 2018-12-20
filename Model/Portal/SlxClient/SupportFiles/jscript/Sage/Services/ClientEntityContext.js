@@ -1,8 +1,11 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, TabControl, __doPostBack */
-define([
-    'dojo/_base/declare'
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, TabControl, __doPostBack */
+define("Sage/Services/ClientEntityContext", [
+    'dojo/_base/declare',
+    'dojo/dom',
+    'dojo/dom-style',
+    'Sage/Utility'
 ],
-function (declare) {
+function (declare, dojoDom, domStyle, Utility) {
     var widget = declare('Sage.Services.ClientEntityContext', null, {
         hasClearListener: false,
         tempContext: false,
@@ -17,6 +20,13 @@ function (declare) {
                 return this.tempContext;
             }
             if ((Sage.Data) && (Sage.Data.EntityContextStore)) {
+                var obj = Sage.Data.EntityContextStore;
+                for (var item in obj) {
+                    if (obj.hasOwnProperty(item)) {
+                        // the property is encoded in client context services in CI
+                        obj[item] = Utility.htmlDecode(obj[item]);
+                    }
+                }
                 return Sage.Data.EntityContextStore;
             }
             return this.emptyContext;
@@ -36,6 +46,14 @@ function (declare) {
                 var mgr = Sage.Services.getService("ClientBindingManagerService");
                 if ((mgr) && (!mgr.canChangeEntityContext())) {
                     return false;
+                }
+
+                //the context is changing i.e. we are changing records so lets stop the user from clicking another link 
+                //by putting up a loading screen
+                var loaderDiv = dojoDom.byId("loader");
+                if (loaderDiv) {
+                    domStyle.set(loaderDiv, "display", "block");
+                    domStyle.set(loaderDiv, "opacity", 0.75);
                 }
 
                 var contextservice = Sage.Services.getService("ClientContextService");
@@ -65,6 +83,12 @@ function (declare) {
                             if (contextservice.containsKey("PreviousEntityId")) {
                                 contextservice.remove("PreviousEntityId");
                             }
+                        }
+                        //the page has returned from the post back and loaded so lets clean up the loading screen
+                        var loaderDiv = dojoDom.byId("loader");
+                        if (loaderDiv) {
+                            domStyle.set(loaderDiv, "display", "none");
+                            domStyle.set(loaderDiv, "opacity", 0);
                         }
                     });
                     this.hasClearListener = true;

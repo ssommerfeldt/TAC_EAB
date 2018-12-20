@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRangeEntityFilter" id="e2daa8cf-b6d5-44e5-a0d8-3d3b1f69f117" lastModifiedUtc="2017-11-28T06:40:38.9990075Z" filterName="GrandTotal" propertyName="GrandTotal" characters="0">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRangeEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <ranges id="5d913b70-3a7c-4ddb-ae82-423f9eb877df" rangeName="0 to 999" upper="999" />
+  <ranges id="1345afed-d57e-42fa-aacc-0008e41d385f" rangeName="1000 to 9999" lower="1000" upper="9999" />
+  <ranges id="3c508fb4-a3ab-4284-b02c-7c6c7bc1264b" rangeName="10,000 to 99,999" lower="10000" upper="99999" />
+  <ranges id="79d4abca-b3d7-4061-ac7f-2b879fd0e5b8" rangeName="100,000 to 499,999" lower="100000" upper="499999" />
+  <ranges id="f25c2e77-09f6-4b76-84b5-bbc5457cd00f" rangeName="500,000 to 999,999" lower="500000" upper="999999" />
+  <ranges id="a3dbb77a-83d2-4862-85f0-0f59e82ef603" rangeName="1,000,000 and higher" lower="1000000" />
+</entityFilter>

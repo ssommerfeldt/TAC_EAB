@@ -1,0 +1,59 @@
+<div>
+    <div data-dojo-type="dijit.Dialog" title="New Entity Wizard" data-dojo-attach-point="_dialog" data-dojo-attach-event="onCancel:_btnCancel_OnClick" style="position:absolute;width: 625px;height:625px;">
+        <div data-dojo-type="dijit.form.Form" style="height:600px !important;" dojoattachpoint="Form">
+            <div style="padding-bottom:30px;">
+                <label style="font-weight:bold;" data-dojo-attach-point="lblRelationship">Primary Relationship</label>
+                <p>
+                    <label data-dojo-attach-point="lblSelectEntity">Choose wheather this entity has a primary relationship to another entity</label>
+                </p>
+                <hr />
+            </div>
+
+            <table class="detailTableContainer formtable HundredPercentWidth">
+                <tr data-dojo-attach-point="_TypeDropDownSection">
+                    <td class="FManagerDialogFieldLabel">
+
+                        <div style="padding:0 !important;" class="lbl alignright">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="lblExistingEntity">
+                                Relate to an existing Entity
+                            </label>
+                        </div>
+                        <div style="padding-top:6px;">
+                            <input type="checkbox" data-dojo-attach-point="IsExtension"
+                                   data-dojo-type="dijit/form/CheckBox" />
+                        </div>
+                    </td>
+                </tr>
+                <tr data-dojo-attach-point="_TypeDropDownSection">
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="padding:0 !important;" class="lbl alignright">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="lblRelatedEntity">
+                                Related Entity
+                            </label>
+                        </div>
+                        <div class="fld dijitInline" data-dojo-attach-point="typePkg"></div>
+                    </td>
+                </tr>
+                <tr data-dojo-attach-point="_TypeDropDownSection">
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="padding:0 !important;" class="lbl alignright">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="lblRelationType">
+                                Relation Type
+                            </label>
+                        </div>
+                        <div class="fld dijitInline" data-dojo-attach-point="typeRel"></div>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <div data-dojo-attach-point="divValidationMessage" style="color:red">
+                <span data-dojo-attach-point="spanValidationMessage">&nbsp;</span>
+            </div>
+            <div align="right" style="position:absolute;bottom:30px;width:90%;">
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnBack" data-dojo-attach-event="onClick:_btnBack_OnClick">< Back</div>
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnNext" data-dojo-attach-event="onClick:_btnNext_OnClick">Next ></div>
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnCancel" data-dojo-attach-event="onClick:_btnCancel_OnClick" style="margin-left:5px;">Cancel</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-define((
+define("Sage/Services/nls/en/ActivityActionProcessor", (
 { btnOkayText: 'OK',
   btnCancelText: 'Cancel',
   btnCloseText: 'Close',

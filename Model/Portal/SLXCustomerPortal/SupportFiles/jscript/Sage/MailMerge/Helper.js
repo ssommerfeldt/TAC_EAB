@@ -1,12 +1,14 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, slxmm */
 define(
-    [
+    "Sage/MailMerge/Helper", [
         "Sage/UI/Dialogs",
         "dijit/_Widget",
         "dojo/i18n",
         "dojo/string",
         "dojo/_base/lang",
-        "dojo/i18n!./nls/Helper"
+        "dojo/i18n!./nls/Helper",
+        "dojo/i18n!./nls/Service",
+        "dojo/i18n!./nls/Lookup"
     ],
 // ReSharper disable InconsistentNaming
     function (Dialogs, _Widget, i18n, dString, dLang, nls) {
@@ -94,7 +96,7 @@ define(
                 if (typeof showLoadError === "boolean") {
                     bShowError = showLoadError;
                 }
-                if (Sage && Sage.Services && Sage.gears && Sage.gears.factory && Sage.Services.hasService("MailMergeService")) {
+                if (Sage && Sage.Services && typeof slxmm !== "undefined" && slxmm && slxmm.com && Sage.Services.hasService("MailMergeService")) {
                     return Sage.Services.getService("MailMergeService");
                 } else {
                     if (bShowError) {
@@ -107,7 +109,7 @@ define(
                 if (err) {
                     var sNonLocalizedError = "The specified class name cannot be mapped to a COM object"; //DNL
                     var sLocalizedError = this.DesktopErrors().SageGearsClassError;
-                    if ((dojo.isIE && (err.number == -2146827287)) || (err.message.indexOf(sNonLocalizedError) != -1) || (err.message.indexOf(sLocalizedError) != -1)) {
+                    if ((Sage.Utility.isIE && (err.number == -2146827287)) || (err.message.indexOf(sNonLocalizedError) != -1) || (err.message.indexOf(sLocalizedError) != -1)) {
                         return true;
                     }
                 }

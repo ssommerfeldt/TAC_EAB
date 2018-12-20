@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([],
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Utility/Validate", [],
     function () {
         //summary: Validate Utility will recursively run the validation method
         //          on all qualifying widgets inside the node provided.

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="cc0c4eb7-3eec-4a71-b48d-e23fac91e2a8" lastModifiedUtc="2014-12-16T03:27:55.7121561Z" cardinality="M:1" parentEntityId="a450e01b-fe42-4ab0-bb06-292caa98f528" childEntityId="68ffa945-ea88-4b6f-baab-d54de3d5811a">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="20427027-1c5e-457b-974e-3a8f6ba8e31d" lastModifiedUtc="2014-12-16T03:27:53.0701561Z" name="ErpBillingAddress" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="62245a54-2718-4e64-8639-7c53f62514f2" lastModifiedUtc="2014-12-16T03:27:16.4561561Z" name="Return" audited="false" include="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="37359a4a-cea0-4825-bd50-cc82650e0fbf" parentPropertyId="5797a578-d28f-40bc-bf9f-92d651d6b65b" childPropertyId="43a5ee1c-b9e2-4516-986f-7b2996270981" ordinal="0" />
+  </column>
+</relationship>

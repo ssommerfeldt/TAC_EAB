@@ -28,18 +28,17 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class UserAccessToOthersCalEventHandlers
     {
-        public static void dgUserAccessToOthersCal_OnRowSelectedStep( IUserAccessToOthersCal form,  EventArgs args)
+        public static void dgUserAccessToOthersCal_OnRowSelectedStep(IUserAccessToOthersCal form, EventArgs args)
         {
             IUserCalendar userCalendar = form.dsUserAccessToOthersCal.Current as IUserCalendar;
 			IUser user = form.CurrentEntity as IUser;
-			
+
 			user.OthersAccessToUserCal.Remove(userCalendar);
 			userCalendar.Delete();
 

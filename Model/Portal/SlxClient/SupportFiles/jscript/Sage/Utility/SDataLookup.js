@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([],
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Utility/SDataLookup", [],
     function () {
         Sage.namespace('Utility.SDataLookup');
         dojo.mixin(Sage.Utility.SDataLookup, {
@@ -7,17 +7,19 @@ define([],
                 switch (opts.propertyFormat) {
                     case 'Phone':
                         return Sage.UI.Columns.Phone;
+                    case 'DateTime':
+                            return Sage.UI.Columns.DateTime;
                     default:
                         return '';
                 }
             },
             childObjectFormatter: function (opts) {
-                var feedItem = opts.grid.grid._by_idx[opts.rowIdx].item,
+                var feedItem = opts,
                     res,
                     i;
 
                 if (!feedItem || !feedItem[opts.childentity] || feedItem[opts.childentity].$resources.length === 0) {
-                    return dojo.string.substitute('<div style="text-indent:16px">${0}</div>', [opts.value || '&nbsp;']);
+                    return dojo.string.substitute('<div style="text-indent:16px">${0}</div>', [opts.value !== null? opts.value : '&nbsp;']);
                 }
 
                 opts.value = opts.value || '&nbsp;';

@@ -1,6 +1,6 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/Extensions/Activity/ListPanelOverrides/AllOpenListPanelConfig", [
         'Sage/MainView/ActivityMgr/AllOpenListPanelConfig',        
         'dojo/_base/declare',
         'dojo/_base/lang',
@@ -19,11 +19,11 @@ function (
             
             lang.mixin(this, nlsResources);
             //Add new select values that will be returned to the list panel             
-            this._select.push('Details/AttendeeCount');            
+            this._select.push('AttendeeCount');            
 
              //Add new structure configurations that will add new columns to the list panel.              
             this._structure.push({
-                field: 'Details.AttendeeCount',
+                field: 'AttendeeCount',
                 name: this.colNameAssociationCount,  //nls resources that are pulled in the define method above.
                 width: '90px'
             });

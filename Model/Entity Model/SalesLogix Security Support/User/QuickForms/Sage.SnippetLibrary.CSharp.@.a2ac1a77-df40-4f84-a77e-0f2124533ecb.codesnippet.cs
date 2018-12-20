@@ -28,17 +28,16 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class UserSecurityEventHandlers
     {
-        public static void OnLoad1Step( IUserSecurity form,  EventArgs args)
+        public static void OnLoad1Step(IUserSecurity form, EventArgs args)
         {
 			IUser user = form.CurrentEntity as IUser;
-           	IOwnerSecurityProfile profile =	user.GetDefaultSecurityProfile();
+           	IOwnerSecurityProfile profile = user.GetDefaultSecurityProfile();
 			form.lupFLSProfile.LookupResultValue = profile;
         }
     }

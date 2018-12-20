@@ -1,0 +1,1 @@
+define("Sage/MainView/ReportMgr/nls/zh-cn/FilterConfigurationProvider", {});

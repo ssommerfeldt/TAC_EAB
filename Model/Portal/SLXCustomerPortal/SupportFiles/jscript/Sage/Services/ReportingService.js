@@ -1,8 +1,9 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Services/ReportingService", [
     'dojo/_base/declare',
     'dojo/string',
     'dojo/i18n!./nls/ReportingService',
+    'Sage/Utility',
     'Sage/Utility/Jobs',
     'Sage/Reporting/Enumerations',
     'dojo/json',
@@ -15,6 +16,7 @@ function (
     declare,
     dojoString,
     nlsResources,
+    utility,
     jobs,
     enumerations,
     dojoJson,
@@ -127,11 +129,13 @@ function (
                             }
                         }
                     },
-                    failure: function (xhr) {
+                    failure: function (xhr, sdata) {
                         var errorMsg = "ReportingService.getReportMetadata: " + dojoString.substitute(nlsResources.txtUnexpectedError, [xhr.status, xhr.statusText]);
                         console.error(errorMsg);
                         if (options.failure) {
-                            options.failure(xhr);
+                            options.failure(xhr, sdata);
+                        } else {
+                            utility.ErrorHandler.handleHttpError(xhr, sdata);
                         }
                     }
                 });
@@ -150,11 +154,13 @@ function (
                             options.success(result);
                         }
                     },
-                    failure: function (xhr) {
+                    failure: function (xhr, sdata) {
                         var errorMsg = "ReportingService.getReport: " + dojoString.substitute(nlsResources.txtUnexpectedError, [xhr.status, xhr.statusText]);
                         console.error(errorMsg);
                         if (options.failure) {
-                            options.failure(xhr);
+                            options.failure(xhr, sdata);
+                        } else {
+                            utility.ErrorHandler.handleHttpError(xhr, sdata);
                         }
                     }
                 });
@@ -454,6 +460,8 @@ function (
                     return this.getSalesOrderReport();
                 case "TICKET":
                     return this.getTicketReport();
+                case "QUOTE":
+                    return this.getReport("QUOTE");
                 default:
                     return this.getDefaultReport();
             }
@@ -671,6 +679,7 @@ function (
                             if (typeof console !== "undefined") {
                                 console.error(ioargs);
                             }
+                            utility.ErrorHandler.handleHttpError(response, ioargs);
                         }
                     });
                 } else {
@@ -770,6 +779,11 @@ function (
                         "maintable": "SALESORDER",
                         "family": "Sales Order",
                         "name": "Sales Order Detail"
+                    },
+                    {
+                        "maintable": "QUOTE",
+                        "family": "Quote",
+                        "name": "Quote Detail"
                     }
                 ];
             }

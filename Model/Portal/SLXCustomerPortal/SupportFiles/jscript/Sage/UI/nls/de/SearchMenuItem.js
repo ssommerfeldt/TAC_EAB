@@ -1,5 +1,4 @@
-define((
-{ findText: 'Suchen',
-  clearText: 'Löschen',
-  showHiddenText: 'Ausgeblendete einblenden: ' }
-));
+define("Sage/UI/nls/de/SearchMenuItem", {
+    "findText": "Suchen",
+    "clearText": "Auswahl aufheben"
+});

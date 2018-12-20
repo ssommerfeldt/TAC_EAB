@@ -1,3 +1,1 @@
-define((
-{ updatePricingRecords: 'Вы можете выделить одну запись при выполнении этой операции.' }
-));
+define("Sage/TaskPane/nls/ru/AccountingTasksTasklet", {});

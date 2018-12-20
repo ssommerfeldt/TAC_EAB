@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6f121f8d-34a3-4825-8608-e15bd54cf73f" lastModifiedUtc="2010-06-24T16:02:20.5406805Z" name="RemoveAccessToOthersCalendar" methodType="Rule" actionType="None" returnMode="None">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6f121f8d-34a3-4825-8608-e15bd54cf73f" lastModifiedUtc="2015-06-25T15:37:40.169907Z" name="RemoveAccessToOthersCalendar" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -16,5 +16,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

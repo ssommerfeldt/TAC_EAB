@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Columns/RadioGroup", [
     'dojox/grid/cells/_base',
     'dojo/_base/declare'
 ],

@@ -117,73 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtSourceType.Caption" xml:space="preserve">
-    <value>Tipo Origine:</value>
+  <data name="txtSource.Caption" xml:space="preserve">
+    <value>Origine:</value>
   </data>
-  <data name="dgFilters.0aa6360b-3cda-461b-8131-e2a7ed7d3afd.ColumnHeading" xml:space="preserve">
-    <value>Abilitato</value>
+  <data name="txtSourceType.Caption" xml:space="preserve">
+    <value>Tipo di origine:</value>
+  </data>
+  <data name="grdDupMatches.25547e45-355d-4ce2-a7cc-4cb200357891.ColumnHeading" xml:space="preserve">
+    <value>Destinazione</value>
+  </data>
+  <data name="grdDupMatches.1138735b-4440-4de2-ba40-218f4d6642a8.ColumnHeading" xml:space="preserve">
+    <value>Tipo di record</value>
+  </data>
+  <data name="grdDupMatches.d61962df-7a76-42c1-b677-2a20f0b51367.ColumnHeading" xml:space="preserve">
+    <value>Indice</value>
+  </data>
+  <data name="grdDupMatches.0cc2e5a5-e289-49d3-b885-2e565fafef20.Text" xml:space="preserve">
+    <value>Unisci</value>
+  </data>
+  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
+    <value>Duplicati non risolti</value>
+  </data>
+  <data name="QFHorizontalSeparator2.Caption" xml:space="preserve">
+    <value>Filtri di ricerca</value>
+  </data>
+  <data name="dgFilters.eaf9638a-d7cf-4804-a029-bd386082b353.ColumnHeading" xml:space="preserve">
+    <value>Filtro</value>
   </data>
   <data name="dgFilters.cf498714-dc19-451d-971f-4c15f7b79bd6.ColumnHeading" xml:space="preserve">
     <value>Valore</value>
   </data>
-  <data name="ownResolvedBy.Caption" xml:space="preserve">
-    <value>Risolto Da:</value>
+  <data name="dgFilters.0aa6360b-3cda-461b-8131-e2a7ed7d3afd.ColumnHeading" xml:space="preserve">
+    <value>Abilitato</value>
   </data>
-  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
-    <value>Duplicati Non Risolti</value>
-  </data>
-  <data name="grdDupMatches.1138735b-4440-4de2-ba40-218f4d6642a8.ColumnHeading" xml:space="preserve">
-    <value>Tipo Record</value>
-  </data>
-  <data name="grdDupMatches.bf49cdff-4d90-41e1-919a-8d2a49233425.ColumnHeading" xml:space="preserve">
-    <value>Risultato</value>
+  <data name="grdDupMatches.90af31c9-5d30-44c1-bd96-276e8ad93748.ColumnHeading" xml:space="preserve">
+    <value>Stato risultati</value>
   </data>
   <data name="grdDupMatches.4bc08dda-8714-4541-9a45-0d669143a807.ColumnHeading" xml:space="preserve">
     <value>Origine</value>
   </data>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="dtpResolvedDate.Caption" xml:space="preserve">
-    <value>Data Risoluzione:</value>
-  </data>
-  <data name="btnNoDuplicate.Caption" xml:space="preserve">
-    <value>Non Duplicato</value>
-  </data>
-  <data name="grdDupMatches.25547e45-355d-4ce2-a7cc-4cb200357891.ColumnHeading" xml:space="preserve">
-    <value>Target</value>
-  </data>
-  <data name="grdDupMatches.8ba4a56d-b538-4a26-9d5c-ed03cdcf0e2e.ColumnHeading" xml:space="preserve">
-    <value>Risultato Conteggio</value>
+  <data name="grdDupMatches.bf49cdff-4d90-41e1-919a-8d2a49233425.ColumnHeading" xml:space="preserve">
+    <value>Risultato</value>
   </data>
   <data name="grdDupMatches.e86941c3-f91d-4f3d-a942-264c913c6e62.ColumnHeading" xml:space="preserve">
-    <value>Tipo Risultato</value>
+    <value>Tipo risultato</value>
   </data>
-  <data name="grdDupMatches.d61962df-7a76-42c1-b677-2a20f0b51367.ColumnHeading" xml:space="preserve">
-    <value>Punteggio</value>
+  <data name="grdDupMatches.8ba4a56d-b538-4a26-9d5c-ed03cdcf0e2e.ColumnHeading" xml:space="preserve">
+    <value>Conteggio risultati</value>
   </data>
-  <data name="lnkDeDupJob.Caption" xml:space="preserve">
-    <value>Numero Job:</value>
+  <data name="btnNoDuplicate.Caption" xml:space="preserve">
+    <value>Non è un duplicato</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
   </data>
   <data name="Status_Merged" xml:space="preserve">
     <value>Unito</value>
   </data>
   <data name="txtStatus.Caption" xml:space="preserve">
-    <value>Risolvi Status:</value>
+    <value>Risolvi stato:</value>
   </data>
-  <data name="dgFilters.eaf9638a-d7cf-4804-a029-bd386082b353.ColumnHeading" xml:space="preserve">
-    <value>Filtro</value>
+  <data name="ownResolvedBy.Caption" xml:space="preserve">
+    <value>Risolto da:</value>
   </data>
-  <data name="grdDupMatches.0cc2e5a5-e289-49d3-b885-2e565fafef20.Text" xml:space="preserve">
-    <value>Unisci</value>
+  <data name="dtpResolvedDate.Caption" xml:space="preserve">
+    <value>Data risoluzione:</value>
   </data>
-  <data name="QFHorizontalSeparator2.Caption" xml:space="preserve">
-    <value>Filtri di Ricerca</value>
+  <data name="lnkDeDupJob.Caption" xml:space="preserve">
+    <value>Numero processo:</value>
   </data>
-  <data name="grdDupMatches.90af31c9-5d30-44c1-bd96-276e8ad93748.ColumnHeading" xml:space="preserve">
-    <value>Status Risultati</value>
-  </data>
-  <data name="txtSource.Caption" xml:space="preserve">
-    <value>Sorgente:</value>
+  <data name="lnkDeDupJob.Text" xml:space="preserve">
+    <value />
   </data>
 </root>

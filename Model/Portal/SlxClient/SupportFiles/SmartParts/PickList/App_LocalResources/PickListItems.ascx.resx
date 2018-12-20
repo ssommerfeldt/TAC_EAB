@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -123,6 +123,9 @@
   <data name="btnAdd.ToolTip" xml:space="preserve">
     <value>Add Item</value>
   </data>
+  <data name="cboViewedLanguage.ToolTip" xml:space="preserve">
+    <value>Change Language Shown</value>
+  </data>
   <data name="ConfirmMessage" xml:space="preserve">
     <value>Are you sure you want to delete?</value>
   </data>
@@ -143,5 +146,23 @@
   </data>
   <data name="grd_Text.HeaderText" xml:space="preserve">
     <value>Text</value>
+  </data>
+  <data name="grd_Filter.HeaderText" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="grd_Language.HeaderText" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="grd_LanguageCode.HeaderText" xml:space="preserve">
+    <value>Language Code</value>
+  </data>
+  <data name="DeleteAllAddendum" xml:space="preserve">
+  <value>Deleting this item will result in the deletion of all other items whose code value matches this item for this pick list.</value>
+  </data>
+  <data name="grd_Localize.Text" xml:space="preserve">
+    <value>Localize</value>
+  </data>
+  <data name="AllItems" xml:space="preserve">
+    <value>All</value>
   </data>
 </root>

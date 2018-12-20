@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e9735cb8-044e-4340-8f4d-b988dbb08a02" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e9735cb8-044e-4340-8f4d-b988dbb08a02" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-07-21T17:10:59.4239424Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -11,7 +11,8 @@
           <CSharpCodeSnippet>Sage.Entity.Interfaces.IIntegration integration = BindingSource.Current as Sage.Entity.Interfaces.IIntegration;
 if (integration != null)
 {
-    btnManageSchema.Visible = integration.AuthorizationType == "Basic";
+    btnManageSchema.Visible = integration.Name == "X3";
+	
 }</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
@@ -54,9 +55,32 @@ if (integration != null)
         </ResourceKind>
         <PathSegments />
         <Columns>
+          <QFSDataEditCol>
+            <StyleScheme />
+            <DataField>Id</DataField>
+            <ColumnId>7f2b79fa-c529-4b11-bdfc-562a6481cb0f</ColumnId>
+            <HorizontalAlignment>center</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <DialogSpecs>
+              <SmartPart>EditIntegrationResource</SmartPart>
+              <Height>360</Height>
+              <Width>600</Width>
+              <Top>0</Top>
+              <Left>0</Left>
+              <EntityType>IntegrationResource</EntityType>
+              <ResourceKey>54e331d7-7135-4d25-abb9-f46212a8ec60</ResourceKey>
+              <CenterDialog>True</CenterDialog>
+            </DialogSpecs>
+            <AppliedSecurity />
+            <HideCondition />
+            <Width>4</Width>
+          </QFSDataEditCol>
           <QFEditableCol>
             <StyleScheme />
-            <DataField>ResourceKind</DataField>
+            <DataField>ResourceName</DataField>
             <ColumnId>563b0b22-501c-47b1-b231-5f5e74b76780</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
@@ -70,22 +94,24 @@ if (integration != null)
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
-          <QFEditableCol>
+          <QFSDataPickListCol>
             <StyleScheme />
-            <DataField>EntityName</DataField>
-            <ColumnId>fbc5db8c-2cce-47bc-a0d4-d9717f77bbad</ColumnId>
+            <DataField>SyncDirection</DataField>
+            <ColumnId>6fbebaa3-867b-47b8-88bd-1ed8b4b4fb5c</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>EntityName</SortField>
+            <IsSortable>false</IsSortable>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
             <HideCondition />
             <Width>-1</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
+            <PickListName>Integration Sync Direction</PickListName>
+            <DisplayMode>AsText</DisplayMode>
+            <StorageMode>Code</StorageMode>
+          </QFSDataPickListCol>
           <QFSDataCheckBoxCol>
             <StyleScheme />
             <DataField>Enabled</DataField>
@@ -95,33 +121,63 @@ if (integration != null)
             <SortDirection>None</SortDirection>
             <IsSortable>false</IsSortable>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
+            <IsEditable>true</IsEditable>
             <HideCondition />
             <Width>10</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFSDataCheckBoxCol>
-          <QFSDataPickListCol>
+          <QFEditableCol>
             <StyleScheme />
-            <DataField>SyncDirection</DataField>
-            <ColumnId>31371f88-e3dd-4653-ae5d-619f82317c48</ColumnId>
+            <DataField>ModifyUser</DataField>
+            <ColumnId>5995c97c-c4c2-48b9-be55-762a21827105</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>SyncDirection</SortField>
+            <IsSortable>false</IsSortable>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
             <HideCondition />
-            <Width>30</Width>
+            <Width>-1</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
-            <PickListName>Integration Sync Direction</PickListName>
+          </QFEditableCol>
+          <QFSDataDateTimeCol>
+            <StyleScheme />
+            <DataField>ModifyDate</DataField>
+            <ColumnId>7b578e9f-a233-4aa0-9893-da1be19265ee</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <DateOnly>false</DateOnly>
+          </QFSDataDateTimeCol>
+          <QFSDataPickListCol>
+            <StyleScheme />
+            <DataField>ConflictResolution</DataField>
+            <ColumnId>55edba04-12d1-4455-bb5f-aa1bced59303</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <PickListName>Integration Conflict Resolution</PickListName>
             <DisplayMode>AsText</DisplayMode>
             <StorageMode>Code</StorageMode>
           </QFSDataPickListCol>
         </Columns>
-        <ConditionalWhere>function() { return 'Integration.Id eq "' + Sage.Utility.getCurrentEntityId() + '"'; }</ConditionalWhere>
+        <ConditionalWhere />
         <Select />
         <Include />
         <FeedCategory>InternalAppEntities</FeedCategory>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Alarms/UnconfirmedAlarm", [
     'Sage/_Templated',
     'dijit/_Widget',
     'dijit/form/CheckBox',

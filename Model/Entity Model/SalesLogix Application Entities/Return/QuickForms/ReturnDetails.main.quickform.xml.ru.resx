@@ -117,17 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="userCreatedBy.Caption" xml:space="preserve">
-    <value>Создал:</value>
-  </data>
-  <data name="luAccount.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="luContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
+  <data name="txtReturnId.Caption" xml:space="preserve">
+    <value>ИД возврата:</value>
   </data>
   <data name="luTicketId.Caption" xml:space="preserve">
-    <value>Заявка:</value>
+    <value>ИД заявки:</value>
+  </data>
+  <data name="luAccount.Caption" xml:space="preserve">
+    <value>Клиент:</value>
+  </data>
+  <data name="luContact.Caption" xml:space="preserve">
+    <value>Контакт:</value>
+  </data>
+  <data name="txtReason.Caption" xml:space="preserve">
+    <value>Причина</value>
+  </data>
+  <data name="txtPO.Caption" xml:space="preserve">
+    <value>Заказ на покупку заказчика:</value>
+  </data>
+  <data name="pklStatus.Caption" xml:space="preserve">
+    <value>Статус:</value>
+  </data>
+  <data name="pklType.Caption" xml:space="preserve">
+    <value>Тип:</value>
+  </data>
+  <data name="pklPriority.Caption" xml:space="preserve">
+    <value>Приоритет:</value>
+  </data>
+  <data name="dtpExpectedBy.Caption" xml:space="preserve">
+    <value>Ожидается:</value>
+  </data>
+  <data name="ownAssignedTo.Caption" xml:space="preserve">
+    <value>Кому назначено:</value>
+  </data>
+  <data name="userCreatedBy.Caption" xml:space="preserve">
+    <value>Автор:</value>
+  </data>
+  <data name="ownerClosedBy.Caption" xml:space="preserve">
+    <value>Автор закрытия</value>
+  </data>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="luTicketId.LookupProperties.TicketNumber.PropertyHeader" xml:space="preserve">
+    <value>ИД заявки</value>
+  </data>
+  <data name="luTicketId.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="luTicketId.LookupProperties.Subject.PropertyHeader" xml:space="preserve">
+    <value>Тема</value>
   </data>
   <data name="luContact.LookupProperties.LastName.PropertyHeader" xml:space="preserve">
     <value>Фамилия</value>
@@ -135,148 +174,109 @@
   <data name="luContact.LookupProperties.FirstName.PropertyHeader" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="luAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
-  </data>
-  <data name="txtPO.Caption" xml:space="preserve">
-    <value>Номер заказа:</value>
-  </data>
-  <data name="dtpAssignedTo.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="luAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
-    <value>Подтип</value>
-  </data>
-  <data name="luContact.Caption" xml:space="preserve">
-    <value>Контакт:</value>
-  </data>
-  <data name="ownerClosedBy.Caption" xml:space="preserve">
-    <value>Закрыто:</value>
-  </data>
-  <data name="dtpCloseDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="userCreatedBy.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="luContact.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="luTicketId.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="btnSave.Caption" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="luContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Город</value>
-  </data>
-  <data name="luTicketId.LookupProperties.Area.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
-  </data>
-  <data name="luAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="luContact.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
+  <data name="luContact.LookupProperties.Title.PropertyHeader" xml:space="preserve">
+    <value>Название</value>
   </data>
   <data name="luContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Раб. телефон</value>
-  </data>
-  <data name="ownAssignedTo.Caption" xml:space="preserve">
-    <value>Поручено:</value>
-  </data>
-  <data name="luTicketId.LookupProperties.Contact.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Контакт</value>
-  </data>
-  <data name="luAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="luTicketId.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="luAccount.Caption" xml:space="preserve">
-    <value>Субъект:</value>
-  </data>
-  <data name="luTicketId.LookupProperties.Urgency.Description.PropertyHeader" xml:space="preserve">
-    <value>Срочность</value>
+    <value>Рабочий телефон</value>
   </data>
   <data name="btnDelete.Caption" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Запись будет удалена без возможности восстановления</value>
-  </data>
-  <data name="luContact.LookupProperties.Title.PropertyHeader" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="txtReason.Caption" xml:space="preserve">
-    <value>Причина:</value>
-  </data>
-  <data name="luAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="dtpExpectedBy.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="luContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
-    <value>Эл. почта</value>
-  </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="luTicketId.LookupProperties.Subject.PropertyHeader" xml:space="preserve">
-    <value>Предмет</value>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
-  <data name="luTicketId.LookupProperties.TicketNumber.PropertyHeader" xml:space="preserve">
-    <value>ИД заявки</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Данная запись будет удалена без возможности восстановления.</value>
   </data>
   <data name="luContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="pklPriority.Caption" xml:space="preserve">
-    <value>Приоритет:</value>
+  <data name="luContact.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
   </data>
-  <data name="ownAssignedTo.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="luTicketId.LookupProperties.Contact.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Раб. телефон</value>
-  </data>
-  <data name="txtReturnId.Caption" xml:space="preserve">
-    <value>ИД возврата:</value>
-  </data>
-  <data name="luAccount.LookupProperties.UserInfo.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="luAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="ownerClosedBy.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="luAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+  <data name="luContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
     <value>Город</value>
   </data>
-  <data name="luAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Доступ</value>
+  <data name="luContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
   </data>
-  <data name="dtpExpectedBy.Caption" xml:space="preserve">
-    <value>Ожидается:</value>
+  <data name="luContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
+    <value>Электронная почта</value>
   </data>
-  <data name="pklStatus.Caption" xml:space="preserve">
-    <value>Статус:</value>
+  <data name="luTicketId.LookupProperties.Contact.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="luTicketId.LookupProperties.Contact.WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>Рабочий телефон</value>
   </data>
   <data name="luTicketId.LookupProperties.StatusCode.PropertyHeader" xml:space="preserve">
     <value>Статус</value>
   </data>
-  <data name="luAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
-    <value>Основной тел.</value>
+  <data name="luTicketId.LookupProperties.Urgency.Description.PropertyHeader" xml:space="preserve">
+    <value>Срочность</value>
   </data>
-  <data name="pklType.Caption" xml:space="preserve">
-    <value>Тип:</value>
+  <data name="luTicketId.LookupProperties.Area.PropertyHeader" xml:space="preserve">
+    <value>Область</value>
+  </data>
+  <data name="luTicketId.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="luAccount.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="luContact.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dtpExpectedBy.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="ownAssignedTo.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="userCreatedBy.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="ownerClosedBy.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dtpAssignedTo.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dtpCloseDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="luAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="luAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="luAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="luAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Основной телефон</value>
+  </data>
+  <data name="luAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="luAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Подтип</value>
+  </data>
+  <data name="luAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="luAccount.LookupProperties.UserInfo.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="luAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="luAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
   </data>
 </root>

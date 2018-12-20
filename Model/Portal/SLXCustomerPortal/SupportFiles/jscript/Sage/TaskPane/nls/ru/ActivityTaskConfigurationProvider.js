@@ -1,19 +1,19 @@
-define((
-{ scheduleText: 'Планировать',
-  eventText: 'Событие',
-  phoneCallText: 'Звонок',
-  toDoText: 'Дело',
-  meetingText: 'Встреча',
-  personalActivityText: 'Личные дела',
-  deleteConfirmationText: 'Удалить подтверждение',
-  acceptConfirmationText: 'Подтвердить',
-  declineConfirmationText: 'Отклонить',
-  completeActivityText: 'Завершить дело',
-  deleteActivityText: 'Удалить дело',
-  deleteEventText: 'Удалить событие',
-  scheduleEventText: 'Планировать событие',
-  scheduleRequestText: 'Планировать запрос',
-  deleteRequestText: 'Удалить запрос',
-  recordsSelectedText: 'записей выбрано',
-  clearText: 'Очистить' }
-));
+define("Sage/TaskPane/nls/ru/ActivityTaskConfigurationProvider", {
+    "scheduleText": "Расписание",
+    "eventText": "Событие",
+    "phoneCallText": "Звонок",
+    "toDoText": "Дело",
+    "meetingText": "Встреча",
+    "personalActivityText": "Личное действие",
+    "deleteConfirmationText": "Удалить подтверждение",
+    "acceptConfirmationText": "Принять подтверждение",
+    "declineConfirmationText": "Отклонить подтверждение",
+    "completeActivityText": "Завершить действие",
+    "deleteActivityText": "Удалить действие",
+    "deleteEventText": "Удалить событие",
+    "scheduleEventText": "Запланировать событие...",
+    "scheduleRequestText": "Запланировать запрос",
+    "deleteRequestText": "Удалить запрос",
+    "recordsSelectedText": "зап. выбрано",
+    "clearText": "Очистить"
+});

@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/EmailControlDesigner", [
     'dojo/_base/declare',
     'dojo/_base/array',
     'dojo/_base/lang',

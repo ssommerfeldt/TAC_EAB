@@ -117,29 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccountAssociationsGrid_Name.HeaderText" xml:space="preserve">
-    <value>Firma</value>
-  </data>
-  <data name="AccountAssociationsGrid_Edit.Text" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="ConfirmMessage" xml:space="preserve">
-    <value>Möchten Sie wirklich löschen?</value>
-  </data>
-  <data name="AccountAssociationsGrid_Relation.HeaderText" xml:space="preserve">
-    <value>Beziehung</value>
-  </data>
-  <data name="HelpLink.ToolTip" xml:space="preserve">
-    <value>Hilfe</value>
-  </data>
-  <data name="AccountAssociationsGrid_Delete.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="btnAdd.ToolTip" xml:space="preserve">
-    <value>Beziehung hinzufügen</value>
-  </data>
-  <data name="AccountAssociationsGrid_Notes.HeaderText" xml:space="preserve">
-    <value>Beschreibung</value>
+  <data name="AccountAssocationsGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
   </data>
   <data name="AccountAssociationsGrid_CreatedBy.HeaderText" xml:space="preserve">
     <value>Erstellt von</value>
@@ -147,10 +126,31 @@
   <data name="AccountAssociationsGrid_Date.HeaderText" xml:space="preserve">
     <value>Datum</value>
   </data>
-  <data name="AccountAssocationsGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  <data name="AccountAssociationsGrid_Delete.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="AccountAssociationsGrid_Edit.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
   </data>
   <data name="AccountAssociationsGrid_Link.ToolTip" xml:space="preserve">
     <value>Zu Firma wechseln</value>
+  </data>
+  <data name="AccountAssociationsGrid_Name.HeaderText" xml:space="preserve">
+    <value>Firma</value>
+  </data>
+  <data name="AccountAssociationsGrid_Notes.HeaderText" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="AccountAssociationsGrid_Relation.HeaderText" xml:space="preserve">
+    <value>Beziehung</value>
+  </data>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Beziehung hinzufügen</value>
+  </data>
+  <data name="ConfirmMessage" xml:space="preserve">
+    <value>Möchten Sie wirklich löschen?</value>
+  </data>
+  <data name="HelpLink.ToolTip" xml:space="preserve">
+    <value>Hilfe</value>
   </data>
 </root>

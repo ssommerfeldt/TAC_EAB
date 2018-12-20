@@ -15,60 +15,58 @@
 </div>
 
 <table id="SourceSnapShot" border="0" cellpadding="0" cellspacing="0" class="Bevel ExtendWidth">
-    <col width="1%" /><col width="35%" /><col width="32%" /><col width="32%" />
+    <col width="35%" /><col width="32%" /><col width="33%" />
     <tr>
-        <td></td>
         <td colspan="2">
-            <span class="lbl">
+            <span>
                 <asp:Label ID="lblLead" runat="server" Text=""></asp:Label>
             </span>
         </td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
-        <td></td>
         <td>
             <div class="textcontrol phone">
                 <SalesLogix:Phone runat="server" ID="phnWorkPhone" ReadOnly="true" MaxLength="32" DisplayAsLabel="true"></SalesLogix:Phone>
             </div>
         </td>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblCompany" runat="server" Text="<%$ resources: lblCompany.Caption %>" AssociatedControlID="lblValueCompany"></asp:Label>
             </span>
-            <span>
+            <span class="lbl alignright">
                 <asp:Label ID="lblValueCompany" runat="server" Text=""></asp:Label>
             </span>
         </td>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblEmail" runat="server" Text="<%$ resources: lblEmail.Caption %>" AssociatedControlID="lblValueEmail"></asp:Label>
             </span>
-            <span>
+            <span class="lbl alignright">
                 <asp:Label ID="lblValueEmail" runat="server" Text=""></asp:Label>
             </span>
         </td>
     </tr>
     <tr>
-        <td></td>
         <td>
             <span>
                 <asp:Label ID="lblAddress" runat="server" Text=""></asp:Label>
             </span>
         </td>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblTitle" runat="server" Text="<%$ resources: lblTitle.Caption %>" AssociatedControlID="lblValueTitle"></asp:Label>
             </span>
-            <span>
+            <span class="lbl alignright">
                 <asp:Label ID="lblValueTitle" runat="server" Text=""></asp:Label>
             </span>
         </td>
         <td>
-            <span class="lbl">
+            <span class="lbl alignright">
                 <asp:Label ID="lblWeb" runat="server" Text="<%$ resources: lblWeb.Caption %>" AssociatedControlID="lblValueWeb"></asp:Label>
             </span>
-            <span>
+            <span class="lbl alignright">
                 <asp:Label ID="lblValueWeb" runat="server" Text=""></asp:Label>
             </span>
         </td>
@@ -117,30 +115,14 @@
                 </span>
             </td>
             <td>
-                <span>
-                    <asp:CheckBox ID="chkContacts" runat="server" Checked="true" />
-                </span>
-                <span class="lblright" style="padding-right:20px">
-                    <asp:Label ID="lblContacts" runat="server" AssociatedControlID="chkContacts"
-                        Text="<%$ resources: lblContacts.Caption %>">
-                    </asp:Label>
-                </span>
-                <span>
-                    <asp:CheckBox ID="chkLeads" runat="server" Checked="true" />
-                </span>
-                <span class="lblright" style="padding-right:20px">
-                    <asp:Label ID="lblleads" runat="server" AssociatedControlID="chkLeads"
-                        Text="<%$ resources: lblLeads.Caption %>">
-                    </asp:Label>
-                </span>
-                <span>
-                    <asp:CheckBox ID="chkAccounts" runat="server" Checked="true" />
-                </span>
-                <span class="lblright">
-                    <asp:Label ID="lblAccounts" runat="server" AssociatedControlID="chkAccounts"
-                        Text="<%$ resources: lblAccounts.Caption %>">
-                    </asp:Label>
-                </span>
+                <input type="checkbox" ID="chkContacts" runat="server" class="inforCheckbox" checked="true" ClientIDMode="static"/>
+                <asp:Label ID="lblContacts" AssociatedControlID="chkContacts" runat="server" CssClass="inforCheckboxLabel noColon label" Text="<%$ resources: lblContacts.Caption %>"></asp:Label>
+                <span style="width:20px"></span>
+                <input type="checkbox" ID="chkLeads" runat="server" class="inforCheckbox" checked="true" ClientIDMode="static"/>
+                <asp:Label ID="lblleads" AssociatedControlID="chkLeads" runat="server" CssClass="inforCheckboxLabel noColon label" Text="<%$ resources: lblLeads.Caption %>"></asp:Label>
+                <span style="width:20px"></span>
+                <input type="checkbox" ID="chkAccounts" runat="server" class="inforCheckbox" checked="true" ClientIDMode="static"/>
+                <asp:Label ID="lblAccounts" AssociatedControlID="chkAccounts" runat="server" CssClass="inforCheckboxLabel noColon label" Text="<%$ resources: lblAccounts.Caption %>"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -165,7 +147,7 @@
             <td></td>
             <td></td>
             <td colspan="2">
-                <asp:CheckBoxList ID="chkListFilters" runat="server" RepeatColumns="5" RepeatDirection="Horizontal" Width="100%"></asp:CheckBoxList>
+                <asp:CheckBoxList ID="chkListFilters" runat="server" RepeatColumns="5" RepeatDirection="Horizontal" Width="100%" CssClass="inforCheckboxList"></asp:CheckBoxList>
                 <br />
             </td>
         </tr>

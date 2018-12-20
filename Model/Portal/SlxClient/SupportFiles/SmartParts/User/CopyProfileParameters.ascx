@@ -22,11 +22,12 @@
 <br />
 <div id="sourceTypeContainer">
     <div id="userListContainer" runat="server" style="display: inline">
-        <table><tr>
-            <td style="padding-right:5px">
+        <table style="width:100%"><tr>
+            <td>
+                <div class=" lbl alignright" style="width:15%">
             <asp:Literal ID="Literal3" runat="server" Text="<%$ resources: SourceUserList.Caption %>"></asp:Literal>
-            </td>
-            <td style="width: 100%">
+            </div>
+                <div class="textcontrol lookup" style="width:80%">
                 <SalesLogix:LookupControl runat="server" ID="lueUser" Width="100%"  LookupEntityName="User" LookupEntityTypeName="Sage.Entity.Interfaces.IUser, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" LookupDisplayMode="Dialog" AutoPostBack="true" AddEmptyListItem="false" DialogTitle="<%$ resources:LookupUserDialogTitle %>"  >
                 <LookupProperties>
                 <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueUser.LookupProperties.UserInfo.UserName.PropertyHeader %>" PropertyName="UserInfo.UserName" PropertyType="System.String" PropertyFormat="None"  UseAsResult="True" ExcludeFromFilters="False"></SalesLogix:LookupProperty>
@@ -40,15 +41,17 @@
                     <SalesLogix:LookupPreFilter PropertyName="Type" PropertyType="Sage.Entity.Interfaces.UserType" OperatorCode="!=" FilterValue="8"></SalesLogix:LookupPreFilter>
                 </LookupPreFilters>
             </SalesLogix:LookupControl>
+                    </div>
             </td>
         </tr></table>
     </div>
     <div id="templateListContainer" runat="server" style="display: none">  
-        <table><tr>
-            <td style="padding-right:5px">
+        <table style="width:100%"> <tr>
+            <td>
+                <div class=" lbl alignright" style="width:15%">
             <asp:Literal ID="Literal1" runat="server" Text="<%$ resources: SourceTemplateList.Caption %>"></asp:Literal>
-            </td>
-            <td style="width: 100%">
+          </div>
+               <div class="textcontrol lookup" style="width:80%">
                 <SalesLogix:LookupControl runat="server" ID="lueTemplate" Width="100%" LookupEntityName="User" LookupEntityTypeName="Sage.Entity.Interfaces.IUser, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" LookupDisplayMode="Dialog" AutoPostBack="true" AddEmptyListItem="false" DialogTitle="<%$ resources:LookupTemplateDialogTitle %>"  >
                     <LookupProperties>
                         <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueUser.LookupProperties.UserInfo.UserName.PropertyHeader %>" PropertyName="UserInfo.UserName" PropertyType="System.String" PropertyFormat="None"  UseAsResult="True" ExcludeFromFilters="False"></SalesLogix:LookupProperty>
@@ -57,6 +60,7 @@
                         <SalesLogix:LookupPreFilter PropertyName="Type" PropertyType="Sage.Entity.Interfaces.UserType" OperatorCode="=" FilterValue="6"></SalesLogix:LookupPreFilter>
                     </LookupPreFilters>
                 </SalesLogix:LookupControl>
+                    </div>
             </td>
         </tr></table>
        
@@ -66,26 +70,27 @@
 </div>
 <br />
 <div>
-    <table>
+    <table class="formtable">
         <colgroup>
             <col width="40%" />
             <col width="60%" />
         </colgroup>
-        <tr>
-            <td><asp:CheckBox id="chkGeneral" runat="server" Text="<%$ resources: chkGeneral.Caption %>" Checked="true" /></td>
-            <td><asp:CheckBox id="chkCalendar" runat="server" Text="<%$ resources: chkCalendar.Caption %>" Checked="true" /></td>
+         <tr>
+            <td><asp:CheckBox id="chkGeneral" runat="server" Text="<%$ resources: chkGeneral.Caption %>" Checked="true" CssClass="inforAspCheckBox"/></td>
+            <td><asp:CheckBox id="chkCalendar" runat="server" Text="<%$ resources: chkCalendar.Caption %>" Checked="true" CssClass="inforAspCheckBox"/></td>
         </tr>
          <tr>
-            <td><asp:CheckBox id="chkEmployee" runat="server" Text="<%$ resources: chkEmployee.Caption %>" Checked="true" /></td>
-            <td><asp:CheckBox id="chkClientOptions" runat="server" Text="<%$ resources: chkClientOptions.Caption %>" Checked="true" /></td>
+            <td><asp:CheckBox id="chkEmployee" runat="server" Text="<%$ resources: chkEmployee.Caption %>" Checked="true" CssClass="inforAspCheckBox"/></td>
+            <td><asp:CheckBox id="chkClientOptions" runat="server" Text="<%$ resources: chkClientOptions.Caption %>" Checked="true" CssClass="inforAspCheckBox"/></td>
         </tr>
         <tr>
-            <td><asp:CheckBox id="chkSecurity" runat="server" Text="<%$ resources: chkSecurity.Caption %>" Checked="true" /></td>
-            <td><asp:CheckBox id="chkServiceSupport" runat="server" Text="<%$ resources: chkServiceSupport.Caption %>" Checked="true" /></td>
+            <td><asp:CheckBox id="chkSecurity" runat="server" Text="<%$ resources: chkSecurity.Caption %>" Checked="true" CssClass="inforAspCheckBox"/></td>
+            <td><asp:CheckBox id="chkServiceSupport" runat="server" Text="<%$ resources: chkServiceSupport.Caption %>" Checked="true" CssClass="inforAspCheckBox"/></td>
         </tr>
         <tr>
-            <td><asp:CheckBox id="chkTeams" runat="server" Text="<%$ resources: chkTeams.Caption %>" Checked="true" /></td>
+            <td><asp:CheckBox id="chkTeams" runat="server" Text="<%$ resources: chkTeams.Caption %>" Checked="true" CssClass="inforAspCheckBox"/></td>
             <td>&nbsp;</td>
         </tr>
     </table>
+    <br />
 </div>            

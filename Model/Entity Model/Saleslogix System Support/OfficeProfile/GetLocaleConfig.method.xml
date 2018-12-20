@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c2630dad-71c1-46c6-9bb4-a49cc17ec102" lastModifiedUtc="2016-02-16T17:33:11.0145304Z" name="GetLocaleConfig" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="9554403f-40a1-4a8d-b892-0f6ea8b3bd45" paramName="portalName" sequence="0" paramType="String">
+      <description>Name of portal to load available locale options</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="1a83d170-e12d-4cb8-9dc9-2f00658bbb8e" lastModifiedUtc="2016-02-16T18:13:44.6821627Z" targetType="Sage.BusinessRules.CodeSnippets.OfficeProfileBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="GetLocaleConfigStep" active="true" codeSnippetId="4da03ca3-4a08-41dd-b318-c1d2b428c34a">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -117,97 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FollowUpActivity.Caption" xml:space="preserve">
-    <value>Сл. дело:</value>
-  </data>
-  <data name="FollowUpActivity_item3.Text" xml:space="preserve">
-    <value>Дело</value>
-  </data>
-  <data name="LeadId.LookupProperties.FirstName.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="StartDate.ToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="rsOriginallyFor" xml:space="preserve">
-    <value>Первоначально</value>
-  </data>
-  <data name="FollowUpActivity_item2.Text" xml:space="preserve">
-    <value>Встреча</value>
-  </data>
-  <data name="UserId.Caption" xml:space="preserve">
-    <value>Пользователь:</value>
-  </data>
-  <data name="StartDate.Caption" xml:space="preserve">
-    <value>Запланир.:</value>
-  </data>
-  <data name="rsScheduledOn" xml:space="preserve">
-    <value>Запланировано</value>
-  </data>
-  <data name="UserId.ToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="Timeless.Caption" xml:space="preserve">
-    <value>В течение дня</value>
-  </data>
-  <data name="CompletedDate.ToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="CompletedDate.Caption" xml:space="preserve">
-    <value>Завершено:</value>
-  </data>
-  <data name="LeadId.LookupProperties.LastName.PropertyHeader" xml:space="preserve">
-    <value>Фамилия</value>
-  </data>
-  <data name="CarryOverNotes.Caption" xml:space="preserve">
-    <value>Перенести заметки</value>
-  </data>
   <data name="btnSave.Caption" xml:space="preserve">
     <value>Сохранить</value>
-  </data>
-  <data name="Category.Caption" xml:space="preserve">
-    <value>Категория:</value>
-  </data>
-  <data name=".Caption" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="Duration.Caption" xml:space="preserve">
-    <value>Длительность:</value>
-  </data>
-  <data name="rsBy" xml:space="preserve">
-    <value>по</value>
-  </data>
-  <data name="LeadId.Caption" xml:space="preserve">
-    <value>Наводка:</value>
-  </data>
-  <data name="Notes.Caption" xml:space="preserve">
-    <value>Заметки</value>
-  </data>
-  <data name="btnDelete.ToolTip" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="Description.Caption" xml:space="preserve">
-    <value>Тема:</value>
-  </data>
-  <data name="FollowUpActivity_item1.Text" xml:space="preserve">
-    <value>Звонок</value>
-  </data>
-  <data name="2f82e3c8-250e-4f5a-affa-02a331012c26.ActionConfirmationMessage" xml:space="preserve">
-    <value>Запись будет удалена без возможности восстановления</value>
-  </data>
-  <data name="Priority.Caption" xml:space="preserve">
-    <value>Приоритет:</value>
   </data>
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="Notes.Caption" xml:space="preserve">
+    <value>Заметки</value>
+  </data>
+  <data name="Timeless.Caption" xml:space="preserve">
+    <value>Без указания времени</value>
+  </data>
+  <data name="CarryOverNotes.Caption" xml:space="preserve">
+    <value>Перенести заметки</value>
+  </data>
+  <data name="FollowUpActivity.Caption" xml:space="preserve">
+    <value>Последующее действие:</value>
+  </data>
+  <data name="CompletedDate.Caption" xml:space="preserve">
+    <value>Завершено:</value>
+  </data>
+  <data name="StartDate.Caption" xml:space="preserve">
+    <value>Запланировано:</value>
+  </data>
+  <data name="Duration.Caption" xml:space="preserve">
+    <value>Длительность:</value>
+  </data>
+  <data name="LeadId.Caption" xml:space="preserve">
+    <value>Заинтересованное лицо:</value>
+  </data>
   <data name="Result.Caption" xml:space="preserve">
     <value>Результат:</value>
+  </data>
+  <data name="Description.Caption" xml:space="preserve">
+    <value>Тема:</value>
+  </data>
+  <data name="Priority.Caption" xml:space="preserve">
+    <value>Приоритет:</value>
+  </data>
+  <data name="Category.Caption" xml:space="preserve">
+    <value>Категория:</value>
+  </data>
+  <data name="UserId.Caption" xml:space="preserve">
+    <value>Пользователь:</value>
+  </data>
+  <data name="FollowUpActivity_item3.Value" xml:space="preserve">
+    <value>atToDo</value>
+  </data>
+  <data name="FollowUpActivity_item3.Text" xml:space="preserve">
+    <value>Дело</value>
+  </data>
+  <data name="FollowUpActivity_item2.Value" xml:space="preserve">
+    <value>atMeeting</value>
+  </data>
+  <data name="FollowUpActivity_item2.Text" xml:space="preserve">
+    <value>Встреча</value>
+  </data>
+  <data name="FollowUpActivity_item1.Value" xml:space="preserve">
+    <value>atPhoneCall</value>
+  </data>
+  <data name="FollowUpActivity_item1.Text" xml:space="preserve">
+    <value>Звонок</value>
+  </data>
+  <data name="FollowUpActivity_item0.Value" xml:space="preserve">
+    <value>Нет</value>
   </data>
   <data name="FollowUpActivity_item0.Text" xml:space="preserve">
     <value>Нет</value>
   </data>
+  <data name=".Caption" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="btnDelete.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="btnDelete.Caption" xml:space="preserve">
     <value>Удалить</value>
+  </data>
+  <data name="2f82e3c8-250e-4f5a-affa-02a331012c26.ActionConfirmationMessage" xml:space="preserve">
+    <value>Данная запись будет удалена без возможности восстановления.</value>
+  </data>
+  <data name="rsScheduledOn" xml:space="preserve">
+    <value>Запланировано </value>
+  </data>
+  <data name="rsBy" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="rsOriginallyFor" xml:space="preserve">
+    <value>Первоначально </value>
+  </data>
+  <data name="LeadId.LookupProperties.FirstName.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="LeadId.LookupProperties.LastName.PropertyHeader" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="UserId.ToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="StartDate.ToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="CompletedDate.ToolTip" xml:space="preserve">
+    <value>Календарь</value>
   </data>
 </root>

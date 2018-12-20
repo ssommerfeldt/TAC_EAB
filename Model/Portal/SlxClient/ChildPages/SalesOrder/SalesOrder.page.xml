@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="941e1f99-cf58-4409-ba74-05c171ee067c">
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="941e1f99-cf58-4409-ba74-05c171ee067c" disablePageValidation="false">
   <PageAlias>SalesOrder</PageAlias>
   <SmallImage>[Localization!Global_Images:Sales_Order_16x16]</SmallImage>
   <LargeImage>[Localization!Global_Images:Sales_Order_24x24]</LargeImage>
@@ -10,9 +10,8 @@
     <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.ISalesOrder, Sage.Entity.Interfaces</Property>
   </Properties>
   <TemplateProperties>
-    <Property Name="DefaultVisibleTabCount" TypeConverter="">8</Property>
+    <Property Name="DefaultVisibleTabCount" TypeConverter="">6</Property>
     <Property Name="IncludeTaskPane" TypeConverter="">True</Property>
-    <Property Name="IncludeMoreTabsTab" TypeConverter="">False</Property>
   </TemplateProperties>
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />

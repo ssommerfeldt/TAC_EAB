@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Groups/GroupNavigator", [
     'Sage/_Templated',
     'dijit/_Widget',
     'Sage/UI/ToolBarLabel',
@@ -9,9 +9,10 @@ define([
     'dojo/i18n!./nls/GroupNavigator',
     'dojo/_base/lang',
     'dojo/_base/declare',
-    'dojo/topic'
+    'dojo/topic',
+    'Sage/Mingle/MingleSupport'
 ],
-function (_Templated, _Widget, ToolBarlabel, ImageButton, GroupContextService, ClientEntityContext, nls, lang, declare, topic) {
+function (_Templated, _Widget, ToolBarlabel, ImageButton, GroupContextService, ClientEntityContext, nls, lang, declare, topic, mingleSupport) {
     var groupNavigator = declare('Sage.Groups.GroupNavigator', [_Widget, _Templated], {
         widgetsInTemplate: true,
         //i18n strings...
@@ -51,6 +52,9 @@ function (_Templated, _Widget, ToolBarlabel, ImageButton, GroupContextService, C
              *  as it will cause a double refresh of the label.
              */
             this._setLabel();
+            if (typeof mingleConfig !== 'undefined' && mingleConfig.isMingleEnabled) {
+                mingleSupport.publishIBCMessage(this.ownerDocument.location);
+            }
         },
         destroy: function () {
             if (this._groupChangedHandle) {

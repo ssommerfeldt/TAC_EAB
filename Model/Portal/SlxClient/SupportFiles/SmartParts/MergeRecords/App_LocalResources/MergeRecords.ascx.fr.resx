@@ -117,64 +117,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="merge_Caption" xml:space="preserve">
-    <value>Fusionner</value>
-  </data>
-  <data name="Target.Caption" xml:space="preserve">
-    <value>Cible</value>
-  </data>
-  <data name="LinkToAccounting.Caption" xml:space="preserve">
-    <value>Lier à la comptabilité - Fusionner les contacts</value>
-  </data>
-  <data name="grdMerge.EmptyTableRowText" xml:space="preserve">
-    <value>Les informations sur ces enregistrements sont identiques. Cliquez sur 'Afficher tous les champs' pour consulter les valeurs de chaque enregistrement.</value>
-  </data>
-  <data name="lnkShowAll.Caption" xml:space="preserve">
-    <value>Afficher tout</value>
-  </data>
-  <data name="Header.Property.Caption" xml:space="preserve">
-    <value>Propriété</value>
+  <data name="btnOK.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="lnkHideDups.Caption" xml:space="preserve">
-    <value>Masquer les doublons</value>
-  </data>
-  <data name="error_Promoted_Target" xml:space="preserve">
-    <value>La fiche source a déjà été promue. Vous ne pouvez pas fusionner des éléments dans une fiche source qui a déjà été promue.</value>
-  </data>
-  <data name="LinkAddress.Caption" xml:space="preserve">
-    <value>Lier les adresses</value>
+  <data name="error_Security_NoAccess" xml:space="preserve">
+    <value>Vous ne possédez pas les droits d'accès de sécurité requis pour les enregistrements sélectionnés.</value>
   </data>
   <data name="lblMergeText_DifferencesFound.Text" xml:space="preserve">
     <value>Fusionner les données - Différences trouvées</value>
   </data>
-  <data name="error_Security_NoAccess" xml:space="preserve">
-    <value>Vous ne possédez pas les droits d'accès de sécurité requis pour les enregistrements sélectionnés.</value>
-  </data>
-  <data name="lblMergeDetailNoDifferences.Caption" xml:space="preserve">
-    <value>Les enregistrements sélectionnés ne contiennent aucune donnée en conflit et n'ont pas besoin d'être rapprochés.</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MergeRecords_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>MergeRecords_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="lblMergeDetailDifferences.Caption" xml:space="preserve">
     <value>Sélectionnez les données à conserver dans l'enregistrement fusionné. Par défaut, seuls les champs avec des valeurs différentes apparaissent dans cette liste.</value>
   </data>
-  <data name="LinkToAccounting_SelectAccount.Caption" xml:space="preserve">
-    <value>Lier à la comptabilité - Sélectionner ou créer un compte</value>
-  </data>
-  <data name="btnOK.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="Source.Caption" xml:space="preserve">
-    <value>Source</value>
-  </data>
-  <data name="lblMergeText_NoDifferences.Text" xml:space="preserve">
-    <value>Fusionner les données - Aucune différence</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Précédent</value>
   </data>
   <data name="btnNext.Caption" xml:space="preserve">
     <value>Suivant &gt;</value>
   </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Précédent</value>
+  <data name="lnkShowAll.Caption" xml:space="preserve">
+    <value>Afficher tout</value>
+  </data>
+  <data name="lnkHideDups.Caption" xml:space="preserve">
+    <value>Masquer les doublons</value>
+  </data>
+  <data name="LinkToAccounting.Caption" xml:space="preserve">
+    <value>Lien vers la comptabilité - Fusionner les contacts</value>
+  </data>
+  <data name="Source.Caption" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="Target.Caption" xml:space="preserve">
+    <value>Cible</value>
+  </data>
+  <data name="lblMergeDetailNoDifferences.Caption" xml:space="preserve">
+    <value>Les enregistrements sélectionnés ne contiennent aucune donnée en conflit et n'ont pas besoin d'être rapprochés.</value>
+  </data>
+  <data name="lblMergeText_NoDifferences.Text" xml:space="preserve">
+    <value>Fusionner les données - Aucune différence</value>
+  </data>
+  <data name="Header.Property.Caption" xml:space="preserve">
+    <value>Propriété</value>
+  </data>
+  <data name="grdMerge.EmptyTableRowText" xml:space="preserve">
+    <value>Les informations sur ces enregistrements sont identiques. Cliquez sur 'Afficher tous les champs' pour consulter les valeurs de chaque enregistrement.</value>
+  </data>
+  <data name="LinkToAccounting_SelectAccount.Caption" xml:space="preserve">
+    <value>Lien vers la comptabilité - Sélectionner ou créer un compte</value>
+  </data>
+  <data name="LinkAddress.Caption" xml:space="preserve">
+    <value>Lier les adresses</value>
+  </data>
+  <data name="error_Promoted_Target" xml:space="preserve">
+    <value>L'enregistrement source a déjà été promu. Vous ne pouvez pas fusionner des éléments dans un enregistrement source qui a déjà été promu.</value>
+  </data>
+  <data name="merge_Caption" xml:space="preserve">
+    <value>Fusionner</value>
   </data>
 </root>

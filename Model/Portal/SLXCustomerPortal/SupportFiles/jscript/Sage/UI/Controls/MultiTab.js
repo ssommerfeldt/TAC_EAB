@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Controls/MultiTab", [
         'dojo/_base/declare',
         'dojo/dom',
         'dojo/ready',
@@ -43,7 +43,5 @@ function (declare, dom, ready, aspect, TabContainer, registry) {
             this.inherited(arguments);
         }
     });
-
-
     return multiTab;
 });

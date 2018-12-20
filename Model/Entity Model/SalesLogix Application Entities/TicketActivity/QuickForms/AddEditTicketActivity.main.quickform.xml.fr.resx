@@ -117,65 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="pklPublicAccessCode.Caption" xml:space="preserve">
-    <value>Accès public :</value>
-  </data>
-  <data name="usrUser.Caption" xml:space="preserve">
-    <value>Utilisateur :</value>
-  </data>
-  <data name="dtpAssignedDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
-  </data>
-  <data name="DialogCaption_Edit" xml:space="preserve">
-    <value>Modifier l'activité du ticket</value>
-  </data>
-  <data name="usrUser.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Enregistrer</value>
   </data>
   <data name="cmdSave.ToolTip" xml:space="preserve">
     <value>Enregistrer</value>
   </data>
-  <data name="curTotalFee.Caption" xml:space="preserve">
-    <value>Frais totaux :</value>
-  </data>
-  <data name="lueChargeType.LookupProperties.ModifyUser.PropertyHeader" xml:space="preserve">
-    <value>Modifié par</value>
-  </data>
-  <data name="lueChargeType.Caption" xml:space="preserve">
-    <value>Charger le type :</value>
-  </data>
-  <data name="dtpCompletedDate.Caption" xml:space="preserve">
-    <value>Date de fin :</value>
-  </data>
   <data name="txtUnits.Caption" xml:space="preserve">
-    <value>Unités de temps :</value>
+    <value>Unités de temps :</value>
   </data>
   <data name="txtElapsedUnits.Caption" xml:space="preserve">
-    <value>Heures écoulées :</value>
-  </data>
-  <data name="lnkCancel.ToolTip" xml:space="preserve">
-    <value>Annuler</value>
+    <value>Heures écoulées :</value>
   </data>
   <data name="chkFollowUp.Caption" xml:space="preserve">
     <value>Suivi</value>
   </data>
-  <data name="lnkContact.Caption" xml:space="preserve">
-    <value>Contact :</value>
+  <data name="dtpAssignedDate.Caption" xml:space="preserve">
+    <value>Date de début :</value>
+  </data>
+  <data name="dtpAssignedDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpCompletedDate.Caption" xml:space="preserve">
+    <value>Date de fin :</value>
+  </data>
+  <data name="dtpCompletedDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="curRate.Caption" xml:space="preserve">
     <value>Taux :</value>
   </data>
-  <data name="lueChargeType.ButtonToolTip" xml:space="preserve">
-    <value>Modifier le type de frais</value>
+  <data name="curTotalLabor.Caption" xml:space="preserve">
+    <value>Main d'œuvre totale :</value>
   </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Enregistrer</value>
+  <data name="curTotalParts.Caption" xml:space="preserve">
+    <value>Total de pièces :</value>
   </data>
-  <data name="DialogCaption_Insert" xml:space="preserve">
-    <value>Insérer un ticket d'activité</value>
+  <data name="curTotalFee.Caption" xml:space="preserve">
+    <value>Frais totaux :</value>
   </data>
-  <data name="dtpCompletedDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
+  <data name="lueChargeType.Caption" xml:space="preserve">
+    <value>Type de frais :</value>
+  </data>
+  <data name="lueChargeType.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lueChargeType.LookupProperties.TypeDescription.PropertyHeader" xml:space="preserve">
     <value>Description</value>
@@ -183,31 +168,73 @@
   <data name="lueChargeType.LookupProperties.RateTypeCode.PropertyHeader" xml:space="preserve">
     <value>Type</value>
   </data>
-  <data name="curTotalLabor.Caption" xml:space="preserve">
-    <value>Main d'œuvre total :</value>
-  </data>
-  <data name="txtComments.Caption" xml:space="preserve">
-    <value>Commentaires :</value>
-  </data>
-  <data name="curTotalParts.Caption" xml:space="preserve">
-    <value>Total de pièces :</value>
-  </data>
-  <data name="dtpAssignedDate.Caption" xml:space="preserve">
-    <value>Date de début :</value>
-  </data>
-  <data name="lnkAccount.Caption" xml:space="preserve">
-    <value>Compte :</value>
-  </data>
-  <data name="cmdAddDateStamp.ToolTip" xml:space="preserve">
-    <value>Horodatage utilisateur</value>
-  </data>
-  <data name="lnkTicket.Caption" xml:space="preserve">
-    <value>Ticket :</value>
-  </data>
   <data name="lueChargeType.LookupProperties.Amount.PropertyHeader" xml:space="preserve">
     <value>Taux</value>
   </data>
   <data name="pklActivityTypeCode.Caption" xml:space="preserve">
-    <value>Type :</value>
+    <value>Type :</value>
+  </data>
+  <data name="pklPublicAccessCode.Caption" xml:space="preserve">
+    <value>Accès public :</value>
+  </data>
+  <data name="usrUser.Caption" xml:space="preserve">
+    <value>Utilisateur :</value>
+  </data>
+  <data name="usrUser.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkAccount.Caption" xml:space="preserve">
+    <value>Compte :</value>
+  </data>
+  <data name="lnkContact.Caption" xml:space="preserve">
+    <value>Contact :</value>
+  </data>
+  <data name="lnkTicket.Caption" xml:space="preserve">
+    <value>Ticket :</value>
+  </data>
+  <data name="pklActivityTypeCode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklPublicAccessCode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkCancel.ToolTip" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="txtComments.Caption" xml:space="preserve">
+    <value>Commentaires :</value>
+  </data>
+  <data name="cmdAddDateStamp.ToolTip" xml:space="preserve">
+    <value>Horodatage utilisateur</value>
+  </data>
+  <data name="lnkCancel.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="curTotalFee.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueChargeType.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueChargeType.LookupProperties.ModifyUser.PropertyHeader" xml:space="preserve">
+    <value>Modifié par</value>
+  </data>
+  <data name="DialogCaption_Edit" xml:space="preserve">
+    <value>Modifier l'activité du ticket</value>
+  </data>
+  <data name="DialogCaption_Insert" xml:space="preserve">
+    <value>Insérer un ticket d'activité</value>
+  </data>
+  <data name="usrUser.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="dtpAssignedDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="dtpCompletedDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="lueChargeType.ButtonToolTip" xml:space="preserve">
+    <value>Modifier le type de frais</value>
   </data>
 </root>

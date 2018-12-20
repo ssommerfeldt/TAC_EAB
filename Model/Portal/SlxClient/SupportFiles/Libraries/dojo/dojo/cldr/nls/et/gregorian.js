@@ -1,7 +1,16 @@
-//>>built
 define(
 "dojo/cldr/nls/et/gregorian", //begin v1.x content
 {
+	"dateFormatItem-Ehm": "E h:mm a",
+	"days-standAlone-short": [
+		"P",
+		"E",
+		"T",
+		"K",
+		"N",
+		"R",
+		"L"
+	],
 	"months-format-narrow": [
 		"J",
 		"V",
@@ -16,15 +25,37 @@ define(
 		"N",
 		"D"
 	],
+	"field-second-relative+0": "nüüd",
+	"quarters-standAlone-narrow": [
+		"1.",
+		"2.",
+		"3.",
+		"4."
+	],
 	"field-weekday": "nädalapäev",
 	"dateFormatItem-yQQQ": "QQQ y",
-	"dateFormatItem-yMEd": "E, d.M.y",
+	"dateFormatItem-yMEd": "E, d.M y",
+	"field-wed-relative+0": "käesolev kolmapäev",
+	"dateFormatItem-GyMMMEd": "E, d. MMMM y G",
 	"dateFormatItem-MMMEd": "E, d. MMM",
+	"field-wed-relative+1": "järgmine kolmapäev",
 	"eraNarrow": [
 		"e.m.a.",
 		"m.a.j."
 	],
+	"field-tue-relative+-1": "eelmine teisipäev",
+	"days-format-short": [
+		"P",
+		"E",
+		"T",
+		"K",
+		"N",
+		"R",
+		"L"
+	],
 	"dateFormat-long": "d. MMMM y",
+	"field-fri-relative+-1": "eelmine reede",
+	"field-wed-relative+-1": "eelmine kolmapäev",
 	"months-format-wide": [
 		"jaanuar",
 		"veebruar",
@@ -39,13 +70,15 @@ define(
 		"november",
 		"detsember"
 	],
-	"dayPeriods-format-wide-pm": "pärast keskpäeva",
+	"dateTimeFormat-medium": "{1} {0}",
+	"dayPeriods-format-wide-pm": "PM",
 	"dateFormat-full": "EEEE, d. MMMM y",
+	"field-thu-relative+-1": "eelmine neljapäev",
 	"dateFormatItem-Md": "d.M",
 	"dayPeriods-format-abbr-am": "e.k.",
 	"dateFormatItem-yMd": "d.M.y",
-	"field-era": "ajastu",
 	"dateFormatItem-yM": "M.y",
+	"field-era": "ajastu",
 	"months-standAlone-wide": [
 		"jaanuar",
 		"veebruar",
@@ -68,12 +101,10 @@ define(
 		"4. kvartal"
 	],
 	"timeFormat-long": "H:mm.ss z",
-	"field-year": "aasta",
 	"dateFormatItem-yMMM": "MMM y",
-	"dateFormatItem-yQ": "Q y",
-	"dateFormatItem-yyyyMMMM": "MMMM y",
+	"dateFormatItem-yQQQQ": "QQQQ y",
+	"field-year": "aasta",
 	"field-hour": "tund",
-	"dateFormatItem-MMdd": "dd.MM",
 	"months-format-abbr": [
 		"jaan",
 		"veebr",
@@ -88,12 +119,16 @@ define(
 		"nov",
 		"dets"
 	],
-	"dateFormatItem-yyQ": "Q. yy",
+	"field-sat-relative+0": "käesolev laupäev",
+	"field-sat-relative+1": "järgmine laupäev",
 	"timeFormat-full": "H:mm.ss zzzz",
 	"field-day-relative+0": "täna",
 	"field-day-relative+1": "homme",
+	"field-thu-relative+0": "käesolev neljapäev",
+	"dateFormatItem-GyMMMd": "d. MMM y G",
 	"field-day-relative+2": "ülehomme",
-	"dateFormatItem-H": "H",
+	"field-thu-relative+1": "järgmine neljapäev",
+	"dateFormatItem-H": "HH",
 	"months-standAlone-abbr": [
 		"jaan",
 		"veebr",
@@ -120,6 +155,8 @@ define(
 		"3. kvartal",
 		"4. kvartal"
 	],
+	"dateFormatItem-Gy": "y G",
+	"dateFormatItem-M": "M",
 	"days-standAlone-wide": [
 		"pühapäev",
 		"esmaspäev",
@@ -131,13 +168,15 @@ define(
 	],
 	"dateFormatItem-MMMMd": "d. MMMM",
 	"timeFormat-medium": "H:mm.ss",
-	"dateFormatItem-Hm": "H:mm",
+	"field-sun-relative+0": "käesolev pühapäev",
+	"dateFormatItem-Hm": "HH:mm",
 	"quarters-standAlone-abbr": [
 		"K1",
 		"K2",
 		"K3",
 		"K4"
 	],
+	"field-sun-relative+1": "järgmine pühapäev",
 	"eraAbbr": [
 		"e.m.a.",
 		"m.a.j."
@@ -153,6 +192,8 @@ define(
 		"R",
 		"L"
 	],
+	"dateFormatItem-d": "d",
+	"dateFormatItem-ms": "mm.ss",
 	"quarters-format-narrow": [
 		"1",
 		"2",
@@ -160,9 +201,15 @@ define(
 		"4"
 	],
 	"field-day-relative+-1": "eile",
+	"dateFormatItem-h": "h a",
+	"dateTimeFormat-long": "{1} {0}",
 	"field-day-relative+-2": "üleeile",
 	"dateFormatItem-MMMd": "d. MMM",
 	"dateFormatItem-MEd": "E, d.M",
+	"dateTimeFormat-full": "{1} {0}",
+	"field-fri-relative+0": "käesolev reede",
+	"dateFormatItem-yMMMM": "MMMM y",
+	"field-fri-relative+1": "järgmine reede",
 	"field-day": "päev",
 	"days-format-wide": [
 		"pühapäev",
@@ -173,8 +220,8 @@ define(
 		"reede",
 		"laupäev"
 	],
-	"field-zone": "vöönd",
-	"dateFormatItem-yyyyMM": "MM.yyyy",
+	"field-zone": "ajavöönd",
+	"dateFormatItem-y": "y",
 	"months-standAlone-narrow": [
 		"J",
 		"V",
@@ -189,8 +236,9 @@ define(
 		"N",
 		"D"
 	],
-	"field-year-relative+-1": "Eelmine aasta",
-	"field-month-relative+-1": "Eelmine kuu",
+	"field-year-relative+-1": "eelmine aasta",
+	"field-month-relative+-1": "eelmine kuu",
+	"dateFormatItem-hm": "h:mm a",
 	"dayPeriods-format-abbr-pm": "p.k.",
 	"days-format-abbr": [
 		"P",
@@ -201,7 +249,7 @@ define(
 		"R",
 		"L"
 	],
-	"dateFormatItem-yMMMd": "d.MMM.y",
+	"dateFormatItem-yMMMd": "d. MMM y",
 	"eraNames": [
 		"enne meie aega",
 		"meie aja järgi"
@@ -215,7 +263,6 @@ define(
 		"R",
 		"L"
 	],
-	"field-month": "kuu",
 	"days-standAlone-narrow": [
 		"P",
 		"E",
@@ -225,23 +272,39 @@ define(
 		"R",
 		"L"
 	],
-	"dayPeriods-format-wide-am": "enne keskpäeva",
+	"dateFormatItem-MMM": "MMMM",
+	"field-month": "kuu",
+	"field-tue-relative+0": "käesolev teisipäev",
+	"field-tue-relative+1": "järgmine teisipäev",
+	"dayPeriods-format-wide-am": "AM",
 	"dateFormatItem-MMMMEd": "E, d. MMMM",
+	"dateFormatItem-EHm": "E HH:mm",
+	"field-mon-relative+0": "käesolev esmaspäev",
+	"field-mon-relative+1": "järgmine esmaspäev",
 	"dateFormat-short": "dd.MM.yy",
+	"dateFormatItem-EHms": "E HH:mm:ss",
+	"dateFormatItem-Ehms": "E h:mm:ss a",
 	"field-second": "sekund",
-	"dateFormatItem-yMMMEd": "E, d. MMM y",
-	"field-month-relative+0": "See kuu",
-	"field-month-relative+1": "Järgmine kuu",
+	"field-sat-relative+-1": "eelmine laupäev",
+	"dateFormatItem-yMMMEd": "E, d. MMMM y",
+	"field-sun-relative+-1": "eelmine pühapäev",
+	"field-month-relative+0": "käesolev kuu",
+	"field-month-relative+1": "järgmine kuu",
+	"dateFormatItem-Ed": "E, d",
+	"dateTimeFormats-appendItem-Timezone": "{0} {1}",
 	"field-week": "nädal",
-	"dateFormat-medium": "dd.MM.yyyy",
-	"field-year-relative+0": "Sel aastal",
-	"field-week-relative+-1": "Eelmine nädal",
-	"field-year-relative+1": "Järgmine aasta",
+	"dateFormat-medium": "dd.MM.y",
+	"field-year-relative+0": "käesolev aasta",
+	"field-week-relative+-1": "eelmine nädal",
+	"field-year-relative+1": "järgmine aasta",
 	"dateFormatItem-mmss": "mm.ss",
+	"dateTimeFormat-short": "{1} {0}",
 	"dateFormatItem-Hms": "H:mm.ss",
 	"dateFormatItem-hms": "h:mm.ss a",
-	"field-week-relative+0": "See nädal",
-	"field-week-relative+1": "Järgmine nädal"
+	"dateFormatItem-GyMMM": "MMM y G",
+	"field-mon-relative+-1": "eelmine esmaspäev",
+	"field-week-relative+0": "käesolev nädal",
+	"field-week-relative+1": "järgmine nädal"
 }
 //end v1.x content
 );

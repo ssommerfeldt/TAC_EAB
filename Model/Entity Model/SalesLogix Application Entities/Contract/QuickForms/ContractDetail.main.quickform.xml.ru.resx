@@ -112,204 +112,228 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="curDiscount.Caption" xml:space="preserve">
-    <value>Скидка:</value>
-  </data>
-  <data name="txtComments.Caption" xml:space="preserve">
-    <value>Комм-рии:</value>
-  </data>
-  <data name="txtGracePeriod.Caption" xml:space="preserve">
-    <value>Полных дней:</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Доступ</value>
-  </data>
-  <data name="pklContractType.Caption" xml:space="preserve">
-    <value>Тип контракта:</value>
-  </data>
-  <data name="cmdReset.ToolTip" xml:space="preserve">
-    <value>Сброс</value>
-  </data>
   <data name="lueAccount.Caption" xml:space="preserve">
-    <value>Субъект:</value>
-  </data>
-  <data name="dtpPurchaseDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="cmdDelete.Caption" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="txtRemaining.Caption" xml:space="preserve">
-    <value>Остаток:</value>
-  </data>
-  <data name="ContractType_Days" xml:space="preserve">
-    <value>Дней</value>
+    <value>Клиент:</value>
   </data>
   <data name="lueContact.Caption" xml:space="preserve">
     <value>Контакт:</value>
   </data>
-  <data name="cmdCopy.ToolTip" xml:space="preserve">
-    <value>Копировать контракт...</value>
+  <data name="pklService.Caption" xml:space="preserve">
+    <value>Служба:</value>
   </data>
-  <data name="numQuantity.Caption" xml:space="preserve">
-    <value>Кол-во:</value>
+  <data name="pklContractType.Caption" xml:space="preserve">
+    <value>Тип договора:</value>
   </data>
-  <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Город</value>
+  <data name="dtpStartDate.Caption" xml:space="preserve">
+    <value>Дата начала:</value>
   </data>
-  <data name="lueAccount.LookupProperties.Address.Address2.PropertyHeader" xml:space="preserve">
-    <value>Дополнительный адрес</value>
-  </data>
-  <data name="lueAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="lueContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Город</value>
-  </data>
-  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
-    <value>Подтип</value>
-  </data>
-  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
-    <value>Основной тел.</value>
+  <data name="chkContractAfterTicket.Caption" xml:space="preserve">
+    <value>Начать с первой заявки</value>
   </data>
   <data name="dtpEndDate.Caption" xml:space="preserve">
-    <value>Дата оконч.:</value>
+    <value>Дата окончания:</value>
   </data>
-  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
+  <data name="txtGracePeriod.Caption" xml:space="preserve">
+    <value>Льготные дни:</value>
+  </data>
+  <data name="txtQuantity.Caption" xml:space="preserve">
+    <value>Количество:</value>
   </data>
   <data name="numRemaining.Caption" xml:space="preserve">
-    <value>Остаток:</value>
-  </data>
-  <data name="curRemaining.Caption" xml:space="preserve">
-    <value>Остаток:</value>
-  </data>
-  <data name="lueAccount.LookupProperties.SeccodeId.PropertyHeader" xml:space="preserve">
-    <value>Доступ к субъекту</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Address.PostalCode.PropertyHeader" xml:space="preserve">
-    <value>Почтовый код</value>
-  </data>
-  <data name="ContractType_Dollars" xml:space="preserve">
-    <value>Значение</value>
-  </data>
-  <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Запись будет удалена без возможности восстановления</value>
+    <value>Оставшееся время:</value>
   </data>
   <data name="txtPONumber.Caption" xml:space="preserve">
-    <value>Номер заказа:</value>
+    <value>Номер заказа на покупку:</value>
   </data>
-  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
+  <data name="dtpPurchaseDate.Caption" xml:space="preserve">
+    <value>Дата покупки:</value>
   </data>
-  <data name="ContractType_Hours" xml:space="preserve">
-    <value>Часы</value>
+  <data name="curListPrice.Caption" xml:space="preserve">
+    <value>Цена:</value>
   </data>
-  <data name="lueAccount.LookupProperties.Address.Country.PropertyHeader" xml:space="preserve">
-    <value>Страна</value>
+  <data name="curDiscount.Caption" xml:space="preserve">
+    <value>Скидка:</value>
   </data>
-  <data name="curQuantity.Caption" xml:space="preserve">
-    <value>Кол-во:</value>
-  </data>
-  <data name="pklService.Caption" xml:space="preserve">
-    <value>Исполнитель:</value>
+  <data name="curContractAmount.Caption" xml:space="preserve">
+    <value>Сумма договора:</value>
   </data>
   <data name="usrLastUpdatedBy.Caption" xml:space="preserve">
-    <value>Изменено:</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Division.PropertyHeader" xml:space="preserve">
-    <value>Подразделение</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Сохранить</value>
+    <value>Автор обновления:</value>
   </data>
   <data name="cmdCopy.Caption" xml:space="preserve">
     <value>Копировать</value>
   </data>
-  <data name="dtpEndDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
+  <data name="cmdCopy.ToolTip" xml:space="preserve">
+    <value>Копировать договор...</value>
   </data>
-  <data name="dtpStartDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
+  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
   </data>
-  <data name="lueContact.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
+  <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип клиента</value>
   </data>
-  <data name="lueContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
+  <data name="lueAccount.LookupProperties.Division.PropertyHeader" xml:space="preserve">
+    <value>Подразделение</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.PostalCode.PropertyHeader" xml:space="preserve">
+    <value>Почтовый индекс</value>
+  </data>
+  <data name="lueAccount.LookupProperties.SeccodeId.PropertyHeader" xml:space="preserve">
+    <value>Владелец клиента</value>
+  </data>
+  <data name="lueAccount.LookupProperties.AccountManagerId.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
   </data>
   <data name="lueAccount.LookupProperties.Address.Address1.PropertyHeader" xml:space="preserve">
     <value>Улица</value>
   </data>
-  <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип субъекта</value>
+  <data name="lueAccount.LookupProperties.Address.Address2.PropertyHeader" xml:space="preserve">
+    <value>Дополнительный адрес</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.Country.PropertyHeader" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="lueContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="lueContact.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="lueContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>Рабочий телефон</value>
   </data>
   <data name="lueContact.LookupProperties.IsServiceAuthorized.PropertyHeader" xml:space="preserve">
     <value>Авторизованный</value>
   </data>
   <data name="dteUpdatedDate.Caption" xml:space="preserve">
-    <value>Дата изменения:</value>
+    <value>Обновленная дата:</value>
   </data>
-  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+  <data name="lueAccount.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="dtpStartDate.Caption" xml:space="preserve">
-    <value>Дата начала:</value>
+  <data name="lueContact.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
-    <value>Эл. почта</value>
+  <data name="usrLastUpdatedBy.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
+  <data name="dtpStartDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="chkContractAfterTicket.Caption" xml:space="preserve">
-    <value>Начать с первой заявки</value>
+  <data name="dtpEndDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueAccount.LookupProperties.AccountManagerId.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="usrLastUpdatedBy.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="cmdDateStamp.ToolTip" xml:space="preserve">
-    <value>Пользовательская отметка даты</value>
-  </data>
-  <data name="dtpPurchaseDate.Caption" xml:space="preserve">
-    <value>Дата покупки:</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
+  <data name="dtpPurchaseDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="txtReference.Caption" xml:space="preserve">
-    <value>Номер:</value>
-  </data>
-  <data name="curContractAmount.Caption" xml:space="preserve">
-    <value>Сумма контракта:</value>
-  </data>
-  <data name="curListPrice.Caption" xml:space="preserve">
-    <value>Цена:</value>
-  </data>
-  <data name="txtQuantity.Caption" xml:space="preserve">
-    <value>Кол-во:</value>
-  </data>
-  <data name="lueContact.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+    <value>Ссылочный №:</value>
   </data>
   <data name="chkActive.Caption" xml:space="preserve">
-    <value>Активный</value>
+    <value>Активно</value>
   </data>
-  <data name="dteUpdatedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
+  <data name="txtComments.Caption" xml:space="preserve">
+    <value>Комментарии:</value>
+  </data>
+  <data name="cmdDateStamp.ToolTip" xml:space="preserve">
+    <value>Метка даты пользователя</value>
+  </data>
+  <data name="curQuantity.Caption" xml:space="preserve">
+    <value>Количество:</value>
+  </data>
+  <data name="numQuantity.Caption" xml:space="preserve">
+    <value>Количество:</value>
   </data>
   <data name="cmdReset.Caption" xml:space="preserve">
     <value>Сброс</value>
   </data>
-  <data name="lueContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Раб. телефон</value>
+  <data name="cmdReset.ToolTip" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="cmdDelete.Caption" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Данная запись будет удалена без возможности восстановления.</value>
+  </data>
+  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Основной телефон</value>
+  </data>
+  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Подтип</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="lueAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="lueContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="lueContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="lueContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="lueContact.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dtpStartDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dtpEndDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dtpPurchaseDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="usrLastUpdatedBy.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dteUpdatedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="ContractType_Days" xml:space="preserve">
+    <value>дн.</value>
+  </data>
+  <data name="ContractType_Dollars" xml:space="preserve">
+    <value>Значение</value>
+  </data>
+  <data name="ContractType_Hours" xml:space="preserve">
+    <value>Часы</value>
+  </data>
+  <data name="txtRemaining.Caption" xml:space="preserve">
+    <value>Оставшееся время:</value>
+  </data>
+  <data name="curRemaining.Caption" xml:space="preserve">
+    <value>Оставшееся время:</value>
+  </data>
+  <data name="numQuantityWithDecimal.Caption" xml:space="preserve">
+    <value>Количество:</value>
+  </data>
+  <data name="numRemainingWithDecimal.Caption" xml:space="preserve">
+    <value>Оставшееся время:</value>
   </data>
 </root>

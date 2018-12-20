@@ -31,14 +31,15 @@
                 Width="250px" meta:resourcekey="lblUseResource1"></asp:Label>
 		</td>		
     </tr>
+    <tr><td colspan="2"><br /></td></tr>
     <tr>
         <td>
 			<span class="slxlabel"><asp:CheckBox ID="_useDefaultNamingConventions" runat="server"
-                Text="Use default naming conventions (as defined by administrator)" meta:resourcekey="_useDefaultNamingConventionsResource1" />
+                Text="Use default naming conventions (as defined by administrator)" meta:resourcekey="_useDefaultNamingConventionsResource1" CssClass="inforAspCheckBox" />
 			</span>
 		</td>
         <td>
-			<span class="slxlabel"><asp:Label ID="lblEstimated" runat="server" Text="Set estimated close to" Width="144px" meta:resourcekey="lblEstimatedResource1"></asp:Label>
+			<span class="slxlabel"><asp:Label ID="lblEstimated" runat="server" Text="Set estimated close to" meta:resourcekey="lblEstimatedResource1"></asp:Label>
             <asp:DropDownList ID="_estimatedCloseToMonths" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" 
                 DataTextField="Key" DataValueField="Value" meta:resourcekey="_estimatedCloseToMonthsResource1">
             </asp:DropDownList>
@@ -53,7 +54,7 @@
 		</td>
         <td>
 			<span class="slxlabel"><asp:CheckBox ID="_estimatedCloseToLastDayOfMonth" runat="server" Text="Initially change estimated close to last day of month"
-                meta:resourcekey="_estimatedCloseToLastDayOfMonthResource1" />
+                meta:resourcekey="_estimatedCloseToLastDayOfMonthResource1" CssClass="inforAspCheckBox"/>
 			</span>
 		</td>
     </tr>  
@@ -110,7 +111,7 @@
 				<SalesLogix:LookupControl AutoPostBack="false" runat="server" ID="luDefCurrency" LookupEntityName="ExchangeRate" LookupEntityTypeName="Sage.Entity.Interfaces.IExchangeRate, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
 				<LookupProperties>
 					<SalesLogix:LookupProperty PropertyHeader="Description" PropertyName="Description" PropertyFormat="None" PropertyType="System.String" UseAsResult="True"></SalesLogix:LookupProperty>
-                    <SalesLogix:LookupProperty PropertyHeader="Currency Code" PropertyName="CurrencyCode" PropertyFormat="None" PropertyType="System.String" UseAsResult="True"></SalesLogix:LookupProperty>
+                    <SalesLogix:LookupProperty IsSortable="False" PropertyHeader="Currency Code" PropertyName="CurrencyCode" PropertyFormat="None" PropertyType="System.String" UseAsResult="True"></SalesLogix:LookupProperty>
 					<SalesLogix:LookupProperty PropertyHeader="Rate" PropertyName="Rate" PropertyFormat="None" PropertyType="System.Double" UseAsResult="True" ExcludeFromFilters="True" meta:resourceKey="LPRate_rsc"></SalesLogix:LookupProperty>
 				</LookupProperties>
 				<LookupPreFilters>

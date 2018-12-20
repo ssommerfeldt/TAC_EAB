@@ -1,90 +1,135 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/LeadTasksTasklet", [
+    'dojo/_base/lang',
     'dojo/i18n!./nls/LeadTasksTasklet',
     'Sage/TaskPane/_BaseTaskPaneTasklet',
     'Sage/TaskPane/TaskPaneContent',
-    'Sage/MainView/Lead/UpdateLeads',
-    'Sage/UI/Dialogs',
     'dojo/_base/declare',
-    'Sage/Utility/Jobs'
+    'dojo/_base/Deferred', 
+    'dojo/string',
+    'Sage/MainView/ReportMgr/ReportWizardController',
+    'Sage/Reporting/Enumerations',
+    'Sage/Utility',
+    'Sage/UI/Dialogs',
+    'Sage/Data/SDataServiceRegistry',
+    'Sage/MainView/IntegrationContract/PromoteWidget',
+    'Sage/Utility/PricingAndAvailability',
+    'Sage/MainView/IntegrationContract/PricingAvailabilityWidget'
 ],
-function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, UpdateLeads, Dialogs, declare, jobs) {
-    var leadTasksTasklet = declare('Sage.TaskPane.LeadTasksTasklet', [_BaseTaskPaneTasklet, TaskPaneContent], {
+function (lang, i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, declare, deferred, dString, reportWizardController, enumerations, utility, dialogs, sDataServiceRegistry,
+    PromoteWidget, pricingAndAvailability, PricingAvailabilityWidget) {
+    var LeadTasksTasklet = declare('Sage.TaskPane.LeadTasksTasklet', [_BaseTaskPaneTasklet, TaskPaneContent], {
         taskItems: [],
-        constructor: function () {
+        constructor: function() {
             dojo.mixin(this, i18nStrings);
             this.taskItems = [
-                { taskId: 'UpdateLeads', type: "Link", displayName: this.updateLeadsTitle, clientAction: 'leadTasksActions.updateLeads();',
-                    securedAction: 'Entities/Lead/MultiUpdate'
+                {
+                    taskId: 'RequestWorkflow',
+                    type: "Link",
+                    displayName: this.requestIONWorkFlowLeads,
+                    clientAction: "leadTasksActions.initiateIONWFLeads()",
+                    securedAction: 'Entities/Lead/InitiateWorkflow'
                 },
-                { taskId: 'DeleteLeads', type: "Link", displayName: this.deleteLeadsTitle, clientAction: 'leadTasksActions.deleteLeads();',
-                    securedAction: 'Entities/Lead/MultiDelete'
+                {
+                    taskId: 'cancelIONWorkflow',
+                    type: "Link",
+                    displayName: this.cancelIONWorkFlowItems,
+                    clientAction: "leadTasksActions.CancelIONWorkflow()",
+                    securedAction: 'Entities/Lead/CancelIONWorkflow'
                 }
+                
             ];
         },
-        updateLeads: function () {
-            this.prepareSelectedRecords(this.updateLeadsActionItem(this.getSelectionInfo()));
-        },
-        updateLeadsActionItem: function (selectionInfo) {
-            return function () {
-                var updateDialog = dijit.byId("dlgUpdateMultipleLeads");
-                if (!updateDialog) {
-                    updateDialog = new UpdateLeads(selectionInfo);
-                } else {
-                    updateDialog.setSelectionInfo(selectionInfo);
+        initiateIONWFLeads: function () {
+            var currentEntityId = this._getSelectRecordId();
+            if (!currentEntityId) return;
+            var service = Sage.Services.getService('IntegrationContractService');
+
+            if (!service.isWorkflowIntegrationEnabled) {
+                dialogs.showError(this.workflowIntegrationNotEnabled);
+                return false;
+            }
+            var requestWorkflowLog = this.requestWorkflowLog;
+            var requestWorkflowSuccess = this.requestWorkflowSuccess;
+            var errorRequestWorkflow = this.errorRequestWorkflow;
+            var entityName = Sage.Utility.getCurrentEntityName();
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(sDataServiceRegistry.getSDataService('dynamic'));
+            request.setResourceKind("leads");
+            request.setOperationName("ManualWorkflowForLeads");
+            var entry = {
+                "$name": "ManualWorkflowForLeads",
+                "request": {
+                    "LeadId": currentEntityId
                 }
-                updateDialog.show();
             };
+
+            request.execute(entry, {
+                async: false,
+                success: function (result) {
+                    if (result.response.Result)
+                        dialogs.showInfo(requestWorkflowSuccess);
+                    else
+                        dialogs.showError(dString.substitute(requestWorkflowLog, [entityName, result]));
+                },
+                failure: function (result) {
+                    dialogs.showError(dString.substitute(errorRequestWorkflow, [entityName, result]));
+                }
+            });
+
         },
-        deleteLeads: function () {
-            this.prepareSelectedRecords(this.confirmDeleteLeadJob(this, this.getSelectionInfo()));
-        },
-        confirmDeleteLeadJob: function (self, selectionInfo) {
-            return function () {
-                Dialogs.raiseQueryDialog(
-                    i18nStrings.deleteLeadsTitle,
-                    dojo.string.substitute('${0}', [i18nStrings.confirmDeleteLeads]),
-                    function (result) {
-                        self.deleteLeadsActionItem(result, self, selectionInfo);
-                    },
-                    self.yesButtonText,
-                    self.noButtonText
-                );
+        CancelIONWorkflow: function () {
+            var currentEntityId = this._getSelectRecordId();
+            if (!currentEntityId) return;
+            var service = Sage.Services.getService('IntegrationContractService');
+
+            if (!service.isWorkflowIntegrationEnabled) {
+                dialogs.showError(this.workflowIntegrationNotEnabled);
+                return false;
+            }
+            var cancelWorkflowLog = this.cancelWorkflowLog;
+            var cancelWorkflowSuccess = this.cancelWorkflowSuccess;
+            var errorCancelWorkflow = this.errorCancelWorkflow;
+            var entityName = Sage.Utility.getCurrentEntityName();
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(sDataServiceRegistry.getSDataService('dynamic'));
+            request.setResourceKind("leads");
+            request.setOperationName("CancelManualWorkflowForLeads");
+            var entry = {
+                "$name": "CancelManualWorkflowForLeads",
+                "request": {
+                    "LeadId": currentEntityId
+                }
             };
-        },
-        deleteLeadsActionItem: function (result, self, selectionInfo) {
-            if (result) {
-                var parameters = [
-                    { "name": "EntityName", "value": "Lead" },
-                    { "name": "SelectedIds", "value": (selectionInfo.selectionCount > 0) ? selectionInfo.selectedIds.join(',') || '' : '' },
-                    { "name": "GroupId", "value": (selectionInfo.selectionCount === 0) ? this.getCurrentGroupId() || '' : '' }
-                ];
 
-                var options = {
-                    closable: true,
-                    title: this.deleteLeadsTitle,
-                    key: "Sage.SalesLogix.BusinessRules.Jobs.DeleteEntityJob",
-                    parameters: parameters,
-                    success: function (result) {
-                    },
-                    failure: function (result) {
-                        console.log(result);
-                        Dialogs.showError(dojo.string.substitute(i18nStrings.deleteJobError, [result.statusText]));
-                    },
-                    ensureZeroFilters: true
-                };
+            request.execute(entry, {
+                async: false,
+                success: function (result) {
+                    if (result.response.Result)
+                        dialogs.showInfo(cancelWorkflowSuccess);
+                    else
+                        dialogs.showError(dString.substitute(cancelWorkflowLog, [entityName, result]));
 
-                jobs.triggerJobAndDisplayProgressDialog(options);
-            }
+                },
+                failure: function (result) {
+                    dialogs.showError(dString.substitute(errorCancelWorkflow, [entityName, result]));
+                }
+            });
         },
-        getCurrentGroupId: function () {
-            var grpContextSvc = Sage.Services.getService('ClientGroupContext');
-            if (grpContextSvc) {
-                var contextService = grpContextSvc.getContext();
-                return contextService.CurrentGroupID;
+        _getSelectRecordId: function () {
+            this.getCurrentEntity();
+            var currentEntityId;
+            if (utility.getModeId() === 'detail') {
+                currentEntityId = this.currentEntityId;
+            } else {
+                var selectionInfo = this.getSelectionInfo();
+                if (this.verifySingleSelection(selectionInfo)) {
+                    currentEntityId = selectionInfo.selectedIds[0];
+                } else {
+                    dialogs.showInfo(this.selectSingleRecord, this.invalidSelectionTitle);
+                    return false;
+                }
             }
-            return '';
+            return currentEntityId;
         }
     });
-    return leadTasksTasklet;
+    return LeadTasksTasklet;
 });

@@ -130,13 +130,13 @@
     <value>Contacts (individual)</value>
   </data>
   <data name="rdgIncludeType_AccountsAll.Value" xml:space="preserve">
-    <value>AccountContacts</value>
+    <value>Account Contacts</value>
   </data>
   <data name="rdgIncludeType_AccountsAll.Text" xml:space="preserve">
     <value>Accounts (all Contacts)</value>
   </data>
   <data name="rdgIncludeType_Accounts.Value" xml:space="preserve">
-    <value>PrimaryAccount</value>
+    <value>Primary Account</value>
   </data>
   <data name="rdgIncludeType_Accounts.Text" xml:space="preserve">
     <value>Accounts (only Primary Contact)</value>
@@ -187,37 +187,37 @@
     <value>Do Not Call</value>
   </data>
   <data name="filter_GreaterThan.Value" xml:space="preserve">
-    <value>GreaterThan</value>
+    <value>Greater Than</value>
   </data>
   <data name="filter_GreaterThan.Text" xml:space="preserve">
     <value>Greater than</value>
   </data>
   <data name="filter_LessThan.Value" xml:space="preserve">
-    <value>LessThan</value>
+    <value>Less Than</value>
   </data>
   <data name="filter_LessThan.Text" xml:space="preserve">
     <value>Less than</value>
   </data>
   <data name="filter_EqualGreaterThan.Value" xml:space="preserve">
-    <value>EqualOrGreaterThan</value>
+    <value>Equal Or Greater Than</value>
   </data>
   <data name="filter_EqualGreaterThan.Text" xml:space="preserve">
     <value>Equal or greater than</value>
   </data>
   <data name="filter_EqualLessThan.Value" xml:space="preserve">
-    <value>EqualOrLessThan</value>
+    <value>Equal Or Less Than</value>
   </data>
   <data name="filter_EqualLessThan.Text" xml:space="preserve">
     <value>Equal or less than</value>
   </data>
   <data name="filter_NotEqualTo.Value" xml:space="preserve">
-    <value>NotEqualTo</value>
+    <value>Not Equal To</value>
   </data>
   <data name="filter_NotEqualTo.Text" xml:space="preserve">
     <value>Not equal to</value>
   </data>
   <data name="filter_EqualTo.Value" xml:space="preserve">
-    <value>EqualTo</value>
+    <value>Equal To</value>
   </data>
   <data name="filter_EqualTo.Text" xml:space="preserve">
     <value>Equal to</value>
@@ -229,7 +229,7 @@
     <value>Contains</value>
   </data>
   <data name="filter_StartingWith.Value" xml:space="preserve">
-    <value>StartingWith</value>
+    <value>Starting With</value>
   </data>
   <data name="filter_StartingWith.Text" xml:space="preserve">
     <value>Starting with</value>
@@ -374,9 +374,6 @@
   </data>
   <data name="error_NoGroupSelected" xml:space="preserve">
     <value>Please select a group before continuing.</value>
-  </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Active</value>
   </data>
   <data name="QueryError" xml:space="preserve">
     <value>An error has occured with the search query.</value>

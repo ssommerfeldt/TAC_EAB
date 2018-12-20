@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="48c8ac34-e3ec-494c-ac3f-b78e289e6c6d" lastModifiedUtc="2014-11-25T03:04:29.8626761Z" parentEntityId="03da3a53-eab7-4bb2-bd1b-9c0c988b66d2" childEntityId="8536df0f-c7d3-407e-a2b6-3b185b17ab0d">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="38e4acb6-2458-47b7-810a-1c7e5af19f20" lastModifiedUtc="2014-11-25T03:04:29.7446693Z" name="ErpProductClassifications" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="991b38d1-2eb3-4cfb-8778-bbbe7fc3b9e7" lastModifiedUtc="2014-11-25T03:04:29.5656591Z" name="Product" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="6d13fc5b-53f6-4675-b45f-ed0da4f32d6d" parentPropertyId="1bc2d817-6cc8-42b8-b7d1-aac17aa4146f" childPropertyId="696d2d10-b492-4400-a13f-55df18054fb0" ordinal="0" />
+  </column>
+</relationship>

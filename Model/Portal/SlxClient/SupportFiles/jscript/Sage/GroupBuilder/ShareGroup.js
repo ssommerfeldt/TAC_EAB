@@ -58,7 +58,7 @@ function ok_onclick() {
     });
 }
 function add_onclick() {
-    var vURL = 'OwnerAssign.aspx';
+    var vURL = 'OwnerAssign.aspx?_=' + new Date().valueOf();
     window.open(vURL, "OwnerAssign","resizable=yes,centerscreen=yes,width=500,height=450,status=no,toolbar=no,scrollbars=yes");
 }
 

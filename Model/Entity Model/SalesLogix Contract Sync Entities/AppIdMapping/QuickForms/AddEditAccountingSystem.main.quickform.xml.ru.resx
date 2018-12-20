@@ -117,26 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cboResources_item1.Text" xml:space="preserve">
-    <value>Группы товаров</value>
-  </data>
-  <data name="cboResources_item13.Text" xml:space="preserve">
-    <value>Субъекты торговли</value>
-  </data>
-  <data name="cboResources_item10.Text" xml:space="preserve">
-    <value>Линии заказов на покупку</value>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OК</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Отмена</value>
+    <value>Закрыть</value>
   </data>
-  <data name="cboResources_item5.Text" xml:space="preserve">
-    <value>Телефоны</value>
+  <data name="lblSchema.Text" xml:space="preserve">
+    <value>Различия схемы</value>
   </data>
-  <data name="cboResources_item14.Text" xml:space="preserve">
-    <value>Единица измерения</value>
-  </data>
-  <data name="cboResources_item2.Text" xml:space="preserve">
-    <value>Контакты</value>
+  <data name="grdSchemaDiffs.EmptyTableRowText" xml:space="preserve">
+    <value>Для просмотра различий, выбора исполнения фильтрования по ресурсам, выбранным выше.</value>
   </data>
   <data name="grdSchemaDiffs.d00e55d0-1703-4be7-9c0a-c334c02b979e.ColumnHeading" xml:space="preserve">
     <value>Свойство</value>
@@ -144,55 +135,67 @@
   <data name="grdSchemaDiffs.2c3e11ab-a8eb-461d-ad0c-af96add9ee05.ColumnHeading" xml:space="preserve">
     <value>Свойство системы учета</value>
   </data>
-  <data name="grdSchemaDiffs_NoDiff.EmptyTableRowText" xml:space="preserve">
-    <value>Выбранный ресурс не содержит различий.</value>
-  </data>
-  <data name="cboResources_item9.Text" xml:space="preserve">
-    <value>Заказы на продажи</value>
+  <data name="grdSchemaDiffs.119ffbae-7f63-4a20-b283-6281a0d8d284.ColumnHeading" xml:space="preserve">
+    <value>Saleslogix</value>
   </data>
   <data name="grdSchemaDiffs.20419138-d47c-45e3-ad0a-ea283227f2d7.ColumnHeading" xml:space="preserve">
     <value>Система учета</value>
   </data>
-  <data name="cboResources_item6.Text" xml:space="preserve">
-    <value>Прайс листы</value>
-  </data>
-  <data name="btnResource.ToolTip" xml:space="preserve">
-    <value>Обновить список</value>
-  </data>
-  <data name="cboResources_item0.Text" xml:space="preserve">
-    <value>Товары</value>
-  </data>
-  <data name="grdSchemaDiffs.EmptyTableRowText" xml:space="preserve">
-    <value>Для просмотра различий, выбора исполнения фильтрования по ресурсам, выбранным выше.</value>
-  </data>
-  <data name="cboResources_item4.Text" xml:space="preserve">
-    <value>Размещение</value>
-  </data>
   <data name="cboResources.Caption" xml:space="preserve">
-    <value>Фильтр по ресурсам</value>
+    <value>Фильтр по ресурсу</value>
   </data>
-  <data name="cboResources_item3.Text" xml:space="preserve">
-    <value>Emails</value>
+  <data name="cboResources_item14.Text" xml:space="preserve">
+    <value>Единица измерения</value>
+  </data>
+  <data name="cboResources_item13.Text" xml:space="preserve">
+    <value>Торговые клиенты</value>
+  </data>
+  <data name="cboResources_item12.Text" xml:space="preserve">
+    <value>Строки предложения по продажам</value>
   </data>
   <data name="btnResource.Caption" xml:space="preserve">
     <value>Выполнить</value>
   </data>
   <data name="cboResources_item11.Text" xml:space="preserve">
-    <value>Квоты продаж</value>
+    <value>Предложения продажи</value>
+  </data>
+  <data name="cboResources_item10.Text" xml:space="preserve">
+    <value>Строки заказа на продажу</value>
+  </data>
+  <data name="cboResources_item9.Text" xml:space="preserve">
+    <value>Заказы на продажу</value>
+  </data>
+  <data name="grdSchemaDiffs_NoDiff.EmptyTableRowText" xml:space="preserve">
+    <value> Выбранный ресурс не содержит различий.</value>
+  </data>
+  <data name="btnResource.ToolTip" xml:space="preserve">
+    <value>Обновить список</value>
   </data>
   <data name="cboResources_item8.Text" xml:space="preserve">
     <value>Цены</value>
   </data>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="lblSchema.Text" xml:space="preserve">
-    <value>Различия схемы</value>
-  </data>
-  <data name="grdSchemaDiffs.119ffbae-7f63-4a20-b283-6281a0d8d284.ColumnHeading" xml:space="preserve">
-    <value>SalesLogix</value>
-  </data>
   <data name="cboResources_item7.Text" xml:space="preserve">
     <value>Почтовые адреса</value>
+  </data>
+  <data name="cboResources_item6.Text" xml:space="preserve">
+    <value>Прейскуранты</value>
+  </data>
+  <data name="cboResources_item5.Text" xml:space="preserve">
+    <value>Телефоны</value>
+  </data>
+  <data name="cboResources_item4.Text" xml:space="preserve">
+    <value>Местоположения</value>
+  </data>
+  <data name="cboResources_item3.Text" xml:space="preserve">
+    <value>Электронные сообщения</value>
+  </data>
+  <data name="cboResources_item2.Text" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="cboResources_item1.Text" xml:space="preserve">
+    <value>Группы товаров</value>
+  </data>
+  <data name="cboResources_item0.Text" xml:space="preserve">
+    <value>Товары</value>
   </data>
 </root>

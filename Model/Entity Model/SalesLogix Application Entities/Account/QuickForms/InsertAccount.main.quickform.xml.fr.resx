@@ -117,74 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Owner.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="LeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="Address.Caption" xml:space="preserve">
-    <value>Adresse :</value>
-  </data>
-  <data name="MainPhone.Caption" xml:space="preserve">
-    <value>Téléphone principal :</value>
-  </data>
-  <data name="AccountManager.Caption" xml:space="preserve">
-    <value>Resp. de compte :</value>
-  </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Actif</value>
-  </data>
-  <data name="LeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Code source</value>
-  </data>
-  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
-    <value>Informations sur le compte</value>
-  </data>
-  <data name="BusinessDescription.Caption" xml:space="preserve">
-    <value>Desc. activité. :</value>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value>Enregistrer</value>
   </data>
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Enregistrer</value>
   </data>
+  <data name="AccountName.Caption" xml:space="preserve">
+    <value>Compte :</value>
+  </data>
+  <data name="BusinessDescription.Caption" xml:space="preserve">
+    <value>Desc. activité. :</value>
+  </data>
+  <data name="Address.Caption" xml:space="preserve">
+    <value>Adresse :</value>
+  </data>
+  <data name="LeadSource.Caption" xml:space="preserve">
+    <value>Source du lead :</value>
+  </data>
   <data name="LeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
     <value>Type</value>
   </data>
-  <data name="btnSave.Caption" xml:space="preserve">
-    <value>Enregistrer</value>
+  <data name="LeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="Fax.Caption" xml:space="preserve">
-    <value>Fax :</value>
-  </data>
-  <data name="AccountName.Caption" xml:space="preserve">
-    <value>Compte :</value>
+  <data name="LeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Code source</value>
   </data>
   <data name="LeadSource.LookupProperties.SourceDate.PropertyHeader" xml:space="preserve">
     <value>Date de la source</value>
   </data>
-  <data name="LeadSource.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="Address.ButtonToolTip" xml:space="preserve">
-    <value>Modifier</value>
-  </data>
-  <data name="pklType.Caption" xml:space="preserve">
-    <value>Type :</value>
-  </data>
-  <data name="LeadSource.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Etat</value>
-  </data>
-  <data name="pklSubType.Caption" xml:space="preserve">
-    <value>Sous-type :</value>
-  </data>
-  <data name="AccountManager.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="Address.AddressToolTip" xml:space="preserve">
-    <value>MapQuest</value>
-  </data>
   <data name="Owner.Caption" xml:space="preserve">
     <value>Propriétaire :</value>
+  </data>
+  <data name="MainPhone.Caption" xml:space="preserve">
+    <value>Téléphone principal :</value>
+  </data>
+  <data name="Fax.Caption" xml:space="preserve">
+    <value>Fax :</value>
+  </data>
+  <data name="pklType.Caption" xml:space="preserve">
+    <value>Type :</value>
+  </data>
+  <data name="pklSubType.Caption" xml:space="preserve">
+    <value>Sous-type :</value>
+  </data>
+  <data name="Status.Caption" xml:space="preserve">
+    <value>Etat :</value>
   </data>
   <data name="Industry.Caption" xml:space="preserve">
     <value>Secteur :</value>
@@ -192,10 +171,52 @@
   <data name="WebAddress.Caption" xml:space="preserve">
     <value>Web :</value>
   </data>
-  <data name="LeadSource.Caption" xml:space="preserve">
-    <value>Source du lead :</value>
+  <data name="AccountManager.Caption" xml:space="preserve">
+    <value>Resp. du compte :</value>
   </data>
-  <data name="Status.Caption" xml:space="preserve">
-    <value>Etat :</value>
+  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
+    <value>Informations sur le compte</value>
+  </data>
+  <data name="LeadSource.LUPF.Status" xml:space="preserve">
+    <value>Actif</value>
+  </data>
+  <data name="AccountManager.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="Owner.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="LeadSource.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="Address.AddressToolTip" xml:space="preserve">
+    <value>MapQuest</value>
+  </data>
+  <data name="Address.ButtonToolTip" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="LeadSource.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="QFListBox_item3.Text" xml:space="preserve">
+    <value>cxz</value>
+  </data>
+  <data name="QFListBox_item2.Text" xml:space="preserve">
+    <value>rewq</value>
+  </data>
+  <data name="QFListBox_item1.Text" xml:space="preserve">
+    <value>fdsa</value>
+  </data>
+  <data name="QFListBox_item0.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblLookForMatches.Text" xml:space="preserve">
+    <value>Rechercher des correspondances potentielles par e-mail, Web, téléphone, contact puis compte.</value>
+  </data>
+  <data name="cmdMatchingRecords.Caption" xml:space="preserve">
+    <value>Rechercher des enregistrements correspondants</value>
+  </data>
+  <data name="Account_Address_Description_Default" xml:space="preserve">
+    <value>Bureau</value>
   </data>
 </root>

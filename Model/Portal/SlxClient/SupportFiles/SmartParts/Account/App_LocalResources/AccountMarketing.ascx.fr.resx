@@ -117,14 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmMessage_DeleteResponse" xml:space="preserve">
-    <value>Voulez-vous vraiment supprimer cette réponse ?</value>
+  <data name="AccountMarketing_Add.Text" xml:space="preserve">
+    <value>Ajouter</value>
   </data>
-  <data name="ConfirmMessage_RemoveTargetAssociation" xml:space="preserve">
-    <value>Supprimer ce contact des phases suivantes de la campagne  {0} ?</value>
+  <data name="AccountMarketing_Code.HeaderText" xml:space="preserve">
+    <value>Code de la campagne</value>
+  </data>
+  <data name="AccountMarketing_Contact.HeaderText" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="AccountMarketing_Delete.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="AccountMarketing_Edit.Text" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="AccountMarketing_EmptyTableRowText.EmptyTableRowText" xml:space="preserve">
+    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
+  </data>
+  <data name="AccountMarketing_EndDate.HeaderText" xml:space="preserve">
+    <value>Date de fin</value>
   </data>
   <data name="AccountMarketing_Name.HeaderText" xml:space="preserve">
     <value>Nom de la campagne</value>
+  </data>
+  <data name="AccountMarketing_Remove" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="AccountMarketing_ResponseDate.HeaderText" xml:space="preserve">
+    <value>Date de la réponse</value>
+  </data>
+  <data name="AccountMarketing_ResponseMethod.HeaderText" xml:space="preserve">
+    <value>Méthode de réponse</value>
+  </data>
+  <data name="AccountMarketing_Stage.HeaderText" xml:space="preserve">
+    <value>Phase</value>
+  </data>
+  <data name="AccountMarketing_StartDate.HeaderText" xml:space="preserve">
+    <value>Date de début</value>
   </data>
   <data name="AccountMarketing_Status.HeaderText" xml:space="preserve">
     <value>Etat</value>
@@ -132,49 +162,19 @@
   <data name="AddResponse_rsc.ToolTip" xml:space="preserve">
     <value>Ajouter une réponse de campagne</value>
   </data>
-  <data name="AccountMarketing_Add.Text" xml:space="preserve">
-    <value>Ajouter</value>
-  </data>
-  <data name="AccountMarketing_Contact.HeaderText" xml:space="preserve">
-    <value>Contact</value>
-  </data>
   <data name="AddTargetResponse_DialogCaption" xml:space="preserve">
     <value>Ajouter une réponse cible</value>
+  </data>
+  <data name="ConfirmMessage_DeleteResponse" xml:space="preserve">
+    <value>Souhaitez-vous vraiment supprimer cette réponse ?</value>
+  </data>
+  <data name="ConfirmMessage_RemoveTargetAssociation" xml:space="preserve">
+    <value>Supprimer ce contact des phases suivantes de la campagne {0} ?</value>
   </data>
   <data name="EditTargetResponse_DialogCaption" xml:space="preserve">
     <value>Modifier la réponse cible</value>
   </data>
-  <data name="AccountMarketing_Delete.Text" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="AccountMarketing_ResponseDate.HeaderText" xml:space="preserve">
-    <value>Date de la réponse</value>
-  </data>
-  <data name="AccountMarketing_EndDate.HeaderText" xml:space="preserve">
-    <value>Date de fin</value>
-  </data>
-  <data name="AccountMarketing_Edit.Text" xml:space="preserve">
-    <value>Modifier</value>
-  </data>
-  <data name="AccountMarketing_Stage.HeaderText" xml:space="preserve">
-    <value>Phase</value>
-  </data>
-  <data name="AccountMarketing_Remove" xml:space="preserve">
-    <value>Retirer</value>
-  </data>
-  <data name="AccountMarketing_ResponseMethod.HeaderText" xml:space="preserve">
-    <value>Méthode de réponse</value>
-  </data>
-  <data name="AccountMarketing_StartDate.HeaderText" xml:space="preserve">
-    <value>Date de début</value>
-  </data>
   <data name="TargetStatus_Removed" xml:space="preserve">
     <value>Supprimé</value>
-  </data>
-  <data name="AccountMarketing_Code.HeaderText" xml:space="preserve">
-    <value>Code de la campagne</value>
-  </data>
-  <data name="AccountMarketing_EmptyTableRowText.EmptyTableRowText" xml:space="preserve">
-    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
   </data>
 </root>

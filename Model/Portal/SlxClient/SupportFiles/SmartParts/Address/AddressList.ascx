@@ -5,7 +5,7 @@
     <asp:Panel ID="Address_LTools" runat="server"></asp:Panel>
     <asp:Panel ID="Address_CTools" runat="server"></asp:Panel>
     <asp:Panel ID="Address_RTools" runat="server">
-        <asp:ImageButton runat="server" ID="btnAdd" ToolTip="<%$ resources: btnAdd.ToolTip %>" ImageUrl="~\images\icons\plus_16X16.gif" />
+        <asp:Button runat="server" ID="btnAdd" ToolTip="<%$ resources: btnAdd.ToolTip %>" CssClass="Global_Images icon16x16 icon_plus_16x16" />
         <SalesLogix:PageLink ID="lnkAddressHelp" runat="server" LinkType="HelpFileName"
             ToolTip="<%$ resources: Portal, Help_ToolTip %>" Target="Help" NavigateUrl="addressestab.aspx"
             ImageUrl="~/ImageResource.axd?scope=global&type=Global_Images&key=Help_16x16">

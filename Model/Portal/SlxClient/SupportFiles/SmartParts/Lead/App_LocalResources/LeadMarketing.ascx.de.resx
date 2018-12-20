@@ -117,56 +117,63 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LeadMarketing_Name.HeaderText" xml:space="preserve">
-    <value>Kampagnenname</value>
-  </data>
-  <data name="LeadMarketing_Code.HeaderText" xml:space="preserve">
-    <value>Kampagnencode</value>
-  </data>
-  <data name="LeadMarketing_EndDate.HeaderText" xml:space="preserve">
-    <value>Enddatum</value>
-  </data>
-  <data name="AddResponse_DialogCaption" xml:space="preserve">
-    <value>Antwort hinzufügen</value>
-  </data>
-  <data name="LeadMarketing_ResponseMethod.HeaderText" xml:space="preserve">
-    <value>Antwortmethode</value>
-  </data>
-  <data name="LeadMarketing_EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
-  </data>
-  <data name="LeadMarketing_Edit.Text" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="LeadMarketing_Stage.HeaderText" xml:space="preserve">
-    <value>Phase</value>
-  </data>
   <data name="ConfirmMessage_DeleteResponse" xml:space="preserve">
     <value>Möchten Sie diese Antwort wirklich löschen?</value>
-  </data>
-  <data name="TargetStatus_Removed" xml:space="preserve">
-    <value>Entfernt</value>
-  </data>
-  <data name="EditResponse_DialogCaption" xml:space="preserve">
-    <value>Antwort bearbeiten</value>
-  </data>
-  <data name="LeadMarketing_Remove.Text" xml:space="preserve">
-    <value>Entfernen</value>
-  </data>
-  <data name="LeadMarketing_Delete.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="LeadMarketing_StartDate.HeaderText" xml:space="preserve">
-    <value>Startdatum</value>
   </data>
   <data name="ConfirmMessage_RemoveTargetAssociation" xml:space="preserve">
     <value>Interessent aus weiteren Phasen der Kampagne {0} entfernen?</value>
   </data>
+  <data name="LeadMarketing_Code.HeaderText" xml:space="preserve">
+    <value>Kampagnencode</value>
+  </data>
+  <data name="LeadMarketing_Delete.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="LeadMarketing_Edit.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="LeadMarketing_EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LeadMarketing_EmptyTableRowText.RowSelect" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LeadMarketing_EmptyTableRowText.ShowEmptyTable" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LeadMarketing_EndDate.HeaderText" xml:space="preserve">
+    <value>Enddatum</value>
+  </data>
+  <data name="LeadMarketing_Name.HeaderText" xml:space="preserve">
+    <value>Kampagnenname</value>
+  </data>
+  <data name="LeadMarketing_Remove.Text" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
   <data name="LeadMarketing_ResponseDate.HeaderText" xml:space="preserve">
     <value>Antwortdatum</value>
   </data>
+  <data name="LeadMarketing_ResponseMethod.HeaderText" xml:space="preserve">
+    <value>Antwortmethode</value>
+  </data>
+  <data name="LeadMarketing_Stage.HeaderText" xml:space="preserve">
+    <value>Phase</value>
+  </data>
+  <data name="LeadMarketing_StartDate.HeaderText" xml:space="preserve">
+    <value>Startdatum</value>
+  </data>
   <data name="LeadMarketing_Status.HeaderText" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="TargetStatus_Removed" xml:space="preserve">
+    <value>Entfernt</value>
+  </data>
+  <data name="AddResponse_DialogCaption" xml:space="preserve">
+    <value>Antwort hinzufügen</value>
+  </data>
+  <data name="EditResponse_DialogCaption" xml:space="preserve">
+    <value>Antwort bearbeiten</value>
   </data>
   <data name="LeadMarketing_Add.Tooltip" xml:space="preserve">
     <value>Kampagnenantwort hinzufügen</value>

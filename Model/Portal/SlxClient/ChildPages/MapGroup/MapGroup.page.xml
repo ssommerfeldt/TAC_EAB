@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b185d4f3-09a5-43ca-92cd-c4f21e1f3dd2" disablePageValidation="false">
+  <PageAlias>MapGroup</PageAlias>
+  <SmallImage>[Localization!Global_Images:MapGroup]</SmallImage>
+  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <InheritTemplate>false</InheritTemplate>
+  <InheritsFrom>Sage.Platform.WebPortal.WebPortalPage, Sage.Platform.WebPortal</InheritsFrom>
+  <Properties />
+  <TemplateProperties>
+    <Property Name="IncludeMiddlePane" TypeConverter="">False</Property>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">False</Property>
+    <Property Name="MainContentWorkspace_IncludeCollapseButton" TypeConverter="">False</Property>
+    <Property Name="IncludeTaskPane" TypeConverter="">False</Property>
+  </TemplateProperties>
+  <IsDefaultPage>false</IsDefaultPage>
+  <ExcludedGlobalModules />
+  <AppliedSecurity />
+  <IncludeScript />
+</PortalPage>

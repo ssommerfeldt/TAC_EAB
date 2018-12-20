@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f49cd464-3369-48ce-b455-4bf531c37965" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f49cd464-3369-48ce-b455-4bf531c37965" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2015-11-25T17:20:25.8206614Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
@@ -18,7 +18,6 @@
         <Column>0</Column>
         <Row>0</Row>
         <IsReadOnly>false</IsReadOnly>
-        <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>grdTeams</ControlId>
         <DataBindings />
@@ -69,8 +68,7 @@
             <IsEditable>false</IsEditable>
             <HideCondition />
             <Width>12</Width>
-            <CustomFormatter>function (value, row, cell) {
-   var item = cell.grid.getItem(row);
+            <CustomFormatter>function (value, item) {
    var profileId = item.OwnerSecurityProfile.$key;
    var parentId = item.Parent.$key;
    var childId = item.Child.$key;
@@ -159,7 +157,7 @@
             <OnClick>function () {
          // Invoke the RemoveFromTeam business rule for each team selected
          var grid = this;
-         var selectedItems = grid.selection.getSelected();
+         var selectedItems = grid.getSelectedRowData();
          if (selectedItems.length &lt; 1) {
              alert(grid.noSelectionsText);
              return;

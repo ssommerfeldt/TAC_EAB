@@ -6,7 +6,7 @@
   <column>
     <OrmRelationshipColumn parentPropertyId="12de50f7-d554-4876-a635-75d29d3d1a8d" childPropertyId="0b719e4f-73ba-4d9b-a0e2-abda19ad982d" ordinal="0" />
   </column>
-  <parentProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRelationProperty" id="10340589-231a-428d-9567-4445e1e16a3d" name="MarketingServiceClicks" displayCategory="Intermediate" displayName="MarketingServiceClicks" cultureName="en-US" isNullable="true" include="true">
+  <parentProperty xsi:type="OrmRelationProperty" id="10340589-231a-428d-9567-4445e1e16a3d" name="MarketingServiceClicks" displayCategory="Intermediate" displayName="MarketingServiceClicks" cultureName="en-US" isNullable="true" include="true">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="4fc827e6-aa9d-4b12-b836-d0871bc288b8">
@@ -20,7 +20,7 @@
       <SystemDataTypeBase />
     </SystemDataType>
   </parentProperty>
-  <childProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRelationProperty" id="cbbb725f-7522-430f-9ac9-509f45ebe854" name="Property1" displayCategory="Intermediate" displayName="Property1" cultureName="en-US" isNullable="true" include="false">
+  <childProperty xsi:type="OrmRelationProperty" id="cbbb725f-7522-430f-9ac9-509f45ebe854" name="Property1" displayCategory="Intermediate" displayName="Property1" cultureName="en-US" isNullable="true" include="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="4fc827e6-aa9d-4b12-b836-d0871bc288b8">

@@ -1,12 +1,13 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/NavBarPane", [
         'dijit/layout/_LayoutWidget',
         'Sage/_Templated',
         'Sage/UI/MenuItem',
         'dijit/Menu',
-        'dojo/_base/declare'
+        'dojo/_base/declare',
+        'dojo/has'
 ],
-function (_LayoutWidget, _Templated, MenuItem, DijitMenu, declare) {
+function (_LayoutWidget, _Templated, MenuItem, DijitMenu, declare, has) {
     var navBarPane = declare('Sage.UI.NavBarPane', [_LayoutWidget, _Templated], {
         textImageRelationMap: {
             // ImageAboveText
@@ -36,7 +37,7 @@ function (_LayoutWidget, _Templated, MenuItem, DijitMenu, declare) {
             4: new Simplate([
                '<img src="{%: $.img %}" alt="" />',
                '<span>{%: $.text %}</span>'
-            ]),
+            ])
         },
         attributeMap: {
             'listContent': { node: 'listNode', type: 'innerHTML' }
@@ -83,7 +84,7 @@ function (_LayoutWidget, _Templated, MenuItem, DijitMenu, declare) {
 
             dojo.forEach(items, function(item) {
                 item.id = item.id || Sage.guid('NavItem');
-                if(window.location.href.indexOf(item.href) !== -1) {
+                if(window.location.href.indexOf('/' + item.href) !== -1) {
                     item.className = 'nav-bar-item-current-page';
                 }
                 else {
@@ -149,11 +150,23 @@ function (_LayoutWidget, _Templated, MenuItem, DijitMenu, declare) {
         _onContextMenuClick: function() {
             if (this.ref !== '')
             {
-                try
-                {
-                    window.location.href = this.ref;
+                // TODO: This is a work-around for 
+                // https://social.msdn.microsoft.com/Forums/ie/en-US/99665041-557a-4c5f-81d8-a24230ecd67f/ie10-dispatchevent-calls-wrong-listeners 
+                // until we come up with a better way to distinguish between javascript links and legitimate href items. 
+                // More info/context here: http://dojo-toolkit.33424.n3.nabble.com/Weird-TabContainer-Tabs-Title-behavior-IE9-Dojo-1-8-1-td3992531.html
+                // Can't put javascript: links through href handler in IE10 without breaking tab containers. This is breaking
+                // Activities and History dialog tabs.
+                var javascriptLinkRegex = /javascript:/g;
+                if ((has('ie') === 10) && javascriptLinkRegex.test(this.ref)) {
+                    var tempJsRef = this.ref.replace(javascriptLinkRegex, '');
+                    eval(tempJsRef);
                 }
-                catch (e) { }
+                else {
+                    try {
+                        window.location.href = this.ref;
+                    }
+                    catch (e) { }
+                }
             }
         }
     });

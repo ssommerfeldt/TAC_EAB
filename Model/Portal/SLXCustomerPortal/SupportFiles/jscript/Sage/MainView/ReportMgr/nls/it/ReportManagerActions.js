@@ -1,15 +1,14 @@
-define(
-{
-    txtSelectRecord: 'Selezionare un record nell elenco.',
-    txtInvalidSelectionCount: 'You must have at least one record selected before continuing.',
-    confirm_Deletion: 'Are you sure you want to delete the selected ${0}?',
-    confirm_Report: 'report',
-    confirm_Schedule: 'schedule',
-    confirm_ReportHistory: 'report history record',
-    txtYes: 'Yes',
-    txtNo: 'No',
-    deleteJobError: 'Sorry an error occured during the deletion process: ${0}',
-    txtDeleteHistory: 'Deleting history records',
-    txtDeleteTitle: 'Delete History',
-    txtErrorDeleteReport: 'An error occured deleting report: ${0}'
+define("Sage/MainView/ReportMgr/nls/it/ReportManagerActions", {
+    "txtSelectRecord": "Prima di continuare, selezionare un record nell'elenco.",
+    "txtInvalidSelectionCount": "Prima di continuare è necessario selezionare almeno un record.",
+    "confirm_Deletion": "Eliminare il record ${0} selezionato?",
+    "confirm_Report": "report",
+    "confirm_Schedule": "Pianifica",
+    "confirm_ReportHistory": "record cronologia report",
+    "txtYes": "Sì",
+    "txtNo": "No",
+    "deleteJobError": "Si è verificato un errore durante l'eliminazione: ${0}",
+    "txtDeleteHistory": "Eliminazione record cronologia",
+    "txtDeleteTitle": "Elimina cronologia",
+    "txtErrorDeleteReport": "Si è verificato un errore durante l'eliminazione del report: ${0}"
 });

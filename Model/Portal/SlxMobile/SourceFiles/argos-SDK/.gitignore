@@ -24,6 +24,7 @@ obj/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
+.vscode/*
 
 #Tooling
 _ReSharper*/
@@ -46,3 +47,6 @@ node_modules
 .grunt/
 _SpecRunner.html
 report/junit.xml
+coverage
+src-out/
+min/css/themes/crm/

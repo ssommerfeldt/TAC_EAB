@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ReportMgr/nls/en/ReportManagerActions", (
 { txtSelectRecord: 'Please select a record in the list before continuing.',
   txtInvalidSelectionCount: 'You must have at least one record selected before continuing.',
   confirm_Deletion: 'Are you sure you want to delete the selected ${0}?',
@@ -7,8 +7,9 @@ define((
   confirm_ReportHistory: 'report history record',
   txtYes: 'Yes',
   txtNo: 'No',
-  deleteJobError: 'Sorry an error occured during the deletion process: ${0}',
+  deleteJobError: 'Sorry an error occurred during the deletion process: ${0}',
   txtDeleteHistory: 'Deleting history records',
   txtDeleteTitle: 'Delete History',
-  txtErrorDeleteReport: 'An error occured deleting report: ${0}' }
+  txtErrorDeleteReport: 'An error occurred deleting report: ${0}'
+}
 ));

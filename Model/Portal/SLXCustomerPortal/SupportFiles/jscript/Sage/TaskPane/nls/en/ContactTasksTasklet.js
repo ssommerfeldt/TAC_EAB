@@ -1,4 +1,4 @@
-define((
+define("Sage/TaskPane/nls/en/ContactTasksTasklet", (
 { associateContactTitle: 'Associate with User',
   disAssociateContactTitle: 'Disassociate from User',
   disAssociateDialogTitle: 'Disassociate from a User',

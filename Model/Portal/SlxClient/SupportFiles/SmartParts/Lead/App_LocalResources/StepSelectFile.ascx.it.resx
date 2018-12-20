@@ -117,64 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblRequiredMsg.Caption" xml:space="preserve">
-    <value>*  Indica un campo obbligatorio</value>
-  </data>
-  <data name="radProgress_Uploaded" xml:space="preserve">
-    <value>Caricato </value>
-  </data>
-  <data name="uplFile.Tooltip" xml:space="preserve">
-    <value>Sfoglia fino alla posizione del file da caricare</value>
-  </data>
-  <data name="chkAddToGroup.Caption" xml:space="preserve">
-    <value>Aggiungi i Nominativi importati ad un Gruppo Ad Hoc esistente</value>
+  <data name="lblFile.Caption" xml:space="preserve">
+    <value>File elenco lead:</value>
   </data>
   <data name="ownDefaultOwner.Caption" xml:space="preserve">
-    <value>Proprietario Predefinito:</value>
+    <value>Proprietario predefinito:</value>
   </data>
-  <data name="lblSelectFileHeader.Caption" xml:space="preserve">
-    <value>Per iniziare seleziona un file contenente le informazioni sui Nominativi.</value>
+  <data name="lueLeadSource.Caption" xml:space="preserve">
+    <value>Origine lead predefinita:</value>
   </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Attivo</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Descrizione</value>
-  </data>
-  <data name="rdbAddToAdHocGroup.Caption" xml:space="preserve">
-    <value>Aggiungi ad un Gruppo Ad Hoc esistente</value>
-  </data>
-  <data name="lblLeadGroup.Caption" xml:space="preserve">
-    <value>Gruppo Nominativi:</value>
-  </data>
-  <data name="lblFile.Caption" xml:space="preserve">
-    <value>File Elenco Nominativi:</value>
-  </data>
-  <data name="lblCurrentFile.Caption" xml:space="preserve">
-    <value>File Elenco Nominativo Corrente:</value>
-  </data>
-  <data name="Error_InvalidImportPath" xml:space="preserve">
-    <value>L'importazione non può continuare finchè il percorso degli allegati non verrà impostato correttamente. Contattare l'amministratore.</value>
-  </data>
-  <data name="lblImportFile.Caption" xml:space="preserve">
-    <value>File Importazione Selezionato:</value>
-  </data>
-  <data name="radProgress_Cancel" xml:space="preserve">
-    <value>Annulla</value>
+  <data name="lueLeadSource.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
   <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
     <value>Tipo</value>
   </data>
-  <data name="UploadFile_Process" xml:space="preserve">
-    <value>Elaborati </value>
-  </data>
-  <data name="rdbCreateAdHocGroup.Caption" xml:space="preserve">
-    <value>Crea un nuovo Gruppo Ad Hoc</value>
-  </data>
-  <data name="lueLeadSource.Caption" xml:space="preserve">
-    <value>Sorgente Nominativo Predef.</value>
+  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
+    <value>Descrizione</value>
   </data>
   <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Codice sorgente</value>
+    <value>Codice origine</value>
+  </data>
+  <data name="uplFile.Tooltip" xml:space="preserve">
+    <value>Vai alla posizione del file da caricare</value>
+  </data>
+  <data name="UploadFile_File" xml:space="preserve">
+    <value>File: </value>
+  </data>
+  <data name="UploadFile_Process" xml:space="preserve">
+    <value>Elaborazione completata </value>
+  </data>
+  <data name="lblImportFile.Caption" xml:space="preserve">
+    <value>File importazione selezionato:</value>
+  </data>
+  <data name="radProgress_Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="radProgress_Uploaded" xml:space="preserve">
+    <value>Caricato </value>
+  </data>
+  <data name="lblSelectFileHeader.Caption" xml:space="preserve">
+    <value>Selezionare un file che contiene le informazioni sul lead per iniziare.</value>
+  </data>
+  <data name="lblLeadGroup.Caption" xml:space="preserve">
+    <value>Gruppi lead:</value>
+  </data>
+  <data name="rdbAddToAdHocGroup.Caption" xml:space="preserve">
+    <value>Aggiungi ad un gruppo ad hoc esistente</value>
+  </data>
+  <data name="chkAddToGroup.Caption" xml:space="preserve">
+    <value>Aggiungi lead importati al gruppo ad hoc</value>
+  </data>
+  <data name="lblRequiredMsg.Caption" xml:space="preserve">
+    <value>* indica un campo obbligatorio</value>
+  </data>
+  <data name="rdbCreateAdHocGroup.Caption" xml:space="preserve">
+    <value>Crea un nuovo gruppo ad hoc</value>
+  </data>
+  <data name="lblCurrentFile.Caption" xml:space="preserve">
+    <value>File elenco lead corrente:</value>
+  </data>
+  <data name="Error_InvalidImportPath" xml:space="preserve">
+    <value>L'importazione non può continuare fino a quando il percorso dell'allegato non viene impostato correttamente. Consultare l'Amministratore.</value>
   </data>
 </root>

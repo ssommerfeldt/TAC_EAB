@@ -14,6 +14,8 @@ using Sage.Platform.Repository;
 using Sage.Platform.WebPortal.Binding;
 using Sage.Platform.WebPortal.Services;
 using Sage.Platform.WebPortal.SmartParts;
+using Sage.SalesLogix.BusinessRules;
+using Sage.SalesLogix.HighLevelTypes;
 
 /// <summary>
 /// Summary description for AddEditTargetResponse
@@ -352,6 +354,12 @@ public partial class AddEditTargetResponse : EntityBoundSmartPartInfoProvider
             else
             {
                 BindingSource_Set(sender, e);
+            }
+            var value = BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+            if (!String.IsNullOrEmpty(value))
+            {
+                var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+                lueTargetLeadSource.LookupPreFilters.Add(leadSourcePreFilter);
             }
         }
     }

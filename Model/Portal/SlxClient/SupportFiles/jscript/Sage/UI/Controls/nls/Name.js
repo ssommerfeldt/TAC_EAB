@@ -1,20 +1,18 @@
-define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            okText: 'OK',
-            cancelText: 'Cancel',
-            dialogTitle: 'Edit Name',
-            prefixText: 'Prefix:',
-            nameFirstText: 'First:',
-            nameMiddleText: 'Middle:',
-            nameLastText: 'Last:',
-            suffixText: 'Suffix:',
-            buttonTooltip: 'Edit'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/Controls/nls/Name", {
+    root: {
+        okText: 'OK',
+        cancelText: 'Cancel',
+        dialogTitle: 'Edit Name',
+        prefixText: 'Prefix:',
+        nameFirstText: 'First Name:',
+        nameMiddleText: 'Middle Name:',
+        nameLastText: 'Last Name:',
+        suffixText: 'Suffix:',
+        buttonTooltip: 'Edit'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

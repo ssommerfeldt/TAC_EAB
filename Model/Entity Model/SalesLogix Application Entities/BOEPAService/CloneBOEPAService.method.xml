@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="442ea682-90a9-4d6f-bab7-c77596735b2f" lastModifiedUtc="2016-08-12T20:44:58.4798741Z" name="CloneBOEPAService" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="5cf54f6e-b942-4468-8fec-17198d7c5e42" paramName="cloneFromService" sequence="0" paramType="Object">
+      <description>The service used to base the clone on.</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="7bad68f2-d8fa-44a5-8de7-07db3a6a27bc" paramName="saveNew" sequence="0" paramType="Boolean">
+      <description>Flag indicating if the new service should be save immediately</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="01785a88-4771-41bd-8edc-d222cce5c87c" lastModifiedUtc="2015-08-06T15:45:29.8215844Z" targetType="Sage.SalesLogix.BOEPAService.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CloneBOEPAService" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets>
+    <methodTarget id="3790fda1-3d6a-44d0-b91c-1ed4540f4c07" lastModifiedUtc="2016-03-04T09:39:16.8380229Z" targetType="Sage.SalesLogix.BOEPAService.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CloneBOEPAServicePAMappings" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
+</method>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6b8a387c-96bf-4bfc-942f-9a55ad973548" lastModifiedUtc="2015-11-20T18:47:10.8211865Z" name="FormatFullQuoteAddress" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="676d9d2e-7b79-41f2-86f9-e51237d2ac1a" lastModifiedUtc="2015-11-20T18:47:09.0310075Z" targetType="Sage.SalesLogix.Quote.QuoteAddress, Sage.SalesLogix.BusinessRules" targetMethod="FormatFullQuoteAddress" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -117,13 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="InsertTargetProgress_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>InsertTargetProgress_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="lblFailed.Caption" xml:space="preserve">
-    <value>С ошибкой:</value>
+    <value>Не удалось выполнить:</value>
   </data>
   <data name="lblInserted.Caption" xml:space="preserve">
-    <value>Добавлен:</value>
+    <value>Вставлено:</value>
   </data>
   <data name="lblPrimary.Caption" xml:space="preserve">
-    <value>Вставка цели ...</value>
+    <value>Вставка целей...</value>
   </data>
 </root>

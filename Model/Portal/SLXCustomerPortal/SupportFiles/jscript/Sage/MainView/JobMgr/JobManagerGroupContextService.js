@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/JobMgr/JobManagerGroupContextService", [
     'Sage/Groups/BaseGroupContextService',
     'dojo/string',
     'Sage/Data/SDataServiceRegistry',
@@ -62,8 +62,17 @@ function (
             this._currentContext.AppliedFilterInfo = {};
             this._currentContext.CurrentFamily = null;
             this._currentContext.notGroupBased = true;
-            var defaultTabId = this._getDefaultTabId();
-            this.setContext(defaultTabId, 'default');
+            
+            var defaultTabId;
+            defaultTabId = Sage.Utility.getParameterByName('groupId', document.location.href);
+            if (defaultTabId && this._validateTabId(defaultTabId)) {
+                defaultTabId = defaultTabId;
+            }
+            else {
+                defaultTabId = this._getDefaultTabId();
+            }
+            var name = this.getGroupName(defaultTabId);
+            this.setContext(defaultTabId, name);
             this.unsubscribeConnects();
             this._subscribes = [];
             this._subscribes.push(
@@ -89,7 +98,7 @@ function (
                 var hash = {};
                 for (var i = 0; i < this.groupConfigTypes.length; i++) {
                     var cfg = this.groupConfigTypes[i];
-                    hash[cfg.key] = lang.mixin(cfg, { instance: false });
+                    hash[cfg.key] = lang.mixin(cfg, (!cfg.instance) ? { instance: false } : null);
                 }
                 this.configsHash = hash;
             }

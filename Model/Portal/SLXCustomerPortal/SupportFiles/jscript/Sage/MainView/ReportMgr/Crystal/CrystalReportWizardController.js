@@ -1,7 +1,8 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/Crystal/CrystalReportWizardController", [
     'dojo/_base/declare',
     'dojo/_base/array',
+    'dojo/_base/lang',
     'dojo/i18n!./nls/CrystalReportWizardController',
     'Sage/Reporting/Enumerations',
     'Sage/MainView/ReportMgr/Crystal/CrystalReportParametersDialog',
@@ -15,12 +16,13 @@ define([
 function (
     declare,
     dojoArray,
+    dojoLang,
     nlsResources,
     enumerations,
     CrystalReportParametersDialog,
     CrystalReportConditionsDialog,
     ExportOptionsDialog,
-    ReportManagerUtility,
+    reportManagerUtility,
     dialogs,
     topic,
     dString
@@ -58,14 +60,11 @@ function (
         * @param {string} [options.scheduleOptions.executionType=Sage.Reporting.Enumerations.ExecutionType.OnDemand] - The type of execution. If present, must be a valid Sage.Reporting.Enumerations.ExecutionType value.
         * @param {Object} [options.scheduleOptions.trigger=null] - The trigger to be edited.
         * @param {Object} [options.exportOptions] - Export options. Allows programmatic control on export options.
-        
         */
-
         constructor: function (reportMetadata, options) {
             if (!reportMetadata) {
                 return;
             }
-            //dojo.mixin(this, options);
             this._reportMetadata = reportMetadata;
             //If reportFilters is null, set an empty collection to avoid runtime errors.
             if (!this._reportMetadata.reportFilters) {
@@ -90,11 +89,13 @@ function (
             }
         },
         startWizard: function () {
-            if (this._hasDynamicParameters()) {
-                dialogs.showError(this._nlsResources.txtDynamicParametersMessage, this._nlsResources.txtError);
+            var errors = [];
+            if (this._hasDynamicParameterErrors(errors)) {
+                var error = dString.substitute(nlsResources.txtInvalidReportWithDynamicParameters, [this._reportMetadata.family, this._reportMetadata.name, errors.join(' ').trim()]);
+                dialogs.showError(error, this._nlsResources.txtError);
                 return;
             }
-            var firstStep = this._getNextStep(enumerations.CrystalReportWizardStep.Init); //Enumerations.CrystalReportWizardStep.Conditions;
+            var firstStep = this._getNextStep(enumerations.CrystalReportWizardStep.Init);
             this._goToStep(firstStep, null);
         },
         //----------------------------------------
@@ -121,10 +122,6 @@ function (
             //See http://mail.dojotoolkit.org/pipermail/dojo-interest/2010-February/043090.html
             setTimeout(function () { self._destroyObjects(); }, dijit.defaultDuration + 100);
         },
-        //----------------------------------------
-        //Default options
-        //----------------------------------------
-
         _getDefaultWizardOptions: function () {
             return {
                 hiddenSteps: []
@@ -161,15 +158,21 @@ function (
         //----------------------------------------
         //Wizard workflow
         //----------------------------------------
-        _hasDynamicParameters: function () {
-            var hasDynamicParameters = false;
-            dojoArray.some(this._reportMetadata.parameters, function (parameter, i) {
+        _hasDynamicParameterErrors: function (errors) {
+            dojoArray.forEach(this._reportMetadata.parameters, function(parameter, i) {
                 if (parameter.isDynamic && !parameter.isOptionalPrompt) {
-                    hasDynamicParameters = true;
-                    return true; //this is to break dojo.some
+                    if (parameter.clientMustQueryDynamicData === true) {
+                        errors.push(dString.substitute(nlsResources.txtInvalidDynamicParameterDatasource, { p: parameter }));
+                    } else if (parameter.isInvalidDynamicParameter === true) {
+                        if (dojoLang.isString(parameter.invalidDynamicParameterReason) && parameter.invalidDynamicParameterReason !== "") {
+                            errors.push(dString.substitute(nlsResources.txtInvalidDynamicParameterReason, { p: parameter }));
+                        } else {
+                            errors.push(dString.substitute(nlsResources.txtInvalidDynamicParameterUnknownReason, { p: parameter }));
+                        }
+                    }
                 }
             });
-            return hasDynamicParameters;
+            return errors.length > 0;
         },
         _isStepVisible: function (step) {
             var visible = true;
@@ -276,7 +279,7 @@ function (
                             isLastStep: isLastStep,
                             isFirstStep: isFirstStep
                         };
-                        dialog = new CrystalReportParametersDialog(options);
+                        dialog = new CrystalReportParametersDialog(options, this._mode);
                         dialog.startup();
                         dialog.show();
                     }
@@ -334,16 +337,11 @@ function (
                 handle.remove();
             });
         },
-        //----------------------------------------
-        //Report job parameters
-        //----------------------------------------
-
         /**
         * Return an object with a collection of parameters used by the reporting job.
         * @returns {Object} - Report parameters.
         */
         _getJobParameters: function () {
-
             var parameters = [];
 
             //Report
@@ -358,7 +356,13 @@ function (
                 parameters.push({ name: "RecordSelectionFormula", value: this.conditionOptions.recordSelectionFormula });
             }
 
-            //Prompts
+            //Prompts, clean up unused parameter options to reduce the size of the request
+            dojoArray.forEach(this.parameterOptions.parameters, function (parameter) {
+                if (parameter) {
+                    parameter.defaultValues = null;
+                    parameter.values = null;
+                }
+            });
             parameters.push({ name: "ReportParameters", value: this.parameterOptions.parameters });
 
             //Export options
@@ -376,20 +380,19 @@ function (
         * @returns {Object} - Job execution options.
         */
         _getJobOptions: function () {
-
             var parameters = this._getJobParameters();
             var displayName = (dojo.isString(this.exportOptions.description) && (this.exportOptions.description !== '')) ? this.exportOptions.description : this._reportMetadata.displayName;
-            var dateStamp = dojo.date.locale.format(new Date(), { selector: "date", datePattern: "yyyy_MM_dd_hhmm" });
+            var dateStamp = dojo.date.locale.format(new Date(), { selector: "date", datePattern: "yyyy_MM_dd_hhmm", locale: Sys.CultureInfo.CurrentCulture.name });
             var user = '';
             var usr;
             if (typeof this.exportOptions.runAsUserId === 'string') {
-                usr = ReportManagerUtility.getUser(this.exportOptions.runAsUserId);
+                usr = reportManagerUtility.getUser(this.exportOptions.runAsUserId);
                 if (usr) {
                     user = usr.UserName;
                 }
             }
             else {
-                usr = ReportManagerUtility.getUser(ReportManagerUtility.getCurrentUser().userID);
+                usr = reportManagerUtility.getUser(reportManagerUtility.getCurrentUser().userID);
                 if (usr) {
                     user = usr.UserName;
                 }
@@ -401,7 +404,7 @@ function (
                 closable: true,
                 reportType: enumerations.ReportTypes.CrystalReport,
                 parameters: parameters,
-                title: displayName,
+                title: this.exportOptions.description || this._reportMetadata.localeDisplayName,
                 success: function (result) {
                 },
                 failure: function (result) {
@@ -439,7 +442,7 @@ function (
             options.startTime = this.scheduleOptions.startTime;
             options.endTime = this.scheduleOptions.endTime;
             options.success = function () {
-                ReportManagerUtility.refreshList('schedules');
+                reportManagerUtility.refreshList('schedules');
                 dialogs.showInfo(nlsResources.txtScheduleSuccessfullyUpdated, nlsResources.dlgScheduleReport_Title);
             };
             options.closable = true;

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Dialogs", [
     'dijit/form/Button',
     'dijit/Dialog',
     'dijit/ProgressBar',
@@ -239,7 +239,7 @@ function (Button, Dialog, ProgressBar, TextBox, ValidationTextBox, nlsResources,
         },
         alert: function (msg, title, icon) {
             var opts = {
-                title: title || 'Saleslogix',   //  ToDo:  Localize   <---<<<   <---<<<   <---<<<
+                title: title || 'Infor CRM',   //  ToDo:  Localize   <---<<<   <---<<<   <---<<<
                 query: msg,
                 callbackFn: false,
                 yesText: nlsResources.okText || 'OK',

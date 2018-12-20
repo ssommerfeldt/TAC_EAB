@@ -71,7 +71,21 @@ public partial class AuthorizeService : EntityBoundSmartPartInfoProvider
         }
         AuthorizationServiceViewControllerBase.HandleDialogOpening(providerId, Page);
         txtUserName.Text = AuthorizationServiceViewControllerBase.GetProviderUserName(providerId);
+        if (String.IsNullOrWhiteSpace(txtUserName.Text))
+        {
+            txtUserName.Text = GetUserEmail();
+        }
         base.OnMyDialogOpening();
+    }
+
+    private string GetUserEmail()
+    {
+        IUser user = Sage.SalesLogix.BusinessRules.BusinessRuleHelper.GetCurrentUser();
+        if (user != null && user.UserInfo != null)
+        {
+            return user.UserInfo.Email;
+        }
+        return null;
     }
 
     /// <summary>

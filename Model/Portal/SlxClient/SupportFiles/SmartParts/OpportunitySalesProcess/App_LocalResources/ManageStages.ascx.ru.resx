@@ -117,41 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblOpportunity.Text" xml:space="preserve">
-    <value>Сделка:</value>
-  </data>
-  <data name="StageGrid_Current.HeaderText" xml:space="preserve">
-    <value>Текущий</value>
-  </data>
-  <data name="lblEstDays.Text" xml:space="preserve">
-    <value>Кол-во дней (план)</value>
-  </data>
-  <data name="StageGrid_Completed.HeaderText" xml:space="preserve">
-    <value>Заверш.</value>
-  </data>
-  <data name="lblEstClose.Text" xml:space="preserve">
-    <value>План. закрыт.</value>
-  </data>
-  <data name="linkManageStages.Text" xml:space="preserve">
-    <value>Стадии:</value>
-  </data>
-  <data name="StageGrid_CompletedOn.HeaderText" xml:space="preserve">
-    <value>Дата завершения</value>
-  </data>
-  <data name="lblProbability.Text" xml:space="preserve">
-    <value>Вероятность</value>
-  </data>
-  <data name="StageGrid_Probability.HeaderText" xml:space="preserve">
-    <value>Вероятность</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Управление стадиями</value>
+  <data name="lblCurrentStage.Text" xml:space="preserve">
+    <value>Текущая стадия</value>
   </data>
   <data name="lblDaysInStage.Text" xml:space="preserve">
     <value>Дней в стадии</value>
   </data>
+  <data name="lblEstClose.Text" xml:space="preserve">
+    <value>Ожидаемое закрытие</value>
+  </data>
+  <data name="lblEstDays.Text" xml:space="preserve">
+    <value>Ожидаемое количество дней</value>
+  </data>
+  <data name="lblOpportunity.Text" xml:space="preserve">
+    <value>Возможность:</value>
+  </data>
+  <data name="lblProbability.Text" xml:space="preserve">
+    <value>Вероятность</value>
+  </data>
+  <data name="lblSalesProcess.Text" xml:space="preserve">
+    <value>Процесс продажи:</value>
+  </data>
+  <data name="lblSalesProcessSnapShot.Text" xml:space="preserve">
+    <value>Снимок процесса продажи</value>
+  </data>
+  <data name="StageGrid_Completed.HeaderText" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="StageGrid_CompletedOn.HeaderText" xml:space="preserve">
+    <value>Дата завершения</value>
+  </data>
+  <data name="StageGrid_Current.HeaderText" xml:space="preserve">
+    <value>Текущее</value>
+  </data>
   <data name="StageGrid_EstDays.HeaderText" xml:space="preserve">
-    <value>Кол-во дней (план)</value>
+    <value>Ожидаемое количество дней</value>
+  </data>
+  <data name="StageGrid_Order.HeaderText" xml:space="preserve">
+    <value>Заказ</value>
+  </data>
+  <data name="StageGrid_Probability.HeaderText" xml:space="preserve">
+    <value>Вероятность</value>
   </data>
   <data name="StageGrid_Stage.HeaderText" xml:space="preserve">
     <value>Стадия</value>
@@ -159,16 +165,10 @@
   <data name="StageGrid_StartedOn.HeaderText" xml:space="preserve">
     <value>Дата начала</value>
   </data>
-  <data name="lblSalesProcess.Text" xml:space="preserve">
-    <value>Процесс продаж:</value>
+  <data name="Title" xml:space="preserve">
+    <value>Управление стадиями</value>
   </data>
-  <data name="lblCurrentStage.Text" xml:space="preserve">
-    <value>Текущая стадия</value>
-  </data>
-  <data name="StageGrid_Order.HeaderText" xml:space="preserve">
-    <value>№</value>
-  </data>
-  <data name="lblSalesProcessSnapShot.Text" xml:space="preserve">
-    <value>Информация о процессе продаж</value>
+  <data name="linkManageStages.Text" xml:space="preserve">
+    <value>Стадии:</value>
   </data>
 </root>

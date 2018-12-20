@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Utility/UserOptions", [
         'Sage/Utility'
     ],
     function (sageUtility) {
@@ -51,7 +51,7 @@ define([
                         break;
                     case "NUMEVENTS":
                     case "DEFAULTINTERVAL":
-                        retValue = parseInt(value);
+                        retValue = parseInt(value, 10);
                         break;
                     default:
                         retValue = value;
@@ -70,7 +70,7 @@ define([
                     h = value.split(":")[0];
                 }
                 if (value.indexOf('pm') > 0 || value.indexOf('PM') > 0) {
-                    h = parseInt(h) + 12;
+                    h = parseInt(h, 10) + 12;
                 }
                 return parseInt(h, 10);
             },

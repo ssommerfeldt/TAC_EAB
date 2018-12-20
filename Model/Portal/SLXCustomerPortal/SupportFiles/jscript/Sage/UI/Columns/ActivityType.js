@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Columns/ActivityType", [
        'dojox/grid/cells/_base',
        'Sage/Utility',
        'Sage/Utility/Activity',
@@ -15,7 +15,7 @@ function (_base, util, activity, dString, declare) {
                 return this.defaultValue;
             }
             var key = util.getValue(inItem, this.keyField || "$key");
-            var fmt = '<div class="Global_Images icon16x16 ${0}"></div>&nbsp;<a href="javascript:Sage.Link.editActivity(\'${1}\')">${2}</a>';
+            var fmt = '<div class="Global_Images icon16x16 ${0}"></div>&nbsp;<span onclick="javascript:Sage.Link.editActivity(\'${1}\')" class="activity-type-link">${2}</span>';
             return dString.substitute(fmt, [activity.getActivityImageClass(type, 'small'), key, activity.getActivityTypeName(type)]);
         }
     });

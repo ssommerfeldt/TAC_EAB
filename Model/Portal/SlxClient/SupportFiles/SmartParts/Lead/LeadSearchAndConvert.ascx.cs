@@ -430,7 +430,9 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
         }
         else
         {
-            script.Append("dojo.ready(function () {Sage.UI.Forms.LeadSearchAndConvert.init(" + GetWorkSpace() + ");");
+            script.Append("require(['dojo/ready'], function(ready) {" +
+                          "ready(function() { Sage.UI.Forms.LeadSearchAndConvert.init(" + GetWorkSpace() + "); });" +
+                          "});");
         }
         ScriptManager.RegisterStartupScript(this, GetType(), "initialize_LeadSearchAndConvert", script.ToString(), true);
     }
@@ -582,6 +584,10 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
                                                      grdMatches.TotalRecordCount);
                 SetDisplayProperties();
             }
+        }
+        catch (UserObservableException)
+        {
+            throw;
         }
         catch (Exception ex)
         {
@@ -904,13 +910,17 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
 
         IList<ICampaignTarget> campaignTargets = EntityFactory.GetRepository<ICampaignTarget>().FindByProperty("EntityId", lead.Id.ToString());
         foreach (ICampaignTarget campaignTarget in campaignTargets)
-            lead.ChangeCampaignTargetEntityID(contact, campaignTarget);
+            campaignTarget.ChangeEntityId(contact);
 
         ILeadHistory leadHistory = EntityFactory.GetById<ILeadHistory>(lead.SaveLeadHistory());
         if (leadHistory != null)
         {
             leadHistory.ContactId = contact.Id.ToString();
             leadHistory.AccountId = account.Id.ToString();
+            if (opportunity != null)
+            {
+                leadHistory.OpportunityId = opportunity.Id.ToString();
+            }
             leadHistory.Save();
         }
         lead.Delete();
@@ -945,6 +955,11 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
                 opportunityContact.IsPrimary = contact.IsPrimary;
                 opportunity.Contacts.Add(opportunityContact);
             }
+            opportunity.LeadSource = lead.LeadSource ?? contact.Account.LeadSource;
+            if (opportunity.LeadSource != null)
+			{
+				opportunity.LeadDate = DateTime.UtcNow;
+			}
             opportunity.Save();
         }
         return opportunity;
@@ -989,7 +1004,7 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
                     contact.Address.Salutation = account.Address.Salutation;
                     contact.Address.State = account.Address.State;
                     contact.Address.TimeZone = account.Address.TimeZone;
-                    contact.Address.Type = account.Address.Type;
+                    contact.Address.EntityType = contact.GetType().Name;
                     contact.Address.GlobalSyncId = account.Address.GlobalSyncId;
                     contact.Address.AppId = account.Address.AppId;
                     contact.Address.Tick = account.Address.Tick;
@@ -1006,7 +1021,7 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
                                                                                                           sourceLead.Id.
                                                                                                               ToString());
                 foreach (IAttachment attach in attachment)
-                    sourceLead.AddAttachmentsContactID(contact, account, null, attach);
+                    attach.AddContactId(contact, account, null);
 
                 sourceLead.AddHistoryAndQualificationRecords(contact, account, opportunity, false);
                 sourceLead.AddActivities(contact, account, opportunity);
@@ -1014,7 +1029,7 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
                 IList<ICampaignTarget> campaignTarget =
                     EntityFactory.GetRepository<ICampaignTarget>().FindByProperty("EntityId", sourceLead.Id.ToString());
                 foreach (ICampaignTarget ct in campaignTarget)
-                    sourceLead.ChangeCampaignTargetEntityID(contact, ct);
+                    ct.ChangeEntityId(contact);
 
                 ILeadHistory leadHistory = EntityFactory.GetById<ILeadHistory>(leadHistoryId);
                 if (leadHistory != null)
@@ -1044,7 +1059,7 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
     {
         IList<IAttachment> attachments = EntityFactory.GetRepository<IAttachment>().FindByProperty("LeadId", sourceLead.Id.ToString());
         foreach (IAttachment attachment in attachments)
-            sourceLead.AddAttachmentsContactID(contact, account, opportunity, attachment);
+            attachment.AddContactId(contact, account, opportunity);
     }
 
     /// <summary>
@@ -1101,7 +1116,7 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
                     targetLead = EntityFactory.GetById<ILead>(targetLeadId);
                     mergeProvider.Target.EntityData = targetLead;
                     mergeProvider.merge();
-                    sourceLead.ManualMergeLeadwithLead(targetLead, recordMergeRule);
+                    sourceLead.ManualMergeLeadWithLead(targetLead, recordMergeRule);
                     targetLead.Save();
                 }
                 if (mergeProvider.Target.EntityType == typeof (IContact))
@@ -1134,22 +1149,14 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
                         }
                     }
 
-                    if (chkCreateOpportunity.Checked)
-                    {
-                        opportunity = EntityFactory.Create<IOpportunity>();
-                        opportunity.Account = targetContact.Account;
-                        opportunity.Description = string.Format("Opportunity for {0}", targetContact.FullName);
-                        opportunity.Owner = targetContact.Account.Owner;
-                        opportunity.AccountManager = targetContact.Account.AccountManager;
-                        opportunity.Save();
-                    }
+                    opportunity = CreateOpportunity(chkCreateOpportunity.Checked, targetContact, sourceLead);
 
                     if (sourceLead.Id != null)
                     {
                         IList<IAttachment> attachment =
                             EntityFactory.GetRepository<IAttachment>().FindByProperty("LeadId", sourceLead.Id.ToString());
                         foreach (IAttachment attach in attachment)
-                            sourceLead.AddAttachmentsContactID(targetContact, targetContact.Account, opportunity, attach);
+                            attach.AddContactId(targetContact, targetContact.Account, opportunity);
 
                         sourceLead.AddHistoryAndQualificationRecords(targetContact, targetContact.Account, opportunity,
                                                                      true);
@@ -1159,7 +1166,7 @@ public partial class LeadSearchAndConvert : EntityBoundSmartPartInfoProvider
                             EntityFactory.GetRepository<ICampaignTarget>().FindByProperty("EntityId",
                                                                                           sourceLead.Id.ToString());
                         foreach (ICampaignTarget ct in campaignTarget)
-                            sourceLead.ChangeCampaignTargetEntityID(targetContact, ct);
+                            ct.ChangeEntityId(targetContact);
                     }
                     sessionState.Remove("LeadMergeProvider");
                 }

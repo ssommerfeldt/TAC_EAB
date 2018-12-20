@@ -1,3 +1,3 @@
-define((
-{ dangerousValueWarn: 'Ein möglicherweise schädlicher Formularwert wurde erkannt. Beispiel: "&lt;script&gt;&lt;/script&gt;" Verwenden Sie keine ungültige Zeichen im Dateinamen: \\ / : * ? " &lt; &gt; | ' }
-));
+define("Sage/Utility/nls/de/Utility", {
+    "dangerousValueWarn": "Ein möglicherweise schädlicher Formularwert wurde erkannt. Vermeiden Sie ungültige Zeichenkombinationen. Beispiel: \"&lt;script&gt;&lt;/script&gt;\". Verwenden Sie außerdem keine ungültigen Zeichen in Dateinamen: \\ / : * ? \" &lt; &gt; | "
+});

@@ -117,40 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbxGroupType_Contact.Text" xml:space="preserve">
-    <value>Контакт</value>
-  </data>
-  <data name="rdgGroupMembers_SelectedTargets.Text" xml:space="preserve">
-    <value>Выбранные цели маркет. программы</value>
-  </data>
   <data name="lblGroupType.Caption" xml:space="preserve">
     <value>Тип группы:</value>
   </data>
-  <data name="error_NoDataSourceFound" xml:space="preserve">
-    <value>Источник данных не найден.</value>
-  </data>
   <data name="lblGroupName.Caption" xml:space="preserve">
-    <value>Название группы:</value>
+    <value>Имя группы:</value>
   </data>
-  <data name="rdgGroupMembers_AllTargets.Text" xml:space="preserve">
-    <value>Все цели маркет. программы</value>
+  <data name="lblGroupMembers.Caption" xml:space="preserve">
+    <value>Участники группы:</value>
   </data>
   <data name="cmdOK.Caption" xml:space="preserve">
-    <value>Ок</value>
+    <value>OК</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="lbxGroupType_Lead.Value" xml:space="preserve">
+    <value>Заинтересованное лицо</value>
+  </data>
   <data name="lbxGroupType_Lead.Text" xml:space="preserve">
-    <value>Наводка</value>
+    <value>Заинтересованное лицо</value>
+  </data>
+  <data name="lbxGroupType_Contact.Value" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="lbxGroupType_Contact.Text" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="rdgGroupMembers_SelectedTargets.Value" xml:space="preserve">
+    <value>Выбранные цели</value>
+  </data>
+  <data name="rdgGroupMembers_SelectedTargets.Text" xml:space="preserve">
+    <value>Выбранные цели кампании</value>
+  </data>
+  <data name="rdgGroupMembers_AllTargets.Value" xml:space="preserve">
+    <value>Все цели</value>
+  </data>
+  <data name="rdgGroupMembers_AllTargets.Text" xml:space="preserve">
+    <value>Все цели кампании</value>
+  </data>
+  <data name="error_NoDataSourceFound" xml:space="preserve">
+    <value>Источник данных не найден.</value>
+  </data>
+  <data name="error_NoGroupName" xml:space="preserve">
+    <value>Необходимо указать имя группы, прежде чем продолжить.</value>
   </data>
   <data name="error_NoTargetsFound" xml:space="preserve">
     <value>Список не содержит элементов типа {0}.</value>
-  </data>
-  <data name="error_NoGroupName" xml:space="preserve">
-    <value>Вы должны указать имя группы, прежде чем продолжить.</value>
-  </data>
-  <data name="lblGroupMembers.Caption" xml:space="preserve">
-    <value>Члены группы:</value>
   </data>
 </root>

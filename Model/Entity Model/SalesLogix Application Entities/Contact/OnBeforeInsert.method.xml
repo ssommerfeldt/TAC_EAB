@@ -13,6 +13,11 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets />
-  <postFlushTargets />
+  <postExecuteTargets>
+    <methodTarget id="ee54f7e3-e953-48be-9623-057f9dcbe8f8" lastModifiedUtc="2016-07-28T11:39:22.7443044Z" targetType="Sage.SalesLogix.Contact.Rules, Sage.SalesLogix.BusinessRules" targetMethod="SetPrettyKeyValue" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
 </method>

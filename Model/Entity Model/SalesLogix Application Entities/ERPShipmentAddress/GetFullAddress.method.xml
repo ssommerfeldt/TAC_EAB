@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmPropertyMethod" id="2ab33551-5d98-404b-bce0-95a46145ba06" lastModifiedUtc="2014-12-13T18:47:49.7181706Z" name="GetFullAddress" returnType="System.String" methodType="PropertyAccessor" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmPropertyMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="2d22cb47-8257-4118-b577-6180eb4e75aa" lastModifiedUtc="2014-12-13T18:46:41.1591706Z" targetType="Sage.BusinessRules.CodeSnippets.ERPShipmentAddressBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="GetFullAddress" active="true" codeSnippetId="05678cd9-a6b1-4a2f-b5a3-a89792bc4f2d">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

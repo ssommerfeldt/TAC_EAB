@@ -1,24 +1,24 @@
+require({cache:{
+'url:Sage/UI/Controls/templates/DropDownSelectPickList.html':"<div>\r\n    <select id=\"${id}-Select\" data-dojo-type=\"Sage.UI.ComboBox\" shouldPublishMarkDirty=\"false\" dojoAttachPoint=\"comboBox\" value=\"${value}\" dojoAttachEvent=\"onBlur: _onBlur,onChange:_onChange\">\r\n    </select>\r\n</div>\r\n"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-       'dijit/_TemplatedMixin',
-       'dijit/_WidgetsInTemplateMixin',
-       'dijit/_Widget',
-       'dijit/form/ComboBox',
-       'dojo/data/ItemFileReadStore',
-       'dojo/data/ObjectStore',
-       'dojo/store/Memory',
-       'Sage/UI/ComboBox',
-       'Sage/UI/Controls/PickList',
-       'dojo/_base/array',
-       'dojo/text!./templates/DropDownSelectPickList.html',
-       'dojo/_base/declare'
-],
-function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileReadStore, objectStore, memory, sageComboBox, pickList, array, template, declare) {
-    /**
-     * @class Class for dropdown select picklists. Used in search condition widgets.
-     */
-    var widget = declare('Sage.UI.Controls.DropDownSelectPickList', [pickList, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
 
+/**
+ * @class Sage.UI.Controls.DropDownSelectPickList
+ *  Class for dropdown select picklists. Used in search condition widgets.
+ */
+define("Sage/UI/Controls/DropDownSelectPickList", [
+    'dijit/_TemplatedMixin',
+    'dijit/_WidgetsInTemplateMixin',
+    'dijit/_Widget',
+    'dijit/form/ComboBox',
+    'dojo/data/ItemFileReadStore',
+    'Sage/UI/Controls/PickList',
+    'dojo/_base/array',
+    'dojo/text!./templates/DropDownSelectPickList.html',
+    'dojo/_base/declare'
+],
+function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileReadStore, pickList, array, template, declare) {
+    var widget = declare('Sage.UI.Controls.DropDownSelectPickList', [pickList, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
         /**
          * Takes the following options object: 
          * {
@@ -34,33 +34,73 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileR
          *  clientId: 'ASP.NET Control ClientID Here',
          *  required: false
          * }
-         *
-         * @constructor
          */
         constructor: function(options) {
-            if(options.clientId) {
+            if (options.clientId) {
                 this.id = options.clientId + '-DropDownSelectPickList';
             }
-            
+            this.lastValidValue = options.value;
             this.inherited(arguments);
         },
         postCreate: function () {            
             this.inherited(arguments);
         },
         _onChange: function (newVal) {
-            this.onChange(newVal);
+            if (this.storeData) {
+                var val = this.comboBox.get('value');
+                if (val != this.initialValue) {
+                    if (this.get('itemMustExist')) {
+                        var valid = dojo.some(this.storeData.items, function (item) {
+                            if (item.text == newVal || newVal == '') { // jshint ignore:line
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }, this);
+                        if (valid) {
+                            this.lastValidValue = newVal;
+                        }
+                        if (!valid) {
+                            if (this.lastValidValue !== 'undefined' && this.lastValidValue !== null) {
+                                this.comboBox.set('value', this.lastValidValue);
+                                return;
+                            }
+                        }
+                    }
+                    if (this.comboBox.isValid()) {
+                        var code = '',
+                            id = '';
+                        dojo.forEach(this.storeData.items, function (item) {
+                            if (item.text == val) {
+                                code = item.code;
+                                id = item.id;
+                            }
+                        }, this);
+                        this.setASPNETInputs(val, code, id);
+                    }
+                }
+            }
+            this.onChange(this.lastValidValue);
         },
         _loadData: function() {
+            if (this.nodataload) {
+                return;
+            }
             var def = new dojo.Deferred();
             this.getPickListData(def);
 
-            def.then(dojo.hitch(this, function(data) {
-                if(typeof data === 'string') {
+            def.then(dojo.hitch(this, this.setItems), function (e) {
+                console.error(e);
+            });
+        },
+        setItems: function(data) {
+                if (typeof data === 'string') {
+                    this.initialValue = data;
                     this.comboBox.set('value', data);
                 }
 
                 var items = [];
-                for(var i = 0; i < data.items.$resources.length; i++) {
+                for (var i = 0; i < data.items.$resources.length; i++) {
                     var item = data.items.$resources[i];
                     items.push({
                         id: item.$key,
@@ -76,21 +116,15 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileR
                     items: items
                 };
 
-                var tempStore = new itemFileReadStore({data: this.storeData});
+                var tempStore = new itemFileReadStore({ data: this.storeData });
                 this.comboBox.set('store', tempStore);
                 this.comboBox.set('searchAttr', 'text');
-
-            }), function(e) {
-                // errback
-                console.error(e);
-            });
         },
         uninitialize: function() {
             this.inherited(arguments);
         },
         _getValueAttr: function() {
             var results = this.comboBox.get('value');
-            
             if (this.storeMode === 'id') {
                 array.forEach(this.storeData.items, function (item) {
                     // donotlint
@@ -101,7 +135,7 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileR
             }
             return results;
         },
-        _setPickListNameAttr: function(value) {
+        _setPickListNameAttr: function() {
             this.inherited(arguments);
             this._loadData();
         },
@@ -109,12 +143,10 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileR
         // Display properties
         templateString: template,
         widgetsInTemplate: true,
-
         /**
          * @property {object} storeData Data fetched from SData stored here.
          */
         storeData: null,
-
         // TODO: Remove
         /**
          * @property {string} lastValidValue Last valid value entered into the control.
@@ -122,7 +154,5 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, comboBox, itemFileR
         lastValidValue: '',
         onChange: function (newVal) { }
     });
-
     return widget;
 });
-

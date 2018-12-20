@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/TimeZoneItem", [
     'dijit/MenuBar',
     'Sage/UI/MenuItem',
     'Sage/UI/PopupMenuBarItem',
@@ -54,6 +54,7 @@ function (MenuBar, MenuItem, PopupMenuBarItem, OrientableMenuBar, MenuBarItem, _
                             timeZoneMenu._initializeTimeZoneDataStore(data, currentTimeZoneKey);
                         },
                         error: function (err) {
+                            console.error('The call to timezones/p failed: ' + err);
                         }
                     });
                 }
@@ -123,7 +124,7 @@ function (MenuBar, MenuItem, PopupMenuBarItem, OrientableMenuBar, MenuBarItem, _
         },
         _initializeTimeZoneDataStore: function (data, selectedValue) {
             var items = [];
-            var selectedOffset = '';
+            var selectedOffset = null;
             var sDefaultText = '';
             var i;
             
@@ -132,10 +133,15 @@ function (MenuBar, MenuItem, PopupMenuBarItem, OrientableMenuBar, MenuBarItem, _
                     continue;
                 }
 
-                if(data[i].Keyname == selectedValue) {
+                if (data[i].Keyname === selectedValue) {
                        selectedOffset = data[i].OffsetHours;
                        break;
                  }
+            }
+
+            if (selectedOffset === null) {
+                console.warn('The following time zone could not be located: ' + selectedValue);
+                selectedOffset = 0; // UTC
             }
             
             dojo.forEach(data, function (item) {
@@ -199,8 +205,8 @@ function (MenuBar, MenuItem, PopupMenuBarItem, OrientableMenuBar, MenuBarItem, _
                     btnTimeZoneMenu.setLabel(selectedItem.label);
                     this._updateLocalClientContext(selectedItem.label, selectedItem.value);
                 },
-                failure: function () {
-                    console.log('Failure to Change Time Zone');
+                failure: function (err) {
+                    console.error('The call to SetUserTimeZone failed: ' + err);
                 },
                 scope: this
             });

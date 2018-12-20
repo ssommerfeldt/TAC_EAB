@@ -1,4 +1,3 @@
-//>>built
 define("dijit/nls/loading", { root:
 //begin v1.x content
 ({
@@ -9,6 +8,7 @@ define("dijit/nls/loading", { root:
 ,
 "zh": true,
 "zh-tw": true,
+"uk": true,
 "tr": true,
 "th": true,
 "sv": true,
@@ -25,6 +25,7 @@ define("dijit/nls/loading", { root:
 "kk": true,
 "ja": true,
 "it": true,
+"id": true,
 "hu": true,
 "hr": true,
 "he": true,
@@ -36,6 +37,7 @@ define("dijit/nls/loading", { root:
 "da": true,
 "cs": true,
 "ca": true,
+"bg": true,
 "az": true,
 "ar": true
 });

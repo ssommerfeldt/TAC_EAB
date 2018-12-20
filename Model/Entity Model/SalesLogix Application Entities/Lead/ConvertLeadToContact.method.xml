@@ -23,6 +23,10 @@
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
+    <methodTarget id="2b5fcb37-07d5-4f01-99db-bf6552d059de" lastModifiedUtc="2017-10-03T20:59:37.0118645Z" targetType="SalesLogix.Integration.Marketo.Rules.MarketoLeadRules, SalesLogix.Integration.Marketo" targetMethod="MigrateTheMarketoRecordStep" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
   </postExecuteTargets>
-  <postFlushTargets />
 </method>

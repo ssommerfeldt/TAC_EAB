@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Layout/ContentPane", [
         'dojo/_base/declare',
         'dijit/layout/ContentPane',
         'Sage/Layout/_SplitterEnhancedMixin'

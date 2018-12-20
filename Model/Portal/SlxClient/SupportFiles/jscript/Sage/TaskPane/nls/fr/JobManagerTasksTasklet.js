@@ -1,6 +1,6 @@
-define((
-{ taskRunJob_Caption: 'Créer un planning',
-  taskEditTrigger_Caption: 'Modifier le planning',
-  taskCancelJob_Caption: 'Annuler exécution de la tâche',
-  taskDeleteScheduledJob_Caption: 'Supprimer le planning' }
-));
+define("Sage/TaskPane/nls/fr/JobManagerTasksTasklet", {
+    "taskRunJob_Caption": "Créer une planification",
+    "taskEditTrigger_Caption": "Modifier la planification",
+    "taskCancelJob_Caption": "Annuler l'exécution de la tâche",
+    "taskDeleteScheduledJob_Caption": "Supprimer la planification"
+});

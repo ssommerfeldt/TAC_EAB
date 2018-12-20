@@ -1,14 +1,9 @@
 #if(${qfcontrol.Caption} != "")
-#if($qfcontrol.ControlLabelPlacement == "left")
- <div class="#if(${qfcontrol.ColumnSpan} == 2)twocollbl#else lbl#end#if(${qfcontrol.ColumnSpan} > 2) colspan3#end#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
+ <div class="#if(${qfcontrol.ColumnSpan} == 2)twocollbl#else lbl#end#if(${qfcontrol.ColumnSpan} > 2) colspan3#end alignright">
    <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
  </div>   
-#elseif($qfcontrol.ControlLabelPlacement == "top")
- <div class="lbltop#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
-   <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
- </div>   
-#end #end
-  <div #if(${qfcontrol.ColumnSpan} == 2 || ${qfcontrol.ControlLabelPlacement} == "top") class="twocoltextcontrol numeric" #elseif(${qfcontrol.ColumnSpan} > 2) class="threecoltextcontrol numeric" #else class="textcontrol numeric" #end > 
+#end
+  <div #if(${qfcontrol.ColumnSpan} == 2) class="twocoltextcontrol numeric" #elseif(${qfcontrol.ColumnSpan} > 2) class="threecoltextcontrol numeric" #else class="textcontrol numeric" #end > 
     <SalesLogix:NumericControl runat="server" ID="${qfcontrol.ControlId}"
 #if($qfcontrol.Required)Required="true" #end
 #if($qfcontrol.ToolTip != "") ToolTip="<%$ resources: ${qfcontrol.ControlId}.ToolTip %>" #end
@@ -24,8 +19,3 @@
 Strict="${qfcontrol.DecimalDigits.Strict}" 
 #if($qfcontrol.HasActionCode)AutoPostBack="true" #end />
   </div>
-#if((${qfcontrol.Caption} != "") && ($qfcontrol.ControlLabelPlacement == "right"))
- <div class="lblright#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
-   <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
- </div>   
-#end

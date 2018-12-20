@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="87e53e38-c65b-4ca6-afa1-c511c457135b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="87e53e38-c65b-4ca6-afa1-c511c457135b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-07-05T22:30:55.8609146Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -8,21 +8,19 @@
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload0</MethodName>
-          <CSharpCodeSnippet>
- Sage.Entity.Interfaces.IOpportunity opp = BindingSource.Current as Sage.Entity.Interfaces.IOpportunity;
-bool overrideSalesPotential = System.Convert.ToBoolean(opp.OverrideSalesPotential);
-curSalesPotential.ReadOnly = !overrideSalesPotential; 
-
+          <CSharpCodeSnippet>IOpportunity opp = BindingSource.Current as IOpportunity;
+bool overrideSalesPotential = Convert.ToBoolean(opp.OverrideSalesPotential);
+curSalesPotential.ReadOnly = !overrideSalesPotential;
 if (DialogService.DialogParameters.Count &gt; 0 &amp;&amp; (DialogService.DialogParameters.ContainsKey("ExchangeRateType")))
 {
-    Sage.Platform.Controls.ExchangeRateTypeEnum rateType  = (Sage.Platform.Controls.ExchangeRateTypeEnum)  Enum.Parse(typeof(Sage.Platform.Controls.ExchangeRateTypeEnum),  DialogService.DialogParameters["ExchangeRateType"].ToString());
-	string exchangeRateCode = DialogService.DialogParameters["ExchangeRateCode"].ToString();
-    double exchangeRate =System.Convert.ToDouble(DialogService.DialogParameters["ExchangeRate"]);
+    Sage.Platform.Controls.ExchangeRateTypeEnum rateType = (Sage.Platform.Controls.ExchangeRateTypeEnum)Enum.Parse(typeof(Sage.Platform.Controls.ExchangeRateTypeEnum), DialogService.DialogParameters["ExchangeRateType"].ToString());
+    string exchangeRateCode = DialogService.DialogParameters["ExchangeRateCode"].ToString();
+    double exchangeRate = Convert.ToDouble(DialogService.DialogParameters["ExchangeRate"]);
     curSalesPotential.ExchangeRate = exchangeRate;
-    curSalesPotential.CurrentCode = exchangeRateCode;    
+    curSalesPotential.CurrentCode = exchangeRateCode;
     curSalesPotential.ExchangeRateType = rateType;
-    curSalesPotential.Text = System.Convert.ToString(opp.SalesPotential);
-}     </CSharpCodeSnippet>
+    curSalesPotential.Text = Convert.ToString(opp.SalesPotential);
+}</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -116,10 +114,18 @@ if (DialogService.DialogParameters.Count &gt; 0 &amp;&amp; (DialogService.Dialog
         <StyleScheme />
         <OnChangeAction>
           <ResourceKey>curSalesPotential</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
+            <BusinessRuleActionItem>
+              <BusinessRule>DocCalculateSalesPotential</BusinessRule>
+              <Object>Opportunity</Object>
+              <Parameters />
+              <PassResultsToNextAction>False</PassResultsToNextAction>
+              <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                <NoActionActionItem>
+                  <MethodName />
+                </NoActionActionItem>
+              </OnComplete>
+            </BusinessRuleActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
@@ -170,12 +176,11 @@ if (DialogService.DialogParameters.Count &gt; 0 &amp;&amp; (DialogService.Dialog
                   <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
                     <CSharpSnippetActionItem>
                       <MethodName>cmdOK_ClickAction</MethodName>
-                      <CSharpCodeSnippet>Sage.Entity.Interfaces.IOpportunity opp = BindingSource.Current as Sage.Entity.Interfaces.IOpportunity;        
-
-if(DialogService.DialogParameters.ContainsKey("ExchangeRate"))
+                      <CSharpCodeSnippet>IOpportunity opp = BindingSource.Current as IOpportunity;
+if (DialogService.DialogParameters.ContainsKey("ExchangeRate"))
 {
-	double exchangeRate = System.Convert.ToDouble(DialogService.DialogParameters["ExchangeRate"]);
-	curSalesPotential.ExchangeRate = exchangeRate;
+    double exchangeRate = Convert.ToDouble(DialogService.DialogParameters["ExchangeRate"]);
+    curSalesPotential.ExchangeRate = exchangeRate;
 }
 opp.Save();</CSharpCodeSnippet>
                     </CSharpSnippetActionItem>

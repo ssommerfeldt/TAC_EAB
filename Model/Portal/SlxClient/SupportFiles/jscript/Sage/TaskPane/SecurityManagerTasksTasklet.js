@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/SecurityManagerTasksTasklet", [
     'dojo/i18n!./nls/SecurityManagerTasksTasklet',
     'Sage/TaskPane/_BaseTaskPaneTasklet',
     'Sage/TaskPane/TaskPaneContent',
@@ -100,6 +100,7 @@ function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, SecurityProfile, d
                 var newType = dijit.byId('secDlg_Type');
                 this.store.setValue(false, 'profileDescription', newDescription.value);
                 this.store.setValue(false, 'profileType', newType.value);
+                this.store.setValue(false, 'columns', {});
                 if (this._isNew) {
                     this.store.saveNewEntity(false, options.success, options.failure, this);
                 } else {
@@ -122,7 +123,14 @@ function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, SecurityProfile, d
                     }
                     else {
                         var existingTab = dijit.byId(entity['$key']);
-                        existingTab.set('title', entity.profileDescription);
+                        if (existingTab) {
+                            if (existingTab.set) {
+                                existingTab.set('title', entity.profileDescription);
+                            }
+                            else {
+                                existingTab.title = entity.profileDescription;
+                            }
+                        }
                     }
                 },
                 failure: function (err) {

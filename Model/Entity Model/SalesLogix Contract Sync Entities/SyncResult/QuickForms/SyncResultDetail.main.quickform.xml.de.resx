@@ -118,51 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lueERPApplication.Caption" xml:space="preserve">
-    <value>Anwendung:</value>
+    <value>Anwendung</value>
+  </data>
+  <data name="txtApplicationCode.Caption" xml:space="preserve">
+    <value>Meldungs-ID/Code</value>
+  </data>
+  <data name="txtDiagnosisCode.Caption" xml:space="preserve">
+    <value>Diagnosecode</value>
+  </data>
+  <data name="txtResourceType.Caption" xml:space="preserve">
+    <value>Ressourcentyp</value>
+  </data>
+  <data name="txtHttpStatus.Caption" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="txtSeverity.Caption" xml:space="preserve">
+    <value>Schweregrad</value>
+  </data>
+  <data name="dtStamp.Caption" xml:space="preserve">
+    <value>Datums-/Zeitstempel</value>
+  </data>
+  <data name="txtErrorSeq.Caption" xml:space="preserve">
+    <value>Fehlersequenz</value>
+  </data>
+  <data name="txtPayLoadPath.Caption" xml:space="preserve">
+    <value>Nutzlastpfad</value>
   </data>
   <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
     <value>Fehlermeldung</value>
   </data>
-  <data name="QFHorizontalSeparator3.Caption" xml:space="preserve">
-    <value>Nutzlastdetails</value>
-  </data>
-  <data name="btnEmail.ToolTip" xml:space="preserve">
-    <value>E-Mail-Details</value>
+  <data name="txtErrorMessage.Caption" xml:space="preserve">
+    <value>Fehlermeldung</value>
   </data>
   <data name="QFHorizontalSeparator2.Caption" xml:space="preserve">
     <value>Stack-Trace</value>
   </data>
-  <data name="txtPayLoadPath.Caption" xml:space="preserve">
-    <value>Nutzlastpfad:</value>
-  </data>
-  <data name="txtSentFrom.Caption" xml:space="preserve">
-    <value>Gesendet von Applikation:</value>
-  </data>
-  <data name="txtErrorSeq.Caption" xml:space="preserve">
-    <value>Fehlersequenz:</value>
-  </data>
-  <data name="txtHttpStatus.Caption" xml:space="preserve">
-    <value>HTTP-Status:</value>
-  </data>
-  <data name="dtStamp.Caption" xml:space="preserve">
-    <value>Datums-/Zeitstempel:</value>
-  </data>
-  <data name="txtSeverity.Caption" xml:space="preserve">
-    <value>Schweregrad:</value>
-  </data>
   <data name="txtJob.Caption" xml:space="preserve">
-    <value>Sync-Auftrag:</value>
+    <value>Synchronisierungsauftrag</value>
   </data>
-  <data name="txtApplicationCode.Caption" xml:space="preserve">
-    <value>Anwendungscode:</value>
-  </data>
-  <data name="txtResourceType.Caption" xml:space="preserve">
-    <value>Ressourcentyp:</value>
+  <data name="txtStackTrace.Caption" xml:space="preserve">
+    <value>Stack-Trace</value>
   </data>
   <data name="btnEmail.Caption" xml:space="preserve">
     <value>E-Mail</value>
   </data>
-  <data name="txtDiagnosisCode.Caption" xml:space="preserve">
-    <value>Diagnosecode:</value>
+  <data name="btnEmail.ToolTip" xml:space="preserve">
+    <value>E-Mail-Details</value>
+  </data>
+  <data name="QFTextBox3.Caption" xml:space="preserve">
+    <value>Entitätstyp</value>
+  </data>
+  <data name="QFTextBox4.Caption" xml:space="preserve">
+    <value>Entitätswert</value>
+  </data>
+  <data name="QFHorizontalSeparator3.Caption" xml:space="preserve">
+    <value>Nutzlastdetail</value>
+  </data>
+  <data name="QFTextBox.Caption" xml:space="preserve">
+    <value>Elementinformationen</value>
+  </data>
+  <data name="QFTextBox7.Caption" xml:space="preserve">
+    <value>Gesendet von</value>
   </data>
 </root>

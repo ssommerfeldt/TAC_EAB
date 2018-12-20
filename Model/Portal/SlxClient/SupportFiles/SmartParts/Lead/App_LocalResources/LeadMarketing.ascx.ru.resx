@@ -117,58 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LeadMarketing_Name.HeaderText" xml:space="preserve">
-    <value>Имя марк. программы</value>
+  <data name="ConfirmMessage_DeleteResponse" xml:space="preserve">
+    <value>Действительно удалить этот ответ?</value>
+  </data>
+  <data name="ConfirmMessage_RemoveTargetAssociation" xml:space="preserve">
+    <value>Удалить заинтересованное лицо из дальнейших этапов кампании "{0}"?</value>
   </data>
   <data name="LeadMarketing_Code.HeaderText" xml:space="preserve">
     <value>Код кампании</value>
   </data>
+  <data name="LeadMarketing_Delete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="LeadMarketing_Edit.Text" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="LeadMarketing_EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LeadMarketing_EmptyTableRowText.RowSelect" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LeadMarketing_EmptyTableRowText.ShowEmptyTable" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="LeadMarketing_EndDate.HeaderText" xml:space="preserve">
     <value>Дата окончания</value>
   </data>
-  <data name="AddResponse_DialogCaption" xml:space="preserve">
-    <value>Добавить отклик</value>
+  <data name="LeadMarketing_Name.HeaderText" xml:space="preserve">
+    <value>Имя кампании</value>
+  </data>
+  <data name="LeadMarketing_Remove.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="LeadMarketing_ResponseDate.HeaderText" xml:space="preserve">
+    <value>Дата ответа</value>
   </data>
   <data name="LeadMarketing_ResponseMethod.HeaderText" xml:space="preserve">
-    <value>Способ отклика</value>
-  </data>
-  <data name="LeadMarketing_EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="LeadMarketing_Edit.Text" xml:space="preserve">
-    <value>Изменить</value>
+    <value>Способ ответа</value>
   </data>
   <data name="LeadMarketing_Stage.HeaderText" xml:space="preserve">
     <value>Стадия</value>
   </data>
-  <data name="ConfirmMessage_DeleteResponse" xml:space="preserve">
-    <value>Вы действительно хотите удалить этот отклик?</value>
-  </data>
-  <data name="TargetStatus_Removed" xml:space="preserve">
-    <value>Исключено</value>
-  </data>
-  <data name="EditResponse_DialogCaption" xml:space="preserve">
-    <value>Изменить отклик</value>
-  </data>
-  <data name="LeadMarketing_Remove.Text" xml:space="preserve">
-    <value>Исключить</value>
-  </data>
-  <data name="LeadMarketing_Delete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
   <data name="LeadMarketing_StartDate.HeaderText" xml:space="preserve">
     <value>Дата начала</value>
-  </data>
-  <data name="ConfirmMessage_RemoveTargetAssociation" xml:space="preserve">
-    <value>Исключить наводку из дальнейших этапов {0} маркет. программы?</value>
-  </data>
-  <data name="LeadMarketing_ResponseDate.HeaderText" xml:space="preserve">
-    <value>Дата отклика</value>
   </data>
   <data name="LeadMarketing_Status.HeaderText" xml:space="preserve">
     <value>Статус</value>
   </data>
+  <data name="TargetStatus_Removed" xml:space="preserve">
+    <value>Удалено</value>
+  </data>
+  <data name="AddResponse_DialogCaption" xml:space="preserve">
+    <value>Добавить ответ</value>
+  </data>
+  <data name="EditResponse_DialogCaption" xml:space="preserve">
+    <value>Редактировать ответ</value>
+  </data>
   <data name="LeadMarketing_Add.Tooltip" xml:space="preserve">
-    <value>Добавить отклики программы</value>
+    <value>Добавить ответ на кампанию</value>
   </data>
 </root>

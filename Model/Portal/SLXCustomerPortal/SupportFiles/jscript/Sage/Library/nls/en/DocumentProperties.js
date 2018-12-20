@@ -1,4 +1,4 @@
-define((
+define("Sage/Library/nls/en/DocumentProperties", (
 { Abstract: 'Abstract',
   Cancel: 'Cancel',
   DocumentProperties: 'Document Properties',

@@ -1,0 +1,114 @@
+<div>
+    <div dojotype="dijit.Dialog" title="" dojoattachpoint="_dialog" dojoattachevent="onHide:_onDlgHide" style="width:60%;">
+        <div class="recur-activity-dialog">
+            <table class="detailTableContainer formtable HundredPercentWidth">
+                <tr>
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="padding:0 !important;" class="lbl alignright">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="lblName">
+                                Name
+                            </label>
+                        </div>
+                        <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                            <input disabled data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required: true" data-dojo-attach-point="Name" />
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="padding:0 !important;" class="lbl alignright">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="lblDisplayName">
+                                Display Name
+                            </label>
+                        </div>
+                        <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                            <input data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required: true" data-dojo-attach-point="DisplayName" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="padding:0 !important;" class="lbl alignright">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="lblPluralName">
+                                Display Plural Name
+                            </label>
+                        </div>
+                        <div class="fld dijitInline" data-dojo-attach-point="displayName">
+                            <input data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required: true" data-dojo-attach-point="PluralName" style="" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="" class="lbl alignright">
+                            <label data-dojo-attach-point="lblTitle">Title (String Expression)</label>
+                        </div>
+                        <div class="fld dijitInline" data-dojo-attach-point="viewTitle"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="" class="lbl alignright">
+                            <label data-dojo-attach-point="lblExtension" for="IsExtension">Is Extension</label>
+                            <input type="checkbox" data-dojo-attach-point="IsExtension"
+                                   data-dojo-type="dijit/form/CheckBox" />
+                        </div>
+                        <div class="fld dijitInline" data-dojo-attach-point="entityDP">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="padding:0 !important;" class="lbl alignright">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="lblHistory">
+                                Track History To
+                            </label>
+                        </div>
+                        <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                            <input disabled data-dojo-type="dijit.form.TextBox" data-dojo-attach-point="History" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="width:248px;" class="lbl alignright">
+                            <label data-dojo-attach-point="lblAdvancedOptions" for="">Advanced Options</label>
+                        </div>
+                        <div class="fld dijitInline" data-dojo-attach-point="BulkUpdateVal" style="padding-top:4px; outline:1px solid #999999">
+                            <label data-dojo-attach-point="lblImport" style="display:inline-block; width: 100px; text-align:right;">Import</label>
+                            <input type="checkbox" data-dojo-attach-point="CanImport"
+                                   data-dojo-type="dijit/form/CheckBox"/>
+                            <label data-dojo-attach-point="lblCanPut" style="display:inline-block; width: 100px; text-align:right;">Put</label>
+                            <input type="checkbox" data-dojo-attach-point="CanPut"
+                                   data-dojo-type="dijit/form/CheckBox" />
+                            <br />
+                            <label data-dojo-attach-point="lblMatch" style="display:inline-block; width: 100px; text-align:right;" for="">Match</label>
+                            <input style="margin-top: 4px;" type="checkbox" data-dojo-attach-point="CanMatch"
+                                   data-dojo-type="dijit/form/CheckBox"/>
+                            <label data-dojo-attach-point="lblCanPost" style="display:inline-block; width: 100px; text-align:right;">Post</label>
+                            <input type="checkbox" data-dojo-attach-point="CanPost"
+                                   data-dojo-type="dijit/form/CheckBox" />
+                            <br />
+                            <label data-dojo-attach-point="lblBulkUpdate" style="display:inline-block; width: 100px; text-align:right;" for="">Bulk Update</label>
+                            <input style="margin-top: 4px;" type="checkbox" data-dojo-attach-point="BulkUpdate"
+                                   data-dojo-type="dijit/form/CheckBox"/>
+                            <label data-dojo-attach-point="lblCanDelete" style="display:inline-block; width: 100px; text-align:right;">Delete</label>
+                            <input type="checkbox" data-dojo-attach-point="CanDelete"
+                                   data-dojo-type="dijit/form/CheckBox" />
+                            <br />
+                            <label data-dojo-attach-point="lblAudited" style="display:inline-block; width: 100px; text-align:right;" for="Audited">Audited</label>
+                            <input style="margin-top:4px;" type="checkbox" data-dojo-attach-point="Audited"
+                                   data-dojo-type="dijit/form/CheckBox" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="button-bar alignright">
+                <div data-dojo-type="dijit.form.Button" id="{%= $.id%}_btn_OK" name="btn_OK" dojoattachpoint="btn_OK" dojoattachevent="onClick:_okClick">OK</div>
+                <div data-dojo-type="dijit.form.Button" id="{%= $.id%}_btn_Cancel" name="btn_Cancel" dojoattachpoint="btn_Cancel" dojoattachevent="onClick:_cancelClick">Cancel</div>
+            </div>
+        </div>
+    </div>
+</div>

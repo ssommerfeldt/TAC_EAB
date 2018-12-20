@@ -1,4 +1,4 @@
-define((
+define("Sage/TaskPane/nls/en/ActivityTaskConfigurationProvider", (
 { scheduleText: 'Schedule',
   eventText: 'Event',
   phoneCallText: 'Phone Call',

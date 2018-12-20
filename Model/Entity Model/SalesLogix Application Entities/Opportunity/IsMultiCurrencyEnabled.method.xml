@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e8a34121-8ad1-4ac5-87a7-6d5a475cb123" lastModifiedUtc="2011-03-30T20:51:53.246Z" name="IsMultiCurrencyEnabled" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e8a34121-8ad1-4ac5-87a7-6d5a475cb123" lastModifiedUtc="2015-06-25T12:56:23.0966538Z" name="IsMultiCurrencyEnabled" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -14,5 +14,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

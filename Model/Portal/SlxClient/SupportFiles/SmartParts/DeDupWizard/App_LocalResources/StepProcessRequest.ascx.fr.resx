@@ -112,123 +112,37 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Job_Status_Completed" xml:space="preserve">
-    <value>Terminé</value>
+  <data name="ProcessingMsg" xml:space="preserve">
+    <value>Vous pouvez passer à une autre vue pendant que le processus de vérification des doublons se poursuit ou consulter les résultats en cliquant sur le numéro de tâche ci-dessous :</value>
   </data>
-  <data name="Job_StartInfo" xml:space="preserve">
-    <value>{0} par {1}</value>
-  </data>
-  <data name="processingMessage" xml:space="preserve">
-    <value>Traitement de l'enregistrement {0} sur {1} - ({2}%)</value>
-  </data>
-  <data name="Current_User_Unknown" xml:space="preserve">
-    <value>Inconnu</value>
+  <data name="lblDuplicateCount.Caption" xml:space="preserve">
+    <value>Doublons :</value>
   </data>
   <data name="lblPrimary_Progress.Caption" xml:space="preserve">
     <value>Recherche des doublons, veuillez patienter...</value>
   </data>
-  <data name="lblCompleteDate.Caption" xml:space="preserve">
-    <value>Date de réalisation :</value>
-  </data>
-  <data name="Job_Status_InProcess" xml:space="preserve">
-    <value>Traitement...</value>
-  </data>
-  <data name="Job_Status" xml:space="preserve">
-    <value>Etat : {0} </value>
+  <data name="cmdAbort.Caption" xml:space="preserve">
+    <value>Abandonner</value>
   </data>
   <data name="lblJobNumber.Caption" xml:space="preserve">
-    <value>Numéro de la tâche :</value>
-  </data>
-  <data name="ViewJobResultsMsg" xml:space="preserve">
-    <value>Pour consulter les résultats, cliquez sur le numéro de tâche ci-dessous :</value>
-  </data>
-  <data name="AbortedMsg" xml:space="preserve">
-    <value>La tâche a été interrompue.</value>
-  </data>
-  <data name="ViewJobResultsMsgWithErrors" xml:space="preserve">
-    <value>Une ou plusieurs erreurs se sont produites pendant le processus de vérification des doublons.</value>
-  </data>
-  <data name="msgCancelDeDupProcess" xml:space="preserve">
-    <value>Voulez-vous vraiment annuler ce processus ?</value>
-  </data>
-  <data name="lblStartDate.Caption" xml:space="preserve">
-    <value>Date de début :</value>
+    <value>Numéro de la tâche :</value>
   </data>
   <data name="CompletedMsg" xml:space="preserve">
     <value>La tâche est terminée.</value>
   </data>
-  <data name="lblDuplicateCount.Caption" xml:space="preserve">
-    <value>Doublons :</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DeDupProgress_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>DeDupProgress_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="lblStart.Caption" xml:space="preserve">
-    <value>Démarré :</value>
+  <data name="msgCancelDeDupProcess" xml:space="preserve">
+    <value>Voulez-vous vraiment annuler ce processus ?</value>
   </data>
-  <data name="ProcessingMsg" xml:space="preserve">
-    <value>Vous pouvez passer à une autre vue pendant que le processus de vérification des doublons se poursuit ou consulter les résultats en cliquant sur le numéro de tâche ci-dessous :</value>
-  </data>
-  <data name="DeDupProgress_ClientScript" xml:space="preserve">
-    <value>&lt;script language="javascript" type="text/javascript"&gt;
-
-var cmdCloseCtrlId = "@cmdCloseCtrlId";
-var _IsCompleted = false;
-
-function DeDup_InvokeClickEvent(control)
-{
-   if (document.createEvent)
-   {
-       // FireFox
-      var e = document.createEvent("MouseEvents");
-      e.initEvent("click", true, true);
-      control.dispatchEvent(e);      
-   }
-   else
-   {
-       // IE
-       control.click();
-   }
-}
-
-function DeDup_OnUpdateProgress(progressArea, args) {
-    if (typeof args === 'object' &amp;&amp; args !== null &amp;&amp; typeof args.get_progressData === 'function') {
-        var progData = args.get_progressData();
-        if (progData.ProcessCompleted === 'True') {
-            if (_IsCompleted) {
-                return false;
-            }
-            var elementStartCtrl = document.getElementById(cmdCloseCtrlId);
-            if (elementStartCtrl != null) {
-                DeDup_InvokeClickEvent(elementStartCtrl);
-            }
-            _IsCompleted = true;
-            return false;
-        }
-    }
-}
-
-&lt;/script&gt;
-</value>
-  </data>
-  <data name="lblProcessed.Caption" xml:space="preserve">
-    <value>Importé :</value>
-  </data>
-  <data name="lblTotalProcessed.Caption" xml:space="preserve">
-    <value>Traité :</value>
-  </data>
-  <data name="error_JobAborted" xml:space="preserve">
-    <value>La tâche a été interrompue.</value>
-  </data>
-  <data name="cmdAbort.Caption" xml:space="preserve">
-    <value>Abandonner</value>
-  </data>
-  <data name="lblStartedBy.Caption" xml:space="preserve">
-    <value>Démarré par :</value>
-  </data>
-  <data name="lblIJobName.Caption" xml:space="preserve">
-    <value>Nom de la tâche :</value>
+  <data name="processingMessage" xml:space="preserve">
+    <value>Traitement de l'enregistrement {0} sur {1} - ({2}%)</value>
   </data>
 </root>

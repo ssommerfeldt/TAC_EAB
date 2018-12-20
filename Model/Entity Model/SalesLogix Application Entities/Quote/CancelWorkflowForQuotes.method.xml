@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="4b5add6c-ab68-42c2-809f-1b71f2bd09f9" lastModifiedUtc="2017-05-04T14:17:18.6176882Z" name="CancelWorkflowForQuotes" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="bb8efd75-affd-4b7c-a7f5-a338b4239b4f" paramName="workFlowId" sequence="0" paramType="String">
+      <description>WorkflowId associated with the given record</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="f88a5b71-4be8-4b36-89f2-3bf029e4729e" lastModifiedUtc="2017-05-04T14:17:14.934489Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="CancelWorkflowForQuotes" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

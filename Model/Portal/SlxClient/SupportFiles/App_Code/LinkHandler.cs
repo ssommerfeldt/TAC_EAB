@@ -14,6 +14,7 @@ using Sage.SalesLogix.SelectionService;
 using Sage.SalesLogix.Services.PotentialMatch;
 using Sage.SalesLogix.Web.SelectionService;
 using User = Resources.User;
+using Sage.Platform.WebPortal.Workspaces;
 
 public class LinkHandler
 {
@@ -77,12 +78,21 @@ public class LinkHandler
         }
     }
 
-    public void ShowDialog(String type, String smartPart, String entityId, String title, bool isCentered, int top, int left, int height, int width)
+    public void ShowDialog(string type, string smartPart, string entityId, string title, bool isCentered, int top, int left, int height, int width, IDictionary<string, string> dialogParameters = null, ChildInsertInformation childInsertInfo = null)
     {
         Type entityType = Type.GetType(type);
         Dialog.SetSpecs(top, left, height, width, smartPart, title, isCentered);
         Dialog.EntityID = entityId;
         Dialog.EntityType = entityType;
+        if (dialogParameters != null)
+        {
+            foreach (var param in dialogParameters)
+            {
+                Dialog.DialogParameters.Remove(param.Key);
+                Dialog.DialogParameters.Add(param.Key, param.Value);
+            }
+        }
+        Dialog.ChildInsertInfo = childInsertInfo;
         Dialog.ShowDialog();
     }
 

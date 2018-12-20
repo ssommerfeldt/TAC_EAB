@@ -112,25 +112,16 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RateAmount.Caption" xml:space="preserve">
-    <value>Gebühr/Stunde:</value>
-  </data>
-  <data name="btnDelete.ToolTip" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Speichern</value>
+  <data name="curRateAmount.Caption" xml:space="preserve">
+    <value>Stundensatz:</value>
   </data>
   <data name="RateTypeCode.Caption" xml:space="preserve">
     <value>Typ:</value>
-  </data>
-  <data name="btnAdd.Caption" xml:space="preserve">
-    <value>Hinzufügen</value>
   </data>
   <data name="RateTypeDescription.Caption" xml:space="preserve">
     <value>Beschreibung:</value>
@@ -138,7 +129,19 @@
   <data name="btnSave.Caption" xml:space="preserve">
     <value>Speichern</value>
   </data>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="btnAdd.Caption" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
   <data name="btnDelete.Caption" xml:space="preserve">
     <value>Löschen</value>
+  </data>
+  <data name="btnDelete.ToolTip" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Sie sind im Begriff, diesen Datensatz endgültig zu löschen.</value>
   </data>
 </root>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRangeEntityFilter" id="ee66f552-826a-41b1-aa54-c812c06dfcfc" lastModifiedUtc="2014-12-09T19:11:56.4712868Z" filterName="DeclaredValue" propertyName="ERPDeclaredValue" characters="0">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRangeEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <ranges id="8d8f8f46-b99b-4561-ba52-98f671fd9a61" rangeName="0 to 999" upper="999" />
+  <ranges id="4d2a0d53-89fe-4e7e-a049-66c8811e73cd" rangeName="1000 to 9999" lower="1000" upper="9999" />
+  <ranges id="7e004b65-b6fa-4ebd-927d-22eab6efc28a" rangeName="10,000 to 99,999" lower="10000" upper="99999" />
+  <ranges id="e546aab4-21f2-4215-b826-b8743bb3517b" rangeName="100,000 to 499,999" lower="100000" upper="499999" />
+  <ranges id="62e269eb-a58a-4c04-8125-241b06f0a5e6" rangeName="500,000 to 999,999" lower="500000" upper="999999" />
+  <ranges id="4f3d3b81-a1c6-4a65-9c69-ff04a2608a75" rangeName="1,000,000 and higher" lower="1000000" />
+</entityFilter>

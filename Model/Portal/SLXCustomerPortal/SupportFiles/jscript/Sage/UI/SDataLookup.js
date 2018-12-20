@@ -1,5 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-/*
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/**
+    @class Sage.UI.SDataLookup
 sample config object for renderMode 5 ...
  {
     id: 'ProdLookup',
@@ -9,9 +10,6 @@ sample config object for renderMode 5 ...
         need to convert control to use enum values
     dialogTitle: 'Product Lookup',
     structure: [
-    {
-        defaultCell: { width: 12, editable: false, styles: 'text-align: right;' },
-        cells: [
         {
             name: 'Family',
             field: 'Family',
@@ -41,7 +39,7 @@ sample config object for renderMode 5 ...
             width: 15
         }
     ]
-    }], storeOptions: {
+    ], storeOptions: {
         resourceKind: 'products'
     },
     gridOptions: {
@@ -76,29 +74,28 @@ sample config object for renderMode 5 ...
     }
 }
 */
-define([
-        'dojo/_base/html',
-        'dojox/grid/DataGrid',
-        'dijit/Dialog',
-        'dijit/form/Button',
-        'Sage/UI/ComboBox',
-        'Sage/Data/BaseSDataStore',
-        'Sage/UI/ConditionManager',
-        'Sage/Utility',
-        'Sage/_Templated',
-        'Sage/UI/Columns/DateTime',
-        'Sage/UI/Columns/Phone',
-        'Sage/UI/Columns/PickList',
-        'dijit/_Widget',
-        'Sage/UI/Controls/_DialogHelpIconMixin',
-        'dojo/_base/lang',
-        'dojo/i18n!./nls/SDataLookup',
-        'dojo/_base/declare'
+define("Sage/UI/SDataLookup", [
+    'dojo/_base/html',
+    'dijit/Dialog',
+    'dijit/form/Button',
+    'Sage/UI/ComboBox',
+    'Sage/Data/SDataServiceRegistry',
+    'Sage/UI/ConditionManager',
+    'Sage/Utility',
+    'Sage/_Templated',
+    'Sage/UI/Controls/GridParts/Columns/DateTime',
+    'Sage/UI/Controls/GridParts/Columns/Phone',
+    'Sage/UI/Controls/GridParts/Columns/PickList',
+    'dijit/_Widget',
+    'Sage/UI/Controls/_DialogHelpIconMixin',
+    'dojo/_base/lang',
+    'dojo/i18n!./nls/SDataLookup',
+    'dojo/_base/declare',
+    'Sage/UI/Controls/Grid',
+    'Sage/Store/SData'
 ],
-function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionManager, Utility, _Templated, DateTime, Phone, PickList, _Widget, DialogHelpIconMixin, dojoLang, nlsResource, declare) {
-    //dojo.requireLocalization("Sage.UI", "SDataLookup");
+function (html, Dialog, Button, ComboBox, sDataServiceRegistry, ConditionManager, Utility, _Templated, DateTime, Phone, PickList, _Widget, DialogHelpIconMixin, lang, nlsResource, declare, Grid, SDataObjectStore) {
     (function () {
-
         if (!Utility) {
             Sage.namespace("Utility");
         }
@@ -114,7 +111,7 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
 
         Utility.SDataLookupChildObjectFormatter = function (opts) {
             console.warn("Deprecated: Utility.SDataLookupChildObjectFormatter. Use: Sage.Utility.SDataLookup.ChildObjectFormatter");
-            var feedItem = opts.grid.grid._by_idx[opts.rowIdx].item,
+            var feedItem = opts,
                 res,
                 i;
 
@@ -128,7 +125,7 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
                 res.push(dojo.string.substitute([
                     '<input type=button id="SOPshow${1}" style="height:16px;width:14px;border:0;background:transparent;vertical-align:top" onclick="dojo.query(\'.SOProw${1}\').style({display:\'\'});dojo.query(\'#SOPshow${1}\').style({display:\'none\'});dojo.query(\'#SOPhide${1}\').style({display:\'\'})" value="+">',
                     '<input type=button id="SOPhide${1}" style="display:none;height:16px;width:14px;border:0;background:transparent;vertical-align:top" onclick="dojo.query(\'.SOProw${1}\').style({display:\'none\'});dojo.query(\'#SOPshow${1}\').style({display:\'\'});dojo.query(\'#SOPhide${1}\').style({display:\'none\'})" value="-"> '
-                    ].join(''), [opts.value, opts.rowIdx]));
+                ].join(''), [opts.value, opts.rowIdx]));
             }
 
             res.push(dojo.string.substitute('${0}<div class=SOProw${1} style="display:none">', [opts.value, opts.rowIdx]));
@@ -139,8 +136,7 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
             res.push("</div>");
             return res.join('');
         };
-    } ());
-
+    }());
     var widget = declare("Sage.UI.SDataLookup", [_Widget, _Templated], {
         config: null,
         grid: null,
@@ -167,12 +163,14 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
         query: null,
         // Id of the calling object.  Usage: To return data in doSelected.
         callerId: null,
-        //    name: '',
-        //    field: '', 
         widgetsInTemplate: true,
         storeOptions: null,
         gridOptions: null,
         sortColumn: '',
+        //On the close of the lookup there are requirements that we know what items where added. We can't use the grids row selections as that may not be accurate to what was added. In
+        //other words you can add items multiple times without closing the lookup, in this case only the last selected item(s) will be available. This will keep a running tally of all
+        //items added for this session
+        newlyAddedItems: null,
         //Reference enum for Display Mode 
         displayModes: {
             'DropDownList': 0,
@@ -184,13 +182,6 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
         },
         btnIcon: 'images/icons/plus_16x16.gif',
         isModal: false,
-        //i18n strings:
-        cancelText: 'Cancel',
-        closeText: 'Close',
-        loadingText: 'Loading...',
-        noDataText: 'No records returned',
-        _initialized: false,
-        //end i18n strings.
         _addCondHandle: null,
         _removeCondHandle: null,
         _originalQueryConditions: '',
@@ -206,20 +197,19 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
                     '{%= $.dialogButtonText %} </button>',
             '{% } %}',
                 '<button data-dojo-type="dijit.form.Button" type="button" id="{%= $.id %}-CloseButton" ',
-                    'onClick="dijit.byId(\'{%= $.id %}-Dialog\').hide();">{%= $.hideText %}</button>',
+                'onClick="dijit.byId(\'{%= $.id %}\').doOnClose();">{%= $.hideText %}</button>',
             '</div>',
             '</div> ']),
         constructor: function () {
             this.gridOptions = {};
             this.storeOptions = {
-                pagesize: 15,
+                rowsPerPage: 20,
                 include: [],
-                select: ['Id'], //what about composite keys?....  <---<<<   <---<<<
-                orderby: ''
+                select: ['Id'], //what about composite keys?
+                sort: []
             };
-
             this.preFilters = [];
-
+            this.newlyAddedItems = [];
             this.query = {};
             this.config = {};
             this.fields = [];
@@ -228,77 +218,60 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
             this.sdataStore = [];
         },
         postMixInProperties: function () {
-            var cells,
-                i,
-                storeOptions,
-                gridOptions;
+            var storeOptions,
+             gridOptions;
 
             this._initialized = false;
-            dojoLang.mixin(this, dojo.i18n.getLocalization("Sage.UI", "SDataLookup"));
+            lang.mixin(this, dojo.i18n.getLocalization("Sage.UI", "SDataLookup"));
             if (typeof this.displayMode === 'string') {
                 this.displayMode = this.displayModes[this.displayMode];
             }
 
-            // Fix column types coming in from JSON. The cell/structure type must be a constructor.
-            if (this.structure && this.structure[0] && this.structure[0].cells) {
-                cells = this.structure[0].cells;
-                for (i = 0; i < cells.length; i++) {
-                    if (cells[i] && cells[i].type && (typeof cells[i].type === 'string')) {
-                        switch (cells[i].type) {
-                            case 'Sage.UI.Columns.DateTime':
-                                cells[i].type = DateTime;
-                                break;
-                            case 'Sage.UI.Columns.Phone':
-                                cells[i].type = Phone;
-                                break;
-                            case 'Sage.UI.Columns.PickList':
-                                cells[i].type = PickList;
-                                break;
-                            default:
-                                delete cells[i].type;
-                                break;
-                        }
-                    }
-                }
-            }
-
             //Mixin any default options that are needed but were not included in the setup
             storeOptions = {
-                pagesize: 15,
+                rowsPerPage: 20,
                 include: [],
-                orderby: '',
-                select: ['Id'] //what about composite keys?....  <---<<<   <---<<<            
+                sort: [],
+                select: ['Id'] //what about composite keys?
             };
-
             //If we are in Mode 0, drop down list, extend the grid query options directly onto the store.
             if (this.displayMode === 0) {
                 this.initSDataStore();
                 this.buildSDataStoreQueryConditions();
             }
-            //Else add them to the lookup level query.
-            //Do we need this else block?????
+                //Else add them to the lookup level query.
+                //Do we need this else block?????
             else {
                 if (typeof this.gridOptions.contextualCondition === 'function') {
-                    this.query = { fn: this.gridOptions.contextualCondition, scope: this };
+                    this.query = {
+                        fn: this.gridOptions.contextualCondition,
+                        scope: this
+                    };
+                    this.query.conditions = this.query.fn();
                 } else if (typeof this.gridOptions.contextualCondition === 'object') {
                     if (this.gridOptions.contextualCondition.fn) {
                         this.ensureValue(this.gridOptions.contextualCondition, 'scope', this);
                         this.query = this.gridOptions.contextualCondition;
+                        this.query.conditions = this.gridOptions.contextualCondition.fn();
                     }
                 }
-
                 this.buildSDataStoreQueryForSeeding();
             }
 
             gridOptions = {
-                rowsPerPage: 15,
+                rowsPerPage: 20,
                 loadingMessage: this.loadingText,
                 noDataMessage: this.noDataText,
-                query: this.query
+                where: this.query,
+                selectionMode: this.selectionMode,
+                columnHiding: true,
+                columnResizing: true,
+                columnReordering: false,
+                rowSelection: true,
+                setUserPreferences: false,
+                showHiderIcon: false
             };
-
             this._originalQueryConditions = this.query.conditions;
-
             this.storeOptions = Utility.extend(true, storeOptions, this.storeOptions);
             this.gridOptions = Utility.extend(false, gridOptions, this.gridOptions);
 
@@ -319,8 +292,8 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
                     ' store="dijit.byId(\'{%= $.id %}\').sdataStore" name="{%= $.field %}">',
                     '</select>',
                     '</div>'
-                ],
-                tplMode5 = ['<img style="cursor: pointer; padding-right: 4px;" ',
+            ],
+                tplMode5 = ['<img style="cursor: pointer; margin: 4px;" ',
                     ' onclick="dijit.byId(\'{%= $.id %}\').showLookup();" ',
                     'src="{%= $.btnIcon %}" alt="{%= $.btnToolTip %}" title="{%= $.btnToolTip %}" >'];
             switch (mode) {
@@ -337,6 +310,7 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
             this.initSDataStore();
             this._setQueryForLoad();
             this.initGrid(this.initializeLookup);
+            this.lookupDialog.onCancel = this.closeCrossBtnEvent; 
         },
         _setQueryForLoad: function () {
             var condQuery = this.conditionMgr.getConditionsAsUrlWhereString(),
@@ -355,7 +329,7 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
             newQuery = queryParts.join(' and ');
 
             if (newQuery) {
-                this.gridOptions.query.conditions = newQuery;
+                this.gridOptions.where.conditions = newQuery;
             }
         },
         _setQueryForSearch: function () {
@@ -385,7 +359,16 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
 
             newQuery = queryParts.join(' and ');
 
-            this.gridOptions.query.conditions = newQuery;
+            this.gridOptions.where.conditions = newQuery;
+
+            /*
+            console.debug('_setQueryForSearch:condQuery: ' + condQuery);
+            console.debug('_setQueryForSearch:existingQuery: ' + existingQuery);
+            console.debug('_setQueryForSearch:newQuery: ' + newQuery);
+            console.debug('_setQueryForSearch:queryParts: ' + queryParts);
+            */
+
+            return newQuery;
         },
         doLookup: function () {
             this.grid.destroy(false);
@@ -399,7 +382,7 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
                 i;
 
             if (this.returnObject && this.value !== null) {
-                // The field could be serveral positions in length.
+                // The field could be several positions in length.
                 //Extract the field value from the object by walking the sdata relationship path.
                 fieldPath = this.field.split('.');
                 fieldValue = this.value;
@@ -408,45 +391,54 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
                         fieldValue = fieldValue[fieldPath[i]];
                     }
                 }
-
                 retVal = fieldValue;
             }
-
             return retVal;
         },
         getGridSelections: function () {
-            var items = this.grid.selection.getSelected();
-
-            if (items.length <= 0 && this.grid._by_idx.length === 1) {
-                items.push(this.grid._by_idx[0].item);
-            }
-
+            var items = this.grid.getSelectedRowData();
             if (items.length === 0) {
                 return;
             }
-
+            if (items.length > 0) {
+                for (var k = 0; k < items.length; k++) {
+                    this.newlyAddedItems.push(items[k]);
+                }
+            }
             this.doSelected(items);
-            this.grid.selection.deselectAll();
+            this.grid.clearSelection();
+        },
+        closeCrossBtnEvent: function () {
+                var lookUpId = this.id.split('-');
+                dijit.byId(lookUpId[0]).doOnClose();
+         },
+        onClose: function (items) {
+			//do nothing, this is here as a placeholder for consumers to add custom handling for this event.
+        },
+        doOnClose: function () {
+            var items = this.newlyAddedItems;
+            this.onClose(items);
+            this.lookupDialog.hide();
         },
         initConditionManager: function () {
             var addToFieldsUnique,
                 cols,
-                fields,
-                fieldName,
-                displayName,
-                propertyType,
-                pickListName,
-                i,
-                cell,
-                opts,
-                self,
-                index,
-                filter,
-                field,
-                op,
-                value,
-                visible,
-                pickListStorageMode;
+                    fields,
+                    fieldName,
+                    displayName,
+                    propertyType,
+                    pickListName,
+                    i,
+                    cell,
+                    opts,
+                    self,
+                    index,
+                    filter,
+                    field,
+                    op,
+                    value,
+                    visible,
+                        pickListStorageMode;
 
             if (this.conditionMgr) {
                 return;
@@ -459,19 +451,21 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
                         return;
                     }
                 }
-                list.push({ fieldName: fieldName, displayName: displayName, propertyType: propertyType, pickListName: pickListName, pickListStorageMode: pickListStorageMode });
+                list.push({
+                    fieldName: fieldName, displayName: displayName, propertyType: propertyType, pickListName: pickListName, pickListStorageMode: pickListStorageMode
+                });
             };
 
-            cols = this.structure[0];
+            cols = this.structure;
             fields = this.fields;
 
-            for (i = 0; i < cols.cells.length; i++) {
-                if (cols.cells[i].excludeFromFilters !== true) {
-                    if (cols.cells[i].field) {
-                        cell = cols.cells[i];
+            for (i = 0; i < cols.length; i++) {
+                if (cols[i].excludeFromFilters !== true) {
+                    if (cols[i].field) {
+                        cell = cols[i];
                         fieldName = cell.field;
                         propertyType = cell.propertyType;
-                        displayName = cell.displayField || cell.name;
+                        displayName = cell.displayField || cell.label;
                         pickListName = cell.pickListName;
                         pickListStorageMode = cell.pickListStorageMode;
                         addToFieldsUnique(fieldName, displayName, propertyType, pickListName, pickListStorageMode, fields);
@@ -490,14 +484,6 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
             this.conditionMgr = new ConditionManager(opts);
             self = this;
 
-            this._addCondHandle = dojo.subscribe('onAddLookupCondition', self, function (mgr) {
-                this._increaseDialogHeight();
-            });
-
-            this._removeCondHandle = dojo.subscribe('onRemoveLookupCondition', self, function (mgr) {
-                this._decreaseDialogHeight();
-            });
-
             // Leave first condition empty
             if (this.preFilters.length > 0) {
                 this.conditionMgr.setFirstConditionValue('', '=', '');
@@ -510,62 +496,83 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
                 op = filter.conditionOperator.trim();
                 value = filter.filterValue.trim();
                 visible = filter.visible;
-
                 this.conditionMgr.addCondition(field, op, value, visible);
-
-                if (visible) {
-                    this._increaseDialogHeight();
-                }
             }
 
             dojo.place(this.conditionMgr.domNode, dojo.byId(this.id + '-Condition-container'), 'only');
             this._doSearchConnection = dojo.connect(this.conditionMgr, 'onDoSearch', this, 'doLookup');
         },
-        _increaseDialogHeight: function () {
-            if (this.dialogHeight) {
-                this.dialogHeight += 30;
-                dojo.style([this.id, '-Dialog'].join(''), 'height', this.dialogHeight + 'px');
-            }
-        },
-        _decreaseDialogHeight: function () {
-            if (this.dialogHeight) {
-                this.dialogHeight -= 30;
-                dojo.style([this.id, '-Dialog'].join(''), 'height', this.dialogHeight + 'px');
-            }
-        },
         onDoubleClick: function (event) {
             this.getGridSelections(); // fires onSelected
-            if (this.lookupDialog) {
-                //this.lookupDialog.hide();
+        },
+        _formatStructure: function () {
+            // Fix column types coming in from JSON. The cell/structure type must be a constructor.
+            var cells,
+                    i;
+            if (this.structure) {
+                cells = this.structure;
+                for (i = 0; i < cells.length; i++) {
+                    if (cells[i] && cells[i].type && typeof(cells[i].type) === 'string') {
+                        switch (cells[i].type) {
+                            case 'Sage.UI.Columns.DateTime':
+                                cells[i].type = DateTime;
+                                break;
+                            case 'Sage.UI.Columns.Phone':
+                                cells[i].type = Phone;
+                                break;
+                            case 'Sage.UI.Columns.PickList':
+                                cells[i].type = PickList;
+                                break;
+                            default:
+                                delete cells[i].type;
+                                break;
+                        }
+                    }
+                    if (cells[i].hidden === true) {
+                        cells[i].unhidable = true;
+                    }
+                }
+                this.structure = cells;
             }
         },
         initGrid: function (autoStartup) {
             //Create
+            this._formatStructure();
+            var columns = lang.clone(this.structure);
             var lookupGrid = dijit.byId([this.id, '-Grid'].join(''));
             if (!lookupGrid) {
-                this.gridOptions.store = this.sdataStore;
-                this.gridOptions.structure = this.structure;
+                if (this.sdataStore.sort && this.sdataStore.sort.length > 0) {
+                    var sort = [];
+                    sort.push(this.sdataStore.sort[0]);
+                    this.gridOptions.sort = sort;
+                }
+                if (!autoStartup) {
+                    this.sdataStore.where = "Id like '_hack_'";
+                } else if (typeof this.gridOptions.where === 'string') {
+                    this.sdataStore.where = this.gridOptions.where;
+                } else if (typeof this.gridOptions.where === 'object') {
+                    if (typeof this.gridOptions.where.conditions !== 'undefined') {
+                        this.sdataStore.where = this.gridOptions.where.conditions;
+                    } else if (typeof this.gridOptions.where.fn === 'function') {
+                        this.sdataStore.where = this.gridOptions.where.fn();
+                    }
+                }
+                this.gridOptions.store = new SDataObjectStore(this.sdataStore);
+                this.gridOptions.columns = columns;
+
                 this.gridOptions.id = [this.id, '-Grid'].join('');
-                this.grid = new DataGrid(this.gridOptions);
-                this.grid.canSort = function (index) {
-                    var cols = this.structure[0];
-                    return cols.cells[Math.abs(index) - 1].sortable;
-                };
+                this.gridOptions.placeHolder = [this.id, '-Grid-container'].join('');
 
-                dojo.connect(this.grid, 'onDblClick', this, this.onDoubleClick);
-                dojo.place(this.grid.domNode, [this.id, '-Grid-container'].join(''), 'only');
+                this.grid = new Grid(this.gridOptions);
+                this.grid.resize();
 
-                if (autoStartup) {
-                    this.grid.startup();
-                }
-                else {
-                    this.grid.query.conditions = "Id like '_hack_'";
-                    this.grid.startup();
-                }
+                this.grid.onRowDblClick = lang.hitch(this, function (row) {
+                    this.onDoubleClick(row.id, row.data);
+                });
             }
-            //Reuse - but only if the query conditions are different
+                //Reuse - but only if the query conditions are different
             else {
-                if (this.query.conditions !== lookupGrid.query.conditions) {
+                if (this.query.conditions !== lookupGrid.store.where) {
                     lookupGrid.destroy();
                     this.initGrid(autoStartup);
                 } else {
@@ -580,7 +587,7 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
             }
         },
         initSDataStore: function () {
-            var cols = this.structure[0],
+            var cols = this.structure,
             sel = this.storeOptions.select || [],
             inc = this.storeOptions.include || [],
             field,
@@ -589,17 +596,17 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
             combined,
             p;
 
-            for (i = 0; i < cols.cells.length; i++) {
-                if (cols.cells[i].field) {
-                    field = cols.cells[i].field;
-                    if (cols.cells[i].displayField) {
-                        field = field + '.' + cols.cells[i].displayField;
+            for (i = 0; i < cols.length; i++) {
+                if (cols[i].field) {
+                    field = cols[i].field;
+                    if (cols[i].displayField) {
+                        field = field + '.' + cols[i].displayField;
                     }
 
                     Utility.addToListUnique(field.replace(/\./g, '/'), sel);
 
-                    if (cols.cells[i].field.indexOf('.') > 0) {
-                        parts = cols.cells[i].field.split('.');
+                    if (cols[i].field.indexOf('.') > 0) {
+                        parts = cols[i].field.split('.');
                         combined = '';
                         for (p = 0; p < parts.length - 1; p++) {
                             combined += parts[p];
@@ -613,17 +620,19 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
             this.storeOptions.include = inc;
             this.storeOptions.select = sel;
             //create the data store
-            this.sdataStore = new BaseSDataStore(this.storeOptions);
+            this.storeOptions.service = sDataServiceRegistry.getSDataService('dynamic');
+
+            this.sdataStore = this.storeOptions;
         },
         isSeeded: function () {
-            var seeded = (this.seedValue && this.seedValue !== '' && this.seedProperty !== '');
+            var seeded = (typeof this.seedValue === 'string' && this.seedValue !== '' && this.seedProperty !== '');
             return seeded;
         },
         buildSDataStoreQueryForSeeding: function () {
-            var newQuery,
-                seedQuery,
-                existingQuery;
 
+            var newQuery,
+        seedQuery,
+existingQuery;
             if (this.isSeeded()) {
                 seedQuery = dojo.string.substitute('${0} eq "${1}"', [this.seedProperty, this.seedValue]);
                 existingQuery = this.query.conditions;
@@ -633,11 +642,7 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
                 } else {
                     newQuery = seedQuery;
                 }
-
-                this.sdataStore.query = {
-                    conditions: newQuery
-                };
-
+                this.sdataStore.where = newQuery;
                 this.query.conditions = newQuery;
             }
         },
@@ -646,21 +651,22 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
 
             //Set seed values in query conditions
             if (this.seedOnRowEntity) {
-                this.sdataStore.directQuery = dojo.string.substitute('Id eq "${0}"', [this.rowEntityId]);
+                this.sdataStore.where = dojo.string.substitute('Id eq "${0}"', [this.rowEntityId]);
             }
 
             if (this.seedOnRelatedEntity !== '') {
-                this.sdataStore.directQuery = {
-                    conditions: dojo.string.substitute(' ${0}.Id eq "${1}" ', [this.seedOnRelatedEntity, this.relatedEntityId])
-                };
+                this.sdataStore.where = dojo.string.substitute(' ${0}.Id eq "${1}" ', [this.seedOnRelatedEntity, this.relatedEntityId]);
             }
 
             // Check if there is a conditional where/contextual condition attached to the grid options.
-            // If display mode is 0, then there is no grid in this first interation.
-            // Future interations will include a grid in line.
+            // If display mode is 0, then there is no grid in this first iteration.
+            // Future integrations will include a grid in line.
             if (typeof this.gridOptions.contextualCondition === 'function') {
-                queryFunc = { fn: this.gridOptions.contextualCondition, scope: this };
-                this.sdataStore.directQuery = Utility.extend(true, this.sdataStore.directQuery, queryFunc);
+                queryFunc = {
+                    fn: this.gridOptions.contextualCondition,
+                    scope: this
+                };
+                this.sdataStore.where = Utility.extend(true, this.sdataStore.directQuery, queryFunc);
             }
         },
         //Not used
@@ -671,7 +677,9 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
             if (typeof this.gridOptions.contextualShow === 'function') {
                 return this.gridOptions.contextualShow();
             }
-            return { result: true, reason: '' };
+            return {
+                result: true, reason: ''
+            };
         },
         showLookup: function () {
             var sError = 'The lookup cannot be displayed because one or more conditions have not been met.',
@@ -709,10 +717,12 @@ function (html, DataGrid, Dialog, Button, ComboBox, BaseSDataStore, ConditionMan
                     }
 
                     // Calculate the grid height by subtracting the height of the other dialog elements from the dialog height: dheight-125.
-                    self.lookupDialog.set("content", self.dialogContent.apply({ hideText: hideText, dialogButtonText: self.dialogButtonText, id: self.id, gridHeight: dHeight - 150 }));
+                    self.lookupDialog.set("content", self.dialogContent.apply({
+                        hideText: hideText, dialogButtonText: self.dialogButtonText, id: self.id, gridHeight: dHeight - 150
+                    }));
 
                     // Create help icon
-                    dojoLang.mixin(self.lookupDialog, new DialogHelpIconMixin());
+                    lang.mixin(self.lookupDialog, new DialogHelpIconMixin());
                     self.lookupDialog.createHelpIconByTopic('findlookup');
                 }
                 else {

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/BindingsManager", [
     'dijit/_Widget',
     'dojo/_base/declare',
     'Sage/Utility/Activity'
@@ -143,7 +143,7 @@ function (_Widget, declare, activityUtility) {
             // disconnect change listeners...
             var i, l = this._connections.length;
             for (i = 0; i < l; i++) {
-                dojo.disconnect(this._connections.length);
+                dojo.disconnect(this._connections[i]);
             }
             this._connections = [];
             //destroy bindings...

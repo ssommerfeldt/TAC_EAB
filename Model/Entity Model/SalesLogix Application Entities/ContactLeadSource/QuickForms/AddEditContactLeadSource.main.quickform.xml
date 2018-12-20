@@ -8,7 +8,13 @@
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload0</MethodName>
-          <CSharpCodeSnippet>lueDescription.Enabled = EntityContext.EntityID.ToString().ToUpper().Equals("INSERT");</CSharpCodeSnippet>
+          <CSharpCodeSnippet>lueDescription.Enabled = EntityContext.EntityID.ToString().ToUpper().Equals("INSERT");
+var value = Sage.SalesLogix.BusinessRules.BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+if (!String.IsNullOrEmpty(value))
+{
+ 	var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+	lueDescription.LookupPreFilters.Add(leadSourcePreFilter);
+}</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -31,7 +37,6 @@
       <QFSLXLookup>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lueDescription</ControlId>
@@ -72,6 +77,7 @@
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>LeadSource</LookupEntityName>
         <LookupEntityTypeName>Sage.Entity.Interfaces.ILeadSource, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -124,24 +130,13 @@
             <HideCondition />
           </LookupProperty>
         </LookupProperties>
-        <LookupPreFilters>
-          <LookupPreFilter>
-            <LookupEntityName>ILeadSource</LookupEntityName>
-            <PropertyType>System.String</PropertyType>
-            <OperatorCode>=</OperatorCode>
-            <PickListName />
-            <PropertyName>Status</PropertyName>
-            <FilterValue>Active</FilterValue>
-            <TranslateFilterValue>true</TranslateFilterValue>
-          </LookupPreFilter>
-        </LookupPreFilters>
+        <LookupPreFilters />
       </QFSLXLookup>
     </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDateTimePicker, Sage.SalesLogix.QuickForms.QFControls">
       <QFDateTimePicker>
         <Column>0</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>LeadDate</ControlId>
@@ -349,7 +344,6 @@
       <QFControlsList>
         <Column>0</Column>
         <Row>6</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>actionContainer</ControlId>
@@ -365,7 +359,6 @@
               <QFButton>
                 <Column>0</Column>
                 <Row>0</Row>
-                <IsReadOnly>false</IsReadOnly>
                 <HotKey>0</HotKey>
                 <TabIndex>0</TabIndex>
                 <ControlId>okButton</ControlId>
@@ -408,7 +401,6 @@
               <QFButton>
                 <Column>0</Column>
                 <Row>0</Row>
-                <IsReadOnly>false</IsReadOnly>
                 <HotKey>0</HotKey>
                 <TabIndex>0</TabIndex>
                 <ControlId>cancelButton</ControlId>
@@ -444,7 +436,6 @@
       <QFDataSource>
         <Column>0</Column>
         <Row>7</Row>
-        <IsReadOnly>false</IsReadOnly>
         <Visible>false</Visible>
         <HotKey>48</HotKey>
         <TabIndex>0</TabIndex>
@@ -468,7 +459,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -483,7 +473,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />

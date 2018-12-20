@@ -1,5 +1,5 @@
-﻿/*globals define, dojo, Simplate */
-define([
+/*globals define, dojo, Simplate */
+define("Sage/MainView/ActivityMgr/OccurrenceOrSeriesQueryDlg", [
     'dijit/_Widget',
     'Sage/_Templated',
     'dojo/string',
@@ -156,6 +156,9 @@ function (_Widget,
         _bind: function () {
             var act = this.activity;
             var d = act.Description;
+            if (!d) {
+                d = '';
+            }
             if (d.length > 30) {
                 d = d.substring(0, 26) + '...';
             }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,8 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="grdPicklistItems.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  </data>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Element hinzufügen</value>
+  </data>
+  <data name="ConfirmMessage" xml:space="preserve">
+    <value>Möchten Sie wirklich löschen?</value>
+  </data>
   <data name="grd_Delete.Text" xml:space="preserve">
     <value>Löschen</value>
+  </data>
+  <data name="grd_Edit.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="grd_Code.HeaderText" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="grd_Default.HeaderText" xml:space="preserve">
+    <value>Ist Standard</value>
   </data>
   <data name="grd_Order.HeaderText" xml:space="preserve">
     <value>Reihenfolge</value>
@@ -126,22 +144,7 @@
   <data name="grd_Text.HeaderText" xml:space="preserve">
     <value>Text</value>
   </data>
-  <data name="ConfirmMessage" xml:space="preserve">
-    <value>Möchten Sie wirklich löschen?</value>
-  </data>
-  <data name="grd_Default.HeaderText" xml:space="preserve">
-    <value>Ist Standard</value>
-  </data>
-  <data name="grd_Code.HeaderText" xml:space="preserve">
-    <value>Code</value>
-  </data>
-  <data name="btnAdd.ToolTip" xml:space="preserve">
-    <value>Eintrag hinzufügen</value>
-  </data>
-  <data name="grdPicklistItems.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
-  </data>
-  <data name="grd_Edit.Text" xml:space="preserve">
-    <value>Bearbeiten</value>
+  <data name="grd_Filter.HeaderText" xml:space="preserve">
+    <value>Filter</value>
   </data>
 </root>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="245bf15d-5cc5-4075-986f-9dd5f20945f7" lastModifiedUtc="2016-08-12T20:47:17.4617709Z" name="CopyService" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="048420bd-8513-47aa-a1e9-3c460cbdac26" paramName="copyFromService" sequence="0" paramType="Object">
+      <description>The service used to base the copy on.</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="aef78836-c5d3-45f2-9077-a4bc0b32c496" paramName="saveNew" sequence="0" paramType="Boolean">
+      <description>Flag indicating if the new service should be save immediately</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="8d9c4ef9-0fed-4c35-bd37-a6baadfd2e3a" lastModifiedUtc="2016-08-12T20:46:02.0112266Z" targetType="Sage.SalesLogix.BOEPAService.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CopyService" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

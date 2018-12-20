@@ -1,6 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/MainView/ActivityMgr/AttendeeLookup/LookupService", [
     'Sage/MainView/ActivityMgr/AttendeeLookup/ContactLookupConfig',
     'Sage/MainView/ActivityMgr/AttendeeLookup/LeadLookupConfig',
     'dojo/_base/declare'

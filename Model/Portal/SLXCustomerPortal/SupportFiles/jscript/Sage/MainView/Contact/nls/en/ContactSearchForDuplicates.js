@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/Contact/nls/en/ContactSearchForDuplicates", (
 { svAccount_Caption: 'Account:',
   svCompany_Caption: 'Company:',
   svEmail_Caption: 'Email:',
@@ -23,5 +23,5 @@ define((
   ContactSummaryView_Title: 'Summary View - Contact',
   AccountSummaryView_Title: 'Summary View - Account',
   closeText: 'Close',
-  errorLoadingSummaryView: 'An error occured loading summary view: ${0}' }
+  errorLoadingSummaryView: 'An error occurred loading summary view: ${0}' }
 ));

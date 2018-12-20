@@ -117,28 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CancelButton.Caption" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
   <data name="ConfirmCopyMessage" xml:space="preserve">
-    <value>Вы действительно хотите копировать этого пользователя?</value>
+    <value>Действительно скопировать этого пользователя?</value>
+  </data>
+  <data name="CopyOfNameTemplate" xml:space="preserve">
+    <value>Копия</value>
+  </data>
+  <data name="ErrorCannotCopyRetiredUser" xml:space="preserve">
+    <value>Неактивные пользователи не могут быть скопированы</value>
+  </data>
+  <data name="ErrorMessageTitle" xml:space="preserve">
+    <value>Не удалось копировать пользователя</value>
   </data>
   <data name="ExceededLicensesMessage" xml:space="preserve">
-    <value>Превышено количество доступных {0} лицензий.</value>
+    <value>Превышено количество доступных лицензий ({0}).</value>
   </data>
   <data name="GenericErrorMessage" xml:space="preserve">
     <value>Ошибка при копировании пользователя.</value>
   </data>
-  <data name="CancelButton.Caption" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="ErrorCannotCopyRetiredUser" xml:space="preserve">
-    <value>Уволенные пользователи не могут быть скопированы</value>
-  </data>
-  <data name="ErrorMessageTitle" xml:space="preserve">
-    <value>Невозможно копировать Пользователя</value>
-  </data>
   <data name="OkButton.Caption" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="CopyOfNameTemplate" xml:space="preserve">
-    <value>Копировать</value>
+    <value>OК</value>
   </data>
 </root>

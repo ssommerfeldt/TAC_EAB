@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdNewContracts.ModifyUser.ColumnHeading" xml:space="preserve">
-    <value>Кто обновил</value>
+  <data name="grdChangedContracts.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
-  <data name="grdNewContracts.Remaining.ColumnHeading" xml:space="preserve">
-    <value>Оставшееся</value>
+  <data name="grdNewContracts.AccountName.ColumnHeading" xml:space="preserve">
+    <value>Клиент</value>
   </data>
-  <data name="Contracts_Caption" xml:space="preserve">
-    <value>Контракты</value>
-  </data>
-  <data name="ModifiedContracts_Caption" xml:space="preserve">
-    <value>Измененные контракты</value>
-  </data>
-  <data name="NewContracts_Caption" xml:space="preserve">
-    <value>Новые контрактыы</value>
+  <data name="grdNewContracts.CreateDate.ColumnHeading" xml:space="preserve">
+    <value>Дата создания</value>
   </data>
   <data name="grdNewContracts.CreateUser.ColumnHeading" xml:space="preserve">
     <value>Пользователь</value>
   </data>
   <data name="grdNewContracts.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
   <data name="grdNewContracts.Modified.ColumnHeading" xml:space="preserve">
-    <value>Дата обновления</value>
+    <value>Дата изменения</value>
+  </data>
+  <data name="grdNewContracts.ModifyUser.ColumnHeading" xml:space="preserve">
+    <value>Автор изменения</value>
   </data>
   <data name="grdNewContracts.ReferenceNumber.ColumnHeading" xml:space="preserve">
-    <value>Номер</value>
+    <value>Ссылочный номер</value>
   </data>
-  <data name="grdNewContracts.AccountName.ColumnHeading" xml:space="preserve">
-    <value>Субъект</value>
+  <data name="grdNewContracts.Remaining.ColumnHeading" xml:space="preserve">
+    <value>Оставшееся время</value>
   </data>
-  <data name="grdNewContracts.CreateDate.ColumnHeading" xml:space="preserve">
-    <value>Дата создания</value>
+  <data name="ModifiedContracts_Caption" xml:space="preserve">
+    <value>Измененные договоры</value>
   </data>
-  <data name="grdChangedContracts.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
+  <data name="NewContracts_Caption" xml:space="preserve">
+    <value>Новые договоры</value>
+  </data>
+  <data name="Contracts_Caption" xml:space="preserve">
+    <value>Договоры</value>
   </data>
 </root>

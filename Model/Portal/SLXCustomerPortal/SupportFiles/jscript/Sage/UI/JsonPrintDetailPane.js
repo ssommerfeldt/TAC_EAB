@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/JsonPrintDetailPane", [
         'Sage/UI/_DetailPane',
         'Sage/_Templated',
         'dojo/_base/declare'

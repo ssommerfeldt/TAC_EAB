@@ -113,10 +113,10 @@ public partial class SmartParts_Association_AddEditAccountAssociation : EntityBo
                     Mode.Value = "ADD";
                     tinfo.Title = GetLocalResourceObject("DialogTitleEdit").ToString();
                     IAccount account = GetParentEntity() as IAccount;
-                    string Id = string.Empty;
+                    string id = string.Empty;
                     if (account != null)
                     {
-                        Id = account.Id.ToString();
+                        id = account.Id.ToString();
                     }
                     divFromIDDialog.Style.Add("display", "none");
                     divFromIDText.Style.Add("display", "blocked");
@@ -124,9 +124,8 @@ public partial class SmartParts_Association_AddEditAccountAssociation : EntityBo
                     divToIDText.Style.Add("display", "none");
                     divBackRelationToAdd.Style.Add("display", "blocked");
                     divBackRelationToEdit.Style.Add("display", "none");
-                    hdtAccountId.Value = Id;
+                    hdtAccountId.Value = id;
                     luFromIDDialog.LookupResultValue = account.Id;
-                    //luToIDDialog.LookupResultValue = null;
                     luFromIDText.LookupResultValue = account.Id;
                     luFowardRelatedTo.LookupResultValue = account.Id;
                 }

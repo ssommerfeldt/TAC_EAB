@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/HistoryEditorAttendeesTab", (
 { header_Name: 'Name',
   header_AccountName: 'Account/Company',
   header_Type: 'Type',
@@ -8,5 +8,6 @@ define((
   header_Email: 'Email',
   header_TimeZone: 'Time Zone',
   header_Notes: 'Notes',
-  header_Status: 'Status' }
+  header_Status: 'Status',
+  header_Attendee: 'Is Attendee' }
 ));

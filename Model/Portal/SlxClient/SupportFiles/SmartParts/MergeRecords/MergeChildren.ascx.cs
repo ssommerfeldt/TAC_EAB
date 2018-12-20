@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Sage.Entity.Interfaces;
@@ -32,7 +31,7 @@ public partial class MergeChildren : SmartPartInfoProvider
             {
                 if (DialogService.DialogParameters.ContainsKey("mergeArguments"))
                 {
-                    MergeArguments mergeArguments = DialogService.DialogParameters["mergeArguments"] as MergeArguments;
+                    var mergeArguments = DialogService.DialogParameters["mergeArguments"] as MergeArguments;
                     if (mergeArguments.MergeProvider == null)
                     {
                         MergeArguments.GetMergeProvider(mergeArguments);
@@ -68,10 +67,10 @@ public partial class MergeChildren : SmartPartInfoProvider
     /// Gets or sets the entity service.
     /// </summary>
     /// <value>The entity service.</value>
-    [ServiceDependency(Type = typeof(IEntityContextService), Required = true)]
+    [ServiceDependency]
     public IEntityContextService EntityService { get; set; }
 
-    [ServiceDependency(Type = typeof(IContextService), Required = true)]
+    [ServiceDependency]
     public IContextService ContextService { get; set; }
 
     public class MergeContactsStateInfo
@@ -275,6 +274,7 @@ public partial class MergeChildren : SmartPartInfoProvider
                         IPersistentEntity source = Sage.Platform.EntityFactory.GetById(type, entityId) as IPersistentEntity;
                         source.Delete();
                         EntityService.RemoveEntityHistory(type, source);
+                        DialogService.CloseEventHappened(sender, e);
                         Response.Redirect(String.Format("{0}.aspx", GetEntityName(type)));
                     }
                 }

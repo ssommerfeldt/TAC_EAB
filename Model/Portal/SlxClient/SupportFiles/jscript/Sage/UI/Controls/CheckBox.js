@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/CheckBox", [
        'dijit/form/CheckBox',
        'dojo/_base/declare'
 ],
@@ -14,7 +14,6 @@ function(checkBox, declare) {
         // default = true
         shouldPublishMarkDirty: true,
         constructor: function() {
-            this.inherited(arguments);
         },
         postCreate: function () {
             if(this.hotKey !== '') {

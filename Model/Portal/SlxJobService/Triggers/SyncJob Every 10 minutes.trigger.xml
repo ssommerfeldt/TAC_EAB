@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<SchedulerTrigger xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="163d00a8-ff2f-4c91-80ac-823563b85e75">
+  <InstanceId>b0d68fe807e94dd099185990e787b39c</InstanceId>
+  <JobId>f2bfed0072544478973d3603948881b3</JobId>
+  <Name>SyncJob Every 10 minutes</Name>
+  <StartTimeUtc xsi:nil="true" />
+  <EndTimeUtc xsi:nil="true" />
+  <CronExpression>0 0/10 * * * ? *</CronExpression>
+  <Priority xsi:nil="true" />
+  <Parameters />
+</SchedulerTrigger>

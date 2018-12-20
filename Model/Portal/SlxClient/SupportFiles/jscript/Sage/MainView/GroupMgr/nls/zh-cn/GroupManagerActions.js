@@ -1,0 +1,21 @@
+define("Sage/MainView/GroupMgr/nls/zh-cn/GroupManagerActions", {
+    "SelectRecordMsg": "您至少应选择一条记录，然后才能继续。",
+    "SelectRecordMsgSingle": "您必须先选择一条记录，然后才能继续。",
+    "ConfirmDeletionMsg": "确定要${0}选中的“${1}”吗?",
+    "SelectedGroups": "组(包括共享)",
+    "SelectedReleases": "共享组",
+    "SelectedStatistics": "组统计信息",
+    "Yes": "是",
+    "No": "否",
+    "Reset": "重置",
+    "Delete": "删除",
+    "InvalidSelectedGroup": "选中的组为共享。请选择自己拥有或者具有控制权且未共享的组。",
+    "NotDeveloperGroup": "选中的组不再进行开发。",
+    "NotGroupOwner": "选中的组不是您拥有的组。请选择您拥有或者具有控制权的组。",
+    "OK": "确定",
+    "SelectOwner": "选择所有者",
+    "FirstName": "名字",
+    "LastName": "姓氏",
+    "UserName": "用户名",
+    "Type": "类型"
+});

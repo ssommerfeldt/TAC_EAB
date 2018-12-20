@@ -117,55 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="localizeBaseTable.Text" xml:space="preserve">
-    <value>Tabella base:</value>
-  </data>
-  <data name="localizeDescription.Text" xml:space="preserve">
-    <value>Descrizione:</value>
-  </data>
-  <data name="localizeProperties.Text" xml:space="preserve">
-    <value>Proprietà</value>
-  </data>
   <data name="jsAliasNoSpace" xml:space="preserve">
-    <value>L'Alias non deve contenere uno spazio.</value>
+    <value>L’alias non deve contenere uno spazio.</value>
   </data>
   <data name="jsCannotSave" xml:space="preserve">
     <value>Impossibile salvare il campo calcolato con informazioni mancanti.</value>
   </data>
-  <data name="localizeCalculation.Text" xml:space="preserve">
-    <value>Calcolo</value>
+  <data name="jsEditCalculatedField" xml:space="preserve">
+    <value>Modifica campo calcolato</value>
   </data>
-  <data name="localizeCalcType.Text" xml:space="preserve">
-    <value>Tipo calcolo:</value>
-  </data>
-  <data name="localizeNumeric.Text" xml:space="preserve">
-    <value>Numerico</value>
+  <data name="jsEnterAlias" xml:space="preserve">
+    <value>Inserire un alias per questo calcolo.</value>
   </data>
   <data name="jsEnterName" xml:space="preserve">
     <value>Inserire un nome per questo calcolo.</value>
   </data>
   <data name="jsErrorFieldNotFound" xml:space="preserve">
-    <value>Errore: Campo non trovato nella collezione campi:</value>
+    <value>Errore: campo non trovato nella raccolta campi.</value>
   </data>
-  <data name="localizeOK.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="jsNameUpperCase" xml:space="preserve">
+    <value>Per essere valido un nome deve iniziare con una lettera maiuscola.</value>
   </data>
-  <data name="localizeNameAlias.Text" xml:space="preserve">
-    <value>Nome/alias:</value>
+  <data name="localizeAddCalcField.Text" xml:space="preserve">
+    <value>Aggiungi campo calcolato</value>
   </data>
-  <data name="jsEnterAlias" xml:space="preserve">
-    <value>Inserire un alias per questo calcolo.</value>
+  <data name="localizeBaseTable.Text" xml:space="preserve">
+    <value>Tabella di base:</value>
   </data>
-  <data name="localizeString.Text" xml:space="preserve">
-    <value>Stringa</value>
+  <data name="localizeCalcType.Text" xml:space="preserve">
+    <value>Tipo calcolo:</value>
   </data>
-  <data name="jsEditCalculatedField" xml:space="preserve">
-    <value>Modifica Campo Calcolato</value>
+  <data name="localizeCalculation.Text" xml:space="preserve">
+    <value>Calcolo</value>
   </data>
   <data name="localizeCancel.Text" xml:space="preserve">
     <value>Annulla</value>
   </data>
-  <data name="localizeAddCalcField.Text" xml:space="preserve">
-    <value>Aggiungi Campo Calcolato</value>
+  <data name="localizeDescription.Text" xml:space="preserve">
+    <value>Descrizione:</value>
+  </data>
+  <data name="localizeNameAlias.Text" xml:space="preserve">
+    <value>Nome/alias:</value>
+  </data>
+  <data name="localizeNumeric.Text" xml:space="preserve">
+    <value>Numerico</value>
+  </data>
+  <data name="localizeOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="localizeProperties.Text" xml:space="preserve">
+    <value>Proprietà</value>
+  </data>
+  <data name="localizeString.Text" xml:space="preserve">
+    <value>Stringa</value>
   </data>
 </root>

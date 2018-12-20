@@ -117,64 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdAccounts_City_ColumnHeader" xml:space="preserve">
-    <value>Город</value>
-  </data>
-  <data name="grdUpdatedAccounts_ChangedBy_ColumnHeader" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
   <data name="DeletedAccounts_Title" xml:space="preserve">
-    <value>Удаленные субъекты</value>
+    <value>Удаленные клиенты</value>
   </data>
-  <data name="grdAccounts_DateAdded_ColumnHeader" xml:space="preserve">
-    <value>Дата добавления</value>
+  <data name="error_ForcedAccount_Message" xml:space="preserve">
+    <value>Это обязательный клиент. Отмена подписки невозможна.</value>
+  </data>
+  <data name="grdAccounts_AccountMgr_ColumnHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
   </data>
   <data name="grdAccounts_Account_ColumnHeader" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="grdUpdatedAccounts_ChangedDate_ColumnHeader" xml:space="preserve">
-    <value>Дата изменения</value>
-  </data>
-  <data name="grdAccounts_UnSubscribe_Text" xml:space="preserve">
-    <value>Аннулировать подпись</value>
-  </data>
-  <data name="grdAccounts_State_ColumnHeader" xml:space="preserve">
-    <value>Область</value>
+    <value>Клиент</value>
   </data>
   <data name="grdAccounts_AddedBy_ColumnHeader" xml:space="preserve">
     <value>Добавлено</value>
   </data>
+  <data name="grdAccounts_City_ColumnHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="grdAccounts_DateAdded_ColumnHeader" xml:space="preserve">
+    <value>Дата добавления</value>
+  </data>
+  <data name="grdAccounts_EmptyRow" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <data name="grdAccounts_Owner_ColumnHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="grdAccounts_State_ColumnHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
   <data name="grdAccounts_Subscribe_Text" xml:space="preserve">
     <value>Подпись</value>
   </data>
-  <data name="error_ForcedAccount_Message" xml:space="preserve">
-    <value>Этот субъект обязательный. Вы не можите аннулировать подпись.</value>
+  <data name="grdAccounts_UnSubscribe_Text" xml:space="preserve">
+    <value>Аннулировать подпись</value>
   </data>
-  <data name="grdUpdatedAccounts_ChangedFrom_ColumnHeader" xml:space="preserve">
-    <value>От</value>
+  <data name="grdDeletedAccounts_DeletedBy_ColumnHeader" xml:space="preserve">
+    <value />
   </data>
-  <data name="grdAccounts_EmptyRow" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
+  <data name="grdDeletedAccounts_DeletedDate_ColumnHeader" xml:space="preserve">
+    <value>Дата удаления</value>
+  </data>
+  <data name="grdUpdatedAccounts_ChangedBy_ColumnHeader" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="grdUpdatedAccounts_ChangedDate_ColumnHeader" xml:space="preserve">
+    <value>Дата изменения</value>
   </data>
   <data name="grdUpdatedAccounts_ChangedField_ColumnHeader" xml:space="preserve">
     <value>Поле</value>
   </data>
-  <data name="ModifiedAccounts_Title" xml:space="preserve">
-    <value>Измененные субъекты</value>
-  </data>
-  <data name="grdAccounts_Owner_ColumnHeader" xml:space="preserve">
-    <value>Доступ</value>
+  <data name="grdUpdatedAccounts_ChangedFrom_ColumnHeader" xml:space="preserve">
+    <value>От</value>
   </data>
   <data name="grdUpdatedAccounts_ChangedTo_ColumnHeader" xml:space="preserve">
-    <value>Кому</value>
+    <value>Для</value>
   </data>
-  <data name="grdAccounts_AccountMgr_ColumnHeader" xml:space="preserve">
-    <value>Менеджер</value>
+  <data name="ModifiedAccounts_Title" xml:space="preserve">
+    <value>Измененные клиенты</value>
   </data>
   <data name="NewAccounts_Title" xml:space="preserve">
-    <value>Новые субъекты</value>
-  </data>
-  <data name="grdDeletedAccounts_DeletedDate_ColumnHeader" xml:space="preserve">
-    <value>Дата удаления</value>
+    <value>Новые клиенты</value>
   </data>
 </root>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Columns/DateTime", [
     'dojox/grid/cells/dijit',
     'dojo/date/locale',
     'Sage/Utility',
@@ -31,6 +31,9 @@ function (cellsDijit, locale, Utility, activityUtility, declare) {
             if (!inItem)
                 return '';
             var d = this.get ? this.get(inRowIndex, inItem) : (this.value || this.defaultValue);
+
+            this.dateOnly = (typeof this.dateTimeType === 'undefined') ? this.dateOnly : (this.dateTimeType.toUpperCase() === 'D');
+
             if (!d)
                 return '';
             d = convert.toDateFromString(d, true);
@@ -47,26 +50,27 @@ function (cellsDijit, locale, Utility, activityUtility, declare) {
             // TODO: edit mode?    
             if (!this.dateOnly && !this.datePattern) {
                 if (!tless) {
-                    return dojo.date.locale.format(d, { selector: this.formatType || 'date/time', fullYear: true });
+                    return locale.format(d, { selector: this.formatType || 'date/time', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
                 } else {
                     var timelessDate = d;
                     if (this.utc) {
                         timelessDate = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), 0, 0, 5);
                     }
-                    return dojo.date.locale.format(timelessDate, { selector: 'date', fullYear: true }) + this.timelessText;
+                    return dojo.date.locale.format(timelessDate, { selector: 'date', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name }) + this.timelessText;
                 }
             } else if (this.datePattern) {
-                // If the date pattern does not have time, treat it as date only/utc
-                if (this.datePattern.indexOf('h') === -1) {
+                // If this is a date-only value ("D" date time type), undo the local time conversion before formatting.
+                if (this.dateOnly) {
                     d = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
                 }
-                return d.format(this.datePattern);
+                return d.format(this.datePattern, { locale: Sys.CultureInfo.CurrentCulture.name });
             } else {
                 if (this.utc) {
                     var dateOnly = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
-                    return dojo.date.locale.format(dateOnly, { selector: 'date', fullYear: true });
-                    } else {
-                    return dojo.date.locale.format(d, { selector: 'date', fullYear: true });
+                    return locale.format(dateOnly, { selector: 'date', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
+                }
+                else {
+                    return dojo.date.locale.format(d, { selector: 'date', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
                 }
             }
         }

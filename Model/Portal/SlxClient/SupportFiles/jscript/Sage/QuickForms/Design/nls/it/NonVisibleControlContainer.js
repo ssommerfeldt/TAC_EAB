@@ -1,3 +1,3 @@
-define((
-{ headerText: 'Controlli non visuali' }
-));
+define("Sage/QuickForms/Design/nls/it/NonVisibleControlContainer", {
+    "headerText": "Controlli non visivi"
+});

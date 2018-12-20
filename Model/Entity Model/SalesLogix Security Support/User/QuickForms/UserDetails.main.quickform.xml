@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3477e9ca-7b80-47a2-afb8-728ef5d692d2" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3477e9ca-7b80-47a2-afb8-728ef5d692d2" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2018-05-02T20:45:09.3460613Z">
   <ActiveControl>UserName</ActiveControl>
   <ImagePath />
   <LoadActions>
@@ -150,10 +150,14 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <NamePrefix />
+        <NamePrefixLanguage />
+        <NamePrefixLanguageFilters>false</NamePrefixLanguageFilters>
         <NameFirst />
         <NameMiddle />
         <NameLast />
         <NameSuffix />
+        <NameSuffixLanguage />
+        <NameSuffixLanguageFilters>false</NameSuffixLanguageFilters>
         <OnChangeAction>
           <ResourceKey>pnName</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
@@ -211,11 +215,15 @@
         <PickListName>Title - UserProfile</PickListName>
         <StorageMode>Text</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>false</AlphaSort>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -342,12 +350,51 @@
         <TextField />
         <ValueField />
         <MultiSelect>false</MultiSelect>
+        <MaxHeight>200</MaxHeight>
       </QFListBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>6</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>txtFedIdentity</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>FederatedIdentity</DataItemName>
+            <ControlItemName>Text</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>36</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>txtFedIdentity</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
     </Control>
     <Control typeName="Sage.Platform.QuickForms.QFControls.QFLabel, Sage.Platform.QuickForms.QFControls">
       <QFLabel>
         <Column>0</Column>
-        <Row>6</Row>
+        <Row>7</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lblLicenseCount</ControlId>
@@ -362,7 +409,7 @@
     <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
       <QFTextBox>
         <Column>0</Column>
-        <Row>7</Row>
+        <Row>8</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>MascompanyId</ControlId>
@@ -400,7 +447,7 @@
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
       <QFSLXPickList>
         <Column>0</Column>
-        <Row>8</Row>
+        <Row>9</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>QFSLXPickList</ControlId>
@@ -417,7 +464,7 @@
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
-        <MaxLength>64</MaxLength>
+        <MaxLength>32</MaxLength>
         <OnChangeAction>
           <ResourceKey>QFSLXPickList</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
@@ -437,11 +484,15 @@
         <PickListName>EAB Relationship</PickListName>
         <StorageMode>Text</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>false</AlphaSort>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -478,7 +529,7 @@
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
           <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
+          <AppliedSecurity>ENTITIES/USER/EDIT</AppliedSecurity>
           <RefreshData>False</RefreshData>
         </OnClickAction>
       </QFButton>
@@ -607,11 +658,15 @@
         <PickListName>Region</PickListName>
         <StorageMode>Text</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>false</AlphaSort>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -655,11 +710,15 @@
         <PickListName>Division - UserProfile</PickListName>
         <StorageMode>Text</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>false</AlphaSort>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -723,6 +782,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -734,6 +794,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -745,6 +806,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -756,6 +818,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -828,7 +891,7 @@
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
       <QFSLXLookup>
         <Column>1</Column>
-        <Row>8</Row>
+        <Row>9</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lueDistributorAccount</ControlId>
@@ -888,6 +951,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -899,6 +963,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -984,7 +1049,7 @@
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
           <PerformsUpdate>True</PerformsUpdate>
-          <AppliedSecurity />
+          <AppliedSecurity>ENTITIES/USER/EDIT</AppliedSecurity>
           <RefreshData>True</RefreshData>
         </OnClickAction>
       </QFButton>
@@ -1001,6 +1066,10 @@
     </ColumnStyle>
   </Columns>
   <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>
       <Height>35</Height>

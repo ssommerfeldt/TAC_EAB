@@ -13,6 +13,16 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
-  <postExecuteTargets />
-  <postFlushTargets />
+  <postExecuteTargets>
+    <methodTarget id="f28ab75e-0879-495b-83d4-08247be28ea7" lastModifiedUtc="2016-09-21T13:35:33.39729Z" targetType="Sage.SalesLogix.Role.Rules, Sage.SalesLogix.BusinessRules" targetMethod="SetPrettyKeyValue" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget id="29f57b41-2d5b-425b-9900-1cb8dc5c1915" lastModifiedUtc="2016-09-22T06:44:10.385609Z" targetType="Sage.SalesLogix.Role.Rules, Sage.SalesLogix.BusinessRules" targetMethod="SetDefaultBackOffice" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
 </method>

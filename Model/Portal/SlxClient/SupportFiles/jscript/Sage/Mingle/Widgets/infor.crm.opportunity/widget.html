@@ -1,0 +1,93 @@
+﻿<style>
+    .infor-crm-application-widget-opportunities-div .infor-crm-opportunity-heading {
+        color: #368AC0 !important;
+    }
+
+    .infor-crm-application-widget-opportunities-div .infor-crm-opportunity-account-hyperlink {
+        line-height: 13px !important;
+        min-height: 13px !important;
+        margin-bottom: 5px !important;
+        display: inline-block;
+    }
+
+    .infor-crm-application-widget-opportunities-div .infor-crm-opportunity-back-hyperlink {
+        border: 1px solid transparent;
+        border-bottom-color: #bdbdbd;
+        line-height: 16px;
+        padding: 9px 10px 9px 5px;
+    }
+
+    .infor-crm-application-widget-opportunities-div .infor-crm-opportunity-detail-header {
+        padding: 10px 0 0 22px;
+        display: inline-block;
+    }
+
+    .infor-crm-application-widget-opportunities-div .infor-crm-opportunity-grand-total {
+        top: -20px !important;
+    }
+
+    .infor-crm-application-widget-opportunities-div .infor-crm-opportunity-search {
+        height:36px !important;
+    }
+
+    .infor-crm-application-widget-opportunities-div .infor-crm-opportunity-main-list-view {
+        height: calc(100% - 36px) !important;
+    }
+
+    .infor-crm-application-widget-opportunities-div .infor-crm-opportunity-detail-list-view {
+        height: calc(100% - 128px);
+        overflow: auto;
+    }
+</style>
+<div ng-controller="infor.crm.opportunity.OpportunityController as ctrl">
+    <div class="card-content infor-crm-application-widget-opportunities-div">
+
+        <div class="listview-search infor-crm-opportunity-search" ng-show="!ctrl.isShowQuotes">
+            <input xi-searchfield
+                   class="searchfield"
+                   ng-model="ctrl.searchText"
+                   ng-change="ctrl.searchOpportunities()"
+                   ng-model-options="{ debounce: 200 }"
+                   placeholder="{{ctrl.localization.searchPlaceholder}}" />
+        </div>
+
+        <div ng-show="ctrl.isShowQuotes" class="lm-width-full">
+            <div class="infor-crm-opportunity-back-hyperlink">
+                <a ng-click="ctrl.onBack()" class="hyperlink">{{ctrl.localization.backToOpportunities}}</a>
+            </div>
+            <div class="infor-crm-opportunity-detail-header">
+                <a class="hyperlink infor-crm-opportunity-account-hyperlink" ng-click="ctrl.onSelectAccount()">{{ctrl.selectedOpportunity.account}}</a>
+                <label>{{ctrl.localization.description}}: {{ctrl.selectedOpportunity.description}}</label>
+                <label>{{ctrl.localization.estimatedClose}}: {{ctrl.selectedOpportunity.estimatedClose  | date: 'shortDate'}}</label>
+            </div>
+        </div>
+
+        <div class="listview is-selectable infor-crm-opportunity-main-list-view"
+             xi-listview="{dataset: ctrl.opportunities}"
+             ng-show="!ctrl.isShowQuotes">
+            <ul>
+                <li ng-repeat="opportunity in ctrl.opportunities" ng-click="ctrl.onSelectOpportunity(opportunity)">
+                    <div style="background-color:{{opportunity.color}}" class="round info badge float-left">{{opportunity.badge}}</div>
+                    <div style="padding-left:40px;">
+                        <p class="listview-heading infor-crm-opportunity-heading">{{opportunity.account}}</p>
+                        <p class="listview-subheading">{{ctrl.localization.description}}: {{opportunity.description}}</p>
+                        <p class="listview-subheading">{{ctrl.localization.estimatedClose}}: {{opportunity.estimatedClose  | date: 'shortDate'}}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="listview is-selectable infor-crm-opportunity-detail-list-view"
+             xi-listview="{dataset: ctrl.selectedOpportunity.quotes}"
+             ng-show="ctrl.isShowQuotes" style="margin-top:20px;">
+            <p class="listview-subheading" style="padding-left:20px;">{{ctrl.localization.quotesCount}}: <strong>{{ctrl.selectedOpportunity.quotes.length}}</strong></p>
+            <ul>
+                <li ng-repeat="quote in ctrl.selectedOpportunity.quotes" ng-click="ctrl.onSelectQuote(quote)">
+                    <p class="listview-subheading">{{ctrl.localization.quote}}#: <span class="infor-crm-opportunity-account-hyperlink infor-crm-opportunity-heading">{{quote.quoteNumber}}</span></p>
+                    <p class="listview-subheading l-pull-right infor-crm-opportunity-grand-total">{{quote.grandTotal | currency}}</p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

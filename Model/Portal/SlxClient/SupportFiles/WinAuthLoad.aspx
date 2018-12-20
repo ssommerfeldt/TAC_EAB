@@ -12,7 +12,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<title>Saleslogix</title>
+	<title>Infor CRM</title>
 
     <style type="text/css">
         #splashimg 
@@ -20,8 +20,8 @@
             border: 1px solid #cccccc;
             background-image : url(images/icons/base_splash_screen.jpg);
             background-repeat:no-repeat;
-            width:600px;
-            height:400px;
+            width:598px;
+            height:433px;
             z-index:0;
             margin-left: auto;
             margin-right : auto;
@@ -29,48 +29,43 @@
         }        
         #lblLoading 
         {
-            margin-left: 45px;
-            margin-top: 120px;
+            margin-left: 117px;
+            margin-top: 77px;
             left: inherit;
-            top: inherit;         
-            height: 20px;            
+            top: inherit;                     
             position: absolute;
             font-weight:  bolder;
-            font-family: "Arial Unicode MS", Arial, Helvetica, sans-serif;
+            font-family: Helvetica, Arial, sans-serif;
             color: #2a405b;
-            font-size: 110%;
+            font-size: 133%;
             font-weight : normal;
         }     
     </style>
 
     <script pin="pin" type="text/javascript" src="Libraries/dojo/dojo/dojo.js"></script>
-    <%--jQuery is required by timezone.js--%>
-    <script pin="pin" src="Libraries/jQuery/jquery.js" type="text/javascript"></script>  
-    <%--timezone.js calls SetWinAuthTimeZone() in $(document).ready()--%> 
-    <script pin="pin" src="jscript/timezone.js" type="text/javascript"></script>
+    <script pin="pin" src="jscript/jstz-min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function SetWinAuthTimeZone(tzInfo) {
-            var sTzInfo = tzInfo || '';
-            if (dojo.isString(sTzInfo) && sTzInfo.length > 0) {
-                sTzInfo = encodeURIComponent(sTzInfo);
-            }
-            var fnGoToSlxClient = function () {
-                var btn = document.getElementById('Button1');
-                btn.click();
-            };
-            dojo.xhrGet({
-                url: 'SLXWinAuthenication.aspx?loadtz=true&tz_info=' + sTzInfo,
-                preventCache: true,
-                load: function (data) {
-                    fnGoToSlxClient();
-                },
-                error: function (err) {
-                    alert(WinAuthLoadStrings.Err_TimeZone + ' ' + err.message);
-                    fnGoToSlxClient();
-                    return err;
-                }
+        require(["dojo/ready"], function(ready) {
+            ready(function() {
+                var tz = jstz.determine();
+                var fnGoToSlxClient = function() {
+                    var btn = document.getElementById('Button1');
+                    btn.click();
+                };
+                dojo.xhrGet({
+                    url: 'SLXWinAuthenication.aspx?loadtz=true&tz_info=' + encodeURIComponent(tz.name()) + '&tz_client_date=' + encodeURIComponent(new Date().toString()),
+                    preventCache: true,
+                    load: function(data) {
+                        fnGoToSlxClient();
+                    },
+                    error: function(err) {
+                        alert(WinAuthLoadStrings.Err_TimeZone + ' ' + err.message);
+                        fnGoToSlxClient();
+                        return err;
+                    }
+                });
             });
-        }
+        });
     </script>
 </head>
 <body>

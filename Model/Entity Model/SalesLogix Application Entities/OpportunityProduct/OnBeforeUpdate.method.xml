@@ -1,9 +1,23 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9235e4dc-7817-49fc-9e9a-d66719000a21" name="OnBeforeUpdate" returnType="void" methodType="CrudEvent" actionType="None" returnMode="BooleanOR" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a9c4c000-f0ab-4fa1-b925-0b34a5f6f04f" lastModifiedUtc="2016-06-29T22:48:20.871118Z" name="OnBeforeUpdate" methodType="CrudEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
+  <preExecuteTargets />
   <methodTargets>
+    <methodTarget id="c14b57c4-4a1b-4417-b3ba-3803e3e41c59" lastModifiedUtc="2016-06-29T22:48:17.3187628Z" targetType="Sage.SalesLogix.OpportunityProduct.Rules, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeUpdate" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
   </methodTargets>
+  <postExecuteTargets>
+    <methodTarget id="645e3f13-6494-4853-87b3-3fed9b319047" lastModifiedUtc="2016-07-01T11:51:17.9148458Z" targetType="Sage.SalesLogix.OpportunityProduct.Rules, Sage.SalesLogix.BusinessRules" targetMethod="EnsureDocumentPricing" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
 </method>

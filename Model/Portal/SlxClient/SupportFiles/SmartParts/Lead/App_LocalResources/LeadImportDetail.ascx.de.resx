@@ -117,38 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FirstName.HeaderText" xml:space="preserve">
-    <value>Vorname</value>
-  </data>
-  <data name="Error.HeaderText" xml:space="preserve">
-    <value>Fehler</value>
-  </data>
-  <data name="Score.HeaderText" xml:space="preserve">
-    <value>Punktwert</value>
-  </data>
-  <data name="WorkPhone.HeaderText" xml:space="preserve">
-    <value>Geschäftliche Telefonnummer</value>
+  <data name="Address.HeaderText" xml:space="preserve">
+    <value>Adresse</value>
   </data>
   <data name="btnReimport.Text" xml:space="preserve">
     <value>Erneut importieren</value>
   </data>
-  <data name="lblErrors.Text" xml:space="preserve">
-    <value>Fehler:</value>
+  <data name="City.HeaderText" xml:space="preserve">
+    <value>Stadt</value>
   </data>
-  <data name="lblImportLeads.Text" xml:space="preserve">
-    <value>Importierte Interessenten:</value>
+  <data name="Company.HeaderText" xml:space="preserve">
+    <value>Unternehmen</value>
   </data>
-  <data name="lblImportErrors.Text" xml:space="preserve">
-    <value>Folgende Interessenten konnte wegen Fehlern nicht importiert werden:</value>
+  <data name="Error.HeaderText" xml:space="preserve">
+    <value>Fehler</value>
   </data>
-  <data name="lblLeadImportID.Text" xml:space="preserve">
-    <value>Interessentenimport-ID:</value>
+  <data name="FirstName.HeaderText" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="LastName.HeaderText" xml:space="preserve">
+    <value>Nachname</value>
   </data>
   <data name="lblAutoMergedDuplicates.Text" xml:space="preserve">
     <value>Automatisch zusammengeführte Duplikate:</value>
   </data>
-  <data name="Company.HeaderText" xml:space="preserve">
-    <value>Unternehmen</value>
+  <data name="lblErrors.Text" xml:space="preserve">
+    <value>Fehler:</value>
+  </data>
+  <data name="lblImportDate.Text" xml:space="preserve">
+    <value>Importdatum:</value>
+  </data>
+  <data name="lblImportErrors.Text" xml:space="preserve">
+    <value>Folgende Interessenten konnte wegen Fehlern nicht importiert werden:</value>
+  </data>
+  <data name="lblImportLeads.Text" xml:space="preserve">
+    <value>Importierte Interessenten:</value>
+  </data>
+  <data name="lblLeadImportID.Text" xml:space="preserve">
+    <value>Interessentenimport-ID:</value>
+  </data>
+  <data name="lblPotentialDuplicates.Text" xml:space="preserve">
+    <value>Zu folgenden Interessenten gibt es mögliche Duplikate in der Saleslogix-Datenbank:</value>
   </data>
   <data name="lblStatus.Text" xml:space="preserve">
     <value>Status:</value>
@@ -156,22 +165,13 @@
   <data name="lblUnresolvedDuplicates.Text" xml:space="preserve">
     <value>Nicht aufgelöste Duplikate:</value>
   </data>
-  <data name="LastName.HeaderText" xml:space="preserve">
-    <value>Nachname</value>
-  </data>
-  <data name="Address.HeaderText" xml:space="preserve">
-    <value>Adresse</value>
-  </data>
-  <data name="City.HeaderText" xml:space="preserve">
-    <value>Stadt</value>
-  </data>
-  <data name="lblPotentialDuplicates.Text" xml:space="preserve">
-    <value>Zu folgenden Interessenten gibt es mögliche Duplikate in der SalesLogix-Datenbank:</value>
-  </data>
   <data name="NoRecords.EmptyTableRowText" xml:space="preserve">
     <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
   </data>
-  <data name="lblImportDate.Text" xml:space="preserve">
-    <value>Importdatum:</value>
+  <data name="Score.HeaderText" xml:space="preserve">
+    <value>Punktwert</value>
+  </data>
+  <data name="WorkPhone.HeaderText" xml:space="preserve">
+    <value>Geschäftliche Telefonnummer</value>
   </data>
 </root>

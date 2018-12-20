@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<SchedulerTrigger xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1cfbdcaa-29fa-4d9d-8aab-5d4d79c3ad25">
+  <InstanceId>48a022f7113841c0bcdf9943d8d78c56</InstanceId>
+  <JobId>5134abeb5b924914ba6c647ea5d34882</JobId>
+  <Name>Delete Sync History Records</Name>
+  <StartTimeUtc>2015-10-09T16:00:00-07:00</StartTimeUtc>
+  <EndTimeUtc xsi:nil="true" />
+  <CronExpression>0 0 23 1/1 * ? *</CronExpression>
+  <Priority xsi:nil="true" />
+  <Parameters />
+</SchedulerTrigger>

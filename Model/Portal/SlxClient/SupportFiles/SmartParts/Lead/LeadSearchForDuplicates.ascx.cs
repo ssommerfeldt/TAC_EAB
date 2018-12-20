@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Web.UI;
-using System.Collections.Generic;
 using Sage.Entity.Interfaces;
 using Sage.Platform;
 using Sage.Platform.Application;
 using Sage.Platform.Application.UI;
 using Sage.Platform.Diagnostics;
-using Sage.Platform.Security;
 using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.Services.PotentialMatch;
 using System.Web.UI.WebControls;
@@ -57,22 +55,20 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
     {
         get
         {
-                if (_duplicateProvider == null)
-                {
-                    ILead lead = BindingSource.Current as ILead;
-                    _duplicateProvider = new LeadDuplicateProvider();
-                    _duplicateProvider.EntitySource = new MatchEntitySource(typeof(ILead), lead);
-
-                }
-                if (_duplicateProvider.EntitySource.EntityData == null)
-                {
-
-                    _duplicateProvider.EntitySource.EntityData = BindingSource.Current;
-                }
+            if (_duplicateProvider == null)
+            {
+                ILead lead = BindingSource.Current as ILead;
+                _duplicateProvider = new LeadDuplicateProvider();
+                _duplicateProvider.EntitySource = new MatchEntitySource(typeof(ILead), lead);
+            }
+            if (_duplicateProvider.EntitySource.EntityData == null)
+            {
+                _duplicateProvider.EntitySource.EntityData = BindingSource.Current;
+            }
             return _duplicateProvider;
         }
     }
-    
+
     #endregion
 
     #region Private Methods
@@ -89,12 +85,12 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
                 LoadSourceSnapshot();
             }
             catch (Exception ex)
-            {              
+            {
                 string sSlxErrorId = null;
                 var sMsg = ErrorHelper.GetClientErrorHtmlMessage(ex, ref sSlxErrorId);
                 if (!string.IsNullOrEmpty(sSlxErrorId))
                 {
-                    log.Error(ErrorHelper.AppendSlxErrorId("The call to LeadSearchForDuplicates.LoadSourceEntity() failed", sSlxErrorId), ex);                    
+                    log.Error(ErrorHelper.AppendSlxErrorId("The call to LeadSearchForDuplicates.LoadSourceEntity() failed", sSlxErrorId), ex);
                 }
                 DialogService.ShowHtmlMessage(sMsg, ErrorHelper.IsDevelopmentContext() ? 600 : -1,
                                               ErrorHelper.IsDevelopmentContext() ? 800 : -1);
@@ -178,7 +174,7 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
             grdMatches.DataBind();
             grdAccountMatches.DataBind();
         }
-        else 
+        else
         {
             grdMatches.DataBind();
             grdAccountMatches.DataBind();
@@ -191,14 +187,11 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
     /// <param name="accountTable">The account table.</param>
     private void AddAccountEntityToDataSource(DataTable accountTable, MatchResultItem resultItem)
     {
-        try
+        var account = resultItem.Data as IAccount;
+        if (account != null)
         {
-            IAccount account = resultItem.Data as IAccount;
             accountTable.Rows.Add(account.Id.ToString(), account.AccountName, account.Industry, account.WebAddress,
                 account.Address.CityStateZip, account.MainPhone, account.Type);
-        }
-        catch
-        {
         }
     }
 
@@ -208,15 +201,12 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
     /// <param name="dataTable">The data table.</param>
     private void AddContactEntityToDataSource(DataTable dataTable, MatchResultItem resultItem, string type)
     {
-        try
+        var contact = resultItem.Data as IContact;
+        if (contact != null)
         {
-            IContact contact = resultItem.Data as IContact;
             dataTable.Rows.Add(contact.Id.ToString(), "Contact", resultItem.Score, type, contact.Account.AccountName,
                 contact.FirstName, contact.LastName, contact.Title, contact.Email, contact.Address.CityStateZip,
                 contact.WorkPhone);
-        }
-        catch
-        {
         }
     }
 
@@ -225,14 +215,11 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
     /// </summary>
     private void AddLeadEntityToDataSource(DataTable dataTable, MatchResultItem resultItem, string type)
     {
-        try
+        var lead = resultItem.Data as ILead;
+        if (lead != null)
         {
-            ILead lead = resultItem.Data as ILead;
             dataTable.Rows.Add(lead.Id.ToString(), "Lead", resultItem.Score, type, lead.Company, lead.FirstName,
                 lead.LastName, lead.Title, lead.Email, lead.Address.LeadCtyStZip, lead.WorkPhone);
-        }
-        catch
-        {
         }
     }
 
@@ -359,8 +346,8 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
         }
         DuplicateProvider.MatchOperator = rdgOptions.SelectedIndex == 0 ? MatchOperator.And : MatchOperator.Or;
         DuplicateProvider.SearchAccount = chkAccounts.Checked;
-        DuplicateProvider.SearchContact = (chkContacts.Checked);
-        DuplicateProvider.SearchLead = (chkLeads.Checked);
+        DuplicateProvider.SearchContact = chkContacts.Checked;
+        DuplicateProvider.SearchLead = chkLeads.Checked;
         DuplicateProvider.AdvancedOptions = MatchOptions.GetAdvancedOptions();
     }
 
@@ -377,7 +364,9 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
         }
         else
         {
-            script.Append("dojo.ready(function () {Sage.UI.Forms.LeadSearchForDuplicates.init(" + GetWorkSpace() + ");");
+            script.Append("require(['dojo/ready'], function(ready) {" +
+                          "ready(function () {Sage.UI.Forms.LeadSearchForDuplicates.init(" + GetWorkSpace() + "); });" +
+                          "});");
         }
         ScriptManager.RegisterStartupScript(this, GetType(), "initialize_LeadSearchForDuplicates", script.ToString(), true);
     }
@@ -497,11 +486,10 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
     /// <param name="accountID">The account ID.</param>
     private void AddContactToAccount(ILead sourceLead, string accountID)
     {
-        if (accountID == null) return;
-        IList<IAccount> selectedAccount = EntityFactory.GetRepository<IAccount>().FindByProperty("Id", accountID);
-        if (selectedAccount != null)
+        if (accountID != null)
         {
-            foreach (IAccount account in selectedAccount)
+            var account = EntityFactory.GetById<IAccount>(accountID);
+            if (account != null)
             {
                 IContact newContact = EntityFactory.Create<IContact>();
                 sourceLead.ConvertLeadToContact(newContact, account, "Add Contact to this Account");
@@ -523,16 +511,13 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
     protected void grdAccountMatches_OnRowCommand(object sender, GridViewCommandEventArgs e)
     {
         if (!e.CommandName.Equals("Add Contact")) return;
-        int rowIndex = Convert.ToInt32(e.CommandArgument);
-        string entityId = grdAccountMatches.DataKeys[rowIndex].Values[0].ToString();
 
-        if (entityId != null)
+        var sourceLead = DuplicateProvider.EntitySource.EntityData as ILead;
+        if (sourceLead != null)
         {
-            if (DuplicateProvider.EntitySource.EntityData != null)
-            {
-                ILead sourceLead = DuplicateProvider.EntitySource.EntityData as ILead;
-                AddContactToAccount(sourceLead, entityId);
-            }
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            string entityId = grdAccountMatches.DataKeys[rowIndex].Values[0].ToString();
+            AddContactToAccount(sourceLead, entityId);
         }
     }
 
@@ -554,7 +539,7 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
     {
         Mode.Value = "Load";
     }
-    
+
     /// <summary>
     /// Handles the OnRowCommand event of the grdDuplicates control.
     /// </summary>
@@ -565,9 +550,9 @@ public partial class LeadSearchForDuplicates : EntityBoundSmartPartInfoProvider
         if (e.CommandName.Equals("Open"))
         {
             int rowIndex = Convert.ToInt32(e.CommandArgument);
-            string Id = grdMatches.DataKeys[rowIndex].Values[0].ToString();
+            var id = grdMatches.DataKeys[rowIndex].Values[0].ToString();
             string entityName = grdMatches.DataKeys[rowIndex].Values[1].ToString();
-            Response.Redirect(string.Format("{0}.aspx?entityId={1}", entityName, Id));
+            Response.Redirect(string.Format("{0}.aspx?entityId={1}", entityName, id));
             DialogService.CloseEventHappened(sender, e);
         }
     }

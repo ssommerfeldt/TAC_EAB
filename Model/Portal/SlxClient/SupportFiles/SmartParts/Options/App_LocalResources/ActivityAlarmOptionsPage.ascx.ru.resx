@@ -117,154 +117,286 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtAlarmDefaultLeadValueResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlAlarmDefaultLeadResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlCarryOverAttachments.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlCarryOverNotes.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultFollowupActivityResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDisplayAlarmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlShowConfirmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDisplayPastDueResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDisplayRemindersResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActAlarmHelpLinkResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActAlarmHelpLinkResource1.ToolTip" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="ActAlarmHelpLinkResource2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnSaveResource1.AlternateText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnSaveResource1.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="lblActivityOptions.Text" xml:space="preserve">
+    <value>Параметры действия</value>
+  </data>
+  <data name="lblActivityOptionsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmDefaultLead.Text" xml:space="preserve">
+    <value>Оповестить руководителя:</value>
+  </data>
+  <data name="lblAlarmLeadResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmOptsResource1.Text" xml:space="preserve">
+    <value>Параметры оповещения</value>
+  </data>
+  <data name="lblAlarmOptsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmScanResource1.Text" xml:space="preserve">
+    <value>Интервал оповещения:</value>
+  </data>
+  <data name="lblAlarmScanResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmSoundResource1.Text" xml:space="preserve">
+    <value>Звуковой сигнал оповещения:</value>
+  </data>
+  <data name="lblAlarmSoundResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblCarryOverAttachments.Text" xml:space="preserve">
+    <value>Перенести вложения:</value>
+  </data>
   <data name="lblCarryOverNotes.Text" xml:space="preserve">
     <value>Перенести заметки:</value>
   </data>
-  <data name="liDisplayConfirmationsNo.Text" xml:space="preserve">
-    <value>Нет</value>
-  </data>
-  <data name="lblActivityType_ToDo.Text" xml:space="preserve">
-    <value>Дело</value>
-  </data>
-  <data name="lblActivityType_PhoneCall.Text" xml:space="preserve">
-    <value>Звонок</value>
-  </data>
-  <data name="lblDisplayPastDue.Text" xml:space="preserve">
-    <value>Показать последние:</value>
-  </data>
-  <data name="chkAlarms.Caption" xml:space="preserve">
-    <value>Оповещения</value>
-  </data>
-  <data name="chkDispAlertsInToolbar.Caption" xml:space="preserve">
-    <value>Отображение в панели инструментов</value>
-  </data>
-  <data name="chkPastDue.Caption" xml:space="preserve">
-    <value>Прошедшие</value>
-  </data>
-  <data name="lblInclude.Text" xml:space="preserve">
-    <value>Включать:</value>
-  </data>
-  <data name="lblReminders.Text" xml:space="preserve">
-    <value>Напоминания:</value>
-  </data>
-  <data name="ActAlarmHelpLinkResource1.ToolTip" xml:space="preserve">
-    <value>Помощь</value>
-  </data>
-  <data name="lblAlarmDefaultLead.Text" xml:space="preserve">
-    <value>Оповестить Руководителя:</value>
-  </data>
-  <data name="lblDefaultAlarm.Text" xml:space="preserve">
-    <value>Сигнал по умолчанию</value>
-  </data>
-  <data name="liDisplayAlarmsYes.Text" xml:space="preserve">
-    <value>Да</value>
+  <data name="lblCarryOverResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lblDefaultView.Text" xml:space="preserve">
     <value>Вид по умолчанию:</value>
   </data>
+  <data name="lblDefaultViewResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefaultFollowupActivity.Text" xml:space="preserve">
+    <value>Последующее действие по умолчанию:</value>
+  </data>
+  <data name="lblDefFollowActivResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDisplayActivityReminders.Text" xml:space="preserve">
+    <value>Показать напоминания по действиям:</value>
+  </data>
+  <data name="lblDisplayActivityRemindersResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblEnableAlarmsResource1.Text" xml:space="preserve">
+    <value>Включить оповещения:</value>
+  </data>
+  <data name="lblEnableAlarmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblReminderOptions.Text" xml:space="preserve">
+    <value>Параметры напоминания</value>
+  </data>
+  <data name="lblReminderOptsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblShowActivitiesForResource1.Text" xml:space="preserve">
+    <value>Показать действия для:</value>
+  </data>
+  <data name="lblShowActivitiesForResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lbDisplayAlarms.Text" xml:space="preserve">
+    <value>Показать оповещения:</value>
+  </data>
+  <data name="lblShowAlarmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lbDisplayConfirmations.Text" xml:space="preserve">
+    <value>Отображение подтверждения:</value>
+  </data>
+  <data name="ddlDisplayConfirmationsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDisplayPastDue.Text" xml:space="preserve">
+    <value>Показать просроченные:</value>
+  </data>
+  <data name="lblShowPastDueResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTimeFrameResource1.Text" xml:space="preserve">
+    <value>Интервал времени:</value>
+  </data>
+  <data name="lblTimeFrameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="liDisplayAlarmsYes.Text" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="liDisplayAlarmsYes.Value" xml:space="preserve">
+    <value>Да</value>
+  </data>
   <data name="liDisplayAlarmsNo.Text" xml:space="preserve">
     <value>Нет</value>
   </data>
-  <data name="lblDisplayActivityReminders.Text" xml:space="preserve">
-    <value>Показать напоминания по делам:</value>
+  <data name="liDisplayAlarmsNo.Value" xml:space="preserve">
+    <value>Нет</value>
   </data>
-  <data name="PageDescription.Text" xml:space="preserve">
-    <value>Дело/Оповещения</value>
+  <data name="liDisplayConfirmationsYes.Text" xml:space="preserve">
+    <value>Да</value>
   </data>
-  <data name="lblAlertIncludeOptions.Text" xml:space="preserve">
-    <value>Включать:</value>
+  <data name="liDisplayConfirmationsYes.Value" xml:space="preserve">
+    <value>Да</value>
   </data>
-  <data name="chkIncludeUnconfirmedActivities.Caption" xml:space="preserve">
-    <value>Неподтвержденные дела</value>
+  <data name="liDisplayConfirmationsNo.Text" xml:space="preserve">
+    <value>Нет</value>
   </data>
-  <data name="ListItemResource8.Text" xml:space="preserve">
+  <data name="liDisplayConfirmationsNo.Value" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="liDisplayPastDueYes.Text" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="liDisplayPastDueYes.Value" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="liDisplayPastDueNo.Text" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="liDisplayPastDueNo.Value" xml:space="preserve">
     <value>Нет</value>
   </data>
   <data name="ListItemResource7.Text" xml:space="preserve">
     <value>Да</value>
   </data>
-  <data name="lblReminderOptions.Text" xml:space="preserve">
-    <value>Параметры напоминания</value>
+  <data name="ListItemResource7.Value" xml:space="preserve">
+    <value>Да</value>
   </data>
-  <data name="chkAlertsPrompt.Caption" xml:space="preserve">
-    <value>Напоминание</value>
+  <data name="ListItemResource8.Text" xml:space="preserve">
+    <value>Нет</value>
   </data>
-  <data name="chkDisplayInToolbar.Caption" xml:space="preserve">
-    <value>Отображение в панели инструментов</value>
+  <data name="ListItemResource8.Value" xml:space="preserve">
+    <value>Нет</value>
   </data>
-  <data name="lblDefaultsPerActivity.Text" xml:space="preserve">
-    <value>Тип дел по умолчанию:</value>
+  <data name="LitRequest_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblActivityType_PersonalActivity.Text" xml:space="preserve">
-    <value>Личные дела</value>
+  <data name="LitRequest_RToolsResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lblShowActivitiesForResource1.Text" xml:space="preserve">
-    <value>Показать дела для:</value>
-  </data>
-  <data name="lblAlertsOptions.Text" xml:space="preserve">
-    <value>Оповещения:</value>
-  </data>
-  <data name="chkUnconfirmedActivities.Caption" xml:space="preserve">
-    <value>Неподтвержденные дела</value>
-  </data>
-  <data name="lblDefaultFollowupActivity.Text" xml:space="preserve">
-    <value>Следующее дело по умолчанию:</value>
-  </data>
-  <data name="lblActivityOptions.Text" xml:space="preserve">
-    <value>Параметры дела</value>
-  </data>
-  <data name="lblTimeFrameResource1.Text" xml:space="preserve">
-    <value>Временной интервал:</value>
-  </data>
-  <data name="lbDisplayAlarms.Text" xml:space="preserve">
-    <value>Показать оповещения:</value>
-  </data>
-  <data name="lbDisplayConfirmations.Text" xml:space="preserve">
-    <value>Отображение подтверждения:</value>
-  </data>
-  <data name="btnSaveResource1.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="PageDescription.Text" xml:space="preserve">
+    <value>Действия/оповещения</value>
   </data>
   <data name="PageDescription.Title" xml:space="preserve">
-    <value>Дело/Оповещения</value>
+    <value>Действия/оповещения</value>
+  </data>
+  <data name="ddlDefaultFollowupActivityResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultViewResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultDurationAmt1Resource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultDurationUnits1Resource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultReminderAmt1Resource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultReminderUnits1Resource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblActivityType.Text" xml:space="preserve">
+    <value>Тип действия</value>
   </data>
   <data name="lblActivityType_Meeting.Text" xml:space="preserve">
     <value>Встреча</value>
   </data>
-  <data name="chkIncludeAlarms.Caption" xml:space="preserve">
+  <data name="lblActivityType_PersonalActivity.Text" xml:space="preserve">
+    <value>Личное действие</value>
+  </data>
+  <data name="lblActivityType_PhoneCall.Text" xml:space="preserve">
+    <value>Звонок</value>
+  </data>
+  <data name="lblActivityType_ToDo.Text" xml:space="preserve">
+    <value>Дело</value>
+  </data>
+  <data name="lblDefaultDuration.Text" xml:space="preserve">
+    <value>Продолжительность по умолчанию</value>
+  </data>
+  <data name="lblDefaultAlarm.Text" xml:space="preserve">
+    <value>Сигнал по умолчанию</value>
+  </data>
+  <data name="lblDefaultsPerActivity.Text" xml:space="preserve">
+    <value>Уст. по умолчанию по типу действия:</value>
+  </data>
+  <data name="chkAlarms.Caption" xml:space="preserve">
     <value>Оповещения</value>
+  </data>
+  <data name="chkPastDue.Caption" xml:space="preserve">
+    <value>Просрочено</value>
+  </data>
+  <data name="chkUnconfirmedActivities.Caption" xml:space="preserve">
+    <value>Неподтвержденные действия</value>
+  </data>
+  <data name="lblInclude.Text" xml:space="preserve">
+    <value>Включать:</value>
   </data>
   <data name="lblRemindersAlertsOptions.Text" xml:space="preserve">
     <value>Параметры оповещений и напоминаний</value>
   </data>
-  <data name="liDisplayPastDueNo.Text" xml:space="preserve">
-    <value>Нет</value>
+  <data name="chkAlertsPrompt.Caption" xml:space="preserve">
+    <value>Подсказка</value>
   </data>
-  <data name="lblAlarmOptsResource1.Text" xml:space="preserve">
-    <value>Параметры оповещения</value>
+  <data name="chkDispAlertsInToolbar.Caption" xml:space="preserve">
+    <value>Отображать в панели инструментов</value>
   </data>
-  <data name="liDisplayPastDueYes.Text" xml:space="preserve">
-    <value>Да</value>
+  <data name="chkDisplayInToolbar.Caption" xml:space="preserve">
+    <value>Отображать в панели инструментов</value>
   </data>
-  <data name="liDisplayConfirmationsYes.Text" xml:space="preserve">
-    <value>Да</value>
+  <data name="chkIncludeAlarms.Caption" xml:space="preserve">
+    <value>Оповещения</value>
   </data>
-  <data name="lblEnableAlarmsResource1.Text" xml:space="preserve">
-    <value>Включить оповещения:</value>
+  <data name="chkIncludeUnconfirmedActivities.Caption" xml:space="preserve">
+    <value>Неподтвержденные действия</value>
   </data>
-  <data name="lblActivityType.Text" xml:space="preserve">
-    <value>Тип дела</value>
+  <data name="lblAlertIncludeOptions.Text" xml:space="preserve">
+    <value>Включать:</value>
   </data>
-  <data name="lblAlarmScanResource1.Text" xml:space="preserve">
-    <value>Интервал оповещения:</value>
+  <data name="lblAlertsOptions.Text" xml:space="preserve">
+    <value>Предупреждения:</value>
   </data>
-  <data name="lblAlarmSoundResource1.Text" xml:space="preserve">
-    <value>Звуковой сигнал оповещения:</value>
-  </data>
-  <data name="lblCarryOverAttachments.Text" xml:space="preserve">
-    <value>Перенести вложения:</value>
-  </data>
-  <data name="lblDefaultDuration.Text" xml:space="preserve">
-    <value>Продолжительность по умолчанию</value>
+  <data name="lblReminders.Text" xml:space="preserve">
+    <value>Напоминания:</value>
   </data>
 </root>

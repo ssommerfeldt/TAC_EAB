@@ -117,73 +117,154 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RightsResource1.Text" xml:space="preserve">
-    <value>Все права защищены</value>
+  <data name="AllRightsReserved" xml:space="preserve">
+    <value>Все права сохранены.</value>
   </data>
-  <data name="slxLoginResource1.LoginButtonText" xml:space="preserve">
-    <value>Вход</value>
-  </data>
-  <data name="TitleLabelResource1.Text" xml:space="preserve">
-    <value>Sage CRM SalesLogix - Портал Заказчика</value>
-  </data>
-  <data name="slxLoginResource1.PasswordRequiredErrorMessage" xml:space="preserve">
-    <value>Требуется пароль.</value>
-  </data>
-  <data name="RememberMeResource1.Text" xml:space="preserve">
-    <value>Запомнить меня.</value>
-  </data>
-  <data name="UserNameRequiredResource1.Text" xml:space="preserve">
+  <data name="asterisk" xml:space="preserve">
     <value>*</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Авторские права ©, 2016</value>
+  </data>
+  <data name="CopyrightResource1.Text" xml:space="preserve">
+    <value>Авторские права ©, 2016</value>
+  </data>
+  <data name="FailureTextResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Забыли пароль?</value>
+  </data>
+  <data name="ForgotUserName" xml:space="preserve">
+    <value>Забыли имя пользователя?</value>
   </data>
   <data name="ForgotYourPassword.Text" xml:space="preserve">
     <value>Забыли пароль?</value>
   </data>
-  <data name="slxLoginResource1.TitleText" xml:space="preserve">
-    <value>Sage CRM SalesLogix - Портал Заказчика</value>
+  <data name="LoginButtonResource1.Text" xml:space="preserve">
+    <value>Вход</value>
   </data>
-  <data name="slxLoginResource1.UserNameLabelText" xml:space="preserve">
-    <value>Имя Пользователя</value>
+  <data name="LoginButtonResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LogOn" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="PasswordHintUserNameRequired" xml:space="preserve">
+    <value>Необходимо ввести имя пользователя для напоминания пароля.</value>
   </data>
   <data name="PasswordLabelResource1.Text" xml:space="preserve">
     <value>Пароль</value>
   </data>
+  <data name="PasswordLabelResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PasswordResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PasswordResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запомнить этот компьютер</value>
+  </data>
+  <data name="RememberMeResource1.Text" xml:space="preserve">
+    <value>Запомнить этот компьютер</value>
+  </data>
+  <data name="RememberMeResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RightsResource1.Text" xml:space="preserve">
+    <value>Все права сохранены.</value>
+  </data>
+  <data name="SageResource1.Text" xml:space="preserve">
+    <value>Infor</value>
+  </data>
+  <data name="SageSoftwareInc" xml:space="preserve">
+    <value>Infor</value>
+  </data>
+  <data name="SignInError" xml:space="preserve">
+    <value>Неправильное имя пользователя или пароль.</value>
+  </data>
+  <data name="slxLoginResource1.CreateUserText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxLoginResource1.FailureText" xml:space="preserve">
+    <value>Неправильное имя пользователя или пароль.</value>
+  </data>
   <data name="slxLoginResource1.ForgotYourPassword" xml:space="preserve">
     <value>Забыли пароль?</value>
   </data>
-  <data name="slxLoginResource1.UserNameRequiredErrorMessage" xml:space="preserve">
-    <value>Требуется имя пользователя.</value>
+  <data name="slxLoginResource1.HelpPageText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxLoginResource1.InstructionText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxLoginResource1.LoginButtonText" xml:space="preserve">
+    <value>Вход</value>
   </data>
   <data name="slxLoginResource1.PasswordLabelText" xml:space="preserve">
     <value>Пароль</value>
   </data>
-  <data name="PasswordHintUserNameRequired" xml:space="preserve">
-    <value>Вы должны ввести имя пользователя для напоминания пароля.</value>
+  <data name="slxLoginResource1.PasswordRecoveryText" xml:space="preserve">
+    <value />
   </data>
-  <data name="CopyrightResource1.Text" xml:space="preserve">
-    <value>Copyright 1997-2012</value>
+  <data name="slxLoginResource1.PasswordRequiredErrorMessage" xml:space="preserve">
+    <value>Требуется пароль.</value>
   </data>
-  <data name="UserNameRequiredResource1.ToolTip" xml:space="preserve">
+  <data name="slxLoginResource1.RememberMeText" xml:space="preserve">
+    <value>Запомнить этот компьютер</value>
+  </data>
+  <data name="slxLoginResource1.TitleText" xml:space="preserve">
+    <value>Infor CRM</value>
+  </data>
+  <data name="slxLoginResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxLoginResource1.UserNameLabelText" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="slxLoginResource1.UserNameRequiredErrorMessage" xml:space="preserve">
     <value>Требуется имя пользователя.</value>
   </data>
-  <data name="slxLoginResource1.FailureText" xml:space="preserve">
-    <value>Ваша попытка залогиниться безуспешна. Пожалуйста, попробуйте еще раз.</value>
+  <data name="TitleLabelResource1.Text" xml:space="preserve">
+    <value>Infor CRM</value>
+  </data>
+  <data name="TitleLabelResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="UserNameLabelResource1.Text" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="UserNameLabelResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>Требуется имя пользователя.</value>
   </data>
   <data name="UserNameRequiredResource1.ErrorMessage" xml:space="preserve">
     <value>Требуется имя пользователя.</value>
   </data>
-  <data name="SageResource1.Text" xml:space="preserve">
-    <value>Sage Software, Inc.</value>
+  <data name="UserNameRequiredResource1.Text" xml:space="preserve">
+    <value>*</value>
   </data>
-  <data name="LoginButtonResource1.Text" xml:space="preserve">
-    <value>Вход</value>
+  <data name="UserNameRequiredResource1.ToolTip" xml:space="preserve">
+    <value>Требуется имя пользователя.</value>
+  </data>
+  <data name="UserNameResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserNameResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="VersionLabelResource1.Text" xml:space="preserve">
     <value>Версия</value>
-  </data>
-  <data name="UserNameLabelResource1.Text" xml:space="preserve">
-    <value>Имя Пользователя</value>
-  </data>
-  <data name="slxLoginResource1.RememberMeText" xml:space="preserve">
-    <value>Запомнить меня.</value>
   </data>
 </root>

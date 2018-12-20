@@ -1,4 +1,3 @@
-//>>built
 define(
 "dojo/cldr/nls/hi/number", //begin v1.x content
 {
@@ -11,11 +10,13 @@ define(
 	"infinity": "∞",
 	"minusSign": "-",
 	"decimal": ".",
+	"superscriptingExponent": "×",
 	"nan": "NaN",
 	"perMille": "‰",
 	"decimalFormat": "#,##,##0.###",
-	"currencyFormat": "¤ #,##,##0.00",
+	"currencyFormat": "¤#,##,##0.00",
 	"plusSign": "+",
+	"decimalFormat-long": "0000 खरब",
 	"decimalFormat-short": "000T"
 }
 //end v1.x content

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,16 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtItemText.Caption" xml:space="preserve">
-    <value>Text:</value>
+    <value>Text</value>
   </data>
   <data name="txtCode.Caption" xml:space="preserve">
-    <value>Code:</value>
+    <value>Code</value>
   </data>
   <data name="chkIsDefaultItem.Caption" xml:space="preserve">
     <value>Is default item</value>
   </data>
   <data name="txtOrder.Caption" xml:space="preserve">
-    <value>Order:</value>
+    <value>Order</value>
+  </data>
+  <data name="txtFilter.Caption" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="cboLanguage.Caption" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Cancel</value>
@@ -146,5 +152,14 @@
   </data>
   <data name="error_InvalidItemName" xml:space="preserve">
     <value>Please enter a text value before continuing.</value>
+  </data>
+  <data name="error_InvalidItemCode" xml:space="preserve">
+    <value>Please enter a code value before continuing.</value>
+  </data>
+  <data name="error_CodeLanguageExists" xml:space="preserve">
+    <value>The code and language values entered already exist together as a pick list item.</value>
+  </data>
+  <data name="DialogTitleLocalize" xml:space="preserve">
+    <value>Localize An Item</value>
   </data>
 </root>

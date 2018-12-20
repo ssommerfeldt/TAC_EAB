@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="34e71a20-f08f-4dbd-b1bb-b0f6cb9e91d7" disablePageValidation="true">
+  <PageAlias>BODMapping</PageAlias>
+  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <InheritTemplate>false</InheritTemplate>
+  <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
+  <Properties>
+    <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.IBODMapping,Sage.Entity.Interfaces</Property>
+  </Properties>
+  <TemplateProperties>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">False</Property>
+  </TemplateProperties>
+  <IsDefaultPage>false</IsDefaultPage>
+  <ExcludedGlobalModules />
+  <AppliedSecurity>Entities/BODMapping/View</AppliedSecurity>
+  <IncludeScript />
+</PortalPage>

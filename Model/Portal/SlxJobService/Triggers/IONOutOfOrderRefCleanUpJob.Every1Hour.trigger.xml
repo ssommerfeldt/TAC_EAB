@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<SchedulerTrigger xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6b1b0e87-9f98-48bf-a23b-15d1e0e183ca">
+  <InstanceId>5b445e5cf1fb405fbccc1cdf1acf76d0</InstanceId>
+  <JobId>da3405a6cbf444eda0bae7972c08f6c8</JobId>
+  <Name>IONOutOfOrderRefCleanUpJob.Every1Hour</Name>
+  <StartTimeUtc xsi:nil="true" />
+  <EndTimeUtc xsi:nil="true" />
+  <CronExpression>0 0 0/1 * * ? *</CronExpression>
+  <Priority xsi:nil="true" />
+  <Parameters></Parameters>
+</SchedulerTrigger>

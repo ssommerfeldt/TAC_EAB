@@ -1,29 +1,25 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-        'Sage/Services/_ServiceMixin',
-        'Sage/_ConfigurationProvider',
-        'Sage/Utility',
-        'Sage/Data/SDataStore',
-        //'Sage/MainView/ReportMgr/ReportManagerGroupContextService',
-        'dijit/registry',
-        'dojo/_base/declare',
-        'Sage/Utility/Filters',
-        'dojo/_base/lang',
-        'dojo/json'
-    ],
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/FilterConfigurationProvider", [
+    'Sage/Services/_ServiceMixin',
+    'Sage/_ConfigurationProvider',
+    'Sage/MainView/ReportMgr/ReportManagerGroupContextService',
+    'dijit/registry',
+    'dojo/_base/declare',
+    'Sage/Utility/Filters',
+    'dojo/_base/lang',
+    'dojo/json'
+],
 function (
-        _ServiceMixin,
-        _ConfigurationProvider,
-        SageUtility,
-        SDataStore,
-        //ReportManagerGroupContextService,
-        registry,
-        declare,
-        FiltersUtility,
-        lang,
-        json
-    ) {
-    var FilterConfigurationProvider = declare('Sage.MainView.ReportMgr.FilterConfigurationProvider', [_ConfigurationProvider, _ServiceMixin], {
+    _ServiceMixin,
+    _ConfigurationProvider,
+    ReportManagerGroupContextService,
+    registry,
+    declare,
+    filtersUtility,
+    lang,
+    json
+) {
+    var filterConfigurationProvider = declare('Sage.MainView.ReportMgr.FilterConfigurationProvider', [_ConfigurationProvider, _ServiceMixin], {
         _configuration: null,
         _hasLayoutConfiguration: false,
         _hasFilterHiddenConfiguration: false,
@@ -35,29 +31,41 @@ function (
         },
         constructor: function (options) {
             this.inherited(arguments);
-            /*
             if (this.groupContextService.declaredClass !== 'Sage.MainView.ReportMgr.ReportManagerGroupContextService') {
                 Sage.Services.removeService('ClientGroupContext');
                 this.groupContextService = new ReportManagerGroupContextService();
                 Sage.Services.addService('ClientGroupContext', this.groupContextService);
-            }*/
-            var clientContextSvc = Sage.Services.getService('ClientContextService');
-            if (clientContextSvc) {
-                if (clientContextSvc.containsKey("userID")) {
-                    this._currentUserId = clientContextSvc.getValue("userID");
-                }
             }
-            //this._subscribes.push(dojo.subscribe('/group/context/changed', this, this._onGroupContextChanged));
-            // todo: subscribe to filter reload to capture state?
+            this._subscribes.push(dojo.subscribe('/group/context/changed', this, this._onGroupContextChanged));
         },
-        /*_onGroupContextChanged: function () {
-            this.onConfigurationChange();
+        requestConfiguration: function (options) {
+            this._configuration = {};
+            this._hasLayoutConfiguration = false;
+            this._hasFilterHiddenConfiguration = false;
+            this._onRequestConfigurationSuccess(options, null);
+            this._getHiddenFilters(options);
         },
         onConfigurationChange: function () {
-        },*/
+        },
+        getFilterFormatter: function (filter) {
+            if (filter) {
+                if (filter.filterName === 'ExecutionType') {
+                }
+            }
+            return false;
+        },
+        _onGroupContextChanged: function () {
+            this.onConfigurationChange();
+        },
         _createConfiguration: function (entry, options) {
             var currentListConfig = this.groupContextService.getCurrentListConfig();
-            this._configuration = currentListConfig.getFilterConfig(this.metaDataService, entry, options);
+            if (this.groupContextService._currentContext.isNonEntityBased) {
+                this._configuration = currentListConfig.getNonEntityBasedFilterConfig(options);
+            } else {
+                //get non entity based filter configuration
+                this._configuration = currentListConfig.getFilterConfig(this.metaDataService, entry, options);
+            }
+            
             if (!this._configuration) {
                 this._configuration = {};
             }
@@ -66,13 +74,6 @@ function (
                 return listPanel && listPanel.get('filterManager');
             };
             this._hasLayoutConfiguration = true;
-        },
-        requestConfiguration: function (options) {
-            this._configuration = {};
-            this._hasLayoutConfiguration = false;
-            this._hasFilterHiddenConfiguration = false;
-            this._onRequestConfigurationSuccess(options, null);
-            this._getHiddenFilters(options);
         },
         _onRequestConfigurationSuccess: function (options, entry) {
             this._createConfiguration(entry, options);
@@ -83,38 +84,10 @@ function (
                 options.failure.call(options.scope || this, response, options, this);
             }
         },
-        getFilterFormatter: function (filter) {
-            /*if (filter) {
-                if (filter.filterName === 'Duration') {
-                    return UtilityActivity.formatDuration;
-                }
-            }*/
-            return false;
-        },
-        ModifyFilterQuery: function (filter, query) {
-            /*var hasQuery = false;
-            if (query) {
-                hasQuery = true;
-            }
-            if (filter.propertyName === 'Activity.Duration') {
-                if (hasQuery) {
-                    query = '(' + query + ') and (Activity.Timeless ne true)';
-                } else {
-                    query = '(Activity.Timeless ne true)';
-                }
-            } else if (filter.propertyName === 'Duration') {
-                if (hasQuery) {
-                    query = '(' + query + ') and (Timeless ne true)';
-                } else {
-                    query = '(Timeless ne true)';
-                }
-            }*/
-            return query;
-        },
-         _getHiddenFilters: function (options) {
+        _getHiddenFilters: function (options) {
             var key = this._getHiddenFiltersKey();
             if (key) {
-                FiltersUtility.getHiddenFilters(key,
+                filtersUtility.getHiddenFilters(key,
                     lang.hitch(this, this._onHiddenFiltersFetchComplete, options || {}),
                     function (err) {
                         console.error(err);
@@ -123,7 +96,7 @@ function (
             }
         },
         _getHiddenFiltersKey: function () {
-            var key = FiltersUtility.getHiddenFiltersKey();
+            var key = filtersUtility.getHiddenFiltersKey();
             return key;
         },
         _onHiddenFiltersFetchComplete: function (options, result) {
@@ -134,9 +107,7 @@ function (
                     this._configuration._hiddenFilters = {};
                 }
             }
-
             this._configuration._hiddenFiltersKey = this._getHiddenFiltersKey();
-
             this._hasFilterHiddenConfiguration = true;
             this._callOptionsSuccess(options);
         },
@@ -151,5 +122,5 @@ function (
             }
         }
     });
-    return FilterConfigurationProvider;
+    return filterConfigurationProvider;
 });

@@ -4,39 +4,30 @@ using Sage.Platform.Security;
 using Sage.Platform.WebPortal.SmartParts;
 using Sage.Platform;
 using Sage.Entity.Interfaces;
-using Sage.SalesLogix;
-using Sage.SalesLogix.Orm.Utility;
 using Sage.Platform.Application;
 using Sage.Platform.Application.UI;
 
 public partial class SmartParts_UpdateOpportunityCurrency : EntityBoundSmartPartInfoProvider
 {
-    bool blnGetValues = false;
+    bool _blnGetValues;
 
     public override Type EntityType
     {
-        get { return typeof(Sage.Entity.Interfaces.IOpportunity); }
-    }
-
-    protected override void OnWireEventHandlers()
-    {
-        base.OnWireEventHandlers();
+        get { return typeof(IOpportunity); }
     }
 
     protected override void OnAddEntityBindings()
     {
-
     }
 
     protected override void OnFormBound()
     {
-        if (!blnGetValues)
+        if (!_blnGetValues)
         {
             base.OnFormBound();
-            Sage.Entity.Interfaces.IOpportunity entity = this.BindingSource.Current as Sage.Entity.Interfaces.IOpportunity;
-
-            lblOppCurRate.Text = string.Format(GetLocalResourceObject("OppsCurrentRate_rsc").ToString(), entity.ExchangeRateCode, Convert.ToString(entity.ExchangeRate.GetValueOrDefault(1))).ToString();
-            lblRateDate.Text = string.Format(GetLocalResourceObject("RateAssignedOn_rsc").ToString(), Convert.ToString(entity.ExchangeRateDate.Value.ToShortDateString())).ToString();
+            var entity = BindingSource.Current as IOpportunity;
+            lblOppCurRate.Text = string.Format(GetLocalResourceObject("OppsCurrentRate_rsc").ToString(), entity.ExchangeRateCode, Convert.ToString(entity.ExchangeRate.GetValueOrDefault(1)));
+            lblRateDate.Text = string.Format(GetLocalResourceObject("RateAssignedOn_rsc").ToString(), Convert.ToString(entity.ExchangeRateDate.Value.ToShortDateString()));
             lveChangeRate.Text = entity.ExchangeRateCode;
             txtExchangeRate.Text = Convert.ToString(entity.ExchangeRate.GetValueOrDefault(1));
 
@@ -46,15 +37,13 @@ public partial class SmartParts_UpdateOpportunityCurrency : EntityBoundSmartPart
             bool changeOppRate = optionSvc.ChangeOpportunityRate;
             txtExchangeRate.Enabled = changeOppRate;
             chkLockRate.Checked = entity.ExchangeRateLocked.Value;
-
             GetFromValues();
         }
     }
 
     private void GetFromValues()
     {
-        Sage.Entity.Interfaces.IOpportunity entity = this.BindingSource.Current as Sage.Entity.Interfaces.IOpportunity;
-
+        var entity = BindingSource.Current as IOpportunity;
         curFrom.ExchangeRate = entity.ExchangeRate.GetValueOrDefault(1);
         curFrom.CurrentCode = entity.ExchangeRateCode;
         curFrom.Text = entity.SalesPotential.ToString();
@@ -62,44 +51,41 @@ public partial class SmartParts_UpdateOpportunityCurrency : EntityBoundSmartPart
 
     protected void GetExchangeRate(object sender, EventArgs e)
     {
-        Sage.Entity.Interfaces.IOpportunity entity = this.BindingSource.Current as Sage.Entity.Interfaces.IOpportunity;
-
-        //IExchangeRate exchRate = lveChangeRate.LookupResultValue as IExchangeRate;
-        IExchangeRate exchRate = EntityFactory.GetById<IExchangeRate>(lveChangeRate.LookupResultValue);
-
+        var entity = BindingSource.Current as IOpportunity;
+        var exchRate = EntityFactory.GetRepository<IExchangeRate>()
+            .FindFirstByProperty("CurrencyCode", lveChangeRate.LookupResultValue);
         if (exchRate != null)
         {
             txtExchangeRate.Text = exchRate.Rate.ToString();
-            lblRateCurrent.Text = string.Format(GetLocalResourceObject("ThisRateCurrent_rsc").ToString(), Convert.ToString(exchRate.ModifyDate.Value.ToShortDateString())).ToString();
-
+            lblRateCurrent.Text =
+                string.Format(GetLocalResourceObject("ThisRateCurrent_rsc").ToString(),
+                    Convert.ToString(exchRate.ModifyDate.Value.ToShortDateString()));
             GetFromValues();
-
             curTo.ExchangeRate = exchRate.Rate.GetValueOrDefault(1);
             curTo.CurrentCode = exchRate.Id.ToString();
             curTo.Text = Convert.ToString(entity.SalesPotential);
-
             lveChangeRate.Text = exchRate.Id.ToString();
             txtExchangeRate.Text = Convert.ToString(exchRate.Rate.GetValueOrDefault(1));
         }
-        blnGetValues = true;
+        _blnGetValues = true;
     }
 
     protected void SetLocked(object sender, EventArgs e)
     {
-        Sage.Entity.Interfaces.IOpportunity entity = this.BindingSource.Current as Sage.Entity.Interfaces.IOpportunity;
-
+        var entity = BindingSource.Current as IOpportunity;
         entity.ExchangeRateLocked = chkLockRate.Checked;
     }
 
     protected void cmdOK_Click(object sender, EventArgs e)
     {
-        IOpportunity opportunity = this.BindingSource.Current as IOpportunity;
+        var opportunity = BindingSource.Current as IOpportunity;
         if (opportunity != null)
         {
-            IExchangeRate exchRate = EntityFactory.GetById<IExchangeRate>(lveChangeRate.Text);
+            var exchRate = EntityFactory.GetRepository<IExchangeRate>()
+                .FindFirstByProperty("CurrencyCode", lveChangeRate.Text);
             try
             {
-                opportunity.ExchangeRateCode = exchRate.Id.ToString();
+                opportunity.ExchangeRateCode = exchRate.CurrencyCode;
                 opportunity.ExchangeRate = Convert.ToDouble(txtExchangeRate.Text);
                 opportunity.Save();
             }
@@ -110,7 +96,6 @@ public partial class SmartParts_UpdateOpportunityCurrency : EntityBoundSmartPart
                     GetLocalResourceObject("Error_ChangingExchangeRate").ToString(), ex);
             }
         }
-
         DialogService.CloseEventHappened(sender, e);
         Refresh();
     }
@@ -124,9 +109,8 @@ public partial class SmartParts_UpdateOpportunityCurrency : EntityBoundSmartPart
 
     public override ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
-        Sage.Platform.WebPortal.SmartParts.ToolsSmartPartInfo tinfo = new Sage.Platform.WebPortal.SmartParts.ToolsSmartPartInfo();
-
-        foreach (Control c in this.UpdateOpps_RTools.Controls)
+        var tinfo = new ToolsSmartPartInfo();
+        foreach (Control c in UpdateOpps_RTools.Controls)
         {
             tinfo.RightTools.Add(c);
         }

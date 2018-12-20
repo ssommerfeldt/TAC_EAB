@@ -1,4 +1,4 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 /*
 //Example
 dojo.require("Sage.MailMerge.Lookup");
@@ -34,8 +34,8 @@ oLookup = new Sage.MailMerge.Lookup(opts);
 oLookup.show();
 */
 
-define([
-        "Sage/UI/Columns/Phone",
+define("Sage/MailMerge/Lookup", [
+        "Sage/UI/Controls/GridParts/Columns/Phone",
         "Sage/UI/Dialogs",
         "Sage/UI/SDataLookup",
         "dijit/_Widget",
@@ -94,85 +94,70 @@ define([
                     "displayMode": 5,
                     "structure": [
                         {
-                            "cells": [
-                                {
-                                    "name": (bLead) ? this.companyCaption : this.accountCaption,
-                                    "field": (bLead) ? "Company" : "AccountName",
-                                    "sortable": true,
-                                    "width": "150px",
-                                    "editable": false,
-                                    "styles": null,
-                                    "propertyType": "",
-                                    "excludeFromFilters": false,
-                                    "useAsResult": false
-                                },
-                                {
-                                    "name": this.lastNameCaption,
-                                    "field": "LastName",
-                                    "sortable": true,
-                                    "width": "150px",
-                                    "editable": false,
-                                    "styles": null,
-                                    "propertyType": "",
-                                    "excludeFromFilters": false,
-                                    "useAsResult": false
-                                },
-                                {
-                                    "name": this.firstNameCaption,
-                                    "field": "FirstName",
-                                    "sortable": true,
-                                    "width": "150px",
-                                    "editable": false,
-                                    "styles": null,
-                                    "propertyType": "",
-                                    "excludeFromFilters": false,
-                                    "useAsResult": false
-                                },
-                                {
-                                    "name": this.workCaption,
-                                    "field": "WorkPhone",
-                                    "sortable": true,
-                                    "width": "150px",
-                                    "editable": false,
-                                    "styles": null,
-                                    "type": Phone,
-                                    "excludeFromFilters": false,
-                                    "useAsResult": false
-                                },
-                                {
-                                    "name": this.mobileCaption,
-                                    "field": "Mobile",
-                                    "sortable": true,
-                                    "width": "150px",
-                                    "editable": false,
-                                    "styles": null,
-                                    "type": Phone,
-                                    "excludeFromFilters": false,
-                                    "useAsResult": false
-                                },
-                                {
-                                    "name": this.emailCaption,
-                                    "field": "Email",
-                                    "sortable": true,
-                                    "width": "150px",
-                                    "editable": false,
-                                    "styles": null,
-                                    "propertyType": "",
-                                    "excludeFromFilters": false,
-                                    "useAsResult": false
-                                }],
-                            "defaultCell":
-                                {
-                                    "name": null,
-                                    "field": null,
-                                    "sortable": false,
-                                    "width": "50px",
-                                    "editable": false,
-                                    "styles": "text-align: right;",
-                                    "propertyType": null,
-                                    "excludeFromFilters": false,
-                                    "useAsResult": false
-                                }
+                            "label": (bLead) ? this.companyCaption : this.accountCaption,
+                            "field": (bLead) ? "Company" : "AccountName",
+                            "sortable": true,
+                            "width": "150px",
+                            "editable": false,
+                            "styles": null,
+                            "propertyType": "",
+                            "excludeFromFilters": false,
+                            "useAsResult": false
+                        },
+                        {
+                            "label": this.lastNameCaption,
+                            "field": "LastName",
+                            "sortable": true,
+                            "width": "150px",
+                            "editable": false,
+                            "styles": null,
+                            "propertyType": "",
+                            "excludeFromFilters": false,
+                            "useAsResult": false
+                        },
+                        {
+                            "label": this.firstNameCaption,
+                            "field": "FirstName",
+                            "sortable": true,
+                            "width": "150px",
+                            "editable": false,
+                            "styles": null,
+                            "propertyType": "",
+                            "excludeFromFilters": false,
+                            "useAsResult": false
+                        },
+                        {
+                            "label": this.workCaption,
+                            "field": "WorkPhone",
+                            "sortable": true,
+                            "width": "150px",
+                            "editable": false,
+                            "styles": null,
+                            "type": Phone,
+                            "excludeFromFilters": false,
+                            "useAsResult": false
+                        },
+                        {
+                            "label": this.mobileCaption,
+                            "field": "Mobile",
+                            "sortable": true,
+                            "width": "150px",
+                            "editable": false,
+                            "styles": null,
+                            "type": Phone,
+                            "excludeFromFilters": false,
+                            "useAsResult": false
+                        },
+                        {
+                            "label": this.emailCaption,
+                            "field": "Email",
+                            "sortable": true,
+                            "width": "150px",
+                            "editable": false,
+                            "styles": null,
+                            "propertyType": "",
+                            "excludeFromFilters": false,
+                            "useAsResult": false
                         }],
                     "gridOptions":
                         {
@@ -198,18 +183,18 @@ define([
                 if (bAccount) {
                     if (typeof this.options.isListView == "boolean" && !this.options.isListView) {
                         /* Remove the first column (Account) */
-                        oConfiguration.structure[0].cells.shift();
+                        oConfiguration.structure.shift();
                     }
                 } else if (bOpp) {
                     var i;
-                    for (i = 0; i < oConfiguration.structure[0].cells.length; i++) {
-                        oConfiguration.structure[0].cells[i].field = "Contact." + oConfiguration.structure[0].cells[i].field;
+                    for (i = 0; i < oConfiguration.structure.length; i++) {
+                        oConfiguration.structure[i].field = "Contact." + oConfiguration.structure[i].field;
                     }
                     if (typeof this.options.isListView == "boolean") {
                         if (this.options.isListView) {
                             /* Add Opportunity.Description as the first column */
-                            oConfiguration.structure[0].cells.splice(0, 0, {
-                                "name": this.opportunityCaption,
+                            oConfiguration.structure.splice(0, 0, {
+                                "label": this.opportunityCaption,
                                 "field": "Opportunity.Description",
                                 "sortable": true,
                                 "width": "250px",
@@ -221,7 +206,7 @@ define([
                             });
                         } else {
                             /* Remove the first column (Contact.Account) */
-                            oConfiguration.structure[0].cells.shift();
+                            oConfiguration.structure.shift();
                         }
                     }
                 }

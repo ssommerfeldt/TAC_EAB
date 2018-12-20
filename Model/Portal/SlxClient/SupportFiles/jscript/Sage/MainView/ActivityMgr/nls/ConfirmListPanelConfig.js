@@ -1,18 +1,16 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            colNameType:'Activity Type',
-            colNameNotification:'Notification',
-            colNameStartDate:'Start Date',
-            colNameDuration:'Duration',
-            colNameRegarding:'Regarding',
-            colNameFromUser:'From',
-            colNameToUser:'To User'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/MainView/ActivityMgr/nls/ConfirmListPanelConfig", {
+    root: {
+        colNameType:'Activity Type',
+        colNameNotification:'Notification',
+        colNameStartDate:'Start Date',
+        colNameDuration:'Duration',
+        colNameRegarding:'Regarding',
+        colNameFromUser:'From',
+        colNameToUser:'To User'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

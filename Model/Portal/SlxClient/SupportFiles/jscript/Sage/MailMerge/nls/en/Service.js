@@ -1,4 +1,4 @@
-define((
+define("Sage/MailMerge/nls/en/Service", (
 { selectContactCaption: 'Select a Contact',
   selectOppContactCaption: 'Select an Opportunity Contact',
   selectLeadCaption: 'Select a Lead',

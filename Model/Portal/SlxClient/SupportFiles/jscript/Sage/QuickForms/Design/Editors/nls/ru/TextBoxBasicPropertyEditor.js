@@ -1,16 +1,20 @@
-define((
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  linesText: 'Строки:',
-  linesTooltipText: 'Количество отображаемых строк текста.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
+define("Sage/QuickForms/Design/Editors/nls/ru/TextBoxBasicPropertyEditor", {
+    "titleText": "Базовый",
+    "appearanceText": "Внешний вид",
+    "behaviorText": "Поведение",
+    "captionText": "Надпись:",
+    "captionTooltipText": "Подпись для отображения в форме для этого элемента управления.",
+    "captionAlignmentText": "Выравнивание надписи:",
+    "captionAlignmentTooltipText": "Выравнивание текста метки.",
+    "linesText": "Строки:",
+    "linesTooltipText": "Количество отображаемых строк текста.",
+    "isReadOnlyText": "Только для чтения:",
+    "isReadOnlyTooltipText": "Не допускает редактирования.",
+    "toolTipText": "Подсказка:",
+    "toolTipTooltipText": "Краткий текст справки об элементе управления.",
+    "alignmentText": {
+        "left": "По левому краю",
+        "center": "По центру",
+        "right": "По правому краю"
+    }
+});

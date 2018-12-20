@@ -1,5 +1,5 @@
-﻿/*globals dojo define google  */
-define([
+/*globals dojo define google  */
+define("Sage/Utility/File/GoogleDocPicker", [
     'dijit/_Widget',
     'dijit/tree/TreeStoreModel',
     'dijit/Dialog',

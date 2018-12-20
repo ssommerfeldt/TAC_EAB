@@ -117,79 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Grid_State_Column" xml:space="preserve">
-    <value>Область</value>
-  </data>
-  <data name="LinkToAccounting.Caption" xml:space="preserve">
-    <value>Ссылка на учет - Слияние Контактов</value>
-  </data>
-  <data name="Grid_Primary_Column" xml:space="preserve">
-    <value>Основной</value>
-  </data>
-  <data name="UnlinkedRecords.Caption" xml:space="preserve">
-    <value>Отвязать {0} от {1}</value>
-  </data>
-  <data name="MergeAddress.Caption" xml:space="preserve">
-    <value>Объединить адреса</value>
-  </data>
-  <data name="btnNext_Merge.Caption" xml:space="preserve">
-    <value>Слияние</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Назад</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="Grid_Address2_Column" xml:space="preserve">
-    <value>Адрес2</value>
-  </data>
-  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Ссылка на учет - Слияние данных - Найдены различия</value>
-  </data>
-  <data name="lblSourceAddress.Caption" xml:space="preserve">
-    <value>Исходные адреса</value>
-  </data>
-  <data name="LinkedAddresses.Caption" xml:space="preserve">
-    <value>Связанные адреса (следующие записи будут объединены)</value>
-  </data>
-  <data name="lblTargetAddress.Caption" xml:space="preserve">
-    <value>Целевые адреса</value>
-  </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Ссылка на учет - Слияние данных - Различия не найдены</value>
+  <data name="btnLink.Caption" xml:space="preserve">
+    <value>Ссылка</value>
   </data>
   <data name="btnNext.Caption" xml:space="preserve">
-    <value>Следующий&gt;</value>
+    <value>Дальше &gt;</value>
+  </data>
+  <data name="EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, совпадающих с выбранными критериями фильтра.</value>
   </data>
   <data name="Error_SourceTargetNotSelected" xml:space="preserve">
     <value>Выберите и цель и источник перед продолжением.</value>
   </data>
-  <data name="lblLinkedRecords.Caption" xml:space="preserve">
-    <value>Системные связи (ссылки)  (Следующие записи будут связаны и объединены в обоих системах).</value>
-  </data>
   <data name="Grid.Select.Text" xml:space="preserve">
     <value>Выбрать</value>
   </data>
-  <data name="MergeRecordsDialog_MergeRecords.Caption" xml:space="preserve">
-    <value>Слияние записей</value>
+  <data name="Grid_Address1_Column" xml:space="preserve">
+    <value>Address1</value>
+  </data>
+  <data name="Grid_Address2_Column" xml:space="preserve">
+    <value>Address2</value>
   </data>
   <data name="Grid_City_Column" xml:space="preserve">
     <value>Город</value>
   </data>
-  <data name="lblDescription.Caption" xml:space="preserve">
-    <value>Создайте связи, чтобы объединить записи адресов.</value>
+  <data name="Grid_Primary_Column" xml:space="preserve">
+    <value>Основной</value>
   </data>
-  <data name="btnLink.Caption" xml:space="preserve">
-    <value>Ссылка</value>
-  </data>
-  <data name="EmptyTableRowText" xml:space="preserve">
-    <value>Нет записей совпадающих с выбранным критерием фильтра.</value>
+  <data name="Grid_State_Column" xml:space="preserve">
+    <value>Регион</value>
   </data>
   <data name="Grid_Unlink.Column" xml:space="preserve">
     <value>Разъединить</value>
   </data>
-  <data name="Grid_Address1_Column" xml:space="preserve">
-    <value>Адрес1</value>
+  <data name="lblDescription.Caption" xml:space="preserve">
+    <value>Создайте связи, чтобы объединить записи адресов.</value>
   </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Назад</value>
+  <data name="lblLinkedRecords.Caption" xml:space="preserve">
+    <value>Системные ссылки (следующие записи будут связаны и объединены в обоих системах).</value>
+  </data>
+  <data name="MergeAddress.Caption" xml:space="preserve">
+    <value>Объединить адреса</value>
+  </data>
+  <data name="lblSourceAddress.Caption" xml:space="preserve">
+    <value>Адреса источника</value>
+  </data>
+  <data name="UnlinkedRecords.Caption" xml:space="preserve">
+    <value>"{0}" разъединено от "{1}"</value>
+  </data>
+  <data name="LinkToAccounting.Caption" xml:space="preserve">
+    <value>Объединить контакты</value>
+  </data>
+  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
+    <value>Объединить данные — найдены различия</value>
+  </data>
+  <data name="MergeRecordsDialog_MergeRecords.Caption" xml:space="preserve">
+    <value>Объединить записи</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Объединить данные — различий нет</value>
+  </data>
+  <data name="lblTargetAddress.Caption" xml:space="preserve">
+    <value>Адреса цели</value>
+  </data>
+  <data name="LinkedAddresses.Caption" xml:space="preserve">
+    <value>Связанные адреса (следующие записи будут объединены)</value>
+  </data>
+  <data name="btnNext_Merge.Caption" xml:space="preserve">
+    <value>Объединение</value>
+  </data>
+  <data name="valueFalse" xml:space="preserve">
+    <value>Ложь</value>
+  </data>
+  <data name="valueTrue" xml:space="preserve">
+    <value>Истина</value>
   </data>
 </root>

@@ -1,5 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/ContactTasksTasklet", [
+    'dojo/_base/lang',
     'dojo/i18n!./nls/ContactTasksTasklet',
     'Sage/TaskPane/_BaseTaskPaneTasklet',
     'Sage/TaskPane/TaskPaneContent',
@@ -7,10 +8,14 @@ define([
     'Sage/Data/WritableSDataStore',
     'Sage/MainView/Contact/ContactUserAssociationEditor',
     'dojo/_base/declare',
-    'Sage/UI/Dialogs'
+    'Sage/UI/Dialogs',
+    'dojo/string',
+	'Sage/MainView/IntegrationContract/PromoteWidget',
+    'Sage/Utility',
+    'Sage/Data/SDataServiceRegistry'
 ],
-function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, SingleEntrySDataStore, WritableSDataStore, ContactUserAssociationEditor, declare,
-    dialogs) {
+function (lang, i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, SingleEntrySDataStore, WritableSDataStore, ContactUserAssociationEditor, declare,
+    dialogs, dString, PromoteWidget) {
     var contactTasksTasklet = declare('Sage.TaskPane.ContactTasksTasklet', [_BaseTaskPaneTasklet, TaskPaneContent], {
         taskItems: [],
         oAuthProviders: null,
@@ -27,6 +32,17 @@ function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, SingleEntrySDataSt
                     securedAction: 'Entities/Contact/DisAssociateContact'
                 }
             ];
+            /* jshint ignore:start */
+            if (isIntegrationContractEnabled) {
+                this.taskItems.push({
+                    taskId: 'promoteContact',
+                    type: "Link",
+                    displayName: this.promoteTitle,
+                    clientAction: "contactTasksActions.validateCanPromote()",
+                    securedAction: 'Entities/Contact/Promote'
+                });
+            }
+            /* jshint ignore:end */
         },
         associateContact: function () {
             var self = this;
@@ -128,6 +144,74 @@ function (i18nStrings, _BaseTaskPaneTasklet, TaskPaneContent, SingleEntrySDataSt
                 }
                 updateDialog.show();
             };
+        },
+        validateCanPromote: function () {
+            this.getCurrentEntity();
+            var currentEntityId;
+            if (Sage.Utility.getModeId() === 'detail') {
+                currentEntityId = this.currentEntityId;
+            } else {
+                var selectionInfo = this.getSelectionInfo();
+                if (this.verifySingleSelection(selectionInfo)) {
+                    currentEntityId = selectionInfo.selectedIds[0];
+                }
+                else {
+                    dialogs.showInfo(this.selectSingleRecord, this.invalidSelectionTitle);
+                    return false;
+                }
+            }
+            var integrationService = Sage.Services.getService('IntegrationContractService');
+
+            if (!integrationService.isBackOfficeIntegrationEnabled) {
+                dialogs.showError(this.integrationNotEnabled);
+                return false;
+            }
+            var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
+            .setResourceKind("contacts")
+            .setOperationName("CanPromoteContact");
+            var entry = {
+                "$name": "CanPromoteContact",
+                "request": {
+                    "ContactId": currentEntityId
+                }
+            };
+            request.execute(entry, {
+                success: lang.hitch(this, function () {
+                    this._promoteContact(currentEntityId);
+                })
+            });
+        },
+        _promoteContact: function (currentEntityId) {
+            var request = new Sage.SData.Client.SDataSingleResourceRequest(Sage.Data.SDataServiceRegistry.getSDataService('dynamic'));
+            
+            request.setResourceKind("contacts");
+            request.setQueryArg('select', 'ErpLogicalId,ErpAccountingEntityId');
+            request.setQueryArg('where', dString.substitute("Id eq '${0}'", [currentEntityId]));
+            request.read({
+                success: function (result) {
+                    var promoteDialog = dijit.byId("dlgPromoteWidget");
+                    var options = {
+                        entityPrettyName: this.currentEntityDisplayName,
+                        entityName: this.currentEntityPrettyName,
+                        entityId: currentEntityId,
+                        logicalId: result.ErpLogicalId,
+                        accountingEntityId: result.ErpAccountingEntityId,
+                        entityDisplayValue: result.$descriptor
+                    };
+                    if (!promoteDialog) {
+                        promoteDialog = new PromoteWidget(options);
+                    }
+                    if (result.ErpLogicalId && result.ErpAccountingEntityId) {
+                        promoteDialog.initialize(options);
+                        promoteDialog.promoteEntity(result.ErpLogicalId, result.ErpAccountingEntityId);
+                    } else {
+                        promoteDialog.show(options);
+                    }
+                },
+                scope: this,
+                failure: function () { }
+            });
         }
     });
     return contactTasksTasklet;

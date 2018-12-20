@@ -117,82 +117,86 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblAddressType.Text" xml:space="preserve">
-    <value>Type d'adresse :</value>
-  </data>
-  <data name="lblAddress3.Text" xml:space="preserve">
-    <value>Adresse 3 :</value>
-  </data>
-  <data name="DialogTitleAccountEdit" xml:space="preserve">
-    <value>Modifier une adresse de compte</value>
-  </data>
   <data name="lblPrimary.Text" xml:space="preserve">
-    <value>Facturation principale :</value>
-  </data>
-  <data name="lblState.Text" xml:space="preserve">
-    <value>Départem. :</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="DefaultDescription" xml:space="preserve">
-    <value>Envoi</value>
-  </data>
-  <data name="lblAddress1.Text" xml:space="preserve">
-    <value>Adresse 1 :</value>
-  </data>
-  <data name="DialogTitleAccountAdd" xml:space="preserve">
-    <value>Ajouter une adresse de compte</value>
-  </data>
-  <data name="DialogTitleEdit" xml:space="preserve">
-    <value>Modifier l'adresse</value>
-  </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lblShipping.Text" xml:space="preserve">
-    <value>Expédition principale :</value>
-  </data>
-  <data name="lblPrimaryAddr.Text" xml:space="preserve">
-    <value>Principal :</value>
-  </data>
-  <data name="DialogTitleAdd" xml:space="preserve">
-    <value>Ajouter une adresse</value>
-  </data>
-  <data name="txtCounty.Text" xml:space="preserve">
-    <value>Région</value>
-  </data>
-  <data name="lblCountry.Text" xml:space="preserve">
-    <value>Pays :</value>
-  </data>
-  <data name="lblSalutation.Text" xml:space="preserve">
-    <value>Attention :</value>
-  </data>
-  <data name="UpdateMessage" xml:space="preserve">
-    <value>Un ou plusieurs contacts ont une adresse identique à celle de ce compte.  Souhaitez-vous mettre à jour l'adresse des contacts correspondants ?</value>
-  </data>
-  <data name="lblPostalCode.Text" xml:space="preserve">
-    <value>Code postal :</value>
-  </data>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>Annuler</value>
+    <value>Facturation principale :</value>
   </data>
   <data name="lblDecription.Text" xml:space="preserve">
     <value>Description :</value>
   </data>
-  <data name="DialogTitleContactEdit" xml:space="preserve">
-    <value>Modifier l'adresse du contact</value>
+  <data name="lblAddress1.Text" xml:space="preserve">
+    <value>Adresse 1 :</value>
   </data>
-  <data name="btnCancel.ToolTip" xml:space="preserve">
-    <value>Annuler</value>
+  <data name="lblAddress2.Text" xml:space="preserve">
+    <value>Adresse 2 :</value>
   </data>
-  <data name="DialogTitleContactAdd" xml:space="preserve">
-    <value>Ajouter l'adresse du contact</value>
+  <data name="lblAddress3.Text" xml:space="preserve">
+    <value>Adresse 3 :</value>
+  </data>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="lblCity.Text" xml:space="preserve">
     <value>Ville :</value>
   </data>
-  <data name="lblAddress2.Text" xml:space="preserve">
-    <value>Adresse 2 :</value>
+  <data name="lblCountry.Text" xml:space="preserve">
+    <value>Pays :</value>
+  </data>
+  <data name="lblPostalCode.Text" xml:space="preserve">
+    <value>Code postal :</value>
+  </data>
+  <data name="lblSalutation.Text" xml:space="preserve">
+    <value>Attention :</value>
+  </data>
+  <data name="lblShipping.Text" xml:space="preserve">
+    <value>Expédition principale :</value>
+  </data>
+  <data name="lblState.Text" xml:space="preserve">
+    <value>Département :</value>
+  </data>
+  <data name="DefaultDescription" xml:space="preserve">
+    <value>Envoi</value>
+  </data>
+  <data name="DialogTitleAccountAdd" xml:space="preserve">
+    <value>Ajouter une adresse de compte</value>
+  </data>
+  <data name="DialogTitleAccountEdit" xml:space="preserve">
+    <value>Modifier une adresse de compte</value>
+  </data>
+  <data name="DialogTitleAdd" xml:space="preserve">
+    <value>Ajouter une adresse</value>
+  </data>
+  <data name="DialogTitleContactAdd" xml:space="preserve">
+    <value>Ajouter l'adresse du contact</value>
+  </data>
+  <data name="DialogTitleContactEdit" xml:space="preserve">
+    <value>Modifier l'adresse du contact</value>
+  </data>
+  <data name="DialogTitleEdit" xml:space="preserve">
+    <value>Modifier l'adresse</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AddEditAddress_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>AddEditAddress_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="UpdateMessage" xml:space="preserve">
+    <value>Un ou plusieurs contacts ont une adresse identique à celle de ce compte. Souhaitez-vous mettre à jour l'adresse des contacts correspondants ?</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="btnCancel.ToolTip" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="lblAddressType.Text" xml:space="preserve">
+    <value>Type d'adresse :</value>
+  </data>
+  <data name="lblPrimaryAddr.Text" xml:space="preserve">
+    <value>Principale :</value>
+  </data>
+  <data name="txtCounty.Text" xml:space="preserve">
+    <value>Région</value>
   </data>
 </root>

@@ -117,92 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SpeedSearch_Button_Search.Text" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
   <data name="SpeedSearch_Description" xml:space="preserve">
-    <value>Быстрый Поиск</value>
+    <value>SpeedSearch</value>
   </data>
-  <data name="SpeedSearch_href_Standard.Text" xml:space="preserve">
-    <value>Стандартный</value>
-  </data>
-  <data name="SpeedSearch_Error_Keyword_Required" xml:space="preserve">
-    <value>Поисковый запрос должен содержать ключевое слово.</value>
-  </data>
-  <data name="SpeedSearch_Label_SearchMethod.Text" xml:space="preserve">
-    <value>Способ поиска</value>
-  </data>
-  <data name="SpeedSearch_Paging_Button_First.AlternateText" xml:space="preserve">
-    <value>Первая страница</value>
-  </data>
-  <data name="SpeedSearch_Grid_Header_Score.HeaderText" xml:space="preserve">
-    <value>Счет</value>
-  </data>
-  <data name="SpeedSearch_ListItem_MaxResults_All.Text" xml:space="preserve">
-    <value>Все</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_Natural.Text" xml:space="preserve">
-    <value>Естественный язык</value>
-  </data>
-  <data name="SpeedSearch_Title" xml:space="preserve">
-    <value>Быстрый Поиск</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_And.Text" xml:space="preserve">
-    <value>Совпадение по всем словам (И)</value>
+  <data name="SpeedSearch_Filter_Like" xml:space="preserve">
+    <value>Как</value>
   </data>
   <data name="SpeedSearch_Filter_Within" xml:space="preserve">
     <value>В течение</value>
   </data>
-  <data name="SpeedSearch_Paging_Button_Prev.ToolTip" xml:space="preserve">
-    <value>Предыдущая страница</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_Bool.Text" xml:space="preserve">
-    <value>Логическое выражение (И, ИЛИ, НЕ)</value>
-  </data>
   <data name="SpeedSearch_Grid_Header_Document.HeaderText" xml:space="preserve">
     <value>Документ</value>
   </data>
-  <data name="SpeedSearch_ListItem_MaxResults_500.Text" xml:space="preserve">
-    <value>Первые 500</value>
+  <data name="SpeedSearch_Grid_Header_Score.HeaderText" xml:space="preserve">
+    <value>Баллы</value>
   </data>
-  <data name="SpeedSearch_ListItem_SearchFlags_Sounds.Text" xml:space="preserve">
-    <value>Созвучные</value>
+  <data name="SpeedSearch_Grid_Header_Source.HeaderText" xml:space="preserve">
+    <value>Источник</value>
   </data>
   <data name="SpeedSearch_href_Advanced.Text" xml:space="preserve">
-    <value>Расширенный</value>
+    <value>Дополнительно</value>
+  </data>
+  <data name="SpeedSearch_href_Standard.Text" xml:space="preserve">
+    <value>Стандартный</value>
   </data>
   <data name="SpeedSearch_Image_Reset.AlternateText" xml:space="preserve">
     <value>Сброс</value>
   </data>
-  <data name="SpeedSearch_ListItem_MaxResults_100.Text" xml:space="preserve">
-    <value>Первые 100</value>
+  <data name="SpeedSearch_Image_ResultUsed.AlternateText" xml:space="preserve">
+    <value>Отметить этот пункт как полезный.</value>
   </data>
-  <data name="SpeedSearch_Result_NoLongerExists" xml:space="preserve">
-    <value>{0}: {1} больше не существует или у вас нет доступа.</value>
+  <data name="SpeedSearch_Label_FilterBy.Text" xml:space="preserve">
+    <value>Фильтр по</value>
   </data>
-  <data name="SpeedSearch_Result_NoAccess" xml:space="preserve">
-    <value>Отказано в доступе.</value>
+  <data name="SpeedSearch_Label_FrequentlyUsed" xml:space="preserve">
+    <value>Часто используемые:</value>
   </data>
   <data name="SpeedSearch_Label_Keywords.Text" xml:space="preserve">
     <value>Ключ. слова:</value>
-  </data>
-  <data name="SpeedSearch_Paging_Button_First.ToolTip" xml:space="preserve">
-    <value>Первая страница</value>
-  </data>
-  <data name="SpeedSearch_Paging_Button_Last.ToolTip" xml:space="preserve">
-    <value>Последняя страница</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchFlags_Root.Text" xml:space="preserve">
-    <value>Однокоренные</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_Phrase.Text" xml:space="preserve">
-    <value>Соответствует точной фразе</value>
-  </data>
-  <data name="SpeedSearch_Paging_Button_Next.ToolTip" xml:space="preserve">
-    <value>Следующая страница</value>
-  </data>
-  <data name="SpeedSearch_ListItem_SearchType_Or.Text" xml:space="preserve">
-    <value>Совпадение по любым словам (ИЛИ)</value>
-  </data>
-  <data name="SpeedSearch_Filter_Like" xml:space="preserve">
-    <value>Содержит</value>
   </data>
   <data name="SpeedSearch_Label_Lookin.Text" xml:space="preserve">
     <value>Искать в</value>
@@ -210,29 +165,56 @@
   <data name="SpeedSearch_Label_MaxResults.Text" xml:space="preserve">
     <value>Макс. результаты:</value>
   </data>
-  <data name="SpeedSearch_Label_FilterBy.Text" xml:space="preserve">
-    <value>Фильтр по</value>
-  </data>
-  <data name="SpeedSearch_Error_Index_Required" xml:space="preserve">
-    <value>Для выполнения поиска необходимо выбрать по крайней мере один индекс</value>
-  </data>
-  <data name="SpeedSearch_Label_PagingLabel" xml:space="preserve">
-    <value>Записей {0} - {1} из {2}</value>
-  </data>
-  <data name="SpeedSearch_Button_Search.Text" xml:space="preserve">
-    <value>Поиск</value>
-  </data>
-  <data name="SpeedSearch_Label_FrequentlyUsed" xml:space="preserve">
-    <value>Часто используемые:</value>
-  </data>
-  <data name="SpeedSearch_Paging_Button_Last.AlternateText" xml:space="preserve">
-    <value>Последняя страница</value>
-  </data>
   <data name="SpeedSearch_Label_NoResults" xml:space="preserve">
     <value>Поиск не дал результатов.</value>
   </data>
-  <data name="SpeedSearch_ReturnResult_Link" xml:space="preserve">
-    <value>Возврат результата</value>
+  <data name="SpeedSearch_Label_PagingLabel" xml:space="preserve">
+    <value>Записи {0} — {1} из {2}</value>
+  </data>
+  <data name="SpeedSearch_Label_SearchMethod.Text" xml:space="preserve">
+    <value>Способ поиска</value>
+  </data>
+  <data name="SpeedSearch_ListItem_MaxResults_100.Text" xml:space="preserve">
+    <value>Первые 100</value>
+  </data>
+  <data name="SpeedSearch_ListItem_MaxResults_25.Text" xml:space="preserve">
+    <value>Первые 25</value>
+  </data>
+  <data name="SpeedSearch_ListItem_MaxResults_500.Text" xml:space="preserve">
+    <value>Первые 500</value>
+  </data>
+  <data name="SpeedSearch_ListItem_MaxResults_All.Text" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchFlags_Root.Text" xml:space="preserve">
+    <value>Однокоренные</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchFlags_Sounds.Text" xml:space="preserve">
+    <value>Созвучные</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchFlags_Thes.Text" xml:space="preserve">
+    <value>Синонимы</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_And.Text" xml:space="preserve">
+    <value>Совпадение по всем словам (И)</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_Bool.Text" xml:space="preserve">
+    <value>Логическое выражение (И, ИЛИ, НЕ)</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_Natural.Text" xml:space="preserve">
+    <value>Естественный язык</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_Or.Text" xml:space="preserve">
+    <value>Совпадение по любым словам (ИЛИ)</value>
+  </data>
+  <data name="SpeedSearch_ListItem_SearchType_Phrase.Text" xml:space="preserve">
+    <value>Соответствует точной фразе</value>
+  </data>
+  <data name="SpeedSearch_Paging_Button_First.AlternateText" xml:space="preserve">
+    <value>Первая страница</value>
+  </data>
+  <data name="SpeedSearch_Paging_Button_Last.AlternateText" xml:space="preserve">
+    <value>Последняя страница</value>
   </data>
   <data name="SpeedSearch_Paging_Button_Next.AlternateText" xml:space="preserve">
     <value>Следующая страница</value>
@@ -240,22 +222,40 @@
   <data name="SpeedSearch_Paging_Button_Prev.AlternateText" xml:space="preserve">
     <value>Предыдущая страница</value>
   </data>
-  <data name="SpeedSearch_ListItem_SearchFlags_Thes.Text" xml:space="preserve">
-    <value>Синонимы</value>
+  <data name="SpeedSearch_Preview_Link" xml:space="preserve">
+    <value>Просмотр...</value>
   </data>
-  <data name="SpeedSearch_ListItem_MaxResults_25.Text" xml:space="preserve">
-    <value>Первые  25</value>
+  <data name="SpeedSearch_Result_NoAccess" xml:space="preserve">
+    <value>Отказано в доступе.</value>
   </data>
-  <data name="SpeedSearch_Grid_Header_Source.HeaderText" xml:space="preserve">
-    <value>Источник</value>
+  <data name="SpeedSearch_Result_NoLongerExists" xml:space="preserve">
+    <value>{0}: "{1}" больше не существует или нет доступа.</value>
+  </data>
+  <data name="SpeedSearch_ReturnResult_Link" xml:space="preserve">
+    <value>Возврат результата</value>
+  </data>
+  <data name="SpeedSearch_Title" xml:space="preserve">
+    <value>SpeedSearch</value>
   </data>
   <data name="SpeedSearch_Preview_Blocked_Error" xml:space="preserve">
     <value>Просмотр заблокирован блокировщиком всплывающих окон</value>
   </data>
-  <data name="SpeedSearch_Image_ResultUsed.AlternateText" xml:space="preserve">
-    <value>Отметить этот пункт как полезный.</value>
+  <data name="SpeedSearch_Paging_Button_First.ToolTip" xml:space="preserve">
+    <value>Первая страница</value>
   </data>
-  <data name="SpeedSearch_Preview_Link" xml:space="preserve">
-    <value>Просмотр...</value>
+  <data name="SpeedSearch_Paging_Button_Last.ToolTip" xml:space="preserve">
+    <value>Последняя страница</value>
+  </data>
+  <data name="SpeedSearch_Paging_Button_Next.ToolTip" xml:space="preserve">
+    <value>Следующая страница</value>
+  </data>
+  <data name="SpeedSearch_Paging_Button_Prev.ToolTip" xml:space="preserve">
+    <value>Предыдущая страница</value>
+  </data>
+  <data name="SpeedSearch_Error_Index_Required" xml:space="preserve">
+    <value>Для выполнения поиска необходимо выбрать по крайней мере один индекс</value>
+  </data>
+  <data name="SpeedSearch_Error_Keyword_Required" xml:space="preserve">
+    <value>Поисковый запрос должен содержать ключевое слово.</value>
   </data>
 </root>

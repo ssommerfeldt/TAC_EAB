@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f816bda5-36c7-44c1-b82f-53219bfbc6a2">
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f816bda5-36c7-44c1-b82f-53219bfbc6a2" disablePageValidation="false">
   <PageAlias>DefectActivityRate</PageAlias>
   <SmallImage>[Localization!Global_Images:DefectActivityRate_16x16]</SmallImage>
   <LargeImage>[Localization!Global_Images:DefectActivityRate_24x24]</LargeImage>
@@ -9,7 +9,10 @@
   <Properties>
     <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.IDefectActivityRate, Sage.Entity.Interfaces</Property>
   </Properties>
-  <TemplateProperties />
+  <TemplateProperties>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">False</Property>
+    <Property Name="IncludeMiddlePane" TypeConverter="">False</Property>
+  </TemplateProperties>
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />
   <AppliedSecurity>Entities/DefectActivityRate/View</AppliedSecurity>

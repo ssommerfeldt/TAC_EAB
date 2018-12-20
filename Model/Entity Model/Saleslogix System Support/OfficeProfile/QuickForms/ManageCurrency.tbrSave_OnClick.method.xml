@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="71e5c460-6ac3-4948-8d99-25b7de7488c6" lastModifiedUtc="2015-09-30T21:46:03.4130468Z" name="tbrSave_OnClick" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="ManageCurrency">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="fdc2e976-a019-426d-92ce-705c742c029a" paramName="form" sequence="0" paramType="IManageCurrency" />
+    <OrmEntityMethodParam id="0d713394-1cec-4032-8988-a6a1d37fd833" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

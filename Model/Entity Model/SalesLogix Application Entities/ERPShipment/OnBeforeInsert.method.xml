@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="898474f8-1746-41ba-9cac-b8793f61630f" lastModifiedUtc="2016-06-03T12:10:24.2009422Z" name="OnBeforeInsert" methodType="CrudEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets>
+    <methodTarget id="fa40cb1c-c79f-47d0-8a5f-551fd718f0e1" lastModifiedUtc="2016-06-03T12:10:17.4977708Z" targetType="Sage.SalesLogix.ErpShipment.Rules, Sage.SalesLogix.BusinessRules" targetMethod="SetShipmentShippingAddress" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
+</method>

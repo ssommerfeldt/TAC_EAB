@@ -117,66 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="InsertTargetProgress_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>InsertTargetProgress_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="lblFailed.Caption" xml:space="preserve">
     <value>Fehlgeschlagen:</value>
   </data>
   <data name="lblInserted.Caption" xml:space="preserve">
     <value>Eingefügt:</value>
-  </data>
-  <data name="InsertTargetProgress_ClientScript" xml:space="preserve">
-    <value>&lt;script language="javascript" type="text/javascript"&gt;
-	var _IsCompleted = false;
-
-	function setupUpdateScripts()
-	{
-		Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(InsertProgress_PageLoadScript);
-	}
-
-	function InsertProgress_PageLoadScript()
-	{
-	    var elementStartCtrl = document.getElementById("@cmdInsertStartCtrlId");
-    	          
-	    if (elementStartCtrl != null)
-	    {
-	        InsertProgress_InvokeClickEvent(elementStartCtrl);
-	    }
-	} 
-
-	function InsertProgress_InvokeClickEvent(control)
-	{
-	    if (document.createEvent)
-	    {
-	        // FireFox
-	        var e = document.createEvent("MouseEvents");
-	        e.initEvent("click", true, true);
-	        control.dispatchEvent(e);
-	    }
-	    else
-	    {
-	        // IE
-	        control.click();
-	    }
-	}
-	
-	function OnUpdateProgress(progressArea, args)
-	{
-	    if (args.ProgressData.ProcessCompleted == "True")
-	    {
-		    if(_IsCompleted)
-		    {
-		        return false;
-		    } 
-		    var elementStartCtrl = document.getElementById("@cmdCloseCtrlId");
-		    if (elementStartCtrl != null)
-		    {
-			    InsertProgress_InvokeClickEvent(elementStartCtrl);
-		    }
-		    _IsCompleted = true;
-		    return false;
-	    }
-	}
-
-&lt;/script&gt;</value>
   </data>
   <data name="lblPrimary.Caption" xml:space="preserve">
     <value>Ziele werden eingefügt...</value>

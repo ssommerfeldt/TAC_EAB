@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="QFSDataGrid.e656ceda-b948-4445-8187-ca592634387b.ColumnHeading" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="QFSDataGrid.902352ff-fcb8-4bf1-a200-4c4e41923da4.ColumnHeading" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="QFSDataGrid.71988bbe-c45a-474f-95d9-1589b07ae228.ColumnHeading" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="QFSDataGrid.40eb1eb8-91c6-4580-9c2e-08c6e3b3a6fd.ColumnHeading" xml:space="preserve">
+    <value>Haupttelefonnummer</value>
+  </data>
+  <data name="QFSDataGrid.d0876145-6124-4fd4-99f1-6eb5c8e28ecb.ColumnHeading" xml:space="preserve">
+    <value>Haupttelefonnummer</value>
+  </data>
+  <data name="QFSDataGrid.6eb8721f-f6fe-4296-808d-499c6fd1d70c.ColumnHeading" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="QFSDataGrid.05452308-0561-4525-ae83-7b80e32462b8.ColumnHeading" xml:space="preserve">
+    <value>Rolle</value>
+  </data>
+  <data name="QFSDataGrid.103cdb0f-9abe-4080-821d-021e9bf113f9.ColumnHeading" xml:space="preserve">
+    <value>ERP-Benutzer-ID</value>
+  </data>
+  <data name="QFSDataGrid.9a8072c0-ff1b-4f45-a8be-936034d51d13.ColumnHeading" xml:space="preserve">
+    <value>ERP-Status</value>
+  </data>
+  <data name="QFSDataGrid.0e66e705-d7a7-41bd-808a-256d3389226a.Text" xml:space="preserve">
+    <value>Ansicht</value>
+  </data>
+  <data name="QFSDataGrid.1a5a2ea9-a4bd-48a8-8097-d8cfc040f85c.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="QFSDataGrid.e959c2eb-b69a-432a-bc3a-8326b8713726.ColumnHeading" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="QFSDataGrid.e959c2eb-b69a-432a-bc3a-8326b8713726.Text" xml:space="preserve">
+    <value>Ansicht</value>
+  </data>
+  <data name="QFSDataGrid.a37cb977-e51c-48b2-a05a-21b251cccab7.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="QFSDataGrid.78f5e37c-e643-4376-b804-bc5070bd1872.ColumnHeading" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="QFSDataGrid.99d042f8-5471-4ac7-b74d-69a8e1189457.ColumnHeading" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="QFSDataGrid.c29fb43e-80f3-4433-b635-d372d2529700.ColumnHeading" xml:space="preserve">
+    <value>Bundesland</value>
+  </data>
+  <data name="QFSDataGrid.ab68432b-2b32-4a5d-ad4d-b7eecede4c00.ColumnHeading" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="QFSDataGrid.06072a99-fb83-4222-86ea-ad09d8d13eb4.ColumnHeading" xml:space="preserve">
+    <value>Postleitzahl</value>
+  </data>
+  <data name="QFSDataGrid.e61e5a94-ec35-4649-aa1d-665ed0ce78ea.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+</root>

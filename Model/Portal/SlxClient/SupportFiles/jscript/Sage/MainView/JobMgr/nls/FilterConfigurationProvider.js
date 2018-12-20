@@ -1,12 +1,5 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
+define("Sage/MainView/JobMgr/nls/FilterConfigurationProvider", {
+    root: {
 
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+    }
 });

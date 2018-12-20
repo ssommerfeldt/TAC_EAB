@@ -117,55 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="localizeBaseTable.Text" xml:space="preserve">
-    <value>Basistabelle:</value>
-  </data>
-  <data name="localizeDescription.Text" xml:space="preserve">
-    <value>Beschreibung:</value>
-  </data>
-  <data name="localizeProperties.Text" xml:space="preserve">
-    <value>Eigenschaften</value>
-  </data>
   <data name="jsAliasNoSpace" xml:space="preserve">
     <value>Alias darf keine Leerzeichen enthalten.</value>
   </data>
   <data name="jsCannotSave" xml:space="preserve">
     <value>Formelfeld mit fehlenden Angaben kann nicht gespeichert werden.</value>
   </data>
-  <data name="localizeCalculation.Text" xml:space="preserve">
-    <value>Formel</value>
+  <data name="jsEditCalculatedField" xml:space="preserve">
+    <value>Berechnetes Feld bearbeiten</value>
+  </data>
+  <data name="jsEnterAlias" xml:space="preserve">
+    <value>Geben Sie einen Alias für diese Berechnung ein.</value>
+  </data>
+  <data name="jsEnterName" xml:space="preserve">
+    <value>Geben Sie einen Namen für diese Berechnung ein.</value>
+  </data>
+  <data name="jsErrorFieldNotFound" xml:space="preserve">
+    <value>Fehler: Feld in Feldersammlung nicht gefunden:</value>
+  </data>
+  <data name="jsNameUpperCase" xml:space="preserve">
+    <value>Ein gültiger Name beginnt mit einem Großbuchstaben.</value>
+  </data>
+  <data name="localizeAddCalcField.Text" xml:space="preserve">
+    <value>Berechnetes Feld hinzufügen</value>
+  </data>
+  <data name="localizeBaseTable.Text" xml:space="preserve">
+    <value>Basistabelle:</value>
   </data>
   <data name="localizeCalcType.Text" xml:space="preserve">
     <value>Berechnungstyp:</value>
   </data>
-  <data name="localizeNumeric.Text" xml:space="preserve">
-    <value>Numerisch</value>
-  </data>
-  <data name="jsEnterName" xml:space="preserve">
-    <value>Geben Sie einen Namen für diese Formel ein.</value>
-  </data>
-  <data name="jsErrorFieldNotFound" xml:space="preserve">
-    <value>Fehler: Feld nicht gefunden in Feldersammlung:</value>
-  </data>
-  <data name="localizeOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="localizeNameAlias.Text" xml:space="preserve">
-    <value>Name/Alias:</value>
-  </data>
-  <data name="jsEnterAlias" xml:space="preserve">
-    <value>Geben Sie einen Alias für diese Formel ein.</value>
-  </data>
-  <data name="localizeString.Text" xml:space="preserve">
-    <value>Zeichenfolge</value>
-  </data>
-  <data name="jsEditCalculatedField" xml:space="preserve">
-    <value>Berechnetes Feld bearbeiten</value>
+  <data name="localizeCalculation.Text" xml:space="preserve">
+    <value>Berechnung</value>
   </data>
   <data name="localizeCancel.Text" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="localizeAddCalcField.Text" xml:space="preserve">
-    <value>Berechnetes Feld hinzufügen</value>
+  <data name="localizeDescription.Text" xml:space="preserve">
+    <value>Beschreibung:</value>
+  </data>
+  <data name="localizeNameAlias.Text" xml:space="preserve">
+    <value>Name/Alias:</value>
+  </data>
+  <data name="localizeNumeric.Text" xml:space="preserve">
+    <value>Numerisch</value>
+  </data>
+  <data name="localizeOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="localizeProperties.Text" xml:space="preserve">
+    <value>Eigenschaften</value>
+  </data>
+  <data name="localizeString.Text" xml:space="preserve">
+    <value>Zeichenfolge</value>
   </data>
 </root>

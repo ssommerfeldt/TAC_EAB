@@ -117,14 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ValidationMsgNoSource" xml:space="preserve">
-    <value>Erforderlich</value>
+  <data name="SourceSelectionContainer.Caption" xml:space="preserve">
+    <value>Benutzer:</value>
+  </data>
+  <data name="SourceUserList.Caption" xml:space="preserve">
+    <value>Benutzer:</value>
   </data>
   <data name="SourceTemplateList.Caption" xml:space="preserve">
     <value>Vorlage:</value>
   </data>
+  <data name="SourceSelectionContainer_item1.Text" xml:space="preserve">
+    <value>Vorlage</value>
+  </data>
+  <data name="SourceSelectionContainer_item0.Text" xml:space="preserve">
+    <value>Vorhandener Benutzer</value>
+  </data>
+  <data name="OkButton.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="CancelButton.Caption" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
   <data name="chkGeneral.Caption" xml:space="preserve">
     <value>Allgemein</value>
+  </data>
+  <data name="chkEmployee.Caption" xml:space="preserve">
+    <value>Mitarbeiter</value>
+  </data>
+  <data name="chkSecurity.Caption" xml:space="preserve">
+    <value>Sicherheit</value>
   </data>
   <data name="chkTeams.Caption" xml:space="preserve">
     <value>Teams</value>
@@ -132,38 +153,23 @@
   <data name="chkFunctionSecurity.Caption" xml:space="preserve">
     <value>Funktionssicherheit</value>
   </data>
-  <data name="chkCustom.Caption" xml:space="preserve">
-    <value>Benutzerdefiniert</value>
-  </data>
-  <data name="SourceSelectionContainer_item0.Text" xml:space="preserve">
-    <value>Vorhandener Benutzer</value>
-  </data>
-  <data name="CancelButton.Caption" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="lueUser.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
-    <value>Titel</value>
-  </data>
   <data name="chkCalendar.Caption" xml:space="preserve">
     <value>Kalender</value>
   </data>
-  <data name="SourceSelectionContainer_item1.Text" xml:space="preserve">
-    <value>Vorlage</value>
+  <data name="chkClientOptions.Caption" xml:space="preserve">
+    <value>Clientoptionen (Clientsystem)</value>
   </data>
-  <data name="chkSecurity.Caption" xml:space="preserve">
-    <value>Sicherheit</value>
+  <data name="chkServiceSupport.Caption" xml:space="preserve">
+    <value>Service/Support</value>
   </data>
-  <data name="LookupUserDialogTitle" xml:space="preserve">
-    <value>Benutzer suchen</value>
+  <data name="chkCustom.Caption" xml:space="preserve">
+    <value>Benutzerdefiniert</value>
   </data>
   <data name="dialogInfo" xml:space="preserve">
-    <value>Wählen Sie ein Benutzerprofil oder eine Vorlage aus, das/die zu anderen Benutzern kopiert werden soll.  Durch das Kopieren des Profils werden die aktuellen Einstellungen überschrieben.</value>
+    <value>Wählen Sie ein Benutzerprofil oder eine Vorlage aus, das/die zu anderen Benutzern kopiert werden soll. Durch das Kopieren des Profils werden die aktuellen Einstellungen überschrieben.</value>
   </data>
-  <data name="LookupTemplateDialogTitle" xml:space="preserve">
-    <value>Vorlage suchen</value>
-  </data>
-  <data name="OkButton.Caption" xml:space="preserve">
-    <value>OK</value>
+  <data name="sourceLabel" xml:space="preserve">
+    <value>Profil kopieren von:</value>
   </data>
   <data name="lueUser.LookupProperties.UserInfo.Department.PropertyHeader" xml:space="preserve">
     <value>Abteilung</value>
@@ -171,25 +177,19 @@
   <data name="lueUser.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
     <value>Region</value>
   </data>
+  <data name="lueUser.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
+    <value>Titel</value>
+  </data>
   <data name="lueUser.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="chkClientOptions.Caption" xml:space="preserve">
-    <value>Clientoptionen (Client-System)</value>
+  <data name="ValidationMsgNoSource" xml:space="preserve">
+    <value>Erforderlich</value>
   </data>
-  <data name="sourceLabel" xml:space="preserve">
-    <value>Profil kopieren von:</value>
+  <data name="LookupTemplateDialogTitle" xml:space="preserve">
+    <value>Vorlage suchen</value>
   </data>
-  <data name="chkEmployee.Caption" xml:space="preserve">
-    <value>Mitarbeiter</value>
-  </data>
-  <data name="chkServiceSupport.Caption" xml:space="preserve">
-    <value>Service/Support</value>
-  </data>
-  <data name="SourceUserList.Caption" xml:space="preserve">
-    <value>Benutzer:</value>
-  </data>
-  <data name="SourceSelectionContainer.Caption" xml:space="preserve">
-    <value>Benutzer:</value>
+  <data name="LookupUserDialogTitle" xml:space="preserve">
+    <value>Benutzer suchen</value>
   </data>
 </root>

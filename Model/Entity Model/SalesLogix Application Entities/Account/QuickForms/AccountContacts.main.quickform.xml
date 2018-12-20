@@ -15,7 +15,6 @@
       <QFSDataGrid>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>grdContacts</ControlId>
@@ -43,7 +42,7 @@
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>Ascending</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>LastName</SortField>
+            <SortField>NameLF</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <Destination />
             <Image />
@@ -76,7 +75,7 @@
             <ColumnId>41bb1751-36a5-46cf-9198-43cc531a3cd1</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>Ascending</SortDirection>
+            <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
             <SortField>WorkPhone</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
@@ -201,7 +200,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -216,7 +214,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -231,7 +228,6 @@
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>cmdIncludeContact</ControlId>

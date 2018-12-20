@@ -4,19 +4,19 @@ using System.IO;
 using System.Reflection;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using log4net;
+using Sage.Entity.Interfaces;
 using Sage.Platform;
+using Sage.Platform.Application;
 using Sage.Platform.Application.UI.Web;
 using Sage.Platform.Application.UI.Web.Threading;
 using Sage.Platform.Orm;
 using Sage.Platform.WebPortal;
 using Sage.Platform.WebPortal.Services;
-using Sage.Platform.Application;
-using Sage.Entity.Interfaces;
 using Sage.SalesLogix.Services.Import;
 using Sage.SalesLogix.Services.Import.Actions;
-using log4net;
 
-public partial class StepReview : UserControl
+public partial class SmartParts_Lead_StepReview : UserControl
 {
     private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -127,27 +127,6 @@ public partial class StepReview : UserControl
         {
             ThreadPoolHelper.QueueTask(OnStartImportProcess);
         }
-        //string sourceFileName = ((ImportCSVReader)importManager.SourceReader).SourceFileName;
-        //if (sourceFileName != null)
-        //{
-        //string targetFileName = String.Format("{0}{1}-{2}.csv", ImportService.GetImportCompletedPath(),
-        //                                      importManager.ImportHistory.AlternateKeyPrefix,
-        //                                      importManager.ImportHistory.AlternateKeySuffix);
-        //    ImportService.MoveToPath(sourceFileName, targetFileName);
-        //}
-        //RemoveJob(importManager);
-
-
-        //importManager.Dispose();
-        //object objShutDown = Page.Session["SessionShutDown"];
-        //if (Convert.ToBoolean(objShutDown))
-        //{
-        //    if (CanShutDown())
-        //    {
-        //        ApplicationContext.Shutdown();
-        //        Page.Session.Abandon();
-        //    }
-        //}
     }
 
     /// <summary>
@@ -191,7 +170,7 @@ public partial class StepReview : UserControl
     /// </summary>
     private void SetImportSourceValue()
     {
-        ImportManager importManager = Page.Session["importManager"] as ImportManager;
+        var importManager = (ImportManager) Page.Session["importManager"];
         ImportTargetProperty prop = importManager.EntityManager.GetEntityProperty("ImportSource");
         if (prop == null) return;
         string importSource = Path.GetFileName(importManager.SourceFileName);
@@ -213,7 +192,7 @@ public partial class StepReview : UserControl
         Page.Session["importJobs"] = jobs;
     }
 
-    private void AddCrossReferenceMananager(ImportManager importManager)
+    private static void AddCrossReferenceMananager(ImportManager importManager)
     {
         IImportTransformationProvider transformationProvider = importManager.TransformationProvider;
         if (transformationProvider.CrossRefManager == null || transformationProvider.CrossRefManager.Sets.Count == 0)
@@ -251,18 +230,12 @@ public partial class StepReview : UserControl
         Page.Session["importJobs"] = jobs;
     }
 
-    private bool CanShutDown()
-    {
-        IDictionary<string, string> jobs = Page.Session["importJobs"] as Dictionary<string, string>;
-        return jobs != null && jobs.Count == 0;
-    }
-
     /// <summary>
     /// Starts the test import process.
     /// </summary>
     private void OnStartImportProcess(Object args)
     {
-        ImportManager importManager = Page.Session["importManager"] as ImportManager;
+        var importManager = (ImportManager) Page.Session["importManager"];
         importManager.StartImportProcess();
     }
 }

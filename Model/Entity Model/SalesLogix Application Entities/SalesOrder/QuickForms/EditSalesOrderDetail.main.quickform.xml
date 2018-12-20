@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="09a0ae8d-7ed4-4553-b55c-f7238f4d6f90" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="09a0ae8d-7ed4-4553-b55c-f7238f4d6f90" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-11-16T15:12:23.1493139Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
@@ -56,6 +56,7 @@ if (salesOrder != null)
         </OnChangeAction>
         <Required>false</Required>
         <DecimalDigits>
+          <DecimalDigits>4</DecimalDigits>
           <Strict>false</Strict>
         </DecimalDigits>
         <FormatType>Percent</FormatType>
@@ -186,6 +187,7 @@ if (salesOrder != null)
         </OnChangeAction>
         <Required>false</Required>
         <DecimalDigits>
+          <DecimalDigits>4</DecimalDigits>
           <Strict>false</Strict>
         </DecimalDigits>
         <FormatType>Percent</FormatType>

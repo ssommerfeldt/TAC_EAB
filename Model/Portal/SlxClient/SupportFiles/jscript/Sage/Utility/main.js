@@ -1,4 +1,4 @@
-define([
+define("Sage/Utility/main", [
     "Sage/Utility/Activity",
     "Sage/Utility/Dashboard",
     "Sage/Utility/Groups",
@@ -13,7 +13,16 @@ define([
     "Sage/Utility/UserOptions",
     "Sage/Utility/Validate",
     "Sage/Utility/PickList",
-    "Sage/Utility/Jobs"
+    "Sage/Utility/Jobs",
+    "Sage/Utility/Entity",
+    "Sage/Utility/Workspace",
+    "Sage/Utility/GeneralSchemaReader",
+    "Sage/Utility/_SchemaReaderHelper",
+    "Sage/Utility/FilterSchemaReader",
+    "Sage/Utility/PickListSchemaReader",
+    "Sage/Utility/PropertySchemaReader",
+    "Sage/Utility/PricingAndAvailability",
+    "Sage/Utility/IONWorkflowHelper"
 ], function() {
     // module:
         // Sage/Utility/main

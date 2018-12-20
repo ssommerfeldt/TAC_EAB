@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/DesignSurface", [
     'dojo/query',
     'dojo/keys',
     'dojo/string',
@@ -192,13 +192,6 @@ define([
     var _CellContextMenu = declare([Menu], {
         owner: null,
 
-        aboveText: 'Above',
-        belowText: 'Below',
-        leftText: 'Left',
-        rightText: 'Right',
-        insertRowText: 'Insert Row',
-        insertColumnText: 'Insert Column',
-
         constructor: function() {
             lang.mixin(this, localization);
         },
@@ -256,11 +249,6 @@ define([
     var _RowContextMenu = declare([Menu], {
         owner: null,
 
-        aboveText: 'Above',
-        belowText: 'Below',
-        insertRowText: 'Insert Row',
-        deleteRowText: 'Delete Row',
-
         constructor: function() {
             lang.mixin(this, localization);
         },
@@ -316,11 +304,6 @@ define([
 
     var _ColumnContextMenu = declare([Menu], {
         owner: null,
-
-        leftText: 'Left',
-        rightText: 'Right',
-        insertColumnText: 'Insert Column',
-        deleteColumnText: 'Delete Column',
 
         constructor: function() {
             lang.mixin(this, localization);
@@ -399,13 +382,6 @@ define([
         tableNode: null,
         singleSelection: true,
         designGroup: 'default',
-
-        bisectionErrorText: 'The placement will cause another control to be bisected.',
-        rowBoundsErrorText: 'The chosen row is out of bounds.',
-        columnBoundsErrorText: 'The chosen column is out of bounds.',
-        rowSpanBoundsErrorText: 'The chosen row span is out of bounds.',
-        columnSpanBoundsErrorText: 'The chosen column span is out of bounds.',
-        occupiedErrorText: 'There is not enough empty space for the chosen size.',
 
         _getDesignGroupAttr: function() {
             return this._designGroup;
@@ -698,14 +674,14 @@ define([
 
             if (cell && domAttr.has(cell, 'data-select-row'))
                 return {
-                    designer: this.form && this.form.get('rows')[parseInt(domAttr.get(cell, 'data-select-row'))],
+                    designer: this.form && this.form.get('rows')[parseInt(domAttr.get(cell, 'data-select-row'), 10)],
                     styleNode: cell,
                     focusNode: cell
                 };
 
             if (cell && domAttr.has(cell, 'data-select-column'))
                 return {
-                    designer: this.form && this.form.get('columns')[parseInt(domAttr.get(cell, 'data-select-column'))],
+                    designer: this.form && this.form.get('columns')[parseInt(domAttr.get(cell, 'data-select-column'), 10)],
                     styleNode: cell,
                     focusNode: cell
                 };

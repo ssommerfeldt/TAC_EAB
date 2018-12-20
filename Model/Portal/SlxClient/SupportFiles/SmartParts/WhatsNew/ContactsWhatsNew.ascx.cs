@@ -230,16 +230,11 @@ public partial class SmartParts_ConWhatsNew_ConWhatsNew : UserControl, ISmartPar
     /// <returns></returns>
 	public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
 	{
-		ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-
-		Label lbl = new Label();
-		lbl.Text = GetLocalResourceObject("Contacts_Caption").ToString();
-
-		tinfo.LeftTools.Add(lbl);
-		tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Contacts_24x24.gif");
-
-		return tinfo;
-	}
+        ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
+        tinfo.Title = GetLocalResourceObject("Contacts_Caption").ToString();
+        tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Contacts_24x24.gif");
+        return tinfo;
+    }
 
 	#endregion
 }

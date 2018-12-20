@@ -1,0 +1,185 @@
+<div>
+    <div dojotype="dijit.Dialog" title="" dojoattachpoint="_dialog" dojoattachevent="onHide:_onDlgHide" style="width:60%;">
+        <div data-dojo-type="dijit.form.Form" data-dojo-attach-point="EditRelationshipsForm">
+            <div class="recur-activity-dialog">
+
+                <table class="detailTableContainer formtable HundredPercentWidth">
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="">
+                                <input type="checkbox" data-dojo-attach-point="IncludeChild"
+                                       data-dojo-type="dijit/form/CheckBox" />
+                                <label style="line-height:32px !important;" data-dojo-attach-point="lblIncludeChild">
+                                    Include child relationship property in the parent entity <label data-dojo-attach-point="lblParent"></label>
+                                </label>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label style="line-height:32px !important;" data-dojo-attach-point="lblName">
+                                    Property Name
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input disabled data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required: true" data-dojo-attach-point="childName" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label style="line-height:32px !important;" data-dojo-attach-point="lblDisplayName">
+                                    Display Name
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required: true" data-dojo-attach-point="childDisplayName" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label style="" data-dojo-attach-point="lblImport">
+                                    Import
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input type="checkbox" data-dojo-attach-point="childCanImport"
+                                       data-dojo-type="dijit/form/CheckBox" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label style="" data-dojo-attach-point="lblMatch">
+                                    Match
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input type="checkbox" data-dojo-attach-point="childCanMatch"
+                                       data-dojo-type="dijit/form/CheckBox" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label data-dojo-attach-point="lblAudit">
+                                    Audited
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input type="checkbox" data-dojo-attach-point="childAudited"
+                                       data-dojo-type="dijit/form/CheckBox" />
+                            </div>
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label style="line-height:32px !important;" data-dojo-attach-point="lblRelationship">
+                                    Relationship
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <div data-dojo-attach-point="dpCardinality"></div>
+                            </div>
+                            <hr />
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="detailTableContainer formtable HundredPercentWidth">
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="">
+                                <input type="checkbox" data-dojo-attach-point="IncludeParent"
+                                       data-dojo-type="dijit/form/CheckBox" />
+                                <label style="line-height:32px !important;" data-dojo-attach-point="lblIncludeParent">
+                                    Include parent relationship property in the child entity <label data-dojo-attach-point="lblChild"></label>
+                                </label>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label style="line-height:32px !important;" data-dojo-attach-point="lblParentName">
+                                    Property Name
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input disabled data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required: true" data-dojo-attach-point="parentName" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label style="line-height:32px !important;" data-dojo-attach-point="lblParentDisplayName">
+                                    Display Name
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input data-dojo-type="dijit.form.ValidationTextBox" data-dojo-props="required: true" data-dojo-attach-point="parentDisplayName" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label style="" data-dojo-attach-point="lblParentImport">
+                                    Import
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input type="checkbox" data-dojo-attach-point="parentCanImport"
+                                       data-dojo-type="dijit/form/CheckBox" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label style="" data-dojo-attach-point="lblParentMatch">
+                                    Match
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input type="checkbox" data-dojo-attach-point="parentCanMatch"
+                                       data-dojo-type="dijit/form/CheckBox" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="FManagerDialogFieldLabel">
+                            <div style="padding:0 !important;" class="lbl alignright">
+                                <label data-dojo-attach-point="lblParentAudit">
+                                    Audited
+                                </label>
+                            </div>
+                            <div class="fld  dijitInline" data-dojo-attach-point="filterName">
+                                <input type="checkbox" data-dojo-attach-point="parentAudited"
+                                       data-dojo-type="dijit/form/CheckBox" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="button-bar alignright">
+                    <div data-dojo-type="dijit.form.Button" id="{%= $.id%}_btn_OK" name="btn_OK" dojoattachpoint="btn_OK" dojoattachevent="onClick:_okClick">OK</div>
+                    <div data-dojo-type="dijit.form.Button" id="{%= $.id%}_btn_Cancel" name="btn_Cancel" dojoattachpoint="btn_Cancel" dojoattachevent="onClick:_cancelClick">Cancel</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

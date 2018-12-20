@@ -1,4 +1,4 @@
-define([
+define("Sage/MainView/main", [
     "Sage/MainView/ActivityManager",
     "Sage/MainView/SecurityManager",
     "Sage/MainView/ActivityMgr/ActivityCalendar",
@@ -7,13 +7,23 @@ define([
     "Sage/MainView/Contact/ContactUserAssociationEditor",
     "Sage/MainView/IntegrationContract/MatchingOptionsConfig",
     "Sage/MainView/IntegrationContract/AdvancedSearchOptions",
-    "Sage/MainView/IntegrationContract/InvoiceRTDV",
-    "Sage/MainView/IntegrationContract/SalesOrderRTDV",
-    "Sage/MainView/IntegrationContract/SalesQuoteRTDV",
-    "Sage/MainView/IntegrationContract/CustomerPaymentsRTDV",
     "Sage/MainView/JobManager",
-    "Sage/MainView/ReportManager"
-], function() {
+    "Sage/MainView/ReportManager",
+    "Sage/MainView/EntityManager",
+    "Sage/MainView/Options/OptionsDialog",
+    "Sage/MainView/FormManager",
+    "Sage/MainView/GroupManager",
+    "Sage/MainView/IntegrationContract/SyncResultsHistory",
+    "Sage/MainView/_BaseListPanelConfig",
+    "Sage/MainView/Lead/ImportLeadsWizard",
+    "Sage/MainView/ExchangeRate/ExchangeRateDialog",
+    "Sage/MainView/IntegrationContract/PromoteWidget",
+    "Sage/MainView/IntegrationContract/PricingAvailabilityWidget",
+    "Sage/MainView/CountryCodeMapping/CountryAliasConversion",
+    "Sage/MainView/CountryCodeMapping/CountryAliasConversionUtility",
+    "Sage/MainView/CountryCodeMapping/_CountryAliasConversionDialogBase"
+
+], function () {
     // module:
         // Sage/MainView/main
     // summary:

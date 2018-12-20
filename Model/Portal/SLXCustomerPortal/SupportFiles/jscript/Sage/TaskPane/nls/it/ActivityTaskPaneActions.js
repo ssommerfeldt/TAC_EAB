@@ -1,3 +1,1 @@
-define((
-{}
-));
+define("Sage/TaskPane/nls/it/ActivityTaskPaneActions", {});

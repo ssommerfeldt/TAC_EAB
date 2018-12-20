@@ -1,4 +1,4 @@
-define((
+define("Sage/QuickForms/Design/Editors/nls/en/GenericBasicPropertyEditor", (
 { titleText: 'Basic',
   appearanceText: 'Appearance',
   captionText: 'Caption:',

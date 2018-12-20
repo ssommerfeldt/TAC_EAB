@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/MenuBar", [
        'dijit/MenuBar',
        'Sage/UI/MenuItem',
        'Sage/UI/PopupMenuBarItem',
@@ -7,10 +7,11 @@ define([
        'dijit/Menu',
        'Sage/UI/MenuBarItem',
        'dijit/MenuSeparator',
-       'dojo/_base/declare'
+       'dojo/_base/declare',
+       'dojo/has'
 ],
-function (menubar, menuItem, popupMenuBarItem, popupMenuItem, dijitMenu, menuBarItem, menuSeparator, declare) {
-    var widget = declare('Sage.UI.MenuBar', [menubar], {
+function (MenuBar, MenuItem, PopupMenuBarItem, PopupMenuItem, Menu, MenuBarItem, MenuSeparator, declare, has) {
+    var widget = declare('Sage.UI.MenuBar', [MenuBar], {
         postMixInProperties: function () {
             // create a single store from all data sorces needed
             this.store = Sage.UI.DataStore.MenuBar || {};
@@ -31,10 +32,10 @@ function (menubar, menuItem, popupMenuBarItem, popupMenuItem, dijitMenu, menuBar
                     imageClass: menuConfig.imageClass || ''
                 };
                 if (menuConfig.items && menuConfig.items.length > 0) {
-                    var menu = new dijitMenu({});
+                    var menu = new Menu({});
                     this._addItemsToMenu(menuConfig.items, menu, mid);
                     config['popup'] = menu;
-                    this.addChild(new popupMenuBarItem(config));
+                    this.addChild(new PopupMenuBarItem(config));
                 } else {
                     //some don't have children, they are just buttons...
                     config['onClick'] = dojo.hitch(config, function () {
@@ -42,7 +43,7 @@ function (menubar, menuItem, popupMenuBarItem, popupMenuItem, dijitMenu, menuBar
                             window.location.href = this.ref;
                         }
                     });
-                    this.addChild(new menuBarItem(config));
+                    this.addChild(new MenuBarItem(config));
                 }
             }
         },
@@ -52,7 +53,7 @@ function (menubar, menuItem, popupMenuBarItem, popupMenuItem, dijitMenu, menuBar
             for (var i = 0; i < len; i++) {
                 var item = items[i];
                 if (item.isspacer || item.text === '-') {
-                    menu.addChild(new menuSeparator({}));
+                    menu.addChild(new MenuSeparator({}));
                 } else {
 
                     var config = {
@@ -65,7 +66,21 @@ function (menubar, menuItem, popupMenuBarItem, popupMenuItem, dijitMenu, menuBar
                     if (item.id !== '') {
                         config['id'] = idContainer + '_' + item.id;
                     }
-                    if (item.href !== '') {
+                    // TODO: This is a work-around for 
+                    // https://social.msdn.microsoft.com/Forums/ie/en-US/99665041-557a-4c5f-81d8-a24230ecd67f/ie10-dispatchevent-calls-wrong-listeners 
+                    // until we come up with a better way to distinguish between javascript links and legitimate href items. 
+                    // More info/context here: http://dojo-toolkit.33424.n3.nabble.com/Weird-TabContainer-Tabs-Title-behavior-IE9-Dojo-1-8-1-td3992531.html
+                    // Can't put javascript: links through href handler in IE10 without breaking tab containers. This is breaking
+                    // Activities and History dialog tabs.
+                    var javascriptLinkRegex = /javascript:/g;
+                    if ((has('ie') === 10) && javascriptLinkRegex.test(item.href))
+                    {
+                        config['ref'] = item.href.replace(javascriptLinkRegex, '');
+                        config['onClick'] = function () {
+                            eval(this.ref);
+                        };
+                    }
+                    else if (item.href !== '') {
                         config['onClick'] = function () {
                             if (this.ref !== '') {
                                 try {
@@ -76,12 +91,12 @@ function (menubar, menuItem, popupMenuBarItem, popupMenuItem, dijitMenu, menuBar
                     }
                     if (item.submenu.length > 0) {
                         //recursively add submenus as appropriate...
-                        var popup = new dijitMenu({});
+                        var popup = new Menu({});
                         this._addItemsToMenu(item.submenu, popup, item.id || '');
                         config['popup'] = popup;
-                        menu.addChild(new popupMenuItem(config));
+                        menu.addChild(new PopupMenuItem(config));
                     } else {
-                        menu.addChild(new menuItem(config));
+                        menu.addChild(new MenuItem(config));
                     }
                 }
             }

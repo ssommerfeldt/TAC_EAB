@@ -10,6 +10,13 @@
         this.accountingSystemHandlesSO = obj.AccountingSystemHandlesSO;
         this.currentUserEndpoints = obj.UserEndpoints;
         this.hasUserDefinedEndpoints = obj.HasUserDefinedEndpoints;
+        this.isCPQIntegrationEnabled = obj.IsCPQIntegrationEnabled;
+        this.isBackOfficeIntegrationEnabled = obj.IsBackOfficeIntegrationEnabled;
+        this.isQuoteCRMPricingEnabled = obj.IsQuoteCRMPricingEnabled;
+        this.isSalesOrderCRMPricingEnabled = obj.IsSalesOrderCRMPricingEnabled;
+        this.isOpportunityCRMPricingEnabled = obj.IsOpportunityCRMPricingEnabled;
+        this.isProductCRMPricingEnabled = obj.IsProductCRMPricingEnabled;
+		this.isWorkflowIntegrationEnabled = obj.IsWorkflowIntegrationEnabled;
     }
 };
 Sage.IntegrationContractService.prototype.getCurrentOperatingCompanyId = function () {
@@ -37,6 +44,20 @@ function isIntegrationContractEnabled() {
     var service = Sage.Services.getService("IntegrationContractService");
     if (service != null && typeof service !== "undefined") {
         return service.isIntegrationEnabled;
+    }
+    return false;
+}
+
+function isLocalCRMPricingEnabled(entityName) {
+    var service = Sage.Services.getService("IntegrationContractService");
+    if (service) {
+		switch (entityName) 
+		{
+			case 'Quote': return service.isQuoteCRMPricingEnabled;
+			case 'Opportunity': return service.isOpportunityCRMPricingEnabled;
+			case 'SalesOrder': return service.isSalesOrderCRMPricingEnabled;
+			default: return "";
+		}    
     }
     return false;
 }
@@ -69,6 +90,29 @@ function hasUserDefinedEndpoints() {
     var service = Sage.Services.getService("IntegrationContractService");
     if (service != null && typeof service !== "undefined") {
         return service.hasUserDefinedEndpoints;
+    }
+    return false;
+}
+
+function isCPQIntegrationEnabled() {
+    var service = Sage.Services.getService("IntegrationContractService");
+    if (service != null && typeof service !== "undefined") {
+        return service.isCPQIntegrationEnabled;
+    }
+    return false;
+}
+
+function isBackOfficeIntegrationEnabled() {
+    var service = Sage.Services.getService("IntegrationContractService");
+    if (service != null && typeof service !== "undefined") {
+        return service.isBackOfficeIntegrationEnabled;
+    }
+    return false;
+}
+function isWorkflowIntegrationEnabled() {
+    var service = Sage.Services.getService("IntegrationContractService");
+    if (service != null && typeof service !== "undefined") {
+        return service.isWorkflowIntegrationEnabled;
     }
     return false;
 }

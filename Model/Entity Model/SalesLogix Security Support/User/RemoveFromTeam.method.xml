@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="ddf4f8e1-b542-4169-a883-511f2efb04be" lastModifiedUtc="2010-02-08T23:25:54.205503Z" name="RemoveFromTeam" methodType="Rule" actionType="None" returnMode="None">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="ddf4f8e1-b542-4169-a883-511f2efb04be" lastModifiedUtc="2015-06-25T15:36:08.9862897Z" name="RemoveFromTeam" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -16,5 +16,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

@@ -117,31 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Yes" xml:space="preserve">
-    <value>Sì</value>
+  <data name="Error_FileInUse_lz" xml:space="preserve">
+    <value>Impossibile aprire il file perché è in uso.</value>
+  </data>
+  <data name="Error_NoFileRequested_lz" xml:space="preserve">
+    <value>Nessun file richiesto.</value>
+  </data>
+  <data name="Error_RequestedFileNotFoundFmt" xml:space="preserve">
+    <value>Il file richiesto "{0}" non è stato trovato sul server.</value>
   </data>
   <data name="DefaultUnknownFileName" xml:space="preserve">
     <value>File sconosciuto</value>
   </data>
-  <data name="OK" xml:space="preserve">
-    <value>OK</value>
+  <data name="FileRequested" xml:space="preserve">
+    <value>Il file è stato richiesto e sarà disponibile alla prossima connessione.</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
-  <data name="Error_RequestedFileNotFoundFmt" xml:space="preserve">
-    <value>Il file richiesto: {0} non è stato trovato sul server.</value>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="RequestFileMsg" xml:space="preserve">
-    <value>Quel file non è stato scaricato, vorresti ottenerlo la prossima volta che ti connetti?</value>
+    <value>Il file non è stato scaricato. Riceverlo alla prossima connessione?</value>
   </data>
-  <data name="Error_FileInUse_lz" xml:space="preserve">
-    <value>Impossibile aprire il file perchè è in uso.</value>
-  </data>
-  <data name="Error_NoFileRequested_lz" xml:space="preserve">
-    <value>Nessun file è stato richiesto.</value>
-  </data>
-  <data name="FileRequested" xml:space="preserve">
-    <value>Il file è stato richiesta e sarà disponibile alla prossima connessione.</value>
+  <data name="Yes" xml:space="preserve">
+    <value>Sì</value>
   </data>
 </root>

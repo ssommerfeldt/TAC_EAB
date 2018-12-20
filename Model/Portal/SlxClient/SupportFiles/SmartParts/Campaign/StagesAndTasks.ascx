@@ -13,21 +13,21 @@
     </asp:Panel>
 </div>
 <SalesLogix:SlxGridView runat="server" ID="grdStages" GridLines="None" AutoGenerateColumns="False" CellPadding="4" CssClass="datagrid"
-    AlternatingRowStyle-CssClass="rowdk" RowStyle-CssClass="rowlt" ShowEmptyTable="true" EmptyTableRowText="<%$ resources: grdStages.EmptyTableRowText %>"
+    AlternatingRowStyle-CssClass="dojoxGridRowOdd" RowStyle-CssClass="dojoxGridRow" HeaderStyle-CssClass="dojoxGridHeader" ShowEmptyTable="true" EmptyTableRowText="<%$ resources: grdStages.EmptyTableRowText %>"
     OnRowDataBound="grdStages_RowDataBound" OnRowCommand="grdStages_RowCommand" OnRowEditing="grdStages_RowEditing" OnRowDeleting="grdStages_RowDeleting"
-    DataKeyNames="Id" EnableViewState="false" ExpandableRows="false" ResizableColumns="true">
+    DataKeyNames="Id" EnableViewState="false" ExpandableRows="false" ResizableColumns="true" OnSorting="grdStages_Sorting" CurrentSortExpression="NeededDate" CurrentSortDirection="Ascending" AllowSorting="true">
     <Columns>
-        <asp:BoundField ReadOnly="True" DataField="Description" HeaderText="<%$ resources: grdStages.Description.ColumnHeading %>" />
-        <asp:BoundField ReadOnly="True" DataField="Status" HeaderText="<%$ resources: grdStages.Status.ColumnHeading %>" />
-        <asp:BoundField ReadOnly="True" DataField="Priority" HeaderText="<%$ resources: grdStages.Priority.ColumnHeading %>" />
-        <asp:TemplateField HeaderText="<%$ resources: grdStages.NeededDate.ColumnHeading %>">
+        <asp:BoundField ReadOnly="True" DataField="Description" HeaderText="<%$ resources: grdStages.Description.ColumnHeading %>" SortExpression="Description" />
+        <asp:BoundField ReadOnly="True" DataField="Status" HeaderText="<%$ resources: grdStages.Status.ColumnHeading %>" SortExpression="Status" />
+        <asp:BoundField ReadOnly="True" DataField="Priority" HeaderText="<%$ resources: grdStages.Priority.ColumnHeading %>" SortExpression="Priority" />
+        <asp:TemplateField HeaderText="<%$ resources: grdStages.NeededDate.ColumnHeading %>" SortExpression="NeededDate">
             <ItemTemplate>
                 <SalesLogix:DateTimePicker runat="server" ID="dtpNeededDate" Enabled="true" DisplayDate="true" DisplayTime="false" Timeless="True"
                     DisplayMode="AsText" AutoPostBack="false">
                 </SalesLogix:DateTimePicker>
             </ItemTemplate>   
         </asp:TemplateField>
-        <asp:TemplateField HeaderText="<%$ resources: grdStages.PercentComplete.ColumnHeading %>">
+        <asp:TemplateField HeaderText="<%$ resources: grdStages.PercentComplete.ColumnHeading %>" SortExpression="PercentComplete">
             <ItemTemplate>
             <asp:Label ID="lblPercent" runat="server"></asp:Label>                    
             </ItemTemplate>

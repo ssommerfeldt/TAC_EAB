@@ -37,7 +37,9 @@
                         </ItemTemplate>
                         </asp:TemplateField>
                     <asp:ButtonField ButtonType="Button" ItemStyle-Width="100px" CommandName="Edit" Text="<%$ resources: grdActions.Define.Column %>"
-                        ItemStyle-HorizontalAlign="Center" />
+                        ItemStyle-HorizontalAlign="Center" >
+                    <ControlStyle CssClass="slxbutton" />
+                    </asp:ButtonField>
                     <asp:TemplateField ItemStyle-Width="25px" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center"
                         HeaderText="<%$ resources: grdActions.IsActive.ColumnHeading %>">
                         <ItemTemplate>

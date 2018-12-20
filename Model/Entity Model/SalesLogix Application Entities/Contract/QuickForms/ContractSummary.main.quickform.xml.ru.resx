@@ -117,70 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="chkIsActive.Caption" xml:space="preserve">
+    <value>Активно:</value>
+  </data>
+  <data name="dtpStartDate.Caption" xml:space="preserve">
+    <value>Дата начала:</value>
+  </data>
   <data name="dteEndDate.Caption" xml:space="preserve">
-    <value>Дата оконч.:</value>
+    <value>Дата окончания:</value>
+  </data>
+  <data name="lnkAccount.Caption" xml:space="preserve">
+    <value>Клиент:</value>
+  </data>
+  <data name="lnkContact.Caption" xml:space="preserve">
+    <value>Контакт:</value>
+  </data>
+  <data name="pklService.Caption" xml:space="preserve">
+    <value>Служба:</value>
+  </data>
+  <data name="dtpPurchaseDate.Caption" xml:space="preserve">
+    <value>Дата покупки:</value>
+  </data>
+  <data name="agcAssets.Caption" xml:space="preserve">
+    <value>Покрываемый проданный товар:</value>
+  </data>
+  <data name="agcTickets.Caption" xml:space="preserve">
+    <value>Заявки:</value>
+  </data>
+  <data name="agcTickets_grid.f67da130-d1ba-4408-a5c2-6e70f6a2ae6d.ColumnHeading" xml:space="preserve">
+    <value>ИД заявки</value>
   </data>
   <data name="agcTickets_grid.50f09269-9e56-4d88-8b8b-264f9c329ba6.ColumnHeading" xml:space="preserve">
     <value>Область</value>
+  </data>
+  <data name="agcTickets_grid.2b3a8193-b7d3-49cd-b566-0032f6641169.ColumnHeading" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="agcAssets_grid.69711103-cd23-4ade-9cad-c60b23436c65.ColumnHeading" xml:space="preserve">
+    <value>Проданный товар</value>
+  </data>
+  <data name="agcAssets_grid.cd19f867-f3f0-439b-951c-1e6f69936639.ColumnHeading" xml:space="preserve">
+    <value>Единица учета</value>
+  </data>
+  <data name="agcAssets_grid.24778fe5-e8ab-4525-a723-fc76db2d4677.ColumnHeading" xml:space="preserve">
+    <value>Серийный номер</value>
+  </data>
+  <data name="agcAssets_grid.49afcdaf-ce68-4758-a717-df191bedea31.ColumnHeading" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="agcAssets.PopupCaptionFmt" xml:space="preserve">
+    <value>Покрываемый проданный товар для "{0}"</value>
+  </data>
+  <data name="agcTickets.PopupCaptionFmt" xml:space="preserve">
+    <value>Заявки для "{0}"</value>
+  </data>
+  <data name="dtpStartDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dteEndDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
   </data>
   <data name="dtpPurchaseDate.ButtonToolTip" xml:space="preserve">
     <value>Календарь</value>
   </data>
   <data name="pklType.Caption" xml:space="preserve">
     <value>Тип:</value>
-  </data>
-  <data name="agcTickets.PopupCaptionFmt" xml:space="preserve">
-    <value>Заявки для {0}</value>
-  </data>
-  <data name="agcAssets.PopupCaptionFmt" xml:space="preserve">
-    <value>Конверт активов для {0}</value>
-  </data>
-  <data name="agcAssets.Caption" xml:space="preserve">
-    <value>Конверт активов:</value>
-  </data>
-  <data name="agcTickets.Caption" xml:space="preserve">
-    <value>Заявки:</value>
-  </data>
-  <data name="lnkContact.Caption" xml:space="preserve">
-    <value>Контакт:</value>
-  </data>
-  <data name="agcAssets_grid.cd19f867-f3f0-439b-951c-1e6f69936639.ColumnHeading" xml:space="preserve">
-    <value>Единица учета</value>
-  </data>
-  <data name="dteEndDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="agcTickets_grid.2b3a8193-b7d3-49cd-b566-0032f6641169.ColumnHeading" xml:space="preserve">
-    <value>Категория</value>
-  </data>
-  <data name="agcAssets_grid.24778fe5-e8ab-4525-a723-fc76db2d4677.ColumnHeading" xml:space="preserve">
-    <value>Серийный номер</value>
-  </data>
-  <data name="chkIsActive.Caption" xml:space="preserve">
-    <value>Активный:</value>
-  </data>
-  <data name="dtpPurchaseDate.Caption" xml:space="preserve">
-    <value>Дата покупки:</value>
-  </data>
-  <data name="agcAssets_grid.69711103-cd23-4ade-9cad-c60b23436c65.ColumnHeading" xml:space="preserve">
-    <value>Актив</value>
-  </data>
-  <data name="agcAssets_grid.49afcdaf-ce68-4758-a717-df191bedea31.ColumnHeading" xml:space="preserve">
-    <value>Кол-во</value>
-  </data>
-  <data name="pklService.Caption" xml:space="preserve">
-    <value>Исполнитель:</value>
-  </data>
-  <data name="dtpStartDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="lnkAccount.Caption" xml:space="preserve">
-    <value>Субъект:</value>
-  </data>
-  <data name="dtpStartDate.Caption" xml:space="preserve">
-    <value>Дата нач.:</value>
-  </data>
-  <data name="agcTickets_grid.f67da130-d1ba-4408-a5c2-6e70f6a2ae6d.ColumnHeading" xml:space="preserve">
-    <value>ИД заявки</value>
   </data>
 </root>

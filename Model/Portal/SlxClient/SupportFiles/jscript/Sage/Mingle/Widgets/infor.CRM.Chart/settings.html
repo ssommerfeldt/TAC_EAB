@@ -1,0 +1,55 @@
+﻿<div ng-controller="inforCRMChartCustomSettingsCtrl as ctrl">
+	<div class="field">
+		<label class="label">{{ctrl.textTitle}}</label>
+        <div class="searchfield-wrapper">
+            <input ng-readonly="!ctrl.isTitleEditEnabled || ctrl.isTitleLocked" id="grouplist-widget-titletext" ng-change="ctrl.settingsChanged()" ng-model="ctrl.widgetTitle" />
+            <button class="btn-icon" ng-click="ctrl.onClickIsLocked()" ng-disabled="!ctrl.isTitleUnlockable">
+                <svg ng-if="!ctrl.isTitleLocked" class="icon close" focusable="false">
+                    <use xlink:href="#icon-unlocked"></use>
+                </svg>
+                <svg ng-if="ctrl.isTitleLocked" class="icon close" focusable="false">
+                    <use xlink:href="#icon-locked"></use>
+                </svg>
+            </button>
+        </div>	</div>
+    <div class="field">
+        <label class="label required">{{ctrl.textEntity}}</label>
+    </div>
+    <div class="field">
+        <div xi-busy="ctrl.isEntityBusy"></div>
+        <select ng-attr-id="{{'Entity-'+ctrl.widgetInstanceId}}" ng-model="ctrl.entityValue" ng-options="option.name for option in ctrl.entityOptions" class="dropdown" xi-drop-down="ctrl.entityDropdownOptions" 
+                ng-change="ctrl.entityChanged()"></select>
+    </div>
+    <div class="field">
+        <label class="label required">{{ctrl.textGroup}}</label>
+    </div>
+    <div class="field">
+        <select ng-attr-id="{{'Group-'+ctrl.widgetInstanceId}}" ng-model="ctrl.groupValue" ng-options="option.name for option in ctrl.groupOptions" class="dropdown" xi-drop-down="ctrl.groupDropdownOptions"  xi-busy="ctrl.isGroupBusy"></select>
+    </div>
+    <div class="field">
+        <label for="Filters" class="label required">{{ctrl.textDimension}}</label>
+    </div>
+    <div class="field">
+        <select ng-attr-id="{{'Filters-'+ctrl.widgetInstanceId}}" ng-model="ctrl.dimensionValue" ng-options="option for option in ctrl.filterOptions" class="dropdown" xi-drop-down="ctrl.filterDropdownOptions" xi-busy="ctrl.isFilterBusy"></select>
+    </div>
+    <div class="field">
+        <label for="Metrics" class="label required">{{ctrl.textMetric}}</label>
+    </div>
+    <div class="field">
+        <select ng-attr-id="{{'Metrics-'+ctrl.widgetInstanceId}}" ng-model="ctrl.metricValue" ng-options="option for option in ctrl.metricOptions" class="dropdown" xi-drop-down="ctrl.metricDropdownOptions" xi-busy="ctrl.isMetricBusy"></select>
+    </div>
+    <div class="field">
+        <label for="chartType" class="label required">{{ctrl.textType}}</label>
+    </div>
+    <div class="field">
+        <select data-validate="required" xi-validate id="chart-widget-chartType" ng-model="ctrl.chartValue" ng-options="option for option in ctrl.chartOptions" class="dropdown" xi-drop-down="ctrl.dropdownOptions"></select>
+    </div>
+    <div  ng-if="(ctrl.chartValue !== 'Funnel' && ctrl.isLimitCountVisible) " class="field">
+        <label for="limitCount" class="label required">{{ctrl.textLimit}}</label>
+        <input ng-model="ctrl.limitCount" ng-attr-id="{{'limitCount-'+ctrl.widgetInstanceId}}" name="limitCount" type="text" data-validate="required" xi-validate data-mask-mode="number"  xi-mask="ctrl.maskCustDefOptions" />
+    </div>
+    <div class="field">
+        <label for="CRMLogicalID" class="label">{{ctrl.textCRMLogicalID}}</label>
+        <input ng-model="ctrl.CRMLogicalID" ng-attr-id="{{'CRMLogicalID-'+ctrl.widgetInstanceId}}" name="CRMLogicalID" type="text" />
+    </div>
+</div>

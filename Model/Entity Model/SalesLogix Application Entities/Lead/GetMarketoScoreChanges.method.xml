@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="28a64a2a-4bb9-4d96-85c4-b3ebe6f96025" lastModifiedUtc="2017-05-26T16:57:45.9254697Z" name="GetMarketoScoreChanges" returnType="object" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="f96aa8d3-0721-4402-9492-ca2d52ffec87" lastModifiedUtc="2017-06-22T14:42:43.9553278Z" targetType="SalesLogix.Integration.Marketo.Rules.LeadRules, SalesLogix.Integration.Marketo" targetMethod="GetLeadScoreChanges" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

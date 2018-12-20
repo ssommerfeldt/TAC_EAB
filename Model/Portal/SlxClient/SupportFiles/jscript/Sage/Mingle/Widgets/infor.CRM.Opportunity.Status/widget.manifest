@@ -1,0 +1,39 @@
+{
+    "widgetId": "infor.crm.opportunity.status",
+    "type": "inline",
+    "name": "CRM Opportunity Status",
+    "version": "1.6",
+    "category": "application",
+    "applicationLogicalId": "lid://infor.crm",
+    "settings": [
+        {
+          "name": "SDataApiContext",
+          "type": "string",
+          "defaultValue": "CRMSData",
+          "isHidden": true,
+			    "labelId": "SData Service"
+        },
+        {
+			    "name": "MessageType",
+			    "type": "string",
+			    "defaultValue": "inforBusinessContext",
+          "labelId": "Message Type",
+          "isHidden": true
+		      }
+	    ],    
+    "localization": {
+        "en-US": {
+            "widgetTitle": "CRM Opportunity Status",
+            "widgetDescription": "CRM Opportunity Status.",
+            "message": "Message",
+            "color": "Color",
+            "accountgroupDisplayTitle": "First 100 Accounts in group ",
+            "oppgroupDisplayTitle": "All Opportunities",
+            "displayTitle": "Opportunity Status for : ",
+			      "titleOpenOpp": "Open Opportunities : ",
+            "textCloseOpp": "Closed Opportunities : ",
+            "textOppWon": "Opportunities Won : ",
+            "textOppLost": "Opportunities Lost : "
+        }
+    }
+}

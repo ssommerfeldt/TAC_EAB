@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a2f21fc2-797b-4bc8-8027-b3858ecbe322" lastModifiedUtc="2015-08-25T20:14:17.861719Z" name="Saleslogix System Support">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmPackage">
+      <extender guid="77e6083e-e756-4ab9-a116-8db03cdc593f">
+        <OrmPackageMetadataExtension>
+          <DefaultNamespace>SalesLogix.System.Entities</DefaultNamespace>
+          <AssemblyName>SalesLogix.System.Entities</AssemblyName>
+          <InterfaceProjectGuid>e74cd474-9288-43be-9474-da0306b1ba85</InterfaceProjectGuid>
+          <PersistenceProjectGuid>91e105b4-0ff8-4e4f-8c5d-a4067c814466</PersistenceProjectGuid>
+        </OrmPackageMetadataExtension>
+      </extender>
+    </extendee>
+  </ExtendedPropertiesCollection>
+  <defaultInterfaceTemplateId>5e8b7df7-0ec3-46b3-b8f4-f7bde7d5a6a3</defaultInterfaceTemplateId>
+  <defaultClassTemplateId>4040a9aa-f9bf-4204-83d8-d5eb4da3e475</defaultClassTemplateId>
+  <defaultMappingTemplateId>b9ab7051-97ec-4b2d-9932-77ac29099ac7</defaultMappingTemplateId>
+  <defaultResxTemplateId>99be1b14-a8f6-4b61-8d33-b5f7592b011b</defaultResxTemplateId>
+  <defaultResxClassTemplateId>7067c649-cd9a-4498-9e87-c5851ae8a8b3</defaultResxClassTemplateId>
+</package>

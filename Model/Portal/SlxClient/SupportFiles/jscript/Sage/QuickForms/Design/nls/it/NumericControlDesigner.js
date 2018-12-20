@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Numerico' }
-));
+define("Sage/QuickForms/Design/nls/it/NumericControlDesigner", {
+    "displayNameText": "Numerico"
+});

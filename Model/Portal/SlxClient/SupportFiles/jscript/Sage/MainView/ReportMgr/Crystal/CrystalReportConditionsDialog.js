@@ -1,5 +1,7 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+require({cache:{
+'url:Sage/MainView/ReportMgr/Crystal/templates/CrystalReportConditionsDialog.html':"<div>\r\n    <div data-dojo-type=\"dijit.Dialog\" title=\"{%= $._getDialogTitle() %}\" dojoattachpoint=\"_dialog\" dojoattachevent=\"onCancel:_dialog_OnCancel\" style=\"width: 600px;\">\r\n        <div data-dojo-type=\"dijit.form.Form\">\r\n            <div>\r\n                \r\n                <div>\r\n                    <table cellspacing=\"5\">\r\n                        <tr>\r\n                            <td>\r\n                                <label>{%= $._nlsResources.txtShowRecordsThatMatch %}</label>\r\n                            </td>\r\n                            <td>\r\n                                <select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cmbConditionPresets\" sortByLabel=\"false\" dojoAttachEvent=\"onChange:_cmbConditionPresets_OnChange\" style=\"width:150px\" >\r\n                                </select>\r\n                            </td>\r\n                        </tr>                   \r\n                        <tr dojoAttachPoint=\"trConnector\" class=\"display-none\">\r\n                            <td>\r\n                                <label>{%= $._nlsResources.txtMatch %}</label>\r\n                            </td>\r\n                            <td>\r\n                                <select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cmbConnector\" style=\"width:150px\" >\r\n                                    <option value=\"Or\">{%= $._nlsResources.txtAny %}</option>\r\n                                    <option value=\"And\">{%= $._nlsResources.txtAll %}</option>\r\n                                </select>\r\n                            </td>\r\n                        </tr>\r\n                    </table>\r\n                </div>\r\n\r\n                <div dojoType=\"dijit.Toolbar\" dojoAttachPoint=\"tbConditions\" region=\"top\" splitter=\"false\" class=\"right-tools display-none\">\r\n                    <span dojoType=\"Sage.UI.ImageButton\" icon=\"{%= $._btnPlusIconPath %}\" title=\"{%= $._nlsResources.btnAddCondition_Caption %}\" dojoAttachEvent=\"onClick:_btnAddCondition_Click\" dojoAttachPoint=\"btnAddCondition\"></span>\r\n                </div>                                  \r\n                \r\n                <div id=\"divGrdCrystalConditions\" style=\"width:100%; height:200px; overflow:auto\" >            \r\n                    <table data-dojo-type=\"dojox.grid.DataGrid\" dojoAttachPoint=\"grdCrystalConditions\" id=\"grdCrystalConditions\" class=\"display-none\" formatterScope=\"Sage.MainView.ReportMgr.Crystal.CrystalReportsFormatter\">\r\n                        <thead>\r\n                            <th field=\"conditionType\" width=\"60px\" formatter=\"formatConditionType\" >{%= $._nlsResources.grdCrystalConditions_ConditionType_Caption %}</th>\r\n                            <th field=\"table\" width=\"80px\">{%= $._nlsResources.grdCrystalConditions_TableName_Caption %}</th>\r\n                            <th field=\"field\" width=\"80px\">{%= $._nlsResources.grdCrystalConditions_FieldName_Caption %}</th>\r\n                            <th field=\"operator\" formatter=\"formatOperator\" width=\"50px\">{%= $._nlsResources.grdCrystalConditions_Operator_Caption %}</th>\r\n                            <th field=\"_item\" formatter=\"formatConditionValue\" width=\"125px\">{%= $._nlsResources.grdCrystalConditions_Value_Caption %}</th>\r\n                            <th field=\"value\" formatter=\"formatEditCondition\" width=\"40px\">&nbsp;</th>\r\n                            <th field=\"_item\" formatter=\"formatDeleteCondition\" width=\"40px\">&nbsp;</th>\r\n                        </thead>\r\n                    </table>\r\n                </div>               \r\n\r\n            </div>\r\n\r\n            <div align=\"right\" style=\"margin-top:10px\">\r\n                <div data-dojo-type=\"dijit.form.Button\"dojoAttachPoint=\"cmdBack\" dojoAttachEvent=\"onClick:_cmdBack_OnClick\" style=\"display:none\">{%= Sage.Utility.htmlEncode($._nlsResources.cmdBack_Caption) %}</div>\r\n                <div data-dojo-type=\"dijit.form.Button\"dojoAttachPoint=\"cmdNext\" dojoAttachEvent=\"onClick:_cmdNext_OnClick\">{%= Sage.Utility.htmlEncode($._nlsResources.cmdNext_Caption) %}</div>\r\n                <div data-dojo-type=\"dijit.form.Button\" dojoAttachPoint=\"cmdCancel\" dojoAttachEvent=\"onClick:_cmdCancel_OnClick\" style=\"margin-left:5px;\">{%= Sage.Utility.htmlEncode($._nlsResources.cmdCancel_Caption) %}</div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/Crystal/CrystalReportConditionsDialog", [
     'dojo/_base/declare',
     'dojo/_base/array',
     'dojo/topic',
@@ -50,11 +52,6 @@ function (
         _conditionOptions: null,
         _conditionsCollection: null, //used internally
         _currentStep: Enumerations.CrystalReportWizardStep.Conditions,
-
-        //------------------------------------------------
-        //Dialog lifecycle management.
-        //------------------------------------------------
-
         /**
         * CrystalReportConditionsDialog class constructor.
         * @constructor
@@ -82,7 +79,6 @@ function (
             this._subscriptions.push(topic.subscribe("/reportManager/reportWizard/createCondition", function (condition) { self._addNewCondition(condition); }));
             this._subscriptions.push(topic.subscribe("/reportManager/reportWizard/updateCondition", function (condition) { self._updateCondition(condition); }));
         },
-
         destroy: function () {
             //console.log("CrystalReportConditionsDialog destroy");
             this.grdCrystalConditions.destroy();
@@ -94,8 +90,6 @@ function (
             //Let the base class do its thing
             this.inherited(arguments);
         },
-
-
         /**
         * This is a last method in the initialization process. 
         * It is called after all the child widgets are rendered so it's good for a container widget to finish it's post rendering here. 
@@ -111,6 +105,11 @@ function (
             //select the "custom" conditions preset, which in turn shows the conditions grid.
             if (this._conditionOptions.conditions.length > 0) {
                 this.cmbConditionPresets.attr('value', Enumerations.ConditionPreset.Custom);
+            }
+
+            //Set default connector
+            if (this._conditionOptions.conditionsConnector) {
+                this.cmbConnector.attr('value', this._conditionOptions.conditionsConnector);
             }
         },
 
@@ -229,37 +228,14 @@ function (
             this.grdCrystalConditions.setStore(store);
         },
 
-        _initializeConnectorDropdown: function () {
-
-            //console.log("CrystalReportConditionsDialog._initializeConnectorDropdown");
-            var items = [
-                {
-                    value: Enumerations.ReportConditionConnector.And,
-                    caption: nlsResources.txtAll
-                },
-                {
-                    value: Enumerations.ReportConditionConnector.Or,
-                    caption: nlsResources.txtAny
-                }
-            ];
-            var data = {
-                identifier: 'value',
-                label: 'caption',
-                items: items
-            };
-
-            var store = new ItemFileWriteStore({ data: data });
-            this.cmbConnector.setStore(store);
-            this.cmbConnector.startup();
-            if (this._conditionOptions.conditionsConnector) {
-                this.cmbConnector.attr('value', this._conditionOptions.conditionsConnector);
-            }
-
-        },
 
         //------------------------------------------------
         //Internal functions.
         //------------------------------------------------
+
+        _getDialogTitle: function () {
+            return this._nlsResources.txtDialogTitle + " [" + this._reportMetadata.localeDisplayName + "]";
+        },
 
         _getWizardStepResult: function () {
             this._conditionOptions.conditions = this._getConditions();

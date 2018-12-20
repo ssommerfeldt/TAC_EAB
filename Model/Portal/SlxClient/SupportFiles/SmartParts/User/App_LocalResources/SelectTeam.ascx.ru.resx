@@ -117,31 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="OkButton.Caption" xml:space="preserve">
-    <value>Ок</value>
+  <data name="SourceTeamList.Caption" xml:space="preserve">
+    <value>Команда:</value>
   </data>
-  <data name="RemoveTitle" xml:space="preserve">
-    <value>Удалить из Команды</value>
+  <data name="OkButton.Caption" xml:space="preserve">
+    <value>OК</value>
   </data>
   <data name="CancelButton.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="AddToTeamDescription" xml:space="preserve">
-    <value>Выберите команду. Выделенные пользователи будут добавлены в команду, если они еще не члены.</value>
-  </data>
-  <data name="lueTeam.Tooltip" xml:space="preserve">
-    <value>Выберите команду, в которую выделенные пользователи будут добавлены.</value>
-  </data>
   <data name="AddTitle" xml:space="preserve">
     <value>Добавить пользователя в команду</value>
+  </data>
+  <data name="AddToTeamDescription" xml:space="preserve">
+    <value>Выберите команду. Выбранные пользователи будут добавлены в команду, если они еще не входят в нее.</value>
   </data>
   <data name="lueTeam.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
     <value>Команда</value>
   </data>
-  <data name="RemoveFromTeamDescription" xml:space="preserve">
-    <value>Выберите команду. Выделенные пользователи будут удалены из команды, если они члены  этой команды.</value>
+  <data name="lueTeam.Tooltip" xml:space="preserve">
+    <value>Выберите команду, в которую выделенные пользователи будут добавлены.</value>
   </data>
-  <data name="SourceTeamList.Caption" xml:space="preserve">
-    <value>Команда:</value>
+  <data name="RemoveFromTeamDescription" xml:space="preserve">
+    <value>Выберите команду. Выбранные пользователи будут удалены из команды, если они входят в нее в настоящее время.</value>
+  </data>
+  <data name="RemoveTitle" xml:space="preserve">
+    <value>Удалить из команды</value>
   </data>
 </root>

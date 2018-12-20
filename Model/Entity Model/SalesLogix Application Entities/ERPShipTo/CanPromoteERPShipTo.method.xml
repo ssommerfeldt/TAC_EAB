@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b209dd9f-cd51-4cee-92ee-05998daafd22" lastModifiedUtc="2016-02-24T10:46:50.4868587Z" name="CanPromoteERPShipTo" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="edfce848-1192-4970-9e6f-92e3b6eaf153" lastModifiedUtc="2016-02-24T10:46:49.2427165Z" targetType="Sage.SalesLogix.ErpShipTo.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CanPromoteERPShipTo" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

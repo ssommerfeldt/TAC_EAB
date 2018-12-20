@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApiKey.Caption" xml:space="preserve">
+    <value>API 键</value>
+  </data>
+  <data name="Assembly.Caption" xml:space="preserve">
+    <value>程序集</value>
+  </data>
+  <data name="Enabled.Caption" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="Id.Caption" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Name.Caption" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="Type.Caption" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="grdProviders.19f5f110-0961-4244-9ebf-974cece36181.ColumnHeading" xml:space="preserve">
+    <value>API 键</value>
+  </data>
+  <data name="grdProviders.1803677e-6ccf-449f-9381-b5267408fc1b.ColumnHeading" xml:space="preserve">
+    <value>程序集</value>
+  </data>
+  <data name="grdProviders.6a357538-bb81-4628-9e26-c2cc3681ff12.ColumnHeading" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="grdProviders.57af5133-0bbc-4fdd-9f77-eaaf862af094.ColumnHeading" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="grdProviders.9a8e8455-7f63-4afe-b349-5d854f5b942c.ColumnHeading" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="grdProviders.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdProviders.2f9a9bb1-3d51-4600-8439-f4e507d72362.ColumnHeading" xml:space="preserve">
+    <value>API 键</value>
+  </data>
+  <data name="grdProviders.Cancel.ToolTip" xml:space="preserve">
+    <value>还原更改</value>
+  </data>
+  <data name="grdProviders.25e53602-a837-415b-a860-3ede35bb8df5.ColumnHeading" xml:space="preserve">
+    <value>API 键</value>
+  </data>
+  <data name="grdProviders.7fc3e2da-707a-4011-bfd4-32ac5f2f1172.ColumnHeading" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="grdProviders.2c1c0dfb-2ab3-41b9-8815-5a605e8d7d2a.ColumnHeading" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="grdProviders.1d68fbb2-9f07-42f7-ae33-fc56b500e01e.ColumnHeading" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="grdProviders.fd7d5f13-8639-4c18-a02c-4a5e34b7f661.ColumnHeading" xml:space="preserve">
+    <value>程序集</value>
+  </data>
+  <data name="grdProviders.Save.ToolTip" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="error_SingleGeocodeProvider" xml:space="preserve">
+    <value>一次只能启用一个地理编码提供程序。</value>
+  </data>
+</root>

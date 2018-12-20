@@ -117,79 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Grid_State_Column" xml:space="preserve">
-    <value>Bundesland/Kanton</value>
-  </data>
-  <data name="LinkToAccounting.Caption" xml:space="preserve">
-    <value>Kontakte zusammenführen</value>
-  </data>
-  <data name="Grid_Primary_Column" xml:space="preserve">
-    <value>Haupt</value>
-  </data>
-  <data name="UnlinkedRecords.Caption" xml:space="preserve">
-    <value>Verknüpfung von {0} mit {1} wurde aufgehoben.</value>
-  </data>
-  <data name="MergeAddress.Caption" xml:space="preserve">
-    <value>Adressen zusammenführen</value>
-  </data>
-  <data name="btnNext_Merge.Caption" xml:space="preserve">
-    <value>Zusammenführen</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Zurück</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="Grid_Address2_Column" xml:space="preserve">
-    <value>Adresse2</value>
-  </data>
-  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Daten zusammenführen - Festgestellte Unterschiede</value>
-  </data>
-  <data name="lblSourceAddress.Caption" xml:space="preserve">
-    <value>Quelladressen</value>
-  </data>
-  <data name="LinkedAddresses.Caption" xml:space="preserve">
-    <value>Verknüpfte Adressen (Folgende Datensätze werden zusammengeführt.)</value>
-  </data>
-  <data name="lblTargetAddress.Caption" xml:space="preserve">
-    <value>Zieladressen</value>
-  </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Daten zusammenführen - Keine Unterschiede</value>
+  <data name="btnLink.Caption" xml:space="preserve">
+    <value>Verknüpfung</value>
   </data>
   <data name="btnNext.Caption" xml:space="preserve">
     <value>Weiter &gt;</value>
   </data>
+  <data name="EmptyTableRowText" xml:space="preserve">
+    <value>Es wurden keine Datensätze gefunden, die den ausgewählten Filterkriterien entsprechen.</value>
+  </data>
   <data name="Error_SourceTargetNotSelected" xml:space="preserve">
     <value>Wählen Sie sowohl einen "Zieldatensatz" als auch einen "Quelldatensatz" aus, bevor Sie fortfahren.</value>
-  </data>
-  <data name="lblLinkedRecords.Caption" xml:space="preserve">
-    <value>Systemverknüpfungen (Die folgenden Datensätze werden in beiden Systemen verknüpft und zusammengeführt.)</value>
   </data>
   <data name="Grid.Select.Text" xml:space="preserve">
     <value>Auswählen</value>
   </data>
-  <data name="MergeRecordsDialog_MergeRecords.Caption" xml:space="preserve">
-    <value>Datensätze zusammenführen</value>
+  <data name="Grid_Address1_Column" xml:space="preserve">
+    <value>Address1</value>
+  </data>
+  <data name="Grid_Address2_Column" xml:space="preserve">
+    <value>Address2</value>
   </data>
   <data name="Grid_City_Column" xml:space="preserve">
     <value>Stadt</value>
   </data>
-  <data name="lblDescription.Caption" xml:space="preserve">
-    <value>Erstellen Sie Verknüpfungen, um die Adressdatensätze zusammenzuführen.</value>
+  <data name="Grid_Primary_Column" xml:space="preserve">
+    <value>Primär</value>
   </data>
-  <data name="btnLink.Caption" xml:space="preserve">
-    <value>Verknüpfung</value>
-  </data>
-  <data name="EmptyTableRowText" xml:space="preserve">
-    <value>Es wurden keine Datensätze gefunden, die den ausgewählten Filterkriterien entsprechen.</value>
+  <data name="Grid_State_Column" xml:space="preserve">
+    <value>Bundesland</value>
   </data>
   <data name="Grid_Unlink.Column" xml:space="preserve">
     <value>Verknüpfung aufheben</value>
   </data>
-  <data name="Grid_Address1_Column" xml:space="preserve">
-    <value>Adresse1</value>
+  <data name="lblDescription.Caption" xml:space="preserve">
+    <value>Erstellen Sie Verknüpfungen, um Ihre Adressdatensätze zusammenzuführen.</value>
   </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Zurück</value>
+  <data name="lblLinkedRecords.Caption" xml:space="preserve">
+    <value>Systemverknüpfungen (Die folgenden Datensätze werden in beiden Systemen verknüpft und zusammengeführt.)</value>
+  </data>
+  <data name="MergeAddress.Caption" xml:space="preserve">
+    <value>Adressen zusammenführen</value>
+  </data>
+  <data name="lblSourceAddress.Caption" xml:space="preserve">
+    <value>Quelladressen</value>
+  </data>
+  <data name="UnlinkedRecords.Caption" xml:space="preserve">
+    <value>Verknüpfung von {0} mit {1} wurde aufgehoben.</value>
+  </data>
+  <data name="LinkToAccounting.Caption" xml:space="preserve">
+    <value>Kontakte zusammenführen</value>
+  </data>
+  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
+    <value>Daten zusammenführen - Festgestellte Unterschiede</value>
+  </data>
+  <data name="MergeRecordsDialog_MergeRecords.Caption" xml:space="preserve">
+    <value>Datensätze zusammenführen</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Daten zusammenführen - Keine Unterschiede</value>
+  </data>
+  <data name="lblTargetAddress.Caption" xml:space="preserve">
+    <value>Zieladressen</value>
+  </data>
+  <data name="LinkedAddresses.Caption" xml:space="preserve">
+    <value>Verknüpfte Adressen (folgende Datensätze werden zusammengeführt)</value>
+  </data>
+  <data name="btnNext_Merge.Caption" xml:space="preserve">
+    <value>Zusammenführen</value>
+  </data>
+  <data name="valueFalse" xml:space="preserve">
+    <value>Falsch</value>
+  </data>
+  <data name="valueTrue" xml:space="preserve">
+    <value>Wahr</value>
   </data>
 </root>

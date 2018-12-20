@@ -117,47 +117,95 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdDelete.ToolTip" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="QFLabel.Text" xml:space="preserve">
-    <value>Nombre de phases :</value>
-  </data>
-  <data name="lblDateLaunched.Text" xml:space="preserve">
-    <value>Lancé le :</value>
-  </data>
   <data name="dteEndDate.Caption" xml:space="preserve">
     <value>Date de fin :</value>
   </data>
-  <data name="dteStartDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
-  </data>
-  <data name="QFSLXLookup.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="cmdSave.ToolTip" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
   <data name="lveManager.Caption" xml:space="preserve">
-    <value>Responsable :</value>
+    <value>Responsable :</value>
   </data>
-  <data name="cboStatus_item2.Text" xml:space="preserve">
-    <value>Inactive</value>
+  <data name="cmdLaunch.Caption" xml:space="preserve">
+    <value>Lancement</value>
   </data>
-  <data name="txtCampaignName.Caption" xml:space="preserve">
-    <value>Nom de la campagne :</value>
+  <data name="lblTargets.Text" xml:space="preserve">
+    <value>Nombre de cibles</value>
+  </data>
+  <data name="cboStatus.Caption" xml:space="preserve">
+    <value>Etat :</value>
   </data>
   <data name="lveOwner.Caption" xml:space="preserve">
     <value>Propriétaire :</value>
   </data>
-  <data name="txtObjective.Caption" xml:space="preserve">
-    <value>Objectif :</value>
-  </data>
   <data name="txtDescription.Caption" xml:space="preserve">
     <value>Description :</value>
   </data>
-  <data name="cboStatus.Caption" xml:space="preserve">
-    <value>Etat :</value>
+  <data name="txtObjective.Caption" xml:space="preserve">
+    <value>Objectif :</value>
+  </data>
+  <data name="txtCallToAction.Caption" xml:space="preserve">
+    <value>Action appelée :</value>
+  </data>
+  <data name="txtCode.Caption" xml:space="preserve">
+    <value>Code :</value>
+  </data>
+  <data name="dteStartDate.Caption" xml:space="preserve">
+    <value>Date de début :</value>
+  </data>
+  <data name="txtCampaignName.Caption" xml:space="preserve">
+    <value>Nom de la campagne :</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="cmdSave.ToolTip" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="cmdCopy.Caption" xml:space="preserve">
+    <value>Copier</value>
+  </data>
+  <data name="cmdCopy.ToolTip" xml:space="preserve">
+    <value>Copier</value>
+  </data>
+  <data name="cmdDelete.Caption" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="cmdDelete.ToolTip" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="cboStatus_item2.Text" xml:space="preserve">
+    <value>Inactif(-ve)</value>
+  </data>
+  <data name="cboStatus_item1.Text" xml:space="preserve">
+    <value>Actif</value>
+  </data>
+  <data name="cboStatus_item0.Text" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="cmdLaunch.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="QFLabel.Text" xml:space="preserve">
+    <value>Nombre de phases :</value>
+  </data>
+  <data name="QFLabel3.Text" xml:space="preserve">
+    <value>Budget estimé :</value>
+  </data>
+  <data name="QFLabel2.Text" xml:space="preserve">
+    <value>Nombre de tâches :</value>
+  </data>
+  <data name="chkMyCurrency.Caption" xml:space="preserve">
+    <value>Afficher à l’aide "Ma devise"</value>
+  </data>
+  <data name="lblDateLaunched.Text" xml:space="preserve">
+    <value>Lancé le :</value>
+  </data>
+  <data name="QFSLXLookup.Caption" xml:space="preserve">
+    <value>Sources des leads :</value>
+  </data>
+  <data name="QFSLXLookup.LookupProperties.Description.PropertyHeader" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Launch_rsc" xml:space="preserve">
+    <value>Lancement</value>
   </data>
   <data name="Launched_rsc" xml:space="preserve">
     <value>Lancé</value>
@@ -165,64 +213,19 @@
   <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
     <value>Vous êtes sur le point de supprimer définitivement cet enregistrement.</value>
   </data>
-  <data name="cmdCopy.Caption" xml:space="preserve">
-    <value>Copier</value>
-  </data>
-  <data name="dteStartDate.Caption" xml:space="preserve">
-    <value>Date de début :</value>
-  </data>
-  <data name="QFLabel3.Text" xml:space="preserve">
-    <value>Budget estimé :</value>
-  </data>
-  <data name="QFLabel2.Text" xml:space="preserve">
-    <value>Nombre de tâches :</value>
-  </data>
-  <data name="cmdLaunch.Caption" xml:space="preserve">
-    <value>Lancement</value>
-  </data>
-  <data name="lveManager.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="chkMyCurrency.Caption" xml:space="preserve">
-    <value>Afficher à l’aide de « Ma Devise »</value>
-  </data>
-  <data name="txtCallToAction.Caption" xml:space="preserve">
-    <value>Action appelée :</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
-  <data name="lveOwner.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
+  <data name="dteStartDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
   </data>
   <data name="dteEndDate.ButtonToolTip" xml:space="preserve">
     <value>Agenda</value>
   </data>
+  <data name="lveManager.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="lveOwner.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
   <data name="QFSLXLookup.LookupProperties.Type.PropertyHeader" xml:space="preserve">
     <value>Type</value>
-  </data>
-  <data name="lblTargets.Text" xml:space="preserve">
-    <value>Nombre de cibles</value>
-  </data>
-  <data name="txtCode.Caption" xml:space="preserve">
-    <value>Code :</value>
-  </data>
-  <data name="Launch_rsc" xml:space="preserve">
-    <value>Lancement</value>
-  </data>
-  <data name="cboStatus_item0.Text" xml:space="preserve">
-    <value>Configuration</value>
-  </data>
-  <data name="QFSLXLookup.Caption" xml:space="preserve">
-    <value>Source de lead :</value>
-  </data>
-  <data name="cmdDelete.Caption" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="cboStatus_item1.Text" xml:space="preserve">
-    <value>Actif</value>
-  </data>
-  <data name="cmdCopy.ToolTip" xml:space="preserve">
-    <value>Copier</value>
   </data>
 </root>

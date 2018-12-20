@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/NumericControlDesigner", [
     'dojo/_base/declare',
     'dojo/_base/array',
     'dojo/_base/lang',

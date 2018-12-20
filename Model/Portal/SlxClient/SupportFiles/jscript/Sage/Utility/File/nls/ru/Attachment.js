@@ -1,8 +1,6 @@
-﻿define(
-    ({
-        uploadingAttachments: 'Uploading attachments',
-        uploadCompleted: 'Completed',
-        uploadingPleaseWait: 'Загрузка, подождите...',
-        uploadFailed: 'Upload failed.'
-    })
-);
+define("Sage/Utility/File/nls/ru/Attachment", {
+    "uploadingAttachments": "Загрузка вложений",
+    "uploadCompleted": "Завершено",
+    "uploadingPleaseWait": "Загрузка, подождите...",
+    "uploadFailed": "Сбой загрузки."
+});

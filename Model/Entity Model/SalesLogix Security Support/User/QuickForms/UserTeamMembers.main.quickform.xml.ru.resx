@@ -117,26 +117,74 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="QFLabel.Text" xml:space="preserve">
-    <value>Следующие пользователи имеют доступ к субъекту, курируемому другим пользователем:</value>
+  <data name="OwnerDescription.Caption" xml:space="preserve">
+    <value>Описание владельца</value>
   </data>
-  <data name="grdTeams.d6016bfc-0528-4763-8c5e-891b3981be43.ColumnHeading" xml:space="preserve">
-    <value>Профиль безопасности</value>
+  <data name="ProfileDescription.Caption" xml:space="preserve">
+    <value>Описание профиля</value>
   </data>
   <data name="CreateDate.Caption" xml:space="preserve">
     <value>Дата создания</value>
   </data>
-  <data name="lueAddUser.LookupProperties.UserInfo.Department.PropertyHeader" xml:space="preserve">
-    <value>Отдел</value>
+  <data name="ModifyDate.Caption" xml:space="preserve">
+    <value>Дата изменения</value>
+  </data>
+  <data name="ModifyUser.Caption" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="grdOwnerJoins.f33bfc1a-c0a6-437c-9299-98dcad2f8aa0.ColumnHeading" xml:space="preserve">
+    <value>Описание владельца</value>
   </data>
   <data name="grdOwnerJoins.020d88d7-a230-4199-bfd6-8cfc31304631.ColumnHeading" xml:space="preserve">
     <value>Описание профиля</value>
   </data>
-  <data name="grdOwnerJoins.fc0dd482-c468-48a0-be7e-feb4995084a4.Text" xml:space="preserve">
-    <value>Исключить</value>
+  <data name="grdOwnerJoins.24a6a429-16f7-493a-b72f-76fb97b49729.ColumnHeading" xml:space="preserve">
+    <value>Создано</value>
   </data>
-  <data name="grdOwnerJoins.f33bfc1a-c0a6-437c-9299-98dcad2f8aa0.ColumnHeading" xml:space="preserve">
-    <value>Описание владельца</value>
+  <data name="grdOwnerJoins.8b8b773d-4fb0-4800-9acf-b8fe24c4a7b1.ColumnHeading" xml:space="preserve">
+    <value>Последнее изменение</value>
+  </data>
+  <data name="grdOwnerJoins.76e5fabb-310e-47a2-a565-d3efacf82350.ColumnHeading" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="grdTeams.ba2d83bf-74cc-4580-b255-e69b2ca9008e.ColumnHeading" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="lueAddUser.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAddUser.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Участник</value>
+  </data>
+  <data name="grdOwnerJoins.fc0dd482-c468-48a0-be7e-feb4995084a4.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="ConfirmRemoveFromTeam" xml:space="preserve">
+    <value>Удалить пользователя из выбранной команды?</value>
+  </data>
+  <data name="lueAddUser.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="lueAddUser.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="lueAddUser.LookupProperties.UserInfo.Department.PropertyHeader" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="lueAddUser.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="QFLabel.Text" xml:space="preserve">
+    <value>Следующие пользователи имеют доступ к клиентам, владельцем которых является данный пользователь:</value>
+  </data>
+  <data name="QFLabel.ToolTip" xml:space="preserve">
+    <value>Следующие пользователи имеют доступ к клиентам, владельцем которых является данный пользователь</value>
+  </data>
+  <data name="grdOwnerJoins.24a6a429-16f7-493a-b72f-76fb97b49729.FormatString" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="grdOwnerJoins.8b8b773d-4fb0-4800-9acf-b8fe24c4a7b1.FormatString" xml:space="preserve">
+    <value>{0:g}</value>
   </data>
   <data name="grdTeams.463701ca-8ff2-43c1-a864-c673dec0100b.ColumnHeading" xml:space="preserve">
     <value>Пользователь</value>
@@ -144,64 +192,25 @@
   <data name="grdTeams.0dbef834-f6a7-4e0e-b7ef-710ee9b6b938.ColumnHeading" xml:space="preserve">
     <value>Команда</value>
   </data>
-  <data name="lueAddUser.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
-    <value>Регион</value>
-  </data>
-  <data name="QFLabel.ToolTip" xml:space="preserve">
-    <value>Следующие пользователи имеют доступ к субъекту, курируемому другим пользователем</value>
-  </data>
-  <data name="lueAddUser.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="ModifyDate.Caption" xml:space="preserve">
-    <value>Дата обновления</value>
-  </data>
   <data name="lueAddUser.ButtonToolTip" xml:space="preserve">
-    <value>Добавить другого пользователя к этой комаде пользователя</value>
+    <value>Добавить другого пользователя в команду этого пользователя</value>
   </data>
   <data name="grdTeams.289c9959-b3a3-4c90-a911-c12882cccecb.ColumnHeading" xml:space="preserve">
     <value>Последнее изменение</value>
   </data>
-  <data name="grdOwnerJoins.76e5fabb-310e-47a2-a565-d3efacf82350.ColumnHeading" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
-  <data name="ConfirmRemoveFromTeam" xml:space="preserve">
-    <value>Удалить пользователя из выбранной команды?</value>
-  </data>
   <data name="grdTeams.d81642fa-d355-4f94-b430-3d2a517c507d.ColumnHeading" xml:space="preserve">
     <value>Создано</value>
   </data>
-  <data name="grdOwnerJoins.8b8b773d-4fb0-4800-9acf-b8fe24c4a7b1.ColumnHeading" xml:space="preserve">
-    <value>Последнее изменение</value>
-  </data>
-  <data name="lueAddUser.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Участник</value>
-  </data>
-  <data name="grdTeams.ba2d83bf-74cc-4580-b255-e69b2ca9008e.ColumnHeading" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
-  <data name="grdTeams.btnRemoveFromTeam.ToolTip" xml:space="preserve">
-    <value>Исключить</value>
-  </data>
-  <data name="lueAddUser.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="grdOwnerJoins.24a6a429-16f7-493a-b72f-76fb97b49729.ColumnHeading" xml:space="preserve">
-    <value>Создано</value>
-  </data>
-  <data name="OwnerDescription.Caption" xml:space="preserve">
-    <value>Описание владельца</value>
-  </data>
-  <data name="lueAddUser.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
-    <value>Название</value>
+  <data name="grdTeams.d6016bfc-0528-4763-8c5e-891b3981be43.ColumnHeading" xml:space="preserve">
+    <value>Профиль безопасности</value>
   </data>
   <data name="lueAddUser.LookupDialogTitle" xml:space="preserve">
     <value>Поиск пользователя</value>
   </data>
-  <data name="ProfileDescription.Caption" xml:space="preserve">
-    <value>Описание профиля</value>
+  <data name="lueAddUser.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
   </data>
-  <data name="ModifyUser.Caption" xml:space="preserve">
-    <value>Кто обновил</value>
+  <data name="grdTeams.btnRemoveFromTeam.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
   </data>
 </root>

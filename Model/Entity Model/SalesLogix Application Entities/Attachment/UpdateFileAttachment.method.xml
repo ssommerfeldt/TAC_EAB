@@ -7,7 +7,7 @@
     <OrmEntityMethodParam paramName="filename" sequence="0" paramType="string" />
   </parameter>
   <methodTargets>
-    <methodTarget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="95f9382f-3351-495b-9634-420ac2ced09b" targetType="Sage.SalesLogix.Attachment.Rules, Sage.SalesLogix.BusinessRules" sequence="10" targetMethod="UpdateFileAttachment" active="true">
+    <methodTarget id="95f9382f-3351-495b-9634-420ac2ced09b" targetType="Sage.SalesLogix.Attachment.Rules, Sage.SalesLogix.BusinessRules" sequence="10" targetMethod="UpdateFileAttachment" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>

@@ -1,28 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using Sage.Entity.Interfaces;
-using Sage.Platform;
 using Sage.Platform.Application;
 using Sage.Platform.Application.Services;
 using Sage.Platform.Application.UI;
 using Sage.Platform.Security;
 using Sage.Platform.WebPortal.Services;
 using Sage.Platform.WebPortal.SmartParts;
-using Sage.SalesLogix.Activity;
-using Sage.SalesLogix.Web.UI.Activity;
-using Activity = Sage.SalesLogix.Activity.Activity;
-using TimeZone = Sage.Platform.TimeZone;
 
 public partial class SmartParts_Calendar_ActivityCalendar : UserControl, ISmartPartInfoProvider
 {
     private const string CalendarCss = "~/css/calendar.css";
-
-
 
     private LinkHandler _linkHandler;
 
@@ -82,21 +69,6 @@ public partial class SmartParts_Calendar_ActivityCalendar : UserControl, ISmartP
         }
     }
 
-    protected void Page_Init(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-       
-    }
-
-    protected void Page_PreRender(object sender, EventArgs e)
-    {
-    }
-
-
     #region ISmartPartInfoProvider Members
 
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
@@ -108,9 +80,6 @@ public partial class SmartParts_Calendar_ActivityCalendar : UserControl, ISmartP
         }
         return tinfo;
     }
+
     #endregion
 }
-
-
-
-

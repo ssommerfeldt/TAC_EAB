@@ -1,5 +1,5 @@
-/* external script file                                      */
-/* Copyright ©1997-2013                                      */
+ï»¿/* external script file                                      */
+/* Copyright 1997-2013                                      */
 /* SalesLogix, N.A., LLC.                                       */
 /* All Rights Reserved                                       */
 /* Main library of scripts used throughout the application   */

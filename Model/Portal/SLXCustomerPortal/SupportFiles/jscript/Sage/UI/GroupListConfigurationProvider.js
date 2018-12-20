@@ -1,47 +1,43 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/GroupListConfigurationProvider", [
         'Sage/_ConfigurationProvider',
         'Sage/Data/GroupLayoutSingleton',
         'Sage/Services/_ServiceMixin',
         'Sage/Utility/_LocalStorageMixin',
-        'Sage/UI/Columns/SlxLink',
-        'Sage/UI/Columns/Boolean',
-        'Sage/UI/Columns/DateTime',
-        'Sage/UI/Columns/Numeric',
-        'Sage/UI/Columns/OwnerType',
-        'Sage/UI/Columns/Phone',
-        'Sage/UI/Columns/UserType',
-        'Sage/UI/Columns/Currency',
         'Sage/Data/SDataStore',
         'Sage/UI/SummaryFormatterScope',
         'dijit/MenuSeparator',
         'dijit/Menu',
+        'dijit/MenuItem',
+        'Sage/UI/PopupMenuItem',
         'Sage/UI/MenuItem',
         'dojo/_base/lang',
         'dojo/_base/declare',
-        'dojo/i18n'
+        'dojo/i18n',
+        'Sage/Utility/Groups',
+        'Sage/Store/SData',
+        'dojo/store/DataStore',
+        'dojo/store/Observable'
 ],
 function (
     _ConfigurationProvider,
     GroupLayoutSingleton,
     _ServiceMixin,
     _LocalStorageMixin,
-    slxLinkColumn,
-    booleanColumn,
-    dateTimeColumn,
-    numericColumn,
-    ownerTypeColumn,
-    phoneColumn,
-    userTypeColumn,
-    Currency,
     SDataStore,
     summaryFormatterScope,
     menuSeparator,
     dijitMenu,
+    dijitMenuItem,
+    PopupMenuItem,
     sageMenuItem,
     lang,
     declare,
-    i18n) {
+    i18n,
+    groupsUtility,
+    SDataObjStore,
+    dataStoreAdapter,
+    Observable) {
     var groupListConfigProvider = declare('Sage.UI.GroupListConfigurationProvider', [_ConfigurationProvider, _ServiceMixin, _LocalStorageMixin], {
         serviceMap: {
             'groupContextService': 'ClientGroupContext'
@@ -93,226 +89,18 @@ function (
                 select.push(entry['keyField']);
             }
 
-            var iPickListAliasIndex = 0;
-            var iOwnerAliasIndex = 0;
-            var iUserAliasIndex = 0;
+            var gridStructureData = groupsUtility.getGridStructure(layout);
+            structure = gridStructureData.structure;
+            select = gridStructureData.select;
 
-            for (i = 0; i < layout.length; i++) {
-                var item = layout[i];
-                select.push(item['alias']);
-                if (item['visible']) {
-                    if (item['webLink']) {
-                        var dataPath = item['dataPath'],
-                            entity = dataPath.lastIndexOf("!") > -1 ? dataPath.substring(0, dataPath.lastIndexOf("!")).substring(dataPath.lastIndexOf(".") + 1) : dataPath.substring(0, dataPath.lastIndexOf(":")),
-                            keyField = entity + 'ID';
+            var request = new Sage.SData.Client.SDataNamedQueryRequest(this.service);
+            request.setQueryName('execute');
+            request.setResourceKind('groups');
+            request.setContractName('system');
+            request.getUri().setCollectionPredicate(this.formatPredicate(entry));
 
-                        //take into account the often denormalized field "ACCOUNT" that lives on several entities... (Contact, etc.)
-                        if (item['alias'] === 'ACCOUNT' || item['alias'].match(/A\d+_ACCOUNT/ig)) {
-                            entity = 'ACCOUNT';
-                            keyField = 'ACCOUNTID';
-                        }
-                        if ((context) && (entity === context.CurrentTable)) {
-                            entity = context.CurrentEntity;
-                            keyField = context.CurrentTableKeyField;
-                        }                     
-                        select.push(keyField);
-
-                        structure.push({
-                            field: item['alias'],
-                            property: item['propertyPath'],
-                            name: item['caption'],
-                            type: slxLinkColumn,
-                            pageName: entity,
-                            idField: keyField,
-                            width: item['width'] + 'px'
-                        });
-                    }
-                    else {
-                        // hack section
-                        if (item['alias'].match(/^email$/i)) {
-                            item['format'] = 'Email';
-                        }
-                        if (item['fieldType'] === 'DateTime') {
-                            item['format'] = 'DateTime';
-                        }
-                        // end hack section
-
-                        switch (item['format']) {
-                            case 'Boolean':
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['propertyPath'],
-                                    name: item['caption'],
-                                    type: booleanColumn,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    formatString: item['formatString'],
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-
-                            case 'DateTime':
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['propertyPath'],
-                                    name: item['caption'],
-                                    type: dateTimeColumn,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    datePattern: item['formatString'],
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-
-                            case 'Email':
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['propertyPath'],
-                                    name: item['caption'],
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    formatter: function (val) {
-                                        if (!val) {
-                                            return '';
-                                        }
-
-                                        return dojo.string.substitute(
-                                        '<a href=mailto:${0}>${0}</a>',
-                                        [Sage.Utility.htmlEncode(val)]);
-                                    },
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-
-                            case 'Percent':
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['propertyPath'],
-                                    name: item['caption'],
-                                    type: numericColumn,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    constraints: {
-                                        places: Sage.Utility.getPrecision(item['formatString']),
-                                        round: -1
-                                    },
-                                    fercent: true,
-                                    formatType: 'Percent',
-                                    width: item['width'] + 'px',
-                                    isWholeNumberPercent: false
-                                });
-                                break;
-
-                            case 'Fixed':
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['propertyPath'],
-                                    name: item['caption'],
-                                    type: numericColumn,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    constraints: {
-                                        places: Sage.Utility.getPrecision(item['formatString']),
-                                        round: -1
-                                    },
-                                    // a fake percent
-                                    fercent: true,
-                                    formatType: item['formatString'][
-                                    item['formatString'].length - 1] === '%' ? 'Percent' : 'Number',
-                                    width: item['width'] + 'px',
-                                    isWholeNumberPercent: item['format'] === 'Percent' ? false : true
-                                });
-                                break;
-
-                            case 'Owner':
-                                var ownerName = item['alias'] + 'NAME' + iOwnerAliasIndex;
-                                iOwnerAliasIndex++;
-                                select.push(ownerName);
-                                structure.push({
-                                    field: ownerName,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    name: item['caption'],
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-
-                            case 'OwnerType':
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['propertyPath'],
-                                    name: item['caption'],
-                                    type: ownerTypeColumn,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-
-                            case 'Phone':
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['propertyPath'],
-                                    name: item['caption'],
-                                    type: phoneColumn,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-
-                            case 'PickList Item':
-                                var pickName = item['alias'] + 'TEXT' + iPickListAliasIndex;
-                                iPickListAliasIndex++;
-                                select.push(pickName);
-                                structure.push({
-                                    field: pickName,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    property: item['propertyPath'],
-                                    name: item['caption'],
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-
-                            case 'User':
-                                var userName = item['alias'] + 'NAME' + iUserAliasIndex;
-                                iUserAliasIndex++;
-                                select.push(userName);
-                                structure.push({
-                                    field: userName,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    name: item['caption'],
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-
-                            case 'User Type':
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['propertyPath'],
-                                    name: item['caption'],
-                                    type: userTypeColumn,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-                            case 'Currency':
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['caption'],
-                                    name: item['caption'],
-                                    type: Currency,
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-                            default:
-                                structure.push({
-                                    field: item['alias'],
-                                    property: item['caption'],
-                                    name: item['caption'],
-                                    styles: 'text-align: ' + item['align'] + ';',
-                                    width: item['width'] + 'px'
-                                });
-                                break;
-                        } // end switch
-                    }
-                } // end if(visable)
-            } // end for loop
-            
-            var store = new SDataStore({
+            // Needed for group list tasklet which is still a dojox grid
+            var dojoxStore = new SDataStore({
                 service: this.service,
                 resourceKind: 'groups',
                 resourcePredicate: this.formatPredicate(entry),
@@ -322,19 +110,34 @@ function (
                 count: this.ROWS_PER_PAGE
             });
 
+            var store = new SDataObjStore({
+                service: this.service,
+                request: request,
+                contractName: 'system',
+                resourceKind: 'groups',
+                //resourceProperty: this.resourceProperty,
+                resourcePredicate: this.formatPredicate(entry),
+                include: [],
+                select: select,
+                where: null,
+                idProperty: entry['keyField'],
+                queryArgs: {
+                    count: this.ROWS_PER_PAGE
+                },
+                scope: this
+            });
+
+
+
             var tableAliases = {};
             for (i = 0; i < entry['tableAliases'].length; i++)
                 tableAliases[entry['tableAliases'][i]['tableName'].toUpperCase()] = entry['tableAliases'][i]['alias'];
 
             return {
-                structure: [{
-                    defaultCell: { defaultValue: '' },
-                    cells: [
-                        structure
-                    ]
-                }],
+                structure: structure,
                 store: store,
                 rowsPerPage: this.ROWS_PER_PAGE,
+                queryOptions: store.queryOptions,
                 layout: entry['layout'],
                 tableAliases: tableAliases,
                 selectedRegionContextMenuItems: this._getListContextMenuItems(),
@@ -350,7 +153,8 @@ function (
                         }
                     }
                 }),
-                id: entry['$key']
+                id: entry['$key'],
+                dojoxStore: dojoxStore
             };
         },
         _getCurrentGroupID: function () {
@@ -366,6 +170,7 @@ function (
             return results;
         },
         _onListContext: function (e) {
+            e.preventDefault();
             var groupContextSvc = Sage.Services.getService('ClientGroupContext');
             var context = groupContextSvc.getContext();
             for (var i = 0; i < this._adHocOnlyMenuItems.length; i++) {
@@ -402,7 +207,7 @@ function (
                             dojo.style(menuItem.arrowWrapper, "visibility", "");
                         }
                     } else {
-                        menuItem = new sageMenuItem({
+                        menuItem = new dijitMenuItem({
                             id: groupId + '_' + i,
                             label: mDef.text || '...',
                             icon: mDef.img,
@@ -427,11 +232,11 @@ function (
         },
         _createAddToAdHocMenuItem: function (menuDef) {
             this._adHocMenu = new dijitMenu();
-            this._adHocMenu.addChild(new sageMenuItem({
+            this._adHocMenu.addChild(new dijitMenuItem({
                 label: 'loading...'
             }));
             this._adHocMenuHref = menuDef.href;
-            var menuItem = new sageMenuItem({
+            var menuItem = new PopupMenuItem({
                 label: menuDef.text || '...',
                 icon: menuDef.img,
                 title: menuDef.tooltip || '',
@@ -449,7 +254,7 @@ function (
                 this._adHocMenu.destroyDescendants();
                 for (var i = 0; i < list.length; i++) {
                     var grp = list[i];
-                    this._adHocMenu.addChild(new sageMenuItem({
+                    this._adHocMenu.addChild(new dijitMenuItem({
                         label: grp['$descriptor'] || grp['name'],
                         icon: '',
                         title: grp['$descriptor'] || grp['name'],
@@ -472,14 +277,17 @@ function (
             if (!entry) {
                 entry = this._currentConfiguration;
             }
-            var store = new SDataStore({
+            var store = new SDataObjStore({
                 service: this.service,
                 resourceKind: 'groups',
                 resourcePredicate: this.formatPredicate(entry),
                 queryName: 'execute',
+                idProperty: entry['keyField']
+            }),
+            queryOptions = {
                 select: [entry['keyField']],
                 include: []
-            }),
+            },
                 structure = [
                     {
                         field: entry['keyField'],
@@ -506,18 +314,20 @@ function (
                 })
             );
             return {
-                structure: structure,
+                columns: structure,
                 layout: entry['layout'],
                 store: store,
                 rowHeight: 200,
                 rowsPerPage: 50,
+                queryOptions: queryOptions,
                 formatterScope: new summaryFormatterScope({
                     requestConfiguration: {
                         mashupName: this.summaryOptions['mashupName'] || 'SummaryViewQueries',
                         queryName: this.summaryOptions['queryName'] || ''
                     },
                     templateLocation: this.summaryOptions['templateLocation'] || ''
-                })
+                }),
+                keyField: entry['keyField']
             };
         },
         _createConfigurationForDetail: function (entry) {
@@ -539,7 +349,7 @@ function (
 
             return {
                 list: this._createConfigurationForList(entry),
-                summary: (state == 'summary') ? this._createConfigurationForSummary(entry) : false, //this._createConfigurationForSummary(entry),
+                summary: (state == 'summary') ? this._createConfigurationForSummary(entry) : false,
                 detail: this._createConfigurationForDetail(entry)
             };
         },

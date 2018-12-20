@@ -1,0 +1,41 @@
+﻿{
+    "widgetId": "infor.crm.activity",
+    "type": "inline",
+    "name": "CRM Activity",
+    "version": "1.5.1.6",
+    "category": "application",
+    "applicationLogicalId": "lid://infor.crm",
+    "requiresConfig": true,
+    "settings": [
+      {
+        "name": "limitCount",
+        "labelId": "limitCount",
+        "type": "string",
+        "defaultValue": "10"
+      }
+    ],
+    "localization": {
+        "en-US": {
+            "widgetTitle": "CRM Activities",
+            "widgetDescription": "Displays a list of your activities",
+            "errorOccured": "Error occurred",
+            "actionSuccess": "Action completed successfully",
+            "myActivitiesText": "My Activities",
+            "allOpenText": "All Open",
+            "pastDueText": "Past Due",
+            "sortbyText": "Sort by",
+            "dueDateText": "Due Date",
+            "typeText": "Type",
+            "destcriptionText": "Description",
+            "filterByText": "Filter by",
+            "limitText": "Limit",
+            "titleText": "Title",
+            "lblAccept": "Accept",
+            "lblDecline": "Decline",
+            "lblComplete": "Complete",
+            "lblDelete": "Delete",
+            "lblNow": "Now",
+            "lblAsScheduled": "Scheduled"
+        }
+    }
+}

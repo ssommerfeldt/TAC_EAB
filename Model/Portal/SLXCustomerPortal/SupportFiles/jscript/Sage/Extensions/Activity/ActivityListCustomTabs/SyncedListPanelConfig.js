@@ -1,6 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/Extensions/Activity/ActivityListCustomTabs/SyncedListPanelConfig", [
         'Sage/MainView/ActivityMgr/AllOpenListPanelConfig',
         'Sage/UI/Columns/DateTime',
         'dojo/_base/declare',
@@ -20,12 +20,12 @@ function (
         },
         addToConfigurationLayout: function () {
             //Add new structure configurations that will add new columns to the list panel.
-            this._select.push('Details/AttendeeCount');
+            this._select.push('AttendeeCount');
             //this._select.push('Details/LastSyncDate');
 
             //Add new structure configurations that will add new columns to the list panel.
             this._structure.push({
-                field: 'Details.AttendeeCount',
+                field: 'AttendeeCount',
                 name: nlsResources.colCreateSource,
                 width: '100px'
             });
@@ -38,7 +38,7 @@ function (
         },
         _getWhere: function () {
             return '(Type ne "atLiterature" )';// and (GlobalSyncId ne null)';
-        },
+        }
     });
     return syncedListPanelConfig;
 });

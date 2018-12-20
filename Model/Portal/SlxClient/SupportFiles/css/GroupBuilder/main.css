@@ -12,8 +12,8 @@ div.dropIndicator
 
 BODY
 {
-	background-color: #F2F2ED;
-	font-family: Arial,Helvetica,sans-serif;
+	background-color: #fff;
+	font-family: Helvetica,Arial,sans-serif;
 	width:99%;
 	font-size: 8pt;
 	margin-left: 5px;
@@ -24,34 +24,37 @@ BODY
 
 TABLE
 {
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 	font-size: 11px;
-	color: #000000;
+	color: #737373;
 	border-width: 0px;
 }
 
 TH
 {
-	background-color: #CFCFBE;
+	background-color: #b6b6b6;
 	text-align: left;
-	border-left: 1px solid #CCC;
-	border-bottom: 1px solid #CCC;
+	border-left: 1px solid #999999;
+	border-bottom: 1px solid #999999;
 	padding: 0;
 }
 
 TABLE.tbodylt
 {
-	color: black;
+	color: #737373;
 	alignment: left;
 	vertical-align: top;
-	border: 1px #b5bcc7 solid;
+	border: 1px #999999 solid;
 	/*border-collapse: collapse;*/ /*this was making borders disappear in IE*/
 	width: 100%;
 }
 
 #QueryBuilderMaincontents .tbodylt
 {
-	width: 820px;
+	width: 815px;
+}
+#QueryBuilderMaincontents .dijitContentPane {
+    padding:0px
 }
 
 TABLE.fixed
@@ -63,7 +66,7 @@ TD.divline
 {
 	/* use this to make the dividing lines between form sections  */ /* <td colspan=x class="divline">&nbsp;</td>                  */
 	height: 2px;
-	border-bottom: 1px solid #B5BCC7;
+	border-bottom: 1px solid #999999;
 	font-size: 3px;
 	padding: 0px;
 	margin: 0px;
@@ -73,10 +76,11 @@ TD.divline
 #grdConditions tr th,
 .dndItem tr:first-child
 {
-	background:url(../../images/rowOverlay.png) repeat-x top #e6e6e6; 
-	color: #000000; 
+	/*background:url(../../images/rowOverlay.png) repeat-x top #e6e6e6;*/ 
+    background-color: #d2d2d2;
+	color: #737373; 
 	font-size:11px; 
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 	font-weight: normal;
 	border: 0px;
 }
@@ -97,22 +101,52 @@ input[type="button"]
 {
 	margin: 2px 5px;
 	min-width: 60px;
+    background-color: #999;
+    box-shadow: 0px -1px #737373 inset;
+    border-radius: 2px;
+    color: #FFF;
+    padding: 4px 8px 4px 8px;
+    outline: none;
+    font-size: 12px;
+    overflow: hidden;
+    font-family: Helvetica,Arial,sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    width: auto;
+    text-shadow: 0px 0px 1px rgba(34, 34, 34, 0.3);
+}
+input[type="button"]:disabled {
+    background: none repeat scroll 0px 0px #E0E0E0 !important;
+    color: #808080;
+    box-shadow: 0px -1px #E0E0E0 inset;
+    cursor: default;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.3);
+}
+div#QueryBuilderMaincontents_inner div#buttonDiv
+{
+	padding-top: 10px;
+}
+
+div#QueryBuilderMaincontents_inner div#buttonDiv input#btnEdit
+{
+	margin-left: 0px !important;
 }
 
 /* settings for form controls............................................................*/
 
 TEXTAREA
 {
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 	font-size: 8pt;
-	color: #000000;
+	color: #737373;
 }
 
 SELECT
 {
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 	font-size: 8pt;
-	color: #000000;
+	color: #737373;
 	opacity: 1.0;
 }
 
@@ -123,24 +157,24 @@ select[disabled]
 
 select[disabled] option
 {
-	color: #000;
+	color: #737373;
 	
 }
 
 INPUT
 {
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 	font-size: 8pt;
 	font-weight: normal;
-	color: #000000;
+	color: #737373;
 }
 
 BUTTON
 {
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 	font-size: 8pt;
 	font-weight: normal;
-	color: #000000;
+	color: #737373;
 	height: 20px;
 	border: 1px #c0c0c0 solid;
 	background-color: #F1F1EC;
@@ -149,22 +183,22 @@ BUTTON
 
 A
 {
-	color: blue;
+	color: #13a3f7;
 }
 
 A.alink
 {
-	color: blue;
+	color: #13a3f7;
 }
 
 A.vlink
 {
-	color: blue;
+	color: #13a3f7;
 }
 /* calendar control and other behaviors..................................................*/
 .calBtn
 {
-	border: 1px solid #c0c0c0;
+	border: 1px solid #b6b6b6;
 	cursor: pointer;
 	padding: 0px;
 	margin: 0px;
@@ -179,7 +213,7 @@ A.vlink
 
 .timePicker
 {
-	border: 1px solid #c0c0c0;
+	border: 1px solid #b6b6b6;
 	cursor: pointer;
 	padding: 0px;
 	margin: 0px;
@@ -204,19 +238,19 @@ BODY.listview
 
 TR.rowLight__pref
 {
-	background-color: #F8F8F8;
-	color: black;
+	background-color: #e5e5e5;
+	color: #737373;
 }
 
 TR.rowDark__pref
 {
 	background-color: #FFFFFF;
-	color: black;
+	color: #737373;
 }
 
 TR.rowSelected__pref
 {
-	background-color: #e3f2ff;
+	background-color: #d2d2d2;
 	color: white;
 }
 
@@ -233,15 +267,15 @@ TR.rowSelected__pref TD
 
 TD.cellGrid__pref
 {
-	border-right: 1px #B3B3B3 solid;
-	border-bottom: 1px #B3B3B3 solid;
+	border-right: 1px #b6b6b6 solid;
+	border-bottom: 1px #b6b6b6 solid;
 }
 
 .cellChrome__pref
 {
-	border: 1px #b3b3b3 solid;
-	background-color: #F8F8F8;
-	color: black;
+	border: 1px #b6b6b6 solid;
+	background-color: #e5e5e5;
+	color: #737373;
 	cursor: pointer;
 }
 
@@ -250,7 +284,7 @@ table.theader
 	font-size: 11pt;
 	font-weight: bold;
 	color: #FFFFFF;
-	background-color: #b3b3b3;
+	background-color: #b6b6b6;
 	width: 100%;
 	border-width: 0px;
 	position:relative;
@@ -275,10 +309,10 @@ td.header
 
 td.header2
 {
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 	font-size: 11pt;
 	font-weight: bold;
-	color: black;
+	color: #737373;
 	alignment: left;
 	vertical-align: middle;
 }
@@ -286,9 +320,9 @@ td.header2
 
 H3
 {
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 	font-size: 16pt;
-	color: #00008B;
+	color: #737373;
 }
 /* end main */
 
@@ -300,6 +334,9 @@ H3
 #JoinEditorcontents .W1
 {
 	width: 220px;
+}
+#JoinEditorcontents select[id$="Tables"].W1 {
+    height:34px;
 }
 #JoinEditorcontents .W2
 {
@@ -314,6 +351,7 @@ H3
 	/*color: blue;*/
 	padding:2px;
 	background-image: url(../../images/groupbuilder/tabbak.gif);
+    min-width:80px;
 }
 #OwnerAssigncontents .W1
 {
@@ -330,7 +368,7 @@ H3
 }
 #OwnerAssigncontents #tabcontainer
 {
-	border: 1px solid #B5BCC7;
+	border: 1px solid #b6b6b6;
 	padding: 5px;
 }
 #OwnerAssigncontents #padleftbottom
@@ -353,7 +391,7 @@ H3
 /* QBAddCondition */
 #dlgAddCondition .border
 {
-	border-right: 1px solid #B5BCC7;
+	border-right: 1px solid #b6b6b6;
 }
 #dlgAddCondition .W1
 {
@@ -388,7 +426,7 @@ H3
 /* addCalcField */
 #addCalcFieldcontents #divTableTree
 {
-	border: #B5BCC7 1px solid;
+	border: #b6b6b6 1px solid;
 	overflow: auto;
 	width: 370px;
 	padding-top: 2px;
@@ -405,11 +443,11 @@ H3
 }
 #addCalcFieldcontents .W2
 {
-	width: 150px;
+	width: 152px;
 }
 #addCalcFieldcontents .W3
 {
-	width: 310px;
+	width: 309px;
 }
 #addCalcFieldcontents .W100
 {
@@ -418,8 +456,9 @@ H3
 #addCalcFieldcontents .tab
 {
 	cursor: pointer;
-	color: blue;
+	color: #737373;
 	background-image: url(../../images/groupbuilder/tabbak.gif);
+    min-width:80px;
 }
 #addCalcFieldcontents .hiddentab
 {
@@ -431,7 +470,7 @@ H3
 	height: 23px;
 	font-weight: bold;
 	font-size: 14pt;
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 }
 #addCalcFieldcontents BUTTON.smallertext
 {
@@ -443,7 +482,7 @@ H3
 	width: 350px;
 	overflow: auto;
 	background-color: white;
-	border: 1px solid #B5BCC7;
+	border: 1px solid #b6b6b6;
 }
 #addCalcFieldcontents .paddlb
 {
@@ -457,7 +496,7 @@ H3
 }
 #addCalcFieldcontents #tabcontents
 {
-	border: 1px solid #B5BCC7;
+	border: 1px solid #b6b6b6;
 	padding: 6px;
 }
 /* end addCalcField */
@@ -508,7 +547,7 @@ BUTTON
 	height: 23px;
 	font-weight: bold;
 	font-size: 14pt;
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Helvetica,Arial,sans-serif;
 }
 BUTTON.smallertext
 {
@@ -572,7 +611,7 @@ end ShowGroups */
 /* QBEditLayout */
 #dlgEditLayout .borderr
 {
-	/*border-right: #b5bcc7 1px solid;*/
+	/*border-right: #b6b6b6 1px solid;*/
 }
 #dlgEditLayout .W1
 {
@@ -591,7 +630,7 @@ end ShowGroups */
 /* GlobalJoinManager */
 #MainContent_GlobalJoinManager_joinGrid
 {
-	border: 1px solid #b5bcc7;
+	border: 1px solid #b6b6b6;
 }
 
 #MainContent_GlobalJoinManager_joinGrid table {
@@ -612,7 +651,7 @@ end ShowGroups */
 /* calcfields */
 #calcfieldscontents #calcFieldGrid
 {
-	border: 1px solid #b5bcc7;
+	border: 1px solid #b6b6b6;
 	overflow: auto;
 	width: 100%;
 	height: 250px;
@@ -629,7 +668,7 @@ end ShowGroups */
 }
 #calcfieldscontents #displayText
 {
-	border: 1px solid #b5bcc7;
+	border: 1px solid #b6b6b6;
 	background-color: #f9f9f9;
 	height: 60px;
 	width: 100%;
@@ -654,17 +693,17 @@ end ShowGroups */
 /* QueryBuilderMain */
 #QueryBuilderMaincontents A:visited
 {
-	color: blue;
+	color: #737373;
 	font-size: 10px;
 }
 #QueryBuilderMaincontents A:active
 {
-	color: blue;
+	color: #737373;
 	font-size: 10px;
 }
 #QueryBuilderMaincontents A:link
 {
-	color: blue;
+	color: #737373;
 	font-size: 10px;
 }
 #QueryBuilderMaincontents .padding
@@ -673,7 +712,7 @@ end ShowGroups */
 }
 #QueryBuilderMaincontents #divTableTree
 {
-	border: #b5bcc7 1px solid;
+	border: #b6b6b6 1px solid;
 	overflow: auto;
 	width: 370px;
 	padding-top: 2px;
@@ -682,12 +721,17 @@ end ShowGroups */
 }
 #QueryBuilderMaincontents #divFieldList
 {
-	border: #b5bcc7 1px solid;
-	overflow: auto;
+	border: #b6b6b6 1px solid;
 	width: 190px;
 	height: 220px;
 	background-color: white;
 }
+    #QueryBuilderMaincontents #divFieldList .dgrid-scroller {
+        position:absolute
+    }
+    #QueryBuilderMaincontents #divFieldList .dgrid-row{
+        cursor:pointer;
+    }
 #QueryBuilderMaincontents .padrt
 {
 	padding-right: 5px;
@@ -697,15 +741,27 @@ end ShowGroups */
 #QueryBuilderMaincontents .W1
 {
 	min-width:120px;
+    white-space:inherit;
 }
 #QueryBuilderMaincontents .W2
 {
 	width: 422px;
+    padding: 0px;
 }
-
+#QueryBuilderMaincontents textarea.W2 {
+    height:170px;
+    vertical-align: top;
+    width: 100% !important;
+    padding: 0 8px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    border-radius: 2px;
+    margin: 4px 0px 2px;
+}
 #QueryBuilderMaincontents select
 {
 	width: 100%;
+    min-width: 70px;
 }
 
 #QueryBuilderMaincontents .W100
@@ -719,7 +775,7 @@ end ShowGroups */
 #QueryBuilderMaincontents .tab
 {
 	cursor: pointer;
-	color: blue;
+	color: #737373;
 	background-image: url(../../images/groupbuilder/tabbak.gif);
 }
 #QueryBuilderMaincontents #tab0
@@ -728,7 +784,7 @@ end ShowGroups */
 }
 #QueryBuilderMaincontents .border
 {
-	border: #b5bcc7 1px solid;
+	border: #b6b6b6 1px solid;
 }
 #QueryBuilderMaincontents #makespace
 {
@@ -750,7 +806,7 @@ end ShowGroups */
 {
 min-width: 150px;
 width: 100%;
-border:1px solid #b5bcc7;
+border:1px solid #b6b6b6;
 table-layout:fixed;
 overflow:hidden
 }

@@ -112,12 +112,12 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RateAmount.Caption" xml:space="preserve">
+  <data name="curRateAmount.Caption" xml:space="preserve">
     <value>Rate / Hour:</value>
   </data>
   <data name="RateTypeCode.Caption" xml:space="preserve">
@@ -140,5 +140,8 @@
   </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>You are about to permanently delete this record.</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/OccurrenceOrSeriesQueryDlg", (
 { titleFmt: '${type} - ${description}',
   actDateText: 'Activity Date:',
   contactText: 'Contact:',

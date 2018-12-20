@@ -1,4 +1,4 @@
-define([
+define("Sage/Library/main", [
     "Sage/Library/DocumentProperties",
     "Sage/Library/FileHandler",
     "Sage/Library/FolderHandler",

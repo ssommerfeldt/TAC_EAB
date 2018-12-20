@@ -254,7 +254,7 @@ public partial class StepMapFields : UserControl, ISmartPartInfoProvider
         //Get the selected record from the 'source' datagrid
         if (String.IsNullOrEmpty(txtMatchFromRowIndx.Value) || String.IsNullOrEmpty(txtMatchToRowIndx.Value))
         {
-            DialogService.ShowMessage(GetLocalResourceObject("error_NoSourceTargetSelected").ToString(), "SalesLogix");
+            DialogService.ShowMessage(GetLocalResourceObject("error_NoSourceTargetSelected").ToString());
             return;
         }
         int sourceSelIdx = Convert.ToInt32(txtMatchFromRowIndx.Value) - 1;
@@ -279,7 +279,7 @@ public partial class StepMapFields : UserControl, ISmartPartInfoProvider
     {
         if (String.IsNullOrEmpty(txtMatchFromRowIndx.Value))
         {
-            DialogService.ShowMessage(GetLocalResourceObject("error_NoSourceSelected").ToString(), "SalesLogix");
+            DialogService.ShowMessage(GetLocalResourceObject("error_NoSourceSelected").ToString());
             return;
         }
         ImportManager importManager = Page.Session["importManager"] as ImportManager;

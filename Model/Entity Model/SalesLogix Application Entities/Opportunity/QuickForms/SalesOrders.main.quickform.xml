@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e831bda4-f93f-4f56-86d3-f4a1f86c729b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e831bda4-f93f-4f56-86d3-f4a1f86c729b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-03-01T22:29:55.1988181Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
@@ -44,6 +44,30 @@
             <Target />
             <AppliedSecurity />
           </QFLinkCol>
+          <QFDateTimePickerCol>
+            <StyleScheme />
+            <DataField>DueDate</DataField>
+            <ColumnId>a8afa0ec-4834-486c-b15b-81e80c0aa1be</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>DueDate</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <DateOnly>true</DateOnly>
+            <Timeless>false</Timeless>
+          </QFDateTimePickerCol>
+          <QFDataGridCol>
+            <StyleScheme />
+            <DataField>CustomerPurchaseOrderNumber</DataField>
+            <ColumnId>bc35c18e-455e-4d7f-afd8-8eb717fd1a45</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>CustomerPurchaseOrderNumber</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+          </QFDataGridCol>
           <QFDataGridCol>
             <StyleScheme />
             <DataField>Status</DataField>
@@ -55,61 +79,46 @@
             <SortField>Status</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
           </QFDataGridCol>
-          <QFDataGridCol>
+          <QFDateTimePickerCol>
             <StyleScheme />
-            <DataField>Account.AccountName</DataField>
-            <ColumnId>17587aaf-df18-451a-891f-bbdbf5363d68</ColumnId>
+            <DataField>OrderDate</DataField>
+            <ColumnId>2a230658-4679-4c5f-94d1-dc8e68178b94</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <DateOnly>true</DateOnly>
+            <Timeless>false</Timeless>
+          </QFDateTimePickerCol>
+          <QFDateTimePickerCol>
+            <StyleScheme />
+            <DataField>DatePromised</DataField>
+            <ColumnId>6d1b252a-e168-4e3b-9822-5b13479fb511</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>Account.AccountName</SortField>
+            <SortField>DatePromised</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
-          <QFDataGridCol>
+            <DateOnly>true</DateOnly>
+            <Timeless>false</Timeless>
+          </QFDateTimePickerCol>
+          <QFSLXCurrencyCol>
             <StyleScheme />
-            <DataField>BillToName</DataField>
-            <ColumnId>e6d8a332-378a-4ace-ab37-3e0190c78b11</ColumnId>
+            <DataField>DocGrandTotal</DataField>
+            <ColumnId>e87a5ed0-21c9-4f02-8335-9fb94b3b7668</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>BillToName</SortField>
+            <SortField>DocGrandTotal</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
-          <QFDataGridCol>
-            <StyleScheme />
-            <DataField>ShipToName</DataField>
-            <ColumnId>c07c29f7-7b2f-4927-8819-0963197b663a</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>ShipToName</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
-          <QFDataGridCol>
-            <StyleScheme />
-            <DataField>ShipVia</DataField>
-            <ColumnId>d414a619-fce1-4720-bb32-e3159e2e544f</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>ShipVia</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
-          <QFDataGridCol>
-            <StyleScheme />
-            <DataField>CustomerPurchaseOrderNumber</DataField>
-            <ColumnId>e5b47e34-15bc-4352-b8d2-c53d2c0e5376</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>CustomerPurchaseOrderNumber</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
+            <CurrentCode />
+            <ExchangeRateType>BaseRate</ExchangeRateType>
+            <ExchangeRate />
+            <DecimalDigits>4</DecimalDigits>
+          </QFSLXCurrencyCol>
           <QFDeleteCol>
             <StyleScheme />
             <DataField />
@@ -208,14 +217,13 @@
         <OnClientClick />
         <OnClickAction>
           <ResourceKey>QFButton</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.RedirectActionItem, Sage.Platform.QuickForms">
-            <RedirectActionItem>
-              <MethodName />
-              <RawURL>InsertSalesOrder.aspx?modeid=Insert&amp;opp=yes</RawURL>
-              <MainViewEntityName />
-              <UseCurrentIdInLink>false</UseCurrentIdInLink>
-              <EntityViewMode>Detail</EntityViewMode>
-            </RedirectActionItem>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>QFButton_ClickAction</MethodName>
+              <CSharpCodeSnippet>var opportunity = BindingSource.Current as IOpportunity;
+var salesOrderId = opportunity.CreateSalesOrderFromOpportunity();
+Response.Redirect(string.Format("SalesOrder.aspx?entityId={0}", salesOrderId));</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
@@ -234,10 +242,6 @@
     </ColumnStyle>
   </Columns>
   <Rows>
-    <RowStyle>
-      <SizeType>Absolute</SizeType>
-      <Height>35</Height>
-    </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>
       <Height>35</Height>

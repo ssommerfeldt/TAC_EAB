@@ -1,4 +1,4 @@
-define([
+define("Sage/Data/main", [
     "Sage/Data/BaseSDataStore",
     "Sage/Data/GroupLayoutSingleton",
     "Sage/Data/WritableStore", 

@@ -1,42 +1,64 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, __doPostBack, GroupAdHocListMenu, getCookie, commonTaskActions, $, cookie */
-define([
-        'dijit/Menu',
-        'dijit/Dialog',
-        'dijit/form/Button',
-        'dijit/form/CheckBox',
-        'dijit/registry',
-        'Sage/TaskPane/_BaseTaskPaneTasklet',
-        'Sage/UI/MenuItem',
-        'Sage/UI/Dialogs',
-        'Sage/Utility/Email',
-        'Sage/Groups/GroupManager',
-        'dojo/_base/xhr',
-        'dojo/_base/lang',
-        'dojo/_base/declare',
-        'dojo/string',
-        'dojo/i18n!./nls/CommonTasksTasklet',
-        'dojo/dom-class',
-        'Sage/Utility/Jobs'
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, __doPostBack, GroupAdHocListMenu, getCookie, commonTaskActions, $, cookie */
+define("Sage/TaskPane/CommonTasksTasklet", [
+    'dijit/Menu',
+    'dijit/Dialog',
+    'dijit/form/Button',
+    'dijit/form/CheckBox',
+    'Sage/TaskPane/_BaseTaskPaneTasklet',
+    'Sage/UI/MenuItem',
+    'Sage/UI/Dialogs',
+    'Sage/Utility',
+    'Sage/Utility/Email',
+    'Sage/Groups/GroupManager',
+    'dojo/_base/xhr',
+    'dojo/_base/lang',
+    'dojo/_base/declare',
+    'dojo/string',
+    'dojo/i18n!./nls/CommonTasksTasklet',
+    'dojo/dom-class',
+    'dojo/topic',
+    'Sage/Utility/Jobs',
+    'Sage/MainView/Import/ImportWizardController',
+    'Sage/MainView/Import/ImportManagerUtility',
+    'Sage/MainView/CopyUserProfile/CopyUserProfileController',
+    'Sage/UI/BulkUpdateWidget',
+    'Sage/Data/SDataServiceRegistry'
 ],
 function (
-    DijitMenu,
-    DijitDialog,
+    dijitMenu,
+    dijitDialog,
     dijitButton,
     dijitCheckBox,
-    dijitReg,
     _BaseTaskPaneTasklet,
-    MenuItem,
-    Dialogs,
+    menuItem,
+    dialogs,
+    utility,
     email,
-    GroupManager,
+    groupManager,
     xhr,
     lang,
     declare,
     dString,
     nlsResource,
     domClass,
-    jobs) {
+    topic,
+    jobs,
+    ImportWizardController,
+    importManagerUtility,
+    CopyUserProfileController,
+    BulkUpdateWidget,
+    sDataServiceRegistry
+) {
     var commonTasksTasklet = declare('Sage.TaskPane.CommonTasksTasklet', _BaseTaskPaneTasklet, {
+        excelSupported: false,
+        _exportToFile: function () {
+            var timeout = 0;
+            if (utility.isIE) {
+                timeout = 3000;
+            }
+            var self = this;
+            window.setTimeout(function () { self.onExportToFileClick(); }, timeout);
+        },
         constructor: function (args) {
             lang.mixin(this, nlsResource);
         },
@@ -66,10 +88,10 @@ function (
             }
         },
         removeSelectionsFromGroup: function () {
-            GroupManager.removeSelectionsFromGroup();
+            groupManager.removeSelectionsFromGroup();
         },
         saveSelectionsAsNewGroup: function () {
-            GroupManager.saveSelectionsAsNewGroup();
+            groupManager.saveSelectionsAsNewGroup();
         },
         showAdHocList: function (e) {
             var svc = Sage.Services.getService('ClientGroupContext'),
@@ -77,10 +99,10 @@ function (
                 item,
                 parentNode;
             if (typeof (GroupAdHocListMenu) === 'undefined') {
-                GroupAdHocListMenu = new DijitMenu({// jshint ignore:line
+                GroupAdHocListMenu = new dijitMenu({// jshint ignore:line
                     id: 'GroupAdHocList'
                 });
-                GroupAdHocListMenu.addChild(new MenuItem({
+                GroupAdHocListMenu.addChild(new menuItem({
                     label: this.loadingText
                 }));
             }
@@ -89,7 +111,7 @@ function (
                 GroupAdHocListMenu.destroyDescendants();
                 for (i = 0; i < list.length; i++) {
                     item = list[i];
-                    GroupAdHocListMenu.addChild(new MenuItem({
+                    GroupAdHocListMenu.addChild(new menuItem({
                         label: item.$descriptor || item.name,
                         ref: dString.substitute("javascript:Sage.Groups.GroupManager.addSelectionsToGroup('${0}')", [item.$key]),
                         onClick: function () {
@@ -125,30 +147,26 @@ function (
             }
         },
         exportToExcel: function () {
-            this.prepareSelectedRecords(this.triggerExportToExcelJob(this.getSelectionInfo(), this));
+            this.prepareSelectedRecords(this.getExcelJob(this.getSelectionInfo(), this));
         },
-        triggerExportToExcelJob: function (selectionInfo, self) {
-            return function () {
-                /* TODO: Add applied filter sets to parameters
-                 * var panel = dijitReg.byId('list');
-                var filterManager = panel.get('filterManager');
-                var svc = Sage.Services.getService('ClientGroupContext');
-                var context;
-                var tableName;
+        getExcelJob: function (selectionInfo, self) {
+            var groupId = this.getCurrentGroupId();
+            if (groupId === "LOOKUPRESULTS") {
+                groupId = this.getDefaultGroupId();
+            }
 
-                if (svc) {
-                    context = svc.getContext();
-                    tableName = context.CurrentTable;
-                }
-
-                filterManager.createQueryForJobs(tableName);*/
-
+           return function () {
+                var format = cookie.getCookie("format");
                 var parameters = [
                     { "name": "SelectedIds", "value": (selectionInfo.selectionCount > 0) ? selectionInfo.selectedIds.join(',') || '' : '' },
-                    { "name": "GroupId", "value": self.getCurrentGroupId()}
+                    { "name": "GroupId", "value": groupId },
+                    { "name": "AppliedFilters", "value": Sys.Serialization.JavaScriptSerializer.serialize(jobs.getFiltersForJob()) },
+                    { "name": "LookupConditions", "value": Sys.Serialization.JavaScriptSerializer.serialize(jobs.getLookupConditionsForJob()) },
+                    { "name": "ExportType", "value" : format} 
                 ];
+
                 var groupName = self.getCurrentGroupName();
-                var dateStamp = dojo.date.locale.format(new Date(), { selector: "date", datePattern: "yyyy_MM_dd_hhmm" });
+                var dateStamp = dojo.date.locale.format(new Date(), { selector: "date", datePattern: "yyyy_MM_dd_hhmm", locale: Sys.CultureInfo.CurrentCulture.name });
                 var user = '';
                 var clientContextSvc = Sage.Services.getService('ClientContextService');
                 if (clientContextSvc) {
@@ -156,7 +174,7 @@ function (
                         user = clientContextSvc.getValue("userPrettyName");
                     }
                 }
-                
+
                 var description = dString.substitute("${0}_${1}_${2}", [groupName, user, dateStamp]);
                 var options = {
                     descriptor: description,
@@ -168,12 +186,12 @@ function (
                     success: function (result) {
                     },
                     failure: function (result) {
-                        Dialogs.showError(dojo.string.substitute(self.errorRequestingJobMgr, [result.result]));
+                        dialogs.showError(dString.substitute(self.errorRequestingJobMgr, [result.result]));
                     },
                     ensureZeroFilters: true
                 };
                 jobs.triggerJobAndDisplayProgressDialog(options);
-            };
+           };
         },
         exportToFile: function () {
             this.getCurrentEntity();
@@ -182,10 +200,10 @@ function (
         fileFormatCheck: function (self) {
             return function () {
                 var formatIsSaved = cookie.getCookie("formatIsSaved"),
-                format = cookie.getCookie("format");
+                    format = cookie.getCookie("format");
                 //Check for cookie of file format type preference
                 if (formatIsSaved === "true" && format.length > 0) {
-                    dojo.byId([self.clientId, '_tskExportToExcel'].join('')).click();
+                   self.onDoExport(format);
                 } else {
                     self.promptForFileFormat();
                 }
@@ -200,7 +218,7 @@ function (
                 promptForFileFormatDialog = dijit.byId(promptForFileFormatDialogId);
 
             if (!promptForFileFormatDialog) {
-                promptForFileFormatDialog = new DijitDialog({
+                promptForFileFormatDialog = new dijitDialog({
                     id: promptForFileFormatDialogId,
                     title: self.exportToFile_DialogTitle
                 });
@@ -210,26 +228,63 @@ function (
             promptForFileFormatDialog.show();
         },
         getPromptForFileFormatTemplate: function () {
-            return new Simplate([
-                '<div>',
+            if (this.excelSupported) {
+                return new Simplate([
+                    '<div>',
                     '<label style="padding-left:5px">{%= commonTaskActions.selectFileFormat %}</label>',
                     '<br />',
                     '<div style="padding-left:10px; padding-top:7px">',
-                        '<input id="radioCSV" name="format_type" type="radio" data-dojo-type="dijit.form.RadioButton" value="csv" checked="true" />{%= commonTaskActions.exportToFile_OptionCSV %}',
+                    '<input id="radioExcel" name="format_type" type="radio" data-dojo-type="dijit.form.RadioButton" value="excel" checked="true" />{%= commonTaskActions.exportToFile_OptionExcel %}',
                     '</div>',
                     '<div style="padding-left:10px; padding-top:7px">',
-                        '<input id="radioTab" name="format_type" type="radio" data-dojo-type="dijit.form.RadioButton" value="tab" />{%= commonTaskActions.exportToFile_OptionTab %}',
+                    '<input id="radioCSV" name="format_type" type="radio" data-dojo-type="dijit.form.RadioButton" value="csv" />{%= commonTaskActions.exportToFile_OptionCSV %}',
+                    '</div>',
+                    '<div style="padding-left:10px; padding-top:7px">',
+                    '<input id="radioTab" name="format_type" type="radio" data-dojo-type="dijit.form.RadioButton" value="tab" />{%= commonTaskActions.exportToFile_OptionTab %}',
                     '</div>',
                     '<div style="padding-left:11px; padding-top:7px">',
-                        '<input id="exportFormatSaved" dojoAttachPoint="exportFormatSaved" data-dojo-type="dijit.form.CheckBox" value="true" />{%= commonTaskActions.exportToFile_OptionSaveFormat %}',
+                    '<input id="exportFormatSaved" dojoAttachPoint="exportFormatSaved" data-dojo-type="dijit.form.CheckBox" value="true" />{%= commonTaskActions.exportToFile_OptionSaveFormat %}',
                     '</div>',
-            //buttons
+                    //buttons
                     '<div style="padding-right:5px; padding-bottom:5px; text-align:right;">',
-                        '<button data-dojo-type="dijit.form.Button" type="submit" class="ok-button" onClick="commonTaskActions.onExportToFileClick();">{%= commonTaskActions.exportToFile_OK %}</button>',
-                        '<button data-dojo-type="dijit.form.Button" type="button" class="cancel-button" onClick="dijit.byId(\'promptForFileFormat-Dialog\').hide();">{%= commonTaskActions.exportToFile_Cancel %}</button>',
+                    '<button data-dojo-type="dijit.form.Button" type="submit" class="ok-button" onClick="commonTaskActions._exportToFile();">{%= commonTaskActions.exportToFile_OK %}</button>',
+                    '<button data-dojo-type="dijit.form.Button" type="button" class="cancel-button" onClick="dijit.byId(\'promptForFileFormat-Dialog\').hide();">{%= commonTaskActions.exportToFile_Cancel %}</button>',
                     '</div>',
-                '</div>'
-            ]);
+                    '</div>'
+                ]);
+            } else {
+                return new Simplate([
+                    '<div>',
+                    '<label style="padding-left:5px">{%= commonTaskActions.selectFileFormat %}</label>',
+                    '<br />',
+                    '<div style="padding-left:10px; padding-top:7px">',
+                    '<input id="radioCSV" name="format_type" type="radio" data-dojo-type="dijit.form.RadioButton" value="csv" checked="true" />{%= commonTaskActions.exportToFile_OptionCSV %}',
+                    '</div>',
+                    '<div style="padding-left:10px; padding-top:7px">',
+                    '<input id="radioTab" name="format_type" type="radio" data-dojo-type="dijit.form.RadioButton" value="tab" />{%= commonTaskActions.exportToFile_OptionTab %}',
+                    '</div>',
+                    '<div style="padding-left:11px; padding-top:7px">',
+                    '<input id="exportFormatSaved" dojoAttachPoint="exportFormatSaved" data-dojo-type="dijit.form.CheckBox" value="true" />{%= commonTaskActions.exportToFile_OptionSaveFormat %}',
+                    '</div>',
+                    //buttons
+                    '<div style="padding-right:5px; padding-bottom:5px; text-align:right;">',
+                    '<button data-dojo-type="dijit.form.Button" type="submit" class="ok-button" onClick="commonTaskActions._exportToFile();">{%= commonTaskActions.exportToFile_OK %}</button>',
+                    '<button data-dojo-type="dijit.form.Button" type="button" class="cancel-button" onClick="dijit.byId(\'promptForFileFormat-Dialog\').hide();">{%= commonTaskActions.exportToFile_Cancel %}</button>',
+                    '</div>',
+                    '</div>'
+                ]);
+            }
+        },
+        onDoExport: function(exportFormat) {
+            var selection = this.getSelectionInfo();
+            if (selection.selectionCount > 0)
+            {
+                dojo.byId('tskExportToExcel').click();
+            } else {
+              var trigger = this.getExcelJob(this.getSelectionInfo(), this);
+              if (trigger) 
+                trigger();
+            }
         },
         onExportToFileClick: function () {
             //Get the user preference
@@ -241,13 +296,19 @@ function (
             }
             if (dojo.byId("radioCSV").checked) {
                 formatType = "csv";
-            }
-            else {
+            } else if (dojo.byId("radioTab").checked) {
                 formatType = "tab";
+            } else if (dojo.byId("radioExcel").checked) {
+                formatType = "excel";
+            } else {
+                formatType = "csv";
             }
             document.cookie = "format=" + formatType + "; expires=1/01/2020";
+            
+            this.onDoExport(formatType);
+
             //Call the click event for the hidden sumbit button.
-            dojo.byId([this.clientId, '_tskExportToExcel'].join('')).click();
+            //dojo.byId('tskExportToExcel').click();
         },
         emailSend: function () {
             this.getCurrentEntity();
@@ -255,7 +316,7 @@ function (
             var sHql = this.getURL(this.currentEntityTableName);
 
             if (sHql === null) {
-                Dialogs.showError(this.noPrimaryEmail);
+                dialogs.showError(this.noPrimaryEmail);
                 return;
             }
             url = url + sHql;
@@ -267,7 +328,7 @@ function (
                     self.sendEmail(data);
                 },
                 error: function (error) {
-                    Dialogs.showError(error.StatusText);
+                    dialogs.showError(error.StatusText);
                 }
             });
         },
@@ -275,25 +336,35 @@ function (
             var url = null;
             switch (entity) {
                 // Example when using cached Named Query                            
-                case 'CONTACT': url = dojo.string.substitute("select con.Email from Contact con where con.id like '${0}'", [this.currentEntityId]);
+                case 'CONTACT':
+                    url = dString.substitute("select con.Email from Contact con where con.id like '${0}'", [this.currentEntityId]);
                     break;
-                case 'ACCOUNT': url = dojo.string.substitute("select con.Email from Contact as con where con.Account.id like '${0}' and con.IsPrimary like 'T'", [this.currentEntityId]);
+                case 'ACCOUNT':
+                    url = dString.substitute("select con.Email from Contact as con where con.Account.id like '${0}' and con.IsPrimary like 'T'", [this.currentEntityId]);
                     break;
-                case 'OPPORTUNITY': url = dojo.string.substitute("select con.Email from Opportunity as opp left join opp.Contacts as oppCon left join oppCon.Contact as con where opp.id like '${0}' and oppCon.IsPrimary like 'T'", [this.currentEntityId]);
+                case 'OPPORTUNITY':
+                    url = dString.substitute("select con.Email from Opportunity as opp left join opp.Contacts as oppCon left join oppCon.Contact as con where opp.id like '${0}' and oppCon.IsPrimary like 'T'", [this.currentEntityId]);
                     break;
-                case 'LEAD': url = dojo.string.substitute("select le.Email from Lead le where le.id like '${0}'", [this.currentEntityId]);
+                case 'LEAD':
+                    url = dString.substitute("select le.Email from Lead le where le.id like '${0}'", [this.currentEntityId]);
                     break;
-                case 'CAMPAIGN': url = dojo.string.substitute("select ufo.Email from Campaign as cam left join cam.AccountManager as usr left join usr.UserInfo as ufo where cam.id like '${0}'", [this.currentEntityId]);
+                case 'CAMPAIGN':
+                    url = dString.substitute("select ufo.Email from Campaign as cam left join cam.AccountManager as usr left join usr.UserInfo as ufo where cam.id like '${0}'", [this.currentEntityId]);
                     break;
-                case 'TICKET': url = dojo.string.substitute("select ufo.Email from User as usr left join usr.UserInfo as ufo where usr.DefaultOwner in  (select own.id from Ticket as tic left join tic.AssignedTo as own where tic.id like '${0}')", [this.currentEntityId]);
+                case 'TICKET':
+                    url = dString.substitute("select ufo.Email from User as usr left join usr.UserInfo as ufo where usr.DefaultOwner in  (select own.id from Ticket as tic left join tic.AssignedTo as own where tic.id like '${0}')", [this.currentEntityId]);
                     break;
-                case 'DEFECT': url = dojo.string.substitute("select ufo.Email from User as usr left join usr.UserInfo as ufo where usr.DefaultOwner in (select own.id from Defect as def left join def.AssignedTo as own where def.id like '${0}')", [this.currentEntityId]);
+                case 'DEFECT':
+                    url = dString.substitute("select ufo.Email from User as usr left join usr.UserInfo as ufo where usr.DefaultOwner in (select own.id from Defect as def left join def.AssignedTo as own where def.id like '${0}')", [this.currentEntityId]);
                     break;
-                case 'CONTRACT': url = dojo.string.substitute("select con.Email from Contract as crt left join crt.Contact as con where crt.id like '${0}'", [this.currentEntityId]);
+                case 'CONTRACT':
+                    url = dString.substitute("select con.Email from Contract as crt left join crt.Contact as con where crt.id like '${0}'", [this.currentEntityId]);
                     break;
-                case 'SALESORDER': url = dojo.string.substitute("select so.ShippingContact.Email from SalesOrder as so where so.Id eq '${0}'", [this.currentEntityId]);
+                case 'SALESORDER':
+                    url = dString.substitute("select so.ShippingContact.Email from SalesOrder as so where so.Id eq '${0}'", [this.currentEntityId]);
                     break;
-                case 'RMA': url = dojo.string.substitute("select con.Email from Return as ret left join ret.ReturnedBy as con where ret.id like '${0}'", [this.currentEntityId]);
+                case 'RMA':
+                    url = dString.substitute("select con.Email from Return as ret left join ret.ReturnedBy as con where ret.id like '${0}'", [this.currentEntityId]);
                     break;
             }
             return url;
@@ -307,7 +378,7 @@ function (
                     return;
                 }
             }
-            Dialogs.showError(this.noPrimaryEmail);
+            dialogs.showError(this.noPrimaryEmail);
         },
         // this is a callback method that calls a method on the Sage.ClientLinkHandler which has a global
         // module that converts the client call into a code-behind call that is handled in the ClientLinkHandler.ascx.cs
@@ -315,52 +386,65 @@ function (
         // From there, a dialog can be created and displayed.  The dialog takes the selection key and uses the
         // client selection service to get the selected records from the grid.  This callback method is defined in the
         // FillDictionaries method in CommonTasksTasklet.ascx.cs.
-        copyUser: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+
+        copyUser: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'CopyUser', selectionInfoKey: selectionKey });
         },
-        copyUserProfile: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        copyUserProfile: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'CopyUserProfile', selectionInfoKey: selectionKey });
         },
-        deleteUsers: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        deleteUsers: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'DeleteUsers', selectionInfoKey: selectionKey });
         },
-        addToTeam: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        addToTeam: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'AddToTeam', selectionInfoKey: selectionKey });
         },
-        removeFromTeam: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        removeFromTeam: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'RemoveFromTeam', selectionInfoKey: selectionKey });
         },
-        removeFromAllTeams: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        removeFromAllTeams: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'RemoveFromAllTeams', selectionInfoKey: selectionKey });
         },
-        assignRole: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        assignRole: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'AssignRole', selectionInfoKey: selectionKey });
         },
-        replaceTeamMember: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        replaceTeamMember: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'ReplaceTeamMember', selectionInfoKey: selectionKey });
         },
-        deleteTeam: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        deleteTeam: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'DeleteTeam', selectionInfoKey: selectionKey });
         },
-        deleteDepartment: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        deleteDepartment: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'DeleteDepartment', selectionInfoKey: selectionKey });
         },
-        copyTeam: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        copyTeam: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'CopyTeam', selectionInfoKey: selectionKey });
         },
-        copyDepartment: function () {
-            var selectionKey = dojo.byId([commonTaskActions.clientId, '_hfSelections'].join('')).value;
+        copyDepartment: function (clientId) {
+            clientId = clientId || 'hfSelections';
+            var selectionKey = dojo.byId(clientId).value;
             Sage.ClientLinkHandler.request({ request: 'Administration', type: 'CopyDepartment', selectionInfoKey: selectionKey });
         },
         showDetailReport: function () {
@@ -371,6 +455,173 @@ function (
         },
         writeEmailToGroupSelection: function () {
             email.writeEmailToGroupSelection();
+        },
+        importFromFile: function () {
+            this.getCurrentEntity();
+            if (this.currentEntityPrettyName) {
+                var requestOptions = {
+                    entry: {
+                        "$name": "IsImportEnabledForEntity",
+                        "request": {
+                            "ImportHistoryId": null,
+                            "entityName": this.currentEntityPrettyName
+                        }
+                    },
+                    businessRuleMethod: "IsImportEnabledForEntity",
+                    onSuccess: dojo.hitch(this, function (canImport) {
+                        if (canImport) {
+                            var importWizard = new ImportWizardController(this.currentEntityPrettyName,this.currentEntityDisplayName, dString.substitute("${0}, Sage.Entity.Interfaces", [this.currentEntityType]));
+                            importWizard.startWizard();
+                        } else {
+                            dialogs.showError(dString.substitute(this.entityNotImportable, [this.currentEntityDisplayName]));
+                        }
+                    }),
+                    onFailure: function (result) {
+                        dialogs.showError(dString.substitute(this.errorRequestEntityImportable, [result]));
+                    }
+                };
+                importManagerUtility.importRuleRequest(requestOptions, "importHistory", false);
+
+
+            }
+        },
+        bulkActionDeleteJob: function () {
+            this.getCurrentEntity();
+            this.prepareSelectedRecords(this.confirmBulkActionDelete(this.getSelectionInfo()));
+        },
+        confirmBulkActionDelete: function (selectionInfo) {
+            return dojo.hitch(this, function () {
+                dialogs.raiseQueryDialog(
+                    dString.substitute(this.deleteSelectedRecords, [this.currentEntityDisplayName]),
+                    dString.substitute('${0}', [this.confirmBulkDeleteJob]),
+                    dojo.hitch(this, function (result) {
+                        this.deleteBulkActionItem(result, selectionInfo);
+                    }),
+                    this.yesButtonText,
+                    this.noButtonText
+                );
+            });
+        },
+        deleteBulkActionItem: function (processJob, selectionInfo) {
+            if (processJob) {
+                var groupId = this.getCurrentGroupId();
+                if (groupId === "LOOKUPRESULTS") {
+                    groupId = this.getDefaultGroupId();
+                }
+
+                if (this.currentEntityPrettyName) {
+                    var parameters = [
+                        { "name": "EntityName", "value": this.currentEntityPrettyName },
+                        { "name": "SelectedIds", "value": (selectionInfo.selectionCount > 0) ? selectionInfo.selectedIds.join(',') || '' : '' },
+                        { "name": "GroupId", "value": groupId },
+                        { "name": "AppliedFilters", "value": Sys.Serialization.JavaScriptSerializer.serialize(jobs.getFiltersForJob()) },
+                        { "name": "LookupConditions", "value": Sys.Serialization.JavaScriptSerializer.serialize(jobs.getLookupConditionsForJob()) },
+                        { "name": "EntityTableName", "value": this.currentEntityTableName }
+                    ];
+
+                    var options = {
+                        descriptor: this.deleteJob_Description,
+                        showErrorNotification: false,
+                        closable: true,
+                        title: dString.substitute(this.deleteBulkJobTitle, [this.currentEntityDisplayName]),
+                        key: "Sage.SalesLogix.BusinessRules.Jobs.DeleteEntityJob",
+                        parameters: parameters,
+                        success: function () {
+                        },
+                        failure: function (result) {
+                            console.log(result);
+                            dialogs.showError(dString.substitute(this.deleteJobError, [this.currentEntityDisplayName, result.statusText]));
+                        },
+                        ensureZeroFilters: true
+                    };
+                    jobs.triggerJobAndDisplayProgressDialog(options);
+                }
+            }
+        },
+        bulkActionUpdateJob: function () {
+            //ensure the entity supports bulk action updates
+            this.getCurrentEntity();
+            this._metaDataService = sDataServiceRegistry.getSDataService('metadata');
+            var request = new Sage.SData.Client.SDataResourceCollectionRequest(this._metaDataService);
+            request.setResourceKind(dString.substitute("entities('${0}')", [this.currentEntityPrettyName]));
+            request.setQueryArg("select", "bulkAction/*");
+            request.read({
+                success: dojo.hitch(this, function (result) {
+                    if (result && result.$resources && result.$resources[0].bulkAction.canBulkUpdate) {
+                        this.prepareSelectedRecords(this.confirmBulkActionUpdate(this.getSelectionInfo()));
+                    } else {
+                        dialogs.showError(dString.substitute(this.errorBulkActionNotSupported, [this.currentEntityDisplayName]));
+                    }
+                }),
+                failure: function (result) {
+                    dialogs.showError(this.errorBulkActionRequest);
+                }
+            });
+        },
+        confirmBulkActionUpdate: function (selectionInfo) {
+            return dojo.hitch(this, function () {
+                var updateDialog = dijit.byId("dlgBulkUpdateWidget");
+                if (!updateDialog) {
+                    var options = {
+                        currentEntityPrettyName: this.currentEntityPrettyName,
+                        currentEntityTableName: this.currentEntityTableName,
+                        selectionInfo: selectionInfo
+                    };
+                    updateDialog = new BulkUpdateWidget(options);
+                }
+                updateDialog.show();
+            });
+        },
+        mapGroup: function (baseUrl, errMsg, lcid) {
+            var svc = Sage.Services.getService("ClientGroupContext"),
+                grpContext;
+            if (svc !== null) {
+                grpContext = svc.getContext();
+            }
+
+            this.getCurrentEntity();
+
+            if (baseUrl &&
+                (this.currentEntityPrettyName === "Account" ||
+                    this.currentEntityPrettyName === "Contact")) {
+                // Get the current selections, if any
+                try {
+                    this.selectionInfo = this.getSelectionInfo();
+                } catch (e) {
+                    dialogs.showInfo(this.errorNoData);
+                }
+                if (this.selectionInfo !== null && this.selectionInfo.selectionCount > 0) {
+                    // Records are selected in this group
+                    if (!window.open(baseUrl + "?type=I" + encodeURIComponent(this.currentEntityPrettyName) +
+                        "&grp=" + encodeURIComponent(grpContext.CurrentGroupID) +
+                        "&sort=" + encodeURIComponent("Account") +
+                        "&asc=" + encodeURIComponent("True") +
+                        "&selected=" + encodeURIComponent(this.selectionInfo.selectedIds.join(";")) +
+                        "&lcid=" + encodeURIComponent(lcid), "_blank")) {
+                        dialogs.showError(errMsg);
+                    }
+                } else {
+                    // Show everything
+                    if (!window.open(baseUrl + "?type=I" + encodeURIComponent(this.currentEntityPrettyName) +
+                        "&grp=" + encodeURIComponent(grpContext.CurrentGroupID) +
+                        "&sort=" + encodeURIComponent("Account") +
+                        "&asc=" + encodeURIComponent("True") +
+                        "&lcid=" + encodeURIComponent(lcid), "_blank")) {
+                        dialogs.showError(errMsg);
+                    }
+                }
+            }
+        },
+        showNearby: function (baseUrl, errMsg) {
+            this.getCurrentEntity();
+
+            if (baseUrl && this.currentEntityId &&
+                (this.currentEntityPrettyName === "Account" ||
+                    this.currentEntityPrettyName === "Contact")) {
+                if (!window.open(baseUrl + "?start=" + encodeURIComponent(this.currentEntityId), "_self")) {
+                    dialogs.showError(errMsg);
+                }
+            }
         }
     });
     return commonTasksTasklet;

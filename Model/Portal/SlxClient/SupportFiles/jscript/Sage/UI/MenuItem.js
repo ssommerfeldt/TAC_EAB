@@ -1,5 +1,7 @@
+require({cache:{
+'url:Sage/templates/MenuItem.html':"<tr class=\"dijitReset\" data-dojo-attach-point=\"focusNode\" role=\"menuitem\" tabIndex=\"-1\">\r\n\t<td class=\"dijitReset dijitMenuItemIconCell\" role=\"presentation\">\r\n\t\t<span role=\"presentation\" class=\"dijitInline dijitIcon dijitMenuItemIcon\" data-dojo-attach-point=\"iconNode\"></span>\r\n        <div class=\"dijitIcon dijitMenuItemIcon Global_Images icon16x16 ${imageClass}\" data-dojo-attach-point=\"iconNodeSprite\"></div>\r\n\t</td>\r\n\t<td class=\"dijitReset dijitMenuItemLabel\" colspan=\"2\" data-dojo-attach-point=\"containerNode,textDirNode\"\r\n\t\trole=\"presentation\"></td>\r\n\t<td class=\"dijitReset dijitMenuItemAccelKey\" style=\"display: none\" data-dojo-attach-point=\"accelKeyNode\"></td>\r\n\t<td class=\"dijitReset dijitMenuArrowCell\" role=\"presentation\">\r\n\t\t<span data-dojo-attach-point=\"arrowWrapper\" style=\"visibility: hidden\">\r\n\t\t\t<span class=\"dijitInline dijitIcon dijitMenuExpand\"></span>\r\n\t\t\t<span class=\"dijitMenuExpandA11y\">+</span>\r\n\t\t</span>\r\n\t</td>\r\n</tr>\r\n"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/MenuItem", [
         'dijit/MenuItem',
         'dijit/_Widget',
         'dojo/dom-style',

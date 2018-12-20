@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d4133b07-4c95-4536-9395-bef0f3926ad4" lastModifiedUtc="2017-09-18T09:10:27.2516459Z" name="GetBackOfficeDetails" returnType="String" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="e8646380-2b04-4295-a92b-5f5c94c29fc0" paramName="entityName" sequence="0" paramType="String">
+      <description>gives the entity name</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="92d01e28-44d2-4500-82b6-3a495380ea8a" paramName="entityId" sequence="0" paramType="String">
+      <description>gices the entity Id</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="b7707ffb-553c-40a0-ae3c-26259affb54b" lastModifiedUtc="2017-09-18T09:08:37.5973426Z" targetType="Sage.SalesLogix.BackOffice.Rules, Sage.SalesLogix.BusinessRules" targetMethod="GetBackOfficeDetails" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

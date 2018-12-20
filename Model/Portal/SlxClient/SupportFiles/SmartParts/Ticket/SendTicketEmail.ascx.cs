@@ -94,7 +94,7 @@ public partial class SmartParts_Ticket_SendTicketEmail : EntityBoundSmartPartInf
                     break;
             }
         }
-        return PortalUtil.JavaScriptEncode(email.Replace("+", "%20"));
+        return email !=null? PortalUtil.JavaScriptEncode(email.Replace("+", "%20")):email;
     }
 
     /// <summary>

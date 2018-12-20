@@ -435,25 +435,7 @@ public partial class CampaignTargets : EntityBoundSmartPartInfoProvider
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                TargetView target = (TargetView) e.Row.DataItem;
-                CheckBox cb = new CheckBox();
-                cb = (CheckBox) e.Row.FindControl("chkSelectTarget");
-                if (cb != null)
-                {
-                    cb.Attributes.Add("onClick",
-                                      string.Format("return ct_OnTargetSelectClick(this,'{0}');", target.TargetId));
-                }
-
-                CheckBox initialTarget = (CheckBox) e.Row.FindControl("chkInitialTarget");
-                if (initialTarget != null)
-                {
-                    initialTarget.Attributes.Add("onClick",
-                                                 string.Format(
-                                                     "javascript:onInitialTargetClick('{0}', '{1}', '{2}', '{3}');",
-                                                     initialTarget.ClientID, txtNewInitialTargetValue.ClientID,
-                                                     cmdInitialTarget.ClientID, target.TargetId));
-                }
-
+                TargetView target = (TargetView) e.Row.DataItem;               
                 LoadTargetStatusItems(e, target);
             }
         }
@@ -465,9 +447,7 @@ public partial class CampaignTargets : EntityBoundSmartPartInfoProvider
     /// <param name="e">The <see cref="System.Web.UI.WebControls.GridViewRowEventArgs"/> instance containing the event data.</param>
     private void LoadTargetStatusItems(GridViewRowEventArgs e, TargetView target)
     {
-        DropDownList statusList = e.Row.FindControl("ddlTargetStatus") as DropDownList;
-        statusList.Attributes.Add("onChange", string.Format("javascript:onStatusChange('{0}', '{1}', '{2}', '{3}');",
-            statusList.ClientID, txtNewStatusValue.ClientID, cmdStatusChange.ClientID, target.TargetId));
+        DropDownList statusList = e.Row.FindControl("ddlTargetStatus") as DropDownList;     
         ListItemCollection listItems = new ListItemCollection();
         foreach (ListItem item in lbxStatus.Items)
             listItems.Add(item);
@@ -482,6 +462,40 @@ public partial class CampaignTargets : EntityBoundSmartPartInfoProvider
             }
             statusList.DataSource = listItems;
             statusList.SelectedValue = value;
+        }
+    }
+
+    /// <summary>
+    /// Bind javascript events to the controls 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void grdTargets_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            TargetView target = (TargetView)e.Row.DataItem;
+            CheckBox cb = new CheckBox();
+            cb = (CheckBox)e.Row.FindControl("chkSelectTarget");
+            if (cb != null)
+            {
+                cb.Attributes.Add("onClick",
+                                  string.Format("return ct_OnTargetSelectClick(this,'{0}');", target.TargetId));
+            }
+
+            CheckBox initialTarget = (CheckBox)e.Row.FindControl("chkInitialTarget");
+            if (initialTarget != null)
+            {
+                initialTarget.Attributes.Add("onClick",
+                                             string.Format(
+                                                 "javascript:onInitialTargetClick('{0}', '{1}', '{2}', '{3}');",
+                                                 initialTarget.ClientID, txtNewInitialTargetValue.ClientID,
+                                                 cmdInitialTarget.ClientID, target.TargetId));
+            }
+
+            DropDownList statusList = e.Row.FindControl("ddlTargetStatus") as DropDownList;
+            statusList.Attributes.Add("onChange", string.Format("javascript:onStatusChange('{0}', '{1}', '{2}', '{3}');",
+                statusList.ClientID, txtNewStatusValue.ClientID, cmdStatusChange.ClientID, target.TargetId));
         }
     }
 
@@ -774,23 +788,34 @@ public partial class CampaignTargets : EntityBoundSmartPartInfoProvider
     /// <param name="selectState">State of the select.</param>
     private void LoadClientSelects(IDictionary<string, bool> selectState)
     {
-        string clientContext = txtSelectedTargets.Value;
-        if (!string.IsNullOrEmpty(clientContext))
+        ClientContextService clientContextService = PageWorkItem.Services.Get<ClientContextService>();
+        if (clientContextService != null)
         {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(clientContext);
-            XmlNodeList targetNodes = xmlDoc.DocumentElement.SelectNodes("//Targets/Target");
-            foreach (XmlNode tn in targetNodes)
+            if (clientContextService.CurrentContext.ContainsKey("ct_selectedTargetsCtrlId"))
             {
-                string Id = tn.Attributes["Id"].Value;
-                string selected = tn.Attributes["Selected"].Value;
-                if (selectState.ContainsKey(Id))
+                foreach (var value in Enumerable.Where(clientContextService.CurrentContext, value => value.Key == "ct_selectedTargetsCtrlId"))
                 {
-                    selectState.Remove(Id);
+                    txtSelectedTargets.Value = value.Value;
                 }
-                selectState.Add(Id, Convert.ToBoolean(selected));
             }
-            txtSelectedTargets.Value = string.Empty;
+            string clientContext = txtSelectedTargets.Value;
+            if (!string.IsNullOrEmpty(clientContext))
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.LoadXml(clientContext);
+                XmlNodeList targetNodes = xmlDoc.DocumentElement.SelectNodes("//Targets/Target");
+                foreach (XmlNode tn in targetNodes)
+                {
+                    string id = tn.Attributes["Id"].Value;
+                    string selected = tn.Attributes["Selected"].Value;
+                    if (selectState.ContainsKey(id))
+                    {
+                        selectState.Remove(id);
+                    }
+                    selectState.Add(id, Convert.ToBoolean(selected));
+                }
+                txtSelectedTargets.Value = string.Empty;
+            }
         }
     }
 
@@ -936,4 +961,5 @@ public partial class CampaignTargets : EntityBoundSmartPartInfoProvider
     }
 
     #endregion
+  
 }

@@ -1,16 +1,15 @@
-define((
-{ lblResultText: 'Risultato:',
-  lblNoteText: 'Nota (aggiunta a tutte le voci):',
-  btnCompleteIndividuallyText: 'Singolarmente',
-  btnAsScheduledText: 'Come pianificato',
-  btnCompleteNowText: 'Adesso',
-  btnCancelText: 'Annulla',
-  btnCloseText: 'Chiudi',
-  btnHelpText: 'Aiuto',
-  resultCompletedText: 'Completa',
-  titleText: 'Completamento Rapido',
-  actionMessage: 'Solo le attività che si è permesso di completare saranno completate.',
-  completeMessage: 'Completa tutti {0} attività selezionate:',
-  processingMessage: 'Elaborazione tutti {0} attività selezionate attendere prego ...'
-}
-));
+define("Sage/MainView/ActivityMgr/nls/it/QuickCompleteEditor", {
+    "lblResultText": "Risultato:",
+    "lblNoteText": "Nota (aggiunta a tutti gli elementi):",
+    "btnCompleteIndividuallyText": "Singolarmente",
+    "btnAsScheduledText": "Come pianificato",
+    "btnCompleteNowText": "Adesso",
+    "btnCancelText": "Annulla",
+    "btnCloseText": "Chiudi",
+    "btnHelpText": "Guida",
+    "resultCompletedText": "Completa",
+    "titleText": "Completamento rapido",
+    "actionMessage": "Verranno completate solo le attività per le quali si dispone dell'autorizzazione per completarle.",
+    "completeMessage": "Completare tutte le attività {0} selezionate:",
+    "processingMessage": "Elaborazione di tutte le attività {0} selezionate in corso. Attendere..."
+});

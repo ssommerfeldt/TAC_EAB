@@ -6,6 +6,8 @@ using Sage.Platform.WebPortal.SmartParts;
 using Sage.Entity.Interfaces;
 using System.ComponentModel;
 using System.Text;
+using Sage.Platform.Application.Services;
+using Sage.SalesLogix.WebUserOptions;
 
 public partial class SmartParts_History_NotesHistoryList : SmartPart
 {
@@ -17,15 +19,16 @@ public partial class SmartParts_History_NotesHistoryList : SmartPart
         var script = new StringBuilder();
         script.AppendLine(@"require([
             'dojo/ready',
-            'Sage/UI/NotesHistoryList'        
+            'Sage/UI/NotesHistoryList'
         ], function (ready, NotesHistoryList) {");
 
         string baseScript = string.Format(
-                  "window.setTimeout( function() {{ var a = new NotesHistoryList({{ 'workspace': '{0}', 'tabId': '{1}', 'placeHolder': '{2}', 'parentRelationshipName': '{3}' }}); a.startup(); }}, 1);",
+                  "window.setTimeout( function() {{ var a = new NotesHistoryList({{ 'workspace': '{0}', 'tabId': '{1}', 'placeHolder': '{2}', 'parentRelationshipName': '{3}', options:{4}}}); a.startup(); }}, 1);",
                   getMyWorkspace(),
                   ID,
                   historyGridPlaceholder.ClientID,
-                  GetParentRelationshipName(EntityContext.EntityType));
+                  GetParentRelationshipName(EntityContext.EntityType),
+                  GetOptions());
 
 
         if (!Page.IsPostBack)
@@ -63,5 +66,16 @@ public partial class SmartParts_History_NotesHistoryList : SmartPart
             return attribute.Table;
         }
         return string.Empty;
+    }
+    private static string GetOptions()
+    {
+
+        var userOption = ApplicationContext.Current.Services.Get<IUserOptionsService>();
+        var strIncludeAttendee = userOption.GetCommonOption("IncludeAttendee", "HistoryOptions");
+        var includeAttendee = !string.IsNullOrEmpty(strIncludeAttendee) ? Utility.StringToBool(strIncludeAttendee) : false;
+        strIncludeAttendee = includeAttendee? "true":"false";
+        var options = "{includeAttendees:" + strIncludeAttendee + " }";
+
+        return options;
     }
 }

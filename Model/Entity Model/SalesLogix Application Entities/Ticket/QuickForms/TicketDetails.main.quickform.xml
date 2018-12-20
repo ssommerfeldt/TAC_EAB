@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1781379d-f1d5-43ea-abb0-01d5000f19a3" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1781379d-f1d5-43ea-abb0-01d5000f19a3" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-10-19T18:17:54.8419215Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -44,28 +44,55 @@
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload1</MethodName>
-          <CSharpCodeSnippet>
-            Sage.Entity.Interfaces.ITicket ticket = (Sage.Entity.Interfaces.ITicket)this.BindingSource.Current;
-            cmdPunchInOut.Enabled = true;
-            string punchedInUser = ticket.GetOtherUserPunchedIn();
-            if (!String.IsNullOrEmpty(punchedInUser))
-            {
-            cmdPunchInOut.Enabled = false;
-            cmdPunchInOut.Text = GetLocalResourceObject("PunchOut_DisplayName").ToString();
-            if (DialogService != null)
-            {
-            DialogService.ShowMessage(String.Format(GetLocalResourceObject("OtherUserPunchedIn_Message").ToString(), ticket.TicketNumber, punchedInUser));
-            }
-            }
-            else if (ticket.IsTicketPunchedIn())
-            {
-            cmdPunchInOut.Text = GetLocalResourceObject("PunchOut_DisplayName").ToString();
-            }
-            else
-            {
-            cmdPunchInOut.Text = GetLocalResourceObject("PunchIn_DisplayName").ToString();
-            }
-          </CSharpCodeSnippet>
+          <CSharpCodeSnippet>var ticket = (ITicket)BindingSource.Current;
+Sage.SalesLogix.BranchOptions branch = Sage.SalesLogix.BusinessRules.BusinessRuleHelper.GetPrimaryServerBranchOptions();
+chkAddKnowledge.Visible = branch.UseApprovalProcess != null &amp;&amp; (bool)branch.UseApprovalProcess;
+cmdPunchInOut.Enabled = true;
+string punchedInUser = ticket.GetOtherUserPunchedIn();
+cmdSave.Visible = string.IsNullOrEmpty(punchedInUser);
+cmdAccountService.Visible = string.IsNullOrEmpty(punchedInUser);
+if (!string.IsNullOrEmpty(punchedInUser))
+{
+    cmdPunchInOut.Enabled = false;
+    cmdPunchInOut.Text = GetLocalResourceObject("PunchOut_DisplayName").ToString();
+    if (DialogService != null)
+    {
+        DialogService.ShowMessage(string.Format(GetLocalResourceObject("OtherUserPunchedIn_Message").ToString(), ticket.TicketNumber, punchedInUser));
+    }
+}
+else if (ticket.IsTicketPunchedIn())
+{
+    cmdPunchInOut.Text = GetLocalResourceObject("PunchOut_DisplayName").ToString();
+}
+else
+{
+    cmdPunchInOut.Text = GetLocalResourceObject("PunchIn_DisplayName").ToString();
+    var userOptions = GetService&lt;Sage.Platform.Application.Services.IUserOptionsService&gt;();
+    var persitentNumPunchInMinutes = userOptions.GetCommonOption("PunchInDelay", "CustomerService");
+    var numPunchInMinutes = (int.Parse(persitentNumPunchInMinutes)) * 60000;
+    if (ticket.IsAutoPunchInEnabled() &amp;&amp; numPunchInMinutes &gt; 0)
+    {
+        string script = string.Format(@"
+          require(['dojo/ready','Sage/UI/Dialogs', 'dojo/_base/lang'], function (ready, Dialogs, lang) {{
+            ready(function() {{
+                window.setTimeout( function() {{
+                    Dialogs.raiseQueryDialog(
+                        '{3}',
+                        '{2}',
+                        function (result) {{
+                            if  (result) {{
+                                document.getElementById('{0}').click();
+                            }}
+                        }},
+                        '{4}',
+                        '{5}');
+                }}, {1});
+            }});
+          }});
+          ", cmdPunchInOut.ClientID, numPunchInMinutes, GetLocalResourceObject("Automated_PunchIn_MSG").ToString(), GetLocalResourceObject("Question_Title").ToString(), GetLocalResourceObject("Yes_Text").ToString(), GetLocalResourceObject("No_Text").ToString());
+        ScriptManager.RegisterStartupScript(this, GetType(), "TicketDetails", script, true);
+    }
+}</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -136,6 +163,7 @@
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Account</LookupEntityName>
         <LookupEntityTypeName>Sage.SalesLogix.Entities.Account, Sage.SalesLogix.Entities</LookupEntityTypeName>
@@ -151,6 +179,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -162,6 +191,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -173,6 +203,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -184,6 +215,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -195,6 +227,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -206,6 +239,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -217,6 +251,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -228,6 +263,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -239,6 +275,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -297,6 +334,7 @@
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Contact</LookupEntityName>
         <LookupEntityTypeName>Sage.SalesLogix.Entities.Contact, Sage.SalesLogix.Entities</LookupEntityTypeName>
@@ -312,6 +350,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -323,6 +362,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -334,6 +374,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -345,6 +386,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -356,6 +398,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -367,6 +410,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -512,6 +556,7 @@
         <SeedValue>Account.Id</SeedValue>
         <DropDownDisplayProperty />
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Contract</LookupEntityName>
         <LookupEntityTypeName>Sage.SalesLogix.Entities.Contract, Sage.SalesLogix.Entities</LookupEntityTypeName>
@@ -527,6 +572,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -538,6 +584,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -549,6 +596,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -560,6 +608,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>true</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -571,6 +620,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>true</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -582,6 +632,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>true</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -686,10 +737,10 @@
         <StyleScheme />
         <OnChangeAction>
           <ResourceKey>pklViaCode</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
+            <RefreshDataAction>
+              <MethodName>pklViaCode_ChangeAction</MethodName>
+            </RefreshDataAction>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
@@ -703,11 +754,15 @@
         <PickListName>Source</PickListName>
         <StorageMode>ID</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>true</AlphaSort>
         <MustExistInList>true</MustExistInList>
         <NoneEditable>true</NoneEditable>
         <PickListId>kSYST0000368</PickListId>
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>false</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -782,11 +837,15 @@
         <PickListName>Ticket Status</PickListName>
         <StorageMode>ID</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>true</AlphaSort>
         <MustExistInList>true</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId>kSYST0000375</PickListId>
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>false</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -836,6 +895,7 @@
         <DropDownDisplayProperty>Description</DropDownDisplayProperty>
         <AddEmptyListItem>false</AddEmptyListItem>
         <AllowClearingResult>false</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Urgency</LookupEntityName>
         <LookupEntityTypeName>Sage.SalesLogix.Entities.Urgency, Sage.SalesLogix.Entities</LookupEntityTypeName>
@@ -851,6 +911,7 @@
             <PropertyFormatString />
             <UseAsResult>true</UseAsResult>
             <ExcludeFromFilters>false</ExcludeFromFilters>
+            <PickListName />
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
@@ -1221,11 +1282,15 @@
         <PickListName>Ticket Activity Public Access</PickListName>
         <StorageMode>ID</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>true</AlphaSort>
         <MustExistInList>true</MustExistInList>
         <NoneEditable>true</NoneEditable>
         <PickListId>kSYST0000373</PickListId>
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>false</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -1248,29 +1313,25 @@
           <ResourceKey>cmdPunchInOut</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
-              <MethodName />
+              <MethodName>cmdPunchInOut_ClickAction</MethodName>
               <CSharpCodeSnippet>
-                Sage.Entity.Interfaces.ITicket ticket = this.BindingSource.Current as Sage.Entity.Interfaces.ITicket;
-                Sage.Entity.Interfaces.ITicketActivity ticketActivity = Sage.Platform.Orm.DynamicMethodLibraryHelper.Instance.Execute("Ticket.GetOpenTimedTicketActivity", ticket) as Sage.Entity.Interfaces.ITicketActivity;
-                if (ticketActivity != null)
+                Sage.Entity.Interfaces.ITicket ticket = (Sage.Entity.Interfaces.ITicket) this.BindingSource.Current;
+                Sage.Entity.Interfaces.ITicketActivity ticketActivity = ticket.GetOpenTimedTicketActivity();
+                if (ticketActivity == null)
                 {
-                if (Convert.ToBoolean(Sage.Platform.Orm.DynamicMethodLibraryHelper.Instance.Execute("Ticket.IsDisplayActivityOnPunchOut", ticket)))
+                    ticket.PunchInOut();
+                    cmdPunchInOut.Text = GetLocalResourceObject("PunchOut_DisplayName").ToString();
+                }
+                else if (!ticket.IsDisplayActivityOnPunchOut())
                 {
-                ticket.CompletedDate = DateTime.UtcNow;
-                Sage.Entity.Interfaces.IUser UserContext = Sage.SalesLogix.BusinessRules.BusinessRuleHelper.GetCurrentUser();
-                ticket.CompletedBy = UserContext.DefaultOwner;
-				Response.Redirect(string.Format("TicketActivity.aspx?entityId={0}&amp;isPunchOut=true", (ticketActivity as Sage.Platform.ComponentModel.IComponentReference).Id));
+                    ticket.PunchInOut();
+                    cmdPunchInOut.Text = GetLocalResourceObject("PunchIn_DisplayName").ToString();
                 }
                 else
                 {
-                Sage.Platform.Orm.DynamicMethodLibraryHelper.Instance.Execute("Ticket.PunchInOut", ticket);
-                cmdPunchInOut.Text = GetLocalResourceObject("PunchIn_DisplayName").ToString();
-                }
-                }
-                else
-                {
-                Sage.Platform.Orm.DynamicMethodLibraryHelper.Instance.Execute("Ticket.PunchInOut", ticket);
-                cmdPunchInOut.Text = GetLocalResourceObject("PunchOut_DisplayName").ToString();
+                    ticket.CompletedDate = DateTime.UtcNow;
+                    ticket.CompletedBy = Sage.SalesLogix.BusinessRules.BusinessRuleHelper.GetCurrentUser().DefaultOwner;
+                    Response.Redirect(string.Format("TicketActivity.aspx?entityId={0}&amp;isPunchOut=true", ticketActivity.Id));
                 }
                 Sage.Platform.WebPortal.Services.IPanelRefreshService refresh = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.IPanelRefreshService&gt;();
                 refresh.RefreshTabWorkspace();

@@ -117,26 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="securityProfileLookup.Caption" xml:space="preserve">
-    <value>Sicherheitsprofil:</value>
-  </data>
-  <data name="saveButton.ToolTip" xml:space="preserve">
-    <value>Speichern</value>
-  </data>
-  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
-    <value>Möchten Sie dieses Team wirklich löschen?</value>
+  <data name="AddManagerCheckBox.Caption" xml:space="preserve">
+    <value>Manager des Benutzers automatisch zu Team hinzufügen</value>
   </data>
   <data name="QFTextBox3.Caption" xml:space="preserve">
     <value>Geändert von:</value>
   </data>
-  <data name="AddManagerCheckBox.Caption" xml:space="preserve">
-    <value>Manager des Benutzers automatisch zu Team hinzufügen</value>
+  <data name="LastModified.Caption" xml:space="preserve">
+    <value>Zuletzt geändert:</value>
   </data>
-  <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Message" xml:space="preserve">
-    <value>Teamname fehlt, ist ungültig oder ist ein Duplikat.</value>
+  <data name="OwnerDescription.Caption" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="Type_item1.Text" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="Type_item0.Text" xml:space="preserve">
+    <value>Abteilung</value>
+  </data>
+  <data name="createDate.Caption" xml:space="preserve">
+    <value>Erstellt:</value>
+  </data>
+  <data name="QFLabel.Text" xml:space="preserve">
+    <value>Sicherheitsprofil</value>
+  </data>
+  <data name="copyButton.ToolTip" xml:space="preserve">
+    <value>Team kopieren</value>
+  </data>
+  <data name="securityProfileLookup.Caption" xml:space="preserve">
+    <value>Sicherheitsprofil:</value>
   </data>
   <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
     <value>Profilbeschreibung</value>
+  </data>
+  <data name="CannotDeleteTeamMessage" xml:space="preserve">
+    <value>Dieses Team kann nicht gelöscht werden, da es mit einer oder mehreren Firmen bzw. Kontakten verknüpft ist.</value>
+  </data>
+  <data name="CannotDeleteTeamMessageTitle" xml:space="preserve">
+    <value>Team kann nicht gelöscht werden</value>
   </data>
   <data name="8d19220b-99ab-4f83-a2ea-a155ce19a0fc.Message" xml:space="preserve">
     <value>Dieses Team kann nicht gelöscht werden, da ihm Firmen zugewiesen sind.</value>
@@ -144,40 +162,22 @@
   <data name="8d19220b-99ab-4f83-a2ea-a155ce19a0fc.Title" xml:space="preserve">
     <value>Löschen nicht zulässig</value>
   </data>
-  <data name="CannotDeleteTeamMessage" xml:space="preserve">
-    <value>Dieses Team kann nicht gelöscht werden, da es mit einer oder mehreren Firmen bzw. Kontakten verknüpft ist.</value>
+  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
+    <value>Möchten Sie dieses Team wirklich löschen?</value>
   </data>
   <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Title" xml:space="preserve">
-    <value>Validierung schlug fehl</value>
+    <value>Validierungsfehler</value>
   </data>
-  <data name="copyButton.ToolTip" xml:space="preserve">
-    <value>Team kopieren</value>
+  <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Message" xml:space="preserve">
+    <value>Teamname fehlt, ist ungültig oder ist ein Duplikat.</value>
+  </data>
+  <data name="saveButton.ToolTip" xml:space="preserve">
+    <value>Speichern</value>
   </data>
   <data name="deleteButton.ToolTip" xml:space="preserve">
     <value>Löschen</value>
   </data>
-  <data name="QFLabel.Text" xml:space="preserve">
-    <value>Sicherheitsprofil</value>
-  </data>
-  <data name="createDate.Caption" xml:space="preserve">
-    <value>Erstellt:</value>
-  </data>
-  <data name="Type_item0.Text" xml:space="preserve">
-    <value>Abteilung</value>
-  </data>
   <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
     <value>Sicherheitsprofil suchen</value>
-  </data>
-  <data name="OwnerDescription.Caption" xml:space="preserve">
-    <value>Name:</value>
-  </data>
-  <data name="CannotDeleteTeamMessageTitle" xml:space="preserve">
-    <value>Team kann nicht gelöscht werden</value>
-  </data>
-  <data name="Type_item1.Text" xml:space="preserve">
-    <value>Team</value>
-  </data>
-  <data name="LastModified.Caption" xml:space="preserve">
-    <value>Zuletzt geändert:</value>
   </data>
 </root>

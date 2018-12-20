@@ -117,121 +117,127 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtVersion.Caption" xml:space="preserve">
-    <value>Version :</value>
-  </data>
-  <data name="txtSerializeIncrement.Caption" xml:space="preserve">
-    <value>Incrément de numéro de série :</value>
-  </data>
   <data name="lueProduct.Caption" xml:space="preserve">
-    <value>Nom :</value>
+    <value>Nom :</value>
   </data>
-  <data name="txtOpportunity.Caption" xml:space="preserve">
-    <value>Opportunité :</value>
-  </data>
-  <data name="emlContactEmail.ButtonToolTip" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
-  </data>
-  <data name="phnContactPhone.Caption" xml:space="preserve">
-    <value>N° de téléphone :</value>
-  </data>
-  <data name="lueAssetContact.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
+  <data name="txtSKU.Caption" xml:space="preserve">
+    <value>Code Article :</value>
   </data>
   <data name="numQuantity.Caption" xml:space="preserve">
     <value>Quantité :</value>
   </data>
-  <data name="emlContactEmail.Caption" xml:space="preserve">
-    <value>E-mail :</value>
-  </data>
-  <data name="lueProduct.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
-    <value>Code Article</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annuler</value>
-  </data>
-  <data name="txtLocation.Caption" xml:space="preserve">
-    <value>Emplacement :</value>
-  </data>
-  <data name="lueProduct.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="chkReturned.Caption" xml:space="preserve">
-    <value>Retourné</value>
-  </data>
-  <data name="txtSerializeStart.Caption" xml:space="preserve">
-    <value>Début de numéro de série :</value>
-  </data>
-  <data name="lueProduct.LookupProperties.Vendor.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Revendeur</value>
-  </data>
-  <data name="cmdUserTimeStamp.ToolTip" xml:space="preserve">
-    <value>Horodatage utilisateur</value>
-  </data>
-  <data name="lueProduct.LookupProperties.Vendor.PropertyHeader" xml:space="preserve">
-    <value>Revendeur</value>
-  </data>
-  <data name="chkEvaluation.Caption" xml:space="preserve">
-    <value>Evaluation :</value>
-  </data>
-  <data name="cmdAssignSerialNumber.Caption" xml:space="preserve">
-    <value>Attribuer des numéros de série</value>
-  </data>
-  <data name="lueAssetContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Nom</value>
-  </data>
-  <data name="txtSalesOrder.Caption" xml:space="preserve">
-    <value>Bon de commande :</value>
-  </data>
-  <data name="lueAssetContact.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Compte</value>
-  </data>
   <data name="lueAssetContact.Caption" xml:space="preserve">
     <value>Contact :</value>
   </data>
-  <data name="txtComments.Caption" xml:space="preserve">
-    <value>Commentaires</value>
-  </data>
-  <data name="txtSystem.Caption" xml:space="preserve">
-    <value>Système :</value>
-  </data>
   <data name="txtSerialNumber.Caption" xml:space="preserve">
-    <value>Numéro de série :</value>
+    <value>Numéro de série :</value>
+  </data>
+  <data name="phnContactPhone.Caption" xml:space="preserve">
+    <value>Téléphone :</value>
+  </data>
+  <data name="emlContactEmail.Caption" xml:space="preserve">
+    <value>E-mail :</value>
+  </data>
+  <data name="txtLocation.Caption" xml:space="preserve">
+    <value>Emplacement :</value>
   </data>
   <data name="txtAssetCode.Caption" xml:space="preserve">
-    <value>Code d’actif :</value>
-  </data>
-  <data name="usrModifyUser.Caption" xml:space="preserve">
-    <value>Mise à jour par :</value>
-  </data>
-  <data name="txtSKU.Caption" xml:space="preserve">
-    <value>Code Article :</value>
-  </data>
-  <data name="lueProduct.LookupProperties.Name.PropertyHeader" xml:space="preserve">
-    <value>Nom du produit</value>
-  </data>
-  <data name="txtSerializePrefix.Caption" xml:space="preserve">
-    <value>Préfixe de numéro de série :</value>
-  </data>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="cmdAssign.ToolTip" xml:space="preserve">
-    <value>Attribuer des numéros de série</value>
-  </data>
-  <data name="cmdAssign.Caption" xml:space="preserve">
-    <value>Attribuer</value>
-  </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Description :</value>
-  </data>
-  <data name="dteModifyDate.Caption" xml:space="preserve">
-    <value>Dernière mise à jour :</value>
+    <value>Code d’actif :</value>
   </data>
   <data name="txtEnvironment.Caption" xml:space="preserve">
     <value>Environnement :</value>
   </data>
+  <data name="txtSystem.Caption" xml:space="preserve">
+    <value>Système :</value>
+  </data>
+  <data name="txtVersion.Caption" xml:space="preserve">
+    <value>Version :</value>
+  </data>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Description :</value>
+  </data>
+  <data name="chkReturned.Caption" xml:space="preserve">
+    <value>Retourné</value>
+  </data>
+  <data name="chkEvaluation.Caption" xml:space="preserve">
+    <value>Evaluation :</value>
+  </data>
+  <data name="txtOpportunity.Caption" xml:space="preserve">
+    <value>Opportunité :</value>
+  </data>
+  <data name="txtSalesOrder.Caption" xml:space="preserve">
+    <value>Bon de commande :</value>
+  </data>
+  <data name="txtComments.Caption" xml:space="preserve">
+    <value>Commentaires</value>
+  </data>
+  <data name="lueProduct.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
+    <value>Code Article</value>
+  </data>
+  <data name="lueProduct.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Nom du produit</value>
+  </data>
+  <data name="lueProduct.LookupProperties.Vendor.PropertyHeader" xml:space="preserve">
+    <value>Revendeur</value>
+  </data>
+  <data name="lueProduct.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAssetContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="lueAssetContact.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Compte</value>
+  </data>
   <data name="lueAssetContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
     <value>Téléphone professionnel</value>
+  </data>
+  <data name="lueAssetContact.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtSerializePrefix.Caption" xml:space="preserve">
+    <value>Préfixe de numéro de série :</value>
+  </data>
+  <data name="txtSerializeStart.Caption" xml:space="preserve">
+    <value>Début de numéro de série :</value>
+  </data>
+  <data name="txtSerializeIncrement.Caption" xml:space="preserve">
+    <value>Incrément de numéro de série :</value>
+  </data>
+  <data name="cmdAssign.Caption" xml:space="preserve">
+    <value>Affecter</value>
+  </data>
+  <data name="cmdUserTimeStamp.ToolTip" xml:space="preserve">
+    <value>Horodatage utilisateur</value>
+  </data>
+  <data name="cmdAssignSerialNumber.Caption" xml:space="preserve">
+    <value>Affecter des numéros de série</value>
+  </data>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="cmdAssign.ToolTip" xml:space="preserve">
+    <value>Affecter des numéros de série</value>
+  </data>
+  <data name="lueProduct.LookupProperties.Vendor.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Revendeur</value>
+  </data>
+  <data name="dteModifyDate.Caption" xml:space="preserve">
+    <value>Dernière mise à jour :</value>
+  </data>
+  <data name="usrModifyUser.Caption" xml:space="preserve">
+    <value>Mise à jour par :</value>
+  </data>
+  <data name="lueProduct.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="lueAssetContact.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="emlContactEmail.ButtonToolTip" xml:space="preserve">
+    <value>E-mail</value>
   </data>
 </root>

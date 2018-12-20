@@ -20,26 +20,16 @@
       <Action>
         <CSharpCodeSnippet><![CDATA[
 	//Query the distinct Areas from the AreaCategoryIssue table
-	Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.IAreaCategoryIssue> repoHelper = Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.IAreaCategoryIssue>();
-    Sage.Platform.Repository.ICriteria criteria = repoHelper.CreateCriteria();
-	criteria.AddOrder(repoHelper.EF.Asc("Area"));
-    criteria.SetProjection(repoHelper.PF.Distinct(repoHelper.PF.Property("Area")));
-    System.Collections.Generic.IList<string> definedAreas = criteria.List<string>();
+    var definedAreas = Sage.Platform.EntityFactory.Query<Sage.Entity.Interfaces.IAreaCategoryIssue>().Select(aci => aci.Area);
 
 	//Query the distinct Areas from the TicketAreaOwner table
-	Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.ITicketAreaOwner> repoHelper2 = Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.ITicketAreaOwner>();
-    Sage.Platform.Repository.ICriteria criteria2 = repoHelper2.CreateCriteria();
-    criteria2.SetProjection(repoHelper2.PF.Distinct(repoHelper2.PF.Property("Area")));
-    System.Collections.Generic.IList<string> assignedAreas = criteria2.List<string>();
+    var assignedAreas = Sage.Platform.EntityFactory.Query<Sage.Entity.Interfaces.ITicketAreaOwner>().Select(tao => tao.Area);
 
 	//Only show areas that do not currently have an 'AssignedTo'
 	cboArea.Items.Clear();
-    foreach (string definedArea in definedAreas) 
-	{ 
-		if (!assignedAreas.Contains(definedArea))
-		{
-			cboArea.Items.Add(definedArea); 
-		}
+    foreach (var definedArea in definedAreas.Where(area => !assignedAreas.Contains(area)).Distinct())
+	{
+		cboArea.Items.Add(definedArea);
 	}
 ]]></CSharpCodeSnippet>
       </Action>

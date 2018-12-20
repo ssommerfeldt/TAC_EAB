@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTo.Caption" xml:space="preserve">
-    <value>Кому:</value>
-  </data>
-  <data name="lblChange.Caption" xml:space="preserve">
-    <value>Изменить ставку на</value>
-  </data>
-  <data name="lblCurrentRate.Caption" xml:space="preserve">
-    <value>(Курс по состоянию на текущий {0} )</value>
-  </data>
-  <data name="Rate.Caption" xml:space="preserve">
-    <value>Курс</value>
-  </data>
   <data name="chkLockRate.Caption" xml:space="preserve">
-    <value>Заблокирован в курсе обмена для этого заказа</value>
-  </data>
-  <data name="Error_ChangingExchangeRate" xml:space="preserve">
-    <value>Ошибка при изменении курса валют.</value>
-  </data>
-  <data name="lblSalesOrderCurrentRate.Caption" xml:space="preserve">
-    <value>Текущий курс заказа  {0} в {1}</value>
-  </data>
-  <data name="lblWillChange.Caption" xml:space="preserve">
-    <value>Сделав эти изменения, осуществится конвертация заказа</value>
-  </data>
-  <data name="lblConvertedPotential.Caption" xml:space="preserve">
-    <value>конвертировать потенциал - С:</value>
-  </data>
-  <data name="lblRateDate.Caption" xml:space="preserve">
-    <value>(Курс, назначенный на  {0} )</value>
+    <value>Зафиксировать в ставке для этого заказа</value>
   </data>
   <data name="CurrencyCode.Caption" xml:space="preserve">
     <value>Код валюты</value>
   </data>
   <data name="Description.Caption" xml:space="preserve">
     <value>Описание</value>
+  </data>
+  <data name="Error_ChangingExchangeRate" xml:space="preserve">
+    <value>Ошибка при изменении курса валют.</value>
+  </data>
+  <data name="lblChange.Caption" xml:space="preserve">
+    <value>Изменить ставку на </value>
+  </data>
+  <data name="lblConvertedPotential.Caption" xml:space="preserve">
+    <value>преобразовать потенциал — из:</value>
+  </data>
+  <data name="lblCurrentRate.Caption" xml:space="preserve">
+    <value>(Этот курс по состоянию на {0})</value>
+  </data>
+  <data name="lblRateDate.Caption" xml:space="preserve">
+    <value>(Курс, назначенный {0})</value>
+  </data>
+  <data name="lblSalesOrderCurrentRate.Caption" xml:space="preserve">
+    <value>Текущий курс заказа {0} в {1}</value>
+  </data>
+  <data name="lblTo.Caption" xml:space="preserve">
+    <value>До:</value>
+  </data>
+  <data name="lblWillChange.Caption" xml:space="preserve">
+    <value>Сделав эти изменения, осуществится преобразование заказа на продажу</value>
+  </data>
+  <data name="Rate.Caption" xml:space="preserve">
+    <value>Ставка</value>
   </data>
 </root>

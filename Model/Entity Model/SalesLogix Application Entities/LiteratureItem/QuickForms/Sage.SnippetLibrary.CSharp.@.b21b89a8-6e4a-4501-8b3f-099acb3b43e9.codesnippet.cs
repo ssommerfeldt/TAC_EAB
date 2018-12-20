@@ -28,14 +28,13 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class InsertLiteratureItemEventHandlers
     {
-        public static void SetDefaultFormValues( IInsertLiteratureItem form,  EventArgs args)
+        public static void SetDefaultFormValues(IInsertLiteratureItem form, EventArgs args)
         {
 			ILiteratureItem entity = form.CurrentEntity as ILiteratureItem;
 			entity.AuthorDate = DateTime.Today;

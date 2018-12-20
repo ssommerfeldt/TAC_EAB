@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<PortalService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7333decf-0404-428f-b7af-8214043d4c54">
+  <InstanceId>600a523be693458dae0949aa6ce680e8</InstanceId>
+  <ServiceType>Sage.Platform.Orm.Services.DynamicEntityConfigurationService, Sage.Platform</ServiceType>
+  <RegisterAs>Sage.Platform.Orm.Services.IDynamicEntityConfigurationService, Sage.Platform</RegisterAs>
+  <AddOnDemand>false</AddOnDemand>
+  <Properties>
+    <Property Name="BaseDynamicEntityType" TypeConverter="">Sage.SalesLogix.Orm.DynamicEntityBase, Sage.SalesLogix</Property>
+  </Properties>
+</PortalService>

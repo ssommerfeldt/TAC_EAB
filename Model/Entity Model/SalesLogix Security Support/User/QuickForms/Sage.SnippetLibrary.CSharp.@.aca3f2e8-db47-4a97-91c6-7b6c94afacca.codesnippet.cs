@@ -23,11 +23,11 @@
 </snippetHeader>
 */
 
+
 #region Usings
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
@@ -47,7 +47,7 @@ namespace Sage.BusinessRules.CodeSnippets
         public static void btnToolbarSave_OnClick(IUserChangePassword form, EventArgs args)
         {
 			string newPassword = form.txtConfirmPassword.Text;
-            if (newPassword.Equals(form.txtConfirmPassword.Text))
+            if (newPassword == form.txtConfirmPassword.Text)
 			{
 				IUser user = (IUser)form.usrUser.LookupResultValue;
 				if (!user.ValidateUserPassword(newPassword))

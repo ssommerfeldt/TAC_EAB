@@ -1,0 +1,9 @@
+//This file have been auto generated with gulp script 
+import lm = require("lime");
+export var getTemplates = (context: lm.IAngularContext): lm.IAngularTemplateInfo[] => {
+	var f = (key) => { return context.getTemplateUrl(key); };
+	var templates: lm.IAngularTemplateInfo[] = [];
+	templates.push({ key: f("settings.html"), value: "<div ng-controller=\"infor.crm.prospect.ProspectSettingController as ctrl\"><div class=\"field\"><label for=\"infor-crm-prospect-title-setting\">{{ctrl.localization.settingTitle}}</label><input ng-model=\"ctrl.widgetTitle\" ng-disabled=\"!ctrl.isTitleEditEnabled\" id=\"infor-crm-prospect-title-setting\" type=\"text\"></div><div class=\"field\"><label for=\"infor-crm-prospect-limit-setting\">{{ctrl.localization.settingLimit}}</label><input ng-model=\"ctrl.limitCount\" id=\"infor-crm-prospect-limit-setting\" type=\"number\" max=\"100\"></div><div class=\"field\"><label for=\"infor-crm-prospect-logical-id\">{{ctrl.localization.settingCrmLogicalId}}</label><input ng-model=\"ctrl.applicationLogicalId\" id=\"infor-crm-prospect-logical-id\"></div></div>" });
+	templates.push({ key: f("widget.html"), value: "<div ng-controller=\"infor.crm.prospect.ProspectController as ctrl\"><div class=\"card-content\"><div class=\"listview-search searchfield-wrapper lm-width-full\" style=\"margin-bottom: 0\"><input xi-searchfield class=\"searchfield lm-width-full\" ng-model=\"ctrl.searchText\" ng-change=\"ctrl.searchProspects()\" ng-model-options=\"{ debounce: 200 }\" placeholder=\"{{ctrl.localization.searchPlaceholder}}\"></div><div class=\"listview is-selectable\" xi-listview=\"{dataset: ctrl.prospects}\"><ul><li ng-repeat=\"prospect in ctrl.prospects\" ng-click=\"ctrl.onSelectProspect(prospect)\"><p class=\"listview-heading\">{{prospect.accountName}}</p><p class=\"listview-subheading\">{{prospect.businessDescription}}</p></li></ul></div></div></div>" });
+	return templates;
+}

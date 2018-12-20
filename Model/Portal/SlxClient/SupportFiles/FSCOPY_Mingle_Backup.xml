@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!--{target:The target directory, drive or zip file. (examples: c:\MyFolder, VFS:, c:\MyZipFile.zip)}-->
+<!--{root:The path to the TFS root directory}-->
+<!--{bins:The path to the directory containing built assemblies}-->
+<!--{batch:"true" if writes to the target drive should be batched; otherwise "false". Set to "true" if the target is a zip file, otherwise set to "false"}-->
+<!--{truncate:"true" if the target directory should be truncated as part of the operation; otherwise "false"}-->
+<!--{differential:"true" if files should be skipped if their size and last modified date matches; otherwise "false"}-->
+<!--{copySymbols:"true" if associated PDB symbols should be copied; otherwise "false"}-->
+<!--{copyConfig:"true" if associated configuration should be copied; otherwise "false"}-->
+<!--{copySatellites:"true" if associated satellite assemblies should be copied; otherwise "false"}-->
+<!--{connection:The connection string for the Virtual File System}-->
+
+<!--fscopy "FSCOPY_mingle.xml" /target:VFS:\Model\Portal /root:C:\inetpub\wwwroot /batch:false /truncate:false /bins: /connection:"Provider=SQLNCLI11;Data Source=USSCNJTANDA2;User ID=sysdba;Password=####;Initial Catalog=SalesLogix_Eval"-->
+
+<CopyDefinition xmlns="urn:schemas-sage-com:fscopy" ConnectionString="{connection}">
+  <Actions>	
+	<CopyAction BatchMode="false" Filter="Web.config" Recursive="true" Repeat="SData,SlxClient">
+		<Source>{root}\{REPEATVAL}</Source>
+		<Target>{target}\{REPEATVAL}</Target>
+	</CopyAction>
+	<CopyAction BatchMode="false" Filter="appSettings.config" Recursive="true" Repeat="SData,SlxClient">
+		<Source>{root}\{REPEATVAL}</Source>
+		<Target>{target}\{REPEATVAL}</Target>
+	</CopyAction>
+  </Actions>
+</CopyDefinition>

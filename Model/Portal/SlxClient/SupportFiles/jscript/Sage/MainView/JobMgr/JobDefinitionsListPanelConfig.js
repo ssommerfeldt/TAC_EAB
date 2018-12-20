@@ -1,9 +1,11 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/JobMgr/JobDefinitionsListPanelConfig", [
     'Sage/MainView/JobMgr/BaseListPanelConfig',
     'Sage/MainView/JobMgr/SDataSummaryFormatterScope',
     'dojo/_base/declare',
-    'dojo/i18n!./nls/JobDefinitionsListPanelConfig'
+    'dojo/i18n!./nls/JobDefinitionsListPanelConfig',
+    'dojo/i18n!./templates/nls/JobDefinitionsListSummary',
+    'dojo/i18n!./templates/nls/JobDefinitionDetailSummary'
 ],
 function (
    baseListPanelConfig,
@@ -37,9 +39,9 @@ function (
             var colNameDescription = this._nlsResources.colNameDescription || 'Description';
             var colNameType = this._nlsResources.colNameType || 'Type';
             var structure = [
-                { field: '$descriptor', name: colNameJobName, width: '100px' },
-                { field: 'description', name: colNameDescription, width: '100px' },
-                { field: 'type', name: colNameType, width: '50px' }
+                { field: '$descriptor', label: colNameJobName, width: '100px' },
+                { field: 'description', label: colNameDescription, width: '100px' },
+                { field: 'type', label: colNameType, width: '50px' }
             ];
             return structure;
         },
@@ -51,7 +53,7 @@ function (
             return "";
         },
         _getSort: function () {
-            var sort = [{ attribute: 'description' }];
+            var sort = [{ attribute: '$descriptor' }];
             return sort;
         },
         _getInclude: function () {
@@ -95,9 +97,12 @@ function (
             var detailConfig = {
                 resourceKind: this._resourceKind,
                 requestConfiguration: requestConfig,
-                templateLocation: 'MainView/JobMgr/Templates/JobDefinitionDetailSummary.html'
+                templateLocation: 'MainView/JobMgr/templates/JobDefinitionDetailSummary.html'
             };
             return detailConfig;
+        },
+        _getSummaryConfig: function () {
+            return false;
         },
         _getToolBars: function () {
             var toolBars = { items: [] };

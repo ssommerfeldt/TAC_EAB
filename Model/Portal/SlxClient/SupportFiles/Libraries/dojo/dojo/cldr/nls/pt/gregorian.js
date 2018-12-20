@@ -1,7 +1,16 @@
-//>>built
 define(
 "dojo/cldr/nls/pt/gregorian", //begin v1.x content
 {
+	"dateFormatItem-Ehm": "E, h:mm a",
+	"days-standAlone-short": [
+		"dom",
+		"seg",
+		"ter",
+		"qua",
+		"qui",
+		"sex",
+		"sáb"
+	],
 	"months-format-narrow": [
 		"J",
 		"F",
@@ -16,17 +25,39 @@ define(
 		"N",
 		"D"
 	],
+	"field-second-relative+0": "agora",
+	"quarters-standAlone-narrow": [
+		"1",
+		"2",
+		"3",
+		"4"
+	],
 	"field-weekday": "Dia da semana",
 	"dateFormatItem-yQQQ": "y QQQ",
-	"dateFormatItem-yyMMMEd": "E, d 'de' MMM 'de' yy",
-	"dateFormatItem-yMEd": "E, dd/MM/yyyy",
+	"dateFormatItem-yMEd": "E, dd/MM/y",
+	"field-wed-relative+0": "esta quarta-feira",
+	"field-wed-relative+1": "próxima quarta-feira",
+	"dateFormatItem-GyMMMEd": "E, d 'de' MMM 'de' y G",
 	"dateFormatItem-MMMEd": "E, d 'de' MMM",
 	"eraNarrow": [
 		"a.C.",
 		"d.C."
 	],
+	"dateFormatItem-yMM": "MM/y",
+	"field-tue-relative+-1": "terça-feira passada",
 	"dayPeriods-format-wide-morning": "manhã",
+	"days-format-short": [
+		"dom",
+		"seg",
+		"ter",
+		"qua",
+		"qui",
+		"sex",
+		"sáb"
+	],
 	"dateFormat-long": "d 'de' MMMM 'de' y",
+	"field-fri-relative+-1": "sexta-feira passada",
+	"field-wed-relative+-1": "quarta-feira passada",
 	"months-format-wide": [
 		"janeiro",
 		"fevereiro",
@@ -41,13 +72,16 @@ define(
 		"novembro",
 		"dezembro"
 	],
+	"dateTimeFormat-medium": "{1} {0}",
+	"dayPeriods-format-wide-pm": "PM",
 	"dateFormat-full": "EEEE, d 'de' MMMM 'de' y",
+	"field-thu-relative+-1": "quinta-feira passada",
 	"dateFormatItem-Md": "d/M",
 	"dayPeriods-format-abbr-am": "AM",
 	"dayPeriods-format-wide-noon": "meio-dia",
-	"dateFormatItem-yMd": "dd/MM/yyyy",
+	"dateFormatItem-yMd": "dd/MM/y",
 	"field-era": "Era",
-	"dateFormatItem-yM": "MM/yyyy",
+	"dateFormatItem-yM": "MM/y",
 	"months-standAlone-wide": [
 		"janeiro",
 		"fevereiro",
@@ -69,10 +103,10 @@ define(
 		"3º trimestre",
 		"4º trimestre"
 	],
-	"timeFormat-long": "HH'h'mm'min'ss's' z",
+	"dateFormatItem-yQQQQ": "y QQQQ",
+	"timeFormat-long": "HH:mm:ss z",
 	"field-year": "Ano",
 	"dateFormatItem-yMMM": "MMM 'de' y",
-	"dateFormatItem-yQ": "yyyy Q",
 	"field-hour": "Hora",
 	"dateFormatItem-MMdd": "dd/MM",
 	"months-format-abbr": [
@@ -89,11 +123,16 @@ define(
 		"nov",
 		"dez"
 	],
-	"dateFormatItem-yyQ": "Q yy",
-	"timeFormat-full": "HH'h'mm'min'ss's' zzzz",
-	"field-day-relative+0": "Hoje",
-	"field-day-relative+1": "Amanhã",
-	"field-day-relative+2": "Depois de amanhã",
+	"field-sat-relative+0": "este sábado",
+	"field-sat-relative+1": "próximo sábado",
+	"timeFormat-full": "HH:mm:ss zzzz",
+	"field-day-relative+0": "hoje",
+	"field-thu-relative+0": "esta quinta-feira",
+	"field-day-relative+1": "amanhã",
+	"field-thu-relative+1": "próxima quinta-feira",
+	"dateFormatItem-GyMMMd": "d 'de' MMM 'de' y G",
+	"field-day-relative+2": "depois de amanhã",
+	"dateFormatItem-H": "HH",
 	"months-standAlone-abbr": [
 		"jan",
 		"fev",
@@ -120,7 +159,8 @@ define(
 		"3º trimestre",
 		"4º trimestre"
 	],
-	"dateFormatItem-HHmmss": "HH'h'mm'min'ss's'",
+	"dateFormatItem-Gy": "y G",
+	"dateFormatItem-HHmmss": "HH:mm:ss",
 	"dateFormatItem-M": "L",
 	"days-standAlone-wide": [
 		"domingo",
@@ -131,10 +171,10 @@ define(
 		"sexta-feira",
 		"sábado"
 	],
-	"dateFormatItem-yyyyMMM": "MMM 'de' y",
-	"dateFormatItem-yyMMM": "MMM 'de' yy",
 	"timeFormat-medium": "HH:mm:ss",
-	"dateFormatItem-Hm": "HH'h'mm",
+	"field-sun-relative+0": "este domingo",
+	"dateFormatItem-Hm": "HH:mm",
+	"field-sun-relative+1": "próximo domingo",
 	"quarters-standAlone-abbr": [
 		"T1",
 		"T2",
@@ -157,20 +197,24 @@ define(
 		"sáb"
 	],
 	"dayPeriods-format-wide-night": "noite",
-	"dateFormatItem-yyMMMd": "d 'de' MMM 'de' yy",
 	"dateFormatItem-d": "d",
-	"dateFormatItem-ms": "mm'min'ss's'",
+	"dateFormatItem-ms": "mm:ss",
 	"quarters-format-narrow": [
 		"1",
 		"2",
 		"3",
 		"4"
 	],
-	"field-day-relative+-1": "Ontem",
+	"field-day-relative+-1": "ontem",
+	"dateFormatItem-h": "h a",
+	"dateTimeFormat-long": "{1} {0}",
 	"dayPeriods-format-narrow-am": "a",
-	"field-day-relative+-2": "Anteontem",
+	"field-day-relative+-2": "anteontem",
 	"dateFormatItem-MMMd": "d 'de' MMM",
 	"dateFormatItem-MEd": "E, dd/MM",
+	"dateTimeFormat-full": "{1} {0}",
+	"field-fri-relative+0": "esta sexta-feira",
+	"field-fri-relative+1": "próxima sexta-feira",
 	"field-day": "Dia",
 	"days-format-wide": [
 		"domingo",
@@ -182,7 +226,6 @@ define(
 		"sábado"
 	],
 	"field-zone": "Fuso",
-	"dateFormatItem-yyyyMM": "MM/yyyy",
 	"dateFormatItem-y": "y",
 	"months-standAlone-narrow": [
 		"J",
@@ -198,9 +241,9 @@ define(
 		"N",
 		"D"
 	],
-	"field-year-relative+-1": "Ano passado",
-	"field-month-relative+-1": "Mês passado",
-	"dateFormatItem-yyMM": "MM/yy",
+	"field-year-relative+-1": "ano passado",
+	"field-month-relative+-1": "mês passado",
+	"dateFormatItem-hm": "h:mm a",
 	"dayPeriods-format-abbr-pm": "PM",
 	"days-format-abbr": [
 		"dom",
@@ -211,11 +254,11 @@ define(
 		"sex",
 		"sáb"
 	],
-	"dateFormatItem-yMMMd": "d 'de' MMM 'de' y",
 	"eraNames": [
 		"Antes de Cristo",
 		"Ano do Senhor"
 	],
+	"dateFormatItem-yMMMd": "d 'de' MMM 'de' y",
 	"days-format-narrow": [
 		"D",
 		"S",
@@ -225,7 +268,6 @@ define(
 		"S",
 		"S"
 	],
-	"field-month": "Mês",
 	"days-standAlone-narrow": [
 		"D",
 		"S",
@@ -236,22 +278,39 @@ define(
 		"S"
 	],
 	"dateFormatItem-MMM": "LLL",
-	"dateFormatItem-HHmm": "HH'h'mm",
+	"field-month": "Mês",
+	"dateFormatItem-HHmm": "HH:mm",
+	"field-tue-relative+0": "esta terça-feira",
+	"field-tue-relative+1": "próxima terça-feira",
+	"dayPeriods-format-wide-am": "AM",
+	"dateFormatItem-EHm": "E, HH:mm",
+	"field-mon-relative+0": "esta segunda-feira",
+	"field-mon-relative+1": "próxima segunda-feira",
 	"dateFormat-short": "dd/MM/yy",
 	"dayPeriods-format-wide-afternoon": "tarde",
+	"dateFormatItem-EHms": "E, HH:mm:ss",
+	"dateFormatItem-Ehms": "E, h:mm:ss a",
 	"field-second": "Segundo",
+	"field-sat-relative+-1": "sábado passado",
 	"dateFormatItem-yMMMEd": "E, d 'de' MMM 'de' y",
-	"field-month-relative+0": "Este mês",
-	"field-month-relative+1": "Próximo mês",
+	"field-sun-relative+-1": "domingo passado",
+	"field-month-relative+0": "este mês",
+	"field-month-relative+1": "próximo mês",
 	"dateFormatItem-Ed": "E, d",
+	"dateTimeFormats-appendItem-Timezone": "{0} {1}",
 	"field-week": "Semana",
-	"dateFormat-medium": "dd/MM/yyyy",
-	"field-year-relative+0": "Este ano",
-	"field-week-relative+-1": "Semana passada",
-	"field-year-relative+1": "Próximo ano",
+	"dateFormat-medium": "dd/MM/y",
+	"field-year-relative+0": "este ano",
+	"field-week-relative+-1": "semana passada",
+	"field-year-relative+1": "próximo ano",
 	"dayPeriods-format-narrow-pm": "p",
-	"field-week-relative+0": "Esta semana",
-	"field-week-relative+1": "Próxima semana"
+	"dateTimeFormat-short": "{1} {0}",
+	"dateFormatItem-Hms": "HH:mm:ss",
+	"dateFormatItem-hms": "h:mm:ss a",
+	"dateFormatItem-GyMMM": "MMM 'de' y G",
+	"field-mon-relative+-1": "segunda-feira passada",
+	"field-week-relative+0": "esta semana",
+	"field-week-relative+1": "próxima semana"
 }
 //end v1.x content
 );

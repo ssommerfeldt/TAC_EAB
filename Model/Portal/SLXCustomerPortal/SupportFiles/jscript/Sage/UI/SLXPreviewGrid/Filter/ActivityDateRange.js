@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, define */
-define([
+/*globals Sage, dojo, define */
+define("Sage/UI/SLXPreviewGrid/Filter/ActivityDateRange", [
     'dojo/_base/declare',
      'Sage/UI/SLXPreviewGrid/Filter/DateRange'
 ],

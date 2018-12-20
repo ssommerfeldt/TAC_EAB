@@ -73,24 +73,21 @@ public class Global : HttpApplication
 
         // NOTE: The HttpSessionState is unavailable in Application_EndRequest (i.e. you cannot call Session.Abandon()).       
 
-        // This fix is only for Forms authentication
-        if (FormsAuthentication.IsEnabled == false) return;
-
         var application = (HttpApplication) sender;
         var context = application.Context;
-        
+
         // Is the HttpResponse set to 302?
-        if (context.Response.IsRequestBeingRedirected == false || context.Response.StatusCode != (int) HttpStatusCode.Redirect) return;
+        if (!context.Response.IsRequestBeingRedirected || context.Response.StatusCode != (int) HttpStatusCode.Redirect) return;
 
         // If we don't have an Ajax request then return.
-        if (ErrorHelper.LooksLikeAjaxRequest(context.Request) == false) return;
+        if (!ErrorHelper.LooksLikeAjaxRequest(context.Request)) return;
 
         // At this point we know we have a redirect to a page for an Ajax request, which is pointless (i.e. issue in the .NET Framework for Forms authentication).
 
         if (string.IsNullOrEmpty(FormsAuthentication.LoginUrl)) return;
 
         // Redirecting to the LoginUrl?
-        if (context.Response.RedirectLocation == null || context.Response.RedirectLocation.IndexOf(FormsAuthentication.LoginUrl, StringComparison.InvariantCultureIgnoreCase) == -1) return;        
+        if (context.Response.RedirectLocation == null || context.Response.RedirectLocation.IndexOf(FormsAuthentication.LoginUrl, StringComparison.InvariantCultureIgnoreCase) == -1) return;
 
         var redirect = ErrorHelper.GetLoginRedirectUrl();
         if (string.IsNullOrEmpty(redirect)) return;
@@ -144,6 +141,9 @@ public class Global : HttpApplication
 
             MessagingService.UnhandledException += MessagingServiceOnUnhandledException;
 
+            //Enable TLS 1.1+ in .net 4.5. This can be removed once this portal is upgraded to .net 4.6 or greater.
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
             if (Log.IsInfoEnabled)
             {
                 Log.Info("SalesLogix Web Client initializing.");
@@ -156,12 +156,12 @@ public class Global : HttpApplication
             //    (Do not overwrite log4net.dll if prompted.)
             // 2. Uncomment the #define EnableNHibernateProfiler at the top of this Visual C# source file.
 #if EnableNHibernateProfiler
-        HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
+            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
 #endif
 
             // WFG comment the #define EnableDynamicFormSupport at the top of this Visual C# source file to disable dynamic form support.
 #if EnableDynamicFormSupport
-        HostingEnvironment.RegisterVirtualPathProvider(new IFileSystemVirtualPathProvider());
+            HostingEnvironment.RegisterVirtualPathProvider(new IFileSystemVirtualPathProvider());
 #endif
 
             HierarchicalRuntime.Instance.Initialize();
@@ -170,7 +170,6 @@ public class Global : HttpApplication
             {
                 Log.InfoEx("SalesLogix Web Client started.", EventIds.AdHocEvents.InfoApplicationStart);
             }
-
         }
         catch (Exception ex)
         {
@@ -189,6 +188,21 @@ public class Global : HttpApplication
         try
         {
             MessagingService.UnhandledException -= MessagingServiceOnUnhandledException;
+            var runtime = typeof (HttpRuntime).InvokeMember("_theRuntime", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.GetField, null, null, null) as HttpRuntime;
+            if (runtime == null) return;
+            var shutDownMessage = runtime.GetType().InvokeMember("_shutDownMessage", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField, null, runtime, null) as string;
+            var shutDownStack = runtime.GetType().InvokeMember("_shutDownStack", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField, null, runtime, null) as string;
+            if (!string.IsNullOrEmpty(shutDownMessage))
+            {
+                shutDownMessage = shutDownMessage.Replace(Environment.NewLine, " ").Trim();
+            }
+            if (!string.IsNullOrEmpty(shutDownStack))
+            {
+                shutDownStack = shutDownStack.Replace(Environment.NewLine, " ").Trim();
+            }
+            // Note: Accessing HostingEnvironment.ShutdownReason can lead to an exception, so use reflection instead.
+            var shutDownReason = (ApplicationShutdownReason) runtime.GetType().InvokeMember("_shutdownReason", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField, null, runtime, null);
+            Log.WarnEx(string.Format("The Saleslogix Web Client application has shutdown for the following reason: Reason={0}; Message={1}; Stack Trace={2}", shutDownReason, shutDownMessage, shutDownStack), EventIds.AdHocEvents.WarnApplicationEnd);
         }
         catch (Exception ex)
         {
@@ -245,7 +259,7 @@ public class Global : HttpApplication
                 var path = Request.Path;
                 var isLoginPage = !string.IsNullOrEmpty(path) && path.IndexOf(redirectUrl, StringComparison.InvariantCultureIgnoreCase) != -1;
                 // If the Exception came from the login page, go to error page instead; otherwise, the user could get into an unrecoverable loop.)
-                if (isLoginPage == false || ErrorHelper.LooksLikeAjaxRequest(Request))
+                if (!isLoginPage || ErrorHelper.LooksLikeAjaxRequest(Request))
                 {
                     var eLoginMitigationType = ErrorHelper.LooksLikeAjaxRequest(Request)
                                                    ? ErrorHelper.MitigationType.AjaxLoginRedirect
@@ -271,18 +285,14 @@ public class Global : HttpApplication
                     // SignOut() will also set the FormsAuthentication cookie value to an empty string.
                     SignOut();
 
-                    HttpCookie authCookie = null;
-                    if (FormsAuthentication.IsEnabled)
-                    {
-                        // Save the auth cookie since all cookies will be cleared in ClearHeaders().
-                        // .SLXAUTH=; expires=Tue, 12-Oct-1999 05:00:00 GMT; path=/; HttpOnly
-                        authCookie = Response.Cookies[FormsAuthentication.FormsCookieName];
-                    }
+                    // Save the auth cookie since all cookies will be cleared in ClearHeaders().
+                    // .SLXAUTH=; expires=Tue, 12-Oct-1999 05:00:00 GMT; path=/; HttpOnly
+                    var authCookie = Response.Cookies[FormsAuthentication.FormsCookieName];
 
                     if (Log.IsDebugEnabled)
                     {
                         Log.Debug("Redirect to Login.aspx (Ajax AuthTokenNullException)");
-                    }                    
+                    }
 
                     Response.ClearHeaders();
                     Response.ClearContent();
@@ -364,7 +374,6 @@ public class Global : HttpApplication
                          * error page HTML will cause the IFrame to incorrectly navigate the page leading to other errors. */
                         Response.Write("RuntimeErrorPostTooLarge"); //DNL
                         Response.ContentType = "text/plain";
-
                     }
                     else
                     {
@@ -566,7 +575,7 @@ public class Global : HttpApplication
     ///</returns>
     private static ErrorHelper.ResultKind IsAuthenticated()
     {
-        var result = ErrorHelper.ResultKind.Ambiguous;        
+        var result = ErrorHelper.ResultKind.Ambiguous;
         try
         {
             if (ApplicationContext.Current != null && ApplicationContext.Current.Services != null)
@@ -603,7 +612,7 @@ public class Global : HttpApplication
     }
 
     /// <summary>
-    /// Abandon's the Session and signs out of Forms authentication (if Forms authentication is enabled).
+    /// Abandons the Session and signs out of Forms authentication (if Forms authentication is enabled).
     /// </summary>
     private void SignOut()
     {
@@ -616,11 +625,8 @@ public class Global : HttpApplication
             {
                 session.Abandon();
             }
-            if (FormsAuthentication.IsEnabled)
-            {
-                // Nulls the .SLXAUTH cookie.
-                FormsAuthentication.SignOut();
-            }
+            // Nulls the .SLXAUTH cookie.
+            FormsAuthentication.SignOut();
         }
         catch (Exception ex)
         {
@@ -640,6 +646,19 @@ public class Global : HttpApplication
         get
         {
             var cultureInfo = CultureInfo.CurrentUICulture;
+            var culture = cultureInfo.ToString();
+            return culture.ToLower();
+        }
+    }
+
+    /// <summary>
+    /// Gets the region.
+    /// </summary>
+    public static string Region
+    {
+        get
+        {
+            var cultureInfo = CultureInfo.CurrentCulture;
             var culture = cultureInfo.ToString();
             return culture.ToLower();
         }

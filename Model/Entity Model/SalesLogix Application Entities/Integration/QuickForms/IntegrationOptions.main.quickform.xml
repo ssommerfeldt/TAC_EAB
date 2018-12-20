@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b0626850-b4cd-4508-a964-c4eb5b6fb719" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b0626850-b4cd-4508-a964-c4eb5b6fb719" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-11-02T21:14:36.4060156Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -122,8 +122,11 @@ if (integration != null)
 			integrationCategory = clientContextService.getValue('IntegrationCategory');
 		}
 	}
-	
-	return 'Category eq "' + integrationCategory + '"';
+	var where = 'Category eq "' + integrationCategory + '"';
+	if(integrationCategory == "Exchange Rate Services")
+		where = where + 'AND Description ne "Enable Dated Exchange Rates"';
+		where = where + 'AND Description ne "Use Google China"'
+	return where;
 }</ConditionalWhere>
         <Select />
         <Include />
@@ -139,10 +142,10 @@ if (integration != null)
             <Image>[Localization!Global_Images:Save_16x16]</Image>
             <DisplayInInsert>false</DisplayInInsert>
             <MergePosition>Default</MergePosition>
-            <MergeControlId>Entities/IntegrationOptions/Edit</MergeControlId>
+            <MergeControlId />
             <OnClick />
             <StyleScheme />
-            <AppliedSecurity />
+            <AppliedSecurity>Entities/IntegrationOptions/Edit</AppliedSecurity>
           </SDataGridSaveTool>
           <SDataGridCancelTool>
             <Name>Cancel</Name>

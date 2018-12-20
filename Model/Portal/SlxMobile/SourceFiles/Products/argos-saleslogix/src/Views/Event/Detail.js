@@ -1,86 +1,93 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import format from '../../Format';
+import Detail from 'argos/Detail';
+import getResource from 'argos/I18n';
+
+const resource = getResource('eventDetail');
+const dtFormatResource = getResource('eventDetailDateTimeFormat');
+
+/**
+ * @class crm.Views.Event.Detail
+ *
+ * @extends argos.Detail
+ *
+ * @requires crm.Format
  */
-define('Mobile/SalesLogix/Views/Event/Detail', [
-    'dojo/_base/declare',
-    'Mobile/SalesLogix/Format',
-    'Sage/Platform/Mobile/Detail'
-], function(
-    declare,
-    format,
-    Detail
-) {
+const __class = declare('crm.Views.Event.Detail', [Detail], {
+  // Localization
+  actionsText: resource.actionsText,
+  startTimeText: resource.startTimeText,
+  endTimeText: resource.endTimeText,
+  titleText: resource.titleText,
+  descriptionText: resource.descriptionText,
+  typeText: resource.typeText,
+  whenText: resource.whenText,
+  startDateFormatText: dtFormatResource.startDateFormatText,
+  startDateFormatText24: dtFormatResource.startDateFormatText24,
+  endDateFormatText: dtFormatResource.endDateFormatText,
+  endDateFormatText24: dtFormatResource.endDateFormatText24,
+  entityText: resource.entityText,
+  eventTypeText: {
+    atToDo: resource.toDo,
+    atPhoneCall: resource.phoneCall,
+    atAppointment: resource.meeting,
+    atLiterature: resource.literature,
+    atPersonal: resource.personal,
+  },
 
-    return declare('Mobile.SalesLogix.Views.Event.Detail', [Detail], {
-        //Localization
-        eventTypeText: {
-            'atToDo': 'To-Do',
-            'atPhoneCall': 'Phone Call',
-            'atAppointment': 'Meeting',
-            'atLiterature': 'Literature Request',
-            'atPersonal': 'Personal Activity'
-        },
-        actionsText: 'Quick Actions',
-        startTimeText: 'start date',
-        endTimeText: 'end date',
-        titleText: 'Event',
-        descriptionText: 'description',
-        typeText: 'type',
-        whenText: 'When',
-        startDateFormatText: 'M/D/YYYY h:mm:ss A',
-        endDateFormatText: 'M/D/YYYY h:mm:ss A',
+  // View Properties
+  id: 'event_detail',
+  editView: 'event_edit',
+  security: null, // 'Entities/Event/View',
+  querySelect: [
+    'Description',
+    'EndDate',
+    'StartDate',
+    'UserId',
+    'Type',
+  ],
+  resourceKind: 'events',
 
-        //View Properties
-        id: 'event_detail',
-        editView: 'event_edit',
-        security: null, //'Entities/Event/View',
-        querySelect: [
-            'Description',
-            'EndDate',
-            'StartDate',
-            'UserId',
-            'Type'
-        ],
-        resourceKind: 'events',
-
-        formatEventType: function(val) {
-            return this.eventTypeText[val] || val;
-        },
-        init: function() {
-            this.inherited(arguments);
-        },
-        createLayout: function() {
-            return this.layout || (this.layout = [{
-                    title: this.detailsText,
-                    name: 'DetailsSection',
-                    children: [{
-                            name: 'Type',
-                            property: 'Type',
-                            label: this.typeText,
-                            renderer: this.formatEventType.bindDelegate(this)
-                        }, {
-                            name: 'Description',
-                            property: 'Description',
-                            label: this.descriptionText
-                        }]
-                }, {
-                    title: this.whenText,
-                    name: 'WhenSection',
-                    children: [{
-                            name: 'StartDate',
-                            property: 'StartDate',
-                            label: this.startTimeText,
-                            renderer: format.date.bindDelegate(
-                                this, this.startDateFormatText)
-                        }, {
-                            name: 'EndDate',
-                            property: 'EndDate',
-                            label: this.endTimeText,
-                            renderer: format.date.bindDelegate(
-                                this, this.endDateFormatText)
-                        }]
-                }]);
-        }
-    });
+  formatEventType: function formatEventType(val) {
+    return this.eventTypeText[val] || val;
+  },
+  init: function init() {
+    this.inherited(arguments);
+  },
+  createLayout: function createLayout() {
+    return this.layout || (this.layout = [{
+      title: this.detailsText,
+      name: 'DetailsSection',
+      children: [{
+        name: 'Type',
+        property: 'Type',
+        label: this.typeText,
+        renderer: this.formatEventType.bindDelegate(this),
+      }, {
+        name: 'Description',
+        property: 'Description',
+        label: this.descriptionText,
+      }],
+    }, {
+      title: this.whenText,
+      name: 'WhenSection',
+      children: [{
+        name: 'StartDate',
+        property: 'StartDate',
+        label: this.startTimeText,
+        renderer: format.date.bindDelegate(
+          this, (App.is24HourClock()) ? this.startDateFormatText24 : this.startDateFormatText),
+      }, {
+        name: 'EndDate',
+        property: 'EndDate',
+        label: this.endTimeText,
+        renderer: format.date.bindDelegate(
+          this, (App.is24HourClock()) ? this.endDateFormatText24 : this.endDateFormatText),
+      }],
+    }]);
+  },
 });
 
+lang.setObject('Mobile.SalesLogix.Views.Event.Detail', __class);
+export default __class;

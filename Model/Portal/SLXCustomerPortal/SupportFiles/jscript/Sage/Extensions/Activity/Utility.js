@@ -1,6 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 /* Extension/Activity Gloabal Utility. */
-define([
+define("Sage/Extensions/Activity/Utility", [
 
 ],
 function (
@@ -32,7 +32,7 @@ function (
                 entityId = eContext.EntityId;
             }
             return entityId;
-        },
+        }
     };
     return Sage.Extensions.Activity.Utility;
 

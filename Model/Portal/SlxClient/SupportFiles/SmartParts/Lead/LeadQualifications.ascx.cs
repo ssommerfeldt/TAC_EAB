@@ -476,10 +476,10 @@ public partial class SmartParts_Lead_LeadQualifications : EntityBoundSmartPart
 		CheckBox cb = sender as CheckBox;
         if (cb != null)
         {
-            string Id = cb.Attributes[cQualificationId];
-            if (!string.IsNullOrEmpty(Id))
+            var id = cb.Attributes[cQualificationId];
+            if (!string.IsNullOrEmpty(id))
             {
-                IQualification qualification = EntityFactory.GetById<IQualification>(Id);
+                var qualification = EntityFactory.GetById<IQualification>(id);
                 if (qualification != null)
                 {
                     ILead lead = GetCurrentLead();

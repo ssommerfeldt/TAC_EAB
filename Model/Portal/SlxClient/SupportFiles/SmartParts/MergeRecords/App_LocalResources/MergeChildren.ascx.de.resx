@@ -117,88 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblLinkedRecords.Caption" xml:space="preserve">
-    <value>Systemverknüpfungen (Die folgenden Datensätze werden in beiden Systemen verknüpft und zusammengeführt.)</value>
-  </data>
-  <data name="Grid_WorkPhone_Column" xml:space="preserve">
-    <value>Geschäftliche Telefonnummer</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Zurück</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="EmptyTableRowText" xml:space="preserve">
-    <value>Es wurden keine Datensätze gefunden, die den ausgewählten Filterkriterien entsprechen.</value>
-  </data>
-  <data name="LinkContactAddresses.Caption" xml:space="preserve">
-    <value>Kontaktadressen verknüpfen</value>
-  </data>
-  <data name="Grid_LastName_Column" xml:space="preserve">
-    <value>Nachname</value>
-  </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Zurück</value>
-  </data>
-  <data name="Grid_City_Column" xml:space="preserve">
-    <value>Stadt</value>
-  </data>
   <data name="btnLink.Caption" xml:space="preserve">
     <value>Verknüpfung</value>
-  </data>
-  <data name="MergeContacts.Caption" xml:space="preserve">
-    <value>Kontakte zusammenführen</value>
-  </data>
-  <data name="UnlinkedRecords.Caption" xml:space="preserve">
-    <value>Verknüpfung von {0} mit {1} wurde aufgehoben.</value>
-  </data>
-  <data name="Grid_FirstName_Column" xml:space="preserve">
-    <value>Vorname</value>
-  </data>
-  <data name="LinkAddress.Caption" xml:space="preserve">
-    <value>Adressen verknüpfen</value>
-  </data>
-  <data name="lblContacts.Caption" xml:space="preserve">
-    <value>Kontakte</value>
-  </data>
-  <data name="LinkToAccounting.Caption" xml:space="preserve">
-    <value>Verknüpfung zur Buchhaltung - Ergebnisse</value>
-  </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Verknüpfung zur Buchhaltung - Daten zusammenführen - Keine Unterschiede</value>
-  </data>
-  <data name="lblDescription.Caption" xml:space="preserve">
-    <value>Erstellen Sie Verknüpfungen, um Ihre Kontaktdatensätze in SalesLogix und dem Buchhaltungssystem zusammenzuführen. Systemverknüpfungen wurden unter Verwendung der von Ihnen definierten Übereinstimmungskriterien abgeglichen.</value>
-  </data>
-  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Verknüpfung zur Buchhaltung - Daten zusammenführen - Festgestellte Unterschiede</value>
-  </data>
-  <data name="Grid_Unlink.Column" xml:space="preserve">
-    <value>Verknüpfung aufheben</value>
-  </data>
-  <data name="Grid_Email_Column" xml:space="preserve">
-    <value>E-Mail</value>
   </data>
   <data name="btnNext.Caption" xml:space="preserve">
     <value>Weiter &gt;</value>
   </data>
-  <data name="Grid_Source_Column" xml:space="preserve">
-    <value>Quelle</value>
+  <data name="Grid_City_Column" xml:space="preserve">
+    <value>Stadt</value>
   </data>
-  <data name="Grid.Select.Text" xml:space="preserve">
-    <value>Auswählen</value>
+  <data name="Grid_Email_Column" xml:space="preserve">
+    <value>E-Mail</value>
   </data>
-  <data name="lblExtendedDetails.Caption" xml:space="preserve">
-    <value>Erweiterte Details</value>
+  <data name="Grid_FirstName_Column" xml:space="preserve">
+    <value>Vorname</value>
   </data>
-  <data name="Grid_Property_Column" xml:space="preserve">
-    <value>Eigenschaft</value>
+  <data name="Grid_LastName_Column" xml:space="preserve">
+    <value>Nachname</value>
+  </data>
+  <data name="Grid_WorkPhone_Column" xml:space="preserve">
+    <value>Geschäftliche Telefonnummer</value>
+  </data>
+  <data name="lblContacts.Caption" xml:space="preserve">
+    <value>Kontakte</value>
+  </data>
+  <data name="lblLinkedRecords.Caption" xml:space="preserve">
+    <value>Verknüpfte Kontakte (folgende Datensätze werden zusammengeführt)</value>
+  </data>
+  <data name="Grid_Unlink.Column" xml:space="preserve">
+    <value>Verknüpfung aufheben</value>
+  </data>
+  <data name="MergeContacts.Caption" xml:space="preserve">
+    <value>Kontakte zusammenführen</value>
   </data>
   <data name="MergeContactsDesc.Caption" xml:space="preserve">
     <value>Verknüpfen Sie übereinstimmende Kontakte.</value>
   </data>
-  <data name="Grid_Target_Column" xml:space="preserve">
-    <value>Ziel</value>
+  <data name="UnlinkedRecords.Caption" xml:space="preserve">
+    <value>Verknüpfung von {0} mit {1} wurde aufgehoben.</value>
+  </data>
+  <data name="lblDescription.Caption" xml:space="preserve">
+    <value>Erstellen Sie Verknüpfungen, um Ihre Kontaktdatensätze zusammenzuführen. Einige Verknüpfungen wurden unter Verwendung der von Ihnen definierten Übereinstimmungskriterien abgeglichen.</value>
+  </data>
+  <data name="EmptyTableRowText" xml:space="preserve">
+    <value>Es wurden keine Datensätze gefunden, die den ausgewählten Filterkriterien entsprechen.</value>
+  </data>
+  <data name="Grid.Select.Text" xml:space="preserve">
+    <value>Auswählen</value>
   </data>
   <data name="Error_SourceTargetNotSelected" xml:space="preserve">
     <value>Wählen Sie sowohl einen "Zieldatensatz" als auch einen "Quelldatensatz" aus, bevor Sie fortfahren.</value>
+  </data>
+  <data name="Grid_Property_Column" xml:space="preserve">
+    <value>Eigenschaft</value>
+  </data>
+  <data name="Grid_Source_Column" xml:space="preserve">
+    <value>Quelle</value>
+  </data>
+  <data name="Grid_Target_Column" xml:space="preserve">
+    <value>Ziel</value>
+  </data>
+  <data name="LinkToAccounting.Caption" xml:space="preserve">
+    <value>Verknüpfung zur Buchhaltung - Ergebnisse</value>
+  </data>
+  <data name="LinkAddress.Caption" xml:space="preserve">
+    <value>Verknüpfungsadressen</value>
+  </data>
+  <data name="lblExtendedDetails.Caption" xml:space="preserve">
+    <value>Erweiterte Details</value>
+  </data>
+  <data name="LinkContactAddresses.Caption" xml:space="preserve">
+    <value>Kontaktadressen verknüpfen</value>
+  </data>
+  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
+    <value>Verknüpfung zur Buchhaltung - Daten zusammenführen - Festgestellte Unterschiede</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Verknüpfung zur Buchhaltung - Daten zusammenführen - Keine Unterschiede</value>
   </data>
 </root>
