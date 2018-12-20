@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f9ddad71-19b9-4267-9cb9-4164225d4e08" lastModifiedUtc="2015-10-23T23:16:39.1165335Z" name="ConfigProductItem" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="989ad1d5-ba90-44c8-9dd3-4d50824c2819" paramName="queryStringHeadId" sequence="0" paramType="String">
+      <description>identifies a group of configuration</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="3f92d935-cf78-467b-a36f-16909a4df850" paramName="queryStringDetailId" sequence="0" paramType="String">
+      <description>identifies a configuration within the group of configuration associated to a HeaderId</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="88f4ad12-eb3d-4fed-9f31-3c4a67c0d566" paramName="currentUrl" sequence="0" paramType="String" />
+    <OrmEntityMethodParam id="3cbb3cb7-389a-4b80-b15a-fe4fc9d2b72b" paramName="isPrepare" sequence="0" paramType="Boolean">
+      <description>wether or not to prepare for InteractiveConfigurationor</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="1f330e83-2cc7-400d-a494-862c7ddc07f1" paramName="status" sequence="0" paramType="String">
+      <description>the status of existing configuration</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="19625d83-de6f-4d3c-864a-cc62ac062ea3" paramName="languageSetting" sequence="0" paramType="String">
+      <description>The language information </description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="d2bbc8d4-976b-4af3-ace8-79e3b0da128c" lastModifiedUtc="2015-10-30T03:21:37.1501119Z" targetType="Sage.SalesLogix.OpportunityProduct.Rules, Sage.SalesLogix.BusinessRules" targetMethod="ConfigProductItem" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

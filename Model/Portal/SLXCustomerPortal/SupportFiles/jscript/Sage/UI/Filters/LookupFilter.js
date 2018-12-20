@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Filters/LookupFilter", [
        'dijit/_Widget',
        'dijit/_Contained',
        'dojo/NodeList-traverse',
@@ -12,7 +12,9 @@ define([
        'dijit/form/TextBox',
        'dojo/on',
        'dojo/i18n!../nls/ConditionManager',
-       'dojo/_base/declare'
+       'dojo/_base/declare',
+       'Sage/Utility/Filters',
+       'dojo/json'
 ],
 function (
         _Widget,
@@ -27,12 +29,14 @@ function (
         TextBox,
         on,
         conditionManagerResource,
-        declare) {
+        declare,
+        FiltersUtility,
+        json) {
     var widget = declare('Sage.UI.Filters.LookupFilter', [_Widget, _Contained, _ActionMixin, _Templated], {
         widgetsInTemplate: true,
         widgetTemplate: new Simplate([
             '<div class="filter-type-checkbox filter-collapsed">',
-                '<h3 data-action="toggleExpand" data-dojo-attach-point="filterNameNode">{%: $.filter.displayName || $.filter.filterName %}',
+                '<h3 data-action="toggleExpand" data-dojo-attach-point="filterNameNode">{%: $.filter.$descriptor || $.filter.filterName %}',
                 '</h3>',
                 '<ul class="filter-list" data-dojo-attach-point="listNode">',
                 '<select class="lookup-filter-operators" data-dojo-attach-point="operators" data-dojo-type="dijit.form.Select"></select><br/>',
@@ -62,17 +66,20 @@ function (
         _selectedOp: 'Contains',
         postMixInProperties: function () {
             this.inherited(arguments);
-            if (this.appliedValues) {
-                setTimeout(lang.hitch(this, this.toggleExpand), 500);               
+            if (this.expanded) {
+                this.expanded = false; // toggleExpand will flip this
+                setTimeout(lang.hitch(this, this._toggleExpand), 500);
+            } else if (this.appliedValues) {
+                setTimeout(lang.hitch(this, this._loadItems), 500);
             }
         },
         postCreate: function () {
             this.inherited(arguments);
             this.textInput.on('keyDown', lang.hitch(this, this._onInputKeyDown));
-            if (this.appliedValues) {
-                this.textInput.set('value', this.appliedValues.value.value);
-                this._selectedOp = this.appliedValues.value.operator;
-                this._hasApplied = true;
+            if (this.appliedValues && this.appliedValues.value) {
+                     this.textInput.set('value', this.appliedValues.value.value);
+                    this._selectedOp = this.appliedValues.value.operator;
+                    this._hasApplied = true;
             }
             this.resolveDeferred();
         },
@@ -88,15 +95,28 @@ function (
         uninitialize: function() {
             this.inherited(arguments);
         },
-        toggleExpand: function(params, evt, el) {
-            var ops = this.filter &&
-                        this.filter.details && 
-                        this.filter.details.userLookupFilter &&
-                        this.filter.details.userLookupFilter.operators;
+        toggleExpand: function (params, evt, el) {
+            // toggleExpand is called when the user clicks the filter to expand it
+            this._toggleExpand();
+            this._saveExpandState();
+        },
+        _toggleExpand: function () {
+            // toggle expanded state without saving state
+            this.expanded = !this.expanded;
+
             if (this.domNode) {
                 dojo.toggleClass(this.domNode, 'filter-collapsed');
             }
-            if(this.operators){
+
+            this._loadItems();
+        },
+        _loadItems: function () {
+            var ops = this.filter &&
+                        this.filter.details &&
+                        this.filter.details.userLookupFilter &&
+                        this.filter.details.userLookupFilter.operators;
+
+            if (this.operators) {
                 if (!this._loaded) {
                     this._loaded = true;
                     array.forEach(ops, lang.hitch(this, function (op) {
@@ -112,14 +132,34 @@ function (
                             value: op
                         });
                     }));
-                   this.operators.set('value', this._selectedOp);
-                }     
+                    this.operators.set('value', this._selectedOp);
+                }
 
             }
+        },
+        _saveExpandState: function () {
+            var data = this.parent._configuration._hiddenFilters || {},
+                key = this.parent._configuration._hiddenFiltersKey,
+                service = Sage.Services.getService("ClientGroupContext"),
+                context = service && service.getContext(),
+                prop = context.CurrentEntity + '_' + this.filter.filterName;
+
+            // Create it if necessary
+            if (!data[prop]) {
+                data[prop] = {
+                    expanded: false,
+                    hidden: false
+                };
+            }
+
+            data[prop].expanded = this.expanded;
+            FiltersUtility.setHiddenFilters(key, json.stringify(data));
         },
         _onInputKeyDown: function (event) {
             if (event.keyCode === 13 || event.keyCode === 0) {
                 this.doSearch();
+                event.preventDefault();
+                event.stopPropagation();
             } else {
                 // Any time a key other than enter is pressed,
                 // reset the auto search timeout

@@ -117,26 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdActivities_AddedBy_ColumnHeader" xml:space="preserve">
-    <value>Добавлено</value>
+  <data name="ActivityType_Meeting" xml:space="preserve">
+    <value>Встреча</value>
   </data>
-  <data name="grdActivities_Regarding_ColumnHeader" xml:space="preserve">
-    <value>Тема</value>
+  <data name="ActivityType_Note" xml:space="preserve">
+    <value>Заметка</value>
   </data>
-  <data name="grdActivities_ScheduleDate_ColumnHeader" xml:space="preserve">
-    <value>Дата планирования</value>
-  </data>
-  <data name="NewActivities_Title" xml:space="preserve">
-    <value>Новые дела</value>
+  <data name="ActivityType_Personal" xml:space="preserve">
+    <value>Личное действие</value>
   </data>
   <data name="ActivityType_PhoneCall" xml:space="preserve">
     <value>Звонок</value>
   </data>
-  <data name="ModifiedAccounts_Title" xml:space="preserve">
-    <value>Измененные дела</value>
+  <data name="ActivityType_ToDo" xml:space="preserve">
+    <value>Дело</value>
   </data>
-  <data name="grdActivities_EmptyRow" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
+  <data name="grdActivities_Account_ColumnHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="grdActivities_AddedBy_ColumnHeader" xml:space="preserve">
+    <value>Добавлено</value>
   </data>
   <data name="grdActivities_Contact_ColumnHeader" xml:space="preserve">
     <value>Контакт</value>
@@ -144,40 +144,40 @@
   <data name="grdActivities_DateAdded_ColumnHeader" xml:space="preserve">
     <value>Дата добавления</value>
   </data>
-  <data name="grdUpdatedActivities_ChangedTo_ColumnHeader" xml:space="preserve">
-    <value>Кому</value>
+  <data name="grdActivities_EmptyRow" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
-  <data name="grdUpdatedActivities_ChangedFrom_ColumnHeader" xml:space="preserve">
-    <value>От</value>
+  <data name="grdActivities_Regarding_ColumnHeader" xml:space="preserve">
+    <value>Тема</value>
   </data>
-  <data name="grdUpdatedActivities_ChangedField_ColumnHeader" xml:space="preserve">
-    <value>Поле</value>
-  </data>
-  <data name="grdUpdatedActivities_ChangedBy_ColumnHeader" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
-  <data name="grdUpdatedActivities_ChangedDate_ColumnHeader" xml:space="preserve">
-    <value>Дата изменения</value>
-  </data>
-  <data name="ActivityType_Note" xml:space="preserve">
-    <value>Заметка</value>
+  <data name="grdActivities_ScheduleDate_ColumnHeader" xml:space="preserve">
+    <value>Запланировать дату</value>
   </data>
   <data name="grdActivities_ScheduleFor_ColumnHeader" xml:space="preserve">
-    <value>Запланировано для</value>
-  </data>
-  <data name="ActivityType_ToDo" xml:space="preserve">
-    <value>Дело</value>
-  </data>
-  <data name="ActivityType_Meeting" xml:space="preserve">
-    <value>Встреча</value>
-  </data>
-  <data name="ActivityType_Personal" xml:space="preserve">
-    <value>Личные дела</value>
+    <value>Запланировать для</value>
   </data>
   <data name="grdActivities_Type_ColumnHeader" xml:space="preserve">
     <value>Тип</value>
   </data>
-  <data name="grdActivities_Account_ColumnHeader" xml:space="preserve">
-    <value>Субъект</value>
+  <data name="grdUpdatedActivities_ChangedBy_ColumnHeader" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="grdUpdatedActivities_ChangedDate_ColumnHeader" xml:space="preserve">
+    <value>Дата изменения</value>
+  </data>
+  <data name="grdUpdatedActivities_ChangedField_ColumnHeader" xml:space="preserve">
+    <value>Поле</value>
+  </data>
+  <data name="grdUpdatedActivities_ChangedFrom_ColumnHeader" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="grdUpdatedActivities_ChangedTo_ColumnHeader" xml:space="preserve">
+    <value>Для</value>
+  </data>
+  <data name="ModifiedAccounts_Title" xml:space="preserve">
+    <value>Измененные действия</value>
+  </data>
+  <data name="NewActivities_Title" xml:space="preserve">
+    <value>Новые действия</value>
   </data>
 </root>

@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/_TitlePaneConfigProvider", [
     'dojo/_base/declare'
 ],
 function (declare) {

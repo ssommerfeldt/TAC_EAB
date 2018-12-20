@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/Phone", [
        'dijit/_Widget',
        'Sage/_Templated',
        'Sage/UI/Controls/TextBox',
@@ -18,8 +18,9 @@ function (_Widget, _Templated, textBox, declare) {
         },
         unformattedValue: '',
         formatPhoneChange: function (number) {
-            var formattedVal = this.formatNumberForDisplay(number);
-            this.unformattedValue = this.unformatNumber(number);
+            this.unformattedValue = this.unformatNumber(this.get('value'));
+            // Pass the unformatted string to be formatted (this matches server functionality)
+            var formattedVal = this.formatNumberForDisplay(number, this.unformattedValue);
             this.set('value', formattedVal);
         },
         /*
@@ -46,14 +47,20 @@ function (_Widget, _Templated, textBox, declare) {
         }],
         unformatNumber: function (number) {
             var n = number;
-            n = n.replace("(", "");
-            n = n.replace(")", "");
-            n = n.replace(" ", "");
-            n = n.replace("-", "");
+            // Temporarily ignore strings that are international until a better system is in place
+            if (n && n.length && (n[0] === '+' || n[0] === '0')) {
+                return n;
+            }
+            // Matching mobile's format stripper
+            n = n.replace(/[^0-9x]/ig, '');
             return n;
         },
         formatNumberForDisplay: function (number, clean) {
             var n = number;
+            // Do not format if the string begins with a '+'
+            if (/^\+/.test(n)) {
+                return n;
+            }
             if (typeof clean === 'undefined') clean = n;
             for (var i = 0; i < this.formatters.length; i++) {
                 var formatter = this.formatters[i],
@@ -74,4 +81,3 @@ function (_Widget, _Templated, textBox, declare) {
 
     return widget;
 });
-

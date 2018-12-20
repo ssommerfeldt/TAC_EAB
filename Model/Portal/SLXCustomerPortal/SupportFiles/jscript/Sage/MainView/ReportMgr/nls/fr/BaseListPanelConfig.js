@@ -1,3 +1,0 @@
-define((
-{ titleFmtString: '${0}' }
-));

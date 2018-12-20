@@ -83,21 +83,21 @@ public partial class ReplaceTeamMember : Sage.Platform.WebPortal.SmartParts.Smar
 
     private void RedirectTo(IOwner replaceMember)
     {
-        string Id = string.Empty;
+        string id = string.Empty;
         if (replaceMember.Type == OwnerType.User)
         {
-            Id = GetUserId(replaceMember);
-            Response.Redirect(string.Format("~/{0}.aspx?entityId={1}", "User", Id), false);
+            id = GetUserId(replaceMember);
+            Response.Redirect(string.Format("~/{0}.aspx?entityId={1}", "User", id), false);
         }
         else if (replaceMember.Type == OwnerType.Department)
         {
-            Id = GetDepartmentId(replaceMember);
-            Response.Redirect(string.Format("~/{0}.aspx?entityId={1}", "Department", Id), false);
+            id = GetDepartmentId(replaceMember);
+            Response.Redirect(string.Format("~/{0}.aspx?entityId={1}", "Department", id), false);
         }
         else if (replaceMember.Type == OwnerType.Team)
         {
-            Id = GetTeamId(replaceMember);
-            Response.Redirect(string.Format("~/{0}.aspx?entityId={1}", "Team", Id), false);
+            id = GetTeamId(replaceMember);
+            Response.Redirect(string.Format("~/{0}.aspx?entityId={1}", "Team", id), false);
         }
     }
 

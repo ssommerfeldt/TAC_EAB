@@ -1,4 +1,1 @@
-define((
-{ updateOpportunitiesTitle: 'Обновить сделки',
-  opportunityStatisticsTitle: 'Статистика по сделке' }
-));
+define("Sage/TaskPane/nls/ru/OpportunityTasksTasklet", {});

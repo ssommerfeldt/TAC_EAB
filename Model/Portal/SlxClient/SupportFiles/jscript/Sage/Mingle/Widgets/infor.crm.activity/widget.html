@@ -1,0 +1,151 @@
+﻿<style>
+    .infor-crm-application-widget-activities-div .infor-crm-activity-icon-error {
+        left: 0px !important;
+    }
+
+    .infor-crm-application-widget-activities-div .infor-crm-activity-main-list-view {
+        height: calc(100% - 40px) !important;
+        margin-top:1px !important;
+    }
+
+    .infor-crm-application-widget-activities-div .infor-crm-activity-main-list-view-with-toolbar {
+        height: calc(100% - 80px) !important;
+        margin-top:1px !important;
+    }
+
+    .infor-crm-application-widget-activities-div .infor-crm-activity-overflow-ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100% - 120px);
+    }
+    .infor-crm-application-widget-activities-div .infor-crm-activity-tolbar-height {
+        height: 40px;
+        padding-left:20px !important;
+    }
+    .infor-crm-application-widget-activities-div .infor-crm-activity-overflow-ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100% - 120px);
+    }
+</style>
+<div ng-controller="infor.crm.ActivityController as ctrl">
+    <div class="card-content infor-crm-application-widget-activities-div ">
+        <div class="listview-search">
+            <table class="searchfield infor-crm-activity-tolbar-height" style="padding:0;">
+                <tr>
+                    <td>
+                        <p>{{ctrl.selectedFilterText}} <span class="round info badge">{{ctrl.totalResults}}</span></p>
+                    </td>
+                    <td>
+                        <button type="button" class="btn-actions l-pull-right" xi-popupmenu>
+                            <svg class="icon" focusable="false">
+                                <use xlink:href="#icon-filter"></use>
+                            </svg>
+                        </button>
+                        <ul class="popupmenu top placeable">
+                            <li class="heading">{{ctrl.sortbyText}}</li>
+                            <li class="is-selectable"
+                                ng-class="{'is-checked': ctrl.selectedSort === 'startDate'}"
+                                ng-click="ctrl.onSelectSort('startDate')">
+                                <a href="#">{{ctrl.dueDateText}}</a>
+                            </li>
+                            <li class="is-selectable"
+                                ng-class="{'is-checked': ctrl.selectedSort === 'type'}"
+                                ng-click="ctrl.onSelectSort('type')">
+                                <a href="#">{{ctrl.typeText}}</a>
+                            </li>
+                            <li class="is-selectable"
+                                ng-class="{'is-checked': ctrl.selectedSort === 'description'}"
+                                ng-click="ctrl.onSelectSort('description')">
+                                <a href="#">{{ctrl.destcriptionText}}</a>
+                            </li>
+                            <li class="separator"></li>
+                            <li class="heading">{{ctrl.filterByText}}</li>
+                            <li class="is-selectable"
+                                ng-class="{'is-checked': ctrl.selectedFilter === 'getMyActivities'}"
+                                ng-click="ctrl.onSelectFilter('getMyActivities')">
+                                <a href="#">{{ctrl.myActivitiesText}}</a>
+                            </li>
+                            <li class="is-selectable"
+                                ng-class="{'is-checked': ctrl.selectedFilter === 'getAllOpenActivities'}"
+                                ng-click="ctrl.onSelectFilter('getAllOpenActivities')">
+                                <a href="#">{{ctrl.allOpenText}}</a>
+                            </li>
+                            <li class="is-selectable"
+                                ng-class="{'is-checked': ctrl.selectedFilter === 'getOverdueActivities'}"
+                                ng-click="ctrl.onSelectFilter('getOverdueActivities')">
+                                <a href="#">{{ctrl.pastDueText}}</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="height:40px;" ng-if="ctrl.showAcceptDecline" class="contextual-toolbar toolbar">
+            <div class="l-pull-right">
+                <button class="btn-tertiary" type="button" ng-click="ctrl.onAccept()">{{ctrl.lblAccept}}</button>
+                <button class="btn-tertiary" type="button" ng-click="ctrl.onDecline()">{{ctrl.lblDecline}}</button>
+            </div>
+        </div>
+        <div style="height:40px;" ng-if="ctrl.showCompleteDelete" class="contextual-toolbar toolbar">
+            <div class="l-pull-right">
+                <button class="btn-tertiary" type="button" ng-click="ctrl.onComplete()">{{ctrl.lblComplete}}</button>
+                <button class="btn-tertiary" type="button" ng-click="ctrl.onDelete()">{{ctrl.lblDelete}}</button>
+            </div>
+        </div>
+        <div style="height:40px;" ng-if="ctrl.showNowAsScheduled" class="contextual-toolbar toolbar">
+            <div class="l-pull-right">
+                <button class="btn-tertiary" type="button" ng-click="ctrl.onCompleteNow()">{{ctrl.lblNow}}</button>
+                <button class="btn-tertiary" type="button" ng-click="ctrl.onCompleteScheduled()">{{ctrl.lblAsScheduled}}</button>
+            </div>
+        </div>
+
+        <div class="listview is-selectable {{ctrl.myDynamicClass}}" xi-listview="{dataset: ctrl.activities}">
+            <ul>
+                <li ng-repeat="activity in ctrl.activities"
+                    ng-class="{error: activity.condition === 'overdue', alert: activity.status === 'asUnconfirmed'}"
+                    ng-click="ctrl.onSelectActivity(activity)">
+
+                    <svg ng-if="activity.type === 'atAppointment'" class="icon" focusable="false">
+                        <use xlink:href="#icon-calendar"></use>
+                    </svg>
+                    <svg ng-if="activity.type === 'atPhoneCall'" class="icon" focusable="false">
+                        <use xlink:href="#icon-phone"></use>
+                    </svg>
+                    <svg ng-if="activity.type === 'atToDo'" class="icon" focusable="false">
+                        <use xlink:href="#icon-bullet-list"></use>
+                    </svg>
+                    <svg ng-if="activity.type === 'atPersonal'" class="icon" focusable="false">
+                        <use xlink:href="#icon-contacts"></use>
+                    </svg>
+
+                    <p class="listview-heading infor-crm-activity-overflow-ellipsis">{{activity.description}}</p>
+                    <div ng-switch on="activity.type">
+                        <p ng-switch-when="atPhoneCall" class="listview-subheading infor-crm-activity-overflow-ellipsis">{{(activity.phoneNumber) || "-"}}</p>
+                        <p ng-switch-default class="listview-subheading infor-crm-activity-overflow-ellipsis">{{(activity.location) || "-"}}</p>
+                    </div>
+                    <div class="l-pull-right" ng-switch on="activity.condition">
+                        <!--current activities, display time-->
+                        <p ng-switch-when="current" class="listview-heading hour-sign">
+                            {{activity.startDate | date: 'shortTime'}}
+                        </p>
+                        <!--overude activities, display date with red color-->
+                        <p ng-switch-when="overdue" class="listview-heading hour-sign">
+                            <svg class="icon icon-error infor-crm-activity-icon-error" focusable="false">
+                                <use xlink:href="#icon-error"></use>
+                            </svg>
+                            {{activity.startDate | date: 'MMM dd'}}
+                        </p>
+                        <!--next/future activities, display date with default color-->
+                        <p ng-switch-when="next" class="listview-heading hour-sign">
+                            {{activity.startDate | date: 'MMM dd'}}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

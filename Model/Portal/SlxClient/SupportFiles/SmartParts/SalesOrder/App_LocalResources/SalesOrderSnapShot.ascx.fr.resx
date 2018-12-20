@@ -117,74 +117,149 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblEmailShippingAddressCountry.Caption" xml:space="preserve">
-    <value>Pays : {0}</value>
-  </data>
-  <data name="lblMyCurrencyInfo.Caption" xml:space="preserve">
-    <value>Votre devise est définie sur {0} à un taux de {1}, converti en {2} {3}.</value>
-  </data>
-  <data name="lblEmailBillShipAddress.Caption" xml:space="preserve">
-    <value>----------Adresse de facturation/livraison----------</value>
-  </data>
-  <data name="SalesOrderStatus_Transmitted" xml:space="preserve">
-    <value>Transmis à la comptabilité</value>
-  </data>
-  <data name="lblEmailBaseGrandTotal.Caption" xml:space="preserve">
-    <value>Total général : {0}</value>
-  </data>
-  <data name="lblNone.Caption" xml:space="preserve">
-    <value>Aucun</value>
-  </data>
-  <data name="lblEmailDatePromised.Caption" xml:space="preserve">
-    <value>Date promise :</value>
-  </data>
-  <data name="ERPStatus_Open" xml:space="preserve">
-    <value>Ouvrir</value>
+  <data name="chkLockRate.Caption" xml:space="preserve">
+    <value>Verrouiller le taux pour ce bon de commande</value>
   </data>
   <data name="cpyCopyToEmail.Caption" xml:space="preserve">
     <value>Copier dans un e-mail</value>
   </data>
-  <data name="lblEmailShippingAddressCity.Caption" xml:space="preserve">
-    <value>Ville : {0}</value>
+  <data name="lblEmailAccount.Caption" xml:space="preserve">
+    <value>Compte : </value>
   </data>
-  <data name="lblEmailStatus.Caption" xml:space="preserve">
-    <value>Etat :</value>
+  <data name="lblEmailBaseGrandTotal.Caption" xml:space="preserve">
+    <value>Total général : {0}</value>
+  </data>
+  <data name="lblEmailBillingAddress.Caption" xml:space="preserve">
+    <value>Adresse de facturation----------</value>
+  </data>
+  <data name="lblEmailBillingAddressCity.Caption" xml:space="preserve">
+    <value>Ville : {0}</value>
+  </data>
+  <data name="lblEmailBillingAddressCountry.Caption" xml:space="preserve">
+    <value>Pays : {0}</value>
   </data>
   <data name="lblEmailBillingAddressName.Caption" xml:space="preserve">
-    <value>Nom :</value>
+    <value>Nom : </value>
   </data>
-  <data name="lblBaseHeader.Caption" xml:space="preserve">
-    <value>Base</value>
+  <data name="lblEmailBillingAddressState.Caption" xml:space="preserve">
+    <value>Département : {0}</value>
   </data>
-  <data name="lblEmailShippingAddress.Caption" xml:space="preserve">
-    <value>Adresse d'expédition----------</value>
+  <data name="lblEmailBillingAddressZip.Caption" xml:space="preserve">
+    <value>Code postal : {0}</value>
   </data>
-  <data name="txtExchangeRate.Caption" xml:space="preserve">
-    <value>Taux de change :</value>
-  </data>
-  <data name="lblEmailShippingAddressZip.Caption" xml:space="preserve">
-    <value>Code postal : {0}</value>
-  </data>
-  <data name="SalesOrder_Status_Closed" xml:space="preserve">
-    <value>Terminée</value>
+  <data name="lblEmailBillShipAddress.Caption" xml:space="preserve">
+    <value>----------Adresse de facturation/livraison----------</value>
   </data>
   <data name="lblEmailComments.Caption" xml:space="preserve">
-    <value>Commentaires :</value>
+    <value>Commentaires : </value>
+  </data>
+  <data name="lblEmailCurrencyCode.Caption" xml:space="preserve">
+    <value>Devise : </value>
+  </data>
+  <data name="lblEmailDateCreated.Caption" xml:space="preserve">
+    <value>Date de création : </value>
+  </data>
+  <data name="lblEmailDatePromised.Caption" xml:space="preserve">
+    <value>Date promise : </value>
+  </data>
+  <data name="lblEmailDateRequested.Caption" xml:space="preserve">
+    <value>Date de la demande : </value>
   </data>
   <data name="lblEmailExchangeRate.Caption" xml:space="preserve">
-    <value>Taux de change :</value>
+    <value>Taux de change : </value>
   </data>
-  <data name="lueCurrencyCode.CurrencyCode.PropertyHeader" xml:space="preserve">
-    <value>Code de la devise</value>
+  <data name="lblEmailExchangeRateDate.Caption" xml:space="preserve">
+    <value>Date du taux de change :</value>
   </data>
   <data name="lblEmailInfo.Caption" xml:space="preserve">
     <value>----------Informations du bon de commande---------</value>
   </data>
-  <data name="lnkDiscount.Caption" xml:space="preserve">
-    <value>Remise</value>
+  <data name="lblEmailOpportunity.Caption" xml:space="preserve">
+    <value>Opportunité : </value>
+  </data>
+  <data name="lblEmailProducts.Caption" xml:space="preserve">
+    <value>---------Produits----------</value>
+  </data>
+  <data name="lblEmailSalesOrderGrandTotal.Caption" xml:space="preserve">
+    <value>Total général : {0}</value>
+  </data>
+  <data name="lblEmailSalesOrderId.Caption" xml:space="preserve">
+    <value>ID du bon de commande : </value>
+  </data>
+  <data name="lblEmailShippingAddress.Caption" xml:space="preserve">
+    <value>Adresse d'expédition----------</value>
+  </data>
+  <data name="lblEmailShippingAddressCity.Caption" xml:space="preserve">
+    <value>Ville : {0}</value>
+  </data>
+  <data name="lblEmailShippingAddressCountry.Caption" xml:space="preserve">
+    <value>Pays : {0}</value>
+  </data>
+  <data name="lblEmailShippingAddressState.Caption" xml:space="preserve">
+    <value>Département : {0}</value>
+  </data>
+  <data name="lblEmailShippingAddressZip.Caption" xml:space="preserve">
+    <value>Code postal : {0}</value>
+  </data>
+  <data name="lblEmailShippingAddressName.Caption" xml:space="preserve">
+    <value>Nom : </value>
+  </data>
+  <data name="lblEmailStatus.Caption" xml:space="preserve">
+    <value>Etat : </value>
+  </data>
+  <data name="lblEmailType.Caption" xml:space="preserve">
+    <value>Type : </value>
+  </data>
+  <data name="lblEmailValue.Caption" xml:space="preserve">
+    <value>---------Valeur----------</value>
+  </data>
+  <data name="lblShipping.Caption" xml:space="preserve">
+    <value>Expédition</value>
+  </data>
+  <data name="lblSubTotal.Caption" xml:space="preserve">
+    <value>Sous-total</value>
+  </data>
+  <data name="lblTitle.Caption" xml:space="preserve">
+    <value>Résumé du bon de commande</value>
+  </data>
+  <data name="lblTotal.Caption" xml:space="preserve">
+    <value>Total général</value>
+  </data>
+  <data name="lueCurrencyCode.Caption" xml:space="preserve">
+    <value>Devise :</value>
   </data>
   <data name="lueCurrencyCode.Description.PropertyHeader" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="lueCurrencyCode.Rate.PropertyHeader" xml:space="preserve">
+    <value>Taux</value>
+  </data>
+  <data name="lueCurrencyCode.ToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="txtExchangeRate.Caption" xml:space="preserve">
+    <value>Taux de change :</value>
+  </data>
+  <data name="lnkDiscount.Caption" xml:space="preserve">
+    <value>Remise</value>
+  </data>
+  <data name="lnkTax.Caption" xml:space="preserve">
+    <value>TVA</value>
+  </data>
+  <data name="lblNone.Caption" xml:space="preserve">
+    <value>Aucun(e)</value>
+  </data>
+  <data name="lblMyCurrencyInfo.Caption" xml:space="preserve">
+    <value>Votre devise est définie sur {0} à un taux de {1}, converti en {2} {3}.</value>
+  </data>
+  <data name="lblDetailsView.Caption" xml:space="preserve">
+    <value>Bon de commande - {0}</value>
+  </data>
+  <data name="lblEmailSubject.Caption" xml:space="preserve">
+    <value>Bon de commande {0} ({1})</value>
+  </data>
+  <data name="lblBaseHeader.Caption" xml:space="preserve">
+    <value>Base</value>
   </data>
   <data name="lblSalesOrderHeader.Caption" xml:space="preserve">
     <value>Bon de commande</value>
@@ -192,103 +267,40 @@
   <data name="lblMyCurrencyHeader.Caption" xml:space="preserve">
     <value>Ma devise</value>
   </data>
-  <data name="lblSubTotal.Caption" xml:space="preserve">
-    <value>Sous-total</value>
+  <data name="dtpExchangeRateDate.Caption" xml:space="preserve">
+    <value>Date du taux de change :</value>
   </data>
-  <data name="lblDetailsView.Caption" xml:space="preserve">
-    <value>Bon de commande - {0}</value>
+  <data name="SalesOrder_Status_Closed" xml:space="preserve">
+    <value>Clôturé</value>
   </data>
   <data name="SalesOrder_Status_OrderedConfirmed" xml:space="preserve">
-    <value>Commandé/Confirmé</value>
+    <value>Commandé/confirmé</value>
   </data>
-  <data name="lblEmailBillingAddressZip.Caption" xml:space="preserve">
-    <value>Code postal : {0}</value>
+  <data name="SalesOrderStatus_Closed" xml:space="preserve">
+    <value>Clôturé</value>
   </data>
-  <data name="lueCurrencyCode.Rate.PropertyHeader" xml:space="preserve">
-    <value>Taux</value>
+  <data name="SalesOrderStatus_Transmitted" xml:space="preserve">
+    <value>Transmis à la comptabilité</value>
   </data>
-  <data name="lblEmailProducts.Caption" xml:space="preserve">
-    <value>---------Produits----------</value>
-  </data>
-  <data name="lblShipping.Caption" xml:space="preserve">
-    <value>Expédition</value>
+  <data name="ERPStatus_Open" xml:space="preserve">
+    <value>Ouvert(e)</value>
   </data>
   <data name="ERPStatus_Rejected" xml:space="preserve">
     <value>Rejeté</value>
   </data>
-  <data name="lblEmailBillingAddressCountry.Caption" xml:space="preserve">
-    <value>Pays : {0}</value>
+  <data name="lueCurrencyCode.CurrencyCode.PropertyHeader" xml:space="preserve">
+    <value>Code de la devise</value>
   </data>
-  <data name="lblTitle.Caption" xml:space="preserve">
-    <value>Résumé du bon de commande</value>
+  <data name="lblPendingChanges.Caption" xml:space="preserve">
+    <value>Des changements sont en attente pour l'entité. Veuillez soumettre les changements à l'aide du lien Promouvoir dans la tasklet.</value>
   </data>
-  <data name="lblEmailSalesOrderGrandTotal.Caption" xml:space="preserve">
-    <value>Total général : {0}</value>
+  <data name="lblSyncStateNoPendingChanges" xml:space="preserve">
+    <value>Des changements sont en attente depuis la dernière promotion sur {0}.</value>
   </data>
-  <data name="lblEmailDateRequested.Caption" xml:space="preserve">
-    <value>Date demandée :</value>
+  <data name="lblSyncStatePendingChanges" xml:space="preserve">
+    <value>Des changements sont en attente depuis la dernière promotion sur {0}, les informations de prix sont peut-être incorrectes. Veuillez soumettre les changements à l'aide du lien Promouvoir dans le volet des tâches.</value>
   </data>
-  <data name="dtpExchangeRateDate.Caption" xml:space="preserve">
-    <value>Date du taux de change :</value>
-  </data>
-  <data name="lueCurrencyCode.Caption" xml:space="preserve">
-    <value>Devise :</value>
-  </data>
-  <data name="lblEmailValue.Caption" xml:space="preserve">
-    <value>---------Valeur----------</value>
-  </data>
-  <data name="lblEmailType.Caption" xml:space="preserve">
-    <value>Type :</value>
-  </data>
-  <data name="lblEmailDateCreated.Caption" xml:space="preserve">
-    <value>Date de création :</value>
-  </data>
-  <data name="lblEmailBillingAddressState.Caption" xml:space="preserve">
-    <value>Départem. : {0}</value>
-  </data>
-  <data name="lblEmailSubject.Caption" xml:space="preserve">
-    <value>Bon de commande {0} ({1})</value>
-  </data>
-  <data name="SalesOrderStatus_Closed" xml:space="preserve">
-    <value>Terminée</value>
-  </data>
-  <data name="lblEmailBillingAddressCity.Caption" xml:space="preserve">
-    <value>Ville : {0}</value>
-  </data>
-  <data name="lblEmailSalesOrderId.Caption" xml:space="preserve">
-    <value>ID du bon de commande :</value>
-  </data>
-  <data name="lnkTax.Caption" xml:space="preserve">
-    <value>TVA</value>
-  </data>
-  <data name="lueCurrencyCode.ToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="lblTotal.Caption" xml:space="preserve">
-    <value>Total général</value>
-  </data>
-  <data name="lblEmailShippingAddressState.Caption" xml:space="preserve">
-    <value>Départem. : {0}</value>
-  </data>
-  <data name="lblEmailExchangeRateDate.Caption" xml:space="preserve">
-    <value>Date du taux de change :</value>
-  </data>
-  <data name="chkLockRate.Caption" xml:space="preserve">
-    <value>Verrouiller le taux pour ce bon de commande</value>
-  </data>
-  <data name="lblEmailCurrencyCode.Caption" xml:space="preserve">
-    <value>Devise :</value>
-  </data>
-  <data name="lblEmailOpportunity.Caption" xml:space="preserve">
-    <value>Opportunité :</value>
-  </data>
-  <data name="lblEmailShippingAddressName.Caption" xml:space="preserve">
-    <value>Nom :</value>
-  </data>
-  <data name="lblEmailAccount.Caption" xml:space="preserve">
-    <value>Compte :</value>
-  </data>
-  <data name="lblEmailBillingAddress.Caption" xml:space="preserve">
-    <value>Adresse de facturation----------</value>
+  <data name="lblSyncStateError" xml:space="preserve">
+    <value>Une erreur s'est produite lors du dernier cycle de synchronisation. Reportez-vous à l'onglet Historique de la synchronisation pour plus informations.</value>
   </data>
 </root>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/DateTextBox", [
        'dijit/form/DateTextBox',
        'Sage/Utility',
        'dojo/_base/declare'

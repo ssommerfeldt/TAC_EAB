@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/en/ContactLookupConfig", (
 { contactText: 'Contact',
   accountText: 'Account',
   lookupContactText: 'Lookup Contact',

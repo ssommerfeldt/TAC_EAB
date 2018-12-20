@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/_Templated", [
         'dojo/dom-construct',
         'dojo/_base/declare',
         'dojo/query',

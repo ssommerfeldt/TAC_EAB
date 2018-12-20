@@ -24,11 +24,10 @@ using Sage.SalesLogix.Orm;
 using Sage.SalesLogix.Security;
 using Sage.SalesLogix.Services.SpeedSearch;
 using Sage.SalesLogix.Services.SpeedSearch.SearchSupport;
-using AttributeCollection = System.ComponentModel.AttributeCollection;
+using Enumerable = System.Linq.Enumerable;
 
 public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvider
 {
-
     // This controls which of two paging mechanisms is used to handle switching between
     // pages of search results (i.e., items 1-10, 11-20, etc.).
     //
@@ -41,65 +40,47 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
     // kept in the Session.  This is somewhat more complicated but eliminates
     // the need to keep Session data on the server, and therefore is recommended, especially
     // for high-traffic sites.
-    private int whichResultsPage = 0;
-    private int totalDocCount = 0;
-    private SpeedSearchResults Results;
-    private int ItemsPerPage = 10;
-    private List<IIndexDefinition> _Indexes = null;
-    private List<DBIndexDefinition> _DBIndexDefs = new List<DBIndexDefinition>();
-    private Dictionary<string, SlxFieldDefinition> _SearchFilters =
+    private int _whichResultsPage;
+    private int _totalDocCount;
+    private SpeedSearchResults _results;
+    private const int ItemsPerPage = 10;
+    private List<IIndexDefinition> _indexes;
+    private readonly List<DBIndexDefinition> _dbIndexDefs = new List<DBIndexDefinition>();
+    private readonly Dictionary<string, SlxFieldDefinition> _searchFilters =
         new Dictionary<string, SlxFieldDefinition>(StringComparer.InvariantCultureIgnoreCase);
-    private Dictionary<string, Type> _TablesEntities = null;
-    private string _CurrentIndexName = string.Empty;
-    private int _UserType = 1;
-    private bool _DisplayLink = false;
-    private SpeedSearchState _State = null;
-    private EntityBase _ResultEntity = null;
-    private string _ResultProperty = string.Empty;
-    private string _ChildPropertyName = string.Empty;
-    private string type = string.Empty;
-    private string terms = string.Empty;
+    private Dictionary<string, Type> _tablesEntities;
+    private string _currentIndexName = string.Empty;
+    private int _userType = 1;
+    private bool _displayLink;
+    private SpeedSearchState _state;
+    private EntityBase _resultEntity;
+    private string _resultProperty = string.Empty;
+    private string _childPropertyName = string.Empty;
+    private string _terms = string.Empty;
 
     #region Services
-    private ConfigurationManager _Context;
-    private SLXUserService m_SLXUserService;
-    public SLXUserService UserService
-    {
-        get
-        {
-            return m_SLXUserService;
-        }
-        set
-        {
-            m_SLXUserService = value;
-        }
-    }
 
-    private IWebDialogService _dialogService;
+    private ConfigurationManager _context;
+    public SLXUserService UserService { get; set; }
+
     [ServiceDependency]
-    public IWebDialogService DialogService
-    {
-        get { return _dialogService; }
-        set { _dialogService = value; }
-    }
+    public IWebDialogService DialogService { get; set; }
 
-    private IEntityContextService m_EntityContextService;
+    private IEntityContextService _mEntityContextService;
     private WorkItem _workItem;
     [Microsoft.Practices.Unity.InjectionMethod]
     public void InitEntityContext([ServiceDependency]WorkItem parentWorkItem)
     {
         _workItem = parentWorkItem;
-        m_EntityContextService = _workItem.Services.Get<IEntityContextService>();
+        _mEntityContextService = _workItem.Services.Get<IEntityContextService>();
     }
+
     #endregion
 
     #region Web Form Designer generated code
+
     override protected void OnInit(EventArgs e)
     {
-        //
-        // CODEGEN: This call is required by the ASP.NET Web Form Designer.
-        //
-        //InitializeComponent();
         base.OnInit(e);
     }
 
@@ -107,47 +88,41 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
 
     protected string Localize(string key, string defaultValue)
     {
-        object result = GetLocalResourceObject(key);
+        var result = GetLocalResourceObject(key);
         if (result != null)
             return result as string;
-
         result = GetGlobalResourceObject("SpeedSearch", key);
-        if (result != null)
-            return result as string;
-
-        return defaultValue;
+        return result != null ? result as string : defaultValue;
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        _Context = ApplicationContext.Current.Services.Get<ConfigurationManager>();
-        if (this.Visible)
+        _context = ApplicationContext.Current.Services.Get<ConfigurationManager>();
+        if (Visible)
         {
             if ((DialogService.SmartPartMappedID == "SpeedSearch") && (DialogService.DialogParameters.Count > 0))
             {
-                _ChildPropertyName = DialogService.DialogParameters["ChildName"].ToString();
-                _ResultProperty = DialogService.DialogParameters["EntityProperty"].ToString();
+                _childPropertyName = DialogService.DialogParameters["ChildName"].ToString();
+                _resultProperty = DialogService.DialogParameters["EntityProperty"].ToString();
             }
-            _Context = ApplicationContext.Current.Services.Get<ConfigurationManager>();
-            m_SLXUserService = ApplicationContext.Current.Services.Get<IUserService>() as SLXUserService;
-            if (m_SLXUserService is IWebPortalUserService)
+            _context = ApplicationContext.Current.Services.Get<ConfigurationManager>();
+            UserService = ApplicationContext.Current.Services.Get<IUserService>() as SLXUserService;
+            if (UserService is IWebPortalUserService)
             {
-                _UserType = 0;
+                _userType = 0;
             }
-            SearchResultsGrid.PageIndexChanged +=
-                new DataGridPageChangedEventHandler(SearchResultsGrid_PageIndexChanged);
+            SearchResultsGrid.PageIndexChanged += SearchResultsGrid_PageIndexChanged;
             LoadIndexes();
             CreateIndexControls();
             GenerateScript();
             // instance of the context
-            IContextService context = Sage.Platform.Application.ApplicationContext.Current.Services.Get<IContextService>(true);
+            var context = Sage.Platform.Application.ApplicationContext.Current.Services.Get<IContextService>(true);
             // check for query string values first
             if (Request.QueryString["terms"] != null)
             {
                 // push it into the front of the process
-                terms = Request.QueryString["terms"];
-                context.SetContext("SearchRequestText", terms);
+                _terms = Request.QueryString["terms"];
+                context.SetContext("SearchRequestText", _terms);
             }
             if (context.HasContext("SearchRequestText"))
             {
@@ -160,12 +135,12 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
 
             if (Session[ClientID] != null)
             {
-                initResults(Session[ClientID].ToString());
-                DataSet resultSet = (DataSet)Session[ClientID + "DataSet"];
+                InitResults(Session[ClientID].ToString());
+                var resultSet = (DataSet)Session[ClientID + "DataSet"];
                 ShowPage(resultSet);
                 if ((DialogService.SmartPartMappedID == "SpeedSearch") && (DialogService.DialogParameters.Count > 0) && (Page.Request.Browser.Browser != "IE"))
                 {
-                    Control parent = this.Parent;
+                    var parent = Parent;
                     while (!(parent == null || parent is UpdatePanel))
                     {
                         parent = parent.Parent;
@@ -179,17 +154,9 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         }
     }
 
-    private string EscapeJavaScript(string text)
-    {
-        if (String.IsNullOrEmpty(text))
-            return text;
-
-        return text.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("'", "\\'");
-    }
-
     private void GenerateScript()
     {
-        StringBuilder script = new StringBuilder();
+        var script = new StringBuilder();
         script.AppendLine("function ToggleAdvanced(hyperLinkId) {");
         script.AppendLine("    var adv = document.getElementById('Advanced');");
         script.AppendFormat("    var btn = document.getElementById('{0}');", btnAdvanced.ClientID);
@@ -216,14 +183,14 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         script.AppendLine("    var deferred = dojo.xhrGet(xhrArgs);");
         script.AppendLine("}");
         script.AppendLine("function MarkUsed(docId, index, identifier, dbid, id) {");
-        script.AppendFormat("    var info = document.getElementById('{0}');", MarkUsedInfo.ClientID); //<%= MarkUsedInfo.ClientID %>
-        script.AppendFormat("    var currentIdx = document.getElementById('{0}');", currentIndex.ClientID); //<%= currentIndex.ClientID %>
+        script.AppendFormat("    var info = document.getElementById('{0}');", MarkUsedInfo.ClientID);
+        script.AppendFormat("    var currentIdx = document.getElementById('{0}');", currentIndex.ClientID);
         script.AppendLine("    currentIdx.value = id;");
         script.AppendLine("    info.value = docId + \"|\" + index + \"|\" + identifier + \"|\" + dbid;");
         script.AppendLine("    if (Sys)");
         script.AppendLine("    {");
         script.AppendFormat("        Sys.WebForms.PageRequestManager.getInstance()._doPostBack('{0}', null);",
-                            HiddenField0.ClientID); //<%= HiddenField0.ClientID %>
+                            HiddenField0.ClientID);
         script.AppendLine("    }");
         script.AppendLine("    else");
         script.AppendLine("    {");
@@ -234,7 +201,7 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         script.AppendFormat("        var postBackBtn = document.getElementById(\"{0}\");", btnReturnResult.ClientID);
         script.AppendFormat("        var returnResultAction = document.getElementById(\"{0}\");", ReturnResultAction.ClientID);
         script.AppendFormat("        var currentIdx = document.getElementById(\"{0}\");", currentIndex.ClientID);
-        script.AppendFormat("        var info = document.getElementById('{0}');", MarkUsedInfo.ClientID); //<%= MarkUsedInfo.ClientID %>
+        script.AppendFormat("        var info = document.getElementById('{0}');", MarkUsedInfo.ClientID);
         script.AppendLine("        info.value = \"\";");
         script.AppendLine("        currentIdx.value = id;");
         script.AppendLine("        returnResultAction.value = '1';");
@@ -251,7 +218,7 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         script.AppendFormat("        var btn = document.getElementById(\"{0}\");", SearchButton.ClientID);
         script.AppendLine("        if (document.createEvent)");
         script.AppendLine("        {");
-        script.AppendFormat("            __doPostBack('{0}', 'OnClick'); ", SearchButton.UniqueID);  //btn.dispatchEvent(evt);
+        script.AppendFormat("            __doPostBack('{0}', 'OnClick'); ", SearchButton.UniqueID);
         script.AppendLine("        }");
         script.AppendLine("        else");
         script.AppendLine("        {");
@@ -259,13 +226,12 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         script.AppendLine("        }");
         script.AppendLine("    }");
         script.AppendLine("}");
-
         ScriptManager.RegisterStartupScript(Page, GetType(), ClientID, script.ToString(), true);
     }
 
     protected override void OnPreRender(EventArgs e)
     {
-        if (this.Visible)
+        if (Visible)
         {
             InitializeState();
             if (!string.IsNullOrEmpty(MarkUsedInfo.Value))
@@ -277,10 +243,10 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
             {
                 ReturnResult();
                 ReturnResultAction.Value = string.Empty;
-                WebPortalPage page = Page as WebPortalPage;
+                var page = Page as WebPortalPage;
                 if (page != null)
                 {
-                    IPanelRefreshService refresher = page.PageWorkItem.Services.Get<IPanelRefreshService>();
+                    var refresher = page.PageWorkItem.Services.Get<IPanelRefreshService>();
                     if (refresher != null)
                     {
                         refresher.RefreshAll();
@@ -289,30 +255,26 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
             }
             if (!string.IsNullOrEmpty(currentIndex.Value))
             {
-                Literal document = new Literal();
+                var document = new Literal();
                 if (currentIndex.Value.Equals("NoAccess"))
                 {
                     document.Text = GetLocalResourceObject("SpeedSearch_Result_NoAccess").ToString();
                 }
                 else
                 {
-                    int index = (string.IsNullOrEmpty(CurrentPageIndex.Value)) ? 0 : int.Parse(CurrentPageIndex.Value);
-                    whichResultsPage = index;
-                    //SpeedSearchWebService.SpeedSearchService ss = new SpeedSearchWebService.SpeedSearchService();
-                    //ss.Url = ConfigurationManager.AppSettings.Get("SpeedSearchWebService.SpeedSearchService");
-                    SpeedSearchService ss = new SpeedSearchService();
-                    SpeedSearchQuery ssq = BuildQuery();
+                    var index = (string.IsNullOrEmpty(CurrentPageIndex.Value)) ? 0 : int.Parse(CurrentPageIndex.Value);
+                    _whichResultsPage = index;
+                    var ss = new SpeedSearchService();
+                    var ssq = BuildQuery();
                     ssq.DocTextItem = int.Parse(currentIndex.Value);
-                    string xml = ss.DoSpeedSearch(ssq.GetAsXml());
-                    Results = SpeedSearchResults.LoadFromXml(xml);
-                    document.Text = Results.Items[0].HighlightedDoc;
+                    _results = ss.DoSpeedSearch(ssq);
+                    document.Text = _results.Items[0].HighlightedDoc;
                 }
                 currentIndex.Value = "";
                 FirstPage.Visible = true;
                 PreviousPage.Visible = true;
                 NextPage.Visible = true;
                 LastPage.Visible = true;
-                //SearchDocumentPanel.ContentTemplateContainer.Controls.Add(document);
             }
         }
         base.OnPreRender(e);
@@ -320,91 +282,79 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
 
     private void CreateIndexControls()
     {
-        if (_Indexes != null)
+        if (_indexes != null)
         {
-            Literal outerDiv = new Literal();
-            outerDiv.Text = "<div style='border:solid 1px #cccccc;overflow-y:scroll;height:160px;'>";
+            var outerDiv = new Literal {Text = "<div style='border:solid 1px #cccccc;overflow-y:scroll;height:160px;'>"};
             PlaceHolder1.Controls.Add(outerDiv);
 
-            int itemCount = 0;
-            foreach (IIndexDefinition id in _Indexes)
+            var itemCount = 0;
+            foreach (var id in _indexes)
             {
                 if (id.Type == 1)
                 {
-                    DBIndexDefinition dbid = DBIndexDefinition.SetFromString(id.MetaData);
-                    _DBIndexDefs.Add(dbid);
-                    foreach (SlxFieldDefinition fd in dbid.FilterFields)
+                    var dbid = DBIndexDefinition.SetFromString(id.MetaData);
+                    _dbIndexDefs.Add(dbid);
+                    foreach (var fd in dbid.FilterFields)
                     {
                         fd.IndexType = 1;
                         SlxFieldDefinition temp;
-                        if (_SearchFilters.ContainsKey(fd.DisplayName))
+                        if (_searchFilters.ContainsKey(fd.DisplayName))
                         {
-                            _SearchFilters.TryGetValue(fd.DisplayName, out temp);
+                            _searchFilters.TryGetValue(fd.DisplayName, out temp);
                             temp.CommonIndexes += "," + id.IndexName;
-                            _SearchFilters.Remove(fd.DisplayName);
+                            _searchFilters.Remove(fd.DisplayName);
                         }
                         else
                         {
                             temp = SlxFieldDefinition.SetFromString(fd.GetAsString());
                             temp.CommonIndexes = id.IndexName;
                         }
-                        _SearchFilters.Add(temp.DisplayName, temp);
+                        _searchFilters.Add(temp.DisplayName, temp);
                     }
                 }
                 else
                 {
-                    if (!_SearchFilters.ContainsKey("File Name"))
+                    if (!_searchFilters.ContainsKey("File Name"))
                     {
-                        SlxFieldDefinition fd = new SlxFieldDefinition();
-                        fd.DisplayName = "filename";
-                        fd.FieldType = 1;
-                        fd.IndexType = 0;
-                        _SearchFilters.Add("File Name", fd);
+                        var fd = new SlxFieldDefinition {DisplayName = "filename", FieldType = 1, IndexType = 0};
+                        _searchFilters.Add("File Name", fd);
                     }
-                    if (!_SearchFilters.ContainsKey("File Last Modified"))
+                    if (!_searchFilters.ContainsKey("File Last Modified"))
                     {
-                        SlxFieldDefinition fd = new SlxFieldDefinition();
-                        fd.DisplayName = "date";
-                        fd.FieldType = 11;
-                        fd.IndexType = 0;
-                        _SearchFilters.Add("File Last Modified", fd);
+                        var fd = new SlxFieldDefinition {DisplayName = "date", FieldType = 11, IndexType = 0};
+                        _searchFilters.Add("File Last Modified", fd);
                     }
-                    if (!_SearchFilters.ContainsKey("File Date Created"))
+                    if (!_searchFilters.ContainsKey("File Date Created"))
                     {
-                        SlxFieldDefinition fd = new SlxFieldDefinition();
-                        fd.DisplayName = "created";
-                        fd.FieldType = 11;
-                        fd.IndexType = 0;
-                        _SearchFilters.Add("File Date Created", fd);
+                        var fd = new SlxFieldDefinition {DisplayName = "created", FieldType = 11, IndexType = 0};
+                        _searchFilters.Add("File Date Created", fd);
                     }
                 }
-                Literal rowDiv = new Literal();
-                rowDiv.Text = "<div>";
+                var rowDiv = new Literal {Text = "<div>"};
                 PlaceHolder1.Controls.Add(rowDiv);
 
-                CheckBox cb = new CheckBox();
-                cb.ID = "Index" + itemCount.ToString();
-                cb.Text = Localize(IndexDefinitionToResourceKey(id), id.IndexName);
-                cb.LabelAttributes.Add("id", "lblIndex" + itemCount.ToString());
+                var cb = new CheckBox
+                {
+                    ID = "Index" + itemCount,
+                    Text = Localize(IndexDefinitionToResourceKey(id), id.IndexName)
+                };
+                cb.LabelAttributes.Add("id", "lblIndex" + itemCount);
                 cb.Checked = true;
-                //cb.CssClass = "dijitCheckBoxInput";
                 cb.Style.Add(HtmlTextWriterStyle.MarginLeft, "5px");
-                //cb.ForeColor = Color.Navy;
+                cb.CssClass = "inforAspCheckBox";
                 PlaceHolder1.Controls.Add(cb);
 
-                Literal endRowDiv = new Literal();
-                endRowDiv.Text = "</div>";
+                var endRowDiv = new Literal {Text = "</div>"};
                 PlaceHolder1.Controls.Add(endRowDiv);
                 itemCount++;
             }
-            Literal endouterDiv = new Literal();
-            endouterDiv.Text = "</div>";
+            var endouterDiv = new Literal {Text = "</div>"};
             PlaceHolder1.Controls.Add(endouterDiv);
         }
         CreateFilterControls();
     }
 
-    private string StripSpecialChars(string text)
+    private static string StripSpecialChars(string text)
     {
         text = text.Replace(" ", "_");
         text = text.Replace(".", "_");
@@ -412,20 +362,17 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         text = text.Replace("=", "_");
         text = text.Replace("!", "_");
         text = text.Replace("?", "_");
-        text = text.Replace("#", "_");
-
-        return text;
+        return text.Replace("#", "_");
     }
 
-    private string IndexDefinitionToResourceKey(IIndexDefinition definition)
+    private static string IndexDefinitionToResourceKey(IIndexDefinition definition)
     {
         return String.Format("INDEX_{0}", StripSpecialChars(definition.IndexName)).ToUpper();
     }
 
-    private string FieldDefinitionToResourceKey(SlxFieldDefinition definition)
+    private static string FieldDefinitionToResourceKey(SlxFieldDefinition definition)
     {
-        string name = definition.DisplayName;
-        //string name = definition.TextPath;
+        var name = definition.DisplayName;
 
         //fix custom created ones from above (so the keys are more descriptive).
         switch (name)
@@ -446,131 +393,107 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
 
     private void CreateFilterControls()
     {
-        Literal outerDiv = new Literal();
-        outerDiv.Text = "<div style='border:solid 1px #B3B3B3;overflow-y:scroll;height:160px;'><table style='width:100%'>";
+        var outerDiv = new Literal
+        {
+            Text = "<div style='border:solid 1px #B3B3B3;overflow-y:scroll;height:160px;'><table style='width:100%'>"
+        };
         PlaceHolder2.Controls.Add(outerDiv);
 
         // Add Frequently Used filter to the top.
-        // ********************************************
-        Literal freqrow = new Literal();
-        freqrow.Text = "<tr><td colspan='2' style='word-wrap:normal;'>";
+        var freqrow = new Literal {Text = "<tr><td colspan='2' style='word-wrap:normal;'>"};
         PlaceHolder2.Controls.Add(freqrow);
 
-        Label freqlbl = new Label();
-        freqlbl.Text = GetLocalResourceObject("SpeedSearch_Label_FrequentlyUsed").ToString();
-        //freqlbl.CssClass = "slxlabel";
-        //freqlbl.ForeColor = Color.Navy;
+        var freqlbl = new Label {Text = GetLocalResourceObject("SpeedSearch_Label_FrequentlyUsed").ToString()};
         freqlbl.Style.Add(HtmlTextWriterStyle.MarginLeft, "5px");
         PlaceHolder2.Controls.Add(freqlbl);
 
-        Literal freqCol2 = new Literal();
-        freqCol2.Text = "</td><td style='width:55%'>";
+        var freqCol2 = new Literal {Text = "</td><td style='width:55%'>"};
         PlaceHolder2.Controls.Add(freqCol2);
 
-        CheckBox cb = new CheckBox();
-        cb.ID = "FreqUsed";
-        cb.Checked = false;
-        //cb.CssClass = "dijitCheckBoxInput";
+        var cb = new CheckBox {ID = "FreqUsed", Checked = false, CssClass = "inforAspCheckBox", Text = " "};
         PlaceHolder2.Controls.Add(cb);
 
-        Literal freqEndCol = new Literal();
-        freqEndCol.Text = "</td></tr>";
+        var freqEndCol = new Literal {Text = "</td></tr>"};
         PlaceHolder2.Controls.Add(freqEndCol);
-        //*********************************************
-        int idx = 0;
-        foreach (string key in _SearchFilters.Keys)
+        var idx = 0;
+        foreach (string key in _searchFilters.Keys)
         {
-            Literal row = new Literal();
-            row.Text = "<tr><td style='width:30%;word-wrap:normal;'>";
+            var row = new Literal {Text = "<tr><td style='width:30%;word-wrap:normal;'>"};
             PlaceHolder2.Controls.Add(row);
 
             SlxFieldDefinition fd;
-            _SearchFilters.TryGetValue(key, out fd);
-            Label lbl = new Label();
-            lbl.ID = "lblFilterField" + idx.ToString();
-            lbl.Text = Localize(FieldDefinitionToResourceKey(_SearchFilters[key]), key.Replace('_', ' '));
-            //lbl.CssClass = "slxlabel";
-            //lbl.ForeColor = Color.Navy;
+            _searchFilters.TryGetValue(key, out fd);
+            var lbl = new Label
+            {
+                ID = "lblFilterField" + idx,
+                Text = Localize(FieldDefinitionToResourceKey(_searchFilters[key]), key.Replace('_', ' '))
+            };
             lbl.Style.Add(HtmlTextWriterStyle.MarginLeft, "5px");
             PlaceHolder2.Controls.Add(lbl);
 
-            Literal nextCol = new Literal();
-            nextCol.Text = "</td><td style='width:10%'>";
+            var nextCol = new Literal {Text = "</td><td style='width:10%'>"};
             PlaceHolder2.Controls.Add(nextCol);
 
-            Label lbl2 = new Label();
-            lbl2.ID = "lblFilterType" + idx.ToString();
-            //lbl2.Width = new Unit("50px");
-            if (fd.FieldType == 11) // Date-11, string-1, SlxId-23
+            var lbl2 = new Label
             {
-                lbl2.Text = Localize("SpeedSearch_Filter_Within", "Within");
-            }
-            else
-            {
-                lbl2.Text = Localize("SpeedSearch_Filter_Like", "Like");
-            }
-            //lbl2.CssClass = "slxlabel";
-            //lbl2.ForeColor = Color.Navy;
+                ID = "lblFilterType" + idx,
+                Text =
+                    fd.FieldType == 11
+                        ? Localize("SpeedSearch_Filter_Within", "Within")
+                        : Localize("SpeedSearch_Filter_Like", "Like")
+            };
             PlaceHolder2.Controls.Add(lbl2);
 
-            Literal nextCol2 = new Literal();
-            nextCol2.Text = "</td><td style='width:45%'>";
+            var nextCol2 = new Literal {Text = "</td><td style='width:45%'>"};
             PlaceHolder2.Controls.Add(nextCol2);
 
-            TextBox txt = new TextBox();
-            txt.Width = new Unit("90%");
-            txt.ID = fd.DisplayName;
-            //txt.CssClass = "slxtext";
+            var txt = new TextBox {Width = new Unit("90%"), ID = fd.DisplayName};
             PlaceHolder2.Controls.Add(txt);
 
-            Literal endCol = new Literal();
-            endCol.Text = "</td></tr>";
+            var endCol = new Literal {Text = "</td></tr>"};
             PlaceHolder2.Controls.Add(endCol);
             idx++;
         }
 
-        Literal endouterDiv = new Literal();
+        var endouterDiv = new Literal();
         endouterDiv.Text = "</table></div>";
         PlaceHolder2.Controls.Add(endouterDiv);
-
     }
 
     protected void SearchButton_Click(object sender, EventArgs e)
     {
         CurrentPageIndex.Value = "0";
-        whichResultsPage = 0;
+        _whichResultsPage = 0;
         DoSearch();
         ShowPage();
     }
+
     protected void SortByDateButton_Click(object sender, EventArgs e)
     {
-        whichResultsPage = 0;
-
+        _whichResultsPage = 0;
         DoSearch();
         ShowPage();
     }
 
-    //protected void btnReturnResult_Click(object sender, EventArgs e)
     private void ReturnResult()
     {
         InitializeState();
-        int index = (string.IsNullOrEmpty(CurrentPageIndex.Value)) ? 0 : int.Parse(CurrentPageIndex.Value);
+        var index = (string.IsNullOrEmpty(CurrentPageIndex.Value)) ? 0 : int.Parse(CurrentPageIndex.Value);
         if (string.IsNullOrEmpty(currentIndex.Value)) return;
-        whichResultsPage = index;
-        SpeedSearchService ss = new SpeedSearchService();
-        SpeedSearchQuery ssq = BuildQuery();
+        _whichResultsPage = index;
+        var ss = new SpeedSearchService();
+        var ssq = BuildQuery();
         ssq.DocTextItem = int.Parse(currentIndex.Value) + 1000000;
-        string xml = ss.DoSpeedSearch(ssq.GetAsXml());
-        Results = SpeedSearchResults.LoadFromXml(xml);
+        _results = ss.DoSpeedSearch(ssq);
 
-        _ResultEntity = (EntityBase)m_EntityContextService.GetEntity();
-        if (!string.IsNullOrEmpty(_ChildPropertyName))
+        _resultEntity = (EntityBase)_mEntityContextService.GetEntity();
+        if (!string.IsNullOrEmpty(_childPropertyName))
         {
-            PropertyDescriptor child = TypeDescriptor.GetProperties(_ResultEntity.GetType())[_ChildPropertyName];
-            _ResultEntity = (EntityBase)child.GetValue(_ResultEntity);
+            var child = TypeDescriptor.GetProperties(_resultEntity.GetType())[_childPropertyName];
+            _resultEntity = (EntityBase)child.GetValue(_resultEntity);
         }
-        PropertyDescriptor resultProp = TypeDescriptor.GetProperties(_ResultEntity.GetType())[_ResultProperty];
-        resultProp.SetValue(_ResultEntity, Results.Items[0].HighlightedDoc);
+        var resultProp = TypeDescriptor.GetProperties(_resultEntity.GetType())[_resultProperty];
+        resultProp.SetValue(_resultEntity, _results.Items[0].HighlightedDoc);
 
         DialogService.CloseEventHappened(null, null);
     }
@@ -578,59 +501,60 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
     public void DoSearch()
     {
         currentIndex.Value = "";
-        _State = new SpeedSearchState();
-        _State.SearchText = SearchRequest.Text;
-        _State.SearchTypeIdx = SearchType.SelectedIndex;
-        _State.Root = SearchFlags.Items[0].Selected;
-        _State.Thesaurus = SearchFlags.Items[1].Selected;
-        _State.SoundsLike = SearchFlags.Items[2].Selected;
-        _State.MaxResults = int.Parse(MaxResults.SelectedValue);
-        SpeedSearchService ss = new SpeedSearchService();
-        SpeedSearchQuery ssq = BuildQuery();
+        _state = new SpeedSearchState
+        {
+            SearchText = SearchRequest.Text,
+            SearchTypeIdx = SearchType.SelectedIndex,
+            Root = SearchFlags.Items[0].Selected,
+            Thesaurus = SearchFlags.Items[1].Selected,
+            SoundsLike = SearchFlags.Items[2].Selected,
+            MaxResults = int.Parse(MaxResults.SelectedValue)
+        };
+        var ss = new SpeedSearchService();
+        var ssq = BuildQuery();
 
         Session[ClientID + "_SearchQry"] = ssq.GetAsXml();
-        string xml = ss.DoSpeedSearch(ssq.GetAsXml());
+        string xml = ss.DoSpeedSearch(ssq).GetAsXml();
         Session[ClientID] = xml;
 
-        initResults(xml);
-        if (!_Context.IsConfigurationTypeRegistered(typeof(SpeedSearchState)))
+        InitResults(xml);
+        if (!_context.IsConfigurationTypeRegistered(typeof(SpeedSearchState)))
         {
-            _Context.RegisterConfigurationType(typeof(SpeedSearchState));
+            _context.RegisterConfigurationType(typeof(SpeedSearchState));
         }
-        _Context.WriteConfiguration(_State);
+        _context.WriteConfiguration(_state);
     }
 
-    private void initResults(string resultsXml)
+    private void InitResults(string resultsXml)
     {
-        Results = SpeedSearchResults.LoadFromXml(resultsXml);
-        totalDocCount = Results.TotalCount;
-        int max = int.Parse(MaxResults.SelectedValue);
-        if ((max > 0) && (totalDocCount > max))
+        _results = SpeedSearchResults.LoadFromXml(resultsXml);
+        _totalDocCount = _results.TotalCount;
+        var max = int.Parse(MaxResults.SelectedValue);
+        if ((max > 0) && (_totalDocCount > max))
         {
-            totalDocCount = max;
+            _totalDocCount = max;
         }
-        if (totalDocCount > 0)
+        if (_totalDocCount > 0)
         {
             FirstPage.Visible = true;
             PreviousPage.Visible = true;
             NextPage.Visible = true;
             LastPage.Visible = true;
         }
-        int startPage = (totalDocCount > 0) ? ((whichResultsPage * 10) + 1) : 0;
-        int end = (whichResultsPage + 1) * 10;
-        if (end > totalDocCount)
+        var startPage = (_totalDocCount > 0) ? ((_whichResultsPage * 10) + 1) : 0;
+        var end = (_whichResultsPage + 1) * 10;
+        if (end > _totalDocCount)
         {
-            end = totalDocCount;
+            end = _totalDocCount;
         }
         PagingLabel.Text = string.Format(GetLocalResourceObject("SpeedSearch_Label_PagingLabel").ToString(),
-            startPage, end, totalDocCount);
-        TotalCount.Value = totalDocCount.ToString();
+            startPage, end, _totalDocCount);
+        TotalCount.Value = _totalDocCount.ToString();
     }
 
     private SpeedSearchQuery BuildQuery()
     {
-        SpeedSearchQuery ssq = new SpeedSearchQuery();
-        ssq.SearchText = SearchRequest.Text;
+        var ssq = new SpeedSearchQuery {SearchText = SearchRequest.Text};
         if (string.IsNullOrEmpty(ssq.SearchText))
         {
             throw new UserObservableException(GetLocalResourceObject("SpeedSearch_Error_Keyword_Required").ToString());
@@ -639,30 +563,30 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         ssq.IncludeStemming = SearchFlags.Items[0].Selected;
         ssq.IncludeThesaurus = SearchFlags.Items[1].Selected;
         ssq.IncludePhonic = SearchFlags.Items[2].Selected;
-        ssq.WhichPage = whichResultsPage;
+        ssq.WhichPage = _whichResultsPage;
         ssq.ItemsPerPage = 10;
-        _State.SelectedIndexes.Clear();
-        for (int i = 0; i < _Indexes.Count; i++)
+        _state.SelectedIndexes.Clear();
+        for (var i = 0; i < _indexes.Count; i++)
         {
-            CheckBox thisIndex = (CheckBox)PlaceHolder1.FindControl("Index" + i.ToString());
+            var thisIndex = (CheckBox)PlaceHolder1.FindControl("Index" + i);
             if ((thisIndex != null) && (thisIndex.Checked))
             {
-                ssq.Indexes.Add(new SpeedSearchIndex(_Indexes[i].IndexName, _Indexes[i].Type.Value, _Indexes[i].IsSecure ?? false));
-                _State.SelectedIndexes.Add(i);
+                ssq.Indexes.Add(new SpeedSearchIndex(_indexes[i].IndexName, _indexes[i].Type.Value, _indexes[i].IsSecure ?? false));
+                _state.SelectedIndexes.Add(i);
             }
         }
         if (ssq.Indexes.Count == 0)
         {
             throw new UserObservableException(GetLocalResourceObject("SpeedSearch_Error_Index_Required").ToString());
         }
-        CheckBox freqfilter = (CheckBox)PlaceHolder2.FindControl("FreqUsed");
+        var freqfilter = (CheckBox)PlaceHolder2.FindControl("FreqUsed");
         if ((freqfilter != null) && (freqfilter.Checked))
         {
             ssq.UseFrequentFilter = true;
         }
-        foreach (SlxFieldDefinition fd in _SearchFilters.Values)
+        foreach (var fd in _searchFilters.Values)
         {
-            TextBox filter = (TextBox)PlaceHolder2.FindControl(fd.DisplayName);
+            var filter = (TextBox)PlaceHolder2.FindControl(fd.DisplayName);
             if ((filter != null) && (!string.IsNullOrEmpty(filter.Text)))
             {
                 ssq.Filters.Add(new SpeedSearchFilter(fd.DisplayName, filter.Text, fd.CommonIndexes, fd.FieldType, fd.IndexType));
@@ -680,13 +604,13 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
     {
         // Do not display the grid if there are no results
         PagingLabel.Visible = true;
-        if ((Results != null) && (Results.Items.Count == 0))
+        if ((_results != null) && (_results.Items.Count == 0))
         {
             SearchResultsGrid.Visible = false;
             StatusLabel.Visible = true;
-            if (!String.IsNullOrEmpty(Results.ErrorMessage))
+            if (!String.IsNullOrEmpty(_results.ErrorMessage))
             {
-                StatusLabel.Text = Results.ErrorMessage;
+                StatusLabel.Text = _results.ErrorMessage;
                 PagingLabel.Visible = false;
             }
             else
@@ -700,7 +624,6 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
             SearchResultsGrid.Visible = true;
         }
 
-
         // Populate the DataGrid
         SearchResultsGrid.DataSource = resultSet;
         if (resultSet == null)
@@ -709,52 +632,45 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
             Session[ClientID + "DataSet"] = SearchResultsGrid.DataSource;
         }
         SearchResultsGrid.PageSize = ItemsPerPage;
-        SearchResultsGrid.CurrentPageIndex = whichResultsPage;
-        SearchResultsGrid.VirtualItemCount = totalDocCount;
+        SearchResultsGrid.CurrentPageIndex = _whichResultsPage;
+        SearchResultsGrid.VirtualItemCount = _totalDocCount;
         SearchResultsGrid.DataBind();
-
-        Results = null;
+        _results = null;
     }
 
     private void InitializeState()
     {
-        if (_State == null)
+        if (_state == null)
         {
-            if (!_Context.IsConfigurationTypeRegistered(typeof(SpeedSearchState)))
+            if (!_context.IsConfigurationTypeRegistered(typeof(SpeedSearchState)))
             {
-                _Context.RegisterConfigurationType(typeof(SpeedSearchState));
+                _context.RegisterConfigurationType(typeof(SpeedSearchState));
             }
-            _State = _Context.GetConfiguration<SpeedSearchState>();
+            _state = _context.GetConfiguration<SpeedSearchState>();
         }
-        if ((_State != null) && (_State.SelectedIndexes.Count > 0))
+        if ((_state != null) && (_state.SelectedIndexes.Count > 0))
         {
-            SearchRequest.Text = _State.SearchText;
-            SearchType.SelectedIndex = _State.SearchTypeIdx;
-            MaxResults.SelectedValue = _State.MaxResults.ToString();
-            SearchFlags.Items[0].Selected = _State.Root;
-            SearchFlags.Items[1].Selected = _State.Thesaurus;
-            SearchFlags.Items[2].Selected = _State.SoundsLike;
-            for (int idx = 0; idx < _Indexes.Count; idx++)
+            SearchRequest.Text = _state.SearchText;
+            SearchType.SelectedIndex = _state.SearchTypeIdx;
+            MaxResults.SelectedValue = _state.MaxResults.ToString();
+            SearchFlags.Items[0].Selected = _state.Root;
+            SearchFlags.Items[1].Selected = _state.Thesaurus;
+            SearchFlags.Items[2].Selected = _state.SoundsLike;
+            for (var idx = 0; idx < _indexes.Count; idx++)
             {
-                CheckBox thisIndex = (CheckBox)PlaceHolder1.FindControl("Index" + idx.ToString());
+                var thisIndex = (CheckBox)PlaceHolder1.FindControl("Index" + idx);
                 if (thisIndex != null)
                 {
-                    thisIndex.Checked = false;
-                    if (_State.SelectedIndexes.Contains(idx))
-                    {
-                        thisIndex.Checked = true;
-                    }
+                    thisIndex.Checked = _state.SelectedIndexes.Contains(idx);
                 }
             }
         }
     }
 
-    // Convert dtSearch SearchResults to a DataSet, so the DataSet can be bound
-    // to a DataGrid control
     private DataSet ResultsToDataSet()
     {
-        DataSet dataSet = new DataSet();
-        DataTable dataTable = new DataTable("SearchResults");
+        var dataSet = new DataSet();
+        var dataTable = new DataTable("SearchResults");
         dataTable.Columns.Add(new DataColumn("Score")); //0
         dataTable.Columns.Add(new DataColumn("HitCount")); //1
         dataTable.Columns.Add(new DataColumn("DisplayName")); //2
@@ -776,12 +692,12 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         dataTable.Columns.Add(new DataColumn("AllowPreview")); //18
         dataTable.Columns.Add(new DataColumn("DisplayReturnResult")); //19
 
-        foreach (SpeedSearchResultItem item in Results.Items)
+        foreach (SpeedSearchResultItem item in _results.Items)
         {
-            DataRow row = dataTable.NewRow();
+            var row = dataTable.NewRow();
             int start = item.IndexRetrievedFrom.LastIndexOf("\\") + 1;
-            _CurrentIndexName = item.IndexRetrievedFrom.Substring(start, item.IndexRetrievedFrom.Length - start);
-            IIndexDefinition currentIdx = _Indexes.Find(IndexNameMatch);
+            _currentIndexName = item.IndexRetrievedFrom.Substring(start, item.IndexRetrievedFrom.Length - start);
+            var currentIdx = _indexes.Find(IndexNameMatch);
             row[0] = item.ScorePercent;
             row[1] = item.HitCount;
 
@@ -802,32 +718,37 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
             }
             else
             {
-                string tempName = item.DisplayName;
-                int idx = tempName.Length - 12;
-                string key = tempName.Substring(idx);
-                string tableName = tempName.Substring(0, tempName.IndexOf(" "));
-
+                var tempName = item.DisplayName;
+                var idx = tempName.Length - 12;
+                var key = tempName.Substring(idx);
+                var tableName = tempName.Substring(0, tempName.IndexOf(" "));
 
                 row[2] = GetEntityDisplay(GetEntityFromTable(tableName), key, item.DisplayName);
                 row[18] = "false";
-                if (_DisplayLink)
+                if (_displayLink)
                 {
                     row[18] = "true";
                     if (tableName == "TICKETPROBLEMSOLUTIONTYPE")
                     {
                         var problemSolution = EntityFactory.GetById<ITicketProblemSolutionType>(key);
-                        tableName = "TICKETPROBLEMTYPE";
-                        key = problemSolution.TicketProblemType.Id.ToString();
+                        if (problemSolution != null)
+                        {
+                            tableName = "TICKETPROBLEMTYPE";
+                            key = problemSolution.TicketProblemType.Id.ToString();
+                        }
                     }
-                    string path = Page.ResolveUrl(string.Format("{0}.aspx", tableName));
+                    var path = Page.ResolveUrl(string.Format("{0}.aspx", tableName));
                     path = Page.MapPath(path);
-                    bool pageexists = File.Exists(path);
-                    if (pageexists)
+                    if (tableName.ToUpper() == "ACTIVITY")
+                    {  // activity does not have corresponding aspx page
+                        row[3] = string.Format("javascript:Link.entityDetail('{1}', '{0}')", key, tableName);
+                    }
+                    else if (File.Exists(path))
                     {
                         row[3] = string.Format("javascript:Link.entityDetail('{1}', '{0}')", key, tableName);
                     }
                 }
-                else if (m_SLXUserService is IWebPortalUserService)
+                else if (UserService is IWebPortalUserService)
                 {
                     row[18] = "true";
                 }
@@ -841,15 +762,15 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
             }
             row[7] = tempval;
             // look up value in App_GlobalResources\SpeedSearch.resx. If not found, use whatever value came back from SS service.
-            string sourceValue = _CurrentIndexName;
-            object globalResource = GetGlobalResourceObject("SpeedSearch", string.Format("INDEX_{0}",
-                                                             _CurrentIndexName.Replace(" ", "_").ToUpperInvariant()));
+            var sourceValue = _currentIndexName;
+            var globalResource = GetGlobalResourceObject("SpeedSearch", string.Format("INDEX_{0}",
+                                                             _currentIndexName.Replace(" ", "_").ToUpperInvariant()));
             if (globalResource != null) sourceValue = globalResource.ToString();
             row[8] = sourceValue;
             if (item.Fields.ContainsKey("accountid"))
             {
                 row[9] = GetEntityDisplay(GetEntityFromTable("ACCOUNT"), item.Fields["accountid"]);
-                if (_DisplayLink)
+                if (_displayLink)
                 {
                     row[10] = string.Format("../../{1}.aspx?entityId={0}", item.Fields["accountid"], "ACCOUNT");
                 }
@@ -857,7 +778,7 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
             if (item.Fields.ContainsKey("contactid"))
             {
                 row[11] = GetEntityDisplay(GetEntityFromTable("CONTACT"), item.Fields["contactid"]);
-                if (_DisplayLink)
+                if (_displayLink)
                 {
                     row[12] = string.Format("../../{1}.aspx?entityId={0}", item.Fields["contactid"], "CONTACT");
                 }
@@ -865,7 +786,7 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
             if (item.Fields.ContainsKey("opportunityid"))
             {
                 row[13] = GetEntityDisplay(GetEntityFromTable("OPPORTUNITY"), item.Fields["opportunityid"]);
-                if (_DisplayLink)
+                if (_displayLink)
                 {
                     row[14] = string.Format("../../{1}.aspx?entityId={0}", item.Fields["opportunityid"], "OPPORTUNITY");
                 }
@@ -873,14 +794,14 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
             if (item.Fields.ContainsKey("ticketid"))
             {
                 row[15] = GetEntityDisplay(GetEntityFromTable("TICKET"), item.Fields["ticketid"]);
-                if (_DisplayLink)
+                if (_displayLink)
                 {
                     row[16] = string.Format("../../{1}.aspx?entityId={0}", item.Fields["ticketid"], "TICKET");
                 }
             }
             row[17] = item.HighlightedDoc;
             row[19] = "none";
-            if ((!string.IsNullOrEmpty(_ResultProperty)) && (row[18].ToString() == "true"))
+            if ((!string.IsNullOrEmpty(_resultProperty)) && (row[18].ToString() == "true"))
             {
                 row[19] = "block";
             }
@@ -892,22 +813,18 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
 
     private bool IndexNameMatch(IIndexDefinition value)
     {
-        return value.IndexName.Equals(_CurrentIndexName);
+        return value.IndexName.Equals(_currentIndexName);
     }
 
     private void SetItemAsUsed()
     {
-        string[] items = MarkUsedInfo.Value.Split('|');
-        IRepository<IIndexStatistics> rep = EntityFactory.GetRepository<IIndexStatistics>();
-        IQueryable qry = (IQueryable)rep;
-        IExpressionFactory ef = qry.GetExpressionFactory();
-        ICriteria crit = qry.CreateCriteria();
-        IIndexStatistics stats = crit.Add(ef.Eq("Id", items[0])).UniqueResult<IIndexStatistics>();
+        var items = MarkUsedInfo.Value.Split('|');
+        var stats = EntityFactory.GetById<IIndexStatistics>(items[0]);
         if (stats != null)
         {
             stats.TotalCount++;
             stats.LastHitDate = DateTime.Now.ToUniversalTime();
-            if (_UserType == 0)
+            if (_userType == 0)
             {
                 stats.CustomerHitCount++;
             }
@@ -919,10 +836,10 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         }
         else
         {
-            string SQL = "INSERT INTO INDEXSTATS (DOCUMENTID, SEARCHINDEX, IDENTIFIER, CUSTOMERHITCOUNT, EMPLOYEEHITCOUNT, TOTALCOUNT, LASTHITDATE, DBID) VALUES (?,?,?,?,?,?,?,?)";
-            IDataService service = Sage.Platform.Application.ApplicationContext.Current.Services.Get<IDataService>();
+            const string sql = "INSERT INTO INDEXSTATS (DOCUMENTID, SEARCHINDEX, IDENTIFIER, CUSTOMERHITCOUNT, EMPLOYEEHITCOUNT, TOTALCOUNT, LASTHITDATE, DBID) VALUES (?,?,?,?,?,?,?,?)";
+            var service = Sage.Platform.Application.ApplicationContext.Current.Services.Get<IDataService>();
             using (var conn = service.GetOpenConnection())
-            using (var cmd = conn.CreateCommand(SQL))
+            using (var cmd = conn.CreateCommand(sql))
             {
                 if (cmd != null)
                 {
@@ -930,7 +847,7 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
                     cmd.Parameters.Add(cmd.CreateParameter("@DOCUMENTID", items[0]));
                     cmd.Parameters.Add(cmd.CreateParameter("@SEARCHINDEX", items[1]));
                     cmd.Parameters.Add(cmd.CreateParameter("@IDENTIFIER", items[2]));
-                    if (_UserType == 0)
+                    if (_userType == 0)
                     {
                         cmd.Parameters.Add(cmd.CreateParameter("@CUSTOMERHITCOUNT", 1));
                         cmd.Parameters.Add(cmd.CreateParameter("@EMPLOYEEHITCOUNT", 0));
@@ -951,126 +868,104 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
 
     private void LoadIndexes()
     {
-        if ((_Indexes == null) || (_Indexes.Count == 0))
+        if ((_indexes == null) || (_indexes.Count == 0))
         {
-            IRepository<IIndexDefinition> rep = EntityFactory.GetRepository<IIndexDefinition>();
-            IQueryable qry = (IQueryable)rep;
-            IExpressionFactory ef = qry.GetExpressionFactory();
-            ICriteria crit = qry.CreateCriteria();
-            IExpression accessExp = ef.Le("UserAccess", _UserType);
+            var rep = EntityFactory.GetRepository<IIndexDefinition>();
+            var qry = (IQueryable)rep;
+            var ef = qry.GetExpressionFactory();
+            var crit = qry.CreateCriteria();
+            var accessExp = ef.Le("UserAccess", _userType);
             crit.Add(ef.And(accessExp, ef.Eq("Enabled", true)));
             crit.AddOrder(ef.Asc("IndexName"));
-            IList<IIndexDefinition> tempIndexes = crit.List<IIndexDefinition>();
+            var tempIndexes = crit.List<IIndexDefinition>();
 
-            Assembly interfaceAsm = Assembly.GetAssembly(typeof(IIndexDefinition));
-            Type[] types = interfaceAsm.GetTypes();
-            _TablesEntities = new Dictionary<string, Type>();
-            foreach (Type entity in types)
+            var interfaceAsm = Assembly.GetAssembly(typeof(IIndexDefinition));
+            var types = interfaceAsm.GetTypes();
+            _tablesEntities = new Dictionary<string, Type>();
+            foreach (var entity in types)
             {
-                AttributeCollection attrs = TypeDescriptor.GetAttributes(entity);
-                foreach (Attribute attr in attrs)
+                var attrs = TypeDescriptor.GetAttributes(entity);
+                foreach (var activeRecord in Enumerable.OfType<ActiveRecordAttribute>(attrs))
                 {
-                    ActiveRecordAttribute activeRecord = attr as ActiveRecordAttribute;
-                    if (activeRecord != null)
-                    {
-                        _TablesEntities.Add(activeRecord.Table.ToUpper(), entity);
-                    }
+                    _tablesEntities.Add(activeRecord.Table.ToUpper(), entity);
                 }
             }
-            _Indexes = new List<IIndexDefinition>();
-            foreach (IIndexDefinition index in tempIndexes)
+            _indexes = new List<IIndexDefinition>();
+            foreach (var index in tempIndexes)
             {
                 if (index.Type == 1) // database index
                 {
-                    DBIndexDefinition dbid = DBIndexDefinition.SetFromString(index.MetaData);
-                    if (_TablesEntities.ContainsKey(dbid.MainTable.ToUpper()))
+                    var dbid = DBIndexDefinition.SetFromString(index.MetaData);
+                    if (_tablesEntities.ContainsKey(dbid.MainTable.ToUpper()))
                     {
-                        _Indexes.Add(index);
+                        _indexes.Add(index);
                     }
                 }
                 else
                 {
-                    _Indexes.Add(index);
+                    _indexes.Add(index);
                 }
             }
         }
     }
 
-    private string GetEntityDisplay(Type entity, string value)
+    private string GetEntityDisplay(Type entity, string value, string displayName = "")
     {
-        return GetEntityDisplay(entity, value, "");
-    }
+        var okToDisplay = true;
+        var displayValue = string.Empty;
+        var result = (EntityBase)EntityFactory.GetById(entity, value);
 
-    private string GetEntityDisplay(Type entity, string value, string displayName)
-    {
-        bool okToDisplay = true;
-        EntityBase Result = null;
-        string displayValue = string.Empty;
-        Result = (EntityBase)EntityFactory.GetById(entity, value);
-
-        if ((_UserType == 0) && ((entity.Name.Equals("Ticket")) || (entity.Name.Equals("ITicket"))))
+        if ((_userType == 0) && ((entity.Name.Equals("Ticket")) || (entity.Name.Equals("ITicket"))))
         {
-            IRepository notifRep = EntityFactory.GetRepository(entity);
-            IQueryable qry = (IQueryable)notifRep;
-            IExpressionFactory ef = qry.GetExpressionFactory();
-            ICriteria crit = qry.CreateCriteria().Add(ef.Eq("Id", value));
-            IList<EntityBase> results;
-            string portalUser = ((IWebPortalUserService)m_SLXUserService).GetPortalUser().Contact.Account.Id.ToString();
+            var notifRep = EntityFactory.GetRepository(entity);
+            var qry = (IQueryable)notifRep;
+            var ef = qry.GetExpressionFactory();
+            var crit = qry.CreateCriteria().Add(ef.Eq("Id", value));
+            var portalUser = ((IWebPortalUserService)UserService).GetPortalUser().Contact.Account.Id.ToString();
             crit.CreateAlias("Account", "A").Add(ef.Eq("A.Id", portalUser));
-            results = crit.List<EntityBase>();
+            var results = crit.List<EntityBase>();
             okToDisplay = (results.Count > 0);
             if (okToDisplay)
             {
-                Result = results[0];
+                result = results[0];
             }
             else if (!string.IsNullOrEmpty(displayName))
             {
-                int pos = displayName.IndexOf('#');
+                var pos = displayName.IndexOf('#');
                 displayValue = displayName.Substring(pos + 1, displayName.Length - (13 + pos));
             }
         }
         if (!okToDisplay)
         {
-            _DisplayLink = false;
+            _displayLink = false;
             return string.Format(GetLocalResourceObject("SpeedSearch_Result_NoLongerExists").ToString(), entity.Name.Substring(1).ToUpper(), displayValue);
         }
-        _DisplayLink = true;
-        return String.Format("<b>{0}</b>: {1}", GetEntityDisplayName(entity), Result);
+        _displayLink = result != null;
+        return String.Format("<b>{0}</b>: {1}", GetEntityDisplayName(entity), result);
     }
 
-    private string GetEntityDisplayName(Type entity)
+    private static string GetEntityDisplayName(Type entity)
     {
         var displayName = entity.GetDisplayName();
-
-        if (!string.IsNullOrEmpty(displayName))
-            return displayName;
-
-        if (entity.IsInterface)
-            return entity.Name.Substring(1).ToUpper();
-        else
-            return entity.Name.ToUpper();
+        return !string.IsNullOrEmpty(displayName) ? displayName : (entity.IsInterface ? entity.Name.Substring(1) : entity.Name).ToUpper();
     }
 
     private Type GetEntityFromTable(string table)
     {
-        string key = table.ToUpper();
-        if (_TablesEntities.ContainsKey(key))
-        {
-            return _TablesEntities[key];
-        }
-        return null;
+        var key = table.ToUpper();
+        return _tablesEntities.ContainsKey(key) ? _tablesEntities[key] : null;
     }
 
     protected void SearchResultsGrid_PageIndexChanged(object source, EventArgs e)
     {
         MarkUsedInfo.Value = string.Empty;
-        int index = int.Parse(CurrentPageIndex.Value);
-        int end = (index + 1) * 10;
-        totalDocCount = int.Parse(TotalCount.Value);
-        string id = ((ImageButton)source).ID;
+        var index = int.Parse(CurrentPageIndex.Value);
+        var end = (index + 1) * 10;
+        _totalDocCount = int.Parse(TotalCount.Value);
+        var id = ((ImageButton)source).ID;
         if (id.Equals("NextPage"))
         {
-            if (end < totalDocCount)
+            if (end < _totalDocCount)
             {
                 index++;
             }
@@ -1084,7 +979,7 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         }
         else if (id.Equals("LastPage"))
         {
-            int temp = int.Parse(TotalCount.Value);
+            var temp = int.Parse(TotalCount.Value);
             index = temp / 10;
             if ((index * 10) == temp)
             {
@@ -1093,7 +988,7 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
         }
         else { index = 0; }
         CurrentPageIndex.Value = index.ToString();
-        whichResultsPage = index;
+        _whichResultsPage = index;
 
         DoSearch();
         ShowPage();
@@ -1101,16 +996,16 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
 
     protected void SpeedSearchReset_Click(object sender, ImageClickEventArgs e)
     {
-        _State = new SpeedSearchState();
-        for (int i = 0; i < _Indexes.Count; i++)
+        _state = new SpeedSearchState();
+        for (var i = 0; i < _indexes.Count; i++)
         {
-            _State.SelectedIndexes.Add(i);
+            _state.SelectedIndexes.Add(i);
         }
-        if (!_Context.IsConfigurationTypeRegistered(typeof(SpeedSearchState)))
+        if (!_context.IsConfigurationTypeRegistered(typeof(SpeedSearchState)))
         {
-            _Context.RegisterConfigurationType(typeof(SpeedSearchState));
+            _context.RegisterConfigurationType(typeof(SpeedSearchState));
         }
-        _Context.WriteConfiguration(_State);
+        _context.WriteConfiguration(_state);
     }
 
     protected void NextPage_Click(object sender, ImageClickEventArgs e)
@@ -1122,7 +1017,7 @@ public partial class SmartParts_SpeedSearch : UserControl, ISmartPartInfoProvide
 
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
-        ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
+        var tinfo = new ToolsSmartPartInfo();
         foreach (Control c in SpeedSearch_RTools.Controls)
         {
             tinfo.RightTools.Add(c);

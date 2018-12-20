@@ -3,14 +3,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
-using Sage.Entity.Interfaces;
-using Sage.Platform;
 using Sage.Platform.Application;
 using Sage.Platform.Application.UI;
-using Sage.Platform.Orm.Interfaces;
 using Sage.Platform.WebPortal.SmartParts;
+using SmartPartInfoProvider = Sage.Platform.WebPortal.SmartParts.SmartPartInfoProvider;
 
-public partial class SyncResultsHistory : SmartPart
+public partial class SyncResultsHistory : SmartPartInfoProvider
 {
     [ServiceDependency]
     public IEntityContextService EntityContext { get; set; }
@@ -22,7 +20,7 @@ public partial class SyncResultsHistory : SmartPart
 
     private void DoActivating()
     {
-        object globalSyncId = String.Empty;
+        object globalSyncId = Guid.NewGuid();
         PropertyDescriptorCollection pds = TypeDescriptor.GetProperties(EntityContext.EntityType);
         foreach (PropertyDescriptor pd in pds.Cast<PropertyDescriptor>().Where(pd => pd.Name == "GlobalSyncId"))
         {
@@ -42,11 +40,12 @@ public partial class SyncResultsHistory : SmartPart
             ], function (ready, SyncResultsHistory) {");
 
         var baseScript = string.Format(
-            "window.setTimeout(function() {{ window.syncResultsHistory = new SyncResultsHistory({{ 'workspace': '{0}', 'tabId': '{1}', 'placeHolder': '{2}', 'globalSyncId': '{3}' }}); syncResultsHistory.loadSyncResults(); }}, 1);",
+            "window.setTimeout(function() {{ window.syncResultsHistory = new SyncResultsHistory({{ 'workspace': '{0}', 'tabId': '{1}', 'placeHolder': '{2}', 'globalSyncId': '{3}', 'entityId': '{4}' }}); syncResultsHistory.loadSyncResults(); }}, 1);",
             getMyWorkspace(),
             ID,
             sdgrdSyncHistory_Grid.ClientID,
-            globalSyncId);
+            globalSyncId,
+            EntityContext.EntityID);
 
         if (!Page.IsPostBack)
         {
@@ -65,42 +64,12 @@ public partial class SyncResultsHistory : SmartPart
     /// </summary>
     /// <param name="smartPartInfoType">Type of the smart part info.</param>
     /// <returns></returns>
-    public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
+    public override ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
-        ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-        //if (BindingSource != null && BindingSource.Current != null)
-        //{
-        //    tinfo.Description = BindingSource.Current.ToString();
-        //    tinfo.Title = BindingSource.Current.ToString();
-        //}
-
-        foreach (Control c in Controls)
+        var tinfo = new ToolsSmartPartInfo();
+        foreach (Control c in SyncResultsHistory_RTools.Controls)
         {
-            SmartPartToolsContainer cont = c as SmartPartToolsContainer;
-            if (cont != null)
-            {
-                switch (cont.ToolbarLocation)
-                {
-                    case SmartPartToolsLocation.Right:
-                        foreach (Control tool in cont.Controls)
-                        {
-                            tinfo.RightTools.Add(tool);
-                        }
-                        break;
-                    case SmartPartToolsLocation.Center:
-                        foreach (Control tool in cont.Controls)
-                        {
-                            tinfo.CenterTools.Add(tool);
-                        }
-                        break;
-                    case SmartPartToolsLocation.Left:
-                        foreach (Control tool in cont.Controls)
-                        {
-                            tinfo.LeftTools.Add(tool);
-                        }
-                        break;
-                }
-            }
+            tinfo.RightTools.Add(c);
         }
         return tinfo;
     }

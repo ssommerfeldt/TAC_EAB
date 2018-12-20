@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccountAssociationsGrid_Name.HeaderText" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="AccountAssociationsGrid_Edit.Text" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="ConfirmMessage" xml:space="preserve">
-    <value>Вы действительно хотите удалить?</value>
-  </data>
-  <data name="AccountAssociationsGrid_Relation.HeaderText" xml:space="preserve">
-    <value>Связь</value>
-  </data>
-  <data name="HelpLink.ToolTip" xml:space="preserve">
-    <value>Помощь</value>
-  </data>
-  <data name="AccountAssociationsGrid_Delete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="btnAdd.ToolTip" xml:space="preserve">
-    <value>Добавить связь</value>
-  </data>
-  <data name="AccountAssociationsGrid_Notes.HeaderText" xml:space="preserve">
-    <value>Описание</value>
+  <data name="AccountAssocationsGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
   <data name="AccountAssociationsGrid_CreatedBy.HeaderText" xml:space="preserve">
-    <value>Создал</value>
+    <value>Автор</value>
   </data>
   <data name="AccountAssociationsGrid_Date.HeaderText" xml:space="preserve">
     <value>Дата</value>
   </data>
-  <data name="AccountAssocationsGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
+  <data name="AccountAssociationsGrid_Delete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="AccountAssociationsGrid_Edit.Text" xml:space="preserve">
+    <value>Редактировать</value>
   </data>
   <data name="AccountAssociationsGrid_Link.ToolTip" xml:space="preserve">
-    <value>Перейти к субъекту</value>
+    <value>Перейти к клиенту</value>
+  </data>
+  <data name="AccountAssociationsGrid_Name.HeaderText" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="AccountAssociationsGrid_Notes.HeaderText" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="AccountAssociationsGrid_Relation.HeaderText" xml:space="preserve">
+    <value>Связь</value>
+  </data>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Добавить связь</value>
+  </data>
+  <data name="ConfirmMessage" xml:space="preserve">
+    <value>Действительно удалить?</value>
+  </data>
+  <data name="HelpLink.ToolTip" xml:space="preserve">
+    <value>Справка</value>
   </data>
 </root>

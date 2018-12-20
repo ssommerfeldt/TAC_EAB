@@ -1,12 +1,12 @@
-//>>built
 define(
 "dojo/cldr/nls/es-co/gregorian", //begin v1.x content
 {
 	"dateFormat-short": "d/MM/yy",
-	"timeFormat-long": "H:mm:ss z",
-	"dateFormat-medium": "d/MM/yyyy",
-	"timeFormat-medium": "H:mm:ss",
-	"timeFormat-short": "H:mm"
+	"dateFormat-medium": "d/MM/y",
+	"timeFormat-long": "h:mm:ss a z",
+	"timeFormat-medium": "h:mm:ss a",
+	"timeFormat-short": "h:mm a",
+	"timeFormat-full": "h:mm:ss a (zzzz)"
 }
 //end v1.x content
 );

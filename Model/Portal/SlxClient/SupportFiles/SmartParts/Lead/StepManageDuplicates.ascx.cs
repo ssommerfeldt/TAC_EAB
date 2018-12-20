@@ -1,20 +1,20 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Collections.Generic;
+using Sage.Entity.Interfaces;
 using Sage.Platform;
 using Sage.Platform.Application;
 using Sage.Platform.Application.UI.Web;
 using Sage.Platform.Application.UI.Web.Threading;
+using Sage.Platform.Orm;
 using Sage.Platform.WebPortal;
 using Sage.Platform.WebPortal.Services;
-using Sage.Entity.Interfaces;
 using Sage.SalesLogix.Services.Import;
 using Sage.SalesLogix.Services.PotentialMatch;
-using Sage.Platform.Orm;
 
-public partial class StepManageDuplicates : UserControl
+public partial class SmartParts_Lead_StepManageDuplicates : UserControl
 {
     #region Public Properties
 
@@ -57,11 +57,11 @@ public partial class StepManageDuplicates : UserControl
             Mode.Value = "Initialized";
             chkFindDupsInFile.Checked = importManager.Configuration.AdvancedOptions.IndexAfterInsert;
         }
-        else 
+        else
         {
             importManager.Configuration.AdvancedOptions.IndexAfterInsert = chkFindDupsInFile.Checked;
         }
-            
+
         if (importManager.DuplicateProvider == null)
             importManager.DuplicateProvider = new LeadDuplicateProvider();
         LeadDuplicateProvider duplicateProvider = (LeadDuplicateProvider) importManager.DuplicateProvider;
@@ -85,7 +85,7 @@ public partial class StepManageDuplicates : UserControl
         importManager.MergeProvider.RecordOverwrite = lbxConflicts.SelectedIndex == 0 ? MergeOverwrite.targetWins : MergeOverwrite.sourceWins;
         importManager.DuplicateProvider = duplicateProvider;
         importManager.Options.CheckForDuplicates = chkCheckForDups.Checked;
-           
+
         Page.Session["importManager"] = importManager;
     }
 
@@ -125,9 +125,9 @@ public partial class StepManageDuplicates : UserControl
             {
                 ListItem item = new ListItem();
                 //If resource does not exist then use the xml value. Item is prefixed with "Filter" to better identify resource items
-                item.Text = GetLocalResourceObject("Filter." + propertyFilter.PropertyName) != null &&
-                            GetLocalResourceObject("Filter." + propertyFilter.PropertyName).ToString() != ""
-                                ? GetLocalResourceObject("Filter." + propertyFilter.PropertyName).ToString()
+                var filterResource = GetLocalResourceObject("Filter." + propertyFilter.PropertyName);
+                item.Text = filterResource != null && filterResource.ToString() != ""
+                                ? filterResource.ToString()
                                 : propertyFilter.DisplayName;
 
                 item.Value = propertyFilter.PropertyName;
@@ -169,7 +169,7 @@ public partial class StepManageDuplicates : UserControl
     /// <returns>
     /// 	<c>true</c> if [is filter mapped] [the specified import manager]; otherwise, <c>false</c>.
     /// </returns>
-    private Boolean IsFilterMapped(ImportManager importManager, string matchFilter)
+    private static Boolean IsFilterMapped(ImportManager importManager, string matchFilter)
     {
         IList<ImportMap> importMaps = importManager.ImportMaps;
         return importMaps.Any(map => matchFilter.Equals(map.TargetProperty.PropertyId));
@@ -232,7 +232,7 @@ public partial class StepManageDuplicates : UserControl
     /// </summary>
     private void StartTestImport(Object args)
     {
-        ImportManager importManager = Page.Session["importManager"] as ImportManager;
+        var importManager = (ImportManager) Page.Session["importManager"];
         importManager.StartImportTest(100);
     }
 }

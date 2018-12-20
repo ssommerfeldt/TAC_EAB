@@ -117,83 +117,185 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblAccountConflicts.Caption" xml:space="preserve">
-    <value>Conflitti:</value>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
   </data>
-  <data name="Opportunity_Description" xml:space="preserve">
-    <value>Opportunità per {0}</value>
+  <data name="cmdConvert.Caption" xml:space="preserve">
+    <value>Converti</value>
+  </data>
+  <data name="cmdMerge.Caption" xml:space="preserve">
+    <value>Unisci</value>
+  </data>
+  <data name="cmdSearchOptions.Caption" xml:space="preserve">
+    <value>Opzioni avanzate</value>
   </data>
   <data name="cmdUpdateMatches.Caption" xml:space="preserve">
-    <value>Aggiorna Uguaglianze Potenziali</value>
+    <value>Aggiorna corrispondenze potenziali</value>
   </data>
-  <data name="LoadErrorMSG" xml:space="preserve">
-    <value>La visualizzazione converti nominativo non è disponibile contatta l'amministratore di sistema.Id Errore SalesLogix: {0}</value>
+  <data name="ddlAccountConflicts_Item_AccountWins" xml:space="preserve">
+    <value>Azienda prevale</value>
   </data>
-  <data name="grdMatches.Select.ColumnHeading" xml:space="preserve">
-    <value>Seleziona</value>
+  <data name="ddlAccountConflicts_Item_LeadWins" xml:space="preserve">
+    <value>Lead prevale</value>
   </data>
-  <data name="Filter.TollFree" xml:space="preserve">
-    <value>Num. verde</value>
+  <data name="grdAccount.AddContact.ColumnHeading" xml:space="preserve">
+    <value>Aggiungi contatto</value>
   </data>
-  <data name="Filter.Title" xml:space="preserve">
-    <value>Titolo</value>
+  <data name="grdAccountMatches.Account.ColumnHeading" xml:space="preserve">
+    <value>Azienda</value>
   </data>
-  <data name="cmdInsert.Caption" xml:space="preserve">
-    <value>Inserisci Nominativo</value>
+  <data name="grdAccountMatches.Industry.ColumnHeading" xml:space="preserve">
+    <value>Settore</value>
   </data>
-  <data name="grdMatches.Web.ColumnHeading" xml:space="preserve">
-    <value>Web</value>
+  <data name="grdAccountMatches.MainPhone.ColumnHeading" xml:space="preserve">
+    <value>Telefono principale</value>
   </data>
-  <data name="Filter.WebAddress" xml:space="preserve">
+  <data name="grdAccountMatches.Type.ColumnHeading" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="grdAccountMatches.WebAddress.ColumnHeading" xml:space="preserve">
     <value>Indirizzo Web</value>
   </data>
-  <data name="Filter.LastName" xml:space="preserve">
+  <data name="grdLead.Company.ColumnHeading" xml:space="preserve">
+    <value>Società</value>
+  </data>
+  <data name="grdLead.EmptyTableRowText" xml:space="preserve">
+    <value>Si è verificato un errore nel caricamento del record di origine.</value>
+  </data>
+  <data name="grdMatches.CityStateZip.ColumnHeading" xml:space="preserve">
+    <value>Città/Provincia/CAP</value>
+  </data>
+  <data name="grdMatches.Company.ColumnHeading" xml:space="preserve">
+    <value>Azienda/società</value>
+  </data>
+  <data name="grdMatches.Email.ColumnHeading" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="grdMatches.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
+  </data>
+  <data name="grdMatches.FirstName.ColumnHeading" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="grdMatches.Industry.ColumnHeading" xml:space="preserve">
+    <value>Settore</value>
+  </data>
+  <data name="grdMatches.LastName.ColumnHeading" xml:space="preserve">
     <value>Cognome</value>
   </data>
   <data name="grdMatches.Merge.ColumnHeading" xml:space="preserve">
     <value>Unisci</value>
   </data>
-  <data name="lblLeads.Caption" xml:space="preserve">
-    <value>Nominativo</value>
+  <data name="grdMatches.Score.ColumnHeading" xml:space="preserve">
+    <value>Indice</value>
   </data>
-  <data name="grdAccountMatches.Score.ColumnHeading" xml:space="preserve">
-    <value>Punteggio</value>
+  <data name="grdMatches.Select.ColumnHeading" xml:space="preserve">
+    <value>Seleziona</value>
   </data>
-  <data name="Filter.Address.City" xml:space="preserve">
-    <value>Città</value>
+  <data name="grdMatches.Title.ColumnHeading" xml:space="preserve">
+    <value>Titolo</value>
   </data>
   <data name="grdMatches.Type.ColumnHeading" xml:space="preserve">
     <value>Tipo</value>
   </data>
-  <data name="lblMatchesFound.Caption" xml:space="preserve">
-    <value>Record Contatti/Nominativi Corrispondenti (Visualizzati i primi dieci)</value>
+  <data name="grdMatches.Web.ColumnHeading" xml:space="preserve">
+    <value>Web</value>
   </data>
-  <data name="lblMergeText.Text" xml:space="preserve">
-    <value>Seleziona il record che desideri rimanga come primario, poi fai le modifiche ai campi negli altri record che desideri rimangano.</value>
+  <data name="grdMatches.WorkPhone.ColumnHeading" xml:space="preserve">
+    <value>Telefono ufficio</value>
   </data>
-  <data name="grdMatches.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
+  <data name="lblAccountConflicts.Caption" xml:space="preserve">
+    <value>Conflitti:</value>
   </data>
-  <data name="grdMatches.CityStateZip.ColumnHeading" xml:space="preserve">
-    <value>Città/Provincia/CAP</value>
+  <data name="lblAccountMatches.Caption" xml:space="preserve">
+    <value>Record azienda corrispondenti (vengono visualizzati i primi dieci)</value>
   </data>
-  <data name="grdMatches.Email.ColumnHeading" xml:space="preserve">
+  <data name="lblCompany.Caption" xml:space="preserve">
+    <value>Società:</value>
+  </data>
+  <data name="lblContacts.Caption" xml:space="preserve">
+    <value>Contatto</value>
+  </data>
+  <data name="lblCreateOpportunity.Caption" xml:space="preserve">
+    <value>Crea opportunità dopo conversione o unione lead</value>
+  </data>
+  <data name="lblEmail.Caption" xml:space="preserve">
     <value>E-mail</value>
-  </data>
-  <data name="grdAccount.AddContact.ColumnHeading" xml:space="preserve">
-    <value>Aggiungi Contatto</value>
-  </data>
-  <data name="Resolved.MergedWithLead" xml:space="preserve">
-    <value>Unito con Nominativo:{0}</value>
-  </data>
-  <data name="grdMatches.FirstName.ColumnHeading" xml:space="preserve">
-    <value>Nome</value>
   </data>
   <data name="lblFilterDesc.Caption" xml:space="preserve">
     <value>(Deve corrispondere a tutti i valori selezionati)</value>
   </data>
-  <data name="Filter.WorkPhone" xml:space="preserve">
-    <value>Tel. Ufficio</value>
+  <data name="lblLeads.Caption" xml:space="preserve">
+    <value>Lead</value>
+  </data>
+  <data name="lblMatchesFound.Caption" xml:space="preserve">
+    <value>Record contatti/lead corrispondenti (vengono visualizzati i primi dieci)</value>
+  </data>
+  <data name="lblMatchFilters.Caption" xml:space="preserve">
+    <value>Filtri di corrispondenza</value>
+  </data>
+  <data name="lblMatchTypes.Caption" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+  <data name="lblMergeText.Text" xml:space="preserve">
+    <value>Selezionare il record che si desidera mantenere come primario, quindi apportare le modifiche ai campi nell’altro record da conservare.</value>
+  </data>
+  <data name="lblOptions.Caption" xml:space="preserve">
+    <value>Opzioni:</value>
+  </data>
+  <data name="lblTitle.Caption" xml:space="preserve">
+    <value>Titolo</value>
+  </data>
+  <data name="lblWeb.Caption" xml:space="preserve">
+    <value>Web:</value>
+  </data>
+  <data name="rdgLeads_Item.Text" xml:space="preserve">
+    <value>Solo lead</value>
+  </data>
+  <data name="rdgMatchAll_Item.Text" xml:space="preserve">
+    <value>Confronta tutti i filtri selezionati</value>
+  </data>
+  <data name="rdgMatchAny_Item.Text" xml:space="preserve">
+    <value>Confronta alcuni dei filtri selezionati</value>
+  </data>
+  <data name="cmdInsert.Caption" xml:space="preserve">
+    <value>Inserisci lead</value>
+  </data>
+  <data name="grdAccountMatches.Score.ColumnHeading" xml:space="preserve">
+    <value>Indice</value>
+  </data>
+  <data name="LoadErrorMSG" xml:space="preserve">
+    <value>La vista per la conversione del lead non è disponibile. Contattare l'amministratore di sistema. ID Errore Saleslogix: {0}</value>
+  </data>
+  <data name="Resolved.InsertedNewLead" xml:space="preserve">
+    <value>Nuovo lead inserito:{0}</value>
+  </data>
+  <data name="Resolved.MergedWithContact" xml:space="preserve">
+    <value>Unito con contatto:{0}</value>
+  </data>
+  <data name="Resolved.MergedWithLead" xml:space="preserve">
+    <value>Unito con lead:{0}</value>
+  </data>
+  <data name="Error_MergingRecords" xml:space="preserve">
+    <value>Errore durante l'unione dei record. ID errore Saleslogix: {0}</value>
+  </data>
+  <data name="Opportunity_Description" xml:space="preserve">
+    <value>Opportunità per {0}</value>
+  </data>
+  <data name="Filter.Address.City" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="Filter.Address.PostalCode" xml:space="preserve">
+    <value>Codice postale</value>
+  </data>
+  <data name="Filter.Address.State" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Filter.Company" xml:space="preserve">
+    <value>Azienda/società</value>
+  </data>
+  <data name="Filter.EMail" xml:space="preserve">
+    <value>E-mail</value>
   </data>
   <data name="Filter.FirstName" xml:space="preserve">
     <value>Nome</value>
@@ -201,118 +303,19 @@
   <data name="Filter.Industry" xml:space="preserve">
     <value>Settore</value>
   </data>
-  <data name="ddlAccountConflicts_Item_AccountWins" xml:space="preserve">
-    <value>Azienda Vince</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="grdAccountMatches.MainPhone.ColumnHeading" xml:space="preserve">
-    <value>Telefono principale</value>
-  </data>
-  <data name="grdLead.EmptyTableRowText" xml:space="preserve">
-    <value>Si è verificato un errore nel caricamento del record sorgente.</value>
-  </data>
-  <data name="Filter.Address.PostalCode" xml:space="preserve">
-    <value>Codice Postale</value>
-  </data>
-  <data name="lblAccountMatches.Caption" xml:space="preserve">
-    <value>Record Azienda Corrispondenti (Visualizzati i primi dieci)</value>
-  </data>
-  <data name="lblOptions.Caption" xml:space="preserve">
-    <value>Opzioni:</value>
-  </data>
-  <data name="lblCompany.Caption" xml:space="preserve">
-    <value>Società:</value>
-  </data>
-  <data name="grdMatches.WorkPhone.ColumnHeading" xml:space="preserve">
-    <value>Tel. Ufficio</value>
-  </data>
-  <data name="rdgMatchAny_Item.Text" xml:space="preserve">
-    <value>Confronta alcuni dei filtri selezionati</value>
-  </data>
-  <data name="Resolved.InsertedNewLead" xml:space="preserve">
-    <value>Nuovo Nominativo Inserito:{0}</value>
-  </data>
-  <data name="grdAccountMatches.Account.ColumnHeading" xml:space="preserve">
-    <value>Azienda</value>
-  </data>
-  <data name="grdMatches.LastName.ColumnHeading" xml:space="preserve">
+  <data name="Filter.LastName" xml:space="preserve">
     <value>Cognome</value>
   </data>
-  <data name="Error_MergingRecords" xml:space="preserve">
-    <value>Errore durante l'unione dei record. Id Errore SalesLogix: {0}</value>
-  </data>
-  <data name="rdgMatchAll_Item.Text" xml:space="preserve">
-    <value>Confronta tutti i filtri selezionati</value>
-  </data>
-  <data name="lblCreateOpportunity.Caption" xml:space="preserve">
-    <value>Crea opportunità dopo conversione o unione nominativo</value>
-  </data>
-  <data name="grdMatches.Title.ColumnHeading" xml:space="preserve">
+  <data name="Filter.Title" xml:space="preserve">
     <value>Titolo</value>
   </data>
-  <data name="grdAccountMatches.Industry.ColumnHeading" xml:space="preserve">
-    <value>Settore</value>
+  <data name="Filter.TollFree" xml:space="preserve">
+    <value>Numero verde</value>
   </data>
-  <data name="Filter.EMail" xml:space="preserve">
-    <value>E-Mail</value>
-  </data>
-  <data name="rdgLeads_Item.Text" xml:space="preserve">
-    <value>Solo nominativi</value>
-  </data>
-  <data name="grdLead.Company.ColumnHeading" xml:space="preserve">
-    <value>Società</value>
-  </data>
-  <data name="grdAccountMatches.WebAddress.ColumnHeading" xml:space="preserve">
+  <data name="Filter.WebAddress" xml:space="preserve">
     <value>Indirizzo Web</value>
   </data>
-  <data name="lblContacts.Caption" xml:space="preserve">
-    <value>Contatto</value>
-  </data>
-  <data name="lblMatchFilters.Caption" xml:space="preserve">
-    <value>Filtri di Corrispondenza</value>
-  </data>
-  <data name="grdAccountMatches.Type.ColumnHeading" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="cmdConvert.Caption" xml:space="preserve">
-    <value>Converti</value>
-  </data>
-  <data name="Filter.Company" xml:space="preserve">
-    <value>Azienda/Società</value>
-  </data>
-  <data name="grdMatches.Score.ColumnHeading" xml:space="preserve">
-    <value>Punteggio</value>
-  </data>
-  <data name="cmdSearchOptions.Caption" xml:space="preserve">
-    <value>Opzioni Avanzate</value>
-  </data>
-  <data name="cmdMerge.Caption" xml:space="preserve">
-    <value>Unisci</value>
-  </data>
-  <data name="lblMatchTypes.Caption" xml:space="preserve">
-    <value>Tipo:</value>
-  </data>
-  <data name="lblTitle.Caption" xml:space="preserve">
-    <value>Titolo</value>
-  </data>
-  <data name="ddlAccountConflicts_Item_LeadWins" xml:space="preserve">
-    <value>Nominativo vince</value>
-  </data>
-  <data name="grdMatches.Industry.ColumnHeading" xml:space="preserve">
-    <value>Settore</value>
-  </data>
-  <data name="lblEmail.Caption" xml:space="preserve">
-    <value>E-mail</value>
-  </data>
-  <data name="Resolved.MergedWithContact" xml:space="preserve">
-    <value>Unito con Contatto:{0}</value>
-  </data>
-  <data name="Filter.Address.State" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="grdMatches.Company.ColumnHeading" xml:space="preserve">
-    <value>Azienda/Società</value>
+  <data name="Filter.WorkPhone" xml:space="preserve">
+    <value>Telefono ufficio</value>
   </data>
 </root>

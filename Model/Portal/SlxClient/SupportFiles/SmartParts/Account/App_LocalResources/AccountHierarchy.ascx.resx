@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="bndStatus1.HeaderText" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="bndEstClose1.HeaderText" xml:space="preserve">
+    <value>Estimated Close</value>
+  </data>
+  <data name="bndDueDate1.HeaderText" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+  <data name="bndStatus2.HeaderText" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="bndGrandTotal1.HeaderText" xml:space="preserve">
+    <value>Grand Total</value>
+  </data>
+  <data name="bndStatus3.HeaderText" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="bndDateTime1.HeaderText" xml:space="preserve">
+    <value>Date/Time</value>
+  </data>
+  <data name="chkCascadeResource1.Text" xml:space="preserve">
+    <value>Cascade Totals</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="grdActivitiesResource1.EmptyTableRowText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdActivitiesResource1.SortAscImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdActivitiesResource1.SortDescImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdContactsResource1.EmptyTableRowText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdContactsResource1.SortAscImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdContactsResource1.SortDescImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdOpportunitiesResource1.EmptyTableRowText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdOpportunitiesResource1.SortAscImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdOpportunitiesResource1.SortDescImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdQuotesResource1.EmptyTableRowText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdQuotesResource1.SortAscImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdQuotesResource1.SortDescImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdSalesOrdersResource1.EmptyTableRowText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdSalesOrdersResource1.SortAscImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdSalesOrdersResource1.SortDescImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdTicketsResource1.EmptyTableRowText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdTicketsResource1.SortAscImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="grdTicketsResource1.SortDescImageUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="lnkTicket1.HeaderText" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="lnkQuote1.HeaderText" xml:space="preserve">
+    <value>Quote Order</value>
+  </data>
+  <data name="HyperLinkFieldResource3.HeaderText" xml:space="preserve">
+    <value>Sales Order</value>
+  </data>
+  <data name="lblGoToResource1.Text" xml:space="preserve">
+    <value>Go To</value>
+  </data>
+  <data name="lblOpenOpportunitiesResource1.Text" xml:space="preserve">
+    <value>Open Opportunities</value>
+  </data>
+  <data name="lblOpportunitiesLostResource1.Text" xml:space="preserve">
+    <value>Opportunities Lost</value>
+  </data>
+  <data name="lblOpportunitiesWonResource1.Text" xml:space="preserve">
+    <value>Opportunities Won</value>
+  </data>
+  <data name="lblTotalAmountInvoicedResource1.Text" xml:space="preserve">
+    <value>Total Invoiced</value>
+  </data>
+  <data name="lblTotalAmountReceivedResource1.Text" xml:space="preserve">
+    <value>Total Received</value>
+  </data>
+  <data name="lblTotalOpportunitiesLostResource1.Text" xml:space="preserve">
+    <value>Total Opportunities Lost</value>
+  </data>
+  <data name="lblTotalOpportunitiesWonResource1.Text" xml:space="preserve">
+    <value>Total Opportunities Won</value>
+  </data>
+  <data name="lblTotalQuotesResource1.Text" xml:space="preserve">
+    <value>Total Quotes</value>
+  </data>
+  <data name="lblTotalSalesOrdersResource1.Text" xml:space="preserve">
+    <value>Total Sales Orders</value>
+  </data>
+  <data name="radTabContacts1.Text" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="radTabOpportunities1.Text" xml:space="preserve">
+    <value>Opportunities</value>
+  </data>
+  <data name="radTabTickets1.Text" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="radTabQuotes1.Text" xml:space="preserve">
+    <value>Quotes</value>
+  </data>
+  <data name="radTabSalesOrders1.Text" xml:space="preserve">
+    <value>Sales Orders</value>
+  </data>
+  <data name="radTabActivities1.Text" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="fldAssigned1.HeaderText" xml:space="preserve">
+    <value>Assigned</value>
+  </data>
+  <data name="fldCategory1.HeaderText" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="fldDescription1.HeaderText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="fldTicketStatus1.HeaderText" xml:space="preserve">
+    <value>Ticket Status</value>
+  </data>
+  <data name="fldCustomerPo1.HeaderText" xml:space="preserve">
+    <value>Customer PO</value>
+  </data>
+  <data name="fldType1.HeaderText" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="fldContact1.HeaderText" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="fldLeader1.HeaderText" xml:space="preserve">
+    <value>Leader</value>
+  </data>
+  <data name="fldRegarding1.HeaderText" xml:space="preserve">
+    <value>Regarding</value>
+  </data>
+  <data name="fldWorkPhone1.HeaderText" xml:space="preserve">
+    <value>Work Phone</value>
+  </data>
+  <data name="fldTitle1.HeaderText" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="fldEmail1.HeaderText" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="fldOpportunity1.HeaderText" xml:space="preserve">
+    <value>Opportunity</value>
+  </data>
+  <data name="fldAccountManager1.HeaderText" xml:space="preserve">
+    <value>Account Manager</value>
+  </data>
+  <data name="fldPotential1.HeaderText" xml:space="preserve">
+    <value>Potential</value>
+  </data>
+  <data name="bndStatus1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndStatus1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndEstClose1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndEstClose1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndDueDate1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndDueDate1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndStatus2.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndStatus2.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndGrandTotal1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndGrandTotal1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndStatus3.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndStatus3.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndDateTime1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="bndDateTime1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkCascadeResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdActivitiesResource1.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdActivitiesResource1.EmptyDataText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdActivitiesResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdContactsResource1.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdContactsResource1.EmptyDataText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdContactsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdOpportunitiesResource1.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdOpportunitiesResource1.EmptyDataText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdOpportunitiesResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdQuotesResource1.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdQuotesResource1.EmptyDataText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdQuotesResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdSalesOrdersResource1.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdSalesOrdersResource1.EmptyDataText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdSalesOrdersResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdTicketsResource1.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdTicketsResource1.EmptyDataText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdTicketsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkTicket1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkTicket1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkTicket1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkQuote1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkQuote1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkQuote1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HyperLinkFieldResource3.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HyperLinkFieldResource3.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HyperLinkFieldResource3.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSelectedResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSelectedResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblGoToResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblNumOppLostResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblNumOppLostResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblNumOppWonResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblNumOppWonResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblOpenOpportunitiesResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblOpportunitiesLostResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblOpportunitiesWonResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTotalAmountInvoicedResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTotalAmountReceivedResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTotalOpportunitiesLostResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTotalOpportunitiesWonResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTotalQuotesResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTotalSalesOrdersResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadMultiPage1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadPageView1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadPageView2Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadPageView3Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadPageView4Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadPageView5Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadPageView6Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabContacts1.AccessKey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabContacts1.DisabledImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabContacts1.HoveredImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabContacts1.ImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabContacts1.NavigateUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabContacts1.SelectedImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabContacts1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabContacts1.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabOpportunities1.AccessKey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabOpportunities1.DisabledImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabOpportunities1.HoveredImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabOpportunities1.ImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabOpportunities1.NavigateUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabOpportunities1.SelectedImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabOpportunities1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabOpportunities1.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabTickets1.AccessKey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabTickets1.DisabledImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabTickets1.HoveredImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabTickets1.ImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabTickets1.NavigateUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabTickets1.SelectedImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabTickets1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabTickets1.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabQuotes1.AccessKey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabQuotes1.DisabledImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabQuotes1.HoveredImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabQuotes1.ImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabQuotes1.NavigateUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabQuotes1.SelectedImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabQuotes1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabQuotes1.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabSalesOrders1.AccessKey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabSalesOrders1.DisabledImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabSalesOrders1.HoveredImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabSalesOrders1.ImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabSalesOrders1.NavigateUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabSalesOrders1.SelectedImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabSalesOrders1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabSalesOrders1.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabActivities1.AccessKey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabActivities1.DisabledImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabActivities1.HoveredImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabActivities1.ImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabActivities1.NavigateUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabActivities1.SelectedImageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabActivities1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radTabActivities1.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTabStrip1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RadTreeView1Resource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldAssigned1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldAssigned1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldCategory1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldCategory1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldDescription1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldDescription1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldTicketStatus1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldTicketStatus1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldCustomerPo1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldCustomerPo1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldType1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldType1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldContact1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldContact1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldLeader1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldLeader1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldRegarding1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldRegarding1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldWorkPhone1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldWorkPhone1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldTitle1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldTitle1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldEmail1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldEmail1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldOpportunity1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldOpportunity1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldPotential1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldPotential1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountManagerResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountManagerResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource3.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource4.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource5.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource6.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAccountResource6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAssignedToResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtAssignedToResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtCategoryResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtCategoryResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtContactResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtContactResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtCustomerPurchaseOrderNumberResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtCustomerPurchaseOrderNumberResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtDescriptionResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtDescriptionResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtEmailResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtEmailResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtLeaderResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtLeaderResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtOpportunityResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtOpportunityResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtPhoneResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtPhoneResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtSubjectResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtSubjectResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTicketStatusResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTicketStatusResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTitleResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTitleResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTotQuotesResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTotQuotesResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTotSalesOrdersResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtTotSalesOrdersResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnClose.Caption" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ActivityType_Appointment" xml:space="preserve">
+    <value>Meeting</value>
+  </data>
+  <data name="ActivityType_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ActivityType_Personal" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="ActivityType_PhoneCall" xml:space="preserve">
+    <value>Phone Call</value>
+  </data>
+  <data name="ActivityType_ToDo" xml:space="preserve">
+    <value>To-Do</value>
+  </data>
+  <data name="fldAccount1.AccessibleHeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldAccount1.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fldAccount1.HeaderText" xml:space="preserve">
+    <value>Account</value>
+  </data>
+</root>

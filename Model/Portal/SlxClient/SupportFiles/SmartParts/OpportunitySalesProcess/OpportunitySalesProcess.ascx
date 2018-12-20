@@ -86,10 +86,10 @@
             <SalesLogix:ResourceKeyName Key="NoContactAssociated" />
             <SalesLogix:ResourceKeyName Key="SelectFolderCaption" />
             <SalesLogix:ResourceKeyName Key="SelectFolderTitle" />
-            <SalesLogix:ResourceKeyName Key="Error_DesktopIntegration" />            
-            <SalesLogix:ResourceKeyName Key="Confirm" />  
-            <SalesLogix:ResourceKeyName Key="Yes" />  
-            <SalesLogix:ResourceKeyName Key="No" />  
+            <SalesLogix:ResourceKeyName Key="Error_DesktopIntegration" />
+            <SalesLogix:ResourceKeyName Key="Confirm" />
+            <SalesLogix:ResourceKeyName Key="Yes" />
+            <SalesLogix:ResourceKeyName Key="No" />
             <SalesLogix:ResourceKeyName Key="ERR_InvalidXmlData" />
         </Keys>
     </SalesLogix:ScriptResourceProvider>
@@ -123,10 +123,10 @@
                                 </span>
                                 <span class="textcontrol">
                                     <SalesLogix:LookupControl runat="server" ID="luOppContact" LookupEntityName="OpportunityContact"
-                                        SeedProperty="Opportunity.Id" LookupBindingMode="String" ReturnPrimaryKey="true"                                        
+                                        SeedProperty="Opportunity.Id" LookupBindingMode="String" ReturnPrimaryKey="true"
                                         LookupEntityTypeName="Sage.Entity.Interfaces.IOpportunityContact, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" >
                                         <LookupProperties>
-                                            <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueOppContact_Name %>" PropertyName="Contact.NameLF" PropertyType="System.String" PropertyFormat="None" UseAsResult="False" ></SalesLogix:LookupProperty>                                                                                    
+                                            <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueOppContact_Name %>" PropertyName="Contact.NameLF" PropertyType="System.String" PropertyFormat="None" UseAsResult="False" ></SalesLogix:LookupProperty>
                                             <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueOppContact_Account %>" PropertyName="Contact.AccountName" PropertyType="System.String" PropertyFormat="None" UseAsResult="False" ></SalesLogix:LookupProperty>
                                             <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueOppContact_Primary %>" PropertyName="IsPrimary" PropertyType="System.Boolean" PropertyFormat="None" UseAsResult="False" ></SalesLogix:LookupProperty>
                                             <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueOppContact_Influence %>" PropertyName="Influence" PropertyType="System.String" PropertyFormat="None" UseAsResult="False" ></SalesLogix:LookupProperty>
@@ -147,7 +147,7 @@
                 </div>
                 <div id="spSelectUserDiv" style="display:none" class="SalesProcess Select">
                     <table border="0" cellpadding="2" cellspacing="2" width="100%" >
-                        <col width="50%" /> 
+                        <col width="50%" />
                         <tr>
                             <td>
                                 <span class="lbl">
@@ -168,7 +168,7 @@
                     </table>
                 </div>
             </td>
-        </tr>  
+        </tr>
     </table>
 </div>
 <div id="spMain" style="display:block">
@@ -185,7 +185,7 @@
                 </span>
             </td>
             <td rowspan="2" valign="top">
-                 <div class="salesProcess-snapShot" >
+                 <div class="salesProcess-snapShot Bevel" >
                  <table id="SSSnapShot" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                        <th>
@@ -195,23 +195,23 @@
                      <tr>
                           <td style="float: left; vertical-align: middle; overflow: hidden; text-align: left">
                            <b><asp:Label ID="lblCurrentStage" runat="server" Text="<%$ resources: lblCurrentStage.Text %>"></asp:Label></b> =
-                           <asp:Label ID="valueCurrnetStage" runat="server" Text=""></asp:Label>&nbsp; 
+                           <asp:Label ID="valueCurrnetStage" runat="server" Text=""></asp:Label>&nbsp;
                            <b><asp:Label ID="lblDaysInStage" runat="server" Text="<%$ resources: lblDaysInStage.Text %>"></asp:Label></b> =
-                           <asp:Label ID="valueDaysInStage" runat="server" Text="0"></asp:Label> 
+                           <asp:Label ID="valueDaysInStage" runat="server" Text="0"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td style="vertical-align: middle; text-align: left">
                            <span class="fixer">
-                           <b><asp:Label ID="lblProbablity" runat="server" Text="<%$ resources: lblProbability.Text %>"></asp:Label></b> = 
+                           <b><asp:Label ID="lblProbablity" runat="server" Text="<%$ resources: lblProbability.Text %>"></asp:Label></b> =
                            <asp:Label ID="valueProbabilty" runat="server" Text="0%"></asp:Label>&nbsp;
                            <b><asp:Label ID="lblEstDays" runat="server" Text="<%$ resources: lblEstDays.Text %>"></asp:Label></b> =
                            <asp:Label ID="valueEstDays" runat="server" Text="0"></asp:Label>&nbsp;
-                           <b><asp:Label ID="lblEstClose" runat="server" Text="<%$ resources: lblEstClose.Text %>"></asp:Label></b> = 
+                           <b><asp:Label ID="lblEstClose" runat="server" Text="<%$ resources: lblEstClose.Text %>"></asp:Label></b> =
                            <SalesLogix:DateTimePicker runat="server" ID="dtpEstClose" Enabled="true" DisplayDate="true" DisplayTime="false" Timeless="True" DisplayMode="AsText" AutoPostBack="false"></SalesLogix:DateTimePicker>
-                           </span>                       
+                           </span>
                         </td>
-                    </tr> 
+                    </tr>
                 </table>
                 </div>
              </td>
@@ -219,13 +219,13 @@
         <tr>
             <td>
                           <span class="lbl" style="font-style:normal" >
-                 <asp:LinkButton OnClientClick="javascript:btnDisable(this.id);" id="btnStages" runat="server" CommandName="Stages" OnClick="cmdStages_Click" ToolTip="<%$ resources: linkManageStages.ToolTip %>" Text="<%$ resources: linkManageStages.Text %>" /> 
+                 <asp:LinkButton OnClientClick="javascript:btnDisable(this.id);" id="btnStages" runat="server" CommandName="Stages" OnClick="cmdStages_Click" ToolTip="<%$ resources: linkManageStages.ToolTip %>" Text="<%$ resources: linkManageStages.Text %>" />
                  <asp:Label runat="server" id="btnStagesHide" style="color:#0000CC;display:none;" Text="<%$ resources: linkManageStages.Text %>"></asp:Label>
                </span>
                <span class="textcontrol">
                  <asp:DropDownList runat="server" ID="ddlStages" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" shouldPublishMarkDirty="false" OnSelectedIndexChanged="ddlStages_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-                </span> 
-                
+                </span>
+
             </td>
         </tr>
     </table>
@@ -236,32 +236,32 @@
             <asp:TemplateField HeaderText="<%$ resources: SalesProcessGrid_Completed.HeaderText %>" ItemStyle-HorizontalAlign="Center">
                 <ItemTemplate>
                     <asp:Label ID="lblReq" runat="server"></asp:Label>
-                    <asp:CheckBox id="chkComplete" runat="server" checked='<%# DataBinder.Eval(Container.DataItem, "Completed") %>' ></asp:CheckBox>
-                </ItemTemplate>   
+                    <asp:CheckBox id="chkComplete" runat="server" checked='<%# DataBinder.Eval(Container.DataItem, "Completed") %>' CssClass="inforAspCheckBox" Text="&nbsp;"></asp:CheckBox>
+                </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="<%$ resources: SalesProcessGrid_Step.HeaderText %>" ItemStyle-HorizontalAlign="Left">
                 <ItemTemplate>
-                    <asp:LinkButton ID="linkAction" runat="server" ></asp:LinkButton>
-                </ItemTemplate>   
-            </asp:TemplateField>         
+                    <span ID="linkAction" runat="server" ></span>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="Description" HeaderText="<%$ resources: SalesProcessGrid_Description.HeaderText %>" />
             <asp:TemplateField HeaderText="<%$ resources: SalesProcessGrid_StartedOn.HeaderText %>" >
                 <ItemTemplate>
                     <SalesLogix:DateTimePicker runat="server" ID="dtpStartDate" Enabled="true" DisplayTime="false" Timeless="True"
                         DisplayMode="AsHyperlink" AutoPostBack="false" >
                     </SalesLogix:DateTimePicker>
-                </ItemTemplate>   
+                </ItemTemplate>
             </asp:TemplateField>
                 <asp:TemplateField HeaderText="<%$ resources: SalesProcessGrid_CompletedOn.HeaderText %>">
                     <ItemTemplate>
                         <SalesLogix:DateTimePicker runat="server" ID="dtpCompleteDate" Enabled="true" DisplayDate="true" DisplayTime="false"
                             Timeless="True" DisplayMode="AsHyperlink" AutoPostBack="false">
                         </SalesLogix:DateTimePicker>
-                    </ItemTemplate>   
+                    </ItemTemplate>
                 </asp:TemplateField>
         </Columns>
-        <HeaderStyle BackColor="#F3F3F3" BorderColor="Transparent" Font-Bold="True" Font-Size="Small" />
-        <RowStyle CssClass="rowlt" />
-        <AlternatingRowStyle CssClass="rowdk" />
+        <HeaderStyle CssClass="dojoxGridHeader" />
+        <RowStyle CssClass="dojoxGridRow" />
+        <AlternatingRowStyle CssClass="dojoxGridRowOdd" />
     </SalesLogix:SlxGridView>
 </div>

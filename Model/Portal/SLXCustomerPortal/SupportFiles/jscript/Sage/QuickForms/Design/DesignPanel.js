@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/DesignPanel", [
     'dojo/_base/declare',
     'dojo/_base/array',
     'dojo/_base/lang',
@@ -13,6 +13,8 @@ define([
     'dijit/form/Select',
     'Sage/Services/_ServiceMixin',
     'Sage/_Templated',
+    'Sage/Data/SDataServiceRegistry',   
+	'Sage/Services/CultureService',
     'Sage/Utility',
     'Sage/UI/ImageButton',
     './Help',
@@ -36,6 +38,8 @@ define([
     Select,
     _ServiceMixin,
     _Templated,
+    SDataServiceRegistry,
+    CultureService,
     Utility,
     ImageButton,
     Help,
@@ -73,6 +77,7 @@ define([
         _previousName: null,
         _previousEntry: null,
         currentCulture: 'iv',
+        _cultureService: null,
         designSurface: null,
         nonVisibleContainer: null,
         editorContainer: null,
@@ -109,6 +114,9 @@ define([
 
         constructor: function () {
             lang.mixin(this, localization);
+
+            this._cultureService = Sage.Services.getService('Culture');
+           
         },
         _getDesignGroupAttr: function () {
             return this._designGroup;
@@ -141,15 +149,23 @@ define([
             domConstruct.place(this.savingTemplate.apply(this), this.designSurface.domNode);
         },
         startup: function () {
-            this.inherited(arguments);
-
-            array.forEach(this.cultureList, function (item) {
-                this._cultureSelect.addOption({
-                    value: item,
-                    label: this.cultureListText[item.replace('-', '_')] || item,
-                    selected: item == this.currentCulture
+            this.inherited(arguments);          
+			var defer = this._cultureService.requestActive();
+            if (defer) {
+                var me = this;
+                defer.then(function (list) {
+                    console.log('%o', list);
+                    me.cultureList = list;
+                    me.cultureList.splice(0, 0, { CultureCode: 'iv', DisplayText: '[invariant]' });
+                    array.forEach(me.cultureList, function (item) {
+                        me._cultureSelect.addOption({
+                            value: item.CultureCode,
+                            label: item.DisplayText,
+                            selected: item.CultureCode == me.currentCulture
+                        });
+                    }, me);
                 });
-            }, this);
+            }
         },
         _onCultureChange: function (value) {
             if (this.currentCulture === value) return;

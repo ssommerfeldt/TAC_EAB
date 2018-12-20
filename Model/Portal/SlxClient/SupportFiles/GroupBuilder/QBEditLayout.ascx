@@ -34,8 +34,8 @@
 				</tr>
 				<tr>
 					<td><asp:Localize ID="localizeCaptAlign" runat="server" Text="<%$ resources: localizeCaptAlign.Text %>" /></td>
-					<td class="borderr">
-						<select id="selCaptAlign" style="width:110">
+					<td class="borderr textcontrol">
+						<select id="selCaptAlign" style="width:192px" class="dijitselect dropdown">
 							<option value="Left" selected><asp:Localize ID="localizeLeft" runat="server" Text="<%$ resources: localizeLeft.Text %>" /></option>
 							<option value="Right"><asp:Localize ID="localizeRight" runat="server" Text="<%$ resources: localizeRight.Text %>" /></option>
 							<option value="Center"><asp:Localize ID="localizeCenter" runat="server" Text="<%$ resources: localizeCenter.Text %>" /></option>
@@ -44,8 +44,8 @@
 				</tr>
 				<tr>
 					<td><asp:Localize ID="localizeTextAlign" runat="server" Text="<%$ resources: localizeTextAlign.Text %>" /></td>
-					<td class="borderr">
-						<select id="selTextAlign" style="width:110">
+					<td class="borderr textcontrol">
+						<select id="selTextAlign" style="width:192px" class="dijitselect dropdown">
 							<option value="Left" selected><asp:Localize ID="localizeLeft2" runat="server" Text="<%$ resources: localizeLeft.Text %>" /></option>
 							<option value="Right"><asp:Localize ID="localizeRight2" runat="server" Text="<%$ resources: localizeRight.Text %>" /></option>
 							<option value="Center"><asp:Localize ID="localizeCenter2" runat="server" Text="<%$ resources: localizeCenter.Text %>" /></option>
@@ -54,8 +54,8 @@
 				</tr>
 				<tr>
 					<td><asp:Localize ID="localizeFormatType" runat="server" Text="<%$ resources: localizeFormatType.Text %>" /></td>
-					<td class="borderr">
-						<select id="selFormatType" style="width:110">
+					<td class="borderr textcontrol">
+						<select id="selFormatType" style="width:192px" class="dijitselect dropdown">
 							<option value="None" selected><asp:Localize ID="localizeNone" runat="server" Text="<%$ resources: localizeNone.Text %>" /></option>
 							<option value="Fixed"><asp:Localize ID="localizeNumber" runat="server" Text="<%$ resources: localizeNumber.Text %>" /></option>
 							<option value="Integer"><asp:Localize ID="localizeInteger" runat="server" Text="<%$ resources: localizeInteger.Text %>" /></option>
@@ -96,5 +96,6 @@
 		</td>
 	</tr>
 </table>
+<input type="hidden" id="hidPickList" name="hidPickList" value="">
 
 <script src="jscript/Sage/GroupBuilder/querybuilder.js" type="text/javascript"></script>

@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Колонка' }
-));
+define("Sage/QuickForms/Design/nls/ru/ColumnDesigner", {
+    "displayNameText": "Столбец"
+});

@@ -112,114 +112,132 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdMatchingRecords.Caption" xml:space="preserve">
-    <value>Найти похожие записи</value>
-  </data>
-  <data name="pklTitle.Caption" xml:space="preserve">
-    <value>Должность:</value>
-  </data>
-  <data name="txtCompany.Caption" xml:space="preserve">
-    <value>Компания:</value>
-  </data>
-  <data name="pklIndustry.Caption" xml:space="preserve">
-    <value>Отрасль:</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="emlEmail.ButtonToolTip" xml:space="preserve">
-    <value>Эл. почта</value>
-  </data>
-  <data name="txtSICCode.Caption" xml:space="preserve">
-    <value>Код SIC:</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.SourceDate.PropertyHeader" xml:space="preserve">
-    <value>Дата источника</value>
-  </data>
-  <data name="urlWebAddress.Caption" xml:space="preserve">
-    <value>Веб:</value>
-  </data>
-  <data name="cmdSaveNew.Caption" xml:space="preserve">
-    <value>Сохрнить&amp;Новый</value>
-  </data>
-  <data name="lueLeadSource.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="cmdSaveNew.ToolTip" xml:space="preserve">
-    <value>Сохрнить&amp;Новый</value>
-  </data>
-  <data name="urlWebAddress.ButtonToolTip" xml:space="preserve">
-    <value>WWW</value>
-  </data>
-  <data name="adrAddress.Caption" xml:space="preserve">
-    <value>Адрес:</value>
-  </data>
-  <data name="ownOwner.Caption" xml:space="preserve">
-    <value>Доступ:</value>
-  </data>
-  <data name="lueLeadSource.Caption" xml:space="preserve">
-    <value>Ист. наводки:</value>
-  </data>
-  <data name="emlEmail.Caption" xml:space="preserve">
-    <value>Эл. почта:</value>
-  </data>
-  <data name="txtInterests.Caption" xml:space="preserve">
-    <value>Интересы в:</value>
-  </data>
-  <data name="cmdSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
   <data name="nmeLeadName.Caption" xml:space="preserve">
     <value>Имя:</value>
-  </data>
-  <data name="lueLeadSource.LUPF.Status" xml:space="preserve">
-    <value>Активн.</value>
-  </data>
-  <data name="phnWorkPhone.Caption" xml:space="preserve">
-    <value>Телефон:</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="adrAddress.ButtonToolTip" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="txtBusinessDescription.Caption" xml:space="preserve">
-    <value>Описание бизнеса:</value>
-  </data>
-  <data name="phnTollFree.Caption" xml:space="preserve">
-    <value>Справочный тел.:</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="adrAddress.AddressToolTip" xml:space="preserve">
-    <value>Сопоставления поиска</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Код источника</value>
-  </data>
-  <data name="ownOwner.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
   </data>
   <data name="chkAutoSearch.Caption" xml:space="preserve">
     <value>Автоматический поиск после заполнения номера телефона</value>
   </data>
+  <data name="cmdMatchingRecords.Caption" xml:space="preserve">
+    <value>Найти совпадающие записи</value>
+  </data>
+  <data name="txtCompany.Caption" xml:space="preserve">
+    <value>Компания:</value>
+  </data>
+  <data name="adrAddress.Caption" xml:space="preserve">
+    <value>Адрес:</value>
+  </data>
+  <data name="urlWebAddress.Caption" xml:space="preserve">
+    <value>Интернет:</value>
+  </data>
+  <data name="emlEmail.Caption" xml:space="preserve">
+    <value>Электронная почта:</value>
+  </data>
+  <data name="phnWorkPhone.Caption" xml:space="preserve">
+    <value>Телефон:</value>
+  </data>
+  <data name="pklTitle.Caption" xml:space="preserve">
+    <value>Название:</value>
+  </data>
+  <data name="phnTollFree.Caption" xml:space="preserve">
+    <value>Бесплатный справочный телефон:</value>
+  </data>
+  <data name="txtBusinessDescription.Caption" xml:space="preserve">
+    <value>Описание бизнеса:</value>
+  </data>
+  <data name="txtInterests.Caption" xml:space="preserve">
+    <value>Интересы:</value>
+  </data>
+  <data name="pklIndustry.Caption" xml:space="preserve">
+    <value>Отрасль:</value>
+  </data>
+  <data name="txtSICCode.Caption" xml:space="preserve">
+    <value>Код SIC:</value>
+  </data>
   <data name="txtComments.Caption" xml:space="preserve">
-    <value>Комм-рии:</value>
+    <value>Комментарии:</value>
+  </data>
+  <data name="lueLeadSource.Caption" xml:space="preserve">
+    <value>Источник заинтересованного лица:</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Код источника</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueLeadSource.LookupProperties.SourceDate.PropertyHeader" xml:space="preserve">
+    <value>Дата источника</value>
+  </data>
+  <data name="ownOwner.Caption" xml:space="preserve">
+    <value>Владелец:</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="cmdSaveNew.Caption" xml:space="preserve">
+    <value>Сохранить и создать</value>
+  </data>
+  <data name="cmdSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="cmdSaveNew.ToolTip" xml:space="preserve">
+    <value>Сохранить и создать</value>
+  </data>
+  <data name="cmdMatchingRecords.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="88210646-7333-4492-b080-6227e297ba66.DialogTitleOverride" xml:space="preserve">
     <value>Поиск дубликатов</value>
   </data>
+  <data name="phnWorkPhone.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="emlEmail.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueLeadSource.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ownOwner.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="urlWebAddress.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="emlEmail.ButtonToolTip" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="lueLeadSource.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="ownOwner.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="adrAddress.AddressToolTip" xml:space="preserve">
+    <value>MapQuest</value>
+  </data>
+  <data name="adrAddress.ButtonToolTip" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="urlWebAddress.ButtonToolTip" xml:space="preserve">
+    <value>WWW</value>
+  </data>
   <data name="nmeLeadName.ButtonToolTip" xml:space="preserve">
-    <value>Изменить</value>
+    <value>Редактировать</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
   </data>
 </root>

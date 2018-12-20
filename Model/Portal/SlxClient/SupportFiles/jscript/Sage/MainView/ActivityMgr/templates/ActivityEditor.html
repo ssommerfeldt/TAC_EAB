@@ -1,10 +1,10 @@
-﻿[
+[
 '<div>',
     '<div dojoType="dijit.Dialog" id="activityDialog" title="" dojoAttachPoint="_dialog" dojoAttachEvent="onHide:_onDlgHide">',
         '<div class="activity-dialog">',  //body
             '<div dojoType="dojox.layout.TableContainer" orientation="horiz" cols="1" labelWidth="{%= $.labelWidth %}" dojoAttachPoint="regardingContainer">',
-                '<select id="pk_Regarding" label="{%= $.regardingText %}" id="{%= $.id %}_pk_Regarding" shouldPublishMarkDirty="false" dojoType="Sage.UI.Controls.SingleSelectPickList" dojoAttachPoint="pk_Regarding" canEditText="true" itemMustExist="false" maxLength="64" ></select>',
-                '<div dojoType="dijit.form.TextBox" label="{%= $.locationText %}" id="{%= $.id %}_tb_Location" dojoAttachPoint="tb_Location" maxLength="255" ></div>',
+                '<select id="pk_Regarding" label="{%= $.regardingText %}" id="{%= $.id %}_pk_Regarding" shouldPublishMarkDirty="false" dojoType="Sage.UI.Controls.SingleSelectPickList" dojoAttachPoint="pk_Regarding" canEditText="true" itemMustExist="false" maxLength="255"></select>',          
+    '<div dojoType="dijit.form.TextBox" label="{%= $.locationText %}" id="{%= $.id %}_tb_Location" dojoAttachPoint="tb_Location" maxLength="255" ></div>',
             '</div>', //first tablecontainer 1 col
         //Dates section for add/edit mode..................
             '<div dojoType="dojox.layout.TableContainer" orientation="horiz" cols="2" labelWidth="{%= $.labelWidth %}" dojoAttachPoint="dateSection_AddEdit">',
@@ -14,7 +14,7 @@
                     '<div dojoType="dijit.form.CheckBox" label="{%= $.timeLessText %}" id="{%= $.id %}_cb_Timeless" dojoAttachPoint="cb_Timeless" ></div>',
                     '<label class="checkbox-label" for="{%= $.id %}_cb_Timeless">{%= $.timeLessText %}</label>',
                 '</div>',
-                '<div dojoType="dojox.layout.TableContainer" label="{%= $.alarmText %}" cols="2" showLabels="false" class="removeExtraSpace">',
+                '<div dojoType="dojox.layout.TableContainer" label="{%= $.alarmText %}" cols="2" showLabels="false" class="removeExtraSpace" dojoAttachPoint="alarmContainer">',
                     '<div dojoType="dijit.form.CheckBox" id="{%= $.id %}_cb_Alarm" dojoAttachPoint="cb_Alarm" ></div>',
                     '<div shouldPublishMarkDirty="false" dojoType="Sage.UI.Controls.DurationSelect" id="{%= $.id %}_sel_AlarmDur" dojoAttachPoint="sel_AlarmDur" valuesAreAfterStart="false" ></div>',
                 '</div>',
@@ -34,13 +34,13 @@
                 '<div shouldPublishMarkDirty="false" dojoType="Sage.UI.Controls.DurationSelect" label="{%= $.durationText %}" id="{%= $.id %}_sel_DurationComplete" dojoAttachPoint="sel_DurationComplete" includeDisablingCheckbox="false" valuesAreAfterStart="true"></div>',
             '</div>',
 
-            '<div dojoType="dijit.layout.TabContainer" id="{%= $.id %}_tc_EditActivity"  dojoAttachPoint="tc_EditActivity" class="tab-container">',
+            '<div dojoType="dijit.layout.TabContainer" id="{%= $.id %}_tc_EditActivity"  dojoAttachPoint="tc_EditActivity" class="tab-container" doLayout="false">',
 /*  General Tab   */
                 '<div dojoType="dijit.layout.ContentPane" id="{%= $.id %}_cp_General" title="{%= $.tabNameGeneralText %}" class="tabContent remove-padding" dojoAttachPoint="cp_General">',
-                    '<div dojoType="dojox.layout.TableContainer" orientation="horiz" cols="1" labelWidth="{%= $.labelWidth %}" dojoAttachPoint="resultContainer" class="bottom-border-section">', 
+                    '<div dojoType="dojox.layout.TableContainer" orientation="horiz" cols="1" labelWidth="{%= $.labelWidth %}" dojoAttachPoint="resultContainer" class="bottom-border-section add-padding">', 
                         '<select shouldPublishMarkDirty="false" dojoType="Sage.UI.Controls.SingleSelectPickList" label="{%= $.resultText %}" id="{%= $.id %}_pl_Result"  name="pl_Result" dojoAttachPoint="pl_Result" canEditText="true" itemMustExist="false" maxLength="64"></select>',
                     '</div>',
-                    '<div dojoType="dojox.layout.TableContainer" orientation="horiz" cols="4" labelWidth="4" baseClass="contact-lead-radios" >',
+                    '<div dojoType="dojox.layout.TableContainer" orientation="horiz" cols="4" labelWidth="70" baseClass="contact-lead-radios" >',
                         '<input dojoType="dijit.form.RadioButton" type="radio" name="contactOrLead" label="{%= $.contactText %}" value="contact" id="{%= $.id %}_rdo_Contact" dojoAttachPoint="rdo_Contact" dojoAttachEvent="onChange:_setContactLeadVisibility" checked="true" />',
                         '<input dojoType="dijit.form.RadioButton" type="radio" name="contactOrLead" label="{%= $.leadText %}" value="lead" id="{%= $.id %}_rdo_Lead" dojoAttachPoint="rdo_Lead" />',
                     '</div>',
@@ -55,8 +55,8 @@
                         '<div dojoType="dijit.layout.ContentPane" label="{%= $.nameText %}" dojoAttachPoint="container_LeadLup"  class="remove-padding lookup-container"></div>',
                         '<input dojoType="dijit.form.TextBox" id="{%= $.id %}_tb_LeadCompanyName" label="{%= $.companyText %}" dojoAttachPoint="tb_LeadCompanyName" readonly="true" />',
                     '</div>',
-                    '<div dojoType="dojox.layout.TableContainer" orientation="horiz" cols="2" labelWidth="{%= $.labelWidth %}" class="bottom-border-section" >',
-                        '<select label="{%= $.priorityText %}" id="{%= $.id %}_pk_Priority" shouldPublishMarkDirty="false" dojoType="Sage.UI.Controls.SingleSelectPickList" dojoAttachPoint="pk_Priority" canEditText="true" itemMustExist="false" pickListName="Priorities" sort="false" maxLength="64" style="width: {%= 472 - $.labelWidth %}px;"></select>',
+                    '<div dojoType="dojox.layout.TableContainer" orientation="horiz" cols="2" labelWidth="{%= $.labelWidth %}" class="bottom-border-section" dojoAttachPoint="categoryContainer" >',
+                        '<select label="{%= $.priorityText %}" id="{%= $.id %}_pk_Priority" shouldPublishMarkDirty="false" dojoType="Sage.UI.Controls.SingleSelectPickList" dojoAttachPoint="pk_Priority" canEditText="true" itemMustExist="false" pickListName="Priorities" sort="false" maxLength="64" style="width: {%= 472 - $.labelWidth %}px;" ></select>',
                         '<div dojoType="dijit.layout.ContentPane" label="{%= $.leaderText %}" dojoAttachPoint="container_LeaderLup" class="remove-padding lookup-container" style="width: {%= 472 - $.labelWidth %}px;"></div>',
                         '<select label="{%= $.categoryText %}" id="{%= $.id %}_pk_Category" shouldPublishMarkDirty="false" dojoType="Sage.UI.Controls.SingleSelectPickList" dojoAttachPoint="pk_Category" canEditText="true" itemMustExist="false" maxLength="64" style="width: {%= 472 - $.labelWidth %}px;"></select>',
                         '<div dojoType="dijit.layout.ContentPane" label="&nbsp;" class="dijitTextBox" style="border-width:0px">&nbsp;</div>',
@@ -67,7 +67,7 @@
                 '</div>',  // end general tab
 /* Availability Tab   */
                 '<div dojoType="dijit.layout.ContentPane" id="{%= $.id %}_cp_Availability" title="{%= $.tabNameAvailabilityText %}" class="tabContent remove-padding" dojoAttachPoint="cp_Availability" dojoAttachEvent="onShow:_onShowAvailabilityTab">',
-                    '<div dojoType="dijit.Toolbar" region="top" splitter="false" class="right-tools" >',  // list-panel-tbar                                  
+                    '<div dojoType="dijit.Toolbar" region="top" splitter="false" class="right-tools" >',  // list-panel-tbar
                         '<div dojoType="dijit.layout.ContentPane" dojoAttachPoint="container_ResourcesLup" class="remove-padding"></div>',
                     '</div>',
 /* Scheduler ........... */
@@ -91,13 +91,13 @@
                     '<div shouldPublishMarkDirty="false" dojoType="Sage.MainView.ActivityMgr.RecurringEditor" id="{%= $.id %}_recEd" labelWidth="{%= $.labelWidth - 20 %}" dojoAttachPoint="_recurringEditor"></div>',
                 '</div>',
 /* Attachments Tab  */
-                '<div dojoType="dijit.layout.ContentPane" id="{%= $.id %}_cp_Attachments" title="{%= $.tabNameAttachmentsText %}" class="tabContent remove-padding" dojoAttachPoint="cp_Attachments" dojoAttachEvent="onShow:_showAttachmentsTab">',
-                    '<div id="{%= $.id %}_attachmentsGridPlaceholder" dojoAttachPoint="_attachmentGridPlaceholder" style="width:100%;height:100%"></div>',
-                '</div>',
+                '<div dojoType="dijit.layout.ContentPane" id="{%= $.id %}_cp_Attachments" title="{%= $.tabNameAttachmentsText %}" class="tabContent remove-padding" dojoAttachPoint="cp_Attachments">',
+                    '<div id="{%= $.id %}_attachmentsGridPlaceholder" dojoAttachPoint="_attachmentGridPlaceholder" style="width:100%;height:100%;" ></div>',
+                '</div>',  //end attachments tab
             '</div>',  //tab container
 /* Buttons       */
         // Add/edit activity buttons
-            '<table class="button-bar" id="add_edit_buttons" dojoAttachPoint="add_edit_buttons">',
+            '<table class="activity-dialog-followup" id="add_edit_buttons" dojoAttachPoint="add_edit_buttons">',
                 '<tr>',
                     '<td class="alignleft">',
                         '<div class="scheduled-by-label" dojoAttachPoint="lbl_ScheduledBy"></div>',
@@ -113,7 +113,7 @@
 
 
         //complete activity buttons
-            '<table class="button-bar display-none" id="complete_buttons" dojoAttachPoint="complete_buttons">',
+            '<table class="activity-dialog-followup display-none" id="complete_buttons" dojoAttachPoint="complete_buttons">',
                 '<tr>',
                     '<col width="50%" /><col width="50%" />',
                     '<td class="alignleft">',

@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/Editors/RowBasicPropertyEditor", [
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojox/layout/ContentPane',

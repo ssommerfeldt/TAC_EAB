@@ -5,11 +5,13 @@ using System.Web.UI.WebControls;
 using Sage.Platform.WebPortal.SmartParts;
 using Sage.Entity.Interfaces;
 using Sage.Platform.ComponentModel;
+using Sage.SalesLogix.BusinessRules;
 using Sage.SalesLogix.CampaignStage;
 using Sage.Platform.Application.UI;
 using Sage.Platform.Orm.Interfaces;
 using Sage.Platform.WebPortal.Services;
 using Sage.Platform.WebPortal;
+using Sage.SalesLogix.HighLevelTypes;
 
 public partial class SmartParts_Campaign_AddEditStage : EntityBoundSmartPartInfoProvider
 {
@@ -159,6 +161,12 @@ public partial class SmartParts_Campaign_AddEditStage : EntityBoundSmartPartInfo
     /// </summary>
     private void LoadView()
     {
+        var value = BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+        if (!String.IsNullOrEmpty(value))
+        {
+            var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+            luLeadSource.LookupPreFilters.Add(leadSourcePreFilter);
+        }
         //New Stage
         if (_stage.Id == null)
         {

@@ -1,4 +1,4 @@
-define((
+define("Sage/TaskPane/User/nls/en/ContactUserAssociationEditor", (
 { btnCancel_Caption: 'Cancel',
   btnOK_Caption: 'OK',
   dialogTitleText: 'Associate User with Contact',

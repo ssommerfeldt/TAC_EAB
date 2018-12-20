@@ -117,64 +117,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="merge_Caption" xml:space="preserve">
-    <value>Слияние</value>
-  </data>
-  <data name="Target.Caption" xml:space="preserve">
-    <value>Цель</value>
-  </data>
-  <data name="LinkToAccounting.Caption" xml:space="preserve">
-    <value>Ссылка на учет - Слияние Контактов</value>
-  </data>
-  <data name="grdMerge.EmptyTableRowText" xml:space="preserve">
-    <value>Информация для этих запией идентична. Кликните "Показать все поля", чтобы увидеть значения каждого поля.</value>
-  </data>
-  <data name="lnkShowAll.Caption" xml:space="preserve">
-    <value>Отобразить все</value>
-  </data>
-  <data name="Header.Property.Caption" xml:space="preserve">
-    <value>Свойство</value>
+  <data name="btnOK.Caption" xml:space="preserve">
+    <value>OК</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="error_Security_NoAccess" xml:space="preserve">
+    <value>Отсутствует требуемый безопасный доступ к выбранным записям.</value>
+  </data>
+  <data name="lblMergeText_DifferencesFound.Text" xml:space="preserve">
+    <value>Объединить данные — найдены различия</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MergeRecords_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>MergeRecords_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="lblMergeDetailDifferences.Caption" xml:space="preserve">
+    <value>Выберите данные для сохранения в объединяемой записи. Стандартно в списке показываются поля с разными значениями.</value>
+  </data>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Назад</value>
+  </data>
+  <data name="btnNext.Caption" xml:space="preserve">
+    <value>Дальше &gt;</value>
+  </data>
+  <data name="lnkShowAll.Caption" xml:space="preserve">
+    <value>Отобразить все</value>
+  </data>
   <data name="lnkHideDups.Caption" xml:space="preserve">
     <value>Скрыть дубликаты</value>
   </data>
-  <data name="error_Promoted_Target" xml:space="preserve">
-    <value>Исходная запись была выдвинута. Невозможно выполнить объединение в исходную запись, которая ранее была выдвинута.</value>
-  </data>
-  <data name="LinkAddress.Caption" xml:space="preserve">
-    <value>Связать адреса</value>
-  </data>
-  <data name="lblMergeText_DifferencesFound.Text" xml:space="preserve">
-    <value>Слияние данных - найдены различия</value>
-  </data>
-  <data name="error_Security_NoAccess" xml:space="preserve">
-    <value>Вы не имеете требуемого доступа безопасности для доступа к выбранной записи.</value>
-  </data>
-  <data name="lblMergeDetailNoDifferences.Caption" xml:space="preserve">
-    <value>Выбранные записи не содержат конфликтных данных и не требуют проведения соответствия.</value>
-  </data>
-  <data name="lblMergeDetailDifferences.Caption" xml:space="preserve">
-    <value>Выберите данные для сохранения в объединяемой записи. Стандартно в списке показываются поля с разными заначениями.</value>
-  </data>
-  <data name="LinkToAccounting_SelectAccount.Caption" xml:space="preserve">
-    <value>Связь с учетом - Выбрать или создать субъект</value>
-  </data>
-  <data name="btnOK.Caption" xml:space="preserve">
-    <value>Ок</value>
+  <data name="LinkToAccounting.Caption" xml:space="preserve">
+    <value>Ссылка на учет — объединение контактов</value>
   </data>
   <data name="Source.Caption" xml:space="preserve">
     <value>Источник</value>
   </data>
+  <data name="Target.Caption" xml:space="preserve">
+    <value>Цель</value>
+  </data>
+  <data name="lblMergeDetailNoDifferences.Caption" xml:space="preserve">
+    <value>Выбранные записи не содержат конфликтных данных и не требуют проведения соответствия.</value>
+  </data>
   <data name="lblMergeText_NoDifferences.Text" xml:space="preserve">
-    <value>Слияние данных - различий нет</value>
+    <value>Объединить данные — различий нет</value>
   </data>
-  <data name="btnNext.Caption" xml:space="preserve">
-    <value>Следующий&gt;</value>
+  <data name="Header.Property.Caption" xml:space="preserve">
+    <value>Свойство</value>
   </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Назад</value>
+  <data name="grdMerge.EmptyTableRowText" xml:space="preserve">
+    <value>Информация для этих записей идентична. Щелкните "Показать все поля", чтобы увидеть значения каждого поля.</value>
+  </data>
+  <data name="LinkToAccounting_SelectAccount.Caption" xml:space="preserve">
+    <value>Связь с учетом — выбрать или создать клиента</value>
+  </data>
+  <data name="LinkAddress.Caption" xml:space="preserve">
+    <value>Связать адреса</value>
+  </data>
+  <data name="error_Promoted_Target" xml:space="preserve">
+    <value>Исходная запись была выдвинута. Невозможно выполнить объединение в исходную запись, которая ранее была выдвинута.</value>
+  </data>
+  <data name="merge_Caption" xml:space="preserve">
+    <value>Объединение</value>
   </data>
 </root>

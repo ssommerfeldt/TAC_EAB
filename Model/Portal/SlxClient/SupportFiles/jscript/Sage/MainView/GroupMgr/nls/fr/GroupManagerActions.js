@@ -1,0 +1,21 @@
+define("Sage/MainView/GroupMgr/nls/fr/GroupManagerActions", {
+    "SelectRecordMsg": "Vous devez sélectionner au moins un enregistrement pour pouvoir continuer.",
+    "SelectRecordMsgSingle": "Vous devez sélectionner un seul enregistrement pour pouvoir continuer.",
+    "ConfirmDeletionMsg": "Voulez-vous vraiment ${0} la sélection de ${1} ?",
+    "SelectedGroups": "groupe(s) (partages compris)",
+    "SelectedReleases": "groupe(s) partagé(s)",
+    "SelectedStatistics": "Statistiques du groupe",
+    "Yes": "Oui",
+    "No": "Non",
+    "Reset": "Réinitialiser",
+    "Delete": "Supprimer",
+    "InvalidSelectedGroup": "Le groupe sélectionné est partagé. Sélectionnez un groupe non partagé dont vous êtes propriétaire ou que vous contrôlez.",
+    "NotDeveloperGroup": "Le groupe sélectionné n'est plus en cours de développement.",
+    "NotGroupOwner": "Vous n'êtes pas propriétaire du groupe sélectionné. Sélectionnez un groupe dont vous êtes propriétaire ou que vous contrôlez.",
+    "OK": "OK",
+    "SelectOwner": "Sélectionner le propriétaire",
+    "FirstName": "Prénom",
+    "LastName": "Nom",
+    "UserName": "Nom d'utilisateur",
+    "Type": "Type"
+});

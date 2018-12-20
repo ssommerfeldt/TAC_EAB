@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="fc20e154-46db-4f47-a5cc-87043a141b1f" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="fc20e154-46db-4f47-a5cc-87043a141b1f" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2015-12-17T19:58:44.7619011Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
@@ -34,22 +34,6 @@
         </ResourceKind>
         <PathSegments />
         <Columns>
-          <QFSDataCheckBoxCol>
-            <StyleScheme />
-            <DataField>Enabled</DataField>
-            <ColumnId>6dd9a68d-8002-4804-97cc-bfbfad954fe7</ColumnId>
-            <HorizontalAlignment>center</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>Enabled</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
-            <HideCondition />
-            <Width>6</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-          </QFSDataCheckBoxCol>
           <QFEditableCol>
             <StyleScheme />
             <DataField>Integration.Name</DataField>
@@ -92,7 +76,7 @@
             <IsSortable>true</IsSortable>
             <SortField>ExternalIdentifier</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
+            <IsEditable>false</IsEditable>
             <HideCondition />
             <Width>15</Width>
             <CustomFormatter />
@@ -154,56 +138,7 @@
         <ChildRelationshipPropertyName />
         <OnDataChange />
         <OnAdd />
-        <Tools>
-          <SDataGridTool>
-            <Name>btnEnableSync</Name>
-            <Image>[Localization!Global_Images:Sync_Enable_16x16]</Image>
-            <DisplayInInsert>false</DisplayInInsert>
-            <MergePosition>Default</MergePosition>
-            <MergeControlId />
-            <OnClick>function () {
-//get grid selections to enable sync
-//var grid = this;
-var selectedItems = grid.selection.getSelected();
-if (selectedItems.length &lt; 1) {
-    Sage.UI.Dialogs.showError(grid.noSelectionsText);
-    return;
-}
-if (selectedItems.length) {
-    dojo.forEach(selectedItems, function (selectedItem) {
-        if (selectedItem !== null) {
-            if (selectedItem.IsUserIntegrationMap) {
-
-            }
-            //			                                 dojo.forEach(grid.store.getAttributes(selectedItem), function(attribute) {
-            //			                                     // Get the value of the current attribute:
-            //			                                     var value = grid.store.getValues(selectedItem, attribute);
-            //			                                     // Now, you can do something with this attribute/value pair.
-            //			                                     // Our short example shows the attribute together
-            //			                                     // with the value in an alert box, but we are sure, that
-            //			                                     // you'll find a more ambitious usage in your own code:
-            //			                                     alert('attribute: ' + attribute + ', value: ' + value);
-            //			                                 }); // end forEach
-        } // end if
-    }); // end forEach
-}
-}</OnClick>
-            <StyleScheme />
-            <AppliedSecurity />
-          </SDataGridTool>
-          <SDataGridTool>
-            <Name>btnDisableSync</Name>
-            <Image>[Localization!Global_Images:Sync_Disable_16x16]</Image>
-            <DisplayInInsert>false</DisplayInInsert>
-            <MergePosition>Default</MergePosition>
-            <MergeControlId />
-            <OnClick>function () {
-//get grid selections to disable sync 
-}</OnClick>
-            <StyleScheme />
-            <AppliedSecurity />
-          </SDataGridTool>
-        </Tools>
+        <Tools />
       </QFSDataGrid>
     </Control>
   </Controls>

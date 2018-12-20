@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="sdgrdErpPayFrom.f3476d60-79d2-40bb-9ef1-5f4e538e97ab.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="sdgrdErpPayFrom.aff36586-332a-4963-9340-f7773094024a.ColumnHeading" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="sdgrdErpPayFrom.1635f166-5565-41e7-8a08-f70b223a2d81.ColumnHeading" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="sdgrdErpPayFrom.15aa3cf7-ea0c-457a-91a5-f96cd1af19fe.ColumnHeading" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="sdgrdErpPayFrom.28acb096-f72a-497e-99b9-3b8975d11fdf.ColumnHeading" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="sdgrdErpPayFrom.3c0ed078-17f5-4f5f-877c-d9ba8fe56d6e.ColumnHeading" xml:space="preserve">
+    <value>ERP Status</value>
+  </data>
+  <data name="sdgrdErpPayFrom.1f672043-27c2-400c-91ed-d7643dfb3877.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="sdgrdErpPayFrom.110e70ab-2bb0-4e71-9221-903ea17e56b4.ColumnHeading" xml:space="preserve">
+    <value>Accounting Entity</value>
+  </data>
+  <data name="sdgrdErpPayFrom.EmptyTableRowText" xml:space="preserve">
+    <value>No records match the selection criteria.</value>
+  </data>
+  <data name="sdgrdErpPayFrom.95ad4469-5f20-4c37-bc18-5a6610fb71c0.ColumnHeading" xml:space="preserve">
+    <value>External ID</value>
+  </data>
+  <data name="sdgrdErpPayFrom.bbad8739-ca84-4bb2-acf2-b3a86f65ee2e.ColumnHeading" xml:space="preserve">
+    <value>ERP Status</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.Email.PropertyHeader" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lueAddERPPayFrom.ButtonToolTip" xml:space="preserve">
+    <value>Associate Pay From</value>
+  </data>
+  <data name="lueAddERPPayFrom.DialogButtonText" xml:space="preserve">
+    <value>Add Selected</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupDialogTitle" xml:space="preserve">
+    <value>Lookup Pay From</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.ErpDisplayId.PropertyHeader" xml:space="preserve">
+    <value>ERP Display ID</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.ErpStatus.PropertyHeader" xml:space="preserve">
+    <value>ERP Status</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.ErpAccountingEntityId.PropertyHeader" xml:space="preserve">
+    <value>Accounting Entity</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.ErpLogicalId.PropertyHeader" xml:space="preserve">
+    <value>ERP Logical ID</value>
+  </data>
+  <data name="sdgrdErpPayFrom.Delete.ToolTip" xml:space="preserve">
+    <value>Remove Selected Pay From(s)</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.Address.Country.PropertyHeader" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.CreateUser.PropertyHeader" xml:space="preserve">
+    <value>Create User</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="lueAddERPPayFrom.LookupProperties.ErpExtId.PropertyHeader" xml:space="preserve">
+    <value>Pay From ID</value>
+  </data>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Add Pay From</value>
+  </data>
+  <data name="error_PayfromCanNotAdd" xml:space="preserve">
+    <value>A Pay From cannot be added until the Bill To is Synced.</value>
+  </data>
+</root>

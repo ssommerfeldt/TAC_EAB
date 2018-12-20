@@ -6,7 +6,7 @@
     <tr>
     <td colspan="2">
 	    <div style="position:relative;">
-        <div style="position:absolute; top:-23px; right:45px; ">
+        <div style="position:absolute; top:-32px; right:45px; ">
 			       <SalesLogix:PageLink ID="SelectHelpLink" runat="server" LinkType="HelpFileName" ToolTip="<%$ resources: Portal, Help_ToolTip %>" Target="Help" NavigateUrl="queryconditionvalue.aspx" ImageUrl="~/images/icons/Help_16x16.png"></SalesLogix:PageLink>
 			</div>
             </div>
@@ -20,8 +20,8 @@
 				<tr>
 					<td valign="top"><asp:Localize ID="localizeSelectValueFromList" runat="server" Text="<%$ resources: localizeSelectValueFromList.Text %>" /></td>
 					<td rowspan="2" class="padded" valign="top">
-						<input type="button" id="btnOK" value='<asp:Localize ID="localizeOK" runat="server" Text="<%$ resources: localizeOK.Text %>" />' onclick="browseField_valueSelected();" class="button" style="width:60px" /><br> 
-						<input type="button" id="btnCancel" value='<asp:Localize ID="localizeCancel" runat="server" Text="<%$ resources: localizeCancel.Text %>" />' onclick="window.close()" class="button" style="width:60px" /><br>
+						<input type="button" id="btnOK" value='<asp:Localize ID="localizeOK" runat="server" Text="<%$ resources: localizeOK.Text %>" />' onclick="browseField_valueSelected();"/><br> 
+						<input type="button" id="btnCancel" value='<asp:Localize ID="localizeCancel" runat="server" Text="<%$ resources: localizeCancel.Text %>" />' onclick="window.close()"/><br>
 					</td>
 				</tr>
 				<tr>

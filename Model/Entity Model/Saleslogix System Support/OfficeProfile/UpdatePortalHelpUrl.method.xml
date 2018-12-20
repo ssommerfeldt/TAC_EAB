@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5cb59288-c252-4511-98db-d92e70a20c0f" lastModifiedUtc="2015-12-14T22:40:11.9194077Z" name="UpdatePortalHelpUrl" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="2e7949e5-0341-43ee-87c2-73653aa8f72d" paramName="portalName" sequence="0" paramType="String">
+      <description>name of the portal to save</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="3a18b67f-be15-4d93-b141-2a2c1786a273" paramName="helpUrl" sequence="0" paramType="String" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="b6b90276-1937-41fd-92e2-19bddbc1bca5" lastModifiedUtc="2015-12-14T23:35:34.6993289Z" targetType="Sage.BusinessRules.CodeSnippets.OfficeProfileBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="UpdatePortalHelpUrlStep" active="true" codeSnippetId="9e65dfaf-1c12-47aa-9f83-7c4689bf6c1c">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Alarms/AlarmPopup", [
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
     'dijit/_Widget',
@@ -242,6 +242,9 @@ function (_TemplatedMixin,
             return this._alarms.getUnhandledAlertCount() + this._confirms.getUnhandledAlertCount();
         },
         onAlertChanged: function () {
+        },
+        // checkbox click causes a change event to occur in widget which is captured by popup.js line 354
+        onChange: function () {
         }
     });
     return widget;

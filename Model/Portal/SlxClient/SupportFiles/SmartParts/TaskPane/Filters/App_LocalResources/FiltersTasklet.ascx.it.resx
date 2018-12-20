@@ -117,14 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClearAll" xml:space="preserve">
-    <value>Pulisci Tutto</value>
-  </data>
-  <data name="ShowAll" xml:space="preserve">
-    <value>... tutti</value>
-  </data>
   <data name="BlankText" xml:space="preserve">
     <value>vuoto</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>cancella tutto</value>
   </data>
   <data name="DialogCancel" xml:space="preserve">
     <value>Annulla</value>
@@ -132,22 +129,28 @@
   <data name="DialogMessage" xml:space="preserve">
     <value>Seleziona i filtri dai campi seguenti:</value>
   </data>
-  <data name="UndoFilters" xml:space="preserve">
-    <value>Annulla Filtri</value>
+  <data name="DialogOK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="DialogTitle" xml:space="preserve">
-    <value>Modifica Filtri</value>
-  </data>
-  <data name="SelectAll" xml:space="preserve">
-    <value>Seleziona Tutto</value>
-  </data>
-  <data name="ShowMore" xml:space="preserve">
-    <value>... Altro</value>
+    <value>Modifica filtri</value>
   </data>
   <data name="EditTool.Text" xml:space="preserve">
     <value>Modifica</value>
   </data>
-  <data name="DialogOK" xml:space="preserve">
-    <value>OK</value>
+  <data name="NullText" xml:space="preserve">
+    <value>Null</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>seleziona tutto</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>... tutti</value>
+  </data>
+  <data name="ShowMore" xml:space="preserve">
+    <value>... altro</value>
+  </data>
+  <data name="UndoFilters" xml:space="preserve">
+    <value>Annulla filtri</value>
   </data>
 </root>

@@ -16,7 +16,7 @@ function browseField_valueSelected() {
     } else {
         returnValue = document.getElementById(browseFieldResources.listValues).value;
     }
-
+    returnValue = Sage.Utility.htmlDecode(returnValue);
     if ((window.opener.QueryBuilderMain.currentCondition.getTypeCode() == '11') && ((window.opener.document.getElementById("selCondOperator").value.toUpperCase().indexOf('WITHIN') == -1) || window.opener.document.getElementById("chkLiteral").checked)) {
         if (window.opener.document.getElementById("chkLiteral").checked) {
             window.opener.document.getElementById("txtValueIs").value = returnValue;            

@@ -1,5 +1,5 @@
-﻿/*globals define, window  */
-define([
+/*globals define, window  */
+define("Sage/UI/_DialogLoadingMixin", [
     'dojo/_base/declare',
     'dojox/widget/Standby'
 ],

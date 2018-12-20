@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/ActivityEditorAttendeesTab", (
 { header_Name: 'Name',
   header_AccountName: 'Account/Company',
   header_Type: 'Type',
@@ -11,6 +11,7 @@ define((
   tooltip_speedSearch: 'Add Participant',
   tooltip_AddContact: 'Add Contact',
   tooltip_AddLead: 'Add Lead',
-  tooltip_Delete: "Delete"
+  tooltip_Delete: "Delete",
+  header_Attendee: "Is Attendee"
 }
 ));

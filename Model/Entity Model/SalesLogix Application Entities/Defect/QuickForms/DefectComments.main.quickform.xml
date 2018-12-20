@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f2112b36-e31b-4e87-9670-2e8f5f5d13eb" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f2112b36-e31b-4e87-9670-2e8f5f5d13eb" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-01-05T01:52:58.7466943Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
@@ -63,6 +63,7 @@
                   <AppliedSecurity />
                   <RefreshData>False</RefreshData>
                 </OnChangeAction>
+                <UserDateStamp>true</UserDateStamp>
                 <Required>false</Required>
               </QFTextBox>
             </Control>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="279b131c-b52b-43f2-b292-07d988e1665c" lastModifiedUtc="2015-12-09T21:43:28.6881328Z" name="cmdCopyOpportunity_OnClick" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="OpportunityDetails">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="653638d2-9c16-4858-b4a7-e9ce874f6722" paramName="form" sequence="0" paramType="IOpportunityDetails" />
+    <OrmEntityMethodParam id="2f838f5e-33cd-4722-abc7-6e6f50bc1a96" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="de8704b2-d90b-4ae7-9260-02cc35415315" lastModifiedUtc="2015-12-10T18:01:29.2835863Z" targetType="Sage.BusinessRules.CodeSnippets.OpportunityDetailsEventHandlers, Sage.SnippetLibrary.CSharp" targetMethod="cmdCopyOpportunity_OnClickStep" active="true" codeSnippetId="ea481e10-b8ec-4571-8994-3b1c6e764970">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

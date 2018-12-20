@@ -117,70 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="lueRateType.LookupProperties.RateTypeDescription.PropertyHeader" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="lueRateType.Caption" xml:space="preserve">
-    <value>Тип ставки:</value>
-  </data>
-  <data name="dteCompletedDate.Caption" xml:space="preserve">
-    <value>Дата завершен.:</value>
-  </data>
-  <data name="curRate.Caption" xml:space="preserve">
-    <value>Оценка дела:</value>
+  <data name="lueRateType.LookupProperties.Ratetypecode.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
   </data>
   <data name="lueRateType.LookupProperties.Ratetypedesc.PropertyHeader" xml:space="preserve">
     <value>Описание</value>
   </data>
+  <data name="lueRateType.LookupProperties.Rateamount.PropertyHeader" xml:space="preserve">
+    <value>Сумма ставки</value>
+  </data>
+  <data name="hzsDetail.Caption" xml:space="preserve">
+    <value />
+  </data>
   <data name="txtComments.Caption" xml:space="preserve">
     <value>Комментарии</value>
   </data>
-  <data name="txtElapsedHours.ToolTip" xml:space="preserve">
-    <value>инструменты</value>
+  <data name="pklActivity.Caption" xml:space="preserve">
+    <value>Действие:</value>
   </data>
-  <data name="dteReceivedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
+  <data name="lueRateType.Caption" xml:space="preserve">
+    <value>Тип ставки:</value>
   </data>
-  <data name="cmdDateStampComments.ToolTip" xml:space="preserve">
-    <value>Пользовательская отметка даты</value>
+  <data name="dteReceivedDate.Caption" xml:space="preserve">
+    <value>Дата получения</value>
+  </data>
+  <data name="dteCompletedDate.Caption" xml:space="preserve">
+    <value>Дата завершения:</value>
   </data>
   <data name="txtUnits.Caption" xml:space="preserve">
     <value>Единицы времени:</value>
   </data>
-  <data name="dteCompletedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
+  <data name="curRate.Caption" xml:space="preserve">
+    <value>Ставка действия:</value>
   </data>
-  <data name="pklActivity.Caption" xml:space="preserve">
-    <value>Дело:</value>
+  <data name="curTotal.Caption" xml:space="preserve">
+    <value>Итого сборов:</value>
   </data>
   <data name="lueUser.Caption" xml:space="preserve">
     <value>Пользователь:</value>
   </data>
-  <data name="curTotal.Caption" xml:space="preserve">
-    <value>Полная стоимость:</value>
+  <data name="dteReceivedDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueRateType.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+  <data name="dteCompletedDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueUser.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+  <data name="lueUser.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="txtElapsedHours.Caption" xml:space="preserve">
-    <value>Затрач. часов:</value>
+  <data name="lueRateType.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueRateType.LookupProperties.Ratetypecode.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
+  <data name="cmdDateStampComments.ToolTip" xml:space="preserve">
+    <value>Метка даты пользователя</value>
   </data>
-  <data name="lueRateType.LookupProperties.Rateamount.PropertyHeader" xml:space="preserve">
-    <value>Сумма ставки</value>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OК</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="dteReceivedDate.Caption" xml:space="preserve">
-    <value>Дата получения:</value>
+  <data name="lueRateType.LookupProperties.RateTypeDescription.PropertyHeader" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="txtElapsedHours.Caption" xml:space="preserve">
+    <value>Затрач. часов:</value>
+  </data>
+  <data name="lueUser.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="lueRateType.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dteReceivedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dteCompletedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="txtElapsedHours.ToolTip" xml:space="preserve">
+    <value>инструменты</value>
   </data>
 </root>

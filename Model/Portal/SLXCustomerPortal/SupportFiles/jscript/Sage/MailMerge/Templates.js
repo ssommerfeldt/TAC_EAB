@@ -1,4 +1,4 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 /*
     // Example
     dojo.require("Sage.MailMerge.Templates");
@@ -15,7 +15,7 @@
     oTemplates.select(sMainTable, opts);
 */
 
-define([
+define("Sage/MailMerge/Templates", [
         "Sage/UI/Dialogs",
         "dijit/_Widget",
         "dijit/Dialog",

@@ -18,33 +18,22 @@
 
 <style type="text/css">
 
-.calendar-container
-{
-    height: 100%;
-    width:100%;
-    float:left;
-    /* position:absolute;
-    top: 30px;
-    left:400px;
-    background-color: Gray;  */
-}
-
-.calendar-container .dhx_cal_container 
-{    
-    border: 1px solid #A4BED4;
-
-}
-
-
-
-.userStyles {height:15px; width:15px; margin:4px;}
-.user1 {border:1px solid #6887B7; background-color:#CFDEF5;}
-.user2 {border:1px solid #A4BF7D; background-color:#D5E2BD;}
-.user3 {border:1px solid #C0915A; background-color:#FBDBB5;}
-.user4 {border:1px solid #A079C8; background-color:#DFC9F6;}
-.user5 {border:1px solid #C1B93F; background-color:#F5F1B1;}
-  
-
+    .calendar-container
+    {
+        height: 100%;
+        width:100%;
+        float:left;
+    }
+    .calendar-container .dhx_cal_container 
+    {    
+        border: 1px solid #A4BED4;
+    }
+    .userStyles {height:15px; width:15px; margin:4px;}
+    .user1 {border:1px solid #6887B7; background-color:#CFDEF5;}
+    .user2 {border:1px solid #A4BF7D; background-color:#D5E2BD;}
+    .user3 {border:1px solid #C0915A; background-color:#FBDBB5;}
+    .user4 {border:1px solid #A079C8; background-color:#DFC9F6;}
+    .user5 {border:1px solid #C1B93F; background-color:#F5F1B1;}
 
 </style>
 
@@ -56,29 +45,30 @@
 
             var resizeIframe = function () {
                 try {
-                    var newheight = parseInt(dojo.byId('centerContent').style.height) - 35;
+                    var newheight = parseInt(dojo.byId('centerContent').style.height) - 45;
                     dojo.byId('mainContentDetails').style.height = parseInt(dojo.byId('centerContent').style.height) + "px";
-                    dojo.byId('tabContent').style.display = 'none';
+                    var tabs = dojo.byId('tabContent');
+                    if (tabs) {
+                        tabs.style.display = 'none';
+                    }
                     dojo.byId('scheduler_iframe').height = newheight + "px";
                 } catch (e) {
                 }
             };
 
-            dojo.connect(window, "onload", this, resizeIframe);
+            resizeIframe();
             dojo.connect(window, "onresize", this, resizeIframe);
 
-
-
             dojo.connect(dojo.byId("scheduler_iframe"), "onload", this, function () {
-                
+
 
                 dojo.subscribe("/entity/activity/SchedulerCreated", function update(userOptions) {
-                   
+
                     var ac = new Sage.MainView.ActivityMgr.ActivityCalendar(window);
 
-                    
+
                     dojo.subscribe("/sage/ui/calendarUserList/loaded", function loadCalendarUsers(data) {
-                        
+
                         if (data) {
                             for (var i in data) {
                                 data[i]["defaultcalendarview"] = userOptions['defaultcalendarview'];
@@ -109,7 +99,7 @@
                     });
 
                     dojo.subscribe("/sage/ui/calendarUser/selectionChanged/add", function addUser(data) {
-                        
+
                         var userAr = [];
                         var userObj = {};
                         userObj["userId"] = data.userId.toString();
@@ -144,10 +134,10 @@
 
 
                 var sc = dojo.byId('scheduler_iframe').contentWindow.scheduler;
-                
+
                 var acs = new Sage.UI.ActivityScheduler(sc, 'slxLogixScheduler', dojo.byId("scheduler_iframe").contentWindow, "scheduler_iframe");
-                
-                dojo.subscribe("/entity/activity/loadScheduler", function loadMe(data) {                    
+
+                dojo.subscribe("/entity/activity/loadScheduler", function loadMe(data) {
                     acs._loadAllEvents(data);
                 });
                 dojo.subscribe("/entity/activity/calendar/navigationCalendarDateChanged", function setDate(date) {
@@ -156,8 +146,6 @@
                 dojo.subscribe("/entity/activity/clearSchedulerEvents", function clear(data) {
                     acs._clearSchedulerEvents(data);
                 });
-
-
             });
 
             var titleContentPane = dijit.byId('titlePane');
@@ -185,7 +173,6 @@
                 id="scheduler_iframe" 
                 title="Scheduler"
                 width = "100%" 
-                height="900" 
                 frameborder="0"                
                 scrolling="auto">
        

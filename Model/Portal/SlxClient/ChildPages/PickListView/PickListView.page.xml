@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6bc85016-8103-4093-aea4-cf7b00f583c4">
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6bc85016-8103-4093-aea4-cf7b00f583c4" disablePageValidation="false">
   <PageAlias>PickListView</PageAlias>
   <SmallImage>[Localization!Global_Images:pick_lists_16x16]</SmallImage>
   <LargeImage>[Localization!Global_Images:pick_lists_24x24]</LargeImage>
-  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <TemplateUrl>Masters\admin.master</TemplateUrl>
   <InheritTemplate>false</InheritTemplate>
   <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
   <Properties>
@@ -14,5 +14,6 @@
   </TemplateProperties>
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />
-  <AppliedSecurity>Administration/View</AppliedSecurity>
+  <AppliedSecurity>Administration/Picklist/View</AppliedSecurity>
+  <IncludeScript />
 </PortalPage>

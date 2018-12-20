@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/Workspaces/Dialog", [
        'dojo/dom',
        'dojo/dom-style',
        'dojo/dom-construct',
@@ -71,14 +71,16 @@ function (dom, domStyle, construct, Dialog, manipulate, declare, _DialogHelpIcon
 
             width = evt.width || 500;
             domStyle.set(this.domNode, 'width', width + 'px');
+            domStyle.set(this.domNode, 'min-width', width + 'px');
+            domStyle.set(this.domNode, 'max-width', width + 'px');
 
             height = evt.height || 200;
             //set the height position on the content pane and not the dijitDialog so that scroll bars when applicable do not scroll the title pane as well
             query('.dijitDialogPaneContent').style({
-                'height': height + 'px',
-                'overflow': 'auto'
+                'overflow': 'auto',
+                'height': height + 'px'
             });
-            
+
             var value = Sys.Serialization.JavaScriptSerializer.serialize(evt);
             var stateNode = dom.byId(this._stateClientId);
             stateNode.value = value;

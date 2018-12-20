@@ -11,7 +11,7 @@ using Sage.Platform.Orm.Interfaces;
 
 public partial class SmartParts_AddressList : EntityBoundSmartPartInfoProvider 
 {
-    [ServiceDependency(Type = typeof(IEntityContextService), Required = true)]
+    [ServiceDependency]
     public IEntityContextService EntityService { get; set; }
 
     public override Type EntityType
@@ -144,12 +144,12 @@ public partial class SmartParts_AddressList : EntityBoundSmartPartInfoProvider
         if (e.CommandName.Equals("Edit"))
         {
             int rowIndex = Convert.ToInt32(e.CommandArgument);
-            string Id = AddressGrid.DataKeys[rowIndex].Value.ToString();
+            var id = AddressGrid.DataKeys[rowIndex].Value.ToString();
             if (DialogService != null)
             {
                 DialogService.SetSpecs(200, 200, 440, 300, "AddEditAddress", "", true);
                 DialogService.EntityType = typeof(IAddress);
-                DialogService.EntityID = Id;
+                DialogService.EntityID = id;
                 DialogService.ShowDialog();
             }
             return;
@@ -157,8 +157,8 @@ public partial class SmartParts_AddressList : EntityBoundSmartPartInfoProvider
         if (e.CommandName.Equals("Delete"))
         {
             int rowIndex = Convert.ToInt32(e.CommandArgument);
-            string Id = AddressGrid.DataKeys[rowIndex].Value.ToString();
-            IAddress address = EntityFactory.GetById<IAddress>(Id);
+            var id = AddressGrid.DataKeys[rowIndex].Value.ToString();
+            var address = EntityFactory.GetById<IAddress>(id);
             if ((address.IsPrimary == true) || (address.IsMailing == true))
             {
                 if (DialogService != null)

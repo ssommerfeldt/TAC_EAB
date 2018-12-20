@@ -117,38 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueAssociateCompetitor.ButtonToolTip" xml:space="preserve">
-    <value>Ajouter un concurrent</value>
-  </data>
-  <data name="DuplicateCompetitorMsg" xml:space="preserve">
-    <value>{0} est déjà associé à cette opportunité.</value>
-  </data>
-  <data name="grdOppCompetitors.e1e41ffc-1494-4188-bcc8-83cf568985dc.Text" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="lueAssociateCompetitor.LookupProperties.Strengths.PropertyHeader" xml:space="preserve">
-    <value>Points forts</value>
-  </data>
   <data name="grdOppCompetitors.dee29184-964d-4b80-9665-c6588f28be58.ColumnHeading" xml:space="preserve">
     <value>Concurrent</value>
+  </data>
+  <data name="grdOppCompetitors.dee29184-964d-4b80-9665-c6588f28be58.FormatString" xml:space="preserve">
+    <value />
   </data>
   <data name="grdOppCompetitors.387ab373-6251-4066-a6a4-f62e43f6c507.ColumnHeading" xml:space="preserve">
     <value>Evaluation</value>
   </data>
-  <data name="lueAssociateCompetitor.LookupProperties.Rating.PropertyHeader" xml:space="preserve">
-    <value>Evaluation</value>
+  <data name="grdOppCompetitors.387ab373-6251-4066-a6a4-f62e43f6c507.FormatString" xml:space="preserve">
+    <value />
   </data>
-  <data name="grdOppCompetitors.EmptyTableRowText" xml:space="preserve">
-    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
+  <data name="grdOppCompetitors.91df61c9-bfa0-4b34-b33f-d9bcfbfb0903.ColumnHeading" xml:space="preserve">
+    <value>Points faibles</value>
+  </data>
+  <data name="grdOppCompetitors.91df61c9-bfa0-4b34-b33f-d9bcfbfb0903.FormatString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdOppCompetitors.e1e41ffc-1494-4188-bcc8-83cf568985dc.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdOppCompetitors.e1e41ffc-1494-4188-bcc8-83cf568985dc.FormatString" xml:space="preserve">
+    <value />
   </data>
   <data name="grdOppCompetitors.e1e41ffc-1494-4188-bcc8-83cf568985dc.ConfirmationMessage" xml:space="preserve">
-    <value>Voulez-vous vraiment supprimer cet élément ?</value>
+    <value>Souhaitez-vous vraiment supprimer cet élément ?</value>
+  </data>
+  <data name="grdOppCompetitors.e1e41ffc-1494-4188-bcc8-83cf568985dc.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="grdOppCompetitors.47b79b74-6484-4b2b-94fd-978b86cd3bc2.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdOppCompetitors.47b79b74-6484-4b2b-94fd-978b86cd3bc2.FormatString" xml:space="preserve">
+    <value />
   </data>
   <data name="grdOppCompetitors.47b79b74-6484-4b2b-94fd-978b86cd3bc2.Text" xml:space="preserve">
     <value>Modifier</value>
   </data>
-  <data name="DuplicateCompetitorMsgTitle" xml:space="preserve">
-    <value>Dupliquer le concurrent</value>
+  <data name="grdOppCompetitors.EmptyTableRowText" xml:space="preserve">
+    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
+  </data>
+  <data name="lueAssociateCompetitor.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAssociateCompetitor.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
   <data name="lueAssociateCompetitor.LookupProperties.CompetitorName.PropertyHeader" xml:space="preserve">
     <value>Concurrent</value>
@@ -156,7 +171,19 @@
   <data name="lueAssociateCompetitor.LookupProperties.Strategy.PropertyHeader" xml:space="preserve">
     <value>Stratégie</value>
   </data>
-  <data name="grdOppCompetitors.91df61c9-bfa0-4b34-b33f-d9bcfbfb0903.ColumnHeading" xml:space="preserve">
-    <value>Faiblesses</value>
+  <data name="lueAssociateCompetitor.LookupProperties.Rating.PropertyHeader" xml:space="preserve">
+    <value>Evaluation</value>
+  </data>
+  <data name="lueAssociateCompetitor.LookupProperties.Strengths.PropertyHeader" xml:space="preserve">
+    <value>Points forts</value>
+  </data>
+  <data name="lueAssociateCompetitor.ButtonToolTip" xml:space="preserve">
+    <value>Ajouter un concurrent</value>
+  </data>
+  <data name="DuplicateCompetitorMsg" xml:space="preserve">
+    <value>{0} est déjà associé à cette opportunité.</value>
+  </data>
+  <data name="DuplicateCompetitorMsgTitle" xml:space="preserve">
+    <value>Concurrent en double</value>
   </data>
 </root>

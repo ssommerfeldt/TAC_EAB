@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d685140f-dade-459f-a777-2940b4191f7f" lastModifiedUtc="2016-04-13T22:23:51.3697143Z" name="OnBeforeERPStatusChanged" methodType="PropertyEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="e45c3bb3-3043-45c8-b826-47679fbca417" lastModifiedUtc="2016-04-13T22:23:49.0887143Z" targetType="Sage.SalesLogix.ErpSalesOrder.ErpSalesOrder, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeERPStatusChanged" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

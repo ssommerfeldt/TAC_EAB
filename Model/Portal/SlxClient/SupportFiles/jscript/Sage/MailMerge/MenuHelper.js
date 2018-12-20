@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MailMerge/MenuHelper", [
         "Sage/MailMerge/Helper",
         "dojo/_base/declare"
     ],

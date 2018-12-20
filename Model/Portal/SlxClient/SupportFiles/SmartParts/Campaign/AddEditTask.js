@@ -4,9 +4,18 @@ Sage.UI.Forms.AddEditTask = {
     init: function (workSpace) {
         this._workSpace = workSpace;
     },
-    onAssignToTypeChange: function (optionIndex) {
-        this.setAssignTo(optionIndex);
-        this.setOwnerType(optionIndex);
+    onAssignToTypeChange: function () {
+        var assignTo = document.getElementsByName(this._workSpace.assignToID);
+        if (assignTo) {
+            var index = 0;
+            for (var j = 0; j < assignTo.length; j++) {
+                if (assignTo[j].checked) {
+                    index = assignTo[j].value;
+                }
+            }
+            this.setAssignTo(index);
+            this.setOwnerType(index);
+        }
     },
     setAssignTo: function (ownerType) {
         this.showControl(this._workSpace.opt0ID, (ownerType == 0));

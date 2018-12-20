@@ -1,5 +1,5 @@
-﻿/*globals define, Sage, window, dojo */
-define([
+/*globals define, Sage, window, dojo */
+define("Sage/Utility/File/Attachment", [
     'Sage/Data/SingleEntrySDataStore',
     'Sage/Data/SDataServiceRegistry',
     'Sage/Utility/File',
@@ -42,11 +42,19 @@ define([
                 this._descriptionsForm.show();
             },
             createAttachmentSilent: function (file, mixin) {
+
+                //remove paths if they were passed as a part of the file name
+                //this can happen if we are passed message object from our BHO
+                var filenameParts = file.name.split("\\");
+                var filename = filenameParts[filenameParts.length - 1];
                 if (!mixin.hasOwnProperty('description')) {
-                    mixin['description'] = this.getDefaultDescription(file.name);
+                    mixin['description'] = this.getDefaultDescription(filename);
                 }
                 //console.log("creating attachment silently - desc: " + mixin['description']);
-                this._mixinsByName[file.name] = dLang.mixin(mixin, {
+
+
+
+                this._mixinsByName[filename] = dLang.mixin(mixin, {
                     attachDate: Utility.Convert.toIsoStringFromDate(new Date()),
                     dataType: 'R'
                 });

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d32503b8-b507-45bf-94c1-01fbcf9c5a6c" lastModifiedUtc="2016-04-14T17:53:21.4460436Z" name="RequestItemPriceService" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="d9a2c9b1-83af-418b-ba76-bf9b80f1ae68" lastModifiedUtc="2016-04-14T17:57:03.9873058Z" targetType="Sage.SalesLogix.Quote.QuoteItem, Sage.SalesLogix.BusinessRules" targetMethod="RequestItemPriceService" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

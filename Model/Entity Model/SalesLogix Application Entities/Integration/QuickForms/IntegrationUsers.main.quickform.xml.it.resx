@@ -117,61 +117,106 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="error_MissingLinkId" xml:space="preserve">
-    <value>Non è stato definito un collegamento oppure sono stati definiti più collegamenti. È necessario definire un solo collegamento di integrazione quando il tipo del collegamento di integrazione è impostato come Amministrativo. Correggere il problema prima di continuare.</value>
-  </data>
-  <data name="grdUsers.Save.ToolTip" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.Division.PropertyHeader" xml:space="preserve">
-    <value>Divisione</value>
-  </data>
-  <data name="grdUsers.2acc77c9-abfe-41cf-a8d5-a025adb64ee6.ColumnHeading" xml:space="preserve">
-    <value>Reparto</value>
-  </data>
-  <data name="grdUsers.Cancel.ToolTip" xml:space="preserve">
-    <value>Annulla Modifiche</value>
-  </data>
-  <data name="grdUsers_AddRelationTool.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="btnAddUser.Caption" xml:space="preserve">
-    <value>Aggiungi Utente</value>
-  </data>
-  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Nome Utente</value>
-  </data>
-  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
-    <value>Regione</value>
-  </data>
-  <data name="grdUsers.43c32e14-eb8e-467d-ae89-bfb058b739a5.ColumnHeading" xml:space="preserve">
-    <value>Mappatura integrazione</value>
-  </data>
-  <data name="grdUsers_AddRelationTool.LookupDialogTitle" xml:space="preserve">
-    <value>Ricerca Utente</value>
+  <data name="grdUsers.54fb01a9-10a4-4883-856c-927744dde02d.ColumnHeading" xml:space="preserve">
+    <value>Attiva sincronizzazione</value>
   </data>
   <data name="grdUsers.c71fa552-e713-4b8f-a839-f0b352c1804c.ColumnHeading" xml:space="preserve">
     <value>Nome utente:</value>
   </data>
+  <data name="grdUsers.a46d8081-5c68-4020-9bf2-0c8dc3fdf6c3.ColumnHeading" xml:space="preserve">
+    <value>Tipo di utente</value>
+  </data>
+  <data name="grdUsers.2acc77c9-abfe-41cf-a8d5-a025adb64ee6.ColumnHeading" xml:space="preserve">
+    <value>Reparto</value>
+  </data>
+  <data name="grdUsers.43c32e14-eb8e-467d-ae89-bfb058b739a5.ColumnHeading" xml:space="preserve">
+    <value>Mappatura integrazione</value>
+  </data>
+  <data name="btnAddUser.Caption" xml:space="preserve">
+    <value>Aggiungi utente</value>
+  </data>
   <data name="btnAddUser.ToolTip" xml:space="preserve">
     <value>Aggiungi un utente</value>
-  </data>
-  <data name="grdUsers_AddRelationTool.DialogButtonText" xml:space="preserve">
-    <value>Aggiungi il(i) Selezionato(i)</value>
-  </data>
-  <data name="grdUsers.a46d8081-5c68-4020-9bf2-0c8dc3fdf6c3.ColumnHeading" xml:space="preserve">
-    <value>Tipo Utente</value>
   </data>
   <data name="grdUsers.Delete.ToolTip" xml:space="preserve">
     <value>Rimuovi</value>
   </data>
+  <data name="grdUsers_AddRelationTool.ButtonToolTip" xml:space="preserve">
+    <value>Aggiungi utenti</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.DialogButtonText" xml:space="preserve">
+    <value>Aggiungi selezionato</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupDialogTitle" xml:space="preserve">
+    <value>Ricerca utente</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Nome utente</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.Division.PropertyHeader" xml:space="preserve">
+    <value>Divisione</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
+    <value>Regione</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="grdUsers.Save.ToolTip" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="grdUsers.Cancel.ToolTip" xml:space="preserve">
+    <value>Annulla modifiche</value>
+  </data>
   <data name="grdUsers.5a60b41f-90eb-4616-8e68-09d14df226d0.ColumnHeading" xml:space="preserve">
     <value>Utente</value>
   </data>
-  <data name="grdUsers_AddRelationTool.ButtonToolTip" xml:space="preserve">
-    <value>Aggiungi Utenti</value>
+  <data name="error_MissingLinkId" xml:space="preserve">
+    <value>Non è stato definito alcun collegamento oppure sono stati definiti più collegamenti. Definire un singolo collegamento quando il tipo di collegamento di integrazione è impostato su Amministratore. Correggere l’impostazione prima di continuare.</value>
   </data>
-  <data name="grdUsers.54fb01a9-10a4-4883-856c-927744dde02d.ColumnHeading" xml:space="preserve">
-    <value>Attiva sincronizzazione</value>
+  <data name="grdUsers.ac6a74da-29de-4f92-b965-863bde38235c.ColumnHeading" xml:space="preserve">
+    <value>Indirizzo e-mail</value>
+  </data>
+  <data name="grdUsers.efa55979-1ad4-4a2c-ad45-3e140603a091.ColumnHeading" xml:space="preserve">
+    <value>Nome utente</value>
+  </data>
+  <data name="grdUsers.153dd899-7fd1-41f3-be49-66774a5c2c7f.ColumnHeading" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="grdUsers_AddRelationTool.LookupProperties.UserInfo.Email.PropertyHeader" xml:space="preserve">
+    <value>E-mail UserInfo</value>
+  </data>
+  <data name="grdUsers.c7143c55-1271-4378-99df-ad05aa412339.ColumnHeading" xml:space="preserve">
+    <value>Verifica</value>
+  </data>
+  <data name="grdUsers.Authentication.ToolTip" xml:space="preserve">
+    <value>Convalida accesso alle cassette postali</value>
+  </data>
+  <data name="grdUsers.b68e8a94-57b4-4a7f-8a21-cfb207d02dc6.ColumnHeading" xml:space="preserve">
+    <value>Ultima data sincronizzazione</value>
+  </data>
+  <data name="grdUsers.898b76cc-4561-4005-b820-1c6d228f18e1.ColumnHeading" xml:space="preserve">
+    <value>Ultima data sincronizzazione</value>
+  </data>
+  <data name="grdUsers.678bed67-4e85-4253-b276-8f308fce8640.ColumnHeading" xml:space="preserve">
+    <value>Ultima data sincronizzazione</value>
+  </data>
+  <data name="grdUsers.3aae4c3b-4c42-4119-9bcd-6b8e402fd84d.ColumnHeading" xml:space="preserve">
+    <value>Ultima data sincronizzazione</value>
+  </data>
+  <data name="grdUsers.68e9fff4-04c2-4439-85ad-d18bc26db59a.ColumnHeading" xml:space="preserve">
+    <value>Ultima data sincronizzazione</value>
+  </data>
+  <data name="grdUsers.d6550fe0-9947-4f69-bee8-22ed831c79c5.ColumnHeading" xml:space="preserve">
+    <value>Indirizzo e-mail</value>
+  </data>
+  <data name="grdUsers.f262728e-0566-4b19-ada6-2b9807e0a762.ColumnHeading" xml:space="preserve">
+    <value>Ultima data sincronizzazione</value>
+  </data>
+  <data name="grdUsers.97df8ba9-f880-4e99-959b-7938e27ad85c.ColumnHeading" xml:space="preserve">
+    <value>Ultima data sincronizzazione</value>
+  </data>
+  <data name="grdUsers.05de185a-a49a-41e6-942b-f5eca0a7ea6c.ColumnHeading" xml:space="preserve">
+    <value>Last Sync Date Cust</value>
   </data>
 </root>

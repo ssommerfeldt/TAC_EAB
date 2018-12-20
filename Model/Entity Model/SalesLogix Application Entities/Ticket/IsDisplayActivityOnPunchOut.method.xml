@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7721595e-1a7c-41f0-98df-508075e26b4e" name="IsDisplayActivityOnPunchOut" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7721595e-1a7c-41f0-98df-508075e26b4e" lastModifiedUtc="2015-06-25T15:33:22.9237925Z" name="IsDisplayActivityOnPunchOut" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
+  <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
+  <preExecuteTargets />
   <methodTargets>
-    <methodTarget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9d382f66-d2bd-4fb7-b328-c9b7f750243c" targetType="Sage.SalesLogix.Ticket.Rules, Sage.SalesLogix.BusinessRules" sequence="0" targetMethod="IsDisplayActivityOnPunchOut" active="true">
+    <methodTarget id="9d382f66-d2bd-4fb7-b328-c9b7f750243c" lastModifiedUtc="0001-01-01T00:00:00" targetType="Sage.SalesLogix.Ticket.Rules, Sage.SalesLogix.BusinessRules" targetMethod="IsDisplayActivityOnPunchOut" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
+  <postExecuteTargets />
 </method>

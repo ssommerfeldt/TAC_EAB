@@ -117,55 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="DialogTitleEdit" xml:space="preserve">
-    <value>Связать контакт</value>
-  </data>
-  <data name="Lookup_State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>OК</value>
   </data>
   <data name="ContactNullMessage" xml:space="preserve">
-    <value>Связываемый контакт не может быть пустым.</value>
-  </data>
-  <data name="lblIsA.Text" xml:space="preserve">
-    <value>это</value>
-  </data>
-  <data name="Lookup_Name.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="lblDescription.Text" xml:space="preserve">
-    <value>Описание:</value>
-  </data>
-  <data name="Lookup_AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="Lookup_City.PropertyHeader" xml:space="preserve">
-    <value>Город</value>
+    <value>Связываемый контакт не может иметь значение NULL.</value>
   </data>
   <data name="DialogTitleAdd" xml:space="preserve">
     <value>Связать контакт</value>
   </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Ок</value>
+  <data name="DialogTitleEdit" xml:space="preserve">
+    <value>Связать контакт</value>
   </data>
-  <data name="Lookup_LastName.PropertyHeader" xml:space="preserve">
-    <value>Фамилия</value>
+  <data name="lblDescription.Text" xml:space="preserve">
+    <value>Описание:</value>
   </data>
-  <data name="Lookup_FirstName.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="Lookup_WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Раб. телефон</value>
+  <data name="lblIsA.Text" xml:space="preserve">
+    <value>это</value>
   </data>
   <data name="lblOfTo.Text" xml:space="preserve">
     <value>от/к</value>
   </data>
-  <data name="Lookup_Email.PropertyHeader" xml:space="preserve">
-    <value>Эл. почта</value>
-  </data>
   <data name="MSGCanNotAssociateToSelf" xml:space="preserve">
-    <value>Контакт не модет быть связан сам с собой.</value>
+    <value>Контакт не может быть связан сам с собой.</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Lookup_AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="Lookup_City.PropertyHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="Lookup_Email.PropertyHeader" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="Lookup_Name.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Lookup_State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="Lookup_WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>Рабочий телефон</value>
+  </data>
+  <data name="Lookup_FirstName.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Lookup_LastName.PropertyHeader" xml:space="preserve">
+    <value>Фамилия</value>
   </data>
 </root>

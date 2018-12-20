@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="19648f2f-7952-40e0-9c8e-e008afb21df9" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="19648f2f-7952-40e0-9c8e-e008afb21df9" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-08-02T13:26:41.4629805Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
@@ -232,12 +232,10 @@
             <IsEditable>false</IsEditable>
             <HideCondition />
             <Width>12</Width>
-            <CustomFormatter>(function () {
-		    var cache = {};
-		    return function (value, inRowIndex, cell) {
+            <CustomFormatter>function (value, item) {
+		        var cache = {};
 		        // Special format for some of the history fields
-		        var item = cell.grid.getItem(inRowIndex);
-                var fieldName = cell.grid.store.getValue(item, "FieldName").toUpperCase();
+                var fieldName = this.field.toUpperCase();
 
                 if(cache[fieldName + "/" + value]){
                     return cache[fieldName + "/" + value];
@@ -283,7 +281,7 @@
 		        };
 		        
 		        switch (fieldName) {
-		            case "STATUSCODE":
+		            case "STATUSCODE": case "NEWVALUE": case "OLDVALUE":
 		                return formatPicklistid("Ticket Status", value);
 		            case "ASSIGNEDTOID": case "RECEIVEDBYID": case "COMPLETEDBYID":
 		                return formatSdata("owners", value);
@@ -293,8 +291,7 @@
 		                return formatSdata("contacts", value);
 		        }
 		        return value;
-		    };
-		})()
+		    }
 </CustomFormatter>
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
@@ -311,12 +308,10 @@
             <IsEditable>false</IsEditable>
             <HideCondition />
             <Width>12</Width>
-            <CustomFormatter>(function () {
-		    var cache = {};
-		    return function (value, inRowIndex, cell) {
+            <CustomFormatter>function (value, item) {
+		        var cache = {};
 		        // Special format for some of the history fields
-		        var item = cell.grid.getItem(inRowIndex);
-                var fieldName = cell.grid.store.getValue(item, "FieldName").toUpperCase();
+                   var fieldName = this.field.toUpperCase();
 
                 if(cache[fieldName + "/" + value]){
                     return cache[fieldName + "/" + value];
@@ -362,8 +357,8 @@
 		        };
 		        
 		        switch (fieldName) {
-		            case "STATUSCODE":
-		                return formatPicklistid("Ticket Status", value);
+		            case "STATUSCODE": case "NEWVALUE": case "OLDVALUE":
+				        return formatPicklistid("Ticket Status", value);
 		            case "ASSIGNEDTOID": case "RECEIVEDBYID": case "COMPLETEDBYID":
 		                return formatSdata("owners", value);
 		            case "ACCOUNTID":
@@ -372,8 +367,7 @@
 		                return formatSdata("contacts", value);
 		        }
 		        return value;
-		    };
-		})()
+		    }
 </CustomFormatter>
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>

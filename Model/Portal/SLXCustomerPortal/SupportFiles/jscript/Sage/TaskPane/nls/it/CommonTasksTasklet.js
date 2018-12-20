@@ -1,16 +1,22 @@
-define((
-{ okButtonText: 'OK',
-  loadingText: 'caricamento...',
-  noPrimaryEmail: 'Nessuna email principale disponibile',
-  selectFileFormat: 'Seleziona un formato file:',
-  exportToFile_OptionCSV: 'CSV Standard',
-  exportToFile_OptionTab: 'Delimitato da tabulazione  (consigliato per Microsoft Excel)',
-  exportToFile_OptionSaveFormat: 'Ricorda le mie impostazioni e non chiedermelo più.',
-  exportToFile_OK: 'OK',
-  exportToFile_Cancel: 'Annulla',
-  exportToFile_DialogTitle: 'Esporta nel File',
-  exportToExcel_Caption: 'Esportazione in Excel',
-  errorRequestingJobMgr: 'Si è verificato un errore durante la richiesta di gestione lavori: ${0}',
-  errorExecutionAction: 'Si è verificato un errore di esecuzione azione ${0}',
-  exportProcessingJobMsg: 'Esportazione in corso. È possibile attendere il termine o andare alla vista rapporti per aprire il file.' }
-));
+define("Sage/TaskPane/nls/it/CommonTasksTasklet", {
+    "okButtonText": "OK",
+    "loadingText": "caricamento in corso...",
+    "noPrimaryEmail": "Nessun indirizzo e-mail principale disponibile",
+    "selectFileFormat": "Selezionare un formato file:",
+    "exportToFile_OptionCSV": "CSV standard",
+    "exportToFile_OptionTab": "Delimitato da tabulazione (consigliato per Microsoft Excel)",
+    "exportToFile_OptionSaveFormat": "Ricorda le mie impostazioni e non ripetere la domanda.",
+    "exportToFile_OK": "OK",
+    "exportToFile_Cancel": "Annulla",
+    "exportToFile_DialogTitle": "Esporta",
+    "exportToExcel_Caption": "Esportazione",
+    "errorRequestingJobMgr": "Si è verificato un errore durante la richiesta di Gestione processi: ${0}",
+    "errorExecutionAction": "Si è verificato un errore durante l'esecuzione dell'azione ${0}",
+    "exportProcessingJobMsg": "Esportazione in corso. È possibile attendere il completamento o passare alla vista report per aprire il file.",
+    "errorBulkActionNotSupported": "${0} non supporta aggiornamenti di massa, contattare l'amministratore del sistema.",
+    "errorBulkActionRequest": "Si è verificato un errore durante la richiesta delle opzioni di aggiornamento di massa, contattare l'amministratore del sistema.",
+    "copyProfileNoneSelected": "Almeno un utente deve essere selezionato.",
+    "deleteJob_Description": "Si sono verificati errori durante l'aggiornamento di massa",
+    "errorRequestEntityImportable": "Si è verificato un errore nel recupero degli attributi entità. ${0}",
+    "entityNotImportable": "${0} non supporta l'importazione, contattare l'amministratore del sistema."
+});

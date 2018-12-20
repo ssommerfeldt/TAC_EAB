@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
+define("Sage/UI/Alarms/AlarmButton", [
         'dojo/_base/declare',
         'Sage/_Templated',
         'dijit/_Widget',
@@ -13,6 +13,8 @@ define([
         'dojo/_base/lang',
         'dojo/dom-class',
         'Sage/Data/SDataServiceRegistry',
+        'dojo/i18n',
+        'dojo/i18n!./nls/AlarmButton',
         'Sage/UI/Alarms/AlarmPopup',
         'Sage/UI/ImageButton',
         'Sage/Services/UserOptions'
@@ -30,10 +32,13 @@ function (
     event,
     lang,
     domClass,
-    sDataServiceRegistry) {
+    sDataServiceRegistry,
+    i18n,
+    alarmButtonStrings
+    ) {
     var alarmButton = declare('Sage.UI.Alarms.AlarmButton', [_Widget, _Templated], {
         pastDueToolTipFmt: ' You have ${0} activities that are past due.',
-        pastDueButtonIconClass: 'icon_alertIcon_16x16',
+        pastDueButtonIconClass: 'fa fa-exclamation-circle',
         widgetsInTemplate: true,
         options: {
             displayPastDueInToolbar: true,
@@ -54,13 +59,19 @@ function (
             '<span class="alarm-button-container">',
                 '<button data-dojo-type="Sage.UI.ImageButton" id="pastDueButton" imageClass="{%= $.pastDueButtonIconClass %}" class="past-due-button display-none" data-dojo-attach-point="_pastDueBtn" data-dojo-attach-event="onClick:_pastDueClick" >',
                 '</button>',
-                '<span id="alertButton" data-dojo-attach-point="_alertButton" class="alarm-button-container alarm-button display-none">', // displaynone
+                    '<span id="alertButton" data-dojo-attach-point="_alertButton" class="alarm-button-container alarm-button display-none">',
+                    '<span class="position-alarm-button">',
+                        '<i class="fa fa-bell-o"></i>',
+                    '</span>',
                     '<button data-dojo-type="dijit.form.ComboButton" data-dojo-attach-point="_button" data-dojo-attach-event="onClick:_cboClick" class="" >',
                         '<div data-dojo-type="Sage.UI.Alarms.AlarmPopup" id="alarmPopup" data-dojo-attach-point="_popup" data-dojo-attach-event="onClose:_popupClosed"></div>',
                     '</button>',
                 '</span>',
             '</span>'
         ]),
+        constructor: function() {
+            dojo.mixin(this, alarmButtonStrings);
+        },
         _setPollIntervalAttr: function (val) {
             this.pollInterval = val;
         },

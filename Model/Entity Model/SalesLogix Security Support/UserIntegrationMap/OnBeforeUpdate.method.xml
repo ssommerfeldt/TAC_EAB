@@ -7,12 +7,11 @@
   <parameter />
   <preExecuteTargets />
   <methodTargets>
-    <methodTarget id="11f3ff04-df5f-4526-8c7c-28ecf05ebdb5" lastModifiedUtc="2013-06-24T16:04:38.7145732Z" targetType="Sage.Platform.Orm.DefaultCRUDEventHandler, Sage.Platform" targetMethod="OnBeforeUpdate" active="true">
+    <methodTarget id="46ee6733-dd7f-40fc-ada9-5e4a466bb882" lastModifiedUtc="2015-04-13T18:16:37.5631386Z" targetType="Sage.SalesLogix.UserIntegrationMap.Rules, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeUpdate" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

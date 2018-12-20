@@ -5,7 +5,7 @@
   </ExtendedPropertiesCollection>
   <parameter />
   <methodTargets>
-    <methodTarget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a7869a8f-bdc3-447c-8c94-f7839c08faf6" targetType="Sage.SalesLogix.Ticket.Rules, Sage.SalesLogix.BusinessRules" sequence="10" targetMethod="ReOpenTicket" active="true">
+    <methodTarget id="a7869a8f-bdc3-447c-8c94-f7839c08faf6" targetType="Sage.SalesLogix.Ticket.Rules, Sage.SalesLogix.BusinessRules" sequence="10" targetMethod="ReOpenTicket" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>

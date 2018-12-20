@@ -13,7 +13,6 @@
 #splashimg 
 {
   
-    background: url(../images/icons/slx_splash_screen.png) no-repeat;
     width:678px;
     height:462px;
     z-index:0;
@@ -22,19 +21,35 @@
     margin-top : 50px;
 	position:relative;
 }
+#splashimg .inforTextbox 
+{
+    margin: 6px 0 3px 0;
+}
+
+#splashimg .inforSignInButton 
+{
+    margin: 18px 0 18px 0;
+}
+
+#splashimg .loginmsg 
+{
+    left: 6px;
+}
+
+#lblUserNameLabel, #lblUserNameText
+{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
 
 #splashCenterBox
 {
-	
     width:460px;
     height:200px;
     z-index:5;
 	position:absolute;
 	top:155px;
 	left:100px; 
-	
-
-	
 }
 
 #LoginForm 
@@ -72,7 +87,6 @@
 	top:-40px;
 	left:40%;
 	min-width:130px;
-	cursor:hand;
 	cursor:pointer;	
 }
 
@@ -85,13 +99,22 @@
 	top:-40px;
 	left:40%;
 	min-width:130px;
-	cursor:hand;
 	cursor:pointer;
 }
-
+#enhancementsNotSupportedOptions
+{
+	background-image : url(../images/icons/enhancementsNotInstalled.png);
+    background-repeat:no-repeat;
+    height:78px;
+	position:absolute;
+	top:-40px;
+	left:40%;
+	min-width:130px;
+	cursor:pointer;
+}
 #enhancementsNotInstalled
 {
-	background-image : url(../images/icons/enhancementsInstalled.png);
+	/*background-image : url(../images/icons/enhancementsInstalled.png);
     background-repeat:no-repeat;
     height:78px;
 	position:absolute;
@@ -99,12 +122,12 @@
 	left:350px;
 	min-width:130px;
 	cursor:hand;
-	cursor:pointer;	
+	cursor:pointer;*/	
 }
 
 #enhancementsInstalled
 {
-	background-image : url(../images/icons/enhancementsInstalled.png);
+	/*background-image : url(../images/icons/enhancementsInstalled.png);
     background-repeat:no-repeat;
     height:78px;
 	position:absolute;
@@ -112,7 +135,20 @@
 	left:350px;
 	min-width:130px;
 	cursor:hand;
-	cursor:pointer;
+	cursor:pointer;*/
+}
+
+#enhancementsNotSupported
+{
+	/*background-image : url(../images/icons/enhancementsNotInstalled.png);
+    background-repeat:no-repeat;
+    height:78px;
+	position:absolute;
+	top:0px;
+	left:350px;
+	min-width:130px;
+	cursor:hand;
+	cursor:pointer;*/	
 }
 
 .enhancements
@@ -135,11 +171,6 @@
 {
     margin-left: -4px;
     font-size: 11px;
-}
-#LoginForm input
-{
-    position: relative;
-    top: 2px;
 }
 #ExtFeatures 
 {
@@ -172,17 +203,13 @@
 
 #VersionSection
 {
-    position:absolute;
-    top: 440px;
-	left: 65px;
-    font-size:11px;
-	color:#666666;
+	color:#999999;
 }
 #VersionSection .info
 {
     top: 4px;
     position:relative;
-    color:#8C8C8C;
+    color: #999999;
 }
 
 .findOutMore
@@ -207,44 +234,684 @@
 	color:#fff; 
 	text-decoration:none;
     font-weight: bolder;
-
     padding:3px 8px;
-
     border: 0;
-
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-
     background:url(../images/icons/login_button.png) repeat-x center;
-		
     min-width: 105px;
     height: 40px;
-
-		
-
-
-     
 	margin-right:10px;
-    
-	cursor:hand;
 	cursor:pointer;
-	
 }
 
-.debugMode
+.debugMode, .failureTextStyle
 {
-	font-size:11px; 
-	color:Red; 
-	position:relative; 
-	left:365px; 
-	top:-235px; 
-	width:125px; 
-	padding:3px; 
-	background-color:#fefefe; 
-	border:1px solid #ccc;
+  color: #D5000E !important;
+  font-size: 11px !important;
 }
 /*  End login logout page styles  */
+
+/* Infor Sign In Dialog
+----------------------------------*/
+.inforSignInDialog {
+  background-color: #F3F3F3;
+  overflow: auto;
+}
+
+.inforSignInDialogControls {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.inforSignInDialogControls .inforTextbox{
+  height: 26px;
+  margin-bottom: 12px;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  display: inline-block;
+  width: 159px;
+}
+
+.inforSignInDialogControls  .inforTriggerButton {
+  height: 29px;
+  width: 24px;
+}
+
+.inforSignInDialogControls  .inforTriggerButton input {
+  line-height: 25px;
+}
+
+.inforSignInDialogControls .inforSignInButton {
+  height: 30px;
+  margin-bottom: 18px;
+  width: 206px;
+}
+
+.inforSignInDialogControls .selectedSingle {
+  height: 30px !important;
+}
+
+.inforSignInDialogControls .selectedSingle > div {
+  height: 29px !important;
+}
+
+.inforSignInDialogControls .selectedSingle span {
+  margin-top: 6px;
+  text-indent: 36px;
+  text-align: left;
+}
+
+.inforSignInDialogControls .dropdown {
+    height: 30px;
+    margin-bottom: 10px;
+    padding-left: 36px;
+    font-size: 1.2em;
+    text-align: left;
+    /*text-indent: 5px;*/
+    line-height: 30px;
+    width: 205px;
+}
+
+.dropdown {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAQAAADB7vUKAAAAGklEQVQY02NgGCQg8j8qJKCEgCkELGIYlAAA7Ioa4cFU1v4AAAAASUVORK5CYII=") no-repeat right center transparent;
+  border: 1px solid #b3b3b3;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 18px;
+  margin-bottom: 4px;
+  padding: 0 25px 0 5px;
+  width: 173px;
+  -webkit-appearance: none;           /* Removes Chrome/Safari default dropdown list arrow styling*/
+  -moz-appearance: none;             /* Removes Firefox default dropdown list arrow styling*/
+  background-color: white;
+}
+
+/* Removes IE default dropdown list arrow styling*/
+select::-ms-expand {
+    display: none;
+}
+
+.inforSignInDialogControls #Password, #splashimg .inforTextbox{
+  background-image: url("../images/InforSignIn/Password.png");
+  background-repeat:no-repeat;
+}
+
+html[dir="rtl"] .inforSignInDialogControls #Password {
+  background-image: url("../images/InforSignIn/Password.png");
+  background-position: right center;
+  padding-left: 0px;
+  padding-right: 45px;
+}
+
+.inforSignInDialogControls #UserName, #UserId, #UserEmail  {
+  background-image: url("../images/InforSignIn/User.png");
+  background-repeat:no-repeat;
+}
+ 
+html[dir="rtl"] .inforSignInDialogControls #UserName {
+  background-image: url("../images/InforSignIn/User.png");
+  background-position: right center;
+  padding-left: 0px;
+  padding-right: 45px;
+}
+
+.inforSignInDialogControls #serverName-shdo {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQAQMAAAA26i3WAAAABlBMVEUAAADMzMzIT8AyAAAAAXRSTlMAQObYZgAAAB5JREFUeNpjYGBgZKj/wcjw/w8Cg8SQ+djEQHqAYgDkwhbNYhkFGQAAAABJRU5ErkJggg==")  no-repeat scroll 8px 7px ,
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAJklEQVQoz2NgGAVwMHPmzP/Y8KxZs8A0RYaQ7RKQ7RR5ZzRiiQMA1Ek3z+guqYYAAAAASUVORK5CYII=") no-repeat scroll right center #fff;
+}
+
+html[dir="rtl"] .inforSignInDialogControls #serverName-shdo {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAQCAQAAADZ/GXvAAAAL0lEQVQ4y2M485+BcoDdkDP/sUMSDMFlBE5jBrchVAnYYRYmowFLszChQgYkFQAAs2dCzFAhVXEAAAAASUVORK5CYII=")  no-repeat scroll right 7px ,
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAJklEQVQoz2NgGAVwMHPmzP/Y8KxZs8A0RYaQ7RKQ7RR5ZzRiiQMA1Ek3z+guqYYAAAAASUVORK5CYII=") no-repeat scroll 4px center #fff;
+}
+
+.inforSignInDialogControls #ddlLanguageSelect {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAQCAYAAAAS7Y8mAAAAiElEQVR42mNgoAE4c+bMfwa6GQwULAfi3VBcTk2D34EkoPgdVQwGCqQhGQrDadQweDfUsJlQDGLvpshgIEcJyZWhUAzjK1FicAd6uCKFdwclBmMYgs0ykgxGi7QzSMntDDmRiGzwbiypAR3vJslgtEgDpQQXNNxBaiTCDMarEc3ijsFXVgx6gwF9jTDvV7djFgAAAABJRU5ErkJggg==")  no-repeat scroll 11px 7px ,
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAJklEQVQoz2NgGAVwMHPmzP/Y8KxZs8A0RYaQ7RKQ7RR5ZzRiiQMA1Ek3z+guqYYAAAAASUVORK5CYII=") no-repeat scroll right center #fff;
+}
+
+.inforSignInDialogControls #ddlRegionSelect {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAYAAAAMJL+VAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QIXDy8wmVsRPQAAAV5JREFUOMu11EFvE0EMBeDPu1tK2vRCeqsUVdxA4sCF//8DckSVEJc2FxS1QRSUppTsDIdZ6KKGkq2Eb2N5/Gw/+/EfbTab5abvqGgyx3iBUedeZ5YVy8RmKMhvgGCCKZ4h9WIOgyOc1Fy0LIcAVL3kp7kApi1xCbeJl3WJ3R2goolSefVIXJ04C1aZadXr/J8AmeNcxrLNMlbBZfc4z+ylAV00HaEPKkYEXxNnuXPucbvhGpPMYleAkULcPg66rfkYZe5/8HFHCr4b2EHgLrh5ZFRPtgZrjBIfsAjeBW874G943/8Q7OfyZzeAzFUwDQ4yN8Eml+Q58zx41ZENkRljPmRNr4I2c6qQMAs+3xdsrBzaEcbBjxhwbFWiDS6Cw4rXqzKCv0lCSsyHSEYDLcu6zGGKNx4mqKNc8tx9d8O0qC2Cdp2ZdNLx67LX+IQvPS6GA3SCs8Fi2xHlJ67pT8fncEGe0VTFAAAAAElFTkSuQmCC")  no-repeat scroll 11px 7px ,
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAJklEQVQoz2NgGAVwMHPmzP/Y8KxZs8A0RYaQ7RKQ7RR5ZzRiiQMA1Ek3z+guqYYAAAAASUVORK5CYII=") no-repeat scroll right center #fff;
+}
+
+.inforSignInDialogControls #company-shdo , .inforSignInDialogControls #company-shdo {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAQAQMAAADH4XZbAAAABlBMVEUAAADMzMzIT8AyAAAAAXRSTlMAQObYZgAAACBJREFUeNpjYGBgYqj/AcEpMyAYF7vmBwL//8PEANQLADYXEjzaZMydAAAAAElFTkSuQmCC")  no-repeat scroll 8px 7px ,
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAJklEQVQoz2NgGAVwMHPmzP/Y8KxZs8A0RYaQ7RKQ7RR5ZzRiiQMA1Ek3z+guqYYAAAAASUVORK5CYII=") no-repeat scroll right center #fff;
+}
+
+.inforAspCheckBox 
+{
+    display: inline-block;
+    min-width: 31px;
+}
+
+.inforSignInDialogControls .inforCheckboxLabel, .inforAspCheckBox  label{
+  float: none;
+  display: inline-block;
+  padding-left: 0;
+  text-align: center;
+  vertical-align: middle;
+  width: auto;
+  font-size: 12px;
+}
+
+.slx-grid .inforAspCheckBox {
+    position:relative;
+}
+.slx-grid .inforAspCheckBox label {
+    position:absolute;
+    left:4px;
+}
+
+.inforSignInDialogControls .inforMessage {
+    font-size: 12px;
+}
+
+.inforSignInDialogControls #environment-shdo {
+   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAQCAAAAADYRLvEAAAAAnRSTlMAAHaTzTgAAAAlSURBVHgBY8AOzpAsfgYFECOO0E17cbLcSTgcwEoxxRFmEDQHAOs5UUmcEr9uAAAAAElFTkSuQmCC")  no-repeat scroll 8px 7px ,
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAJklEQVQoz2NgGAVwMHPmzP/Y8KxZs8A0RYaQ7RKQ7RR5ZzRiiQMA1Ek3z+guqYYAAAAASUVORK5CYII=") no-repeat scroll right center #fff;
+}
+
+.inforSignInDialogControls #ResetPasswordLabel {
+  display: inline-block !important;
+  margin-top: 10px;
+}
+
+.inforHyperlink {
+    color: #13A3F7;
+    line-height: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+
+.inforHyperlink.heading{
+	font-size: 1.3em;
+	line-height: 14px;
+}
+
+.inforHyperlink:visited {
+	color: #13A3F7;
+}
+
+/* Mouse Over States is Same as the focus */
+.inforHyperlink:hover, .inforHyperlink:focus  {
+	color: #1293DE;
+	text-decoration: underline;
+}
+
+.inforHyperlink:focus  {
+  outline: thin dotted #1293DE;
+  outline-offset: 2px;
+}
+
+.inforHyperlink[disabled]:hover  {
+	color:  #777;
+	cursor: default;
+	text-decoration: none;
+}
+
+.inforHyperlink:active {
+	color: #118BD1;
+}
+
+.inforHyperlink[disabled] {
+  color:  #777;
+}
+
+.inforHyperlink .inforLabel {
+	font-size: 1em;
+}
+
+.inforSignInDialog .inforLogo {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAA+VBMVEXUAA7////++/v99fbbKTXaIi7ncnr99PXtkpj87u/bJzP409X++fn86+zXER7++vr41tjWDRr2x8rbKDTpf4b//f3WDhvxrrL98fLVAxHWCxjsjJL88PHpfYT1wsX53d/2zM/jWmP++Pjnb3fWChf41Nb41dfskZfYGSb75+jsjpTvn6T419n0wMP1xMfpeoH+9/ffQkzlYmv76uv63+HkYGnumJ72y87fRE7ncHjncXn98/TXEh/cMDvaIS352tzod37ZICzri5HWDBnsjZPlZG3VCBbUAQ/30tTcLzrVBhT1xcjum6DaIy/xrbLxq7D30dTodHzoeH/i491VAAABNklEQVR4Xu2T5W7EMBCEvQ7nmKHMzMzM3Pd/mK6da5xrNzor/Vd5NYp3VqNPySZhpoyMjP6fppfIcafY1QPYOfg93Bz3AEALsGMRwQkA0AWQwepfAYGY5o9Y5ioh4Dg9oH9b+llxOV0sW9byZfEHILzOed7snK3S8/52iQBMTYKsmWYf4IBHYz7ynXYW0BKAWGuxxYCr5ue99AoMAKwmAE4ej6DVCtDxUOXWKYDlbtTF+rcSgCH0VdxKcxTtbg+wt3/FKMAhujq6RmIH7+hPRGNjMxblziroKcAFOkdaBRgGaEe5Qky+YSmAW3R3jcEAJw0gLe+392gfRBOqR3hMAxBWLvEJl1gRS3xWOW3Ai3yNr28FPHgtA4B9QFyfLAuAuepTzgZgNR//sbJvqzRVRkZGRkamvgBaQxF8NowOUgAAAABJRU5ErkJggg==");
+  background-position: center center;
+  height: 64px;
+  left: 0;
+  margin: 64px auto 24px;
+  position: relative;
+  width: 64px;
+}
+
+.inforSignInDialog .inforApplicationName {
+  color: #1A1A1A;
+  font-size: 3.2em;
+  position: inherit;
+  margin-bottom: 28px;
+}
+
+.inforSignInDialog .errorText {
+  color: #D5000E;
+  display: inline-block;
+  font-size: 12px;
+  left: 9px;
+  line-height: 16px;
+  max-width: 300px;
+  padding: 10px 0;
+  position: relative;
+  text-align: center;
+  top: -3px;
+}
+
+.inforSignInDialog .inforHyperlink {
+  display: inline-block !important;
+}
+
+html[dir="rtl"] .inforSignInDialogControls .inforLogo {
+  margin: 70px auto 40px;
+  background-position: center center;
+  right: 0;
+}
+
+html[dir="rtl"] .inforSignInDialogControls .dropdown {
+  padding: 0 30px;
+}
+
+html[dir="rtl"] .inforSignInDialogControls .inforLabel, html[dir="rtl"] .inforSignInDialogControls .label {
+  float: none;
+}
+
+html[dir="rtl"] .inforSignInDialogControls .dropdown {
+  padding-left: 19px;
+  padding-right: 42px;
+  text-align: right;
+}
+
+html[dir="rtl"] .inforSignInDialogControls + .dropdown-list {
+  width: 205px !important;
+}
+/*  End Infor Sign In / Sign Out page styles  */
+
+#signInDialogs { /*button, label, p, span.inforLabel, span.inforTopLabel, span.inforCheckboxLabel*/ 
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 1.2em;
+}
+
+.inforFormButton {
+    background-color: #999;
+    box-shadow: 0px -1px #737373 inset;
+    border-radius: 2px;
+    color: #FFF;
+    padding: 4px 8px;
+    margin: 2px 0px 0px;
+    outline: medium none;
+    height: 22px;
+    overflow: hidden;
+    font-family: Helvetica,Arial,sans-serif;
+    white-space: nowrap;
+    line-height: 14px;
+    min-width: 50px;
+    cursor: pointer;
+    border: medium none;
+    width: auto;
+    text-shadow: 0px 0px 1px rgba(34, 34, 34, 0.3);
+}
+.inforFormButton.default {
+    background-color: #13A3F7;
+    box-shadow: 0px -1px #0F7AB8 inset;
+}
+.inforFormButton[disabled], .inforFormButton.disabled, .inforFormButton[disabled]:hover, .inforFormButton.disabled:hover, .inforFormButton[disabled]:active, .inforFormButton.disabled:active {
+    background: none repeat scroll 0px 0px #E0E0E0 !important;
+    color: #808080;
+    box-shadow: 0px -1px #E0E0E0 inset;
+    cursor: default;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.3);
+}
+.inforFormButton.default[disabled], .inforFormButton.default.disabled {
+    box-shadow: 0px -1px #E0E0E0 inset !important;
+}
+.inforFormButton.default {
+	background-color: #13a3f7;
+	box-shadow: 0 -1px #0f7ab8 inset;
+}
+
+.inforFormButton.default:hover {
+	background-color: #1293de;
+	box-shadow: 0 -1px #0d699e inset;
+}
+
+.inforFormButton.default:active{
+	background-color: #118bd1;
+	box-shadow: 0 1px #0c6091 inset;
+}
+.inforFormButton .arrowLeft{
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAALCAYAAABCm8wlAAAANklEQVR42mNgwAL+///PBcSsQMyETRIOaCD599//taTpRFf059//HQQVEWUSVRQxAjEnEDMDAHLsfQFaz6jaAAAAAElFTkSuQmCC");
+	background-position: 0 center;
+	background-repeat: no-repeat;
+	height: 13px;
+	padding-left: 13px;
+	position: relative;
+	right: 0;
+	width: auto;
+}
+
+.inforFormButton .arrowRight {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAALCAYAAABCm8wlAAAAMUlEQVR42mP4//+/KhALgzADLvAfCdBB0Z9//3dQZtLff//X4pTEq5MiSUEozYjNwQDyjHpDylEGFQAAAABJRU5ErkJggg==");
+	background-position: right center;
+	background-repeat: no-repeat;
+	height: 13px;
+	left: 3px;
+	margin-right: 2px;
+	padding-right: 14px;
+	position: relative;
+}
+html[dir="rtl"] .inforFormButton .arrowRight{
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAALCAYAAABCm8wlAAAANklEQVR42mNgwAL+///PBcSsQMyETRIOaCD599//taTpRFf059//HQQVEWUSVRQxAjEnEDMDAHLsfQFaz6jaAAAAAElFTkSuQmCC");
+	padding-left: 13px;
+	padding-right: 0px;
+	background-position: 1px center;
+	right: 3px;
+}
+
+html[dir="rtl"] .inforFormButton .arrowLeft{
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAALCAYAAABCm8wlAAAAMUlEQVR42mP4//+/KhALgzADLvAfCdBB0Z9//3dQZtLff//X4pTEq5MiSUEozYjNwQDyjHpDylEGFQAAAABJRU5ErkJggg==");
+	background-position: right center;
+	padding-left: 0;
+	padding-right: 13px;
+}
+
+*::-moz-selection {
+    background: none repeat scroll 0% 0% #005CE6;
+    color: #FFF;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 62.5%;
+    color: #666;
+    height: 100%;
+    overflow: hidden;
+    background-color: #FFF;
+}
+
+.inforCheckbox, .inforCheckboxList input, .inforAspCheckBox input {
+    border: 0px none;
+    height: 0px;
+    margin: 0px;
+    outline: 0px none;
+    overflow: hidden;
+    padding: 0px;
+    opacity: 0;
+    width: 0px;
+    cursor: pointer;
+}
+
+.inforCheckbox + .inforCheckboxLabel:before, .inforCheckbox + input[type="hidden"] + .inforCheckboxLabel:before,
+.inforCheckboxList label:before, .inforCheckboxList input[type="hidden"] + label:before,
+.inforAspCheckBox label:before, .inforAspCheckBox input[type="hidden"] + label:before{
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAAAAABzpdGLAAAAAnRSTlMAAHaTzTgAAAAmSURBVHgBYyAazEQCCBEEgAq9/Q8Fb+FC/+FgUAjhcyp+TxIdVgAaz5pRclAmbwAAAABJRU5ErkJggg==");
+  background-position: 1px 0;
+  background-repeat: no-repeat;
+  content: " ";
+  display: inline-block;
+  height: 21px;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.inforCheckbox.isPartial + .inforCheckboxLabel:before, .inforCheckbox.isPartial + input[type="hidden"] + .inforCheckboxLabel:before,
+.inforCheckboxList .isPartial + label:before, .inforCheckboxList .isPartial + input[type="hidden"] + label:before,
+.inforAspCheckBox .isPartial + label:before, .inforAspCheckBox .isPartial + input[type="hidden"] + label:before
+ {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAIAAADZrBkAAAAABnRSTlMAAAAAAABupgeRAAAANUlEQVR4AWMYIDCTCECqHgTAou3t27f/cQCgFE5tQGnhxd+xIqDUAGsb1Ubt6KZVshygXAYAq9J7AFfh6ZEAAAAASUVORK5CYII=");
+}
+
+.inforCheckbox.isPartial:focus + .inforCheckboxLabel:before, .inforCheckbox.isPartial:focus + input[type="hidden"] + .inforCheckboxLabel:before,
+.inforCheckboxList .isPartial:focus + label:before, .inforCheckboxList .isPartial:focus + input[type="hidden"] + label:before,
+.inforAspCheckBox .isPartial:focus + label:before, .inforAspCheckBox .isPartial:focus + input[type="hidden"] + label:before
+ {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAcElEQVR4AWMAAeHF3yuA+CEQ/ycRP4TqBRtSAhJ4/OXff1IBUA/MsBKQQXcffP73/zfQnJkzZ5KCwXpAekFmgAwCGQ6SIAuDAMgMDIPevn1LyEcgNQQMQkjgxUAwatCoQbRMkJRnEaplWqoWI1Qp2AANfd0Bmx5M+AAAAABJRU5ErkJggg==");
+}
+
+.inforCheckbox:checked + .inforCheckboxLabel:before,.inforCheckbox:checked + input[type="hidden"] + .inforCheckboxLabel:before, .inforCheckbox.isPartial:checked + .inforCheckboxLabel:before, .inforCheckbox.isPartial:checked + input[type="hidden"] + .inforCheckboxLabel:before,
+
+.inforCheckboxList input:checked + label:before, .inforCheckboxList input:checked + input[type="hidden"] + label:before, 
+.inforCheckboxList .isPartial:checked + input[type="hidden"] + label:before,
+
+.inforAspCheckBox input:checked + label:before, .inforAspCheckBox input:checked + input[type="hidden"] + label:before,
+.inforAspCheckBox .isPartial:checked + input[type="hidden"] + label:before
+
+ {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAACVBMVEUAAAATo/f///8qqXS/AAAAAXRSTlMAQObYZgAAADVJREFUeNqNzjEOACAIADHh/482cShoHLix061x0SKtlxIRRFAXlKQoCTrdE6QoCNKfGJm2AZVnAN96+MmKAAAAAElFTkSuQmCC");
+}
+
+.inforCheckbox.isChecked + .inforCheckboxLabel:before, .inforCheckbox.isChecked + input[type="hidden"] + .inforCheckboxLabel:before
+, .inforCheckbox.isPartial.isChecked + .inforCheckboxLabel:before, .inforCheckbox.isPartial.isChecked + input[type="hidden"] + .inforCheckboxLabel:before,
+
+.inforCheckboxList .isChecked + label:before, .inforCheckboxList .isChecked+ input[type="hidden"] + label:before,
+.inforCheckboxList .isChecked + label:before, .inforCheckboxList .isPartial.isChecked + input[type="hidden"] + label:before,
+
+.inforAspCheckBox .isChecked + label:before, .inforAspCheckBox .isChecked+ input[type="hidden"] + label:before,
+.inforAspCheckBox .isChecked + label:before, .inforAspCheckBox .isPartial.isChecked + input[type="hidden"] + label:before
+ {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAACVBMVEUAAAATo/f///8qqXS/AAAAAXRSTlMAQObYZgAAADVJREFUeNqNzjEOACAIADHh/482cShoHLix061x0SKtlxIRRFAXlKQoCTrdE6QoCNKfGJm2AZVnAN96+MmKAAAAAElFTkSuQmCC");
+}
+
+.inforCheckbox:focus + .inforCheckboxLabel:before, .inforCheckbox:focus + input[type="hidden"] + .inforCheckboxLabel:before, .inforCheckbox.focus + .inforCheckboxLabel:before, .inforCheckbox.focus + input[type="hidden"] + .inforCheckboxLabel:before,
+
+.inforCheckboxList input:focus + label:before, .inforCheckboxList input:focus + input[type="hidden"] + label:before, .inforCheckboxList input:focus
+ + label:before, .inforCheckboxList .focus + input[type="hidden"] + label:before,
+
+.inforAspCheckBox input:focus + label:before, .inforAspCheckBox input:focus + input[type="hidden"] + label:before, .inforAspCheckBox input:focus
+ + label:before, .inforAspCheckBox .focus + input[type="hidden"] + label:before
+ {
+	 background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAbUlEQVR4AWMAAeHF3yuA+CEQ/ycRP4TqBRtSAhJ4/OXff1IBUA/MsBKQQXcffP73/zfQnJkzZ5KCwXpAekFmgAwCGQ6SIAuDAMgMDIPevn1LyEcgNYQNIhKMGjRqEC0TJOVZhGqZlqrFCFUKNgARJTEQsWRuZwAAAABJRU5ErkJggg==");
+}
+
+.inforCheckbox:checked:focus + .inforCheckboxLabel:before, .inforCheckbox:checked:focus + input[type="hidden"] + .inforCheckboxLabel:before, .inforCheckbox:checked.focus + .inforCheckboxLabel:before, .inforCheckbox:checked.focus + input[type="hidden"] + .inforCheckboxLabel:before,
+
+.inforCheckboxList input:checked:focus + label:before, .inforCheckboxList input:checked:focus + input[type="hidden"] + label:before, .inforCheckboxList input:checked.focus + label:before, .inforCheckboxList .checked.focus + input[type="hidden"] + label:before,
+
+.inforAspCheckBox input:checked:focus + label:before, .inforAspCheckBox input:checked:focus + input[type="hidden"] + label:before, .inforAspCheckBox input:checked.focus + label:before, .inforAspCheckBox .checked.focus + input[type="hidden"] + label:before
+  {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAe0lEQVR4Ab2UwQmAMAxF3cH9T47Qi+MIjqAgWEjsk55EiE2DDz6Bwn8XYwYYp2MuySXamFy7tyTxsO6irdCpsoToXDbRLMpjU+jQxYFIgekJMF0i6BZBtwg8IkNiiOCrxBSBLbFFb/g+/5OuPaqELeT/orCfNvSMhBy2CyckznFaBqSaAAAAAElFTkSuQmCC");
+}
+
+.inforCheckbox.isChecked:focus + .inforCheckboxLabel:before, .inforCheckbox.isChecked:focus + input[type="hidden"] + .inforCheckboxLabel:before,
+.inforCheckboxList .isChecked:focus + label:before, .inforCheckboxList .isChecked:focus + input[type="hidden"] + label:before,
+.inforAspCheckBox .isChecked:focus + label:before, .inforAspCheckBox .isChecked:focus + input[type="hidden"] + label:before
+{
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAe0lEQVR4Ab2UwQmAMAxF3cH9T47Qi+MIjqAgWEjsk55EiE2DDz6Bwn8XYwYYp2MuySXamFy7tyTxsO6irdCpsoToXDbRLMpjU+jQxYFIgekJMF0i6BZBtwg8IkNiiOCrxBSBLbFFb/g+/5OuPaqELeT/orCfNvSMhBy2CyckznFaBqSaAAAAAElFTkSuQmCC");
+}
+
+ 
+.inforCheckboxhecked:focus + .inforCheckboxLabel:before, .inforCheckboxhecked:focus + input[type="hidden"] + .inforCheckboxLabel:before{
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAe0lEQVR4Ab2UwQmAMAxF3cH9T47Qi+MIjqAgWEjsk55EiE2DDz6Bwn8XYwYYp2MuySXamFy7tyTxsO6irdCpsoToXDbRLMpjU+jQxYFIgekJMF0i6BZBtwg8IkNiiOCrxBSBLbFFb/g+/5OuPaqELeT/orCfNvSMhBy2CyckznFaBqSaAAAAAElFTkSuQmCC");
+} 
+
+.inforCheckbox.isDirty + .inforCheckboxLabel:before, .inforCheckbox.isDirty + input[type="hidden"] + .inforCheckboxLabel:before,
+ .inforCheckboxList .isDirty + label:before, .inforCheckboxList .isDirty + input[type="hidden"] + label:before,
+ .inforAspCheckBox .isDirty + label:before, .inforAspCheckBox .isDirty + input[type="hidden"] + label:before{
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAIAAADZrBkAAAAABnRSTlMAAAAAAABupgeRAAAARElEQVR4Ac3RMQ0AMQxD0fBncBTKzRjSqbJq3fC39Mnrn1xDPoA36SfrVblDEs5uLDOeGc+MZ8YzezeT1AHcjVSgzYANNWGzUqjnJ0cAAAAASUVORK5CYII=");
+}
+
+.inforCheckbox.isDirty:hover:enabled:not(:checked) + .inforCheckboxLabel:before, .inforCheckbox.isDirty:hover:enabled:not(:checked) + input[type="hidden"] + .inforCheckboxLabel:before ,
+.inforCheckboxList .isDirty:hover:enabled:not(:checked) + label:before, .inforCheckboxList .isDirty:hover:enabled:not(:checked) + input[type="hidden"] + label:before,
+.inforAspCheckBox .isDirty:hover:enabled:not(:checked) + label:before, .inforAspCheckBox .isDirty:hover:enabled:not(:checked) + input[type="hidden"] + label:before 
+{
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAV0lEQVQ4y2NgGNRAePH3/6RgqhiC0zCYxP9VDNgxEnjz5g2ZBiGBf//+/f/79y8ZBuEApBmEBxBvEAFAnEFEAMIGEQmGoEGgxAZKJ/gAUQlyQPLb4C6CAFauZ8EPQ3xmAAAAAElFTkSuQmCC");
+}
+
+.inforCheckbox:focus.isDirty + .inforCheckboxLabel:before, .inforCheckbox:focus.isDirty + input[type="hidden"] + .inforCheckboxLabel:before,
+.inforCheckboxList input:focus.isDirty + label:before, .inforCheckboxList input:focus.isDirty + input[type="hidden"] + label:before ,
+.inforAspCheckBox input:focus.isDirty + label:before, .inforAspCheckBox input:focus.isDirty + input[type="hidden"] + label:before {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAgElEQVR4Ad2UMQqAMBAE8we/auFXUtv5J0GxTqVgIRgz2gRMs14qB7YJ7FS3cdD0e5cyp0QxdOjekpaHZTujCh26OBCN0/pIvPdSjlSjiwORLskCOF6iOLhyMkIIH0UFZBGYRWAWgVkEdhH8U8SxFdAP0jIRRssAzaOt9o1U+dgupAUVZy8GbVUAAAAASUVORK5CYII=");
+}
+
+.inforCheckbox.isDirty:checked + .inforCheckboxLabel:before, .inforCheckbox.isDirty:checked + input[type="hidden"] + .inforCheckboxLabel:before,
+.inforCheckboxList .isDirty:checked + label:before, .inforCheckboxList .isDirty:checked + input[type="hidden"] + label:before,
+.inforAspCheckBox .isDirty:checked + label:before, .inforAspCheckBox .isDirty:checked + input[type="hidden"] + label:before {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAADFBMVEUAAAD/qgATo/f////u4V3mAAAAAXRSTlMAQObYZgAAADlJREFUeNqNyEEOACAIxECF//9ZzYYt8URvnTVuv0J9gjXJIqQIgbqI7ligtEApgcIChQUiCMKQWQcA7gGL5e3luAAAAABJRU5ErkJggg==");
+}
+
+.inforCheckbox.isDirty:checked + .inforCheckboxLabel:before, .inforCheckbox.isDirty:checked + input[type="hidden"] + .inforCheckboxLabel:before,
+.inforCheckboxList .isDirty:checked + label:before, .inforCheckboxList .isDirty:checked + input[type="hidden"] + label:before,
+.inforAspCheckBox .isDirty:checked + label:before, .inforAspCheckBox .isDirty:checked + input[type="hidden"] + label:before{
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAADFBMVEUAAAD/qgATo/f////u4V3mAAAAAXRSTlMAQObYZgAAADlJREFUeNqNyEEOACAIxECF//9ZzYYt8URvnTVuv0J9gjXJIqQIgbqI7ligtEApgcIChQUiCMKQWQcA7gGL5e3luAAAAABJRU5ErkJggg==");
+}
+
+.inforCheckbox.isDirty:checked:focus + .inforCheckboxLabel:before, .inforCheckbox.isDirty:checked:focus + input[type="hidden"] + .inforCheckboxLabel:before,
+.inforCheckboxList .isDirty:checked:focus + label:before, .inforCheckboxList .isDirty:checked:focus + input[type="hidden"] + label:before,
+.inforAspCheckBox .isDirty:checked:focus + label:before, .inforAspCheckBox .isDirty:checked:focus + input[type="hidden"] + label:before {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAhElEQVR42r3UMQqAMBBEUe/g/Ss72zQeR/AICoIL6g64TSD5BIIDg0WYh00yKON0Ll7zPo01bQNJXtuO+2mNbwJLgq51/5B5yFv9I/OZtjIE1RCsom8J4jFDjDDECEKtSBHKDhBhKMIIQxFAAFIZYSgKCEDQn6C4tHYDBpe22zPS7WF7AYUmyR8guNKcAAAAAElFTkSuQmCC");
+}
+
+.inforCheckbox:disabled + .inforCheckboxLabel:before, .inforCheckbox:disabled + input[type="hidden"] + .inforCheckboxLabel:before,
+.inforCheckboxList input:disabled + label:before, .inforCheckboxList input:disabled + input[type="hidden"] + label:before,
+.inforAspCheckBox input:disabled + label:before, .inforAspCheckBox input:disabled + input[type="hidden"] + label:before
+  {
+	opacity: .6;
+	filter: alpha(opacity=60);
+	cursor: default;
+}
+
+.inforCheckbox:disabled + .inforCheckboxLabel, .inforCheckbox:disabled + input[type="hidden"] + .inforCheckboxLabel,
+.inforCheckboxList input:disabled + label, .inforCheckboxList input:disabled + input[type="hidden"] + label,
+.inforAspCheckBox input:disabled + label, .inforAspCheckBox input:disabled + input[type="hidden"] + label
+{
+	opacity: .6;
+	filter: alpha(opacity=60);
+	cursor: default;
+}
+
+.ie7 .inforCheckbox, .ie8 .inforCheckbox,
+.ie7 .inforCheckboxList input, .ie8 .inforCheckboxList input,
+.ie7 .inforAspCheckBox input, .ie8 .inforAspCheckBox input {
+	filter: alpha(opacity=100);
+	opacity: 1;
+	height: auto;
+	margin-right: 4px;
+	position: static;
+	width: auto;
+	height: 16px;
+    width: 16px;
+}
+
+.ie7 .inforCheckbox:focus ,.ie8 .inforCheckbox:focus,
+.ie7 .inforCheckboxList input:focus ,.ie8 .inforCheckboxList input:focus,
+.ie7 .inforAspCheckBox input:focus ,.ie8 .inforAspCheckBox input:focus
+ {
+  outline: 1px solid #13A3F7;
+}
+
+.ie7 .inforCheckboxLabel, .ie8 .inforCheckboxLabel,
+.ie7 .inforCheckboxList input, .ie8 .inforCheckboxList input,
+.ie7 .inforAspCheckBox input, .ie8 .inforAspCheckBox input
+ {
+	position: relative;
+	top: -3px;
+}
+
+.ie7 .inforCheckbox + .inforCheckboxLabel:before, .ie8 .inforCheckbox + .inforCheckboxLabel:before, .ie7 .inforCheckbox + input[type="hidden"] + .inforCheckboxLabel:before, .ie8 .inforCheckbox + input[type="hidden"] + .inforCheckboxLabel:before ,
+
+.ie7 .inforCheckboxList input + label:before, .ie8 .inforCheckboxList input + label:before, .ie7 .inforCheckboxList input + input[type="hidden"] + label:before, .ie8 .inforCheckboxList input + input[type="hidden"] + label:before ,
+
+.ie7 .inforAspCheckBox input + label:before, .ie8 .inforAspCheckBox input + label:before, .ie7 .inforAspCheckBox input + input[type="hidden"] + label:before, .ie8 .inforAspCheckBox input + input[type="hidden"] + label:before 
+{
+	display: none;
+}
+
+html[dir="rtl"] .inforCheckbox + .inforCheckboxLabel:before,
+html[dir="rtl"] .inforCheckboxList input + label:before,
+html[dir="rtl"] .inforAspCheckBox input + label:before
+ {
+  background-position: 4px 0;
+}
+input, textarea {
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 1.2em;
+}
+/* Infor TextBox styles */
+
+.inforTextbox {
+	line-height: 14px;
+	width: 195px;
+	border-radius: 3px;
+	border: 1px solid #b3b3b3;
+	padding: 2px 4px;
+	color: #1a1a1a;
+	height: 14px;
+	background-color: white;
+	transition: border 0.2s linear 0s, border-color 0.2s linear 0s;
+}
+
+
+.inforTextbox[readonly], .inforTextbox[disabled], .inforTextbox.disabled, .inforTextbox[disabled]:focus , .inforTextbox.disabled:focus , .inforTextbox[disabled]:focus , .inforTextbox.disabled:focus
+{
+	border: 1px solid transparent;
+	background-color: transparent;
+}
+
+/*Is permissible to use optional e5e5e5 for disabled fields*/
+.inforTextbox.backgroundColor[readonly], .inforTextbox.backgroundColor[disabled], .inforTextbox.backgroundColor.disabled, .inforTextbox.backgroundColor[disabled]:focus , .inforTextbox.backgroundColor.disabled:focus , .inforTextbox.backgroundColor[disabled]:focus , .inforTextbox.backgroundColor.disabled:focus
+{
+	border: 1px solid transparent;
+	background-color: #e5e5e5 !important;
+}
+
+.inforTextbox[disabled], .inforTextbox.disabled {
+	background-color: transparent;
+	color: #777;
+}
+
+.inforTextbox.decimalOnly, .inforTextbox.numericOnly {
+	text-align: right;
+}
+
+.inforTextbox.decimalOnly[readonly], .inforTextbox.numericOnly[readonly],.inforTextbox.decimalOnly[disabled], .inforTextbox.numericOnly[disabled]  {
+	text-align: left;
+}
+
+.inforTextbox.backgroundColor.decimalOnly[readonly], .inforTextbox.backgroundColor.numericOnly[readonly],.inforTextbox.backgroundColor.decimalOnly[disabled], .inforTextbox.backgroundColor.numericOnly[disabled]  {
+	text-align: right;
+}
+
+.inforTextbox.alignRight.decimalOnly[readonly], .inforTextbox.alignRight.numericOnly[readonly],.inforTextbox.alignRight.decimalOnly[disabled], .inforTextbox.alignRight.numericOnly[disabled]  {
+	text-align: right;
+}
+
+.inforTextbox:focus {
+	outline: none;
+	border: 1px solid #13A3F7;
+	background-color: #EAF7FF;
+}
+
+.inforTextbox.has-error {
+  border: 1px solid #d5000e;
+}
+
+.inforTextbox.has-error:focus {
+  background-color: #FDF2F3 !important;
+  border: 1px solid #d5000e !important;
+}
+
+.inforTextbox.has-error[readonly]:focus, .inforTextbox.has-error[readonly] {
+   border: 1px solid transparent;
+}
+
+.inforTextbox[readonly]:focus {
+	outline: none;
+	border: 1px solid transparent;
+}
+
+/*Allow size attribute to work*/
+.inforTextbox[size] {
+	width: auto !important;
+}
+
+.inforTriggerField .inforTextbox[size] {
+	margin-right: 15px;
+}
+/************ Infor TextBox styles END   ****************/
 
 #MainWorkArea 
 {
@@ -261,7 +928,6 @@
 {
     border-bottom: solid 1px #ccc;
     width : 100%;
-
     background-color : White;
     margin : 0px;
     margin-bottom : 4px;
@@ -275,22 +941,23 @@
 
 .mainContentHeader2  
 {
-
      margin : 0px;
      width: 100%;
      margin-bottom: 4px;
     margin-top: 4px;
     padding-left: 3px;	
-     
 }
 
-.mainContentHeader .verticle-sep-div,
 .mainContentHeader IMG 
 {
-    padding-right : 4px;
-    padding-left : 4px; 
-    vertical-align : middle;
-    
+    padding : 0px;
+}
+.mainContentHeaderLogo img {
+    display: none;
+}
+.dijitDialogTitleBar td div /* alignment issue for the dialogue: sales orders -> add custom product*/
+{
+    vertical-align:middle;
 }
 
 .mainContentHeader .verticle-sep-div
@@ -299,24 +966,18 @@
 	width: 2px;
 	border-left: solid 1px #a2a2a2;
 	height: 16px;
-}
-
-.mainContentHeader INPUT 
-{
-    margin-right : 4px;
-    padding-left : 0px;
+	padding-right : 4px;
+    padding-left : 4px; 
     vertical-align : middle;
-    
 }
 
 .dialogContentArea .mainContentHeader,
 .tws-tab-view .mainContentHeader,
 .mainContentContent .mainContentHeader2,
-.tws-tab-view .mainContentHeader2,
 .dialogContentArea .mainContentHeader2
 {
-    height: 20px;
-    font-family: Arial,Helvetica,sans-serif;
+    height: 30px;
+    font-family: Helvetica,Arial,sans-serif;
     color: #2a405b;
     font-size: 14px;
     font-weight : normal;
@@ -326,14 +987,14 @@
 {
     width: 100%;
     height: 26px;
-    color: #fff;
+    color: #5e5e5e;
     font-size: 14px;
     font-weight : normal;
 } 
 .mainContentHeaderTable TD 
 {
     white-space : nowrap;
-    padding : 0em .5em 0em 6px;
+    padding : 0em .2em;
     vertical-align : middle;
 }
 
@@ -344,58 +1005,34 @@
 {
     text-align : center;
 }
-.mainContentHeaderToolsRight 
+.mainContentHeaderToolsRight input, 
+.mainContentHeaderToolsRight a, 
+.tws-tab-view-tools-right input, 
+.tws-tab-view-tools-right a,
+.task-pane-header-tools a, 
+.task-pane-header-tools input
 {
+    margin: 0 3px;
+    line-height:15px;
 }
+.activity-type-link,
 A 
 {
-    color : #0000cc;
+    cursor: pointer;
+    color : #13a3f7;
     text-decoration : none;
 }
 
+.activity-type-link:hover,
 A:hover 
 {
     text-decoration : underline;
 }
+.activity-type-link:active,
 A:active 
 {
-    color : #0000cc;
+    color : #13a3f7;
     text-decoration : none;
-}
-
-.datagrid 
-{
-    border-collapse : collapse;
-    border-width : 0px;
-}
-
-.datagrid TD 
-{
-    padding : 1px .25em;
-    border : solid 0px #aaa;
-    font-size : 12px;
-    font-weight : normal;
-}
-.datagrid TH 
-{
-    font-weight : bold;
-    text-align : left;
-    border-width : 0px;
-    font-size : 12px;
-    background-color : #eee;
-    color: #000000;
-    padding: .25em;
-    border-right : solid 1px #ddd;
-}
-
-.rowlt 
-{
-    background-color : #ffffff;
-}
-
-.rowdk 
-{
-    background-color : #f7f7f8;
 }
 
 .rowSelected 
@@ -421,8 +1058,8 @@ A:active
 {
     display : none; 
     position : absolute; 
-    padding : 2px 4px; 
-    color:#666666;
+    padding : 5px 10px; 
+    color:#d2d2d2;
 }
 
 
@@ -539,7 +1176,7 @@ A:active
 }
 .timeline-container
 {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: Helvetica,Arial,sans-serif;
     font-size: 11px;
 }
 
@@ -553,12 +1190,9 @@ A:active
 div.task-pane-header 
 {
     height: 26px;
-    
-	
-    color: #fff !important;	
-    background-color: #00678a;
-    
-
+    line-height:1em;
+    color: #5e5e5e !important;	
+    background-color: #b6b6b6;
 }
 
 #center_panel_center .mainContentHeader
@@ -580,38 +1214,52 @@ div.task-pane-header
 .tws .tws-more-tab-element div.tws-more-tab-buttons-title
 {
     height: 27px;
-    /*line-height: 25px;*/
     font-weight: normal;
+    padding-left: .8em;
 }
 
-table.datagrid th
+.datagrid th
 {
-    border-left: solid 1px #d0d0d0;
-    border-top: solid 1px #D0D0D0;
-    border-right: solid 1px #D0D0D0;
-    border-bottom: solid 1px #FFFFFF;
+    border-left: solid 1px #b6b6b6;
+    border-top: solid 1px #b6b6b6;
+    border-right: solid 1px #b6b6b6;
+    border-bottom: solid 1px #b6b6b6;
     background: inherit;
     padding: 4px 3px 4px 5px;
-    line-height: 15px;	
+    text-align: left;
 }
 
-table.datagrid th,
-table.datagrid td
+.datagrid th,
+.datagrid td
 {
     font-size: 11px;
     font-weight: normal;
+    line-height: 20px;
 }
 
 .datagrid td
 {
-    padding: 2px 3px 1px 5px;
-    line-height: 13px;
+    padding: 4px 3px 1px 5px;
+}
+.datagrid .dijitTextBox, .datagrid .dijitTextBox .dijitInputInner{
+    height:22px;
+}
+.datagrid .dijitComboBox .dijitArrowButtonInner {
+    margin-top: 4px;
+}
+
+.datagrid input[type="text"] {
+    font-size:12px;
+}
+.dojoxGridRow, .dojoxGridRowOdd
+{
+	min-height: 20px;
 }
 
 .gridPager span
 {
     font-weight: normal;
-    color: #000000;
+    color: #5E5E5E;
 }
 
 .gridPager td
@@ -644,11 +1292,19 @@ table.datagrid td
 
 tr.rowhead
 {
-    background:url("../images/rowOverlay.png") repeat-x top #eff0f2;
-    border-left: 1px solid #c0c0c0;
-    border-right: 1px solid #c0c0c0;
+    border-left: 1px solid #b6b6b6;
+    border-right: 1px solid #b6b6b6;
     padding: 0px;
     font-size: 13px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #b6b6b6;
+}
+tr.rowhead a
+{
+    color: #737373;
+}
+tr.rowhead th {
+    border-color: #b6b6b6;
 }
 
 th div.headercontents
@@ -674,8 +1330,7 @@ table.datagrid th.slx-grid-cell-last
 th div.headercontents,
 .headercontents a
 {
-    /*font-weight: bold;*/
-    color: #000000;
+    color: #737373;
 }
 
 .datagrid
@@ -692,6 +1347,7 @@ th div.headercontents,
     border-right: 1px solid #c0c0c0;
     border-top:1px solid #ffffff;
     border-bottom:1px solid #ededed;
+    height:32px;
 }
 
 .rowlt td,
@@ -700,10 +1356,13 @@ th div.headercontents,
     border-top:1px solid #ffffff;
     border-bottom:1px solid #ededed;
 }
-
+.rowlt 
+{
+    background-color : #ffffff;
+}
 .rowdk
 {
-    background-color: #fafafa;
+    background-color: #e5e5e5;
 }
 
 .slx-grid-row-last td
@@ -726,6 +1385,7 @@ th div.headercontents,
 .slx-grid-wrapper
 {
     border: solid 1px #ffffff;
+    margin: 5px 0;
 }
 
 .slx-grid-no-data table.datagrid th,
@@ -853,14 +1513,16 @@ th div.headercontents,
 }
 .loginmsg 
 {
-    display: block;
-    color:red;
-    text-align:left;
-    height: 40px;
-    vertical-align: top;
-    padding-top: 10px;
-	padding-left:50px;
-	font-size:11px;
+  color: #D5000E;
+  display: inline-block;
+  font-size: 12px;
+  left: 9px;
+  line-height: 16px;
+  max-width: 300px;
+  padding: 10px 0;
+  position: relative;
+  text-align: center;
+  top: -3px;
 }     
 .slxlogin 
 {
@@ -875,8 +1537,7 @@ th div.headercontents,
 }
 
 #LogoffTitle,
-#LogoffMessage,
-#LogoffFormButtonPanel
+#LogoffMessage
 {
 	font-family: Arial,Helvetica,Sans-Serif;
     font-size: 12px;
@@ -885,12 +1546,12 @@ th div.headercontents,
 #LogoffTitle
 {
     font-size: 18px;
-    color: #333;
+    color: #666;
     padding-bottom: 25px;
 }
 #LogoffMessage
 {
-    font-size: 12px;
+    /*font-size: 12px;*/
 }
 #LogoffFormButtonPanel
 {
@@ -920,4 +1581,5 @@ th div.headercontents,
 .leftoffset14 
 {
     margin-left: 14px;
+    margin-top: 11px;
 }

@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblShow.Caption" xml:space="preserve">
+    <value>顯示:</value>
+  </data>
+  <data name="chkGroup.Caption" xml:space="preserve">
+    <value>群組:</value>
+  </data>
+  <data name="chkContacts.Caption" xml:space="preserve">
+    <value>聯絡人</value>
+  </data>
+  <data name="chkLeads.Caption" xml:space="preserve">
+    <value>銷售線索</value>
+  </data>
+  <data name="chkPriority.Caption" xml:space="preserve">
+    <value>優先順序:</value>
+  </data>
+  <data name="chkResponded.Caption" xml:space="preserve">
+    <value>已回應:</value>
+  </data>
+  <data name="rdgResponded_No.Value" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="rdgResponded_No.Text" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="rdgResponded_Yes.Value" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="rdgResponded_Yes.Text" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="chkStatus.Caption" xml:space="preserve">
+    <value>狀態:</value>
+  </data>
+  <data name="cmdSearch.Caption" xml:space="preserve">
+    <value>重新整理</value>
+  </data>
+  <data name="chkStage.Caption" xml:space="preserve">
+    <value>上個階段:</value>
+  </data>
+  <data name="cmdReset.Caption" xml:space="preserve">
+    <value>重設</value>
+  </data>
+  <data name="cmdSelectAll.Caption" xml:space="preserve">
+    <value>全選</value>
+  </data>
+  <data name="cmdClearAll.Caption" xml:space="preserve">
+    <value>全部清除</value>
+  </data>
+  <data name="chkDisplayOnOpen.Caption" xml:space="preserve">
+    <value>開啟後顯示結果</value>
+  </data>
+  <data name="chkExternalList.Caption" xml:space="preserve">
+    <value>使用外部清單</value>
+  </data>
+  <data name="cmdSaveAsGroup.Caption" xml:space="preserve">
+    <value>另存為群組</value>
+  </data>
+  <data name="grdTargets.EmptyTableRowText" xml:space="preserve">
+    <value>沒有符合所選條件的記錄。</value>
+  </data>
+  <data name="grdTargets.Name.ColumnHeading" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="grdTargets.Company.ColumnHeading" xml:space="preserve">
+    <value>公司</value>
+  </data>
+  <data name="grdTargets.Group.ColumnHeading" xml:space="preserve">
+    <value>群組</value>
+  </data>
+  <data name="grdTargets.Priority.ColumnHeading" xml:space="preserve">
+    <value>優先順序</value>
+  </data>
+  <data name="grdTargets.Status.ColumnHeading" xml:space="preserve">
+    <value>狀態</value>
+  </data>
+  <data name="grdTargets.LastUpdate.ColumnHeading" xml:space="preserve">
+    <value>上次更新</value>
+  </data>
+  <data name="grdTargets.Initial.ColumnHeading" xml:space="preserve">
+    <value>初始</value>
+  </data>
+  <data name="grdTargets.LastResponse.ColumnHeading" xml:space="preserve">
+    <value>上次回應</value>
+  </data>
+  <data name="grdTargets.Type.ColumnHeading" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="cmdDelete.Caption" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="cmdDelete.ToolTip" xml:space="preserve">
+    <value>移除選取的目標</value>
+  </data>
+  <data name="cmdUpdate.Caption" xml:space="preserve">
+    <value>更新目標</value>
+  </data>
+  <data name="cmdUpdate.ToolTip" xml:space="preserve">
+    <value>更新選取的目標</value>
+  </data>
+  <data name="cmdManageList.Caption" xml:space="preserve">
+    <value>管理清單</value>
+  </data>
+  <data name="cmdManageList.ToolTip" xml:space="preserve">
+    <value>新增目標</value>
+  </data>
+  <data name="grdTargets.Stage.ColumnHeading" xml:space="preserve">
+    <value>階段</value>
+  </data>
+  <data name="Item_None.Text" xml:space="preserve">
+    <value>&lt;無&gt;</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CampaignTargets_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>CampaignTargets_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="confirm_ExternalList_Msg" xml:space="preserve">
+    <value>選擇使用外部清單時，將會移除與此行銷活動關聯的任何目標。您是否要繼續?</value>
+  </data>
+  <data name="cmdLaunchEmail.Caption" xml:space="preserve">
+    <value>啟動電子郵件...</value>
+  </data>
+  <data name="cmdLaunchEmail.ToolTip" xml:space="preserve">
+    <value>啟動電子郵件</value>
+  </data>
+  <data name="confirmDeleteMsg" xml:space="preserve">
+    <value>您確定要移除選取的目標?</value>
+  </data>
+  <data name="lnkShowFilters.Text" xml:space="preserve">
+    <value>顯示篩選</value>
+  </data>
+  <data name="error_EntityContext" xml:space="preserve">
+    <value>遺失目前的實體內容。</value>
+  </data>
+  <data name="error_NoTarget_Selected" xml:space="preserve">
+    <value>您必須至少選取一個目標，才能繼續進行。</value>
+  </data>
+  <data name="lnkHideFilters.Text" xml:space="preserve">
+    <value>隱藏篩選</value>
+  </data>
+  <data name="grdTargets.NoRecordsFoundText" xml:space="preserve">
+    <value>按一下上面的「重新整理」按鈕以顯示目標</value>
+  </data>
+  <data name="lblSearchCount.Caption" xml:space="preserve">
+    <value>記錄 {0} - {1}，共 {2} 筆</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="cmdSave.ToolTip" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="txtExternalDescription.Caption" xml:space="preserve">
+    <value>描述:</value>
+  </data>
+  <data name="txtExternalLocation.Caption" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="txtExternalNumber.Caption" xml:space="preserve">
+    <value>目標數:</value>
+  </data>
+  <data name="AddTargetResponse_DialogCaption" xml:space="preserve">
+    <value>新增回應</value>
+  </data>
+  <data name="Status_Response" xml:space="preserve">
+    <value>已回應</value>
+  </data>
+</root>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9c0f2b07-0aa1-422f-9fa9-20484d1a6a5b" lastModifiedUtc="2017-06-22T13:35:06.7970597Z" name="GetEmailDetails" returnType="object" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="9993d0cf-5bf9-443e-ab19-adc90f9ea971" lastModifiedUtc="2017-06-22T13:34:55.0534825Z" targetType="SalesLogix.Integration.Marketo.Rules.MarketoLeadRules, SalesLogix.Integration.Marketo" targetMethod="GetEmails" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

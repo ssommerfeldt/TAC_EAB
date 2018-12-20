@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ReportMgr/nls/en/BaseReportScheduleEditor", (
 { dlgReportScheduleDetails_Schedule_Title: 'Add/Edit Schedule',
   dlgReportScheduleDetails_RunReport_Title: 'Run Report',
   txtReportType_Caption: 'Report Type',

@@ -1,108 +1,11 @@
-require({cache:{
-'dijit/form/nls/sk/validate':function(){
-define(
-"dijit/form/nls/sk/validate", //begin v1.x content
-({
-	invalidMessage: "Zadaná hodnota nie je platná.",
-	missingMessage: "Táto hodnota je vyžadovaná.",
-	rangeMessage: "Táto hodnota je mimo rozsah."
-})
-
-//end v1.x content
-);
-
-},
-'dijit/_editor/nls/sk/commands':function(){
-define(
-"dijit/_editor/nls/sk/commands", //begin v1.x content
-({
-	'bold': 'Tučné písmo',
-	'copy': 'Kopírovať',
-	'cut': 'Vystrihnúť',
-	'delete': 'Vymazať',
-	'indent': 'Odsadiť',
-	'insertHorizontalRule': 'Horizontálna čiara',
-	'insertOrderedList': 'Číslovaný zoznam',
-	'insertUnorderedList': 'Zoznam s odrážkami',
-	'italic': 'Kurzíva',
-	'justifyCenter': 'Zarovnať na stred',
-	'justifyFull': 'Zarovnať podľa okraja',
-	'justifyLeft': 'Zarovnať doľava',
-	'justifyRight': 'Zarovnať doprava',
-	'outdent': 'Predsadiť',
-	'paste': 'Nalepiť',
-	'redo': 'Znova vykonať',
-	'removeFormat': 'Odstrániť formát',
-	'selectAll': 'Vybrať všetko',
-	'strikethrough': 'Prečiarknuť',
-	'subscript': 'Dolný index',
-	'superscript': 'Horný index',
-	'underline': 'Podčiarknuť',
-	'undo': 'Vrátiť späť',
-	'unlink': 'Odstrániť prepojenie',
-	'createLink': 'Vytvoriť prepojenie',
-	'toggleDir': 'Prepnúť smer',
-	'insertImage': 'Vložiť obrázok',
-	'insertTable': 'Vložiť/upraviť tabuľku',
-	'toggleTableBorder': 'Prepnúť rámček tabuľky',
-	'deleteTable': 'Vymazať tabuľku',
-	'tableProp': 'Vlastnosť tabuľky',
-	'htmlToggle': 'Zdroj HTML',
-	'foreColor': 'Farba popredia',
-	'hiliteColor': 'Farba pozadia',
-	'plainFormatBlock': 'Štýl odseku',
-	'formatBlock': 'Štýl odseku',
-	'fontSize': 'Veľkosť písma',
-	'fontName': 'Názov písma',
-	'tabIndent': 'Odsadenie tabulátora',
-	"fullScreen": "Zobraziť na celú obrazovku",
-	"viewSource": "Zobraziť zdrojový kód HTML ",
-	"print": "Tlačiť",
-	"newPage": "Nová stránka ",
-	/* Error messages */
-	'systemShortcut': 'Akcia "${0}" je vo vašom prehliadači dostupná len s použitím klávesovej skratky. Použite ${1}.'
-})
-
-//end v1.x content
-);
-
-},
-'dijit/nls/sk/loading':function(){
-define(
-//begin v1.x content
-({
-	loadingState: "Zavádzanie...",
-	errorState: "Nastala chyba"
-})
-
-//end v1.x content
-);
-
-},
-'dijit/form/nls/sk/ComboBox':function(){
-define(
-//begin v1.x content
-({
-		previousMessage: "Predchádzajúce voľby",
-		nextMessage: "Ďalšie voľby"
-})
-
-//end v1.x content
-);
-
-},
-'dijit/nls/sk/common':function(){
-define(
-"dijit/nls/sk/common", //begin v1.x content
-({
-	buttonOk: "OK",
-	buttonCancel: "Zrušiť",
-	buttonSave: "Uložiť",
-	itemClose: "Zatvoriť"
-})
-
-//end v1.x content
-);
-
-}}});
-define("dijit/nls/dijit_sk", [], 1);
+define('dijit/nls/dijit_sk',{
+'dijit/nls/loading':{"loadingState":"Zavádza sa...","errorState":"Ľutujeme, ale vyskytla sa chyba","_localized":{}}
+,
+'dijit/nls/common':{"buttonOk":"OK","buttonCancel":"Zrušiť","buttonSave":"Uložiť","itemClose":"Zatvoriť","_localized":{}}
+,
+'dijit/_editor/nls/commands':{"bold":"Tučné","copy":"Kopírovať","cut":"Vystrihnúť","delete":"Vymazať","indent":"Odsadiť","insertHorizontalRule":"Vodorovná čiara","insertOrderedList":"Číslovaný zoznam","insertUnorderedList":"Zoznam s odrážkami","italic":"Kurzíva","justifyCenter":"Zarovnať na stred","justifyFull":"Zarovnať k okrajom","justifyLeft":"Zarovnať vľavo","justifyRight":"Zarovnať vpravo","outdent":"Zmenšiť odsadenie","paste":"Prilepiť","redo":"Znova","removeFormat":"Odstrániť formátovanie","selectAll":"Vybrať všetko","strikethrough":"Prečiarknuť","subscript":"Dolný index","superscript":"Horný index","underline":"Podčiarknuť","undo":"Späť","unlink":"Odstrániť prepojenie","createLink":"Vytvoriť prepojenie","toggleDir":"Prepnúť smer","insertImage":"Vložiť obrázok","insertTable":"Vložiť/upraviť tabuľku","toggleTableBorder":"Prepnúť ohraničenie tabuľky","deleteTable":"Odstrániť tabuľku","tableProp":"Vlastnosť tabuľky","htmlToggle":"Zdrojový kód HTML","foreColor":"Farba popredia","hiliteColor":"Farba pozadia","plainFormatBlock":"Štýl odseku","formatBlock":"Štýl odseku","fontSize":"Veľkosť písma","fontName":"Názov písma","tabIndent":"Odsadenie tabulátora","fullScreen":"Prepnúť na celú obrazovku","viewSource":"Zobraziť zdrojový kód HTML","print":"Vytlačiť","newPage":"Nová stránka","systemShortcut":"Akcia \"${0}\" je vo vašom prehliadači dostupná iba prostredníctvom klávesovej skratky. Stlačte ${1}.","ctrlKey":"Ctrl+${0}","appleKey":"⌘${0}","_localized":{}}
+,
+'dijit/form/nls/validate':{"invalidMessage":"Zadaná hodnota nie je platná.","missingMessage":"Táto hodnota je povinná.","rangeMessage":"Táto hodnota je mimo rozsah.","_localized":{}}
+,
+'dijit/form/nls/ComboBox':{"previousMessage":"Predchádzajúce možnosti","nextMessage":"Viac možností","_localized":{}}
+});

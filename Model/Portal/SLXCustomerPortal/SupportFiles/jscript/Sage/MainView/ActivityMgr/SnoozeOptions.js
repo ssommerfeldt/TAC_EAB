@@ -1,6 +1,6 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/MainView/ActivityMgr/SnoozeOptions", [
         'dijit/_TemplatedMixin',
         'dijit/_WidgetsInTemplateMixin',
         'dijit/_Widget',

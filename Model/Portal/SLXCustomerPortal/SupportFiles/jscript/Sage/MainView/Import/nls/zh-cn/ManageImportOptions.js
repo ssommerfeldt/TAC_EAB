@@ -1,0 +1,23 @@
+define("Sage/MainView/Import/nls/zh-cn/ManageImportOptions", {
+    "dlgManageImportOptions_Title": "记录导入 - 选项",
+    "lstImportType_Caption": "您想如何处理此文件中的记录?",
+    "lstImportOption_Insert": "在找不到匹配项时添加记录",
+    "txtOption_Insert": "如果根据定义的匹配条件找不到现有记录，那么将向数据库添加新联系人、客户或地址记录。如果找到匹配记录，将不会导入该记录。",
+    "lstImportOption_Update": "找到匹配项时更新记录",
+    "txtOption_Update": "如果根据定义的匹配条件找到现有联系人、客户或地址记录，那么将使用导入的信息更新记录。如果找不到匹配记录，那么将不会导入该信息。",
+    "lstImportOption_InsertUpdate": "添加或更新每条记录",
+    "txtOption_InsertUpdate": "如果根据定义的匹配条件找到现有联系人、客户或地址记录，那么将使用导入的信息更新记录。如果找不到匹配记录，那么将添加新记录。",
+    "txtMatchHeader_Caption": "定义匹配条件:",
+    "txtOptionsHeader_Caption": "选项",
+    "defaultOwner_Caption": "默认所有者:",
+    "lookupDefaultOwner_Caption": "查找所有者",
+    "lookupDescriptionColText": "描述",
+    "lookupTypeColText": "类型",
+    "createAdHoc_Caption": "创建新的特别组",
+    "existingAdHoc_Caption": "添加到现有特别组",
+    "errorNoAddHocGroupName": "请指定特别组名，然后再继续。",
+    "errorDuplicateAddHocGroupName": "请指定一个尚未使用的特别组名。",
+    "errorNoOwner": "请指定所有者，然后再继续。",
+    "chkAccountName": "使用联系人姓名代替空的客户名称",
+    "match_Caption": "匹配:"
+});

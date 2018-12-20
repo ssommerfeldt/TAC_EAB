@@ -1,12 +1,10 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            decodeFailed: "The call to DecodeMailMergeJsonFromUrl() failed."
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/MailMerge/nls/Loader", {
+    root: {
+        decodeFailed: "The call to DecodeMailMergeJsonFromUrl() failed."
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

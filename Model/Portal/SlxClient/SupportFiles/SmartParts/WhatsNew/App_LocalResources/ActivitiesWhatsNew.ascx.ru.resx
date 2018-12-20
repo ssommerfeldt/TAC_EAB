@@ -117,17 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmptyRow_lz" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="ScheduledFor_lz" xml:space="preserve">
-    <value>Запланировано на</value>
-  </data>
   <data name="Account_Company" xml:space="preserve">
-    <value>Субъект/Компания</value>
+    <value>Клиент/компания</value>
   </data>
-  <data name="User_lz" xml:space="preserve">
-    <value>Пользователь</value>
+  <data name="Activities_Caption" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="ActivityType_lz" xml:space="preserve">
+    <value>Тип действия</value>
   </data>
   <data name="Added_lz" xml:space="preserve">
     <value>Добавлено</value>
@@ -135,8 +132,41 @@
   <data name="Contact" xml:space="preserve">
     <value>Контакт</value>
   </data>
+  <data name="EmptyRow_lz" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <data name="Lead" xml:space="preserve">
+    <value>Заинтересованное лицо</value>
+  </data>
+  <data name="Meeting_Type" xml:space="preserve">
+    <value>Встреча</value>
+  </data>
+  <data name="Modified" xml:space="preserve">
+    <value>Изменено</value>
+  </data>
   <data name="ModifiedActivities_Caption" xml:space="preserve">
-    <value>Измененные дела</value>
+    <value>Измененные действия</value>
+  </data>
+  <data name="Name_lz" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="NewActivities_Caption" xml:space="preserve">
+    <value>Новые действия</value>
+  </data>
+  <data name="Note_Type" xml:space="preserve">
+    <value>Заметка</value>
+  </data>
+  <data name="Personal_Type" xml:space="preserve">
+    <value>Личное действие</value>
+  </data>
+  <data name="Phone_Type" xml:space="preserve">
+    <value>Звонок</value>
+  </data>
+  <data name="Regarding_lz" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="ScheduledFor_lz" xml:space="preserve">
+    <value>Запланировано на</value>
   </data>
   <data name="ToDo_Type" xml:space="preserve">
     <value>Дело</value>
@@ -144,37 +174,7 @@
   <data name="Type_lz" xml:space="preserve">
     <value>Тип</value>
   </data>
-  <data name="Meeting_Type" xml:space="preserve">
-    <value>Встреча</value>
-  </data>
-  <data name="ActivityType_lz" xml:space="preserve">
-    <value>Тип дела</value>
-  </data>
-  <data name="Phone_Type" xml:space="preserve">
-    <value>Звонок</value>
-  </data>
-  <data name="Personal_Type" xml:space="preserve">
-    <value>Личные дела</value>
-  </data>
-  <data name="Activities_Caption" xml:space="preserve">
-    <value>Дела</value>
-  </data>
-  <data name="Note_Type" xml:space="preserve">
-    <value>Заметка</value>
-  </data>
-  <data name="Lead" xml:space="preserve">
-    <value>Наводка</value>
-  </data>
-  <data name="NewActivities_Caption" xml:space="preserve">
-    <value>Новые дела</value>
-  </data>
-  <data name="Modified" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
-  <data name="Name_lz" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="Regarding_lz" xml:space="preserve">
-    <value>Тема</value>
+  <data name="User_lz" xml:space="preserve">
+    <value>Пользователь</value>
   </data>
 </root>

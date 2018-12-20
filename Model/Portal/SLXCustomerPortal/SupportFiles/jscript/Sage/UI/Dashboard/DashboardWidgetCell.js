@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Dashboard/DashboardWidgetCell", [
        'dojo/i18n',
        'dojo/i18n!./nls/DashboardWidgetCell',
        'Sage/UI/WidgetEditor',
@@ -198,10 +198,16 @@ function (i18n, DashboardWidgetCell, widgetEditor, dashboardWidget, dom, portlet
             return icon;
         },
         _removeIcons: function () {
-            this.disconnect(this.iconClickEvent);
-            this.disconnect(this.iconMouseOverEvent);
-            this.disconnect(this.iconMouseOutEvent);
-            if(this._tbarIcons.length > 0) {
+            if (this.iconClickEvent) {
+                this.disconnect(this.iconClickEvent);
+            }
+            if (this.iconMouseOverEvent) {
+                this.disconnect(this.iconMouseOverEvent);
+            }
+            if (this.iconMouseOutEvent) {
+                this.disconnect(this.iconMouseOutEvent);
+            }
+            if (this._tbarIcons.length > 0) {
                 dojo.empty(this._tbarIcons[0]);
             }
         },

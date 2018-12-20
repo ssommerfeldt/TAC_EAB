@@ -1,15 +1,15 @@
 using System;
+using System.Text;
 using System.Web.UI;
-using Sage.Platform.Application.UI;
-using Sage.Platform.WebPortal.SmartParts;
 using Sage.Entity.Interfaces;
+using Sage.Platform.Application.UI;
+using Sage.Platform.WebPortal.Services;
+using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.Services.Import;
 using Sage.SalesLogix.Services.PotentialMatch;
-using System.Text;
-using Sage.Platform.WebPortal.Services;
 
-public partial class MatchOptions : EntityBoundSmartPartInfoProvider
-{    
+public partial class SmartParts_Lead_MatchOptions : EntityBoundSmartPartInfoProvider
+{
     #region Public Methods
 
     /// <summary>
@@ -61,7 +61,7 @@ public partial class MatchOptions : EntityBoundSmartPartInfoProvider
                 advancedOptions.IncludeFuzzy = chkUseFuzzy.Checked;
                 advancedOptions.FuzzyLevel = Convert.ToInt32(lbxFuzzyLevel.SelectedValue);
             }
-            else 
+            else
             {
                 IsDefaultsSet.Value = "True";
                 txtDuplicate_Low.Text = Convert.ToString(advancedOptions.DuplicateBottomThreshhold);
@@ -96,7 +96,9 @@ public partial class MatchOptions : EntityBoundSmartPartInfoProvider
         }
         else
         {
-            script.Append("dojo.ready(function () {Sage.UI.Forms.MatchOptions.init(" + GetWorkSpace() + ");");
+            script.Append("require(['dojo/ready'], function(ready) {" +
+                          "ready(function() { Sage.UI.Forms.MatchOptions.init(" + GetWorkSpace() + "); });" +
+                          "});");
         }
         ScriptManager.RegisterStartupScript(this, GetType(), "initialize_MatchOptions", script.ToString(), true);
     }
@@ -127,7 +129,7 @@ public partial class MatchOptions : EntityBoundSmartPartInfoProvider
     /// <summary>
     /// Called when the smartpart has been bound.  Derived components should override this method to run code that depends on entity context being set and it not changing.
     /// </summary>
-    protected override void  OnFormBound()
+    protected override void OnFormBound()
     {
         base.OnFormBound();
         if (Visible)
@@ -227,9 +229,10 @@ public partial class MatchOptions : EntityBoundSmartPartInfoProvider
         {
             return dupProvider.AdvancedOptions;
         }
-        return DialogService.DialogParameters.ContainsKey("matchAdvancedOptions")
-                   ? DialogService.DialogParameters["matchAdvancedOptions"] as MatchAdvancedOptions
-                   : null;
+        object matchAdvancedOptions;
+        return DialogService.DialogParameters.TryGetValue("matchAdvancedOptions", out matchAdvancedOptions)
+            ? matchAdvancedOptions as MatchAdvancedOptions
+            : null;
     }
 
     /// <summary>
@@ -240,7 +243,6 @@ public partial class MatchOptions : EntityBoundSmartPartInfoProvider
         MatchAdvancedOptions advancedOptions = GetOptions();
         if (advancedOptions != null)
         {
-
             if (!String.IsNullOrEmpty(txtDuplicate_Low.Text))
             {
                 advancedOptions.DuplicateBottomThreshhold = Convert.ToInt32(txtDuplicate_Low.Text);
@@ -262,8 +264,8 @@ public partial class MatchOptions : EntityBoundSmartPartInfoProvider
             advancedOptions.IncludeThesaurus = chkUseSynonym.Checked;
             advancedOptions.IncludeFuzzy = chkUseFuzzy.Checked;
             advancedOptions.FuzzyLevel = Convert.ToInt32(lbxFuzzyLevel.SelectedValue);
-        }    
-        
+        }
+
         ImportManager importManager = Page.Session["importManager"] as ImportManager;
         if (importManager != null)
         {

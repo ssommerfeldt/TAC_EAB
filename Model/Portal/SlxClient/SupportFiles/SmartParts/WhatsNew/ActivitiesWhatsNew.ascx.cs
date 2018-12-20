@@ -1,6 +1,4 @@
 using System;
-using System.Globalization;
-using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Sage.Entity.Interfaces;
@@ -9,45 +7,27 @@ using Sage.Platform.Application;
 using Sage.Platform.Application.Services;
 using Sage.Platform.Application.UI;
 using Sage.Platform.Security;
-using Sage.Platform.WebPortal.Services;
 using Sage.Platform.WebPortal.SmartParts;
-using Sage.Platform.WebPortal.Workspaces;
-using Sage.Platform.WebPortal.Workspaces.Tab;
 using Sage.SalesLogix.Activity;
-using System.Collections.Generic;
+using TimeZone = Sage.Platform.TimeZone;
 
 public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPartInfoProvider
 {
-    private bool _NewActivitiesLastPageIndex = false;
-    private bool _ModifiedActivitiesLastPageIndex = false;
-    private ActivtyWhatsNewSearchOptions _searchOptions = null;
+    private bool _NewActivitiesLastPageIndex;
+    private bool _ModifiedActivitiesLastPageIndex;
+    private ActivityWhatsNewSearchOptions _searchOptions;
 
     /// <summary>
     /// Gets the search options.
     /// </summary>
     /// <value>The search options.</value>
-    private ActivtyWhatsNewSearchOptions SearchOptions
+    private ActivityWhatsNewSearchOptions SearchOptions
     {
         get
         {
             if (_searchOptions == null)
-                _searchOptions = new ActivtyWhatsNewSearchOptions();
+                _searchOptions = new ActivityWhatsNewSearchOptions();
             return _searchOptions;
-        }
-    }
-
-    private LinkHandler _LinkHandler;
-    /// <summary>
-    /// Gets the link.
-    /// </summary>
-    /// <value>The link.</value>
-    private LinkHandler Link
-    {
-        get
-        {
-            if (_LinkHandler == null)
-                _LinkHandler = new LinkHandler(Page);
-            return _LinkHandler;
         }
     }
 
@@ -67,7 +47,6 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Visible) return;
     }
 
     /// <summary>
@@ -77,11 +56,11 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
     protected override void OnPreRender(EventArgs e)
     {
         base.OnPreRender(e);
-       
+
         if (!Visible) return;
 
         DateTime fromDate = GetLastWebUpdate();
-        var calendarService = ApplicationContext.Current.Services.Get<ICalendarSecurityService>(true); 
+        var calendarService = ApplicationContext.Current.Services.Get<ICalendarSecurityService>(true);
         SearchOptions.UserIds.AddRange(calendarService.GetCalendarAccessUserIds(CurrentUserId));
         SearchOptions.StartDate = fromDate;
         if (!String.IsNullOrEmpty(grdNewActivities.SortExpression))
@@ -107,12 +86,10 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
         SearchOptions.ModifiedActivitiesOnly = false;
         if (_NewActivitiesLastPageIndex)
         {
-            int pageIndex = 0;
             int recordCount = dataSource.GetRecordCount();
             int pageSize = grdNewActivities.PageSize;
-            decimal numberOfPages = recordCount / pageSize;
-            pageIndex = Convert.ToInt32(Math.Ceiling(numberOfPages));
-            grdNewActivities.PageIndex = pageIndex;
+            decimal numberOfPages = recordCount/pageSize;
+            grdNewActivities.PageIndex = (int) Math.Ceiling(numberOfPages);
         }
         e.ObjectInstance = dataSource;
     }
@@ -129,12 +106,10 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
         SearchOptions.ModifiedActivitiesOnly = true;
         if (_ModifiedActivitiesLastPageIndex)
         {
-            int pageIndex = 0;
             int recordCount = dataSource.GetRecordCount();
             int pageSize = grdModifiedActivities.PageSize;
-            decimal numberOfPages = recordCount / pageSize;
-            pageIndex = Convert.ToInt32(Math.Ceiling(numberOfPages));
-            grdModifiedActivities.PageIndex = pageIndex;
+            decimal numberOfPages = recordCount/pageSize;
+            grdModifiedActivities.PageIndex = (int) Math.Ceiling(numberOfPages);
         }
         e.ObjectInstance = dataSource;
     }
@@ -149,7 +124,7 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
         IContextService context = ApplicationContext.Current.Services.Get<IContextService>(true);
         if (context.HasContext("TimeZone"))
         {
-            Sage.Platform.TimeZone timeZone = (Sage.Platform.TimeZone)context.GetContext("TimeZone");
+            var timeZone = (TimeZone) context.GetContext("TimeZone");
             return timeZone.LocalDateTimeToUTCTime(dateTime);
         }
         return dateTime;
@@ -162,9 +137,6 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
     /// <param name="e">The <see cref="System.Web.UI.WebControls.ObjectDataSourceDisposingEventArgs"/> instance containing the event data.</param>
     protected void DisposeActivitiesWhatsNewDataSource(object sender, ObjectDataSourceDisposingEventArgs e)
     {
-        // Get the instance of the business object that the ObjectDataSource is working with.
-        ActivitiesWhatsNewDataSource dataSource = e.ObjectInstance as ActivitiesWhatsNewDataSource;
-
         // Cancel the event, so that the object will not be Disposed if it implements IDisposable.
         e.Cancel = true;
     }
@@ -247,23 +219,22 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
     /// <summary>
     /// Gets the activity link.
     /// </summary>
-    /// <param name="ActivityID">The activity ID.</param>
+    /// <param name="activityId">The activity ID.</param>
     /// <returns></returns>
-    protected string GetActivityLink(object ActivityID)
+    protected string GetActivityLink(object activityId)
     {
-        IActivity act = EntityFactory.GetById<IActivity>(ActivityID.ToString());
+        IActivity act = EntityFactory.GetById<IActivity>(activityId);
         string link;
         if (act.Recurring)
         {
             link = String.Format("Sage.Link.editActivity('{0};{1}')", act.Id, act.StartDate.Ticks / TimeSpan.TicksPerSecond);
         }
-        else 
+        else
         {
-            link = String.Format("Sage.Link.editActivity('{0}')", act.Id, act.StartDate.ToString(CultureInfo.InvariantCulture));
-        
+            link = String.Format("Sage.Link.editActivity('{0}')", act.Id);
         }
 
-        return link; 
+        return link;
     }
 
     /// <summary>
@@ -273,15 +244,14 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
     /// <returns></returns>
     protected string GetEntityType(object contactId)
     {
-        if (contactId != null) 
+        if (contactId != null)
         {
-           var  id = contactId.ToString().Trim();
+            var id = contactId.ToString().Trim();
             if (!string.IsNullOrEmpty(id))
             {
-                return GetLocalResourceObject("Contact").ToString(); 
+                return GetLocalResourceObject("Contact").ToString();
             }
-        
-        }         
+        }
         return GetLocalResourceObject("Lead").ToString();
     }
 
@@ -293,7 +263,6 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
     /// <returns></returns>
     protected string GetDisplayName(object contact, object lead)
     {
-
         string name = string.Empty;
         if (lead != null)
         {
@@ -302,7 +271,6 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
             {
                 return name;
             }
-
         }
         if (contact != null)
         {
@@ -313,7 +281,6 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
             }
         }
         return name;
-       
     }
 
     /// <summary>
@@ -334,15 +301,14 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
                 return id;
             }
         }
-        if (contactId != null) 
+        if (contactId != null)
         {
             id = contactId.ToString().Trim();
             if (!string.IsNullOrEmpty(id))
             {
                 return id;
             }
-        
-        }            
+        }
         return id;
     }
 
@@ -391,46 +357,14 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
     }
 
     /// <summary>
-    /// Sortings the specified sender.
+    /// Sort the specified sender.
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="System.Web.UI.WebControls.GridViewSortEventArgs"/> instance containing the event data.</param>
     protected void Sorting(Object sender, GridViewSortEventArgs e)
-    { }
-
-    /// <summary>
-    /// Getdialogs the service.
-    /// </summary>
-    /// <returns></returns>
-    private IWebDialogService GetdialogService()
     {
-        WorkItem workItem = null;
-        Control testVal = Parent;
-        int cnt = 0;
-        while ((!(testVal is IWorkspace)) && (testVal != null) && (cnt < 5))
-        {
-            testVal = testVal.Parent;
-        }
-        if (testVal is MainContentWorkspace)
-        {
-            MainContentWorkspace ws = (MainContentWorkspace)testVal;
-            workItem = ws.WorkItem.Parent;
-        }
-        else if (testVal is TabWorkspace)
-        {
-            TabWorkspace ws = (TabWorkspace)testVal;
-            workItem = ws.WorkItem.Parent;
-        }
-        else if (testVal is DialogWorkspace)
-        {
-            DialogWorkspace ws = (DialogWorkspace)testVal;
-            workItem = ws.WorkItem.Parent;
-        }
-        if (workItem == null) return null;
-        return workItem.Services.Get<IWebDialogService>();
     }
 
-    
     #region ISmartPartInfoProvider Members
 
     /// <summary>
@@ -441,19 +375,14 @@ public partial class SmartParts_ActWhatsNew_ActWhatsNew : UserControl, ISmartPar
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
         ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-
-        Label lbl = new Label();
-        lbl.Text = GetLocalResourceObject("Activities_Caption").ToString();
-
-        tinfo.LeftTools.Add(lbl);
+        tinfo.Title = GetLocalResourceObject("Activities_Caption").ToString();
         tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/To_Do_24x24.gif");
-
         return tinfo;
     }
 
     protected bool IsTimeless(object val)
     {
-        return System.Convert.ToBoolean(val);
+        return Convert.ToBoolean(val);
     }
 
     #endregion

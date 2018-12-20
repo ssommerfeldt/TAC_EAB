@@ -1,17 +1,15 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            minuteText: 'minute',
-            minutesText: 'minutes',
-            hourText: 'hour',
-            hoursText: 'hours',
-            dayText: 'day',
-            daysText: 'days'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/Controls/nls/DurationSelect", {
+    root: {
+        minuteText: 'minute',
+        minutesText: 'minutes',
+        hourText: 'hour',
+        hoursText: 'hours',
+        dayText: 'day',
+        daysText: 'days'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

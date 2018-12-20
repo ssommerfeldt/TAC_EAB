@@ -1,40 +1,26 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-       'Sage/_Templated',
-       'dijit/_Widget',
-       'dijit/form/Select',
-       'dijit/form/Button',
-       'Sage/UI/ImageButton',
-       'Sage/UI/SearchConditionWidget',
-       'Sage/Utility',
-       'dojo/i18n!./nls/ConditionManager',
-       'dojo/_base/declare'
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/ConditionManager", [
+    'Sage/_Templated',
+    'dijit/_Widget',
+    'dijit/form/Select',
+    'dijit/form/Button',
+    'Sage/UI/ImageButton',
+    'Sage/UI/SearchConditionWidget',
+    'Sage/Utility',
+    'dojo/i18n!./nls/ConditionManager',
+    'dojo/_base/declare'
 ],
 function (_Templated, _Widget, select, button, imageButton, SearchConditionWidget, util, nls, declare) {
-    //dojo.requireLocalization('Sage.UI', 'ConditionManager');
-
     var widget = declare('Sage.UI.ConditionManager', [_Widget, _Templated], {
         widgetsInTemplate: true,
         srchBtnCaption: 'Search',
         addrowlabel: 'Lookup by:',
         hiderowlabel: 'And:',
-
         hideimgurl: 'images/icons/Find_Remove_16x16.gif',
         addimgurl: 'images/icons/Find_Add_16x16.gif',
         hideimgalttext: 'Remove Condition',
         addimgalttext: 'Add Condition',
         errorOperatorRequiresValue: 'The operator requires a value',
-
-        equalTo: 'Equal to',
-        notEqualTo: 'Not Equal to',
-        startingWith: 'Starting With',
-        contains: 'Contains',
-        equalOrLessThan: 'Equal or Less than',
-        equalOrGreaterThan: 'Equal or Greater than',
-        lessThan: 'Less than',
-        greaterThan: 'Greater than',
-        //end localize
-
         operators: null,
         fields: null,
         fieldsHash: null,
@@ -55,6 +41,9 @@ function (_Templated, _Widget, select, button, imageButton, SearchConditionWidge
             '</div>']),
         isSettingValues: false,
         id: '',
+        defaultOperator: null,
+        defaultField: null,
+        defaultValue: null,
         constructor: function() {
             this.conditionWidgets = {};
             this.operators = {};
@@ -77,7 +66,6 @@ function (_Templated, _Widget, select, button, imageButton, SearchConditionWidge
                     }
                 }
             }
-            
             this.inherited(arguments);
         },
         postMixInProperties: function () {
@@ -201,7 +189,6 @@ function (_Templated, _Widget, select, button, imageButton, SearchConditionWidge
             return operators.defaultOperators && operators.defaultOperators.options;
         },
         getConditionsAsUrlWhereString : function () {
-            //console.log('ConditionManager :: getConditionsAsUrlWhereString');
             //manipulate conditions to match SData requirements for where URL parameter...
             var conds = this.getConditions(),
                 condString = [],
@@ -216,7 +203,6 @@ function (_Templated, _Widget, select, button, imageButton, SearchConditionWidge
                 if (typeof condVal === 'string') {
                     condVal = condVal.replace(/%/g, '');
                 }
-
                 if (condVal.constructor === Date){
                     // Handle equal to and not equal to as a special case.
                     // - They need to be in a range from start to end of date
@@ -294,10 +280,8 @@ function (_Templated, _Widget, select, button, imageButton, SearchConditionWidge
                     tempCondition.val = ['"', tempCondition.val.toUpperCase(), '"'].join('');// wrap string in quotes
                     tempCondition.field = ['upper(', tempCondition.field, ')'].join('');// make search case insensitive
                 }
-                
                 condString.push([tempCondition.field, ' ', tempCondition.op, ' ', tempCondition.val].join(''));
             }
-            
             return condString.join(' and ');
         },
         getField: function (fieldName) {
@@ -307,20 +291,21 @@ function (_Templated, _Widget, select, button, imageButton, SearchConditionWidge
             return false;
         },
         getConditionsJSON : function () {
-            var i = 0,
+            var i,
                 conditions = this.getConditions(),
                 condVal,
-                currentCondition;
-            for (i = 0; i < conditions.length; i++) {
+                currentCondition,
+                condCount = conditions.length;
+
+            for (i = 0; i < condCount; i++) {
                 currentCondition = conditions[i];
                 condVal = conditions[i].val;
-                if(condVal.constructor === Date) {
-                    condVal = util.Convert.toIsoStringFromDate(condVal);
+                if (condVal.constructor === Date) {
+                    var currfield = this.getField(currentCondition.fieldname);
+                    condVal = (currfield.dateTimeType === 'D') ? util.Convert.toIsoStringFromDateNonUTC(condVal) : util.Convert.toIsoStringFromDate(condVal);
                 }
-
                 conditions[i].val = condVal;
             }
-
             return Sys.Serialization.JavaScriptSerializer.serialize(conditions);
         },
         getConditions : function () {
@@ -329,16 +314,18 @@ function (_Templated, _Widget, select, button, imageButton, SearchConditionWidge
                 c;
             
             for (wid in this.conditionWidgets) {
-                if(this.conditionWidgets.hasOwnProperty(wid)) {
+                if (this.conditionWidgets.hasOwnProperty(wid)) {
                     if (this.conditionWidgets[wid].getCondition) {
                         c = this.conditionWidgets[wid].getCondition();
                         if (c) {
+                            if (c.fieldname === "$key") {
+                                c.fieldname = "id";
+                            }
                             conds.push(c);
                         }
                     }
                 }
             }
-            
             return conds;
         },
         resetConditions: function() {
@@ -373,6 +360,10 @@ function (_Templated, _Widget, select, button, imageButton, SearchConditionWidge
         setFirstConditionValue: function(field, op, value) {
             var prop,
                 wid;
+            // Set the defaults on the class
+            this.defaultOperator = op;
+            this.defaultField = field;
+            this.defaultValue = value;
             for(prop in this.conditionWidgets) {
                 if(this.conditionWidgets.hasOwnProperty(prop)) {
                     wid = this.conditionWidgets[prop];
@@ -428,7 +419,18 @@ function (_Templated, _Widget, select, button, imageButton, SearchConditionWidge
                     id: this.id + '-SearchCondition' + count,
                     visible: true
                 });
-                
+
+            // Default Values?
+            if (this.defaultField)
+              newWid.defaultField = this.defaultField;
+            if (this.defaultOperator)
+              newWid.defaultOperator = this.defaultOperator;
+            if (this.defaultValue)
+              newWid.defaultValue = this.defaultValue;
+
+            // Make sure the defaults are updated
+            newWid.refreshDefaults();
+
             this.widgetConnects.push(dojo.connect(newWid, 'onRemoveLookupCondition', this, '_removeCondition'));
             this.conditionWidgets[newWid.id] = newWid;
             dojo.place(newWid.domNode, this.conditions);

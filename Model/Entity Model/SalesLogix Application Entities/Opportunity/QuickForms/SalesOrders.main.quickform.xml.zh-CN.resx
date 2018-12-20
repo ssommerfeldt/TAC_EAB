@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="grdSalesorders.e6d8a332-378a-4ace-ab37-3e0190c78b11.ColumnHeading" xml:space="preserve">
+    <value>帐单联系人</value>
+  </data>
+  <data name="grdSalesorders.e5b47e34-15bc-4352-b8d2-c53d2c0e5376.ColumnHeading" xml:space="preserve">
+    <value>客户采购订单</value>
+  </data>
+  <data name="grdSalesorders.c07c29f7-7b2f-4927-8819-0963197b663a.ColumnHeading" xml:space="preserve">
+    <value>送货联系人</value>
+  </data>
+  <data name="grdSalesorders.d414a619-fce1-4720-bb32-e3159e2e544f.ColumnHeading" xml:space="preserve">
+    <value>送货方式</value>
+  </data>
+  <data name="grdSalesorders.1a1380fd-7c7d-40f4-b711-7ded50214093.ColumnHeading" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="QFButton.ToolTip" xml:space="preserve">
+    <value>插入销售订单</value>
+  </data>
+  <data name="grdSalesorders.19b8dc8a-309a-4865-a7f1-04e84a238148.Text" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="grdSalesorders.8116ff89-e060-4960-a105-48ea127cddc9.ConfirmationMessage" xml:space="preserve">
+    <value>确定要移除此项目吗?</value>
+  </data>
+  <data name="grdSalesorders.8116ff89-e060-4960-a105-48ea127cddc9.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="a96cac50-03ba-4909-9c4d-dc7637a08eb0.DialogTitleOverride" xml:space="preserve">
+    <value>编辑销售订单</value>
+  </data>
+  <data name="grdSalesorders.f0581e04-bc83-4452-86a9-98e7664a5969.ColumnHeading" xml:space="preserve">
+    <value>销售订单编号</value>
+  </data>
+  <data name="d1ed7be5-1b5c-483b-91f3-1aaae60535df.DialogTitleOverride" xml:space="preserve">
+    <value>添加销售订单</value>
+  </data>
+  <data name="grdSalesorders.17587aaf-df18-451a-891f-bbdbf5363d68.ColumnHeading" xml:space="preserve">
+    <value>客户</value>
+  </data>
+  <data name="grdSalesorders.daf51d95-799b-4454-8075-f7052fe8ac9f.ColumnHeading" xml:space="preserve">
+    <value>销售订单编号</value>
+  </data>
+  <data name="grdSalesorders.2f62e580-574e-4e85-a808-f44b7fb77322.ColumnHeading" xml:space="preserve">
+    <value>开始日期</value>
+  </data>
+  <data name="grdSalesorders.a8afa0ec-4834-486c-b15b-81e80c0aa1be.ColumnHeading" xml:space="preserve">
+    <value>到期日期</value>
+  </data>
+  <data name="grdSalesorders.bc35c18e-455e-4d7f-afd8-8eb717fd1a45.ColumnHeading" xml:space="preserve">
+    <value>客户采购订单</value>
+  </data>
+  <data name="grdSalesorders.2a230658-4679-4c5f-94d1-dc8e68178b94.ColumnHeading" xml:space="preserve">
+    <value>申请日期</value>
+  </data>
+  <data name="grdSalesorders.6d1b252a-e168-4e3b-9822-5b13479fb511.ColumnHeading" xml:space="preserve">
+    <value>承诺日期</value>
+  </data>
+  <data name="grdSalesorders.8cb8833b-1ad4-44be-9415-28f39f38b0ce.ColumnHeading" xml:space="preserve">
+    <value>合计(销售订单货币)</value>
+  </data>
+  <data name="grdSalesorders.e87a5ed0-21c9-4f02-8335-9fb94b3b7668.ColumnHeading" xml:space="preserve">
+    <value>总计(销售订单货币)</value>
+  </data>
+  <data name="grdSalesorders.5f47364d-d99d-4bcd-a767-2d9b7bafde1a.ColumnHeading" xml:space="preserve">
+    <value>送货城市</value>
+  </data>
+</root>

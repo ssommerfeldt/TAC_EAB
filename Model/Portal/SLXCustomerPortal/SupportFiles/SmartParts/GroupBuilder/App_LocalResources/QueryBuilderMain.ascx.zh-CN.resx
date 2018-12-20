@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="jsAddDataToLayoutGridMessage" xml:space="preserve">
+    <value>此布局中当前似乎已存在该字段。是否想要继续?</value>
+  </data>
+  <data name="jsAscending" xml:space="preserve">
+    <value>升序</value>
+  </data>
+  <data name="jsConditionDlgHeight" xml:space="preserve">
+    <value>“250px”</value>
+  </data>
+  <data name="jsConditionDlgWidth" xml:space="preserve">
+    <value>“495px”</value>
+  </data>
+  <data name="jsConfirmDeleteMessage" xml:space="preserve">
+    <value>确定要删除当前组吗?</value>
+  </data>
+  <data name="jsCreateLocalJoinMessage" xml:space="preserve">
+    <value>必须先选择表格和字段。</value>
+  </data>
+  <data name="jsDescending" xml:space="preserve">
+    <value>降序</value>
+  </data>
+  <data name="jsInvalidConditionStringMessage" xml:space="preserve">
+    <value>错误: 条件字符串无效 -</value>
+  </data>
+  <data name="jsInvalidLayoutConditionStringMessage" xml:space="preserve">
+    <value>错误: 布局字符串无效 -</value>
+  </data>
+  <data name="jsInvalidSortStringMessage" xml:space="preserve">
+    <value>错误: 排序字符串无效 -</value>
+  </data>
+  <data name="jsLayoutDlgHeight" xml:space="preserve">
+    <value>“225px”</value>
+  </data>
+  <data name="jsLayoutDlgWidth" xml:space="preserve">
+    <value>“360px”</value>
+  </data>
+  <data name="jsNewQuery" xml:space="preserve">
+    <value>新查询</value>
+  </data>
+  <data name="localizeAndOr.Text" xml:space="preserve">
+    <value>和/或</value>
+  </data>
+  <data name="localizeAssignCondition.Text" xml:space="preserve">
+    <value>指定条件</value>
+  </data>
+  <data name="localizeAssignQueryLayout.Text" xml:space="preserve">
+    <value>指定查询布局</value>
+  </data>
+  <data name="localizeCalc.Text" xml:space="preserve">
+    <value>计算...</value>
+  </data>
+  <data name="localizeCancel.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="localizeCaseSens.Text" xml:space="preserve">
+    <value>区分大小写</value>
+  </data>
+  <data name="localizeConditionInstructions.Text" xml:space="preserve">
+    <value>双击上面的列表中的字段，它将在下面的网格中显示，以用作选择记录的条件。 将按照网格中显示的顺序应用条件。可使用“上移” 和“下移”按钮来更改顺序。</value>
+  </data>
+  <data name="localizeConditions.Text" xml:space="preserve">
+    <value>条件</value>
+  </data>
+  <data name="localizeCreateLocalJoin.Text" xml:space="preserve">
+    <value>创建本地联接</value>
+  </data>
+  <data name="localizeDefaults.Text" xml:space="preserve">
+    <value>默认值</value>
+  </data>
+  <data name="localizeDelete.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="localizeDescription.Text" xml:space="preserve">
+    <value>描述:</value>
+  </data>
+  <data name="localizeDisplayName.Text" xml:space="preserve">
+    <value>显示名称:</value>
+  </data>
+  <data name="localizeEdit.Text" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="localizeField.Text" xml:space="preserve">
+    <value>字段</value>
+  </data>
+  <data name="localizeGlobalJoins.Text" xml:space="preserve">
+    <value>全局联接...</value>
+  </data>
+  <data name="localizeGrdSortsDirection.Text" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="localizeGrdSortsOrder.Text" xml:space="preserve">
+    <value>顺序</value>
+  </data>
+  <data name="localizeGrdSortsSortBy.Text" xml:space="preserve">
+    <value>排序依据</value>
+  </data>
+  <data name="localizeHelp.Text" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="localizeHideHiddenFields.Text" xml:space="preserve">
+    <value>隐藏隐藏的字段</value>
+  </data>
+  <data name="localizeLayout.Text" xml:space="preserve">
+    <value>布局</value>
+  </data>
+  <data name="localizeLayoutInstructions.Text" xml:space="preserve">
+    <value>双击上面的视图中的字段以将其置于 下面的网格中。使用“左移”和“右移”按钮更改字段在网格中的顺序。</value>
+  </data>
+  <data name="localizeMoveDown.Text" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="localizeMoveUp.Text" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="localizeName.Text" xml:space="preserve">
+    <value>名称:</value>
+  </data>
+  <data name="localizeNot.Text" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="localizeOK.Text" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="localizeOperator.Text" xml:space="preserve">
+    <value>运算符</value>
+  </data>
+  <data name="localizeProperties.Text" xml:space="preserve">
+    <value>属性</value>
+  </data>
+  <data name="localizeReturnDistinct.Text" xml:space="preserve">
+    <value>仅返回不同的行</value>
+  </data>
+  <data name="localizeSorting.Text" xml:space="preserve">
+    <value>排序</value>
+  </data>
+  <data name="localizeSortInstructions.Text" xml:space="preserve">
+    <value>双击上面的视图中的字段以将其置于下面的网格中， 从而使用该字段对返回的数据进行排序。数据按网格中字段的顺序进行排序。 使用“上移”和“下移”按钮来更改顺序。</value>
+  </data>
+  <data name="localizeValue.Text" xml:space="preserve">
+    <value>值</value>
+  </data>
+  <data name="localizeViewSQL.Text" xml:space="preserve">
+    <value>查看 SQL</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="MoveLeft" xml:space="preserve">
+    <value>左移</value>
+  </data>
+  <data name="MoveRight" xml:space="preserve">
+    <value>右移</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="jsCopyOf" xml:space="preserve">
+    <value>副本</value>
+  </data>
+  <data name="localizeColumn.Text" xml:space="preserve">
+    <value>柱状图</value>
+  </data>
+  <data name="Collapse" xml:space="preserve">
+    <value>折叠</value>
+  </data>
+  <data name="Expand" xml:space="preserve">
+    <value>展开</value>
+  </data>
+  <data name="PropertyListPopulationInstructions" xml:space="preserve">
+    <value>请从树形结构中选择一个表名。</value>
+  </data>
+</root>

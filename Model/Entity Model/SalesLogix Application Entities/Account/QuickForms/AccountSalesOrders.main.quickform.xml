@@ -1,37 +1,45 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e0ff7ba9-fdaa-4002-8fc5-4d592506a2d3" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e0ff7ba9-fdaa-4002-8fc5-4d592506a2d3" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-09-08T11:09:55.179868Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
     <FormActionDefinition>
-      <ResourceKey>1a81f3c6-d665-446e-ac99-662726c2c454</ResourceKey>
+      <ResourceKey>6e1632eb-6c63-4f38-9031-d2a5c3bcf6b8</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload0</MethodName>
-          <CSharpCodeSnippet>	//Onload restrict button based on account type
-	Sage.Entity.Interfaces.IAccount account = BindingSource.Current as Sage.Entity.Interfaces.IAccount;
-	
-	switch(account.Type) {
-		case "Distributor":
-			cmdAddSalesOrder.Visible = true;
-			cmdAddReturnOrder.Visible = true;
-			cmdAddTransferOrder.Visible = true;
-			cmdAddInventoryOrder.Visible = true;
-			break;
-		case "Sales Rep":
-			cmdAddSalesOrder.Visible = true;
-			cmdAddReturnOrder.Visible = true;
-			cmdAddTransferOrder.Visible = true;
-			cmdAddInventoryOrder.Visible = true;
-			break;
-			
-		default:
-			cmdAddSalesOrder.Visible = true;
-			cmdAddReturnOrder.Visible = true;
-			cmdAddTransferOrder.Visible = false;
-			cmdAddInventoryOrder.Visible = false;
-			break;		
-	}</CSharpCodeSnippet>
+          <CSharpCodeSnippet>var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;();
+if(clientContextService!=null &amp;&amp; clientContextService.IsMasterDataConsolidationEnabled())
+{
+	var mapping = BindingSource.Current as IAccount;
+	cboAccountingEntity.Items.Clear(); 
+	cboAccountingEntity.Items.Add(new ListItem { Text = "", Value = "" });
+	if(mapping!=null &amp;&amp; mapping.AccountAccountingEntities.Count&gt;0) 
+	{
+		foreach (Sage.Entity.Interfaces.IAccountAccountingEntity item in mapping.AccountAccountingEntities) 
+		{
+			if (item.BackOfficeAcctEntity!=null &amp;&amp; !cboAccountingEntity.Items.Contains(new ListItem { Text = item.BackOfficeAcctEntity.AcctEntityExtId, Value = item.BackOfficeAcctEntity.AcctEntityExtId }))
+			{
+				cboAccountingEntity.Items.Add(new ListItem { Text = item.BackOfficeAcctEntity.AcctEntityExtId, Value = item.BackOfficeAcctEntity.AcctEntityExtId });
+			}
+		}		     
+	}
+}
+pklStatus.PickListValue = string.Empty;
+cboAccountingEntity.SelectedValue = string.Empty;
+if(clientContextService!=null &amp;&amp; !clientContextService.IsBackOfficeIntegrationEnabled())
+{
+	tbrButton.Visible=false;
+}
+
+var clientContextServiceFilter = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+if (clientContextServiceFilter == null)
+    return;
+
+if (clientContextServiceFilter.CurrentContext.ContainsKey("Filter"))
+{
+    clientContextServiceFilter.CurrentContext.Remove("Filter");
+}</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -50,130 +58,23 @@
   <ReadOnly>false</ReadOnly>
   <GeneratePrintView>false</GeneratePrintView>
   <Controls>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDataGrid, Sage.SalesLogix.QuickForms.QFControls">
-      <QFDataGrid>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFListBox, Sage.Platform.QuickForms.QFControls">
+      <QFListBox>
         <Column>0</Column>
         <Row>0</Row>
+        <Visible>false</Visible>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>grdSalesOrders</ControlId>
+        <ControlId>cboAccountingEntity</ControlId>
         <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
-        <DataSource>dsSalesOrders</DataSource>
-        <EnablePaging>true</EnablePaging>
-        <EnableSorting>true</EnableSorting>
-        <PageSize>10</PageSize>
-        <Columns>
-          <QFLinkCol>
-            <StyleScheme />
-            <DataField>SalesOrderNumber</DataField>
-            <ColumnId>40c5884b-4484-49d9-9d1e-3ec31d589e08</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>SalesOrderNumber</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <Destination />
-            <Image />
-            <EntityIdField>Id</EntityIdField>
-            <EntityTypeName>SalesOrder</EntityTypeName>
-            <Target />
-            <AppliedSecurity />
-          </QFLinkCol>
-          <QFDataGridCol>
-            <StyleScheme />
-            <DataField>OrderType</DataField>
-            <ColumnId>fb3a61e8-a62f-4df2-b566-c771f30f8625</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>OrderType</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
-          <QFDataGridCol>
-            <StyleScheme />
-            <DataField>Status</DataField>
-            <ColumnId>1806aa1b-8436-491e-8c56-1ac9d98280b7</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>Status</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
-          <QFDataGridCol>
-            <StyleScheme />
-            <DataField>BillToName</DataField>
-            <ColumnId>099c10a1-7611-44f3-92c8-d6686f701a71</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>BillToName</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
-          <QFDataGridCol>
-            <StyleScheme />
-            <DataField>ShipToName</DataField>
-            <ColumnId>8ceb34cd-5e95-4e9a-921e-c810ed281dbc</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>ShipToName</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
-          <QFPickListCol>
-            <StyleScheme />
-            <DataField>ShipVia</DataField>
-            <ColumnId>cc919862-34ef-4e0f-9157-8f1b019795f6</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>ShipVia</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <PickListName>Delivery Methods</PickListName>
-            <PickListId />
-            <ValueStoredAsText>false</ValueStoredAsText>
-            <AllowMultiples>false</AllowMultiples>
-            <AlphaSort>false</AlphaSort>
-            <MustExistInList>false</MustExistInList>
-            <NoneEditable>false</NoneEditable>
-          </QFPickListCol>
-          <QFDataGridCol>
-            <StyleScheme />
-            <DataField>CustomerPurchaseOrderNumber</DataField>
-            <ColumnId>15f01097-c071-4a30-bca8-b1f3d7ff6616</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>CustomerPurchaseOrderNumber</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-          </QFDataGridCol>
-          <QFDeleteCol>
-            <StyleScheme />
-            <DataField />
-            <ColumnId>e9313b46-2561-4fa5-95be-a8fc64b4ca6f</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>false</IsSortable>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <BusinessRule />
-            <BusinessRuleParameters />
-            <AppliedSecurity />
-          </QFDeleteCol>
-        </Columns>
-        <RenderVertical>false</RenderVertical>
-        <OnRowSelectedAction>
-          <ResourceKey>grdSalesOrders</ResourceKey>
+        <SelectedIndex>-1</SelectedIndex>
+        <Items />
+        <OnChangeAction>
+          <ResourceKey>cboAccountingEntity</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -185,28 +86,408 @@
           <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
           <RefreshData>False</RefreshData>
-        </OnRowSelectedAction>
-      </QFDataGrid>
+        </OnChangeAction>
+        <DataSource />
+        <TextField />
+        <ValueField />
+        <MultiSelect>false</MultiSelect>
+        <MaxHeight>200</MaxHeight>
+      </QFListBox>
     </Control>
-    <Control typeName="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls">
-      <QFDataSource>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.SDataGrid.QFSDataGrid, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSDataGrid>
+        <ColumnSpan>3</ColumnSpan>
         <Column>0</Column>
         <Row>1</Row>
-        <Visible>false</Visible>
-        <HotKey>48</HotKey>
+        <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>dsSalesOrders</ControlId>
+        <ControlId>grdSalesOrders</ControlId>
         <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
-        <EntityTypeName>SalesOrder</EntityTypeName>
-        <GetByMethod />
-        <GetByProperty>SalesOrders</GetByProperty>
-        <UseSmartSelection>true</UseSmartSelection>
-        <DataOptional>false</DataOptional>
-      </QFDataSource>
+        <GenerateMember>false</GenerateMember>
+        <ReadOnlyCondition>False</ReadOnlyCondition>
+        <AppliedSecurity />
+        <RelateToPropertyName>SalesOrders</RelateToPropertyName>
+        <PreviewField />
+        <ResourceKind>
+          <Name>salesOrders</Name>
+          <GetPredicate />
+        </ResourceKind>
+        <PathSegments />
+        <Columns>
+          <QFSDataLinkCol>
+            <StyleScheme />
+            <DataField>SalesOrderNumber</DataField>
+            <ColumnId>776cf92c-180a-4437-bd02-0aa109134b8b</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>Ascending</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>SalesOrderNumber</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <Destination />
+            <Image />
+            <EntityIdField>Id</EntityIdField>
+            <EntityTypeName>SalesOrder</EntityTypeName>
+            <Target />
+            <AppliedSecurity />
+            <HideCondition />
+            <Width>9</Width>
+          </QFSDataLinkCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ErpAccountingEntityId</DataField>
+            <ColumnId>cea77720-f1a9-4b4b-ac06-6b4a1bfd11b0</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFSDataDateTimeCol>
+            <StyleScheme />
+            <DataField>DueDate</DataField>
+            <ColumnId>c5c2d1cd-e66d-41b4-a86e-b9d26ee5535b</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>DueDate</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <DateOnly>true</DateOnly>
+          </QFSDataDateTimeCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>CustomerPurchaseOrderNumber</DataField>
+            <ColumnId>2882c7fb-5ecf-4872-9280-a9591df0efc2</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>CustomerPurchaseOrderNumber</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>Status</DataField>
+            <ColumnId>7410d76d-21aa-4d48-aaea-9095c1d85966</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>Status</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition>function () {
+  return isIntegrationContractEnabled();  
+}</HideCondition>
+            <Width>9</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFSDataDateTimeCol>
+            <StyleScheme />
+            <DataField>OrderDate</DataField>
+            <ColumnId>7afbcb9a-a2cc-429b-8bf3-ab2c1900f7a3</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>OrderDate</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <DateOnly>true</DateOnly>
+          </QFSDataDateTimeCol>
+          <QFSDataDateTimeCol>
+            <StyleScheme />
+            <DataField>DatePromised</DataField>
+            <ColumnId>96d2e013-8c50-4dad-9d36-10861b1704ce</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>DatePromised</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <DateOnly>true</DateOnly>
+          </QFSDataDateTimeCol>
+          <QFSDataCurrencyCol>
+            <StyleScheme />
+            <DataField>DocGrandTotal</DataField>
+            <ColumnId>5b56242a-f544-42ff-b457-4775c734d537</ColumnId>
+            <HorizontalAlignment>right</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>DocGrandTotal</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <CurrentCode>CurrencyCode</CurrentCode>
+            <ExchangeRate />
+            <ExchangeRateType>EntityRate</ExchangeRateType>
+            <DecimalDigits>4</DecimalDigits>
+          </QFSDataCurrencyCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ERPSalesOrder.ERPStatus</DataField>
+            <ColumnId>821b9508-7bde-4c38-b173-5c25b3478ed4</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function () {
+  return !isIntegrationContractEnabled();  
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+        </Columns>
+        <ConditionalWhere>function () {
+    var clientContextService = Sage.Services.getService("ClientContextService");
+    if (clientContextService.containsKey("Filter")) {
+        var indexOfFilter = clientContextService._indexOf("Filter");
+        var filterValue = clientContextService._items[indexOfFilter].itemVal;
+        if (filterValue !== "")
+            return dojo.string.substitute("Account.Id eq '${0}' and ${1}", [Sage.Utility.getCurrentEntityId(),  filterValue]);
+    }
+    return dojo.string.substitute("Account.Id eq '${0}'", [Sage.Utility.getCurrentEntityId()]);
+}</ConditionalWhere>
+        <Select>
+          <string>CurrencyCode</string>
+        </Select>
+        <Include />
+        <FeedCategory>InternalAppEntities</FeedCategory>
+        <OnGetMappingId />
+        <ParentRelationshipPropertyName>Account</ParentRelationshipPropertyName>
+        <ChildRelationshipPropertyName>SalesOrders</ChildRelationshipPropertyName>
+        <OnDataChange />
+        <OnAdd />
+        <Tools>
+          <SDataGridTool>
+            <Name>btnAddSalesOrder</Name>
+            <Image>[Localization!Global_Images:plus_16x16]</Image>
+            <DisplayInInsert>false</DisplayInInsert>
+            <MergePosition>Default</MergePosition>
+            <MergeControlId />
+            <OnClick>function() {
+location.href = "InsertSalesOrder.aspx?modeid=Insert";
+}</OnClick>
+            <StyleScheme />
+            <AppliedSecurity>Entities/SalesOrder/Add</AppliedSecurity>
+          </SDataGridTool>
+          <SDataGridDeleteTool>
+            <Name>Delete</Name>
+            <Image>[Localization!Global_Images:Delete_16x16]</Image>
+            <DisplayInInsert>false</DisplayInInsert>
+            <MergePosition>Default</MergePosition>
+            <MergeControlId />
+            <OnClick />
+            <StyleScheme />
+            <AppliedSecurity>Entities/SalesOrder/Delete</AppliedSecurity>
+          </SDataGridDeleteTool>
+        </Tools>
+      </QFSDataGrid>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXPickList>
+        <Column>1</Column>
+        <Row>0</Row>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>pklStatus</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme>NegativeNumber</StyleScheme>
+        <MaxLength>64</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>pklStatus</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+        <AutoPostBack>false</AutoPostBack>
+        <PickListName>ErpSalesOrderStatus</PickListName>
+        <StorageMode>Code</StorageMode>
+        <NameFormatString />
+        <AllowMultiples>false</AllowMultiples>
+        <AlphaSort>false</AlphaSort>
+        <MustExistInList>false</MustExistInList>
+        <NoneEditable>false</NoneEditable>
+        <PickListId />
+        <PickListFilter />
+        <ValueStoredAsText>false</ValueStoredAsText>
+      </QFSLXPickList>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFControlsList, Sage.Platform.QuickForms.QFControls">
+      <QFControlsList>
+        <Column>2</Column>
+        <Row>0</Row>
+        <Visible>false</Visible>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFControlsList</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <Caption />
+        <Controls>
+          <ControlsCollection>
+            <Control TypeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+              <QFButton>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>btnApply</ControlId>
+                <DataBindings />
+                <ControlLabelPlacement>none</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme>Bevel</StyleScheme>
+                <ButtonType>StandardButton</ButtonType>
+                <Image />
+                <OnClientClick />
+                <OnClickAction>
+                  <ResourceKey>btnApply</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                    <CSharpSnippetActionItem>
+                      <MethodName>btnApply_ClickAction</MethodName>
+                      <CSharpCodeSnippet>
+var filter = new System.Collections.Generic.List&lt;string&gt;();
+if (!string.IsNullOrEmpty(pklStatus.PickListValue))
+{
+    filter.Add(string.Format("ERPSalesOrder.ERPStatus eq '{0}'", pklStatus.PickListValue));
+}
+if (!string.IsNullOrEmpty(cboAccountingEntity.SelectedValue))
+{
+ filter.Add(string.Format("ErpAccountingEntityId eq '{0}'", cboAccountingEntity.SelectedValue));
+}
+
+
+var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+if (clientContextService == null)
+    return;
+
+if (clientContextService.CurrentContext.ContainsKey("Filter"))
+{
+    if (filter.Count == 0)
+    {
+        clientContextService.CurrentContext.Remove("Filter");
+    }
+    else
+    {
+        clientContextService.CurrentContext["Filter"] = string.Join(" and ", filter);
+    }
+}
+else if (filter.Count &gt; 0)
+{
+    clientContextService.CurrentContext.Add("Filter", string.Join(" and ", filter));
+}</CSharpCodeSnippet>
+                    </CSharpSnippetActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnClickAction>
+              </QFButton>
+            </Control>
+            <Control TypeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+              <QFButton>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>btnReset</ControlId>
+                <DataBindings />
+                <ControlLabelPlacement>none</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <ButtonType>StandardButton</ButtonType>
+                <Image />
+                <OnClientClick />
+                <OnClickAction>
+                  <ResourceKey>btnReset</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                    <CSharpSnippetActionItem>
+                      <MethodName>btnReset_ClickAction</MethodName>
+                      <CSharpCodeSnippet>pklStatus.PickListValue = string.Empty;
+cboAccountingEntity.SelectedValue = string.Empty;
+
+
+var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+if (clientContextService == null)
+    return;
+
+if (clientContextService.CurrentContext.ContainsKey("Filter"))
+{
+    clientContextService.CurrentContext.Remove("Filter");
+}
+</CSharpCodeSnippet>
+                    </CSharpSnippetActionItem>
+                  </Action>
+                  <IsDialogCloseAction>False</IsDialogCloseAction>
+                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                  <DialogActionResult>NoResult</DialogActionResult>
+                  <PerformsUpdate>False</PerformsUpdate>
+                  <AppliedSecurity />
+                  <RefreshData>False</RefreshData>
+                </OnClickAction>
+              </QFButton>
+            </Control>
+          </ControlsCollection>
+        </Controls>
+      </QFControlsList>
     </Control>
   </Controls>
   <ToolControls>
@@ -242,320 +523,46 @@
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <Visible>false</Visible>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>btnInserSalesOrder</ControlId>
+        <ControlId>tbrButton</ControlId>
         <DataBindings />
         <ControlLabelPlacement>none</ControlLabelPlacement>
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <ButtonType>Icon</ButtonType>
-        <Image>[Localization!Global_Images:plus_16X16]</Image>
+        <Image>[Localization!Global_Images:Filter_16x16]</Image>
         <OnClientClick />
         <OnClickAction>
-          <ResourceKey>btnInserSalesOrder</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.RedirectActionItem, Sage.Platform.QuickForms">
-            <RedirectActionItem>
-              <MethodName>btnInserSalesOrder_ClickAction</MethodName>
-              <RawURL>~/InsertSalesOrder.aspx?modeid=Insert&amp;type=SO</RawURL>
-              <MainViewEntityName />
-              <UseCurrentIdInLink>true</UseCurrentIdInLink>
-              <EntityViewMode>Detail</EntityViewMode>
-            </RedirectActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity>ENTITIES/SALESORDER/ADD</AppliedSecurity>
-          <RefreshData>False</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>cmdAddSalesOrder</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>StandardButton</ButtonType>
-        <Image />
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>cmdAddSalesOrder</ResourceKey>
+          <ResourceKey>tbrButton</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
-              <MethodName />
-              <CSharpCodeSnippet>//Create Sales Order
-	Sage.Entity.Interfaces.IAccount account = this.BindingSource.Current as Sage.Entity.Interfaces.IAccount;
-	
-	string salesOrderId = account.CreateSalesOrder("SO");
-	
-	
-    // Update the 
-    // ==================================================================================================================
-    // TAC Code here needed to use this method for Performance reasons only as the Entity Model is too Slow
-    //====================================================================================================================
-    string pSQL = "Update SALESORDERITEMS Set SalesOrderid = '" + salesOrderId + "' where TacAccountid = '" + account.Id.ToString() + "' and SalesOrderID = 'TEMP'";
-    pSQL += " AND (PRODUCTID IN";
-    pSQL += "                      (SELECT     sysdba.PRODUCT.PRODUCTID";
-    pSQL += " FROM         sysdba.PRODUCT INNER JOIN";
-    pSQL += "                 sysdba.SITE ON sysdba.PRODUCT.WAREHOUSEID = sysdba.SITE.SITECODE INNER JOIN";
-    pSQL += "                  sysdba.SALESORDER ON sysdba.SITE.SITEID = sysdba.SALESORDER.USERWHSEID";
-    pSQL += " WHERE     (sysdba.SALESORDER.SALESORDERID = '" + salesOrderId + "')))";
-	
-	
-	string SQL_iCountAccountStockCardItems = "Select Count(*) from sysdba.StockCardItems where Accountid = '" + account.Id.ToString () + "'";
-    string SQL_iCountSalesOrderItems = "Select Count(*) from sysdba.SalesOrderItems  where TacAccountid = '" + account.Id.ToString() + "' and SalesOrderID = 'TEMP'";
-    int iCountAccountStockCardItems = 0;
-    int iCountSalesOrderItems =0;
-        Sage.Platform.Data.IDataService datasvc = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.Data.IDataService&gt;();
-        using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(datasvc.GetConnectionString()))
-        {
-            conn.Open();
-
-            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(SQL_iCountAccountStockCardItems, conn))
-            {
-            //Check to see if the Accounts Stock Cards Match the Current Number of SalesOrderItems
-                iCountAccountStockCardItems = (int)cmd.ExecuteScalar();
-               
-            }
-            using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(SQL_iCountSalesOrderItems, conn))
-            {
-                //Check to see if the Accounts Stock Cards Match the Current Number of SalesOrderItems
-                iCountSalesOrderItems = (int)cmd.ExecuteScalar();
-
-            }
-            if (iCountAccountStockCardItems == iCountSalesOrderItems)
-            {
-                // Counts are the Same so Run the Update Statement
-                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(pSQL, conn))
-                {
-                    //Update the Temp Items
-                    cmd.ExecuteNonQuery();
-
-                }
-
-            }
-            else
-            {
-                //Counts are not the Same so Run Process to  create or Update them
-                //==============================================================================
-                // Create new TEMP SalesItems using External Executable
-                //==============================================================================
-                string apPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
-
-                System.Diagnostics.Process process1 = new System.Diagnostics.Process();
-                process1.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden; //Hidden window
-
-                // Set the directory where the file resides
-
-                process1.StartInfo.WorkingDirectory = apPath + "Bin";
-                // Set the filename name of the file you want to open
-
-                process1.StartInfo.FileName = apPath + "Bin\\EABItemUpdater.exe";
-                string myargs = "\"-Accountid=" + account.Id.ToString() + "`" + datasvc.GetConnectionString() + "\"";
-
-                process1.StartInfo.Arguments = myargs;
-                // Start the process
-                process1.Start();
-                process1.WaitForExit();
-                // Counts are the Same Now so Run the Update Statement
-                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand(pSQL, conn))
-                {
-                    //Update the Temp Items
-                    cmd.ExecuteNonQuery();
-
-                }
-                
-            }
-        }
-    
-    //==============================================================================
-    // Create new TEMP SalesItems using External Executable
-    //==============================================================================
-        string apPath1 = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
-        
-        System.Diagnostics.Process process2 = new System.Diagnostics.Process();
-        process2.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden; //Hidden window
-    
-        // Set the directory where the file resides
-
-        process2.StartInfo.WorkingDirectory = apPath1 + "Bin";
-        // Set the filename name of the file you want to open
-
-        process2.StartInfo.FileName = apPath1 +  "Bin\\EABItemUpdater.exe";
-        string myargs1 = "\"-Accountid=" +account.Id.ToString () + "`"+ datasvc.GetConnectionString()+ "\"";
-        
-        process2.StartInfo.Arguments = myargs1;
-        // Start the process
-        process2.Start();
-       // Do Not Wait for Exit
-    
-	//redirect to new salesorder
-	Response.Redirect(String.Format("SalesOrder.aspx?entityId={0}", salesOrderId));
-</CSharpCodeSnippet>
-            </CSharpSnippetActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>cmdAddTransferOrder</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>StandardButton</ButtonType>
-        <Image />
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>cmdAddTransferOrder</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
-            <CSharpSnippetActionItem>
-              <MethodName>cmdAddTransferOrder_ClickAction</MethodName>
-              <CSharpCodeSnippet>	//Create Sales Order
-	Sage.Entity.Interfaces.IAccount account = this.BindingSource.Current as Sage.Entity.Interfaces.IAccount;
-	
-	string salesOrderId = account.CreateSalesOrder("TO");
-	
-	//redirect to new salesorder
-	Response.Redirect(String.Format("SalesOrder.aspx?entityId={0}", salesOrderId));</CSharpCodeSnippet>
-            </CSharpSnippetActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>cmdAddReturnOrder</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>StandardButton</ButtonType>
-        <Image />
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>cmdAddReturnOrder</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
-            <CSharpSnippetActionItem>
-              <MethodName>cmdAddReturnOrder_ClickAction</MethodName>
-              <CSharpCodeSnippet>	//Create Sales Order
-	Sage.Entity.Interfaces.IAccount account = this.BindingSource.Current as Sage.Entity.Interfaces.IAccount;
-	
-	string salesOrderId = account.CreateSalesOrder("RO");
-	
-	//redirect to new salesorder
-	Response.Redirect(String.Format("SalesOrder.aspx?entityId={0}", salesOrderId));</CSharpCodeSnippet>
-            </CSharpSnippetActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <Visible>false</Visible>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>cmdAddPurchaseOrder</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>StandardButton</ButtonType>
-        <Image />
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>cmdAddPurchaseOrder</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
-            <CSharpSnippetActionItem>
-              <MethodName>cmdAddPurchaseOrder_ClickAction</MethodName>
-              <CSharpCodeSnippet>	//Create Sales Order
-	Sage.Entity.Interfaces.IAccount account = this.BindingSource.Current as Sage.Entity.Interfaces.IAccount;
-	
-	string salesOrderId = account.CreateSalesOrder("PO");
-	
-	//redirect to new salesorder
-	Response.Redirect(String.Format("SalesOrder.aspx?entityId={0}", salesOrderId));</CSharpCodeSnippet>
-            </CSharpSnippetActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>cmdAddInventoryOrder</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>StandardButton</ButtonType>
-        <Image />
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>cmdAddInventoryOrder</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
-            <CSharpSnippetActionItem>
-              <MethodName>cmdAddInventoryOrder_ClickAction</MethodName>
-              <CSharpCodeSnippet>	//Create Sales Order
-	Sage.Entity.Interfaces.IAccount account = this.BindingSource.Current as Sage.Entity.Interfaces.IAccount;
-	
-	string salesOrderId = account.CreateSalesOrder("IO");
-	
-	//redirect to new salesorder
-	Response.Redirect(String.Format("SalesOrder.aspx?entityId={0}", salesOrderId));</CSharpCodeSnippet>
+              <MethodName>tbrButton_ClickAction</MethodName>
+              <CSharpCodeSnippet>var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;();
+if(clientContextService!=null &amp;&amp; clientContextService.IsMasterDataConsolidationEnabled())
+{
+	if(cboAccountingEntity.Visible==false)
+	{
+		cboAccountingEntity.Visible=true;
+		cboAccountingEntity_lbl.Visible=true;
+	}
+	else{
+		cboAccountingEntity.Visible=false;
+		cboAccountingEntity_lbl.Visible=false;	
+	}
+}
+if(pklStatus.Visible==false)
+{
+	pklStatus.Visible=true;
+	pklStatus_lbl.Visible=true;
+	QFControlsList.Visible=true;
+}
+else{
+	pklStatus.Visible=false;
+	pklStatus_lbl.Visible=false;	
+	QFControlsList.Visible=false;
+}</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -571,17 +578,25 @@
   <Columns>
     <ColumnStyle>
       <SizeType>Percent</SizeType>
-      <Width>100</Width>
+      <Width>45</Width>
+    </ColumnStyle>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>35</Width>
+    </ColumnStyle>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>20</Width>
     </ColumnStyle>
   </Columns>
   <Rows>
     <RowStyle>
       <SizeType>Absolute</SizeType>
-      <Height>53</Height>
+      <Height>25</Height>
     </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>
-      <Height>53</Height>
+      <Height>35</Height>
     </RowStyle>
   </Rows>
   <Description />

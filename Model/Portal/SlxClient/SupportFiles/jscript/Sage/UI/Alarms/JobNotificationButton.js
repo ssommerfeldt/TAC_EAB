@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
+define("Sage/UI/Alarms/JobNotificationButton", [
     'dojo/_base/declare',
     'Sage/_Templated',
     'dijit/_Widget',
@@ -39,6 +39,7 @@ function (
         _notificationBtnVisible: false,
         widgetTemplate: new Simplate([
             '<span id="jobNotification" data-dojo-attach-point="_jobNotification" class="alarm-button-container alarm-button notification-buttonIcon display-none">',
+            '<i class="fa fa-info-circle"></i>',
                 '<button data-dojo-type="dijit.form.ComboButton" data-dojo-attach-point="_button" data-dojo-attach-event="onClick:_cboClick" class="" >',
                     '<div data-dojo-type="Sage.UI.Alarms.JobNotificationPopup" id="notificationPopup" data-dojo-attach-point="_popup" data-dojo-attach-event="onClose:_popupClosed"></div>',
                 '</button>',

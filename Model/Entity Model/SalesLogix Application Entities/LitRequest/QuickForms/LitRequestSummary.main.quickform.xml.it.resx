@@ -117,43 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtVia.Caption" xml:space="preserve">
-    <value>Invia tramite:</value>
+  <data name="dtpSendDate.Caption" xml:space="preserve">
+    <value>Data di invio:</value>
+  </data>
+  <data name="dtpScheduled.ButtonToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="dtpScheduled.Caption" xml:space="preserve">
-    <value>Pianificato:</value>
-  </data>
-  <data name="txtPostalCode.Caption" xml:space="preserve">
-    <value>Codice Postale:</value>
+    <value>Data di inizio pianificata:</value>
   </data>
   <data name="txtStatus.Caption" xml:space="preserve">
-    <value>Status:</value>
+    <value>Stato:</value>
   </data>
-  <data name="slxPhone.Caption" xml:space="preserve">
-    <value>Tel. Ufficio:</value>
+  <data name="txtRequestedBy.Caption" xml:space="preserve">
+    <value>Richiesto da</value>
   </data>
   <data name="linkContact.Caption" xml:space="preserve">
     <value>Contatto:</value>
   </data>
-  <data name="txtCost.Caption" xml:space="preserve">
-    <value>Costo Totale:</value>
-  </data>
-  <data name="txtRequestedBy.Caption" xml:space="preserve">
-    <value>Richiesto da:</value>
-  </data>
   <data name="txtPriority.Caption" xml:space="preserve">
     <value>Priorità:</value>
   </data>
-  <data name="dtpRequestDate.Caption" xml:space="preserve">
-    <value>Richiesto:</value>
+  <data name="txtVia.Caption" xml:space="preserve">
+    <value>Modalità di invio:</value>
+  </data>
+  <data name="txtCost.Caption" xml:space="preserve">
+    <value>Costo totale:</value>
+  </data>
+  <data name="txtHeader.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.getLitRequestListSummaryHeaderHtml($.entity)%}</value>
+  </data>
+  <data name="slxPhone.Caption" xml:space="preserve">
+    <value>Telefono ufficio:</value>
+  </data>
+  <data name="txtPostalCode.Caption" xml:space="preserve">
+    <value>Codice postale:</value>
   </data>
   <data name="slxHomePhone.Caption" xml:space="preserve">
-    <value>Tel.abitazione</value>
-  </data>
-  <data name="dtpSendDate.Caption" xml:space="preserve">
-    <value>Invia:</value>
+    <value>Telefono abitazione</value>
   </data>
   <data name="linkAccount.Caption" xml:space="preserve">
     <value>Azienda:</value>
+  </data>
+  <data name="dtpRequestDate.Caption" xml:space="preserve">
+    <value>Richiesta:</value>
   </data>
 </root>

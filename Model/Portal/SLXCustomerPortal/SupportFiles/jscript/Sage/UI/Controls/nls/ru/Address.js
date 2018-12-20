@@ -1,19 +1,19 @@
-define((
-{ address1Text: 'Улица:',
-  address2Text: 'Дом:',
-  address3Text: 'Квартира/Офис:',
-  cancelText: 'Отмена',
-  cityText: 'Город:',
-  countryText: 'Страна:',
-  countyText: 'Округ:',
-  descriptionText: 'Описание:',
-  dialogTitle: 'Адрес',
-  isMailingText: 'Отгрузка:',
-  isPrimaryText: 'Основной:',
-  okText: 'Ок',
-  postalCodeText: 'Индекс:',
-  salutationText: 'Адресат(ы):',
-  stateText: 'Регион/Обл.:',
-  imageEditToolTip: 'Изменить',
-  imageMapQuestToolTip: 'Сопоставления поиска' }
-));
+define("Sage/UI/Controls/nls/ru/Address", {
+    "address1Text": "Адрес 1:",
+    "address2Text": "Адрес 2:",
+    "address3Text": "Адрес 3:",
+    "cancelText": "Отмена",
+    "cityText": "Город:",
+    "countryText": "Страна:",
+    "countyText": "Округ:",
+    "descriptionText": "Описание:",
+    "dialogTitle": "Адрес",
+    "isMailingText": "Доставка",
+    "isPrimaryText": "Основной:",
+    "okText": "OК",
+    "postalCodeText": "Почтовый индекс:",
+    "salutationText": "Адресат:",
+    "stateText": "Регион:",
+    "imageEditToolTip": "Редактировать",
+    "imageMapQuestToolTip": "MapQuest"
+});

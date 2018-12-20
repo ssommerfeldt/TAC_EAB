@@ -1,0 +1,21 @@
+define("Sage/MainView/GroupMgr/nls/zh-tw/GroupManagerActions", {
+    "SelectRecordMsg": "您必須至少選取一筆記錄，才能繼續進行。",
+    "SelectRecordMsgSingle": "您必須選取一筆記錄，才能繼續進行。",
+    "ConfirmDeletionMsg": "您確定要 ${0} 選取的 ${1}?",
+    "SelectedGroups": "群組 (包含共用)",
+    "SelectedReleases": "共用群組",
+    "SelectedStatistics": "群組統計資料",
+    "Yes": "是",
+    "No": "否",
+    "Reset": "重設",
+    "Delete": "刪除",
+    "InvalidSelectedGroup": "選取的群組是共用的。請選取您自己的或有控制權但不共用的群組。",
+    "NotDeveloperGroup": "選取的群組不再進行開發。",
+    "NotGroupOwner": "選取的群組不是您所擁有。請選取您自己的或有控制權的群組。",
+    "OK": "確定",
+    "SelectOwner": "選取擁有者",
+    "FirstName": "名字",
+    "LastName": "姓氏",
+    "UserName": "使用者名稱",
+    "Type": "類型"
+});

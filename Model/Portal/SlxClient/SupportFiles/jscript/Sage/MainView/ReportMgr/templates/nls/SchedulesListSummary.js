@@ -1,13 +1,11 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (languageList, lang) {
-    var nls = {
-        root: {
-            txtTrue: 'True',
-            txtFalse: 'False'
-        }
-    };
-    return lang.mixin(languageList, nls);
+define("Sage/MainView/ReportMgr/templates/nls/SchedulesListSummary", {
+    root: {
+        txtTrue: 'True',
+        txtFalse: 'False'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

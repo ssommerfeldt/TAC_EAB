@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/SLXPreviewGrid/Filter/DateRange", [
         "dijit/form/DateTextBox",
         "dijit/_Widget",
         "dijit/_Templated",
@@ -11,8 +11,8 @@ function (DateTextBox, _Widget, _Templated, _filterMixin, declare) {
         // summary:
         //  Date range filter
         templateString: "<div>" +
-        "<input data-dojo-type='dijit.form.DateTextBox' dojoAttachPoint='dteFrom' style='width:90px'> - " +
-        "<input data-dojo-type='dijit.form.DateTextBox' dojoAttachPoint='dteTo' style='width:90px'>" +
+        "<input data-dojo-type='dijit.form.DateTextBox' dojoAttachPoint='dteFrom'> - " +
+        "<input data-dojo-type='dijit.form.DateTextBox' dojoAttachPoint='dteTo'>" +
         "</div>",
         widgetsInTemplate: true,
 

@@ -293,18 +293,17 @@
         <OnClientClick />
         <OnClickAction>
           <ResourceKey>btnAddAsset</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.InsertChildDialogActionItem, Sage.Platform.QuickForms">
-            <InsertChildDialogActionItem>
+           <Action typeName="Sage.Platform.QuickForms.ActionItems.DialogActionItem, Sage.Platform.QuickForms">
+            <DialogActionItem>
               <SmartPart>AddEditAccountProduct</SmartPart>
               <Height>575</Height>
               <Width>750</Width>
               <Top>0</Top>
               <Left>0</Left>
-              <ResourceKey>22002424-75f2-455e-8284-563cef1bebf5</ResourceKey>
-              <ParentRelationshipPropertyName>Account</ParentRelationshipPropertyName>
-              <DataSource>dtsAssets</DataSource>
+              <EntityType>AccountProduct</EntityType>
+              <ResourceKey>564a9a48-f5d2-4c0b-a03f-b2bd941caea7</ResourceKey>
               <CenterDialog>True</CenterDialog>
-            </InsertChildDialogActionItem>
+            </DialogActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>

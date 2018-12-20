@@ -1,14 +1,14 @@
-define({
-    txtScheduleName_Caption: 'Pianificazione:',
-    txtJobName_Caption: 'Nome Job:',
-    txtUser_Caption: 'Scheduled By:',
-    txtRunAs_Caption: 'Run As:',
-    txtStartTime_Caption: 'Ora inizio:',
-    txtEndTime_Caption: 'Ora fine:',
-    txtNextRunTime_Caption: 'Ora prossima esecuzione:',
-    txtRepeatCount_Caption: 'Numero ripetizioni:',
-    txtRepeatInterval_Caption: 'Intervallo tra ripetizioni:',
-    txtPriority_Caption: 'Priorità:',
-    txtStatus_Caption: 'Status:',
-    txtExecutionCount_Caption: 'Numero esecuzioni:'
+define("Sage/MainView/JobMgr/templates/nls/it/ScheduleDetailSummary", {
+    "txtScheduleName_Caption": "Pianificazione:",
+    "txtJobName_Caption": "Nome processo:",
+    "txtUser_Caption": "Pianificato da:",
+    "txtRunAs_Caption": "Esegui come:",
+    "txtStartTime_Caption": "Ora di inizio:",
+    "txtEndTime_Caption": "Ora di fine:",
+    "txtNextRunTime_Caption": "Ora prossima esecuzione:",
+    "txtRepeatCount_Caption": "Numero ripetizioni:",
+    "txtRepeatInterval_Caption": "Intervallo tra ripetizioni:",
+    "txtPriority_Caption": "Priorità:",
+    "txtStatus_Caption": "Stato:",
+    "txtExecutionCount_Caption": "Numero esecuzioni:"
 });

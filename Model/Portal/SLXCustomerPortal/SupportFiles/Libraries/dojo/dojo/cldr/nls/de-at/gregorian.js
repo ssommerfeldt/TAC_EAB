@@ -1,20 +1,19 @@
-//>>built
 define(
 "dojo/cldr/nls/de-at/gregorian", //begin v1.x content
 {
 	"months-format-abbr": [
-		"Jän",
-		"Februar",
+		"Jän.",
+		"Feb.",
 		"März",
-		"April",
+		"Apr.",
 		"Mai",
 		"Juni",
 		"Juli",
-		"August",
-		"September",
-		"Oktober",
-		"November",
-		"Dezember"
+		"Aug.",
+		"Sep.",
+		"Okt.",
+		"Nov.",
+		"Dez."
 	],
 	"months-format-wide": [
 		"Jänner",
@@ -33,17 +32,17 @@ define(
 	"dateFormat-long": "dd. MMMM y",
 	"months-standAlone-abbr": [
 		"Jän",
-		"Februar",
-		"März",
-		"April",
+		"Feb",
+		"Mär",
+		"Apr",
 		"Mai",
-		"Juni",
-		"Juli",
-		"August",
-		"September",
-		"Oktober",
-		"November",
-		"Dezember"
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Okt",
+		"Nov",
+		"Dez"
 	],
 	"months-standAlone-wide": [
 		"Jänner",

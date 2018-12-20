@@ -1,5 +1,5 @@
-﻿/*globals define  */
-define([],
+/*globals define  */
+define("Sage/Extensions/Activity/ActivityListCustomTabs/CustomTabsConfig", [],
 function () {
     return {
         //Uncomment the below section and update to add a custom tab to Acivity Manager        

@@ -117,44 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="chkAddNotes.Caption" xml:space="preserve">
+    <value>Notizen zu jedem Interessenten hinzufügen</value>
+  </data>
   <data name="chkAddTargets.Caption" xml:space="preserve">
     <value>Als Ziel zur Kampagne hinzufügen</value>
-  </data>
-  <data name="chkScheduleActivity.Caption" xml:space="preserve">
-    <value>Aktivität für jeden Interessenten planen</value>
-  </data>
-  <data name="ScheduleMeeting.Caption" xml:space="preserve">
-    <value>Meeting planen</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="Action_AddNote.Caption" xml:space="preserve">
-    <value>Notiz hinzufügen</value>
-  </data>
-  <data name="cmdScheduleActivity.Caption" xml:space="preserve">
-    <value>Planen...</value>
   </data>
   <data name="chkCreateResponses.Caption" xml:space="preserve">
     <value>Antworten erstellen</value>
   </data>
-  <data name="grdActions.Define" xml:space="preserve">
-    <value>Definieren</value>
-  </data>
   <data name="chkRunProcess.Caption" xml:space="preserve">
     <value>Prozess für jeden Interessenten ausführen</value>
   </data>
-  <data name="Action_AddResponse.Caption" xml:space="preserve">
-    <value>Antwort hinzufügen</value>
+  <data name="chkScheduleActivity.Caption" xml:space="preserve">
+    <value>Aktivität für jeden Interessenten planen</value>
+  </data>
+  <data name="cmdAddNote.Caption" xml:space="preserve">
+    <value>Notiz hinzufügen...</value>
+  </data>
+  <data name="cmdDefineResponse.Caption" xml:space="preserve">
+    <value>Antwort definieren...</value>
+  </data>
+  <data name="cmdScheduleActivity.Caption" xml:space="preserve">
+    <value>Zeitplan...</value>
   </data>
   <data name="lblHeader.Caption" xml:space="preserve">
     <value>Wählen Sie die Aktionen aus, die auf die Interessenten angewandt werden können.</value>
-  </data>
-  <data name="grdActions.Edit" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="SchedulePhoneCall.Caption" xml:space="preserve">
-    <value>Anruf planen</value>
   </data>
   <data name="lblSubHeader.Caption" xml:space="preserve">
     <value>Sie können die folgenden Aktionen auf die Interessenten anwenden, während sie in das System importiert werden.</value>
@@ -162,40 +150,52 @@
   <data name="lueCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
     <value>Kampagnencode</value>
   </data>
-  <data name="grdActions.Name.ColumnHeading" xml:space="preserve">
-    <value>Aktion</value>
-  </data>
-  <data name="grdActions.Define.Column" xml:space="preserve">
-    <value>Definieren</value>
-  </data>
-  <data name="grdActions.IsActive.ColumnHeading" xml:space="preserve">
-    <value>Aktiv</value>
-  </data>
-  <data name="cmdDefineResponse.Caption" xml:space="preserve">
-    <value>Antwort definieren...</value>
+  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
+    <value>Kampagnenname</value>
   </data>
   <data name="lueCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
     <value>Enddatum</value>
   </data>
-  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
-    <value>Kampagnenname</value>
-  </data>
-  <data name="grdActions.EmptyTableText" xml:space="preserve">
-    <value>Es wurden keine Aktionen definiert.</value>
-  </data>
   <data name="lueCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
     <value>Startdatum</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ScheduleMeeting.Caption" xml:space="preserve">
+    <value>Meeting planen</value>
+  </data>
+  <data name="SchedulePhoneCall.Caption" xml:space="preserve">
+    <value>Anruf planen</value>
   </data>
   <data name="ScheduleToDo.Caption" xml:space="preserve">
     <value>Aufgabe planen</value>
   </data>
-  <data name="cmdAddNote.Caption" xml:space="preserve">
-    <value>Notiz hinzufügen...</value>
+  <data name="grdActions.Define" xml:space="preserve">
+    <value>Definieren</value>
   </data>
-  <data name="chkAddNotes.Caption" xml:space="preserve">
-    <value>Notizen zu jedem Interessenten hinzufügen</value>
+  <data name="grdActions.Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="grdActions.EmptyTableText" xml:space="preserve">
+    <value>Es wurden keine Aktionen definiert.</value>
+  </data>
+  <data name="grdActions.Name.ColumnHeading" xml:space="preserve">
+    <value>Aktion</value>
+  </data>
+  <data name="grdActions.IsActive.ColumnHeading" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="Action_AddNote.Caption" xml:space="preserve">
+    <value>Notiz hinzufügen</value>
+  </data>
+  <data name="Action_AddResponse.Caption" xml:space="preserve">
+    <value>Antwort hinzufügen</value>
   </data>
   <data name="Action_AddTarget.Caption" xml:space="preserve">
     <value>Kampagnenziel hinzufügen</value>
+  </data>
+  <data name="grdActions.Define.Column" xml:space="preserve">
+    <value>Definieren</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-define((
-{ destkopErrorsError: 'Aufruf von DesktopErrors() schlug fehl.',
-  mailMergeInfoStoreError: 'Aufruf von MailMergeInfoStore() schlug fehl.' }
-));
+define("Sage/MailMerge/nls/de/Helper", {
+    "destkopErrorsError": "Der Aufruf von DesktopErrors() ist fehlgeschlagen.",
+    "mailMergeInfoStoreError": "Der Aufruf von MailMergeInfoStore() ist fehlgeschlagen."
+});

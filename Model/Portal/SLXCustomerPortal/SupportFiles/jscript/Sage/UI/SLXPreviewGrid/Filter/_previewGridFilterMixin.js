@@ -1,5 +1,5 @@
-﻿/*globals define  */
-define([
+/*globals define  */
+define("Sage/UI/SLXPreviewGrid/Filter/_previewGridFilterMixin", [
     'dojo/_base/declare'
 ],
 function (declare) {

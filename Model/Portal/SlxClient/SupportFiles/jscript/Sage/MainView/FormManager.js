@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/FormManager", [
     'dojo/string',
     'dojo/_base/declare',
     'dojo/_base/lang',
@@ -9,9 +9,10 @@ define([
     'dojo/i18n',
     'dijit/registry',
     'Sage/Services/_ServiceMixin',
-    'Sage/UI/Columns/SlxLink',
+    'Sage/UI/Controls/GridParts/Columns/SlxLink',
     'Sage/UI/SDataMainViewConfigurationProvider',
     'Sage/QuickForms/Design/DesignPanel',
+    'Sage/Store/SData',
     'dojo/i18n!./nls/FormManager'
 ], function (
     string,
@@ -26,6 +27,7 @@ define([
     SlxLink,
     SDataMainViewConfigurationProvider,
     DesignPanel,
+    SDataStore,
     nlsStrings
 ) {
     return declare('Sage.MainView.FormManager', [SDataMainViewConfigurationProvider, _ServiceMixin], {
@@ -49,25 +51,33 @@ define([
             if (options.success) options.success.call(options.scope || this, this._createListConfiguration(), this);
         },
         _createListConfiguration: function () {
-            var store = new Sage.Data.SDataStore({
+            var store = new SDataStore({
                 service: this.dataService,
                 resourceKind: 'forms'
             }),
                 structure = [{
-                    field: 'entity.Name',
-                    name: 'Name',
-                    width: '200px',
-                    type: SlxLink,
+                    field: 'name',
+                    label: this.nameText,
+                    width: 200,
+                    get: function (item) {
+                        if (item && item.entity && item.entity.Name) {
+                            return item.entity.Name;
+                        }
+                    },
                     idField: 'entity.Name',
-                    nosort: true
+                    type: SlxLink,
+                    sortable: true,
+                    customSort: { attribute: 'name', descending: false }
                 }];
 
             this.listPanelConfiguration = {
                 list: {
                     structure: structure,
                     store: store,
+                    queryOptions: { sort: 'name' }, // takes care of first queries sort.
                     id: 'formManagerListConfig'
                 },
+                _sort: [{ attribute: 'name', descending: false }], //takes care of config's instance of sort
                 detail: false,
                 summary: false,
                 toolBar: {}

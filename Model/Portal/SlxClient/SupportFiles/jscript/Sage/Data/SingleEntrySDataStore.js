@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Data/SingleEntrySDataStore", [
         'Sage/Data/BaseSDataStore',
         'Sage/Utility',
         'dojo/_base/declare'
@@ -49,6 +49,7 @@ function (BaseSDataStore, Utility, declare) {
         },
         save: function (options) {
             if (this._request && this._entity) {
+                options.ignoreETag = Utility.isTrue(options.ignoreETag) ? options.ignoreETag : this.ignoreETag;
                 this._okToCache = false;
                 this._request.update(this._entity, options);
             }

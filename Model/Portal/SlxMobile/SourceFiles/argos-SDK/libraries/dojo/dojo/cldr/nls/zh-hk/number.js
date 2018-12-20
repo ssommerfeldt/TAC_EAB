@@ -5,4 +5,5 @@
 */
 
 //>>built
-define("dojo/cldr/nls/zh-hk/number",{"decimalFormat-long":"000兆","nan":"非數值","currencyFormat":"¤#,##0.00","$locale":"zh-hant-hk","decimalFormat-short":"000T"});
+define("dojo/cldr/nls/zh-hk/number",{$locale:"zh-hant-hk","decimalFormat-short":"000T",nan:"\u975e\u6578\u503c"});
+//# sourceMappingURL=number.js.map

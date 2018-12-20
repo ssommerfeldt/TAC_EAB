@@ -117,86 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdTarget.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
-  </data>
-  <data name="cboTemplates.None.Item" xml:space="preserve">
-    <value>&lt;Kein(e)&gt;</value>
-  </data>
-  <data name="error_NoSourceTargetSelected" xml:space="preserve">
-    <value>Zum Erstellen einer Zuordnung müssen Sie sowohl in der Ziel- als auch der Quellliste eine Zeile auswählen.</value>
-  </data>
-  <data name="error_NoMappingsDefined" xml:space="preserve">
-    <value>Derzeit sind keine Zuordnungen definiert. Definieren Sie Ihre Zuordnung, und versuchen Sie es erneut.</value>
-  </data>
-  <data name="lblTemplates.Caption" xml:space="preserve">
-    <value>Feldzuordnungsvorlage:</value>
-  </data>
-  <data name="error_NoSourceSelected" xml:space="preserve">
-    <value>Um eine Zuordnung zu entfernen, müssen Sie eine Zeile in der Quellenliste auswählen.</value>
-  </data>
-  <data name="error_ImportManager_NotFound" xml:space="preserve">
-    <value>Es wurde keine Instanz des Import-Managers gefunden. Der Importvorgang kann nicht fortgesetzt werden.</value>
-  </data>
-  <data name="lblMatches.Caption" xml:space="preserve">
-    <value>{0} von {1} Feldern wurden abgeglichen</value>
-  </data>
-  <data name="grdSource.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
-  </data>
   <data name="cboTemplates.Caption" xml:space="preserve">
     <value>Feldzuordnungsvorlage:</value>
   </data>
-  <data name="cmdUnmatch.Caption" xml:space="preserve">
-    <value>Abgleichung aufheben &gt;</value>
+  <data name="cboTemplates.None.Item" xml:space="preserve">
+    <value>&lt;Keine&gt;</value>
   </data>
-  <data name="grdHistoryItems.EmptyTableRowText" xml:space="preserve">
-    <value>Während des Importprozesses sind keine Fehler aufgetreten.</value>
-  </data>
-  <data name="cmdSaveAs.ToolTip" xml:space="preserve">
-    <value>Als Importvorlage speichern</value>
-  </data>
-  <data name="grdHistoryItems.RecordNumber.ColumnHeading" xml:space="preserve">
-    <value>Datensatznummer</value>
-  </data>
-  <data name="cmdSaveAs.Caption" xml:space="preserve">
-    <value>Als Importvorlage speichern</value>
-  </data>
-  <data name="grdTarget.SLXField.ColumnHeading" xml:space="preserve">
-    <value>SalesLogix-Feld</value>
-  </data>
-  <data name="error_templateManager" xml:space="preserve">
-    <value>Beim Erstellen des Vorlagen-Managers ist ein Fehler aufgetreten.</value>
-  </data>
-  <data name="cmdSave.ToolTip" xml:space="preserve">
-    <value>Importvorlage speichern</value>
-  </data>
-  <data name="grdSource.ColumnNumber.ColumnHeading" xml:space="preserve">
-    <value>Spalte Nr.</value>
-  </data>
-  <data name="grdSource.ListField.ColumnHeading" xml:space="preserve">
-    <value>Feld in der Datei</value>
-  </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Wählen Sie eine vorhandene Vorlage oder die Felder aus, die zugeordnet werden sollen.</value>
-  </data>
-  <data name="grdHistoryItems.Record.ColumnHeading" xml:space="preserve">
-    <value>Aufzeichnen</value>
-  </data>
-  <data name="grdHistoryItems.Description.ColumnHeading" xml:space="preserve">
-    <value>Beschreibung</value>
-  </data>
-  <data name="grdHistoryItems.Type.ColumnHeading" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="grdHistoryItems.TimeStamp.ColumnHeading" xml:space="preserve">
-    <value>Zeitstempel</value>
-  </data>
-  <data name="grdSource.SLXField.ColumnHeading" xml:space="preserve">
-    <value>Abgeglichenes SalesLogix-Feld</value>
-  </data>
-  <data name="lblCompleteDate.Caption" xml:space="preserve">
-    <value>Abschlussdatum:</value>
+  <data name="chkShowAllTargets.Caption" xml:space="preserve">
+    <value>Alle Felder anzeigen</value>
   </data>
   <data name="cmdMatch.Caption" xml:space="preserve">
     <value>&lt; Abgleichen</value>
@@ -204,7 +132,79 @@
   <data name="cmdSave.Caption" xml:space="preserve">
     <value>Importvorlage speichern</value>
   </data>
-  <data name="chkShowAllTargets.Caption" xml:space="preserve">
-    <value>Alle Felder anzeigen</value>
+  <data name="cmdSave.ToolTip" xml:space="preserve">
+    <value>Importvorlage speichern</value>
+  </data>
+  <data name="cmdSaveAs.Caption" xml:space="preserve">
+    <value>Als Importvorlage speichern</value>
+  </data>
+  <data name="cmdSaveAs.ToolTip" xml:space="preserve">
+    <value>Als Importvorlage speichern</value>
+  </data>
+  <data name="cmdUnmatch.Caption" xml:space="preserve">
+    <value>Abgleich rückgängig machen &gt;</value>
+  </data>
+  <data name="error_ImportManager_NotFound" xml:space="preserve">
+    <value>Es wurde keine Instanz des Importmanagers gefunden. Der Importvorgang kann nicht fortgesetzt werden.</value>
+  </data>
+  <data name="error_NoMappingsDefined" xml:space="preserve">
+    <value>Derzeit sind keine Zuordnungen definiert. Definieren Sie Ihre Zuordnung, und versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_NoSourceSelected" xml:space="preserve">
+    <value>Um eine Zuordnung zu entfernen, müssen Sie eine Zeile in der Quellenliste auswählen.</value>
+  </data>
+  <data name="error_NoSourceTargetSelected" xml:space="preserve">
+    <value>Zum Erstellen einer Zuordnung müssen Sie sowohl in der Ziel- als auch der Quellliste eine Zeile auswählen.</value>
+  </data>
+  <data name="error_templateManager" xml:space="preserve">
+    <value>Beim Erstellen des Vorlagenmanagers ist ein Fehler aufgetreten.</value>
+  </data>
+  <data name="grdHistoryItems.Description.ColumnHeading" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="grdHistoryItems.EmptyTableRowText" xml:space="preserve">
+    <value>Während des Importprozesses sind keine Fehler aufgetreten.</value>
+  </data>
+  <data name="grdHistoryItems.Record.ColumnHeading" xml:space="preserve">
+    <value>Datensatz</value>
+  </data>
+  <data name="grdHistoryItems.RecordNumber.ColumnHeading" xml:space="preserve">
+    <value>Datensatznummer</value>
+  </data>
+  <data name="grdHistoryItems.TimeStamp.ColumnHeading" xml:space="preserve">
+    <value>Zeitstempel</value>
+  </data>
+  <data name="grdHistoryItems.Type.ColumnHeading" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="grdSource.ColumnNumber.ColumnHeading" xml:space="preserve">
+    <value>Spalte Nr.</value>
+  </data>
+  <data name="grdSource.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  </data>
+  <data name="grdSource.ListField.ColumnHeading" xml:space="preserve">
+    <value>Feld in der Datei</value>
+  </data>
+  <data name="grdSource.SLXField.ColumnHeading" xml:space="preserve">
+    <value>Abgeglichenes Saleslogix-Feld</value>
+  </data>
+  <data name="grdTarget.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  </data>
+  <data name="grdTarget.SLXField.ColumnHeading" xml:space="preserve">
+    <value>Saleslogix-Feld</value>
+  </data>
+  <data name="lblCompleteDate.Caption" xml:space="preserve">
+    <value>Abschlussdatum:</value>
+  </data>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Wählen Sie eine vorhandene Vorlage oder die Felder aus, die zugeordnet werden sollen.</value>
+  </data>
+  <data name="lblMatches.Caption" xml:space="preserve">
+    <value>{0} von {1} Feldern wurden abgeglichen</value>
+  </data>
+  <data name="lblTemplates.Caption" xml:space="preserve">
+    <value>Feldzuordnungsvorlage:</value>
   </data>
 </root>

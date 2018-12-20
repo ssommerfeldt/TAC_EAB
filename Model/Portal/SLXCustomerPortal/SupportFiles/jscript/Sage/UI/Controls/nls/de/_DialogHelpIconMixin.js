@@ -1,3 +1,3 @@
-define((
-{ helpTooltip: 'Hilfe' }
-));
+define("Sage/UI/Controls/nls/de/_DialogHelpIconMixin", {
+    "helpTooltip": "Hilfe"
+});

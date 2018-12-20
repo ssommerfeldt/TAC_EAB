@@ -1,0 +1,58 @@
+﻿<style>
+    .infor-crm-application-widget-main-div > .green-text {
+        color: #80ce4d !important;
+        font-weight:bold;
+    }
+    .infor-crm-application-widget-main-div > .orange-text {
+        color: #ff9426 !important;
+        font-weight:bold;
+    }
+    .infor-crm-application-widget-main-div > .blue-text {
+        color: #69B5DD !important;
+        font-weight:bold;
+    }
+    .infor-crm-application-widget-main-div > .red-text {
+        color: #e84f4f !important;
+        font-weight:bold;
+    }
+</style>
+
+<div ng-controller="crm.inforCRMGroupListMainCtrl as ctrl">
+    <div class="widget-content" ng-hide="ctrl.hideGrid">
+        <div>            
+            <div class="listview-search searchfield-wrapper lm-width-full">
+                <input xi-searchfield class="searchfield lm-width-full" ng-model='ctrl.searchText' ng-keyup="ctrl.searchData()" placeholder="Search" name="searchfield" data-options="" />
+            </div>
+            <div ng-repeat="step in ctrl.data" class="listview lm-scroll-no-x">
+                <ul>
+                    <li ng-click="ctrl.gotoCRMDetailView(step)" ng-if="ctrl.resetCount()" style="cursor:pointer;">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div ng-repeat="(key, value) in step" style="width:180px;">
+                                        <p  ng-if="ctrl.displayFields[0].text === key && ctrl.isMaxFieldsReached(2*lmWidget.data.layout.columnSpan+1)" class="listview-heading">{{value}}</p>
+                                        <p  ng-if="ctrl.displayFields[1].text === key && ctrl.isMaxFieldsReached(2*lmWidget.data.layout.columnSpan+1)" class="listview-subheading">{{value}}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="infor-crm-application-widget-main-div" ng-repeat="(key, value) in step" ng-if="(key === 'Status' || key === 'Active') && ctrl.isMaxFieldsReached(2*lmWidget.data.layout.columnSpan+1)" style="padding-left:30px;width:150px;">
+                                        <p style="text-transform:none !important;font-size:1.1rem !important;font-weight:normal !important;" class="listview-micro">{{key}}</p>
+                                        <p class="listview-subheading" ng-class="ctrl.getStatusClass(step)">{{value}}</p>
+                                    </div>
+                                </td>
+                                <td ng-repeat="(key, value) in step" ng-if="ctrl.isFieldVisible(key) === true">
+                                    <div style="width:180px;" ng-if="(ctrl.displayFields[0].text !== key && ctrl.displayFields[1].text !== key && key != 'Status' && key != 'Active') && ctrl.isMaxFieldsReached(2*lmWidget.data.layout.columnSpan+1)">
+                                        <p style="text-transform:none !important;font-size:1.2rem !important;font-weight:normal !important;" class="listview-micro">{{key}}</p>
+                                        <p class="listview-subheading" style="color:black;">{{value}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</div>

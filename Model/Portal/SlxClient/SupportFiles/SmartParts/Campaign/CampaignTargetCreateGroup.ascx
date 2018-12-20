@@ -8,7 +8,7 @@
     </SalesLogix:PageLink>
 </SalesLogix:SmartPartToolsContainer>
 
-<table border="0" cellpadding="1" cellspacing="0" class="formtable">
+<table class="formtable">
     <col width="40%" />
     <col width="60%" />
     <tr>
@@ -41,12 +41,10 @@
             <asp:Label runat="server" ID="lblGroupMembers" Text="<%$ resources: lblGroupMembers.Caption %>"></asp:Label>
         </td>
         <td>
-            <fieldset class="slxlabel radio" style="width: 90%;">
-                <asp:RadioButtonList runat="server" ID="rdgGroupMembers" RepeatDirection="Vertical" >
-                    <asp:ListItem Text="<%$ resources: rdgGroupMembers_AllTargets.Text %>" Selected="True" Value="<%$ resources: rdgGroupMembers_AllTargets.Value %>" />
-                    <asp:ListItem Text="<%$ resources: rdgGroupMembers_SelectedTargets.Text %>" Value="<%$ resources: rdgGroupMembers_SelectedTargets.Value %>" />
-                </asp:RadioButtonList>
-            </fieldset>
+            <asp:RadioButtonList runat="server" ID="rdgGroupMembers" RepeatDirection="Vertical" >
+                <asp:ListItem Text="<%$ resources: rdgGroupMembers_AllTargets.Text %>" Selected="True" Value="<%$ resources: rdgGroupMembers_AllTargets.Value %>" />
+                <asp:ListItem Text="<%$ resources: rdgGroupMembers_SelectedTargets.Text %>" Value="<%$ resources: rdgGroupMembers_SelectedTargets.Value %>" />
+            </asp:RadioButtonList>
         </td>
     </tr>
     <tr>

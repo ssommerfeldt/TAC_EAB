@@ -1,0 +1,39 @@
+﻿<div ng-controller="crm.OpportunityStatusCtrl as ctrl" >
+    <div class="widget-content">
+       
+     
+    <div style="display: table;width:90%;font-size:12px">
+        <div style="display: table-row;">
+            <div style="display: table-cell;width:100%;padding-left:20px;padding-top:20px;font-weight: bold;">{{ctrl.language.displayTitle}} {{ctrl.OppInfotext}}</div>
+        </div>
+    </div>
+      <div style="display: table;width:80%;font-size:12px;padding-top:20px;">
+        <div style="display: table-row;">
+          <div style="display: table-cell;text-align: right;width:60%;padding: 3px 10px;"> {{ctrl.language.titleOpenOpp}} </div>
+          <div style="display: table-cell;width:50%;">{{ctrl.OpenOpportunities}}</div>
+        </div>
+      </div>
+      <div style="display: table;width:80%;font-size:12px">
+        <div style="display: table-row;">
+          <div style="display: table-cell;text-align: right;width:60%;padding: 3px 10px;"> {{ctrl.language.textCloseOpp}} </div>
+          <div style="display: table-cell;width:50%;">{{ctrl.ClosedOpportunities}}</div>
+        </div>
+      </div>
+      <div style="display: table;width:80%;font-size:12px">
+        <div style="display: table-row;">
+          <div style="display: table-cell;text-align: right;width:60%;padding: 3px 10px;"> {{ctrl.language.textOppWon}} </div>
+          <div style="display: table-cell;width:50%;">{{ctrl.OpportunitiesWon}}</div>
+        </div>
+      </div>
+      <div style="display: table;width:80%;font-size:12px">
+        <div style="display: table-row;">
+          <div style="display: table-cell;text-align: right;width:60%;padding: 3px 10px;"> {{ctrl.language.textOppLost}} </div>
+          <div style="display: table-cell;width:50%;">{{ctrl.OpportunitiesLost}}</div>
+        </div>
+      </div>
+      
+    </div>
+   
+  
+    
+  </div>

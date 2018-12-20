@@ -117,14 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmMessage_DeleteResponse" xml:space="preserve">
-    <value>Möchten Sie diese Antwort wirklich löschen?</value>
+  <data name="AccountMarketing_Add.Text" xml:space="preserve">
+    <value>Hinzufügen</value>
   </data>
-  <data name="ConfirmMessage_RemoveTargetAssociation" xml:space="preserve">
-    <value>Kontakt aus weiteren Phasen der Kampagne {0} entfernen?</value>
+  <data name="AccountMarketing_Code.HeaderText" xml:space="preserve">
+    <value>Kampagnencode</value>
+  </data>
+  <data name="AccountMarketing_Contact.HeaderText" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="AccountMarketing_Delete.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="AccountMarketing_Edit.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="AccountMarketing_EmptyTableRowText.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  </data>
+  <data name="AccountMarketing_EndDate.HeaderText" xml:space="preserve">
+    <value>Enddatum</value>
   </data>
   <data name="AccountMarketing_Name.HeaderText" xml:space="preserve">
     <value>Kampagnenname</value>
+  </data>
+  <data name="AccountMarketing_Remove" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="AccountMarketing_ResponseDate.HeaderText" xml:space="preserve">
+    <value>Antwortdatum</value>
+  </data>
+  <data name="AccountMarketing_ResponseMethod.HeaderText" xml:space="preserve">
+    <value>Antwortmethode</value>
+  </data>
+  <data name="AccountMarketing_Stage.HeaderText" xml:space="preserve">
+    <value>Phase</value>
+  </data>
+  <data name="AccountMarketing_StartDate.HeaderText" xml:space="preserve">
+    <value>Startdatum</value>
   </data>
   <data name="AccountMarketing_Status.HeaderText" xml:space="preserve">
     <value>Status</value>
@@ -132,49 +162,19 @@
   <data name="AddResponse_rsc.ToolTip" xml:space="preserve">
     <value>Kampagnenantwort hinzufügen</value>
   </data>
-  <data name="AccountMarketing_Add.Text" xml:space="preserve">
-    <value>Hinzufügen</value>
-  </data>
-  <data name="AccountMarketing_Contact.HeaderText" xml:space="preserve">
-    <value>Kontakt</value>
-  </data>
   <data name="AddTargetResponse_DialogCaption" xml:space="preserve">
     <value>Zielantwort hinzufügen</value>
+  </data>
+  <data name="ConfirmMessage_DeleteResponse" xml:space="preserve">
+    <value>Möchten Sie diese Antwort wirklich löschen?</value>
+  </data>
+  <data name="ConfirmMessage_RemoveTargetAssociation" xml:space="preserve">
+    <value>Kontakt aus weiteren Phasen der Kampagne {0} entfernen?</value>
   </data>
   <data name="EditTargetResponse_DialogCaption" xml:space="preserve">
     <value>Zielantwort bearbeiten</value>
   </data>
-  <data name="AccountMarketing_Delete.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="AccountMarketing_ResponseDate.HeaderText" xml:space="preserve">
-    <value>Antwortdatum</value>
-  </data>
-  <data name="AccountMarketing_EndDate.HeaderText" xml:space="preserve">
-    <value>Enddatum</value>
-  </data>
-  <data name="AccountMarketing_Edit.Text" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="AccountMarketing_Stage.HeaderText" xml:space="preserve">
-    <value>Phase</value>
-  </data>
-  <data name="AccountMarketing_Remove" xml:space="preserve">
-    <value>Entfernen</value>
-  </data>
-  <data name="AccountMarketing_ResponseMethod.HeaderText" xml:space="preserve">
-    <value>Antwortmethode</value>
-  </data>
-  <data name="AccountMarketing_StartDate.HeaderText" xml:space="preserve">
-    <value>Startdatum</value>
-  </data>
   <data name="TargetStatus_Removed" xml:space="preserve">
     <value>Entfernt</value>
-  </data>
-  <data name="AccountMarketing_Code.HeaderText" xml:space="preserve">
-    <value>Kampagnencode</value>
-  </data>
-  <data name="AccountMarketing_EmptyTableRowText.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
   </data>
 </root>

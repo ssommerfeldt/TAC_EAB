@@ -112,8 +112,6 @@
     </tr>
     <tr>
         <td>
-            <span class="lbl">
-                <asp:Label ID="lblShowOnActivities" runat="server" Text="<%$resources:lblShowOnActivities.Text %>"></asp:Label></span>
         </td>
         <td>
             <span class="lbl">
@@ -126,15 +124,25 @@
         </td>
     </tr>
     <tr>
-        <td>
-            <span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkOpportunity" runat="server" Text="<%$ resources:chkOpportunity.Caption %>" />
-            </span><span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkPhoneNumber" runat="server" Text="<%$ resources:chkPhoneNumber.Caption %>" />
-            </span><span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkRegarding" runat="server" Text="<%$ resources:chkRegarding.Caption %>" />
-            </span><span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkTime" runat="server" Text="<%$ resources:chkTime.Caption %>" />
+         <td colspan="2">
+            <span class="twocollbl">
+                <asp:Label ID="lblShowOnActivities" runat="server" Text="<%$resources:lblShowOnActivities.Text %>"></asp:Label></span>
+            <span class="twocolremainder">
+                <span class="lblright">
+                <asp:CheckBox ID="chkOpportunity" runat="server" Text="<%$ resources:chkOpportunity.Caption %>" CssClass="inforAspCheckBox" />
+                </span>
+                <br />
+                <span class="lblright">
+                    <asp:CheckBox ID="chkPhoneNumber" runat="server" Text="<%$ resources:chkPhoneNumber.Caption %>" CssClass="inforAspCheckBox" />
+                </span>
+                <br />
+                <span class="lblright">
+                    <asp:CheckBox ID="chkRegarding" runat="server" Text="<%$ resources:chkRegarding.Caption %>" CssClass="inforAspCheckBox" />
+                </span>
+                <br />
+                <span class="lblright">
+                    <asp:CheckBox ID="chkTime" runat="server" Text="<%$ resources:chkTime.Caption %>" CssClass="inforAspCheckBox" />
+                </span>
             </span>
         </td>
     </tr>
@@ -155,39 +163,49 @@
         </td>--%>
     </tr>
     <tr>
-        <td>
-            <span class="lbl">
-                <asp:Label ID="lblWorkWeek" runat="server" Text="<%$resources:lblWorkWeek.Text %>"></asp:Label></span>
-        </td>
-        <td>
-        </td>
-    </tr>
-    <tr>
         <td colspan="2">
-            <span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkSun" runat="server" Text="<%$ resources:chkSun.Caption %>" />
-            </span><span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkMon" runat="server" Text="<%$ resources:chkMon.Caption %>" />
-            </span><span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkTue" runat="server" Text="<%$ resources:chkTue.Caption %>" />
-            </span><span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkWed" runat="server" Text="<%$ resources:chkWed.Caption %>" />
-            </span><span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkThu" runat="server" Text="<%$ resources:chkThu.Caption %>" />
-            </span><span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkFri" runat="server" Text="<%$ resources:chkFri.Caption %>" />
-            </span><span class="lblright" style="padding-right: 5px">
-                <asp:CheckBox ID="chkSat" runat="server" Text="<%$ resources:chkSat.Caption %>" />
+            <span class="twocollbl">
+                <asp:Label ID="lblWorkWeek" runat="server" Text="<%$resources:lblWorkWeek.Text %>"></asp:Label></span>
+
+            <span class="twocolremainder">
+                <span class="lblright">
+                <asp:CheckBox ID="chkSun" runat="server" Text="Sun" CssClass="inforAspCheckBox" />
+                </span>
+                <br />
+                <span class="lblright">
+                    <asp:CheckBox ID="chkMon" runat="server" Text="Mon" CssClass="inforAspCheckBox" />
+                </span>
+                <br />
+                <span class="lblright">
+                    <asp:CheckBox ID="chkTue" runat="server" Text="Tue" CssClass="inforAspCheckBox" />
+                </span>
+                <br />
+                <span class="lblright">
+                    <asp:CheckBox ID="chkWed" runat="server" Text="Wed" CssClass="inforAspCheckBox" />
+                </span>
+                <br />
+                <span class="lblright">
+                    <asp:CheckBox ID="chkThu" runat="server" Text="Thu" CssClass="inforAspCheckBox" />
+                </span>
+                <br />
+                <span class="lblright">
+                    <asp:CheckBox ID="chkFri" runat="server" Text="Fri" CssClass="inforAspCheckBox" />
+                </span>
+                <br />
+                <span class="lblright">
+                    <asp:CheckBox ID="chkSat" runat="server" Text="Sat" CssClass="inforAspCheckBox" />
+                </span>
             </span>
         </td>
     </tr>
+ 
     <tr>
         <td>
             <span class="lbl">
                 <asp:Label ID="lblFirstDayOfWeek" runat="server" Text="<%$resources:lblFirstDayOfWeek.Text %>"></asp:Label></span>
             <span class="textcontrol">
                 <asp:DropDownList ID="ddlFirstDayOfWeek" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server"
-                    DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlFirstDayOfWeekResource1">
+                    DataTextField="Key" DataValueField="Value">
                 </asp:DropDownList>
             </span>
         </td>

@@ -1,20 +1,38 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="14a709f4-1ba9-48c6-8c8b-db72681569d3" lastModifiedUtc="2009-05-28T00:26:06.3963105Z" cardinality="M:1" parentEntityId="6ab738f6-21b0-4fe2-8df5-6f192281423c" childEntityId="dfca3267-2f5b-4970-813b-5aeb9ea75649">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="14a709f4-1ba9-48c6-8c8b-db72681569d3" lastModifiedUtc="2015-08-20T17:57:56.657632Z" cardinality="M:1" parentEntityId="6ab738f6-21b0-4fe2-8df5-6f192281423c" childEntityId="dfca3267-2f5b-4970-813b-5aeb9ea75649">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
-    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship">
+      <extender guid="14807bef-c0cc-4b6d-a517-8388ed8ac2a6">
+        <OrmRelationshipBulkActionExtension />
+      </extender>
+    </extendee>
   </ExtendedPropertiesCollection>
-  <parentProperty id="49da06c3-eadd-4675-8a12-8b78e276b2f3" lastModifiedUtc="0001-01-01T00:00:00" name="DefaultOwner" audited="false" isNullable="false">
+  <parentProperty id="49da06c3-eadd-4675-8a12-8b78e276b2f3" lastModifiedUtc="2015-08-20T17:57:56.6566318Z" name="DefaultOwner" audited="false" isNullable="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="true" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="4dc3524f-6fff-411b-a1d5-324dcb29cb06" lastModifiedUtc="2009-05-28T00:26:06.3963105Z" name="User" audited="false">
+  <childProperty id="4dc3524f-6fff-411b-a1d5-324dcb29cb06" lastModifiedUtc="2015-08-20T17:46:01.2284158Z" name="User" audited="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />

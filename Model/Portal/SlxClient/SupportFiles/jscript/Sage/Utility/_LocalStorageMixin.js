@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/Utility/_LocalStorageMixin", [
         'dojo/_base/declare',
         'dojox/storage/LocalStorageProvider'
 ], function (

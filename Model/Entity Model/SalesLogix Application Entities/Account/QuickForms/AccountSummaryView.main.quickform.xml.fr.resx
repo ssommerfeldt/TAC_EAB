@@ -117,58 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtType.Caption" xml:space="preserve">
-    <value>Type :</value>
+  <data name="txtAddress1.Caption" xml:space="preserve">
+    <value />
   </data>
-  <data name="agcContacts.Caption" xml:space="preserve">
-    <value>Contacts :</value>
+  <data name="txtCityStateZip.Caption" xml:space="preserve">
+    <value />
   </data>
-  <data name="agcTickets.Caption" xml:space="preserve">
-    <value>Tickets :</value>
-  </data>
-  <data name="agcTickets_grid.237ec3ea-f19c-4004-9e2d-f26ef117baa2.ColumnHeading" xml:space="preserve">
-    <value>Catégorie</value>
-  </data>
-  <data name="agcTickets.PopupCaptionFmt" xml:space="preserve">
-    <value>Tickets pour {0}</value>
-  </data>
-  <data name="agcTickets_grid.4985c44b-c1ba-4889-ad79-f77ff1eea8c1.ColumnHeading" xml:space="preserve">
-    <value>Numéro de ticket</value>
-  </data>
-  <data name="agcOpportunities_grid.dd00bf0d-64d6-4eac-88bd-c5d8d5f69fa8.ColumnHeading" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="agcOpportunities.PopupCaptionFmt" xml:space="preserve">
-    <value>Opportunités pour {0}</value>
-  </data>
-  <data name="agcContacts_grid.2e532e71-9c31-4375-ae66-8ff50b57c3f7.ColumnHeading" xml:space="preserve">
-    <value>E-mail</value>
-  </data>
-  <data name="agcOpportunities.Caption" xml:space="preserve">
-    <value>Opportunités :</value>
-  </data>
-  <data name="txtSubType.Caption" xml:space="preserve">
-    <value>Sous-type :</value>
+  <data name="lnkAccountName.Caption" xml:space="preserve">
+    <value />
   </data>
   <data name="txtIndustry.Caption" xml:space="preserve">
     <value>Secteur :</value>
   </data>
+  <data name="txtSubType.Caption" xml:space="preserve">
+    <value>Sous-type :</value>
+  </data>
+  <data name="txtAccountMgr.Caption" xml:space="preserve">
+    <value>Resp. du compte :</value>
+  </data>
+  <data name="txtType.Caption" xml:space="preserve">
+    <value>Type :</value>
+  </data>
+  <data name="agcContacts.Caption" xml:space="preserve">
+    <value>Contacts :</value>
+  </data>
+  <data name="agcContacts_grid.ae8c28ca-c20e-441d-b2dc-cb915d825a35.FormatString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="agcOpportunities.Caption" xml:space="preserve">
+    <value>Opportunités :</value>
+  </data>
+  <data name="agcTickets.Caption" xml:space="preserve">
+    <value>Tickets :</value>
+  </data>
   <data name="agcContacts.PopupCaptionFmt" xml:space="preserve">
     <value>Contacts pour {0}</value>
   </data>
-  <data name="agcOpportunities_grid.d1593898-481b-46ac-9959-c7dcfd51c7c0.ColumnHeading" xml:space="preserve">
-    <value>Etat</value>
+  <data name="agcOpportunities.PopupCaptionFmt" xml:space="preserve">
+    <value>Opportunités pour {0}</value>
   </data>
-  <data name="agcContacts_grid.54487aed-d3b7-49e2-b9e5-afea03c41197.ColumnHeading" xml:space="preserve">
-    <value>Téléphone professionnel</value>
+  <data name="agcTickets.PopupCaptionFmt" xml:space="preserve">
+    <value>Tickets pour {0}</value>
   </data>
   <data name="agcContacts_grid.ae8c28ca-c20e-441d-b2dc-cb915d825a35.ColumnHeading" xml:space="preserve">
     <value>Nom</value>
   </data>
-  <data name="txtAccountMgr.Caption" xml:space="preserve">
-    <value>Resp. du compte :</value>
+  <data name="agcContacts_grid.54487aed-d3b7-49e2-b9e5-afea03c41197.ColumnHeading" xml:space="preserve">
+    <value>Téléphone professionnel</value>
+  </data>
+  <data name="agcContacts_grid.2e532e71-9c31-4375-ae66-8ff50b57c3f7.ColumnHeading" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="agcOpportunities_grid.dd00bf0d-64d6-4eac-88bd-c5d8d5f69fa8.ColumnHeading" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="agcOpportunities_grid.d1593898-481b-46ac-9959-c7dcfd51c7c0.ColumnHeading" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="agcTickets_grid.4985c44b-c1ba-4889-ad79-f77ff1eea8c1.ColumnHeading" xml:space="preserve">
+    <value>Numéro de ticket</value>
   </data>
   <data name="agcTickets_grid.a0166fee-248a-4754-9088-c7a2c04cb6fa.ColumnHeading" xml:space="preserve">
-    <value>Zone</value>
+    <value>Domaine</value>
+  </data>
+  <data name="agcTickets_grid.237ec3ea-f19c-4004-9e2d-f26ef117baa2.ColumnHeading" xml:space="preserve">
+    <value>Catégorie</value>
   </data>
 </root>

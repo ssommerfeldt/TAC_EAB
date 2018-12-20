@@ -5,13 +5,15 @@ Sage.UI.Forms.UpdateTargets = {
         this._workSpace = workSpace;
     },
     optionChange: function (ddlOptions) {
-        this.setOption(dojo.byId(ddlOptions).value);
+        dojo.query('+ input[type="hidden"]', dojo.byId(ddlOptions)).forEach(function (node, index, arr) {
+            this.setOption(node.value);
+        }, this);
     },
     setOption: function (option) {
-        this.showControl(dojo.byId(this._workSpace.optionStatusId), (option === "Status"));
-        this.showControl(dojo.byId(this._workSpace.optionStageId), (option === "Stage"));
-        this.showControl(dojo.byId(this._workSpace.optionInitializeTargetId), (option === "Initial Target"));
-        this.showControl(dojo.byId(this._workSpace.optionAddResponseId), (option === "Add Response"));
+        this.showControl(dojo.byId(this._workSpace.optionStatusId), (option === "0"));
+        this.showControl(dojo.byId(this._workSpace.optionStageId), (option === "1"));
+        this.showControl(dojo.byId(this._workSpace.optionInitializeTargetId), (option === "2"));
+        this.showControl(dojo.byId(this._workSpace.optionAddResponseId), (option === "3"));
     },
     showControl: function (ctrlId, show) {
         var ctrl = dojo.byId(ctrlId);

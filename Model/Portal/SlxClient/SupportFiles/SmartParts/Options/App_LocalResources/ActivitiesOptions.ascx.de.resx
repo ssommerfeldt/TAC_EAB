@@ -112,135 +112,273 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblCarryOverNotes.Text" xml:space="preserve">
-    <value>Notizen übertragen:</value>
-  </data>
-  <data name="lblActivityType_ToDo.Text" xml:space="preserve">
-    <value>Aufgabe</value>
-  </data>
-  <data name="liDisplayPastDueNo.Text" xml:space="preserve">
-    <value>Nein</value>
-  </data>
-  <data name="lblActivityType_PhoneCall.Text" xml:space="preserve">
-    <value>Anruf</value>
-  </data>
-  <data name="lblDisplayPastDue.Text" xml:space="preserve">
-    <value>"Überfällig seit" anzeigen:</value>
-  </data>
-  <data name="lbDisplayAlarms.Text" xml:space="preserve">
-    <value>Alarme anzeigen:</value>
-  </data>
-  <data name="liDisplayAlarmsNo.Text" xml:space="preserve">
-    <value>Nein</value>
-  </data>
-  <data name="lblDefaultFollowupActivity.Text" xml:space="preserve">
-    <value>Standardmäßige Folgeaktivität:</value>
-  </data>
-  <data name="lblAlarmDefaultLead.Text" xml:space="preserve">
-    <value>Standardinteressent für Alarm:</value>
-  </data>
-  <data name="lblDefaultAlarm.Text" xml:space="preserve">
-    <value>Standardalarm</value>
-  </data>
-  <data name="cmdSave_rsc.ToolTip" xml:space="preserve">
-    <value>Speichern</value>
-  </data>
-  <data name="lblDefaultView.Text" xml:space="preserve">
-    <value>Standardansicht:</value>
-  </data>
-  <data name="lblDefaultTimeless.Text" xml:space="preserve">
-    <value>Standardmäßig ohne Zeitangabe</value>
-  </data>
-  <data name="lblDisplayActivityReminders.Text" xml:space="preserve">
-    <value>Aktivitätserinnerungen anzeigen:</value>
-  </data>
-  <data name="PageDescription.Text" xml:space="preserve">
-    <value>Aktivitäten</value>
-  </data>
-  <data name="ListItemResource8.Text" xml:space="preserve">
-    <value>Nein</value>
-  </data>
-  <data name="lblPastDue.Caption" xml:space="preserve">
-    <value>"Überfällig seit" in Symbolleiste anzeigen:</value>
-  </data>
-  <data name="ListItemResource7.Text" xml:space="preserve">
-    <value>Ja</value>
-  </data>
-  <data name="lblReminderOptions.Text" xml:space="preserve">
-    <value>Erinnerungsoptionen</value>
-  </data>
-  <data name="lblDefaultRollover.Text" xml:space="preserve">
-    <value>Auto-Rollover</value>
+  <data name="ActivitiesOptsHelpLinkResource1.Text" xml:space="preserve">
+    <value />
   </data>
   <data name="ActivitiesOptsHelpLinkResource1.ToolTip" xml:space="preserve">
     <value>Hilfe</value>
   </data>
-  <data name="lblDefaultsPerActivity.Text" xml:space="preserve">
-    <value>Standardeinstellungen pro Aktivitätstyp:</value>
-  </data>
-  <data name="lblActivityType_PersonalActivity.Text" xml:space="preserve">
-    <value>Persönliche Aktivität</value>
-  </data>
-  <data name="lblShowActivitiesForResource1.Text" xml:space="preserve">
-    <value>Aktivitäten anzeigen für:</value>
-  </data>
-  <data name="PageDescription.Title" xml:space="preserve">
-    <value>Aktivitäten</value>
-  </data>
-  <data name="lblActivityOptions.Text" xml:space="preserve">
-    <value>Aktivitätsoptionen</value>
-  </data>
-  <data name="lbDisplayConfirmations.Text" xml:space="preserve">
-    <value>Bestätigungen anzeigen:</value>
+  <data name="btnSaveResource1.AlternateText" xml:space="preserve">
+    <value />
   </data>
   <data name="btnSaveResource1.ToolTip" xml:space="preserve">
     <value>Speichern</value>
   </data>
-  <data name="GeneralOptionsHelpLinkResource2.ToolTip" xml:space="preserve">
-    <value>Hilfe</value>
+  <data name="ddlAlarmDefaultLeadResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlCarryOverAttachments.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlCarryOverNotes.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultDurationAmt1Resource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultDurationUnits1Resource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultFollowupActivityResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultFollowupActivityResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultReminderAmt1Resource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultReminderUnits1Resource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDefaultViewResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDisplayAlarmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDisplayConfirmationsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDisplayPastDueResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlDisplayRemindersResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ddlShowConfirmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lbDisplayAlarms.Text" xml:space="preserve">
+    <value>Alarme anzeigen:</value>
+  </data>
+  <data name="lbDisplayConfirmations.Text" xml:space="preserve">
+    <value>Bestätigungen anzeigen:</value>
+  </data>
+  <data name="lblActivityOptions.Text" xml:space="preserve">
+    <value>Aktivitätsoptionen</value>
+  </data>
+  <data name="lblActivityOptionsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblActivityType.Text" xml:space="preserve">
+    <value>Aktivitätstyp</value>
   </data>
   <data name="lblActivityType_Meeting.Text" xml:space="preserve">
     <value>Meeting</value>
   </data>
-  <data name="lblEnableAlarmsResource1.Text" xml:space="preserve">
-    <value>Alarme aktivieren:</value>
+  <data name="lblActivityType_PersonalActivity.Text" xml:space="preserve">
+    <value>Private Aktivität</value>
   </data>
-  <data name="lblTimeFrameResource1.Text" xml:space="preserve">
-    <value>Zeitrahmen:</value>
+  <data name="lblActivityType_PhoneCall.Text" xml:space="preserve">
+    <value>Anruf</value>
   </data>
-  <data name="liDisplayAlarmsYes.Text" xml:space="preserve">
-    <value>Ja</value>
+  <data name="lblActivityType_ToDo.Text" xml:space="preserve">
+    <value>Aufgabe</value>
+  </data>
+  <data name="lblAlarmDefaultLead.Text" xml:space="preserve">
+    <value>Standardinteressent für Alarm:</value>
+  </data>
+  <data name="lblAlarmLeadResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lblAlarmOptsResource1.Text" xml:space="preserve">
     <value>Alarmoptionen</value>
   </data>
-  <data name="liDisplayPastDueYes.Text" xml:space="preserve">
+  <data name="lblAlarmOptsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmScanResource1.Text" xml:space="preserve">
+    <value>Abfrageintervall für Alarm:</value>
+  </data>
+  <data name="lblAlarmScanResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblAlarmSoundResource1.Text" xml:space="preserve">
+    <value>Akustischer Alarm:</value>
+  </data>
+  <data name="lblAlarmSoundResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblCarryOverAttachments.Text" xml:space="preserve">
+    <value>Anlagen übertragen:</value>
+  </data>
+  <data name="lblCarryOverNotes.Text" xml:space="preserve">
+    <value>Notizen übertragen:</value>
+  </data>
+  <data name="lblCarryOverResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefaultAlarm.Text" xml:space="preserve">
+    <value>Standardalarm</value>
+  </data>
+  <data name="lblDefaultDuration.Text" xml:space="preserve">
+    <value>Standarddauer</value>
+  </data>
+  <data name="lblDefaultFollowupActivity.Text" xml:space="preserve">
+    <value>Standardmäßige Folgeaktivität:</value>
+  </data>
+  <data name="lblDefaultsPerActivity.Text" xml:space="preserve">
+    <value>Standardeinstellungen pro Aktivitätstyp:</value>
+  </data>
+  <data name="lblDefaultView.Text" xml:space="preserve">
+    <value>Standardansicht:</value>
+  </data>
+  <data name="lblDefaultViewResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefFollowActivResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDisplayActivityReminders.Text" xml:space="preserve">
+    <value>Aktivitätserinnerungen anzeigen:</value>
+  </data>
+  <data name="lblDisplayActivityRemindersResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDisplayPastDue.Text" xml:space="preserve">
+    <value>"Überfällig" anzeigen:</value>
+  </data>
+  <data name="lblEnableAlarmsResource1.Text" xml:space="preserve">
+    <value>Alarme aktivieren:</value>
+  </data>
+  <data name="lblEnableAlarmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblReminderOptions.Text" xml:space="preserve">
+    <value>Erinnerungsoptionen</value>
+  </data>
+  <data name="lblReminderOptsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblShowActivitiesForResource1.Text" xml:space="preserve">
+    <value>Aktivitäten anzeigen für:</value>
+  </data>
+  <data name="lblShowActivitiesForResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblShowAlarmsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblShowPastDueResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTimeFrameResource1.Text" xml:space="preserve">
+    <value>Zeitrahmen:</value>
+  </data>
+  <data name="lblTimeFrameResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="liDisplayAlarmsNo.Text" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="liDisplayAlarmsNo.Value" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="liDisplayAlarmsYes.Text" xml:space="preserve">
     <value>Ja</value>
   </data>
-  <data name="liDisplayConfirmationsYes.Text" xml:space="preserve">
+  <data name="liDisplayAlarmsYes.Value" xml:space="preserve">
     <value>Ja</value>
   </data>
   <data name="liDisplayConfirmationsNo.Text" xml:space="preserve">
     <value>Nein</value>
   </data>
-  <data name="lblActivityType.Text" xml:space="preserve">
-    <value>Aktivitätstyp</value>
+  <data name="liDisplayConfirmationsNo.Value" xml:space="preserve">
+    <value>Nein</value>
   </data>
-  <data name="lblAlarmScanResource1.Text" xml:space="preserve">
-    <value>Abfrageintervall für Alarm:</value>
+  <data name="liDisplayConfirmationsYes.Text" xml:space="preserve">
+    <value>Ja</value>
   </data>
-  <data name="lblAlarmSoundResource1.Text" xml:space="preserve">
-    <value>Akustischer Alarm:</value>
+  <data name="liDisplayConfirmationsYes.Value" xml:space="preserve">
+    <value>Ja</value>
   </data>
-  <data name="lblCarryOverAttachments.Text" xml:space="preserve">
-    <value>Anlagen übertragen:</value>
+  <data name="liDisplayPastDueNo.Text" xml:space="preserve">
+    <value>Nein</value>
   </data>
-  <data name="lblDefaultDuration.Text" xml:space="preserve">
-    <value>Standarddauer</value>
+  <data name="liDisplayPastDueNo.Value" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="liDisplayPastDueYes.Text" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="liDisplayPastDueYes.Value" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="ListItemResource7.Text" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="ListItemResource7.Value" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="ListItemResource8.Text" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="ListItemResource8.Value" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="LitRequest_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LitRequest_RToolsResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PageDescription.Text" xml:space="preserve">
+    <value>Aktivitäten</value>
+  </data>
+  <data name="PageDescription.Title" xml:space="preserve">
+    <value>Aktivitäten</value>
+  </data>
+  <data name="txtAlarmDefaultLeadValueResource1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cmdSave_rsc.AlternateText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cmdSave_rsc.ToolTip" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="GeneralOptionsHelpLinkResource2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GeneralOptionsHelpLinkResource2.ToolTip" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="lblDefaultRollover.Text" xml:space="preserve">
+    <value>Automatische Ausdehnung</value>
+  </data>
+  <data name="lblDefaultTimeless.Text" xml:space="preserve">
+    <value>Standardmäßig ohne Zeitangabe</value>
+  </data>
+  <data name="lblPastDue.Caption" xml:space="preserve">
+    <value>"Überfällig" in Symbolleiste anzeigen:</value>
+  </data>
+  <data name="IncludeAttendeeInHistoryTab.Caption" xml:space="preserve">
+    <value>Historie für alle Teilnehmer anzeigen:</value>
   </data>
 </root>

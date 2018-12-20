@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/PopupMenuBarItem", [
        'Sage/UI/MenuBarItem',
        'Sage/UI/PopupMenuItem',
        'dojo/_base/declare'

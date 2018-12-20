@@ -1,6 +1,6 @@
-define((
-{ newTabTitleText: 'Titel der neuen Registerkarte',
-  inputTitleText: 'Titel eingeben',
-  copiedPageText: 'Kopierte Registerkarte',
-  showText: 'Einblenden' }
-));
+define("Sage/UI/Dashboard/nls/de/Dashboard", {
+    "newTabTitleText": "Titel der neuen Registerkarte",
+    "inputTitleText": "Titel eingeben",
+    "copiedPageText": "Kopierte Registerkarte",
+    "showText": "Anzeigen"
+});

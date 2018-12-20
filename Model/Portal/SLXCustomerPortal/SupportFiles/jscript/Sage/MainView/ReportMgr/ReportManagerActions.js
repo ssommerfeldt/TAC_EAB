@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/ReportManagerActions", [
     'dojo/_base/declare',
     'Sage/UI/Dialogs',
     'dojo/i18n!./nls/ReportManagerActions',
@@ -21,31 +21,9 @@ function (
 ) {
     Sage.namespace('Sage.MainView.ReportMgr.ReportManagerActions');
     dojo.mixin(Sage.MainView.ReportMgr.ReportManagerActions, {
-        /**
-        * Return the key of the currently selected record in the listview.
-        * @returns {string} - The key of the currently selected record in the listview.
-        */
-        _getSelectedId: function () {
-            var selectionInfo = Sage.Utility.getSelectionInfo();
-            if (selectionInfo) {
-                if (selectionInfo.selectedIds.length === 1) {
-                    return selectionInfo.selectedIds[0];
-                }
-            }
-            return null;
+        runReport: function () {
+            this._runReport(enumerations.ExecutionType.OnDemand);
         },
-        /**
-        * Return the id of the current group in the listview.
-        * @returns {string} - The id of the current group in the listview.
-        */
-        _getCurrentGroupId: function () {
-            var svc = Sage.Services.getService('ClientGroupContext');
-            var context = svc.getContext();
-            return context.CurrentGroupID;
-        },
-        //--------------------------------------------------------------
-        //ReportsList
-        //--------------------------------------------------------------
         deleteReport: function () {
             var key = this._getSelectedId();
             if (!key) {
@@ -53,7 +31,7 @@ function (
             } else {
                 var self = this;
                 dialogs.raiseQueryDialog(
-                    'Saleslogix',
+                    'Infor CRM',
                     dojoString.substitute(nlsResources.confirm_Deletion, [nlsResources.confirm_Report]),
                     function (result) {
                         if (result) {
@@ -68,86 +46,21 @@ function (
                 );
             }
         },
-        _deleteReport: function (key) {
-            var service = sDataServiceRegistry.getSDataService('system', false, true, false);
-            var request = new Sage.SData.Client.SDataApplicationRequest(service);
-            request.setResourceKind(dojoString.substitute("reports('${0}')", [key]));
-            var sUrl = request.uri;
-            dojo.xhrDelete({
-                handleAs: 'json',
-                url: sUrl,
-                error: function (xhr) {
-                    dialogs.showError(dojoString.substitute(nlsResources.txtErrorDeleteReport, [xhr.status]));
-                    return false;
-                }
-            });
-            return true;
-        },
-        runReport: function () {
-            var key = this._getSelectedId();
-            if (!key) {
-                dialogs.showInfo(nlsResources.txtSelectRecord);
-            } else {
-                var options = {
-                    reportId: key,
-                    reportOptions: {
-                        wizardOptions: {},
-                        scheduleOptions: {
-                            executionType: enumerations.ExecutionType.OnDemand
-                        },
-                        exportOptions: {},
-                        conditions: [],
-                        parameterValues: []
+        /**
+        * Return the key of the currently selected record in the listview.
+        * @returns {string} - The key of the currently selected record in the listview.
+        */
+        _getSelectedId: function () {
+            var selectionInfo = Sage.Utility.getSelectionInfo();
+            if (selectionInfo) {
+                if(selectionInfo.selectedIds.length === 1) {
+                    return selectionInfo.selectedIds[0];
                     }
-                };
-                reportWizardController.startWizard(options);
-            }
+                    }
+            return null;
         },
         scheduleReport: function () {
-            var key = this._getSelectedId();
-            if (!key) {
-                dialogs.showInfo(nlsResources.txtSelectRecord);
-            } else {
-                var options = {
-                    reportId: key,
-                    reportOptions: {
-                        wizardOptions: {},
-                        scheduleOptions: {
-                            executionType: enumerations.ExecutionType.Scheduled
-                        },
-                        exportOptions: {},
-                        conditions: [],
-                        parameterValues: []
-                    }
-
-                };
-                reportWizardController.startWizard(options);
-            }
-        },
-        //--------------------------------------------------------------
-        //SchedulesList
-        //--------------------------------------------------------------
-        deleteSchedule: function () {
-            var key = this._getSelectedId();
-            if (!key) {
-                dialogs.showInfo(nlsResources.txtSelectRecord);
-            } else {
-                dialogs.raiseQueryDialog(
-                    'Saleslogix',
-                    dojoString.substitute(nlsResources.confirm_Deletion, [nlsResources.confirm_Schedule]),
-                    function (result) {
-                        if (result) {
-                            var currentGroupId = jobUtility.getCurrentGroupId();
-                            var jobService = Sage.Services.getService('JobService');
-                            if (jobService.deleteScheduledJob(key)) {
-                                jobUtility.refreshList(currentGroupId);
-                            }
-                        }
-                    },
-                    nlsResources.txtYes,
-                    nlsResources.txtNo
-                );
-            }
+            this._runReport(enumerations.ExecutionType.Scheduled);
         },
         /**
         * Displays the Report Wizard. If no record is selected in the listview, 
@@ -164,9 +77,33 @@ function (
                 reportWizardController.startWizard(options);
             }
         },
-        //--------------------------------------------------------------
-        //HistoryList
-        //--------------------------------------------------------------
+        deleteSchedule: function () {
+            var key = this._getSelectedId();
+            if (!key) {
+                dialogs.showInfo(nlsResources.txtSelectRecord);
+            } else {
+                dialogs.raiseQueryDialog(
+                    'Infor CRM',
+                    dojoString.substitute(nlsResources.confirm_Deletion, [nlsResources.confirm_Schedule]),
+                    function (result) {
+                        if (result) {
+                            var currentGroupId = jobUtility.getCurrentGroupId();
+                            var jobService = Sage.Services.getService('JobService');
+                            var def = new dojo.Deferred();
+                            if (jobService.deleteScheduledJob(key, def)) {
+                                def.then(function () {
+                                    jobUtility.refreshList(currentGroupId);
+                                }, function (error) {
+                                    console.error("errback: %o", error);
+                                });
+                            }
+                        }
+                    },
+                    nlsResources.txtYes,
+                    nlsResources.txtNo
+                );
+            }
+        },
         deleteHistory: function () {
             var selectionInfo = Sage.Utility.getSelectionInfo();
             if (selectionInfo.selectedIds.length <= 0) {
@@ -174,7 +111,7 @@ function (
             } else {
                 var self = this;
                 dialogs.raiseQueryDialog(
-                    'Saleslogix',
+                    'Infor CRM',
                     dojoString.substitute(nlsResources.confirm_Deletion, [nlsResources.confirm_ReportHistory]),
                     function (result) {
                         if (result) {
@@ -185,6 +122,69 @@ function (
                     nlsResources.txtNo
                 );
             }
+        },
+        _runReport: function (executionType) {
+            var reportDisplayName, key, options;
+            var aWizardWasStarted = false;
+
+            // Get reference to the listPanel
+            var listView = dijit.byId('list');
+            // The list Panel listens to the grid's onSelect and deSelect calls and keeps track of the currently selected
+            var gridSelections = listView.getSelectionInfo();
+            if (gridSelections && gridSelections.selections && gridSelections.selections.length > 0) {
+                // Reports uses single selection. If multiselection is to be used, a loop may be needed here.
+                var selectedReportRow = gridSelections.selections[0].entity; 
+                if (selectedReportRow) {
+                    reportDisplayName = selectedReportRow.displayName;
+                    key = selectedReportRow[gridSelections.keyField];
+
+                    options = {
+                        reportId: key,
+                        reportDisplayName: reportDisplayName,
+                        reportOptions: {
+                            wizardOptions: {},
+                            scheduleOptions: {
+                                executionType: executionType
+                            },
+                            exportOptions: {},
+                            conditions: [],
+                            parameterValues: []
+                        }
+                    };
+                    reportWizardController.startWizard(options);
+                    aWizardWasStarted = true;
+                }
+            }
+
+            if (!aWizardWasStarted) {
+                // if the currently selected list is empty, then display a no selection error.
+                dialogs.showInfo(nlsResources.txtSelectRecord);
+            }
+        },
+
+        /**
+        * Return the id of the current group in the listview.
+        * @returns {string} - The id of the current group in the listview.
+        */
+        _getCurrentGroupId: function () {
+            var svc = Sage.Services.getService('ClientGroupContext');
+            var context = svc.getContext();
+            return context.CurrentGroupID;
+        },
+        _deleteReport: function (key) {
+            var service = sDataServiceRegistry.getSDataService('system', false, true, false);
+            var request = new Sage.SData.Client.SDataApplicationRequest(service);
+            request.setResourceKind(dojoString.substitute("reports('${0}')", [key]));
+            var sUrl = request.uri;
+            dojo.xhrDelete({
+                handleAs: 'json',
+                url: sUrl,
+                error: function (xhr) {
+                    dialogs.showError(dojoString.substitute(nlsResources.txtErrorDeleteReport, [xhr.status]));
+                    return false;
+                }
+            });
+            return true;
         },
         _getCurrentUserId: function () {
             var currentUserId = null;

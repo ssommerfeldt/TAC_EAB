@@ -117,43 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtVia.Caption" xml:space="preserve">
-    <value>Отправить по:</value>
+  <data name="dtpSendDate.Caption" xml:space="preserve">
+    <value>Отправить:</value>
+  </data>
+  <data name="dtpScheduled.ButtonToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="dtpScheduled.Caption" xml:space="preserve">
-    <value>Запланир.:</value>
-  </data>
-  <data name="txtPostalCode.Caption" xml:space="preserve">
-    <value>Индекс:</value>
+    <value>Запланировано:</value>
   </data>
   <data name="txtStatus.Caption" xml:space="preserve">
     <value>Статус:</value>
   </data>
-  <data name="slxPhone.Caption" xml:space="preserve">
-    <value>Раб. телефон:</value>
+  <data name="txtRequestedBy.Caption" xml:space="preserve">
+    <value>Автор запроса:</value>
   </data>
   <data name="linkContact.Caption" xml:space="preserve">
     <value>Контакт:</value>
   </data>
-  <data name="txtCost.Caption" xml:space="preserve">
-    <value>Общая стоимость:</value>
-  </data>
-  <data name="txtRequestedBy.Caption" xml:space="preserve">
-    <value>Запрошено:</value>
-  </data>
   <data name="txtPriority.Caption" xml:space="preserve">
     <value>Приоритет:</value>
   </data>
-  <data name="dtpRequestDate.Caption" xml:space="preserve">
-    <value>Запрошено:</value>
+  <data name="txtVia.Caption" xml:space="preserve">
+    <value>Вид отправки:</value>
+  </data>
+  <data name="txtCost.Caption" xml:space="preserve">
+    <value>Итого расходов:</value>
+  </data>
+  <data name="txtHeader.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.getLitRequestListSummaryHeaderHtml($.entity)%}</value>
+  </data>
+  <data name="slxPhone.Caption" xml:space="preserve">
+    <value>Рабочий телефон:</value>
+  </data>
+  <data name="txtPostalCode.Caption" xml:space="preserve">
+    <value>Почтовый индекс:</value>
   </data>
   <data name="slxHomePhone.Caption" xml:space="preserve">
-    <value>Домашний тел.</value>
-  </data>
-  <data name="dtpSendDate.Caption" xml:space="preserve">
-    <value>Отправить:</value>
+    <value>Домашний телефон</value>
   </data>
   <data name="linkAccount.Caption" xml:space="preserve">
-    <value>Субъект:</value>
+    <value>Клиент:</value>
+  </data>
+  <data name="dtpRequestDate.Caption" xml:space="preserve">
+    <value>Запрошено:</value>
   </data>
 </root>

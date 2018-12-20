@@ -1,4 +1,4 @@
-define([
+define("Sage/UI/SLXPreviewGrid/main", [
     "Sage/UI/SLXPreviewGrid/Grid",
     "Sage/UI/SLXPreviewGrid/FilterPanel",
     "Sage/UI/SLXPreviewGrid/Filter/DateRange",

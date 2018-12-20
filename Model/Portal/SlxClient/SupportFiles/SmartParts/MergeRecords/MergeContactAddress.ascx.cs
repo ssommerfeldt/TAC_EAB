@@ -44,10 +44,10 @@ public partial class MergeContactAddress : SmartPartInfoProvider
     /// Gets or sets the entity service.
     /// </summary>
     /// <value>The entity service.</value>
-    [ServiceDependency(Type = typeof(IEntityContextService), Required = true)]
+    [ServiceDependency]
     public IEntityContextService EntityService { get; set; }
 
-    [ServiceDependency(Type = typeof(IContextService), Required = true)]
+    [ServiceDependency]
     public IContextService ContextService { get; set; }
 
     public class MergeContactAddressStateInfo

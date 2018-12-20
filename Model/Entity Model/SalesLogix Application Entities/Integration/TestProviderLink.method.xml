@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="aea98f3a-1a3c-4a16-ac78-150f02bf8b56" lastModifiedUtc="2017-04-13T12:29:42.8987765Z" name="TestProviderLink" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="1a51e65c-edd4-4f6c-8413-f64097a4df97" lastModifiedUtc="2017-04-13T14:33:00.8508264Z" targetType="Sage.SalesLogix.Integration.Rules, Sage.SalesLogix.BusinessRules" targetMethod="TestProviderLink" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

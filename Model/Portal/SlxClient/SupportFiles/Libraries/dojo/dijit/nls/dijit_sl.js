@@ -1,106 +1,11 @@
-require({cache:{
-'dijit/form/nls/sl/validate':function(){
-define(
-"dijit/form/nls/sl/validate", //begin v1.x content
-({
-	invalidMessage: "Vnesena vrednost ni veljavna.",
-	missingMessage: "Ta vrednost je zahtevana.",
-	rangeMessage: "Ta vrednost je izven območja."
-})
-
-//end v1.x content
-);
-
-},
-'dijit/_editor/nls/sl/commands':function(){
-define(
-"dijit/_editor/nls/sl/commands", //begin v1.x content
-({
-	'bold': 'Krepko',
-	'copy': 'Prekopiraj',
-	'cut': 'Izreži',
-	'delete': 'Izbriši',
-	'indent': 'Zamik',
-	'insertHorizontalRule': 'Vodoravno ravnilo',
-	'insertOrderedList': 'Oštevilčen seznam',
-	'insertUnorderedList': 'Naštevni seznam',
-	'italic': 'Ležeče',
-	'justifyCenter': 'Poravnaj na sredino',
-	'justifyFull': 'Poravnaj obojestransko',
-	'justifyLeft': 'Poravnaj levo',
-	'justifyRight': 'Poravnaj desno',
-	'outdent': 'Primakni',
-	'paste': 'Prilepi',
-	'redo': 'Znova uveljavi',
-	'removeFormat': 'Odstrani oblikovanje',
-	'selectAll': 'Izberi vse',
-	'strikethrough': 'Prečrtano',
-	'subscript': 'Podpisano',
-	'superscript': 'Nadpisano',
-	'underline': 'Podčrtano',
-	'undo': 'Razveljavi',
-	'unlink': 'Odstrani povezavo',
-	'createLink': 'Ustvari povezavo',
-	'toggleDir': 'Preklopi smer',
-	'insertImage': 'Vstavi sliko',
-	'insertTable': 'Vstavi/uredi tabelo',
-	'toggleTableBorder': 'Preklopi na rob tabele',
-	'deleteTable': 'Izbriši tabelo',
-	'tableProp': 'Lastnost tabele',
-	'htmlToggle': 'Izvorna koda HTML',
-	'foreColor': 'Barva ospredja',
-	'hiliteColor': 'Barva ozadja',
-	'plainFormatBlock': 'Slog odstavka',
-	'formatBlock': 'Slog odstavka',
-	'fontSize': 'Velikost pisave',
-	'fontName': 'Ime pisave',
-	'tabIndent': 'Zamik tabulatorja',
-	"fullScreen": "Preklopi na celozaslonski način",
-	"viewSource": "Prikaži izvorno kodo HTML",
-	"print": "Natisni",
-	"newPage": "Nova stran",
-	/* Error messages */
-	'systemShortcut': 'Dejanje "${0}" lahko v vašem brskalniku uporabite samo z bližnjico na tipkovnici. Uporabite ${1}.'
-})
-//end v1.x content
-);
-
-},
-'dijit/nls/sl/loading':function(){
-define(
-//begin v1.x content
-({
-	loadingState: "Nalaganje ...",
-	errorState: "Oprostite, prišlo je do napake."
-})
-//end v1.x content
-);
-
-},
-'dijit/form/nls/sl/ComboBox':function(){
-define(
-//begin v1.x content
-({
-		previousMessage: "Prejšnje izbire",
-		nextMessage: "Dodatne izbire"
-})
-
-//end v1.x content
-);
-
-},
-'dijit/nls/sl/common':function(){
-define(
-"dijit/nls/sl/common", //begin v1.x content
-({
-	buttonOk: "V redu",
-	buttonCancel: "Prekliči",
-	buttonSave: "Shrani",
-	itemClose: "Zapri"
-})
-
-//end v1.x content
-);
-
-}}});
-define("dijit/nls/dijit_sl", [], 1);
+define('dijit/nls/dijit_sl',{
+'dijit/nls/loading':{"loadingState":"Nalaganje ...","errorState":"Oprostite, prišlo je do napake.","_localized":{}}
+,
+'dijit/nls/common':{"buttonOk":"V redu","buttonCancel":"Prekliči","buttonSave":"Shrani","itemClose":"Zapri","_localized":{}}
+,
+'dijit/_editor/nls/commands':{"bold":"Krepko","copy":"Prekopiraj","cut":"Izreži","delete":"Izbriši","indent":"Zamik","insertHorizontalRule":"Vodoravno ravnilo","insertOrderedList":"Oštevilčen seznam","insertUnorderedList":"Naštevni seznam","italic":"Ležeče","justifyCenter":"Poravnaj na sredino","justifyFull":"Poravnaj obojestransko","justifyLeft":"Poravnaj levo","justifyRight":"Poravnaj desno","outdent":"Primakni","paste":"Prilepi","redo":"Znova uveljavi","removeFormat":"Odstrani oblikovanje","selectAll":"Izberi vse","strikethrough":"Prečrtano","subscript":"Podpisano","superscript":"Nadpisano","underline":"Podčrtano","undo":"Razveljavi","unlink":"Odstrani povezavo","createLink":"Ustvari povezavo","toggleDir":"Preklopi smer","insertImage":"Vstavi sliko","insertTable":"Vstavi/uredi tabelo","toggleTableBorder":"Preklopi na obrobo tabele","deleteTable":"Izbriši tabelo","tableProp":"Lastnost tabele","htmlToggle":"Izvorna koda HTML","foreColor":"Barva ospredja","hiliteColor":"Barva ozadja","plainFormatBlock":"Slog odstavka","formatBlock":"Slog odstavka","fontSize":"Velikost pisave","fontName":"Ime pisave","tabIndent":"Zamik tabulatorja","fullScreen":"Preklopi na celozaslonski način","viewSource":"Prikaži izvorno kodo HTML","print":"Natisni","newPage":"Nova stran","systemShortcut":"Dejanje \"${0}\" lahko v vašem brskalniku uporabite samo z bližnjico na tipkovnici. Uporabite ${1}.","ctrlKey":"ctrl+${0}","appleKey":"⌘${0}","_localized":{}}
+,
+'dijit/form/nls/validate':{"invalidMessage":"Vnesena vrednost ni veljavna.","missingMessage":"Ta vrednost je zahtevana.","rangeMessage":"Ta vrednost je izven območja.","_localized":{}}
+,
+'dijit/form/nls/ComboBox':{"previousMessage":"Prejšnje izbire","nextMessage":"Dodatne izbire","_localized":{}}
+});

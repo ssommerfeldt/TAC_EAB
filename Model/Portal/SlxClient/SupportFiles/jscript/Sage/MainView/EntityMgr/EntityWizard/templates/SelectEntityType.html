@@ -1,0 +1,31 @@
+<div>
+    <div data-dojo-type="dijit.Dialog" title="New Entity Wizard" data-dojo-attach-point="_dialog" data-dojo-attach-event="onCancel:_btnCancel_OnClick" style="position:absolute;width: 625px;height:625px;">
+        <div data-dojo-type="dijit.form.Form" style="height:600px !important;">
+            <div>
+                <label style="font-size:16px; font-weight:bold;">Welcome to the New Entity Wizard</label>
+                <p>This Wizard takes you through the steps for creating a new entity.</p>
+
+                <div style="margin-top:40px;margin-left:40px;">
+                    <input data-dojo-type="dijit/form/RadioButton" name="EntityType" value="existing" /> <label style="font-weight:bold;">Create a business entity from an existing table</label> <br />
+                    <ul>
+                        <li><p>The schema can be modified using the Saleslogix DB Manager within the legacy Architect or Administrator</p></li>
+                    </ul>
+                </div>
+                <div style="margin-top:20px;margin-left:40px;">
+                    <input data-dojo-type="dijit/form/RadioButton" checked name="EntityType" value="New" /> <label style="font-weight:bold;">Create a business entity and a new table</label> <br />
+                    <ul>
+                        <li><p>The table will automatically be created based on the definition of the entity</p></li>
+                    </ul>
+                </div>
+            </div>
+            <br />
+            <div data-dojo-attach-point="divValidationMessage" style="color:red">
+                <span data-dojo-attach-point="spanValidationMessage">&nbsp;</span>
+            </div>
+            <div align="right" style="position:absolute;bottom:30px;width:90%;">
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnNext" data-dojo-attach-event="onClick:_btnNext_OnClick">Next></div>
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnCancel" data-dojo-attach-event="onClick:_btnCancel_OnClick" style="margin-left:5px;">Cancel</div>
+            </div>
+        </div>
+    </div>
+</div>

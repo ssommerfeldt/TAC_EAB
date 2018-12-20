@@ -46,6 +46,10 @@ function Cookie_getCookie(cookieName) {
             return unescape(cookies[i].split('=')[1]);
         }
     }
+	// For Mingle SSO
+    if (cookieName === 'SLXLanguageSetting' || cookieName === 'SLXRegionSetting') {
+        return 'en-us';
+    }
     return '';
 }
 

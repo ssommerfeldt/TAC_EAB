@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="09150e76-46b0-4835-b96f-6bd5b6c45bb4" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="09150e76-46b0-4835-b96f-6bd5b6c45bb4" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-01-19T01:06:15.6810852Z">
   <ActiveControl>txtCampaignName</ActiveControl>
   <ImagePath />
   <LoadActions>
@@ -8,15 +8,12 @@
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload0</MethodName>
-          <CSharpCodeSnippet>Sage.Entity.Interfaces.ICampaign newCampaign = this.BindingSource.Current as Sage.Entity.Interfaces.ICampaign;
-
+          <CSharpCodeSnippet>    var newCampaign = BindingSource.Current as ICampaign;
     if (Request.QueryString[Sage.Platform.WebPortal.EntityPage.CONST_ENTITYIDQUERYSTRING] != null)
     {
         string id = Request.QueryString[Sage.Platform.WebPortal.EntityPage.CONST_ENTITYIDQUERYSTRING];
-        Sage.Entity.Interfaces.ICampaign campaign = Sage.Platform.EntityFactory.GetRepository&lt;Sage.Entity.Interfaces.ICampaign&gt;().FindFirstByProperty("Id", id);
-
-        object[] objarray = new object[] { campaign, newCampaign, id };
-        Sage.Platform.EntityFactory.Execute&lt;Sage.Entity.Interfaces.ICampaign&gt;("Campaign.CopyCampaign", objarray);
+        var campaign = Sage.Platform.EntityFactory.GetById&lt;ICampaign&gt;(id);
+        campaign.CopyCampaign(newCampaign, id);
     }</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
@@ -40,7 +37,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtCampaignName</ControlId>
@@ -78,7 +74,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtDescription</ControlId>
@@ -116,7 +111,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>2</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtObjective</ControlId>
@@ -154,7 +148,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtCallToAction</ControlId>
@@ -271,7 +264,6 @@
       <QFListBox>
         <Column>2</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>cboStatus</ControlId>
@@ -321,13 +313,13 @@
         <TextField />
         <ValueField />
         <MultiSelect>false</MultiSelect>
+        <MaxHeight>200</MaxHeight>
       </QFListBox>
     </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
       <QFTextBox>
         <Column>2</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtCode</ControlId>
@@ -365,7 +357,6 @@
       <QFDateTimePicker>
         <Column>2</Column>
         <Row>2</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dteStartDate</ControlId>
@@ -410,7 +401,6 @@
       <QFDateTimePicker>
         <Column>2</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dteEndDate</ControlId>
@@ -455,7 +445,6 @@
       <QFSLXUser>
         <Column>2</Column>
         <Row>4</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lueManager</ControlId>
@@ -497,7 +486,6 @@
       <QFSLXOwner>
         <Column>2</Column>
         <Row>5</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lveOwner</ControlId>
@@ -531,7 +519,6 @@
         <Required>false</Required>
         <LookupResultValue xsi:type="xsd:string" />
         <AutoPostBack>false</AutoPostBack>
-        <MultiSelect>false</MultiSelect>
       </QFSLXOwner>
     </Control>
   </Controls>
@@ -540,7 +527,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -555,7 +541,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -570,7 +555,6 @@
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>cmdSave</ControlId>
@@ -614,7 +598,6 @@
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>cmdSaveNew</ControlId>

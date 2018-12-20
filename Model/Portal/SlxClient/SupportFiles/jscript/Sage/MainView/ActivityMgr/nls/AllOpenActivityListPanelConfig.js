@@ -1,12 +1,10 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
+define("Sage/MainView/ActivityMgr/nls/AllOpenActivityListPanelConfig", {
+    root: {
 
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

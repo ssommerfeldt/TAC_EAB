@@ -3,6 +3,10 @@
     border-top: none 0px black;
 }
 
+.design-panel-toolbar .dijitButtonNode{
+    line-height: 36px;
+}
+
 .design-panel-toolbar + .dijitGutter
 {
     display: none;
@@ -246,6 +250,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    text-align:right;
+    padding-right:10px
 }
 
 .design-checkbox-caption
@@ -779,8 +785,10 @@
 .editor-field > label
 {
     width: 40%;
-    padding-top: .3em;
+    padding-top: 7px;
     float: left;
+    text-align:right;
+    margin-right: 14px;
 }
 .editor-field > div,
 .editor-field > table
@@ -838,6 +846,12 @@
 
 .design-panel-culture
 {
+    height:100%;
     float: left;
-    margin-top: 4px !important;
+}
+.design-panel-culture .dijitSelectLabel {
+    padding:0;
+}
+.design-panel-culture.dijitSelect .dijitArrowButtonInner {
+    margin-top:0px;
 }

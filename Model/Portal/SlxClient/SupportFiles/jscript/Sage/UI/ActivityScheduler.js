@@ -1,6 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, _scheduler, self */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, _scheduler, self */
 define(
-    ['dojo/i18n',
+    "Sage/UI/ActivityScheduler", ['dojo/i18n',
         'dojo/date',
         'dijit/Menu',
         'Sage/Data/SingleEntrySDataStore',
@@ -91,8 +91,6 @@ define(
                             self._deleteSchedulerEvent(id);
                     }
                 });
-
-
             },
             _loadAllEvents: function (data) {
                 setTimeout(function () { this._scheduler.parse(data, "json"); }, 100);
@@ -156,6 +154,34 @@ define(
                 dojo.publish('/entity/activity/calendar/schedulerDateChanged', [ar, this]);
 
             },
+            _getSchedulerDates: function () {
+                var sched_dates = (Sys && Sys.CultureInfo) ? {
+                    month_full: Sys.CultureInfo.CurrentCulture.dateTimeFormat.MonthNames,
+                    month_short: Sys.CultureInfo.CurrentCulture.dateTimeFormat.AbbreviatedMonthNames,
+                    day_full: Sys.CultureInfo.CurrentCulture.dateTimeFormat.DayNames,
+                    day_short: Sys.CultureInfo.CurrentCulture.dateTimeFormat.AbbreviatedDayNames
+                } : this.scheduler_dates; // from nls file
+                return sched_dates;
+            },
+            _setTimePatternForDHTMLXLibrary: function () {
+                /* https://docs.dhtmlx.com/scheduler/settings_format.html
+                The time related formats, we interestd in are
+                %g - the hour based on the 12-hour clock without a leading zero ( 1 to 12 );
+                %G - the hour based on the 24-hour clock without a leading zero ( 0 to 23 ); 
+                %A - displays AM (for times from midnight until noon) and PM (for times from noon till midnight).
+                */
+                var shortTimeFormat = Sys.CultureInfo.CurrentCulture.dateTimeFormat.ShortTimePattern;
+                var is24HrFormat = shortTimeFormat.indexOf('H') !== -1;
+                return !is24HrFormat ?                   
+                    {// Use am & pm.
+                        timePattern: '%g:%i %a',
+                        hourPattern: '%g %a'
+                    } : {
+                        timePattern: '%G:%i',
+                        hourPattern: '%G:%i'
+                    };
+
+            },
             _initScheduler: function () {
                 
                 _scheduler.config.scroll_hour = this._userOptions['daystarttime'];
@@ -163,9 +189,10 @@ define(
                 _scheduler.config.workHours = [0, this._userOptions['daystarttime'] * 60, this._userOptions['dayendtime'] * 60, 24 * 60];
                 _scheduler.config.eventsMaxCount = this._userOptions["numevents"];
                 _scheduler.locale = {
-                    date: this.scheduler_dates, // from nls file
+                    date: this._getSchedulerDates(),
                     labels: this.scheduler_labels // from nls file
                 };
+                _scheduler.DHTMLXLibrary = this._setTimePatternForDHTMLXLibrary();
 
                 /**
                 * Function : Custom date format 
@@ -181,13 +208,8 @@ define(
                 };
 
                 _scheduler.templates.week_date = function (d1, d2) {
-
-                    var formatFullMonthAndDate = _scheduler.date.date_to_str("%F %d");
-                    var formatDatePartandFullYear = _scheduler.date.date_to_str("%d, %Y");
-
                     if (d1.getMonth() != d2.getMonth()) {
                         //example : April 30 - May 06, 2012
-                        //return formatFullMonthAndDate(d1) + " &ndash; " + scheduler.templates.day_date(scheduler.date.add(d2, -1, "day"));
                         return activityUtility.formatLongDate(d1) + " &ndash; " + activityUtility.formatLongDate(_scheduler.date.add(d2, -1, "day"));
                     } else {
                         //example : April 16 - 22, 2012
@@ -195,12 +217,9 @@ define(
                         /* jshint ignore:start */
                         var d3 = scheduler.date.add(d2, -1, "day");
                         /* jshint ignore:end */
-
-                        // return formatFullMonthAndDate(d1) + " &ndash; " + formatDatePartandFullYear(d3);
+                        
                         return activityUtility.formatLongDate(d1) + " &ndash; " + activityUtility.formatLongDate(_scheduler.date.add(d2, -1, "day"));
                     }
-
-
                 };
 
                 var isValidId = function (id) {
@@ -213,9 +232,7 @@ define(
                     return valid;
                 };
 
-
-                var activityFormat = _scheduler.date.date_to_str("%g:%i %A");
-                var eventFormat = _scheduler.date.date_to_str("%m/%d/%Y");
+                var activityFormat = _scheduler.date.date_to_str(_scheduler.DHTMLXLibrary.timePattern);
                 _scheduler.templates.tooltip_text = function (start, end, event) {
                     var type = event.type;
                     var toolTipText = "";
@@ -325,8 +342,8 @@ define(
                 */
                 _scheduler.templates.event_header = function (start, end, ev) {
                     var html = "";
-                    var timeFormatDayView = _scheduler.date.date_to_str("%g:%i %A");
-                    var timeFormatWeekView = _scheduler.date.date_to_str("%g:%i");
+                    var timeFormatDayView = _scheduler.date.date_to_str(_scheduler.DHTMLXLibrary.timePattern);
+                    var timeFormatWeekView = _scheduler.date.date_to_str(_scheduler.DHTMLXLibrary.timePattern);
 
                     if (ev.endsAfterMidnight) {
                         end = ev.actualEndDate;
@@ -367,7 +384,7 @@ define(
                 */
                 _scheduler.templates.event_text = function (start, end, ev) {
                     var evText = "";
-                    var timeFormat = _scheduler.date.date_to_str("%g:%i %A");
+                    var timeFormat = _scheduler.date.date_to_str(_scheduler.DHTMLXLibrary.timePattern);
                     if (ev.endsAfterMidnight) {
                         end = ev.actualEndDate;
                     }
@@ -782,7 +799,8 @@ define(
 
                     self._bindContextMenu(eventId, start);
                 });
-                var schedulerHourFormat = _scheduler.date.date_to_str("%g %A");
+
+                var schedulerHourFormat = _scheduler.date.date_to_str(_scheduler.DHTMLXLibrary.hourPattern);
                 _scheduler.config.hour_size_px = (60 / this._userOptions['defaultinterval']) * 42;
                 // _scheduler.config.hour_size_px = 84;
 
@@ -878,7 +896,6 @@ define(
 
 
                 this.eventConnections.push(dojo.connect(document.body, 'onclick', this, '_bodyClicked'));
-                this.eventConnections.push(dojo.connect(window.parent.document.body, 'onclick', this, '_bodyClicked'));
 
                 this._bindContextMenu(null, new Date());
             
@@ -1108,7 +1125,7 @@ define(
                 if (this.schedulerContextMenu) {
                     this.schedulerContextMenu.unBindDomNode(this._iFrameId);
                 }
-                this.schedulerContextMenu = new dijit.Menu({});
+                this.schedulerContextMenu = new dijit.Menu();
                 var menuType = null;
                 if (eventId === null) {
                     menuType = "mnuCalendarSchedule";

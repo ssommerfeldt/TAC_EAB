@@ -1,4 +1,4 @@
-define((
-{ okText: 'OK',
-  missingPickListText: 'Die Auswahlliste wurde nicht gefunden' }
-));
+define("Sage/UI/Controls/nls/de/PickList", {
+    "okText": "OK",
+    "missingPickListText": "Die PickList wurde nicht gefunden."
+});

@@ -117,94 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdTarget.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
+  <data name="cboTemplates.Caption" xml:space="preserve">
+    <value>Modello di mappatura campi:</value>
   </data>
   <data name="cboTemplates.None.Item" xml:space="preserve">
     <value>&lt;nessuno&gt;</value>
   </data>
-  <data name="error_NoSourceTargetSelected" xml:space="preserve">
-    <value>Per creare mappatura è necessario selezionare una riga sia dall'elenco 'origine' che da quello 'target'.</value>
-  </data>
-  <data name="error_NoMappingsDefined" xml:space="preserve">
-    <value>Attualmente non hai alcuna mappatura definita. Definisci la mappa dei campi e riprova.</value>
-  </data>
-  <data name="lblTemplates.Caption" xml:space="preserve">
-    <value>Modello Mappa Campo:</value>
-  </data>
-  <data name="error_NoSourceSelected" xml:space="preserve">
-    <value>Per rimuovere una mappatura è necessario selezionare una riga dall'elenco 'origine'.</value>
-  </data>
-  <data name="error_ImportManager_NotFound" xml:space="preserve">
-    <value>Non è stata trovata alcuna istanza del gestore importazione. Il processo d'importazione non può continuare.</value>
-  </data>
-  <data name="lblMatches.Caption" xml:space="preserve">
-    <value>sono accoppiati {0} di {1} campi</value>
-  </data>
-  <data name="grdSource.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
-  </data>
-  <data name="cboTemplates.Caption" xml:space="preserve">
-    <value>Modello Mappa Campo:</value>
-  </data>
-  <data name="cmdUnmatch.Caption" xml:space="preserve">
-    <value>Scollega &gt;</value>
-  </data>
-  <data name="grdHistoryItems.EmptyTableRowText" xml:space="preserve">
-    <value>Non si sono verificati errori durante il processo d'importazione.</value>
-  </data>
-  <data name="cmdSaveAs.ToolTip" xml:space="preserve">
-    <value>Salva come Modello Importazione</value>
-  </data>
-  <data name="grdHistoryItems.RecordNumber.ColumnHeading" xml:space="preserve">
-    <value>Numero record</value>
-  </data>
-  <data name="cmdSaveAs.Caption" xml:space="preserve">
-    <value>Salva come Modello Importazione</value>
-  </data>
-  <data name="grdTarget.SLXField.ColumnHeading" xml:space="preserve">
-    <value>Campo Saleslogix</value>
-  </data>
-  <data name="error_templateManager" xml:space="preserve">
-    <value>Si è verificato un errore durante la creazione del gestore del modello.</value>
-  </data>
-  <data name="cmdSave.ToolTip" xml:space="preserve">
-    <value>Salva Modello Importazione</value>
-  </data>
-  <data name="grdSource.ColumnNumber.ColumnHeading" xml:space="preserve">
-    <value>N. Colonna</value>
-  </data>
-  <data name="grdSource.ListField.ColumnHeading" xml:space="preserve">
-    <value>Campo nel File</value>
-  </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Seleziona un modello esistente o seleziona i campi</value>
-  </data>
-  <data name="grdHistoryItems.Record.ColumnHeading" xml:space="preserve">
-    <value>Registra</value>
-  </data>
-  <data name="grdHistoryItems.Description.ColumnHeading" xml:space="preserve">
-    <value>Descrizione</value>
-  </data>
-  <data name="grdHistoryItems.Type.ColumnHeading" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="grdHistoryItems.TimeStamp.ColumnHeading" xml:space="preserve">
-    <value>Timestamp</value>
-  </data>
-  <data name="grdSource.SLXField.ColumnHeading" xml:space="preserve">
-    <value>Campo Saleslogix Accoppiato</value>
-  </data>
-  <data name="lblCompleteDate.Caption" xml:space="preserve">
-    <value>Data Completamento:</value>
+  <data name="chkShowAllTargets.Caption" xml:space="preserve">
+    <value>Mostra tutti i campi</value>
   </data>
   <data name="cmdMatch.Caption" xml:space="preserve">
     <value>&lt; Corrispondenza</value>
   </data>
   <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Salva Modello Importazione</value>
+    <value>Salva modello di importazione</value>
   </data>
-  <data name="chkShowAllTargets.Caption" xml:space="preserve">
-    <value>Mostra Tutti i campi</value>
+  <data name="cmdSave.ToolTip" xml:space="preserve">
+    <value>Salva modello di importazione</value>
+  </data>
+  <data name="cmdSaveAs.Caption" xml:space="preserve">
+    <value>Salva come modello di importazione</value>
+  </data>
+  <data name="cmdSaveAs.ToolTip" xml:space="preserve">
+    <value>Salva come modello di importazione</value>
+  </data>
+  <data name="cmdUnmatch.Caption" xml:space="preserve">
+    <value>Non corrispondenza &gt;</value>
+  </data>
+  <data name="error_ImportManager_NotFound" xml:space="preserve">
+    <value>Non è stata trovata alcuna istanza di Gestione importazione. Impossibile continuare il processo di importazione.</value>
+  </data>
+  <data name="error_NoMappingsDefined" xml:space="preserve">
+    <value>Non è stata definita alcuna mappatura. Definire la mappatura e riprovare.</value>
+  </data>
+  <data name="error_NoSourceSelected" xml:space="preserve">
+    <value>Per rimuovere una mappatura, selezionare una riga dall’elenco di 'origine'.</value>
+  </data>
+  <data name="error_NoSourceTargetSelected" xml:space="preserve">
+    <value>Per creare una mappatura, selezionare una riga dagli elenchi di 'destinazione' e di 'origine'.</value>
+  </data>
+  <data name="error_templateManager" xml:space="preserve">
+    <value>Si è verificato un errore durante la creazione della vista Gestione modelli.</value>
+  </data>
+  <data name="grdHistoryItems.Description.ColumnHeading" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="grdHistoryItems.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun errore nel processo di importazione.</value>
+  </data>
+  <data name="grdHistoryItems.Record.ColumnHeading" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="grdHistoryItems.RecordNumber.ColumnHeading" xml:space="preserve">
+    <value>Numero record</value>
+  </data>
+  <data name="grdHistoryItems.TimeStamp.ColumnHeading" xml:space="preserve">
+    <value>Indicatore di ora</value>
+  </data>
+  <data name="grdHistoryItems.Type.ColumnHeading" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="grdSource.ColumnNumber.ColumnHeading" xml:space="preserve">
+    <value>N. colonna</value>
+  </data>
+  <data name="grdSource.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
+  </data>
+  <data name="grdSource.ListField.ColumnHeading" xml:space="preserve">
+    <value>Campo nel file</value>
+  </data>
+  <data name="grdSource.SLXField.ColumnHeading" xml:space="preserve">
+    <value>Campo Saleslogix corrispondente</value>
+  </data>
+  <data name="grdTarget.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
+  </data>
+  <data name="grdTarget.SLXField.ColumnHeading" xml:space="preserve">
+    <value>Campo Saleslogix</value>
+  </data>
+  <data name="lblCompleteDate.Caption" xml:space="preserve">
+    <value>Data di completamento:</value>
+  </data>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Selezionare un modello esistente oppure selezionare i campi da mappare.</value>
+  </data>
+  <data name="lblMatches.Caption" xml:space="preserve">
+    <value>{0} campi su {1} corrispondenti</value>
+  </data>
+  <data name="lblTemplates.Caption" xml:space="preserve">
+    <value>Modello di mappatura campi:</value>
   </data>
 </root>

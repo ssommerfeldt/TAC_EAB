@@ -112,22 +112,46 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="curCost.Caption" xml:space="preserve">
-    <value>Стоимость:</value>
-  </data>
   <data name="txtName.Caption" xml:space="preserve">
     <value>Имя:</value>
+  </data>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Описание:</value>
+  </data>
+  <data name="txtSKU.Caption" xml:space="preserve">
+    <value>Единица учета:</value>
+  </data>
+  <data name="pklStatus.Caption" xml:space="preserve">
+    <value>Статус:</value>
+  </data>
+  <data name="pklFamily.Caption" xml:space="preserve">
+    <value>Семейство:</value>
+  </data>
+  <data name="curCost.Caption" xml:space="preserve">
+    <value>Расходы:</value>
   </data>
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Описание:</value>
+  <data name="btnDelete.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Данный продукт будет удален без возможности восстановления.</value>
+  </data>
+  <data name="btnInsertSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="btnInsertSave.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklType.Caption" xml:space="preserve">
+    <value>Тип:</value>
   </data>
   <data name="lueUnitOfMeasure.ButtonToolTip" xml:space="preserve">
     <value>Найти</value>
@@ -135,34 +159,19 @@
   <data name="lueUnitOfMeasure.LookupProperties.Name.PropertyHeader" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="btnInsertSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="lueUnitOfMeasure.LookupProperties.UOMType.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
   </data>
-  <data name="btnDelete.ToolTip" xml:space="preserve">
-    <value>Удалить</value>
+  <data name="lueUnitOfMeasure.LookupProperties.ActiveFlag.PropertyHeader" xml:space="preserve">
+    <value>Активно</value>
   </data>
-  <data name="pklFamily.Caption" xml:space="preserve">
-    <value>Семейство:</value>
-  </data>
-  <data name="pklType.Caption" xml:space="preserve">
-    <value>Тип:</value>
-  </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Вы об удалении этого продукта безвозвратно?</value>
+  <data name="lueUnitOfMeasure.LookupProperties.ShortName.PropertyHeader" xml:space="preserve">
+    <value>Краткое имя</value>
   </data>
   <data name="lueUnitOfMeasure.Caption" xml:space="preserve">
     <value>Единица измерения:</value>
   </data>
-  <data name="pklStatus.Caption" xml:space="preserve">
-    <value>Статус:</value>
-  </data>
-  <data name="lueUnitOfMeasure.LookupProperties.UOMType.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="txtSKU.Caption" xml:space="preserve">
-    <value>Единица учета:</value>
-  </data>
-  <data name="lueUnitOfMeasure.LookupProperties.ActiveFlag.PropertyHeader" xml:space="preserve">
-    <value>Активн.</value>
+  <data name="QFProductVariant.Caption" xml:space="preserve">
+    <value>вариант продукта</value>
   </data>
 </root>

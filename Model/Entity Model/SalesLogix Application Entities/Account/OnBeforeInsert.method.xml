@@ -14,11 +14,10 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets>
-    <methodTarget id="db5b1693-a65d-4d1c-92e8-cb79637a87f4" lastModifiedUtc="2011-01-19T01:28:34.3545061Z" targetType="Sage.SalesLogix.Account.Rules, Sage.SalesLogix.BusinessRules" targetMethod="PerformICRules" active="true">
+    <methodTarget id="50f2f694-cefe-4cb8-b5d0-28e76407641e" lastModifiedUtc="2016-07-28T11:38:23.5709092Z" targetType="Sage.SalesLogix.Account.Rules, Sage.SalesLogix.BusinessRules" targetMethod="SetPrettyKeyValue" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
   </postExecuteTargets>
-  <postFlushTargets />
 </method>

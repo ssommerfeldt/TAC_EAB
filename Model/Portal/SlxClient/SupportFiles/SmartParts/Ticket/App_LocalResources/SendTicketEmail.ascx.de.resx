@@ -117,112 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SendTicketEmail_EmailBody_Received" xml:space="preserve">
-    <value>TICKET EMPFANGEN: {0} {1}</value>
+  <data name="cmdSendEmail.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="SendTicketEmail_EmailMessageSubject" xml:space="preserve">
-    <value>Ticket-Nr: {0} {1} -- {2}</value>
-  </data>
-  <data name="SendTicketEmail_EmailBody_Resolution" xml:space="preserve">
-    <value>LÖSUNG:{0}{1} {2}</value>
-  </data>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="SendTicketEmail_ClientScript" xml:space="preserve">
-    <value>
-var EmailTicket = function(contactEmail, assignedToEmail, acctMgrEmail, myMgrEmail, emailSubject, emailBody) {
-    this.contactEmail = contactEmail;
-    this.assignedToEmail = assignedToEmail;
-    this.acctMgrEmail = acctMgrEmail;
-    this.myMgrEmail = myMgrEmail;
-    this.emailSubject = emailSubject;
-    this.emailBody = emailBody;
-};
-
-function SendTicketEmail(emailType, emailContact, emailAssignedTo, emailAccountMgr, emailMyManager)
-{
-    var addressTo = "";
-    var addressCC = "";
-    var emailBody = " ";
-    if (document.getElementById(emailContact).checked)
-    {
-        addressTo += ((this.contactEmail == "") ? "" : this.contactEmail + ";");
-        if (document.getElementById(emailAssignedTo).checked)
-            addressCC += ((this.assignedToEmail == "") ? "" : this.assignedToEmail + ";");
-        if (document.getElementById(emailAccountMgr).checked)
-            addressCC += ((this.acctMgrEmail == "") ? "" : this.acctMgrEmail + ";");
-        if (document.getElementById(emailMyManager).checked)
-            addressCC += ((this.myMgrEmail == "") ? "" : this.myMgrEmail + ";");
-    }
-    else
-    {
-        if (document.getElementById(emailAssignedTo).checked)
-            addressTo += ((this.assignedToEmail == "") ? "" : this.assignedToEmail + ";");
-        if (document.getElementById(emailAccountMgr).checked)
-            addressTo += ((this.acctMgrEmail == "") ? "" : this.acctMgrEmail + ";");
-        if (document.getElementById(emailMyManager).checked)
-            addressTo += ((this.myMgrEmail == "") ? "" : this.myMgrEmail + ";");
-    }
-    
-    var radioList = document.getElementById(emailType);
-    var options = radioList.getElementsByTagName('input');
-    if (options[0].checked) //Ticket info
-    {
-        emailBody = this.emailBody;
-    }
-
-    var subject = this.emailSubject;
-    
-    require(['Sage/Utility/Email', 'dojo/_base/array'], function(email, array) {
-        var toAddresses = [];
-        var ccAddresses = [];   
-        if (addressTo !== '') {
-            toAddresses = addressTo.split(';');
-            array.forEach(toAddresses, function(address, idx) {                
-                toAddresses[idx] = decodeURIComponent(address).trim();
-            });
-        }
-        if (addressCC !== '') {
-            ccAddresses = addressCC.split(';');
-            array.forEach(ccAddresses, function(address, idx) {
-                ccAddresses[idx] = decodeURIComponent(address).trim();
-            });     
-        }
-        email.writeEmail(
-            {
-                to: toAddresses,
-                cc: ccAddresses,
-                bcc: []
-            },
-            decodeURIComponent(subject),
-            decodeURIComponent(emailBody),
-            false, 1);
-    });
-}
-
-EmailTicket.prototype.SendTicketEmail = SendTicketEmail;   
-
-function sendEmail(emailType, emailContact, emailAssignedTo, emailAccountMgr, emailMyManager)
-{
-    @emailTicketId.SendTicketEmail(emailType, emailContact, emailAssignedTo, emailAccountMgr, emailMyManager);
-}
-  </value>
-  </data>
-  <data name="SendTicketEmail_EmailBody_Completed" xml:space="preserve">
-    <value>ABSCHLUSSDATUM: {0} {1}</value>
-  </data>
-  <data name="lblSendTicketEmail_To.Caption" xml:space="preserve">
-    <value>An:</value>
-  </data>
-  <data name="lstOption_None.Caption" xml:space="preserve">
-    <value>Keine</value>
-  </data>
-  <data name="lblSendTicketEmail_MyManager.Caption" xml:space="preserve">
-    <value>Mein Vorgesetzter:</value>
-  </data>
-  <data name="SendTicketEmail_EmailBody_Description" xml:space="preserve">
-    <value>BESCHREIBUNG:{0}{1} {2}</value>
+  <data name="lblSendTicketEmail_AcctMgr.Caption" xml:space="preserve">
+    <value>Account-Manager:</value>
   </data>
   <data name="lblSendTicketEmail_AssignedTo.Caption" xml:space="preserve">
     <value>Zugewiesen zu:</value>
@@ -230,16 +129,41 @@ function sendEmail(emailType, emailContact, emailAssignedTo, emailAccountMgr, em
   <data name="lblSendTicketEmail_Contact.Caption" xml:space="preserve">
     <value>Kontakt:</value>
   </data>
-  <data name="lstOption_TicketInfo.Caption" xml:space="preserve">
-    <value>Ticket-Informationen</value>
-  </data>
-  <data name="cmdSendEmail.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
   <data name="lblSendTicketEmail_EmailType.Caption" xml:space="preserve">
     <value>E-Mail-Typ:</value>
   </data>
-  <data name="lblSendTicketEmail_AcctMgr.Caption" xml:space="preserve">
-    <value>Account Manager:</value>
+  <data name="lblSendTicketEmail_MyManager.Caption" xml:space="preserve">
+    <value>Eigener Manager:</value>
+  </data>
+  <data name="lblSendTicketEmail_To.Caption" xml:space="preserve">
+    <value>An:</value>
+  </data>
+  <data name="lstOption_None.Caption" xml:space="preserve">
+    <value>Keine</value>
+  </data>
+  <data name="lstOption_TicketInfo.Caption" xml:space="preserve">
+    <value>Ticketinformationen</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="SendTicketEmail_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>SendTicketEmail_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="SendTicketEmail_EmailBody_Completed" xml:space="preserve">
+    <value>ABSCHLUSSDATUM: {0} {1}</value>
+  </data>
+  <data name="SendTicketEmail_EmailBody_Description" xml:space="preserve">
+    <value>BESCHREIBUNG:{0}{1} {2}</value>
+  </data>
+  <data name="SendTicketEmail_EmailBody_Received" xml:space="preserve">
+    <value>TICKET EMPFANGEN: {0} {1}</value>
+  </data>
+  <data name="SendTicketEmail_EmailBody_Resolution" xml:space="preserve">
+    <value>LÖSUNG:{0}{1} {2}</value>
+  </data>
+  <data name="SendTicketEmail_EmailMessageSubject" xml:space="preserve">
+    <value>Ticket Nr: {0} {1} -- {2}</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Abbrechen</value>
   </data>
 </root>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="06642a91-cf25-48e5-b716-9c91ff7a4783" lastModifiedUtc="2016-07-19T16:21:01.5119889Z" name="RequestActiveBackOffices" returnType="IList&lt;IBackOffice&gt;" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="a2cde9ae-0321-4cd8-bc79-ad0742775c34" paramName="entityName" sequence="0" paramType="String">
+      <description>The name of the entity</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="9385c6bc-d02c-44f6-a35e-edc29baf9cba" lastModifiedUtc="2016-07-19T16:20:58.4457939Z" targetType="Sage.SalesLogix.BackOffice.Rules, Sage.SalesLogix.BusinessRules" targetMethod="RequestActiveBackOffices" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

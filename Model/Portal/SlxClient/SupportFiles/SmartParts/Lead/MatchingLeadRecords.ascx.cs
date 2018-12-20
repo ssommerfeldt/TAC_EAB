@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Web.UI;
-using System.Collections.Generic;
 using Sage.Entity.Interfaces;
 using Sage.Platform;
 using Sage.Platform.Application.UI;
@@ -192,7 +192,7 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
         IList<IExpression> expression = new List<IExpression>();
 
         if (chkCompany.Checked && company != null)
-        {   
+        {
             expression.Add(GetExpression(exp, "Company", company));
             conditionMet = true;
         }
@@ -229,8 +229,8 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
 
         if (chkWorkPhone.Checked && workPhone != null)
         {
-           expression.Add(GetExpression(exp, "WorkPhone", workPhone));
-           conditionMet = true;
+            expression.Add(GetExpression(exp, "WorkPhone", workPhone));
+            conditionMet = true;
         }
 
         if (chkWebAddress.Checked && webAddress != null)
@@ -246,7 +246,7 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
         }
 
         criteria.Add(junction);
-        if (conditionMet.Equals(true))
+        if (conditionMet)
         {
             IList list = criteria.List();
             dtsMatchingLeads.setCustomData(list);
@@ -342,7 +342,7 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
 
         criteria.Add(junction);
 
-        if (conditionMet.Equals(true))
+        if (conditionMet)
         {
             IList list = criteria.List();
             dtsContacts.setCustomData(list);
@@ -422,7 +422,7 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
 
         criteria.Add(junction);
 
-        if (conditionMet.Equals(true))
+        if (conditionMet)
         {
             IList list = criteria.List();
             dtsAccounts.setCustomData(list);
@@ -437,7 +437,6 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
 
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
-
     }
 
     protected void rdbMatchAll_CheckedChanged(object sender, EventArgs e)
@@ -469,9 +468,8 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
         accountID = ((IAccount) dtsAccounts.Current).Id.ToString();
         if (accountID != null)
         {
-            IList<IAccount> selectedAccount = EntityFactory.GetRepository<IAccount>().FindByProperty("Id", accountID);
-            if (selectedAccount == null) return;
-            foreach (IAccount account in selectedAccount)
+            var account = EntityFactory.GetById<IAccount>(accountID);
+            if (account != null)
             {
                 curLead.ConvertLeadToContact(newContact, account,
                                              GetLocalResourceObject("chkAddContacts.Text").ToString());
@@ -492,7 +490,7 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
     {
         ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
 
-        foreach (Control c in this.LeadMatching_RTools.Controls)
+        foreach (Control c in LeadMatching_RTools.Controls)
         {
             tinfo.RightTools.Add(c);
         }
@@ -505,10 +503,10 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
     {
         if (dtsMatchingLeads.Current != null)
         {
-            string leadID = ((ILead) dtsMatchingLeads.Current).Id.ToString();
-            if (leadID != null)
+            string leadId = ((ILead) dtsMatchingLeads.Current).Id as string;
+            if (leadId != null)
             {
-                Response.Redirect(string.Format("Lead.aspx?entityId={0}", leadID));
+                Response.Redirect(string.Format("Lead.aspx?entityId={0}", leadId));
             }
         }
     }
@@ -517,26 +515,23 @@ public partial class SmartParts_Lead_MatchingLeadRecords : EntityBoundSmartPartI
     {
         if (dtsContacts.Current != null)
         {
-            string ContactID = ((IContact) dtsContacts.Current).Id.ToString();
-            if (ContactID != null)
+            var contactId = ((IContact) dtsContacts.Current).Id as string;
+            if (contactId != null)
             {
-                Response.Redirect(string.Format("Contact.aspx?entityId={0}", ContactID));
+                Response.Redirect(string.Format("Contact.aspx?entityId={0}", contactId));
             }
         }
     }
 
     protected void grdMatchedAccounts_SelectedIndexChanged(object sender, EventArgs e)
     {
-
     }
 
     protected void grdMatchedContacts_SelectedIndexChanged(object sender, EventArgs e)
     {
-
     }
 
     protected void grdMatchedLeads_SelectedIndexChanged(object sender, EventArgs e)
     {
-
     }
 }

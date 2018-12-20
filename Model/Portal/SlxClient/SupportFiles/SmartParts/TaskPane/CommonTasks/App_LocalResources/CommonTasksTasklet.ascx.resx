@@ -153,6 +153,9 @@
   <data name="EditResponse_DialogCaption" xml:space="preserve">
     <value>Edit Response</value>
   </data>
+  <data name="Error_MapJavascriptBlocked" xml:space="preserve">
+    <value>Map window could not open - please ensure popup blocker is not active</value>
+  </data>
   <data name="ExportToFile_BoolenNo" xml:space="preserve">
     <value>No</value>
   </data>
@@ -170,6 +173,12 @@
   </data>
   <data name="Item_Separator" xml:space="preserve">
     <value>&lt;hr /&gt;</value>
+  </data>
+  <data name="MapGroup_DialogCaption" xml:space="preserve">
+    <value>Show on Map</value>
+  </data>
+  <data name="ProximitySearch_DialogCaption" xml:space="preserve">
+    <value>Contour Search</value>
   </data>
   <data name="RemoveFromAllTeamsCaption" xml:space="preserve">
     <value>Remove from All Teams</value>
@@ -192,6 +201,12 @@
   <data name="TaskPickList_ExportPickList" xml:space="preserve">
     <value>Export Pick List</value>
   </data>
+  <data name="TaskPlace_AddPlace" xml:space="preserve">
+    <value>Add Place</value>
+  </data>
+  <data name="TaskText_AccountNearby" xml:space="preserve">
+    <value>Accounts Nearby</value>
+  </data>
   <data name="TaskText_AddNewPickList" xml:space="preserve">
     <value>New Pick List</value>
   </data>
@@ -201,6 +216,18 @@
   <data name="TaskText_AddToGroup" xml:space="preserve">
     <value>Add to Group</value>
   </data>
+  <data name="TaskText_BulkActionUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="TaskText_BulkDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TaskText_ContactNearby" xml:space="preserve">
+    <value>Contacts Nearby</value>
+  </data>
+  <data name="TaskText_CopyUserProfile" xml:space="preserve">
+    <value>Copy User Profile</value>
+  </data>
   <data name="TaskText_DetailReport" xml:space="preserve">
     <value>Detail Report</value>
   </data>
@@ -208,10 +235,16 @@
     <value>E-mail</value>
   </data>
   <data name="TaskText_Export" xml:space="preserve">
-    <value>Export to File</value>
+    <value>Export</value>
+  </data>
+  <data name="TaskText_Import" xml:space="preserve">
+    <value>Import</value>
   </data>
   <data name="TaskText_MailMerge" xml:space="preserve">
     <value>Mail Merge</value>
+  </data>
+  <data name="TaskText_MapGroup" xml:space="preserve">
+    <value>Show on Map</value>
   </data>
   <data name="TaskText_Meeting" xml:space="preserve">
     <value>New Meeting</value>
@@ -222,14 +255,14 @@
   <data name="TaskText_Promote" xml:space="preserve">
     <value>Promote to Dashboard</value>
   </data>
+  <data name="TaskText_ProximitySearch" xml:space="preserve">
+    <value>Contour Search</value>
+  </data>
   <data name="TaskText_Remove" xml:space="preserve">
     <value>Remove from Group</value>
   </data>
   <data name="TaskText_ResponseToCampaign" xml:space="preserve">
     <value>Add Response to Campaign</value>
-  </data>
-  <data name="TaskText_SalesOrder" xml:space="preserve">
-    <value>Add Sales Order</value>
   </data>
   <data name="TaskText_SaveAsNew" xml:space="preserve">
     <value>Save Records as Group</value>
@@ -245,5 +278,8 @@
   </data>
   <data name="TaskText_WriteEmailToGroupSelection" xml:space="preserve">
     <value>E-mail</value>
+  </data>
+  <data name="TaskText_NormalizeExistingRecords" xml:space="preserve">
+    <value>Normalize Existing Records</value>
   </data>
 </root>

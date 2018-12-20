@@ -1,7 +1,8 @@
-define([
+define("Sage/UI/main", [
     "Sage/UI/Columns/main",
     "Sage/UI/Controls/main",
     "Sage/UI/Dashboard/main",
+    "Sage/UI/Forms/main",
     "Sage/UI/Alarms/main",
     "Sage/UI/SLXPreviewGrid/main",
     "Sage/UI/_DetailPane",
@@ -10,6 +11,7 @@ define([
     "Sage/UI/_DetailPanelConfigurationProvider",
     "Sage/UI/_TitlePaneConfigProvider",
     "Sage/UI/AttachmentList",
+    "Sage/UI/ActivityEdit",
     "Sage/UI/ActivityList",
     "Sage/UI/NotesHistoryList",
     "Sage/UI/ComboBox",
@@ -24,9 +26,11 @@ define([
     "Sage/UI/Filters/LookupFilter",
     "Sage/UI/Filters/EditFilterItems",
     "Sage/UI/Filters/EditFilters",
+    "Sage/UI/Filters/EntityManagerEditFilters",
     "Sage/UI/FilteringSelect",
     "Sage/UI/Filters/FilterManager",
     "Sage/UI/Filters/FilterPanel",
+    "Sage/UI/Filters/EntityManagerFilterPanel",
     "Sage/UI/Filters/GroupFilterConfigurationProvider",
     "Sage/UI/GridContainer",
     "Sage/UI/GridMenuItem",
@@ -47,7 +51,6 @@ define([
     "Sage/UI/PopupMenuBarItem",
     "Sage/UI/PopupMenuItem",
     "Sage/UI/SDataLookup",
-    //"Sage/UI/SDataMainViewConfigurationProvider",
     "Sage/UI/SearchConditionWidget",
     "Sage/UI/SLXPreviewGrid",
     "Sage/UI/SpeedSearch",
@@ -55,6 +58,8 @@ define([
     "Sage/UI/SummaryContents",
     "Sage/UI/SummaryDetailPane",
     "Sage/UI/SummaryFormatterScope",
+    "Sage/UI/TabContainer",
+    "Sage/UI/TabController",
     "Sage/UI/TextBox",
     "Sage/UI/TimeZoneItem",
     "Sage/UI/TitleContentPane",
@@ -66,7 +71,10 @@ define([
     "Sage/UI/ActivityScheduler",
     "Sage/UI/TimelessActivitiesPane",
     "Sage/UI/Calendar",
-    "Sage/UI/CalendarUsersListPane"
+    "Sage/UI/CalendarUsersListPane",
+    "Sage/UI/TransferBoxWidget",
+    "Sage/UI/BulkUpdateWidget",
+    "Sage/UI/GridView"
 ], function() {
 	// module:
         // Sage/UI/main

@@ -117,97 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FollowUpActivity.Caption" xml:space="preserve">
-    <value>Seguito:</value>
-  </data>
-  <data name="FollowUpActivity_item3.Text" xml:space="preserve">
-    <value>Impegno</value>
-  </data>
-  <data name="LeadId.LookupProperties.FirstName.PropertyHeader" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="StartDate.ToolTip" xml:space="preserve">
-    <value>Calendario</value>
-  </data>
-  <data name="rsOriginallyFor" xml:space="preserve">
-    <value>originariamente per</value>
-  </data>
-  <data name="FollowUpActivity_item2.Text" xml:space="preserve">
-    <value>Riunione</value>
-  </data>
-  <data name="UserId.Caption" xml:space="preserve">
-    <value>Utente:</value>
-  </data>
-  <data name="StartDate.Caption" xml:space="preserve">
-    <value>Pianificato:</value>
-  </data>
-  <data name="rsScheduledOn" xml:space="preserve">
-    <value>Pianificato il</value>
-  </data>
-  <data name="UserId.ToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="Timeless.Caption" xml:space="preserve">
-    <value>Senza orario</value>
-  </data>
-  <data name="CompletedDate.ToolTip" xml:space="preserve">
-    <value>Calendario</value>
-  </data>
-  <data name="CompletedDate.Caption" xml:space="preserve">
-    <value>Completato:</value>
-  </data>
-  <data name="LeadId.LookupProperties.LastName.PropertyHeader" xml:space="preserve">
-    <value>Cognome</value>
-  </data>
-  <data name="CarryOverNotes.Caption" xml:space="preserve">
-    <value>Riporta note</value>
-  </data>
   <data name="btnSave.Caption" xml:space="preserve">
     <value>Salva</value>
-  </data>
-  <data name="Category.Caption" xml:space="preserve">
-    <value>Categoria:</value>
-  </data>
-  <data name=".Caption" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="Duration.Caption" xml:space="preserve">
-    <value>Durata:</value>
-  </data>
-  <data name="rsBy" xml:space="preserve">
-    <value>da</value>
-  </data>
-  <data name="LeadId.Caption" xml:space="preserve">
-    <value>Nominativo:</value>
-  </data>
-  <data name="Notes.Caption" xml:space="preserve">
-    <value>Nota</value>
-  </data>
-  <data name="btnDelete.ToolTip" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="Description.Caption" xml:space="preserve">
-    <value>Argomento:</value>
-  </data>
-  <data name="FollowUpActivity_item1.Text" xml:space="preserve">
-    <value>Telefonata</value>
-  </data>
-  <data name="2f82e3c8-250e-4f5a-affa-02a331012c26.ActionConfirmationMessage" xml:space="preserve">
-    <value>Stai per eliminare definitivamente questo record.</value>
-  </data>
-  <data name="Priority.Caption" xml:space="preserve">
-    <value>Priorità:</value>
   </data>
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Salva</value>
   </data>
+  <data name="Notes.Caption" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="Timeless.Caption" xml:space="preserve">
+    <value>Senza limiti di tempo</value>
+  </data>
+  <data name="CarryOverNotes.Caption" xml:space="preserve">
+    <value>Riporta note</value>
+  </data>
+  <data name="FollowUpActivity.Caption" xml:space="preserve">
+    <value>Follow-up:</value>
+  </data>
+  <data name="CompletedDate.Caption" xml:space="preserve">
+    <value>Data di completamento:</value>
+  </data>
+  <data name="StartDate.Caption" xml:space="preserve">
+    <value>Data di inizio pianificata:</value>
+  </data>
+  <data name="Duration.Caption" xml:space="preserve">
+    <value>Durata:</value>
+  </data>
+  <data name="LeadId.Caption" xml:space="preserve">
+    <value>Lead:</value>
+  </data>
   <data name="Result.Caption" xml:space="preserve">
     <value>Risultato:</value>
   </data>
+  <data name="Description.Caption" xml:space="preserve">
+    <value>In relazione a:</value>
+  </data>
+  <data name="Priority.Caption" xml:space="preserve">
+    <value>Priorità:</value>
+  </data>
+  <data name="Category.Caption" xml:space="preserve">
+    <value>Categoria:</value>
+  </data>
+  <data name="UserId.Caption" xml:space="preserve">
+    <value>Utente:</value>
+  </data>
+  <data name="FollowUpActivity_item3.Value" xml:space="preserve">
+    <value>atToDo</value>
+  </data>
+  <data name="FollowUpActivity_item3.Text" xml:space="preserve">
+    <value>Attività da svolgere</value>
+  </data>
+  <data name="FollowUpActivity_item2.Value" xml:space="preserve">
+    <value>atMeeting</value>
+  </data>
+  <data name="FollowUpActivity_item2.Text" xml:space="preserve">
+    <value>Riunione</value>
+  </data>
+  <data name="FollowUpActivity_item1.Value" xml:space="preserve">
+    <value>atPhoneCall</value>
+  </data>
+  <data name="FollowUpActivity_item1.Text" xml:space="preserve">
+    <value>Telefonata</value>
+  </data>
+  <data name="FollowUpActivity_item0.Value" xml:space="preserve">
+    <value>Nessuna</value>
+  </data>
   <data name="FollowUpActivity_item0.Text" xml:space="preserve">
-    <value>Nessuno</value>
+    <value>Nessuna</value>
+  </data>
+  <data name=".Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="btnDelete.ToolTip" xml:space="preserve">
+    <value>Elimina</value>
   </data>
   <data name="btnDelete.Caption" xml:space="preserve">
     <value>Elimina</value>
+  </data>
+  <data name="2f82e3c8-250e-4f5a-affa-02a331012c26.ActionConfirmationMessage" xml:space="preserve">
+    <value>Si sta per eliminare definitivamente questo record.</value>
+  </data>
+  <data name="rsScheduledOn" xml:space="preserve">
+    <value>Pianificato il </value>
+  </data>
+  <data name="rsBy" xml:space="preserve">
+    <value>da</value>
+  </data>
+  <data name="rsOriginallyFor" xml:space="preserve">
+    <value>originariamente per </value>
+  </data>
+  <data name="LeadId.LookupProperties.FirstName.PropertyHeader" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="LeadId.LookupProperties.LastName.PropertyHeader" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="UserId.ToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="StartDate.ToolTip" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="CompletedDate.ToolTip" xml:space="preserve">
+    <value>Calendario</value>
   </data>
 </root>

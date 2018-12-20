@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/ActivityListPanelConfig", (
 { colNameComplete: 'Complete',
   colNameAttachment: 'Attachment',
   colNameRecurring: 'Recurring',

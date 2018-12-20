@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/nls/en/SecurityManager", (
 { accessText: 'Access',
   columnText: 'Column',
   entityText: 'Entity',
@@ -10,5 +10,6 @@ define((
   readWriteText: 'Read Write',
   resetText: 'Reset',
   saveText: 'Save',
-  tableText: 'Table' }
+  tableText: 'Table',
+  descriptionText: 'Description' }
 ));

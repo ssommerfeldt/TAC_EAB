@@ -1,0 +1,34 @@
+{
+    "widgetId": "infor.crm.grouplist",
+    "type": "inline",
+    "name": "CRM Group List",
+    "version": "1.2.0.2",
+    "category": "application",
+    "applicationLogicalId": "lid://infor.crm",
+    "requiresConfig": true,
+    "settings": [
+     {
+        "name": "SDataApiContext",
+        "type": "string",
+        "defaultValue": "CRMSData",
+        "isReadOnly": true
+      }
+	  ],
+    "localization": {
+        "en-US": {
+            "widgetTitle": "CRM Group List",
+            "widgetDescription": "Displays a list of group records by entity. For example, a group of active campaigns",
+            "noData": "No matching data",
+            "titleText": "Title",
+            "textEntity": "Entity",
+            "textGroup": "Group",
+            "textLimit": "Limit",
+            "viewGroup": "View Group",
+            "textCRMLogicalID": "Select Application for drill down",
+            "textSelectFields": "Select fields to display",
+            "textNoApps": "No matching application available",
+            "textErrorInSData": "Error in CRM SData, CRM SData is not set up correctly",
+            "textErrorInMingle": "Error in Ming.le, check the SData set up in IonAPI"
+        }
+    }
+}

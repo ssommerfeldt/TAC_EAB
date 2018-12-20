@@ -1,20 +1,22 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/ReportWizardController", [
     'Sage/UI/Dialogs',
-    'dojo/string',
     'dojo/json',
     'dojo/_base/array',
+    'dojo/_base/lang',
+    'dojo/i18n!./nls/ReportWizardController',
     'Sage/Reporting/Enumerations',
     'Sage/Utility',
     'Sage/MainView/ReportMgr/Crystal/CrystalReportWizardController'
 ],
 function (
     Dialogs,
-    dojoString,
     dojoJson,
     dojoArray,
-    Enumerations,
-    Utility,
+    lang,
+    nlsResources,
+    enumerations,
+    utility,
     CrystalReportWizardController
 ) {
     Sage.namespace('Sage.MainView.ReportMgr.ReportWizardController');
@@ -24,6 +26,7 @@ function (
         * @param {Object} options - Options for the function.
         * @param {string} options.reportId - The id of the report to be executed. Example: 'p6UJ9A0003V8'.
         * @param {string} options.triggerId - The id of the schedule to be edited. Example: 'fb66f331‐0a42‐4209‐a8b9‐d4acbce0da69'.
+        * @param {string} options.reportDisplayName - The display name of the report to be executed. Used for setting the title of the loading dialog. Example: 'Account Details'.
         * @param {Object} [options.reportOptions] - Report-specific options. These vary depending on the report type. See the corresponding wizard controller for more info.
         */
         startWizard: function (options) {
@@ -32,7 +35,7 @@ function (
             }
             if (options.reportId) {
                 //We are launching a new execution
-                this._getReportMetadata(options.reportId, options.reportOptions);
+                this._getReportMetadata(options.reportId, options.reportOptions, options.reportDisplayName);
             }
             else {
                 if (options.triggerId) {
@@ -44,33 +47,26 @@ function (
                     return;
                 }
             }
-
         },
         /*
         * Async load of report schedule.
         */
         _getReportSchedule: function (triggerId) {
             var self = this;
-            this._showLoadingIndicator('Loading Schedule Details'); //TODO: NLS
+            this._showLoadingIndicator(nlsResources.txtLoadingScheduleDetails);
             var options = {
                 triggerId: triggerId,
                 success: function (entry) {
-                    self._closeLoadingIndicator();
-                    self._triggerReceived(entry);
+                    self._closeLoadingIndicator(lang.hitch(self, self._triggerReceived, entry));
                 },
-                failure: function (xhr) {
-                    self._closeLoadingIndicator();
-                    var errorMsg = self._getErrorMessage(xhr);
-                    Dialogs.showError(errorMsg, 'Error'); //TODO: NLS                                        
+                failure: function (xhr, sdata) {
+                    self._closeLoadingIndicator(lang.hitch(self, utility.ErrorHandler.handleHttpError, xhr, sdata));
                 }
             };
-            //var jobService = Sage.Services.getService('JobService');
-            //jobService.getTrigger(options);
             var reportingService = Sage.Services.getService('ReportingService');
             reportingService.getSchedule(options);
         },
         _triggerReceived: function (trigger) {
-
             //Report info
             var pluginFamily = this._getParameterValue(trigger.parameters, "PluginFamily");
             var pluginName = this._getParameterValue(trigger.parameters, "PluginName");
@@ -83,16 +79,16 @@ function (
 
             //Convert dates from string to actual javascript date objects
             dojoArray.forEach(conditions, function (condition, j) {
-                if (condition.dataType === Enumerations.FieldDataTypes.DateTime) {
+                if (condition.dataType === enumerations.FieldDataTypes.DateTime) {
                     //Deserialize
-                    if (Utility.Convert.isDateString(condition.value)) {
-                        condition.value = Utility.Convert.toDateFromString(condition.value);
+                    if (utility.Convert.isDateString(condition.value)) {
+                        condition.value = utility.Convert.toDateFromString(condition.value);
                     }
-                    if (Utility.Convert.isDateString(condition.fromRange)) {
-                        condition.fromRange = Utility.Convert.toDateFromString(condition.fromRange);
+                    if (utility.Convert.isDateString(condition.fromRange)) {
+                        condition.fromRange = utility.Convert.toDateFromString(condition.fromRange);
                     }
-                    if (Utility.Convert.isDateString(condition.toRange)) {
-                        condition.toRange = Utility.Convert.toDateFromString(condition.toRange);
+                    if (utility.Convert.isDateString(condition.toRange)) {
+                        condition.toRange = utility.Convert.toDateFromString(condition.toRange);
                     }
                 }
             });
@@ -108,7 +104,6 @@ function (
 
             //Schedule options
             var scheduleName = this._getParameterValue(trigger.parameters, "ScheduleName");
-            //var scheduleDescription = trigger.$descriptor;
 
             //Launch wizard
             if (pluginName && pluginFamily) {
@@ -117,7 +112,7 @@ function (
                 if (reportId) {
                     var reportOptions = {
                         scheduleOptions: {
-                            executionType: Enumerations.ExecutionType.Scheduled,
+                            executionType: enumerations.ExecutionType.Scheduled,
                             trigger: trigger
                         },
                         exportOptions: {
@@ -136,38 +131,30 @@ function (
                     this._getReportMetadata(reportId, reportOptions);
                 }
                 else {
-                    Dialogs.showError('Cannot determine report id.'); //TODO: NLS
+                    Dialogs.showError(nlsResources.txtCannotDetermineReportId);
                 }
             } else {
-                Dialogs.showError('Cannot determine report name or family.'); //TODO: NLS   
+                Dialogs.showError(nlsResources.txtCannotDetermineReportNameOrFamily);
             }
         },
         /**
         * Async load of Report details.
         */
-        _getReportMetadata: function (reportId, reportOptions) {
+        _getReportMetadata: function (reportId, reportOptions, reportDisplayName) {
             var self = this;
-            this._showLoadingIndicator('Loading Report'); //TODO: NLS
+            var loadingIndicatorTitle = reportDisplayName ? nlsResources.txtLoading + (nlsResources["displayName" + reportDisplayName.replace(/ /g, "")] || reportDisplayName) : nlsResources.txtLoadingReport;
+            this._showLoadingIndicator(loadingIndicatorTitle);
             var options = {
                 reportId: reportId,
                 success: function (entry) {
                     self._reportMetadataReceived(entry, reportOptions);
                 },
-                failure: function (xhr) {
-                    self._closeLoadingIndicator();
-                    var errorMsg = self._getErrorMessage(xhr);
-                    Dialogs.showError(errorMsg, 'Error'); //TODO: NLS                                        
+                failure: function (xhr, sdata) {
+                    self._closeLoadingIndicator(lang.hitch(self, utility.ErrorHandler.handleHttpError, xhr, sdata));
                 }
             };
             var reportingService = Sage.Services.getService('ReportingService');
             reportingService.getReportMetadata(options);
-        },
-        _getErrorMessage: function (xhr) {
-            var errorMsg = "";
-            if (xhr && xhr.status && xhr.statusText) {
-                errorMsg = dojoString.substitute("Sorry, an error occured loading report: ${0} ${1}.", [xhr.status, xhr.statusText]); //TODO: NLS
-            }
-            return errorMsg;
         },
         _reportMetadataReceived: function (reportMetadata, reportOptions) {
             //Convert ISO dates to actual date objects.
@@ -175,16 +162,16 @@ function (
             //sdata feed returns ISO instead of JSON dates.
             dojoArray.forEach(reportMetadata.reportFilters, function (preset, i) {
                 dojoArray.forEach(preset.filterConditions, function (condition, j) {
-                    if (condition.dataType === Enumerations.FieldDataTypes.DateTime) {
+                    if (condition.dataType === enumerations.FieldDataTypes.DateTime) {
                         //Deserialize
-                        if (Utility.Convert.isDateString(condition.value)) {
-                            condition.value = Utility.Convert.toDateFromString(condition.value);
+                        if (utility.Convert.isDateString(condition.value)) {
+                            condition.value = utility.Convert.toDateFromString(condition.value);
                         }
-                        if (Utility.Convert.isDateString(condition.fromRange)) {
-                            condition.fromRange = Utility.Convert.toDateFromString(condition.fromRange);
+                        if (utility.Convert.isDateString(condition.fromRange)) {
+                            condition.fromRange = utility.Convert.toDateFromString(condition.fromRange);
                         }
-                        if (Utility.Convert.isDateString(condition.toRange)) {
-                            condition.toRange = Utility.Convert.toDateFromString(condition.toRange);
+                        if (utility.Convert.isDateString(condition.toRange)) {
+                            condition.toRange = utility.Convert.toDateFromString(condition.toRange);
                         }
                     }
                 });
@@ -195,31 +182,33 @@ function (
                 if (!parameter.currentValues) {
                     parameter.currentValues = [];
                 }
+                if (reportOptions.parameterOptions) {
+                    //always want to load the defaultValues from the meta data to ensure we have the latest data
+                    reportOptions.parameterOptions.parameters[i].defaultValues = parameter.defaultValues;
+                }
             });
 
-            this._closeLoadingIndicator();
-            var controller = this._getControllerInstance(reportMetadata, reportOptions);
-            controller.startWizard();
+            reportMetadata.localeDisplayName = nlsResources["displayName" + reportMetadata.name.replace(/ /g, "")] || reportMetadata.displayName;
+
+            this._closeLoadingIndicator(lang.hitch(this, function () {
+                var controller = this._getControllerInstance(reportMetadata, reportOptions);
+                controller.startWizard();
+            }));
         },
         _getControllerInstance: function (reportMetadata, reportOptions) {
             switch (reportMetadata.reportType) {
-                case Enumerations.ReportTypes.CrystalReport:
+                case enumerations.ReportTypes.CrystalReport:
                     return new CrystalReportWizardController(reportMetadata, reportOptions);
             }
         },
-        _showLoadingIndicator: function (title) {
-            //Dialog
-            var progressDialog = dijit.byId('dlgReportLoading');
-            if (progressDialog) {
-                progressDialog.destroyRecursive();
-            }
-            progressDialog = new dijit.Dialog({
+
+        _showLoadingIndicatorPostCleanup: function (title) {
+            var progressDialog = new dijit.Dialog({
                 id: 'progressDialog',
                 title: title,
                 style: 'width: 300px; height: 100px',
                 closable: false
             });
-            //Progress bar
             var progressBar = new dijit.ProgressBar({
                 id: 'reportLoadingProgressBar',
                 style: 'margin-top: 10px; margin-bottom: 20px',
@@ -230,11 +219,28 @@ function (
             dojo.style(progressDialog.closeButtonNode, 'display', 'none'); //Hide the "x" button that closes the dialog
             progressDialog.onCancel = function () { }; //Prevent the user from closing the dialog hitting ESC key
         },
-        _closeLoadingIndicator: function () {
+        _showLoadingIndicator: function (title) {
+            var destorier = dijit.byId('dlgReportLoading');
+            if (destorier) {
+                destorier.destroyRecursive().then(lang.partial(this._showLoadingIndicatorPostCleanup, title));
+            } else {
+                this._showLoadingIndicatorPostCleanup(title);
+            }
+        },
+        _closeLoadingIndicator: function (callback) {
             var dlg = dijit.byId("progressDialog");
+            console.log(dlg);
             if (dlg) {
-                dlg.hide();
-                dlg.destroyRecursive();
+                // the timeout is to let the show animation finish before hiding the dialog,
+                // otherwise a not helpful CancelError occurs in the hide promise.
+                setTimeout(function () {
+                    dlg.hide().then(function () {
+                        dlg.destroyRecursive();
+                        callback();
+                    });
+                }, 210);
+            } else {
+                callback();
             }
         },
         _getParameterValue: function (parameters, parameterName) {

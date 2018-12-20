@@ -112,39 +112,45 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Отмена</value>
+  <data name="RoleDescription.Caption" xml:space="preserve">
+    <value>Описание роли</value>
   </data>
   <data name="lueRole.LookupProperties.RoleDescription.PropertyHeader" xml:space="preserve">
     <value>Описание</value>
   </data>
-  <data name="lueRole.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
   <data name="btnOk.Caption" xml:space="preserve">
-    <value>ОК</value>
-  </data>
-  <data name="lueRole.LookupProperties.RoleName.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="lblHeader.Text" xml:space="preserve">
-    <value>Добавить ({0}) выбранных  {1} к следующей роли:</value>
+    <value>OК</value>
   </data>
   <data name="btnOk.ToolTip" xml:space="preserve">
     <value>Выполнить действия</value>
   </data>
-  <data name="RoleDescription.Caption" xml:space="preserve">
-    <value>Описание роли</value>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Отмена</value>
   </data>
   <data name="btnCancel.ToolTip" xml:space="preserve">
     <value>Отменить действие</value>
   </data>
   <data name="lueRole.Caption" xml:space="preserve">
     <value>Роль:</value>
+  </data>
+  <data name="lueRole.LookupProperties.RoleName.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="lueRole.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="lblHeader.Text" xml:space="preserve">
+    <value>Добавить выбранные "{1}" ({0}) к следующей роли:</value>
+  </data>
+  <data name="lblSecuredAction" xml:space="preserve">
+    <value>защищенное действие</value>
+  </data>
+  <data name="lblUser" xml:space="preserve">
+    <value>пользователь</value>
   </data>
 </root>

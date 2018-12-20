@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6c44f2e0-7a47-45b8-b5bd-a2acf887345f" lastModifiedUtc="2015-09-25T16:54:09.0258149Z" name="OnBeforeDelete" methodType="CrudEvent" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets>
+    <methodTarget id="b3b3c551-f491-42c3-b31c-33408175f4b6" lastModifiedUtc="2016-03-03T17:35:14.4086159Z" targetType="Sage.SalesLogix.BusinessRules.BusinessRuleHelper, Sage.SalesLogix.BusinessRules" targetMethod="ValidateBOEDelete" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </preExecuteTargets>
+  <methodTargets>
+    <methodTarget id="b7836ec3-d36a-476f-888a-109a80ff6f46" lastModifiedUtc="2015-10-05T23:16:05.7834252Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeDelete" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

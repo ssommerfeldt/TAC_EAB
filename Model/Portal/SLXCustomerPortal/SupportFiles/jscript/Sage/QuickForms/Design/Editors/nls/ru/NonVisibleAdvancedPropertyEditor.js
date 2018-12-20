@@ -1,8 +1,8 @@
-define((
-{ titleText: 'Расширенный',
-  controlInfoText: 'Информация о контроле',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.' }
-));
+define("Sage/QuickForms/Design/Editors/nls/ru/NonVisibleAdvancedPropertyEditor", {
+    "titleText": "Дополнительно",
+    "controlInfoText": "Информация об элементе управления",
+    "controlIdText": "ИД элемента управления:",
+    "controlIdTooltipText": "Идентификатор для этого элемента управления.",
+    "controlTypeText": "Тип элемента управления:",
+    "controlTypeTooltipText": "Тип управляющего элемента Saleslogix."
+});

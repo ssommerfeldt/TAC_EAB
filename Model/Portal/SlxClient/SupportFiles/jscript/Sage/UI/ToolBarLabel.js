@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/ToolBarLabel", [
     'dijit/_Widget',
     'dijit/_TemplatedMixin',
     'dojo/_base/declare'

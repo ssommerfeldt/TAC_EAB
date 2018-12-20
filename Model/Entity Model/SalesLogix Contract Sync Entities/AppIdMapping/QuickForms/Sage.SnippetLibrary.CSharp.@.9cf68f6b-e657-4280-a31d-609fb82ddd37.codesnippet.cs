@@ -23,11 +23,11 @@
 </snippetHeader>
 */
 
+
 #region Usings
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
@@ -47,9 +47,9 @@ namespace Sage.BusinessRules.CodeSnippets
             IAppIdMapping appIdMapping = form.CurrentEntity as IAppIdMapping;
 			if (appIdMapping != null)
 			{
-				if (appIdMapping.EndPointURL.Contains(":<port>"))
+				if (appIdMapping.EndPointURL.Contains(":[port]"))
 		        {
-		            appIdMapping.EndPointURL = appIdMapping.EndPointURL.Replace(":<port>", string.Empty);
+		            appIdMapping.EndPointURL = appIdMapping.EndPointURL.Replace(":[port]", string.Empty);
 		        }
 				appIdMapping.EncryptAccountingSystemPassword(form.txtPassword.Text);
 			}

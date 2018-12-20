@@ -117,88 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblLinkedRecords.Caption" xml:space="preserve">
-    <value>Liaisons des systèmes (les enregistrements suivants seront liés et fusionnés dans les deux systèmes).</value>
-  </data>
-  <data name="Grid_WorkPhone_Column" xml:space="preserve">
-    <value>Téléphone professionnel</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Précédent</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="EmptyTableRowText" xml:space="preserve">
-    <value>Aucun enregistrement ne correspond aux critères de filtre sélectionnés.</value>
-  </data>
-  <data name="LinkContactAddresses.Caption" xml:space="preserve">
-    <value>Lier les adresses de contact</value>
-  </data>
-  <data name="Grid_LastName_Column" xml:space="preserve">
-    <value>Nom</value>
-  </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Précédent</value>
-  </data>
-  <data name="Grid_City_Column" xml:space="preserve">
-    <value>Ville</value>
-  </data>
   <data name="btnLink.Caption" xml:space="preserve">
     <value>Lien</value>
-  </data>
-  <data name="MergeContacts.Caption" xml:space="preserve">
-    <value>Fusionner les contacts</value>
-  </data>
-  <data name="UnlinkedRecords.Caption" xml:space="preserve">
-    <value>Dissocier {0} de {1}</value>
-  </data>
-  <data name="Grid_FirstName_Column" xml:space="preserve">
-    <value>Prénom</value>
-  </data>
-  <data name="LinkAddress.Caption" xml:space="preserve">
-    <value>Lier les adresses</value>
-  </data>
-  <data name="lblContacts.Caption" xml:space="preserve">
-    <value>Contacts</value>
-  </data>
-  <data name="LinkToAccounting.Caption" xml:space="preserve">
-    <value>Lier à la comptabilité - Résultats</value>
-  </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Lier à la comptabilité - Fusionner les données - Aucune différence</value>
-  </data>
-  <data name="lblDescription.Caption" xml:space="preserve">
-    <value>Créez des liens pour fusionner vos enregistrements de contacts SalesLogix et du système de comptabilité. Les liens système ont été mis en correspondance à l'aide de vos critères de correspondance.</value>
-  </data>
-  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Lier à la comptabilité - Fusionner les données - Différences trouvées</value>
-  </data>
-  <data name="Grid_Unlink.Column" xml:space="preserve">
-    <value>Dissocier</value>
-  </data>
-  <data name="Grid_Email_Column" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
   </data>
   <data name="btnNext.Caption" xml:space="preserve">
     <value>Suivant &gt;</value>
   </data>
-  <data name="Grid_Source_Column" xml:space="preserve">
-    <value>Source</value>
+  <data name="Grid_City_Column" xml:space="preserve">
+    <value>Ville</value>
   </data>
-  <data name="Grid.Select.Text" xml:space="preserve">
-    <value>Sélectionner</value>
+  <data name="Grid_Email_Column" xml:space="preserve">
+    <value>E-mail</value>
   </data>
-  <data name="lblExtendedDetails.Caption" xml:space="preserve">
-    <value>Détails étendus</value>
+  <data name="Grid_FirstName_Column" xml:space="preserve">
+    <value>Prénom</value>
   </data>
-  <data name="Grid_Property_Column" xml:space="preserve">
-    <value>Propriété</value>
+  <data name="Grid_LastName_Column" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Grid_WorkPhone_Column" xml:space="preserve">
+    <value>Téléphone professionnel</value>
+  </data>
+  <data name="lblContacts.Caption" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="lblLinkedRecords.Caption" xml:space="preserve">
+    <value>Liaisons des systèmes (les enregistrements suivants seront fusionnés).</value>
+  </data>
+  <data name="Grid_Unlink.Column" xml:space="preserve">
+    <value>Dissocier</value>
+  </data>
+  <data name="MergeContacts.Caption" xml:space="preserve">
+    <value>Fusionner les contacts</value>
   </data>
   <data name="MergeContactsDesc.Caption" xml:space="preserve">
     <value>Lier les contacts correspondants.</value>
   </data>
-  <data name="Grid_Target_Column" xml:space="preserve">
-    <value>Cible</value>
+  <data name="UnlinkedRecords.Caption" xml:space="preserve">
+    <value>Dissocier {0} de {1}</value>
+  </data>
+  <data name="lblDescription.Caption" xml:space="preserve">
+    <value>Créez des liens pour fusionner les enregistrements de contacts. Certains liens ont été automatiquement mis en correspondance à l'aide de vos critères de correspondance.</value>
+  </data>
+  <data name="EmptyTableRowText" xml:space="preserve">
+    <value>Aucun enregistrement ne correspond aux critères de filtre sélectionnés.</value>
+  </data>
+  <data name="Grid.Select.Text" xml:space="preserve">
+    <value>Sélectionner</value>
   </data>
   <data name="Error_SourceTargetNotSelected" xml:space="preserve">
     <value>Veuillez sélectionner un enregistrement 'cible' et 'source' avant de continuer.</value>
+  </data>
+  <data name="Grid_Property_Column" xml:space="preserve">
+    <value>Propriété</value>
+  </data>
+  <data name="Grid_Source_Column" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="Grid_Target_Column" xml:space="preserve">
+    <value>Cible</value>
+  </data>
+  <data name="LinkToAccounting.Caption" xml:space="preserve">
+    <value>Lien vers la comptabilité - Résultats</value>
+  </data>
+  <data name="LinkAddress.Caption" xml:space="preserve">
+    <value>Lier les adresses</value>
+  </data>
+  <data name="lblExtendedDetails.Caption" xml:space="preserve">
+    <value>Plus de détails</value>
+  </data>
+  <data name="LinkContactAddresses.Caption" xml:space="preserve">
+    <value>Lier les adresses de contact</value>
+  </data>
+  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
+    <value>Lien vers la comptabilité - Fusionner les données - Différences trouvées</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Lien vers la comptabilité - Fusionner les données - Aucune différence</value>
   </data>
 </root>

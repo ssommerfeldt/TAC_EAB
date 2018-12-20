@@ -1,12 +1,10 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            pageText: 'Page'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/Utility/nls/Dashboard", {
+    root: {
+        pageText: 'Page'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

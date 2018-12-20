@@ -1,6 +1,7 @@
 var profile = (function(){
     var testResourceRe = /\/tests\//,
         groupBuilderRe = /Sage\/GroupBuilder\/*./,
+        mingleWidgetsRe = /Sage\/Mingle\/Widgets\/*./,
         copyOnly = function(filename, mid){
             var list = {
                 "Sage/sage.profile":1,
@@ -9,10 +10,9 @@ var profile = (function(){
                 "Sage/GroupBuilder":1,
                 "Sage/testLoader":1,
                 "Sage/runTests.html":1,
-                "Sage/Layout/Wizard":1,
-                "Sage/UI/Columns/SlxUser":1
+                "Sage/Layout/Wizard":1
             };
-            return (mid in list) || /(png|jpg|jpeg|gif|tiff)$/.test(filename) || groupBuilderRe.test(mid);
+            return (mid in list) || /(png|jpg|jpeg|gif|tiff)$/.test(filename) || groupBuilderRe.test(mid) || mingleWidgetsRe.test(mid);
         };
 
     return {

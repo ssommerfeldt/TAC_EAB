@@ -117,70 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lueRateType.LookupProperties.RateTypeDescription.PropertyHeader" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="lueRateType.Caption" xml:space="preserve">
-    <value>Type de taux :</value>
-  </data>
-  <data name="dteCompletedDate.Caption" xml:space="preserve">
-    <value>Date d'achèvement :</value>
-  </data>
-  <data name="curRate.Caption" xml:space="preserve">
-    <value>Taux d'activité :</value>
+  <data name="lueRateType.LookupProperties.Ratetypecode.PropertyHeader" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="lueRateType.LookupProperties.Ratetypedesc.PropertyHeader" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="lueRateType.LookupProperties.Rateamount.PropertyHeader" xml:space="preserve">
+    <value>Taux du montant</value>
+  </data>
+  <data name="hzsDetail.Caption" xml:space="preserve">
+    <value />
+  </data>
   <data name="txtComments.Caption" xml:space="preserve">
     <value>Commentaires</value>
-  </data>
-  <data name="txtElapsedHours.ToolTip" xml:space="preserve">
-    <value>outil</value>
-  </data>
-  <data name="dteReceivedDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
-  </data>
-  <data name="cmdDateStampComments.ToolTip" xml:space="preserve">
-    <value>Horodatage utilisateur</value>
-  </data>
-  <data name="txtUnits.Caption" xml:space="preserve">
-    <value>Unités de temps :</value>
-  </data>
-  <data name="dteCompletedDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
   </data>
   <data name="pklActivity.Caption" xml:space="preserve">
     <value>Activité :</value>
   </data>
+  <data name="lueRateType.Caption" xml:space="preserve">
+    <value>Type de taux :</value>
+  </data>
+  <data name="dteReceivedDate.Caption" xml:space="preserve">
+    <value>Date de réception :</value>
+  </data>
+  <data name="dteCompletedDate.Caption" xml:space="preserve">
+    <value>Date de réalisation :</value>
+  </data>
+  <data name="txtUnits.Caption" xml:space="preserve">
+    <value>Unités de temps :</value>
+  </data>
+  <data name="curRate.Caption" xml:space="preserve">
+    <value>Taux d'activité :</value>
+  </data>
+  <data name="curTotal.Caption" xml:space="preserve">
+    <value>Frais totaux :</value>
+  </data>
   <data name="lueUser.Caption" xml:space="preserve">
     <value>Utilisateur :</value>
   </data>
-  <data name="curTotal.Caption" xml:space="preserve">
-    <value>Frais totaux :</value>
+  <data name="dteReceivedDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueRateType.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
+  <data name="dteCompletedDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueUser.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
+  <data name="lueUser.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="txtElapsedHours.Caption" xml:space="preserve">
-    <value>Heures écoulées :</value>
+  <data name="lueRateType.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueRateType.LookupProperties.Ratetypecode.PropertyHeader" xml:space="preserve">
-    <value>Type</value>
+  <data name="cmdDateStampComments.ToolTip" xml:space="preserve">
+    <value>Horodatage utilisateur</value>
   </data>
-  <data name="lueRateType.LookupProperties.Rateamount.PropertyHeader" xml:space="preserve">
-    <value>Taux du montant</value>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="dteReceivedDate.Caption" xml:space="preserve">
-    <value>Date de réception :</value>
+  <data name="lueRateType.LookupProperties.RateTypeDescription.PropertyHeader" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="txtElapsedHours.Caption" xml:space="preserve">
+    <value>Heures écoulées :</value>
+  </data>
+  <data name="lueUser.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="lueRateType.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="dteReceivedDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="dteCompletedDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="txtElapsedHours.ToolTip" xml:space="preserve">
+    <value>outil</value>
   </data>
 </root>

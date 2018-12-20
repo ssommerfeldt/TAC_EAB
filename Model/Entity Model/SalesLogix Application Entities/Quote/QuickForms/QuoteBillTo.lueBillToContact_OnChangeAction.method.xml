@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="8c71738e-5496-499d-9a4a-a2ff34400526" lastModifiedUtc="2015-11-23T22:34:21.0753525Z" name="lueBillToContact_OnChangeAction" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="QuoteBillTo">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="44c34e5c-815a-44ee-bd42-abe5c83aa684" paramName="form" sequence="0" paramType="IQuoteBillTo" />
+    <OrmEntityMethodParam id="3bc9b155-7c04-4d34-9716-c3c57718a43a" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

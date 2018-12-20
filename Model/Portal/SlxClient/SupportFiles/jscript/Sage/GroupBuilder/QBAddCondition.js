@@ -3,7 +3,7 @@ dojo.require('Sage.UI.Dialogs');
 
 var DateValueClientID = QBAddConditionResources.DateValueClientID;
 var DijitDateValueClientID = QBAddConditionResources.DijitDateValueClientID;
-var DateValueFormat   = QBAddConditionResources.DateValueFormat;
+var DateValueFormat = QBAddConditionResources.DateValueFormat;
 
 function QBAddCondition_Load() {
     if (QueryBuilderMain.currentCondition) {
@@ -23,22 +23,22 @@ function QBAddCondition_Load() {
         // for Date/Time types, we usually need to show the calendar control (except Within last/next xxx days)
         var typ = QueryBuilderMain.currentCondition.getTypeCode();
         if (typ == "11" && QueryBuilderMain.currentCondition.operator.toUpperCase().indexOf('WITHIN') == -1) {
-            if(QueryBuilderMain.currentCondition.isliteral == 'false') {
-            if (QueryBuilderMain.currentCondition.value != '') {
-                if (QueryBuilderMain.currentCondition.isliteral == 'true') {
-                    document.getElementById("dateValueDiv").style.display = 'none';   //hide date picker
-                    document.getElementById("textValueDiv").style.display = 'inline';
-                    document.getElementById("txtValueIs").value = QueryBuilderMain.currentCondition.value;
-                } else {
-                    document.getElementById("textValueDiv").style.display = 'none';
-                    document.getElementById("dateValueDiv").style.display = 'inline';
-                    document.getElementById("txtValueIs").value = '';                    
-                    var d = time.buildDateFromStr(QueryBuilderMain.currentCondition.value, "YYYYMMDD");
-                    if (isNaN(d.getYear())) {
-                        d = time.buildDateFromStr(QueryBuilderMain.currentCondition.value, DateValueFormat);
-                    }
-                    document.getElementById(DateValueClientID).value = d.fmtDate(DateValueFormat);
-                    dijit.byId(DijitDateValueClientID).set("value", d);
+            if (QueryBuilderMain.currentCondition.isliteral == 'false') {
+                if (QueryBuilderMain.currentCondition.value != '') {
+                    if (QueryBuilderMain.currentCondition.isliteral == 'true') {
+                        document.getElementById("dateValueDiv").style.display = 'none';   //hide date picker
+                        document.getElementById("textValueDiv").style.display = 'inline';
+                        document.getElementById("txtValueIs").value = QueryBuilderMain.currentCondition.value;
+                    } else {
+                        document.getElementById("textValueDiv").style.display = 'none';
+                        document.getElementById("dateValueDiv").style.display = 'inline';
+                        document.getElementById("txtValueIs").value = '';
+                        var d = time.buildDateFromStr(QueryBuilderMain.currentCondition.value, "YYYYMMDD");
+                        if (isNaN(d.getYear())) {
+                            d = time.buildDateFromStr(QueryBuilderMain.currentCondition.value, DateValueFormat);
+                        }
+                        document.getElementById(DateValueClientID).value = d.fmtDate(DateValueFormat);
+                        dijit.byId(DijitDateValueClientID).set("value", d);
                     }
                 }
             }
@@ -47,8 +47,8 @@ function QBAddCondition_Load() {
                 document.getElementById("textValueDiv").style.display = 'inline';
                 document.getElementById("txtValueIs").value = QueryBuilderMain.currentCondition.value;
             }
-           
-        } else {	
+
+        } else {
             document.getElementById("dateValueDiv").style.display = 'none';   //hide date picker
             document.getElementById("textValueDiv").style.display = 'inline';
             document.getElementById("chkLiteral").disabled = true;
@@ -105,11 +105,11 @@ function QBAddCondition_operatorChanged() {
             if (document.getElementById("chkLiteral").checked) {
                 document.getElementById("dateValueDiv").style.display = 'none';   //hide date picker
                 document.getElementById("textValueDiv").style.display = 'inline';
-                document.getElementById("txtValueIs").value = QueryBuilderMain.currentCondition.value;                
+                document.getElementById("txtValueIs").value = QueryBuilderMain.currentCondition.value;
             } else {
                 document.getElementById("textValueDiv").style.display = 'none'; //hide text box
                 document.getElementById("dateValueDiv").style.display = 'inline'; //show date picker
-                document.getElementById("txtValueIs").value = '';                
+                document.getElementById("txtValueIs").value = '';
             }
         }
     }
@@ -128,9 +128,9 @@ function QBAddCondition_OK_Click() {
                 currentCondition.value = document.getElementById("txtValueIs").value;
             } else {
                 var d = time.buildDateFromStr(document.getElementById(DateValueClientID).value, DateValueFormat);
-                currentCondition.value = (d == null) ? null : d.fmtDate("YYYYMMDD") + " 00:00:00";                
+                currentCondition.value = (d == null) ? null : d.fmtDate("YYYYMMDD") + " 00:00:00";
             }
-        } else {          
+        } else {
             currentCondition.value = document.getElementById("txtValueIs").value;
             if (currentCondition.operator == " IN ") {
                 var oSqlUtility = new Sage.Utility.Sql();
@@ -141,17 +141,17 @@ function QBAddCondition_OK_Click() {
                         console.error(e);
                     }
                     Sage.UI.Dialogs.showError(e);
-                } 
+                }
             }
         }
         currentCondition.casesens = (document.getElementById("chkCaseSensEdit").checked) ? 'true' : 'false';
         currentCondition.isliteral = (document.getElementById("chkLiteral").checked) ? 'true' : 'false';
-        
+
         if (currentCondition.IsNew) {
             QueryBuilderMain.addDataToConditionGrid(currentCondition);
             QueryBuilderMain.updateAndOrs();
-        } 
-                 
+        }
+
         // Update grid
         var selRow;
         if (currentCondition.IsNew) {
@@ -159,12 +159,12 @@ function QBAddCondition_OK_Click() {
         } else {
             selRow = QueryBuilderMain.dgConditions.selectedIndex;
         }
-        
-              
+
+
         if (selRow > 0) {
             var row = QueryBuilderMain.dgConditions.gridElement.rows[selRow];
-             
-           if (currentCondition) {
+
+            if (currentCondition) {
                 var opObjs = row.getElementsByTagName('SELECT');
                 opObjs[0].value = currentCondition.operator;
                 if (currentCondition.value != '') {
@@ -174,7 +174,7 @@ function QBAddCondition_OK_Click() {
                 }
                 row.cells[5].firstChild.checked = (currentCondition.casesens == 'true');
                 row.conditionObj = currentCondition;
-            }  
+            }
         }
     }
 
@@ -183,7 +183,7 @@ function QBAddCondition_OK_Click() {
 
 function QBAddCondition_browseField() {
     var vUrl = 'browseField.aspx?';
-    
+    var picklistname =QueryBuilderMain.currentCondition.picklistname;
     var tablename = QueryBuilderMain.currentCondition.datapath;
     if (tablename.indexOf('!') > -1) {
         tablename = tablename.substring(tablename.lastIndexOf('.') + 1, tablename.lastIndexOf('!'));
@@ -196,23 +196,28 @@ function QBAddCondition_browseField() {
         fld = fld.substring(fld.indexOf(".") + 1);
     }
     vUrl += '&fld=' + fld;
+    if(picklistname){
+        vUrl += '&picklistname=' + picklistname;
+    }
     vUrl += '&multi=';
     vUrl += (document.getElementById("selCondOperator").value.toUpperCase() == ' IN ') ? 'true' : 'false';
-    
-    window.open(vUrl, "browseField","dialog=yes,centerscreen=yes,width=400,height=240,status=no,toolbar=no,scrollbars=no,modal=yes");
+
+    window.open(vUrl, "browseField", "dialog=yes,centerscreen=yes,width=400,height=240,status=no,toolbar=no,scrollbars=no,modal=yes");
 }
 
 function QBAddCondition_Literal_Click() {
     var currentCondition = QueryBuilderMain.currentCondition;
     if (currentCondition) {
-        if (currentCondition.getTypeCode() == "11" && document.getElementById("chkLiteral").checked) {
-            document.getElementById("dateValueDiv").style.display = 'none';
-            document.getElementById("textValueDiv").style.display = 'inline';
-            document.getElementById("txtValueIs").value = QueryBuilderMain.currentCondition.value;
-        } else {
-            document.getElementById("textValueDiv").style.display = 'none';
-            document.getElementById("dateValueDiv").style.display = 'inline';
-            document.getElementById("txtValueIs").value = '';
+        if (currentCondition.getTypeCode() == "11") {
+            if (document.getElementById("chkLiteral").checked) {
+                document.getElementById("dateValueDiv").style.display = 'none';
+                document.getElementById("textValueDiv").style.display = 'inline';
+                document.getElementById("txtValueIs").value = QueryBuilderMain.currentCondition.value;
+            } else {
+                document.getElementById("dateValueDiv").style.display = 'inline';
+                document.getElementById("textValueDiv").style.display = 'none';
+                document.getElementById("txtValueIs").value = '';
+            }
         }
     }
 }

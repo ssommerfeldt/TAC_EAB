@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/SDataMainViewConfigurationProvider", [
        'Sage/UI/ListPanel',
        'Sage/_ConfigurationProvider',
        'Sage/UI/TitleContentPane',

@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e916a065-023f-48d5-ad39-f85c6c3d5f5b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e916a065-023f-48d5-ad39-f85c6c3d5f5b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-09-16T14:22:17.7858156Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
   <Name>UserRoles</Name>
   <ClientScriptIncludes />
-  <ClientResourceKeys />
+  <ClientResourceKeys>
+    <string>d8c1cb43-3194-4218-b6eb-291b7081b96d.DuplicateAssociationMessage</string>
+    <string>lueAddRole.LookupProperties.RoleName.PropertyHeader</string>
+  </ClientResourceKeys>
   <ExtendedProperties />
   <HelpFile />
   <ReadOnly>false</ReadOnly>
@@ -125,6 +128,7 @@
               <LookupResultValue xsi:type="xsd:string" />
               <AddEmptyListItem>false</AddEmptyListItem>
               <AllowClearingResult>false</AllowClearingResult>
+              <AppendStringValues>false</AppendStringValues>
               <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
               <LookupEntityName>Role</LookupEntityName>
               <LookupEntityTypeName>Sage.Entity.Interfaces.IRole, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -158,35 +162,37 @@
               <LookupPreFilters />
               <LookupSelectionMode>Multi</LookupSelectionMode>
               <OnSelection>function (items) {
-        dojo.require('Sage.UI.Dialogs'); 
-        var entities = [];
-        for (var i = 0; i &lt; items.length; i++) {
-            var role = {};
-            var hasRole = false;
+        require(['Sage/UI/Dialogs'], function(Dialogs){ 
+          var entities = [];
+          for (var i = 0; i &lt; items.length; i++) {
+              var role = {};
+              var hasRole = false;
 
-            // duplicate detection
-            for (var k in grid.store.dataCache) {
-                var rec = grid.store.dataCache[k];
-                if (rec.Role &amp;&amp; rec.Role.$key == items[i].$key)
-                    hasRole = true;
-            }
-            if (hasRole) {
-				Sage.UI.Dialogs.showError("This role is already associated to this user."); 
-                continue;
-			}
+              // duplicate detection
+              for (var k in grid.store.dataCache) {
+                  var rec = grid.store.dataCache[k];
+                  if (rec.Role &amp;&amp; rec.Role.$key == items[i].$key)
+                      hasRole = true;
+              }
+              if (hasRole) {
+				         Sage.UI.Dialogs.showError(UserRolesResources['d8c1cb43_3194_4218_b6eb_291b7081b96d_DuplicateAssociationMessage']);
+                  continue;
+			        }
 
-            //Insert mode check
-            role.User = { $key: Sage.Utility.getCurrentEntityId() };
-            role.Role = {};
-            Sage.Utility.extend(role.Role, items[i]);
-            delete role.$key;
-            delete role.$name;
-            delete role.$url;
-            entities.push(role);
-        }
-        if (entities.length &gt; 0)
-            grid.createItems(entities, function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); } });
-       this.lookupDialog.hide();
+              //Insert mode check
+              role.User = { $key: Sage.Utility.getCurrentEntityId() };
+              role.Role = {};
+              Sage.Utility.extend(role.Role, items[i]);
+              delete role.$key;
+              delete role.$name;
+              delete role.$url;
+              entities.push(role);
+          }
+          if (entities.length &gt; 0){
+              grid.createItems(entities, function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); } });
+          }
+          this.lookupDialog.hide();
+        });
     }</OnSelection>
               <AdditionalSelectFields />
               <ChildEntity />
@@ -201,7 +207,11 @@
             <DisplayInInsert>false</DisplayInInsert>
             <MergePosition>Default</MergePosition>
             <MergeControlId />
-            <OnClick />
+            <OnClick>
+              function (userData) {
+              dojo.publish('service/RoleSecurity/cacheClear');
+              }
+            </OnClick>
             <StyleScheme />
             <AppliedSecurity />
           </SDataGridDeleteTool>

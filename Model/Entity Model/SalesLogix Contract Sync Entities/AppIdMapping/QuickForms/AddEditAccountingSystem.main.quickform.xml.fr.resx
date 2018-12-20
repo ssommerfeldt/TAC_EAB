@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cboResources_item9.Text" xml:space="preserve">
-    <value>Bons de commande</value>
-  </data>
   <data name="cmdOK.Caption" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="cboResources_item11.Text" xml:space="preserve">
-    <value>Devis de vente</value>
-  </data>
-  <data name="grdSchemaDiffs_NoDiff.EmptyTableRowText" xml:space="preserve">
-    <value>La ressource sélectionnée ne contient aucune différence.</value>
-  </data>
-  <data name="cboResources_item4.Text" xml:space="preserve">
-    <value>Emplacements</value>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Fermer</value>
   </data>
   <data name="lblSchema.Text" xml:space="preserve">
     <value>Différences de schéma</value>
@@ -138,38 +129,20 @@
   <data name="grdSchemaDiffs.EmptyTableRowText" xml:space="preserve">
     <value>Pour afficher les différences, sélectionner Exécuter pour filtrer avec la ressource sélectionnée ci-dessus.</value>
   </data>
-  <data name="cboResources_item12.Text" xml:space="preserve">
-    <value>Lignes des devis</value>
-  </data>
-  <data name="cboResources_item5.Text" xml:space="preserve">
-    <value>Téléphones</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Fermer</value>
-  </data>
-  <data name="cboResources_item6.Text" xml:space="preserve">
-    <value>Listes de prix</value>
-  </data>
-  <data name="cboResources.Caption" xml:space="preserve">
-    <value>Filtrer par ressource :</value>
-  </data>
-  <data name="grdSchemaDiffs.119ffbae-7f63-4a20-b283-6281a0d8d284.ColumnHeading" xml:space="preserve">
-    <value>SalesLogix</value>
-  </data>
-  <data name="cboResources_item7.Text" xml:space="preserve">
-    <value>Adresses postales</value>
+  <data name="grdSchemaDiffs.d00e55d0-1703-4be7-9c0a-c334c02b979e.ColumnHeading" xml:space="preserve">
+    <value>Propriété</value>
   </data>
   <data name="grdSchemaDiffs.2c3e11ab-a8eb-461d-ad0c-af96add9ee05.ColumnHeading" xml:space="preserve">
     <value>Propriété du système de comptabilité</value>
   </data>
-  <data name="cboResources_item0.Text" xml:space="preserve">
-    <value>Marchandises</value>
+  <data name="grdSchemaDiffs.119ffbae-7f63-4a20-b283-6281a0d8d284.ColumnHeading" xml:space="preserve">
+    <value>Saleslogix</value>
   </data>
-  <data name="btnResource.Caption" xml:space="preserve">
-    <value>Exécuter</value>
+  <data name="grdSchemaDiffs.20419138-d47c-45e3-ad0a-ea283227f2d7.ColumnHeading" xml:space="preserve">
+    <value>Système de comptabilité</value>
   </data>
-  <data name="cboResources_item2.Text" xml:space="preserve">
-    <value>Contacts</value>
+  <data name="cboResources.Caption" xml:space="preserve">
+    <value>Filtrer par ressource</value>
   </data>
   <data name="cboResources_item14.Text" xml:space="preserve">
     <value>Unité de mesure</value>
@@ -177,25 +150,52 @@
   <data name="cboResources_item13.Text" xml:space="preserve">
     <value>Comptes d'exploitation</value>
   </data>
-  <data name="grdSchemaDiffs.d00e55d0-1703-4be7-9c0a-c334c02b979e.ColumnHeading" xml:space="preserve">
-    <value>Propriété</value>
+  <data name="cboResources_item12.Text" xml:space="preserve">
+    <value>Lignes des devis</value>
+  </data>
+  <data name="btnResource.Caption" xml:space="preserve">
+    <value>Exécuter</value>
+  </data>
+  <data name="cboResources_item11.Text" xml:space="preserve">
+    <value>Devis</value>
   </data>
   <data name="cboResources_item10.Text" xml:space="preserve">
     <value>Lignes de commandes</value>
   </data>
-  <data name="cboResources_item3.Text" xml:space="preserve">
-    <value>E-mails</value>
+  <data name="cboResources_item9.Text" xml:space="preserve">
+    <value>Bons de commande</value>
   </data>
-  <data name="cboResources_item1.Text" xml:space="preserve">
-    <value>Groupes de marchandises</value>
-  </data>
-  <data name="cboResources_item8.Text" xml:space="preserve">
-    <value>Prix</value>
+  <data name="grdSchemaDiffs_NoDiff.EmptyTableRowText" xml:space="preserve">
+    <value> La ressource sélectionnée ne contient aucune différence.</value>
   </data>
   <data name="btnResource.ToolTip" xml:space="preserve">
     <value>Actualiser la liste</value>
   </data>
-  <data name="grdSchemaDiffs.20419138-d47c-45e3-ad0a-ea283227f2d7.ColumnHeading" xml:space="preserve">
-    <value>Système de comptabilité</value>
+  <data name="cboResources_item8.Text" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="cboResources_item7.Text" xml:space="preserve">
+    <value>Adresses postales</value>
+  </data>
+  <data name="cboResources_item6.Text" xml:space="preserve">
+    <value>Listes de prix</value>
+  </data>
+  <data name="cboResources_item5.Text" xml:space="preserve">
+    <value>Téléphones</value>
+  </data>
+  <data name="cboResources_item4.Text" xml:space="preserve">
+    <value>Emplacements</value>
+  </data>
+  <data name="cboResources_item3.Text" xml:space="preserve">
+    <value>E-mails</value>
+  </data>
+  <data name="cboResources_item2.Text" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="cboResources_item1.Text" xml:space="preserve">
+    <value>Groupes de marchandises</value>
+  </data>
+  <data name="cboResources_item0.Text" xml:space="preserve">
+    <value>Marchandises</value>
   </data>
 </root>

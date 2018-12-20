@@ -1,14 +1,20 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e1959def-b09a-4851-8d85-6024a455e533" lastModifiedUtc="2013-03-15T04:35:42.1937374Z" parentEntityId="750a7f26-3604-467b-94fe-249370231df4" childEntityId="4ef7b8ac-e632-4824-8052-4305fc2bdd53">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="e1959def-b09a-4851-8d85-6024a455e533" lastModifiedUtc="2015-04-28T15:47:28.8920358Z" parentEntityId="750a7f26-3604-467b-94fe-249370231df4" childEntityId="4ef7b8ac-e632-4824-8052-4305fc2bdd53">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="92628cbb-9b54-49b3-bbc9-2435383c0e94" lastModifiedUtc="2013-03-15T04:33:56.254678Z" name="ERPEmailAddresses" audited="false">
+  <parentProperty id="92628cbb-9b54-49b3-bbc9-2435383c0e94" lastModifiedUtc="2015-04-28T15:47:28.8910358Z" name="ERPEmailAddresses" audited="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
           <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
         </extender>
       </extendee>
     </ExtendedPropertiesCollection>
@@ -16,11 +22,17 @@
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="66e3f9a2-2e24-41a0-8320-37965c911831" lastModifiedUtc="2013-03-15T04:33:56.254678Z" name="Contact" audited="false" include="false">
+  <childProperty id="66e3f9a2-2e24-41a0-8320-37965c911831" lastModifiedUtc="2015-04-28T15:46:29.3680358Z" name="Contact" audited="false" include="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
         <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
           <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
         </extender>
       </extendee>
     </ExtendedPropertiesCollection>

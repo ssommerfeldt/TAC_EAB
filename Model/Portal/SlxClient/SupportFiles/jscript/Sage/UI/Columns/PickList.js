@@ -1,14 +1,15 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Columns/PickList", [
     'Sage/UI/Controls/PickList',
     'Sage/UI/Controls/DropDownSelectPickList',
     'Sage/Data/BaseSDataStore',
-    'dojo/_base/declare'
+    'dojo/_base/declare',
+    'dojo/_base/array',
+    'dojo/_base/lang'
 ],
-function (PickList, DropDownSelectPickList, BaseSDataStore, declare) {
+function (pickList, dropDownSelectPickList, baseSDataStore, declare, dArray, lang) {
     var widget = declare('Sage.UI.Columns.PickList', dojox.grid.cells._Widget, {
-        icon: '',
-        widgetClass: DropDownSelectPickList,
+        widgetClass: dropDownSelectPickList,
         /**
         * @property {object} storeData Data fetched from SData stored here.
         */
@@ -16,17 +17,20 @@ function (PickList, DropDownSelectPickList, BaseSDataStore, declare) {
         pickList: null,
         storageMode: 'id', //Default for column picklist
         displayMode: 'AsText', //Default for column picklist formatting
-        constructor: function (args) {
+        constructor: function () {
             this.inherited(arguments);
-            if (this.storageMode === 'id' && this.displayMode === 'AsText') {
+            if (this.storageMode === 'id' || this.storageMode === 'code') {
                 if (this.pickListName && this.storeData === null) {
                     this._loadPickList();
                 }
             }
         },
-        formatter: function (val, index) {
+        formatter: function (val) {
             if (this.storageMode === 'id') {
-            val = this.getStoreTextById(val);
+                val = this.getStoreTextById(val);
+            }
+            if (this.storageMode === 'code') {
+                val = this.getStoreTextByCode(val);
             }
             return val;
         },
@@ -34,18 +38,18 @@ function (PickList, DropDownSelectPickList, BaseSDataStore, declare) {
             var deferred = new dojo.Deferred();
             var config = {
                 pickListName: this.pickListName, // Required
-                // storeOptions: {}, // Optional
-                // dataStore: {}, // Optional
                 canEditText: false,
                 itemMustExist: true,
                 maxLength: -1,
                 storeMode: this.storageMode, // text, id, code
                 sort: false,
-                displayMode: this.displayMode
+                displayMode: this.displayMode,
+                async: false
             };
-            this.pickList = new PickList(config);
+            this.pickList = new pickList(config);
             this.pickList.getPickListData(deferred);
-            deferred.then(dojo.hitch(this, this._loadData), function (e) {
+
+            deferred.then(lang.hitch(this, this._loadData), function (e) {
                 console.error(e); // errback
             });
 
@@ -54,33 +58,43 @@ function (PickList, DropDownSelectPickList, BaseSDataStore, declare) {
             var result = val;
             if (this.storeData) {
                 //If the value is not found as an id in the list, return the value back.
-                dojo.forEach(this.storeData.items, function (item, index, array) {
-                    //console.log(item.id + ' === ' + id);
+                dArray.some(this.storeData.items, function (item) {
                     if (item.id === val) {
                         result = item.text;
                     }
                 }, this);
             }
-
             return result;
         },
-        _loadData: function (data) {
-                var items = [];
-                for (var i = 0; i < data.items.$resources.length; i++) {
-                    var item = data.items.$resources[i];
-                    items.push({
-                        id: item.$key,
-                        code: item.code,
-                        number: item.number,
-                        text: item.text
-                    });
-                }
-                this.storeData = {
-                    identifier: 'id',
-                    label: 'text',
-                    items: items
-                };
+        getStoreTextByCode: function(val) {
+            var result = val;
+            if (this.storeData) {
+                //If the value is not found as a code in the list, return the value back.
+                dArray.some(this.storeData.items, function (item) {
+                    if (item.code === val) {
+                        result = item.text;
+                    }
+                }, this);
             }
+            return result;
+        },
+        _loadData: function(data) {
+            var items = [];
+            for (var i = 0; i < data.items.$resources.length; i++) {
+                var item = data.items.$resources[i];
+                items.push({
+                    id: item.$key,
+                    code: item.code,
+                    number: item.number,
+                    text: item.text
+                });
+            }
+            this.storeData = {
+                identifier: 'id',
+                label: 'text',
+                items: items
+            };
+        }
     });
 
     return widget;

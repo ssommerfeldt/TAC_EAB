@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="8592de5a-ee90-4ce8-9b82-f92a8c87b9fd" lastModifiedUtc="2015-12-05T19:22:18.7463845Z" name="CalcPriceFromProgramPrice" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="aaf96f6f-b80e-49ef-b6b8-d9655bbe9fa2" lastModifiedUtc="2015-12-05T19:22:15.8783845Z" targetType="Sage.SalesLogix.Quote.QuoteItem, Sage.SalesLogix.BusinessRules" targetMethod="CalcPriceFromProgramPrice" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

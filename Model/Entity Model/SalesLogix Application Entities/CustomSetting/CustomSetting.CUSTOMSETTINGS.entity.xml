@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0e2d50fe-a73c-4bff-89ce-200b9db8f974" lastModifiedUtc="2013-07-25T16:55:28.9697567Z" manageSchema="false" tableName="CUSTOMSETTINGS" name="CustomSetting" displayPropertyId="5b4a67d7-bc1d-4682-bdd4-172afc4f7a26" isExtension="false" audited="false" onBeforeInsertMethodId="df5b91e6-7ccf-46f8-b949-3a8df50f466c" onAfterInsertMethodId="793e7f0b-d9d6-4079-9da2-96e9bb825d48" onBeforeUpdateMethodId="8bce1147-297c-4fed-9c36-50c69d713e17" onAfterUpdateMethodId="a69b78ee-54aa-4302-a099-cfa444384887" onBeforeDeleteMethodId="bffda485-5691-47ee-8261-2b1107a68b15" onAfterDeleteMethodId="295a7c3d-4c34-4479-a821-b773b5306fc5" onCreateId="e0496cdb-228a-4f8c-b675-1c854608d40c">
+<entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0e2d50fe-a73c-4bff-89ce-200b9db8f974" lastModifiedUtc="2013-07-25T16:55:28.9697567Z" manageSchema="true" tableName="CUSTOMSETTINGS" name="CustomSetting" displayPropertyId="5b4a67d7-bc1d-4682-bdd4-172afc4f7a26" isExtension="false" cacheUsage="ReadWrite" audited="false" onBeforeInsertMethodId="df5b91e6-7ccf-46f8-b949-3a8df50f466c" onAfterInsertMethodId="793e7f0b-d9d6-4079-9da2-96e9bb825d48" onBeforeUpdateMethodId="8bce1147-297c-4fed-9c36-50c69d713e17" onAfterUpdateMethodId="a69b78ee-54aa-4302-a099-cfa444384887" onBeforeDeleteMethodId="bffda485-5691-47ee-8261-2b1107a68b15" onAfterDeleteMethodId="295a7c3d-4c34-4479-a821-b773b5306fc5">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntity">
@@ -93,7 +93,7 @@
         </TextDataType>
       </SystemDataType>
     </property>
-    <property xsi:type="OrmFieldProperty" id="5b4a67d7-bc1d-4682-bdd4-172afc4f7a26" lastModifiedUtc="2013-07-25T16:55:06.1172567Z" name="Description" audited="false" columnName="DESCRIPTION" maxLength="64" precision="0" scale="0" ordinal="6" isReadOnly="false">
+    <property xsi:type="OrmFieldProperty" id="5b4a67d7-bc1d-4682-bdd4-172afc4f7a26" lastModifiedUtc="2017-05-18T06:56:59.7553544Z" name="Description" audited="false" columnName="DESCRIPTION" maxLength="64" precision="0" scale="0" ordinal="6" isReadOnly="false">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmFieldProperty">
           <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
@@ -103,7 +103,7 @@
       </ExtendedPropertiesCollection>
       <SystemDataType guid="ccc0f01d-7ba5-408e-8526-a3f942354b3a">
         <TextDataType>
-          <Length>64</Length>
+          <Length>128</Length>
         </TextDataType>
       </SystemDataType>
     </property>

@@ -3,5 +3,9 @@
   <InstanceId>b5a7b8d0403c4e17b415741776fbe67c</InstanceId>
   <JobId>e4b407ddd3eb455c834602d53b3fff39</JobId>
   <Name>RolloverActivitiesEveryHourIndefinitely</Name>
+  <StartTimeUtc xsi:nil="true" />
+  <EndTimeUtc xsi:nil="true" />
   <CronExpression>0 0 0/1 * * ? *</CronExpression>
+  <Priority xsi:nil="true" />
+  <Parameters />
 </SchedulerTrigger>

@@ -1,8 +1,7 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/Extensions/Activity/ListPanelOverrides/ActivityListPanelConfig", [
         'Sage/MainView/ActivityMgr/ActivityListPanelConfig',
-        'Sage/UI/Columns/SlxLink',
         'dojo/_base/declare',
         'dojo/_base/lang',
         'dojo/i18n!./nls/ActivityListPanelConfig'        
@@ -10,7 +9,6 @@ define([
 
 function (
    ActivityListPanelConfig,
-   ColumnsLink, 
    declare,
    lang,
    nlsResources
@@ -23,11 +21,11 @@ function (
 
            // debugger;
             //Add new select values that will be returned to the list panel             
-            this._select.push('Activity/Details/AttendeeCount');            
+            this._select.push('Activity/AttendeeCount');            
 
              //Add new structure configurations that will add new columns to the list panel.              
             this._structure.push({
-                   field: 'Activity.Details.AttendeeCount',
+                   field: 'Activity.AttendeeCount',
                    name: this.colNameAssociationCount,  //nls resources that are pulled in the define method above.
                    width: '90px'
             });

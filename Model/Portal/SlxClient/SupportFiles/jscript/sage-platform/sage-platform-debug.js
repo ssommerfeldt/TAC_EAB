@@ -499,76 +499,69 @@ document.onkeypress = function (evt) {
 // issues. Applications that use the code below will continue to work seamlessly
 // when that happens.
 
-if (!window.Sage) {
-    Sage = {};
+if (!window.slx) {
+    //slx = {};
+    initGears();
 }
-Sage.OnGearsInitialized = [];
-Sage.installDesktopFeatures = function() {
-    top.location = "Libraries/DesktopIntegration/SlxDesktopIntegrationSetup.exe";
+
+if (!window.slxmm) {
+    initMailMerge();
 }
-//(function() {
+
+var slx_installDesktopFeatures = function() {
+    top.location = "Libraries/DesktopIntegration/OfficeIntegrationsetup.exe";
+}
+
+var xbar_installDesktopFeatures = function () {
+    top.location = "Libraries/DesktopIntegration/Infor CRM Xbar Setup.exe";
+}
+
+
+function initMailMerge() {
+    if (window.slxmm) {
+        return;
+    }
+
+    if ((typeof ActiveXObject !== 'undefined') || (window.navigator.userAgent.toLowerCase().indexOf("trident") >= 0))  {
+        // IE
+        try {
+            window.slxmm = new ActiveXObject('bho.slxmm');
+        } catch (e) { 
+            //oh well...
+            window.slxmm = {};
+        }
+    }
+    else
+    {
+        //everything but IE
+        window.slxmm = {active: false};
+    }
+}
+
 function initGears() {
-  // We are already defined. Hooray!
-  if (window.Sage && Sage.gears) {
-    return;
-  }
+    //nothing to do anymore...
+    //return; 
 
-  var factory = null;
-
-  // Firefox
-  if (typeof SageGearsFactory != 'undefined') {
-    factory = new SageGearsFactory();
-  } else {
-    // IE
-    try {
-      factory = new ActiveXObject('SageGears.Factory');
-      // privateSetGlobalObject is only required and supported on IE Mobile on
-      // WinCE.
-      if (factory.getBuildInfo().indexOf('ie_mobile') != -1) {
-        factory.privateSetGlobalObject(this);
-      }
-    } catch (e) {
-      // Safari
-      if ((typeof navigator.mimeTypes != 'undefined')
-           && navigator.mimeTypes["application/x-googlegears"]) {
-        factory = document.createElement("object");
-        factory.style.display = "none";
-        factory.width = 0;
-        factory.height = 0;
-        factory.type = "application/x-googlegears";
-        document.documentElement.appendChild(factory);
-        if(factory && (typeof factory.create == 'undefined')) {
-          // If NP_Initialize() returns an error, factory will still be created.
-          // We need to make sure this case doesn't cause Gears to appear to
-          // have been initialized.
-          factory = null;
-        }
-      }
+    if (window.slx) {
+        return;
     }
-  }
 
-  // !Do not! define any objects if Gears is not installed. This mimics the
-  // behavior of Gears defining the objects in the future.
-  if (!factory) {
-    return;
-  }
-
-  // Now set up the objects, being careful not to overwrite anything.
-  //
-  // Note: In Internet Explorer for Windows Mobile, you can't add properties to
-  // the window object. However, global objects are automatically added as
-  // properties of the window object in all browsers.
-
-
-  if (!Sage.gears) {
-    Sage.gears = {factory: factory};
-    if (Sage.OnGearsInitialized) {
-        for (var i = 0; i < Sage.OnGearsInitialized.length; i++) {
-            Sage.OnGearsInitialized[i]();
+    if ((typeof ActiveXObject !== 'undefined') || (window.navigator.userAgent.toLowerCase().indexOf("trident") >= 0))  {
+        // IE
+        try {
+            window.slx = new ActiveXObject('bho.slx');
+        } catch (e) { 
+            //oh well...
+            window.slx = {};
         }
     }
-  }
-}//)();
+    else
+    {
+        //everything but IE
+        window.slx = {};
+    }
+}
+
 
 require([
     'dojo/dom'
@@ -707,27 +700,29 @@ function toggleSmartPartVisiblity(contentID, img){
     }
 }
 
-    require([
-        'dojo/aspect',
-        'dojo/ready',
-        'dojo/_base/lang',
-        'dijit/registry',
-        'dojo/dom-style',
-        'dojo/query',
-        'dojo/_base/array',
-        'dojo/has',
-        'dojo/_base/sniff'
-    ], function (
-        aspect,
-        ready,
-        lang,
-        registry,
-        domStyle,
-        query,
-        array,
-        has,
-        _sniff
-    ){
+require([
+    'dojo/aspect',
+    'dojo/ready',
+    'dojo/_base/lang',
+    'dijit/registry',
+    'dojo/dom-style',
+    'dojo/query',
+    'dojo/_base/array',
+    'dojo/has',
+    'dojo/_base/sniff',
+    'Sage/Utility/Workspace'
+], function (
+    aspect,
+    ready,
+    lang,
+    registry,
+    domStyle,
+    query,
+    array,
+    has,
+    _sniff,
+    workspaceUtil
+) {
     Sage.TabWorkspaceState = function (state) {
         this._state = state;
         this._wasTabUpdated = new Object;
@@ -757,7 +752,6 @@ function toggleSmartPartVisiblity(contentID, img){
             return null;
         }
     };
-
     Sage.TabWorkspaceState.prototype.serialize = function () {
         return Sys.Serialization.JavaScriptSerializer.serialize(this._state);
     };
@@ -765,7 +759,6 @@ function toggleSmartPartVisiblity(contentID, img){
     Sage.TabWorkspaceState.prototype.getObject = function () {
         return this._state;
     };
-
     Sage.TabWorkspaceState.prototype.getSectionFor = function (target) {
         if (this.isMiddleTab(target))
             return Sage.TabWorkspaceState.MIDDLE_TABS;
@@ -775,7 +768,6 @@ function toggleSmartPartVisiblity(contentID, img){
             return Sage.TabWorkspaceState.MORE_TABS;
         return false;
     };
-
     Sage.TabWorkspaceState.prototype.isTabVisible = function (target) {
         if (this.isMiddleTab(target)) {
             return true;
@@ -805,7 +797,6 @@ function toggleSmartPartVisiblity(contentID, img){
                 return true;
         return false;
     };
-
     Sage.TabWorkspaceState.prototype._removeFromTabs = function (collection, target) {
         if (typeof this._state[collection] != "object")
             return;
@@ -822,7 +813,6 @@ function toggleSmartPartVisiblity(contentID, img){
             if (this._state[this._collectionActiveRef[collection]] == target)
                 this._state[this._collectionActiveRef[collection]] = null;
     };
-
     Sage.TabWorkspaceState.prototype._addToTabs = function (collection, target, at, step) {
         if (typeof this._state[collection] != "object")
             return;
@@ -844,10 +834,8 @@ function toggleSmartPartVisiblity(contentID, img){
                         return false;
                     }
                 });
-
                 if (typeof step == 'number')
                     insertAt = insertAt + step;
-
                 this._state[collection].splice(insertAt, 0, target);
             }
         }
@@ -855,23 +843,18 @@ function toggleSmartPartVisiblity(contentID, img){
             this._state[collection].push(target);
         }
     };
-
     Sage.TabWorkspaceState.prototype.isMiddleTab = function (target) {
         return this._isTab(Sage.TabWorkspaceState.MIDDLE_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.removeFromMiddleTabs = function (target) {
         this._removeFromTabs(Sage.TabWorkspaceState.MIDDLE_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.addToMiddleTabs = function (target, at, step) {
         this._addToTabs(Sage.TabWorkspaceState.MIDDLE_TABS, target, at, step);
     };
-
     Sage.TabWorkspaceState.prototype.isMainTab = function (target) {
         return this._isTab(Sage.TabWorkspaceState.MAIN_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.isTabVisible = function (tabId) {
         if (this.isMiddleTab(tabId)) {
             return true;
@@ -881,76 +864,58 @@ function toggleSmartPartVisiblity(contentID, img){
             return (this._state.ActiveMoreTab === tabId && (this.isMiddleTab(Sage.TabWorkspace.MORE_TAB_ID) || (this._state.ActiveMainTab === Sage.TabWorkspace.MORE_TAB_ID)));
         }
     };
-
     Sage.TabWorkspaceState.prototype.removeFromMainTabs = function (target) {
         this._removeFromTabs(Sage.TabWorkspaceState.MAIN_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.addToMainTabs = function (target, at, step) {
         this._addToTabs(Sage.TabWorkspaceState.MAIN_TABS, target, at, step);
     };
-
     Sage.TabWorkspaceState.prototype.setActiveMainTab = function (target) {
         this._state.ActiveMainTab = target;
     };
-
     Sage.TabWorkspaceState.prototype.getActiveMainTab = function () {
         return this._state.ActiveMainTab;
     };
-
     Sage.TabWorkspaceState.prototype.isMoreTab = function (target) {
         return this._isTab(Sage.TabWorkspaceState.MORE_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.removeFromMoreTabs = function (target) {
         this._removeFromTabs(Sage.TabWorkspaceState.MORE_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.addToMoreTabs = function (target, at, step) {
         this._addToTabs(Sage.TabWorkspaceState.MORE_TABS, target, at, step);
     };
-
     Sage.TabWorkspaceState.prototype.setActiveMoreTab = function (target) {
         this._state.ActiveMoreTab = target;
     };
-
     Sage.TabWorkspaceState.prototype.getActiveMoreTab = function () {
         return this._state.ActiveMoreTab;
     };
-
     Sage.TabWorkspaceState.prototype.getMainTabs = function () {
         return this._state.MainTabs;
     };
-
     Sage.TabWorkspaceState.prototype.getMoreTabs = function () {
         return this._state.MoreTabs;
     };
-
     Sage.TabWorkspaceState.prototype.getMiddleTabs = function () {
         return this._state.MiddleTabs;
     };
-
     Sage.TabWorkspaceState.prototype.getUpdatedTabs = function () {
         return this._state.UpdatedTabs;
     };
-
     Sage.TabWorkspaceState.prototype.markTabUpdated = function (target) {
         if (this._wasTabUpdated[target])
             return;
-
         this._wasTabUpdated[target] = true;
         this._state.UpdatedTabs.push(target);
     };
-
     Sage.TabWorkspaceState.prototype.wasTabUpdated = function (target) {
         return this._wasTabUpdated[target];
     };
-
     Sage.TabWorkspaceState.prototype.clearUpdatedTabs = function () {
         this._wasTabUpdated = new Object;
         this._state.UpdatedTabs = [];
     };
-
     Sage.TabWorkspaceState.prototype.getHiddenTabs = function () {
         return this._state.HiddenTabs;
     };
@@ -972,113 +937,11 @@ function toggleSmartPartVisiblity(contentID, img){
         this._markForUpdateQueue = '';
 
         this.compileInfoLookups();
-        var self = (TabControl) ? TabControl : this;
-        ready(lang.hitch(self, function () {
-            // These dual refresh calls are not a typo.  The dijit.layout.ContentPane
-            // is not affectively determining all of it's layout information on the
-            // first pass through resize.  Calling resize twice effectively renders
-            // the grid to fill it's container.
-            // - KBailes 3-28-12
-            var localTC = registry.byId('tabContent');
-
-            aspect.after(localTC, 'resize', lang.hitch(this, '_resize'));
-            aspect.after(this, 'dropToMiddleSection', lang.hitch(this, '_resize'));
-
-            aspect.after(this, 'dropToMoreSection', function () {
-                localTC.resize(); localTC.resize();
-            });
-            aspect.after(this, 'dropToMainSection', function () {
-                localTC.resize(); localTC.resize();
-            });
-            aspect.after(this, 'onReOpenTab', function () {
-                localTC.resize(); localTC.resize();
-            });
-        }));
     };
-
     Sage.TabWorkspace.MORE_TAB_ID = "More";
     Sage.TabWorkspace.MAIN_AREA = "main";
     Sage.TabWorkspace.MORE_AREA = "more";
     Sage.TabWorkspace.MIDDLE_AREA = "middle";
-    Sage.TabWorkspace.prototype._resize = function () {
-        TabControl.setViewBodyHeight();
-    };
-    Sage.TabWorkspace.prototype.setViewBodyHeight = function () {
-        // Height of the entire tab workspace.
-        var tabContentHeight,
-        // Current state of the tab workspace.
-            tabState,
-        // Current active tab in the main tab area.
-            activeMainTab,
-        // Query for finding the element with the View Body (tws-tab-view-body) class.
-            viewBodyQuery,
-        // View Body element.
-            viewBody,
-        // Query for finding the element with the View Header(tws-tab-view-header) class.
-            viewHeaderQuery,
-        // View Header element.
-            viewHeader,
-        // Middle Section (tws-middle-section) element.
-            middleSection,
-        // Main Tab Button (tws-main-tab-buttons) element.
-            mainTabButtons,
-        // The calculated height of middleSection + mainTabButtons + viewHeader.
-            tabContentTop,
-        // The calculated height of tabContentHeight - tabContentTop - 24 //adjust for padding.
-            tabContentBottom,
-        // The final height to be applied to the View Body (tws-tab-view-body) element.
-            viewBodyHeight,
-        // Query for finding the Middle area elements with the View Body(tws-tab-view-body) class.
-            middleTabItemQuery,
-        // The Middle area elements containing a View Body.
-            middleTabItemViewBody,
-        // Adjust height for padding in specific area.
-            adjustForPadding,
-        // Minimum height for the grid container.  Main and Middle areas are the same.  
-        // More Area is variable based on the number of buttons.       
-            minHeight = 250;
-        tabState = this.getState();
-        tabContentHeight = registry.byId('tabContent').h;
-        //Resize for Active Main and More Tab Areas
-        //Get current tab
-        activeMainTab = tabState._state.ActiveMainTab;
-        if (activeMainTab) {
-            // More Tab Area settings.
-            if (activeMainTab === Sage.TabWorkspace.MORE_TAB_ID && tabState._state.ActiveMoreTab) {
-                activeMainTab = tabState._state.ActiveMoreTab;
-                adjustForPadding = 50;
-            }
-            // Main Tab Area settings.
-            else {
-                adjustForPadding = 25;
-            }
-            viewBodyQuery = ['#', 'element_', activeMainTab, ' .tws-tab-view-body'].join('');
-            viewBody = query(viewBodyQuery)[0];
-            viewHeaderQuery = ['#', 'element_', activeMainTab, ' .tws-tab-view-header'].join('');
-            viewHeader = query(viewHeaderQuery)[0];
-            middleSection = query('.tws-middle-section')[0];
-            mainTabButtons = query('.tws-main-tab-buttons')[0];
-            // Calculate the top of the Tab Worksapce
-            tabContentTop = middleSection.clientHeight + mainTabButtons.clientHeight + viewHeader.clientHeight;
-            // Calculate the bottom of the Tab Workspace
-            tabContentBottom = tabContentHeight - tabContentTop - adjustForPadding;
-            // Set the View Body height considering a minimum height.
-            viewBodyHeight = (tabContentBottom < minHeight) ? [minHeight, 'px'].join('') : [tabContentBottom, 'px'].join('');
-            if (viewBody) {
-                domStyle.set(viewBody, 'height', viewBodyHeight);
-            }
-        }
-        //Resize for Middle Tabs.  Fixed with no resizing.  
-        array.forEach(tabState._state.MiddleTabs, function (entry) {
-            middleTabItemQuery = ['#', 'element_', entry, ' .tws-tab-view-body'].join('');
-            // Get the View Body element for all tabs in the Middle area.
-            middleTabItemViewBody = query(middleTabItemQuery)[0];
-            if (middleTabItemViewBody.clientHeight < minHeight) {
-                domStyle.set(middleTabItemViewBody, 'height', [minHeight, 'px'].join(''));
-            }
-        });
-    };
-
     Sage.TabWorkspace.prototype.compileInfoLookups = function () {
         this._info._byId = new Object;
         this._info._byElementId = new Object;
@@ -1093,7 +956,6 @@ function toggleSmartPartVisiblity(contentID, img){
             this._info._byMoreButtonId[this._info.Tabs[i].MoreButtonId] = this._info.Tabs[i];
         }
     };
-
     Sage.TabWorkspace.prototype.getInfoFor = function (tab) { return this._info._byId[tab]; };
     Sage.TabWorkspace.prototype.getInfoForTab = function (tabId) { return this._info._byId[tabId]; };
     Sage.TabWorkspace.prototype.getInfoForTabElement = function (elementId) { return this._info._byElementId[elementId]; };
@@ -1109,17 +971,14 @@ function toggleSmartPartVisiblity(contentID, img){
     Sage.TabWorkspace.prototype.getAllDropTargets = function () { return this._allDropTargets; };
     Sage.TabWorkspace.prototype.getAllMainButtons = function () { return this._allMainButtons; };
     Sage.TabWorkspace.prototype.getAllMoreButtons = function () { return this._allMoreButtons; };
-
     Sage.TabWorkspace.prototype.getElement = function () {
         if (document.getElementById)
             return document.getElementById(this._clientId);
         return null;
     };
-
     Sage.TabWorkspace.prototype.getContext = function () { return this._context; };
     Sage.TabWorkspace.prototype.getState = function () { return this._state; };
     Sage.TabWorkspace.prototype.setState = function (state) { this._state = state; };
-
     Sage.TabWorkspace.prototype.resetState = function (state) {
         if (typeof state === "undefined") {
             var stateProxy = $("#" + this.getStateProxyPayloadId(), this.getContext()).val();
@@ -1135,7 +994,6 @@ function toggleSmartPartVisiblity(contentID, img){
         }
         this.logDebug("Reset state...");
     };
-
     Sage.TabWorkspace.prototype.logDebug = function (text) {
         if (this._debug) {
             var pad = function (value, length) {
@@ -1149,11 +1007,9 @@ function toggleSmartPartVisiblity(contentID, img){
             console.log(dateString + " - " + text);
         }
     };
-
     Sage.TabWorkspace.prototype.registerAfterPostBackAction = function (action) {
         this._afterPostBackActions.push(action);
     };
-
     Sage.TabWorkspace.prototype.init = function () {
         this.logDebug("[enter] init");
 
@@ -1196,7 +1052,6 @@ function toggleSmartPartVisiblity(contentID, img){
         this.logDebug("[leave] init");
         this.hideTabs();
     };
-
     Sage.TabWorkspace.prototype.initEvents = function () {
         var self = this; //since jQuery overrides "this" in the closure        
 
@@ -1220,13 +1075,12 @@ function toggleSmartPartVisiblity(contentID, img){
             self.cleanupAllTabElementDraggables();
         });
     };
-    Sage.TabWorkspace.prototype._processMarkForUpdateQueue = function() {
+    Sage.TabWorkspace.prototype._processMarkForUpdateQueue = function () {
         if (this._markForUpdateQueue) {
             this.getState().markTabUpdated(this._markForUpdateQueue);
-            this._markForUpdateQueue = ''; 
+            this._markForUpdateQueue = '';
         }
     };
-
     Sage.TabWorkspace.prototype.hideTabs = function () {
         if (!this.getState().InHideMode()) {
             return;
@@ -1251,103 +1105,77 @@ function toggleSmartPartVisiblity(contentID, img){
             this.hideTab(tab);
         }
     };
-
     Sage.TabWorkspace.prototype.hideTab = function (tab) {
         this.logDebug("[enter] hideTab");
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
-
         if (tab == null) { return; }
 
         switch (this.getState().getSectionFor(tab.Id)) {
             case Sage.TabWorkspaceState.MAIN_TABS:
-
                 $("#" + tab.ButtonId, this.getContext()).hide();
                 $("#" + tab.ElementId, this.getContext()).hide();
                 break;
-
             case Sage.TabWorkspaceState.MORE_TABS:
-
                 $("#" + tab.MoreButtonId, this.getContext()).hide();
                 $("#" + tab.ElementId, this.getContext()).hide();
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
                 $("#" + tab.ElementId, this.getContext()).hide();
                 break;
         }
-
     };
-
     Sage.TabWorkspace.prototype.unHideTab = function (tab) {
         this.logDebug("[enter] hideTab");
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
-
         if (tab == null) { return; }
 
         switch (this.getState().getSectionFor(tab.Id)) {
             case Sage.TabWorkspaceState.MAIN_TABS:
-
                 $("#" + tab.ButtonId, this.getContext()).show();
                 if (this.getState().getActiveMainTab() == tab.Id) {
                     $("#" + tab.ElementId, this.getContext()).show();
                 }
-
                 break;
-
             case Sage.TabWorkspaceState.MORE_TABS:
-
                 $("#" + tab.MoreButtonId, this.getContext()).show();
                 if (this.getState().getActiveMoreTab() == tab.Id) {
                     $("#" + tab.ElementId, this.getContext()).show();
                 }
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
-
                 $("#" + tab.ElementId, this.getContext()).show();
-
                 break;
         }
-
     };
-
-
     Sage.TabWorkspace.prototype.disablePageTextSelection = function () {
         if (jQuery.browser.msie) {
             if (!this._textSelectionDisabled) {
                 this._oldBodyOnDrag = document.body.ondrag;
                 this._oldBodyOnSelectStart = document.body.onselectstart;
-
                 document.body.ondrag = function () { return false; };
                 document.body.onselectstart = function () { return false; };
-
                 this._textSelectionDisabled = true;
             }
         }
     };
-
     Sage.TabWorkspace.prototype.enablePageTextSelection = function () {
         if (jQuery.browser.msie) {
             if (this._textSelectionDisabled) {
                 document.body.ondrag = this._oldBodyOnDrag;
                 document.body.onselectstart = this._oldBodyOnSelectStart;
-
                 this._textSelectionDisabled = false;
             }
         }
     };
-
     Sage.TabWorkspace.prototype.setDragDropHelperText = function (helper, text) {
         if (typeof text != "string")
             return;
-
         $(".tws-drag-helper-text", helper).html(text);
     };
     Sage.TabWorkspace.prototype.setupTabElementDraggable = function (tab) {
         var self = this;
-
         var $query;
         if (typeof tab == 'string') {
             tab = this.getInfoFor(tab);
@@ -1392,7 +1220,6 @@ function toggleSmartPartVisiblity(contentID, img){
             }
         });
     };
-
     Sage.TabWorkspace.prototype.cleanupTabElementDraggable = function (tab) {
         var $query;
         if (typeof tab == 'string') {
@@ -1413,7 +1240,6 @@ function toggleSmartPartVisiblity(contentID, img){
 
         $query.draggable("destroy");
     };
-
     Sage.TabWorkspace.prototype.setupAllTabElementDraggables = function () {
         for (var i = 0; i < this.getState().getMiddleTabs().length; i++)
             this.setupTabElementDraggable(this.getState().getMiddleTabs()[i]);
@@ -1424,28 +1250,24 @@ function toggleSmartPartVisiblity(contentID, img){
         if (this.getState().getActiveMoreTab())
             this.setupTabElementDraggable(this.getState().getActiveMoreTab());
     };
-
     Sage.TabWorkspace.prototype.cleanupAllTabElementDraggables = function () {
         //only updated tabs should have tab element draggables
         for (var i = 0; i < this.getState().getUpdatedTabs().length; i++)
             this.cleanupTabElementDraggable(this.getState().getUpdatedTabs()[i]);
     };
-
     Sage.TabWorkspace.prototype.createMainInsertMarker = function (el, at) {
         if (el) {
-            var marker = $("<div class=\"tws-insert-button-marker Global_Images icon_insert-arrow-down16x16 \"></div>").css({ top: (at.top - 10) + "px", left: (at.left - 8) + "px" });
+            var marker = $("<div class=\"tws-insert-button-marker Global_Images icon_insert-arrow-down16x16 \"></div>").css({ left: (at.left - 8) + "px" });
             $("div.tws-main-tab-buttons", this.getContext()).append(marker);
             el._marker = marker;
         }
     };
-
     Sage.TabWorkspace.prototype.cleanupMainInsertMarker = function (el) {
         if (el && el._marker) {
             el._marker.remove();
             el._marker = null;
         }
     };
-
     Sage.TabWorkspace.prototype.createMoreInsertMarker = function (el, at) {
         if (el) {
             var marker = $("<div class=\"tws-insert-button-marker Global_Images icon_insert-arrow-left16x16\"></div>").css({ top: (at.top - 8) + "px" });
@@ -1453,14 +1275,12 @@ function toggleSmartPartVisiblity(contentID, img){
             el._marker = marker;
         }
     };
-
     Sage.TabWorkspace.prototype.cleanupMoreInsertMarker = function (el) {
         if (el && el._marker) {
             el._marker.remove();
             el._marker = null;
         }
     };
-
     Sage.TabWorkspace.prototype.getContextFromUI = function (ui) {
         return ui.draggable.get(0)._context;
     };
@@ -1468,7 +1288,6 @@ function toggleSmartPartVisiblity(contentID, img){
     Sage.TabWorkspace.prototype.getRegions = function (area) {
         return this._regions[area];
     };
-
     Sage.TabWorkspace.prototype.createRegionsFrom = function (list) {
         var regions = [];
         list.each(function () {
@@ -1481,10 +1300,8 @@ function toggleSmartPartVisiblity(contentID, img){
                 el: this
             });
         });
-
         return regions;
     };
-
     Sage.TabWorkspace.prototype.testRegions = function (regions, pos, test) {
         var list = (typeof regions === "string") ? this._regions[regions] : regions;
         if (list && list.length && typeof test === "function") {
@@ -1493,26 +1310,21 @@ function toggleSmartPartVisiblity(contentID, img){
                     return list[i].el;
             }
         }
-
         return null;
     };
-
     Sage.TabWorkspace.prototype.setDroppableOn = function (draggable, id, droppable) {
         if (typeof draggable._droppables === "undefined")
             draggable._droppables = {};
 
         draggable._droppables[id] = droppable;
     };
-
     Sage.TabWorkspace.prototype.getDroppableFrom = function (draggable, id) {
         if (draggable._droppables)
             return draggable._droppables[id];
     };
-
     Sage.TabWorkspace.prototype.updateOffsetParentScroll = function () {
         this._offsetParentScroll = $(this._offsetParent).scrollTop();
     };
-
     Sage.TabWorkspace.prototype.shouldUpdateRegions = function () {
         if (this._offsetParent) {
             if (this._offsetParentScroll != $(this._offsetParent).scrollTop()) {
@@ -1520,10 +1332,8 @@ function toggleSmartPartVisiblity(contentID, img){
                 return true;
             }
         }
-
         return false;
     };
-
     Sage.TabWorkspace.prototype.initDragDrop = function () {
         var self = this;
 
@@ -1531,29 +1341,23 @@ function toggleSmartPartVisiblity(contentID, img){
         
         
         $("div.tws-middle-section", this.getContext()).droppable({
-            
             accept: ".tws-tab-button,.tws-more-tab-button,.tws-tab-element",
             tolerance: "pointer",
             activate: function (e, ui) {
                 self.logDebug("Activate MiddleSection");
-
                 //add our instance to the draggable
                 self.setDroppableOn(ui.draggable.get(0), Sage.TabWorkspace.MIDDLE_AREA, ui.options);
-
                 self._allDropTargets.filter("div.tws-middle-section div.tws-drop-target").addClass("tws-drop-target-active");
             },
             deactivate: function (e, ui) {
                 self.logDebug("De-Activate MiddleSection");
-
                 self._allDropTargets.filter("div.tws-middle-section div.tws-drop-target").removeClass("tws-drop-target-active");
-
                 ui.draggable.unbind('drag', ui.options.track);
                 ui.options._targets = null;
                 ui.options._current = null;
             },
             over: function (e, ui) {
                 self.logDebug("Over MiddleSection");
-
                 var regions = self.createRegionsFrom(self.getAllDropTargets().filter(":visible"));
                 var draggable = ui.draggable.get(0);
                 var pos = { y: e.pageY, x: e.pageX };
@@ -1573,9 +1377,7 @@ function toggleSmartPartVisiblity(contentID, img){
             },
             out: function (e, ui) {
                 self.logDebug("Out MiddleSection");
-
                 var draggable = ui.draggable.get(0);
-
                 self._allDropTargets.removeClass("tws-drop-target-hover");
 
                 $(ui.helper).data("over", $(ui.helper).data("over") - 1);
@@ -1624,12 +1426,10 @@ function toggleSmartPartVisiblity(contentID, img){
                         $('.tws-drag-helper-icon', ui.helper).removeClass('icon_no16x16');
                         $(el).addClass("tws-drop-target-hover");
                     }
-
                     droppable._currentTarget = el;
                 }
             }
         });
-
         
         
         
@@ -1638,13 +1438,7 @@ function toggleSmartPartVisiblity(contentID, img){
             tolerance: "pointer",
             activate: function (e, ui) {
                 self.logDebug("Activate MainButtonBar");
-
-                //not functional in ui 1.5 - is there an equivalent and is it needed?    
-                //ui.instance.proportions.width = ui.instance.element.width();
-                //ui.instance.proportions.height = ui.instance.element.height(); 
-
                 self.updateMainAreaRegions();
-
                 self.setDroppableOn(ui.draggable.get(0), Sage.TabWorkspace.MAIN_AREA, ui.options);
             },
             deactivate: function (e, ui) {
@@ -1663,7 +1457,7 @@ function toggleSmartPartVisiblity(contentID, img){
                 $(ui.helper).addClass("tws-drag-helper-valid");
                 $('.tws-drag-helper-icon', ui.helper).addClass('icon_ok16x16');
                 $('.tws-drag-helper-icon', ui.helper).removeClass('icon_no16x16');
-                
+
                 var regions = self.getRegions(Sage.TabWorkspace.MAIN_AREA);
                 var pos = { y: e.pageY, x: e.pageX };
                 var el = self.testRegions(regions, pos, function (r, p) {
@@ -1694,7 +1488,6 @@ function toggleSmartPartVisiblity(contentID, img){
                 }
 
                 self.cleanupMainInsertMarker(ui.draggable.get(0));
-
                 ui.draggable.unbind('drag', ui.options.track);
                 ui.options._targets = null;
                 ui.options._currentTarget = null;
@@ -1728,7 +1521,6 @@ function toggleSmartPartVisiblity(contentID, img){
                 }
             }
         });
-
         
         
         
@@ -1737,15 +1529,7 @@ function toggleSmartPartVisiblity(contentID, img){
             tolerance: "pointer",
             activate: function (e, ui) {
                 self.logDebug("Activate MoreButtonBar");
-
-                //fix for jQuery 1.5 and size of initially hidden droppables             
-
-                //not functional in ui 1.5 - is there an equivalent and is it needed?    
-                //ui.instance.proportions.width = ui.instance.element.width();
-                //ui.instance.proportions.height = ui.instance.element.height(); 
-
                 self.updateMoreAreaRegions();
-
                 self.setDroppableOn(ui.draggable.get(0), Sage.TabWorkspace.MORE_AREA, ui.options);
             },
             deactivate: function (e, ui) {
@@ -1822,7 +1606,6 @@ function toggleSmartPartVisiblity(contentID, img){
                 }
             }
         });
-
         
         
         
@@ -1904,34 +1687,22 @@ function toggleSmartPartVisiblity(contentID, img){
         this.updateAllRegions();
         this.setupAllTabElementDraggables();
     };
-
     Sage.TabWorkspace.prototype.createDraggableHelper = function () {
         return $("<div class='tws-tab-drag-helper'><div class='tws-drag-helper-icon Global_Images icon_no16x16' /><div class='tws-drag-helper-text' /></div>");
     };
-
     Sage.TabWorkspace.prototype.showMainTab = function (tab, triggerUpdate) {
         this.logDebug("[enter] showMainTab");
 
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
 
-        var previousMainTabId = this.getState().getActiveMainTab();
-
         //if we are already the active main tab, we do not have to do anything
         if (this.getState().getActiveMainTab() == tab.Id) {
-            //still optionally trigger an update
-            //// !!!! Commented out to fix 13092979: Double-clicking stalls loading of a tab.
-            ////      If the tab content is loading, it will be undefined, so the usefulness
-            ////      of triggering a load again is unclear when it breaks the tab
-            
             return;
         }
 
         //change state
         this.getState().setActiveMainTab(tab.Id);
-
-        
-
         this.showMainTabDom(tab);
 
         if (tab.Id == Sage.TabWorkspace.MORE_TAB_ID)
@@ -1941,9 +1712,7 @@ function toggleSmartPartVisiblity(contentID, img){
         if (typeof triggerUpdate == 'undefined' || triggerUpdate)
             this.triggerUpdateFor(tab.Id);
     };
-
     Sage.TabWorkspace.prototype.showMainTabDom = function (tab) {
-
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
 
@@ -1952,7 +1721,6 @@ function toggleSmartPartVisiblity(contentID, img){
         $(".tws-main-tab-buttons .tws-tab-button", this.getContext()).removeClass("tws-active-tab-button");
         $("#" + tab.ButtonId, this.getContext()).addClass("tws-active-tab-button");
     };
-
     Sage.TabWorkspace.prototype.showMoreTab = function (tab, triggerUpdate) {
         this.logDebug("[enter] showMoreTab");
 
@@ -1960,25 +1728,14 @@ function toggleSmartPartVisiblity(contentID, img){
             tab = this.getInfoFor(tab);
 
         if (this.getState().getActiveMoreTab() == tab.Id) {
-            //still optionally trigger an update
-            //// <Duplicating comment from above's "showMainTab" function change
-            //// !!!! Commented out to fix 13092979: Double-clicking stalls loading of a tab.
-            ////      If the tab content is loading, it will be undefined, so the usefulness
-            ////      of triggering a load again is unclear when it breaks the tab
-            
             return;
         }
 
         this.getState().setActiveMoreTab(tab.Id);
-
-        
-
         this.showMoreTabDom(tab);
-
         if (typeof triggerUpdate == 'undefined' || triggerUpdate)
             this.triggerUpdateFor(tab.Id);
     };
-
     Sage.TabWorkspace.prototype.showMoreTabDom = function (tab) {
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
@@ -1988,7 +1745,6 @@ function toggleSmartPartVisiblity(contentID, img){
         $(".tws-more-tab-buttons .tws-more-tab-button", this.getContext()).removeClass("tws-active-more-tab-button");
         $("#" + tab.MoreButtonId, this.getContext()).addClass("tws-active-more-tab-button");
     };
-
     Sage.TabWorkspace.prototype.dropToMainSection = function (tab, target) {
         
 
@@ -2004,9 +1760,7 @@ function toggleSmartPartVisiblity(contentID, img){
         switch (this.getState().getSectionFor(tab.Id)) {
             case Sage.TabWorkspaceState.MAIN_TABS:
                 $location.before($("#" + tab.ButtonId, this.getContext()));
-                return; // This is already in MAIN_TABS, so it doesn't need to be added
                 break;
-
             case Sage.TabWorkspaceState.MORE_TABS:
                 $("#" + tab.MoreButtonId, this.getContext()).hide();
                 $location.before($("#" + tab.ButtonId, this.getContext()).show());
@@ -2016,15 +1770,12 @@ function toggleSmartPartVisiblity(contentID, img){
                 //move the drop target
                 $(".tws-main-tab-content", this.getContext()).append($("#" + tab.DropTargetId));
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
                 $location.before($("#" + tab.ButtonId, this.getContext()).show());
-
                 //move the tab element
                 $(".tws-main-tab-content", this.getContext()).append($("#" + tab.ElementId));
                 //move the drop target
                 $(".tws-main-tab-content", this.getContext()).append($("#" + tab.DropTargetId));
-
                 break;
         }
 
@@ -2037,7 +1788,6 @@ function toggleSmartPartVisiblity(contentID, img){
         //show this main tab
         this.showMainTab(tab.Id);
     };
-
     Sage.TabWorkspace.prototype.dropToMoreSection = function (tab, target) {
         
 
@@ -2054,21 +1804,17 @@ function toggleSmartPartVisiblity(contentID, img){
             case Sage.TabWorkspaceState.MAIN_TABS:
                 $("#" + tab.ButtonId, this.getContext()).hide();
                 $location.before($("#" + tab.MoreButtonId, this.getContext()).show());
-
                 //move the tab element
                 $(".tws-more-tab-element .tws-more-tab-content-fixer", this.getContext()).before($("#" + tab.ElementId));
                 //move the drop target
                 $(".tws-more-tab-element .tws-more-tab-content-fixer", this.getContext()).before($("#" + tab.DropTargetId));
                 break;
-
             case Sage.TabWorkspaceState.MORE_TABS:
                 $location.before($("#" + tab.MoreButtonId, this.getContext()));
                 return; // This is already in the MORE_TABS section, so it doesn't need to be added
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
                 $location.before($("#" + tab.MoreButtonId, this.getContext()).show());
-
                 //move the tab element
                 $(".tws-more-tab-element .tws-more-tab-content-fixer", this.getContext()).before($("#" + tab.ElementId));
                 //move the drop target
@@ -2085,7 +1831,6 @@ function toggleSmartPartVisiblity(contentID, img){
         //show this main tab
         this.showMoreTab(tab.Id);
     };
-
     Sage.TabWorkspace.prototype.dropToMiddleSection = function (tab, target) {
         
 
@@ -2127,11 +1872,6 @@ function toggleSmartPartVisiblity(contentID, img){
                 break;
 
             case Sage.TabWorkspaceState.MORE_TABS:
-                //are we the current active more tab?
-                if (this.getState().getActiveMoreTab() == tab.Id) {
-                    //TODO: should we make a new more tab active?
-                }
-
                 $("#" + tab.MoreButtonId, this.getContext()).hide();
 
                 //move the old drop target
@@ -2141,7 +1881,6 @@ function toggleSmartPartVisiblity(contentID, img){
 
                 tabsToUpdate.push(tab.Id);
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
                 //move the old drop target
                 $(target).after($("#" + tab.DropTargetId, this.getContext()));
@@ -2157,10 +1896,8 @@ function toggleSmartPartVisiblity(contentID, img){
             this.getState().addToMiddleTabs(tab.Id, 0); //first
         else
             this.getState().addToMiddleTabs(tab.Id, this.getInfoForTabDropTarget(target.id).Id, 1);
-
         this.triggerUpdateFor(tabsToUpdate);
     };
-
     Sage.TabWorkspace.prototype.deriveStateFromMarkup = function () {
         var self = this;
         var state = {
@@ -2183,8 +1920,6 @@ function toggleSmartPartVisiblity(contentID, img){
 
         return state;
     };
-
-
     Sage.TabWorkspace.prototype.updateVisibleDroppables = function () {
         this.logDebug("[enter] enableAllVisibleDroppables");
 
@@ -2195,31 +1930,26 @@ function toggleSmartPartVisiblity(contentID, img){
 
         this.logDebug("[leave] enableAllVisibleDroppables");
     };
-
     Sage.TabWorkspace.prototype.updateAllRegions = function () {
         this.updateMainAreaRegions();
         this.updateMoreAreaRegions();
         this.updateMiddleAreaRegions();
     };
-
     Sage.TabWorkspace.prototype.updateMainAreaRegions = function () {
         //validate the container region and the area region list
         var region = this.createRegionsFrom(this._mainButtonContainer)[0];
-        
         this._regions[Sage.TabWorkspace.MAIN_AREA] = this.createRegionsFrom(this._allMainButtons.filter(":visible"));
         this._mainButtonContainerRegion = region;
     };
     Sage.TabWorkspace.prototype.updateMoreAreaRegions = function () {
         //validate the container region and the area region list
         var region = this.createRegionsFrom(this._moreButtonContainer)[0];
-        
         this._regions[Sage.TabWorkspace.MORE_AREA] = this.createRegionsFrom(this._allMoreButtons.filter(":visible"));
         this._moreButtonContainerRegion = region;
     };
     Sage.TabWorkspace.prototype.updateMiddleAreaRegions = function () {
         this._regions[Sage.TabWorkspace.MIDDLE_AREA] = this.createRegionsFrom(this._allDropTargets.filter(":visible"));
     };
-
     Sage.TabWorkspace.prototype.updateContextualFeedback = function () {
         
         if (this.getState().getMoreTabs().length <= 0)
@@ -2239,19 +1969,14 @@ function toggleSmartPartVisiblity(contentID, img){
             $(".tws-middle-drop-target span", this.getContext()).empty().append(TabWorkspaceResource.Middle_Pane_Drop_Target_Message);
         }
     };
-
     Sage.TabWorkspace.prototype.updateStateProxy = function () {
         var serializedState = this.getState().serialize();
         $("#" + this.getStateProxyPayloadId()).val(serializedState);
     };
-
-    Sage.TabWorkspace.prototype.onReOpenTab = function() { };
-
+    Sage.TabWorkspace.prototype.onReOpenTab = function () { };
     Sage.TabWorkspace.prototype.triggerUpdateFor = function (tabs, data) {
-
         this.updateContextualFeedback();
         this.updateAllRegions();
-
         var tabsToUpdate = [];
         var shouldSendState = false;
         var stateSent = false;
@@ -2303,11 +2028,11 @@ function toggleSmartPartVisiblity(contentID, img){
                         tabsToUpdate.push(tabs[i]);
                     }
                     else {
-                        if(this.getState().isMiddleTab(tabs[i])) {
+                        if (this.getState().isMiddleTab(tabs[i])) {
                             // Override the height of the middle section to 'auto' if it is more than just a grid,
                             // otherwise the height of this content may overlap the tabs section
                             var middleSectionDiv = $('.tws-middle-section .tws-tab-view-body .formtable');
-                            if(middleSectionDiv.length > 0) {
+                            if (middleSectionDiv.length > 0) {
                                 $('.tws-middle-section .tws-tab-view-body')[0].style.height = 'auto';
                             }
                         }
@@ -2327,13 +2052,10 @@ function toggleSmartPartVisiblity(contentID, img){
 
         for (var i = 0; i < tabsToUpdate.length; i++) {
             this.logDebug("Triggering update for " + tabsToUpdate[i]);
-
             tab = tabsToUpdate[i];
-            //this.cleanupTabElement(tab);        
 
             $("#" + this.getInfoFor(tab).UpdatePayloadId).val(serializedState);
             __doPostBack(this.getInfoFor(tab).UpdateTriggerId, "");
-
             stateSent = true;
         }
 
@@ -2348,7 +2070,6 @@ function toggleSmartPartVisiblity(contentID, img){
             stateSent = true;
         }
     };
-
 });
 //Manage the instances of dojo object connections
 //This service is for non-dojo nodes.  Use this in order to leverage dojo.connect to replace YAHOO.util.Event
@@ -2389,6 +2110,8 @@ Sage.IntegrationContractService = function () {
         this.accountingSystemHandlesSO = obj.AccountingSystemHandlesSO;
         this.currentUserEndpoints = obj.UserEndpoints;
         this.hasUserDefinedEndpoints = obj.HasUserDefinedEndpoints;
+        this.isCPQIntegrationEnabled = obj.IsCPQIntegrationEnabled;
+        this.isBackOfficeIntegrationEnabled = obj.IsBackOfficeIntegrationEnabled;
     }
 };
 Sage.IntegrationContractService.prototype.getCurrentOperatingCompanyId = function () {
@@ -2448,6 +2171,22 @@ function hasUserDefinedEndpoints() {
     var service = Sage.Services.getService("IntegrationContractService");
     if (service != null && typeof service !== "undefined") {
         return service.hasUserDefinedEndpoints;
+    }
+    return false;
+}
+
+function isCPQIntegrationEnabled() {
+    var service = Sage.Services.getService("IntegrationContractService");
+    if (service != null && typeof service !== "undefined") {
+        return service.isCPQIntegrationEnabled;
+    }
+    return false;
+}
+
+function isBackOfficeIntegrationEnabled() {
+    var service = Sage.Services.getService("IntegrationContractService");
+    if (service != null && typeof service !== "undefined") {
+        return service.isBackOfficeIntegrationEnabled;
     }
     return false;
 }
@@ -3270,288 +3009,8 @@ var Base64 = {
 	}
  
 };
-// ========================================================================
-//  XML.ObjTree -- XML source code from/to JavaScript object like E4X
-// ========================================================================
 
-if ( typeof(XML) == 'undefined' ) XML = function() {};
-
-//  constructor
-
-XML.ObjTree = function () {
-    return this;
-};
-
-//  class variables
-
-XML.ObjTree.VERSION = "0.24";
-
-//  object prototype
-
-XML.ObjTree.prototype.xmlDecl = '<?xml version="1.0" encoding="UTF-8" ?>\n';
-XML.ObjTree.prototype.attr_prefix = '-';
-XML.ObjTree.prototype.overrideMimeType = 'text/xml';
-
-//  method: parseXML( xmlsource )
-
-XML.ObjTree.prototype.parseXML = function ( xml ) {
-    var root;
-    if ( window.DOMParser ) {
-        var xmldom = new DOMParser();
-//      xmldom.async = false;           // DOMParser is always sync-mode
-        var dom = xmldom.parseFromString( xml, "application/xml" );
-        if ( ! dom ) return;
-        root = dom.documentElement;
-    } else if ( window.ActiveXObject ) {
-        xmldom = new ActiveXObject('Microsoft.XMLDOM');
-        xmldom.async = false;
-        xmldom.loadXML( xml );
-        root = xmldom.documentElement;
-    }
-    if ( ! root ) return;
-    return this.parseDOM( root );
-};
-
-//  method: parseHTTP( url, options, callback )
-
-XML.ObjTree.prototype.parseHTTP = function ( url, options, callback ) {
-    var myopt = {};
-    for( var key in options ) {
-        myopt[key] = options[key];                  // copy object
-    }
-    if ( ! myopt.method ) {
-        if ( typeof(myopt.postBody) == "undefined" &&
-             typeof(myopt.postbody) == "undefined" &&
-             typeof(myopt.parameters) == "undefined" ) {
-            myopt.method = "get";
-        } else {
-            myopt.method = "post";
-        }
-    }
-    if ( callback ) {
-        myopt.asynchronous = true;                  // async-mode
-        var __this = this;
-        var __func = callback;
-        var __save = myopt.onComplete;
-        myopt.onComplete = function ( trans ) {
-            var tree;
-            if ( trans && trans.responseXML && trans.responseXML.documentElement ) {
-                tree = __this.parseDOM( trans.responseXML.documentElement );
-            } else if ( trans && trans.responseText ) {
-                tree = __this.parseXML( trans.responseText );
-            }
-            __func( tree, trans );
-            if ( __save ) __save( trans );
-        };
-    } else {
-        myopt.asynchronous = false;                 // sync-mode
-    }
-    var trans;
-    if ( typeof(HTTP) != "undefined" && HTTP.Request ) {
-        myopt.uri = url;
-        var req = new HTTP.Request( myopt );        // JSAN
-        if ( req ) trans = req.transport;
-    } else if ( typeof(Ajax) != "undefined" && Ajax.Request ) {
-        var req = new Ajax.Request( url, myopt );   // ptorotype.js
-        if ( req ) trans = req.transport;
-    }
-//  if ( trans && typeof(trans.overrideMimeType) != "undefined" ) {
-//      trans.overrideMimeType( this.overrideMimeType );
-//  }
-    if ( callback ) return trans;
-    if ( trans && trans.responseXML && trans.responseXML.documentElement ) {
-        return this.parseDOM( trans.responseXML.documentElement );
-    } else if ( trans && trans.responseText ) {
-        return this.parseXML( trans.responseText );
-    }
-}
-
-//  method: parseDOM( documentroot )
-
-XML.ObjTree.prototype.parseDOM = function ( root ) {
-    if ( ! root ) return;
-
-    this.__force_array = {};
-    if ( this.force_array ) {
-        for( var i=0; i<this.force_array.length; i++ ) {
-            this.__force_array[this.force_array[i]] = 1;
-        }
-    }
-
-    var json = this.parseElement( root );   // parse root node
-    if ( this.__force_array[root.nodeName] ) {
-        json = [ json ];
-    }
-    if ( root.nodeType != 11 ) {            // DOCUMENT_FRAGMENT_NODE
-        var tmp = {};
-        tmp[root.nodeName] = json;          // root nodeName
-        json = tmp;
-    }
-    return json;
-};
-
-//  method: parseElement( element )
-
-XML.ObjTree.prototype.parseElement = function ( elem ) {
-    //  COMMENT_NODE
-    if ( elem.nodeType == 7 ) {
-        return;
-    }
-
-    //  TEXT_NODE CDATA_SECTION_NODE
-    if ( elem.nodeType == 3 || elem.nodeType == 4 ) {
-        var bool = elem.nodeValue.match( /[^\x00-\x20]/ );
-        if ( bool == null ) return;     // ignore white spaces
-        return elem.nodeValue;
-    }
-
-    var retval;
-    var cnt = {};
-
-    //  parse attributes
-    if ( elem.attributes && elem.attributes.length ) {
-        retval = {};
-        for ( var i=0; i<elem.attributes.length; i++ ) {
-            var key = elem.attributes[i].nodeName;
-            if ( typeof(key) != "string" ) continue;
-            var val = elem.attributes[i].nodeValue;
-            if ( ! val ) continue;
-            key = this.attr_prefix + key;
-            if ( typeof(cnt[key]) == "undefined" ) cnt[key] = 0;
-            cnt[key] ++;
-            this.addNode( retval, key, cnt[key], val );
-        }
-    }
-
-    //  parse child nodes (recursive)
-    if ( elem.childNodes && elem.childNodes.length ) {
-        var textonly = true;
-        if ( retval ) textonly = false;        // some attributes exists
-        for ( var i=0; i<elem.childNodes.length && textonly; i++ ) {
-            var ntype = elem.childNodes[i].nodeType;
-            if ( ntype == 3 || ntype == 4 ) continue;
-            textonly = false;
-        }
-        if ( textonly ) {
-            if ( ! retval ) retval = "";
-            for ( var i=0; i<elem.childNodes.length; i++ ) {
-                retval += elem.childNodes[i].nodeValue;
-            }
-        } else {
-            if ( ! retval ) retval = {};
-            for ( var i=0; i<elem.childNodes.length; i++ ) {
-                var key = elem.childNodes[i].nodeName;
-                if ( typeof(key) != "string" ) continue;
-                var val = this.parseElement( elem.childNodes[i] );
-                if ( ! val ) continue;
-                if ( typeof(cnt[key]) == "undefined" ) cnt[key] = 0;
-                cnt[key] ++;
-                this.addNode( retval, key, cnt[key], val );
-            }
-        }
-    }
-    return retval;
-};
-
-//  method: addNode( hash, key, count, value )
-
-XML.ObjTree.prototype.addNode = function ( hash, key, cnts, val ) {
-    if ( this.__force_array[key] ) {
-        if ( cnts == 1 ) hash[key] = [];
-        hash[key][hash[key].length] = val;      // push
-    } else if ( cnts == 1 ) {                   // 1st sibling
-        hash[key] = val;
-    } else if ( cnts == 2 ) {                   // 2nd sibling
-        hash[key] = [ hash[key], val ];
-    } else {                                    // 3rd sibling and more
-        hash[key][hash[key].length] = val;
-    }
-};
-
-//  method: writeXML( tree )
-
-XML.ObjTree.prototype.writeXML = function ( tree ) {
-    var xml = this.hash_to_xml( null, tree );
-    return this.xmlDecl + xml;
-};
-
-//  method: hash_to_xml( tagName, tree )
-
-XML.ObjTree.prototype.hash_to_xml = function ( name, tree ) {
-    var elem = [];
-    var attr = [];
-    for( var key in tree ) {
-        if ( ! tree.hasOwnProperty(key) ) continue;
-        var val = tree[key];
-        if ( key.charAt(0) != this.attr_prefix ) {
-            if ( typeof(val) == "undefined" || val == null ) {
-                elem[elem.length] = "<"+key+" />";
-            } else if ( typeof(val) == "object" && val.constructor == Array ) {
-                elem[elem.length] = this.array_to_xml( key, val );
-            } else if ( typeof(val) == "object" ) {
-                elem[elem.length] = this.hash_to_xml( key, val );
-            } else {
-                elem[elem.length] = this.scalar_to_xml( key, val );
-            }
-        } else {
-            attr[attr.length] = " "+(key.substring(1))+'="'+(this.xml_escape( val ))+'"';
-        }
-    }
-    var jattr = attr.join("");
-    var jelem = elem.join("");
-    if ( typeof(name) == "undefined" || name == null ) {
-        // no tag
-    } else if ( elem.length > 0 ) {
-        if ( jelem.match( /\n/ )) {
-            jelem = "<"+name+jattr+">\n"+jelem+"</"+name+">\n";
-        } else {
-            jelem = "<"+name+jattr+">"  +jelem+"</"+name+">\n";
-        }
-    } else {
-        jelem = "<"+name+jattr+" />\n";
-    }
-    return jelem;
-};
-
-//  method: array_to_xml( tagName, array )
-
-XML.ObjTree.prototype.array_to_xml = function ( name, array ) {
-    var out = [];
-    for( var i=0; i<array.length; i++ ) {
-        var val = array[i];
-        if ( typeof(val) == "undefined" || val == null ) {
-            out[out.length] = "<"+name+" />";
-        } else if ( typeof(val) == "object" && val.constructor == Array ) {
-            out[out.length] = this.array_to_xml( name, val );
-        } else if ( typeof(val) == "object" ) {
-            out[out.length] = this.hash_to_xml( name, val );
-        } else {
-            out[out.length] = this.scalar_to_xml( name, val );
-        }
-    }
-    return out.join("");
-};
-
-//  method: scalar_to_xml( tagName, text )
-
-XML.ObjTree.prototype.scalar_to_xml = function ( name, text ) {
-    if ( name == "#text" ) {
-        return this.xml_escape(text);
-    } else {
-        return "<"+name+">"+this.xml_escape(text)+"</"+name+">\n";
-    }
-};
-
-//  method: xml_escape( text )
-
-XML.ObjTree.prototype.xml_escape = function ( text ) {
-    return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-};
-
-
-
-
-(function(){var d=Sage,a=Sage.namespace("Sage.SData.Client.Ajax");var f=function(g){return((g>=200&&g<300)||g===304)};var b=function(k,j){if(k.readyState==4){if(f(k.status)){if(j.success){j.success.call(j.scope||this,k,j)}}else{if(k.status===0){var i=false;try{i=(k.statusText==="")}catch(g){i=true}if(i){var h=j.aborted||j.failure;if(h){h.call(j.scope||this,k,j)}}else{if(j.failure){j.failure.call(j.scope||this,k,j)}}}else{if(j.failure){j.failure.call(j.scope||this,k,j)}}}}};var c=function(h,g){h.onreadystatechange=function(){b.call(h,h,g)}};var e=function(h){var g=[];for(var i in h){g.push(encodeURIComponent(i)+"="+encodeURIComponent(h[i]))}return g.join("&")};Sage.apply(Sage.SData.Client.Ajax,{request:function(j){var j=d.apply({},j);j.params=d.apply({},j.params);j.headers=d.apply({},j.headers);if(j.cache!==false){j.params[j.cacheParam||"_t"]=(new Date()).getTime()}j.method=j.method||"GET";var g=e(j.params);if(g){j.url=j.url+(/\?/.test(j.url)?"&":"?")+g}var i=new XMLHttpRequest();if(j.user){i.open(j.method,j.url,j.async!==false,j.user,j.password);i.withCredentials=true}else{i.open(j.method,j.url,j.async!==false)}try{i.setRequestHeader("Accept",j.accept||"*).join(";"+f+",")+";"+f}return e},executeRequest:function(f,e,g){if(this.json){f.setQueryArg("format","json")}var h=b.apply({async:e.async,headers:{},method:"GET",url:f.build()},{scope:this,success:function(i,j){var k=this.processFeed(i);this.fireEvent("requestcomplete",f,j,k);if(e.success){e.success.call(e.scope||this,k)}},failure:function(i,j){this.fireEvent("requestexception",f,j,i);if(e.failure){e.failure.call(e.scope||this,i,j)}},aborted:function(i,j){this.fireEvent("requestaborted",f,j,i);if(e.aborted){e.aborted.call(e.scope||this,i,j)}}},g);b.apply(h.headers,this.createHeadersForRequest(f),f.completeHeaders);if(f.extendedHeaders.Accept){h.headers.Accept=this.extendAcceptRequestHeader(h.headers.Accept,f.extendedHeaders.Accept)}if(this.userName&&this.useCredentialedRequest){h.user=this.userName;h.password=this.password}this.fireEvent("beforerequest",f,h);if(typeof h.result!=="undefined"){if(e.success){e.success.call(e.scope||this,h.result)}return}return d.Ajax.request(h)},abortRequest:function(e){d.Ajax.cancel(e)},readFeed:function(f,e){e=e||{};if(this.batchScope){this.batchScope.add({url:f.build(),method:"GET"});return}var g={headers:{Accept:this.json?"application/json,**"}};if(e.httpMethodOverride){if(this.json){f.setQueryArg("format","json")}g.headers["X-HTTP-Method-Override"]="GET";g.method="POST";g.body=f.build();g.url=f.build(true)}return this.executeRequest(f,e,g)},readEntry:function(f,e){e=e||{};if(this.batchScope){this.batchScope.add({url:f.build(),method:"GET"});return}var g=b.apply({},{success:function(i){var h=i["$resources"][0]||false;if(e.success){e.success.call(e.scope||this,h)}}},e);return this.executeRequest(f,g,{headers:{Accept:this.json?"application/json,**"}})},createEntry:function(h,g,f){f=f||{};if(this.batchScope){this.batchScope.add({url:h.build(),entry:g,method:"POST"});return}var j=b.apply({},{success:function(l){var k=l["$resources"][0]||false;if(f.success){f.success.call(f.scope||this,k)}}},f);var i=b.apply({},{method:"POST"});if(this.isJsonEnabled()){b.apply(i,{body:JSON.stringify(g),headers:{"Content-Type":"application/json"}})}else{var e=new XML.ObjTree();e.attr_prefix="@";b.apply(i,{body:e.writeXML(this.formatEntry(g)),headers:{"Content-Type":"application/atom+xml;type=entry",Accept:"application/atom+xml;type=entry,**";i.body=e.writeXML(this.formatEntry(g))}return this.executeRequest(h,k,i)},deleteEntry:function(g,f,e){e=e||{};if(this.batchScope){this.batchScope.add({url:g.build(),method:"DELETE",etag:!(e&&e.ignoreETag)&&f["$etag"]});return}var i={},h={method:"DELETE",headers:i};if(f["$etag"]&&!(e&&e.ignoreETag)){i["If-Match"]=f["$etag"]}return this.executeRequest(g,e,h)},executeServiceOperation:function(h,g,f){var j=b.apply({},{success:function(m){var l=m["$resources"][0]||false,k=l&&l.response,o=k&&k["$resources"],n=o&&o[0];if(n&&n["$name"]){l.response={};l.response[n["$name"]]=n}if(f.success){f.success.call(f.scope||this,l)}}},f);var i=b.apply({},{method:"POST"});if(this.isJsonEnabled()){b.apply(i,{body:JSON.stringify(g),headers:{"Content-Type":"application/json"}})}else{var e=new XML.ObjTree();e.attr_prefix="@";b.apply(i,{body:e.writeXML(this.formatEntry(g)),headers:{"Content-Type":"application/atom+xml;type=entry",Accept:"application/atom+xml;type=entry,**"}})}return this.executeRequest(e,n,j)},parseFeedXml:function(f){var e=new XML.ObjTree();e.attr_prefix="@";return e.parseXML(f)},isIncludedReference:function(f,e,g){return g.hasOwnProperty("@sdata:key")},isIncludedCollection:function(h,f,i){if(i.hasOwnProperty("@sdata:key")){return false}if(i.hasOwnProperty("@sdata:uri")||i.hasOwnProperty("@sdata:url")){return true}var j,g;for(var e in i){if(e[0]==="@"){continue}j=i[e];break}if(j){if(b.isArray(j)){g=j[0]}else{g=j}if(g&&g.hasOwnProperty("@sdata:key")){return true}}return false},convertEntity:function(j,e,g,f){f=f||{};f["$name"]=e;f["$key"]=g["@sdata:key"];f["$url"]=g["@sdata:uri"];f["$uuid"]=g["@sdata:uuid"];for(var m in g){if(m[0]==="@"){continue}var n=c.exec(m),h=n?n[1]:false,i=n?n[2]:m,k=g[m];if(typeof k==="object"){if(k.hasOwnProperty("@xsi:nil")){var l=null}else{if(this.isIncludedReference(h,i,k)){var l=this.convertEntity(h,i,k)}else{if(this.isIncludedCollection(h,i,k)){var l=this.convertEntityCollection(h,i,k)}else{l=this.convertCustomEntityProperty(h,i,k)}}}k=l}f[i]=k}return f},convertEntityCollection:function(k,e,g){for(var n in g){if(n[0]==="@"){continue}var o=c.exec(n),h=o?o[1]:false,j=o?o[2]:n,l=g[n];if(b.isArray(l)){var m=[];for(var f=0;f<l.length;f++){m.push(this.convertEntity(k,j,l[f]))}return{"$resources":m}}else{return{"$resources":[this.convertEntity(k,j,l)]}}break}return null},convertCustomEntityProperty:function(f,e,g){return g},formatEntity:function(g,f,i){i=i||{};if(f["$key"]){i["@sdata:key"]=f["$key"]}for(var e in f){if(e[0]==="$"){continue}var h=f[e];if(h==null){h={"@xsi:nil":"true"}}else{if(typeof h==="object"&&h.hasOwnProperty("$resources")){h=this.formatEntityCollection(g,h)}else{if(typeof h==="object"){h=this.formatEntity(g,h)}}}i[e]=h}return i},formatEntityCollection:function(h,k){var e={};for(var g=0;g<k["$resources"].length;g++){var j=k["$resources"][g],f=j["$name"],l=(e[f]=e[f]||[]);l.push(this.formatEntity(h,k["$resources"][g]))}return e},convertEntry:function(j){var e={};e["$descriptor"]=j.title;e["$etag"]=j["http:etag"];e["$httpStatus"]=j["http:httpStatus"];var l=j["sdata:payload"];for(var h in l){if(l.hasOwnProperty(h)==false){continue}var k=h.split(":"),i,g,f=l[h];if(k.length==2){i=k[0];g=k[1]}else{if(k.length<2){i=false;g=h}else{continue}}this.convertEntity(i,g,f,e)}return e},formatEntry:function(f,g){var e={};if(!g){e["@xmlns:sdata"]="http://schemas.sage.com/sdata/2008/1";e["@xmlns:xsi"]="http://www.w3.org/2001/XMLSchema-instance";e["@xmlns:http"]="http://schemas.sage.com/sdata/http/2008/1";e["@xmlns"]="http://www.w3.org/2005/Atom"}if(f["$httpMethod"]){e["http:httpMethod"]=f["$httpMethod"]}if(f["$ifMatch"]){e["http:ifMatch"]=f["$ifMatch"]}if(f["$etag"]){e["http:etag"]=f["$etag"]}if(f["$url"]){e.id=f["$url"]}e["sdata:payload"]={};e["sdata:payload"][f["$name"]]={"@xmlns":"http://schemas.sage.com/dynamic/2007"};this.formatEntity(false,f,e["sdata:payload"][f["$name"]]);return{entry:e}},convertFeed:function(g){var e={};if(g["opensearch:totalResults"]){e["$totalResults"]=parseInt(g["opensearch:totalResults"])}if(g["opensearch:startIndex"]){e["$startIndex"]=parseInt(g["opensearch:startIndex"])}if(g["opensearch:itemsPerPage"]){e["$itemsPerPage"]=parseInt(g["opensearch:itemsPerPage"])}if(g.link){e["$link"]={};for(var f=0;f<g.link.length;f++){e["$link"][g.link[f]["@rel"]]=g.link[f]["@href"]}if(e["$link"]["self"]){e["$url"]=e["$link"]["self"]}}e["$resources"]=[];if(b.isArray(g.entry)){for(var f=0;f<g.entry.length;f++){e["$resources"].push(this.convertEntry(g.entry[f]))}}else{if(typeof g.entry==="object"){e["$resources"].push(this.convertEntry(g.entry))}}return e},formatFeed:function(g){var e={};e["@xmlns:sdata"]="http://schemas.sage.com/sdata/2008/1";e["@xmlns:xsi"]="http://www.w3.org/2001/XMLSchema-instance";e["@xmlns:http"]="http://schemas.sage.com/sdata/http/2008/1";e["@xmlns"]="http://www.w3.org/2005/Atom";if(g["$url"]){e.id=g["$url"]}e.entry=[];for(var f=0;f<g["$resources"].length;f++){e.entry.push(this.formatEntry(g["$resources"][f],true)["entry"])}return{feed:e}},processFeed:function(e){if(!e.responseText){return null}var g=e.getResponseHeader&&e.getResponseHeader("Content-Type");if((g==="application/json")||(!g&&this.isJsonEnabled())){var f=JSON.parse(e.responseText);if(f.hasOwnProperty("$resources")){return f}else{return{"$resources":[f]}}}else{var f=this.parseFeedXml(e.responseText);if(f.hasOwnProperty("feed")){return this.convertFeed(f.feed)}else{if(f.hasOwnProperty("entry")){return{"$resources":[this.convertEntry(f.entry)]}}else{return false}}}}})})();
+(function(){var b=window.Sage,e=b,a=b.namespace("Sage.SData.Client.Ajax");var f=function(j){return((j>=200&&j<300)||j===304)};var c=function(n,m){if(n.readyState==4){if(f(n.status)){if(m.success){m.success.call(m.scope||this,n,m)}}else{if(n.status===0){var l=false;try{l=(n.statusText==="")}catch(j){l=true}if(l){var k=m.aborted||m.failure;if(k){k.call(m.scope||this,n,m)}}else{if(m.failure){m.failure.call(m.scope||this,n,m)}}}else{if(m.failure){m.failure.call(m.scope||this,n,m)}}}}};var g=function(l,k){var j=k.timeout||k.failure;if(j){j.call(k.scope||this,l,k)}};var d=function(k,j){k.ontimeout=function(){g.call(k,k,j)}};var i=function(k,j){k.onreadystatechange=function(){c.call(k,k,j)}};var h=function(k){var j=[];for(var l in k){j.push(encodeURIComponent(l)+"="+encodeURIComponent(k[l]))}return j.join("&")};b.apply(b.SData.Client.Ajax,{request:function(m){m=e.apply({},m);m.params=e.apply({},m.params);m.headers=e.apply({},m.headers);if(m.cache!==true){m.params[m.cacheParam||"_t"]=(new Date()).getTime()}m.method=m.method||"GET";var j=h(m.params);if(j){m.url=m.url+(/\?/.test(m.url)?"&":"?")+j}var l=new XMLHttpRequest();if(m.user){l.open(m.method,m.url,m.async!==false,m.user,m.password)}else{l.open(m.method,m.url,m.async!==false)}if(m.withCredentials){l.withCredentials=true}try{l.setRequestHeader("Accept",m.accept||"*).join(";"+i+",")+";"+i}return h},executeRequest:function(i,h,j){if(this.json){i.setQueryArg("format","json")}var k=c.apply({async:h.async,headers:{},method:"GET",url:i.build()},{scope:this,success:function(l,m){var n=this.processFeed(l);this.fireEvent("requestcomplete",i,m,n);if(h.success){h.success.call(h.scope||this,n)}},failure:function(l,m){this.fireEvent("requestexception",i,m,l);if(h.failure){h.failure.call(h.scope||this,l,m)}},aborted:function(l,m){this.fireEvent("requestaborted",i,m,l);if(h.aborted){h.aborted.call(h.scope||this,l,m)}},timeout:function(l,m){this.fireEvent("requesttimeout",i,m,l);if(h.timeout){h.timeout.call(h.scope||this,l,m)}}},j);c.apply(k.headers,this.createHeadersForRequest(i),i.completeHeaders);if(typeof this.timeout==="number"){k.requestTimeout=this.timeout}if(i.extendedHeaders.Accept){k.headers.Accept=this.extendAcceptRequestHeader(k.headers.Accept,i.extendedHeaders.Accept)}if(this.useCredentialedRequest||this.useCrossDomainCookies){k.withCredentials=true}if(this.useCredentialedRequest&&this.userName){k.user=this.userName;k.password=this.password}this.fireEvent("beforerequest",i,k);if(typeof k.result!=="undefined"){if(h.success){h.success.call(h.scope||this,k.result)}return}return g.Ajax.request(k)},abortRequest:function(h){g.Ajax.cancel(h)},readFeed:function(i,h){h=h||{};if(this.batchScope){this.batchScope.add({url:i.build(),method:"GET"});return}var j={headers:{Accept:this.json?"application/json,**"}};if(h.httpMethodOverride){if(this.json){i.setQueryArg("format","json")}j.headers["X-HTTP-Method-Override"]="GET";j.method="POST";j.body=i.build();j.url=i.build(true)}return this.executeRequest(i,h,j)},readEntry:function(i,h){h=h||{};if(this.batchScope){this.batchScope.add({url:i.build(),method:"GET"});return}var j=c.apply({},{success:function(l){var k=l["$resources"][0]||false;if(h.success){h.success.call(h.scope||this,k)}}},h);return this.executeRequest(i,j,{headers:{Accept:this.json?"application/json,**"}})},createEntry:function(k,j,i){i=i||{};if(this.batchScope){this.batchScope.add({url:k.build(),entry:j,method:"POST"});return}var m=c.apply({},{success:function(o){var n=o["$resources"][0]||false;if(i.success){i.success.call(i.scope||this,n)}}},i);var l=c.apply({},{method:"POST"});if(this.isJsonEnabled()){c.apply(l,{body:JSON.stringify(j),headers:{"Content-Type":"application/json"}})}else{var h=new XML.ObjTree();h.attr_prefix="@";c.apply(l,{body:h.writeXML(this.formatEntry(j)),headers:{"Content-Type":"application/atom+xml;type=entry",Accept:"application/atom+xml;type=entry,**";l.body=h.writeXML(this.formatEntry(j))}return this.executeRequest(k,n,l)},deleteEntry:function(j,i,h){h=h||{};if(this.batchScope){this.batchScope.add({url:j.build(),method:"DELETE",etag:!(h&&h.ignoreETag)&&i["$etag"]});return}var l={},k={method:"DELETE",headers:l};if(i["$etag"]&&!(h&&h.ignoreETag)){l["If-Match"]=i["$etag"]}return this.executeRequest(j,h,k)},executeServiceOperation:function(k,j,i){var m=c.apply({},{success:function(p){var o=p["$resources"][0]||false,n=o&&o.response,r=n&&n["$resources"],q=r&&r[0];if(q&&q["$name"]){o.response={};o.response[q["$name"]]=q}if(i.success){i.success.call(i.scope||this,o)}}},i);var l=c.apply({},{method:"POST"});if(this.isJsonEnabled()){c.apply(l,{body:JSON.stringify(j),headers:{"Content-Type":"application/json"}})}else{var h=new XML.ObjTree();h.attr_prefix="@";c.apply(l,{body:h.writeXML(this.formatEntry(j)),headers:{"Content-Type":"application/atom+xml;type=entry",Accept:"application/atom+xml;type=entry,**"}})}return this.executeRequest(h,q,m)},parseFeedXml:function(i){var h=new XML.ObjTree();h.attr_prefix="@";return h.parseXML(i)},isIncludedReference:function(i,h,j){return j&&j.hasOwnProperty("@sdata:key")},isIncludedCollection:function(k,i,l){if(l.hasOwnProperty("@sdata:key")){return false}if(l.hasOwnProperty("@sdata:uri")||l.hasOwnProperty("@sdata:url")){return true}var m,j;for(var h in l){if(h.charAt(0)==="@"){continue}m=l[h];break}if(m){if(c.isArray(m)){j=m[0]}else{j=m}if(j&&j.hasOwnProperty("@sdata:key")){return true}}return false},convertEntity:function(m,h,j,i){i=i||{};i["$name"]=h;i["$key"]=j["@sdata:key"];i["$url"]=j["@sdata:uri"];i["$uuid"]=j["@sdata:uuid"];for(var p in j){if(p.charAt(0)==="@"){continue}var q=f.exec(p),k=q?q[1]:false,l=q?q[2]:p,o=null,n=j[p];if(typeof n==="object"){if(n.hasOwnProperty("@xsi:nil")){o=null}else{if(this.isIncludedReference(k,l,n)){o=this.convertEntity(k,l,n)}else{if(this.isIncludedCollection(k,l,n)){o=this.convertEntityCollection(k,l,n)}else{o=this.convertCustomEntityProperty(k,l,n)}}}n=o}i[l]=n}return i},convertEntityCollection:function(n,h,k){for(var q in k){if(q.charAt(0)==="@"){continue}var r=f.exec(q),l=r?r[1]:false,m=r?r[2]:q,o=k[q];if(c.isArray(o)){var p=[];for(var j=0;j<o.length;j++){p.push(this.convertEntity(n,m,o[j]))}return{"$resources":p}}else{return{"$resources":[this.convertEntity(n,m,o)]}}break}return null},convertCustomEntityProperty:function(i,h,j){return j},formatEntity:function(j,i,l){l=l||{};if(i["$key"]){l["@sdata:key"]=i["$key"]}for(var h in i){if(h.charAt(0)==="$"){continue}var k=i[h];if(k==null){k={"@xsi:nil":"true"}}else{if(typeof k==="object"&&k.hasOwnProperty("$resources")){k=this.formatEntityCollection(j,k)}else{if(typeof k==="object"){k=this.formatEntity(j,k)}}}l[h]=k}return l},formatEntityCollection:function(l,n){var h={};for(var k=0;k<n["$resources"].length;k++){var m=n["$resources"][k],j=m["$name"],o=(h[j]=h[j]||[]);o.push(this.formatEntity(l,n["$resources"][k]))}return h},convertEntry:function(m){var h={};h["$descriptor"]=m.title;h["$etag"]=m["http:etag"];h["$httpStatus"]=m["http:httpStatus"];var o=m["sdata:payload"];for(var k in o){if(k.charAt(0)==="@"){continue}if(o.hasOwnProperty(k)==false){continue}var n=k.split(":"),l,j,i=o[k];if(n.length==2){l=n[0];j=n[1]}else{if(n.length<2){l=false;j=k}else{continue}}this.convertEntity(l,j,i,h)}return h},formatEntry:function(i,j){var h={};if(!j){h["@xmlns:sdata"]="http://schemas.sage.com/sdata/2008/1";h["@xmlns:xsi"]="http://www.w3.org/2001/XMLSchema-instance";h["@xmlns:http"]="http://schemas.sage.com/sdata/http/2008/1";h["@xmlns"]="http://www.w3.org/2005/Atom"}if(i["$httpMethod"]){h["http:httpMethod"]=i["$httpMethod"]}if(i["$ifMatch"]){h["http:ifMatch"]=i["$ifMatch"]}if(i["$etag"]){h["http:etag"]=i["$etag"]}if(i["$url"]){h.id=i["$url"]}h["sdata:payload"]={};h["sdata:payload"][i["$name"]]={"@xmlns":"http://schemas.sage.com/dynamic/2007"};this.formatEntity(false,i,h["sdata:payload"][i["$name"]]);return{entry:h}},convertFeed:function(k){var h={},j;if(k["opensearch:totalResults"]){h["$totalResults"]=parseInt(a(k["opensearch:totalResults"]))}if(k["opensearch:startIndex"]){h["$startIndex"]=parseInt(a(k["opensearch:startIndex"]))}if(k["opensearch:itemsPerPage"]){h["$itemsPerPage"]=parseInt(a(k["opensearch:itemsPerPage"]))}if(k.link){h["$link"]={};for(j=0;j<k.link.length;j++){h["$link"][k.link[j]["@rel"]]=k.link[j]["@href"]}if(h["$link"]["self"]){h["$url"]=h["$link"]["self"]}}h["$resources"]=[];if(c.isArray(k.entry)){for(j=0;j<k.entry.length;j++){h["$resources"].push(this.convertEntry(k.entry[j]))}}else{if(typeof k.entry==="object"){h["$resources"].push(this.convertEntry(k.entry))}}return h},formatFeed:function(k){var h={};h["@xmlns:sdata"]="http://schemas.sage.com/sdata/2008/1";h["@xmlns:xsi"]="http://www.w3.org/2001/XMLSchema-instance";h["@xmlns:http"]="http://schemas.sage.com/sdata/http/2008/1";h["@xmlns"]="http://www.w3.org/2005/Atom";if(k["$url"]){h.id=k["$url"]}h.entry=[];for(var j=0;j<k["$resources"].length;j++){h.entry.push(this.formatEntry(k["$resources"][j],true)["entry"])}return{feed:h}},processFeed:function(h){if(!h.responseText){return null}var j=h.getResponseHeader&&h.getResponseHeader("Content-Type");var i;if(/application\/json/i.test(j)||(!j&&this.isJsonEnabled())){i=JSON.parse(h.responseText);if(i.hasOwnProperty("$resources")){return i}else{return{"$resources":[i]}}}else{i=this.parseFeedXml(h.responseText);if(i.hasOwnProperty("feed")){return this.convertFeed(i.feed)}else{if(i.hasOwnProperty("entry")){return{"$resources":[this.convertEntry(i.entry)]}}else{return i}}}}})})();var XML=window.XML;if(typeof(XML)=="undefined"){XML=function(){}}XML.ObjTree=function(){console.warn("xml obj transformation is not implemented.");return this};XML.ObjTree.VERSION="0.10";XML.ObjTree.prototype.xmlDecl='<?xml version="1.0" encoding="UTF-8" ?>\n';XML.ObjTree.prototype.attr_prefix="-";XML.ObjTree.prototype.overrideMimeType="text/xml";XML.ObjTree.prototype.parseXML=function(a){console.warn("parseXML is not implemented.")};XML.ObjTree.prototype.parseHTTP=function(b,a,c){console.warn("parseHTTP is not implemented.")};XML.ObjTree.prototype.parseDOM=function(a){console.warn("praseDom is not implemented.")};XML.ObjTree.prototype.parseElement=function(a){console.warn("parseElement is not implemented.")};XML.ObjTree.prototype.addNode=function(c,a,b,d){console.warn("addNode is not implemented.")};XML.ObjTree.prototype.writeXML=function(a){console.warn("writeXML is not implemented.")};XML.ObjTree.prototype.hash_to_xml=function(b,a){console.warn("hash_to_xml is not implemented.")};XML.ObjTree.prototype.array_to_xml=function(a,b){console.warn("array_to_xml is not implemented.")};XML.ObjTree.prototype.scalar_to_xml=function(a,b){console.warn("scalar_to_xml is not implemented.")};XML.ObjTree.prototype.xml_escape=function(a){console.warn("xml_escape is not implemented.")};
 
 (function(r){var q=/^\s+|\s+$/g,p=/(,)/,i=/'/g,h=/\n/g,k=/&/g,m=/</g,l=/>/g,j=/"/g,c={},e={},g="is,ie".split(p).length!=3,a={tags:{begin:"{%",end:"%}"},allowWith:false},d=function(b,c,d){if(d)for(var a in d)b[a]=d[a];if(c)for(var a in c)b[a]=c[a];return b},n=function(a){return typeof a!=="string"?a:a.replace(k,"&amp;").replace(m,"&lt;").replace(l,"&gt;").replace(j,"&quot;")},o=function(a){return a.replace(i,"\\'").replace(h,"\\n")},t=function(a){return a.replace(q,"")},s=function(b,m){var f=m.tags.begin,h=m.tags.end;if(!g){var l=f+h,n=e[l]||(e[l]=new RegExp(f+"(.*?)"+h));return b.split(n)}var j=0,k=0,a=[];while((j=b.indexOf(f,k))!=-1&&(k=b.indexOf(h,j))!=-1){a[a.length]=j;a[a.length]=k}for(var d=[],i=0,c=0;c<a.length;c++){d[d.length]=b.substr(i,a[c]-i);i=a[c]+(c%2?h.length:f.length)}d.push(b.substr(i));return d},f=function(f,i){if(f.join)f=f.join("");if(c[f])return c[f];for(var i=d({},i,a),b=s(f,i),e=1;e<b.length;e+=2)if(b[e].length>0){var j=b[e].charAt(0),g=b[e].substr(1);switch(j){case"=":b[e]="__r.push("+g+");";break;case":":b[e]="__r.push(__s.encode("+g+"));";break;case"!":b[e]="__r.push("+t(g)+".apply(__v, __c));"}}for(var e=0;e<b.length;e+=2)b[e]="__r.push('"+o(b[e])+"');";b.unshift("var __r = [], $ = __v, $$ = __c, __s = Simplate;",a.allowWith?"with ($ || {}) {":"");b.push(a.allowWith?"}":"","return __r.join('');");var h;try{h=new Function("__v, __c",b.join(""))}catch(k){h=function(){return k.message}}return c[f]=h},b=function(a,b){this.fn=f(a,b)};d(b,{options:a,encode:n,make:f});d(b.prototype,{apply:function(b,a){return this.fn.call(a||this,b,a||b)}});r.Simplate=b})(window)
 

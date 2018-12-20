@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/MainView/ActivityMgr/AttendeeLookup/BaseLookupConfig", [
         'Sage/UI/Controls/Lookup',
         'dojo/_base/declare'
 ],
@@ -7,12 +7,12 @@ function (
     Lookup,
     declare
    ) {
-    var baseLookupConfig = declare('Sage.MainView.ActivityMgr.AttendeeLookup.BaseLookupConfig',null, {
+    var baseLookupConfig = declare('Sage.MainView.ActivityMgr.AttendeeLookup.BaseLookupConfig', null, {
         lookupName: 'LookupName',
         lookupDisplayName: 'Lookup Display Name',
         lookupType: Lookup,
-        entityName:'entityName',
-        id: false,     
+        entityName: 'entityName',
+        id: false,
         cells: [],
         defaultCell: {
             'sortable': true,
@@ -31,7 +31,7 @@ function (
         },
         storeOptions: {
             resourceKind: 'someEntity',
-            sort: [{ attribute: 'SortField'}]
+            sort: [{ attribute: 'SortField' }]
         },
         displayMode: 0,
         isModal: true,
@@ -48,8 +48,8 @@ function (
         showEntityInfoToolTip: false,
         _nlsResources: {},
         constructor: function () {
-            
-           
+
+
         },
         rebuild: function () {
             this._lookup = null;
@@ -72,13 +72,9 @@ function (
 
             var baseConfig = {
                 id: this.id + "_base_" + uiid,
-                structure: [
-                    {
-                        defaultCell: this.defaultCell,
-                        cells: this.cells,
-                    }],
-                gridOptions: this.gridOptions, 
-                storeOptions: this.storeOptions, 
+                structure: this.cells,
+                gridOptions: this.gridOptions,
+                storeOptions: this.storeOptions,
                 isModal: this.isModal,
                 displayMode: this.displayMode,
                 initialLookup: this.initialLookup,
@@ -86,7 +82,7 @@ function (
                 returnPrimaryKey: this.returnPrimaryKey,
                 dialogTitle: this.dialogTitle,
                 dialogButtonText: this.dialogButtonText,
-                doSelected: function () { alert("overide the doSelect method")}
+                doSelected: function () { alert("override the doSelect method") }
             };
 
             var config = {
@@ -99,7 +95,7 @@ function (
 
             return config;
         }
-       
+
     });
     return baseLookupConfig;
 });

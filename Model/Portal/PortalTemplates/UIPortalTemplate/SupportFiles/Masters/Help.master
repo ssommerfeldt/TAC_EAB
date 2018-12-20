@@ -6,7 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Sage Saleslogix Help</title>
+	<link rel="shortcut icon" type="image/png" href="~/inforLogo24x24.png" />
+    <link rel="icon" type="image/png" href="~/inforLogo24x24.png" />
+    <title>Infor CRM</title>
     <link rel="stylesheet" type="text/css" href="~/css/YUI/fonts.css" />
    
     <link rel="stylesheet" type="text/css" href="~/css/help.css" />
@@ -18,7 +20,7 @@
 	<div class="MainHeader">
 		<span class="MainHeaderLogo">
 			<asp:HyperLink ID="hlHome" runat="server" BorderStyle="None">
-				<img id="logo" src="~/images/icons/Sage SalesLogix.jpg" runat="server" alt="" style="border-width:0px;"/>
+				<img id="logo" src="~/images/icons/Saleslogix121x22.jpg" runat="server" alt="" style="border-width:0px;"/>
 			</asp:HyperLink>
 		</span>
 		<span class="MainHeaderRight">

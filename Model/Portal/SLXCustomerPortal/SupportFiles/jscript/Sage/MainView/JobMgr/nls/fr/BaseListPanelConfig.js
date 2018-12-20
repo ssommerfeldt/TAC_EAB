@@ -1,3 +1,3 @@
-define((
-{ titleFmtString: '${0}' }
-));
+define("Sage/MainView/JobMgr/nls/fr/BaseListPanelConfig", {
+    "titleFmtString": "${0}"
+});

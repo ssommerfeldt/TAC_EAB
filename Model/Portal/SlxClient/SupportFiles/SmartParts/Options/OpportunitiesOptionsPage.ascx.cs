@@ -30,7 +30,7 @@ public partial class OpportunitiesOptionsPage : UserControl, ISmartPartInfoProvi
             pklOpportunityProbability.PickListValue = options.Probability;
         Utility.SetSelectedValue(_estimatedCloseToMonths, options.EstimatedCloseToMonths);
 
-        //Set the default to none if ther is not a match.
+        //Set the default to none if there is not a match.
         try
         {
             _salesProcess.SelectedValue = options.SalesProcess;
@@ -51,7 +51,7 @@ public partial class OpportunitiesOptionsPage : UserControl, ISmartPartInfoProvi
             luDefCurrency.Visible = true;
             if (!String.IsNullOrEmpty(options.DefCurrencyCode) && luDefCurrency.LookupResultValue == null)
             {
-                luDefCurrency.LookupResultValue = EntityFactory.GetById<IExchangeRate>(options.DefCurrencyCode);
+                luDefCurrency.LookupResultValue = EntityFactory.GetRepository<IExchangeRate>().FindFirstByProperty("CurrencyCode", options.DefCurrencyCode);
             }
         }
         else
@@ -81,10 +81,10 @@ public partial class OpportunitiesOptionsPage : UserControl, ISmartPartInfoProvi
     private void BindSalesProcess()
     {
         _salesProcess.Items.Clear();
-        System.Collections.Generic.IList<Plugin> SpList = PluginManager.GetPluginList(PluginType.SalesProcess, true, false);
+        var spList = PluginManager.GetPluginList(PluginType.SalesProcess, true, false);
         _salesProcess.Items.Add(new ListItem(GetLocalResourceObject("SalesProcess_None").ToString(), "NONE"));
 
-        foreach (Plugin sp in SpList)
+        foreach (Plugin sp in spList)
         {
             _salesProcess.Items.Add(new ListItem(sp.Name, sp.Name));
         }
@@ -104,7 +104,7 @@ public partial class OpportunitiesOptionsPage : UserControl, ISmartPartInfoProvi
         options.EstimatedCloseToLastDayOfMonth = _estimatedCloseToLastDayOfMonth.Checked;
         if (luDefCurrency.LookupResultValue != null)
         {
-            options.DefCurrencyCode = ((IExchangeRate)luDefCurrency.LookupResultValue).Id.ToString();
+            options.DefCurrencyCode = ((IExchangeRate)luDefCurrency.LookupResultValue).CurrencyCode;
         }
         options.Save();
     }

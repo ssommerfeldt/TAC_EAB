@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="92884487-c3db-4c46-98dc-79f10bd67607" lastModifiedUtc="2017-09-20T03:48:09.0773392Z" name="GetEqCustomSetting" returnType="String" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="d0f36199-6dc6-4c66-aa07-b04d2ba88cb6" paramName="recordName" sequence="0" paramType="String">
+      <description>Custom Setting Record Name</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="06842351-f318-469e-aada-939205a2ef7e" lastModifiedUtc="2017-09-20T03:48:09.062338Z" targetType="Sage.SalesLogix.Integration.Rules, Sage.SalesLogix.BusinessRules" targetMethod="GetEqCustomSetting" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

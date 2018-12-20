@@ -1,24 +1,26 @@
-﻿    require([
-        'dojo/aspect',
-        'dojo/ready',
-        'dojo/_base/lang',
-        'dijit/registry',
-        'dojo/dom-style',
-        'dojo/query',
-        'dojo/_base/array',
-        'dojo/has',
-        'dojo/_base/sniff'
-    ], function (
-        aspect,
-        ready,
-        lang,
-        registry,
-        domStyle,
-        query,
-        array,
-        has,
-        _sniff
-    ){
+﻿require([
+    'dojo/aspect',
+    'dojo/ready',
+    'dojo/_base/lang',
+    'dijit/registry',
+    'dojo/dom-style',
+    'dojo/query',
+    'dojo/_base/array',
+    'dojo/has',
+    'dojo/_base/sniff',
+    'Sage/Utility/Workspace'
+], function (
+    aspect,
+    ready,
+    lang,
+    registry,
+    domStyle,
+    query,
+    array,
+    has,
+    _sniff,
+    workspaceUtil
+) {
     Sage.TabWorkspaceState = function (state) {
         this._state = state;
         this._wasTabUpdated = new Object;
@@ -48,7 +50,6 @@
             return null;
         }
     };
-
     Sage.TabWorkspaceState.prototype.serialize = function () {
         return Sys.Serialization.JavaScriptSerializer.serialize(this._state);
     };
@@ -56,7 +57,6 @@
     Sage.TabWorkspaceState.prototype.getObject = function () {
         return this._state;
     };
-
     Sage.TabWorkspaceState.prototype.getSectionFor = function (target) {
         if (this.isMiddleTab(target))
             return Sage.TabWorkspaceState.MIDDLE_TABS;
@@ -66,7 +66,6 @@
             return Sage.TabWorkspaceState.MORE_TABS;
         return false;
     };
-
     Sage.TabWorkspaceState.prototype.isTabVisible = function (target) {
         if (this.isMiddleTab(target)) {
             return true;
@@ -96,7 +95,6 @@
                 return true;
         return false;
     };
-
     Sage.TabWorkspaceState.prototype._removeFromTabs = function (collection, target) {
         if (typeof this._state[collection] != "object")
             return;
@@ -113,7 +111,6 @@
             if (this._state[this._collectionActiveRef[collection]] == target)
                 this._state[this._collectionActiveRef[collection]] = null;
     };
-
     Sage.TabWorkspaceState.prototype._addToTabs = function (collection, target, at, step) {
         if (typeof this._state[collection] != "object")
             return;
@@ -135,10 +132,8 @@
                         return false;
                     }
                 });
-
                 if (typeof step == 'number')
                     insertAt = insertAt + step;
-
                 this._state[collection].splice(insertAt, 0, target);
             }
         }
@@ -146,23 +141,18 @@
             this._state[collection].push(target);
         }
     };
-
     Sage.TabWorkspaceState.prototype.isMiddleTab = function (target) {
         return this._isTab(Sage.TabWorkspaceState.MIDDLE_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.removeFromMiddleTabs = function (target) {
         this._removeFromTabs(Sage.TabWorkspaceState.MIDDLE_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.addToMiddleTabs = function (target, at, step) {
         this._addToTabs(Sage.TabWorkspaceState.MIDDLE_TABS, target, at, step);
     };
-
     Sage.TabWorkspaceState.prototype.isMainTab = function (target) {
         return this._isTab(Sage.TabWorkspaceState.MAIN_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.isTabVisible = function (tabId) {
         if (this.isMiddleTab(tabId)) {
             return true;
@@ -172,76 +162,58 @@
             return (this._state.ActiveMoreTab === tabId && (this.isMiddleTab(Sage.TabWorkspace.MORE_TAB_ID) || (this._state.ActiveMainTab === Sage.TabWorkspace.MORE_TAB_ID)));
         }
     };
-
     Sage.TabWorkspaceState.prototype.removeFromMainTabs = function (target) {
         this._removeFromTabs(Sage.TabWorkspaceState.MAIN_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.addToMainTabs = function (target, at, step) {
         this._addToTabs(Sage.TabWorkspaceState.MAIN_TABS, target, at, step);
     };
-
     Sage.TabWorkspaceState.prototype.setActiveMainTab = function (target) {
         this._state.ActiveMainTab = target;
     };
-
     Sage.TabWorkspaceState.prototype.getActiveMainTab = function () {
         return this._state.ActiveMainTab;
     };
-
     Sage.TabWorkspaceState.prototype.isMoreTab = function (target) {
         return this._isTab(Sage.TabWorkspaceState.MORE_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.removeFromMoreTabs = function (target) {
         this._removeFromTabs(Sage.TabWorkspaceState.MORE_TABS, target);
     };
-
     Sage.TabWorkspaceState.prototype.addToMoreTabs = function (target, at, step) {
         this._addToTabs(Sage.TabWorkspaceState.MORE_TABS, target, at, step);
     };
-
     Sage.TabWorkspaceState.prototype.setActiveMoreTab = function (target) {
         this._state.ActiveMoreTab = target;
     };
-
     Sage.TabWorkspaceState.prototype.getActiveMoreTab = function () {
         return this._state.ActiveMoreTab;
     };
-
     Sage.TabWorkspaceState.prototype.getMainTabs = function () {
         return this._state.MainTabs;
     };
-
     Sage.TabWorkspaceState.prototype.getMoreTabs = function () {
         return this._state.MoreTabs;
     };
-
     Sage.TabWorkspaceState.prototype.getMiddleTabs = function () {
         return this._state.MiddleTabs;
     };
-
     Sage.TabWorkspaceState.prototype.getUpdatedTabs = function () {
         return this._state.UpdatedTabs;
     };
-
     Sage.TabWorkspaceState.prototype.markTabUpdated = function (target) {
         if (this._wasTabUpdated[target])
             return;
-
         this._wasTabUpdated[target] = true;
         this._state.UpdatedTabs.push(target);
     };
-
     Sage.TabWorkspaceState.prototype.wasTabUpdated = function (target) {
         return this._wasTabUpdated[target];
     };
-
     Sage.TabWorkspaceState.prototype.clearUpdatedTabs = function () {
         this._wasTabUpdated = new Object;
         this._state.UpdatedTabs = [];
     };
-
     Sage.TabWorkspaceState.prototype.getHiddenTabs = function () {
         return this._state.HiddenTabs;
     };
@@ -263,113 +235,11 @@
         this._markForUpdateQueue = '';
 
         this.compileInfoLookups();
-        var self = (TabControl) ? TabControl : this;
-        ready(lang.hitch(self, function () {
-            // These dual refresh calls are not a typo.  The dijit.layout.ContentPane
-            // is not affectively determining all of it's layout information on the
-            // first pass through resize.  Calling resize twice effectively renders
-            // the grid to fill it's container.
-            // - KBailes 3-28-12
-            var localTC = registry.byId('tabContent');
-
-            aspect.after(localTC, 'resize', lang.hitch(this, '_resize'));
-            aspect.after(this, 'dropToMiddleSection', lang.hitch(this, '_resize'));
-
-            aspect.after(this, 'dropToMoreSection', function () {
-                localTC.resize(); localTC.resize();
-            });
-            aspect.after(this, 'dropToMainSection', function () {
-                localTC.resize(); localTC.resize();
-            });
-            aspect.after(this, 'onReOpenTab', function () {
-                localTC.resize(); localTC.resize();
-            });
-        }));
     };
-
     Sage.TabWorkspace.MORE_TAB_ID = "More";
     Sage.TabWorkspace.MAIN_AREA = "main";
     Sage.TabWorkspace.MORE_AREA = "more";
     Sage.TabWorkspace.MIDDLE_AREA = "middle";
-    Sage.TabWorkspace.prototype._resize = function () {
-        TabControl.setViewBodyHeight();
-    };
-    Sage.TabWorkspace.prototype.setViewBodyHeight = function () {
-        // Height of the entire tab workspace.
-        var tabContentHeight,
-        // Current state of the tab workspace.
-            tabState,
-        // Current active tab in the main tab area.
-            activeMainTab,
-        // Query for finding the element with the View Body (tws-tab-view-body) class.
-            viewBodyQuery,
-        // View Body element.
-            viewBody,
-        // Query for finding the element with the View Header(tws-tab-view-header) class.
-            viewHeaderQuery,
-        // View Header element.
-            viewHeader,
-        // Middle Section (tws-middle-section) element.
-            middleSection,
-        // Main Tab Button (tws-main-tab-buttons) element.
-            mainTabButtons,
-        // The calculated height of middleSection + mainTabButtons + viewHeader.
-            tabContentTop,
-        // The calculated height of tabContentHeight - tabContentTop - 24 //adjust for padding.
-            tabContentBottom,
-        // The final height to be applied to the View Body (tws-tab-view-body) element.
-            viewBodyHeight,
-        // Query for finding the Middle area elements with the View Body(tws-tab-view-body) class.
-            middleTabItemQuery,
-        // The Middle area elements containing a View Body.
-            middleTabItemViewBody,
-        // Adjust height for padding in specific area.
-            adjustForPadding,
-        // Minimum height for the grid container.  Main and Middle areas are the same.  
-        // More Area is variable based on the number of buttons.       
-            minHeight = 250;
-        tabState = this.getState();
-        tabContentHeight = registry.byId('tabContent').h;
-        //Resize for Active Main and More Tab Areas
-        //Get current tab
-        activeMainTab = tabState._state.ActiveMainTab;
-        if (activeMainTab) {
-            // More Tab Area settings.
-            if (activeMainTab === Sage.TabWorkspace.MORE_TAB_ID && tabState._state.ActiveMoreTab) {
-                activeMainTab = tabState._state.ActiveMoreTab;
-                adjustForPadding = 50;
-            }
-            // Main Tab Area settings.
-            else {
-                adjustForPadding = 25;
-            }
-            viewBodyQuery = ['#', 'element_', activeMainTab, ' .tws-tab-view-body'].join('');
-            viewBody = query(viewBodyQuery)[0];
-            viewHeaderQuery = ['#', 'element_', activeMainTab, ' .tws-tab-view-header'].join('');
-            viewHeader = query(viewHeaderQuery)[0];
-            middleSection = query('.tws-middle-section')[0];
-            mainTabButtons = query('.tws-main-tab-buttons')[0];
-            // Calculate the top of the Tab Worksapce
-            tabContentTop = middleSection.clientHeight + mainTabButtons.clientHeight + viewHeader.clientHeight;
-            // Calculate the bottom of the Tab Workspace
-            tabContentBottom = tabContentHeight - tabContentTop - adjustForPadding;
-            // Set the View Body height considering a minimum height.
-            viewBodyHeight = (tabContentBottom < minHeight) ? [minHeight, 'px'].join('') : [tabContentBottom, 'px'].join('');
-            if (viewBody) {
-                domStyle.set(viewBody, 'height', viewBodyHeight);
-            }
-        }
-        //Resize for Middle Tabs.  Fixed with no resizing.  
-        array.forEach(tabState._state.MiddleTabs, function (entry) {
-            middleTabItemQuery = ['#', 'element_', entry, ' .tws-tab-view-body'].join('');
-            // Get the View Body element for all tabs in the Middle area.
-            middleTabItemViewBody = query(middleTabItemQuery)[0];
-            if (middleTabItemViewBody.clientHeight < minHeight) {
-                domStyle.set(middleTabItemViewBody, 'height', [minHeight, 'px'].join(''));
-            }
-        });
-    };
-
     Sage.TabWorkspace.prototype.compileInfoLookups = function () {
         this._info._byId = new Object;
         this._info._byElementId = new Object;
@@ -384,7 +254,6 @@
             this._info._byMoreButtonId[this._info.Tabs[i].MoreButtonId] = this._info.Tabs[i];
         }
     };
-
     Sage.TabWorkspace.prototype.getInfoFor = function (tab) { return this._info._byId[tab]; };
     Sage.TabWorkspace.prototype.getInfoForTab = function (tabId) { return this._info._byId[tabId]; };
     Sage.TabWorkspace.prototype.getInfoForTabElement = function (elementId) { return this._info._byElementId[elementId]; };
@@ -400,17 +269,14 @@
     Sage.TabWorkspace.prototype.getAllDropTargets = function () { return this._allDropTargets; };
     Sage.TabWorkspace.prototype.getAllMainButtons = function () { return this._allMainButtons; };
     Sage.TabWorkspace.prototype.getAllMoreButtons = function () { return this._allMoreButtons; };
-
     Sage.TabWorkspace.prototype.getElement = function () {
         if (document.getElementById)
             return document.getElementById(this._clientId);
         return null;
     };
-
     Sage.TabWorkspace.prototype.getContext = function () { return this._context; };
     Sage.TabWorkspace.prototype.getState = function () { return this._state; };
     Sage.TabWorkspace.prototype.setState = function (state) { this._state = state; };
-
     Sage.TabWorkspace.prototype.resetState = function (state) {
         if (typeof state === "undefined") {
             var stateProxy = $("#" + this.getStateProxyPayloadId(), this.getContext()).val();
@@ -426,7 +292,6 @@
         }
         this.logDebug("Reset state...");
     };
-
     Sage.TabWorkspace.prototype.logDebug = function (text) {
         if (this._debug) {
             var pad = function (value, length) {
@@ -440,15 +305,13 @@
             console.log(dateString + " - " + text);
         }
     };
-
     Sage.TabWorkspace.prototype.registerAfterPostBackAction = function (action) {
         this._afterPostBackActions.push(action);
     };
-
     Sage.TabWorkspace.prototype.init = function () {
         this.logDebug("[enter] init");
 
-        //cache common lookups               
+        //cache common lookups
         if (document.getElementById)
             this._context = document.getElementById(this._clientId);
 
@@ -474,7 +337,7 @@
             if (this.getState().getActiveMoreTab())
                 this.getState().markTabUpdated(this.getState().getActiveMoreTab());
 
-        //store the helper height & width   
+        //store the helper height & width
         this._dragHelperHeight = $(".tws-tab-drag-helper", this.getContext()).height();
         this._dragHelperWidth = $(".tws-tab-drag-helper", this.getContext()).width();
 
@@ -487,9 +350,8 @@
         this.logDebug("[leave] init");
         this.hideTabs();
     };
-
     Sage.TabWorkspace.prototype.initEvents = function () {
-        var self = this; //since jQuery overrides "this" in the closure        
+        var self = this; //since jQuery overrides "this" in the closure
 
         //setup the update events
         //will need to refactor this to use add_endRequest instead
@@ -511,13 +373,12 @@
             self.cleanupAllTabElementDraggables();
         });
     };
-    Sage.TabWorkspace.prototype._processMarkForUpdateQueue = function() {
+    Sage.TabWorkspace.prototype._processMarkForUpdateQueue = function () {
         if (this._markForUpdateQueue) {
             this.getState().markTabUpdated(this._markForUpdateQueue);
-            this._markForUpdateQueue = ''; 
+            this._markForUpdateQueue = '';
         }
     };
-
     Sage.TabWorkspace.prototype.hideTabs = function () {
         if (!this.getState().InHideMode()) {
             return;
@@ -542,103 +403,77 @@
             this.hideTab(tab);
         }
     };
-
     Sage.TabWorkspace.prototype.hideTab = function (tab) {
         this.logDebug("[enter] hideTab");
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
-
         if (tab == null) { return; }
 
         switch (this.getState().getSectionFor(tab.Id)) {
             case Sage.TabWorkspaceState.MAIN_TABS:
-
                 $("#" + tab.ButtonId, this.getContext()).hide();
                 $("#" + tab.ElementId, this.getContext()).hide();
                 break;
-
             case Sage.TabWorkspaceState.MORE_TABS:
-
                 $("#" + tab.MoreButtonId, this.getContext()).hide();
                 $("#" + tab.ElementId, this.getContext()).hide();
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
                 $("#" + tab.ElementId, this.getContext()).hide();
                 break;
         }
-
     };
-
     Sage.TabWorkspace.prototype.unHideTab = function (tab) {
         this.logDebug("[enter] hideTab");
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
-
         if (tab == null) { return; }
 
         switch (this.getState().getSectionFor(tab.Id)) {
             case Sage.TabWorkspaceState.MAIN_TABS:
-
                 $("#" + tab.ButtonId, this.getContext()).show();
                 if (this.getState().getActiveMainTab() == tab.Id) {
                     $("#" + tab.ElementId, this.getContext()).show();
                 }
-
                 break;
-
             case Sage.TabWorkspaceState.MORE_TABS:
-
                 $("#" + tab.MoreButtonId, this.getContext()).show();
                 if (this.getState().getActiveMoreTab() == tab.Id) {
                     $("#" + tab.ElementId, this.getContext()).show();
                 }
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
-
                 $("#" + tab.ElementId, this.getContext()).show();
-
                 break;
         }
-
     };
-
-
     Sage.TabWorkspace.prototype.disablePageTextSelection = function () {
         if (jQuery.browser.msie) {
             if (!this._textSelectionDisabled) {
                 this._oldBodyOnDrag = document.body.ondrag;
                 this._oldBodyOnSelectStart = document.body.onselectstart;
-
                 document.body.ondrag = function () { return false; };
                 document.body.onselectstart = function () { return false; };
-
                 this._textSelectionDisabled = true;
             }
         }
     };
-
     Sage.TabWorkspace.prototype.enablePageTextSelection = function () {
         if (jQuery.browser.msie) {
             if (this._textSelectionDisabled) {
                 document.body.ondrag = this._oldBodyOnDrag;
                 document.body.onselectstart = this._oldBodyOnSelectStart;
-
                 this._textSelectionDisabled = false;
             }
         }
     };
-
     Sage.TabWorkspace.prototype.setDragDropHelperText = function (helper, text) {
         if (typeof text != "string")
             return;
-
         $(".tws-drag-helper-text", helper).html(text);
     };
     Sage.TabWorkspace.prototype.setupTabElementDraggable = function (tab) {
         var self = this;
-
         var $query;
         if (typeof tab == 'string') {
             tab = this.getInfoFor(tab);
@@ -648,7 +483,23 @@
         else if (typeof target == 'object')
             $query = tab.ElementId;
 
-        if ($query.is(".ui-draggable"))
+        // Inspect parent objects to determine draggable for tab-elements.
+        var noDragTabElement = false;
+        if ($query.is(".tws-tab-element")) {
+            var chkElement = $query;
+            while (true) {
+                var par = chkElement.parent();
+                if (!par || par.length === 0) {
+                    break;
+                } else if (par.is(".tws-main-tab-content") || par.is(".tws-more-tab-content")) {
+                    noDragTabElement = true;
+                    break;
+                }
+                chkElement = par;
+            }
+        }
+
+        if ($query.is(".ui-draggable") || noDragTabElement === true)
             return;
 
         if (typeof tab === "string")
@@ -661,7 +512,7 @@
             cursor: "move",
             cursorAt: { top: self._dragHelperHeight / 2, left: self._dragHelperWidth / 2 },
             zIndex: 15000,
-            delay: 50,
+            delay: 300,
             opacity: 0.5,
             scroll: true,
             refreshPositions: true,
@@ -683,7 +534,6 @@
             }
         });
     };
-
     Sage.TabWorkspace.prototype.cleanupTabElementDraggable = function (tab) {
         var $query;
         if (typeof tab == 'string') {
@@ -704,7 +554,6 @@
 
         $query.draggable("destroy");
     };
-
     Sage.TabWorkspace.prototype.setupAllTabElementDraggables = function () {
         for (var i = 0; i < this.getState().getMiddleTabs().length; i++)
             this.setupTabElementDraggable(this.getState().getMiddleTabs()[i]);
@@ -715,28 +564,24 @@
         if (this.getState().getActiveMoreTab())
             this.setupTabElementDraggable(this.getState().getActiveMoreTab());
     };
-
     Sage.TabWorkspace.prototype.cleanupAllTabElementDraggables = function () {
         //only updated tabs should have tab element draggables
         for (var i = 0; i < this.getState().getUpdatedTabs().length; i++)
             this.cleanupTabElementDraggable(this.getState().getUpdatedTabs()[i]);
     };
-
     Sage.TabWorkspace.prototype.createMainInsertMarker = function (el, at) {
         if (el) {
-            var marker = $("<div class=\"tws-insert-button-marker Global_Images icon_insert-arrow-down16x16 \"></div>").css({ top: (at.top - 10) + "px", left: (at.left - 8) + "px" });
+            var marker = $("<div class=\"tws-insert-button-marker Global_Images icon_insert-arrow-down16x16 \"></div>").css({ left: (at.left - 8) + "px" });
             $("div.tws-main-tab-buttons", this.getContext()).append(marker);
             el._marker = marker;
         }
     };
-
     Sage.TabWorkspace.prototype.cleanupMainInsertMarker = function (el) {
         if (el && el._marker) {
             el._marker.remove();
             el._marker = null;
         }
     };
-
     Sage.TabWorkspace.prototype.createMoreInsertMarker = function (el, at) {
         if (el) {
             var marker = $("<div class=\"tws-insert-button-marker Global_Images icon_insert-arrow-left16x16\"></div>").css({ top: (at.top - 8) + "px" });
@@ -744,14 +589,12 @@
             el._marker = marker;
         }
     };
-
     Sage.TabWorkspace.prototype.cleanupMoreInsertMarker = function (el) {
         if (el && el._marker) {
             el._marker.remove();
             el._marker = null;
         }
     };
-
     Sage.TabWorkspace.prototype.getContextFromUI = function (ui) {
         return ui.draggable.get(0)._context;
     };
@@ -759,7 +602,6 @@
     Sage.TabWorkspace.prototype.getRegions = function (area) {
         return this._regions[area];
     };
-
     Sage.TabWorkspace.prototype.createRegionsFrom = function (list) {
         var regions = [];
         list.each(function () {
@@ -772,10 +614,8 @@
                 el: this
             });
         });
-
         return regions;
     };
-
     Sage.TabWorkspace.prototype.testRegions = function (regions, pos, test) {
         var list = (typeof regions === "string") ? this._regions[regions] : regions;
         if (list && list.length && typeof test === "function") {
@@ -784,26 +624,21 @@
                     return list[i].el;
             }
         }
-
         return null;
     };
-
     Sage.TabWorkspace.prototype.setDroppableOn = function (draggable, id, droppable) {
         if (typeof draggable._droppables === "undefined")
             draggable._droppables = {};
 
         draggable._droppables[id] = droppable;
     };
-
     Sage.TabWorkspace.prototype.getDroppableFrom = function (draggable, id) {
         if (draggable._droppables)
             return draggable._droppables[id];
     };
-
     Sage.TabWorkspace.prototype.updateOffsetParentScroll = function () {
         this._offsetParentScroll = $(this._offsetParent).scrollTop();
     };
-
     Sage.TabWorkspace.prototype.shouldUpdateRegions = function () {
         if (this._offsetParent) {
             if (this._offsetParentScroll != $(this._offsetParent).scrollTop()) {
@@ -811,10 +646,8 @@
                 return true;
             }
         }
-
         return false;
     };
-
     Sage.TabWorkspace.prototype.initDragDrop = function () {
         var self = this;
 
@@ -822,29 +655,23 @@
         /*** DROP TARGET DROPPABLE ***/
         /*****************************/
         $("div.tws-middle-section", this.getContext()).droppable({
-            /* accept : ".tws-tab-button:not(#show_More),.tws-more-tab-button,.tws-tab-element", */
             accept: ".tws-tab-button,.tws-more-tab-button,.tws-tab-element",
             tolerance: "pointer",
             activate: function (e, ui) {
                 self.logDebug("Activate MiddleSection");
-
                 //add our instance to the draggable
                 self.setDroppableOn(ui.draggable.get(0), Sage.TabWorkspace.MIDDLE_AREA, ui.options);
-
                 self._allDropTargets.filter("div.tws-middle-section div.tws-drop-target").addClass("tws-drop-target-active");
             },
             deactivate: function (e, ui) {
                 self.logDebug("De-Activate MiddleSection");
-
                 self._allDropTargets.filter("div.tws-middle-section div.tws-drop-target").removeClass("tws-drop-target-active");
-
                 ui.draggable.unbind('drag', ui.options.track);
                 ui.options._targets = null;
                 ui.options._current = null;
             },
             over: function (e, ui) {
                 self.logDebug("Over MiddleSection");
-
                 var regions = self.createRegionsFrom(self.getAllDropTargets().filter(":visible"));
                 var draggable = ui.draggable.get(0);
                 var pos = { y: e.pageY, x: e.pageX };
@@ -864,9 +691,7 @@
             },
             out: function (e, ui) {
                 self.logDebug("Out MiddleSection");
-
                 var draggable = ui.draggable.get(0);
-
                 self._allDropTargets.removeClass("tws-drop-target-hover");
 
                 $(ui.helper).data("over", $(ui.helper).data("over") - 1);
@@ -915,12 +740,10 @@
                         $('.tws-drag-helper-icon', ui.helper).removeClass('icon_no16x16');
                         $(el).addClass("tws-drop-target-hover");
                     }
-
                     droppable._currentTarget = el;
                 }
             }
         });
-
         /*****************************/
         /* MAIN BUTTON BAR DROPPABLE */
         /*****************************/
@@ -929,13 +752,7 @@
             tolerance: "pointer",
             activate: function (e, ui) {
                 self.logDebug("Activate MainButtonBar");
-
-                //not functional in ui 1.5 - is there an equivalent and is it needed?    
-                //ui.instance.proportions.width = ui.instance.element.width();
-                //ui.instance.proportions.height = ui.instance.element.height(); 
-
                 self.updateMainAreaRegions();
-
                 self.setDroppableOn(ui.draggable.get(0), Sage.TabWorkspace.MAIN_AREA, ui.options);
             },
             deactivate: function (e, ui) {
@@ -954,7 +771,7 @@
                 $(ui.helper).addClass("tws-drag-helper-valid");
                 $('.tws-drag-helper-icon', ui.helper).addClass('icon_ok16x16');
                 $('.tws-drag-helper-icon', ui.helper).removeClass('icon_no16x16');
-                
+
                 var regions = self.getRegions(Sage.TabWorkspace.MAIN_AREA);
                 var pos = { y: e.pageY, x: e.pageX };
                 var el = self.testRegions(regions, pos, function (r, p) {
@@ -985,7 +802,6 @@
                 }
 
                 self.cleanupMainInsertMarker(ui.draggable.get(0));
-
                 ui.draggable.unbind('drag', ui.options.track);
                 ui.options._targets = null;
                 ui.options._currentTarget = null;
@@ -1019,7 +835,6 @@
                 }
             }
         });
-
         /*****************************/
         /* MORE BUTTON BAR DROPPABLE */
         /*****************************/
@@ -1028,15 +843,7 @@
             tolerance: "pointer",
             activate: function (e, ui) {
                 self.logDebug("Activate MoreButtonBar");
-
-                //fix for jQuery 1.5 and size of initially hidden droppables             
-
-                //not functional in ui 1.5 - is there an equivalent and is it needed?    
-                //ui.instance.proportions.width = ui.instance.element.width();
-                //ui.instance.proportions.height = ui.instance.element.height(); 
-
                 self.updateMoreAreaRegions();
-
                 self.setDroppableOn(ui.draggable.get(0), Sage.TabWorkspace.MORE_AREA, ui.options);
             },
             deactivate: function (e, ui) {
@@ -1113,7 +920,6 @@
                 }
             }
         });
-
         /*****************************/
         /*** MAIN BUTTON DRAGGABLE ***/
         /*****************************/
@@ -1124,7 +930,7 @@
             appendTo: "#" + self.getDragHelperContainerId(),
             //refreshPositions : true,
             opacity: 0.5,
-            delay: 50,
+            delay: 300,
             scroll: true,
             refreshPositions: true,
             helper: function () {
@@ -1151,9 +957,9 @@
             cursor: "move",
             cursorAt: { top: self._dragHelperHeight / 2, left: self._dragHelperWidth / 2 },
             zIndex: 15000,
-            //refreshPositions : true,  
+            //refreshPositions : true,
             opacity: 0.5,
-            delay: 50,
+            delay: 300,
             scroll: true,
             refreshPositions: true,
             appendTo: "#" + self.getDragHelperContainerId(),
@@ -1195,40 +1001,22 @@
         this.updateAllRegions();
         this.setupAllTabElementDraggables();
     };
-
     Sage.TabWorkspace.prototype.createDraggableHelper = function () {
         return $("<div class='tws-tab-drag-helper'><div class='tws-drag-helper-icon Global_Images icon_no16x16' /><div class='tws-drag-helper-text' /></div>");
     };
-
     Sage.TabWorkspace.prototype.showMainTab = function (tab, triggerUpdate) {
         this.logDebug("[enter] showMainTab");
 
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
 
-        var previousMainTabId = this.getState().getActiveMainTab();
-
         //if we are already the active main tab, we do not have to do anything
         if (this.getState().getActiveMainTab() == tab.Id) {
-            //still optionally trigger an update
-            //// !!!! Commented out to fix 13092979: Double-clicking stalls loading of a tab.
-            ////      If the tab content is loading, it will be undefined, so the usefulness
-            ////      of triggering a load again is unclear when it breaks the tab
-            /*if (typeof triggerUpdate == 'undefined' || triggerUpdate)
-                this.triggerUpdateFor(tab.Id); */
             return;
         }
 
         //change state
         this.getState().setActiveMainTab(tab.Id);
-
-        /* 
-        $(".tws-main-tab-content > .tws-tab-element", this.getContext()).hide();
-        $("#" + tab.ElementId, this.getContext()).show();
-        $(".tws-main-tab-buttons .tws-tab-button", this.getContext()).removeClass("tws-active-tab-button"); 
-        $("#" + tab.ButtonId, this.getContext()).addClass("tws-active-tab-button");
-        */
-
         this.showMainTabDom(tab);
 
         if (tab.Id == Sage.TabWorkspace.MORE_TAB_ID)
@@ -1238,9 +1026,7 @@
         if (typeof triggerUpdate == 'undefined' || triggerUpdate)
             this.triggerUpdateFor(tab.Id);
     };
-
     Sage.TabWorkspace.prototype.showMainTabDom = function (tab) {
-
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
 
@@ -1249,7 +1035,6 @@
         $(".tws-main-tab-buttons .tws-tab-button", this.getContext()).removeClass("tws-active-tab-button");
         $("#" + tab.ButtonId, this.getContext()).addClass("tws-active-tab-button");
     };
-
     Sage.TabWorkspace.prototype.showMoreTab = function (tab, triggerUpdate) {
         this.logDebug("[enter] showMoreTab");
 
@@ -1257,31 +1042,14 @@
             tab = this.getInfoFor(tab);
 
         if (this.getState().getActiveMoreTab() == tab.Id) {
-            //still optionally trigger an update
-            //// <Duplicating comment from above's "showMainTab" function change
-            //// !!!! Commented out to fix 13092979: Double-clicking stalls loading of a tab.
-            ////      If the tab content is loading, it will be undefined, so the usefulness
-            ////      of triggering a load again is unclear when it breaks the tab
-            /*if (typeof triggerUpdate == 'undefined' || triggerUpdate)
-                this.triggerUpdateFor(tab.Id);*/
             return;
         }
 
         this.getState().setActiveMoreTab(tab.Id);
-
-        /*
-        $(".tws-more-tab-content .tws-tab-element", this.getContext()).hide();
-        $("#" + tab.ElementId, this.getContext()).show();
-        $(".tws-more-tab-buttons .tws-more-tab-button", this.getContext()).removeClass("tws-active-more-tab-button");
-        $("#" + tab.MoreButtonId, this.getContext()).addClass("tws-active-more-tab-button");
-        */
-
         this.showMoreTabDom(tab);
-
         if (typeof triggerUpdate == 'undefined' || triggerUpdate)
             this.triggerUpdateFor(tab.Id);
     };
-
     Sage.TabWorkspace.prototype.showMoreTabDom = function (tab) {
         if (typeof tab === "string")
             tab = this.getInfoFor(tab);
@@ -1291,7 +1059,6 @@
         $(".tws-more-tab-buttons .tws-more-tab-button", this.getContext()).removeClass("tws-active-more-tab-button");
         $("#" + tab.MoreButtonId, this.getContext()).addClass("tws-active-more-tab-button");
     };
-
     Sage.TabWorkspace.prototype.dropToMainSection = function (tab, target) {
         /*
         tab: information about the tab being dropped
@@ -1310,9 +1077,7 @@
         switch (this.getState().getSectionFor(tab.Id)) {
             case Sage.TabWorkspaceState.MAIN_TABS:
                 $location.before($("#" + tab.ButtonId, this.getContext()));
-                return; // This is already in MAIN_TABS, so it doesn't need to be added
                 break;
-
             case Sage.TabWorkspaceState.MORE_TABS:
                 $("#" + tab.MoreButtonId, this.getContext()).hide();
                 $location.before($("#" + tab.ButtonId, this.getContext()).show());
@@ -1322,15 +1087,12 @@
                 //move the drop target
                 $(".tws-main-tab-content", this.getContext()).append($("#" + tab.DropTargetId));
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
                 $location.before($("#" + tab.ButtonId, this.getContext()).show());
-
                 //move the tab element
                 $(".tws-main-tab-content", this.getContext()).append($("#" + tab.ElementId));
                 //move the drop target
                 $(".tws-main-tab-content", this.getContext()).append($("#" + tab.DropTargetId));
-
                 break;
         }
 
@@ -1343,7 +1105,6 @@
         //show this main tab
         this.showMainTab(tab.Id);
     };
-
     Sage.TabWorkspace.prototype.dropToMoreSection = function (tab, target) {
         /*
         tab: information about the tab being dropped
@@ -1363,21 +1124,17 @@
             case Sage.TabWorkspaceState.MAIN_TABS:
                 $("#" + tab.ButtonId, this.getContext()).hide();
                 $location.before($("#" + tab.MoreButtonId, this.getContext()).show());
-
                 //move the tab element
                 $(".tws-more-tab-element .tws-more-tab-content-fixer", this.getContext()).before($("#" + tab.ElementId));
                 //move the drop target
                 $(".tws-more-tab-element .tws-more-tab-content-fixer", this.getContext()).before($("#" + tab.DropTargetId));
                 break;
-
             case Sage.TabWorkspaceState.MORE_TABS:
                 $location.before($("#" + tab.MoreButtonId, this.getContext()));
                 return; // This is already in the MORE_TABS section, so it doesn't need to be added
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
                 $location.before($("#" + tab.MoreButtonId, this.getContext()).show());
-
                 //move the tab element
                 $(".tws-more-tab-element .tws-more-tab-content-fixer", this.getContext()).before($("#" + tab.ElementId));
                 //move the drop target
@@ -1394,7 +1151,6 @@
         //show this main tab
         this.showMoreTab(tab.Id);
     };
-
     Sage.TabWorkspace.prototype.dropToMiddleSection = function (tab, target) {
         /*
         tab: information about the tab being dropped
@@ -1439,11 +1195,6 @@
                 break;
 
             case Sage.TabWorkspaceState.MORE_TABS:
-                //are we the current active more tab?
-                if (this.getState().getActiveMoreTab() == tab.Id) {
-                    //TODO: should we make a new more tab active?
-                }
-
                 $("#" + tab.MoreButtonId, this.getContext()).hide();
 
                 //move the old drop target
@@ -1453,7 +1204,6 @@
 
                 tabsToUpdate.push(tab.Id);
                 break;
-
             case Sage.TabWorkspaceState.MIDDLE_TABS:
                 //move the old drop target
                 $(target).after($("#" + tab.DropTargetId, this.getContext()));
@@ -1464,15 +1214,13 @@
                 break;
         }
 
-        //update state  
+        //update state
         if ($(target).hasClass("tws-middle-drop-target"))
             this.getState().addToMiddleTabs(tab.Id, 0); //first
         else
             this.getState().addToMiddleTabs(tab.Id, this.getInfoForTabDropTarget(target.id).Id, 1);
-
         this.triggerUpdateFor(tabsToUpdate);
     };
-
     Sage.TabWorkspace.prototype.deriveStateFromMarkup = function () {
         var self = this;
         var state = {
@@ -1495,8 +1243,6 @@
 
         return state;
     };
-
-
     Sage.TabWorkspace.prototype.updateVisibleDroppables = function () {
         this.logDebug("[enter] enableAllVisibleDroppables");
 
@@ -1507,45 +1253,26 @@
 
         this.logDebug("[leave] enableAllVisibleDroppables");
     };
-
     Sage.TabWorkspace.prototype.updateAllRegions = function () {
         this.updateMainAreaRegions();
         this.updateMoreAreaRegions();
         this.updateMiddleAreaRegions();
     };
-
     Sage.TabWorkspace.prototype.updateMainAreaRegions = function () {
         //validate the container region and the area region list
         var region = this.createRegionsFrom(this._mainButtonContainer)[0];
-        /*
-        if ((typeof region != 'undefined') && region.x == this._mainButtonContainerRegion.x &&
-        region.y == this._mainButtonContainerRegion.y &&
-        region.width == this._mainButtonContainerRegion.width &&
-        region.height == this._mainButtonContainerRegion.height &&
-        (typeof this._regions[Sage.TabWorkspace.MAIN_AREA] ==="object" && this._regions[Sage.TabWorkspace.MAIN_AREA].length > 0))
-        return;
-        */
         this._regions[Sage.TabWorkspace.MAIN_AREA] = this.createRegionsFrom(this._allMainButtons.filter(":visible"));
         this._mainButtonContainerRegion = region;
     };
     Sage.TabWorkspace.prototype.updateMoreAreaRegions = function () {
         //validate the container region and the area region list
         var region = this.createRegionsFrom(this._moreButtonContainer)[0];
-        /*
-        if ((typeof region != 'undefined') && region.x == this._moreButtonContainerRegion.x &&
-        region.y == this._moreButtonContainerRegion.y &&
-        region.width == this._moreButtonContainerRegion.width &&
-        region.height == this._moreButtonContainerRegion.height &&
-        (typeof this._regions[Sage.TabWorkspace.MORE_AREA] ==="object" && this._regions[Sage.TabWorkspace.MORE_AREA].length > 0))
-        return;
-        */
         this._regions[Sage.TabWorkspace.MORE_AREA] = this.createRegionsFrom(this._allMoreButtons.filter(":visible"));
         this._moreButtonContainerRegion = region;
     };
     Sage.TabWorkspace.prototype.updateMiddleAreaRegions = function () {
         this._regions[Sage.TabWorkspace.MIDDLE_AREA] = this.createRegionsFrom(this._allDropTargets.filter(":visible"));
     };
-
     Sage.TabWorkspace.prototype.updateContextualFeedback = function () {
         /* More Tab Messages */
         if (this.getState().getMoreTabs().length <= 0)
@@ -1565,19 +1292,14 @@
             $(".tws-middle-drop-target span", this.getContext()).empty().append(TabWorkspaceResource.Middle_Pane_Drop_Target_Message);
         }
     };
-
     Sage.TabWorkspace.prototype.updateStateProxy = function () {
         var serializedState = this.getState().serialize();
         $("#" + this.getStateProxyPayloadId()).val(serializedState);
     };
-
-    Sage.TabWorkspace.prototype.onReOpenTab = function() { };
-
+    Sage.TabWorkspace.prototype.onReOpenTab = function () { };
     Sage.TabWorkspace.prototype.triggerUpdateFor = function (tabs, data) {
-
         this.updateContextualFeedback();
         this.updateAllRegions();
-
         var tabsToUpdate = [];
         var shouldSendState = false;
         var stateSent = false;
@@ -1629,11 +1351,11 @@
                         tabsToUpdate.push(tabs[i]);
                     }
                     else {
-                        if(this.getState().isMiddleTab(tabs[i])) {
+                        if (this.getState().isMiddleTab(tabs[i])) {
                             // Override the height of the middle section to 'auto' if it is more than just a grid,
                             // otherwise the height of this content may overlap the tabs section
                             var middleSectionDiv = $('.tws-middle-section .tws-tab-view-body .formtable');
-                            if(middleSectionDiv.length > 0) {
+                            if (middleSectionDiv.length > 0) {
                                 $('.tws-middle-section .tws-tab-view-body')[0].style.height = 'auto';
                             }
                         }
@@ -1653,13 +1375,10 @@
 
         for (var i = 0; i < tabsToUpdate.length; i++) {
             this.logDebug("Triggering update for " + tabsToUpdate[i]);
-
             tab = tabsToUpdate[i];
-            //this.cleanupTabElement(tab);        
 
             $("#" + this.getInfoFor(tab).UpdatePayloadId).val(serializedState);
             __doPostBack(this.getInfoFor(tab).UpdateTriggerId, "");
-
             stateSent = true;
         }
 
@@ -1674,5 +1393,4 @@
             stateSent = true;
         }
     };
-
 });

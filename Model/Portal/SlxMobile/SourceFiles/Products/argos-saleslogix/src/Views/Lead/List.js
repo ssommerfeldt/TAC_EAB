@@ -1,182 +1,174 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import string from 'dojo/string';
+import action from '../../Action';
+import utility from 'argos/Utility';
+import List from 'argos/List';
+import _GroupListMixin from '../_GroupListMixin';
+import _MetricListMixin from '../_MetricListMixin';
+import _RightDrawerListMixin from '../_RightDrawerListMixin';
+import _CardLayoutListMixin from '../_CardLayoutListMixin';
+import getResource from 'argos/I18n';
+
+const resource = getResource('leadList');
+
+/**
+ * @class crm.Views.Lead.List
+ *
+ * @extends argos.List
+ * @mixins crm.Views._RightDrawerListMixin
+ * @mixins crm.Views._MetricListMixin
+ * @mixins crm.Views._GroupListMixin
+ * @mixins crm.Views._CardLayoutListMixin
+ *
+ * @requires argos.Format
+ * @requires argos.Utility
+ *
+ * @requires crm.Action
  */
-define('Mobile/SalesLogix/Views/Lead/List', [
-    'dojo/_base/declare',
-    'dojo/string',
-    'Mobile/SalesLogix/Action',
-    'Sage/Platform/Mobile/Format',
-    'Sage/Platform/Mobile/Utility',
-    'Mobile/SalesLogix/Views/History/RelatedView',
-    'Sage/Platform/Mobile/List',
-    '../_MetricListMixin',
-    '../_RightDrawerListMixin',
-    '../_CardLayoutListMixin'
-], function(
-    declare,
-    string,
-    action,
-    format,
-    utility,
-    HistoryRelatedView,
-    List,
-    _MetricListMixin,
-    _RightDrawerListMixin,
-    _CardLayoutListMixin
-) {
+const __class = declare('crm.Views.Lead.List', [List, _RightDrawerListMixin, _MetricListMixin, _CardLayoutListMixin, _GroupListMixin], {
+  // Templates
+  itemTemplate: new Simplate([
+    '<h3>{%: $.LeadNameLastFirst %}</h3>',
+    '<h4>',
+    '{%: $$.joinFields(" | ", [$.Title, $.Company]) %}',
+    '</h4>',
+    '{% if ($.WorkPhone) { %}',
+    '<h4>',
+    '{%: $$.phoneAbbreviationText %} <span class="href" data-action="callWork" data-key="{%: $.$key %}">{%: argos.Format.phone($.WorkPhone) %}</span>',
+    '</h4>',
+    '{% } %}',
+    '{% if ($.Mobile) { %}',
+    '<h4>',
+    '{%: $$.mobileAbbreviationText %} <span class="href" data-action="callMobile" data-key="{%: $.$key %}">{%: argos.Format.phone($.Mobile) %}</span>',
+    '</h4>',
+    '{% } %}',
+    '{% if ($.TollFree) { %}',
+    '<h4>',
+    '{%: $$.tollFreeAbbreviationText %} {%: argos.Format.phone($.TollFree) %}',
+    '</h4>',
+    '{% } %}',
+    '<h4>{%: $.WebAddress %}</h4>',
+    '{% if ($.Email) { %}',
+    '<h4>',
+    '<span class="href" data-action="sendEmail" data-key="{%: $.$key %}">{%: $.Email %}</span>',
+    '</h4>',
+    '{% } %}',
+  ]),
 
-    return declare('Mobile.SalesLogix.Views.Lead.List', [List, _RightDrawerListMixin, _MetricListMixin, _CardLayoutListMixin], {
-        //Templates
-        itemTemplate: new Simplate([
-            '<h3>{%: $.LeadNameLastFirst %}</h3>',
-            '<h4>',
-                '{%: $$.joinFields(" | ", [$.Title, $.Company]) %}',
-            '</h4>',
-            '{% if ($.WorkPhone) { %}',
-                '<h4>',
-                    '{%: $$.phoneAbbreviationText + Sage.Platform.Mobile.Format.phone($.WorkPhone) %}',
-                '</h4>',
-            '{% } %}',
-            '{% if ($.Mobile) { %}',
-                '<h4>',
-                    '{%: $$.mobileAbbreviationText + Sage.Platform.Mobile.Format.phone($.Mobile) %}',
-                '</h4>',
-            '{% } %}',
-            '{% if ($.TollFree) { %}',
-                '<h4>',
-                    '{%: $$.tollFreeAbbreviationText + Sage.Platform.Mobile.Format.phone($.TollFree) %}',
-                '</h4>',
-            '{% } %}',
-            '<h4>{%: $.WebAddress %}</h4>',
-            '{% if ($.Email) { %}',
-                '<h4>',
-                    '{%: $.Email %}',
-                '</h4>',
-            '{% } %}'
-        ]),
+  joinFields: function joinFields(sep, fields) {
+    return utility.joinFields(sep, fields);
+  },
+  callWork: function callWork(params) {
+    this.invokeActionItemBy((theAction) => {
+      return theAction.id === 'callWork';
+    }, params.key);
+  },
+  callMobile: function callMobile(params) {
+    this.invokeActionItemBy((theAction) => {
+      return theAction.id === 'callMobile';
+    }, params.key);
+  },
+  sendEmail: function sendEmail(params) {
+    this.invokeActionItemBy((theAction) => {
+      return theAction.id === 'sendEmail';
+    }, params.key);
+  },
 
-        joinFields: function(sep, fields) {
-            return utility.joinFields(sep, fields);
-        },
+  // Localization
+  titleText: resource.titleText,
+  activitiesText: resource.activitiesText,
+  notesText: resource.notesText,
+  scheduleText: resource.scheduleText,
+  emailedText: resource.emailedText,
+  calledText: resource.calledText,
+  editActionText: resource.editActionText,
+  callMobileActionText: resource.callMobileActionText,
+  callWorkActionText: resource.callWorkActionText,
+  sendEmailActionText: resource.sendEmailActionText,
+  addNoteActionText: resource.addNoteActionText,
+  addActivityActionText: resource.addActivityActionText,
+  addAttachmentActionText: resource.addAttachmentActionText,
+  phoneAbbreviationText: resource.phoneAbbreviationText,
+  mobileAbbreviationText: resource.mobileAbbreviationText,
+  tollFreeAbbreviationText: resource.tollFreeAbbreviationText,
 
-        //Localization
-        titleText: 'Leads',
-        activitiesText: 'Activities',
-        notesText: 'Notes',
-        scheduleText: 'Schedule',
-        emailedText: 'E-mailed ${0}',
-        calledText: 'Called ${0}',
-        editActionText: 'Edit',
-        callMobileActionText: 'Call Mobile',
-        callWorkActionText: 'Call Work',
-        sendEmailActionText: 'Email',
-        addNoteActionText: 'Add Note',
-        addActivityActionText: 'Add Activity',
-        addAttachmentActionText: 'Add Attachment',
-        phoneAbbreviationText: 'Work: ',
-        mobileAbbreviationText: 'Mobile: ',
-        tollFreeAbbreviationText: 'Toll Free: ',
+  // View Properties
+  detailView: 'lead_detail',
+  itemIconClass: 'fa fa-filter fa-2x',
+  iconTemplate: new Simplate([
+    '<span class="fa-stack">',
+    '<i class="fa fa-square-o fa-stack-2x"></i>',
+    '<i class="fa fa-user fa-stack-1x fa-inverse"></i>',
+    '</span>',
+  ]),
+  id: 'lead_list',
+  security: 'Entities/Lead/View',
+  insertView: 'lead_edit',
+  queryOrderBy: 'LastNameUpper,FirstName',
+  querySelect: [
+    'Company',
+    'LeadNameLastFirst',
+    'WebAddress',
+    'Email',
+    'WorkPhone',
+    'Mobile',
+    'TollFree',
+    'Title',
+    'ModifyDate',
+  ],
+  resourceKind: 'leads',
+  entityName: 'Lead',
+  groupsEnabled: true,
+  allowSelection: true,
+  enableActions: true,
+  createActionLayout: function createActionLayout() {
+    return this.actions || (this.actions = [{
+      id: 'edit',
+      cls: 'fa fa-pencil fa-2x',
+      label: this.editActionText,
+      action: 'navigateToEditView',
+      security: 'Entities/Lead/Edit',
+    }, {
+      id: 'callWork',
+      cls: 'fa fa-phone-square fa-2x',
+      label: this.callWorkActionText,
+      enabled: action.hasProperty.bindDelegate(this, 'WorkPhone'),
+      fn: action.callPhone.bindDelegate(this, 'WorkPhone'),
+    }, {
+      id: 'callMobile',
+      cls: 'fa fa-mobile fa-2x',
+      label: this.callMobileActionText,
+      enabled: action.hasProperty.bindDelegate(this, 'Mobile'),
+      fn: action.callPhone.bindDelegate(this, 'Mobile'),
+    }, {
+      id: 'sendEmail',
+      cls: 'fa fa-envelope fa-2x',
+      label: this.sendEmailActionText,
+      enabled: action.hasProperty.bindDelegate(this, 'Email'),
+      fn: action.sendEmail.bindDelegate(this, 'Email'),
+    }, {
+      id: 'addNote',
+      cls: 'fa fa-edit fa-2x',
+      label: this.addNoteActionText,
+      fn: action.addNote.bindDelegate(this),
+    }, {
+      id: 'addActivity',
+      cls: 'fa fa-calendar fa-2x',
+      label: this.addActivityActionText,
+      fn: action.addActivity.bindDelegate(this),
+    }, {
+      id: 'addAttachment',
+      cls: 'fa fa-paperclip fa-2x',
+      label: this.addAttachmentActionText,
+      fn: action.addAttachment.bindDelegate(this),
+    }]);
+  },
 
-        //View Properties      
-        detailView: 'lead_detail',
-        icon: 'content/images/icons/Leads_24x24.png',
-        id: 'lead_list',
-        security: 'Entities/Lead/View',
-        insertView: 'lead_edit',
-        queryOrderBy: 'LastNameUpper,FirstName',
-        querySelect: [
-            'Company',
-            'LeadNameLastFirst',
-            'WebAddress',
-            'Email',
-            'WorkPhone',
-            'Mobile',
-            'TollFree',
-            'Title',
-            'ModifyDate'
-        ],
-        resourceKind: 'leads',
-        entityName: 'Lead', 
-        allowSelection: true,
-        enableActions: true,
-        defaultSearchTerm: function() {
-            return '#' + this.hashTagQueriesText['my-leads'];
-        },
-        hashTagQueries: {
-            'my-leads': function() {
-                return 'AccountManager.Id eq "' + App.context.user.$key + '"';
-            },
-            'can-email': 'DoNotEmail eq false',
-            'can-phone': 'DoNotPhone eq false',
-            'can-fax': 'DoNotFAX eq false',
-            'can-mail': 'DoNotMail eq false',
-            'can-solicit': 'DoNotSolicit eq false'
-        },
-        hashTagQueriesText: {
-            'my-leads': 'my-leads',
-            'can-email': 'can-email',
-            'can-phone': 'can-phone',
-            'can-fax': 'can-fax',
-            'can-mail': 'can-mail',
-            'can-solicit': 'can-solicit'
-        },
-
-        createActionLayout: function() {
-            return this.actions || (this.actions = [{
-                        id: 'edit',
-                        icon: 'content/images/icons/edit_24.png',
-                        label: this.editActionText,
-                        action: 'navigateToEditView'
-                    }, {
-                        id: 'callWork',
-                        icon: 'content/images/icons/Call_24x24.png',
-                        label: this.callWorkActionText,
-                        enabled: action.hasProperty.bindDelegate(this, 'WorkPhone'),
-                        fn: action.callPhone.bindDelegate(this, 'WorkPhone')
-                    }, {
-                        id: 'callMobile',
-                        icon: 'content/images/icons/Call_24x24.png',
-                        label: this.callMobileActionText,
-                        enabled: action.hasProperty.bindDelegate(this, 'Mobile'),
-                        fn: action.callPhone.bindDelegate(this, 'Mobile')
-                    }, {
-                        id: 'sendEmail',
-                        icon: 'content/images/icons/Send_Write_email_24x24.png',
-                        label: this.sendEmailActionText,
-                        enabled: action.hasProperty.bindDelegate(this, 'Email'),
-                        fn: action.sendEmail.bindDelegate(this, 'Email')
-                    }, {
-                        id: 'addNote',
-                        icon: 'content/images/icons/New_Note_24x24.png',
-                        label: this.addNoteActionText,
-                        fn: action.addNote.bindDelegate(this)
-                    }, {
-                        id: 'addActivity',
-                        icon: 'content/images/icons/Schedule_ToDo_24x24.png',
-                        label: this.addActivityActionText,
-                        fn: action.addActivity.bindDelegate(this)
-                    }, {
-                        id: 'addAttachment',
-                        icon: 'content/images/icons/Attachment_24.png',
-                        label: this.addAttachmentActionText,
-                        fn: action.addAttachment.bindDelegate(this)
-                    }]
-            );
-        },
-
-        formatSearchQuery: function(searchQuery) {
-            return string.substitute('(LastNameUpper like "${0}%" or upper(FirstName) like "${0}%" or CompanyUpper like "${0}%")', [this.escapeSearchQuery(searchQuery.toUpperCase())]);
-        },
-        createRelatedViewLayout: function() {
-            return this.relatedViews || (this.relatedViews = [{
-                widgetType: HistoryRelatedView,
-                id: 'lead_relatedNotes',
-                autoLoad: true,
-                enabled: true,
-                relatedProperty: 'LeadId',
-                where: function(entry) { return "LeadId eq '" + entry.$key + "' and Type ne 'atDatabaseChange'"; }
-            }]);
-        }
-    });
+  formatSearchQuery: function formatSearchQuery(searchQuery) {
+    return string.substitute('(LastNameUpper like "${0}%" or upper(FirstName) like "${0}%" or CompanyUpper like "${0}%" or upper(LeadNameLastFirst) like "%${0}%")', [this.escapeSearchQuery(searchQuery.toUpperCase())]);
+  },
 });
 
+lang.setObject('Mobile.SalesLogix.Views.Lead.List', __class);
+export default __class;

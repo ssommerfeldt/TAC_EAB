@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f27e2637-d2d3-4887-b848-db6d2a333049" lastModifiedUtc="2014-12-13T18:53:11.8161706Z" name="FormatFullReceivableAddress" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="154ccf1e-092a-493f-9342-07896942c6e7" lastModifiedUtc="2015-01-12T21:41:02.5696547Z" targetType="Sage.SalesLogix.ErpReceivableAddress.Rules, Sage.SalesLogix.BusinessRules" targetMethod="FormatFullReceivableAddress" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

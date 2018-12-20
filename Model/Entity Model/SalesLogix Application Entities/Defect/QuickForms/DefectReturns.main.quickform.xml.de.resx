@@ -117,70 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueAssociateReturn.LookupProperties.ShipTo.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Senden an</value>
+  <data name="grdReturns.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
   </data>
-  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.ConfirmationMessage" xml:space="preserve">
-    <value>Möchten Sie die Beziehung mit der ausgewählten Retoure wirklich entfernen?</value>
+  <data name="ctrlstReturnInfo.Caption" xml:space="preserve">
+    <value>Retoureninformationen - </value>
+  </data>
+  <data name="grdReturns.80924fab-5e90-4ace-b938-0dc5b5ecfd08.ColumnHeading" xml:space="preserve">
+    <value>Erstellungsdatum</value>
   </data>
   <data name="grdReturns.6e0ca51d-2f96-4d24-bd97-1d790387df64.ColumnHeading" xml:space="preserve">
     <value>Retouren-ID</value>
   </data>
-  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.Text" xml:space="preserve">
-    <value>Entfernen</value>
+  <data name="grdReturns.1e9a6eaa-994b-49c9-9ad5-06abf1c0c5c6.ColumnHeading" xml:space="preserve">
+    <value>Typ</value>
   </data>
-  <data name="lueAssociateReturn.LookupProperties.SubmittedBy.CreateUser.PropertyHeader" xml:space="preserve">
-    <value>Empfangen von</value>
+  <data name="grdReturns.50f750f9-6ef2-4662-b84a-4f2794d49ac5.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
   </data>
-  <data name="lueAssociateReturn.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Firma</value>
+  <data name="grdReturns.5f52577b-af59-4473-ab0e-d7b447f5a1d7.ColumnHeading" xml:space="preserve">
+    <value>Priorität</value>
   </data>
-  <data name="lueAssociateReturn.LookupProperties.ReturnNumber.PropertyHeader" xml:space="preserve">
-    <value>Retouren-ID</value>
+  <data name="txtReturnNotes.Caption" xml:space="preserve">
+    <value>Notizen:</value>
+  </data>
+  <data name="grdReturns.3a20a9d8-2735-405c-a43e-284753a47f9d.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdReturns.3a20a9d8-2735-405c-a43e-284753a47f9d.Text" xml:space="preserve">
+    <value>Auswählen</value>
   </data>
   <data name="lblReturnBy.Text" xml:space="preserve">
     <value>Retoureninformationen</value>
   </data>
   <data name="lblShipInfo.Text" xml:space="preserve">
-    <value>Informationen senden</value>
-  </data>
-  <data name="grdReturns.3a20a9d8-2735-405c-a43e-284753a47f9d.Text" xml:space="preserve">
-    <value>Auswählen</value>
-  </data>
-  <data name="grdReturns.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
-  </data>
-  <data name="grdReturns.5f52577b-af59-4473-ab0e-d7b447f5a1d7.ColumnHeading" xml:space="preserve">
-    <value>Priorität</value>
-  </data>
-  <data name="grdReturns.80924fab-5e90-4ace-b938-0dc5b5ecfd08.ColumnHeading" xml:space="preserve">
-    <value>Erstellungsdatum</value>
-  </data>
-  <data name="lueAssociateReturn.LookupProperties.Ticket.TicketNumber.PropertyHeader" xml:space="preserve">
-    <value>Ticket-ID</value>
-  </data>
-  <data name="b625fe0e-0322-48de-bc1f-472019ffd5e7.DuplicateAssociationMessage" xml:space="preserve">
-    <value>Diese Retoure wurde bereits mit dem Fehler verknüpft.</value>
-  </data>
-  <data name="grdReturns.50f750f9-6ef2-4662-b84a-4f2794d49ac5.ColumnHeading" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="txtReturnNotes.Caption" xml:space="preserve">
-    <value>Notizen:</value>
-  </data>
-  <data name="lueAssociateReturn.ButtonToolTip" xml:space="preserve">
-    <value>Retoure verknüpfen</value>
-  </data>
-  <data name="pklShipVia.Caption" xml:space="preserve">
-    <value>Lieferung über - </value>
-  </data>
-  <data name="grdReturns.1e9a6eaa-994b-49c9-9ad5-06abf1c0c5c6.ColumnHeading" xml:space="preserve">
-    <value>Typ</value>
+    <value>Versandinformationen</value>
   </data>
   <data name="memComments.Caption" xml:space="preserve">
     <value>Kommentare</value>
   </data>
-  <data name="ctrlstReturnInfo.Caption" xml:space="preserve">
-    <value>Retoureninformationen - </value>
+  <data name="pklShipVia.Caption" xml:space="preserve">
+    <value>Versand über - </value>
+  </data>
+  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.ConfirmationMessage" xml:space="preserve">
+    <value>Möchten Sie die Beziehung mit der ausgewählten Retoure wirklich entfernen?</value>
+  </data>
+  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.Text" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="lueAssociateReturn.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.ReturnNumber.PropertyHeader" xml:space="preserve">
+    <value>Retouren-ID</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Firma</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.ShipTo.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Lieferungsempfänger</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.Ticket.TicketNumber.PropertyHeader" xml:space="preserve">
+    <value>Ticket-ID</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.SubmittedBy.CreateUser.PropertyHeader" xml:space="preserve">
+    <value>Empfangen von</value>
+  </data>
+  <data name="lueAssociateReturn.ButtonToolTip" xml:space="preserve">
+    <value>Retoure verknüpfen</value>
+  </data>
+  <data name="b625fe0e-0322-48de-bc1f-472019ffd5e7.DuplicateAssociationMessage" xml:space="preserve">
+    <value>Diese Retoure wurde bereits mit dem Fehler verknüpft.</value>
   </data>
 </root>

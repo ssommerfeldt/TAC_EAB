@@ -1,15 +1,15 @@
-define((
-{ errorText: 'Informazione non trovata.',
-  loadingText: 'Caricamento...',
-  noInfoText: 'Nessuna informazione da mostrare.',
-  mainText: 'Tel.Principale:',
-  faxText: 'Fax:',
-  tollFreeText: 'Num. verde:',
-  urlText: 'Web URL:',
-  workText: 'Lavoro:',
-  mobileText: 'Cellulare:',
-  emailText: 'Email:',
-  contactNameText: 'Nome:',
-  phoneText: 'Telefono:',
-  accountText: 'Azienda:' }
-));
+define("Sage/UI/Controls/nls/it/EntityInfoToolTip", {
+    "errorText": "Informazione non trovata.",
+    "loadingText": "Caricamento in corso...",
+    "noInfoText": "Nessuna informazione da mostrare.",
+    "mainText": "Tel. principale:",
+    "faxText": "Fax:",
+    "tollFreeText": "Numero verde:",
+    "urlText": "URL Web:",
+    "workText": "Ufficio:",
+    "mobileText": "Cellulare:",
+    "emailText": "E-mail:",
+    "contactNameText": "Nome:",
+    "phoneText": "Telefono:",
+    "accountText": "Azienda:"
+});

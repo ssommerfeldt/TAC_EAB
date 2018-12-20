@@ -207,7 +207,7 @@
               function () {
               // Execute the "CopyPart" method on each selected record
               var grid = this;
-              var selectedItems = grid.selection.getSelected();
+              var selectedItems = grid.getSelectedRowData();
               if (selectedItems.length &lt; 1) {
               Sage.UI.Dialogs.showError(grid.noSelectionsText);
               return;
@@ -216,7 +216,7 @@
               grid.showLoading();
               var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
               var fnCopy = function (i) {
-              if (store.isItem(selectedItems[i])) {
+              if (selectedItems[i]) {
               var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
               .setResourceKind('ticketActivityItems')
               .setOperationName('CopyPart');

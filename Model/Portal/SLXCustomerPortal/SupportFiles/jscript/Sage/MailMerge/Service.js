@@ -1,4 +1,4 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, slxmm */
 /* -------------------------------------------------------------------------                  
 Saleslogix Desktop Integration
 Sage.MailMerge.Service and Sage.SelectEmailInfo
@@ -20,7 +20,7 @@ mail merge application programming interface.
 
 // ReSharper disable InconsistentNaming
 
-define([
+define("Sage/MailMerge/Service", [
         "Sage/Link",
         "Sage/MailMerge/Context",
         "Sage/MailMerge/Helper",
@@ -154,7 +154,8 @@ define([
                             if (oMailMergeEngine.MergePreview(tempFileName, entityId, params)) {
                                 if (showPreview) {
                                     var sFileName = oService.GetParamValue(params, "MergedFileName"); /*DNL*/
-                                    var oTemplateEditor = oService.TemplateEditor();
+                                    var oTemplateEditor = oService.NewActiveXObject("SLXMMGUIW.TemplateEditor");
+                                    oService.ConnectEvents(oTemplateEditor, WhichEvents.weTemplateEditor);
                                     oTemplateEditor.CreateWindow();
                                     try {
                                         oService.SetDefaultProperties(oTemplateEditor, WhichProperties.wpTemplateEditor);
@@ -1320,7 +1321,7 @@ define([
                 * adds these cookies to the HTTP request automatically.
                 * These values [cannot] be used as-is to set the header value
                 * and they can only be understood and processed by the ActiveX. */
-                if (!dojo.isIE) {
+                if (!Sage.Utility.isIE) {
                     if (typeof obj.AddCookie == "function" && typeof obj.ClearCookies == "function") {
                         var oCookies = this.GetCookies();
                         if (oCookies != null) {
@@ -1731,7 +1732,7 @@ define([
                 return this.GetClientPath() + "/SLXMailMergeServer.ashx";
             },
             GetCookies: function () {
-                if (!dojo.isIE) {
+                if (!Sage.Utility.isIE) {
                     if (this.__MailMergeCookies != null)
                         return this.__MailMergeCookies;
                     var sPath = this.GetClientPath();
@@ -1902,7 +1903,8 @@ define([
                             if (sContactId != "") {
                                 sUrl = dString.substitute("${0}getconname&id=${1}", [self.GetInfoBrokerUrl(), sContactId]);
                                 sEntityDescription = self.GetFromServer(sUrl);
-                                oContext.SetDetailContext(sContactId, "CONTACT", sEntityDescription, null, oContext.EntityId, null); /*DNL*/
+                                var sOppId = self.GetSingleValue("OPPORTUNITYID", "OPPORTUNITY_CONTACT", "OPPCONTACTID", id);
+                                oContext.SetDetailContext(sContactId, "CONTACT", sEntityDescription, null, sOppId, null); /*DNL*/
                                 if (typeof onComplete === "function") {
                                     onComplete(true);
                                 }
@@ -2087,10 +2089,18 @@ define([
                         var sNewHistoryId = "";
                         var sNewDescription = info.Description;
                         if (typeof hist === "object") {
-                            sNewHistoryId = hist.$key || "";
-                            sNewDescription = hist.Description || sNewDescription;
-                            sOpportunityId = hist.OpportunityId || "";
-                            sTicketId = hist.TicketId || "";
+
+                            if ("$key" in hist) sNewHistoryId = hist.$key || "";
+                            else if ("HistoryId" in hist) sNewHistoryId = hist.HistoryId || "";
+
+                            if ("Description" in hist) sNewDescription = hist.Description || sNewDescription;
+                            else if (sNewHistoryId) sNewDescription = self.GetSingleValue("DESCRIPTION", "HISTORY", "HISTORYID", sNewHistoryId);
+
+                            if ("OpportunityId" in hist) sOpportunityId = hist.OpportunityId || "";
+                            else if (sNewHistoryId) sOpportunityId = self.GetSingleValue("OPPORTUNITYID", "HISTORY", "HISTORYID", sNewHistoryId); 
+
+                            if ("TicketId" in hist) sTicketId = hist.TicketId || "";
+                            else if (sNewHistoryId) sTicketId = self.GetSingleValue("TICKETID", "HISTORY", "HISTORYID", sNewHistoryId);
                         }
                         else if (dojo.isString(hist) && hist.length == 12) {
                             sNewHistoryId = hist;
@@ -2298,12 +2308,11 @@ define([
                 }
             },
             NewActiveXObject: function (progid) {
-                if (Sage && Sage.gears && Sage.gears.factory) {
-                    var oComFactory = Sage.gears.factory.create("com.factory");
-                    var oActiveX = oComFactory.newActiveXObject(progid);
+                if (typeof slxmm !== "undefined" && slxmm && slxmm.com) {
+                    var oActiveX = slxmm.com.create(progid);
                     return oActiveX;
                 }
-                if (!Sage.gears || !Sage.gears.factory)
+                if (typeof slxmm === "undefined" || !slxmm || !slxmm.com)
                     throw new Error(Helper.DesktopErrors().DesktopHelperUnavailable);
                 else
                     throw new Error(Helper.DesktopErrors().NewActiveXObjectError);
@@ -2317,13 +2326,13 @@ define([
                     bUseSlxShowModalDialog = !((iProcessMajorVersion == 3 && iProcessMinorVersion >= 5) || (iProcessMajorVersion > 3));
                 }
                 else {
-                    if (!dojo.isIE && !(sProcessName == "IEXPLORE.EXE")) { /*DNL*/
+                    if (!Sage.Utility.isIE && !(sProcessName == "IEXPLORE.EXE")) { /*DNL*/
                         bUseSlxShowModalDialog = true;
                     }
                 }
                 if (!bUseSlxShowModalDialog) {
                     /* Logic to determine the dialogLeft and dialogTop for [visually] centering the dialog (center:yes does [not] work in FF). */
-                    var iBrowserHeightOffset = (dojo.isIE) ? 25 : 75;
+                    var iBrowserHeightOffset = (Sage.Utility.isIE) ? 25 : 75;
                     var iWidth = this.MailMergeGUI().WorkAreaWidth;
                     var iHeight = this.MailMergeGUI().WorkAreaHeight;
                     if (iWidth == -1 || iWidth > screen.availWidth) {
@@ -3292,7 +3301,7 @@ define([
                     oMailMergeInfo.FaxBillingCode = this.FaxBillingCode;
                     oMailMergeInfo.FaxClientCode = this.FaxClientCode;
                     oMailMergeInfo.FaxCoverPage = this.FaxCoverPage;
-                    oMailMergeInfo.FaxDate = this.FaxDate;
+                    oMailMergeInfo.FaxDate = this.FaxDate.getVarDate();
                     oMailMergeInfo.FaxDelivery = this.FaxDelivery;
                     oMailMergeInfo.FaxJobOptions = this.FaxJobOptions;
                     oMailMergeInfo.FaxKeywords = this.FaxKeywords;
@@ -3327,7 +3336,7 @@ define([
                     oMailMergeInfo.PromptPrinter = this.PromptPrinter;
                     oMailMergeInfo.PromptScheduleActivity = this.PromptScheduleActivity;
                     oMailMergeInfo.RunAs = this.RunAs;
-                    oMailMergeInfo.ScheduleFollowUpAlarmTime = this.ScheduleFollowUpAlarmTime;
+                    oMailMergeInfo.ScheduleFollowUpAlarmTime = this.ScheduleFollowUpAlarmTime.getVarDate();
                     oMailMergeInfo.ScheduleFollowUpCarryOverNotes = this.ScheduleFollowUpCarryOverNotes;
                     oMailMergeInfo.ScheduleFollowUpCategory = this.ScheduleFollowUpCategory;
                     oMailMergeInfo.ScheduleFollowUpDuration = this.ScheduleFollowUpDuration;
@@ -3335,7 +3344,7 @@ define([
                     oMailMergeInfo.ScheduleFollowUpPriority = this.ScheduleFollowUpPriority;
                     oMailMergeInfo.ScheduleFollowUpRegarding = this.ScheduleFollowUpRegarding;
                     oMailMergeInfo.ScheduleFollowUpSetAlarm = this.ScheduleFollowUpSetAlarm;
-                    oMailMergeInfo.ScheduleFollowUpStartDate = this.ScheduleFollowUpStartDate;
+                    oMailMergeInfo.ScheduleFollowUpStartDate = this.ScheduleFollowUpStartDate.getVarDate(); //this.ScheduleFollowUpStartDate;
                     oMailMergeInfo.ScheduleFollowUpTimeless = this.ScheduleFollowUpTimeless;
                     oMailMergeInfo.ScheduleFollowUpType = this.ScheduleFollowUpType;
                     oMailMergeInfo.ScheduleFollowUpUserID = this.ScheduleFollowUpUserId;
@@ -3624,12 +3633,7 @@ define([
 
         var isWindows = (navigator.userAgent.indexOf("Win") != -1);
         if (isWindows && Sage && Sage.Services) {
-            if (!Sage.gears) {
-                if (typeof initGears == "function") {
-                    initGears();
-                }
-            }
-            if (Sage.gears && Sage.gears.factory) {
+            if (typeof slxmm !== "undefined" && slxmm && slxmm.com) {
                 if (!Sage.Services.hasService("MailMergeService")) {
                     Sage.Services.addService("MailMergeService", new Sage.MailMerge.Service());
                 }

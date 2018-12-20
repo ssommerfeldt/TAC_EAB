@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Ligne' }
-));
+define("Sage/QuickForms/Design/nls/fr/RowDesigner", {
+    "displayNameText": "Ligne"
+});

@@ -404,14 +404,9 @@ public partial class SmartParts_NotWhatsNew_NotWhatsNew : UserControl, ISmartPar
 
 	public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
 	{
-		ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-
-        Label lbl = new Label();
-        lbl.Text = GetLocalResourceObject("Notes_Caption").ToString();
-
-        tinfo.LeftTools.Add(lbl);
+        ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
+        tinfo.Title = GetLocalResourceObject("Notes_Caption").ToString();
         tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Note_24x24.gif");
-
         return tinfo;
     }
 

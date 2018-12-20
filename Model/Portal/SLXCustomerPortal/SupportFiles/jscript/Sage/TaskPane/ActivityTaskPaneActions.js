@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/ActivityTaskPaneActions", [
         'dojo/parser',
          'dojo/ready'
 ],
@@ -45,7 +45,7 @@ function (
             this._getActivityService().deleteEvent();
         },
         scheduleLitRequest: function () {
-            this._activityService.scheduleLitRequest();
+            this._getActivityService().scheduleLitRequest();
         },
         deleteLitRequest: function () {
             this._getActivityService().deleteLitRequest();

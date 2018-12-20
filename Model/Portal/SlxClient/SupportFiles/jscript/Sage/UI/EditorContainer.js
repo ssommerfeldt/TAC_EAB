@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/EditorContainer", [
         "dojo/i18n",
         'dijit/form/Button',
         'dojo/_base/declare'

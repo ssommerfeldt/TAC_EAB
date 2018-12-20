@@ -117,14 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmptyRow_lz" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="NewNotes_Caption" xml:space="preserve">
-    <value>Новые комментарии</value>
-  </data>
   <data name="Account_Company" xml:space="preserve">
-    <value>Субъект/Компания</value>
+    <value>Клиент/компания</value>
+  </data>
+  <data name="BaseType_lz" xml:space="preserve">
+    <value>Тип заметки</value>
   </data>
   <data name="Completed_lz" xml:space="preserve">
     <value>Дата завершения</value>
@@ -132,11 +129,29 @@
   <data name="Contact" xml:space="preserve">
     <value>Контакт</value>
   </data>
+  <data name="CreateDate_lz" xml:space="preserve">
+    <value>Добавлено</value>
+  </data>
+  <data name="EmptyRow_lz" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <data name="Lead" xml:space="preserve">
+    <value>Заинтересованное лицо</value>
+  </data>
+  <data name="ModifyDate_lz" xml:space="preserve">
+    <value>Дата изменения</value>
+  </data>
+  <data name="ModifiedNotes_Caption" xml:space="preserve">
+    <value>Измененные комментарии</value>
+  </data>
+  <data name="Name_lz" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="NewNotes_Caption" xml:space="preserve">
+    <value>Новые комментарии</value>
+  </data>
   <data name="Regarding_lz" xml:space="preserve">
     <value>Тема</value>
-  </data>
-  <data name="ToDo_Type" xml:space="preserve">
-    <value>Выполнить</value>
   </data>
   <data name="Type_lz" xml:space="preserve">
     <value>Тип</value>
@@ -147,31 +162,16 @@
   <data name="Meeting_Type" xml:space="preserve">
     <value>Встреча</value>
   </data>
-  <data name="ModifiedNotes_Caption" xml:space="preserve">
-    <value>Измененные комментарии</value>
+  <data name="Note_Type" xml:space="preserve">
+    <value>Заметка</value>
+  </data>
+  <data name="Personal_Type" xml:space="preserve">
+    <value>Личное действие</value>
   </data>
   <data name="Phone_Type" xml:space="preserve">
     <value>Звонок</value>
   </data>
-  <data name="Personal_Type" xml:space="preserve">
-    <value>Личные дела</value>
-  </data>
-  <data name="ModifyDate_lz" xml:space="preserve">
-    <value>Дата обновления</value>
-  </data>
-  <data name="Lead" xml:space="preserve">
-    <value>Наводка</value>
-  </data>
-  <data name="Note_Type" xml:space="preserve">
-    <value>Заметка</value>
-  </data>
-  <data name="BaseType_lz" xml:space="preserve">
-    <value>Тип заметки</value>
-  </data>
-  <data name="Name_lz" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="CreateDate_lz" xml:space="preserve">
-    <value>Добавлено</value>
+  <data name="ToDo_Type" xml:space="preserve">
+    <value>Дело</value>
   </data>
 </root>

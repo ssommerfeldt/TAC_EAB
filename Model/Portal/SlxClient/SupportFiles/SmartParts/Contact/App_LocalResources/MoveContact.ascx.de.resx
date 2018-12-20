@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,133 +117,139 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="chkUseSourceAddressPhn.Caption" xml:space="preserve">
+    <value>Verwenden Sie Adresse und Telefonnummer der neuen Firma.</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="cmdOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ConfirmMove.Text" xml:space="preserve">
+    <value>Möchten Sie den Kontakt und die ausgewählten Elemente wirklich verschieben?</value>
+  </data>
+  <data name="lblAddressPhone.Text" xml:space="preserve">
+    <value>Adresse und Telefonnummer</value>
+  </data>
+  <data name="lblCantMoveItemsInfo.Text" xml:space="preserve">
+    <value>Die folgenden Elemente können nicht verschoben werden. Sie müssen einem Kontakt in der Quellfirma neu zugewiesen werden.</value>
+  </data>
+  <data name="lblHeader.Text" xml:space="preserve">
+    <value>Mithilfe dieser Seite können Sie einen Kontakt von einer Firma zu einer anderen verschieben sowie zugehörige Datensätze verschieben oder neu zuweisen.</value>
+  </data>
+  <data name="lblMoveFromLbl.Text" xml:space="preserve">
+    <value>Von</value>
+  </data>
+  <data name="lblMoveOptions.Text" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="lblMoveSourceLbl.Text" xml:space="preserve">
+    <value>Verschieben</value>
+  </data>
+  <data name="lblMoveTicketsReturnsContracts.Text" xml:space="preserve">
+    <value>Tickets, Retouren, Verträge und Verkaufsaufträge</value>
+  </data>
+  <data name="lblMoveToAcctLbl.Text" xml:space="preserve">
+    <value>Nach</value>
+  </data>
+  <data name="lblReassign.Text" xml:space="preserve">
+    <value>Erneut zuweisen</value>
+  </data>
+  <data name="lblReassignClosedItems.Text" xml:space="preserve">
+    <value>Geschlossene oder erfüllte Literaturanfragen und Verkaufschancen</value>
+  </data>
+  <data name="lblReassignInfo.Text" xml:space="preserve">
+    <value>Beim Verschieben eines Kontakts müssen die folgenden Elemente entweder mit dem Kontakt verschoben oder einem mit der alten Firma verknüpften Kontakt neu zugewiesen werden.</value>
+  </data>
+  <data name="lblReassignOpenItems.Text" xml:space="preserve">
+    <value>Offene oder aktive Anlagen, Literaturanfragen, Verkaufschancen und Verkaufsaufträge</value>
+  </data>
+  <data name="lblReassignToContact.Text" xml:space="preserve">
+    <value>Erneut zuweisen zu Kontakt:</value>
+  </data>
+  <data name="lblSourceAccount.Text" xml:space="preserve">
+    <value>Firma:</value>
+  </data>
+  <data name="lblSourceContact.Text" xml:space="preserve">
+    <value>Kontakt:</value>
+  </data>
+  <data name="lblTargetAccount.Text" xml:space="preserve">
+    <value>Firma:</value>
+  </data>
+  <data name="error_DuplicateTargetAccount.Text" xml:space="preserve">
+    <value>Wählen Sie eine Zielfirma aus, die nicht mit der Quellfirma identisch ist</value>
+  </data>
   <data name="LookupPropertyAccount.Text" xml:space="preserve">
     <value>Firma</value>
   </data>
   <data name="LookupPropertyEmail.Text" xml:space="preserve">
     <value>E-Mail</value>
   </data>
-  <data name="lblReassign.Text" xml:space="preserve">
-    <value>Erneut zuweisen</value>
-  </data>
-  <data name="rdgOptionsDoNotMoveActivtyInfo.Text" xml:space="preserve">
-    <value>Aktivitäten dürfen nicht verschoben werden</value>
-  </data>
-  <data name="LookupPropertyStatus.Text" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="LookupPropertyMobile.Text" xml:space="preserve">
-    <value>Mobil</value>
-  </data>
-  <data name="lblMoveToAcctLbl.Text" xml:space="preserve">
-    <value>An</value>
-  </data>
-  <data name="chkUseSourceAddressPhn.Caption" xml:space="preserve">
-    <value>Verwenden Sie Adresse und Telefonnummer der neuen Firma.</value>
-  </data>
-  <data name="lblReassignToContact.Text" xml:space="preserve">
-    <value>Erneut zuweisen zu Kontakt:</value>
-  </data>
-  <data name="lblReassignSupportItems.Text" xml:space="preserve">
-    <value>Offene Tickets, Retouren und Verträge</value>
-  </data>
-  <data name="rdgOptionsMoveActivtyInfo.Text" xml:space="preserve">
-    <value>Aktivitätsinformationen zur neuen Firma verschieben</value>
-  </data>
-  <data name="lblMoveSourceLbl.Text" xml:space="preserve">
-    <value>Verschieben</value>
-  </data>
-  <data name="LookupPropertyWork.Text" xml:space="preserve">
-    <value>Geschäftlich</value>
-  </data>
-  <data name="error_ReassignValueNotSpecified.Text" xml:space="preserve">
-    <value>* Sie müssen einen Kontakt für die Neuzuweisung angeben, bevor Sie fortfahren.</value>
-  </data>
-  <data name="rdgOptionsMoveNotesHistory.Text" xml:space="preserve">
-    <value>Notizen/Historieninformationen zur neuen Firma verschieben</value>
+  <data name="LookupPropertyFirstName.Text" xml:space="preserve">
+    <value>Vorname</value>
   </data>
   <data name="LookupPropertyLastName.Text" xml:space="preserve">
     <value>Nachname</value>
   </data>
-  <data name="cmdCancel.Text" xml:space="preserve">
-    <value>Abbrechen</value>
+  <data name="LookupPropertyMainPhone.Text" xml:space="preserve">
+    <value>Haupttelefonnummer</value>
   </data>
-  <data name="ConfirmMove.Text" xml:space="preserve">
-    <value>Möchten Sie den Kontakt und die ausgewählten Elemente wirklich verschieben?</value>
+  <data name="LookupPropertyMobile.Text" xml:space="preserve">
+    <value>Mobil</value>
   </data>
-  <data name="cmdOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lblSourceAccount.Text" xml:space="preserve">
-    <value>Firma:</value>
-  </data>
-  <data name="lblSingleContact.Text" xml:space="preserve">
-    <value>{0} ist der einzige Kontakt, der momentan mit {1} verknüpft ist.</value>
-  </data>
-  <data name="lblTargetAccount.Text" xml:space="preserve">
-    <value>Firma:</value>
-  </data>
-  <data name="lblMoveOptions.Text" xml:space="preserve">
-    <value>Optionen</value>
-  </data>
-  <data name="lblAddressPhone.Text" xml:space="preserve">
-    <value>Adresse und Telefonnummer</value>
-  </data>
-  <data name="LookupPropertyType.Text" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="lblReassignClosedItems.Text" xml:space="preserve">
-    <value>Geschlossene oder erfüllte Literaturanfragen und Verkaufschancen</value>
+  <data name="LookupPropertyStatus.Text" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="LookupPropertySubType.Text" xml:space="preserve">
     <value>Untertyp</value>
   </data>
-  <data name="lblReassignInfo.Text" xml:space="preserve">
-    <value>Beim Verschieben eines Kontakts müssen die folgenden Elemente entweder mit dem Kontakt verschoben oder einem mit der alten Firma verknüpften Kontakt neu zugewiesen werden.</value>
+  <data name="LookupPropertyType.Text" xml:space="preserve">
+    <value>Typ</value>
   </data>
-  <data name="cmdCancel_Close.Text" xml:space="preserve">
-    <value>Schließen</value>
+  <data name="LookupPropertyWork.Text" xml:space="preserve">
+    <value>Geschäftlich</value>
   </data>
-  <data name="lblMoveFromLbl.Text" xml:space="preserve">
-    <value>Von</value>
-  </data>
-  <data name="lblCantMoveItemsInfo.Text" xml:space="preserve">
-    <value>Die folgenden Elemente können nicht verschoben werden. Sie müssen einem Kontakt in der Quellfirma neu zugewiesen werden.</value>
+  <data name="rdgOptionsDoNotMoveActivtyInfo.Text" xml:space="preserve">
+    <value>Aktivitäten nicht verschieben</value>
   </data>
   <data name="rdgOptionsDoNotMoveNotesHistory.Text" xml:space="preserve">
-    <value>Diese Elemente dürfen nicht verschoben werden</value>
+    <value>Diese Elemente nicht verschieben</value>
   </data>
-  <data name="error_ReassignValueDuplicate.Text" xml:space="preserve">
-    <value>* Bitte wählen Sie einen Zielkontakt aus, der nicht mit dem zu verschiebenden Quellkontakt identisch ist.</value>
+  <data name="rdgOptionsMoveActivtyInfo.Text" xml:space="preserve">
+    <value>Aktivitätsinformationen zur neuen Firma verschieben</value>
   </data>
-  <data name="error_DuplicateTargetAccount.Text" xml:space="preserve">
-    <value>Wählen Sie eine Zielfirma aus, die nicht mit der Quellfirma identisch ist</value>
+  <data name="rdgOptionsMoveNotesHistory.Text" xml:space="preserve">
+    <value>Notizen/Historieninformationen zur neuen Firma verschieben</value>
   </data>
-  <data name="LookupPropertyFirstName.Text" xml:space="preserve">
-    <value>Vorname</value>
+  <data name="error_NoTargetAccount.Text" xml:space="preserve">
+    <value>Bitte wählen Sie eine Zielfirma aus, bevor Sie fortfahren.</value>
   </data>
-  <data name="lblHeader.Text" xml:space="preserve">
-    <value>Mithilfe dieser Seite können Sie einen Kontakt von einer Firma zu einer anderen verschieben sowie zugehörige Datensätze verschieben oder neu zuweisen.</value>
-  </data>
-  <data name="LookupPropertyMainPhone.Text" xml:space="preserve">
-    <value>Haupttelefonnummer</value>
+  <data name="lblSingleContact.Text" xml:space="preserve">
+    <value>{0} ist der einzige Kontakt, der momentan mit {1} verknüpft ist.</value>
   </data>
   <data name="associationsExist.Text" xml:space="preserve">
     <value>Dieser Kontakt kann leider nicht verschoben werden, da er zugewiesen ist: {1}</value>
   </data>
-  <data name="lblReassignOpenItems.Text" xml:space="preserve">
-    <value>Offene oder aktive Anlagen, Literaturanfragen, Verkaufschancen und Verkaufsaufträge</value>
+  <data name="cmdCancel_Close.Text" xml:space="preserve">
+    <value>Schließen</value>
   </data>
-  <data name="error_NoTargetAccount.Text" xml:space="preserve">
-    <value>Bitte wählen Sie eine Zielfirma, bevor Sie fortfahren.</value>
+  <data name="lblReassignSupportItems.Text" xml:space="preserve">
+    <value>Offene Tickets, Retouren und Verträge</value>
   </data>
-  <data name="lblMoveTicketsReturnsContracts.Text" xml:space="preserve">
-    <value>Tickets, Retouren, Verträge und Verkaufsaufträge</value>
+  <data name="error_ReassignValueDuplicate.Text" xml:space="preserve">
+    <value>* Bitte wählen Sie einen Zielkontakt aus, der nicht mit dem zu verschiebenden Quellkontakt identisch ist.</value>
   </data>
-  <data name="lblSourceContact.Text" xml:space="preserve">
-    <value>Kontakt:</value>
+  <data name="error_ReassignValueNotSpecified.Text" xml:space="preserve">
+    <value>* Sie müssen einen Kontakt für die Neuzuweisung angeben, bevor Sie fortfahren.</value>
   </data>
   <data name="ContactMove_ContactHasChanged" xml:space="preserve">
-    <value>Der Kontakt wurde geändert und muss gespeichert werden, bevor er zu einer neuen Firma verschoben werden kann.</value>
+    <value>Der Kontakt wurde geändert und muss gespeichert werden, bevor er in eine neue Firma verschoben werden kann.</value>
+  </data>
+  <data name="chkAssignToSameContact.Caption" xml:space="preserve">
+    <value>Alle Elemente demselben Kontakt zuweisen</value>
+  </data>
+  <data name="lblAssignToSameContact.Text" xml:space="preserve">
+    <value>Kontaktzuweisung</value>
   </data>
 </root>

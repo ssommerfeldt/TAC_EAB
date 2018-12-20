@@ -117,29 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LookupTeamPropertyHeader" xml:space="preserve">
-    <value>Team</value>
-  </data>
-  <data name="chkAddManager.Label" xml:space="preserve">
-    <value>Manager des Benutzers automatisch zu Team hinzufügen</value>
-  </data>
-  <data name="luTargetTeam.Caption" xml:space="preserve">
-    <value>Zielteam:</value>
-  </data>
-  <data name="LookupTeamDialogTitle" xml:space="preserve">
-    <value>Team suchen</value>
-  </data>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Abbrechen</value>
+  <data name="luTeam.Caption" xml:space="preserve">
+    <value>Team:</value>
   </data>
   <data name="btnOk.Caption" xml:space="preserve">
     <value>OK</value>
-  </data>
-  <data name="User" xml:space="preserve">
-    <value>Benutzer</value>
-  </data>
-  <data name="InvalidUserContext" xml:space="preserve">
-    <value>Vorlagen und inaktive Benutzer können nicht zu einem Team hinzugefügt werden.</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Benutzer</value>
@@ -147,14 +129,23 @@
   <data name="Title_Add.Caption" xml:space="preserve">
     <value>{0} zu Team hinzufügen</value>
   </data>
-  <data name="luTeam.Caption" xml:space="preserve">
-    <value>Team:</value>
+  <data name="luTargetTeam.Caption" xml:space="preserve">
+    <value>Zielteam:</value>
   </data>
   <data name="Add_Description" xml:space="preserve">
-    <value>Fügen Sie die ({0}) ausgewählten {1} zu folgendem Team hinzu.</value>
+    <value>Auswahl ({0} {1}) zu folgendem Team hinzufügen</value>
   </data>
   <data name="Department" xml:space="preserve">
     <value>Abteilung</value>
+  </data>
+  <data name="Departments" xml:space="preserve">
+    <value>Abteilungen</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Benutzer</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Abbrechen</value>
   </data>
   <data name="Team" xml:space="preserve">
     <value>Team</value>
@@ -162,7 +153,16 @@
   <data name="Teams" xml:space="preserve">
     <value>Teams</value>
   </data>
-  <data name="Departments" xml:space="preserve">
-    <value>Abteilungen</value>
+  <data name="InvalidUserContext" xml:space="preserve">
+    <value>Vorlagen und inaktive Benutzer können nicht zu einem Team hinzugefügt werden.</value>
+  </data>
+  <data name="chkAddManager.Label" xml:space="preserve">
+    <value>Manager des Benutzers automatisch zu Team hinzufügen</value>
+  </data>
+  <data name="LookupTeamDialogTitle" xml:space="preserve">
+    <value>Team suchen</value>
+  </data>
+  <data name="LookupTeamPropertyHeader" xml:space="preserve">
+    <value>Team</value>
   </data>
 </root>

@@ -1,11 +1,11 @@
-define((
+define("Sage/QuickForms/Design/Editors/nls/en/DateTimePickerAdvancedPropertyEditor", (
 { titleText: 'Advanced',
   appearanceText: 'Appearance',
   behaviorText: 'Behavior',
   controlInfoText: 'Control Info',
   dataText: 'Data',
   buttonToolTipText: 'Button Tooltip:',
-  buttonToolTipTooltipText: 'The tooltip  to display when the user\\\'s mouse hovers over the button part of the control.',
+  buttonToolTipTooltipText: 'The tooltip  to display when the user\'s mouse hovers over the button part of the control.',
   controlIdText: 'Control Id:',
   controlIdTooltipText: 'Identifier for this control.',
   controlLabelPlacementText: 'Label Placement:',

@@ -117,32 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="agcTargets_grid.2270c721-a969-4a23-aa9f-2824558e2194.ColumnHeading" xml:space="preserve">
-    <value>Phase</value>
-  </data>
-  <data name="agcTargets.Caption" xml:space="preserve">
-    <value>Ziele:</value>
-  </data>
-  <data name="curBudget.Caption" xml:space="preserve">
-    <value>Budget:</value>
-  </data>
   <data name="txtStatus.Caption" xml:space="preserve">
     <value>Status:</value>
+  </data>
+  <data name="dtpStartDate.Caption" xml:space="preserve">
+    <value>Startdatum:</value>
   </data>
   <data name="dtpEndDate.Caption" xml:space="preserve">
     <value>Enddatum:</value>
   </data>
-  <data name="agcOpportunities_grid.e3bc3f23-66fb-4611-88a4-6c51569f422c.ColumnHeading" xml:space="preserve">
-    <value>Beschreibung</value>
+  <data name="txtOwner.Caption" xml:space="preserve">
+    <value>Zugriffsberechtigter:</value>
   </data>
-  <data name="dtpEndDate.ButtonToolTip" xml:space="preserve">
-    <value>Kalender</value>
+  <data name="txtManager.Caption" xml:space="preserve">
+    <value>Manager:</value>
   </data>
-  <data name="dtpStartDate.ButtonToolTip" xml:space="preserve">
-    <value>Kalender</value>
+  <data name="agcTargets.Caption" xml:space="preserve">
+    <value>Ziele:</value>
   </data>
   <data name="agcOpportunities.Caption" xml:space="preserve">
     <value>Verkaufschancen:</value>
+  </data>
+  <data name="agcOpportunities_grid.ddc47679-20d8-4f45-aa0e-47f468c0cae3.ColumnHeading" xml:space="preserve">
+    <value>Potenzial</value>
   </data>
   <data name="agcTargets_grid.4e0e312f-75eb-4c5d-bb28-bb8544ce0b2f.ColumnHeading" xml:space="preserve">
     <value>Typ</value>
@@ -150,31 +147,34 @@
   <data name="agcTargets_grid.331866ae-7836-4595-b2b2-8b64c52b5753.ColumnHeading" xml:space="preserve">
     <value>Status</value>
   </data>
-  <data name="agcResponses.PopupCaptionFmt" xml:space="preserve">
-    <value>Antworten für {0}</value>
+  <data name="agcTargets_grid.2270c721-a969-4a23-aa9f-2824558e2194.ColumnHeading" xml:space="preserve">
+    <value>Phase</value>
   </data>
-  <data name="dtpStartDate.Caption" xml:space="preserve">
-    <value>Anfangsdatum:</value>
-  </data>
-  <data name="agcResponses.Caption" xml:space="preserve">
-    <value>Antworten:</value>
+  <data name="agcOpportunities_grid.e3bc3f23-66fb-4611-88a4-6c51569f422c.ColumnHeading" xml:space="preserve">
+    <value>Beschreibung</value>
   </data>
   <data name="agcOpportunities_grid.4d133a8b-1d45-4660-b05a-a7387ae8ec5f.ColumnHeading" xml:space="preserve">
     <value>Firma</value>
   </data>
-  <data name="agcOpportunities_grid.ddc47679-20d8-4f45-aa0e-47f468c0cae3.ColumnHeading" xml:space="preserve">
-    <value>Potenzial</value>
-  </data>
-  <data name="txtOwner.Caption" xml:space="preserve">
-    <value>Zugriffsber.:</value>
-  </data>
   <data name="agcTargets.PopupCaptionFmt" xml:space="preserve">
     <value>Ziele für {0}</value>
   </data>
-  <data name="txtManager.Caption" xml:space="preserve">
-    <value>Verantwortlicher:</value>
+  <data name="curBudget.Caption" xml:space="preserve">
+    <value>Budget:</value>
+  </data>
+  <data name="agcResponses.Caption" xml:space="preserve">
+    <value>Antworten:</value>
+  </data>
+  <data name="agcResponses.PopupCaptionFmt" xml:space="preserve">
+    <value>Antworten für {0}</value>
   </data>
   <data name="agcOpportunities.PopupCaptionFmt" xml:space="preserve">
     <value>Verkaufschancen für {0}</value>
+  </data>
+  <data name="dtpStartDate.ButtonToolTip" xml:space="preserve">
+    <value>Kalender</value>
+  </data>
+  <data name="dtpEndDate.ButtonToolTip" xml:space="preserve">
+    <value>Kalender</value>
   </data>
 </root>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3948920e-6c75-4e4c-9f30-d722c161f570" lastModifiedUtc="2014-12-15T15:27:21.2223612Z" cardinality="M:1" parentEntityId="9b9eb3be-9001-46c1-9bfd-fb856736d5f1" childEntityId="870cf651-cdb4-4b1c-aae8-aac9d0317d6c">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="497f1d63-5a35-42b7-826e-ec55ae5afc39" lastModifiedUtc="2014-12-15T15:27:19.0461436Z" name="ErpPayFromAddress" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="d6c2587f-bdfd-480f-8e3a-1b4ff376ea9d" lastModifiedUtc="2014-12-15T15:27:00.7713163Z" name="ErpInvoice" audited="false" include="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="81329d12-937b-49bf-8cf3-2590de469208" parentPropertyId="1d803a5c-35c5-4f81-a63c-fa82b3c978c5" childPropertyId="7602285e-34bb-4586-8134-187ef5507b07" ordinal="0" />
+  </column>
+</relationship>

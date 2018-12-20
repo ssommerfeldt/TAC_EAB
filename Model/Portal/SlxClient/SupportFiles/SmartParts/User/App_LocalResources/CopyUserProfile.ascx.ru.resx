@@ -117,14 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SourceSelectionContainer.Caption" xml:space="preserve">
+    <value>Пользователь:</value>
+  </data>
+  <data name="SourceUserList.Caption" xml:space="preserve">
+    <value>Пользователь:</value>
+  </data>
   <data name="SourceTemplateList.Caption" xml:space="preserve">
     <value>Шаблон:</value>
   </data>
-  <data name="chkGeneral.Caption" xml:space="preserve">
-    <value>Общий</value>
+  <data name="SourceSelectionContainer_item1.Text" xml:space="preserve">
+    <value>Шаблон</value>
+  </data>
+  <data name="SourceSelectionContainer_item0.Text" xml:space="preserve">
+    <value>Существующий пользователь</value>
+  </data>
+  <data name="OkButton.Caption" xml:space="preserve">
+    <value>OК</value>
   </data>
   <data name="CancelButton.Caption" xml:space="preserve">
     <value>Отмена</value>
+  </data>
+  <data name="chkGeneral.Caption" xml:space="preserve">
+    <value>Общее</value>
+  </data>
+  <data name="chkEmployee.Caption" xml:space="preserve">
+    <value>Сотрудник</value>
+  </data>
+  <data name="chkSecurity.Caption" xml:space="preserve">
+    <value>Безопасность</value>
   </data>
   <data name="chkTeams.Caption" xml:space="preserve">
     <value>Команды</value>
@@ -132,46 +153,25 @@
   <data name="chkFunctionSecurity.Caption" xml:space="preserve">
     <value>Безопасность функции</value>
   </data>
-  <data name="chkCustom.Caption" xml:space="preserve">
-    <value>Клиентура</value>
-  </data>
-  <data name="SourceSelectionContainer_item0.Text" xml:space="preserve">
-    <value>Существующий Пользователь</value>
-  </data>
-  <data name="chkServiceSupport.Caption" xml:space="preserve">
-    <value>Сервис/Поддержка</value>
-  </data>
   <data name="chkCalendar.Caption" xml:space="preserve">
     <value>Календарь</value>
-  </data>
-  <data name="SourceSelectionContainer_item1.Text" xml:space="preserve">
-    <value>Шаблон</value>
-  </data>
-  <data name="chkSecurity.Caption" xml:space="preserve">
-    <value>Безопасность</value>
-  </data>
-  <data name="confirmCopyProfile" xml:space="preserve">
-    <value>Вы уверены, что хотите копировать эту информацию?  Переписанные данные будут потеряны.</value>
-  </data>
-  <data name="OkButton.Caption" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="targetUserName" xml:space="preserve">
-    <value>Пользователь</value>
   </data>
   <data name="chkClientOptions.Caption" xml:space="preserve">
     <value>Параметры клиента (клиентская система)</value>
   </data>
+  <data name="chkServiceSupport.Caption" xml:space="preserve">
+    <value>Сервис/поддержка</value>
+  </data>
+  <data name="chkCustom.Caption" xml:space="preserve">
+    <value>Пользовательский</value>
+  </data>
   <data name="targetUserGridCaption" xml:space="preserve">
     <value>Целевой пользователь:</value>
   </data>
-  <data name="chkEmployee.Caption" xml:space="preserve">
-    <value>Сотрудник</value>
+  <data name="targetUserName" xml:space="preserve">
+    <value>Пользователь</value>
   </data>
-  <data name="SourceUserList.Caption" xml:space="preserve">
-    <value>Пользователь:</value>
-  </data>
-  <data name="SourceSelectionContainer.Caption" xml:space="preserve">
-    <value>Пользователь:</value>
+  <data name="confirmCopyProfile" xml:space="preserve">
+    <value>Действительно скопировать эту информацию? Переписанные данные будут потеряны.</value>
   </data>
 </root>

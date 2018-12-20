@@ -1,5 +1,4 @@
-define((
-{ findText: 'Find',
-  clearText: 'Clear',
-  showHiddenText: 'Show Hidden: ' }
-));
+define("Sage/UI/nls/en/SearchMenuItem", {
+    findText: 'Find',
+    clearText: 'Clear'
+});

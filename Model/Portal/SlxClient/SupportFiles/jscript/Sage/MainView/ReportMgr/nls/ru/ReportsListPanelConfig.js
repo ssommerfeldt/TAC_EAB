@@ -1,11 +1,11 @@
-define({
-    colNameReportName: 'Имя',
-    colNameType: 'Тип',
-    colNameTable: 'Таблица',
-    colNameCreateUser: 'Создано',
-    colNameCreateDate: 'Дата создания',
-    colNameLastExecutionDate: 'Последний запуск',
-    colNameLastExecutionUser: 'Последний запуск от имени',
-    colNameModifyUser: 'Кто обновил',
-    colNameModifyDate: 'Дата обновления'
+define("Sage/MainView/ReportMgr/nls/ru/ReportsListPanelConfig", {
+    "colNameReportName": "Имя",
+    "colNameType": "Тип",
+    "colNameTable": "Таблица",
+    "colNameCreateUser": "Автор",
+    "colNameCreateDate": "Дата создания",
+    "colNameLastExecutionDate": "Последнее выполнение",
+    "colNameLastExecutionUser": "Последнее выполнение от имени",
+    "colNameModifyUser": "Автор изменения",
+    "colNameModifyDate": "Дата изменения"
 });

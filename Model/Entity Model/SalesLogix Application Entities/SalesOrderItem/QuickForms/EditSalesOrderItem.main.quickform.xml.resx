@@ -112,28 +112,28 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtDiscount.Caption" xml:space="preserve">
-    <value>Discount:</value>
+    <value>Discount</value>
   </data>
   <data name="curExtendedPrice.Caption" xml:space="preserve">
-    <value>Extended:</value>
+    <value>Extended (Base)</value>
   </data>
   <data name="curPrice.Caption" xml:space="preserve">
-    <value>Price:</value>
+    <value>Base</value>
   </data>
   <data name="txtProductName.Caption" xml:space="preserve">
-    <value>Product:</value>
+    <value>Product</value>
   </data>
   <data name="txtProgram.Caption" xml:space="preserve">
-    <value>Price Level:</value>
+    <value>Price Level</value>
   </data>
-  <data name="txtIdealStockLevel.Caption" xml:space="preserve">
-    <value>Ideal Stock Level:</value>
+  <data name="numQuantity.Caption" xml:space="preserve">
+    <value>Quantity</value>
   </data>
   <data name="btnOK.Caption" xml:space="preserve">
     <value>OK</value>
@@ -142,75 +142,336 @@
     <value>Cancel</value>
   </data>
   <data name="curCalculatedPrice.Caption" xml:space="preserve">
-    <value>Adjusted Price:</value>
+    <value>Adjusted (Base)</value>
   </data>
-  <data name="curMCCalcPrice.Caption" xml:space="preserve">
-    <value>Adjusted Price:</value>
+  <data name="curDocCalculatedPrice.Caption" xml:space="preserve">
+    <value>Adjusted (Sales Order)</value>
   </data>
   <data name="txtProductName.Text" xml:space="preserve">
-    <value>Product:</value>
+    <value>Product</value>
   </data>
   <data name="txtPriceLevel.Caption" xml:space="preserve">
-    <value>Price Level:</value>
+    <value>Price Level</value>
   </data>
   <data name="pklFamily.Caption" xml:space="preserve">
-    <value>Family:</value>
+    <value>Family</value>
   </data>
   <data name="txtSKU.Caption" xml:space="preserve">
-    <value>SKU:</value>
+    <value>SKU</value>
   </data>
   <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Description:</value>
+    <value>Description</value>
   </data>
   <data name="txtLineNumber.Caption" xml:space="preserve">
-    <value>Line:</value>
-  </data>
-  <data name="SalesOrderStatus_Closed" xml:space="preserve">
-    <value>Closed</value>
+    <value>Line Number</value>
   </data>
   <data name="Closed_Caption" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="curErpPrice.Caption" xml:space="preserve">
+    <value>Base:</value>
+  </data>
+  <data name="QFMultiTab_Page_1.Caption" xml:space="preserve">
+    <value>ERP Details</value>
+  </data>
+  <data name="QFMultiTab_Page_2.Caption" xml:space="preserve">
+    <value>Sub-Lines</value>
+  </data>
+  <data name="pklStatus.Caption" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="txtPOReference.Caption" xml:space="preserve">
+    <value>PO Reference</value>
+  </data>
+  <data name="grdSubItems.87c07947-1a2b-4add-8873-44d6330174e5.ColumnHeading" xml:space="preserve">
+    <value>Sub Line #</value>
+  </data>
+  <data name="grdSubItems.7766af81-0da2-4ec7-8b5b-ce7cf2b6f7f9.ColumnHeading" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="grdSubItems.39ca1bc4-9bae-4efc-8c70-60d5760ce05b.ColumnHeading" xml:space="preserve">
+    <value>UOM</value>
+  </data>
+  <data name="grdSubItems.8e98b062-5432-4fcc-a566-a6881f801536.ColumnHeading" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="grdSubItems.3f90e469-7639-40b3-a172-f5bc96ab9062.ColumnHeading" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="grdSubItems.7daa7c9a-8993-4daa-8feb-89c18ebb3b11.ColumnHeading" xml:space="preserve">
+    <value>Base UOM Qty</value>
+  </data>
+  <data name="dtePromisedDelivery.ButtonToolTip" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="dtePromisedShipDate.ButtonToolTip" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="dteRequiredDelivery.ButtonToolTip" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="dteStatusDate.Caption" xml:space="preserve">
+    <value>Status Date</value>
+  </data>
+  <data name="txtUnitPriceUOM.Caption" xml:space="preserve">
+    <value>Unit Price UOM</value>
+  </data>
+  <data name="txtPricePerQtyUOM.Caption" xml:space="preserve">
+    <value>Price Per Quantity UOM</value>
+  </data>
+  <data name="numOpenQty.Caption" xml:space="preserve">
+    <value>Open Quantity</value>
+  </data>
+  <data name="txtOpemUOM.Caption" xml:space="preserve">
+    <value>Open UOM</value>
+  </data>
+  <data name="numShippedQty.Caption" xml:space="preserve">
+    <value>Shipped Quantity</value>
+  </data>
+  <data name="txtShippedUOM.Caption" xml:space="preserve">
+    <value>Shipped UOM</value>
+  </data>
+  <data name="chkBackOrdered.Caption" xml:space="preserve">
+    <value>Back Ordered</value>
+  </data>
+  <data name="chkDropShip.Caption" xml:space="preserve">
+    <value>Drop Ship</value>
+  </data>
+  <data name="chkPartialShipAllowed.Caption" xml:space="preserve">
+    <value>Partial Shipment Allowed</value>
+  </data>
+  <data name="chkFixedPrice.Caption" xml:space="preserve">
+    <value>Fixed Price Item</value>
+  </data>
+  <data name="chkRushRequest.Caption" xml:space="preserve">
+    <value>Rush Request</value>
+  </data>
+  <data name="chkSubstituteItem.Caption" xml:space="preserve">
+    <value>Substitute Item</value>
+  </data>
+  <data name="pklIncoTerm.Caption" xml:space="preserve">
+    <value>Inco Term</value>
+  </data>
+  <data name="txtUpcId.Caption" xml:space="preserve">
+    <value>UPC ID</value>
+  </data>
+  <data name="lueShipTo.LookupProperties.ErpAccountingEntityId.PropertyHeader" xml:space="preserve">
+    <value>Accounting Entity ID</value>
+  </data>
+  <data name="lueShipTo.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lueShipTo.ButtonToolTip" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="grdSubLines.29645b41-cc56-4d44-a984-525202f8b6c5.ColumnHeading" xml:space="preserve">
+    <value>Base UOM Qty</value>
+  </data>
+  <data name="grdSubLines.03ef3cc1-b324-4eaa-8481-b24ddcd73ce6.ColumnHeading" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="grdSubLines.f9089da0-b920-409a-9c40-8c2969d4cf8c.ColumnHeading" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="grdSubLines.ba0d1b20-2bd0-4335-89ec-813dca23ac34.ColumnHeading" xml:space="preserve">
+    <value>UOM</value>
+  </data>
+  <data name="grdSubLines.2d172260-60f8-4d6a-acdd-6613ee301ec9.ColumnHeading" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="grdSubLines.553ff206-087a-48d3-b83d-4624d26649b1.ColumnHeading" xml:space="preserve">
+    <value>Sub Line #</value>
+  </data>
+  <data name="dtePromisedDelivery.Caption" xml:space="preserve">
+    <value>Promised Delivery</value>
+  </data>
+  <data name="dteRequiredDelivery.Caption" xml:space="preserve">
+    <value>Required Delivery</value>
+  </data>
+  <data name="dtePromisedShipDate.Caption" xml:space="preserve">
+    <value>Promised Ship</value>
+  </data>
+  <data name="dteStatusDate.ButtonToolTip" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="numPricePerQuantity.Caption" xml:space="preserve">
+    <value>Price Per Quantity</value>
+  </data>
+  <data name="grdSubLines.f66fe39a-c975-463d-934e-b8200e680093.ColumnHeading" xml:space="preserve">
+    <value>Document Price</value>
+  </data>
+  <data name="tabErpItemDetails_Page_3.Caption" xml:space="preserve">
+    <value>Discount/Charges</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.ac6d6c6c-27a6-44c4-9c75-0ca69aeb00f0.ColumnHeading" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="1ed517f3-9619-403a-8644-5c54dc953e4f.DialogTitleOverride" xml:space="preserve">
+    <value>Edit Discount Charge Item</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.a2ae082f-ad2a-49e8-9fc8-9c61bfced0bf.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.c89efdf0-c937-40af-9287-0f1c7cf5573c.ColumnHeading" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.e9e1518a-c073-423a-a838-110d3494b384.ColumnHeading" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.f284efde-3179-442d-9807-1fd9801289aa.ColumnHeading" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItems.a099e3b1-1894-4a6a-910a-391bff6acfdd.ColumnHeading" xml:space="preserve">
+    <value>Reason Code</value>
+  </data>
+  <data name="grdDiscountChargeItems.8970dd64-2c70-44f4-8951-079fbbcb2049.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="grdDiscountChargeItems.bdaabae2-12e9-4e4d-82d3-3c747af45c3a.ColumnHeading" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="grdDiscountChargeItems.4c074d08-56b6-4ae1-b79f-70049e076a09.ColumnHeading" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="grdDiscountChargeItems.32c1d39a-0c25-4e21-9073-86a27c6fa36e.ColumnHeading" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="grdDiscountChargeItems.71b4e6b8-008e-49c8-a9a1-839386f63800.ColumnHeading" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="grdDiscountChargeItems.2ea4842d-c0d8-4436-83ff-a8d3f470c21d.ColumnHeading" xml:space="preserve">
+    <value>Reason Code</value>
+  </data>
+  <data name="056b1d24bc4deb88984435bb5476f9.Caption" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name=".da02dc78-8d56-456b-890b-84bd100e44a9.ColumnHeading" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name=".cd47c8ad-76b1-4f1a-9323-159a92d12d90.ColumnHeading" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name=".89b6d69f-a120-4978-87ae-a8322e41c055.ColumnHeading" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name=".028ede2a-b759-4a12-928d-3ba9cb72975c.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name=".b931be49-b820-4bd3-8a6c-63171cfefcbe.ColumnHeading" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name=".a9aeefff-a9a2-4387-bd8d-c0530282e5da.ColumnHeading" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name=".8e1d2125-e0ce-4472-801c-e5c72e790dcf.ColumnHeading" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name=".7c5c959e-fc2e-4cf1-ba94-7392a7e75b34.ColumnHeading" xml:space="preserve">
+    <value>Reason Code</value>
+  </data>
+  <data name="714aa869-9924-4dea-9084-6a6204a01f48.DialogTitleOverride" xml:space="preserve">
+    <value>Edit Discount Charge Item</value>
+  </data>
+  <data name="lueShipTo.Caption" xml:space="preserve">
+    <value>Ship To</value>
+  </data>
+  <data name="tabErpItemDetails_Page_4.Caption" xml:space="preserve">
+    <value>Pricing</value>
+  </data>
+  <data name="tabErpItemDetails_Page_5.Caption" xml:space="preserve">
+    <value>Pricing</value>
+  </data>
+  <data name="tabErpItemDetails_Page_6.Caption" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="tabErpItemDetails_Page_7.Caption" xml:space="preserve">
+    <value>Ship</value>
+  </data>
+  <data name="txtLineType.Caption" xml:space="preserve">
+    <value>Line Type</value>
+  </data>
+  <data name="pklType.Caption" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="numErpQuantity.Caption" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
   <data name="lstbxPriceLevel.Caption" xml:space="preserve">
     <value>Price Level:</value>
   </data>
-  <data name="UPC.Caption" xml:space="preserve">
-    <value>UPC:</value>
+  <data name="curDocExtendedPrice.Caption" xml:space="preserve">
+    <value>Extended (Sales Order)</value>
   </data>
-  <data name="Unit.Caption" xml:space="preserve">
-    <value>Unit:</value>
+  <data name="curErpDocCalculatedPrice.Caption" xml:space="preserve">
+    <value>Adjusted (Sales Order)</value>
   </data>
-  <data name="numQuantity.Caption" xml:space="preserve">
-    <value>Quantity:</value>
+  <data name="curErpDocExtendedPrice.Caption" xml:space="preserve">
+    <value>Extended (Sales Order)</value>
   </data>
-  <data name="grdSalesHistory.1e739c68-3800-4c0c-acdc-de19eebb106d.ColumnHeading" xml:space="preserve">
-    <value>Productid</value>
+  <data name="curErpCalculatedPrice.Caption" xml:space="preserve">
+    <value>Adjusted (Base)</value>
   </data>
-  <data name="grdSalesHistory.829071be-d1be-44e4-abba-db29172ec48a.ColumnHeading" xml:space="preserve">
-    <value>SalesOrder</value>
+  <data name="curErpExtendedPrice.Caption" xml:space="preserve">
+    <value>Extended (Base)</value>
   </data>
-  <data name="grdSalesHistory.4d6630f0-030e-41ab-a08c-15f1ebc6bf99.ColumnHeading" xml:space="preserve">
-    <value>OrderDate</value>
+  <data name="lueUnitOfMeasure.Caption" xml:space="preserve">
+    <value>Unit Of Measure</value>
   </data>
-  <data name="grdSalesHistory.cfb6db78-0664-4263-9e1e-e55c406462f5.ColumnHeading" xml:space="preserve">
-    <value>Qty</value>
+  <data name="lueUnitOfMeasure.ButtonToolTip" xml:space="preserve">
+    <value>Find</value>
   </data>
-  <data name="grdSalesHistory.9c08af03-79c4-49a4-8d53-0520467169e8.ColumnHeading" xml:space="preserve">
-    <value>ActualID</value>
+  <data name="lueUnitOfMeasure.LookupProperties.ShortName.PropertyHeader" xml:space="preserve">
+    <value>Short Name</value>
   </data>
-  <data name="2a07cf2d-0a07-4f93-824c-79bd76a1361a.Caption" xml:space="preserve">
-    <value>Actual Id</value>
+  <data name="lueUnitOfMeasure.LookupProperties.UOMType.PropertyHeader" xml:space="preserve">
+    <value>Type</value>
   </data>
-  <data name="grdSalesHistory.30f4fda4-65f8-46dc-a6c3-263aff2ddbe8.ColumnHeading" xml:space="preserve">
-    <value>ActualID</value>
+  <data name="lueUnitOfMeasure.LookupProperties.ActiveFlag.PropertyHeader" xml:space="preserve">
+    <value>Active</value>
   </data>
-  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
-    <value>SalesHistory</value>
+  <data name="lueUnitOfMeasure.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="numQuantity2.Caption" xml:space="preserve">
-    <value>Qty Available:</value>
+  <data name="txtErpLineNumber.Caption" xml:space="preserve">
+    <value>Line Number</value>
   </data>
-  <data name="QFTextBox.Caption" xml:space="preserve">
-    <value>LastOrder:</value>
+  <data name=".Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabErpItemDetails_Page_8.Caption" xml:space="preserve">
+    <value>Distributed Taxes</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.1eea5171-03d5-4f50-8c0c-22b8902d9f86.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.cd316801-0950-4170-b809-bc318bf50682.ColumnHeading" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.49b6b023-a6ce-4e0f-842d-caebaf6944a3.ColumnHeading" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.13244da6-66be-4db8-abb3-19208032e450.ColumnHeading" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.992d8688-deb0-46f8-b647-3c9e44ed9ad7.ColumnHeading" xml:space="preserve">
+    <value>Reason Code</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.8fe8ec4f-b56c-4471-8d49-617b26902b13.ColumnHeading" xml:space="preserve">
+    <value>Doc Unit Adjustment Amount</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.3a0e1254-6f82-49ed-a012-06797d282f28.ColumnHeading" xml:space="preserve">
+    <value>Unit Adjustment Amount</value>
+  </data>
+  <data name="grdSOItemDiscountChargeItem.71e9c4cf-7bd8-4ae7-8338-e0e065de5ca4.ColumnHeading" xml:space="preserve">
+    <value>Calculation Method</value>
+  </data>
+  <data name="txtNotes.Caption" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="txtNotes.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdSOItemDiscountChargeItem.8c7cd0fc-d46f-4288-ac11-db53f06cdb3a.ColumnHeading" xml:space="preserve">
+    <value>Rate</value>
   </data>
 </root>

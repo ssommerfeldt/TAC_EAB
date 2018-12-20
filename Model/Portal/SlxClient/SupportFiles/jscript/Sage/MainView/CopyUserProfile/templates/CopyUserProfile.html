@@ -1,0 +1,113 @@
+<div>
+    <div data-dojo-type="dijit.Dialog" title="{%= $._nlsResources.dlg_Title %}" data-dojo-attach-point="_dialog" data-dojo-attach-event="onCancel:_btnCancel_OnClick"  style="width: 400px">
+        <div data-dojo-type="dijit.form.Form">
+            <div style="margin: 10px;">
+                <div>{%= $._nlsResources.dlg_Instructions %}</div>
+                <br />
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        {%= $._nlsResources.rad_SelectionLabel %}
+                                    </td>
+                                    <td>
+                                        <input id="radioUser" name="userSource" type="radio" data-dojo-attach-point="radUser" data-dojo-type="dijit.form.RadioButton" value="csv" />{%= Sage.Utility.htmlEncode($._nlsResources.rad_UserBtn) %}
+                                    </td>
+                                    <td>
+                                        <input id="radioTemplate" name="userSource" type="radio" data-dojo-attach-point="radTemplate" data-dojo-attach-event="onChange:_radUser_OnChange" data-dojo-type="dijit.form.RadioButton" value="tab" />{%= Sage.Utility.htmlEncode($._nlsResources.rad_TemplateBtn) %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr data-dojo-attach-point="userControlPoint">
+                                    <td>
+                                        <div>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <label>{%= $._nlsResources.user_LookupLabel %}</label>
+                                                    </td>
+                                                    <td>
+                                                        <div data-dojo-type="dijit.layout.ContentPane" data-dojo-attach-point="user_Container" allowclearingresult="false" style="width:200px"></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-dojo-attach-point="templateControlPoint">
+                                    <td>
+                                        <div>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <label>{%= $._nlsResources.template_LookupLabel %}</label>
+                                                    </td>
+                                                    <td>
+                                                        <div data-dojo-type="dijit.layout.ContentPane" data-dojo-attach-point="template_Container" allowclearingresult="false" style="width:200px"></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="formtable">
+                                <tr>
+                                    <td>
+                                        <input data-dojo-type="dijit.form.CheckBox" data-dojo-attach-point="chkGeneral" checked="checked" />
+                                        <label> {%= $._nlsResources.chkGeneralLabel %}</label>
+                                    </td>
+                                    <td>
+                                        <input data-dojo-type="dijit.form.CheckBox" data-dojo-attach-point="chkCalendar" checked="checked" />
+                                        <label> {%= $._nlsResources.chkCalendarLabel %}</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input data-dojo-type="dijit.form.CheckBox" data-dojo-attach-point="chkEmployee" checked="checked" />
+                                        <label> {%= $._nlsResources.chkEmployeeLabel %}</label>
+                                    </td>
+                                    <td>
+                                        <input data-dojo-type="dijit.form.CheckBox" data-dojo-attach-point="chkClient" checked="checked" />
+                                        <label> {%= $._nlsResources.chkClientLabel %}</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input data-dojo-type="dijit.form.CheckBox" data-dojo-attach-point="chkSecurity" checked="checked" />
+                                        <label> {%= $._nlsResources.chkSecurityLabel %}</label>
+                                    </td>
+                                    <td>
+                                        <input data-dojo-type="dijit.form.CheckBox" data-dojo-attach-point="chkService" checked="checked" />
+                                        <label> {%= $._nlsResources.chkServiceLabel %}</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input data-dojo-type="dijit.form.CheckBox" data-dojo-attach-point="chkTeams" checked="checked" />
+                                        <label> {%= $._nlsResources.chkTeamsLabel %}</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <div align="right" style="margin-top:10px">
+                    <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnOk" data-dojo-attach-event="onClick:_btnOk_OnClick">{%= Sage.Utility.htmlEncode($.btnOK_Caption) %}</div>
+                    <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnCancel" data-dojo-attach-event="onClick:_btnCancel_OnClick" style="margin-left:5px;">{%= Sage.Utility.htmlEncode($.btnCancel_Caption) %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

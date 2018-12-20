@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Форма' }
-));
+define("Sage/QuickForms/Design/nls/ru/FormDesigner", {
+    "displayNameText": "Форма"
+});

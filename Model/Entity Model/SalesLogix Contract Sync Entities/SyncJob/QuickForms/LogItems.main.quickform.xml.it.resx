@@ -117,91 +117,157 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cboFilterLogType_item3.Text" xml:space="preserve">
-    <value>Informativo</value>
-  </data>
-  <data name="QFDataGrid.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
-  </data>
-  <data name="cboFilterResource_item12.Text" xml:space="preserve">
-    <value>Calendario</value>
-  </data>
-  <data name="cboFilterLogType_item2.Text" xml:space="preserve">
-    <value>Errori</value>
-  </data>
-  <data name="cboFilterResource.Caption" xml:space="preserve">
-    <value>Filtra per Tipo Risorsa:</value>
-  </data>
-  <data name="cboFilterResource_item3.Text" xml:space="preserve">
-    <value>Contatti</value>
-  </data>
-  <data name="cboFilterResource_item7.Text" xml:space="preserve">
-    <value>Ordini di vendita</value>
+  <data name="1e055a6e-85b4-4548-aff4-699996f07808.Caption" xml:space="preserve">
+    <value>Livello di registrazione</value>
   </data>
   <data name="38f96c1d-d3d8-4888-9d72-0b4296ca68f4.Caption" xml:space="preserve">
-    <value>Messaggio di Log</value>
+    <value>Messaggio di log</value>
   </data>
-  <data name="btnRefresh.ToolTip" xml:space="preserve">
-    <value>Aggiorna elementi del log</value>
-  </data>
-  <data name="cboFilterLogType.Caption" xml:space="preserve">
-    <value>Filtra per Tipo Log:</value>
-  </data>
-  <data name="cboFilterResource_item5.Text" xml:space="preserve">
-    <value>Prezzi</value>
-  </data>
-  <data name="cboFilterResource_item2.Text" xml:space="preserve">
-    <value>Gruppi Merce</value>
-  </data>
-  <data name="QFDataGrid.20f7922d-eef3-4235-8e56-f2966e900b85.ColumnHeading" xml:space="preserve">
-    <value>Data Creazione</value>
-  </data>
-  <data name="1e055a6e-85b4-4548-aff4-699996f07808.Caption" xml:space="preserve">
-    <value>Livello di Log</value>
+  <data name="QFDataGrid.18495e8e-00bd-4496-94ab-96d39a4c4b9e.ColumnHeading" xml:space="preserve">
+    <value>Livello di registrazione</value>
   </data>
   <data name="QFDataGrid.7427f315-d496-4602-9b01-450964324f4b.ColumnHeading" xml:space="preserve">
     <value>Messaggio</value>
   </data>
-  <data name="QFDataGrid.89dcce44-2f74-445a-ba72-a20ab3a471a2.ColumnHeading" xml:space="preserve">
-    <value>Tipo Risorsa</value>
+  <data name="txtCallStack.Caption" xml:space="preserve">
+    <value>Stack di chiamate</value>
+  </data>
+  <data name="QFDataGrid.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
   </data>
   <data name="QFDataGrid.ffb3d1f0-1c87-4748-b834-8d9b1e7dce85.Text" xml:space="preserve">
     <value>Seleziona</value>
   </data>
-  <data name="cboFilterResource_item9.Text" xml:space="preserve">
-    <value>Aziende Negoziazione</value>
-  </data>
-  <data name="cboFilterResource_item1.Text" xml:space="preserve">
-    <value>Materie Prime</value>
-  </data>
-  <data name="cboFilterResource_item6.Text" xml:space="preserve">
-    <value>Prezzi di Listino</value>
-  </data>
-  <data name="QFDataGrid.18495e8e-00bd-4496-94ab-96d39a4c4b9e.ColumnHeading" xml:space="preserve">
-    <value>Livello di Log</value>
-  </data>
-  <data name="cboFilterResource_item8.Text" xml:space="preserve">
-    <value>Linee Ordine di Vendita</value>
-  </data>
-  <data name="txtCallStack.Caption" xml:space="preserve">
-    <value>Chiama lo Stack:</value>
+  <data name="btnRefresh.ToolTip" xml:space="preserve">
+    <value>Aggiorna elementi log</value>
   </data>
   <data name="QFDataGrid.a037c6b6-7639-4bce-acf5-5ccc06d62021.ColumnHeading" xml:space="preserve">
-    <value>Data Creazione</value>
+    <value>Data di creazione</value>
+  </data>
+  <data name="QFDataGrid.89dcce44-2f74-445a-ba72-a20ab3a471a2.ColumnHeading" xml:space="preserve">
+    <value>Genere di risorsa</value>
+  </data>
+  <data name="QFDataGrid.20f7922d-eef3-4235-8e56-f2966e900b85.ColumnHeading" xml:space="preserve">
+    <value>Data di creazione</value>
+  </data>
+  <data name="cboFilterLogType.Caption" xml:space="preserve">
+    <value>Filtra per tipo di log:</value>
+  </data>
+  <data name="cboFilterResource.Caption" xml:space="preserve">
+    <value>Filtra per genere di risorsa:</value>
+  </data>
+  <data name="cboFilterResource_item9.Text" xml:space="preserve">
+    <value>Aziende commerciali</value>
+  </data>
+  <data name="cboFilterResource_item8.Text" xml:space="preserve">
+    <value>Righe ordini di vendita</value>
+  </data>
+  <data name="cboFilterResource_item7.Text" xml:space="preserve">
+    <value>Ordini di vendita</value>
+  </data>
+  <data name="cboFilterResource_item6.Text" xml:space="preserve">
+    <value>Listini prezzi</value>
+  </data>
+  <data name="cboFilterResource_item5.Text" xml:space="preserve">
+    <value>Prezzi</value>
+  </data>
+  <data name="cboFilterResource_item4.Text" xml:space="preserve">
+    <value>Ubicazioni</value>
+  </data>
+  <data name="cboFilterResource_item3.Text" xml:space="preserve">
+    <value>Contatti</value>
+  </data>
+  <data name="cboFilterResource_item2.Text" xml:space="preserve">
+    <value>Gruppi di merci</value>
+  </data>
+  <data name="cboFilterResource_item1.Text" xml:space="preserve">
+    <value>Merci</value>
+  </data>
+  <data name="cboFilterResource_item0.Text" xml:space="preserve">
+    <value />
   </data>
   <data name="cboFilterLogType_item4.Text" xml:space="preserve">
     <value>Avvisi</value>
   </data>
-  <data name="cboFilterResource_item13.Text" xml:space="preserve">
-    <value>Cronologia calendario</value>
+  <data name="cboFilterLogType_item3.Text" xml:space="preserve">
+    <value>Informativo</value>
+  </data>
+  <data name="cboFilterLogType_item2.Text" xml:space="preserve">
+    <value>Errori</value>
+  </data>
+  <data name="cboFilterLogType_item1.Text" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="cboFilterLogType_item0.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboFilterLogType_item0.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboFilterLogType_item1.Value" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="cboFilterLogType_item2.Value" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="cboFilterLogType_item3.Value" xml:space="preserve">
+    <value>Informazioni</value>
+  </data>
+  <data name="cboFilterLogType_item4.Value" xml:space="preserve">
+    <value>Avverti</value>
+  </data>
+  <data name="cboFilterResource_item0.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboFilterResource_item1.Value" xml:space="preserve">
+    <value>merce</value>
+  </data>
+  <data name="cboFilterResource_item2.Value" xml:space="preserve">
+    <value>commodityGroup</value>
+  </data>
+  <data name="cboFilterResource_item3.Value" xml:space="preserve">
+    <value>contatto</value>
+  </data>
+  <data name="cboFilterResource_item4.Value" xml:space="preserve">
+    <value>ubicazione</value>
+  </data>
+  <data name="cboFilterResource_item5.Value" xml:space="preserve">
+    <value>prezzo</value>
+  </data>
+  <data name="cboFilterResource_item6.Value" xml:space="preserve">
+    <value>priceList</value>
+  </data>
+  <data name="cboFilterResource_item7.Value" xml:space="preserve">
+    <value>salesOrder</value>
+  </data>
+  <data name="cboFilterResource_item8.Value" xml:space="preserve">
+    <value>salesOrderLine</value>
+  </data>
+  <data name="cboFilterResource_item9.Value" xml:space="preserve">
+    <value>tradingAccount</value>
   </data>
   <data name="cboFilterResource_item10.Text" xml:space="preserve">
-    <value>Nominativi</value>
+    <value>Lead</value>
+  </data>
+  <data name="cboFilterResource_item10.Value" xml:space="preserve">
+    <value>lead</value>
   </data>
   <data name="cboFilterResource_item11.Text" xml:space="preserve">
     <value>Attività</value>
   </data>
-  <data name="cboFilterResource_item4.Text" xml:space="preserve">
-    <value>Posizioni</value>
+  <data name="cboFilterResource_item11.Value" xml:space="preserve">
+    <value>interazione</value>
+  </data>
+  <data name="cboFilterResource_item12.Text" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="cboFilterResource_item12.Value" xml:space="preserve">
+    <value>calendario</value>
+  </data>
+  <data name="cboFilterResource_item13.Text" xml:space="preserve">
+    <value>Cronologia calendario</value>
+  </data>
+  <data name="cboFilterResource_item13.Value" xml:space="preserve">
+    <value>calendarHistories</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/Editors/PickListAdvancedPropertyEditor", [
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/string',

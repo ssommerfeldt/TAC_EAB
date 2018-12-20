@@ -1,16 +1,22 @@
-define((
-{ okButtonText: 'OK',
-  loadingText: 'Laden...',
-  noPrimaryEmail: 'Keine Haupt-E-Mail-Adresse verfügbar',
-  selectFileFormat: 'Wählen Sie ein Dateiformat aus:',
-  exportToFile_OptionCSV: 'Standardmäßiges CSV-Format',
-  exportToFile_OptionTab: 'Tabstoppgetrenntes Format (empfohlen für Microsoft Excel)',
-  exportToFile_OptionSaveFormat: 'Auswahl speichern und nicht mehr anfragen.',
-  exportToFile_OK: 'OK',
-  exportToFile_Cancel: 'Abbrechen',
-  exportToFile_DialogTitle: 'In Datei exportieren',
-  exportToExcel_Caption: 'Export nach Excel',
-  errorRequestingJobMgr: 'Bei der Anforderung des Jobmanagers ist ein Fehler aufgetreten: ${0}',
-  errorExecutionAction: 'Fehler beim Ausführen der Aktion ${0}',
-  exportProcessingJobMsg: 'Export wird verarbeitet. Warten Sie, bis der Export abgeschlossen ist, oder öffnen Sie Ihre Datei in der Berichtsansicht.' }
-));
+define("Sage/TaskPane/nls/de/CommonTasksTasklet", {
+    "okButtonText": "OK",
+    "loadingText": "Wird geladen...",
+    "noPrimaryEmail": "Keine primäre E-Mail-Adresse verfügbar",
+    "selectFileFormat": "Wählen Sie ein Dateiformat aus:",
+    "exportToFile_OptionCSV": "Standardmäßiges CSV-Format",
+    "exportToFile_OptionTab": "Durch Tabstopps getrennt (empfohlen für Microsoft Excel)",
+    "exportToFile_OptionSaveFormat": "Entscheidung merken",
+    "exportToFile_OK": "OK",
+    "exportToFile_Cancel": "Abbrechen",
+    "exportToFile_DialogTitle": "Exportieren",
+    "exportToExcel_Caption": "Exportvorgang läuft",
+    "errorRequestingJobMgr": "Bei der Anforderung des Auftragsmanagers ist ein Fehler aufgetreten: ${0}",
+    "errorExecutionAction": "Fehler beim Ausführen der Aktion ${0}",
+    "exportProcessingJobMsg": "Export wird verarbeitet. Warten Sie, bis der Export abgeschlossen ist, oder öffnen Sie Ihre Datei in der Berichtsansicht.",
+    "errorBulkActionNotSupported": "${0} unterstützt keine Aktualisierungen als Massenvorgang. Bitte wenden Sie sich an den Systemadministrator.",
+    "errorBulkActionRequest": "Fehler bei der Anforderung der Optionen für Massenaktualisierungen. Bitte wenden Sie sich an den Systemadministrator.",
+    "copyProfileNoneSelected": "Mindestens ein Benutzer muss ausgewählt werden!",
+    "deleteJob_Description": "Fehler beim Massenvorgang zum Löschen",
+    "errorRequestEntityImportable": "Beim Abrufen der Entitätsattribute ist ein Fehler aufgetreten. ${0}",
+    "entityNotImportable": "${0} unterstützt keinen Import, bitte wenden Sie sich an den Systemadministrator."
+});

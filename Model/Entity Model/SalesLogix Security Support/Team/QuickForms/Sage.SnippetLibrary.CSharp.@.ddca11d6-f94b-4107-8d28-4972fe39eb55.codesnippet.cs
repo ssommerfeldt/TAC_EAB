@@ -28,17 +28,16 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.Platform.Application;
-using Sage.Platform.Application.Services;
+using Sage.Platform;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class InsertTeamEventHandlers
     {
-        public static void addManagerCheckBox_OnChangeStep( IInsertTeam form,  EventArgs args)
+        public static void addManagerCheckBox_OnChangeStep(IInsertTeam form, EventArgs args)
         {
-			ITeam team = Sage.Platform.EntityFactory.Create<ITeam>();
+			ITeam team = EntityFactory.Create<ITeam>();
 			team.SetAddManagerWithMemberOption(form.addManagerCheckBox.Checked ? bool.TrueString : bool.FalseString);
         }
     }

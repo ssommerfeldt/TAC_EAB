@@ -117,41 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblOpportunity.Text" xml:space="preserve">
-    <value>Opportunità:</value>
+  <data name="lblCurrentStage.Text" xml:space="preserve">
+    <value>Fase corrente</value>
   </data>
-  <data name="StageGrid_Current.HeaderText" xml:space="preserve">
-    <value>Corrente</value>
-  </data>
-  <data name="lblEstDays.Text" xml:space="preserve">
-    <value>Giorni Stim.:</value>
-  </data>
-  <data name="StageGrid_Completed.HeaderText" xml:space="preserve">
-    <value>Completato</value>
+  <data name="lblDaysInStage.Text" xml:space="preserve">
+    <value>Giorni nella fase</value>
   </data>
   <data name="lblEstClose.Text" xml:space="preserve">
     <value>Chiusura stimata</value>
   </data>
-  <data name="linkManageStages.Text" xml:space="preserve">
-    <value>Fasi:</value>
+  <data name="lblEstDays.Text" xml:space="preserve">
+    <value>Giorni stim.:</value>
   </data>
-  <data name="StageGrid_CompletedOn.HeaderText" xml:space="preserve">
-    <value>Completato il</value>
+  <data name="lblOpportunity.Text" xml:space="preserve">
+    <value>Opportunità:</value>
   </data>
   <data name="lblProbability.Text" xml:space="preserve">
     <value>Probabilità</value>
   </data>
-  <data name="StageGrid_Probability.HeaderText" xml:space="preserve">
-    <value>Probabilità</value>
+  <data name="lblSalesProcess.Text" xml:space="preserve">
+    <value>Processo di vendita:</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Gestisci Fasi</value>
+  <data name="lblSalesProcessSnapShot.Text" xml:space="preserve">
+    <value>Snapshot processo di vendita</value>
   </data>
-  <data name="lblDaysInStage.Text" xml:space="preserve">
-    <value>Giorni nella Fase</value>
+  <data name="StageGrid_Completed.HeaderText" xml:space="preserve">
+    <value>Completato</value>
+  </data>
+  <data name="StageGrid_CompletedOn.HeaderText" xml:space="preserve">
+    <value>Completato il</value>
+  </data>
+  <data name="StageGrid_Current.HeaderText" xml:space="preserve">
+    <value>Corrente</value>
   </data>
   <data name="StageGrid_EstDays.HeaderText" xml:space="preserve">
-    <value>Giorni Stim.:</value>
+    <value>Giorni stim.:</value>
+  </data>
+  <data name="StageGrid_Order.HeaderText" xml:space="preserve">
+    <value>Ordine</value>
+  </data>
+  <data name="StageGrid_Probability.HeaderText" xml:space="preserve">
+    <value>Probabilità</value>
   </data>
   <data name="StageGrid_Stage.HeaderText" xml:space="preserve">
     <value>Fase</value>
@@ -159,16 +165,10 @@
   <data name="StageGrid_StartedOn.HeaderText" xml:space="preserve">
     <value>Iniziato il</value>
   </data>
-  <data name="lblSalesProcess.Text" xml:space="preserve">
-    <value>Processo di vendita:</value>
+  <data name="Title" xml:space="preserve">
+    <value>Gestisci fasi</value>
   </data>
-  <data name="lblCurrentStage.Text" xml:space="preserve">
-    <value>Fase Corrente</value>
-  </data>
-  <data name="StageGrid_Order.HeaderText" xml:space="preserve">
-    <value>Ordine</value>
-  </data>
-  <data name="lblSalesProcessSnapShot.Text" xml:space="preserve">
-    <value>Processo di vendita istantaneo</value>
+  <data name="linkManageStages.Text" xml:space="preserve">
+    <value>Fasi:</value>
   </data>
 </root>

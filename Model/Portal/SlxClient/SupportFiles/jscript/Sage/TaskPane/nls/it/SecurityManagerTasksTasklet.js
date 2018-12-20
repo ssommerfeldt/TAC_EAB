@@ -1,4 +1,4 @@
-define((
-{ addSecurityProfileTitle: 'Aggiungi Profilo',
-  editSecurityProfileTitle: 'Modifica profilo' }
-));
+define("Sage/TaskPane/nls/it/SecurityManagerTasksTasklet", {
+    "addSecurityProfileTitle": "Aggiungi profilo",
+    "editSecurityProfileTitle": "Modifica profilo"
+});

@@ -36,9 +36,9 @@ public partial class SmartParts_LitRequest_LiteratureRequest : UserControl, ISma
         // defaults for new requests
         var options = new { Options = 0, baseCurrency = sBaseCurrency, multiCurrencyEnabled = bMultiCurrencyEnabled };
         ScriptManager.RegisterStartupScript(this, GetType(), "LiteratureRequestInit",
-            String.Format(@"dojo.ready(function() {{ setTimeout(function() {{
-                new LitRequest.LiteratureRequestForm('{0}_', {1}); 
-            }}, 1) }});", ClientID, JsonConvert.SerializeObject(options)),
+            String.Format(@"require(['dojo/ready'], function(ready) {{ ready(function() {{ setTimeout(function() {{
+                new LitRequest.LiteratureRequestForm('{0}_', {1});
+            }}, 1) }}); }});", ClientID, JsonConvert.SerializeObject(options)),
             true);
     }
 

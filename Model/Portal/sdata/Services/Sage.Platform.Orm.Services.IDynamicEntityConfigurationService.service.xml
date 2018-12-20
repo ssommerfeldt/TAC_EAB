@@ -4,6 +4,8 @@
   <ServiceType>Sage.Platform.Orm.Services.WebDynamicEntityConfigurationService, Sage.Platform</ServiceType>
   <RegisterAs>Sage.Platform.Orm.Services.IDynamicEntityConfigurationService, Sage.Platform</RegisterAs>
   <AddOnDemand>false</AddOnDemand>
-  <Properties />
+  <Properties>
+    <Property Name="BaseDynamicEntityType" TypeConverter="">Sage.SalesLogix.Orm.DynamicEntityBase, Sage.SalesLogix</Property>
+  </Properties>
   <Scope>Application</Scope>
 </PortalService>

@@ -117,85 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="chkAddNotes.Caption" xml:space="preserve">
+    <value>Aggiungi nota a ciascun lead</value>
+  </data>
   <data name="chkAddTargets.Caption" xml:space="preserve">
-    <value>Aggiungi come Target alla Campagna</value>
-  </data>
-  <data name="chkScheduleActivity.Caption" xml:space="preserve">
-    <value>Pianifica Attività per ciascun Nominativo</value>
-  </data>
-  <data name="ScheduleMeeting.Caption" xml:space="preserve">
-    <value>Pianifica riunione</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="Action_AddNote.Caption" xml:space="preserve">
-    <value>Aggiungi Nota</value>
-  </data>
-  <data name="cmdScheduleActivity.Caption" xml:space="preserve">
-    <value>Pianifica...</value>
+    <value>Aggiungi come destinatario alla campagna</value>
   </data>
   <data name="chkCreateResponses.Caption" xml:space="preserve">
-    <value>Crea Risposte</value>
-  </data>
-  <data name="grdActions.Define" xml:space="preserve">
-    <value>Definisci</value>
+    <value>Crea risposte</value>
   </data>
   <data name="chkRunProcess.Caption" xml:space="preserve">
-    <value>Esegui processo per ciascun nominativo</value>
+    <value>Esegui processo per ciascun lead</value>
   </data>
-  <data name="Action_AddResponse.Caption" xml:space="preserve">
-    <value>Aggiungi Risposta</value>
-  </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Seleziona le azioni che saranno applicate ai Nominativi.</value>
-  </data>
-  <data name="grdActions.Edit" xml:space="preserve">
-    <value>Modifica</value>
-  </data>
-  <data name="SchedulePhoneCall.Caption" xml:space="preserve">
-    <value>Pianifica telefonata</value>
-  </data>
-  <data name="lblSubHeader.Caption" xml:space="preserve">
-    <value>Ai nominativi è possibile applicare le azioni seguenti mentre vengono importati nel sistema.</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
-    <value>Codice campagna</value>
-  </data>
-  <data name="grdActions.Name.ColumnHeading" xml:space="preserve">
-    <value>Azione</value>
-  </data>
-  <data name="grdActions.Define.Column" xml:space="preserve">
-    <value>Definisci</value>
-  </data>
-  <data name="grdActions.IsActive.ColumnHeading" xml:space="preserve">
-    <value>Attivo</value>
-  </data>
-  <data name="cmdDefineResponse.Caption" xml:space="preserve">
-    <value>Definisci Risposta...</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
-    <value>Data finale</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
-    <value>Nome campagna</value>
-  </data>
-  <data name="grdActions.EmptyTableText" xml:space="preserve">
-    <value>Non ci sono azioni definite.</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
-    <value>Data iniziale</value>
-  </data>
-  <data name="ScheduleToDo.Caption" xml:space="preserve">
-    <value>Pianifica impegno</value>
+  <data name="chkScheduleActivity.Caption" xml:space="preserve">
+    <value>Pianifica attività per ciascun lead</value>
   </data>
   <data name="cmdAddNote.Caption" xml:space="preserve">
     <value>Aggiungi nota...</value>
   </data>
-  <data name="chkAddNotes.Caption" xml:space="preserve">
-    <value>Aggiungi Note a ciascun Nominativo</value>
+  <data name="cmdDefineResponse.Caption" xml:space="preserve">
+    <value>Definisci risposta...</value>
+  </data>
+  <data name="cmdScheduleActivity.Caption" xml:space="preserve">
+    <value>Pianifica...</value>
+  </data>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Selezionare le azioni da applicare ai lead.</value>
+  </data>
+  <data name="lblSubHeader.Caption" xml:space="preserve">
+    <value>È possibile applicare le seguenti azioni ai Lead durante la loro importazione nel sistema.</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
+    <value>Codice campagna</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
+    <value>Nome campagna</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
+    <value>Data di fine</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
+    <value>Data di inizio</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="ScheduleMeeting.Caption" xml:space="preserve">
+    <value>Pianifica riunione</value>
+  </data>
+  <data name="SchedulePhoneCall.Caption" xml:space="preserve">
+    <value>Pianifica telefonata</value>
+  </data>
+  <data name="ScheduleToDo.Caption" xml:space="preserve">
+    <value>Pianifica attività da svolgere</value>
+  </data>
+  <data name="grdActions.Define" xml:space="preserve">
+    <value>Definisci</value>
+  </data>
+  <data name="grdActions.Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="grdActions.EmptyTableText" xml:space="preserve">
+    <value>Nessuna azione definita.</value>
+  </data>
+  <data name="grdActions.Name.ColumnHeading" xml:space="preserve">
+    <value>Azione</value>
+  </data>
+  <data name="grdActions.IsActive.ColumnHeading" xml:space="preserve">
+    <value>Attivo</value>
+  </data>
+  <data name="Action_AddNote.Caption" xml:space="preserve">
+    <value>Aggiungi nota</value>
+  </data>
+  <data name="Action_AddResponse.Caption" xml:space="preserve">
+    <value>Aggiungi risposta</value>
   </data>
   <data name="Action_AddTarget.Caption" xml:space="preserve">
-    <value>Aggiungi Target Campagna</value>
+    <value>Aggiungi destinatario campagna</value>
+  </data>
+  <data name="grdActions.Define.Column" xml:space="preserve">
+    <value>Definisci</value>
   </data>
 </root>

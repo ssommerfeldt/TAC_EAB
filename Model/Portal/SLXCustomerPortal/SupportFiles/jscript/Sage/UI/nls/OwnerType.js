@@ -1,15 +1,13 @@
-define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            teamText: 'Team',
-            departmentText: 'Department',
-            systemText: 'System',
-            userText: 'User'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/nls/OwnerType", {
+    root: {
+        teamText: 'Team',
+        departmentText: 'Department',
+        systemText: 'System',
+        userText: 'User'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

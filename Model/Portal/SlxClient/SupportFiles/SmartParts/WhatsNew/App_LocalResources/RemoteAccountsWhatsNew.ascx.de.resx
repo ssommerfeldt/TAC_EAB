@@ -117,64 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdAccounts_City_ColumnHeader" xml:space="preserve">
-    <value>Stadt</value>
-  </data>
-  <data name="grdUpdatedAccounts_ChangedBy_ColumnHeader" xml:space="preserve">
-    <value>Geändert von</value>
-  </data>
   <data name="DeletedAccounts_Title" xml:space="preserve">
     <value>Gelöschte Firmen</value>
-  </data>
-  <data name="grdAccounts_DateAdded_ColumnHeader" xml:space="preserve">
-    <value>Hinzugefügt am</value>
-  </data>
-  <data name="grdAccounts_Account_ColumnHeader" xml:space="preserve">
-    <value>Firma</value>
-  </data>
-  <data name="grdUpdatedAccounts_ChangedDate_ColumnHeader" xml:space="preserve">
-    <value>Geändert am</value>
-  </data>
-  <data name="grdAccounts_UnSubscribe_Text" xml:space="preserve">
-    <value>Abonnement aufheben</value>
-  </data>
-  <data name="grdAccounts_State_ColumnHeader" xml:space="preserve">
-    <value>Bundesland/Kanton</value>
-  </data>
-  <data name="grdAccounts_AddedBy_ColumnHeader" xml:space="preserve">
-    <value>Hinzugefügt von</value>
-  </data>
-  <data name="grdAccounts_Subscribe_Text" xml:space="preserve">
-    <value>Abonnieren</value>
   </data>
   <data name="error_ForcedAccount_Message" xml:space="preserve">
     <value>Dies ist ein Abonnement mit erzwungener Firma. Es kann nicht aufgehoben werden.</value>
   </data>
-  <data name="grdUpdatedAccounts_ChangedFrom_ColumnHeader" xml:space="preserve">
-    <value>Von</value>
+  <data name="grdAccounts_AccountMgr_ColumnHeader" xml:space="preserve">
+    <value>Account-Manager</value>
+  </data>
+  <data name="grdAccounts_Account_ColumnHeader" xml:space="preserve">
+    <value>Firma</value>
+  </data>
+  <data name="grdAccounts_AddedBy_ColumnHeader" xml:space="preserve">
+    <value>Hinzugefügt von</value>
+  </data>
+  <data name="grdAccounts_City_ColumnHeader" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="grdAccounts_DateAdded_ColumnHeader" xml:space="preserve">
+    <value>Hinzugefügt am</value>
   </data>
   <data name="grdAccounts_EmptyRow" xml:space="preserve">
     <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
   </data>
+  <data name="grdAccounts_Owner_ColumnHeader" xml:space="preserve">
+    <value>Zugriffsberechtigter</value>
+  </data>
+  <data name="grdAccounts_State_ColumnHeader" xml:space="preserve">
+    <value>Bundesland</value>
+  </data>
+  <data name="grdAccounts_Subscribe_Text" xml:space="preserve">
+    <value>Abonnieren</value>
+  </data>
+  <data name="grdAccounts_UnSubscribe_Text" xml:space="preserve">
+    <value>Abonnement kündigen</value>
+  </data>
+  <data name="grdDeletedAccounts_DeletedBy_ColumnHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdDeletedAccounts_DeletedDate_ColumnHeader" xml:space="preserve">
+    <value>Gelöscht am</value>
+  </data>
+  <data name="grdUpdatedAccounts_ChangedBy_ColumnHeader" xml:space="preserve">
+    <value>Geändert von</value>
+  </data>
+  <data name="grdUpdatedAccounts_ChangedDate_ColumnHeader" xml:space="preserve">
+    <value>Geändert am</value>
+  </data>
   <data name="grdUpdatedAccounts_ChangedField_ColumnHeader" xml:space="preserve">
     <value>Feld</value>
+  </data>
+  <data name="grdUpdatedAccounts_ChangedFrom_ColumnHeader" xml:space="preserve">
+    <value>Von</value>
+  </data>
+  <data name="grdUpdatedAccounts_ChangedTo_ColumnHeader" xml:space="preserve">
+    <value>In</value>
   </data>
   <data name="ModifiedAccounts_Title" xml:space="preserve">
     <value>Geänderte Firmen</value>
   </data>
-  <data name="grdAccounts_Owner_ColumnHeader" xml:space="preserve">
-    <value>Zugriffsberechtigter</value>
-  </data>
-  <data name="grdUpdatedAccounts_ChangedTo_ColumnHeader" xml:space="preserve">
-    <value>An</value>
-  </data>
-  <data name="grdAccounts_AccountMgr_ColumnHeader" xml:space="preserve">
-    <value>Account Mgr.</value>
-  </data>
   <data name="NewAccounts_Title" xml:space="preserve">
     <value>Neue Firmen</value>
-  </data>
-  <data name="grdDeletedAccounts_DeletedDate_ColumnHeader" xml:space="preserve">
-    <value>Gelöscht am</value>
   </data>
 </root>

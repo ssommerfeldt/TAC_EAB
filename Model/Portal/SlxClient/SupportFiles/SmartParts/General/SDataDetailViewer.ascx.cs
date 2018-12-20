@@ -9,7 +9,13 @@ public partial class SmartParts_General_SDataDetailViewer : System.Web.UI.UserCo
 {
     public string MainViewDefinition { get; set; }
     public string HelpTopicName { get; set; }
-
+    public string MainViewDefinitionForwardSlash
+    {
+        get
+        {
+            return MainViewDefinition.Replace(".", "/");
+        }
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
 

@@ -1,5 +1,5 @@
-﻿/*globals Sage, define, FileReader, FormData, window */
-define([
+/*globals Sage, define, FileReader, FormData, window, VBArray, Sys */
+define("Sage/Utility/File", [
     'Sage/UI/Dialogs',
     'dojo/number',
     'dojo/_base/lang',
@@ -108,7 +108,7 @@ function (dialogs, dNumber, lang, nlsStrings) {
             builder.append('Content-Disposition: attachment; name="file_"'); // + i + '"');
 
             if (file.name) {
-                builder.append('; filename*="' + encodeURI(file.name) + '"');
+                builder.append('; filename*="' + encodeURIComponent(file.name) + '"');
             }
             builder.append(crlf);
 
@@ -236,6 +236,10 @@ function (dialogs, dNumber, lang, nlsStrings) {
                     usingBlobBuilder = true;
                 }
                 
+                //remove paths if they were passed as a part of the file name
+                //thsi can happen if we are passed message obejct from our BHO
+                var filenameParts = file.name.split("\\");
+                var filename = filenameParts[filenameParts.length - 1];
 
                 binary = evt.target.result;
                 boundary = "---------------------------" + (new Date()).getTime();
@@ -244,7 +248,7 @@ function (dialogs, dNumber, lang, nlsStrings) {
                 this._append(bb, dashdash + boundary + crlf);
                 this._append(bb, 'Content-Disposition: attachment; ');
                 this._append(bb, 'name="file_"; ');
-                this._append(bb, 'filename*="' + encodeURI(file.name) + '" ');
+                this._append(bb, 'filename*="' + encodeURIComponent(filename) + '" ');
                 this._append(bb, crlf);
                 this._append(bb, 'Content-Type: ' + file.type);
                 this._append(bb, crlf + crlf);
@@ -289,7 +293,26 @@ function (dialogs, dNumber, lang, nlsStrings) {
                     blobReader.readAsArrayBuffer(blobData); //Send as Array Buffer
                 }
             });
-            reader.readAsArrayBuffer(file);
+            try {
+                reader.readAsArrayBuffer(file); //Send asTyped Array
+            } catch (e) {
+                var data;
+                if (typeof file.blob != "undefined") {
+                    if (file.blob.constructor == Array) {
+                        //is this an object from our browser hook?
+                        data = new Blob([new Uint8Array(file.blob)], { type: 'application/binary' });
+                        reader.readAsArrayBuffer(data);
+                    }
+                    else if (typeof VBArray != "undefined") {
+                        //is this our XGears file object coming from an Outlook message?
+
+                        var blob = file.blob;
+                        var fileArray = new VBArray(blob.getAsArray()).toArray();
+                        data = new Blob([new Uint8Array(fileArray)], { type: 'application/binary' });
+                        reader.readAsArrayBuffer(data);
+                    }
+                }
+            }
         },
         _append: function(arrayOrBlobBuilder, data) {
             if (arrayOrBlobBuilder && arrayOrBlobBuilder.constructor === Array) {
@@ -312,7 +335,7 @@ function (dialogs, dNumber, lang, nlsStrings) {
             if (size < 1024) {
                 return '1 KB';
             }
-            return dNumber.format(Math.round(size / 1024)) + ' KB';
+            return dNumber.format(Math.round(size / 1024), { locale: Sys.CultureInfo.CurrentCulture.name }) + ' KB';
         }
     };
 

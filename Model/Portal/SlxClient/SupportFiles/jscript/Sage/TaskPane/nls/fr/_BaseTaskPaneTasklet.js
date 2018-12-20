@@ -1,14 +1,22 @@
-define((
-{ selectRecordsTitle: 'Sélection non valide',
-  selectRecords: 'Veuillez sélectionner un enregistrement avant de continuer.',
-  selectSingleRecord: 'Veuillez sélectionner un enregistrement avant de continuer.',
-  noRecordsSelectedProcessAll: 'Aucun enregistrement sélectionné. Le groupe entier, ${0}  enregistrements, sera supprimé. Continuer ?',
-  invalidSelectionTitle: 'Sélection non valide',
-  errorSelectionInfo: 'Une erreur est produite lors de la récupération informations concernant les enregistrements sélectionnés.',
-  errorNoData: 'Aucune donnée est disponible',
-  yesButtonText: 'Oui',
-  noButtonText: 'Non',
-  salesLogixPageTitle: 'SalesLogix',
-  okButtonText: 'OK',
-  cancelButtonText: 'Annuler' }
-));
+define("Sage/TaskPane/nls/fr/_BaseTaskPaneTasklet", {
+    "selectRecordsTitle": "Sélection non valide",
+    "selectRecords": "Veuillez sélectionner un enregistrement avant de continuer.",
+    "selectSingleRecord": "Veuillez sélectionner un enregistrement avant de continuer.",
+    "noRecordsSelectedProcessAll": "Aucun enregistrement sélectionné. Le groupe entier sera traité jusqu'à la limite définie par votre administrateur, le cas échéant. Continuer ?",
+    "invalidSelectionTitle": "Sélection non valide",
+    "errorSelectionInfo": "Une erreur s'est produite lors de la récupération d'informations concernant les enregistrements sélectionnés.",
+    "errorNoData": "Aucune donnée n'est disponible",
+    "yesButtonText": "Oui",
+    "noButtonText": "Non",
+    "salesLogixPageTitle": "Infor CRM",
+    "okButtonText": "OK",
+    "cancelButtonText": "Annuler",
+    "confirmBulkDeleteJob": "Voulez-vous vraiment supprimer les enregistrements sélectionnés ?",
+    "deleteSelectedRecords": "Supprimer ${0}",
+    "deleteJobError": "Une erreur s'est produite pendant la tâche de suppression ${0} : ${1}",
+    "deleteBulkJobTitle": "Supprimer ${0}",
+    "promoteTitle": "Promouvoir",
+    "getOrderTotalTitle": "Obtenir le total de la commande",
+    "integrationNotEnabled": "Back Office Extension n'est pas activé",
+    "error_PricingRequest": "Une erreur s'est produite lors de la demande d'un service de prix : ${0}"
+});

@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/SnoozeOptions", (
 { fiveMinText: '5 minutes',
   tenMinText: '10 minutes',
   fifteenMinText: '15 minutes',

@@ -31,7 +31,7 @@
     </tr>
     <tr>
         <td>
-            <div class=" lbl alignleft">
+            <div class=" lbl alignright">
                 <asp:Label ID="ownAccount_lbl" AssociatedControlID="ownAccount" runat="server" Text="<%$ resources: ownAccount.Caption %>" ></asp:Label>
             </div>
             <div class="textcontrol owner">
@@ -41,9 +41,9 @@
     </tr>
     <tr>
         <td>
-            <div class="slxlabel alignleft checkbox">
+            <div class="slxlabel checkbox checkboxRight">
                 <SalesLogix:SLXCheckBox runat="server" ID="chkbxAllowChange" CssClass="checkbox"
-                    Text="<%$ resources: chkbxAllowChange.Caption %>" TextAlign="right" />
+                    Text="<%$ resources: chkbxAllowChange.Caption %>" TextAlign="left" />
             </div>
         </td>
     </tr>
@@ -62,7 +62,7 @@
     </tr>    
     <tr>
         <td>
-			<span class="lbl"><asp:Label ID="lblType" runat="server" Text="Type:" 
+			<span class="lbl alignright"><asp:Label ID="lblType" runat="server" Text="Type:" 
                 meta:resourcekey="lblTypeResource"></asp:Label></span>
             <span class="textcontrol"> 
             <asp:DropDownList ID="cboTemplateType" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" shouldPublishMarkDirty="false" runat="server"
@@ -75,7 +75,7 @@
     </tr>
         <tr>
             <td>
-				<span class="lbl"><asp:Label ID="lblEmailBaseTemplate" runat="server" Text="<%$ resources: EmailTemplate.Caption %>"></asp:Label></span>
+				<span class="lbl alignright"><asp:Label ID="lblEmailBaseTemplate" runat="server" Text="<%$ resources: EmailTemplate.Caption %>"></asp:Label></span>
                 <span class="textcontrol">
 					<span runat="server" id="EmailSpan">
 						<asp:TextBox ID="txtEmailBaseTemplate" runat="server"></asp:TextBox>
@@ -87,7 +87,7 @@
         </tr>
         <tr>
             <td>
-				<span class="lbl"><asp:Label ID="lblLetterBaseTemplate" runat="server" Text="<%$ resources: LetterTemplate.Caption %>"></asp:Label></span>
+				<span class="lbl alignright"><asp:Label ID="lblLetterBaseTemplate" runat="server" Text="<%$ resources: LetterTemplate.Caption %>"></asp:Label></span>
 				<span class="textcontrol">
 					<span runat="server" id="LetterSpan">
 						<asp:TextBox ID="txtLetterBaseTemplate" runat="server"></asp:TextBox>
@@ -99,7 +99,7 @@
         </tr>
         <tr>
             <td>
-				<span class="lbl"><asp:Label ID="lblFaxBaseTemplate" runat="server" Text="<%$ resources: FaxTemplate.Caption %>"></asp:Label></span>
+				<span class="lbl alignright"><asp:Label ID="lblFaxBaseTemplate" runat="server" Text="<%$ resources: FaxTemplate.Caption %>"></asp:Label></span>
 				<span class="textcontrol">
 					<span runat="server" id="FaxSpan">
 						<asp:TextBox ID="txtFaxBaseTemplate" runat="server"></asp:TextBox>
@@ -112,9 +112,9 @@
         </tr>
      <tr>
         <td>
-            <div class="slxlabel alignleft checkbox">
+            <div class="slxlabel checkbox checkboxRight">
                 <SalesLogix:SLXCheckBox runat="server" ID="chkbxAllowChangeTemplates" CssClass="checkbox"
-                    Text="<%$ resources: chkbxAllowChange.Caption %>" TextAlign="right" />
+                    Text="<%$ resources: chkbxAllowChange.Caption %>" TextAlign="left" />
             </div>
         </td>
     </tr>

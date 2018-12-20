@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/PropertyEditorContainer", [
     'dojo/string',
     'dojo/_base/declare',
     'dojo/_base/array',

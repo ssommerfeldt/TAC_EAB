@@ -24,7 +24,6 @@
 #region Usings
 using System;
 using Sage.Entity.Interfaces;
-using Sage.Form.Interfaces;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
@@ -39,7 +38,7 @@ namespace Sage.BusinessRules.CodeSnippets
         /// </summary>
         /// <param name="salesOrderAddress">The sales order address.</param>
         /// <param name="result">The result.</param>
-        public static void GetFullAddress(ISalesOrderAddress salesOrderAddress, out System.String result)
+        public static void GetFullAddress(ISalesOrderAddress salesOrderAddress, out String result)
         {
             result = salesOrderAddress.FormatFullSalesOrderAddress();
         }

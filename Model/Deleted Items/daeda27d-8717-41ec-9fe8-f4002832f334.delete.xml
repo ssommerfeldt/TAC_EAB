@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<DeletedItem>
+  <id>daeda27d-8717-41ec-9fe8-f4002832f334</id>
+  <url>\Entity Model\Relationships\EQService.EQServiceMapping.daeda27d871741ec9fe8f4002832f334.relationship.xml</url>
+  <caption>EQ Service.EQServiceMappings 1:M EQ Service mapping.EQService</caption>
+  <extension>.relationship.xml</extension>
+  <modelId>a7bdd2d9-93b0-499d-9fd4-c3f7a5f94e28</modelId>
+  <dateDeleted>2017-07-24T09:38:35.1465734Z</dateDeleted>
+  <restoreDataType>System.String, mscorlib</restoreDataType>
+  <restoreData>
+    <string>&lt;?xml version="1.0"?&gt;
+&lt;relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="daeda27d-8717-41ec-9fe8-f4002832f334" lastModifiedUtc="2017-06-29T09:38:38.622634Z" parentEntityId="5cb385f8-b58b-4ad2-b152-c965d6de7bfd" childEntityId="251aa7dd-98a2-4d25-bd19-5cc51113adcd"&gt;
+  &lt;extendedMetaData /&gt;
+  &lt;ExtendedPropertiesCollection&gt;
+    &lt;extendee type="Sage.Platform.Orm.Entities.OrmRelationship"&gt;
+      &lt;extender guid="14807bef-c0cc-4b6d-a517-8388ed8ac2a6"&gt;
+        &lt;OrmRelationshipBulkActionExtension /&gt;
+      &lt;/extender&gt;
+    &lt;/extendee&gt;
+  &lt;/ExtendedPropertiesCollection&gt;
+  &lt;parentProperty id="57a02628-0c3d-4ede-9a57-d8842c8efdba" lastModifiedUtc="2017-06-29T09:38:38.4506248Z" name="EQServiceMappings" audited="false"&gt;
+    &lt;ExtendedPropertiesCollection&gt;
+      &lt;extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty"&gt;
+        &lt;extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131"&gt;
+          &lt;OrmEntityPropertySDataExtension generate="true" /&gt;
+        &lt;/extender&gt;
+        &lt;extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f"&gt;
+          &lt;OrmEntityPropertyImportExtension /&gt;
+        &lt;/extender&gt;
+      &lt;/extendee&gt;
+    &lt;/ExtendedPropertiesCollection&gt;
+    &lt;SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7"&gt;
+      &lt;RelationshipDataType /&gt;
+    &lt;/SystemDataType&gt;
+  &lt;/parentProperty&gt;
+  &lt;childProperty id="331a29c0-0239-40c2-9a37-c08e346082d9" lastModifiedUtc="2017-06-29T09:38:38.4516239Z" name="EQService" audited="false"&gt;
+    &lt;ExtendedPropertiesCollection&gt;
+      &lt;extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty"&gt;
+        &lt;extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131"&gt;
+          &lt;OrmEntityPropertySDataExtension generate="true" /&gt;
+        &lt;/extender&gt;
+        &lt;extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f"&gt;
+          &lt;OrmEntityPropertyImportExtension /&gt;
+        &lt;/extender&gt;
+      &lt;/extendee&gt;
+    &lt;/ExtendedPropertiesCollection&gt;
+    &lt;SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7"&gt;
+      &lt;RelationshipDataType /&gt;
+    &lt;/SystemDataType&gt;
+  &lt;/childProperty&gt;
+  &lt;column&gt;
+    &lt;OrmRelationshipColumn id="6065b053-f0da-4df2-922d-16cceac14750" parentPropertyId="28605fd0-0c78-44ff-93f9-00998dd782db" childPropertyId="354cf657-ace7-4376-8a7b-98fb1026b59a" ordinal="0" /&gt;
+  &lt;/column&gt;
+&lt;/relationship&gt;</string>
+  </restoreData>
+</DeletedItem>

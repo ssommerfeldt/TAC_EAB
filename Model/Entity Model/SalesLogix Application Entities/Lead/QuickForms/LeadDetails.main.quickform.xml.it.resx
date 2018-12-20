@@ -112,120 +112,138 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="nmeLeadName.Caption" xml:space="preserve">
+    <value>Nome:</value>
+  </data>
   <data name="pklTitle.Caption" xml:space="preserve">
     <value>Titolo:</value>
-  </data>
-  <data name="db9a6317-7f1e-4220-bac0-681479bab985.Message" xml:space="preserve">
-    <value>Devi specificare un nome Società prima di convertire un Nominativo.</value>
-  </data>
-  <data name="chkDoNotSolicit.Caption" xml:space="preserve">
-    <value>Non sollecitare</value>
   </data>
   <data name="txtCompany.Caption" xml:space="preserve">
     <value>Società:</value>
   </data>
-  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
-    <value>Descrizione</value>
-  </data>
-  <data name="cmdUpdateLead.ToolTip" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="emlEmail.ButtonToolTip" xml:space="preserve">
-    <value>E-mail</value>
-  </data>
-  <data name="db9a6317-7f1e-4220-bac0-681479bab985.Title" xml:space="preserve">
-    <value>SalesLogix</value>
-  </data>
-  <data name="txtSICCode.Caption" xml:space="preserve">
-    <value>Codice SIC:</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.SourceDate.PropertyHeader" xml:space="preserve">
-    <value>Data origine</value>
-  </data>
-  <data name="lueLeadSource.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
-  <data name="chkDoNotFax.Caption" xml:space="preserve">
-    <value>No Fax</value>
-  </data>
-  <data name="txtComments.Caption" xml:space="preserve">
-    <value>Commenti:</value>
-  </data>
-  <data name="cmdConvertLead.Caption" xml:space="preserve">
-    <value>Converti Nominativo Qualificato</value>
-  </data>
   <data name="adrAddress.Caption" xml:space="preserve">
     <value>Indirizzo</value>
   </data>
-  <data name="lueLeadSource.Caption" xml:space="preserve">
-    <value>Fonte Nominativo:</value>
-  </data>
-  <data name="chkDoNotEmail.Caption" xml:space="preserve">
-    <value>No E-mail</value>
-  </data>
-  <data name="cmdUpdateLead.Caption" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="txtInterests.Caption" xml:space="preserve">
-    <value>Interessato a:</value>
+  <data name="urlWeb.Caption" xml:space="preserve">
+    <value>Web:</value>
   </data>
   <data name="pklIndustry.Caption" xml:space="preserve">
     <value>Settore:</value>
   </data>
-  <data name="nmeLeadName.Caption" xml:space="preserve">
-    <value>Nome:</value>
+  <data name="txtSICCode.Caption" xml:space="preserve">
+    <value>Codice SIC:</value>
   </data>
-  <data name="lueLeadSource.LUPF.Status" xml:space="preserve">
-    <value>Attivo</value>
-  </data>
-  <data name="QFButton2.ActionConfirmationMessage" xml:space="preserve">
-    <value>Stai per eliminare definitivamente questo record.</value>
-  </data>
-  <data name="cmdDeleteLead.ToolTip" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="cmdDeleteLead.Caption" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="chkDoNotMail.Caption" xml:space="preserve">
-    <value>No Posta</value>
-  </data>
-  <data name="adrAddress.ButtonToolTip" xml:space="preserve">
-    <value>Modifica</value>
-  </data>
-  <data name="txtBusinessDescription.Caption" xml:space="preserve">
-    <value>Descrizione Attività:</value>
-  </data>
-  <data name="phnTollFree.Caption" xml:space="preserve">
-    <value>Num. verde:</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Codice sorgente</value>
-  </data>
-  <data name="lueLeadSource.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="817595f0-8b8a-42cb-9d7a-4462e0bbcfad.DialogTitleOverride" xml:space="preserve">
-    <value>Converti Nominativo</value>
+  <data name="emlEmail.Caption" xml:space="preserve">
+    <value>E-mail:</value>
   </data>
   <data name="phnWorkPhone.Caption" xml:space="preserve">
     <value>Telefono:</value>
   </data>
-  <data name="chkDoNotCall.Caption" xml:space="preserve">
-    <value>No Telefonate</value>
+  <data name="phnTollFree.Caption" xml:space="preserve">
+    <value>Numero verde:</value>
   </data>
-  <data name="emlEmail.Caption" xml:space="preserve">
-    <value>Email:</value>
+  <data name="txtBusinessDescription.Caption" xml:space="preserve">
+    <value>Descrizione attività:</value>
+  </data>
+  <data name="lueLeadSource.Caption" xml:space="preserve">
+    <value>Origine lead:</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Description.PropertyHeader" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Codice origine</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueLeadSource.LookupProperties.SourceDate.PropertyHeader" xml:space="preserve">
+    <value>Data origine</value>
+  </data>
+  <data name="txtInterests.Caption" xml:space="preserve">
+    <value>Interessato a:</value>
+  </data>
+  <data name="cmdConvertLead.Caption" xml:space="preserve">
+    <value>Converti lead qualificato</value>
+  </data>
+  <data name="txtComments.Caption" xml:space="preserve">
+    <value>Commenti:</value>
+  </data>
+  <data name="chkDoNotSolicit.Caption" xml:space="preserve">
+    <value>Non sollecitare</value>
+  </data>
+  <data name="chkDoNotEmail.Caption" xml:space="preserve">
+    <value>Non inviare e-mail</value>
+  </data>
+  <data name="chkDoNotCall.Caption" xml:space="preserve">
+    <value>Non telefonare</value>
+  </data>
+  <data name="chkDoNotMail.Caption" xml:space="preserve">
+    <value>Non inviare posta</value>
+  </data>
+  <data name="chkDoNotFax.Caption" xml:space="preserve">
+    <value>Non inviare fax</value>
+  </data>
+  <data name="cmdUpdateLead.Caption" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="cmdUpdateLead.ToolTip" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="cmdDeleteLead.Caption" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="cmdDeleteLead.ToolTip" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="QFButton2.ActionConfirmationMessage" xml:space="preserve">
+    <value>Si sta per eliminare definitivamente questo record.</value>
+  </data>
+  <data name="cmdConvertLead.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="db9a6317-7f1e-4220-bac0-681479bab985.Title" xml:space="preserve">
+    <value>Saleslogix</value>
+  </data>
+  <data name="db9a6317-7f1e-4220-bac0-681479bab985.Message" xml:space="preserve">
+    <value>Devi specificare un nome società prima di convertire un lead.</value>
+  </data>
+  <data name="817595f0-8b8a-42cb-9d7a-4462e0bbcfad.DialogTitleOverride" xml:space="preserve">
+    <value>Converti lead</value>
+  </data>
+  <data name="emlEmail.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueLeadSource.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="emlEmail.ButtonToolTip" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="lueLeadSource.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="adrAddress.AddressToolTip" xml:space="preserve">
+    <value>MapQuest</value>
+  </data>
+  <data name="adrAddress.ButtonToolTip" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="urlWeb.ButtonToolTip" xml:space="preserve">
+    <value>WWW</value>
   </data>
   <data name="nmeLeadName.ButtonToolTip" xml:space="preserve">
     <value>Modifica</value>
+  </data>
+  <data name="lueLeadSource.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Stato</value>
   </data>
 </root>

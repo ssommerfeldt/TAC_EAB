@@ -28,25 +28,22 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
-using Sage.Platform.Security;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class TeamDetailsEventHandlers
     {
-        public static void saveButton_OnClickStep( ITeamDetails form,  EventArgs args)
+        public static void saveButton_OnClickStep(ITeamDetails form, EventArgs args)
         {
             ITeam team = form.CurrentEntity as ITeam;
 			team.Save();
-			
+
 			// do this extra save since team is a view representing owner
 			team.Owner.Save();
-			
+
 			IOwnerSecurityProfile profile = form.securityProfileLookup.LookupResultValue as IOwnerSecurityProfile;
 			team.Owner.UpdateOwnerSecurityProfile(team.Owner, profile);
-			
         }
     }
 }

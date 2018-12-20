@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/TitleContentPane", [
         'dijit/MenuSeparator',
         'dijit/Menu',
         'dijit/layout/ContentPane',
@@ -8,9 +8,7 @@ define([
         'dijit/MenuBar',
         'dijit/MenuBarItem',
         'Sage/UI/PopupMenuBarItem',
-        'dojox/grid/DataGrid',
         'Sage/UI/OrientableMenuBar',
-        'Sage/UI/GridMenuItem',
         'Sage/UI/ImageButton',
         'Sage/Utility',
         'Sage/Groups/GroupContextService',
@@ -20,7 +18,9 @@ define([
         'dojo/_base/array',
         'dojo/dom-class',
         'dojo/_base/declare',
-        'dojo/_base/lang'
+        'dojo/_base/lang',
+        'dojo/dom-construct',
+        'dojo/i18n!./nls/TitleContentPane'
     ],
 function (
         MenuSeparator,
@@ -31,9 +31,7 @@ function (
         MenuBar,
         MenuBarItem,
         PopupMenuBarItem,
-        DataGrid,
         OrientableMenuBar,
-        GridMenuItem,
         ImageButton,
         Utility,
         GroupContextService,
@@ -43,7 +41,9 @@ function (
         array,
         domClass,
         declare,
-        lang
+        lang,
+        domConstruct,
+        resource
     ) {
     var TitleContentPane = declare('Sage.UI.TitleContentPane', ContentPane, {
         // summary:
@@ -83,7 +83,7 @@ function (
             }
 
             this.tabConnects = [];
-            
+
             if (this._configurationProvider === null) {
                 var eCtx = Sage.Services.getService('ClientEntityContext');
                 if (eCtx) {
@@ -104,6 +104,7 @@ function (
                     success: function (config) {
                         this._setConfiguration(config);
                         this.started = true;
+                        this._displayMsg();
                     }
                 });
             } else {
@@ -131,11 +132,25 @@ function (
                 }
             }
         },
+        _displayMsg: function myfunction() {
+            if (Sage.Utility.getModeId() === 'list') {
+                var maxNumOfFavoriteGroups = this._configurationProvider.getMaxNumOfFavoriteGroups();
+                var numOfFavoriteGroups = this._configurationProvider.getNumOfFavoriteGroups();
+                if (numOfFavoriteGroups > maxNumOfFavoriteGroups) {
+                    dojo.byId('reduceSelectedGroups').innerHTML = dojo.string.substitute(resource.reduceSelectedGroups, [maxNumOfFavoriteGroups]);
+                }
+                else {
+                    dojo.byId('reduceSelectedGroups').innerHTML = '';
+                }
+            }
+        },
         resetConfiguration: function () {
             // summary:
             //      Callback method for events that indicate that the title pane contents are out of date
             //      and need to be refreshed.
-            var tabs = dijit.byId('GroupTabs');
+            var tabs, i, len, children, child;
+
+            tabs = dijit.byId('GroupTabs');
 
             if (tabs) {
                 array.forEach(this.tabConnects, function (handle) {
@@ -145,7 +160,14 @@ function (
                 this.tabConnects = [];
 
                 try {
-                    tabs.removeChildren();
+                    children = tabs.getChildren();
+                    len = children.length;
+                    for (i = 0; i < len; i++) {
+                        child = children[i];
+                        tabs.removeChild(child);
+                    }
+
+                    tabs.destroyDescendants();
                 } catch (err) {
                     console.error(err);
                 }
@@ -203,7 +225,7 @@ function (
                 if (svc.hasAccess('Entities/Group/Add')) {
                     var addGroupButton = new ImageButton({
                         id: 'addGroupButton',
-                        imageClass: 'icon_plus_16x16',
+                        imageClass: 'fa fa-plus',
                         title: menuConfig.addGroupTooltip,
                         onClick: function () {
                             Sage.Groups.GroupManager.CreateGroup();
@@ -213,6 +235,13 @@ function (
                     addGroupButton.placeAt("GroupsWrapper", "before");
                     addGroupButton.startup();
                 }
+
+                domConstruct.create('div', {
+                    'id': 'reduceSelectedGroups',
+                    'innerHTML': '',
+                    'class': 'dirtyDataMessage',
+                    'style':'display:inline'
+                }, dojo.byId('groupMenuBar'),'before');
             }
         },
         _addItemsToMenu: function (menu, items) {
@@ -274,7 +303,8 @@ function (
                         for (var i = 0; i < len; i++) {
                             var t = tConfig.staticTabs[i];
                             var tabId = t[tConfig.tabKeyProperty];
-                            var sTab = dijit.byId(tabId) || new ContentPane({
+                            var existing = dijit.byId(tabId);
+                            var sTab = existing || new ContentPane({
                                 id: tabId,
                                 title: t[tConfig.tabNameProperty],
                                 closable: true,
@@ -290,15 +320,12 @@ function (
                             // Build the static tab context menu (which is the lookup results tab).
                             // The tab menus hitch on to the "close" tab menu. The tabs must be set as closable,
                             // or the menu will not show up.
-                            var staticMenu = dijit.byId(dojo.string.substitute("GroupTabs_tablist_${0}_Menu", [t[tConfig.tabKeyProperty]]));
-                            staticMenu.destroyDescendants(); // Remove the close option
-
-                            if (staticMenu && tConfig.showTabContextMenus && t["contextMenuItems"]) {
+                            if (tConfig.showTabContextMenus && t["contextMenuItems"]) {
                                 lookupTabItems = t["contextMenuItems"]; // Sage.UI.DataStore.ContextMenus.GroupLookupTabContextMenu.items;
                                 for (var x = 0; x < lookupTabItems.length; x++) {
                                     var mItem = lookupTabItems[x];
                                     if (mItem.isspacer || mItem.text === '') {
-                                        staticMenu.addChild(new MenuSeparator());
+                                        tabs.addTabMenuItem(tabId, new MenuSeparator());
                                     } else {
                                         var href = mItem.href;
                                         if (href.indexOf('javascript:') < 0) {
@@ -311,7 +338,7 @@ function (
                                             };
                                             href = dojo.string.substitute(href, substituteObj);
                                         }
-                                        var itemId = t[tConfig.tabFamilyProperty] + '_LOOKUP_' + x;
+                                        var itemId = t[tConfig.tabKeyProperty] + '_MENU_' + x;
                                         var menuItem = new MenuItem({
                                             id: itemId,
                                             label: mItem.text || '...',
@@ -327,7 +354,7 @@ function (
                                             }
                                         });
 
-                                        staticMenu.addChild(menuItem);
+                                        tabs.addTabMenuItem(tabId, menuItem);
                                     }
                                 }
                             }
@@ -344,10 +371,9 @@ function (
                         onComplete: function (data) {
                             var dataItem,
                                 i,
-                                tabList = [],
-                                selectedTab,
                                 menuFuncs = [],
-                                tabId;
+                                tabId,
+                                shouldSelect = false;
 
                             for (i = 0; i < data.length; i++) {
                                 dataItem = data[i];
@@ -356,28 +382,27 @@ function (
                                 }
 
                                 tabId = dataItem[tConfig.tabKeyProperty];
+                                shouldSelect = tConfig.selectedTabId === dataItem[tConfig.tabKeyProperty];
 
                                 var aTab = dijit.byId(tabId) || new ContentPane({
                                     id: tabId,
                                     title: dataItem[tConfig.tabNameProperty],
                                     closable: closable,
-                                    dataItem: dataItem
+                                    dataItem: dataItem,
+                                    selected: shouldSelect
                                 });
 
-                                tabList.push(aTab);
+                                tabs.addChild(aTab);
 
-                                if (tConfig.selectedTabId === dataItem[tConfig.tabKeyProperty]) {
-                                    selectedTab = aTab;
+                                if (shouldSelect) {
+                                    tabs.selectChild(aTab);
                                 }
 
-                                // create a clojure array and execute them after the tabs
-                                // have been added, otherwise the menu (GroupTabs_tablist_${0}_Menu) won't exist
-                                menuFuncs.push((function menuFunction(dataItem, userId) {
+                                (function menuFunction(dataItem, userId) {
                                     var tabId = dataItem[tConfig.tabKeyProperty];
                                     return function () {
                                         //build the tab context menu
-                                        var tabmenu = dijit.byId(dojo.string.substitute("GroupTabs_tablist_${0}_Menu", [dataItem[tConfig.tabKeyProperty]])),
-                                            disabled = false,
+                                        var disabled = false,
                                             isShared = false,
                                             isAdmin = userId.trim() === 'ADMIN';
 
@@ -387,11 +412,6 @@ function (
                                             isShared = false;
                                         }
 
-                                        if (!tabmenu) {
-                                            return;
-                                        }
-
-                                        tabmenu.destroyDescendants(); // Destroy close button
                                         if (Sage.UI.DataStore.ContextMenus && Sage.UI.DataStore.ContextMenus.groupTabContextMenu) {
                                             var menuConfig = Sage.UI.DataStore.ContextMenus.groupTabContextMenu.items;
 
@@ -408,7 +428,7 @@ function (
                                                 }
 
                                                 if (mItem.isspacer || mItem.text === '') {
-                                                    tabmenu.addChild(new MenuSeparator());
+                                                    tabs.addTabMenuItem(tabId, new MenuSeparator());
                                                 } else {
                                                     var href = mItem.href;
                                                     if (href.indexOf('javascript:') < 0) {
@@ -417,12 +437,12 @@ function (
                                                         var substituteObj = {
                                                             'groupId': dataItem[tConfig.tabKeyProperty],
                                                             'groupName': dataItem[tConfig.tabNameProperty] || dataItem[tConfig.tabGroupNameProperty],
-                                                            'family': dataItem[tConfig.tabFamilyProperty]
+                                                            'family': dataItem[tConfig.tabFamilyProperty] || ''
                                                         };
                                                         href = dojo.string.substitute(href, substituteObj);
                                                     }
 
-                                                    tabmenu.addChild(new MenuItem({
+                                                    tabs.addTabMenuItem(tabId, new MenuItem({
                                                         id: tabId + '_tab_' + mi,
                                                         label: mItem.text || '...',
                                                         icon: mItem.img || blank,
@@ -441,24 +461,8 @@ function (
                                             }
                                         }
                                     };
-                                })(dataItem, userId));
+                                })(dataItem, userId)();
                             }
-
-                            dojo.connect(tabs, 'onAddChildrenComplete', this, function (start, end) {
-                                for(var i = start; i < end; i++) {
-                                    if(menuFuncs[i]) {
-                                        menuFuncs[i].call();
-                                        menuFuncs[i] = null;
-                                    }
-                                }
-
-                                if (selectedTab) {
-                                    tabs.selectChild(selectedTab);
-                                    selectedTab = null;
-                                }
-                            });
-
-                            tabs.addChildren(tabList, selectedTab);
                         }
                     };
                     dojo.mixin(fParams, tConfig.fetchParams);

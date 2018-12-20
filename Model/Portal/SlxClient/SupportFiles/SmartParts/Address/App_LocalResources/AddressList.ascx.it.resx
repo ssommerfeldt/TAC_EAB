@@ -117,58 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressGrid_Country.HeaderText" xml:space="preserve">
-    <value>Nazione</value>
-  </data>
-  <data name="AddressGrid_Address1.HeaderText" xml:space="preserve">
-    <value>Indirizzo</value>
-  </data>
-  <data name="DeleteAddressMessage" xml:space="preserve">
-    <value>L'indirizzo selezionato non può essere eliminato perchè è segnato come Principale o Spedizione. Per eliminare questo indirizzo è necessario segnare come Principale o Spedizione un altro indirizzo. Se non ci sono altri indirizzi disponibili, crearne uno nuovo</value>
-  </data>
-  <data name="AddressGrid_Delete.Text" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="SaveChanges" xml:space="preserve">
-    <value>E' necessario salvare le modifiche in corso prima che gli indirizzi possano essere modificati.</value>
+  <data name="AddressGrid_State.HeaderText" xml:space="preserve">
+    <value>Provincia</value>
   </data>
   <data name="AddressGrid_PostalCode.HeaderText" xml:space="preserve">
-    <value>CodicePostale</value>
+    <value>Codice postale</value>
   </data>
-  <data name="btnAdd.ToolTip" xml:space="preserve">
-    <value>Aggiungi Indirizzo</value>
+  <data name="AddressGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
   </data>
-  <data name="AddressGrid_PrimaryAddress.HeaderText" xml:space="preserve">
-    <value>Primario</value>
+  <data name="AddressGrid_Primary.HeaderText" xml:space="preserve">
+    <value>Indirizzo principale di fatturazione</value>
   </data>
-  <data name="AddressGrid_Attention.HeaderText" xml:space="preserve">
-    <value>Attenzione</value>
+  <data name="AddressGrid_Shipping.HeaderText" xml:space="preserve">
+    <value>Indirizzo principale di spedizione</value>
   </data>
   <data name="AddressGrid_Description.HeaderText" xml:space="preserve">
     <value>Descrizione</value>
   </data>
-  <data name="ConfirmMessage" xml:space="preserve">
-    <value>Sei sicuro di voler cancellare?</value>
-  </data>
-  <data name="AddressGrid_Primary.HeaderText" xml:space="preserve">
-    <value>Fatturazione primaria</value>
-  </data>
-  <data name="AddressGrid_Edit.Text" xml:space="preserve">
-    <value>Modifica</value>
+  <data name="AddressGrid_Address1.HeaderText" xml:space="preserve">
+    <value>Via e numero civico</value>
   </data>
   <data name="AddressGrid_City.HeaderText" xml:space="preserve">
     <value>Città</value>
   </data>
-  <data name="AddressGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
+  <data name="AddressGrid_Edit.Text" xml:space="preserve">
+    <value>Modifica</value>
   </data>
-  <data name="AddressGrid_State.HeaderText" xml:space="preserve">
-    <value>Status</value>
+  <data name="AddressGrid_Attention.HeaderText" xml:space="preserve">
+    <value>All’attenzione di</value>
   </data>
-  <data name="AddressGrid_Shipping.HeaderText" xml:space="preserve">
-    <value>Fatturazione principale</value>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Aggiungi indirizzo</value>
+  </data>
+  <data name="AddressGrid_Country.HeaderText" xml:space="preserve">
+    <value>Paese</value>
+  </data>
+  <data name="DeleteAddressMessage" xml:space="preserve">
+    <value>L'indirizzo selezionato non può essere eliminato perché è contrassegnato come Principale o Spedizione. Per eliminare questo indirizzo è necessario contrassegnare come Principale o Spedizione un altro indirizzo. Se non sono disponibili altri indirizzi, crearne uno nuovo.</value>
+  </data>
+  <data name="AddressGrid_Delete.Text" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="ConfirmMessage" xml:space="preserve">
+    <value>Eliminare?</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>E' necessario salvare le modifiche in corso prima che gli indirizzi possano essere modificati.</value>
   </data>
   <data name="AddressGrid_AddressType_HeaderText" xml:space="preserve">
     <value>Tipo di indirizzo</value>
+  </data>
+  <data name="AddressGrid_PrimaryAddress.HeaderText" xml:space="preserve">
+    <value>Principale</value>
   </data>
 </root>

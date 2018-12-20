@@ -1,10 +1,10 @@
-define((
-{ titleText: 'Бейсик',
-  generalText: 'Общий',
-  activeControlText: 'Активный контрол:',
-  activeControlTooltipText: 'Управления курсором пользователя начинается.',
-  descriptionText: 'Описание:',
-  descriptionTooltipText: 'Дополнительное описание назначения формы.',
-  nameText: 'Имя:',
-  nameTooltipText: 'Идентификатор формы, который используется в системе.' }
-));
+define("Sage/QuickForms/Design/Editors/nls/ru/FormBasicPropertyEditor", {
+    "titleText": "Базовый",
+    "generalText": "Общее",
+    "activeControlText": "Активный элемент управления:",
+    "activeControlTooltipText": "Элемент управления, с которого начинается перемещение курсора пользователя.",
+    "descriptionText": "Описание:",
+    "descriptionTooltipText": "Дополнительное описание назначения формы.",
+    "nameText": "Имя:",
+    "nameTooltipText": "Идентификатор формы, используемый системой."
+});

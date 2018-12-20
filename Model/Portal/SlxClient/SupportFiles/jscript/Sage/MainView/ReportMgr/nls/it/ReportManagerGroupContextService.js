@@ -1,5 +1,5 @@
-define({
-    reportsTabDisplayName: 'Rapporto',
-    schedulesTabDisplayName: 'Pianificazioni',
-    historyTabDisplayName: 'Cronologia'
+define("Sage/MainView/ReportMgr/nls/it/ReportManagerGroupContextService", {
+    "reportsTabDisplayName": "Report",
+    "schedulesTabDisplayName": "Pianificazioni",
+    "historyTabDisplayName": "Cronologia"
 });

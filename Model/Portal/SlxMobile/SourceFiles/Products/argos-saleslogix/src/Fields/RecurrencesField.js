@@ -1,36 +1,33 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
- */
-define('Mobile/SalesLogix/Fields/RecurrencesField', [
-    'dojo/_base/declare',
-    'Sage/Platform/Mobile/Fields/EditorField',
-    'Sage/Platform/Mobile/FieldManager'
-], function(
-    declare,
-    EditorField,
-    FieldManager
-) {
-    var control = declare('Mobile.SalesLogix.Fields.RecurrencesField', [EditorField], {
-        // Localization
-        titleText: 'Recurring',
-        emptyText: '',
-        attributeMap: {
-            noteText: {
-                node: 'inputNode',
-                type: 'innerHTML'
-            }
-        },
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import EditorField from 'argos/Fields/EditorField';
+import FieldManager from 'argos/FieldManager';
+import getResource from 'argos/I18n';
 
-        widgetTemplate: new Simplate([
-            '<label for="{%= $.name %}">{%: $.label %}</label>',
-            '<button class="button simpleSubHeaderButton" aria-label="{%: $.lookupLabelText %}"><span>{%: $.lookupText %}</span></button>',
-            '<div data-dojo-attach-point="inputNode" class="note-text"></div>'
-        ]),
+const resource = getResource('recurrencesField');
 
-        setText: function(text) {
-            this.set('noteText', text);
-        }
-    });
+const control = declare('crm.Fields.RecurrencesField', [EditorField], {
+  // Localization
+  titleText: resource.titleText,
+  emptyText: resource.emptyText,
+  attributeMap: {
+    noteText: {
+      node: 'inputNode',
+      type: 'innerHTML',
+    },
+  },
 
-    return FieldManager.register('recurrences', control);
+  widgetTemplate: new Simplate([
+    '<label for="{%= $.name %}">{%: $.label %}</label>',
+    '<button class="button simpleSubHeaderButton {% if ($$.iconClass) { %} {%: $$.iconClass %} {% } %}" aria-label="{%: $.lookupLabelText %}"><span>{%: $.lookupText %}</span></button>',
+    '<div data-dojo-attach-point="inputNode" class="note-text"></div>',
+  ]),
+  iconClass: 'fa fa-ellipsis-h fa-lg',
+
+  setText: function setText(text) {
+    this.set('noteText', text);
+  },
 });
+
+lang.setObject('Mobile.SalesLogix.Fields.RecurrencesField', control);
+export default FieldManager.register('recurrences', control);

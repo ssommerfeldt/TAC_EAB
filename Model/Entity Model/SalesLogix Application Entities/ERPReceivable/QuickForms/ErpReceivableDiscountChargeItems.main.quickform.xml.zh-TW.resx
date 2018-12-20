@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Amount.Caption" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="grdCharges.068bd834-2e89-41f0-acda-2e6d7b77eab9.ColumnHeading" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="grdCharges.163b0d8a-8fb4-4169-85c0-489712a4fd5f.ColumnHeading" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="grdCharges.089ffa3a-c591-4a8c-aa82-55eec70fe1fc.ColumnHeading" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="grdCharges.2055d19c-8ce9-4ce1-846c-3f8ab1647726.ColumnHeading" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="grdCharges.00ff380f-375e-42dc-b123-8b60b94bd710.ColumnHeading" xml:space="preserve">
+    <value>匯率</value>
+  </data>
+  <data name="grdCharges.df0af1d7-7dda-49bb-8c9d-431bd5530ef9.ColumnHeading" xml:space="preserve">
+    <value>原因代碼</value>
+  </data>
+  <data name="grdCharges.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdCharges.f2f88e67-9fc6-46df-affe-50ddb80083cd.ColumnHeading" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="grdCharges.966dfe77-ed88-4444-be3c-f84f47249a4e.ColumnHeading" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="grdCharges.3e73cf39-538e-4436-967e-45ade9c1d961.ColumnHeading" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="grdCharges.3705aeab-783f-4c5e-a4d0-aa12271a7dd6.ColumnHeading" xml:space="preserve">
+    <value>匯率</value>
+  </data>
+  <data name="grdCharges.451a0c7e-caf9-455b-8b0c-d1a8abd7dc98.ColumnHeading" xml:space="preserve">
+    <value>原因代碼</value>
+  </data>
+  <data name="grdCharges.EmptyTableRowText" xml:space="preserve">
+    <value>找不到記錄...</value>
+  </data>
+  <data name="grdDiscountChargeItems.966dfe77-ed88-4444-be3c-f84f47249a4e.ColumnHeading" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="grdDiscountChargeItems.3e73cf39-538e-4436-967e-45ade9c1d961.ColumnHeading" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="grdDiscountChargeItems.3705aeab-783f-4c5e-a4d0-aa12271a7dd6.ColumnHeading" xml:space="preserve">
+    <value>匯率</value>
+  </data>
+  <data name="grdDiscountChargeItems.451a0c7e-caf9-455b-8b0c-d1a8abd7dc98.ColumnHeading" xml:space="preserve">
+    <value>原因代碼</value>
+  </data>
+  <data name="grdDiscountChargeItems.26381610-7b5c-4215-8852-555e76c6ca6c.ColumnHeading" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="grdDiscountChargeItems.f3ac7de3-d602-42d4-a2bb-ce2312ef4fc6.ColumnHeading" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="9664eafd-b459-46eb-9f76-7eb5ded207e6.DialogTitleOverride" xml:space="preserve">
+    <value>折扣費用項目</value>
+  </data>
+  <data name="grdDiscountChargeItems.67545843-1ace-40d5-801f-f47f0acb6b5c.ColumnHeading" xml:space="preserve">
+    <value>文件單位調整金額</value>
+  </data>
+  <data name="grdDiscountChargeItems.63ea22ae-9865-4690-820c-bda1406c4232.ColumnHeading" xml:space="preserve">
+    <value>單位調整金額</value>
+  </data>
+  <data name="grdDiscountChargeItems.41451f98-e665-4d1e-a4d7-1e7673820252.ColumnHeading" xml:space="preserve">
+    <value>計算方法</value>
+  </data>
+</root>

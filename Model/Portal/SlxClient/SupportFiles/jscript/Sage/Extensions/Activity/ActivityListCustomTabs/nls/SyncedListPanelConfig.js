@@ -1,13 +1,7 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            colCreateSource: 'Create Source',
-            colLastSyncDate: 'Last Synced'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/Extensions/Activity/ActivityListCustomTabs/nls/SyncedListPanelConfig", {
+    root: {
+        colCreateSource: 'Create Source',
+        colLastSyncDate: 'Last Synced'
+    },
+    "en": true
 });

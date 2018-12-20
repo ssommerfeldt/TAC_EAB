@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Columns/Dnd", [
     'Sage/UI/Columns/DndCell',
     'dojo/_base/declare'
 ],

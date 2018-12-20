@@ -1,5 +1,5 @@
-define((
-{ standardText: 'стандартный',
-  advancedText: 'Расширенный',
-  speedSearchText: 'Быстрый Поиск' }
-));
+define("Sage/UI/nls/ru/SpeedSearch", {
+    "standardText": "стандартный",
+    "advancedText": "дополнительно",
+    "speedSearchText": "SpeedSearch"
+});

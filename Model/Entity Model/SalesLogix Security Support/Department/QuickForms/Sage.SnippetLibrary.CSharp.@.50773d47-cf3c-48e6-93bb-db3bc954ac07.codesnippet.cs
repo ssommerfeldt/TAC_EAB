@@ -1,5 +1,5 @@
 /*
- * This metadata is used by the Sage platform.  Do not remove.
+ * This metadata is used by the Saleslogix platform.  Do not remove.
 <snippetHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="50773d47-cf3c-48e6-93bb-db3bc954ac07">
  <assembly>Sage.SnippetLibrary.CSharp</assembly>
  <name>SaveButton_OnClickStep</name>
@@ -19,6 +19,10 @@
   <reference>
    <assemblyName>Sage.SalesLogix.API.dll</assemblyName>
   </reference>
+  <reference>
+   <assemblyName>Sage.Platform.WebPortal.dll</assemblyName>
+   <hintPath>%BASEBUILDPATH%\assemblies\Sage.Platform.WebPortal.dll</hintPath>
+  </reference>
  </references>
 </snippetHeader>
 */
@@ -28,13 +32,9 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using System.Web;
 using Sage.Platform;
-using Sage.Platform.WebPortal;
 using Sage.Platform.WebPortal.Services;
-using Sage.Platform.Application;
-using Sage.Platform.Application.Services;
-using System.Text.RegularExpressions;
+using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
@@ -76,8 +76,7 @@ namespace Sage.BusinessRules.CodeSnippets
             // add an ownerJoin record for the new team.  Both the parent and the
             // child ids will point to the team
             department.AddMemberWithSecurityProfile(owner, securityProfile);
-
-            HttpContext.Current.Response.Redirect(string.Format("~/Department.aspx?entityId={0}", owner.Id.ToString()), false);
+			MySlx.MainView.Show<IDepartment>(owner.Id.ToString());
         }
     }
 }

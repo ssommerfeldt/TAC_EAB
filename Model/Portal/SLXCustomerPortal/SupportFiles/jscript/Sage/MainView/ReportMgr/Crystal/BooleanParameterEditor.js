@@ -1,40 +1,34 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+require({cache:{
+'url:Sage/MainView/ReportMgr/Crystal/templates/BooleanParameterEditor.html':"<div>\r\n    <div dojoattachpoint=\"promptParameterContainer\" class=\"crystalParameterContainer\">\r\n        <div dojoattachpoint=\"paramsHeaderContainer\"></div>\r\n        <div>\r\n            <div dojotype=\"dijit.form.FilteringSelect\" data-dojo-attach-point=\"cmbValues\" style=\"width:40%\"></div>\r\n            <span dojoAttachPoint=\"errorInvalidOption\" class=\"display-none\" style=\"color:red\">*</span>\r\n        </div>\r\n        <div dojoattachpoint=\"divValidationMessage\" style=\"color:red\">\r\n            <span dojoattachpoint=\"spanValidationMessage\">&nbsp;</span>\r\n        </div>\r\n    </div>\r\n    <div>\r\n        <br />\r\n    </div>\r\n</div>"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/Crystal/BooleanParameterEditor", [
     'dojo/_base/declare',
-    'dojo/_base/array',
     'dojo/text!./templates/BooleanParameterEditor.html',
-    'dojo/i18n!./nls/BooleanParameterEditor',
+    'Sage/MainView/ReportMgr/Crystal/ParameterHeaderWidget',
     'Sage/MainView/ReportMgr/Crystal/_ParameterEditorBase',
     'Sage/MainView/ReportMgr/ReportManagerUtility',
-    'dojo/data/ItemFileWriteStore',
-    'dijit/form/Select',
+    'Sage/MainView/ReportMgr/Crystal/CrystalReportsUtility',
     'Sage/Utility'
 ],
 function (
     declare,
-    dojoArray,
     template,
-    nlsResources,
+    ParameterHeaderWidget,
     _ParameterEditorBase,
-    ReportManagerUtility,
-    ItemFileWriteStore,
-    Select,
-    Utility
+    reportManagerUtility,
+    crystalReportsUtility,
+    utility
 ) {
-
-    var __widgetTemplate = Utility.makeTemplateFromString(template);
-
+    var __widgetTemplate = utility.makeTemplateFromString(template);
     /**
     * Declare the BooleanParameterEditor class.
     * @constructor
     */
     var booleanParameterEditor = declare('Sage.MainView.ReportMgr.Crystal.BooleanParameterEditor', [_ParameterEditorBase], {
         widgetTemplate: __widgetTemplate,
-        //Value attribute
         value: null,
         _setValueAttr: function (value) {
             this._set("value", value);
-            //TODO: implement _setValueAttr
         },
         _getValueAttr: function () {
             var currentValue = this._getCurrentValue();
@@ -50,7 +44,6 @@ function (
         */
         constructor: function (promptParameter) {
             //Note that the base class constructor is automatically called prior to this.
-            //console.log("BooleanParameterEditor constructor");
             //Add initialization of internal properties here
         },
         /**
@@ -59,81 +52,47 @@ function (
         * This is where the container widgets could for example set sizes of their children relative to it's own size.
         */
         startup: function () {
-            //console.log("BooleanParameterEditor startup");
-            this.inherited(arguments);
-            this._initializeValuesDropdown();
-            ReportManagerUtility.setDomNodeVisible(this.divValidationMessage, false);
-        },
-        /*destroy: function () {
-            this.inherited(arguments);
-        },*/
+            if (this._started) return;
 
+            this.inherited(arguments);
+            var parameterHeaderWidget = new ParameterHeaderWidget({
+                promptText: this._promptParameter.promptText,
+                parameterFieldName: this._promptParameter.parameterFieldName
+            }).placeAt(this.paramsHeaderContainer);
+            crystalReportsUtility.initializeComboBoxValues(this._values, crystalReportsUtility.getRangeInitialValue(this._initialValues, false), this.cmbValues);
+            reportManagerUtility.setDomNodeVisible(this.divValidationMessage, false);
+        },
         isValid: function () {
             var valid = true;
-            var msg = "";
-            var currentValue = this._getCurrentValue();
-            if (!this._allowCustomValues) {
+            dojo.addClass(this.errorInvalidOption, 'display-none');
+            if (!this.isOptionalPrompt && !this.allowNullValue) {
+                var msg = "";
+                var currentValue = this._getCurrentValue();
                 if (currentValue === null) {
-                    msg = nlsResources.txtPleaseSpecifyValue;
+                    msg = this.txtPleaseSpecifyValue;
+                    dojo.removeClass(this.errorInvalidOption, 'display-none');
+                    this.cmbValues.focus();
                     valid = false;
+                } else {
+                    dojo.addClass(this.errorInvalidOption, 'display-none');
                 }
+                this._showValidationMessage(msg);
             }
-            this._showValidationMessage(msg);
+            if (valid) {
+                dojo.removeClass(this.errorInvalidOption, 'display-none');
+            }
             return valid;
         },
-
         _showValidationMessage: function (msg) {
             this.spanValidationMessage.innerHTML = Sage.Utility.htmlEncode(msg);
-            ReportManagerUtility.setDomNodeVisible(this.divValidationMessage, (msg !== ""));
+            reportManagerUtility.setDomNodeVisible(this.divValidationMessage, (msg !== ""));
         },
-
         _getCurrentValue: function () {
-
-            var _id = this.cmbValues.value;
-            if (_id !== null && _id !== "" && _id !== "-1") {
-                //If _id is -1, it means that the user has not chosen an actual value, 
-                //but rather "..." is selected. If that is the case, ignore the value.
-                var value = this._getOriginalParameterValue(_id);
-                return value;
+            var item = this.cmbValues.item;
+            if (item && item.value !== "") {
+                return this.getOriginalParameterValue(item._id);
             }
             return null;
-        },
-
-        _initializeValuesDropdown: function () {
-
-            var items = dojo.clone(this._values); //Note we clone the object, as the datastore modifies it
-
-            //If there are no initial values, we display a "..." value
-            if (this._initialIds.length === 0) {
-                items.unshift({
-                    _id: '-1',
-                    description: '...'
-                });
-            }
-
-            //console.log("_initializeValuesDropdown");
-            var data = {
-                identifier: "_id",
-                label: "description",
-                items: items
-            };
-            var store = new ItemFileWriteStore({ data: data });
-            this.cmbValues.setStore(store);
-            this.cmbValues.startup();
-
-            //Apply "initial value", which should be selected when the parameter is displayed to the user
-            if (this._initialValues.length > 0) {
-                var initialValue = this._initialValues[0];
-                //Look for a corresponding item with same value in the values collection.
-                //If found, select based on the temporary "_id" property.
-                var self = this;
-                dojoArray.some(this._values, function (entry, i) {
-                    if (entry.value === initialValue.value) {
-                        self.cmbValues.attr('value', entry._id);
-                        return true;
-                    }
-                });
-            }
         }
     });
     return booleanParameterEditor;

@@ -17,17 +17,14 @@
   #if ($qfcontrol.LookupDialogWidth > 0) dialogWidth : '${qfcontrol.LookupDialogWidth}', #end
   structure : [
      {
-       defaultCell: { width: 8, editable: false, styles: 'text-align: left;' },
-       cells: [
-	       {
         field: '$key',
         editable: false,
         hidden: true,
         id: 'id',
 		excludeFromFilters: true,
-        formatter: function (value, rowIdx, grid) {
+        formatter: function (value, rowIdx) {
             var anchor = ['<div id=', value, ' >', value, '</ div>'].join('');
-		return anchor;
+			return anchor;
         }
     },
 #set($comma = "")
@@ -40,16 +37,17 @@
 #foreach($lprop in $qfcontrol.LookupProperties)
          $comma
 		 {
-		   name: ${stringObjectName}['$generator.ConvertResourceKeyToScriptReference("${qfcontrol.ControlId}.LookupProperties.${lprop.PropertyName}.PropertyHeader")']  || '$lprop.PropertyHeader',
+		   label: ${stringObjectName}['$generator.ConvertResourceKeyToScriptReference("${qfcontrol.ControlId}.LookupProperties.${lprop.PropertyName}.PropertyHeader")']  || '$lprop.PropertyHeader',
 		   field: '$lprop.PropertyName',
+		   #if($lprop.PropertyType == "SalesLogix.PickList")
+				pickListName: '${lprop.PickListName}',
+			#end 
 		   propertyType: '$lprop.PropertyType',
 		   #if($lprop.PropertyType == "System.Decimal")
-				styles: 'text-align: right', 
+				styles: 'text-align: left;', 
 		   #end
 		#if ($lprop.PropertyFormat != "" && $lprop.PropertyFormat != "None")
-		   type: Sage.Utility.SDataLookup.setFormatType({
-		             propertyFormat: '${lprop.PropertyFormat}'
-		        }),
+		   type: ${lprop.PropertyFormat},
 		#end
 		   excludeFromFilters: $generator.GetJavascriptBoolString($lprop.ExcludeFromFilters),		   
 		   #if($lprop.HideCondition != "")
@@ -62,9 +60,9 @@
 		   width: $width,
 #end
 #if ($qfcontrol.ChildEntity != "")
-		   formatter: function (value, rowIdx, grid) {
+		   formatter: function (value, rowIdx) {
 				return Sage.Utility.SDataLookup.childObjectFormatter({
-					value: value, rowIdx: rowIdx, grid: grid,
+					value: value, rowIdx: rowIdx,
 					fieldName: '$lprop.PropertyName', 
 	## Add button only on first item to restrict child Entity tree expansion to the first level.  
 	#if($comma != ",")
@@ -80,8 +78,6 @@
          }
 #set($comma = ",")
 #end
-       ] ## end of cells array.
-     }  ## end of the object in the 'structure' array
   ], ## end of 'structure' array
   storeOptions: {
       ## Pick up the first lookup prop as default sort column
@@ -97,11 +93,14 @@
         contextualCondition: ${qfcontrol.ConditionalWhere},
 	#end
     selectionMode : '${qfcontrol.LookupSelectionMode}',
-    rowsPerPage : 15
+    rowsPerPage : 20
   }
 #if($qfcontrol.OnSelection != "")
   ,
   doSelected : ${qfcontrol.OnSelection}
 #end
-
+#if($qfcontrol.OnClose != "")
+  ,
+  onClose : ${qfcontrol.OnClose}
+#end
 } // end of sdata lookup config object

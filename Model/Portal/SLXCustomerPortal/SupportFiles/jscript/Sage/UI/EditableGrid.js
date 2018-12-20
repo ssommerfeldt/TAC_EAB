@@ -1,6 +1,6 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, TabControl */
 
-define(['dojox/grid/DataGrid',
+define("Sage/UI/EditableGrid", ['dojox/grid/DataGrid',
     'dijit/Toolbar',
     'dijit/form/Button',
     'dijit/layout/ContentPane',
@@ -653,7 +653,7 @@ function (DataGrid,
                     //Don't add the dirty data message if we are in insert mode.  All data is dirty in insert mode.
                     if (this.mode !== 'insert') {
                         var elem = dojo.query('#' + 'element_' + this.tabId + ' td.tws-tab-view-title');
-                        if (elem) {
+                        if (elem.length > 0) {
                             dojo.place(msgBox, elem[0]);
                         }
                     }
@@ -779,7 +779,7 @@ function (DataGrid,
             var grid = this;
             if (Utility.getModeId() !== 'insert' && this.store.dirtyDataCache.isDirty) {
                 Dialogs.raiseQueryDialog(
-                    'Saleslogix',
+                    'Infor CRM',
                     this.dirtyDataMessage,
                     function (result) {
                         if (result) {
@@ -885,7 +885,7 @@ function (DataGrid,
             }
             var self = this;
             var opts = {
-                title: 'Saleslogix',
+                title: 'Infor CRM',
                 query: dojo.string.substitute(this.confirmDeleteFmtTxt, [selectedItems.length]),
                 callbackFn: function (result) { self.deleteCallback(result, callback, selectedItems); },
                 yesText: this.buttonOk, //OK

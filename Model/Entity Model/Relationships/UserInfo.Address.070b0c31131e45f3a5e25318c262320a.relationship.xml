@@ -1,20 +1,40 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="070b0c31-131e-45f3-a5e2-5318c262320a" lastModifiedUtc="2010-02-01T23:32:10.7335447Z" cardinality="M:1" parentEntityId="62b605e3-3927-491a-9ed7-9be049d50a13" childEntityId="9e78204b-7eab-4274-9137-34e5cd2c3433">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="070b0c31-131e-45f3-a5e2-5318c262320a" lastModifiedUtc="2015-04-28T16:22:31.0228588Z" cardinality="M:1" parentEntityId="62b605e3-3927-491a-9ed7-9be049d50a13" childEntityId="9e78204b-7eab-4274-9137-34e5cd2c3433">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="e479ff24-5071-4272-a5fb-52452502a27a" lastModifiedUtc="2010-02-01T23:29:56.2635447Z" name="Address" audited="false">
+  <parentProperty id="e479ff24-5071-4272-a5fb-52452502a27a" lastModifiedUtc="2015-04-28T16:22:31.0228588Z" name="Address" audited="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="463fa3dc-dfc9-4637-9fa5-7ea83e6d9443" lastModifiedUtc="2010-02-01T23:29:56.2645447Z" name="UserInfo" audited="false" include="false">
+  <childProperty id="463fa3dc-dfc9-4637-9fa5-7ea83e6d9443" lastModifiedUtc="2015-04-28T15:46:18.0230358Z" name="UserInfo" audited="false" include="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />

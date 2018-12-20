@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, getXMLDoc */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, getXMLDoc */
+define("Sage/Groups/GroupManager", [
         'Sage/UI/Dialogs',
         'Sage/Utility/Email',
         'dojo/string',
@@ -12,8 +12,9 @@ define([
         'Sage/Data/SDataServiceRegistry',
         'dojo/_base/xhr',
         'dojo/topic',
-        'dojo/aspect'
-    ],
+        'dojo/aspect',
+        'Sage/Utility/Jobs'
+],
 function (
         dialogs,
         email,
@@ -27,7 +28,8 @@ function (
         sDataServiceRegistry,
         xhr,
         topic,
-        aspect
+        aspect,
+        jobs
     ) {
     Sage.namespace('Sage.Groups.GroupManager');
     Sage.Groups.GroupManager = {
@@ -40,7 +42,8 @@ function (
         resources: nls,
         LOCALSTORE_NAMESPACE: 'SageGroups',
         QB_WIDTH: 840,
-        QB_HEIGHT: 650,
+        QB_HEIGHT: 710,
+        GroupAdHocJobRecordLimit: -1,
 
         GetFromServer: function (url, datatype, onSuccess, onError, sync) {
             var args = {
@@ -100,7 +103,8 @@ function (
                     "Family": clGrpContext.CurrentFamily,
                     "Id": clGrpContext.CurrentGroupID,
                     "isAdhoc": clGrpContext.isAdhoc,
-                    "Entity": clGrpContext.CurrentEntity
+                    "Entity": clGrpContext.CurrentEntity,
+                    "tableName": clGrpContext.CurrentTable
                 };
             }
             return "";
@@ -109,10 +113,10 @@ function (
             if (typeof mode === 'undefined' || mode === '') {
                 mode = Sage.Groups.GroupManager.GetCurrentGroupInfo().Family;
             }
-            var vURL = "QueryBuilderMain.aspx?mode=" + mode,
+            var vUrl = "QueryBuilderMain.aspx?mode=" + mode,
                 width = Sage.Groups.GroupManager.QB_WIDTH,
                 height = Sage.Groups.GroupManager.QB_HEIGHT;
-            window.open(vURL, "GroupViewer",
+            window.open(vUrl, "GroupViewer",
                 dString.substitute("resizable=yes,centerscreen=yes,width=${width},height=${height},status=no,toolbar=no,scrollbars=yes", { width: width, height: height }));
         },
         DeleteGroup: function(groupID, groupName) {
@@ -133,7 +137,7 @@ function (
                                 }
                                 document.location = url;
                             },
-                            function(req) {
+                            function() {
                             }
                         );
                     }
@@ -141,29 +145,29 @@ function (
                 Sage.Groups.GroupManager.resources.yesCaption,
                 Sage.Groups.GroupManager.resources.noCaption);
         },
-        EditGroup: function (strGroupID) {
+        EditGroup: function (strGroupId) {
             // show group editor dialog...
             var curGrpInfo = Sage.Groups.GroupManager.GetCurrentGroupInfo();
-            if (typeof strGroupID === 'undefined' || strGroupID === '')
-                strGroupID = curGrpInfo.Id;
+            if (typeof strGroupId === 'undefined' || strGroupId === '')
+                strGroupId = curGrpInfo.Id;
 
-            var url = dString.substitute('QueryBuilderMain.aspx?gid=${groupid}&mode=${md}', { groupid: strGroupID, md: curGrpInfo.Family }),
+            var url = dString.substitute('QueryBuilderMain.aspx?gid=${groupid}&mode=${md}', { groupid: strGroupId, md: curGrpInfo.Family }),
                 width = Sage.Groups.GroupManager.QB_WIDTH,
                 height = Sage.Groups.GroupManager.QB_HEIGHT;
 
             window.open(url, "EditGroup",
             dString.substitute("resizable=yes,centerscreen=yes,width=${width},height=${height},status=no,toolbar=no,scrollbars=yes", { width: width, height: height }));
         },
-        CopyGroup: function (strGroupID) {
+        CopyGroup: function (strGroupId) {
             // show group editor dialog...
             var curGrpInfo = Sage.Groups.GroupManager.GetCurrentGroupInfo();
-            if (typeof strGroupID === 'undefined' || strGroupID === '')
-                strGroupID = curGrpInfo.Id;
-            var vURL = ['QueryBuilderMain.aspx?gid=', strGroupID, '&action=copy', '&mode=', curGrpInfo.Family].join(''),
+            if (typeof strGroupId === 'undefined' || strGroupId === '')
+                strGroupId = curGrpInfo.Id;
+            var vUrl = ['QueryBuilderMain.aspx?gid=', strGroupId, '&action=copy', '&mode=', curGrpInfo.Family].join(''),
                 width = Sage.Groups.GroupManager.QB_WIDTH,
                 height = Sage.Groups.GroupManager.QB_HEIGHT;
 
-            window.open(vURL, "EditGroup",
+            window.open(vUrl, "EditGroup",
                dString.substitute("resizable=yes,centerscreen=yes,width=${width},height=${height},status=no,toolbar=no,scrollbars=yes", { width: width, height: height }));
         },
         ListGroupsAsSelect: function (family) {
@@ -217,16 +221,15 @@ function (
                 true);
             return results;
         },
-        HideGroup: function (strGroupID, skipReload) {
-            if (typeof strGroupID === 'undefined' || strGroupID === '') {
-                strGroupID = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
+        HideGroup: function (strGroupId, skipReload) {
+            if (typeof strGroupId === 'undefined' || strGroupId === '') {
+                strGroupId = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
             }
 
-            Sage.Groups.GroupManager.PostToServer(Sage.Groups.GroupManager.GMUrl + 'HideGroup&gid=' + strGroupID, '', lang.hitch(this, Sage.Groups.GroupManager._HideOrShowComplete, skipReload, strGroupID));
+            Sage.Groups.GroupManager.PostToServer(Sage.Groups.GroupManager.GMUrl + 'HideGroup&gid=' + strGroupId, '', lang.hitch(this, Sage.Groups.GroupManager._HideOrShowComplete, skipReload, strGroupId));
         },
         _HideOrShowComplete: function (skipReload, groupId) {
             var service, context, reloadFn, handle;
-
             if (skipReload) {
                 return;
             }
@@ -235,7 +238,6 @@ function (
                 if (handle && handle.remove) {
                     handle.remove();
                 }
-
                 var titlePane = dijit.byId('titlePane');
                 if (titlePane) {
                     titlePane.resetConfiguration();
@@ -270,48 +272,47 @@ function (
             }
             return results;
         },
-        UnHideGroup: function groupmanager_(strGroupID, skipReload) {
-            if (typeof strGroupID === 'undefined' || strGroupID === '') {
-                strGroupID = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
+        UnHideGroup: function groupmanager_(strGroupId, skipReload) {
+            if (typeof strGroupId === 'undefined' || strGroupId === '') {
+                strGroupId = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
             }
-            Sage.Groups.GroupManager.GetFromServer(Sage.Groups.GroupManager.GMUrl + 'UnHideGroup&gid=' + strGroupID, '', lang.hitch(this, Sage.Groups.GroupManager._HideOrShowComplete, skipReload, strGroupID));
+            Sage.Groups.GroupManager.GetFromServer(Sage.Groups.GroupManager.GMUrl + 'UnHideGroup&gid=' + strGroupId, '', lang.hitch(this, Sage.Groups.GroupManager._HideOrShowComplete, skipReload, strGroupId));
         },
         ShowGroups: function (strTableName) {
             if (typeof strTableName === 'undefined' || strTableName === '')
                 strTableName = Sage.Groups.GroupManager.GetCurrentGroupInfo().Family;
-            var vURL = 'ShowGroups.aspx?tablename=' + strTableName;
-            window.open(vURL, "ShowGroups", "resizable=yes,centerscreen=yes,width=800,height=646,status=no,toolbar=no,scrollbars=yes");
+            var vUrl = 'ShowGroups.aspx?tablename=' + strTableName;
+            window.open(vUrl, "ShowGroups", "resizable=yes,centerscreen=yes,width=800,height=646,status=no,toolbar=no,scrollbars=yes");
         },
         CreateAdHocGroup: function (strGroups, strName, strFamily, strLayoutId) {
             //ToDo: should this be depricated or removed?...
-            var vURL = [Sage.Groups.GroupManager.GMUrl, 'CreateAdHocGroup',
+            var vUrl = [Sage.Groups.GroupManager.GMUrl, 'CreateAdHocGroup',
                 '&name=', encodeURIComponent(strName),
                 '&family=', strFamily,
                 '&layoutid=', encodeURIComponent(strLayoutId)].join();
-            return Sage.Groups.GroupManager.PostToServer(vURL, strGroups);
+            return Sage.Groups.GroupManager.PostToServer(vUrl, strGroups);
         },
-        EditAdHocGroupAddMember: function (strGroupID, strItem) {
+        EditAdHocGroupAddMember: function (strGroupId, strItem) {
             //ToDo: should this be depricated or removed?...
-            if (typeof strGroupID === 'undefined' || strGroupID === '')
-                strGroupID = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
-            var x = Sage.Groups.GroupManager.GetFromServer(Sage.Groups.GroupManager.GMUrl + 'EditAdHocGroupAddMember&groupid=' + strGroupID + '&entityid=' + strItem);
+            if (typeof strGroupId === 'undefined' || strGroupId === '')
+                strGroupId = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
+            var x = Sage.Groups.GroupManager.GetFromServer(Sage.Groups.GroupManager.GMUrl + 'EditAdHocGroupAddMember&groupid=' + strGroupId + '&entityid=' + strItem);
         },
-        EditAdHocGroupDeleteMember: function (strGroupID, strItem) {
+        EditAdHocGroupDeleteMember: function (strGroupId, strItem) {
             //ToDo: should this be depricated or removed?...
-            if (typeof strGroupID === 'undefined' || strGroupID === '')
-                strGroupID = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
-            var x = Sage.Groups.GroupManager.GetFromServer(Sage.Groups.GroupManager.GMUrl + 'EditAdHocGroupDeleteMember&groupid=' + strGroupID + '&entityid=' + strItem);
+            if (typeof strGroupId === 'undefined' || strGroupId === '')
+                strGroupId = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
+            var x = Sage.Groups.GroupManager.GetFromServer(Sage.Groups.GroupManager.GMUrl + 'EditAdHocGroupDeleteMember&groupid=' + strGroupId + '&entityid=' + strItem);
         },
-        SetDefault: function (strGroupID, name, family) {
+        SetDefault: function (strGroupId, name, family) {
             Sage.Groups.GroupManager._saveGroupUserOptions(name, family, "DEFAULTGROUP");
         },
-        SetLookupLayout: function (strGroupID, name, family) {
+        SetLookupLayout: function (strGroupId, name, family) {
             Sage.Groups.GroupManager._saveGroupUserOptions(name, family, "LOOKUPLAYOUTGROUP");
         },
         _saveGroupUserOptions: function (name, family, optionCategory) {
             var groupInfo = Sage.Groups.GroupManager.GetCurrentGroupInfo(),
                 currentName = groupInfo.Name,
-                currentFamily = groupInfo.Family,
                 tempName = name || currentName,
                 tempFamily = family;
 
@@ -326,11 +327,11 @@ function (
         ExportGroup: function (strGroupID, strFileName) {
             dialogs.showInfo(Sage.Groups.GroupManager.resources.exportToExcel);
         },
-        ShareGroup: function (strGroupID) {
+        ShareGroup: function (strGroupId) {
             // show group editor dialog...
-            if (typeof strGroupID === 'undefined' || strGroupID === '')
-                strGroupID = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
-            var vURL = 'ShareGroup.aspx?gid=' + strGroupID;
+            if (typeof strGroupId === 'undefined' || strGroupId === '')
+                strGroupId = Sage.Groups.GroupManager.GetCurrentGroupInfo().Id;
+            var vURL = 'ShareGroup.aspx?gid=' + strGroupId;
             window.open(vURL, "ShareGroup", "resizable=yes,centerscreen=yes,width=500,height=450,status=no,toolbar=no,scrollbars=yes");
         },
         GetGroupSQL: function (groupId, useAliases, parts, applyFilters) {
@@ -392,6 +393,24 @@ function (
             var url = Sage.Groups.GroupManager.GMUrl + "GetGroupSQL&gid=" + groupId;
             Sage.Groups.GroupManager.GetFromServer(url, 'json', onSuccess, onError);
         },
+        GetAdHocGroupJobRecordLimit: function () {
+            if (!this.GroupAdHocJobRecordLimit || this.GroupAdHocJobRecordLimit < 1) {
+                var sUrl = Sage.Groups.GroupManager.GMUrl + "GetAdHocGroupJobRecordLimit";
+                var sResult = "";
+                Sage.Groups.GroupManager.GetFromServer(sUrl, "text",
+                    function (data) {
+                        sResult = data;
+                    },
+                    function (err) {
+                        if (typeof console !== "undefined") {
+                            console.error(err);
+                        }
+                    },
+                    true);
+                this.GroupAdHocJobRecordLimit = sResult;
+            }
+        },
+
         saveSelectionsAsNewGroup: function () {
             var selectionInfo = Sage.Utility.getSelectionInfo();
             if (!selectionInfo || selectionInfo.selectionCount === 0) {
@@ -404,6 +423,9 @@ function (
                         dialogbody,
                         function (result) {
                             if (result === true) {
+                                if (selectionInfo.selectionCount === 0) {
+                                    Sage.Groups.GroupManager.saveLookupAsGroup();
+                                }
                                 Sage.Groups.GroupManager.promptForName('');
                             }
                         },
@@ -438,7 +460,7 @@ function (
                 closable: true
             });
         },
-        saveNewGroupPost: function (name, saveAll) {
+        saveNewGroupPost: function (name) {
             var selectionInfo = Sage.Utility.getSelectionInfo(),
                 service = sDataServiceRegistry.getSDataService('system'),
                 request = new Sage.SData.Client.SDataSingleResourceRequest(service),
@@ -450,29 +472,84 @@ function (
 
             request.setResourceKind('groups');
 
-            if (selectionInfo.selectionCount === 0) {
+            if (selectionInfo.selectionCount === 0 && groupId !== 'LOOKUPRESULTS') {
                 copy = true;
             }
 
-            entry = {
-                family: family,
-                name: name,
-                adHocIds: selectionInfo.selectedIds
-            };
+            var totalToAdd = (selectionInfo.selectionCount === 0) ? selectionInfo.recordCount : selectionInfo.selectionCount;
+            this.GetAdHocGroupJobRecordLimit();
+            var recordLimit = this.GroupAdHocJobRecordLimit ? this.GroupAdHocJobRecordLimit : -1;
+            if (recordLimit >= 0 && totalToAdd > recordLimit) {
+                entry = {
+                    family: family,
+                    name: name,
+                    adHocIds: (selectionInfo.selectionCount === 0) ? null : selectionInfo.selectedIds,
+                    groupId: groupId
+                };
+                this.createAdHocGroupViaJob(entry);
+            } else {
 
-            request.create(entry, {
-                success: function (entry) {
-                    if (copy) {
-                        Sage.Groups.GroupManager.copyFromGroup(groupId, entry.$key);
-                    } else {
-                        Sage.Groups.GroupManager.newGroupCreated();
-                    }
-                },
-                failure: function () {
-                },
-                scope: this
-            });
+                entry = {
+                    family: family,
+                    name: name,
+                    adHocIds: selectionInfo.selectedIds
+                };
+                request.create(entry, {
+                    success: function (entry) {
+                        if (copy) {
+                            Sage.Groups.GroupManager.copyFromGroup(groupId, entry.$key);
+                        } else {
+                            Sage.Groups.GroupManager.newGroupCreated();
+                        }
+                    },
+                    failure: function () {
+                    },
+                    scope: this
+                });
+            }
         },
+
+        createAdHocGroupViaJob: function (entry) {
+            var groupId = entry["groupId"];
+            if (groupId === "LOOKUPRESULTS") {
+                groupId = this._getDefaultGroupId();
+            }
+
+            var parameters = [
+                { "name": "SelectedIds", "value": entry["adHocIds"] },
+                { "name": "Family", "value": entry["family"] },
+                { "name": "EntityName", "value": entry["family"] },
+                { "name": "GroupName", "value": entry["name"] },
+                { "name": "GroupId", "value": groupId },
+                { "name": "AppliedFilters", "value": Sys.Serialization.JavaScriptSerializer.serialize(jobs.getFiltersForJob()) },
+                { "name": "LookupConditions", "value": Sys.Serialization.JavaScriptSerializer.serialize(jobs.getLookupConditionsForJob()) }
+            ];
+
+            var options = {
+                descriptor: dString.substitute(nls.createAdHocGroupJob_Description, [entry["name"]]),
+                closable: true,
+                title: nls.createAdHocGroupJob_Title,
+                key: "Sage.SalesLogix.BusinessRules.Jobs.CreateAdHocGroupJob",
+                infoMessage: nls.createAdHocGroupJobProcessingJobMsg,
+                parameters: parameters,
+                failure: function (result) {
+                    console.log(result);
+                    dialogs.showError(dString.substitute(Sage.Groups.GroupManager.resources.createAdHocGroupJobError, [result.result ? result.result : '']));
+                },
+                ensureZeroFilters: true
+            };
+            jobs.triggerJobAndDisplayProgressDialog(options);
+        },
+
+        _getDefaultGroupId: function () {
+            var grpContextSvc = Sage.Services.getService('ClientGroupContext');
+            if (grpContextSvc) {
+                var contextService = grpContextSvc.getContext();
+                return contextService.DefaultGroupID;
+            }
+            return '';
+        },
+
         removeSelectionsFromGroup: function () {
             var selectionInfo = Sage.Utility.getSelectionInfo();
             if (selectionInfo.selectionCount === 0) {
@@ -545,11 +622,11 @@ function (
                 scope: scope || this
             });
         },
-        addSelectionsToGroup: function (groupID) {
+        addSelectionsToGroup: function (groupId) {
             //Handle addition from details view
             var entityId = Sage.Utility.getCurrentEntityId();
             if (entityId !== '') {
-                Sage.Groups.GroupManager.postAddToGroup(groupID, { selectedIds: [entityId], selectionCount: 1 });
+                Sage.Groups.GroupManager.postAddToGroup(groupId, { selectedIds: [entityId], selectionCount: 1 });
             } else {
                 //Handle additions from list view
                 var selectionInfo = Sage.Utility.getSelectionInfo();
@@ -561,20 +638,19 @@ function (
                         dialogs.raiseQueryDialog(Sage.Groups.GroupManager.resources.noneSelectedTitle, dialogBody,
                             function (result) {
                                 if (result === true) {
-                                    Sage.Groups.GroupManager.addConfirmed(groupID);
+                                    Sage.Groups.GroupManager.addConfirmed(groupId);
                                 }
                             },
                             Sage.Groups.GroupManager.resources.yesCaption,
                             Sage.Groups.GroupManager.resources.noCaption);
                     }
                 } else {
-                    Sage.Groups.GroupManager.addConfirmed(groupID);
+                    Sage.Groups.GroupManager.addConfirmed(groupId);
                 }
             }
         },
         copyFromGroup: function (fromGroupId, toGroupId) {
-            var selectionInfo = Sage.Utility.getSelectionInfo(),
-                service = sDataServiceRegistry.getSDataService('system'),
+            var service = sDataServiceRegistry.getSDataService('system'),
                 request = new Sage.SData.Client.SDataServiceOperationRequest(service),
                 groupContext = Sage.Services.getService("ClientGroupContext").getContext(),
                 family = groupContext.CurrentFamily,
@@ -611,9 +687,9 @@ function (
                 scope: this
             });
         },
-        addConfirmed: function (groupID) {
+        addConfirmed: function (groupId) {
             var selectionInfo = Sage.Utility.getSelectionInfo();
-            Sage.Groups.GroupManager.postAddToGroup(groupID, selectionInfo);
+            Sage.Groups.GroupManager.postAddToGroup(groupId, selectionInfo);
         },
         postAddToGroup: function (groupId, selectionInfo) {
             var service = sDataServiceRegistry.getSDataService('system'),

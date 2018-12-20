@@ -1,5 +1,7 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+require({cache:{
+'url:Sage/UI/templates/JobSchedulingWidget.html':"<div>\r\n    <div dojoAttachPoint=\"divJobSchedulingWidget\">\r\n        <table>\r\n            <tr>\r\n                <td>\r\n                    <label>${lblCreateSchedule}:</label>\r\n                </td>\r\n            </tr>\r\n            <tr style=\"padding-left: 10px\">\r\n                <td>\r\n                    <label style=\"padding-left: 10px\">${lblEveryText}</label>&nbsp;\r\n                    <div dojoAttachPoint=\"divMinutesHours\" class=\"display-none\" style=\"display: -moz-inline-box; display: inline-block\">\r\n                        <select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cboMinutesHours\"></select>\r\n                    </div>\r\n                    <select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cboFrequency\" dojoAttachEvent=\"onChange:_onFrequencyChange\">\r\n                        <option value=\"minutes\">${lblMinutesFrequency}</option>\r\n                        <option value=\"hourly\">${lblHourlyFrequency}</option>\r\n                        <option value=\"daily\">${lblDailyFrequency}</option>\r\n                        <option value=\"weekday\">${lblWeekDayFrequency}</option>\r\n                        <option value=\"weekly\">${lblWeeklyFrequency}</option>\r\n                        <option value=\"monthly\">${lblMonthlyFrequency}</option>\r\n                        <option value=\"yearly\" selected=\"selected\" disabled=\"disabled\">${lblYearlyFrequency}</option>\r\n                    </select>\r\n                    <label dojoAttachPoint=\"lblOnText\" class=\"display-none\">${lblOnText}</label>&nbsp;\r\n                    <label dojoAttachPoint=\"lblOnTheText\" class=\"display-none\">${lblOnTheText}</label>&nbsp;\r\n                    <div dojoAttachPoint=\"divMonthDay\" style=\"display: -moz-inline-box; display: inline-block\" class=\"display-none\">\r\n                        <select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cboMonthDay\">\r\n                            <option value=\"1\" selected=\"selected\">${lblFirstDay}</option>\r\n                            <option value=\"2\">${lblSecondDay}</option>\r\n                            <option value=\"3\">${lblThirdDay}</option>\r\n                            <option value=\"4\">${lblFourthDay}</option>\r\n                        </select>&nbsp;\r\n                    </div>\r\n                    <div dojoAttachPoint=\"divDay\" style=\"display: -moz-inline-box; display: inline-block\" class=\"display-none\">\r\n                        <select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cboDay\">\r\n                            <option value=\"SUN\">${lblSunday}</option>\r\n                            <option value=\"MON\" selected=\"selected\">${lblMonday}</option>\r\n                            <option value=\"TUE\">${lblTuesday}</option>\r\n                            <option value=\"WED\">${lblWednesday}</option>\r\n                            <option value=\"THU\">${lblThursday}</option>\r\n                            <option value=\"FRI\">${lblFriday}</option>\r\n                            <option value=\"SAT\">${lblSaturday}</option>\r\n                        </select>&nbsp;\r\n                    </div>\r\n                    <label dojoAttachPoint=\"lblAtText\">${lblAtText}</label>&nbsp;&nbsp;\r\n                    <div dojoAttachPoint=\"divMinutesPastHour\" class=\"display-none\" style=\"display: -moz-inline-box; display: inline-block\">\r\n                        <select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cboMinutesPastHour\"></select>&nbsp;\r\n                    </div>\r\n                    <label dojoAttachPoint=\"lblMinutesPastHour\" class=\"display-none\">${lblMinutesPastHour}</label>&nbsp;\r\n                    <div dojoAttachPoint=\"divRunAtTime\" style=\"display: -moz-inline-box; display: inline-block\">\r\n                        <div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" dojoAttachPoint=\"dtRunAtTime\" displayDate=\"false\" displayTime=\"true\" label=\"${lblAtText}\" required=\"true\"></div>\r\n                    </div>\r\n                </td>\r\n            </tr>\r\n            <tr dojoAttachPoint=\"rowRunFromDate\">\r\n                <td>\r\n                    <label style=\"padding-left: 10px\">${lblFromTimeText}</label>&nbsp;\r\n                    <div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" dojoAttachPoint=\"dtRunFromDate\" displayDate=\"true\" label=\"${lblFromTimeText}\" style=\"width: 180px\"></div>&nbsp;\r\n                    <label>${lblToTimeText}</label>&nbsp;\r\n                    <div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" dojoAttachPoint=\"dtRunToDate\" displayDate=\"true\" label=\"${lblToTimeText}\" style=\"width: 180px\"></div>&nbsp;\r\n                </td>\r\n            </tr>\r\n            <tr dojoAttachPoint=\"rowCronExpression\">\r\n                <td>\r\n                    <label style=\"padding-left: 10px\">${lblCronExpressionText}</label>&nbsp;\r\n                    <div data-dojo-type=\"dijit.form.TextBox\" dojoAttachPoint=\"txtCronExpression\" style=\"width: 375px\"></div>&nbsp\r\n                </td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/JobSchedulingWidget", [
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
     'dijit/_Widget',
@@ -13,11 +15,11 @@ define([
     'Sage/UI/Dialogs',
     'Sage/UI/Controls/DateTimePicker'
 ],
-function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, select, button, imageButton, jobSchedulingTemplate, jobSchedulingStrings, declare, dojoString, dialogs) {
-    var jobSchedulingWidget = declare('Sage.UI.JobSchedulingWidget', [_Widget, _TemplatedMixin, _WidgetsInTemplateMixin], {
+function (templatedMixin, widgetsInTemplateMixin, widget, select, button, imageButton, jobSchedulingTemplate, jobSchedulingStrings, declare, dojoString, dialogs) {
+    var jobSchedulingWidget = declare('Sage.UI.JobSchedulingWidget', [widget, templatedMixin, widgetsInTemplateMixin], {
         cronExpression: '',
         displayStartEndTime: true,
-        minuteOptions: ['10', '15', '20', '25', '30', '35', '40', '45', '50', '55'],
+        minuteOptions: ['1', '5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'],
         pastHourOptions: ['0', '5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'],
         hourOptions: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'],
         cronFields: { seconds: 0, minutes: '*', hours: '*', days: '*', weeks: '*', months: '*', years: '*' },
@@ -57,14 +59,6 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, select, button, ima
             control.addOption(options);
         },
         _parseCronExpression: function () {
-            var minute = '0 0/10 * 1/1 * ? *';
-            var hourly = '0 20 0/2 1/1 * ? *';
-            var daily = '0 10 12 1/1 * ? *';
-            var weekDay = '0 0 12 ? * MON-FRI *';
-            var weekly = '0 0 12 ? * WED *';
-            var monthly = '0 0 12 ? 1/1 TUE#2 *';
-            //this.cronExpression = weekly;
-
             if (this.cronExpression) {
                 //valid cron expression contains 6 or 7 fields, the 7th field (years) is optional, each field is seperated by a space
                 var parts = this.cronExpression.split(' ');
@@ -280,10 +274,10 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, select, button, ima
             }
             if (this.trigger) {
                 if (this.trigger.startTimeUtc) {
-                    this.dtRunFromDate.set('value', new Date(parseInt(this.trigger.startTimeUtc.substr(6))));
+                    this.dtRunFromDate.set('value', new Date(parseInt(this.trigger.startTimeUtc.substr(6), 10)));
                 }
                 if (this.trigger.endTimeUtc) {
-                    this.dtRunToDate.set('value', new Date(parseInt(this.trigger.endTimeUtc.substr(6))));
+                    this.dtRunToDate.set('value', new Date(parseInt(this.trigger.endTimeUtc.substr(6), 10)));
                 }
             }
         },
@@ -294,7 +288,7 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, select, button, ima
         _getTimePart: function (timePart, invalidChars) {
             var result = 'invalid';
             if (this._isNumber(timePart)) {
-                result = parseInt(timePart);
+                result = parseInt(timePart, 10);
             } else {
                 if (this._isValid(timePart, invalidChars)) {
                     var part = timePart.split('/');
@@ -535,13 +529,13 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, select, button, ima
             toDate = new Date(toDate);
             switch (this.cboFrequency.get('value')) {
                 case 'minutes':
-                    if (fromDate.setMinutes(fromDate.getMinutes() + parseInt(this.cboMinutesHours.get('value'))) >= toDate) {
+                    if (fromDate.setMinutes(fromDate.getMinutes() + parseInt(this.cboMinutesHours.get('value'), 10)) >= toDate) {
                         dialogs.showError(this.txtInvalidScheduleTime, this.txtInvalidScheduleTitle);
                         return false;
                     }
                     return true;
                 case 'hourly':
-                    if (fromDate.setHours(fromDate.getHours() + parseInt(this.cboMinutesHours.get('value'))) >= toDate) {
+                    if (fromDate.setHours(fromDate.getHours() + parseInt(this.cboMinutesHours.get('value'), 10)) >= toDate) {
                         dialogs.showError(this.txtInvalidScheduleTime, this.txtInvalidScheduleTitle);
                         return false;
                     }
@@ -571,7 +565,7 @@ function (_TemplatedMixin, _WidgetsInTemplateMixin, _Widget, select, button, ima
                         dialogs.showError(this.txtInvalidScheduleTime, this.txtInvalidScheduleTitle);
                         return false;
                     } else if (this._getDaysDateDiff(toDate, fromDate) < 31) {
-                        var monthDay = parseInt(this.cboMonthDay.get('value'));
+                        var monthDay = parseInt(this.cboMonthDay.get('value'), 10);
                         onDay = this._convertDayToInt(this.cboDay.get('value'));
                         var fromMonthNextOccurrence = this._moveToNthOccurrence(fromDate, monthDay, onDay, '', '');
                         var toMonthNextOccurrence = this._moveToNthOccurrence(toDate, monthDay, onDay, '', '');

@@ -6,14 +6,17 @@
 <script type="text/javascript">
     require([
             'Sage/Library/Manager',            
-            'Sage/UI/Dialogs'
+            'Sage/UI/Dialogs',
+            'dojo/ready'
         ],
-        function(Manager, Dialogs) {
-            try {
-                Manager.createView();
-            } catch(e) {
-                Dialogs.showError(e);
-            }
+        function (Manager, Dialogs, ready) {
+            ready(function () {
+                try {
+                    Manager.createView();
+                } catch (e) {
+                    Dialogs.showError(e);
+                }
+            });
         }
     );
 </script>
@@ -28,11 +31,11 @@
             <div id="libraryTreeRoot">                
             </div>
         </td>
-        <td width="70%" style="vertical-align: top;">
+        <td width="70%" style="vertical-align: top; height:100%">
             <div class="detail-panel-toolbar listPanelToolbar rightTools" id="gridToolbarRoot">  
                 <span id="gridToolbar"></span>
             </div>
-            <div id="libraryGridPlaceHolder" style="width: 100%; height:400px">                
+            <div id="libraryGridPlaceHolder" style="width: 100%;">                
             </div>
         </td>
     </tr>

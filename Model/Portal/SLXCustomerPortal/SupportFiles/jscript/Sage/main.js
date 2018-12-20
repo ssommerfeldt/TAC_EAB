@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/main", [
     //// Root Sage modules ////
     "Sage/_ActionMixin",
     "Sage/Utility",
@@ -20,11 +20,13 @@ define([
     "Sage/MailMerge/main",
     "Sage/Services/main",
     "Sage/MainView/main",
+    "Sage/ProximitySearch/main",
     "Sage/QuickForms/Design/main",
     "Sage/TaskPane/main",
     "Sage/UI/main",
     "Sage/Utility/main",
     "Sage/Workspaces/main",
+    "Sage/Mingle/main",
     'dojo/i18n!dijit/nls/common'  //for multiple files in our modules
 ], function() {
 	// module:

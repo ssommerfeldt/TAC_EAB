@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTo.Caption" xml:space="preserve">
-    <value>An:</value>
-  </data>
-  <data name="lblChange.Caption" xml:space="preserve">
-    <value>Kurs ändern in </value>
-  </data>
-  <data name="lblCurrentRate.Caption" xml:space="preserve">
-    <value>(Dieser Gebührensatz ist aktuell ab {0} )</value>
-  </data>
-  <data name="Rate.Caption" xml:space="preserve">
-    <value>Gebühr</value>
-  </data>
   <data name="chkLockRate.Caption" xml:space="preserve">
-    <value>Den Kurs für diesen Verkaufsauftrag sperren</value>
-  </data>
-  <data name="Error_ChangingExchangeRate" xml:space="preserve">
-    <value>Fehler beim Ändern des Wechselkurses.</value>
-  </data>
-  <data name="lblSalesOrderCurrentRate.Caption" xml:space="preserve">
-    <value>Der aktuelle Kurs dieses Verkaufsauftrags beträgt {0} bei {1}</value>
-  </data>
-  <data name="lblWillChange.Caption" xml:space="preserve">
-    <value>Diese Änderung konvertiert Folgendes für diesen Verkaufsauftrag</value>
-  </data>
-  <data name="lblConvertedPotential.Caption" xml:space="preserve">
-    <value>Potential konvertieren - Von:</value>
-  </data>
-  <data name="lblRateDate.Caption" xml:space="preserve">
-    <value>(Gebühr zugewiesen am {0} )</value>
+    <value>Kurs für diesen Verkaufsauftrag sperren</value>
   </data>
   <data name="CurrencyCode.Caption" xml:space="preserve">
     <value>Währungscode</value>
   </data>
   <data name="Description.Caption" xml:space="preserve">
     <value>Beschreibung</value>
+  </data>
+  <data name="Error_ChangingExchangeRate" xml:space="preserve">
+    <value>Fehler beim Ändern des Wechselkurses.</value>
+  </data>
+  <data name="lblChange.Caption" xml:space="preserve">
+    <value>Kurs ändern in </value>
+  </data>
+  <data name="lblConvertedPotential.Caption" xml:space="preserve">
+    <value>Potential umrechnen - Von:</value>
+  </data>
+  <data name="lblCurrentRate.Caption" xml:space="preserve">
+    <value>(Aktueller Kurs vom {0})</value>
+  </data>
+  <data name="lblRateDate.Caption" xml:space="preserve">
+    <value>(Kurs zugewiesen am {0} )</value>
+  </data>
+  <data name="lblSalesOrderCurrentRate.Caption" xml:space="preserve">
+    <value>Der aktuelle Kurs für diesen Verkaufsauftrag liegt bei {0} ({1}).</value>
+  </data>
+  <data name="lblTo.Caption" xml:space="preserve">
+    <value>In:</value>
+  </data>
+  <data name="lblWillChange.Caption" xml:space="preserve">
+    <value>Mit dieser Änderung wird für diesen Verkaufsauftrag Folgendes umgerechnet:</value>
+  </data>
+  <data name="Rate.Caption" xml:space="preserve">
+    <value>Rate/Satz/Kurs</value>
   </data>
 </root>

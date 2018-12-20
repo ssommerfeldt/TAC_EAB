@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -140,6 +140,9 @@
   </data>
   <data name="EmailOppContacts.Caption" xml:space="preserve">
     <value>Contacts</value>
+  </data>
+   <data name="EmailOppExchangeRate.Caption" xml:space="preserve">
+    <value>Opportunity Currency is set to {0} at a rate of {1}, converted to {2}</value>
   </data>
   <data name="lblEmailOppDesc.Caption" xml:space="preserve">
     <value>Description: </value>
@@ -305,5 +308,11 @@
   </data>
   <data name="lueCurrencyCode.Currency.PropertyHeader" xml:space="preserve">
     <value>Currency Code</value>
+  </data>
+  <data name="lblSyncStateNoPendingChanges" xml:space="preserve">
+    <value>There are no pending changes since the last promotion on {0}.</value>
+  </data>
+  <data name="lblSyncStatePendingChanges" xml:space="preserve">
+    <value>There are pending changes since the last promotion on {0}. Please submit changes using the Promote link in the Task Pane.</value>
   </data>
 </root>

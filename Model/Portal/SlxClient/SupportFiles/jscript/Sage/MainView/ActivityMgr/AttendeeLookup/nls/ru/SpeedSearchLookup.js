@@ -1,14 +1,13 @@
-define((
-{ dialogTitle: 'Поиск участников',
-  okText: 'Добавить выбранные',
-  cancelText: 'Закрыть',
-  noDataText: 'Нет соответствующих записей.',
-  srchBtnCaption: 'Поиск',
-  colName: 'Имя',
-  colType: 'Тип',
-  colAccount: 'Субъект/Компания',
-  colTitle: 'Должность',
-  colEmail: 'E-mail',
-  colWorkPhone: 'Раб. телефон'
-}
-));
+define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/SpeedSearchLookup", {
+    "dialogTitle": "Поиск участников",
+    "okText": "Добавить выбранное",
+    "cancelText": "Закрыть",
+    "noDataText": "Нет записей, соответствующих критериям выбора.",
+    "srchBtnCaption": "Поиск",
+    "colName": "Имя",
+    "colType": "Тип",
+    "colAccount": "Компания/клиент",
+    "colTitle": "Название",
+    "colEmail": "Электронная почта",
+    "colWorkPhone": "Рабочий телефон"
+});

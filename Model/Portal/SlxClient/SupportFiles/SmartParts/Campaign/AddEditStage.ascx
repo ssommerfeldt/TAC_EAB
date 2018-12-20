@@ -76,7 +76,6 @@
                         </SalesLogix:LookupProperty>
                     </LookupProperties>
                     <LookupPreFilters>
-                        <SalesLogix:LookupPreFilter PropertyName="Status" FilterValue="<%$ resources: LeadSource.LUPF.Status %>"></SalesLogix:LookupPreFilter>
                     </LookupPreFilters>
                 </SalesLogix:LookupControl>
             </div>

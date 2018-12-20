@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Alarms/ActivityAlarm", [
     'Sage/_Templated',
     'dijit/_Widget',
     'dijit/form/CheckBox',
@@ -33,7 +33,7 @@ function (_Templated, _Widget, CheckBox, activityUtility, AlarmCountDown,
                             '<input type="checkbox" data-dojo-type="dijit.form.CheckBox" size="30px" dojoAttachPoint="_checkbox" />',
                         '</td>',
                         '<td class="alarm-content">',
-                            '{% var desc = $.userActivity.Activity.Description;if (!desc) { desc = Sage.Utility.Activity.getActivityTypeName($.userActivity.Activity.Type); } %}',
+                            '{% var desc = Sage.Utility.htmlEncode($.userActivity.Activity.Description);if (!desc) { desc = Sage.Utility.Activity.getActivityTypeName($.userActivity.Activity.Type); } %}',
                             '<div class="alarm-description">',
                                 '{% if ($.userActivity.Activity.Recurring) { %}<div class="Global_Images icon16x16 icon_recurring" title="{%= $.recurringText %}" > </div>&nbsp;&nbsp;{% } %}',
                                 '{% if ($.userActivity.Status === "asUnconfirmed") { %}',
@@ -65,7 +65,7 @@ function (_Templated, _Widget, CheckBox, activityUtility, AlarmCountDown,
                         '</td><td class="alarm-content">',
                             '{% if ($.userActivity.Activity.Location) { %}',
                                 '<div id="{%= $.userActivity.Activity.$key %}_Location" dojoAttachPoint="_location">',
-                                    '{%= $.locationText %}: {%= $.userActivity.Activity.Location %}&nbsp;',
+                                    '{%= $.locationText %}: {%= Sage.Utility.htmlEncode($.userActivity.Activity.Location) %}&nbsp;',
                                 '</div>',
                             '{% } %}',
                             '{% if ($.userActivity.Activity.OpportunityName) { %}',

@@ -117,94 +117,157 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cboFilterLogType_item3.Text" xml:space="preserve">
-    <value>Информационное</value>
-  </data>
-  <data name="QFDataGrid.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="cboFilterResource_item12.Text" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="cboFilterLogType_item2.Text" xml:space="preserve">
-    <value>Ошибки</value>
-  </data>
-  <data name="cboFilterResource.Caption" xml:space="preserve">
-    <value>Фильтр по Виду ресурса</value>
-  </data>
-  <data name="cboFilterResource_item3.Text" xml:space="preserve">
-    <value>Контакты</value>
-  </data>
-  <data name="cboFilterResource_item7.Text" xml:space="preserve">
-    <value>Заказы на продажи</value>
-  </data>
-  <data name="cboFilterLogType_item1.Text" xml:space="preserve">
-    <value>Отладка</value>
+  <data name="1e055a6e-85b4-4548-aff4-699996f07808.Caption" xml:space="preserve">
+    <value>Уровень журнала</value>
   </data>
   <data name="38f96c1d-d3d8-4888-9d72-0b4296ca68f4.Caption" xml:space="preserve">
     <value>Сообщение журнала</value>
   </data>
-  <data name="btnRefresh.ToolTip" xml:space="preserve">
-    <value>Обновить элемент журнала</value>
-  </data>
-  <data name="cboFilterLogType.Caption" xml:space="preserve">
-    <value>Фильтр по типу лога</value>
-  </data>
-  <data name="cboFilterResource_item5.Text" xml:space="preserve">
-    <value>Цены</value>
-  </data>
-  <data name="cboFilterResource_item2.Text" xml:space="preserve">
-    <value>Группы товаров</value>
-  </data>
-  <data name="QFDataGrid.20f7922d-eef3-4235-8e56-f2966e900b85.ColumnHeading" xml:space="preserve">
-    <value>Дата создания</value>
-  </data>
-  <data name="1e055a6e-85b4-4548-aff4-699996f07808.Caption" xml:space="preserve">
-    <value>Уровень логгирования</value>
+  <data name="QFDataGrid.18495e8e-00bd-4496-94ab-96d39a4c4b9e.ColumnHeading" xml:space="preserve">
+    <value>Уровень журнала</value>
   </data>
   <data name="QFDataGrid.7427f315-d496-4602-9b01-450964324f4b.ColumnHeading" xml:space="preserve">
     <value>Сообщение</value>
   </data>
-  <data name="QFDataGrid.89dcce44-2f74-445a-ba72-a20ab3a471a2.ColumnHeading" xml:space="preserve">
-    <value>Вид ресурса</value>
+  <data name="txtCallStack.Caption" xml:space="preserve">
+    <value>Стек вызовов:</value>
+  </data>
+  <data name="QFDataGrid.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
   <data name="QFDataGrid.ffb3d1f0-1c87-4748-b834-8d9b1e7dce85.Text" xml:space="preserve">
     <value>Выбрать</value>
   </data>
-  <data name="cboFilterResource_item9.Text" xml:space="preserve">
-    <value>Субъекты торговли</value>
-  </data>
-  <data name="cboFilterResource_item1.Text" xml:space="preserve">
-    <value>Товары</value>
-  </data>
-  <data name="cboFilterResource_item6.Text" xml:space="preserve">
-    <value>Прайс листы</value>
-  </data>
-  <data name="QFDataGrid.18495e8e-00bd-4496-94ab-96d39a4c4b9e.ColumnHeading" xml:space="preserve">
-    <value>Уровень логгирования</value>
-  </data>
-  <data name="cboFilterResource_item8.Text" xml:space="preserve">
-    <value>Линии заказов на покупку</value>
-  </data>
-  <data name="txtCallStack.Caption" xml:space="preserve">
-    <value>Вызов стека:</value>
+  <data name="btnRefresh.ToolTip" xml:space="preserve">
+    <value>Обновить элементы журнала</value>
   </data>
   <data name="QFDataGrid.a037c6b6-7639-4bce-acf5-5ccc06d62021.ColumnHeading" xml:space="preserve">
     <value>Дата создания</value>
   </data>
+  <data name="QFDataGrid.89dcce44-2f74-445a-ba72-a20ab3a471a2.ColumnHeading" xml:space="preserve">
+    <value>Вид ресурса</value>
+  </data>
+  <data name="QFDataGrid.20f7922d-eef3-4235-8e56-f2966e900b85.ColumnHeading" xml:space="preserve">
+    <value>Дата создания</value>
+  </data>
+  <data name="cboFilterLogType.Caption" xml:space="preserve">
+    <value>Фильтр по типу журнала:</value>
+  </data>
+  <data name="cboFilterResource.Caption" xml:space="preserve">
+    <value>Фильтр по виду ресурса:</value>
+  </data>
+  <data name="cboFilterResource_item9.Text" xml:space="preserve">
+    <value>Торговые клиенты</value>
+  </data>
+  <data name="cboFilterResource_item8.Text" xml:space="preserve">
+    <value>Строки заказа на продажу</value>
+  </data>
+  <data name="cboFilterResource_item7.Text" xml:space="preserve">
+    <value>Заказы на продажу</value>
+  </data>
+  <data name="cboFilterResource_item6.Text" xml:space="preserve">
+    <value>Прейскуранты</value>
+  </data>
+  <data name="cboFilterResource_item5.Text" xml:space="preserve">
+    <value>Цены</value>
+  </data>
+  <data name="cboFilterResource_item4.Text" xml:space="preserve">
+    <value>Местоположения</value>
+  </data>
+  <data name="cboFilterResource_item3.Text" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="cboFilterResource_item2.Text" xml:space="preserve">
+    <value>Группы товаров</value>
+  </data>
+  <data name="cboFilterResource_item1.Text" xml:space="preserve">
+    <value>Товары</value>
+  </data>
+  <data name="cboFilterResource_item0.Text" xml:space="preserve">
+    <value />
+  </data>
   <data name="cboFilterLogType_item4.Text" xml:space="preserve">
     <value>Предупреждения</value>
+  </data>
+  <data name="cboFilterLogType_item3.Text" xml:space="preserve">
+    <value>Информационное</value>
+  </data>
+  <data name="cboFilterLogType_item2.Text" xml:space="preserve">
+    <value>Ошибки</value>
+  </data>
+  <data name="cboFilterLogType_item1.Text" xml:space="preserve">
+    <value>Отладка</value>
+  </data>
+  <data name="cboFilterLogType_item0.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboFilterLogType_item0.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboFilterLogType_item1.Value" xml:space="preserve">
+    <value>Отладка</value>
+  </data>
+  <data name="cboFilterLogType_item2.Value" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="cboFilterLogType_item3.Value" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="cboFilterLogType_item4.Value" xml:space="preserve">
+    <value>Предупредить</value>
+  </data>
+  <data name="cboFilterResource_item0.Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cboFilterResource_item1.Value" xml:space="preserve">
+    <value>товар</value>
+  </data>
+  <data name="cboFilterResource_item2.Value" xml:space="preserve">
+    <value>commodityGroup</value>
+  </data>
+  <data name="cboFilterResource_item3.Value" xml:space="preserve">
+    <value>контакт</value>
+  </data>
+  <data name="cboFilterResource_item4.Value" xml:space="preserve">
+    <value>местоположение</value>
+  </data>
+  <data name="cboFilterResource_item5.Value" xml:space="preserve">
+    <value>цена</value>
+  </data>
+  <data name="cboFilterResource_item6.Value" xml:space="preserve">
+    <value>priceList</value>
+  </data>
+  <data name="cboFilterResource_item7.Value" xml:space="preserve">
+    <value>salesOrder</value>
+  </data>
+  <data name="cboFilterResource_item8.Value" xml:space="preserve">
+    <value>salesOrderLine</value>
+  </data>
+  <data name="cboFilterResource_item9.Value" xml:space="preserve">
+    <value>tradingAccount</value>
+  </data>
+  <data name="cboFilterResource_item10.Text" xml:space="preserve">
+    <value>Заинтересованные лица</value>
+  </data>
+  <data name="cboFilterResource_item10.Value" xml:space="preserve">
+    <value>заинтересованное лицо</value>
+  </data>
+  <data name="cboFilterResource_item11.Text" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="cboFilterResource_item11.Value" xml:space="preserve">
+    <value>взаимодействие</value>
+  </data>
+  <data name="cboFilterResource_item12.Text" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="cboFilterResource_item12.Value" xml:space="preserve">
+    <value>календарь</value>
   </data>
   <data name="cboFilterResource_item13.Text" xml:space="preserve">
     <value>История календаря</value>
   </data>
-  <data name="cboFilterResource_item10.Text" xml:space="preserve">
-    <value>Наводки</value>
-  </data>
-  <data name="cboFilterResource_item11.Text" xml:space="preserve">
-    <value>Дела</value>
-  </data>
-  <data name="cboFilterResource_item4.Text" xml:space="preserve">
-    <value>Размещение</value>
+  <data name="cboFilterResource_item13.Value" xml:space="preserve">
+    <value>calendarHistories</value>
   </data>
 </root>

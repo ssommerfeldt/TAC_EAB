@@ -1,6 +1,78 @@
 /*!
  * 
  */
+// ========================================================================
+//  XML.ObjTree -- XML source code from/to JavaScript object like E4X
+// ========================================================================
+var XML = window.XML;
+
+if ( typeof(XML) == 'undefined' ) XML = function() {};
+
+//  constructor
+XML.ObjTree = function () {
+  console.warn('xml obj transformation is not implemented.');
+  return this;
+};
+
+//  class variables
+XML.ObjTree.VERSION = "0.10";
+
+//  object prototype
+XML.ObjTree.prototype.xmlDecl = '<?xml version="1.0" encoding="UTF-8" ?>\n';
+XML.ObjTree.prototype.attr_prefix = '-';
+XML.ObjTree.prototype.overrideMimeType = 'text/xml';
+
+//  method: parseXML( xmlsource )
+XML.ObjTree.prototype.parseXML = function ( xml ) {
+  console.warn('parseXML is not implemented.');
+  return {};
+};
+
+//  method: parseHTTP( url, options, callback )
+XML.ObjTree.prototype.parseHTTP = function ( url, options, callback ) {
+  console.warn('parseHTTP is not implemented.');
+}
+
+//  method: parseDOM( documentroot )
+XML.ObjTree.prototype.parseDOM = function ( root ) {
+  console.warn('praseDom is not implemented.');
+};
+
+//  method: parseElement( element )
+XML.ObjTree.prototype.parseElement = function ( elem ) {
+  console.warn('parseElement is not implemented.');
+};
+
+//  method: addNode( hash, key, count, value )
+XML.ObjTree.prototype.addNode = function ( hash, key, cnts, val ) {
+  console.warn('addNode is not implemented.');
+};
+
+//  method: writeXML( tree )
+XML.ObjTree.prototype.writeXML = function ( tree ) {
+  console.warn('writeXML is not implemented.');
+  return {};
+};
+
+//  method: hash_to_xml( tagName, tree )
+XML.ObjTree.prototype.hash_to_xml = function ( name, tree ) {
+  console.warn('hash_to_xml is not implemented.');
+};
+
+//  method: array_to_xml( tagName, array )
+XML.ObjTree.prototype.array_to_xml = function ( name, array ) {
+  console.warn('array_to_xml is not implemented.');
+};
+
+//  method: scalar_to_xml( tagName, text )
+XML.ObjTree.prototype.scalar_to_xml = function ( name, text ) {
+  console.warn('scalar_to_xml is not implemented.');
+};
+
+//  method: xml_escape( text )
+XML.ObjTree.prototype.xml_escape = function ( text ) {
+  console.warn('xml_escape is not implemented.');
+};
 /* Copyright (c) 2010, Sage Software, Inc. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +89,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         A = Sage.namespace('Sage.SData.Client.Ajax');
 
     var successful = function(code)
@@ -67,6 +141,20 @@
         }
     };
 
+    var onTimeout = function(xhr, o) {
+        var handler = o.timeout || o.failure;
+        if (handler) {
+            handler.call(o.scope || this, xhr, o);
+        }
+    };
+
+    var bindOnTimeout = function(xhr, o) {
+        xhr.ontimeout = function() {
+            onTimeout.call(xhr, xhr, o);
+        };
+    };
+
+
     var bindOnReadyStateChange = function(xhr, o) {
         xhr.onreadystatechange = function() {
             onReadyStateChange.call(xhr, xhr, o);
@@ -88,13 +176,14 @@
 
     Sage.apply(Sage.SData.Client.Ajax, {
         request: function(o) {
-            var o = S.apply({}, o);
+            o = S.apply({}, o);
 
             o.params = S.apply({}, o.params);
             o.headers = S.apply({}, o.headers);
 
-            if (o.cache !== false)
+            if (o.cache !== true) {
                 o.params[o.cacheParam || '_t'] = (new Date()).getTime();
+            }
 
             o.method = o.method || 'GET';
 
@@ -105,12 +194,11 @@
             var xhr = new XMLHttpRequest();
 
             if (o.user)
-            {
                 xhr.open(o.method, o.url, o.async !== false, o.user, o.password);
-                xhr.withCredentials = true;
-            }
             else
                 xhr.open(o.method, o.url, o.async !== false);
+
+            if (o.withCredentials) xhr.withCredentials = true;
 
             try
             {
@@ -122,13 +210,27 @@
 
                 for (var n in o.headers)
                     xhr.setRequestHeader(n, o.headers[n]);
+
+                var etagCache = o.etagCache;
+                if (o.cache && etagCache && etagCache.etag) {
+                    xhr.setRequestHeader('If-None-Match', etagCache.etag);
+                }
+
             }
             catch (headerException)
             {
             }
 
+
             if (o.async !== false)
             {
+                // Set the timeout only if the request is async
+                if (typeof o.requestTimeout === 'number' && o.requestTimeout >= 0 && typeof xhr.timeout === 'number')
+                {
+                    xhr.timeout = o.requestTimeout;
+                    bindOnTimeout(xhr, o);
+                }
+
                 bindOnReadyStateChange(xhr, o);
 
                 xhr.send(o.body || null);
@@ -163,7 +265,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataBaseRequest = Sage.Class.define({
@@ -179,15 +283,19 @@
             this.completeHeaders = {};
             this.extendedHeaders = {};
             this.uri = new Sage.SData.Client.SDataUri();
+            var includeContent, compact;
 
             if (this.service)
             {
                 this.uri.setVersion(this.service.getVersion());
-                this.uri.setIncludeContent(this.service.getIncludeContent());
+                includeContent = this.service.getIncludeContent();
+                if (typeof includeContent !== 'undefined') this.uri.setIncludeContent(includeContent);
                 this.uri.setServer(this.service.getVirtualDirectory() ? this.service.getVirtualDirectory() : 'sdata');
                 this.uri.setScheme(this.service.getProtocol());
                 this.uri.setHost(this.service.getServerName());
                 this.uri.setPort(this.service.getPort());
+                compact = this.service.getCompact();
+                if (typeof compact !== 'undefined') this.uri.setCompact(compact);
             }
         },
         clone: function() {
@@ -296,7 +404,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataApplicationRequest = Sage.SData.Client.SDataBaseRequest.extend({
@@ -344,7 +454,6 @@
         }
     });
 })();
-
 /* Copyright (c) 2010, Sage Software, Inc. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -361,7 +470,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataResourceCollectionRequest = Sage.SData.Client.SDataApplicationRequest.extend({
@@ -407,7 +518,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataNamedQueryRequest = Sage.SData.Client.SDataResourceCollectionRequest.extend({
@@ -451,10 +564,13 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataSingleResourceRequest = Sage.SData.Client.SDataApplicationRequest.extend({
+        key: '',
         constructor: function() {
             this.base.apply(this, arguments);
         },
@@ -480,6 +596,14 @@
         setResourceSelector: function(value) {
             this.uri.setCollectionPredicate(value);
             return this;
+        },
+        setResourceKey: function(value) {
+            this.key = value;
+            this.setResourceSelector("\"" + this.key + "\"");
+            return this;
+        },
+        getResourceKey: function() {
+            return this.key;
         }
     });
 })();
@@ -499,7 +623,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataResourcePropertyRequest = Sage.SData.Client.SDataSingleResourceRequest.extend({
@@ -538,7 +664,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataSystemRequest = Sage.SData.Client.SDataBaseRequest.extend({
@@ -582,7 +710,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataTemplateResourceRequest = Sage.SData.Client.SDataApplicationRequest.extend({
@@ -619,7 +749,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataServiceOperationRequest = Sage.SData.Client.SDataApplicationRequest.extend({
@@ -663,7 +795,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client');
 
     Sage.SData.Client.SDataBatchRequest = Sage.SData.Client.SDataApplicationRequest.extend({
@@ -716,7 +850,8 @@
             this.service.commitBatch(this, options);
         }
     });
-})();/* Copyright (c) 2010, Sage Software, Inc. All rights reserved.
+})();
+/* Copyright (c) 2010, Sage Software, Inc. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -732,7 +867,9 @@
  */
 
 (function(){
-    var S = Sage,
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client'),
         trueRE = /^true$/i;
 
@@ -767,7 +904,7 @@
                 major: 0,
                 minor: 0
             }, value);
-            
+
             return this;
         },
         getScheme: function() {
@@ -878,7 +1015,7 @@
 
                 this.pathSegments[i] = S.apply({}, segment, this.pathSegments[i]);
             }
-            
+
             return this;
         },
         getStartIndex: function() {
@@ -902,11 +1039,26 @@
             return this;
         },
         getIncludeContent: function() {
-            var name = this.version.major >= 1
+            var name, value;
+            name = this.version.major >= 1
                 ? C.SDataUri.QueryArgNames.IncludeContent
                 : C.SDataUri.QueryArgNames.LegacyIncludeContent;
 
-            return trueRE.test(this.queryArgs[name]);
+            value = this.queryArgs[name];
+
+            if (typeof value !== 'undefined') {
+                return trueRE.test(value);
+            } else {
+                return value;
+            }
+        },
+        setCompact: function(value) {
+            this.queryArgs[C.SDataUri.QueryArgNames.Compact] = value;
+
+            return this;
+        },
+        getCompact: function() {
+            return this.queryArgs[C.SDataUri.QueryArgNames.Compact];
         },
         setIncludeContent: function(value) {
             var name = this.version.major >= 1
@@ -1030,6 +1182,7 @@
         UnspecifiedPort: -1,
         UriName: 'uri',
         QueryArgNames: {
+            Compact: '_compact',
             Count: 'count',
             Exclude: 'exclude',
             Format: 'format',
@@ -1075,50 +1228,113 @@
  * limitations under the License.
  */
 
-(function(){
-    var S = Sage,
+(function() {
+    "use strict";
+    var Sage = window.Sage,
+        S = Sage,
         C = Sage.namespace('Sage.SData.Client'),
-        isDefined = function(value) { return typeof value !== 'undefined' },
+        isDefined = function(value) { return typeof value !== 'undefined'; },
+        unwrap = function(value) {
+            return value && value['#text']
+                ? value['#text']
+                : value;
+        },
         nsRE = /^(.+?):(.*)$/;
 
     Sage.SData.Client.SDataService = Sage.Evented.extend({
         uri: null,
         useCredentialedRequest: false,
+        useCrossDomainCookies: false,
         userAgent: 'Sage',
         userName: false,
         password: '',
         batchScope: null,
-        constructor: function(options) {
-            /// <field name="uri" type="Sage.SData.Client.SDataUri" />
-            this.base.apply(this, arguments);   
-            
-            this.uri = new Sage.SData.Client.SDataUri();
+        timeout: 0,
+        cache: false,
+        cacheParam: '_t',
+        _etags: {},
+        maxGetUriLength: 2000,
+        constructor: function(options, userName, password) {
+            // pass the first argument to the base class; will only have an effect if the argument
+            // is an object and has a `listeners` property.
+            this.base.call(this, options);
 
-            if (options)
-            {
-                if (isDefined(options.uri)) this.uri = new Sage.SData.Client.SDataUri(options.uri);
-                if (isDefined(options.version)) this.uri.setVersion(options.version);
-                if (isDefined(options.serverName)) this.uri.setHost(options.serverName);
-                if (isDefined(options.virtualDirectory)) this.uri.setServer(options.virtualDirectory);
-                if (isDefined(options.applicationName)) this.uri.setProduct(options.applicationName);
-                if (isDefined(options.contractName)) this.uri.setContract(options.contractName);
-                if (isDefined(options.dataSet)) this.uri.setCompanyDataset(options.dataSet);
-                if (isDefined(options.port)) this.uri.setPort(options.port);
-                if (isDefined(options.protocol)) this.uri.setScheme(options.protocol);
-                if (isDefined(options.includeContent)) this.uri.setIncludeContent(options.includeContent);
+            this.setUri(options);
 
-                if (isDefined(options.json)) this.json = options.json;
-                if (isDefined(options.userName)) this.userName = options.userName;
-                if (isDefined(options.password)) this.password = options.password;
-                if (isDefined(options.useCredentialedRequest)) this.useCredentialedRequest = options.useCredentialedRequest;
-            }
+            // Other options
+            if (isDefined(options.includeContent)) this.uri.setIncludeContent(options.includeContent);
+            if (isDefined(options.version)) this.uri.setVersion(options.version);
+            if (isDefined(options.cache)) this.cache = options.cache;
+            if (isDefined(options.cacheParam)) this.cacheParam = options.cacheParam;
+
+            // Support for the new compact mode in Saleslogix 8.1 and higher
+            if (isDefined(options.compact)) this.uri.setCompact(options.compact);
+
+            // Username/password use options first, constructor params will take priority
+            if (isDefined(options.userName)) this.userName = options.userName;
+            if (isDefined(options.password)) this.password = options.password;
+            if (isDefined(userName)) this.userName = userName;
+            if (isDefined(password)) this.password = password;
+
+            if (isDefined(options.json)) this.json = options.json;
+            if (isDefined(options.maxGetUriLength)) this.maxGetUriLength = options.maxGetUriLength;
+            if (isDefined(options.timeout)) this.timeout = options.timeout;
+
+            if (isDefined(options.useCredentialedRequest)) this.useCredentialedRequest = options.useCredentialedRequest;
+            if (isDefined(options.useCrossDomainCookies)) this.useCrossDomainCookies = options.useCrossDomainCookies;
 
             this.addEvents(
                 'beforerequest',
                 'requestcomplete',
                 'requestexception',
-                'requestaborted'
+                'requestaborted',
+                'requesttimeout'
             );
+        },
+        setUri: function(options) {
+            if (isDefined(options.uri)) {
+                this.uri = new Sage.SData.Client.SDataUri(options.uri);
+            } else {
+                this.uri = new Sage.SData.Client.SDataUri();
+                var parsed = this.parseUri(options);
+                // Parsed URI
+                if (isDefined(parsed.serverName)) this.uri.setHost(parsed.serverName);
+                if (isDefined(parsed.virtualDirectory)) this.uri.setServer(parsed.virtualDirectory);
+                if (isDefined(parsed.applicationName)) this.uri.setProduct(parsed.applicationName);
+                if (isDefined(parsed.contractName)) this.uri.setContract(parsed.contractName);
+                if (isDefined(parsed.dataSet)) this.uri.setCompanyDataset(parsed.dataSet);
+                if (isDefined(parsed.port)) this.uri.setPort(parsed.port);
+                if (isDefined(parsed.protocol)) this.uri.setScheme(parsed.protocol);
+            }
+
+            return this;
+        },
+        parseUri: function(options) {
+            var result = {},
+                url = typeof options === 'object'
+                    ? options['url']
+                    : options;
+
+            var parsed = (typeof window.parseUri === 'function') && window.parseUri(url);
+            if (parsed)
+            {
+                if (parsed.host) result.serverName = parsed.host;
+
+                var path = parsed.path.split('/').slice(1);
+
+                // ["sdata", "slx", "dynamic", "-", "accounts"]
+                if (path[0]) result.virtualDirectory = path[0];
+                if (path[1]) result.applicationName = path[1];
+                if (path[2]) result.contractName = path[2];
+                if (path[3]) result.dataSet = path[3];
+
+                if (parsed.port) result.port = parseInt(parsed.port);
+                if (parsed.protocol) result.protocol = parsed.protocol;
+            }
+
+            if (typeof options === 'object') S.apply(result, options);
+
+            return result;
         },
         isJsonEnabled: function() {
             return this.json;
@@ -1213,6 +1429,20 @@
             this.uri.setIncludeContent(value);
             return this;
         },
+        getCompact: function() {
+            return this.uri.getCompact();
+        },
+        setCompact: function(value) {
+            this.uri.setCompact(value);
+            return this;
+        },
+        setMaxGetUriLength: function(value) {
+            this.maxGetUriLength = value;
+            return this;
+        },
+        getMaxGetUriLength: function() {
+            return this.maxGetUriLength;
+        },
         getUserAgent: function() {
             return this.userAgent;
         },
@@ -1234,7 +1464,7 @@
                 /* 'User-Agent': this.userAgent */ /* 'User-Agent' cannot be set on XmlHttpRequest */
                 'X-Authorization-Mode': 'no-challenge'
             };
-            
+
             if (this.userName && !this.useCredentialedRequest)
                 headers['Authorization'] = headers['X-Authorization'] = this.createBasicAuthToken();
 
@@ -1246,19 +1476,37 @@
         },
         executeRequest: function(request, options, ajax) {
             /// <param name="request" type="Sage.SData.Client.SDataBaseRequest">request object</param>
-            
-            // todo: temporary fix for Saleslogix Dynamic Adapter only supporting json selector in format parameter
+
+            // todo: temporary fix for SalesLogix Dynamic Adapter only supporting json selector in format parameter
             if (this.json) request.setQueryArg('format', 'json');
+            var url = request.build();
 
             var o = S.apply({
                 async: options.async,
                 headers: {},
                 method: 'GET',
-                url: request.build()
+                url: url,
+                cache: options.cache || this.cache,
+                cacheParam: options.cacheParam || this.cacheParam,
+                etagCache: this._etags[url]
             }, {
                 scope: this,
                 success: function(response, opt) {
-                    var feed = this.processFeed(response);
+                    var responseText = response.responseText;
+
+                    if (response.status === 304) {
+                        responseText = this._etags[url].responseText;
+                    }
+
+                    var contentType = response.getResponseHeader && response.getResponseHeader('Content-Type');
+                    var feed = this.processFeed(responseText, contentType);
+
+                    var etag = response.getResponseHeader && response.getResponseHeader('etag');
+
+                    this._etags[url] = {
+                        etag: etag,
+                        responseText: responseText
+                    };
 
                     this.fireEvent('requestcomplete', request, opt, feed);
 
@@ -1276,16 +1524,32 @@
 
                     if (options.aborted)
                         options.aborted.call(options.scope || this, response, opt);
+                },
+                timeout: function(response, opt) {
+                    this.fireEvent('requesttimeout', request, opt, response);
+
+                    if (options.timeout) {
+                        options.timeout.call(options.scope || this, response, opt);
+                    }
                 }
             }, ajax);
 
             S.apply(o.headers, this.createHeadersForRequest(request), request.completeHeaders);
 
+            if (typeof this.timeout === 'number') {
+                o.requestTimeout = this.timeout;
+            }
+
             /* we only handle `Accept` for now */
             if (request.extendedHeaders['Accept'])
                 o.headers['Accept'] = this.extendAcceptRequestHeader(o.headers['Accept'], request.extendedHeaders['Accept']);
-            
-            if (this.userName && this.useCredentialedRequest)
+
+            if (this.useCredentialedRequest || this.useCrossDomainCookies)
+            {
+                o.withCredentials = true;
+            }
+
+            if (this.useCredentialedRequest && this.userName)
             {
                 o.user = this.userName;
                 o.password = this.password;
@@ -1329,10 +1593,11 @@
                 }
             };
 
-            if (options.httpMethodOverride)
+            var builtRequest = request.build();
+            if (options.httpMethodOverride || (typeof builtRequest === 'string' && builtRequest.length > this.maxGetUriLength))
             {
-                // todo: temporary fix for Saleslogix Dynamic Adapter only supporting json selector in format parameter
-                // todo: temporary fix for `X-HTTP-Method-Override` and the Saleslogix Dynamic Adapter
+                // todo: temporary fix for SalesLogix Dynamic Adapter only supporting json selector in format parameter
+                // todo: temporary fix for `X-HTTP-Method-Override` and the SalesLogix Dynamic Adapter
                 if (this.json) request.setQueryArg('format', 'json');
 
                 ajax.headers['X-HTTP-Method-Override'] = 'GET';
@@ -1349,10 +1614,17 @@
 
             if (this.batchScope)
             {
-                this.batchScope.add({
+                var scope = {
                     url: request.build(),
                     method: 'GET'
-                });
+                };
+
+                var key = request.getResourceKey();
+                if (typeof key === 'string' && key.length > 0) {
+                    scope.key = key;
+                }
+
+                this.batchScope.add(scope);
 
                 return;
             }
@@ -1386,8 +1658,8 @@
                 });
 
                 return;
-            }            
-            
+            }
+
             var o = S.apply({}, {
                 success: function(feed) {
                     var entry = feed['$resources'][0] || false;
@@ -1572,6 +1844,7 @@
                 entry = S.apply({}, item.entry); /* only need a shallow copy as only top-level properties will be modified */
 
                 if (item.url) entry['$url'] = item.url;
+                if (item.key) entry['$key'] = item.key;
                 if (item.etag) entry['$ifMatch'] = item.etag;
                 if (item.method) entry['$httpMethod'] = item.method;
 
@@ -1616,7 +1889,7 @@
             return xml.parseXML(text);
         },
         isIncludedReference: function(ns, name, value) {
-            return value.hasOwnProperty('@sdata:key');
+            return value && value.hasOwnProperty('@sdata:key');
         },
         isIncludedCollection: function(ns, name, value) {
             if (value.hasOwnProperty('@sdata:key')) return false;
@@ -1628,8 +1901,8 @@
 
             for (var fqPropertyName in value)
             {
-                if (fqPropertyName[0] === '@') continue;
-                
+                if (fqPropertyName.charAt(0) === '@') continue;
+
                 firstChild = value[fqPropertyName];
                 break; // will always ever be one property, either an entity, or an array of
             }
@@ -1640,7 +1913,7 @@
                     firstValue = firstChild[0];
                 else
                     firstValue = firstChild;
-                
+
                 if (firstValue && firstValue.hasOwnProperty('@sdata:key')) return true;
             }
 
@@ -1656,26 +1929,27 @@
 
             for (var fqPropertyName in entity)
             {
-                if (fqPropertyName[0] === '@') continue;
+                if (fqPropertyName.charAt(0) === '@') continue;
 
                 var hasNS = nsRE.exec(fqPropertyName),
                     propertyNS = hasNS ? hasNS[1] : false,
                     propertyName = hasNS ? hasNS[2] : fqPropertyName,
+                    converted = null,
                     value = entity[fqPropertyName];
 
                 if (typeof value === 'object')
                 {
                     if (value.hasOwnProperty('@xsi:nil')) // null
                     {
-                        var converted = null;
+                        converted = null;
                     }
                     else if (this.isIncludedReference(propertyNS, propertyName, value)) // included reference
                     {
-                        var converted = this.convertEntity(propertyNS, propertyName, value);
+                        converted = this.convertEntity(propertyNS, propertyName, value);
                     }
                     else if (this.isIncludedCollection(propertyNS, propertyName, value)) // included collection
                     {
-                        var converted = this.convertEntityCollection(propertyNS, propertyName, value);
+                        converted = this.convertEntityCollection(propertyNS, propertyName, value);
                     }
                     else // no conversion, read only
                     {
@@ -1693,7 +1967,7 @@
         convertEntityCollection: function(ns, name, collection) {
             for (var fqPropertyName in collection)
             {
-                if (fqPropertyName[0] === '@') continue;
+                if (fqPropertyName.charAt(0) === '@') continue;
 
                 var hasNS = nsRE.exec(fqPropertyName),
                     propertyNS = hasNS ? hasNS[1] : false,
@@ -1733,7 +2007,7 @@
             applyTo = applyTo || {};
 
             if (entity['$key']) applyTo['@sdata:key'] = entity['$key'];
-       
+
             // todo: is this necessary? does not appear to be looking at the spec
             // if (entity['$url']) applyTo['@sdata:uri'] = entity['$url'];
 
@@ -1741,7 +2015,7 @@
 
             for (var propertyName in entity)
             {
-                if (propertyName[0] === '$') continue;
+                if (propertyName.charAt(0) === '$') continue;
 
                 var value = entity[propertyName];
 
@@ -1789,6 +2063,7 @@
 
             for (var key in payload)
             {
+                if (key.charAt(0) === '@') continue;
                 if (payload.hasOwnProperty(key) == false) continue;
 
                 var parts = key.split(':'),
@@ -1809,7 +2084,7 @@
                 else
                 {
                     continue;
-                }   
+                }
 
                 this.convertEntity(ns, name, entity, result);
             }
@@ -1842,21 +2117,21 @@
             return {'entry': result};
         },
         convertFeed: function(feed) {
-            var result = {};
+            var result = {}, i;
 
             if (feed['opensearch:totalResults'])
-                result['$totalResults'] = parseInt(feed['opensearch:totalResults']);
+                result['$totalResults'] = parseInt(unwrap(feed['opensearch:totalResults']));
 
             if (feed['opensearch:startIndex'])
-                result['$startIndex'] = parseInt(feed['opensearch:startIndex']);
+                result['$startIndex'] = parseInt(unwrap(feed['opensearch:startIndex']));
 
             if (feed['opensearch:itemsPerPage'])
-                result['$itemsPerPage'] = parseInt(feed['opensearch:itemsPerPage']);
+                result['$itemsPerPage'] = parseInt(unwrap(feed['opensearch:itemsPerPage']));
 
             if (feed['link'])
             {
                 result['$link'] = {};
-                for (var i = 0; i < feed['link'].length; i++)
+                for (i = 0; i < feed['link'].length; i++)
                     result['$link'][feed['link'][i]['@rel']] = feed['link'][i]['@href'];
 
                 if (result['$link']['self'])
@@ -1866,7 +2141,7 @@
             result['$resources'] = [];
 
             if (S.isArray(feed['entry']))
-                for (var i = 0; i < feed['entry'].length; i++)
+                for (i = 0; i < feed['entry'].length; i++)
                     result['$resources'].push(this.convertEntry(feed['entry'][i]));
             else if (typeof feed['entry'] === 'object')
                 result['$resources'].push(this.convertEntry(feed['entry']));
@@ -1892,14 +2167,14 @@
 
             return {'feed': result};
         },
-        processFeed: function(response) {
-            if (!response.responseText) return null;
+        processFeed: function(responseText, contentType) {
+            if (!responseText) return null;
 
-            var contentType = response.getResponseHeader && response.getResponseHeader('Content-Type');
-            
-            if ((contentType === 'application/json') || (!contentType && this.isJsonEnabled()))
+            var doc;
+
+            if (/application\/json/i.test(contentType) || (!contentType && this.isJsonEnabled()))
             {
-                var doc = JSON.parse(response.responseText);
+                doc = JSON.parse(responseText);
 
                 // doing this for parity with below, since with JSON, SData will always
                 // adhere to the format, regardless of the User-Agent.
@@ -1916,7 +2191,7 @@
             }
             else
             {
-                var doc = this.parseFeedXml(response.responseText);
+                doc = this.parseFeedXml(responseText);
 
                 // depending on the User-Agent the SIF will either send back a feed, or a single entry
                 // todo: is this the right way to handle this? should there be better detection?
@@ -1929,7 +2204,7 @@
                         ]
                     };
                 else
-                    return false;
+                    return doc;
             }
         }
     });

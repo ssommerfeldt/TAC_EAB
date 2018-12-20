@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="af2d3bcc-8a95-444b-8993-092afb781cb6" lastModifiedUtc="2015-10-05T22:12:07.8993285Z" name="UpdateExchangeRates" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="138f86b0-1de2-407b-9b6c-9ca801086e69" paramName="baseCurrency" sequence="0" paramType="String" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="a6b90936-8a41-4b20-a941-6230002155e1" lastModifiedUtc="2015-11-05T23:36:39.2759959Z" targetType="Sage.SalesLogix.ExchangeRate.Rules, Sage.SalesLogix.BusinessRules" targetMethod="UpdateOpportunityExchangeRate" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets>
+    <methodTarget id="33ac1327-1903-4ce7-a990-fa176d777edd" lastModifiedUtc="2015-10-06T20:10:43.6052916Z" targetType="Sage.SalesLogix.ExchangeRate.Rules, Sage.SalesLogix.BusinessRules" targetMethod="UpdateSalesOrderExchangeRate" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+    <methodTarget id="a2c41ece-60ee-40be-8502-698274be8603" lastModifiedUtc="2015-11-06T20:10:43.6052916Z" targetType="Sage.SalesLogix.ExchangeRate.Rules, Sage.SalesLogix.BusinessRules" targetMethod="UpdateQuoteExchangeRate" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </postExecuteTargets>
+</method>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,193 +117,199 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblEmailSubject.Caption" xml:space="preserve">
-    <value>Сделка {0} ({1})</value>
+  <data name="lblEmailOppAccount.Caption" xml:space="preserve">
+    <value>Клиент: </value>
   </data>
-  <data name="lblReasonWon.Caption" xml:space="preserve">
-    <value>Причина выигрыша- </value>
+  <data name="EmailOppAcctMgr.Caption" xml:space="preserve">
+    <value>Менеджер по клиентам:</value>
   </data>
-  <data name="Status_Inactive" xml:space="preserve">
-    <value>Неактивна</value>
-  </data>
-  <data name="EmailOppStageSummary.Caption" xml:space="preserve">
-    <value>Текущая стадия - {0}</value>
-  </data>
-  <data name="lblMyCurrencyHeader.Header" xml:space="preserve">
-    <value>Моя валюта</value>
+  <data name="EmailOppActivitySummary.Caption" xml:space="preserve">
+    <value>Открыта {0} дн. назад на {1}; {2} дн. после последнего действия</value>
   </data>
   <data name="EmailOppCloseProb.Caption" xml:space="preserve">
-    <value>Вероят. закрытия:</value>
+    <value>Вероятность закрытия</value>
   </data>
-  <data name="lblNone.Caption" xml:space="preserve">
-    <value>Нет</value>
-  </data>
-  <data name="lueLeadSource.AbbrevDescription.PropertyHeader" xml:space="preserve">
-    <value>Сокращенное описание</value>
-  </data>
-  <data name="lueCurrencyCode.Currency.PropertyHeader" xml:space="preserve">
-    <value>Код валюты</value>
-  </data>
-  <data name="lblDaysOpen.Caption" xml:space="preserve">
-    <value> - Открыта на {0} дней</value>
-  </data>
-  <data name="cpyCopyToEmail.Caption" xml:space="preserve">
-    <value>Копировать в Эл. почту</value>
-  </data>
-  <data name="EmailOppStatus.Caption" xml:space="preserve">
-    <value>Статус: {0}</value>
-  </data>
-  <data name="lblEmailOppType.Caption" xml:space="preserve">
-    <value>Тип:: {0}</value>
-  </data>
-  <data name="lueCurrencyCode.Rate.PropertyHeader" xml:space="preserve">
-    <value>Курс</value>
-  </data>
-  <data name="lblClosedSummary.Caption" xml:space="preserve">
-    <value>Закрыта </value>
-  </data>
-  <data name="lblTitle.Caption" xml:space="preserve">
-    <value>Информация о сделке</value>
-  </data>
-  <data name="lblBaseHeader.Caption" xml:space="preserve">
-    <value>База</value>
-  </data>
-  <data name="lblSource.Caption" xml:space="preserve">
-    <value>Источник- </value>
-  </data>
-  <data name="EmailOppContacts.Caption" xml:space="preserve">
-    <value>Контакты</value>
-  </data>
-  <data name="lblCompetitorsReplaced.Caption" xml:space="preserve">
-    <value>Конкурент(ы) заменены - {0}</value>
-  </data>
-  <data name="chkLockRate.Caption" xml:space="preserve">
-    <value>Зафиксировать частоту для этой Возможности</value>
-  </data>
-  <data name="lblOpenSalesPotential.Caption" xml:space="preserve">
-    <value>План</value>
-  </data>
-  <data name="lblEmailInfo.Caption" xml:space="preserve">
-    <value>----------Информация о сделке----------</value>
-  </data>
-  <data name="Status_ClosedWon" xml:space="preserve">
-    <value>Закрыта и выиграна</value>
-  </data>
-  <data name="lueCurrencyCode.Description.PropertyHeader" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="lueCurrencyCode.ToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="lblMyCurrencyHeader.Caption" xml:space="preserve">
-    <value>Моя валюта</value>
-  </data>
-  <data name="EmailOppProducts.Caption" xml:space="preserve">
-    <value>Продукты</value>
-  </data>
-  <data name="Status_ClosedLost" xml:space="preserve">
-    <value>Закрыта и проиграна</value>
-  </data>
-  <data name="dtpExchangeRateDate.Caption" xml:space="preserve">
-    <value>Дата курса обмена:</value>
-  </data>
-  <data name="lblSalesProcess.Caption" xml:space="preserve">
-    <value>Текущая стадия - {0}</value>
-  </data>
-  <data name="lblSummaryHeader.Caption" xml:space="preserve">
-    <value>Сводка</value>
-  </data>
-  <data name="Status_Open" xml:space="preserve">
-    <value>Открыть</value>
-  </data>
-  <data name="lblSummaryActivity.Caption" xml:space="preserve">
-    <value>- {0} дней с последей сделки.</value>
-  </data>
-  <data name="lblEmailOppAccount.Caption" xml:space="preserve">
-    <value>Субъект: </value>
-  </data>
-  <data name="EmailOppSummary.Caption" xml:space="preserve">
-    <value>Сводка</value>
+  <data name="EmailOppComments.Caption" xml:space="preserve">
+    <value>Комментарии:</value>
   </data>
   <data name="EmailOppCompetitors.Caption" xml:space="preserve">
     <value>Конкуренты</value>
   </data>
+  <data name="EmailOppCompReplaced.Caption" xml:space="preserve">
+    <value>Участник заменен:</value>
+  </data>
+  <data name="EmailOppContacts.Caption" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="lblEmailOppDesc.Caption" xml:space="preserve">
+    <value>Описание: </value>
+  </data>
+  <data name="EmailOppEstClose.Caption" xml:space="preserve">
+    <value>Ожидаемое закрытие</value>
+  </data>
+  <data name="lblEmailInfo.Caption" xml:space="preserve">
+    <value>----------Информация о возможности----------</value>
+  </data>
+  <data name="lblNone.Caption" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="EmailOppPotential.Caption" xml:space="preserve">
+    <value>Потенциал продаж:</value>
+  </data>
+  <data name="EmailOppProducts.Caption" xml:space="preserve">
+    <value>Продукты</value>
+  </data>
+  <data name="EmailOppReasonLost.Caption" xml:space="preserve">
+    <value>Причина проигрыша: {0}</value>
+  </data>
+  <data name="EmailOppReasonWon.Caption" xml:space="preserve">
+    <value>Причина выигрыша: {0}</value>
+  </data>
   <data name="EmailOppReseller.Caption" xml:space="preserve">
-    <value>Партнер:</value>
+    <value>Посредник:</value>
   </data>
-  <data name="lblExchangeRate.Caption" xml:space="preserve">
-    <value>Курс обмена:</value>
+  <data name="EmailOppStageSummary.Caption" xml:space="preserve">
+    <value>Текущая стадия - {0}</value>
   </data>
-  <data name="lblPotentialAmount.Caption" xml:space="preserve">
-    <value>По факту</value>
+  <data name="EmailOppSummary.Caption" xml:space="preserve">
+    <value>Сводка</value>
   </data>
-  <data name="lblOpportunityHeader.Caption" xml:space="preserve">
-    <value>Сделка</value>
-  </data>
-  <data name="EmailOppCreateDate.Caption" xml:space="preserve">
-    <value>Дата создания: </value>
+  <data name="lblEmailOppType.Caption" xml:space="preserve">
+    <value>Тип: {0}</value>
   </data>
   <data name="EmailOppValue.Caption" xml:space="preserve">
     <value>Значение</value>
   </data>
-  <data name="EmailOppReasonLost.Caption" xml:space="preserve">
-    <value>Причина проигрыша:     {0}</value>
-  </data>
-  <data name="lblCompetitors.Caption" xml:space="preserve">
-    <value>Конкурент(ы) - {0}</value>
-  </data>
-  <data name="EmailOppEstClose.Caption" xml:space="preserve">
-    <value>Планируемое закрытие:</value>
-  </data>
-  <data name="EmailOppWonLostSummary.Caption" xml:space="preserve">
-    <value>Дата закрытия {0}; Была открыта {1} дней</value>
-  </data>
-  <data name="lblWeighted.Caption" xml:space="preserve">
-    <value>Прогноз</value>
-  </data>
-  <data name="lueLeadSource.Description.PropertyHeader" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="lueCurrencyCode.Caption" xml:space="preserve">
-    <value>Валюта:</value>
-  </data>
   <data name="EmailOppWeighted.Caption" xml:space="preserve">
     <value>Прогноз:</value>
+  </data>
+  <data name="EmailOppWonLostSummary.Caption" xml:space="preserve">
+    <value>Дата закрытия {0}; было открыто на протяжении {1} дн.</value>
+  </data>
+  <data name="lblTitle.Caption" xml:space="preserve">
+    <value>Информация о возможности</value>
+  </data>
+  <data name="chkLockRate.Caption" xml:space="preserve">
+    <value>Зафиксировать ставку для этой возможности</value>
+  </data>
+  <data name="dtpExchangeRateDate.Caption" xml:space="preserve">
+    <value>Дата валютного курса:</value>
+  </data>
+  <data name="EmailOppCreateDate.Caption" xml:space="preserve">
+    <value>Дата создания: </value>
+  </data>
+  <data name="EmailOppSource.Caption" xml:space="preserve">
+    <value>Источник: {0}</value>
+  </data>
+  <data name="EmailOppStatus.Caption" xml:space="preserve">
+    <value>Статус: {0}</value>
+  </data>
+  <data name="lblBaseHeader.Caption" xml:space="preserve">
+    <value>Базовый</value>
+  </data>
+  <data name="lblMyCurrencyHeader.Caption" xml:space="preserve">
+    <value>Моя валюта</value>
+  </data>
+  <data name="lblPotentialAmount.Caption" xml:space="preserve">
+    <value>Фактическая сумма</value>
+  </data>
+  <data name="lblOpportunityHeader.Caption" xml:space="preserve">
+    <value>Возможность</value>
+  </data>
+  <data name="lblSource.Caption" xml:space="preserve">
+    <value>Источник — </value>
   </data>
   <data name="lblSummary.Caption" xml:space="preserve">
     <value>Открыта {0}дней назад </value>
   </data>
-  <data name="EmailOppReasonWon.Caption" xml:space="preserve">
-    <value>Причина выигрыша:     {0}</value>
-  </data>
   <data name="lblType.Caption" xml:space="preserve">
-    <value>Тип - </value>
+    <value>Тип — </value>
   </data>
-  <data name="EmailOppAcctMgr.Caption" xml:space="preserve">
-    <value>Менеджер:</value>
+  <data name="lblWeighted.Caption" xml:space="preserve">
+    <value>Прогноз</value>
   </data>
-  <data name="EmailOppSource.Caption" xml:space="preserve">
-    <value>Источник:: {0}</value>
+  <data name="lueCurrencyCode.Caption" xml:space="preserve">
+    <value>Валюта:</value>
+  </data>
+  <data name="lueCurrencyCode.Description.PropertyHeader" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="lueCurrencyCode.Rate.PropertyHeader" xml:space="preserve">
+    <value>Ставка</value>
+  </data>
+  <data name="lueCurrencyCode.ToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="lblExchangeRate.Caption" xml:space="preserve">
+    <value>Валютный курс:</value>
+  </data>
+  <data name="lblClosedSummary.Caption" xml:space="preserve">
+    <value>Закрыта </value>
+  </data>
+  <data name="lblCompetitors.Caption" xml:space="preserve">
+    <value>Конкуренты — {0}</value>
+  </data>
+  <data name="lblCompetitorsReplaced.Caption" xml:space="preserve">
+    <value>Конкуренты заменены — {0}</value>
+  </data>
+  <data name="lblDaysOpen.Caption" xml:space="preserve">
+    <value> - Открыто на {0} дн.</value>
+  </data>
+  <data name="lblOpenSalesPotential.Caption" xml:space="preserve">
+    <value>Потенциал продаж</value>
+  </data>
+  <data name="lblReasonLost.Caption" xml:space="preserve">
+    <value>Причина проигрыша — </value>
+  </data>
+  <data name="lblReasonWon.Caption" xml:space="preserve">
+    <value>Причина выигрыша — </value>
+  </data>
+  <data name="lblSalesProcess.Caption" xml:space="preserve">
+    <value>Текущая стадия - {0}</value>
+  </data>
+  <data name="lblSummaryActivity.Caption" xml:space="preserve">
+    <value>- {0} дн. с последнего действия.</value>
+  </data>
+  <data name="lblSummaryHeader.Caption" xml:space="preserve">
+    <value>Сводка</value>
+  </data>
+  <data name="lueLeadSource.AbbrevDescription.PropertyHeader" xml:space="preserve">
+    <value>Сокращенное описание</value>
+  </data>
+  <data name="lueLeadSource.Description.PropertyHeader" xml:space="preserve">
+    <value>Описание</value>
   </data>
   <data name="lueLeadSource.Type.PropertyHeader" xml:space="preserve">
     <value>Тип</value>
   </data>
-  <data name="lblReasonLost.Caption" xml:space="preserve">
-    <value>Причина проигрыша - </value>
+  <data name="Status_ClosedLost" xml:space="preserve">
+    <value>Закрыто и проиграно</value>
   </data>
-  <data name="EmailOppActivitySummary.Caption" xml:space="preserve">
-    <value>Открыта {0} дней назад на {1}; {2} дней после последнего дела</value>
+  <data name="Status_ClosedWon" xml:space="preserve">
+    <value>Закрыто и выиграно</value>
   </data>
-  <data name="EmailOppPotential.Caption" xml:space="preserve">
-    <value>План:</value>
+  <data name="Status_Open" xml:space="preserve">
+    <value>Открыть</value>
   </data>
-  <data name="EmailOppCompReplaced.Caption" xml:space="preserve">
-    <value>Участник заменен:</value>
+  <data name="Status_Inactive" xml:space="preserve">
+    <value>Неактивно</value>
   </data>
-  <data name="EmailOppComments.Caption" xml:space="preserve">
-    <value>Комм-рии:</value>
+  <data name="lblEmailSubject.Caption" xml:space="preserve">
+    <value>Возможность {0} ({1})</value>
   </data>
-  <data name="lblEmailOppDesc.Caption" xml:space="preserve">
-    <value>Описание: </value>
+  <data name="cpyCopyToEmail.Caption" xml:space="preserve">
+    <value>Копировать в электронную почту</value>
+  </data>
+  <data name="lblMyCurrencyHeader.Header" xml:space="preserve">
+    <value>Моя валюта</value>
+  </data>
+  <data name="lueCurrencyCode.Currency.PropertyHeader" xml:space="preserve">
+    <value>Код валюты</value>
+  </data>
+  <data name="lblSyncStateNoPendingChanges" xml:space="preserve">
+    <value>Со времени последнего выдвижения для "{0}" нет новых изменений.</value>
+  </data>
+  <data name="lblSyncStatePendingChanges" xml:space="preserve">
+    <value>После последнего выдвижения для "{0}" имеются новые изменения. Подтвердите изменения, используя ссылку выдвижения в панели задач.</value>
   </data>
 </root>

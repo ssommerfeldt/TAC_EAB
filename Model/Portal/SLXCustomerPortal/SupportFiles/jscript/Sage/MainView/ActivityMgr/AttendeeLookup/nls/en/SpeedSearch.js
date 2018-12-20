@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/en/SpeedSearch", (
 { selectAllText: 'Select All',
   findItemText: 'Find User:',
   findText: 'Find',

@@ -1,7 +1,6 @@
 <%@ Import Namespace="Sage.Platform.Application.UI"%>
 <%@ Import Namespace="Sage.Platform.Security" %>
 <%@ Import Namespace="Sage.Platform.WebPortal.SmartParts"%>
-<%@ Import namespace="Sage.SalesLogix.Entities"%>
 <%@ Import namespace="Sage.Platform"%>
 <%@ Import namespace="Sage.Entity.Interfaces"%>
 <%@ Control Language="C#" ClassName="InsertContact" Inherits="Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPartInfoProvider" %>
@@ -22,7 +21,7 @@
          <asp:ImageButton runat="server" ID="cmdSave" AlternateText="<%$ resources: cmdSave.Caption %>" ToolTip="<%$ resources: cmdSave.ToolTip %>"
             ImageUrl="~/ImageResource.axd?scope=global&type=Global_Images&key=Save_16x16" />
          <asp:ImageButton runat="server" ID="cmdSaveNew" AlternateText="<%$ resources: cmdSaveNew.Caption %>" ToolTip="<%$ resources: cmdSaveNew.ToolTip %>"
-            ImageUrl="~/ImageResource.axd?scope=global&type=Global_Images&key=Save_New16x16" />
+            ImageUrl="~/ImageResource.axd?scope=global&type=Global_Images&key=New_Contact_16x16" />
          <asp:ImageButton runat="server" ID="cmdSaveClear" AlternateText="<%$ resources: cmdSaveClear.Caption %>" ToolTip="<%$ resources: cmdSaveClear.ToolTip %>"
             ImageUrl="~/ImageResource.axd?scope=global&type=Global_Images&key=Save_Clear16x16" />
          <SalesLogix:PageLink ID="lnkInsertContactHelp" runat="server" LinkType="HelpFileName" ToolTip="<%$ resources: lnkHelp.Caption %>"
@@ -33,18 +32,18 @@
 <table border="0" cellpadding="1" cellspacing="0" class="formtable">
 	<col width="33%" /><col width="33%" /><col width="33%" />
 	<tr>
-		<td>  
-			<span class="lbl">
+		<td>
+			<span class="lbl alignright">
 			    <asp:Label ID="nmeContactName_lz" AssociatedControlID="nmeContactName" runat="server" Text="<%$ resources: nmeContactName.Caption %>"></asp:Label>
-			</span> 
+			</span>
 			<span>
 				<span class="textcontrol">
 				    <SalesLogix:FullName runat="server" ID="nmeContactName" />
 				</span>
-			</span> 
+			</span>
 		</td>
-		<td colspan="2">  
-			<span class="lbl"><asp:Label ID="lueUseExistingAccount_lz" AssociatedControlID="lueUseExistingAccount" runat="server" Text="<%$ resources: lueUseExistingAccount.Caption %>"></asp:Label></span> 
+		<td colspan="2">
+			<span class="lbl"><asp:Label ID="lueUseExistingAccount_lz" AssociatedControlID="lueUseExistingAccount" runat="server" Text="<%$ resources: lueUseExistingAccount.Caption %>"></asp:Label></span>
 			<span   class="textcontrol">
                 <SalesLogix:LookupControl runat="server" ID="lueUseExistingAccount" LookupEntityName="Account" LookupDisplayMode="HyperText" AutoPostBack="true"
                     LookupEntityTypeName="Sage.Entity.Interfaces.IAccount, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -66,7 +65,7 @@
 					    </SalesLogix:LookupProperty>
                         <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueUseExistingAccount.LookupProperties.SubType.PropertyHeader %>"
                             PropertyName="SubType" PropertyFormat="None"  UseAsResult="True" ExcludeFromFilters="False">
-                        </SalesLogix:LookupProperty>					
+                        </SalesLogix:LookupProperty>
 					    <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueUseExistingAccount.LookupProperties.Status.PropertyHeader %>"
                             PropertyName="Status" PropertyFormat="None"  UseAsResult="True" ExcludeFromFilters="False">
 					    </SalesLogix:LookupProperty>
@@ -85,7 +84,7 @@
 	</tr>
 	<tr>
 		<td>
-			<div class="lbl">
+			<div class="lbl alignright">
 			    <asp:Label ID="txtContactAccountName_lz" AssociatedControlID="txtContactAccountName" runat="server" Text="<%$ resources: txtContactAccountName.Caption %>"></asp:Label>
 			</div>
 			<div class="textcontrol">
@@ -98,7 +97,7 @@
 	</tr>
 	<tr>
 		<td>
-		    <div class="lbl">
+		    <div class="lbl alignright">
 		        <asp:Label ID="emlContactEmail_lz" AssociatedControlID="emlContactEmail" runat="server" Text="<%$ resources: emlContactEmail.Caption %>"></asp:Label>
 		    </div>
 			<div class="textcontrol">
@@ -110,9 +109,9 @@
 	</tr>
 	<tr>
 		<td>
-			<div class="lbl">
+			<div class="lbl alignright">
 			    <asp:Label ID="webContactWebAddress_lz" AssociatedControlID="webContactWebAddress" runat="server" Text="<%$ resources: webContactWebAddress.Caption %>"></asp:Label>
-			</div> 
+			</div>
 			<div class="textcontrol">
 			    <SalesLogix:URL runat="server" ID="webContactWebAddress" URLTextBoxStyle-ForeColor="#000099" URLTextBoxStyle-Font-Underline="false" ButtonToolTip="<%$ resources: webContactWebAddress.ButtonToolTip %>" />
 			</div>
@@ -125,12 +124,16 @@
 	</tr>
 	<tr>
 		<td>
-			<div class="lbl">
+			<div class="lbl alignright">
 			    <asp:Label ID="phnContactWorkPhone_lz" AssociatedControlID="phnContactWorkPhone" runat="server" Text="<%$ resources: phnContactWorkPhone.Caption %>"></asp:Label>
-			</div> 
+			</div>
 			<div class="textcontrol">
-			    <SalesLogix:Phone runat="server" ID="phnContactWorkPhone" AutoPostBack="true" />
-			</div> 
+			      <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <SalesLogix:Phone runat="server" ID="phnContactWorkPhone" AutoPostBack="true" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+			</div>
 		</td>
 		<td colspan="2">
 		    <div class="slxlabel alignleft checkbox">
@@ -145,19 +148,17 @@
 					<asp:Localize ID="Localize1" runat="server" Text="<%$ resources: hzsContactInformation.Caption %>">Contact Information</asp:Localize>
 				</span>
 			</div>
-		</td>	
+		</td>
 	</tr>
 	<tr>
-		<td >  
-            <div class="lbl">
+		<td >
+            <div class="lbl alignright">
                 <asp:Label ID="pklContactTitle_lz" AssociatedControlID="pklContactTitle" runat="server" Text="<%$ resources: pklContactTitle.Caption %>"></asp:Label>
-            </div> 
-            <div class="textcontrol">
-                <SalesLogix:PickListControl runat="server" ID="pklContactTitle" PickListId="kSYST0000385" PickListName="Title" MustExistInList="false" AlphaSort="true" />
-            </div> 
+            </div>            
+             <SalesLogix:PickListControl runat="server" ID="pklContactTitle" PickListId="kSYST0000385" PickListName="Title" MustExistInList="false" AlphaSort="true" />
         </td>
         <td>
-            <div class="lbl"><asp:Label ID="phnContactHomePhone_lz" AssociatedControlID="phnContactHomePhone" runat="server" Text="<%$ resources: phnContactHomePhone.Caption %>"></asp:Label></div> 
+            <div class="lbl alignright"><asp:Label ID="phnContactHomePhone_lz" AssociatedControlID="phnContactHomePhone" runat="server" Text="<%$ resources: phnContactHomePhone.Caption %>"></asp:Label></div>
             <div class="textcontrol">
                 <SalesLogix:Phone runat="server" ID="phnContactHomePhone" />
             </div>
@@ -165,7 +166,7 @@
     </tr>
     <tr>
         <td rowspan="3">
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="adrContactAddress_lz" AssociatedControlID="adrContactAddress" runat="server" Text="<%$ resources: adrContactAddress.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -176,7 +177,7 @@
             </div>
         </td>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="phnContactMobile_lz" AssociatedControlID="phnContactMobile" runat="server" Text="<%$ resources: phnContactMobile.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -186,12 +187,12 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="phnContactFax_lz" AssociatedControlID="phnContactFax" runat="server" Text="<%$ resources: phnContactFax.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
                 <SalesLogix:Phone runat="server" ID="phnContactFax" />
-            </div> 
+            </div>
         </td>
     </tr>
     <tr>
@@ -213,7 +214,7 @@
     </tr>
     <tr>
         <td rowspan="5">
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="adrAccountAddress_lz" AssociatedControlID="adrAccountAddress" runat="server" Text="<%$ resources: adrAccountAddress.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -224,7 +225,7 @@
             </div>
         </td>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="phnAccountMainPhone_lz" AssociatedControlID="phnAccountMainPhone" runat="server" Text="<%$ resources: phnAccountMainPhone.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -232,7 +233,7 @@
             </div>
         </td>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="pklAccountIndustry_lz" AssociatedControlID="pklAccountIndustry" runat="server" Text="<%$ resources: pklAccountIndustry.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -243,17 +244,17 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="phnAccountFax_lz" AssociatedControlID="phnAccountFax" runat="server" Text="<%$ resources: phnAccountFax.Caption %>"></asp:Label>
-            </div> 
+            </div>
             <div class="textcontrol">
                 <SalesLogix:Phone runat="server" ID="phnAccountFax" />
             </div>
         </td>
         <td rowspan="4">
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="txtAccountBusinessDescription_lz" AssociatedControlID="txtAccountBusinessDescription" runat="server" Text="<%$ resources: txtAccountBusinessDescription.Caption %>"></asp:Label>
-            </div> 
+            </div>
             <div class="textcontrol">
                 <asp:TextBox runat="server" ID="txtAccountBusinessDescription" TextMode="MultiLine" Columns="40" Rows="4" />
             </div>
@@ -261,7 +262,7 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="pklAccountType_lz" AssociatedControlID="pklAccountType" runat="server" Text="<%$ resources: pklAccountType.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -272,7 +273,7 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="pklAccountSubType_lz" AssociatedControlID="pklAccountSubType" runat="server" Text="<%$ resources: pklAccountSubType.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -282,7 +283,7 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="pklAccountStatus_lz" AssociatedControlID="pklAccountStatus" runat="server" Text="<%$ resources: pklAccountStatus.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -300,7 +301,7 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="usrAccountManager_lz" AssociatedControlID="usrAccountManager" runat="server" Text="<%$ resources: usrAccountManager.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -308,7 +309,7 @@
             </div>
         </td>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="ownAccountOwner_lz" AssociatedControlID="ownAccountOwner" runat="server" Text="<%$ resources: ownAccountOwner.Caption %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -316,7 +317,7 @@
             </div>
         </td>
         <td>
-            <div class=" lbl alignleft">
+            <div class=" lbl alignright">
                 <asp:Label ID="LeadSource_lbl" AssociatedControlID="lucLeadSource" runat="server" Text="<%$ resources: LeadSource.Caption %>" ></asp:Label>
             </div>
             <div class="textcontrol lookup">
@@ -328,16 +329,19 @@
                         <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueUseExistingAccount.LookupProperties.Status.PropertyHeader %>" PropertyName="Status" PropertyType="System.String" PropertyFormat="None"  UseAsResult="True" ExcludeFromFilters="False"></SalesLogix:LookupProperty>
                     </LookupProperties>
                     <LookupPreFilters>
-                    <SalesLogix:LookupPreFilter PropertyName="Status" PropertyType="System.String" OperatorCode="="
-                        FilterValue="<%$ resources: LeadSource.LUPF.Status %>">
-                    </SalesLogix:LookupPreFilter>
                     </LookupPreFilters>
                 </SalesLogix:LookupControl>
             </div>
         </td>
     </tr>
 </table>
- 
+<script type="text/javascript">
+       require(['dojo/ready', 'dojo/dom', 'dojo/dom-style', 'Sage/BrowserSupport'], function (ready, dom, domStyle, browserSupport) {
+        ready(function () {
+			$("#ContentPlaceHolderMain_MainContent_InsertContact_pklContactTitle-MultipleSelectPickList-TextBox").attr("readonly","readonly");
+		});
+    });    
+</script>
 <script runat="server" type="text/C#">
 	public override Type EntityType
 	{
@@ -357,19 +361,18 @@
             return _userOpts;
         }
     }
-    
+
     private void DiasbleFLS()
     {
         foreach (Sage.Platform.EntityBinding.IEntityBinding eb in BindingSource.Bindings)
-        { 
+        {
             WebEntityBinding wb = eb as WebEntityBinding;
             wb.IgnoreFLSDisabling = true;
         }
     }
+
     private void IgnoreAccountBindings()
     {
-
-        
         foreach (Sage.Platform.EntityBinding.IEntityBinding eb in BindingSource.Bindings)
         {
             WebEntityBinding wb = eb as WebEntityBinding;
@@ -403,41 +406,47 @@
             case "Account.AccountManager":
                 return true;
             case "Account.Owner":
-                return true;  
+                return true;
             case "Account.LeadSource":
-                return true;                  
+                return true;
             case "Account.Address.FullAddress":
-                return true;  
+                return true;
             case "Account.Address.City":
-                return true;  
+                return true;
             case "Account.Address.Country":
-                return true;  
+                return true;
             case "Account.Address.County":
-                return true;  
+                return true;
             case "Account.Address.Address1":
-                return true;  
+                return true;
             case "Account.Address.Address2":
-                return true;  
+                return true;
             case "Account.Address.Address3":
-                return true; 
+                return true;
+			case "Account.Address.Address4":
+                return true;
+            case "Account.Address.Address5":
+                return true;
+            case "Account.Address.Address6":
+                return true;
             case "Account.Address.Description":
-                return true; 
+                return true;
             case "Account.Address.IsMailing":
-                return true; 
+                return true;
             case "Account.Address.IsPrimary":
-                return true; 
+                return true;
             case "Account.Address.PostalCode":
                 return true;
             case "Account.Address.Salutation":
-                return true; 
+                return true;
             case "Account.Address.State":
-                return true;    
+                return true;
             default:
                 return false;
         }
     }
-    
-	protected override void OnAddEntityBindings() 
+
+	protected override void OnAddEntityBindings()
 	{
         BindingSource.Bindings.Add(new WebEntityBinding("Prefix", nmeContactName, "NamePrefix"));
         BindingSource.Bindings.Add(new WebEntityBinding("FirstName", nmeContactName, "NameFirst"));
@@ -457,6 +466,9 @@
         BindingSource.Bindings.Add(new WebEntityBinding("Address.Address1", adrContactAddress, "AddressDesc1"));
         BindingSource.Bindings.Add(new WebEntityBinding("Address.Address2", adrContactAddress, "AddressDesc2"));
         BindingSource.Bindings.Add(new WebEntityBinding("Address.Address3", adrContactAddress, "AddressDesc3"));
+		BindingSource.Bindings.Add(new WebEntityBinding("Address.Address4", adrContactAddress, "AddressDesc4"));
+        BindingSource.Bindings.Add(new WebEntityBinding("Address.Address5", adrContactAddress, "AddressDesc5"));
+        BindingSource.Bindings.Add(new WebEntityBinding("Address.Address6", adrContactAddress, "AddressDesc6"));
         BindingSource.Bindings.Add(new WebEntityBinding("Address.City", adrContactAddress, "AddressCity"));
         BindingSource.Bindings.Add(new WebEntityBinding("Address.State", adrContactAddress, "AddressState"));
         BindingSource.Bindings.Add(new WebEntityBinding("Address.PostalCode", adrContactAddress, "AddressPostalCode"));
@@ -474,6 +486,9 @@
 		BindingSource.Bindings.Add(new WebEntityBinding("Account.Address.Address1", adrAccountAddress, "AddressDesc1"));
 		BindingSource.Bindings.Add(new WebEntityBinding("Account.Address.Address2", adrAccountAddress, "AddressDesc2"));
 		BindingSource.Bindings.Add(new WebEntityBinding("Account.Address.Address3", adrAccountAddress, "AddressDesc3"));
+		BindingSource.Bindings.Add(new WebEntityBinding("Account.Address.Address4", adrAccountAddress, "AddressDesc4"));
+		BindingSource.Bindings.Add(new WebEntityBinding("Account.Address.Address5", adrAccountAddress, "AddressDesc5"));
+		BindingSource.Bindings.Add(new WebEntityBinding("Account.Address.Address6", adrAccountAddress, "AddressDesc6"));
 		BindingSource.Bindings.Add(new WebEntityBinding("Account.Address.Description", adrAccountAddress, "AddressDescription"));
 		BindingSource.Bindings.Add(new WebEntityBinding("Account.Address.IsMailing", adrAccountAddress, "AddressIsMailing"));
 		BindingSource.Bindings.Add(new WebEntityBinding("Account.Address.IsPrimary", adrAccountAddress, "AddressIsPrimary"));
@@ -527,6 +542,8 @@
         contact.Address.Address2 = account.Address.Address2;
         contact.Address.Address3 = account.Address.Address3;
         contact.Address.Address4 = account.Address.Address4;
+		contact.Address.Address5 = account.Address.Address5;
+        contact.Address.Address6 = account.Address.Address6;
         contact.Address.City = account.Address.City;
         contact.Address.Country = account.Address.Country;
         contact.Address.County = account.Address.County;
@@ -539,7 +556,7 @@
         contact.Address.Salutation = contact.FirstName;
         contact.Address.State = account.Address.State;
         contact.Address.TimeZone = account.Address.TimeZone;
-        contact.Address.Type = account.Address.Type;
+        contact.Address.EntityType = contact.GetType().Name;
 
         contact.Address.Description = string.IsNullOrEmpty(account.Address.Description)
                                           ? GetLocalResourceObject("Contact_Address_Description_Default").ToString()
@@ -572,7 +589,7 @@
 
     protected void phnContactWorkPhone_ChangeAction(object sender, EventArgs e)
 	{
-		///* If we're dealing with a new Account and Contact. */
+		// If we're dealing with a new Account and Contact
 		IContact contact = BindingSource.Current as IContact;
         if (contact == null) return;
         if (contact.Account.Id == null)
@@ -590,7 +607,7 @@
         }
 	}
 
-	protected void cmdMatchingRecords_ClickAction(object sender, EventArgs e)    
+	protected void cmdMatchingRecords_ClickAction(object sender, EventArgs e)
     {
 		if (DialogService != null)
 		{
@@ -618,7 +635,9 @@
             contact.Account.Address.Address1 = adrContactAddress.AddressDesc1;
             contact.Account.Address.Address2 = adrContactAddress.AddressDesc2;
             contact.Account.Address.Address3 = adrContactAddress.AddressDesc3;
-            contact.Account.Address.Address4 = "";
+            contact.Account.Address.Address4 = adrContactAddress.AddressDesc4;
+            contact.Account.Address.Address5 = adrContactAddress.AddressDesc5;
+            contact.Account.Address.Address6 = adrContactAddress.AddressDesc6;
             contact.Account.Address.City = adrContactAddress.AddressCity;
             contact.Account.Address.Country = adrContactAddress.AddressCountry;
             contact.Account.Address.County = adrContactAddress.AddressCounty;
@@ -642,42 +661,41 @@
 		}
 	}
 
-	protected void cmdSave_ClickAction(object sender, EventArgs e)
-	{
-        saveOptions();
-        IContact contact = BindingSource.Current as IContact;
-		if (contact != null)
-		{
-			object[] objarray = new object[] { contact, contact.Account };
-			object contactId = EntityFactory.Execute<Contact>("Contact.SaveContactAccount", objarray);
-			if (contactId != null)
-				Response.Redirect(string.Format("Contact.aspx?entityId={0}", (contactId)));
-		}
-	}
+    protected void cmdSave_ClickAction(object sender, EventArgs e)
+    {
+        var contactId = SaveContact();
+        if (contactId != null)
+        {
+            Response.Redirect(string.Format("Contact.aspx?entityId={0}", contactId));
+        }
+    }
 
-	protected void cmdSaveNew_ClickAction(object sender, EventArgs e)
-	{
-        saveOptions();
-        IContact contact = BindingSource.Current as IContact;
-		if (contact != null)
-		{
-			object[] objarray = new object[] {contact, contact.Account};
-			EntityFactory.Execute<Contact>("Contact.SaveContactAccount", objarray);
-			Response.Redirect(string.Format("InsertContactAccount.aspx?modeid=Insert&accountId={0}", contact.Account.Id));
-		}
-	}
+    protected void cmdSaveNew_ClickAction(object sender, EventArgs e)
+    {
+        if (SaveContact() == null) return;
+        var contact = BindingSource.Current as IContact;
+        Response.Redirect(string.Format("InsertContactAccount.aspx?modeid=Insert&accountId={0}", contact.Account.Id));
+    }
 
-	protected void cmdSaveClear_ClickAction(object sender, EventArgs e)
-	{
+    protected void cmdSaveClear_ClickAction(object sender, EventArgs e)
+    {
+        if (SaveContact() == null) return;
+        Response.Redirect("InsertContactAccount.aspx?modeid=Insert");
+    }
+
+    private string SaveContact()
+    {
         saveOptions();
-        IContact contact = BindingSource.Current as IContact;
-		if (contact != null)
-		{
-			object[] objarray = new object[] {contact, contact.Account};
-			EntityFactory.Execute<Contact>("Contact.SaveContactAccount", objarray);
-			Response.Redirect("InsertContactAccount.aspx?modeid=Insert");
-		}
-	}
+        var contact = BindingSource.Current as IContact;
+        if (contact == null) return null;
+        var contactId = contact.SaveContactAccount(contact.Account);
+        var leadSource = lucLeadSource.LookupResultValue as ILeadSource;
+        if (leadSource == null) return contactId;
+        var contactLeadSource = EntityFactory.Create<IContactLeadSource>();
+        contactLeadSource.LeadSource = leadSource;
+        contact.SaveContactLeadSource(contactLeadSource);
+        return contactId;
+    }
 
 	protected override void OnLoad(EventArgs e)
 	{
@@ -729,7 +747,7 @@
                     chkAutoSearch.Checked = TurnOnAutoSearch();
                 }
             }
-           
+
             IAccount account = GetCurrentAccount(contact);
             if (account == null) return;
             Boolean changeEnable = (account.Id == null);
@@ -753,7 +771,7 @@
                 lueUseExistingAccount.LookupResultValue = account;
                 pklAccountSubType.PickListName = account.GetSubTypePickListName();
             }
-                
+
             if (!IsPostBack)
             {
                 contact.WebAddress = account.WebAddress;
@@ -763,6 +781,8 @@
                 contact.Address.Address2 = account.Address.Address2;
                 contact.Address.Address3 = account.Address.Address3;
                 contact.Address.Address4 = account.Address.Address4;
+				contact.Address.Address5 = account.Address.Address5;
+                contact.Address.Address6 = account.Address.Address6;
                 contact.Address.City = account.Address.City;
                 contact.Address.Country = account.Address.Country;
                 contact.Address.County = account.Address.County;
@@ -773,11 +793,10 @@
                 contact.Address.Salutation = contact.FirstName;
                 contact.Address.State = account.Address.State;
                 contact.Address.TimeZone = account.Address.TimeZone;
-                contact.Address.Type = account.Address.Type;
 
                 if (String.IsNullOrEmpty(contact.PreferredContact))
                 {
-                    contact.PreferredContact = GetLocalResourceObject("Default_Contact_Preferred_Contact").ToString();
+                    contact.PreferredContact = "Unknown";
                 }
                 if (String.IsNullOrEmpty(account.Address.Description))
                 {
@@ -785,6 +804,12 @@
                 }
                 contact.Address.Description  = account.Address.Description;
             }
+        }
+        var value = Sage.SalesLogix.BusinessRules.BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+        if (!String.IsNullOrEmpty(value))
+        {
+            var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+            lucLeadSource.LookupPreFilters.Add(leadSourcePreFilter);
         }
     }
 
@@ -803,7 +828,7 @@
                 account = EntityFactory.Create<IAccount>();
             }
             contact.Account = account;
-            ClientBindingMgr.SetFocusTo(nmeContactName); 
+            ClientBindingMgr.SetFocusTo(nmeContactName);
         }
         else
         {
@@ -840,6 +865,22 @@
 
                 pklAccountSubType.PickListName = account.GetSubTypePickListName();
             }
+        }
+		if (!IsPostBack)
+        {
+            var defaultPicklistCode = PickListControl.GetDefaultPickListValue(pklAccountType.PickListName);
+			if(string.IsNullOrEmpty(defaultPicklistCode))
+			{
+				pklAccountType.PickListValue = account.Type;
+			}
+			else
+			{
+				pklAccountType.PickListValue = defaultPicklistCode;
+			}
+            account.Type = pklAccountType.PickListValue;
+			pklAccountSubType.PickListName = account.GetSubTypePickListName();
+			account.SubType = pklAccountSubType.PickListValue;
+			account.Industry = pklAccountIndustry.PickListValue;
         }
         base.OnFormBound();
 	}
@@ -883,7 +924,7 @@
        }
        return false;
     }
-    
+
     private void saveOptions()
     {
         string option = "N";
@@ -891,6 +932,6 @@
         {
             option = "Y";
         }
-        UserOptionsService.SetCommonOption("InsertNewContactAccount.AutoSearch", "Insert", option, false);     
+        UserOptionsService.SetCommonOption("InsertNewContactAccount.AutoSearch", "Insert", option, false);
     }
 </script>

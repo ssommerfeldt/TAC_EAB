@@ -117,70 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueAssociateReturn.LookupProperties.ShipTo.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Expédier à</value>
-  </data>
-  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.ConfirmationMessage" xml:space="preserve">
-    <value>Souhaitez-vous vraiment supprimer l'association avec le retour sélectionné ?</value>
-  </data>
-  <data name="grdReturns.6e0ca51d-2f96-4d24-bd97-1d790387df64.ColumnHeading" xml:space="preserve">
-    <value>ID de retour</value>
-  </data>
-  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.Text" xml:space="preserve">
-    <value>Retirer</value>
-  </data>
-  <data name="lueAssociateReturn.LookupProperties.SubmittedBy.CreateUser.PropertyHeader" xml:space="preserve">
-    <value>Reçu par</value>
-  </data>
-  <data name="lueAssociateReturn.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Compte</value>
-  </data>
-  <data name="lueAssociateReturn.LookupProperties.ReturnNumber.PropertyHeader" xml:space="preserve">
-    <value>ID de retour</value>
-  </data>
-  <data name="lblReturnBy.Text" xml:space="preserve">
-    <value>Renvoyer les informations</value>
-  </data>
-  <data name="lblShipInfo.Text" xml:space="preserve">
-    <value>Informations d'expédition</value>
-  </data>
-  <data name="grdReturns.3a20a9d8-2735-405c-a43e-284753a47f9d.Text" xml:space="preserve">
-    <value>Sélectionner</value>
-  </data>
   <data name="grdReturns.EmptyTableRowText" xml:space="preserve">
     <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
   </data>
-  <data name="grdReturns.5f52577b-af59-4473-ab0e-d7b447f5a1d7.ColumnHeading" xml:space="preserve">
-    <value>Priorité</value>
+  <data name="ctrlstReturnInfo.Caption" xml:space="preserve">
+    <value>Informations de retour - </value>
   </data>
   <data name="grdReturns.80924fab-5e90-4ace-b938-0dc5b5ecfd08.ColumnHeading" xml:space="preserve">
     <value>Date de création</value>
   </data>
-  <data name="lueAssociateReturn.LookupProperties.Ticket.TicketNumber.PropertyHeader" xml:space="preserve">
-    <value>ID de ticket</value>
-  </data>
-  <data name="b625fe0e-0322-48de-bc1f-472019ffd5e7.DuplicateAssociationMessage" xml:space="preserve">
-    <value>Cette RMA a déjà été associée au défaut.</value>
-  </data>
-  <data name="grdReturns.50f750f9-6ef2-4662-b84a-4f2794d49ac5.ColumnHeading" xml:space="preserve">
-    <value>Etat</value>
-  </data>
-  <data name="txtReturnNotes.Caption" xml:space="preserve">
-    <value>Notes :</value>
-  </data>
-  <data name="lueAssociateReturn.ButtonToolTip" xml:space="preserve">
-    <value>Associer un retour</value>
-  </data>
-  <data name="pklShipVia.Caption" xml:space="preserve">
-    <value>Expédier par - </value>
+  <data name="grdReturns.6e0ca51d-2f96-4d24-bd97-1d790387df64.ColumnHeading" xml:space="preserve">
+    <value>ID de retour</value>
   </data>
   <data name="grdReturns.1e9a6eaa-994b-49c9-9ad5-06abf1c0c5c6.ColumnHeading" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="grdReturns.50f750f9-6ef2-4662-b84a-4f2794d49ac5.ColumnHeading" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="grdReturns.5f52577b-af59-4473-ab0e-d7b447f5a1d7.ColumnHeading" xml:space="preserve">
+    <value>Priorité</value>
+  </data>
+  <data name="txtReturnNotes.Caption" xml:space="preserve">
+    <value>Notes :</value>
+  </data>
+  <data name="grdReturns.3a20a9d8-2735-405c-a43e-284753a47f9d.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdReturns.3a20a9d8-2735-405c-a43e-284753a47f9d.Text" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="lblReturnBy.Text" xml:space="preserve">
+    <value>Informations de retour</value>
+  </data>
+  <data name="lblShipInfo.Text" xml:space="preserve">
+    <value>Informations d'expédition</value>
+  </data>
   <data name="memComments.Caption" xml:space="preserve">
     <value>Commentaires</value>
   </data>
-  <data name="ctrlstReturnInfo.Caption" xml:space="preserve">
-    <value>Informations de retour - </value>
+  <data name="pklShipVia.Caption" xml:space="preserve">
+    <value>Expédier par - </value>
+  </data>
+  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.ConfirmationMessage" xml:space="preserve">
+    <value>Souhaitez-vous vraiment supprimer l'association avec le retour sélectionné ?</value>
+  </data>
+  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="lueAssociateReturn.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.ReturnNumber.PropertyHeader" xml:space="preserve">
+    <value>ID de retour</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.ShipTo.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Destinataire</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.Ticket.TicketNumber.PropertyHeader" xml:space="preserve">
+    <value>ID de ticket</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.SubmittedBy.CreateUser.PropertyHeader" xml:space="preserve">
+    <value>Reçu par</value>
+  </data>
+  <data name="lueAssociateReturn.ButtonToolTip" xml:space="preserve">
+    <value>Associer un retour</value>
+  </data>
+  <data name="b625fe0e-0322-48de-bc1f-472019ffd5e7.DuplicateAssociationMessage" xml:space="preserve">
+    <value>Cette RMA a déjà été associée au défaut.</value>
   </data>
 </root>

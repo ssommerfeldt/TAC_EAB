@@ -117,76 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueAssociateTicket.LookupProperties.Contact.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Tel. Ufficio</value>
-  </data>
-  <data name="grdTickets.9bf656da-d7e7-4548-aea1-ee4f534ad6c5.ColumnHeading" xml:space="preserve">
-    <value>Azienda</value>
-  </data>
-  <data name="09ad58d5-bbc2-4661-9958-358b728c3728.DuplicateAssociationMessage" xml:space="preserve">
-    <value>Questo ticket è già stato associato con il difetto.</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.AssignedTo.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Assegnato a</value>
-  </data>
-  <data name="grdTickets.619d19e7-5041-48c9-9235-674195608f7c.Text" xml:space="preserve">
-    <value>Seleziona</value>
-  </data>
-  <data name="txtSubject.Caption" xml:space="preserve">
-    <value>Oggetto</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.StatusCode.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="grdTickets.dc2c7ac9-9408-4400-b15f-d32d4f238399.ColumnHeading" xml:space="preserve">
-    <value>Data Ricezione</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.TicketNumber.PropertyHeader" xml:space="preserve">
-    <value>ID Ticket</value>
-  </data>
-  <data name="lueAssociateTicket.ButtonToolTip" xml:space="preserve">
-    <value>Associa Ticket</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.Contact.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Contatto</value>
-  </data>
-  <data name="grdTickets.a9e5488e-26dc-431b-94b4-18b6f1514df9.ColumnHeading" xml:space="preserve">
-    <value>ID Ticket</value>
-  </data>
-  <data name="grdTickets.91701bdf-1c41-4bcf-92c9-0c7158b9b91b.ColumnHeading" xml:space="preserve">
-    <value>Data limite</value>
-  </data>
-  <data name="lueAssociateTicket.LookupProperties.Area.PropertyHeader" xml:space="preserve">
-    <value>Area</value>
-  </data>
-  <data name="memResolution.Caption" xml:space="preserve">
-    <value>Soluzione</value>
-  </data>
   <data name="grdTickets.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
   </data>
   <data name="grdTickets.f8a85f43-b45e-4818-9384-ce7bdeb11594.ColumnHeading" xml:space="preserve">
-    <value>Status</value>
+    <value>Stato</value>
   </data>
   <data name="grdTickets.5abc88c5-6391-4eae-b924-a00f0f1ee021.ColumnHeading" xml:space="preserve">
     <value>Urgenza</value>
   </data>
-  <data name="lueAssociateTicket.LookupProperties.Urgency.Description.PropertyHeader" xml:space="preserve">
-    <value>Urgenza</value>
+  <data name="grdTickets.a9e5488e-26dc-431b-94b4-18b6f1514df9.ColumnHeading" xml:space="preserve">
+    <value>ID ticket</value>
+  </data>
+  <data name="grdTickets.5da526ca-9ac5-452f-9f48-74405ee66ea1.ColumnHeading" xml:space="preserve">
+    <value />
   </data>
   <data name="grdTickets.5da526ca-9ac5-452f-9f48-74405ee66ea1.Text" xml:space="preserve">
     <value>Rimuovi</value>
   </data>
+  <data name="grdTickets.5da526ca-9ac5-452f-9f48-74405ee66ea1.ConfirmationMessage" xml:space="preserve">
+    <value>Rimuovere l'associazione con il ticket selezionato?</value>
+  </data>
+  <data name="grdTickets.619d19e7-5041-48c9-9235-674195608f7c.Text" xml:space="preserve">
+    <value>Seleziona</value>
+  </data>
+  <data name="grdTickets.9bf656da-d7e7-4548-aea1-ee4f534ad6c5.ColumnHeading" xml:space="preserve">
+    <value>Azienda</value>
+  </data>
+  <data name="grdTickets.dc2c7ac9-9408-4400-b15f-d32d4f238399.ColumnHeading" xml:space="preserve">
+    <value>Data di ricezione</value>
+  </data>
+  <data name="grdTickets.91701bdf-1c41-4bcf-92c9-0c7158b9b91b.ColumnHeading" xml:space="preserve">
+    <value>Termine previsto</value>
+  </data>
+  <data name="lueAssociateTicket.ToolTip" xml:space="preserve">
+    <value>Associa ticket</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.TicketNumber.PropertyHeader" xml:space="preserve">
+    <value>ID ticket</value>
+  </data>
   <data name="lueAssociateTicket.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
     <value>Azienda</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.Contact.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Contatto</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.StatusCode.PropertyHeader" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.AssignedTo.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Assegnato a</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.Contact.WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>Telefono ufficio</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.Urgency.Description.PropertyHeader" xml:space="preserve">
+    <value>Urgenza</value>
+  </data>
+  <data name="lueAssociateTicket.LookupProperties.Area.PropertyHeader" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="txtSubject.Caption" xml:space="preserve">
+    <value>Oggetto</value>
   </data>
   <data name="memDescription.Caption" xml:space="preserve">
     <value>Descrizione</value>
   </data>
-  <data name="lueAssociateTicket.ToolTip" xml:space="preserve">
-    <value>Associa Ticket</value>
+  <data name="memResolution.Caption" xml:space="preserve">
+    <value>Risoluzione</value>
   </data>
-  <data name="grdTickets.5da526ca-9ac5-452f-9f48-74405ee66ea1.ConfirmationMessage" xml:space="preserve">
-    <value>Sei sicuro di voler rimuovere l'associazione con il Ticket selezionato?</value>
+  <data name="lueAssociateTicket.ButtonToolTip" xml:space="preserve">
+    <value>Associa ticket</value>
+  </data>
+  <data name="09ad58d5-bbc2-4661-9958-358b728c3728.DuplicateAssociationMessage" xml:space="preserve">
+    <value>Questo ticket è già stato associato con il difetto.</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-define([
+define("Sage/MailMerge/main", [
     "Sage/MailMerge/Loader",
     "Sage/MailMerge/Helper",
     "Sage/MailMerge/MenuHelper"

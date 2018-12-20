@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0"?>
-<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmDistinctEntityFilter" id="d819c0c4-af01-4b34-a2cc-78ceab711232" lastModifiedUtc="2013-09-03T22:35:56.7377383Z" filterName="SyncFrom" propertyName="SyncedFrom.Name" characters="0">
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmUserLookupEntityFilter" id="d819c0c4-af01-4b34-a2cc-78ceab711232" lastModifiedUtc="2015-01-29T19:07:29.984597Z" filterName="SyncFrom" propertyName="SyncedFrom.EndPointURL">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
-    <extendee type="Sage.Platform.Orm.Entities.OrmDistinctEntityFilter" />
+    <extendee type="Sage.Platform.Orm.Entities.OrmUserLookupEntityFilter" />
   </ExtendedPropertiesCollection>
+  <operators>
+    <operator>Equal</operator>
+    <operator>StartsWith</operator>
+    <operator>EndsWith</operator>
+    <operator>Contains</operator>
+  </operators>
 </entityFilter>

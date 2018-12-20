@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ReportMgr/templates/nls/en/ReportDetailSummary", (
 { txtReportName_Caption: 'Name:',
   txtReportType_Caption: 'Type:',
   txtTable_Caption: 'Table:',

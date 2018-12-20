@@ -29,22 +29,19 @@ using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
 using Sage.Platform;
-using Sage.Platform.Application;
-using Sage.Platform.Application.Services;
-using Sage.Platform.WebPortal.Services;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class InsertTeamEventHandlers
     {
-        public static void OnLoad1Step( IInsertTeam form,  EventArgs args)
+        public static void OnLoad1Step(IInsertTeam form, EventArgs args)
         {
-			ITeam team = Sage.Platform.EntityFactory.Create<ITeam>();
+			ITeam team = EntityFactory.Create<ITeam>();
 			form.addManagerCheckBox.Checked = team.GetAddManagerWithMemberOption();
-			
+
 			IOwnerSecurityProfile securityProfile = EntityFactory.GetById<IOwnerSecurityProfile>("PROF00000001"); // read/write default
-			form.securityProfileLookup.LookupResultValue = securityProfile;			
+			form.securityProfileLookup.LookupResultValue = securityProfile;
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, window, define */
-define([
+/*globals Sage, dojo, window, define */
+define("Sage/Groups/BaseGroupContextService", [
         'Sage/Utility',
         'dojo/string',
         'Sage/Data/SDataServiceRegistry',
@@ -80,6 +80,8 @@ function (
                     resultItem['details']['rangeFilter'] = {
                         'characters': sourceItem['characters']
                     };
+                } else if (sourceItem['filterType'] == 'lookupFilter') {
+                    resultItem['details']['userLookupFilter'] = {};
                 } else {
                     resultItem['details']['distinctFilter'] = {};
                 }
@@ -103,6 +105,12 @@ function (
                     }
                 }
 
+                for (j = 0; j < sourceItem['lookupValues'].length; j++) {
+                    value = sourceItem['lookupValues'][j];
+                    if (typeof value === 'object') {
+                        resultItem['value'] = value;
+                    }
+                }
                 resultApplied[sourceItem['id']] = resultItem;
             }
 
@@ -155,7 +163,8 @@ function (
                 'NextEntityID': context['nextEntityId'],
                 'PreviousEntityID': context['previousEntityId'],
                 'RetrievedOn': context['retrievedOn'],
-                'isAdhoc': context['isAdHoc']
+                'isAdhoc': context['isAdHoc'],
+                'LookupResultsConditions': context['lookupResultsConditions']
             };
 
             if (!context['appliedFilterInfo']) {

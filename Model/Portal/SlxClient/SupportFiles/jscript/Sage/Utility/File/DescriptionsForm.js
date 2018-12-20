@@ -1,5 +1,5 @@
-﻿/*globals define, Sage   */
-define([
+/*globals define, Sage   */
+define("Sage/Utility/File/DescriptionsForm", [
     'Sage/Utility/File',
     'dijit/_Widget',
     'Sage/_Templated',
@@ -143,7 +143,13 @@ function (File, _Widget, _Templated, dLang, dString, Dialog, i18n, descriptionsF
             this._dialog.hide();
         },
         getDefaultDescription: function (filename) {
-            return filename.replace(/\.[\w]*/, '');
+            // Strip off the file extension
+            var idx = filename.lastIndexOf('.');
+            if (idx != -1) {
+                return filename.substr(0, idx);
+            } else {
+                return filename;
+            }
         },
         onDescriptionsEntered: function (files, descriptions) { }
     });

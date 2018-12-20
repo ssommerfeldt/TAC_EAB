@@ -117,38 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FirstName.HeaderText" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="Error.HeaderText" xml:space="preserve">
-    <value>Ошибка</value>
-  </data>
-  <data name="Score.HeaderText" xml:space="preserve">
-    <value>Счет</value>
-  </data>
-  <data name="WorkPhone.HeaderText" xml:space="preserve">
-    <value>Раб. телефон</value>
+  <data name="Address.HeaderText" xml:space="preserve">
+    <value>Адрес</value>
   </data>
   <data name="btnReimport.Text" xml:space="preserve">
     <value>Повторить импорт</value>
   </data>
-  <data name="lblErrors.Text" xml:space="preserve">
-    <value>Ошибки:</value>
+  <data name="City.HeaderText" xml:space="preserve">
+    <value>Город</value>
   </data>
-  <data name="lblImportLeads.Text" xml:space="preserve">
-    <value>Импортированные наводки:</value>
+  <data name="Company.HeaderText" xml:space="preserve">
+    <value>Компания</value>
   </data>
-  <data name="lblImportErrors.Text" xml:space="preserve">
-    <value>Следующие нафодки не могут быть импортированны из-за ошибок:</value>
+  <data name="Error.HeaderText" xml:space="preserve">
+    <value>Ошибка</value>
   </data>
-  <data name="lblLeadImportID.Text" xml:space="preserve">
-    <value>ИД импорта наводки:</value>
+  <data name="FirstName.HeaderText" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="LastName.HeaderText" xml:space="preserve">
+    <value>Фамилия</value>
   </data>
   <data name="lblAutoMergedDuplicates.Text" xml:space="preserve">
     <value>Автоматически объединенные дубликаты:</value>
   </data>
-  <data name="Company.HeaderText" xml:space="preserve">
-    <value>Компания</value>
+  <data name="lblErrors.Text" xml:space="preserve">
+    <value>Ошибки:</value>
+  </data>
+  <data name="lblImportDate.Text" xml:space="preserve">
+    <value>Дата импорта:</value>
+  </data>
+  <data name="lblImportErrors.Text" xml:space="preserve">
+    <value>Невозможно импортировать следующие заинтересованные лица из-за ошибок:</value>
+  </data>
+  <data name="lblImportLeads.Text" xml:space="preserve">
+    <value>Импортированные заинтересованные лица:</value>
+  </data>
+  <data name="lblLeadImportID.Text" xml:space="preserve">
+    <value>ИД импорта заинтересованного лица:</value>
+  </data>
+  <data name="lblPotentialDuplicates.Text" xml:space="preserve">
+    <value>Следующие заинтересованные лица имеют потенциальные дубликаты в базе данных Saleslogix:</value>
   </data>
   <data name="lblStatus.Text" xml:space="preserve">
     <value>Статус:</value>
@@ -156,22 +165,13 @@
   <data name="lblUnresolvedDuplicates.Text" xml:space="preserve">
     <value>Неразрешенные дубликаты:</value>
   </data>
-  <data name="LastName.HeaderText" xml:space="preserve">
-    <value>Фамилия</value>
-  </data>
-  <data name="Address.HeaderText" xml:space="preserve">
-    <value>Адрес</value>
-  </data>
-  <data name="City.HeaderText" xml:space="preserve">
-    <value>Город</value>
-  </data>
-  <data name="lblPotentialDuplicates.Text" xml:space="preserve">
-    <value>Следующие наводки имеют потенциальные дубликатыв базе данных SalesLogix:</value>
-  </data>
   <data name="NoRecords.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
-  <data name="lblImportDate.Text" xml:space="preserve">
-    <value>Дата импорта:</value>
+  <data name="Score.HeaderText" xml:space="preserve">
+    <value>Баллы</value>
+  </data>
+  <data name="WorkPhone.HeaderText" xml:space="preserve">
+    <value>Рабочий телефон</value>
   </data>
 </root>

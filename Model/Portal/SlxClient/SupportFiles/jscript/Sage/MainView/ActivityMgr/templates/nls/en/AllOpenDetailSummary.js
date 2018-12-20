@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/templates/nls/en/AllOpenDetailSummary", (
 { txtPhone_Caption: 'Phone:',
   lnkOpportunityName_Caption: 'Opportunity:',
   txtStartTime_Caption: 'Start Time:',

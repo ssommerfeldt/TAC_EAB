@@ -1,5 +1,5 @@
 /*
- * This metadata is used by the Sage platform.  Do not remove.
+ * This metadata is used by the Saleslogix platform.  Do not remove.
 <snippetHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="03091632-89e8-4251-abd3-6fb1908b5850">
  <assembly>Sage.SnippetLibrary.CSharp</assembly>
  <name>SaveButton_OnClickStep</name>
@@ -19,6 +19,10 @@
   <reference>
    <assemblyName>Sage.SalesLogix.API.dll</assemblyName>
   </reference>
+  <reference>
+   <assemblyName>Sage.Platform.WebPortal.dll</assemblyName>
+   <hintPath>%BASEBUILDPATH%\assemblies\Sage.Platform.WebPortal.dll</hintPath>
+  </reference>
  </references>
 </snippetHeader>
 */
@@ -29,12 +33,8 @@ using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
 using Sage.Platform;
-using System.Web;
-using Sage.Platform.Application;
-using Sage.Platform.Application.Services;
-using Sage.Platform.WebPortal;
 using Sage.Platform.WebPortal.Services;
-using System.Text.RegularExpressions;
+using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
@@ -57,7 +57,7 @@ namespace Sage.BusinessRules.CodeSnippets
             IOwner ownerTeam = EntityFactory.Create<IOwner>();
 			ownerTeam.OwnerDescription = form.OwnerDescription.Text;
             ownerTeam.Type = OwnerType.Team;
-			
+
             if (!ownerTeam.IsValidName(form.OwnerDescription.Text))
             {
                 string msg = form.GetResource("InvalidNameMessage").ToString();
@@ -89,7 +89,6 @@ namespace Sage.BusinessRules.CodeSnippets
             // child ids will point to the team
             team.AddMemberWithSecurityProfile(ownerTeam, securityProfile);
 
-
             // get the selected owner of the team.  This will be a user
             IUser teamOwnerUser = form.DefaultOwner.LookupResultValue as IUser;
             if (teamOwnerUser != null)
@@ -98,8 +97,7 @@ namespace Sage.BusinessRules.CodeSnippets
 				IOwnerSecurityProfile ownerSecurityProfile = EntityFactory.GetById<IOwnerSecurityProfile>("PROF00000003");
                 team.AddMemberWithSecurityProfile(teamOwnerUser.DefaultOwner, ownerSecurityProfile);
             }
-
-            HttpContext.Current.Response.Redirect(string.Format("~/Team.aspx?entityId={0}", ownerTeam.Id.ToString()), false);
+            MySlx.MainView.Show<ITeam>(ownerTeam.Id.ToString());
         }
     }
 }

@@ -117,52 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtServiceLogin.Caption" xml:space="preserve">
-    <value>Логин сервиса:</value>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="cmdHelp.Caption" xml:space="preserve">
+    <value>&amp;Справка</value>
   </data>
   <data name="lueUser.LookupProperties.UserName.PropertyHeader" xml:space="preserve">
-    <value>Пользователь</value>
-  </data>
-  <data name="cmdClear.Caption" xml:space="preserve">
-    <value>Очистить</value>
-  </data>
-  <data name="txtPassword.Caption" xml:space="preserve">
-    <value>Пароль:</value>
-  </data>
-  <data name="lueUser.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="txtEstUse.Caption" xml:space="preserve">
-    <value>Использ. (план):</value>
-  </data>
-  <data name="chkEnabled.Caption" xml:space="preserve">
-    <value>Разрешить польз. доступ к маркет. сервису.</value>
-  </data>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>ОК</value>
-  </data>
-  <data name="txtServiceCode.Caption" xml:space="preserve">
-    <value>Код партнера:</value>
-  </data>
-  <data name="lueUser.LookupProperties.Department.PropertyHeader" xml:space="preserve">
-    <value>Отдел</value>
-  </data>
-  <data name="txtOwnerEmail.Caption" xml:space="preserve">
-    <value>Эл. почта владельца:</value>
+    <value>Имя пользователя</value>
   </data>
   <data name="lueUser.LookupProperties.Title.PropertyHeader" xml:space="preserve">
     <value>Название</value>
   </data>
-  <data name="cmdHelp.Caption" xml:space="preserve">
-    <value>&amp;Помощь</value>
+  <data name="lueUser.LookupProperties.Department.PropertyHeader" xml:space="preserve">
+    <value>Отдел</value>
   </data>
   <data name="lueUser.LookupProperties.Phone.PropertyHeader" xml:space="preserve">
     <value>Телефон</value>
   </data>
-  <data name="lueUser.Caption" xml:space="preserve">
-    <value>Пользователь SalesLogix:</value>
-  </data>
   <data name="chkAutoImport.Caption" xml:space="preserve">
-    <value>Автом. импортировать отклики этому польз.</value>
+    <value>Автоматически импортировать ответы для этого пользователя</value>
+  </data>
+  <data name="cmdClear.Caption" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="chkEnabled.Caption" xml:space="preserve">
+    <value>Разрешить пользователю доступ к маркетинговой службе</value>
+  </data>
+  <data name="lueUser.Caption" xml:space="preserve">
+    <value>Пользователь Saleslogix:</value>
+  </data>
+  <data name="txtServiceLogin.Caption" xml:space="preserve">
+    <value>Вход службы:</value>
+  </data>
+  <data name="txtPassword.Caption" xml:space="preserve">
+    <value>Пароль:</value>
+  </data>
+  <data name="txtServiceCode.Caption" xml:space="preserve">
+    <value>Код партнера:</value>
+  </data>
+  <data name="txtEstUse.Caption" xml:space="preserve">
+    <value>Ожидаемое использование:</value>
+  </data>
+  <data name="txtOwnerEmail.Caption" xml:space="preserve">
+    <value>Электронная почта владельца:</value>
+  </data>
+  <data name="lueUser.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
   </data>
 </root>

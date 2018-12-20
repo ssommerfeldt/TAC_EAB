@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="aca6db4e-1c07-4cb9-b311-4c220315b90d" lastModifiedUtc="2015-10-06T21:12:11.3006714Z" name="OnLoad1" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="QuoteProducts">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="edf13bd3-2988-49b8-9ae7-96f43223ed95" paramName="form" sequence="0" paramType="IQuoteProducts" />
+    <OrmEntityMethodParam id="ab910b36-60ae-4214-8543-8f0f63c556f9" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

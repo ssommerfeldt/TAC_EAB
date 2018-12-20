@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/Contact/nls/en/ContactUserAssociationEditor", (
 { btnCancel_Caption: 'Cancel',
   btnOK_Caption: 'OK',
   dialogTitleText: 'Associate Contact with User',
@@ -10,6 +10,6 @@ define((
   lookupDepartmentColText: 'Department',
   lookupRegionColText: 'Region',
   lookupTypeColText: 'Type',
-  disAssociateTitle: 'Disassociate form a User',
+  disAssociateTitle: 'Disassociate from a User',
   associationExistsMessage: 'The user you selected is already associated to a contact. Select another user.' }
 ));

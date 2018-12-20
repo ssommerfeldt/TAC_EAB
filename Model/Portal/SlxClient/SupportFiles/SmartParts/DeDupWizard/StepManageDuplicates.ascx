@@ -27,7 +27,7 @@
                 </span>
             </td>
             <td>
-                <asp:CheckBoxList ID="chkListMatchTypes" runat="server" RepeatColumns="3" RepeatDirection="Horizontal" Width="500px">
+                <asp:CheckBoxList ID="chkListMatchTypes" runat="server" RepeatColumns="3" RepeatDirection="Horizontal" Width="500px" CssClass="inforCheckboxList">
                 </asp:CheckBoxList>
                 <br />
                 <br />
@@ -58,7 +58,7 @@
             <td></td>
             <td></td>
             <td colspan="3">
-                <asp:CheckBoxList ID="chklstFilters" runat="server" RepeatColumns="3" RepeatDirection="Horizontal" Width="500px">
+                <asp:CheckBoxList ID="chklstFilters" runat="server" RepeatColumns="3" RepeatDirection="Horizontal" Width="500px" CssClass="inforCheckboxList">
                 </asp:CheckBoxList>
                 <br />
             </td>

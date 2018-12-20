@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c0a396f0-50b4-455c-9256-3d58dba5bad7" lastModifiedUtc="2011-09-22T16:29:34.6584846Z" name="MergeLead" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c0a396f0-50b4-455c-9256-3d58dba5bad7" lastModifiedUtc="2015-06-25T12:54:31.7978158Z" name="MergeLead" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -47,5 +47,4 @@
       </ExtendedPropertiesCollection>
     </methodTarget>
   </postExecuteTargets>
-  <postFlushTargets />
 </method>

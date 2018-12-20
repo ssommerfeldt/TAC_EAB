@@ -7,7 +7,8 @@
   <ShowInMode />
   <Properties>
     <Property Name="MainViewDefinition" TypeConverter="">Sage.MainView.SecurityManager</Property>
-      <Property Name="HelpTopicName" TypeConverter="">formmgrlistview</Property>
+    <Property Name="HelpTopicName" TypeConverter="">securitymanagerlistview</Property>
+    <Property Name="HelpTopic" TypeConverter="">securitymanagerlistview</Property>
   </Properties>
   <AllowRoles />
 </SmartPartMapping>

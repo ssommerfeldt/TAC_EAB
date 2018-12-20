@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/CurrencyControlDesigner", [
     'dojo/_base/declare',
     'dojo/_base/array',
     'dojo/_base/lang',

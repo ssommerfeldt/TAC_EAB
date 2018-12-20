@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,34 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtItemText.Caption" xml:space="preserve">
+    <value>Texte :</value>
+  </data>
   <data name="txtCode.Caption" xml:space="preserve">
     <value>Code :</value>
   </data>
-  <data name="DialogTitleEdit" xml:space="preserve">
-    <value>Modifier l'élément</value>
+  <data name="chkIsDefaultItem.Caption" xml:space="preserve">
+    <value>Est l'élément par défaut</value>
+  </data>
+  <data name="txtOrder.Caption" xml:space="preserve">
+    <value>Commande :</value>
+  </data>
+  <data name="txtFilter.Caption" xml:space="preserve">
+    <value>Filtrer :</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Annuler</value>
   </data>
   <data name="btnOK.Caption" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="chkIsDefaultItem.Caption" xml:space="preserve">
-    <value>Est un élément par défaut</value>
+  <data name="DialogTitleAdd" xml:space="preserve">
+    <value>Ajouter un nouvel élément</value>
   </data>
-  <data name="txtItemText.Caption" xml:space="preserve">
-    <value>Texte :</value>
+  <data name="DialogTitleEdit" xml:space="preserve">
+    <value>Modifier l'élément</value>
   </data>
   <data name="btnSaveNew.Caption" xml:space="preserve">
     <value>Enregistrer et nouveau</value>
   </data>
   <data name="error_InvalidItemName" xml:space="preserve">
-    <value>Veuillez entrer un texte avant de continuer.</value>
-  </data>
-  <data name="txtOrder.Caption" xml:space="preserve">
-    <value>Commande :</value>
-  </data>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Annuler</value>
-  </data>
-  <data name="DialogTitleAdd" xml:space="preserve">
-    <value>Ajouter un nouvel élément</value>
+    <value>Veuillez saisir une valeur avant de continuer.</value>
   </data>
 </root>

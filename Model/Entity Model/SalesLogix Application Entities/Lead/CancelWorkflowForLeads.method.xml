@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b8afb1de-3e2d-4d1f-8d05-05020ac7feea" lastModifiedUtc="2017-05-08T07:39:50.4771572Z" name="CancelWorkflowForLeads" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="fa1a6aaf-1b9c-4f51-b17c-920c2564c4df" paramName="workflowId" sequence="0" paramType="String">
+      <description>WorkflowId associated with the given record</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="09cf8ea5-f39a-4479-9fc3-016e79dc23a3" lastModifiedUtc="2017-05-08T07:39:45.9848896Z" targetType="Sage.SalesLogix.Lead.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CancelWorkflowForLeads" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

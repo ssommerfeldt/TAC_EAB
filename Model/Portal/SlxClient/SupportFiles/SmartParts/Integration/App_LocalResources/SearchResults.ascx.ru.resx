@@ -117,67 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblCreateAccount.Caption" xml:space="preserve">
-    <value>Создание субъекта в  &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
-  </data>
-  <data name="Error_SDataRequest" xml:space="preserve">
-    <value>Ошибка при получении соответствия сущностей через SData. Пожалуйста, обратитесь к системному администратору за дополнительной информацией.</value>
-  </data>
-  <data name="grdMatches.Status.ColumnHeading" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="lblSearchResults.Caption" xml:space="preserve">
-    <value>Результаты поиска для &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
-  </data>
-  <data name="lblResultsMsg.Caption" xml:space="preserve">
-    <value>Найдено более одного совпадения для клиент-субъекта. Доступны следующие варианты:</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Назад</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="btnNext.Caption" xml:space="preserve">
+    <value>Дальше &gt;</value>
+  </data>
   <data name="Dialog.Caption" xml:space="preserve">
-    <value>Ссылка на учет</value>
+    <value>Ссылка на систему учета</value>
   </data>
   <data name="error_NoAccountSelected" xml:space="preserve">
-    <value>Вы должны выбрать совпадающий субъект, прежде чем продолжить.</value>
+    <value>Чтобы продолжить, требуется выбрать совпадающего клиента.</value>
   </data>
-  <data name="lblNoMatchesCreateNew.Caption" xml:space="preserve">
-    <value>Создание нового субъекта для &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
+  <data name="grdMatches.Account.ColumnHeading" xml:space="preserve">
+    <value>Клиент</value>
   </data>
-  <data name="rdbCreateNew.Caption" xml:space="preserve">
-    <value>Создать новую запись клиента в учете.</value>
+  <data name="grdMatches.Status.ColumnHeading" xml:space="preserve">
+    <value>Статус</value>
   </data>
   <data name="grdMatches.Type.ColumnHeading" xml:space="preserve">
     <value>Тип</value>
   </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Ссылка на учет - Слияние данных - Различия не найдены</value>
-  </data>
-  <data name="lblSearchNoResults.Caption" xml:space="preserve">
-    <value>Результаты поиска</value>
-  </data>
-  <data name="btnNext.Caption" xml:space="preserve">
-    <value>Следующий&gt;</value>
-  </data>
-  <data name="rdbRefineSearch.Caption" xml:space="preserve">
-    <value>Очистить или расширить поиск существующего субъекта</value>
-  </data>
-  <data name="grdMatches.Account.ColumnHeading" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="rdbLinkAccount.Caption" xml:space="preserve">
-    <value>Ссылка &lt;span class="boldtext"&gt;{0}&lt;/span&gt; на &lt;span class="boldtext"&gt;{1}&lt;/span&gt; &lt;span class="italictext"&gt;(если не соответствует 100%, слияние необходимо)&lt;/span&gt;:</value>
+  <data name="lblCreateAccount.Caption" xml:space="preserve">
+    <value>Создание клиента заказчика в &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
   </data>
   <data name="lblNoMatches.Caption" xml:space="preserve">
     <value>Совпадения по заданному критерию не найдены.</value>
   </data>
-  <data name="Error_TradingAccount_Linked" xml:space="preserve">
-    <value>Выделенный субъект торговли уже связан с SLX субъектом '{0}'. Вы можете не связывать SLX субъекта с тем же субъектом торговли .</value>
+  <data name="lblNoMatchesCreateNew.Caption" xml:space="preserve">
+    <value>Создание нового клиента заказчика для &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
   </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Назад</value>
+  <data name="lblResultsMsg.Caption" xml:space="preserve">
+    <value>Найдено более одного совпадения для клиента заказчика. Доступны следующие варианты:</value>
+  </data>
+  <data name="lblSearchNoResults.Caption" xml:space="preserve">
+    <value>Результаты поиска</value>
+  </data>
+  <data name="lblSearchResults.Caption" xml:space="preserve">
+    <value>Результаты поиска для &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
+  </data>
+  <data name="rdbCreateNew.Caption" xml:space="preserve">
+    <value>Создать новую запись заказчика в системе учета.</value>
+  </data>
+  <data name="rdbLinkAccount.Caption" xml:space="preserve">
+    <value>Ссылка &lt;span class="boldtext"&gt;{0}&lt;/span&gt; на &lt;span class="boldtext"&gt;{1}&lt;/span&gt; &lt;span class="italictext"&gt;(если не соответствует 100%, будет необходимо объединение)&lt;/span&gt;:</value>
+  </data>
+  <data name="rdbRefineSearch.Caption" xml:space="preserve">
+    <value>Очистить или расширить поиск существующего клиента</value>
   </data>
   <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Ссылка на учет - Слияние данных - Найдены различия</value>
+    <value>Ссылка на систему учета — объединение данных — найдены различия</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Ссылка на систему учета — объединение данных — различия не найдены</value>
+  </data>
+  <data name="Error_TradingAccount_Linked" xml:space="preserve">
+    <value>Выбранный торговый клиент уже связан с клиентом Saleslogix "{0}". Невозможно связать клиента Saleslogix с одним и тем же торговым клиентом.</value>
+  </data>
+  <data name="Error_SDataRequest" xml:space="preserve">
+    <value>Ошибка при получении соответствующих сущностей посредством SData. Обратитесь к системному администратору за дополнительной информацией.</value>
   </data>
 </root>

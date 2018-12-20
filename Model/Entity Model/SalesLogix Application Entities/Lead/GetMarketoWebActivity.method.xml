@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7b7ecc5e-d3b6-483f-be17-2e04a0fa537b" lastModifiedUtc="2017-05-26T16:57:06.4437836Z" name="GetMarketoWebActivity" returnType="object" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="ff6e3ce6-cab5-4408-b6f3-7dd12a785d6c" lastModifiedUtc="2017-06-22T14:44:15.7556903Z" targetType="SalesLogix.Integration.Marketo.Rules.LeadRules, SalesLogix.Integration.Marketo" targetMethod="GetLeadPageVisits" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

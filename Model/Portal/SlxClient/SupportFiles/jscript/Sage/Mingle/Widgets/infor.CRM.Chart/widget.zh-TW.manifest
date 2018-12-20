@@ -1,0 +1,31 @@
+﻿{
+    "widgetId": "infor.crm.chart",
+    "type": "inline",
+    "name": "Infor CRM Chart",
+    "version": "1.0",
+    "category": "application", 
+  	"settings": [
+		  {
+			  "name": "SDataApiContext",
+			  "type": "string",
+			  "defaultValue": "CRMSData",
+			  "isReadOnly": true
+		  }
+	  ],
+    "localization": {
+        "en-US": {
+            "widgetTitle": "Infor CRM 圖表",
+            "widgetDescription": "Infor CRM 圖表小組件",
+            "noData": "沒有相符資料",
+            "notConfigured": "小組件未設定",
+            "errorOccured": "發生錯誤",
+            "titleText": "標題",
+            "textEntity": "實體",
+            "textGroup": "群組",
+            "textDimension": "維度",
+            "textMetric": "計量",
+            "textType": "類型",
+            "textLimit": "限制"
+        }
+    }
+}

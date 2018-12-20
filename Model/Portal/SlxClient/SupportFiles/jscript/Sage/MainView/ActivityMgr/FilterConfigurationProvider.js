@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ActivityMgr/FilterConfigurationProvider", [
         'Sage/Services/_ServiceMixin',
         'Sage/_ConfigurationProvider',
         'Sage/Utility',

@@ -1,8 +1,17 @@
-//>>built
 define("dojo/cldr/nls/persian", { root:
 
 //begin v1.x content
 {
+	"dateFormatItem-Ehm": "E h:mm a",
+	"days-standAlone-short": [
+		"Sun",
+		"Mon",
+		"Tue",
+		"Wed",
+		"Thu",
+		"Fri",
+		"Sat"
+	],
 	"months-format-narrow": [
 		"1",
 		"2",
@@ -17,36 +26,35 @@ define("dojo/cldr/nls/persian", { root:
 		"11",
 		"12"
 	],
+	"field-second-relative+0": "now",
 	"quarters-standAlone-narrow": [
 		"1",
 		"2",
 		"3",
 		"4"
 	],
-	"dateFormatItem-yQQQ": "y QQQ",
-	"dateFormatItem-yMEd": "E, y-M-d",
-	"dateFormatItem-MMMEd": "E MMM d",
+	"field-weekday": "Day of the Week",
+	"field-wed-relative+0": "this Wednesday",
+	"field-wed-relative+1": "next Wednesday",
+	"dateFormatItem-GyMMMEd": "G y MMM d, E",
+	"dateFormatItem-MMMEd": "MMM d, E",
 	"eraNarrow": [
 		"AP"
 	],
+	"field-tue-relative+-1": "last Tuesday",
+	"days-format-short": [
+		"Sun",
+		"Mon",
+		"Tue",
+		"Wed",
+		"Thu",
+		"Fri",
+		"Sat"
+	],
 	"dateTimeFormats-appendItem-Day-Of-Week": "{0} {1}",
-	"quarters-standAlone-abbr@localeAlias334": {
-		"bundle": "gregorian",
-		"target": "quarters-format-abbr"
-	},
-	"quarters-standAlone-abbr@localeAlias335": {
-		"bundle": "gregorian",
-		"target": "quarters-format-wide"
-	},
-	"dateFormat-long": "y MMMM d",
-	"dateTime@localeAlias348": {
-		"bundle": "gregorian",
-		"target": "dateTime"
-	},
-	"dayPeriods-format-abbr@localeAlias338": {
-		"bundle": "gregorian",
-		"target": "dayPeriods-format-wide"
-	},
+	"dateFormat-long": "G y MMMM d",
+	"field-fri-relative+-1": "last Friday",
+	"field-wed-relative+-1": "last Wednesday",
 	"months-format-wide": [
 		"Farvardin",
 		"Ordibehesht",
@@ -61,30 +69,17 @@ define("dojo/cldr/nls/persian", { root:
 		"Bahman",
 		"Esfand"
 	],
-	"quarters-format-abbr@localeAlias332": {
-		"bundle": "gregorian",
-		"target": "quarters-format-wide"
-	},
-	"quarters-format-narrow@localeAlias333": {
-		"bundle": "gregorian",
-		"target": "quarters-standAlone-narrow"
-	},
+	"dateFormatItem-yyyyQQQ": "G y QQQ",
 	"dateTimeFormat-medium": "{1} {0}",
-	"eraNarrow@localeAlias345": {
-		"bundle": "persian",
-		"target": "eraAbbr"
-	},
 	"dayPeriods-format-wide-pm": "PM",
-	"dateFormat-full": "EEEE, y MMMM dd",
-	"dateFormatItem-Md": "M-d",
+	"dateFormat-full": "G y MMMM d, EEEE",
+	"dateFormatItem-yyyyMEd": "GGGGG y-MM-dd, E",
+	"field-thu-relative+-1": "last Thursday",
+	"dateFormatItem-Md": "MM-dd",
 	"dayPeriods-format-abbr-am": "AM",
 	"dateTimeFormats-appendItem-Second": "{0} ({2}: {1})",
-	"months-standAlone-wide@localeAlias324": {
-		"bundle": "persian",
-		"target": "months-format-wide"
-	},
-	"dateFormatItem-yMd": "y-M-d",
-	"dateFormatItem-yM": "y-M",
+	"dayPeriods-format-wide-noon": "noon",
+	"field-era": "Era",
 	"months-standAlone-wide": [
 		"Farvardin",
 		"Ordibehesht",
@@ -107,9 +102,9 @@ define("dojo/cldr/nls/persian", { root:
 		"Q4"
 	],
 	"timeFormat-long": "HH:mm:ss z",
-	"dateFormatItem-yMMM": "y MMM",
-	"dateFormatItem-yQ": "y Q",
-	"dateTimeFormats-appendItem-Era": "{0} {1}",
+	"field-year": "Year",
+	"dateTimeFormats-appendItem-Era": "{1} {0}",
+	"field-hour": "Hour",
 	"months-format-abbr": [
 		"Farvardin",
 		"Ordibehesht",
@@ -124,12 +119,16 @@ define("dojo/cldr/nls/persian", { root:
 		"Bahman",
 		"Esfand"
 	],
-	"dayPeriods-format-abbr@localeAlias341": {
-		"bundle": "gregorian",
-		"target": "dayPeriods-format-wide"
-	},
+	"field-sat-relative+0": "this Saturday",
+	"field-sat-relative+1": "next Saturday",
 	"timeFormat-full": "HH:mm:ss zzzz",
 	"dateTimeFormats-appendItem-Week": "{0} ({2}: {1})",
+	"field-day-relative+0": "today",
+	"field-thu-relative+0": "this Thursday",
+	"field-day-relative+1": "tomorrow",
+	"field-thu-relative+1": "next Thursday",
+	"dateFormatItem-GyMMMd": "G y MMM d",
+	"dateFormatItem-H": "HH",
 	"months-standAlone-abbr": [
 		"Farvardin",
 		"Ordibehesht",
@@ -144,7 +143,6 @@ define("dojo/cldr/nls/persian", { root:
 		"Bahman",
 		"Esfand"
 	],
-	"dateFormatItem-H": "HH",
 	"quarters-format-abbr": [
 		"Q1",
 		"Q2",
@@ -157,51 +155,44 @@ define("dojo/cldr/nls/persian", { root:
 		"Q3",
 		"Q4"
 	],
+	"dateFormatItem-Gy": "G y",
+	"dateFormatItem-yyyyMMMEd": "G y MMM d, E",
 	"dateFormatItem-M": "L",
 	"days-standAlone-wide": [
-		"1",
-		"2",
-		"3",
-		"4",
-		"5",
-		"6",
-		"7"
+		"Sun",
+		"Mon",
+		"Tue",
+		"Wed",
+		"Thu",
+		"Fri",
+		"Sat"
 	],
-	"months-standAlone-abbr@localeAlias322": {
-		"bundle": "persian",
-		"target": "months-format-abbr"
-	},
-	"months-standAlone-abbr@localeAlias323": {
-		"bundle": "persian",
-		"target": "months-format-wide"
-	},
-	"months-format-abbr@localeAlias320": {
-		"bundle": "persian",
-		"target": "months-format-wide"
-	},
+	"dateFormatItem-yyyyMMM": "G y MMM",
+	"dateFormatItem-yyyyMMMd": "G y MMM d",
+	"dayPeriods-format-abbr-noon": "noon",
 	"timeFormat-medium": "HH:mm:ss",
-	"quarters@localeAlias331": {
-		"bundle": "gregorian",
-		"target": "quarters"
-	},
+	"field-sun-relative+0": "this Sunday",
+	"dateFormatItem-Hm": "HH:mm",
+	"field-sun-relative+1": "next Sunday",
 	"quarters-standAlone-abbr": [
 		"Q1",
 		"Q2",
 		"Q3",
 		"Q4"
 	],
-	"dateFormatItem-Hm": "HH:mm",
 	"eraAbbr": [
 		"AP"
 	],
+	"field-minute": "Minute",
+	"field-dayperiod": "Dayperiod",
 	"days-standAlone-abbr": [
-		"1",
-		"2",
-		"3",
-		"4",
-		"5",
-		"6",
-		"7"
+		"Sun",
+		"Mon",
+		"Tue",
+		"Wed",
+		"Thu",
+		"Fri",
+		"Sat"
 	],
 	"dateFormatItem-d": "d",
 	"dateFormatItem-ms": "mm:ss",
@@ -211,25 +202,26 @@ define("dojo/cldr/nls/persian", { root:
 		"3",
 		"4"
 	],
-	"dateFormatItem-h": "h a",
+	"field-day-relative+-1": "yesterday",
 	"dateTimeFormat-long": "{1} {0}",
-	"dayPeriods-format-narrow-am": "AM",
+	"dayPeriods-format-narrow-am": "a",
+	"dateFormatItem-h": "h a",
 	"dateFormatItem-MMMd": "MMM d",
-	"dateFormatItem-MEd": "E, M-d",
+	"dateFormatItem-MEd": "MM-dd, E",
 	"dateTimeFormat-full": "{1} {0}",
-	"months-format-narrow@localeAlias321": {
-		"bundle": "persian",
-		"target": "months-standAlone-narrow"
-	},
+	"field-fri-relative+0": "this Friday",
+	"field-fri-relative+1": "next Friday",
+	"field-day": "Day",
 	"days-format-wide": [
-		"1",
-		"2",
-		"3",
-		"4",
-		"5",
-		"6",
-		"7"
+		"Sun",
+		"Mon",
+		"Tue",
+		"Wed",
+		"Thu",
+		"Fri",
+		"Sat"
 	],
+	"field-zone": "Zone",
 	"months-standAlone-narrow": [
 		"1",
 		"2",
@@ -244,132 +236,109 @@ define("dojo/cldr/nls/persian", { root:
 		"11",
 		"12"
 	],
-	"dateFormatItem-y": "y",
+	"dateFormatItem-y": "G y",
 	"dateTimeFormats-appendItem-Day": "{0} ({2}: {1})",
-	"eraNames@localeAlias344": {
-		"bundle": "persian",
-		"target": "eraAbbr"
-	},
+	"field-year-relative+-1": "last year",
+	"field-month-relative+-1": "last month",
+	"dateTimeFormats-appendItem-Year": "{1} {0}",
 	"dateFormatItem-hm": "h:mm a",
-	"dateTimeFormats-appendItem-Year": "{0} {1}",
-	"dateFormat@localeAlias346": {
-		"bundle": "gregorian",
-		"target": "dateFormat"
-	},
 	"dateTimeFormats-appendItem-Hour": "{0} ({2}: {1})",
-	"dayPeriods-format-narrow@localeAlias339": {
-		"bundle": "gregorian",
-		"target": "dayPeriods-format-abbr"
-	},
 	"dayPeriods-format-abbr-pm": "PM",
 	"days-format-abbr": [
-		"1",
-		"2",
-		"3",
-		"4",
-		"5",
-		"6",
-		"7"
+		"Sun",
+		"Mon",
+		"Tue",
+		"Wed",
+		"Thu",
+		"Fri",
+		"Sat"
 	],
 	"eraNames": [
 		"AP"
 	],
-	"dateFormatItem-yMMMd": "y MMM d",
 	"days-format-narrow": [
-		"1",
-		"2",
-		"3",
-		"4",
-		"5",
-		"6",
-		"7"
+		"S",
+		"M",
+		"T",
+		"W",
+		"T",
+		"F",
+		"S"
 	],
-	"days-standAlone-wide@localeAlias330": {
-		"bundle": "gregorian",
-		"target": "days-format-wide"
-	},
+	"dateFormatItem-yyyyMd": "GGGGG y-MM-dd",
+	"field-month": "Month",
 	"days-standAlone-narrow": [
-		"1",
-		"2",
-		"3",
-		"4",
-		"5",
-		"6",
-		"7"
+		"S",
+		"M",
+		"T",
+		"W",
+		"T",
+		"F",
+		"S"
 	],
 	"dateFormatItem-MMM": "LLL",
-	"timeFormat@localeAlias347": {
-		"bundle": "gregorian",
-		"target": "timeFormat"
-	},
+	"field-tue-relative+0": "this Tuesday",
+	"field-tue-relative+1": "next Tuesday",
 	"dateTimeFormats-appendItem-Quarter": "{0} ({2}: {1})",
 	"dayPeriods-format-wide-am": "AM",
-	"days-standAlone-abbr@localeAlias328": {
-		"bundle": "gregorian",
-		"target": "days-format-abbr"
-	},
-	"days-standAlone-abbr@localeAlias329": {
-		"bundle": "gregorian",
-		"target": "days-format-wide"
-	},
-	"dayPeriods-format-narrow@localeAlias340": {
-		"bundle": "gregorian",
-		"target": "dayPeriods-format-wide"
-	},
 	"dateTimeFormats-appendItem-Month": "{0} ({2}: {1})",
-	"dayPeriods-format-narrow@localeAlias342": {
-		"bundle": "gregorian",
-		"target": "dayPeriods-format-abbr"
-	},
-	"dayPeriods-format-narrow@localeAlias343": {
-		"bundle": "gregorian",
-		"target": "dayPeriods-format-wide"
-	},
 	"dateTimeFormats-appendItem-Minute": "{0} ({2}: {1})",
-	"dayPeriods@localeAlias337": {
-		"bundle": "gregorian",
-		"target": "dayPeriods"
-	},
-	"dateFormat-short": "yyyy-MM-dd",
-	"quarters-standAlone-wide@localeAlias336": {
-		"bundle": "gregorian",
-		"target": "quarters-format-wide"
-	},
-	"dateFormatItem-yMMMEd": "E, y MMM d",
-	"days-format-abbr@localeAlias326": {
-		"bundle": "gregorian",
-		"target": "days-format-wide"
-	},
-	"dateFormatItem-Ed": "d E",
+	"dateFormatItem-EHm": "E HH:mm",
+	"field-mon-relative+0": "this Monday",
+	"field-mon-relative+1": "next Monday",
+	"dateFormat-short": "GGGGG y-MM-dd",
+	"dateFormatItem-EHms": "E HH:mm:ss",
+	"dateFormatItem-Ehms": "E h:mm:ss a",
+	"dayPeriods-format-narrow-noon": "n",
+	"field-second": "Second",
+	"field-sat-relative+-1": "last Saturday",
+	"field-sun-relative+-1": "last Sunday",
+	"field-month-relative+0": "this month",
+	"field-month-relative+1": "next month",
 	"dateTimeFormats-appendItem-Timezone": "{0} {1}",
-	"dateFormat-medium": "y MMM d",
-	"dayPeriods-format-narrow-pm": "PM",
-	"days-format-narrow@localeAlias327": {
-		"bundle": "gregorian",
-		"target": "days-standAlone-narrow"
-	},
+	"dateFormatItem-Ed": "d, E",
+	"field-week": "Week",
+	"dateFormat-medium": "G y MMM d",
+	"field-week-relative+-1": "last week",
+	"field-year-relative+0": "this year",
+	"dateFormatItem-yyyyM": "GGGGG y-MM",
+	"field-year-relative+1": "next year",
+	"dayPeriods-format-narrow-pm": "p",
+	"dateFormatItem-yyyyQQQQ": "G y QQQQ",
 	"dateTimeFormat-short": "{1} {0}",
 	"dateFormatItem-Hms": "HH:mm:ss",
 	"dateFormatItem-hms": "h:mm:ss a",
-	"days@localeAlias325": {
-		"bundle": "gregorian",
-		"target": "days"
-	}
+	"dateFormatItem-GyMMM": "G y MMM",
+	"field-mon-relative+-1": "last Monday",
+	"dateFormatItem-yyyy": "G y",
+	"field-week-relative+0": "this week",
+	"field-week-relative+1": "next week"
 }
 //end v1.x content
 ,
 	"ar": true,
+	"bs-cyrl": true,
 	"fa": true,
+	"fr": true,
+	"fy": true,
 	"hi": true,
 	"hu": true,
+	"id": true,
 	"ja": true,
+	"ka": true,
+	"lo": true,
+	"nl": true,
 	"pl": true,
+	"ps": true,
 	"pt": true,
 	"ru": true,
 	"sr": true,
+	"sr-latn": true,
 	"sv": true,
+	"th": true,
 	"tr": true,
 	"uk": true,
 	"vi": true,
-	"zh": true
+	"zh": true,
+	"zh-hant": true
 });

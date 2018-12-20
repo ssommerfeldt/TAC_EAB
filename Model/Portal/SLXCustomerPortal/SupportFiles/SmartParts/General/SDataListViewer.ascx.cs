@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
+using System.IO;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using Sage.Platform.WebPortal;
+using System.Xml.Serialization;
+using Sage.Common.Syndication.Json;
+using Sage.Common.Syndication.Json.Linq;
+using Sage.Platform.Application;
+using Sage.Platform.SummaryView;
 using Sage.Platform.WebPortal.Services;
 using Sage.Platform.WebPortal.SmartParts;
-using Sage.Platform.Application;
 
 public partial class SmartParts_General_SDataListViewer : UserControl
 {
     public string MainViewDefinition { get; set; }
+
     public string MainViewDefinitionForwardSlash
     {
         get
@@ -25,15 +20,19 @@ public partial class SmartParts_General_SDataListViewer : UserControl
             return MainViewDefinition.Replace(".", "/");
         }
     }
+
     public string HelpTopicName { get; set; }
     public string TabContextMenu { get; set; }
     public string ListContextMenu { get; set; }
     public bool DetailPaneVisibleOnLoad { get; set; }
+
     private int _detailPaneDefaultHeight = 250;
-    public int DetailPaneDefaultHeight { 
-        get { return _detailPaneDefaultHeight; } 
-        set { _detailPaneDefaultHeight = value; } 
+    public int DetailPaneDefaultHeight
+    {
+        get { return _detailPaneDefaultHeight; }
+        set { _detailPaneDefaultHeight = value; }
     }
+
     private string _detailPaneType = string.Empty;
     public string DetailPaneType
     {
@@ -45,15 +44,14 @@ public partial class SmartParts_General_SDataListViewer : UserControl
             }
             return _detailPaneType;
         }
-
-        set
-        { _detailPaneType = value; }
+        set { _detailPaneType = value; }
     }
+
     public string SummaryConfigFile { get; set; }
     public string DetailsPaneConfigFile { get; set; }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        
     }
 
     [ServiceDependency]
@@ -63,7 +61,6 @@ public partial class SmartParts_General_SDataListViewer : UserControl
     {
         base.OnLoad(e);
 
-       
         if (MenuService != null)
         {
             if (!string.IsNullOrEmpty(TabContextMenu))
@@ -91,9 +88,6 @@ public partial class SmartParts_General_SDataListViewer : UserControl
             }
         }
     }
-    
-
-
 
     public string GetConfiguration(string configFile)
     {
@@ -102,22 +96,22 @@ public partial class SmartParts_General_SDataListViewer : UserControl
             return "false";
         }
 
-        Sage.Platform.SummaryView.WebSummaryViewConfiguration config;
-        var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Sage.Platform.SummaryView.WebSummaryViewConfiguration));
-        using (var reader = new System.IO.StreamReader(Page.MapPath(string.Format("~/SummaryConfigData/{0}.xml", configFile))))
+        WebSummaryViewConfiguration config;
+        var serializer = new XmlSerializer(typeof(WebSummaryViewConfiguration));
+        using (var reader = new StreamReader(Page.MapPath(string.Format("~/SummaryConfigData/{0}.xml", configFile))))
         {
-            config = serializer.Deserialize(reader) as Sage.Platform.SummaryView.WebSummaryViewConfiguration;
+            config = serializer.Deserialize(reader) as WebSummaryViewConfiguration;
         }
         if (config == null)
         {
             return string.Empty;
         }
 
-        var obj = new Sage.Common.Syndication.Json.Linq.JObject();
+        var obj = new JObject();
         obj["mashupName"] = config.MashupName;
         obj["queryName"] = config.QueryName;
         obj["templateLocation"] = config.Template;
 
-        return Sage.Common.Syndication.Json.JsonConvert.SerializeObject(obj);
+        return JsonConvert.SerializeObject(obj);
     }
 }

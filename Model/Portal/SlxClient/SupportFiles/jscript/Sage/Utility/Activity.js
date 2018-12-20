@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Utility/Activity", [
     'dojo/date/locale',
     'dojox/grid/cells/_base',
     'Sage/Utility',
@@ -20,16 +20,21 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
         return valid;
     };
     var typeCell = declare("Sage.Utility.Activity.TypeCell", dojox.grid.cells.Cell, {
-        format: function (inRowIndex, inItem) {
+        format: function (value, inItem) {
             //console.log('index: ' + inRowIndex + '   item: %o', inItem);
             if (!inItem) {
                 return this.defaultValue;
             }
-            var type = this.get(inRowIndex, inItem);
+            var type = '';
+            if (typeof value === 'number') {
+                type = this.get(value, inItem);
+            } else {
+                type = value;
+            }
             var activity = (inItem.hasOwnProperty('Activity') && typeof inItem['Activity'] === 'object') ? inItem.Activity : inItem;
             var key = utility.getValue(activity, "$key");
             var confStatus = (inItem.hasOwnProperty('Status')) ? inItem.Status : false;
-            var fmtStr = '<a href="${0}" ><div class="Global_Images icon16x16 ${1}" title="${2}"></div>&nbsp;${2}</a>';
+            var fmtStr = '<span onclick="${0}" class="activity-type-link" ><div class="Global_Images icon16x16 ${1}" title="${2}"></div>&nbsp;${2}</span>';
 
             //Determine the recurrnece context, se we pass the correct recurring flag so that the reocrrnce dlg will be not be shown if there is no ending to the reocurrnce. 
             var reocState = Sage.Utility.getValue(activity, 'RecurrenceState');
@@ -52,12 +57,12 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
         }
     });
     var historyTypeCell = declare('Sage.Utility.Activity.HistoryTypeCell', dojox.grid.cells.Cell, {
-        format: function (inRowIndex, inItem) {
+        format: function (value, inItem) {
             if (!inItem) {
                 return this.defaultValue;
             }
             var key = utility.getValue(inItem, '$key');
-            var typeValue= utility.getValue(inItem, 'Type');
+            var typeValue = utility.getValue(inItem, 'Type');
             var typeDisp = "";
             var type = "";
             if (typeValue.toString().substring(0, 2) === "at") {
@@ -65,9 +70,9 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
                 type = typeValue;
             } else {
                 typeDisp = Sage.Utility.Activity.getActivityTypeNameFromEnumValue(typeValue);
-                type =  Sage.Utility.Activity.getActivityTypeCodeFromEnumValue(typeValue);
+                type = Sage.Utility.Activity.getActivityTypeCodeFromEnumValue(typeValue);
             }
-            var fmt = '<a href="javascript:Sage.Link.editHistory(\'${0}\')" ><div class="Global_Images icon16x16 ${1} title="${2}"></div>&nbsp;${2}</a>';            
+            var fmt = '<span onclick="javascript:Sage.Link.editHistory(\'${0}\')" class="activity-type-link"><div class="Global_Images icon16x16 ${1} title="${2}"></div>&nbsp;${2}</span>';
             return dstring.substitute(fmt, [key, Sage.Utility.Activity.getActivityImageClass(type, 'small'), typeDisp]);
         }
     });
@@ -213,14 +218,14 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
             var key = utility.getValue(inItem, '$key');
             if (isValidId(key)) {
                 var activity = (inItem.hasOwnProperty('Activity') && typeof inItem['Activity'] === 'object') ? inItem.Activity : inItem;
-                return dstring.substitute('<a href="javascript:Sage.Link.completeActivity(\'${0}\', ${1})">${2}</a>', [key, utility.getValue(activity, 'Recurring'), nlsStrings.Complete]);
+                return dstring.substitute('<span onclick="javascript:Sage.Link.completeActivity(\'${0}\', ${1})" class="activity-type-link">${2}</span>', [key, utility.getValue(activity, 'Recurring'), nlsStrings.Complete]);
             }
             return '';
         }
     });
     Sage.namespace('Utility.Activity');
     Sage.Utility.Activity = {
-        timelessText: 'timeless',
+        timelessText: nlsStrings.timelessText,
         _imageMap: {
             small: {
                 'atNote': 'images/icons/note_16x16.gif',
@@ -378,7 +383,7 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
             size = Sage.Utility.Activity._verifySize(size);
             type = type || 'atAppointment';
             return Sage.Utility.Activity._iconClassMap[size][type] || Sage.Utility.Activity._iconClassMap[size]['atAppointment'];
-        },       
+        },
         getActivityTypeName: function (type) {
             switch (type) {
                 case 'atPhoneCall':
@@ -484,7 +489,7 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
                 case 'atLiterature':
                     return '262163';
                 case 'atFax':
-                    return '262155';               
+                    return '262155';
                 case 'atNote':
                     return '262148';
                 case 'atEMail':
@@ -584,10 +589,16 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
                 timeless = Sage.Utility.Activity.isDateFiveSecondRuleTimeless(startDate);
             }
             if (!timeless) {
-                return dateLocale.format(startDate, { selector: 'datetime', fullYear: true });
+                return dateLocale.format(startDate, {
+                    selector: 'datetime', fullYear: true,
+                    locale: Sys.CultureInfo.CurrentCulture.name
+                });
             } else {
                 var timelessDate = new Date(startDate.getUTCFullYear(), startDate.getUTCMonth(), startDate.getUTCDate());
-                return dateLocale.format(timelessDate, { selector: 'date', fullYear: true }) + ' ' + this.timelessText;
+                return dateLocale.format(timelessDate, {
+                    selector: 'date', fullYear: true,
+                    locale: Sys.CultureInfo.CurrentCulture.name
+                }) + ' ' + this.timelessText;
             }
         },
         getActivityEndDate: function (startDate, duration, timeless) {
@@ -614,13 +625,19 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
                 startDate = Sage.Utility.Convert.toDateFromString(startDate);
             }
             var sDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), startDate.getHours(), startDate.getMinutes());
-            if(timeless) {
+            if (timeless) {
                 sDate = new Date(startDate.getUTCFullYear(), startDate.getUTCMonth(), startDate.getUTCDate(), 0, 0, 5);
             }
             if (dateFormat)
-                return dateLocale.format(sDate, { selector: 'date', datePattern: dateFormat });
+                return dateLocale.format(sDate, {
+                    selector: 'date', datePattern: dateFormat,
+                    locale: Sys.CultureInfo.CurrentCulture.name
+                });
             else
-                return dateLocale.format(sDate, { selector: 'date', datePattern: "MM/d/yy H:mm" });
+                return dateLocale.format(sDate, {
+                    selector: 'date', datePattern: "MM/d/yy H:mm",
+                    locale: Sys.CultureInfo.CurrentCulture.name
+                });
         },
         formatActivityEndDateForCalendar: function (startDate, duration) {
             if (!startDate) {
@@ -634,9 +651,15 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
             //Some activities will end after midnight, so make it same date and just update the time to handle it in Activity scheduler
             if (dojo.date.compare(eDate, stDate, "date") > 0) {
                 //eDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), eDate.getHours(), eDate.getMinutes());
-                return dateLocale.format(stDate, { selector: 'date', datePattern: "MM/d/yy 24:00" });
+                return dateLocale.format(stDate, {
+                    selector: 'date', datePattern: "MM/d/yy 24:00",
+                    locale: Sys.CultureInfo.CurrentCulture.name
+                });
             }
-            return dateLocale.format(eDate, { selector: 'date', datePattern: "MM/d/yy H:mm" });
+            return dateLocale.format(eDate, {
+                selector: 'date', datePattern: "MM/d/yy H:mm",
+                locale: Sys.CultureInfo.CurrentCulture.name
+            });
         },
         formatEventDateForCalendar: function (startDate, dateFormat) {
             if (!startDate) {
@@ -646,11 +669,17 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
                 startDate = Sage.Utility.Convert.toDateFromString(startDate);
             }
             var sDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), startDate.getHours(), startDate.getMinutes());
-          
+
             if (dateFormat)
-                return dateLocale.format(sDate, { selector: 'date', datePattern: dateFormat });
+                return dateLocale.format(sDate, {
+                    selector: 'date', datePattern: dateFormat,
+                    locale: Sys.CultureInfo.CurrentCulture.name
+                });
             else
-                return dateLocale.format(sDate, { selector: 'date', datePattern: "MM/d/yy H:mm" });
+                return dateLocale.format(sDate, {
+                    selector: 'date', datePattern: "MM/d/yy H:mm",
+                    locale: Sys.CultureInfo.CurrentCulture.name
+                });
         },
         formatEventDate: function (startDate) {
             if (!startDate) {
@@ -659,7 +688,10 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
             if (Sage.Utility.Convert.isDateString(startDate)) {
                 startDate = Sage.Utility.Convert.toDateFromString(startDate);
             }
-            return dateLocale.format(startDate, { selector: 'date', fullYear: true });
+            return dateLocale.format(startDate, {
+                selector: 'date', fullYear: true,
+                locale: Sys.CultureInfo.CurrentCulture.name
+            });
         },
         formatDateAdd: function (dt, mode, duration) {
             if (!dt) {
@@ -670,7 +702,10 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
             }
             var dtAdd = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate(), dt.getHours(), dt.getMinutes());
             dtAdd = dojo.date.add(dtAdd, mode, duration);
-            return dateLocale.format(dtAdd, { selector: 'date', fullYear: true });
+            return dateLocale.format(dtAdd, {
+                selector: 'date', fullYear: true,
+                locale: Sys.CultureInfo.CurrentCulture.name
+            });
         },
         formatShortDate: function (dt) {
             if (!dt) {
@@ -680,7 +715,10 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
                 dt = Sage.Utility.Convert.toDateFromString(dt);
             }
             var dtAdd = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate(), dt.getHours(), dt.getMinutes());
-            return dateLocale.format(dtAdd, { selector: 'date', formatLength: 'short', fullYear: true });
+            return dateLocale.format(dtAdd, {
+                selector: 'date', formatLength: 'short', fullYear: true,
+                locale: Sys.CultureInfo.CurrentCulture.name
+            });
         },
         formatLongDate: function (dt) {
             if (!dt) {
@@ -690,7 +728,10 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
                 dt = Sage.Utility.Convert.toDateFromString(dt);
             }
             var dtAdd = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate(), dt.getHours(), dt.getMinutes());
-            return dateLocale.format(dtAdd, { selector: 'date', formatLength: 'long', fullYear: true });
+            return dateLocale.format(dtAdd, {
+                selector: 'date', formatLength: 'long', fullYear: true,
+                locale: Sys.CultureInfo.CurrentCulture.name
+            });
         },
         roundDateToNextQuarterHour: function (dt) {
             dt.setSeconds(0);
@@ -718,30 +759,32 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
                 return '';
             }
             if (!duration) {
-                return '0m';
+                return '0'+nlsStrings.m;
             }
             if (duration < 60) {
-                return duration + "m";
+                return duration + nlsStrings.m;
             }
             if (duration > 60) {
                 var hours = String(duration / 60).split(".");
                 var min = duration % 60;
-                return hours[0] + "h " + min + "m";
+                return hours[0] + nlsStrings.h+" " + min + nlsStrings.m;
             }
             else {
-                return "1hr";
+                return "1"+nlsStrings.hr;
             }
         },
         formatTimelessStartDate: function (value) {
             if (!value) {
                 return '';
             }
-            var pad = function (n) { return n < 10 ? '0' + n : n; };
+            var pad = function (n) {
+                return n < 10 ? '0' + n : n;
+            };
             return value.getUTCFullYear() + '-'
                 + pad(value.getUTCMonth() + 1) + '-'
                 + pad(value.getUTCDate()) + 'T00:00:00Z';
         },
-         formatTimelessEndDate: function (dateValue, mode, increment) {
+        formatTimelessEndDate: function (dateValue, mode, increment) {
             if (!dateValue) {
                 return '';
             }
@@ -749,10 +792,40 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
             if (mode && increment) {
                 newDate = dojo.date.add(newDate, mode, increment);
             }
-            var pad = function (n) { return n < 10 ? '0' + n : n; };
+            var pad = function (n) {
+                return n < 10 ? '0' + n : n;
+            };
             var utcYear = newDate.getUTCFullYear();
             var utcMonth = newDate.getUTCMonth() + 1;
             var utcDate = newDate.getUTCDate();
+
+            return utcYear + '-'
+                + pad(utcMonth) + '-'
+                + pad(utcDate) + 'T23:59:59Z';
+        },
+        formatRawTimelessStartDate: function (value) {
+            if (!value) {
+                return '';
+            }
+            var pad = function (n) { return n < 10 ? '0' + n : n; };
+            return value.getFullYear() + '-'
+                + pad(value.getMonth() + 1) + '-'
+                + pad(value.getDate()) + 'T00:00:00Z';
+        },
+        formatRawTimelessEndDate: function (dateValue, mode, increment) {
+            if (!dateValue) {
+                return '';
+            }
+            var newDate = new Date(dateValue.getFullYear(), dateValue.getMonth(), dateValue.getDate());
+            if (mode && increment) {
+                newDate = dojo.date.add(newDate, mode, increment);
+            }
+            var pad = function (n) {
+                return n < 10 ? '0' + n : n;
+            };
+            var utcYear = newDate.getFullYear();
+            var utcMonth = newDate.getMonth() + 1;
+            var utcDate = newDate.getDate();
 
             return utcYear + '-'
                 + pad(utcMonth) + '-'
@@ -855,7 +928,7 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
         },
         getActivityEditLink: function (activity) {
             var key = activity.id;
-            var fmtStr = '<a href="${0}" >${1}</a>';
+            var fmtStr = '<span onclick="${0}" class="activity-type-link">${1}</span>';
             var recurring = Sage.Utility.Activity._getReccurenceFlag(activity);
             var desc = activity.Description || Sage.Utility.Activity.getActivityTypeName(Sage.Utility.Activity.getActivityTypeEnumCode(activity.Type));
             var href = 'javascript:Sage.Link.editActivity(\'' + key + '\', ' + recurring + ')';
@@ -863,7 +936,7 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
         },
         getActivitySummaryHeader: function (activity) {
             var key = activity.id;
-            var fmtStr = '<a href="${0}" >${1}</a>';
+            var fmtStr = '<span onclick="${0}" class="activity-type-link">${1}</span>';
             var sHtml = '';
             if (activity.Alarm) {
                 sHtml += '<div class="Global_Images icon24x24 icon_Alarm_24x24" > </div>&nbsp;';
@@ -893,7 +966,7 @@ function (dateLocale, cell, utility, dstring, nlsStrings, declare, sDataServiceR
             }
             sHtml += '<div class="Global_Images icon24x24 ' + Sage.Utility.Activity.getActivityImageClass(activity.Type, 'medium') + '"> </div>&nbsp;';
             var recurring = Sage.Utility.Activity._getReccurenceFlag(activity);
-            var fmtStr = '<a href="${0}" >${1}</a>';
+            var fmtStr = '<span onclick="${0}" class="activity-type-link">${1}</span>';
             var desc = activity.Description || Sage.Utility.Activity.getActivityTypeName(Sage.Utility.Activity.getActivityTypeEnumCode(activity.Type));
             var href = 'javascript:Sage.Link.editActivity(\'' + activity.$key + '\', ' + recurring + ')';
             if (userActivity.Status === "asUnconfirmed") {

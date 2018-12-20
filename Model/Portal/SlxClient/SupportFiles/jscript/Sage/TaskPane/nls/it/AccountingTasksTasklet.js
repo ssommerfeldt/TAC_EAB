@@ -1,3 +1,1 @@
-define((
-{ updatePricingRecords: 'E possibile selezionare un solo record quando si esegue questa opzione.' }
-));
+define("Sage/TaskPane/nls/it/AccountingTasksTasklet", {});

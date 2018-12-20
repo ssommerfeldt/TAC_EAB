@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Выпадающий список' }
-));
+define("Sage/QuickForms/Design/nls/ru/ComboBoxControlDesigner", {
+    "displayNameText": "ComboBox"
+});

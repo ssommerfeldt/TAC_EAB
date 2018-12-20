@@ -1,16 +1,14 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/SummaryAggregate", [
        'dijit/_Widget',
        'Sage/_Templated',
        'dijit/Tooltip',
        'Sage/UI/GridMenuItem',
-       'Sage/Data/BaseSDataStore',
-       'Sage/UI/Columns/SlxLink',
-       'Sage/UI/Columns/Phone',
+       'Sage/Store/SData',
        'dojo/i18n!../nls/SDataLookup', // loading text, no data text, TODO: Create common nls
        'dojo/_base/declare'
 ],
-function (_Widget, _Templated, tooltip, gridMenuItem, baseSDataStore, slxLink, phone, nlsResource, declare) {
+function (_Widget, _Templated, tooltip, gridMenuItem, SDataObjectStore, nlsResource, declare) {
     var widget = declare('Sage.UI.Controls.SummaryAggregate', [_Widget, _Templated], {
         //l18n strings...
         loadingText: nlsResource.loadingText,
@@ -36,11 +34,11 @@ function (_Widget, _Templated, tooltip, gridMenuItem, baseSDataStore, slxLink, p
             '<span>',
                 '<button data-dojo-type="dijit.form.ComboButton" data-dojo-attach-point="_button" data-dojo-attach-event="onClick:_click" >',
                     '<div data-dojo-type="dijit.Menu" data-dojo-attach-point="_menu">',
-                    '</div>', 
+                    '</div>',
                 '</button>',
             '</span>'
         ]),
-        constructor: function() {
+        constructor: function () {
             this.select = [];
             this.popupStructure = [];
             this.inherited(arguments);
@@ -68,8 +66,9 @@ function (_Widget, _Templated, tooltip, gridMenuItem, baseSDataStore, slxLink, p
                         this.select.push(this.popupStructure[i]['field']);
                     }
                 }
-                this.store = new baseSDataStore({
+                this.store = new SDataObjectStore({
                     service: Sage.Data.SDataServiceRegistry.getSDataService('dynamic'),
+                    contractName: 'dynamic',
                     resourceKind: this.resourceKind,
                     select: this.select // ['id', 'Name', 'WorkPhone', 'Email']
                 });
@@ -79,8 +78,9 @@ function (_Widget, _Templated, tooltip, gridMenuItem, baseSDataStore, slxLink, p
                 this.grid = new gridMenuItem({
                     gridOptions: {
                         store: this.store,
-                        rowsPerPage: 40,
-                        structure: this.popupStructure,
+                        cssClass: 'groupsPopMenu',
+                        minRowsPerPage: 40,
+                        columns: this.popupStructure,
                         loadingMessage: this.loadingText, // 'Loading...',
                         noDataMessage: this.noDataText, // 'No records returned',
                         selectionMode: 'single',
@@ -91,7 +91,6 @@ function (_Widget, _Templated, tooltip, gridMenuItem, baseSDataStore, slxLink, p
                 });
                 this._menu.addChild(this.grid);
                 this._menu.set('style', { width: '350px' });
-                this.grid.startup();
             }
         },
         _findlinkPage: function () {
@@ -126,7 +125,7 @@ function (_Widget, _Templated, tooltip, gridMenuItem, baseSDataStore, slxLink, p
             var multiCurrency = window.isMultiCurrencyEnabled();
             d.query('> span', node).forEach(function (span, span_idx) {
                 var cell = {
-                    name: d.trim(d.attr(span, 'name') || span.innerHTML),
+                    label: d.trim(d.attr(span, 'name') || span.innerHTML),
                     type: d.attr(span, 'cellType') || false,
                     field: d.trim(d.attr(span, 'field') || ''),
                     id: d.trim(d.attr(span, 'id') || ''),
@@ -140,7 +139,7 @@ function (_Widget, _Templated, tooltip, gridMenuItem, baseSDataStore, slxLink, p
                 if (d.hasAttr(span, 'width')) {
                     cell['width'] = widthFromAttr(span);
                 }
-                cell.type = cell.type ? dojo.getObject(cell.type) : dojox.grid.cells.Cell;
+                cell.type = cell.type ? dojo.getObject(cell.type) : null;
                 if (cell.type && cell.type.markupFactory) {
                     cell.type.markupFactory(span, cell);
                 }

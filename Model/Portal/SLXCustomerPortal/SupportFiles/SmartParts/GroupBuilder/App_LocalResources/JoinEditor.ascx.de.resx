@@ -112,64 +112,52 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="localizeAddGlobalJoin.Text" xml:space="preserve">
     <value>Global Join hinzufügen</value>
   </data>
-  <data name="localizeIncludeAllRecordsFromParentTableWhere.Text" xml:space="preserve">
-    <value>Schließt ALLE Datensätze der untergeord. Tabelle sowie nur die Datensätze der überg. Tabelle ein, bei denen die verknüpften Felder gleich sind.</value>
-  </data>
-  <data name="localizeReplace.Text" xml:space="preserve">
-    <value>Ersetzen</value>
-  </data>
   <data name="localizeAllow.Text" xml:space="preserve">
     <value>Zulassen</value>
   </data>
-  <data name="localizeVisibility.Text" xml:space="preserve">
-    <value>Sichtbarkeit:</value>
+  <data name="localizeAlways.Text" xml:space="preserve">
+    <value>Immer</value>
   </data>
-  <data name="localizeStopCascade.Text" xml:space="preserve">
-    <value>Löschen (Kaskadierung stoppen)</value>
-  </data>
-  <data name="localizeJoinType.Text" xml:space="preserve">
-    <value>Join-Typ</value>
-  </data>
-  <data name="localizeParentTableAndJoinField.Text" xml:space="preserve">
-    <value>Übergeordnete Tabelle und Join-Feld</value>
+  <data name="localizeCancel.Text" xml:space="preserve">
+    <value>Abbrechen</value>
   </data>
   <data name="localizeCascadeType.Text" xml:space="preserve">
     <value>Kaskadierungstyp:</value>
   </data>
-  <data name="localizeIncludeAllRecordsFromChildTableWhere.Text" xml:space="preserve">
-    <value>Schließt ALLE Datensätze der übergeord. Tabelle und nur die Datensätze der unterg. Tabelle ein, bei denen die verknüpften Felder gleich sind.</value>
-  </data>
-  <data name="localizeJoinOptions.Text" xml:space="preserve">
-    <value>Join-Optionen</value>
+  <data name="localizeChildTableAndJoinField.Text" xml:space="preserve">
+    <value>Untergeordnete Tabelle und Join-Feld</value>
   </data>
   <data name="localizeClear.Text" xml:space="preserve">
-    <value>Leeren</value>
+    <value>Auswahl aufheben</value>
+  </data>
+  <data name="localizeDelete.Text" xml:space="preserve">
+    <value>Löschen</value>
   </data>
   <data name="localizeDontCascade.Text" xml:space="preserve">
     <value>Ignorieren (keine Kaskadierung)</value>
   </data>
-  <data name="localizeOnlyIncludeJoinFieldsEqual.Text" xml:space="preserve">
-    <value>Enthält nur Zeilen, bei denen die verknüpften Felder beider Tabellen gleich sind.</value>
+  <data name="localizeIncludeAllRecordsFromChildTableWhere.Text" xml:space="preserve">
+    <value>Schließt ALLE Datensätze der übergeord. Tabelle und nur die Datensätze der unterg. Tabelle ein, bei denen die verknüpften Felder gleich sind.</value>
   </data>
-  <data name="localizeOK.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="localizeIncludeAllRecordsFromParentTableWhere.Text" xml:space="preserve">
+    <value>Schließt ALLE Datensätze der untergeord. Tabelle sowie nur die Datensätze der überg. Tabelle ein, bei denen die verknüpften Felder gleich sind.</value>
   </data>
-  <data name="localizeRight.Text" xml:space="preserve">
-    <value>Rechts</value>
+  <data name="localizeInner.Text" xml:space="preserve">
+    <value>Inner</value>
   </data>
-  <data name="localizeChildTableAndJoinField.Text" xml:space="preserve">
-    <value>Untergeordnete Tabelle und Join-Feld</value>
+  <data name="localizeJoinOptions.Text" xml:space="preserve">
+    <value>Join-Optionen</value>
   </data>
-  <data name="localizeCancel.Text" xml:space="preserve">
-    <value>Abbrechen</value>
+  <data name="localizeJoinType.Text" xml:space="preserve">
+    <value>Join-Typ</value>
   </data>
   <data name="localizeLeft.Text" xml:space="preserve">
     <value>Links</value>
@@ -177,13 +165,25 @@
   <data name="localizeNever.Text" xml:space="preserve">
     <value>Nie</value>
   </data>
-  <data name="localizeAlways.Text" xml:space="preserve">
-    <value>Immer</value>
+  <data name="localizeOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="localizeInner.Text" xml:space="preserve">
-    <value>Inner</value>
+  <data name="localizeOnlyIncludeJoinFieldsEqual.Text" xml:space="preserve">
+    <value>Enthält nur Zeilen, bei denen die verknüpften Felder beider Tabellen gleich sind.</value>
   </data>
-  <data name="localizeDelete.Text" xml:space="preserve">
-    <value>Löschen</value>
+  <data name="localizeParentTableAndJoinField.Text" xml:space="preserve">
+    <value>Übergeordnete Tabelle und Join-Feld</value>
+  </data>
+  <data name="localizeReplace.Text" xml:space="preserve">
+    <value>Ersetzen</value>
+  </data>
+  <data name="localizeRight.Text" xml:space="preserve">
+    <value>Rechts</value>
+  </data>
+  <data name="localizeStopCascade.Text" xml:space="preserve">
+    <value>Löschen (Kaskadierung stoppen)</value>
+  </data>
+  <data name="localizeVisibility.Text" xml:space="preserve">
+    <value>Sichtbarkeit:</value>
   </data>
 </root>

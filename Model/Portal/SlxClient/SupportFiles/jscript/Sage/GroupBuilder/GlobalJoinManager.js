@@ -1,5 +1,16 @@
 // Client Script for GlobalJoinManager.ascx
 var jsDeleteGlobalJoinPrompt = GlobalJoinManagerResources.jsDeleteGlobalJoinPrompt;
+var localizeLeft = GlobalJoinManagerResources.localizeLeft;
+var localizeInner = GlobalJoinManagerResources.localizeInner;
+var localizeRight = GlobalJoinManagerResources.localizeRight;
+var localizeClear = GlobalJoinManagerResources.localizeClear;
+var localizeJoinDelete = GlobalJoinManagerResources.localizeJoinDelete;
+var localizeReplace = GlobalJoinManagerResources.localizeReplace;
+var localizeDeleteStopCascade = GlobalJoinManagerResources.localizeDeleteStopCascade;
+var localizeIgnoreDontCascade = GlobalJoinManagerResources.localizeIgnoreDontCascade;
+var localizeAlways = GlobalJoinManagerResources.localizeAlways;
+var localizeAllow = GlobalJoinManagerResources.localizeAllow;
+var localizeNever = GlobalJoinManagerResources.localizeNever;
 
 var joinObjForEdit; // Global Object 
 
@@ -17,7 +28,7 @@ function GlobalJoinManager_closeWin() {
 
 function GlobalJoinManager_addItem() {
     var vURL = 'JoinEditor.aspx';
-    window.open(vURL, "joinEditor","dialog=yes,centerscreen=yes,width=650,height=450,status=no,toolbar=no,scrollbars=no,modal=yes,title='Join Editor'");
+    window.open(vURL, "joinEditor","dialog=yes,centerscreen=yes,width=650,height=485,status=no,toolbar=no,scrollbars=no,modal=yes,title='Join Editor'");
 
 }
 
@@ -35,46 +46,46 @@ function GlobalJoinManager_editItem() {
         joinObjForEdit.fromtable = row.cells[5].innerHTML;
         joinObjForEdit.fromfield = row.cells[6].innerHTML;
         switch (row.cells[7].innerHTML) {
-            case "Left" :
+            case localizeLeft:
                 joinObjForEdit.jointype = '>';
                 break;
-            case "Inner" :
+            case localizeInner:
                 joinObjForEdit.jointype = "=";
                 break;
-            case "Right" :
+            case localizeRight:
                 joinObjForEdit.jointype = "<";
                 break;
         }
         switch (row.cells[8].innerHTML) {
-            case "Clear" :
+            case localizeClear:
                 joinObjForEdit.cascadetype = 'C';
                 break;
-            case "Delete" :
+            case localizeJoinDelete:
                 joinObjForEdit.cascadetype = "D";
                 break;
-            case "Replace" :
+            case localizeReplace:
                 joinObjForEdit.cascadetype = "R";
                 break;
-            case "Delete (stop cascade)" :
+            case localizeDeleteStopCascade:
                 joinObjForEdit.cascadetype = "S";
                 break;
-            case "Ignore (Don\\'t use in cascade)" :
+            case localizeIgnoreDontCascade:
                 joinObjForEdit.cascadetype = "X";
                 break;
         }
         switch (row.cells[9].innerHTML) {
-            case "Always" :
+            case localizeAlways:
                 joinObjForEdit.usebydefault = "T";
                 break;
-            case "Allow" :
+            case localizeAllow:
                 joinObjForEdit.usebydefault = "F";
                 break;
-            case "Never" :
+            case localizeNever:
                 joinObjForEdit.usebydefault = "N";
                 break;
         }
         
-        window.open(vURL, "joinEditor","dialog=yes,centerscreen=yes,width=650,height=450,status=no,toolbar=no,scrollbars=yes,modal=yes,title='Join Editor'");
+        window.open(vURL, "joinEditor","dialog=yes,centerscreen=yes,width=650,height=485,status=no,toolbar=no,scrollbars=yes,modal=yes,title='Join Editor'");
 
     }
 }

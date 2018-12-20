@@ -117,67 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblCreateAccount.Caption" xml:space="preserve">
-    <value>Créer un compte client dans &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
-  </data>
-  <data name="Error_SDataRequest" xml:space="preserve">
-    <value>Erreur lors de la récupération des entités correspondantes via SData. Veuillez contacter votre administrateur système pour plus d'informations.</value>
-  </data>
-  <data name="grdMatches.Status.ColumnHeading" xml:space="preserve">
-    <value>Etat</value>
-  </data>
-  <data name="lblSearchResults.Caption" xml:space="preserve">
-    <value>Résultats de recherche pour &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
-  </data>
-  <data name="lblResultsMsg.Caption" xml:space="preserve">
-    <value>Plusieurs comptes client correspondant ont été trouvés. Les options suivantes sont disponibles :</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Précédent</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Annuler</value>
   </data>
+  <data name="btnNext.Caption" xml:space="preserve">
+    <value>Suivant &gt;</value>
+  </data>
   <data name="Dialog.Caption" xml:space="preserve">
-    <value>Lier à la comptabilité</value>
+    <value>Lien vers la comptabilité</value>
   </data>
   <data name="error_NoAccountSelected" xml:space="preserve">
     <value>Vous devez sélectionner un compte correspondant pour continuer.</value>
   </data>
-  <data name="lblNoMatchesCreateNew.Caption" xml:space="preserve">
-    <value>Créer un nouveau compte client pour &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
+  <data name="grdMatches.Account.ColumnHeading" xml:space="preserve">
+    <value>Compte</value>
   </data>
-  <data name="rdbCreateNew.Caption" xml:space="preserve">
-    <value>Créer un nouvel enregistrement Client dans la comptabilité</value>
+  <data name="grdMatches.Status.ColumnHeading" xml:space="preserve">
+    <value>Etat</value>
   </data>
   <data name="grdMatches.Type.ColumnHeading" xml:space="preserve">
     <value>Type</value>
   </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Lier à la comptabilité - Fusionner les données - Aucune différence</value>
-  </data>
-  <data name="lblSearchNoResults.Caption" xml:space="preserve">
-    <value>Résultats de la recherche</value>
-  </data>
-  <data name="btnNext.Caption" xml:space="preserve">
-    <value>Suivant &gt;</value>
-  </data>
-  <data name="rdbRefineSearch.Caption" xml:space="preserve">
-    <value>Affiner ou élargir la recherche d'un compte existant</value>
-  </data>
-  <data name="grdMatches.Account.ColumnHeading" xml:space="preserve">
-    <value>Compte</value>
-  </data>
-  <data name="rdbLinkAccount.Caption" xml:space="preserve">
-    <value>Lier &lt;span class="boldtext"&gt;{0}&lt;/span&gt; à &lt;span class="boldtext"&gt;{1}&lt;/span&gt; &lt;span class="italictext"&gt;s'il n'existe pas de correspondance à 100%, la fusion sera nécessaire)&lt;/span&gt;:</value>
+  <data name="lblCreateAccount.Caption" xml:space="preserve">
+    <value>Créer un compte client dans &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
   </data>
   <data name="lblNoMatches.Caption" xml:space="preserve">
     <value>Aucune correspondance trouvée en fonction des critères de recherche.</value>
   </data>
-  <data name="Error_TradingAccount_Linked" xml:space="preserve">
-    <value>Le compte d'exploitation sélectionné est déjà lié au compte SalesLogix  '{0}'. Vous ne pouvez pas lier un compte SalesLogix au même compte d'exploitation.</value>
+  <data name="lblNoMatchesCreateNew.Caption" xml:space="preserve">
+    <value>Créer un nouveau compte client pour &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
   </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Précédent</value>
+  <data name="lblResultsMsg.Caption" xml:space="preserve">
+    <value>Plusieurs comptes client correspondant ont été trouvés. Les options suivantes sont disponibles :</value>
+  </data>
+  <data name="lblSearchNoResults.Caption" xml:space="preserve">
+    <value>Résultats de la recherche</value>
+  </data>
+  <data name="lblSearchResults.Caption" xml:space="preserve">
+    <value>Résultats de la recherche pour &lt;span class="boldtext"&gt;{0}&lt;/span&gt;</value>
+  </data>
+  <data name="rdbCreateNew.Caption" xml:space="preserve">
+    <value>Créer un nouvel enregistrement Client dans la comptabilité</value>
+  </data>
+  <data name="rdbLinkAccount.Caption" xml:space="preserve">
+    <value>Lier &lt;span class="boldtext"&gt;{0}&lt;/span&gt; à &lt;span class="boldtext"&gt;{1}&lt;/span&gt; &lt;span class="italictext"&gt;(s'il n'existe pas de correspondance à 100%, la fusion sera nécessaire)&lt;/span&gt; :</value>
+  </data>
+  <data name="rdbRefineSearch.Caption" xml:space="preserve">
+    <value>Affiner ou élargir la recherche d'un compte existant</value>
   </data>
   <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Lier à la comptabilité - Fusionner les données - Différences trouvées</value>
+    <value>Lien vers la comptabilité - Fusionner les données - Différences trouvées</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Lien vers la comptabilité - Fusionner les données - Aucune différence</value>
+  </data>
+  <data name="Error_TradingAccount_Linked" xml:space="preserve">
+    <value>Le compte d'exploitation sélectionné est déjà lié au compte Saleslogix '{0}'. Vous ne pouvez pas lier un compte Saleslogix au même compte d'exploitation.</value>
+  </data>
+  <data name="Error_SDataRequest" xml:space="preserve">
+    <value>Erreur lors de la récupération des entités correspondantes via SData. Veuillez contacter votre administrateur système pour plus d'informations.</value>
   </data>
 </root>

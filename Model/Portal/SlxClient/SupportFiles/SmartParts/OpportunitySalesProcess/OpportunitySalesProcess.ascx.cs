@@ -2,6 +2,7 @@ using System;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 using System.Text;
 using System.Xml;
 using System.Drawing;
@@ -235,7 +236,10 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         if (salesProcess != null)
         {
             IList<ISalesProcessAudit> list = salesProcess.GetSalesProcessAudits();
-            LoadStagesDropDown(list);
+            if (IsPostBack == false || HandlingCurrentOpportunity() == true)
+            {
+                LoadStagesDropDown(list);
+            }
             SalesProcessGrid.DataSource = list;
             SalesProcessGrid.DataBind();
             SetDDLSalesProcess(salesProcess.Name);
@@ -245,7 +249,10 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         }
         else
         {
-            LoadStagesDropDown(null);
+            if (IsPostBack == false || HandlingCurrentOpportunity() == true)
+            {
+                LoadStagesDropDown(null);
+            }
             List<ISalesProcessAudit> list = new List<ISalesProcessAudit>();
             SalesProcessGrid.DataSource = list;
             SalesProcessGrid.DataBind();
@@ -281,7 +288,7 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
     /// </summary>
     private void LoadSalesProcessDropDown()
     {
-        if (IsPostBack == false || HandlingCurrentOpportunity() == false)
+        if (IsPostBack == false || HandlingCurrentOpportunity() == true)
         {
             ddLSalesProcess.Items.Clear();
             IList<Plugin> pluginList = null;
@@ -308,11 +315,18 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
     {
         foreach (ListItem item in ddLSalesProcess.Items)
         {
-            if (item.Text == name)
+            if (item.Selected==true)
             {
-                item.Selected = true;
+                break;
             }
-        }
+			else
+			{
+                if (item.Text == name)
+                {
+                    item.Selected = true;
+                }
+            }	
+		}
     }
 
     /// <summary>
@@ -321,8 +335,6 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
     /// <param name="salesProcessAudits">The sales process audits.</param>
     private void LoadStagesDropDown(IList<ISalesProcessAudit> salesProcessAudits)
     {
-        if (IsPostBack == false || HandlingCurrentOpportunity() == false)
-        {
             UpdateSessionInfo();
             ddlStages.Items.Clear();
             if (salesProcessAudits == null)
@@ -350,25 +362,28 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
                 }
             }
             ddlStages.SelectedIndex = currentStageIndex;
-        }
     }
 
     private void UpdateSnapShot()
     {
         ISalesProcesses salesProcess = Helpers.GetSalesProcess(this.EntityContext.EntityID.ToString());
         this._salesProcess = salesProcess;
-        IList<ISalesProcessAudit> list = salesProcess.GetSalesProcessAudits();
-        foreach (ISalesProcessAudit spAudit in list)
+        if (salesProcess != null)
         {
-            if (spAudit.ProcessType == "STAGE")
+            IList<ISalesProcessAudit> list = salesProcess.GetSalesProcessAudits();
+            foreach (ISalesProcessAudit spAudit in list)
             {
-                if (spAudit.IsCurrent == true)
+                if (spAudit.ProcessType == "STAGE")
                 {
-                    LoadSnapShot(spAudit);
+                    if (spAudit.IsCurrent == true)
+                    {
+                        LoadSnapShot(spAudit);
+                    }
                 }
             }
         }
     }
+
     /// <summary>
     /// Loads the snap shot.
     /// </summary>
@@ -420,8 +435,18 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         ISalesProcesses salesProcess = EntityFactory.Create<ISalesProcesses>();
         salesProcess.InitSalesProcess(pluginID, opportunityId);
         IPanelRefreshService refresher = PageWorkItem.Services.Get<IPanelRefreshService>();
-        refresher.RefreshAll();
         this.UpdateSnapShot();
+                if (_salesProcess != null)
+        {
+            IList<ISalesProcessAudit> list = _salesProcess.GetSalesProcessAudits();
+            LoadStagesDropDown(list);
+        }
+        else
+        {
+            LoadStagesDropDown(null);
+        }
+        refresher.RefreshAll();
+        
     }
 
     /// <summary>
@@ -478,11 +503,14 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
                 Label lblReq = ((Label)e.Row.FindControl("lblReq"));
 
                 lblReq.ForeColor = Color.Red;
+                lblReq.Attributes.CssStyle.Add("display", "inline-block");
+                lblReq.Width = Unit.Pixel(5);
                 lblReq.Text = (spAudit.Required == true ? "*" : "&nbsp;&nbsp;");
 
-                LinkButton linkAction = ((LinkButton)e.Row.FindControl("linkAction"));
-                linkAction.Text = spAudit.StepName;
-                linkAction.Attributes.Add("href", string.Format("javascript:executeAction('{0}','{1}');", spAudit.Id.ToString(), spAudit.ActionType));
+                HtmlGenericControl linkAction = ((HtmlGenericControl)e.Row.FindControl("linkAction"));
+                linkAction.InnerText = spAudit.StepName;
+                linkAction.Attributes.Add("onclick", string.Format("javascript:executeAction('{0}','{1}');", spAudit.Id.ToString(), spAudit.ActionType));
+                linkAction.Attributes.Add("class", "activity-type-link");
 
                 DateTimePicker dtpStartDate = (DateTimePicker)e.Row.FindControl("dtpStartDate");
                 if (dtpStartDate != null)
@@ -519,7 +547,7 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
                 e.Row.Cells[0].ColumnSpan = 6;
                 e.Row.Cells[0].HorizontalAlign = HorizontalAlign.Left;
                 e.Row.Cells[0].Font.Bold = (spAudit.IsCurrent == true);
-                e.Row.BackColor = Color.FromArgb(220, 233, 247);
+                e.Row.BackColor = Color.FromArgb(182, 182, 182);
                 e.Row.Cells[0].Text = string.Format("{0} {1}:{2}-{3}%", GetLocalResourceObject("Stage").ToString(), spAudit.StageOrder, spAudit.StageName, spAudit.Probability);
                 e.Row.Cells.RemoveAt(1);
                 e.Row.Cells.RemoveAt(1);
@@ -561,6 +589,15 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
             salesProcess.UnCompleteStep(spaid);
             salesProcess.Save();
         }
+
+        if (ddlStages.SelectedItem != null)
+        {
+            if (ddlStages.SelectedItem.Value != salesProcess.CurrentStageId)
+            {
+                ddlStages.SelectedIndex = ddlStages.Items.IndexOf(ddlStages.Items.FindByValue(salesProcess.CurrentStageId));
+            }
+        }
+
         IPanelRefreshService refresher = PageWorkItem.Services.Get<IPanelRefreshService>();
         refresher.RefreshAll();
 
@@ -632,8 +669,8 @@ public partial class SmartParts_OpportunitySalesProcess_SalesProcess : EntityBou
         if (e.CommandName.Equals("Action"))
         {
             int rowIndex = Convert.ToInt32(e.CommandArgument);
-            string Id = SalesProcessGrid.DataKeys[rowIndex].Value.ToString();
-            DoAction(Id);
+            string id = SalesProcessGrid.DataKeys[rowIndex].Value.ToString();
+            DoAction(id);
         }
     }
 

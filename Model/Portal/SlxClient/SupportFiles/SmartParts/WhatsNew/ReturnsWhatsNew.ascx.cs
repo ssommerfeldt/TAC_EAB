@@ -231,15 +231,9 @@ public partial class ReturnsWhatsNew : UserControl, ISmartPartInfoProvider
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
         ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-
-        Label lblNewReturns = new Label();
-        lblNewReturns.Text = GetLocalResourceObject("Returns_Caption").ToString();
-
-        tinfo.LeftTools.Add(lblNewReturns);
+        tinfo.Title = GetLocalResourceObject("Returns_Caption").ToString();
         tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Return_detail_24x24.gif");
-
         return tinfo;
     }
-
     #endregion
 }

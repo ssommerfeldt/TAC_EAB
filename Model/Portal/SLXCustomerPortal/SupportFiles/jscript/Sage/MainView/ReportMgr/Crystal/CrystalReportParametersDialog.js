@@ -1,5 +1,7 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+require({cache:{
+'url:Sage/MainView/ReportMgr/Crystal/templates/CrystalReportParametersDialog.html':"<div>\r\n    <div data-dojo-type=\"dijit.Dialog\" title=\"{%= $._getDialogTitle() %}\" dojoattachpoint=\"_dialog\" dojoattachevent=\"onCancel:_dialog_OnCancel\" style=\"width: 625px\">\r\n        <div data-dojo-type=\"dijit.form.Form\">\r\n            <div style=\"overflow:auto\">\r\n                <div dojoattachpoint=\"paramsContainerDiv\" id=\"paramsContainerDiv\" style=\"height:400px; overflow:auto\"></div>\r\n            </div>\r\n            <div align=\"right\" style=\"margin-top:10px\">\r\n                <div data-dojo-type=\"dijit.form.Button\"dojoAttachPoint=\"cmdBack\" dojoAttachEvent=\"onClick:_cmdBack_OnClick\" >{%= Sage.Utility.htmlEncode($._nlsResources.cmdBack_Caption) %}</div>\r\n                <div data-dojo-type=\"dijit.form.Button\"dojoAttachPoint=\"cmdNext\" dojoAttachEvent=\"onClick:_cmdNext_OnClick\">{%= Sage.Utility.htmlEncode($._nlsResources.cmdNext_Caption) %}</div>\r\n                <div data-dojo-type=\"dijit.form.Button\" dojoAttachPoint=\"cmdCancel\" dojoAttachEvent=\"onClick:_cmdCancel_OnClick\" style=\"margin-left:5px;\">{%= Sage.Utility.htmlEncode($._nlsResources.cmdCancel_Caption) %}</div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/Crystal/CrystalReportParametersDialog", [
     'dojo/_base/declare',
     'dojo/_base/array',
     'dojo/text!./templates/CrystalReportParametersDialog.html',
@@ -7,14 +9,9 @@ define([
     'Sage/Reporting/Enumerations',
     'Sage/MainView/ReportMgr/Common/_WizardDialogBase',
     'Sage/MainView/ReportMgr/Crystal/BooleanParameterEditor',
-    'Sage/MainView/ReportMgr/Crystal/StringParameterEditor',
-    'Sage/MainView/ReportMgr/Crystal/MultiselectStringParameterEditor',
     'Sage/MainView/ReportMgr/Crystal/DateParameterEditor',
-    'Sage/MainView/ReportMgr/Crystal/DateRangeParameterEditor',
-    'Sage/MainView/ReportMgr/Crystal/NumberParameterEditor',
-    'Sage/MainView/ReportMgr/Crystal/MultiselectNumberParameterEditor',
-    'dijit/Dialog',
-    'dijit/form/Form',
+    'Sage/MainView/ReportMgr/Crystal/SimpleParameterEditor',
+    'Sage/MainView/ReportMgr/Crystal/MultiSelectParameterEditor',
     'Sage/Utility'
 ],
 function (
@@ -22,60 +19,54 @@ function (
     dojoArray,
     template,
     nlsResources,
-    Enumerations,
+    enumerations,
     _WizardDialogBase,
     BooleanParameterEditor,
-    StringParameterEditor,
-    MultiselectStringParameterEditor,
     DateParameterEditor,
-    DateRangeParameterEditor,
-    NumberParameterEditor,
-    MultiselectNumberParameterEditor,
-    Dialog,
-    Form,
-    Utility
+    SimpleParameterEditor,
+    MultiSelectParameterEditor,
+    utility
 ) {
-
-    var __widgetTemplate = Utility.makeTemplateFromString(template.replace('\n', ''));
-
+    var __widgetTemplate = utility.makeTemplateFromString(template.replace('\n', ''));
     var crystalReportParametersDialog = declare('Sage.MainView.ReportMgr.Crystal.CrystalReportParametersDialog', [_WizardDialogBase], {
         id: 'dlgCrystalReportParameters',
         widgetTemplate: __widgetTemplate,
+        mode: null,
         _nlsResources: nlsResources,
         _helpIconTopic: 'RptscheduleWiz',
         _parameterWidgets: null,
         _parameters: null,
-        _currentStep: Enumerations.CrystalReportWizardStep.Parameters,
+        _currentStep: enumerations.CrystalReportWizardStep.Parameters,
         /**
         * CrystalReportParametersDialog class constructor.
         * @constructor
         */
-        constructor: function (options) {
+        constructor: function (options, argMode) {
+            this.mode = argMode;
             this._initializeWizardOptions(options);
             this._parameterWidgets = [];
             //Load the parameters either from the parameters collection passed as argument or from the report metadata.
             this._parameters = (options.parameters && options.parameters.length > 0) ? options.parameters : options.reportMetadata.parameters;
         },
-
         destroy: function () {
             dojoArray.forEach(this._parameterWidgets, function (widget, i) {
-                widget.destroyRecursive();
+                dojo.publish("entity/report/parameters/control/destroy", [widget, this]);
+                if (widget) {
+                    widget.destroyRecursive();
+                }
             });
             this._dialog.destroyRecursive();
             this.inherited(arguments);
         },
-
         /**
         * This is a last method in the initialization process. 
         * It is called after all the child widgets are rendered so it's good for a container widget to finish it's post rendering here. 
         * This is where the container widgets could for example set sizes of their children relative to it's own size.
         */
         startup: function () {
-            //console.log("startup");
             this.inherited(arguments);
             this._loadPromptParameters();
         },
-
         isValid: function () {
             var valid = true;
             dojoArray.forEach(this._parameterWidgets, function (widget, i) {
@@ -83,40 +74,30 @@ function (
             });
             return valid;
         },
-
-        //------------------------------------------------
-        //Events.
-        //------------------------------------------------
-
-
-        //------------------------------------------------
-        //Initialization functions.
-        //------------------------------------------------
-
         _loadPromptParameters: function () {
             var self = this;
             dojoArray.forEach(this._parameters, function (parameter, i) {
                 //'PM-' parameters are not supposed to be shown to the user. 
                 //They are used internally by the report.
                 if (!parameter.name.toUpperCase().startsWith('PM-')) {
-                    console.log("Creating widget for parameter: " + parameter.name + " (" + parameter.parameterValueKind + "/" + parameter.valueRangeKind + ")");
                     var parameterWidget = self._getParameterEditor(parameter);
                     if (parameterWidget) {
+                        parameterWidget.paramId = i;
+                        parameterWidget.mode = self.mode;
+                        // NOTE: placeAt() will call the widget's startup method in some scenarios.
                         parameterWidget.placeAt(self.paramsContainerDiv);
+                        // NOTE: The widget's startup method should check if it has already started (e.g. when placeAt() causes a startup) and exit the startup method if it has.
                         parameterWidget.startup();
                         self._parameterWidgets.push(parameterWidget);
                     } else {
                         console.error("This report uses parameters that are not currently supported.");
                     }
-
                 }
             });
         },
-
-        //------------------------------------------------
-        //Internal functions.
-        //------------------------------------------------
-
+        _getDialogTitle: function () {
+            return this._nlsResources.txtDialogTitle + " [" + this._reportMetadata.localeDisplayName + "]";
+        },
         _getWizardStepResult: function () {
             var parameters = [];
             dojoArray.forEach(this._parameterWidgets, function (widget, i) {
@@ -127,46 +108,32 @@ function (
             };
             return result;
         },
-
         _getParameterEditor: function (parameter) {
-
             switch (parameter.parameterValueKind) {
-                case Enumerations.SlxParameterValueKind.BooleanParameter:
+                case enumerations.SlxParameterValueKind.BooleanParameter:
                     return new BooleanParameterEditor(parameter);
-                case Enumerations.SlxParameterValueKind.StringParameter:
+                case enumerations.SlxParameterValueKind.StringParameter:
+                case enumerations.SlxParameterValueKind.NumberParameter:
+                case enumerations.SlxParameterValueKind.CurrencyParameter:
                     if (parameter.allowMultiValue) {
-                        return new MultiselectStringParameterEditor(parameter);
+                        return new MultiSelectParameterEditor(parameter);
                     }
                     else {
-                        return new StringParameterEditor(parameter);
+                        return new SimpleParameterEditor(parameter);
                     }
                     break;//Needed to avoid JSHint validation error
-                case Enumerations.SlxParameterValueKind.DateParameter:
-                    switch (parameter.valueRangeKind) {
-                        case Enumerations.SlxParameterValueRangeKind.Range:
-                            return new DateRangeParameterEditor(parameter);
-                        case Enumerations.SlxParameterValueRangeKind.Discrete:
-                            return new DateParameterEditor(parameter);
-                        default:
-                            console.error("Unknown parameter type: " + parameter.parameterValueKind + "/" + parameter.valueRangeKind);
-                    }
-                    break;//Needed to avoid JSHint validation error
-                case Enumerations.SlxParameterValueKind.NumberParameter:
-
-                    if (parameter.allowMultiValue) {
-                        return new MultiselectNumberParameterEditor(parameter);
-                    }
-                    else {
-                        return new NumberParameterEditor(parameter);
-                    }
+                case enumerations.SlxParameterValueKind.DateParameter:
+                case enumerations.SlxParameterValueKind.DateTimeParameter:
+                    return new DateParameterEditor(parameter);
+                case enumerations.SlxParameterValueKind.TimeParameter:
+                    console.error("Unknown parameter type: " + parameter.parameterValueKind + "/" + parameter.valueRangeKind);
                     break;//Needed to avoid JSHint validation error
                 default:
                     console.error("Unknown parameter type. valueKind:" + parameter.parameterValueKind + "/rangeKind:" + parameter.valueRangeKind + "/multiValue:" + parameter.allowMultiValue);
                     return null;
             }
-
+            return null;
         }
-
     });
     return crystalReportParametersDialog;
 });

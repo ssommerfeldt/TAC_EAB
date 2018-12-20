@@ -117,49 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTo.Caption" xml:space="preserve">
-    <value>в</value>
-  </data>
-  <data name="lblFuzzyLevelNote.Caption" xml:space="preserve">
-    <value>Определяет количество символов на которые могут различаться записи  (От 1 до 10 символов)</value>
-  </data>
   <data name="chkUseFuzzy.Caption" xml:space="preserve">
     <value>Использовать нечеткий поиск (находит пары, которые написаны с орфографическими ошибками)</value>
   </data>
-  <data name="lblHighValue.Caption" xml:space="preserve">
-    <value>120</value>
-  </data>
-  <data name="lblDuplicate.Caption" xml:space="preserve">
-    <value>Дубликат</value>
+  <data name="chkUsePhonic.Caption" xml:space="preserve">
+    <value>Использовать фонетический поиск (поиск слов, которые звучат одинаково)</value>
   </data>
   <data name="chkUseStemming.Caption" xml:space="preserve">
     <value>Использовать морфологический поиск (поиск других грамматических форм слова)</value>
   </data>
-  <data name="lblLowValue.Caption" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Определение дубликатов по счету:</value>
-  </data>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>Ок</value>
+  <data name="chkUseSynonym.Caption" xml:space="preserve">
+    <value>Использовать синоним (использует тезаурус для поиска синонимов)</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="chkUseSynonym.Caption" xml:space="preserve">
-    <value>Использовать синоним (использует тезаурус для поиска синонимов)</value>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OК</value>
   </data>
-  <data name="lblNoDuplicate.Caption" xml:space="preserve">
-    <value>Не дубликат</value>
+  <data name="lblDuplicate.Caption" xml:space="preserve">
+    <value>Дубликат</value>
   </data>
   <data name="lblFuzzyLevel.Caption" xml:space="preserve">
     <value>Уровень нечеткости:</value>
   </data>
-  <data name="chkUsePhonic.Caption" xml:space="preserve">
-    <value>Использовать звуковой поиск (поиск слов, которые звучат одинаково)</value>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Определение дубликатов по оценке:</value>
+  </data>
+  <data name="lblNoDuplicate.Caption" xml:space="preserve">
+    <value>Не дубликат</value>
   </data>
   <data name="lblPossible.Caption" xml:space="preserve">
     <value>Возможный дубликат</value>
+  </data>
+  <data name="lblTo.Caption" xml:space="preserve">
+    <value>для</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MatchOptions_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>MatchOptions_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="lblFuzzyLevelNote.Caption" xml:space="preserve">
+    <value>Задает количество символов на которые могут различаться записи (от 1 до 10 символов)</value>
+  </data>
+  <data name="lblHighValue.Caption" xml:space="preserve">
+    <value>120</value>
+  </data>
+  <data name="lblLowValue.Caption" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

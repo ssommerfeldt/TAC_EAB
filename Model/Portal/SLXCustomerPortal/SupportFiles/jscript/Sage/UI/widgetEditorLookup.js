@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/widgetEditorLookup", [
     'dijit/form/ValidationTextBox',
     'dijit/form/RadioButton',
     'dijit/form/ComboBox',
@@ -9,10 +9,10 @@ define([
 function (validationTextBox, radioButton, comboBox, itemFileReadStore, numberTextBox) {
     var widget = {};
     widget.txtField = function (context) {
-        var simplate  = new Simplate([
+        var simplate = new Simplate([
             '<div data-dojo-type="dijit.form.ValidationTextBox" id="{%= $.id %}"',
             ' regExp="[^<>;]*" invalidMessage="{%= $.invMess %}" style="width:100%;"></div>'
-            ]);
+        ]);
         return simplate.apply(context);
     };
 
@@ -35,18 +35,18 @@ function (validationTextBox, radioButton, comboBox, itemFileReadStore, numberTex
         return simplate.apply(context);
     };
 
-    widget.numberField = function (context) {
+    widget.numberField = function (context) {        
         var simplate = new Simplate([
-            '<input data-dojo-type="dijit.form.NumberTextBox" id="{%= $.id %}" style="width:100%;"',
+            '<input data-dojo-type="dijit.form.NumberTextBox" id="{%= $.id %}" style="width:100%;" constraints="{locale:Sys.CultureInfo.CurrentCulture.name}" ',
             ' invalidMessage="{%= $.invMess %}"/>'
         ]);
         return simplate.apply(context);
     };
-    
+
     widget.wholeNumberField = function (context) {
         var simplate = new Simplate([
             '<input data-dojo-type="Sage.UI.NumberTextBox" shouldPublishMarkDirty="false" id="{%= $.id %}"',
-            ' invalidMessage="{%= $.invMess %}" constraints="{places:0}" style="width:100%;" formatType="Number"/>'
+            ' invalidMessage="{%= $.invMess %}" constraints="{places:0,locale:Sys.CultureInfo.CurrentCulture.name}" style="width:100%;" formatType="Number"/>'
         ]);
         return simplate.apply(context);
     };
@@ -58,11 +58,11 @@ function (validationTextBox, radioButton, comboBox, itemFileReadStore, numberTex
     //   access the new dijit. 
     widget._myEditRow = function (context) {
         var simplate = new Simplate([
-            '<div data-dojo-type="{%= $.type %}" id="{%= $.id %}" shouldPublishMarkDirty="false" style="height:{%= $.height %};width:100%;" ></div>'
+            '<div data-dojo-type="{%= $.type %}" id="{%= $.id %}" shouldPublishMarkDirty="false" style="height:{%= $.height %};width:100%;" data-dojo-mixins="{%= $.mixins %}"></div>'
         ]);
         return simplate.apply(context);
     };
-    
+
     Sage.UI.widgetEditorLookup = widget; // TODO: Refactor this
     return widget;
 });

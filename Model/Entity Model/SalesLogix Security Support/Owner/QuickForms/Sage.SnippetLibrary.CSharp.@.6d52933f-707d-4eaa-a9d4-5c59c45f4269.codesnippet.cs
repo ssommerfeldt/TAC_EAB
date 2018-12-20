@@ -28,7 +28,6 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 using Sage.Platform;
 #endregion Usings
 
@@ -36,15 +35,15 @@ namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class EditSecurityProfileEventHandlers
     {
-        public static void OkButton_OnClickStep( IEditSecurityProfile form,  EventArgs args)
+        public static void OkButton_OnClickStep(IEditSecurityProfile form, EventArgs args)
         {
 			// child is the member of a team or department
-			if(!string.IsNullOrEmpty(form.HiddenChildId.Value))
+			if (!string.IsNullOrEmpty(form.HiddenChildId.Value))
 			{
 				IOwner child = EntityFactory.GetById<IOwner>(form.HiddenChildId.Value);
 				IOwner parent = EntityFactory.GetById<IOwner>(form.HiddenParentId.Value);
 				IOwnerSecurityProfile selProfile = form.SecurityProfileLookup.LookupResultValue as IOwnerSecurityProfile;
-				if(selProfile != null && selProfile.Id.ToString() != form.HiddenProfileId.Value)
+				if (selProfile != null && selProfile.Id.ToString() != form.HiddenProfileId.Value)
 				{
 					parent.UpdateOwnerSecurityProfile(child, selProfile);
 					child.Save();

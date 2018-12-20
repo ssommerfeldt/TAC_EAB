@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTo.Caption" xml:space="preserve">
-    <value>A :</value>
-  </data>
-  <data name="lblChange.Caption" xml:space="preserve">
-    <value>Modifier le taux à</value>
-  </data>
-  <data name="lblCurrentRate.Caption" xml:space="preserve">
-    <value>(Taux actuel depuis {0} )</value>
-  </data>
-  <data name="Rate.Caption" xml:space="preserve">
-    <value>Taux</value>
-  </data>
   <data name="chkLockRate.Caption" xml:space="preserve">
     <value>Verrouiller le taux pour ce bon de commande</value>
-  </data>
-  <data name="Error_ChangingExchangeRate" xml:space="preserve">
-    <value>Erreur lors de la modification du taux de change.</value>
-  </data>
-  <data name="lblSalesOrderCurrentRate.Caption" xml:space="preserve">
-    <value>Le taux de change actuel de ce bon de commande est de {0} à {1}</value>
-  </data>
-  <data name="lblWillChange.Caption" xml:space="preserve">
-    <value>L'application de cette modification entraînera la conversion de ce bon de commande</value>
-  </data>
-  <data name="lblConvertedPotential.Caption" xml:space="preserve">
-    <value>convertir le potentiel - De :</value>
-  </data>
-  <data name="lblRateDate.Caption" xml:space="preserve">
-    <value>(Taux affecté à {0} )</value>
   </data>
   <data name="CurrencyCode.Caption" xml:space="preserve">
     <value>Code de la devise</value>
   </data>
   <data name="Description.Caption" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="Error_ChangingExchangeRate" xml:space="preserve">
+    <value>Erreur lors de la modification du taux de change.</value>
+  </data>
+  <data name="lblChange.Caption" xml:space="preserve">
+    <value>Modifier le taux à </value>
+  </data>
+  <data name="lblConvertedPotential.Caption" xml:space="preserve">
+    <value>Convertir le potentiel - De :</value>
+  </data>
+  <data name="lblCurrentRate.Caption" xml:space="preserve">
+    <value>(Taux actuel depuis le {0})</value>
+  </data>
+  <data name="lblRateDate.Caption" xml:space="preserve">
+    <value>(Taux affecté le {0})</value>
+  </data>
+  <data name="lblSalesOrderCurrentRate.Caption" xml:space="preserve">
+    <value>Le taux de change actuel de ce bon de commande est {0} à {1}</value>
+  </data>
+  <data name="lblTo.Caption" xml:space="preserve">
+    <value>A :</value>
+  </data>
+  <data name="lblWillChange.Caption" xml:space="preserve">
+    <value>L'application de cette modification entraînera la conversion de ce bon de commande</value>
+  </data>
+  <data name="Rate.Caption" xml:space="preserve">
+    <value>Taux</value>
   </data>
 </root>

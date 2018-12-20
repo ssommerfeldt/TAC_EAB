@@ -117,26 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdActivities_AddedBy_ColumnHeader" xml:space="preserve">
-    <value>Hinzugefügt von</value>
+  <data name="ActivityType_Meeting" xml:space="preserve">
+    <value>Meeting</value>
   </data>
-  <data name="grdActivities_Regarding_ColumnHeader" xml:space="preserve">
-    <value>Betreff</value>
+  <data name="ActivityType_Note" xml:space="preserve">
+    <value>Notiz</value>
   </data>
-  <data name="grdActivities_ScheduleDate_ColumnHeader" xml:space="preserve">
-    <value>Datum planen</value>
-  </data>
-  <data name="NewActivities_Title" xml:space="preserve">
-    <value>Neue Aktivitäten</value>
+  <data name="ActivityType_Personal" xml:space="preserve">
+    <value>Private Aktivität</value>
   </data>
   <data name="ActivityType_PhoneCall" xml:space="preserve">
     <value>Anruf</value>
   </data>
-  <data name="ModifiedAccounts_Title" xml:space="preserve">
-    <value>Geänderte Aktivitäten</value>
+  <data name="ActivityType_ToDo" xml:space="preserve">
+    <value>Aufgabe</value>
   </data>
-  <data name="grdActivities_EmptyRow" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  <data name="grdActivities_Account_ColumnHeader" xml:space="preserve">
+    <value>Firma</value>
+  </data>
+  <data name="grdActivities_AddedBy_ColumnHeader" xml:space="preserve">
+    <value>Hinzugefügt von</value>
   </data>
   <data name="grdActivities_Contact_ColumnHeader" xml:space="preserve">
     <value>Kontakt</value>
@@ -144,14 +144,20 @@
   <data name="grdActivities_DateAdded_ColumnHeader" xml:space="preserve">
     <value>Hinzugefügt am</value>
   </data>
-  <data name="grdUpdatedActivities_ChangedTo_ColumnHeader" xml:space="preserve">
-    <value>An</value>
+  <data name="grdActivities_EmptyRow" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
   </data>
-  <data name="grdUpdatedActivities_ChangedFrom_ColumnHeader" xml:space="preserve">
-    <value>Von</value>
+  <data name="grdActivities_Regarding_ColumnHeader" xml:space="preserve">
+    <value>Betreff</value>
   </data>
-  <data name="grdUpdatedActivities_ChangedField_ColumnHeader" xml:space="preserve">
-    <value>Feld</value>
+  <data name="grdActivities_ScheduleDate_ColumnHeader" xml:space="preserve">
+    <value>Zeitplandatum</value>
+  </data>
+  <data name="grdActivities_ScheduleFor_ColumnHeader" xml:space="preserve">
+    <value>Zeitplan für</value>
+  </data>
+  <data name="grdActivities_Type_ColumnHeader" xml:space="preserve">
+    <value>Typ</value>
   </data>
   <data name="grdUpdatedActivities_ChangedBy_ColumnHeader" xml:space="preserve">
     <value>Geändert von</value>
@@ -159,25 +165,19 @@
   <data name="grdUpdatedActivities_ChangedDate_ColumnHeader" xml:space="preserve">
     <value>Geändert am</value>
   </data>
-  <data name="ActivityType_Note" xml:space="preserve">
-    <value>Notiz</value>
+  <data name="grdUpdatedActivities_ChangedField_ColumnHeader" xml:space="preserve">
+    <value>Feld</value>
   </data>
-  <data name="grdActivities_ScheduleFor_ColumnHeader" xml:space="preserve">
-    <value>Planen für</value>
+  <data name="grdUpdatedActivities_ChangedFrom_ColumnHeader" xml:space="preserve">
+    <value>Von</value>
   </data>
-  <data name="ActivityType_ToDo" xml:space="preserve">
-    <value>Aufgabe</value>
+  <data name="grdUpdatedActivities_ChangedTo_ColumnHeader" xml:space="preserve">
+    <value>In</value>
   </data>
-  <data name="ActivityType_Meeting" xml:space="preserve">
-    <value>Meeting</value>
+  <data name="ModifiedAccounts_Title" xml:space="preserve">
+    <value>Geänderte Aktivitäten</value>
   </data>
-  <data name="ActivityType_Personal" xml:space="preserve">
-    <value>Persönliche Aktivität</value>
-  </data>
-  <data name="grdActivities_Type_ColumnHeader" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="grdActivities_Account_ColumnHeader" xml:space="preserve">
-    <value>Firma</value>
+  <data name="NewActivities_Title" xml:space="preserve">
+    <value>Neue Aktivitäten</value>
   </data>
 </root>

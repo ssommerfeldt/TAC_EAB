@@ -1,20 +1,19 @@
-define((
-{ contactText: 'Contatto',
-  accountText: 'Azienda',
-  lookupContactText: 'Ricerca Contatto',
-  nameText: 'Nome',
-  cityText: 'Città',
-  stateText: 'Status',
-  workphoneText: 'Tel. Ufficio',
-  emailText: 'E-Mail',
-  dialogButtonText: 'Aggiungi il(i) Selezionato(i)',
-  cancelText: 'Chiudi',
-  colFirstName: 'Nome',
-  colLastName: 'Cognome',
-  colTitle: 'Titolo',
-  colAccount: 'Azienda',
-  colWorkPhone: 'Tel. Ufficio',
-  colEmail: 'E-Mail',
-  dialogTitleText: 'Ricerca Contatti'
-}
-));
+define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/it/ContactLookupConfig", {
+    "contactText": "Contatto",
+    "accountText": "Azienda",
+    "lookupContactText": "Ricerca contatto",
+    "nameText": "Nome",
+    "cityText": "Città",
+    "stateText": "Provincia",
+    "workphoneText": "Telefono ufficio",
+    "emailText": "E-mail",
+    "dialogButtonText": "Aggiungi selezionato",
+    "cancelText": "Chiudi",
+    "colFirstName": "Nome",
+    "colLastName": "Cognome",
+    "colTitle": "Titolo",
+    "colAccount": "Azienda",
+    "colWorkPhone": "Telefono ufficio",
+    "colEmail": "E-mail",
+    "dialogTitleText": "Ricerca contatti:"
+});

@@ -1,0 +1,472 @@
+﻿<%@ Master Language="C#" %>
+
+<%@ Import Namespace="System.Web.Configuration" %>
+<%@ Import Namespace="Sage.Platform.Application" %>
+<%@ Import Namespace="Sage.Platform.Security" %>
+<%@ Import Namespace="Sage.Platform" %>
+<%@ Import Namespace="Sage.Platform.Utility" %>
+<%@ Import Namespace="Sage.Platform.Diagnostics" %>
+<%@ Import Namespace="Sage.Platform.Application.Diagnostics" %>
+<%@ Import Namespace="System.IO" %>
+
+<%@ Register Assembly="Sage.Platform.WebPortal" Namespace="Sage.Platform.WebPortal.Workspaces" TagPrefix="workSpace" %>
+<%@ Register Assembly="Sage.Platform.WebPortal" Namespace="Sage.Platform.WebPortal.SmartParts" TagPrefix="smartParts" %>
+<%@ Register Assembly="Sage.Platform.WebPortal" Namespace="Sage.Platform.WebPortal.Services" TagPrefix="Services" %>
+
+<script runat="server">
+    private bool _UseAutoLogoff = true;
+    private int _AutoLogoffDuration = 30;
+	private string _CurrencySymbols ;
+    private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+            InitAutoLogout();
+            AlarmButton.Text = BuildAlarmButtonTag();
+            JobNotificationButton.Text = BuildJobNotificationButtonTag();
+			LoadCurrencySymbolObj();
+        }
+        Page.Header.DataBind();
+        writeApplicationStatusToPage();
+    }
+    private void writeApplicationStatusToPage()
+    {
+        string AppStatus = "loggedIn";
+        // create the values for the lastUpdated
+        var statusObj = Page.Session[AppStatus];
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        if (statusObj != null)
+        {
+            sb.AppendLine(@"<script pin='pin' type='text/javascript'>");
+            sb.AppendLine(@" require(['dojo/ready','Sage/Services/ApplicationStateService'], function (ready,ApplicationStateService) {");
+            sb.AppendLine(@"  ready(function(){");
+            sb.AppendLine(@"   var mgr = new ApplicationStateService().addToListOfServices(); ");
+            //sb.AppendLine(@"   mgr.setApplicationState('RoleSecurity',null,'GetRoleSecurityStatus')");
+            sb.AppendLine(@"  });");
+            sb.AppendLine(@" });");
+            sb.AppendLine(string.Format(@"</{0}>", "script"));
+
+            Page.Session.Remove(AppStatus);
+        }
+        else
+        {
+            sb.AppendLine(@"<script pin='pin' type='text/javascript'>");
+            sb.AppendLine(@" require(['dojo/ready','Sage/Services/ApplicationStateService'], function (ready,ApplicationStateService) {");
+            sb.AppendLine(@"  ready(function(){");
+            sb.AppendLine(@"   var mgr = new ApplicationStateService().addToListOfServices(); ");
+            //sb.AppendLine(@"   mgr.setApplicationState('RoleSecurity',null,'GetRoleSecurityStatus')");
+            sb.AppendLine(@"  });");
+            sb.AppendLine(@" });");
+            sb.AppendLine(string.Format(@"</{0}>", "script"));
+
+        }
+        Page.ClientScript.RegisterClientScriptBlock(GetType(), "AppStatus", sb.ToString());
+    }
+    protected string BuildAlarmButtonTag()
+    {
+        return string.Format("<div data-dojo-type=\"Sage.UI.Alarms.AlarmButton\" id=\"AlarmButton\" data-dojo-props=\"pollInterval:{0}\"></div>", Global.AlarmPollInterval);
+    }
+
+    protected string BuildJobNotificationButtonTag()
+    {
+        return string.Format("<div data-dojo-type=\"Sage.UI.Alarms.JobNotificationButton\" id=\"JobNotificationButton\" data-dojo-props=\"pollInterval:{0}\"></div>", Global.JobNotificationPollInterval);
+    }
+    private void InitAutoLogout()
+    {
+        if (StringUtility.IsTrueValueString(WebConfigurationManager.AppSettings["disableAutoLogoff"]))
+        {
+            _UseAutoLogoff = false;
+            return;
+        }
+
+        var userOptions = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Application.Services.IUserOptionsService>();
+        if (userOptions != null)
+        {
+            var sUseAutoLogoff = userOptions.GetCommonOption("USEAUTOLOGOFF", "GENERAL");
+            if (!string.IsNullOrEmpty(sUseAutoLogoff))
+            {
+                this._UseAutoLogoff = StringUtility.IsTrueValueString(sUseAutoLogoff);
+            }
+            var sAutoLogoffDuration = userOptions.GetCommonOption("LOGOFFDURATION", "GENERAL");
+            int iValue;
+            if (int.TryParse(sAutoLogoffDuration, out iValue))
+            {
+                this._AutoLogoffDuration = iValue;
+            }
+        }
+    }
+    protected void LoginName_Load(object sender, EventArgs e)
+    {
+        if ((ScriptManager.GetCurrent(Page) == null) || (!ScriptManager.GetCurrent(Page).IsInAsyncPostBack))
+        {
+            Sage.SalesLogix.Security.SLXUserService userService = Sage.Platform.Application.ApplicationContext.Current.Services.Get<IUserService>() as Sage.SalesLogix.Security.SLXUserService;
+            if (userService != null)
+            {
+                IUser user = userService.GetUser();
+                LoginName.Text = String.Format(GetLocalResourceObject("UserWelcomeText").ToString(), user.UserInfo.FirstName, user.UserInfo.LastName);
+            }
+
+			Page.Title = GetLocalResourceObject("PageTitle").ToString();
+
+            try
+            {
+                var context = Sage.Platform.Application.ApplicationContext.Current.Services.Get<IContextService>(true);
+                var clientTimeZone = context.GetContext("TimeZone") as Sage.Platform.TimeZone;
+
+                if (log.IsDebugEnabled)
+                {
+                    if (clientTimeZone == null)
+                    {
+                        log.Debug("TimeZone: The TimeZone was not located in the ContextService");
+                    }
+                    else
+                    {
+                        log.DebugFormat("TimeZone: The TimeZone '{0}' was found in the ContextService", clientTimeZone.KeyName);
+                    }
+                }
+
+                var serverTimeZoneFlag = context.GetContext("usingServerTimeZone") as string;
+                var usingServerTimeZone = false;
+                if (!string.IsNullOrEmpty(serverTimeZoneFlag))
+                {
+                    usingServerTimeZone = serverTimeZoneFlag.InvariantEquals("T") && clientTimeZone != null;
+                }
+
+                var uid = ApplicationContext.Current.Services.Get<IUserService>().UserId.Trim();
+
+                var user = Sage.Platform.EntityFactory.GetById<IUser>(uid);
+
+                // Do we have a user?
+                if (user != null)
+                {
+                    // If the TimeZone context value is NULL [or] the user's TimeZone (UserInfo.TimeZone) does [not] match the TimeZone context KeyName...
+                    if (clientTimeZone == null || (user.UserInfo.TimeZone != clientTimeZone.KeyName))
+                    {
+                        TimeZones tzs = null;
+
+                        // If the TimeZone context is NULL set the TimeZone context to the server's TimeZone.
+                        if (clientTimeZone == null)
+                        {
+                            tzs = new TimeZones();
+                            clientTimeZone = tzs.CurrentTimeZone; // Server TimeZone
+                            usingServerTimeZone = true;
+                            if (log.IsDebugEnabled)
+                            {
+                                log.DebugEx(string.Format("TimeZone: Initially setting the currentTimeZone to the server TimeZone: '{0}'.", clientTimeZone.KeyName), EventIds.WarningEvents.WarnLevelHigh);
+                            }
+                        }
+
+                        // If the user's TimeZone (UserInfo.TimeZone) is undefined set the UserInfo.TimeZone to the clientTimeZone
+                        if (string.IsNullOrEmpty(user.UserInfo.TimeZone) && clientTimeZone != null)
+                        {
+                            user.UserInfo.TimeZone = clientTimeZone.KeyName;
+                            user.Save();
+                            UpdateClientContext(clientTimeZone);
+                            if (usingServerTimeZone)
+                            {
+                                log.WarnEx(string.Format("TimeZone: The user's time zone was not defined. The server time zone '{0}' is being used because the client time zone could not be determined.", clientTimeZone.KeyName), EventIds.WarningEvents.WarnLevelHigh);
+                            }
+                            else if (log.IsInfoEnabled)
+                            {
+                                log.InfoEx(string.Format("TimeZone: The user's time zone was not defined. The calculated client time zone '{0}' is being used.", clientTimeZone.KeyName), EventIds.InfoEvents.InfoLevelHigh);
+                            }
+                        }
+                        else
+                        {
+                            if (tzs == null)
+                            {
+                                tzs = new TimeZones();
+                            }
+
+                            // Locate the TimeZone object based on the UserInfo.TimeZone string key value.
+                            Sage.Platform.TimeZone userTimeZone = null;
+                            if (!string.IsNullOrEmpty(user.UserInfo.TimeZone))
+                            {
+                                try
+                                {
+                                    userTimeZone = tzs.FindTimeZone(user.UserInfo.TimeZone);
+                                }
+                                catch (ArgumentException ex)
+                                {
+                                    log.ErrorEx(string.Format("TimeZone: The call to FindTimeZone with the argument '{0}' failed.", user.UserInfo.TimeZone), EventIds.ErrorEvents.ErrLevelCritical, ex);
+                                    userTimeZone = null;
+                                }
+                            }
+
+                            // Update the UserInfo.TimeZone when appropriate and update the client TimeZone context information.
+                            if ((userTimeZone != null && clientTimeZone != null && !usingServerTimeZone && DoTimeZoneOffsetsMatch(userTimeZone, clientTimeZone)) ||
+                                (clientTimeZone != null && (!usingServerTimeZone || userTimeZone == null)))
+                            {
+                                // Use the time zone captured in the login.
+                                if (!user.UserInfo.TimeZone.InvariantEquals(clientTimeZone.KeyName))
+                                {
+                                    var oldTimeZone = user.UserInfo.TimeZone; // May be null.
+                                    user.UserInfo.TimeZone = clientTimeZone.KeyName;
+                                    user.Save();
+                                    if (log.IsInfoEnabled)
+                                    {
+                                        log.InfoEx(string.Format("TimeZone: Changing the UserInfo.TimeZone from '{0}' to '{1}'.", oldTimeZone, clientTimeZone.KeyName), EventIds.InfoEvents.InfoLevelHigh);
+                                    }
+                                }
+                                else
+                                {
+                                    if (log.IsInfoEnabled)
+                                    {
+                                        log.InfoEx(string.Format("TimeZone: Using the currently defined UserInfo.TimeZone (a): '{0}'.", user.UserInfo.TimeZone), EventIds.InfoEvents.InfoLevelLow);
+                                    }
+                                }
+                                UpdateClientContext(clientTimeZone);
+                            }
+                            else if (userTimeZone != null)
+                            {
+                                // Use the existing UserInfo.TimeZone value.
+                                UpdateClientContext(userTimeZone);
+                                if (log.IsInfoEnabled)
+                                {
+                                    log.InfoEx(string.Format("TimeZone: Using the currently defined UserInfo.TimeZone (b): '{0}'.", user.UserInfo.TimeZone), EventIds.InfoEvents.InfoLevelLow);
+                                }
+                            }
+                            else if (usingServerTimeZone /* Sanity check */&& clientTimeZone != null)
+                            {
+                                // Use the server's time zone.
+                                user.UserInfo.TimeZone = clientTimeZone.KeyName;
+                                user.Save();
+                                UpdateClientContext(clientTimeZone);
+                                log.WarnEx(string.Format("TimeZone: Using the server time zone: '{0}'.", clientTimeZone.KeyName), EventIds.WarningEvents.WarnLevelHigh);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.ErrorEx(String.Format("TimeZone: Failed to set or adjust the UserInfo.TimeZone: {0}", ex.Message), EventIds.ErrorEvents.ErrLevelCritical, ex);
+            }
+        }
+    }
+    private static void UpdateClientContext(Sage.Platform.TimeZone timeZone)
+    {
+        if (timeZone == null) return;
+
+        var context = ApplicationContext.Current.Services.Get<IContextService>(true);
+        context.SetContext("TimeZone", timeZone);
+
+        var clientContext = ApplicationContext.Current.Services.Get<ClientContextService>();
+        if (clientContext == null) return;
+
+        clientContext.CurrentContext["userTimeZone"] = timeZone.DisplayName;
+        clientContext.CurrentContext["userTimeZoneKey"] = timeZone.KeyName;
+    }
+    private bool DoTimeZoneOffsetsMatch(Sage.Platform.TimeZone tz1, Sage.Platform.TimeZone tz2)
+    {
+        return (tz1.Bias == tz2.Bias);
+    }
+	private void LoadCurrencySymbolObj()
+    {
+        _CurrencySymbols = WebConfigurationManager.AppSettings["currencySymbolObj"].Replace("'","\\'");      
+    }
+</script>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" runat="server">
+
+<head runat="server">
+    <%-- IE Should use the latest version available  --%>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <title>Infor CRM</title>
+    <link rel="stylesheet" type="text/css" href="~/Libraries/font-awesome/css/font-awesome.min.css" />
+    <!-- dojo
+    <link rel="stylesheet" type="text/css" href="~/Libraries/dojo/dijit/themes/claro/claro.css" />
+    <link rel="stylesheet" type="text/css" href="~/Libraries/dojo/dojox/grid/enhanced/resources/claroEnhancedGrid.css" />
+    <link rel="stylesheet" type="text/css" href="~/Libraries/dojo/dojox/widget/Portlet/Portlet.css" /> -->
+    <link rel="stylesheet" type="text/css" href="~/Libraries/dojo/dojox/layout/resources/GridContainer.css" />
+
+    <%--DHTMLX Scheduler Libraries  --%>
+    <link href="~/Libraries/dhtmlxScheduler_v30/dhtmlxscheduler.css" rel="stylesheet" type="text/css" />
+
+    <%-- debug theme styles: uncomment for debugging and development
+        <link rel="stylesheet" type="text/css" href="~/css/themes/inforSoHoXi/inforSoHoXi.debug.css" />
+    --%>
+
+    <%-- production theme styles: comment for debugging and development --%>
+    <link rel="stylesheet" type="text/css" href="~/css/themes/inforSoHoXi/inforSoHoXi.css" />
+
+    <%-- un-comment this block to use seperate style sheets
+    <link rel="stylesheet" type="text/css" href="~/css/SlxBase.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/quickform.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/sage-controls.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/sage-platform.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/sageStyles.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/theme.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Global_Images.css" />--%>
+
+    <%-- comment this  styles out if using seperate style sheets above --%>
+    <link rel="stylesheet" type="text/css" href="~/css/sage-styles.css" />
+
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="~/css/layout-ie.css" />
+    <![endif]-->
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+    <%-- DoJo Library --%>
+    <script pin="pin" type="text/javascript">
+        var errorHandlerConfig = {
+            isDebug: <%# Sage.Platform.Diagnostics.ErrorHelper.IsDevelopmentContext(Request).ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>,
+            preemption: {
+                enabled: <%# Sage.Platform.Diagnostics.ErrorHelper.AjaxPreemptionEnabled().ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>,
+                allowAuthRedirect: <%# Sage.Platform.Diagnostics.ErrorHelper.AjaxPreemptionAllowAuthRedirect().ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>,
+                handledStatusCodes: <%# String.Format("'{0}'", String.Join(",", Sage.Platform.Diagnostics.ErrorHelper.AjaxPreemptionHandledStatusCodes())) %>,
+                showPreemptedErrorMsg: <%# Sage.Platform.Diagnostics.ErrorHelper.AjaxPreemptionShowPreemptedErrorMsg().ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>,
+                showInternalServerErrorMsg: <%# Sage.Platform.Diagnostics.ErrorHelper.AjaxPreemptionShowInternalServerErrorMsg().ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>,
+                showUnhandledMessagingServiceExceptionMsg: <%# Sage.Platform.Diagnostics.ErrorHelper.AjaxPreemptionShowUnhandledMessagingServiceExceptionMsg().ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>
+                },
+            authenticationRedirectUrl: <%# String.Format("'{0}'", HttpUtility.UrlEncode(Sage.Platform.Diagnostics.ErrorHelper.GetLoginRedirectUrl())) %>,
+            showExtendedValidationException: <%# Sage.Platform.Diagnostics.ErrorHelper.CanShowExtendedExceptionInfo(Sage.Platform.Diagnostics.ErrorHelper.ExceptionKind.ValidationException).ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>,
+            showExtendedRoleAccessDeniedException: <%# Sage.Platform.Diagnostics.ErrorHelper.CanShowExtendedExceptionInfo(Sage.Platform.Diagnostics.ErrorHelper.ExceptionKind.RoleAccessDeniedException).ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>
+            };
+        var dojoConfig = {
+            parseOnLoad: true,
+            async: true,
+            isDebug: false,
+            locale: '<%# Global.Locale %>',
+            extraLocale: ['<%# Global.Region %>'],
+            paths: { 'Sage': '../../../jscript/Sage' },
+            gfxRenderer: 'svg,silverlight,vml',
+            deferredOnError: function (e) {
+                if (dojo.config.isDebug) {
+                }
+            }
+        };
+        var mingleConfig = {
+            isDebug: false,
+            ionApiEnabled:
+                <%#ConfigurationManager.AppSettings["sage.saleslogix.web.ionapi.enabled"].ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>,
+            ionApiEndpoint:
+                '<%#ConfigurationManager.AppSettings["sage.saleslogix.web.ionapi.mingleApiEndpoint"].ToString() %>',
+            crmApiEndpoint:
+                '<%#ConfigurationManager.AppSettings["sage.saleslogix.web.ionapi.rootCrmApiEndpoint"].ToString() %>',
+            logicalId: '<%#ConfigurationManager.AppSettings["MingleLogicalID"].ToString() %>',
+            isMingleEnabled: <%#Sage.SalesLogix.Web.MingleHelper.IsMingleEnabled.ToString(System.Globalization.CultureInfo.InvariantCulture).ToLowerInvariant() %>
+        };
+
+    </script>
+    <script pin="pin" type="text/javascript" src="Libraries/dojo/dojo/dojo.js"></script>
+    <asp:ContentPlaceHolder ID="layers" runat="server" EnableViewState="false">
+    </asp:ContentPlaceHolder>
+
+    <script pin="pin" src="jscript/sage-platform/jquery-2.2.3.min.js" ></script> 
+    <script type='text/javascript'>  var jQuery_2 = jQuery.noConflict(true);</script>
+    <script src="jscript/sage-platform/infor-companyon-client.js"></script>
+</head>
+<body class="inforSoHoXi">
+    <!--shown while dojo is loading-->
+    <div id='loader'>
+        <div id='loaderInner'></div>
+    </div>
+
+    <form id="mainform" runat="server" style="width: 100%; height: 100%;" onsubmit="return Sage.Utility.Validate.shouldSubmit()">
+        <workSpace:DialogWorkspace runat="server" ID="DialogWorkspace"></workSpace:DialogWorkspace>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolderScriptResource" runat="server">
+        </asp:ContentPlaceHolder>
+        <div data-dojo-type="dijit.layout.BorderContainer" gutters="true" id="Viewport" data-dojo-props="design: 'sidebar'">
+            <!-- Inner border container to house the Navordion and the Dashboard-->
+            <div data-dojo-type="dijit.layout.BorderContainer" livesplitters="false" design="sidebar" region="center" id="borderCenter">
+                <div data-dojo-type="dijit.layout.ContentPane" id="MainHeader" data-dojo-props="region: 'top', splitter: false">
+                    <!-- outer bordercontainer top -->
+                    <div id="inforLogoPanel">
+                        <i id="navIconID" runat="server" class="fa fa-bars" title="<%$ resources: ToggleNavPane %>"></i>
+                        Infor CRM
+                    </div>
+                    <workSpace:ToolbarWorkspace runat="server" ID="ToolBar"></workSpace:ToolbarWorkspace>
+                    <div data-dojo-type="Sage.UI.Controls.HelpMenu" id="HelpMenu"></div>
+
+                    <div id="ss-wrap">
+                        <div data-dojo-type="Sage.UI.SpeedSearch" id="SpeedSearch" class="quick-speedsearch"></div>
+                    </div>
+                    <asp:Literal runat="server" ID="AlarmButton" Text=""></asp:Literal>
+                    <asp:Literal runat="server" ID="JobNotificationButton" Text=""></asp:Literal>
+                    <div id="asyncpostbackindicator">
+                        <i runat="server" class="fa fa-spinner fa-spin" title="<%$ resources: Loading %>"></i>
+                    </div>
+                    <!-- end outer bordercontainer top -->
+                </div>
+                <!-- outer border container left, the Navordion -->
+                <div id="mainnavContainer" data-dojo-type="dijit.layout.BorderContainer"
+                    region="left" splitter="true" gutters="false">
+                    <div widgetid="navLogo" id="navLogo" data-dojo-type="dijit.layout.ContentPane" region="top" splitter="false" gutters="false">
+                        <img runat="server" class="inforUpperLeftLogo" src="~/images/inforLogo64x64.png" alt="Infor CRM" />
+                        Infor CRM
+                        <span id="navPinID" runat="server" title="<%$ resources: PinNavigationBar %>" class="Global_Images icon_thumb_tack_24"></span>
+                    </div>
+                    <div data-dojo-type="Sage.UI.NavBar" id="MainNav" class="navordion" region="trailing" splitter="false" gutters="false">
+                        <workSpace:NavWorkspace ID="NavBar" runat="server" ImagePosition="left"></workSpace:NavWorkspace>
+                    </div>
+                </div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div data-dojo-type="dijit.layout.ContentPane" region="bottom" splitter="false" gutters="false" id="MainFooter">
+                <!-- outer border container bottom -->
+                <span id="copyright">
+                    <asp:Localize ID="copyrightMessage" EnableViewState="false" runat="server" Text="<%$ Resources: SalesLogix, Copyright %>" /></span>
+                <div data-dojo-type="Sage.UI.Controls.LogOffButton" id="LogOffButton"></div>
+                <div data-dojo-type="Sage.UI.TimeZoneItem" id="TimeZoneMenu" class="floatright"></div>
+                <span id="autoLogoff" class="floatright"></span>
+                <span id="lclCurrentDate">
+                    <smartParts:CurrentDate ID="CurrentDate" runat="server" DateFormat="D" />
+                </span>
+                <span id="lclLoginName" class="floatright">
+                    <asp:Label ID="LoginName" runat="server" OnLoad="LoginName_Load" /></span>
+                <span id="statusMessage" class="floatright"></span>
+            </div>
+        </div>
+        <!-- end outer border container -->
+        <div id="dev_null" style="visibility: hidden;"></div>
+		<script type="text/javascript">
+
+        require([ "dojo/ready",
+			"Sage/Mingle/MingleSupport"
+					],
+			function (
+			ready,
+			mingleSupport
+			) {
+				ready(function () {
+				    if (mingleConfig.isMingleEnabled) { 
+						var script = Sage.Utility.getParameterByName('script', document.location.href);
+						if(script  && script.indexOf('editHistory') > -1 ){
+							eval(script);
+						}
+						mingleSupport.publishIBCMessage(this.location);
+				    }
+				});
+			});
+</script>
+        <asp:ContentPlaceHolder ID="JsScriptFooter" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+    <%--Sage Common --%>
+    <script pin="pin" lang="JavaScript" src="jscript/sage-common/sage-common.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            window.setTimeout('AutoLogout.process(1)', AutoLogout.OneMinute);
+
+            <% if (!_UseAutoLogoff)
+               { %>
+            AutoLogout.Enabled = false;
+            <% } %>
+            AutoLogout.LogoutDuration = <%= _AutoLogoffDuration %>;
+
+            $(document).click(function() {
+                AutoLogout.resetTimer();
+            });
+			// Declare the currency symbol object globally
+            window.currencySymbolGlobalObj  = "<%= _CurrencySymbols  %>";         
+        });
+    </script>
+</body>
+</html>

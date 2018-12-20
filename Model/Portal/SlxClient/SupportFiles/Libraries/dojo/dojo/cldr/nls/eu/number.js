@@ -1,4 +1,3 @@
-//>>built
 define(
 "dojo/cldr/nls/eu/number", //begin v1.x content
 {
@@ -6,16 +5,19 @@ define(
 	"percentSign": "%",
 	"exponential": "E",
 	"scientificFormat": "#E0",
+	"percentFormat": "% #,##0",
 	"list": ";",
 	"infinity": "∞",
 	"minusSign": "-",
 	"decimal": ",",
+	"superscriptingExponent": "×",
 	"nan": "NaN",
 	"perMille": "‰",
 	"decimalFormat": "#,##0.###",
-	"currencyFormat": "#,##0.00 ¤",
+	"currencyFormat": "#,##0.00 ¤;(#,##0.00 ¤)",
 	"plusSign": "+",
-	"decimalFormat-short": "000 B"
+	"decimalFormat-long": "000 bilioi",
+	"decimalFormat-short": "000 B"
 }
 //end v1.x content
 );

@@ -102,21 +102,18 @@
         <Properties>
           <Property name="Control" type="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms"><QFButton xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Column>0</Column><Row>0</Row><IsReadOnly>false</IsReadOnly><HotKey>0</HotKey><TabIndex>0</TabIndex><ControlId>btnDelete</ControlId><DataBindings /><ControlLabelPlacement>none</ControlLabelPlacement><CaptionAlignment>left</CaptionAlignment><StyleScheme /><ButtonType>Icon</ButtonType><Image>[Localization!Global_Images:Delete_16x16]</Image><OnClientClick /><OnClickAction><ResourceKey>btnDelete</ResourceKey><RootActionName>BusinessRuleAction</RootActionName><Action><BusinessRule>Delete</BusinessRule><Object>TicketAreaOwner</Object><Parameters /><PassResultsToNextAction>False</PassResultsToNextAction><OnCompleteActionName>CSharpSnippetAction</OnCompleteActionName><OnComplete><CSharpCodeSnippet><![CDATA[
 	//Query the distinct Areas from the AreaCategoryIssue table
-	Sage.Platform.RepositoryHelper<Sage.Entity.Interfaces.ITicketAreaOwner> repoHelper = Sage.Platform.EntityFactory.GetRepositoryHelper<Sage.Entity.Interfaces.ITicketAreaOwner>();
-    Sage.Platform.Repository.ICriteria criteria = repoHelper.CreateCriteria();
-	criteria.AddOrder(repoHelper.EF.Asc("Area"));
-	criteria.SetFirstResult(0);
-	criteria.SetMaxResults(1);
-    criteria.SetProjection(repoHelper.PF.Property("Id"));
-    System.Collections.Generic.IList<string> definedAreas = criteria.List<string>();
+    var definedArea = Sage.Platform.EntityFactory.Query<Sage.Entity.Interfaces.ITicketAreaOwner>()
+        .OrderBy(tao => tao.Area)
+        .Select(tao => tao.Id)
+        .FirstOrDefault();
 
-    if (definedAreas.Count == 0)
+    if (definedArea == null)
     {
         HttpContext.Current.Response.Redirect("~/TicketAreaOwner.aspx?modeId=list", false);
     }
     else
     {
-        HttpContext.Current.Response.Redirect(string.Format("~/TicketAreaOwner.aspx?entityId={0}", definedAreas[0].ToString()), false);
+        HttpContext.Current.Response.Redirect("~/TicketAreaOwner.aspx?entityId=" + definedArea, false);
     }
 ]]></CSharpCodeSnippet></OnComplete></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnClickAction></QFButton></Property>
         </Properties>

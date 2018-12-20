@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/_ActionMixin", [
     'dojo/NodeList-traverse',
     'dojo/_base/declare'
 ], function (nodeListTraverse, declare) {

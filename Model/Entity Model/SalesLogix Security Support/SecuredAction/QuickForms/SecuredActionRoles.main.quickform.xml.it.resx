@@ -117,23 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RoleName.Caption" xml:space="preserve">
-    <value>Nome Ruolo</value>
+  <data name="RoleDescription.Caption" xml:space="preserve">
+    <value>Descrizione ruolo</value>
   </data>
-  <data name="ce724e55-1f17-428d-955f-a6c1cb77d4db.DuplicateAssociationMessage" xml:space="preserve">
-    <value>Questo ruolo è già associato all'azione protetta.</value>
+  <data name="RoleName.Caption" xml:space="preserve">
+    <value>Nome ruolo</value>
+  </data>
+  <data name="grdSecuredActionRoles.595fb7d4-7fb4-4405-acb9-5b4e7ee8f88b.ColumnHeading" xml:space="preserve">
+    <value>Descrizione</value>
   </data>
   <data name="grdSecuredActionRoles.74aecd5c-f643-4ae6-8156-366bcd194ba6.ColumnHeading" xml:space="preserve">
-    <value>Nome Ruolo</value>
+    <value>Nome ruolo</value>
   </data>
   <data name="grdSecuredActionRoles.f711edca-0a86-4218-923a-074d1b2edc59.Text" xml:space="preserve">
     <value>Rimuovi</value>
   </data>
+  <data name="grdSecuredActionRoles.f711edca-0a86-4218-923a-074d1b2edc59.ConfirmationMessage" xml:space="preserve">
+    <value>Rimuovere il ruolo?</value>
+  </data>
+  <data name="grdSecuredActionRoles.e33ffe33-d5c4-4a3f-94d8-b7062a0f9a28.ColumnHeading" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="grdSecuredActionRoles.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun ruolo trovato per questa azione protetta.</value>
+  </data>
+  <data name="lueAddRole.ToolTip" xml:space="preserve">
+    <value>Aggiungi ruolo azione protetta</value>
+  </data>
+  <data name="lueAddRole.LookupProperties.SecuredAction.Name.PropertyHeader" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="lueAddRole.LookupProperties.SecuredAction.Description.PropertyHeader" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="lueAddRole.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
   <data name="59e6fdee-fe4a-4711-9d88-36b6cfd5622b.DuplicateAssociationMessage" xml:space="preserve">
     <value>Il ruolo selezionato è già associato a questa azione.</value>
-  </data>
-  <data name="grdSecuredActionRoles.f711edca-0a86-4218-923a-074d1b2edc59.ConfirmationMessage" xml:space="preserve">
-    <value>Sei sicuro di voler cancellare questo ruolo?</value>
   </data>
   <data name="lueAddRole.LookupProperties.RoleName.PropertyHeader" xml:space="preserve">
     <value>Nome</value>
@@ -141,28 +162,10 @@
   <data name="lueAddRole.LookupProperties.RoleDescription.PropertyHeader" xml:space="preserve">
     <value>Descrizione</value>
   </data>
-  <data name="grdSecuredActionRoles.e33ffe33-d5c4-4a3f-94d8-b7062a0f9a28.ColumnHeading" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="RoleDescription.Caption" xml:space="preserve">
-    <value>Descrizione Ruolo</value>
-  </data>
-  <data name="lueAddRole.LookupProperties.SecuredAction.Description.PropertyHeader" xml:space="preserve">
-    <value>Descrizione</value>
-  </data>
-  <data name="grdSecuredActionRoles.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun ruolo trovato per questa azione protetta.</value>
-  </data>
-  <data name="lueAddRole.ToolTip" xml:space="preserve">
-    <value>Aggiungi Ruolo Azione Protetta</value>
-  </data>
-  <data name="grdSecuredActionRoles.595fb7d4-7fb4-4405-acb9-5b4e7ee8f88b.ColumnHeading" xml:space="preserve">
-    <value>Descrizione</value>
-  </data>
-  <data name="lueAddRole.LookupProperties.SecuredAction.Name.PropertyHeader" xml:space="preserve">
-    <value>Nome</value>
+  <data name="ce724e55-1f17-428d-955f-a6c1cb77d4db.DuplicateAssociationMessage" xml:space="preserve">
+    <value>Il ruolo è già associato all'azione protetta.</value>
   </data>
   <data name="lueAddRole.ButtonToolTip" xml:space="preserve">
-    <value>Aggiungi Ruolo</value>
+    <value>Aggiungi ruolo</value>
   </data>
 </root>

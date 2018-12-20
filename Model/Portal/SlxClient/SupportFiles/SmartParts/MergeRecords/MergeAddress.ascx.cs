@@ -33,7 +33,7 @@ public partial class MergeAddress : SmartPartInfoProvider
             {
                 if (DialogService.DialogParameters.ContainsKey("mergeArguments"))
                 {
-                    MergeArguments mergeArguments = DialogService.DialogParameters["mergeArguments"] as MergeArguments;
+                    var mergeArguments = DialogService.DialogParameters["mergeArguments"] as MergeArguments;
                     if (mergeArguments.MergeProvider == null)
                     {
                         MergeArguments.GetMergeProvider(mergeArguments);
@@ -69,10 +69,10 @@ public partial class MergeAddress : SmartPartInfoProvider
     /// Gets or sets the entity service.
     /// </summary>
     /// <value>The entity service.</value>
-    [ServiceDependency(Type = typeof(IEntityContextService), Required = true)]
+    [ServiceDependency]
     public IEntityContextService EntityService { get; set; }
 
-    [ServiceDependency(Type = typeof(IContextService), Required = true)]
+    [ServiceDependency]
     public IContextService ContextService { get; set; }
 
     public class MergeAddressStateInfo
@@ -132,12 +132,6 @@ public partial class MergeAddress : SmartPartInfoProvider
         }
         else if (_loadResults)
         {
-            //grdLinkedRecords.DataSource = IntegrationManager.MatchedContacts;
-            //grdLinkedRecords.DataBind();
-            //grdTargetRecords.DataSource = IntegrationManager.TargetContacts;
-            //grdTargetRecords.DataBind();
-            //grdSourceRecords.DataSource = IntegrationManager.SourceContacts;
-            //grdSourceRecords.DataBind();
             targetName = IntegrationManager.SourceMapping.Name;
             sourceName = IntegrationManager.TargetMapping.Name;
         }
@@ -229,7 +223,7 @@ public partial class MergeAddress : SmartPartInfoProvider
                 {
                     Type type = SessionMergeArguments.MergeProvider.Target.EntityType;
                     string entityId = SessionMergeArguments.MergeProvider.Source.EntityId;
-                    IPersistentEntity source = Sage.Platform.EntityFactory.GetById(type, entityId) as IPersistentEntity;
+                    var source = Sage.Platform.EntityFactory.GetById(type, entityId) as IPersistentEntity;
                     source.Delete();
                     EntityService.RemoveEntityHistory(type, source);
                     Response.Redirect(String.Format("{0}.aspx", GetEntityName(type)));
@@ -295,11 +289,45 @@ public partial class MergeAddress : SmartPartInfoProvider
     /// </returns>
     public override ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
-        ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
+        var tinfo = new ToolsSmartPartInfo();
         foreach (Control c in MergeAddress_RTools.Controls)
         {
             tinfo.RightTools.Add(c);
         }
         return tinfo;
+    }
+
+    private void SetIsPrimaryString (GridViewRowEventArgs e, int cellNum)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            var valueTrue = GetLocalResourceObject("valueTrue").ToString();
+            var valueFalse = GetLocalResourceObject("valueFalse").ToString();
+            // Get translation resource of True and False
+            if (String.IsNullOrEmpty(valueTrue) || String.IsNullOrEmpty(valueFalse))
+            {
+                return;
+            }
+            var stringValue = false;
+            if (bool.TryParse(e.Row.Cells[cellNum].Text, out stringValue))
+            {
+                e.Row.Cells[cellNum].Text = stringValue ? valueTrue : valueFalse;
+            }
+        }
+    }
+
+    protected void grdSourceRecords_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        SetIsPrimaryString(e, 2);
+    }
+
+    protected void grdTarget_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        SetIsPrimaryString(e, 2);
+    }
+
+    protected void grdLinkedRecords_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        SetIsPrimaryString(e, 2);
     }
 }

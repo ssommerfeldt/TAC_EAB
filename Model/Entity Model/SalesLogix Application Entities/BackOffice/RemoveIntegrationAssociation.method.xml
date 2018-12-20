@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c11569f3-9c72-48ee-9a43-cb4abc121c79" lastModifiedUtc="2014-12-30T17:43:41.9051357Z" name="RemoveIntegrationAssociation" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <description>Removes the association between the Back Office system and the integration end point.</description>
+  <parameter>
+    <OrmEntityMethodParam id="79cde12f-9ef4-4048-b710-d07a4faff64f" paramName="integration" sequence="0" paramType="IIntegration">
+      <description>The integration interface</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="0f71cfde-ff91-4293-a449-a3766be997e0" lastModifiedUtc="2014-12-30T16:10:20.9952134Z" targetType="Sage.SalesLogix.BackOffice.Rules, Sage.SalesLogix.BusinessRules" targetMethod="RemoveIntegrationAssociation" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

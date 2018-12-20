@@ -1,6 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/MainView/ActivityMgr/EditEventEditor", [
     'dijit/_Widget',
     'Sage/_Templated',
     'dijit/Toolbar',
@@ -302,19 +302,14 @@ function (
                 id: '_eventUser',
                 structure: [
                     {
-                        cells:
-                            [
-                                {
-                                    name: this.nameText,
-                                    field: 'Name',
-                                    sortable: true,
-                                    width: "400px",
-                                    editable: false,
-                                    propertyType: "System.String",
-                                    excludeFromFilters: false,
-                                    defaultValue: ""
-                                }
-                            ]
+                        label: this.nameText,
+                        field: 'Name',
+                        sortable: true,
+                        width: "400px",
+                        editable: false,
+                        propertyType: "System.String",
+                        excludeFromFilters: false,
+                        defaultValue: ""
                     }
                 ],
                 gridOptions: {
@@ -326,7 +321,7 @@ function (
                 },
                 storeOptions: {
                     resourceKind: 'activityresourceviews',
-                    sort: [{ attribute: 'Name'}]
+                    sort: [{ attribute: 'Name' }]
                 },
                 isModal: true,
                 preFilters: [],
@@ -347,7 +342,7 @@ function (
         datesValid: function () {
             var startDate = this.tb_StartDate.value;
             var endDate = this.tb_EndDate.value;
-            endDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), 0, 0);     
+            endDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), 0, 0);
 
             this._eventData.EndDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), new Date().getHours(), new Date().getMinutes(), new Date().getSeconds());
             this._eventData.StartDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), new Date().getHours(), new Date().getMinutes(), new Date().getSeconds());
@@ -364,26 +359,26 @@ function (
         // ... region click/action handlers
         _okClick: function () {
             var activeElement = focusUtil.curNode;
-            if(activeElement){
+            if (activeElement) {
                 activeElement.blur();
             }
             // IE8 has an issue where the value is saved before the blur realizes the value has changed
             //  and setting a timeout of 1 is enough for the change to be seen after the blur
-            setTimeout(lang.hitch(this, function() {
-            if (!this.datesValid()) {
-                return;
-            }
+            setTimeout(lang.hitch(this, function () {
+                if (!this.datesValid()) {
+                    return;
+                }
 
-            if (this.mode === 'New') {
-                this._eventStore.saveNewEntity(this._eventData, this._successEventCreated, this._failedEventCreated, this);
-            }
-            else {
-                this._eventStore.save({
-                    scope: this,
-                    success: this._successEventUpdated,
-                    failure: this._failedEventUpdated
-                });
-            }
+                if (this.mode === 'New') {
+                    this._eventStore.saveNewEntity(this._eventData, this._successEventCreated, this._failedEventCreated, this);
+                }
+                else {
+                    this._eventStore.save({
+                        scope: this,
+                        success: this._successEventUpdated,
+                        failure: this._failedEventUpdated
+                    });
+                }
             }), 1);
         },
         _cancelClick: function () {

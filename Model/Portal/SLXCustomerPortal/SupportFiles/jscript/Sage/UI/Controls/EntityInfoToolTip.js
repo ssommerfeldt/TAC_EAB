@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Controls/EntityInfoToolTip", [
        'dijit/Tooltip',
        'Sage/Data/SingleEntrySDataStore',
        'Sage/Utility',
@@ -74,8 +74,7 @@ function (tooltip, SingleEntrySDataStore, util, dString, dhtml, nlsStrings, lang
             this.inherited(arguments);
             this.label = 'Loading...';
         },
-        //onShow: function () {
-        open: function (target) {
+        onShow: function (target) { 
             if (!this.entityId || this.entityId.trim() === '') {
                 this.set('label', this.noInfoText);
             } else if (!this._store) {

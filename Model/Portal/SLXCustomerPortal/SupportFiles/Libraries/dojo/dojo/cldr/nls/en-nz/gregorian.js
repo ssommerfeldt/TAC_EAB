@@ -1,25 +1,17 @@
-//>>built
 define(
 "dojo/cldr/nls/en-nz/gregorian", //begin v1.x content
 {
-	"dateFormatItem-yMd": "d/MM/yy",
-	"dateFormat-medium": "d/MM/yyyy",
-	"dateFormatItem-MMMEd": "E, d MMM",
-	"dateFormatItem-yMEd": "E, dd/MM/yyyy",
-	"dateFormatItem-yMMMd": "d MMM y",
-	"timeFormat-full": "h:mm:ss a zzzz",
 	"dateFormatItem-Md": "d/M",
-	"dateFormatItem-yyyyMMMM": "MMMM y",
-	"dateFormatItem-MMMMd": "d MMMM",
-	"dateFormatItem-yyyyMM": "MM/yyyy",
+	"timeFormat-full": "h:mm:ss a zzzz",
 	"timeFormat-medium": "h:mm:ss a",
-	"dateFormat-long": "d MMMM y",
-	"dateFormat-short": "d/MM/yy",
-	"dateFormatItem-yMMMEd": "E, d MMM y",
-	"timeFormat-short": "h:mm a",
-	"timeFormat-long": "h:mm:ss a z",
+	"dateFormat-medium": "d/MM/y",
+	"dateFormatItem-yMd": "d/MM/y",
 	"dateFormat-full": "EEEE, d MMMM y",
-	"dateFormatItem-MMMd": "d MMM"
+	"timeFormat-long": "h:mm:ss a z",
+	"timeFormat-short": "h:mm a",
+	"dateFormat-short": "d/MM/yy",
+	"dateFormat-long": "d MMMM y",
+	"dateFormatItem-MMMEd": "E, d MMM"
 }
 //end v1.x content
 );

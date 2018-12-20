@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/ReportManagerTasksTasklet", [
     'dojo/_base/declare',
     'dojo/i18n!./nls/ReportManagerTasksTasklet',
     'Sage/TaskPane/_BaseTaskPaneTasklet',
@@ -26,12 +26,12 @@ function (
         widgetTemplate: new Simplate([
              '<div dojoAttachPoint="taskletContainerNode" class="task-pane-item-common-tasklist">',
                  '<span id="selectionCount" class="task-pane-item-common-selectionText">0</span>&nbsp;<span id="selectionText">' + nlsResources.txtRecordsSelected + '</span><br>',
-                 '<a id="clearSelection" href="#" class="task-pane-item-common-clearselection" dojoAttachEvent="click:_clearSelection">' + nlsResources.txtClear + '</a><br>',
+                 '<span id="clearSelection"class="task-pane-item-common-clearselection activity-type-link" dojoAttachEvent="click:_clearSelection">' + nlsResources.txtClear + '</span><br>',
                  '<hr>',
                  '<div dojoAttachPoint="divTaskItems">',
                     '{% for (var i = 0; i < $.taskItems.length; i++) { ',
                         'var task = $.taskItems[i]; %}',
-                        '<div data-dojo-type="Sage.TaskPane.TaskPaneItem" linkText="{%= task.displayName %}" securedAction="{%= task.securedAction %}" action="javascript: {%= task.clientAction %}"></div>',
+                        '<div data-dojo-type="Sage.TaskPane.TaskPaneItem" linkText="{%= task.displayName %}" securedAction="{%= task.securedAction %}" action="{%= task.clientAction %}"></div>',
                         '<br />',
                     '{% } %}',
                 '</div>',
@@ -44,6 +44,8 @@ function (
         constructor: function () {
             this.taskItems = this._getTaskItems();
             dojo.subscribe('/group/context/changed', this, this._onGroupContextChanged);
+            //allows the schedules tab in reports manager to just update the tasks and not the filters
+            dojo.subscribe('/group/context/changedTask', this, this._onGroupContextChanged); 
             dojo.subscribe('/sage/ui/list/selectionChanged', function (listPanel) {
                 var countSpan = dojo.byId('selectionCount');
                 if (countSpan) {
@@ -74,13 +76,12 @@ function (
         * Clears the Report Manager tasks panel, populates the task items for the current group.
         **/
         _onGroupContextChanged: function () {
-            //console.log("_onGroupContextChanged");
             var self = this;
             dojo.empty(self.divTaskItems);
             var taskItems = this._getTaskItems();
             if (taskItems) {
                 dojoArray.forEach(taskItems, function (taskItem, i) {
-                    dojo.place(dojoString.substitute('<div dojotype="Sage.TaskPane.TaskPaneItem" class="task-pane-item-common-tasklist" linkText="${0}" securedAction="${1}" action="javascript: ${2}"></div><br />', [taskItem.displayName, taskItem.securedAction, taskItem.clientAction]), self.divTaskItems);
+                    dojo.place(dojoString.substitute('<div dojotype="Sage.TaskPane.TaskPaneItem" class="task-pane-item-common-tasklist activity-type-link" linkText="${0}" securedAction="${1}" action="${2}"></div><br />', [taskItem.displayName, taskItem.securedAction, taskItem.clientAction]), self.divTaskItems);
                 });
             }
             dojo.parser.parse(self.taskletContainerNode); //This is required so the dojo parser will process the dojotype="Sage.TaskPane.TaskPaneItem"
@@ -91,7 +92,7 @@ function (
         _clearSelection: function () {
             var listPanel = dijit.byId('list');
             if (listPanel) {
-                listPanel._listGrid.selection.clear();
+                listPanel.clearSelection();
             }
         },
         /**
@@ -120,14 +121,7 @@ function (
                     displayName: this.nlsResources.taskScheduleReport_Caption,
                     clientAction: 'Sage.MainView.ReportMgr.ReportManagerActions.scheduleReport();',
                     securedAction: 'Entities/ReportManager/ScheduleReport'
-                }/*,
-                {
-                    taskId: 'taskDeleteReport',
-                    type: "Link",
-                    displayName: this.nlsResources.taskDeleteReport_Caption,
-                    clientAction: 'Sage.MainView.ReportMgr.ReportManagerActions.deleteReport();',
-                    securedAction: 'Entities/ReportManager/DeleteReport'
-                }*/
+                }
             ];
             return taskItems;
         },

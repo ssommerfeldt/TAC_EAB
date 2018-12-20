@@ -250,8 +250,13 @@ protected void ${qfcontrol.ControlId}_RowDataBound(object sender, GridViewRowEve
                 LinkButton btn = c as LinkButton;
                 if (btn != null)
                 {
+				#if(${qfcontrol.DataSource} == "dsSecuredActionRoles")
+                    btn.Attributes.Add("onclick", "javascript: dojo.publish('service/RoleSecurity/cacheClear'); return confirm('" + Sage.Platform.WebPortal.PortalUtil.JavaScriptEncode(GetLocalResourceObject("${qfcontrol.ControlId}.${column.ColumnId}.ConfirmationMessage").ToString()) + "');");
+                #end
+				#if(${qfcontrol.DataSource} != "dsSecuredActionRoles")
                     btn.Attributes.Add("onclick", "javascript: return confirm('" + Sage.Platform.WebPortal.PortalUtil.JavaScriptEncode(GetLocalResourceObject("${qfcontrol.ControlId}.${column.ColumnId}.ConfirmationMessage").ToString()) + "');");
-                    return;
+                #end
+				return;
                 }
             }
         }
@@ -472,17 +477,7 @@ protected void ${qfcontrol.ControlId}_PreRender(object sender, EventArgs e)
 #end
     protected void ${qfcontrol.ControlId}_refresh()
     {
-        if (PageWorkItem != null) {
-            Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get<Sage.Platform.WebPortal.Services.IPanelRefreshService>();
-            if (refresher != null)
-            {
-                refresher.RefreshAll();
-            }
-            else
-            {
-                Response.Redirect(Request.Url.ToString());
-            }
-        }
+       RefreshPart();
     }
 
     #if($qfcontrol.HasEditColumn)

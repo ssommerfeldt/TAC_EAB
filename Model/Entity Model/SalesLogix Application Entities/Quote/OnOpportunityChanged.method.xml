@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="3ec7efa5-76aa-499e-86e0-47d38e4f51ce" lastModifiedUtc="2015-10-06T17:48:13.7684137Z" name="OnOpportunityChanged" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="922e03fc-5c2b-4f8e-82ff-f408b2cf48e0" paramName="param" sequence="0" paramType="Object" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="f8e2d151-508d-4954-96b7-47829ec46e6c" lastModifiedUtc="2015-10-06T17:48:09.5769946Z" targetType="Sage.SalesLogix.Quote.Quote, Sage.SalesLogix.BusinessRules" targetMethod="OnOpportunityChanged" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

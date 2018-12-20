@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Dashboard/DashboardPage", [
        'dojo/i18n',
        'Sage/UI/GridContainer',
        'Sage/UI/Dialogs',
@@ -12,10 +12,12 @@ define([
        'dojo/i18n!./nls/DashboardTabController',
        'dojo/i18n!./nls/WidgetDefinition',
        'dojo/_base/declare',
-       'dojo/_base/lang'
+       'dojo/_base/lang',
+       'Sage/UI/Controls/Grid',
+       'dojo/store/Memory'
 ],
 function (
-    i18n, 
+    i18n,
     gridContainer,
     dialogs,
     dashboardWidgetCell,
@@ -27,7 +29,9 @@ function (
     resourceDashboardTabController,
     resourceWidgetDefinition,
     declare,
-    lang
+    lang,
+    Grid,
+    Memory
     ) {
     //dojo.requireLocalization("dijit", "common");
 
@@ -83,24 +87,24 @@ function (
             ' id="btnEOCancel" class="cancel-button" title="{%= $.buttonCancel %}">{%= $.buttonCancel %}</button>',
             '</td></tr></table></div>'
         ]),
-        _raisePermissionInvalidMessage: function() {
+        _raisePermissionInvalidMessage: function () {
             var currentDashboardTab = this;
-            var fn = function(ans) {
-                if(ans) {
+            var fn = function (ans) {
+                if (ans) {
                     var db = dijit.byId('Dashboard');
                     db._copyPage(currentDashboardTab);
                 }
             };
-            
+
             var opts = {
-                    title: this.resources.errorText,
-                    query: [this.resources.permissionErrorText, this.resources.permissionErrorPerformCopyText],
-                    yesText: this.resources.yesText,
-                    noText: this.resources.noText,
-                    callbackFn: fn,
-                    style: {width: '350px'},
-                    align: 'right'
-                };
+                title: this.resources.errorText,
+                query: [this.resources.permissionErrorText, this.resources.permissionErrorPerformCopyText],
+                yesText: this.resources.yesText,
+                noText: this.resources.noText,
+                callbackFn: fn,
+                style: { width: '350px' },
+                align: 'right'
+            };
 
             Sage.UI.Dialogs.raiseQueryDialogExt(opts);
         },
@@ -109,7 +113,7 @@ function (
             this.subscribe('/ui/dashboard/pageSave', function (page) {
                 if (typeof page === 'string') { page = parseInt(page, 10); }
                 if (page === this._page) {
-                    if(this.permission) {
+                    if (this.permission) {
                         this._save();
                     }
                     else {
@@ -130,15 +134,15 @@ function (
         _createChild: function (widget, col, idx, page) {
             var widgetName = widget.options.title || widget['@name'],
                 nameResourceString = widgetName;
-            
-            while(nameResourceString.indexOf(' ') >= 0) { nameResourceString = nameResourceString.replace(' ', '_'); }
-            while(nameResourceString.indexOf('.') >= 0) { nameResourceString = nameResourceString.replace('.', '_'); }
-            while(nameResourceString.indexOf('\'') >= 0) { nameResourceString = nameResourceString.replace('\'', '_'); }
-            
-            if(resourceWidgetDefinition[nameResourceString]) {
+
+            while (nameResourceString.indexOf(' ') >= 0) { nameResourceString = nameResourceString.replace(' ', '_'); }
+            while (nameResourceString.indexOf('.') >= 0) { nameResourceString = nameResourceString.replace('.', '_'); }
+            while (nameResourceString.indexOf('\'') >= 0) { nameResourceString = nameResourceString.replace('\'', '_'); }
+
+            if (resourceWidgetDefinition[nameResourceString]) {
                 widgetName = resourceWidgetDefinition[nameResourceString];
             }
-            
+
             this._childWidgets.push(
             new dashboardWidgetCell({
                 dndType: 'Portlet',
@@ -155,7 +159,7 @@ function (
             return this._childWidgets[this._childWidgets.length - 1];
         },
         _addNewWidget: function (name) {
-            if(this.permission) {
+            if (this.permission) {
                 // who is the last widget?
                 var last = this._childWidgets[this._childWidgets.length - 1];
                 var col = last && last.column ? last.column : 0;
@@ -225,11 +229,11 @@ function (
             dijit.byId('rdoEO1').set('checked', evenSplit);
             dijit.byId('rdoEO2').set('checked', fatLeft);
             dijit.byId('rdoEO3').set('checked', fatRight);
-            
-            if(uo.defaultTab == this.title) {
+
+            if (uo.defaultTab == this.title) {
                 dijit.byId('chkMD').set('checked', true);
             }
-            
+
             d.show();
             var fnDestroy = function () {
                 if (this.isNew) {
@@ -253,12 +257,12 @@ function (
                 });
             var ok = dojo.connect(dijit.byId('btnEOK'), 'onClick', this,
                 function () {
-                    if(this.permission) {
+                    if (this.permission) {
                         var txtEO = dijit.byId('txtEO');
                         if (!txtEO.isValid() || !this.getParent()._isTitleUnique(txtEO.value, this.id)) {
                             return false;
                         }
-                        
+
                         // build up a config to pass to setOptions
                         var config = {};
                         config.ttl = txtEO.value;
@@ -267,7 +271,7 @@ function (
                         config.fat_left = dijit.byId('rdoEO2').get('value');
                         config.fat_right = dijit.byId('rdoEO3').get('value');
                         config.make_def = dijit.byId('chkMD').get('value');
-                        
+
                         // Only set the name of the tab the first time
                         if (this.isNew) {
                             this.isNew = false;
@@ -275,7 +279,7 @@ function (
                         else {
                             config.oldName = this.name;
                         }
-                        
+
                         this._setOptions(config);
                         this._save();
                         this._redrawWidgets();
@@ -314,25 +318,29 @@ function (
                 }
 
                 if (this.grid) { this.grid.destroyRecursive(); }
-                this.grid = new dojox.grid.DataGrid({
-                    id: this.page.id + '-shareDialog-grid',
-                    structure: [
+                this.grid = new Grid({
+                    id: 'shareDialog-grid-' + this.page.id,
+                    columns: [
                             {
                                 field: '$key',
                                 editable: false,
                                 hidden: true,
                                 id: 'id',
-                                formatter: function (value, rowIdx, cel) {
-                                    var id = [cel.grid.id, '-row', rowIdx].join('');
+                                formatter: function (value, item) {
+                                    var id = [item.Id, '-row'].join('');
                                     var anchor = ['<div id=', id, ' >', id, '</ div>'].join('');
                                     return anchor;
                                 }
                             },
-                            { field: 'Text', name: this.page.resources.releasedToText, width: '185px' }, //, editable: false 
-                            {field: 'Type', name: this.page.resources.typeText, width: '175px'} //, editable: false 
-                        ],
-                    height: '200px'
-                }, document.createElement('div'));
+                            { field: 'Text', label: this.page.resources.releasedToText, width: '185px' }, //, editable: false 
+                            { field: 'Type', label: this.page.resources.typeText, width: '175px' } //, editable: false 
+                    ],
+                    columnHiding: true,
+                    columnResizing: true,
+                    selectionMode: 'single',
+                    rowSelection: true,
+                    store: new Memory({ data: [] })
+                });
 
                 // go get the json for release candidates
                 var def = dojo.xhrGet({
@@ -352,9 +360,8 @@ function (
             },
             releaseFetchSuccess: function (data, xhr) {
                 //Assemble with data and show.
-                var storeData = { identifier: 'Id', items: data };
-                this.gridStore = new dojo.data.ItemFileWriteStore({
-                    data: storeData
+                this.gridStore = new Memory({
+                    data: data, idProperty: 'Id'
                 });
                 this.dialog.set('content', this.dialogContent.apply({
                     id: this.dialog.id,
@@ -366,9 +373,11 @@ function (
                 this.initTools();
 
                 this.dialog.show();
-                dojo.place(this.grid.domNode, this.dialog.id + '-grid', 'replace');
+                dojo.place(this.grid.domNode, this.dialog.id + '-grid');
                 this.grid.setStore(this.gridStore);
+                this.grid.resize();
                 dojo.style(this.dialog.id, 'top', '130px');
+                dojo.style(this.dialog.id + '-grid', 'height', '200px');
             },
             fnHide: function () {
                 // Essentially perform the save only after the dialog is hidden
@@ -399,16 +408,19 @@ function (
             },
             //addSelected: see this.lookupOptions.doSelected
             deleteSelected: function () {
-                var selectedItems = this.grid.selection.getSelected(); // 'this' doesn't work within the forEach
+                var selectedItems = this.grid.getSelectedRowData(); // 'this' doesn't work within the forEach
                 if (selectedItems.length) {
-                    var gStore = this.gridStore;
-                    dojo.forEach(selectedItems, function (item) {
-                        if (item !== null) {
-                            // Delete the item from the data store:
-                            gStore.deleteItem(item);
+                    var gStore = this.grid.store.data;
+                    for (var i = 0; i < selectedItems.length; i++) {
+                        for (var j = 0; j < gStore.length; j++) {
+                            if (selectedItems[i].Id === gStore[j].Id) {
+                                gStore.splice(j, 1);
+                                break;
+                            }
+
                         }
-                    }); // end forEach
-                    this.gridStore.save();
+                    }
+                    this.grid.refresh();
                 }
             },
             // The parent page object
@@ -437,19 +449,19 @@ function (
             //
             everyoneClick: function () {
                 //doSelected expects objects sent from sdata.  Format our default value as such.
-                var item = [{ $key: "SYST00000001", OwnerDescription: this.page.resources.everyoneText}];
+                var item = [{ $key: "SYST00000001", OwnerDescription: this.page.resources.everyoneText }];
                 this.lookupOptions.doSelected(item);
             },
             release: function () {
                 var ids = "";
-                var items = this.gridStore._arrayOfAllItems;
-                //this.gridStore.
+                var items = this.gridStore.data;
                 for (var i = 0; i < items.length; i++) {
                     if (items[i]) {
-                        ids += items[i].Id[0] + ",";
+                        ids += items[i].Id + ",";
                     }
                 }
-                var vURL = "SLXGroupBuilder.aspx?method=GetGroupIdFromNameFamilyAndType&name=" + this.page.name + "&family=System&type=36";
+                var vURL = dojo.string.substitute('SLXGroupBuilder.aspx?method=GetGroupIdFromNameFamilyAndType&name=${0}&family=System&type=36',
+                [encodeURIComponent(this.page.name)]);
                 dojo.xhrGet({
                     url: vURL,
                     error: dojo.hitch(this, function (pluginData) { console.log(['Page ', this.page.id, ' not released.'].join('')); }),
@@ -469,8 +481,8 @@ function (
                     // lookupOptions constructor doesn't have access to the resources
                     this.lookup.dialogTitle = this.page.resources.addLookup;
                     this.lookup.dialogButtonText = this.page.resources.okButton;
-                    this.lookup.structure[0].cells[0].name = this.page.resources.typeText;
-                    this.lookup.structure[0].cells[1].name = this.page.resources.descriptionText;
+                    this.lookup.structure[0].name = this.page.resources.typeText;
+                    this.lookup.structure[1].name = this.page.resources.descriptionText;
                 }
                 this.lookup.showLookup();
             },
@@ -479,12 +491,25 @@ function (
                 callerId: null,
                 displayMode: 5,
                 structure: [{
-                    cells: [
-                        { name: "", field: "Type", sortable: true, width: "150px", editable: false, styles: null,
-                            propertyType: "Sage.Entity.Interfaces.OwnerType", excludeFromFilters: false, useAsResult: false
-                        },
-                        { "name": "", "field": "OwnerDescription", "sortable": true, "width": "500px", "editable": false, "styles": null, "propertyType": "System.String", "excludeFromFilters": false, "useAsResult": false}],
-                    "defaultCell": { "name": null, "field": null, "sortable": false, "width": "50px", "editable": false, "styles": "text-align: left;", "propertyType": null, "excludeFromFilters": false, "useAsResult": false }
+                    label: "Type",
+                    field: "Type",
+                    sortable: true,
+                    width: "150px",
+                    editable: false,
+                    styles: null,
+                    propertyType: "Sage.Entity.Interfaces.OwnerType",
+                    excludeFromFilters: false,
+                    useAsResult: false
+                }, {
+                    "label": "Owner Description",
+                    "field": "OwnerDescription",
+                    "sortable": true,
+                    "width": "500px",
+                    "editable": false,
+                    "styles": null,
+                    "propertyType": "System.String",
+                    "excludeFromFilters": false,
+                    "useAsResult": false
                 }],
                 gridOptions: {},
                 storeOptions: { "resourceKind": "owners" },
@@ -496,14 +521,9 @@ function (
                     //When refactored to stand alone, caller will BE _releaseManager.
                     var manager = dijit.byId(this.callerId)._releaseManager;
                     for (var i = 0, len = items.length; i < len; i++) {
-                        if (!manager.gridStore._itemsByIdentity[items[i].$key]) {
-                            manager.gridStore.newItem({ Id: items[i].$key, Text: items[i].OwnerDescription, Type: items[i].Type });
-                        }
+                        manager.grid.addItem({ Id: items[i].$key, Text: items[i].OwnerDescription, Type: items[i].Type });
                     }
-                    manager.gridStore.save();
-                    //Don't save until the window is closed
-                    //manager.release();
-                    manager.grid.startup();
+                    manager.grid.refresh();
                     if (manager.lookup && manager.lookup.lookupDialog) {
                         manager.lookup.lookupDialog.hide();
                     }
@@ -530,9 +550,9 @@ function (
             if (config.ttl) {
                 this.title = config.ttl;
                 this.set('name', config.ttl);
-                
+
                 var dashboardTab = dijit.byId('Dashboard_tablist_' + this.id);
-                if(dashboardTab) {
+                if (dashboardTab) {
                     dashboardTab._setLabelAttr(config.ttl);
                 }
             }
@@ -571,8 +591,8 @@ function (
                     db._updateUserOptions();
                 }
             }
-            
-            if(config.oldName) {
+
+            if (config.oldName) {
                 this.oldName = config.oldName;
             }
             else {
@@ -649,7 +669,8 @@ function (
         },
         // callable from the parent dashboard so that
         // unselected children don't startup until viewed
-        _init: function () {
+        _init: function (manuallySetWidgets) {
+
             // has already rendered?
             if (this.pageRendered) {
                 // here all charting types on 'firstButNotDefault' should redraw
@@ -669,17 +690,33 @@ function (
             // a new page won't have a length
             // Before the DashboardPage is constructed, it will only have 1 column, so adding content only to
             //  the 2nd column can cause issues of it appearing only in the 1st
-            setTimeout(lang.hitch(this, function() {
-            if (this._columns.length) {
+            if (!manuallySetWidgets) {
+                setTimeout(lang.hitch(this, function () {
+                    this._setWidgetsToPage();
+                    this.pageRendered = true;
+                }), 5);
+            }
+        },
+        _setWidgetsToPage: function () {
+            var num = this._numberOfWidgets(); //gets the number of children the node knows about
+            var children = this.getChildren(); //gets the children attached to the node
+
+            // to prevent duplicates: if we know about, say 5 widgets and 5 widgets are already attached, dont run the below.
+            if (typeof (this._columns) !== 'undefined' && typeof (children) !== 'undefined' && children.length !== num) {
+
                 //iterate over the zones and add widget cells to them
-                for (var i = 0; i < this.nbZones; i++) {
+                var i;
+                for (i = 0; i < this.nbZones; i++) {
                     //per column 
                     if (this._columns[i]) {
                         // If there is only 1 Widget, it may not be an array, which won't get caught in the following for-loop
                         //  So ensure it's an array first
                         this._columns[i].Widgets.Widget = Utility.Convert.toArrayFromObject(this._columns[i].Widgets.Widget);
-                        for (var j = 0, len = this._columns[i].Widgets.Widget.length; j < len; j++) {
-                            if(this._columns[i].Widgets.Widget[j]) {
+
+                        var j;
+                        var len = this._columns[i].Widgets.Widget.length;
+                        for (j = 0; j < len; j++) {
+                            if (this._columns[i].Widgets.Widget[j]) {
                                 this.addChild(this._createChild(
                                     this._columns[i].Widgets.Widget[j], i, j, this._page), i, j);
                             }
@@ -687,8 +724,23 @@ function (
                     }
                 }
             }
-            this.pageRendered = true;
-            }), 5);
+        },
+        // get total number of widgets that the page knows about.
+        _numberOfWidgets: function () {
+            var count = 0;
+            if (this._columns) {
+
+                var i;
+                var len = this._columns.length;
+                for (i = 0; i < len; i++) {
+                    var column = this._columns[i];
+                    if (column) {
+                        column.Widgets.Widget = Utility.Convert.toArrayFromObject(column.Widgets.Widget);
+                        count = count + column.Widgets.Widget.length;
+                    }
+                }
+            }
+            return count;
         },
         _dropped: function (drp, target, i) {
             // get a ref to the widget instance being dropped
@@ -702,8 +754,8 @@ function (
             widget._setIndex(i);
             // inform widgets dropped, page, column, index
             dojo.publish('/ui/widget/dropped', [drp.id, widget._page, col, i]);
-            
-            if(this.permission) {
+
+            if (this.permission) {
                 this._save();
             }
             else {
@@ -716,61 +768,46 @@ function (
         _hide: function () {
             return this.title;
         },
-        _copy: function () {
-            return this._save(true);
+        copy: function () {
+            var _cw = this._stringifyColWidths();
+            return this._prepForSave({
+                '@name': this.name,
+                '@title': this.name,
+                '@id': this.id,
+                '@family': this.family || 'System',
+                '@permission': this.permission,
+                // an array of strings if present
+                '@colWidths': _cw,
+                Columns: {
+                    Column: []
+                }
+            });
         },
         // If the context menu option for Saving the Page is hit and the Page
         // hasn't been viewed yet, all the content of the page would get removed on Save
-        _contextSave: function() {
-            if(!this.pageRendered) {
+        _contextSave: function () {
+            if (!this.pageRendered) {
                 // page hasn't been rendered, so there couldn't have been any changes to save
                 return;
             }
-            
+
             this._save();
         },
-        // push in the columns and send the page to dashboard
-        _save: function (hidden) {
-            // need to get the current colWidths
+        _stringifyColWidths: function () {
             var cw = this.colWidths;
             var _cw;
             if (cw) {
-                _cw = typeof cw === 'string' ?
+                return typeof cw === 'string' ?
                     cw : cw.join(',');
             }
+            return cw;
+        },
+        _prepForSave: function (pageObject) {
             // make the page & column objects a local var so we forget...
-            var pageObject;
-            if(hidden) {
-                pageObject = {
-                    '@name': this.name,
-                    '@title': this.name,
-                    '@id': this.id,
-                    '@family': this.family || 'System',
-                    '@permission': this.permission,
-                    // an array of strings if present
-                    '@colWidths': _cw,
-                    Columns: {
-                        Column: []
-                    }
-                };
-            }
-            else {
-                pageObject = {
-                    '@name': this.name,
-                    '@title': this.name,
-                    '@id': this.id,
-                    '@family': this.family || 'System',
-                    // an array of strings if present
-                    '@colWidths': _cw,
-                    Columns: {
-                        Column: []
-                    }
-                };
-            }
-            
             var columnObjects = {};
-            for(var i = 0; i < this.nbZones; i++)
-            {
+
+            var i;
+            for (i = 0; i < this.nbZones; i++) {
                 columnObjects[i] =
                     new dashboardColumn({
                         Widgets: {
@@ -778,16 +815,18 @@ function (
                         }
                     });
             }
+
             // iterate over the widgets and push them into the correct
             // column objects
-            var len;
-            for (i = 0, len = this._childWidgets.length; i < len; i++) {
-                var col = this._childWidgets[i].column;
-                var opts = this._childWidgets[i].widgetOptions;
+            var x;
+            var len = this._childWidgets.length;
+            for (x = 0 ; x < len; x++) {
+                var col = this._childWidgets[x].column;
+                var opts = this._childWidgets[x].widgetOptions;
                 // a wrapper object for each widgetOptions
                 var w = {
                     // index only used by placeByAttr
-                    index: this._childWidgets[i].index,
+                    index: this._childWidgets[x].index,
                     '@name': opts.name,
                     '@family': opts.family || 'System',
                     options: opts
@@ -795,27 +834,41 @@ function (
                 // the order may have changed. use placeByAttr?
                 columnObjects[col].Widgets.Widget.placeByAttr(w, 'index');
             }
+
             // how many columns now?
             var cols = Sage.Utility.size(columnObjects);
+
             // push them into a pageObject.Column
-            for (var j = 0; j < cols; j++) {
+            var j;
+            for (j = 0; j < cols; j++) {
                 pageObject.Columns.Column.push(columnObjects[j]);
             }
             // match the current (overly-nested) DB structure
             var pg = { Dashboard: {} };
             // mixin is copying too much stuff
             Sage.Utility.mixOwn(pg.Dashboard, pageObject);
-            if (hidden) {
-                /* We were returning pg here (it was not being used by callers), and
-                JSLint was warning that _save does not always return a value.*/
-                return pg;
-            }
+            return pg;
+        },
+        // push in the columns and send the page to dashboard
+        _save: function () {
+            var _cw = this._stringifyColWidths();
+            var pg = this._prepForSave({
+                '@name': this.name,
+                '@title': this.name,
+                '@id': this.id,
+                '@family': this.family || 'System',
+                // an array of strings if present
+                '@colWidths': _cw,
+                Columns: {
+                    Column: []
+                }
+            });
             var pgStr = dojo.toJson(pg);
-            
-            if(!this.oldName) {
+
+            if (!this.oldName) {
                 this.oldName = '';
             }
-            
+
             // post to the server if not hidden specified
             var uri = dojo.string.substitute('slxdata.ashx/slx/crm/-/dashboard/page?name=${0}&family=${1}&oldName=${2}',
                 [encodeURIComponent(this.name), encodeURIComponent(this.family), encodeURIComponent(this.oldName)]);

@@ -53,7 +53,7 @@
             </td>
             <td runat="server" class="snapshot-column alignright" id="colOppSalesPotential" visible="false">
                 <asp:LinkButton ID="lnkOpenSalesPotential" runat="server" OnClick="OnClickSalesPotentialEntityRate" Text="">
-                    <SalesLogix:Currency runat="server" ID="curOpenSalesPotential" DisplayMode="AsText" ExchangeRateType="EntityRate"
+                    <SalesLogix:Currency runat="server" ID="curOpenSalesPotential" DisplayMode="AsText" ExchangeRateType="BaseRate"
                         DisplayCurrencyCode="true">
                     </SalesLogix:Currency>
                 </asp:LinkButton>
@@ -83,7 +83,7 @@
             </td>
             <td runat="server" class="snapshot-column alignright" id="colOppActualWon" visible="false">
                 <asp:LinkButton ID="lnkActualAmountEnityRate"  runat="server" OnClick="OnClickActualAmountEntityRate" Text="">
-                    <SalesLogix:Currency runat="server" ID="curActualWon" DisplayMode="AsText" ExchangeRateType="EntityRate"
+                    <SalesLogix:Currency runat="server" ID="curActualWon" DisplayMode="AsText" ExchangeRateType="BaseRate"
                         DisplayCurrencyCode="true">
                     </SalesLogix:Currency>
                 </asp:LinkButton>
@@ -113,7 +113,7 @@
             </td>
             <td runat="server" id="colOppPotentialLost" visible="false" class="snapshot-column alignright">
                 <asp:LinkButton ID="lnkActualAmountEntityRateLost" runat="server" OnClick="OnClickActualAmountEntityRate" Text="">
-                    <SalesLogix:Currency runat="server" ID="curPotentialLost" DisplayMode="AsText" ExchangeRateType="EntityRate"
+                    <SalesLogix:Currency runat="server" ID="curPotentialLost" DisplayMode="AsText" ExchangeRateType="BaseRate"
                         DisplayCurrencyCode="true">
                     </SalesLogix:Currency>
                 </asp:LinkButton>
@@ -152,28 +152,25 @@
         </tr>
     </table>
     <br />
-    <table id="tblMultiCurrency" runat="server" border="0" cellpadding="0" cellspacing="0" visible="false" width="60%">
-        <col width="200px"/>
-        <col width="50%"/>
+    <table id="tblMultiCurrency" runat="server" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
                 <div class="lbl alignleft">
                     <asp:Label ID="lueCurrencyCode_lbl" AssociatedControlID="lueCurrencyCode" runat="server"
                         Text="<%$ resources: lueCurrencyCode.Caption %>" >
                     </asp:Label>
+                    <asp:HiddenField ID="hfExchangeRate" runat="server" ClientIDMode="Static" Value="-1" />
                 </div>
-            </td>
-            <td>
-                <div>
+                <div class="lbl alignleft">
                     <SalesLogix:LookupControl runat="server" ID="lueCurrencyCode" ToolTip="<%$ resources: lueCurrencyCode.ToolTip %>"
                         LookupEntityName="ExchangeRate" LookupDisplayMode="HyperText" OnLookupResultValueChanged="CurrencyCode_OnChange"
-                        AutoPostBack="true" LookupBindingMode="String" ReturnPrimaryKey="True" InitializeLookup="true"
+                        AutoPostBack="true" LookupBindingMode="String" ReturnPrimaryKey="True" InitializeLookup="true"  SeedProperty="Period.Id" 
                         LookupEntityTypeName="Sage.Entity.Interfaces.IExchangeRate, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
                         <LookupProperties>
                             <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueCurrencyCode.Description.PropertyHeader %>" PropertyName="Description"
                                 PropertyType="System.String" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
                             </SalesLogix:LookupProperty>
-                            <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueCurrencyCode.Currency.PropertyHeader %>" PropertyName="Id"
+                            <SalesLogix:LookupProperty IsSortable="False" PropertyHeader="<%$ resources: lueCurrencyCode.Currency.PropertyHeader %>" PropertyName="CurrencyCode"
                                 PropertyType="System.String" PropertyFormat="None" UseAsResult="True" ExcludeFromFilters="False">
                             </SalesLogix:LookupProperty>
                             <SalesLogix:LookupProperty PropertyHeader="<%$ resources: lueCurrencyCode.Rate.PropertyHeader %>" PropertyName="Rate"
@@ -188,53 +185,44 @@
         </tr>
         <tr>
             <td>
-                <div class="slxlabel alignleft">
+                <div class="lbl alignleft">
                     <asp:Label ID="lblExchangeRate" AssociatedControlID="lblExchangeRateValue" runat="server"
                         Text="<%$ resources: lblExchangeRate.Caption %>">
                     </asp:Label>
                 </div>
-            </td>
-            <td>
-                <div runat="server" id="divExchangeRateLabel" class="textcontrol alignleft">
+                <div runat="server" id="divExchangeRateLabel" class="lbl alignleft">
                     <asp:Label runat="server" ID="lblExchangeRateValue" Enabled="false"></asp:Label>
                 </div>
-                <div runat="server" id="divExchangeRateText" class="textcontrol alignleft">
-                    <SalesLogix:NumericControl runat="server" ID="numExchangeRateValue" Strict="false" OnTextChanged="ExchangeRate_OnChange"
+                <div runat="server" id="divExchangeRateText" class="textcontrol" style="width:65px">
+                    <SalesLogix:NumericControl runat="server" ID="numExchangeRateValue" OnTextChanged="ExchangeRate_OnChange"
                         AutoPostBack="true" FormatType="Decimal" DecimalDigits="4"/>
                 </div>
             </td>
         </tr>
         <tr>
             <td>
-                <div class="slxlabel alignleft">
+                 <div class="lbl alignleft">
                     <asp:Label ID="lblExchangeRateDate" AssociatedControlID="dtpExchangeRateDate" runat="server"
                         Text="<%$ resources: dtpExchangeRateDate.Caption %>">
                     </asp:Label>
                 </div>
-            </td>
-            <td>
-                <div class="alignleft">
-                    <SalesLogix:DateTimePicker runat="server" ID="dtpExchangeRateDate" DisplayMode="AsText"></SalesLogix:DateTimePicker>
+                <div class="datepicker textcontrol">
+                    <SalesLogix:DateTimePicker runat="server" ID="dtpExchangeRateDate" DisplayMode="AsText" DisplayTime="false"></SalesLogix:DateTimePicker>
                 </div>
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <asp:CheckBox runat="server" ID="chkLockRate" Text="<%$ resources: chkLockRate.Caption %>"/>
-            </td>
-        </tr>
-        <tr>
             <td>
-                <br />
+                <asp:CheckBox runat="server" ID="chkLockRate" Text="<%$ resources: chkLockRate.Caption %>" CssClass="inforAspCheckBox"/>
             </td>
         </tr>
     </table>
     <table id="tblSummary" runat="server" border="0" cellpadding="0" cellspacing="0" width="">
         <tr>
             <td>
-                <div class="lbl">
+                <b>
                     <asp:Label runat="server" ID="lblSummaryHeader" Text="<%$ resources: lblSummaryHeader.Caption %>"></asp:Label>
-                </div>
+                </b>
             </td>
         </tr>
         <tr runat="server" id="rowOpenSummary">
@@ -274,9 +262,7 @@
     <table id="tblReasonWonLost" runat="server" border="0" cellpadding="0" cellspacing="0">
         <tr runat="server" id="rowReasonWon">
             <td>
-                <div>
-                    <asp:Label ID="lblReasonWon" runat="server" Text="<%$ resources: lblReasonWon.Caption %>"></asp:Label>
-                </div>
+                <asp:Label ID="lblReasonWon" runat="server" Text="<%$ resources: lblReasonWon.Caption %>" CssClass="lbl"></asp:Label>
             </td>
             <td>
                 <div class="textcontrol picklist">
@@ -287,7 +273,7 @@
         <tr runat="server" id="rowReasonLost">
             <td>
                 <asp:Label ID="lblReasonLost" runat="server" AssociatedControlID="pklReasonLost"
-                    Text="<%$ resources: lblReasonLost.Caption %>">
+                    Text="<%$ resources: lblReasonLost.Caption %>" CssClass="lbl">
                 </asp:Label>
             </td>
             <td>
@@ -299,25 +285,19 @@
     <table id="tblProcesCompetitors" runat="server" border="0" cellpadding="0" cellspacing="0">
         <tr runat="server" id="rowSalesProcess">
             <td>
-                <div>
-                    <asp:Label ID="lblSalesProcess" runat="server" Text="<%$ resources: lblSalesProcess.Caption %>"></asp:Label>
-                </div>
+                <asp:Label ID="lblSalesProcess" runat="server" Text="<%$ resources: lblSalesProcess.Caption %>"></asp:Label>
             </td>
         </tr>
         <tr runat="server" id="rowCompetitors">
             <td>
-                <div>
-                    <asp:Label ID="lblCompetitors" runat="server"></asp:Label>
-                </div>
+                <asp:Label ID="lblCompetitors" runat="server"></asp:Label>
             </td>
         </tr>
     </table>
     <table id="tblTypeSource" runat="server" border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td>
-                <div>
-                    <asp:Label runat="server" ID="lblType" AssociatedControlID="pklType" Text="<%$ resources: lblType.Caption %>" />
-                </div>
+                <asp:Label runat="server" ID="lblType" AssociatedControlID="pklType" Text="<%$ resources: lblType.Caption %>" CssClass="lbl" />
             </td>
             <td>
                 <div class="textcontrol picklist">
@@ -327,9 +307,7 @@
         </tr>
         <tr id="rowSource">
             <td>
-                <div>
-                    <asp:Label runat="server" ID="lblSource" Text="<%$ resources: lblSource.Caption %>" /> 
-                </div>
+                <asp:Label runat="server" ID="lblSource" Text="<%$ resources: lblSource.Caption %>"/> 
             </td>
             <td>
                 <div>
@@ -349,6 +327,22 @@
                         <LookupPreFilters>              
                         </LookupPreFilters>
                     </SalesLogix:LookupControl>
+                </div>
+            </td>
+        </tr>
+    </table>
+	 <table id="tblSyncState" runat="server" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <div class="lbl alignleft">
+                    <asp:Label ID="lblSyncState" runat="server" Text="<%$ resources: lblSyncStateNoPendingChanges %>" Visible="false"></asp:Label>
+                </div>
+            </td>
+        </tr>
+		 <tr>
+            <td>
+                <div class="lbl alignleft">
+                    <asp:Label ID="lblPendingChanges" runat="server" Text="<%$ resources: lblSyncStatePendingChanges %>" ForeColor="red" Visible="False"></asp:Label>
                 </div>
             </td>
         </tr>

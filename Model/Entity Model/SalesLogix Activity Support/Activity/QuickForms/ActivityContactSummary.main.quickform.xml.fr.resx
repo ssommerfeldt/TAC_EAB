@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtLeader.Caption" xml:space="preserve">
-    <value>Responsable :</value>
-  </data>
   <data name="txtPhone.Caption" xml:space="preserve">
-    <value>N° de téléphone :</value>
+    <value>Téléphone :</value>
   </data>
-  <data name="lnkTicketNumber.Caption" xml:space="preserve">
-    <value>Ticket :</value>
-  </data>
-  <data name="txtLocation.Caption" xml:space="preserve">
-    <value>Emplacement :</value>
-  </data>
-  <data name="lblNotes.Text" xml:space="preserve">
-    <value>Notes :</value>
+  <data name="txtNotes.Caption" xml:space="preserve">
+    <value />
   </data>
   <data name="lnkOpportunityName.Caption" xml:space="preserve">
     <value>Opportunité :</value>
@@ -138,13 +129,37 @@
   <data name="txtStartTime.Caption" xml:space="preserve">
     <value>Heure de début :</value>
   </data>
-  <data name="linkAccountName.Caption" xml:space="preserve">
-    <value>Compte :</value>
-  </data>
   <data name="linkContactName.Caption" xml:space="preserve">
     <value>Contact :</value>
   </data>
+  <data name="lnkTicketNumber.Caption" xml:space="preserve">
+    <value>Ticket :</value>
+  </data>
+  <data name="txtHeader.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.getActivityDetailSummaryHeaderHtml($.entity)%}</value>
+  </data>
+  <data name="txtLocation.Caption" xml:space="preserve">
+    <value>Emplacement :</value>
+  </data>
+  <data name="txtLeader.Caption" xml:space="preserve">
+    <value>Responsable :</value>
+  </data>
+  <data name="txtStartTime.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatActivityStartDate($.entity.startdate, $.entity.timeless)%}</value>
+  </data>
+  <data name="txtDuration.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatDuration($.entity.duration, $.entity.timeless)%}</value>
+  </data>
   <data name="txtDuration.Caption" xml:space="preserve">
-    <value>Durée :</value>
+    <value>Durée :</value>
+  </data>
+  <data name="linkAccountName.Caption" xml:space="preserve">
+    <value>Compte :</value>
+  </data>
+  <data name="txtHeader.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblNotes.Text" xml:space="preserve">
+    <value>Notes :</value>
   </data>
 </root>

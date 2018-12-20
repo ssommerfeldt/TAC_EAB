@@ -117,64 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="linkHelp.ToolTip" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="Lookup_AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="Lookup_Division.PropertyHeader" xml:space="preserve">
+    <value>Подразделение</value>
+  </data>
+  <data name="Lookup_Industry.PropertyHeader" xml:space="preserve">
+    <value>Отрасль</value>
+  </data>
+  <data name="Lookup_MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Основной телефон</value>
+  </data>
   <data name="Lookup_Status.PropertyHeader" xml:space="preserve">
     <value>Статус</value>
   </data>
   <data name="Lookup_SubType.PropertyHeader" xml:space="preserve">
     <value>Подтип</value>
   </data>
-  <data name="lblIsA.Text" xml:space="preserve">
-    <value>это</value>
-  </data>
-  <data name="linkHelp.ToolTip" xml:space="preserve">
-    <value>Помощь</value>
-  </data>
-  <data name="Lookup_City.PropertyHeader" xml:space="preserve">
-    <value>Город</value>
+  <data name="Lookup_Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Описание:</value>
   </data>
-  <data name="Lookup_State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
-  </data>
-  <data name="Lookup_AccountManager.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="Lookup_Division.PropertyHeader" xml:space="preserve">
-    <value>Подразделение</value>
-  </data>
-  <data name="Lookup_AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="Lookup_MainPhone.PropertyHeader" xml:space="preserve">
-    <value>Основной тел.</value>
-  </data>
-  <data name="DialogTitleEdit" xml:space="preserve">
-    <value>Связать Субъект</value>
-  </data>
-  <data name="Lookup_Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="AccountNullMessage" xml:space="preserve">
-    <value>Организация, которую Вы связываете не может быть нулевой.</value>
-  </data>
-  <data name="Lookup_Owner.PropertyHeader" xml:space="preserve">
-    <value>Доступ</value>
-  </data>
-  <data name="Lookup_Industry.PropertyHeader" xml:space="preserve">
-    <value>Отрасль</value>
-  </data>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
+  <data name="lblIsA.Text" xml:space="preserve">
+    <value>это</value>
   </data>
   <data name="lblOfTo.Text" xml:space="preserve">
     <value>от/к</value>
   </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>Ок</value>
+  <data name="DialogTitleEdit" xml:space="preserve">
+    <value>Связать с клиентом</value>
+  </data>
+  <data name="AccountNullMessage" xml:space="preserve">
+    <value>Связываемый клиент не может иметь значение NULL.</value>
   </data>
   <data name="MSGCanNotAssociateToSelf" xml:space="preserve">
-    <value>Субъект не может быть связан сам с собой.</value>
+    <value>Клиент не может быть связан сам с собой.</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="Lookup_AccountManager.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="Lookup_City.PropertyHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="Lookup_Owner.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="Lookup_State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
   </data>
 </root>

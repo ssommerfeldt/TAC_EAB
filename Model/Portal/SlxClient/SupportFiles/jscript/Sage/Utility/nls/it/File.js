@@ -1,6 +1,6 @@
-﻿define({
-    unableToUploadText: 'SalesLogix Desktop Integration Module deve essere installata per utilizzare questa funzionalità.',
-    unknownSizeText: 'Sconosciuto',
-    largeFileWarningText: 'Attenzione: Questa richiesta supera il limite di dimensioni impostato dall\'amministratore e non è riuscito a caricare.',
-    largeFileWarningTitle: 'Attenzione'
+define("Sage/Utility/nls/it/File", {
+    "unableToUploadText": "Installare il modulo CRM Office Integration per utilizzare questa funzionalità.",
+    "unknownSizeText": "sconosciuto",
+    "largeFileWarningText": "Attenzione: questa richiesta supera il limite di dimensioni impostato dall'amministratore. Impossibile caricare.",
+    "largeFileWarningTitle": "Avviso"
 });

@@ -1,6 +1,6 @@
-define((
-{ selectAllText: 'Seleziona Tutto',
-  dialogTitle: 'Modifica Filtri',
-  okText: 'OK',
-  cancelText: 'Annulla' }
-));
+define("Sage/UI/Filters/nls/it/EditFilters", {
+    "selectAllText": "Seleziona tutto",
+    "dialogTitle": "Modifica filtri",
+    "okText": "OK",
+    "cancelText": "Annulla"
+});

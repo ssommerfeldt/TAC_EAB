@@ -97,7 +97,7 @@ public partial class SmartParts_TaskPane_GroupList_GroupListTasklet : System.Web
         EntityPage entityPage = Page as EntityPage;
         if (entityPage != null)
         {
-            Type entityType = Type.GetType(entityPage.EntityTypeName);
+            Type entityType = Type.GetType(entityPage.EntityTypeName, true);
 
             object[] temp = entityType.GetCustomAttributes(true);
             object[] entityArAttributes = entityType.GetCustomAttributes(typeof(ActiveRecordAttribute), true);

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Data/SingleEntryPropertySDataStore", [
         'Sage/Data/SingleEntrySDataStore',
         'dojo/_base/declare'
 ],
@@ -71,7 +71,7 @@ function (SingleEntrySDataStore, declare) {
                 this._request = req;
             }
             return this._request;
-        },
+        }
     });
     return SingleEntryPropertySDataStore;
 });

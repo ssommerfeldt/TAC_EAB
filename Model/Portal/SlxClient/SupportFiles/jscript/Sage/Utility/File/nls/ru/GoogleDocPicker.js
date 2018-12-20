@@ -1,4 +1,4 @@
-define((
-{ googleDocumentsTitle: 'Документы Google',
-  couldNotOpenWindowMsg: 'Не могут открыть окно аутентификации - пожалуйста, проверьте ваши настройки всплывающих окон.' }
-));
+define("Sage/Utility/File/nls/ru/GoogleDocPicker", {
+    "googleDocumentsTitle": "Документы Google",
+    "couldNotOpenWindowMsg": "Не удалось открыть окно аутентификации. Проверьте наличие блокировки всплывающих окон."
+});

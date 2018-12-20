@@ -16,7 +16,12 @@ if ((val == "True") || (val == "T"))
 else
     chkAutoSearch.Checked = false;
 
-</CSharpCodeSnippet>
+var value = Sage.SalesLogix.BusinessRules.BusinessRuleHelper.GetPickListValueByCode("Lead Source Status", "A");
+if (!String.IsNullOrEmpty(value))
+{
+ 	var leadSourcePreFilter = new LookupPreFilter { PropertyName = "Status", OperatorCode = "=", FilterValue = value, PropertyType = "System.String" };
+ 	lueLeadSource.LookupPreFilters.Add(leadSourcePreFilter);
+}</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -854,17 +859,7 @@ userOption.SetCommonOption("AutoSearch", "General", chkAutoSearch.Checked.ToStri
             <HideCondition />
           </LookupProperty>
         </LookupProperties>
-        <LookupPreFilters>
-          <LookupPreFilter>
-            <LookupEntityName>ILeadSource</LookupEntityName>
-            <PropertyType>System.String</PropertyType>
-            <OperatorCode>=</OperatorCode>
-            <PickListName />
-            <PropertyName>Status</PropertyName>
-            <FilterValue>Active</FilterValue>
-            <TranslateFilterValue>true</TranslateFilterValue>
-          </LookupPreFilter>
-        </LookupPreFilters>
+        <LookupPreFilters />
       </QFSLXLookup>
     </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXOwner, Sage.SalesLogix.QuickForms.QFControls">
@@ -999,8 +994,7 @@ userOption.SetCommonOption("AutoSearch", "General", chkAutoSearch.Checked.ToStri
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
               <MethodName>cmdSaveNew_ClickAction</MethodName>
-              <CSharpCodeSnippet>	object[] objarray = new object[] {  this.BindingSource.Current };
-	Sage.Platform.EntityFactory.Execute&lt;Sage.SalesLogix.Entities.Lead&gt;("Lead.SaveLead", objarray);
+              <CSharpCodeSnippet>	((ILead)this.BindingSource.Current).SaveLead();
 	Response.Redirect("InsertLead.aspx?modeid=Insert");</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>

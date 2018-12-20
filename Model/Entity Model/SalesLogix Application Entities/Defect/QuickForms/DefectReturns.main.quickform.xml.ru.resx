@@ -117,26 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueAssociateReturn.LookupProperties.ShipTo.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Доставить</value>
+  <data name="grdReturns.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
-  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.ConfirmationMessage" xml:space="preserve">
-    <value>Вы действительно хотите исключить связь с выбранным возвратом?</value>
+  <data name="ctrlstReturnInfo.Caption" xml:space="preserve">
+    <value>Информация о возврате — </value>
+  </data>
+  <data name="grdReturns.80924fab-5e90-4ace-b938-0dc5b5ecfd08.ColumnHeading" xml:space="preserve">
+    <value>Дата создания</value>
   </data>
   <data name="grdReturns.6e0ca51d-2f96-4d24-bd97-1d790387df64.ColumnHeading" xml:space="preserve">
     <value>ИД возврата</value>
   </data>
-  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.Text" xml:space="preserve">
-    <value>Исключить</value>
+  <data name="grdReturns.1e9a6eaa-994b-49c9-9ad5-06abf1c0c5c6.ColumnHeading" xml:space="preserve">
+    <value>Тип</value>
   </data>
-  <data name="lueAssociateReturn.LookupProperties.SubmittedBy.CreateUser.PropertyHeader" xml:space="preserve">
-    <value>Получено:</value>
+  <data name="grdReturns.50f750f9-6ef2-4662-b84a-4f2794d49ac5.ColumnHeading" xml:space="preserve">
+    <value>Статус</value>
   </data>
-  <data name="lueAssociateReturn.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
+  <data name="grdReturns.5f52577b-af59-4473-ab0e-d7b447f5a1d7.ColumnHeading" xml:space="preserve">
+    <value>Приоритет</value>
   </data>
-  <data name="lueAssociateReturn.LookupProperties.ReturnNumber.PropertyHeader" xml:space="preserve">
-    <value>ИД возврата</value>
+  <data name="txtReturnNotes.Caption" xml:space="preserve">
+    <value>Заметки:</value>
+  </data>
+  <data name="grdReturns.3a20a9d8-2735-405c-a43e-284753a47f9d.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdReturns.3a20a9d8-2735-405c-a43e-284753a47f9d.Text" xml:space="preserve">
+    <value>Выбрать</value>
   </data>
   <data name="lblReturnBy.Text" xml:space="preserve">
     <value>Информация о возврате</value>
@@ -144,43 +153,40 @@
   <data name="lblShipInfo.Text" xml:space="preserve">
     <value>Информация по доставке</value>
   </data>
-  <data name="grdReturns.3a20a9d8-2735-405c-a43e-284753a47f9d.Text" xml:space="preserve">
-    <value>Выбрать</value>
+  <data name="memComments.Caption" xml:space="preserve">
+    <value>Комментарии</value>
   </data>
-  <data name="grdReturns.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
+  <data name="pklShipVia.Caption" xml:space="preserve">
+    <value>Способ доставки </value>
   </data>
-  <data name="grdReturns.5f52577b-af59-4473-ab0e-d7b447f5a1d7.ColumnHeading" xml:space="preserve">
-    <value>Приоритет</value>
+  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.ConfirmationMessage" xml:space="preserve">
+    <value>Действительно удалить связь с выбранным возвратом?</value>
   </data>
-  <data name="grdReturns.80924fab-5e90-4ace-b938-0dc5b5ecfd08.ColumnHeading" xml:space="preserve">
-    <value>Дата создания</value>
+  <data name="grdReturns.33a0d242-3514-41e6-890e-27ca296c37ff.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="lueAssociateReturn.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.ReturnNumber.PropertyHeader" xml:space="preserve">
+    <value>ИД возврата</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.Account.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="lueAssociateReturn.LookupProperties.ShipTo.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Грузополучатель</value>
   </data>
   <data name="lueAssociateReturn.LookupProperties.Ticket.TicketNumber.PropertyHeader" xml:space="preserve">
     <value>ИД заявки</value>
   </data>
-  <data name="b625fe0e-0322-48de-bc1f-472019ffd5e7.DuplicateAssociationMessage" xml:space="preserve">
-    <value>Этот возврат уже был связан с дефектом.</value>
-  </data>
-  <data name="grdReturns.50f750f9-6ef2-4662-b84a-4f2794d49ac5.ColumnHeading" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="txtReturnNotes.Caption" xml:space="preserve">
-    <value>Заметки:</value>
+  <data name="lueAssociateReturn.LookupProperties.SubmittedBy.CreateUser.PropertyHeader" xml:space="preserve">
+    <value>Кем получено</value>
   </data>
   <data name="lueAssociateReturn.ButtonToolTip" xml:space="preserve">
-    <value>Связать Возврат</value>
+    <value>Связать возврат</value>
   </data>
-  <data name="pklShipVia.Caption" xml:space="preserve">
-    <value>Способ доставки - </value>
-  </data>
-  <data name="grdReturns.1e9a6eaa-994b-49c9-9ad5-06abf1c0c5c6.ColumnHeading" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="memComments.Caption" xml:space="preserve">
-    <value>Комментарии</value>
-  </data>
-  <data name="ctrlstReturnInfo.Caption" xml:space="preserve">
-    <value>Информация по возврату-</value>
+  <data name="b625fe0e-0322-48de-bc1f-472019ffd5e7.DuplicateAssociationMessage" xml:space="preserve">
+    <value>Этот возврат уже был связан с дефектом.</value>
   </data>
 </root>

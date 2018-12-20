@@ -7,11 +7,6 @@
   <parameter />
   <preExecuteTargets />
   <methodTargets>
-    <methodTarget id="bb09acf3-4f72-4160-b883-6344a701bb3a" lastModifiedUtc="2013-02-26T20:16:29.4796904Z" targetType="Sage.Platform.Orm.DefaultCRUDEventHandler, Sage.Platform" targetMethod="OnBeforeInsert" active="false">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
-      </ExtendedPropertiesCollection>
-    </methodTarget>
     <methodTarget id="9ac97a61-955f-4384-8114-e7ea075ffa88" lastModifiedUtc="2013-09-26T23:13:19.4116561Z" targetType="Sage.SalesLogix.Activity.BusinessRules.ActivityAttendee.ActivityAttendeeRules, Sage.SalesLogix.Activity" targetMethod="OnBeforeInsert" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
@@ -19,5 +14,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

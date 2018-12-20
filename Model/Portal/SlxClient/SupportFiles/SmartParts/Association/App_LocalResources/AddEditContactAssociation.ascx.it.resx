@@ -117,26 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="DialogTitleEdit" xml:space="preserve">
-    <value>Associa un Contatto</value>
-  </data>
-  <data name="Lookup_State.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="ContactNullMessage" xml:space="preserve">
-    <value>Il contatto a cui stai associando non può essere nullo.</value>
+    <value>Il contatto a cui si crea un’associazione non può essere Null.</value>
+  </data>
+  <data name="DialogTitleAdd" xml:space="preserve">
+    <value>Associa un contatto</value>
+  </data>
+  <data name="DialogTitleEdit" xml:space="preserve">
+    <value>Associa un contatto</value>
+  </data>
+  <data name="lblDescription.Text" xml:space="preserve">
+    <value>Descrizione:</value>
   </data>
   <data name="lblIsA.Text" xml:space="preserve">
     <value>è un</value>
   </data>
-  <data name="Lookup_Name.PropertyHeader" xml:space="preserve">
-    <value>Nome</value>
+  <data name="lblOfTo.Text" xml:space="preserve">
+    <value>di/a</value>
   </data>
-  <data name="lblDescription.Text" xml:space="preserve">
-    <value>Descrizione:</value>
+  <data name="MSGCanNotAssociateToSelf" xml:space="preserve">
+    <value>Non puoi associare un contatto con se stesso.</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
   </data>
   <data name="Lookup_AccountName.PropertyHeader" xml:space="preserve">
     <value>Azienda</value>
@@ -144,28 +150,22 @@
   <data name="Lookup_City.PropertyHeader" xml:space="preserve">
     <value>Città</value>
   </data>
-  <data name="DialogTitleAdd" xml:space="preserve">
-    <value>Associa un Contatto</value>
+  <data name="Lookup_Email.PropertyHeader" xml:space="preserve">
+    <value>E-mail</value>
   </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>OK</value>
+  <data name="Lookup_Name.PropertyHeader" xml:space="preserve">
+    <value>Nome</value>
   </data>
-  <data name="Lookup_LastName.PropertyHeader" xml:space="preserve">
-    <value>Cognome</value>
+  <data name="Lookup_State.PropertyHeader" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Lookup_WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>Telefono ufficio</value>
   </data>
   <data name="Lookup_FirstName.PropertyHeader" xml:space="preserve">
     <value>Nome</value>
   </data>
-  <data name="Lookup_WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Tel. Ufficio</value>
-  </data>
-  <data name="lblOfTo.Text" xml:space="preserve">
-    <value>di/a</value>
-  </data>
-  <data name="Lookup_Email.PropertyHeader" xml:space="preserve">
-    <value>E-mail</value>
-  </data>
-  <data name="MSGCanNotAssociateToSelf" xml:space="preserve">
-    <value>Non puoi associare un contatto con se stesso.</value>
+  <data name="Lookup_LastName.PropertyHeader" xml:space="preserve">
+    <value>Cognome</value>
   </data>
 </root>

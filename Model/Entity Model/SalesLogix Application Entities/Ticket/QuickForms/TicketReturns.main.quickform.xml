@@ -1,11 +1,29 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5cadc01e-539f-4c28-9615-995cfbffc0bd" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5cadc01e-539f-4c28-9615-995cfbffc0bd" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-10-19T18:44:00.4764751Z">
   <ActiveControl />
   <ImagePath />
-  <LoadActions />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>2714d182-09a2-40bc-9bb0-a3d28172a7c0</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName />
+          <CSharpCodeSnippet>var ticket = (ITicket)BindingSource.Current;
+string punchedInUser = ticket.GetOtherUserPunchedIn();
+lnkAddReturn.Visible = string.IsNullOrEmpty(punchedInUser);</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
   <Name>TicketReturns</Name>
-  <ClientScriptInclude />
-  <OnClientShow />
+  <ClientScriptIncludes />
+  <ClientResourceKeys />
   <ExtendedProperties />
   <HelpFile />
   <ReadOnly>false</ReadOnly>
@@ -15,7 +33,6 @@
       <QFSDataGrid>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>grdReturns</ControlId>
@@ -69,6 +86,7 @@
             <Width>10</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
+            <DateOnly>false</DateOnly>
           </QFSDataDateTimeCol>
           <QFEditableCol>
             <StyleScheme />
@@ -101,6 +119,7 @@
             <Width>10</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
+            <DateOnly>false</DateOnly>
           </QFSDataDateTimeCol>
           <QFEditableCol>
             <StyleScheme />
@@ -149,7 +168,6 @@
       <QFDataSource>
         <Column>0</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <Visible>false</Visible>
         <HotKey>48</HotKey>
         <TabIndex>0</TabIndex>
@@ -172,7 +190,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -187,7 +204,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -202,7 +218,6 @@
       <QFLink>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lnkAddReturn</ControlId>

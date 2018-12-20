@@ -194,14 +194,7 @@ public partial class AddUsers : Sage.Platform.WebPortal.SmartParts.SmartPartInfo
             }
         }
 
-        int addCount2 = Convert.ToInt32(ddlQuantity.SelectedValue);
-        string plural = string.Empty;
-        if (addCount2 > 1)
-        {
-            plural = GetLocalResourceObject("plural").ToString();
-        }
-
-        string processMsg = string.Format(GetLocalResourceObject("lblProcessing.Text").ToString(), System.Convert.ToInt32(ddlQuantity.SelectedValue), lbxUserType.SelectedItem.Text, plural);
+        string processMsg = string.Format(GetLocalResourceObject("lblProcessing.Text").ToString(), System.Convert.ToInt32(ddlQuantity.SelectedValue), lbxUserType.SelectedItem.Text);
         btnOk.OnClientClick = string.Format("addUser_OkClick('{0}', '{1}','{2}')", divStep1.ClientID, divStep2.ClientID, Sage.Platform.WebPortal.PortalUtil.JavaScriptEncode(processMsg));
 
         div_Req.Style.Add("display", "none");

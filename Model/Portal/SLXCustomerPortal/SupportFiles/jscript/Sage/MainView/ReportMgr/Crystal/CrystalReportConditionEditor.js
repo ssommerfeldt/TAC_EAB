@@ -1,7 +1,10 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+require({cache:{
+'url:Sage/MainView/ReportMgr/Crystal/templates/CrystalReportConditionEditor.html':"[\r\n    '<div>',\r\n        '<div data-dojo-type=\"dijit.Dialog\" title=\"{%= $._nlsResources.dlgCrystalReportConditionDetails_Title %}\" dojoAttachPoint=\"_dialog\" dojoAttachEvent=\"onCancel:_dialog_OnCancel, onShow:_dialog_OnShow\" style=\"width: 300px\">',\r\n            '<div data-dojo-type=\"dijit.form.Form\" style=\"overflow-x:hidden\">',\r\n                \r\n                '<table cellspacing=\"10\">',\r\n                    \r\n                    '<tr>',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.cmbConditionType_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',                            \r\n                            '<select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cmbConditionType\" sortByLabel=\"false\" dojoAttachEvent=\"onChange:_cmbConditionType_OnChange\" style=\"width:150px\" >',\r\n                            '</select>',\r\n                        '</td>',\r\n                    '</tr>',\r\n\r\n                    '<tr dojoAttachPoint=\"trCurrentUser\">',\r\n                        '<td>',\r\n                            '&nbsp;',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<input data-dojo-type=\"dijit.form.CheckBox\" dojoAttachPoint=\"chkCurrentUser\" dojoAttachEvent=\"onChange:_chkCurrentUser_OnChange\" /> <label>{%= $._nlsResources.chkCurrentUser_Caption %}</label>',\r\n                        '</td>',                        \r\n                    '</tr>',\r\n                    \r\n                    '<tr dojoAttachPoint=\"trUser\">',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.lkpUser_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<div dojoType=\"dijit.layout.ContentPane\" label=\"{%= $._nlsResources.lkpUser_Caption %}\" dojoAttachPoint=\"contentPaneLkpUser\" class=\"remove-padding lookup-container\" style=\"width:150px; padding: 0px !important;\"></div>',                            \r\n                        '</td>',                        \r\n                    '</tr>',\r\n\r\n                    '<tr dojoAttachPoint=\"trGroup\">',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.lkpGroup_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<div dojoType=\"dijit.layout.ContentPane\" label=\"{%= $._nlsResources.lkpGroup_Caption %}\" dojoAttachPoint=\"contentPaneLkpGroup\" class=\"remove-padding lookup-container\" style=\"width:150px; padding: 0px !important;\"></div>',                            \r\n                        '</td>',\r\n                    '</tr>',                                                       \r\n\r\n\r\n                    '<tr dojoAttachPoint=\"trDateRange\">',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.cmbDateRange_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cmbDateRange\" dojoAttachEvent=\"onChange:_cmbDateRange_OnChange\" style=\"width:150px\" >',\r\n                                '<option value=\"DateRange\">{%= $._nlsResources.cmbDateRange_SpecificDates_Caption %}</option>',\r\n                                '<option value=\"ThisWeek\">{%= $._nlsResources.cmbDateRange_ThisWeek_Caption %}</option>',\r\n                                '<option value=\"ThisMonth\">{%= $._nlsResources.cmbDateRange_ThisMonth_Caption %}</option>',\r\n                                '<option value=\"ThisQuarter\">{%= $._nlsResources.cmbDateRange_ThisQuarter_Caption %}</option>',\r\n                                '<option value=\"ThisYear\">{%= $._nlsResources.cmbDateRange_ThisYear_Caption %}</option>',\r\n                                '<option value=\"LastWeek\">{%= $._nlsResources.cmbDateRange_LastWeek_Caption %}</option>',\r\n                                '<option value=\"LastMonth\">{%= $._nlsResources.cmbDateRange_LastMonth_Caption %}</option>',\r\n                                '<option value=\"LastQuarter\">{%= $._nlsResources.cmbDateRange_LastQuarter_Caption %}</option>',\r\n                                '<option value=\"LastYear\">{%= $._nlsResources.cmbDateRange_LastYear_Caption %}</option>',\r\n                                '<option value=\"MonthToDate\">{%= $._nlsResources.cmbDateRange_MonthToDate_Caption %}</option>',\r\n                                '<option value=\"QuarterToDate\">{%= $._nlsResources.cmbDateRange_QuarterToDate_Caption %}</option>',\r\n                                '<option value=\"YearToDate\">{%= $._nlsResources.cmbDateRange_YearToDate_Caption %}</option>',\r\n                            '</select>',\r\n                        '</td>',\r\n                    '</tr>',\r\n                    '<tr dojoAttachPoint=\"trFromDate\" >',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.dtFromDate_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" dojoAttachPoint=\"dtFromDate\" displayDate=\"true\" displayTime=\"false\" label=\"{%= $._nlsResources.dtFromDate_Caption %}\" style=\"width:150px\"></div>',\r\n                        '</td>',\r\n                    '</tr>',\r\n                    '<tr dojoAttachPoint=\"trToDate\" >',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.dtToDate_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" dojoAttachPoint=\"dtToDate\" displayDate=\"true\" displayTime=\"false\" label=\"{%= $._nlsResources.dtToDate_Caption %}\" style=\"width:150px\"></div>',\r\n                        '</td>',\r\n                    '</tr>',\r\n\r\n\r\n\r\n                    '<tr dojoAttachPoint=\"trTable\">',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.cmbTable_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cmbTables\" style=\"width:150px\" data-dojo-props=\"maxHeight:100\" dojoAttachEvent=\"onChange:_cmbTables_OnChange\" >',\r\n                            '</select>',\r\n                        '</td>',\r\n                    '</tr>',\r\n\r\n\r\n                    '<tr dojoAttachPoint=\"trField\">',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.cmbField_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cmbFields\" style=\"width:150px\" data-dojo-props=\"maxHeight:100\" dojoAttachEvent=\"onChange:_cmbFields_OnChange\" >',\r\n                            '</select>',\r\n                        '</td>',\r\n                    '</tr>',\r\n\r\n                    '<tr dojoAttachPoint=\"trOperator\">',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.cmbOperator_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<select dojoType=\"dijit.form.Select\" dojoAttachPoint=\"cmbOperators\" sortByLabel=\"false\" style=\"width:150px\" dojoAttachEvent=\"onChange:_cmbOperators_OnChange\" >',\r\n                            '</select>',\r\n                        '</td>',\r\n                    '</tr>',\r\n\r\n                    '<tr dojoAttachPoint=\"trStringValue1\">',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.txtValue_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<input type=\"text\" dojoAttachPoint=\"txtStringValue1\" required=\"false\" dojoType=\"dijit.form.TextBox\" style=\"width:150px\" />',\r\n                        '</td>',\r\n                    '</tr>',  \r\n\r\n                    '<tr dojoAttachPoint=\"trStringValue2\">',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.txtValue2_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<input type=\"text\" dojoAttachPoint=\"txtStringValue2\" required=\"false\" dojoType=\"dijit.form.TextBox\" style=\"width:150px\" />',\r\n                        '</td>',\r\n                    '</tr>',  \r\n\r\n                    '<tr dojoAttachPoint=\"trNumericValue1\">',\r\n                        '<td>',\r\n                            '<label dojoAttachPoint=\"lblNumericValue1\">{%= $._nlsResources.txtValue_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<input type=\"text\" dojoAttachPoint=\"txtNumericValue1\" required=\"false\" dojoType=\"Sage.UI.Controls.Numeric\" style=\"width:150px\" />',\r\n                        '</td>',\r\n                    '</tr>',  \r\n\r\n                    '<tr dojoAttachPoint=\"trNumericValue2\">',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.txtNumericValueTo_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<input type=\"text\" dojoAttachPoint=\"txtNumericValue2\" required=\"false\" dojoType=\"Sage.UI.Controls.Numeric\" style=\"width:150px\" />',\r\n                        '</td>',\r\n                    '</tr>',  \r\n\r\n                    '<tr dojoAttachPoint=\"trDateValue1\" >',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.dtFromDate_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" dojoAttachPoint=\"dtDateValue1\" displayDate=\"true\" displayTime=\"true\" label=\"{%= $._nlsResources.dtFromDate_Caption %}\" style=\"width:150px\"></div>',\r\n                        '</td>',\r\n                    '</tr>',\r\n                    '<tr dojoAttachPoint=\"trDateValue2\" >',\r\n                        '<td>',\r\n                            '<label>{%= $._nlsResources.dtToDate_Caption %}:</label>',\r\n                        '</td>',\r\n                        '<td>',\r\n                            '<div shouldPublishMarkDirty=\"false\" dojoType=\"Sage.UI.Controls.DateTimePicker\" dojoAttachPoint=\"dtDateValue2\" displayDate=\"true\" displayTime=\"true\" label=\"{%= $._nlsResources.dtToDate_Caption %}\" style=\"width:150px\"></div>',\r\n                        '</td>',\r\n                    '</tr>',\r\n\r\n                    \r\n                '</table>',\r\n                \r\n                '<div align=\"right\" style=\"margin-top:10px\">',\r\n                    '<div data-dojo-type=\"dijit.form.Button\"dojoAttachPoint=\"cmdOK\" dojoAttachEvent=\"onClick:_cmdOK_OnClick\">{%= $._nlsResources.cmdOK_Caption %}</div>',\r\n                    '<div data-dojo-type=\"dijit.form.Button\" dojoAttachPoint=\"cmdCancel\" dojoAttachEvent=\"onClick:_cmdCancel_OnClick\" style=\"margin-left:5px;\">{%= $._nlsResources.cmdCancel_Caption %}</div>',\r\n                '</div>',\r\n            '</div>',\r\n        '</div>',\r\n    '</div>'\r\n]"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ReportMgr/Crystal/CrystalReportConditionEditor", [
     'dojo/_base/declare',
     'dojo/string',
+    'dojo/number',
     'dojo/_base/array',
     'dojo/topic',
     'dojo/i18n!./nls/CrystalReportConditionEditor',
@@ -23,6 +26,7 @@ define([
 function (
     declare,
     dojoString,
+    dojoNumber,
     dojoArray,
     topic,
     nlsResources,
@@ -389,19 +393,14 @@ function (
                 id: '_lkpConditionUser',
                 structure: [
                     {
-                        cells:
-                            [
-                                {
-                                    name: nlsResources.txtName,
-                                    field: 'UserInfo.UserName',
-                                    sortable: true,
-                                    width: "400px",
-                                    editable: false,
-                                    propertyType: "System.String",
-                                    excludeFromFilters: false,
-                                    defaultValue: ""
-                                }
-                            ]
+                        label: nlsResources.txtName,
+                        field: 'UserInfo.UserName',
+                        sortable: true,
+                        width: "400px",
+                        editable: false,
+                        propertyType: "System.String",
+                        excludeFromFilters: false,
+                        defaultValue: ""
                     }
                 ],
                 gridOptions: {
@@ -434,24 +433,19 @@ function (
         * Creates the group lookup.
         **/
         _createGroupLookup: function () {
-            var familyCondition = dojoString.substitute("upper(family) eq '${0}' or upper(family) eq '${1}'", [this._reportMetadata.family.toUpperCase(), this._reportMetadata.mainTable.toUpperCase()]);
+            var familyCondition = dojoString.substitute("(upper(family) eq '${0}' or upper(family) eq '${1}')", [this._reportMetadata.family.toUpperCase(), this._reportMetadata.mainTable.toUpperCase()]);
             var groupLookupConfig = {
                 id: '_lkpConditionGroup',
                 structure: [
                     {
-                        cells:
-                            [
-                                {
-                                    name: nlsResources.txtName,
-                                    field: 'displayName',
-                                    sortable: true,
-                                    width: "400px",
-                                    editable: false,
-                                    propertyType: "System.String",
-                                    excludeFromFilters: false,
-                                    defaultValue: ""
-                                }
-                            ]
+                        label: nlsResources.txtName,
+                        field: 'displayName',
+                        sortable: true,
+                        width: "400px",
+                        editable: false,
+                        propertyType: "System.String",
+                        excludeFromFilters: false,
+                        defaultValue: ""
                     }
                 ],
                 gridOptions: {
@@ -466,7 +460,8 @@ function (
                     include: [],
                     select: ['displayName', 'name', 'family'],
                     sort: [{ attribute: 'displayName', descending: false }],
-                    service: SDataServiceRegistry.getSDataService('system', false, true, false)
+                    service: SDataServiceRegistry.getSDataService('system', false, true, false),
+                    contractName: 'system'
                 },
                 isModal: true,
                 preFilters: [],
@@ -648,6 +643,7 @@ function (
                     this._entity.dataType = Enumerations.FieldDataTypes.String;
                     break;
                 case Enumerations.ReportConditionType.Query:
+
                     var operator = this.cmbOperators.value;
                     this._entity.table = this.cmbTables.value;
                     this._entity.field = this.cmbFields.value;
@@ -656,12 +652,17 @@ function (
                     this._entity.dataType = fieldDataType;
                     switch (fieldDataType) {
                         case Enumerations.FieldDataTypes.Numeric:
+                            // use dojoNumber.parse to get a "standard number" and not a localized one.
+                            var commaStrippedValue1 = dojoNumber.parse(this.txtNumericValue1.focusNode.textbox.value);
+
+
                             if (operator == Enumerations.ReportConditionOperator.IsInTheRange) {
-                                this._entity.fromRange = parseInt(this.txtNumericValue1.focusNode.textbox.value);//todo: check future implementation of get('value')
-                                this._entity.toRange = parseInt(this.txtNumericValue2.focusNode.textbox.value);//todo: check future implementation of get('value')
+                                var commaStrippedValue2 = dojoNumber.parse(this.txtNumericValue2.focusNode.textbox.value);
+                                this._entity.fromRange = parseInt(commaStrippedValue1, 10);//todo: check future implementation of get('value')
+                                this._entity.toRange = parseInt(commaStrippedValue2, 10);//todo: check future implementation of get('value')
                             }
                             else {
-                                this._entity.value = parseInt(this.txtNumericValue1.focusNode.textbox.value);//todo: check future implementation of get('value')
+                                this._entity.value = parseInt(commaStrippedValue1, 10);//todo: check future implementation of get('value')
                             }
                             break;
                         case Enumerations.FieldDataTypes.DateTime:
@@ -722,7 +723,9 @@ function (
                     ReportManagerUtility.setDomNodeVisible(this.trStringValue1, true);
                     break;
                 default:
-                    console.error("Unsupported field type: " + fieldDataType);
+                    this._initializeFieldsDropdown();
+                    this._initializeOperatorsDropdown();
+                    ReportManagerUtility.setDomNodeVisible(this.trStringValue1, true);
             }
         }
     });

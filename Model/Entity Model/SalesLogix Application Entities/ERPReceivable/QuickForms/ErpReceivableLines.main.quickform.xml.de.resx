@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Description.Caption" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="ErpStatus.Caption" xml:space="preserve">
+    <value>ERP-Status</value>
+  </data>
+  <data name="ERPLineNumber.Caption" xml:space="preserve">
+    <value>ERP-Positionsnummer</value>
+  </data>
+  <data name="Erplinetotal.Caption" xml:space="preserve">
+    <value>ERP-Positionssumme</value>
+  </data>
+  <data name="Product.Caption" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="grdERPReceivableItems.466e2e3d-f893-4c4a-8485-3a5c2471998c.ColumnHeading" xml:space="preserve">
+    <value>ERP-Positionsnummer</value>
+  </data>
+  <data name="grdERPReceivableItems.0545e9ab-f24f-4ffe-800d-13c076101861.ColumnHeading" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="grdERPReceivableItems.effe1b7b-a230-4277-b586-4a3d1622075b.ColumnHeading" xml:space="preserve">
+    <value>ERP-Positionsnummer</value>
+  </data>
+  <data name="grdReceivables.9fa7b629-d736-49c6-a737-d01c65148552.ColumnHeading" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="grdReceivables.9fa7b629-d736-49c6-a737-d01c65148552.Text" xml:space="preserve">
+    <value>Ansicht</value>
+  </data>
+  <data name="grdReceivables.c326b901-c01f-41ec-a57b-bf92b0e1535d.ColumnHeading" xml:space="preserve">
+    <value>ERP Positionsnr.</value>
+  </data>
+  <data name="grdReceivables.74afc66f-158d-4e0b-b7a5-6ca37632f05c.ColumnHeading" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="grdReceivables.bbf5eaba-6ada-46bd-960b-110c56056dca.ColumnHeading" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="grdReceivables.c99f25c3-ba6b-4f57-9b1a-a40c9a5f9eb3.ColumnHeading" xml:space="preserve">
+    <value>ERP-Positionssumme</value>
+  </data>
+  <data name="grdReceivables.8df520cc-d38b-47d5-9968-147b2b27deab.ColumnHeading" xml:space="preserve">
+    <value>ERP-Status</value>
+  </data>
+  <data name="grdReceivables.c8c32c53-ecc3-498f-97ce-73309999aad9.ColumnHeading" xml:space="preserve">
+    <value>ERP Positionsnr.</value>
+  </data>
+  <data name="grdReceivables.a28f24b6-c948-40a1-9bed-52bc9ee7e4d5.ColumnHeading" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="d8fbc5cb-b5a1-4343-8c39-1d71281c6e8c.DialogTitleOverride" xml:space="preserve">
+    <value>Forderungsposition - Details</value>
+  </data>
+  <data name="grdReceivables.a28f24b6-c948-40a1-9bed-52bc9ee7e4d5.Text" xml:space="preserve">
+    <value>Ansicht</value>
+  </data>
+  <data name="grdReceivables.d46940be-5784-4af2-979e-e22e9cbf8120.ColumnHeading" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="grdReceivables.cf4851d3-761d-4f36-a54b-0620606b6d1d.ColumnHeading" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="grdReceivables.533f2f7a-c5d2-4050-83a5-b7829cdea8e6.ColumnHeading" xml:space="preserve">
+    <value>Forderungsbetrag</value>
+  </data>
+  <data name="grdReceivables.2600d473-1d83-4883-a327-2a027cb947bb.ColumnHeading" xml:space="preserve">
+    <value>ERP-Status</value>
+  </data>
+  <data name="grdReceivables.9fdd4286-6964-47d9-bcb4-adc2b178800d.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="grdReceivables.f518d668-cc70-48a1-b3c8-de134d775b8c.ColumnHeading" xml:space="preserve">
+    <value>Firma</value>
+  </data>
+  <data name="grdReceivables.f6acfcb4-a989-4a2c-a1a4-042b517dc9d6.ColumnHeading" xml:space="preserve">
+    <value>ERP-Zahlungsbedingungen</value>
+  </data>
+  <data name="grdReceivables.8a2bcb9d-5135-435e-9686-d50185fed7ac.ColumnHeading" xml:space="preserve">
+    <value>Dokumentdatum</value>
+  </data>
+  <data name="grdReceivables.76eb8f2b-46b6-4344-9c4a-865d107e5729.ColumnHeading" xml:space="preserve">
+    <value>Zahlungsbedingungen</value>
+  </data>
+  <data name="grdReceivables.f8c34006-ca61-4397-ab37-bc05115805a7.ColumnHeading" xml:space="preserve">
+    <value>Dokumentdatum</value>
+  </data>
+  <data name="grdReceivables.6ff61d22-8d7b-4631-bf78-4dceb375dd7a.ColumnHeading" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="grdReceivables.c3a1960d-814c-4045-84f0-e12465044471.ColumnHeading" xml:space="preserve">
+    <value>Währungscode</value>
+  </data>
+  <data name="grdReceivables.9420ec6f-8770-446a-b881-e5f323342bc6.ColumnHeading" xml:space="preserve">
+    <value>ERP-Positionsnummer</value>
+  </data>
+  <data name="grdReceivables.dc630214-6abb-4fe5-937f-a544cea8a0e8.ColumnHeading" xml:space="preserve">
+    <value>Positionsnummer</value>
+  </data>
+</root>

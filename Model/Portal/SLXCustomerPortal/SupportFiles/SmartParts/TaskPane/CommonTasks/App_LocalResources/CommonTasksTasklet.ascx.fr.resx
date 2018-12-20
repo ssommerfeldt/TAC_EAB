@@ -117,133 +117,166 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TaskPickList_ExportPickList" xml:space="preserve">
-    <value>Exporter une liste de sélection</value>
-  </data>
-  <data name="ReplaceOnAllTeamsCaption" xml:space="preserve">
-    <value>Remplacer dans TOUTES les équipes</value>
-  </data>
-  <data name="TaskText_AddNewPickList" xml:space="preserve">
-    <value>Nouvelle liste de sélection</value>
-  </data>
-  <data name="ReplaceOwner_DialogCaption" xml:space="preserve">
-    <value>Remplacer le propriétaire</value>
-  </data>
-  <data name="TaskText_Export" xml:space="preserve">
-    <value>Exporter vers un fichier</value>
-  </data>
-  <data name="TaskText_SetUsersToStandardRole_Warning" xml:space="preserve">
-    <value>Cette action va attribuer le rôle Utilisateur Standard par défaut à tous les utilisateurs actifs. Voulez-vous continuer ?</value>
-  </data>
-  <data name="TaskText_SaveAsNew" xml:space="preserve">
-    <value>Enregistrer les enregistrements en tant que groupe</value>
-  </data>
-  <data name="TaskText_Remove" xml:space="preserve">
-    <value>Supprimer du groupe</value>
-  </data>
-  <data name="TaskText_Email" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
-  </data>
-  <data name="ExportToFile_BoolenNo" xml:space="preserve">
-    <value>Non</value>
-  </data>
-  <data name="TaskText_SetUsersToStandardRole" xml:space="preserve">
-    <value>Configurer tous les utilisateurs sur Rôle standard</value>
-  </data>
-  <data name="TaskText_MailMerge" xml:space="preserve">
-    <value>Fusion et publipostage</value>
-  </data>
-  <data name="CopyProfileCaption" xml:space="preserve">
-    <value>Copier le profil</value>
-  </data>
-  <data name="TaskText_PhoneCall" xml:space="preserve">
-    <value>Nouvel appel téléphonique</value>
-  </data>
-  <data name="TaskText_WriteEmailToGroupSelection" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
-  </data>
-  <data name="EditResponse_DialogCaption" xml:space="preserve">
-    <value>Modifier la réponse</value>
-  </data>
-  <data name="CopyUserCaption" xml:space="preserve">
-    <value>Copie util.</value>
-  </data>
-  <data name="TaskText_ResponseToCampaign" xml:space="preserve">
-    <value>Ajouter une réponse à la campagne</value>
-  </data>
-  <data name="SalesOrder_Status_OrderedConfirmed" xml:space="preserve">
-    <value>Commandé/Confirmé</value>
-  </data>
-  <data name="TaskText_ToDo" xml:space="preserve">
-    <value>Nouvelle tâche à faire</value>
-  </data>
-  <data name="CopyDepartmentCaption" xml:space="preserve">
-    <value>Copier le service</value>
+  <data name="ActionResource1.Text" xml:space="preserve">
+    <value>Action</value>
   </data>
   <data name="AddResponse_DialogCaption" xml:space="preserve">
     <value>Ajouter une réponse</value>
   </data>
-  <data name="ExportToFile_DialogTitle" xml:space="preserve">
-    <value>Exporter</value>
-  </data>
-  <data name="ExportToFile_OptionTab" xml:space="preserve">
-    <value>Délimitation par des tabulations (recommandé pour Microsoft Excel)</value>
-  </data>
-  <data name="TaskPickList_AddPickList" xml:space="preserve">
-    <value>Ajouter une liste de sélection</value>
-  </data>
-  <data name="Item_Separator" xml:space="preserve">
-    <value>&lt;hr /&gt;</value>
-  </data>
-  <data name="TaskText_Promote" xml:space="preserve">
-    <value>Promouvoir vers le tableau de bord</value>
-  </data>
-  <data name="TaskText_Meeting" xml:space="preserve">
-    <value>Nouvelle réunion</value>
-  </data>
-  <data name="SelectionText_DisplayCaption" xml:space="preserve">
-    <value>enregistrement(s) sélectionné(s)</value>
+  <data name="AddToTeamCaption" xml:space="preserve">
+    <value>Ajouter à l'équipe</value>
   </data>
   <data name="ClearText_DisplayCaption" xml:space="preserve">
     <value>Effacer</value>
   </data>
+  <data name="ConfirmCopyDepartmentMessage" xml:space="preserve">
+    <value>Souhaitez-vous vraiment copier le service sélectionné ?</value>
+  </data>
   <data name="ConfirmCopyTeamMessage" xml:space="preserve">
-    <value>Voulez-vous vraiment copier l'équipe sélectionnée ?</value>
-  </data>
-  <data name="CopyTeamCaption" xml:space="preserve">
-    <value>Copier l'équipe</value>
-  </data>
-  <data name="TaskText_AddNote" xml:space="preserve">
-    <value>Ajouter une note</value>
-  </data>
-  <data name="TaskText_DetailReport" xml:space="preserve">
-    <value>Rapport détaillé</value>
-  </data>
-  <data name="TaskText_AddToGroup" xml:space="preserve">
-    <value>Ajouter au groupe</value>
+    <value>Souhaitez-vous vraiment copier l'équipe sélectionnée ?</value>
   </data>
   <data name="ConfirmRemoveFromAllTeamsMsg" xml:space="preserve">
     <value>Voulez-vous vraiment supprimer les membres sélectionnés de toutes les équipes ?</value>
   </data>
-  <data name="RemoveFromAllTeamsCaption" xml:space="preserve">
-    <value>Supprimer de TOUTES les équipes</value>
+  <data name="CopyDepartmentCaption" xml:space="preserve">
+    <value>Copier le service</value>
   </data>
-  <data name="ActionResource1.Text" xml:space="preserve">
-    <value>Action</value>
+  <data name="CopyProfileCaption" xml:space="preserve">
+    <value>Copier le profil</value>
   </data>
-  <data name="TaskText_SalesOrder" xml:space="preserve">
-    <value>Ajouter un bon de commande</value>
+  <data name="CopyTeamCaption" xml:space="preserve">
+    <value>Copier l'équipe</value>
   </data>
-  <data name="AddToTeamCaption" xml:space="preserve">
-    <value>Ajouter à l'équipe</value>
+  <data name="CopyUserCaption" xml:space="preserve">
+    <value>Copier utilisateur</value>
+  </data>
+  <data name="EditResponse_DialogCaption" xml:space="preserve">
+    <value>Modifier la réponse</value>
+  </data>
+  <data name="Error_MapJavascriptBlocked" xml:space="preserve">
+    <value>Impossible d'afficher la fenêtre de plan - assurez-vous que le blocage des fenêtres contextuelles (pop-up) est désactivé</value>
+  </data>
+  <data name="ExportToFile_BoolenNo" xml:space="preserve">
+    <value>Non</value>
   </data>
   <data name="ExportToFile_BoolenYes" xml:space="preserve">
     <value>Oui</value>
   </data>
-  <data name="ConfirmCopyDepartmentMessage" xml:space="preserve">
-    <value>Voulez-vous vraiment copier le service sélectionné ?</value>
+  <data name="ExportToFile_DialogTitle" xml:space="preserve">
+    <value>Exporter</value>
   </data>
   <data name="ExportToFile_FileName" xml:space="preserve">
     <value>_slx_exported_selections</value>
+  </data>
+  <data name="ExportToFile_OptionTab" xml:space="preserve">
+    <value>Délimitation par des tabulations (recommandé pour Microsoft Excel)</value>
+  </data>
+  <data name="Item_Separator" xml:space="preserve">
+    <value>&lt;hr /&gt;</value>
+  </data>
+  <data name="MapGroup_DialogCaption" xml:space="preserve">
+    <value>Afficher sur la carte</value>
+  </data>
+  <data name="ProximitySearch_DialogCaption" xml:space="preserve">
+    <value>Recherche Contour</value>
+  </data>
+  <data name="RemoveFromAllTeamsCaption" xml:space="preserve">
+    <value>Supprimer de toutes les équipes</value>
+  </data>
+  <data name="ReplaceOnAllTeamsCaption" xml:space="preserve">
+    <value>Remplacer dans toutes les équipes</value>
+  </data>
+  <data name="ReplaceOwner_DialogCaption" xml:space="preserve">
+    <value>Remplacer le propriétaire</value>
+  </data>
+  <data name="SalesOrder_Status_OrderedConfirmed" xml:space="preserve">
+    <value>Commandé/confirmé</value>
+  </data>
+  <data name="SelectionText_DisplayCaption" xml:space="preserve">
+    <value>enregistrement(s) sélectionné(s)</value>
+  </data>
+  <data name="TaskPickList_AddPickList" xml:space="preserve">
+    <value>Ajouter une liste de sélection</value>
+  </data>
+  <data name="TaskPickList_ExportPickList" xml:space="preserve">
+    <value>Exporter une liste de sélection</value>
+  </data>
+  <data name="TaskPlace_AddPlace" xml:space="preserve">
+    <value>Ajouter un emplacement</value>
+  </data>
+  <data name="TaskText_AccountNearby" xml:space="preserve">
+    <value>Comptes à proximité</value>
+  </data>
+  <data name="TaskText_AddNewPickList" xml:space="preserve">
+    <value>Nouvelle liste de sélection</value>
+  </data>
+  <data name="TaskText_AddNote" xml:space="preserve">
+    <value>Ajouter une note</value>
+  </data>
+  <data name="TaskText_AddToGroup" xml:space="preserve">
+    <value>Ajouter au groupe</value>
+  </data>
+  <data name="TaskText_BulkActionUpdate" xml:space="preserve">
+    <value>Mettre à jour</value>
+  </data>
+  <data name="TaskText_BulkDelete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="TaskText_ContactNearby" xml:space="preserve">
+    <value>Contacts à proximité</value>
+  </data>
+  <data name="TaskText_CopyUserProfile" xml:space="preserve">
+    <value>Copier le profil utilisateur</value>
+  </data>
+  <data name="TaskText_DetailReport" xml:space="preserve">
+    <value>Rapport détaillé</value>
+  </data>
+  <data name="TaskText_Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="TaskText_Export" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="TaskText_Import" xml:space="preserve">
+    <value>Importer</value>
+  </data>
+  <data name="TaskText_MailMerge" xml:space="preserve">
+    <value>Fusion et publipostage</value>
+  </data>
+  <data name="TaskText_MapGroup" xml:space="preserve">
+    <value>Afficher sur la carte</value>
+  </data>
+  <data name="TaskText_Meeting" xml:space="preserve">
+    <value>Nouveau rendez-vous</value>
+  </data>
+  <data name="TaskText_PhoneCall" xml:space="preserve">
+    <value>Nouvel appel téléphonique</value>
+  </data>
+  <data name="TaskText_Promote" xml:space="preserve">
+    <value>Promouvoir vers le tableau de bord</value>
+  </data>
+  <data name="TaskText_ProximitySearch" xml:space="preserve">
+    <value>Recherche Contour</value>
+  </data>
+  <data name="TaskText_Remove" xml:space="preserve">
+    <value>Supprimer du groupe</value>
+  </data>
+  <data name="TaskText_ResponseToCampaign" xml:space="preserve">
+    <value>Ajouter une réponse à la campagne</value>
+  </data>
+  <data name="TaskText_SaveAsNew" xml:space="preserve">
+    <value>Enregistrer les enregistrements en tant que groupe</value>
+  </data>
+  <data name="TaskText_SetUsersToStandardRole" xml:space="preserve">
+    <value>Configurer tous les utilisateurs sur Rôle standard</value>
+  </data>
+  <data name="TaskText_SetUsersToStandardRole_Warning" xml:space="preserve">
+    <value>Cette action va attribuer le rôle Utilisateur Standard par défaut à tous les utilisateurs actifs. Voulez-vous continuer ?</value>
+  </data>
+  <data name="TaskText_ToDo" xml:space="preserve">
+    <value>Nouvelle tâche à faire</value>
+  </data>
+  <data name="TaskText_WriteEmailToGroupSelection" xml:space="preserve">
+    <value>E-mail</value>
   </data>
 </root>

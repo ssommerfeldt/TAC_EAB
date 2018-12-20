@@ -16,7 +16,6 @@
         <ColumnSpan>3</ColumnSpan>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lnkSalesOder</ControlId>
@@ -55,7 +54,6 @@
       <QFSLXPickList>
         <Column>0</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>pklType</ControlId>
@@ -97,6 +95,7 @@
         <MustExistInList>true</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -104,7 +103,6 @@
       <QFSLXPickList>
         <Column>0</Column>
         <Row>2</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>pklStatus</ControlId>
@@ -147,6 +145,7 @@
         <MustExistInList>true</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -154,7 +153,6 @@
       <QFDateTimePicker>
         <Column>0</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dtpDateRequested</ControlId>
@@ -199,7 +197,6 @@
       <QFDateTimePicker>
         <Column>0</Column>
         <Row>4</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dtpDatePromised</ControlId>
@@ -244,7 +241,6 @@
       <QFLink>
         <Column>1</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lnkAccount</ControlId>
@@ -283,7 +279,6 @@
       <QFLink>
         <Column>1</Column>
         <Row>2</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lnkOpportunity</ControlId>
@@ -322,7 +317,6 @@
       <QFDateTimePicker>
         <Column>1</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dtpLastUpdate</ControlId>
@@ -368,7 +362,6 @@
       <QFSLXUser>
         <Column>1</Column>
         <Row>4</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>usrAccountManager</ControlId>
@@ -410,7 +403,6 @@
       <QFAggregateControl>
         <Column>2</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>agcProducts</ControlId>
@@ -466,7 +458,6 @@
       <QFSLXCurrency>
         <Column>2</Column>
         <Row>2</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>curSubTotal</ControlId>
@@ -508,7 +499,6 @@
       <QFSLXCurrency>
         <Column>2</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>curGrandTotal</ControlId>
@@ -552,7 +542,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>c55b990132f49dcb767b43a8158e34a</ControlId>
@@ -567,7 +556,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dd2adc53a4b486db7d5a62d2ad0b36a</ControlId>

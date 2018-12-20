@@ -1,4 +1,4 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 /*  ------------------------------------------------------------------------                 
 Saleslogix Desktop Integration
 Sage.MailMerge.Loader 
@@ -8,7 +8,7 @@ This service class is used to set up mail merge and to load the mail
 merge service on demand.
 ------------------------------------------------------------------------ */
 
-define([
+define("Sage/MailMerge/Loader", [
         "Sage/Utility/ErrorHandler",
         "Sage/MailMerge/Helper",
         "Sage/MailMerge/MenuHelper",
@@ -86,12 +86,8 @@ define([
         var oMenuHelper = new MenuHelper();
         var isWindows = (navigator.userAgent.indexOf("Win") != -1);
         if (isWindows && Sage && Sage.Services) {
-            if (!Sage.gears) {
-                if (typeof initGears === "function") {
-                    initGears();
-                }
-            }
-            if (Sage.gears && Sage.gears.factory) {
+            
+            if (typeof slxmm !== "undefined" && slxmm && slxmm.com) {
                 dojo.addOnLoad(function () {
                     oMenuHelper.attachWriteMenuPopulator();
                 });
@@ -101,14 +97,14 @@ define([
 
         if (bRemoveMenu) {
             try {
-                if (!Sage.gears) {
+                if (typeof slxmm === "undefined" || !slxmm) {
                     if (window.console) {
-                        console.debug("Sage.gears was [not] found."); /*DNL*/
+                        console.debug("slxmm was [not] found."); /*DNL*/
                     }
                 }
-                if (Sage.gears && !Sage.gears.factory) {
+                if (typeof slxmm !== "undefined" && slxmm && !slxmm.com) {
                     if (window.console) {
-                        console.debug("Sage.gears.factory was [not] found."); /*DNL*/
+                        console.debug("slxmm.com was [not] found."); /*DNL*/
                     }
                 }
             } catch (e) {

@@ -1,3 +1,1 @@
-define((
-{ editText: 'Edit' }
-));
+define("Sage/UI/Columns/nls/en/SlxEdit", { editText: 'Edit' });

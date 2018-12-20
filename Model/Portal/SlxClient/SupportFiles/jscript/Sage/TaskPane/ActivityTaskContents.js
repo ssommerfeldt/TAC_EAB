@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/ActivityTaskContents", [
         'dijit/_Widget',
         'Sage/_Templated',
         'dojo/_base/declare'
@@ -27,7 +27,7 @@ function(
         _clearSelection: function(e){
             var listPanel = dijit.byId('list');
             if (listPanel) {
-                 listPanel._listGrid.selection.clear();
+                 listPanel.clearSelection();
              }            
           }
 

@@ -93,13 +93,13 @@
          </tr>
          <tr>
             <td>
-                <div class="slxlabel  alignleft checkbox">
+                <div class="alignleft checkbox">
                     <SalesLogix:SLXCheckBox runat="server" ID="chkCreateFromProfile" CssClass="checkbox" Text="<%$ resources: chkCreateFromProfile.Caption %>" shouldPublishMarkDirty="false" AutoPostBack="true" LabelPlacement="right" />
                 </div>
             </td>
             <td style="padding-left: 0">
                 <div>
-                    <fieldset class="slxlabel radio" style="padding-left: 0">
+                    <fieldset class="radio" style="padding-left: 0">
                         <asp:RadioButtonList runat="server" ID="rdoProfileFrom" RepeatDirection="Vertical" AutoPostBack="true" CellPadding="0" CssClass="radioGroup">
                             <asp:ListItem Text="<%$ resources: rdoProfileFrom_item0.Text %>" Value="T" Selected="True"/>
                             <asp:ListItem Text="<%$ resources: rdoProfileFrom_item1.Text %>" Value="U"/>
@@ -238,15 +238,15 @@
 </div>
 
 <script type="text/javascript" language="javascript">
-    dojo.require("Sage.UI.Dialogs");
+    require(['Sage/UI/Dialogs'], function (Dialogs) {
+        function addUser_OkClick(divStep1Id, divStep2Id, message) {
+            var opts = { title: "Saleslogix", pct: 10, maximum: 100, width: 325, height: 125, showmessage: true, message: message, canclose: false, indeterminate: true };
+            Dialogs.showProgressBar(opts);
+        }
 
-    function addUser_OkClick(divStep1Id, divStep2Id, message) {
-        var opts = { title: "Saleslogix", pct: 10, maximum: 100, width: 325, height: 125, showmessage: true, message: message, canclose: false, indeterminate: true };
-        Sage.UI.Dialogs.showProgressBar(opts);
-    }
-
-    function hideMask() {
-        Sage.UI.Dialogs.closeProgressBar();
-    }
-    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(hideMask);
+        function hideMask() {
+            Dialogs.closeProgressBar();
+        }
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(hideMask);
+    });
 </script>

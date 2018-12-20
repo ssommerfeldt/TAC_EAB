@@ -1,0 +1,8 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRangeEntityFilter" id="a1131410-79d7-4ce5-8086-4cf64ac55521" lastModifiedUtc="2014-12-14T19:25:40.8195971Z" filterName="InvoiceDate" propertyName="ErpDocumentDate" characters="1">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRangeEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <ranges id="b6c1dd94-f09b-49ae-8302-af547959dae2" rangeName="SlxMonthly" lower="-6" upper="0" />
+</entityFilter>

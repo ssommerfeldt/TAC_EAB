@@ -1,4 +1,4 @@
-dojo.require("Sage.UI.Dialogs");
+//dojo.require("Sage.UI.Dialogs");
 
 var currentCompleteCheckboxCtrl = null;
 var luUserEventSubscribed = false;
@@ -33,19 +33,19 @@ function ProcessAction_Execute() {
     sp_ShowProcessView();
     var action = this;
     if ((this.xml == null) && (this.state == 0)) {
-        this.LoadXML(function(result){
-                
-             if (result == null) {
-               action.WebServiceErrorHandler(result);
-               return;
-             }
-             action.WebServiceHandler(result);
-             action.Execute(); 
-       });
-        
+        this.LoadXML(function (result) {
+
+            if (result == null) {
+                action.WebServiceErrorHandler(result);
+                return;
+            }
+            action.WebServiceHandler(result);
+            action.Execute();
+        });
+
         return;
     }
-   
+
     if ((this.selectedContactId == null) && (this.state == 1)) {
         this.ResolveContact();
     }
@@ -57,7 +57,7 @@ function ProcessAction_Execute() {
     if ((this.IsInit == true) && (this.state == 3)) {
         this.DoAction();
     }
-   
+
 }
 
 function ProcessAction_Init() {
@@ -76,7 +76,7 @@ function ProcessAction_DoAction() {
         var actionContextCtrl = document.getElementById(spCtrlIDs.actionContextCtrlId);
         actionContextCtrl.value = this.stepId;
         sp_InvokeClickEvent(cmdCtrl);
-    } 
+    }
 }
 
 function ProcessAction_LoadXML(callback) {
@@ -87,7 +87,7 @@ function ProcessAction_LoadXML(callback) {
             callback(result);
         }
     });
-   
+
 }
 
 function ProcessAction_WebServiceHandler(result) {
@@ -102,7 +102,7 @@ function ProcessAction_WebServiceErrorHandler(result) {
     if (this.state == 0) {
         this.ShowStatus('Error getting XML !' + result);
         this.Finish();
-    } 
+    }
 }
 
 function ProcessAction_ResolveContact() {
@@ -185,8 +185,7 @@ function ProcessAction_LuUserHandler(type, args) {
     }
 }
 
-function ProcessAction_ShowMessage(message)
-{
+function ProcessAction_ShowMessage(message) {
     sp_ShowMessage(message);
 }
 
@@ -198,7 +197,7 @@ function ProcessAction_Finish() {
 function ProcessAction_ShowStatus(status) {
     sp_ShowStatus(status);
 }
-  
+
 ProcessAction.prototype.Execute = ProcessAction_Execute;
 ProcessAction.prototype.Init = ProcessAction_Init;
 ProcessAction.prototype.LoadXML = ProcessAction_LoadXML;
@@ -224,7 +223,7 @@ function onSalesProcessChange() {
         Sage.UI.Dialogs.raiseQueryDialog(
             OppSPMessages.Confirm,
             dojo.string.substitute(OppSPMessages.ChangeSalesProcess, [currentSalesProcessName, newSalesProcessName]),
-            function(result) {
+            function (result) {
                 if (result) {
                     // Let the server postback handle the Re Initialization of the SalesProcess.
                     Sys.WebForms.PageRequestManager.getInstance()._doPostBack(spCtrlIDs.ddlSalesProcessCtrlId, null);
@@ -355,7 +354,7 @@ function sp_SelectContact() {
     var luOppContactBtnCtrl = document.getElementById(spCtrlIDs.luOppContactCtrlId + '_LookupBtn');
     if (luOppContactBtnCtrl != null) {
         //Open up the look up!
-        sp_InvokeClickEvent(luOppContactBtnCtrl);   
+        sp_InvokeClickEvent(luOppContactBtnCtrl);
     }
 }
 
@@ -370,15 +369,15 @@ function onSelectContactNext() {
         else {
             var divSelectContact = document.getElementById('spSelectContactDiv');
             divSelectContact.style.display = 'none';
-            sp_Service("RESOLVEOPPCONTACT", selectContactId.value, function(result){
-              
-               selectContactId.value = result;
-               currentProcessAction.selectedContactId = selectContactId.value;
-               currentProcessAction.state = 2;
-               currentProcessAction.Execute();
-            
+            sp_Service("RESOLVEOPPCONTACT", selectContactId.value, function (result) {
+
+                selectContactId.value = result;
+                currentProcessAction.selectedContactId = selectContactId.value;
+                currentProcessAction.state = 2;
+                currentProcessAction.Execute();
+
             });
-            
+
         }
     }
     return false;
@@ -417,8 +416,7 @@ function onSelectUserNext() {
     return false;
 }
 
-function sp_SelectUser()
-{
+function sp_SelectUser() {
     var divSelectContact = document.getElementById('spSelectContactDiv');
     var divSelectUser = document.getElementById('spSelectUserDiv');
     var divMain = document.getElementById('spMain');
@@ -427,16 +425,14 @@ function sp_SelectUser()
     return false;
 }
 
-function sp_GetCurrentUser()
-{
-    sp_ShowMessage(OppSPMessages.GettingCurrentUser); 
+function sp_GetCurrentUser() {
+    sp_ShowMessage(OppSPMessages.GettingCurrentUser);
     var ctrl = document.getElementById(spCtrlIDs.currentUserIdCtrlId);
     var result = ctrl.value;
     return result;
 }
 
-function sp_GetPrimaryOppContact()
-{
+function sp_GetPrimaryOppContact() {
     sp_ShowMessage(OppSPMessages.GettingOppContact);
     var ctrl = document.getElementById(spCtrlIDs.primaryOppContactIdCtrlId);
     var result = ctrl.value;
@@ -509,18 +505,18 @@ function executeAction(stepId, actionType) {
             break;
     }
     if (boolExecute == true) {
-      
-          sp_Service("CANCOMPLETESTEP", stepId, function (result){
-          if (result != '') {
-              sp_Alert(result);
-               currentProcessAction = null;
-           }
-           else {
-              currentProcessAction = new ProcessAction(stepId, actionType);
-              currentProcessAction.Execute();
-           } 
+
+        sp_Service("CANCOMPLETESTEP", stepId, function (result) {
+            if (result != '') {
+                sp_Alert(result);
+                currentProcessAction = null;
+            }
+            else {
+                currentProcessAction = new ProcessAction(stepId, actionType);
+                currentProcessAction.Execute();
+            }
         });
-       
+
     }
     else {
         currentProcessAction = null;
@@ -539,11 +535,11 @@ function Init_MailMerge() {
     if (objAct[0].getElementsByTagName('Author')[0].getElementsByTagName('Type')[0].firstChild) {
         strAuthorType = objAct[0].getElementsByTagName('Author')[0].getElementsByTagName('Type')[0].firstChild.nodeValue;
     }
-    if (objAct[0].getElementsByTagName('Author')[0].getElementsByTagName('Value')[0].firstChild){
-       strAuthorValue = objAct[0].getElementsByTagName('Author')[0].getElementsByTagName('Value')[0].firstChild.nodeValue;
+    if (objAct[0].getElementsByTagName('Author')[0].getElementsByTagName('Value')[0].firstChild) {
+        strAuthorValue = objAct[0].getElementsByTagName('Author')[0].getElementsByTagName('Value')[0].firstChild.nodeValue;
     }
     if (objAct[0].getElementsByTagName('MergeWith')[0].firstChild) {
-      strMergeWith = objAct[0].getElementsByTagName('MergeWith')[0].firstChild.nodeValue;
+        strMergeWith = objAct[0].getElementsByTagName('MergeWith')[0].firstChild.nodeValue;
     }
 
     this.selectWithOption = strMergeWith;
@@ -569,9 +565,9 @@ function doMailMerge() {
         scheduleForType = objAct[0].getElementsByTagName('Leader')[0].getElementsByTagName('Type')[0].firstChild.nodeValue;
     }
     if (objAct[0].getElementsByTagName('Leader')[0].getElementsByTagName('Value')[0].firstChild) {
-       scheduleForValue = objAct[0].getElementsByTagName('Leader')[0].getElementsByTagName('Value')[0].firstChild.nodeValue;
+        scheduleForValue = objAct[0].getElementsByTagName('Leader')[0].getElementsByTagName('Value')[0].firstChild.nodeValue;
     }
-  
+
     switch (scheduleForType.toUpperCase()) {
         case 'CURRENTUSER':
             leaderId = sp_GetCurrentUser();
@@ -589,12 +585,12 @@ function doMailMerge() {
     this.ShowMessage(OppSPMessages.ProcessingMailMerge);
 
     var self = this;
-    
-    require(['Sage/MailMerge/Helper', 'Sage/MailMerge/Service'], function(Helper, DesktopService) {
+
+    require(['Sage/MailMerge/Helper', 'Sage/MailMerge/Service'], function (Helper, DesktopService) {
         sp_DoMailMerge(self.xml, self.selectedContactId, self.selectedUserId, leaderId);
         self.Finish();
     });
-    
+
     return false;
 }
 
@@ -622,9 +618,9 @@ function Init_Activity() {
     }
 
     if (objAct[0].getElementsByTagName('AutoSchedule')[0].firstChild) {
-       strAutoSchedule = objAct[0].getElementsByTagName('AutoSchedule')[0].firstChild.nodeValue
+        strAutoSchedule = objAct[0].getElementsByTagName('AutoSchedule')[0].firstChild.nodeValue
     }
-    
+
 
     switch (this.actionType.toUpperCase()) {
         case 'TODO':
@@ -646,10 +642,10 @@ function Init_Activity() {
     this.selectForValue = strScheduleForValue;
     this.selectUserDesc = OppSPMessages.SelectActLeader;
     this.selectContactDesc = OppSPMessages.ScheduleWithContact;
-    if(strAutoSchedule === 'F'){
-       this.autoSchedule = false;
-    }else{
-       this.autoSchedule = true;    
+    if (strAutoSchedule === 'F') {
+        this.autoSchedule = false;
+    } else {
+        this.autoSchedule = true;
     }
     this.ShowStatus(dojo.string.substitute(OppSPMessages.PerformingActivity, [desc]));
     this.IsInit = true;
@@ -657,35 +653,35 @@ function Init_Activity() {
 }
 
 function doActivity() {
-     if (this.IsInit == false) { 
+    if (this.IsInit == false) {
         return;
-     }
+    }
 
-    if(this.autoSchedule){
+    if (this.autoSchedule) {
         this.ShowMessage(OppSPMessages.ProcessingAction);
         //By Default we will post back for server side processing
         var cmdCtrl = document.getElementById(spCtrlIDs.cmdDoActionCtrlId);
         var actionContextCtrl = document.getElementById(spCtrlIDs.actionContextCtrlId);
         actionContextCtrl.value = this.stepId;
         sp_InvokeClickEvent(cmdCtrl);
-        return;             
+        return;
     }
-    
-     //Show Activity Dialog;
-     var leaderId = this.selectedUserId;
-     var contactId = this.selectedContactId;
-     var opportunityId = sp_GetOpportunity();
-    
-     var args =   this.stepId + "," + contactId + "," + opportunityId + "," + leaderId;
+
+    //Show Activity Dialog;
+    var leaderId = this.selectedUserId;
+    var contactId = this.selectedContactId;
+    var opportunityId = sp_GetOpportunity();
+
+    var args = this.stepId + "," + contactId + "," + opportunityId + "," + leaderId;
     var action = this;
-     sp_Service('SCHEDULEACTIVITY', args ,function(result){
-        
-            if(result != ''){
-                 var activityService = Sage.Services.getService('ActivityService');
-                 activityService.editTempActivity(result);                
-               }
-               action.Finish();
-               return false;
+    sp_Service('SCHEDULEACTIVITY', args, function (result) {
+
+        if (result != '') {
+            var activityService = Sage.Services.getService('ActivityService');
+            activityService.editTempActivity(result);
+        }
+        action.Finish();
+        return false;
     });
 
 }
@@ -699,7 +695,7 @@ function Init_LitRequest() {
     var strScheduleForType = "";
     var strScheduleForValue = "";
     var strScheduleWith = "";
-    
+
     if (objAct[0].getElementsByTagName('Author')[0].getElementsByTagName('Type')[0].firstChild) {
         strScheduleForType = objAct[0].getElementsByTagName('Author')[0].getElementsByTagName('Type')[0].firstChild.nodeValue;
     }
@@ -719,7 +715,7 @@ function Init_LitRequest() {
     this.selectContactDesc = OppSPMessages.RequestFor;
     this.ShowStatus(OppSPMessages.PerformingLitReq);
     this.IsInit = true;
- 
+
 }
 
 function Init_ContactProcess() {
@@ -739,7 +735,7 @@ function Init_ContactProcess() {
     this.selectContactDesc = OppSPMessages.ScheduleWithContact;
     this.ShowStatus(OppSPMessages.PerformingContactProc);
     this.IsInit = true;
-  
+
 }
 
 function sp_Service(serviceType, serviceContext, callback) {
@@ -762,7 +758,7 @@ function sp_Service(serviceType, serviceContext, callback) {
         }
     });
 
-    return result;   
+    return result;
 }
 
 function sp_ShowStatus(status) {
@@ -810,7 +806,7 @@ function sp_GetXmlDoc(xmlData) {
         xmlDoc.async = "false";
         xmlDoc.loadXML(xmlData);
     }
-    // Else Firefox
+        // Else Firefox
     else {
         var domParser = new DOMParser();
         xmlDoc = domParser.parseFromString(xmlData, "text/xml");
@@ -848,9 +844,12 @@ function hideSalesProcessLoading() {
     var loader = dojo.byId("loader");
     loader.style.display = 'none';
 }
-
-dojo.ready(function () {
-    Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(salesProcessPageLoad);       
-});
+require(['dojo/ready'],
+    function (ready) {
+        ready(function () {
+            Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(salesProcessPageLoad);
+        });
+    }
+);
 
 if (typeof (Sys) !== 'undefined') Sys.Application.notifyScriptLoaded();

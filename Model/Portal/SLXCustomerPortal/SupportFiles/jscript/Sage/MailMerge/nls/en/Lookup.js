@@ -1,4 +1,4 @@
-define((
+define("Sage/MailMerge/nls/en/Lookup", (
 { accountCaption: 'Account',
   companyCaption: 'Company',
   contactTitle: 'Select a Contact',

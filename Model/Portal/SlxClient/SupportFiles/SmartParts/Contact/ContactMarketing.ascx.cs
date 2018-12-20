@@ -58,6 +58,7 @@ public partial class SmartParts_Contact_ContactMarketing : EntityBoundSmartPartI
     {
         if (ScriptManager.GetCurrent(Page) != null)
             AddResponse.Click += AddResponse_Click;
+        grdContactMarketing.PageIndexChanging += ContactMarketing_PageIndexChanging;
         base.OnWireEventHandlers();
     }
 
@@ -211,6 +212,16 @@ public partial class SmartParts_Contact_ContactMarketing : EntityBoundSmartPartI
     {
         grdContactMarketing.SelectedIndex = e.NewEditIndex;
         e.Cancel = true;
+    }
+
+    /// <summary>
+    /// Handles the Paging event of the ContactMarketing control
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void ContactMarketing_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grdContactMarketing.PageIndex = e.NewPageIndex;
     }
 
     /// <summary>

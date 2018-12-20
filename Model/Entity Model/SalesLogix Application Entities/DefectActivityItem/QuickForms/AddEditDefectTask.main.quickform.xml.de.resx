@@ -117,70 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdOK.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lueRateType.LookupProperties.RateTypeDescription.PropertyHeader" xml:space="preserve">
-    <value>Beschreibung</value>
-  </data>
-  <data name="lueRateType.Caption" xml:space="preserve">
-    <value>Gebührensatztyp:</value>
-  </data>
-  <data name="dteCompletedDate.Caption" xml:space="preserve">
-    <value>Abschlussdatum:</value>
-  </data>
-  <data name="curRate.Caption" xml:space="preserve">
-    <value>Aktivitätsgebühr:</value>
+  <data name="lueRateType.LookupProperties.Ratetypecode.PropertyHeader" xml:space="preserve">
+    <value>Typ</value>
   </data>
   <data name="lueRateType.LookupProperties.Ratetypedesc.PropertyHeader" xml:space="preserve">
     <value>Beschreibung</value>
   </data>
+  <data name="lueRateType.LookupProperties.Rateamount.PropertyHeader" xml:space="preserve">
+    <value>Gebührenbetrag</value>
+  </data>
+  <data name="hzsDetail.Caption" xml:space="preserve">
+    <value />
+  </data>
   <data name="txtComments.Caption" xml:space="preserve">
     <value>Kommentare</value>
-  </data>
-  <data name="txtElapsedHours.ToolTip" xml:space="preserve">
-    <value>Tool</value>
-  </data>
-  <data name="dteReceivedDate.ButtonToolTip" xml:space="preserve">
-    <value>Kalender</value>
-  </data>
-  <data name="cmdDateStampComments.ToolTip" xml:space="preserve">
-    <value>Benutzerdatumsstempel</value>
-  </data>
-  <data name="txtUnits.Caption" xml:space="preserve">
-    <value>Zeiteinheiten:</value>
-  </data>
-  <data name="dteCompletedDate.ButtonToolTip" xml:space="preserve">
-    <value>Kalender</value>
   </data>
   <data name="pklActivity.Caption" xml:space="preserve">
     <value>Aktivität:</value>
   </data>
-  <data name="lueUser.Caption" xml:space="preserve">
-    <value>Benutzer:</value>
+  <data name="lueRateType.Caption" xml:space="preserve">
+    <value>Gebührentyp:</value>
+  </data>
+  <data name="dteReceivedDate.Caption" xml:space="preserve">
+    <value>Eingangsdatum:</value>
+  </data>
+  <data name="dteCompletedDate.Caption" xml:space="preserve">
+    <value>Abschlussdatum:</value>
+  </data>
+  <data name="txtUnits.Caption" xml:space="preserve">
+    <value>Zeiteinheiten:</value>
+  </data>
+  <data name="curRate.Caption" xml:space="preserve">
+    <value>Aktivitätsgebühr:</value>
   </data>
   <data name="curTotal.Caption" xml:space="preserve">
     <value>Gebühr gesamt:</value>
   </data>
-  <data name="lueRateType.ButtonToolTip" xml:space="preserve">
-    <value>Suchen</value>
+  <data name="lueUser.Caption" xml:space="preserve">
+    <value>Benutzer:</value>
   </data>
-  <data name="lueUser.ButtonToolTip" xml:space="preserve">
-    <value>Suchen</value>
+  <data name="dteReceivedDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="txtElapsedHours.Caption" xml:space="preserve">
-    <value>Verstrichene Stunden:</value>
+  <data name="dteCompletedDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueRateType.LookupProperties.Ratetypecode.PropertyHeader" xml:space="preserve">
-    <value>Typ</value>
+  <data name="lueUser.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueRateType.LookupProperties.Rateamount.PropertyHeader" xml:space="preserve">
-    <value>Gebührenbetrag</value>
+  <data name="lueRateType.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cmdDateStampComments.ToolTip" xml:space="preserve">
+    <value>Benutzerdatumsstempel</value>
+  </data>
+  <data name="cmdOK.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="dteReceivedDate.Caption" xml:space="preserve">
-    <value>Empfangsdatum:</value>
+  <data name="lueRateType.LookupProperties.RateTypeDescription.PropertyHeader" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="txtElapsedHours.Caption" xml:space="preserve">
+    <value>Verstrichene Stunden:</value>
+  </data>
+  <data name="lueUser.ButtonToolTip" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="lueRateType.ButtonToolTip" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="dteReceivedDate.ButtonToolTip" xml:space="preserve">
+    <value>Kalender</value>
+  </data>
+  <data name="dteCompletedDate.ButtonToolTip" xml:space="preserve">
+    <value>Kalender</value>
+  </data>
+  <data name="txtElapsedHours.ToolTip" xml:space="preserve">
+    <value>Tool</value>
   </data>
 </root>

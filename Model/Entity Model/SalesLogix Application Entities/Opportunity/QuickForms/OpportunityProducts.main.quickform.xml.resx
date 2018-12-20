@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="grdOppProducts.33816379-5ee4-4a9d-850c-ce5518934f95.ColumnHeading" xml:space="preserve">
-    <value>Line #</value>
+    <value>Line Number</value>
   </data>
   <data name="grdOppProducts.37d439a1-a7fb-44df-8c0c-40cfdaadf814.ColumnHeading" xml:space="preserve">
     <value>Product</value>
@@ -232,7 +232,7 @@
     <value>Adj. Price</value>
   </data>
   <data name="grdOppProducts.8b5cf516-7850-47e3-b512-402fe221806c.ColumnHeading" xml:space="preserve">
-    <value>Extended Price</value>
+    <value>Extended Price (Base)</value>
   </data>
   <data name="grdOppProducts.bdcfebf2-8c54-459a-97ec-00e4d92f86dc.ColumnHeading" xml:space="preserve">
     <value>Quantity</value>
@@ -241,7 +241,7 @@
     <value>Discount</value>
   </data>
   <data name="grdOppProducts.6ef4d952-2b1a-4d9f-a36e-35a942dd32bb.ColumnHeading" xml:space="preserve">
-    <value> </value>
+    <value> Edit</value>
   </data>
   <data name="lueProduct.LookupProperties.AppId.PropertyHeader" xml:space="preserve">
     <value>App ID</value>
@@ -253,10 +253,10 @@
     <value>Product</value>
   </data>
   <data name="grdOppProducts.6a6d5c85-c8d6-4660-9f10-3855008c45ca.ColumnHeading" xml:space="preserve">
-    <value>Adj. Price</value>
+    <value>Adj. Price (Base)</value>
   </data>
   <data name="grdOppProducts.ceb64e60-2b36-42fe-8a84-491ad1bf158d.ColumnHeading" xml:space="preserve">
-    <value>Extended Price</value>
+    <value>Extended Price (Opportunity)</value>
   </data>
   <data name="error_AccountingSystem_Undefined" xml:space="preserve">
     <value>Products cannot be added to the Opportunity because the Accounting System is undefined.  Please define an Accounting System before continuing.</value>
@@ -265,15 +265,45 @@
     <value>The ClientContextService is unavailable.</value>
   </data>
   <data name="error_ExecutingRequest" xml:space="preserve">
-    <value>There was an error opening ${0}. StatusText: ${1}; StatusCode: ${2}.</value>
+    <value>There was an error opening ${0}. Status Text: ${1}; Status Code: ${2}.</value>
   </data>
   <data name="error_ExecutingRequest_Ext" xml:space="preserve">
-    <value>There was an error opening ${0}. Severity: ${1}; SDataCode: ${2}; Message: ${3}; ApplicationCode: ${4}; StatusText: ${5}; StatusCode: ${6}.</value>
+    <value>There was an error opening ${0}. Severity: ${1}; SData Code: ${2}; Message: ${3}; Application Code: ${4}; Status Text: ${5}; Status Code: ${6}.</value>
   </data>
   <data name="error_OperatingCompany_Undefined" xml:space="preserve">
     <value>The Operating Company could not be determined.</value>
   </data>
   <data name="error_ZeroBasePrice" xml:space="preserve">
-    <value>You cannot add a discount to a product, which does not contain a base price.</value>
+    <value>Cannot update discount when price is zero</value>
+  </data>
+  <data name="grdOppProducts.53fcc076-801f-4abd-a551-8be72ddc188b.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="lueProduct.LookupProperties.ErpConfiguredItem.PropertyHeader" xml:space="preserve">
+    <value>Configured Item</value>
+  </data>
+  <data name="grdOppProducts.484aa1d7-b818-40c7-83cb-e4f70ac1498f.ColumnHeading" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="grdOppProducts.5f147f84-0af4-40bc-9424-b9da3412a6e7.ColumnHeading" xml:space="preserve">
+    <value>Warehouse</value>
+  </data>
+  <data name="error_PricingRequest" xml:space="preserve">
+    <value>An error occured requesting pricing service: ${0}</value>
+  </data>
+  <data name="lueProduct.LookupProperties.ErpLogicalId.PropertyHeader" xml:space="preserve">
+    <value>ERP Logical ID</value>
+  </data>
+  <data name="productStatus_Discontinued" xml:space="preserve">
+    <value>Discontinued</value>
+  </data>
+  <data name="grdOppProducts.c27ad8de-c774-4f2a-b133-f7c7b9ae3e15.ColumnHeading" xml:space="preserve">
+    <value>Configuration ID</value>
+  </data>
+  <data name="grdOppProducts.e74f7302-53c2-41e3-9579-bb94526aaf9b.ColumnHeading" xml:space="preserve">
+    <value>Configuration Detail ID</value>
+  </data>
+  <data name="grdOppProducts.b6d29123-77df-482a-b2c9-71ce6f5dd4d2.ColumnHeading" xml:space="preserve">
+    <value>Unit</value>
   </data>
 </root>

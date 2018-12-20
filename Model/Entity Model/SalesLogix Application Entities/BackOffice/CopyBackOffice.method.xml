@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d2cf2a8a-78e1-4243-9927-0540fd34d643" lastModifiedUtc="2016-08-15T21:18:46.4775684Z" name="CopyBackOffice" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="acf8e6c8-930b-4b45-a2b5-fe66cde74853" paramName="copyFromBackOffice" sequence="0" paramType="Object">
+      <description>The back office which the clone will be based off of.</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="e4ed29b2-9fbf-43bb-82a3-51ee298b027d" paramName="saveNew" sequence="0" paramType="Boolean">
+      <description>Flag indicating if the new field mapping should be save immediately</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="476d9a90-4782-4cb9-adc7-8e6df5fb14f7" lastModifiedUtc="2016-08-15T21:18:40.9050112Z" targetType="Sage.SalesLogix.BackOffice.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CopyBackOffice" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -1,21 +1,18 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-       'dojo/_base/html',
-       'dojox/grid/DataGrid',
-       'dijit/_Widget',
-       'Sage/_Templated',
-       'dijit/form/CurrencyTextBox',
-       'Sage/UI/Controls/CurrencyTextBox',
-       'dojo/currency',
-       'dojo/string',
-       'dojo/_base/declare',
-       'Sage/Utility'
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/Currency", [
+    'dojo/_base/html',
+    'dijit/_Widget',
+    'Sage/_Templated',
+    'dijit/form/CurrencyTextBox',
+    'Sage/UI/Controls/CurrencyTextBox',
+    'dojo/currency',
+    'dojo/string',
+    'dojo/_base/declare'
 ],
-function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyTextBox, currency, string, declare, utility) {
+function (html, _Widget, templated, currencyTextBox, sageCurrencyTextBox, currency, string, declare) {
     //TODO: This hook will be depricated once ClientBindingManagerService has been converted with Dojo.
     dojo.mixin(dijit.form.ValidationTextBox.prototype.attributeMap, { slxchangehook: 'focusNode' });
-
-    var widget = declare("Sage.UI.Controls.Currency", [_Widget, _Templated], {
+    var widget = declare("Sage.UI.Controls.Currency", [_Widget, templated], {
         //using Simplate to faciliate conditional display
         //Reference enum for Display Modes
         displayModes: {
@@ -23,7 +20,7 @@ function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyText
             'AsHyperlink': 0,
             //Default rendering of the control.
             'AsControl': 1,
-            //Renders the control a text only.        
+            //Renders the control a text only.
             'AsText': 2
         },
         //Display Mode template object.
@@ -39,11 +36,13 @@ function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyText
                 'constraints="{ {%= $.constraintsToString() %} }" ',
                 'id="{%= $.id %}_CurrencyTextBox" ',
                 'style="width:inherit;"',
-                'textAlign="{%= $.textAlign %}"',
+                'textAlign="{%= $.textAlign %}"',                
                 ' name="{%= $.name %}" type="text" ',
-                ' value="{%= $.value %}" dojoAttachPoint="focusNode" ',
+                ' value="{%= $.value %}" dojoAttachPoint="focusNode" ',                
                 '{% if ( $.multiCurrency ) { %} ',
                 ' class="ISOSpace" ',
+                '{% } else { %} ',
+                'lang ="{%= Sys.CultureInfo.CurrentCulture.name %}"',
                 '{% } %}',
                 ' hotKey="{%= $.hotKey %}" ',
                 '{% if($.disabled === "disabled") { %} ',
@@ -53,6 +52,7 @@ function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyText
                 ' readonly="readonly" ',
                 '{% } %}',
                 ' maxlength="{%= $.maxLength %}" ',
+                ' autoPostBack="{%= $.autoPostBack %}" ',
                 ' required="{%= $.required %}">',
                 '{% if ( $.multiCurrency ) { %} ',
                     '<label id="{%= $.id %}_ISOLabel" ',
@@ -79,9 +79,9 @@ function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyText
         ]),
         postMixInProperties: function () {
             this.currentCultureSymbol = Sys.CultureInfo.CurrentCulture.numberFormat.CurrencySymbol;
-
             if (this.multiCurrency) {
                 // multiCurrency displays currency code in a label, not the currency symbol
+                this.currentCode = this.constraints['currency'];
                 this.constraints['currency'] = null;
             } else {
                 if (this.constraints['currency'] === '' || this.constraints['currency'] === null) {
@@ -100,13 +100,17 @@ function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyText
                 this.currencyCodeLabel.innerHTML = this.currentCode;
             }
 
+            if (this["class"] && this["class"].length > 0 && this.domNode.firstChild) {
+                this.domNode.firstChild.className = this["class"] + ' ' + this.domNode.firstChild.className;
+            }
+
             this.inherited(arguments);
         },
         value: 0,
         //summary:
-        //     When provided to dijit.form.CurrencyTextBox via the lang property, 
+        //     When provided to dijit.form.CurrencyTextBox via the lang property,
         //     currentCulture enables the control to know the expected formatting.
-        //     example: 'de-de'    
+        //     example: 'de-de'
         //     Sys.CultureInfo.CurrentCulture.name,
         //summary:
         //   Provided to dijit.form.CurrencyTextBox for currency formatting.
@@ -114,7 +118,7 @@ function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyText
         //   postMixInProperties sets this.
         currentCultureSymbol: '', //Sys.CultureInfo.CurrentCulture.numberFormat.CurrencySymbol,
         //summary:
-        //  Represents the current currency code.  
+        //  Represents the current currency code.
         //  Displayed with value when multiCurrency is true.
         //  example: 'EUR', 'USD'
         currentCode: 'USD',  //Default
@@ -132,7 +136,7 @@ function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyText
         maxLength: 128,
         required: false,
         style: '',
-        //These three props are for non-grid modes.  Add to basic control config but not column config.    
+        //These three props are for non-grid modes.  Add to basic control config but not column config.
         enabled: true, // For non-grid mode. Redundant from grid.column.editable: true
         readonly: '', // For non-grid mode. Redundant from grid.column.editable: true
         disabled: '',
@@ -141,7 +145,7 @@ function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyText
         tabIndex: 0,
         //Sets the display mode that the control will render in.
         displayMode: 'AsControl',
-        // appliedSecurity: '',  Note: Not yet enabled on control.    
+        // appliedSecurity: '',  Note: Not yet enabled on control.
         widgetsInTemplate: true,
         styles: 'text-align: right;',
         name: '',
@@ -177,7 +181,5 @@ function (html, dataGrid, _Widget, _Templated, currencyTextBox, sageCurrencyText
             this.inherited(arguments);
         }
     });
-
     return widget;
 });
-

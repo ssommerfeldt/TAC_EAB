@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="grdFieldMapping.e82b64d0-1f8f-4157-b92b-00005771658d.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="grdFieldMapping.2525bc7d-5219-4602-b32e-7badaefb48ca.ColumnHeading" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="grdFieldMapping.86024db6-5428-4ab2-acd1-7b65b2648654.ColumnHeading" xml:space="preserve">
+    <value>Eigenschaft</value>
+  </data>
+  <data name="grdFieldMapping.4a007677-953f-43f1-bdeb-9e4bf44608f3.ColumnHeading" xml:space="preserve">
+    <value>XPath für Entität</value>
+  </data>
+  <data name="grdFieldMapping.d95d45ea-5e95-4fe0-8cf5-6ca81481d776.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Neue Feldzuordnung hinzufügen</value>
+  </data>
+  <data name="grdFieldMapping.Save.ToolTip" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="300c4567-ad2f-4bf6-87ec-b36dd4ad5c2c.DialogTitleOverride" xml:space="preserve">
+    <value>Neue BOD-Feldzuordnung hinzufügen</value>
+  </data>
+  <data name="grdFieldMapping.10ac08b7-bd4a-438a-aefd-adb015bac7ca.ColumnHeading" xml:space="preserve">
+    <value>Benutzerdefiniert</value>
+  </data>
+  <data name="grdFieldMapping.EmptyTableRowText" xml:space="preserve">
+    <value>Keine Datensätze gefunden...</value>
+  </data>
+  <data name="grdFieldMapping.Cancel.ToolTip" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="grdFieldMapping.a428f88c-199b-4874-878f-c9fa21c5bfd0.ColumnHeading" xml:space="preserve">
+    <value>Entität</value>
+  </data>
+  <data name="grdFieldMapping.5aaa4179-10fa-4510-a997-b30e3c8c6898.ColumnHeading" xml:space="preserve">
+    <value>XPath für Eigenschaft</value>
+  </data>
+  <data name="grdFieldMapping.Delete.ToolTip" xml:space="preserve">
+    <value>Feldzuordnung löschen</value>
+  </data>
+  <data name="grdFieldMapping.cce5ebc4-a64c-47c9-930d-652decb967e5.ColumnHeading" xml:space="preserve">
+    <value>Synchronisierungsrichtung</value>
+  </data>
+  <data name="error_StdBODFieldMappingReadOnly" xml:space="preserve">
+    <value>Standardmäßige BOD-Feldzuordnung kann nicht bearbeitet werden.</value>
+  </data>
+  <data name="grdFieldMapping.bb0ed4b9-7284-43bc-9270-75b2b92105a8.ColumnHeading" xml:space="preserve">
+    <value>Suchklausel</value>
+  </data>
+  <data name="grdFieldMapping.1ee0d515-37fe-402b-93b4-b35b51a29de1.ColumnHeading" xml:space="preserve">
+    <value>In Suche einschließen</value>
+  </data>
+</root>

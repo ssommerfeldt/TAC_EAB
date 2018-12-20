@@ -96,11 +96,11 @@ public partial class SmartParts_Contact_UpdateContactOptions : EntityBoundSmartP
         bool setOptions = true;
         if (DialogService.DialogParameters.Count > 0)
         {
-            UpdateAddressOptionManager _addressManager = GetAddressOptionManager();
-            if (_addressManager != null)
+            UpdateAddressOptionManager addressManager = GetAddressOptionManager();
+            if (addressManager != null)
             {
                 setOptions = false;
-                if (_addressManager.HasContactAddressChanges)
+                if (addressManager.HasContactAddressChanges)
                 {
                     divAddress.Style.Add("display", "block");
                     chkAddress.Enabled = true;
@@ -112,7 +112,7 @@ public partial class SmartParts_Contact_UpdateContactOptions : EntityBoundSmartP
                     divAddress.Style.Add("display", "none");
                     chkAddress.Checked = false;
                 }
-                if (_addressManager.HasSalesOrderAddressChanges)
+                if (addressManager.HasSalesOrderAddressChanges)
                 {
                     divSalesOrderAddress.Style.Add("display", "block");
                     chkSalesOrderAddress.Enabled = true;

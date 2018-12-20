@@ -1,8 +1,8 @@
-define((
-{ titleFmt: 'Добавить документ(ы) для ${0}',
-  titleLibraryDoc: 'Добавить документ(ы) в библиотеку',
-  fileNameText: 'Имя и размер файла: ',
-  descText: 'Описание:',
-  okText: 'Ок',
-  cancelText: 'Отмена' }
-));
+define("Sage/Utility/File/nls/ru/DescriptionsForm", {
+    "titleFmt": "Добавить вложения для \"${0}\"",
+    "titleLibraryDoc": "Добавить документы библиотеки",
+    "fileNameText": "Имя и размер файла: ",
+    "descText": "Описание:",
+    "okText": "OК",
+    "cancelText": "Отмена"
+});

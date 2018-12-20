@@ -118,55 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cmdOK.Caption" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>&amp;ОК</value>
   </data>
-  <data name="Description_Condition.Text" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="Type_rsc.HeaderText" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="lblAvailable.Caption" xml:space="preserve">
-    <value>Доступные источники наводки: </value>
-  </data>
-  <data name="Contains_rsc.Text" xml:space="preserve">
-    <value>Содержит</value>
-  </data>
-  <data name="NotEqualto_rsc.Text" xml:space="preserve">
-    <value>Не равно</value>
-  </data>
-  <data name="Description_rsc.HeaderText" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="SourceCode_Condition.Text" xml:space="preserve">
-    <value>Код источника</value>
+  <data name="cmdHelp.Caption" xml:space="preserve">
+    <value>&amp;Справка</value>
   </data>
   <data name="FilterBy_rsc.Text" xml:space="preserve">
     <value>Поиск по:</value>
   </data>
+  <data name="lblAvailable.Caption" xml:space="preserve">
+    <value>Доступные источники заинтересованных лиц: </value>
+  </data>
   <data name="lblSelected.Caption" xml:space="preserve">
-    <value>Выбранные наводки:</value>
-  </data>
-  <data name="Lessthan_rsc.Text" xml:space="preserve">
-    <value>Меньше чем</value>
-  </data>
-  <data name="Greaterthan_rsc.Text" xml:space="preserve">
-    <value>Больше чем</value>
+    <value>Выбранные источники заинтересованных лиц:</value>
   </data>
   <data name="Associate_rsc.HeaderText" xml:space="preserve">
     <value>Связать</value>
   </data>
-  <data name="Equalto_rsc.Text" xml:space="preserve">
-    <value>Равно</value>
+  <data name="Contains_rsc.Text" xml:space="preserve">
+    <value>Содержит</value>
   </data>
-  <data name="Type_Condition.Text" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="grdCampaignLeadSource.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="cmdHelp.Caption" xml:space="preserve">
-    <value>&amp;Помощь</value>
+  <data name="Description_rsc.HeaderText" xml:space="preserve">
+    <value>Описание</value>
   </data>
   <data name="EqualorGreaterthan_rsc.Text" xml:space="preserve">
     <value>Больше или равно</value>
@@ -174,7 +147,34 @@
   <data name="EqualorLessthan_rsc.Text" xml:space="preserve">
     <value>Меньше или равно</value>
   </data>
+  <data name="Equalto_rsc.Text" xml:space="preserve">
+    <value>Равно</value>
+  </data>
+  <data name="Greaterthan_rsc.Text" xml:space="preserve">
+    <value>Больше</value>
+  </data>
+  <data name="Lessthan_rsc.Text" xml:space="preserve">
+    <value>Меньше</value>
+  </data>
+  <data name="NotEqualto_rsc.Text" xml:space="preserve">
+    <value>Не равно</value>
+  </data>
   <data name="StartingWith_rsc.Text" xml:space="preserve">
     <value>Начинается с</value>
+  </data>
+  <data name="Type_Condition.Text" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="grdCampaignLeadSource.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <data name="Description_Condition.Text" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="SourceCode_Condition.Text" xml:space="preserve">
+    <value>Код источника</value>
+  </data>
+  <data name="Type_rsc.HeaderText" xml:space="preserve">
+    <value>Тип</value>
   </data>
 </root>

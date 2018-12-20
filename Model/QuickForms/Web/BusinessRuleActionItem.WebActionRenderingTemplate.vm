@@ -9,12 +9,19 @@
         {
             if (DialogService.ChildInsertInfo.ParentReferenceProperty != null)
             {
-                DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
-            }
+                var parentEntityName = _parent.GetType().Name;
+                var childEntityName = _entity.GetType().Name;
+                var parentType = Saleslogix.Integration.BOE.Common.EntityHelper.GetType(parentEntityName).FullName;
+                var childType = Saleslogix.Integration.BOE.Common.EntityHelper.GetType(childEntityName).FullName;
+                if (DialogService.ChildInsertInfo.ParentEntityType.FullName.Equals(parentType) &&
+                         DialogService.ChildInsertInfo.ChildEntityType.FullName.Equals(childType)) {
+                            DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
+                        }
+			}
         }
     }
     bool shouldSave = true;
-    Sage.Platform.WebPortal.EntityPage page = Page as Sage.Platform.WebPortal.EntityPage;
+    var page = Page as Sage.Platform.WebPortal.EntityPage;
     if (page != null)
     {
         if(IsInDialog() && page.ModeId.ToUpper() == "INSERT")
@@ -34,16 +41,31 @@
         {
            if (DialogService.ChildInsertInfo.ParentsCollectionProperty != null)
            {
-              System.Reflection.MethodInfo _add = DialogService.ChildInsertInfo.ParentsCollectionProperty.PropertyType.GetMethod("Add");
-              _add.Invoke(DialogService.ChildInsertInfo.ParentsCollectionProperty.GetValue(_parent, null), new object[] { _entity });
+              var addMethod = DialogService.ChildInsertInfo.ParentsCollectionProperty.PropertyType.GetMethod("Add");
+              var parentEntityName = _parent.GetType().Name;
+              var childEntityName = _entity.GetType().Name;
+              var parentType = Saleslogix.Integration.BOE.Common.EntityHelper.GetType(parentEntityName).FullName;
+              var childType = Saleslogix.Integration.BOE.Common.EntityHelper.GetType(childEntityName).FullName;
+              if (DialogService.ChildInsertInfo.ParentEntityType.FullName.Equals(parentType) &&
+                         DialogService.ChildInsertInfo.ChildEntityType.FullName.Equals(childType)) {
+                           addMethod.Invoke(DialogService.ChildInsertInfo.ParentsCollectionProperty.GetValue(_parent, null), new object[] { _entity });
+                          }
            }
         }
      }
   }
 #elseif($action.BusinessRule == 'Delete')
-  Sage.Platform.Orm.Interfaces.IPersistentEntity persistentEntity = this.BindingSource.Current as Sage.Platform.Orm.Interfaces.IPersistentEntity;
+  var persistentEntity = this.BindingSource.Current as Sage.Platform.Orm.Interfaces.IPersistentEntity;
   if (persistentEntity != null) {
-    persistentEntity.Delete();
+     persistentEntity.Delete();
+
+     IGroupContextService svc = Sage.Platform.Application.ApplicationContext.Current.Services.Get<IGroupContextService>() as GroupContextService;
+     if (svc != null) {
+        GroupContext context = svc.GetGroupContext();
+        if(context != null && context.CurrentGroupInfo != null) {
+	   context.CurrentGroupInfo.ClearCache();
+        }
+     }
   }
 #else
   #if($action.Parameters.Count > 0)
@@ -53,12 +75,12 @@
       #if($param.DataSourceID == "MainEntity")#set($hasMainDataSource = true)#end
     #end
     #if($hasMainDataSource)
-      object[] objarray = new object[] { #foreach($param in $action.Parameters)#if($velocityCount>1),#end #if($param.DataSourceID == "MainEntity")this.BindingSource.Current#else ${param.DataSourceID}.Current#end#end };
+      var objarray = new object []{ #foreach($param in $action.Parameters)#if($velocityCount>1),#end #if($param.DataSourceID == "MainEntity")this.BindingSource.Current#else ${param.DataSourceID}.Current#end#end };
     #else
-      object[] objarray = new object[] { this.BindingSource.Current#foreach($param in $action.Parameters)#if($param.DataSourceID != "MainEntity"), ${param.DataSourceID}.Current#end#end };
+      var objarray = new  object []{ this.BindingSource.Current#foreach($param in $action.Parameters)#if($param.DataSourceID != "MainEntity"), ${param.DataSourceID}.Current#end#end };
     #end
   #else
-    object[] objarray = new object[] { this.BindingSource.Current };
+    var objarray = new object []{ this.BindingSource.Current };
   #end
   #if($action.PassResultsToNextAction) object passthru = #end Sage.Platform.EntityFactory.Execute<${entitytypename}>("${action.ObjectName}.${action.BusinessRule}", objarray);
 #end
@@ -78,11 +100,5 @@
 #end
 #set ($refreshData = $generator.getControlRefreshData($qfcontrol))
 #if ($refreshData ==  true)
-  Sage.Platform.WebPortal.Services.IPanelRefreshService refresher = PageWorkItem.Services.Get<Sage.Platform.WebPortal.Services.IPanelRefreshService>();
-    if (refresher != null) {
-      refresher.RefreshAll();
-    }
-    else {  
-      Response.Redirect(Request.Url.ToString());
-    }
+  RefreshPart();
 #end

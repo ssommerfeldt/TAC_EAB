@@ -117,127 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Priority_Normal" xml:space="preserve">
-    <value>Нормальный</value>
-  </data>
-  <data name="LeadSourceSourceDate.PropertyHeader" xml:space="preserve">
-    <value>Дата источника</value>
-  </data>
-  <data name="LeadSourceAbbrev.PropertyHeader" xml:space="preserve">
-    <value>Код источника</value>
-  </data>
-  <data name="btnAddTask.Text" xml:space="preserve">
-    <value>Добавить задачу...</value>
-  </data>
-  <data name="lblActualCost.Text" xml:space="preserve">
-    <value>Факт. стоимость:</value>
+  <data name="lblTasks.Text" xml:space="preserve">
+    <value>Задачи</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Описание:</value>
   </data>
-  <data name="LeadSource.LUPF.Status" xml:space="preserve">
-    <value>Активный</value>
+  <data name="lblStatus.Text" xml:space="preserve">
+    <value>Статус:</value>
   </data>
-  <data name="lblTasks.Text" xml:space="preserve">
-    <value>Задачи</value>
-  </data>
-  <data name="lblActual.Text" xml:space="preserve">
-    <value>Факт</value>
-  </data>
-  <data name="CodeChangeMSG" xml:space="preserve">
-    <value>Если код кампании будет изменен на  детальном представлении или на этапе кампании, то коды кампании ${0}, которые были идентичны больше не будут соотвествовать.${0}${0} Продолжить?</value>
-  </data>
-  <data name="grdTasks_Description.HeaderText" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="lblEndDate.Text" xml:space="preserve">
-    <value>Дата оконч.:</value>
-  </data>
-  <data name="LeadSourceType.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="DialogTitleAdd" xml:space="preserve">
-    <value>Добавить стадию</value>
-  </data>
-  <data name="LeadSource.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="LeadSourceDescription.PropertyHeader" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="lblEstimate.Text" xml:space="preserve">
-    <value>Оценивать</value>
-  </data>
-  <data name="Status_Open" xml:space="preserve">
-    <value>Открыть</value>
-  </data>
-  <data name="lblStartDate.Text" xml:space="preserve">
-    <value>Дата нач.:</value>
-  </data>
-  <data name="grdTasks_NoRecordFound.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="lblBudget.Text" xml:space="preserve">
-    <value>Бюджет</value>
-  </data>
-  <data name="DialogTitleComplete" xml:space="preserve">
-    <value>Завершить стадию</value>
-  </data>
-  <data name="DefaultStatus" xml:space="preserve">
-    <value>Открыть</value>
-  </data>
-  <data name="lblEstimatedHours.Text" xml:space="preserve">
-    <value>Часы (план):</value>
-  </data>
-  <data name="lblTaskHours.Text" xml:space="preserve">
-    <value>Часов на задачу:</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="Status_Completed" xml:space="preserve">
-    <value>Заверш.</value>
+  <data name="lblLeadSource.Text" xml:space="preserve">
+    <value>Источник заинтересованного лица:</value>
   </data>
   <data name="lblCode.Text" xml:space="preserve">
     <value>Код:</value>
   </data>
-  <data name="lblLeadSource.Text" xml:space="preserve">
-    <value>Ист. наводки:</value>
+  <data name="lblStartDate.Text" xml:space="preserve">
+    <value>Дата начала:</value>
   </data>
-  <data name="grdTasks_Priority.HeaderText" xml:space="preserve">
-    <value>Приоритет</value>
-  </data>
-  <data name="lblTaskCosts.Text" xml:space="preserve">
-    <value>Затраты на задачу:</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="lblEstimatedCost.Text" xml:space="preserve">
-    <value>Цена (план):</value>
+  <data name="lblEndDate.Text" xml:space="preserve">
+    <value>Дата окончания:</value>
   </data>
   <data name="lblComment.Text" xml:space="preserve">
-    <value>Комм-рии:</value>
-  </data>
-  <data name="grdTasks_PercentComplete.HeaderText" xml:space="preserve">
-    <value>Завершено</value>
+    <value>Комментарии:</value>
   </data>
   <data name="lblCosts.Text" xml:space="preserve">
-    <value>Затраты</value>
+    <value>Расходы</value>
+  </data>
+  <data name="lblTaskCosts.Text" xml:space="preserve">
+    <value>Расходы на задачу:</value>
+  </data>
+  <data name="lblTaskHours.Text" xml:space="preserve">
+    <value>Часов на задачу:</value>
+  </data>
+  <data name="DefaultStatus" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="DialogTitleAdd" xml:space="preserve">
+    <value>Добавить стадию</value>
+  </data>
+  <data name="DialogTitleComplete" xml:space="preserve">
+    <value>Завершить стадию</value>
   </data>
   <data name="DialogTitleEdit" xml:space="preserve">
-    <value>Измен. стадию</value>
+    <value>Редактировать стадию</value>
   </data>
   <data name="DeleteMSG" xml:space="preserve">
     <value>Удалить задание</value>
   </data>
-  <data name="lblStatus.Text" xml:space="preserve">
-    <value>Статус:</value>
+  <data name="btnAddTask.Text" xml:space="preserve">
+    <value>Добавить задачу...</value>
+  </data>
+  <data name="grdTasks_Description.HeaderText" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="grdTasks_PercentComplete.HeaderText" xml:space="preserve">
+    <value>Процент завершения</value>
+  </data>
+  <data name="grdTasks_Priority.HeaderText" xml:space="preserve">
+    <value>Приоритет</value>
   </data>
   <data name="grdTasks_Status.HeaderText" xml:space="preserve">
     <value>Статус</value>
   </data>
+  <data name="lblActual.Text" xml:space="preserve">
+    <value>Факт</value>
+  </data>
+  <data name="lblEstimate.Text" xml:space="preserve">
+    <value>Оценивать</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="CodeChangeMSG" xml:space="preserve">
+    <value>Если код кампании будет изменен на детальном представлении или на этапе кампании, то коды кампании ${0}, которые были идентичны больше не будут соответствовать.${0}${0} Продолжить?</value>
+  </data>
+  <data name="Priority_Normal" xml:space="preserve">
+    <value>Нормальный</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="Status_Open" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="grdTasks_NoRecordFound.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
+  </data>
+  <data name="lblActualCost.Text" xml:space="preserve">
+    <value>Факт. расходы:</value>
+  </data>
   <data name="lblActualHours.Text" xml:space="preserve">
     <value>Факт. часы:</value>
+  </data>
+  <data name="lblBudget.Text" xml:space="preserve">
+    <value>Бюджет</value>
+  </data>
+  <data name="lblEstimatedCost.Text" xml:space="preserve">
+    <value>Ориентировочная стоимость:</value>
+  </data>
+  <data name="lblEstimatedHours.Text" xml:space="preserve">
+    <value>Часы (план):</value>
+  </data>
+  <data name="LeadSourceAbbrev.PropertyHeader" xml:space="preserve">
+    <value>Код источника</value>
+  </data>
+  <data name="LeadSourceDescription.PropertyHeader" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="LeadSourceSourceDate.PropertyHeader" xml:space="preserve">
+    <value>Дата источника</value>
+  </data>
+  <data name="LeadSourceType.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="LeadSource.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
   </data>
 </root>

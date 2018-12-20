@@ -1,12 +1,10 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            completedText : '(Completed)'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/MainView/ActivityMgr/nls/ActivityCalendar", {
+    root: {
+        completedText : '(Completed)'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

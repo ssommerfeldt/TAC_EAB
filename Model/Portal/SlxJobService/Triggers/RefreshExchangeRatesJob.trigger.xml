@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<SchedulerTrigger xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f5e403cb-fedd-4d49-9094-e28936513e0b">
+  <InstanceId>64a3426ab98a40acaf8ed578d976e676</InstanceId>
+  <JobId>6aa867d9ca7c4ed5806286e39d83060f</JobId>
+  <Name>Refresh Exchange Rates Job</Name>
+  <StartTimeUtc xsi:nil="true" />
+  <EndTimeUtc xsi:nil="true" />
+  <CronExpression>0 0 0 1/1 * ? *</CronExpression>
+  <Priority xsi:nil="true" />
+  <Parameters />
+</SchedulerTrigger>

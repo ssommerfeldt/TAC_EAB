@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5ef1e566-0c39-42a3-8134-242c062dc043" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5ef1e566-0c39-42a3-8134-242c062dc043" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2015-08-21T16:41:58.084457Z">
   <ActiveControl>txtCompetitor</ActiveControl>
   <ImagePath />
   <LoadActions>
@@ -19,8 +19,8 @@
     </FormActionDefinition>
   </LoadActions>
   <Name>CompetitorDetails</Name>
-  <ClientScriptInclude />
-  <OnClientShow />
+  <ClientScriptIncludes />
+  <ClientResourceKeys />
   <ExtendedProperties />
   <HelpFile />
   <ReadOnly>false</ReadOnly>
@@ -30,7 +30,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtCompetitor</ControlId>
@@ -68,7 +67,6 @@
       <QFSLXLookup>
         <Column>0</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lueAccount</ControlId>
@@ -90,11 +88,11 @@
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
               <MethodName />
-              <CSharpCodeSnippet>    	Sage.Entity.Interfaces.ICompetitor competitor = GetCurrentEntity() as Sage.Entity.Interfaces.ICompetitor;
+              <CSharpCodeSnippet>        Sage.Entity.Interfaces.ICompetitor competitor = GetCurrentEntity() as Sage.Entity.Interfaces.ICompetitor;
         if (lueAccount.LookupResultValue != null &amp;&amp; System.Convert.ToString(lueAccount.LookupResultValue) != "")
         {
             Sage.Entity.Interfaces.IAccount account = this.lueAccount.LookupResultValue as Sage.Entity.Interfaces.IAccount;
-                
+
             foreach (Sage.Entity.Interfaces.IContact contact in account.Contacts)
             {
                 if (contact.IsPrimary.HasValue &amp;&amp; contact.IsPrimary.Value == true)
@@ -123,6 +121,7 @@
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>true</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Account</LookupEntityName>
         <LookupEntityTypeName>Sage.Entity.Interfaces.IAccount, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -226,7 +225,6 @@
       <QFSLXLookup>
         <Column>0</Column>
         <Row>2</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lueContact</ControlId>
@@ -274,6 +272,7 @@
         <SeedValue />
         <DropDownDisplayProperty />
         <AllowClearingResult>true</AllowClearingResult>
+        <AppendStringValues>false</AppendStringValues>
         <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
         <LookupEntityName>Contact</LookupEntityName>
         <LookupEntityTypeName>Sage.Entity.Interfaces.IContact, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -355,7 +354,6 @@
       <QFSLXPhone>
         <Column>0</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>phnCompetitor</ControlId>
@@ -393,7 +391,6 @@
       <QFSLXUrl>
         <Column>0</Column>
         <Row>4</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>urlWebAddress</ControlId>
@@ -431,7 +428,6 @@
       <QFSLXNumeric>
         <Column>0</Column>
         <Row>5</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>numRating</ControlId>
@@ -473,7 +469,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>6</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtWeaknesses</ControlId>
@@ -512,7 +507,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>7</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtStrengths</ControlId>
@@ -551,7 +545,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>8</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtStrategy</ControlId>
@@ -590,7 +583,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>9</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtNotes</ControlId>
@@ -631,7 +623,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -646,7 +637,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId />
@@ -661,7 +651,6 @@
       <QFSLXGroupNavigator>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>48</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>grpNvgCompetitors</ControlId>
@@ -676,7 +665,6 @@
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>btnSave</ControlId>
@@ -707,7 +695,7 @@
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
           <PerformsUpdate>True</PerformsUpdate>
-          <AppliedSecurity />
+          <AppliedSecurity>ENTITIES/COMPETITOR/EDIT</AppliedSecurity>
           <RefreshData>False</RefreshData>
         </OnClickAction>
       </QFButton>
@@ -716,7 +704,6 @@
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <Visible>false</Visible>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
@@ -752,7 +739,7 @@
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
           <DialogActionResult>NoResult</DialogActionResult>
           <PerformsUpdate>True</PerformsUpdate>
-          <AppliedSecurity />
+          <AppliedSecurity>ENTITIES/COMPETITOR/ADD</AppliedSecurity>
           <RefreshData>False</RefreshData>
         </OnClickAction>
       </QFButton>
@@ -761,7 +748,6 @@
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>btnDelete</ControlId>

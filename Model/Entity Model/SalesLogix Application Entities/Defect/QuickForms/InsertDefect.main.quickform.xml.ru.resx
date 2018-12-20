@@ -117,29 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="dplArea.DependentLookups.Issue.PropertyDisplay" xml:space="preserve">
-    <value>Проблема:</value>
+  <data name="pklProject.Caption" xml:space="preserve">
+    <value>Проект</value>
   </data>
-  <data name="pklSource.Caption" xml:space="preserve">
-    <value>Источник:</value>
-  </data>
-  <data name="dtpAssignedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="dplArea.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+  <data name="pklVersionFound.Caption" xml:space="preserve">
+    <value>Найденная версия:</value>
   </data>
   <data name="pklTargetVersion.Caption" xml:space="preserve">
     <value>Целевая версия:</value>
   </data>
-  <data name="lueAssignedTo.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+  <data name="pklProgress.Caption" xml:space="preserve">
+    <value>Статус выполнения:</value>
   </data>
-  <data name="dtpAssignedDate.Caption" xml:space="preserve">
-    <value>Дата поручения:</value>
+  <data name="pklFixedVersion.Caption" xml:space="preserve">
+    <value>Исп. в версии:</value>
   </data>
-  <data name="phnAssignToPhone.Caption" xml:space="preserve">
-    <value>Телефон:</value>
+  <data name="pklStatus.Caption" xml:space="preserve">
+    <value>Статус:</value>
+  </data>
+  <data name="pklSource.Caption" xml:space="preserve">
+    <value>Источник:</value>
+  </data>
+  <data name="pklType.Caption" xml:space="preserve">
+    <value>Тип:</value>
+  </data>
+  <data name="pklPriority.Caption" xml:space="preserve">
+    <value>Приоритет:</value>
+  </data>
+  <data name="pklSeverity.Caption" xml:space="preserve">
+    <value>Важность:</value>
+  </data>
+  <data name="pklFrequency.Caption" xml:space="preserve">
+    <value>Частота:</value>
+  </data>
+  <data name="dplArea.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dplArea.DependentLookups..PropertyDisplay" xml:space="preserve">
+    <value>Проблема:</value>
+  </data>
+  <data name="dplArea.DependentLookups.Area.PropertyDisplay" xml:space="preserve">
+    <value>Область:</value>
+  </data>
+  <data name="dplArea.DependentLookups.Category.PropertyDisplay" xml:space="preserve">
+    <value>Категория:</value>
+  </data>
+  <data name="dplArea.DependentLookups.Issue.PropertyDisplay" xml:space="preserve">
+    <value>Проблема:</value>
+  </data>
+  <data name="chkSubmitSpeedSearch.Caption" xml:space="preserve">
+    <value>Отправить для SpeedSearch</value>
+  </data>
+  <data name="chkApproveSpeedSearch.Caption" xml:space="preserve">
+    <value>Утверждено для SpeedSearch</value>
   </data>
   <data name="pklPublicAccess.Caption" xml:space="preserve">
     <value>Общий доступ:</value>
@@ -147,70 +177,55 @@
   <data name="txtSubject.Caption" xml:space="preserve">
     <value>Тема:</value>
   </data>
-  <data name="dplArea.DependentLookups.Area.PropertyDisplay" xml:space="preserve">
-    <value>Область:</value>
-  </data>
-  <data name="pklFixedVersion.Caption" xml:space="preserve">
-    <value>Исп. в версии:</value>
+  <data name="cmdDateStampDescription.ToolTip" xml:space="preserve">
+    <value>Метка даты пользователя</value>
   </data>
   <data name="txtDescription.Caption" xml:space="preserve">
     <value>Описание:</value>
   </data>
-  <data name="pklVersionFound.Caption" xml:space="preserve">
-    <value>Имеющ. версия :</value>
+  <data name="lueAssignedTo.Caption" xml:space="preserve">
+    <value>Кому назначено:</value>
+  </data>
+  <data name="dplArea.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAssignedTo.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpAssignedDate.Caption" xml:space="preserve">
+    <value>Назначенная дата:</value>
+  </data>
+  <data name="dtpAssignedDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lueOwner.Caption" xml:space="preserve">
-    <value>Доступ:</value>
+    <value>Владелец:</value>
   </data>
-  <data name="pklType.Caption" xml:space="preserve">
-    <value>Тип:</value>
-  </data>
-  <data name="cmdSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="cmdDateStampDescription.ToolTip" xml:space="preserve">
-    <value>Пользовательская отметка даты</value>
-  </data>
-  <data name="chkSubmitSpeedSearch.Caption" xml:space="preserve">
-    <value>Передать для быстрого поиска</value>
-  </data>
-  <data name="lueAssignedTo.Caption" xml:space="preserve">
-    <value>Поручено:</value>
-  </data>
-  <data name="pklPriority.Caption" xml:space="preserve">
-    <value>Приоритет:</value>
-  </data>
-  <data name="pklFrequency.Caption" xml:space="preserve">
-    <value>Частота:</value>
-  </data>
-  <data name="pklProgress.Caption" xml:space="preserve">
-    <value>Тек. прогресс:</value>
-  </data>
-  <data name="cmdDateStampResolution.ToolTip" xml:space="preserve">
-    <value>Пользовательская отметка даты</value>
-  </data>
-  <data name="pklProject.Caption" xml:space="preserve">
-    <value>Проект:</value>
-  </data>
-  <data name="chkApproveSpeedSearch.Caption" xml:space="preserve">
-    <value>Утверждено для быстрого поиска</value>
-  </data>
-  <data name="pklSeverity.Caption" xml:space="preserve">
-    <value>Важность:</value>
-  </data>
-  <data name="dplArea.DependentLookups..PropertyDisplay" xml:space="preserve">
-    <value>Проблема:</value>
-  </data>
-  <data name="dplArea.DependentLookups.Category.PropertyDisplay" xml:space="preserve">
-    <value>Категория:</value>
-  </data>
-  <data name="txtResolution.Caption" xml:space="preserve">
-    <value>Решение:</value>
+  <data name="lueOwner.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="cmdSave.Caption" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="pklStatus.Caption" xml:space="preserve">
-    <value>Статус:</value>
+  <data name="cmdSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="phnAssignToPhone.Caption" xml:space="preserve">
+    <value>Телефон:</value>
+  </data>
+  <data name="cmdDateStampResolution.ToolTip" xml:space="preserve">
+    <value>Метка даты пользователя</value>
+  </data>
+  <data name="txtResolution.Caption" xml:space="preserve">
+    <value>Разрешение:</value>
+  </data>
+  <data name="dplArea.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="lueAssignedTo.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dtpAssignedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
   </data>
 </root>

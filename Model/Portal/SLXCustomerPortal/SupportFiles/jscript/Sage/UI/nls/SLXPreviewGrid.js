@@ -1,14 +1,12 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            applyText: 'Apply',
-            resetText: 'Reset',
-            filterText: 'Filter'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/nls/SLXPreviewGrid", {
+    root: {
+        applyText: 'Apply',
+        resetText: 'Reset',
+        filterText: 'Filter'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

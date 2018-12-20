@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/ActivityTaskConfigurationProvider", [
     'Sage/Services/_ServiceMixin',
     'Sage/_ConfigurationProvider',
     'Sage/Services/ActivityService',
@@ -171,7 +171,7 @@ define([
             _getCommonActivityTasks: function () {
                 var taskItems = this._getCommonTasks();
                 taskItems.push({ template: "<div class='slxLabel'>" + this.scheduleText + "</div>" });
-                taskItems.push({ template: "<div style='padding-left:15px;'>" });
+                taskItems.push({ template: "<div>" });
                 taskItems.push({ taskId: 'SchedulePhoneCall', type: "Link", displayName: this.phoneCallText, action: 'schedulePhoneCall();', securedAction: '', style: 'padding-left:15px;' });
                 taskItems.push({ taskId: 'ScheduleMeeting', displayName: this.meetingText, action: 'scheduleMeeting()', securedAction: '', style: 'padding-left:15px;' });
                 taskItems.push({ taskId: 'ScheduleToDo', type: "Link", displayName: this.toDoText, action: 'scheduleToDo();', securedAction: '', style: 'padding-left:15px;' });

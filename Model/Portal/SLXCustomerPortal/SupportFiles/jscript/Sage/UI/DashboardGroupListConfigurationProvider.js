@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/DashboardGroupListConfigurationProvider", [
     'Sage/UI/GroupListConfigurationProvider',
     'dojo/string',
     'dojo/_base/declare'
@@ -10,7 +10,7 @@ function (
     declare
 ) {
     var dashboardGroupListConfigurationProvider = declare('Sage.UI.DashboardGroupListConfigurationProvider', [GroupListConfigurationProvider], {
-        
+
         formatPredicate: function (group) {
             group.family = group.family && group.family.toUpperCase();
             return string.substitute("name eq '${name}' and upper(family) eq '${family}'", group);
@@ -24,7 +24,7 @@ function (
             context.CurrentTable = '';
             return this.inherited(arguments);
         },
-        _getListContextMenuItems: function() {
+        _getListContextMenuItems: function () {
             return [];
         },
         _onListContext: function (e) {

@@ -28,7 +28,6 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 using Sage.Platform;
 #endregion Usings
 
@@ -36,10 +35,10 @@ namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class InsertDepartmentEventHandlers
     {
-        public static void OnLoad1Step( IInsertDepartment form,  EventArgs args)
+        public static void OnLoad1Step(IInsertDepartment form, EventArgs args)
 		{
 			IOwnerSecurityProfile securityProfile = EntityFactory.GetById<IOwnerSecurityProfile>("PROF00000001"); // read/write default
-			form.securityProfileLookup.LookupResultValue = securityProfile;		
+			form.securityProfileLookup.LookupResultValue = securityProfile;
         }
     }
 }

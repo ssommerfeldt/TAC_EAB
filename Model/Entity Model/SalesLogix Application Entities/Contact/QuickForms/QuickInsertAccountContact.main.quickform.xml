@@ -1,11 +1,38 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="2d413bc6-28a2-4292-a0d0-9ac01f06deb9" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="2d413bc6-28a2-4292-a0d0-9ac01f06deb9" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-09-22T10:34:33.7587216Z">
   <ActiveControl />
   <ImagePath />
-  <LoadActions />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>28c5e60f-a4a6-4f0a-8cf6-0e2db250a237</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName>quickformload0</MethodName>
+          <CSharpCodeSnippet>var contact = (IContact) BindingSource.Current;
+
+QFLocationCodeList.Items.Clear();
+List&lt;Sage.SalesLogix.Web.EnabledLanguage&gt; cultures = Sage.SalesLogix.PickLists.PickListHelper.GetLanguageList&lt;Sage.SalesLogix.Web.EnabledLanguage&gt;(Sage.SalesLogix.PickLists.PickListHelper.LanguageListTypes.Cultures);
+cultures.ForEach(ci =&gt; QFLocationCodeList.Items.Add(new ListItem(text: ci.DisplayText, value: ci.CultureCode.ToLowerInvariant())));
+QFLocationCodeList.Items.Insert(0, new ListItem(text: string.Empty, value: null));
+if (!string.IsNullOrWhiteSpace(contact.LocationCode)) {
+	QFLocationCodeList.SelectedValue = contact.LocationCode.Trim();
+} else {
+	QFLocationCodeList.SelectedIndex = 0;
+}
+</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
   <Name>QuickInsertAccountContact</Name>
-  <ClientScriptInclude />
-  <OnClientShow />
+  <ClientScriptIncludes />
+  <ClientResourceKeys />
   <ExtendedProperties />
   <HelpFile />
   <ReadOnly>false</ReadOnly>
@@ -15,7 +42,6 @@
       <QFTextBox>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtAccount</ControlId>
@@ -53,7 +79,6 @@
       <QFSLXPickList>
         <Column>0</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>pklType</ControlId>
@@ -89,11 +114,15 @@
         <PickListName>Account Type</PickListName>
         <StorageMode>Text</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>false</AlphaSort>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -101,7 +130,6 @@
       <QFSLXPhone>
         <Column>0</Column>
         <Row>2</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>phAccountMain</ControlId>
@@ -140,7 +168,6 @@
         <RowSpan>2</RowSpan>
         <Column>0</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>addressMain</ControlId>
@@ -156,6 +183,13 @@
             <DataSourceID>MainEntity</DataSourceID>
             <DataItemName>Address.Country</DataItemName>
             <ControlItemName>AddressCountry</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Address.CountryCode</DataItemName>
+            <ControlItemName>AddressCountryCode</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -189,8 +223,36 @@
           </QuickFormPropertyDataBindingDefinition>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Address.Address4</DataItemName>
+            <ControlItemName>AddressDesc4</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Address.Address5</DataItemName>
+            <ControlItemName>AddressDesc5</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Address.Address6</DataItemName>
+            <ControlItemName>AddressDesc6</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
             <DataItemName>Address.Description</DataItemName>
             <ControlItemName>AddressDescription</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Address.FullAddress</DataItemName>
+            <ControlItemName>AddressDisplay</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -240,10 +302,14 @@
         <AddressDesc1 />
         <AddressDesc2 />
         <AddressDesc3 />
+        <AddressDesc4 />
+        <AddressDesc5 />
+        <AddressDesc6 />
         <AddressCity />
         <AddressState />
         <AddressPostalCode />
         <AddressCountry />
+        <AddressCountryCode />
         <AddressCounty />
         <AddressSalutation />
         <OnChangeAction>
@@ -262,11 +328,53 @@
         </OnChangeAction>
       </QFSLXAddress>
     </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFListBox, Sage.Platform.QuickForms.QFControls">
+      <QFListBox>
+        <Column>0</Column>
+        <Row>5</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFLocationCodeList</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>LocationCode</DataItemName>
+            <ControlItemName>Text</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <SelectedIndex>-1</SelectedIndex>
+        <Items />
+        <OnChangeAction>
+          <ResourceKey>QFLocationCodeList</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <DataSource />
+        <TextField />
+        <ValueField />
+        <MultiSelect>false</MultiSelect>
+        <MaxHeight>200</MaxHeight>
+      </QFListBox>
+    </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPersonName, Sage.SalesLogix.QuickForms.QFControls">
       <QFSLXPersonName>
         <Column>1</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>nameContact</ControlId>
@@ -301,8 +409,36 @@
           </QuickFormPropertyDataBindingDefinition>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>LocationCode</DataItemName>
+            <ControlItemName>NamePrefixLanguage</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>true</DataItemName>
+            <ControlItemName>NamePrefixLanguageFilters</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
             <DataItemName>Suffix</DataItemName>
             <ControlItemName>NameSuffix</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>LocationCode</DataItemName>
+            <ControlItemName>NameSuffixLanguage</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>true</DataItemName>
+            <ControlItemName>NameSuffixLanguageFilters</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -312,10 +448,14 @@
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <NamePrefix />
+        <NamePrefixLanguage />
+        <NamePrefixLanguageFilters>false</NamePrefixLanguageFilters>
         <NameFirst />
         <NameMiddle />
         <NameLast />
         <NameSuffix />
+        <NameSuffixLanguage />
+        <NameSuffixLanguageFilters>false</NameSuffixLanguageFilters>
         <OnChangeAction>
           <ResourceKey>nameContact</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
@@ -337,7 +477,6 @@
       <QFSLXPickList>
         <Column>1</Column>
         <Row>1</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>pklTitle</ControlId>
@@ -371,13 +510,17 @@
         <Required>false</Required>
         <AutoPostBack>false</AutoPostBack>
         <PickListName>Title</PickListName>
-        <StorageMode>Text</StorageMode>
+        <StorageMode>Code</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>false</AlphaSort>
         <MustExistInList>false</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>true</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
@@ -385,7 +528,6 @@
       <QFSLXPhone>
         <Column>1</Column>
         <Row>2</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>pContactMain</ControlId>
@@ -423,7 +565,6 @@
       <QFSLXPhone>
         <Column>1</Column>
         <Row>3</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>phMoble</ControlId>
@@ -461,7 +602,6 @@
       <QFSLXEmail>
         <Column>1</Column>
         <Row>4</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>email</ControlId>
@@ -499,7 +639,6 @@
       <QFControlsList>
         <Column>1</Column>
         <Row>5</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>QFControlsList</ControlId>
@@ -515,7 +654,6 @@
               <QFButton>
                 <Column>1</Column>
                 <Row>0</Row>
-                <IsReadOnly>false</IsReadOnly>
                 <HotKey>0</HotKey>
                 <TabIndex>0</TabIndex>
                 <ControlId>btnOK</ControlId>
@@ -531,7 +669,7 @@
                   <ResourceKey>btnOK</ResourceKey>
                   <Action typeName="Sage.Platform.QuickForms.ActionItems.CodeSnippetActionItem, Sage.Platform.QuickForms">
                     <CodeSnippetActionItem methodId="fa4891bf-deaa-44ac-8374-ba4c41938e82">
-                      <MethodName />
+                      <MethodName>btnOK_ClickAction</MethodName>
                     </CodeSnippetActionItem>
                   </Action>
                   <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -547,7 +685,6 @@
               <QFButton>
                 <Column>0</Column>
                 <Row>0</Row>
-                <IsReadOnly>false</IsReadOnly>
                 <HotKey>0</HotKey>
                 <TabIndex>0</TabIndex>
                 <ControlId>btnCancel</ControlId>
@@ -585,7 +722,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>b064dce24be460eb6638b0f185bd146</ControlId>
@@ -600,7 +736,6 @@
       <QFElementSpacer>
         <Column>0</Column>
         <Row>0</Row>
-        <IsReadOnly>false</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>a8c60c3b16f546ed9ff99c2baff1348e</ControlId>

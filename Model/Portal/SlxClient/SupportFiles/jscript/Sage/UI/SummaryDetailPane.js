@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/SummaryDetailPane", [
         'Sage/UI/_DetailPane',
         'Sage/_Templated',
         'Sage/UI/SummaryContainer',

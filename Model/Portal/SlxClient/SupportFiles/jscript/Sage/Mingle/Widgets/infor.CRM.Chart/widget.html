@@ -1,0 +1,32 @@
+﻿<style>
+    .infor-crm-application-widget-chart-div > .infor-crm-funnelChart-tooltip {
+        position: absolute;
+        width: auto;
+        height: auto;
+        padding: 10px;
+        background-color: black;
+        pointer-events: none;
+        color:white;
+        font-size: 12px;
+    }
+    .infor-crm-application-widget-chart-div > .infor-crm-funnelChart-tooltip.hidden, .infor-crm-funnelChart-tooltipleft-arrow.hidden {
+        display: none;
+    }
+    .infor-crm-application-widget-chart-div > .infor-crm-funnelChart-tooltipleft-arrow {
+        position: absolute;
+	    border-color: transparent black;
+	    border-style: solid;
+	    border-width: 8px 8px 8px 0px;
+	    height: 0px;
+	    width: 0px;
+    }
+</style>
+
+<div ng-controller="inforCRMChartMainCtrl as ctrl">
+    <div class="widget-content infor-crm-application-widget-chart-div">
+        <div ng-show="!ctrl.isFunnelChart" xi-chart="ctrl.chartOptions" class="chart-container"></div>
+        <div style="padding-left:20px;" ng-show="ctrl.isFunnelChart" class="funnel-container"></div>
+        <div class="hidden infor-crm-funnelChart-tooltipleft-arrow"></div>
+        <div class="infor-crm-funnelChart-tooltip hidden"></div>
+    </div>
+</div>

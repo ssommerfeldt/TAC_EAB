@@ -30,7 +30,6 @@ else
 {
     grpNavDeDupResults.Visible = false;
     lnkDeDupResultDetailHelp.Visible = false;
-    
 }
 
 // If the record is merged we will hide some UI elements
@@ -125,19 +124,19 @@ else
 {
     DialogService.SetSpecs(20, 20, 750, 850, "MergeRecords", "", true);
     Sage.Entity.Interfaces.IDeDupResult dupResult = BindingSource.Current as Sage.Entity.Interfaces.IDeDupResult;
-    	  	
-	Sage.SalesLogix.Web.Controls.SlxGridView grd = sender as Sage.SalesLogix.Web.Controls.SlxGridView;
-	string selectedTargetEntityId = grd.SelectedDataKey.Value.ToString();
-	object mergeAguments =  dupResult.GetMergeArguments(selectedTargetEntityId);
-    
+
+    Sage.SalesLogix.Web.Controls.SlxGridView grd = sender as Sage.SalesLogix.Web.Controls.SlxGridView;
+    string selectedTargetEntityId = grd.SelectedDataKey.Value.ToString();
+    object mergeAguments =  dupResult.GetMergeArguments(selectedTargetEntityId);
+
     if (DialogService.DialogParameters.ContainsKey("mergeArguments"))
     {
         DialogService.DialogParameters.Remove("mergeArguments");
     }
-   
+
     DialogService.DialogParameters.Add("mergeArguments", mergeAguments);
     DialogService.ShowDialog();
-}	]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnRowSelectedAction></QFDataGrid></Property>
+}]]></CSharpCodeSnippet></Action><IsDialogCloseAction>False</IsDialogCloseAction><RunOnEveryRePaint>False</RunOnEveryRePaint><DialogActionResult>NoResult</DialogActionResult><PerformsUpdate>False</PerformsUpdate><AppliedSecurity /><RefreshData>False</RefreshData></OnRowSelectedAction></QFDataGrid></Property>
         </Properties>
       </ControlDefinition>
     </QuickFormElement>

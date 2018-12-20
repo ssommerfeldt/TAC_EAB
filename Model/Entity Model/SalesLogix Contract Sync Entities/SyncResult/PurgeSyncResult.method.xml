@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="72e24037-8128-4abe-9d3d-4ff83e1f6686" lastModifiedUtc="2015-01-28T12:46:27.4152835Z" name="PurgeSyncResult" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="ab81a255-4160-4f57-9fde-d8d80db09171" lastModifiedUtc="2015-01-28T13:05:11.1927929Z" targetType="Sage.SalesLogix.SyncResult.Rules, Sage.SalesLogix.BusinessRules" targetMethod="PurgeSyncResult" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

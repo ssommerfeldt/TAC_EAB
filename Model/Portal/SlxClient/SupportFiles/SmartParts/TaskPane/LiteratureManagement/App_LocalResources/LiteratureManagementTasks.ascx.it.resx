@@ -117,32 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Err_SelectionService" xml:space="preserve">
-    <value>Il servizio di selezione non è stato trovato.</value>
-  </data>
-  <data name="LitTask_NoLabels" xml:space="preserve">
-    <value>Nessuna Etichetta</value>
-  </data>
-  <data name="TaskText_PrintLabels" xml:space="preserve">
-    <value>Stampa Etichette</value>
-  </data>
   <data name="Err_Complete" xml:space="preserve">
-    <value>Non possiedi i diritti per completare tutti gli elementi selezionati.</value>
+    <value>Non si dispone dell’autorizzazione per completare tutti gli elementi selezionati.</value>
+  </data>
+  <data name="Err_Reject" xml:space="preserve">
+    <value>Non si dispone dell’autorizzazione per rifiutare tutti gli elementi selezionati.</value>
   </data>
   <data name="Err_Selection" xml:space="preserve">
-    <value>Ci deve essere almeno un record selezionato prima di eseguire questa azione.</value>
+    <value>Almeno un record deve essere selezionato prima di eseguire questa azione.</value>
   </data>
-  <data name="TaskText_Fulfill" xml:space="preserve">
-    <value>Evadi</value>
+  <data name="Err_SelectionContext" xml:space="preserve">
+    <value>Non è stato possibile recuperare il contesto della selezione.</value>
+  </data>
+  <data name="Err_SelectionService" xml:space="preserve">
+    <value>Il servizio della selezione non è stato trovato.</value>
+  </data>
+  <data name="LitTask_NoLabels" xml:space="preserve">
+    <value>Nessuna etichetta</value>
   </data>
   <data name="TaskText_Complete" xml:space="preserve">
     <value>Completa</value>
   </data>
-  <data name="Err_SelectionContext" xml:space="preserve">
-    <value>Il contesto di selezione non poteva essere recuperato.</value>
+  <data name="TaskText_Fulfill" xml:space="preserve">
+    <value>Evadi</value>
   </data>
-  <data name="Err_Reject" xml:space="preserve">
-    <value>Non possiedi i diritti per rifiutare tutti gli elementi selezionati.</value>
+  <data name="TaskText_PrintLabels" xml:space="preserve">
+    <value>Stampa etichette</value>
   </data>
   <data name="TaskText_Refresh" xml:space="preserve">
     <value>Aggiorna</value>

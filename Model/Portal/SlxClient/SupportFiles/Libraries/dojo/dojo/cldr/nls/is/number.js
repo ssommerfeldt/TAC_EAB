@@ -1,22 +1,23 @@
-//>>built
 define(
 "dojo/cldr/nls/is/number", //begin v1.x content
 {
 	"group": ".",
 	"percentSign": "%",
-	"exponential": "×10^",
+	"exponential": "E",
 	"scientificFormat": "#E0",
 	"percentFormat": "#,##0%",
 	"list": ";",
 	"infinity": "∞",
-	"minusSign": "−",
+	"minusSign": "-",
 	"decimal": ",",
-	"nan": "EiTa",
+	"superscriptingExponent": "×",
+	"nan": "NaN",
 	"perMille": "‰",
 	"decimalFormat": "#,##0.###",
-	"currencyFormat": "#,##0.00 ¤",
+	"currencyFormat": "#,##0.00 ¤",
 	"plusSign": "+",
-	"decimalFormat-short": "000 tr'.'"
+	"decimalFormat-long": "000 billjónir",
+	"decimalFormat-short": "000 bn"
 }
 //end v1.x content
 );

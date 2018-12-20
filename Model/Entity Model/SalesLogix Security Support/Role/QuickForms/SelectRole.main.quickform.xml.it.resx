@@ -112,39 +112,45 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
+  <data name="RoleDescription.Caption" xml:space="preserve">
+    <value>Descrizione ruolo</value>
   </data>
   <data name="lueRole.LookupProperties.RoleDescription.PropertyHeader" xml:space="preserve">
     <value>Descrizione</value>
   </data>
-  <data name="lueRole.ButtonToolTip" xml:space="preserve">
-    <value>Trova</value>
-  </data>
   <data name="btnOk.Caption" xml:space="preserve">
     <value>OK</value>
-  </data>
-  <data name="lueRole.LookupProperties.RoleName.PropertyHeader" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="lblHeader.Text" xml:space="preserve">
-    <value>Aggiungi il ({0}) selezionato {1}  al ruolo seguente.</value>
   </data>
   <data name="btnOk.ToolTip" xml:space="preserve">
     <value>Esegui l'azione</value>
   </data>
-  <data name="RoleDescription.Caption" xml:space="preserve">
-    <value>Descrizione Ruolo</value>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
   </data>
   <data name="btnCancel.ToolTip" xml:space="preserve">
     <value>Annulla l'azione</value>
   </data>
   <data name="lueRole.Caption" xml:space="preserve">
     <value>Ruolo:</value>
+  </data>
+  <data name="lueRole.LookupProperties.RoleName.PropertyHeader" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="lueRole.ButtonToolTip" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="lblHeader.Text" xml:space="preserve">
+    <value>Aggiungi ({0}) {1} selezionato/i al team seguente:</value>
+  </data>
+  <data name="lblSecuredAction" xml:space="preserve">
+    <value>azione protetta</value>
+  </data>
+  <data name="lblUser" xml:space="preserve">
+    <value>utente</value>
   </data>
 </root>

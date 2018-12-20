@@ -1,15 +1,15 @@
-define((
-{ txtSendDate_Caption: 'Отправить:',
-  txtScheduled_Caption: 'Запланир.:',
-  txtStatus_Caption: 'Статус:',
-  txtRequestedBy_Caption: 'Запрошено:',
-  lnkContact_Caption: 'Контакт:',
-  txtPriority_Caption: 'Приоритет:',
-  txtVia_Caption: 'Отправить по:',
-  txtCost_Caption: 'Общая стоимость:',
-  txtWorkPhone_Caption: 'Раб. телефон:',
-  txtPostalCode_Caption: 'Индекс:',
-  txtHomePhone_Caption: 'Домашний тел.',
-  lnkAccount_Caption: 'Субъект:',
-  txtRequestDate_Caption: 'Запрошено:' }
-));
+define("Sage/MainView/ActivityMgr/templates/nls/ru/LitRequestSummary", {
+    "txtSendDate_Caption": "Отправить:",
+    "txtScheduled_Caption": "Запланировано:",
+    "txtStatus_Caption": "Статус:",
+    "txtRequestedBy_Caption": "Автор запроса:",
+    "lnkContact_Caption": "Контакт:",
+    "txtPriority_Caption": "Приоритет:",
+    "txtVia_Caption": "Вид отправки:",
+    "txtCost_Caption": "Итого расходов:",
+    "txtWorkPhone_Caption": "Рабочий телефон:",
+    "txtPostalCode_Caption": "Почтовый индекс:",
+    "txtHomePhone_Caption": "Домашний телефон",
+    "lnkAccount_Caption": "Клиент:",
+    "txtRequestDate_Caption": "Запрошено:"
+});

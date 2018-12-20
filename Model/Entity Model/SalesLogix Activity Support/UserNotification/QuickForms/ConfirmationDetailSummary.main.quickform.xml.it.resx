@@ -117,34 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lnkOpportunityName.Caption" xml:space="preserve">
-    <value>Opportunità:</value>
+  <data name="txtHeader.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.getConfirmSummaryHeaderHtml($.entity, 'detail')%}</value>
   </data>
-  <data name="slxFromUser.Caption" xml:space="preserve">
-    <value>Da:</value>
+  <data name="h_txtRegarding.Caption" xml:space="preserve">
+    <value />
   </data>
   <data name="txtLocation.Caption" xml:space="preserve">
-    <value>Posizione:</value>
+    <value>Ubicazione:</value>
   </data>
   <data name="txtStartDate.Caption" xml:space="preserve">
-    <value>Data iniziale:</value>
+    <value>Data di inizio:</value>
   </data>
-  <data name="slxLeader.Caption" xml:space="preserve">
-    <value>Responsabile:</value>
-  </data>
-  <data name="lnkContactName.Caption" xml:space="preserve">
-    <value>Contatto:</value>
+  <data name="txtStartDate.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatActivityStartDate($.entity.activity_startdate_2, $.entity.activity_timeless_2)%}</value>
   </data>
   <data name="txtDuration.Caption" xml:space="preserve">
     <value>Durata:</value>
   </data>
-  <data name="linkTicketNumber.Caption" xml:space="preserve">
-    <value>Ticket:</value>
+  <data name="txtDuration.Text" xml:space="preserve">
+    <value>{%= Sage.Utility.Activity.formatDuration($.entity.activity_duration_2, $.entity.activity_timeless_2)%}</value>
+  </data>
+  <data name="slxLeader.ButtonToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="slxLeader.Caption" xml:space="preserve">
+    <value>Coordinatore:</value>
+  </data>
+  <data name="lnkContactName.Caption" xml:space="preserve">
+    <value>Contatto:</value>
+  </data>
+  <data name="slxPhone.Caption" xml:space="preserve">
+    <value />
   </data>
   <data name="linkAccountName.Caption" xml:space="preserve">
     <value>Azienda:</value>
   </data>
+  <data name="lnkOpportunityName.Caption" xml:space="preserve">
+    <value>Opportunità:</value>
+  </data>
+  <data name="linkTicketNumber.Caption" xml:space="preserve">
+    <value>Ticket:</value>
+  </data>
   <data name="lblNotes.Text" xml:space="preserve">
     <value>Note:</value>
+  </data>
+  <data name="slxFromUser.Caption" xml:space="preserve">
+    <value>Da:</value>
   </data>
 </root>

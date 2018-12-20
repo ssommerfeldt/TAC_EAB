@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="25329171-72d6-4abc-b779-74bcfd2b574f" lastModifiedUtc="2016-01-11T21:57:11.4880977Z" name="TestConnection" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="013ea1b6-d311-4121-8879-723720abe38d" paramName="instanceName" sequence="0" paramType="String" />
+    <OrmEntityMethodParam id="a1c8682d-174b-44a0-9bb5-a50465268730" paramName="applicationName" sequence="0" paramType="String" />
+    <OrmEntityMethodParam id="665b7d18-49fb-4d8e-96ad-7c8721ebdd05" paramName="serviceUrl" sequence="0" paramType="String" />
+    <OrmEntityMethodParam id="4e6c7189-d8b7-4b85-9227-3b2c67af42ff" paramName="apiKey" sequence="0" paramType="String" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="f6709811-8451-41fb-8dc8-acd940c3ae43" lastModifiedUtc="2016-01-11T23:22:30.836086Z" targetType="Sage.SalesLogix.IntegrationConfigGroup.IntegrationConfigGroup, Sage.SalesLogix.BusinessRules" targetMethod="TestConnection" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

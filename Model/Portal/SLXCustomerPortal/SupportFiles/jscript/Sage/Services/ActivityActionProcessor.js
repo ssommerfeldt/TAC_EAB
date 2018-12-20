@@ -1,6 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/Services/ActivityActionProcessor", [
     'dojo/i18n',
     'Sage/UI/Dialogs',
     'dijit/_Widget',

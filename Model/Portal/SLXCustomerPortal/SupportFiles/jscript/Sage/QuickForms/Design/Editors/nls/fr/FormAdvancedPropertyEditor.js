@@ -1,6 +1,6 @@
-define((
-{ titleText: 'Avancé',
-  generalText: 'Général',
-  useEntityNameAsTitleText: 'Utiliser le nom de entité comme titre :',
-  useEntityNameAsTitleTooltipText: 'Utiliser le nom de entité courante comme titre de formulaire.' }
-));
+define("Sage/QuickForms/Design/Editors/nls/fr/FormAdvancedPropertyEditor", {
+    "titleText": "Avancé",
+    "generalText": "Général",
+    "useEntityNameAsTitleText": "Utiliser le nom de l'entité comme titre :",
+    "useEntityNameAsTitleTooltipText": "Utiliser le nom de l'entité courante comme titre de formulaire."
+});

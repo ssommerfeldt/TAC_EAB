@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="853670e3-6c41-49dd-aa3d-9273a76a2419" lastModifiedUtc="2010-04-23T17:55:31.4126835Z" name="IsValidName" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="853670e3-6c41-49dd-aa3d-9273a76a2419" lastModifiedUtc="2015-06-25T12:56:56.3622822Z" name="IsValidName" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -16,5 +16,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

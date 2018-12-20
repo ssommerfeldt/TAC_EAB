@@ -117,26 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="securityProfileLookup.Caption" xml:space="preserve">
-    <value>Profil de sécurité :</value>
-  </data>
-  <data name="saveButton.ToolTip" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
-  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
-    <value>Voulez-vous vraiment supprimer cette équipe ?</value>
+  <data name="AddManagerCheckBox.Caption" xml:space="preserve">
+    <value>Ajouter automatiquement le responsable de l'utilisateur à l'équipe</value>
   </data>
   <data name="QFTextBox3.Caption" xml:space="preserve">
     <value>Modifié par :</value>
   </data>
-  <data name="AddManagerCheckBox.Caption" xml:space="preserve">
-    <value>Ajouter automatiquement le responsable de l'utilisateur à l'équipe</value>
+  <data name="LastModified.Caption" xml:space="preserve">
+    <value>Dernière modification :</value>
   </data>
-  <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Message" xml:space="preserve">
-    <value>Le nom de l'équipe est manquant, non valide ou en double.</value>
+  <data name="OwnerDescription.Caption" xml:space="preserve">
+    <value>Nom :</value>
+  </data>
+  <data name="Type_item1.Text" xml:space="preserve">
+    <value>Equipe</value>
+  </data>
+  <data name="Type_item0.Text" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="createDate.Caption" xml:space="preserve">
+    <value>Créé le :</value>
+  </data>
+  <data name="QFLabel.Text" xml:space="preserve">
+    <value>Profil de sécurité</value>
+  </data>
+  <data name="copyButton.ToolTip" xml:space="preserve">
+    <value>Copier l'équipe</value>
+  </data>
+  <data name="securityProfileLookup.Caption" xml:space="preserve">
+    <value>Profil de sécurité :</value>
   </data>
   <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
     <value>Description du profil</value>
+  </data>
+  <data name="CannotDeleteTeamMessage" xml:space="preserve">
+    <value>Impossible de supprimer cette équipe, car elle est associée à un ou plusieurs comptes ou contacts.</value>
+  </data>
+  <data name="CannotDeleteTeamMessageTitle" xml:space="preserve">
+    <value>Impossible de supprimer l'équipe</value>
   </data>
   <data name="8d19220b-99ab-4f83-a2ea-a155ce19a0fc.Message" xml:space="preserve">
     <value>Cette équipe ne peut pas être supprimée car elle est propriétaire de comptes.</value>
@@ -144,40 +162,22 @@
   <data name="8d19220b-99ab-4f83-a2ea-a155ce19a0fc.Title" xml:space="preserve">
     <value>Suppression non autorisée</value>
   </data>
-  <data name="CannotDeleteTeamMessage" xml:space="preserve">
-    <value>Impossible de supprimer cette équipe car elle est associée à un ou plusieurs comptes ou contacts.</value>
+  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
+    <value>Souhaitez-vous vraiment supprimer cette équipe ?</value>
   </data>
   <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Title" xml:space="preserve">
     <value>La validation a échoué</value>
   </data>
-  <data name="copyButton.ToolTip" xml:space="preserve">
-    <value>Copier l'équipe</value>
+  <data name="6c526093-861d-46d7-969a-8a7e6f173de9.Message" xml:space="preserve">
+    <value>Le nom de l'équipe est manquant, non valide ou en double.</value>
+  </data>
+  <data name="saveButton.ToolTip" xml:space="preserve">
+    <value>Enregistrer</value>
   </data>
   <data name="deleteButton.ToolTip" xml:space="preserve">
     <value>Supprimer</value>
   </data>
-  <data name="QFLabel.Text" xml:space="preserve">
-    <value>Profil de sécurité</value>
-  </data>
-  <data name="createDate.Caption" xml:space="preserve">
-    <value>Créé le :</value>
-  </data>
-  <data name="Type_item0.Text" xml:space="preserve">
-    <value>Service</value>
-  </data>
   <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
-    <value>Recherche de profil de sécurité</value>
-  </data>
-  <data name="OwnerDescription.Caption" xml:space="preserve">
-    <value>Nom :</value>
-  </data>
-  <data name="CannotDeleteTeamMessageTitle" xml:space="preserve">
-    <value>Impossible de supprimer l'équipe</value>
-  </data>
-  <data name="Type_item1.Text" xml:space="preserve">
-    <value>Equipe</value>
-  </data>
-  <data name="LastModified.Caption" xml:space="preserve">
-    <value>Dernière modification :</value>
+    <value>Rechercher un profil de sécurité</value>
   </data>
 </root>

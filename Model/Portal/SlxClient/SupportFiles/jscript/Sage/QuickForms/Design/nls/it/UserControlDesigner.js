@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Utente' }
-));
+define("Sage/QuickForms/Design/nls/it/UserControlDesigner", {
+    "displayNameText": "Utente"
+});

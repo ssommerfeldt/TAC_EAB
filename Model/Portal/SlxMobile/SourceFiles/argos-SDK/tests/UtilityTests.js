@@ -1,4 +1,4 @@
-define('tests/UtilityTests', ['dojo/_base/lang', 'Sage/Platform/Mobile/Utility'], function(lang, utility) {
+define('tests/UtilityTests', ['dojo/_base/lang', 'argos/Utility'], function(lang, utility) {
 return describe('Sage.Platform.Mobile.Utility', function() {
 
     it('Can get single level property of object', function() {
@@ -31,6 +31,77 @@ return describe('Sage.Platform.Mobile.Utility', function() {
         var testObj = {};
 
         expect(utility.getValue(testObj, 'level1', 'testFallback')).toEqual('testFallback');
+    });
+
+    it('Can not set an invalid property', function() {
+        var testObj = {
+            test: null
+        };
+
+        expect(utility.setValue(testObj, '', '').test).toEqual(null);
+        expect(utility.setValue(testObj, '.', '').test).toEqual(null);
+    });
+
+    it('Can memoize', function() {
+        var spy, mem;
+
+        spy = {
+            adder: function(a, b) {
+                return a + b;
+            }
+        };
+
+        spyOn(spy, 'adder').and.callThrough();
+
+        mem = utility.memoize(spy.adder);
+        mem(1, 2);
+        mem(1, 2);
+        expect(spy.adder.calls.count()).toEqual(1);
+    });
+
+    it('Can debounce', function(done) {
+      var count = 0;
+      var fn = utility.debounce(function() {
+        count++;
+      }, 1000);
+      fn();
+      fn();
+      fn();
+      expect(count).toEqual(0);
+      setTimeout(function() {
+        expect(count).toEqual(1);
+        done();
+      }, 1000);
+    });
+
+    it('Can debounce with args', function(done) {
+      var fn = utility.debounce(function(a,b,c) {
+        expect(a).toEqual('a');
+        expect(b).toEqual('b');
+        expect(c).toEqual('c');
+        done();
+      }, 1000);
+      fn('a', 'b', 'c');
+    });
+
+    it('Can expand an expression', function() {
+        expect(utility.expand(null, function() {
+            return '123';
+        })).toEqual('123');
+    });
+
+    it('Can set nested properties', function() {
+        var testObj = {
+            test1: {
+                test2: {
+                    name: ''
+                }
+            }
+        };
+
+        expect(utility.setValue(testObj, 'test1.test2.name', 'John Doe').test1.test2.name).toEqual('John Doe');
+        expect(utility.setValue({test1: { test2: {}}}, 'test1[test2]', 'Jane Doe')).toEqual({ test1: { test2: 'Jane Doe' }});
+        expect(utility.setValue({test1: {}}, 'test2[0]', 'Jane Doe')).toEqual({ test1: { }, test2: ['Jane Doe'] });
     });
 
     it('Can set an existing single level property of object', function() {
@@ -82,4 +153,3 @@ return describe('Sage.Platform.Mobile.Utility', function() {
     });
 });
 });
-

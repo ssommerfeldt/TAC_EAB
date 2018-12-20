@@ -22,6 +22,7 @@ public partial class TargetResponses : EntityBoundSmartPartInfoProvider
     #region properties
 
     private int _grdResponseDeleteColIndex = -2;
+    private int _grdResponseTypeColumnIndex = -2;
     private ResponseFilterStateInfo _State;
 
     #endregion
@@ -632,9 +633,15 @@ public partial class TargetResponses : EntityBoundSmartPartInfoProvider
                     if (btn != null)
                     {
                         btn.Attributes.Add("onclick", "javascript: return confirm('" + GetLocalResourceObject("grdResponses.ConfirmDelete_Msg") + "');");
-                        return;
+                        break;
                     }
                 }
+            }
+            if ((grdResponseTypeColumnIndex >= 0) && (grdResponseTypeColumnIndex < e.Row.Cells.Count))
+            {
+                string typeText = e.Row.Cells[grdResponseTypeColumnIndex].Text;
+                e.Row.Cells[grdResponseTypeColumnIndex].Text = (typeText == "Lead") ? GetLocalResourceObject("grdResponses.Lead").ToString() : GetLocalResourceObject("grdResponses.Contact").ToString();
+                Console.WriteLine(e.Row.Cells[3].Text);
             }
         }
     }
@@ -651,7 +658,7 @@ public partial class TargetResponses : EntityBoundSmartPartInfoProvider
             {
                 int bias = (grdResponses.ExpandableRows) ? 1 : 0;
                 _grdResponseDeleteColIndex = -1;
-                int colcount = 0;
+                int colCount = 0;
                 foreach (DataControlField col in grdResponses.Columns)
                 {
                     ButtonField btn = col as ButtonField;
@@ -659,17 +666,46 @@ public partial class TargetResponses : EntityBoundSmartPartInfoProvider
                     {
                         if (btn.CommandName == "Delete")
                         {
-                            _grdResponseDeleteColIndex = colcount + bias;
+                            _grdResponseDeleteColIndex = colCount + bias;
                             break;
                         }
                     }
-                    colcount++;
+                    colCount++;
                 }
             }
             return _grdResponseDeleteColIndex;
         }
     }
-
+    /// <summary>
+    /// Gets the index of the grid campaigns Type column.
+    /// </summary>
+    /// <value>The index of the grid campaigns Type column.</value>
+    protected int grdResponseTypeColumnIndex
+    {
+        get
+        {
+            if (_grdResponseTypeColumnIndex == -2)
+            {
+                int bias = (grdResponses.ExpandableRows) ? 1 : 0;
+                _grdResponseTypeColumnIndex = -1;
+                int colCount = 0;
+                foreach (DataControlField col in grdResponses.Columns)
+                {
+                    BoundField responseType = col as BoundField;
+                    if (responseType != null)
+                    {
+                        if (responseType.DataField == "Type")
+                        {
+                            _grdResponseTypeColumnIndex = colCount + bias;
+                            break;
+                        }
+                    }
+                    colCount++;
+                }
+            }
+            return _grdResponseTypeColumnIndex;
+        }
+    }
     /// <summary>
     /// Handles the RowEditing event of the grdResponses control.
     /// </summary>

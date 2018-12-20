@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/ColumnDesigner", [
     'dojo/string',
     'dojo/topic',
     'dojo/_base/declare',

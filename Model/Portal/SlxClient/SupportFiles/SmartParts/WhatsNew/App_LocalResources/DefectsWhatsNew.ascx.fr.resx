@@ -117,14 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdNewDefects.CreateUser.ColumnHeading" xml:space="preserve">
-    <value>Créé par</value>
+  <data name="grdChangedDefects.EmptyTableRowText" xml:space="preserve">
+    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
   </data>
   <data name="grdNewDefects.CreateDate.ColumnHeading" xml:space="preserve">
     <value>Date de création</value>
   </data>
+  <data name="grdNewDefects.CreateUser.ColumnHeading" xml:space="preserve">
+    <value>Créé par</value>
+  </data>
+  <data name="grdNewDefects.DefectID.ColumnHeading" xml:space="preserve">
+    <value>ID de défaut</value>
+  </data>
+  <data name="grdNewDefects.EmptyTableRowText" xml:space="preserve">
+    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
+  </data>
   <data name="grdNewDefects.ModifyDate.ColumnHeading" xml:space="preserve">
     <value>Date de modification</value>
+  </data>
+  <data name="grdNewDefects.ModifyUser.ColumnHeading" xml:space="preserve">
+    <value>Modifié par</value>
+  </data>
+  <data name="grdNewDefects.Priority.ColumnHeading" xml:space="preserve">
+    <value>Priorité</value>
+  </data>
+  <data name="grdNewDefects.Severity.ColumnHeading" xml:space="preserve">
+    <value>Gravité</value>
   </data>
   <data name="grdNewDefects.Status.ColumnHeading" xml:space="preserve">
     <value>Etat</value>
@@ -132,28 +150,10 @@
   <data name="ModifiedDefects_Caption" xml:space="preserve">
     <value>Défauts modifiés</value>
   </data>
-  <data name="grdNewDefects.DefectID.ColumnHeading" xml:space="preserve">
-    <value>ID de défaut</value>
-  </data>
-  <data name="grdNewDefects.Priority.ColumnHeading" xml:space="preserve">
-    <value>Priorité</value>
-  </data>
-  <data name="grdNewDefects.EmptyTableRowText" xml:space="preserve">
-    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
-  </data>
   <data name="NewDefects_Caption" xml:space="preserve">
     <value>Nouveaux défauts</value>
   </data>
-  <data name="grdNewDefects.ModifyUser.ColumnHeading" xml:space="preserve">
-    <value>Modifié par</value>
-  </data>
-  <data name="grdChangedDefects.EmptyTableRowText" xml:space="preserve">
-    <value>Aucun enregistrement ne correspond aux critères de sélection.</value>
-  </data>
   <data name="Defects_Caption" xml:space="preserve">
     <value>Défauts</value>
-  </data>
-  <data name="grdNewDefects.Severity.ColumnHeading" xml:space="preserve">
-    <value>Gravité</value>
   </data>
 </root>

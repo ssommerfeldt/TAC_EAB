@@ -1,4 +1,4 @@
-define((
-{ addSecurityProfileTitle: 'Добавить профиль',
-  editSecurityProfileTitle: 'Изменить профиль' }
-));
+define("Sage/TaskPane/nls/ru/SecurityManagerTasksTasklet", {
+    "addSecurityProfileTitle": "Добавить профиль",
+    "editSecurityProfileTitle": "Редактировать профиль"
+});

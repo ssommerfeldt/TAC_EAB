@@ -17,7 +17,7 @@
     <asp:TextBox runat="server" ID="txtOwnerType" />
     <asp:HiddenField runat="server" ID="Mode" />
 </div>
-<table id="Table2" border="0" cellpadding="1" cellspacing="2" class="formtable">
+<table id="Table2" class="formtable">
     <col width="50%" /><col width="50%" />
     <tr>
         <td colspan ="2">
@@ -31,7 +31,7 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="lblStatus" AssociatedControlID="pklStatus" runat="server" Text="<%$ resources: lblStatus.Text %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -40,7 +40,7 @@
             </div>
         </td>
         <td>
-            <div class="lbl alignleft">
+            <div class="lbl alignright">
                 <asp:Label ID="lblNeededDate" AssociatedControlID="dtNeededDate" runat="server" Text="<%$ resources: lblNeededDate.Text %>"></asp:Label>
             </div>
             <div class="textcontrol datepicker">
@@ -50,7 +50,7 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="lblPrority" AssociatedControlID="pklPriority" runat="server" Text="<%$ resources: lblPriority.Text %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -59,7 +59,7 @@
             </div>
         </td>
         <td>
-            <div class="lbl alignleft">
+            <div class="lbl alignright">
                 <asp:Label ID="lblCompletedDate" AssociatedControlID="dtCompletedDate" runat="server" Text="<%$ resources: lblCompletedDate.Text %>"></asp:Label>
             </div>
             <div class="textcontrol datepicker">
@@ -69,7 +69,7 @@
     </tr>
     <tr>    
         <td>  
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="lblPercent" AssociatedControlID="txtPercentComplete" runat="server" Text="<%$ resources: lblPercentComplete.Text %>"></asp:Label>
             </div>
             <div class="textcontrol">
@@ -90,7 +90,7 @@
     </tr>
 </table>
 
-<table border="0" cellpadding="1" cellspacing="2" class="formtable">
+<table class="formtable">
     <col width="50%" /><col width="50%" />
     <tr>
         <td colspan="2">
@@ -103,7 +103,7 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="lblEstimatedCost" runat="server" AssociatedControlID="slxCurEstimatedCost" Text="<%$ resources: lblEstimatedCost.Text %>"></asp:Label>
             </div>
             <div class="textcontrol currency">
@@ -111,7 +111,7 @@
             </div>
         </td>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="lblActualCost" runat="server" AssociatedControlID="slxCurActualCost" Text="<%$ resources: lblActualCost.Text %>"></asp:Label>
             </div>
             <div class="textcontrol currency">
@@ -121,7 +121,7 @@
     </tr>
     <tr>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="lblEstimatedHours" runat="server" AssociatedControlID="numEstimatedHours" Text="<%$ resources: lblEstimatedHours.Text %>"></asp:Label>
             </div>
             <div class="textcontrol numeric">
@@ -129,7 +129,7 @@
             </div>
         </td>
         <td>
-            <div class="lbl">
+            <div class="lbl alignright">
                 <asp:Label ID="lblActualHours" runat="server" AssociatedControlID="numActualHours" Text="<%$ resources: lblActualHours.Text %>"></asp:Label>
             </div>
             <div class="textcontrol numeric">
@@ -139,7 +139,8 @@
     </tr>
 </table>
 
-<table id="tblAssignment" border="0" cellpadding="1" cellspacing="2" class="formtable">
+<table id="tblAssignment"class="formtable">
+    <col width="50%" /><col width="50%" />
     <tr>
         <td colspan="2">
             <div class="mainContentHeader">
@@ -154,28 +155,16 @@
             <div class="lbl">
                 <asp:Label ID="lblAssignTo1" runat="server" Text="<%$ resources: lblAssignTo.Text %>"></asp:Label>
             </div>
-            <div>
-                <asp:RadioButton runat="server" ID="rdbUser" GroupName="AssignTo" Text="<%$ resources: rdlUserTeam.Text %>" Value="0" CssClass="radio" Checked="True"></asp:RadioButton>
-            </div>
-            <div class="lbl"></div>
-            <div>
-                <asp:RadioButton runat="server" ID="rdbDepartment" GroupName="AssignTo" Text="<%$ resources: rdlDepartment.Text %>" Value="1" CssClass="radio"></asp:RadioButton>
-            </div>
-            <div class="lbl"></div>
-            <div>
-                <asp:RadioButton runat="server" ID="rdbContact" GroupName="AssignTo" Text="<%$ resources: rdlContact.Text %>" Value="2" CssClass="radio"></asp:RadioButton>
-            </div>
-            <div class="lbl"></div>
-            <div>
-                <asp:RadioButton runat="server" ID="rdbOther" GroupName="AssignTo" Text="<%$ resources: rdlOther.Text %>" Value="3" CssClass="radio"></asp:RadioButton>
-            </div>
-            <div class="lbl"></div>
-            <div>
-                <asp:RadioButton runat="server" ID="rdbNone" GroupName="AssignTo" Text="<%$ resources: rdlNone.Text %>" Value="4" CssClass="radio"></asp:RadioButton>
-            </div>
+            <asp:RadioButtonList runat="server" ID="rdgAssignTo" RepeatDirection="vertical" >
+                <asp:ListItem Text="<%$ resources: rdlUserTeam.Text %>" Selected="True" Value="0" />
+                <asp:ListItem Text="<%$ resources: rdlDepartment.Text %>" Value="1" />
+                <asp:ListItem Text="<%$ resources: rdlContact.Text %>" Value="2" />
+                <asp:ListItem Text="<%$ resources: rdlOther.Text %>" Value="3" />
+                <asp:ListItem Text="<%$ resources: rdlNone.Text %>" Value="4" />
+            </asp:RadioButtonList>
         </td>
-        <td valign="top" style="margin-top:0px">
-            <table id="tblAssignment2" border="0" cellpadding="1" cellspacing="2" width="100%">
+        <td>
+            <table id="tblAssignment2" width="100%">
                 <tr>
                     <td>
                         <div class="lbl">

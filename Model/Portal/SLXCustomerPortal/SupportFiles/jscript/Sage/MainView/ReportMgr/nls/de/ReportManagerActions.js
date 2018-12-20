@@ -1,15 +1,14 @@
-define(
-{
-    txtSelectRecord: 'Bitte wählen Sie einen Datensatz aus der Liste aus.',
-    txtInvalidSelectionCount: 'You must have at least one record selected before continuing.',
-    confirm_Deletion: 'Are you sure you want to delete the selected ${0}?',
-    confirm_Report: 'report',
-    confirm_Schedule: 'schedule',
-    confirm_ReportHistory: 'report history record',
-    txtYes: 'Yes',
-    txtNo: 'No',
-    deleteJobError: 'Sorry an error occured during the deletion process: ${0}',
-    txtDeleteHistory: 'Deleting history records',
-    txtDeleteTitle: 'Delete History',
-    txtErrorDeleteReport: 'An error occured deleting report: ${0}'
+define("Sage/MainView/ReportMgr/nls/de/ReportManagerActions", {
+    "txtSelectRecord": "Wählen Sie einen Datensatz aus der Liste, bevor Sie fortfahren.",
+    "txtInvalidSelectionCount": "Sie müssen mindestens einen Datensatz auswählen, bevor Sie fortfahren.",
+    "confirm_Deletion": "Möchten Sie die Auswahl wirklich löschen? (${0})",
+    "confirm_Report": "Bericht",
+    "confirm_Schedule": "Zeitplan",
+    "confirm_ReportHistory": "Bericht Historiendatensatz",
+    "txtYes": "Ja",
+    "txtNo": "Nein",
+    "deleteJobError": "Leider ist während des Löschvorgangs ein Fehler aufgetreten: ${0}",
+    "txtDeleteHistory": "Historiendatensätze werden gelöscht",
+    "txtDeleteTitle": "Historie löschen",
+    "txtErrorDeleteReport": "Beim Löschen des Berichts ist ein Fehler aufgetreten: ${0}"
 });

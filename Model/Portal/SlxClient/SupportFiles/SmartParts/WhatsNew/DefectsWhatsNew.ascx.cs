@@ -246,13 +246,8 @@ public partial class DefectsWhatsNew : UserControl, ISmartPartInfoProvider
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
         ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-
-        Label lblNewDefects = new Label();
-        lblNewDefects.Text = GetLocalResourceObject("Defects_Caption").ToString();
-
-        tinfo.LeftTools.Add(lblNewDefects);
+        tinfo.Title = GetLocalResourceObject("Defects_Caption").ToString();
         tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Defect_detail_24x24.gif");
-
         return tinfo;
     }
 

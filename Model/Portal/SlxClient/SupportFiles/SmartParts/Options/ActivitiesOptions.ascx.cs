@@ -14,6 +14,7 @@ public partial class ActivityOptionsPage : Sage.Platform.WebPortal.SmartParts.Sm
     private const string CategoryPhoneCall = "ActivityPhoneOptions";
     private const string CategoryToDo = "ActivityToDoOptions";
     private const string CategoryPersonalActivity = "ActivityPersonalOptions";
+    private const string CategoryHistory = "HistoryOptions";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -63,6 +64,7 @@ public partial class ActivityOptionsPage : Sage.Platform.WebPortal.SmartParts.Sm
         chkRolloverPhoneCall.Enabled = false;
         chkRolloverToDo.Enabled = false;
         chkRolloverPersonalActivity.Enabled = false;
+        chkIncludeAttendee.Checked = false;
         Page.DataBind();
     }
 
@@ -96,6 +98,8 @@ public partial class ActivityOptionsPage : Sage.Platform.WebPortal.SmartParts.Sm
         chkRolloverPersonalActivity.Checked = mgr.GetOptionAsBoolean("Autorollover", CategoryPersonalActivity);
 
         chkPastDue.Checked = mgr.GetOptionAsBoolean("DisplayPastDueInToolBar", CategoryActivityAlarm);
+
+        chkIncludeAttendee.Checked = mgr.GetOptionAsBoolean("IncludeAttendee", CategoryHistory);
         GenerateScript();
     }
 
@@ -104,6 +108,7 @@ public partial class ActivityOptionsPage : Sage.Platform.WebPortal.SmartParts.Sm
         StringBuilder sb = new StringBuilder();
         sb.Append("{");
         sb.AppendFormat("chkPastDueID:'{0}',", chkPastDue.ClientID);
+        sb.AppendFormat("chkIncludeAttendeeID:'{0}',", chkIncludeAttendee.ClientID);
         sb.AppendFormat("chkTimelessMeetingID:'{0}',", chkTimelessMeeting.ClientID);
         sb.AppendFormat("chkTimelessPhoneCallID:'{0}',", chkTimelessPhoneCall.ClientID);
         sb.AppendFormat("chkTimelessToDoID:'{0}',", chkTimelessToDo.ClientID);
@@ -149,6 +154,7 @@ public partial class ActivityOptionsPage : Sage.Platform.WebPortal.SmartParts.Sm
         mgr.SetOptionAsBoolean("Autorollover", CategoryToDo, chkRolloverToDo.Checked);
         mgr.SetOptionAsBoolean("Autorollover", CategoryPersonalActivity, chkRolloverPersonalActivity.Checked);
         mgr.SetOptionAsBoolean("DisplayPastDueInToolBar", CategoryActivityAlarm, chkPastDue.Checked);
+        mgr.SetOptionAsBoolean("IncludeAttendee", CategoryHistory, chkIncludeAttendee.Checked);
     }
 
     /// <summary>

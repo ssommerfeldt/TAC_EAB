@@ -1,5 +1,5 @@
-﻿/*globals define, Sage, window, dojo */
-define([
+/*globals define, Sage, window, dojo */
+define("Sage/Utility/File/LibraryDocument", [
         'Sage/Data/SingleEntrySDataStore',
         'Sage/Data/SDataServiceRegistry',
         'Sage/Utility/File',

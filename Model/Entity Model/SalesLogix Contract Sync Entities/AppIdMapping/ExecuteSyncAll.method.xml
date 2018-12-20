@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5d4f3b60-e14a-450f-a632-978886c359b5" lastModifiedUtc="2010-08-04T17:26:02.8836913Z" name="ExecuteSyncAll" methodType="Rule" actionType="None" returnMode="None">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5d4f3b60-e14a-450f-a632-978886c359b5" lastModifiedUtc="2015-06-25T12:47:34.9052331Z" name="ExecuteSyncAll" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -14,5 +14,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

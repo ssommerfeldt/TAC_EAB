@@ -117,88 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblLinkedRecords.Caption" xml:space="preserve">
-    <value>Системные связи (ссылки)  (Следующие записи будут связаны и объединены в обоих системах).</value>
-  </data>
-  <data name="Grid_WorkPhone_Column" xml:space="preserve">
-    <value>Раб. телефон</value>
+  <data name="btnBack.Caption" xml:space="preserve">
+    <value>&lt; Назад</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="EmptyTableRowText" xml:space="preserve">
-    <value>Нет записей совпадающих с выбранным критерием фильтра.</value>
+  <data name="btnLink.Caption" xml:space="preserve">
+    <value>Ссылка</value>
   </data>
-  <data name="LinkContactAddresses.Caption" xml:space="preserve">
-    <value>Связать адреса контактов</value>
-  </data>
-  <data name="Grid_LastName_Column" xml:space="preserve">
-    <value>Фамилия</value>
-  </data>
-  <data name="btnBack.Caption" xml:space="preserve">
-    <value>&lt; Назад</value>
+  <data name="btnNext.Caption" xml:space="preserve">
+    <value>Дальше &gt;</value>
   </data>
   <data name="Grid_City_Column" xml:space="preserve">
     <value>Город</value>
   </data>
-  <data name="btnLink.Caption" xml:space="preserve">
-    <value>Ссылка</value>
-  </data>
-  <data name="MergeContacts.Caption" xml:space="preserve">
-    <value>Объединить контакты</value>
-  </data>
-  <data name="UnlinkedRecords.Caption" xml:space="preserve">
-    <value>Отвязать {0} от {1}</value>
+  <data name="Grid_Email_Column" xml:space="preserve">
+    <value>Электронная почта</value>
   </data>
   <data name="Grid_FirstName_Column" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="LinkAddress.Caption" xml:space="preserve">
-    <value>Связать адреса</value>
+  <data name="Grid_LastName_Column" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="Grid_WorkPhone_Column" xml:space="preserve">
+    <value>Рабочий телефон</value>
   </data>
   <data name="lblContacts.Caption" xml:space="preserve">
     <value>Контакты</value>
   </data>
-  <data name="LinkToAccounting.Caption" xml:space="preserve">
-    <value>Ссылка на учет - Результаты</value>
-  </data>
-  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
-    <value>Ссылка на учет - Слияние данных - Различия не найдены</value>
-  </data>
-  <data name="lblDescription.Caption" xml:space="preserve">
-    <value>Создайте связи для объединения записей контактов SalesLogix системы учета. Системные ссылки будут совпадать по критерию, определенному вами.</value>
-  </data>
-  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
-    <value>Ссылка на учет - Слияние данных - Найдены различия</value>
+  <data name="lblLinkedRecords.Caption" xml:space="preserve">
+    <value>Связанные контакты (следующие записи будут связаны и объединены в обоих системах).</value>
   </data>
   <data name="Grid_Unlink.Column" xml:space="preserve">
     <value>Разъединить</value>
   </data>
-  <data name="Grid_Email_Column" xml:space="preserve">
-    <value>Эл. почта</value>
-  </data>
-  <data name="btnNext.Caption" xml:space="preserve">
-    <value>Следующий&gt;</value>
-  </data>
-  <data name="Grid_Source_Column" xml:space="preserve">
-    <value>Источник</value>
-  </data>
-  <data name="Grid.Select.Text" xml:space="preserve">
-    <value>Выбрать</value>
-  </data>
-  <data name="lblExtendedDetails.Caption" xml:space="preserve">
-    <value>Расширенные подробности</value>
-  </data>
-  <data name="Grid_Property_Column" xml:space="preserve">
-    <value>Свойство</value>
+  <data name="MergeContacts.Caption" xml:space="preserve">
+    <value>Объединить контакты</value>
   </data>
   <data name="MergeContactsDesc.Caption" xml:space="preserve">
     <value>Связать совпадающие контакты.</value>
   </data>
-  <data name="Grid_Target_Column" xml:space="preserve">
-    <value>Цель</value>
+  <data name="UnlinkedRecords.Caption" xml:space="preserve">
+    <value>"{0}" разъединено от "{1}"</value>
+  </data>
+  <data name="lblDescription.Caption" xml:space="preserve">
+    <value>Создайте связи для объединения записей контактов. Системные ссылки будут совпадать по критерию, определенному вами.</value>
+  </data>
+  <data name="EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, совпадающих с выбранными критериями фильтра.</value>
+  </data>
+  <data name="Grid.Select.Text" xml:space="preserve">
+    <value>Выбрать</value>
   </data>
   <data name="Error_SourceTargetNotSelected" xml:space="preserve">
     <value>Выберите и цель и источник перед продолжением.</value>
+  </data>
+  <data name="Grid_Property_Column" xml:space="preserve">
+    <value>Свойство</value>
+  </data>
+  <data name="Grid_Source_Column" xml:space="preserve">
+    <value>Источник</value>
+  </data>
+  <data name="Grid_Target_Column" xml:space="preserve">
+    <value>Цель</value>
+  </data>
+  <data name="LinkToAccounting.Caption" xml:space="preserve">
+    <value>Ссылка на учет — результаты</value>
+  </data>
+  <data name="LinkAddress.Caption" xml:space="preserve">
+    <value>Связать адреса</value>
+  </data>
+  <data name="lblExtendedDetails.Caption" xml:space="preserve">
+    <value>Дополнительные данные</value>
+  </data>
+  <data name="LinkContactAddresses.Caption" xml:space="preserve">
+    <value>Связать адреса контактов</value>
+  </data>
+  <data name="MergeRecordsDialog_Differences.Caption" xml:space="preserve">
+    <value>Ссылка на систему учета — объединение данных — найдены различия</value>
+  </data>
+  <data name="MergeRecordsDialog_NoDifferences.Caption" xml:space="preserve">
+    <value>Ссылка на систему учета — объединение данных — различия не найдены</value>
   </data>
 </root>

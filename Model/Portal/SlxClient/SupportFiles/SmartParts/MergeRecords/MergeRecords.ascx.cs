@@ -69,7 +69,7 @@ public partial class MergeRecords : SmartPartInfoProvider
     /// Gets or sets the entity service.
     /// </summary>
     /// <value>The entity service.</value>
-    [ServiceDependency(Type = typeof (IEntityContextService), Required = true)]
+    [ServiceDependency]
     public IEntityContextService EntityService { get; set; }
 
     /// <summary>
@@ -112,8 +112,7 @@ public partial class MergeRecords : SmartPartInfoProvider
         if (!_loadResults) return;
         if (DialogService.DialogParameters.ContainsKey("mergeArguments"))
         {
-            if (!Sage.SalesLogix.BusinessRules.BusinessRuleHelper.ValidateCanMergeEntity(
-                    SessionMergeArguments.SourceEntityId, SessionMergeArguments.SourceEntityType))
+            if (!Sage.SalesLogix.BusinessRules.BusinessRuleHelper.ValidateCanMergeEntity(SessionMergeArguments))
             {
                 DialogService.DialogParameters.Remove("mergeArguments");
                 throw new ValidationException(GetLocalResourceObject("error_Promoted_Target").ToString());
@@ -281,17 +280,22 @@ public partial class MergeRecords : SmartPartInfoProvider
 
             if (SessionMergeArguments.SourceEntityType == typeof (ILead))
             {
-                using (ISession session = new Sage.Platform.Orm.SessionScopeWrapper(true))
+                var result = false;
+                Sage.SalesLogix.Lead.Rules.MergeLead(SessionMergeArguments.MergeProvider, out result);
+                 if (result)
                 {
-                    Type type = SessionMergeArguments.MergeProvider.Source.EntityType;
-                    string entityId = SessionMergeArguments.MergeProvider.Source.EntityId;
-                    IPersistentEntity source = Sage.Platform.EntityFactory.GetById(type, entityId) as IPersistentEntity;
-                    if (source != null)
+                    using (ISession session = new Sage.Platform.Orm.SessionScopeWrapper(true))
                     {
-                        source.Delete();
-                        EntityService.RemoveEntityHistory(type, source);
+                        Type type = SessionMergeArguments.MergeProvider.Source.EntityType;
+                        string entityId = SessionMergeArguments.MergeProvider.Source.EntityId;
+                        IPersistentEntity source = Sage.Platform.EntityFactory.GetById(type, entityId) as IPersistentEntity;
+                        if (source != null)
+                        {
+                            source.Delete();
+                            EntityService.RemoveEntityHistory(type, source);
+                        }
+                        Response.Redirect(String.Format("{0}.aspx", GetEntityName(SessionMergeArguments.MergeProvider.Target.EntityType)));
                     }
-                    Response.Redirect(String.Format("{0}.aspx", GetEntityName(SessionMergeArguments.MergeProvider.Target.EntityType)));
                 }
             }
             else

@@ -1,14 +1,15 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
+define("Sage/UI/Columns/Currency", [
     'dojo/_base/declare',
     'dojo/json',
     'Sage/Data/SDataServiceRegistry',
     'Sage/Utility/_LocalStorageMixin',
     'Sage/Utility',
     'dojo/_base/lang',
-    'dojox/grid/cells/dijit'
+    'dojox/grid/cells/dijit',
+    'Sage/UI/Controls/Currency'
 ],
-function (declare, json, SDataServiceRegistry, _localStorageMixin, utility, lang) {
+function (declare, json, SDataServiceRegistry, _localStorageMixin, utility, lang, dijitCells, currency) {
     /*
     sample config object...
     {
@@ -30,7 +31,7 @@ function (declare, json, SDataServiceRegistry, _localStorageMixin, utility, lang
     }
     */
     var widget = declare("Sage.UI.Columns.Currency", dojox.grid.cells._Widget, {
-        widgetClass: Sage.UI.Controls.Currency,
+        widgetClass: currency,
         exchangeRateLoaded: false,
         constructor: function (o) {
             if (this.multiCurrency && !this.exchangeRateLoaded) {
@@ -145,13 +146,20 @@ function (declare, json, SDataServiceRegistry, _localStorageMixin, utility, lang
                 //Else: get it from the client context service.
                 if (this.exchangeRateType == 'EntityRate' && utility.getModeId() !== 'insert') {
                     //Extract the Rate value from the object by walking the sdata relationship path.
-                    var rateFieldPath = this.exchangeRateField.split('.');
-                    var rateFieldValue = currentItem;
-                    for (i = 0; i < rateFieldPath.length; i++) {
-                        if (rateFieldValue) {
-                            rateFieldValue = rateFieldValue[rateFieldPath[i]];
-                        } else {
-                            rateFieldValue = utility.getClientContextByKey(this.exchangeRateType);
+                    var rateFieldValue = 1;
+                    if ((typeof this.exchangeRateField !== 'undefined') && (this.exchangeRateField !== null) && (this.exchangeRateField !== ''))
+                    {
+                        var rateFieldPath = this.exchangeRateField.split('.');
+                        rateFieldValue = currentItem;
+                        for (i = 0; i < rateFieldPath.length; i++) {
+                            if (rateFieldValue) {
+                                rateFieldValue = rateFieldValue[rateFieldPath[i]];
+                            } else {
+                                rateFieldValue = utility.getClientContextByKey(this.exchangeRateType);
+                            }
+                        }
+                        if ((rateFieldValue === null) || (rateFieldValue === 0)) {
+                            rateFieldValue = 1;
                         }
                     }
                     //Extract the Rate Code value from the object by walking the sdata relationship path.
@@ -240,7 +248,7 @@ function (declare, json, SDataServiceRegistry, _localStorageMixin, utility, lang
                     if (!this._requestingData) {
                         this._requestingData = true;
                         var request = new Sage.SData.Client.SDataSingleResourceRequest(SDataServiceRegistry.getSDataService('dynamic', false, true, true));
-                        request.setResourceSelector(dojo.string.substitute("'${0}'", [scope.currentCode]));
+                        request.setQueryArg("where", dojo.string.substitute("CurrencyCode eq \'${0}\'", [scope.currentCode]));
                         request.setResourceKind('exchangeRates');
                         request.read({
                             success: lang.hitch(this, this._receiveData),

@@ -1,14 +1,12 @@
-define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            closeTooltipText: 'Close',
-            minimizeTooltipText: 'Minimize',
-            settingsTooltipText: 'Settings'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/Dashboard/nls/DashboardWidgetCell", {
+    root: {
+        closeTooltipText: 'Close',
+        minimizeTooltipText: 'Minimize',
+        settingsTooltipText: 'Settings'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

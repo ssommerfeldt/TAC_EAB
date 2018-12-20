@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="144f6ab8-b13c-44a0-8792-24d0b1b7b5a4" lastModifiedUtc="2011-10-25T19:46:29.6780636Z" name="CopyOpportunity" methodType="Rule" actionType="None" returnMode="None">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="144f6ab8-b13c-44a0-8792-24d0b1b7b5a4" lastModifiedUtc="2015-12-09T21:14:27.5600374Z" name="CopyOpportunity" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter>
-    <OrmEntityMethodParam id="e4329f64-da9e-497b-9ade-9915d1958ac7" paramName="copyFromOpportunity" sequence="0" paramType="Object">
-      <description>The Opportunity used for the copy.</description>
+    <OrmEntityMethodParam id="e4329f64-da9e-497b-9ade-9915d1958ac7" paramName="copyFromOpportunity" sequence="0" paramType="IOpportunity ">
+      <description>The Opportunity to copy to copy from</description>
     </OrmEntityMethodParam>
   </parameter>
   <preExecuteTargets>
@@ -34,5 +34,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

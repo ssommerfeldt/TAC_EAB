@@ -1,4 +1,4 @@
-define([
+define("Sage/MainView/ActivityMgr/AttendeeLookup/main", [
     //// Root Lookup modules ////
     'Sage/MainView/ActivityMgr/AttendeeLookup/LookupService',
      

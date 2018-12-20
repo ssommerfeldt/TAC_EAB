@@ -117,61 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="error_PreviewData" xml:space="preserve">
-    <value>Si è verificato un errore nel caricamento dell'anteprima dei dati. {0}</value>
-  </data>
-  <data name="QFCheckBox.Caption" xml:space="preserve">
-    <value>La prima riga contiene i nomi dei campi</value>
+  <data name="lblDelimiter.Caption" xml:space="preserve">
+    <value>Selezionare il delimitatore appropriato e visualizzare le modifiche al testo nell'anteprima riportata sopra.</value>
   </data>
   <data name="rdgpDelimiter.Caption" xml:space="preserve">
-    <value>Scegli il delimitatore che separa i tuoi campi:</value>
-  </data>
-  <data name="error_MissingImportFile" xml:space="preserve">
-    <value>Impossibile recuperare il file d'importazione caricato.</value>
-  </data>
-  <data name="rdgpDelimiter_Space.Text" xml:space="preserve">
-    <value>Spazio</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lblGridPreview.Caption" xml:space="preserve">
-    <value>Anteprima (dei primi 5 record):</value>
-  </data>
-  <data name="rdgpDelimiter_Semicolon.Text" xml:space="preserve">
-    <value>Punto e virgola</value>
-  </data>
-  <data name="lblDelimiter.Caption" xml:space="preserve">
-    <value>Seleziona il delimitatore appropriato e vedi qual è il risultato nell'anteprima sottostante.</value>
-  </data>
-  <data name="lbxQualifier_None.Text" xml:space="preserve">
-    <value>&lt;nessuno&gt;</value>
-  </data>
-  <data name="rdgpDelimiter_Tab.Text" xml:space="preserve">
-    <value>Tabulazione</value>
-  </data>
-  <data name="cmdCancel_Close" xml:space="preserve">
-    <value>Chiudi</value>
-  </data>
-  <data name="grdPreview.EmptyTableRowText" xml:space="preserve">
-    <value>Si è verificato un errore nell'analisi del file di importazione.</value>
+    <value>Scegliere il delimitatore che separa i campi:</value>
   </data>
   <data name="rdgpDelimiter_Other.Text" xml:space="preserve">
     <value>Altro</value>
   </data>
-  <data name="error_ImportManager" xml:space="preserve">
-    <value>Si è verificato un errore nella creazione di un'istanza del gestore importazione.</value>
+  <data name="rdgpDelimiter_Space.Text" xml:space="preserve">
+    <value>Spazio</value>
   </data>
   <data name="rdgpDelimiter_Comma.Text" xml:space="preserve">
     <value>Virgola</value>
+  </data>
+  <data name="rdgpDelimiter_Semicolon.Text" xml:space="preserve">
+    <value>Punto e virgola</value>
+  </data>
+  <data name="rdgpDelimiter_Tab.Text" xml:space="preserve">
+    <value>Tabulazione</value>
+  </data>
+  <data name="QFCheckBox.Caption" xml:space="preserve">
+    <value>La prima riga contiene i nomi dei campi</value>
   </data>
   <data name="chkFirstRow.Caption" xml:space="preserve">
     <value>La prima riga contiene i nomi dei campi</value>
   </data>
   <data name="lbxQualifier.Caption" xml:space="preserve">
-    <value>Qualificatore Testo:</value>
+    <value>Qualificatore testo:</value>
+  </data>
+  <data name="lbxQualifier_None.Text" xml:space="preserve">
+    <value>&lt;nessuno&gt;</value>
+  </data>
+  <data name="lbxQualifier_SingleQuote.Text" xml:space="preserve">
+    <value>'</value>
+  </data>
+  <data name="lbxQualifier_DoubleQuote.Text" xml:space="preserve">
+    <value>"</value>
+  </data>
+  <data name="lbxQualifier_Empty.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblGridPreview.Caption" xml:space="preserve">
+    <value>Anteprima (fino ai primi cinque record):</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="grdPreview.EmptyTableRowText" xml:space="preserve">
+    <value>Si è verificato un errore durante l'analisi del file di importazione.</value>
+  </data>
+  <data name="error_MissingImportFile" xml:space="preserve">
+    <value>Impossibile recuperare il file di importazione caricato.</value>
+  </data>
+  <data name="error_ImportManager" xml:space="preserve">
+    <value>Si è verificato un errore durante la creazione di un'istanza di Gestione importazione.</value>
+  </data>
+  <data name="error_PreviewData" xml:space="preserve">
+    <value>Errore durante il caricamento dei dati di anteprima. {0}</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="cmdCancel_Close" xml:space="preserve">
+    <value>Chiudi</value>
   </data>
 </root>

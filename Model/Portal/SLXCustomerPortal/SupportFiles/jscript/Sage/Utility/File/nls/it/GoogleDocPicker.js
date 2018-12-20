@@ -1,4 +1,4 @@
-define((
-{ googleDocumentsTitle: 'Google Documenti',
-  couldNotOpenWindowMsg: 'Impossibile aprire la finestra di autenticazione - si prega di controllare le impostazioni di blocco popup.' }
-));
+define("Sage/Utility/File/nls/it/GoogleDocPicker", {
+    "googleDocumentsTitle": "Documenti Google",
+    "couldNotOpenWindowMsg": "Impossibile aprire la finestra di autenticazione. Controllare le impostazioni di blocco popup."
+});

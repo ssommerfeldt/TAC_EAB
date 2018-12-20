@@ -27,17 +27,15 @@
 #region Usings
 using System;
 using Sage.Entity.Interfaces;
-using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class SyncResultBusinessRules
     {
-        public static void GetResultInfoStep( ISyncResult syncresult, out System.String result)
+        public static void GetResultInfoStep(ISyncResult syncresult, out String result)
         {
-			result = string.Format("{0}-{1}-{2}",syncresult.RunName,syncresult.ResourceType,syncresult.HttpStatus); 
+			result = string.Format("{0}-{1}-{2}", syncresult.RunName, syncresult.ResourceType, syncresult.HttpStatus);
         }
     }
 }

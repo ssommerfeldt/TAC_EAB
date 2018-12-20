@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeFile="MatchOptions.ascx.cs" Inherits="MatchOptions" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeFile="MatchOptions.ascx.cs" Inherits="SmartParts_Lead_MatchOptions" %>
 <%@ Register Assembly="Sage.SalesLogix.Web.Controls" Namespace="Sage.SalesLogix.Web.Controls" TagPrefix="SalesLogix" %>
 <%@ Register Assembly="Sage.Platform.WebPortal" Namespace="Sage.Platform.WebPortal.SmartParts" TagPrefix="SalesLogix" %>
 
@@ -26,7 +26,7 @@
             </span>
         </td>
         <td>
-            <asp:TextBox ID="txtDuplicate_Low" runat="server" Width="30px"></asp:TextBox>
+            <asp:TextBox ID="txtDuplicate_Low" runat="server" Width="50px"></asp:TextBox>
         </td>
         <td>
             <span class="slxlabel">
@@ -34,7 +34,7 @@
             </span>
         </td>
         <td>
-            <asp:Label ID="lblDuplicate_High" runat="server" Width="30px" Text="<%$ resources: lblHighValue.Caption %>"></asp:Label>
+            <asp:Label ID="lblDuplicate_High" runat="server" Width="50px" Text="<%$ resources: lblHighValue.Caption %>"></asp:Label>
         </td>
     </tr>
     <tr>
@@ -45,7 +45,7 @@
             </span>
         </td>
         <td>
-            <asp:TextBox ID="txtPossibleDuplicate_Low" runat="server" Width="30px" MaxLength="2"></asp:TextBox>
+            <asp:TextBox ID="txtPossibleDuplicate_Low" runat="server" Width="50px" MaxLength="2"></asp:TextBox>
         </td>
         <td>
             <span class="slxlabel">
@@ -53,7 +53,7 @@
             </span>
         </td>
         <td>
-            <asp:Label ID="lblPossibleDuplicate_High" runat="server" Width="30px"></asp:Label>
+            <asp:Label ID="lblPossibleDuplicate_High" runat="server" Width="50px"></asp:Label>
         </td>
     </tr>
     <tr>
@@ -64,7 +64,7 @@
             </span>
         </td>
         <td>
-            <asp:Label ID="lblNoDuplicate_Low" runat="server" Width="30px" Text="<%$ resources: lblLowValue.Caption %>"></asp:Label>
+            <asp:Label ID="lblNoDuplicate_Low" runat="server" Width="50px" Text="<%$ resources: lblLowValue.Caption %>"></asp:Label>
         </td>
         <td>
             <span class="slxlabel">
@@ -72,58 +72,35 @@
             </span>
         </td>
         <td>
-            <asp:Label ID="lblNoDuplicate_High" runat="server" Width="30px"></asp:Label>
+            <asp:Label ID="lblNoDuplicate_High" runat="server" Width="50px"></asp:Label>
         </td>
     </tr>
 </table>
 <br />
 <table border="0" cellpadding="1" cellspacing="0" class="formtable">
     <col width="5%" /><col width="30%" /><col width="65%" />
-    <tr>
+     <tr>
         <td colspan="3">
-            <span>
-                <asp:CheckBox runat="server" ID="chkUseStemming" Checked= "false" />
-            </span>
-            <span class="lblright">
-                <asp:Label ID="lblUseStemming" AssociatedControlID="chkUseStemming" runat="server"
-                    Text="<%$ resources: chkUseStemming.Caption %>">
-                </asp:Label>
-            </span>
+            <input type="checkbox" ID="chkUseStemming" runat="server" class="inforCheckbox" checked="false" ClientIDMode="static"/>
+            <asp:Label ID="lblUseStemming" AssociatedControlID="chkUseStemming" runat="server" CssClass="inforCheckboxLabel noColon label" Text="<%$ resources: chkUseStemming.Caption %>"></asp:Label>
         </td>
     </tr>
     <tr>
         <td colspan="3">
-            <span>
-                <asp:CheckBox runat="server" ID="chkUsePhonic" Checked="false" />
-            </span>
-            <span class="lblright">
-                <asp:Label ID="lblUsePhonic" AssociatedControlID="chkUsePhonic" runat="server"
-                    Text="<%$ resources: chkUsePhonic.Caption %>">
-                </asp:Label>
-            </span>
+            <input type="checkbox" ID="chkUsePhonic" runat="server" class="inforCheckbox" checked="false" ClientIDMode="static"/>
+            <asp:Label ID="lblUsePhonic" AssociatedControlID="chkUsePhonic" runat="server" CssClass="inforCheckboxLabel noColon label" Text="<%$ resources: chkUsePhonic.Caption %>"></asp:Label>
         </td>
     </tr>
     <tr>
         <td colspan="3">
-            <span>
-                <asp:CheckBox runat="server" ID="chkUseSynonym" Checked="false" />
-            </span>
-            <span class="lblright">
-                <asp:Label ID="lblUseSynonym" AssociatedControlID="chkUseSynonym" runat="server"
-                    Text="<%$ resources: chkUseSynonym.Caption %>">
-                </asp:Label>
-            </span>
+            <input type="checkbox" ID="chkUseSynonym" runat="server" class="inforCheckbox" checked="false" ClientIDMode="static"/>
+            <asp:Label ID="lblUseSynonym" AssociatedControlID="chkUseSynonym" runat="server" CssClass="inforCheckboxLabel noColon label" Text="<%$ resources: chkUseSynonym.Caption %>"></asp:Label>
         </td>
     </tr>
     <tr>
         <td colspan="3">
-            <span>
-                <asp:CheckBox runat="server" ID="chkUseFuzzy" Checked="false" Text="" />
-            </span>
-            <span class="lblright">
-                <asp:Label ID="lblUseFuzzy" AssociatedControlID="chkUseFuzzy" runat="server" Text="<%$ resources: chkUseFuzzy.Caption %>">
-                </asp:Label>
-            </span>
+            <input type="checkbox" ID="chkUseFuzzy" runat="server" class="inforCheckbox" checked="false" ClientIDMode="static"/>
+            <asp:Label ID="lblUseFuzzy" AssociatedControlID="chkUseFuzzy" runat="server" CssClass="inforCheckboxLabel noColon label" Text="<%$ resources: chkUseFuzzy.Caption %>"></asp:Label>
         </td>
     </tr>
     <tr>
@@ -136,7 +113,7 @@
         </td>
         <td>
             <div class="textcontrol select">
-                <asp:ListBox runat="server" ID="lbxFuzzyLevel" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" shouldPublishMarkDirty="false" SelectionMode="Single" Width="50px" Rows="1" EnableViewState="true">
+                <asp:ListBox runat="server" ID="lbxFuzzyLevel" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" shouldPublishMarkDirty="false" SelectionMode="Single" Width="30px" Rows="1" EnableViewState="true">
                     <asp:ListItem>1</asp:ListItem>
                     <asp:ListItem Selected="True">2</asp:ListItem>
                     <asp:ListItem>3</asp:ListItem>

@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Inconnu' }
-));
+define("Sage/QuickForms/Design/nls/fr/GenericControlDesigner", {
+    "displayNameText": "Inconnu"
+});

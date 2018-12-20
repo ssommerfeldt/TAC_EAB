@@ -1,4 +1,4 @@
-define((
+define("Sage/Groups/nls/en/GroupNavigator", (
 { firstText: 'Move First',
   previousText: 'Move Previous',
   nextText: 'Move Next',

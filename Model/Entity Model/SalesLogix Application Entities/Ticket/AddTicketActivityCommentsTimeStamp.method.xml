@@ -1,16 +1,19 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7a571adc-b3b8-4d54-9fff-8e17e3f157c2" name="AddTicketActivityCommentsTimeStamp" returnType="void" methodType="Rule" actionType="None" returnMode="None" isInstance="true">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7a571adc-b3b8-4d54-9fff-8e17e3f157c2" lastModifiedUtc="2015-06-25T15:32:07.9726301Z" name="AddTicketActivityCommentsTimeStamp" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
+  <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter>
     <OrmEntityMethodParam id="05a6e1f2-22fb-4482-a761-3e84df1c6a12" paramName="ticketActivity" sequence="0" paramType="ITicketActivity" />
   </parameter>
+  <preExecuteTargets />
   <methodTargets>
-    <methodTarget id="868aba38-4185-42a4-98a8-1111f4c303cd" targetType="Sage.SalesLogix.Ticket.Rules, Sage.SalesLogix.BusinessRules" sequence="0" targetMethod="AddTicketActivityCommentsTimeStamp" active="true">
+    <methodTarget id="868aba38-4185-42a4-98a8-1111f4c303cd" lastModifiedUtc="0001-01-01T00:00:00" targetType="Sage.SalesLogix.Ticket.Rules, Sage.SalesLogix.BusinessRules" targetMethod="AddTicketActivityCommentsTimeStamp" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
+  <postExecuteTargets />
 </method>

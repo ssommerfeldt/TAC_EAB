@@ -120,20 +120,50 @@
   <data name="OpportunityClosedLost_0.Caption" xml:space="preserve">
     <value>Salva</value>
   </data>
-  <data name="cmdOKClosedLost.Caption" xml:space="preserve">
-    <value>OK</value>
+  <data name="OpportunityClosedLost_0.ToolTip" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="txtNotes.Caption" xml:space="preserve">
+    <value>Commenti:</value>
+  </data>
+  <data name="dtpActualClose.Caption" xml:space="preserve">
+    <value>Chiusura effettiva:</value>
+  </data>
+  <data name="curActualAmount.Caption" xml:space="preserve">
+    <value>Importo effettivo:</value>
+  </data>
+  <data name="pklReason.Caption" xml:space="preserve">
+    <value>Motivo perdita:</value>
+  </data>
+  <data name="lueCompetitorLoss.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueCompetitorLoss.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
   </data>
   <data name="lueCompetitorLoss.LookupProperties.CompetitorName.PropertyHeader" xml:space="preserve">
     <value>Concorrente</value>
   </data>
-  <data name="grdOppCompetitors.bf54f9d9-9fdb-45ca-b70c-d119b174e015.ColumnHeading" xml:space="preserve">
-    <value>Punti di forza</value>
-  </data>
-  <data name="curActualAmount.Caption" xml:space="preserve">
-    <value>Importo Attuale:</value>
-  </data>
   <data name="lueCompetitorLoss.LookupProperties.Strengths.PropertyHeader" xml:space="preserve">
     <value>Punti di forza</value>
+  </data>
+  <data name="lueCompetitorLoss.LookupProperties.Rating.PropertyHeader" xml:space="preserve">
+    <value>Classificazione</value>
+  </data>
+  <data name="cmdOKClosedLost.Caption" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="dtpActualClose.ButtonToolTip" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="lueCompetitorLoss.ButtonToolTip" xml:space="preserve">
+    <value>Aggiungi concorrente...</value>
+  </data>
+  <data name="grdOppCompetitors.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
   </data>
   <data name="grdOppCompetitors.55650761-543f-4a09-9a20-78fdaa1e50d9.ColumnHeading" xml:space="preserve">
     <value>Concorrente</value>
@@ -141,31 +171,7 @@
   <data name="grdOppCompetitors.df664a77-7cff-4ddb-83f3-b1c60f157bf6.ColumnHeading" xml:space="preserve">
     <value>Classificazione</value>
   </data>
-  <data name="lueCompetitorLoss.ButtonToolTip" xml:space="preserve">
-    <value>Aggiungi Concorrente...</value>
-  </data>
-  <data name="grdOppCompetitors.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
-  </data>
-  <data name="dtpActualClose.Caption" xml:space="preserve">
-    <value>Chiusura attuale:</value>
-  </data>
-  <data name="txtNotes.Caption" xml:space="preserve">
-    <value>Commenti:</value>
-  </data>
-  <data name="dtpActualClose.ButtonToolTip" xml:space="preserve">
-    <value>Calendario</value>
-  </data>
-  <data name="OpportunityClosedLost_0.ToolTip" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="pklReason.Caption" xml:space="preserve">
-    <value>Motivo insuccesso:</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="lueCompetitorLoss.LookupProperties.Rating.PropertyHeader" xml:space="preserve">
-    <value>Classificazione</value>
+  <data name="grdOppCompetitors.bf54f9d9-9fdb-45ca-b70c-d119b174e015.ColumnHeading" xml:space="preserve">
+    <value>Punti di forza</value>
   </data>
 </root>

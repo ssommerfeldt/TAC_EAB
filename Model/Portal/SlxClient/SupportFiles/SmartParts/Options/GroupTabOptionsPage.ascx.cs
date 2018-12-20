@@ -40,20 +40,17 @@ public partial class GroupTabOptionsPage : UserControl, ISmartPartInfoProvider
                     break;
                 }
         }
-        userOption.SetCommonOption("autoFitColumns", "GroupGridView",
-                                   cbAutoFitColumns.Checked.ToString(CultureInfo.InvariantCulture), false);
-
         userOption.SetCommonOption("defaultLookupCondition", "DefaultLookupCondition", ddlDefaultSearchCondition.SelectedValue, false);
     }
 
     private static string GetFamNameFromId(string id)
     {
-        var GroupList = PluginManager.GetPluginList(PluginType.ACOGroup, true, false);
-        foreach (Plugin grp in GroupList)
+        var groupList = PluginManager.GetPluginList(PluginType.ACOGroup, true, false);
+        foreach (Plugin grp in groupList)
             if (grp.PluginId == id)
                 return String.Format("{0}:{1}", grp.Family, grp.Name);
-        GroupList = PluginManager.GetPluginList(PluginType.Group, true, false);
-        foreach (Plugin grp in GroupList)
+        groupList = PluginManager.GetPluginList(PluginType.Group, true, false);
+        foreach (Plugin grp in groupList)
             if (grp.PluginId == id)
                 return String.Format("{0}:{1}", grp.Family, grp.Name);
         return "";
@@ -72,21 +69,21 @@ public partial class GroupTabOptionsPage : UserControl, ISmartPartInfoProvider
             family = ddlMainView.SelectedItem.Value;
         }
 
-        var GroupList = PluginManager.GetPluginList(GroupInfo.GetGroupPluginType(family), true, false);
-        for (int i = GroupList.Count - 1; i >= 0; i--)
+        var groupList = PluginManager.GetPluginList(GroupInfo.GetGroupPluginType(family), true, false);
+        for (int i = groupList.Count - 1; i >= 0; i--)
         {
-            if (GroupList[i].Family.ToLower() != family.ToLower())
+            if (groupList[i].Family.ToLower() != family.ToLower())
             {
-                GroupList.RemoveAt(i);
+                groupList.RemoveAt(i);
                 continue;
             }
-            if (String.IsNullOrEmpty(GroupList[i].DisplayName))
+            if (String.IsNullOrEmpty(groupList[i].DisplayName))
             {
-                GroupList[i].DisplayName = GroupList[i].Name;
+                groupList[i].DisplayName = groupList[i].Name;
             }
         }
 
-        /***** Name Collistion with Blob.PluginId *****************************************************/
+        /***** Name Collision with Blob.PluginId *****************************************************/
         //ddlGroup.DataSource = GroupList;
         //ddlGroup.DataTextField = "DisplayName";
         //ddlGroup.DataValueField = "PluginId";
@@ -94,7 +91,7 @@ public partial class GroupTabOptionsPage : UserControl, ISmartPartInfoProvider
         /*********************************************************************************************/
         ddlGroup.Items.Clear();
         ddlLookupLayoutGroup.Items.Clear();
-        foreach (Plugin gl in GroupList)
+        foreach (Plugin gl in groupList)
         {
             ddlGroup.Items.Add(new ListItem(gl.DisplayName, gl.PluginId));
             ddlLookupLayoutGroup.Items.Add(new ListItem(gl.DisplayName, gl.PluginId));
@@ -102,18 +99,14 @@ public partial class GroupTabOptionsPage : UserControl, ISmartPartInfoProvider
 
         IUserOptionsService userOption = ApplicationContext.Current.Services.Get<IUserOptionsService>();
         string defFamName = userOption.GetCommonOption(DefaultGroupOptionName(), "DefaultGroup");
-        foreach (Plugin grp in GroupList)
+        foreach (Plugin grp in groupList)
             if ((grp.Family.ToLower() == defFamName.Split(':')[0].ToLower()) && (grp.Name == defFamName.Split(':')[1]))
                 Utility.SetSelectedValue(ddlGroup, grp.PluginId);
         string defLayoutGroup = userOption.GetCommonOption(DefaultGroupOptionName(), "LookupLayoutGroup");
         defLayoutGroup = (string.IsNullOrEmpty(defLayoutGroup)) ? defFamName : defLayoutGroup;
-        foreach (Plugin grp in GroupList)
+        foreach (Plugin grp in groupList)
             if ((grp.Family.ToLower() == defLayoutGroup.Split(':')[0].ToLower()) && (grp.Name == defLayoutGroup.Split(':')[1]))
                 Utility.SetSelectedValue(ddlLookupLayoutGroup, grp.PluginId);
-
-        string autoFitColumnsValue = userOption.GetCommonOption("autoFitColumns", "GroupGridView");
-        bool autoFitColumns = Utility.StringToBool(autoFitColumnsValue);
-        cbAutoFitColumns.Checked = autoFitColumns;
 
         string defaultLookupCondition = userOption.GetCommonOption("defaultLookupCondition", "DefaultLookupCondition");
         ddlDefaultSearchCondition.ClearSelection();
@@ -129,12 +122,6 @@ public partial class GroupTabOptionsPage : UserControl, ISmartPartInfoProvider
 
     private string DefaultGroupOptionName()
     {
-        //String MainView = ddlMainView.SelectedValue;
-        //System.Collections.Generic.IList<Plugin> MainViewList = PluginManager.GetPluginList(PluginType.MainView, true, false);
-        //foreach (Plugin mv in MainViewList)
-        //    if (mv.DataCode.ToLower() == MainView.ToLower())
-        //        return String.Format("{0}|{1}", mv.Family, mv.Name);
-        //return "";
         return ddlMainView.SelectedValue;
     }
 
@@ -146,10 +133,10 @@ public partial class GroupTabOptionsPage : UserControl, ISmartPartInfoProvider
     protected void Page_Load(object sender, EventArgs e)
     {
         btnSave.Click += SaveOption;
-        SortedList MVList = new SortedList();
-        AddFamiliesToList(MVList, PluginType.ACOGroup);
-        AddFamiliesToList(MVList, PluginType.Group);
-        ddlMainView.DataSource = MVList;
+        var mvList = new SortedList();
+        AddFamiliesToList(mvList, PluginType.ACOGroup);
+        AddFamiliesToList(mvList, PluginType.Group);
+        ddlMainView.DataSource = mvList;
         ddlMainView.DataValueField = "Key";
         ddlMainView.DataTextField = "Value";
         ddlMainView.DataBind();
@@ -158,12 +145,12 @@ public partial class GroupTabOptionsPage : UserControl, ISmartPartInfoProvider
     private static void AddFamiliesToList(SortedList MVList, PluginType aType)
     {
         IList<Plugin> aList = PluginManager.GetPluginList(aType, true, false);
-        string EntityAssemblyqualifiedName = typeof(IAccount).AssemblyQualifiedName;
+        var entityAssemblyqualifiedName = typeof(IAccount).AssemblyQualifiedName;
         foreach (Plugin grp in aList)
         {
             string family = grp.Family;
             family = GroupInfo.GetEntityName(family);
-            var familytype = Type.GetType(EntityAssemblyqualifiedName.Replace("Account", family), false, true);
+            var familytype = Type.GetType(entityAssemblyqualifiedName.Replace("Account", family), false, true);
             if (familytype != null)
             {
                 string famname = familytype.GetDisplayName();

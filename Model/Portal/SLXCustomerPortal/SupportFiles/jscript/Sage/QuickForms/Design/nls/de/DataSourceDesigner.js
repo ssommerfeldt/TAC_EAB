@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Datenquelle' }
-));
+define("Sage/QuickForms/Design/nls/de/DataSourceDesigner", {
+    "displayNameText": "Datenquelle"
+});

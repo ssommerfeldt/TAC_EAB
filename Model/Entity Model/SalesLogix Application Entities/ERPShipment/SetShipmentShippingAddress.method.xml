@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="619043bd-0e95-42fe-9057-3b5661bc5cfd" lastModifiedUtc="2016-02-09T11:02:31.6962039Z" name="SetShipmentShippingAddress" returnType="IERPShipmentAddress" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="27076ede-e7d0-45b5-abdf-457e3f431de5" paramName="address" sequence="0" paramType="IAddress" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="13a207f8-b4c4-4a75-8004-0341fd63e6a4" lastModifiedUtc="2016-02-11T08:51:04.6864445Z" targetType="Sage.SalesLogix.ErpShipment.Rules, Sage.SalesLogix.BusinessRules" targetMethod="SetShipmentShippingAddress" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

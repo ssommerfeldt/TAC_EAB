@@ -28,7 +28,6 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
@@ -46,7 +45,8 @@ namespace Sage.BusinessRules.CodeSnippets
 		public static void cmdOK_OnClickStep(IAddEditLink form, EventArgs args)
 		{
 			IAppIdMapping appIdMapping = form.CurrentEntity as IAppIdMapping;
-			if (appIdMapping != null) {
+			if (appIdMapping != null)
+			{
 				appIdMapping.EncryptAccountingSystemPassword(form.txtPassword.Text);
 				appIdMapping.ValidateEndPoint();
 				appIdMapping.Save();

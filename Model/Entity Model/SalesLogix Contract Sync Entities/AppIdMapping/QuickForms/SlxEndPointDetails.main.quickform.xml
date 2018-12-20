@@ -27,18 +27,19 @@ txtPassword.Attributes.Add("value", Sage.SalesLogix.SLXEncryption.Decrypt(appIdM
           <MethodName>quickformload1</MethodName>
           <CSharpCodeSnippet>if (String.IsNullOrEmpty(txtSlxEndPoint.Text))
 {
-    txtSlxEndPoint.Text = "http://&lt;server&gt;:&lt;port&gt;/sdata/slx/gcrm/-/";
+    txtSlxEndPoint.Text = "http://[server]:[port]/sdata/slx/gcrm/-/";
 }
+txtSlxEndPoint.Text = txtSlxEndPoint.Text.Replace("&lt;", "[").Replace("&gt;", "]");
 chkUseSSL.Checked = txtSlxEndPoint.Text.StartsWith("https");
 string[] urlParts = txtSlxEndPoint.Text.Split(':');
 string part = urlParts[1];
 string server = part.Replace("//", string.Empty);
 if (urlParts.GetLength(0) == 3)
 {
-    txtServer.Text = server.Contains("&lt;server&gt;") ? string.Empty : server;
+    txtServer.Text = server.Contains("[server]") ? string.Empty : server;
     urlParts = urlParts[2].Split('/');
     string port = urlParts[0];
-    txtPort.Text = port.Contains("&lt;port&gt;") ? string.Empty : port;
+    txtPort.Text = port.Contains("[port]") ? string.Empty : port;
 
     txtSDataPortal.Text = urlParts[1];
 }
@@ -46,7 +47,7 @@ if (urlParts.GetLength(0) == 3)
 else if (urlParts.GetLength(0) == 2)
 {
     urlParts = server.Split('/');
-    txtServer.Text = server.Contains("&lt;server&gt;") ? string.Empty : urlParts[0];
+    txtServer.Text = server.Contains("[server]") ? string.Empty : urlParts[0];
     txtSDataPortal.Text = urlParts[1];
 }</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
@@ -455,9 +456,9 @@ appIdMapping.EndPointURL = txtSlxEndPoint.Text;</CSharpCodeSnippet>
                     <CSharpSnippetActionItem>
                       <MethodName>btnTest_ClickAction</MethodName>
                       <CSharpCodeSnippet>Sage.Entity.Interfaces.IAppIdMapping appIdMapping = BindingSource.Current as Sage.Entity.Interfaces.IAppIdMapping;
-if (appIdMapping.EndPointURL.Contains(":&lt;port&gt;"))
+if (appIdMapping.EndPointURL.Contains(":[port]"))
 {
-    appIdMapping.EndPointURL = appIdMapping.EndPointURL.Replace(":&lt;port&gt;", string.Empty);
+    appIdMapping.EndPointURL = appIdMapping.EndPointURL.Replace(":[port]", string.Empty);
 }
 appIdMapping.EncryptAccountingSystemPassword(txtPassword.Text);
 txtPassword.Attributes["value"] = txtPassword.Text;

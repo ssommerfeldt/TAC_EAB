@@ -13,12 +13,11 @@
     </methodTarget>
   </preExecuteTargets>
   <methodTargets>
-    <methodTarget id="f3200094-5e07-48fc-9ae7-214453bdcece" lastModifiedUtc="2007-12-21T16:11:02.8962445Z" targetType="Sage.Platform.Orm.DefaultCRUDEventHandler, Sage.Platform" targetMethod="OnBeforeInsert" active="true">
+    <methodTarget id="f3200094-5e07-48fc-9ae7-214453bdcece" lastModifiedUtc="2007-12-21T16:11:02.8962445Z" targetType="Sage.SalesLogix.DefectActivityRate.Rules, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeInsert" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

@@ -9,7 +9,9 @@
   <Properties>
     <Property Name="EntityTypeName" TypeConverter="">Sage.Entity.Interfaces.IAreaCategoryIssue, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</Property>
   </Properties>
-  <TemplateProperties />
+  <TemplateProperties>
+    <Property Name="IncludeMoreTabsTab" TypeConverter="">false</Property>
+  </TemplateProperties>
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />
   <AppliedSecurity>Entities/ACI/View</AppliedSecurity>

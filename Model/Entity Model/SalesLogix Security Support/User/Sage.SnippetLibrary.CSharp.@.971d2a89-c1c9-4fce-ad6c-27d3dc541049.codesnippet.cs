@@ -25,9 +25,7 @@
 
 
 #region Usings
-using System;
 using Sage.Entity.Interfaces;
-using Sage.Form.Interfaces;
 using Sage.Platform;
 #endregion Usings
 
@@ -35,7 +33,7 @@ namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class UserBusinessRules
     {
-        public static void GetManagerStep( IUser user, out Sage.Entity.Interfaces.IUser result)
+        public static void GetManagerStep(IUser user, out IUser result)
         {
             result = EntityFactory.GetById<IUser>(user.ManagerId);
         }

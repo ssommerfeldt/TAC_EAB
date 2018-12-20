@@ -1,5 +1,5 @@
 /*
- * This metadata is used by the Sage platform.  Do not remove.
+ * This metadata is used by the Saleslogix platform.  Do not remove.
 <snippetHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="c76519e8-cd6b-4eb8-815f-4d4a30b015c1">
  <assembly>Sage.SnippetLibrary.CSharp</assembly>
  <name>OnChangePasswordLoad</name>
@@ -19,15 +19,19 @@
   <reference>
    <assemblyName>Sage.SalesLogix.API.dll</assemblyName>
   </reference>
+  <reference>
+   <assemblyName>Sage.Platform.Application.dll</assemblyName>
+   <hintPath>%BASEBUILDPATH%\assemblies\Sage.Platform.Application.dll</hintPath>
+  </reference>
  </references>
 </snippetHeader>
 */
+
 
 #region Usings
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 using Sage.Platform.Application;
 #endregion Usings
 
@@ -49,19 +53,17 @@ namespace Sage.BusinessRules.CodeSnippets
 			if (entities != null)
 			{
 				EntityHistory entity = entities[0];
-				if (entity != null && entity.EntityType.Equals(typeof(IUser)))
+				if (entity != null && entity.EntityType == typeof(IUser))
 				{
-					//form.usrUser.Enabled = (entity.EntityId.ToString().Trim().Equals("ADMIN"));
 					if (form.usrUser.LookupResultValue == null)
 					{
 						form.usrUser.LookupResultValue = entity.EntityId;
 					}
-					form.ctrlstButtons.Visible = true;					
+					form.ctrlstButtons.Visible = true;
 				}
 				else
 				{
 					form.ctrlstButtons.Visible = false;
-					//form.usrUser.LookupResultValue = Sage.SalesLogix.API.MySlx.Security.CurrentSalesLogixUser;
 				}
 			}
         }

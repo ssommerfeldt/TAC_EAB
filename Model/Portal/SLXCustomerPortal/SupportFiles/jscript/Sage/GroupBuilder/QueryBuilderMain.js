@@ -16,51 +16,50 @@ getNodeXML,
 dijit,
 dojox
 */
-
 window.QueryBuilderMain = (function () {
 
     var queryBuilderMainResources = window.queryBuilderMainResources,
         QueryBuilderMain = {
-            currentTab : 0, // c
-            tabProperties : 0, // c
-            tabConditions : 1, // c
-            tabLayout : 2, //c
-            tabSorting : 3, //c
-            tabDefaults : 4, //c
-            accessmode : "readwrite", //c
-            gmgr : null, // this is set in init() it is a 'pointer' to the Group Manager object on mainpage; // c
+            currentTab: 0, // c
+            tabProperties: 0, // c
+            tabConditions: 1, // c
+            tabLayout: 2, //c
+            tabSorting: 3, //c
+            tabDefaults: 4, //c
+            accessmode: "readwrite", //c
+            gmgr: null, // this is set in init() it is a 'pointer' to the Group Manager object on mainpage; // c
             // TODO: Search in Visual Studio for these
             //dragField : null,
             //dropField : null,
             //dragSwapFields : [],
-            
-            currentLayoutIndex : null, //c
-            
+
+            currentLayoutIndex: null, //c
+
             //resource strings
-            newQuery : queryBuilderMainResources.newQuery, //c
-            createLocalJoinMessage : queryBuilderMainResources.createLocalJoinMessage,//c
-            addDataToLayoutGridMessage : queryBuilderMainResources.addDataToLayoutGridMessage,//c
-            jsAscending : queryBuilderMainResources.jsAscending, //c
-            jsDescending : queryBuilderMainResources.jsDescending, //c
-            QBMsg_ErrorMissingLayoutObject : queryBuilderMainResources.QBMsg_ErrorMissingLayoutObject,//c
-            QBMsg_MustName : queryBuilderMainResources.QBMsg_MustName, //c
-            QBMsg_NameCannotContain : Sage.Utility.htmlDecode(queryBuilderMainResources.QBMsg_NameCannotContain), //c
-            QBMsg_DisplayNameCannotContain : Sage.Utility.htmlDecode(queryBuilderMainResources.QBMsg_DisplayNameCannotContain),//c
-            QBMsg_NameEnteredAlreadyInUse : queryBuilderMainResources.QBMsg_NameEnteredAlreadyInUse,//c
-            QB_EntityName : queryBuilderMainResources.QB_EntityName,//c
-            QB_ParensDontBalance : queryBuilderMainResources.parensDontBalance,//c
-            copyOfString : queryBuilderMainResources.CopyOf,//c
-            localizeViewSQLText : queryBuilderMainResources.localizeViewSQLText,
+            newQuery: queryBuilderMainResources.newQuery, //c
+            createLocalJoinMessage: queryBuilderMainResources.createLocalJoinMessage,//c
+            addDataToLayoutGridMessage: queryBuilderMainResources.addDataToLayoutGridMessage,//c
+            jsAscending: queryBuilderMainResources.jsAscending, //c
+            jsDescending: queryBuilderMainResources.jsDescending, //c
+            QBMsg_ErrorMissingLayoutObject: queryBuilderMainResources.QBMsg_ErrorMissingLayoutObject,//c
+            QBMsg_MustName: queryBuilderMainResources.QBMsg_MustName, //c
+            QBMsg_NameCannotContain: Sage.Utility.htmlDecode(queryBuilderMainResources.QBMsg_NameCannotContain), //c
+            QBMsg_DisplayNameCannotContain: Sage.Utility.htmlDecode(queryBuilderMainResources.QBMsg_DisplayNameCannotContain),//c
+            QBMsg_NameEnteredAlreadyInUse: queryBuilderMainResources.QBMsg_NameEnteredAlreadyInUse,//c
+            QB_EntityName: queryBuilderMainResources.QB_EntityName,//c
+            QB_ParensDontBalance: queryBuilderMainResources.parensDontBalance,//c
+            copyOfString: queryBuilderMainResources.CopyOf,//c
+            localizeViewSQLText: queryBuilderMainResources.localizeViewSQLText,
             currentCondition: null, //c
             currentLayoutElem: null, //c
-            dgConditions : new SLXDataGrid("grdConditions"), //c
-            dgSorts : new SLXDataGrid("grdSorts"),//c
+            dgConditions: new SLXDataGrid("grdConditions"), //c
+            dgSorts: new SLXDataGrid("grdSorts"),//c
             areaManager: null,
-            fieldsHidden : false,
-            joinURL : null,
-            datapath : null,
-            joinXML : null,
-            GetItemDataType: function(item) {
+            fieldsHidden: false,
+            joinURL: null,
+            datapath: null,
+            joinXML: null,
+            GetItemDataType: function (item) {
                 dojo.require("Sage.Utility.Filters");
                 return Sage.Utility.Filters.resolveDataTypeQB(item.dataTypeId);
             },
@@ -76,6 +75,7 @@ window.QueryBuilderMain = (function () {
                     isliteral: 'false',
                     isnegated: 'false',
                     casesens: 'true',
+					picklistname: JSON.parse(item.dataTypeData).PickListName,
                     IsNew: true //flag a new condition
                 });
 
@@ -95,6 +95,7 @@ window.QueryBuilderMain = (function () {
                     captalign: 'Left',
                     format: 'None',
                     formatstring: '',
+                    dataTypeData: '',
                     visible: true,
                     isHidden: false,
                     cssclass: ''
@@ -102,39 +103,49 @@ window.QueryBuilderMain = (function () {
                 QueryBuilderMain.addDataToLayoutGrid(newlayout, "true");
             },
             InsertSort: function (displayPath, dataPath, item) {
+                var tree = dijit.byId("divTableTree");
+                var forDispOnlyTableName = tree.path["0"].label;
+                if (!tree.selectedItem.root) {
+                    for (i = 1 ; i < tree.path.length; i++) {
+                        forDispOnlyTableName = forDispOnlyTableName + '.' + tree.path[i].toTableDisplayName;
+                    }
+                }
                 QueryBuilderMain.addDataToSortGrid({
                     alias: item.columnName,
                     displayname: item.columnName,
                     displaypath: displayPath,
-                    datapath: dataPath + item.columnName
+                    datapath: dataPath + item.columnName,
+                    insertsort: true,
+                    forDispOnlyTableName: forDispOnlyTableName,
+                    forDispOnlyFieldName: (item.root) ? item.label : item.displayName
                 });
             },
             tabClick: function (idx) {
                 var tabview = dijit.byId("tabview"),
                     page = dijit.byId("tabpage" + idx);
-                
+
                 if (tabview && page) {
                     tabview.selectChild(page);
                 }
-                
+
                 QueryBuilderMain.currentTab = idx;
                 QueryBuilderMain.setButtonState(idx);
             },
-            toggleMoveBtnCaptions : function (vMode) { //c
+            toggleMoveBtnCaptions: function (vMode) { //c
                 switch (vMode) {
-                    case 0 :
+                    case 0:
                         // hidden
                         document.getElementById("btnMoveUp").style.display = 'none';
                         document.getElementById("btnMoveDn").style.display = 'none';
                         break;
-                    case 1 :
+                    case 1:
                         // display Move Up and Move Down
                         document.getElementById("btnMoveUp").value = queryBuilderMainResources.MoveUp;
                         document.getElementById("btnMoveDn").value = queryBuilderMainResources.MoveDown;
                         document.getElementById("btnMoveUp").style.display = 'inline';
                         document.getElementById("btnMoveDn").style.display = 'inline';
                         break;
-                    case 2 :
+                    case 2:
                         // display Move left and Move right
                         document.getElementById("btnMoveUp").value = queryBuilderMainResources.MoveLeft;
                         document.getElementById("btnMoveDn").value = queryBuilderMainResources.MoveRight;
@@ -143,7 +154,7 @@ window.QueryBuilderMain = (function () {
                         break;
                 }
             },
-            toggleEditDeleteButtons : function (bEd, bDel) {
+            toggleEditDeleteButtons: function (bEd, bDel) {
                 // true  = button is enabled
                 // false = button is disabled
                 bEd = ((QueryBuilderMain.accessmode !== "readonly") && (bEd)); // if the group is readonly, make sure these buttons stay disabled...
@@ -151,28 +162,28 @@ window.QueryBuilderMain = (function () {
                 document.getElementById("btnEdit").disabled = !(bEd);
                 document.getElementById("btnDel").disabled = !(bDel);
             },
-            setButtonState : function (tabIdx) {
-                switch(tabIdx) {
-                    case QueryBuilderMain.tabProperties :
+            setButtonState: function (tabIdx) {
+                switch (tabIdx) {
+                    case QueryBuilderMain.tabProperties:
                         QueryBuilderMain.toggleEditDeleteButtons(false, false);
                         QueryBuilderMain.toggleMoveBtnCaptions(0);
                         if (document.getElementById("txtGrpName").disabled === false) {
                             document.getElementById("txtGrpName").focus();
                         }
                         break;
-                    case QueryBuilderMain.tabConditions :
+                    case QueryBuilderMain.tabConditions:
                         QueryBuilderMain.toggleEditDeleteButtons(true, true);
                         QueryBuilderMain.toggleMoveBtnCaptions(1);
                         break;
-                    case QueryBuilderMain.tabLayout :
+                    case QueryBuilderMain.tabLayout:
                         QueryBuilderMain.toggleEditDeleteButtons(true, true);
                         QueryBuilderMain.toggleMoveBtnCaptions(2);
                         break;
-                    case QueryBuilderMain.tabSorting :
+                    case QueryBuilderMain.tabSorting:
                         QueryBuilderMain.toggleEditDeleteButtons(false, true);
                         QueryBuilderMain.toggleMoveBtnCaptions(1);
                         break;
-                    case QueryBuilderMain.tabDefaults :
+                    case QueryBuilderMain.tabDefaults:
                         QueryBuilderMain.toggleEditDeleteButtons(false, false);
                         QueryBuilderMain.toggleMoveBtnCaptions(0);
                         if (document.getElementById("chkUseDistinct").disabled === false) {
@@ -181,15 +192,15 @@ window.QueryBuilderMain = (function () {
                         break;
                 }
             },
-            hideTab : function (idx) {
+            hideTab: function (idx) {
                 var tab = dijit.byId('tabpage' + idx),
                     view = dijit.byId('tabview');
-                
+
                 if (view && tab) {
                     view.removeChild(tab);
                 }
             },
-            isValidGroupName : function () {
+            isValidGroupName: function () {
                 var res = true,
                     msg = "",
                     re = /[\/\\:\*\?"<\>|\.'\r\n]/,
@@ -197,7 +208,7 @@ window.QueryBuilderMain = (function () {
                     tempname = document.getElementById(queryBuilderMainResources.family).value + ":" + document.getElementById("txtGrpName").value,
                     currentgroupid = document.getElementById(queryBuilderMainResources.groupID).value,
                     tempgroupid = QueryBuilderMain.gmgr.GetGroupId(tempname);
-                
+
                 // is the group name blank?
                 if (document.getElementById("txtGrpName").value === '') {
                     msg = QueryBuilderMain.QBMsg_MustName;
@@ -224,13 +235,13 @@ window.QueryBuilderMain = (function () {
                 }
                 return res;
             },
-            parensBalance : function () {
+            parensBalance: function () {
                 var lpcount = 0,
                     rpcount = 0,
                     rows = QueryBuilderMain.dgConditions.gridElement.rows,
                     i,
                     cnd;
-                    
+
                 for (i = 1; i < rows.length; i++) {
                     QueryBuilderMain.rebuildConditionObj(rows[i]);
                     cnd = rows[i].conditionObj;
@@ -242,23 +253,23 @@ window.QueryBuilderMain = (function () {
                 }
                 return lpcount === rpcount;
             },
-            GetGroupSQL : function (GroupID, GroupXML) {
+            GetGroupSQL: function (GroupID, GroupXML) {
                 var vURL,
                     verb,
                     PostData = "dummy",
                     results = '';
-               
+
                 if (GroupXML !== "") {
                     PostData = GroupXML;
                 }
-                
+
                 if (GroupID !== "") {
                     vURL = QueryBuilderMain.gmgr.GMUrl + "GetGroupSQL&gid=" + GroupID;
                     verb = "GET";
                     dojo.xhrGet({
                         url: vURL,
                         sync: true,
-                        headers: {'Content-Type': 'application/xml'},
+                        headers: { 'Content-Type': 'application/xml' },
                         load: function (data) {
                             results = data;
                         },
@@ -273,7 +284,7 @@ window.QueryBuilderMain = (function () {
                         url: vURL,
                         postData: PostData,
                         sync: true,
-                        headers: {'Content-Type': 'application/xml'},
+                        headers: { 'Content-Type': 'application/xml' },
                         load: function (data) {
                             results = data;
                         },
@@ -282,7 +293,7 @@ window.QueryBuilderMain = (function () {
                         }
                     });
                 }
-                
+
                 if (results === "NOTAUTHENTICATED") {
                     if (window.opener) {
                         window.opener.location.reload(true);
@@ -294,25 +305,26 @@ window.QueryBuilderMain = (function () {
 
                 return results;
             },
-            SaveGroup : function () {
+            SaveGroup: function () {
                 var vURL = QueryBuilderMain.gmgr.GMUrl + "SaveGroup",
                     groupId = document.getElementById(queryBuilderMainResources.groupID).value,
                     groupxml = QueryBuilderMain.makeGroupXML(),
                     results = '',
-                    manager;
+                    manager,
+                    groupNonce = document.getElementById(queryBuilderMainResources.groupNonce).value;
 
                 try {
-                    manager = window.opener.Sage.Groups.GroupManager; 
+                    manager = window.opener.Sage.Groups.GroupManager;
                     manager.ClearLocalStorageForGroup(groupId);
                 } catch (err) {
                     console.error(err);
-                } 
+                }
 
                 dojo.xhrPost({
                     url: vURL,
                     postData: groupxml,
                     sync: true,
-                    headers: {'Content-Type': 'application/xml'},
+                    headers: { 'Content-Type': 'application/xml', 'X-GroupNonce': groupNonce },
                     load: function (data) {
                         results = data;
                     },
@@ -323,22 +335,22 @@ window.QueryBuilderMain = (function () {
 
                 return results;
             },
-            encodeXML : function (val) {
+            encodeXML: function (val) {
                 var res = '',
                     i;
-                for (i=0; i<val.length; i++) {
+                for (i = 0; i < val.length; i++) {
                     switch (val.charAt(i)) {
-                        case("&") : res += "&amp;"; break;
-                        case("<") : res += "&lt;"; break;
-                        case(">") : res += "&gt;"; break;
-                        case("'") : res += "&apos;"; break;
-                        case('"') : res += "&quot;"; break;
-                        default   : res += val.charAt(i);
+                        case ("&"): res += "&amp;"; break;
+                        case ("<"): res += "&lt;"; break;
+                        case (">"): res += "&gt;"; break;
+                        case ("'"): res += "&apos;"; break;
+                        case ('"'): res += "&quot;"; break;
+                        default: res += val.charAt(i);
                     }
                 }
                 return res;
             },
-            makeGroupXML : function () {
+            makeGroupXML: function () {
                 var retxml = '<SLXGroup>';
                 retxml += '<plugindata id="';
                 retxml += document.getElementById(queryBuilderMainResources.groupID).value;
@@ -381,14 +393,14 @@ window.QueryBuilderMain = (function () {
                 retxml += '</SLXGroup>';
                 return retxml;
             },
-            ok_Click : function () {
+            ok_Click: function () {
                 var returnValue,
                     url;
-                
+
                 if (document.getElementById(queryBuilderMainResources.sqlonly).value === "T") {
                     returnValue = QueryBuilderMain.GetGroupSQL("", QueryBuilderMain.makeGroupXML());
                 } else {
-                    if (QueryBuilderMain.isValidGroupName()  && QueryBuilderMain.parensBalance()) {
+                    if (QueryBuilderMain.isValidGroupName() && QueryBuilderMain.parensBalance()) {
                         returnValue = QueryBuilderMain.SaveGroup();
                         if (returnValue !== '') {
                             url = QueryBuilderMain.QB_EntityName + ".aspx?modeid=list&gid=" + returnValue;
@@ -397,17 +409,20 @@ window.QueryBuilderMain = (function () {
                         else {
                             window.opener.location.reload(true);
                         }
-                        
+
                         window.close();
+                    }
+                    else {
+                        return false;
                     }
                 }
             },
-            cancel_Click : function () {
+            cancel_Click: function () {
                 var vURL = QueryBuilderMain.gmgr.GMUrl + "CancelEdit&gid=" + document.getElementById(queryBuilderMainResources.groupID).value;
                 dojo.xhrPost({
                     url: vURL,
                     sync: true,
-                    headers: {'Content-Type': 'application/xml'},
+                    headers: { 'Content-Type': 'application/xml' },
                     postData: '',
                     load: function (data) {
                     },
@@ -418,7 +433,7 @@ window.QueryBuilderMain = (function () {
 
                 window.close();
             },
-            viewSQL_Click : function () {
+            viewSQL_Click: function () {
                 Sage.Groups.GroupManager.GetGroupSQLFromXML(QueryBuilderMain.makeGroupXML(),
                     function (data) {
                         require(['dojo/_base/lang',
@@ -426,7 +441,7 @@ window.QueryBuilderMain = (function () {
                             'Sage/Link',
                             'Sage/UI/Controls/_DialogHelpIconMixin',
                             'Sage/Utility'
-                            ],
+                        ],
                             function (lang, registry, Link, DialogHelpIconMixin, Utility) {
                                 var dialog = registry.byId('queryDialog');
                                 if (dialog) {
@@ -442,22 +457,22 @@ window.QueryBuilderMain = (function () {
                                     dialog.createHelpIconByTopic('viewquerysql');
                                 } catch (err) { console.error(err); }
                             });
-                        
+
                     },
                     function (a, b, c) {
                         console.log('Request for group sql failed: %o %o %o', a, b, c);
                     }
                 );
             },
-            calculations_Click : function () {
+            calculations_Click: function () {
                 var vURL = "calcfields.aspx";
-                window.open(vURL, "calcFields","dialog=yes,centerscreen=yes,width=750,height=420,status=no,toolbar=no,scrollbars=yes,resizable=yes");
+                window.open(vURL, "calcFields", "dialog=yes,centerscreen=yes,width=750,height=420,status=no,toolbar=no,scrollbars=yes,resizable=yes");
             },
-            joins_Click : function () {
-                  var vURL = "GlobalJoinManager.aspx";
-                  window.open(vURL, "GlobalJoinManager","dialog=yes,centerscreen=yes,width=955,height=450,status=no,toolbar=no,scrollbars=yes,modal=yes,resizable=yes");
+            joins_Click: function () {
+                var vURL = "GlobalJoinManager.aspx";
+                window.open(vURL, "GlobalJoinManager", "dialog=yes,centerscreen=yes,width=955,height=450,status=no,toolbar=no,scrollbars=yes,modal=yes,resizable=yes");
             },
-            toggleHiddenFields : function () {
+            toggleHiddenFields: function () {
                 /*if (QueryBuilderMain.fieldsHidden === true) {
                     document.getElementById("hiddenFieldSwitch").innerHTML = queryBuilderMainResources.Hide_Hidden_Fields;
                 } else {
@@ -465,17 +480,17 @@ window.QueryBuilderMain = (function () {
                 }
                 QueryBuilderMain.fieldsHidden = (!QueryBuilderMain.fieldsHidden);*/
             },
-            createLocalJoin : function () {
+            createLocalJoin: function () {
                 //declared Globally
                 var grid = dijit.byId("fieldGrid"),
                     tree = dijit.byId("divTableTree"),
                     joinObj,
                     item,
                     vURL;
-                
-                if (tree.selectedItem && grid.selection.selectedIndex >= 0) {
+
+                if (tree.selectedItem && grid.selectedItem) {
                     joinObj = new joinInfo();
-                    item = grid.getItem(grid.selection.selectedIndex);
+                    item = grid.selectedItem;
                     joinObj.joinid = "";
                     joinObj.fromtable = ""; //child
                     joinObj.fromfield = "";
@@ -496,27 +511,27 @@ window.QueryBuilderMain = (function () {
                     alert(QueryBuilderMain.createLocalJoinMessage);
                 }
             },
-            HandleJoinEditor : function () {
+            HandleJoinEditor: function () {
                 var joinObj = new joinInfo(QueryBuilderMain.joinXML),
                     tofieldpath = (joinObj.totablepath !== '') ? joinObj.totablepath : joinObj.totable + ":" + joinObj.tofield,
                     dpath = tofieldpath + joinObj.jointype + joinObj.fromfield + "." + joinObj.fromtable + "!",
                     tree = dijit.byId("divTableTree");
                 tree.model.newItem(joinObj, tree.selectedNode);
             },
-            showJoinEditor : function () {
-                window.open(QueryBuilderMain.joinURL, "joinEditor","dialog=yes,centerscreen=yes,width=650,height=450,status=no,toolbar=no,scrollbars=no,modal=yes");
+            showJoinEditor: function () {
+                window.open(QueryBuilderMain.joinURL, "joinEditor", "dialog=yes,centerscreen=yes,width=650,height=450,status=no,toolbar=no,scrollbars=no,modal=yes");
             },
-            edit_Click : function (ev) {
+            edit_Click: function (ev) {
                 switch (QueryBuilderMain.currentTab) {
-                case QueryBuilderMain.tabConditions:
-                    QueryBuilderMain.editCondition();
-                    break;
-                case QueryBuilderMain.tabLayout:
-                    QueryBuilderMain.editLayout(ev);
-                    break;
+                    case QueryBuilderMain.tabConditions:
+                        QueryBuilderMain.editCondition();
+                        break;
+                    case QueryBuilderMain.tabLayout:
+                        QueryBuilderMain.editLayout(ev);
+                        break;
                 }
             },
-            delete_Click : function () {
+            delete_Click: function () {
                 switch (QueryBuilderMain.currentTab) {
                     case QueryBuilderMain.tabConditions:
                         QueryBuilderMain.dgConditions.deleteSelectedRow();
@@ -525,25 +540,27 @@ window.QueryBuilderMain = (function () {
                     case QueryBuilderMain.tabLayout:
                         QueryBuilderMain.deleteLayout();
                         break;
-                    case QueryBuilderMain.tabSorting :
+                    case QueryBuilderMain.tabSorting:
                         QueryBuilderMain.dgSorts.deleteSelectedRow();
                         QueryBuilderMain.resetOrder();
                         break;
                 }
             },
-            resetCursor : function () {
+            resetCursor: function () {
                 document.body.style.cursor = "auto";
                 document.getElementById("btnMoveUp").style.cursor = "auto";
                 document.getElementById("btnMoveDn").style.cursor = "auto";
             },
-            moveup_Click : function () {
+            moveup_Click: function () {
                 QueryBuilderMain.moveup_ClickWorker();
             },
-            SwapConditionRow : function (fromRow, toRow) {
+            SwapConditionRow: function (fromRow, toRow) {
                 var fromHTML = fromRow.innerHTML,
                     fromConditionInfo = fromRow.conditionObj,
                     fromSortInfo = fromRow.sortObj,
                     fromOpIndex = dojo.query("select", fromRow)[0].selectedIndex;
+                var toConditionInfo = toRow.conditionObj;
+
                 fromRow.innerHTML = toRow.innerHTML;
                 fromRow.conditionObj = toRow.conditionObj;
                 fromRow.sortObj = toRow.sortObj;
@@ -552,34 +569,39 @@ window.QueryBuilderMain = (function () {
                 toRow.conditionObj = fromConditionInfo;
                 toRow.sortObj = fromSortInfo;
                 dojo.query("select", toRow)[0].selectedIndex = fromOpIndex;
+
+                // there should be 2 drop downs selectAndOr would be at index 2
+                var elems = toRow.getElementsByTagName("select");
+                elems[1].value = fromConditionInfo.connector;
+                elems = fromRow.getElementsByTagName("select");
+                elems[1].value = toConditionInfo.connector;
             },
-            moveup_ClickWorker : function () {
+            moveup_ClickWorker: function () {
                 var vRow;
-                
+
                 switch (QueryBuilderMain.currentTab) {
-                    case QueryBuilderMain.tabConditions :
+                    case QueryBuilderMain.tabConditions:
                         vRow = QueryBuilderMain.dgConditions.selectedIndex;
                         if (vRow > 1) {
                             QueryBuilderMain.dgConditions.selectRowByIndex(vRow);
                             if (document.all) {
-                                QueryBuilderMain.dgConditions.gridElement.moveRow(vRow, vRow-1);
+                                QueryBuilderMain.dgConditions.gridElement.moveRow(vRow, vRow - 1);
                             } else {
                                 QueryBuilderMain.SwapConditionRow(QueryBuilderMain.dgConditions.gridElement.rows[vRow], QueryBuilderMain.dgConditions.gridElement.rows[vRow - 1]);
                             }
-                            QueryBuilderMain.dgConditions.selectRowByIndex(vRow);
                             QueryBuilderMain.dgConditions.selectRowByIndex(vRow - 1);
                             QueryBuilderMain.updateAndOrs();
                         }
                         break;
-                    case QueryBuilderMain.tabLayout :
+                    case QueryBuilderMain.tabLayout:
                         QueryBuilderMain.moveLayoutLeft();
                         break;
-                    case QueryBuilderMain.tabSorting :
+                    case QueryBuilderMain.tabSorting:
                         vRow = QueryBuilderMain.dgSorts.selectedIndex;
                         if (vRow > 1) {
                             QueryBuilderMain.dgSorts.selectRowByIndex(vRow);
                             if (document.all) {
-                                QueryBuilderMain.dgSorts.gridElement.moveRow(vRow, vRow-1);
+                                QueryBuilderMain.dgSorts.gridElement.moveRow(vRow, vRow - 1);
                             } else {
                                 QueryBuilderMain.SwapConditionRow(QueryBuilderMain.dgSorts.gridElement.rows[vRow], QueryBuilderMain.dgSorts.gridElement.rows[vRow - 1]);
                             }
@@ -591,38 +613,37 @@ window.QueryBuilderMain = (function () {
                 }
                 QueryBuilderMain.resetCursor();
             },
-            waitCursor : function () {
+            waitCursor: function () {
                 document.body.style.cursor = "wait";
             },
-            movedown_Click : function () {
+            movedown_Click: function () {
                 QueryBuilderMain.movedown_ClickWorker();
             },
-            movedown_ClickWorker : function () {
+            movedown_ClickWorker: function () {
                 var vRow;
                 switch (QueryBuilderMain.currentTab) {
-                    case QueryBuilderMain.tabConditions :
+                    case QueryBuilderMain.tabConditions:
                         vRow = QueryBuilderMain.dgConditions.selectedIndex;
                         if ((vRow > 0) && (vRow < QueryBuilderMain.dgConditions.gridElement.rows.length - 1)) {
                             QueryBuilderMain.dgConditions.selectRowByIndex(vRow);
                             if (document.all) {
-                                QueryBuilderMain.dgConditions.gridElement.moveRow(vRow, vRow+1);
+                                QueryBuilderMain.dgConditions.gridElement.moveRow(vRow, vRow + 1);
                             } else {
                                 QueryBuilderMain.SwapConditionRow(QueryBuilderMain.dgConditions.gridElement.rows[vRow], QueryBuilderMain.dgConditions.gridElement.rows[vRow + 1]);
                             }
-                            QueryBuilderMain.dgConditions.selectRowByIndex(vRow);
                             QueryBuilderMain.dgConditions.selectRowByIndex(vRow + 1);
                         }
                         QueryBuilderMain.updateAndOrs();
                         break;
-                    case QueryBuilderMain.tabLayout :
+                    case QueryBuilderMain.tabLayout:
                         QueryBuilderMain.moveLayoutRight();
                         break;
-                    case QueryBuilderMain.tabSorting :
+                    case QueryBuilderMain.tabSorting:
                         vRow = QueryBuilderMain.dgSorts.selectedIndex;
                         if ((vRow > 0) && (vRow < QueryBuilderMain.dgSorts.gridElement.rows.length - 1)) {
                             QueryBuilderMain.dgSorts.selectRowByIndex(vRow);
                             if (document.all) {
-                                QueryBuilderMain.dgSorts.gridElement.moveRow(vRow, vRow+1);
+                                QueryBuilderMain.dgSorts.gridElement.moveRow(vRow, vRow + 1);
                             } else {
                                 QueryBuilderMain.SwapConditionRow(QueryBuilderMain.dgSorts.gridElement.rows[vRow], QueryBuilderMain.dgSorts.gridElement.rows[vRow + 1]);
                             }
@@ -634,7 +655,7 @@ window.QueryBuilderMain = (function () {
                 }
                 QueryBuilderMain.resetCursor();
             },
-            initConditionGrid : function () {
+            initConditionGrid: function () {
                 QueryBuilderMain.dgConditions.resizeColTo(0, '40');
                 QueryBuilderMain.dgConditions.resizeColTo(1, '60');
                 QueryBuilderMain.dgConditions.resizeColTo(2, '150');
@@ -644,7 +665,7 @@ window.QueryBuilderMain = (function () {
                 QueryBuilderMain.dgConditions.resizeColTo(6, '60');
                 QueryBuilderMain.dgConditions.resizeColTo(7, '60');
             },
-            editCondition : function () {
+            editCondition: function () {
                 var selRow = QueryBuilderMain.dgConditions.selectedIndex,
                     row;
                 if (selRow > 0) {
@@ -652,16 +673,16 @@ window.QueryBuilderMain = (function () {
                     QueryBuilderMain.rebuildConditionObj(row);
                     QueryBuilderMain.currentCondition = row.conditionObj;
                     QueryBuilderMain.currentCondition.IsNew = false;
-                  
+
                     ShowAddCondition();
                 }
             },
-            addToConditionGrid : function () {
+            addToConditionGrid: function () {
                 var conditionObj = new conditionInfo(),
                     cells = document.getElementById("fieldList").getElementsByTagName('TD'),
                     i,
                     fieldObj;
-                    
+
                 for (i = 0; i < cells.length; i++) {
                     if (cells[i].sel === 'T') {
                         fieldObj = cells[i].fieldObj;
@@ -675,16 +696,16 @@ window.QueryBuilderMain = (function () {
                         conditionObj.isliteral = 'false';
                         conditionObj.isnegated = 'false';
                         conditionObj.casesens = 'true';
-                        
+
                         conditionObj.IsNew = true; //flag a new condition
                         break;
                     }
                 }
-                
+
                 QueryBuilderMain.currentCondition = conditionObj;
                 ShowAddCondition();
             },
-            rebuildConditionObj : function (rowObj) {
+            rebuildConditionObj: function (rowObj) {
                 /* pass the row object of the condition datagrid                           */
                 /* This will update the conditionInfo object associated with that row      */
                 /* with values the user can change in the grid.                            */
@@ -692,7 +713,7 @@ window.QueryBuilderMain = (function () {
                     selObj,
                     chkIsNeg,
                     chkcase;
-                    
+
                 if (cnd) {
                     selObj = rowObj.cells[3].getElementsByTagName('SELECT');
                     cnd.operator = selObj[0].value;
@@ -704,20 +725,53 @@ window.QueryBuilderMain = (function () {
                     cnd.connector = selObj[0].value.trim();
                     cnd.leftparens = rowObj.cells[1].getElementsByTagName('TD')[1].firstChild.innerHTML;
                     cnd.rightparens = rowObj.cells[6].getElementsByTagName('TD')[1].firstChild.innerHTML;
-                    
+
                     chkcase = rowObj.cells[5].getElementsByTagName("INPUT");
                     cnd.casesens = (chkcase[0].checked) ? 'true' : 'false';
+
+                    // SQL Injection Check
+                    if (cnd.isliteral === "true") {
+                        const initialVal = cnd.value[0];
+                        if (!isNaN(initialVal)) {
+                            // Stop when this isn't a number
+                            for (let i = 1; i < cnd.value.length; i++) {
+                                if (isNaN(cnd.value[i])) {
+                                    cnd.value = cnd.value.substring(0, i);
+                                    break;
+                                }
+                            }
+                        } else if (initialVal === ':') {
+                            // Stop when this becomes a number or non-alpha
+                            for (let i = 1; i < cnd.value.length; i++) {
+                                if (!isNaN(cnd.value[i]) || cnd.value[i].toLowerCase() === cnd.value[i].toUpperCase()) {
+                                    cnd.value = cnd.value.substring(0, i);
+                                    break;
+                                }
+                            }
+                        } else if (initialVal === '\'') {
+                            // Stop at the next single-quote
+                            for (let i = 1; i < cnd.value.length; i++) {
+                                if (cnd.value[i] === '\'') {
+                                    cnd.value = cnd.value.substring(0, i + 1);
+                                    break;
+                                }
+                            }
+                        } else {
+                            // Assume this is invalid and double-quote it.
+                            cnd.value = '\'' + cnd.value + '\'';
+                        }
+                    }
 
                     rowObj.conditionObj = cnd;
                 }
             },
-            addDataToConditionGrid : function (conditionObj) {
+            addDataToConditionGrid: function (conditionObj) {
                 var row,
                     txt,
                     lpSpanID,
                     rpSpanID,
                     selObjs;
-                    
+
                 if (conditionObj) {
                     row = QueryBuilderMain.dgConditions.addNewRow();
                     txt = '<input type="checkbox" id="chkNot" ';
@@ -725,17 +779,17 @@ window.QueryBuilderMain = (function () {
                     txt += '/>';
                     row.cells[0].innerHTML = txt;
                     row.cells[2].firstChild.nodeValue = conditionObj.displaypath + '.' + conditionObj.displayname;
-                    
+
                     //.operator
                     row.cells[3].innerHTML = conditionObj.buildOperatorSelectHTML('selOperator');
-                    
+
                     //.value
-                    if ((conditionObj.value === '') || (conditionObj.value === 'NULL')) {
+                    if ((conditionObj.value === '') || (conditionObj.value === 'NULL') || (conditionObj.operator === ' IS ') || (conditionObj.operator === ' IS NOT ')) {
                         row.cells[4].firstChild.nodeValue = ' ';
                     } else {
                         row.cells[4].firstChild.nodeValue = conditionObj.value;
                     }
-                    
+
                     //.casesens
                     txt = '<input type="checkbox" id="chkCaseSens" ';
                     txt += (conditionObj.casesens === 'true') ? 'checked ' : '';
@@ -744,7 +798,7 @@ window.QueryBuilderMain = (function () {
                     row.cells[5].align = 'center';
 
                     //.connector
-                    txt = '<select id="selAndOr" name="selAndOr" onchange="QueryBuilderMain.updateAndOrs"()>';
+                    txt = '<select id="selAndOr" name="selAndOr" onchange="QueryBuilderMain.updateAndOrs();" class="dropdown">';
                     txt += '<option value="AND">AND</option>';
                     txt += '<option value="OR">OR</option>';
                     txt += '<option value="END">END</option>';
@@ -756,7 +810,7 @@ window.QueryBuilderMain = (function () {
                     //.leftparens
                     lpSpanID = "LP" + conditionObj.alias.replace(/\./g, "") + row.rowIndex;
                     txt = '<table cellpadding="0" cellspacing="0" border="0" ><tr><td style="padding-bottom:0px; padding-right:5px">';
-                    txt += '<img src="images/groupbuilder/plus.gif" onclick="QueryBuilderMain.addlp(' + "'" + lpSpanID + "'" + ')" border="0" style="cursor:hand" />';
+                    txt += '<img src="images/groupbuilder/plus.gif" onclick="QueryBuilderMain.addlp(' + "'" + lpSpanID + "'" + ')" border="0" style="cursor:pointer" />';
                     txt += '</td><td rowspan="2"><span id="' + lpSpanID + '">';
                     txt += conditionObj.leftparens;
                     txt += '</span></td></tr><tr><td>';
@@ -778,12 +832,19 @@ window.QueryBuilderMain = (function () {
                     row.cells[6].style.paddingTop = '0px';
                     row.cells[6].style.paddingLeft = '0px';
                     row.cells[6].innerHTML = txt;
-                    
+
                     // add the conditionObj to the row for safekeeping...
+					var def = new dojo.Deferred();                  
+                    this.QBEditLayout_loadDataTypeDatas(conditionObj.displaypath, conditionObj.displayname, def);
+                    def.then(dojo.hitch(this, function (data) {
+                      if(data){
+                          conditionObj.picklistname= JSON.parse(data).PickListName;
+                        }
+                    }));
                     row.conditionObj = conditionObj;
                 }
             },
-            addlp : function (lpSpanId) {
+            addlp: function (lpSpanId) {
                 // add left parens
                 if (QueryBuilderMain.accessmode === "readonly") {
                     return;
@@ -792,9 +853,9 @@ window.QueryBuilderMain = (function () {
                 if (typeof obj !== "undefined") {
                     obj.innerHTML += '(';
                 }
-                
+
             },
-            dellp : function (lpSpanId) {
+            dellp: function (lpSpanId) {
                 // remove left parens
                 if (QueryBuilderMain.accessmode === "readonly") {
                     return;
@@ -804,7 +865,7 @@ window.QueryBuilderMain = (function () {
                     obj.innerHTML = obj.innerHTML.replace(/\(/, '');
                 }
             },
-            addrp : function (rpSpanId) {
+            addrp: function (rpSpanId) {
                 // add right parens
                 if (QueryBuilderMain.accessmode === "readonly") {
                     return;
@@ -814,7 +875,7 @@ window.QueryBuilderMain = (function () {
                     obj.innerHTML += ')';
                 }
             },
-            delrp : function (rpSpanId) {
+            delrp: function (rpSpanId) {
                 // remove right parens
                 if (QueryBuilderMain.accessmode === "readonly") {
                     return;
@@ -824,15 +885,15 @@ window.QueryBuilderMain = (function () {
                     obj.innerHTML = obj.innerHTML.replace(/\)/, '');
                 }
             },
-            updateAndOrs : function () {
+            updateAndOrs: function () {
                 // this just makes sure we don't have two "END" connectors
                 var elems = document.getElementsByName("selAndOr"),
                     i;
                 for (i = 0; i < elems.length; i++) {
                     if (i < elems.length - 1) {
                         if (elems[i].value === 'END') {
-                            if ((i === (elems.length - 2)) && (elems[i+1].value !== 'END')) {
-                                elems[i].value = elems[i+1].value;
+                            if ((i === (elems.length - 2)) && (elems[i + 1].value !== 'END')) {
+                                elems[i].value = elems[i + 1].value;
                             } else {
                                 elems[i].value = 'AND';
                             }
@@ -841,13 +902,19 @@ window.QueryBuilderMain = (function () {
                         elems[i].value = 'END';
                     }
                 }
+
+                // Rebuild conditionObj once user updates and/or dropdown
+                if (QueryBuilderMain.dgConditions.selectedIndex > 0) {
+                    var vRow = QueryBuilderMain.dgConditions.selectedIndex;
+                    QueryBuilderMain.rebuildConditionObj(QueryBuilderMain.dgConditions.gridElement.rows[vRow]);
+                }
             },
-            conditionsAsXml : function () {
+            conditionsAsXml: function () {
                 var ret = '<conditions count="XputcounthereX">',
                     cnt = 0,
                     rows = QueryBuilderMain.dgConditions.gridElement.rows,
                     i;
-                    
+
                 for (i = 1; i < rows.length; i++) {
                     cnt++;
                     QueryBuilderMain.rebuildConditionObj(rows[i]);
@@ -857,14 +924,14 @@ window.QueryBuilderMain = (function () {
                 ret = ret.replace("XputcounthereX", cnt);
                 return ret;
             },
-            addToLayoutGrid : function () {
+            addToLayoutGrid: function () {
                 var layoutObj = new layoutInfo(),
                     cells = document.getElementById("fieldList").getElementsByTagName('TD'),
                     i,
                     fieldObj,
                     layoutGrid,
                     lastLayoutObj;
-                    
+
                 for (i = 0; i < cells.length; i++) {
                     if (cells[i].sel === 'T') {
                         fieldObj = cells[i].fieldObj;
@@ -880,19 +947,20 @@ window.QueryBuilderMain = (function () {
                         layoutObj.align = ((layoutObj.fieldtypecode === '3') || (layoutObj.fieldtypecode === '6')) ? 'Right' : 'Left';
                         layoutObj.captalign = 'Left';
                         layoutObj.format = 'None';
+                        layoutObj.dataTypeData = '';
                         if (fieldObj.alias.indexOf('SECCODEID') > -1) {
                             layoutObj.format = 'Owner';
                         }
-                        
+
                         if ((fieldObj.alias.indexOf('ACCOUNTMANAGERID') > -1) || (fieldObj.alias.indexOf('USERID') > -1)) {
                             layoutObj.format = 'User';
                         }
-                        
+
                         layoutObj.formatstring = '';
                         break;
                     }
                 }
-                
+
                 layoutGrid = document.getElementById("grdLayout");
                 if (layoutGrid) {
                     if (layoutGrid.rows[0].cells.length > 0) {
@@ -905,12 +973,12 @@ window.QueryBuilderMain = (function () {
                             }
                         }
                     }
-                
+
                 }
-                
+
                 QueryBuilderMain.addDataToLayoutGrid(layoutObj, "true");
             },
-            addDataToLayoutGrid : function (layoutObj, strSelected) {
+            addDataToLayoutGrid: function (layoutObj, strSelected) {
                 var dispfieldpath = layoutObj.displaypath + '.' + layoutObj.displaypath,
                     lytID = dispfieldpath.replace(/[.]/g, ''),
                     elem = document.getElementById(lytID),
@@ -919,7 +987,7 @@ window.QueryBuilderMain = (function () {
                     layoutGrid,
                     cell,
                     elems;
-                    
+
                 if (elem) {
                     b = confirm(QueryBuilderMain.addDataToLayoutGridMessage);
                     if (b === false) {
@@ -942,70 +1010,71 @@ window.QueryBuilderMain = (function () {
                 fieldLayoutHtml += QueryBuilderMain.makeLayoutRow(layoutObj.align);
                 fieldLayoutHtml += QueryBuilderMain.makeLayoutRow(layoutObj.format.replace("DateTime", "Date/Time"));
                 fieldLayoutHtml += QueryBuilderMain.makeLayoutRow(layoutObj.formatstring);
-                
+                fieldLayoutHtml += QueryBuilderMain.makeLayoutRow(layoutObj.dataTypeData);
+
                 if (layoutObj.ishidden || !layoutObj.visible) {
                     fieldLayoutHtml += QueryBuilderMain.makeLayoutRow('Hidden');
                 } else {
                     fieldLayoutHtml += QueryBuilderMain.makeLayoutRow('Visible');
                 }
-                
+
                 if (layoutObj.weblink) {
                     fieldLayoutHtml += QueryBuilderMain.makeLayoutRow('Yes');
                 } else {
                     fieldLayoutHtml += QueryBuilderMain.makeLayoutRow('No');
                 }
-                
+
                 fieldLayoutHtml += QueryBuilderMain.makeLayoutRow(layoutObj.cssclass);
                 fieldLayoutHtml += '</table>';
                 layoutGrid = document.getElementById("grdLayout");
-                
+
                 if (QueryBuilderMain.currentLayoutIndex !== null) {
                     cell = layoutGrid.rows[0].insertCell(QueryBuilderMain.currentLayoutIndex);
                 } else {
                     cell = layoutGrid.rows[0].insertCell(layoutGrid.rows[0].cells.length);
                 }
-                
+
                 cell.innerHTML = fieldLayoutHtml;
                 cell.setAttribute('style', 'min-width: 150px;position: relative;');
                 cell.setAttribute('class', 'mdndArea');
-                
+
                 QueryBuilderMain.CreateAreaManager(cell);
-                    
+
                 elems = cell.getElementsByTagName('TABLE');
                 elems[0].layoutObj = layoutObj;
-                
+
                 // TODO: Why is strSelect a string an not a boolean?
-                if(strSelected === 'true') {
+                if (strSelected === 'true') {
                     QueryBuilderMain.deselectAll();
                     QueryBuilderMain.selectLayoutItem(elems[0]);
                 }
                 QueryBuilderMain.UpdateLayoutElements();
             },
-            UnregisterDndAreas : function () {
+            UnregisterDndAreas: function () {
                 var grid = dojo.byId('grdLayout'),
                     nodes = dojo.query('.mdndArea', grid);
-                dojo.forEach(nodes, function(item) {
+                dojo.forEach(nodes, function (item) {
                     QueryBuilderMain.areaManager.unregister(item);
                 });
             },
-            RegisterDndAreas : function () {
+            RegisterDndAreas: function () {
                 var grid = dojo.byId('grdLayout'),
                     nodes = dojo.query('.mdndArea', grid);
-                dojo.forEach(nodes, function(item) {
+                dojo.forEach(nodes, function (item) {
                     QueryBuilderMain.areaManager.registerByNode(item);
                 });
             },
-            CreateAreaManager : function (areaNode) {
-                if(!QueryBuilderMain.areaManager) {
+            CreateAreaManager: function (areaNode) {
+                if (!QueryBuilderMain.areaManager) {
                     QueryBuilderMain.areaManager = dojox.mdnd.areaManager();
                     QueryBuilderMain.areaManager.areaClass = "mdndArea";
                     QueryBuilderMain.areaManager.dragHandleClass = "dragHandle";
 
-                    dojo.subscribe('/dojox/mdnd/drag/start', function(node, sourceArea, sourceDropIndex) {
+                    dojo.subscribe('/dojox/mdnd/drag/start', function (node, sourceArea, sourceDropIndex) {
                         dojo.attr(node, 'dragging', 'true');
                     });
 
-                    dojo.subscribe('/dojox/mdnd/drop', function(node, targetArea, indexChild) {
+                    dojo.subscribe('/dojox/mdnd/drop', function (node, targetArea, indexChild) {
                         var dropParent = node.parentNode,
                             dropIndex = dropParent.cellIndex,
                             startIndex, startParent,
@@ -1016,9 +1085,9 @@ window.QueryBuilderMain = (function () {
                             i,
                             x,
                             y;
-                            
-                        for(i = 0; i < cells.length; i++) {
-                            if(cells[i].childElementCount === 0 || cells[i].childNodes.length === 0) {
+
+                        for (i = 0; i < cells.length; i++) {
+                            if (cells[i].childElementCount === 0 || cells[i].childNodes.length === 0) {
                                 startIndex = cells[i].cellIndex;
                                 startParent = cells[i].parentNode;
                                 break;
@@ -1027,18 +1096,18 @@ window.QueryBuilderMain = (function () {
 
                         // TODO: Refactor the dojo.place into one function, the code is duplicated in each if branch
                         QueryBuilderMain.UnregisterDndAreas();
-                        if(startIndex > dropIndex) {
+                        if (startIndex > dropIndex) {
                             // We dragged to the left.
                             // Shift the cells right from drop to start.
                             dragLength = startIndex - dropIndex;
-                            for(x = startIndex; x > dropIndex; x--) {
-                                currentCell = cells[x-1];
-                                if(currentCell.childNodes.length === 1) {
+                            for (x = startIndex; x > dropIndex; x--) {
+                                currentCell = cells[x - 1];
+                                if (currentCell.childNodes.length === 1) {
                                     dojo.place(currentCell.childNodes[0], cells[x]);
                                 } else {
                                     // dropped node will have two children (dropped + existing)
-                                    for(y = 0; y < currentCell.childNodes.length; y++) {
-                                        if(dojo.attr(currentCell.childNodes[y], 'dragging') !== 'true') {
+                                    for (y = 0; y < currentCell.childNodes.length; y++) {
+                                        if (dojo.attr(currentCell.childNodes[y], 'dragging') !== 'true') {
                                             dojo.place(currentCell.childNodes[y], cells[x]);
                                             break;
                                         }
@@ -1049,14 +1118,14 @@ window.QueryBuilderMain = (function () {
                             // We dragged to the right.
                             // Shift the cells left from drop to start.
                             dragLength = dropIndex - startIndex;
-                            for(x = startIndex; x < dropIndex; x++) {
-                                currentCell = cells[x+1];
-                                if(currentCell.childNodes.length === 1) {
+                            for (x = startIndex; x < dropIndex; x++) {
+                                currentCell = cells[x + 1];
+                                if (currentCell.childNodes.length === 1) {
                                     dojo.place(currentCell.childNodes[0], cells[x]);
                                 } else {
                                     // dropped node will have two children (dropped + existing)
-                                    for(y = 0; y < currentCell.childNodes.length; y++) {
-                                        if(dojo.attr(currentCell.childNodes[y], 'dragging') !== 'true') {
+                                    for (y = 0; y < currentCell.childNodes.length; y++) {
+                                        if (dojo.attr(currentCell.childNodes[y], 'dragging') !== 'true') {
                                             dojo.place(currentCell.childNodes[y], cells[x]);
                                             break;
                                         }
@@ -1075,22 +1144,22 @@ window.QueryBuilderMain = (function () {
                 // TODO: This causes IE9 text inputs to not select text anymore
                 QueryBuilderMain.areaManager.registerByNode(areaNode);
             },
-            UpdateLayoutElements : function () {
+            UpdateLayoutElements: function () {
                 var layoutGrid = dojo.byId("grdLayout"),
                     cellcnt = layoutGrid.rows[0].cells.length,
                     totalWidth = 0,
                     i;
-                    
+
                 for (i = 0; i < cellcnt; i++) {
                     layoutGrid.rows[0].cells[i].id = "layout" + i;
                     totalWidth += parseInt(layoutGrid.rows[0].cells[i].width, 10);
                 }
-                
-                if(!isNaN(totalWidth)) {
+
+                if (!isNaN(totalWidth)) {
                     dojo.style(layoutGrid, 'width', totalWidth + 'px');
                 }
             },
-            makeLayoutRow : function (aDisp, custom) {
+            makeLayoutRow: function (aDisp, custom) {
                 if (!custom) {
                     custom = "";
                 }
@@ -1102,7 +1171,7 @@ window.QueryBuilderMain = (function () {
                 vRow += '</td></tr>';
                 return vRow;
             },
-            deselectAll : function () {
+            deselectAll: function () {
                 var tbls = document.getElementById("grdLayout").getElementsByTagName('TABLE'),
                     i;
                 for (i = 0; i < tbls.length; i++) {
@@ -1112,15 +1181,15 @@ window.QueryBuilderMain = (function () {
                 }
             },
             toggleSelection: function (ev) {
-               var elem = ev.target || window.event.srcElement,
-                tempSel;
-                   
+                var elem = ev.target || window.event.srcElement,
+                 tempSel;
+
                 while (elem.tagName !== 'TABLE') {
                     elem = elem.parentNode;
                 }
-                
+
                 tempSel = elem.sel; //hold in case this next changes it...
-                
+
                 QueryBuilderMain.deselectAll();
                 elem.sel = tempSel;
                 if (elem.sel === 'T') {
@@ -1129,36 +1198,36 @@ window.QueryBuilderMain = (function () {
                     QueryBuilderMain.selectLayoutItem(elem);
                 }
             },
-            selectLayoutItem : function (objItm) {
+            selectLayoutItem: function (objItm) {
                 var elems = objItm.getElementsByTagName('TD'),
                     i;
                 objItm.sel = 'T';
                 for (i = 1; i < elems.length; i++) {
-                    elems[i].style.color = '#000000';
-                    elems[i].style.backgroundColor = '#D6E3BF';
+                    elems[i].style.color = '#5e5e5e';
+                    elems[i].style.backgroundColor = '#d2d2d2';
                 }
             },
-            deselectLayoutItem : function (objItm) {
+            deselectLayoutItem: function (objItm) {
                 var elems = objItm.getElementsByTagName('TD'),
                     i;
                 objItm.sel = 'F';
                 for (i = 1; i < elems.length; i++) {
-                    elems[i].style.color = 'black';
+                    elems[i].style.color = '#737373';
                     elems[i].style.backgroundColor = 'white';
                 }
             },
-            editLayout : function (ev) {
+            editLayout: function (ev) {
                 var elem = ev.target || window.event.srcElement,
                     elems,
                     i;
-                
+
                 if (QueryBuilderMain.accessmode === "readonly") {
                     return;
                 }
-                
-                
+
+
                 if (elem.tagName === 'INPUT') {
-                     elems = document.getElementById("grdLayout").getElementsByTagName('TABLE');
+                    elems = document.getElementById("grdLayout").getElementsByTagName('TABLE');
                     for (i = 0; i < elems.length; i++) {
                         if (elems[i].sel === 'T') {
                             QueryBuilderMain.ShowEditLayout(elems[i]);
@@ -1172,10 +1241,10 @@ window.QueryBuilderMain = (function () {
                     QueryBuilderMain.ShowEditLayout(elem);
                 }
             },
-            deleteLayout : function () {
+            deleteLayout: function () {
                 var elems = document.getElementById("grdLayout").getElementsByTagName('TABLE'),
                     i;
-                    
+
                 for (i = 0; i < elems.length; i++) {
                     if (elems[i].sel === 'T') {
                         if (elems[i].parentNode.removeNode) { //removeNode is IE only, but removeChild doesn't recalc correctly in IE
@@ -1189,7 +1258,7 @@ window.QueryBuilderMain = (function () {
                     }
                 }
             },
-            SwapLayoutNode : function (fromLayout, toLayout) {
+            SwapLayoutNode: function (fromLayout, toLayout) {
                 // layout node is the <td> container for the layout <table>
                 QueryBuilderMain.UnregisterDndAreas();
                 var fromParent = fromLayout.parentNode,
@@ -1197,27 +1266,27 @@ window.QueryBuilderMain = (function () {
                 fromParent.appendChild(replacedNode);
                 QueryBuilderMain.RegisterDndAreas();
             },
-            moveLayoutLeft : function () {
+            moveLayoutLeft: function () {
                 var elems = document.getElementById("grdLayout").getElementsByTagName('TABLE'),
                     i;
                 for (i = 1; i < elems.length; i++) {
                     if (elems[i].sel === 'T') {
-                        QueryBuilderMain.SwapLayoutNode(elems[i], elems[i-1]);
+                        QueryBuilderMain.SwapLayoutNode(elems[i], elems[i - 1]);
                         return;
                     }
                 }
             },
-            moveLayoutRight : function () {
+            moveLayoutRight: function () {
                 var elems = document.getElementById("grdLayout").getElementsByTagName('TABLE'),
                     i;
                 for (i = 0; i < elems.length - 1; i++) {
-                       if (elems[i].sel === 'T') {
-                        QueryBuilderMain.SwapLayoutNode(elems[i], elems[i+1]);
+                    if (elems[i].sel === 'T') {
+                        QueryBuilderMain.SwapLayoutNode(elems[i], elems[i + 1]);
                         return;
                     }
                 }
             },
-            layoutsAsXml : function () {
+            layoutsAsXml: function () {
                 var ret = '<layouts count="XputcounthereX">',
                     hidden = '<hiddenfields count="XputcounthereX">',
                     layoutcnt = 0,
@@ -1225,7 +1294,7 @@ window.QueryBuilderMain = (function () {
                     tbls = document.getElementById("grdLayout").getElementsByTagName('TABLE'),
                     i,
                     layoutObj;
-                    
+
                 for (i = 0; i < tbls.length; i++) {
                     layoutObj = tbls[i].layoutObj;
                     if (layoutObj.ishidden) {
@@ -1236,27 +1305,28 @@ window.QueryBuilderMain = (function () {
                         layoutcnt++;
                     }
                 }
-                
+
                 hidden += '</hiddenfields>';
                 hidden = hidden.replace("XputcounthereX", hiddencnt);
                 ret += '</layouts>';
                 ret = ret.replace("XputcounthereX", layoutcnt);
                 ret += hidden;
+                console.log("Group Layout: %o", ret);
                 return ret;
             },
-            initSortsGrid : function () {
+            initSortsGrid: function () {
                 QueryBuilderMain.dgSorts.resizeColTo(0, '40');
                 QueryBuilderMain.dgSorts.resizeColTo(1, '200');
                 QueryBuilderMain.dgSorts.resizeColTo(2, '200');
             },
-            addSortToGrid : function () {
+            addSortToGrid: function () {
                 var cells = document.getElementById("fieldList").getElementsByTagName('TD'),
                     sortObj = new sortInfo(),
                     i,
                     fieldObj,
                     isnew = true,
                     rows;
-                    
+
                 for (i = 0; i < cells.length; i++) {
                     if (cells[i].sel === 'T') {
                         fieldObj = cells[i].fieldObj;
@@ -1267,7 +1337,7 @@ window.QueryBuilderMain = (function () {
                         break;
                     }
                 }
-                
+
                 // make sure it isn't already there
                 rows = QueryBuilderMain.dgSorts.gridElement.rows;
                 for (i = 1; i < rows.length; i++) {
@@ -1277,43 +1347,180 @@ window.QueryBuilderMain = (function () {
                         }
                     }
                 }
-                
+
                 if (isnew) {
                     QueryBuilderMain.addDataToSortGrid(sortObj);
                 }
             },
-            addDataToSortGrid : function (sortObj) {
-                var row = QueryBuilderMain.dgSorts.addNewRow(),
-                    txtObj;
-                
-                row.cells[0].firstChild.nodeValue = QueryBuilderMain.dgSorts.gridElement.rows.length - 1;
-                row.cells[1].firstChild.nodeValue = sortObj.displaypath + '.' + sortObj.displayname;
-                
-                txtObj = '<select name="selSort" >';
-                txtObj += '<option value="ASC" ';
-                txtObj += (sortObj.sortorder === 'ASC') ? 'selected' : '';
-                txtObj += '>' + QueryBuilderMain.jsAscending + '</option>';
-                txtObj += '<option value="DESC" ';
-                txtObj += (sortObj.sortorder === 'DESC') ? 'selected' : '';
-                txtObj += '>' + QueryBuilderMain.jsDescending + '</option></select>';
-                row.cells[2].innerHTML = txtObj;
-                row.sortObj = sortObj;
+            addDataToSortGrid: function (sortObj) {
+                var row, sDataStringCreate = '';
+                var dispPathName = [];
+                var dispName, dispPath;
+                var arrOfEntities = new Array();
+                var concatenatedEntities = new Array();
+
+                if (!sortObj.insertsort) {
+                    var txtObj;
+                    for (var i = 0; i < sortObj.length; i++) {
+
+                        dispName = sortObj[i].displayname;
+                        dispPath = sortObj[i].displaypath;
+                        arrOfEntities.push(dispPath.split("."));
+                        dispPathName.push({ Name: dispName, Path: dispPath });
+                    }
+                    for (var j = 0; j < arrOfEntities.length; j++) {
+                        for (var k = 0; k < arrOfEntities[j].length; k++) {
+                            concatenatedEntities = concatenatedEntities.concat(arrOfEntities[j][k]);
+                        }
+                    }
+                    // remove duplicates
+                    var sDataEntitiesList = concatenatedEntities.filter(function (elem, index, self) {
+                        return index == self.indexOf(elem);
+                    })
+                    // form SdataString 
+                    for (var i = 0; i < sDataEntitiesList.length; i++) {
+
+                        sDataStringCreate = sDataStringCreate + "upper(name) eq '" + sDataEntitiesList[i].toUpperCase() + "' or " + "upper(tableName) eq '" + sDataEntitiesList[i].toUpperCase() + "'";
+                        if (i < sDataEntitiesList.length-1) {
+                            sDataStringCreate = sDataStringCreate + " or ";
+                        }
+                    }
+                    dojo.xhrGet({
+                        url: dojo.string.substitute("slxdata.ashx/slx/metadata/-/entities?where=${0}&format=json",
+                   [sDataStringCreate]),
+                        handleAs: 'json',
+                        preventCache: true,
+                        load: function (list) {
+                            var forDispTableName = '', forFieldDispName = '';
+                            var localizedString = new Array();
+
+                            for (var k = 0; k < dispPathName.length; k++) {
+                                var arr = dispPathName[k]["Path"].split(".");
+                                var dispName = dispPathName[k]["Name"];
+                                for (var l = 0; l < arr.length; l++) {
+                                    for (var i = 0; i < list.$resources.length; i++) {
+                                        tableNameFromEntities = arr[l];
+                                        if (arr[l] === list.$resources[i].name ||
+                                            arr[l].toUpperCase() === list.$resources[i].tableName) {
+                                            forDispTableName = forDispTableName + list.$resources[i].displayName + ".";
+                                            tableNameFromEntities = forDispTableName;
+                                            if (l === arr.length - 1) {
+                                                for (var m = 0; m < list.$resources[i].properties.$resources.length; m++) {
+                                                    if (list.$resources[i].properties.$resources[m].propertyName === dispName ||
+                                                        list.$resources[i].properties.$resources[m].columnName === dispName.toUpperCase() ||
+                                                        list.$resources[i].properties.$resources[m].columnName === dispName.toUpperCase().replace(/\s+/g, '') ||
+                                                        list.$resources[i].properties.$resources[m].columnName === "ERP" + dispName.toUpperCase().replace(/\s+/g, '')) {
+
+                                                        forFieldDispName = list.$resources[i].properties.$resources[m].displayName;
+
+                                                    }
+
+                                                }
+
+                                            }
+                                            break;
+                                        }
+                                    }
+                                    if (forDispTableName === '' || forDispTableName !== tableNameFromEntities) {
+
+                                        forDispTableName = forDispTableName + arr[l] + ".";
+                                    }
+                                }
+                                if (forFieldDispName === '') {
+                                    forFieldDispName = dispName;
+                                }
+                                if (forDispTableName.charAt(forDispTableName.length - 1) === '.') {
+                                    forDispTableName = forDispTableName.substr(0, forDispTableName.length - 1);
+                                }
+                                localizedString.push(forDispTableName + '.' + forFieldDispName);
+                                forDispTableName = '', forFieldDispName = '';
+                            }
+                            for (var i = 0; i < localizedString.length; i++) {
+                                row = QueryBuilderMain.dgSorts.addNewRow();
+
+                                row.cells[0].firstChild.nodeValue = QueryBuilderMain.dgSorts.gridElement.rows.length - 1;
+                                row.cells[1].firstChild.nodeValue = localizedString[i];
+                                txtObj = '<select name="selSort" class="dropdown">';
+                                txtObj += '<option value="ASC" ';
+                                txtObj += (sortObj[i].sortorder === 'ASC') ? 'selected' : '';
+                                txtObj += '>' + QueryBuilderMain.jsAscending + '</option>';
+                                txtObj += '<option value="DESC" ';
+                                txtObj += (sortObj[i].sortorder === 'DESC') ? 'selected' : '';
+                                txtObj += '>' + QueryBuilderMain.jsDescending + '</option></select>';
+                                row.cells[2].innerHTML = txtObj;
+                                row.sortObj = sortObj[i];
+                            }
+                        },
+                        error: function (error, ioargs) {
+                            ErrorHandler.handleHttpError(error, ioargs);
+                            return error;
+                        }
+
+                    });
+
+                }
+                else {
+                    row = QueryBuilderMain.dgSorts.addNewRow();
+                    var txtObj;
+
+                    var fieldName = (sortObj.displayname).toUpperCase();
+                    var tableName = (sortObj.displaypath).toUpperCase();
+                    var entityName;
+                    if (/./.test(tableName)) {
+                        var lastDotIndex = tableName.lastIndexOf(".") + 1;
+                        entityName = tableName.substring(lastDotIndex);
+
+                    }
+                    // get Field Resources
+                    var storeOptionsField = {
+                        resourceKind: 'entities(tableName eq \'' + entityName + '\')',
+                        service: Sage.Data.SDataServiceRegistry.getSDataService('metadata', false, true, false),
+                        count: '25'
+                    };
+                    new Sage.Data.BaseSDataStore(storeOptionsField).fetch({
+                        onComplete: function (items, data) {
+
+                            for (var i = 0; i < items[0].properties.$resources.length; i++) {
+                                if (items[0].properties.$resources[i].columnName.toUpperCase() === fieldName) {
+                                    forDispOnlyFieldName = items[0].properties.$resources[i].displayName;
+                                    break;
+                                }
+                            }
+                            row.cells[0].firstChild.nodeValue = QueryBuilderMain.dgSorts.gridElement.rows.length - 1;
+                            row.cells[1].firstChild.nodeValue = sortObj.forDispOnlyTableName + '.' + forDispOnlyFieldName;
+                            txtObj = '<select name="selSort" class="dropdown">';
+                            txtObj += '<option value="ASC" ';
+                            txtObj += (sortObj.sortorder === 'ASC') ? 'selected' : '';
+                            txtObj += '>' + QueryBuilderMain.jsAscending + '</option>';
+                            txtObj += '<option value="DESC" ';
+                            txtObj += (sortObj.sortorder === 'DESC') ? 'selected' : '';
+                            txtObj += '>' + QueryBuilderMain.jsDescending + '</option></select>';
+                            row.cells[2].innerHTML = txtObj;
+                            row.sortObj = sortObj;
+                        },
+                        onError: function (e) {
+                            deferred.errback(e);
+                        },
+                    });
+
+                }
+
             },
-            resetOrder : function () {
+            resetOrder: function () {
                 var rows = QueryBuilderMain.dgSorts.gridElement.rows,
                     i;
                 for (i = 1; i < rows.length; i++) {
                     rows[i].cells[0].innerHTML = i;
                 }
             },
-            sortsAsXml : function () {
+            sortsAsXml: function () {
                 var ret = '<sorts count="XputcounthereX">',
                     cnt = 0,
                     rows = QueryBuilderMain.dgSorts.gridElement.rows,
                     i,
                     sortObj,
                     selObj;
-                    
+
                 for (i = 1; i < rows.length; i++) {
                     cnt++;
                     sortObj = rows[i].sortObj;
@@ -1327,13 +1534,13 @@ window.QueryBuilderMain = (function () {
                 ret = ret.replace("XputcounthereX", cnt);
                 return ret;
             },
-            defaultsAsXml : function () {
+            defaultsAsXml: function () {
                 var ret = '<adddistinct>';
                 ret += (document.getElementById("chkUseDistinct").checked) ? 'true' : 'false';
                 ret += '</adddistinct>';
                 return ret;
             },
-            checkReturn : function () {
+            checkReturn: function () {
                 if (event.keyCode === 13) {
                     QueryBuilderMain.ok_Click();
                     event.returnValue = false;
@@ -1345,7 +1552,7 @@ window.QueryBuilderMain = (function () {
             },
             //--------------------------------------------QBEditLayout -----------------------------------------------------------------------
             // Client Side JavaScript for QBEditLayout.ascx
-            QBEditLayout_Load : function (elem) {
+            QBEditLayout_Load: function (elem) {
                 var layoutObj,
                     cells;
                 QueryBuilderMain.currentLayoutElem = elem;
@@ -1364,38 +1571,68 @@ window.QueryBuilderMain = (function () {
                     document.getElementById("txtFormat").value = layoutObj.formatstring;
                     document.getElementById("chkWebLink").checked = layoutObj.weblink;
                     document.getElementById("txtCssClass").value = layoutObj.cssclass;
+
+                    var entityChain = layoutObj.displaypath.split('.');
+                    document.getElementById("hidPickList").value = layoutObj.dataTypeData;
+                    var def = new dojo.Deferred();
+                    this.QBEditLayout_loadDataTypeDatas(entityChain[entityChain.length - 1], layoutObj.displayname, def);
+
+                    def.then(dojo.hitch(this, function (data) {
+                        document.getElementById("hidPickList").value = data;
+                    }));
+
                 } else {
                     alert(QueryBuilderMain.QBMsg_ErrorMissingLayoutObject);
                 }
             },
-            QBEditLayout_Cancel_Click : function () {
+            QBEditLayout_loadDataTypeDatas: function (displaypath, displayname, deferred) {
+                var entityName = displaypath;
+                var propertyName = displayname;
+                var storeOptions = {
+                    resourceKind: 'entities(name eq \'' + entityName + '\')\\properties',
+                    service: Sage.Data.SDataServiceRegistry.getSDataService('metadata', false, true, false),
+                    directQuery: { conditions: 'propertyName eq "' + propertyName + '" or columnName eq "'+propertyName.toUpperCase()+'"' }
+                };
+                new Sage.Data.BaseSDataStore(storeOptions).fetch({
+                    onComplete: function (items, data) {
+                        if (items && items.length && items.length > 0 && items[0].dataTypeData) {
+                            deferred.callback(items[0].dataTypeData);
+                        }
+                    },
+                    onError: function (e) {
+                        deferred.errback(e);
+                    },
+                });
+            },
+            QBEditLayout_Cancel_Click: function () {
                 dijit.byId("dlgEditLayout").hide();
             },
-            QBEditLayout_OK_Click : function () {
+            QBEditLayout_OK_Click: function () {
                 var cells = QueryBuilderMain.currentLayoutElem.getElementsByTagName('TD'),
                     wdth = document.getElementById("txtWidth").value,
                     layoutObj;
-                    
+
                 if (!wdth) {
                     wdth = 120;
                 }
-                
+
                 if (wdth === '') {
                     wdth = 120;
                 }
-                
+
                 if (cells.length > 6) {
                     cells[1].firstChild.nodeValue = document.getElementById("txtFieldName_EditLayout").value;
-                    cells[0].innerHTML = document.getElementById("txtCaption").value.replace(/ /g, '&nbsp;');
+                    cells[0].textContent = document.getElementById("txtCaption").value;
                     cells[0].align = document.getElementById("selCaptAlign").value;
-                    cells[6].firstChild.nodeValue = (document.getElementById("chkVisible").checked) ? 'Visible' : 'Hidden';
+                    cells[7].firstChild.nodeValue = (document.getElementById("chkVisible").checked) ? 'Visible' : 'Hidden';
                     cells[2].firstChild.nodeValue = wdth;
                     QueryBuilderMain.currentLayoutElem.captalign = document.getElementById("selCaptAlign").value;
                     cells[3].firstChild.nodeValue = document.getElementById("selTextAlign").value;
                     cells[4].firstChild.nodeValue = document.getElementById("selFormatType").value.replace("DateTime", "Date/Time");
-                    cells[5].firstChild.nodeValue =  (document.getElementById("txtFormat").value === '') ? " " : document.getElementById("txtFormat").value;
-                    cells[7].firstChild.nodeValue = (document.getElementById("chkWebLink").checked) ? 'Yes' : 'No';
-                    cells[8].firstChild.nodeValue = document.getElementById("txtCssClass").value;
+                    cells[5].firstChild.nodeValue = (document.getElementById("txtFormat").value === '') ? " " : document.getElementById("txtFormat").value;
+                    cells[8].firstChild.nodeValue = (document.getElementById("chkWebLink").checked) ? 'Yes' : 'No';
+                    cells[9].firstChild.nodeValue = document.getElementById("txtCssClass").value;
+                    QueryBuilderMain.currentLayoutElem.dataTypeData = document.getElementById("hidPickList").value;
                 }
                 if (QueryBuilderMain.currentLayoutElem.layoutObj) {
                     layoutObj = QueryBuilderMain.currentLayoutElem.layoutObj;
@@ -1405,23 +1642,26 @@ window.QueryBuilderMain = (function () {
                     layoutObj.captalign = document.getElementById("selCaptAlign").value;
                     layoutObj.align = document.getElementById("selTextAlign").value;
                     layoutObj.format = document.getElementById("selFormatType").value;
+                    layoutObj.dataTypeData = document.getElementById("hidPickList").value;
+
                     layoutObj.formatstring = document.getElementById("txtFormat").value;
-                    
+
                     layoutObj.weblink = document.getElementById("chkWebLink").checked;
                     layoutObj.cssclass = document.getElementById("txtCssClass").value;
                     QueryBuilderMain.currentLayoutElem.layoutObj = layoutObj;
                 }
                 dijit.byId("dlgEditLayout").hide();
+                console.log("layoutObj's cells - %o", cells);
             },
-            ShowEditLayout : function (element) {
+            ShowEditLayout: function (element) {
                 QueryBuilderMain.QBEditLayout_Load(element);
                 dijit.byId("dlgEditLayout").show();
             },
-            GetGroupManager : function (){
+            GetGroupManager: function () {
                 var vGM = Sage.Groups.GroupManager,
                     str,
                     re;
-                    
+
                 vGM.CurrentUserID = queryBuilderMainResources.CurrentUserID;  //get user id
                 str = queryBuilderMainResources.groupXML;  // set on server
                 re = /&apos;/gi;
@@ -1436,14 +1676,14 @@ window.QueryBuilderMain = (function () {
 
     dojo.connect(QueryBuilderMain.dgConditions, 'onrendercomplete', QueryBuilderMain.dgConditions, QueryBuilderMain.initConditionGrid);
 
-    QueryBuilderMain.dgConditions.HighlightBackgroundColor = "#e3f2ff";
-    QueryBuilderMain.dgConditions.HighlightFontColor = "Black";
+    QueryBuilderMain.dgConditions.HighlightBackgroundColor = "#e5e5e5";
+    QueryBuilderMain.dgConditions.HighlightFontColor = "5e5e5e";
 
     QueryBuilderMain.dgSorts = new SLXDataGrid("grdSorts");
     dojo.connect(QueryBuilderMain.dgSorts, 'onrendercomplete', QueryBuilderMain.dgSorts, QueryBuilderMain.initSortsGrid);
 
-    QueryBuilderMain.dgSorts.HighlightBackgroundColor = "#e3f2ff";
-    QueryBuilderMain.dgSorts.HighlightFontColor = "Black";
+    QueryBuilderMain.dgSorts.HighlightBackgroundColor = "#e5e5e5";
+    QueryBuilderMain.dgSorts.HighlightFontColor = "5e5e5e";
 
     dojo.require('Sage.Groups.GroupManager');
 
@@ -1469,7 +1709,7 @@ window.QueryBuilderMain = (function () {
             copyPrefix,
             GroupUserID,
             elems;
-            
+
         if (xmlDoc) {
 
             haveGroupInfo = true;
@@ -1491,10 +1731,12 @@ window.QueryBuilderMain = (function () {
                     }
 
                     sortNodes = xmlDoc.getElementsByTagName('sort');
+                    var listOfSortObjects = [];
                     for (i = 0; i < sortNodes.length; i++) {
                         sortObj = new sortInfo(getNodeXML(sortNodes[i]));
-                        QueryBuilderMain.addDataToSortGrid(sortObj);
+                        listOfSortObjects.push(sortObj);
                     }
+                    QueryBuilderMain.addDataToSortGrid(listOfSortObjects);
                 }
             }
             if ((ldMode === "editGroup") || (ldMode === "copyGroup")) {
@@ -1532,7 +1774,7 @@ window.QueryBuilderMain = (function () {
                         }
                     }
                     var lnkCreateLocalJoin = document.getElementById("lnkCreateLocalJoin");
-                    if(lnkCreateLocalJoin) {
+                    if (lnkCreateLocalJoin) {
                         lnkCreateLocalJoin.style.display = 'none';
                     }
                     QueryBuilderMain.accessmode = "readonly";
@@ -1567,6 +1809,6 @@ window.QueryBuilderMain = (function () {
             //document.getElementById("hiddenFieldSwitch").style.display = 'inline'; // show the button so that admin can toggle.
         }
     });
-    
+
     return QueryBuilderMain;
 })(this);

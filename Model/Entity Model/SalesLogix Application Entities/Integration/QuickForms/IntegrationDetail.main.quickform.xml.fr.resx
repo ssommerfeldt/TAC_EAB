@@ -117,58 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lnkClientIdHelp.Text" xml:space="preserve">
-    <value>Comment obtenir cette information ?</value>
-  </data>
-  <data name="IntegrationLinkType_Admin" xml:space="preserve">
-    <value>Lien Admin</value>
-  </data>
-  <data name="txtSyncHandler.Caption" xml:space="preserve">
-    <value>Responsable de la synchronisation :</value>
-  </data>
-  <data name="lblMinutes.Text" xml:space="preserve">
-    <value>Minutes</value>
-  </data>
-  <data name="pklLinkType.Caption" xml:space="preserve">
-    <value>Type de lien :</value>
-  </data>
   <data name="btnSave.Caption" xml:space="preserve">
     <value>Enregistrer</value>
-  </data>
-  <data name="numSyncInterval.Caption" xml:space="preserve">
-    <value>Fréquence de synchronisation :</value>
-  </data>
-  <data name="chkEnabled.Caption" xml:space="preserve">
-    <value>Activer la synchronisation :</value>
-  </data>
-  <data name="txtSecret.Caption" xml:space="preserve">
-    <value>Secret :</value>
-  </data>
-  <data name="txtClientId.Caption" xml:space="preserve">
-    <value>ID client :</value>
-  </data>
-  <data name="pklAuthType.Caption" xml:space="preserve">
-    <value>Type d'authentification :</value>
-  </data>
-  <data name="btnReset.ToolTip" xml:space="preserve">
-    <value>Réinitialiser</value>
-  </data>
-  <data name="pklSyncMethod.Caption" xml:space="preserve">
-    <value>Méthode de synchronisation :</value>
   </data>
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Enregistrer</value>
   </data>
-  <data name="txtIntegration.Caption" xml:space="preserve">
-    <value>Intégration :</value>
-  </data>
-  <data name="dteStartTime.Caption" xml:space="preserve">
-    <value>Exécuter la synchronisation entre :</value>
-  </data>
-  <data name="dteEndTime.Caption" xml:space="preserve">
-    <value>et</value>
-  </data>
   <data name="btnReset.Caption" xml:space="preserve">
     <value>Réinitialiser</value>
+  </data>
+  <data name="btnReset.ToolTip" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
+  <data name="txtIntegration.Caption" xml:space="preserve">
+    <value>Intégration</value>
+  </data>
+  <data name="pklAuthType.ButtonToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pklAuthType.Caption" xml:space="preserve">
+    <value>Type d'authentification</value>
+  </data>
+  <data name="pklSyncMethod.Caption" xml:space="preserve">
+    <value>Méthode de synchronisation</value>
+  </data>
+  <data name="pklLinkType.Caption" xml:space="preserve">
+    <value>Type de lien</value>
+  </data>
+  <data name="chkEnabled.Caption" xml:space="preserve">
+    <value>Activé</value>
+  </data>
+  <data name="txtSyncHandler.Caption" xml:space="preserve">
+    <value>Gestionnaire de synchronisation</value>
+  </data>
+  <data name="AuthorizationType_OAuth" xml:space="preserve">
+    <value>OAuth</value>
+  </data>
+  <data name="txtClientId.Caption" xml:space="preserve">
+    <value>ID client</value>
+  </data>
+  <data name="txtSecret.Caption" xml:space="preserve">
+    <value>Secret</value>
+  </data>
+  <data name="lnkClientIdHelp.Caption" xml:space="preserve">
+    <value>  </value>
+  </data>
+  <data name="lnkClientIdHelp.Text" xml:space="preserve">
+    <value>Comment obtenir cette information ?</value>
+  </data>
+  <data name="AuthorizationType_OAuth1" xml:space="preserve">
+    <value>OAuth1</value>
+  </data>
+  <data name="AuthorizationType_OAuth2" xml:space="preserve">
+    <value>OAuth2</value>
+  </data>
+  <data name="IntegrationLinkType_Admin" xml:space="preserve">
+    <value>Lien Admin</value>
+  </data>
+  <data name="btnDeleteStatusRecords.Caption" xml:space="preserve">
+    <value>Réinitialiser l'état de la boîte de réception</value>
+  </data>
+  <data name="QFTextBoxVersion.Caption" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="QFTextBoxVersion.ToolTip" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="emlEmailAddress.Caption" xml:space="preserve">
+    <value>Utilisateur du service</value>
+  </data>
+  <data name="emlEmailAddress.ButtonToolTip" xml:space="preserve">
+    <value>Utilisateur du service</value>
+  </data>
+  <data name="txtEmailPassword.Caption" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="btnVerifyConnectivity.Caption" xml:space="preserve">
+    <value>Vérifier la connectivité</value>
+  </data>
+  <data name="Delete_Success_Msg" xml:space="preserve">
+    <value>Suppression réussie des enregistrements d'état de la boîte de réception du système.</value>
+  </data>
+  <data name="Delete_SysInbox_ConfirmMsg" xml:space="preserve">
+    <value>Vous êtes sur le point de supprimer définitivement tous les enregistrements d'état de la boîte de réception du système. Souhaitez-vous vraiment continuer ?</value>
+  </data>
+  <data name="JobServiceRunning_Msg" xml:space="preserve">
+    <value>Le service de tâche doit être arrêté avant d'exécuter cette action.</value>
+  </data>
+  <data name="txtAdminUserName.Caption" xml:space="preserve">
+    <value>Nom utilisateur du domaine </value>
+  </data>
+  <data name="txtDomain.Caption" xml:space="preserve">
+    <value>Domaine</value>
+  </data>
+  <data name="lblText.Text" xml:space="preserve">
+    <value>Renseignez vos infos de connexion Exchange service. Vous devrez peut-être aussi indiquer vos infos de domaine.</value>
   </data>
 </root>

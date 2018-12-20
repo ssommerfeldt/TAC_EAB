@@ -1,3380 +1,589 @@
-require({cache:{
-'Sage/Utility/File/nls/ru/FallbackFilePicker':function(){
-define("Sage/Utility/File/nls/ru/FallbackFilePicker", (
-{ addLibraryFileText: 'Добавить файл библиотеки',
-  attachFileText: 'Прикрепить файл',
-  descriptionText: 'Описание',
-  uploadFileText: 'Вложение',
-  okText: 'ОК',
-  cancelText: 'Отмена',
-  invalidContext: 'Файл(ы) не могут быть загружены за пределами библиотеки.',
-  fileTooLargeError: 'Загрузка файла была прервана из-за слишком большого размера файла.',
-  pleaseSelectFile: 'Сначала выберите файл.',
-  slxErrorIdInfo: 'ИД ошибки Saleslogix: ' }
-));
-},
-'Sage/UI/nls/ru/Boolean':function(){
-define("Sage/UI/nls/ru/Boolean", (
-{ yesText: 'Да', noText: 'Нет' }
-));
-},
-'Sage/Services/nls/ru/ActivityService':function(){
-define("Sage/Services/nls/ru/ActivityService", (
-{ txtErrorActionMsg: 'К сожалению, действие не удалось т.к. произошла ошибка.',
-  txtActivity: 'Дело',
-  txtActivities: 'Дела',
-  txtActionDeleteActivites: 'Удалить дела',
-  txtActionDeleteActivitiesQuestion: 'Будут удалены только те дела на которые у вас есть права на удаление. <P> Вы уверены, что хотите удалить {0} выбранные {1}?',
-  txtAlarm: 'оповещение',
-  txtAlarms: 'оповещения',
-  txtActionSnoozeAlarm: 'Отложить оповещение',
-  txtActionSnoozeQuestion: 'Вы уверены, что хотите отложить {0} выбранные {1} для {2} ?',
-  txtActionSnoozeAllQuestion: 'Вы уверены, что хотите отложить все {0} для {1} ?',
-  txtActionDismissAlarms: 'Отклонение оповещений',
-  txtActionDismissAlarmsQuestion: 'Вы уверены, что хотите отклонить {0} выбранные {1}?',
-  txtEvent: 'событие',
-  txtEvents: 'события',
-  txtActionDeleteEvents: 'Удаление событий',
-  txtActionDeleteEventsQuestion: 'Будут удалены только те события на которые у вас есть права на удаление. <P> Вы уверены, что хотите удалить {0} выбранные {1}?',
-  txtConfirmation: 'подтверждение',
-  txtConfirmations: 'подтверждения',
-  txtActionAcceptConfirmations: 'Принятие подтверждений',
-  txtActionAcceptConfirmQuestion: 'Вы уверены, что хотите принять {0} выбранные {1}? Это действие распространяется только на новые подтверждения. Все остальные будут игнорироваться. ',
-  txtDeclineConfirmations: 'Отклонение подтверждений',
-  txtActionDeclineConfrimQuestion: 'Вы уверены, что хотите отклонить {0} выбранные {1}? Это действие распространяется только на новые подтверждения. Все остальные будут игнорироваться. ',
-  txtActionRemoveConfirmations: 'Удалить подтверждения',
-  txtActionRemoveConfirmationsQuestion: 'Вы уверены, что хотите удалить {0} выбранных {1}? Это действие распространяется на ведущие, отклоненные и удаленные подтверждения. Все остальные будут игнорироваться.',
-  txtLiteratureRequest: 'Запрос на информационные материалы',
-  txtLiteratureRequests: 'Запросы на информационные материалы',
-  txtActionDeleteLiteratureRequests: 'Удаление запросов на информационные материалы',
-  txtActionDeleteLiteratureRequestsQuestion: 'Будут удалены только запросы информационных материалов на которые у вас есть разрешение. <P> Вы уверены что хотите удалить {0} выбранные {1}?' }
-));
-},
-'Sage/UI/Controls/nls/ru/CopyToClipboard':function(){
-define("Sage/UI/Controls/nls/ru/CopyToClipboard", (
-{ closeText: 'Закрыть',
-  dialogTitle: 'Скопировать текст в буфер обмена',
-  helpText: 'Выберите нужный текст и нажмите Control-C  (Command-C на Mac) для копирования в буфер обмена.',
-  textTab: 'Текст',
-  sourceTab: 'Источник' }
-));
-},
-'Sage/Utility/nls/ru/Activity':function(){
-define("Sage/Utility/nls/ru/Activity", (
-{ ToDo: 'Дело',
-  PhoneCall: 'Звонок',
-  Meeting: 'Встреча',
-  Personal: 'Личные дела',
-  Literature: 'Инф. материалы',
-  Fax: 'Факс',
-  Letter: 'Письмо',
-  Note: 'Заметка',
-  Email: 'Эл. почта',
-  Document: 'Документ',
-  DatabaseChange: 'Изменение БД',
-  Event: 'Событие',
-  ScheduledEvent: 'Запланированное событие',
-  Contact: 'Контакт',
-  Lead: 'Наводка',
-  New: 'Создать',
-  Change: 'Изменить',
-  Deleted: 'Удалено',
-  Confirm: 'Подтвердить',
-  Decline: 'Отклонить',
-  Unknown: 'Неизвестен',
-  Leader: 'Руководитель',
-  Complete: 'Завершить',
-  confirmTypeChanged: 'Изменено',
-  confirmTypeConfirmed: 'Подтверждено',
-  confirmTypeDeleted: 'Удалено' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/DesignPanel':function(){
-define("Sage/QuickForms/Design/nls/ru/DesignPanel", (
-{ cultureListText: 
-   { iv: '[Инвариантно]',
-     de_DE: 'de-DE',
-     fr_FR: 'fr-FR',
-     it_IT: 'it-IT',
-     ru_RU: 'ru-RU' },
-  helpText: 'Помощь',
-  saveText: 'Сохранить',
-  cultureText: 'Культура:',
-  loadingText: 'Загрузка...',
-  savingText: 'Сохранение...',
-  saveErrorText: 'Произошла ошибка при сохранении формы.',
-  readErrorText: 'Не удалось загрузить запрашиваемую форму.',
-  cultureReloadConfirmText: 'Имеются несохраненные изменения.  Вы уверены, что вы хотите, перезагрузить форму с другим языком?' }
-));
-},
-'Sage/UI/nls/ru/TimelessActivitiesPane':function(){
-define("Sage/UI/nls/ru/TimelessActivitiesPane", (
-{ header_complete: 'Завершить',
-  header_type: 'Тип',
-  header_contact: 'Имя',
-  header_regarding: 'Тема',
-  tooltip_type: 'Тип',
-  tooltip_contact: 'Контакт',
-  tooltip_account: 'Субъект',
-  tooltip_lead: 'Наводка',
-  tooltip_phone: 'Телефон',
-  tooltip_leader: 'Руководитель',
-  tooltip_regarding: 'Тема',
-  tooltip_location: 'Размещение',
-  tooltip_notes: 'Заметки',
-  tooltip_company: 'Компания' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/ActivityEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/ActivityEditor", (
-{ labelWidth: '120',
-  tabNameGeneralText: 'Общие',
-  tabNameAvailabilityText: 'Доступность',
-  tabNameAssociationsText: 'Взаимосвязи',
-  tabNameRecurringText: 'Повторение',
-  tabNameAttachmentsText: 'Вложения',
-  tabNameNotesText: 'Заметки',
-  scheduleText: 'Планировать',
-  startTimeText: 'Время начала',
-  timeLessText: 'В течение дня',
-  alarmText: 'Оповещение',
-  durationText: 'Длительность',
-  rolloverText: 'Автоматически переносить на следующий день',
-  contactText: 'Контакт',
-  accountText: 'Субъект',
-  leadText: 'Наводка',
-  opportunityText: 'Сделка',
-  ticketText: 'Заявка',
-  companyText: 'Компания',
-  regardingText: 'Тема',
-  notesText: 'Заметки',
-  priorityText: 'Приоритет',
-  leaderText: 'Руководитель',
-  categoryText: 'Категория',
-  locationText: 'Размещение',
-  dialogHeaderFormatText: '${actionText} ${activityType} - ${description}',
-  scheduledByFormatText: 'Запланировал ${user} ${date}',
-  completeScheduledByFormatText: 'Запланировал ${user} ${date} первоначально на ${startDate}',
-  newConfirmationHeaderFormatText: 'Подтверждение ${activityType}. Запланировал ${user}',
-  otherConfimationHeaderFormatText: '${activityType} ${actionText} ${user}',
-  acceptedText: 'Принят',
-  declinedText: 'Отклонено',
-  scheduledText: 'Запланировано',
-  updatedText: 'Изменено',
-  deletedText: 'Удалено',
-  cancelText: 'Отмена',
-  okText: 'ОК',
-  completeText: 'Завершить',
-  completeBtnText: 'Завершить...',
-  completedText: 'Заверш.',
-  deleteText: 'Удалить',
-  lookupActText: 'Поиск Субъекта',
-  lookupContactText: 'Поиск Контакта',
-  lookupOpportunityText: 'Поиск сделки',
-  lookupTicketText: 'Поиск Заявки',
-  lookupLeadText: 'Поиск Наводки',
-  lookupLeaderText: 'Поиск лидера',
-  lookupResourcesText: 'Добавить участников и ресурсы',
-  addResourceText: 'Добавить выбранные',
-  mainPhoneText: 'Основной тел.',
-  typeText: 'Тип',
-  subTypeText: 'Подтип',
-  nameText: 'Имя',
-  cityText: 'Город',
-  stateText: 'Область',
-  workphoneText: 'Раб. телефон',
-  emailText: 'Эл.почта',
-  acctMgrText: 'Менеджер',
-  descriptionText: 'Описание',
-  stageText: 'Стадия',
-  statusText: 'Статус',
-  ownerText: 'Доступ',
-  ticketNumberText: 'Номер заявки',
-  phoneText: 'Телефон',
-  urgencyText: 'Срочность',
-  areaText: 'Область',
-  recurringText: 'Повторение',
-  resultText: 'Результат',
-  followupText: 'Последующее',
-  noneText: 'Нет',
-  carryOverAttachmentsText: 'Перенести вложения',
-  carryOverNotesText: 'Перенести заметки',
-  asScheduledText: 'Как запланировано',
-  nowText: 'Сейчас',
-  responseText: 'Ответ',
-  acceptText: 'Принять',
-  declineText: 'Отклонить',
-  deleteConfText: 'Удалить подтверждение',
-  closeText: 'Закрыть',
-  leadFullNameText: 'Имя',
-  postalText: 'Почтовый код',
-  failedLoadingDataMsg: 'Произошла ошибка при загрузке данных.',
-  removeText: 'Исключить',
-  noText: 'Нет',
-  yesText: 'Да',
-  areYouSureText: 'Запись будет удалена без возможности восстановления',
-  couldNotSaveErrorText: 'К сожалению, дело не может быть сохранено, потому что произошла ошибка.',
-  couldNotDeleteErrorText: 'К сожалению, дело не может быть удалено, потому что произошла ошибка.',
-  couldNotCompleteErrorText: 'К сожалению, дело не может быть завершено из-за ошибки.',
-  scheduleFollowUpErrorText: 'Не удалось составить расписание дальнейших действий из-за ошибки определения ИД журнала.',
-  tabNameParticipants: 'Участники' }
-));
-},
-'Sage/TaskPane/User/nls/ru/ContactUserAssociationEditor':function(){
-define("Sage/TaskPane/User/nls/ru/ContactUserAssociationEditor", (
-{ btnCancel_Caption: 'Отмена',
-  btnOK_Caption: 'ОК',
-  dialogTitleText: 'Связать пользователя с контактом',
-  associateContactText: 'Связать выбранного пользователя со следующим контактом',
-  user_Caption: 'Контакт',
-  lookupContactText: 'Поиск Контакта',
-  lookupFirstNameColText: 'Имя',
-  lookupLastNameColText: 'Фамилия',
-  lookupTitleColText: 'Название',
-  lookupAccountColText: 'Субъект',
-  lookupWorkPhoneColText: 'Раб. телефон',
-  lookupEmailText: 'Эл.почта',
-  disAssociateTitle: 'Удалить связь с контактом',
-  associationExistsMessage: 'Выбранный контакт уже связан с пользователем. Выберите другой контакт.' }
-));
-},
-'Sage/MainView/nls/ru/ActivityManager':function(){
-define("Sage/MainView/nls/ru/ActivityManager", (
-{ titleFmtString: '${0}',
-  tabDisplayNameActivity: 'Дела',
-  tabDisplayNameLit: 'Инф. материалы',
-  tabDisplayNameEvent: 'События',
-  tabDisplayNameConfirm: 'Подтверждения',
-  activityColNameComplete: 'Завершить',
-  activityColNameAttachment: 'Вложение',
-  activityColNameRecurring: 'Повторение',
-  activityColNameAlarm: 'Оповещение',
-  activityColNameType: 'ActivityType',
-  activityColNameStartDate: 'Дата начала',
-  activityColNameDuration: 'Длительность',
-  activityColNameContact: 'Контакт',
-  activityColNameLead: 'Наводка',
-  activityColNameAccount: 'Субъект',
-  activityColNameRegarding: 'Тема',
-  activityColNamePriority: 'Приоритет',
-  activityColNameUserId: 'Руководитель',
-  activityTypePhone: 'Телефон',
-  activityTypeCall: 'Звонок',
-  activityTypeMeeting: 'Встреча',
-  activityTypePersonal: 'Личные' }
-));
-},
-'Sage/Services/nls/ru/JobService':function(){
-define("Sage/Services/nls/ru/JobService", (
-{ txtInvalidParameter: 'Недопустимый параметр: ${0}.',
-  txtTriggerJobError: 'Возникла ошибка при запуске задания ${0}: ${1} ${2}.',
-  txtScheduleJobError: 'Возникла ошибка при планировании задания ${0}: ${1} ${2}.',
-  txtUnexpectedError: 'Возникла ошибка: ${0} ${1}.' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/NumericControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/NumericControlDesigner", (
-{ displayNameText: 'Числовой' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/_PropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/_PropertyEditor", (
-{ titleText: 'Свойства' }
-));
-},
-'Sage/Services/nls/ru/ActivityActionProcessor':function(){
-define("Sage/Services/nls/ru/ActivityActionProcessor", (
-{ btnOkayText: 'ОК',
-  btnCancelText: 'Отмена',
-  btnCloseText: 'Закрыть',
-  btnHelpText: 'Помощь',
-  processingText: 'Обработка запроса, пожалуйста, подождите...',
-  failureText: 'К сожалению, действие не удалось т.к. произошла ошибка.',
-  titleText: 'Процесс' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/TextBoxBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/TextBoxBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  linesText: 'Строки:',
-  linesTooltipText: 'Количество отображаемых строк текста.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/QuickCompleteEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/QuickCompleteEditor", (
-{ lblResultText: 'Результат:',
-  lblNoteText: 'Примечание  (добавить ко всем элементам):',
-  btnCompleteIndividuallyText: 'Индивидуально',
-  btnAsScheduledText: 'Как запланировано',
-  btnCompleteNowText: 'Сейчас',
-  btnCancelText: 'Отмена',
-  btnCloseText: 'Закрыть',
-  btnHelpText: 'Помощь',
-  resultCompletedText: 'Завершить',
-  titleText: 'Быстрое завершение',
-  actionMessage: 'Только виды деятельности, которые вам позволено завершить будут завершены',
-  completeMessage: 'Заполните все {0} отдельных видов деятельности:',
-  processingMessage: 'Обработка всех {0} отдельных мероприятий пожалуйста, подождите ...'
-}
-));
-},
-'Sage/Utility/File/nls/ru/DefaultDropHandler':function(){
-define("Sage/Utility/File/nls/ru/DefaultDropHandler", (
-{ emailDroppedText: 'Потерянная Эл.почта',
-  attachmentTitleText: 'Сохранить вложения',
-  attachmentQuestionText: 'Хотели бы вы, сохранить копии этих вложений в SalesLogix? <br /> Вложения будут храниться во вкладке Вложения для соответствующих сущностей.' }
-));
-},
-'Sage/Utility/File/nls/ru/AttachmentPropertiesEditForm':function(){
-define("Sage/Utility/File/nls/ru/AttachmentPropertiesEditForm", (
-{ fileText: 'Файл',
-  descriptionText: 'Описание',
-  sizeText: 'Размер',
-  attachDateText: 'Дата добавления',
-  attachedByText: 'Кем добавлено',
-  uploadFileText: 'Выбрать другой файл...',
-  editText: 'Изменить вложение',
-  okText: 'Ок',
-  cancelText: 'Отмена',
-  browseText: 'Просмотр',
-  urlText: 'URL',
-  requestFailedMsg: 'Запрошенная операция не может быть завершена, пожалуйста, повторите попытку позже.' }
-));
-},
-'Sage/UI/Alarms/nls/ru/AlarmPane':function(){
-define("Sage/UI/Alarms/nls/ru/AlarmPane", (
-{ dismissAllText: 'Отклонить все',
-  dismissText: 'Отклонить',
-  fiveMinText: '5 минут',
-  tenMinText: '10 минут',
-  fifteenMinText: '15 минут',
-  thirtyMinText: '30 минут',
-  oneHourText: '1 час',
-  twoHourText: '2 часа',
-  fourHourText: '4 часа',
-  eightHourText: '8 часов',
-  oneDayText: '1 день',
-  twoDayText: '2 дня',
-  threeDayText: '3 дня',
-  oneWeekText: '1 неделя',
-  twoWeekText: '2 недели',
-  snoozeText: 'Отложить',
-  snoozeByText: 'Отложить на:',
-  snoozeAllText: 'Отложить все',
-  showCalendarText: 'Показать календарь' }
-));
-},
-'Sage/TaskPane/nls/ru/LiteratureManagementTasks':function(){
-define("Sage/TaskPane/nls/ru/LiteratureManagementTasks", (
-{ errFulFillmentCancelled: 'Заполнение запроса на инф. материалы было отменено для LitReqId {0}.',
-  errFulFillmentFailed: 'Запрос на инф. материалы не может быть заполнен для LitReqId {0}.',
-  errMailMergeService: 'Запрос на инф. материалы не может быть завершен т. к. не может быть загружен сервис рассылки почты. Это может произойти если не установлен  Saleslogix Desktop Integration или установлен неверно.',
-  errFulFillmentRequest: 'Запрос на инф. материалы не может быть заполнен.',
-  errFulFillmentRequestEx: 'Запрос на инф. материалы не может быть заполнен:',
-  fulFillmentSuccess: 'Заполнение запрос на инф. материалы было успешно.' }
-));
-},
-'Sage/UI/Dashboard/nls/ru/DashboardWidget':function(){
-define("Sage/UI/Dashboard/nls/ru/DashboardWidget", (
-{ noQueryDataText: 'Сервер не располагает данными по запросу',
-  initializingText: 'Инициализация' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/NumericAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/NumericAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlLabelPlacementText: 'Расположение подписи:',
-  controlLabelPlacementTooltipText: 'Позиция подписи по отношению к элементу управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  decimalDigitsText: 'Кол-во десятичных цифр:',
-  decimalDigitsTooltipText: 'Количество цифр после запятой для отображения и ввода данных.',
-  defaultDataBindingText: 'Привязка данных:',
-  defaultDataBindingTooltipText: 'Поле из базы данных, используемое этим элементом управления.',
-  enabledText: 'Включен:',
-  enabledTooltipText: 'Позволяет пользователю взаимодействовать с этим элементом управления.',
-  formatTypeText: 'Формат типа:',
-  formatTypeTooltipText: 'Тип формата для использования при преобразовании числа в строку.',
-  maxLengthText: 'Макс. длина:',
-  maxLengthTooltipText: 'Максимальное количество символов, которое пользователь может ввести.',
-  requiredText: 'Обязательный:',
-  requiredTooltipText: 'Требуется значение при сохранении данных.',
-  strictText: 'Строгая:',
-  strictTooltipText: 'Отображать числа с замыкающими нулями по мере необходимости.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.',
-  numberFormatText: 
-   { Number: 'Число',
-     Percent: 'Процент',
-     Decimal: 'Десятичный',
-     Scientific: 'Научный' },
-  labelPlacementText: { left: 'Слева', right: 'Право', top: 'Верх', none: 'Нет' } }
-));
-},
-'Sage/MainView/IntegrationContract/nls/ru/CustomerPaymentsRTDV':function(){
-define("Sage/MainView/IntegrationContract/nls/ru/CustomerPaymentsRTDV", (
-{ dialogCaption: 'Детали платежа',
-  loadingText: 'загрузка...',
-  lblReferenceCaption: 'Номер квитанции:',
-  lblDateCaption: 'Дата оплаты:',
-  lblProcessDateCaption: 'Дата обработки:',
-  lblNameCaption: 'Имя:',
-  lblTypeCaption: 'Тип:',
-  lblStatusCaption: 'Статус:',
-  lblCurrencyCaption: 'Валюта:',
-  lblTenderTypeCaption: 'Тип тендера:',
-  lblTenderReferenceCaption: 'Ссылка на тендер:',
-  lblNetTotalCaption: 'Всего нетто:',
-  lblDiscountsCaption: 'Скидки:',
-  lblChargesCaption: 'Расходы:',
-  lblTaxesCaption: 'Налоги:',
-  lblGrossTotalCaption: 'Сумма оплаты:',
-  lblSourceCaption: 'Источник:',
-  lblTaxCodeCaption: 'Код налога:',
-  grdPayments_Reference: 'Номер квитанции',
-  grdPayments_Date: 'Дата оплаты',
-  grdPayments_Type: 'Тип',
-  grdPayments_Status: 'Статус',
-  grdPayments_GrossTotal: 'Сумма оплаты',
-  grdPayments_Currency: 'Валюта',
-  btnCloseCaption: 'Закрыть' }
-));
-},
-'Sage/UI/Filters/nls/ru/FilterPanel':function(){
-define("Sage/UI/Filters/nls/ru/FilterPanel", (
-{ editText: 'Изменить фильтры',
-  noneText: 'Фильтры не выбраны',
-  clearText: 'Очистить все' }
-));
-},
-'Sage/TaskPane/nls/ru/_BaseTaskPaneTasklet':function(){
-define("Sage/TaskPane/nls/ru/_BaseTaskPaneTasklet", (
-{ selectRecordsTitle: 'Неверное выделение',
-  selectRecords: 'Пожалуйста, выберите запись, чтобы продолжить.',
-  selectSingleRecord: 'Пожалуйста, выберите одну запись, прежде чем продолжить.',
-  noRecordsSelectedProcessAll: 'Нет выбранных записей.Будет обрабатываться группа ${0} записи (ей).  Продолжить?',
-  invalidSelectionTitle: 'Неверное выделение',
-  errorSelectionInfo: 'Произошла ошибка получения информации по выделенным записям.',
-  errorNoData: 'Нет данных.',
-  yesButtonText: 'Да',
-  noButtonText: 'Нет',
-  salesLogixPageTitle: 'SalesLogix',
-  okButtonText: 'ОК',
-  cancelButtonText: 'Отмена' }
-));
-},
-'Sage/MainView/ReportMgr/nls/ru/ReportManagerFormatter':function(){
-define("Sage/MainView/ReportMgr/nls/ru/ReportManagerFormatter", (
-{ txtTrue: 'Истина', txtFalse: 'Ложь' }
-));
-},
-'Sage/UI/nls/ru/OwnerType':function(){
-define("Sage/UI/nls/ru/OwnerType", (
-{ teamText: 'Команда',
-  departmentText: 'Отдел',
-  systemText: 'Система',
-  userText: 'Пользователь' }
-));
-},
-'Sage/TaskPane/nls/ru/LeadTasksTasklet':function(){
-define("Sage/TaskPane/nls/ru/LeadTasksTasklet", (
-{ updateLeadsTitle: 'Обновление наводок',
-  deleteLeadsTitle: 'Удалить наводки',
-  deleteJobError: 'К сожалению, произошла ошибка во время работы по удалению наводки: ${0}',
-  confirmDeleteLeads: 'Вы действительно хотите удалить выбранные записи?' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/SnoozeOptions':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/SnoozeOptions", (
-{ fiveMinText: '5 минут',
-  tenMinText: '10 минут',
-  fifteenMinText: '15 минут',
-  thirtyMinText: '30 минут',
-  oneHourText: '1 час',
-  twoHourText: '2 часа',
-  fourHourText: '4 часа',
-  eightHourText: '8 часов',
-  oneDayText: '1 день',
-  twoDayText: '2 дня',
-  threeDayText: '3 дня',
-  oneWeekText: '1 неделя',
-  twoWeekText: '2 недели',
-  snoozeText: 'Отложить',
-  snoozeByText: 'Отложить на:',
-  snoozeAllText: 'Отложить все',
-  snoozeTitle: 'Повтор оповещения' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/OwnerAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/OwnerAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlLabelPlacementText: 'Расположение подписи:',
-  controlLabelPlacementTooltipText: 'Позиция подписи по отношению к элементу управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  defaultDataBindingText: 'Привязка данных:',
-  defaultDataBindingTooltipText: 'Поле из базы данных, используемое этим элементом управления.',
-  enabledText: 'Включен:',
-  enabledTooltipText: 'Позволяет пользователю взаимодействовать с этим элементом управления.',
-  requiredText: 'Обязательный:',
-  requiredTooltipText: 'Требуется значение при сохранении данных.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.',
-  labelPlacementText: { left: 'Слева', right: 'Право', top: 'Верх', none: 'Нет' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/NonVisibleAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/NonVisibleAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  controlInfoText: 'Информация о контроле',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.' }
-));
-},
-'Sage/MainView/IntegrationContract/nls/ru/InvoiceRTDV':function(){
-define("Sage/MainView/IntegrationContract/nls/ru/InvoiceRTDV", (
-{ dialogCaption: 'Детали счета',
-  loadingText: 'загрузка...',
-  lblInvoiceCaption: 'Счет:',
-  lblNetTotalCaption: 'Сумма счета:',
-  lblInvoiceDateCaption: 'Дата счета:',
-  lblInvoiceDiscountAmountCaption: 'Скидка:',
-  lblDueDateCaption: 'Плановая дата:',
-  lblInvoiceDiscountPercentCaption: 'Процент скидки:',
-  lblCustomerPOCaption: 'Номер заказа:',
-  lblCarrierTotalPriceCaption: 'Отгрузка:',
-  lblSettlementDiscountPercentCaption: 'Урегулированный процент скидки:',
-  lblTaxCaption: 'Налог:',
-  lblSettlementDiscountTermsCaption: 'Сроки оплаты:',
-  lblNotesCaption: 'Комм-рии:',
-  lblOperatingCompanyCurrencyCaption: 'Валюта действующей Компании:',
-  lblCostTotalCaption: 'Общая стоимость:',
-  lblOperatingCompanyCurrencyExchangeRateDateCaption: 'Дата курса обмена:',
-  lblProfitTotalCaption: 'Всего выгода:',
-  lblOperatingCompanyCurrencyExchangeRateCaption: 'Курс обмена:',
-  lblPriceListCaption: 'Прайс-лист:',
-  lblOCCurrencyCaption: 'Действующая валюта компании:',
-  lblCurrencyCaption: 'Валюта:',
-  lblSalesPersonCaption: 'Продавец:',
-  detailsTabTitle: 'Детали',
-  addressTabTitle: 'Адреса',
-  invoiceLinesTabTitle: 'Линии счета',
-  paymentsTabTitle: 'Платежи',
-  deliveriesTabTitle: 'Доставка',
-  grdInvoice_Name: 'Счет #',
-  grdInvoice_Date: 'Дата счета',
-  grdInvoice_Amount: 'Сумма счета',
-  grdInvoice_PO: 'Номер заказа',
-  grdInvoice_PaymentTerms: 'Сроки оплаты',
-  grdInvoice_NetTotal: 'Сумма нетто',
-  grdInvoice_Tax: 'Налог',
-  grdAddress_Name: 'Описание',
-  grdAddress_address1: 'Улица',
-  grdAddress_address2: 'Дом',
-  grdAddress_City: 'Город',
-  grdAddress_State: 'Область',
-  grdAddress_Zip: 'Почтовый код',
-  grdItems_ActualPrice: 'Фактическая цена',
-  grdItems_ChargesTotal: 'Всего расходов',
-  grdItems_Commodity: 'Товар',
-  grdItems_CommodityDimension: 'Размеры',
-  grdItems_CommodityVariant: 'Вариант',
-  grdItems_DiscountTotal: 'Всего скидки',
-  grdItems_GrossTotal: 'Всего брутто',
-  grdItems_InitialPrice: 'Первоначальная цена',
-  grdItems_Line: 'Номер линии',
-  grdItems_NetTotal: 'Сумма нетто',
-  grdItems_Quantity: 'Кол-во',
-  grdItems_Status: 'Статус',
-  grdItems_TaxTotal: 'Налог, всего',
-  grdItems_Type: 'Тип линии',
-  grdItems_UnitOfMeasure: 'Единица',
-  grdPayments_Charges: 'Расходы',
-  grdPayments_Currency: 'Валюта',
-  grdPayments_Date: 'Дата',
-  grdPayments_Discounts: 'Скидки',
-  grdPayments_GrossTotal: 'Всего брутто',
-  grdPayments_Name: 'Имя',
-  grdPayments_NetTotal: 'Сумма нетто',
-  grdPayments_ProcessDate: 'Дата обработки',
-  grdPayments_Status: 'Статус',
-  grdPayments_Tax: 'Налоги',
-  grdPayments_TenderReference: 'Ссылка на тендер',
-  grdPayments_TenderType: 'Тип тендера',
-  grdPayments_Type: 'Тип',
-  grdDeliveries_ActualDate: 'Фактическая дата',
-  grdDeliveries_ActualTime: 'Фактическая время',
-  grdDeliveries_Carrier: 'Перевозчик',
-  grdDeliveries_CarrierReference: 'Ссылка на перевозчика',
-  grdDeliveries_DeliveredQuantity: 'Кол-во доставленного',
-  grdDeliveries_ExceptionReason: 'Причина исключения',
-  grdDeliveries_Method: 'Метод',
-  grdDeliveries_Number: 'Число',
-  grdDeliveries_RequestedDate: 'Требуемая дата',
-  grdDeliveries_RequestedQuantity: 'Требуемое количество',
-  grdDeliveries_Status: 'Статус',
-  grdDeliveries_Type: 'Тип',
-  btnCloseCaption: 'Закрыть' }
-));
-},
-'Sage/UI/nls/ru/SDataLookup':function(){
-define("Sage/UI/nls/ru/SDataLookup", (
-{ closeText: 'Закрыть',
-  cancelText: 'Отмена',
-  loadingText: 'Загрузка...',
-  noDataText: 'Нет записей' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/RowDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/RowDesigner", (
-{ displayNameText: 'Строка' }
-));
-},
-'Sage/TaskPane/nls/ru/OpportunityTasksTasklet':function(){
-define("Sage/TaskPane/nls/ru/OpportunityTasksTasklet", (
-{ updateOpportunitiesTitle: 'Обновить сделки',
-  opportunityStatisticsTitle: 'Статистика по сделке' }
-));
-},
-'Sage/UI/Filters/nls/ru/CheckBoxFilter':function(){
-define("Sage/UI/Filters/nls/ru/CheckBoxFilter", (
-{ loadingText: 'Загрузка...',
-  moreText: 'Изменить элементы',
-  clearText: 'Очистить',
-  emptyText: '(пусто)',
-  nullText: '(нуль)',
-  ofText: '/' }
-));
-},
-'Sage/Utility/File/nls/ru/LibraryDocument':function(){
-define("Sage/Utility/File/nls/ru/LibraryDocument", (
-{ failureNumber: 'Ошибка #${0}: ',
-  percentComplete: 'Загрузка, пожалуйста подождите ...',
-  uploadError: 'Произошла ошибка при попытке загрузить один или несколько файлов  (не удалось: ${0}; удалось: ${1}).',
-  invalidContext: 'Файл(ы) не могут быть загружены за пределами библиотеки.',
-  unknownError: 'Произошла неизвестная ошибка загрузки файла.' }
-));
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/SpeedSearchLookup':function(){
-define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/SpeedSearchLookup", (
-{ dialogTitle: 'Поиск участников',
-  okText: 'Добавить выбранные',
-  cancelText: 'Закрыть',
-  noDataText: 'Нет соответствующих записей.',
-  srchBtnCaption: 'Поиск',
-  colName: 'Имя',
-  colType: 'Тип',
-  colAccount: 'Субъект/Компания',
-  colTitle: 'Должность',
-  colEmail: 'E-mail',
-  colWorkPhone: 'Раб. телефон'
-}
-));
-},
-'Sage/UI/nls/ru/ConditionManager':function(){
-define("Sage/UI/nls/ru/ConditionManager", (
-{ addimgalttext: 'Добавить условие',
-  hideimgalttext: 'Исключить условие',
-  addrowlabel: 'Поиск по:',
-  hiderowlabel: 'И:',
-  srchBtnCaption: 'Поиск',
-  errorOperatorRequiresValue: 'Оператор требует значение',
-  startingWith: 'Начинается с',
-  endsWith: 'Заканчивается на',
-  contains: 'Содержит',
-  equalTo: 'Равно',
-  notEqualTo: 'Не равно',
-  equalOrLessThan: 'Меньше или равно',
-  equalOrGreaterThan: 'Больше или равно',
-  lessThan: 'Меньше чем',
-  greaterThan: 'Больше чем' }
-));
-},
-'Sage/UI/Dashboard/nls/ru/WidgetDefinition':function(){
-define("Sage/UI/Dashboard/nls/ru/WidgetDefinition", (
-{ defaultWidgetText: 'Изменение параметров виджета',
-  settingsText: 'Параметры',
-  viewGroupText: 'Показать группу',
-  Bar_Chart: 'Панель диаграмм',
-  Column_Chart: 'Гистограмма',
-  Group_List: 'Группа',
-  Pie_Chart: 'Круговая диаграмма',
-  Funnel_Chart: 'Воронкообразная диаграмма',
-  Line_Chart: 'Линейный график',
-  SData_Feed: 'Поток SData',
-  Web_Feed: 'Веб-канал',
-  Website: 'Веб-сайт',
-  Default: 'По умолчанию',
-  Links: 'Ссылка',
-  Recently_Viewed: 'Недавно просмотренные',
-  Todays_Activities: 'Дела на сегодня',
-  Today_s_Activities: 'Дела на сегодня',
-  Welcome: 'Добро пожаловать',
-  Closing_Opportunities: 'Закрытые сделки',
-  Quick_Actions: 'Быстрые действия',
-  Do_You_Know___: 'Знаете ли вы...',
-  All_Leads: 'Все Наводки',
-  My_Notes: 'Мои Заметки',
-  Open_Opportunities: 'Открытые сделки',
-  My_Top_Opportunities: 'Мои лучшие сделки',
-  My_Pipeline: 'Моя воронка',
-  Recent_Lead_Creation_History: 'Недавняя история создания наводок',
-  My_Activity_trend: 'Направление моей деятельности',
-  My_Completed_Activities_by_Type: 'Мои завершенные дела по типам',
-  Active_Campaigns: 'Активн. Маркетинг',
-  All_Open_Opportunities: 'Все открытые сделки',
-  Top_Opportunities: 'Лучшие сделки',
-  Open_Defect_Distribution: 'Распределение открытых дефектов',
-  My_Dashboard: 'Моя аналитика',
-  Sales: 'Продажи',
-  Group_List_Description: 'Показывает список записей группы по сущности. Например, группу активных кампаний.',
-  Welcome_Description: 'Показывает введение в Saleslogix со ссылкой на страницу помощи введения в Saleslogix для ВЕБ.',
-  Line_Chart_Description: 'Показывает данные как серию точек данных связанных в линию. Полезно. когда данные представляют много групп или категорий.',
-  Bar_Chart_Description: 'Показывает данные как набор горизонтальных прямоугольников. Полезно для сравнения нескольких наборов данных.',
-  Column_Chart_Description: 'Показывает данные как набор вертикальных столбцев, сгруппированных по категориям. Полезно для показа изменений данных в период времени для иллюстрации сравнения элементов.',
-  Funnel_Chart_Description: 'Показывает данные как прогрессивные пропорции в форме воронки. Эти данные представлены как порции по 100% и не имеют осей.',
-  Pie_Chart_Description: 'Показывает данные как пропорцию от общего. Каждое значение вычисляется как процент от общего. Эта диаграмма не имет осей.',
-  Recently_Viewed_Description: 'Показывает ссылки на недавно просмотренные записи с иконкой, определяющей тип. Например, Субъект или Контакт.',
-  Todays_Activities_Description: 'Показывает ссылки на вашу активность сегодня.',
-  Links_Description: 'Показвает ссылку создаваемую вами. Например, к детальному представлению в Saleslogix или к внешнему Веб-сайту.',
-  SData_Feed_Description: 'Отображение веб-канала с использованием каналов данных SData (Saleslogix Data), например канала бухгалтерской интеграции или базы данных Saleslogix.',
-  Web_Feed_Description: 'Отображение информации веб-канала RSS или Atom.',
-  Website_Description: 'Отображение выбранного вами веб-сайта.' }
-));
-},
-'Sage/UI/nls/ru/SearchConditionWidget':function(){
-define("Sage/UI/nls/ru/SearchConditionWidget", (
-{ trueText: 'Истина',
-  falseText: 'Ложь',
-  networkText: 'Сеть',
-  remoteText: 'Дистанционный',
-  webText: 'Веб',
-  webViewerText: 'Веб Viewer',
-  concurrentText: 'Конкурент',
-  retiredText: 'Уволен',
-  templateText: 'Шаблон',
-  addonText: 'Addon',
-  adminText: 'Администратор',
-  userText: 'Пользователь',
-  teamText: 'Команда',
-  departmentText: 'Отдел',
-  systemText: 'Система' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/GenericBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/GenericBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/MainView/JobMgr/nls/ru/JobManagerActions':function(){
-define("Sage/MainView/JobMgr/nls/ru/JobManagerActions", (
-{ txtInterruptExecutionMessage: 'Заданию был отправлен сигнал отменить выполнение.',
-  txtInterruptExecutionTitle: 'Отменить задание',
-  txtInterruptExecutionConfirmationMessage: 'Отменить выполнение задания ${0}?',
-  txtYes: 'Да',
-  txtNo: 'Нет',
-  completedJobMessage: 'Выбранное задание уже выполнено.',
-  jobStatusComplete: 'Завершить',
-  error_NoRecordSelected: 'Выберите запись для продолжения.',
-  confirm_ScheduleDeletion: 'Удалить выбранное расписание?' }
-));
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/ContactLookupConfig':function(){
-define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/ContactLookupConfig", (
-{ contactText: 'Контакт',
-  accountText: 'Субъект',
-  lookupContactText: 'Поиск Контакта',
-  nameText: 'Имя',
-  cityText: 'Город',
-  stateText: 'Область',
-  workphoneText: 'Раб. телефон',
-  emailText: 'Эл.почта',
-  dialogButtonText: 'Добавить выбранные',
-  cancelText: 'Закрыть',
-  colFirstName: 'Имя',
-  colLastName: 'Фамилия',
-  colTitle: 'Название',
-  colAccount: 'Субъект',
-  colWorkPhone: 'Раб. телефон',
-  colEmail: 'Эл.почта',
-  dialogTitleText: 'Поиск Контакта'
-}
-));
-},
-'Sage/QuickForms/Design/nls/ru/DataSourcePanel':function(){
-define("Sage/QuickForms/Design/nls/ru/DataSourcePanel", (
-{ loadingText: 'Загрузка...' }
-));
-},
-'Sage/Library/nls/ru/Manager':function(){
-define("Sage/Library/nls/ru/Manager", (
-{ AddFiles: 'Добавить файлы',
-  AddFolder: 'Добавить папку',
-  Confirm: 'Подтвердить',
-  ConfirmDownload: 'Файл не был загружен. Вы хотите, чтобы он был синхронизирован позже?',
-  ConfirmDownloadReorder: 'Файл не был загружен, но уже запрошен. Хотели бы вы изменить порядок файлов, чтобы получить его при следующей синхронизации?',
-  Created: 'Дата создания',
-  DeleteFolder: 'Удалить папку',
-  DeleteSelectedFile: 'Удалить выбранный файл',
-  Description: 'Описание',
-  DirectoryInformationError: 'Произошла ошибка при получении информации о папке документа.',
-  DocumentInformationError: 'Произошла неожиданная ошибка при попытке получить информацию о документе.',
-  EditFolder: 'Изменить имя папки',
-  Expires: 'Истекает',
-  File: 'Файл',
-  FileProperties: 'Свойства файла',
-  Help: 'Помощь',
-  InvalidRoot: 'Неверный корневой каталог: "${0}" (${1}).',
-  Library: 'Библиотека',
-  LibraryDataError: 'Произошла непредвиденная ошибка обработки данных каталога библиотеки.',
-  Never: 'Никогда',
-  No: 'Нет',
-  Revised: 'Исправлено',
-  Size: 'Размер',
-  Yes: 'Да' }
-));
-},
-'Sage/UI/nls/ru/GroupsTitlePaneConfigProvider':function(){
-define("Sage/UI/nls/ru/GroupsTitlePaneConfigProvider", (
-{ groupText: 'Группы',
-  addGroupButtonTooltip: 'Добавить группу',
-  groupButtonTooltip: 'Управление группами',
-  lookupText: 'Поиск',
-  lookupResultsText: 'Результаты поиска',
-  groupColumnText: 'Группа',
-  visibleColumnText: 'Видимый' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/NonVisibleControlContainer':function(){
-define("Sage/QuickForms/Design/nls/ru/NonVisibleControlContainer", (
-{ headerText: 'Неотображаемые элементы управления' }
-));
-},
-'Sage/UI/Controls/nls/ru/Name':function(){
-define("Sage/UI/Controls/nls/ru/Name", (
-{ okText: 'Ок',
-  cancelText: 'Отмена',
-  dialogTitle: 'Изменить имя',
-  prefixText: 'Префикс:',
-  nameFirstText: 'Имя:',
-  nameMiddleText: 'Отчество:',
-  nameLastText: 'Фамилия:',
-  suffixText: 'Суффикс:',
-  buttonTooltip: 'Изменить' }
-));
-},
-'Sage/MainView/JobMgr/nls/ru/ExecutionsListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/ru/ExecutionsListPanelConfig", {
-    loadingText: 'Загрузка...',
-    colNameJobName: 'Тип',
-    colNameUser: 'Пользователь',
-    colNamePhase: 'Этап',
-    colNamePhaseDetail: 'Подробности об этапе',
-    colNameProgress: 'Ход выполнения',
-    colNameElapsed: 'Истекшее время',
-    colNameStatus: 'Статус',
-    colNameResult: 'Результат выполнения'
+define('Sage/nls/Sage_ru',{
+'Sage/UI/nls/Dialogs':{"yesText":"Да","noText":"Нет","okText":"OК","cancelText":"Отмена","_localized":{}}
+,
+'Sage/Utility/nls/ErrorHandler':{"EmailContentL1":"Administrator","EmailContentL2":"${0} encountered an error at ${1}","EmailContentL3":"Please click the link below to view the Event Viewer error log for this error","HttpError":"There was an unknown error in response to a HTTP request.","_localized":{}}
+,
+'Sage/Utility/nls/Utility':{"dangerousValueWarn":"Обнаружена потенциально опасное значение формы. Избегайте использования недопустимых комбинаций символов. Пример: \"&lt;script&gt;&lt;/script&gt;\". Также избегайте использования недопустимых символов в именах файлов: \\ / : * ? \" &lt; &gt; | ","_localized":{}}
+,
+'Sage/Utility/nls/Activity':{"ToDo":"Дело","PhoneCall":"Звонок","Meeting":"Встреча","Personal":"Личное действие","Literature":"Литература","Fax":"Факс","Letter":"Письмо","Note":"Заметка","Email":"Электронная почта","Document":"Документ","DatabaseChange":"Изменение базы данных","Event":"Событие","ScheduledEvent":"Запланированное событие","Contact":"Контакт","Lead":"Заинтересованное лицо","New":"Новый","hr":"hr","h":"h","m":"m","Change":"Изменить","Deleted":"Удалено","Confirm":"Подтвердить","Decline":"Отклонить","Unknown":"Неизвестно","Leader":"Организатор","Complete":"Завершить","confirmTypeChanged":"Изменено","confirmTypeConfirmed":"Подтверждено","confirmTypeDeleted":"Удалено","timelessText":"без указания времени","_localized":{}}
+,
+'Sage/UI/Controls/nls/_DialogHelpIconMixin':{"helpTooltip":"Справка","_localized":{}}
+,
+'Sage/UI/Controls/nls/PickList':{"okText":"OК","missingPickListText":"Не удалось найти PickList","_localized":{}}
+,
+'Sage/UI/nls/SearchConditionWidget':{"trueText":"Истина","falseText":"Ложь","networkText":"Сеть","remoteText":"Удаленный","webText":"Интернет","webViewerText":"Web Viewer","concurrentText":"Параллельно","retiredText":"Неактивен","templateText":"Шаблон","addonText":"Дополнение","adminText":"Администратор","userText":"Пользователь","teamText":"Команда","departmentText":"Отдел","systemText":"Система","_localized":{}}
+,
+'Sage/UI/nls/ConditionManager':{"addimgalttext":"Добавить условие","hideimgalttext":"Удалить условие","addrowlabel":"Поиск по:","hiderowlabel":"И:","srchBtnCaption":"Поиск","errorOperatorRequiresValue":"Оператор требует значение","startingWith":"Начинается с","endsWith":"Заканчивается на","contains":"Содержит","equalTo":"Равно","notEqualTo":"Не равно","equalOrLessThan":"Меньше или равно","equalOrGreaterThan":"Больше или равно","lessThan":"Меньше","greaterThan":"Больше","_localized":{}}
+,
+'Sage/UI/nls/SDataLookup':{"closeText":"Закрыть","cancelText":"Отмена","loadingText":"Загрузка...","noDataText":"Нет записей","_localized":{}}
+,
+'dgrid/extensions/nls/columnHider':{"popupTriggerLabel":"Show or hide columns","popupLabel":"Show or hide columns","_localized":{}}
+,
+'dgrid/extensions/nls/pagination':{"status":"${start} - ${end} of ${total} results","gotoFirst":"Go to first page","gotoNext":"Go to next page","gotoPrev":"Go to previous page","gotoLast":"Go to last page","gotoPage":"Go to page","jumpPage":"Jump to page","rowsPerPage":"Number of rows per page","_localized":{}}
+,
+'Sage/UI/Controls/nls/Grid':{"loadingMessage":"Загрузка данных...","noDataMessage":"Нет записей, соответствующих критериям выбора.","showMore":"показать больше","showLess":"показать меньше","_localized":{}}
+,
+'Sage/UI/nls/EditableGrid':{"unsavedDataText":"*несохраненные данные","addText":"Добавить","deleteText":"Удалить","saveText":"Сохранить","cancelText":"Отмена","noSelectionsText":"Нет выбранных записей.","confirmDeleteFmtTxt":"Действительно удалить эти элементы (${0})?","yesText":"Да","noText":"Нет","createItemsInvalidArrayText":"Параметр элементов в Sage.UI.EditableGrid.createItems() должен быть массивом.","recordCountFormatString":"Записи ${0} — ${1} из ${2}","noDataMessage":"Нет записей, соответствующих критериям выбора.","dirtyDataMessage":"Данные не сохранены. При продолжении, внесенные изменения будут утеряны.","okText":"OК","_localized":{}}
+,
+'Sage/Utility/nls/File':{"unableToUploadText":"Для использования этой функции должен быть установлен модуль интеграции рабочего стола CRM Office Integration.","unknownSizeText":"неизвестно","largeFileWarningText":"Предупреждение: не удалось загрузить этот запрос, так как его размер превышает ограничение, установленное администратором.","largeFileWarningTitle":"Предупреждение","_localized":{}}
+,
+'Sage/Utility/File/nls/DescriptionsForm':{"titleFmt":"Добавить вложения для \"${0}\"","titleLibraryDoc":"Добавить документы библиотеки","fileNameText":"Имя и размер файла: ","descText":"Описание:","okText":"OК","cancelText":"Отмена","_localized":{}}
+,
+'Sage/Utility/File/nls/Attachment':{"uploadingAttachments":"Загрузка вложений","uploadCompleted":"Завершено","uploadingPleaseWait":"Загрузка, подождите...","uploadFailed":"Сбой загрузки.","_localized":{}}
+,
+'Sage/UI/Controls/nls/DateTimePicker':{"okText":"OК","cancelText":"Отмена","convertDescription":"Сравнение в другим часовым поясом.","convertText":"Сравнить","calculatorText":"Калькулятор часового пояса","timeZoneSourceText":"Текущий часовой пояс","timeZoneDestText":"Сравнение часовых поясов","buttonToolTip":"Календарь","timeStartText":"Время","timeZoneCalculatorText":"Калькулятор часового пояса","_localized":{}}
+,
+'Sage/Utility/File/nls/AttachmentPropertiesEditForm':{"fileText":"Файл","descriptionText":"Описание","sizeText":"Размер","attachDateText":"Дата вложения","attachedByText":"Вложил","uploadFileText":"Выбрать другой файл...","editText":"Редактировать вложение","okText":"OК","cancelText":"Отмена","browseText":"Обзор","urlText":"URL-адрес","requestFailedMsg":"Невозможно завершить запрошенную операцию. Повторите попытку позже.","_localized":{}}
+,
+'Sage/Utility/File/nls/FallbackFilePicker':{"addLibraryFileText":"Добавить файл библиотеки","attachFileText":"Вложить файл","descriptionText":"Описание","uploadFileText":"Вложение","okText":"OК","cancelText":"Отмена","invalidContext":"Невозможно загрузить файлы за пределами библиотеки.","fileTooLargeError":"Загрузка файла была прервана из-за слишком большого размера файла.","pleaseSelectFile":"Сначала выберите файл.","slxErrorIdInfo":"ИД ошибки Saleslogix: ","_localized":{}}
+,
+'Sage/Utility/File/nls/AddURLAttachment':{"descriptionText":"Описание","urlText":"URL-адрес","titleText":"Добавить вложение для URL-адреса","okText":"OК","cancelText":"Отмена","requestFailedMsg":"Невозможно завершить запрошенную операцию. Повторите попытку позже.","urlBlankMsg":"URL-адрес или описание не может быть пустым.","_localized":{}}
+,
+'Sage/Utility/File/nls/GoogleDocPicker':{"googleDocumentsTitle":"Документы Google","couldNotOpenWindowMsg":"Не удалось открыть окно аутентификации. Проверьте наличие блокировки всплывающих окон.","_localized":{}}
+,
+'Sage/UI/nls/AttachmentList':{"attachmentText":"Вложение","userText":"Пользователь","modDateText":"Дата/время обновления","dateRangeText":"Диапазон даты изменения","sizeText":"Размер","extensionText":"Расширение файла","addFileText":"Добавить файл","addUrlText":"Добавить URL-адрес","editText":"Редактировать","helpText":"Справка","addGoogleText":"Добавить документ Google","deleteText":"Удалить","request":"Файл запроса","delivered":"Доставлено","requested":"Запрошено","available":"Доступно","_localized":{}}
+,
+'Sage/UI/nls/GridView':{"unsavedDataText":"*несохраненные данные","addText":"Добавить","deleteText":"Удалить","saveText":"Сохранить","cancelText":"Отмена","editText":"Редактировать","helpText":"Справка","noSelectionsText":"Нет выбранных записей.","confirmDeleteFmtTxt":"Действительно удалить эти элементы (${0})?","yesText":"Да","noText":"Нет","createItemsInvalidArrayText":"Параметр элементов в Sage.UI.GridView.createItems() должен быть массивом.","noDataMessage":"Нет записей, соответствующих критериям выбора.","dirtyDataMessage":"Данные не сохранены. При продолжении, внесенные изменения будут утеряны.","okText":"OК","totalRecordCountLabel":"Всего записей: ${0}","toggleRows":"Показать/скрыть предпросмотр","_localized":{}}
+,
+'Sage/UI/nls/SLXPreviewGrid':{"applyText":"Применить","resetText":"Сброс","filterText":"Фильтр","_localized":{}}
+,
+'Sage/UI/Controls/nls/EntityInfoToolTip':{"errorText":"Информация не найдена.","loadingText":"Загрузка...","noInfoText":"Нет данных для отображения.","mainText":"Главное:","faxText":"Факс:","tollFreeText":"Бесплатный справочный телефон:","urlText":"URL-адрес веб-сайта:","workText":"Рабочий:","mobileText":"Мобильный телефон:","emailText":"Электронная почта:","contactNameText":"Имя:","phoneText":"Телефон:","accountText":"Клиент:","_localized":{}}
+,
+'Sage/UI/Controls/nls/Lookup':{"buttonToolTip":"Найти","closeButtonToolTip":"Удалить","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityEditor':{"labelWidth":"120","tabNameGeneralText":"Общее","tabNameAvailabilityText":"Доступность","tabNameAssociationsText":"Связи","tabNameRecurringText":"Повторение","tabNameAttachmentsText":"Вложения","tabNameNotesText":"Заметки","scheduleText":"Расписание","scheduleTodo":"Schedule To-Do","schedulePhonecall":"Schedule Phone Call","scheduleMeeting":"Schedule Meeting","startTimeText":"Время начала","timeLessText":"Без указания времени","alarmText":"Оповещение","durationText":"Длительность","rolloverText":"Автоматически переносить на следующий день","contactText":"Контакт","accountText":"Клиент","leadText":"Заинтересованное лицо","opportunityText":"Возможность","ticketText":"Заявка","companyText":"Компания","regardingText":"Тема","notesText":"Заметки","priorityText":"Приоритет","leaderText":"Организатор","categoryText":"Категория","locationText":"Местоположение","dialogHeaderFormatText":"${actionText} ${activityType} - ${description}","scheduledByFormatText":"Запланировал ${user}, ${date}","completeScheduledByFormatText":"Запланировал ${user}, ${date} первоначально на ${startDate}","newConfirmationHeaderFormatText":"Подтвердить ${activityType}, запланированный ${user}","otherConfimationHeaderFormatText":"${activityType} ${actionText} от ${user}","acceptedText":"Принято","declinedText":"Отклонено","scheduledText":"Запланировано","updatedText":"Обновлено","deletedText":"Удалено","cancelText":"Отмена","okText":"OК","completeTodo":"Complete To-Do","completePhonecall":"Complete Phone Call","completeMeeting":"Complete Meeting","completeText":"Завершить","completeBtnText":"Завершить","completedText":"Завершено","deleteText":"Удалить","lookupActText":"Поиск клиента","lookupContactText":"Поиск контакта","lookupOpportunityText":"Поиск возможности","lookupTicketText":"Поиск заявки","lookupLeadText":"Поиск заинтересованного лица","lookupLeaderText":"Поиск организатора","lookupResourcesText":"Добавить участников и ресурсы","addResourceText":"Добавить выбранное","mainPhoneText":"Основной телефон","typeText":"Тип","subTypeText":"Подтип","nameText":"Имя","cityText":"Город","stateText":"Регион","workphoneText":"Рабочий телефон","emailText":"Электронная почта","acctMgrText":"Менеджер по клиентам","descriptionText":"Описание","stageText":"Стадия","statusText":"Статус","ownerText":"Владелец","ticketNumberText":"Номер заявки","phoneText":"Телефон","urgencyText":"Срочность","areaText":"Область","recurringText":"Повторение","resultText":"Результат","followupText":"Последующее действие","noneText":"Нет","carryOverAttachmentsText":"Перенести вложения","carryOverNotesText":"Перенести заметки","asScheduledText":"Как запланировано","nowText":"Сейчас","responseText":"Ответ","acceptText":"Принять","declineText":"Отклонить","deleteConfText":"Удалить подтверждение","closeText":"Закрыть","leadFullNameText":"Имя","postalText":"Почтовый индекс","failedLoadingDataMsg":"Возникла ошибка при загрузке данных.","removeText":"Удалить","noText":"Нет","yesText":"Да","areYouSureText":"Данная запись будет удалена без возможности восстановления.","couldNotSaveErrorText":"Не удалось сохранить действие из-за ошибки.","couldNotDeleteErrorText":"Не удалось удалить действие из-за ошибки.","couldNotCompleteErrorText":"Не удалось завершить действие из-за ошибки.","scheduleFollowUpErrorText":"Не удалось запланировать последующее действие из-за ошибки определения HistoryId.","tabNameParticipants":"Участники","updateToDo":"To-Do","updatePhoneCall":"Phone Call","updateMeeting":"Meeting","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/AttendeeLookup/nls/SpeedSearchLookup':{"dialogTitle":"Поиск участников","okText":"Добавить выбранное","cancelText":"Закрыть","noDataText":"Нет записей, соответствующих критериям выбора.","srchBtnCaption":"Поиск","colName":"Имя","colType":"Тип","colAccount":"Компания/клиент","colTitle":"Название","colEmail":"Электронная почта","colWorkPhone":"Рабочий телефон","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityEditorAttendeesTab':{"header_Name":"Имя","header_AccountName":"Клиент/компания","header_Type":"Тип","header_Primary":"Основной","header_RoleName":"Роль","header_Phone":"Телефон","header_Email":"Электронная почта","header_TimeZone":"Часовой пояс","header_Notes":"Заметки","tooltip_speedSearch":"Добавить участника","tooltip_AddContact":"Добавить контакт","tooltip_AddLead":"Добавить заинтересованное лицо","tooltip_Delete":"Удалить","header_Attendee":"Является участником","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/AttendeeLookup/nls/ContactLookupConfig':{"contactText":"Контакт","accountText":"Клиент","lookupContactText":"Поиск контакта","nameText":"Имя","cityText":"Город","stateText":"Регион","workphoneText":"Рабочий телефон","emailText":"Электронная почта","dialogButtonText":"Добавить выбранное","cancelText":"Закрыть","colFirstName":"Имя","colLastName":"Фамилия","colTitle":"Название","colAccount":"Клиент","colWorkPhone":"Рабочий телефон","colEmail":"Электронная почта","dialogTitleText":"Поиск контактов","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/AttendeeLookup/nls/LeadLookupConfig':{"contactText":"Контакт","accountText":"Клиент","lookupContactText":"Поиск контакта","nameText":"Имя","cityText":"Город","stateText":"Регион","workphoneText":"Рабочий телефон","emailText":"Электронная почта","dialogButtonText":"Добавить выбранное","cancelText":"Закрыть","colFirstName":"Имя","colLastName":"Фамилия","colTitle":"Название","colCompany":"Компания","colWorkPhone":"Рабочий телефон","colEmail":"Электронная почта","dialogTitleText":"Поиск наводок","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/RecurringEditor':{"activityOccurrsText":"Это действие возникает...","onceText":"Однократно","dailyText":"Ежедневно","weeklyText":"Еженедельно","monthlyText":"Ежемесячно","yearlyText":"Ежегодно","occursOnceText":"Это действие возникает только один раз","everyText":"Каждый","daysText":"Дни","daysAfterText":"Дни после завершения","startRecurringText":"Начало повторений: ","endAfterText":"Окончание после","endOnText":"Конец повторений","occurrencesText":"экземпляры","weeksOnText":"Недели","monText":"Понедельник","tueText":"Вторник","wedText":"Среда","thurText":"Четверг","friText":"Пятница","satText":"Суббота","sunText":"Воскресенье","weeksAfterText":"Недель после завершения","monthsOnText":"День месяца","monthsOnTheText":"месяцы в","monthsAfterText":"Месяцев после завершения","firstText":"1-й","secondText":"2-й","thirdText":"3-й","fourthText":"4-й","lastText":"последний","yearsOnText":"Годов","yearsAfterText":"Годов после завершения","janText":"Январь","febText":"Февраль","marText":"Март","aprText":"Апрель","mayText":"Май","junText":"Июнь","julText":"Июль","augText":"Август","sepText":"Сентябрь","octText":"Октябрь","novText":"Ноябрь","decText":"Декабрь","theText":"Каждый","inText":"в","_localized":{}}
+,
+'Sage/UI/Controls/nls/DurationSelect':{"minuteText":"минута","minutesText":"минуты","hourText":"час","hoursText":"часы","dayText":"день","daysText":"дн.","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/EditEventEditor':{"titleScheduleText":"Запланировать событие...","titleEditText":"Редактировать событие","lblDayTypeText":"Тип события:","lblStartDateText":"Дата начала:","lblEndDateText":"Дата окончания:","lblUserText":"Пользователь:","lookupUserText":"Поиск пользователя","lblCategoryText":"Категория:","lblLocationText":"Местоположение:","lblDescriptionText":"Описание:","btnOkayText":"OК","btnCancelText":"Отмена","btnHelpText":"Справка","eventTypeActiveText":"Активно","eventTypeBusinessTripText":"Командировка","eventTypeConferenceText":"Конференция","eventTypeHolidayText":"Праздник","eventTypeOffText":"Офис","eventTypeTradeShowText":"Выставка","eventTypeUnavailableText":"Недоступно","eventTypeVacationText":"Отпуск","errorText":"Не удалось создать событие, так как возникла ошибка.","invaildDatesText":"Дата окончания не может быть раньше даты начала.","nameText":"Имя","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/QuickCompleteEditor':{"lblResultText":"Результат:","lblNoteText":"Примечание (добавить ко всем элементам):","btnCompleteIndividuallyText":"Индивидуально","btnAsScheduledText":"Как запланировано","btnCompleteNowText":"Сейчас","btnCancelText":"Отмена","btnCloseText":"Закрыть","btnHelpText":"Справка","resultCompletedText":"Завершить","titleText":"Быстрое завершение","actionMessage":"Будут выполнены только операции, для которых у вас есть разрешение.","completeMessage":"Выполнить все выбранные операции ({0}):","processingMessage":"Подождите, идет выполнение всех выбранных операций ({0})...","_localized":{}}
+,
+'Sage/Services/nls/ActivityActionProcessor':{"btnOkayText":"OК","btnCancelText":"Отмена","btnCloseText":"Закрыть","btnHelpText":"Справка","processingText":"Обработка запроса, подождите...","failureText":"Не удалось выполнить действие, возникла ошибка.","titleText":"Процесс","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/HistoryEditor':{"labelWidth":"120","tabNameGeneralText":"Общее","tabNameAttachmentsText":"Вложения","scheduleText":"Расписание","startTimeText":"Запланировано","completedDateText":"Завершено","timeLessText":"Без указания времени","durationText":"Длительность","contactText":"Контакт","accountText":"Клиент","leadText":"Заинтересованное лицо","opportunityText":"Возможность","ticketText":"Заявка","companyText":"Компания","regardingText":"Тема","resultText":"Результат","notesText":"Заметки","noteText":"Note","priorityText":"Приоритет","leaderText":"Организатор","categoryText":"Категория","locationText":"Местоположение","scheduledByFormatText":"Запланировал ${user}, ${date}","cancelText":"Отмена","okText":"OК","deleteText":"Удалить","lookupActText":"Поиск клиента","lookupContactText":"Поиск контакта","lookupOpportunityText":"Поиск возможности","lookupTicketText":"Поиск заявки","lookupLeadText":"Поиск заинтересованного лица","lookupLeaderText":"Поиск организатора","lookupResourcesText":"Поиск","mainPhoneText":"Основной телефон","typeText":"Тип","subTypeText":"Подтип","nameText":"Имя","cityText":"Город","stateText":"Регион","workphoneText":"Рабочий телефон","emailText":"Электронная почта","acctMgrText":"Менеджер по клиентам","descriptionText":"Описание","stageText":"Стадия","statusText":"Статус","ownerText":"Владелец","ticketNumberText":"Номер заявки","phoneText":"Телефон","urgencyText":"Срочность","areaText":"Область","recurringText":"Повторение","followupText":"Последующее действие","noneText":"Нет","carryOverAttachmentsText":"Перенести вложения","carryOverNotesText":"Перенести заметки","asScheduledText":"Как запланировано","insertText":"Вставить","insertNoteText":"Insert Note","couldNotSaveErrorText":"Не удалось сохранить историю из-за ошибки.","deleteMessage":"Данная запись будет удалена без возможности восстановления.","deleteTitle":"Удалить историю","couldNotDeleteErrorText":"Не удалось удалить историю из-за ошибки.","postalText":"Почтовый индекс","tabNameParticipants":"Все участники","resultComplete":"Complete","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/HistoryEditorAttendeesTab':{"header_Name":"Имя","header_AccountName":"Клиент/компания","header_Type":"Тип","header_Primary":"Основной","header_RoleName":"Роль","header_Phone":"Телефон","header_Email":"Электронная почта","header_TimeZone":"Часовой пояс","header_Notes":"Заметки","header_Status":"Статус","header_Attendee":"Является участником","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/OccurrenceOrSeriesQueryDlg':{"titleFmt":"${type} — ${description}","actDateText":"Дата действия:","contactText":"Контакт:","accountText":"Клиент:","opportunityText":"Возможность:","editAllText":"Редактировать все вхождения","editOneText":"Редактировать текущее вхождение","completeAllText":"Завершить все вхождения","completeOneText":"Завершить текущее вхождение","deleteAllText":"Удалить все вхождения","deleteOneText":"Удалить это вхождение","continueText":"Продолжить","failedToLoadMsg":"Не удалось загрузить действие","_localized":{}}
+,
+'Sage/Services/nls/ActivityService':{"txtErrorActionMsg":"Не удалось выполнить действие, возникла ошибка.","txtActivity":"действие","txtActivities":"действия","txtActionDeleteActivites":"Удалить действия","txtActionDeleteActivitiesQuestion":"Будут удалены только те действия на которые у вас есть права на удаление. <P> Действительно удалить выбранные \"{1}\" ({0})?","txtAlarm":"оповещение","txtAlarms":"оповещения","txtActionSnoozeAlarm":"Отложить оповещение","txtActionSnoozeQuestion":"Действительно отложить выбранные \"{1}\" ({0}) для \"{2}\"?","txtActionSnoozeAllQuestion":"Действительно отложить все \"{0}\" для \"{1}\"?","txtActionDismissAlarms":"Отклонение оповещений","txtActionDismissAlarmsQuestion":"Действительно отклонить выбранные \"{1}\" ({0})?","txtEvent":"событие","txtEvents":"события","txtActionDeleteEvents":"Удаление событий","txtActionDeleteEventsQuestion":"Будут удалены только те события на которые у вас есть права на удаление. <P> Действительно удалить выбранные \"{1}\" ({0})?","txtConfirmation":"подтверждение","txtConfirmations":"подтверждения","txtActionAcceptConfirmations":"Принять подтверждения","txtActionAcceptConfirmQuestion":"Действительно принять выбранные \"{1}\" ({0})? Это действие распространяется только на новые или измененные подтверждения. Все остальные будут игнорироваться.","txtDeclineConfirmations":"Отклонение подтверждений","txtActionDeclineConfrimQuestion":"Действительно отклонить выбранные \"{1}\" ({0})? Это действие распространяется только на новые или измененные подтверждения. Все остальные будут игнорироваться.","txtActionRemoveConfirmations":"Удалить подтверждения","txtActionRemoveConfirmationsQuestion":"Действительно удалить выбранные \"{1}\" ({0})? Это действие распространяется на ведущие, отклоненные и удаленные подтверждения. Все остальные будут игнорироваться.","txtLiteratureRequest":"запрос литературы","txtLiteratureRequests":"запросы литературы","txtActionDeleteLiteratureRequests":"Удаление запросов литературы","txtActionDeleteLiteratureRequestsQuestion":"Будут удалены только запросы литературы, для которых имеется право на удаление. <P> Действительно удалить выбранные \"{1}\" ({0})?","_localized":{}}
+,
+'Sage/MainView/EntityMgr/nls/_BaseEntityDetailContent':{"FilterTabTitle":"Фильтры","MetricTabTitle":"Метрики","PropertyTabTitle":"Поля","CalcFieldTabTitle":"Вычисляемые поля","EntityTabTitle":"Сущности","RelationTabTitle":"Отношения","dialogTitleAddField":"Добавить поле в сущность \"${0}\"","dialogTitleAddFilter":"Добавить фильтр в сущность \"${0}\"","dialogTitleAddMetric":"Добавить метрику в сущность \"${0}\"","dialogTitleAddRelationship":"Добавить отношение в сущность \"${0}\"","editDialogTitle":"Редактировать \"${0}\" в сущности \"${1}\"","FilterDialogTitle":"Фильтр","MetricDialogTitle":"Метрика","PropertyDialogTitle":"Поле","RelationDialogTitle":"Отношение","FilterGridColumnFilter":"Имя фильтра","MetricGridColumnMetric":"Имя метрики","FilterGridColumnDisplay":"Отображаемое имя","FilterGridColumnProperty":"Поле","FilterGridColumnType":"Метрика или фильтр","FilterGridColumnIsMetric":"В личном кабинете","FilterGridColumnLastUpdated":"Последнее изменение","FilterGridColumnDetails":"Тип","FilterGridDetailsDistinctFilter":"Уникальный","FilterGridDetailsDateDiffMetricFilter":"Разность между датами метрики","FilterGridDetailsRangeFilter":"Диапазон","FilterGridDetailsMetricFilter":"Метрика","FilterGridDetailsUserLookupFilter":"Поиск пользователя","FilterGridDetailsLookupFilter":"Поиск","FilterGridDetailsCustom":"Пользовательский","GridHelp":"Справка","FilterGridAdd":"Добавить фильтр","FilterGridRemove":"Удалить фильтр","FilterGridEdit":"Редактировать фильтр","MetricGridAdd":"Добавить метрику","MetricGridRemove":"Удалить метрику","MetricGridEdit":"Редактировать метрику","PropertyGridAdd":"Добавить поле","PropertyGridRemove":"Удалить поле","PropertyGridEdit":"Редактировать поле","CalculatedGridAdd":"Добавить вычисляемое поле","CalculatedGridRemove":"Удалить вычисляемое поле","CalculatedGridEdit":"Редактировать вычисляемое поле","lblFilterName":"Имя фильтра","lblDisplayName":"Отображаемое имя","lblFilterDp":"Поля","lblTypeDp":"Тип","lblCharacter":"Символы","lblTypeSpecificContentBox":"Поле данных с учетом типа","lblSaveButton":"Сохранить","lblCancelButton":"Отмена","lblOkButton":"OК","lblWarning":"Выберите элемент.","confirmDeleteFmtTxt":"Действительно удалить эти элементы (${0})?","filtersFor":"Фильтры для","metricsFor":"Метрики для","propertyFor":"Поля для","calculatedFor":"Вычисляемые поля для","defaultRangeRowValue":"Введите значение","customSql":"Пользовательский SQL","displayName":"Отображаемое имя","lower":"Нижнее","rangeId":"ИД диапазона","rangeName":"Имя диапазона","upper":"Верхний","SUM":"Итого (сумма)","Contains":"Содержит","StartsWith":"Начинается с","EndsWith":"Заканчивается на","LessThan":"Меньше","GreaterThan":"Больше","LessThanEqual":"Меньше или равно","GreaterThanEqual":"Больше или равно","Equal":"Равно","NotEqual":"Не равно","COUNT":"Количество","AVG":"Среднее","MIN":"Минимальное значение","MAX":"Максимальное значение","totalRecordCountLabel":"Всего записей: ${0}","propertyName":"Имя","Description":"Описание","propertyType":"Тип","included":"Включено","calculatedFields":"Рассчитано","generate":"Сгенерировать","key":"Ключ","relationFor":"Отношение для","childEntity":"Дочерний элемент","childProperty":"Поле дочернего элемента","parentEntity":"Родительский элемент","parentProperty":"Поле родительского элемента","editable":"Редактируемый","cardinality":"Мощность","relationship":"Отношение","parentImport":"Импорт родительского элемента","parentMatch":"Совпадение родительского элемента","parentAudit":"Аудит родительского элемента","parentIncluded":"Включая родительский элемент","childImport":"Импорт дочернего элемента","childMatch":"Совпадение дочернего элемента","childAudit":"Аудит дочернего элемента","childIncluded":"Включая дочерний элемент","text":"текст","memo":"заметка","unicodeText":"Текст unicode","unicodeMemo":"Заметка unicode","integer":"целое число","double":"двойное","single":"одинарное","decimal":"десятичное","short":"короткое","standardId":"стандартный ИД","trueFalse":"истина/ложь","yesNo":"да/нет","boolean":"логическое значение","dateTime":"дата/время","email":"электронная почта","phone":"телефон","pickList":"список выбора","owner":"владелец","lookup":"поиск","dependencyLookup":"поиск зависимости","char":"символ","enum_":"перечисление","guid":"guid","byte":"байт","binary":"двоичный","url":"URL-адрес","string":"строка","number":"число","notUniqueFor":"не уникально для","lblPluralName":"Отображение имени во множественном числе","lblTitle":"Название","IsExtension":"Является расширением","AdvOptions":"Дополнительные параметры","lblImport":"Импорт","lblMatch":"Соответствие","lblBulkUpdate":"Массовое обновление","lblAudited":"Аудит выполнен","lblPut":"Разместить","lblPost":"Опубликовать","lblDelete":"Удалить","lblHistory":"Отслеживать историю до","metricNotEditable":"Изменение этой метрики невозможно.","_localized":{}}
+,
+'Sage/MainView/EntityMgr/AddEditEntityDetail/nls/AddEditDialog':{"dialogTitleAddField":"Добавить поле в сущность \"${0}\"","dialogTitleAddFilter":"Добавить фильтр в сущность \"${0}\"","dialogTitleAddMetric":"Добавить метрику в сущность \"${0}\"","dialogTitleAddRelationship":"Добавить отношение в сущность \"${0}\"","editDialogTitle":"Редактировать \"${0}\" в сущности \"${1}\"","lblFilter":"Фильтр","lblMetric":"Метрика","lblFilters":"Фильтры","lblMetrics":"Метрики","lblDistinct":"Уникальный","lblRange":"Диапазон","lblUserLookup":"Поиск пользователя","lblAdd":"Добавить","lblEdit":"Редактировать","lblRemove":"Удалить","lblHelp":"Справка","lblFilterName":"Имя фильтра","lblMetricName":"Имя метрики","lblDisplayName":"Отображаемое имя","lblName":"Имя","lblDisplay":"Отображение","lblCalculated":"Рассчитано","lblCalculation":"Вычисление","lblDescription":"Описание","lblFieldsName":"Имя поля","lblCalculatedFieldsName":"Имя вычисляемого поля","lblFilterDp":"Поля","lblTypeDp":"Тип","lblCharacter":"Символы","lblFrom":"От","lblTo":"Для","lblOperators":"Операторы","lblAggregation":"Агрегации","lblTypeSpecificContentBox":"Поле данных с учетом типа","lblSaveButton":"OК","lblCancelButton":"Отмена","DateDiffCheckerValue":"Разность между датами метрики","InvalidFilterName":"Неправильное название фильтра","InvalidRangeName":"Неверное имя диапазона","RequiredFilterName":"Требуется имя фильтра","RequiredRangeName":"Требуется имя диапазона","FieldMustBeANumber":"Поле символа должно иметь целочисленное значение","SelectAnItem":"Выберите элемент","ItemRequired":"Требуется элемент","ItemInvalid":"Неверный элемент","LowerMustBeLessThanUpper":"Нижнее значение должно быть меньше верхнего значения.","InvalidSpecialDateValue":"Invalid special date placeholder value.","defaultRangeRowValue":"Введите значение","totalRecordCountLabel":"Всего записей: ${0}","lblNew":"Новый","lblExisting":"Существующий","lblExistingCalc":"Сущ. вычисляемое поле","validNameMsg":"Допустимая запись должна начинаться с заглавной буквы и <br> может содержать буквы, цифры и символы подчеркивания.","propertyName":"Имя","displayName":"Отображение","dataTypeId":"Тип","dataTypeData":"Атрибуты типа","length":"Длина","scale":"Шкала","precision":"Точность","isIncluded":"Включено","isReadOnly":"Только для чтения","displayCategory":"Показать категорию","sdata":"Sdata","bulkAction":"Массовое действие","canBulkUpdate":"Разрешено массовое обновление","canImport":"Импорт","canMatch":"Соответствие","generate":"Сгенерировать","audited":"Аудит выполнен","notUniqueFor":"не уникально для","notUnique":"не является уникальным","nlsCode":"Код NLS","nlsName":"Имя NLS","showTranslations":"Показать переводы","hideTranslations":"Скрыть переводы","standardIds":"Стандартные ИД","others":"Другие","SelectField":"Выберите поле!","SelectOneField":"Выберите только одно поле!","parent":"Родительская сущность и связываемое поле","child":"Дочерняя сущность и связываемое поле","cardinality":"Отношение","cascade":"Каскад","includeParent":"Включить свойство родительского отношения в дочернюю сущность","includeChild":"Включить свойство дочернего отношения в родительскую сущность","existingRelaton":"Это отношение уже существует!","_localized":{}}
+,
+'Sage/UI/Controls/nls/PropertyStore':{"text":"Текст","memo":"Заметка","unicodeText":"Текст Unicode","unicodeMemo":"Заметка Unicode","integer":"Целое число","double":"Двойное","single":"Одинарное","decimal":"Десятичное","short":"Короткое","standardId":"Стандартный ИД","trueFalse":"Истина/ложь","yesNo":"Да/нет","boolean":"Логическое значение","dateTime":"Дата/время","email":"Электронная почта","phone":"Телефон","pickList":"Список выбора","owner":"Владелец","lookup":"Поиск","dependencyLookup":"Поиск зависимости","char":"Символ","enum_":"Перечисление","guid":"Guid","byte":"Байт","binary":"Двоичный","url":"URL-адрес","string":"Строка","number":"Число","calc":"Вычисляемое поле","calcSF":"Вычисленная строка","calcNF":"Вычисленное число","_localized":{}}
+,
+'Sage/MainView/EntityMgr/EntityWizard/nls/_EntityWizardDialog':{"lblNewEntityWizard":"Мастер создания новой сущности","lblCreateEntity":"Создать сущность","lblCreateEntityFromTable":"Создать новую сущность на основе таблицы","lblEntityName":"Имя","lblDisplayName":"Отображение","lblPackage":"Пакет","lblEntityUsed":"Имя сущности уже используется!","lblNext":"Дальше","lblCancel":"Отмена","lblBack":"Назад","lblEnterProperties":"Ввести поля","lblAddNewProperty":"Нажмите кнопку \"Добавить\" (+), чтобы добавить новые поля в сущность","lblPropertyName":"Имя поля","lblDataType":"Тип данных","lblLength":"Длина","lblSure":"Продолжить?","lblThisStepCreateEntity":"При завершении этого шага будут созданы сущности и необходимая схема.","lblEntity":"Сущность","lblProperties":"Поля","lblStatus":"Статус","lblSuccess":"Выполнено","lblSuccessMsg":"Выполнено, сущность создана.","lblError":"Ошибка","lblFailed":"Не выполнено","lblErrorMsg":"Ошибка: не удалось создать сущность","lblFinish":"Завершить","lblInvalidEntry":"Корректная запись должна начинаться с прописной буквы и может содержать буквенно-цифровые значения.","lblRequired":"Требуется","lblErrorRelation":"Ошибка при создании отношения с","lblRelationship":"Основное отношение","lblSelectEntity":"Укажите, имеет ли данная сущность основное отношение с другой сущностью","lblExistingEntity":"Связать с имеющейся сущностью","lblRelatedEntity":"Связанная сущность","lblRelationType":"Тип отношения","addFieldDialogTitle":"Добавить поле","editFieldDialogTitle":"Редактировать поле","noDeleteSysProps":"Не удалось удалить системные свойства","noEditSysProps":"Невозможно редактировать системные свойства","NoRecordsSelected":"Нет выбранных записей.","lblNullable":"Допускает значение NULL","ExtensionEntity":"1:1 - Extension Entity","ChildEntity":"1:M - Child Entity","CreateUser":"Автор","CreateDate":"Дата создания","ModifyUser":"Автор изменения","ModifyDate":"Дата изменения","_localized":{}}
+,
+'Sage/UI/Forms/nls/FormFromSData':{"addText":"Добавить","deleteText":"Удалить","saveText":"Сохранить","cancelText":"Отмена","editText":"Редактировать","helpText":"Справка","yesText":"Да","noText":"Нет","okText":"OК","allText":"ALL","newPickList":"Новый список выбора","items":"Элементы списка выбора","number":"Заказ","enterValue":"Ввести значение","lblMore":"Еще","picklistAlreadyExists":"Picklist \"${0}\" уже существует.","messageOnSave":"Список выбора \"${0}\" сохранен. Продолжите добавление или изменение информации в поле.","permissionsToView":"Отсутствуют права для просмотра.","required":"Требуется вход","allowMultiples":"Разрешить множественный выбор","valueMustExist":"Текст должен совпадать с элементом списка","alphaSorted":"Отсортировано по алфавиту","noneEditable":"Пользователи не могут редактировать элементы","LanguageCodeFilterPlaceHolder":"Filter by Language Code","PickListItemCodeUniqueException":"Picklist item codes must be unique","PickListItemCodeRequiredeException":"Picklist item codes are required","_localized":{}}
+,
+'Sage/UI/Controls/nls/FieldAttributeControlFactory':{"IsEncrypted":"Является зашифрованным","Length":"Длина","Precision":"Точность","Scale":"Шкала","LookupEntityName":"Поиск имени сущности","LookupGroup":"Группа поиска","IsPercentage":"Является процентом","Items":"Элементы","MultiSelect":"Множественный выбор","OverriddenName":"Отмененное имя","Storage":"Хранилище","EnableHyperLinking":"Включить гиперссылки","LookupPreFilters":"Предварительные фильтры поиска","EqualTo":"Равно","NotEqualTo":"Не равно","GreaterThanOrEqual":"Больше или равно","GreaterThan":"Больше","LessThanOrEqual":"Меньше или равно","LessThan":"Меньше","CondOperator":"Оператор условия","FilterValue":"Значение фильтра","PropertyName":"Имя свойства","LookupProperties":"Свойства поиска","ExcludeFromFilters":"Исключить из фильтров","HideCondition":"Условие скрытия","IsSortable":"Возможна сортировка","PropertyFormat":"Формат свойства","None":"Нет","Phone":"Телефон","User":"Пользователь","PickList":"Список выбора","DateTime":"Дата и время","PropertyFormatString":"Строка формата свойства","PropertyHeader":"Заголовок свойства","PropertyType":"Тип свойства","UseAsResult":"Использовать как результат","ReturnPrimaryKey":"Возврат основного ключа","AllowMultiples":"Разрешить множественность","AlphaSort":"Алфавитная сортировка","MustExistInList":"Должен быть в списке","NoneEditable":"Нередактируемый","PickListFilter":"Фильтр списка выбора","ValueStoredAsText":"Значение сохранено как текст","Value":"Значение","Display":"Отображение","Code":"Код","Name":"Имя","DisplayName":"Отображаемое имя","Template":"Вычисление","Description":"Описание","SortOrder":"Порядок сортировки","lblNoFieldsInTemplate":"Добавьте свойство сущности в шаблон, прежде чем применить порядок сортировки.","AddField":"Добавить поле","InUse":"Используется","NotInUse":"Не используется","CalculatedNumberInputError":"<p>Ввод данных возможен в имена полей, выбранных в раскрывающемся списке<br/> с использованием следующих символов:<br/>&nbsp;&nbsp;&nbsp;&nbsp;\"+\",\"-\",\"*\",\"/\",\"(\", или \")\".<br/>&nbsp;&nbsp;&nbsp;&nbsp;Они соответствуют значениям кнопок выше текстовой области.</p>","newPickList":"Новый список выбора","add":"добавить","substract":"вычесть","multiply":"умножить","divide":"разделить","openParens":"открыть скобку","closeParens":"закрыть скобку","_localized":{}}
+,
+'Sage/Groups/nls/GroupNavigator':{"firstText":"К первому","previousText":"К пред.","nextText":"К след.","lastText":"К последнему","listText":"Представление в виде списка","noRecordsText":"Нет записей","labelFmtText":"${0} из ${1}","_localized":{}}
+,
+'Sage/Utility/nls/Email':{"RecipientInfoError":"Непредвиденная ошибка, при попытке прочитать сведения о получателях: ${0}","MailToProtocolError":"Возникла ошибка при попытке создать сообщение электронной почты, используя mailto: протокол (href.length=${0}). Число получателей электронной почты, возможно, придется уменьшить. Ошибка: ${1}.","InvalidContextError":"Невозможно обработать запрос на отправку электронной почты. Эта операция поддерживается только для контактов или заинтересованных лиц.","InvalidArgumentError":"Невозможно обработать запрос на отправку электронной почты. Некорректный аргумент.","FilteredOutMsg":"Отфильтрованы: не беспокоить: ${0}; неправильные: ${1}, дубликаты: ${2}","AllInvalidEmailError":"Коллекция не включает в себя ни одной сущности с действительным адресом и/или разрешением на отправку электронной почты.","EmailFieldQueried":"Поле электронной почты было: ${0}.","EntityInfoError":"Не удалось получить информацию о сущности.","CapabilityModeError":"Возможность писать по электронной почте выбранной группе доступна только списочном представлении.","CapabilityEntityError":"Возможность писать по электронной почте выбранной группе доступна только для контактов или наводок.","NoRowsSelectedError":"Нет выбранных строк.","_localized":{}}
+,
+'Sage/Groups/nls/GroupManager':{"ConfirmDeleteMessage":"Действительно удалить текущую группу?","ConfirmDeleteFmtMessage":"Действительно удалить эту группу: ${0}","InvalidSortStringMessage":"Ошибка: некорректная строка сортировки — ","InvalidConditionStringMessage":"Ошибка: некорректная строка условия — ","InvalidLayoutConditionStringMessage":"Ошибка: некорректная строка размещения — ","noneSelectedTitle":"Ни одной записи не выбрано","noneSelectedPromptFmt":"Записи не выбраны. Будет добавлена целая группа (количество записей: ${0}). Продолжить?","noneSelectedRemovePromptFmt":"Записи не выбраны. Будет удалена целая группа, (количество записей: ${0}). Продолжить?","noRecordsInGroup":"Нет записей, которые могут быть выбраны из этой группы.","newGroupTitle":"Добавить записи в новую группу","newGroupNamePrompt":"Выбранные записи (${0}) будут добавлены в эту новую группу.<br><br>Имя группы:<br>${1}","newGroupRePrompt":"&nbsp;&nbsp;<i>Введите имя группы.</i>","invalidCharMsg":"Имя не должно содержать следующие символы: / \\ : * ? \" <> | или \"","groupNameText":"Имя группы:","saveLookupDlgTitle":"Сохранить результаты поиска как новую группу","yesCaption":"Да","noCaption":"Нет","cancelCaption":"Отмена","okCaption":"OК","LOCALSTORE_NAMESPACE":"SageGroups","exportToExcel":"Этот метод является устаревшим, см. Sage.TaskPane.CommonTasksTasklet.exportToExcel.","createAdHocGroupJob_Description":"Группа: ${0}","createAdHocGroupJob_Title":"Создание группы","createAdHocGroupJobError":"Во время создания группы возникла ошибка: ${0}","createAdHocGroupJobProcessingJobMsg":"Можно подождать завершения или можно закрыть это сообщение. Вы получите уведомление после завершения группы.","_localized":{}}
+,
+'Sage/Utility/nls/Jobs':{"errorMessage":"При выполнении задания \"${0}\" возникла ошибка: ${1} ${2}.","jobCompletedSuccessfully":"Задание успешно завершено.","unexpectedErrorMessage":"При выполнении задания \"${0}\" возникла неожиданная ошибка.","repeatIndefinitely":"Повторять бесконечно","cancelButtonCaption":"Отмена","defaultProgressDialogTitle":"Задание выполняется","closeButtonCaption":"Закрыть","dataExpiredRefreshPage":"Истек срок действия информации о задании. Обновите страницу.","generalCheckJobService":"Не удалось запросить информацию о задании. Проверьте службу заданий.","JobServerviceOff":"Служба заданий в настоящий момент недоступна. Включите или перезапустите службу.","_localized":{}}
+,
+'Sage/Groups/nls/GroupLookup':{"txtNoRecordsFound":"Записи не найдены...","_localized":{}}
+,
+'Sage/UI/nls/SearchMenuItem':{"findText":"Найти","clearText":"Очистить","_localized":{}}
+,
+'Sage/UI/nls/GroupsTitlePaneConfigProvider':{"groupText":"Группы","addGroupButtonTooltip":"Добавить группу","groupButtonTooltip":"Управление группами","lookupText":"Поиск","lookupResultsText":"Результаты поиска","groupColumnText":"Имя группы","visibleColumnText":"Избранное","groupOwner":"Владелец","exceedMaxGroupMsg":"Максимально разрешенное количество для избранных групп: ${0}.","_localized":{}}
+,
+'Sage/Library/nls/DocumentProperties':{"Abstract":"Сводка","Cancel":"Отмена","DocumentProperties":"Свойства документа","Created":"Создано","Description":"Описание","Directory":"Каталог","DoNotExpire":"Не истекает","Expires":"Истекает","FileName":"Имя файла","ForceDistribution":"Принудительно распределить этот файл","InvalidFileName":"Имя файла не должно содержать следующие символы: \\ / : * ? \" < > |","Never":"Никогда","OK":"OК","Revised":"Исправлено","Size":"Размер","Status":"Статус","_localized":{}}
+,
+'Sage/Utility/File/nls/DragDropWatcher':{"query0":"Запрашиваемая функция требует модуль интеграции Saleslogix <br>для рабочего стола.","query1":"Найти далее...","query2":"Установить эту функцию сейчас?","query3":"Примечание: Этот модуль может быть установлен в любое время со страницы входа в систему или со страницы \"Параметры\".","_localized":{}}
+,
+'Sage/Utility/File/nls/LibraryDocument':{"failureNumber":"Ошибка ${0}: ","percentComplete":"Загрузка, подождите...","uploadError":"Возникла ошибка при попытке загрузить один или несколько файлов (не удалось: ${0}; удалось: ${1}).","invalidContext":"Невозможно загрузить файлы за пределами библиотеки.","unknownError":"Возникла неизвестная ошибка загрузки файла.","_localized":{}}
+,
+'Sage/Utility/File/nls/DefaultDropHandler':{"emailDroppedText":"Удаленная электронная почта","attachmentTitleText":"Сохранить вложения","attachmentQuestionText":"Сохранить копии этих вложений в Infor CRM? <br /> Вложения будут храниться на вкладке \"Вложения\" для соответствующих сущностей.","mailComplete":"Complete","_localized":{}}
+,
+'Sage/Library/nls/FileHandler':{"AccessError":"Недостаточный уровень безопасности роли для выполнения этого действия.","Available":"Доступно","Confirm":"Подтвердить","DeleteFileCnfmFmt":"Действительно удалить этот файл \"${0}\"?","Delivered":"Доставлено: не прочитано","DeliveredRead":"Доставлено: прочитано","DocumentPropertiesError":"Возникла неожиданная ошибка при попытке получить свойства документа.","DocumentPropertiesUpdateError":"Возникла неожиданная ошибка при попытке обновления свойств документа.","DocumentUpdateConflictError":"Файл был обновлен другим пользователем. Выполните обновление и повторите попытку.","FileDeleteError":"Возникла неожиданная ошибка при попытке удаления файла.","FileStatusError":"Возникла неожиданная ошибка при попытке обновить статус файла.","LogRequestError":"При записи в журнал запроса синхронизации документов возникла непредвиденная ошибка.","No":"Нет","NoAccessMessage":"Отсутствуют права на добавление файлов в библиотеку. Для получения дополнительной информации обратитесь к администратору Saleslogix.","Ordered":"Заказано","PleaseSelectFile":"Выберите файл.","PleaseWait":"Подождите","Revised":"Исправлено","RevisionOrdered":"Упорядоченная редакция","UploadError":"Возникла ошибка при попытке загрузить файл.","Unknown":"Неизвестно","Yes":"Да","_localized":{}}
+,
+'Sage/Library/nls/FolderHandler':{"AccessError":"Недостаточный уровень безопасности роли для выполнения этого действия.","AddFolderError":"Возникла ошибка при попытке добавить папку в библиотеку.","Cancel":"Отмена","Confirm":"Подтвердить","DeleteFolderCnfmFmt":"Действительно удалить папку \"${0}\" и все ее содержимое?","DeleteFolderError":"Возникла ошибка при попытке удалить папку библиотеки.","DontDeleteRoot":"Не удаляйте корневую папку.","DontEditRoot":"Не изменяйте имя корневой папки.","EnterFolderName":"Введите имя новой папки:","EnterNewFolderName":"Введите новое имя для этой папки.","FolderUpdateConflictError":"Папка была обновлена другим пользователем. Выполните обновление и повторите попытку.","InvalidFolderName":"Имя папки не должно содержать следующие символы: \\ / : * ? \" < > |","NewFolder":"Новая папка","No":"Нет","OK":"OК","PleaseSelectFolder":"Выберите папку.","RenameFolderError":"Возникла ошибка при попытке переименовать папку библиотеки.","Yes":"Да","_localized":{}}
+,
+'Sage/Library/nls/Manager':{"AddFiles":"Добавить файлы","AddFolder":"Добавить папку","Confirm":"Подтвердить","ConfirmDownload":"Файл не был загружен. Получить файл при следующей синхронизации?","ConfirmDownloadReorder":"Файл не был загружен, но уже запрошен. Хотели бы вы изменить порядок файлов, чтобы получить его при следующей синхронизации?","Created":"Создано","DeleteFolder":"Удалить папку","DeleteSelectedFile":"Удалить выбранный файл","Description":"Описание","DirectoryInformationError":"Возникла ошибка при получении информации о папке документа.","DocumentInformationError":"Возникла неожиданная ошибка при попытке получить информацию о документе.","EditFolder":"Редактировать имя папки","Expires":"Истекает","File":"Файл","FileProperties":"Свойства файла","Help":"Справка","InvalidRoot":"Неверный корневой каталог: \"${0}\" (${1}).","Library":"Библиотека","LibraryDataError":"Возникла непредвиденная ошибка обработки данных каталога библиотеки.","Never":"Никогда","No":"Нет","Revised":"Исправлено","Size":"Размер","Yes":"Да","_localized":{}}
+,
+'Sage/MailMerge/nls/Helper':{"destkopErrorsError":"Не удалось выполнить вызов для DesktopErrors().","mailMergeInfoStoreError":"Не удалось выполнить вызов для MailMergeInfoStore().","_localized":{}}
+,
+'Sage/MailMerge/nls/Service':{"selectContactCaption":"Выберите контакт","selectOppContactCaption":"Выберите контакт для возможности","selectLeadCaption":"Выбрать заинтересованное лицо","errorAttachmentUpdate":"Не удалось обновить запись вложения.","errorHistoryUpdate":"Не удалось обновить запись журнала.","errorXmlHttp":"Возникла ошибка при обработке запроса ${0}. ${1} (${2}).","_localized":{}}
+,
+'Sage/MailMerge/nls/Lookup':{"accountCaption":"Клиент","companyCaption":"Компания","contactTitle":"Выберите контакт","emailCaption":"Электронная почта","firstNameCaption":"Имя","invalidOptionsText":"Параметр функции или options.onSelect не заданы или заданы неправильно.","lastNameCaption":"Фамилия","leadTitle":"Выбрать заинтересованное лицо","mobileCaption":"Мобильный телефон","opportunityCaption":"Возможность","workCaption":"Рабочий","okText":"OК","_localized":{}}
+,
+'Sage/MailMerge/nls/Loader':{"decodeFailed":"Не удалось выполнить вызов для DecodeMailMergeJsonFromUrl().","_localized":{}}
+,
+'Sage/Services/nls/JobService':{"txtInvalidParameter":"Некорректный параметр: \"${0}\".","txtTriggerJobError":"При инициировании задания \"${0}\" возникла ошибка: ${1} ${2}.","txtScheduleJobError":"При планировании задания \"${0}\" возникла ошибка: ${1} ${2}.","txtUnexpectedError":"Возникла ошибка: ${0} ${1}.","_localized":{}}
+,
+'Sage/Services/nls/ReportingService':{"txtUnsupportedReportType":"Неподдерживаемый тип отчета: ${0}.","txtUnexpectedError":"Возникла ошибка: ${0} ${1}.","invalidEntityError":"ИД объекта не указан или не определен.","invalidReportPluginError":"ИД подключаемого модуля отчета не указан или не определен.","invalidTableNameError":"Имя таблицы не указано или не определено.","noDefaultReportError":"Не найден отчет по умолчанию для текущего объекта.","reportCannotBeShownError":"Отчет не может быть отображен.","_localized":{}}
+,
+'Sage/Reporting/nls/Enumerations':{"txtGroup":"Группа","txtDateRange":"Диапазон дат","txtUser":"Пользователь","txtQuery":"Запрос","txtIsGreaterThan":"Больше","txtIsLessThan":"Меньше","txtIsInTheRange":"В диапазоне","txtIsAfter":"После","txtIsBefore":"До","txtContains":"Содержит","txtStartsWith":"Начинается с","txtEndsWith":"Заканчивается на","txtIs":"Это","txtIsNot":"Не","txtOnDemand":"По запросу","txtScheduled":"Запланировано","txtCrystalReport":"Отчет Crystal","txtExportToFileReportType":"Экспорт в файл","txtUnknownReportType":"Неизвестно","txtNoFormat":"Без формата","txtPdf":"PDF","txtExcel":"Excel","txtExcelDataOnly":"Данные Excel","txtCsv":"CSV","txtWord":"Word","txtXml":"XML","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportWizardController':{"txtLoadingScheduleDetails":"Загрузка сведений о расписании","txtError":"Ошибка","txtCannotDetermineReportId":"Не удалось определить ИД отчета.","txtCannotDetermineReportNameOrFamily":"Не удалось определить имя или семейство отчета.","txtLoading":"Загрузка ","txtLoadingReport":"Загрузка отчета","txtSorryAnErrorOccuredLoadingReport":"При загрузке отчета возникла ошибка: ${0} ${1}.","displayNameAccountDetail":"Account Detail","displayNameContactDetail":"Contact Detail","displayNameOpportunityDetail":"Opportunity Detail","displayNameSupportDefect":"Support Defect","displayNameSupportTicket":"Support Ticket","displayNameSalesOrderDetail":"Sales Order Detail","displayNameQuoteDetail":"Quote Detail","displayNameQuotation":"Quotation","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportWizardController':{"txtOnDemandScheduleName":"По запросу","txtReportSuccessfullyScheduled":"Расписание отчета составлено.","txtDynamicParametersMessage":"Отчеты с динамическими параметрами в настоящее время не поддерживаются.","txtError":"Ошибка","txtScheduleSuccessfullyUpdated":"Расписание успешно обновлено.","txtInvalidReportWithDynamicParameters":"Отчет \"${0}:${1}\" не может быть запущен или внесен в график, поскольку является недопустимым по следующим причинам: ${2}","txtInvalidDynamicParameterDatasource":"Динамический параметр \"${p.name}\" (\"${p.promptText}\") в настоящий момент не поддерживается, поскольку его источник данных требует ввода параметра.","txtInvalidDynamicParameterReason":"Недопустимый динамический параметр \"${p.name}\" (\"${p.promptText}\"): ${p.invalidDynamicParameterReason}","txtInvalidDynamicParameterUnknownReason":"Недопустимый динамический параметр \"${p.name}\" (\"${p.promptText}\").","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportParametersDialog':{"txtDialogTitle":"Ввод значений","cmdBack_Caption":"< Назад","cmdNext_Caption":"Дальше >","cmdCancel_Caption":"Отмена","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerUtility':{"_localized":{}}
+,
+'Sage/MainView/ReportMgr/Common/nls/_WizardDialogBase':{"txtFinish":"Завершить","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/_ParameterEditorBase':{"txtPleaseSpecifyValue":"Укажите значение.","lblAvailableValues_Caption":"Доступные значения:","lblSelectedValues_Caption":"Выбранные значения:","lblEnterValue_Caption":"Введите значение","btnOK_Caption":"OК","txtTheValueMustBeBetween":"Длина значения должна составлять от {0} до {1} символов.","txtTheMinimumLengthForThisField":"Минимальная длина этого поля: {0}.","txtTheMaximumLengthForThisField":"Максимальная длина этого поля: {0}.","txtPleaseSpecifyNumberBetween":"Укажите числовое значение от {0} до {1}.","txtPleaseSpecifyNumberLesser":"Укажите числовое значение, меньшее или равное {0}.","txtPleaseSpecifyNumberGreater":"Укажите числовое значение, большее или равное {0}.","txtNoLowerValue":"Нет меньшего значения","txtNoUpperValue":"Нет большего значения","txtIncludeThisValue":"Включить это значение","txtFrom":"От:","txtTo":"До:","txtPleaseSpecifyFromValue":"Укажите начальное значение диапазона","txtPleaseSpecifyToValue":"Укажите конечное значение диапазона","txtPleaseSpecifyDateBetween":"Укажите значение даты в диапазоне от {0} до {1}.","txtPleaseSpecifyDateLesser":"Укажите значение даты, меньшее или равное {0}.","txtPleaseSpecifyDateGreater":"Укажите значение даты, большее или равное {0}.","txtFromMustBeLessThanOrEqualToTo":"Начальное значение диапазона должно быть меньше или равно конечному значению диапазона.","txtStartOfRange":"Начало диапазона:","txtEndOfRange":"Конец диапазона:","txtAddRange":"Добавить диапазон","lblSelectValue_Caption":"Выберите значение:","lblOrValue_Caption":"Или","_localized":{}}
+,
+'Sage/UI/nls/TransferBoxWidget':{"searchFilterText":"Содержит:","loadingText":"Загрузка настроек параметра...","noResultsText":"Нет результатов","btnAddTooltip":"Добавить выбранное","btnRemoveTooltip":"Удалить выбранные элементы","btnRemoveAllTooltip":"Удалить все","availableValuesText":"Доступные значения:","selectedValuesText":"Выбранные значения:","btnAddAllTooltip":"Добавить все","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportsUtility':{"txtCurrentUser":"Текущий пользователь","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportConditionsDialog':{"txtDialogTitle":"Выбор записей","cmdBack_Caption":"< Назад","cmdNext_Caption":"Дальше >","cmdCancel_Caption":"Отмена","grdCrystalConditions_ConditionType_Caption":"Тип","grdCrystalConditions_TableName_Caption":"Таблица","grdCrystalConditions_FieldName_Caption":"Поле","grdCrystalConditions_Operator_Caption":"Оператор","grdCrystalConditions_Value_Caption":"Значение условия","txtShowRecordsThatMatch":"Показать совпадения: ","txtMatch":"Совпадение:","txtAny":"Любое","txtAll":"Все","txtAllRecords":"[Все записи]","txtSpecificConditions":"[Особые условия]","txtCurrentUser":"[Текущий пользователь]","txtOfTheFollowingConditions":"по следующим условиям:","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportConditionEditor':{"dlgCrystalReportConditionDetails_Title":"Добавить/редактировать условие","cmdOK_Caption":"OК","cmdCancel_Caption":"Отмена","cmbConditionType_Caption":"Поиск по","txtInvalidParameterTitle":"Некорректный параметр: \"\".","txtInvalidParameterMessage":"Некорректный параметр: \"${0}\".","lkpUser_Caption":"Пользователь","lkpGroup_Caption":"Группа","txtSelectUser":"Выбрать пользователя","chkCurrentUser_Caption":"Текущий пользователь","txtName":"Имя","txtOK":"OК","txtSelectGroup":"Выбрать группу","cmbDateRange_Caption":"Диапазон дат","cmbDateRange_SpecificDates_Caption":"Точные даты","cmbDateRange_ThisWeek_Caption":"Эта неделя","cmbDateRange_ThisMonth_Caption":"Этот месяц","cmbDateRange_ThisQuarter_Caption":"Этот квартал","cmbDateRange_ThisYear_Caption":"Этот год","cmbDateRange_LastWeek_Caption":"Прошлая неделя","cmbDateRange_LastMonth_Caption":"Прошлый месяц","cmbDateRange_LastQuarter_Caption":"Прошлый квартал","cmbDateRange_LastYear_Caption":"Прошлый год","cmbDateRange_MonthToDate_Caption":"С начала месяца","cmbDateRange_QuarterToDate_Caption":"С начала квартала","cmbDateRange_YearToDate_Caption":"С начала года","dtFromDate_Caption":"От","dtToDate_Caption":"Для","cmbTable_Caption":"Таблица","cmbField_Caption":"Поле","cmbOperator_Caption":"Оператор","txtValue_Caption":"Значение","txtNumericValueFrom_Caption":"От","txtNumericValueTo_Caption":"Для","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportsFormatter':{"txtEdit":"Редактировать","txtDelete":"Удалить","txtRangeValue":"от ${0} до ${1}","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Common/nls/ExportOptionsDialog':{"txtDialogTitle":"Параметры экспорта","txtDialogTitleScheduling":"Параметры экспорта и расписания","cmdBack_Caption":"< Назад","cmdNext_Caption":"Дальше >","cmdCancel_Caption":"Отмена","txtName":"Имя","txtSelectUser":"Выбрать пользователя","txtOK":"OК","txtOutputFormat_Caption":"Формат","txtRunAs_Caption":"Выполнить от имени","txtScheduleDescription_Caption":"Описание","_localized":{}}
+,
+'Sage/UI/nls/JobSchedulingWidget':{"lblCreateSchedule":"Создать расписание задания для запуска","lblEveryText":"Каждый","lblOnText":"в","lblOnTheText":"в","lblAtText":"в","lblMinutesPastHour":"мин. после часа","lblFromTimeText":"Запуск с","lblToTimeText":"для","lblMinutesFrequency":"минуты","lblHourlyFrequency":"часы","lblDailyFrequency":"день","lblWeekDayFrequency":"будний день","lblWeeklyFrequency":"неделя","lblMonthlyFrequency":"месяц","lblYearlyFrequency":"год","lblSunday":"Воскресенье","lblMonday":"Понедельник","lblTuesday":"Вторник","lblWednesday":"Среда","lblThursday":"Четверг","lblFriday":"Пятница","lblSaturday":"Суббота","lblFirstDay":"первый","lblSecondDay":"второй","lblThirdDay":"третий","lblFourthDay":"четвертый","lblCronExpressionText":"Выражение cron","txtInvalidScheduleTitle":"Недопустимое расписание","txtInvalidDatesMessage":"Время окончания не должно быть раньше времени начала. Исправьте эту информацию перед продолжением.","txtInvalidScheduleTime":"Указанное время начала и окончания не позволяет выполнить это расписание. Исправьте эту информацию перед продолжением.","txtInvalidStartDate":"Требуется дата начала. Укажите дату начала перед продолжением.","txtInvalidEndDate":"Требуется дата окончания. Укажите дату окончания перед продолжением.","_localized":{}}
+,
+'Sage/UI/nls/ListPanel':{"listText":"Список","summaryText":"Сводка","detailText":"Подробности","hideDetailText":"Скрыть детали","unsavedDataText":"*несохраненные данные","helpText":"Справка","refreshText":"Обновить","overflowText":"При выполнении поиска получено слишком много результатов. Ограничьте область поиска с помощью фильтров.","totalRecordsText":"Итого записей: ","_localized":{}}
+,
+'Sage/UI/nls/TitleContentPane':{"reduceSelectedGroups":"Максимально разрешенное количество для избранных групп: ${0}. Уменьшите выбранное количество.","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/BaseListPanelConfig':{"titleFmtString":"${0}","_localized":{}}
+,
+'Sage/UI/nls/SummaryContainer':{"loadingText":"Loading...","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityListPanelConfig':{"colNameComplete":"Завершить","colNameAttachment":"Вложение","colNameRecurring":"Повторение","colNameAlarm":"Оповещение","colNameType":"Тип действия","colNameStartDate":"Дата начала","colNameDuration":"Длительность","colNameContact":"Имя","colNameLead":"Заинтересованное лицо","colNameAccount":"Клиент/компания","colNameCompany":"Компания","colNameRegarding":"Тема","colNamePriority":"Приоритет","colNameUserId":"Организатор","colNameTimeless":"Без указания времени","colNameTypeName":"Тип","colNameContactName":"Имя","SnoozeAlarm":"Отложить оповещение","DismissAlarm":"Отклонить оповещение","colNameUnConfirmStatus":"Не подтверждено","colNameAssociationCount":"Количество участников","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/UserActivityDetailSummary':{"txtPhone_Caption":"Телефон:","lnkOpportunityName_Caption":"Возможность:","txtStartTime_Caption":"Время начала:","lnkContactName_Caption":"Контакт:","lnkLeadName_Caption":"Заинтересованное лицо:","lnkTicketNumber_Caption":"Заявка:","txtLocation_Caption":"Местоположение:","txtLeader_Caption":"Организатор:","txtDuration_Caption":"Длительность:","lnkAccountName_Caption":"Клиент:","lnkCompanyName_Caption":"Компания:","txtNotes_Caption":"Заметки:","btnComplete_Caption":"Завершить","txtAttendeeCount_Caption":"Количество участников:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/UserActivityListSummary':{"txtPhone_Caption":"Телефон:","lnkOpportunity_Caption":"Возможность:","txtStartTime_Caption":"Время начала:","lnkContactName_Caption":"Контакт:","lnkLeadName_Caption":"Заинтересованное лицо:","lnkTicket_Caption":"Заявка:","txtLocation_Caption":"Местоположение:","txtLeader_Caption":"Организатор:","txtDuration_Caption":"Длительность:","lnkAccountName_Caption":"Клиент:","lnkCompanyName_Caption":"Компания:","txtNotes_Caption":"Заметки:","btnComplete_Caption":"Завершить","lnkAttendeeCount_Caption":"Количество участников:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/SnoozeOptions':{"fiveMinText":"5 минут","tenMinText":"10 минут","fifteenMinText":"15 минут","thirtyMinText":"30 минут","oneHourText":"1 час","twoHourText":"2 часа","fourHourText":"4 часа","eightHourText":"8 часов","oneDayText":"1 день","twoDayText":"2 дня","threeDayText":"3 дня","oneWeekText":"1 неделя","twoWeekText":"2 недели","snoozeText":"Отложить","snoozeByText":"Отложить на:","snoozeAllText":"Отложить все","snoozeTitle":"Повтор оповещения","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/AllOpenListSummary':{"txtPhone_Caption":"Телефон:","lnkOpportunity_Caption":"Возможность:","txtStartTime_Caption":"Время начала:","lnkContactName_Caption":"Контакт:","lnkLeadName_Caption":"Заинтересованное лицо:","lnkTicket_Caption":"Заявка:","txtLocation_Caption":"Местоположение:","txtLeader_Caption":"Организатор:","txtDuration_Caption":"Длительность:","lnkAccountName_Caption":"Клиент:","lnkCompanyName_Caption":"Компания:","txtNotes_Caption":"Заметки:","btnComplete_Caption":"Завершить","lnkAttendeeCount_Caption":"Количество участников:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/AllOpenDetailSummary':{"txtPhone_Caption":"Телефон:","lnkOpportunityName_Caption":"Возможность:","txtStartTime_Caption":"Время начала:","lnkContactName_Caption":"Контакт:","lnkLeadName_Caption":"Заинтересованное лицо:","lnkTicketNumber_Caption":"Заявка:","txtLocation_Caption":"Местоположение:","txtLeader_Caption":"Организатор:","txtDuration_Caption":"Длительность:","lnkAccountName_Caption":"Клиент:","lnkCompanyName_Caption":"Компания:","txtNotes_Caption":"Заметки:","btnComplete_Caption":"Завершить","txtAttendeeCount_Caption":"Количество участников:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ConfirmListPanelConfig':{"colNameType":"Тип действия","colNameNotification":"Уведомление","colNameStartDate":"Дата начала","colNameDuration":"Длительность","colNameRegarding":"Тема","colNameFromUser":"От","colNameToUser":"Целевой пользователь","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/ConfirmationListSummary':{"txtPhone_Caption":"Телефон:","lnkOpportunity_Caption":"Возможность:","txtStartTime_Caption":"Время начала:","lnkContactName_Caption":"Контакт:","lnkLeadName_Caption":"Заинтересованное лицо:","lnkTicket_Caption":"Заявка:","txtLocation_Caption":"Местоположение:","txtLeader_Caption":"Организатор:","txtDuration_Caption":"Длительность:","lnkAccountName_Caption":"Клиент:","lnkCompanyName_Caption":"Компания:","txtNotes_Caption":"Заметки:","btnComplete_Caption":"Завершить","txtFromUser_Caption":"От:","btnDelete_Caption":"Удалить","btnDecline_Caption":"Отклонить","btnAccept_Caption":"Принять","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/ConfirmationDetailSummary':{"txtPhone_Caption":"Телефон:","lnkOpportunity_Caption":"Возможность:","txtStartTime_Caption":"Время начала:","lnkContactName_Caption":"Контакт:","lnkLeadName_Caption":"Заинтересованное лицо:","lnkTicket_Caption":"Заявка:","txtLocation_Caption":"Местоположение:","txtLeader_Caption":"Организатор:","txtDuration_Caption":"Длительность:","lnkAccountName_Caption":"Клиент:","lnkCompanyName_Caption":"Компания:","txtNotes_Caption":"Заметки:","btnComplete_Caption":"Завершить","txtFromUser_Caption":"От:","btnDelete_Caption":"Удалить","btnDecline_Caption":"Отклонить","btnAccept_Caption":"Принять","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/EventListPanelConfig':{"colNameType":"Тип","colNameStartDate":"Дата начала","colNameEndDate":"Дата окончания","colNameDescription":"Описание","colNameUser":"Пользователь","colNameLocation":"Местоположение","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/EventSummary':{"txtStartDate_Caption":"Дата начала:","txtEndDate_Caption":"Дата окончания:","txtLocation_Caption":"Местоположение:","txtUser_Caption":"Пользователь:","txtDescription_Caption":"Описание:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/LitRequestListPanelConfig':{"colNameView":"Вид","colNameContact":"Контакт","colNameDescription":"Описание","colNameFillDate":"Заполнено","colNameFillStatus":"Статус","colNameOptions":"Параметры","colNamePriority":"Приоритет","colNameReqestDate":"Дата запроса","colNameSendDate":"Дата отправки","colNameSendVia":"Вид отправки","colNameTotalCost":"Итого расходов","colNameFillUser":"Заполнить пользователя","colNameReqestUser":"Пользователь запроса","colNameAccount":"Клиент","colNamePostalCode":"Почтовый индекс","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/LitRequestSummary':{"txtSendDate_Caption":"Отправить:","txtScheduled_Caption":"Запланировано:","txtStatus_Caption":"Статус:","txtRequestedBy_Caption":"Автор запроса:","lnkContact_Caption":"Контакт:","txtPriority_Caption":"Приоритет:","txtVia_Caption":"Вид отправки:","txtCost_Caption":"Итого расходов:","txtWorkPhone_Caption":"Рабочий телефон:","txtPostalCode_Caption":"Почтовый индекс:","txtHomePhone_Caption":"Домашний телефон","lnkAccount_Caption":"Клиент:","txtRequestDate_Caption":"Запрошено:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityGroupContextService':{"activityTabDisplayName":"Мои действия","litTabDisplayName":"Литература","eventTabDisplayName":"События","confirmTabDisplayName":"Подтверждения","pastDueTabDisplayName":"Просрочено","alarmTabDisplayName":"Оповещения","allOpenTabDisplayName":"Все открытые","_localized":{}}
+,
+'Sage/MainView/nls/ActivityManager':{"titleFmtString":"${0}","tabDisplayNameActivity":"Действия","tabDisplayNameLit":"Литература","tabDisplayNameEvent":"События","tabDisplayNameConfirm":"Подтверждения","activityColNameComplete":"Завершить","activityColNameAttachment":"Вложение","activityColNameRecurring":"Повторение","activityColNameAlarm":"Оповещение","activityColNameType":"ActivityType","activityColNameStartDate":"StartDate","activityColNameDuration":"Длительность","activityColNameContact":"Контакт","activityColNameLead":"Заинтересованное лицо","activityColNameAccount":"Клиент","activityColNameRegarding":"Тема","activityColNamePriority":"Приоритет","activityColNameUserId":"организатор","activityTypePhone":"Телефон","activityTypeCall":"Вызов","activityTypeMeeting":"Встреча","activityTypePersonal":"Личное","_localized":{}}
+,
+'Sage/Extensions/Activity/ListPanelOverrides/nls/ActivityListPanelConfig':{"colNameAssociationCount":"Количество участников","_localized":{}}
+,
+'Sage/Extensions/Activity/ListPanelOverrides/nls/AllOpenListPanelConfig':{"colNameAssociationCount":"Количество участников","_localized":{}}
+,
+'Sage/MainView/nls/SecurityManager':{"accessText":"Доступ","columnText":"Столбец","entityText":"Сущность","noAccessText":"Нет доступа","profilesText":"Профили","propertyText":"Свойство","securityManagerText":"Менеджер безопасности","readOnlyText":"Только для чтения","readWriteText":"Чтение/запись","resetText":"Сброс","saveText":"Сохранить","tableText":"Таблица","descriptionText":"Описание","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityCalendar':{"completedText":"(завершено)","_localized":{}}
+,
+'Sage/MainView/Contact/nls/ContactSearchForDuplicates':{"svAccount_Caption":"Клиент:","svCompany_Caption":"Компания:","svEmail_Caption":"Электронная почта:","svName_Caption":"Имя:","svTitle_Caption":"Название:","svType_Caption":"Тип:","svSubType_Caption":"Подтип","svAccMgr_Caption":"Менеджер по клиентам:","svHomePhone_Caption":"Домашний телефон:","svWorkPhone_Caption":"Рабочий телефон:","svMobilePhone_Caption":"Мобильный телефон:","svStatus_Caption":"Статус:","svWebAddress_Caption":"Интернет:","svEntityAccount_Caption":"Клиент","svEntityLead_Caption":"Заинтересованное лицо","svEntityContact_Contact":"Контакт","svTollFree_Caption":"Бесплатный справочный телефон:","svIndustry_Caption":"Отрасль:","svDivision_Caption":"Подразделение:","svMainPhone_Caption":"Основной телефон","LeadSummaryView_Title":"Сводная информация — заинтересованное лицо","ContactSummaryView_Title":"Сводная информация — контакт","AccountSummaryView_Title":"Сводная информация — клиент","closeText":"Закрыть","errorLoadingSummaryView":"Ошибка при загрузке сводного представления: ${0}","_localized":{}}
+,
+'Sage/MainView/Contact/nls/ContactUserAssociationEditor':{"btnCancel_Caption":"Отмена","btnOK_Caption":"OК","dialogTitleText":"Связать контакт с пользователем","associateContactText":"Связать выбранный контакт со следующим пользователем","user_Caption":"Пользователь","lookupUserText":"Поиск пользователя","lookupNameColText":"Имя","lookupTitleColText":"Название","lookupDepartmentColText":"Отдел","lookupRegionColText":"Регион","lookupTypeColText":"Тип","disAssociateTitle":"Удалить связь с пользователем","associationExistsMessage":"Выбранный пользователь уже связан с контактом. Выберите другого пользователя.","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/MatchingOptionsConfig':{"matchingCaption":"Редактировать критерий сравнения","matchingHeader":"Соответствующий параметр для ","matchingDescription":"Добавить или удалить операторов для определения критерия сравнения для всех пользователей, кто ссылается на записи из системы учета Saleslogix. Этот критерий определяет результаты, возвращаемые поиском сравнения записей между системами учета.","propertyText":"Свойство","operatorText":"Оператор","loadingText":"Загрузка...","filter_AddCondition":"Добавить условие","filter_RemoveCondition":"Удалить условие","error_InvalidEndpoint":"Укажите корректную конечную точку перед продолжением.","okText":"OК","cancelText":"Отмена","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/AdvancedSearchOptions':{"dialogCaption":"Ссылка на систему учета","searchOptionsHeader":"Поиск совпадений в ","searchOptionsText":"Следующий критерий использовался в предыдущем поиске. Измените критерий для нового поиска. Нажмите кнопку \"ОК\" для начала поиска..","propertyText":"Свойство","operatorText":"Оператор","searchText":"Значение поиска","loadingText":"загрузка...","loadingDisplay":"Поиск результатов...","hideImgAltText":"Удалить условие","addImgAltText":"Добавить условие","okText":"OК","cancelText":"Отмена","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/BaseListPanelConfig':{"titleFmtString":"${0}","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/ExecutionsListPanelConfig':{"loadingText":"Загрузка...","colNameJobName":"Тип","colNameUser":"Пользователь","colNamePhase":"Этап","colNamePhaseDetail":"Подробности об этапе","colNameProgress":"Ход выполнения","colNameElapsed":"Затраченное время","colNameStatus":"Статус","colNameResult":"Результат","_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/ExecutionsListSummary':{"_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/ExecutionDetailSummary':{"txtJobName_Caption":"Тип:","txtUser_Caption":"Пользователь:","txtTriggerId_Caption":"Результат:","txtScheduledStartTime_Caption":"Время начала по расписанию:","txtStartTime_Caption":"Фактическое время начала:","txtPhase_Caption":"Этап:","txtPhaseDetail_Caption":"Подробности об этапе:","txtProgress_Caption":"Ход выполнения:","txtElapsedTime_Caption":"Затраченное время:","txtRemainingTime_Caption":"Оставшееся время:","txtStatus_Caption":"Статус:","txtResult_Caption":"Результат:","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/JobDefinitionsListPanelConfig':{"colNameJobName":"Имя задания","colNameDescription":"Описание","colNameType":"Тип","_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/JobDefinitionsListSummary':{"_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/JobDefinitionDetailSummary':{"txtJobName_Caption":"Имя задания:","txtDescription_Caption":"Описание:","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/SchedulesListPanelConfig':{"colNameTriggerName":"Расписание","colNameJobName":"Имя задания","colNameUser":"Запланировал","colNameStartTimeUtc":"Время начала","colNameEndTimeUtc":"Время окончания","colNamePriority":"Приоритет","colNameStatus":"Статус","colNameTimesTriggered":"Число выполнений","_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/SchedulesListSummary':{"_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/ScheduleDetailSummary':{"txtScheduleName_Caption":"Расписание:","txtJobName_Caption":"Имя задания:","txtUser_Caption":"Запланировал:","txtRunAs_Caption":"Выполнить от имени:","txtStartTime_Caption":"Время начала:","txtEndTime_Caption":"Время окончания:","txtNextRunTime_Caption":"Время следующего выполнения:","txtRepeatCount_Caption":"Число повторений:","txtRepeatInterval_Caption":"Интервал повторения:","txtPriority_Caption":"Приоритет:","txtStatus_Caption":"Статус:","txtExecutionCount_Caption":"Число выполнений:","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/JobManagerGroupContextService':{"executionsTabDisplayName":"Выполнения","jobDefinitionsTabDisplayName":"Определения","schedulesTabDisplayName":"Расписания","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/RunJobDialog':{"dlgRunJob_Title":"Запуск/назначение задания","txtJobName_Caption":"Имя задания","txtTriggerDescription_Caption":"Описание","cmbScheduleType_Caption":"Расписание","cmdOK_Caption":"OК","cmdCancel_Caption":"Отмена","txtInvalidNumber":"Недопустимое число.","contentPaneParameters_Caption":"Параметры","txtRunNow":"Запустить сейчас","txtScheduledExecution":"Выполнение по расписанию","colName_Caption":"Имя","colValue_Caption":"Значение","colDescription_Caption":"Описание","txtInvalidParameterTitle":"Некорректный параметр: \"\".","txtInvalidParameterMessage":"Некорректный параметр: \"${0}\".","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/JobManagerActions':{"txtInterruptExecutionMessage":"Заданию был отправлен сигнал отменить выполнение.","txtInterruptExecutionTitle":"Отменить задание","txtInterruptExecutionConfirmationMessage":"Отменить выполнение задания \"${0}\"?","txtYes":"Да","txtNo":"Нет","completedJobMessage":"Выбранное задание уже выполнено.","jobStatusComplete":"Завершить","error_NoRecordSelected":"Выберите запись для продолжения.","confirm_ScheduleDeletion":"Действительно удалить выбранное расписание?","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportsListPanelConfig':{"colNameReportName":"Имя","colNameType":"Тип","colNameTable":"Таблица","colNameCreateUser":"Автор","colNameCreateDate":"Дата создания","colNameLastExecutionDate":"Последнее выполнение","colNameLastExecutionUser":"Последнее выполнение от имени","colNameModifyUser":"Автор изменения","colNameModifyDate":"Дата изменения","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerFormatter':{"txtTrue":"Истина","txtFalse":"Ложь","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/ReportsListSummary':{"txtTrue":"Истина","txtFalse":"Ложь","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/ReportDetailSummary':{"txtReportName_Caption":"Имя:","txtReportType_Caption":"Тип:","txtTable_Caption":"Таблица:","txtCreateUser_Caption":"Автор:","txtCreateDate_Caption":"Дата создания:","txtModifyUser_Caption":"Автор изменения:","txtModifyDate_Caption":"Дата изменения:","txtUserField_Caption":"Поле пользователя:","txtDateField_Caption":"Поле даты:","txtUseGroupFilter_Caption":"Использовать фильтр группы:","txtUseUserFilter_Caption":"Использовать фильтр пользователя:","txtUseDateFilter_Caption":"Использовать фильтр даты:","txtFileName_Caption":"Имя файла:","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/SchedulesListPanelConfig':{"colJobName":"Имя задания","colNameDescription":"Описание","colNameRunAsUser":"Запланировал","colNameLastExecutionDate":"Последнее выполнение","colNameExecutionCount":"Число выполнений","colNameStartTimeUtc":"Время начала","colNameEndTimeUtc":"Время окончания","colNamePriority":"Приоритет","colNameStatus":"Статус","colNameTemplate":"Шаблон","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/SchedulesListSummary':{"txtTrue":"Истина","txtFalse":"Ложь","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/ScheduleDetailSummary':{"txtScheduleName_Caption":"Имя задания:","txtDescription_Caption":"Описание:","txtRunAsUser_Caption":"Выполнить от имени:","txtScheduledBy_Caption":"Запланировал:","txtOutputFormat_Caption":"Формат вывода:","txtFrequency_Caption":"Частота:","txtUser_Caption":"Автор:","txtLastExecutionDate_Caption":"Последнее выполнение:","txtExecutionCount_Caption":"Число выполнений:","txtReportName_Caption":"Отчет:","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/HistoryListPanelConfig':{"colNameDate":"Дата","colNameScheduleName":"Описание","colNameExecutionType":"Тип выполнения","colNameRunAs":"Выполнить от имени","colNameScheduledBy":"Запланировал","colNameReportName":"Отчет","colNameSize":"Размер файла","colNameOutputFormat":"Формат вывода","colNameReportType":"Тип","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/HistoryListSummary':{"txtTrue":"Истина","txtFalse":"Ложь","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/HistoryDetailSummary':{"txtCreateDate_Caption":"Дата создания:","txtReportType_Caption":"Тип отчета:","txtOutputFormat_Caption":"Формат вывода:","txtRunAsUser_Caption":"Выполнить от имени:","txtExecutionType_Caption":"Тип выполнения:","txtScheduleName_Caption":"Описание:","txtScheduledBy_Caption":"Запланировал:","txtFileSize_Caption":"Размер файла:","txtElapsedTime_Caption":"Затраченное время:","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerGroupContextService':{"reportsTabDisplayName":"Отчеты","schedulesTabDisplayName":"Расписания","historyTabDisplayName":"История","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerActions':{"txtSelectRecord":"Перед продолжением выберите запись из списка.","txtInvalidSelectionCount":"Для продолжения необходимо выбрать хотя бы одну запись.","confirm_Deletion":"Действительно удалить \"${0}\"?","confirm_Report":"отчет","confirm_Schedule":"расписание","confirm_ReportHistory":"запись журнала отчетов","txtYes":"Да","txtNo":"Нет","deleteJobError":"В процессе удаления возникла ошибка: ${0}","txtDeleteHistory":"Удаление записей журнала","txtDeleteTitle":"Удалить историю","txtErrorDeleteReport":"Возникла ошибка при удалении отчета: ${0}","_localized":{}}
+,
+'Sage/MainView/EntityMgr/nls/EntityListPanelConfig':{"colNameEntityName":"Имя","colNameType":"Тип","colNameTable":"Таблица","colNameCreateUser":"Автор","colNameCreateDate":"Дата создания","colNameLastExecutionDate":"Последнее выполнение","colNameLastExecutionUser":"Последнее выполнение от имени","colNameModifyUser":"Автор изменения","colNameModifyDate":"Дата изменения","colNameEntityDisplayName":"Отображаемое имя","colNameEntityTableName":"Таблица","colNamePropertyCount":"Счетчик свойств","colNameFilterCount":"Счетчик фильтров","colNameMetricCount":"Счетчик метров","colNamePackage":"Пакет","owner":"Владелец","assignTo":"Назначить","newACI":"Новая область/категория/проблема","insertACI":"Вставить область/категорию/проблему","autoAssign":"Автоназначение","areaCatIssue":"Область/категория/проблема","lookupACI":"Поиск области/категории/проблемы","displayName":"Отображаемое имя","displayPluralName":"Отображение имени во множественном числе","Title":"Название","IsExtension":"IsExtension","Audited":"Аудит выполнен","OK":"OК","Cancel":"Отмена","_localized":{}}
+,
+'Sage/MainView/EntityMgr/templates/nls/EntityListSummary':{"txtTrue":"Истина","txtFalse":"Ложь","_localized":{}}
+,
+'Sage/MainView/EntityMgr/templates/nls/EntityDetailSummary':{"txtReportName_Caption":"Имя:","txtReportType_Caption":"Тип:","txtTable_Caption":"Таблица:","txtCreateUser_Caption":"Автор:","txtCreateDate_Caption":"Дата создания:","txtModifyUser_Caption":"Автор изменения:","txtModifyDate_Caption":"Дата изменения:","txtUserField_Caption":"Поле пользователя:","txtDateField_Caption":"Поле даты:","txtUseGroupFilter_Caption":"Использовать фильтр группы:","txtUseUserFilter_Caption":"Использовать фильтр пользователя:","txtUseDateFilter_Caption":"Использовать фильтр даты:","txtFileName_Caption":"Имя файла:","_localized":{}}
+,
+'Sage/MainView/EntityMgr/nls/EntityManagerGroupContextService':{"entityTabDisplayName":"Сущности","schedulesTabDisplayName":"Расписания","historyTabDisplayName":"История","filterName":"Имя","filterDisplayName":"Отображаемое имя","filterEntityName":"Имя сущности","filterModifiedDate":"Дата изменения","filterHasMeasure":"Имеет измерение","filterHasMetric":"Имеет метрику","filterHasFilter":"Имеет фильтр","_localized":{}}
+,
+'Sage/MainView/Options/nls/OptionsDialog':{"txtOptions":"Параметры","txtColumns":"Столбцы","txtZero":"(0 для отображения всех столбцов группы)","txtHideOnSelection":"Скрыть расширенный список групп при выборе записи","txtDisplayExtendedGroupListOnLookup":"Отобразить расширенный список групп при запросе","cmdOk_Caption":"OК","cmdCancel_Caption":"Отмена","txtListView":"Представление в виде списка","txtDetailView":"Подробное представление","txtStayInDetailViewOnLookup":"Подробное представление при запросе","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/ControlDesigner':{"displayNameText":"","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/_PropertyEditor':{"titleText":"Свойства","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/LayoutPropertyEditor':{"titleText":"Макет","positionText":"Позиция","sizeText":"Размер","rowText":"Строка:","rowTooltipText":"Номер строки для элементов управления.","columnText":"Столбец","columnTooltipText":"Номер столбца элемента управления.","rowSpanText":"Диапазон строк:","rowSpanTooltipText":"Количество ячеек, которые элемент управления занимает вертикально.","columnSpanText":"Расстояние между столбцами:","columnSpanTooltipText":"Количество ячеек, которые элемент управления занимает по горизонтали.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/GenericBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/GenericAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","controlInfoText":"Информация об элементе управления","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/GenericControlDesigner':{"displayNameText":"Неизвестно","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/NonVisibleAdvancedPropertyEditor':{"titleText":"Дополнительно","controlInfoText":"Информация об элементе управления","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/HiddenControlDesigner':{"displayNameText":"Скрытый текст","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/TextBoxBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","linesText":"Строки:","linesTooltipText":"Количество отображаемых строк текста.","isReadOnlyText":"Только для чтения:","isReadOnlyTooltipText":"Не допускает редактирования.","toolTipText":"Подсказка:","toolTipTooltipText":"Краткий текст справки об элементе управления.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/TextBoxAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlLabelPlacementText":"Расположение метки:","controlLabelPlacementTooltipText":"Позиция метки по отношению к элементу управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","defaultDataBindingText":"Привязка данных:","defaultDataBindingTooltipText":"Поле (поля) в базе данных, используемое этим элементом управления.","enabledText":"Активировано:","enabledTooltipText":"Позволяет пользователю взаимодействовать с этим элементом управления.","maxLengthText":"Макс. длина:","maxLengthTooltipText":"Максимальное количество символов, которое может ввести пользователь","requiredText":"Требуется:","requiredTooltipText":"Требуется значение при сохранении данных.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","labelPlacementText":{"left":"По левому краю","right":"По правому краю","top":"Верхнее","none":"Нет"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/TextBoxControlDesigner':{"displayNameText":"TextBox","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/UrlControlDesigner':{"displayNameText":"URL-адрес","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/PhoneControlDesigner':{"displayNameText":"Телефон","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/EmailControlDesigner':{"displayNameText":"Электронная почта","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CheckBoxBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","isReadOnlyText":"Только для чтения:","isReadOnlyTooltipText":"Не допускает редактирования.","toolTipText":"Подсказка:","toolTipTooltipText":"Краткий текст справки об элементе управления.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CheckBoxAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","checkedText":"Состояние флажка:","checkedTooltipText":"Установить по умолчанию состояние \\\"флажок установлен\\\".","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlLabelPlacementText":"Расположение метки:","controlLabelPlacementTooltipText":"Позиция метки по отношению к элементу управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","defaultDataBindingText":"Привязка данных:","defaultDataBindingTooltipText":"Поле (поля) в базе данных, используемое этим элементом управления.","enabledText":"Активировано:","enabledTooltipText":"Позволяет пользователю взаимодействовать с этим элементом управления.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","labelPlacementText":{"left":"По левому краю","right":"По правому краю","top":"Верхнее","none":"Нет"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/CheckBoxControlDesigner':{"displayNameText":"Флажок","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/PickListBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","isReadOnlyText":"Только для чтения:","isReadOnlyTooltipText":"Не допускает редактирования.","toolTipText":"Подсказка:","toolTipTooltipText":"Краткий текст справки об элементе управления.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/PickListAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","allowMultiplesText":"Разрешить множественный выбор:","allowMultiplesTooltipText":"Позволяет пользователю выбрать более одного элемента.","canEditTextText":"Можно редактировать текст:","canEditTextTooltipText":"Позволяет пользователю вводить значение.","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlLabelPlacementText":"Расположение метки:","controlLabelPlacementTooltipText":"Позиция метки по отношению к элементу управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","defaultDataBindingText":"Привязка данных:","defaultDataBindingTooltipText":"Поле (поля) в базе данных, используемое этим элементом управления.","displayModeText":"Режим отображения:","displayModeTooltipText":"Режим отображения элемента управления: текстовое поле, гиперссылка или обычный текст.","enabledText":"Активировано:","enabledTooltipText":"Позволяет пользователю взаимодействовать с этим элементом управления.","maxLengthText":"Макс. длина:","maxLengthTooltipText":"Максимальное количество символов, которое может ввести пользователь","mustExistInListText":"Элемент должен существовать:","mustExistInListTooltipText":"Введенное значение должно быть в списке.","pickListNameText":"Имя списка выбора:","pickListNameTooltipText":"Имя списка значений, которые пользователь может выбрать при вводе данных.","requiredText":"Требуется:","requiredTooltipText":"Требуется значение при сохранении данных.","storageModeText":"Режим хранения:","storageModeTooltipText":"Как значение сохраняется: текст, ИД или код.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","labelPlacementText":{"left":"По левому краю","right":"По правому краю","top":"Верхнее","none":"Нет"},"displayModeTypeText":{"AsControl":"Как элемент управления","AsText":"Как текст","AsHyperlink":"Как гиперссылка"},"storageModeTypeText":{"Text":"Текст","Id":"ИД","Code":"Код"},"pickListRequestErrorText":"Невозможно получить списки выбора от сервера.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/PickListControlDesigner':{"displayNameText":"Список выбора","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/ComboBoxBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","isReadOnlyText":"Только для чтения:","isReadOnlyTooltipText":"Не допускает редактирования.","toolTipText":"Подсказка:","toolTipTooltipText":"Краткий текст справки об элементе управления.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/ComboBoxAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","itemGroupText":"Элементы","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlLabelPlacementText":"Расположение метки:","controlLabelPlacementTooltipText":"Позиция метки по отношению к элементу управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","dataSourceText":"Источник данных:","dataSourceTooltipText":"Источник данных для этого элемента управления, такой как другой элемент управления или сущность.","defaultDataBindingText":"Привязка данных:","defaultDataBindingTooltipText":"Поле (поля) в базе данных, используемое этим элементом управления.","enabledText":"Активировано:","enabledTooltipText":"Позволяет пользователю взаимодействовать с этим элементом управления.","itemsText":"Элементы:","itemsTooltipText":"Пользователь может выбирать значения.","textFieldText":"Текстовое поле:","textFieldTooltipText":"Имя поля источника данных, используемые для заполнения видимой части элементов списка.","valueFieldText":"Поле с значением:","valueFieldTooltipText":"Имя поля источника данных, используемого для заполнения значений списка.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","labelPlacementText":{"left":"По левому краю","right":"По правому краю","top":"Верхнее","none":"Нет"},"hasItemsText":"Установлено","noItemsText":"Не установлено","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/ComboBoxControlDesigner':{"displayNameText":"ComboBox","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/UserBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","isReadOnlyText":"Только для чтения:","isReadOnlyTooltipText":"Не допускает редактирования.","toolTipText":"Подсказка:","toolTipTooltipText":"Краткий текст справки об элементе управления.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/UserAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlLabelPlacementText":"Расположение метки:","controlLabelPlacementTooltipText":"Позиция метки по отношению к элементу управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","defaultDataBindingText":"Привязка данных:","defaultDataBindingTooltipText":"Поле (поля) в базе данных, используемое этим элементом управления.","enabledText":"Активировано:","enabledTooltipText":"Позволяет пользователю взаимодействовать с этим элементом управления.","lookupBindingModeText":"Режим привязки поиска:","lookupBindingModeTooltipText":"Указывает, хотите ли вы связать с объектом сущности или строкой.","requiredText":"Требуется:","requiredTooltipText":"Требуется значение при сохранении данных.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","labelPlacementText":{"left":"По левому краю","right":"По правому краю","top":"Верхнее","none":"Нет"},"bindingModeText":{"Object":"Объект","String":"Строка"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/UserControlDesigner':{"displayNameText":"Пользователь","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/OwnerBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","isReadOnlyText":"Только для чтения:","isReadOnlyTooltipText":"Не допускает редактирования.","toolTipText":"Подсказка:","toolTipTooltipText":"Краткий текст справки об элементе управления.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/OwnerAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlLabelPlacementText":"Расположение метки:","controlLabelPlacementTooltipText":"Позиция метки по отношению к элементу управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","defaultDataBindingText":"Привязка данных:","defaultDataBindingTooltipText":"Поле (поля) в базе данных, используемое этим элементом управления.","enabledText":"Активировано:","enabledTooltipText":"Позволяет пользователю взаимодействовать с этим элементом управления.","requiredText":"Требуется:","requiredTooltipText":"Требуется значение при сохранении данных.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","labelPlacementText":{"left":"По левому краю","right":"По правому краю","top":"Верхнее","none":"Нет"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/OwnerControlDesigner':{"displayNameText":"Владелец","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DateTimePickerBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","displayDateText":"Отображать дату:","displayDateTooltipText":"Отображение даты.","displayTimeText":"Отображать время:","displayTimeTooltipText":"Отображение времени.","isReadOnlyText":"Только для чтения:","isReadOnlyTooltipText":"Не допускает редактирования.","toolTipText":"Подсказка:","toolTipTooltipText":"Краткий текст справки об элементе управления.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DateTimePickerAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","buttonToolTipText":"Подсказка кнопки:","buttonToolTipTooltipText":"Всплывающая подсказка, отображающаяся, когда курсор размещается на кнопке элемента управления.","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlLabelPlacementText":"Расположение метки:","controlLabelPlacementTooltipText":"Позиция метки по отношению к элементу управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","defaultDataBindingText":"Привязка данных:","defaultDataBindingTooltipText":"Поле (поля) в базе данных, используемое этим элементом управления.","displayModeText":"Режим отображения:","displayModeTooltipText":"Режим отображения элемента управления: текстовое поле, гиперссылка или обычный текст.","enabledText":"Активировано:","enabledTooltipText":"Позволяет пользователю взаимодействовать с этим элементом управления.","requiredText":"Требуется:","requiredTooltipText":"Требуется значение при сохранении данных.","timelessText":"Без указания времени:","timelessTooltipText":"Использовать дату без времени и без преобразования на летнее время.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","labelPlacementText":{"left":"По левому краю","right":"По правому краю","top":"Верхнее","none":"Нет"},"displayModeTypeText":{"AsControl":"Как элемент управления","AsText":"Как текст","AsHyperlink":"Как гиперссылка"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DateTimePickerControlDesigner':{"displayNameText":"Выбор DateTime","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DataGridBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","dataText":"Данные","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","pageSizeText":"Размер страницы:","pageSizeTooltipText":"Количество строк таблицы для отображения на одной странице.","resizableColumnsText":"Изменение размера столбцов:","resizableColumnsTooltipText":"Позволяет пользователю изменять размер столбцов.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DataGridAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","dataSourceText":"Источник данных:","dataSourceTooltipText":"Источник данных для этого элемента управления, такой как другой элемент управления или сущность.","emptyTableRowText":"Текст пустой таблицы:","emptyTableRowTooltipText":"Текст для отображения, если в таблице нет данных.","expandableRowsText":"Расширяемые строки:","expandableRowsTooltipText":"Позволяет пользователю расширить строки таблицы, чтобы показать больше текста.","renderVerticalText":"Вертикальная отрисовка:","renderVerticalTooltipText":"Показывать строки как столбцы.","showSortIconText":"Показать значок сортировки:","showSortIconTooltipText":"Показать значок сортировки на сортируемых столбцах.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DataGridControlDesigner':{"displayNameText":"Сетка данных","emptyTableRowStringText":"Нет записей, соответствующих критериям выбора.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/NumericBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","isReadOnlyText":"Только для чтения:","isReadOnlyTooltipText":"Не допускает редактирования.","toolTipText":"Подсказка:","toolTipTooltipText":"Краткий текст справки об элементе управления.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/NumericAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlLabelPlacementText":"Расположение метки:","controlLabelPlacementTooltipText":"Позиция метки по отношению к элементу управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","decimalDigitsText":"Количество десятичных цифр:","decimalDigitsTooltipText":"Количество цифр после запятой для отображения и ввода данных.","defaultDataBindingText":"Привязка данных:","defaultDataBindingTooltipText":"Поле (поля) в базе данных, используемое этим элементом управления.","enabledText":"Активировано:","enabledTooltipText":"Позволяет пользователю взаимодействовать с этим элементом управления.","formatTypeText":"Тип формата:","formatTypeTooltipText":"Тип формата для использования при преобразовании числа в строку.","maxLengthText":"Макс. длина:","maxLengthTooltipText":"Максимальное количество символов, которое может ввести пользователь","requiredText":"Требуется:","requiredTooltipText":"Требуется значение при сохранении данных.","strictText":"Строгая:","strictTooltipText":"Отображать числа с замыкающими нулями по мере необходимости.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","numberFormatText":{"Number":"Число","Percent":"Процент","Decimal":"Десятичное","Scientific":"Научный"},"labelPlacementText":{"left":"По левому краю","right":"По правому краю","top":"Верхнее","none":"Нет"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/NumericControlDesigner':{"displayNameText":"Числовой","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DesignPanel':{"cultureListText":{"iv":"[инвариантно]","de_DE":"de-DE","fr_FR":"fr-FR","it_IT":"it-IT","ru_RU":"ru-RU"},"helpText":"Справка","saveText":"Сохранить","cultureText":"Культура:","loadingText":"Загрузка...","savingText":"Сохранение...","saveErrorText":"Во время сохранения формы возникла ошибка.","readErrorText":"Не удалось загрузить запрошенную форму.","cultureReloadConfirmText":"Имеются несохраненные изменения. Действительно перезагрузить форму для другой культуры?","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CurrencyBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","behaviorText":"Поведение","captionText":"Надпись:","captionTooltipText":"Подпись для отображения в форме для этого элемента управления.","captionAlignmentText":"Выравнивание надписи:","captionAlignmentTooltipText":"Выравнивание текста метки.","isReadOnlyText":"Только для чтения:","isReadOnlyTooltipText":"Не допускает редактирования.","toolTipText":"Подсказка:","toolTipTooltipText":"Краткий текст справки об элементе управления.","alignmentText":{"left":"По левому краю","center":"По центру","right":"По правому краю"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CurrencyAdvancedPropertyEditor':{"titleText":"Дополнительно","appearanceText":"Внешний вид","behaviorText":"Поведение","controlInfoText":"Информация об элементе управления","dataText":"Данные","controlIdText":"ИД элемента управления:","controlIdTooltipText":"Идентификатор для этого элемента управления.","controlLabelPlacementText":"Расположение метки:","controlLabelPlacementTooltipText":"Позиция метки по отношению к элементу управления.","controlTypeText":"Тип элемента управления:","controlTypeTooltipText":"Тип управляющего элемента Saleslogix.","decimalDigitsText":"Количество десятичных цифр:","decimalDigitsTooltipText":"Количество цифр после запятой для отображения и ввода данных.","defaultDataBindingText":"Привязка данных:","defaultDataBindingTooltipText":"Поле (поля) в базе данных, используемое этим элементом управления.","displayCurrencyCodeText":"Отображать код валюты:","displayCurrencyCodeTooltipText":"Показывать 3-х буквенный код валюты при включении поддержки нескольких валют.","displayModeText":"Режим отображения:","displayModeTooltipText":"Режим отображения элемента управления: текстовое поле, гиперссылка или обычный текст.","enabledText":"Активировано:","enabledTooltipText":"Позволяет пользователю взаимодействовать с этим элементом управления.","exchangeRateTypeText":"Тип валюты:","exchangeRateTypeTooltipText":"Тип обменного курса для отображения в полях валюты.","maxLengthText":"Макс. длина:","maxLengthTooltipText":"Максимальное количество символов, которое может ввести пользователь","requiredText":"Требуется:","requiredTooltipText":"Требуется значение при сохранении данных.","visibleText":"Видимый:","visibleTooltipText":"Показать или скрыть этот элемент управления в форме.","displayTypeText":{"AsHyperlink":"Как гиперссылка","AsControl":"Как элемент управления","AsText":"Как текст"},"exchangeTypeText":{"BaseRate":"Базовая ставка","OpportunityRate":"Ставка возможности (преуменьшенная)","MyRate":"Моя оценка","SalesOrderRate":"Уровень заказов (Преуменьшенный)","EntityRate":"Ставка сущности"},"labelPlacementText":{"left":"По левому краю","right":"По правому краю","top":"Верхнее","none":"Нет"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/CurrencyControlDesigner':{"displayNameText":"Валюта","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/EditableGridControlDesigner':{"displayNameText":"Редактируемая сетка","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/RowBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","indexText":"Индекс:","indexTooltipText":"Номер строки или столбца, начиная с нуля.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/RowDesigner':{"displayNameText":"Строка","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/ColumnBasicPropertyEditor':{"titleText":"Базовый","appearanceText":"Внешний вид","indexText":"Индекс:","indexTooltipText":"Номер строки или столбца, начиная с нуля.","widthText":"Ширина:","widthTooltipText":"Ширина столбцы элементов управления.","sizeTypeText":"Размер типа:","sizeTypeTooltipText":"Метод задания размера: абсолютное значение, автоподбор или процент.","rowSizeTypeText":{"Absolute":"Абсолютный","Percent":"Процент","AutoSize":"Автоподбор размера"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/ColumnDesigner':{"displayNameText":"Столбец","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/FormBasicPropertyEditor':{"titleText":"Базовый","generalText":"Общее","activeControlText":"Активный элемент управления:","activeControlTooltipText":"Элемент управления, с которого начинается перемещение курсора пользователя.","descriptionText":"Описание:","descriptionTooltipText":"Дополнительное описание назначения формы.","nameText":"Имя:","nameTooltipText":"Идентификатор формы, используемый системой.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/FormAdvancedPropertyEditor':{"titleText":"Дополнительно","generalText":"Общее","useEntityNameAsTitleText":"Используйте имя сущности как название:","useEntityNameAsTitleTooltipText":"Используете имя текущей сущности в название формы.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/FormUsagesPropertyEditor':{"titleText":"Использование","portalText":"Портал","viewText":"Вид","modesText":"Режимы","descriptionText":"Описание","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/FormDesigner':{"displayNameText":"Форма","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DesignSurface':{"bisectionErrorText":"Это размещение приведет к разделению другого элемента управления.","rowBoundsErrorText":"Выбранная строка выходит за границы.","columnBoundsErrorText":"Выбранный столбец выходит за границы.","rowSpanBoundsErrorText":"Выбранная ширина строки выходит за границы.","columnSpanBoundsErrorText":"Выбранная ширина столбца выходит за границы.","occupiedErrorText":"Недостаточно свободного места для выбранного размера.","aboveText":"Вверху","belowText":"Внизу","leftText":"По левому краю","rightText":"По правому краю","insertRowText":"Вставить строку","deleteRowText":"Удалить строку","deleteColumnText":"Удалить столбец","insertColumnText":"Вставить столбец","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/NonVisibleControlContainer':{"headerText":"Невидимые элементы управления","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/PropertyEditorContainer':{"specificTitleFormatText":"Свойства \"${0}\" (${1})","genericTitleFormatText":"Свойства \"${0}\"","_localized":{}}
+,
+'Sage/MainView/nls/FormManager':{"nameText":"Имя","entityText":"Сущность","layoutText":"Макет","titleFmtString":"Дизайнер форм — ${0}","pageTitle":"Saleslogix — дизайнер форм","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupsListPanelConfig':{"AdHoc":"Спец.","Dev":"Dev","Rel":"Открыто для общего доступа","Family":"Семейство","Name":"Имя","DisplayName":"Отображаемое имя","Owner":"Владелец","SharedDate":"Дата открытия общего доступа","Type":"Тип","CreateDate":"Дата создания","ModifyDate":"Дата изменения","Author":"Автор","Company":"Компания","Version":"Версия","UserDefault":"Пользователь по умолчанию","_localized":{}}
+,
+'Sage/UI/nls/Boolean':{"yesText":"Да","noText":"Нет","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupManagerActions':{"SelectRecordMsg":"Для продолжения необходимо выбрать хотя бы одну запись.","SelectRecordMsgSingle":"Для продолжения необходимо выбрать одну запись.","ConfirmDeletionMsg":"Действительно произвести действие \"${0}\" для выбранных \"${1}\"?","SelectedGroups":"группы (включая общие)","SelectedReleases":"общие группы","SelectedStatistics":"Статистика по группе","Yes":"Да","No":"Нет","Reset":"сброс","Delete":"удалить","InvalidSelectedGroup":"Выбранная группа является общим ресурсом. Выберите принадлежащую вам или контролируемую вами группу, которая не является общим ресурсом.","NotDeveloperGroup":"Выбранная группа больше не находится в разработке.","NotGroupOwner":"Выбранная группа не принадлежит вам. Выберите группу, принадлежащую вам или контролируемую вами.","OK":"OК","SelectOwner":"Выбрать владельца","FirstName":"Имя","LastName":"Фамилия","UserName":"Имя пользователя","Type":"Тип","ConfirmDeletionMsgSelectedGroups":"Are you sure you want to delete the selected group(s) (including shares)?","ConfirmResetMsgSelectedStatics":"Are you sure you want to reset the selected group statistics?","ConfirmDeletionMsgSelectedReleases":"Are you sure you want to delete the selected shared group(s)?","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupManagerFormatter':{"ACOGroup":"Группа ACO","Group":"Группа","Unknown":"Неизвестно","Yes":"Да","No":"Нет","_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/GroupsListSummary':{"_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/GroupDetailSummary':{"txtGroupFamily_Caption":"Семейство:","txtGroupName_Caption":"Имя:","txtGroupDisplayName_Caption":"Отображаемое имя:","txtGroupDescription_Caption":"Описание:","txtGroupId_Caption":"ИД:","txtGroupMainTable_Caption":"Основная таблица:","txtGroupEntityName_Caption":"Имя сущности:","txtGroupCreateDate_Caption":"Дата создания:","txtGroupCreateUser_Caption":"Автор:","txtGroupModifyDate_Caption":"Дата изменения:","txtGroupModifyUser_Caption":"Автор изменения:","txtGroupInstallationDate_Caption":"Дата установки:","txtGroupShared_Caption":"Общий доступ:","txtGroupSharedDate_Caption":"Дата открытия общего доступа:","txtGroupOwner_Caption":"Владелец:","txtGroupUserId_Caption":"ИД пользователя:","txtGroupAdhoc_Caption":"Спец. группа:","txtGroupHidden_Caption":"Скрытый:","txtGroupAuthor_Caption":"Автор:","txtGroupCompany_Caption":"Компания:","txtGroupCompanyVersion_Caption":"Версия компании:","txtGroupDev_Caption":"Dev:","txtGroupDataCode_Caption":"Код данных:","txtGroupType_Caption":"Тип группы:","txtGroupUserDefault_Caption":"Пользователь по умолчанию:","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/ReleasesListPanelConfig':{"Dev":"Dev","Rel":"Открыто для общего доступа","Family":"Семейство","Name":"Имя","DisplayName":"Отображаемое имя","Owner":"Владелец","SharedDate":"Дата открытия общего доступа","Type":"Тип","CreateDate":"Дата создания","ModifyDate":"Дата изменения","Author":"Автор","Company":"Компания","Version":"Версия","SharedToName":"Имя получателя общего доступа","SharedToType":"Тип получателя общего доступа","UserType":"UserType","BasedOn":"На основе","_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/ReleasesListSummary':{"_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/ReleasesDetailSummary':{"txtGroupFamily_Caption":"Семейство:","txtGroupName_Caption":"Имя:","txtGroupDisplayName_Caption":"Отображаемое имя:","txtGroupDescription_Caption":"Описание:","txtGroupId_Caption":"ИД:","txtGroupMainTable_Caption":"Основная таблица:","txtGroupEntityName_Caption":"Имя сущности:","txtGroupCreateDate_Caption":"Дата создания:","txtGroupCreateUser_Caption":"Автор:","txtGroupModifyDate_Caption":"Дата изменения:","txtGroupModifyUser_Caption":"Автор изменения:","txtGroupInstallationDate_Caption":"Дата установки:","txtGroupShared_Caption":"Общий доступ:","txtGroupSharedDate_Caption":"Дата открытия общего доступа:","txtGroupOwner_Caption":"Владелец:","txtGroupUserId_Caption":"ИД пользователя:","txtGroupAdhoc_Caption":"Спец. группа:","txtGroupHidden_Caption":"Скрытый:","txtGroupAuthor_Caption":"Автор:","txtGroupCompany_Caption":"Компания:","txtGroupCompanyVersion_Caption":"Версия компании:","txtGroupDev_Caption":"Dev:","txtGroupDataCode_Caption":"Код данных:","txtGroupType_Caption":"Тип группы:","txtGroupBasedOn_Caption":"ИД группы основы:","txtGroupReleasedToType_Caption":"Тип получателя общего доступа:","txtGroupReleasedTo_Caption":"Имя получателя общего доступа:","txtGroupReleasedToTitle_Caption":"Название ресурса общего доступа:","txtGroupReleasedToUserType_Caption":"Тип пользователя ресурса общего доступа:","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/StatisticsListPanelConfig':{"Dev":"Dev","Rel":"Открыто для общего доступа","Family":"Семейство","Name":"Имя","DisplayName":"Отображаемое имя","Owner":"Владелец","OwnerUsage":"Использование владельца","ShareUsage":"Использование общего доступа","SharedDate":"Дата открытия общего доступа","FirstUsedBy":"Первый пользователь","FirstUsed":"Первое использование","LastUsedBy":"Последний пользователь","LastUsed":"Последнее использование","Type":"Тип","_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/StatisticsListSummary':{"_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/StatisticsDetailSummary':{"txtGroupFamily_Caption":"Семейство:","txtGroupName_Caption":"Имя:","txtGroupDisplayName_Caption":"Отображаемое имя:","txtGroupOwner_Caption":"Владелец:","txtGroupOwnerUsageCount_Caption":"Частота использования владельцем:","txtGroupShared_Caption":"Общий доступ:","txtGroupShareUsageCount_Caption":"Частота использования (общ.)","txtGroupSharedDate_Caption":"Дата открытия общего доступа:","txtGroupFirstUser_Caption":"Первый пользователь:","txtGroupFirstUseDate_Caption":"Дата первого использования:","txtGroupLastUser_Caption":"Последний пользователь:","txtGroupLastUseDate_Caption":"Дата последнего использования:","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupManagerGroupContextService':{"AllGroups":"Группы","Shares":"Общие ресурсы","UsageStatistics":"Использование","Performance":"Производительность","Settings":"Настройки","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/SyncResultsHistory':{"grdSyncHistory_RunName":"История синхронизации","grdSyncHistory_CreateDate":"Дата создания","grdSyncHistory_Status":"Статус","grdSyncHistory_DiagnosisCode":"Код диагностики","grdSyncHistory_ErrorMessage":"Сообщение об ошибке","grdSyncHistory_JobName":"Имя задания","_localized":{}}
+,
+'Sage/MainView/Lead/nls/ImportLeadsWizard':{"yestText":"Да","noText":"Нет","confirmOverwriteFileMsg":"На данный момент уже выбран файл импорта. Заменить этот файл?","importProgressCaption":"Результаты процесса импорта","lblPrimaryProgress":"Обработка файла импорта, подождите...","lblTotalRecords":"Итого записей:","lblTotalRecordsProcessed":"Обработано:","lblTotalRecordsImported":"Импортировано:","lblTotalRecordsMerged":"Объединено:","lblTotalDuplicates":"Дубликаты:","lblTotalProjectedDuplicates":"Ожидается дубликатов:","lblDuplicateRate":"Доля дубликатов:","lblTotalErrors":"Ошибки:","calculatingText":"Выполняется вычисление, подождите...","importStatusProcessing":"Обработка","importStatusCompleted":"Завершено","abortImportProcessStatus":"Прервать","btnCancelText":"Прервать","btnCloseText":"Закрыть","lblImportHistoryLinkText":"Чтобы увидеть результаты импорта, нажмите номер импорта в поле ниже:","lblImportLinkNumber":"Номер импорта: ","errorRequestImportHistory":"Возникла ошибка при выполнении запроса sdata для конечной точки importHistory.","_localized":{}}
+,
+'Sage/MainView/ExchangeRate/nls/ExchangeRateDialog':{"lblUpdateCurrency":"Обновить валюту","lblSelectEntity":"Применить обновленную валюту к","lblSalesOrders":"Заказы на продажу","lblOpportunities":"Возможности","lblQuotes":"Предложения","lblOK":"OК","lblCancel":"Отмена","lblClose":"Закрыть","updateRecords_Caption":"Обновление валютных курсов сущности","job_Description":"При обновлении валютного курса сущности возникли ошибки","errorRequestingJobMgr":"Ошибка при выполнении обновления: ${0}","lblRecordsToUpdate":"Количество записей для обновления","lblLockedUpdate":"Записи с заблокированными ставками не будут обновлены","lblNote":"Заметка","OpenOrder":"Открытый заказ","SalesOrder":"Заказ на продажу","Open":"Открыть","New":"Новый","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/PromoteWidget':{"title_Caption":"Выдвижение \"${0}\"","pageLoading_Caption":"Загрузка...","createLink_Caption":"Создать ссылку","selectOption_Caption":"Выбрать параметр...","errorRequestListOptions":"Во время запроса \"${0}\" возникла ошибка: ${1}","errorBackOffices":"бэк-офисы","errorAccountingEntities":"сущности системы учета","cancel_Caption":"Отмена","ok_Caption":"OК","close_Caption":"Закрыть","accountingEntity_Caption":"Сущность системы учета","logicalId_Caption":"Бэк-офис","promotionRequested_Caption":"Запрошено выдвижение","errorRequiredData":"Введите требуемые значения перед продолжением.","errorPromotion":"Во время выдвижения \"${0}\" возникла ошибка: ${1}.","requestSuccessfullSubmitted":"\"${0}\", \"${1}\" передан для выдвижения","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/PricingAvailabilityWidget':{"title_Caption":"Доступно для ожидаемой даты","pageLoading_Caption":"Загрузка...","gridLoading_Caption":"Загрузка складов...","gridNoResults_Caption":"Информация о складе не найдена.","grdColumn_ATPDate":"Доступно для ожидаемой даты","grdColumn_Warehouse":"Склад","grdColumn_AvailableQty":"Доступное количество","cancel_Caption":"Отмена","close_Caption":"Закрыть","ok_Caption":"OК","errorPageLoading_Caption":"Не удалось выполнить запрос из-за ошибок: ${0}","_localized":{}}
+,
+'Sage/MainView/CountryCodeMapping/nls/_CountryAliasConversionDialogBase':{"btnOK_Caption":"OК","btnBack_Caption":"< Назад","btnNext_Caption":"Дальше >","btnCancel_Caption":"Отмена","btnClose_Caption":"Закрыть","emptyListItem_Caption":"Выберите параметр...","gridLoading_Caption":"Загрузка данных...","gridNoResults_Caption":"Ничего не найдено","selectOption_Caption":"Выбрать параметр...","_localized":{}}
+,
+'Sage/MainView/CountryCodeMapping/nls/CountryAliasConversion':{"dlgCountryAliasConverstion_Title":"Страна:","colAlias":"Псевдоним страны","colCountryCode":"Код страны","grdLabel":"grdLabel","colUnmatchedAlias_Caption":"Не отображенный псевдоним страны","btnSave_Caption":"OК","btnCancel_Caption":"Отмена","colCountryName":"Совпадения кодов страны","colCountryNamePlaceHolder":"Выбрать страну","_localized":{}}
+,
+'Sage/ProximitySearch/nls/GeocodeModule':{"geocodeError":"Не удалось найти адрес","_localized":{}}
+,
+'Sage/ProximitySearch/nls/MapModule':{"microsoftError":"Не загружен скрипт Microsoft","googleError":"Не загружен скрипт Google","credentialsOrOverLimit":"Ваши данные авторизации для API являются некорректными или для них превышено максимальное количество запросов.","_localized":{}}
+,
+'Sage/ProximitySearch/nls/RouteModel':{"mileAbbrevText":"мили","kilometerAbbrevText":"км","_localized":{}}
+,
+'Sage/ProximitySearch/nls/RouteModule':{"inProgressError":"Попытка выполнить вызов Ajax, когда уже выполняется один вызов","bingRouteOutOfRangeError":"Невозможно рассчитать маршрут, если мест назначения больше 25 или меньше 2","googleRouteOutOfRangeError":"Невозможно рассчитать маршрут, если мест назначения больше 10 или меньше 2","_localized":{}}
+,
+'Sage/ProximitySearch/nls/DirectionView':{"placeHolderText":"Выберите \"Получить направления\", чтобы отобразить здесь полные направления движения.","_localized":{}}
+,
+'Sage/ProximitySearch/nls/PointEditModule':{"newPlaceText":"Новое временное место...","addPlaceText":"Добавить временное место","okText":"OК","cancelText":"Отмена","nameText":"Имя:","addressText":"Адрес:","cityText":"Город:","stateText":"Регион:","postalCodeText":"Почтовый индекс:","countryText":"Страна:","helpText":"Требуется только имя и одно поле адреса.","errorText":"Добавьте имя и как минимум одно адресное поле.","_localized":{}}
+,
+'Sage/ProximitySearch/nls/ToolbarModule':{"getDirectionsText":"Получить направления","addPlaceText":"Добавить место","selectAllText":"Выбрать все","deselectAllText":"Очистить все","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DataSourcePanel':{"loadingText":"Загрузка...","_localized":{}}
+,
+'Sage/TaskPane/nls/_BaseTaskPaneTasklet':{"selectRecordsTitle":"Некорректное выделение","selectRecords":"Выберите запись, чтобы продолжить.","selectSingleRecord":"Выберите одну запись, чтобы продолжить.","noRecordsSelectedProcessAll":"Записи не выбраны. Будет обработана целая группа до максимального лимита, установленного системным администратором (если установлено). Продолжить?","invalidSelectionTitle":"Некорректное выделение","errorSelectionInfo":"При получении информации о выбранных записях возникла ошибка.","errorNoData":"Данные недоступны.","yesButtonText":"Да","noButtonText":"Нет","salesLogixPageTitle":"Infor CRM","okButtonText":"OК","cancelButtonText":"Отмена","confirmBulkDeleteJob":"Действительно удалить выбранные записи?","deleteSelectedRecords":"Удалить \"${0}\"","deleteJobError":"Во время задания удаления \"${0}\" возникла ошибка: ${1}","deleteBulkJobTitle":"Удалить \"${0}\"","promoteTitle":"Выдвинуть","getOrderTotalTitle":"Получить итог заказа","integrationNotEnabled":"Back Office Extension не активирован","error_PricingRequest":"Во время запроса службы расчета цены возникла ошибка: ${0}","workflowIntegrationNotEnabled":"ION Workflow Integration is not enabled","requestWorkflowSuccess":"Workflow has been requested.","cancelWorkflowSuccess":"Workflow has been cancelled.","requestWorkflowLog":"Unable to request workflow. Please refer to the error log for more details.","cancelWorkflowLog":"Unable to cancel workflow. Please refer to the error log for more details.","errorRequestWorkflow":"An error occurred when ${0} requests workflow: ${1}.","errorCancelWorkflow":"An error occurred when ${0} cancels workflow: ${1}.","_localized":{}}
+,
+'Sage/TaskPane/nls/UserTasklet':{"addToRoleTitle":"Add to Role","resetUsersTitle":"Reset Users","taskText_CopyUserProfile":"Copy User Profile","copyProfileNoneSelected":"At Least one user needs to be selected!","associateContactTitle":"Associate with Contact","disAssociateContactTitle":"Disassociate from Contact","disAssociateDialogTitle":"Disassociate from a Contact","confirmDisAssociate":"Are you sure you want to disassociate the ${0} selected user from an associated contact?","confirmDisAssociateMultiple":"Are you sure you want to disassociate the ${0} selected users from any associated contacts?","associationExistsMessage":"The user you selected is already associated to a contact. To associate this user to a different contact, you must first disassociate the user and contact.","multipleSelectionErrorMessage":"You can only perform this task for 1 user at a time. \n Please select a single user and select the task again.","noSelectionErrorMessage":"You need to select at least one user to disassociate. \n Please select one or more user(s) and select the task again.","singleSelectionErrorMessage":"You need to select a user to disassociate. \n Please select a single user and select the task again.","addToTeamCaption":"Add to Team","removeFromAllTeamsCaption":"Remove from All Teams","areYouSure":"Are you sure you want to remove the selected member(s) from all teams?","promoteNoneSelected":"Please select at least one record","requestsuccessfullcompleted":"${0} users were successfully submitted for promotion.","promotedsuccessfully":"The item got promoted successfully","_localized":{}}
+,
+'Sage/TaskPane/User/nls/ContactUserAssociationEditor':{"btnCancel_Caption":"Отмена","btnOK_Caption":"OК","dialogTitleText":"Связать пользователя с контактом","associateContactText":"Связать выбранного пользователя со следующим контактом","user_Caption":"Контакт","lookupContactText":"Поиск контакта","lookupFirstNameColText":"Имя","lookupLastNameColText":"Фамилия","lookupTitleColText":"Название","lookupAccountColText":"Клиент","lookupWorkPhoneColText":"Рабочий телефон","lookupEmailText":"Электронная почта","disAssociateTitle":"Удалить связь с контактом","associationExistsMessage":"Выбранный контакт уже связан с пользователем. Выберите другой контакт.","_localized":{}}
+,
+'Sage/MainView/CopyUserProfile/nls/_CopyUserProfileBase':{"btnOK_Caption":"OK","btnCancel_Caption":"Cancel","_localized":{}}
+,
+'Sage/MainView/CopyUserProfile/nls/CopyUserProfile':{"dlg_Title":"Копировать профиль","dlg_Instructions":"Выберите профиль пользователя или шаблон для копирования для других пользователей. Копирование профиля обновит текущие настройки.","rad_SelectionLabel":"Копировать профиль из:","rad_UserBtn":"Существующий пользователь","rad_TemplateBtn":"Шаблон","user_LookupLabel":"Пользователь","template_LookupLabel":"Шаблон","lookupUserNameColText":"Имя пользователя","lookupTitleColText":"Название","lookupDepartmentColText":"Отдел","lookupRegionColText":"Регион","lookupUser_Caption":"Пользователь для копирования профиля","lookupUserNameTemplateColText":"Шаблон","chkGeneralLabel":"Общее","chkCalendarLabel":"Календарь","chkEmployeeLabel":"Сотрудник","chkClientLabel":"Параметры клиента (клиентская система)","chkSecurityLabel":"Безопасность","chkServiceLabel":"Сервис/поддержка","chkTeamsLabel":"Команды","txtJobDescriptor":"Копировать профиль пользователя","jobFailer":"Возникла критическая ошибка","_localized":{}}
+,
+'Sage/TaskPane/nls/AccountingTasksTasklet':{"_localized":{}}
+,
+'Sage/TaskPane/nls/ActivityTaskConfigurationProvider':{"scheduleText":"Расписание","eventText":"Событие","phoneCallText":"Звонок","toDoText":"Дело","meetingText":"Встреча","personalActivityText":"Личное действие","deleteConfirmationText":"Удалить подтверждение","acceptConfirmationText":"Принять подтверждение","declineConfirmationText":"Отклонить подтверждение","completeActivityText":"Завершить действие","deleteActivityText":"Удалить действие","deleteEventText":"Удалить событие","scheduleEventText":"Запланировать событие...","scheduleRequestText":"Запланировать запрос","deleteRequestText":"Удалить запрос","recordsSelectedText":"зап. выбрано","clearText":"Очистить","_localized":{}}
+,
+'Sage/TaskPane/nls/CommonTasksTasklet':{"okButtonText":"OК","loadingText":"загрузка...","noPrimaryEmail":"Нет основной электронной почты","selectFileFormat":"Выберите формат файла:","exportToFile_OptionCSV":"Стандартный CSV","exportToFile_OptionTab":"Разделитель: табуляция (рекомендуется для Microsoft Excel)","exportToFile_OptionExcel":"Excel","exportToFile_OptionSaveFormat":"Запомнить мой выбор и больше не спрашивать.","exportToFile_OK":"OК","exportToFile_Cancel":"Отмена","exportToFile_DialogTitle":"Экспорт","exportToExcel_Caption":"Экспорт","errorRequestingJobMgr":"Ошибка при запросе диспетчера заданий: ${0}","errorExecutionAction":"Возникла ошибка во время выполнения \"${0}\"","exportProcessingJobMsg":"Во время выполнения экспорта вы можете ожидать завершения операции или перейти к отчетам, чтобы открыть файл.","errorBulkActionNotSupported":"\"${0}\" не поддерживает массовые обновления. Обратитесь к системному администратору.","errorBulkActionRequest":"Ошибка при запросе массового обновления, обратитесь к системному администратору.","copyProfileNoneSelected":"Требуется выбрать по крайней мере одного пользователя.","deleteJob_Description":"Ошибка массового удаления","errorRequestEntityImportable":"Во время получения атрибутов сущности возникла ошибка. ${0}","entityNotImportable":"\"${0}\" не поддерживает импорт. Обратитесь к системному администратору.","_localized":{}}
+,
+'Sage/MainView/Import/nls/_WizardDialogBase':{"btnOK_Caption":"OК","btnBack_Caption":"< Назад","btnNext_Caption":"Дальше >","btnCancel_Caption":"Отмена","btnClose_Caption":"Закрыть","btnFinish_Caption":"Импортировать сейчас","emptyListItem_Caption":"Выберите параметр...","lstTemplate_Caption":"Шаблон импорта:","gridLoading_Caption":"Загрузка данных...","gridNoResults_Caption":"Ничего не найдено","selectOption_Caption":"Выбрать параметр...","defaultAdHoc_Caption":"Импорт ${0} ${1}","_localized":{}}
+,
+'Sage/MainView/Import/nls/SelectFile':{"dlgSelectFile_Title":"Импорт записей — перенос файла","txtSelectFile":"Выберите файл с данными, которые необходимо импортировать.","btnUploadFile_Caption":"Выбрать файл","txtUploadFile_Caption":"Файл не выбран","errorNoUploadFile":"Чтобы продолжить, выберите файл для импорта.","txtFileContents_Caption":"Файл \"${0}\" размером ${1} КБ был успешно перенесен.","txtLoadTemplate_Caption":"Загрузка данных шаблона.","lstImportOption_Insert":"Добавлять запись при отсутствии совпадений","lstImportOption_Update":"Обновить запись при совпадении","lstImportOption_InsertUpdate":"Добавлять или обновлять все записи","_localized":{}}
+,
+'Sage/MainView/Import/nls/DefineDelimiter':{"dlgDefineDelimiter_Title":"Импорт записей — выбор разделителя","txtHeader_Caption":"Результат импорта с выбранными разделителем по умолчанию и квалификатором текста показан в панели предварительного просмотра. Если результат выглядит правильно, можно продолжить импорт с этими настройками. Если нет, их можно изменить.","txtChooseDelimiter":"Выберите разделитель для разделения полей:","rdoTabOption":"Табуляция","rdoSemicolonOption":"Точка с запятой","rdoCommaOption":"Запятая","rdoSpaceOption":"Пробел","rdoOtherOption":"Другое","txtQualifier":"Квалификатор текста","chkFirstRowFieldNames":"Первая строка содержит имена полей","txtPreview":"В загруженном файле найдено строк: ${0}, столбцов: ${1}. Ниже приведены первые 1–5 записей.","errorRequestFileOptions":"Ошибка при получении параметров файла. ${0}","_localized":{}}
+,
+'Sage/MainView/Import/nls/MapFields':{"dlgMapFields_Title":"Импорт записей — сопоставить поля","txtHeader_Caption":"Сопоставлено полей: ${0} из ${1}. Вы можете продолжить импорт с текущими сопоставлениями или выполнить сопоставление остальных полей, перед тем как продолжить импорт.","txtRequired_Caption":"Для продолжения необходимо сопоставить следующие поля: ${0}","btnUnMapped_Caption":"Просмотр несопоставленных полей (${0})","btnMapped_Caption":"Просмотр сопоставленных полей (${0})","btnAll_Caption":"Просмотр всех полей (${0})","colImportField_Caption":"Импорт поля","colInforField_Caption":"Поле Infor CRM","colType_Caption":"Тип сущности","errorRequestMappings":"Ошибка при получении сопоставлений при импорте. ${0}","errorRequiredMappings":"Укажите все требуемые сопоставления перед продолжением.","multipleDestinationPropTag_Is":"${0} is mapped to more than once","multipleDestinationPropTag_Are":"${0} are mapped to more than once","multipleDestinationPropTag":"сопоставлено более одного раза","_localized":{}}
+,
+'Sage/MainView/Import/nls/ManageImportOptions':{"dlgManageImportOptions_Title":"Импорт записей — параметры","lstImportType_Caption":"Что вы хотите сделать с записями в этом файле?","lstImportOption_Insert":"Добавлять запись при отсутствии совпадений","txtOption_Insert":"Новая запись с контактной информацией, данными учетной записи или адресом будет добавлена в базу данных, если в базе не будет найдена запись, совпадающая с ней по указанным критериям. Если совпадающая запись существует, новая добавлена не будет.","lstImportOption_Update":"Обновить запись при совпадении","txtOption_Update":"Если в базе данных будет найдена существующая запись с контактной информацией, данными учетной записи или адресом, совпадающая с новой записью по указанным критериям, она будет обновлена импортированными данными. Если совпадение не обнаружится, запись импортирована не будут.","lstImportOption_InsertUpdate":"Добавлять или обновлять все записи","txtOption_InsertUpdate":"Если в базе данных будет найдена существующая запись с контактной информацией, данными учетной записи или адресом, совпадающая с новой записью по указанным критериям, она будет обновлена импортированными данными. Если совпадение не обнаружится, будет добавлена новая запись.","txtMatchHeader_Caption":"Определите критерии совпадения:","txtOptionsHeader_Caption":"Параметры","defaultOwner_Caption":"Владелец по умолчанию:","lookupDefaultOwner_Caption":"Поиск владельца","lookupDescriptionColText":"Описание","lookupTypeColText":"Тип","createAdHoc_Caption":"Создать новую специальную группу","existingAdHoc_Caption":"Добавить в существующую специальную группу","errorNoAddHocGroupName":"Укажите имя специальной группы перед продолжением.","errorDuplicateAddHocGroupName":"Укажите имя специальной группы, которое еще не используется.","errorNoOwner":"Укажите владельца перед продолжением.","chkAccountName":"Исп. имя контакта вместо пустого имени учетной записи","match_Caption":"Совпадение:","_localized":{}}
+,
+'Sage/MainView/Import/nls/AddActions':{"dlgAddActions_Title":"Импорт записей — добавление действий","_localized":{}}
+,
+'Sage/MainView/Import/nls/Review':{"dlgMapFields_Title":"Импорт записей — просмотр информации об импорте","txtHeader_Caption":"Просмотрите внесенные вами изменения:","btnSaveTemplate_Caption":"Обновление текущего шаблона","btnSaveAsTemplate_Caption":"Сохранить как шаблон импорта","txtJobTitle_Caption":"Импорт \"${0}\"","txtJobDescriptor":"Импорт \"${0}\": ${1}","errorJobFailed":"Ошибка при выполнении задания: ${0}","previewFileName_Caption":"Имя файла: ${0}","previewRecordCount_Caption":"Найдено записей: ${0}","previewAdHocGroup_Caption":"Группа записей: ${0}","previewImportDataMode":"Тип импорта: ${0}","btnBack_Edit_Caption":"Редактировать","_localized":{}}
+,
+'Sage/MainView/Import/nls/ManageImportTemplate':{"dlgManageImportTemplate_Title":"Импорт записей — сохранение шаблона","txtDescription_Caption":"Описание:","txtImportTemplates_Caption":"Шаблоны импорта:","colDelete":"Удалить","colDescription":"Описание","colEntityName":"Сущность","colCreatedBy":"Автор","colCreatedDate":"Дата создания","colModifiedBy":"Автор изменения","colModifiedDate":"Дата изменения","btnSave_Caption":"Сохранить","errorDeletingTemplate":"Ошибка при удалении шаблона импорта: ${0}","errorNoTemplateDescription":"Добавьте описание шаблона перед сохранением.","_localized":{}}
+,
+'Sage/UI/nls/BulkUpdateWidget':{"dlgBulkActionUpdate_Title":"Массовое действие - обновление","pageLoading_Caption":"Загрузка параметров свойства...","header_Caption":"Выберите свойство для обновления.","header_NoPropertiesEnabled":"Для сущности \"${0}\" активированы массовые обновления, однако отсутствуют активированные свойства. Для получения дополнительной информации обратитесь к системному администратору","errorRequestPropertyOptions":"Ошибка чтения метаданных для объекта \"${0}\". ${1}","errorEntityNotSupported":"Объект \"${0}\" не поддерживает массовое обновление","update_Property_Caption":"Обновить","addProperty_Tooltip":"Добавить свойство","removeProperty_Tooltip":"Удалить свойство","no_Caption":"Нет","yes_Caption":"Да","days_Caption":"дн.","moveOut_Caption":"Переместить","moveTo_Caption":"Для","moveDate_Backward":"Назад","moveDate_Forward":"Вперед","update_To_Caption":"До:","lookupHeaderText":"Поиск \"${0}\"","lookupNameColText":"Имя","lookupTitleColText":"Название","lookupDepartmentColText":"Отдел","lookupRegionColText":"Регион","lookupTypeColText":"Тип","lookupDescriptionColText":"Описание","btnOK_Caption":"OК","btnCancel_Caption":"Отмена","errorUnspecifiedValue":"Перед продолжением введите значение или удалите недопустимую строку.","errorRequestingJobMgr":"Ошибка при выполнении обновления: ${0}","selectOption_Caption":"Выбрать параметр...","updateRecords_Caption":"Обновление выбранных записей","chkScheduleJob_Caption":"Запланируйте обновление на конкретное время и дату.","lookup_Caption":"Поиск","job_Description":"Ошибки массового обновления","errorDuplicateValue":"Свойство уже выбрано","errorInvalidPropertyType":"Тип свойства \"${0}\" не поддерживается для массовых обновлений.","calculatedField":"Вычисляемое поле","standardId":"Стандартный ИД","unknownPropertyType":"Неизвестно","_localized":{}}
+,
+'Sage/TaskPane/nls/ContactTasksTasklet':{"associateContactTitle":"Связать с пользователем","disAssociateContactTitle":"Удалить связь с пользователем","disAssociateDialogTitle":"Удалить связь с пользователем","confirmDisAssociate":"Действительно удалить связь выбранного контакта \"${0}\" со связанным пользователем?","confirmDisAssociateMultiple":"Действительно удалить связь выбранных контактов \"${0}\" со всеми связанными пользователями?","associationExistsMessage":"Выбранный контакт уже связан с пользователем. Чтобы связать этот контакт с другим пользователем, сначала необходимо удалить связь контакта с пользователем.","multipleSelectionErrorMessage":"Эту задачу можно выполнять только для одного контакта за раз. \n Выберите один контакт и повторите задачу.","noSelectionErrorMessage":"Должен быть выбран хотя бы один контакт для отмены связи. \n Выберите один или несколько контактов и повторите задачу.","singleSelectionErrorMessage":"Необходимо выбрать контакт для отмены связи. \n Выберите один контакт и повторите задачу.","_localized":{}}
+,
+'Sage/TaskPane/nls/CountryTasksTasklet':{"countryAliasConversionTitle":"Сопоставить потерянные псевдонимы стран","_localized":{}}
+,
+'Sage/TaskPane/nls/GroupListTasklet':{"GroupListOptionsTitle":"Параметры списка групп","maximizeTitle":"Развернуть список групп","minimizeTitle":"Свернуть список групп","_localized":{}}
+,
+'Sage/UI/nls/OwnerType':{"teamText":"Команда","departmentText":"Отдел","systemText":"Система","userText":"Пользователь","_localized":{}}
+,
+'Sage/UI/nls/UserType':{"administratorText":"Администратор","templateText":"Шаблон","remoteText":"Удаленный","webOnlyText":"Только Интернет","retiredText":"Неактивен","concurrentText":"Параллельно","webViewerText":"Web Viewer","networkText":"Сеть","addOnUserText":"Дополнительный пользователь","_localized":{}}
+,
+'Sage/TaskPane/nls/LiteratureManagementTasks':{"errFulFillmentCancelled":"Выполнение запроса литературы было отменено для LitReqId {0}.","errFulFillmentFailed":"Невозможно выполнить запрос литературы для LitReqId {0}.","errMailMergeService":"Невозможно выполнить запрос литературы, так как невозможно загрузить службу слияния. Это может произойти, если программа CRM Office Integration не установлена или установка выполнена неверно.","errFulFillmentRequest":"Не удалось выполнить запрос литературы.","errFulFillmentRequestEx":"Невозможно выполнить следующие запросы литературы:","fulFillmentSuccess":"Запроса литературы выполнен.","_localized":{}}
+,
+'Sage/TaskPane/nls/QuoteTasksTasklet':{"hasErpStatus":"Предложение с одним из следующих статусов: \"Передано для\", \"Отменено\", \"Удалено\", \"Проигрыш\", \"Заменено\", \"Не утверждено\" не может быть преобразовано.","newQuoteVersion":"Новая версия","generateProposal":"Сгенерировать предложение","convertToSalesOrder":"Преобразовать в заказ на продажу","activateCurrentVersion":"Активировать текущую версию:","errorGenerateProposal":"Во время создания предложения возникла ошибка: ${0}","errorConvertWonQuote":"Во время преобразования предложения возникла ошибка: ${0}","getOrderTotalTitle":"Получить итог предложения","rePriceQuote":"Обновить стоимость","promoteIONWorkFlowItems":"Request Workflow","cancelIONWorkFlowItems":"Cancel Workflow","_localized":{}}
+,
+'Sage/Utility/nls/PricingAndAvailability':{"status_NotConfigurable":"Настройка невозможна","status_Completed":"Завершено","status_Error":"Ошибка","status_PartiallySaved":"Частичное сохранение","status_Processing":"Обработка","status_Queued":"В очереди","status_Configure":"Настроить","warehouse_Default":"Не назначено","error_PricingRequest":"Во время расчета цены возникла ошибка: ${0}.","_localized":{}}
+,
+'Sage/TaskPane/nls/OpportunityTasksTasklet':{"opportunityStatisticsTitle":"Opportunity Statistics","addSalesOrder":"Add Sales Order","addQuote":"Convert To Quote","promoteTitle":"Promote","rePriceOpportunity":"Refresh Pricing","errorPromotion":"An error occurred during ${0} promotion: ${1}.","requestSuccessfullSubmitted":"The ${0}, ${1}, was successfully submitted for promotion","requestIONWFOpportunity":"Request Workflow","cancelIONWorkFlowItems":"Cancel Workflow","_localized":{}}
+,
+'Sage/MainView/Opportunity/nls/OpportunityStatistics':{"opportunityStatistics_Caption":"Статистика по возможности","loadingMessge":"Загрузка...","opportunityCount":"Количество возможностей","salesPotentialTotal":"Итого потенц. продаж (среднее)","weightedPotentialTotal":"Итого прогноз. потенциал (среднее)","averageCloseProbability":"Ср. вероятность закрытия","actualAmountTotal":"Фактическая сумма (средняя)","averageDaysOpen":"Ср.число дней открытия","rangeEstClose":"Диапазон даты закрытия (мин - макс)","btnClose_Caption":"Закрыть","errorRequestingStatistics":"При попытке запроса статистики возможности возникла ошибка.","_localized":{}}
+,
+'Sage/TaskPane/nls/SecuredActionTasklet':{"addToRoleTitle":"Добавить к роли","_localized":{}}
+,
+'Sage/TaskPane/nls/SecurityManagerTasksTasklet':{"addSecurityProfileTitle":"Добавить профиль","editSecurityProfileTitle":"Редактировать профиль","_localized":{}}
+,
+'Sage/MainView/SecurityMgr/nls/SecurityProfile':{"securityProfile_Caption":"Профиль безопасности","btnCancel_Caption":"Отмена","ok_Text":"OК","description_Text":"Описание","profileType_Text":"Тип профиля","_localized":{}}
+,
+'Sage/TaskPane/nls/JobManagerTasksTasklet':{"taskRunJob_Caption":"Создать расписание","taskEditTrigger_Caption":"Редактировать расписание","taskCancelJob_Caption":"Отменить выполнение задания","taskDeleteScheduledJob_Caption":"Удалить расписание","_localized":{}}
+,
+'Sage/TaskPane/nls/ReportManagerTasksTasklet':{"taskRunReport_Caption":"Запустить отчет","taskScheduleReport_Caption":"Запланировать отчет","taskDeleteReport_Caption":"Удалить отчет","taskDeleteSchedule_Caption":"Удалить расписание","taskEditSchedule_Caption":"Редактировать расписание","taskDeleteHistory_Caption":"Удалить историю","txtRecordsSelected":"зап. выбрано","txtClear":"Очистить","_localized":{}}
+,
+'Sage/TaskPane/nls/GroupManagerTasksTasklet':{"txtRecordsSelected":"зап. выбрано","txtClear":"Очистить","txtDelete":"Удалить","txtEdit":"Редактировать","txtShare":"Общий доступ","txtView":"Вид","txtAssignOwner":"Назначить владельца повторно","txtResetStatistics":"Сброс статистики","txtDisableStatistics":"Отключение статистики","txtToggleUserDefault":"Переключить пользователя по умолчанию","_localized":{}}
+,
+'Sage/TaskPane/nls/EntityTaskConfigurationProvider':{"NewEntity":"Новая сущность","CreateEntity":"Создать сущность","_localized":{}}
+,
+'Sage/TaskPane/nls/ExchangeRateTasksTasklet':{"lblupdateExchRate":"Обновить валютный курс","lblBaseCurrency":"Базовая валюта","_localized":{}}
+,
+'Sage/TaskPane/nls/SalesOrderTasksTasklet':{"rePriceOrder":"Обновить стоимость","requestIONWFSalesOrder":"Request Workflow","cancelIONWorkFlowItems":"Cancel Workflow","_localized":{}}
+,
+'Sage/TaskPane/nls/SyncHistoryTasksTasklet':{"reprocessTitle":"Обработать повторно","purgeTitle":"Очистить","_localized":{}}
+,
+'Sage/UI/Columns/nls/SlxEdit':{"editText":"Редактировать","_localized":{}}
+,
+'Sage/UI/Controls/nls/Address':{"address1Text":"Адрес 1:","address2Text":"Адрес 2:","address3Text":"Адрес 3:","cancelText":"Отмена","cityText":"Город:","countryText":"Страна:","countyText":"Округ:","descriptionText":"Описание:","dialogTitle":"Адрес","isMailingText":"Доставка","isPrimaryText":"Основной:","okText":"OК","postalCodeText":"Почтовый индекс:","salutationText":"Адресат:","stateText":"Регион:","imageEditToolTip":"Редактировать","imageMapQuestToolTip":"MapQuest","isRequiredText":"The address requires these items: ","_localized":{}}
+,
+'Sage/UI/Controls/nls/CopyToClipboard':{"closeText":"Закрыть","dialogTitle":"Скопировать текст в буфер обмена","helpText":"Выберите нужный текст и нажмите Control-C (Command-C в Mac OS) для копирования в буфер обмена.","textTab":"Текст","sourceTab":"Источник","_localized":{}}
+,
+'Sage/UI/Controls/nls/HelpMenu':{"helpText":"Справка","aboutText":"О программе","webClientHelpText":"Справка веб-клиента","gettingStartedText":"Руководство по началу работы","quickReferenceText":"Краткое справочное руководство","_localized":{}}
+,
+'Sage/UI/Controls/nls/LogOffButton':{"logOffText":"Выход","_localized":{}}
+,
+'Sage/UI/Controls/nls/Name':{"okText":"OК","cancelText":"Отмена","dialogTitle":"Редактировать имя","prefixText":"Префикс:","nameFirstText":"Имя:","nameMiddleText":"Отчество:","nameLastText":"Фамилия:","suffixText":"Суффикс:","buttonTooltip":"Редактировать","_localized":{}}
+,
+'Sage/UI/Controls/GridParts/Columns/nls/SlxEdit':{"editText":"Редактировать","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/WidgetDefinition':{"defaultWidgetText":"Редактировать параметры виджета","settingsText":"Настройки","viewGroupText":"Показать группу","Bar_Chart":"Столбчатая диаграмма","Column_Chart":"Гистограмма","Group_List":"Список групп","Pie_Chart":"Круговая диаграмма","Funnel_Chart":"Воронкообразная диаграмма","Line_Chart":"Линейная диаграмма","SData_Feed":"Канал SData","Web_Feed":"Веб-канал","Website":"Веб-сайт","Default":"По умолчанию","Links":"Ссылки","LinksSettings":"Links Settings","Recently_Viewed":"Недавно просмотренные","Todays_Activities":"Сегодняшние действия","Today_s_Activities":"Сегодняшние действия","Welcome":"Добро пожаловать","Closing_Opportunities":"Закрывающие возможности","Quick_Actions":"Быстрые действия","Do_You_Know___":"Знаете ли вы...","All_Leads":"Все заинтересованные лица","My_Notes":"Мои заметки","Open_Opportunities":"Открытые возможности","My_Top_Opportunities":"Мои лучшие возможности","My_Pipeline":"Мой процесс продаж","Recent_Lead_Creation_History":"Недавняя история создания наводок","My_Activity_trend":"Тренд моих действий","My_Completed_Activities_by_Type":"Мои завершенные действия по типу","Active_Campaigns":"Активные кампании","All_Open_Opportunities":"Все открытые возможности","Top_Opportunities":"Лучшие возможности","Open_Defect_Distribution":"Распределение открытых дефектов","My_Dashboard":"Моя информационная панель","Sales":"Продажи","Group_List_Description":"Показывает список групп записей по сущности. Например, группу активных кампаний.","Welcome_Description":"Показывает введение в Saleslogix со ссылкой на страницу помощи введения в веб-клиент Saleslogix.","Line_Chart_Description":"Показывает данные как серию точек данных, соединенных линией. Целесообразно, если данные представляют много групп или категорий.","Bar_Chart_Description":"Показывает данные как набор горизонтальных панелей. Полезно для сравнения нескольких наборов данных.","Column_Chart_Description":"Показывает данные как набор вертикальных панелей, сгруппированных по категориям. Полезно для показа изменений данных в период времени для иллюстрации сравнения элементов.","Funnel_Chart_Description":"Показывает данные как прогрессивные пропорции в форме воронки. Эти данные представлены как порции по 100% и не имеют осей.","Pie_Chart_Description":"Показывает данные как пропорцию от общего. Каждое значение вычисляется как процент от общего. Эта диаграмма не имеет осей.","Recently_Viewed_Description":"Показывает ссылки на недавно просмотренные записи со значком, который указывает на тип. Например: клиент или контакт.","Todays_Activities_Description":"Показывает ссылки на вашу активность сегодня.","Links_Description":"Показывает ссылку создаваемую вами. Например, к детальному представлению в Saleslogix или к внешнему веб-сайту.","SData_Feed_Description":"Отображение веб-канала с использованием каналов данных SData (данные Sage), например канала бухгалтерской интеграции или базы данных Saleslogix.","Web_Feed_Description":"Отображение информации веб-канала RSS или Atom.","Website_Description":"Отображение выбранного вами веб-сайта.","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/DashboardTabController':{"newTabText":"Новая вкладка","addContentText":"Добавить содержимое","editOptionsText":"Редактировать свойства","hideTabText":"Скрыть вкладку","closeText":"Закрыть","copyTabText":"Копировать вкладку","showTabText":"Показать вкладку","shareTabText":"Общий доступ к вкладке","deleteTabText":"Удалить вкладку","deleteTabConfirmText":"Действительно удалить эту вкладку?","descriptionText":"Описание","everyoneText":"Все","saveTabText":"Сохранить вкладку","helpText":"Справка","addText":"Добавить","invalidMessage":"Недопустимый символ","invalidDuplicateMessage":"Название должно быть уникальным.","invalidReservedWordMessage":"Dashboard is reserved tab name. Please change the name before continuing.","deleteText":"Удалить","titleText":"Название:","chooseTemplateText":"Выберите шаблон, который требуется использовать:","oneColumnText":"Один столбец","twoColumnText":"Разделить на две столбцы","fatLeftText":"Две столбцы, большая левая","fatRightText":"Две столбцы, большая правая","makeDefaultText":"Использовать по умолчанию","releaseFetchErrorText":"Ошибка выборки списка релизов","releaseDeleteNoneSelected":"Элементы не выбраны.","releasedToText":"Разблокировано для:","typeText":"Тип","addLookup":"Добавить","okButton":"OК","errorText":"Ошибка","warningText":"Предупреждение","permissionErrorText":"Ошибка: пользователь не имеет права на выполнение этого действия.","permissionErrorPerformCopyText":"Создать собственную копию этой страницы?","yesText":"Да","noText":"Нет","DeletingReleasedWidget":"Действительно удалить эту вкладку информационной панели? Количество пользователей, также использующих эту вкладку: ${0}. Удаление этой вкладки сделает ее недоступной для всех пользователей.","Welcome":"Добро пожаловать","Dashboard":"Dashboard","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/DashboardWidgetCell':{"closeTooltipText":"Закрыть","minimizeTooltipText":"Свернуть","settingsTooltipText":"Настройки","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/DashboardWidget':{"noQueryDataText":"Сервер не располагает данными по запросу ","initializingText":"Инициализация","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/Dashboard':{"newTabTitleText":"Название новой вкладки","inputTitleText":"Введите название","copiedPageText":"Скопированная вкладка","showText":"Показать","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmCountDown':{"startsInText":"Начинается через","overduebyText":"Просроченные на","minuteText":"минута","minutesText":"минуты","hourText":"час","hoursText":"часы","dayText":"день","daysText":"дн.","weekText":"неделя","weeksText":"недели","monthText":"месяц","monthsText":"месяцы","yearText":"год","yearsText":"гг.","startsNowText":"Начинается сейчас","_localized":{}}
+,
+'Sage/UI/Alarms/nls/ActivityAlarm':{"noSubjectText":"Без темы","contactText":"Контакт","accountText":"Клиент","opportunityText":"Возможность","leadText":"Заинтересованное лицо","companyText":"Компания","recurringText":"Повторение","ticketText":"Заявка","leaderText":"Организатор","locationText":"Местоположение","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmButton':{"pastDueToolTipFmt":" Существуют просроченные действия: ${0}.","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmPane':{"dismissAllText":"Отклонить все","dismissText":"Отклонить","fiveMinText":"5 минут","tenMinText":"10 минут","fifteenMinText":"15 минут","thirtyMinText":"30 минут","oneHourText":"1 час","twoHourText":"2 часа","fourHourText":"4 часа","eightHourText":"8 часов","oneDayText":"1 день","twoDayText":"2 дня","threeDayText":"3 дня","oneWeekText":"1 неделя","twoWeekText":"2 недели","snoozeText":"Отложить","snoozeByText":"Отложить на:","snoozeAllText":"Отложить все","showCalendarText":"Показать календарь","_localized":{}}
+,
+'Sage/UI/Alarms/nls/UnconfirmedPane':{"showConfirmationsText":"Показать подтверждения","showCalendarText":"Показать календарь","acceptText":"Принять","declineText":"Отклонить","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmPopup':{"title":"Предупреждения","alarmsText":"Оповещения","unconfirmedText":"Не подтверждено","deleteText":"Удалить выбранные","helpText":"Справка","completeText":"Завершить выбранные действия","_localized":{}}
+,
+'Sage/UI/Alarms/nls/JobNotificationButton':{"notificationToolTip":"Уведомлений о заданиях: ${0}.","notificationErrorToolTip":"При загрузке уведомлений о задании возникла ошибка. Обратитесь к администратору.","_localized":{}}
+,
+'Sage/UI/Alarms/nls/JobNotificationPopup':{"title":"Уведомления о заданиях","helpText":"Справка","colNameJobName":"Тип","colNameProgress":"Ход выполнения","colNameStatus":"Статус","colExecutionResult":"Результат","executionStatusRunning":"Выполняется","executionStatusComplete":"Завершено","executionStatusInterrupting":"Прерывание","executionStatusInterrupted":"Прервано","executionStatusError":"Ошибка","executionStatusUndefined":"Не определено","_localized":{}}
+,
+'Sage/UI/SLXPreviewGrid/Filter/nls/Lookup':{"okText":"OК","_localized":{}}
+,
+'Sage/UI/nls/ActivityList':{"addMeetingText":"Запланировать встречу","addPhoneCallText":"Запланировать звонок...","addToDoText":"Запланировать дело","helpText":"Справка","completeText":"Завершить","typeText":"Тип","startDateText":"Дата/время","dateRangeText":"Диапазон дат","durationText":"Длительность","leaderText":"Организатор","contactText":"Контакт","opportunityText":"Возможность","descriptionText":"Тема","categoryText":"Категория","firstNameText":"Имя","lastNameText":"Фамилия","_localized":{}}
+,
+'Sage/UI/nls/NotesHistoryList':{"typeText":"Тип","showDbChangesText":"Показать изменения базы данных","selectAllText":"Выбрать все","dateText":"Дата","dateTimeText":"Дата/время","dateRangeText":"Диапазон дат","userText":"Пользователь","accountText":"Клиент","contactText":"Контакт","opportunityText":"Возможность","regardingText":"Тема","notesText":"Заметки","resultText":"Результат","categoryText":"Категория","sendEmailText":"Отправить по электронной почте","sendToWordText":"Отправить в Word","addNoteText":"Добавить заметку","completeAnActivityText":"Завершить действие","helpText":"Справка","pleaseSelectRecordsText":"Выберите одну или несколько записей","UnableToFindWordMsg":"Невозможно запустить Microsoft Word. Проверьте ваши установки по безопасности.","printedOnText":"Дата печати","errorNoData":"Отсутствуют заметки/история, чтобы открыть общий доступ к ним для Ming.le.","yesButtonText":"Да","noButtonText":"Нет","salesLogixPageTitle":"Infor CRM","noRecordsSelectedProcessAll":"Не выбрано ни одной записи. Все заметки/история (кол-во записей: ${0}), будут открыты для общего доступа для Ming.le. Продолжить?","errorShareMingle":"Возникла ошибка при открытии общего доступа к одной или нескольким заметкам/истории для Ming.le.","sharedToMingle":"Заметки/история открыты для общего доступа для Ming.le.","sharingToMingle":"Общий доступ для Ming.le","shared":"Открыто для общего доступа","pleaseWait":"Подождите...","failedToPost":"Не удалось опубликовать: ${0}; ошибка: ${1}","addressText":"Адрес","mainPhoneText":"Основной телефон","tollFreeText":"Бесплатный справочный телефон","contactPhoneText":"Контактный телефон","_localized":{}}
+,
+'Sage/Mingle/nls/UserService':{"_localized":{}}
+,
+'Sage/UI/Filters/nls/EditFilterItems':{"selectAllText":"Выбрать все","findItemText":"Найти пункт:","findText":"Найти","clearText":"Очистить","dialogTitle":"Редактировать элементы фильтра","okText":"OК","cancelText":"Отмена","_localized":{}}
+,
+'Sage/UI/Filters/nls/CheckBoxFilter':{"loadingText":"Загрузка...","moreText":"Редактировать элементы","clearText":"Очистить","emptyText":"(пусто)","nullText":"(нуль)","ofText":"/","filterHasMetric":"Имеет метрику","filterHasFilter":"Имеет фильтр","filteroptionYesterday":"Вчера","filteroptionToday":"Сегодня","filteroptionThisWeek":"Эта неделя","filteroptionThisMonth":"Этот месяц","filteroptionThisQuarter":"Этот квартал","filteroptionThisYear":"Этот год","filteroptionLastWeek":"Прошлая неделя","filteroptionLastMonth":"Прошлый месяц","filteroptionLastQuarter":"Прошлый квартал","filteroptionLastYear":"Прошлый год","filteroptionWeektoStart":"С начала недели","filteroptionMonthtoStart":"С начала месяца","filteroptionQtrtoStart":"С начала квартала","filteroptionYeartoStart":"С начала года","filteroptionOlder":"Раньше","filteroption0To999":"от 0 до 999","filteroption1000To9999":"от 1000 до 9999","filteroption10000To99999":"от 10 000 до 99 999","filteroption100000To499999":"от 100 000 до 499 999","filteroption500000To999999":"от 500 000 до 999 999","filteroption1000000AndHigher":"1 000 000 и выше","filteroptionT":"T","_localized":{}}
+,
+'Sage/UI/Filters/nls/EditFilters':{"selectAllText":"Выбрать все","dialogTitle":"Редактировать фильтры","okText":"OК","cancelText":"Отмена","_localized":{}}
+,
+'Sage/UI/Filters/nls/FilterPanel':{"editText":"Редактировать фильтры","noneText":"Фильтры не выбраны","clearText":"Очистить все","filterName":"Имя","filterDisplayName":"Отображаемое имя","filterEntityName":"Имя сущности","filterModifiedDate":"Дата изменения","filterHasMetric":"Имеет метрику","filterHasFilter":"Имеет фильтр","_localized":{}}
+,
+'Sage/UI/nls/SpeedSearch':{"standardText":"стандартный","advancedText":"дополнительно","speedSearchText":"SpeedSearch","_localized":{}}
+,
+'Sage/UI/nls/TimeZoneItem':{"buttonOKText":"OК","buttonCancelText":"Отмена","timeZoneText":"Часовой пояс","timeZoneSettingsText":"Параметры часового пояса","setTimeZoneText":"Установить часовой пояс:","_localized":{}}
+,
+'Sage/UI/nls/ActivityScheduler':{"tooltipTime":"Время","tooltipContactName":"Контакт","tooltipAccountName":"Клиент","tooltipCompanyName":"Компания","tooltipLeadName":"Заинтересованное лицо","tooltipPhoneNumber":"Телефон","tooltipRegarding":"Тема","tooltipPriority":"Приоритет","tooltipNotes":"Заметки","tooltipType":"Тип","tooltipDayType":"Тип дня","tooltipStartDate":"Дата начала","tooltipEndDate":"Дата окончания","tooltipLocation":"Местоположение","tooltipDescription":"Описание","completedText":"(завершено)","tooltipMoreActivities":"Нажмите, чтобы увидеть больше действий","scheduler_dates":{"month_full":["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"],"month_short":["Янв","Фев","Мар","Апр","Май","Июнь","Июль","Авг","Сен","Окт","Ноя","Дек"],"day_full":["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"],"day_short":["Вс","Пн","Вт","Ср","Чт","Пт","Сб"]},"scheduler_labels":{"dhx_cal_today_button":"Сегодня","day_tab":"День","week_tab":"Неделя","workweek_tab":"Рабочая неделя","month_tab":"Месяц","new_event":"Новое событие","icon_save":"Сохранить","icon_cancel":"Отмена","icon_details":"Подробности","icon_edit":"Редактировать","icon_delete":"Удалить","confirm_closing":"","confirm_deleting":"События будут удалены окончательно, вы уверены?","section_description":"Описание","section_time":"Период времени","full_day":"Полный день","confirm_recurring":"Вы хотите редактировать весь набор повторяющихся событий?","section_recurring":"Повторение событий","button_recurring":"Выключено","button_recurring_open":"Активировано","agenda_tab":"Повестка дня","date":"Дата","description":"Описание","year_tab":"Год","week_agenda_tab":"Повестка дня"},"_localized":{}}
+,
+'Sage/UI/nls/TimelessActivitiesPane':{"header_complete":"Завершить","header_type":"Тип","header_contact":"Имя","header_regarding":"Тема","tooltip_type":"Тип","tooltip_contact":"Контакт","tooltip_account":"Клиент","tooltip_lead":"Заинтересованное лицо","tooltip_phone":"Телефон","tooltip_leader":"Организатор","tooltip_regarding":"Тема","tooltip_location":"Местоположение","tooltip_notes":"Заметки","tooltip_company":"Компания","_localized":{}}
+,
+'Sage/UI/nls/EditCalendarUsers':{"selectAllText":"Выбрать все","findItemText":"Найти пользователя:","findText":"Найти","clearText":"Очистить","dialogTitle":"Редактировать пользователей календаря","okText":"OК","cancelText":"Отмена","maxUsersErrorMessage":"Нельзя выбрать более ${0} пользов. (включая вашего собственного). Отмените выбор одного из выбранных пользователей и повторите попытку.","updateErrorMessage":"Ошибка обновления пользователей календаря","_localized":{}}
+,
+'Sage/UI/nls/CalendarUsersListPane':{"header_color":"Цвет","header_user":"Пользователь","header_icon":"Значок","maxUsersErrorMessage":"Нельзя просматривать более чем ${0} календ. (включая свой собственный) одновременно. Закройте один из календарей и повторите попытку.","editUsersLinkText":"Редактировать пользователей календаря","noUsersMessage":"Пользователи не добавлены. Добавьте пользователей, выбрав выше ссылку \"Редактировать календари пользователей\"","_localized":{}}
+,
+'Sage/Utility/nls/Dashboard':{"pageText":"Страница","_localized":{}}
+,
+'Sage/Utility/nls/Sql':{"InvalidApostropheCount":"Недопустимое число апострофов в SQL-предложении IN.","_localized":{}}
+,
+'Sage/Utility/nls/IONWorkflowHelper':{"cancelWorkflowSuccess":"Workflow has been cancelled.","cancelWorkflowLog":"Unable to cancel workflow. Please refer to the error log for more details.","errorCancelWorkflow":"An error occurred when ${0} cancels workflow: ${1}.","_localized":{}}
 });
-},
-'Sage/QuickForms/Design/nls/ru/PhoneControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/PhoneControlDesigner", (
-{ displayNameText: 'Телефон' }
-));
-},
-'Sage/MainView/Lead/nls/ru/UpdateLeads':function(){
-define("Sage/MainView/Lead/nls/ru/UpdateLeads", (
-{ updateMultipleLeads_Caption: 'Обновление нескольких Наводок',
-  labelWidth: '120',
-  btnCancel_Caption: 'Отмена',
-  ok_Text: 'Ок',
-  update_To_Caption: 'Кому:',
-  update_Property_Caption: 'Обновление:',
-  updateProp_Owner: 'Доступ',
-  lookupOwnerText: 'Поиск владельца:',
-  lookupDescriptionColText: 'Описание',
-  updateProp_AcctMgr: 'Менеджер',
-  lookupActMgrText: 'Поиск Менеджера',
-  lookupNameColText: 'Имя',
-  lookupTitleColText: 'Название',
-  lookupDepartmentColText: 'Отдел',
-  lookupRegionColText: 'Регион',
-  lookupTypeColText: 'Тип',
-  errorUnspecifiedValue: 'Пожалуйста укажите значение перед продолжением.',
-  errorRequestingJobMgr: 'An error occurred requesting the job manager.',
-  updateLeadsTitle: 'Обновление наводок' }
-));
-},
-'Sage/Library/nls/ru/FileHandler':function(){
-define("Sage/Library/nls/ru/FileHandler", (
-{ AccessError: 'У вас нет прав, необходимых для выполнения этого действия.',
-  Available: 'Доступный',
-  Confirm: 'Подтвердить',
-  DeleteFileCnfmFmt: 'Вы уверены, что хотите удалить этот файл "${0}"?',
-  Delivered: 'Доставлено: не прочитано',
-  DeliveredRead: 'Доставлено: прочитано',
-  DocumentPropertiesError: 'Произошла неожиданная ошибка при попытке получить свойства документа.',
-  DocumentPropertiesUpdateError: 'Произошла неожиданная ошибка при попытке обновления свойств документа.',
-  DocumentUpdateConflictError: 'Файл был изменен другим пользователем, пожалуйста, обновите и повторите попытку.',
-  FileDeleteError: 'Произошла неожиданная ошибка при попытке удаления файла.',
-  FileStatusError: 'Произошла неожиданная ошибка при попытке обновить статус файла.',
-  LogRequestError: 'Произошел неожиданный сбой при записи в лог запроса документов синхронизации.',
-  No: 'Нет',
-  NoAccessMessage: 'У вас нет разрешения на добавление файлов в библиотеку. Для получения дополнительной информации обратитесь к администратору Saleslogix.',
-  Ordered: 'Упорядоченный',
-  PleaseSelectFile: 'Пожалуйста, выберите файл.',
-  PleaseWait: 'Пожалуйста, подождите',
-  Revised: 'Исправленный',
-  RevisionOrdered: 'Упорядоченные изменения',
-  UploadError: 'Произошла ошибка при попытке загрузить файл.',
-  Unknown: 'Неизвестен',
-  Yes: 'Да' }
-));
-},
-'Sage/UI/nls/ru/ListPanel':function(){
-define("Sage/UI/nls/ru/ListPanel", (
-{ listText: 'Список',
-  summaryText: 'Сводно',
-  detailText: 'Детали',
-  hideDetailText: 'Скрыть детали',
-  unsavedDataText: '* несохраненные данные',
-  helpText: 'Помощь',
-  refreshText: 'Обновить',
-  displayingText: 'Отображение',
-  ofText: 'из',
-  overflowText: 'При выполнении поиска получено слишком много результатов. Ограничьте область поиска с помощью фильтров.' }
-));
-},
-'Sage/Utility/nls/ru/Sql':function(){
-define("Sage/Utility/nls/ru/Sql", (
-{ InvalidApostropheCount: 'Недопустимое число апострофов в SQL-предложении IN.' }
-));
-},
-'Sage/UI/Filters/nls/ru/EditFilters':function(){
-define("Sage/UI/Filters/nls/ru/EditFilters", (
-{ selectAllText: 'Выбрать все',
-  dialogTitle: 'Изменить фильтры',
-  okText: 'Ок',
-  cancelText: 'Отмена' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/FormUsagesPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/FormUsagesPropertyEditor", (
-{ titleText: 'Использование',
-  portalText: 'Портал',
-  viewText: 'Вид',
-  modesText: 'Режимы',
-  descriptionText: 'Описание' }
-));
-},
-'Sage/UI/Controls/nls/ru/DurationSelect':function(){
-define("Sage/UI/Controls/nls/ru/DurationSelect", (
-{ minuteText: 'минута',
-  minutesText: 'минут',
-  hourText: 'час',
-  hoursText: 'часа',
-  dayText: 'день',
-  daysText: 'дня' }
-));
-},
-'Sage/UI/Alarms/nls/ru/AlarmCountDown':function(){
-define("Sage/UI/Alarms/nls/ru/AlarmCountDown", (
-{ startsInText: 'Начатые в',
-  overduebyText: 'Просроченные на',
-  minuteText: 'минута',
-  minutesText: 'минуты',
-  hourText: 'час',
-  hoursText: 'часов',
-  dayText: 'день',
-  daysText: 'Дней',
-  weekText: 'неделя',
-  weeksText: 'недель',
-  monthText: 'месяц',
-  monthsText: 'месяцев',
-  yearText: 'год',
-  yearsText: 'лет',
-  startsNowText: 'Начинается сейчас' }
-));
-},
-'Sage/UI/nls/ru/AttachmentList':function(){
-define("Sage/UI/nls/ru/AttachmentList", (
-{ attachmentText: 'Вложение',
-  userText: 'Пользователь',
-  modDateText: 'Дата/время обновления',
-  dateRangeText: 'Диапазон даты изменения',
-  sizeText: 'Размер',
-  extensionText: 'Расширение файла',
-  addFileText: 'Добавить файл',
-  addUrlText: 'Добавить URL',
-  editText: 'Изменить',
-  helpText: 'Помощь',
-  addGoogleText: 'Добавление документа Google',
-  deleteText: 'Удалить',
-  request: 'Запрос файла',
-  delivered: 'Доставлено',
-  requested: 'Запрошено',
-  available: 'Доступный' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/RowBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/RowBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  indexText: 'Индекс:',
-  indexTooltipText: 'Номер строки или столбца, начиная с нуля.' }
-));
-},
-'Sage/MainView/JobMgr/nls/ru/RunJobDialog':function(){
-define("Sage/MainView/JobMgr/nls/ru/RunJobDialog", {
-    dlgRunJob_Title: 'Запуск/назначение задания',
-    txtJobName_Caption: 'Имя задания',
-    txtTriggerDescription_Caption: 'Описание',
-    cmbScheduleType_Caption: 'Расписание:',
-    cmdOK_Caption: 'Ок',
-    cmdCancel_Caption: 'Отмена',
-    txtInvalidNumber: 'Недопустимое число.',
-    contentPaneParameters_Caption: 'Параметры',
-    txtRunNow: 'Запустить сейчас',
-    txtScheduledExecution: 'Выполнение по расписанию',
-    colName_Caption: 'Имя',
-    colValue_Caption: 'Значение',
-    colDescription_Caption: 'Описание',
-    txtInvalidParameterTitle: 'Недопустимый параметр',
-    txtInvalidParameterMessage: 'Недопустимый параметр: ${0}'
-});
-},
-'Sage/QuickForms/Design/nls/ru/CheckBoxControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/CheckBoxControlDesigner", (
-{ displayNameText: 'Кнопка-флажок' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/EditableGridControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/EditableGridControlDesigner", (
-{ displayNameText: 'Редактируемая таблица' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/HiddenControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/HiddenControlDesigner", (
-{ displayNameText: 'Скрытый текст' }
-));
-},
-'Sage/UI/Dashboard/nls/ru/DashboardWidgetCell':function(){
-define("Sage/UI/Dashboard/nls/ru/DashboardWidgetCell", (
-{ closeTooltipText: 'Закрыть',
-  minimizeTooltipText: 'Свернуть',
-  settingsTooltipText: 'Параметры' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/UserBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/UserBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/UI/nls/ru/Dialogs':function(){
-define("Sage/UI/nls/ru/Dialogs", (
-{ yesText: 'Да',
-  noText: 'Нет',
-  okText: 'ОК',
-  cancelText: 'Отмена' }
-));
-},
-'Sage/TaskPane/nls/ru/SecuredActionTasklet':function(){
-define("Sage/TaskPane/nls/ru/SecuredActionTasklet", (
-{ addToRoleTitle: 'Добавить к роли' }
-));
-},
-'Sage/UI/Dashboard/nls/ru/DashboardTabController':function(){
-define("Sage/UI/Dashboard/nls/ru/DashboardTabController", (
-{ newTabText: 'Новая закладка',
-  addContentText: 'Добавить наполнение',
-  editOptionsText: 'Изменить свойства',
-  hideTabText: 'Скрыть закладку',
-  closeText: 'Закрыть',
-  copyTabText: 'Копировать закладку',
-  showTabText: 'Показать закладку',
-  shareTabText: 'Доступ',
-  deleteTabText: 'Удалить закладку',
-  deleteTabConfirmText: 'Вы действительно хотите удалить эту закладку?',
-  descriptionText: 'Описание',
-  everyoneText: 'Всем',
-  saveTabText: 'Сохранить закладку',
-  helpText: 'Помощь',
-  addText: 'Добавить',
-  invalidMessage: 'Недопустимый символ',
-  invalidDuplicateMessage: 'Название должно быть уникальным.',
-  deleteText: 'Удалить',
-  titleText: 'Название:',
-  chooseTemplateText: 'Выберите шаблон, который вы хотите использовать:',
-  oneColumnText: 'Один столбец',
-  twoColumnText: 'Разделить на две колонки',
-  fatLeftText: 'Две колонки, большая левая',
-  fatRightText: 'Две колонки, большая правая',
-  makeDefaultText: 'Использовать по умолчанию',
-  releaseFetchErrorText: 'Ошибка выборки списка релизов',
-  releaseDeleteNoneSelected: 'Элементы не выбраны.',
-  releasedToText: 'Доступно:',
-  typeText: 'Тип',
-  addLookup: 'Добавить',
-  okButton: 'Ок',
-  errorText: 'Ошибка',
-  warningText: 'Предупреждение',
-  permissionErrorText: 'Ошибка: Пользователь не имеет права на выполнение этого действия.',
-  permissionErrorPerformCopyText: 'Вы хотите создать персональную копию этой страницы?',
-  yesText: 'Да',
-  noText: 'Нет' }
-));
-},
-'Sage/MainView/IntegrationContract/nls/ru/SalesOrderRTDV':function(){
-define("Sage/MainView/IntegrationContract/nls/ru/SalesOrderRTDV", (
-{ dialogCaption: 'Детали заказа',
-  loadingText: 'загрузка...',
-  lblSalesOrderCaption: 'Заказ на продажи:',
-  lblStatusCaption: 'Статус:',
-  lblGrossTotalCaption: 'Сумма заказа:',
-  lblOrderDateCaption: 'Дата заказа:',
-  lblTaxTotalCaption: 'Налог, всего:',
-  lblHoldStatusCaption: 'Статус:',
-  lblCurrencyCaption: 'Валюта:',
-  lblTypeCaption: 'Тип:',
-  lblCostTotalCaption: 'Общая стоимость:',
-  lblPONumberCaption: 'Номер заказа:',
-  lblProfitTotalCaption: 'Общий доход:',
-  lblQuotationCaption: 'Котировка:',
-  lblInvoiceStatusCaption: 'Статус счета:',
-  lblContactCaption: 'Контакт:',
-  lblDeliveryDateCaption: 'Дата доставки:',
-  lblDueDateCaption: 'Плановая дата:',
-  lblPriceListCaption: 'Прайс-лист:',
-  lblCarrierCaption: 'Перевозчик:',
-  lblNetTotalCaption: 'Всего нетто:',
-  lblAllocationStatusCaption: 'Статус размещения:',
-  lblDiscountTotalCaption: 'Всего скидки:',
-  lblDeliveryStatusCaption: 'Статус доставки:',
-  lblChargesTotalCaption: 'Всего расходов:',
-  detailsTabTitle: 'Детали',
-  salesPersonsTabTitle: 'Продавец',
-  addressTabTitle: 'Адреса',
-  salesOrderLinesTabTitle: 'Линии заказа',
-  paymentsTabTitle: 'Платежи',
-  deliveriesTabTitle: 'Доставка',
-  grdSalesOrder_Edit: 'Изменить',
-  grdSalesOrder_OrderNumber: 'Номер заказа',
-  grdSalesOrder_OrderDate: 'Дата заказа',
-  grdSalesOrder_Status: 'Статус',
-  grdSalesOrder_HoldStatus: 'Статус',
-  grdSalesOrder_Type: 'Тип',
-  grdSalesOrder_PO: '№ продукта заказа',
-  grdSalesOrder_NetTotal: 'Сумма нетто',
-  grdSalesOrder_DiscountTotal: 'Всего скидки',
-  grdSalesOrder_ChargesTotal: 'Всего расходов',
-  grdSalesOrder_TaxTotal: 'Налог, всего',
-  grdSalesOrder_GrossTotal: 'Всего брутто',
-  grdSalesOrder_Currency: 'Валюта',
-  grdSalesPersons_Name: 'Имя',
-  grdSalesPersons_Type: 'Тип',
-  grdSalesPersons_Extension: 'Расширение',
-  grdSalesPersons_Relationship: 'Связь',
-  grdAddress_Name: 'Имя',
-  grdAddress_Address1: 'Улица',
-  grdAddress_Address2: 'Дом',
-  grdAddress_City: 'Город',
-  grdAddress_State: 'Область',
-  grdAddress_Zip: 'Почт. индекс',
-  grdItems_Line: 'Номер линии',
-  grdItems_Type: 'Тип',
-  grdItems_Commodity: 'Товар',
-  grdItems_CommodityVariant: 'Вариант',
-  grdItems_CommodityDimension: 'Размеры',
-  grdItems_UnitOfMeasure: 'Единица',
-  grdItems_Location: 'Размещение',
-  grdItems_PriceList: 'Прайс-лист',
-  grdItems_Quantity: 'Кол-во',
-  grdItems_InitialPrice: 'Первоначальная цена',
-  grdItems_ActualPrice: 'Фактическая цена',
-  grdItems_NetTotal: 'Сумма нетто',
-  grdItems_ChargesTotal: 'Всего расходов',
-  grdItems_DiscountTotal: 'Всего скидки',
-  grdItems_TaxTotal: 'Налог, всего',
-  grdItems_GrossTotal: 'Всего брутто',
-  grdPayments_Date: 'Дата оплаты',
-  grdPayments_Name: 'Имя',
-  grdPayments_Type: 'Тип',
-  grdPayments_Status: 'Статус',
-  grdPayments_NetTotal: 'Сумма нетто',
-  grdPayments_Discounts: 'Скидки',
-  grdPayments_Charges: 'Расходы',
-  grdPayments_Tax: 'Налог',
-  grdPayments_GrossTotal: 'Всего брутто',
-  grdPayments_Currency: 'Валюта',
-  grdPayments_TenderType: 'Тип тендера',
-  grdPayments_TenderReference: 'Ссылка на тендер',
-  grdPayments_ProcessDate: 'Дата обработки',
-  grdDeliveries_Number: 'Число',
-  grdDeliveries_Type: 'Тип',
-  grdDeliveries_Status: 'Статус',
-  grdDeliveries_RequestedDate: 'Требуемая дата',
-  grdDeliveries_ActualDate: 'Фактическая дата',
-  grdDeliveries_ActualTime: 'Фактическая время',
-  grdDeliveries_RequestedQuantity: 'Требуемое количество',
-  grdDeliveries_DeliveredQuantity: 'Кол-во доставленного',
-  grdDeliveries_Method: 'Метод',
-  grdDeliveries_Carrier: 'Перевозчик',
-  grdDeliveries_CarrierReference: 'Ссылка на перевозчика',
-  grdDeliveries_ExceptionReason: 'Причина исключения',
-  errorERPRequest: 'Произошла ошибка открытия детального представления системы учета заказов.',
-  errorERPRequestDetails: '${0}, ${1} Запрос: ${2}',
-  btnCloseCaption: 'Закрыть' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/UserControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/UserControlDesigner", (
-{ displayNameText: 'Пользователь' }
-));
-},
-'Sage/Groups/nls/ru/GroupNavigator':function(){
-define("Sage/Groups/nls/ru/GroupNavigator", (
-{ firstText: 'К первому',
-  previousText: 'К пред.',
-  nextText: 'К след.',
-  lastText: 'К последнему',
-  listText: 'Представление в виде списка',
-  noRecordsText: 'Нет записей',
-  labelFmtText: '${0} из ${1}' }
-));
-},
-'Sage/Utility/File/nls/ru/AddURLAttachment':function(){
-define("Sage/Utility/File/nls/ru/AddURLAttachment", (
-{ descriptionText: 'Описание',
-  urlText: 'URL',
-  titleText: 'Добавить URL-вложение',
-  okText: 'Ок',
-  cancelText: 'Отмена',
-  requestFailedMsg: 'Запрошенная операция не может быть завершена, пожалуйста, повторите попытку позже.',
-  urlBlankMsg: 'URL или Описание не может быть пустым.' }
-));
-},
-'Sage/UI/Filters/nls/ru/EditFilterItems':function(){
-define("Sage/UI/Filters/nls/ru/EditFilterItems", (
-{ selectAllText: 'Выбрать все',
-  findItemText: 'Найти пункт:',
-  findText: 'Найти',
-  clearText: 'Очистить',
-  dialogTitle: 'Редактировать элементы фильтра',
-  okText: 'Ок',
-  cancelText: 'Отмена' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportsFormatter':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportsFormatter", (
-{ txtEdit: 'Изменить',
-  txtDelete: 'Удалить',
-  txtRangeValue: '${0} по ${1}' }
-));
-},
-'Sage/Utility/File/nls/ru/DragDropWatcher':function(){
-define("Sage/Utility/File/nls/ru/DragDropWatcher", (
-{ query0: 'Функция, которую вы запрашиваете, требует модуль Saleslogix <br> Desktop Integration.',
-  query1: 'Искать еще...',
-  query2: 'Хотите установить эту функцию сейчас?',
-  query3: 'Примечание: Этот модуль может быть установлен в любое время со страницы входа в систему или со страницы Параметры.' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/DesignSurface':function(){
-define("Sage/QuickForms/Design/nls/ru/DesignSurface", (
-{ bisectionErrorText: 'Размещение с другим контролом приведет к тому, что место будет поделено попалам.',
-  rowBoundsErrorText: 'Выбранная строка выходит за границы.',
-  columnBoundsErrorText: 'Выбранная колонка выходит за границы.',
-  rowSpanBoundsErrorText: 'Выбранная высота выходит за пределы количества строк.',
-  columnSpanBoundsErrorText: 'Выбранная ширина выходит за пределы количества колонок.',
-  occupiedErrorText: 'Не достаточно свободного места для выбранного размера.' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/ConfirmListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/ConfirmListPanelConfig", (
-{ colNameType: 'Тип дела',
-  colNameNotification: 'Сообщение',
-  colNameStartDate: 'Дата начала',
-  colNameDuration: 'Длительность',
-  colNameRegarding: 'Тема',
-  colNameFromUser: 'От',
-  colNameToUser: 'Кому' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/FormAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/FormAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  generalText: 'Общий',
-  useEntityNameAsTitleText: 'Используйте имя сущности как название:',
-  useEntityNameAsTitleTooltipText: 'Используете имя текущей сущности в название формы.' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/EventListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/EventListPanelConfig", (
-{ colNameType: 'Тип',
-  colNameStartDate: 'Дата начала',
-  colNameEndDate: 'Дата окончания',
-  colNameDescription: 'Описание',
-  colNameUser: 'Пользователь',
-  colNameLocation: 'Размещение' }
-));
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/ru/AllOpenListPanelConfig':function(){
-define("Sage/Extensions/Activity/ListPanelOverrides/nls/ru/AllOpenListPanelConfig", (
-{ colNameAssociationCount: 'Число участников' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectNumberParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectNumberParameterEditor", {
-    txtPleaseSpecifyNumberBetween: 'Пожалуйста, сформулируйте числовое значение от {0} и {1}.',
-    txtPleaseSpecifyNumberLesser: 'Пожалуйста, сформулируйте числовое значение меньше или равное {0}.',
-    txtPleaseSpecifyNumberGreater: 'Пожалуйста, сформулируйте числовое значение, большее или равное {0}.',
-    txtPleaseSpecifyValue: 'Пожалуйста, сформулируйте числовое значение.',
-    lblAvailableValues_Caption: 'Доступные значения:',
-    lblSelectedValues_Caption: 'Отдельные значения:',
-    lblEnterValue_Caption: 'Введите значение:'
-});
-},
-'Sage/UI/nls/ru/ActivityScheduler':function(){
-define("Sage/UI/nls/ru/ActivityScheduler", (
-{ tooltipTime: 'Время',
-  tooltipContactName: 'Контакт',
-  tooltipAccountName: 'Субъект',
-  tooltipCompanyName: 'Компания',
-  tooltipLeadName: 'Наводка',
-  tooltipPhoneNumber: 'Телефон',
-  tooltipRegarding: 'Тема',
-  tooltipPriority: 'Приоритет',
-  tooltipNotes: 'Заметки',
-  tooltipType: 'Тип',
-  tooltipDayType: 'Тип дня',
-  tooltipStartDate: 'Дата начала',
-  tooltipEndDate: 'Дата окончания',
-  tooltipLocation: 'Размещение',
-  tooltipDescription: 'Описание',
-  completedText: '(Завершено)',
-  tooltipMoreActivities: 'Нажмите, чтобы увидеть больше дел',
-  scheduler_dates: 
-   { month_full: 
-      [ 'Январь',
-        'Февраль',
-        'Март',
-        'Апрель',
-        'Май',
-        'Июнь',
-        'Июль',
-        'Август',
-        'Сентябрь',
-        'Октябрь',
-        'Ноябрь',
-        'Декабрь' ],
-     month_short: 
-      [ 'Янв',
-        'Фев',
-        'Мар',
-        'Апр',
-        'Май',
-        'Июнь',
-        'Июль',
-        'Авг',
-        'Сен',
-        'Окт',
-        'Ноя',
-        'Дек' ],
-     day_full: 
-      [ 'Воскресенье',
-        'Понедельник',
-        'Вторник',
-        'Среда',
-        'Четверг',
-        'Пятница',
-        'Суббота' ],
-     day_short: [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ] },
-  scheduler_labels: 
-   { dhx_cal_today_button: 'Сегодня',
-     day_tab: 'День',
-     week_tab: 'Неделя',
-     workweek_tab: 'Рабочая неделя',
-     month_tab: 'Месяц',
-     new_event: 'Новое событие',
-     icon_save: 'Сохранить',
-     icon_cancel: 'Отмена',
-     icon_details: 'Детали',
-     icon_edit: 'Изменить',
-     icon_delete: 'Удалить',
-     confirm_closing: '',
-     confirm_deleting: 'События будут удалены окончательно, вы уверены?',
-     section_description: 'Описание',
-     section_time: 'Период времени',
-     full_day: 'Полный рабочий день',
-     confirm_recurring: 'Вы хотите редактировать весь набор повторяющихся событий?',
-     section_recurring: 'Повторение событий',
-     button_recurring: 'Запрещено',
-     button_recurring_open: 'Доступен',
-     agenda_tab: 'Повестка дня',
-     date: 'Дата',
-     description: 'Описание',
-     year_tab: 'Год',
-     week_agenda_tab: 'Повестка дня' } }
-));
-},
-'Sage/MainView/nls/ru/SecurityManager':function(){
-define("Sage/MainView/nls/ru/SecurityManager", (
-{ accessText: 'Доступ ',
-  columnText: 'Колонка',
-  entityText: 'Сущность',
-  noAccessText: 'Нет доступа',
-  profilesText: 'Профили',
-  propertyText: 'Свойство',
-  securityManagerText: 'Менеджер безопасности',
-  readOnlyText: 'Только для чтения',
-  readWriteText: 'Чтение запись',
-  resetText: 'Сброс',
-  saveText: 'Сохранить',
-  tableText: 'Таблица' }
-));
-},
-'Sage/TaskPane/nls/ru/ActivityTaskConfigurationProvider':function(){
-define("Sage/TaskPane/nls/ru/ActivityTaskConfigurationProvider", (
-{ scheduleText: 'Планировать',
-  eventText: 'Событие',
-  phoneCallText: 'Звонок',
-  toDoText: 'Дело',
-  meetingText: 'Встреча',
-  personalActivityText: 'Личные дела',
-  deleteConfirmationText: 'Удалить подтверждение',
-  acceptConfirmationText: 'Подтвердить',
-  declineConfirmationText: 'Отклонить',
-  completeActivityText: 'Завершить дело',
-  deleteActivityText: 'Удалить дело',
-  deleteEventText: 'Удалить событие',
-  scheduleEventText: 'Планировать событие',
-  scheduleRequestText: 'Планировать запрос',
-  deleteRequestText: 'Удалить запрос',
-  recordsSelectedText: 'записей выбрано',
-  clearText: 'Очистить' }
-));
-},
-'Sage/UI/Controls/nls/ru/EntityInfoToolTip':function(){
-define("Sage/UI/Controls/nls/ru/EntityInfoToolTip", (
-{ errorText: 'Информация не найдена.',
-  loadingText: 'Загрузка...',
-  noInfoText: 'Нет данных для отображения.',
-  mainText: 'Основной:',
-  faxText: 'Факс:',
-  tollFreeText: 'Справочный тел.:',
-  urlText: 'Веб URL:',
-  workText: 'Рабочий:',
-  mobileText: 'Мобильный тел.:',
-  emailText: 'Эл.почта:',
-  contactNameText: 'Имя:',
-  phoneText: 'Телефон:',
-  accountText: 'Субъект:' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/ActivityGroupContextService':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/ActivityGroupContextService", (
-{ activityTabDisplayName: 'Мои дела',
-  litTabDisplayName: 'Инф. материалы',
-  eventTabDisplayName: 'События',
-  confirmTabDisplayName: 'Подтверждения',
-  pastDueTabDisplayName: 'Прошедшие',
-  alarmTabDisplayName: 'Оповещения',
-  allOpenTabDisplayName: 'Все открытые' }
-));
-},
-'Sage/MainView/ReportMgr/Common/nls/ru/ExportOptionsDialog':function(){
-define("Sage/MainView/ReportMgr/Common/nls/ru/ExportOptionsDialog", {
-    txtDialogTitle: 'Параметры экспорта',
-    txtDialogTitleScheduling: 'Экспорт и планирование Опции',
-    cmdBack_Caption: '< Назад',
-    cmdNext_Caption: 'Следующий>',
-    cmdCancel_Caption: 'Отмена',
-    txtName: 'Имя',
-    txtSelectUser: 'Выберите польз.',
-    txtOK: 'Ок',
-    txtOutputFormat_Caption: 'Формат',
-    txtRunAs_Caption: 'Запуск от имени',
-    txtScheduleDescription_Caption: 'Описание'
-});
-},
-'Sage/MainView/Opportunity/nls/ru/UpdateOpportunities':function(){
-define("Sage/MainView/Opportunity/nls/ru/UpdateOpportunities", (
-{ addToForecast_No: 'Нет',
-  addToForecast_Yes: 'Да',
-  btnCancel_Caption: 'Отмена',
-  btnOK_Caption: 'Ок',
-  estimatedClose_Days: 'Дней',
-  estimatedClose_MoveOut: 'Переместить',
-  estimatedClose_To: 'Кому',
-  moveEstCloseDate_Backward: 'Назад',
-  moveEstCloseDate_Forward: 'Вперед',
-  update_To_Caption: 'Кому:',
-  update_Property_Caption: 'Обновление:',
-  updateMultipleOpps_Caption: 'Обновить сделки',
-  updateProp_AcctMgr: 'Менеджер',
-  updateProp_Comments: 'Комментарии',
-  updateProp_EstClose: 'План. закрытие',
-  updateProp_Forecast: 'Добавить в прогноз',
-  updateProp_Probability: 'Вероятность закрытия %',
-  lookupActMgrText: 'Поиск Менеджера',
-  lookupNameColText: 'Имя',
-  lookupTitleColText: 'Название',
-  lookupDepartmentColText: 'Отдел',
-  lookupRegionColText: 'Регион',
-  lookupTypeColText: 'Тип',
-  errorUnspecifiedValue: 'Пожалуйста укажите значение перед продолжением.',
-  errorRequestingJobMgr: 'Ошибка при выполнении обновления: ${0}' }
-));
-},
-'Sage/UI/nls/ru/EditCalendarUsers':function(){
-define("Sage/UI/nls/ru/EditCalendarUsers", (
-{ selectAllText: 'Выбрать все',
-  findItemText: 'Найти пользователя:',
-  findText: 'Найти',
-  clearText: 'Очистить',
-  dialogTitle: 'Править пользователей календаря',
-  okText: 'ОК',
-  cancelText: 'Отмена',
-  maxUsersErrorMessage: 'Нельзя выбрать более ${0} пользователей (включая вашего собственного).  Отмените выбор одного из выбранных пользователей и повторите попытку.',
-  updateErrorMessage: 'Ошибка обновления пользователей календаря' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportParametersDialog':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportParametersDialog", (
-{ txtDialogTitle: 'Ввод значений',
-  cmdBack_Caption: '< Назад',
-  cmdNext_Caption: 'Следующий>',
-  cmdCancel_Caption: 'Отмена' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/DateTimePickerControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/DateTimePickerControlDesigner", (
-{ displayNameText: 'Выбор Дата/Время' }
-));
-},
-'Sage/UI/Controls/nls/ru/HelpMenu':function(){
-define("Sage/UI/Controls/nls/ru/HelpMenu", (
-{ helpText: 'Помощь',
-  aboutText: 'О программе',
-  webClientHelpText: 'Помощь по Веб-клиенту',
-  gettingStartedText: 'Руководство к началу работы',
-  quickReferenceText: 'Краткое справочное руководство' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/LayoutPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/LayoutPropertyEditor", (
-{ titleText: 'Макет',
-  positionText: 'Позиция',
-  sizeText: 'Размер',
-  rowText: 'Строка:',
-  rowTooltipText: 'Номер строки для элементов управления.',
-  columnText: 'Столбец:',
-  columnTooltipText: 'Номер столбца элемента управления.',
-  rowSpanText: 'Диапазон строк:',
-  rowSpanTooltipText: 'Количество ячеек, которые элемент управления занимает вертикально.',
-  columnSpanText: 'Диапазон столбцов:',
-  columnSpanTooltipText: 'Количество ячеек, которые элемент управления занимает по горизонтали.' }
-));
-},
-'Sage/TaskPane/nls/ru/UserTasklet':function(){
-define("Sage/TaskPane/nls/ru/UserTasklet", (
-{ addToRoleTitle: 'Добавить к роли',
-  resetUsersTitle: 'Сброс пользователей',
-  associateContactTitle: 'Связать с контактом',
-  disAssociateContactTitle: 'Удалить связь с контактом',
-  disAssociateDialogTitle: 'Удалить связь с контактом',
-  confirmDisAssociate: 'Удалить связь выбранного пользователя ${0} со связанным контактом?',
-  confirmDisAssociateMultiple: 'Удалить связь выбранных пользователей ${0} со всеми связанными контактами?',
-  associationExistsMessage: 'Выбранный пользователь уже связан с контактом. Чтобы связать этого пользователя с другим контактом, сначала необходимо удалить связь пользователя с контактом.',
-  multipleSelectionErrorMessage: 'Эту задачу можно выполнять только для одного пользователя за раз. \n Выберите одного пользователя и выберите задачу снова.',
-  noSelectionErrorMessage: 'Должен быть выбран хотя бы один пользователь для отмены связи. \n Выберите одного или нескольких пользователей и повторите задачу.',
-  singleSelectionErrorMessage: 'Вы должны выбрать пользователя для отмены связи. \n Выберите одного пользователя и повторите задачу.' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/NumberParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/NumberParameterEditor", {
-    txtPleaseSpecifyNumberBetween: 'Пожалуйста, сформулируйте числовое значение от {0} и {1}.',
-    txtPleaseSpecifyNumberLesser: 'Пожалуйста, сформулируйте числовое значение меньше или равное {0}.',
-    txtPleaseSpecifyNumberGreater: 'Пожалуйста, сформулируйте числовое значение, большее или равное {0}.',
-    txtPleaseSpecifyValue: 'Пожалуйста, сформулируйте числовое значение.'
-});
-},
-'Sage/UI/Alarms/nls/ru/ActivityAlarm':function(){
-define("Sage/UI/Alarms/nls/ru/ActivityAlarm", (
-{ noSubjectText: 'Без темы',
-  contactText: 'Контакт',
-  accountText: 'Субъект',
-  opportunityText: 'Сделка',
-  leadText: 'Наводка',
-  companyText: 'Компания',
-  recurringText: 'Повторение',
-  ticketText: 'Заявка',
-  leaderText: 'Руководитель',
-  locationText: 'Размещение' }
-));
-},
-'Sage/MainView/Opportunity/nls/ru/OpportunityStatistics':function(){
-define("Sage/MainView/Opportunity/nls/ru/OpportunityStatistics", (
-{ opportunityStatistics_Caption: 'Статистика по сделке',
-  loadingMessge: 'Загрузка...',
-  opportunityCount: 'Количество сделок',
-  salesPotentialTotal: 'Итого потенц. продаж (среднее)',
-  weightedPotentialTotal: 'Итого прогноз. план. (Среднее)',
-  averageCloseProbability: 'Ср. вероятность закрытия',
-  actualAmountTotal: 'Всего по факту (в среднем)',
-  averageDaysOpen: 'Ср.число дней открытия',
-  rangeEstClose: 'Диапазон даты закрытия (Мин - Макс)',
-  btnClose_Caption: 'Закрыть',
-  errorRequestingStatistics: 'При попытке запроса статистики возможности возникла ошибка.' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionEditor':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionEditor", {
-    dlgCrystalReportConditionDetails_Title: 'Добавить/изменить условия',
-    cmdOK_Caption: 'Ок',
-    cmdCancel_Caption: 'Отмена',
-    cmbConditionType_Caption: 'Поиск по',
-    txtInvalidParameterTitle: 'Недопустимый параметр',
-    txtInvalidParameterMessage: 'Недопустимый параметр: ${0}',
-    lkpUser_Caption: 'Пользователь',
-    lkpGroup_Caption: 'Группа',
-    txtSelectUser: 'Выберите польз.',
-    chkCurrentUser_Caption: 'Текущий пользователь',
-    txtName: 'Имя',
-    txtOK: 'Ок',
-    txtSelectGroup: 'Выбрать Группу',
-    cmbDateRange_Caption: 'Временной диапазон',
-    cmbDateRange_SpecificDates_Caption: 'Точная дата',
-    cmbDateRange_ThisWeek_Caption: 'На этой неделе',
-    cmbDateRange_ThisMonth_Caption: 'В этом месяце',
-    cmbDateRange_ThisQuarter_Caption: 'В этот квартал',
-    cmbDateRange_ThisYear_Caption: 'В этом году',
-    cmbDateRange_LastWeek_Caption: 'Последняя неделя',
-    cmbDateRange_LastMonth_Caption: 'Прошлый месяц',
-    cmbDateRange_LastQuarter_Caption: 'Прошлый квартал',
-    cmbDateRange_LastYear_Caption: 'Прошлый год',
-    cmbDateRange_MonthToDate_Caption: 'Текущий месяц',
-    cmbDateRange_QuarterToDate_Caption: 'С начала квартала',
-    cmbDateRange_YearToDate_Caption: 'С начала года',
-    dtFromDate_Caption: 'От',
-    dtToDate_Caption: 'Кому',
-    cmbTable_Caption: 'Таблица',
-    cmbField_Caption: 'Поле',
-    cmbOperator_Caption: 'Оператор',
-    txtValue_Caption: 'Значение',
-    txtNumericValueFrom_Caption: 'От',
-    txtNumericValueTo_Caption: 'Кому'
-});
-},
-'Sage/MainView/IntegrationContract/nls/ru/AdvancedSearchOptions':function(){
-define("Sage/MainView/IntegrationContract/nls/ru/AdvancedSearchOptions", (
-{ dialogCaption: 'Ссылка на учет',
-  searchOptionsHeader: 'Поиск совпадений в ',
-  searchOptionsText: 'Следующий критерий использовался в предыдущем поиске. Измените критерий для нового поиска. Нажмите ОК для начала поиска..',
-  propertyText: 'Свойство',
-  operatorText: 'Оператор',
-  searchText: 'Значение поиска',
-  loadingText: 'загрузка...',
-  loadingDisplay: 'Поиск результатов...',
-  hideImgAltText: 'Исключить условие',
-  addImgAltText: 'Добавить условие',
-  okText: 'ОК',
-  cancelText: 'Отмена' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/ColumnDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/ColumnDesigner", (
-{ displayNameText: 'Колонка' }
-));
-},
-'Sage/UI/nls/ru/SearchMenuItem':function(){
-define("Sage/UI/nls/ru/SearchMenuItem", (
-{ findText: 'Найти',
-  clearText: 'Очистить',
-  showHiddenText: 'Показать скрытые: ' }
-));
-},
-'Sage/Library/nls/ru/DocumentProperties':function(){
-define("Sage/Library/nls/ru/DocumentProperties", (
-{ Abstract: 'Аннотация',
-  Cancel: 'Отмена',
-  DocumentProperties: 'Свойства Документа',
-  Created: 'Дата создания',
-  Description: 'Описание',
-  Directory: 'Каталог',
-  DoNotExpire: 'Не истекает',
-  Expires: 'Истекает',
-  FileName: 'Название файла',
-  ForceDistribution: 'Принудительно распределить этот файл',
-  InvalidFileName: 'Имя файла не может содержать любые из следующих символов: \\ / : * ? " < > |',
-  Never: 'Никогда',
-  OK: 'ОК',
-  Revised: 'Дата изменения',
-  Size: 'Размер',
-  Status: 'Статус' }
-));
-},
-'Sage/UI/nls/ru/NotesHistoryList':function(){
-define("Sage/UI/nls/ru/NotesHistoryList", (
-{ typeText: 'Тип',
-  showDbChangesText: 'Отобразить изменения в БД',
-  selectAllText: 'Выбрать все',
-  dateText: 'Дата',
-  dateTimeText: 'Дата/Время',
-  dateRangeText: 'Временной диапазон',
-  userText: 'Пользователь',
-  accountText: 'Субъект',
-  contactText: 'Контакт',
-  opportunityText: 'Сделка',
-  regardingText: 'Тема',
-  notesText: 'Заметки',
-  resultText: 'Результат',
-  categoryText: 'Категория',
-  sendEmailText: 'Отправить по Эл. почте',
-  sendToWordText: 'Передать в Word',
-  addNoteText: 'Добавить заметку',
-  completeAnActivityText: 'Завершить дело',
-  helpText: 'Помощь',
-  pleaseSelectRecordsText: 'Выберите одну или несколько записей',
-  UnableToFindWordMsg: 'Невозможно запустить Microsoft Word.  Проверьте ваши установки по безопасности.',
-  printedOnText: 'Напечатано на' }
-));
-},
-'Sage/Utility/nls/ru/File':function(){
-﻿define("Sage/Utility/nls/ru/File", {
-    unableToUploadText: 'Для использования этой функции должен быть установлен модуль интеграции рабочего стола Saleslogix.',
-    unknownSizeText: 'Неизвестен',
-    largeFileWarningText: 'Предупреждение: запрос не смог быть загружен так как он превышает ограничение на размер установленное администратором. ',
-    largeFileWarningTitle: 'Предупреждение'
-});
-},
-'Sage/MainView/ReportMgr/nls/ru/HistoryListPanelConfig':function(){
-define("Sage/MainView/ReportMgr/nls/ru/HistoryListPanelConfig", {
-    colNameDate: 'Дата',
-    colNameScheduleName: 'Описание',
-    colNameExecutionType: 'Тип выполнения',
-    colNameRunAs: 'Запуск от имени',
-    colNameScheduledBy: 'Запланировано от имени',
-    colNameReportName: 'Отчет',
-    colNameSize: 'Размер файла',
-    colNameOutputFormat: 'Формат вывода',
-    colNameReportType: 'Тип'
-});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/BooleanParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/BooleanParameterEditor", {
-    txtPleaseSpecifyValue: 'Пожалуйста, укажите значение.'
-});
-},
-'Sage/QuickForms/Design/nls/ru/UrlControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/UrlControlDesigner", (
-{ displayNameText: 'URL' }
-));
-},
-'Sage/TaskPane/nls/ru/ContactTasksTasklet':function(){
-define("Sage/TaskPane/nls/ru/ContactTasksTasklet", (
-{ associateContactTitle: 'Связать с пользователем',
-  disAssociateContactTitle: 'Удалить связь с пользователем',
-  disAssociateDialogTitle: 'Отменить связь с пользователем',
-  confirmDisAssociate: 'Удалить связь выбранного контакта ${0} со связанным пользователем?',
-  confirmDisAssociateMultiple: 'Удалить связь выбранных контактов ${0} со всеми связанными пользователями?',
-  associationExistsMessage: 'Выбранный контакт уже связан с пользователем. Чтобы связать этот контакт с другим пользователем, сначала необходимо удалить связь контакта с пользователем.',
-  multipleSelectionErrorMessage: 'Эту задачу можно выполнять только для одного контакта за раз. \n Выберите один контакт и выберите задачу снова.',
-  noSelectionErrorMessage: 'Должен быть выбран хотя бы один контакт для отмены связи. \n Выберите один или несколько контактов и повторите задачу.',
-  singleSelectionErrorMessage: 'Вы должны выбрать контакт для отмены связи. \n Выберите один контакт и повторите задачу.' }
-));
-},
-'Sage/MainView/ReportMgr/Common/nls/ru/_WizardDialogBase':function(){
-define("Sage/MainView/ReportMgr/Common/nls/ru/_WizardDialogBase", (
-{ txtFinish: 'Завершить' }
-));
-},
-'Sage/MainView/JobMgr/nls/ru/SchedulesListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/ru/SchedulesListPanelConfig", {
-    colNameTriggerName: 'Планировать',
-    colNameJobName: 'Имя задания',
-    colNameUser: 'Запланированные По',
-    colNameStartTimeUtc: 'время начала',
-    colNameEndTimeUtc: 'Время окончания',
-    colNamePriority: 'Приоритет',
-    colNameStatus: 'Статус',
-    colNameTimesTriggered: 'Число выполнений'
-});
-},
-'Sage/Utility/File/nls/ru/GoogleDocPicker':function(){
-define("Sage/Utility/File/nls/ru/GoogleDocPicker", (
-{ googleDocumentsTitle: 'Документы Google',
-  couldNotOpenWindowMsg: 'Не могут открыть окно аутентификации - пожалуйста, проверьте ваши настройки всплывающих окон.' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/ComboBoxControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/ComboBoxControlDesigner", (
-{ displayNameText: 'Выпадающий список' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/LitRequestListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/LitRequestListPanelConfig", (
-{ colNameView: 'Вид',
-  colNameContact: 'Контакт',
-  colNameDescription: 'Описание',
-  colNameFillDate: 'Заполнено',
-  colNameFillStatus: 'Статус',
-  colNameOptions: 'Параметры',
-  colNamePriority: 'Приоритет',
-  colNameReqestDate: 'Дата запроса',
-  colNameSendDate: 'Дата отправки',
-  colNameSendVia: 'Отправить по',
-  colNameTotalCost: 'Общая стоимость',
-  colNameFillUser: 'Заполнить пользователя',
-  colNameReqestUser: 'Запрос пользов.',
-  colNameAccount: 'Субъект',
-  colNamePostalCode: 'Почтовый код' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/HistoryEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/HistoryEditor", (
-{ labelWidth: '120',
-  tabNameGeneralText: 'Общие',
-  tabNameAttachmentsText: 'Вложения',
-  scheduleText: 'Планировать',
-  startTimeText: 'Запланировано',
-  completedDateText: 'Заверш.',
-  timeLessText: 'В течение дня',
-  durationText: 'Длительность',
-  contactText: 'Контакт',
-  accountText: 'Субъект',
-  leadText: 'Наводка',
-  opportunityText: 'Сделка',
-  ticketText: 'Заявка',
-  companyText: 'Компания',
-  regardingText: 'Тема',
-  resultText: 'Результат',
-  notesText: 'Заметки',
-  priorityText: 'Приоритет',
-  leaderText: 'Руководитель',
-  categoryText: 'Категория',
-  locationText: 'Размещение',
-  scheduledByFormatText: 'Запланировал ${user} ${date}',
-  cancelText: 'Отмена',
-  okText: 'Ок',
-  deleteText: 'Удалить',
-  lookupActText: 'Поиск Субъекта',
-  lookupContactText: 'Поиск Контакта',
-  lookupOpportunityText: 'Поиск сделки',
-  lookupTicketText: 'Поиск Заявки',
-  lookupLeadText: 'Поиск Наводки',
-  lookupLeaderText: 'Поиск лидера',
-  lookupResourcesText: 'Поиск',
-  mainPhoneText: 'Основной тел.',
-  typeText: 'Тип',
-  subTypeText: 'Подтип',
-  nameText: 'Имя',
-  cityText: 'Город',
-  stateText: 'Область',
-  workphoneText: 'Раб. телефон',
-  emailText: 'Эл.почта',
-  acctMgrText: 'Менеджер',
-  descriptionText: 'Описание',
-  stageText: 'Стадия',
-  statusText: 'Статус',
-  ownerText: 'Доступ',
-  ticketNumberText: 'Номер заявки',
-  phoneText: 'Телефон',
-  urgencyText: 'Срочность',
-  areaText: 'Область',
-  recurringText: 'Повторение',
-  followupText: 'Последующее',
-  noneText: 'Нет',
-  carryOverAttachmentsText: 'Перенести вложения',
-  carryOverNotesText: 'Перенести заметки',
-  asScheduledText: 'Как запланировано',
-  insertText: 'Добавить',
-  couldNotSaveErrorText: 'К сожалению, история не может быть сохранена, потому что произошла ошибка.',
-  deleteMessage: 'Запись будет удалена без возможности восстановления',
-  deleteTitle: 'Удаление истории',
-  couldNotDeleteErrorText: 'К сожалению, история не может быть удалена, потому что произошла ошибка.',
-  postalText: 'Почтовый индекс',
-  tabNameParticipants: 'Все участники' }
-));
-},
-'Sage/Groups/nls/ru/GroupManager':function(){
-define("Sage/Groups/nls/ru/GroupManager", (
-{ ConfirmDeleteMessage: 'Вы действительно хотите удалить текущую группу?',
-  ConfirmDeleteFmtMessage: 'Вы действительно хотите удалить эту группу: ${0}',
-  InvalidSortStringMessage: 'Ошибка: Недопустимая строка сортировки - ',
-  InvalidConditionStringMessage: 'Ошибка: Недопустимая строка условия - ',
-  InvalidLayoutConditionStringMessage: 'Ошибка: Недопустимая строка разметки - ',
-  noneSelectedTitle: 'Ни одной записи не выбрано',
-  noneSelectedPromptFmt: 'Записи не выбраны. Группа, содержащая ${0} запись(ей), будет добавлена.  Продолжить?',
-  noneSelectedRemovePromptFmt: 'Записи не выбраны. Группа, содержащая ${0} запись(ей), будет удалена.  Продолжить?',
-  noRecordsInGroup: 'Нет записей, которые могут быть выбраны из этой группы.',
-  newGroupTitle: 'Добавить записи в новую группу',
-  newGroupNamePrompt: '${0} выбранная запись(и) будут добавлены к этой новой группе.<br><br>Название группы:<br>${1}',
-  newGroupRePrompt: '&nbsp;&nbsp;<i>Пожалуйста введите имя группы.</i>',
-  invalidCharMsg: 'Имя не может содержать: / \\ : * ? " <> | или \'',
-  groupNameText: 'Название группы:',
-  saveLookupDlgTitle: 'Сохранить результаты поиска как новую группу',
-  yesCaption: 'Да',
-  noCaption: 'Нет',
-  cancelCaption: 'Отмена',
-  okCaption: 'Ок',
-  LOCALSTORE_NAMESPACE: 'SageGroups',
-  exportToExcel: 'Этот метод является устаревшим, см. Sage.TaskPane.CommonTasksTasklet.exportToExcel.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/DateTimePickerAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/DateTimePickerAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  buttonToolTipText: 'Подсказка кнопки:',
-  buttonToolTipTooltipText: 'Подсказка отображающаяся когда пользователь наводит указатель мыши на кнопку контрола.',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlLabelPlacementText: 'Расположение подписи:',
-  controlLabelPlacementTooltipText: 'Позиция подписи по отношению к элементу управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  defaultDataBindingText: 'Привязка данных:',
-  defaultDataBindingTooltipText: 'Поле из базы данных, используемое этим элементом управления.',
-  displayModeText: 'Режим отображения:',
-  displayModeTooltipText: 'Режим отображения контрола: текстовое поле, гиперссылка или обычный текст.',
-  enabledText: 'Включен:',
-  enabledTooltipText: 'Позволяет пользователю взаимодействовать с этим элементом управления.',
-  requiredText: 'Обязательный:',
-  requiredTooltipText: 'Требуется значение при сохранении данных.',
-  timelessText: 'В течение дня:',
-  timelessTooltipText: 'Использовать дату без времени и без преобразования на летнее время.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.',
-  labelPlacementText: { left: 'Слева', right: 'Право', top: 'Верх', none: 'Нет' },
-  displayModeTypeText: 
-   { AsControl: 'Как элемент управления',
-     AsText: 'Как текст',
-     AsHyperlink: 'Как гиперссылку' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/ComboBoxBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/ComboBoxBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/MainView/ReportMgr/nls/ru/ReportsListPanelConfig':function(){
-define("Sage/MainView/ReportMgr/nls/ru/ReportsListPanelConfig", {
-    colNameReportName: 'Имя',
-    colNameType: 'Тип',
-    colNameTable: 'Таблица',
-    colNameCreateUser: 'Создано',
-    colNameCreateDate: 'Дата создания',
-    colNameLastExecutionDate: 'Последний запуск',
-    colNameLastExecutionUser: 'Последний запуск от имени',
-    colNameModifyUser: 'Кто обновил',
-    colNameModifyDate: 'Дата обновления'
-});
-},
-'Sage/UI/Alarms/nls/ru/JobNotificationButton':function(){
-define("Sage/UI/Alarms/nls/ru/JobNotificationButton", (
-{ notificationToolTip: 'Уведомлений о заданиях: ${0}.' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportWizardController':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportWizardController", {
-    txtOnDemandScheduleName: 'По запросу',
-    txtReportSuccessfullyScheduled: 'Расписание отчета составлено.',
-    txtDynamicParametersMessage: 'Отчеты с динамическими параметрами в настоящее время не поддерживается.',
-    txtError: 'Ошибка',
-    txtScheduleSuccessfullyUpdated: 'Расписание успешно обновлены.'
-});
-},
-'Sage/MainView/JobMgr/nls/ru/JobDefinitionsListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/ru/JobDefinitionsListPanelConfig", (
-{ colNameJobName: 'Имя задания',
-  colNameDescription: 'Описание',
-  colNameType: 'Тип' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/RecurringEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/RecurringEditor", (
-{ activityOccurrsText: 'Это дело выполняется...',
-  onceText: 'Один раз',
-  dailyText: 'Ежедневно',
-  weeklyText: 'Еженедельно',
-  monthlyText: 'Ежемесячно',
-  yearlyText: 'Ежегодно',
-  occursOnceText: 'Это дело происходит только один раз',
-  everyText: 'Каждый(е)',
-  daysText: 'День(дней)',
-  daysAfterText: 'День(дней) после завершения',
-  startRecurringText: 'Начало повторений: ',
-  endAfterText: 'Заверишть после',
-  endOnText: 'Конец повторений',
-  occurrencesText: 'вхождения',
-  weeksOnText: 'Неделя(и)',
-  monText: 'Понедельник',
-  tueText: 'Вторник',
-  wedText: 'Среда',
-  thurText: 'Четверг',
-  friText: 'Пятница',
-  satText: 'Суббота',
-  sunText: 'Воскресенье',
-  weeksAfterText: 'Недель после завершения',
-  monthsOnText: 'День месяца',
-  monthsOnTheText: 'месяц (а) в',
-  monthsAfterText: 'Месяцев  после завершения',
-  firstText: '1-й',
-  secondText: '2-ой',
-  thirdText: '3-й',
-  fourthText: '4-ый',
-  lastText: 'последний',
-  yearsOnText: 'Год (лет)',
-  yearsAfterText: 'Лет после окончания',
-  janText: 'Январь',
-  febText: 'Февраль',
-  marText: 'Март',
-  aprText: 'Апрель',
-  mayText: 'Май',
-  junText: 'Июнь',
-  julText: 'Июль',
-  augText: 'Август',
-  sepText: 'Сентябрь',
-  octText: 'Октябрь',
-  novText: 'Ноябрь',
-  decText: 'Декабрь',
-  theText: 'Каждый(ое)',
-  inText: 'в' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportsUtility':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportsUtility", {
-    txtCurrentUser: 'Текущий пользователь'
-});
-},
-'Sage/QuickForms/Design/Editors/nls/ru/DataGridAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/DataGridAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  dataSourceText: 'Источник данных:',
-  dataSourceTooltipText: 'Источник данных для этого элемента управления, такой как другой элемент управления или сущность.',
-  emptyTableRowText: 'Текст пустой таблицы:',
-  emptyTableRowTooltipText: 'Текст для отображения, если в таблице нет данных.',
-  expandableRowsText: 'Расширяемые строки:',
-  expandableRowsTooltipText: 'Позволяет пользователю расширить строки таблицы, чтобы показать больше текста.',
-  renderVerticalText: 'Вертикальная отрисовка:',
-  renderVerticalTooltipText: 'Показывать строки как столбцы.',
-  showSortIconText: 'Показать значок сортировки:',
-  showSortIconTooltipText: 'Показать значок сортировки на сортируемых столбцах.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/DateRangeParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/DateRangeParameterEditor", {
-    txtNoLowerValue: 'Нет низкое значение',
-    txtNoUpperValue: 'Нет верхнее значение',
-    txtIncludeThisValue: 'Включите эту величину',
-    txtFrom: 'От:',
-    txtTo: 'Кому:',
-    txtPleaseSpecifyFromValue: 'Пожалуйста, сформулируйте От стоимости',
-    txtPleaseSpecifyToValue: 'Пожалуйста, сформулируйте Произвести оценку',
-    txtPleaseSpecifyDateBetween: 'Пожалуйста, сформулируйте значение даты между {0} и {1}.',
-    txtPleaseSpecifyDateLesser: 'Пожалуйста, сформулируйте дат значение, меньшее или равное {0}.',
-    txtPleaseSpecifyDateGreater: 'Пожалуйста, сформулируйте дат значение, большее или равное {0}.',
-    txtFromMustBeLessThanOrEqualToTo: 'От значение должно быть меньше или равно Для значения.'
-});
-},
-'Sage/MainView/ReportMgr/nls/ru/BaseListPanelConfig':function(){
-define("Sage/MainView/ReportMgr/nls/ru/BaseListPanelConfig", (
-{ titleFmtString: '${0}' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/DateParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/DateParameterEditor", {
-    txtPleaseSpecifyDateBetween: 'Пожалуйста, сформулируйте значение даты между {0} и {1}.',
-    txtPleaseSpecifyDateLesser: 'Пожалуйста, сформулируйте дат значение, меньшее или равное {0}.',
-    txtPleaseSpecifyDateGreater: 'Пожалуйста, сформулируйте дат значение, большее или равное {0}.',
-    txtPleaseSpecifyValue: 'Пожалуйста, сформулируйте значение даты.'
-});
-},
-'Sage/QuickForms/Design/nls/ru/CurrencyControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/CurrencyControlDesigner", (
-{ displayNameText: 'Валюта' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/DataGridControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/DataGridControlDesigner", (
-{ displayNameText: 'Грид данных',
-  emptyTableRowStringText: 'Нет соответствующих записей.' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/PickListControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/PickListControlDesigner", (
-{ displayNameText: 'Справочник' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/CheckBoxBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/CheckBoxBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/Library/nls/ru/FolderHandler':function(){
-define("Sage/Library/nls/ru/FolderHandler", (
-{ AccessError: 'У вас нет прав, необходимых для выполнения этого действия.',
-  AddFolderError: 'Произошла ошибка при попытке добавить папку в библиотеку.',
-  Cancel: 'Отмена',
-  Confirm: 'Подтвердить',
-  DeleteFolderCnfmFmt: 'Вы действительно хотите удалить папку "${0}" и все ее содержимое?',
-  DeleteFolderError: 'Произошла ошибка при попытке удалить папку библиотеки.',
-  DontDeleteRoot: 'Пожалуйста, не удаляйте корневую папку.',
-  DontEditRoot: 'Пожалуйста, не изменяйте имя корневой папки.',
-  EnterFolderName: 'Введите имя новой папки:',
-  EnterNewFolderName: 'Введите новое имя для папки.',
-  FolderUpdateConflictError: 'Папка была изменена ​​другим пользователем, пожалуйста, обновите и повторите попытку.',
-  InvalidFolderName: 'Имя папки не может содержать любые из следующих символов:  \\ / : * ? " < > |',
-  NewFolder: 'Новая Папка',
-  No: 'Нет',
-  OK: 'ОК',
-  PleaseSelectFolder: 'Пожалуйста, выберите папку.',
-  RenameFolderError: 'Произошла ошибка при попытке переименовать папку библиотеки.',
-  Yes: 'Да' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/ComboBoxAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/ComboBoxAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  itemGroupText: 'Элементы',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlLabelPlacementText: 'Расположение подписи:',
-  controlLabelPlacementTooltipText: 'Позиция подписи по отношению к элементу управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  dataSourceText: 'Источник данных:',
-  dataSourceTooltipText: 'Источник данных для этого элемента управления, такой как другой элемент управления или сущность.',
-  defaultDataBindingText: 'Привязка данных:',
-  defaultDataBindingTooltipText: 'Поле из базы данных, используемое этим элементом управления.',
-  enabledText: 'Включен:',
-  enabledTooltipText: 'Позволяет пользователю взаимодействовать с этим элементом управления.',
-  itemsText: 'Элементы:',
-  itemsTooltipText: 'Пользователь может выбирать значения.',
-  textFieldText: 'Текстовое поле:',
-  textFieldTooltipText: 'Имя поля источника данных, используемые для заполнения видимой части элементов списка.',
-  valueFieldText: 'Поле с значением:',
-  valueFieldTooltipText: 'Имя поля источника данных, используемого для заполнения значений списка.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.',
-  labelPlacementText: { left: 'Слева', right: 'Право', top: 'Верх', none: 'Нет' },
-  hasItemsText: 'Установлено',
-  noItemsText: 'Не установлено' }
-));
-},
-'Sage/MainView/Contact/nls/ru/ContactSearchForDuplicates':function(){
-define("Sage/MainView/Contact/nls/ru/ContactSearchForDuplicates", (
-{ svAccount_Caption: 'Субъект:',
-  svCompany_Caption: 'Компания:',
-  svEmail_Caption: 'Эл.почта:',
-  svName_Caption: 'Имя:',
-  svTitle_Caption: 'Должность:',
-  svType_Caption: 'Тип:',
-  svSubType_Caption: 'Подтип:',
-  svAccMgr_Caption: 'Менеджер:',
-  svHomePhone_Caption: 'Домашний тел.:',
-  svWorkPhone_Caption: 'Раб. телефон:',
-  svMobilePhone_Caption: 'Мобильный тел.:',
-  svStatus_Caption: 'Статус:',
-  svWebAddress_Caption: 'Веб:',
-  svEntityAccount_Caption: 'Субъект',
-  svEntityLead_Caption: 'Наводка',
-  svEntityContact_Contact: 'Контакт',
-  svTollFree_Caption: 'Справочный тел.:',
-  svIndustry_Caption: 'Отрасль:',
-  svDivision_Caption: 'Подразделение:',
-  svMainPhone_Caption: 'Основной тел.:',
-  LeadSummaryView_Title: 'Сводная информация - Наводка',
-  ContactSummaryView_Title: 'Сводная информация - Контакт',
-  AccountSummaryView_Title: 'Сводная информация - Субъект',
-  closeText: 'Закрыть',
-  errorLoadingSummaryView: 'Ошибка при загрузке сводного представления: ${0}' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/DateTimePickerBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/DateTimePickerBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  displayDateText: 'Отображать дату:',
-  displayDateTooltipText: 'Отображение даты.',
-  displayTimeText: 'Отображать время:',
-  displayTimeTooltipText: 'Отображение времени.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/TaskPane/nls/ru/AccountingTasksTasklet':function(){
-define("Sage/TaskPane/nls/ru/AccountingTasksTasklet", (
-{ updatePricingRecords: 'Вы можете выделить одну запись при выполнении этой операции.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/DataGridBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/DataGridBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  dataText: 'Данные',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  pageSizeText: 'Размер страницы:',
-  pageSizeTooltipText: 'Количество строк таблицы для отображения на одной странице.',
-  resizableColumnsText: 'Изменение размера столбцов:',
-  resizableColumnsTooltipText: 'Позволяет пользователю изменять размер столбцов.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/CurrencyBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/CurrencyBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/UI/nls/ru/EditableGrid':function(){
-define("Sage/UI/nls/ru/EditableGrid", (
-{ unsavedDataText: '* несохраненные данные',
-  addText: 'Добавить',
-  deleteText: 'Удалить',
-  saveText: 'Сохранить',
-  cancelText: 'Отмена',
-  noSelectionsText: 'Нет выбранных записей.',
-  confirmDeleteFmtTxt: 'Вы уверены, что хотите удалить эти ${0} элементы?',
-  yesText: 'Да',
-  noText: 'Нет',
-  createItemsInvalidArrayText: 'Параметр элементов Sage.UI.EditableGrid.createItems() должен быть массивом.',
-  recordCountFormatString: 'Записи ${0} - ${1} of ${2}',
-  noDataMessage: 'Нет соответствующих записей.',
-  dirtyDataMessage: 'Данные не сохранены.  Если вы продолжите, то потеряете изменения, которые сделали.',
-  okText: 'ОК' }
-));
-},
-'Sage/MainView/IntegrationContract/nls/ru/SalesQuoteRTDV':function(){
-﻿define(
-    "Sage/MainView/IntegrationContract/nls/ru/SalesQuoteRTDV", ({
-        dialogCaption: "Сведения о коммерческом предложении",
-        loadingText: "Загрузка...",
-        lblSalesQuoteCaption: "Коммерческое предложение:",
-        lblStatusCaption: "Статус:",
-        lblGrossTotalCaption: "Сумма предложения:",
-        lblQuoteDateCaption: "Дата предложения:",
-        lblTaxTotalCaption: "Налог, всего:",
-        lblHoldStatusCaption: "Статус:",
-        lblCurrencyCaption: "Валюта:",
-        lblTypeCaption: "Тип:",
-        lblCostTotalCaption: "Общая стоимость:",
-        lblPONumberCaption: "Номер заказа:",
-        lblProfitTotalCaption: "Общий доход:",
-        lblQuotationCaption: "Котировка:",
-        lblInvoiceStatusCaption: "Статус счета:",
-        lblContactCaption: "Контакт:",
-        lblDeliveryDateCaption: "Дата доставки:",
-        lblDueDateCaption: "Плановая дата:",
-        lblPriceListCaption: "Прайс-лист:",
-        lblCarrierCaption: "Перевозчик:",
-        lblNetTotalCaption: "Всего нетто:",
-        lblAllocationStatusCaption: "Статус размещения:",
-        lblDiscountTotalCaption: "Всего скидки:",
-        lblDeliveryStatusCaption: "Статус доставки:",
-        lblChargesTotalCaption: "Всего расходов:",
-        detailsTabTitle: "Детали",
-        salesPersonsTabTitle: "Продавец",
-        addressTabTitle: "Адреса",
-        salesQuoteLinesTabTitle: "Строки коммерческого предложения",
-        paymentsTabTitle: "Платежи",
-        deliveriesTabTitle: "Доставка",
-        grdSalesQuote_Edit: "Изменить",
-        grdSalesQuote_QuoteNumber: "Номер предложения",
-        grdSalesQuote_QuoteDate: "Дата предложения",
-        grdSalesQuote_Status: "Статус",
-        grdSalesQuote_HoldStatus: "Статус",
-        grdSalesQuote_Type: "Тип",
-        grdSalesQuote_PO: "№ продукта заказа",
-        grdSalesQuote_NetTotal: "Сумма нетто",
-        grdSalesQuote_DiscountTotal: "Всего скидки",
-        grdSalesQuote_ChargesTotal: "Всего расходов",
-        grdSalesQuote_TaxTotal: "Налог, всего",
-        grdSalesQuote_GrossTotal: "Всего брутто",
-        grdSalesQuote_Currency: "Валюта",
-        grdSalesPersons_Name: "Имя",
-        grdSalesPersons_Type: "Тип",
-        grdSalesPersons_Extension: "Расширение",
-        grdSalesPersons_Relationship: "Связь",
-        grdAddress_Name: "Имя",
-        grdAddress_Address1: "Адрес 1",
-        grdAddress_Address2: "Адрес 2",
-        grdAddress_City: "Город",
-        grdAddress_State: "Область",
-        grdAddress_Zip: "Почт. индекс",
-        grdItems_Line: "Номер линии",
-        grdItems_Type: "Тип",
-        grdItems_Commodity: "Товар",
-        grdItems_CommodityVariant: "Вариант",
-        grdItems_CommodityDimension: "Размеры",
-        grdItems_UnitOfMeasure: "Единица",
-        grdItems_Location: "Размещение",
-        grdItems_PriceList: "Прайс-лист",
-        grdItems_Quantity: "Кол-во",
-        grdItems_InitialPrice: "Первоначальная цена",
-        grdItems_ActualPrice: "Фактическая цена",
-        grdItems_NetTotal: "Сумма нетто",
-        grdItems_ChargesTotal: "Всего расходов",
-        grdItems_DiscountTotal: "Всего скидки",
-        grdItems_TaxTotal: "Налог, всего",
-        grdItems_GrossTotal: "Всего брутто",
-        grdPayments_Date: "Дата оплаты",
-        grdPayments_Name: "Имя",
-        grdPayments_Type: "Тип",
-        grdPayments_Status: "Статус",
-        grdPayments_NetTotal: "Сумма нетто",
-        grdPayments_Discounts: "Скидки",
-        grdPayments_Charges: "Расходы",
-        grdPayments_Tax: "Налог",
-        grdPayments_GrossTotal: "Всего брутто",
-        grdPayments_Currency: "Валюта",
-        grdPayments_TenderType: "Тип тендера",
-        grdPayments_TenderReference: "Ссылка на тендер",
-        grdPayments_ProcessDate: "Дата обработки",
-        grdDeliveries_Number: "Число",
-        grdDeliveries_Type: "Тип",
-        grdDeliveries_Status: "Статус",
-        grdDeliveries_RequestedDate: "Требуемая дата",
-        grdDeliveries_ActualDate: "Фактическая дата",
-        grdDeliveries_ActualTime: "Фактическая время",
-        grdDeliveries_RequestedQuantity: "Требуемое количество",
-        grdDeliveries_DeliveredQuantity: "Кол-во доставленного",
-        grdDeliveries_Method: "Метод",
-        grdDeliveries_Carrier: "Перевозчик",
-        grdDeliveries_CarrierReference: "Ссылка на перевозчика",
-        grdDeliveries_ExceptionReason: "Причина исключения",
-        errorERPRequest: "При открытии подробного представления коммерческого предложения бухгалтерской системы возникла ошибка. ",
-        errorERPRequestDetails: "${0}, ${1} Запрос: ${2}",
-        btnCloseCaption: "Закрыть"
-    })
-);
-},
-'Sage/MainView/SecurityMgr/nls/ru/SecurityProfile':function(){
-define("Sage/MainView/SecurityMgr/nls/ru/SecurityProfile", (
-{ securityProfile_Caption: 'Профиль безопасности',
-  btnCancel_Caption: 'Отмена',
-  ok_Text: 'Ок',
-  description_Text: 'Описание',
-  profileType_Text: 'Тип профиля' }
-));
-},
-'Sage/MainView/ReportMgr/nls/ru/ReportWizardController':function(){
-﻿define("Sage/MainView/ReportMgr/nls/ru/ReportWizardController", {
-    txtLoadingScheduleDetails: 'Загрузка Расписание Подробнее',
-    txtError: 'Ошибка',
-    txtCannotDetermineReportId: 'Невозможно определить идентификатор отчета.',
-    txtCannotDetermineReportNameOrFamily: 'Невозможно определить имя отчета или семью.',
-    txtLoading: 'Загрузка ...',
-    txtLoadingReport: 'Загрузка Сообщить',
-    txtSorryAnErrorOccuredLoadingReport: 'К сожалению, произошла ошибка загрузки отчета: ${0} ${1}.'
-});
-},
-'Sage/QuickForms/Design/Editors/nls/ru/UserAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/UserAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlLabelPlacementText: 'Расположение подписи:',
-  controlLabelPlacementTooltipText: 'Позиция подписи по отношению к элементу управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  defaultDataBindingText: 'Привязка данных:',
-  defaultDataBindingTooltipText: 'Поле из базы данных, используемое этим элементом управления.',
-  enabledText: 'Включен:',
-  enabledTooltipText: 'Позволяет пользователю взаимодействовать с этим элементом управления.',
-  lookupBindingModeText: 'Режим привязки поиска:',
-  lookupBindingModeTooltipText: 'Указывает, хотите ли вы связать с объектом сущности или строкой.',
-  requiredText: 'Обязательный:',
-  requiredTooltipText: 'Требуется значение при сохранении данных.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.',
-  labelPlacementText: { left: 'Слева', right: 'Право', top: 'Верх', none: 'Нет' },
-  bindingModeText: { Object: 'Объект', String: 'Строка' } }
-));
-},
-'Sage/MainView/ReportMgr/nls/ru/ReportManagerUtility':function(){
-define("Sage/MainView/ReportMgr/nls/ru/ReportManagerUtility", (
-{}
-));
-},
-'Sage/UI/nls/ru/SpeedSearch':function(){
-define("Sage/UI/nls/ru/SpeedSearch", (
-{ standardText: 'стандартный',
-  advancedText: 'Расширенный',
-  speedSearchText: 'Быстрый Поиск' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/CurrencyAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/CurrencyAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlLabelPlacementText: 'Расположение подписи:',
-  controlLabelPlacementTooltipText: 'Позиция подписи по отношению к элементу управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  decimalDigitsText: 'Кол-во десятичных цифр:',
-  decimalDigitsTooltipText: 'Количество цифр после запятой для отображения и ввода данных.',
-  defaultDataBindingText: 'Привязка данных:',
-  defaultDataBindingTooltipText: 'Поле из базы данных, используемое этим элементом управления.',
-  displayCurrencyCodeText: 'Отображать код валюты:',
-  displayCurrencyCodeTooltipText: 'Показывать 3-х буквенный код валюты при включении поддержки нескольких валют.',
-  displayModeText: 'Режим отображения:',
-  displayModeTooltipText: 'Режим отображения контрола: текстовое поле, гиперссылка или обычный текст.',
-  enabledText: 'Включен:',
-  enabledTooltipText: 'Позволяет пользователю взаимодействовать с этим элементом управления.',
-  exchangeRateTypeText: 'Тип валюты:',
-  exchangeRateTypeTooltipText: 'Тип обменного курса для отображения в полях валюты.',
-  maxLengthText: 'Макс. длина:',
-  maxLengthTooltipText: 'Максимальное количество символов, которое пользователь может ввести.',
-  requiredText: 'Обязательный:',
-  requiredTooltipText: 'Требуется значение при сохранении данных.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.',
-  displayTypeText: 
-   { AsHyperlink: 'Как гиперссылку',
-     AsControl: 'Как элемент управления',
-     AsText: 'Как текст' },
-  exchangeTypeText: 
-   { BaseRate: 'Основная ставка',
-     OpportunityRate: 'Оценка сделки (Преуменьшенная)',
-     MyRate: 'Моя оценка',
-     SalesOrderRate: 'Уровень заказов (Преуменьшенный)',
-     EntityRate: 'Ставка сущности' },
-  labelPlacementText: { left: 'Слева', right: 'Право', top: 'Верх', none: 'Нет' } }
-));
-},
-'Sage/TaskPane/nls/ru/ReportManagerTasksTasklet':function(){
-define("Sage/TaskPane/nls/ru/ReportManagerTasksTasklet", {
-    taskRunReport_Caption: 'Запустить отчет',
-    taskScheduleReport_Caption: 'Запланировать отчет',
-    taskDeleteReport_Caption: 'Удалить отчет',
-    taskDeleteSchedule_Caption: 'Удалить расписание',
-    taskEditSchedule_Caption: 'Редактировать расписание',
-    taskDeleteHistory_Caption: 'Удаление истории',
-    txtRecordsSelected: 'записей выбрано',
-    txtClear: 'Очистить'
-});
-},
-'Sage/UI/nls/ru/SLXPreviewGrid':function(){
-define("Sage/UI/nls/ru/SLXPreviewGrid", (
-{ applyText: 'Применить', resetText: 'Сброс', filterText: 'Фильтр' }
-));
-},
-'Sage/UI/Alarms/nls/ru/UnconfirmedPane':function(){
-define("Sage/UI/Alarms/nls/ru/UnconfirmedPane", (
-{ showConfirmationsText: 'Показать подтверждения',
-  showCalendarText: 'Показать календарь',
-  acceptText: 'Принять',
-  declineText: 'Отклонить' }
-));
-},
-'Sage/Utility/nls/ru/Utility':function(){
-define("Sage/Utility/nls/ru/Utility", (
-{ dangerousValueWarn: 'Обнаружена потенциально опасная форма. Избегайте использования недопустимых комбинаций символов. Например: "&lt;script&gt;&lt;/script&gt;" Избегайте использования недопустимых символов в названиях файлов: \\ / : * ? " &lt; &gt; | ' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/ControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/ControlDesigner", (
-{ displayNameText: '' }
-));
-},
-'Sage/UI/Controls/nls/ru/Address':function(){
-define("Sage/UI/Controls/nls/ru/Address", (
-{ address1Text: 'Улица:',
-  address2Text: 'Дом:',
-  address3Text: 'Квартира/Офис:',
-  cancelText: 'Отмена',
-  cityText: 'Город:',
-  countryText: 'Страна:',
-  countyText: 'Округ:',
-  descriptionText: 'Описание:',
-  dialogTitle: 'Адрес',
-  isMailingText: 'Отгрузка:',
-  isPrimaryText: 'Основной:',
-  okText: 'Ок',
-  postalCodeText: 'Индекс:',
-  salutationText: 'Адресат(ы):',
-  stateText: 'Регион/Обл.:',
-  imageEditToolTip: 'Изменить',
-  imageMapQuestToolTip: 'Сопоставления поиска' }
-));
-},
-'Sage/MainView/JobMgr/nls/ru/JobManagerGroupContextService':function(){
-define("Sage/MainView/JobMgr/nls/ru/JobManagerGroupContextService", (
-{ executionsTabDisplayName: 'Выполнения',
-  jobDefinitionsTabDisplayName: 'Определения',
-  schedulesTabDisplayName: 'Расписания' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/BaseListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/BaseListPanelConfig", (
-{ titleFmtString: '${0}' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/OwnerControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/OwnerControlDesigner", (
-{ displayNameText: 'Доступ' }
-));
-},
-'Sage/TaskPane/nls/ru/JobManagerTasksTasklet':function(){
-define("Sage/TaskPane/nls/ru/JobManagerTasksTasklet", (
-{ taskRunJob_Caption: 'Создать расписание',
-  taskEditTrigger_Caption: 'Редактировать расписание',
-  taskCancelJob_Caption: 'Отменить выполнение задания',
-  taskDeleteScheduledJob_Caption: 'Удалить расписание' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/ActivityEditorAttendeesTab':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/ActivityEditorAttendeesTab", (
-{ header_Name: 'Имя',
-  header_AccountName: 'Субъект/Компания',
-  header_Type: 'Тип',
-  header_Primary: 'Основной',
-  header_RoleName: 'Роль',
-  header_Phone: 'Телефон',
-  header_Email: 'Эл.почта',
-  header_TimeZone: 'Часовой пояс',
-  header_Notes: 'Заметки',
-  tooltip_speedSearch: 'Добавить участника',
-  tooltip_AddContact: 'Добавить контакт',
-  tooltip_AddLead: 'Добавить наводку',
-  tooltip_Delete: "Удалить"
-}
-));
-},
-'Sage/UI/nls/ru/UserType':function(){
-define("Sage/UI/nls/ru/UserType", (
-{ administratorText: 'Администратор',
-  templateText: 'Шаблон',
-  remoteText: 'Дистанционный',
-  webOnlyText: 'Только Веб',
-  retiredText: 'Уволен',
-  concurrentText: 'Конкурент',
-  webViewerText: 'Веб Viewer',
-  networkText: 'Сеть',
-  addOnUserText: 'Дополнительный пользователь' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/FormDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/FormDesigner", (
-{ displayNameText: 'Форма' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/ActivityCalendar':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/ActivityCalendar", (
-{ completedText: '(Завершено)' }
-));
-},
-'Sage/Utility/nls/ru/Jobs':function(){
-define("Sage/Utility/nls/ru/Jobs", (
-{ errorMessage: 'Возникла ошибка при выполнении задания ${0}: ${1} ${2}.',
-  jobCompletedSuccessfully: 'Задание успешно завершено.',
-  unexpectedErrorMessage: 'Возникла неизвестная ошибка при выполнении задания ${0}.',
-  repeatIndefinitely: 'Повторять бесконечно',
-  cancelButtonCaption: 'Отмена',
-  defaultProgressDialogTitle: 'Задание выполняется',
-  closeButtonCaption: 'Закрыть' }
-));
-},
-'Sage/UI/Controls/nls/ru/_DialogHelpIconMixin':function(){
-define("Sage/UI/Controls/nls/ru/_DialogHelpIconMixin", (
-{ helpTooltip: 'Помощь' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/PickListAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/PickListAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  allowMultiplesText: 'Разрешить множественный выбор:',
-  allowMultiplesTooltipText: 'Позволяет пользователю выбрать более одного значения.',
-  canEditTextText: 'Можно редактировать текст:',
-  canEditTextTooltipText: 'Позволяет пользователю вводить значение.',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlLabelPlacementText: 'Расположение подписи:',
-  controlLabelPlacementTooltipText: 'Позиция подписи по отношению к элементу управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  defaultDataBindingText: 'Привязка данных:',
-  defaultDataBindingTooltipText: 'Поле из базы данных, используемое этим элементом управления.',
-  displayModeText: 'Режим отображения:',
-  displayModeTooltipText: 'Режим отображения контрола: текстовое поле, гиперссылка или обычный текст.',
-  enabledText: 'Включен:',
-  enabledTooltipText: 'Позволяет пользователю взаимодействовать с этим элементом управления.',
-  maxLengthText: 'Макс. длина:',
-  maxLengthTooltipText: 'Максимальное количество символов, которое пользователь может ввести.',
-  mustExistInListText: 'Элеменет должен существовать:',
-  mustExistInListTooltipText: 'Введенное значение должно быть в списке.',
-  pickListNameText: 'Имя справочника:',
-  pickListNameTooltipText: 'Имя списка значений, которые пользователь может выбрать при вводе данных.',
-  requiredText: 'Обязательный:',
-  requiredTooltipText: 'Требуется значение при сохранении данных.',
-  storageModeText: 'Режим хранения:',
-  storageModeTooltipText: 'Как значение сохраняется: текст, ИД или код.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.',
-  labelPlacementText: { left: 'Слева', right: 'Право', top: 'Верх', none: 'Нет' },
-  displayModeTypeText: 
-   { AsControl: 'Как элемент управления',
-     AsText: 'Как текст',
-     AsHyperlink: 'Как гиперссылку' },
-  storageModeTypeText: { Text: 'Текст', Id: 'ИД', Code: 'Код' },
-  pickListRequestErrorText: 'Не удается получить справочник с сервера.' }
-));
-},
-'Sage/UI/nls/ru/ActivityList':function(){
-define("Sage/UI/nls/ru/ActivityList", (
-{ addMeetingText: 'Планировать встречу',
-  addPhoneCallText: 'Планировать звонок',
-  addToDoText: 'Планировать дело',
-  helpText: 'Помощь',
-  completeText: 'Завершить',
-  typeText: 'Тип',
-  startDateText: 'Дата/Время',
-  dateRangeText: 'Временной диапазон',
-  durationText: 'Длительность',
-  leaderText: 'Руководитель',
-  contactText: 'Контакт',
-  opportunityText: 'Сделка',
-  descriptionText: 'Тема',
-  categoryText: 'Категория',
-  firstNameText: 'Имя',
-  lastNameText: 'Фамилия' }
-));
-},
-'Sage/UI/Alarms/nls/ru/JobNotificationPopup':function(){
-﻿define("Sage/UI/Alarms/nls/ru/JobNotificationPopup", {
-    title: 'Работа Уведомления',
-    helpText: 'Помощь',
-    colNameJobName: 'Тип',
-    colNameProgress: 'Ход выполнения',
-    colNameStatus: 'Статус',
-    colExecutionResult: 'Результат'
-});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/LeadLookupConfig':function(){
-define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/ru/LeadLookupConfig", (
-{ contactText: 'Контакт',
-  accountText: 'Субъект',
-  lookupContactText: 'Поиск Контакта',
-  nameText: 'Имя',
-  cityText: 'Город',
-  stateText: 'Штат',
-  workphoneText: 'Рабочий телефон',
-  emailText: 'Эл.почта',
-  dialogButtonText: 'Добавить выбранные',
-  cancelText: 'Закрыть',
-  colFirstName: 'Имя',
-  colLastName: 'Фамилия',
-  colTitle: 'Название',
-  colCompany: 'Субъект',
-  colWorkPhone: 'Раб. телефон',
-  colEmail: 'Эл.почта',
-  dialogTitleText: 'Поиск Наводки'
-}
-));
-},
-'Sage/MainView/ReportMgr/nls/ru/SchedulesListPanelConfig':function(){
-﻿define("Sage/MainView/ReportMgr/nls/ru/SchedulesListPanelConfig", {
-    colNameScheduleName: 'Планировать',
-    colNameDescription: 'Описание',
-    colNameRunAsUser: 'Запуск от имени',
-    colNameLastExecutionDate: 'Последний запуск',
-    colNameExecutionCount: 'Число выполнений',
-    colNameStartTimeUtc: 'время начала',
-    colNameEndTimeUtc: 'Время окончания',
-    colNamePriority: 'Приоритет',
-    colNameStatus: 'Статус',
-    colNameTemplate: 'Шаблон'
-});
-},
-'Sage/QuickForms/Design/Editors/nls/ru/GenericAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/GenericAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  controlInfoText: 'Информация о контроле',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.' }
-));
-},
-'Sage/UI/nls/ru/CalendarUsersListPane':function(){
-define("Sage/UI/nls/ru/CalendarUsersListPane", (
-{ header_color: 'Цвет',
-  header_user: 'Пользователь',
-  maxUsersErrorMessage: 'К сожалению, нельзя просматривать более чем ${0} календарей  (включая свой собственный) в одно время.  Зактройте один из календарей и повторите попытку.',
-  editUsersLinkText: 'Править пользователей календаря',
-  noUsersMessage: 'Пользователи не добавлены. Добавьте пользователей, щелкнув выше ссылку \'Править пользователей календаря\'' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/PickListBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/PickListBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/ColumnBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/ColumnBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  indexText: 'Индекс:',
-  indexTooltipText: 'Номер строки или столбца, начиная с нуля.',
-  widthText: 'Ширина:',
-  widthTooltipText: 'Ширина колонки контролов.',
-  sizeTypeText: 'Размер типа:',
-  sizeTypeTooltipText: 'Метод задания размера: Абсолютное значение, Автоподбор или Процент.',
-  rowSizeTypeText: 
-   { Absolute: 'Абсолютный',
-     Percent: 'Процент',
-     AutoSize: 'Автоподбор размера' } }
-));
-},
-'Sage/MainView/ReportMgr/nls/ru/ReportManagerGroupContextService':function(){
-define("Sage/MainView/ReportMgr/nls/ru/ReportManagerGroupContextService", (
-{ reportsTabDisplayName: 'Отчеты',
-  schedulesTabDisplayName: 'Расписания',
-  historyTabDisplayName: 'История' }
-));
-},
-'Sage/MainView/IntegrationContract/nls/ru/MatchingOptionsConfig':function(){
-define("Sage/MainView/IntegrationContract/nls/ru/MatchingOptionsConfig", (
-{ matchingCaption: 'Изменить критерий сравнения',
-  matchingHeader: 'Соответствующий параметр для',
-  matchingDescription: 'Добавить или удалить операторов для определения критерия сравнения для всех пользователей, кто ссылается на записи из ситемы учета. Этот критерий определяет результаты, возвращаемые поиском сравнения записей между системами учета.',
-  propertyText: 'Свойство',
-  operatorText: 'Оператор',
-  loadingText: 'Загрузка...',
-  filter_AddCondition: 'Добавить условие',
-  filter_RemoveCondition: 'Исключить условие',
-  error_InvalidEndpoint: 'Укажите правильную конечную точку перед продолжением.',
-  okText: 'ОК',
-  cancelText: 'Отмена' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/FormBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/FormBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  generalText: 'Общий',
-  activeControlText: 'Активный контрол:',
-  activeControlTooltipText: 'Управления курсором пользователя начинается.',
-  descriptionText: 'Описание:',
-  descriptionTooltipText: 'Дополнительное описание назначения формы.',
-  nameText: 'Имя:',
-  nameTooltipText: 'Идентификатор формы, который используется в системе.' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/OccurrenceOrSeriesQueryDlg':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/OccurrenceOrSeriesQueryDlg", (
-{ titleFmt: '${type} - ${description}',
-  actDateText: 'Дата дела:',
-  contactText: 'Контакт:',
-  accountText: 'Субъект:',
-  opportunityText: 'Сделка:',
-  editAllText: 'Изменить все вхождения',
-  editOneText: 'Изменить текущее вхождение',
-  completeAllText: 'Завершить все вхождения',
-  completeOneText: 'Завершить текущее вхождение',
-  deleteAllText: 'Удалить все вхождения',
-  deleteOneText: 'Удалить это вхождение',
-  continueText: 'Продолжить',
-  failedToLoadMsg: 'Не удалось загрузить дело' }
-));
-},
-'Sage/Utility/File/nls/ru/Attachment':function(){
-﻿define(
-    "Sage/Utility/File/nls/ru/Attachment", ({
-        uploadingAttachments: 'Uploading attachments',
-        uploadCompleted: 'Completed',
-        uploadingPleaseWait: 'Загрузка, подождите...',
-        uploadFailed: 'Upload failed.'
-    })
-);
-},
-'Sage/QuickForms/Design/nls/ru/GenericControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/GenericControlDesigner", (
-{ displayNameText: 'Неизвестен' }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/StringParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/StringParameterEditor", {
-    txtTheValueMustBeBetween: 'The value must be between {0} and {1} characters long.',
-    txtTheMinimumLengthForThisField: 'The minimum length for this field is {0}.',
-    txtTheMaximumLengthForThisField: 'The maximum length for this field is {0}.',
-    txtPleaseSpecifyValue: 'Пожалуйста, укажите значение.',
-    lblEnterValue_Caption: 'Введите значение:'
-});
-},
-'Sage/QuickForms/Design/nls/ru/PropertyEditorContainer':function(){
-define("Sage/QuickForms/Design/nls/ru/PropertyEditorContainer", (
-{ specificTitleFormatText: '${0} Свойства  ($ {{1})',
-  genericTitleFormatText: '${0} Свойства' }
-));
-},
-'Sage/Services/nls/ru/ReportingService':function(){
-define("Sage/Services/nls/ru/ReportingService", (
-{ txtUnsupportedReportType: 'Неподдерживаемый тип отчета: ${0}.',
-  txtUnexpectedError: 'Возникла ошибка: ${0} ${1}.',
-  invalidEntityError: 'ИД объекта не указан или не определен.',
-  invalidReportPluginError: 'ИД подключаемого модуля отчета не указан или не определен.',
-  invalidTableNameError: 'Имя таблицы не указано или не определено.',
-  noDefaultReportError: 'Не найден отчет по умолчанию для текущего объекта.',
-  reportCannotBeShownError: 'Отчет не может быть отображен.' }
-));
-},
-'Sage/MailMerge/nls/ru/Helper':function(){
-define("Sage/MailMerge/nls/ru/Helper", (
-{ destkopErrorsError: 'The call to DesktopErrors() failed.',
-  mailMergeInfoStoreError: 'The call to MailMergeInfoStore() failed.' }
-));
-},
-'Sage/UI/Dashboard/nls/ru/Dashboard':function(){
-define("Sage/UI/Dashboard/nls/ru/Dashboard", (
-{ newTabTitleText: 'Новое название вкладки',
-  inputTitleText: 'Введите название',
-  copiedPageText: 'Скопированная закладка',
-  showText: 'Отобразить' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/ActivityListPanelConfig':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/ActivityListPanelConfig", (
-{ colNameComplete: 'Завершить',
-  colNameAttachment: 'Вложение',
-  colNameRecurring: 'Повторение',
-  colNameAlarm: 'Оповещение',
-  colNameType: 'Тип дела',
-  colNameStartDate: 'Дата начала',
-  colNameDuration: 'Длительность',
-  colNameContact: 'Имя',
-  colNameLead: 'Наводка',
-  colNameAccount: 'Субъект/Компания',
-  colNameCompany: 'Компания',
-  colNameRegarding: 'Тема',
-  colNamePriority: 'Приоритет',
-  colNameUserId: 'Руководитель',
-  colNameTimeless: 'В течение дня',
-  colNameTypeName: 'Тип',
-  colNameContactName: 'Имя',
-  SnoozeAlarm: 'Отложить оповещение',
-  DismissAlarm: 'Отклонить оповещение',
-  colNameUnConfirmStatus: 'Неподтвержденные',
-  colNameAssociationCount: 'Всего Участники'
-}
-));
-},
-'Sage/UI/Controls/nls/ru/PickList':function(){
-define("Sage/UI/Controls/nls/ru/PickList", (
-{ okText: 'Ок',
-  missingPickListText: 'PickList не может быть найден' }
-));
-},
-'Sage/MainView/ActivityMgr/nls/ru/HistoryEditorAttendeesTab':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/HistoryEditorAttendeesTab", (
-{ header_Name: 'Имя',
-  header_AccountName: 'Субъект/Компания',
-  header_Type: 'Тип',
-  header_Primary: 'Основной',
-  header_RoleName: 'Роль',
-  header_Phone: 'Телефон',
-  header_Email: 'Эл.почта',
-  header_TimeZone: 'Часовой пояс',
-  header_Notes: 'Заметки',
-  header_Status: 'Статус' }
-));
-},
-'Sage/Utility/nls/ru/Email':function(){
-define("Sage/Utility/nls/ru/Email", (
-{ RecipientInfoError: 'Непредвиденная ошибка, при попытке прочитать сведения о получателях: ${0}',
-  MailToProtocolError: 'Произошла ошибка при попытке создать сообщение электронной почты, использование MAILTO: протокол (href.length = $ {0}). Число получателей электронной почты, возможно, придется уменьшить. Ошибка: $ {1}.',
-  InvalidContextError: 'Запрос на отправку электронной почты не может быть обработан. Эта операция поддерживается только для контактов или наводок.',
-  InvalidArgumentError: 'Запрос на отправку электронной почты не может быть обработан. Неверный аргумент.',
-  FilteredOutMsg: 'Отфильтрованы: ​​Не беспокоить: ${0}; Неправильные: ${1}, Дубликаты: ${2}',
-  AllInvalidEmailError: 'Коллекция не включает в себя ни одной сущности с действительным адресом и/или разрешением на отправку электронной почты.',
-  EmailFieldQueried: 'Поле e-mail было: ${0}.',
-  EntityInfoError: 'Попытка получить информацию о сущности была неудачной.',
-  CapabilityModeError: 'Возможность писать по электронной почте выбранной группе доступна только списочном представлении.',
-  CapabilityEntityError: 'Возможность писать по электронной почте выбранной группе доступна только для контактов или наводок.',
-  NoRowsSelectedError: 'Нет выбранных строк.' }
-));
-},
-'Sage/TaskPane/nls/ru/SecurityManagerTasksTasklet':function(){
-define("Sage/TaskPane/nls/ru/SecurityManagerTasksTasklet", (
-{ addSecurityProfileTitle: 'Добавить профиль',
-  editSecurityProfileTitle: 'Изменить профиль' }
-));
-},
-'Sage/UI/nls/ru/TimeZoneItem':function(){
-define("Sage/UI/nls/ru/TimeZoneItem", (
-{ buttonOKText: 'Ок',
-  buttonCancelText: 'Отмена',
-  timeZoneText: 'Часовой пояс',
-  timeZoneSettingsText: 'Параметры часового пояса',
-  setTimeZoneText: 'Установить часовой пояс:' }
-));
-},
-'Sage/UI/Columns/nls/ru/SlxEdit':function(){
-define("Sage/UI/Columns/nls/ru/SlxEdit", (
-{ editText: 'Изменить' }
-));
-},
-'Sage/Reporting/nls/ru/Enumerations':function(){
-define("Sage/Reporting/nls/ru/Enumerations", (
-{ txtGroup: 'Группа',
-  txtDateRange: 'Временной диапазон',
-  txtUser: 'Пользователь',
-  txtQuery: 'Запрос',
-  txtIsGreaterThan: 'Больше чем',
-  txtIsLessThan: 'Меньше чем',
-  txtIsInTheRange: 'В диапазоне',
-  txtIsAfter: 'После',
-  txtIsBefore: 'До',
-  txtContains: 'Содержит',
-  txtStartsWith: 'Начинается с',
-  txtEndsWith: 'Заканчивается на',
-  txtIs: 'это',
-  txtIsNot: 'Не',
-  txtOnDemand: 'По запросу',
-  txtScheduled: 'Запланировано',
-  txtCrystalReport: 'Отчет Crystal Report',
-  txtExportToFileReportType: 'Выгрузить в файл',
-  txtUnknownReportType: 'Неизвестен',
-  txtNoFormat: 'Без формата',
-  txtPdf: 'PDF',
-  txtExcel: 'Excel',
-  txtCsv: 'CSV',
-  txtWord: 'Word',
-  txtXml: 'XML' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/CheckBoxAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/CheckBoxAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  checkedText: 'Состояние флажка:',
-  checkedTooltipText: "Установить по умолчанию состояние флажок установлен.",
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlLabelPlacementText: 'Расположение подписи:',
-  controlLabelPlacementTooltipText: 'Позиция подписи по отношению к элементу управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  defaultDataBindingText: 'Привязка данных:',
-  defaultDataBindingTooltipText: 'Поле из базы данных, используемое этим элементом управления.',
-  enabledText: 'Включен:',
-  enabledTooltipText: 'Позволяет пользователю взаимодействовать с этим элементом управления.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.',
-  labelPlacementText: { left: 'Слева', right: 'Право', top: 'Верх', none: 'Нет' } }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionsDialog':function(){
-define("Sage/MainView/ReportMgr/Crystal/nls/ru/CrystalReportConditionsDialog", {
-    txtDialogTitle: 'Выбор записей',
-    cmdBack_Caption: '< Назад',
-    cmdNext_Caption: 'Следующий>',
-    cmdCancel_Caption: 'Отмена',
-    grdCrystalConditions_ConditionType_Caption: 'Тип',
-    grdCrystalConditions_TableName_Caption: 'Таблица',
-    grdCrystalConditions_FieldName_Caption: 'Поле',
-    grdCrystalConditions_Operator_Caption: 'Оператор',
-    grdCrystalConditions_Value_Caption: 'Значение условия',
-    txtShowRecordsThatMatch: 'Показать совпадения: ',
-    txtMatch: 'Совпадение:',
-    txtOfTheFollowingConditions: 'по следующим условиям:',
-    txtAny: 'Любое',
-    txtAll: 'Все',
-    txtAllRecords: '[Все записи]',
-    txtSpecificConditions: '[Особые условия]',
-    txtCurrentUser: '[Текущий пользователь]'
-});
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/ru/ActivityListPanelConfig':function(){
-define("Sage/Extensions/Activity/ListPanelOverrides/nls/ru/ActivityListPanelConfig", (
-{ colNameAssociationCount: 'Число участников' }
-));
-},
-'Sage/UI/nls/ru/JobSchedulingWidget':function(){
-define("Sage/UI/nls/ru/JobSchedulingWidget", {
-    lblCreateSchedule: 'Создать расписание задания для запуска',
-    lblEveryText: 'Каждый',
-    lblOnText: 'в',
-    lblOnTheText: 'в',
-    lblAtText: 'в',
-    lblMinutesPastHour: 'мин. после часа',
-    lblFromTimeText: 'Выполнять с',
-    lblToTimeText: 'по',
-    lblMinutesFrequency: 'мин.',
-    lblHourlyFrequency: 'ч.',
-    lblDailyFrequency: 'дн.',
-    lblWeekDayFrequency: 'будний день',
-    lblWeeklyFrequency: 'нед.',
-    lblMonthlyFrequency: 'мес.',
-    lblYearlyFrequency: 'г.',
-    lblSunday: 'Воскресенье',
-    lblMonday: 'Понедельник',
-    lblTuesday: 'Вторник',
-    lblWednesday: 'Среда',
-    lblThursday: 'Четверг',
-    lblFriday: 'Пятница',
-    lblSaturday: 'Суббота',
-    lblFirstDay: '1',
-    lblSecondDay: '2',
-    lblThirdDay: '3',
-    lblFourthDay: '4',
-    lblCronExpressionText: 'Cron-выражение',
-    txtInvalidScheduleTitle: 'Неверный Расписание',
-    txtInvalidDatesMessage: 'Время окончания должно быть после времени начала. Пожалуйста, исправьте эту информацию, прежде чем продолжить.',
-    txtInvalidScheduleTime: 'Начальная и конечная раз указанные предотвратит этот график запуск. Пожалуйста, исправьте эту информацию, прежде чем продолжить.',
-    txtInvalidStartDate: 'Дата начала требуется. Пожалуйста, указать дату начала, прежде чем продолжить.',
-    txtInvalidEndDate: 'Дата окончания не требуется. Введи Конечная дата, прежде чем продолжить.'
-});
-},
-'Sage/UI/Controls/nls/ru/LogOffButton':function(){
-define("Sage/UI/Controls/nls/ru/LogOffButton", (
-{ logOffText: 'Выход' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/TextBoxAdvancedPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/TextBoxAdvancedPropertyEditor", (
-{ titleText: 'Расширенный',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  controlInfoText: 'Информация о контроле',
-  dataText: 'Данные',
-  controlIdText: 'ИД контрола:',
-  controlIdTooltipText: 'Идентификатор для данного элемента управления.',
-  controlLabelPlacementText: 'Расположение подписи:',
-  controlLabelPlacementTooltipText: 'Позиция подписи по отношению к элементу управления.',
-  controlTypeText: 'Тип контрола:',
-  controlTypeTooltipText: 'Тип управления Saleslogix.',
-  defaultDataBindingText: 'Привязка данных:',
-  defaultDataBindingTooltipText: 'Поле из базы данных, используемое этим элементом управления.',
-  enabledText: 'Включен:',
-  enabledTooltipText: 'Позволяет пользователю взаимодействовать с этим элементом управления.',
-  maxLengthText: 'Макс. длина:',
-  maxLengthTooltipText: 'Максимальное количество символов, которое пользователь может ввести.',
-  requiredText: 'Обязательный:',
-  requiredTooltipText: 'Требуется значение при сохранении данных.',
-  visibleText: 'Видимый:',
-  visibleTooltipText: 'Показать или скрыть этот элемент управления на форме.',
-  labelPlacementText: { left: 'Слева', right: 'Право', top: 'Верх', none: 'Нет' } }
-));
-},
-'Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectStringParameterEditor':function(){
-﻿define("Sage/MainView/ReportMgr/Crystal/nls/ru/MultiselectStringParameterEditor", {
-    txtTheValueMustBeBetween: 'Значение должно быть между {0} и {1} долго символов.',
-    txtTheMinimumLengthForThisField: 'Минимальная длина этого поля {0}.',
-    txtTheMaximumLengthForThisField: 'Максимальная длина этого поля {0}.',
-    txtPleaseSpecifyValue: 'Пожалуйста, укажите значение.',
-    lblAvailableValues_Caption: 'Доступные значения:',
-    lblSelectedValues_Caption: 'Отдельные значения:',
-    lblEnterValue_Caption: 'Введите значение:'
-});
-},
-'Sage/MainView/ActivityMgr/nls/ru/EditEventEditor':function(){
-define("Sage/MainView/ActivityMgr/nls/ru/EditEventEditor", (
-{ titleScheduleText: 'Планировать событие',
-  titleEditText: 'Изменить событие',
-  lblDayTypeText: 'Тип события:',
-  lblStartDateText: 'Дата начала:',
-  lblEndDateText: 'Дата окончания:',
-  lblUserText: 'Пользователь:',
-  lookupUserText: 'Поиск пользователя',
-  lblCategoryText: 'Категория:',
-  lblLocationText: 'Размещение:',
-  lblDescriptionText: 'Описание:',
-  btnOkayText: 'Ок',
-  btnCancelText: 'Отмена',
-  btnHelpText: 'Помощь',
-  eventTypeActiveText: 'Активен',
-  eventTypeBusinessTripText: 'Командировка',
-  eventTypeConferenceText: 'Конференция',
-  eventTypeHolidayText: 'Праздник',
-  eventTypeOffText: 'Нет на месте',
-  eventTypeTradeShowText: 'Выставка',
-  eventTypeUnavailableText: 'Недоступен',
-  eventTypeVacationText: 'Вакансия',
-  errorText: 'Мне очень жаль, это событие не может быть создано, потому что произошла ошибка.',
-  invaildDatesText: 'Мне очень жаль, дата окончания не может быть ранее, чем дата начала.',
-  nameText: 'Имя' }
-));
-},
-'Sage/MailMerge/nls/ru/Loader':function(){
-define("Sage/MailMerge/nls/ru/Loader", (
-{ decodeFailed: 'The call to DecodeMailMergeJsonFromUrl() failed.' }
-));
-},
-'Sage/UI/Controls/nls/ru/DateTimePicker':function(){
-define("Sage/UI/Controls/nls/ru/DateTimePicker", (
-{ okText: 'ОК',
-  cancelText: 'Отмена',
-  convertDescription: 'Сравнение в другим часовым поясом.',
-  convertText: 'Сравнить',
-  calculatorText: 'Калькулятор часового пояса',
-  timeZoneSourceText: 'Часовой пояс',
-  timeZoneDestText: 'Сравнение часовых поясов',
-  buttonToolTip: 'Календарь',
-  timeStartText: 'Время',
-  timeZoneCalculatorText: 'Калькулятор часового пояса' }
-));
-},
-'Sage/MainView/ReportMgr/nls/ru/ReportManagerActions':function(){
-define(
-"Sage/MainView/ReportMgr/nls/ru/ReportManagerActions", {
-    txtSelectRecord: 'Выберите запись из списка.',
-    txtInvalidSelectionCount: 'Вы должны быть по крайней мере одна запись, выбранную прежде чем продолжить.',
-    confirm_Deletion: 'Вы уверены, что хотите удалить выбранный ${0}?',
-    confirm_Report: 'отчет',
-    confirm_Schedule: 'график',
-    confirm_ReportHistory: 'История отчет запись',
-    txtYes: 'Да',
-    txtNo: 'Нет',
-    deleteJobError: 'К сожалению произошла ошибка во время процесса удаления: ${0}',
-    txtDeleteHistory: 'Удаление записи журнала',
-    txtDeleteTitle: 'Удалить историю',
-    txtErrorDeleteReport: 'Произошла ошибка удаления отчета: ${0}'
-});
-},
-'Sage/UI/Alarms/nls/ru/AlarmPopup':function(){
-define("Sage/UI/Alarms/nls/ru/AlarmPopup", (
-{ title: 'Оповещения',
-  alarmsText: 'Оповещения',
-  unconfirmedText: 'Неподтвержденные',
-  deleteText: 'Удалить выбранное',
-  helpText: 'Помощь',
-  completeText: 'Завершить выбранные дела' }
-));
-},
-'Sage/MainView/Contact/nls/ru/ContactUserAssociationEditor':function(){
-define("Sage/MainView/Contact/nls/ru/ContactUserAssociationEditor", (
-{ btnCancel_Caption: 'Отмена',
-  btnOK_Caption: 'Ок',
-  dialogTitleText: 'Связать контакт с пользователем',
-  associateContactText: 'Связать выбранный контакт со следующим пользователем',
-  user_Caption: 'Пользователь',
-  lookupUserText: 'Поиск пользователя',
-  lookupNameColText: 'Имя',
-  lookupTitleColText: 'Название',
-  lookupDepartmentColText: 'Отдел',
-  lookupRegionColText: 'Регион',
-  lookupTypeColText: 'Тип',
-  disAssociateTitle: 'Удалить связь с пользователем',
-  associationExistsMessage: 'Выбранный пользователь уже связан с контактом. Выберите другого пользователя.' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/OwnerBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/OwnerBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/MainView/JobMgr/nls/ru/BaseListPanelConfig':function(){
-define("Sage/MainView/JobMgr/nls/ru/BaseListPanelConfig", (
-{ titleFmtString: '${0}' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/TextBoxControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/TextBoxControlDesigner", (
-{ displayNameText: 'Текстовый бокс' }
-));
-},
-'Sage/QuickForms/Design/nls/ru/EmailControlDesigner':function(){
-define("Sage/QuickForms/Design/nls/ru/EmailControlDesigner", (
-{ displayNameText: 'Эл.почта' }
-));
-},
-'Sage/UI/Controls/nls/ru/Lookup':function(){
-define("Sage/UI/Controls/nls/ru/Lookup", (
-{ buttonToolTip: 'Найти', closeButtonToolTip: 'Исключить' }
-));
-},
-'Sage/Utility/File/nls/ru/DescriptionsForm':function(){
-define("Sage/Utility/File/nls/ru/DescriptionsForm", (
-{ titleFmt: 'Добавить документ(ы) для ${0}',
-  titleLibraryDoc: 'Добавить документ(ы) в библиотеку',
-  fileNameText: 'Имя и размер файла: ',
-  descText: 'Описание:',
-  okText: 'Ок',
-  cancelText: 'Отмена' }
-));
-},
-'Sage/QuickForms/Design/Editors/nls/ru/NumericBasicPropertyEditor':function(){
-define("Sage/QuickForms/Design/Editors/nls/ru/NumericBasicPropertyEditor", (
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  isReadOnlyText: 'Только чтение:',
-  isReadOnlyTooltipText: 'Не разрешает изменение.',
-  toolTipText: 'Подсказка:',
-  toolTipTooltipText: 'Короткий текст справки о контроле.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
-},
-'Sage/TaskPane/nls/ru/CommonTasksTasklet':function(){
-define("Sage/TaskPane/nls/ru/CommonTasksTasklet", (
-{ okButtonText: 'Ок',
-  loadingText: 'Загрузка...',
-  noPrimaryEmail: 'Нет доступного основного эл. адреса',
-  selectFileFormat: 'Выберите формат файла:',
-  exportToFile_OptionCSV: 'Стандартный CSV',
-  exportToFile_OptionTab: 'Разделитель табуляция (рекомендуется для Microsoft Excel)',
-  exportToFile_OptionSaveFormat: 'Запомнить мой выбор и не спрашивать.',
-  exportToFile_OK: 'Ок',
-  exportToFile_Cancel: 'Отмена',
-  exportToFile_DialogTitle: 'Выгрузить в файл',
-  exportToExcel_Caption: 'Экспорт в Excel',
-  errorRequestingJobMgr: 'Ошибка при запросе диспетчера заданий: ${0}',
-  errorExecutionAction: 'Произошла ошибка во время выполнения ${0}',
-  exportProcessingJobMsg: 'Во время выполнения экспорта вы можете ожидать завершения операции или перейти к отчетам, чтобы открыть файл.' }
-));
-},
-'Sage/Utility/nls/ru/Dashboard':function(){
-define("Sage/Utility/nls/ru/Dashboard", (
-{ pageText: 'Страница' }
-));
-}}});
-define("Sage/nls/Sage_ru", [], 1);

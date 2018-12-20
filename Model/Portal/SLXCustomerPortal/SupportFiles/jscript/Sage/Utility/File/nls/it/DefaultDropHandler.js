@@ -1,5 +1,5 @@
-define((
-{ emailDroppedText: 'Email trascinata',
-  attachmentTitleText: 'Salva Allegati',
-  attachmentQuestionText: 'Desideri tenere una copia di questo allegato(i) in SalesLogix?<br />Gli allegati sono archiviati nella scheda Allegati delle entità principali.' }
-));
+define("Sage/Utility/File/nls/it/DefaultDropHandler", {
+    "emailDroppedText": "E-mail rilasciata",
+    "attachmentTitleText": "Salva allegati",
+    "attachmentQuestionText": "Mantenere una copia di questi allegati in Infor CRM? <br />Gli allegati verranno archiviati nella scheda Allegati delle entità pertinenti."
+});

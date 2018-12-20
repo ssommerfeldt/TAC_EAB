@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/MainView/ActivityMgr/AttendeeLookup/LeadLookupConfig", [
      'Sage/MainView/ActivityMgr/AttendeeLookup/BaseLookupConfig',
      'Sage/UI/SDataLookup',
      'dojo/i18n!./nls/LeadLookupConfig',
@@ -14,13 +14,13 @@ function (
     lang
    ) {
     var associationLookupConfig = declare('Sage.MainView.ActivityMgr.AttendeeLookup.LeadLookupConfig', [BaseLookupConfig], {
-              
+
         constructor: function () {
-            lang.mixin(this, nlsResources);           
+            lang.mixin(this, nlsResources);
             this.lookupType = SDataLookup;
             this._initConfig();
-         },
-        _initConfig: function(){
+        },
+        _initConfig: function () {
             this.id = '_leadLookup',
             this.lookupName = 'Lead';
             this.lookupDisplayName = 'Lead Lookup';
@@ -44,7 +44,7 @@ function (
                 sort: [{ attribute: 'LastName' }]
             };
             this.preFilters = [];
-            this.gridOptions = { };
+            this.gridOptions = {};
             this.query = {};
             this.isModal = true;
             this.displayMode = 5;
@@ -56,22 +56,23 @@ function (
                 return this.cells;
             }
             this.cells = [
-            {   name: this.colFirstName,
+            {
+                label: this.colFirstName,
                 field: 'FirstName'
-            },{
-                name: this.colLastName,
+            }, {
+                label: this.colLastName,
                 field: 'LastName'
             }, {
-                name: this.colTitle,
+                label: this.colTitle,
                 field: 'Title'
             }, {
-                name: this.colCompany,
+                label: this.colCompany,
                 field: 'Company'
             }, {
-                name: this.colWorkPhone,
+                label: this.colWorkPhone,
                 field: 'WorkPhone'
             }, {
-                name: this.colEmail,
+                label: this.colEmail,
                 field: 'Email'
             }];
             return this.cells;
@@ -81,31 +82,27 @@ function (
             var sDataConfig = {
                 id: this.id + "_base_" + uiid,
                 btnToolTip: '',
-                structure: [
-                    {
-                        defaultCell: this.defaultCell,
-                        cells: this.cells,
-                    }],
+                structure: this.cells,
                 gridOptions: this.gridOptions,
                 displayMode: this.displayMode,
-                storeOptions: this.storeOptions, 
+                storeOptions: this.storeOptions,
                 isModal: this.isModal,
                 initialLookup: this.initialLookup,
                 preFilters: this.preFilters,
                 query: this.query,
                 dialogTitle: this.dialogTitle,
                 dialogButtonText: this.dialogButtonText,
-                doSelected: function () { alert("overide the doSelect method") },
+                doSelected: function () { alert("override the doSelect method") },
                 cancelText: this.cancelText
-            };           
+            };
 
             return sDataConfig;
         },
         getLookupInstance: function (uiid) {
             var config = this.getConfig(uiid);
-            var lookup =  new this.lookupType(config);
+            var lookup = new this.lookupType(config);
             return lookup;
-        }      
+        }
 
     });
     return associationLookupConfig;

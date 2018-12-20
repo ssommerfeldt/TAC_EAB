@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Columns/Boolean", [
     'dojox/grid/cells/_base',
     'dojo/i18n',
     'Sage/Utility',
@@ -20,10 +20,10 @@ function (_base, i18n, Utility, nlsResource, declare) {
                 'Y': true,
                 'y': true,
                 '1': true,
-                '+': true
+                '+': true,
+                'true': true
             };
-            if (!this.formatString) return (val in truthy) ? this.yesText :
-			this.noText;
+            if (!this.formatString) return (val in truthy) ? this.yesText : this.noText;
             var arrVals = this.formatString.split('/');
             if (arrVals.length && arrVals.length === 2) {
                 var strVal = (val in truthy) ? arrVals[0] : arrVals[1];

@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtSecuredAction.ToolTip" xml:space="preserve">
-    <value>Pfad zur gesicherten Aktion.</value>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Speichern</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Möchten Sie diese gesicherte Aktion wirklich löschen? Sie müssen alle Verweise auf die gelöschte gesicherte Aktion aus AppArchitect entfernen, ansonsten ist der Zugriff auf die gesicherten Elemente nur für den Administrator möglich.</value>
+  <data name="btnInsertSave.ToolTip" xml:space="preserve">
+    <value>Speichern und neu</value>
   </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Löschen</value>
@@ -129,13 +129,13 @@
   <data name="txtDescription.Caption" xml:space="preserve">
     <value>Beschreibung:</value>
   </data>
+  <data name="txtSecuredAction.ToolTip" xml:space="preserve">
+    <value>Pfad zur gesicherten Aktion.</value>
+  </data>
   <data name="txtSecuredAction.Caption" xml:space="preserve">
     <value>Name:</value>
   </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Speichern</value>
-  </data>
-  <data name="btnInsertSave.ToolTip" xml:space="preserve">
-    <value>&amp;Speichern und neu</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Möchten Sie diese gesicherte Aktion wirklich löschen? Sie müssen alle Verweise auf die gelöschte gesicherte Aktion aus AppArchitect entfernen, ansonsten ist der Zugriff auf die gesicherten Elemente nur für den Administrator möglich.</value>
   </data>
 </root>

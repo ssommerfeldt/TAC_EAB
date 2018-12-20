@@ -1,12 +1,12 @@
-﻿/*globals Sage, dojo, define */
-define([
+/*globals Sage, dojo, define */
+define("Sage/UI/SLXPreviewGrid/Filter/Lookup", [
     'dojo/_base/declare',
     'dijit/_Widget',
-    'Sage/UI/SLXPreviewGrid/Filter/_previewGridFilterMixin'
+    'Sage/UI/SLXPreviewGrid/Filter/_previewGridFilterMixin',
+    'dojo/i18n!./nls/Lookup'
 ],
-function (declare, _Widget, _filterMixin) {
+function (declare, _Widget, _filterMixin, nlsResources) {
     var lookupFilter = declare('Sage.UI.SLXPreviewGrid.Filter.Lookup', [_Widget, _filterMixin], {
-        okText: 'OK',
         //These properties can come from the column configuration if it is a lookup column
         // type, or they can come directly from the filterConfig.
         lookupStructure: [],
@@ -22,7 +22,7 @@ function (declare, _Widget, _filterMixin) {
                 preFilters: [],
                 returnPrimaryKey: true,
                 dialogTitle: this.name,
-                dialogButtonText: this.okText
+                dialogButtonText: nlsResources.okText
             };
             this._lup = new Sage.UI.Controls.Lookup({
                 id: this.id + '_lup',

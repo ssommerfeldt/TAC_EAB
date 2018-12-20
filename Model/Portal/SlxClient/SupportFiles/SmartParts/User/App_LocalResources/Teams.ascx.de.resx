@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SourceTeamList.Caption" xml:space="preserve">
+    <value>Team:</value>
+  </data>
   <data name="OkButton.Caption" xml:space="preserve">
     <value>OK</value>
-  </data>
-  <data name="PageTitle" xml:space="preserve">
-    <value>Teammitglieder</value>
   </data>
   <data name="CancelButton.Caption" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="DeleteConfirmMessage" xml:space="preserve">
-    <value>Bestätigung zurückgeben ("Möchten Sie {0} wirklich aus dem Team {1} entfernen?");</value>
-  </data>
-  <data name="OwnerHeader" xml:space="preserve">
-    <value>Name</value>
-  </data>
   <data name="cmdAdd.Caption" xml:space="preserve">
     <value>Hinzufügen</value>
-  </data>
-  <data name="lueMembers.Tooltip" xml:space="preserve">
-    <value>Team hinzufügen</value>
-  </data>
-  <data name="lueMembers.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Team</value>
-  </data>
-  <data name="PageDescription" xml:space="preserve">
-    <value>Mitglieder dieses Teams</value>
   </data>
   <data name="cmdAdd.ToolTip" xml:space="preserve">
     <value>Mitglied zu Team hinzufügen</value>
   </data>
-  <data name="SourceTeamList.Caption" xml:space="preserve">
-    <value>Team:</value>
+  <data name="OwnerHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PageDescription" xml:space="preserve">
+    <value>Mitglieder dieses Teams</value>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Teammitglieder</value>
   </data>
   <data name="ProfileHeader" xml:space="preserve">
     <value>Sicherheitsprofil</value>
+  </data>
+  <data name="DeleteConfirmMessage" xml:space="preserve">
+    <value>return confirm("Möchten Sie {0} wirklich aus dem Team {1} entfernen?");</value>
+  </data>
+  <data name="lueMembers.LookupProperties.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="lueMembers.Tooltip" xml:space="preserve">
+    <value>Team hinzufügen</value>
   </data>
 </root>

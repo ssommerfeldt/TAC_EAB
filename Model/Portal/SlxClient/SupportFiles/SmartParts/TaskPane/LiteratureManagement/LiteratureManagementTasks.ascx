@@ -4,7 +4,7 @@
 
 <asp:UpdatePanel UpdateMode="Conditional" runat="server" ID="SAG">
     <ContentTemplate>
-        <asp:HiddenField ID="hfSelections" runat="server" Value="" />
+        <asp:HiddenField ID="hfSelections" runat="server" Value="" ClientIDMode="Predictable" />
         <asp:HiddenField ID="hfLastFulfilledIds" runat="server" Value="" />
          <style>
          a
@@ -41,9 +41,9 @@
         </div>        
         <script type="text/javascript">
             var literatureManagementActions = null;
-            require(['Sage/TaskPane/LiteratureManagementTasks'],
-                   function (LiteratureManagementTasks) {
-                       dojo.ready(function () {
+            require(['Sage/TaskPane/LiteratureManagementTasks', 'dojo/ready'],
+                   function (LiteratureManagementTasks, ready) {
+                       ready(function () {
                            if (literatureManagementActions === null) {
                                literatureManagementActions = new LiteratureManagementTasks({
                                    id: "literatureManagementActions",

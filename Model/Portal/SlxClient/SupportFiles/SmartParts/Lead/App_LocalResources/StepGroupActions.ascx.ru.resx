@@ -117,85 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="chkAddNotes.Caption" xml:space="preserve">
+    <value>Добавить заметки к каждому заинтересованному лицу</value>
+  </data>
   <data name="chkAddTargets.Caption" xml:space="preserve">
-    <value>Добавить как цель в маркетинг</value>
-  </data>
-  <data name="chkScheduleActivity.Caption" xml:space="preserve">
-    <value>Планировать дело для каждой наводки</value>
-  </data>
-  <data name="ScheduleMeeting.Caption" xml:space="preserve">
-    <value>Планировать встречу</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="Action_AddNote.Caption" xml:space="preserve">
-    <value>Добавить заметку</value>
-  </data>
-  <data name="cmdScheduleActivity.Caption" xml:space="preserve">
-    <value>Планировать...</value>
+    <value>Добавить как цель в кампанию</value>
   </data>
   <data name="chkCreateResponses.Caption" xml:space="preserve">
-    <value>Создать отклики</value>
-  </data>
-  <data name="grdActions.Define" xml:space="preserve">
-    <value>Определить</value>
+    <value>Создать ответы</value>
   </data>
   <data name="chkRunProcess.Caption" xml:space="preserve">
-    <value>Запустить процесс для каждой наводки</value>
+    <value>Запустить процесс для каждого заинтересованного лица</value>
   </data>
-  <data name="Action_AddResponse.Caption" xml:space="preserve">
-    <value>Добавить отклик</value>
-  </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Выберите действия, которые будут применены к наводкам.</value>
-  </data>
-  <data name="grdActions.Edit" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="SchedulePhoneCall.Caption" xml:space="preserve">
-    <value>Планировать звонок</value>
-  </data>
-  <data name="lblSubHeader.Caption" xml:space="preserve">
-    <value>Вы можите применить следующие действия к наводкам импортируя их в систему.</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
-    <value>Код кампании</value>
-  </data>
-  <data name="grdActions.Name.ColumnHeading" xml:space="preserve">
-    <value>Действие</value>
-  </data>
-  <data name="grdActions.Define.Column" xml:space="preserve">
-    <value>Определить</value>
-  </data>
-  <data name="grdActions.IsActive.ColumnHeading" xml:space="preserve">
-    <value>Активн.</value>
-  </data>
-  <data name="cmdDefineResponse.Caption" xml:space="preserve">
-    <value>Определить отклик...</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
-    <value>Дата окончания</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
-    <value>Имя марк. программы</value>
-  </data>
-  <data name="grdActions.EmptyTableText" xml:space="preserve">
-    <value>Действи не определены.</value>
-  </data>
-  <data name="lueCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
-    <value>Дата начала</value>
-  </data>
-  <data name="ScheduleToDo.Caption" xml:space="preserve">
-    <value>Планировать действие</value>
+  <data name="chkScheduleActivity.Caption" xml:space="preserve">
+    <value>Запланировать действие для каждого заинтересованного лица</value>
   </data>
   <data name="cmdAddNote.Caption" xml:space="preserve">
     <value>Добавить заметку...</value>
   </data>
-  <data name="chkAddNotes.Caption" xml:space="preserve">
-    <value>Добавить заметки в каждую наводку</value>
+  <data name="cmdDefineResponse.Caption" xml:space="preserve">
+    <value>Задать ответ...</value>
+  </data>
+  <data name="cmdScheduleActivity.Caption" xml:space="preserve">
+    <value>Запланировать...</value>
+  </data>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Выберите действия, которые будут применены к заинтересованным лицам.</value>
+  </data>
+  <data name="lblSubHeader.Caption" xml:space="preserve">
+    <value>Вы можете применить следующие действия к заинтересованным лицам во время их импорта в систему.</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
+    <value>Код кампании</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
+    <value>Имя кампании</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="lueCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="ScheduleMeeting.Caption" xml:space="preserve">
+    <value>Запланировать встречу</value>
+  </data>
+  <data name="SchedulePhoneCall.Caption" xml:space="preserve">
+    <value>Запланировать звонок...</value>
+  </data>
+  <data name="ScheduleToDo.Caption" xml:space="preserve">
+    <value>Запланировать дело</value>
+  </data>
+  <data name="grdActions.Define" xml:space="preserve">
+    <value>Определить</value>
+  </data>
+  <data name="grdActions.Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="grdActions.EmptyTableText" xml:space="preserve">
+    <value>Не указаны действия.</value>
+  </data>
+  <data name="grdActions.Name.ColumnHeading" xml:space="preserve">
+    <value>Действие</value>
+  </data>
+  <data name="grdActions.IsActive.ColumnHeading" xml:space="preserve">
+    <value>Активно</value>
+  </data>
+  <data name="Action_AddNote.Caption" xml:space="preserve">
+    <value>Добавить заметку</value>
+  </data>
+  <data name="Action_AddResponse.Caption" xml:space="preserve">
+    <value>Добавить ответ</value>
   </data>
   <data name="Action_AddTarget.Caption" xml:space="preserve">
-    <value>Добавить цель программы</value>
+    <value>Добавить цель кампании</value>
+  </data>
+  <data name="grdActions.Define.Column" xml:space="preserve">
+    <value>Определить</value>
   </data>
 </root>

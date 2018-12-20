@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,55 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTargetAccountErr.Text" xml:space="preserve">
-    <value>Пожалуйста, выберите конечный субъект, отличающийся от исходного</value>
+  <data name="AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
   </data>
-  <data name="lblCopy.Text" xml:space="preserve">
-    <value>Дубликат</value>
-  </data>
-  <data name="cmdOK.Button.Text" xml:space="preserve">
-    <value>Ок</value>
-  </data>
-  <data name="lblSourceContact.Text" xml:space="preserve">
-    <value>Контакт:</value>
-  </data>
-  <data name="cmdCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="lblToAccount.Text" xml:space="preserve">
-    <value>Кому</value>
-  </data>
-  <data name="confirmCopy.Text" xml:space="preserve">
-    <value>Вы уверены, что вы хотите скопировать контакт  и выбранные элементы?</value>
-  </data>
-  <data name="lblTargetAccount.Text" xml:space="preserve">
-    <value>Субъект:</value>
-  </data>
-  <data name="chkCopyOpportunities.Text" xml:space="preserve">
-    <value>Сделки</value>
-  </data>
-  <data name="chkCopyNotes.Text" xml:space="preserve">
-    <value>Заметки</value>
-  </data>
-  <data name="lblSourceAccount.Text" xml:space="preserve">
-    <value>Субъект:</value>
+  <data name="chkAssociateWithSource.Text" xml:space="preserve">
+    <value>Связать контакт у целевого клиента с исходным контактом.</value>
   </data>
   <data name="chkCopyActivities.Text" xml:space="preserve">
-    <value>Дела</value>
-  </data>
-  <data name="lblCopyFollowing.Text" xml:space="preserve">
-    <value>Переместите следующее:</value>
-  </data>
-  <data name="lblFrom.Text" xml:space="preserve">
-    <value>От</value>
-  </data>
-  <data name="chkUseTargetAddressPhn.Text" xml:space="preserve">
-    <value>Использовать информацию об адресе и номере телефона конечного субъекта.</value>
+    <value>Действия</value>
   </data>
   <data name="chkCopyHistory.Text" xml:space="preserve">
     <value>История</value>
   </data>
-  <data name="chkAssociateWithSource.Text" xml:space="preserve">
-    <value>Связать контакт с конечным субъектом исходного контакта.</value>
+  <data name="chkCopyNotes.Text" xml:space="preserve">
+    <value>Заметки</value>
+  </data>
+  <data name="chkCopyOpportunities.Text" xml:space="preserve">
+    <value>Возможности</value>
+  </data>
+  <data name="chkUseTargetAddressPhn.Text" xml:space="preserve">
+    <value>Использовать информацию об адресе и номере телефона целевого клиента.</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="cmdOK.Button.Text" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="confirmCopy.Text" xml:space="preserve">
+    <value>Действительно скопировать контакт и выбранные элементы?</value>
+  </data>
+  <data name="lblCopy.Text" xml:space="preserve">
+    <value>Дубликат</value>
+  </data>
+  <data name="lblCopyFollowing.Text" xml:space="preserve">
+    <value>Переместить следующее:</value>
+  </data>
+  <data name="lblFrom.Text" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="lblSourceAccount.Text" xml:space="preserve">
+    <value>Клиент:</value>
+  </data>
+  <data name="lblSourceContact.Text" xml:space="preserve">
+    <value>Контакт:</value>
+  </data>
+  <data name="lblTargetAccount.Text" xml:space="preserve">
+    <value>Клиент:</value>
+  </data>
+  <data name="lblTargetAccountErr.Text" xml:space="preserve">
+    <value>Выберите целевого клиента, отличающегося от исходного клиента</value>
+  </data>
+  <data name="lblToAccount.Text" xml:space="preserve">
+    <value>Для</value>
+  </data>
+  <data name="MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Основной</value>
+  </data>
+  <data name="Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="SubType.PropertyHeader" xml:space="preserve">
+    <value>Подтип</value>
+  </data>
+  <data name="Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
   </data>
 </root>

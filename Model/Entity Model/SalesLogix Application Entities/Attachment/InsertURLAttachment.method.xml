@@ -7,7 +7,7 @@
     <OrmEntityMethodParam paramName="url" sequence="0" paramType="string" />
   </parameter>
   <methodTargets>
-    <methodTarget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="929a297d-17ee-4c77-9f1e-391ba775eae5" targetType="Sage.SalesLogix.Attachment.Rules, Sage.SalesLogix.BusinessRules" sequence="10" targetMethod="InsertURLAttachment" active="true">
+    <methodTarget id="929a297d-17ee-4c77-9f1e-391ba775eae5" targetType="Sage.SalesLogix.Attachment.Rules, Sage.SalesLogix.BusinessRules" sequence="10" targetMethod="InsertURLAttachment" active="true">
       <ExtendedPropertiesCollection>
         <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
       </ExtendedPropertiesCollection>

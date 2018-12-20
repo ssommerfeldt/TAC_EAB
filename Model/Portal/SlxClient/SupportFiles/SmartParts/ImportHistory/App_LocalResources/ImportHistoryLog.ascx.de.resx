@@ -117,55 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdHistoryLog.Description.ColumnHeading" xml:space="preserve">
-    <value>Beschreibung</value>
+  <data name="grdHistoryLog.EmptyTableRowText" xml:space="preserve">
+    <value>Es sind keine Elemente im Importhistorienprotokoll für die Anzeige vorhanden.</value>
   </data>
-  <data name="itemType.Merged" xml:space="preserve">
-    <value>Zusammengeführt</value>
+  <data name="grdHistoryLog.Type.ColumnHeading" xml:space="preserve">
+    <value>Typ</value>
   </data>
-  <data name="GoTo" xml:space="preserve">
-    <value>Gehe zu</value>
-  </data>
-  <data name="grdHistoryLog.IsResolved.ColumnHeading" xml:space="preserve">
-    <value>Aufgelöst</value>
-  </data>
-  <data name="itemType.Duplicate" xml:space="preserve">
-    <value>Duplikat</value>
-  </data>
-  <data name="grdHistoryLog.TimeStamp.ColumnHeading" xml:space="preserve">
-    <value>Zeitstempel</value>
-  </data>
-  <data name="grdHistoryLog.ResolvedDescription.ColumnHeading" xml:space="preserve">
-    <value>Beschreibung aufgelöst.</value>
-  </data>
-  <data name="grdHistoryLog.ResolvedDate.ColumnHeading" xml:space="preserve">
-    <value>Aufgelöst am</value>
-  </data>
-  <data name="itemType.Info" xml:space="preserve">
-    <value>Info</value>
-  </data>
-  <data name="ContactEntityName" xml:space="preserve">
-    <value>Kontakt</value>
-  </data>
-  <data name="itemType.Warning" xml:space="preserve">
-    <value>Warnung</value>
+  <data name="grdHistoryLog.Record.ColumnHeading" xml:space="preserve">
+    <value>Datensatz</value>
   </data>
   <data name="grdHistoryLog.RecordNumber.ColumnHeading" xml:space="preserve">
     <value>Datensatznummer</value>
   </data>
-  <data name="grdHistoryLog.Record.ColumnHeading" xml:space="preserve">
-    <value>Aufzeichnen</value>
+  <data name="grdHistoryLog.TimeStamp.ColumnHeading" xml:space="preserve">
+    <value>Zeitstempel</value>
   </data>
-  <data name="LeadEntityName" xml:space="preserve">
-    <value>Interessent</value>
+  <data name="grdHistoryLog.Description.ColumnHeading" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="ContactEntityName" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="grdHistoryLog.IsResolved.ColumnHeading" xml:space="preserve">
+    <value>Aufgelöst</value>
+  </data>
+  <data name="grdHistoryLog.ResolvedDate.ColumnHeading" xml:space="preserve">
+    <value>Aufgelöst am</value>
+  </data>
+  <data name="grdHistoryLog.ResolvedDescription.ColumnHeading" xml:space="preserve">
+    <value>Beschreibung der Auflösung</value>
+  </data>
+  <data name="itemType.Duplicate" xml:space="preserve">
+    <value>Duplikat</value>
   </data>
   <data name="itemType.Error" xml:space="preserve">
     <value>Fehler</value>
   </data>
-  <data name="grdHistoryLog.EmptyTableRowText" xml:space="preserve">
-    <value>Es sind keine Einträge im Importhistorienprotokoll für die Anzeige vorhanden.</value>
+  <data name="itemType.Info" xml:space="preserve">
+    <value>Info</value>
   </data>
-  <data name="grdHistoryLog.Type.ColumnHeading" xml:space="preserve">
-    <value>Typ</value>
+  <data name="itemType.Merged" xml:space="preserve">
+    <value>Zusammengeführt</value>
+  </data>
+  <data name="itemType.Warning" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="LeadEntityName" xml:space="preserve">
+    <value>Interessent</value>
+  </data>
+  <data name="ResolvedEntity" xml:space="preserve">
+    <value>{0}:EntityID={1}</value>
+  </data>
+  <data name="GoTo" xml:space="preserve">
+    <value>Gehe zu</value>
   </data>
 </root>

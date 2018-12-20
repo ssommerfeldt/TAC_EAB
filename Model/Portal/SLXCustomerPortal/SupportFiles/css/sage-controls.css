@@ -138,22 +138,15 @@ table.datagrid th.slxgridrowcollapse
 	background-image: none;
 }
 
-.datagrid TD DIV.cellcontents
+.datagrid TD DIV.cellcontents, .datagrid TH
 {
 	overflow : hidden;
 	/*height: 17px;*/
 }
 
-
-.datagrid TH
-{
-	padding : 0px;
-	overflow : hidden;
-}
-
 .headercontents 
 {
-	text-indent : 8px; 	
+	padding-left: 8px; 	
 	padding : .25em 0em;
 	top : 0px;
 	left : 0px;
@@ -171,10 +164,13 @@ table.datagrid th.slxgridrowcollapse
 {
     padding: 10px 20px;
     background-color: White;
+    overflow: auto;
 }
 .EntityCard table
 {
     white-space: normal;
+    font-size: 12px;
+    line-height: 17px;
 }    
 .SummaryTitle
 {

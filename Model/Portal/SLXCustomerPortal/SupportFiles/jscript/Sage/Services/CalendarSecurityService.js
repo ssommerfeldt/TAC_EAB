@@ -1,6 +1,6 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 
-define([
+define("Sage/Services/CalendarSecurityService", [
     'Sage/Data/SDataServiceRegistry',
     'Sage/Utility',
     'dojo/_base/declare'
@@ -67,11 +67,15 @@ function (sDataServiceRegistry, utility, declare) {
                 }
             }
         },
-        _loadData: function () {
+       
+        _loadData: function (start, count, initialData) {
             this._loading = true;
             var svc = sDataServiceRegistry.getSDataService('mashups', false, true, true); // cached one...
             //var svc = sDataServiceRegistry.getSDataService('mashups', false, true, false); // not cached one...
-            var uid = utility.getClientContextByKey('userID') || '';
+            var uid = utility.getClientContextByKey('userID') || '';            
+            count = count || 100;
+            start = start || 1;            
+            var self = this;
             var request = new Sage.SData.Client.SDataNamedQueryRequest(svc);
             request.setApplicationName('$app');
             request.setResourceKind('mashups');
@@ -79,14 +83,30 @@ function (sDataServiceRegistry, utility, declare) {
             request.setQueryName('execute');
             request.setQueryArg('_resultName', 'UserHasAccessToTheseCalendars');
             request.setQueryArg('_userId', uid);
+            request.setQueryArg('startIndex', start);
+            request.setQueryArg('count', count);
             request.read({
-                success: this._dataReceived,
+                success: function (data) {
+                    var totalResults = data.$totalResults;
+                    if (totalResults > 100 && totalResults > (start + count)) {
+                        //if we have more users, make another request to get remaining
+                        start = start == 1 ? (start + count) - 1 : start + count;
+                        self._loadData(start, (totalResults - start), data['$resources']);
+                    } else {
+                        if (initialData) {                            
+                            initialData.push.apply(initialData, data['$resources']);
+                            self._dataReceived(initialData);
+                        } else {
+                            self._dataReceived(data['$resources']);
+                        }
+                    }
+                },
                 failure: function () { console.log('user calendar request failed... %o', arguments); },
                 scope: this
             });
         },
         _dataReceived: function (data) {
-            this._rawList = data['$resources'];
+            this._rawList = data; //data['$resources'];
             var i;
             for (i = 0; i < this._rawList.length; i++) {
                 var item = this._rawList[i];

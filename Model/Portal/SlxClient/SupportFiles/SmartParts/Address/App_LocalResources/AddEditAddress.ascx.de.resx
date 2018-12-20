@@ -118,114 +118,85 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lblPrimary.Text" xml:space="preserve">
-    <value>Hauptrechnungsadresse:</value>
-  </data>
-  <data name="lblAddressType.Text" xml:space="preserve">
-    <value>Adresstyp:</value>
-  </data>
-  <data name="DialogTitleContactAdd" xml:space="preserve">
-    <value>Kontaktadresse hinzufügen</value>
-  </data>
-  <data name="lblSalutation.Text" xml:space="preserve">
-    <value>Zu Händen von:</value>
-  </data>
-  <data name="lblAddress1.Text" xml:space="preserve">
-    <value>Adresse1:</value>
-  </data>
-  <data name="lblCity.Text" xml:space="preserve">
-    <value>Stadt:</value>
-  </data>
-  <data name="DialogTitleAccountAdd" xml:space="preserve">
-    <value>Firmenadresse hinzufügen</value>
-  </data>
-  <data name="lblPrimaryAddr.Text" xml:space="preserve">
-    <value>Haupt:</value>
-  </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lblAddress2.Text" xml:space="preserve">
-    <value>Adresse2:</value>
-  </data>
-  <data name="DialogTitleContactEdit" xml:space="preserve">
-    <value>Kontaktadresse bearbeiten</value>
-  </data>
-  <data name="UpdateMessage" xml:space="preserve">
-    <value>Die Adresse eines oder mehrerer Kontakte entspricht der Adresse dieser Firma. Möchten Sie die übereinstimmenden Kontaktadressen aktualisieren?</value>
-  </data>
-  <data name="DialogTitleAccountEdit" xml:space="preserve">
-    <value>Firmenadresse bearbeiten</value>
-  </data>
-  <data name="lblShipping.Text" xml:space="preserve">
-    <value>Hauptlieferadresse:</value>
-  </data>
-  <data name="lblCountry.Text" xml:space="preserve">
-    <value>Land:</value>
-  </data>
-  <data name="DefaultDescription" xml:space="preserve">
-    <value>Postadresse</value>
+    <value>Primäre Rechnungsadresse:</value>
   </data>
   <data name="lblDecription.Text" xml:space="preserve">
     <value>Beschreibung:</value>
   </data>
-  <data name="btnCancel.ToolTip" xml:space="preserve">
-    <value>Abbrechen</value>
+  <data name="lblAddress1.Text" xml:space="preserve">
+    <value>Adresszeile 1:</value>
   </data>
-  <data name="lblState.Text" xml:space="preserve">
-    <value>Bundes./Kanton:</value>
+  <data name="lblAddress2.Text" xml:space="preserve">
+    <value>Adresszeile 2:</value>
   </data>
-  <data name="AddEditAddress_ClientScript" xml:space="preserve">
-    <value>&lt;script language="javascript" type="text/javascript"&gt;
-   
-    var modeAddressCtrlId = "@ModeID";
-    var entityTypeId = "@EntityTypeId";
-    var updateEntityModeId = "@UpdateEntityModeId";
-    var updateEntityResultId = "@UpdateEntityResultId";
-    var updateMessageId = "@UpdateMessageId";
-    
-    function updateEntityAddress(obj)
-    {
-       var modeAddressCtrl = document.getElementById(modeAddressCtrlId);
-       var entityTypeCtrl = document.getElementById(entityTypeId);
-       var updateEntityModeCtrl = document.getElementById(updateEntityModeId);
-       var updateEntityResultCtrl = document.getElementById(updateEntityResultId);
-       var updateMessageCtrl = document.getElementById(updateMessageId);
-            
-       //Prompt user to update entity related addresses   
-       if(confirm(updateMessageCtrl.value))
-       {
-            updateEntityResultCtrl.value = "True";
-       }
-       else
-       {
-            updateEntityResultCtrl.value = "False";
-       }
-     }    
- 
-    
- 
-&lt;/script&gt;
-</value>
+  <data name="lblAddress3.Text" xml:space="preserve">
+    <value>Adresszeile 3:</value>
   </data>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>Abbrechen</value>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="lblCity.Text" xml:space="preserve">
+    <value>Stadt:</value>
+  </data>
+  <data name="lblCountry.Text" xml:space="preserve">
+    <value>Land:</value>
   </data>
   <data name="lblPostalCode.Text" xml:space="preserve">
     <value>Postleitzahl:</value>
   </data>
-  <data name="txtCounty.Text" xml:space="preserve">
-    <value>Landkreis</value>
+  <data name="lblSalutation.Text" xml:space="preserve">
+    <value>Zu Händen von:</value>
+  </data>
+  <data name="lblShipping.Text" xml:space="preserve">
+    <value>Primäre Lieferung:</value>
+  </data>
+  <data name="lblState.Text" xml:space="preserve">
+    <value>Bundesland/Kanton:</value>
+  </data>
+  <data name="DefaultDescription" xml:space="preserve">
+    <value>Postanschrift</value>
+  </data>
+  <data name="DialogTitleAccountAdd" xml:space="preserve">
+    <value>Firmenadresse hinzufügen</value>
+  </data>
+  <data name="DialogTitleAccountEdit" xml:space="preserve">
+    <value>Firmenadresse bearbeiten</value>
   </data>
   <data name="DialogTitleAdd" xml:space="preserve">
     <value>Adresse hinzufügen</value>
   </data>
-  <data name="lblAddress3.Text" xml:space="preserve">
-    <value>Adresse3:</value>
+  <data name="DialogTitleContactAdd" xml:space="preserve">
+    <value>Kontaktadresse hinzufügen</value>
+  </data>
+  <data name="DialogTitleContactEdit" xml:space="preserve">
+    <value>Kontaktadresse bearbeiten</value>
   </data>
   <data name="DialogTitleEdit" xml:space="preserve">
     <value>Adresse bearbeiten</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AddEditAddress_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>AddEditAddress_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="UpdateMessage" xml:space="preserve">
+    <value>Die Adresse eines oder mehrerer Kontakte entspricht der Adresse dieser Firma. Möchten Sie die übereinstimmenden Kontaktadressen aktualisieren?</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="btnCancel.ToolTip" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="lblAddressType.Text" xml:space="preserve">
+    <value>Adresstyp:</value>
+  </data>
+  <data name="lblPrimaryAddr.Text" xml:space="preserve">
+    <value>Primär:</value>
+  </data>
+  <data name="txtCounty.Text" xml:space="preserve">
+    <value>Landkreis</value>
   </data>
 </root>

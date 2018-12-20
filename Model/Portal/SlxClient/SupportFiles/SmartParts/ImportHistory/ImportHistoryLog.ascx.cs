@@ -266,11 +266,6 @@ public partial class SmartParts_ImportHistory_ImportHistoryLog : EntityBoundSmar
         }
                 
         items = critItems.List<IImportHistoryItem>();
-        return items;                                       
-
+        return items;
     }
-
-
-    
-
 }

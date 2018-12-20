@@ -1,4 +1,4 @@
-define((
+define("Sage/Library/nls/en/FileHandler", (
 { AccessError: 'You do not have the role security required to execute this action.',
   Available: 'Available',
   Confirm: 'Confirm',

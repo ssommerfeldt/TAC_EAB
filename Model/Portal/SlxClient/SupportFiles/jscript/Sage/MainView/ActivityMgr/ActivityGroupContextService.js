@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/ActivityMgr/ActivityGroupContextService", [
     'Sage/Groups/BaseGroupContextService',
     'Sage/Services/ActivityService',
     'dojo/string',
@@ -14,6 +14,8 @@ define([
     'Sage/MainView/ActivityMgr/PastDueListPanelConfig',
     'dojox/storage/LocalStorageProvider',
     'dojo/_base/declare',
+    'dojo/_base/connect',
+    'dojo/_base/json',
     'dojo/i18n!./nls/ActivityGroupContextService'
 ],
 function (
@@ -31,6 +33,8 @@ function (
   PastDueListPanelConfig,
   LocalStorageProvider,
   declare,
+  connect,
+  json,
   i18nStrings
   ) {
 
@@ -88,19 +92,27 @@ function (
         constructor: function () {
             this.inherited(arguments);
             this._currentContext = {};
-            dojo.mixin(this._currentContext, this._emptyContext);
+            lang.mixin(this._currentContext, this._emptyContext);
             this._currentContext.CurrentTableKeyField = "$key";
             this._currentContext.AppliedFilterInfo = {};
             this._currentContext.CurrentFamily = null; // 'Actvitiy';
             this._currentContext.notGroupBased = true;
 
-            var defaultTabId = this._getDefaultTabId();
+            var defaultTabId;
+            defaultTabId = Sage.Utility.getParameterByName('groupId', document.location.href);
+            if (defaultTabId && this._validateTabId(defaultTabId)) {
+                defaultTabId = defaultTabId;
+            }
+            else {
+                defaultTabId = this._getDefaultTabId();
+            }
 
-            this.setContext(defaultTabId, 'default');
+            var name = this.getGroupName(defaultTabId);
+            this.setContext(defaultTabId, name);
             this.unsubscribeConnects();
             this._subscribes = [];
             this._subscribes.push(
-                dojo.subscribe(dString.substitute("/ui/filters/default/refresh"), this, this._onDefaultFilterRefresh)
+                connect.subscribe(dString.substitute("/ui/filters/default/refresh"), this, this._onDefaultFilterRefresh)
             );
             this._onDefaultFilterLoad();
 
@@ -125,7 +137,7 @@ function (
                 var hash = {};
                 for (var i = 0; i < this.groupConfigTypes.length; i++) {
                     var cfg = this.groupConfigTypes[i];
-                    hash[cfg.key] = lang.mixin(cfg, { instance: false });
+                    hash[cfg.key] = lang.mixin(cfg, (!cfg.instance) ? { instance: false } : null);
                 }
                 this.configsHash = hash;
             }
@@ -173,7 +185,7 @@ function (
             var self = this;
             this._onDefaultFilterLoad(function () {
                 var context = self.getContext();
-                dojo.publish('/group/context/changed', [options, self]);
+                connect.publish('/group/context/changed', [options, self]);
                 self._saveToLocalStorage(self._STORE_KEY_LASTAB, context.CurrentGroupID);
                 // The Filter Panel will ask to get the appled filters form the group context service.
                 //self.publishFiltersApplied();
@@ -184,7 +196,7 @@ function (
         _clearFilterManager: function () {
             var applied = {};
             var definitionSet = {};
-            dojo.publish('/ui/filters/default/apply', [applied, definitionSet, this]);
+            connect.publish('/ui/filters/default/apply', [applied, definitionSet, this]);
 
         },
         getContext: function () {
@@ -268,7 +280,7 @@ function (
                     '$name': 'applyFilterToEntity',
                     'request': {
                         'entityName': context.CurrentEntity,
-                        'filter': dojo.toJson(filterManager.createValueSet()),
+                        'filter': json.toJson(filterManager.createValueSet()),
                         'key': context.CurrentGroupID
                     }
                 },

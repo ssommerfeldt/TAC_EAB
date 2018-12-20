@@ -117,28 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="rdgSearchType_Updated.Caption" xml:space="preserve">
-    <value>Aggiornato</value>
-  </data>
-  <data name="lblDeleteTransactions.Caption" xml:space="preserve">
-    <value>Elimina transazioni in corso o prima:</value>
+  <data name="btnDelete_Caption" xml:space="preserve">
+    <value>Elimina</value>
   </data>
   <data name="btnSearch_Caption" xml:space="preserve">
-    <value>Cerca</value>
+    <value>Ricerca</value>
+  </data>
+  <data name="error_DeleteTransactions_InvalidDate" xml:space="preserve">
+    <value>Specifica una data di eliminazione transazioni prima di continuare.</value>
+  </data>
+  <data name="lblDeleteTransactions.Caption" xml:space="preserve">
+    <value>Elimina transazioni il o prima del:</value>
+  </data>
+  <data name="lblDisplayTransactions.Caption" xml:space="preserve">
+    <value>Visualizza transazioni il o dopo il:</value>
   </data>
   <data name="rdgSearchType_Deleted.Caption" xml:space="preserve">
     <value>Eliminato</value>
   </data>
-  <data name="btnDelete_Caption" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="error_DeleteTransactions_InvalidDate" xml:space="preserve">
-    <value>Specificare una data di eliminazione transazioni prima di continuare.</value>
-  </data>
-  <data name="lblDisplayTransactions.Caption" xml:space="preserve">
-    <value>Visualizza transazioni in corso o dopo:</value>
-  </data>
   <data name="rdgSearchType_New.Caption" xml:space="preserve">
     <value>Nuovo</value>
+  </data>
+  <data name="rdgSearchType_Updated.Caption" xml:space="preserve">
+    <value>Aggiornato</value>
   </data>
 </root>

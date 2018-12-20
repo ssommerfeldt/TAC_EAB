@@ -1,13 +1,11 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            destkopErrorsError: "The call to DesktopErrors() failed.",
-            mailMergeInfoStoreError: "The call to MailMergeInfoStore() failed."
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/MailMerge/nls/Helper", {
+    root: {
+        destkopErrorsError: "The call to DesktopErrors() failed.",
+        mailMergeInfoStoreError: "The call to MailMergeInfoStore() failed."
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

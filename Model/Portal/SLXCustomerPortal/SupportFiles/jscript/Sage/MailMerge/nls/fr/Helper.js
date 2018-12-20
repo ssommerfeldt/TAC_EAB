@@ -1,4 +1,4 @@
-define((
-{ destkopErrorsError: 'L\rquote appel à ObtenirAliasTablePrincipale() a échoué.',
-  mailMergeInfoStoreError: 'L\rquote appel à ObtenirAliasTablePrincipale() a échoué.' }
-));
+define("Sage/MailMerge/nls/fr/Helper", {
+    "destkopErrorsError": "Echec de l'appel à DesktopErrors().",
+    "mailMergeInfoStoreError": "Echec de l'appel à MailMergeInfoStore()."
+});

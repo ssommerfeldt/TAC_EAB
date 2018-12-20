@@ -117,23 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbxGroupType_Contact.Text" xml:space="preserve">
-    <value>Contact</value>
-  </data>
-  <data name="rdgGroupMembers_SelectedTargets.Text" xml:space="preserve">
-    <value>Cibles de campagne sélectionnées</value>
-  </data>
   <data name="lblGroupType.Caption" xml:space="preserve">
-    <value>Type de groupe :</value>
-  </data>
-  <data name="error_NoDataSourceFound" xml:space="preserve">
-    <value>La source des données est introuvable.</value>
+    <value>Type de groupe :</value>
   </data>
   <data name="lblGroupName.Caption" xml:space="preserve">
-    <value>Nom de groupe :</value>
+    <value>Nom du groupe :</value>
   </data>
-  <data name="rdgGroupMembers_AllTargets.Text" xml:space="preserve">
-    <value>Toutes les cibles de la campagne</value>
+  <data name="lblGroupMembers.Caption" xml:space="preserve">
+    <value>Membres du groupe :</value>
   </data>
   <data name="cmdOK.Caption" xml:space="preserve">
     <value>OK</value>
@@ -141,16 +132,37 @@
   <data name="cmdCancel.Caption" xml:space="preserve">
     <value>Annuler</value>
   </data>
+  <data name="lbxGroupType_Lead.Value" xml:space="preserve">
+    <value>Lead</value>
+  </data>
   <data name="lbxGroupType_Lead.Text" xml:space="preserve">
     <value>Lead</value>
   </data>
-  <data name="error_NoTargetsFound" xml:space="preserve">
-    <value>La liste ne contenait pas de cibles pour le type {0}.</value>
+  <data name="lbxGroupType_Contact.Value" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="lbxGroupType_Contact.Text" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="rdgGroupMembers_SelectedTargets.Value" xml:space="preserve">
+    <value>Cibles sélectionnées</value>
+  </data>
+  <data name="rdgGroupMembers_SelectedTargets.Text" xml:space="preserve">
+    <value>Cibles de campagne sélectionnées</value>
+  </data>
+  <data name="rdgGroupMembers_AllTargets.Value" xml:space="preserve">
+    <value>Toutes les cibles</value>
+  </data>
+  <data name="rdgGroupMembers_AllTargets.Text" xml:space="preserve">
+    <value>Toutes les cibles de la campagne</value>
+  </data>
+  <data name="error_NoDataSourceFound" xml:space="preserve">
+    <value>La source des données est introuvable.</value>
   </data>
   <data name="error_NoGroupName" xml:space="preserve">
     <value>Vous devez indiquez un nom de groupe avant de poursuivre.</value>
   </data>
-  <data name="lblGroupMembers.Caption" xml:space="preserve">
-    <value>Membres du groupe :</value>
+  <data name="error_NoTargetsFound" xml:space="preserve">
+    <value>La liste ne contenait pas de cibles pour le type {0}.</value>
   </data>
 </root>

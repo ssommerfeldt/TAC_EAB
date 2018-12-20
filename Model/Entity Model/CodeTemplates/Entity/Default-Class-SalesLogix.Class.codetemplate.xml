@@ -21,7 +21,6 @@
 var tools = (Tools) Context["tools"];
 var entity = (OrmEntity) Context["entity"];
 var @namespace = (string) Context["namespace"];
-var securityService = (IFieldLevelSecurityService) Context["securityService"];
 var generator = (EntityCodeGenerator) Context["generator"];
 #>
 //------------------------------------------------------------------------------
@@ -51,7 +50,7 @@ using Sage.Platform;
 using Sage.Platform.Collections;
 using Sage.Platform.ComponentModel;
 using Sage.Platform.DynamicMethod;
-using Sage.Platform.Framework;
+using Sage.Platform.Framework.Scopes;
 using Sage.Platform.Metadata;
 using Sage.Platform.NHibernateRepository;
 using Sage.Platform.Orm;
@@ -84,12 +83,17 @@ if (isHistory) {
 
 var historyTypeName = metadata.ResolvedHistoryType;
 var isHistoryTable = (historyTypeName == "IHistory");
-var generateAuditSupport = (entity.HasAuditedProperties && (historyTypeName != null) && historyTypeName.Length > 0);
+var generateAuditSupport = entity.HasAuditedProperties && !string.IsNullOrEmpty(historyTypeName);
 
 var hasDisplayProperty = (entity.DisplayProperty != null);
 
 // composite key constants
 var ck_useRelationships = entity.HasCompleteCompositeKeyRelationships;
+
+var isSecure = !new[] {"Owner", "BackOffice", "BODMapping"}.Contains(entity.Name) &&
+               parents.Union(children)
+                      .Any(relation => (relation.ChildEntity.Name == "Owner" && relation.ParentProperty.PropertyName == "Owner" && relation.Columns[0].ParentProperty.ColumnName == "SECCODEID") ||
+                                       (relation.ParentEntity.Name == "Owner" && relation.ChildProperty.PropertyName == "Owner" && relation.Columns[0].ChildProperty.ColumnName == "SECCODEID"));
 #>
 <# if (entity.HasCompositeKey) { #>
 // Generating relationships for composite entity: <#= ck_useRelationships #>
@@ -109,7 +113,7 @@ namespace <#= @namespace #>
 <# foreach (var validator in entity.EntityValidators) { #>
     [<#= validator.GetValidationAttributeCode() #>]
 <# } #>
-    public partial class <#= entity.Name #> : EntityBase, global::Sage.Entity.Interfaces.<#= entity.InterfaceName #>, ILifecycle, IComponentCreatingState<# if (entity.Audited) { #>, IAuditedEntity<# } #><# if (isHistory) { #>, IAuditTable<# } #><# if (hasDisplayProperty) { #>, INameable<# } #><# if(!entity.HasCompositeKey) { #>, IAssignableId<# } #><# if (securityService != null && securityService.EntityIsSecured(entity)) { #>, IOwnableEntity<# } #>
+    public partial class <#= entity.Name #> : EntityBase, global::Sage.Entity.Interfaces.<#= entity.InterfaceName #>, ILifecycle, IComponentCreatingState<# if (entity.Audited) { #>, IAuditedEntity<# } #><# if (isHistory) { #>, IAuditTable<# } #><# if (hasDisplayProperty) { #>, INameable<# } #><# if(!entity.HasCompositeKey) { #>, IAssignableId<# } #><# if (isSecure) { #>, IOwnableEntity<# } #>
     {
 <# if (hasDisplayProperty) { #>
         #region INameable interface
@@ -144,13 +148,10 @@ namespace <#= @namespace #>
             }
         }
 
-        bool IComponentCreatingState.Creating {
-            get {
-                return Creating;
-            }
-            set {
-                Creating = value;
-            }
+        bool IComponentCreatingState.Creating
+        {
+            get { return Creating; }
+            set { Creating = value; }
         }
 
         [Browsable(false)]
@@ -176,7 +177,6 @@ namespace <#= @namespace #>
         }
 
 <# if (generateAuditSupport) { #>
-
         #region Audit Support
 
         static IList<string> s_auditProperties;
@@ -341,7 +341,7 @@ namespace <#= @namespace #>
 <#  } #>
 <# } #>
 
-<# if (securityService != null && securityService.EntityIsSecured(entity)) { #>
+<# if (isSecure) { #>
         private IOwner _LastPersistedOwner;
 <# } #>
 
@@ -377,15 +377,6 @@ namespace <#= @namespace #>
 
         #region Constructors
 
-<# if (entity.IsExtension && IsEntityIncluded(entity.ExtendedEntity)) { #>
-        public <#= entity.Name #>(global::Sage.Entity.Interfaces.<#= entity.ExtendedEntity.InterfaceName #> parent)
-            : this()
-        {
-            _<#= entity.ExtendedEntity.Name #> = parent;
-            ActivateRelatedEntity(parent);
-        }
-<# } #>
-
         public <#= entity.Name #>()
         {
             InitializeCollectionFacades();
@@ -395,7 +386,12 @@ namespace <#= @namespace #>
             : this()
         {
 <# foreach (var child in extenders) { #>
-            _<#= child.Name #> = new <#= child.Name #>(this);
+<#  if (entity.Package == child.Package) { #>
+            _<#= child.Name #> = new <#= child.Name #>();
+<#  } else { #>
+            _<#= child.Name #> = EntityFactory.Create<global::Sage.Entity.Interfaces.<#= child.InterfaceName #>>();
+<#  } #>
+            _<#= child.Name #>.<#= entity.Name #> = this;
             ActivateRelatedEntity(_<#= child.Name #>);
 <# } #>
         }
@@ -448,17 +444,14 @@ namespace <#= @namespace #>
 <#   } #>
         public virtual <#= baseMemberNames.Contains(prop.PropertyName) ? "new" : "" #> <#= generator.ToClrType(prop) #> <#= prop.PropertyName #>
         {
-<#   if (securityService != null && securityService.EntityIsSecured(entity)) { #>
             get
             {
+<#   if (isSecure) { #>
                 if (GetPropertyAccess("<#= prop.PropertyName #>") == FieldAccess.NoAccess)
                     return default(<#= generator.ToClrType(prop) #>);
-
+<#   } #>
                 return _<#= prop.PropertyName #>;
             }
-<#   } else { #>
-            get { return _<#= prop.PropertyName #>; }
-<#   } #>
 <#   if (!prop.IsReadOnly) { #>
             set
             {
@@ -470,7 +463,7 @@ namespace <#= @namespace #>
                 try
                 {
 <#    } #>
-<#    if (securityService != null && securityService.EntityIsSecured(entity)) { #>
+<#    if (isSecure) { #>
                     if (GetPropertyAccess("<#= prop.PropertyName #>") != FieldAccess.ReadWrite)
                         return;
 <#    } #>
@@ -516,13 +509,8 @@ namespace <#= @namespace #>
 <#    var method = prop.OnBeforeChangeMethod; #>
         private void OnBefore<#= prop.PropertyName #>Changed(EventArgs args)
         {
-            if (rulesLog.IsDebugEnabled)
-                rulesLog.Debug("<#= method #>()");
-
-            var lib = DynamicMethodLibraryHelper.Instance;
-
-            var methodArgs = new Object[] { this, args };
-            lib.Execute("<#= method #>", methodArgs);
+            rulesLog.Debug("<#= method #>()");
+            DynamicMethodLibraryHelper.Instance.Execute("<#= method #>", new object[] { this, args });
         }
 <#   } #>
 
@@ -530,13 +518,8 @@ namespace <#= @namespace #>
 <#    var method = prop.OnAfterChangeMethod; #>
         private void OnAfter<#= prop.PropertyName #>Changed(EventArgs args)
         {
-            if (rulesLog.IsDebugEnabled)
-                rulesLog.Debug("<#= method #>()");
-
-            var lib = DynamicMethodLibraryHelper.Instance;
-
-            var methodArgs = new Object[] { this, args };
-            lib.Execute("<#= method #>", methodArgs);
+            rulesLog.Debug("<#= method #>()");
+            DynamicMethodLibraryHelper.Instance.Execute("<#= method #>", new object[] { this, args });
         }
 <#   } #>
 <#  } #>
@@ -594,13 +577,8 @@ namespace <#= @namespace #>
 <#    var method = relation.ChildProperty.OnBeforeChangeMethod; #>
         private void OnBefore<#= relation.ChildProperty.PropertyName #>Changed(EventArgs args)
         {
-            if (rulesLog.IsDebugEnabled)
-                rulesLog.Debug("<#= method #>()");
-
-            var lib = DynamicMethodLibraryHelper.Instance;
-
-            var methodArgs = new Object[] { this, args };
-            lib.Execute("<#= method #>", methodArgs);
+            rulesLog.Debug("<#= method #>()");
+            DynamicMethodLibraryHelper.Instance.Execute("<#= method #>", new object[] { this, args });
         }
 <#   } #>
 
@@ -608,13 +586,8 @@ namespace <#= @namespace #>
 <#    var method = relation.ChildProperty.OnAfterChangeMethod; #>
         private void OnAfter<#= relation.ChildProperty.PropertyName #>Changed(EventArgs args)
         {
-            if (rulesLog.IsDebugEnabled)
-                rulesLog.Debug("<#= method #>()");
-
-            var lib = DynamicMethodLibraryHelper.Instance;
-
-            var methodArgs = new Object[] { this, args };
-            lib.Execute("<#= method #>", methodArgs);
+            rulesLog.Debug("<#= method #>()");
+            DynamicMethodLibraryHelper.Instance.Execute("<#= method #>", new object[] { this, args });
         }
 <#   } #>
 <#  } #>
@@ -644,7 +617,6 @@ namespace <#= @namespace #>
                 return _<#= relation.ParentProperty.PropertyName #>;
             }
         }
-
 <#   } else if (relation.Cardinality == "M:1") { #>
 <#    if (relation.ParentProperty.OnBeforeChangeMethod != null || relation.ParentProperty.OnAfterChangeMethod != null) { #>
         private const int _<#= relation.ParentProperty.PropertyName #>Key = <#= key #>;
@@ -665,12 +637,6 @@ namespace <#= @namespace #>
                 Utility.Unwrap(_<#= relation.ParentProperty.PropertyName #>);
                 if (!Equals(_<#= relation.ParentProperty.PropertyName #>, value))
                 {
-<#    if (relation.ParentProperty.PropertyName == "Owner" && securityService != null && securityService.EntityIsSecured(entity)) { #>
-                    if (_LastPersistedOwner == null)
-                    {
-                        _LastPersistedOwner = _<#= relation.ParentProperty.PropertyName #>;
-                    }
-<#    } #>
                     var oldValue = _<#= relation.ParentProperty.PropertyName #>;
                     _<#= relation.ParentProperty.PropertyName #> = value;
 
@@ -702,13 +668,8 @@ namespace <#= @namespace #>
 <#     var method = relation.ParentProperty.OnBeforeChangeMethod; #>
         private void OnBefore<#= relation.ParentProperty.PropertyName #>Changed(EventArgs args)
         {
-            if (rulesLog.IsDebugEnabled)
-                rulesLog.Debug("<#= method #>()");
-
-            var lib = DynamicMethodLibraryHelper.Instance;
-
-            var methodArgs = new Object[] { this, args };
-            lib.Execute("<#= method #>", methodArgs);
+            rulesLog.Debug("<#= method #>()");
+            DynamicMethodLibraryHelper.Instance.Execute("<#= method #>", new object[] { this, args });
         }
 <#    } #>
 
@@ -716,13 +677,8 @@ namespace <#= @namespace #>
 <#     var method = relation.ParentProperty.OnAfterChangeMethod; #>
         private void OnAfter<#= relation.ParentProperty.PropertyName #>Changed(EventArgs args)
         {
-            if (rulesLog.IsDebugEnabled)
-                rulesLog.Debug("<#= method #>()");
-
-            var lib = DynamicMethodLibraryHelper.Instance;
-
-            var methodArgs = new Object[] { this, args };
-            lib.Execute("<#= method #>", methodArgs);
+            rulesLog.Debug("<#= method #>()");
+            DynamicMethodLibraryHelper.Instance.Execute("<#= method #>", new object[] { this, args });
         }
 <#    } #>
 <#   } #>
@@ -765,7 +721,12 @@ namespace <#= @namespace #>
             {
                 if (_<#= child.Name #> == null)
                 {
-                    _<#= child.Name #> = new <#= child.Name #>(this);
+<#  if (entity.Package == child.Package) { #>
+                    _<#= child.Name #> = new <#= child.Name #>();
+<#  } else { #>
+                    _<#= child.Name #> = EntityFactory.Create<global::Sage.Entity.Interfaces.<#= child.InterfaceName #>>();
+<#  } #>
+                    _<#= child.Name #>.<#= entity.Name #> = this;
                 }
                 return ActivateRelatedEntity(_<#= child.Name #>, "<#= child.Name #>");
             }
@@ -837,12 +798,7 @@ namespace <#= @namespace #>
         protected override void OnAfterInsert()
         {
             base.OnAfterInsert();
-
-            var lib = DynamicMethodLibraryHelper.Instance;
-
-            var methodArgs = new Object[] { this };
-
-            lib.Execute("<#= entity.OnAfterInsertMethod #>", methodArgs);
+            DynamicMethodLibraryHelper.Instance.Execute("<#= entity.OnAfterInsertMethod #>", new object[] { this });
         }
 <# } #>
 
@@ -850,12 +806,7 @@ namespace <#= @namespace #>
         protected override void OnAfterUpdate()
         {
             base.OnAfterUpdate();
-
-            var lib = DynamicMethodLibraryHelper.Instance;
-
-            var methodArgs = new Object[] { this };
-
-            lib.Execute("<#= entity.OnAfterUpdateMethod #>", methodArgs);
+            DynamicMethodLibraryHelper.Instance.Execute("<#= entity.OnAfterUpdateMethod #>", new object[] { this });
         }
 <# } #>
 
@@ -863,54 +814,45 @@ namespace <#= @namespace #>
         protected override void OnAfterDelete()
         {
             base.OnAfterDelete();
-            var lib = DynamicMethodLibraryHelper.Instance;
-            var methodArgs = new Object[] { this };
-            lib.Execute("<#= entity.OnAfterDeleteMethod #>", methodArgs);
+            DynamicMethodLibraryHelper.Instance.Execute("<#= entity.OnAfterDeleteMethod #>", new object[] { this });
         }
 <# } #>
 
-        public override  void Delete()
+        public override void Delete()
         {
-            ISession session = SessionFactoryHolder.HolderInstance.CreateSession();
-            try
+            using (var session = new SessionScopeWrapper())
+            using (var ts = new TransactionScope(TransactionMode.Inherits, TransactionDisposeBehavior.Commit))
             {
-                using (var ts = new TransactionScope(TransactionMode.Inherits))
-                {
-                    session.Evict(this);
-                    session.Delete(this);
-                }
-            }
-            finally
-            {
-                SessionFactoryHolder.HolderInstance.ReleaseSession(session);
+                session.Evict(this);
+                session.Delete(this);
             }
         }
 
         public override void Save()
         {
-            ISession session = SessionFactoryHolder.HolderInstance.CreateSession();
-            try
+            using (var session = new SessionScopeWrapper())
             {
 <# if (entity.OnBeforeUpdateMethod != null) { #>
-                if (PersistentState == PersistentState.Modified)
+                if (PersistentState == PersistentState.Modified &&
+                    Equals(DynamicMethodLibraryHelper.Instance.Execute("<#= entity.OnBeforeUpdateMethod #>", new object[] { this, session }), false))
                 {
-                    _OnBeforeUpdate(this, session);
+                    return;
                 }
 <# } #>
 <# if (extenders.Count > 0) { #>
                 #region 1:1 extension update handlers
 <#  foreach (var child in extenders) { #>
 <#   if (child.OnBeforeUpdateMethod != null) { #>
-                if (<#= child.Name #>.PersistentState == PersistentState.Modified)
+                if (<#= child.Name #>.PersistentState == PersistentState.Modified &&
+                    Equals(DynamicMethodLibraryHelper.Instance.Execute("<#= child.OnBeforeUpdateMethod #>", new object[] { <#= child.Name #>, session }), false))
                 {
-                    <#= @namespace #>.<#= child.Name #>._OnBeforeUpdate(<#= child.Name #>, session);
+                    return;
                 }
 <#   } #>
 <#  } #>
                 #endregion 1:1 extension update handlers
 <# } #>
-
-                if ((PersistentState & PersistentState.New) == PersistentState.New)
+                if (PersistentState.HasFlag(PersistentState.New))
                 {
                     session.Save(this);
                 }
@@ -918,17 +860,13 @@ namespace <#= @namespace #>
                 {
                     session.Update(this);
                 }
-<# if (securityService != null && securityService.EntityIsSecured(entity)) { #>
+<# if (isSecure) { #>
                 _LastPersistedOwner = _Owner;
 <# } #>
                 session.Flush();
                 PersistentState = PersistentState.Unmodified;
                 OnPersisted();
                 ClearChanges();
-            }
-            finally
-            {
-                SessionFactoryHolder.HolderInstance.ReleaseSession(session);
             }
         }
 
@@ -985,27 +923,32 @@ namespace <#= @namespace #>
         /// <param name="executeBusinessRules"><c>true</c> if the OnCreate business rules should be run.</param>
         public static global::Sage.Entity.Interfaces.<#= entity.InterfaceName #> Create(EntityCreationOption executeBusinessRules)
         {
-            if (log.IsDebugEnabled) {
-                if (executeBusinessRules == EntityCreationOption.ExecuteBusinessRules) {
+            if (log.IsDebugEnabled)
+            {
+                if (executeBusinessRules == EntityCreationOption.ExecuteBusinessRules)
+                {
                     log.Debug("Creating new instance of global::Sage.Entity.Interfaces.<#= entity.InterfaceName #>.  Executing OnCreate business rules.");
-                } else {
+                }
+                else
+                {
                     log.Debug("Creating new instance of global::Sage.Entity.Interfaces.<#= entity.InterfaceName #>.  Not executing OnCreate business rules.");
                 }
             }
             var instance = new <#= entity.Name #>(true);
-            if (executeBusinessRules == EntityCreationOption.ExecuteBusinessRules) {
+<# if (entity.OnCreate != null) { #>
+            if (executeBusinessRules == EntityCreationOption.ExecuteBusinessRules)
+            {
                 instance.Creating = true;
                 try
                 {
-                    var lib = DynamicMethodLibraryHelper.Instance;
-                    var methodArgs = new Object[] { instance };
-                    lib.Execute("<#= entity.OnCreate #>", methodArgs);
+                    DynamicMethodLibraryHelper.Instance.Execute("<#= entity.OnCreate #>", new object[] { instance });
                 }
                 finally
                 {
                     instance.Creating = false;
                 }
             }
+<# } #>
             return instance;
         }
 
@@ -1016,9 +959,10 @@ namespace <#= @namespace #>
         LifecycleVeto ILifecycle.OnDelete(ISession s)
         {
 <# if (entity.OnBeforeDeleteMethod != null) { #>
-            var lib = DynamicMethodLibraryHelper.Instance;
-            var methodArgs = new Object[] { this, s };
-            lib.Execute("<#= entity.OnBeforeDeleteMethod #>", methodArgs);
+            if (Equals(DynamicMethodLibraryHelper.Instance.Execute("<#= entity.OnBeforeDeleteMethod #>", new object[] { this, s }), false))
+            {
+                return LifecycleVeto.Veto;
+            }
 <# } #>
             return LifecycleVeto.NoVeto;
         }
@@ -1030,9 +974,10 @@ namespace <#= @namespace #>
         LifecycleVeto ILifecycle.OnSave(ISession s)
         {
 <# if (entity.OnBeforeInsertMethod != null) { #>
-            var lib = DynamicMethodLibraryHelper.Instance;
-            var methodArgs = new Object[] { this, s };
-            lib.Execute("<#= entity.OnBeforeInsertMethod #>", methodArgs);
+            if (Equals(DynamicMethodLibraryHelper.Instance.Execute("<#= entity.OnBeforeInsertMethod #>", new object[] { this, s }), false))
+            {
+                return LifecycleVeto.Veto;
+            }
 <# } #>
             return LifecycleVeto.NoVeto;
         }
@@ -1041,15 +986,6 @@ namespace <#= @namespace #>
         {
             return LifecycleVeto.NoVeto;
         }
-
-<# if (entity.OnBeforeUpdateMethod != null) { #>
-        internal static void _OnBeforeUpdate(global::Sage.Entity.Interfaces.<#= entity.InterfaceName #> entity, ISession s)
-        {
-            var lib = DynamicMethodLibraryHelper.Instance;
-            var methodArgs = new Object[] { entity, s };
-            lib.Execute("<#= entity.OnBeforeUpdateMethod #>", methodArgs);
-        }
-<# } #>
 
         #endregion
 
@@ -1086,38 +1022,24 @@ namespace <#= @namespace #>
 <#  foreach (var method in methods) { #>
         public virtual <#= baseMemberNames.Contains(method.MethodName) ? "new" : "" #> <#= method.ReturnType #> <#= method.MethodName #>(<#= tools.FormatParamDeclarationList(method) #>)
         {
-            if (rulesLog.IsDebugEnabled)
-                rulesLog.Debug("<#= method #>()");
-
-            var lib = DynamicMethodLibraryHelper.Instance;
-
-            var methodArgs = new Object[] { <#= tools.FormatParamList(method) #> };
+            rulesLog.Debug("<#= method #>()");
 <#   if (method.ReturnType == "void") { #>
-            lib.Execute("<#= method #>", methodArgs);
+            DynamicMethodLibraryHelper.Instance.Execute("<#= method #>", new object[] { <#= tools.FormatParamList(method) #> });
 <#   } else { #>
-            return (<#= method.ReturnType #>)lib.Execute("<#= method #>", methodArgs);
+            return (<#= method.ReturnType #>)DynamicMethodLibraryHelper.Instance.Execute("<#= method #>", new object[] { <#= tools.FormatParamList(method) #> });
 <#   } #>
         }
-
 <#  } #>
 
         #endregion Business Rule Methods
 
 <# } #>
-<# if (securityService != null && securityService.EntityIsSecured(entity)) { #>
+<# if (isSecure) { #>
         #region Implementation of IOwnableEntity
 
         object IOwnableEntity.Owner
         {
-            get
-            {
-                if (_LastPersistedOwner == null)
-                {
-                     _LastPersistedOwner = Owner;
-                }
-
-                return _LastPersistedOwner;
-            }
+            get { return _LastPersistedOwner ?? _Owner; }
         }
 
         #endregion
@@ -1142,10 +1064,8 @@ namespace <#= @namespace #>
                     return <#= relation.ChildProperty.PropertyName #>;
 <# } #>
 <# foreach (var relation in children) { #>
-<#  if (relation.Cardinality == "M:1") { #>
                 case "<#= relation.ParentProperty.PropertyName #>":
                     return <#= relation.ParentProperty.PropertyName #>;
-<#  } #>
 <# } #>
 <# if (entity.IsExtension && IsEntityIncluded(entity.ExtendedEntity)) { #>
                 case "<#= entity.ExtendedEntity.Name #>":

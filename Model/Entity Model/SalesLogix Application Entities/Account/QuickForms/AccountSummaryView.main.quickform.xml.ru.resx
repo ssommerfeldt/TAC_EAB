@@ -117,58 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtAddress1.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtCityStateZip.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkAccountName.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtIndustry.Caption" xml:space="preserve">
+    <value>Отрасль:</value>
+  </data>
+  <data name="txtSubType.Caption" xml:space="preserve">
+    <value>Подтип:</value>
+  </data>
+  <data name="txtAccountMgr.Caption" xml:space="preserve">
+    <value>Менеджер по клиентам:</value>
+  </data>
   <data name="txtType.Caption" xml:space="preserve">
     <value>Тип:</value>
   </data>
   <data name="agcContacts.Caption" xml:space="preserve">
     <value>Контакты:</value>
   </data>
+  <data name="agcContacts_grid.ae8c28ca-c20e-441d-b2dc-cb915d825a35.FormatString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="agcOpportunities.Caption" xml:space="preserve">
+    <value>Возможности:</value>
+  </data>
   <data name="agcTickets.Caption" xml:space="preserve">
     <value>Заявки:</value>
   </data>
-  <data name="agcTickets_grid.237ec3ea-f19c-4004-9e2d-f26ef117baa2.ColumnHeading" xml:space="preserve">
-    <value>Категория</value>
-  </data>
-  <data name="agcTickets.PopupCaptionFmt" xml:space="preserve">
-    <value>Заявки для {0}</value>
-  </data>
-  <data name="agcTickets_grid.4985c44b-c1ba-4889-ad79-f77ff1eea8c1.ColumnHeading" xml:space="preserve">
-    <value>Номер заявки</value>
-  </data>
-  <data name="agcOpportunities_grid.dd00bf0d-64d6-4eac-88bd-c5d8d5f69fa8.ColumnHeading" xml:space="preserve">
-    <value>Описание</value>
+  <data name="agcContacts.PopupCaptionFmt" xml:space="preserve">
+    <value>Контакты для "{0}"</value>
   </data>
   <data name="agcOpportunities.PopupCaptionFmt" xml:space="preserve">
-    <value>Сделки для {0}</value>
+    <value>Возможности для "{0}"</value>
   </data>
-  <data name="agcContacts_grid.2e532e71-9c31-4375-ae66-8ff50b57c3f7.ColumnHeading" xml:space="preserve">
-    <value>Эл.почта</value>
-  </data>
-  <data name="agcOpportunities.Caption" xml:space="preserve">
-    <value>Сделки:</value>
-  </data>
-  <data name="txtSubType.Caption" xml:space="preserve">
-    <value>Подтип:</value>
-  </data>
-  <data name="txtIndustry.Caption" xml:space="preserve">
-    <value>Отрасль:</value>
-  </data>
-  <data name="agcContacts.PopupCaptionFmt" xml:space="preserve">
-    <value>Контакты для {0}</value>
-  </data>
-  <data name="agcOpportunities_grid.d1593898-481b-46ac-9959-c7dcfd51c7c0.ColumnHeading" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="agcContacts_grid.54487aed-d3b7-49e2-b9e5-afea03c41197.ColumnHeading" xml:space="preserve">
-    <value>Раб. телефон</value>
+  <data name="agcTickets.PopupCaptionFmt" xml:space="preserve">
+    <value>Заявки для "{0}"</value>
   </data>
   <data name="agcContacts_grid.ae8c28ca-c20e-441d-b2dc-cb915d825a35.ColumnHeading" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="txtAccountMgr.Caption" xml:space="preserve">
-    <value>Менеджер:</value>
+  <data name="agcContacts_grid.54487aed-d3b7-49e2-b9e5-afea03c41197.ColumnHeading" xml:space="preserve">
+    <value>Рабочий телефон</value>
+  </data>
+  <data name="agcContacts_grid.2e532e71-9c31-4375-ae66-8ff50b57c3f7.ColumnHeading" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="agcOpportunities_grid.dd00bf0d-64d6-4eac-88bd-c5d8d5f69fa8.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="agcOpportunities_grid.d1593898-481b-46ac-9959-c7dcfd51c7c0.ColumnHeading" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="agcTickets_grid.4985c44b-c1ba-4889-ad79-f77ff1eea8c1.ColumnHeading" xml:space="preserve">
+    <value>Номер заявки</value>
   </data>
   <data name="agcTickets_grid.a0166fee-248a-4754-9088-c7a2c04cb6fa.ColumnHeading" xml:space="preserve">
     <value>Область</value>
+  </data>
+  <data name="agcTickets_grid.237ec3ea-f19c-4004-9e2d-f26ef117baa2.ColumnHeading" xml:space="preserve">
+    <value>Категория</value>
   </data>
 </root>

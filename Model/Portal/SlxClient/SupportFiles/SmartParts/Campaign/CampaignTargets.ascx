@@ -119,11 +119,25 @@
                     </div>
                 </td>
                 <td id="row1col2">
-                    <div class="slxlabel alignleft">
-                        <asp:CheckBox runat="server" ID="chkContacts" Checked="true"
-                            CssClass="checkbox" Text="<%$ resources: chkContacts.Caption %>" />
-                        <asp:CheckBox runat="server" ID="chkLeads" Checked="true"
-                            CssClass="checkbox" Text="<%$ resources: chkLeads.Caption %>" />
+                    <div class="slxlabel alignleft" style="text-align:left">
+                        <div style="width: 50%; float: left">
+                            <div style="float: left">
+                                <asp:CheckBox runat="server" ID="chkContacts" Checked="true"
+                                    CssClass="checkbox" />
+                            </div>
+                            <div style="float: left; word-break: break-word; width: 80%">
+                                <asp:Label runat="server" Text="<%$ resources: chkContacts.Caption %>"></asp:Label>
+                            </div>
+                        </div>
+                        <div style="width: 50%; float: left">
+                            <div style="float: left">
+                                <asp:CheckBox runat="server" ID="chkLeads" Checked="true"
+                                    CssClass="checkbox" />
+                            </div>
+                            <div style="float: left; word-break: break-word; width: 80%">
+                                <asp:Label runat="server" Text="<%$ resources: chkLeads.Caption %>"></asp:Label>
+                            </div>
+                        </div>
                     </div>
                 </td>
                 <td id="row1col3">
@@ -245,12 +259,12 @@
                     SelectedRowStyle-CssClass="rowSelected" ShowEmptyTable="true" EnableViewState="false" AllowPaging="true"
                     PageSize="10" OnPageIndexChanging="grdTargetspage_changing" ExpandableRows="False" ResizableColumns="true"
                     EmptyTableRowText="<%$ resources: grdTargets.EmptyTableRowText %>" MinRowHeight="22px" UseSLXPagerTemplate="false"
-                    AllowSorting="true" ShowSortIcon="true" OnSorting="grdTargets_Sorting" OnRowCreated="grdTargets_RowCreated" >
+                    AllowSorting="true" ShowSortIcon="true" OnSorting="grdTargets_Sorting" OnRowCreated="grdTargets_RowCreated" OnRowDataBound="grdTargets_RowDataBound"   >
                     <Columns>
                         <asp:TemplateField itemstyle-horizontalalign="Center">
-                            <headerstyle width="25px" />
+                            <headerstyle />
                             <ItemTemplate>
-                                <asp:CheckBox runat="server" ID="chkSelectTarget" checked='<%# Eval("Selected") %>'></asp:CheckBox>
+                                <asp:CheckBox runat="server" ID="chkSelectTarget" checked='<%# Eval("Selected") %>' CssClass="inforAspCheckBox" Text="&nbsp;"></asp:CheckBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Name" HeaderText="<%$ resources: grdTargets.Name.ColumnHeading %>" SortExpression="LastName" />
@@ -260,7 +274,7 @@
                         <asp:TemplateField HeaderText="<%$ resources: grdTargets.Initial.ColumnHeading %>" SortExpression="InitialTarget"
                             itemstyle-horizontalalign="Center">
                             <ItemTemplate>
-                                <asp:CheckBox runat="server" ID="chkInitialTarget" checked='<%# Eval("Initial") %>'></asp:CheckBox>
+                                <asp:CheckBox runat="server" ID="chkInitialTarget" checked='<%# Eval("Initial") %>' CssClass="inforAspCheckBox" Text="&nbsp;"></asp:CheckBox>
                             </ItemTemplate>
                         </asp:TemplateField>                    
                         <asp:TemplateField HeaderText="<%$ resources:grdTargets.Status.ColumnHeading %>" SortExpression="Status">
@@ -273,16 +287,20 @@
                         <asp:BoundField DataField="Stage" HeaderText="<%$ resources:grdTargets.Stage.ColumnHeading %>" SortExpression="Stage" />
                         <asp:TemplateField SortExpression="ModifyDate" HeaderText="<%$ resources:grdTargets.LastUpdate.ColumnHeading %>" >
                             <ItemTemplate>
+							<div style="width:200px">
                                 <SalesLogix:DateTimePicker runat="server" ID="dteModifyDate" DisplayTime="False" DisplayMode="AsText"
                                     DateOnly="True" DateTimeValue='<%# Eval("ModifyDate") %>' >
                                 </SalesLogix:DateTimePicker>
+								</div>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField SortExpression="ResponseDate" HeaderText="<%$ resources:grdTargets.LastResponse.ColumnHeading %>" >
                             <ItemTemplate>
+							<div style="width:200px">
                                 <SalesLogix:DateTimePicker runat="server" ID="dteResponseDate" DisplayTime="False" DisplayMode="AsText"
                                     DateOnly="True" DateTimeValue='<%# Eval("ResponseDate") %>' >
                                 </SalesLogix:DateTimePicker>
+								</div>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="TargetType" HeaderText="<%$ resources:grdTargets.Type.ColumnHeading %>"

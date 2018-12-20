@@ -1,11 +1,10 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Columns/SlxLink", [
     'Sage/Format',
     'Sage/Utility',
-    'dojo/_base/declare',
-    'dojox/grid/cells/_base'
+    'dojo/_base/declare'
 ],
-function (Format, Utility, declare, cellsBase) {
+function (Format, Utility, declare) {
     Sage.Region = {
         decimalSeparator: '.',
         numberGroupSeparator: ',',
@@ -142,12 +141,10 @@ function (Format, Utility, declare, cellsBase) {
             // grid row index
             // returns: html for a given grid cell
             if (inItem === null) { return this.defaultValue; }
-            var entName,
-                entKey,
+            var entKey,
                 dispVal,
                 vals = [],
                 target = '',
-                queryParams = '',
                 moreQuerystring = '',
                 i = this.grid.edit.info,
                 idx = 0,
@@ -176,7 +173,7 @@ function (Format, Utility, declare, cellsBase) {
                     moreQuerystring = "&" + this.queryParams;
                 }
             }
-            d = (d && d.replace && this.grid.escapeHTMLInData) ? d.replace(/&/g, '&amp;').replace(/</g, '&lt;') : d;
+            
             if (this.editable && (this.alwaysEditing || (i.rowIndex == inRowIndex && i.cell == this))) {
                 return this.formatEditing(d, inRowIndex);
             } else {
@@ -203,12 +200,16 @@ function (Format, Utility, declare, cellsBase) {
                         entKey = Utility.getValue(inItem, keyname);
                     }
                     if (entKey) {
-                        dispVal = this._getDisplayValue(inRowIndex, inItem, dispVal);
-
+                        dispVal = Utility.htmlEncode(this._getDisplayValue(inRowIndex, inItem, dispVal));
                         if (pagename.toUpperCase() === 'HISTORY') {
-                            return dojo.string.substitute('<a href="javascript:Sage.Link.editHistory(\'${0}\')" id="${0}" title="${1}">${1}</a>', [entKey, dispVal]);
+                            return dojo.string.substitute('<span onclick="javascript:Sage.Link.editHistory(\'${0}\')" id="${0}" title="${1}" class="activity-type-link">${1}</span>', [entKey, dispVal]);
+                        } else if (pagename.toUpperCase() === 'ACTIVITY') {
+                            return dojo.string.substitute('<span onclick="javascript:Sage.Link.editActivity(\'${0}\')" id="${0}" title="${1}" class="activity-type-link">${1}</span>', [entKey, dispVal]);
                         }
                         else {
+                            if (pagename.toUpperCase() === 'RMA') {
+                                pagename = 'Return';
+                            }
                             return dojo.string.substitute('<a href="${0}.aspx?entityid=${1}&modeid=Detail${2}"${3} id="${1}" title="${4}">${4}</a>', [pagename, entKey, moreQuerystring, target, dispVal]);
                         }
                     }
@@ -222,7 +223,7 @@ function (Format, Utility, declare, cellsBase) {
                     for (idx = 0; idx < this.urlFields.length; idx++) {
                         vals.push(Utility.getValue(inItem, dojo.trim(this.urlFields[idx])));
                     }
-                    dispVal = this._getDisplayValue(inRowIndex, inItem, dispVal);
+                    dispVal = Utility.htmlEncode(this._getDisplayValue(inRowIndex, inItem, dispVal));
                     return dojo.string.substitute('<a href="http://${0}${1}"${2}>${3}</a>', [dojo.string.substitute(this.urlFormatString, vals), moreQuerystring, target, dispVal]);
                 }
                 return dispVal;
@@ -234,9 +235,7 @@ function (Format, Utility, declare, cellsBase) {
             var displayFields = d.trim(d.attr(node, 'displayFields') || '');
             if (displayFields) {
                 var f = displayFields.split(',');
-                //if (f[0] != displayFields) {
                 cell.displayFields = f;
-                //}
             }
             cell.displayFormatString = d.trim(d.attr(node, 'displayFormatString') || "");
             cell.idField = d.trim(d.attr(node, 'idField') || '');
@@ -246,9 +245,7 @@ function (Format, Utility, declare, cellsBase) {
             var urlFields = d.trim(d.attr(node, 'urlFields') || '');
             if (urlFields) {
                 var u = urlFields.split(',');
-                //if (u[0] !== urlFields) {
                 cell.urlFields = u;
-                //}
             }
             cell.urlFormatString = d.trim(d.attr(node, 'urlFormatString') || '');
             cell.target = d.trim(d.attr(node, 'target') || '');
@@ -257,8 +254,6 @@ function (Format, Utility, declare, cellsBase) {
             }
         }
     });
-
     var convert = Utility.Convert;
-
     return widget;
 });

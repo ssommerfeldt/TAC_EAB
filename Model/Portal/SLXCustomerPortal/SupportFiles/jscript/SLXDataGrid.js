@@ -188,7 +188,7 @@ SLXDataGrid.prototype.setupStyles = function () {
             this.oSheet.insertRule("TR.rowSelected" + this.sUID + " {BACKGROUND-COLOR:" + this.SelectedRowColor + "; COLOR:" + this.SelectedTextColor + "}", this.oSheet.cssRules.length);
             this.oSheet.insertRule("TR.rowSelected" + this.sUID + " TD A {COLOR:" + this.SelectedLinkColor, this.oSheet.cssRules.length);
             this.oSheet.insertRule("TD.cellGrid" + this.sUID + " {BORDER-RIGHT: 1px " + this.GridLineColor + " solid;" + "BORDER-BOTTOM: 1px " + this.GridLineColor + " solid;}", this.oSheet.cssRules.length);
-            this.oSheet.insertRule(".cellChrome" + this.sUID + " {BORDER-TOP:1px " + this.ChromeLightColor + " solid;" + "BORDER-LEFT:1px " + this.ChromeLightColor + " solid;" + "BORDER-RIGHT:1px " + this.ChromeDarkColor + " solid;" + "BORDER-BOTTOM:1px " + this.ChromeDarkColor + " solid;" + "BACKGROUND-COLOR:" + this.ChromeBaseColor + ";" + "COLOR:" + this.TextColor + ";" + "CURSOR:hand;}", this.oSheet.cssRules.length);
+            this.oSheet.insertRule(".cellChrome" + this.sUID + " {BORDER-TOP:1px " + this.ChromeLightColor + " solid;" + "BORDER-LEFT:1px " + this.ChromeLightColor + " solid;" + "BORDER-RIGHT:1px " + this.ChromeDarkColor + " solid;" + "BORDER-BOTTOM:1px " + this.ChromeDarkColor + " solid;" + "BACKGROUND-COLOR:" + this.ChromeBaseColor + ";" + "COLOR:" + this.TextColor + ";" + "CURSOR:pointer;}", this.oSheet.cssRules.length);
         }
 
         //        for ( var i = 0; i < this.gridElement.rows.length; i++ ) {

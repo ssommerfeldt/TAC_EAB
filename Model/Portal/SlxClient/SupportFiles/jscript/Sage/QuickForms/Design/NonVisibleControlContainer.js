@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/NonVisibleControlContainer", [
     'dojo/query',
     'dojo/topic',
     'dojo/string',

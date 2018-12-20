@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Редактируемая таблица' }
-));
+define("Sage/QuickForms/Design/nls/ru/EditableGridControlDesigner", {
+    "displayNameText": "Редактируемая сетка"
+});

@@ -1,9 +1,8 @@
-//>>built
 define(
 "dojo/cldr/nls/be/number", //begin v1.x content
 {
 	"decimalFormat": "#,##0.###",
-	"group": " ",
+	"group": " ",
 	"scientificFormat": "#E0",
 	"percentFormat": "#,##0%",
 	"currencyFormat": "¤#,##0.00",

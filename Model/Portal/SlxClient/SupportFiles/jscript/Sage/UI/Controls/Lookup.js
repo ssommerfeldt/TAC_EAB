@@ -1,5 +1,7 @@
+require({cache:{
+'url:Sage/UI/Controls/templates/Lookup.html':"<div class=\"textcontrol lookup\">\r\n    <span id=\"${id}\" class=\"lookup\">\r\n        <input id=\"${id}_LookupText\" class=\"text-with-icons\" required=\"${required}\" type=\"text\" dojoAttachPoint=\"textbox,focusNode\" />\r\n        <a href=\"#\">\r\n            <img id=\"${id}_LookupBtn\" src=\"images/icons/Find_16x16.png\" dojoAttachPoint=\"lookupButton\" alt=\"${buttonToolTip}\" title=\"${buttonToolTip}\" />\r\n        </a>\r\n        \r\n        <img id=\"${id}_btnClearResult\" src=\"images/icons/Delete_16x16.png\" dojoAttachPoint=\"clearButton\" class=\"display-none\" alt=\"${closeButtonToolTip}\" title=\"${closeButtonToolTip}\"/>\r\n    </span>\r\n</div>"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Controls/Lookup", [
     'dijit/_TemplatedMixin',
     'dijit/_WidgetsInTemplateMixin',
     'dijit/_Widget',

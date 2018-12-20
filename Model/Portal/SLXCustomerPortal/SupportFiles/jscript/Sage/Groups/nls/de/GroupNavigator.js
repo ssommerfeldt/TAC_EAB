@@ -1,9 +1,9 @@
-define((
-{ firstText: 'Erster Eintrag',
-  previousText: 'Vorheriger Eintrag',
-  nextText: 'Nächster Eintrag',
-  lastText: 'Letzter Eintrag',
-  listText: 'Listenansicht',
-  noRecordsText: 'Keine Datensätze',
-  labelFmtText: '${0} von ${1}' }
-));
+define("Sage/Groups/nls/de/GroupNavigator", {
+    "firstText": "Erster verschieben",
+    "previousText": "Vorheriger verschieben",
+    "nextText": "Nächster verschieben",
+    "lastText": "Letzter verschieben",
+    "listText": "Listenansicht",
+    "noRecordsText": "Keine Datensätze",
+    "labelFmtText": "${0} von ${1}"
+});

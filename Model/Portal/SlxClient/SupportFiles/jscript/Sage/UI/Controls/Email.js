@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/Email", [
        'dijit/_Widget',
        'Sage/_Templated',
        'Sage/UI/Controls/TextBox',
@@ -13,7 +13,7 @@ function (_Widget, _Templated, textBox, regexp, declare, Utility) {
         widgetTemplate: new Simplate([
             '<div class="email" slxcompositecontrol="true" id="{%= $.id %}" >',
             '<input data-dojo-type="Sage.UI.Controls.TextBox" name="{%= $.name %}" ',
-            // textWithIcons allows for styling to be applied to a textbox where an icon accompanies the text inside the box.
+			// textWithIcons allows for styling to be applied to a textbox where an icon accompanies the text inside the box.
             'data-dojo-props="textWithIcons: {%= $.buttonVisible %}"',
             'dojoAttachPoint="focusNode" type="text" style="" ',
             'hotKey="{%= $.hotKey %}" ',
@@ -24,7 +24,6 @@ function (_Widget, _Templated, textBox, regexp, declare, Utility) {
                 'readonly="readonly" ',
             '{% } %}',
             '{% if ($.disabled !== "disabled") { %} ',
-            ' dojoAttachEvent="onChange:_onChange, onDblClick:sendEmail, regExpGen:regExpGen" ',
             '{% } %}',
             ' tabindex="{%= $.tabIndex %}" ',
             'value="{%= $.email %}" required="{%= $.required %}" ',
@@ -61,6 +60,9 @@ function (_Widget, _Templated, textBox, regexp, declare, Utility) {
         },
         postCreate: function () {
             this.formatEmail();
+            if (this["class"] && this["class"].length > 0 && this.domNode.firstChild) {
+                this.domNode.firstChild.className = this["class"] + ' ' + this.domNode.firstChild.className;
+            }
             this.inherited(arguments);
         },
         formatEmail: function () {

@@ -1,21 +1,14 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="7d1c8c02-a011-4ad0-bd6c-891946defcff" lastModifiedUtc="2014-01-09T21:45:58.7544353Z" name="OnLoad1" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="SalesOrderProducts">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="97812a65-33a3-45c9-a089-3593574d738e" lastModifiedUtc="2010-11-30T21:03:00.3370972Z" name="OnLoad1" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="SalesOrderProducts">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
   </ExtendedPropertiesCollection>
   <parameter>
-    <OrmEntityMethodParam id="e07ebae0-d53c-4f84-9eed-5bdbabca9146" paramName="form" sequence="0" paramType="ISalesOrderProducts" />
-    <OrmEntityMethodParam id="95366511-1b27-474b-8521-4132da844de0" paramName="args" sequence="0" paramType="EventArgs" />
+    <OrmEntityMethodParam id="f7f8c02e-97bc-4ffe-a34a-fde190a36a43" paramName="form" sequence="0" paramType="ISalesOrderProducts" />
+    <OrmEntityMethodParam id="ec55a02a-46ed-432c-a06d-a7820663c26b" paramName="args" sequence="0" paramType="EventArgs" />
   </parameter>
   <preExecuteTargets />
-  <methodTargets>
-    <methodTarget xsi:type="OrmMethodTargetSnippet" id="cb2fb02b-cc5d-4078-8e80-8cbff449b519" lastModifiedUtc="2014-01-09T21:53:46.2742931Z" targetType="Sage.BusinessRules.CodeSnippets.SalesOrderProductsEventHandlers, Sage.SnippetLibrary.CSharp" targetMethod="OnLoad1Step" active="true" codeSnippetId="f2842b50-bfa7-4bda-9d05-7d8ab9990d01">
-      <ExtendedPropertiesCollection>
-        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
-      </ExtendedPropertiesCollection>
-    </methodTarget>
-  </methodTargets>
+  <methodTargets />
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

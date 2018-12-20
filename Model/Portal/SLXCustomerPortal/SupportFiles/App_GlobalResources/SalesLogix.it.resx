@@ -117,64 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailSubject" xml:space="preserve">
-    <value>Dettagli eccezione SalesLogix  (Id errore SalesLogix:   {0})</value>
-  </data>
-  <data name="ExceptionSource" xml:space="preserve">
-    <value>Origine: {0}</value>
-  </data>
-  <data name="ShowDetails" xml:space="preserve">
-    <value>Visualizza i dettagli</value>
-  </data>
-  <data name="CannotCompleteRequest" xml:space="preserve">
-    <value>Siamo spiacenti, la tua richiesta non può essere completata.</value>
-  </data>
-  <data name="ExceptionIntercepted" xml:space="preserve">
-    <value>Un'eccezione non gestita sul lato server è stata intercettata.   {0}</value>
-  </data>
-  <data name="ReturnLink" xml:space="preserve">
-    <value>Ritorna all'applicazione</value>
-  </data>
-  <data name="MailDetailsLink" xml:space="preserve">
-    <value>Invia per email i dettagli di questa eccezione al tuo amministratore</value>
-  </data>
-  <data name="ExceptionTargetSite" xml:space="preserve">
-    <value>Sito di destinazione:   {0}.</value>
-  </data>
-  <data name="ExceptionType" xml:space="preserve">
-    <value>Tipo di eccezione:   {0}.</value>
-  </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>© 2012 Sage Software Inc. Tutti i diritti riservati.</value>
-  </data>
-  <data name="AuthTokenNullExceptionMsg" xml:space="preserve">
-    <value>Il token di autenticazione è null.</value>
-  </data>
-  <data name="Exception" xml:space="preserve">
-    <value>Eccezione:   {0}</value>
-  </data>
-  <data name="ConfirmDelete" xml:space="preserve">
-    <value>Stai per eliminare definitivamente questo record.</value>
-  </data>
-  <data name="SlxErrorId" xml:space="preserve">
-    <value>Id Errore SalesLogix: {0}.</value>
-  </data>
-  <data name="Error_NoAccess" xml:space="preserve">
-    <value>Spiacente non hai accesso alla pagina selezionata.</value>
-  </data>
   <data name="Actions" xml:space="preserve">
     <value>Azioni:</value>
   </data>
+  <data name="AuthTokenNullExceptionMsg" xml:space="preserve">
+    <value>Il token di autenticazione è Null.</value>
+  </data>
+  <data name="CannotCompleteRequest" xml:space="preserve">
+    <value>La richiesta non può essere completata.</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Si sta per eliminare definitivamente questo record.</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright © 2016 Infor. Tutti i diritti riservati. www.infor.com</value>
+  </data>
+  <data name="EmailSubject" xml:space="preserve">
+    <value>Dettagli eccezione Saleslogix (ID errore Saleslogix: {0})</value>
+  </data>
+  <data name="Error_NoAccess" xml:space="preserve">
+    <value>L'utente non ha accesso a questa pagina.</value>
+  </data>
+  <data name="Exception" xml:space="preserve">
+    <value>Eccezione: {0}</value>
+  </data>
+  <data name="ExceptionIntercepted" xml:space="preserve">
+    <value>Rilevata eccezione lato server non gestita. {0}</value>
+  </data>
   <data name="ExceptionPageTitle" xml:space="preserve">
-    <value>Eccezione SalesLogix</value>
+    <value>Eccezione Saleslogix</value>
+  </data>
+  <data name="ExceptionSource" xml:space="preserve">
+    <value>Origine: {0}.</value>
   </data>
   <data name="ExceptionStackTrace" xml:space="preserve">
-    <value>Traccia Stack: {0}</value>
+    <value>Analisi dello stack: {0}.</value>
   </data>
-  <data name="WereSorryMsg" xml:space="preserve">
-    <value>Siamo spiacenti, hai riscontrato un errore. Se applicabile, per favore prova di nuovo</value>
+  <data name="ExceptionTargetSite" xml:space="preserve">
+    <value>Sito di destinazione: {0}.</value>
+  </data>
+  <data name="ExceptionType" xml:space="preserve">
+    <value>Tipo di eccezione: {0}.</value>
+  </data>
+  <data name="ExceptionUrl" xml:space="preserve">
+    <value>URL: {0}</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>Aiuto</value>
+    <value>Guida</value>
+  </data>
+  <data name="MailDetailsLink" xml:space="preserve">
+    <value>Invia i dettagli di questa eccezione al tuo amministratore</value>
+  </data>
+  <data name="ReturnLink" xml:space="preserve">
+    <value>Torna all'applicazione</value>
+  </data>
+  <data name="ShowDetails" xml:space="preserve">
+    <value>Mostra dettagli</value>
+  </data>
+  <data name="SlxErrorId" xml:space="preserve">
+    <value>ID errore Saleslogix: {0}.</value>
+  </data>
+  <data name="WereSorryMsg" xml:space="preserve">
+    <value>Si è verificato un errore. Riprovare</value>
   </data>
 </root>

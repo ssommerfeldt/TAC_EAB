@@ -1,3 +1,3 @@
-define((
-{ pageText: 'Pagina' }
-));
+define("Sage/Utility/nls/it/Dashboard", {
+    "pageText": "Pagina"
+});

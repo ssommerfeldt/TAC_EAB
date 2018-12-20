@@ -117,49 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="grdTemplates.EmptyTableRowText" xml:space="preserve">
+    <value>На текущий момент нет определенных шаблонов.</value>
+  </data>
+  <data name="grdTemplates.Description.ColumnHeading" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="grdTemplates.CreateDate.ColumnHeading" xml:space="preserve">
+    <value>Дата создания</value>
+  </data>
+  <data name="grdTemplates.CreatedBy.ColumnHeading" xml:space="preserve">
+    <value>Автор</value>
+  </data>
+  <data name="grdTemplates.ModifyDate.ColumnHeading" xml:space="preserve">
+    <value>Дата изменения</value>
+  </data>
+  <data name="grdTemplates.ModifyUser.ColumnHeading" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Описание:</value>
+  </data>
   <data name="lblTemplates.Caption" xml:space="preserve">
     <value>Шаблоны импорта наводок:</value>
   </data>
   <data name="grdTemplates.Delete.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Описание:</value>
-  </data>
   <data name="grdTemplates.DeleteConfirmation" xml:space="preserve">
-    <value>Вы действительно хотите удалить этот шаблон?</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="grdTemplates.Description.ColumnHeading" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="grdTemplates.CreatedBy.ColumnHeading" xml:space="preserve">
-    <value>Создал</value>
-  </data>
-  <data name="grdTemplates.ModifyUser.ColumnHeading" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
-  <data name="grdTemplates.ModifyDate.ColumnHeading" xml:space="preserve">
-    <value>Дата изменения</value>
+    <value>Действительно удалить этот шаблон?</value>
   </data>
   <data name="error_DuplicateTemplateDescription" xml:space="preserve">
-    <value>Введенное описание шаблона '{0}' уже определено. Пожалуйста, введите уникальное описание.</value>
+    <value>Введенное описание шаблона "{0}" уже используется. Введите уникальное описание.</value>
   </data>
-  <data name="grdTemplates.EmptyTableRowText" xml:space="preserve">
-    <value>На текущий момент нет определенных шаблонов.</value>
-  </data>
-  <data name="grdTemplates.CreateDate.ColumnHeading" xml:space="preserve">
-    <value>Дата создания</value>
+  <data name="error_NoTemplateDescription" xml:space="preserve">
+    <value>Введите описание шаблона перед продолжением.</value>
   </data>
   <data name="error_templateManager" xml:space="preserve">
     <value>Ошибка при загрузке менеджера шаблона. {0}</value>
   </data>
-  <data name="error_NoTemplateDescription" xml:space="preserve">
-    <value>Пожалуйста, введите описание шаблона, прежде чем продолжать.</value>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Отмена</value>
   </data>
 </root>

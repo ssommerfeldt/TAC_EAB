@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/Numeric", [
        'dojo/_base/html',
        'dijit/_Widget',
        'Sage/_Templated',
@@ -67,6 +67,10 @@ function (html, _Widget, _Templated, NumberTextBox, currency, declare, _sniff, h
             //  have to be done to hit the actual Numeric textbox
             if (this.domNode.parentNode && this.domNode.parentNode.tagName == 'SPAN') {
                 this.domNode.parentNode.tabIndex = -1;
+            }
+
+            if (this["class"] && this["class"].length > 0 && this.domNode.firstChild) {
+                this.domNode.firstChild.className = this["class"] + ' ' + this.domNode.firstChild.className;
             }
         },
         constructor: function (options) {

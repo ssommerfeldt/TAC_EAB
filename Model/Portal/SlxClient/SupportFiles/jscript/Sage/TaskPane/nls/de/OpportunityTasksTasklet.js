@@ -1,4 +1,1 @@
-define((
-{ updateOpportunitiesTitle: 'Verkaufschancen aktualisieren',
-  opportunityStatisticsTitle: 'Verkaufschancenstatistik' }
-));
+define("Sage/TaskPane/nls/de/OpportunityTasksTasklet", {});

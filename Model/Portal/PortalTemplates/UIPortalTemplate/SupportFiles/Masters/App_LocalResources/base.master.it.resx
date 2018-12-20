@@ -112,42 +112,45 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Loading" xml:space="preserve">
+    <value>Caricamento in corso...</value>
+  </data>
   <data name="LogOff" xml:space="preserve">
     <value>Disconnetti</value>
-  </data>
-  <data name="SpeedSearch" xml:space="preserve">
-    <value>SpeedSearch</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Esegui Cerca</value>
-  </data>
-  <data name="ssMenuItem_Advanced" xml:space="preserve">
-    <value>Avanzate</value>
-  </data>
-  <data name="Loading" xml:space="preserve">
-    <value>Caricamento...</value>
-  </data>
-  <data name="UserWelcomeText" xml:space="preserve">
-    <value>Benvenuto {0} {1}.</value>
-  </data>
-  <data name="TodayIs" xml:space="preserve">
-    <value>Oggi è</value>
-  </data>
-  <data name="PleaseWait" xml:space="preserve">
-    <value>Attendere...</value>
-  </data>
-  <data name="UnspecifiedError" xml:space="preserve">
-    <value>Si è verificato un errore non definito.</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Opzioni</value>
   </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Infor CRM</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Attendere...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Esegui ricerca</value>
+  </data>
+  <data name="SpeedSearch" xml:space="preserve">
+    <value>SpeedSearch</value>
+  </data>
+  <data name="ssMenuItem_Advanced" xml:space="preserve">
+    <value>Avanzato</value>
+  </data>
+  <data name="TodayIs" xml:space="preserve">
+    <value>Oggi è</value>
+  </data>
+  <data name="UnspecifiedError" xml:space="preserve">
+    <value>Si è verificato un errore non specificato.</value>
+  </data>
   <data name="Updating" xml:space="preserve">
-    <value>Aggiornamento</value>
+    <value>Aggiornamento in corso</value>
+  </data>
+  <data name="UserWelcomeText" xml:space="preserve">
+    <value>Benvenuto {0} {1}.</value>
   </data>
 </root>

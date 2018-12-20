@@ -1,18 +1,18 @@
-define((
-{ attachmentText: 'Allegato',
-  userText: 'Utente',
-  modDateText: 'Modifica Data/ora',
-  dateRangeText: 'Modificare intervallo di Date',
-  sizeText: 'Dimensione',
-  extensionText: 'Estensione del file',
-  addFileText: 'Aggiungi File',
-  addUrlText: 'Aggiungi URL',
-  editText: 'Modifica',
-  helpText: 'Aiuto',
-  addGoogleText: 'Aggiungi Documento Google',
-  deleteText: 'Elimina',
-  request: 'Richiedi File',
-  delivered: 'Consegnato',
-  requested: 'Richiesto',
-  available: 'Disponibile' }
-));
+define("Sage/UI/nls/it/AttachmentList", {
+    "attachmentText": "Allegato",
+    "userText": "Utente",
+    "modDateText": "Modifica data/ora",
+    "dateRangeText": "Modifica intervallo di date",
+    "sizeText": "Dimensione",
+    "extensionText": "Estensione del file",
+    "addFileText": "Aggiungi file",
+    "addUrlText": "Aggiungi URL",
+    "editText": "Modifica",
+    "helpText": "Guida",
+    "addGoogleText": "Aggiungi documento Google",
+    "deleteText": "Elimina",
+    "request": "Richiedi file",
+    "delivered": "Consegnato",
+    "requested": "Richiesto",
+    "available": "Disponibile"
+});

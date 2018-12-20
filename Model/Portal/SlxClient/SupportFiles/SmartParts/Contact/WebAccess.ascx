@@ -9,7 +9,6 @@
 <%@ Import Namespace="Sage.Platform.EntityBinding" %>
 <%@ Import Namespace="Sage.Platform.WebPortal.SmartParts" %>
 <%@ Import Namespace="Sage.SalesLogix.Security" %>
-<%@ Import Namespace="Sage.SalesLogix.Entities" %>
 <%@ Import Namespace="Sage.Platform.Security" %>
 
 <Saleslogix:SmartPartToolsContainer runat="server" ID="WebAccess_Tools" ToolbarLocation="Right">
@@ -21,7 +20,7 @@
   <col width="50%" /><col width="50%" /><tr>
 <td >
            <span class="lbl"><asp:Label ID="lblWebAccess" AssociatedControlID="chkWebAccess" runat="server" Text="Web Access" meta:resourcekey="lblWebAccessResource1"></asp:Label></span>
-<span >
+<span class="lbl" style="padding-top:11px">
 <asp:CheckBox runat="server" ID="chkWebAccess" meta:resourcekey="chkWebAccessResource1" />
 </span>
 </td>
@@ -96,23 +95,15 @@
 
     protected void Save_ClickAction(object sender, EventArgs e)
     {
-        object[] objarray = new object[]
-        {
-            BindingSource.Current,
+        var passthru = ((IContact)BindingSource.Current).SaveWebAccess(
             chkWebAccess.Checked,
             txtNewPassword.Text,
-            txtRepeatNewPassword.Text
-        };
-        object passthru = EntityFactory.Execute<Contact>("Contact.SaveWebAccess", objarray);
+            txtRepeatNewPassword.Text);
         if (passthru != null)
         {
-            WebActionEventArgs args = new WebActionEventArgs(passthru);
-            Save_ClickActionBRC(sender, args);
+            e = new WebActionEventArgs(passthru);
         }
-        else
-        {
-            Save_ClickActionBRC(sender, e);
-        }
+        Save_ClickActionBRC(sender, e);
     }
 
     protected void Save_ClickActionBRC(object sender, EventArgs e)
@@ -129,13 +120,9 @@
 
     protected void quickformload0(object sender, EventArgs e)
     {
-        Boolean bIsAdmin;
-        Boolean bIsWebAdmin;
-        Boolean bEnableControl;
-        string strOption;
-        SLXUserService userService = ApplicationContext.Current.Services.Get<IUserService>() as SLXUserService;
+        var userService = (ISlxUserService)ApplicationContext.Current.Services.Get<IUserService>(true);
         var userOptions = ApplicationContext.Current.Services.Get<IUserOptionsService>(true);
-        strOption = userOptions.GetPlatformOption("CONTEXT:webticketcust", "", false, "n", "", EntityContext.EntityID.ToString());
+        var strOption = userOptions.GetPlatformOption("CONTEXT:webticketcust", "", false, "n", "", EntityContext.EntityID.ToString());
         if (!string.IsNullOrEmpty(strOption))
         {
             chkWebAccess.Checked = (strOption.Trim().ToUpper() == "Y");
@@ -148,9 +135,8 @@
         txtNewPassword.Text = "";
         txtRepeatNewPassword.Text = "";
 
-        bIsAdmin = (userService.UserId.Trim().ToUpper() == "ADMIN");
-        bIsWebAdmin = false;
-        bEnableControl = false;
+        var bIsAdmin = (userService.UserId.Trim().ToUpper() == "ADMIN");
+        var bIsWebAdmin = false;
         if (!bIsAdmin)
         {
             IUser userContext = userService.GetUser();
@@ -160,7 +146,7 @@
             }
         }
         /* Users can make changes only if they are the Admin or if they are a Web Admin. */
-        bEnableControl = (bIsAdmin || bIsWebAdmin);
+        var bEnableControl = (bIsAdmin || bIsWebAdmin);
         chkWebAccess.Enabled = bEnableControl;
         txtNewPassword.Enabled = bEnableControl;
         txtRepeatNewPassword.Enabled = bEnableControl;

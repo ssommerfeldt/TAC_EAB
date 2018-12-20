@@ -19,12 +19,12 @@
       <RootActionName>CSharpSnippetAction</RootActionName>
       <Action>
         <CSharpCodeSnippet><![CDATA[Sage.SalesLogix.Activity.Event slxEvent = this.BindingSource.Current as Sage.SalesLogix.Activity.Event;
-   
+
 if (slxEvent != null)
 {
     Delete.Visible = (slxEvent.Id != null);
-	
-	UserId.Items.Clear();
+
+    UserId.Items.Clear();
     foreach (var uc in Sage.SalesLogix.Activity.UserCalendar.GetCurrentUserCalendarList())
     {
         if (uc.AllowAdd == true)
@@ -33,8 +33,8 @@ if (slxEvent != null)
             UserId.Items.Add(li);
         }
     }
-    
-    	UserId.SelectedValue = slxEvent.UserId;
+
+    UserId.SelectedValue = slxEvent.UserId;
 
     DateTime defaultDate;
     if (Request.QueryString["startdate"] != null)
@@ -48,7 +48,7 @@ if (slxEvent != null)
             slxEvent.EndDate = startDate;
         }
     }
-	
+
     ((Sage.Platform.WebPortal.EntityPage) Page).TitleBar.Text =
         HttpContext.GetLocalResourceObject(Request.CurrentExecutionFilePath, "PageTitle").ToString();
 }]]></CSharpCodeSnippet>

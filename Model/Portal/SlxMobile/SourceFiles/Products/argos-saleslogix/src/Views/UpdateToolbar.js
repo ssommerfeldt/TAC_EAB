@@ -1,54 +1,57 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import win from 'dojo/_base/window';
+import domClass from 'dojo/dom-class';
+import MainToolbar from 'argos/MainToolbar';
+import getResource from 'argos/I18n';
+
+const resource = getResource('updateToolbar');
+
+/**
+ * @class crm.Views.UpdateToolbar
+ *
+ *
+ * @extends argos.MainToolbar
+ *
  */
-define('Mobile/SalesLogix/Views/UpdateToolbar', [
-    'dojo/_base/declare',
-    'dojo/_base/window',
-    'dojo/dom-class',
-    'Sage/Platform/Mobile/MainToolbar'
-], function(
-    declare,
-    win,
-    domClass,
-    MainToolbar
-) {
-    return declare('Mobile.SalesLogix.Views.UpdateToolbar', [MainToolbar], {
-        widgetTemplate: new Simplate([
-            '<div class="update-toolbar">',
-            '<h1 data-action="reload">{%= $.updateText %}</h1>',
-            '</div>'
-        ]),
+const __class = declare('crm.Views.UpdateToolbar', [MainToolbar], {
+  widgetTemplate: new Simplate([
+    '<div class="update-toolbar">',
+    '<h1 data-action="reload">{%= $.updateText %}</h1>',
+    '</div>',
+  ]),
 
-        updateText: 'An update is available.  Click to reload.',
+  updateText: resource.updateText,
 
-        managed: false,
+  managed: false,
 
-        show: function() {
-            domClass.add(win.body(), 'update-available');
+  show: function show() {
+    domClass.add(win.body(), 'update-available');
 
-            this.showTools([{
-                id: 'cancel',
-                side: 'right',
-                fn: this.cancel,
-                scope: this
-            }]);
+    this.showTools([{
+      id: 'cancel',
+      side: 'right',
+      fn: this.cancel,
+      scope: this,
+    }]);
 
-            this.inherited(arguments);
-        },
+    this.inherited(arguments);
+  },
 
-        showTools: function(tools) {
-            this.inherited(arguments);
-        },
+  showTools: function showTools() {
+    this.inherited(arguments);
+  },
 
-        hide: function() {
-            domClass.remove(win.body(), 'update-available');
-        },
-        reload: function() {
-            App.reload();
-        },
-        cancel: function() {
-            this.hide();
-        }
-    });
+  hide: function hide() {
+    domClass.remove(win.body(), 'update-available');
+  },
+  reload: function reload() {
+    App.reload();
+  },
+  cancel: function cancel() {
+    this.hide();
+  },
 });
 
+lang.setObject('Mobile.SalesLogix.Views.UpdateToolbar', __class);
+export default __class;

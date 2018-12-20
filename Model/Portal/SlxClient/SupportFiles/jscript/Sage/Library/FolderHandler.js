@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Library/FolderHandler", [
         'Sage/Data/SDataServiceRegistry',
         'Sage/Services/RoleSecurityService',
         'Sage/UI/Dialogs',
@@ -140,16 +140,42 @@ define([
             handleAddFolderCallback: function (ok, text) {
                 if (ok) {
                     var dirid = Sage.Library.Manager.getOpenFolderId();
-                    Sage.Library.FolderHandler.addFolder(
-                        dirid,
-                        text,
-                        function (entry) {
-                            if (typeof console !== 'undefined') {
-                                console.debug('New folder: %o', entry);
+                    if (!dirid) {
+                        // Need to add the root folder first...
+                        Sage.Library.FolderHandler.addFolder(
+                            null,
+                            'Library',
+                            function (entry) {
+                                if (entry) {
+                                    if (typeof console !== 'undefined') {
+                                        console.debug('Root folder: %o', entry);
+                                    }
+                                    dojo.publish('/sage/library/manager/libraryDirs/refresh', '');
+                                    Sage.Library.FolderHandler.addFolder(
+                                        entry.$key,
+                                        text,
+                                        function (entry) {
+                                            if (typeof console !== 'undefined') {
+                                                console.debug('New folder: %o', entry);
+                                            }
+                                            dojo.publish('/sage/library/manager/libraryDirs/refresh', '');
+                                        }
+                                    );
+                                }
                             }
-                            dojo.publish('/sage/library/manager/libraryDirs/refresh', '');
-                        }
-                    );
+                        );
+                    } else {
+                        Sage.Library.FolderHandler.addFolder(
+                            dirid,
+                            text,
+                            function (entry) {
+                                if (typeof console !== 'undefined') {
+                                    console.debug('New folder: %o', entry);
+                                }
+                                dojo.publish('/sage/library/manager/libraryDirs/refresh', '');
+                            }
+                        );
+                    }
                 }
             },
             handleEditFolderName: function (button, event) {

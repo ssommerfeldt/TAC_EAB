@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Calendar", [
         'dijit/Calendar',
         'dojo/_base/declare'
     ],
@@ -10,6 +10,7 @@ define([
             constructor: function (options) {
                 this.displayMode = options.displayMode;
                 var self = this;
+                this.lang = Sys.CultureInfo.CurrentCulture.name;
 
                 //displaymode "popup" is for the calendar defined in Sage/UI/Controls/DatetimePicker.html
                 if (this.displayMode === "popup") {
@@ -66,7 +67,16 @@ define([
                     This will keep the date selected when the month/year changed
                     */
                     dojo.connect(this, "_setCurrentFocusAttr", function (date) {
+                        // Grab the original _setCurrentFocusAttr reference
+                        var original = self._setCurrentFocusAttr;
+
+                        // Setting the value will cause _setCurrentFocusAttr to fire again, prevent this
+                        // by setting _setCurrentFocusAttr to a no-op
+                        self._setCurrentFocusAttr = function () { };
                         self.set('value', date);
+
+                        // Restore the original
+                        self._setCurrentFocusAttr = original;
                     });
                 }
                 this.inherited(arguments);

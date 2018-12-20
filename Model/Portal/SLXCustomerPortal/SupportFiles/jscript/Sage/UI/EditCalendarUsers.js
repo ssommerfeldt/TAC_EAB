@@ -1,5 +1,7 @@
+require({cache:{
+'url:Sage/UI/templates/EditCalendarUsers.html':"<div>\r\n    <div class=\"filter-items-dialog\" data-dojo-type=\"dijit.Dialog\"  data-dojo-attach-point=\"dialogNode\" >\r\n        <div class=\"filter-items-search\" style=\"border-bottom: 1px solid #cccccc;\">\r\n            <label>${findItemText}</label> <input data-dojo-attach-point=\"textFind\" data-dojo-type=\"dijit.form.TextBox\" />\r\n            <span data-dojo-attach-point=\"buttonFind\" title=\"${findText}\" data-dojo-type=\"Sage.UI.ImageButton\" data-dojo-props=\"imageClass: 'icon_Find_16x16'\" data-dojo-attach-event=\"onClick:_onFindClick\"></span>&nbsp;\r\n\t\t\t<span data-dojo-attach-point=\"buttonClear\" title=\"${clearText}\" data-dojo-type=\"dijit.form.Button\" data-dojo-attach-event=\"onClick:_onClearClick\">${clearText}</span>\r\n        </div>     \r\n        <div class=\"filter-items-dialog-content\" data-dojo-attach-point=\"contentNode\" style=\"height:238px;\">\r\n        </div>\r\n        <div class=\"button-bar alignright\">\r\n            <button data-dojo-attach-point=\"buttonOK\" data-dojo-attach-event=\"onClick:_onOKClick\" data-dojo-type=\"dijit.form.Button\">${okText}</button>\r\n            <button data-dojo-attach-point=\"buttonCancel\" data-dojo-attach-event=\"onClick:_onCancelClick\" data-dojo-type=\"dijit.form.Button\">${cancelText}</button>\r\n        </div>\r\n    </div>\r\n</div>"}});
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/EditCalendarUsers", [
         'dijit/_Widget',
         'dijit/_TemplatedMixin',
         'dijit/_WidgetsInTemplateMixin',
@@ -69,7 +71,7 @@ define([
             '<input id="{%: $.id %}" ',
             'name="{%: $.name %}" ',
             'data-dojo-type="dijit.form.CheckBox" ',
-            'data-dojo-props="label: \'{%: $.name %}\'" ',
+           // 'data-dojo-props="label:\'{%: $.name %}\'" ', \\ removed this because of names such as O'Hare with a single quote. Defect 14096021
             '{%: $.disabled %}',
             'class="editFilterCheckBox" />',
             '<label for="{%: $.id %}" {%: $.disabledStyle %}>{%: $.itemName %}</label><br />'
@@ -111,6 +113,7 @@ define([
                 whereQuery =  dojo.string.substitute('(AccessId eq \'${0}\' OR AccessId eq \'EVERYONE\') AND Type eq \'User\'', [lang.trim(currentUserId)]);
             }
             if (searchValue) {
+                searchValue = searchValue.replace(/'/g, "''"); //Defect - 14096018
                 whereQuery += dojo.string.substitute(' AND Name like \'%${0}%\'', [lang.trim(searchValue)]);
             } 
             return whereQuery;
@@ -304,7 +307,7 @@ define([
                     //disabledStyle = "style ='{color: #C8C9DE}'";
                 }
                                 
-                name = name.replace("'", "\\'");
+                //name = name.replace("'", "\\'");  \\ removed this because of names such as O'Hare with a single quote. Defect 14096021
                 templateItems.push(this.checkBoxTemplate.apply({
                     id: id,
                     name: name,

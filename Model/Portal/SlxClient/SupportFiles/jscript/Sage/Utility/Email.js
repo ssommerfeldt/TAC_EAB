@@ -1,14 +1,15 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Utility/Email", [
     'Sage/Utility',
     'Sage/Data/SDataServiceRegistry',
     'Sage/UI/Dialogs',
     'dojo/parser',
     'dojox/validate/regexp',
-    'dojo/i18n!./nls/Email'
+    'dojo/i18n!./nls/Email',
+    'dojo/has'
 ],
 // ReSharper disable InconsistentNaming
-function (Utility, SDataServiceRegistry, Dialogs, parser, regexp, nls) {
+function (Utility, SDataServiceRegistry, Dialogs, parser, regexp, nls, has) {
 
     Sage.namespace('Utility.Email');
     dojo.mixin(Sage.Utility.Email, {
@@ -257,7 +258,7 @@ function (Utility, SDataServiceRegistry, Dialogs, parser, regexp, nls) {
                 };
 
                 // Attempt to use the Outlook object model if Desktop Integration could not be used to send the e-mail.
-                if (typeof ActiveXObject != "undefined") {
+                if (has('trident') || typeof ActiveXObject !== "undefined") {
                     try {
                         var outlook = new ActiveXObject("Outlook.Application");
                         var message = outlook.CreateItem(0);                        

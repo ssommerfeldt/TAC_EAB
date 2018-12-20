@@ -1,0 +1,1 @@
+define("Sage/MainView/JobMgr/templates/nls/zh-tw/ExecutionsListSummary", {});

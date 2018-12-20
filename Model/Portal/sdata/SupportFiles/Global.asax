@@ -31,6 +31,9 @@
 
             MessagingService.UnhandledException += MessagingServiceOnUnhandledException;
 
+            //Enable TLS 1.1+ in .net 4.5. This can be removed once this portal is upgraded to .net 4.6 or greater.
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
             HierarchicalRuntime.Instance.Initialize();
 
             Log.InfoEx("SalesLogix SData Portal started.", EventIds.AdHocEvents.InfoApplicationStart);
@@ -48,6 +51,21 @@
         try
         {
             MessagingService.UnhandledException -= MessagingServiceOnUnhandledException;
+            var runtime = typeof(HttpRuntime).InvokeMember("_theRuntime", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.GetField, null, null, null) as HttpRuntime;
+            if (runtime == null) return;
+            var shutDownMessage = runtime.GetType().InvokeMember("_shutDownMessage", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField, null, runtime, null) as string;
+            var shutDownStack = runtime.GetType().InvokeMember("_shutDownStack", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField, null, runtime, null) as string;
+            if (!string.IsNullOrEmpty(shutDownMessage))
+            {
+                shutDownMessage = shutDownMessage.Replace(Environment.NewLine, " ").Trim();
+            }
+            if (!string.IsNullOrEmpty(shutDownStack))
+            {
+                shutDownStack = shutDownStack.Replace(Environment.NewLine, " ").Trim();
+            }
+            // Note: Accessing HostingEnvironment.ShutdownReason can lead to an exception, so use reflection instead.
+            var shutDownReason = (ApplicationShutdownReason)runtime.GetType().InvokeMember("_shutdownReason", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField, null, runtime, null);
+            Log.WarnEx(string.Format("The Saleslogix SData Portal application has shutdown for the following reason: Reason={0}; Message={1}; Stack Trace={2}", shutDownReason, shutDownMessage, shutDownStack), EventIds.AdHocEvents.WarnApplicationEnd);            
         }
         catch (Exception ex)
         {

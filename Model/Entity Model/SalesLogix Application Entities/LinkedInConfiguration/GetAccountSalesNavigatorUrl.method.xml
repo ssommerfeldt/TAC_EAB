@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="5fc10e93-1db2-46a9-8e6f-af3aec9b019b" lastModifiedUtc="2017-07-20T14:47:06.3982858Z" name="GetAccountSalesNavigatorUrl" returnType="String" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="4608b026-2cc9-41d5-b44a-ddc3ac1e484c" paramName="entity" sequence="0" paramType="IAccount">
+      <description>Account used to generate the Sales Navigator Url.</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="75cdd7f9-1b2c-432f-a698-5429dbbcd6ed" lastModifiedUtc="2017-07-21T15:30:28.0965041Z" targetType="Saleslogix.Integration.LinkedIn.SalesNavigator.SalesNavigatorHelper, Saleslogix.Integration.LinkedIn.SalesNavigator" targetMethod="GetSalesNavigatorUrl" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutoRates.Caption" xml:space="preserve">
+    <value>Automatic Download</value>
+  </data>
+  <data name="CreateDate.Caption" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="EffectiveFrom.Caption" xml:space="preserve">
+    <value>Effective From</value>
+  </data>
+  <data name="ExpiresAfter.Caption" xml:space="preserve">
+    <value>Expires After</value>
+  </data>
+  <data name="ModifyDate.Caption" xml:space="preserve">
+    <value>Modify Date</value>
+  </data>
+  <data name="ModifyUser.Caption" xml:space="preserve">
+    <value>Modify User</value>
+  </data>
+  <data name="ProcessComplete.Caption" xml:space="preserve">
+    <value>Process Complete</value>
+  </data>
+  <data name="grdPeriods.a6c0a7ab-3981-485e-9332-0188bec97493.ColumnHeading" xml:space="preserve">
+    <value>Automatic Download</value>
+  </data>
+  <data name="grdPeriods.716be2d3-af9d-4e5f-a7bf-c13b8978cce4.ColumnHeading" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="grdPeriods.b518c420-6809-45b9-aa21-40f52415e371.ColumnHeading" xml:space="preserve">
+    <value>Effective From</value>
+  </data>
+  <data name="grdPeriods.df5e4d11-31a1-4a07-92c3-f1f75f548763.ColumnHeading" xml:space="preserve">
+    <value>Expires After</value>
+  </data>
+  <data name="grdPeriods.ee8e056c-94b2-4466-be99-c1f5498f2675.ColumnHeading" xml:space="preserve">
+    <value>Modify Date</value>
+  </data>
+  <data name="grdPeriods.9e488bf0-04ff-4fdd-95b3-13a75db0cb9f.ColumnHeading" xml:space="preserve">
+    <value>Modify User</value>
+  </data>
+  <data name="grdPeriods.d75c6eb8-3d09-4dbf-bf47-b861631ba22d.ColumnHeading" xml:space="preserve">
+    <value>Process Complete</value>
+  </data>
+  <data name="grdPeriods.acdf65bb-e82c-45c5-a46e-bcb577d7dbd9.ColumnHeading" xml:space="preserve">
+    <value>Process Complete</value>
+  </data>
+  <data name="grdPeriods.677a5987-926c-4a3f-bf47-fa4f53d8f301.ColumnHeading" xml:space="preserve">
+    <value>Effective From</value>
+  </data>
+  <data name="grdPeriods.e836f9c5-55aa-406b-b5ff-bad4e1f0a432.ColumnHeading" xml:space="preserve">
+    <value>Effective From</value>
+  </data>
+  <data name="grdPeriods.a901864f-68e1-469b-beb7-381ecdc5c7a8.ColumnHeading" xml:space="preserve">
+    <value>Expires After</value>
+  </data>
+  <data name="grdPeriods.98db9a26-93c7-4cd8-bbf9-7e1ab0144ed2.ColumnHeading" xml:space="preserve">
+    <value>Automatic Download</value>
+  </data>
+  <data name="grdPeriods.ddd33380-d682-4415-b543-2406cfcc2d5f.ColumnHeading" xml:space="preserve">
+    <value>Processed</value>
+  </data>
+  <data name="grdPeriods.2a5bbf53-d447-438f-bf0a-92e6cbd317d0.ColumnHeading" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="grdPeriods.4bcc794f-354b-43ff-93d9-de0c37239615.ColumnHeading" xml:space="preserve">
+    <value>Modify Date</value>
+  </data>
+  <data name="grdPeriods.a429b26e-703f-4406-948c-9ab1a3b80df8.ColumnHeading" xml:space="preserve">
+    <value>Modify User</value>
+  </data>
+  <data name="grdPeriods.a14cc06a-fa73-4e2c-beb8-275cc6a4f4ea.ColumnHeading" xml:space="preserve">
+    <value>Period Begins</value>
+  </data>
+  <data name="grdPeriods.420d14ad-bf48-4474-b047-a5098f170123.ColumnHeading" xml:space="preserve">
+    <value>Period Expires After</value>
+  </data>
+  <data name="grdPeriods.bb846ae1-2a4f-4895-b096-09c2b3235030.ColumnHeading" xml:space="preserve">
+    <value>Automatic Download</value>
+  </data>
+  <data name="grdPeriods.66546fdb-813f-449e-bace-0ff7cc0c52fe.ColumnHeading" xml:space="preserve">
+    <value>Processed</value>
+  </data>
+  <data name="grdPeriods.83098bc2-06c3-4248-b559-8f8527f3ff65.ColumnHeading" xml:space="preserve">
+    <value>Modify Date</value>
+  </data>
+  <data name="grdPeriods.598a06ba-6888-42a7-bb7a-77aae2ba289e.ColumnHeading" xml:space="preserve">
+    <value>Modify User</value>
+  </data>
+  <data name="grdPeriods.3d01042b-a052-439c-a5e6-5b4273ae2f22.ColumnHeading" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+</root>

@@ -1,5 +1,7 @@
-﻿/*globals dojo, define, Sage, dijit, Simplate, $ */
-define([
+require({cache:{
+'url:Sage/MainView/IntegrationContract/templates/AdvancedSearchOptions.html':"[\r\n'<div>',\r\n    '<div>',\r\n        '<label class=\"wizardsectiontitle boldText padBottom\">{%= $.searchOptionsHeader %}',\r\n            '<span class=\"boldtext\">{%= $.configOptions.targetAccount %}</span>',\r\n        '</label>',\r\n        '<br /><br />',\r\n    '</div>',\r\n    '<div>',\r\n        '<label class=\"wizardsectiontext padBottom\" style=\"padding-left:20px\">{%= $.searchOptionsText %}</label>',\r\n    '</div>',\r\n    '<div>',\r\n        '<br />',\r\n        '<label class=\"slxlabel\" style=\"padding-left:20px\">{%= $.propertyText %}</label>',\r\n        '<label class=\"slxlabel\" style=\"padding-left:136px\">{%= $.operatorText %}</label>',\r\n        '<label class=\"slxlabel\" style=\"padding-left:118px\">{%= $.searchText %}</label>',\r\n    '</div>',\r\n    '<div dojoAttachPoint=\"conditionContainer\" style=\"padding:10px;\" id=\"{%= $.id %}-Condition-container\"></div>',\r\n    '<div class=\"button-bar alignright\">',\r\n        '<button dojoType=\"dijit.form.Button\" type=\"submit\" onClick=\"dijit.byId(\\'{%= $.id %}-Dialog\\').refineSearchObject.getSelections();\">',\r\n            '{%= $.okText %}',\r\n        '</button>',\r\n        '<button dojoType=\"dijit.form.Button\" type=\"button\" onClick=\"dijit.byId(\\'{%= $.id %}-Dialog\\').hide();\">',\r\n            '{%= $.cancelText %}',\r\n        '</button>',\r\n    '</div>',\r\n'</div>'\r\n]\r\n"}});
+/*globals dojo, define, Sage, dijit, Simplate, $ */
+define("Sage/MainView/IntegrationContract/AdvancedSearchOptions", [
     'dojo/_base/declare',
     'dojo/i18n!./nls/AdvancedSearchOptions',
     'dijit/_Widget',

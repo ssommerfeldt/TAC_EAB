@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<SchedulerTrigger xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="bd2cdbb2-01af-416b-8892-433347e9ca01">
+  <InstanceId>81fb33c615894b149513eb6467107bfa</InstanceId>
+  <JobId>df10bb9aa68e4329a764499a955ff518</JobId>
+  <Name>IONMessageCleanUpJob.Every10Minutes</Name>
+  <StartTimeUtc xsi:nil="true" />
+  <EndTimeUtc xsi:nil="true" />
+  <CronExpression>0 0/10 * * * ? *</CronExpression>
+  <Priority xsi:nil="true" />
+  <Parameters></Parameters>
+</SchedulerTrigger>

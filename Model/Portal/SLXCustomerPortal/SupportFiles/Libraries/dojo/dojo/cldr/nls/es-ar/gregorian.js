@@ -1,11 +1,9 @@
-//>>built
 define(
 "dojo/cldr/nls/es-ar/gregorian", //begin v1.x content
 {
-	"timeFormat-long": "H:mm:ss z",
+	"dateFormatItem-yM": "M-y",
 	"dateFormatItem-MEd": "E d-M",
-	"timeFormat-full": "HH'h'''mm:ss zzzz",
-	"dateFormatItem-yM": "M-yyyy"
+	"timeFormat-full": "HH'h'''mm:ss zzzz"
 }
 //end v1.x content
 );

@@ -25,10 +25,7 @@
 
 
 #region Usings
-using System;
 using Sage.Entity.Interfaces;
-using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
@@ -37,7 +34,7 @@ namespace Sage.BusinessRules.CodeSnippets
     {
         public static void OnAfterInsertStep(IHistory history)
         {
-			// NOTE: This empty step is here so that any Post Execute Step can be disabled easily.
+            // NOTE: This empty step is here so that any Post Execute Step can be disabled easily.
         }
     }
 }

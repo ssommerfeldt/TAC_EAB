@@ -1,14 +1,12 @@
+#set ($controlClass = "datepicker")
+#if($qfcontrol.DisplayMode != "AsControl")#set ($controlClass = "${controlClass} dtpickerText") #end
 #if(${qfcontrol.Caption} != "")
-#if($qfcontrol.ControlLabelPlacement == "left")
- <div class="#if(${qfcontrol.ColumnSpan} == 2)twocollbl#else lbl#end#if(${qfcontrol.ColumnSpan} > 2) colspan3#end#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
+ <div class="#if(${qfcontrol.ColumnSpan} == 2)twocollbl#else lbl#end#if(${qfcontrol.ColumnSpan} > 2) colspan3#end alignright">
    <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
  </div>
-#elseif($qfcontrol.ControlLabelPlacement == "top")
- <div class="lbltop#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
-   <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
- </div>
-#end #end
-  <div #if(${qfcontrol.ColumnSpan} == 2 || ${qfcontrol.ControlLabelPlacement} == "top") class="twocoltextcontrol datepicker" #elseif(${qfcontrol.ColumnSpan} > 2) class="threecoltextcontrol datepicker" #else class="textcontrol datepicker" #end >
+#end
+#if(${qfcontrol.ColumnSpan} == 2) #set ($controlClass = "${controlClass} twocoltextcontrol") #elseif(${qfcontrol.ColumnSpan} > 2) #set ($controlClass = "${controlClass} threecoltextcontrol") #else #set ($controlClass = "${controlClass} textcontrol") #end
+  <div class="$controlClass">
     <SalesLogix:DateTimePicker runat="server" ID="${qfcontrol.ControlId}" #if($qfcontrol.IsReadOnly)ReadOnly="true" #end
 #if($qfcontrol.Required)Required="true" #end
 #if(!$qfcontrol.Enabled)Enabled="false" #end
@@ -27,8 +25,3 @@
 #if($selectedYear > 1900) InitialValue="$qfcontrol.SelectedDateTime" #end
 #if($qfcontrol.HasActionCode || $qfcontrol.AutoPostBack)AutoPostBack="true" #end/>
   </div>
-#if((${qfcontrol.Caption} != "") && ($qfcontrol.ControlLabelPlacement == "right"))
- <div class="lblright#if(${qfcontrol.CaptionAlignment} == "right") alignright#elseif(${qfcontrol.CaptionAlignment} == "center") aligncenter#else alignleft#end">
-   <asp:Label ID="${qfcontrol.LabelId}" AssociatedControlID="${qfcontrol.ControlId}" runat="server" Text="<%$ resources: ${qfcontrol.ControlId}.Caption %>" #if(!$qfcontrol.Visible)Visible="false" #end></asp:Label>
- </div>
-#end

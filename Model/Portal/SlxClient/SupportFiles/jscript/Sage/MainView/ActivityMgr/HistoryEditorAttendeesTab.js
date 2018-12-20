@@ -1,4 +1,4 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
         'dojo',
         'dijit/_Widget',
@@ -7,16 +7,16 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
         'Sage/Data/SDataServiceRegistry',
         'Sage/Utility',
         'Sage/Utility/Activity',
-        'Sage/UI/SLXPreviewGrid',
-        'Sage/UI/EditableGrid',
-        'Sage/UI/Columns/CheckBox',      
-          'dijit/layout/ContentPane',
           'dojo/_base/array',
         'dojo/_base/lang',
-        'dojo/i18n!./nls/HistoryEditorAttendeesTab'
-
-    ],
-    function (dojo, _Widget, _Templated, declare, sDataServiceRegistry, utility, activityUtility, SlxPreviewGrid, EditableGrid, CheckBox, ContentPane, array, lang, nlsStrings) {
+        'dojo/i18n!./nls/HistoryEditorAttendeesTab',
+        'Sage/UI/GridView',
+        'Sage/UI/Controls/GridParts/Columns/CheckBox',
+        'dojo/store/Memory',
+        'dojo/data/ObjectStore',
+        'dijit/form/Select'
+],
+    function (dojo, _Widget, _Templated, declare, sDataServiceRegistry, utility, activityUtility, array, lang, nlsStrings, GridView, CheckBox, Memory, ObjectStore, Select) {
         //The HistoryEditorAttendeesTab is a customization displaying how to add a tab to the activity dialog
         //  with a datagrid for adding and editing a collection of related entities.
         //The code to add it is below the declaration.
@@ -27,7 +27,7 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
             lup_Lead: null,
             lup_LeadConfig: null,
             widgetsInTemplate: true,
-            _timeZones : [],
+            _timeZones: [],
             //the template for the tab content is simply a placeholder for the grid created in code
 
             constructor: function () {
@@ -58,14 +58,11 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
                     return;
                 }
                 this._buildGrid();
-                //when the dialog is hidden, we should clean up the data store and list of new items
-                dojo.connect(this.histEditor, 'onHide', this, this._dialogHide);
                 //listen for when activities are saved so we can ensure the correct relationships and save the agenda
                 dojo.subscribe('/entity/history/create', this, this._historySaved);
                 dojo.subscribe('/entity/history/change', this, this._historySaved);
 
                 // this.createLookups();
-
             },
             _getTimeZoneDisplayName: function (keyName) {
                 var displayName = keyName;
@@ -80,93 +77,87 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
                 return displayName;
             },
             _buildGrid: function () {
-
                 var self = this;
-                declare("Sage.Extensions.Activity.primaryContactCheckBox", dojox.grid.cells.Bool, {
-                    format: function (index, inItem) {
-                        var value = Sage.Utility.getValue(inItem, "IsPrimary");
-                        var checkbox = '<input type="checkbox" disabled="disabled" />';
-                        if(value){
-                            checkbox ='<input type="checkbox" checked="checked" disabled="disabled" />';
-                        }
-                        return checkbox;
-                    }
-                });
-
-                declare("Sage.Extensions.Activity.isAttendeeCheckBox", dojox.grid.cells.Bool, {
-                    format: function (index, inItem) {
-                        var value = Sage.Utility.getValue(inItem, "IsAttendee");
-                        var checkbox = '<input type="checkbox" disabled="disabled" />';
-                        if (value) {
-                            checkbox = '<input type="checkbox" checked="checked" disabled="disabled" />';
-                        }
-                        return checkbox;
-                    }
-                });
-
-                declare("Sage.Extensions.Activity.AttendeeStatus", dojox.grid.cells.Select, {
-                    format: function (index, inDatum) {
-                        var value = Sage.Utility.getValue(inDatum, "IsAttendee");
-                        if (value) {
-                            return this.inherited(arguments);                           
-                        } else {
-                            return '';
-                        }
-                    }
-                });
-             
-              
 
                 var onComplete = function (data, context) {
-                    array.forEach(data, function (item, i) {                     
+                    array.forEach(data, function (item, i) {
                         if (item["TimeZone"]) {
                             item["TimeZone"] = self._getTimeZoneDisplayName(item["TimeZone"]);
                         }
-
                     });
                 };
+
+                var attendeeStatusStore = new ObjectStore({
+                    objectStore: new Memory({
+                        idProperty: "name",
+                        data: [
+                            { "name": "Attended", "id": "T" },
+                            { "name": "Not Attended", "id": "F" },
+                            { "name": "Declined", "id": "D" }
+                        ]
+                    }),
+                    labelProperty: "name"
+                });
+
                 //define the columns:
                 var columns = [
                    {
                        field: 'Name',
-                       name: this.header_Name,
+                       label: this.header_Name,
                        width: '180px'
                    }, {
                        field: 'AccountName',
-                       name: this.header_AccountName,
+                       label: this.header_AccountName,
                        width: '180px'
                    }, {
                        field: 'EntityType',
-                       name: this.header_Type,
+                       label: this.header_Type,
                        width: '60px'
                    }, {
                        field: 'IsPrimary',
-                       name: this.header_Primary,
+                       label: this.header_Primary,
                        width: '40px',
-                       type:Sage.Extensions.Activity.primaryContactCheckBox
-                     
-                   },
-                   {
+                       editor: CheckBox,
+                       editorArgs: {
+                           disabled: true
+                       }
+                   }, {
                        field: 'IsAttendee',
-                       name: this.header_Attendee,
+                       label: this.header_Attendee,
                        width: '40px',
-                       type: Sage.Extensions.Activity.isAttendeeCheckBox
-
+                       editor: CheckBox,
+                       editorArgs: {
+                           disabled: true
+                       }
                    }, {
                        field: 'Status',
-                       name: this.header_Status,
-                       width: '100px',                     
-                       type: Sage.Extensions.Activity.AttendeeStatus,//dojox.grid.cells.Select,
-                       options: ["Attended", "Not Attended", "Declined"],
-                       values :["T","F","D"],                     
-                       editable : true
+                       label: this.header_Status,
+                       width: '100px',
+                       get: function (item) {
+                           for (var i = 0; i < attendeeStatusStore.objectStore.data.length; i++) {
+                               if (attendeeStatusStore.objectStore.data[i].id == item[this.field]) {
+                                   return attendeeStatusStore.objectStore.data[i].name;
+                               }
+                           }
+                       },
+                       set: function (item) {
+                           for (var i = 0; i < attendeeStatusStore.objectStore.data.length; i++) {
+                               if (attendeeStatusStore.objectStore.data[i].name == item[this.field]) {
+                                   return attendeeStatusStore.objectStore.data[i].id;
+                               }
+                           }
+                       },
+                       editor: Select,
+                       editorArgs: {
+                           store: attendeeStatusStore
+                       },
+                       editOn: 'click'
                    }, {
                        field: 'RoleName',
-                       name: this.header_RoleName
-                       //type: new Sage.UI.Columns.PickList({pickListName : "Meeting Regarding"})
+                       label: this.header_RoleName
                    }, {
                        field: 'PhoneNumber',
-                       name: this.header_Phone,
+                       label: this.header_Phone,
                        width: '80px'
                    }, {
                        field: 'Email',
@@ -174,15 +165,14 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
                        width: '150px'
                    }, {
                        field: 'TimeZone',
-                       name: this.header_TimeZone,
+                       label: this.header_TimeZone,
                        width: '150px'
-
                    }
                    /*, {
                        field: 'Note',
                        name: this.header_Notes,
                        width: '240px'
-                   }    */              
+                   }    */
                 ];
                 //set up the rest of the grid options:
                 var options = {
@@ -190,32 +180,28 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
                     storeOptions: {
                         service: sDataServiceRegistry.getSDataService('dynamic'),
                         resourceKind: 'historyAttendees',
-                        select: ['EntityType','EntityId','IsPrimary','IsAttendee','Name','Description','Notes','Status'],
-                        sort: [{ attribute: 'Name'}],
+                        select: ['EntityType', 'EntityId', 'IsPrimary', 'IsAttendee', 'Name', 'Description', 'Notes', 'Status'],
                         newItemParentReferenceProperty: 'History',
-                        onComplete: onComplete
+                        onComplete: onComplete,
+                        where: function () {
+                            return "(HistoryId eq '" + utility.getCurrentEntityId() + "' and (SLXUserAssociationId eq null or SLXUserAssociationId eq ''))";
+                        },
+                        scope: this
                     },
                     slxContext: { 'workspace': '', tabId: '' },
-                    contextualCondition: function () {                       
-                        return 'HistoryId eq \'' + utility.getCurrentEntityId() + '\' and ((SLXUserAssociationId in (\'\',null) and EntityType eq \'User\') or (EntityType in (\'Contact\',\'Lead\')))';
-                    },
-                    id: this.id + '_histAttendees',
-                    rowsPerPage: 40
-                    //  singleClickEdit: true
+                    sort: [{ attribute: 'Name' }],
+                    minRowsPerPage: 40,
+                    placeHolder: this._histAttendeesGridPlaceholder,
+                    columnHiding: true,
+                    columnResizing: true,
+                    columnReordering: true,
+                    selectionMode: 'single',
+                    rowSelection: true,
+                    keyboardNavigation: false
                 };
 
-                //setting it to insert mode will have it use the writableStore.  This prevents the new
-                // items from being posted to the server without the relationship to Activity.  When the
-                // activity is saved, we will add the relationship and save the items at that point.
-                var actid = utility.getCurrentEntityId();
-                if (!actid) {
-                    options.storeOptions['isInsertMode'] = true;
-                }
-                //create the grid
-                var grid = new SlxPreviewGrid.Grid(options, this._histAttendeesGridPlaceholder);
-
-                grid.setSortColumn('Name');
-                this._grid = grid._grid;
+                var grid = this._grid = new GridView(options);
+                grid.createGridView();
 
                 dojo.connect(this._grid, 'markDirty', function () {
                     var dirtyDataMsg = dojo.byId(this.dirtyDataMsgID);
@@ -227,23 +213,7 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
                         bindingMgr.clearDirtyAjaxItem(this.id);
                     }
                 });
-                
-
-                //...and start it up
-                grid.startup();
-
             },
-            //our handler for the "add" button
-          
-
-          
-            //Handler for when the activity dialog closes
-            _dialogHide: function () {
-                //just a little house cleaning.
-                this._newItems = [];
-                this._grid.store.clearCache();
-            },
-
             _tabfShow: function () {
                 if (this._grid && !this.gridRefreshed) {
                     this._grid.refresh();
@@ -265,11 +235,8 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
                     this.gridRefreshed = true;
                 }
             },
-
-
             _tabShow: function () {
                 if (this._grid) {
-
                     //check to see if the activity is a new one or not so we can set the grid
                     // to be in the correct "mode".
                     var gridmode = this._grid.get('mode');
@@ -278,10 +245,12 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
                         this._grid.set('mode', (!actid) ? 'insert' : '');
                     }
                     this._grid.refresh();
+                    this._grid.grid.resize();
                 }
             },
             _historySaved: function (history) {
-                this._grid.saveChanges();               
+                // TODO: remove direct grid save reference
+                this._grid.grid._grid.save();
             },
 
             /**         
@@ -289,14 +258,13 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
             * @param {object} history    
             */
             _addHistoryAttendee: function (history) {
-               
                 if (!history.ContactId && !history.LeadId) {
                     return;
                 }
-               
+
                 var attendee = null;
 
-                if(history.ContactId){
+                if (history.ContactId) {
                     activityUtility._getContactData(history.ContactId, function (data) {
                         if (data) {
                             attendee = this._setHistoryAttendeeEntityFromContactLead('Contact', data);
@@ -315,8 +283,7 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
 
                 }
             },
-
-            _saveHistoryAttendee : function(attendee){
+            _saveHistoryAttendee: function (attendee) {
                 var req = new Sage.SData.Client.SDataSingleResourceRequest(sDataServiceRegistry.getSDataService('dynamic'))
                             .setResourceKind('historyAttendees')
                             .create(attendee, {
@@ -350,17 +317,15 @@ define('Sage/MainView/ActivityMgr/HistoryEditorAttendeesTab', [
                     attendeeEntity.Description = "";
                     attendeeEntity.Notes = "";
                     if (results.Address) {
-                        attendeeEntity.TimeZone = results.Address.TimeZone;                       
-                    }                    
+                        attendeeEntity.TimeZone = results.Address.TimeZone;
+                    }
                     attendeeEntity.PhoneNumber = results.WorkPhone;
                     attendeeEntity.RoleName = "";
                     attendeeEntity.general = false;
-                    
+
                 }
                 return attendeeEntity;
-            }   
-          
+            }
         });
-
         return attendeesTab;
     });

@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/SearchConditionWidget", [
        'dojo/parser',
        'dojo/i18n',
        'dojo/_base/lang',
@@ -51,7 +51,6 @@ function (
         visible: true,
         
         _loaded: false,
-        
         // localized strings
         trueText: 'true',
         falseText: 'false',
@@ -163,7 +162,8 @@ function (
             
             this.propertyTypeHandler['SalesLogix.PickList'] = {
                 getValue: function () {
-                    return lang.hitch(this, this.propertyTypeHandler['default'].getValue)();
+					var value = this._valueBox.get('value');
+                    return value;
                 },
                 getTemplate: function () {
                     return [
@@ -181,11 +181,11 @@ function (
             this.propertyTypeHandler['System.DateTime'] = {
                 getValue: function () {
                     var value = this._valueBox.value;// returns a Date object
-                    return value;
+                    return isNaN(Date.parse(value)) ? null : value;
                 },
                 getTemplate: function () {
                     return [
-                        '<input data-dojo-type="dijit.form.DateTextBox" id="{%= $.id %}-Date" dojoAttachPoint="_valueBox"',
+                        '<input data-dojo-type="dijit.form.DateTextBox" id="{%= $.id %}-Date" dojoAttachPoint="_valueBox" constraints="{locale:Sys.CultureInfo.CurrentCulture.name}"',
                         '/>'
                     ];
                 }
@@ -420,6 +420,16 @@ function (
         },
         _onKeyDown: function(event) {
             if (event.keyCode === 13) {
+
+                //get the format of the searched for field
+                var fieldName = this._fieldNameSelect.get('value');
+                var valObj = this._getField(fieldName);
+
+                //check there is a user input search field, and that it enforces the Phone format
+                if (valObj && valObj.format && valObj.format === "Phone") {
+                    this._valueBox.onChange(this._valueBox.displayedValue); // Force an update
+                }
+
                 this.conditionManager._doSearch();
 
             }
@@ -515,7 +525,7 @@ function (
             // 2.) _fieldChanged depends on this to get the operator
             this._setToDefaultField();
             this._fieldChanged();
-        }
+                    }
     });
 
     return searchWidget;

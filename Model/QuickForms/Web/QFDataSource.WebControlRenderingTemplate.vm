@@ -1,10 +1,10 @@
 #if($qfcontrol.ControlId != "MainEntity")
 #if($qfcontrol.IsCollection)
-private Sage.Platform.WebPortal.Binding.WebEntityListBindingSource _${qfcontrol.ControlId};
-public Sage.Platform.WebPortal.Binding.WebEntityListBindingSource ${qfcontrol.ControlId}
+private WebEntityListBindingSource _${qfcontrol.ControlId};
+public WebEntityListBindingSource ${qfcontrol.ControlId}
 #else
-private Sage.Platform.WebPortal.Binding.WebEntityBindingSource _${qfcontrol.ControlId};
-public Sage.Platform.WebPortal.Binding.WebEntityBindingSource ${qfcontrol.ControlId}
+private WebEntityBindingSource _${qfcontrol.ControlId};
+public WebEntityBindingSource ${qfcontrol.ControlId}
 #end
 { 
   get 
@@ -12,10 +12,10 @@ public Sage.Platform.WebPortal.Binding.WebEntityBindingSource ${qfcontrol.Contro
     if (_${qfcontrol.ControlId} == null)
     {
       #if($qfcontrol.IsCollection)
-       _${qfcontrol.ControlId} = new Sage.Platform.WebPortal.Binding.WebEntityListBindingSource(typeof(${qfcontrol.getFullBoundEntityTypeName()}), 
+       _${qfcontrol.ControlId} = new WebEntityListBindingSource(typeof(${qfcontrol.getFullBoundEntityTypeName()}), 
 	   #if($qfcontrol.getFullSourceTypeName() == $entitytype) EntityType #else typeof( ${qfcontrol.getFullSourceTypeName()} ) #end
       #else
-       _${qfcontrol.ControlId} = new Sage.Platform.WebPortal.Binding.WebEntityBindingSource(typeof(${qfcontrol.getFullBoundEntityTypeName()}),
+       _${qfcontrol.ControlId} = new WebEntityBindingSource(typeof(${qfcontrol.getFullBoundEntityTypeName()}),
 	   #if($qfcontrol.getFullSourceTypeName() == $entitytype) EntityType #else typeof( ${qfcontrol.getFullSourceTypeName()} ) #end
       #end
       #if(${qfcontrol.HasRealGetByMethod()})
@@ -41,9 +41,9 @@ void ${qfcontrol.ControlId}_OnCurrentEntitySet(object sender, EventArgs e)
     RestoreEntityChanges(changeKey, current);
     ${qfcontrol.ControlId}.Current = current;
 #elseif($qfcontrol.GetByMethod == "<getParent>")
-    Sage.Entity.Interfaces.I${qfcontrol.EntityTypeName} _entity = GetParentEntity() as Sage.Entity.Interfaces.I${qfcontrol.EntityTypeName};
-    if (_entity != null) {
-        ${qfcontrol.ControlId}.Current = _entity;
+    var entity = GetParentEntity() as I${qfcontrol.EntityTypeName};
+    if (entity != null) {
+        ${qfcontrol.ControlId}.Current = entity;
     }
 #else
   #if($qfcontrol.GetByMethod == "<useCurrentContext>")

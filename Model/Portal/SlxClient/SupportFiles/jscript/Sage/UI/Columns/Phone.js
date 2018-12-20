@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Columns/Phone", [
     'Sage/Format',
     'Sage/UI/Controls/Phone',
     'Sage/UI/Columns/Cell',

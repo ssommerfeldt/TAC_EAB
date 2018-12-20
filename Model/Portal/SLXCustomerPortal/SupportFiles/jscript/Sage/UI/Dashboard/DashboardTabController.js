@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Dashboard/DashboardTabController", [
        "dijit/layout/ScrollingTabController",
        "dojo/i18n",
        "dijit/Menu",
@@ -10,7 +10,6 @@ define([
        'dojo/_base/declare'
 ],
 function (scrollingTabController, i18n, menu, menuItem, MenuSeparator, nlsTabController, nlsBoolean, declare) {
-    //dojo.requireLocalization("dijit", "common");
     var _tabButton = declare("dijit.layout._TabButton", dijit.layout._ScrollingTabControllerButton, {
         // summary:
         //		A tab (the thing you click to select a pane).
@@ -23,7 +22,6 @@ function (scrollingTabController, i18n, menu, menuItem, MenuSeparator, nlsTabCon
         // baseClass: String
         //		The CSS class applied to the domNode.
         baseClass: "dijitTab",
-        
         postMixInProperties: function () {
             dojo.mixin(this, i18n.getLocalization("Sage.UI.Dashboard", "DashboardTabController"));
             dojo.mixin(this, i18n.getLocalization("Sage.UI", "Boolean"));
@@ -42,7 +40,6 @@ function (scrollingTabController, i18n, menu, menuItem, MenuSeparator, nlsTabCon
                 }
                 // add context menu onto title button
                 this._closeMenu = new menu({
-                    id: this.id + "_Menu",
                     dir: this.dir,
                     targetNodeIds: [this.domNode]
                 });
@@ -150,7 +147,6 @@ function (scrollingTabController, i18n, menu, menuItem, MenuSeparator, nlsTabCon
                         onClick: dojo.hitch(this, function () {
                             var id = this.id.replace('Dashboard_tablist_', '');
                             var d = dijit.byId(id);
-                            
                             var fn = function (ans) {
                                 if (ans) {
                                     if(d.permission) {
@@ -166,7 +162,6 @@ function (scrollingTabController, i18n, menu, menuItem, MenuSeparator, nlsTabCon
                                             style: {width: '350px'},
                                             align: 'right'
                                         };
-                                    
                                         Sage.UI.Dialogs.raiseQueryDialogExt(opts);
                                     }
                                 }

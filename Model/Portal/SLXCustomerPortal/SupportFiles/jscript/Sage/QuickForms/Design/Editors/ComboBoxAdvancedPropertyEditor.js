@@ -1,4 +1,4 @@
-define([
+define("Sage/QuickForms/Design/Editors/ComboBoxAdvancedPropertyEditor", [
     'dojo/string',
     'dojo/_base/declare',
     'dojo/_base/lang',

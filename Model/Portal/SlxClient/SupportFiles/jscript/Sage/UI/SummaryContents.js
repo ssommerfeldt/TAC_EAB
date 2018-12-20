@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, require */
-define([
+define("Sage/UI/SummaryContents", [
         'dijit/_Widget',
         'Sage/_Templated',
         'dojo/_base/lang',
@@ -12,6 +12,7 @@ function (_Widget, _Templated, lang, declare) {
         templateString: '', // dojo . cache('Sage', 'SummaryTemplates/Account.html'),
         widgetTemplate: '',
         constructor: function (config) {
+            this.inherited(arguments);
             var moduleNameParts = ['Sage'];
             var templateParts = config.templateLocation.split('/');
             for (var i = 0; i < templateParts.length - 1; i++) {
@@ -23,8 +24,13 @@ function (_Widget, _Templated, lang, declare) {
                     lang.mixin(this, nls);
                 })
             );
-            //Dynamic caching need to be obscured from the builder by using the dojo['cache'] calling method
-            this.templateString = dojo['cache']('Sage', config.templateLocation || this.templateLocation);
+            var location = config.templateLocation || this.templateLocation;
+            // If dojo.config.isDebug is true...refresh the template for debugging purposes.
+            if (dojo.config.isDebug) {
+                location = location + '?_t=' + new Date().valueOf();
+            }
+            // Dynamic caching need to be obscured from the builder by using the dojo['cache'] calling method
+            this.templateString = dojo['cache']('Sage', location);
             var template = eval(this.templateString);
             this.widgetTemplate = new Simplate(template);
         }

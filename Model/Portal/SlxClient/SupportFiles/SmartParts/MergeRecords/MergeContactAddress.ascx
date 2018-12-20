@@ -147,7 +147,7 @@
                         <asp:BoundField DataField="targetAddressId" Visible="false"/>
                         <asp:BoundField DataField="sourceContactId" Visible="false"/>
                         <asp:BoundField DataField="targetContactId" Visible="false"/>
-              	        <asp:ButtonField CommandName="Unlink" Text="<%$ resources: Grid_Unlink.Column %>" />
+                        <asp:ButtonField CommandName="Unlink" Text="<%$ resources: Grid_Unlink.Column %>" />
                         <asp:BoundField DataField="IsPrimary" HeaderText="<%$ resources: Grid_Primary_Column %>" />
                         <asp:BoundField DataField="Address1" HeaderText="<%$ resources: Grid_Address1_Column %>" />
                         <asp:BoundField DataField="Address2" HeaderText="<%$ resources: Grid_Address2_Column %>" />
@@ -162,11 +162,10 @@
     </tr>
 </table>
 <table border="0" cellpadding="1" cellspacing="0" class="formtable">
-    <col width="2%" />
-    <col width="50%" />
-    <col width="24%" />
-    <col width="24%" />
-    <col width="2%" />
+    <col width="4%" />
+    <col width="25%" />
+    <col width="46%" />
+    <col width="25%" />
     <tr>
         <td></td>
         <td></td>
@@ -181,6 +180,5 @@
                 <asp:Button runat="server" ID="btnCancel" Text="<%$ resources: btnCancel.Caption %>" CssClass="slxbutton" />
             </asp:Panel>
         </td>
-        <td></td>
     </tr>
 </table>

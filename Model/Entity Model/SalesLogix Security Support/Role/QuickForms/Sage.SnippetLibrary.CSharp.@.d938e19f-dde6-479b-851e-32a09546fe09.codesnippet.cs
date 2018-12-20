@@ -1,5 +1,5 @@
 /*
- * This metadata is used by the Sage platform.  Do not remove.
+ * This metadata is used by the Saleslogix platform.  Do not remove.
 <snippetHeader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d938e19f-dde6-479b-851e-32a09546fe09">
  <assembly>Sage.SnippetLibrary.CSharp</assembly>
  <name>OnLoad1Step</name>
@@ -26,7 +26,6 @@
 
 #region Usings
 using System;
-using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
 using Sage.SalesLogix.API;
 #endregion Usings
@@ -37,14 +36,10 @@ namespace Sage.BusinessRules.CodeSnippets
 	{
 		public static void ToggleDetailInsert(IRoleDetails form, EventArgs args)
 		{
-			Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPart smartpart = form.NativeForm as Sage.Platform.WebPortal.SmartParts.EntityBoundSmartPart;
-			Sage.Platform.WebPortal.EntityPage page = (Sage.Platform.WebPortal.EntityPage)smartpart.Page;
-			if (page != null) {
-				bool bInsertMode = page.ModeId.ToUpper().Equals("INSERT");
-				form.btnDelete.Visible = !bInsertMode;
-				form.btnSave.Visible = !bInsertMode;
-				form.btnInsert.Visible = bInsertMode;				
-			}
+	        var insertMode = MySlx.MainView.IsInsertMode();
+	        form.btnDelete.Visible = !insertMode;
+	        form.btnSave.Visible = !insertMode;
+	        form.btnInsert.Visible = insertMode;
 		}
 	}
 }

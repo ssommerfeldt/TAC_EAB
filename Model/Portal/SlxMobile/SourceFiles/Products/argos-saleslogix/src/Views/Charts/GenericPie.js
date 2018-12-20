@@ -1,103 +1,100 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import array from 'dojo/_base/array';
+import domGeo from 'dojo/dom-geometry';
+import View from 'argos/View';
+import _ChartMixin from './_ChartMixin';
+
+/**
+ * @class crm.Views.Charts.GenericPie
+ *
+ * @extends argos.View
+ * @mixins crm.Views.Charts._ChartMixin
+ *
+ * @requires argos.View
+ *
  */
-define('Mobile/SalesLogix/Views/Charts/GenericPie', [
-    'dojo/_base/declare',
-    'dojo/_base/lang',
-    'dojo/_base/array',
-    'dojo/dom-geometry',
-    'dojox/charting/Chart',
-    'dojox/charting/plot2d/Pie',
-    'dojox/charting/axis2d/Default',
-    'dojox/charting/widget/Legend',
-    'dojox/charting/themes/Julie',
-    'Sage/Platform/Mobile/View',
-    './_ChartMixin'
-], function(
-    declare,
-    lang,
-    array,
-    domGeo,
-    Chart,
-    PlotType,
-    Default,
-    Legend,
-    JulieTheme,
-    View,
-    _ChartMixin
-) {
-    return declare('Mobile.SalesLogix.Views.Charts.GenericPie', [View, _ChartMixin], {
-        id: 'chart_generic_pie',
-        titleText: '',
-        otherText: 'Other',
-        expose: false,
-        chart: null,
+const __class = declare('crm.Views.Charts.GenericPie', [View, _ChartMixin], {
+  id: 'chart_generic_pie',
+  titleText: '',
+  expose: false,
+  chart: null,
 
-        formatter: function(val) {
-            return val;
-        },
+  seriesColors: [
+    '#1c9a18',
+    '#6ec90d',
+    '#bff485',
+    '#bce8fc',
+    '#47b2f0',
+    '#0c7ad8',
+  ],
 
-        attributeMap: {
-            chartContent: {node: 'contentNode', type: 'innerHTML'}
-        },
+  chartOptions: {
+    segmentShowStroke: true,
+    segmentStrokeColor: '#EBEBEB',
+    segmentStrokeWidth: 1,
+    animateScale: false,
+    legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li data-segment="<%= i %>"><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
+  },
 
-        widgetTemplate: new Simplate([
-            '<div id="{%= $.id %}" title="{%= $.titleText %}" class="list {%= $.cls %}">',
-                '<div class="chart-hash" data-dojo-attach-point="searchExpressionNode"></div>',
-                '<div class="chart-content" data-dojo-attach-point="contentNode"></div>',
-            '</div>'
-        ]),
-        createChart: function (feedData) {
-            this.inherited(arguments);
+  /**
+   * @property {String}
+   * The type of chart that should be rendered. Can either be Pie or Doughnut. A bad or unknown value will result in a default of Doughnut.
+   */
+  renderAs: 'Doughnut',
 
-            var labels, box, searchExpressionHeight;
+  formatter: function formatter(val) {
+    return val;
+  },
 
-            if (this.chart) {
-                this.chart.destroy(true);
-            }
+  createChart: function createChart(rawData) {
+    this.inherited(arguments);
 
-            this.showSearchExpression();
-            searchExpressionHeight = this.getSearchExpressionHeight();
+    const defaultRenderAs = 'Doughnut';
 
-            labels = this._labels(feedData);
-            box = domGeo.getMarginBox(this.domNode);
-            box.h = box.h - searchExpressionHeight;
+    this.showSearchExpression();
 
-            this.chart = new Chart(this.contentNode);
-            this.chart.setTheme(JulieTheme);
-            this.chart.addPlot('default', {
-                type: PlotType,
-                fontColor: 'black',
-                labelOffset: 50,
-                radius: box.w >= box.h /* check lanscape or portrait mode */ ? 
-                    Math.floor(box.h / 2) - 10 :
-                    Math.floor(box.w / 2) - 10
-            });
-
-            this.chart.addSeries('default', labels);
-            this.chart.render();
-            this.chart.resize(box.w, box.h);
-        },
-        _labels: function(feedData) {
-            var data = [], MAX_ITEMS = 5, otherY = 0, otherText;
-            array.forEach(feedData, function(item, index) {
-                if (index < MAX_ITEMS) {
-                    data.push({
-                        y: item.value,
-                        text: item.$descriptor + ' (' + this.formatter(item.value) + ')',
-                        value: index
-                    });
-                } else {
-                    otherY = otherY + item.value;
-                    otherText = this.otherText + ' (' + this.formatter(otherY) + ')';
-                    data[MAX_ITEMS] = {
-                        y: otherY,
-                        text: otherText
-                    };
-                }
-            }, this);
-
-            return data;
-        }
+    const data = array.map(rawData, (item, idx) => {
+      return {
+        value: Math.round(item.value),
+        color: this._getItemColor(idx),
+        highlight: '',
+        label: item.name,
+      };
     });
+
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
+    const box = domGeo.getMarginBox(this.domNode);
+    this.contentNode.width = box.w;
+    this.contentNode.height = box.h;
+
+    const ctx = this.contentNode.getContext('2d');
+
+    const chart = new window.Chart(ctx);
+
+    // Ensure the chart has the ability to render this type
+    this.renderAs = window.Chart.types.hasOwnProperty(this.renderAs) ? this.renderAs : defaultRenderAs;
+
+    this.chart = chart[this.renderAs](data, this.chartOptions);
+    this.showLegend();
+  },
+  _getItemColor: function _getItemColor(index) {
+    const len = this.seriesColors.length;
+    const n = Math.floor(index / len);
+    let theIndex = index;
+
+    // if n is 0, the index will fall within the seriesColor array,
+    // otherwise we will need to re-scale the index to fall within that array.
+    if (n > 0) {
+      theIndex = index - (len * n);
+    }
+
+    return this.seriesColors[theIndex];
+  },
 });
+
+lang.setObject('Mobile.SalesLogix.Views.Charts.GenericPie', __class);
+export default __class;

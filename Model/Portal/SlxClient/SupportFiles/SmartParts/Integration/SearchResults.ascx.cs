@@ -150,7 +150,7 @@ public partial class SearchResults : SmartPartInfoProvider
             rowSearchResults.Visible = false;
             rowCreateAccount.Visible = true;
             lblResultsMsg.Text = !String.IsNullOrEmpty(error)
-                                     ? GetLocalResourceObject("Error_SDataRequest").ToString()
+                                     ? error
                                      : GetLocalResourceObject("lblNoMatches.Caption").ToString();
             rdbCreateNew.Text = String.Format(GetLocalResourceObject("lblNoMatchesCreateNew.Caption").ToString(),
                                               IntegrationManager.SourceAccount.AccountName);

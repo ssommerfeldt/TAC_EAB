@@ -117,49 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTemplates.Caption" xml:space="preserve">
-    <value>Modelli Importazione Nominativo:</value>
-  </data>
-  <data name="grdTemplates.Delete.Text" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="txtDescription.Caption" xml:space="preserve">
-    <value>Descrizione:</value>
-  </data>
-  <data name="grdTemplates.DeleteConfirmation" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare questo modello?</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Salva</value>
+  <data name="grdTemplates.EmptyTableRowText" xml:space="preserve">
+    <value>Non ci sono al momento modelli definiti.</value>
   </data>
   <data name="grdTemplates.Description.ColumnHeading" xml:space="preserve">
     <value>Descrizione</value>
   </data>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annulla</value>
+  <data name="grdTemplates.CreateDate.ColumnHeading" xml:space="preserve">
+    <value>Data di creazione</value>
   </data>
   <data name="grdTemplates.CreatedBy.ColumnHeading" xml:space="preserve">
     <value>Creato da</value>
   </data>
+  <data name="grdTemplates.ModifyDate.ColumnHeading" xml:space="preserve">
+    <value>Data di modifica</value>
+  </data>
   <data name="grdTemplates.ModifyUser.ColumnHeading" xml:space="preserve">
     <value>Modificato da</value>
   </data>
-  <data name="grdTemplates.ModifyDate.ColumnHeading" xml:space="preserve">
-    <value>Data Modificato</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="txtDescription.Caption" xml:space="preserve">
+    <value>Descrizione:</value>
+  </data>
+  <data name="lblTemplates.Caption" xml:space="preserve">
+    <value>Modelli di importazione lead:</value>
+  </data>
+  <data name="grdTemplates.Delete.Text" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="grdTemplates.DeleteConfirmation" xml:space="preserve">
+    <value>Eliminare questo modello?</value>
   </data>
   <data name="error_DuplicateTemplateDescription" xml:space="preserve">
     <value>La descrizione modello inserita '{0}' è già presente. Inserisci una descrizione univoca.</value>
   </data>
-  <data name="grdTemplates.EmptyTableRowText" xml:space="preserve">
-    <value>Non ci sono attualmente modelli definiti.</value>
-  </data>
-  <data name="grdTemplates.CreateDate.ColumnHeading" xml:space="preserve">
-    <value>Data Creazione</value>
-  </data>
-  <data name="error_templateManager" xml:space="preserve">
-    <value>Si è verificato un errore nel caricamento del Gestore Modelli. {0}</value>
-  </data>
   <data name="error_NoTemplateDescription" xml:space="preserve">
     <value>Inserisci una descrizione modello prima di continuare.</value>
+  </data>
+  <data name="error_templateManager" xml:space="preserve">
+    <value>Si è verificato un errore durante il caricamento di Gestione modelli. {0}</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annulla</value>
   </data>
 </root>

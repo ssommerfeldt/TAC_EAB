@@ -112,99 +112,109 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblSearchCount.Caption" xml:space="preserve">
-    <value>Record {0} - {1} di {2}</value>
+  <data name="grdResponses.Add.Column" xml:space="preserve">
+    <value>Aggiungi</value>
   </data>
-  <data name="cmdSearch.Caption" xml:space="preserve">
-    <value>Cerca</value>
+  <data name="lblShow.Caption" xml:space="preserve">
+    <value>Mostra:</value>
+  </data>
+  <data name="chkLeads.Caption" xml:space="preserve">
+    <value>Lead</value>
   </data>
   <data name="chkContacts.Caption" xml:space="preserve">
     <value>Contatti</value>
   </data>
-  <data name="chkMethod.Caption" xml:space="preserve">
-    <value>Metodo Risposta:</value>
-  </data>
-  <data name="grdResponses.ConfirmDelete_Msg" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare questa risposta?</value>
-  </data>
   <data name="chkLeadSource.Caption" xml:space="preserve">
-    <value>Fonte Nominativo:</value>
+    <value>Origine lead:</value>
   </data>
-  <data name="lnkShowFilters.Text" xml:space="preserve">
-    <value>Visualizza filtri</value>
-  </data>
-  <data name="lblShow.Caption" xml:space="preserve">
-    <value>Visualizza:</value>
-  </data>
-  <data name="cmdReset.Caption" xml:space="preserve">
-    <value>Reimposta</value>
-  </data>
-  <data name="error_InvalidTargetType" xml:space="preserve">
-    <value>Impossibile determinare il Tipo Target Selezionato.</value>
-  </data>
-  <data name="grdResponses.Method.ColumnHeading" xml:space="preserve">
-    <value>Metodo di Risp.</value>
-  </data>
-  <data name="AddTargetResponse_DialogCaption" xml:space="preserve">
-    <value>Aggiungi Risposta Target</value>
-  </data>
-  <data name="EditTargetResponse_DialogCaption" xml:space="preserve">
-    <value>Modifica Risposta Target</value>
-  </data>
-  <data name="grdResponses.Edit.Column" xml:space="preserve">
-    <value>Modifica</value>
-  </data>
-  <data name="chkName.Caption" xml:space="preserve">
-    <value>Cognome:</value>
-  </data>
-  <data name="chkDisplayResults.Caption" xml:space="preserve">
-    <value>Mostra risultati all'apertura</value>
-  </data>
-  <data name="lnkHideFilters.Text" xml:space="preserve">
-    <value>Nascondi Filtri</value>
-  </data>
-  <data name="grdResponses.Type.ColumnHeading" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="grdResponses.Delete.Column" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="chkLeads.Caption" xml:space="preserve">
-    <value>Nominativi</value>
-  </data>
-  <data name="grdResponses.LeadSource.ColumnHeading" xml:space="preserve">
-    <value>Fonte Nominativo</value>
-  </data>
-  <data name="grdResponses.Stage.ColumnHeading" xml:space="preserve">
-    <value>Fase</value>
-  </data>
-  <data name="error_EntityContext" xml:space="preserve">
-    <value>Entità contesto corrente mancante.</value>
+  <data name="chkMethod.Caption" xml:space="preserve">
+    <value>Metodo risposta:</value>
   </data>
   <data name="chkStage.Caption" xml:space="preserve">
     <value>Fase:</value>
   </data>
-  <data name="addResponse.ToolTip" xml:space="preserve">
-    <value>Aggiungi Risposta Campagna</value>
+  <data name="chkName.Caption" xml:space="preserve">
+    <value>Cognome:</value>
   </data>
-  <data name="grdResponses.Add.Column" xml:space="preserve">
-    <value>Aggiungi</value>
+  <data name="cmdSearch.Caption" xml:space="preserve">
+    <value>Ricerca</value>
   </data>
-  <data name="grdResponses.ResponseDate.ColumnHeading" xml:space="preserve">
-    <value>Data Risposta</value>
+  <data name="cmdReset.Caption" xml:space="preserve">
+    <value>Reimposta</value>
+  </data>
+  <data name="grdResponses.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
+  </data>
+  <data name="chkDisplayResults.Caption" xml:space="preserve">
+    <value>Mostra risultati all'apertura</value>
   </data>
   <data name="grdResponses.Comments.ColumnHeading" xml:space="preserve">
     <value>Commenti</value>
   </data>
-  <data name="grdResponses.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
+  <data name="grdResponses.Delete.Column" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="grdResponses.Edit.Column" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="grdResponses.LeadSource.ColumnHeading" xml:space="preserve">
+    <value>Origine lead</value>
+  </data>
+  <data name="grdResponses.Method.ColumnHeading" xml:space="preserve">
+    <value>Metodo resp.</value>
   </data>
   <data name="grdResponses.Name.ColumnHeading" xml:space="preserve">
     <value>Nome</value>
+  </data>
+  <data name="grdResponses.ResponseDate.ColumnHeading" xml:space="preserve">
+    <value>Data risposta</value>
+  </data>
+  <data name="grdResponses.Stage.ColumnHeading" xml:space="preserve">
+    <value>Fase</value>
+  </data>
+  <data name="grdResponses.Type.ColumnHeading" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="grdResponses.ConfirmDelete_Msg" xml:space="preserve">
+    <value>Eliminare questa risposta?</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TargetResponses_ClientScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>TargetResponses_ClientScript.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="error_EntityContext" xml:space="preserve">
+    <value>Contesto entità corrente mancante.</value>
+  </data>
+  <data name="addResponse.ToolTip" xml:space="preserve">
+    <value>Aggiungi risposta campagna</value>
+  </data>
+  <data name="lnkHideFilters.Text" xml:space="preserve">
+    <value>Nascondi filtri</value>
+  </data>
+  <data name="lnkShowFilters.Text" xml:space="preserve">
+    <value>Visualizza filtri</value>
+  </data>
+  <data name="error_InvalidTargetType" xml:space="preserve">
+    <value>Impossibile determinare il tipo di destinazione selezionato.</value>
+  </data>
+  <data name="lblSearchCount.Caption" xml:space="preserve">
+    <value>Record {0} - {1} di {2}</value>
+  </data>
+  <data name="AddTargetResponse_DialogCaption" xml:space="preserve">
+    <value>Aggiungi risposta destinatario</value>
+  </data>
+  <data name="EditTargetResponse_DialogCaption" xml:space="preserve">
+    <value>Modifica risposta destinatario</value>
+  </data>
+  <data name="grdResponses.Contact" xml:space="preserve">
+    <value>Contatto</value>
+  </data>
+  <data name="grdResponses.Lead" xml:space="preserve">
+    <value>Lead</value>
   </data>
 </root>

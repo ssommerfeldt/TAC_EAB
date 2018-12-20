@@ -248,114 +248,115 @@
               <LookupPreFilters />
               <LookupSelectionMode>Multi</LookupSelectionMode>
               <OnSelection>function (items) {
-        dojo.require('Sage.UI.Dialogs');
-        if (!items.length) return;
-        var grid = dijit.byId('TicketActivityItemsgrdActivityParts');
-        if (grid &amp;&amp; grid.store) {
-            var arrItems = [];
-            var iCurrentCount = 0;
-            var iTotalCount = 0;
-            grid.store.newItem({
-                onComplete: function (ticketActivityItem) {
-                    var addProduct = function (prod) {
-                        var price = 0;
-                        var sSelect = "select=Id,Description,Family,Name,ActualId,";
-                        sSelect += "ProductProgram/Program,ProductProgram/Price,ProductProgram/DefaultProgram";
-                        var sWhere = dojo.string.substitute("where=Id eq '${0}'", [prod.$key]);
-                        var sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/products?${0}&amp;${1}&amp;format=json&amp;_t=${2}",
-                            [sSelect, sWhere, (new Date().getTime().toString())]);
-                        dojo.xhrGet({
-                            url: sUrl,
-                            handleAs: 'json',
-                            load: function (prodResponse) {
-                                if (prodResponse.$resources != null &amp;&amp; prodResponse.$resources.length &gt; 0) {
-                                    for (var x = 0; x &lt; prodResponse.$resources.length; x++) {
-                                        var newTicketActivityItem = {};
-                                        var newAccountProduct = {};
-                                        var product = prodResponse.$resources[x];
-                                        if (Sage.Utility.getModeId() === 'insert') {
-                                            product.$cacheID = new Date().getTime();
-                                        } else {
-                                            ticketActivityItem.TicketActivity = { $key: Sage.Utility.getCurrentEntityId() };
-                                        }
-                                        ticketActivityItem.Product = {};
-                                        ticketActivityItem.AccountProduct = {};
+        require(['Sage/UI/Dialogs'], function(Dialogs){
+          if (!items.length) return;
+          var grid = dijit.byId('TicketActivityItemsgrdActivityParts');
+          if (grid &amp;&amp; grid.store) {
+              var arrItems = [];
+              var iCurrentCount = 0;
+              var iTotalCount = 0;
+              grid.store.newItem({
+                  onComplete: function (ticketActivityItem) {
+                      var addProduct = function (prod) {
+                          var price = 0;
+                          var sSelect = "select=Id,Description,Family,Name,ActualId,";
+                          sSelect += "ProductProgram/Program,ProductProgram/Price,ProductProgram/DefaultProgram";
+                          var sWhere = dojo.string.substitute("where=Id eq '${0}'", [prod.$key]);
+                          var sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/products?${0}&amp;${1}&amp;format=json&amp;_t=${2}",
+                              [sSelect, sWhere, (new Date().getTime().toString())]);
+                          dojo.xhrGet({
+                              url: sUrl,
+                              handleAs: 'json',
+                              load: function (prodResponse) {
+                                  if (prodResponse.$resources != null &amp;&amp; prodResponse.$resources.length &gt; 0) {
+                                      for (var x = 0; x &lt; prodResponse.$resources.length; x++) {
+                                          var newTicketActivityItem = {};
+                                          var newAccountProduct = {};
+                                          var product = prodResponse.$resources[x];
+                                          if (Sage.Utility.getModeId() === 'insert') {
+                                              product.$cacheID = new Date().getTime();
+                                          } else {
+                                              ticketActivityItem.TicketActivity = { $key: Sage.Utility.getCurrentEntityId() };
+                                          }
+                                          ticketActivityItem.Product = {};
+                                          ticketActivityItem.AccountProduct = {};
 
-                                        delete product.index;
-                                        Sage.Utility.extend(ticketActivityItem.Product, product);
-                                        var accountProduct = {};
-                                        accountProduct.ProductDescription = product.Description;
-                                        accountProduct.ProductName = product.Name;
-                                        accountProduct.ActualId = product.ActualId;
-                                        accountProduct.Product = product;
-                                        Sage.Utility.extend(true, newAccountProduct, ticketActivityItem.AccountProduct, accountProduct);
-                                        Sage.Utility.extend(ticketActivityItem.AccountProduct, newAccountProduct);
+                                          delete product.index;
+                                          Sage.Utility.extend(ticketActivityItem.Product, product);
+                                          var accountProduct = {};
+                                          accountProduct.ProductDescription = product.Description;
+                                          accountProduct.ProductName = product.Name;
+                                          accountProduct.ActualId = product.ActualId;
+                                          accountProduct.Product = product;
+                                          Sage.Utility.extend(true, newAccountProduct, ticketActivityItem.AccountProduct, accountProduct);
+                                          Sage.Utility.extend(ticketActivityItem.AccountProduct, newAccountProduct);
 
-                                        ticketActivityItem.ItemQuantity = 1;
-                                        ticketActivityItem.ProductDescription = product.Description;
-                                        ticketActivityItem.ProductName = product.Name;
-                                        ticketActivityItem.ActualId = product.ActualId;
-                                        product.Price = 0;
-                                        ticketActivityItem.ItemAmount = 0;
-                                        ticketActivityItem.ItemTotalAmount = 0;
+                                          ticketActivityItem.ItemQuantity = 1;
+                                          ticketActivityItem.ProductDescription = product.Description;
+                                          ticketActivityItem.ProductName = product.Name;
+                                          ticketActivityItem.ActualId = product.ActualId;
+                                          product.Price = 0;
+                                          ticketActivityItem.ItemAmount = 0;
+                                          ticketActivityItem.ItemTotalAmount = 0;
 
-                                        if (prodResponse.$resources[x].ProductProgram != null &amp;&amp;
-                                            prodResponse.$resources[x].ProductProgram.$resources != null &amp;&amp;
-                                                prodResponse.$resources[x].ProductProgram.$resources.length &gt; 0) {
-                                            for (var j = 0; j &lt; prodResponse.$resources[x].ProductProgram.$resources.length; j++) {
-                                                /* Grab the price for the default program. */
-                                                if (prodResponse.$resources[x].ProductProgram.$resources[j].DefaultProgram) {
-                                                    if (prodResponse.$resources[x].ProductProgram.$resources[j].Price != null) {
-                                                        price = prodResponse.$resources[x].ProductProgram.$resources[j].Price;
-                                                    }
-                                                    product.Price = price;
-                                                    ticketActivityItem.ItemAmount = price;
-                                                    ticketActivityItem.ItemTotalAmount = price * ticketActivityItem.ItemQuantity;
-                                                    break;
-                                                }
-                                            }
-                                        }
+                                          if (prodResponse.$resources[x].ProductProgram != null &amp;&amp;
+                                              prodResponse.$resources[x].ProductProgram.$resources != null &amp;&amp;
+                                                  prodResponse.$resources[x].ProductProgram.$resources.length &gt; 0) {
+                                              for (var j = 0; j &lt; prodResponse.$resources[x].ProductProgram.$resources.length; j++) {
+                                                  /* Grab the price for the default program. */
+                                                  if (prodResponse.$resources[x].ProductProgram.$resources[j].DefaultProgram) {
+                                                      if (prodResponse.$resources[x].ProductProgram.$resources[j].Price != null) {
+                                                          price = prodResponse.$resources[x].ProductProgram.$resources[j].Price;
+                                                      }
+                                                      product.Price = price;
+                                                      ticketActivityItem.ItemAmount = price;
+                                                      ticketActivityItem.ItemTotalAmount = price * ticketActivityItem.ItemQuantity;
+                                                      break;
+                                                  }
+                                              }
+                                          }
 
-                                        delete product.$key;
-                                        delete product.$name;
-                                        delete product.$url;
-                                        Sage.Utility.extend(true, newTicketActivityItem, ticketActivityItem, product);
-                                        Sage.Utility.extend(true, newTicketActivityItem, newAccountProduct, accountProduct);
-                                        arrItems.push(newTicketActivityItem);
-                                        iCurrentCount++;
-                                        if (iCurrentCount === iTotalCount) {
-                                            grid.createItems(arrItems, function () {
-                                                if (Sage.Utility.getModeId() !== 'insert') {
-                                                    __doPostBack("MainContent", "");
-                                                }
-                                            });
-                                        }
-                                    }
-                                }
-                            },
-                            data: {},
-                            error: function (request) {
-                                var sError = dojo.string.substitute(TicketActivityItemsResources['error_ExecutingRequest'], [sUrl, request.statusText, request.status]);
-                                if (dojo.isString(request.responseText)) {
-                                    if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
-                                        var oSDataError = dojo.fromJson(request.responseText);
-                                        if (dojo.isArray(oSDataError)) {
-                                            sError = dojo.string.substitute(TicketActivityItemsResources['error_ExecutingRequestExt'],
-                                                [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
-                                        }
-                                    }
-                                }
-                                Sage.UI.Dialogs.showError(sError);
-                            }
-                        });
-                    };
-                    iTotalCount = items.length;
-                    for (var i = 0; i &lt; items.length; i += 1) {
-                        addProduct(items[i]);
-                    }
-                }
-            });
-        }
+                                          delete product.$key;
+                                          delete product.$name;
+                                          delete product.$url;
+                                          Sage.Utility.extend(true, newTicketActivityItem, ticketActivityItem, product);
+                                          Sage.Utility.extend(true, newTicketActivityItem, newAccountProduct, accountProduct);
+                                          arrItems.push(newTicketActivityItem);
+                                          iCurrentCount++;
+                                          if (iCurrentCount === iTotalCount) {
+                                              grid.createItems(arrItems, function () {
+                                                  if (Sage.Utility.getModeId() !== 'insert') {
+                                                      __doPostBack("MainContent", "");
+                                                  }
+                                              });
+                                          }
+                                      }
+                                  }
+                              },
+                              data: {},
+                              error: function (request) {
+                                  var sError = dojo.string.substitute(TicketActivityItemsResources['error_ExecutingRequest'], [sUrl, request.statusText, request.status]);
+                                  if (dojo.isString(request.responseText)) {
+                                      if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
+                                          var oSDataError = dojo.fromJson(request.responseText);
+                                          if (dojo.isArray(oSDataError)) {
+                                              sError = dojo.string.substitute(TicketActivityItemsResources['error_ExecutingRequestExt'],
+                                                  [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
+                                          }
+                                      }
+                                  }
+                                  Sage.UI.Dialogs.showError(sError);
+                              }
+                          });
+                      };
+                      iTotalCount = items.length;
+                      for (var i = 0; i &lt; items.length; i += 1) {
+                          addProduct(items[i]);
+                      }
+                  }
+              });
+          }
+        });
     }</OnSelection>
               <AdditionalSelectFields />
               <ChildEntity />
@@ -373,7 +374,7 @@
             <OnClick>function () {
          // Execute the "CopyPart" method on each selected record
          var grid = this;
-         var selectedItems = grid.selection.getSelected();
+         var selectedItems = grid.getSelectedRowData();
          if (selectedItems.length &lt; 1) {
              Sage.UI.Dialogs.showError(grid.noSelectionsText);
              return;
@@ -382,7 +383,7 @@
          grid.showLoading();
          var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
          var fnCopy = function (i) {
-             if (store.isItem(selectedItems[i])) {
+             if (selectedItems[i]) {
                  var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
 	                .setResourceKind('ticketActivityItems')
 	                .setOperationName('CopyPart');

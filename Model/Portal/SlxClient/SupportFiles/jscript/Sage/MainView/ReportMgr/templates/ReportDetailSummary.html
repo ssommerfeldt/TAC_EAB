@@ -1,4 +1,4 @@
-﻿[
+[
 
   '<table style="width:100%">',
   '    <tbody>',
@@ -30,7 +30,7 @@
 
   '                <tr id="{%= $.$key %}_ReportDetailSummary_txtCreateDate">',
   '                    <td class="SummaryCaption">{%= $.txtCreateDate_Caption || "Create Date:" %}</td>',
-  "                    <td class=\"DataItem\">{%= ($.entity.createDate) ? dojo.date.locale.format(Sage.Utility.Convert.dateToTimeless(Sage.Utility.Convert.toDateFromString($.entity.createDate)), {selector: 'date'}) : '' %}</td>",
+  "                    <td class=\"DataItem\">{%= ($.entity.createDate) ? dojo.date.locale.format(Sage.Utility.Convert.dateToTimeless(Sage.Utility.Convert.toDateFromString($.entity.createDate)), {selector: 'date', locale: Sys.CultureInfo.CurrentCulture.name}) : '' %}</td>",
   '                </tr>',
 
   '                <tr id="{%= $.$key %}_ReportDetailSummary_txtModifyUser">',
@@ -40,7 +40,7 @@
 
   '                <tr id="{%= $.$key %}_ReportDetailSummary_txtModifyDate">',
   '                    <td class="SummaryCaption">{%= $.txtModifyDate_Caption || "Modify Date:" %}</td>',
-  "                <td class=\"DataItem\">{%= ($.entity.modifyDate) ? dojo.date.locale.format(Sage.Utility.Convert.dateToTimeless(Sage.Utility.Convert.toDateFromString($.entity.modifyDate)), {selector: 'date'}) : '' %}</td>",
+  "                <td class=\"DataItem\">{%= ($.entity.modifyDate) ? dojo.date.locale.format(Sage.Utility.Convert.dateToTimeless(Sage.Utility.Convert.toDateFromString($.entity.modifyDate)), {selector: 'date', locale: Sys.CultureInfo.CurrentCulture.name}) : '' %}</td>",
   '                </tr>',
 
   '                <tr id="{%= $.$key %}_ReportDetailSummary_txtUserField">',

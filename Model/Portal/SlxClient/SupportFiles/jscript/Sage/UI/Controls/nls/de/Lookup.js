@@ -1,3 +1,4 @@
-define((
-{ buttonToolTip: 'Suchen', closeButtonToolTip: 'Entfernen' }
-));
+define("Sage/UI/Controls/nls/de/Lookup", {
+    "buttonToolTip": "Suchen",
+    "closeButtonToolTip": "Entfernen"
+});

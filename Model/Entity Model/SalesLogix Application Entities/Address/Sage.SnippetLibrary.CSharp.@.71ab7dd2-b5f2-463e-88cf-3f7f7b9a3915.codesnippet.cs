@@ -34,7 +34,7 @@ namespace Sage.BusinessRules.CodeSnippets
         /// </summary>
         /// <param name="address">The address.</param>
         /// <param name="result">The result.</param>
-        public static void GetFullAddressStep1(IAddress address, out System.String result)
+        public static void GetFullAddressStep1(IAddress address, out String result)
         {
 			result = address.FormatFullAddress();
         }

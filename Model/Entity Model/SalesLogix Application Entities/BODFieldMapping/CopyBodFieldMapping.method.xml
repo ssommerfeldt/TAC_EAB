@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="8952184e-9462-4b3f-8e41-71e2f30bd998" lastModifiedUtc="2016-08-12T20:10:10.7652162Z" name="CopyBodFieldMapping" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="9d30f0ae-9343-4aa9-ae69-b4120e16917a" paramName="copyFromBodFieldMapping" sequence="0" paramType="Object">
+      <description>The field mapping which the clone will be based off of.</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="163cd194-4965-4516-a71f-f7381ff4b3f4" paramName="saveNew" sequence="0" paramType="Boolean">
+      <description>Flag indicating if the new field mapping should be save immediately</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="a1a7a8a4-1d61-4388-a530-abffa48c8c53" lastModifiedUtc="2016-08-12T20:36:24.9925305Z" targetType="Sage.SalesLogix.BODFieldMapping.Rules, Sage.SalesLogix.BusinessRules" targetMethod="CopyBodFieldMapping" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

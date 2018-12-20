@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Extensions/UI/Columns/CheckBox", [
     'dojo/_base/declare',
     'dojo/_base/lang',
     'dojo/query'

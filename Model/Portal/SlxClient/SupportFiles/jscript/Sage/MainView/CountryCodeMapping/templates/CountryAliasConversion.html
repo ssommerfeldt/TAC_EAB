@@ -1,0 +1,15 @@
+<div>
+    <div data-dojo-type="dijit.Dialog" title="{%= $._nlsResources.dlgCountryAliasConverstion_Title %}" data-dojo-attach-point="_dialog" data-dojo-attach-event="onCancel:_btnCancel_OnClick" style="width: 800px">
+        <div data-dojo-type="dijit.form.Form">
+            <div data-dojo-attach-point="divLoadingMessage">
+                <br />
+                <label style="padding-left:300px;font-size:16px;font-weight:bold"> {%= Sage.Utility.htmlEncode($.gridLoading_Caption) %}</label>
+            </div>
+            <div data-dojo-attach-point="countryAliasGrid" style="height:300px"></div>
+            <div align="right" style="margin-top:10px">
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnSave" data-dojo-attach-event="onClick:_btnSave_OnClick">{%= Sage.Utility.htmlEncode($._nlsResources.btnSave_Caption) %}</div>
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnCancel" data-dojo-attach-event="onClick:_btnCancel_OnClick" style="margin-left:5px;">{%= Sage.Utility.htmlEncode($._nlsResources.btnCancel_Caption) %}</div>
+            </div>
+        </div>
+    </div>
+</div>

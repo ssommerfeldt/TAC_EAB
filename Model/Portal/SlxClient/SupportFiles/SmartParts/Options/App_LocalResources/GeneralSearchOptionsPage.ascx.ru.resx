@@ -117,166 +117,199 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblAutoLogoffResource1.Text" xml:space="preserve">
-    <value>Включить автоматический выход:</value>
+  <data name="_promptContactNotFoundResource1.Text" xml:space="preserve">
+    <value>&lt;span id='lblPromptConNotFound'&gt;Запрос контакта или заинтересованного лица не найден&lt;/span&gt;</value>
   </data>
-  <data name="UseActiveReportingResource.Text" xml:space="preserve">
-    <value>Использовать активную отчетность (требует ActiveX и Crystal Runtime)</value>
-  </data>
-  <data name="listItemContactResource.Text" xml:space="preserve">
-    <value>Контакт</value>
-  </data>
-  <data name="PageDescription.Title" xml:space="preserve">
-    <value>Общие</value>
-  </data>
-  <data name="lblPromptForUnsavedData.Text" xml:space="preserve">
-    <value>Запрос для несохраненных данных:</value>
-  </data>
-  <data name="MailMergeServiceError" xml:space="preserve">
-    <value>Не может быть загружен сервис рассылки почты. Это может произойти если не установлен Saleslogix Desktop Integration или установлен неверно.</value>
-  </data>
-  <data name="PromptForUnsavedData" xml:space="preserve">
-    <value>Запрос на сохраненные данные</value>
-  </data>
-  <data name="EnhanceSalesLogix" xml:space="preserve">
-    <value>Расширить Saleslogix...</value>
-  </data>
-  <data name="UseActiveMailResource.Text" xml:space="preserve">
-    <value>Использ. ActiveMail (требуется ActiveX)</value>
-  </data>
-  <data name="adhoc_group_format" xml:space="preserve">
-    <value>{0} ({1} Контакты)</value>
-  </data>
-  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
-    <value>Курс</value>
-  </data>
-  <data name="lblSearchOptionsResource1.Text" xml:space="preserve">
-    <value>Параметры поиска</value>
-  </data>
-  <data name="msgMenuRangeMessage" xml:space="preserve">
-    <value>Вы должны ввести число от 0 до 10 для значения из Меню Составить - Последние шаблоны.</value>
-  </data>
-  <data name="btnFlushCache1.Text" xml:space="preserve">
-    <value>Очистить кэш</value>
-  </data>
-  <data name="lblDefaultAccountSearchResource1.Text" xml:space="preserve">
-    <value>Поиск субъекта по умолчанию:</value>
-  </data>
-  <data name="ExtendedFeaturesResource2.Text" xml:space="preserve">
-    <value>Может потребоваться загрузка расширенных функций -</value>
-  </data>
-  <data name="lblLogToHistoryResource1.Text" xml:space="preserve">
-    <value>Записать в историю:</value>
-  </data>
-  <data name="tooltipFind" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="lblDefaultOppSearchResource1.Text" xml:space="preserve">
-    <value>Поиск сделки по умолч.:</value>
-  </data>
-  <data name="lblGenOptionsResource1.Text" xml:space="preserve">
-    <value>Основные параметры</value>
-  </data>
-  <data name="lblFaxBaseTemplateResource1.Text" xml:space="preserve">
-    <value>Шаблон факса:</value>
-  </data>
-  <data name="clearSavedListData" xml:space="preserve">
-    <value>Обновление данных справочника</value>
-  </data>
-  <data name="lblIntellisyncOptions.Text" xml:space="preserve">
-    <value>Настройки Intellisync:</value>
-  </data>
-  <data name="lblFaxProviderResource1.Text" xml:space="preserve">
-    <value>Провайдер факса:</value>
-  </data>
-  <data name="lblMyCurrencyResource1.Text" xml:space="preserve">
-    <value>Моя валюта:</value>
-  </data>
-  <data name="chkUnsavedDataWarning.Text" xml:space="preserve">
-    <value>Предупреждать при выходе с учетом несохраненных данных</value>
-  </data>
-  <data name="lblIntellisyncResource1.Text" xml:space="preserve">
-    <value>Группа контакта Intellisync:</value>
-  </data>
-  <data name="lblCheckboxEnabledResource.Text" xml:space="preserve">
-    <value>Отображать флажки в Группах:</value>
+  <data name="_promptDuplicateContactsResource1.Text" xml:space="preserve">
+    <value>&lt;span id='lblPromptForDup'&gt;Запрос дубликата контакта или заинтересованного лица&lt;/span&gt;</value>
   </data>
   <data name="_saveResource1.Text" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="lblEnhancementsInstalled.Text" xml:space="preserve">
-    <value>Улучшения установлены</value>
+  <data name="btnFlushCache1.Text" xml:space="preserve">
+    <value>Очистить кэш</value>
   </data>
-  <data name="lblEmailBaseTemplateResource1.Text" xml:space="preserve">
-    <value>Основной шаблон для e-mail:</value>
+  <data name="chkUnsavedDataWarning.Text" xml:space="preserve">
+    <value>Предупреждать при выходе с учетом несохраненных данных</value>
   </data>
-  <data name="PageDescription.Text" xml:space="preserve">
-    <value>Общие</value>
-  </data>
-  <data name="ExtendedFeaturesResource1.Text" xml:space="preserve">
-    <value>Искать еще...</value>
-  </data>
-  <data name="lblMailMergeTemplateOptions.Text" xml:space="preserve">
-    <value>Настройки шаблона слияния:</value>
-  </data>
-  <data name="lblEmailOptionsResource1.Text" xml:space="preserve">
-    <value>Параметры эл. почты:</value>
-  </data>
-  <data name="GeneralOptionsHelpLinkResource1.ToolTip" xml:space="preserve">
-    <value>Помощь</value>
-  </data>
-  <data name="lblLetterBaseTemplateResource1.Text" xml:space="preserve">
-    <value>Базовый шаблон письма:</value>
-  </data>
-  <data name="lblTimeZoneOptions.Text" xml:space="preserve">
-    <value>Параметры часового пояса:</value>
-  </data>
-  <data name="listItemLeadResource.Text" xml:space="preserve">
-    <value>Наводка</value>
-  </data>
-  <data name="FindOutMore" xml:space="preserve">
-    <value>Искать еще...</value>
-  </data>
-  <data name="_promptContactNotFoundResource1.Text" xml:space="preserve">
-    <value>&lt;span id='lblPromptConNotFound'&gt;Запрос контакта или наводки не найден&lt;/span&gt;</value>
-  </data>
-  <data name="EnhancementsAreInstalled" xml:space="preserve">
-    <value>Расширения установлены</value>
-  </data>
-  <data name="lblRecentTemplatesResource1.Text" xml:space="preserve">
-    <value>Меню Составить - Последние шаблоны:</value>
-  </data>
-  <data name="_promptDuplicateContactsResource1.Text" xml:space="preserve">
-    <value>&lt;span id='lblPromptForDup'&gt;Запрос дубликата контакта или наводки&lt;/span&gt;</value>
-  </data>
-  <data name="lblShowOnStartupResource1.Text" xml:space="preserve">
-    <value>Показывать при запуске:</value>
-  </data>
-  <data name="lblInstallEnhancements.Text" xml:space="preserve">
-    <value>Установить улучшения</value>
-  </data>
-  <data name="lblTypeResource.Text" xml:space="preserve">
-    <value>Тип:</value>
-  </data>
-  <data name="ClickToDownload" xml:space="preserve">
-    <value>Кликните для загрузки расширения продукта.</value>
+  <data name="cmdSave_rsc.AlternateText" xml:space="preserve">
+    <value />
   </data>
   <data name="cmdSave_rsc.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="ExtendedFeaturesResource1.Text" xml:space="preserve">
+    <value>Искать еще...</value>
+  </data>
+  <data name="ExtendedFeaturesResource2.Text" xml:space="preserve">
+    <value>Для расширенных функций может потребоваться загрузка —</value>
+  </data>
+  <data name="GeneralOptionsHelpLinkResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GeneralOptionsHelpLinkResource1.ToolTip" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="GeneralOptionsHelpLinkResource2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDefaultAccountSearchResource1.Text" xml:space="preserve">
+    <value>Поиск клиента по умолчанию</value>
+  </data>
+  <data name="lblCurrentTimezone.Text" xml:space="preserve">
+    <value>Укажите ваш часовой пояс</value>
+  </data>
+  <data name="lblDefaultContactSearchResource1.Text" xml:space="preserve">
+    <value>Поиск контакта по умолчанию</value>
+  </data>
+  <data name="lblDefaultOppSearchResource1.Text" xml:space="preserve">
+    <value>Поиск возможности по умолчанию</value>
+  </data>
+  <data name="lblDefaultOwnerResource1.Text" xml:space="preserve">
+    <value>Владелец/команда по умолчанию</value>
+  </data>
+  <data name="lblEmailBaseTemplateResource1.Text" xml:space="preserve">
+    <value>Основной шаблон электронного сообщения</value>
+  </data>
+  <data name="lblEmailOptionsResource1.Text" xml:space="preserve">
+    <value>Параметры электронной почты</value>
+  </data>
+  <data name="lblFaxBaseTemplateResource1.Text" xml:space="preserve">
+    <value>Базовый шаблон факса</value>
+  </data>
+  <data name="lblFaxProviderResource1.Text" xml:space="preserve">
+    <value>Провайдер факса</value>
+  </data>
+  <data name="lblGenOptionsResource1.Text" xml:space="preserve">
+    <value>Основные параметры</value>
+  </data>
+  <data name="lblLetterBaseTemplateResource1.Text" xml:space="preserve">
+    <value>Основной шаблон письма</value>
+  </data>
+  <data name="lblPromptForUnsavedData.Text" xml:space="preserve">
+    <value>Запрос на сохраненные данные</value>
+  </data>
+  <data name="lblLogToHistoryResource1.Text" xml:space="preserve">
+    <value>Записать в историю:</value>
+  </data>
+  <data name="lblMyCurrencyResource1.Text" xml:space="preserve">
+    <value>Моя валюта</value>
+  </data>
+  <data name="lblRecentTemplatesResource1.Text" xml:space="preserve">
+    <value>Меню записи — последние шаблоны</value>
+  </data>
+  <data name="lblSearchOptionsResource1.Text" xml:space="preserve">
+    <value>Параметры поиска</value>
+  </data>
+  <data name="lblShowOnStartupResource1.Text" xml:space="preserve">
+    <value>Показывать при запуске</value>
+  </data>
+  <data name="LitRequest_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="msgMenuRangeMessage" xml:space="preserve">
+    <value>Необходимо ввести число от 0 до 10 для значения "Меню записи — последние шаблоны".</value>
+  </data>
+  <data name="PageDescription.Text" xml:space="preserve">
+    <value>Общее</value>
+  </data>
+  <data name="PageDescription.Title" xml:space="preserve">
+    <value>Общее</value>
+  </data>
+  <data name="lblTimeZoneOptions.Text" xml:space="preserve">
+    <value>Параметры часового пояса</value>
+  </data>
+  <data name="lblCheckboxEnabledResource.Text" xml:space="preserve">
+    <value>Отобразить флажки списка</value>
+  </data>
+  <data name="lblAccessibilityOptions.Text" xml:space="preserve">
+    <value>Специальные возможности</value>
+  </data>
+  <data name="lblIntellisyncOptions.Text" xml:space="preserve">
+    <value>Параметры синхронизации</value>
+  </data>
+  <data name="lblMailMergeTemplateOptions.Text" xml:space="preserve">
+    <value>Параметры шаблона слияния</value>
+  </data>
+  <data name="UseActiveMailResource.Text" xml:space="preserve">
+    <value>Использ. ActiveMail (требуется ActiveX)</value>
+  </data>
+  <data name="lblIntellisyncResource1.Text" xml:space="preserve">
+    <value>Группа синхронизации контактов</value>
+  </data>
+  <data name="adhoc_group_format" xml:space="preserve">
+    <value>{0} (количество контактов: {1})</value>
+  </data>
+  <data name="lblAutoLogoffResource1.Text" xml:space="preserve">
+    <value>Включить автоматический выход</value>
+  </data>
   <data name="lblLogOffAfterResource1.Text" xml:space="preserve">
     <value>Выход после</value>
   </data>
-  <data name="lblDefaultContactSearchResource1.Text" xml:space="preserve">
-    <value>Поиск контакта по умолчанию:</value>
+  <data name="LPRate_rsc.PropertyHeader" xml:space="preserve">
+    <value>Ставка</value>
   </data>
-  <data name="lblCurrentTimezone.Text" xml:space="preserve">
-    <value>Установите Ваш часовой пояс:</value>
+  <data name="PromptForUnsavedData" xml:space="preserve">
+    <value>Запрос на сохраненные данные</value>
   </data>
-  <data name="lblAccessibilityOptions.Text" xml:space="preserve">
-    <value>Специальные возможности:</value>
+  <data name="UseActiveReportingResource.Text" xml:space="preserve">
+    <value>Использовать ActiveReporting (требуется ActiveX и Crystal Runtime)</value>
   </data>
-  <data name="lblDefaultOwnerResource1.Text" xml:space="preserve">
-    <value>Доступ/Команда по умолч.:</value>
+  <data name="MailMergeServiceError" xml:space="preserve">
+    <value>Не удалось загрузить службу слияния. Это может произойти если не установлена программа CRM Office Integration или установка выполнена неверно.</value>
+  </data>
+  <data name="ClickToDownload" xml:space="preserve">
+    <value>Щелкните для загрузки расширения продукта.</value>
+  </data>
+  <data name="EnhanceSalesLogix" xml:space="preserve">
+    <value>Расширить Infor CRM...</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>Найти далее...</value>
+  </data>
+  <data name="EnhancementsAreInstalled" xml:space="preserve">
+    <value>Расширения установлены</value>
+  </data>
+  <data name="lblTypeResource.Text" xml:space="preserve">
+    <value>Тип:</value>
+  </data>
+  <data name="listItemContactResource.Text" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="listItemLeadResource.Text" xml:space="preserve">
+    <value>Заинтересованное лицо</value>
+  </data>
+  <data name="tooltipFind" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="clearSavedListData" xml:space="preserve">
+    <value>Обновление данных списка выбора</value>
+  </data>
+  <data name="lblEnhancementsInstalled.Text" xml:space="preserve">
+    <value>Установлена Office Integration</value>
+  </data>
+  <data name="lblInstallEnhancements.Text" xml:space="preserve">
+    <value>Установить Office Integration</value>
+  </data>
+  <data name="lblEnhancementsNotSupported.Text" xml:space="preserve">
+    <value>Office Integration не поддерживается</value>
+  </data>
+  <data name="lblEnhancements.Text" xml:space="preserve">
+    <value>Дополнения Infor CRM</value>
+  </data>
+  <data name="DefaultUserTimeStamp.Text" xml:space="preserve">
+    <value>Имя пользователя/метка времени по умолчанию в полях заметок:</value>
+  </data>
+  <data name="UnavailableOption" xml:space="preserve">
+    <value>В настоящий момент этот параметр недоступен.</value>
+  </data>
+  <data name="lblInstallxbar.Text" xml:space="preserve">
+    <value>Установить Xbar для Outlook</value>
+  </data>
+  <data name="lblxbarInstalled.Text" xml:space="preserve">
+    <value>Установлен Xbar для Outlook</value>
+  </data>
+  <data name="lblxbarNotSupported.Text" xml:space="preserve">
+    <value>Xbar для Outlook не поддерживается</value>
   </data>
 </root>

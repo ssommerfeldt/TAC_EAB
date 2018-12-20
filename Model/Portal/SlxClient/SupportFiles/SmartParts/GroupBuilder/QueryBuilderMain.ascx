@@ -13,17 +13,16 @@
             "dijit/layout/ContentPane",
             "dijit/layout/BorderContainer",
             "dojox/data/QueryReadStore",
-            "dojox/grid/EnhancedGrid",
+            'Sage/UI/Controls/Grid',
             "dojo/data/ItemFileReadStore",
             "Sage/Groups/GroupContextService",
             "Sage/Data/WritableSDataStore",
             "dojo/dnd/Source",
-            "Sage/UI/Columns/Dnd",
-            "Sage/UI/Columns/DndCell",
-            "Sage/UI/Columns/DataType",
+
+            "Sage/UI/Controls/GridParts/Columns/DataType",
             "Sage/UI/Calendar",
             "Sage/Data/BaseSDataStore",
-            "Sage/Data/SingleEntryPropertySDataStore",
+            "Sage/Store/SData",
             "dojox/mdnd/AreaManager",
             "dojox/mdnd/DropIndicator",
             "dojox/mdnd/dropMode/DefaultDropMode",
@@ -32,7 +31,7 @@
             "dojo/parser",
             "dojo/dnd/Target",
             "Sage/Utility/Filters"
-        ], function (
+    ], function (
             ready,
             dString,
             Tree,
@@ -41,17 +40,16 @@
             ContentPane,
             BorderContainer,
             QueryReadStore,
-            EnhancedGrid,
+            Grid,
             ItemFileReadStore,
             GroupContextService,
             WritableSDataStore,
-            Source,
-            Dnd,
-            DndCell,
+            DnDSource,
+
             DataType,
             Calendar,
             BaseSDataStore,
-            SingleEntryPropertySDataStore,
+            SDataObjectStore,
             AreaManager,
             DropIndicator,
             DefaultDropMode,
@@ -62,20 +60,20 @@
             FiltersUtil
             ) {
 
-            ready(function () {
-                dijit.byId("tabview").selectChild(dijit.byId("tabpage1"));
-                dijit.byId("tabview").selectChild(dijit.byId("tabpage0"));
-                dojo.subscribe("tabview-selectChild", function (child) {
-                    QueryBuilderMain.currentTab = parseInt(child.id[7], 10);
-                    QueryBuilderMain.setButtonState(QueryBuilderMain.currentTab);
-                });
+        ready(function () {
+            dijit.byId("tabview").selectChild(dijit.byId("tabpage1"));
+            dijit.byId("tabview").selectChild(dijit.byId("tabpage0"));
+            dojo.subscribe("tabview-selectChild", function (child) {
+                QueryBuilderMain.currentTab = parseInt(child.id[7], 10);
+                QueryBuilderMain.setButtonState(QueryBuilderMain.currentTab);
+            });
 
-                var curTable = dojo.byId('<%= family.ClientID %>'),
+            var curTable = dojo.byId('<%= family.ClientID %>'),
                     nodeCounter = 0;
-                curTable = curTable && curTable.value;
-                var groupId = dojo.byId('<%= groupID.ClientID %>').value;
-                // if this is a new group, it won't have an id. However, we want to copy
-                //  the joins from the default group
+            curTable = curTable && curTable.value;
+            var groupId = dojo.byId('<%= groupID.ClientID %>').value;
+            // if this is a new group, it won't have an id. However, we want to copy
+            //  the joins from the default group
                 if (!groupId) {
                     var contextService = Sage.Services.getService("ClientGroupContext");
                     if (contextService) {
@@ -101,15 +99,15 @@
                     onClick: function (item, node) {
                         var tableName = (item.id || item.toTable).toUpperCase(),
                             grid;
-                        
+
                         grid = dijit.byId("fieldGrid"),
-                                store = new SingleEntryPropertySDataStore({
+                                store = new SDataObjectStore({
                                     service: SDataServiceRegistry.getSDataService('metadata', false, true, false),
                                     resourceKind: 'entities',
-                                    propertyName: 'properties',
-                                    predicate: 'tableName eq "' + tableName + '"',
-                                    sort: 'displayName'
+                                    resourceProperty: 'properties',
+                                    resourcePredicate: 'tableName eq "' + tableName + '"'
                                 });
+                        grid._grid.set('noDataMessage', noDataMessageHolder); // re-instate the default noDataMessage; to be displayed if table has no fields.
                         grid.setStore(store);
                     },
                     style: { width: "450px" },
@@ -150,101 +148,131 @@
                         var text = '<asp:Localize ID="expand" runat="server" Text="<%$ resources: Expand %>" />';
                         dojo.attr(node, 'title', text);
                     });
+                    }
+
+            dojo.connect(tree, 'onLoad', null, setupTreeToolTips);
+            dojo.connect(tree, 'onOpen', null, setupTreeToolTips);
+            dojo.connect(tree, 'onClose', null, setupTreeToolTips);
+
+            var grid = new Grid({
+                id: "fieldGrid",
+                selectionMode: 'single',
+                columns: [
+                    {
+                        field: 'dataTypeId',
+                        label: ' ',
+                        width: '20px',
+                        type: DataType,
+                        sortable: false,
+                        resizable: false
+                    },
+                    {
+                        field: 'displayName',
+                        label: '<asp:Localize ID="localizeColumn" runat="server" Text="<%$ resources: localizeColumn.Text %>" />',
+                        width: '140px',
+                        resizable: false
+                    }],
+                    minRowsPerPage: 25,
+                    placeHolder: "divFieldList",
+                    sort: [{ attribute: 'displayName' }],
+                    columnResizing: true,
+                    dnd: true
+            });
+            // save off the default no message data to be placed back after onClick.
+            noDataMessageHolder = grid._grid.get('noDataMessage');
+            grid._grid.set('noDataMessage', '<asp:Localize ID="PropertyListPopulationInstructions" runat="server" Mode="Encode" Text="<%$ resources: PropertyListPopulationInstructions%>" />');
+            grid.refresh();
+
+            grid.onRowDblClick = function (row) {
+                var item = row.data;
+                var tab = dijit.byId("tabview").selectedChildWidget.id;
+                switch (tab) {
+                    case 'tabpage0': break; //properties
+                    case 'tabpage1': // Conditions
+                        QueryBuilderMain.InsertCondition(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
+                        break;
+                    case 'tabpage2': // Layout
+                        QueryBuilderMain.InsertLayoutItem(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
+                        break;
+                    case 'tabpage3': // Sorting
+                        QueryBuilderMain.InsertSort(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
+                        break;
+                    case 'tabpage4': break; // Defaults
                 }
+            };
 
-                dojo.connect(tree, 'onLoad', null, setupTreeToolTips);
-                dojo.connect(tree, 'onOpen', null, setupTreeToolTips);
-                dojo.connect(tree, 'onClose', null, setupTreeToolTips);
+            var layoutTarget = new Target("layoutTable", {
+                accept: ["dgrid-row"],
+                isSource: false,
+                onDrop: function (source, nodes) {
+                    nodes.forEach(function (node) {
+                        console.log("Dropped " + source.getItem(node.id).data.name);
 
-                var grid = new EnhancedGrid({
-                    id: "fieldGrid",
-                    selectionMode: 'single',
-                    structure: [
-                        {
-                            field: 'dataTypeId',
-                            name: ' ',
-                            width: '20px',
-                            type: DataType
-                        },
-                        {
-                            field: 'displayName',
-                            name: '<asp:Localize ID="localizeColumn" runat="server" Text="<%$ resources: localizeColumn.Text %>" />',
-                            width: '140px',
-                            type: Dnd
+                        var tab = dijit.byId("tabview").selectedChildWidget.id;
+                        if (tab !== 'tabpage2') {
+                            return;
                         }
-                    ]
-                }, "divFieldList");
 
-                grid.startup();
-                dojo.connect(grid, 'onCellDblClick', grid, function (e) {
-                    var item = this.getItem(e.rowIndex);
-                    var tab = dijit.byId("tabview").selectedChildWidget.id;
-                    switch (tab) {
-                        case 'tabpage0': break; //properties
-                        case 'tabpage1': // Conditions
-                            QueryBuilderMain.InsertCondition(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
-                            break;
-                        case 'tabpage2': // Layout
-                            QueryBuilderMain.InsertLayoutItem(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
-                            break;
-                        case 'tabpage3': // Sorting
-                            QueryBuilderMain.InsertSort(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
-                            break;
-                        case 'tabpage4': break; // Defaults
-                    }
-                });
-
-                var layoutTarget = new Target("layoutTable", { isSource: false });
-                layoutTarget.startup();
-                dojo.connect(layoutTarget, 'onDndDrop', grid, function (source, nodes, copy, target) {
-                    var tab = dijit.byId("tabview").selectedChildWidget.id;
-                    if (tab !== 'tabpage2') {
-                        return;
-                    }
-
-                    var node = nodes[0];
-                    var item = this.getItem(node.data.index);
-                    QueryBuilderMain.InsertLayoutItem(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
-                    DeleteDroppedNode();
-                }); // end layout connect
-
-                var conditionTarget = new Target("conditionTable", { isSource: false });
-                conditionTarget.startup();
-                dojo.connect(conditionTarget, 'onDndDrop', grid, function (source, nodes, copy, target) {
-                    var tab = dijit.byId("tabview").selectedChildWidget.id;
-                    if (tab !== 'tabpage1') {
-                        return;
-                    }
-
-                    var node = nodes[0];
-                    var item = this.getItem(node.data.index);
-                    QueryBuilderMain.InsertCondition(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
-                    DeleteDroppedNode();
-                }); // end conditions connect
-
-                var sortTarget = new Target("sortTable", { isSource: false });
-                sortTarget.startup();
-                dojo.connect(sortTarget, 'onDndDrop', grid, function (source, nodes, copy, target) {
-                    var tab = dijit.byId("tabview").selectedChildWidget.id;
-                    if (tab !== 'tabpage3') {
-                        return;
-                    }
-
-                    var node = nodes[0];
-                    var item = this.getItem(node.data.index);
-                    QueryBuilderMain.InsertSort(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
-                    DeleteDroppedNode();
-                }); // end conditions connect
-
-                // TODO: Move the helper functions below somewhere else
-                function DeleteDroppedNode() {
-                    var nodes = dojo.query(".dojoDndItem", "tabview");
-                    dojo.forEach(nodes, function (item) {
-                        dojo.destroy(item);
+                        var node = nodes[0];
+                        var item = source.getItem(node.id).data;
+                        QueryBuilderMain.InsertLayoutItem(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
+                        DeleteDroppedNode();
                     });
                 }
             });
+            layoutTarget.startup();
+
+            var conditionTarget = new Target("conditionTable", {
+                accept: ["dgrid-row"],
+                isSource: false,
+                onDrop: function (source, nodes) {
+                    nodes.forEach(function (node) {
+                        console.log("Dropped " + source.getItem(node.id).data.name);
+
+                        var tab = dijit.byId("tabview").selectedChildWidget.id;
+                        if (tab !== 'tabpage1') {
+                            return;
+                        }
+
+                        var node = nodes[0];
+                        var item = source.getItem(node.id).data;
+                        QueryBuilderMain.InsertCondition(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
+                        DeleteDroppedNode();
+                    });
+                }
+            });
+            conditionTarget.startup();
+
+            var sortTarget = new Target("sortTable", {
+                accept: ["dgrid-row"],
+                isSource: false,
+                onDrop: function (source, nodes) {
+                    nodes.forEach(function (node) {
+                        console.log("Dropped " + source.getItem(node.id).data.name);
+
+                        var tab = dijit.byId("tabview").selectedChildWidget.id;
+                        if (tab !== 'tabpage3') {
+                            return;
+                        }
+
+                        var node = nodes[0];
+                        var item = source.getItem(node.id).data;
+                        QueryBuilderMain.InsertSort(tree.selectedDisplayPath(), tree.selectedDataPath(), item);
+                        DeleteDroppedNode();
+                    });
+                }
+            });
+            sortTarget.startup();
+
+            // TODO: Move the helper functions below somewhere else
+            function DeleteDroppedNode() {
+                var nodes = dojo.query(".dojoDndItem", "tabview");
+                dojo.forEach(nodes, function (item) {
+                    dojo.destroy(item);
+                });
+            }
         });
+    });
 </script>
 
 <input type="hidden" name="groupID" id="groupID" runat="server" />
@@ -256,6 +284,7 @@
 <input type="hidden" name="sqlonly" id="sqlonly" value="" runat="server" />
 <input type="hidden" name="groupSQL" id="groupSQL" />
 <input type="hidden" name="groupXML" id="groupXML" />
+<input type="hidden" name="groupNonce" id="groupNonce" runat="server" />
 <div id="divGroupXML" runat="server" class="dispnone"></div>
 
 
@@ -277,8 +306,8 @@
 						<table cellpadding="0" cellspacing="0" height="220px">
 							<tr>
 								<td valign="top">
-									<input id="btnOK" class="W1" onclick="QueryBuilderMain.ok_Click()" type="button" value='<asp:Localize runat="server" Text="<%$ resources: localizeOK.Text %>" />' style="margin-left:5px;"><br >
-									<input id="btnCancel" class="W1" onclick="QueryBuilderMain.cancel_Click()" type="button" value='<asp:Localize runat="server" Text="<%$ resources: localizeCancel.Text %>" />' style="margin-left:5px;"><br >
+									<asp:Button id="btnOK" class="W1" type="button" Text="<%$ resources: localizeOK.Text %>" style="margin-left:5px;" runat="server" OnClientClick="return QueryBuilderMain.ok_Click();" OnClick="btnOK_Click" /><br >
+									<asp:Button id="btnCancel" class="W1" type="button" Text="<%$ resources: localizeCancel.Text %>" style="margin-left:5px;" runat="server" OnClientClick="QueryBuilderMain.cancel_Click()" OnClick="btnCancel_Click" /><br >
 									<br >
 									<input id="btnViewSQL" class="W1" onclick="QueryBuilderMain.viewSQL_Click()" type="button" value='<asp:Localize runat="server" Text="<%$ resources: localizeViewSQL.Text %>" />' style="margin-left:5px;"><br >
 									<input id="btnCalc" class="W1" onclick="QueryBuilderMain.calculations_Click()" type="button" value="<%$ resources: localizeCalc.Text %>" runat="server" style="margin-left:5px;" /><br >
@@ -304,15 +333,15 @@
         <SalesLogix:PageLink ID="HelpQBProperties" runat="server" CssClass="QBHelpIcon" LinkType="HelpFileName" ToolTip="<%$ resources: localizeHelp.Text %>" Target="Help" NavigateUrl="querybuilderproperties.aspx" ImageUrl="~/images/icons/Help_16x16.png"></SalesLogix:PageLink>
         <table>
 		    <tr>
-			    <td><asp:Localize ID="localizeName" runat="server" Text="<%$ resources: localizeName.Text %>" /></td>
+			    <td class="alignright"><asp:Localize ID="localizeName" runat="server" Text="<%$ resources: localizeName.Text %>" /></td>
 			    <td><input id="txtGrpName" class="W2" type="text" maxlength="24" /></td>
 		    </tr>
 		    <tr>
-			    <td><asp:Localize ID="localizeDisplayName" runat="server" Text="<%$ resources: localizeDisplayName.Text %>" /></td>
+			    <td  class="alignright"><asp:Localize ID="localizeDisplayName" runat="server" Text="<%$ resources: localizeDisplayName.Text %>" /></td>
 			    <td><input id="txtDisplayName" class="W2" type="text" maxlength="128"  /></td>
 		    </tr>
 		    <tr>
-			    <td valign="top"><asp:Localize ID="localizeDescription" runat="server" Text="<%$ resources: localizeDescription.Text %>" /></td>
+			    <td class="alignright" valign="top"><asp:Localize ID="localizeDescription" runat="server" Text="<%$ resources: localizeDescription.Text %>" /></td>
 			    <td><textarea id="txtGrpDescription" class="W2" rows="14" onkeypress="limitLength(128);event.cancelBubble=true;" onblur="limitLength(128)"></textarea></td>
 		    </tr>
 	    </table>

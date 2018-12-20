@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="4abc2948-b209-4542-9685-b85ea23f5893" lastModifiedUtc="2017-08-28T23:40:44.3175937Z" name="PromoteToMarketo" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="119abf57-8b9e-4544-92c0-f21b2ee41f29" lastModifiedUtc="2017-08-28T23:40:42.1754925Z" targetType="SalesLogix.Integration.Marketo.Rules.OpportunityRules, SalesLogix.Integration.Marketo" targetMethod="PromoteToMarketo" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -3083,3 +3083,38 @@ div.tws-more-tab-element
 {
     text-align: center;
 }
+/************ Infor UpperLeft Logo styles BEGIN   ****************/
+
+.inforUpperLeftLogo, #inforLogoPanel {
+    font-size: 16px;
+    color: #666;
+}
+#inforLogoPanel
+{
+	position: absolute;
+	top: 0;
+	left: 0;		
+	height: 32px;
+	width: 179px;
+}
+
+#inforLogoPanel > img
+{
+	margin: 4px 4px -4px 8px;
+}
+
+/************ Infor UpperLeft Logo styles END     ****************/
+/************ Touch fixes for IE and Edge BEGIN ****************/
+.ui-draggable, .ui-draggable div, .ui-draggable td {
+	-ms-touch-action: none;
+	touch-action: none;
+}
+/************ Touch fixes for IE and Edge END   ****************/
+.dijitAlignCenter .abstractGrid{
+    position:relative !important;
+}
+
+div[id$="EditQuoteItemgrdDiscountCharges"] .dgrid-scroller{
+    position:relative;
+	overflow-x:scroll !important;
+}

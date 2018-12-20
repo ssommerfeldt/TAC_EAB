@@ -232,13 +232,8 @@ public partial class ContractsWhatsNew : UserControl, ISmartPartInfoProvider
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
         ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-
-        Label lblNewContracts = new Label();
-        lblNewContracts.Text = GetLocalResourceObject("Contracts_Caption").ToString();
-
-        tinfo.LeftTools.Add(lblNewContracts);
+        tinfo.Title = GetLocalResourceObject("Contracts_Caption").ToString();
         tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Contract_detail_24x24.png");
-
         return tinfo;
     }
 

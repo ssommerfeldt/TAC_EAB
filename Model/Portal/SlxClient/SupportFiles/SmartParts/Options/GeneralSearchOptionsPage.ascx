@@ -27,11 +27,11 @@
 <asp:HiddenField ID="htxtMailMergeServiceError" Value="<%$ resources:MailMergeServiceError %>" runat="server" />
 <asp:HiddenField ID="htxtSelectedTemplateType" Value="" runat="server" />
 
-<table border="0" cellpadding="1" cellspacing="0" class="formtable optionsTable" style="margin-top:0px">
+<table border="0" cellpadding="0" cellspacing="0" class="formtable optionsTable">
 	<col width="50%" /><col width="50%" />
 	<tr>
 		<td  class="highlightedCell">
-			<asp:Label ID="lblGenOptions" runat="server" Font-Bold="True" Text="General Options" Width="120px" meta:resourcekey="lblGenOptionsResource1"></asp:Label>
+			<asp:Label ID="lblGenOptions" runat="server" Font-Bold="True" Text="General Options"  meta:resourcekey="lblGenOptionsResource1"></asp:Label>
 		</td>
 		<td  class="highlightedCell">
             <asp:Label ID="lblMailMergeTemplateOptions" runat="server" Font-Bold="True" Text="Mail Merge Template Options:" meta:resourcekey="lblMailMergeTemplateOptions"></asp:Label>
@@ -69,7 +69,7 @@
 	</tr>
         <tr>
             <td >
-				<span class="lbl"><asp:Label ID="lblDefaultOwner" runat="server" Text="Default Owner/Team:" Width="165px" meta:resourcekey="lblDefaultOwnerResource1"></asp:Label></span>
+				<span class="lbl"><asp:Label ID="lblDefaultOwner" runat="server" Text="Default Owner/Team:" meta:resourcekey="lblDefaultOwnerResource1"></asp:Label></span>
 				<span class="textcontrol">
                 <SalesLogix:OwnerControl title="<%$ resources: toolTipFind %>" alt="<%$ resources: toolTipFind %>" runat="server" ID="_defaultOwnerTeam" AutoPostBack="False" DisplayMode="AsControl" meta:resourcekey="_defaultOwnerTeamResource1" >
                     <OwnerDialogStyle BackColor="Control" />
@@ -90,11 +90,13 @@
             <td>
                 <span class="lbl"><asp:Label ID="lblAutoLogoff" runat="server" Text="Enable Automatic Logoff:" meta:resourcekey="lblAutoLogoffResource1"></asp:Label></span>
                 <span class="lbl" style="width:auto; padding-right:10px;">
-                    <asp:CheckBox ID="_autoLogoff" runat="server" />
+                    <asp:CheckBox ID="_autoLogoff" runat="server" CssClass="inforAspCheckBox" Text=" "/>
                 </span>
                 <span class="lbl" style="width:auto;">
                     <asp:Label ID="lblLogOffAfter" runat="server" Text="Log off after" meta:resourcekey="lblLogOffAfterResource1"></asp:Label>
-                    <asp:TextBox ID="_logoffDuration" width="30px" runat="server" ></asp:TextBox>
+                </span>
+                <span class="textcontrol" style="width:auto; padding-right:10px;">
+                    <asp:TextBox ID="_logoffDuration" width="50px" runat="server" ></asp:TextBox>
                     <asp:DropDownList
                         ID="_logoffUnits"
                         data-dojo-type="Sage.UI.Controls.Select"
@@ -117,7 +119,7 @@
 		    <td>
 		        <span class="lbl"><asp:Label ID="lblPromptForUnsavedData" runat="server" Text="Prompt for unsaved data:" meta:resourcekey="lblPromptForUnsavedData"></asp:Label></span>
 		        <span class="lbl" style="width:auto;">
-		            <asp:CheckBox ID="chkPromptForUnsavedData" runat="server"/>
+		            <asp:CheckBox ID="chkPromptForUnsavedData" runat="server" CssClass="inforAspCheckBox" Text=" "/>
 		        </span>
 		    </td>
             <td>
@@ -132,10 +134,18 @@
                </span>
             </td>
 		</tr>
+        <tr>
+            <td>
+                <span class="lbl"><asp:Label ID="lblDefaultUserTimeStamp" runat="server" Text="<%$ resources: DefaultUserTimeStamp.Text %>"></asp:Label></span>
+                <span class="lbl" style="width:auto;">
+                    <asp:CheckBox ID="chkDefaultUserTimeStamp" runat="server" CssClass="inforAspCheckBox" Text=" " />
+			    </span>
+            </td>
+        </tr>
 		<tr>
 		    <td>
 		        <span class="lbl">&nbsp;</span>
-                <asp:Button runat="server" ID="btnClearPicklistData" OnClientClick="var x = new Sage.UI.Controls.PickList({});x.clear(x._storageNameSpace);return false;" Text="<%$ resources: clearSavedListData %>" CssClass="slxbutton"/>
+                <asp:Button runat="server" ID="btnClearPicklistData" OnClientClick="(removePickListCache())()" OnClick="clearPicklistCache" Text="<%$ resources: clearSavedListData %>" CssClass="slxbutton"/>
 		    </td>
             <td >
                 <span class="lbl"><asp:Label ID="lblRecentTemplates" runat="server" Text="Write Menu - Recent Templates:" meta:resourcekey="lblRecentTemplatesResource1"></asp:Label></span>
@@ -150,8 +160,8 @@
                 <span class="textcontrol">
                     <SalesLogix:LookupControl AutoPostBack="false" runat="server" ID="luMyCurrency" LookupEntityName="ExchangeRate" LookupEntityTypeName="Sage.Entity.Interfaces.IExchangeRate, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
                     <LookupProperties>
-                        <SalesLogix:LookupProperty PropertyHeader="Description" PropertyName="Description" PropertyType="System.String" PropertyFormat="None"  UseAsResult="True"></SalesLogix:LookupProperty>
-                        <SalesLogix:LookupProperty PropertyHeader="Currency Code" PropertyName="Id" PropertyFormat="None" PropertyType="System.String" UseAsResult="True"></SalesLogix:LookupProperty>
+                        <SalesLogix:LookupProperty PropertyHeader="Description" PropertyName="Description" PropertyType="System.String" PropertyFormat="None"  UseAsResult="True" meta:resourceKey="LPDescription_rsc"></SalesLogix:LookupProperty>
+                        <SalesLogix:LookupProperty IsSortable="False" PropertyHeader="Currency Code" PropertyName="CurrencyCode" PropertyFormat="None" PropertyType="System.String" UseAsResult="True" meta:resourceKey="LPCurrencyCode_rsc"></SalesLogix:LookupProperty>
                         <SalesLogix:LookupProperty PropertyHeader="Rate" PropertyName="Rate" PropertyFormat="None" PropertyType="System.Double" UseAsResult="True" ExcludeFromFilters="True" meta:resourceKey="LPRate_rsc"></SalesLogix:LookupProperty>
                     </LookupProperties>
                     <LookupPreFilters>
@@ -217,32 +227,42 @@
                 <span class="lbl">
                     <asp:Label ID="lblCheckboxEnabled" runat="server" Text="Display List view check boxes:" meta:resourcekey="lblCheckboxEnabledResource"></asp:Label>
                 </span>
-                <span>
-                    <asp:CheckBox runat="server" ID="cbCheckboxEnabled" />
+                <span style="margin-top:14px;display:inline-block;">
+                    <asp:CheckBox runat="server" ID="cbCheckboxEnabled" CssClass="inforAspCheckBox" Text=" "/>
                 </span>
 		    </td>
-            <td></td>
+            <td>
+                <div style="position:relative;margin-left:36%">
+                    <input type="button" ID="enhancementsNotInstalled" runat="server" onclick=" slx_installDesktopFeatures(); " 
+                        class="inforFormButton default inforSignInButton" value="<%$ resources: lblInstallEnhancements.Text %>" ClientIDMode="static"/>
+                    <input type="button" ID="enhancementsInstalled" runat="server" style="display: none;" onclick=" slx_installDesktopFeatures(); " 
+                        class="inforFormButton default inforSignInButton disabled" value="<%$ resources: lblEnhancementsInstalled.Text %>" ClientIDMode="static" />           
+                    <input type="button" ID="enhancementsNotSupported" runat="server" style="display: none;" 
+                        class="inforFormButton default inforSignInButton disabled" value="<%$ resources: lblEnhancementsNotSupported.Text %>" ClientIDMode="static"/>
+<%--                    <br />
+                    <span>
+                         <SalesLogix:PageLink runat="server" ID="PageLink1" LinkType="HelpFileName" NavigateUrl="desktopintegration" 
+                             Text="<%$ resources: FindOutMore %>" CssClass="inforHyperlink" Target="MCWebHelp" >
+                         </SalesLogix:PageLink>
+                    </span>                    --%>
+                </div>
+                <br />
+                <div style="position:relative;margin-left:36%">
+                    <input type="button" ID="Button1" runat="server" onclick=" xbar_installDesktopFeatures(); " 
+                        class="inforFormButton default inforSignInButton" value="<%$ resources: lblInstallxbar.Text %>" ClientIDMode="static"/>
+                    <input type="button" ID="Button2" runat="server" style="display: none;" onclick=" xbar_installDesktopFeatures(); " 
+                        class="inforFormButton default inforSignInButton disabled" value="<%$ resources: lblxbarInstalled.Text %>" ClientIDMode="static" />           
+                    <input type="button" ID="Button3" runat="server" style="display: none;" 
+                        class="inforFormButton default inforSignInButton disabled" value="<%$ resources: lblxbarNotSupported.Text %>" ClientIDMode="static"/>
+                </div>
+            </td>
         </tr>
         <tr>
             <td><asp:Button ID="btnFlushCache" runat="server" Text="Clear Cache" visible="false" Enabled="false" OnClick="btnFlushCache_Click" meta:resourcekey="btnFlushCache1" /></td>
         </tr>
         <tr>
             <td></td>
-            <td>
-                <div style="position:relative;">
-                    <div id="enhancementsNotInstalledOptions" onclick="Sage.installDesktopFeatures();">
-			            <span class="enhancements">
-			                <asp:Label ID="lblInstallEnhancements" runat="server" Text="<%$ resources: lblInstallEnhancements.Text %>"></asp:Label>
-			            </span>
-			        </div>
-                    <div id="enhancementsInstalledOptions" style="display:none;" onclick="Sage.installDesktopFeatures();">
-			            <span class="enhancements">
-			                <asp:Label ID="EnhancementsInstalled" runat="server" Text="<%$ resources: lblEnhancementsInstalled.Text %>"></asp:Label>
-			            </span>
-			        </div>
-                    <span class="findOutMoreOptions"> <SalesLogix:PageLink runat="server" ID="findoutmorelink" LinkType="HelpFileName" NavigateUrl="desktopintegration" Text="<%$ resources: FindOutMore %>" CssClass="findoutmoretext" Target="MCWebHelp" ></SalesLogix:PageLink></span>
-                </div>
-            </td>
+            <td></td>
         </tr>
         <tr>
             <td></td>
@@ -283,11 +303,11 @@
                 if (!isNaN(iCount)) {
                     iCount = parseInt(iCount);
                     if ((iCount < 0) || (iCount > 10)) {
-                        alert('<%= htxtMenuRangeMessage.Value %>');
+                       Sage.UI.Dialogs.showInfo('<%:htxtMenuRangeMessage.Value %>');
                     }
                 }
                 else {
-                    alert('<%= htxtMenuRangeMessage.Value %>');
+                    Sage.UI.Dialogs.showInfos('<%:htxtMenuRangeMessage.Value %>');
                 }
             }
         }
@@ -297,8 +317,8 @@
     var MailMergeTemplates = null;
 
     function getTemplate(mode) {
-        require(['Sage/MailMerge/Helper', 'Sage/MailMerge/Templates', 'Sage/UI/Dialogs'], function(Helper, Templates, Dialogs) {
-            var fnOnSelect = function(item) {
+        require(['Sage/MailMerge/Helper', 'Sage/MailMerge/Templates', 'Sage/UI/Dialogs'], function (Helper, Templates, Dialogs) {
+            var fnOnSelect = function (item) {
                 if (dojo.config.isDebug) {
                     console.debug("Template: family=%o; name=%o; id=%o; maintable=%o; template=%o",
                         item.family, item.name, item.id, item.maintable, item.template);
@@ -314,7 +334,7 @@
                             }
                         }
                     }
-                } catch(err) {
+                } catch (err) {
                     var sError = (typeof err.toMessage === "function") ? err.toMessage(Helper.DesktopErrors().UnexpectedError, Helper.MailMergeInfoStore().ShowJavaScriptStack) : err.message;
                     Dialogs.showError(sError);
                 }
@@ -379,23 +399,47 @@
         var address = 'ActivexInfo.aspx';
         var win = window.open(address, 'AlarmMgrWin', 'width=425,height=425,directories=no,location=no,menubar=no,status=yes,scrollbars=yes,resizable=yes,titlebar=no,toolbar=no');
     }
-    $(document).ready(function () {
-        initGears();
-        //DoGeneralSearchOptionsPage_init();
-        if (Sage.gears) {
-            console.log('Sage.gears is not null');
-            //to disable the Enhance Saleslogix button, remove the comments from the following line:
-            //$(".enhanceButton").attr('disabled', 'disabled');
 
-            //to hide the whole thing...
-            //$('#ExtFeatures').css('visibility','hidden');
+    require(['dojo/ready', 'dojo/dom', 'dojo/dom-style', 'Sage/BrowserSupport'], function (ready, dom, domStyle, browserSupport) {
+        ready(function () {
+            var osInfo = browserSupport().getOSInfo();
+            initGears();
+            if (slx.com) {
+                console.log('Sage.gears is not null');
+                //to disable the Enhance Saleslogix button, remove the comments from the following line:
+                //$(".enhanceButton").attr('disabled', 'disabled');
 
-            //to hide the "click to download" message:
-            //$('.clicktodownload').css('visibility', 'hidden');
-            //change the message:
-            //$('.clicktodownload').text(LoginStrings.EnhancementsAreInstalled || 'Enhancements have been installed');
-            $('#enhancementsNotInstalledOptions').css('display', 'none');
-            $('#enhancementsInstalledOptions').css('display', '');
-        }
+                //to hide the whole thing...
+                //$('#ExtFeatures').css('visibility','hidden');
+
+                //to hide the "click to download" message:
+                //$('.clicktodownload').css('visibility', 'hidden');
+                //change the message:
+                //$('.clicktodownload').text(LoginStrings.EnhancementsAreInstalled || 'Enhancements have been installed');
+                //$('#enhancementsNotInstalled').css('display', 'none');
+                // $('#enhancementsInstalledOptions').css('display', '');
+
+                //domStyle.set(dom.byId('enhancementsNotInstalled'), 'display', 'none');
+                //domStyle.set(dom.byId('enhancementsInstalled'), 'display', '');
+
+                //domStyle.set(dom.byId('Button1'), 'display', 'none');
+                //domStyle.set(dom.byId('Button2'), 'display', '');
+            }
+            if (osInfo.OSName !== "Windows") {
+                domStyle.set(dom.byId('enhancementsNotSupported'), 'display', '');
+                domStyle.set(dom.byId('enhancementsNotInstalled'), 'display', 'none');
+                domStyle.set(dom.byId('enhancementsInstalled'), 'display', 'none');
+                domStyle.set(dom.byId('Button3'), 'display', '');
+                domStyle.set(dom.byId('Button1'), 'display', 'none');
+                domStyle.set(dom.byId('Button2'), 'display', 'none');
+            }
+        });
+    });
+    require(['Sage/Utility/_LocalStorageMixin'],
+        removePickListCache = function (localStorage) {
+            return (dojo.hitch(this, function () {
+                var pickListService = Sage.Services.getService('PickList');
+                this.localStorage.clear(pickListService._storageNameSpace);
+        }));
     });
 </script>

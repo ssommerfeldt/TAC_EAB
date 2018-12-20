@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a4a4330a-e7ea-428e-a566-6b1b48ef3e13" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a4a4330a-e7ea-428e-a566-6b1b48ef3e13" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2016-01-05T01:52:58.7796976Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
@@ -101,6 +101,7 @@
                   <AppliedSecurity />
                   <RefreshData>False</RefreshData>
                 </OnChangeAction>
+                <UserDateStamp>true</UserDateStamp>
                 <Required>false</Required>
               </QFTextBox>
             </Control>
@@ -200,6 +201,7 @@
                   <AppliedSecurity />
                   <RefreshData>False</RefreshData>
                 </OnChangeAction>
+                <UserDateStamp>true</UserDateStamp>
                 <Required>false</Required>
               </QFTextBox>
             </Control>
@@ -255,7 +257,7 @@
         <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>13f4d51913b40ac9c40bee63da22c73</ControlId>
+        <ControlId>3f4d51913b40ac9c40bee63da22c73</ControlId>
         <DataBindings />
         <ControlLabelPlacement>left</ControlLabelPlacement>
         <ExtendedProperties />

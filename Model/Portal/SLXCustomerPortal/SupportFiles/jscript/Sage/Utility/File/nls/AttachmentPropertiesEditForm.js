@@ -1,10 +1,5 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
+define("Sage/Utility/File/nls/AttachmentPropertiesEditForm", {
+    root: {
         fileText: 'File',
         descriptionText: 'Description',
         sizeText: 'Size',
@@ -17,7 +12,10 @@ function (LanguageList, lang) {
         browseText: 'Browse',
         urlText: 'URL',
         requestFailedMsg: 'The requested operation could not be completed, please try again later.'
-    }
-    };
-    return lang.mixin(LanguageList, nls);
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

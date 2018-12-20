@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CreateDate.Caption" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="CreateUser.Caption" xml:space="preserve">
+    <value>Create User</value>
+  </data>
+  <data name="Description.Caption" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="IONWorkflowDefinition.Caption" xml:space="preserve">
+    <value>ION Workflow Definition</value>
+  </data>
+  <data name="LongNotes.Caption" xml:space="preserve">
+    <value>Long Notes</value>
+  </data>
+  <data name="ModifyDate.Caption" xml:space="preserve">
+    <value>Modify Date</value>
+  </data>
+  <data name="ModifyUser.Caption" xml:space="preserve">
+    <value>Modify User</value>
+  </data>
+  <data name="Notes.Caption" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="grdWorkflowHistory.e119278f-1d85-4515-ae21-6c228f769104.ColumnHeading" xml:space="preserve">
+    <value>BOD Mapping</value>
+  </data>
+  <data name="grdWorkflowHistory.6135c06c-1617-4450-93af-3a1069d8bb3d.ColumnHeading" xml:space="preserve">
+    <value>BOD Mapping</value>
+  </data>
+  <data name="grdWorkflowHistory.04a23b3c-069e-4116-b0dc-47918f3c10b2.ColumnHeading" xml:space="preserve">
+    <value>Accounting Entities</value>
+  </data>
+  <data name="grdWorkflowHistory.842972da-32bb-4b3a-98b4-0bdb1e3812f3.ColumnHeading" xml:space="preserve">
+    <value>BOD Mappings</value>
+  </data>
+  <data name="grdHistory.7003d2d8-569d-4d98-85b1-76b457361d68.ColumnHeading" xml:space="preserve">
+    <value>Long Notes</value>
+  </data>
+  <data name="grdWorkflowHistory.07eeaa3f-6945-4bd2-9f92-01327a79bee2.ColumnHeading" xml:space="preserve">
+    <value>Logical ID</value>
+  </data>
+  <data name="grdWorkflowHistory.2b08acc6-34f1-4447-b6e0-612af76f0951.ColumnHeading" xml:space="preserve">
+    <value>Back Office</value>
+  </data>
+  <data name="grdWorkflowHistory.dd2b5d68-6fc0-470f-855b-61f186baf29a.ColumnHeading" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="grdWorkflowHistory.EmptyTableRowText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdWorkflowHistory.b9253069-ba4c-4cfa-9656-9faa3a4b3fe8.ColumnHeading" xml:space="preserve">
+    <value>Modified Date</value>
+  </data>
+  <data name="grdWorkflowHistory.b6ca353b-2cf3-488c-a0f9-e7150f585095.ColumnHeading" xml:space="preserve">
+    <value>Back Office</value>
+  </data>
+  <data name="grdWorkflowHistory.47acd9ac-62b1-4d69-8056-6dbf752fb405.ColumnHeading" xml:space="preserve">
+    <value>BOD Mappings</value>
+  </data>
+  <data name="grdWorkflowHistory.76992cb8-1682-44df-bba5-2b83fc4b378e.ColumnHeading" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="grdWorkflowHistory.5a52895e-1c22-41ba-90a7-08d7cedf79b6.ColumnHeading" xml:space="preserve">
+    <value>Back Office</value>
+  </data>
+  <data name="grdWorkflowHistory.fe3f137a-d0fc-4d41-abf8-63e9812ce202.ColumnHeading" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="grdWorkflowHistory.3f5539e6-66c6-45bd-8395-c9d43d338333.ColumnHeading" xml:space="preserve">
+    <value>BOD Mappings</value>
+  </data>
+  <data name="grdWorkflowHistory.74ea5618-aa1e-44c6-82c1-8779d33d4708.ColumnHeading" xml:space="preserve">
+    <value>BOD Mappings</value>
+  </data>
+  <data name="grdWorkflowHistory.a34b1e23-22c6-4e0c-b9a5-ddc9aabc5899.ColumnHeading" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="grdWorkflowHistory.ac7869cb-080d-4679-b5a2-7f663302b82f.ColumnHeading" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="grdWorkflowHistory.12026b92-7813-4685-bffb-03aa4ec974ce.ColumnHeading" xml:space="preserve">
+    <value>ION Workflow Name</value>
+  </data>
+  <data name="grdWorkflowHistory.a00b9c3b-d5a9-4ccd-9aef-826aae0af891.ColumnHeading" xml:space="preserve">
+    <value>Country Code Format</value>
+  </data>
+  <data name="grdWorkflowHistory.65891834-fb0e-451d-bb67-a799e8ed37d8.ColumnHeading" xml:space="preserve">
+    <value>Entity XPath</value>
+  </data>
+  <data name="grdWorkflowHistory.e6342c4a-a1ab-4d4f-ab78-4258c5766f5e.ColumnHeading" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="grdWorkflowHistory.6d31abdd-d5cd-49d4-8755-1b2f097abb6b.ColumnHeading" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="grdWorkflowHistory.5fde0336-63a9-4743-9150-513a97bc9cba.ColumnHeading" xml:space="preserve">
+    <value>Created By</value>
+  </data>
+  <data name="grdWorkflowHistory.6dc5ebcf-be4e-4c31-a3e2-efabf44d7206.ColumnHeading" xml:space="preserve">
+    <value>Change Description</value>
+  </data>
+  <data name="grdWorkflowHistory.51a12086-3c8c-4be9-be22-cdd175ae71e6.ColumnHeading" xml:space="preserve">
+    <value>Changes Summary</value>
+  </data>
+  <data name="grdWorkflowHistory.3e22fd29-6a6b-4d64-90af-211a9069be1f.ColumnHeading" xml:space="preserve">
+    <value>Modified Date</value>
+  </data>
+  <data name="grdWorkflowHistory.c76067c3-99ba-4f65-8d95-697d2a0c41bd.ColumnHeading" xml:space="preserve">
+    <value>Modified By</value>
+  </data>
+  <data name="grdWorkflowHistory.5d469858-ac29-4d26-9f38-4e2892ae7d57.ColumnHeading" xml:space="preserve">
+    <value>Created By</value>
+  </data>
+  <data name="grdWorkflowHistory.6208520c-3607-46ad-a004-2b00d8884120.ColumnHeading" xml:space="preserve">
+    <value>Modified By</value>
+  </data>
+</root>

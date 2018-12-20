@@ -1,22 +1,28 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-        'dojo/_base/declare',
-        'dojo/i18n!./nls/ImportLeadsWizard',
-        'Sage/UI/Controls/_DialogHelpIconMixin',
-        'dojo/_base/lang',
-        'dijit/Dialog',
-        'dijit/_Widget',
-        'Sage/_Templated',
-        'Sage/UI/Dialogs',
-        'dojo/text!./templates/ImportLeadsProgressDisplay.html',
-        'dijit/ProgressBar',
-        'dojo/string',
-        'dijit/form/Form',
-        'dijit/layout/ContentPane',
-        'dojox/layout/TableContainer'
+require({cache:{
+'url:Sage/MainView/Lead/templates/ImportLeadsProgressDisplay.html':"[\r\n'<div>',\r\n    '<div data-dojo-type=\"dijit.Dialog\" title=\"{%= $.importProgressCaption %}\" dojoAttachPoint=\"_dialog\" dojoAttachEvent=\"onCancel:_close\" style=\"width: 450px\">',\r\n        '<div data-dojo-type=\"dijit.form.Form\" id=\"{%= $.id %}_frmImportProgress\">',\r\n            '<label dojoAttachPoint=\"lblProcessingLabelContainer\">{%= $.lblPrimaryProgress %}</label>',\r\n            '<div dojoAttachPoint=\"importPrimaryProgressBarContainer\"></div>',\r\n            '<div dojoAttachPoint=\"importSecondaryProgressBarContainer\"></div>',\r\n            '<table border=\"0\" cellpadding=\"1\" cellspacing=\"0\" class=\"formtable\">',\r\n                '<tr>',\r\n                    '<td class=\"alignright\">',\r\n                        '<label>{%= $.lblTotalRecords %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<span class=\"textcontrol\">',\r\n                            '<input dojoType=\"dijit.form.TextBox\" id=\"{%= $.id %}_recordCount\" dojoAttachPoint=\"totalRecordCount\" readonly=\"readonly\" />',\r\n                        '</span>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td class=\"alignright\">',\r\n                        '<label>{%= $.lblTotalRecordsProcessed %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<span class=\"textcontrol\">',\r\n                            '<input dojoType=\"dijit.form.TextBox\" id=\"{%= $.id %}_processedCount\" dojoAttachPoint=\"processedCount\" readonly=\"readonly\" />',\r\n                        '</span>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td class=\"alignright\">',\r\n                        '<label>{%= $.lblTotalRecordsImported %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<span class=\"textcontrol\">',\r\n                            '<input dojoType=\"dijit.form.TextBox\" id=\"{%= $.id %}_importedCount\" dojoAttachPoint=\"importedCount\" readonly=\"readonly\" />',\r\n                        '</span>',\r\n                    '</td>',\r\n                '</tr>',\r\n                 '<tr>',\r\n                    '<td class=\"alignright\">',\r\n                        '<label>{%= $.lblTotalRecordsMerged %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<span class=\"textcontrol\">',\r\n                            '<input dojoType=\"dijit.form.TextBox\" id=\"{%= $.id %}_mergedCount\" dojoAttachPoint=\"mergedCount\" readonly=\"readonly\" />',\r\n                        '</span>',\r\n                    '</td>',\r\n                '</tr>',\r\n                 \r\n                '<tr>',\r\n                    '<td class=\"alignright\">',\r\n                        '<label>{%= $.lblTotalDuplicates %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<span class=\"textcontrol\">',\r\n                            '<input dojoType=\"dijit.form.TextBox\" id=\"{%= $.id %}_duplicatesCount\" dojoAttachPoint=\"duplicateCount\" readonly=\"readonly\" />',\r\n                        '</span>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td class=\"alignright\">',\r\n                        '<label>{%= $.lblDuplicateRate %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<span class=\"textcontrol\">',\r\n                            '<div dojoType=\"Sage.UI.Controls.Numeric\" id=\"{%= $.id %}_duplicateRate\" constraints=\"{ places: 0, type: \\'percent\\' }\" dojoAttachPoint=\"duplicateRate\" readonly=\"readonly\" style=\"width: auto\"></div>',\r\n                        '</span>',\r\n                    '</td>',\r\n                '</tr>',\r\n                 '<tr>',\r\n                    '<td class=\"alignright\">',\r\n                        '<label>{%= $.lblTotalProjectedDuplicates %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<span class=\"textcontrol\">',\r\n                            '<input dojoType=\"dijit.form.TextBox\" id=\"{%= $.id %}_projectedDuplicateCount\" dojoAttachPoint=\"projectedDuplicateCount\" readonly=\"readonly\" />',\r\n                        '</span>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td class=\"alignright\">',\r\n                        '<label>{%= $.lblTotalErrors %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<span class=\"textcontrol\">',\r\n                            '<input dojoType=\"dijit.form.TextBox\" id=\"{%= $.id %}_errorCount\" dojoAttachPoint=\"errorCount\" readonly=\"readonly\" />',\r\n                        '</span>',\r\n                    '</td>',\r\n                '</tr>',\r\n            '</table>',\r\n            '<div dojoAttachPoint=\"importHistoryLinkContainer\" class=\"display-none\">',\r\n                '<label>{%= $.lblImportHistoryLinkText %}</label>',\r\n                '<br/>',\r\n                '<label>{%= $.lblImportLinkNumber %}</label>',\r\n                '<a dojoAttachPoint=\"importHistoryLink\"></a>',\r\n            '</div>',\r\n            '<div class=\"button-bar\" align=\"right\">',\r\n                '<div data-dojo-type=\"dijit.form.Button\" id=\"{%= $.id%}_btn_Cancel\" dojoAttachPoint=\"btn_Cancel\" dojoAttachEvent=\"onClick:_cancel\">{%= $.btnCancelText %}</div>',\r\n                '<div data-dojo-type=\"dijit.form.Button\" id=\"{%= $.id%}_btn_Close\" dojoAttachPoint=\"btn_Close\" dojoAttachEvent=\"onClick:_close\">{%= $.btnCloseText %}</div>',\r\n            '</div>',\r\n        '</div>',\r\n    '</div>',\r\n'</div>'\r\n]"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/Lead/ImportLeadsWizard", [
+    'dojo/_base/declare',
+    'dojo/i18n!./nls/ImportLeadsWizard',
+    'dijit/_Widget',
+    'Sage/_Templated',
+    'Sage/UI/Dialogs',
+    'dojo/text!./templates/ImportLeadsProgressDisplay.html',
+    'dijit/ProgressBar',
+    'dojo/string',
+    'dijit/form/Form',
+    'dijit/layout/ContentPane',
+    'dojox/layout/TableContainer'
 ],
-function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Widget, _Templated, Dialogs, importLeadsProgressDisplay, ProgressBar, dojoString) {
-    var importLeadsWizard = declare('Sage.MainView.Lead.ImportLeadsWizard', [_Widget, _Templated], {
+function (declare, i18NStrings, widget, templated, dialogs, importLeadsProgressDisplay, progressBar, dojoString) {
+    var importLeadsWizard = declare('Sage.MainView.Lead.ImportLeadsWizard', [widget, templated], {
+        statusEnum: {
+            Initialize: 0,
+            Started: 1,
+            Processing: 2,
+            Completed: 3,
+            Abort: 4
+        },
         importHistoryId: '',
         startProcessCtrlId: '',
         isActualImport: true,
@@ -26,7 +32,7 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
         secondaryProgressCounter:0,
         widgetTemplate: new Simplate(eval(importLeadsProgressDisplay)),
         constructor: function () {
-            dojo.mixin(this, i18nStrings);
+            dojo.mixin(this, i18NStrings);
         },
         onAddHocGroupChecked: function (groupOptionsId, chkAddToGroupId) {
             var addToGroup = dojo.byId(chkAddToGroupId);
@@ -62,7 +68,7 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
             return null;
         },
         enableDisableControl: function (control, value) {
-            if (control !== null) {
+            if (control) {
                 control.disabled = value;
             }
         },
@@ -99,7 +105,7 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
                 }
             }
             if (this.importHistoryId !== '') {
-                var select = "select=ImportNumber,Status,RecordCount,ProcessedCount,DuplicateCount,ImportedCount,MergeCount,ErrorCount,WarningCount";
+                var select = "select=ImportNumber,Status,StatusCode,RecordCount,ProcessedCount,DuplicateCount,ImportedCount,MergeCount,ErrorCount,WarningCount";
                 var self = this;
                 var sUrl = dojoString.substitute("slxdata.ashx/slx/dynamic/-/importHistory('${0}')?${1}&format=json", [this.importHistoryId, select]);
                 dojo.xhrGet({
@@ -112,14 +118,13 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
                     },
                     data: {},
                     error: function (request, status, error) {
-                        Dialogs.showError(this.errorRequestImportHistory);
+                        dialogs.showError(this.errorRequestImportHistory);
                     }
                 });
             }
         },
         updateProgress: function (importHistory) {
             var self, percentDone, duplicateRate, projectedDupeCount, pollPeriod;
-           
             if (importHistory !== null) {
                 self = this;
                 this.totalRecordCount.set('value', importHistory.RecordCount);
@@ -140,7 +145,7 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
                     this.errorCount.set('value', importHistory.ErrorCount);
                     if (!this.progressBar) {
                         this.setDisplayProperty(this.lblProcessingLabelContainer, false);
-                        this.progressBar = new ProgressBar({
+                        this.progressBar = new progressBar({
                             id: 'importPrimaryProgressBar',
                             maximum: importHistory.RecordCount
                         });
@@ -150,7 +155,7 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
                         this.setDisplayProperty(this.importHistoryLinkContainer, this.isActualImport);
                     }
                     if (!this.secondaryProgressBar) {
-                        this.secondaryProgressBar = new ProgressBar({
+                        this.secondaryProgressBar = new progressBar({
                             id: 'secondaryImportProgressBar',
                             maximum: 10
                         });
@@ -171,14 +176,14 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
                     this.secondaryProgressBar.set('value', this.secondaryProgressCounter);
                     this.secondaryProgressBar.set("label",  this.importStatusProcessing);
                 }
-                if (importHistory.Status === this.importStatusProcessing) {
+                if (importHistory.StatusCode === this.statusEnum.Processing) {
                     pollPeriod = 500;
                     if (importHistory.RecordCount > 100) {
                         pollPeriod = 1000;
                     }
                     setTimeout(function() { self.getImportHistory(); }, pollPeriod);
                 }
-                else if (importHistory.Status === this.importStatusCompleted) {
+                else if (importHistory.StatusCode === this.statusEnum.Completed) {
                     this.progressBar.set('value', this.progressBar.maximum);
                     this.secondaryProgressBar.set('value', this.secondaryProgressBar.maximum);
                     this.setDisplayProperty(this.secondaryProgressBar, false);
@@ -228,17 +233,19 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
         abortImport: function () {
             var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic', false, true, true);
             var request = new Sage.SData.Client.SDataSingleResourceRequest(service);
-            request.setResourceSelector(dojo.string.substitute("'${0}'", [this.importHistoryId]));
-            request.setResourceKind('importHistory');
-            var status = this.abortImportProcessStatus;
-            request.update({ Status: status, ProcessState: status }, {
-                scope: this,
-                success: function (response) {
-                },
-                failure: function (response) {
-                    console.log(response);
-                }
-            });
+            if (this.importHistoryId !== '') {
+                request.setResourceSelector(dojo.string.substitute("'${0}'", [this.importHistoryId]));
+                request.setResourceKind('importHistory');
+                var status = this.abortImportProcessStatus;
+                request.update({ Status: status, ProcessState: status }, {
+                    scope: this,
+                    success: function(response) {
+                    },
+                    failure: function(response) {
+                        console.log(response);
+                    }
+                });
+            }
         },
         _close: function () {
             this._dialog.hide();

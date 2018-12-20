@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="5e31b01b-4710-45b7-a8fd-4d84a15c3f5a" lastModifiedUtc="2015-10-06T18:36:57.8988116Z" name="btnAddCustomProduct_OnClick" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="QuoteProducts">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="67b23920-6343-47d1-8044-58a18391fc4e" paramName="form" sequence="0" paramType="IQuoteProducts" />
+    <OrmEntityMethodParam id="0dd3e66b-1cc9-40bc-bff2-3d341e6dc546" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="26b0b863-6f52-491b-9aab-ac3bf20330b9" lastModifiedUtc="2015-10-06T18:38:13.0353245Z" targetType="Sage.BusinessRules.CodeSnippets.QuoteProductsEventHandlers, Sage.SnippetLibrary.CSharp" targetMethod="btnAddCustomProduct_OnClickStep" active="true" codeSnippetId="504e3b03-21d1-4898-9d8d-4d20d30edd8e">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

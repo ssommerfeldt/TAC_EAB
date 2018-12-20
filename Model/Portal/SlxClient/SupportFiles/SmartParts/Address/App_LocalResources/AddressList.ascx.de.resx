@@ -117,58 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressGrid_Country.HeaderText" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="AddressGrid_Address1.HeaderText" xml:space="preserve">
-    <value>Postadresse</value>
-  </data>
-  <data name="DeleteAddressMessage" xml:space="preserve">
-    <value>Die ausgewählte Adresse kann nicht gelöscht werden, da sie als Haupt- oder Lieferadresse definiert ist. Um diese Adresse löschen zu können, müssen Sie eine andere Adresse als Haupt- oder Lieferadresse festlegen. Ist keine andere Adresse verfügbar, müssen Sie eine anlegen.</value>
-  </data>
-  <data name="AddressGrid_Delete.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="SaveChanges" xml:space="preserve">
-    <value>Sie müssen ausstehende Änderungen speichern, bevor Adressen geändert werden können.</value>
+  <data name="AddressGrid_State.HeaderText" xml:space="preserve">
+    <value>Bundesland</value>
   </data>
   <data name="AddressGrid_PostalCode.HeaderText" xml:space="preserve">
     <value>Postleitzahl</value>
   </data>
-  <data name="btnAdd.ToolTip" xml:space="preserve">
-    <value>Adresse hinzufügen</value>
+  <data name="AddressGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
   </data>
-  <data name="AddressGrid_PrimaryAddress.HeaderText" xml:space="preserve">
-    <value>Haupt</value>
+  <data name="AddressGrid_Primary.HeaderText" xml:space="preserve">
+    <value>Primäre Rechnungsadresse</value>
   </data>
-  <data name="AddressGrid_Attention.HeaderText" xml:space="preserve">
-    <value>Achtung</value>
+  <data name="AddressGrid_Shipping.HeaderText" xml:space="preserve">
+    <value>Primäre Lieferung</value>
   </data>
   <data name="AddressGrid_Description.HeaderText" xml:space="preserve">
     <value>Beschreibung</value>
   </data>
-  <data name="ConfirmMessage" xml:space="preserve">
-    <value>Möchten Sie wirklich löschen?</value>
-  </data>
-  <data name="AddressGrid_Primary.HeaderText" xml:space="preserve">
-    <value>Hauptrechnungsadresse</value>
-  </data>
-  <data name="AddressGrid_Edit.Text" xml:space="preserve">
-    <value>Bearbeiten</value>
+  <data name="AddressGrid_Address1.HeaderText" xml:space="preserve">
+    <value>Anschrift</value>
   </data>
   <data name="AddressGrid_City.HeaderText" xml:space="preserve">
     <value>Stadt</value>
   </data>
-  <data name="AddressGrid_NoRecordFound.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  <data name="AddressGrid_Edit.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
   </data>
-  <data name="AddressGrid_State.HeaderText" xml:space="preserve">
-    <value>Bundesland/Kanton</value>
+  <data name="AddressGrid_Attention.HeaderText" xml:space="preserve">
+    <value>Zu Händen von</value>
   </data>
-  <data name="AddressGrid_Shipping.HeaderText" xml:space="preserve">
-    <value>Hauptlieferadresse</value>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Adresse hinzufügen</value>
+  </data>
+  <data name="AddressGrid_Country.HeaderText" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="DeleteAddressMessage" xml:space="preserve">
+    <value>Die ausgewählte Adresse kann nicht gelöscht werden, da sie als primäre oder Lieferadresse definiert ist. Um diese Adresse löschen zu können, müssen Sie eine andere Adresse als primäre oder Lieferadresse festlegen. Ist keine andere Adresse verfügbar, müssen Sie eine anlegen.</value>
+  </data>
+  <data name="AddressGrid_Delete.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="ConfirmMessage" xml:space="preserve">
+    <value>Möchten Sie wirklich löschen?</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Sie müssen ausstehende Änderungen speichern, bevor Adressen geändert werden können.</value>
   </data>
   <data name="AddressGrid_AddressType_HeaderText" xml:space="preserve">
     <value>Adresstyp</value>
+  </data>
+  <data name="AddressGrid_PrimaryAddress.HeaderText" xml:space="preserve">
+    <value>Primär</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-define((
+define("Sage/TaskPane/nls/en/ReportManagerTasksTasklet", (
 { taskRunReport_Caption: 'Run Report',
   taskScheduleReport_Caption: 'Schedule Report',
   taskDeleteReport_Caption: 'Delete Report',

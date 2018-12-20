@@ -28,14 +28,13 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class EditSalesPotentialEventHandlers
     {
-        public static void chkbxOverrideSalesPotential_OnChangeStep( IEditSalesPotential form,  EventArgs args)
+        public static void chkbxOverrideSalesPotential_OnChangeStep(IEditSalesPotential form, EventArgs args)
         {
             if (!form.chkbxOverrideSalesPotential.Checked)
 			{
@@ -47,7 +46,6 @@ namespace Sage.BusinessRules.CodeSnippets
 			{
 				form.curSalesPotential.IsReadOnly = true;
 			}
-        
         }
     }
 }

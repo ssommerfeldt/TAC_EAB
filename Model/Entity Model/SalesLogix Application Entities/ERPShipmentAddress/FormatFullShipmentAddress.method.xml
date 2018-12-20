@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="54b48858-dc77-4d1f-a984-e2808c001a2f" lastModifiedUtc="2014-12-13T18:50:51.7721706Z" name="FormatFullShipmentAddress" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="75328a87-2f08-4cba-b6ce-401d22772681" lastModifiedUtc="2015-01-12T21:39:28.0709437Z" targetType="Sage.SalesLogix.ErpShipmentAddress.Rules, Sage.SalesLogix.BusinessRules" targetMethod="FormatFullShipmentAddress" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

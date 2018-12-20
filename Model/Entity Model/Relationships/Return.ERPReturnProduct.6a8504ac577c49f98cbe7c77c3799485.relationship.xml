@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="6a8504ac-577c-49f9-8cbe-7c77c3799485" lastModifiedUtc="2014-12-08T21:43:32.7842967Z" parentEntityId="a450e01b-fe42-4ab0-bb06-292caa98f528" childEntityId="10330c09-2b1e-438a-9594-e29b75314cfe">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+  </ExtendedPropertiesCollection>
+  <parentProperty id="b05667ee-c880-4be7-95bc-15ee1c3cb62e" lastModifiedUtc="2014-12-08T21:43:32.6262809Z" name="ErpReturnProducts" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </parentProperty>
+  <childProperty id="e8dab817-ad86-41d4-b831-6a6ebbf59ec9" lastModifiedUtc="2014-12-08T21:43:32.4052588Z" name="Return" audited="false">
+    <ExtendedPropertiesCollection>
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+      </extendee>
+    </ExtendedPropertiesCollection>
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
+    </SystemDataType>
+  </childProperty>
+  <column>
+    <OrmRelationshipColumn id="cbacebb4-dfe6-408d-b374-a0abe1405951" parentPropertyId="840e2e2e-ed19-4f68-a73b-165028f476b8" childPropertyId="02fde923-8681-427c-91ad-6551944a065c" ordinal="0" />
+  </column>
+</relationship>

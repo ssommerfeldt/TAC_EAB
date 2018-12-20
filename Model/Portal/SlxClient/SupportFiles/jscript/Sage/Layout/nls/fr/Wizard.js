@@ -1,6 +1,6 @@
-define((
-{ nextButtonLabel: 'Suivant >',
-  backButtonLabel: '< Précédent',
-  cancelButtonLabel: 'Annuler',
-  doneButtonLabel: 'Terminer' }
-));
+define("Sage/Layout/nls/fr/Wizard", {
+    "nextButtonLabel": "Suivant >",
+    "backButtonLabel": "< Précédent",
+    "cancelButtonLabel": "Annuler",
+    "doneButtonLabel": "Terminer"
+});

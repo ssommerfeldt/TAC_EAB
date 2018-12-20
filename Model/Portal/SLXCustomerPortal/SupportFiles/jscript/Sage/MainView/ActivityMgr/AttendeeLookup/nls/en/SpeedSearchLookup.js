@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/en/SpeedSearchLookup", (
 { dialogTitle: 'Lookup Participants',
   okText: 'Add Selected',
   cancelText: 'Close',

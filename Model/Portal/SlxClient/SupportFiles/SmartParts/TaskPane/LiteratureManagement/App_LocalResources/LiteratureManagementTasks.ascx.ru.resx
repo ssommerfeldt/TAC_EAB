@@ -117,37 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Err_Complete" xml:space="preserve">
+    <value>Отсутствуют права для завершения всех выбранных элементов.</value>
+  </data>
+  <data name="Err_Reject" xml:space="preserve">
+    <value>Отсутствуют права на отклонение всех выделенных элементов.</value>
+  </data>
+  <data name="Err_Selection" xml:space="preserve">
+    <value>Для выполнения этого действия необходимо выбрать по крайней мере одну запись.</value>
+  </data>
+  <data name="Err_SelectionContext" xml:space="preserve">
+    <value>Выбранный элемент контекстного меню не доступен.</value>
+  </data>
   <data name="Err_SelectionService" xml:space="preserve">
     <value>Выбранная служба не найдена.</value>
   </data>
   <data name="LitTask_NoLabels" xml:space="preserve">
     <value>Нет меток</value>
   </data>
-  <data name="TaskText_PrintLabels" xml:space="preserve">
-    <value>Печатать Метки</value>
-  </data>
-  <data name="Err_Complete" xml:space="preserve">
-    <value>У вас нет прав для завершения всех выбранных элементов.</value>
-  </data>
-  <data name="Err_Selection" xml:space="preserve">
-    <value>Для выполнения этого действия необходимо выбрать по крайней мере одну запись.</value>
+  <data name="TaskText_Complete" xml:space="preserve">
+    <value>Завершить</value>
   </data>
   <data name="TaskText_Fulfill" xml:space="preserve">
     <value>Заполнить</value>
   </data>
-  <data name="TaskText_Complete" xml:space="preserve">
-    <value>Завершить</value>
-  </data>
-  <data name="Err_SelectionContext" xml:space="preserve">
-    <value>Выбранный элемент контекстного меню не доступен.</value>
-  </data>
-  <data name="Err_Reject" xml:space="preserve">
-    <value>У вас нет прав на отвергание всех выделенных элементов.</value>
+  <data name="TaskText_PrintLabels" xml:space="preserve">
+    <value>Печатать метки</value>
   </data>
   <data name="TaskText_Refresh" xml:space="preserve">
     <value>Обновить</value>
   </data>
   <data name="TaskText_Reject" xml:space="preserve">
-    <value>Отвергнуть</value>
+    <value>Отклонить</value>
   </data>
 </root>

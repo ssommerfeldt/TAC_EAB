@@ -1,0 +1,23 @@
+define("Sage/QuickForms/Design/Editors/nls/zh-cn/DataGridAdvancedPropertyEditor", {
+    "titleText": "高级",
+    "appearanceText": "外观",
+    "behaviorText": "行为",
+    "controlInfoText": "控件信息",
+    "dataText": "数据",
+    "controlIdText": "控件 ID:",
+    "controlIdTooltipText": "此控件的标识。",
+    "controlTypeText": "控件类型:",
+    "controlTypeTooltipText": "Saleslogix 控件类型。",
+    "dataSourceText": "数据源:",
+    "dataSourceTooltipText": "此控件的数据源，例如，另一个控件或实体。",
+    "emptyTableRowText": "空表格行文本:",
+    "emptyTableRowTooltipText": "在网格不显示数据时显示的文本。",
+    "expandableRowsText": "可展开的行:",
+    "expandableRowsTooltipText": "允许用户展开网格行以显示更多文本。",
+    "renderVerticalText": "垂直呈现:",
+    "renderVerticalTooltipText": "将网格行显示为列。",
+    "showSortIconText": "显示排序图标:",
+    "showSortIconTooltipText": "在可排序的列上显示排序图标。",
+    "visibleText": "可见:",
+    "visibleTooltipText": "在窗体上显示或隐藏此控件。"
+});

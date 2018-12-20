@@ -117,41 +117,128 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblAvailableProducts_rsc.ToolTip" xml:space="preserve">
-    <value>Verfügbare Produkte:</value>
+  <data name="AddOpportunityProducts_RToolsResource1.GroupingText" xml:space="preserve">
+    <value />
   </data>
-  <data name="chkPackageName_rsc.Text" xml:space="preserve">
-    <value>Paketname:</value>
+  <data name="AddOpportunityProducts_RToolsResource1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="TFName_rsc.HeaderText" xml:space="preserve">
-    <value>Name</value>
+  <data name="btnAdd_rsc.Text" xml:space="preserve">
+    <value>Hinzufügen</value>
   </data>
-  <data name="NotEqualTo_rsc.Text" xml:space="preserve">
-    <value>Nicht gleich</value>
+  <data name="btnAdd_rsc.ToolTip" xml:space="preserve">
+    <value>Hinzufügen</value>
   </data>
-  <data name="chkSKU_rsc.ToolTip" xml:space="preserve">
-    <value>SKU:</value>
-  </data>
-  <data name="TFPrice_rsc.HeaderText" xml:space="preserve">
-    <value>Preis</value>
-  </data>
-  <data name="grdProductsEditText" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="lblAvailableProducts_rsc.Text" xml:space="preserve">
-    <value>Verfügbare Produkte:</value>
-  </data>
-  <data name="BFDiscount_rsc.HeaderText" xml:space="preserve">
-    <value>Rabatt</value>
+  <data name="btnClearFilters_rsc.Text" xml:space="preserve">
+    <value>Filter löschen</value>
   </data>
   <data name="btnClearFilters_rsc.ToolTip" xml:space="preserve">
     <value>Filter löschen</value>
   </data>
+  <data name="btnShowResults_rsc.Text" xml:space="preserve">
+    <value>Ergebnisse anzeigen</value>
+  </data>
+  <data name="btnShowResults_rsc.ToolTip" xml:space="preserve">
+    <value>Ergebnisse anzeigen</value>
+  </data>
+  <data name="chkDescription_rsc.Text" xml:space="preserve">
+    <value>Beschreibung:</value>
+  </data>
   <data name="chkDescription_rsc.ToolTip" xml:space="preserve">
     <value>Beschreibung:</value>
   </data>
+  <data name="chkFamily_rsc.Text" xml:space="preserve">
+    <value>Familie:</value>
+  </data>
+  <data name="chkFamily_rsc.ToolTip" xml:space="preserve">
+    <value>Familie:</value>
+  </data>
+  <data name="chkName_rsc.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="chkName_rsc.ToolTip" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="chkPackage_rsc.Text" xml:space="preserve">
+    <value>Nur Produktpakete anzeigen</value>
+  </data>
   <data name="chkPackage_rsc.ToolTip" xml:space="preserve">
     <value>Nur Produktpakete anzeigen</value>
+  </data>
+  <data name="chkSKU_rsc.Text" xml:space="preserve">
+    <value>SKU:</value>
+  </data>
+  <data name="chkSKU_rsc.ToolTip" xml:space="preserve">
+    <value>SKU:</value>
+  </data>
+  <data name="chkStatus_rsc.Text" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="chkStatus_rsc.ToolTip" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="cmdHelp_rsc.Text" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="cmdHelp_rsc.ToolTip" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="cmdSave_rsc.AlternateText" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="cmdSave_rsc.ToolTip" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="grdProductsResource1.EmptyDataText" xml:space="preserve">
+    <value>Keine Daten gefunden</value>
+  </data>
+  <data name="grdProductsResource1.ToolTip" xml:space="preserve">
+    <value>Ausgewählte Produkte</value>
+  </data>
+  <data name="lblAvailableProducts_rsc.Text" xml:space="preserve">
+    <value>Verfügbare Produkte:</value>
+  </data>
+  <data name="lblAvailableProducts_rsc.ToolTip" xml:space="preserve">
+    <value>Verfügbare Produkte:</value>
+  </data>
+  <data name="lblSelectedProducts_rsc.Text" xml:space="preserve">
+    <value>Ausgewählte Produkte:</value>
+  </data>
+  <data name="lblSelectedProducts_rsc.ToolTip" xml:space="preserve">
+    <value>Ausgewählte Produkte:</value>
+  </data>
+  <data name="StartingWith_rsc.Text" xml:space="preserve">
+    <value>Beginnend mit</value>
+  </data>
+  <data name="Contains_rsc.Text" xml:space="preserve">
+    <value>Enthält</value>
+  </data>
+  <data name="EqualTo_rsc.Text" xml:space="preserve">
+    <value>Gleich</value>
+  </data>
+  <data name="NotEqualTo_rsc.Text" xml:space="preserve">
+    <value>Ungleich</value>
+  </data>
+  <data name="EqualOrLessThan_rsc.Text" xml:space="preserve">
+    <value>Kleiner gleich</value>
+  </data>
+  <data name="EqualOrGreaterThan_rsc.Text" xml:space="preserve">
+    <value>Größer gleich</value>
+  </data>
+  <data name="LessThan_rsc.Text" xml:space="preserve">
+    <value>Kleiner als</value>
+  </data>
+  <data name="GreaterThan_rsc.Text" xml:space="preserve">
+    <value>Größer als</value>
+  </data>
+  <data name="pklProductFamilyResource1.ToolTip" xml:space="preserve">
+    <value>Produktfamilie</value>
+  </data>
+  <data name="pklProductStatusResource1.ToolTip" xml:space="preserve">
+    <value>Produktstatus</value>
+  </data>
+  <data name="BFDiscount_rsc.HeaderText" xml:space="preserve">
+    <value>Rabatt</value>
   </data>
   <data name="BFQuantity_rsc.HeaderText" xml:space="preserve">
     <value>Menge</value>
@@ -159,133 +246,52 @@
   <data name="BFSort_rsc.HeaderText" xml:space="preserve">
     <value>Sortieren</value>
   </data>
-  <data name="LessThan_rsc.Text" xml:space="preserve">
-    <value>Kleiner als</value>
+  <data name="TFAdjPrice_rsc.HeaderText" xml:space="preserve">
+    <value>Ang. Preis</value>
   </data>
-  <data name="pklProductStatusResource1.ToolTip" xml:space="preserve">
-    <value>Produktstatus</value>
-  </data>
-  <data name="lblSelectedProducts_rsc.Text" xml:space="preserve">
-    <value>Ausgewählte Produkte:</value>
-  </data>
-  <data name="grdProductsResource1.ToolTip" xml:space="preserve">
-    <value>Ausgewählte Produkte</value>
-  </data>
-  <data name="btnAdd_rsc.Text" xml:space="preserve">
-    <value>Hinzufügen</value>
-  </data>
-  <data name="chkName_rsc.Text" xml:space="preserve">
-    <value>Name:</value>
-  </data>
-  <data name="btnOK_rsc" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="btnAdd_rsc.ToolTip" xml:space="preserve">
-    <value>Hinzufügen</value>
-  </data>
-  <data name="grdProductsResource1.EmptyDataText" xml:space="preserve">
-    <value>Keine Daten gefunden</value>
-  </data>
-  <data name="chkName_rsc.ToolTip" xml:space="preserve">
-    <value>Name:</value>
-  </data>
-  <data name="grdProductsUpdateText" xml:space="preserve">
-    <value>Aktualisieren</value>
-  </data>
-  <data name="FilterResultsNotFound" xml:space="preserve">
-    <value>Den Filterkriterien entsprechen keine Produkte.</value>
-  </data>
-  <data name="chkStatus_rsc.Text" xml:space="preserve">
-    <value>Status:</value>
-  </data>
-  <data name="lblSelectedProducts_rsc.ToolTip" xml:space="preserve">
-    <value>Ausgewählte Produkte:</value>
-  </data>
-  <data name="EqualOrGreaterThan_rsc.Text" xml:space="preserve">
-    <value>Größer gleich</value>
-  </data>
-  <data name="Contains_rsc.Text" xml:space="preserve">
-    <value>Enthält</value>
-  </data>
-  <data name="chkSKU_rsc.Text" xml:space="preserve">
-    <value>SKU:</value>
+  <data name="TFExtendedPrice_rsc.HeaderText" xml:space="preserve">
+    <value>Gesamtpreis</value>
   </data>
   <data name="TFFamily_rsc.HeaderText" xml:space="preserve">
     <value>Familie</value>
   </data>
-  <data name="cmdHelp_rsc.Text" xml:space="preserve">
-    <value>Hilfe</value>
+  <data name="TFName_rsc.HeaderText" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="chkDescription_rsc.Text" xml:space="preserve">
-    <value>Beschreibung:</value>
-  </data>
-  <data name="cmdHelp_rsc.ToolTip" xml:space="preserve">
-    <value>Hilfe</value>
-  </data>
-  <data name="EqualTo_rsc.Text" xml:space="preserve">
-    <value>Gleich</value>
-  </data>
-  <data name="chkStatus_rsc.ToolTip" xml:space="preserve">
-    <value>Status:</value>
-  </data>
-  <data name="grdProductsDeleteText" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="pklProductFamilyResource1.ToolTip" xml:space="preserve">
-    <value>Produktfamilie</value>
-  </data>
-  <data name="TFAdjPrice_rsc.HeaderText" xml:space="preserve">
-    <value>Ang. Preis</value>
-  </data>
-  <data name="GreaterThan_rsc.Text" xml:space="preserve">
-    <value>Größer als</value>
-  </data>
-  <data name="btnShowResults_rsc.Text" xml:space="preserve">
-    <value>Ergebnisse anzeigen</value>
-  </data>
-  <data name="btnCancel_rsc" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="btnShowResults_rsc.ToolTip" xml:space="preserve">
-    <value>Ergebnisse anzeigen</value>
-  </data>
-  <data name="cmdSave_rsc.ToolTip" xml:space="preserve">
-    <value>Speichern</value>
+  <data name="TFPrice_rsc.HeaderText" xml:space="preserve">
+    <value>Preis</value>
   </data>
   <data name="TFProgram_rsc.HeaderText" xml:space="preserve">
     <value>Preisstufe</value>
   </data>
-  <data name="cmdSave_rsc.AlternateText" xml:space="preserve">
-    <value>Speichern</value>
+  <data name="btnCancel_rsc" xml:space="preserve">
+    <value>Abbrechen</value>
   </data>
-  <data name="Validation_DiscountOutOfRange" xml:space="preserve">
-    <value>Rabatt muss im Bereich von 0 bis 100 liegen.</value>
-  </data>
-  <data name="StartingWith_rsc.Text" xml:space="preserve">
-    <value>Beginnend mit</value>
-  </data>
-  <data name="btnClearFilters_rsc.Text" xml:space="preserve">
-    <value>Filter löschen</value>
-  </data>
-  <data name="chkFamily_rsc.ToolTip" xml:space="preserve">
-    <value>Familie:</value>
-  </data>
-  <data name="chkPackage_rsc.Text" xml:space="preserve">
-    <value>Nur Produktpakete anzeigen</value>
+  <data name="btnOK_rsc" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="EnterFilterCriteriaMessage" xml:space="preserve">
-    <value>Geben Sie Filterkriterien ein und klicken Sie auf 'Ergebnisse anzeigen', um eine Liste mit Produkten anzuzeigen.</value>
+    <value>Geben Sie Filterkriterien ein, und klicken Sie auf 'Ergebnisse anzeigen', um eine Liste mit Produkten anzuzeigen.</value>
   </data>
-  <data name="EqualOrLessThan_rsc.Text" xml:space="preserve">
-    <value>Kleiner gleich</value>
+  <data name="FilterResultsNotFound" xml:space="preserve">
+    <value>Den Filterkriterien entsprechen keine Produkte.</value>
   </data>
-  <data name="TFExtendedPrice_rsc.HeaderText" xml:space="preserve">
-    <value>Erweiterter Preis</value>
+  <data name="chkPackageName_rsc.Text" xml:space="preserve">
+    <value>Paketname:</value>
   </data>
-  <data name="chkFamily_rsc.Text" xml:space="preserve">
-    <value>Familie:</value>
+  <data name="Validation_DiscountOutOfRange" xml:space="preserve">
+    <value>Rabatt muss im Bereich zwischen 0 und 100 liegen.</value>
   </data>
   <data name="grdProductsCancelText" xml:space="preserve">
     <value>Abbrechen</value>
+  </data>
+  <data name="grdProductsDeleteText" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="grdProductsEditText" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="grdProductsUpdateText" xml:space="preserve">
+    <value>Aktualisieren</value>
   </data>
 </root>

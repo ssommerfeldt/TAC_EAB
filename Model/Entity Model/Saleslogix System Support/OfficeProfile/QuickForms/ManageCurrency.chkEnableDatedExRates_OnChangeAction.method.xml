@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="9a4b401b-46c7-4ea7-aa7d-cd38dbeaf52a" lastModifiedUtc="2017-06-13T14:09:57.7093358Z" name="chkEnableDatedExRates_OnChangeAction" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="ManageCurrency">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="f0c6d26e-60f6-43b1-bc0d-52a4038b25d6" paramName="form" sequence="0" paramType="IManageCurrency" />
+    <OrmEntityMethodParam id="01f7def5-1fdb-46c0-9192-e31dd9af5ce4" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets />
+  <postExecuteTargets />
+</method>

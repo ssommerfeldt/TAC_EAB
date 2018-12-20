@@ -1,7 +1,13 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Web.UI;
+using System.Web.UI.WebControls;
+using Sage.Platform.Application;
 using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.PickLists;
+using Sage.SalesLogix.Web;
 
 public partial class AddPickList : EntityBoundSmartPartInfoProvider 
 {
@@ -22,6 +28,7 @@ public partial class AddPickList : EntityBoundSmartPartInfoProvider
     protected override void OnWireEventHandlers()
     {
         base.OnWireEventHandlers();
+        txtPicklistName.TextChanged += btnOK_Click;
         btnOK.Click += btnOK_Click;
         btnOK.Click += DialogService.CloseEventHappened;
         btnCancel.Click += DialogService.CloseEventHappened;
@@ -72,21 +79,51 @@ public partial class AddPickList : EntityBoundSmartPartInfoProvider
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        SaveItem();
+        var originType = sender.GetType().Name;
+        Button control = null;
+        if (originType.Equals("button",StringComparison.OrdinalIgnoreCase)) {
+            control = (Button)sender;
+        }
+
+        if (control!=null && control.ClientID.Equals(btnOK.ClientID, StringComparison.OrdinalIgnoreCase))
+        {
+            SaveItem();
+        }
     }
     
     private void SaveItem()
     {
         IPickListService pls = new PickListService();
-        PickList npl = pls.AddNewPickList(txtPicklistName.Text);
-        if (npl != null)
+        
+        if (PickList.NameAlreadyExists(txtPicklistName.Text))
         {
-            Response.Redirect(string.Format("~/{0}.aspx?entityId={1}", "PickListView", npl.ItemId), false);
+            throw new ValidationException(GetLocalResourceObject("error_InvalidPickListName").ToString());
+        }
+        else
+        {
+            PickList npl = pls.AddNewPickList(txtPicklistName.Text, cboDefaultLanguage.SelectedValue);
+            if (npl != null)
+            {
+                Response.Redirect(string.Format("~/{0}.aspx?entityId={1}", "PickListView", npl.ItemId), false);
+            }
         }
     }
 
     private void LoadView()
     {
         txtPicklistName.Text = PickList.GetUniqueName("");
+        string defaultLanguage = EnabledLanguageList.GetNeutralLanguageCode(this.Request.Cookies["SLXLanguageSetting"].Value);
+        cboDefaultLanguage.Items.Clear();
+        List<EnabledLanguage> neutrals = PickListHelper.GetLanguageList<EnabledLanguage>(PickListHelper.LanguageListTypes.Neutrals);
+        neutrals.ForEach(ci=>cboDefaultLanguage.Items.Add(new ListItem(text: ci.DisplayText, value: ci.CultureCode.ToLowerInvariant())));
+        cboDefaultLanguage.Items.Insert(0, new ListItem(text: string.Empty, value: string.Empty));
+        if (!string.IsNullOrWhiteSpace(defaultLanguage))
+        {
+            cboDefaultLanguage.SelectedValue = defaultLanguage.ToLower();
+        }
+        else
+        {
+            cboDefaultLanguage.SelectedIndex = 0;
+        }
     }
 }

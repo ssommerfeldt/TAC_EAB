@@ -117,49 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Abbrechen</value>
+  <data name="chkUseFuzzy.Caption" xml:space="preserve">
+    <value>Ähnlich geschrieben (findet Übereinstimmungen mit Schreibfehlern)</value>
   </data>
-  <data name="lblDuplicate.Caption" xml:space="preserve">
-    <value>Duplikat</value>
+  <data name="chkUsePhonic.Caption" xml:space="preserve">
+    <value>Ähnlich klingend (findet Wörter, die ähnlich klingen)</value>
   </data>
   <data name="chkUseStemming.Caption" xml:space="preserve">
     <value>Auf den Wortstamm zurückführen (sucht andere grammatikalische Formen des Wortes)</value>
   </data>
-  <data name="chkUseFuzzy.Caption" xml:space="preserve">
-    <value>Ähnlich geschrieben (findet Übereinstimmungen mit Schreibfehlern)</value>
-  </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Duplikatdefinition nach Treffern:</value>
-  </data>
-  <data name="lblPossible.Caption" xml:space="preserve">
-    <value>Mögliches Duplikat</value>
-  </data>
-  <data name="lblFuzzyLevel.Caption" xml:space="preserve">
-    <value>Ähnlichkeitsstufe:</value>
-  </data>
-  <data name="lblFuzzyLevelNote.Caption" xml:space="preserve">
-    <value>Legt fest, wie viele Zeichen sich unterscheiden dürfen (gültiger Bereich = 1 bis 10)</value>
-  </data>
   <data name="chkUseSynonym.Caption" xml:space="preserve">
     <value>Synonym verwenden (nutzt den Thesaurus, um Synonyme zu finden)</value>
   </data>
-  <data name="chkUsePhonic.Caption" xml:space="preserve">
-    <value>Ähnlich klingend (findet Wörter mit ähnlichem Klang)</value>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Abbrechen</value>
   </data>
   <data name="cmdOK.Caption" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="lblDuplicate.Caption" xml:space="preserve">
+    <value>Duplikat</value>
+  </data>
+  <data name="lblFuzzyLevel.Caption" xml:space="preserve">
+    <value>Ähnlichkeitsstufe:</value>
+  </data>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Duplikatdefinition nach Treffern:</value>
+  </data>
   <data name="lblNoDuplicate.Caption" xml:space="preserve">
     <value>Kein Duplikat</value>
   </data>
-  <data name="lblLowValue.Caption" xml:space="preserve">
-    <value>0</value>
+  <data name="lblPossible.Caption" xml:space="preserve">
+    <value>Mögliches Duplikat</value>
+  </data>
+  <data name="lblTo.Caption" xml:space="preserve">
+    <value>nach</value>
+  </data>
+  <data name="lblFuzzyLevelNote.Caption" xml:space="preserve">
+    <value>Legt fest, wie viele Zeichen sich unterscheiden dürfen (gültiger Bereich = 1 bis 10)</value>
   </data>
   <data name="lblHighValue.Caption" xml:space="preserve">
     <value>100</value>
   </data>
-  <data name="lblTo.Caption" xml:space="preserve">
-    <value>bis</value>
+  <data name="lblLowValue.Caption" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

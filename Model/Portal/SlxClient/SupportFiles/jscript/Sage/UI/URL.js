@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/URL", [
        "dijit/_Widget",
        "Sage/_Templated",
        "dijit/form/ValidationTextBox",
@@ -58,6 +58,9 @@ function (_Widget, _Templated, ValidationTextBox, regexp, TextBox, declare, Util
         },
         postCreate: function () {
             this.formatURL();
+            if (this["class"] && this["class"].length > 0 && this.domNode.firstChild) {
+                this.domNode.firstChild.className = this["class"] + ' ' + this.domNode.firstChild.className;
+            }
             this.inherited(arguments);
         },
         widgetsInTemplate: true,

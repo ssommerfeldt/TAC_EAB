@@ -1,37 +1,38 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="fa9b2ef2-53bb-4a52-be2b-70e36b403672" cardinality="M:1" parentEntityId="ebfd715e-2b2f-4e5e-8c6d-cfc0d9b4ae52" childEntityId="6ab738f6-21b0-4fe2-8df5-6f192281423c">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="fa9b2ef2-53bb-4a52-be2b-70e36b403672" lastModifiedUtc="2015-06-29T05:48:23.3708866Z" cardinality="M:1" parentEntityId="ebfd715e-2b2f-4e5e-8c6d-cfc0d9b4ae52" childEntityId="6ab738f6-21b0-4fe2-8df5-6f192281423c">
+  <extendedMetaData />
   <ExtendedPropertiesCollection>
-    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
+    <extendee type="Sage.Platform.Orm.Entities.OrmRelationship">
+      <extender guid="14807bef-c0cc-4b6d-a517-8388ed8ac2a6">
+        <OrmRelationshipBulkActionExtension canBulkUpdate="true" />
+      </extender>
+    </extendee>
   </ExtendedPropertiesCollection>
-  <column>
-    <OrmRelationshipColumn parentPropertyId="673dfa26-58af-4b48-ad95-34ec4916e097" childPropertyId="ff93a248-20ab-407a-899d-40b1435ca5c3" ordinal="0" />
-  </column>
-  <parentProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRelationProperty" id="35a8e129-e3ea-4d24-960a-ef63cc519e79" name="RegionalManager" displayCategory="Intermediate" displayName="RegionalManager" cultureName="en-US" isNullable="true" include="true">
+  <parentProperty id="35a8e129-e3ea-4d24-960a-ef63cc519e79" lastModifiedUtc="2015-06-29T05:37:34.2058462Z" name="RegionalManager" audited="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
-        <extender guid="4fc827e6-aa9d-4b12-b836-d0871bc288b8">
-          <OrmPropertyExtension>
-            <GenerateGetBy>false</GenerateGetBy>
-          </OrmPropertyExtension>
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
         </extender>
       </extendee>
     </ExtendedPropertiesCollection>
-    <SystemDataType guid="ee1eb00b-6fba-362c-bdbf-f6b422710f0a">
-      <SystemDataTypeBase />
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRelationProperty" id="11071b08-f24b-47e2-9993-28d7cef7d320" name="Property1" displayCategory="Intermediate" displayName="Property1" cultureName="en-US" isNullable="true" include="false">
+  <childProperty id="11071b08-f24b-47e2-9993-28d7cef7d320" lastModifiedUtc="2015-06-29T05:37:34.2058462Z" name="Property1" audited="false" include="false">
     <ExtendedPropertiesCollection>
       <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
-        <extender guid="4fc827e6-aa9d-4b12-b836-d0871bc288b8">
-          <OrmPropertyExtension>
-            <GenerateGetBy>false</GenerateGetBy>
-          </OrmPropertyExtension>
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
         </extender>
       </extendee>
     </ExtendedPropertiesCollection>
-    <SystemDataType guid="ee1eb00b-6fba-362c-bdbf-f6b422710f0a">
-      <SystemDataTypeBase />
+    <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
+      <RelationshipDataType />
     </SystemDataType>
   </childProperty>
+  <column>
+    <OrmRelationshipColumn id="5c060e29-5e4d-422a-a8cb-42715551e170" parentPropertyId="673dfa26-58af-4b48-ad95-34ec4916e097" childPropertyId="ff93a248-20ab-407a-899d-40b1435ca5c3" ordinal="0" />
+  </column>
 </relationship>

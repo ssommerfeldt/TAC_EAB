@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="624b5ff2-8de8-4708-9123-bdcf6cd4c9de" lastModifiedUtc="2015-12-02T09:49:28.6045372Z" name="QFButton_OnClick" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="InsertAccountContact">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="353db18b-5504-440e-9bf9-a3ce6f6e2ea3" paramName="form" sequence="0" paramType="IInsertAccountContact" />
+    <OrmEntityMethodParam id="8535404e-5505-4496-b41d-98e146164d45" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="c4247df4-28f2-49fe-bffe-da2260de3d94" lastModifiedUtc="2015-12-03T07:36:32.0977568Z" targetType="Sage.BusinessRules.CodeSnippets.InsertAccountContactEventHandlers, Sage.SnippetLibrary.CSharp" targetMethod="QFButton_OnClickStep" active="true" codeSnippetId="7d5cff5c-0d85-48a2-80ad-8f931bfc9aab">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="QFTextBox5.Caption" xml:space="preserve">
-    <value>Status:</value>
+  <data name="txtJobNumber.Caption" xml:space="preserve">
+    <value>Auftragsnr.:</value>
+  </data>
+  <data name="QFDateTimePicker.ButtonToolTip" xml:space="preserve">
+    <value>Startdatum:</value>
+  </data>
+  <data name="QFDateTimePicker.Caption" xml:space="preserve">
+    <value>Gestartet am:</value>
+  </data>
+  <data name="QFDateTimePicker2.Caption" xml:space="preserve">
+    <value>Abgeschlossen am:</value>
+  </data>
+  <data name="QFSLXUser.Caption" xml:space="preserve">
+    <value>Gestartet von:</value>
+  </data>
+  <data name="QFTextBox.Caption" xml:space="preserve">
+    <value>Entitätstyp:</value>
+  </data>
+  <data name="QFTextBox2.Caption" xml:space="preserve">
+    <value>Quellenanzahl:</value>
   </data>
   <data name="QFTextBox3.Caption" xml:space="preserve">
     <value>Verarbeitete Anzahl:</value>
+  </data>
+  <data name="QFTextBox4.Caption" xml:space="preserve">
+    <value>Duplikatanzahl:</value>
+  </data>
+  <data name="QFTextBox5.Caption" xml:space="preserve">
+    <value>Status:</value>
   </data>
   <data name="QFTextBox6.Caption" xml:space="preserve">
     <value>Auftragsbeschreibung:</value>
@@ -129,55 +153,34 @@
   <data name="btnSubmitNewJob.Caption" xml:space="preserve">
     <value>Neuen Auftrag senden</value>
   </data>
-  <data name="dgDeDupResults.ff8fcd6d-cda1-4ba6-a248-aa30d055cf46.ColumnHeading" xml:space="preserve">
-    <value>Quellentyp</value>
-  </data>
-  <data name="txtJobNumber.Caption" xml:space="preserve">
-    <value>Auftragsnr.:</value>
-  </data>
-  <data name="dgDeDupResults.7e5d6d22-412e-490f-92a5-cbea31258e6e.Text" xml:space="preserve">
-    <value>Auflösen</value>
-  </data>
-  <data name="QFDateTimePicker.ButtonToolTip" xml:space="preserve">
-    <value>Anfangsdatum:</value>
-  </data>
-  <data name="error_RecordNotFound" xml:space="preserve">
-    <value>Datensatz wurde nicht gefunden.</value>
-  </data>
-  <data name="ResultDetail_DialogCaption" xml:space="preserve">
-    <value>Doppelten Datensatz auflösen</value>
-  </data>
-  <data name="btnDelete.ToolTip" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
   <data name="btnSubmitNewJob.ToolTip" xml:space="preserve">
     <value>Neuen Auftrag senden</value>
   </data>
   <data name="txtSourceDesc.Caption" xml:space="preserve">
     <value>Quellenbeschreibung:</value>
   </data>
-  <data name="QFDateTimePicker.Caption" xml:space="preserve">
-    <value>Begonnen am:</value>
+  <data name="dgDeDupResults.ff8fcd6d-cda1-4ba6-a248-aa30d055cf46.ColumnHeading" xml:space="preserve">
+    <value>Quellentyp</value>
   </data>
-  <data name="QFSLXUser.Caption" xml:space="preserve">
-    <value>Gestartet von:</value>
+  <data name="dgDeDupResults.7e5d6d22-412e-490f-92a5-cbea31258e6e.Text" xml:space="preserve">
+    <value>Auflösen</value>
+  </data>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Sie sind im Begriff, diesen Datensatz endgültig zu löschen.</value>
+  </data>
+  <data name="ResultDetail_DialogCaption" xml:space="preserve">
+    <value>Doppelten Datensatz auflösen</value>
   </data>
   <data name="error_JobResultResolved" xml:space="preserve">
     <value>Dieses Übereinstimmungsergebnis wurde bereits zusammengeführt. Es sind keine weiteren Aktionen möglich.</value>
   </data>
-  <data name="QFTextBox4.Caption" xml:space="preserve">
-    <value>Duplikatanzahl:</value>
+  <data name="btnDelete.ToolTip" xml:space="preserve">
+    <value>Löschen</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Sie sind im Begriff, diesen Datensatz permanent zu löschen.</value>
+  <data name="error_RecordNotFound" xml:space="preserve">
+    <value>Datensatz wurde nicht gefunden.</value>
   </data>
-  <data name="QFTextBox2.Caption" xml:space="preserve">
-    <value>Quellenanzahl:</value>
-  </data>
-  <data name="QFTextBox.Caption" xml:space="preserve">
-    <value>Entitätstyp:</value>
-  </data>
-  <data name="QFDateTimePicker2.Caption" xml:space="preserve">
-    <value>Abgeschlossen am:</value>
+  <data name="QFTextBox4.Text" xml:space="preserve">
+    <value />
   </data>
 </root>

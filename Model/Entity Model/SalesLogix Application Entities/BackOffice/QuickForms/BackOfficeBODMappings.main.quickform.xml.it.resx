@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BODMappingName.Caption" xml:space="preserve">
+    <value>Nome mappatura BOD</value>
+  </data>
+  <data name="FieldMappings.Caption" xml:space="preserve">
+    <value>Mappature campi</value>
+  </data>
+  <data name="IsActive.Caption" xml:space="preserve">
+    <value>È attivo</value>
+  </data>
+  <data name="IsCustom.Caption" xml:space="preserve">
+    <value>È personalizzato</value>
+  </data>
+  <data name="Noun.Caption" xml:space="preserve">
+    <value>Noun</value>
+  </data>
+  <data name="grdBODMappings.ef8f691b-e793-4247-a716-9ecad267fd68.ColumnHeading" xml:space="preserve">
+    <value>Nome mappatura BOD</value>
+  </data>
+  <data name="grdBODMappings.0226cb36-e55e-4efc-8510-fcd20ee6b537.ColumnHeading" xml:space="preserve">
+    <value>Mappatura BOD</value>
+  </data>
+  <data name="grdBODMappings.e408f863-3c79-4b09-a221-63617db8c828.ColumnHeading" xml:space="preserve">
+    <value>È attivo</value>
+  </data>
+  <data name="grdBODMappings.13a548ad-6c4d-4591-8939-34b8ca3a0293.ColumnHeading" xml:space="preserve">
+    <value>È personalizzato</value>
+  </data>
+  <data name="grdBODMappings.faf4e70b-30a6-40f0-9331-87173be5f89c.ColumnHeading" xml:space="preserve">
+    <value>Mappatura campi</value>
+  </data>
+  <data name="grdBODMappings.9a87ec0f-59f5-4f71-b91c-9e787b4c7e9b.ColumnHeading" xml:space="preserve">
+    <value>Noun</value>
+  </data>
+  <data name="grdBODMappings.64c8519b-45dc-46ec-a7b2-70656a4de9d3.ColumnHeading" xml:space="preserve">
+    <value>Personalizzato</value>
+  </data>
+  <data name="grdBODMappings.e730e77d-4aa8-4de8-8186-e6cecd2a7e38.ColumnHeading" xml:space="preserve">
+    <value>Attivo</value>
+  </data>
+  <data name="grdBODMappings.ba2cbacf-8d4d-4ca4-9521-c02414371a56.ColumnHeading" xml:space="preserve">
+    <value>Entità</value>
+  </data>
+  <data name="grdBODMappings.332bd424-7f08-4e42-b8e9-1cddb999cb9b.ColumnHeading" xml:space="preserve">
+    <value>Priorità</value>
+  </data>
+  <data name="grdBODMappings.d51fb2f3-40a3-4c5a-8785-be4c9f4835cb.ColumnHeading" xml:space="preserve">
+    <value>Classe gestore</value>
+  </data>
+  <data name="grdBODMappings.Cancel.ToolTip" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="btnAdd.ToolTip" xml:space="preserve">
+    <value>Aggiungi nuova mappatura BOD</value>
+  </data>
+  <data name="grdBODMappings.Save.ToolTip" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="grdBODMappings.63c5d7f5-aadd-4c02-8bd8-4ad44c62c8e6.ColumnHeading" xml:space="preserve">
+    <value>Abilita dati in uscita</value>
+  </data>
+  <data name="error_StdBODMappingReadOnly" xml:space="preserve">
+    <value>Impossibile modificare la mappatura di BOD standard.</value>
+  </data>
+  <data name="grdBODMappings.99f60902-fe60-4c93-adb3-7448000bbc7b.ColumnHeading" xml:space="preserve">
+    <value>Integrazione nuovi dati</value>
+  </data>
+  <data name="grdBODMappings.b3a7e5f8-3f0d-40fa-93be-b088a20dbd46.ColumnHeading" xml:space="preserve">
+    <value>Integrazione dati aggiornati</value>
+  </data>
+  <data name="grdBODMappings.38d4b5f0-548d-4629-9eb9-05d5120c0053.ColumnHeading" xml:space="preserve">
+    <value>Integrazione dati eliminati</value>
+  </data>
+  <data name="grdBODMappings.2e0f9df9-81d0-4e04-b666-615b7b83255d.ColumnHeading" xml:space="preserve">
+    <value>Sistema di record</value>
+  </data>
+</root>

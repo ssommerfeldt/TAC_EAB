@@ -1,11 +1,11 @@
-define((
-{ selectAllText: 'Seleziona Tutto',
-  findItemText: 'Trova utente:',
-  findText: 'Trova',
-  clearText: 'Pulisci',
-  dialogTitle: 'Modifica utenti calendario',
-  okText: 'OK',
-  cancelText: 'Annulla',
-  maxUsersErrorMessage: 'Non è possibile selezionare più di ${0} utenti (inclusi se stessi). Cancellare uno degli utenti attualmente selezionati e riprovare.',
-  updateErrorMessage: 'Errore durante aggiornamento degli utenti del calendario' }
-));
+define("Sage/UI/nls/it/EditCalendarUsers", {
+    "selectAllText": "Seleziona tutto",
+    "findItemText": "Trova utente:",
+    "findText": "Trova",
+    "clearText": "Cancella",
+    "dialogTitle": "Modifica utenti calendario",
+    "okText": "OK",
+    "cancelText": "Annulla",
+    "maxUsersErrorMessage": "Non è possibile selezionare più di ${0} utenti (inclusi se stessi). Cancellare uno degli utenti attualmente selezionati e riprovare.",
+    "updateErrorMessage": "Errore durante l'aggiornamento degli utenti del calendario"
+});

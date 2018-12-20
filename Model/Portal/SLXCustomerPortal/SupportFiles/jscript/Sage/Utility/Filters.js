@@ -1,10 +1,11 @@
 /*globals Sage, window, define, sessionStorage */
-define([
+define("Sage/Utility/Filters", [
         'dojo/_base/lang',
         'Sage/Data/SDataServiceRegistry',
-        'dojo/json'
+        'dojo/json',
+		'Sage/Utility'
 ],
-function (lang, SDataServiceRegistry, json) {
+function (lang, SDataServiceRegistry, json, utility) {
     Sage.namespace('Utility.Filters');
     lang.mixin(Sage.Utility.Filters, {
         getHiddenFiltersKey: function () {
@@ -19,7 +20,7 @@ function (lang, SDataServiceRegistry, json) {
                 groupId = groupId.replace(/ /g, '_').replace(/'/g, '_');
                 key = keyPart + groupId;
             }
-            
+
             return key;
         },
         setHiddenFilters: function (key, value) {
@@ -43,14 +44,15 @@ function (lang, SDataServiceRegistry, json) {
         },
         getHiddenFilters: function (key, success, failure) {
             var service, request, entry, data;
-            data = sessionStorage.getItem(key);
+			var encKey = utility.htmlEncode(key);
+            data = sessionStorage.getItem(encKey);
 
             if (data === null) {
                 service = SDataServiceRegistry.getSDataService('system');
                 entry = {
                     '$name': 'getHiddenFilters',
                     'request': {
-                        'key': key
+                        'key': encKey
                     }
                 };
 
@@ -81,11 +83,14 @@ function (lang, SDataServiceRegistry, json) {
                 case '6b0b3d51-0728-4b67-9473-52836a81da53': // Short Integer
                 case '2596d57d-89d6-4b72-9036-b18c64c5324c': // Decimal
                 case 'f37c635c-9fbf-40d8-98d5-750a54a3cca1': // Double
+                case '44bc190a-99f3-4fa9-98a3-d5b2336d6e7c': // Calculated Number
                     return 'numeric';
                 case 'ccc0f01d-7ba5-408e-8526-a3f942354b3a': // Text
                 case '76c537a8-8b08-4b35-84cf-fa95c6c133b0': // Unicode Text
                 case 'b71918bf-fac1-4b62-9ed5-0b0294bc9900': // PickList
                 case '517d5e69-9efa-4d0a-8e7a-1c7691f921ba': // Dependency Lookup
+                case 'f750817f-73ad-4bf3-b2de-bd0f5cc47dfd': // Calculated String
+                case '85f2bba5-1fb7-4ecf-941a-d98d4739c305': // Phone		
                     return 'string';
                 case '8edd8fce-2be5-4d3d-bedd-ea667e78a8af': // Enum
                     return 'enum';
@@ -111,12 +116,14 @@ function (lang, SDataServiceRegistry, json) {
                     break;
                 case '2596d57d-89d6-4b72-9036-b18c64c5324c': // Decimal
                 case 'f37c635c-9fbf-40d8-98d5-750a54a3cca1': // Double
+                case '44bc190a-99f3-4fa9-98a3-d5b2336d6e7c': // Calculated Number
                     results = 'Decimal';
                     break;
                 case 'ccc0f01d-7ba5-408e-8526-a3f942354b3a': // Text
                 case '76c537a8-8b08-4b35-84cf-fa95c6c133b0': // Unicode Text
                 case 'b71918bf-fac1-4b62-9ed5-0b0294bc9900': // PickList
                 case '517d5e69-9efa-4d0a-8e7a-1c7691f921ba': // Dependency Lookup
+                case 'f750817f-73ad-4bf3-b2de-bd0f5cc47dfd': // Calculated String
                     results = 'String';
                     break;
                 case '1f08f2eb-87c8-443b-a7c2-a51f590923f5': // DateTime
@@ -132,6 +139,6 @@ function (lang, SDataServiceRegistry, json) {
             return results;
         }
     });
-    
+
     return Sage.Utility.Filters;
 });

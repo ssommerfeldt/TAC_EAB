@@ -13,7 +13,7 @@
     }
     .style3
     {
-    	width: 400px;
+        width: 400px;
     }
 </style>
 
@@ -29,13 +29,13 @@
 </div>
 
 <table border="0" cellpadding="1" cellspacing="0" class="formtable">
-	<col /><col /><col /><col />
-	    <tr>
-	        <td class="style1">
-	            <div class="lbl">
-	                <asp:RadioButton runat="server" ID="rdbNew" Text="<%$ resources: rdgSearchType_New.Caption %>" GroupName="SearchType"
-	                    OnCheckedChanged="OnSearch_Click" AutoPostBack="true" />
-	            </div>
+    <col /><col /><col /><col />
+        <tr>
+            <td class="style1">
+                <div class="lbl">
+                    <asp:RadioButton runat="server" ID="rdbNew" Text="<%$ resources: rdgSearchType_New.Caption %>" GroupName="SearchType"
+                        OnCheckedChanged="OnSearch_Click" AutoPostBack="true" />
+                </div>
             </td>
             <td class="style2">
                 <div class="slxlabel alignleft">
@@ -52,7 +52,7 @@
         <tr>
             <td class="style1">
                 <div runat="server" id="divUpdatedOption" class="lbl">
-                    <asp:RadioButton runat="server" ID="rdbUpdated" Text="<%$ resources: rdgSearchType_Updated.Caption %>" GroupName="SearchType" 
+                    <asp:RadioButton runat="server" ID="rdbUpdated" Text="<%$ resources: rdgSearchType_Updated.Caption %>" GroupName="SearchType"
                         OnCheckedChanged="OnSearch_Click" AutoPostBack="true" />
                 </div>
             </td>
@@ -135,5 +135,5 @@
         if (divDeletedOption != null)
             divDeletedOption.style.display = deletedDisplay;
     }
-    
+
 </script>

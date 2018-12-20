@@ -1,1280 +1,589 @@
-require({cache:{
-'Sage/Utility/File/nls/pt/FallbackFilePicker':function(){
-define('Sage/Utility/File/nls/pt/FallbackFilePicker',{});
-},
-'Sage/Utility/File/nls/pt-pt/FallbackFilePicker':function(){
-define('Sage/Utility/File/nls/pt-pt/FallbackFilePicker',{});
-},
-'Sage/UI/nls/pt/Boolean':function(){
-define('Sage/UI/nls/pt/Boolean',{});
-},
-'Sage/UI/nls/pt-pt/Boolean':function(){
-define('Sage/UI/nls/pt-pt/Boolean',{});
-},
-'Sage/Services/nls/pt/ActivityService':function(){
-define('Sage/Services/nls/pt/ActivityService',{});
-},
-'Sage/Services/nls/pt-pt/ActivityService':function(){
-define('Sage/Services/nls/pt-pt/ActivityService',{});
-},
-'Sage/UI/Controls/nls/pt/CopyToClipboard':function(){
-define('Sage/UI/Controls/nls/pt/CopyToClipboard',{});
-},
-'Sage/UI/Controls/nls/pt-pt/CopyToClipboard':function(){
-define('Sage/UI/Controls/nls/pt-pt/CopyToClipboard',{});
-},
-'Sage/Utility/nls/pt/Activity':function(){
-define('Sage/Utility/nls/pt/Activity',{});
-},
-'Sage/Utility/nls/pt-pt/Activity':function(){
-define('Sage/Utility/nls/pt-pt/Activity',{});
-},
-'Sage/QuickForms/Design/nls/pt/DesignPanel':function(){
-define('Sage/QuickForms/Design/nls/pt/DesignPanel',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/DesignPanel':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/DesignPanel',{});
-},
-'Sage/UI/nls/pt/TimelessActivitiesPane':function(){
-define('Sage/UI/nls/pt/TimelessActivitiesPane',{});
-},
-'Sage/UI/nls/pt-pt/TimelessActivitiesPane':function(){
-define('Sage/UI/nls/pt-pt/TimelessActivitiesPane',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/ActivityEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/ActivityEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/ActivityEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/ActivityEditor',{});
-},
-'Sage/TaskPane/User/nls/pt/ContactUserAssociationEditor':function(){
-define('Sage/TaskPane/User/nls/pt/ContactUserAssociationEditor',{});
-},
-'Sage/TaskPane/User/nls/pt-pt/ContactUserAssociationEditor':function(){
-define('Sage/TaskPane/User/nls/pt-pt/ContactUserAssociationEditor',{});
-},
-'Sage/MainView/nls/pt/ActivityManager':function(){
-define('Sage/MainView/nls/pt/ActivityManager',{});
-},
-'Sage/MainView/nls/pt-pt/ActivityManager':function(){
-define('Sage/MainView/nls/pt-pt/ActivityManager',{});
-},
-'Sage/Services/nls/pt/JobService':function(){
-define('Sage/Services/nls/pt/JobService',{});
-},
-'Sage/Services/nls/pt-pt/JobService':function(){
-define('Sage/Services/nls/pt-pt/JobService',{});
-},
-'Sage/QuickForms/Design/nls/pt/NumericControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/NumericControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/NumericControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/NumericControlDesigner',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/_PropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/_PropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/_PropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/_PropertyEditor',{});
-},
-'Sage/Services/nls/pt/ActivityActionProcessor':function(){
-define('Sage/Services/nls/pt/ActivityActionProcessor',{});
-},
-'Sage/Services/nls/pt-pt/ActivityActionProcessor':function(){
-define('Sage/Services/nls/pt-pt/ActivityActionProcessor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/TextBoxBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/TextBoxBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/TextBoxBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/TextBoxBasicPropertyEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/QuickCompleteEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/QuickCompleteEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/QuickCompleteEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/QuickCompleteEditor',{});
-},
-'Sage/Utility/File/nls/pt/DefaultDropHandler':function(){
-define('Sage/Utility/File/nls/pt/DefaultDropHandler',{});
-},
-'Sage/Utility/File/nls/pt-pt/DefaultDropHandler':function(){
-define('Sage/Utility/File/nls/pt-pt/DefaultDropHandler',{});
-},
-'Sage/Utility/File/nls/pt/AttachmentPropertiesEditForm':function(){
-define('Sage/Utility/File/nls/pt/AttachmentPropertiesEditForm',{});
-},
-'Sage/Utility/File/nls/pt-pt/AttachmentPropertiesEditForm':function(){
-define('Sage/Utility/File/nls/pt-pt/AttachmentPropertiesEditForm',{});
-},
-'Sage/UI/Alarms/nls/pt/AlarmPane':function(){
-define('Sage/UI/Alarms/nls/pt/AlarmPane',{});
-},
-'Sage/UI/Alarms/nls/pt-pt/AlarmPane':function(){
-define('Sage/UI/Alarms/nls/pt-pt/AlarmPane',{});
-},
-'Sage/TaskPane/nls/pt/LiteratureManagementTasks':function(){
-define('Sage/TaskPane/nls/pt/LiteratureManagementTasks',{});
-},
-'Sage/TaskPane/nls/pt-pt/LiteratureManagementTasks':function(){
-define('Sage/TaskPane/nls/pt-pt/LiteratureManagementTasks',{});
-},
-'Sage/UI/Dashboard/nls/pt/DashboardWidget':function(){
-define('Sage/UI/Dashboard/nls/pt/DashboardWidget',{});
-},
-'Sage/UI/Dashboard/nls/pt-pt/DashboardWidget':function(){
-define('Sage/UI/Dashboard/nls/pt-pt/DashboardWidget',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/NumericAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/NumericAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/NumericAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/NumericAdvancedPropertyEditor',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt/CustomerPaymentsRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/pt/CustomerPaymentsRTDV',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt-pt/CustomerPaymentsRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/pt-pt/CustomerPaymentsRTDV',{});
-},
-'Sage/UI/Filters/nls/pt/FilterPanel':function(){
-define('Sage/UI/Filters/nls/pt/FilterPanel',{});
-},
-'Sage/UI/Filters/nls/pt-pt/FilterPanel':function(){
-define('Sage/UI/Filters/nls/pt-pt/FilterPanel',{});
-},
-'Sage/TaskPane/nls/pt/_BaseTaskPaneTasklet':function(){
-define('Sage/TaskPane/nls/pt/_BaseTaskPaneTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/_BaseTaskPaneTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/_BaseTaskPaneTasklet',{});
-},
-'Sage/MainView/ReportMgr/nls/pt/ReportManagerFormatter':function(){
-define('Sage/MainView/ReportMgr/nls/pt/ReportManagerFormatter',{});
-},
-'Sage/MainView/ReportMgr/nls/pt-pt/ReportManagerFormatter':function(){
-define('Sage/MainView/ReportMgr/nls/pt-pt/ReportManagerFormatter',{});
-},
-'Sage/UI/nls/pt/OwnerType':function(){
-define('Sage/UI/nls/pt/OwnerType',{});
-},
-'Sage/UI/nls/pt-pt/OwnerType':function(){
-define('Sage/UI/nls/pt-pt/OwnerType',{});
-},
-'Sage/TaskPane/nls/pt/LeadTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt/LeadTasksTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/LeadTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/LeadTasksTasklet',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/SnoozeOptions':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/SnoozeOptions',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/SnoozeOptions':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/SnoozeOptions',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/OwnerAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/OwnerAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/OwnerAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/OwnerAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/NonVisibleAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/NonVisibleAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/NonVisibleAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/NonVisibleAdvancedPropertyEditor',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt/InvoiceRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/pt/InvoiceRTDV',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt-pt/InvoiceRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/pt-pt/InvoiceRTDV',{});
-},
-'Sage/UI/nls/pt/SDataLookup':function(){
-define('Sage/UI/nls/pt/SDataLookup',{});
-},
-'Sage/UI/nls/pt-pt/SDataLookup':function(){
-define('Sage/UI/nls/pt-pt/SDataLookup',{});
-},
-'Sage/QuickForms/Design/nls/pt/RowDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/RowDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/RowDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/RowDesigner',{});
-},
-'Sage/TaskPane/nls/pt/OpportunityTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt/OpportunityTasksTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/OpportunityTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/OpportunityTasksTasklet',{});
-},
-'Sage/UI/Filters/nls/pt/CheckBoxFilter':function(){
-define('Sage/UI/Filters/nls/pt/CheckBoxFilter',{});
-},
-'Sage/UI/Filters/nls/pt-pt/CheckBoxFilter':function(){
-define('Sage/UI/Filters/nls/pt-pt/CheckBoxFilter',{});
-},
-'Sage/Utility/File/nls/pt/LibraryDocument':function(){
-define('Sage/Utility/File/nls/pt/LibraryDocument',{});
-},
-'Sage/Utility/File/nls/pt-pt/LibraryDocument':function(){
-define('Sage/Utility/File/nls/pt-pt/LibraryDocument',{});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt/SpeedSearchLookup':function(){
-define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt/SpeedSearchLookup',{});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt-pt/SpeedSearchLookup':function(){
-define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt-pt/SpeedSearchLookup',{});
-},
-'Sage/UI/nls/pt/ConditionManager':function(){
-define('Sage/UI/nls/pt/ConditionManager',{});
-},
-'Sage/UI/nls/pt-pt/ConditionManager':function(){
-define('Sage/UI/nls/pt-pt/ConditionManager',{});
-},
-'Sage/UI/Dashboard/nls/pt/WidgetDefinition':function(){
-define('Sage/UI/Dashboard/nls/pt/WidgetDefinition',{});
-},
-'Sage/UI/Dashboard/nls/pt-pt/WidgetDefinition':function(){
-define('Sage/UI/Dashboard/nls/pt-pt/WidgetDefinition',{});
-},
-'Sage/UI/nls/pt/SearchConditionWidget':function(){
-define('Sage/UI/nls/pt/SearchConditionWidget',{});
-},
-'Sage/UI/nls/pt-pt/SearchConditionWidget':function(){
-define('Sage/UI/nls/pt-pt/SearchConditionWidget',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/GenericBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/GenericBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/GenericBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/GenericBasicPropertyEditor',{});
-},
-'Sage/MainView/JobMgr/nls/pt/JobManagerActions':function(){
-define('Sage/MainView/JobMgr/nls/pt/JobManagerActions',{});
-},
-'Sage/MainView/JobMgr/nls/pt-pt/JobManagerActions':function(){
-define('Sage/MainView/JobMgr/nls/pt-pt/JobManagerActions',{});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt/ContactLookupConfig':function(){
-define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt/ContactLookupConfig',{});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt-pt/ContactLookupConfig':function(){
-define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt-pt/ContactLookupConfig',{});
-},
-'Sage/QuickForms/Design/nls/pt/DataSourcePanel':function(){
-define('Sage/QuickForms/Design/nls/pt/DataSourcePanel',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/DataSourcePanel':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/DataSourcePanel',{});
-},
-'Sage/Library/nls/pt/Manager':function(){
-define('Sage/Library/nls/pt/Manager',{});
-},
-'Sage/Library/nls/pt-pt/Manager':function(){
-define('Sage/Library/nls/pt-pt/Manager',{});
-},
-'Sage/UI/nls/pt/GroupsTitlePaneConfigProvider':function(){
-define('Sage/UI/nls/pt/GroupsTitlePaneConfigProvider',{});
-},
-'Sage/UI/nls/pt-pt/GroupsTitlePaneConfigProvider':function(){
-define('Sage/UI/nls/pt-pt/GroupsTitlePaneConfigProvider',{});
-},
-'Sage/QuickForms/Design/nls/pt/NonVisibleControlContainer':function(){
-define('Sage/QuickForms/Design/nls/pt/NonVisibleControlContainer',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/NonVisibleControlContainer':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/NonVisibleControlContainer',{});
-},
-'Sage/UI/Controls/nls/pt/Name':function(){
-define('Sage/UI/Controls/nls/pt/Name',{});
-},
-'Sage/UI/Controls/nls/pt-pt/Name':function(){
-define('Sage/UI/Controls/nls/pt-pt/Name',{});
-},
-'Sage/MainView/JobMgr/nls/pt/ExecutionsListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/pt/ExecutionsListPanelConfig',{});
-},
-'Sage/MainView/JobMgr/nls/pt-pt/ExecutionsListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/pt-pt/ExecutionsListPanelConfig',{});
-},
-'Sage/QuickForms/Design/nls/pt/PhoneControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/PhoneControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/PhoneControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/PhoneControlDesigner',{});
-},
-'Sage/MainView/Lead/nls/pt/UpdateLeads':function(){
-define('Sage/MainView/Lead/nls/pt/UpdateLeads',{});
-},
-'Sage/MainView/Lead/nls/pt-pt/UpdateLeads':function(){
-define('Sage/MainView/Lead/nls/pt-pt/UpdateLeads',{});
-},
-'Sage/Library/nls/pt/FileHandler':function(){
-define('Sage/Library/nls/pt/FileHandler',{});
-},
-'Sage/Library/nls/pt-pt/FileHandler':function(){
-define('Sage/Library/nls/pt-pt/FileHandler',{});
-},
-'Sage/UI/nls/pt/ListPanel':function(){
-define('Sage/UI/nls/pt/ListPanel',{});
-},
-'Sage/UI/nls/pt-pt/ListPanel':function(){
-define('Sage/UI/nls/pt-pt/ListPanel',{});
-},
-'Sage/Utility/nls/pt/Sql':function(){
-define('Sage/Utility/nls/pt/Sql',{});
-},
-'Sage/Utility/nls/pt-pt/Sql':function(){
-define('Sage/Utility/nls/pt-pt/Sql',{});
-},
-'Sage/UI/Filters/nls/pt/EditFilters':function(){
-define('Sage/UI/Filters/nls/pt/EditFilters',{});
-},
-'Sage/UI/Filters/nls/pt-pt/EditFilters':function(){
-define('Sage/UI/Filters/nls/pt-pt/EditFilters',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/FormUsagesPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/FormUsagesPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/FormUsagesPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/FormUsagesPropertyEditor',{});
-},
-'Sage/UI/Controls/nls/pt/DurationSelect':function(){
-define('Sage/UI/Controls/nls/pt/DurationSelect',{});
-},
-'Sage/UI/Controls/nls/pt-pt/DurationSelect':function(){
-define('Sage/UI/Controls/nls/pt-pt/DurationSelect',{});
-},
-'Sage/UI/Alarms/nls/pt/AlarmCountDown':function(){
-define('Sage/UI/Alarms/nls/pt/AlarmCountDown',{});
-},
-'Sage/UI/Alarms/nls/pt-pt/AlarmCountDown':function(){
-define('Sage/UI/Alarms/nls/pt-pt/AlarmCountDown',{});
-},
-'Sage/UI/nls/pt/AttachmentList':function(){
-define('Sage/UI/nls/pt/AttachmentList',{});
-},
-'Sage/UI/nls/pt-pt/AttachmentList':function(){
-define('Sage/UI/nls/pt-pt/AttachmentList',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/RowBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/RowBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/RowBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/RowBasicPropertyEditor',{});
-},
-'Sage/MainView/JobMgr/nls/pt/RunJobDialog':function(){
-define('Sage/MainView/JobMgr/nls/pt/RunJobDialog',{});
-},
-'Sage/MainView/JobMgr/nls/pt-pt/RunJobDialog':function(){
-define('Sage/MainView/JobMgr/nls/pt-pt/RunJobDialog',{});
-},
-'Sage/QuickForms/Design/nls/pt/CheckBoxControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/CheckBoxControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/CheckBoxControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/CheckBoxControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt/EditableGridControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/EditableGridControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/EditableGridControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/EditableGridControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt/HiddenControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/HiddenControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/HiddenControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/HiddenControlDesigner',{});
-},
-'Sage/UI/Dashboard/nls/pt/DashboardWidgetCell':function(){
-define('Sage/UI/Dashboard/nls/pt/DashboardWidgetCell',{});
-},
-'Sage/UI/Dashboard/nls/pt-pt/DashboardWidgetCell':function(){
-define('Sage/UI/Dashboard/nls/pt-pt/DashboardWidgetCell',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/UserBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/UserBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/UserBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/UserBasicPropertyEditor',{});
-},
-'Sage/UI/nls/pt/Dialogs':function(){
-define('Sage/UI/nls/pt/Dialogs',{});
-},
-'Sage/UI/nls/pt-pt/Dialogs':function(){
-define('Sage/UI/nls/pt-pt/Dialogs',{});
-},
-'Sage/TaskPane/nls/pt/SecuredActionTasklet':function(){
-define('Sage/TaskPane/nls/pt/SecuredActionTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/SecuredActionTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/SecuredActionTasklet',{});
-},
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/pt/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/pt/SyncedListPanelConfig',{});
-},
-'Sage/Extensions/Activity/ActivityListCustomTabs/nls/pt-pt/SyncedListPanelConfig':function(){
-define('Sage/Extensions/Activity/ActivityListCustomTabs/nls/pt-pt/SyncedListPanelConfig',{});
-},
-'Sage/UI/Dashboard/nls/pt/DashboardTabController':function(){
-define('Sage/UI/Dashboard/nls/pt/DashboardTabController',{});
-},
-'Sage/UI/Dashboard/nls/pt-pt/DashboardTabController':function(){
-define('Sage/UI/Dashboard/nls/pt-pt/DashboardTabController',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt/SalesOrderRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/pt/SalesOrderRTDV',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt-pt/SalesOrderRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/pt-pt/SalesOrderRTDV',{});
-},
-'Sage/QuickForms/Design/nls/pt/UserControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/UserControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/UserControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/UserControlDesigner',{});
-},
-'Sage/Groups/nls/pt/GroupNavigator':function(){
-define('Sage/Groups/nls/pt/GroupNavigator',{});
-},
-'Sage/Groups/nls/pt-pt/GroupNavigator':function(){
-define('Sage/Groups/nls/pt-pt/GroupNavigator',{});
-},
-'Sage/Utility/File/nls/pt/AddURLAttachment':function(){
-define('Sage/Utility/File/nls/pt/AddURLAttachment',{});
-},
-'Sage/Utility/File/nls/pt-pt/AddURLAttachment':function(){
-define('Sage/Utility/File/nls/pt-pt/AddURLAttachment',{});
-},
-'Sage/UI/Filters/nls/pt/EditFilterItems':function(){
-define('Sage/UI/Filters/nls/pt/EditFilterItems',{});
-},
-'Sage/UI/Filters/nls/pt-pt/EditFilterItems':function(){
-define('Sage/UI/Filters/nls/pt-pt/EditFilterItems',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportsFormatter':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportsFormatter',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportsFormatter':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportsFormatter',{});
-},
-'Sage/Utility/File/nls/pt/DragDropWatcher':function(){
-define('Sage/Utility/File/nls/pt/DragDropWatcher',{});
-},
-'Sage/Utility/File/nls/pt-pt/DragDropWatcher':function(){
-define('Sage/Utility/File/nls/pt-pt/DragDropWatcher',{});
-},
-'Sage/QuickForms/Design/nls/pt/DesignSurface':function(){
-define('Sage/QuickForms/Design/nls/pt/DesignSurface',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/DesignSurface':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/DesignSurface',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/ConfirmListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/ConfirmListPanelConfig',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/ConfirmListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/ConfirmListPanelConfig',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/FormAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/FormAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/FormAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/FormAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/EventListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/EventListPanelConfig',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/EventListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/EventListPanelConfig',{});
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/pt/AllOpenListPanelConfig':function(){
-define('Sage/Extensions/Activity/ListPanelOverrides/nls/pt/AllOpenListPanelConfig',{});
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/pt-pt/AllOpenListPanelConfig':function(){
-define('Sage/Extensions/Activity/ListPanelOverrides/nls/pt-pt/AllOpenListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/MultiselectNumberParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/MultiselectNumberParameterEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/MultiselectNumberParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/MultiselectNumberParameterEditor',{});
-},
-'Sage/UI/nls/pt/ActivityScheduler':function(){
-define('Sage/UI/nls/pt/ActivityScheduler',{});
-},
-'Sage/UI/nls/pt-pt/ActivityScheduler':function(){
-define('Sage/UI/nls/pt-pt/ActivityScheduler',{});
-},
-'Sage/MainView/nls/pt/SecurityManager':function(){
-define('Sage/MainView/nls/pt/SecurityManager',{});
-},
-'Sage/MainView/nls/pt-pt/SecurityManager':function(){
-define('Sage/MainView/nls/pt-pt/SecurityManager',{});
-},
-'Sage/TaskPane/nls/pt/ActivityTaskConfigurationProvider':function(){
-define('Sage/TaskPane/nls/pt/ActivityTaskConfigurationProvider',{});
-},
-'Sage/TaskPane/nls/pt-pt/ActivityTaskConfigurationProvider':function(){
-define('Sage/TaskPane/nls/pt-pt/ActivityTaskConfigurationProvider',{});
-},
-'Sage/UI/Controls/nls/pt/EntityInfoToolTip':function(){
-define('Sage/UI/Controls/nls/pt/EntityInfoToolTip',{});
-},
-'Sage/UI/Controls/nls/pt-pt/EntityInfoToolTip':function(){
-define('Sage/UI/Controls/nls/pt-pt/EntityInfoToolTip',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/ActivityGroupContextService':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/ActivityGroupContextService',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/ActivityGroupContextService':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/ActivityGroupContextService',{});
-},
-'Sage/MainView/ReportMgr/Common/nls/pt/ExportOptionsDialog':function(){
-define('Sage/MainView/ReportMgr/Common/nls/pt/ExportOptionsDialog',{});
-},
-'Sage/MainView/ReportMgr/Common/nls/pt-pt/ExportOptionsDialog':function(){
-define('Sage/MainView/ReportMgr/Common/nls/pt-pt/ExportOptionsDialog',{});
-},
-'Sage/MainView/Opportunity/nls/pt/UpdateOpportunities':function(){
-define('Sage/MainView/Opportunity/nls/pt/UpdateOpportunities',{});
-},
-'Sage/MainView/Opportunity/nls/pt-pt/UpdateOpportunities':function(){
-define('Sage/MainView/Opportunity/nls/pt-pt/UpdateOpportunities',{});
-},
-'Sage/UI/nls/pt/EditCalendarUsers':function(){
-define('Sage/UI/nls/pt/EditCalendarUsers',{});
-},
-'Sage/UI/nls/pt-pt/EditCalendarUsers':function(){
-define('Sage/UI/nls/pt-pt/EditCalendarUsers',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportParametersDialog':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportParametersDialog',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportParametersDialog':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportParametersDialog',{});
-},
-'Sage/QuickForms/Design/nls/pt/DateTimePickerControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/DateTimePickerControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/DateTimePickerControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/DateTimePickerControlDesigner',{});
-},
-'Sage/UI/Controls/nls/pt/HelpMenu':function(){
-define('Sage/UI/Controls/nls/pt/HelpMenu',{});
-},
-'Sage/UI/Controls/nls/pt-pt/HelpMenu':function(){
-define('Sage/UI/Controls/nls/pt-pt/HelpMenu',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/LayoutPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/LayoutPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/LayoutPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/LayoutPropertyEditor',{});
-},
-'Sage/TaskPane/nls/pt/UserTasklet':function(){
-define('Sage/TaskPane/nls/pt/UserTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/UserTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/UserTasklet',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/NumberParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/NumberParameterEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/NumberParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/NumberParameterEditor',{});
-},
-'Sage/UI/Alarms/nls/pt/ActivityAlarm':function(){
-define('Sage/UI/Alarms/nls/pt/ActivityAlarm',{});
-},
-'Sage/UI/Alarms/nls/pt-pt/ActivityAlarm':function(){
-define('Sage/UI/Alarms/nls/pt-pt/ActivityAlarm',{});
-},
-'Sage/MainView/Opportunity/nls/pt/OpportunityStatistics':function(){
-define('Sage/MainView/Opportunity/nls/pt/OpportunityStatistics',{});
-},
-'Sage/MainView/Opportunity/nls/pt-pt/OpportunityStatistics':function(){
-define('Sage/MainView/Opportunity/nls/pt-pt/OpportunityStatistics',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportConditionEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportConditionEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportConditionEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportConditionEditor',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt/AdvancedSearchOptions':function(){
-define('Sage/MainView/IntegrationContract/nls/pt/AdvancedSearchOptions',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt-pt/AdvancedSearchOptions':function(){
-define('Sage/MainView/IntegrationContract/nls/pt-pt/AdvancedSearchOptions',{});
-},
-'Sage/QuickForms/Design/nls/pt/ColumnDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/ColumnDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/ColumnDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/ColumnDesigner',{});
-},
-'Sage/UI/nls/pt/SearchMenuItem':function(){
-define('Sage/UI/nls/pt/SearchMenuItem',{});
-},
-'Sage/UI/nls/pt-pt/SearchMenuItem':function(){
-define('Sage/UI/nls/pt-pt/SearchMenuItem',{});
-},
-'Sage/Library/nls/pt/DocumentProperties':function(){
-define('Sage/Library/nls/pt/DocumentProperties',{});
-},
-'Sage/Library/nls/pt-pt/DocumentProperties':function(){
-define('Sage/Library/nls/pt-pt/DocumentProperties',{});
-},
-'Sage/UI/nls/pt/NotesHistoryList':function(){
-define('Sage/UI/nls/pt/NotesHistoryList',{});
-},
-'Sage/UI/nls/pt-pt/NotesHistoryList':function(){
-define('Sage/UI/nls/pt-pt/NotesHistoryList',{});
-},
-'Sage/MainView/ReportMgr/nls/pt/HistoryListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/pt/HistoryListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/nls/pt-pt/HistoryListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/pt-pt/HistoryListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/BooleanParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/BooleanParameterEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/BooleanParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/BooleanParameterEditor',{});
-},
-'Sage/QuickForms/Design/nls/pt/UrlControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/UrlControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/UrlControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/UrlControlDesigner',{});
-},
-'Sage/TaskPane/nls/pt/ContactTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt/ContactTasksTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/ContactTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/ContactTasksTasklet',{});
-},
-'Sage/MainView/ReportMgr/Common/nls/pt/_WizardDialogBase':function(){
-define('Sage/MainView/ReportMgr/Common/nls/pt/_WizardDialogBase',{});
-},
-'Sage/MainView/ReportMgr/Common/nls/pt-pt/_WizardDialogBase':function(){
-define('Sage/MainView/ReportMgr/Common/nls/pt-pt/_WizardDialogBase',{});
-},
-'Sage/MainView/JobMgr/nls/pt/SchedulesListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/pt/SchedulesListPanelConfig',{});
-},
-'Sage/MainView/JobMgr/nls/pt-pt/SchedulesListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/pt-pt/SchedulesListPanelConfig',{});
-},
-'Sage/Utility/File/nls/pt/GoogleDocPicker':function(){
-define('Sage/Utility/File/nls/pt/GoogleDocPicker',{});
-},
-'Sage/Utility/File/nls/pt-pt/GoogleDocPicker':function(){
-define('Sage/Utility/File/nls/pt-pt/GoogleDocPicker',{});
-},
-'Sage/QuickForms/Design/nls/pt/ComboBoxControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/ComboBoxControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/ComboBoxControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/ComboBoxControlDesigner',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/LitRequestListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/LitRequestListPanelConfig',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/LitRequestListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/LitRequestListPanelConfig',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/HistoryEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/HistoryEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/HistoryEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/HistoryEditor',{});
-},
-'Sage/Groups/nls/pt/GroupManager':function(){
-define('Sage/Groups/nls/pt/GroupManager',{});
-},
-'Sage/Groups/nls/pt-pt/GroupManager':function(){
-define('Sage/Groups/nls/pt-pt/GroupManager',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/DateTimePickerAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/DateTimePickerAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/DateTimePickerAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/DateTimePickerAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/ComboBoxBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/ComboBoxBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/ComboBoxBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/ComboBoxBasicPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/nls/pt/ReportsListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/pt/ReportsListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/nls/pt-pt/ReportsListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/pt-pt/ReportsListPanelConfig',{});
-},
-'Sage/UI/Alarms/nls/pt/JobNotificationButton':function(){
-define('Sage/UI/Alarms/nls/pt/JobNotificationButton',{});
-},
-'Sage/UI/Alarms/nls/pt-pt/JobNotificationButton':function(){
-define('Sage/UI/Alarms/nls/pt-pt/JobNotificationButton',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportWizardController':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportWizardController',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportWizardController':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportWizardController',{});
-},
-'Sage/MainView/JobMgr/nls/pt/JobDefinitionsListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/pt/JobDefinitionsListPanelConfig',{});
-},
-'Sage/MainView/JobMgr/nls/pt-pt/JobDefinitionsListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/pt-pt/JobDefinitionsListPanelConfig',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/RecurringEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/RecurringEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/RecurringEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/RecurringEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportsUtility':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportsUtility',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportsUtility':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportsUtility',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/DataGridAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/DataGridAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/DataGridAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/DataGridAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/DateRangeParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/DateRangeParameterEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/DateRangeParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/DateRangeParameterEditor',{});
-},
-'Sage/MainView/ReportMgr/nls/pt/BaseListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/pt/BaseListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/nls/pt-pt/BaseListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/pt-pt/BaseListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/DateParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/DateParameterEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/DateParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/DateParameterEditor',{});
-},
-'Sage/QuickForms/Design/nls/pt/CurrencyControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/CurrencyControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/CurrencyControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/CurrencyControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt/DataGridControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/DataGridControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/DataGridControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/DataGridControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt/PickListControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/PickListControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/PickListControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/PickListControlDesigner',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/CheckBoxBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/CheckBoxBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/CheckBoxBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/CheckBoxBasicPropertyEditor',{});
-},
-'Sage/Library/nls/pt/FolderHandler':function(){
-define('Sage/Library/nls/pt/FolderHandler',{});
-},
-'Sage/Library/nls/pt-pt/FolderHandler':function(){
-define('Sage/Library/nls/pt-pt/FolderHandler',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/ComboBoxAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/ComboBoxAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/ComboBoxAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/ComboBoxAdvancedPropertyEditor',{});
-},
-'Sage/MainView/Contact/nls/pt/ContactSearchForDuplicates':function(){
-define('Sage/MainView/Contact/nls/pt/ContactSearchForDuplicates',{});
-},
-'Sage/MainView/Contact/nls/pt-pt/ContactSearchForDuplicates':function(){
-define('Sage/MainView/Contact/nls/pt-pt/ContactSearchForDuplicates',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/DateTimePickerBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/DateTimePickerBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/DateTimePickerBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/DateTimePickerBasicPropertyEditor',{});
-},
-'Sage/TaskPane/nls/pt/AccountingTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt/AccountingTasksTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/AccountingTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/AccountingTasksTasklet',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/DataGridBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/DataGridBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/DataGridBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/DataGridBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/CurrencyBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/CurrencyBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/CurrencyBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/CurrencyBasicPropertyEditor',{});
-},
-'Sage/UI/nls/pt/EditableGrid':function(){
-define('Sage/UI/nls/pt/EditableGrid',{});
-},
-'Sage/UI/nls/pt-pt/EditableGrid':function(){
-define('Sage/UI/nls/pt-pt/EditableGrid',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt/SalesQuoteRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/pt/SalesQuoteRTDV',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt-pt/SalesQuoteRTDV':function(){
-define('Sage/MainView/IntegrationContract/nls/pt-pt/SalesQuoteRTDV',{});
-},
-'Sage/MainView/SecurityMgr/nls/pt/SecurityProfile':function(){
-define('Sage/MainView/SecurityMgr/nls/pt/SecurityProfile',{});
-},
-'Sage/MainView/SecurityMgr/nls/pt-pt/SecurityProfile':function(){
-define('Sage/MainView/SecurityMgr/nls/pt-pt/SecurityProfile',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/UserAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/UserAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/UserAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/UserAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/nls/pt/ReportManagerUtility':function(){
-define('Sage/MainView/ReportMgr/nls/pt/ReportManagerUtility',{});
-},
-'Sage/MainView/ReportMgr/nls/pt-pt/ReportManagerUtility':function(){
-define('Sage/MainView/ReportMgr/nls/pt-pt/ReportManagerUtility',{});
-},
-'Sage/UI/nls/pt/SpeedSearch':function(){
-define('Sage/UI/nls/pt/SpeedSearch',{});
-},
-'Sage/UI/nls/pt-pt/SpeedSearch':function(){
-define('Sage/UI/nls/pt-pt/SpeedSearch',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/CurrencyAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/CurrencyAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/CurrencyAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/CurrencyAdvancedPropertyEditor',{});
-},
-'Sage/TaskPane/nls/pt/ReportManagerTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt/ReportManagerTasksTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/ReportManagerTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/ReportManagerTasksTasklet',{});
-},
-'Sage/UI/nls/pt/SLXPreviewGrid':function(){
-define('Sage/UI/nls/pt/SLXPreviewGrid',{});
-},
-'Sage/UI/nls/pt-pt/SLXPreviewGrid':function(){
-define('Sage/UI/nls/pt-pt/SLXPreviewGrid',{});
-},
-'Sage/UI/Alarms/nls/pt/UnconfirmedPane':function(){
-define('Sage/UI/Alarms/nls/pt/UnconfirmedPane',{});
-},
-'Sage/UI/Alarms/nls/pt-pt/UnconfirmedPane':function(){
-define('Sage/UI/Alarms/nls/pt-pt/UnconfirmedPane',{});
-},
-'Sage/Utility/nls/pt/Utility':function(){
-define('Sage/Utility/nls/pt/Utility',{});
-},
-'Sage/Utility/nls/pt-pt/Utility':function(){
-define('Sage/Utility/nls/pt-pt/Utility',{});
-},
-'Sage/QuickForms/Design/nls/pt/ControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/ControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/ControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/ControlDesigner',{});
-},
-'Sage/UI/Controls/nls/pt/Address':function(){
-define('Sage/UI/Controls/nls/pt/Address',{});
-},
-'Sage/UI/Controls/nls/pt-pt/Address':function(){
-define('Sage/UI/Controls/nls/pt-pt/Address',{});
-},
-'Sage/MainView/JobMgr/nls/pt/JobManagerGroupContextService':function(){
-define('Sage/MainView/JobMgr/nls/pt/JobManagerGroupContextService',{});
-},
-'Sage/MainView/JobMgr/nls/pt-pt/JobManagerGroupContextService':function(){
-define('Sage/MainView/JobMgr/nls/pt-pt/JobManagerGroupContextService',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/BaseListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/BaseListPanelConfig',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/BaseListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/BaseListPanelConfig',{});
-},
-'Sage/QuickForms/Design/nls/pt/OwnerControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/OwnerControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/OwnerControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/OwnerControlDesigner',{});
-},
-'Sage/TaskPane/nls/pt/JobManagerTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt/JobManagerTasksTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/JobManagerTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/JobManagerTasksTasklet',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/ActivityEditorAttendeesTab':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/ActivityEditorAttendeesTab',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/ActivityEditorAttendeesTab':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/ActivityEditorAttendeesTab',{});
-},
-'Sage/UI/nls/pt/UserType':function(){
-define('Sage/UI/nls/pt/UserType',{});
-},
-'Sage/UI/nls/pt-pt/UserType':function(){
-define('Sage/UI/nls/pt-pt/UserType',{});
-},
-'Sage/QuickForms/Design/nls/pt/FormDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/FormDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/FormDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/FormDesigner',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/ActivityCalendar':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/ActivityCalendar',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/ActivityCalendar':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/ActivityCalendar',{});
-},
-'Sage/Utility/nls/pt/Jobs':function(){
-define('Sage/Utility/nls/pt/Jobs',{});
-},
-'Sage/Utility/nls/pt-pt/Jobs':function(){
-define('Sage/Utility/nls/pt-pt/Jobs',{});
-},
-'Sage/UI/Controls/nls/pt/_DialogHelpIconMixin':function(){
-define('Sage/UI/Controls/nls/pt/_DialogHelpIconMixin',{});
-},
-'Sage/UI/Controls/nls/pt-pt/_DialogHelpIconMixin':function(){
-define('Sage/UI/Controls/nls/pt-pt/_DialogHelpIconMixin',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/PickListAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/PickListAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/PickListAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/PickListAdvancedPropertyEditor',{});
-},
-'Sage/UI/nls/pt/ActivityList':function(){
-define('Sage/UI/nls/pt/ActivityList',{});
-},
-'Sage/UI/nls/pt-pt/ActivityList':function(){
-define('Sage/UI/nls/pt-pt/ActivityList',{});
-},
-'Sage/UI/Alarms/nls/pt/JobNotificationPopup':function(){
-define('Sage/UI/Alarms/nls/pt/JobNotificationPopup',{});
-},
-'Sage/UI/Alarms/nls/pt-pt/JobNotificationPopup':function(){
-define('Sage/UI/Alarms/nls/pt-pt/JobNotificationPopup',{});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt/LeadLookupConfig':function(){
-define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt/LeadLookupConfig',{});
-},
-'Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt-pt/LeadLookupConfig':function(){
-define('Sage/MainView/ActivityMgr/AttendeeLookup/nls/pt-pt/LeadLookupConfig',{});
-},
-'Sage/MainView/ReportMgr/nls/pt/SchedulesListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/pt/SchedulesListPanelConfig',{});
-},
-'Sage/MainView/ReportMgr/nls/pt-pt/SchedulesListPanelConfig':function(){
-define('Sage/MainView/ReportMgr/nls/pt-pt/SchedulesListPanelConfig',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/GenericAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/GenericAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/GenericAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/GenericAdvancedPropertyEditor',{});
-},
-'Sage/UI/nls/pt/CalendarUsersListPane':function(){
-define('Sage/UI/nls/pt/CalendarUsersListPane',{});
-},
-'Sage/UI/nls/pt-pt/CalendarUsersListPane':function(){
-define('Sage/UI/nls/pt-pt/CalendarUsersListPane',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/PickListBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/PickListBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/PickListBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/PickListBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/ColumnBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/ColumnBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/ColumnBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/ColumnBasicPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/nls/pt/ReportManagerGroupContextService':function(){
-define('Sage/MainView/ReportMgr/nls/pt/ReportManagerGroupContextService',{});
-},
-'Sage/MainView/ReportMgr/nls/pt-pt/ReportManagerGroupContextService':function(){
-define('Sage/MainView/ReportMgr/nls/pt-pt/ReportManagerGroupContextService',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt/MatchingOptionsConfig':function(){
-define('Sage/MainView/IntegrationContract/nls/pt/MatchingOptionsConfig',{});
-},
-'Sage/MainView/IntegrationContract/nls/pt-pt/MatchingOptionsConfig':function(){
-define('Sage/MainView/IntegrationContract/nls/pt-pt/MatchingOptionsConfig',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/FormBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/FormBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/FormBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/FormBasicPropertyEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/OccurrenceOrSeriesQueryDlg':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/OccurrenceOrSeriesQueryDlg',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/OccurrenceOrSeriesQueryDlg':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/OccurrenceOrSeriesQueryDlg',{});
-},
-'Sage/Utility/File/nls/pt/Attachment':function(){
-define('Sage/Utility/File/nls/pt/Attachment',{});
-},
-'Sage/Utility/File/nls/pt-pt/Attachment':function(){
-define('Sage/Utility/File/nls/pt-pt/Attachment',{});
-},
-'Sage/QuickForms/Design/nls/pt/GenericControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/GenericControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/GenericControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/GenericControlDesigner',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/StringParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/StringParameterEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/StringParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/StringParameterEditor',{});
-},
-'Sage/QuickForms/Design/nls/pt/PropertyEditorContainer':function(){
-define('Sage/QuickForms/Design/nls/pt/PropertyEditorContainer',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/PropertyEditorContainer':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/PropertyEditorContainer',{});
-},
-'Sage/Services/nls/pt/ReportingService':function(){
-define('Sage/Services/nls/pt/ReportingService',{});
-},
-'Sage/Services/nls/pt-pt/ReportingService':function(){
-define('Sage/Services/nls/pt-pt/ReportingService',{});
-},
-'Sage/MailMerge/nls/pt/Helper':function(){
-define('Sage/MailMerge/nls/pt/Helper',{});
-},
-'Sage/MailMerge/nls/pt-pt/Helper':function(){
-define('Sage/MailMerge/nls/pt-pt/Helper',{});
-},
-'Sage/UI/Dashboard/nls/pt/Dashboard':function(){
-define('Sage/UI/Dashboard/nls/pt/Dashboard',{});
-},
-'Sage/UI/Dashboard/nls/pt-pt/Dashboard':function(){
-define('Sage/UI/Dashboard/nls/pt-pt/Dashboard',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/ActivityListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/ActivityListPanelConfig',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/ActivityListPanelConfig':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/ActivityListPanelConfig',{});
-},
-'Sage/UI/Controls/nls/pt/PickList':function(){
-define('Sage/UI/Controls/nls/pt/PickList',{});
-},
-'Sage/UI/Controls/nls/pt-pt/PickList':function(){
-define('Sage/UI/Controls/nls/pt-pt/PickList',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/HistoryEditorAttendeesTab':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/HistoryEditorAttendeesTab',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/HistoryEditorAttendeesTab':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/HistoryEditorAttendeesTab',{});
-},
-'Sage/Utility/nls/pt/Email':function(){
-define('Sage/Utility/nls/pt/Email',{});
-},
-'Sage/Utility/nls/pt-pt/Email':function(){
-define('Sage/Utility/nls/pt-pt/Email',{});
-},
-'Sage/TaskPane/nls/pt/SecurityManagerTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt/SecurityManagerTasksTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/SecurityManagerTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/SecurityManagerTasksTasklet',{});
-},
-'Sage/UI/nls/pt/TimeZoneItem':function(){
-define('Sage/UI/nls/pt/TimeZoneItem',{});
-},
-'Sage/UI/nls/pt-pt/TimeZoneItem':function(){
-define('Sage/UI/nls/pt-pt/TimeZoneItem',{});
-},
-'Sage/UI/Columns/nls/pt/SlxEdit':function(){
-define('Sage/UI/Columns/nls/pt/SlxEdit',{});
-},
-'Sage/UI/Columns/nls/pt-pt/SlxEdit':function(){
-define('Sage/UI/Columns/nls/pt-pt/SlxEdit',{});
-},
-'Sage/Reporting/nls/pt/Enumerations':function(){
-define('Sage/Reporting/nls/pt/Enumerations',{});
-},
-'Sage/Reporting/nls/pt-pt/Enumerations':function(){
-define('Sage/Reporting/nls/pt-pt/Enumerations',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/CheckBoxAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/CheckBoxAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/CheckBoxAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/CheckBoxAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportConditionsDialog':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/CrystalReportConditionsDialog',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportConditionsDialog':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/CrystalReportConditionsDialog',{});
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/pt/ActivityListPanelConfig':function(){
-define('Sage/Extensions/Activity/ListPanelOverrides/nls/pt/ActivityListPanelConfig',{});
-},
-'Sage/Extensions/Activity/ListPanelOverrides/nls/pt-pt/ActivityListPanelConfig':function(){
-define('Sage/Extensions/Activity/ListPanelOverrides/nls/pt-pt/ActivityListPanelConfig',{});
-},
-'Sage/UI/nls/pt/JobSchedulingWidget':function(){
-define('Sage/UI/nls/pt/JobSchedulingWidget',{});
-},
-'Sage/UI/nls/pt-pt/JobSchedulingWidget':function(){
-define('Sage/UI/nls/pt-pt/JobSchedulingWidget',{});
-},
-'Sage/UI/Controls/nls/pt/LogOffButton':function(){
-define('Sage/UI/Controls/nls/pt/LogOffButton',{});
-},
-'Sage/UI/Controls/nls/pt-pt/LogOffButton':function(){
-define('Sage/UI/Controls/nls/pt-pt/LogOffButton',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/TextBoxAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/TextBoxAdvancedPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/TextBoxAdvancedPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/TextBoxAdvancedPropertyEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt/MultiselectStringParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt/MultiselectStringParameterEditor',{});
-},
-'Sage/MainView/ReportMgr/Crystal/nls/pt-pt/MultiselectStringParameterEditor':function(){
-define('Sage/MainView/ReportMgr/Crystal/nls/pt-pt/MultiselectStringParameterEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt/EditEventEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt/EditEventEditor',{});
-},
-'Sage/MainView/ActivityMgr/nls/pt-pt/EditEventEditor':function(){
-define('Sage/MainView/ActivityMgr/nls/pt-pt/EditEventEditor',{});
-},
-'Sage/MailMerge/nls/pt/Loader':function(){
-define('Sage/MailMerge/nls/pt/Loader',{});
-},
-'Sage/MailMerge/nls/pt-pt/Loader':function(){
-define('Sage/MailMerge/nls/pt-pt/Loader',{});
-},
-'Sage/UI/Controls/nls/pt/DateTimePicker':function(){
-define('Sage/UI/Controls/nls/pt/DateTimePicker',{});
-},
-'Sage/UI/Controls/nls/pt-pt/DateTimePicker':function(){
-define('Sage/UI/Controls/nls/pt-pt/DateTimePicker',{});
-},
-'Sage/MainView/ReportMgr/nls/pt/ReportManagerActions':function(){
-define('Sage/MainView/ReportMgr/nls/pt/ReportManagerActions',{});
-},
-'Sage/MainView/ReportMgr/nls/pt-pt/ReportManagerActions':function(){
-define('Sage/MainView/ReportMgr/nls/pt-pt/ReportManagerActions',{});
-},
-'Sage/UI/Alarms/nls/pt/AlarmPopup':function(){
-define('Sage/UI/Alarms/nls/pt/AlarmPopup',{});
-},
-'Sage/UI/Alarms/nls/pt-pt/AlarmPopup':function(){
-define('Sage/UI/Alarms/nls/pt-pt/AlarmPopup',{});
-},
-'Sage/MainView/Contact/nls/pt/ContactUserAssociationEditor':function(){
-define('Sage/MainView/Contact/nls/pt/ContactUserAssociationEditor',{});
-},
-'Sage/MainView/Contact/nls/pt-pt/ContactUserAssociationEditor':function(){
-define('Sage/MainView/Contact/nls/pt-pt/ContactUserAssociationEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/OwnerBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/OwnerBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/OwnerBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/OwnerBasicPropertyEditor',{});
-},
-'Sage/MainView/JobMgr/nls/pt/BaseListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/pt/BaseListPanelConfig',{});
-},
-'Sage/MainView/JobMgr/nls/pt-pt/BaseListPanelConfig':function(){
-define('Sage/MainView/JobMgr/nls/pt-pt/BaseListPanelConfig',{});
-},
-'Sage/QuickForms/Design/nls/pt/TextBoxControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/TextBoxControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/TextBoxControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/TextBoxControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt/EmailControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt/EmailControlDesigner',{});
-},
-'Sage/QuickForms/Design/nls/pt-pt/EmailControlDesigner':function(){
-define('Sage/QuickForms/Design/nls/pt-pt/EmailControlDesigner',{});
-},
-'Sage/UI/Controls/nls/pt/Lookup':function(){
-define('Sage/UI/Controls/nls/pt/Lookup',{});
-},
-'Sage/UI/Controls/nls/pt-pt/Lookup':function(){
-define('Sage/UI/Controls/nls/pt-pt/Lookup',{});
-},
-'Sage/Utility/File/nls/pt/DescriptionsForm':function(){
-define('Sage/Utility/File/nls/pt/DescriptionsForm',{});
-},
-'Sage/Utility/File/nls/pt-pt/DescriptionsForm':function(){
-define('Sage/Utility/File/nls/pt-pt/DescriptionsForm',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt/NumericBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt/NumericBasicPropertyEditor',{});
-},
-'Sage/QuickForms/Design/Editors/nls/pt-pt/NumericBasicPropertyEditor':function(){
-define('Sage/QuickForms/Design/Editors/nls/pt-pt/NumericBasicPropertyEditor',{});
-},
-'Sage/TaskPane/nls/pt/CommonTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt/CommonTasksTasklet',{});
-},
-'Sage/TaskPane/nls/pt-pt/CommonTasksTasklet':function(){
-define('Sage/TaskPane/nls/pt-pt/CommonTasksTasklet',{});
-},
-'Sage/Utility/nls/pt/Dashboard':function(){
-define('Sage/Utility/nls/pt/Dashboard',{});
-},
-'Sage/Utility/nls/pt-pt/Dashboard':function(){
-define('Sage/Utility/nls/pt-pt/Dashboard',{});
-}}});
-define("Sage/nls/Sage_pt-pt", [], 1);
+define('Sage/nls/Sage_pt-pt',{
+'Sage/UI/nls/Dialogs':{"yesText":"Yes","noText":"No","okText":"OK","cancelText":"Cancel","_localized":{}}
+,
+'Sage/Utility/nls/ErrorHandler':{"EmailContentL1":"Administrator","EmailContentL2":"${0} encountered an error at ${1}","EmailContentL3":"Please click the link below to view the Event Viewer error log for this error","HttpError":"There was an unknown error in response to a HTTP request.","_localized":{}}
+,
+'Sage/Utility/nls/Utility':{"dangerousValueWarn":"A potentially dangerous form value was detected.  Please avoid invalid character combinations.Example: \"&lt;script&gt;&lt;/script&gt;\" Also avoid invalid characters in file names: \\ / : * ? \" &lt; &gt; | ","_localized":{}}
+,
+'Sage/Utility/nls/Activity':{"ToDo":"To-Do","PhoneCall":"Phone Call","Meeting":"Meeting","Personal":"Personal Activity","Literature":"Literature","Fax":"Fax","Letter":"Letter","Note":"Note","Email":"E-mail","Document":"Document","DatabaseChange":"Database Change","Event":"Event","ScheduledEvent":"Scheduled Event","Contact":"Contact","Lead":"Lead","New":"New","hr":"hr","h":"h","m":"m","Change":"Change","Deleted":"Deleted","Confirm":"Confirm","Decline":"Decline","Unknown":"Unknown","Leader":"Leader","Complete":"Complete","confirmTypeChanged":"Changed","confirmTypeConfirmed":"Confirmed","confirmTypeDeleted":"Deleted","timelessText":"timeless","_localized":{}}
+,
+'Sage/UI/Controls/nls/_DialogHelpIconMixin':{"helpTooltip":"Help","_localized":{}}
+,
+'Sage/UI/Controls/nls/PickList':{"okText":"OK","missingPickListText":"The PickList Could Not be Found","_localized":{}}
+,
+'Sage/UI/nls/SearchConditionWidget':{"trueText":"True","falseText":"False","networkText":"Network","remoteText":"Remote","webText":"Web","webViewerText":"Web Viewer","concurrentText":"Concurrent","retiredText":"Retired","templateText":"Template","addonText":"Addon","adminText":"Admin","userText":"User","teamText":"Team","departmentText":"Department","systemText":"System","_localized":{}}
+,
+'Sage/UI/nls/ConditionManager':{"addimgalttext":"Add Condition","hideimgalttext":"Remove Condition","addrowlabel":"Lookup by:","hiderowlabel":"And:","srchBtnCaption":"Search","errorOperatorRequiresValue":"The operator requires a value","startingWith":"Starting With","endsWith":"Ends With","contains":"Contains","equalTo":"Equal to","notEqualTo":"Not Equal to","equalOrLessThan":"Equal or Less than","equalOrGreaterThan":"Equal or Greater than","lessThan":"Less than","greaterThan":"Greater than","_localized":{}}
+,
+'Sage/UI/nls/SDataLookup':{"closeText":"Close","cancelText":"Cancel","loadingText":"Loading...","noDataText":"No records returned","_localized":{}}
+,
+'dgrid/extensions/nls/columnHider':{"popupTriggerLabel":"Show or hide columns","popupLabel":"Show or hide columns","_localized":{}}
+,
+'dgrid/extensions/nls/pagination':{"status":"${start} - ${end} de ${total} resultados","gotoFirst":"Primeira página","gotoNext":"Próxima página","gotoPrev":"Página anterior","gotoLast":"Última página","gotoPage":"Ir para página","jumpPage":"Pular para página","rowsPerPage":"Number of rows per page","_localized":{}}
+,
+'Sage/UI/Controls/nls/Grid':{"loadingMessage":"Loading data...","noDataMessage":"No records match the selection criteria.","showMore":"show more","showLess":"show less","_localized":{}}
+,
+'Sage/UI/nls/EditableGrid':{"unsavedDataText":"*unsaved data","addText":"Add","deleteText":"Delete","saveText":"Save","cancelText":"Cancel","noSelectionsText":"There are no records selected.","confirmDeleteFmtTxt":"Are you sure you want to delete these ${0} items?","yesText":"Yes","noText":"No","createItemsInvalidArrayText":"The items parameter in Sage.UI.EditableGrid.createItems() should be an array.","recordCountFormatString":"Records ${0} - ${1} of ${2}","noDataMessage":"No records match the selection criteria.","dirtyDataMessage":"You have unsaved data.  If you continue you will lose the changes you have made.","okText":"OK","_localized":{}}
+,
+'Sage/Utility/nls/File':{"unableToUploadText":"CRM Office Integration Module must be installed to use this feature.","unknownSizeText":"unknown","largeFileWarningText":"Warning: This request exceeds the size limit set by your administrator and failed to upload.","largeFileWarningTitle":"Warning","_localized":{}}
+,
+'Sage/Utility/File/nls/DescriptionsForm':{"titleFmt":"Add Attachment(s) for ${0}","titleLibraryDoc":"Add Library Document (s)","fileNameText":"File name and size: ","descText":"Description:","okText":"OK","cancelText":"Cancel","_localized":{}}
+,
+'Sage/Utility/File/nls/Attachment':{"uploadingAttachments":"Uploading attachments","uploadCompleted":"Completed","uploadingPleaseWait":"Uploading, please wait...","uploadFailed":"Upload failed.","_localized":{}}
+,
+'Sage/UI/Controls/nls/DateTimePicker':{"okText":"OK","cancelText":"Cancel","convertDescription":"Compare to another time zone.","convertText":"Compare","calculatorText":"Time Zone Calculator","timeZoneSourceText":"Current Time Zone","timeZoneDestText":"Comparison Time Zone","buttonToolTip":"Calendar","timeStartText":"Time","timeZoneCalculatorText":"Time Zone Calculator","_localized":{}}
+,
+'Sage/Utility/File/nls/AttachmentPropertiesEditForm':{"fileText":"File","descriptionText":"Description","sizeText":"Size","attachDateText":"Attached Date","attachedByText":"Attached By","uploadFileText":"Select Different File...","editText":"Edit Attachment","okText":"OK","cancelText":"Cancel","browseText":"Browse","urlText":"URL","requestFailedMsg":"The requested operation could not be completed, please try again later.","_localized":{}}
+,
+'Sage/Utility/File/nls/FallbackFilePicker':{"addLibraryFileText":"Add Library File","attachFileText":"Attach File","descriptionText":"Description","uploadFileText":"Attachment","okText":"OK","cancelText":"Cancel","invalidContext":"The file(s) cannot be uploaded outside of the Sales Library.","fileTooLargeError":"The file upload attempt was aborted because the file was too large.","pleaseSelectFile":"Please select a file first.","slxErrorIdInfo":"Infor CRM Error Id: ","_localized":{}}
+,
+'Sage/Utility/File/nls/AddURLAttachment':{"descriptionText":"Description","urlText":"URL","titleText":"Add URL Attachment","okText":"OK","cancelText":"Cancel","requestFailedMsg":"The requested operation could not be completed, please try again later.","urlBlankMsg":"The URL or description property cannot be blank.","_localized":{}}
+,
+'Sage/Utility/File/nls/GoogleDocPicker':{"googleDocumentsTitle":"Google Documents","couldNotOpenWindowMsg":"Could not open authentication window - please check your popup blocker settings.","_localized":{}}
+,
+'Sage/UI/nls/AttachmentList':{"attachmentText":"Attachment","userText":"User","modDateText":"Modify Date/Time","dateRangeText":"Modify Date Range","sizeText":"Size","extensionText":"File Extension","addFileText":"Add File","addUrlText":"Add URL","editText":"Edit","helpText":"Help","addGoogleText":"Add Google Document","deleteText":"Delete","request":"Request File","delivered":"Delivered","requested":"Requested","available":"Available","_localized":{}}
+,
+'Sage/UI/nls/GridView':{"unsavedDataText":"*unsaved data","addText":"Add","deleteText":"Delete","saveText":"Save","cancelText":"Cancel","editText":"Edit","helpText":"Help","noSelectionsText":"There are no records selected.","confirmDeleteFmtTxt":"Are you sure you want to delete these ${0} items?","yesText":"Yes","noText":"No","createItemsInvalidArrayText":"The items parameter in Sage.UI.GridView.createItems() should be an array.","noDataMessage":"No records match the selection criteria.","dirtyDataMessage":"You have unsaved data.  If you continue you will lose the changes you have made.","okText":"OK","totalRecordCountLabel":"Total Records: ${0}","toggleRows":"Show/Hide preview","_localized":{}}
+,
+'Sage/UI/nls/SLXPreviewGrid':{"applyText":"Apply","resetText":"Reset","filterText":"Filter","_localized":{}}
+,
+'Sage/UI/Controls/nls/EntityInfoToolTip':{"errorText":"Information not found.","loadingText":"Loading...","noInfoText":"No information to show.","mainText":"Main:","faxText":"Fax:","tollFreeText":"Toll Free:","urlText":"Web URL:","workText":"Work:","mobileText":"Mobile:","emailText":"Email:","contactNameText":"Name:","phoneText":"Phone:","accountText":"Account:","_localized":{}}
+,
+'Sage/UI/Controls/nls/Lookup':{"buttonToolTip":"Find","closeButtonToolTip":"Remove","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityEditor':{"labelWidth":"100","tabNameGeneralText":"General","tabNameAvailabilityText":"Availability","tabNameAssociationsText":"Associations","tabNameRecurringText":"Recurring","tabNameAttachmentsText":"Attachments","tabNameNotesText":"Notes","scheduleText":"Schedule","scheduleTodo":"Schedule To-Do","schedulePhonecall":"Schedule Phone Call","scheduleMeeting":"Schedule Meeting","startTimeText":"Start Time","timeLessText":"Timeless","alarmText":"Alarm","durationText":"Duration","rolloverText":"Auto rollover to next day","contactText":"Contact","accountText":"Account","leadText":"Lead","opportunityText":"Opportunity","ticketText":"Ticket","companyText":"Company","regardingText":"Regarding","notesText":"Notes","priorityText":"Priority","leaderText":"Leader","categoryText":"Category","locationText":"Location","dialogHeaderFormatText":"${actionText} ${activityType} - ${description}","scheduledByFormatText":"Scheduled by ${user} on ${date}","completeScheduledByFormatText":"Scheduled by ${user} on ${date} originally for ${startDate}","newConfirmationHeaderFormatText":"Confirm ${activityType} Scheduled by ${user}","otherConfimationHeaderFormatText":"${activityType} ${actionText} by ${user}","acceptedText":"Accepted","declinedText":"Declined","scheduledText":"Scheduled","updatedText":"Updated","deletedText":"Deleted","cancelText":"Cancel","okText":"OK","completeTodo":"Complete To-Do","completePhonecall":"Complete Phone Call","completeMeeting":"Complete Meeting","completeText":"Complete","completeBtnText":"Complete...","completedText":"Completed","deleteText":"Delete","lookupActText":"Lookup Account","lookupContactText":"Lookup Contact","lookupOpportunityText":"Lookup Opportunity","lookupTicketText":"Lookup Ticket","lookupLeadText":"Lookup Lead","lookupLeaderText":"Lookup Leader","lookupResourcesText":"Add Members and Resources","addResourceText":"Add Selected","mainPhoneText":"Main Phone","typeText":"Type","subTypeText":"Sub-Type","nameText":"Name","cityText":"City","stateText":"State","workphoneText":"Work Phone","emailText":"Email","acctMgrText":"Acct Manager","descriptionText":"Description","stageText":"Stage","statusText":"Status","ownerText":"Owner","ticketNumberText":"Ticket Number","phoneText":"Phone","urgencyText":"Urgency","areaText":"Area","recurringText":"Recurring","resultText":"Result","followupText":"Follow-up","noneText":"None","carryOverAttachmentsText":"Carry Over Attachments","carryOverNotesText":"Carry Over Notes","asScheduledText":"As Scheduled","nowText":"Now","responseText":"Response","acceptText":"Accept","declineText":"Decline","deleteConfText":"Delete Confirmation","closeText":"Close","leadFullNameText":"Name","postalText":"Postal Code","failedLoadingDataMsg":"An error occurred loading data.","removeText":"Remove","noText":"No","yesText":"Yes","areYouSureText":"You are about to permanently delete this record.","couldNotSaveErrorText":"We're sorry, the activity could not be saved because an error occurred.","couldNotDeleteErrorText":"We're sorry, the activity could not be deleted because an error occurred.","couldNotCompleteErrorText":"We're sorry, the activity could not be completed because an error occurred.","scheduleFollowUpErrorText":"The follow up could not be scheduled because the HistoryId could not be determined.","tabNameParticipants":"Participants","updateToDo":"To-Do","updatePhoneCall":"Phone Call","updateMeeting":"Meeting","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/AttendeeLookup/nls/SpeedSearchLookup':{"dialogTitle":"Lookup Participants","okText":"Add Selected","cancelText":"Close","noDataText":"No records match the selection criteria","srchBtnCaption":"Search","colName":"Name","colType":"Type","colAccount":"Company/Account","colTitle":"Title","colEmail":"Email","colWorkPhone":"Work Phone","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityEditorAttendeesTab':{"header_Name":"Name","header_AccountName":"Account/Company","header_Type":"Type","header_Primary":"Primary Contact","header_RoleName":"Role","header_Phone":"Phone","header_Email":"Email","header_TimeZone":"Time Zone","header_Notes":"Notes","tooltip_speedSearch":"Add Participant","tooltip_AddContact":"Add Contact","tooltip_AddLead":"Add Lead","tooltip_Delete":"Delete","header_Attendee":"Is Attendee","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/AttendeeLookup/nls/ContactLookupConfig':{"contactText":"Contact","accountText":"Account","lookupContactText":"Lookup Contact","nameText":"Name","cityText":"City","stateText":"State","workphoneText":"Work Phone","emailText":"Email","dialogButtonText":"Add Selected","cancelText":"Close","colFirstName":"First Name","colLastName":"Last Name","colTitle":"Title","colAccount":"Account","colWorkPhone":"Work Phone","colEmail":"Email","dialogTitleText":"Lookup Contacts","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/AttendeeLookup/nls/LeadLookupConfig':{"contactText":"Contact","accountText":"Account","lookupContactText":"Lookup Contact","nameText":"Name","cityText":"City","stateText":"State","workphoneText":"Work Phone","emailText":"Email","dialogButtonText":"Add Selected","cancelText":"Close","colFirstName":"First Name","colLastName":"Last Name","colTitle":"Title","colCompany":"Company","colWorkPhone":"Work Phone","colEmail":"Email","dialogTitleText":"Lookup Leads","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/RecurringEditor':{"activityOccurrsText":"This activity occurs...","onceText":"Once","dailyText":"Daily","weeklyText":"Weekly","monthlyText":"Monthly","yearlyText":"Yearly","occursOnceText":"This activity occurs only once","everyText":"Every","daysText":"Day(s)","daysAfterText":"Day(s) after completion","startRecurringText":"Start Recurring: ","endAfterText":"End After","endOnText":"End Recurring","occurrencesText":"occurrences","weeksOnText":"Week(s) on","monText":"Monday","tueText":"Tuesday","wedText":"Wednesday","thurText":"Thursday","friText":"Friday","satText":"Saturday","sunText":"Sunday","weeksAfterText":"Week(s) after completion","monthsOnText":"Month(s) on day","monthsOnTheText":"Month(s) on the","monthsAfterText":"Month(s) after completion","firstText":"1st","secondText":"2nd","thirdText":"3rd","fourthText":"4th","lastText":"last","yearsOnText":"Year(s) on","yearsAfterText":"Year(s) after completion","janText":"January","febText":"February","marText":"March","aprText":"April","mayText":"May","junText":"June","julText":"July","augText":"August","sepText":"September","octText":"October","novText":"November","decText":"December","theText":"The","inText":"in","_localized":{}}
+,
+'Sage/UI/Controls/nls/DurationSelect':{"minuteText":"minute","minutesText":"minutes","hourText":"hour","hoursText":"hours","dayText":"day","daysText":"days","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/EditEventEditor':{"titleScheduleText":"Schedule Event","titleEditText":"Edit Event","lblDayTypeText":"Day Type:","lblStartDateText":"Start Date:","lblEndDateText":"End Date:","lblUserText":"User:","lookupUserText":"Lookup User","lblCategoryText":"Category:","lblLocationText":"Location:","lblDescriptionText":"Description:","btnOkayText":"OK","btnCancelText":"Cancel","btnHelpText":"Help","eventTypeActiveText":"Active","eventTypeBusinessTripText":"Business Trip","eventTypeConferenceText":"Conference","eventTypeHolidayText":"Holiday","eventTypeOffText":"Off","eventTypeTradeShowText":"Trade Show","eventTypeUnavailableText":"Unavailable","eventTypeVacationText":"Vacation","errorText":"I'm sorry, the event could not be created because an error occurred.","invaildDatesText":"I'm sorry, the end date cannot be earlier than the start date.","nameText":"Name","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/QuickCompleteEditor':{"lblResultText":"Result:","lblNoteText":"Note (append to all items):","btnCompleteIndividuallyText":"Individually","btnAsScheduledText":"As Scheduled","btnCompleteNowText":"Now","btnCancelText":"Cancel","btnCloseText":"Close","btnHelpText":"Help","resultCompletedText":"Complete","titleText":"Quick Complete","actionMessage":"Only activities that you have permission to complete will be completed.","completeMessage":"Complete all {0} selected activities:","processingMessage":"Processing all {0} selected activities. Please wait...","_localized":{}}
+,
+'Sage/Services/nls/ActivityActionProcessor':{"btnOkayText":"OK","btnCancelText":"Cancel","btnCloseText":"Close","btnHelpText":"Help","processingText":"Processing request please wait...","failureText":"I'm sorry, the action was not successful an error occurred.","titleText":"Process","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/HistoryEditor':{"labelWidth":"100","tabNameGeneralText":"General","tabNameAttachmentsText":"Attachments","scheduleText":"Schedule","startTimeText":"Scheduled","completedDateText":"Completed","timeLessText":"Timeless","durationText":"Duration","contactText":"Contact","accountText":"Account","leadText":"Lead","opportunityText":"Opportunity","ticketText":"Ticket","companyText":"Company","regardingText":"Regarding","resultText":"Result","notesText":"Notes","noteText":"Note","priorityText":"Priority","leaderText":"Leader","categoryText":"Category","locationText":"Location","scheduledByFormatText":"Scheduled by ${user} on ${date}","cancelText":"Cancel","okText":"OK","deleteText":"Delete","lookupActText":"Lookup Account","lookupContactText":"Lookup Contact","lookupOpportunityText":"Lookup Opportunity","lookupTicketText":"Lookup Ticket","lookupLeadText":"Lookup Lead","lookupLeaderText":"Lookup Leader","lookupResourcesText":"Lookup","mainPhoneText":"Main Phone","typeText":"Type","subTypeText":"Sub-Type","nameText":"Name","cityText":"City","stateText":"State","workphoneText":"Work Phone","emailText":"Email","acctMgrText":"Acct Manager","descriptionText":"Description","stageText":"Stage","statusText":"Status","ownerText":"Owner","ticketNumberText":"Ticket Number","phoneText":"Phone","urgencyText":"Urgency","areaText":"Area","recurringText":"Recurring","followupText":"Follow-up","noneText":"None","carryOverAttachmentsText":"Carry Over Attachments","carryOverNotesText":"Carry Over Notes","asScheduledText":"As Scheduled","insertText":"Insert","insertNoteText":"Insert Note","couldNotSaveErrorText":"We're sorry, the history could not be saved because an error occurred.","deleteMessage":"You are about to permanently delete this record.","deleteTitle":"Delete History","couldNotDeleteErrorText":"We're sorry, the history could not be deleted because an error occurred.","postalText":"Postal Code","tabNameParticipants":"All Participants","resultComplete":"Complete","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/HistoryEditorAttendeesTab':{"header_Name":"Name","header_AccountName":"Account/Company","header_Type":"Type","header_Primary":"Primary Contact","header_RoleName":"Role","header_Phone":"Phone","header_Email":"Email","header_TimeZone":"Time Zone","header_Notes":"Notes","header_Status":"Status","header_Attendee":"Is Attendee","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/OccurrenceOrSeriesQueryDlg':{"titleFmt":"${type} - ${description}","actDateText":"Activity Date:","contactText":"Contact:","accountText":"Account:","opportunityText":"Opportunity:","editAllText":"Edit all Occurrences","editOneText":"Edit this Occurrence","completeAllText":"Complete all Occurrences","completeOneText":"Complete this Occurrence","deleteAllText":"Delete all Occurrences","deleteOneText":"Delete this Occurrence","continueText":"Continue","failedToLoadMsg":"Could not load activity","_localized":{}}
+,
+'Sage/Services/nls/ActivityService':{"txtErrorActionMsg":"I'm sorry, the action was not successful an error occurred.","txtActivity":"activity","txtActivities":"activities","txtActionDeleteActivites":"Delete Activities","txtActionDeleteActivitiesQuestion":"Only activities that you have permission to delete will be deleted. <P> Are you sure you want to delete the {0} selected {1}?","txtAlarm":"alarm","txtAlarms":"alarms","txtActionSnoozeAlarm":"Snooze Alarm","txtActionSnoozeQuestion":"Are you sure you want to snooze the {0} selected {1} for {2} ?","txtActionSnoozeAllQuestion":"Are you sure you want to snooze all {0} for {1} ?","txtActionDismissAlarms":"Dismiss Alarms","txtActionDismissAlarmsQuestion":"Are you sure you want to dismiss the {0} selected {1}?","txtEvent":"event","txtEvents":"events","txtActionDeleteEvents":"Delete Events","txtActionDeleteEventsQuestion":"Only events that you have permission to delete will be deleted. <P> Are you sure you want to delete the {0} selected {1}?","txtConfirmation":"confirmation","txtConfirmations":"confirmations","txtActionAcceptConfirmations":"Accept Confirmations","txtActionAcceptConfirmQuestion":"Are you sure you want to accept the {0} selected {1}? This action can only be performed on New or Changed confirmations. All others will be ignored.","txtDeclineConfirmations":"Decline Confirmations","txtActionDeclineConfrimQuestion":"Are you sure you want to decline the {0} selected {1}? This action can only be performed on New or Changed confirmations. All others will be ignored.","txtActionRemoveConfirmations":"Delete Confirmations","txtActionRemoveConfirmationsQuestion":"Are you sure you want to delete the {0} selected {1}? This action can only be performed on Leader, Declined or Deleted confirmations. All others will be ignored.","txtLiteratureRequest":"literature request","txtLiteratureRequests":"literature requests","txtActionDeleteLiteratureRequests":"Delete Literature Requests","txtActionDeleteLiteratureRequestsQuestion":"Only literature request that you have permission to delete will be deleted. <P> Are you sure you want to delete the {0} selected {1}?","_localized":{}}
+,
+'Sage/MainView/EntityMgr/nls/_BaseEntityDetailContent':{"FilterTabTitle":"Filters","MetricTabTitle":"Metrics","PropertyTabTitle":"Fields","CalcFieldTabTitle":"Calculated Fields","EntityTabTitle":"Entities","RelationTabTitle":"Relationships","dialogTitleAddField":"Add Field to ${0} Entity","dialogTitleAddFilter":"Add Filter to ${0} Entity","dialogTitleAddMetric":"Add Metric to ${0} Entity","dialogTitleAddRelationship":"Add Relationship to ${0} Entity","editDialogTitle":"Edit ${0} in ${1} Entity","FilterDialogTitle":"Filter","MetricDialogTitle":"Metric","PropertyDialogTitle":"Field","RelationDialogTitle":"Relationship","FilterGridColumnFilter":"Filter Name","MetricGridColumnMetric":"Metric Name","FilterGridColumnDisplay":"Display Name","FilterGridColumnProperty":"Field","FilterGridColumnType":"Metric or Filter","FilterGridColumnIsMetric":"In Dashboard","FilterGridColumnLastUpdated":"Last Modified","FilterGridColumnDetails":"Type","FilterGridDetailsDistinctFilter":"Distinct","FilterGridDetailsDateDiffMetricFilter":"Date Difference Metric","FilterGridDetailsRangeFilter":"Range","FilterGridDetailsMetricFilter":"Metric","FilterGridDetailsUserLookupFilter":"User Lookup","FilterGridDetailsLookupFilter":"Lookup","FilterGridDetailsCustom":"Custom","GridHelp":"Help","FilterGridAdd":"Add Filter","FilterGridRemove":"Remove Filter","FilterGridEdit":"Edit Filter","MetricGridAdd":"Add Metric","MetricGridRemove":"Remove Metric","MetricGridEdit":"Edit Metric","PropertyGridAdd":"Add Field","PropertyGridRemove":"Remove Field","PropertyGridEdit":"Edit Field","CalculatedGridAdd":"Add Calculated Field","CalculatedGridRemove":"Remove Calculated Field","CalculatedGridEdit":"Edit Calculated Field","lblFilterName":"Filter Name","lblDisplayName":"Display Name","lblFilterDp":"Fields","lblTypeDp":"Type","lblCharacter":"Characters","lblTypeSpecificContentBox":"Type Specific Content Box","lblSaveButton":"Save","lblCancelButton":"Cancel","lblOkButton":"OK","lblWarning":"Please select an item.","confirmDeleteFmtTxt":"Are you sure you want to delete these ${0} items?","filtersFor":"Filters for","metricsFor":"Metrics for","propertyFor":"Fields for","calculatedFor":"Calculated Fields for","defaultRangeRowValue":"Enter a Value","customSql":"Custom SQL","displayName":"Display Name","lower":"Lower","rangeId":"Range Id","rangeName":"Range Name","upper":"Upper","SUM":"Total (sum)","Contains":"Contains","StartsWith":"Starts With","EndsWith":"Ends With","LessThan":"Less Than","GreaterThan":"Greater Than","LessThanEqual":"Less Than Or Equal","GreaterThanEqual":"Greater Than Or Equal","Equal":"Equals","NotEqual":"Does Not Equal","COUNT":"Count","AVG":"Average","MIN":"Minimum Value","MAX":"Maximum Value","totalRecordCountLabel":"Total Records: ${0}","propertyName":"Name","Description":"Description","propertyType":"Type","included":"Included","calculatedFields":"Calculated","generate":"Generate","key":"Key","relationFor":"Relationship For","childEntity":"Child","childProperty":"Child's Field","parentEntity":"Parent","parentProperty":"Parent's Field","editable":"Editable","cardinality":"Cardinality","relationship":"Relationship","parentImport":"Parent's Import","parentMatch":"Parent's Match","parentAudit":"Parent's Audit","parentIncluded":"Parent's Included","childImport":"Child's Import","childMatch":"Child's Match","childAudit":"Child's Audit","childIncluded":"Child is Included","text":"text","memo":"memo","unicodeText":"unicode text","unicodeMemo":"unicode memo","integer":"integer","double":"double","single":"single","decimal":"decimal","short":"short","standardId":"standard id","trueFalse":"true/false","yesNo":"yes/no","boolean":"boolean","dateTime":"date/time","email":"email","phone":"phone","pickList":"pick list","owner":"owner","lookup":"lookup","dependencyLookup":"dependency lookup","char":"char","enum_":"enum","guid":"guid","byte":"byte","binary":"binary","url":"url","string":"string","number":"number","notUniqueFor":"is not unique for","lblPluralName":"Display Plural Name","lblTitle":"Title","IsExtension":"Is Extension","AdvOptions":"Advanced Options","lblImport":"Import","lblMatch":"Match","lblBulkUpdate":"Bulk Update","lblAudited":"Audited","lblPut":"Put","lblPost":"Post","lblDelete":"Delete","lblHistory":"Track History To","metricNotEditable":"This metric is not editable.","_localized":{}}
+,
+'Sage/MainView/EntityMgr/AddEditEntityDetail/nls/AddEditDialog':{"dialogTitleAddField":"Add Field to ${0} Entity","dialogTitleAddFilter":"Add Filter to ${0} Entity","dialogTitleAddMetric":"Add Metric to ${0} Entity","dialogTitleAddRelationship":"Add Relationship to ${0} Entity","editDialogTitle":"Edit ${0} in ${1} Entity","lblFilter":"Filter","lblMetric":"Metric","lblFilters":"Filters","lblMetrics":"Metrics","lblDistinct":"Distinct","lblRange":"Range","lblUserLookup":"User Lookup","lblAdd":"Add","lblEdit":"Edit","lblRemove":"Remove","lblHelp":"Help","lblFilterName":"Filter Name","lblMetricName":"Metric Name","lblDisplayName":"Display Name","lblName":"Name","lblDisplay":"Display","lblCalculated":"Calculated","lblCalculation":"Calculation","lblDescription":"Description","lblFieldsName":"Fields Name","lblCalculatedFieldsName":"Calculated Fields Name","lblFilterDp":"Fields","lblTypeDp":"Type","lblCharacter":"Characters","lblFrom":"From","lblTo":"To","lblOperators":"Operators","lblAggregation":"Aggregations","lblTypeSpecificContentBox":"Type Specific Content Box","lblSaveButton":"OK","lblCancelButton":"Cancel","DateDiffCheckerValue":"Date Difference Metric","InvalidFilterName":"Invalid filter name","InvalidRangeName":"Invalid range name","RequiredFilterName":"Filter name is required","RequiredRangeName":"Range name is required","FieldMustBeANumber":"Character field must be integer","SelectAnItem":"Please select an item","ItemRequired":"Item required","ItemInvalid":"Item invalid","LowerMustBeLessThanUpper":"Lower value must be less than upper value.","InvalidSpecialDateValue":"Invalid special date placeholder value.","defaultRangeRowValue":"Enter a value","totalRecordCountLabel":"Total Records: ${0}","lblNew":"New","lblExisting":"Existing","lblExistingCalc":"Existing Calculated Field","validNameMsg":"A valid entry starts with a capital letter and <br> can contain alphanumeric values and underscores.","propertyName":"Name","displayName":"Display","dataTypeId":"Type","dataTypeData":"Type Attributes","length":"Length","scale":"Scale","precision":"Precision","isIncluded":"Included","isReadOnly":"Read Only","displayCategory":"Display Category","sdata":"Sdata","bulkAction":"Bulk Action","canBulkUpdate":"Can Bulk Update","canImport":"Import","canMatch":"Match","generate":"Generate","audited":"Audited","notUniqueFor":"is not unique for","notUnique":"is not unique","nlsCode":"NLS Code","nlsName":"NLS Name","showTranslations":"Show translations","hideTranslations":"Hide translations","standardIds":"Standard Ids","others":"Others","SelectField":"Please select a field !","SelectOneField":"Please select only one field !","parent":"Parent Entity and Join Field","child":"Child Entity and Join Field","cardinality":"Relationship","cascade":"Cascade","includeParent":"Include parent relationship property in the child entity","includeChild":"Include child relationship property in the parent entity","existingRelaton":"This relationship already exists !","_localized":{}}
+,
+'Sage/UI/Controls/nls/PropertyStore':{"text":"Text","memo":"Memo","unicodeText":"Unicode Text","unicodeMemo":"Unicode Memo","integer":"Integer","double":"Double","single":"Single","decimal":"Decimal","short":"Short","standardId":"Standard Id","trueFalse":"True/False","yesNo":"Yes/No","boolean":"Boolean","dateTime":"Date/Time","email":"Email","phone":"Phone","pickList":"Pick List","owner":"Owner","lookup":"Lookup","dependencyLookup":"Dependency Lookup","char":"Char","enum_":"Enum","guid":"Guid","byte":"Byte","binary":"Binary","url":"Url","string":"String","number":"Number","calc":"Calculated Field","calcSF":"Calculated String","calcNF":"Calculated Number","_localized":{}}
+,
+'Sage/MainView/EntityMgr/EntityWizard/nls/_EntityWizardDialog':{"lblNewEntityWizard":"New Entity Wizard","lblCreateEntity":"Create Entity","lblCreateEntityFromTable":"Create a new entity from a table","lblEntityName":"Name","lblDisplayName":"Display","lblPackage":"Package","lblEntityUsed":"Entity Name is already used !","lblNext":"Next","lblCancel":"Cancel","lblBack":"Back","lblEnterProperties":"Enter Fields","lblAddNewProperty":"Click the add(+) button to add new fields to the entity","lblPropertyName":"Field Name","lblDataType":"Data Type","lblLength":"Length","lblSure":"Are you sure ?","lblThisStepCreateEntity":"Completing this step will create the entities and necessary schema","lblEntity":"Entity","lblProperties":"Fields","lblStatus":"Status","lblSuccess":"Success","lblSuccessMsg":"Success, Entity created Successfully.","lblError":"Error","lblFailed":"Failed","lblErrorMsg":"Error, Entity creation failed !","lblFinish":"Finish","lblInvalidEntry":"A valid entry starts with a capital letter and can contain alphanumeric values","lblRequired":"Required","lblErrorRelation":"Error while creating relationship with","lblRelationship":"Primary Relationship","lblSelectEntity":"Choose whether this entity has a primary relationship to another entity","lblExistingEntity":"Relate to an existing Entity","lblRelatedEntity":"Related Entity","lblRelationType":"Relation Type","addFieldDialogTitle":"Add Field","editFieldDialogTitle":"Edit Field","noDeleteSysProps":"Cannot delete the system properties","noEditSysProps":"Cannot edit the system properties","NoRecordsSelected":"There are no records selected.","lblNullable":"Is Nullable","ExtensionEntity":"1:1 - Extension Entity","ChildEntity":"1:M - Child Entity","CreateUser":"Create User","CreateDate":"Create Date","ModifyUser":"Modify User","ModifyDate":"Modify Date","_localized":{}}
+,
+'Sage/UI/Forms/nls/FormFromSData':{"addText":"Add","deleteText":"Delete","saveText":"Save","cancelText":"Cancel","editText":"Edit","helpText":"Help","yesText":"Yes","noText":"No","okText":"OK","allText":"ALL","newPickList":"New Pick List","items":"Pick List Items","number":"Order","enterValue":"Enter Value","lblMore":"More","picklistAlreadyExists":"Picklist '${0}' already exists.","messageOnSave":"Pick list, ${0}, has been saved. Please continue adding or editing the field information.","permissionsToView":"You do not have permissions to view.","required":"Required entry","allowMultiples":"Allow multiple selections","valueMustExist":"Text must match a list item","alphaSorted":"Sorted alphabetically","noneEditable":"Users cannot edit items","LanguageCodeFilterPlaceHolder":"Filter by Language Code","PickListItemCodeUniqueException":"Picklist item codes must be unique","PickListItemCodeRequiredeException":"Picklist item codes are required","_localized":{}}
+,
+'Sage/UI/Controls/nls/FieldAttributeControlFactory':{"IsEncrypted":"Is Encrypted","Length":"Length","Precision":"Precision","Scale":"Scale","LookupEntityName":"Lookup Entity Name","LookupGroup":"Lookup Group","IsPercentage":"Is Percentage","Items":"Items","MultiSelect":"MultiSelect","OverriddenName":"Overridden Name","Storage":"Storage","EnableHyperLinking":"Enable Hyper-Linking","LookupPreFilters":"Lookup PreFilters","EqualTo":"Equal To","NotEqualTo":"Not Equal To","GreaterThanOrEqual":"Greater Than or Equal","GreaterThan":"Greater Than","LessThanOrEqual":"Less Than or Equal","LessThan":"Less Than","CondOperator":"Condition Operator","FilterValue":"Filter Value","PropertyName":"Property Name","LookupProperties":"Lookup Properties","ExcludeFromFilters":"Exclude From Filters","HideCondition":"Hide Condition","IsSortable":"Is Sortable","PropertyFormat":"Property Format","None":"None","Phone":"Phone","User":"User","PickList":"Pick List","DateTime":"Date Time","PropertyFormatString":"Property Format String","PropertyHeader":"Property Header","PropertyType":"Property Type","UseAsResult":"Use As Result","ReturnPrimaryKey":"Return Primary Key","AllowMultiples":"Allow Multiples","AlphaSort":"Alpha Sort","MustExistInList":"Must Exist In List","NoneEditable":"None Editable","PickListFilter":"Pick List Filter","ValueStoredAsText":"Value Stored As Text","Value":"Value","Display":"Display","Code":"Code","Name":"Name","DisplayName":"Display Name","Template":"Calculation","Description":"Description","SortOrder":"Sort Order","lblNoFieldsInTemplate":"Please add an entity property to the template before applying a sort order.","AddField":"Add Field","InUse":"In Use","NotInUse":"Not In Use","CalculatedNumberInputError":"<p>Inputs are limited to Field Names selected from the drop down,<br/> and to the following characters:<br/>&nbsp;&nbsp;&nbsp;&nbsp;'+','-','*','/','(', or ')'.<br/>&nbsp;&nbsp;&nbsp;&nbsp;These match up with the button values above the text area.</p>","newPickList":"New Pick List","add":"add","substract":"subtract","multiply":"multiply","divide":"divide","openParens":"open parenthesis","closeParens":"close parenthesis","_localized":{}}
+,
+'Sage/Groups/nls/GroupNavigator':{"firstText":"Move First","previousText":"Move Previous","nextText":"Move Next","lastText":"Move Last","listText":"List View","noRecordsText":"No Records","labelFmtText":"${0} of ${1}","_localized":{}}
+,
+'Sage/Utility/nls/Email':{"RecipientInfoError":"There was an unexpected error attempting to read the recipient information: ${0}","MailToProtocolError":"There was an error attempting to generate an e-mail message using the mailto: protocol (href.length=${0}). The number of e-mail recipients may need to be reduced. Browser error: ${1}.","InvalidContextError":"The e-mail request cannot be processed. This operation is only supported for Contacts or Leads.","InvalidArgumentError":"The e-mail request cannot be processed. Invalid argument.","FilteredOutMsg":"Filtered out: Non-solicitable: ${0}; Invalid: ${1}; Dupes: ${2}","AllInvalidEmailError":"The collection does not include one entity with a valid and/or solicitable e-mail address.","EmailFieldQueried":"The e-mail field queried was: ${0}.","EntityInfoError":"There was a failure attempting to retrieve the entity information.","CapabilityModeError":"The capability to write an e-mail to a group selection is only available in list views.","CapabilityEntityError":"The capability to write an e-mail to a group selection is only available for Contacts or Leads.","NoRowsSelectedError":"There are no rows selected.","_localized":{}}
+,
+'Sage/Groups/nls/GroupManager':{"ConfirmDeleteMessage":"Are you sure you want to delete the current group?","ConfirmDeleteFmtMessage":"Are you sure you want to delete this group: ${0}","InvalidSortStringMessage":"Error: Invalid sort string - ","InvalidConditionStringMessage":"Error: Invalid condition string - ","InvalidLayoutConditionStringMessage":"Error: Invalid layout string - ","noneSelectedTitle":"No records selected","noneSelectedPromptFmt":"No records selected. The full group, ${0} record(s), will be added.  Proceed?","noneSelectedRemovePromptFmt":"No records selected. The full group, ${0} record(s), will be removed.  Proceed?","noRecordsInGroup":"There are no records to be selected from this group.","newGroupTitle":"Add Records to new Group","newGroupNamePrompt":"${0} selected record(s) will be added to this new group.<br><br>Group Name:<br>${1}","newGroupRePrompt":"&nbsp;&nbsp;<i>Please enter a group name.</i>","invalidCharMsg":"Name Cannot contain: / \\ : * ? \" <> | or '","groupNameText":"Group Name:","saveLookupDlgTitle":"Save Lookup Results as New Group","yesCaption":"Yes","noCaption":"No","cancelCaption":"Cancel","okCaption":"OK","LOCALSTORE_NAMESPACE":"SageGroups","exportToExcel":"This method has been deprecated, please see Sage.TaskPane.CommonTasksTasklet.exportToExcel.","createAdHocGroupJob_Description":"Group: ${0}","createAdHocGroupJob_Title":"Creating Group","createAdHocGroupJobError":"Sorry an error occurred during the creation of the group: ${0}","createAdHocGroupJobProcessingJobMsg":"You may continue waiting for completion, or you may close this message.  You will receive a notification when the group is complete.","_localized":{}}
+,
+'Sage/Utility/nls/Jobs':{"errorMessage":"Sorry, an error occurred during the execution of job '${0}': ${1} ${2}.","jobCompletedSuccessfully":"The job has completed successfully.","unexpectedErrorMessage":"Sorry, an unexpected error occurred during the execution of job '${0}'.","repeatIndefinitely":"Repeat indefinitely","cancelButtonCaption":"Cancel","defaultProgressDialogTitle":"Running Job","closeButtonCaption":"Close","dataExpiredRefreshPage":"This job's information has expired, please refresh the page.","generalCheckJobService":"This job's information was not able to be requested, please check the job service.","JobServerviceOff":"The job service is currently not available, please turn on or restart the service.","_localized":{}}
+,
+'Sage/Groups/nls/GroupLookup':{"txtNoRecordsFound":"No records found.","_localized":{}}
+,
+'Sage/UI/nls/SearchMenuItem':{"findText":"Find","clearText":"Clear","_localized":{}}
+,
+'Sage/UI/nls/GroupsTitlePaneConfigProvider':{"groupText":"Groups","addGroupButtonTooltip":"Add Group","groupButtonTooltip":"Manage Groups","lookupText":"Lookup","lookupResultsText":"Lookup Results","groupColumnText":"Group Name","visibleColumnText":"Favorite","groupOwner":"Owner","exceedMaxGroupMsg":"Only ${0} favorite groups allowed.","_localized":{}}
+,
+'Sage/Library/nls/DocumentProperties':{"Abstract":"Abstract","Cancel":"Cancel","DocumentProperties":"Document Properties","Created":"Created","Description":"Description","Directory":"Directory","DoNotExpire":"Do Not Expire","Expires":"Expires","FileName":"File Name","ForceDistribution":"Force distribution of this file","InvalidFileName":"A file name cannot contain any of the following characters: \\ / : * ? \" < > |","Never":"Never","OK":"OK","Revised":"Revised","Size":"Size","Status":"Status","_localized":{}}
+,
+'Sage/Utility/File/nls/DragDropWatcher':{"query0":"The feature you are requesting requires the Infor CRM Desktop <br> Integration Module.","query1":"Find out more...","query2":"Would you like to install this feature now?","query3":"Note: This module can be installed at any time from the logon or options pages.","_localized":{}}
+,
+'Sage/Utility/File/nls/LibraryDocument':{"failureNumber":"Failure #${0}: ","percentComplete":"Uploading, please wait...","uploadError":"There was an error attempting to upload one or more files (failed: ${0}; succeeded: ${1}).","invalidContext":"The file(s) cannot be uploaded outside of the Sales Library.","unknownError":"An unknown error occurred uploading a file.","_localized":{}}
+,
+'Sage/Utility/File/nls/DefaultDropHandler':{"emailDroppedText":"Dropped Email","attachmentTitleText":"Save Attachments","attachmentQuestionText":"Would you like to keep a copy of these attachment(s) in Infor CRM? <br />The attachments will be stored under the Attachments tab for relevant entities.","mailComplete":"Complete","_localized":{}}
+,
+'Sage/Library/nls/FileHandler':{"AccessError":"You do not have the role security required to execute this action.","Available":"Available","Confirm":"Confirm","DeleteFileCnfmFmt":"Are you sure you want to delete the file \"${0}\"?","Delivered":"Delivered: Not read","DeliveredRead":"Delivered: Read","DocumentPropertiesError":"There was an unexpected error attempting to retrieve the document properties.","DocumentPropertiesUpdateError":"There was an unexpected error attempting to update document properties.","DocumentUpdateConflictError":"The file has been updated by another user, please refresh and retry.","FileDeleteError":"There was an unexpected error attempting to delete a file.","FileStatusError":"There was an unexpected error attempting to update the file status.","LogRequestError":"There was an unexpected failure attempting to log the document synchronization request.","No":"No","NoAccessMessage":"You do not have permission to add files to the Library. For more information contact your Infor CRM administrator.","Ordered":"Ordered","PleaseSelectFile":"Please select a file.","PleaseWait":"Please wait","Revised":"Revised","RevisionOrdered":"Revision Ordered","UploadError":"There was an error attempting to upload a file.","Unknown":"Unknown","Yes":"Yes","_localized":{}}
+,
+'Sage/Library/nls/FolderHandler':{"AccessError":"You do not have the role security required to execute this action.","AddFolderError":"There was an unexpected error attempting to add a library folder.","Cancel":"Cancel","Confirm":"Confirm","DeleteFolderCnfmFmt":"Are you sure you want to delete the \"${0}\" folder and all of its contents?","DeleteFolderError":"There was an unexpected error attempting to delete a library folder.","DontDeleteRoot":"Please do not delete the root folder.","DontEditRoot":"Please do not change the name of the root folder.","EnterFolderName":"Please enter the name of the new folder:","EnterNewFolderName":"Please enter the new name for this folder.","FolderUpdateConflictError":"The folder has been updated by another user, please refresh and retry.","InvalidFolderName":"A folder name cannot contain any of the following characters: \\ / : * ? \" < > |","NewFolder":"New Folder","No":"No","OK":"OK","PleaseSelectFolder":"Please select a folder.","RenameFolderError":"There was an unexpected error attempting to rename a library folder.","Yes":"Yes","_localized":{}}
+,
+'Sage/Library/nls/Manager':{"AddFiles":"Add Files","AddFolder":"Add Folder","Confirm":"Confirm","ConfirmDownload":"The file has not been downloaded. Would you like to get it the next time you synchornize?","ConfirmDownloadReorder":"The file has not been downloaded but has already been ordered. Would you like re-order the file to get it the next time you synchornize?","Created":"Created","DeleteFolder":"Delete Folder","DeleteSelectedFile":"Delete Selected File","Description":"Description","DirectoryInformationError":"There was an unexpected error attempting to retreive document directory information.","DocumentInformationError":"There was an unexpected error attempting to retreive document information.","EditFolder":"Edit Folder Name","Expires":"Expires","File":"File","FileProperties":"File Properties","Help":"Help","InvalidRoot":"Invalid root directory: \"${0}\" (${1}).","Library":"Library","LibraryDataError":"There was an unexpected error processing library directory data.","Never":"Never","No":"No","Revised":"Revised","Size":"Size","Yes":"Yes","_localized":{}}
+,
+'Sage/MailMerge/nls/Helper':{"destkopErrorsError":"The call to DesktopErrors() failed.","mailMergeInfoStoreError":"The call to MailMergeInfoStore() failed.","_localized":{}}
+,
+'Sage/MailMerge/nls/Service':{"selectContactCaption":"Select a Contact","selectOppContactCaption":"Select an Opportunity Contact","selectLeadCaption":"Select a Lead","errorAttachmentUpdate":"Unable to update the Attachment record.","errorHistoryUpdate":"Unable to update the History record.","errorXmlHttp":"There was an error processing the request for ${0}. ${1} (${2}).","_localized":{}}
+,
+'Sage/MailMerge/nls/Lookup':{"accountCaption":"Account","companyCaption":"Company","contactTitle":"Select a Contact","emailCaption":"E-mail","firstNameCaption":"First Name","invalidOptionsText":"The options parameter or options.onSelect is undefined or defined incorrectly.","lastNameCaption":"Last Name","leadTitle":"Select a Lead","mobileCaption":"Mobile","opportunityCaption":"Opportunity","workCaption":"Work","okText":"OK","_localized":{}}
+,
+'Sage/MailMerge/nls/Loader':{"decodeFailed":"The call to DecodeMailMergeJsonFromUrl() failed.","_localized":{}}
+,
+'Sage/Services/nls/JobService':{"txtInvalidParameter":"Invalid parameter: '${0}'.","txtTriggerJobError":"Sorry an error occurred triggering job '${0}': ${1} ${2}.","txtScheduleJobError":"Sorry an error occurred scheduling job '${0}': ${1} ${2}.","txtUnexpectedError":"Sorry an error occurred: ${0} ${1}.","_localized":{}}
+,
+'Sage/Services/nls/ReportingService':{"txtUnsupportedReportType":"Unsupported report type: ${0}.","txtUnexpectedError":"Sorry an error occurred: ${0} ${1}.","invalidEntityError":"The entity ID has not been defined or could not be determined.","invalidReportPluginError":"The report plugin ID has not been defined or could not be determined.","invalidTableNameError":"The table name has not been defined or could not be determined.","noDefaultReportError":"A default report could not be located for the current entity.","reportCannotBeShownError":"The report cannot be shown.","_localized":{}}
+,
+'Sage/Reporting/nls/Enumerations':{"txtGroup":"Group","txtDateRange":"Date Range","txtUser":"User","txtQuery":"Query","txtIsGreaterThan":"Is Greater Than","txtIsLessThan":"Is Less Than","txtIsInTheRange":"Is In The Range","txtIsAfter":"Is After","txtIsBefore":"Is Before","txtContains":"Contains","txtStartsWith":"Starts With","txtEndsWith":"Ends With","txtIs":"Is","txtIsNot":"Is Not","txtOnDemand":"On Demand","txtScheduled":"Scheduled","txtCrystalReport":"Crystal Report","txtExportToFileReportType":"Export to File","txtUnknownReportType":"Unknown","txtNoFormat":"No Format","txtPdf":"PDF","txtExcel":"Excel","txtExcelDataOnly":"Excel-Data","txtCsv":"CSV","txtWord":"Word","txtXml":"XML","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportWizardController':{"txtLoadingScheduleDetails":"Loading Schedule Details","txtError":"Error","txtCannotDetermineReportId":"Cannot determine report id.","txtCannotDetermineReportNameOrFamily":"Cannot determine report name or family.","txtLoading":"Loading ","txtLoadingReport":"Loading Report","txtSorryAnErrorOccuredLoadingReport":"Sorry, an error occurred loading report: ${0} ${1}.","displayNameAccountDetail":"Account Detail","displayNameContactDetail":"Contact Detail","displayNameOpportunityDetail":"Opportunity Detail","displayNameSupportDefect":"Support Defect","displayNameSupportTicket":"Support Ticket","displayNameSalesOrderDetail":"Sales Order Detail","displayNameQuoteDetail":"Quote Detail","displayNameQuotation":"Quotation","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportWizardController':{"txtOnDemandScheduleName":"On Demand","txtReportSuccessfullyScheduled":"Report successfully scheduled.","txtDynamicParametersMessage":"Reports with dynamic parameters are currently not supported.","txtError":"Error","txtScheduleSuccessfullyUpdated":"Schedule successfully updated.","txtInvalidReportWithDynamicParameters":"The \"${0}:${1}\" report cannot run or be scheduled because it is invalid for the following reason(s): ${2}","txtInvalidDynamicParameterDatasource":"The dynamic parameter \"${p.name}\" (\"${p.promptText}\") is currently unsupported because its datasource requires parameter input.","txtInvalidDynamicParameterReason":"The dynamic parameter \"${p.name}\" (\"${p.promptText}\") is invalid: ${p.invalidDynamicParameterReason}","txtInvalidDynamicParameterUnknownReason":"The dynamic parameter \"${p.name}\" (\"${p.promptText}\") is invalid.","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportParametersDialog':{"txtDialogTitle":"Enter Values","cmdBack_Caption":"< Back","cmdNext_Caption":"Next >","cmdCancel_Caption":"Cancel","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerUtility':{"_localized":{}}
+,
+'Sage/MainView/ReportMgr/Common/nls/_WizardDialogBase':{"txtFinish":"Finish","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/_ParameterEditorBase':{"txtPleaseSpecifyValue":"Please specify a value.","lblAvailableValues_Caption":"Available Values:","lblSelectedValues_Caption":"Selected Values:","lblEnterValue_Caption":"Enter a Value:","btnOK_Caption":"OK","txtTheValueMustBeBetween":"The value must be between {0} and {1} characters long.","txtTheMinimumLengthForThisField":"The minimum length for this field is {0}.","txtTheMaximumLengthForThisField":"The maximum length for this field is {0}.","txtPleaseSpecifyNumberBetween":"Please specify a numeric value between {0} and {1}.","txtPleaseSpecifyNumberLesser":"Please specify a numeric value less than or equal to {0}.","txtPleaseSpecifyNumberGreater":"Please specify a numeric value greater than or equal to {0}.","txtNoLowerValue":"No lower value","txtNoUpperValue":"No upper value","txtIncludeThisValue":"Include this value","txtFrom":"From:","txtTo":"To:","txtPleaseSpecifyFromValue":"Please specify a start range value","txtPleaseSpecifyToValue":"Please specify a end range value","txtPleaseSpecifyDateBetween":"Please specify a date value between {0} and {1}.","txtPleaseSpecifyDateLesser":"Please specify a date value less than or equal to {0}.","txtPleaseSpecifyDateGreater":"Please specify a date value greater than or equal to {0}.","txtFromMustBeLessThanOrEqualToTo":"The start range value must be less than or equal to the end range value.","txtStartOfRange":"Start of Range:","txtEndOfRange":"End of Range:","txtAddRange":"Add Range","lblSelectValue_Caption":"Select a Value:","lblOrValue_Caption":"Or","_localized":{}}
+,
+'Sage/UI/nls/TransferBoxWidget':{"searchFilterText":"Contains:","loadingText":"Loading parameter options...","noResultsText":"No results","btnAddTooltip":"Add selection(s)","btnRemoveTooltip":"Remove selection(s)","btnRemoveAllTooltip":"Remove all","availableValuesText":"Available Values:","selectedValuesText":"Selected Values:","btnAddAllTooltip":"Add all","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportsUtility':{"txtCurrentUser":"Current User","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportConditionsDialog':{"txtDialogTitle":"Select Records","cmdBack_Caption":"< Back","cmdNext_Caption":"Next >","cmdCancel_Caption":"Cancel","grdCrystalConditions_ConditionType_Caption":"Type","grdCrystalConditions_TableName_Caption":"Table","grdCrystalConditions_FieldName_Caption":"Field","grdCrystalConditions_Operator_Caption":"Operator","grdCrystalConditions_Value_Caption":"Condition Value","txtShowRecordsThatMatch":"Show records that match: ","txtMatch":"Match the following conditions:","txtAny":"Any","txtAll":"All","txtAllRecords":"[All Records]","txtSpecificConditions":"[Specific Conditions]","txtCurrentUser":"[Current User]","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportConditionEditor':{"dlgCrystalReportConditionDetails_Title":"Add/Edit Condition","cmdOK_Caption":"OK","cmdCancel_Caption":"Cancel","cmbConditionType_Caption":"Match By","txtInvalidParameterTitle":"Invalid Parameter","txtInvalidParameterMessage":"Invalid Parameter: ${0}","lkpUser_Caption":"User","lkpGroup_Caption":"Group","txtSelectUser":"Select User","chkCurrentUser_Caption":"Current User","txtName":"Name","txtOK":"OK","txtSelectGroup":"Select Group","cmbDateRange_Caption":"Date Range","cmbDateRange_SpecificDates_Caption":"Specific Dates","cmbDateRange_ThisWeek_Caption":"This Week","cmbDateRange_ThisMonth_Caption":"This Month","cmbDateRange_ThisQuarter_Caption":"This Quarter","cmbDateRange_ThisYear_Caption":"This Year","cmbDateRange_LastWeek_Caption":"Last Week","cmbDateRange_LastMonth_Caption":"Last Month","cmbDateRange_LastQuarter_Caption":"Last Quarter","cmbDateRange_LastYear_Caption":"Last Year","cmbDateRange_MonthToDate_Caption":"Month to Date","cmbDateRange_QuarterToDate_Caption":"Quarter to Date","cmbDateRange_YearToDate_Caption":"Year to Date","dtFromDate_Caption":"From","dtToDate_Caption":"To","cmbTable_Caption":"Table","cmbField_Caption":"Field","cmbOperator_Caption":"Operator","txtValue_Caption":"Value","txtNumericValueFrom_Caption":"From","txtNumericValueTo_Caption":"To","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Crystal/nls/CrystalReportsFormatter':{"txtEdit":"Edit","txtDelete":"Delete","txtRangeValue":"${0} to ${1}","_localized":{}}
+,
+'Sage/MainView/ReportMgr/Common/nls/ExportOptionsDialog':{"txtDialogTitle":"Export Options","txtDialogTitleScheduling":"Export And Scheduling Options","cmdBack_Caption":"< Back","cmdNext_Caption":"Next >","cmdCancel_Caption":"Cancel","txtName":"Name","txtSelectUser":"Select User","txtOK":"OK","txtOutputFormat_Caption":"Format","txtRunAs_Caption":"Run As","txtScheduleDescription_Caption":"Description","_localized":{}}
+,
+'Sage/UI/nls/JobSchedulingWidget':{"lblCreateSchedule":"Create job schedule to run","lblEveryText":"Every","lblOnText":"on","lblOnTheText":"on the","lblAtText":"at","lblMinutesPastHour":"minutes past the hour","lblFromTimeText":"Run from","lblToTimeText":"to","lblMinutesFrequency":"minutes","lblHourlyFrequency":"hour(s)","lblDailyFrequency":"day","lblWeekDayFrequency":"week day","lblWeeklyFrequency":"week","lblMonthlyFrequency":"month","lblYearlyFrequency":"year","lblSunday":"Sunday","lblMonday":"Monday","lblTuesday":"Tuesday","lblWednesday":"Wednesday","lblThursday":"Thursday","lblFriday":"Friday","lblSaturday":"Saturday","lblFirstDay":"first","lblSecondDay":"second","lblThirdDay":"third","lblFourthDay":"fourth","lblCronExpressionText":"Cron expression","txtInvalidScheduleTitle":"Invalid Schedule","txtInvalidDatesMessage":"The end time must be after the start time. Please correct this information before continuing.","txtInvalidScheduleTime":"The start and end times specified will prevent this schedule from running. Please correct this information before continuing.","txtInvalidStartDate":"A start date is required. Please specify a start date before continuing.","txtInvalidEndDate":"An end date is required. Please specify an end date before continuing","_localized":{}}
+,
+'Sage/UI/nls/ListPanel':{"listText":"List","summaryText":"Summary","detailText":"Detail","hideDetailText":"Hide Detail","unsavedDataText":"*unsaved data","helpText":"Help","refreshText":"Refresh","overflowText":"Your search returned a large number of results. Narrow your search by applying filters.","totalRecordsText":"Total Records: ","_localized":{}}
+,
+'Sage/UI/nls/TitleContentPane':{"reduceSelectedGroups":"Only ${0} favorite groups allowed. Reduce the number selected.","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/BaseListPanelConfig':{"titleFmtString":"${0}","_localized":{}}
+,
+'Sage/UI/nls/SummaryContainer':{"loadingText":"Loading...","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityListPanelConfig':{"colNameComplete":"Complete","colNameAttachment":"Attachment","colNameRecurring":"Recurring","colNameAlarm":"Alarm","colNameType":"Activity Type","colNameStartDate":"Start Date","colNameDuration":"Duration","colNameContact":"Name","colNameLead":"Lead","colNameAccount":"Account/Company","colNameCompany":"Company","colNameRegarding":"Regarding","colNamePriority":"Priority","colNameUserId":"Leader","colNameTimeless":"Timeless","colNameTypeName":"Type","colNameContactName":"Name","SnoozeAlarm":"Snooze Alarm","DismissAlarm":"Dismiss Alarm","colNameUnConfirmStatus":"Unconfirmed","colNameAssociationCount":"Participant Count","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/UserActivityDetailSummary':{"txtPhone_Caption":"Phone:","lnkOpportunityName_Caption":"Opportunity:","txtStartTime_Caption":"Start Time:","lnkContactName_Caption":"Contact:","lnkLeadName_Caption":"Lead:","lnkTicketNumber_Caption":"Ticket:","txtLocation_Caption":"Location:","txtLeader_Caption":"Leader:","txtDuration_Caption":"Duration:","lnkAccountName_Caption":"Account:","lnkCompanyName_Caption":"Company:","txtNotes_Caption":"Notes:","btnComplete_Caption":"Complete","txtAttendeeCount_Caption":"Participant Count:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/UserActivityListSummary':{"txtPhone_Caption":"Phone:","lnkOpportunity_Caption":"Opportunity:","txtStartTime_Caption":"Start Time:","lnkContactName_Caption":"Contact:","lnkLeadName_Caption":"Lead:","lnkTicket_Caption":"Ticket:","txtLocation_Caption":"Location:","txtLeader_Caption":"Leader:","txtDuration_Caption":"Duration:","lnkAccountName_Caption":"Account:","lnkCompanyName_Caption":"Company:","txtNotes_Caption":"Notes:","btnComplete_Caption":"Complete","lnkAttendeeCount_Caption":"Participant Count:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/SnoozeOptions':{"fiveMinText":"5 minutes","tenMinText":"10 minutes","fifteenMinText":"15 minutes","thirtyMinText":"30 minutes","oneHourText":"1 hour","twoHourText":"2 hours","fourHourText":"4 hours","eightHourText":"8 hours","oneDayText":"1 day","twoDayText":"2 days","threeDayText":"3 days","oneWeekText":"1 week","twoWeekText":"2 weeks","snoozeText":"Snooze","snoozeByText":"Snooze by:","snoozeAllText":"Snooze All","snoozeTitle":"Snooze Alarms","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/AllOpenListSummary':{"txtPhone_Caption":"Phone:","lnkOpportunity_Caption":"Opportunity:","txtStartTime_Caption":"Start Time:","lnkContactName_Caption":"Contact:","lnkLeadName_Caption":"Lead:","lnkTicket_Caption":"Ticket:","txtLocation_Caption":"Location:","txtLeader_Caption":"Leader:","txtDuration_Caption":"Duration:","lnkAccountName_Caption":"Account:","lnkCompanyName_Caption":"Company:","txtNotes_Caption":"Notes:","btnComplete_Caption":"Complete","lnkAttendeeCount_Caption":"Participant Count:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/AllOpenDetailSummary':{"txtPhone_Caption":"Phone:","lnkOpportunityName_Caption":"Opportunity:","txtStartTime_Caption":"Start Time:","lnkContactName_Caption":"Contact:","lnkLeadName_Caption":"Lead:","lnkTicketNumber_Caption":"Ticket:","txtLocation_Caption":"Location:","txtLeader_Caption":"Leader:","txtDuration_Caption":"Duration:","lnkAccountName_Caption":"Account:","lnkCompanyName_Caption":"Company:","txtNotes_Caption":"Notes:","btnComplete_Caption":"Complete","txtAttendeeCount_Caption":"Participant Count:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ConfirmListPanelConfig':{"colNameType":"Activity Type","colNameNotification":"Notification","colNameStartDate":"Start Date","colNameDuration":"Duration","colNameRegarding":"Regarding","colNameFromUser":"From","colNameToUser":"To User","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/ConfirmationListSummary':{"txtPhone_Caption":"Phone:","lnkOpportunity_Caption":"Opportunity:","txtStartTime_Caption":"Start Time:","lnkContactName_Caption":"Contact:","lnkLeadName_Caption":"Lead:","lnkTicket_Caption":"Ticket:","txtLocation_Caption":"Location:","txtLeader_Caption":"Leader:","txtDuration_Caption":"Duration:","lnkAccountName_Caption":"Account:","lnkCompanyName_Caption":"Company:","txtNotes_Caption":"Notes:","btnComplete_Caption":"Complete","txtFromUser_Caption":"From:","btnDelete_Caption":"Delete","btnDecline_Caption":"Decline","btnAccept_Caption":"Accept","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/ConfirmationDetailSummary':{"txtPhone_Caption":"Phone:","lnkOpportunity_Caption":"Opportunity:","txtStartTime_Caption":"Start Time:","lnkContactName_Caption":"Contact:","lnkLeadName_Caption":"Lead:","lnkTicket_Caption":"Ticket:","txtLocation_Caption":"Location:","txtLeader_Caption":"Leader:","txtDuration_Caption":"Duration:","lnkAccountName_Caption":"Account:","lnkCompanyName_Caption":"Company:","txtNotes_Caption":"Notes:","btnComplete_Caption":"Complete","txtFromUser_Caption":"From:","btnDelete_Caption":"Delete","btnDecline_Caption":"Decline","btnAccept_Caption":"Accept","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/EventListPanelConfig':{"colNameType":"Type","colNameStartDate":"Start Date","colNameEndDate":"End Date","colNameDescription":"Description","colNameUser":"User","colNameLocation":"Location","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/EventSummary':{"txtStartDate_Caption":"Start Date:","txtEndDate_Caption":"End Date:","txtLocation_Caption":"Location:","txtUser_Caption":"User:","txtDescription_Caption":"Description:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/LitRequestListPanelConfig':{"colNameView":"View","colNameContact":"Contact","colNameDescription":"Description","colNameFillDate":"Filled","colNameFillStatus":"Status","colNameOptions":"Options","colNamePriority":"Priority","colNameReqestDate":"Request Date","colNameSendDate":"Send Date","colNameSendVia":"Send Via","colNameTotalCost":"Total Cost","colNameFillUser":"Fill User","colNameReqestUser":"Request User","colNameAccount":"Account","colNamePostalCode":"Postal Code","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/templates/nls/LitRequestSummary':{"txtSendDate_Caption":"Send:","txtScheduled_Caption":"Scheduled:","txtStatus_Caption":"Status:","txtRequestedBy_Caption":"Requested By:","lnkContact_Caption":"Contact:","txtPriority_Caption":"Priority:","txtVia_Caption":"Send Via:","txtCost_Caption":"Total Cost:","txtWorkPhone_Caption":"Work Phone:","txtPostalCode_Caption":"Postal Code:","txtHomePhone_Caption":"Home Phone","lnkAccount_Caption":"Account:","txtRequestDate_Caption":"Requested:","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityGroupContextService':{"activityTabDisplayName":"My Activities","litTabDisplayName":"Literature","eventTabDisplayName":"Events","confirmTabDisplayName":"Confirmations","pastDueTabDisplayName":"Past Due","alarmTabDisplayName":"Alarms","allOpenTabDisplayName":"All Open","_localized":{}}
+,
+'Sage/MainView/nls/ActivityManager':{"titleFmtString":"${0}","tabDisplayNameActivity":"Activities","tabDisplayNameLit":"Literature","tabDisplayNameEvent":"Events","tabDisplayNameConfirm":"Confirmations","activityColNameComplete":"Complete","activityColNameAttachment":"Attachment","activityColNameRecurring":"Recurring","activityColNameAlarm":"Alarm","activityColNameType":"ActivityType","activityColNameStartDate":"StartDate","activityColNameDuration":"Duration","activityColNameContact":"Contact","activityColNameLead":"Lead","activityColNameAccount":"Account","activityColNameRegarding":"Regarding","activityColNamePriority":"Priority","activityColNameUserId":"leader","activityTypePhone":"Phone","activityTypeCall":"Call","activityTypeMeeting":"Meeting","activityTypePersonal":"Personal","_localized":{}}
+,
+'Sage/Extensions/Activity/ListPanelOverrides/nls/ActivityListPanelConfig':{"colNameAssociationCount":"Participant Count","_localized":{}}
+,
+'Sage/Extensions/Activity/ListPanelOverrides/nls/AllOpenListPanelConfig':{"colNameAssociationCount":"Participant Count","_localized":{}}
+,
+'Sage/MainView/nls/SecurityManager':{"accessText":"Access","columnText":"Column","entityText":"Entity","noAccessText":"No Access","profilesText":"Profiles","propertyText":"Property","securityManagerText":"Security Manager","readOnlyText":"Read Only","readWriteText":"Read Write","resetText":"Reset","saveText":"Save","tableText":"Table","descriptionText":"Description","_localized":{}}
+,
+'Sage/MainView/ActivityMgr/nls/ActivityCalendar':{"completedText":"(Completed)","_localized":{}}
+,
+'Sage/MainView/Contact/nls/ContactSearchForDuplicates':{"svAccount_Caption":"Account:","svCompany_Caption":"Company:","svEmail_Caption":"Email:","svName_Caption":"Name:","svTitle_Caption":"Title:","svType_Caption":"Type:","svSubType_Caption":"Sub Type:","svAccMgr_Caption":"Acct. Mgr.:","svHomePhone_Caption":"Home phone:","svWorkPhone_Caption":"Work phone:","svMobilePhone_Caption":"Mobile phone:","svStatus_Caption":"Status:","svWebAddress_Caption":"Web:","svEntityAccount_Caption":"Account","svEntityLead_Caption":"Lead","svEntityContact_Contact":"Contact","svTollFree_Caption":"Toll free:","svIndustry_Caption":"Industry:","svDivision_Caption":"Division:","svMainPhone_Caption":"Main phone:","LeadSummaryView_Title":"Summary View - Lead","ContactSummaryView_Title":"Summary View - Contact","AccountSummaryView_Title":"Summary View - Account","closeText":"Close","errorLoadingSummaryView":"An error occurred loading summary view: ${0}","_localized":{}}
+,
+'Sage/MainView/Contact/nls/ContactUserAssociationEditor':{"btnCancel_Caption":"Cancel","btnOK_Caption":"OK","dialogTitleText":"Associate Contact with User","associateContactText":"Associate the selected contact with the following user","user_Caption":"User","lookupUserText":"Lookup User","lookupNameColText":"Name","lookupTitleColText":"Title","lookupDepartmentColText":"Department","lookupRegionColText":"Region","lookupTypeColText":"Type","disAssociateTitle":"Disassociate from a User","associationExistsMessage":"The user you selected is already associated to a contact. Select another user.","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/MatchingOptionsConfig':{"matchingCaption":"Edit Match Criteria","matchingHeader":"Match Criteria for ","matchingDescription":"Add or remove operators to define the match criteria for all users who link Infor CRM records with an accounting system. This criteria determines the results returned when searching for matching records between accounting systems.","propertyText":"Property","operatorText":"Operator","loadingText":"Loading...","filter_AddCondition":"Add Condition","filter_RemoveCondition":"Remove Condition","error_InvalidEndpoint":"Please specify a valid endpoint before continuing.","okText":"OK","cancelText":"Cancel","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/AdvancedSearchOptions':{"dialogCaption":"Link to Accounting","searchOptionsHeader":"Search for Matches in ","searchOptionsText":"The following criteria was used in the previous search. Modify the criteria for a new search. Click OK to begin searching.","propertyText":"Property","operatorText":"Operator","searchText":"Search Value","loadingText":"loading...","loadingDisplay":"Searching for results...","hideImgAltText":"Remove Condition","addImgAltText":"Add Condition","okText":"OK","cancelText":"Cancel","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/BaseListPanelConfig':{"titleFmtString":"${0}","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/ExecutionsListPanelConfig':{"loadingText":"Loading...","colNameJobName":"Type","colNameUser":"User","colNamePhase":"Phase","colNamePhaseDetail":"Phase Detail","colNameProgress":"Progress","colNameElapsed":"Elapsed Time","colNameStatus":"Status","colNameResult":"Result","_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/ExecutionsListSummary':{"_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/ExecutionDetailSummary':{"txtJobName_Caption":"Type:","txtUser_Caption":"User:","txtTriggerId_Caption":"Result:","txtScheduledStartTime_Caption":"Scheduled Start Time:","txtStartTime_Caption":"Actual Start Time:","txtPhase_Caption":"Phase:","txtPhaseDetail_Caption":"Phase Detail:","txtProgress_Caption":"Progress:","txtElapsedTime_Caption":"Elapsed Time:","txtRemainingTime_Caption":"Remaining Time:","txtStatus_Caption":"Status:","txtResult_Caption":"Result:","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/JobDefinitionsListPanelConfig':{"colNameJobName":"Job Name","colNameDescription":"Description","colNameType":"Type","_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/JobDefinitionsListSummary':{"_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/JobDefinitionDetailSummary':{"txtJobName_Caption":"Job Name:","txtDescription_Caption":"Description:","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/SchedulesListPanelConfig':{"colNameTriggerName":"Schedule","colNameJobName":"Job Name","colNameUser":"Scheduled By","colNameStartTimeUtc":"Start Time","colNameEndTimeUtc":"End Time","colNamePriority":"Priority","colNameStatus":"Status","colNameTimesTriggered":"Execution Count","_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/SchedulesListSummary':{"_localized":{}}
+,
+'Sage/MainView/JobMgr/templates/nls/ScheduleDetailSummary':{"txtScheduleName_Caption":"Schedule:","txtJobName_Caption":"Job Name:","txtUser_Caption":"Scheduled By:","txtRunAs_Caption":"Run As:","txtStartTime_Caption":"Start Time:","txtEndTime_Caption":"End Time:","txtNextRunTime_Caption":"Next Run Time:","txtRepeatCount_Caption":"Repeat Count:","txtRepeatInterval_Caption":"Repeat Interval:","txtPriority_Caption":"Priority:","txtStatus_Caption":"Status:","txtExecutionCount_Caption":"Execution Count:","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/JobManagerGroupContextService':{"executionsTabDisplayName":"Executions","jobDefinitionsTabDisplayName":"Definitions","schedulesTabDisplayName":"Schedules","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/RunJobDialog':{"dlgRunJob_Title":"Run/Schedule Job","txtJobName_Caption":"Job Name","txtTriggerDescription_Caption":"Description","cmbScheduleType_Caption":"Schedule","cmdOK_Caption":"OK","cmdCancel_Caption":"Cancel","txtInvalidNumber":"Invalid number.","contentPaneParameters_Caption":"Parameters","txtRunNow":"Run Now","txtScheduledExecution":"Scheduled Execution","colName_Caption":"Name","colValue_Caption":"Value","colDescription_Caption":"Description","txtInvalidParameterTitle":"Invalid Parameter","txtInvalidParameterMessage":"Invalid Parameter: ${0}","_localized":{}}
+,
+'Sage/MainView/JobMgr/nls/JobManagerActions':{"txtInterruptExecutionMessage":"A signal has been sent to the job to cancel execution.","txtInterruptExecutionTitle":"Cancel Job","txtInterruptExecutionConfirmationMessage":"Are you sure you want to cancel execution of job ${0}?","txtYes":"Yes","txtNo":"No","completedJobMessage":"The selected job has already been completed.","jobStatusComplete":"Complete","error_NoRecordSelected":"You must select a record before continuing.","confirm_ScheduleDeletion":"Are you sure you want to delete the selected schedule?","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportsListPanelConfig':{"colNameReportName":"Name","colNameType":"Type","colNameTable":"Table","colNameCreateUser":"Create User","colNameCreateDate":"Create Date","colNameLastExecutionDate":"Last Run","colNameLastExecutionUser":"Last Run By","colNameModifyUser":"Modify User","colNameModifyDate":"Modify Date","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerFormatter':{"txtTrue":"True","txtFalse":"False","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/ReportsListSummary':{"txtTrue":"True","txtFalse":"False","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/ReportDetailSummary':{"txtReportName_Caption":"Name:","txtReportType_Caption":"Type:","txtTable_Caption":"Table:","txtCreateUser_Caption":"Create User:","txtCreateDate_Caption":"Create Date:","txtModifyUser_Caption":"Modify User:","txtModifyDate_Caption":"Modify Date:","txtUserField_Caption":"User Field:","txtDateField_Caption":"Date Field:","txtUseGroupFilter_Caption":"Use Group Filter:","txtUseUserFilter_Caption":"Use User Filter:","txtUseDateFilter_Caption":"Use Date Filter:","txtFileName_Caption":"File Name:","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/SchedulesListPanelConfig':{"colJobName":"Job Name","colNameDescription":"Description","colNameRunAsUser":"Scheduled By","colNameLastExecutionDate":"Last Run","colNameExecutionCount":"Execution Count","colNameStartTimeUtc":"Start Time","colNameEndTimeUtc":"End Time","colNamePriority":"Priority","colNameStatus":"Status","colNameTemplate":"Template","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/SchedulesListSummary':{"txtTrue":"True","txtFalse":"False","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/ScheduleDetailSummary':{"txtScheduleName_Caption":"Job Name:","txtDescription_Caption":"Description:","txtRunAsUser_Caption":"Run As:","txtScheduledBy_Caption":"Scheduled By:","txtOutputFormat_Caption":"Output Format:","txtFrequency_Caption":"Frequency:","txtUser_Caption":"Author:","txtLastExecutionDate_Caption":"Last Run:","txtExecutionCount_Caption":"Execution Count:","txtReportName_Caption":"Report:","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/HistoryListPanelConfig':{"colNameDate":"Date","colNameScheduleName":"Description","colNameExecutionType":"Execution Type","colNameRunAs":"Run As","colNameScheduledBy":"Scheduled By","colNameReportName":"Report","colNameSize":"File Size","colNameOutputFormat":"Output Format","colNameReportType":"Type","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/HistoryListSummary':{"txtTrue":"True","txtFalse":"False","_localized":{}}
+,
+'Sage/MainView/ReportMgr/templates/nls/HistoryDetailSummary':{"txtCreateDate_Caption":"Create Date:","txtReportType_Caption":"Report Type:","txtOutputFormat_Caption":"Output Format:","txtRunAsUser_Caption":"Run As:","txtExecutionType_Caption":"Execution Type:","txtScheduleName_Caption":"Description:","txtScheduledBy_Caption":"Scheduled By:","txtFileSize_Caption":"File Size:","txtElapsedTime_Caption":"Elapsed Time:","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerGroupContextService':{"reportsTabDisplayName":"Reports","schedulesTabDisplayName":"Schedules","historyTabDisplayName":"History","_localized":{}}
+,
+'Sage/MainView/ReportMgr/nls/ReportManagerActions':{"txtSelectRecord":"Please select a record in the list before continuing.","txtInvalidSelectionCount":"You must have at least one record selected before continuing.","confirm_Deletion":"Are you sure you want to delete the selected ${0}?","confirm_Report":"report","confirm_Schedule":"schedule","confirm_ReportHistory":"report history record","txtYes":"Yes","txtNo":"No","deleteJobError":"Sorry an error occurred during the deletion process: ${0}","txtDeleteHistory":"Deleting history records","txtDeleteTitle":"Delete History","txtErrorDeleteReport":"An error occurred deleting report: ${0}","_localized":{}}
+,
+'Sage/MainView/EntityMgr/nls/EntityListPanelConfig':{"colNameEntityName":"Name","colNameType":"Type","colNameTable":"Table","colNameCreateUser":"Create User","colNameCreateDate":"Create Date","colNameLastExecutionDate":"Last Run","colNameLastExecutionUser":"Last Run By","colNameModifyUser":"Modify User","colNameModifyDate":"Modify Date","colNameEntityDisplayName":"Display Name","colNameEntityTableName":"Table","colNamePropertyCount":"Property Count","colNameFilterCount":"Filter Count","colNameMetricCount":"Metric Count","colNamePackage":"Package","owner":"Owner","assignTo":"Assign To","newACI":"New Area/Category/Issue","insertACI":"Insert Area/Category/Issue","autoAssign":"Auto Assignment","areaCatIssue":"Area/Category/Issue","lookupACI":"Lookup Area/Category/Issue","displayName":"Display Name","displayPluralName":"Display Plural Name","Title":"Title","IsExtension":"IsExtension","Audited":"Audited","OK":"OK","Cancel":"Cancel","_localized":{}}
+,
+'Sage/MainView/EntityMgr/templates/nls/EntityListSummary':{"txtTrue":"True","txtFalse":"False","_localized":{}}
+,
+'Sage/MainView/EntityMgr/templates/nls/EntityDetailSummary':{"txtReportName_Caption":"Name:","txtReportType_Caption":"Type:","txtTable_Caption":"Table:","txtCreateUser_Caption":"Create User:","txtCreateDate_Caption":"Create Date:","txtModifyUser_Caption":"Modify User:","txtModifyDate_Caption":"Modify Date:","txtUserField_Caption":"User Field:","txtDateField_Caption":"Date Field:","txtUseGroupFilter_Caption":"Use Group Filter:","txtUseUserFilter_Caption":"Use User Filter:","txtUseDateFilter_Caption":"Use Date Filter:","txtFileName_Caption":"File Name:","_localized":{}}
+,
+'Sage/MainView/EntityMgr/nls/EntityManagerGroupContextService':{"entityTabDisplayName":"Entities","schedulesTabDisplayName":"Schedules","historyTabDisplayName":"History","filterName":"Name","filterDisplayName":"Display Name","filterEntityName":"Entity Name","filterModifiedDate":"Modified Date","filterHasMeasure":"Has Measure","filterHasMetric":"Has Metric","filterHasFilter":"Has Filter","_localized":{}}
+,
+'Sage/MainView/Options/nls/OptionsDialog':{"txtOptions":"Options","txtColumns":"Columns","txtZero":"(0 displays all group columns)","txtHideOnSelection":"Hide extended group list on record selection","txtDisplayExtendedGroupListOnLookup":"Display extended group list on lookup","cmdOk_Caption":"OK","cmdCancel_Caption":"Cancel","txtListView":"List View","txtDetailView":"Detail View","txtStayInDetailViewOnLookup":"Stay in detail view on lookup","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/ControlDesigner':{"displayNameText":"","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/_PropertyEditor':{"titleText":"Properties","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/LayoutPropertyEditor':{"titleText":"Layout","positionText":"Position","sizeText":"Size","rowText":"Row:","rowTooltipText":"Row number of the control.","columnText":"Column:","columnTooltipText":"Column number of the control.","rowSpanText":"Row Span:","rowSpanTooltipText":"Number of cells the control occupies vertically.","columnSpanText":"Column Span:","columnSpanTooltipText":"Number of cells the control occupies horizontally.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/GenericBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/GenericAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","controlInfoText":"Control Info","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/GenericControlDesigner':{"displayNameText":"Unknown","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/NonVisibleAdvancedPropertyEditor':{"titleText":"Advanced","controlInfoText":"Control Info","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/HiddenControlDesigner':{"displayNameText":"Hidden Text","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/TextBoxBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","linesText":"Lines:","linesTooltipText":"Number of lines of text displayed.","isReadOnlyText":"Read Only:","isReadOnlyTooltipText":"Does not allow edits.","toolTipText":"Tooltip:","toolTipTooltipText":"Short help text about control.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/TextBoxAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlLabelPlacementText":"Label Placement:","controlLabelPlacementTooltipText":"Label position in relation to the control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","defaultDataBindingText":"Data Bindings:","defaultDataBindingTooltipText":"Data field(s) in the database used by this control.","enabledText":"Enabled:","enabledTooltipText":"Allows user to interact with this control.","maxLengthText":"Max Length:","maxLengthTooltipText":"Maximum number of characters user can enter.","requiredText":"Required:","requiredTooltipText":"Requires a value when saving data.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","labelPlacementText":{"left":"Left","right":"Right","top":"Top","none":"None"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/TextBoxControlDesigner':{"displayNameText":"TextBox","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/UrlControlDesigner':{"displayNameText":"Url","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/PhoneControlDesigner':{"displayNameText":"Phone","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/EmailControlDesigner':{"displayNameText":"Email","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CheckBoxBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","isReadOnlyText":"Read Only:","isReadOnlyTooltipText":"Does not allow edits.","toolTipText":"Tooltip:","toolTipTooltipText":"Short help text about control.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CheckBoxAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","checkedText":"Checked:","checkedTooltipText":"Sets default state of checkbox to selected.","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlLabelPlacementText":"Label Placement:","controlLabelPlacementTooltipText":"Label position in relation to the control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","defaultDataBindingText":"Data Bindings:","defaultDataBindingTooltipText":"Data field(s) in the database used by this control.","enabledText":"Enabled:","enabledTooltipText":"Allows user to interact with this control.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","labelPlacementText":{"left":"Left","right":"Right","top":"Top","none":"None"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/CheckBoxControlDesigner':{"displayNameText":"CheckBox","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/PickListBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","isReadOnlyText":"Read Only:","isReadOnlyTooltipText":"Does not allow edits.","toolTipText":"Tooltip:","toolTipTooltipText":"Short help text about control.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/PickListAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","allowMultiplesText":"Allow Multiple Selections:","allowMultiplesTooltipText":"Allows user to select more than one item.","canEditTextText":"Can Edit Text:","canEditTextTooltipText":"Allows user to type value.","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlLabelPlacementText":"Label Placement:","controlLabelPlacementTooltipText":"Label position in relation to the control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","defaultDataBindingText":"Data Bindings:","defaultDataBindingTooltipText":"Data field(s) in the database used by this control.","displayModeText":"Display Mode:","displayModeTooltipText":"Mode of display of control: text box, hyperlink, or plain text.","enabledText":"Enabled:","enabledTooltipText":"Allows user to interact with this control.","maxLengthText":"Max Length:","maxLengthTooltipText":"Maximum number of characters user can enter.","mustExistInListText":"Item Must Exist:","mustExistInListTooltipText":"Requires typed value to be on list.","pickListNameText":"Pick List Name:","pickListNameTooltipText":"Name of the list of values the user can select from when entering data.","requiredText":"Required:","requiredTooltipText":"Requires a value when saving data.","storageModeText":"Storage Mode:","storageModeTooltipText":"How the value is stored: Text, Id, or Code.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","labelPlacementText":{"left":"Left","right":"Right","top":"Top","none":"None"},"displayModeTypeText":{"AsControl":"As Control","AsText":"As Text","AsHyperlink":"As Hyperlink"},"storageModeTypeText":{"Text":"Text","Id":"ID","Code":"Code"},"pickListRequestErrorText":"Unable to retrieve picklists from server.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/PickListControlDesigner':{"displayNameText":"Pick List","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/ComboBoxBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","isReadOnlyText":"Read Only:","isReadOnlyTooltipText":"Does not allow edits.","toolTipText":"Tooltip:","toolTipTooltipText":"Short help text about control.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/ComboBoxAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","itemGroupText":"Items","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlLabelPlacementText":"Label Placement:","controlLabelPlacementTooltipText":"Label position in relation to the control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","dataSourceText":"Data Source:","dataSourceTooltipText":"Source of the data for this control such as another control or an entity.","defaultDataBindingText":"Data Bindings:","defaultDataBindingTooltipText":"Data field(s) in the database used by this control.","enabledText":"Enabled:","enabledTooltipText":"Allows user to interact with this control.","itemsText":"Items:","itemsTooltipText":"Values the user can select.","textFieldText":"Text Field:","textFieldTooltipText":"The name of the data source field used to populate the visible text portion of the list items.","valueFieldText":"Value Field:","valueFieldTooltipText":"The name of the data source field used to populate the value portion of the list items.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","labelPlacementText":{"left":"Left","right":"Right","top":"Top","none":"None"},"hasItemsText":"Set","noItemsText":"Not Set","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/ComboBoxControlDesigner':{"displayNameText":"ComboBox","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/UserBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","isReadOnlyText":"Read Only:","isReadOnlyTooltipText":"Does not allow edits.","toolTipText":"Tooltip:","toolTipTooltipText":"Short help text about control.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/UserAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlLabelPlacementText":"Label Placement:","controlLabelPlacementTooltipText":"Label position in relation to the control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","defaultDataBindingText":"Data Bindings:","defaultDataBindingTooltipText":"Data field(s) in the database used by this control.","enabledText":"Enabled:","enabledTooltipText":"Allows user to interact with this control.","lookupBindingModeText":"Lookup Binding Mode:","lookupBindingModeTooltipText":"Indicates whether you want to bind to an entity object or to a string value.","requiredText":"Required:","requiredTooltipText":"Requires a value when saving data.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","labelPlacementText":{"left":"Left","right":"Right","top":"Top","none":"None"},"bindingModeText":{"Object":"Object","String":"String"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/UserControlDesigner':{"displayNameText":"User","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/OwnerBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","isReadOnlyText":"Read Only:","isReadOnlyTooltipText":"Does not allow edits.","toolTipText":"Tooltip:","toolTipTooltipText":"Short help text about control.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/OwnerAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlLabelPlacementText":"Label Placement:","controlLabelPlacementTooltipText":"Label position in relation to the control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","defaultDataBindingText":"Data Bindings:","defaultDataBindingTooltipText":"Data field(s) in the database used by this control.","enabledText":"Enabled:","enabledTooltipText":"Allows user to interact with this control.","requiredText":"Required:","requiredTooltipText":"Requires a value when saving data.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","labelPlacementText":{"left":"Left","right":"Right","top":"Top","none":"None"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/OwnerControlDesigner':{"displayNameText":"Owner","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DateTimePickerBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","displayDateText":"Display Date:","displayDateTooltipText":"Display the date portion.","displayTimeText":"Display Time:","displayTimeTooltipText":"Display the time portion.","isReadOnlyText":"Read Only:","isReadOnlyTooltipText":"Does not allow edits.","toolTipText":"Tooltip:","toolTipTooltipText":"Short help text about control.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DateTimePickerAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","buttonToolTipText":"Button Tooltip:","buttonToolTipTooltipText":"The tooltip  to display when the user's mouse hovers over the button part of the control.","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlLabelPlacementText":"Label Placement:","controlLabelPlacementTooltipText":"Label position in relation to the control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","defaultDataBindingText":"Data Bindings:","defaultDataBindingTooltipText":"Data field(s) in the database used by this control.","displayModeText":"Display Mode:","displayModeTooltipText":"Mode of display of control: text box, hyperlink, or plain text.","enabledText":"Enabled:","enabledTooltipText":"Allows user to interact with this control.","requiredText":"Required:","requiredTooltipText":"Requires a value when saving data.","timelessText":"Timeless:","timelessTooltipText":"Use date without time and no DST conversion.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","labelPlacementText":{"left":"Left","right":"Right","top":"Top","none":"None"},"displayModeTypeText":{"AsControl":"As Control","AsText":"As Text","AsHyperlink":"As Hyperlink"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DateTimePickerControlDesigner':{"displayNameText":"DateTime Picker","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DataGridBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","dataText":"Data","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","pageSizeText":"Page Size:","pageSizeTooltipText":"The number of grid records to display on a single page.","resizableColumnsText":"Resizable Columns:","resizableColumnsTooltipText":"Allows user to resize columns.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/DataGridAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","dataSourceText":"Data Source:","dataSourceTooltipText":"Source of the data for this control such as another control or an entity.","emptyTableRowText":"Empty Table Row Text:","emptyTableRowTooltipText":"Text to display if grid shows no data.","expandableRowsText":"Expandable Rows:","expandableRowsTooltipText":"Allows user to expand grid rows to show more text.","renderVerticalText":"Render Vertically:","renderVerticalTooltipText":"Show grid rows as columns.","showSortIconText":"Show Sort Icon:","showSortIconTooltipText":"Show sort icon on columns that are sortable.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DataGridControlDesigner':{"displayNameText":"Data Grid","emptyTableRowStringText":"No records match the selection criteria.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/NumericBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","isReadOnlyText":"Read Only:","isReadOnlyTooltipText":"Does not allow edits.","toolTipText":"Tooltip:","toolTipTooltipText":"Short help text about control.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/NumericAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlLabelPlacementText":"Label Placement:","controlLabelPlacementTooltipText":"Label position in relation to the control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","decimalDigitsText":"Decimal Digits:","decimalDigitsTooltipText":"The number of digits after the decimal to display and allow for data entry.","defaultDataBindingText":"Data Bindings:","defaultDataBindingTooltipText":"Data field(s) in the database used by this control.","enabledText":"Enabled:","enabledTooltipText":"Allows user to interact with this control.","formatTypeText":"Format Type:","formatTypeTooltipText":"Type of format to use when converting number to string.","maxLengthText":"Max Length:","maxLengthTooltipText":"Maximum number of characters user can enter.","requiredText":"Required:","requiredTooltipText":"Requires a value when saving data.","strictText":"Strict:","strictTooltipText":"Pads display of number with trailing zeros as necessary.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","numberFormatText":{"Number":"Number","Percent":"Percent","Decimal":"Decimal","Scientific":"Scientific"},"labelPlacementText":{"left":"Left","right":"Right","top":"Top","none":"None"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/NumericControlDesigner':{"displayNameText":"Numeric","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DesignPanel':{"cultureListText":{"iv":"[invariant]","de_DE":"de-DE","fr_FR":"fr-FR","it_IT":"it-IT","ru_RU":"ru-RU"},"helpText":"Help","saveText":"Save","cultureText":"Culture:","loadingText":"Loading...","savingText":"Saving...","saveErrorText":"An error occurred saving the form.","readErrorText":"Could not load the requested form.","cultureReloadConfirmText":"You have unsaved changes.  Are you sure you want to reload the form with a different culture?","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CurrencyBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","behaviorText":"Behavior","captionText":"Caption:","captionTooltipText":"The label to display on the form for this control.","captionAlignmentText":"Caption Alignment:","captionAlignmentTooltipText":"Justification of the label text.","isReadOnlyText":"Read Only:","isReadOnlyTooltipText":"Does not allow edits.","toolTipText":"Tooltip:","toolTipTooltipText":"Short help text about control.","alignmentText":{"left":"Left","center":"Center","right":"Right"},"_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/CurrencyAdvancedPropertyEditor':{"titleText":"Advanced","appearanceText":"Appearance","behaviorText":"Behavior","controlInfoText":"Control Info","dataText":"Data","controlIdText":"Control Id:","controlIdTooltipText":"Identifier for this control.","controlLabelPlacementText":"Label Placement:","controlLabelPlacementTooltipText":"Label position in relation to the control.","controlTypeText":"Control Type:","controlTypeTooltipText":"Infor CRM control type.","decimalDigitsText":"Decimal Digits:","decimalDigitsTooltipText":"The number of digits after the decimal to display and allow for data entry.","defaultDataBindingText":"Data Bindings:","defaultDataBindingTooltipText":"Data field(s) in the database used by this control.","displayCurrencyCodeText":"Display Exchange Rate Code:","displayCurrencyCodeTooltipText":"Show the three character currency code when multi-currency is enabled.","displayModeText":"Display Mode:","displayModeTooltipText":"Mode of display of control: text box, hyperlink, or plain text.","enabledText":"Enabled:","enabledTooltipText":"Allows user to interact with this control.","exchangeRateTypeText":"Exchange Rate Type:","exchangeRateTypeTooltipText":"Type of exchange rate to show in currency fields.","maxLengthText":"Max Length:","maxLengthTooltipText":"Maximum number of characters user can enter.","requiredText":"Required:","requiredTooltipText":"Requires a value when saving data.","visibleText":"Visible:","visibleTooltipText":"Show or hide this control on the form.","displayTypeText":{"AsHyperlink":"As Hyperlink","AsControl":"As Control","AsText":"As Text"},"exchangeTypeText":{"BaseRate":"Base Rate","OpportunityRate":"Opportunity Rate (Deprecated)","MyRate":"My Rate","SalesOrderRate":"Sales Order Rate (Deprecated)","EntityRate":"Entity Rate"},"labelPlacementText":{"left":"Left","right":"Right","top":"Top","none":"None"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/CurrencyControlDesigner':{"displayNameText":"Currency","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/EditableGridControlDesigner':{"displayNameText":"Editable Grid","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/RowBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","indexText":"Index:","indexTooltipText":"Number of the row or column, beginning with zero.","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/RowDesigner':{"displayNameText":"Row","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/ColumnBasicPropertyEditor':{"titleText":"Basic","appearanceText":"Appearance","indexText":"Index:","indexTooltipText":"Number of the row or column, beginning with zero.","widthText":"Width:","widthTooltipText":"Width of this column of controls.","sizeTypeText":"Size Type:","sizeTypeTooltipText":"Method of sizing: Absolute, AutoSize, or Percent.","rowSizeTypeText":{"Absolute":"Absolute","Percent":"Percent","AutoSize":"AutoSize"},"_localized":{}}
+,
+'Sage/QuickForms/Design/nls/ColumnDesigner':{"displayNameText":"Column","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/FormBasicPropertyEditor':{"titleText":"Basic","generalText":"General","activeControlText":"Active Control:","activeControlTooltipText":"The control the user's cursor starts on.","descriptionText":"Description:","descriptionTooltipText":"Optional description of the purpose of the form.","nameText":"Name:","nameTooltipText":"Form identifier used by the system.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/FormAdvancedPropertyEditor':{"titleText":"Advanced","generalText":"General","useEntityNameAsTitleText":"Use Entity Name As Title:","useEntityNameAsTitleTooltipText":"Use name of current entity in form title.","_localized":{}}
+,
+'Sage/QuickForms/Design/Editors/nls/FormUsagesPropertyEditor':{"titleText":"Usage","portalText":"Portal","viewText":"View","modesText":"Modes","descriptionText":"Description","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/FormDesigner':{"displayNameText":"Form","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DesignSurface':{"bisectionErrorText":"The placement will cause another control to be bisected.","rowBoundsErrorText":"The chosen row is out of bounds.","columnBoundsErrorText":"The chosen column is out of bounds.","rowSpanBoundsErrorText":"The chosen row span is out of bounds.","columnSpanBoundsErrorText":"The chosen column span is out of bounds.","occupiedErrorText":"There is not enough empty space for the chosen size.","aboveText":"Above","belowText":"Below","leftText":"Left","rightText":"Right","insertRowText":"Insert Row","deleteRowText":"Delete Row","deleteColumnText":"Delete Column","insertColumnText":"Insert Column","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/NonVisibleControlContainer':{"headerText":"Non-Visible Controls","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/PropertyEditorContainer':{"specificTitleFormatText":"${0} Properties (${1})","genericTitleFormatText":"${0} Properties","_localized":{}}
+,
+'Sage/MainView/nls/FormManager':{"nameText":"Name","entityText":"Entity","layoutText":"Layout","titleFmtString":"Form Designer - ${0}","pageTitle":"Infor CRM - Form Designer","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupsListPanelConfig':{"AdHoc":"Ad Hoc","Dev":"Dev","Rel":"Shared","Family":"Family","Name":"Name","DisplayName":"Display Name","Owner":"Owner","SharedDate":"Shared Date","Type":"Type","CreateDate":"Create Date","ModifyDate":"Modify Date","Author":"Author","Company":"Company","Version":"Version","UserDefault":"User Default","_localized":{}}
+,
+'Sage/UI/nls/Boolean':{"yesText":"Yes","noText":"No","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupManagerActions':{"SelectRecordMsg":"You must have at least one record selected before continuing.","SelectRecordMsgSingle":"You must have a single record selected before continuing.","ConfirmDeletionMsg":"Are you sure you want to ${0} the selected ${1}?","SelectedGroups":"group(s) (including shares)","SelectedReleases":"shared group(s)","SelectedStatistics":"group statistics","Yes":"Yes","No":"No","Reset":"reset","Delete":"delete","InvalidSelectedGroup":"The selected group is a share. Please select a group you own or have control of and that is not a share.","NotDeveloperGroup":"The selected group is no longer under development.","NotGroupOwner":"The selected group is not owned by you. Please select a group you own or have control of.","OK":"OK","SelectOwner":"Select Owner","FirstName":"First Name","LastName":"Last Name","UserName":"User Name","Type":"Type","ConfirmDeletionMsgSelectedGroups":"Are you sure you want to delete the selected group(s) (including shares)?","ConfirmResetMsgSelectedStatics":"Are you sure you want to reset the selected group statistics?","ConfirmDeletionMsgSelectedReleases":"Are you sure you want to delete the selected shared group(s)?","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupManagerFormatter':{"ACOGroup":"ACO Group","Group":"Group","Unknown":"Unknown","Yes":"Yes","No":"No","_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/GroupsListSummary':{"_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/GroupDetailSummary':{"txtGroupFamily_Caption":"Family:","txtGroupName_Caption":"Name:","txtGroupDisplayName_Caption":"Display Name:","txtGroupDescription_Caption":"Description:","txtGroupId_Caption":"ID:","txtGroupMainTable_Caption":"Main Table:","txtGroupEntityName_Caption":"Entity Name:","txtGroupCreateDate_Caption":"Create Date:","txtGroupCreateUser_Caption":"Create User:","txtGroupModifyDate_Caption":"Modify Date:","txtGroupModifyUser_Caption":"Modify User:","txtGroupInstallationDate_Caption":"Installation Date:","txtGroupShared_Caption":"Shared:","txtGroupSharedDate_Caption":"Shared Date:","txtGroupOwner_Caption":"Owner:","txtGroupUserId_Caption":"User ID:","txtGroupAdhoc_Caption":"Ad Hoc:","txtGroupHidden_Caption":"Hidden:","txtGroupAuthor_Caption":"Author:","txtGroupCompany_Caption":"Company:","txtGroupCompanyVersion_Caption":"Company Version:","txtGroupDev_Caption":"Dev:","txtGroupDataCode_Caption":"Data Code:","txtGroupType_Caption":"Group Type:","txtGroupUserDefault_Caption":"User Default:","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/ReleasesListPanelConfig':{"Dev":"Dev","Rel":"Shared","Family":"Family","Name":"Name","DisplayName":"Display Name","Owner":"Owner","SharedDate":"Shared Date","Type":"Type","CreateDate":"Create Date","ModifyDate":"Modify Date","Author":"Author","Company":"Company","Version":"Version","SharedToName":"Shared to Name","SharedToType":"Shared to Type","UserType":"User Type","BasedOn":"Based On","_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/ReleasesListSummary':{"_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/ReleasesDetailSummary':{"txtGroupFamily_Caption":"Family:","txtGroupName_Caption":"Name:","txtGroupDisplayName_Caption":"Display Name:","txtGroupDescription_Caption":"Description:","txtGroupId_Caption":"ID:","txtGroupMainTable_Caption":"Main Table:","txtGroupEntityName_Caption":"Entity Name:","txtGroupCreateDate_Caption":"Create Date:","txtGroupCreateUser_Caption":"Create User:","txtGroupModifyDate_Caption":"Modify Date:","txtGroupModifyUser_Caption":"Modify User:","txtGroupInstallationDate_Caption":"Installation Date:","txtGroupShared_Caption":"Shared:","txtGroupSharedDate_Caption":"Shared Date:","txtGroupOwner_Caption":"Owner:","txtGroupUserId_Caption":"User ID:","txtGroupAdhoc_Caption":"Ad Hoc:","txtGroupHidden_Caption":"Hidden:","txtGroupAuthor_Caption":"Author:","txtGroupCompany_Caption":"Company:","txtGroupCompanyVersion_Caption":"Company Version:","txtGroupDev_Caption":"Dev:","txtGroupDataCode_Caption":"Data Code:","txtGroupType_Caption":"Group Type:","txtGroupBasedOn_Caption":"Based on Group ID:","txtGroupReleasedToType_Caption":"Shared to Type:","txtGroupReleasedTo_Caption":"Shared to Name:","txtGroupReleasedToTitle_Caption":"Shared to Title:","txtGroupReleasedToUserType_Caption":"Shared to User Type:","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/StatisticsListPanelConfig':{"Dev":"Dev","Rel":"Shared","Family":"Family","Name":"Name","DisplayName":"Display Name","Owner":"Owner","OwnerUsage":"Owner Usage","ShareUsage":"Share Usage","SharedDate":"Shared Date","FirstUsedBy":"First Used By","FirstUsed":"First Used","LastUsedBy":"Last Used By","LastUsed":"Last Used","Type":"Type","_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/StatisticsListSummary':{"_localized":{}}
+,
+'Sage/MainView/GroupMgr/templates/nls/StatisticsDetailSummary':{"txtGroupFamily_Caption":"Family:","txtGroupName_Caption":"Name:","txtGroupDisplayName_Caption":"Display Name:","txtGroupOwner_Caption":"Owner:","txtGroupOwnerUsageCount_Caption":"Owner Usage Count:","txtGroupShared_Caption":"Shared:","txtGroupShareUsageCount_Caption":"Share Usage Count:","txtGroupSharedDate_Caption":"Shared Date:","txtGroupFirstUser_Caption":"First Used By:","txtGroupFirstUseDate_Caption":"First Used Date:","txtGroupLastUser_Caption":"Last Used By:","txtGroupLastUseDate_Caption":"Last Used Date:","_localized":{}}
+,
+'Sage/MainView/GroupMgr/nls/GroupManagerGroupContextService':{"AllGroups":"Groups","Shares":"Shares","UsageStatistics":"Usage","Performance":"Performance","Settings":"Settings","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/SyncResultsHistory':{"grdSyncHistory_RunName":"Sync History","grdSyncHistory_CreateDate":"Create Date","grdSyncHistory_Status":"Status","grdSyncHistory_DiagnosisCode":"Diagnosis Code","grdSyncHistory_ErrorMessage":"Error Message","grdSyncHistory_JobName":"Job Name","_localized":{}}
+,
+'Sage/MainView/Lead/nls/ImportLeadsWizard':{"yestText":"Yes","noText":"No","confirmOverwriteFileMsg":"You currently have an import file selected. Do you wish to overwrite this file?","importProgressCaption":"Import Process Results","lblPrimaryProgress":"Processing import file please wait...","lblTotalRecords":"Total Records:","lblTotalRecordsProcessed":"Processed:","lblTotalRecordsImported":"Imported:","lblTotalRecordsMerged":"Merged:","lblTotalDuplicates":"Duplicates:","lblTotalProjectedDuplicates":"Projected Duplicates:","lblDuplicateRate":"Duplicate Rate:","lblTotalErrors":"Errors:","calculatingText":"Calculating please wait ...","importStatusProcessing":"Processing","importStatusCompleted":"Completed","abortImportProcessStatus":"Abort","btnCancelText":"Abort","btnCloseText":"Close","lblImportHistoryLinkText":"To see the import history results click the import number below:","lblImportLinkNumber":"Import Number: ","errorRequestImportHistory":"An error occurred executing sdata request for endpoint importHistory.","_localized":{}}
+,
+'Sage/MainView/ExchangeRate/nls/ExchangeRateDialog':{"lblUpdateCurrency":"Update Currency","lblSelectEntity":"Apply the updated currency to","lblSalesOrders":"Sales Orders","lblOpportunities":"Opportunities","lblQuotes":"Quotes","lblOK":"OK","lblCancel":"Cancel","lblClose":"Close","updateRecords_Caption":"Updating Entity Exchange Rates","job_Description":"Update Entity Exchange Rate Error(s) Occurred","errorRequestingJobMgr":"An error occurred performing update: ${0}","lblRecordsToUpdate":"Number of records to update","lblLockedUpdate":"Records with locked rates will not be updated","lblNote":"Note","OpenOrder":"Open Order","SalesOrder":"Sales Order","Open":"Open","New":"New","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/PromoteWidget':{"title_Caption":"${0} Promotion","pageLoading_Caption":"Loading...","createLink_Caption":"Create Link","selectOption_Caption":"Select an option...","errorRequestListOptions":"An error occurred requesting ${0} : ${1}","errorBackOffices":"back offices","errorAccountingEntities":"accounting entities","cancel_Caption":"Cancel","ok_Caption":"OK","close_Caption":"Close","accountingEntity_Caption":"Accounting Entity","logicalId_Caption":"Back Office","promotionRequested_Caption":"Promotion Requested","errorRequiredData":"Please enter required values before continuing.","errorPromotion":"An error occurred during ${0} promotion: ${1}.","requestSuccessfullSubmitted":"The ${0}, ${1}, was successfully submitted for promotion","_localized":{}}
+,
+'Sage/MainView/IntegrationContract/nls/PricingAvailabilityWidget':{"title_Caption":"Available To Promise","pageLoading_Caption":"Loading...","gridLoading_Caption":"Loading warehouses...","gridNoResults_Caption":"No warehouse information was found.","grdColumn_ATPDate":"Available To Promise Date","grdColumn_Warehouse":"Warehouse","grdColumn_AvailableQty":"Available Quantity","cancel_Caption":"Cancel","close_Caption":"Close","ok_Caption":"OK","errorPageLoading_Caption":"Request failed with Errors: ${0}","_localized":{}}
+,
+'Sage/MainView/CountryCodeMapping/nls/_CountryAliasConversionDialogBase':{"btnOK_Caption":"OK","btnBack_Caption":"< Back","btnNext_Caption":"Next >","btnCancel_Caption":"Cancel","btnClose_Caption":"Close","emptyListItem_Caption":"Please select an option...","gridLoading_Caption":"Loading data...","gridNoResults_Caption":"No Results Found","selectOption_Caption":"Select an option...","_localized":{}}
+,
+'Sage/MainView/CountryCodeMapping/nls/CountryAliasConversion':{"dlgCountryAliasConverstion_Title":"Country Alias Conversion","colAlias":"Country Alias","colCountryCode":"Country Code","grdLabel":"grdLabel","colUnmatchedAlias_Caption":"Unmapped Country Alias","btnSave_Caption":"OK","btnCancel_Caption":"Cancel","colCountryName":"Country Code Mapping","colCountryNamePlaceHolder":"Select a Country","_localized":{}}
+,
+'Sage/ProximitySearch/nls/GeocodeModule':{"geocodeError":"Unable to locate address","_localized":{}}
+,
+'Sage/ProximitySearch/nls/MapModule':{"microsoftError":"Microsoft script not loaded","googleError":"Google script not loaded","credentialsOrOverLimit":"Your API credentials are either invalid or have exceeded the maximum number of requests.","_localized":{}}
+,
+'Sage/ProximitySearch/nls/RouteModel':{"mileAbbrevText":"mi","kilometerAbbrevText":"km","_localized":{}}
+,
+'Sage/ProximitySearch/nls/RouteModule':{"inProgressError":"Attempted to make Ajax call while one was already in progress","bingRouteOutOfRangeError":"Cannot calculate route with more than 25 or less than 2 destinations","googleRouteOutOfRangeError":"Cannot calculate route with more than 10 or less than 2 destinations","_localized":{}}
+,
+'Sage/ProximitySearch/nls/DirectionView':{"placeHolderText":"Click \"Get Directions\" to show full driving directions here.","_localized":{}}
+,
+'Sage/ProximitySearch/nls/PointEditModule':{"newPlaceText":"New Temporary Place","addPlaceText":"Add Temporary Place","okText":"OK","cancelText":"Cancel","nameText":"Name:","addressText":"Address:","cityText":"City:","stateText":"State:","postalCodeText":"Postal Code:","countryText":"Country:","helpText":"Only name and one address field is required.","errorText":"Please add a name and at least one address field.","_localized":{}}
+,
+'Sage/ProximitySearch/nls/ToolbarModule':{"getDirectionsText":"Get Directions","addPlaceText":"Add Place","selectAllText":"Select All","deselectAllText":"Clear All","_localized":{}}
+,
+'Sage/QuickForms/Design/nls/DataSourcePanel':{"loadingText":"Loading...","_localized":{}}
+,
+'Sage/TaskPane/nls/_BaseTaskPaneTasklet':{"selectRecordsTitle":"Invalid Selection","selectRecords":"Please select a record before continuing.","selectSingleRecord":"Please select a single record before continuing.","noRecordsSelectedProcessAll":"No records selected. The full group will be processed up to the limit (if any) set by your system administrator.  Proceed?","invalidSelectionTitle":"Invalid Selection","errorSelectionInfo":"There was an error retrieving information about the selected records.","errorNoData":"No data available.","yesButtonText":"Yes","noButtonText":"No","salesLogixPageTitle":"Infor CRM","okButtonText":"OK","cancelButtonText":"Cancel","confirmBulkDeleteJob":"Are you sure you want to delete the selected records?","deleteSelectedRecords":"Delete ${0}","deleteJobError":"Sorry an error occurred during the delete ${0} job: ${1}","deleteBulkJobTitle":"Delete ${0}","promoteTitle":"Promote","getOrderTotalTitle":"Get Order Total","integrationNotEnabled":"Back Office Extension is not enabled","error_PricingRequest":"An error occured requesting pricing service: ${0}","workflowIntegrationNotEnabled":"ION Workflow Integration is not enabled","requestWorkflowSuccess":"Workflow has been requested.","cancelWorkflowSuccess":"Workflow has been cancelled.","requestWorkflowLog":"Unable to request workflow. Please refer to the error log for more details.","cancelWorkflowLog":"Unable to cancel workflow. Please refer to the error log for more details.","errorRequestWorkflow":"An error occurred when ${0} requests workflow: ${1}.","errorCancelWorkflow":"An error occurred when ${0} cancels workflow: ${1}.","_localized":{}}
+,
+'Sage/TaskPane/nls/UserTasklet':{"addToRoleTitle":"Add to Role","resetUsersTitle":"Reset Users","taskText_CopyUserProfile":"Copy User Profile","copyProfileNoneSelected":"At Least one user needs to be selected!","associateContactTitle":"Associate with Contact","disAssociateContactTitle":"Disassociate from Contact","disAssociateDialogTitle":"Disassociate from a Contact","confirmDisAssociate":"Are you sure you want to disassociate the ${0} selected user from an associated contact?","confirmDisAssociateMultiple":"Are you sure you want to disassociate the ${0} selected users from any associated contacts?","associationExistsMessage":"The user you selected is already associated to a contact. To associate this user to a different contact, you must first disassociate the user and contact.","multipleSelectionErrorMessage":"You can only perform this task for 1 user at a time. \n Please select a single user and select the task again.","noSelectionErrorMessage":"You need to select at least one user to disassociate. \n Please select one or more user(s) and select the task again.","singleSelectionErrorMessage":"You need to select a user to disassociate. \n Please select a single user and select the task again.","addToTeamCaption":"Add to Team","removeFromAllTeamsCaption":"Remove from All Teams","areYouSure":"Are you sure you want to remove the selected member(s) from all teams?","promoteNoneSelected":"Please select at least one record","requestsuccessfullcompleted":"${0} users were successfully submitted for promotion.","promotedsuccessfully":"The item got promoted successfully","_localized":{}}
+,
+'Sage/TaskPane/User/nls/ContactUserAssociationEditor':{"btnCancel_Caption":"Cancel","btnOK_Caption":"OK","dialogTitleText":"Associate User with Contact","associateContactText":"Associate the selected user with the following contact","user_Caption":"Contact","lookupContactText":"Lookup Contact","lookupFirstNameColText":"First Name","lookupLastNameColText":"Last Name","lookupTitleColText":"Title","lookupAccountColText":"Account","lookupWorkPhoneColText":"Work Phone","lookupEmailText":"Email","disAssociateTitle":"Disassociate from a Contact","associationExistsMessage":"The contact you selected is already associated to a user. Select another contact.","_localized":{}}
+,
+'Sage/MainView/CopyUserProfile/nls/_CopyUserProfileBase':{"btnOK_Caption":"OK","btnCancel_Caption":"Cancel","_localized":{}}
+,
+'Sage/MainView/CopyUserProfile/nls/CopyUserProfile':{"dlg_Title":"Copy Profile","dlg_Instructions":"Select a user profile or template to be copied to other users.  Copying the profile will overwrite current settings.","rad_SelectionLabel":"Copy Profile From:","rad_UserBtn":"Existing User","rad_TemplateBtn":"Template","user_LookupLabel":"User","template_LookupLabel":"Template","lookupUserNameColText":"User Name","lookupTitleColText":"Title","lookupDepartmentColText":"Department","lookupRegionColText":"Region","lookupUser_Caption":"User to copy profile from","lookupUserNameTemplateColText":"Template","chkGeneralLabel":"General","chkCalendarLabel":"Calendar","chkEmployeeLabel":"Employee","chkClientLabel":"Client Options (Client System)","chkSecurityLabel":"Security","chkServiceLabel":"Service/Support","chkTeamsLabel":"Teams","txtJobDescriptor":"Copy the user profile","jobFailer":"There was a critical error","_localized":{}}
+,
+'Sage/TaskPane/nls/AccountingTasksTasklet':{"_localized":{}}
+,
+'Sage/TaskPane/nls/ActivityTaskConfigurationProvider':{"scheduleText":"Schedule","eventText":"Event","phoneCallText":"Phone Call","toDoText":"To-Do","meetingText":"Meeting","personalActivityText":"Personal Activity","deleteConfirmationText":"Delete Confirmation","acceptConfirmationText":"Accept Confirmation","declineConfirmationText":"Decline Confirmation","completeActivityText":"Complete Activity","deleteActivityText":"Delete Activity","deleteEventText":"Delete Event","scheduleEventText":"Schedule Event","scheduleRequestText":"Schedule Request","deleteRequestText":"Delete Request","recordsSelectedText":"record(s) selected","clearText":"Clear","_localized":{}}
+,
+'Sage/TaskPane/nls/CommonTasksTasklet':{"okButtonText":"OK","loadingText":"loading...","noPrimaryEmail":"No primary email available","selectFileFormat":"Select a file format:","exportToFile_OptionCSV":"Standard CSV","exportToFile_OptionTab":"Tab delimited (recommended for Microsoft Excel)","exportToFile_OptionExcel":"Excel","exportToFile_OptionSaveFormat":"Remember my selection and do not ask again.","exportToFile_OK":"OK","exportToFile_Cancel":"Cancel","exportToFile_DialogTitle":"Export","exportToExcel_Caption":"Exporting","errorRequestingJobMgr":"An error occurred requesting job manager: ${0}","errorExecutionAction":"An error occurred executing action ${0}","exportProcessingJobMsg":"Processing export, you may continue waiting for completion, or go to the reports view to open your file.","errorBulkActionNotSupported":"${0} does not support bulk action updates, please contact your system administrator.","errorBulkActionRequest":"An error occurred requesting bulk update options, please contact your system administrator.","copyProfileNoneSelected":"At Least one user needs to be selected!","deleteJob_Description":"Bulk Delete Error(s) Occurred","errorRequestEntityImportable":"An error occurred obtaining the Entity attributes. ${0}","entityNotImportable":"${0} does not support import, please contact your system administrator.","_localized":{}}
+,
+'Sage/MainView/Import/nls/_WizardDialogBase':{"btnOK_Caption":"OK","btnBack_Caption":"< Back","btnNext_Caption":"Next >","btnCancel_Caption":"Cancel","btnClose_Caption":"Close","btnFinish_Caption":"Import Now","emptyListItem_Caption":"Please select an option...","lstTemplate_Caption":"Import Template:","gridLoading_Caption":"Loading data...","gridNoResults_Caption":"No Results Found","selectOption_Caption":"Select an option...","defaultAdHoc_Caption":"Import ${0} ${1}","_localized":{}}
+,
+'Sage/MainView/Import/nls/SelectFile':{"dlgSelectFile_Title":"Record Import - File Upload","txtSelectFile":"Select a file containing the data you wish to import.","btnUploadFile_Caption":"Select File","txtUploadFile_Caption":"No file chosen","errorNoUploadFile":"Please select a file to import before continuing.","txtFileContents_Caption":"The file '${0}' with file size ${1} KB has been successfully uploaded.","txtLoadTemplate_Caption":"Loading template data.","lstImportOption_Insert":"Add record if no match found","lstImportOption_Update":"Update record if match found","lstImportOption_InsertUpdate":"Add or update each record","_localized":{}}
+,
+'Sage/MainView/Import/nls/DefineDelimiter':{"dlgDefineDelimiter_Title":"Record Import - Define Delimiter","txtHeader_Caption":"A default delimiter and text qualifier have been defined and the results are available in the preview pane. If the preview looks correct, you can continue to import with the current delimiter and text qualifier, or you can choose other options until you are satisfied with the previewed results.","txtChooseDelimiter":"Choose the delimiter that separates your fields:","rdoTabOption":"Tab","rdoSemicolonOption":"Semicolon","rdoCommaOption":"Comma","rdoSpaceOption":"Space","rdoOtherOption":"Other","txtQualifier":"Text Qualifier","chkFirstRowFieldNames":"First Row Contains Field Names","txtPreview":"A total of ${0} rows and ${1} columns were identified in the uploaded file:  Below is a preview of up to the first five records.","errorRequestFileOptions":"An error occurred obtaining the file options. ${0}","_localized":{}}
+,
+'Sage/MainView/Import/nls/MapFields':{"dlgMapFields_Title":"Record Import - Map Fields","txtHeader_Caption":"${0} of ${1} fields are mapped. You can continue to import with the current mappings, or map any remaining unmapped fields before continuing the import.","txtRequired_Caption":"The following fields are required to be mapped before continuing: ${0}","btnUnMapped_Caption":"View Unmapped Fields (${0})","btnMapped_Caption":"View Mapped Fields (${0})","btnAll_Caption":"View All Fields (${0})","colImportField_Caption":"Import Field","colInforField_Caption":"Infor CRM Field","colType_Caption":"Entity Type","errorRequestMappings":"An error occurred obtaining the import mappings. ${0}","errorRequiredMappings":"Please specify all required mappings before continuing.","multipleDestinationPropTag_Is":"${0} is mapped to more than once","multipleDestinationPropTag_Are":"${0} are mapped to more than once","_localized":{}}
+,
+'Sage/MainView/Import/nls/ManageImportOptions':{"dlgManageImportOptions_Title":"Record Import - Options","lstImportType_Caption":"What would you like to do with the records in this file?","lstImportOption_Insert":"Add record if no match found","txtOption_Insert":"A new contact, account, or address record will be added to the database if an existing record cannot be found based on the defined matching criteria. If a matching record is found, the record will not be imported.","lstImportOption_Update":"Update record if match found","txtOption_Update":"If an existing contact, account, or address record is found based on the defined matching criteria, the record will be updated with the imported information. If a matching record is not found, the information will not be imported.","lstImportOption_InsertUpdate":"Add or update each record","txtOption_InsertUpdate":"If an existing contact, account, or address record is found based on the defined matching criteria, the record will be updated with the imported information. If a matching record is not found, a new record will be added.","txtMatchHeader_Caption":"Define the matching criteria:","txtOptionsHeader_Caption":"Options","defaultOwner_Caption":"Default Owner:","lookupDefaultOwner_Caption":"Lookup Owner","lookupDescriptionColText":"Description","lookupTypeColText":"Type","createAdHoc_Caption":"Create a new ad hoc group","existingAdHoc_Caption":"Add to existing ad hoc group","errorNoAddHocGroupName":"Please specify an Ad Hoc Group name before continuing.","errorDuplicateAddHocGroupName":"Please specify an Ad Hoc Group name that has not already been used.","errorNoOwner":"Please specify an owner before continuing.","chkAccountName":"Use Contact Name in place of empty Account Names","match_Caption":"Match:","_localized":{}}
+,
+'Sage/MainView/Import/nls/AddActions':{"dlgAddActions_Title":"Record Import - Add Actions","_localized":{}}
+,
+'Sage/MainView/Import/nls/Review':{"dlgMapFields_Title":"Record Import - Import Detail Preview","txtHeader_Caption":"Review your changes:","btnSaveTemplate_Caption":"Update Current Template","btnSaveAsTemplate_Caption":"Save As Import Template","txtJobTitle_Caption":"Importing ${0}","txtJobDescriptor":"${0} import: ${1}","errorJobFailed":"The job failed with error: ${0}","previewFileName_Caption":"File Name: ${0}","previewRecordCount_Caption":"Records Found: ${0}","previewAdHocGroup_Caption":"Record Group: ${0}","previewImportDataMode":"Import Type: ${0}","btnBack_Edit_Caption":"Edit","_localized":{}}
+,
+'Sage/MainView/Import/nls/ManageImportTemplate':{"dlgManageImportTemplate_Title":"Record Import - Save Template","txtDescription_Caption":"Description:","txtImportTemplates_Caption":"Import Templates:","colDelete":"Delete","colDescription":"Description","colEntityName":"Entity","colCreatedBy":"Created By","colCreatedDate":"Date Created","colModifiedBy":"Modified By","colModifiedDate":"Date Modified","btnSave_Caption":"Save","errorDeletingTemplate":"An error occurred deleting import template: ${0}","errorNoTemplateDescription":"Please add a template description before saving.","_localized":{}}
+,
+'Sage/UI/nls/BulkUpdateWidget':{"dlgBulkActionUpdate_Title":"Bulk Action Update","pageLoading_Caption":"Loading property options...","header_Caption":"Select a property you would like to update.","header_NoPropertiesEnabled":"The ${0} entity is enabled for bulk updates, however, there are no properties that have been enabled. Please contact your system administrator for more information","errorRequestPropertyOptions":"An error occurred reading meta data for ${0} entity. ${1}","errorEntityNotSupported":"The ${0} entity does not support bulk updates","update_Property_Caption":"Update:","addProperty_Tooltip":"Add Property","removeProperty_Tooltip":"Remove Property","no_Caption":"No","yes_Caption":"Yes","days_Caption":"days","moveOut_Caption":"Move","moveTo_Caption":"To","moveDate_Backward":"Backward","moveDate_Forward":"Forward","update_To_Caption":"To:","lookupHeaderText":"Lookup ${0}","lookupNameColText":"Name","lookupTitleColText":"Title","lookupDepartmentColText":"Department","lookupRegionColText":"Region","lookupTypeColText":"Type","lookupDescriptionColText":"Description","btnOK_Caption":"OK","btnCancel_Caption":"Cancel","errorUnspecifiedValue":"Please specify a value before continuing or remove the invalid row.","errorRequestingJobMgr":"An error occurred performing update: ${0}","selectOption_Caption":"Select an option...","updateRecords_Caption":"Updating Selected Records","chkScheduleJob_Caption":"Schedule this update to occur at a specific date/time.","lookup_Caption":"Lookup","job_Description":"Bulk Update Error(s) Occurred","errorDuplicateValue":"Property already selected","errorInvalidPropertyType":"Property type '${0}' is not supported for bulk updates.","calculatedField":"Calculated Field","standardId":"Standard Id","unknownPropertyType":"Unknown","_localized":{}}
+,
+'Sage/TaskPane/nls/ContactTasksTasklet':{"associateContactTitle":"Associate with User","disAssociateContactTitle":"Disassociate from User","disAssociateDialogTitle":"Disassociate from a User","confirmDisAssociate":"Are you sure you want to disassociate the ${0} selected contact from an associated user?","confirmDisAssociateMultiple":"Are you sure you want to disassociate the ${0} selected contacts from any associated users?","associationExistsMessage":"The contact you selected is already associated to a user. To associate this contact to a different user, you must first disassociate the contact and user.","multipleSelectionErrorMessage":"You can only perform this task for 1 contact at a time. \n Please select a single contact and select the task again.","noSelectionErrorMessage":"You need to select at least one contact to disassociate. \n Please select one or more contact(s) and select the task again.","singleSelectionErrorMessage":"You need to select a contact to disassociate. \n Please select a single contact and select the task again.","_localized":{}}
+,
+'Sage/TaskPane/nls/CountryTasksTasklet':{"countryAliasConversionTitle":"Match Orphan Country Aliases","_localized":{}}
+,
+'Sage/TaskPane/nls/GroupListTasklet':{"GroupListOptionsTitle":"Group List Options","maximizeTitle":"Expand Group List","minimizeTitle":"Minimize Group List","_localized":{}}
+,
+'Sage/UI/nls/OwnerType':{"teamText":"Team","departmentText":"Department","systemText":"System","userText":"User","_localized":{}}
+,
+'Sage/UI/nls/UserType':{"administratorText":"Administrator","templateText":"Template","remoteText":"Remote","webOnlyText":"Web Only","retiredText":"Retired","concurrentText":"Concurrent","webViewerText":"Web Viewer","networkText":"Network","addOnUserText":"Add-on User","_localized":{}}
+,
+'Sage/TaskPane/nls/LiteratureManagementTasks':{"errFulFillmentCancelled":"The fulfillment of the literature request was canceled for LitReqId {0}.","errFulFillmentFailed":"The literature request could not be fulfilled for LitReqId {0}.","errMailMergeService":"The literature request(s) could not be fulfilled because the mail merge service could not be loaded. This may happen if CRM Office Integration is not installed or is not installed properly.","errFulFillmentRequest":"The literature request(s) could not be fulfilled.","errFulFillmentRequestEx":"The following literature request(s) could not be fulfilled:","fulFillmentSuccess":"The literature request fulfillment was successful.","_localized":{}}
+,
+'Sage/TaskPane/nls/QuoteTasksTasklet':{"hasErpStatus":"Quote with any of the following Statuses (Awarded,Canceled,Deleted,Lost,Replaced,Unapproved) cannot be converted.","newQuoteVersion":"New Version","generateProposal":"Generate Proposal","convertToSalesOrder":"Convert to Sales Order","activateCurrentVersion":"Activate Current Version","errorGenerateProposal":"An error occured generating a proposal: ${0}","errorConvertWonQuote":"An error occured converting quote: ${0}","getOrderTotalTitle":"Get Quote Total","rePriceQuote":"Refresh Pricing","promoteIONWorkFlowItems":"Request Workflow","cancelIONWorkFlowItems":"Cancel Workflow","_localized":{}}
+,
+'Sage/Utility/nls/PricingAndAvailability':{"status_NotConfigurable":"Not Configurable","status_Completed":"Completed","status_Error":"Error","status_PartiallySaved":"Partially Save","status_Processing":"Processing","status_Queued":"Queued","status_Configure":"Configure","warehouse_Default":"Unassigned","error_PricingRequest":"An error occurred during pricing: ${0}.","_localized":{}}
+,
+'Sage/TaskPane/nls/OpportunityTasksTasklet':{"opportunityStatisticsTitle":"Opportunity Statistics","addSalesOrder":"Add Sales Order","addQuote":"Convert To Quote","promoteTitle":"Promote","rePriceOpportunity":"Refresh Pricing","errorPromotion":"An error occurred during ${0} promotion: ${1}.","requestSuccessfullSubmitted":"The ${0}, ${1}, was successfully submitted for promotion","requestIONWFOpportunity":"Request Workflow","cancelIONWorkFlowItems":"Cancel Workflow","_localized":{}}
+,
+'Sage/MainView/Opportunity/nls/OpportunityStatistics':{"opportunityStatistics_Caption":"Opportunity Statistics","loadingMessge":"Loading...","opportunityCount":"# of Opportunities","salesPotentialTotal":"Sales Potential Total (Average)","weightedPotentialTotal":"Weighted Potential Total (Average)","averageCloseProbability":"Average Close Probability","actualAmountTotal":"Actual Amount Total (Average)","averageDaysOpen":"Average # of Days Open","rangeEstClose":"Range of Est. Close (Min - Max)","btnClose_Caption":"Close","errorRequestingStatistics":"Sorry an error occurred attempting to request opportunity statistics.","_localized":{}}
+,
+'Sage/TaskPane/nls/SecuredActionTasklet':{"addToRoleTitle":"Add to Role","_localized":{}}
+,
+'Sage/TaskPane/nls/SecurityManagerTasksTasklet':{"addSecurityProfileTitle":"Add Profile","editSecurityProfileTitle":"Edit Profile","_localized":{}}
+,
+'Sage/MainView/SecurityMgr/nls/SecurityProfile':{"securityProfile_Caption":"Security Profile","btnCancel_Caption":"Cancel","ok_Text":"OK","description_Text":"Description","profileType_Text":"Profile Type","_localized":{}}
+,
+'Sage/TaskPane/nls/JobManagerTasksTasklet':{"taskRunJob_Caption":"Create Schedule","taskEditTrigger_Caption":"Edit Schedule","taskCancelJob_Caption":"Cancel Executing Job","taskDeleteScheduledJob_Caption":"Delete Schedule","_localized":{}}
+,
+'Sage/TaskPane/nls/ReportManagerTasksTasklet':{"taskRunReport_Caption":"Run Report","taskScheduleReport_Caption":"Schedule Report","taskDeleteReport_Caption":"Delete Report","taskDeleteSchedule_Caption":"Delete Schedule","taskEditSchedule_Caption":"Edit Schedule","taskDeleteHistory_Caption":"Delete History","txtRecordsSelected":"record(s) selected","txtClear":"Clear","_localized":{}}
+,
+'Sage/TaskPane/nls/GroupManagerTasksTasklet':{"txtRecordsSelected":"record(s) selected","txtClear":"Clear","txtDelete":"Delete","txtEdit":"Edit","txtShare":"Share","txtView":"View","txtAssignOwner":"Reassign Owner","txtResetStatistics":"Reset Statistics","txtDisableStatistics":"Disable Statistics","txtToggleUserDefault":"Toggle User Default","_localized":{}}
+,
+'Sage/TaskPane/nls/EntityTaskConfigurationProvider':{"NewEntity":"New Entity","CreateEntity":"Create Entity","_localized":{}}
+,
+'Sage/TaskPane/nls/ExchangeRateTasksTasklet':{"lblupdateExchRate":"Update Exchange Rate","lblBaseCurrency":"Base Currency","_localized":{}}
+,
+'Sage/TaskPane/nls/SalesOrderTasksTasklet':{"rePriceOrder":"Refresh Pricing","requestIONWFSalesOrder":"Request Workflow","cancelIONWorkFlowItems":"Cancel Workflow","_localized":{}}
+,
+'Sage/TaskPane/nls/SyncHistoryTasksTasklet':{"reprocessTitle":"Reprocessar","purgeTitle":"Eliminar","_localized":{}}
+,
+'Sage/UI/Columns/nls/SlxEdit':{"editText":"Edit","_localized":{}}
+,
+'Sage/UI/Controls/nls/Address':{"address1Text":"Address 1:","address2Text":"Address 2:","address3Text":"Address 3:","cancelText":"Cancel","cityText":"City:","countryText":"Country:","countyText":"County:","descriptionText":"Description:","dialogTitle":"Address","isMailingText":"Shipping:","isPrimaryText":"Primary Address:","okText":"OK","postalCodeText":"Postal Code:","salutationText":"Attention:","stateText":"State:","imageEditToolTip":"Edit","imageMapQuestToolTip":"MapQuest","isRequiredText":"The address requires these items: ","_localized":{}}
+,
+'Sage/UI/Controls/nls/CopyToClipboard':{"closeText":"Close","dialogTitle":"Copy Text To Clipboard","helpText":"Select desired text and press Control-C (Command-C on Mac) to copy to your clipboard.","textTab":"Text","sourceTab":"Source","_localized":{}}
+,
+'Sage/UI/Controls/nls/HelpMenu':{"helpText":"Help","aboutText":"About","webClientHelpText":"Infor CRM Web Client Help","gettingStartedText":"Getting Started Guide","quickReferenceText":"Quick Reference Card","_localized":{}}
+,
+'Sage/UI/Controls/nls/LogOffButton':{"logOffText":"Sign Off","_localized":{}}
+,
+'Sage/UI/Controls/nls/Name':{"okText":"OK","cancelText":"Cancel","dialogTitle":"Edit Name","prefixText":"Prefix:","nameFirstText":"First Name:","nameMiddleText":"Middle Name:","nameLastText":"Last Name:","suffixText":"Suffix:","buttonTooltip":"Edit","_localized":{}}
+,
+'Sage/UI/Controls/GridParts/Columns/nls/SlxEdit':{"editText":"Edit","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/WidgetDefinition':{"defaultWidgetText":"Edit Widget Settings","settingsText":"Settings","viewGroupText":"View Group","Bar_Chart":"Bar Chart","Column_Chart":"Column Chart","Group_List":"Group List","Pie_Chart":"Pie Chart","Funnel_Chart":"Funnel Chart","Line_Chart":"Line Chart","SData_Feed":"SData Feed","Web_Feed":"Web Feed","Website":"Website","Default":"Default","Links":"Links","LinksSettings":"Links Settings","Recently_Viewed":"Recently Viewed","Todays_Activities":"Today's Activities","Today_s_Activities":"Today's Activities","Welcome":"Welcome","Closing_Opportunities":"Closing Opportunities","Quick_Actions":"Quick Actions","Do_You_Know___":"Do You Know...","All_Leads":"All Leads","My_Notes":"My Notes","Open_Opportunities":"Open Opportunities","My_Top_Opportunities":"My Top Opportunities","My_Pipeline":"My Pipeline","Recent_Lead_Creation_History":"Recent Lead Creation History","My_Activity_trend":"My Activity trend","My_Completed_Activities_by_Type":"My Completed Activities by Type","Active_Campaigns":"Active Campaigns","All_Open_Opportunities":"All Open Opportunities","Top_Opportunities":"Top Opportunities","Open_Defect_Distribution":"Open Defect Distribution","My_Dashboard":"My Dashboard","Sales":"Sales","Group_List_Description":"Displays a list of group records by entity. For example, a group of active campaigns.","Welcome_Description":"Displays an introduction to Infor CRM with a link to the help topic Introducing Infor CRM for Web.","Line_Chart_Description":"Displays data as a series of data points connected by a line. Useful when the data represents many groups or categories.","Bar_Chart_Description":"Displays data as a set of horizontal bars. Useful for comparing several sets of data.","Column_Chart_Description":"Displays data as a set of vertical bars grouped by category. Useful for showing data changes over a period of time or for illustrating comparisons among items.","Funnel_Chart_Description":"Displays data as progressive proportions in a funnel shape. The data is represented as portions of 100%, and there are no axes.","Pie_Chart_Description":"Displays data as proportions of the whole. Each value is calculated as a percentage of the total. This chart has no axes.","Recently_Viewed_Description":"Displays links to recently viewed records with an icon that identifies the type. For example, Account or Contact.","Todays_Activities_Description":"Displays links to your activities for today.","Links_Description":"Displays links you create. For example, to a detail view in Infor CRM or to an external Web site.","SData_Feed_Description":"Displays a web feed using SData (Sage Data) feeds. For example, a feed from your accounting integration or Infor CRM database.","Web_Feed_Description":"Displays RSS or Atom Feed information.","Website_Description":"Displays a website of your choice.","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/DashboardTabController':{"newTabText":"New Tab","addContentText":"Add Content","editOptionsText":"Edit Options","hideTabText":"Hide Tab","closeText":"Close","copyTabText":"Copy Tab","showTabText":"Show Tab","shareTabText":"Share Tab","deleteTabText":"Delete Tab","deleteTabConfirmText":"Are you sure you want to delete this tab?","descriptionText":"Description","everyoneText":"Everyone","saveTabText":"Save Tab","helpText":"Help","addText":"Add","invalidMessage":"Invalid Character","invalidDuplicateMessage":"Title must be unique.","invalidReservedWordMessage":"Dashboard is reserved tab name. Please change the name before continuing.","deleteText":"Delete","titleText":"Title:","chooseTemplateText":"Choose the template you want to use:","oneColumnText":"One column","twoColumnText":"Two columns split","fatLeftText":"Two column larger left","fatRightText":"Two column larger right","makeDefaultText":"Make default","releaseFetchErrorText":"Error fetching release list.","releaseDeleteNoneSelected":"No items selected.","releasedToText":"Released To:","typeText":"Type","addLookup":"Add","okButton":"OK","errorText":"Error","warningText":"Warning","permissionErrorText":"Error: User does not have the right to perform this action.","permissionErrorPerformCopyText":"Would you like to create a personal copy of the page?","yesText":"Yes","noText":"No","DeletingReleasedWidget":"Are you sure you want to delete this Dashboard tab?  This tab is shared with ${0} user(s).  Deleting this tab will delete it for all users.","Welcome":"Welcome","Dashboard":"Dashboard","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/DashboardWidgetCell':{"closeTooltipText":"Close","minimizeTooltipText":"Minimize","settingsTooltipText":"Settings","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/DashboardWidget':{"noQueryDataText":"The server has no data for query ","initializingText":"Initializing","_localized":{}}
+,
+'Sage/UI/Dashboard/nls/Dashboard':{"newTabTitleText":"New Tab Title","inputTitleText":"Input a Title","copiedPageText":"Copied Tab","showText":"Show","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmCountDown':{"startsInText":"Starts in","overduebyText":"Overdue by","minuteText":"minute","minutesText":"minutes","hourText":"hour","hoursText":"hours","dayText":"day","daysText":"days","weekText":"week","weeksText":"weeks","monthText":"month","monthsText":"months","yearText":"year","yearsText":"years","startsNowText":"Starts now","_localized":{}}
+,
+'Sage/UI/Alarms/nls/ActivityAlarm':{"noSubjectText":"No Subject","contactText":"Contact","accountText":"Account","opportunityText":"Opportunity","leadText":"Lead","companyText":"Company","recurringText":"Recurring","ticketText":"Ticket","leaderText":"Leader","locationText":"Location","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmButton':{"pastDueToolTipFmt":" You have ${0} activities that are past due.","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmPane':{"dismissAllText":"Dismiss all","dismissText":"Dismiss","fiveMinText":"5 minutes","tenMinText":"10 minutes","fifteenMinText":"15 minutes","thirtyMinText":"30 minutes","oneHourText":"1 hour","twoHourText":"2 hours","fourHourText":"4 hours","eightHourText":"8 hours","oneDayText":"1 day","twoDayText":"2 days","threeDayText":"3 days","oneWeekText":"1 week","twoWeekText":"2 weeks","snoozeText":"Snooze","snoozeByText":"Snooze by:","snoozeAllText":"Snooze All","showCalendarText":"Show Calendar","_localized":{}}
+,
+'Sage/UI/Alarms/nls/UnconfirmedPane':{"showConfirmationsText":"Show Confirmations","showCalendarText":"Show Calendar","acceptText":"Accept","declineText":"Decline","_localized":{}}
+,
+'Sage/UI/Alarms/nls/AlarmPopup':{"title":"Alerts","alarmsText":"Alarms","unconfirmedText":"Unconfirmed","deleteText":"Delete Selected","helpText":"Help","completeText":"Complete selected activities","_localized":{}}
+,
+'Sage/UI/Alarms/nls/JobNotificationButton':{"notificationToolTip":"You have ${0} job notifications.","notificationErrorToolTip":"An error occurred retrieving job notifications. Please contact your administrator.","_localized":{}}
+,
+'Sage/UI/Alarms/nls/JobNotificationPopup':{"title":"Job Notifications","helpText":"Help","colNameJobName":"Type","colNameProgress":"Progress","colNameStatus":"Status","colExecutionResult":"Result","executionStatusRunning":"Running","executionStatusComplete":"Complete","executionStatusInterrupting":"Interrupting","executionStatusInterrupted":"Interrupted","executionStatusError":"Error","executionStatusUndefined":"Undefined","_localized":{}}
+,
+'Sage/UI/SLXPreviewGrid/Filter/nls/Lookup':{"okText":"OK","_localized":{}}
+,
+'Sage/UI/nls/ActivityList':{"addMeetingText":"Agendar Reunião","addPhoneCallText":"Agendar Chamada Telefônica","addToDoText":"Agendar Tarefa","helpText":"Ajuda","completeText":"Concluir","typeText":"Tipo","startDateText":"Data/Horário","dateRangeText":"Intervalo de Data","durationText":"Duração","leaderText":"Responsável","contactText":"Contato","opportunityText":"Oportunidade","descriptionText":"Referência","categoryText":"Categoria","firstNameText":"Primeiro Nome","lastNameText":"Sobrenome","_localized":{}}
+,
+'Sage/UI/nls/NotesHistoryList':{"typeText":"Type","showDbChangesText":"Show Database Changes","selectAllText":"Select All","dateText":"Date","dateTimeText":"Date/Time","dateRangeText":"Date Range","userText":"User","accountText":"Account","contactText":"Contact","opportunityText":"Opportunity","regardingText":"Regarding","notesText":"Notes","resultText":"Result","categoryText":"Category","sendEmailText":"Send via E-Mail","sendToWordText":"Send to Word","addNoteText":"Add Note","completeAnActivityText":"Complete an Activity","helpText":"Help","pleaseSelectRecordsText":"Please select one or more records","UnableToFindWordMsg":"Cannot start Microsoft Word.  Please check your security settings.","printedOnText":"Printed On","errorNoData":"There aren't any Notes/History that can be shared to Ming.le.","yesButtonText":"Yes","noButtonText":"No","salesLogixPageTitle":"Infor CRM","noRecordsSelectedProcessAll":"You haven't selected any records. All of the Notes/History, ${0} record(s), will be shared to Ming.le. Is it OK to proceed?","errorShareMingle":"There was an error sharing one or more Notes/History records to Ming.le.","sharedToMingle":"The Notes/History has been shared to Ming.le.","sharingToMingle":"Sharing to Ming.le","shared":"Shared","pleaseWait":"Please wait...","failedToPost":"Failed to post: ${0}; error: ${1}","addressText":"Address","mainPhoneText":"Main Phone","tollFreeText":"Toll Free","contactPhoneText":"Contact Phone","_localized":{}}
+,
+'Sage/Mingle/nls/UserService':{"_localized":{}}
+,
+'Sage/UI/Filters/nls/EditFilterItems':{"selectAllText":"Select All","findItemText":"Find Item:","findText":"Find","clearText":"Clear","dialogTitle":"Edit Filter Items","okText":"OK","cancelText":"Cancel","_localized":{}}
+,
+'Sage/UI/Filters/nls/CheckBoxFilter':{"loadingText":"Loading...","moreText":"Edit Items","clearText":"Clear","emptyText":"(Blank)","nullText":"(Null)","ofText":"/","filterHasMetric":"Has Metric","filterHasFilter":"Has Filter","filteroptionYesterday":"Yesterday","filteroptionToday":"Today","filteroptionThisWeek":"This Week","filteroptionThisMonth":"This Months","filteroptionThisQuarter":"This Quarter","filteroptionThisYear":"This Year","filteroptionLastWeek":"Last Week","filteroptionLastMonth":"Last Month","filteroptionLastQuarter":"Last Quarter","filteroptionLastYear":"Last Year","filteroptionWeektoStart":"Week to Date","filteroptionMonthtoStart":"Month to Date","filteroptionQtrtoStart":"Quarter to Date","filteroptionYeartoStart":"Year to Date","filteroptionOlder":"Older","filteroption0To999":"0 to 999","filteroption1000To9999":"1000 to 9999","filteroption10000To99999":"10,000 to 99,999","filteroption100000To499999":"100,000 to 499,999","filteroption500000To999999":"500,000 to 999,999","filteroption1000000AndHigher":"1,000,000 and higher","filteroptionT":"T","_localized":{}}
+,
+'Sage/UI/Filters/nls/EditFilters':{"selectAllText":"Select All","dialogTitle":"Edit Filters","okText":"OK","cancelText":"Cancel","_localized":{}}
+,
+'Sage/UI/Filters/nls/FilterPanel':{"editText":"Edit Filters","noneText":"No filters selected","clearText":"Clear All","filterName":"Name","filterDisplayName":"Display Name","filterEntityName":"Entity Name","filterModifiedDate":"Modified Date","filterHasMetric":"Has Metric","filterHasFilter":"Has Filter","_localized":{}}
+,
+'Sage/UI/nls/SpeedSearch':{"standardText":"standard","advancedText":"advanced","speedSearchText":"SpeedSearch","_localized":{}}
+,
+'Sage/UI/nls/TimeZoneItem':{"buttonOKText":"OK","buttonCancelText":"Cancel","timeZoneText":"Time zone","timeZoneSettingsText":"Time Zone Settings","setTimeZoneText":"Set the time zone:","_localized":{}}
+,
+'Sage/UI/nls/ActivityScheduler':{"tooltipTime":"Time","tooltipContactName":"Contact","tooltipAccountName":"Account","tooltipCompanyName":"Company","tooltipLeadName":"Lead","tooltipPhoneNumber":"Phone","tooltipRegarding":"Regarding","tooltipPriority":"Priority","tooltipNotes":"Notes","tooltipType":"Type","tooltipDayType":"Day Type","tooltipStartDate":"Start Date","tooltipEndDate":"End Date","tooltipLocation":"Location","tooltipDescription":"Description","completedText":"(Completed)","tooltipMoreActivities":"Click for more activities","scheduler_dates":{"month_full":["January","February","March","April","May","June","July","August","September","October","November","December"],"month_short":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"day_full":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"day_short":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]},"scheduler_labels":{"dhx_cal_today_button":"Today","day_tab":"Day","week_tab":"Week","workweek_tab":"Work week","month_tab":"Month","new_event":"New event","icon_save":"Save","icon_cancel":"Cancel","icon_details":"Details","icon_edit":"Edit","icon_delete":"Delete","confirm_closing":"","confirm_deleting":"Event will be deleted permanently, are you sure?","section_description":"Description","section_time":"Time period","full_day":"Full day","confirm_recurring":"Do you want to edit the whole set of repeated events?","section_recurring":"Repeat event","button_recurring":"Disabled","button_recurring_open":"Enabled","agenda_tab":"Agenda","date":"Date","description":"Description","year_tab":"Year","week_agenda_tab":"Agenda"},"_localized":{}}
+,
+'Sage/UI/nls/TimelessActivitiesPane':{"header_complete":"Complete","header_type":"Type","header_contact":"Name","header_regarding":"Regarding","tooltip_type":"Type","tooltip_contact":"Contact","tooltip_account":"Account","tooltip_lead":"Lead","tooltip_phone":"Phone","tooltip_leader":"Leader","tooltip_regarding":"Regarding","tooltip_location":"Location","tooltip_notes":"Notes","tooltip_company":"Company","_localized":{}}
+,
+'Sage/UI/nls/EditCalendarUsers':{"selectAllText":"Select All","findItemText":"Find User:","findText":"Find","clearText":"Clear","dialogTitle":"Edit Calendar Users","okText":"OK","cancelText":"Cancel","maxUsersErrorMessage":"Sorry, you cannot select more than ${0} users (including your own).  Clear one of the currently selected users and try again.","updateErrorMessage":"Error updating calendar users","_localized":{}}
+,
+'Sage/UI/nls/CalendarUsersListPane':{"header_color":"Color","header_user":"User","header_icon":"Icon","maxUsersErrorMessage":"Sorry, you cannot view more than ${0} calendars (including your own) at one time.  Clear one of the currently-selected calendars and try again.","editUsersLinkText":"Edit Calendar Users","noUsersMessage":"No users added, add users by clicking 'Edit Calendar Users' link above","_localized":{}}
+,
+'Sage/Utility/nls/Dashboard':{"pageText":"Page","_localized":{}}
+,
+'Sage/Utility/nls/Sql':{"InvalidApostropheCount":"The number of apostrophes in the SQL IN clause is invalid.","_localized":{}}
+,
+'Sage/Utility/nls/IONWorkflowHelper':{"cancelWorkflowSuccess":"Workflow has been cancelled.","cancelWorkflowLog":"Unable to cancel workflow. Please refer to the error log for more details.","errorCancelWorkflow":"An error occurred when ${0} cancels workflow: ${1}.","_localized":{}}
+});

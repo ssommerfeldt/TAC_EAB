@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7b25def2-f594-4156-afcf-bc07d7d8c366" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7b25def2-f594-4156-afcf-bc07d7d8c366" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-11-16T21:13:21.6568846Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -8,34 +8,126 @@
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload0</MethodName>
-          <CSharpCodeSnippet>Sage.Entity.Interfaces.IIntegration integration = BindingSource.Current as Sage.Entity.Interfaces.IIntegration;
+          <CSharpCodeSnippet>var integration = BindingSource.Current as Sage.Entity.Interfaces.IIntegration;
 if (integration != null)
 {
+    //To Display asterisks for the delegate user's password rather than leave the field blank. Becuase Password Mode will hide the display of the value being entered
+    txtEmailPassword.Attributes.Add("value", Sage.SalesLogix.SLXEncryption.Decrypt(integration.AdminEmailPassword, "SDATAIC").Trim());
     bool isOAuthType = integration.AuthorizationType != null &amp;&amp; (integration.AuthorizationType == "OAuth1" ||
                                                                  integration.AuthorizationType == "OAuth2" ||
                                                                  integration.AuthorizationType.Contains("OAuth"));
-    if (isOAuthType)
+    cboProvider.Items.Clear();
+    cboProvider.Items.Add(new ListItem { Text = "", Value = "" });
+	var providers = integration.Providers;
+	foreach(var provider in providers)
+	{
+		if((bool)provider.IsActive &amp;&amp; provider.ProviderType == "EXCHANGERATESPROVIDER")
+		{
+			cboProvider.Items.Add(new ListItem { Text = provider.ProviderName, Value = provider.Id.ToString(), Selected = true });
+			txtProviderConfiguration.Text = provider.URL;
+		}
+	}
+
+	
+		
+    var isAutodiscoverControlsVisible = integration.AuthorizationType == "Basic" &amp;&amp; integration.LinkType == "Admin";
+    bool isSyncServer = integration.SyncMethod == "ServerSync";
+	pklLinkType.ReadOnly = !isSyncServer;
+    txtClientId.Visible = isOAuthType;
+    txtClientId_lbl.Visible = isOAuthType;
+    lnkClientIdHelp_lbl.Visible = isOAuthType;
+    lnkClientIdHelp.Visible = isOAuthType;
+    txtSecret.Visible = isOAuthType;
+    txtSecret_lbl.Visible = isOAuthType;
+    txtSyncHandler.Visible = isSyncServer;
+    txtSyncHandler_lbl.Visible = isSyncServer;
+    emlEmailAddress_lbl.Visible = isAutodiscoverControlsVisible;
+	lblText.Visible = isAutodiscoverControlsVisible;
+    txtEmailPassword_lbl.Visible = isAutodiscoverControlsVisible;
+    emlEmailAddress.Visible = isAutodiscoverControlsVisible;
+    txtEmailPassword.Visible = isAutodiscoverControlsVisible;
+    txtAdminUserName_lbl.Visible = isAutodiscoverControlsVisible;
+    txtDomain_lbl.Visible = isAutodiscoverControlsVisible;
+    txtAdminUserName.Visible = isAutodiscoverControlsVisible;
+    txtDomain.Visible = isAutodiscoverControlsVisible;
+    btnDeleteStatusRecords.Visible = (string) integration.Id == "ICRMION00001";
+	txtNextTime_lbl.Visible = txtPreviousTime_lbl.Visible = txtNextTime.Visible = txtPreviousTime.Visible = btnScheduleExchangeRate.Visible =
+	cboProvider.Visible = txtProviderConfiguration.Visible =
+	cboProvider_lbl.Visible = txtProviderConfiguration_lbl.Visible = 
+	integration.Enabled != null &amp;&amp; (string) integration.Id == "ICRMCER00001";
+    btnVerifyConnectivity.Visible = integration.Name == "ExchangeSync";
+    btnTestUrl.Visible = false;
+	
+var service = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.Security.IUserService&gt;();
+var userService = (Sage.SalesLogix.Security.SLXUserService)service;
+var user = userService.GetUser();
+var timezone = user.UserInfo.TimeZone;
+
+var destinationTimezoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timezone);
+var schedulerClientService = Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.Scheduling.ISchedulerClientService&gt;(true);
+Sage.Scheduling.Client.Trigger trigger = null;
+var jobs = schedulerClientService.GetJobs();
+    if (Page.Request.QueryString.Count &gt; 0)
     {
-        txtClientId.Visible = true;
-        txtSecret.Visible = true;
-        txtSecret_lbl.Visible = true;
-        lnkClientIdHelp.Visible = true;
-        txtClientId_lbl.Visible = true;
-        lnkClientIdHelp_lbl.Visible = true;
+
+      	if (Request.QueryString["entityid"].Equals("ICRMCER00001"))
+        {
+
+            foreach (var job in jobs)
+            {
+                if (job.Id == "Sage.SalesLogix.BusinessRules.Jobs.RefreshExchangeRatesJob")
+                {
+					try
+                    {
+                        trigger = schedulerClientService.GetTrigger("Refresh Exchange Rates Job");
+                    }
+                    catch (Exception exc)
+                    {
+                        trigger = null;
+                    }
+                }
+            }
+        }
     }
-    else
-    {
-        txtClientId.Visible = false;
-        txtSecret.Visible = false;
-        txtSecret_lbl.Visible = false;
-        lnkClientIdHelp.Visible = false;
-        txtClientId_lbl.Visible = false;
-        lnkClientIdHelp_lbl.Visible = false;
-    }
-	bool isNoSyncType = (integration.SyncMethod != "NoSync");
-	numSyncInterval.Enabled = isNoSyncType;
-	dteStartTime.Enabled = isNoSyncType;
-	dteEndTime.Enabled = isNoSyncType;
+
+DateTime previousFireTime = DateTime.MinValue;
+DateTime nextFireTime = DateTime.MinValue;
+if(trigger != null)
+{
+	previousFireTime = trigger.PreviousFireTimeUtc ?? DateTime.MinValue;
+	nextFireTime = trigger.NextFireTimeUtc ?? DateTime.MinValue;
+}
+var timeZoneId = previousFireTime.ToString("zzz");
+if(previousFireTime != DateTime.MinValue)
+{
+	txtPreviousTime.Text = TimeZoneInfo.ConvertTime(previousFireTime, destinationTimezoneInfo).ToString("G") + " UTC" + timeZoneId;
+}
+txtNextTime.Text = TimeZoneInfo.ConvertTime(nextFireTime, destinationTimezoneInfo).ToString("G") + " UTC" + timeZoneId;
+var script = new StringBuilder();
+        script.AppendLine("require(['dojo/ready'], function(ready) {");
+        script.Append("ready(function () {Sage.Link.ClearSystemOptionsCache();});");
+        script.AppendLine("});");
+		script.AppendLine("require(['Sage/MainView/JobMgr/JobManagerActions'],function (JobManagerActions) {});");
+        ScriptManager.RegisterStartupScript(this, GetType(), "clear_cache", script.ToString(), true);
+}</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+    <FormActionDefinition>
+      <ResourceKey>335be253-4e07-47db-977c-634969b8fe2a</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName />
+          <CSharpCodeSnippet>var integration = this.BindingSource.Current as Sage.Entity.Interfaces.IIntegration;
+this.lblMarketo.Visible = false;
+if (integration != null) {
+	this.lblMarketo.Visible = string.Compare((string)integration.Id, "MARKET000001", StringComparison.OrdinalIgnoreCase) == 0;		
 }</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
@@ -134,18 +226,74 @@ if (integration != null)
         <PickListName>Integration Sync Method</PickListName>
         <StorageMode>Code</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>false</AlphaSort>
         <MustExistInList>true</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
+        <ValueStoredAsText>false</ValueStoredAsText>
+      </QFSLXPickList>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXPickList>
+        <Column>0</Column>
+        <Row>2</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>pklLinkType</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>LinkType</DataItemName>
+            <ControlItemName>PickListValue</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>64</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>pklLinkType</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>true</Required>
+        <AutoPostBack>false</AutoPostBack>
+        <PickListName>Integration Link Type</PickListName>
+        <StorageMode>Code</StorageMode>
+        <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
+        <AllowMultiples>false</AllowMultiples>
+        <AlphaSort>false</AlphaSort>
+        <MustExistInList>true</MustExistInList>
+        <NoneEditable>false</NoneEditable>
+        <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>false</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
       <QFTextBox>
         <Column>0</Column>
-        <Row>2</Row>
+        <Row>3</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtClientId</ControlId>
@@ -182,7 +330,7 @@ if (integration != null)
     <Control typeName="Sage.Platform.QuickForms.QFControls.QFLink, Sage.Platform.QuickForms.QFControls">
       <QFLink>
         <Column>0</Column>
-        <Row>3</Row>
+        <Row>4</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>lnkClientIdHelp</ControlId>
@@ -201,10 +349,109 @@ if (integration != null)
         <DisplayMode>Normal</DisplayMode>
       </QFLink>
     </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFLabel, Sage.Platform.QuickForms.QFControls">
+      <QFLabel>
+        <Column>0</Column>
+        <Row>5</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>lblText</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme>lbl alignright</StyleScheme>
+        <AssociatedControlID />
+      </QFLabel>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXEmail, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXEmail>
+        <Column>0</Column>
+        <Row>6</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>emlEmailAddress</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>AdminEmailAddress</DataItemName>
+            <ControlItemName>Text</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>128</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>emlEmailAddress</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFSLXEmail>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>7</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>txtEmailPassword</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>128</MaxLength>
+        <TextMode>Password</TextMode>
+        <OnChangeAction>
+          <ResourceKey>txtEmailPassword</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFLabel, Sage.Platform.QuickForms.QFControls">
+      <QFLabel>
+        <Column>0</Column>
+        <Row>8</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>lblMarketo</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <AssociatedControlID />
+      </QFLabel>
+    </Control>
     <Control typeName="Sage.Platform.QuickForms.QFControls.QFCheckBox, Sage.Platform.QuickForms.QFControls">
       <QFCheckBox>
         <Column>0</Column>
-        <Row>4</Row>
+        <Row>9</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>chkEnabled</ControlId>
@@ -224,10 +471,15 @@ if (integration != null)
         <Checked>false</Checked>
         <OnChangeAction>
           <ResourceKey>chkEnabled</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>chkEnabled_ChangeAction</MethodName>
+              <CSharpCodeSnippet>var integration = BindingSource.Current as Sage.Entity.Interfaces.IIntegration;
+if(integration != null &amp;&amp; (string) integration.Id =="ICRMCER00001")
+{
+    btnTestUrl.Visible = !chkEnabled.Checked;
+}</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
@@ -241,7 +493,7 @@ if (integration != null)
     <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
       <QFTextBox>
         <Column>0</Column>
-        <Row>5</Row>
+        <Row>10</Row>
         <IsReadOnly>true</IsReadOnly>
         <Enabled>false</Enabled>
         <HotKey>0</HotKey>
@@ -277,10 +529,191 @@ if (integration != null)
         <Required>false</Required>
       </QFTextBox>
     </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFListBox, Sage.Platform.QuickForms.QFControls">
+      <QFListBox>
+        <Column>0</Column>
+        <Row>11</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>cboProvider</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <SelectedIndex>-1</SelectedIndex>
+        <Items />
+        <OnChangeAction>
+          <ResourceKey>cboProvider</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>cboProvider_ChangeAction</MethodName>
+              <CSharpCodeSnippet>var integration = BindingSource.Current as Sage.Entity.Interfaces.IIntegration;
+if (integration != null)
+{
+	var providers = integration.Providers;
+	if(providers != null)
+	{
+	    foreach( var provider in providers)
+		{
+		   if(cboProvider.SelectedValue == provider.Id.ToString())
+		   {
+			 txtProviderConfiguration.Text = provider.URL;
+		   }
+		
+		}
+	}
+}
+</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <DataSource />
+        <TextField />
+        <ValueField />
+        <MultiSelect>false</MultiSelect>
+        <MaxHeight>200</MaxHeight>
+      </QFListBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>12</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>txtProviderConfiguration</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>txtProviderConfiguration</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>13</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>txtPreviousTime</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>txtPreviousTime</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>14</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>txtNextTime</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <OnChangeAction>
+          <ResourceKey>txtNextTime</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>1</Column>
+        <Row>0</Row>
+        <IsReadOnly>true</IsReadOnly>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFTextBoxVersion</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Version</DataItemName>
+            <ControlItemName>Text</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>32</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>QFTextBoxVersion</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
       <QFSLXPickList>
         <Column>1</Column>
-        <Row>0</Row>
+        <Row>1</Row>
         <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
@@ -318,66 +751,22 @@ if (integration != null)
         <PickListName>Integration Auth Type</PickListName>
         <StorageMode>Code</StorageMode>
         <NameFormatString />
+        <BoundLanguage />
+        <FilterByBoundLanguage>false</FilterByBoundLanguage>
         <AllowMultiples>false</AllowMultiples>
         <AlphaSort>false</AlphaSort>
         <MustExistInList>true</MustExistInList>
         <NoneEditable>false</NoneEditable>
         <PickListId />
-        <ValueStoredAsText>false</ValueStoredAsText>
-      </QFSLXPickList>
-    </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSLXPickList>
-        <Column>1</Column>
-        <Row>1</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>pklLinkType</ControlId>
-        <DataBindings>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>LinkType</DataItemName>
-            <ControlItemName>PickListValue</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-        </DataBindings>
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <MaxLength>64</MaxLength>
-        <OnChangeAction>
-          <ResourceKey>pklLinkType</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnChangeAction>
-        <Required>true</Required>
-        <AutoPostBack>false</AutoPostBack>
-        <PickListName>Integration Link Type</PickListName>
-        <StorageMode>Code</StorageMode>
-        <NameFormatString />
-        <AllowMultiples>false</AllowMultiples>
-        <AlphaSort>false</AlphaSort>
-        <MustExistInList>true</MustExistInList>
-        <NoneEditable>false</NoneEditable>
-        <PickListId />
+        <PickListFilter />
+        <DefaultLanguage />
         <ValueStoredAsText>false</ValueStoredAsText>
       </QFSLXPickList>
     </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
       <QFTextBox>
         <Column>1</Column>
-        <Row>2</Row>
+        <Row>3</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtSecret</ControlId>
@@ -411,17 +800,17 @@ if (integration != null)
         <Required>false</Required>
       </QFTextBox>
     </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXNumeric, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSLXNumeric>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
         <Column>1</Column>
-        <Row>5</Row>
+        <Row>6</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>numSyncInterval</ControlId>
+        <ControlId>txtDomain</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>SyncInterval</DataItemName>
+            <DataItemName>Domain</DataItemName>
             <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
@@ -431,8 +820,9 @@ if (integration != null)
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
+        <MaxLength>64</MaxLength>
         <OnChangeAction>
-          <ResourceKey>numSyncInterval</ResourceKey>
+          <ResourceKey>txtDomain</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -446,24 +836,20 @@ if (integration != null)
           <RefreshData>False</RefreshData>
         </OnChangeAction>
         <Required>false</Required>
-        <DecimalDigits>
-          <Strict>false</Strict>
-        </DecimalDigits>
-        <FormatType>Number</FormatType>
-      </QFSLXNumeric>
+      </QFTextBox>
     </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDateTimePicker, Sage.SalesLogix.QuickForms.QFControls">
-      <QFDateTimePicker>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
         <Column>1</Column>
-        <Row>6</Row>
+        <Row>7</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>dteStartTime</ControlId>
+        <ControlId>txtAdminUserName</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>SyncStartTime</DataItemName>
-            <ControlItemName>DateTimeValue</ControlItemName>
+            <DataItemName>AdminUserName</DataItemName>
+            <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -472,8 +858,9 @@ if (integration != null)
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
+        <MaxLength>64</MaxLength>
         <OnChangeAction>
-          <ResourceKey>dteStartTime</ResourceKey>
+          <ResourceKey>txtAdminUserName</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -487,53 +874,166 @@ if (integration != null)
           <RefreshData>False</RefreshData>
         </OnChangeAction>
         <Required>false</Required>
-        <DateTimeValue xsi:nil="true" />
-        <SelectedDateTime>0001-01-01T00:00:00</SelectedDateTime>
-        <DateOnly>false</DateOnly>
-        <DisplayTime>true</DisplayTime>
-        <DisplayDate>false</DisplayDate>
-        <BoundFieldType>DateTime</BoundFieldType>
-        <AutoPostBack>false</AutoPostBack>
-        <Timeless>false</Timeless>
-      </QFDateTimePicker>
+      </QFTextBox>
     </Control>
-    <Control typeName="Sage.Platform.QuickForms.QFControls.QFLabel, Sage.Platform.QuickForms.QFControls">
-      <QFLabel>
-        <Column>2</Column>
-        <Row>5</Row>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>1</Column>
+        <Row>9</Row>
+        <Visible>false</Visible>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>lblMinutes</ControlId>
+        <ControlId>btnDeleteStatusRecords</ControlId>
         <DataBindings />
-        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ControlLabelPlacement>none</ControlLabelPlacement>
         <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
+        <CaptionAlignment>right</CaptionAlignment>
         <StyleScheme />
-        <AssociatedControlID />
-      </QFLabel>
+        <ButtonType>StandardButton</ButtonType>
+        <Image />
+        <OnClientClick>string.Format("return confirm('{0}');", Sage.Platform.WebPortal.PortalUtil.JavaScriptEncode(GetLocalResourceObject("Delete_SysInbox_ConfirmMsg").ToString()));</OnClientClick>
+        <OnClickAction>
+          <ResourceKey>btnDeleteStatusRecords</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.ValidationActionItem, Sage.Platform.QuickForms">
+            <ValidationActionItem>
+              <ValidationMethod>IsJobServiceRunning</ValidationMethod>
+              <OnFail typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                <CSharpSnippetActionItem>
+                  <MethodName>btnDeleteStatusRecords_ClickActionF</MethodName>
+                  <CSharpCodeSnippet>using (NHibernate.ISession session = new Sage.Platform.Orm.SessionScopeWrapper())
+{
+    var result = session.CreateQuery("delete from SYSInboxStatus").ExecuteUpdate();
+    if (DialogService != null)
+    {
+		DialogService.ShowMessage(GetLocalResourceObject("Delete_Success_Msg").ToString());
+    }
+}</CSharpCodeSnippet>
+                </CSharpSnippetActionItem>
+              </OnFail>
+              <OnSuccess typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                <CSharpSnippetActionItem>
+                  <MethodName>btnDeleteStatusRecords_ClickActionS</MethodName>
+                  <CSharpCodeSnippet>if (DialogService != null)
+{
+	DialogService.ShowMessage(GetLocalResourceObject("JobServiceRunning_Msg").ToString());
+}</CSharpCodeSnippet>
+                </CSharpSnippetActionItem>
+              </OnSuccess>
+            </ValidationActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
     </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDateTimePicker, Sage.SalesLogix.QuickForms.QFControls">
-      <QFDateTimePicker>
-        <Column>2</Column>
-        <Row>6</Row>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>1</Column>
+        <Row>10</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>dteEndTime</ControlId>
-        <DataBindings>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>SyncEndTime</DataItemName>
-            <ControlItemName>DateTimeValue</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-        </DataBindings>
-        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ControlId>btnVerifyConnectivity</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
-        <OnChangeAction>
-          <ResourceKey>dteEndTime</ResourceKey>
+        <ButtonType>StandardButton</ButtonType>
+        <Image />
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>btnVerifyConnectivity</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+            <CSharpSnippetActionItem>
+              <MethodName>btnVerifyConnectivity_ClickAction</MethodName>
+              <CSharpCodeSnippet>var outResult = string.Empty;
+Sage.Entity.Interfaces.IIntegration integration = BindingSource.Current as Sage.Entity.Interfaces.IIntegration;
+outResult = integration.AutodiscoverUrl(emlEmailAddress.Text);
+if (DialogService != null)
+{
+    DialogService.ShowHtmlMessage(outResult + "&lt;br/&gt;&lt;br/&gt;"+ "&lt;center&gt;&lt;input class='dijitReset dijitInline dijitButtonText' type='button'  value ='OK' onclick='dijit.byId(&amp;apos;DialogWorkspace_window&amp;apos;).hide()'&gt;&lt;/input&gt;&lt;/center&gt;", "Verify Connectivity", 500, 500);
+}</CSharpCodeSnippet>
+            </CSharpSnippetActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <Column>1</Column>
+        <Row>12</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>btnTestUrl</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>StandardButton</ButtonType>
+        <Image />
+        <OnClientClick />
+        <OnClickAction>
+          <ResourceKey>btnTestUrl</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.ValidationActionItem, Sage.Platform.QuickForms">
+            <ValidationActionItem>
+              <ValidationMethod>TestProviderLink</ValidationMethod>
+              <OnFail typeName="Sage.Platform.QuickForms.ActionItems.MessageActionItem, Sage.Platform.QuickForms">
+                <MessageActionItem>
+                  <MethodName>btnTestUrl_ClickActionF</MethodName>
+                  <ResourceKey>d818f9e3-389a-47b0-bf32-3e945932fc74</ResourceKey>
+                </MessageActionItem>
+              </OnFail>
+              <OnSuccess typeName="Sage.Platform.QuickForms.ActionItems.MessageActionItem, Sage.Platform.QuickForms">
+                <MessageActionItem>
+                  <MethodName>btnTestUrl_ClickActionS</MethodName>
+                  <ResourceKey>21c5e4fd-2038-4293-863a-728be899be44</ResourceKey>
+                </MessageActionItem>
+              </OnSuccess>
+            </ValidationActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnClickAction>
+      </QFButton>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
+      <QFButton>
+        <RowSpan>2</RowSpan>
+        <Column>1</Column>
+        <Row>13</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>btnScheduleExchangeRate</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>none</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <ButtonType>StandardButton</ButtonType>
+        <Image />
+        <OnClientClick>var key = 'RefreshExchangeRatesJob';
+var currentGroupId = 'schedules';
+var isNew = false;
+var options = { key: key, currentGroupId: currentGroupId, isNew: isNew, triggerId: 'Refresh Exchange Rates Job' };
+Sage.MainView.JobMgr.JobManagerActions.showScheduleRunJobDialog(options);
+</OnClientClick>
+        <OnClickAction>
+          <ResourceKey>btnScheduleExchangeRate</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -545,17 +1045,8 @@ if (integration != null)
           <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
           <RefreshData>False</RefreshData>
-        </OnChangeAction>
-        <Required>false</Required>
-        <DateTimeValue xsi:nil="true" />
-        <SelectedDateTime>0001-01-01T00:00:00</SelectedDateTime>
-        <DateOnly>false</DateOnly>
-        <DisplayTime>true</DisplayTime>
-        <DisplayDate>false</DisplayDate>
-        <BoundFieldType>DateTime</BoundFieldType>
-        <AutoPostBack>false</AutoPostBack>
-        <Timeless>false</Timeless>
-      </QFDateTimePicker>
+        </OnClickAction>
+      </QFButton>
     </Control>
   </Controls>
   <ToolControls>
@@ -618,18 +1109,10 @@ if (integration != null)
         <OnClientClick />
         <OnClickAction>
           <ResourceKey>btnSave</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
-            <BusinessRuleActionItem>
-              <BusinessRule>Save</BusinessRule>
-              <Object>Integration</Object>
-              <Parameters />
-              <PassResultsToNextAction>False</PassResultsToNextAction>
-              <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-                <NoActionActionItem>
-                  <MethodName />
-                </NoActionActionItem>
-              </OnComplete>
-            </BusinessRuleActionItem>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CodeSnippetActionItem, Sage.Platform.QuickForms">
+            <CodeSnippetActionItem methodId="b82835d2-8e4f-4bfb-8c62-a868a1b9efb7">
+              <MethodName>btnSave_ClickAction</MethodName>
+            </CodeSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
@@ -675,18 +1158,50 @@ if (integration != null)
   <Columns>
     <ColumnStyle>
       <SizeType>Percent</SizeType>
-      <Width>45</Width>
+      <Width>25</Width>
     </ColumnStyle>
     <ColumnStyle>
       <SizeType>Percent</SizeType>
-      <Width>33</Width>
-    </ColumnStyle>
-    <ColumnStyle>
-      <SizeType>Percent</SizeType>
-      <Width>22</Width>
+      <Width>25</Width>
     </ColumnStyle>
   </Columns>
   <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>
       <Height>35</Height>

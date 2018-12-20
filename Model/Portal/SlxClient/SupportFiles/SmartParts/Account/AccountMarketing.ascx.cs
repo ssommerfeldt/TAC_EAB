@@ -73,7 +73,7 @@ public partial class SmartParts_Account_AccountMarketing : EntityBoundSmartPartI
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The <see cref="System.Web.UI.ImageClickEventArgs"/> instance containing the event data.</param>
-    protected void AddResponse_Click(object sender, ImageClickEventArgs e)
+    private void AddResponse_Click(object sender, EventArgs e)
     {
         AddResponseAndTarget();
     }

@@ -5,7 +5,13 @@
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
-  <preExecuteTargets />
+  <preExecuteTargets>
+    <methodTarget id="b5251cfa-dfb6-4395-84d3-de4cb9c6cace" lastModifiedUtc="2016-03-03T18:01:22.3644144Z" targetType="Sage.SalesLogix.BusinessRules.BusinessRuleHelper, Sage.SalesLogix.BusinessRules" targetMethod="ValidateBOEDelete" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </preExecuteTargets>
   <methodTargets>
     <methodTarget id="670eb725-29b3-4204-99a3-2c8dcde1207f" lastModifiedUtc="2011-01-25T16:26:11.5838973Z" targetType="Sage.SalesLogix.SalesOrder.SalesOrder, Sage.SalesLogix.BusinessRules" targetMethod="OnBeforeDelete" active="true">
       <ExtendedPropertiesCollection>
@@ -14,5 +20,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

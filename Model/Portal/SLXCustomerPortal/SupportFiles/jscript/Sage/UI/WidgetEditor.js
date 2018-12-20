@@ -1,25 +1,80 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
-       'dojo/data/ItemFileReadStore',
+define("Sage/UI/WidgetEditor", [
+       'dojo/data/ItemFileWriteStore',
        'dojox/widget/Portlet',
        'Sage/UI/Controls/_DialogHelpIconMixin',
        'dojo/_base/declare',
        'dojo/i18n!./Dashboard/nls/WidgetDefinition',
        'dojo/dom-style',
        'dojo/on',
-       'dojo/_base/lang'
+       'dojo/_base/lang',
+       'dojo/string',
+       'Sage/Data/BaseSDataStore',
+       'Sage/Data/SDataServiceRegistry'
 ],
-function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefinition, domStyle, on, lang) {
+function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefinition, domStyle, on, lang, dojoString, BaseSDataStore, SDataServiceRegistry) {
     var widget = declare('Sage.UI.WidgetEditor', [dojox.widget.PortletDialogSettings], {
-        _grpUrl: new Simplate('slxdata.ashx/slx/crm/-/groups/context/grouplist/{%= $.grp %}'),
-        _dimUrl: new Simplate('slxdata.ashx/slx/crm/-/analytics/dimension/{%= $.dim %}'),
-        _metUrl: new Simplate('slxdata.ashx/slx/crm/-/analytics/metric/{%= $.met %}'),
-        _entityUrl: 'slxdata.ashx/slx/crm/-/groups/context/entityList?filter=analytics',
-        _getStore: function (uri) {
-            return new itemFileReadStore({
-                url: uri
-            });
+        _grpUrl: {
+            replace: 'where',
+            start: 0,
+            count: 300,
+            domain: 'system',
+            kind: "groups",
+            include: null,
+            service: Sage.Data.SDataServiceRegistry.getSDataService('system'),
+            entityName: null,
+            where: "upper(family) eq upper('${0}')",
+            select: 'name,displayName',
+            orderBy: 'name',
+            format: 'json',
+            store: null
         },
+        _dimUrl: {
+            replace: 'kind',
+            start: 0,
+            count: 300,
+            domain: 'metadata',
+            kind: "entities('${0}')/filters",
+            include: null,
+            service: Sage.Data.SDataServiceRegistry.getSDataService('metadata'),
+            entityName: null,
+            where: "analyticsAvailable and filterType ne 'analyticsMetric'",
+            select: 'filterName,displayName,analyticsDescription',
+            format: 'json',
+            orderBy: 'filterName',
+            store: null
+        },
+        _metUrl: {
+            replace: 'kind',
+            start: 0,
+            count: 300,
+            domain: 'metadata',
+            kind: "entities('${0}')/filters",
+            include: null,
+            service: Sage.Data.SDataServiceRegistry.getSDataService('metadata'),
+            entityName: null,
+            where: "analyticsAvailable and filterType eq 'analyticsMetric'",
+            select: 'filterName,displayName,analyticsDescription',
+            format: 'json',
+            orderBy: 'filterName',
+            store: null
+        },
+        _entityUrl: {
+            replace: null,
+            start: 0,
+            count: 300,
+            domain: 'metadata',
+            kind: "entities",
+            include: "filters",
+            service: Sage.Data.SDataServiceRegistry.getSDataService('metadata'),
+            entityName: null,
+            where: "filters.analyticsAvailable eq true and filters.filterType eq 'analyticsMetric'",
+            select: 'name,displayName,tableName', // we are using tableName because groups works off of that.
+            format: 'json',
+            orderBy: '$descriptor',
+            store: null
+        },
+
         // bit of a hack, but more efficient than querying the store for it
         _addEnt: function (str) {
             return 'Sage.Entity.Interfaces.I' + str;
@@ -32,62 +87,71 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
             return str[str.length - 1] === '&' ? str.slice(0, -1) : str;
         },
         _pushEnt: function (val) {
-            this._entStr = dojo.string.substitute('entity=${0}&', [val]);
+            this._entStr = dojoString.substitute('entity=${0}&', [encodeURIComponent(val)]);
         },
         _pushGrp: function (val) {
-            this._grpStr = dojo.string.substitute('groupname=${0}&', [val]);
+            this._grpStr = dojoString.substitute('groupname=${0}&', [encodeURIComponent(val)]);
         },
         _pushDim: function (val) {
-            this._dimStr = dojo.string.substitute('dimension=${0}&', [val]);
+            this._dimStr = dojoString.substitute('dimension=${0}&', [encodeURIComponent(val)]);
         },
         _pushMet: function (val) {
-            this._metStr = dojo.string.substitute('metric=${0}&', [val]);
+            this._metStr = dojoString.substitute('metric=${0}&', [encodeURIComponent(val)]);
         },
         _pushLim: function (val) {
-            this._limStr = dojo.string.substitute('limit=${0}&', [val]);
+            this._limStr = dojoString.substitute('limit=${0}&', [encodeURIComponent(val)]);
         },
         _pushOth: function (val) {
-            this._othStr = dojo.string.substitute('combineother=${0}', [val]);
+            this._othStr = dojoString.substitute('combineother=${0}', [encodeURIComponent(val)]);
         },
         _checkHydrate: function () {
             var opts = this.portlet.widgetOptions;
+
             if (opts.groupname && this._grpField) {
-                if(this._originalGroup) {
+                if (this._originalGroup) {
                     opts.groupname = this._originalGroup;
                 }
                 var groupField = this._grpField;
                 groupField.store.fetch({
-                    query: { groupName: opts.groupname },
+                    query: { name: opts.groupname },
                     onComplete: function (i, r) {
-                        groupField.set('value', groupField.store.getValue(i[0], 'displayName'));
+                        if (i.length > 0) {
+                            groupField.set('value', groupField.store.getValue(i[0], '$descriptor'));
+                        }
                     },
                     queryOptions: { deep: true }
                 });
                 this._originalGroup = opts.groupname;
             }
             if (opts.dimension && this._dimField) {
-                if(this._originalDimension) {
+                if (this._originalDimension) {
                     opts.dimension = this._originalDimension;
                 }
                 var df = this._dimField;
                 df.store.fetch({
-                    query: { name: opts.dimension },
+                    query: { filterName: opts.dimension },
                     onComplete: function (i, r) {
-                        df.set('value', df.store.getValue(i[0], 'displayName'));
+                        if (i.length > 0) {
+                            var dimStart = df.store.getValue(i[0], '$descriptor');
+                            df.set('value', dimStart);
+                        }
                     },
                     queryOptions: { deep: true }
                 });
                 this._originalDimension = opts.dimension;
             }
             if (opts.metric && this._metField) {
-                if(this._originalMetric) {
+                if (this._originalMetric) {
                     opts.metric = this._originalMetric;
                 }
                 var mf = this._metField;
                 mf.store.fetch({
-                    query: { name: opts.metric },
+                    query: { filterName: opts.metric },
                     onComplete: function (i, r) {
-                        mf.set('value', mf.store.getValue(i[0], 'displayName'));
+                        if (i.length > 0) {
+                            var metStart = mf.store.getValue(i[0], '$descriptor');
+                            mf.set('value', metStart);
+                        }
                     },
                     queryOptions: { deep: true }
                 });
@@ -107,20 +171,20 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                     break;
                 case this.portlet.id + '_entCombo':
                     this._entField = child;
-                    on.once(this._entField._buttonNode, 'click', lang.hitch(this, function() {
+                    on.once(this._entField._buttonNode, 'click', lang.hitch(this, function () {
+
                         var entityFieldLoading = dojo.byId(this.portlet.id + '_loading');
                         domStyle.set(entityFieldLoading, 'display', 'block');
-                        this._entField.set('store', this._getStore(this._entityUrl));
-                        this._entField.store.fetch({
-                            query: '',
-                            onComplete: function() {
-                                domStyle.set(entityFieldLoading, 'display', 'none');
-                                // Ensure the drop-down opens now
-                                // and add focus so clicking away closes it, too
-                                // TODO: where is entityField coming from?
-                                window.entityField.loadAndOpenDropDown();
-                                window.entityField.focus();
-                        }});
+
+                        this._entField.set('store', this._entityUrl.store);
+                        if (this._entityUrl.store._arrayOfAllItems.length > 0) {
+                            domStyle.set(entityFieldLoading, 'display', 'none');
+                            // Ensure the drop-down opens now
+                            // and add focus so clicking away closes it, too
+                            this._entField.loadAndOpenDropDown();
+                            this._entField.focus();
+                        }
+
                     }));
                     break;
                 case this.portlet.id + '_grpCombo':
@@ -183,20 +247,20 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                 default:
                     //Add custom dijits to the widget editor
                     this[child.id] = child;
-                    
-                    if(!this.customOptions) {
+
+                    if (!this.customOptions) {
                         this.customOptions = [];
                     }
-                    
+
                     var splitValue = child.id.split(this.portlet.id);
-                    if(splitValue.length == 2) {
-                        if(splitValue[1].indexOf('_') === 0) {
+                    if (splitValue.length == 2) {
+                        if (splitValue[1].indexOf('_') === 0) {
                             splitValue[1] = splitValue[1].substring(1);
                         }
-                        
-                        this.customOptions.push({id: child.id, option: splitValue[1]});
+
+                        this.customOptions.push({ id: child.id, option: splitValue[1] });
                     }
-                    
+
                     break;
             }
         },
@@ -222,11 +286,102 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
             }
             return retVal;
         },
+        _getTableNameOfEntity: function (arg) {
+            var tableName = null;
+            var name = null;
+            var displayName = null;
+
+            if (typeof (this._entField.item) !== "undefined" && this._entField.item !== null) {
+
+                tableName = this._entField.item.tableName[0]; // if we have a selected item we will use that as the raw
+                name = this._entField.item.name[0];
+                displayName = this._entField.item.displayName[0];
+
+                return { name: name, tableName: tableName, displayName: displayName };
+            }
+            else {
+                if (typeof (this._entField.store) !== "undefined" && this._entityUrl.store._itemsByIdentity) {
+                    // when the page first loads there is no selected item, but we may be able to get the raw value
+                    // from our datastore using the arg passed in to the toggle method.
+                    if (arg.length > 0 && this._entityUrl.store._itemsByIdentity[arg]) {
+
+                        tableName = this._entityUrl.store._itemsByIdentity[arg].tableName[0];
+                        name = this._entityUrl.store._itemsByIdentity[arg].name[0];
+                        displayName = this._entityUrl.store._itemsByIdentity[arg].displayName[0];
+
+                        return { name: name, tableName: tableName, displayName: displayName };
+                    }
+                } // since we have to deal with different languages
+
+                var i;
+                for (i = 0; i < this._entityUrl.store._arrayOfAllItems.length; i++) {
+
+                    var currEntity = this._entityUrl.store._arrayOfAllItems[i];
+
+                    if (currEntity['$descriptor'][0] === arg) {
+
+                        tableName = currEntity['tableName'][0];
+                        name = currEntity['name'][0];
+                        displayName = currEntity['displayName'][0];
+
+                        return { name: name, tableName: tableName, displayName: displayName };
+                    }
+                }
+            }
+
+
+            return { name: name, tableName: tableName, displayName: displayName };
+        },
+        _updateGroupsDimensionsMetricsStores: function (arg) {
+
+            var opts = this.portlet.widgetOptions;
+
+            arg = opts.resource ? opts.resource : arg;
+
+            var selected = this._getTableNameOfEntity(this._remEnt(arg));
+            // This is important because it ends up setting the language for the other dropdowns
+
+            if (selected !== null) {
+
+                var entityName = selected.name;
+                this._pushEnt(entityName);
+
+                opts.entity = entityName;   //entity name as displayed
+                opts.resource = entityName;     // entity's table name
+                opts.tableName = selected.tableName; // used in certain cases like groups where the entity Return is referenced as RMA
+
+                if (this._grpField) {
+                    if (selected.tableName !== null) {
+                        this._grpUrl.entityName = selected.tableName;
+                        this._populate(this._grpUrl);
+                        this._grpField.store.urlPreventCache = true;
+                        this._grpField.set('builder', this._grpUrl);
+                        this._grpField.set('store', this._grpUrl.store);
+                        this._grpField.set('value', '');
+                    }
+                }
+                if (this._dimField) {
+                    this._dimUrl.entityName = selected.name;
+                    this._populate(this._dimUrl);
+                    this._dimField.set('builder', this._dimUrl);
+                    this._dimField.set('store', this._dimUrl.store);
+                    this._dimField.set('value', '');
+                }
+                if (this._metField) {
+                    this._metUrl.entityName = selected.name;
+                    this._populate(this._metUrl);
+                    this._metField.set('builder', this._metUrl);
+                    this._metField.set('store', this._metUrl.store);
+                    this._metField.set('value', '');
+                }
+                this._checkHydrate();
+            }
+        },
         toggle: function () {
             var that = this;
             var dashboardPage = dijit.byId(that.portlet._parentId);
             var i, len;
-            if(dashboardPage.permission) {
+            if (dashboardPage.permission) {
                 // which fields do I have?
                 if (!this._childWidgets) {
                     this._childWidgets = this.getChildren();
@@ -239,13 +394,13 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                 // Shows and hides the Dialog box.
                 if (!this.dialog) {
                     dojo.require("dijit.Dialog");
+
                     this.dialog = new dijit.Dialog({ title: this.title });
-                    this.dialog.containerNode.style.height = this.dimensions[1] + "px";
-                    if(!this.dialog.helpIcon) {
+                    if (!this.dialog.helpIcon) {
                         dojo.mixin(this.dialog, new _DialogHelpIconMixin());
                         this.dialog.createHelpIconByTopic('Using_Widgets');
                     }
-                    
+
                     dojo.body().appendChild(this.dialog.domNode);
                     // Move this widget inside the dialog
                     this.dialog.containerNode.appendChild(this.domNode);
@@ -267,118 +422,36 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                     this.dialog.show(this.domNode);
                     // hydrate title
                     if (opts.title && this._ttlField) {
-                        var resourceTitleString = opts.title.replace(/'/g, '_').replace(/ /g, '_');
+						var resourceTitleString = opts.title.replace(/'/g, '_').replace(/ /g, '_').replace(/\./g,'_');
                         this._ttlField.set('value', widgetDefinition[resourceTitleString] || opts.title);
+                        // Remove where clause for 'GroupList' widget 
+                        var widgetTitle = opts.title;
+                        if(widgetTitle === 'Group List'){
+                                this._entityUrl.where = '';
+                        }
+						else if(this._entityUrl.where === ''){
+							this._entityUrl.where = "filters.analyticsAvailable eq true and filters.filterType eq 'analyticsMetric'";
+						}
                     }
                     // Do I have an entity field?
                     if (this._entField) {
+                        this._populate(this._entityUrl);
+                        this._entField.store.urlPreventCache = true;
+                        this._entField.set('builder', this._entityUrl);
+                        this._entField.set('store', this._entityUrl.store);
+                        this._entField.set('value', '');
+
                         // Do not assume all four fields.  But if they are all there,
                         // their events will be chained to one another.
                         // set the change listeners
                         if (this._entField && !this._entChange) {
-                            this._entChange = dojo.connect(this._entField,
-                                "onChange", this, function (arg) {
-                                    var fullEntityName = this._entField.item ? this._entField.item.fullName[0] : this._addEnt(arg),
-                                        entityName = this._remEnt(fullEntityName);
-                                    this._pushEnt(fullEntityName);
-                                    opts.entity = fullEntityName;
-                                    opts.resource = entityName;
-                                    if (this._grpField) {
-                                        this._grpField.set('store', this._getStore(this._grpUrl.apply({ grp: entityName })));
-                                        this._grpField.store.urlPreventCache = true;
-                                        this._grpField.set('value', '');
-                                    }
-                                    if (this._dimField) {
-                                        this._dimField.set('store', this._getStore(this._dimUrl.apply({ dim: entityName })));
-                                        this._dimField.set('value', '');
-                                    }
-                                    if (this._metField) {
-                                        this._metField.set('store', this._getStore(this._metUrl.apply({ met: entityName })));
-                                        this._metField.set('value', '');
-                                    }
-                                    this._checkHydrate();
-                                });
-                        }
-                        if (this._grpField && !this._grpChange) {
-                            this._grpChange = dojo.connect(this._grpField,
-                                "onChange", this, function (arg) {
-                                    if (!this._grpField.isValid()) {
-                                        return false;
-                                    }
-                                    var store = this._grpField.store;
-                                    store.fetch({
-                                        query: { displayName: arg },
-                                        onComplete: function (i, r) {
-                                            var gn = store.getValue(
-                                                i[0], 'groupName');
-                                            that._pushGrp(gn);
-                                            opts.groupname = gn;
-                                        },
-                                        queryOptions: { deep: true }
-                                    });
-                                });
-                        }
-                        if (this._dimField && !this._dimChange) {
-                            this._dimChange = dojo.connect(this._dimField,
-                                "onChange", this, function (arg) {
-                                    if (!this._dimField.isValid()) {
-                                        return false;
-                                    }
-                                    var store = this._dimField.store;
-                                    store.fetch({
-                                        query: { displayName: arg },
-                                        onComplete: function (i, r) {
-                                            var n = store.getValue(
-                                                i[0], 'name');
-                                            that._pushDim(n);
-                                            opts.dimension = n;
-                                        },
-                                        queryOptions: { deep: true }
-                                    });
-                                });
-                        }
-                        if (this._metField && !this._metChange) {
-                            this._metChange = dojo.connect(this._metField,
-                                "onChange", this, function (arg) {
-                                    if (!this._metField.isValid()) {
-                                        return false;
-                                    }
-                                    var store = this._metField.store;
-                                    store.fetch({
-                                        query: { displayName: arg },
-                                        onComplete: function (i, r) {
-                                            var m = store.getValue(
-                                                i[0], 'name');
-                                            that._pushMet(m);
-                                            opts.metric = m;
-                                        },
-                                        queryOptions: { deep: true }
-                                    });
-                                });
-                        }
-                        // hydrate the ent field if defined
-                        if (opts.entity) {
-                            if(this._originalEntity) {
-                                if(this._originalEntity === opts.entity) {
-                                    this._checkHydrate();
-                                }
-                                else {
-                                    this._entField.set('value',
-                                        this._remEnt(this._originalEntity));
-                                }
-                            }
-                            else {
-                                this._entField.set('value',
-                                    this._remEnt(opts.entity));
-                                this._originalEntity = opts.entity;
-                            }                        
+                            this._entChange = dojo.connect(this._entField, "onChange", this, this._updateGroupsDimensionsMetricsStores);
                         }
                     } // end ent/grp/dim/met
                     // hydrate subtitle
                     if (this._subField) {
                         if (opts.subtitle) {
-                            this._subField.set('value',
-                            opts.subtitle);
+                            this._subField.set('value', opts.subtitle);
                         }
                         else {
                             this._subField.set('value', '');
@@ -387,8 +460,7 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                     // hydrate axes
                     if (this._xField) {
                         if (opts.xAxisName) {
-                            this._xField.set('value',
-                            opts.xAxisName);
+                            this._xField.set('value', opts.xAxisName);
                         }
                         else {
                             this._xField.set('value', '');
@@ -396,17 +468,15 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                     }
                     if (this._yField) {
                         if (opts.yAxisName) {
-                            this._yField.set('value',
-                            opts.yAxisName);
+                            this._yField.set('value', opts.yAxisName);
                         }
                         else {
                             this._yField.set('value', '');
                         }
                     }
                     if (this._numberMaximum) {
-                        if(opts.numberMaximum) {
-                            this._numberMaximum.set('value',
-                                opts.numberMaximum);
+                        if (opts.numberMaximum) {
+                            this._numberMaximum.set('value', opts.numberMaximum);
                         }
                         else {
                             this._numberMaximum.set('value', '10');
@@ -481,18 +551,19 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                         }
                     }
                     // hydrate custom options
-                    if(this.customOptions) {
-                        for(i = 0; i < this.customOptions.length; i++) {
-                            // TO-DO: check control type, as setting of the Value could be different
-                            //        if this isn't a TextBox-style control
+                    if (this.customOptions) {
+                        for (i = 0; i < this.customOptions.length; i++) {
                             var optionName = this.customOptions[i].option,
                                 optionId = this.customOptions[i].id;
-                            if(opts[optionName]) {
+                            if (opts[optionName]) { 
+                                if (this[optionId].checked) { // radio buttons
+                                    this[optionId].set('checked', opts[optionName]);
+                                }
                                 this[optionId].set('value', opts[optionName]);
                             }
                         }
                     }
-                    
+
                     //Run any 'API' init methods.             
                     for (i = 0; i < this._childWidgets.length; i++) {
                         if (this._childWidgets[i]._myEditRowInit) {
@@ -526,14 +597,14 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                                 var _uri = ['slxdata.ashx/slx/crm/-/analytics?'];
                                 // assume a title field
                                 if (this._ttlField) {
-                                    if(!this._ttlField.isValid()) { return false; }
+                                    if (!this._ttlField.isValid()) { return false; }
                                     var nTitle = this._ttlField.get('value');
                                     var resourceTitleString = opts.title.replace(/'/g, '_').replace(/ /g, '_');
-                                    
+
                                     if (nTitle) {
                                         this.portlet.set('title', nTitle);
-                                        
-                                        if(nTitle != widgetDefinition[resourceTitleString]) {
+
+                                        if (nTitle != widgetDefinition[resourceTitleString]) {
                                             opts.title = nTitle;
                                         }
                                     }
@@ -568,16 +639,16 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                                     }
                                     if (!this._yField.isValid()) { return false; }
                                 }
-                                if(this._numberMaximum) {
+                                if (this._numberMaximum) {
                                     var maximum = this._numberMaximum.get('value');
-                                    if(maximum) {
+                                    if (maximum) {
                                         opts.numberMaximum = maximum;
                                     }
                                     else {
                                         opts.numberMaximum = '5';
                                     }
                                     this._pushLim(opts.numberMaximum);
-                                    if(!this._numberMaximum.isValid()) { return false; }
+                                    if (!this._numberMaximum.isValid()) { return false; }
                                 }
                                 if (this._goalField) {
                                     var gl = this._goalField.get('value');
@@ -636,10 +707,9 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                                 if (this._grpField) {
                                     if (!this._grpStr) {
                                         this._grpField.store.fetch({
-                                            query: { displayName: this._grpField.get('value') },
+                                            query: { $descriptor: this._grpField.get('value') },
                                             onComplete: function (i, r) {
-                                                that._pushGrp(that._grpField.store.getValue(
-                                                    i[0], 'groupName'));
+                                                that._pushGrp(that._grpField.store.getValue(i[0], 'name'));
                                             },
                                             queryOptions: { deep: true }
                                         });
@@ -648,10 +718,9 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                                 if (this._dimField) {
                                     if (!this._dimStr) {
                                         this._dimField.store.fetch({
-                                            query: { displayName: this._dimField.get('value') },
+                                            query: { $descriptor: this._dimField.get('value') },
                                             onComplete: function (i, r) {
-                                                that._pushDim(that._dimField.store.getValue(
-                                                    i[0], 'name'));
+                                                that._pushDim(that._dimField.store.getValue(i[0], 'filterName'));
                                             },
                                             queryOptions: { deep: true }
                                         });
@@ -660,20 +729,23 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                                 if (this._metField) {
                                     if (!this._metStr) {
                                         this._metField.store.fetch({
-                                            query: { displayName: this._metField.get('value') },
+                                            query: { $descriptor: this._metField.get('value') },
                                             onComplete: function (i, r) {
-                                                that._pushMet(that._metField.store.getValue(
-                                                    i[0], 'name'));
+                                                that._pushMet(that._metField.store.getValue(i[0], 'filterName'));
                                             },
                                             queryOptions: { deep: true }
                                         });
                                     }
                                 }
-                                
-                                if(this.customOptions) {
-                                    for(i = 0; i < this.customOptions.length; i++) {
+
+                                if (this.customOptions) {
+                                    for (i = 0; i < this.customOptions.length; i++) {
                                         var optionName = this.customOptions[i].option,
                                             optionId = this.customOptions[i].id;
+                                        
+                                        if (this[optionId].checked) { // radio buttons
+                                            this[optionId].value = this[optionId].checked;
+                                        }    
                                         opts[optionName] = this[optionId].value;
                                     }
                                 }
@@ -692,7 +764,6 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
                                 if (this._limStr) { _uri.push(this._limStr); }
                                 if (this._othStr) { _uri.push(this._othStr); }
                                 opts.datasource = this._remAmp(_uri.join(''));
-                                //console.log(this._remAmp(_uri.join('')));
                                 dojo.publish('/ui/dashboard/pageSave', [this.portlet._page]);
                                 // Editor values have been posted. 
                                 // Now the portlet is no longer new.
@@ -709,6 +780,177 @@ function (itemFileReadStore, portlet, _DialogHelpIconMixin, declare, widgetDefin
             else {
                 dashboardPage._raisePermissionInvalidMessage();
             }
+        },
+        toggleContinued: function () {
+            var that = this;
+            var opts = this.portlet.widgetOptions;
+            if (this._grpField && !this._grpChange) {
+                this._grpChange = dojo.connect(this._grpField,
+                    "onChange", this, function (arg) {
+                        if (!this._grpField.isValid()) {
+                            return false;
+                        }
+                        var store = this._grpField.store;
+                        store.fetch({
+                            query: { $descriptor: arg },
+                            onComplete: function (i, r) {
+                                var gn = store.getValue(i[0], 'name');
+                                that._pushGrp(gn);
+                                opts.groupname = gn;
+                            },
+                            queryOptions: { deep: true }
+                        });
+                    });
+            }
+            if (this._dimField && !this._dimChange) {
+                this._dimChange = dojo.connect(this._dimField,
+                    "onChange", this, function (arg) {
+                        if (!this._dimField.isValid()) {
+                            return false;
+                        }
+                        var store = this._dimField.store;
+                        store.fetch({
+                            query: { $descriptor: arg },
+                            onComplete: function (i, r) {
+                                var n = store.getValue(i[0], 'filterName');
+                                that._pushDim(n);
+                                opts.dimension = n;
+                            },
+                            queryOptions: { deep: true }
+                        });
+                    });
+            }
+            if (this._metField && !this._metChange) {
+                this._metChange = dojo.connect(this._metField,
+                    "onChange", this, function (arg) {
+                        if (!this._metField.isValid()) {
+                            return false;
+                        }
+                        var store = this._metField.store;
+                        store.fetch({
+                            query: { $descriptor: arg },
+                            onComplete: function (i, r) {
+                                var m = store.getValue(i[0], 'filterName');
+                                that._pushMet(m);
+                                opts.metric = m;
+                            },
+                            queryOptions: { deep: true }
+                        });
+                    });
+            }
+            // hydrate the ent field if defined
+            if (opts.entity) {
+                if (this._originalEntity) {
+                    if (this._originalEntity === opts.entity) {
+                        this._checkHydrate();
+                    }
+                    else {
+                        this._entField.set('value', opts.entity);
+                    }
+                }
+                else {
+					var relatedEntityObject = this._entityUrl.store._arrayOfAllItems.filter(function( obj ) {
+								  return obj.name[0] === opts.entity;
+								});
+					var entityObject = relatedEntityObject[0];	
+					if(entityObject)
+					{
+						opts.entity = entityObject.displayName;
+					}
+                    this._entField.set('value', opts.entity);
+                    this._originalEntity = opts.entity;
+                }
+            }
+        },
+        _populate: function (value, start, count) {
+            value.store = new itemFileReadStore({ data: { identifier: '$key', items: [] } });
+
+            var request = new Sage.SData.Client.SDataResourceCollectionRequest(value.service);
+
+            var kind = value.kind;
+            if (value.replace === 'kind') {
+                kind = dojoString.substitute(value.kind, [value.entityName]);
+            }
+            request.setResourceKind(kind);
+
+            if (typeof (value.start) !== 'undefined') {
+                value.start = start || value.start;
+                request.setQueryArg('startIndex', value.start);
+            }
+            else {
+                value.start = start || 0;
+                request.setQueryArg('startIndex', value.start);
+            }
+            if (typeof (value.count) !== 'undefined') {
+                value.count = count || value.count;
+                request.setQueryArg('count', value.count);
+            }
+            else {
+                value.count = count || 0;
+                request.setQueryArg('count', value.count);
+            }
+            if (typeof (value.where) !== 'undefined') {
+
+                var where = value.where;
+                if (value.replace === 'where') {
+                    where = dojoString.substitute(value.where, [value.entityName]);
+                }
+
+                request.setQueryArg('where', where);
+            }
+            if (typeof (value.select) !== 'undefined') {
+                request.setQueryArg('select', value.select);
+            }
+            if (typeof (value.orderBy) !== 'undefined') {
+                request.setQueryArg('orderBy', value.orderBy);
+            }
+            if (typeof (value.format) !== 'undefined') {
+                request.setQueryArg('format', value.format);
+            }
+
+            var content = this;
+
+            var key = request.read({
+                scope: this,
+                success: function (data) {
+
+                    var entityFields = data.$resources;
+
+                    for (var i = 0; i <= entityFields.length - 1; i++) {
+                        if (value.store._itemsByIdentity === null || !value.store._itemsByIdentity[entityFields[i].$key]) {
+                            value.store.newItem(entityFields[i]);
+                        }
+                    }
+
+                    var totalResults = data.$totalResults;
+                    var newStart = value.start + value.count; // to get new start value take start + count
+                    var valuesLeft = totalResults - newStart; // how many more records still need to get
+
+                    if (valuesLeft > 0) { // we need to get more records if greater than 0, if less than 0, there may be an issue.
+                        if (valuesLeft >= value.count) { // Limit get to 100 records at a time
+                            this._populate(value, newStart, value.count);
+                        }
+                        else { // unless there is less, then just grab the rest.
+                            this._populate(value, newStart, valuesLeft);
+                        }
+                    }
+                    else {
+                        this._checkHydrate(); //rehydrate.
+                        if (value.entityName === null) {
+                            // if a loading message is being displayed hide it, because the data is assumed to be loaded at this point.
+                            var entityFieldLoading = dojo.byId(this.portlet.id + '_loading');
+                            if (entityFieldLoading) {
+                                domStyle.set(entityFieldLoading, 'display', 'none');
+                            }
+                            this.toggleContinued();
+                        }
+                    }
+                },
+
+                failure: function (data) {
+                    console.warn('request has errored %o', request);
+                }
+            });
         }
     });
 

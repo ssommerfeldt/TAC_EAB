@@ -1,4 +1,4 @@
-define((
+define("Sage/TaskPane/nls/en/JobManagerTasksTasklet", (
 { taskRunJob_Caption: 'Create Schedule',
   taskEditTrigger_Caption: 'Edit Schedule',
   taskCancelJob_Caption: 'Cancel Executing Job',

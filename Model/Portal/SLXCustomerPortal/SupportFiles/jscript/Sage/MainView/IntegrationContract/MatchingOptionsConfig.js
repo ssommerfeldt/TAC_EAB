@@ -1,5 +1,7 @@
-﻿/*globals dojo, define, Sage, dijit, Simplate, $ */
-define([
+require({cache:{
+'url:Sage/MainView/IntegrationContract/templates/MatchingOptionsConfig.html':"[\r\n'<div>',\r\n    '<div id=\"{%= $.id %}-Context-container\">',\r\n        '<label class=\"wizardsectiontitle boldText padBottom\">{%= $.matchingHeader %}',\r\n            '<span class=\"boldtext\">{%= $.resourceDisplayName %}</span>',\r\n        '</label>',\r\n        '<br /><br />',\r\n    '</div>',\r\n    '<div>',\r\n        '<label class=\"wizardsectiontext padBottom\" style=\"padding-left:20px\">{%= $.matchingDescription %}</label>',\r\n    '</div>',\r\n    '<div>',\r\n        '<br />',\r\n        '<label class=\"slxlabel\" style=\"padding-left:20px\">{%= $.propertyText %}</label>',\r\n        '<label class=\"slxlabel\" style=\"padding-left:240px\">{%= $.operatorText %}</label>',\r\n    '</div>',\r\n    '<div id=\"{%= $.id %}-Loading-container\">',\r\n        '<br />',\r\n        '<label class=\"wizardsectiontitle boldText padBottom\" style=\"padding-left:20px\">{%= $.loadingText %}</label>',\r\n    '</div>',\r\n//conditions\r\n    '<div style=\"padding:10px;\" id=\"{%= $.id %}-Condition-container\"></div>',\r\n//buttons\r\n    '<div class=\"button-bar alignright\">',\r\n        '<button dojoType=\"dijit.form.Button\" type=\"submit\" onClick=\"dijit.byId(\\'{%= $.id %}-Dialog\\').matchingObject.updateMatchProperties();\">',\r\n            '{%= $.okText %}',\r\n        '</button>',\r\n        '<button dojoType=\"dijit.form.Button\" type=\"button\" onClick=\"dijit.byId(\\'{%= $.id %}-Dialog\\').destroy();\">',\r\n            '{%= $.cancelText %}',\r\n        '</button>',\r\n    '</div>',\r\n'</div>'\r\n]"}});
+/*globals dojo, define, Sage, dijit, Simplate, $ */
+define("Sage/MainView/IntegrationContract/MatchingOptionsConfig", [
     'dojo/_base/declare',
     'dojo/i18n!./nls/MatchingOptionsConfig',
     'dojo/_base/array',

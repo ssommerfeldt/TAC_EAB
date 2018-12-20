@@ -1,0 +1,23 @@
+define("Sage/MainView/Import/nls/it/ManageImportOptions", {
+    "dlgManageImportOptions_Title": "Importazione record - Opzioni",
+    "lstImportType_Caption": "Cosa si desidera fare con i record in questo file?",
+    "lstImportOption_Insert": "Aggiungi record se non vengono trovate corrispondenze",
+    "txtOption_Insert": "Se non è possibile trovare un record contatto, azienda o indirizzo esistente in base ai criteri di corrispondenza definiti, ne verrà aggiunto uno al database. Se viene trovato un record corrispondente, il record non verrà importato.",
+    "lstImportOption_Update": "Aggiorna record se viene trovata una corrispondenza",
+    "txtOption_Update": "Se viene trovato un record contatto, azienda o indirizzo esistente in base ai criteri di corrispondenza definiti, il record verrà aggiornato con le informazioni importate. Se non viene trovato un record corrispondente, le informazioni non verranno importate.",
+    "lstImportOption_InsertUpdate": "Aggiungi o aggiorna ogni record",
+    "txtOption_InsertUpdate": "Se viene trovato un record contatto, azienda o indirizzo esistente in base ai criteri di corrispondenza definiti, il record verrà aggiornato con le informazioni importate. Se non viene trovato un record corrispondente, verrà aggiunto un nuovo record.",
+    "txtMatchHeader_Caption": "Definisci i criteri di corrispondenza:",
+    "txtOptionsHeader_Caption": "Opzioni",
+    "defaultOwner_Caption": "Proprietario predefinito:",
+    "lookupDefaultOwner_Caption": "Ricerca proprietario",
+    "lookupDescriptionColText": "Descrizione",
+    "lookupTypeColText": "Tipo",
+    "createAdHoc_Caption": "Crea un nuovo gruppo ad hoc",
+    "existingAdHoc_Caption": "Aggiungi ad un gruppo ad hoc esistente",
+    "errorNoAddHocGroupName": "Specificare un nome di gruppo ad hoc prima di continuare.",
+    "errorDuplicateAddHocGroupName": "Specificare un nome di gruppo ad hoc non già utilizzato.",
+    "errorNoOwner": "Specificare un proprietario prima di continuare.",
+    "chkAccountName": "Usa nome contatto al posto dei nomi di azienda vuoti",
+    "match_Caption": "Corrispondenza:"
+});

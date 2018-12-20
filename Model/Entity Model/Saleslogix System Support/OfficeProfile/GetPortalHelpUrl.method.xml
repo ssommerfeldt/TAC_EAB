@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="42ce5e76-2ba4-43be-b06f-2198f91d4ce8" lastModifiedUtc="2015-12-14T22:39:56.1544739Z" name="GetPortalHelpUrl" returnType="String" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="8b2519a8-10d8-4f88-bff1-c85e2d4969fe" paramName="portalName" sequence="0" paramType="String">
+      <description>Gets the portal Name</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="74f3fc9c-d855-4143-bdb6-e2d4c08f09a2" lastModifiedUtc="2015-12-14T23:32:40.930222Z" targetType="Sage.BusinessRules.CodeSnippets.OfficeProfileBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="GetPortalHelpUrlStep" active="true" codeSnippetId="eb37355a-bbc5-4a0e-8f4e-9621ebe9550e">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

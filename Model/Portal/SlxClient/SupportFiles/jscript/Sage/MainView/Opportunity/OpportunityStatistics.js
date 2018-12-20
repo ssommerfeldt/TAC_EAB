@@ -1,5 +1,7 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+require({cache:{
+'url:Sage/MainView/Opportunity/templates/OpportunityStatistics.html':" [\r\n    '<div>',\r\n        '<div data-dojo-type=\"dijit.Dialog\" id=\"{%= $.id%}_dlgOpportunityStatistics\" title=\"{%= $.opportunityStatistics_Caption %}\" dojoAttachPoint=\"_dialog\" dojoAttachEvent=\"onCancel:_close\">',\r\n            '<div dojoAttachPoint=\"loadingContainer\">',\r\n                '<br />',\r\n                '<label class=\"wizardsectiontitle boldText padBottom\" style=\"padding-left:20px\">{%= $.loadingMessge %}</label>',\r\n                '<br />',\r\n                '<br />',\r\n            '</div>',\r\n            '<table cellspacing=\"20\" dojoAttachPoint=\"statisticsContentsContainer\" class=\"display-none\">',\r\n                '<tr>',\r\n                    '<td >',\r\n                        '<label>{%= $.opportunityCount %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<label dojoAttachPoint=\"opportunityCount\"></label>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td>',\r\n                        '<label>{%= $.salesPotentialTotal %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<div id=\"salesPotential\" dojoAttachPoint=\"salesPotentialTotal_Container\" disabled=\"disabled\"></div>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<div id=\"salesPotentialAverage\" dojoAttachPoint=\"salesPotentialAverage_Container\" disabled=\"disabled\"></div>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td>',\r\n                        '<label>{%= $.weightedPotentialTotal %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<div id=\"weightedPotential\" dojoAttachPoint=\"weightedPotentialTotal_Container\" disabled=\"disabled\"></div>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<div id=\"weightedPotentialAverage\" dojoAttachPoint=\"weightedPotentialAverage_Container\" disabled=\"disabled\"></div>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td>',\r\n                        '<label>{%= $.averageCloseProbability %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<div dojoType=\"Sage.UI.Controls.Numeric\" constraints=\"{ places: 2, maxPlaces: 2, type: \\'percent\\' }\" dojoAttachPoint=\"closeProbability_Container\" readonly=\"readonly\"></div>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td>',\r\n                        '<label>{%= $.actualAmountTotal %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<div id=\"actualAmount\" dojoAttachPoint=\"actualAmountTotal_Container\" disabled=\"disabled\"></div>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<div id=\"actualAmountAverage\" dojoAttachPoint=\"actualAmountAverage_Container\" disabled=\"disabled\"></div>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td>',\r\n                        '<label>{%= $.averageDaysOpen %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<label dojoAttachPoint=\"daysOpen_Container\"></label>',\r\n                    '</td>',\r\n                '</tr>',\r\n                '<tr>',\r\n                    '<td>',\r\n                        '<label>{%= $.rangeEstClose %}</label>',\r\n                    '</td>',\r\n                    '<td>',\r\n                        '<label dojoAttachPoint=\"rangeEstClose_Container\"></label>',\r\n                    '</td>',\r\n                '</tr>',\r\n            '</table>',\r\n            '<div class=\"button-bar alignright\">',\r\n                '<button dojoType=\"dijit.form.Button\" id=\"{%= $.id%}_btn_Cancel\" type=\"button\" dojoAttachEvent=\"onClick:_close\">{%= $.btnClose_Caption %}</button>',\r\n            '</div>',\r\n        '</div>',\r\n    '</div>'\r\n]"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/Opportunity/OpportunityStatistics", [
         'dojo/_base/declare',
         'dojo/i18n!./nls/OpportunityStatistics',
         'Sage/UI/Controls/_DialogHelpIconMixin',
@@ -13,6 +15,7 @@ define([
         'Sage/Data/SDataServiceRegistry',
         'dojo/date/locale',
         'Sage/Utility',
+        'Sage/Utility/Jobs',
         'dojo/text!./templates/OpportunityStatistics.html',
         'dojo/html',
         'dijit/form/Form',
@@ -21,7 +24,7 @@ define([
         'dijit/layout/ContentPane',
         'dojox/layout/TableContainer'
 ],
-function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Widget, _Templated, Dialogs, Currency, Numeric, sDataServiceRegistry, locale, utility, template, html) {
+function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Widget, _Templated, Dialogs, Currency, Numeric, sDataServiceRegistry, locale, utility, jobs, template, html) {
     var opportunityStatistics = declare('Sage.MainView.Opportunity.OpportunityStatistics', [_Widget, _Templated], {
         _dialog: false,
         _selectionInfo: false,
@@ -39,6 +42,22 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
             this.isMultiCurrencyEnabled = window.isMultiCurrencyEnabled(); // TODO: Remove this from the global namespace.
             dojo.mixin(this, i18nStrings);
         },
+        getCurrentGroupId: function () {
+          var grpContextSvc = Sage.Services.getService('ClientGroupContext');
+          if (grpContextSvc) {
+            var contextService = grpContextSvc.getContext();
+            return contextService.CurrentGroupID;
+          }
+          return '';
+        },
+        getDefaultGroupId: function () {
+          var grpContextSvc = Sage.Services.getService('ClientGroupContext');
+          if (grpContextSvc) {
+            var contextService = grpContextSvc.getContext();
+            return contextService.DefaultGroupID;
+          }
+          return '';
+        },
         show: function () {
             this._dialog.show();
             if (!this._dialog.helpIcon) {
@@ -53,13 +72,28 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
             request.setQueryName('execute');
             request.setQueryArg('_resultName', 'OpportunityStatisticsMashup');
             request.setQueryArg('_selectionKey', this._selectionInfo.key);
+
+            var SelectedIds = (this._selectionInfo.selectionCount > 0) ? this._selectionInfo.selectedIds.join(',') || '' : '';
+            var AppliedFilters = Sys.Serialization.JavaScriptSerializer.serialize(jobs.getFiltersForJob());
+            var LookupConditions = Sys.Serialization.JavaScriptSerializer.serialize(jobs.getLookupConditionsForJob());
+
+            var groupId = this.getCurrentGroupId();
+            if (groupId === "LOOKUPRESULTS") {
+              groupId = this.getDefaultGroupId();
+            }
+
+            request.setQueryArg('_GroupId', groupId);
+            request.setQueryArg('_SelectedIds', SelectedIds.toString());
+            request.setQueryArg('_AppliedFilters', AppliedFilters.toString());
+            request.setQueryArg('_LookupConditions', LookupConditions.toString());
+
             var self = this;
             request.read({
                 success: function (data) {
                     self.resource = data.$resources[0];
                     self.selectedCount = self.resource.RecordCount;
                     self.currencyCode = self.resource.CurrencyCode;
-                    html.set(self.opportunityCount,self.selectedCount);
+                    html.set(self.opportunityCount,self.selectedCount.toString());
                     self.createControls();
                     var average = self.resource.DaysOpened;
                     if (self.selectedCount > 1) {
@@ -131,7 +165,7 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
                 multiCurrency: this.isMultiCurrencyEnabled,
                 disabled: true,
                 'class': 'textcontrol currency',
-                value: this.resource.CloseProbability
+                value: this.resource.WeightedSalesPotential
             });
             dojo.place(this.weightedPotentialTotal.domNode, this.weightedPotentialTotal_Container, 'only');
 
@@ -142,7 +176,7 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
                 multiCurrency: this.isMultiCurrencyEnabled,
                 disabled: true,
                 'class': 'textcontrol currency',
-                value: this.resource.CloseProbability / this.selectedCount
+                value: this.resource.WeightedSalesPotential / this.selectedCount
             });
             dojo.place(this.weightedPotentialAverage.domNode, this.weightedPotentialAverage_Container, 'only');
         },
@@ -170,8 +204,8 @@ function (declare, i18nStrings, _DialogHelpIconMixin, dojoLang, dijitDialog, _Wi
             dojo.place(this.actualAmountAverage.domNode, this.actualAmountAverage_Container, 'only');
         },
         createRangeEstClose: function () {
-            var minDate = locale.format(utility.Convert.toDateFromString(this.resource.MinDateEstClosed, true), { fullYear: true, selector: 'date' });
-            var maxDate = locale.format(utility.Convert.toDateFromString(this.resource.MaxDateEstClosed, true), { fullYear: true, selector: 'date' });
+            var minDate = locale.format(utility.Convert.toDateFromString(this.resource.MinDateEstClosed, true), { fullYear: true, selector: 'date', locale: Sys.CultureInfo.CurrentCulture.name });
+            var maxDate = locale.format(utility.Convert.toDateFromString(this.resource.MaxDateEstClosed, true), { fullYear: true, selector: 'date', locale: Sys.CultureInfo.CurrentCulture.name });
             html.set(this.rangeEstClose_Container, dojo.string.substitute('${0} - ${1}', [minDate, maxDate]));
         },
         _close: function () {

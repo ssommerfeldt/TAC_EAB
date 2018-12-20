@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0f789e3e-c21b-40ee-86f6-2675136d037c" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0f789e3e-c21b-40ee-86f6-2675136d037c" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-10-26T11:34:06.8382609Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -18,12 +18,39 @@
       <RefreshData>False</RefreshData>
     </FormActionDefinition>
     <FormActionDefinition>
-      <ResourceKey>76152a15-417f-4e41-b761-f8a858fb9ed9</ResourceKey>
+      <ResourceKey>9c6e1d16-de46-44dc-ac2c-03a34da91c31</ResourceKey>
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload1</MethodName>
-          <CSharpCodeSnippet>    Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
-    rdgSOType.SelectedIndex = salesOrder.IsQuote.HasValue &amp;&amp; salesOrder.IsQuote.Value ? 1 : 0;</CSharpCodeSnippet>
+          <CSharpCodeSnippet>if (Request.QueryString["cpqheadid"] != null &amp;&amp; Request.QueryString["cpqdetailid"]!=null)
+{
+	var headId = Request.QueryString["cpqheadid"].ToString();
+	var detailId = Request.QueryString["cpqdetailid"].ToString();
+	var salesOrderItem = Sage.Platform.EntityFactory.GetById&lt;ISalesOrderItem&gt;(detailId);
+	salesOrderItem.ConfigProductItem(headId, detailId, string.Empty, false, salesOrderItem.Status,string.Empty);
+	var url = Request.Url.AbsoluteUri;
+	var index = url.IndexOf('&amp;');
+	if(index &gt; 0)
+	{
+		url = url.Substring(0,index);
+		Response.Redirect(url);
+	}	
+}
+imgAccValidation.Attributes.Add("src","");
+imgAccValidation.Attributes.Add("alt","");
+var mappingService=Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;(true);
+if(mappingService != null)
+{
+	if(mappingService.IsBackOfficeIntegrationEnabled() &amp;&amp; !mappingService.IsLocalCRMPricingEnabled("SalesOrder"))
+    {
+		var mapping = BindingSource.Current as ISalesOrder;
+		if (mapping != null &amp;&amp; mapping.Account!=null &amp;&amp; string.IsNullOrWhiteSpace(mapping.Account.ErpExtId))
+			{
+				imgAccValidation.Visible = true;
+				imgAccValidation.ToolTip=GetLocalResourceObject("ValidationError_AccountPromoted").ToString();
+			}
+	}
+}</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
       <IsDialogCloseAction>False</IsDialogCloseAction>
@@ -36,69 +63,28 @@
   </LoadActions>
   <Name>SalesOrderDetails</Name>
   <ClientScriptIncludes />
-  <ClientResourceKeys />
+  <ClientResourceKeys>
+    <string>ValidationError_AccountPromoted</string>
+    <string>imgAccValidation.ToolTip</string>
+  </ClientResourceKeys>
   <ExtendedProperties />
   <HelpFile />
   <ReadOnly>false</ReadOnly>
   <GeneratePrintView>false</GeneratePrintView>
   <Controls>
-    <Control typeName="Sage.Platform.QuickForms.QFControls.QFRadioGroup, Sage.Platform.QuickForms.QFControls">
-      <QFRadioGroup>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
         <Column>0</Column>
         <Row>0</Row>
+        <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>rdgSOType</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <SelectedIndex>1</SelectedIndex>
-        <Items>
-          <Item>
-            <Key>rdgSOType_item0.Value</Key>
-            <Value>False</Value>
-          </Item>
-          <Item>
-            <Key>rdgSOType_item1.Value</Key>
-            <Value>True</Value>
-          </Item>
-        </Items>
-        <OnChangeAction>
-          <ResourceKey>rdgSOType</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
-            <CSharpSnippetActionItem>
-              <MethodName>rdgSOType_ChangeAction</MethodName>
-              <CSharpCodeSnippet>Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
-salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
-            </CSharpSnippetActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnChangeAction>
-        <DataSource />
-        <TextField />
-        <ValueField />
-        <RepeatDirection>Horizontal</RepeatDirection>
-      </QFRadioGroup>
-    </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSLXLookup>
-        <Column>0</Column>
-        <Row>1</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>lueAccount</ControlId>
+        <ControlId>txtOrderNumber</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>Account</DataItemName>
-            <ControlItemName>LookupResultValue</ControlItemName>
+            <DataItemName>SalesOrderNumber</DataItemName>
+            <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -108,17 +94,83 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>lueAccount</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
-            <BusinessRuleActionItem>
-              <BusinessRule>OnAccountChanged</BusinessRule>
-              <Object>SalesOrder</Object>
-              <Parameters />
-              <PassResultsToNextAction>False</PassResultsToNextAction>
-              <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
-                <RefreshDataAction>
-                  <MethodName>lueAccount_ChangeActionBRC</MethodName>
-                </RefreshDataAction>
+          <ResourceKey>txtOrderNumber</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFControlsList, Sage.Platform.QuickForms.QFControls">
+      <QFControlsList>
+        <Column>0</Column>
+        <Row>1</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>ctrlstAccount</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <Caption />
+        <Controls>
+          <ControlsCollection>
+            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
+              <QFSLXLookup>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>lueAccount</ControlId>
+                <DataBindings>
+                  <QuickFormPropertyDataBindingDefinition>
+                    <DataSourceID>MainEntity</DataSourceID>
+                    <DataItemName>Account</DataItemName>
+                    <ControlItemName>LookupResultValue</ControlItemName>
+                    <FormatString />
+                    <NullValueString />
+                  </QuickFormPropertyDataBindingDefinition>
+                </DataBindings>
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <OnChangeAction>
+                  <ResourceKey>lueAccount</ResourceKey>
+                  <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
+                    <BusinessRuleActionItem>
+                      <BusinessRule>OnAccountChanged</BusinessRule>
+                      <Object>SalesOrder</Object>
+                      <Parameters />
+                      <PassResultsToNextAction>False</PassResultsToNextAction>
+                      <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+                        <CSharpSnippetActionItem>
+                          <MethodName>lueAccount_ChangeActionBRC</MethodName>
+                          <CSharpCodeSnippet>imgAccValidation.Visible = false;
+var mappingService=Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;(true);
+if(mappingService != null)
+{
+	if(mappingService.IsBackOfficeIntegrationEnabled() &amp;&amp; !mappingService.IsLocalCRMPricingEnabled("SalesOrder"))
+    {
+		var mapping = (Sage.SalesLogix.Entities.Account)(lueAccount.LookupResultValue);
+		if (mapping != null &amp;&amp;  string.IsNullOrWhiteSpace(mapping.ErpExtId))
+			{
+				imgAccValidation.Visible = true;
+				imgAccValidation.ToolTip=GetLocalResourceObject("ValidationError_AccountPromoted").ToString();
+			}
+	}
+}</CSharpCodeSnippet>
+                </CSharpSnippetActionItem>
               </OnComplete>
             </BusinessRuleActionItem>
           </Action>
@@ -127,7 +179,7 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
           <DialogActionResult>NoResult</DialogActionResult>
           <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity />
-          <RefreshData>False</RefreshData>
+          <RefreshData>True</RefreshData>
         </OnChangeAction>
         <Required>true</Required>
         <LookupImage />
@@ -246,22 +298,69 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
             <IsSortable>true</IsSortable>
             <HideCondition />
           </LookupProperty>
+          <LookupProperty>
+            <PropertyName>ErpAccountingEntityId</PropertyName>
+            <PropertyType>System.String</PropertyType>
+            <PropertyHeader>Accounting Entity ID</PropertyHeader>
+            <PropertyFormat>None</PropertyFormat>
+            <PropertyFormatString />
+            <UseAsResult>true</UseAsResult>
+            <ExcludeFromFilters>false</ExcludeFromFilters>
+            <IsSortable>true</IsSortable>
+            <HideCondition>function () {
+    return !isIntegrationContractEnabled();
+}</HideCondition>
+          </LookupProperty>
+          <LookupProperty>
+            <PropertyName>ErpLogicalId</PropertyName>
+            <PropertyType>System.String</PropertyType>
+            <PropertyHeader>Logical ID</PropertyHeader>
+            <PropertyFormat>None</PropertyFormat>
+            <PropertyFormatString />
+            <UseAsResult>true</UseAsResult>
+            <ExcludeFromFilters>false</ExcludeFromFilters>
+            <IsSortable>true</IsSortable>
+            <HideCondition>function () {
+    return !isIntegrationContractEnabled();
+}</HideCondition>
+          </LookupProperty>
         </LookupProperties>
         <LookupPreFilters />
       </QFSLXLookup>
+            </Control>
+            <Control TypeName="Sage.Platform.QuickForms.QFControls.QFImage, Sage.Platform.QuickForms.QFControls">
+              <QFImage>
+                <Column>0</Column>
+                <Row>0</Row>
+				<Visible>false</Visible>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>imgAccValidation</ControlId>
+                <DataBindings />
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme>fa fa-exclamation-circle accountPromoteStyle</StyleScheme>
+                <Caption />
+                <Image>[Localization!Global_Images:alertIcon_16x16]</Image>
+              </QFImage>
+            </Control>
+          </ControlsCollection>
+        </Controls>
+      </QFControlsList>
     </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXUser, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSLXUser>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
         <Column>0</Column>
         <Row>2</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>usrAccountManager</ControlId>
+        <ControlId>txtCustPO</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>AccountManager</DataItemName>
-            <ControlItemName>LookupResultValue</ControlItemName>
+            <DataItemName>CustomerPurchaseOrderNumber</DataItemName>
+            <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -271,7 +370,7 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>usrAccountManager</ResourceKey>
+          <ResourceKey>txtCustPO</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -285,11 +384,7 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
           <RefreshData>False</RefreshData>
         </OnChangeAction>
         <Required>false</Required>
-        <ShowNonLoginUsers>false</ShowNonLoginUsers>
-        <LookupBindingMode>Object</LookupBindingMode>
-        <LookupResultValue xsi:type="xsd:string" />
-        <AutoPostBack>false</AutoPostBack>
-      </QFSLXUser>
+      </QFTextBox>
     </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
       <QFSLXLookup>
@@ -431,20 +526,18 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
         <LookupPreFilters />
       </QFSLXLookup>
     </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDateTimePicker, Sage.SalesLogix.QuickForms.QFControls">
-      <QFDateTimePicker>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
         <Column>0</Column>
         <Row>4</Row>
-        <IsReadOnly>true</IsReadOnly>
-        <Enabled>false</Enabled>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>dtpDateCreated</ControlId>
+        <ControlId>txtCustomerRFQ</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>CreateDate</DataItemName>
-            <ControlItemName>DateTimeValue</ControlItemName>
+            <DataItemName>CustomerRFQNumber</DataItemName>
+            <ControlItemName>Text</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -454,7 +547,7 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>dtpDateCreated</ResourceKey>
+          <ResourceKey>txtCustomerRFQ</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -468,34 +561,21 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
           <RefreshData>False</RefreshData>
         </OnChangeAction>
         <Required>false</Required>
-        <DateTimeValue xsi:nil="true" />
-        <SelectedDateTime>0001-01-01T00:00:00</SelectedDateTime>
-        <DateOnly>false</DateOnly>
-        <DisplayTime>true</DisplayTime>
-        <BoundFieldType>DateTime</BoundFieldType>
-        <AutoPostBack>false</AutoPostBack>
-        <Timeless>false</Timeless>
-      </QFDateTimePicker>
+      </QFTextBox>
     </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
       <QFSLXLookup>
         <Column>0</Column>
         <Row>5</Row>
+        <IsReadOnly>true</IsReadOnly>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>lueRequestedBy</ControlId>
+        <ControlId>lueQuote</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>RequestedBy</DataItemName>
+            <DataItemName>Quote</DataItemName>
             <ControlItemName>LookupResultValue</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>Account.Id</DataItemName>
-            <ControlItemName>SeedValue</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -505,7 +585,7 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>lueRequestedBy</ResourceKey>
+          <ResourceKey>lueQuote</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -524,92 +604,74 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
         <LookupDialogHeight xsi:nil="true" />
         <LookupBindingMode>Object</LookupBindingMode>
         <LookupResultValue xsi:type="xsd:string" />
-        <SeedProperty>Account.Id</SeedProperty>
+        <SeedProperty />
         <SeedValue />
         <DropDownDisplayProperty />
-        <AllowClearingResult>true</AllowClearingResult>
+        <AllowClearingResult>false</AllowClearingResult>
         <AppendStringValues>false</AppendStringValues>
-        <OverrideSeedOnSearch>true</OverrideSeedOnSearch>
-        <LookupEntityName>Contact</LookupEntityName>
-        <LookupEntityTypeName>Sage.Entity.Interfaces.IContact, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
+        <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
+        <LookupEntityName>Quote</LookupEntityName>
+        <LookupEntityTypeName>Sage.Entity.Interfaces.IQuote, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
         <AutoPostBack>false</AutoPostBack>
         <EnableHyperLinking>true</EnableHyperLinking>
-        <InitializeLookup>true</InitializeLookup>
-        <LookupProperties>
-          <LookupProperty>
-            <PropertyName>NameLF</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>Name</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>AccountName</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>Account</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>Address.City</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>City</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>Address.State</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>State</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>WorkPhone</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>Work Phone</PropertyHeader>
-            <PropertyFormat>Phone</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-          <LookupProperty>
-            <PropertyName>Email</PropertyName>
-            <PropertyType>System.String</PropertyType>
-            <PropertyHeader>Email</PropertyHeader>
-            <PropertyFormat>None</PropertyFormat>
-            <PropertyFormatString />
-            <UseAsResult>true</UseAsResult>
-            <ExcludeFromFilters>false</ExcludeFromFilters>
-            <IsSortable>true</IsSortable>
-            <HideCondition />
-          </LookupProperty>
-        </LookupProperties>
+        <InitializeLookup>false</InitializeLookup>
+        <LookupProperties />
         <LookupPreFilters />
       </QFSLXLookup>
+    </Control>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
+      <QFSLXPickList>
+        <Column>0</Column>
+        <Row>6</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>pklOrderStatus</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>Status</DataItemName>
+            <ControlItemName>PickListValue</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>64</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>pklOrderStatus</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+        <AutoPostBack>false</AutoPostBack>
+        <PickListName>Sales Order Status</PickListName>
+        <StorageMode>Text</StorageMode>
+        <NameFormatString />
+        <AllowMultiples>false</AllowMultiples>
+        <AlphaSort>false</AlphaSort>
+        <MustExistInList>false</MustExistInList>
+        <NoneEditable>false</NoneEditable>
+        <PickListId />
+        <PickListFilter />
+        <ValueStoredAsText>true</ValueStoredAsText>
+      </QFSLXPickList>
     </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDateTimePicker, Sage.SalesLogix.QuickForms.QFControls">
       <QFDateTimePicker>
         <Column>0</Column>
-        <Row>6</Row>
+        <Row>7</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>dtpOrderDate</ControlId>
@@ -628,50 +690,6 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
         <StyleScheme />
         <OnChangeAction>
           <ResourceKey>dtpOrderDate</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnChangeAction>
-        <Required>false</Required>
-        <DateTimeValue xsi:nil="true" />
-        <SelectedDateTime>0001-01-01T00:00:00</SelectedDateTime>
-        <DateOnly>true</DateOnly>
-        <DisplayTime>false</DisplayTime>
-        <BoundFieldType>DateTime</BoundFieldType>
-        <AutoPostBack>false</AutoPostBack>
-        <Timeless>false</Timeless>
-      </QFDateTimePicker>
-    </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDateTimePicker, Sage.SalesLogix.QuickForms.QFControls">
-      <QFDateTimePicker>
-        <Column>0</Column>
-        <Row>7</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>dtpPromisedDate</ControlId>
-        <DataBindings>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>DatePromised</DataItemName>
-            <ControlItemName>DateTimeValue</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-        </DataBindings>
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <OnChangeAction>
-          <ResourceKey>dtpPromisedDate</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -738,18 +756,18 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
         <Timeless>false</Timeless>
       </QFDateTimePicker>
     </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSLXPickList>
+    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFDateTimePicker, Sage.SalesLogix.QuickForms.QFControls">
+      <QFDateTimePicker>
         <Column>0</Column>
         <Row>9</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>pklType</ControlId>
+        <ControlId>dtpPromisedDate</ControlId>
         <DataBindings>
           <QuickFormPropertyDataBindingDefinition>
             <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>OrderType</DataItemName>
-            <ControlItemName>PickListValue</ControlItemName>
+            <DataItemName>DatePromised</DataItemName>
+            <ControlItemName>DateTimeValue</ControlItemName>
             <FormatString />
             <NullValueString />
           </QuickFormPropertyDataBindingDefinition>
@@ -759,7 +777,7 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <OnChangeAction>
-          <ResourceKey>pklType</ResourceKey>
+          <ResourceKey>dtpPromisedDate</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
             <NoActionActionItem>
               <MethodName />
@@ -773,305 +791,21 @@ salesOrder.IsQuote = (rdgSOType.SelectedIndex == 1);</CSharpCodeSnippet>
           <RefreshData>False</RefreshData>
         </OnChangeAction>
         <Required>false</Required>
+        <DateTimeValue xsi:nil="true" />
+        <SelectedDateTime>0001-01-01T00:00:00</SelectedDateTime>
+        <DateOnly>true</DateOnly>
+        <DisplayTime>false</DisplayTime>
+        <BoundFieldType>DateTime</BoundFieldType>
         <AutoPostBack>false</AutoPostBack>
-        <PickListName>Sales Order Type</PickListName>
-        <StorageMode>Text</StorageMode>
-        <NameFormatString />
-        <AllowMultiples>false</AllowMultiples>
-        <AlphaSort>false</AlphaSort>
-        <MustExistInList>false</MustExistInList>
-        <NoneEditable>false</NoneEditable>
-        <PickListId />
-        <ValueStoredAsText>true</ValueStoredAsText>
-      </QFSLXPickList>
-    </Control>
-    <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXPickList, Sage.SalesLogix.QuickForms.QFControls">
-      <QFSLXPickList>
-        <Column>0</Column>
-        <Row>10</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>pklStatus</ControlId>
-        <DataBindings>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>Status</DataItemName>
-            <ControlItemName>PickListValue</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-        </DataBindings>
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <OnChangeAction>
-          <ResourceKey>pklStatus</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnChangeAction>
-        <Required>false</Required>
-        <AutoPostBack>false</AutoPostBack>
-        <PickListName>Sales Order Status</PickListName>
-        <StorageMode>Text</StorageMode>
-        <NameFormatString />
-        <AllowMultiples>false</AllowMultiples>
-        <AlphaSort>false</AlphaSort>
-        <MustExistInList>false</MustExistInList>
-        <NoneEditable>false</NoneEditable>
-        <PickListId />
-        <ValueStoredAsText>true</ValueStoredAsText>
-      </QFSLXPickList>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
-      <QFTextBox>
-        <Column>0</Column>
-        <Row>11</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>txtCustPO</ControlId>
-        <DataBindings>
-          <QuickFormPropertyDataBindingDefinition>
-            <DataSourceID>MainEntity</DataSourceID>
-            <DataItemName>CustomerPurchaseOrderNumber</DataItemName>
-            <ControlItemName>Text</ControlItemName>
-            <FormatString />
-            <NullValueString />
-          </QuickFormPropertyDataBindingDefinition>
-        </DataBindings>
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <OnChangeAction>
-          <ResourceKey>txtCustPO</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnChangeAction>
-        <Required>false</Required>
-      </QFTextBox>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.QFControls.QFControlsList, Sage.Platform.QuickForms.QFControls">
-      <QFControlsList>
-        <RowSpan>2</RowSpan>
-        <Column>0</Column>
-        <Row>12</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>ctrlstERPApplication</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <Caption />
-        <Controls>
-          <ControlsCollection>
-            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
-              <QFSLXLookup>
-                <Column>0</Column>
-                <Row>0</Row>
-                <HotKey>0</HotKey>
-                <TabIndex>0</TabIndex>
-                <ControlId>lueERPApplication</ControlId>
-                <DataBindings>
-                  <QuickFormPropertyDataBindingDefinition>
-                    <DataSourceID>MainEntity</DataSourceID>
-                    <DataItemName>OperatingCompany</DataItemName>
-                    <ControlItemName>LookupResultValue</ControlItemName>
-                    <FormatString />
-                    <NullValueString />
-                  </QuickFormPropertyDataBindingDefinition>
-                </DataBindings>
-                <ControlLabelPlacement>left</ControlLabelPlacement>
-                <ExtendedProperties />
-                <CaptionAlignment>left</CaptionAlignment>
-                <StyleScheme />
-                <OnChangeAction>
-                  <ResourceKey>lueERPApplication</ResourceKey>
-                  <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
-                    <CSharpSnippetActionItem>
-                      <MethodName>lueERPApplication_ChangeAction</MethodName>
-                      <CSharpCodeSnippet>Sage.Entity.Interfaces.ISalesOrder salesOrder = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
-if (salesOrder.OperatingCompany != null)
-{
-	luePriceList.SeedValue = salesOrder.OperatingCompany.Id.ToString();
-	luePriceList.ResetDropDownListItems();
-}
-luePriceList.Enabled = (salesOrder.OperatingCompany != null);</CSharpCodeSnippet>
-                    </CSharpSnippetActionItem>
-                  </Action>
-                  <IsDialogCloseAction>False</IsDialogCloseAction>
-                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
-                  <DialogActionResult>NoResult</DialogActionResult>
-                  <PerformsUpdate>False</PerformsUpdate>
-                  <AppliedSecurity />
-                  <RefreshData>False</RefreshData>
-                </OnChangeAction>
-                <Required>false</Required>
-                <LookupImage />
-                <LookupDialogWidth xsi:nil="true" />
-                <LookupDialogHeight xsi:nil="true" />
-                <LookupDisplayMode>DropDownList</LookupDisplayMode>
-                <LookupBindingMode>Object</LookupBindingMode>
-                <LookupResultValue xsi:type="xsd:string" />
-                <SeedProperty />
-                <SeedValue />
-                <DropDownDisplayProperty>Name</DropDownDisplayProperty>
-                <AllowClearingResult>false</AllowClearingResult>
-                <AppendStringValues>false</AppendStringValues>
-                <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
-                <LookupEntityName>AppIdMapping</LookupEntityName>
-                <LookupEntityTypeName>Sage.Entity.Interfaces.IAppIdMapping, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
-                <AutoPostBack>false</AutoPostBack>
-                <EnableHyperLinking>false</EnableHyperLinking>
-                <InitializeLookup>false</InitializeLookup>
-                <LookupProperties>
-                  <LookupProperty>
-                    <PropertyName>Name</PropertyName>
-                    <PropertyType>System.String</PropertyType>
-                    <PropertyHeader>Name</PropertyHeader>
-                    <PropertyFormat>None</PropertyFormat>
-                    <PropertyFormatString />
-                    <UseAsResult>true</UseAsResult>
-                    <ExcludeFromFilters>false</ExcludeFromFilters>
-                    <IsSortable>true</IsSortable>
-                    <HideCondition />
-                  </LookupProperty>
-                </LookupProperties>
-                <LookupPreFilters>
-                  <LookupPreFilter>
-                    <LookupEntityName>IAppIdMapping</LookupEntityName>
-                    <PropertyType>System.Boolean</PropertyType>
-                    <OperatorCode>=</OperatorCode>
-                    <PickListName />
-                    <PropertyName>Enabled</PropertyName>
-                    <FilterValue>True</FilterValue>
-                  </LookupPreFilter>
-                  <LookupPreFilter>
-                    <LookupEntityName>IAppIdMapping</LookupEntityName>
-                    <PropertyType>System.Boolean</PropertyType>
-                    <OperatorCode>!=</OperatorCode>
-                    <PickListName />
-                    <PropertyName>IsSystemEndPoint</PropertyName>
-                    <FilterValue>true</FilterValue>
-                  </LookupPreFilter>
-                  <LookupPreFilter>
-                    <LookupEntityName>IAppIdMapping</LookupEntityName>
-                    <PropertyType>System.Boolean</PropertyType>
-                    <OperatorCode>=</OperatorCode>
-                    <PickListName />
-                    <PropertyName>IsUserEndpoint</PropertyName>
-                    <FilterValue>false</FilterValue>
-                  </LookupPreFilter>
-                </LookupPreFilters>
-              </QFSLXLookup>
-            </Control>
-            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.QFSLXLookup, Sage.SalesLogix.QuickForms.QFControls">
-              <QFSLXLookup>
-                <Column>0</Column>
-                <Row>0</Row>
-                <HotKey>0</HotKey>
-                <TabIndex>0</TabIndex>
-                <ControlId>luePriceList</ControlId>
-                <DataBindings>
-                  <QuickFormPropertyDataBindingDefinition>
-                    <DataSourceID>MainEntity</DataSourceID>
-                    <DataItemName>SlxPriceList</DataItemName>
-                    <ControlItemName>LookupResultValue</ControlItemName>
-                    <FormatString />
-                    <NullValueString />
-                  </QuickFormPropertyDataBindingDefinition>
-                </DataBindings>
-                <ControlLabelPlacement>left</ControlLabelPlacement>
-                <ExtendedProperties />
-                <CaptionAlignment>left</CaptionAlignment>
-                <StyleScheme />
-                <OnChangeAction>
-                  <ResourceKey>luePriceList</ResourceKey>
-                  <Action typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
-                    <RefreshDataAction>
-                      <MethodName>luePriceList_ChangeAction</MethodName>
-                    </RefreshDataAction>
-                  </Action>
-                  <IsDialogCloseAction>False</IsDialogCloseAction>
-                  <RunOnEveryRePaint>False</RunOnEveryRePaint>
-                  <DialogActionResult>NoResult</DialogActionResult>
-                  <PerformsUpdate>False</PerformsUpdate>
-                  <AppliedSecurity />
-                  <RefreshData>False</RefreshData>
-                </OnChangeAction>
-                <Required>false</Required>
-                <LookupImage />
-                <LookupDialogWidth xsi:nil="true" />
-                <LookupDialogHeight xsi:nil="true" />
-                <LookupDisplayMode>DropDownList</LookupDisplayMode>
-                <LookupBindingMode>Object</LookupBindingMode>
-                <LookupResultValue xsi:type="xsd:string" />
-                <SeedProperty>AppId</SeedProperty>
-                <SeedValue />
-                <DropDownDisplayProperty>Name</DropDownDisplayProperty>
-                <AllowClearingResult>false</AllowClearingResult>
-                <AppendStringValues>false</AppendStringValues>
-                <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
-                <LookupEntityName>SlxPriceList</LookupEntityName>
-                <LookupEntityTypeName>Sage.Entity.Interfaces.ISlxPriceList, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
-                <AutoPostBack>false</AutoPostBack>
-                <EnableHyperLinking>false</EnableHyperLinking>
-                <InitializeLookup>true</InitializeLookup>
-                <LookupProperties>
-                  <LookupProperty>
-                    <PropertyName>Name</PropertyName>
-                    <PropertyType>System.String</PropertyType>
-                    <PropertyHeader>Name</PropertyHeader>
-                    <PropertyFormat>None</PropertyFormat>
-                    <PropertyFormatString />
-                    <UseAsResult>true</UseAsResult>
-                    <ExcludeFromFilters>false</ExcludeFromFilters>
-                    <IsSortable>true</IsSortable>
-                    <HideCondition />
-                  </LookupProperty>
-                </LookupProperties>
-                <LookupPreFilters>
-                  <LookupPreFilter>
-                    <LookupEntityName>ISlxPriceList</LookupEntityName>
-                    <PropertyType>System.Boolean</PropertyType>
-                    <OperatorCode>=</OperatorCode>
-                    <PickListName />
-                    <PropertyName>ActiveFlag</PropertyName>
-                    <FilterValue>True</FilterValue>
-                  </LookupPreFilter>
-                </LookupPreFilters>
-              </QFSLXLookup>
-            </Control>
-          </ControlsCollection>
-        </Controls>
-      </QFControlsList>
+        <Timeless>false</Timeless>
+      </QFDateTimePicker>
     </Control>
     <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
       <QFTextBox>
         <ColumnSpan>2</ColumnSpan>
-        <RowSpan>3</RowSpan>
+        <RowSpan>2</RowSpan>
         <Column>0</Column>
-        <Row>14</Row>
+        <Row>10</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>txtComments</ControlId>
@@ -1106,9 +840,47 @@ luePriceList.Enabled = (salesOrder.OperatingCompany != null);</CSharpCodeSnippet
         <Required>false</Required>
       </QFTextBox>
     </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFTextBox, Sage.Platform.QuickForms">
+      <QFTextBox>
+        <Column>0</Column>
+        <Row>12</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>QFTextBox</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>DescriptionType</DataItemName>
+            <ControlItemName>Text</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <MaxLength>32</MaxLength>
+        <OnChangeAction>
+          <ResourceKey>QFTextBox</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+        <Required>false</Required>
+      </QFTextBox>
+    </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.QFBrowserControl, Sage.SalesLogix.QuickForms.QFControls">
       <QFBrowserControl>
-        <RowSpan>12</RowSpan>
+        <RowSpan>7</RowSpan>
         <Column>1</Column>
         <Row>0</Row>
         <HotKey>0</HotKey>
@@ -1121,6 +893,43 @@ luePriceList.Enabled = (salesOrder.OperatingCompany != null);</CSharpCodeSnippet
         <StyleScheme />
         <ContentLocation>~/SmartParts/SalesOrder/SalesOrderSnapShot.ascx</ContentLocation>
       </QFBrowserControl>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFCheckBox, Sage.Platform.QuickForms.QFControls">
+      <QFCheckBox>
+        <Column>1</Column>
+        <Row>7</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>chkBackOrdered</ControlId>
+        <DataBindings>
+          <QuickFormPropertyDataBindingDefinition>
+            <DataSourceID>MainEntity</DataSourceID>
+            <DataItemName>ErpBackOrdered</DataItemName>
+            <ControlItemName>Checked</ControlItemName>
+            <FormatString />
+            <NullValueString />
+          </QuickFormPropertyDataBindingDefinition>
+        </DataBindings>
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <Checked>false</Checked>
+        <OnChangeAction>
+          <ResourceKey>chkBackOrdered</ResourceKey>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+            <NoActionActionItem>
+              <MethodName />
+            </NoActionActionItem>
+          </Action>
+          <IsDialogCloseAction>False</IsDialogCloseAction>
+          <RunOnEveryRePaint>False</RunOnEveryRePaint>
+          <DialogActionResult>NoResult</DialogActionResult>
+          <PerformsUpdate>False</PerformsUpdate>
+          <AppliedSecurity />
+          <RefreshData>False</RefreshData>
+        </OnChangeAction>
+      </QFCheckBox>
     </Control>
   </Controls>
   <ToolControls>
@@ -1183,10 +992,18 @@ luePriceList.Enabled = (salesOrder.OperatingCompany != null);</CSharpCodeSnippet
         <OnClientClick />
         <OnClickAction>
           <ResourceKey>btnSaveSalesOrder</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.CodeSnippetActionItem, Sage.Platform.QuickForms">
-            <CodeSnippetActionItem methodId="86266b80-7724-4b0c-bca4-26d9687275f9">
-              <MethodName>btnSaveSalesOrder_ClickAction</MethodName>
-            </CodeSnippetActionItem>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
+            <BusinessRuleActionItem>
+              <BusinessRule>Save</BusinessRule>
+              <Object>SalesOrder</Object>
+              <Parameters />
+              <PassResultsToNextAction>False</PassResultsToNextAction>
+              <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                <NoActionActionItem>
+                  <MethodName />
+                </NoActionActionItem>
+              </OnComplete>
+            </BusinessRuleActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
@@ -1214,14 +1031,10 @@ luePriceList.Enabled = (salesOrder.OperatingCompany != null);</CSharpCodeSnippet
         <OnClientClick />
         <OnClickAction>
           <ResourceKey>btnCopy</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.RedirectActionItem, Sage.Platform.QuickForms">
-            <RedirectActionItem>
+          <Action typeName="Sage.Platform.QuickForms.ActionItems.CodeSnippetActionItem, Sage.Platform.QuickForms">
+            <CodeSnippetActionItem methodId="1a9ce546-7d8a-48a2-934f-f609ac43bf6f">
               <MethodName>btnCopy_ClickAction</MethodName>
-              <RawURL>InsertSalesOrder.aspx?modeid=Insert&amp;copyorder=true</RawURL>
-              <MainViewEntityName />
-              <UseCurrentIdInLink>true</UseCurrentIdInLink>
-              <EntityViewMode>Insert</EntityViewMode>
-            </RedirectActionItem>
+            </CodeSnippetActionItem>
           </Action>
           <IsDialogCloseAction>False</IsDialogCloseAction>
           <RunOnEveryRePaint>False</RunOnEveryRePaint>
@@ -1318,22 +1131,6 @@ luePriceList.Enabled = (salesOrder.OperatingCompany != null);</CSharpCodeSnippet
     </ColumnStyle>
   </Columns>
   <Rows>
-    <RowStyle>
-      <SizeType>Absolute</SizeType>
-      <Height>35</Height>
-    </RowStyle>
-    <RowStyle>
-      <SizeType>Absolute</SizeType>
-      <Height>35</Height>
-    </RowStyle>
-    <RowStyle>
-      <SizeType>Absolute</SizeType>
-      <Height>35</Height>
-    </RowStyle>
-    <RowStyle>
-      <SizeType>Absolute</SizeType>
-      <Height>35</Height>
-    </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>
       <Height>35</Height>

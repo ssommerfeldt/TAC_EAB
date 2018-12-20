@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/Opportunity/nls/en/OpportunityStatistics", (
 { opportunityStatistics_Caption: 'Opportunity Statistics',
   loadingMessge: 'Loading...',
   opportunityCount: '# of Opportunities',

@@ -28,20 +28,19 @@
 using System;
 using Sage.Entity.Interfaces;
 using Sage.Form.Interfaces;
-using Sage.SalesLogix.API;
 #endregion Usings
 
 namespace Sage.BusinessRules.CodeSnippets
 {
     public static partial class TeamDetailsEventHandlers
     {
-        public static void OnLoad1Step( ITeamDetails form,  EventArgs args)
+        public static void OnLoad1Step(ITeamDetails form, EventArgs args)
         {
             ITeam team = form.CurrentEntity as ITeam;
-			if(team != null)
+			if (team != null)
 			{
 				IOwnerSecurityProfile securityProfile = team.GetSecurityProfile(team.Owner);
-				if(securityProfile != null)
+				if (securityProfile != null)
                     form.securityProfileLookup.LookupResultValue = securityProfile;
 			}
         }

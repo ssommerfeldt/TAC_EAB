@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cmdSaveContactExtendedDetails.Caption" xml:space="preserve">
     <value>Save</value>
@@ -139,7 +139,7 @@
     <value>Referred By:</value>
   </data>
   <data name="txtEntityId.Caption" xml:space="preserve">
-    <value>ContactID:</value>
+    <value>Contact ID:</value>
   </data>
   <data name="txtImportSource.Caption" xml:space="preserve">
     <value>Import Source:</value>
@@ -224,5 +224,8 @@
   </data>
   <data name="pklLanguage.Caption" xml:space="preserve">
     <value>Language:</value>
+  </data>
+  <data name="QFLocationCodeList.Caption" xml:space="preserve">
+    <value>Prefix Suffix Language Override</value>
   </data>
 </root>

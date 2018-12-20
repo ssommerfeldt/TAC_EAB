@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="e2c88faa-97e6-4abc-a8ac-7d41f5ac4039" lastModifiedUtc="2015-12-10T19:06:53.9954473Z" name="btnAddNewAccount_OnClick" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="InsertQuote">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="6d3d8e87-3d16-475f-854c-837e3b1cc426" paramName="form" sequence="0" paramType="IInsertQuote" />
+    <OrmEntityMethodParam id="86cb44f5-bad2-46d7-8aa8-8f967e42aeb4" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="bd3b8aad-9562-4af0-9803-a9556cfdfa52" lastModifiedUtc="2015-12-10T19:08:09.039951Z" targetType="Sage.BusinessRules.CodeSnippets.InsertQuoteEventHandlers, Sage.SnippetLibrary.CSharp" targetMethod="btnAddNewAccount_OnClickStep" active="true" codeSnippetId="6ca31f10-e98e-4c8c-9b1e-1a9e02633d36">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

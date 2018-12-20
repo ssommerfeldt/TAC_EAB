@@ -1,7 +1,7 @@
-define((
-{ txtStartDate_Caption: 'Data iniziale:',
-  txtEndDate_Caption: 'Data finale:',
-  txtLocation_Caption: 'Posizione:',
-  txtUser_Caption: 'Utente:',
-  txtDescription_Caption: 'Descrizione:' }
-));
+define("Sage/MainView/ActivityMgr/templates/nls/it/EventSummary", {
+    "txtStartDate_Caption": "Data di inizio:",
+    "txtEndDate_Caption": "Data di fine:",
+    "txtLocation_Caption": "Ubicazione:",
+    "txtUser_Caption": "Utente:",
+    "txtDescription_Caption": "Descrizione:"
+});

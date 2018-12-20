@@ -14,12 +14,14 @@ using System.Data;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web;
+using System.Linq;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-
+using System.Threading;
+using System.Globalization;
 using Sage.Platform.Application;
 using Sage.Platform.Application.Diagnostics;
 using Sage.Platform.Application.UI;
@@ -39,6 +41,7 @@ using Sage.Platform.WebPortal.SmartParts;
 using Sage.Platform.WebPortal.UI;
 using Sage.Platform.WebPortal.Workspaces;
 using Sage.SalesLogix.Security;
+using Sage.SalesLogix.Web;
 
 namespace ${portal.PortalAlias}
 {
@@ -71,7 +74,67 @@ namespace ${portal.PortalAlias}
 
         #endregion
 
-        #region Page Lifetime Overrides
+		#region Page Lifetime Overrides
+		protected override void InitializeCulture()
+        {
+            String selectedLanguage = null;
+            const string languageCookieId = "SLXLanguageSetting";
+			const string regionCookieId = "SLXRegionSetting";
+			
+			var context = ApplicationContext.Current.Services.Get<IContextService>(true);
+			var mingleLanguage = context.GetContext("MingleLanguage") as string;
+
+			if (!string.IsNullOrEmpty(mingleLanguage))
+			{
+				if (log.IsDebugEnabled)
+				{
+					log.DebugEx(string.Format("Selecting MingleLanguage: {0}", mingleLanguage), EventIds.AdHocEvents.InfoMingle);
+				}
+				selectedLanguage = mingleLanguage;
+			}
+			else if (Request.Cookies[languageCookieId] != null)
+			{
+				selectedLanguage = Request.Cookies[languageCookieId].Value;
+			}
+
+			if (String.IsNullOrWhiteSpace(selectedLanguage) || !EnabledLanguageList.Languages.Exists(x => x.CultureCode.Equals(selectedLanguage, StringComparison.InvariantCultureIgnoreCase)))
+            {
+				// Cookie culture was either empty, corrupt, or doesn't match a value in the ELL. If this happens, see if the ELL has a matching culture code. If it does, use that, otherwise fall back to EN-US.
+				EnabledLanguage currentBrowserLanguage = EnabledLanguageList.Languages.FirstOrDefault(x => x.CultureCode.StartsWith(Thread.CurrentThread.CurrentUICulture.Name, StringComparison.InvariantCultureIgnoreCase));
+
+				selectedLanguage = (currentBrowserLanguage != null) ? currentBrowserLanguage.CultureCode : "en-us";
+
+				// Then rebuild the cookie.
+				var newCookie = new HttpCookie(languageCookieId) { Value = selectedLanguage };
+				Response.Cookies.Add(newCookie);
+				Request.Cookies.Remove(languageCookieId);
+            }
+
+            UICulture = selectedLanguage;
+            Culture = selectedLanguage;
+
+			Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(selectedLanguage);
+			var regionCookie = Request.Cookies[regionCookieId];
+            if (regionCookie != null && !string.IsNullOrEmpty(regionCookie.Value))
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(regionCookie.Value);
+            }
+			else
+			{
+				Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(selectedLanguage);
+			}
+
+            // Update current culture calendar if needed
+            if (!(Thread.CurrentThread.CurrentCulture.Calendar is GregorianCalendar) &&
+                Thread.CurrentThread.CurrentCulture.OptionalCalendars.Any(c => c is GregorianCalendar))
+            {
+                Thread.CurrentThread.CurrentCulture.DateTimeFormat.Calendar = new GregorianCalendar(GregorianCalendarTypes.Localized);
+            }
+            
+			base.InitializeCulture();
+		}
+
+
         protected override void OnPreInit(EventArgs e)
         {
             try
@@ -134,6 +197,10 @@ namespace ${portal.PortalAlias}
 #if($page.IncludeScript.Length > 0)
                 LoadIncludeScript();
 #end
+                if (MingleHelper.IsMingleEnabled)
+				{
+					MingleHelper.UpdateActivityCookie(new HttpContextWrapper(HttpContext.Current));
+				}
             }
             catch(Exception ex)
             {
@@ -144,7 +211,19 @@ namespace ${portal.PortalAlias}
         {
             base.OnPreRenderComplete(e);
             SetTitleBar();
-            HtmlContainerControl localTitle = this.Master.FindControl("localTitle") as HtmlContainerControl;
+
+            HtmlContainerControl localTitle = null;
+
+            if (this.Master.Master != null)
+            {
+                ContentPlaceHolder cp = this.Master.Master.FindControl("ContentPlaceHolderMain") as ContentPlaceHolder;
+                localTitle = cp.FindControl("localTitle") as HtmlContainerControl;
+            }
+            else
+            { 
+                localTitle = this.Master.FindControl("localTitle") as HtmlContainerControl;
+            }
+
             if (localTitle == null) return;
 
             var img = !string.IsNullOrEmpty(TitleBar.Image)
@@ -177,10 +256,10 @@ namespace ${portal.PortalAlias}
             }
 
 #end
-			this.Title = Resources.Portal.PortalTitle + " - " + text;
+			this.Title = HttpUtility.HtmlEncode(Resources.Portal.PortalBrowserTitle + " - " + text).Replace("&#39;","'");
 
             if (string.IsNullOrEmpty(text))
-                text = Resources.Portal.PortalTitle;
+                text = Resources.Portal.PortalBrowserTitle;
 
             if (String.IsNullOrEmpty(this.TitleBar.Text))
             {
@@ -359,7 +438,8 @@ namespace ${portal.PortalAlias}
                         ID = "portalScriptManager",
                         EnableScriptLocalization = true,
                         EnableScriptGlobalization = true,
-                        AllowCustomErrorsRedirect = false
+                        AllowCustomErrorsRedirect = false,
+                        ScriptMode = ScriptMode.Release
                     };
                 _scriptManager.AsyncPostBackError += new EventHandler<AsyncPostBackErrorEventArgs>(_scriptManager_AsyncPostBackError);
                 form.Controls.AddAt(0, _scriptManager);
@@ -381,17 +461,24 @@ namespace ${portal.PortalAlias}
             }
             return form;
         }
-        HtmlForm FindForm()
+		HtmlForm FindForm()
         {
-            foreach (Control c in this.Master.Controls)
+            var master = FindMasterPage();
+            if (master == null) return null;
+            foreach (Control c in master.Controls)
             {
-                HtmlForm form = FindFormRecursive(c);
+                var form = FindFormRecursive(c);
                 if (form != null)
                 {
                     return (form);
                 }
             }
             return null;
+        }
+
+        MasterPage FindMasterPage()
+        {
+            return Master != null ? Master.Master ?? Master : null;
         }
 
         void _scriptManager_AsyncPostBackError(object sender, AsyncPostBackErrorEventArgs e)

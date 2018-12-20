@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Data/SDataSummaryViewDataManager", [
     'Sage/Data/SDataServiceRegistry',
     'Sage/Data/SDataStore',
     'dojo/_base/declare',

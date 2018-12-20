@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7d37ea09-a198-406b-8884-8c893a26c0d6">
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7d37ea09-a198-406b-8884-8c893a26c0d6" disablePageValidation="false">
   <PageAlias>SecuredAction</PageAlias>
   <SmallImage>[Localization!Global_Images:permission_16x16]</SmallImage>
   <LargeImage>[Localization!Global_Images:permission_24x24]</LargeImage>
-  <TemplateUrl>Masters\base.master</TemplateUrl>
+  <TemplateUrl>Masters\admin.master</TemplateUrl>
   <InheritTemplate>false</InheritTemplate>
   <InheritsFrom>Sage.Platform.WebPortal.EntityPage, Sage.Platform.WebPortal</InheritsFrom>
   <Properties>
@@ -14,6 +14,6 @@
   </TemplateProperties>
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />
-  <AppliedSecurity>Administration/View</AppliedSecurity>
+  <AppliedSecurity>Entities/SecuredAction/View</AppliedSecurity>
   <IncludeScript />
 </PortalPage>

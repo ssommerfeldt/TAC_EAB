@@ -1,9 +1,9 @@
-﻿define({
-    txtLoadingScheduleDetails: 'Lädt Plandetails',
-    txtError: 'Fehler',
-    txtCannotDetermineReportId: 'Kann nicht ermittelt werden id Bericht.',
-    txtCannotDetermineReportNameOrFamily: 'Berichtsnamen oder der Familie kann nicht bestimmt werden.',
-    txtLoading: 'Wird geladen ...',
-    txtLoadingReport: 'Loading',
-    txtSorryAnErrorOccuredLoadingReport: 'Leider ist ein Fehler beim Laden der Bericht: ${0} ${1}.'
+define("Sage/MainView/ReportMgr/nls/de/ReportWizardController", {
+    "txtLoadingScheduleDetails": "Zeitplandetails werden geladen",
+    "txtError": "Fehler",
+    "txtCannotDetermineReportId": "Berichts-ID kann nicht ermittelt werden.",
+    "txtCannotDetermineReportNameOrFamily": "Berichtsname oder -familie kann nicht ermittelt werden.",
+    "txtLoading": "Ladevorgang läuft ",
+    "txtLoadingReport": "Bericht wird geladen",
+    "txtSorryAnErrorOccuredLoadingReport": "Leider ist beim Laden des Berichts ein Fehler aufgetreten: ${0} ${1}."
 });

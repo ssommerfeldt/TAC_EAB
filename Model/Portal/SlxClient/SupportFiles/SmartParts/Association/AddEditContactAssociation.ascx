@@ -217,7 +217,7 @@
             <span class="lbltop">
                 <asp:Label ID="lblForwardNotes" AssociatedControlID="txtForwardNotes" runat="server" Text="<%$ resources: lblDescription.Text %>"></asp:Label>
             </span>
-            <span class="textcontrol" style="width: 90%">
+            <span class="textcontrol add-edit-contact-assoc">
                 <asp:TextBox runat="server" ID="txtForwardNotes" Rows="4" TextMode="MultiLine" Columns="40" dojoType="Sage.UI.Controls.SimpleTextarea" />
             </span>
         </td>
@@ -225,7 +225,7 @@
             <span class="lbltop">
                 <asp:Label ID="lblBackNotes" AssociatedControlID="txtBackNotes" runat="server" Text="<%$ resources: lblDescription.Text %>"></asp:Label>
             </span>
-            <span class="textcontrol" style="width: 90%">
+            <span class="textcontrol add-edit-contact-assoc">
                 <asp:TextBox runat="server" ID="txtBackNotes" Rows="4" TextMode="MultiLine" Columns="40" dojoType="Sage.UI.Controls.SimpleTextarea" MaxLength="128" />
             </span>
         </td>

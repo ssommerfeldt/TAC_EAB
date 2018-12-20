@@ -1,13 +1,13 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/PopupMenuItem", [
     'Sage/UI/MenuItem',
+    'dijit/PopupMenuItem',
     'dojo/_base/declare'
 ],
-function (MenuItem, declare) {
+function (MenuItem, PopupMenuItem, declare) {
     // we want to be able to provide the icon at runtime
     // so mixing in the Sage Menuitem is necessary
-    var widget = declare("Sage.UI.PopupMenuItem",
-        MenuItem, {
+    var widget = declare("Sage.UI.PopupMenuItem", [MenuItem, PopupMenuItem], {
             _fillContent: function(){
                 // summary:
                 //		When Menu is declared in markup, this code gets the menu label and

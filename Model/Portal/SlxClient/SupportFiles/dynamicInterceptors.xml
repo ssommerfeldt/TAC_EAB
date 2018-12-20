@@ -6,5 +6,8 @@
 	  <interceptor>Sage.SalesLogix.Web.CreateUpdateInterceptor, Sage.SalesLogix.Web</interceptor>
       <interceptor>Sage.SalesLogix.Web.ChangeTrackingInterceptor, Sage.SalesLogix.Web</interceptor>
       <interceptor>Sage.SalesLogix.Web.ReadOnlyInterceptor, Sage.SalesLogix.Web</interceptor>
+	  <interceptor>Saleslogix.Integration.BOE.Common.OutboundInterceptor, Saleslogix.Integration.BOE.Common</interceptor>
+	  <interceptor>Saleslogix.Integration.BOE.Common.IONWorkflowInterceptor, Saleslogix.Integration.BOE.Common</interceptor>
+	  <interceptor>SalesLogix.Integration.Marketo.MarketoInterceptor, SalesLogix.Integration.Marketo</interceptor>
   </interceptorTypeNames>
 </dynamicInterceptorConfiguration>

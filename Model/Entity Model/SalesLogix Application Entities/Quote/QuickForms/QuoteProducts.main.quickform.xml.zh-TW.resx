@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="grdItems.6e099d75-9caa-414d-9188-a8aa917e5185.ColumnHeading" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.d45db1b3-6419-4f27-9309-d0c6bddc01ad.ColumnHeading" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="grdItems.10b73e8c-f105-4f8b-b90a-52cf2756849d.ColumnHeading" xml:space="preserve">
+    <value>行</value>
+  </data>
+  <data name="grdItems.7d9dfa7c-cb2b-4216-a711-24fa66887b67.ColumnHeading" xml:space="preserve">
+    <value>產品</value>
+  </data>
+  <data name="grdItems.7bd99878-cff8-4468-8d28-0ae09afb32de.ColumnHeading" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="grdItems.3f9b38b0-f5dd-4761-a07e-ac94486110f8.ColumnHeading" xml:space="preserve">
+    <value>數量</value>
+  </data>
+  <data name="grdItems.3923f709-4331-4f2d-b623-496d4ba5c919.ColumnHeading" xml:space="preserve">
+    <value>單位</value>
+  </data>
+  <data name="grdItems.d57204ee-83bd-43cb-b221-a0267462e22a.ColumnHeading" xml:space="preserve">
+    <value>error_AccountingSystem_Undefined</value>
+  </data>
+  <data name="grdItems.894da846-9f21-4845-b97c-c149746e36c6.ColumnHeading" xml:space="preserve">
+    <value>總價</value>
+  </data>
+  <data name="grdItems.8267fd7a-84ac-4956-a424-5ce51f331f09.ColumnHeading" xml:space="preserve">
+    <value>數量</value>
+  </data>
+  <data name="grdItems.882c4564-3902-4d1b-bfd0-2063d07a2093.ColumnHeading" xml:space="preserve">
+    <value>價格</value>
+  </data>
+  <data name="grdItems.c1d43ec9-6560-46e0-9301-b798f281d6ee.ColumnHeading" xml:space="preserve">
+    <value>單位</value>
+  </data>
+  <data name="grdItems.60b07f02-c34a-4f3f-a9d6-f2e13fe383c4.ColumnHeading" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.342b3d2c-7c15-4fac-9aed-bf1c59b88aee.ColumnHeading" xml:space="preserve">
+    <value>狀態</value>
+  </data>
+  <data name="luProduct.ButtonToolTip" xml:space="preserve">
+    <value>包含產品</value>
+  </data>
+  <data name="luProduct.DialogButtonText" xml:space="preserve">
+    <value>新增選取項目</value>
+  </data>
+  <data name="luProduct.LookupDialogTitle" xml:space="preserve">
+    <value>查閱產品</value>
+  </data>
+  <data name="luProduct.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="luProduct.LookupProperties.Family.PropertyHeader" xml:space="preserve">
+    <value>系列</value>
+  </data>
+  <data name="luProduct.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>狀態</value>
+  </data>
+  <data name="luProduct.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="grdQuoteItems.Delete.ToolTip" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="grdQuoteItems.Cancel.ToolTip" xml:space="preserve">
+    <value>重設</value>
+  </data>
+  <data name="lupProduct.LookupDialogTitle" xml:space="preserve">
+    <value>查閱產品</value>
+  </data>
+  <data name="lupProduct.DialogButtonText" xml:space="preserve">
+    <value>新增選取項目</value>
+  </data>
+  <data name="lupProduct.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>狀態</value>
+  </data>
+  <data name="grdItems.7f13becf-d7b7-41ec-82af-24215aec5077.ColumnHeading" xml:space="preserve">
+    <value>產品類型</value>
+  </data>
+  <data name="grdItems.28d57a8b-13ca-47c0-b41e-d969ed17dc28.ColumnHeading" xml:space="preserve">
+    <value>調整後價格</value>
+  </data>
+  <data name="grdItems.ff4abcfa-992a-4721-8841-c0c0b6e89485.ColumnHeading" xml:space="preserve">
+    <value>總價</value>
+  </data>
+  <data name="grdItems.ca87da6c-54ec-4780-b7c9-ff6e49313f91.ColumnHeading" xml:space="preserve">
+    <value>行類型</value>
+  </data>
+  <data name="grdItems.4e14a41d-5850-4a89-87c3-8a87a096f296.ColumnHeading" xml:space="preserve">
+    <value>價格等級</value>
+  </data>
+  <data name="grdItems.a3ad3b80-8190-4be8-829e-cafb6467ad29.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.530b7cdb-cef1-4e94-a46a-cf8d931ff779.ColumnHeading" xml:space="preserve">
+    <value>行號</value>
+  </data>
+  <data name="grdItems.eae77157-0570-48d4-bd9a-d78df7b84496.ColumnHeading" xml:space="preserve">
+    <value>已鎖定</value>
+  </data>
+  <data name="grdItems.db81fee5-514b-4607-96a2-296313a294ee.ColumnHeading" xml:space="preserve">
+    <value>調整後價格</value>
+  </data>
+  <data name="grdItems.a8c6d9fd-1bde-4d02-b2a8-f56adc076935.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdItems.68096333-c869-44c2-9b19-51d9058e50d8.ColumnHeading" xml:space="preserve">
+    <value>總價</value>
+  </data>
+  <data name="grdItems.983c7b9b-3c12-48e3-add2-73ff8cd065c2.ColumnHeading" xml:space="preserve">
+    <value>折扣</value>
+  </data>
+  <data name="grdItems.a74f322c-ebd9-49d4-ad41-3bcd939e8b41.ColumnHeading" xml:space="preserve">
+    <value>價格等級</value>
+  </data>
+  <data name="grdItems.eef3d53b-092f-4f1b-9429-22cfd8dd2bf4.ColumnHeading" xml:space="preserve">
+    <value>單位</value>
+  </data>
+  <data name="grdItems.b0fc2ecd-742c-4a7e-8012-afebc395c56e.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.e1a69123-3261-4eac-b1cc-8ce21ff52c2e.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.Save.ToolTip" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="grdItems.96a895c5-dda4-4060-8386-ade5a720b091.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdItems.0c39de35-d246-4c4b-a1fa-57a0a9be41c6.ColumnHeading" xml:space="preserve">
+    <value>產品</value>
+  </data>
+  <data name="grdItems.3ef53358-80dd-4e3f-99fb-355cb397a797.ColumnHeading" xml:space="preserve">
+    <value>價格</value>
+  </data>
+  <data name="grdItems.7f833917-f742-4ea5-99ac-79fd7e66af4a.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdItems.2936feab-1fba-4916-a91b-19f175e9a1d9.ColumnHeading" xml:space="preserve">
+    <value>數量</value>
+  </data>
+  <data name="grdItems.cd2f695d-eb50-4193-87a9-459746679526.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.3d7c5e37-1587-4ea1-a1cc-6da394ea8ffd.ColumnHeading" xml:space="preserve">
+    <value>折扣</value>
+  </data>
+  <data name="grdItems.427c6453-abe8-4679-a90b-3e9c6da0b5d5.ColumnHeading" xml:space="preserve">
+    <value>產品</value>
+  </data>
+  <data name="grdItems.5cd443a0-928c-44a2-86f2-a4246f8223c7.ColumnHeading" xml:space="preserve">
+    <value>調整後價格</value>
+  </data>
+  <data name="grdItems.e0d08365-5629-4c34-b759-d79fc50dd7fb.ColumnHeading" xml:space="preserve">
+    <value>折扣</value>
+  </data>
+  <data name="grdItems.Cancel.ToolTip" xml:space="preserve">
+    <value>重設</value>
+  </data>
+  <data name="grdItems.6cc2b0fb-3f70-4aa3-aa06-ec9fe8dc5c00.ColumnHeading" xml:space="preserve">
+    <value>總價</value>
+  </data>
+  <data name="grdItems.506f0947-d9d3-441f-bfed-329263b9df81.ColumnHeading" xml:space="preserve">
+    <value>系列</value>
+  </data>
+  <data name="grdItems.96a895c5-dda4-4060-8386-ade5a720b091.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.cc585e30-dffc-449e-8e20-06a5c9b4acf0.ColumnHeading" xml:space="preserve">
+    <value>調整後價格</value>
+  </data>
+  <data name="grdItems.3160cbc2-c14d-4e58-94c9-5277e17b3951.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.5c4a57c9-4dd2-4c9d-9c37-be2ddc445878.ColumnHeading" xml:space="preserve">
+    <value>價格</value>
+  </data>
+  <data name="grdItems.e3166b21-f996-4454-83a8-addf72b5207e.ColumnHeading" xml:space="preserve">
+    <value>已鎖定</value>
+  </data>
+  <data name="grdItems.96ea69f9-3c31-4071-bfef-541b5cd5bc50.ColumnHeading" xml:space="preserve">
+    <value>價格</value>
+  </data>
+  <data name="grdItems.3160cbc2-c14d-4e58-94c9-5277e17b3951.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdItems.7f833917-f742-4ea5-99ac-79fd7e66af4a.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.2b08495e-9221-4861-92dd-9d33c416c135.ColumnHeading" xml:space="preserve">
+    <value>單位</value>
+  </data>
+  <data name="grdItems.a7a437f5-35ab-48f8-9fdb-688b439a6aa0.ColumnHeading" xml:space="preserve">
+    <value>價格</value>
+  </data>
+  <data name="grdItems.1c0db96d-c179-432b-a9b3-0a3034540713.ColumnHeading" xml:space="preserve">
+    <value>折扣</value>
+  </data>
+  <data name="grdItems.e1a69123-3261-4eac-b1cc-8ce21ff52c2e.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdItems.Delete.ToolTip" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="grdItems.0fd9479b-1d6f-497f-a870-26efbf44550d.ColumnHeading" xml:space="preserve">
+    <value>數量</value>
+  </data>
+  <data name="grdItems.a8c6d9fd-1bde-4d02-b2a8-f56adc076935.Text" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.58b387bd-88cc-459e-9d3c-4c62506c0db6.ColumnHeading" xml:space="preserve">
+    <value>總價</value>
+  </data>
+  <data name="lupProduct.LookupProperties.Price.PropertyHeader" xml:space="preserve">
+    <value>價格</value>
+  </data>
+  <data name="grdItems.a5c16453-4bc4-417a-9220-0208c6477155.ColumnHeading" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="grdQuoteItems.363db6b9-e1c9-449f-8841-bfbb7eb22f50.ColumnHeading" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="grdQuoteItems.a604c840-4fcc-41ee-a0d0-9cb98ee2350c.ColumnHeading" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="grdQuoteItems.e939e2c5-7ed1-462f-bb13-e40066427ac3.ColumnHeading" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdQuoteItems.ebcaab91-e64f-4c63-8db7-2fc0cbb02e00.ColumnHeading" xml:space="preserve">
+    <value>行</value>
+  </data>
+  <data name="grdQuoteItems.4cdc571d-9d05-4aee-96b2-700626d8d381.ColumnHeading" xml:space="preserve">
+    <value>產品</value>
+  </data>
+  <data name="grdQuoteItems.f770e317-81c6-4ee7-93e3-61e47ae33546.ColumnHeading" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="grdQuoteItems.1ba2a052-6123-420e-86e9-60d2a8995724.ColumnHeading" xml:space="preserve">
+    <value>數量</value>
+  </data>
+  <data name="grdQuoteItems.0c29e666-2ab0-4149-8a81-267d78a56106.ColumnHeading" xml:space="preserve">
+    <value>總價</value>
+  </data>
+  <data name="grdQuoteItems.c736d07f-1afd-4e3b-89cf-ffd1e48d81e6.ColumnHeading" xml:space="preserve">
+    <value>價格</value>
+  </data>
+  <data name="lupProduct.ButtonToolTip" xml:space="preserve">
+    <value>包含產品</value>
+  </data>
+  <data name="lupProduct.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="lupProduct.LookupProperties.Family.PropertyHeader" xml:space="preserve">
+    <value>系列</value>
+  </data>
+  <data name="lupProduct.LookupProperties.ActualId.PropertyHeader" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="grdItems.0c1ac2b9-e2a6-4723-a09b-912b6ce8a8f0.ColumnHeading" xml:space="preserve">
+    <value>產品</value>
+  </data>
+  <data name="grdItems.d465a2d6-0506-45bb-8eeb-38a7b98cb358.ColumnHeading" xml:space="preserve">
+    <value>行號</value>
+  </data>
+  <data name="grdItems.920a2410-68b2-4f39-a287-36f535f7f338.ColumnHeading" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="grdItems.00fe1b65-0f1f-43ee-bae4-146b69452559.ColumnHeading" xml:space="preserve">
+    <value>數量</value>
+  </data>
+  <data name="grdItems.05cec2bf-2597-4adf-958e-647ed374b01d.ColumnHeading" xml:space="preserve">
+    <value>價格</value>
+  </data>
+  <data name="grdItems.1b44ab4f-cf53-4d86-ba82-4c732781c170.ColumnHeading" xml:space="preserve">
+    <value>總價 (基價)</value>
+  </data>
+  <data name="grdItems.8a0f7325-7dae-4b16-96e0-5d68f8b24eb0.ColumnHeading" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="grdItems.d42e5794-68c1-43a8-a62b-00c0a70eb720.ColumnHeading" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="b8371c3a-9277-45dc-83d4-464e8d3a4004.DialogTitleOverride" xml:space="preserve">
+    <value>編輯產品</value>
+  </data>
+  <data name="error_ExecutingRequest" xml:space="preserve">
+    <value>開啟 ${0} 時出現錯誤。StatusText: ${1}; StatusCode: ${2}。</value>
+  </data>
+  <data name="error_ExecutingRequestExt" xml:space="preserve">
+    <value>開啟 ${0} 時出現錯誤。嚴重性: ${1}，SData代碼: ${2}，訊息: ${3}，ApplicationCode: ${4}，StatusText: ${5}，StatusCode: ${6}。</value>
+  </data>
+  <data name="error_AccountingSystem_Undefined" xml:space="preserve">
+    <value>無法將產品新增到報價，因為會計系統未定義。請先定義會計系統，然後再繼續。</value>
+  </data>
+  <data name="error_ClientContext_Undefined" xml:space="preserve">
+    <value>用戶端內容服務未定義。</value>
+  </data>
+  <data name="btnAddCustomProduct.ToolTip" xml:space="preserve">
+    <value>新增自訂產品...</value>
+  </data>
+  <data name="btnRenumber.ToolTip" xml:space="preserve">
+    <value>重新編號行項目</value>
+  </data>
+  <data name="grdItems.48ece74d-a5d2-4b36-93f7-c2489b2c4ea2.ColumnHeading" xml:space="preserve">
+    <value>設定的項目</value>
+  </data>
+  <data name="grdItems.dc9e46e4-ae29-4c22-a5b2-2b9b357efc5e.ColumnHeading" xml:space="preserve">
+    <value>單位</value>
+  </data>
+  <data name="grdItems.52c0884a-b728-4188-a605-1a6413378617.ColumnHeading" xml:space="preserve">
+    <value>折扣</value>
+  </data>
+  <data name="grdItems.a75167bc-f885-430c-8706-009fe7474cad.ColumnHeading" xml:space="preserve">
+    <value>調整後價格 (基價)</value>
+  </data>
+  <data name="grdItems.37969fb0-552e-432b-9800-6ddf734d9df8.ColumnHeading" xml:space="preserve">
+    <value>已鎖定</value>
+  </data>
+  <data name="grdItems.afc48e4f-9b70-447f-8132-d21dab56664f.ColumnHeading" xml:space="preserve">
+    <value>價格等級</value>
+  </data>
+  <data name="grdItems.2c053e42-de2a-4e18-8a8d-5f4ffa6bde8a.ColumnHeading" xml:space="preserve">
+    <value>單位</value>
+  </data>
+  <data name="grdItems.9ea723e8-9d30-4bdc-aabb-72b8b969da5d.ColumnHeading" xml:space="preserve">
+    <value>折扣</value>
+  </data>
+  <data name="grdItems.394f7499-f05b-4e7c-aa8f-3e388ec66b03.ColumnHeading" xml:space="preserve">
+    <value>調整後價格</value>
+  </data>
+  <data name="grdItems.6e79d9ac-ac0a-4dda-86b7-79b747295238.ColumnHeading" xml:space="preserve">
+    <value>總價</value>
+  </data>
+  <data name="btnAddCustomProduct.Caption" xml:space="preserve">
+    <value>新增自訂產品</value>
+  </data>
+  <data name="8ce8161e-d136-4b27-b6ca-5f36b80ab4ad.DialogTitleOverride" xml:space="preserve">
+    <value>新增自訂產品</value>
+  </data>
+  <data name="luProduct.LookupProperties.ErpConfiguredItem.PropertyHeader" xml:space="preserve">
+    <value>設定的項目</value>
+  </data>
+  <data name="grdItems.fa7dec2e-4488-417b-ad19-25d140bd14ee.ColumnHeading" xml:space="preserve">
+    <value>倉庫</value>
+  </data>
+  <data name="grdItems.cd93752f-49b1-4297-b71c-4b8c107f6189.ColumnHeading" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="grdItems.a3f57db2-8f8b-4432-8c68-8cd442983bf7.ColumnHeading" xml:space="preserve">
+    <value>狀態</value>
+  </data>
+  <data name="grdItems.323286b3-b666-4479-9267-c732afce429a.ColumnHeading" xml:space="preserve">
+    <value>ERP 行號</value>
+  </data>
+  <data name="error_PricingRequest" xml:space="preserve">
+    <value>要求定價服務時發生錯誤：${0}</value>
+  </data>
+  <data name="grdItems.936a6385-6c9c-4031-a735-f706423a2281.ColumnHeading" xml:space="preserve">
+    <value>總計 (報價)</value>
+  </data>
+  <data name="luProduct.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="luProduct.LookupProperties.UnitOfMeasure.Name.PropertyHeader" xml:space="preserve">
+    <value>測量單位</value>
+  </data>
+  <data name="luProduct.LookupProperties.ErpLogicalId.PropertyHeader" xml:space="preserve">
+    <value>ERP 邏輯 ID</value>
+  </data>
+  <data name="productStatus_Discontinued" xml:space="preserve">
+    <value>已停止</value>
+  </data>
+  <data name="grdItems.52fb744c-4a3b-4cbe-b3fe-5eac3413c946.ColumnHeading" xml:space="preserve">
+    <value>總計 (基準)</value>
+  </data>
+  <data name="luProduct.LookupProperties.ErpAccountingEntityId.PropertyHeader" xml:space="preserve">
+    <value>會計實體</value>
+  </data>
+  <data name="grdItems.7f35cbde-8581-4097-b104-a439484edf50.ColumnHeading" xml:space="preserve">
+    <value>組態 ID</value>
+  </data>
+  <data name="grdItems.02ab118f-6124-43bf-81da-d3d1fa0e6080.ColumnHeading" xml:space="preserve">
+    <value>組態明細 ID</value>
+  </data>
+</root>

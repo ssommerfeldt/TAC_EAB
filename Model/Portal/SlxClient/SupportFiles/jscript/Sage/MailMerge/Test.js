@@ -1,4 +1,4 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
 /*  ------------------------------------------------------------------------
 Saleslogix Mail Merge
 Copyright © 1997-2013, SalesLogix, N.A., LLC. All rights reserved. 

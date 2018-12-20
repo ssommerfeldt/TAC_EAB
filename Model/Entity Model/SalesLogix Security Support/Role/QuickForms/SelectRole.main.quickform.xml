@@ -20,9 +20,9 @@ Type targetEntityType = DialogService.DialogParameters["targetEntityType"] as Ty
 Label headerLabel = this.FindControl("lblHeader") as Label;
 string entityName = targetEntityType.Name.StartsWith("I") ? targetEntityType.Name.Substring(1) : targetEntityType.Name;
 if(entityName.Contains("User")) 
-	entityName="user";
+	entityName=GetLocalResourceObject("lblUser").ToString();
 else
-	entityName="secured action";
+	entityName=GetLocalResourceObject("lblSecuredAction").ToString();
 
 headerLabel.Text = string.Format(GetLocalResourceObject("lblHeader.Text").ToString(), ids.Count, entityName);
 
@@ -162,7 +162,10 @@ btnOk.Enabled = this.lueRole.LookupResultValue != null;</CSharpCodeSnippet>
                 <StyleScheme>slxbutton</StyleScheme>
                 <ButtonType>StandardButton</ButtonType>
                 <Image />
-                <OnClientClick />
+                <OnClientClick>var svc = Sage.Services.getService('RoleSecurityService');
+            if (svc) {
+                svc.clearCache();
+            }</OnClientClick>
                 <OnClickAction>
                   <ResourceKey>btnOk</ResourceKey>
                   <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">

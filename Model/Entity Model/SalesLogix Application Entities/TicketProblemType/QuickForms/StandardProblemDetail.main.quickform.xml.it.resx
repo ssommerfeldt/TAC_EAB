@@ -117,37 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Salva</value>
+  <data name="Description.Caption" xml:space="preserve">
+    <value>Descrizione:</value>
+  </data>
+  <data name="dlueArea.Caption" xml:space="preserve">
+    <value>Descrizione</value>
   </data>
   <data name="Notes.Caption" xml:space="preserve">
     <value>Note:</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare questo Problema Standard?</value>
+  <data name="dlueArea.DependentLookups..PropertyDisplay" xml:space="preserve">
+    <value />
   </data>
-  <data name="Description.ToolTip" xml:space="preserve">
-    <value>Descrizione del problema standard</value>
-  </data>
-  <data name="dlueArea.DependentLookups.Issue.PropertyDisplay" xml:space="preserve">
-    <value>Problema:</value>
-  </data>
-  <data name="Description.Caption" xml:space="preserve">
-    <value>Descrizione:</value>
+  <data name="dlueArea.DependentLookups.Area.PropertyDisplay" xml:space="preserve">
+    <value>Area:</value>
   </data>
   <data name="dlueArea.DependentLookups.Category.PropertyDisplay" xml:space="preserve">
     <value>Categoria:</value>
   </data>
+  <data name="dlueArea.DependentLookups.Issue.PropertyDisplay" xml:space="preserve">
+    <value>Problema:</value>
+  </data>
+  <data name="btnDelete.ToolTip" xml:space="preserve">
+    <value>Rimuovi</value>
+  </data>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Eliminare questo problema standard?</value>
+  </data>
   <data name="dlueArea.ButtonToolTip" xml:space="preserve">
     <value>Trova</value>
   </data>
+  <data name="Description.ToolTip" xml:space="preserve">
+    <value>Descrizione per problema standard</value>
+  </data>
   <data name="Notes.ToolTip" xml:space="preserve">
-    <value>Note per il problema standard</value>
+    <value>Note per problema standard</value>
   </data>
-  <data name="btnDelete.ToolTip" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="dlueArea.Caption" xml:space="preserve">
-    <value>Descrizione</value>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Salva</value>
   </data>
 </root>

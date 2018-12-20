@@ -23,7 +23,6 @@
 Sage.Platform.Application.IContextService context = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Application.IContextService>(true);
 Sage.Platform.TimeZone tz = context["TimeZone"] as Sage.Platform.TimeZone;
 
-    
 string startDate = tz.UTCDateTimeToLocalTime(history.StartDate).Date.ToShortDateString();
 string createdate = tz.UTCDateTimeToLocalTime(history.CreateDate).Date.ToShortDateString();
 if (history.Timeless)
@@ -31,7 +30,7 @@ if (history.Timeless)
     startDate = history.StartDate.Date.ToShortDateString();
     createdate = history.CreateDate.Date.ToShortDateString();
 }
-           
+
 string userName = history.CreateUser;
 Sage.Entity.Interfaces.IUser createUser = Sage.Platform.EntityFactory.GetById<Sage.Entity.Interfaces.IUser>(history.CreateUser);
 if (createUser != null)
@@ -84,7 +83,7 @@ switch (history.Type)
         break;
 }
 
-lblUser.Text = GetLocalResourceObject("rsScheduledOn") + " " + createdate + " " + GetLocalResourceObject("rsBy") + " " + userName + " " + GetLocalResourceObject("rsOriginallyFor") + " " + startDate;
+lblUser.Text = String.Format(GetLocalResourceObject("rsScheduledOnBy") , createdate , userName , startDate);
 
 var userService = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Security.IUserService>(true);
 string currentUserId = userService.UserId;
@@ -111,7 +110,7 @@ else
     {
         allowEdit = parms["AllowEditHistory"] == "true";
     }
-    
+
     if (allowEdit)
     {
         CompletedDate.ReadOnly = false;
@@ -133,8 +132,8 @@ else
     TicketId.EnableLookup = allowEdit;
     LeadId.EnableLookup = allowEdit;
     Company.Enabled = allowEdit;
-    
-if (history.LeadId == null || history.LeadId.Trim() == "") 
+
+if (string.IsNullOrWhiteSpace(history.LeadId))
 {
 	LeadId.Visible = false;
     LeadId_lbl.Visible = false;
@@ -156,10 +155,10 @@ else
 Sage.Platform.Application.Services.IUserOptionsService userOption = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Application.Services.IUserOptionsService>();
 
 string carryOverNotes = userOption.GetCommonOption("CarryOverNotes", "ActivityAlarm");
-CarryOverNotes.Checked = string.IsNullOrEmpty(carryOverNotes) ? true : (carryOverNotes == "Yes");
+CarryOverNotes.Checked = string.IsNullOrEmpty(carryOverNotes) || carryOverNotes == "Yes";
 
 string carryOverAttachments = userOption.GetCommonOption("CarryOverAttachments", "ActivityAlarm");
-CarryOverAttachments.Checked = string.IsNullOrEmpty(carryOverAttachments) ? true : (carryOverAttachments == "T");
+CarryOverAttachments.Checked = string.IsNullOrEmpty(carryOverAttachments) || carryOverAttachments == "T";
 
 Sage.Entity.Interfaces.IAttachment attachment;
 bool bEnableCmd = Sage.SalesLogix.Attachment.Rules.HistoryHasEmailMsgAttachment(EntityContext.EntityID.ToString(), out attachment);
@@ -176,7 +175,7 @@ if (bEnableCmd)
 
 // Set Followup based on user options
 string defaultActivityValue = UserOptions.GetDefaultFollowUpActivityType();
-if(!string.IsNullOrEmpty(defaultActivityValue))    
+if (!string.IsNullOrEmpty(defaultActivityValue))
     FollowUpActivity.SelectedValue = defaultActivityValue;
 else
     FollowUpActivity.SelectedValue = "None";]]></CSharpCodeSnippet>
@@ -200,7 +199,7 @@ else
     }
     if (allowEdit)
     {
-        Sage.SalesLogix.Activity.History history = BindingSource.Current as Sage.SalesLogix.Activity.History; 
+        Sage.SalesLogix.Activity.History history = BindingSource.Current as Sage.SalesLogix.Activity.History;
         if (history != null)
             Duration.Enabled = !history.Timeless;
         Timeless.Enabled = true;

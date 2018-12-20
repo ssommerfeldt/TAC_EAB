@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/ActivityManagerTasklet", [
         'dijit/_Widget',
         'dijit/_Container',
         'Sage/_Templated',

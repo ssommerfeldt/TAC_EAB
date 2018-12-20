@@ -1,15 +1,19 @@
-define((
-{ titleText: 'Бейсик',
-  appearanceText: 'Вид',
-  behaviorText: 'Тип операции',
-  dataText: 'Данные',
-  captionText: 'Заголовок:',
-  captionTooltipText: 'Подпись для показа на форме для данного элемента управления.',
-  captionAlignmentText: 'Выравнивание заголовка:',
-  captionAlignmentTooltipText: 'Обоснование текста метки.',
-  pageSizeText: 'Размер страницы:',
-  pageSizeTooltipText: 'Количество строк таблицы для отображения на одной странице.',
-  resizableColumnsText: 'Изменение размера столбцов:',
-  resizableColumnsTooltipText: 'Позволяет пользователю изменять размер столбцов.',
-  alignmentText: { left: 'Слева', center: 'Центр', right: 'Право' } }
-));
+define("Sage/QuickForms/Design/Editors/nls/ru/DataGridBasicPropertyEditor", {
+    "titleText": "Базовый",
+    "appearanceText": "Внешний вид",
+    "behaviorText": "Поведение",
+    "dataText": "Данные",
+    "captionText": "Надпись:",
+    "captionTooltipText": "Подпись для отображения в форме для этого элемента управления.",
+    "captionAlignmentText": "Выравнивание надписи:",
+    "captionAlignmentTooltipText": "Выравнивание текста метки.",
+    "pageSizeText": "Размер страницы:",
+    "pageSizeTooltipText": "Количество строк таблицы для отображения на одной странице.",
+    "resizableColumnsText": "Изменение размера столбцов:",
+    "resizableColumnsTooltipText": "Позволяет пользователю изменять размер столбцов.",
+    "alignmentText": {
+        "left": "По левому краю",
+        "center": "По центру",
+        "right": "По правому краю"
+    }
+});

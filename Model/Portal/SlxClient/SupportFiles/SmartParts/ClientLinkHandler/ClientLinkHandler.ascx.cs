@@ -12,6 +12,8 @@ using Sage.SalesLogix.Client.GroupBuilder;
 using Sage.SalesLogix.SelectionService;
 using Sage.SalesLogix.Web.Controls;
 using Sage.SalesLogix.Web.SelectionService;
+using System.ComponentModel;
+using Sage.Platform.WebPortal.Workspaces;
 
 public partial class SmartParts_ClientLinkHandler_ClientLinkHandler : UserControl
 {
@@ -87,7 +89,7 @@ public partial class SmartParts_ClientLinkHandler_ClientLinkHandler : UserContro
         string type = GetValue(jso, "type");
         string id = GetValue(jso, "id");
         string selectionInfoKey = GetValue(jso, "selectionInfoKey");
-        string recurDate = String.Empty;
+        string recurDate = string.Empty;
         Dictionary<string, string> args = GetArgs(jso);
 
         switch (request)
@@ -106,16 +108,30 @@ public partial class SmartParts_ClientLinkHandler_ClientLinkHandler : UserContro
                 break;
             case "ShowDialog":
                 //dialog properties
-                String smartPart = GetValue(jso, "smartPart");
-                String entityId = GetValue(jso, "entityId");
-                String title = GetValue(jso, "dialogTitle");
+                string smartPart = GetValue(jso, "smartPart");
+                string entityId = GetValue(jso, "entityId");
+                string title = GetValue(jso, "dialogTitle");
                 bool isCentered = Convert.ToBoolean(GetValue(jso, "isCentered"));
                 int top = Convert.ToInt16(GetValue(jso, "dialogTop"));
                 int left = Convert.ToInt16(GetValue(jso, "dialogLeft"));
                 int height = Convert.ToInt16(GetValue(jso, "dialogHeight"));
-                int width = Convert.ToInt16(GetValue(jso, "dialogWidth"));                
-                
-                Link.ShowDialog(type, smartPart, entityId, title, isCentered, top, left, height, width);
+                int width = Convert.ToInt16(GetValue(jso, "dialogWidth"));
+                var dialogParam = new Dictionary<string, string>();
+                if (GetValue(jso, "dialogParameters") != null)
+                {
+                    var dialogParameters = JsonConvert.DeserializeObject<DialogParameterOption>(GetValue(jso, "dialogParameters"));
+                    dialogParam.Add(dialogParameters.Key, dialogParameters.Value);
+                }
+                var childInfo = new ChildInsertInformation();
+                if (GetValue(jso, "childInsertInfo") != null)
+                {
+                    var childInsertInfo = JsonConvert.DeserializeObject<ChildInsertInfo>(GetValue(jso, "childInsertInfo"));
+                    childInfo.ChildEntityType = childInsertInfo.ChildType;
+                    childInfo.ParentEntityType = childInsertInfo.ParentType;
+                    childInfo.ParentReferenceProperty = childInsertInfo.ChildType.GetProperty(childInsertInfo.ChildRelationshipProperty);
+                    childInfo.ParentsCollectionProperty = childInsertInfo.ParentType.GetProperty(childInsertInfo.ParentRelationshipProperty);
+                }
+                Link.ShowDialog(type, smartPart, entityId, title, isCentered, top, left, height, width, dialogParam, childInfo);
                 break;
             case "Administration":
                 if(type == "AddUsers")
@@ -237,5 +253,35 @@ require(['dojo/ready', 'dojo/_base/lang'], function (ready, lang) {{
         }});
     }});
 }});", _state.ClientID);
+    }
+
+    private class ChildInsertInfo
+    {
+        [JsonProperty("childType")]
+        [DefaultValue("")]
+        public Type ChildType { get; set; }
+
+        [JsonProperty("childRelationshipProperty")]
+        [DefaultValue("")]
+        public string ChildRelationshipProperty { get; set; }
+
+        [JsonProperty("parentType")]
+        [DefaultValue("")]
+        public Type ParentType { get; set; }
+
+        [JsonProperty("parentRelationshipProperty")]
+        [DefaultValue("")]
+        public string ParentRelationshipProperty { get; set; }
+    }
+
+    private class DialogParameterOption
+    {
+        [JsonProperty("Key")]
+        [DefaultValue("")]
+        public string Key { get; set; }
+
+        [JsonProperty("Value")]
+        [DefaultValue("")]
+        public string Value { get; set; }
     }
 }

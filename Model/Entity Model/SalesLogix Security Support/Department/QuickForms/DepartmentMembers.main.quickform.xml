@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a4c032a5-4868-425f-89e5-e168469841ae" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="a4c032a5-4868-425f-89e5-e168469841ae" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2015-12-29T13:58:59.4771436Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions />
@@ -151,7 +151,7 @@
             <OnClick>function () {
          // Invoke the RemoveMember business rule for each team selected
          var grid = this;
-         var selectedItems = grid.selection.getSelected();
+         var selectedItems = grid.getSelectedRowData();
          if (selectedItems.length &lt; 1) {
              alert(grid.noSelectionsText);
              return;
@@ -159,13 +159,12 @@
          if (!confirm(DepartmentMembersResources['ConfirmRemoveFromDepartment']))
              return;
          var store = grid.store;
-         grid.showLoading();
          var service = Sage.Data.SDataServiceRegistry.getSDataService('dynamic');
          var processOne = function (i) {
              var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
 	            .setResourceKind('departments')
 	            .setOperationName('RemoveMember');
-             var id = store.getValue(selectedItems[i], "$key");
+             var id = selectedItems[i].$key;
              var entry = {
                  "$name": "RemoveMember",
                  "request": {

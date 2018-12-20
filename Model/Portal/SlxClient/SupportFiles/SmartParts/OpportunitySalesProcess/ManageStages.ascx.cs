@@ -1,18 +1,20 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Text;
-using System.Collections.Generic;
 using Sage.Entity.Interfaces;
-using Sage.SalesLogix.Web.Controls;
+using Sage.Platform;
+using Sage.Platform.Application.UI;
 using Sage.Platform.WebPortal.Services;
 using Sage.Platform.WebPortal.SmartParts;
-using Sage.Platform;
+using Sage.SalesLogix.SalesProcess;
+using Sage.SalesLogix.Web.Controls;
 
 public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBoundSmartPartInfoProvider
 {
-    private ISalesProcesses _salesProcess = null;
-   
+    private ISalesProcesses _salesProcess;
+
     /// <summary>
     /// Called when [add entity bindings].
     /// </summary>
@@ -24,7 +26,7 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
     /// Gets the type of the entity.
     /// </summary>
     /// <value>The type of the entity.</value>
-     public override Type EntityType
+    public override Type EntityType
     {
         get { return typeof(IOpportunity); }
     }
@@ -38,13 +40,6 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
         LoadView();
     }
 
-    /// <summary>
-    /// Called when [wire event handlers].
-    /// </summary>
-    protected override void OnWireEventHandlers()
-    {
-        base.OnWireEventHandlers();
-    }
     /// <summary>
     /// Called when [register client scripts].
     /// </summary>
@@ -77,7 +72,9 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
         }
         else
         {
-            script.Append("dojo.ready(function() { Sage.UI.Forms.ManageStages.init(); });");
+            script.Append("require(['dojo/ready'], function(ready) {" +
+                          "ready(function() { Sage.UI.Forms.ManageStages.init(); });" +
+                          "});");
         }
         ScriptManager.RegisterStartupScript(this, GetType(), "initialize_ManageStages", script.ToString(), true);
     }
@@ -87,7 +84,7 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
     /// </summary>
     /// <param name="smartPartInfoType">Type of the smart part info.</param>
     /// <returns></returns>
-    public override Sage.Platform.Application.UI.ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
+    public override ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
         ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
         if (GetLocalResourceObject("Title") != null)
@@ -138,28 +135,36 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
     /// <param name="opportunityId">The opportunity id.</param>
     private void LoadSalesProcess(string opportunityId)
     {
-        IOpportunity opp = EntityFactory.GetRepository<IOpportunity>().FindFirstByProperty("Id", opportunityId);
-        if( opp != null)
+        IOpportunity opp = EntityFactory.GetById<IOpportunity>(opportunityId);
+        if (opp != null)
         {
             txtOpportunity.Text = opp.Description;
         }
 
-        ISalesProcesses salesProcess = Sage.SalesLogix.SalesProcess.Helpers.GetSalesProcess(opportunityId);
+        ISalesProcesses salesProcess = Helpers.GetSalesProcess(opportunityId);
         _salesProcess = salesProcess;
         if (salesProcess != null)
         {
             txtSalesProcess.Text = salesProcess.Name;
             LoadSnapShot(salesProcess);
             IList<ISalesProcessAudit> list = salesProcess.GetSalesProcessAudits();
+            var filteredList = new List<ISalesProcessAudit>();
+            foreach (var spAudit in list)
+            {
+                if (!(spAudit.ProcessType == "HEADER" ||
+                      spAudit.ProcessType == "FOOTER" ||
+                      spAudit.ProcessType == "STEP"))
+                    filteredList.Add(spAudit);
+            }
+            grdStages.DataSource = filteredList;
+            grdStages.DataBind();
+        }
+        else
+        {
+            List<ISalesProcessAudit> list = new List<ISalesProcessAudit>();
             grdStages.DataSource = list;
             grdStages.DataBind();
         }
-        else 
-        {
-            List<ISalesProcessAudit> list = new List<ISalesProcessAudit>(); 
-            grdStages.DataSource = list;
-            grdStages.DataBind();
-        }             
     }
 
     /// <summary>
@@ -174,7 +179,7 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
             {
                 if (spAudit.IsCurrent == true)
                 {
-                    SetSnapShot(spAudit);   
+                    SetSnapShot(spAudit);
                 }
             }
         }
@@ -189,10 +194,10 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
         if (stage != null)
         {
             valueCurrnetStage.Text = stage.StageName;
-            valueProbabilty.Text = stage.Probability.ToString() + "%";
-            valueDaysInStage.Text = Convert.ToString(this._salesProcess.DaysInStage(stage.Id.ToString()));
-            valueEstDays.Text = Convert.ToString(this._salesProcess.EstimatedDaysToClose());
-            dtpEstClose.DateTimeValue = (DateTime)this._salesProcess.EstimatedCloseDate();
+            valueProbabilty.Text = stage.Probability + "%";
+            valueDaysInStage.Text = Convert.ToString(_salesProcess.DaysInStage(stage.Id.ToString()));
+            valueEstDays.Text = Convert.ToString(_salesProcess.EstimatedDaysToClose());
+            dtpEstClose.DateTimeValue = _salesProcess.EstimatedCloseDate();
         }
         else
         {
@@ -215,32 +220,32 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             ISalesProcessAudit spAudit = (ISalesProcessAudit)e.Row.DataItem;
-            if ((spAudit.ProcessType == "HEADER") || (spAudit.ProcessType == "FOOTER")||(spAudit.ProcessType == "STEP"))
+            if (spAudit.ProcessType == "HEADER" || spAudit.ProcessType == "FOOTER" || spAudit.ProcessType == "STEP")
             {
                 e.Row.Cells.Clear();
                 return;
             }
             if (spAudit.ProcessType == "STAGE")
             {
-                CheckBox chkStageComplete = ((CheckBox)e.Row.FindControl("chkStageComplete"));
+                CheckBox chkStageComplete = (CheckBox)e.Row.FindControl("chkStageComplete");
                 if (chkStageComplete != null)
                 {
-                    chkStageComplete.Attributes.Add("onClick", string.Format("return Sage.UI.Forms.ManageStages.onCompleteStage('{0}','{1}','{2}');", cmdCompleteStage.ClientID, stageContext.ClientID, spAudit.Id.ToString() + ":" + spAudit.Completed));
+                    chkStageComplete.Attributes.Add("onClick", string.Format("return Sage.UI.Forms.ManageStages.onCompleteStage('{0}','{1}','{2}');", cmdCompleteStage.ClientID, stageContext.ClientID, spAudit.Id + ":" + spAudit.Completed));
                     chkStageComplete.Checked = (spAudit.Completed == true);
                 }
 
-                CheckBox chkStageCurrnet = ((CheckBox)e.Row.FindControl("chkStageCurrent"));
+                CheckBox chkStageCurrnet = (CheckBox)e.Row.FindControl("chkStageCurrent");
                 if (chkStageCurrnet != null)
                 {
-                    chkStageCurrnet.Attributes.Add("onClick", string.Format("return Sage.UI.Forms.ManageStages.onSetCurrent('{0}','{1}','{2}');", cmdSetCurrent.ClientID, currentContext.ClientID, spAudit.Id.ToString() + ":" + spAudit.IsCurrent));
+                    chkStageCurrnet.Attributes.Add("onClick", string.Format("return Sage.UI.Forms.ManageStages.onSetCurrent('{0}','{1}','{2}');", cmdSetCurrent.ClientID, currentContext.ClientID, spAudit.Id + ":" + spAudit.IsCurrent));
                     chkStageCurrnet.Checked = (spAudit.IsCurrent == true);
                     chkStageCurrnet.Enabled = (spAudit.IsCurrent != true);
-                }           
+                }
 
                 DateTimePicker dtpStartDate = (DateTimePicker)e.Row.FindControl("dtpStartDate");
                 if (dtpStartDate != null)
                 {
-                    dtpStartDate.SetClientSideChangeHandler(string.Format("Sage.UI.Forms.ManageStages.onStartStageWithDate(this,'{0}','{1}','{2}');", cmdStartDate.ClientID, startDateContext.ClientID, spAudit.Id.ToString()));
+                    dtpStartDate.SetClientSideChangeHandler(string.Format("Sage.UI.Forms.ManageStages.onStartStageWithDate(this,'{0}','{1}','{2}');", cmdStartDate.ClientID, startDateContext.ClientID, spAudit.Id));
                     if (spAudit.StartDate != null)
                     {
                         dtpStartDate.DateTimeValue = (DateTime)spAudit.StartDate;
@@ -254,7 +259,7 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
                 DateTimePicker dtpCompletedDate = (DateTimePicker)e.Row.FindControl("dtpCompleteDate");
                 if (dtpCompletedDate != null)
                 {
-                    dtpCompletedDate.SetClientSideChangeHandler(string.Format("Sage.UI.Forms.ManageStages.onCompleteStageWithDate(this,'{0}','{1}','{2}');", cmdCompleteDate.ClientID, completeDateContext.ClientID, spAudit.Id.ToString()));
+                    dtpCompletedDate.SetClientSideChangeHandler(string.Format("Sage.UI.Forms.ManageStages.onCompleteStageWithDate(this,'{0}','{1}','{2}');", cmdCompleteDate.ClientID, completeDateContext.ClientID, spAudit.Id));
                     if (spAudit.CompletedDate != null)
                     {
                         dtpCompletedDate.DateTimeValue = (DateTime)spAudit.CompletedDate;
@@ -276,9 +281,9 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void cmdCompleteStage_OnClick(object sender, EventArgs e)
     {
-        string[] args = stageContext.Value.Split(new Char[] { ':' });
+        string[] args = stageContext.Value.Split(':');
         string spaid = args[0];
-        ISalesProcesses salesProcess = Sage.SalesLogix.SalesProcess.Helpers.GetSalesProcess(EntityContext.EntityID.ToString());
+        ISalesProcesses salesProcess = Helpers.GetSalesProcess(EntityContext.EntityID.ToString());
         if (args[1] == "False")
         {
             string result = salesProcess.CanCompleteStage(spaid);
@@ -309,9 +314,9 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void cmdSetCurrent_OnClick(object sender, EventArgs e)
     {
-        string[] args = currentContext.Value.Split(new Char[] { ':' });
+        string[] args = currentContext.Value.Split(':');
         string spaid = args[0];
-        ISalesProcesses salesProcess = Sage.SalesLogix.SalesProcess.Helpers.GetSalesProcess(EntityContext.EntityID.ToString());
+        ISalesProcesses salesProcess = Helpers.GetSalesProcess(EntityContext.EntityID.ToString());
         if (args[1] == "False")
         {
             string result = salesProcess.CanMoveToStage(spaid);
@@ -337,10 +342,10 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void cmdCompleteDate_OnClick(object sender, EventArgs e)
     {
-        string[] args = completeDateContext.Value.Split(new Char[] { ':' });
+        string[] args = completeDateContext.Value.Split(':');
         string spaid = args[0];
         DateTime completeDate = ResolveDateTime(args[1]);
-        ISalesProcesses salesProcess = Sage.SalesLogix.SalesProcess.Helpers.GetSalesProcess(EntityContext.EntityID.ToString());
+        ISalesProcesses salesProcess = Helpers.GetSalesProcess(EntityContext.EntityID.ToString());
         string result = salesProcess.CanCompleteStage(spaid);
         if (result == string.Empty)
         {
@@ -363,10 +368,10 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void cmdStartDate_OnClick(object sender, EventArgs e)
     {
-        string[] args = startDateContext.Value.Split(new Char[] { ':' });
+        string[] args = startDateContext.Value.Split(':');
         string spaid = args[0];
         DateTime startDate = ResolveDateTime(args[1]);
-        ISalesProcesses salesProcess = Sage.SalesLogix.SalesProcess.Helpers.GetSalesProcess(EntityContext.EntityID.ToString());
+        ISalesProcesses salesProcess = Helpers.GetSalesProcess(EntityContext.EntityID.ToString());
         salesProcess.StartStage(spaid, startDate);
         salesProcess.Save();
     }
@@ -416,15 +421,4 @@ public partial class SmartParts_OpportunitySalesProcess_ManageStages : EntityBou
         }
         return result;
     }
-    //public IEnumerable<ScriptDescriptor> GetScriptDescriptors()
-    //{
-    //    yield break;
-    //}
-    //public IEnumerable<ScriptReference> GetScriptReferences()
-    //{
-    //    List<ScriptReference> refs = new List<ScriptReference>();
-    //    ScriptReference javRef = new ScriptReference("~/SmartParts/OpportunitySalesProcess/ManageStages_ClientScript.js");
-    //    //refs.Add(javRef);
-    //    return refs;
-    //}
 }

@@ -41,12 +41,12 @@ namespace Sage.BusinessRules.CodeSnippets
         /// </summary>
         /// <param name="form">The form.</param>
         /// <param name="args">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        public static void cmdOK_OnClick(IEditOpportunityContact form,  EventArgs args)
+        public static void cmdOK_OnClick(IEditOpportunityContact form, EventArgs args)
         {
             IOpportunityContact newOppContact = form.CurrentEntity as IOpportunityContact;
-			foreach(IOpportunityContact oppContact in newOppContact.Opportunity.Contacts)
+			foreach (IOpportunityContact oppContact in newOppContact.Opportunity.Contacts)
 			{
-				if(!newOppContact.Equals(oppContact))
+				if (!newOppContact.Equals(oppContact))
 				{
                     if (newOppContact.IsPrimary.HasValue && newOppContact.IsPrimary.Value)
                     {

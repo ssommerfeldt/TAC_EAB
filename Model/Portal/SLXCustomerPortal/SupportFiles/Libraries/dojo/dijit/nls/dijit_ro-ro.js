@@ -1,0 +1,11 @@
+define('dijit/nls/dijit_ro-ro',{
+'dijit/nls/loading':{"loadingState":"Încărcare...","errorState":"Ne pare rău, a apărut o eroare ","_localized":{}}
+,
+'dijit/nls/common':{"buttonOk":"OK","buttonCancel":"Anulare","buttonSave":"Salvare","itemClose":"Închidere","_localized":{}}
+,
+'dijit/_editor/nls/commands':{"bold":"Aldin","copy":"Copiere","cut":"Tăiere","delete":"Ştergere","indent":"Micşorare indent","insertHorizontalRule":"Linie delimitatoare","insertOrderedList":"Listă numerotată","insertUnorderedList":"Listă cu marcator","italic":"Cursiv","justifyCenter":"Aliniere centru","justifyFull":"Aliniere stânga-dreapta","justifyLeft":"Aliniere stânga","justifyRight":"Aliniere dreapta","outdent":"Mărire indent","paste":"Lipire","redo":"Refacere acţiune","removeFormat":"Înlăturare format","selectAll":"Selectează tot","strikethrough":"Tăiere text cu o linie","subscript":"Scriere indice inferior","superscript":"Scriere indice superior","underline":"Subliniere","undo":"Anulare acţiune","unlink":"Înlăturare legătură","createLink":"Creare legătură","toggleDir":"Comutare direcţie","insertImage":"Inserare imagine","insertTable":"Inserare/Editare tabelă","toggleTableBorder":"Comutare bordură tabelă","deleteTable":"Ştergere tabelă","tableProp":"Proprietate tabelă","htmlToggle":"Sursă HTML","foreColor":"Culoare de prim-plan","hiliteColor":"Culoare de fundal","plainFormatBlock":"Stil paragraf","formatBlock":"Stil paragraf","fontSize":"Dimensiune font","fontName":"Nume font","tabIndent":"Indentare Tab","fullScreen":"Comutare ecran complet","viewSource":"Vizualizara sursă HTML","print":"Tipărire","newPage":"Pagină nouă","systemShortcut":"Acţiunea \"${0}\" este disponibilă în browser doar utilizând o comandă rapidă de la tastatură. Utilizaţi ${1}.","ctrlKey":"ctrl+${0}","appleKey":"⌘${0}","_localized":{}}
+,
+'dijit/form/nls/validate':{"invalidMessage":"Valoarea introdusă nu este validă.","missingMessage":"Această valoare este necesară.","rangeMessage":"Această valoare este în afara intervalului. ","_localized":{}}
+,
+'dijit/form/nls/ComboBox':{"previousMessage":"Alegeri anterioare","nextMessage":"Mai multe alegeri","_localized":{}}
+});

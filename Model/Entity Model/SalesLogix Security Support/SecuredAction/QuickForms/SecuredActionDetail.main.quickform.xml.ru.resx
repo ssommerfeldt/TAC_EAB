@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtSecuredAction.ToolTip" xml:space="preserve">
-    <value>Путь к действию по безопасности.</value>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Вы действительно хотите удалить это действие безопасности? Вы должны удалить все ссылки на удаляемое действие из Архитектора приложений или элементы безопасности будут недоступны никому, кроме администратора.</value>
+  <data name="btnInsertSave.ToolTip" xml:space="preserve">
+    <value>Сохранить и создать</value>
   </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Удалить</value>
@@ -129,13 +129,13 @@
   <data name="txtDescription.Caption" xml:space="preserve">
     <value>Описание:</value>
   </data>
+  <data name="txtSecuredAction.ToolTip" xml:space="preserve">
+    <value>Путь к защищенному действию.</value>
+  </data>
   <data name="txtSecuredAction.Caption" xml:space="preserve">
     <value>Имя:</value>
   </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="btnInsertSave.ToolTip" xml:space="preserve">
-    <value>Сохрнить&amp;Новый</value>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Действительно удалить это защищенное действие? Необходимо удалить все ссылки на удаляемое защищенное действие из AppArchitect или элементы безопасности будут недоступны никому, кроме администратора.</value>
   </data>
 </root>

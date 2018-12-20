@@ -1,18 +1,22 @@
-﻿using System;
+using System;
 using System.Globalization;
+using System.Linq;
 using System.Web.UI;
 using Sage.Entity.Interfaces;
-using Sage.Platform.EntityBinding;
-using Sage.Platform.SData;
 using Sage.Platform.WebPortal;
 using Sage.Platform.WebPortal.Binding;
 using Sage.Platform.WebPortal.Services;
 using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.BusinessRules;
-using Sage.SalesLogix.Entities;
 using Sage.Platform.Application;
 using Sage.Platform;
+using Sage.SalesLogix.Services;
 using TimeZone=Sage.Platform.TimeZone;
+using System.Collections.Generic;
+using Sage.Common.Syndication.Json;
+using NHibernate;
+using NHibernate.Linq;
+using Sage.Platform.Orm;
 
 public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
 {
@@ -30,23 +34,26 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
     /// </summary>
     protected override void OnAddEntityBindings()
     {
-        BindingSource.Bindings.Add(new WebEntityBinding("CurrencyCode", lueCurrencyCode, "LookupResultValue"));
+        BindingSource.Bindings.Add(new WebEntityBinding("OrderTotal", curBaseSubTotal, "Text"));
+        BindingSource.Bindings.Add(new WebEntityBinding("DocOrderTotal", curSubTotal, "Text"));
+        BindingSource.Bindings.Add(new WebEntityBinding("OrderTotal", curMySubTotal, "Text"));
+        BindingSource.Bindings.Add(new WebEntityBinding("Freight", curBaseShipping, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("Freight", curShipping, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("Freight", curMyShipping, "Text"));
-        BindingSource.Bindings.Add(new WebEntityBinding("Freight", curBaseShipping, "Text"));
-        BindingSource.Bindings.Add(new WebEntityBinding("OrderTotal", curSubTotal, "Text"));
-        BindingSource.Bindings.Add(new WebEntityBinding("OrderTotal", curMySubTotal, "Text"));
+        BindingSource.Bindings.Add(new WebEntityBinding("GrandTotal", curBaseTotal, "Text"));
+        BindingSource.Bindings.Add(new WebEntityBinding("DocGrandTotal", curTotal, "Text"));
+        BindingSource.Bindings.Add(new WebEntityBinding("GrandTotal", curMyTotal, "Text"));
         BindingSource.Bindings.Add(new WebEntityBinding("ExchangeRate", numExchangeRateValue, "Text"));
-        BindingSource.Bindings.Add(new WebEntityBinding("ExchangeRateDate", dtpExchangeRateDate, "DateTimeValue", String.Empty, null));
+        BindingSource.Bindings.Add(new WebEntityBinding("ExchangeRateDate", dtpExchangeRateDate, "DateTimeValue", string.Empty, null));
 
-        ClientContextService clientcontext = PageWorkItem.Services.Get<ClientContextService>();
+        var clientcontext = PageWorkItem.Services.Get<ClientContextService>();
         if (clientcontext != null)
         {
             if (clientcontext.CurrentContext.ContainsKey(EntityPage.CONST_PREVIOUSENTITYIDKEY))
             {
-                foreach (IEntityBinding binding in BindingSource.Bindings)
+                foreach (var binding in BindingSource.Bindings)
                 {
-                    WebEntityBinding pBinding = binding as WebEntityBinding;
+                    var pBinding = binding as WebEntityBinding;
                     if (pBinding != null)
                         pBinding.IgnoreControlChanges = true;
                 }
@@ -59,110 +66,86 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
     /// </summary>
     private void SetDisplayValues()
     {
-        ISalesOrder salesOrder = (ISalesOrder) BindingSource.Current;
+        var salesOrder = (ISalesOrder) BindingSource.Current;
         if (salesOrder != null)
         {
-            IAppIdMappingService mappingService = ApplicationContext.Current.Services.Get<IAppIdMappingService>(true);
-            bool closed = (ReferenceEquals(salesOrder.Status.ToUpper(), GetLocalResourceObject("SalesOrderStatus_Closed")) ||
-                salesOrder.Status.ToUpper() == "Closed" ||
-                ReferenceEquals(salesOrder.Status.ToUpper(), GetLocalResourceObject("SalesOrderStatus_Transmitted")) ||
-                salesOrder.Status.ToUpper() == "Transmitted to Accounting");
-            //if this is a Sales Order that synced from the accounting system or the Sales Order has been submitted then we disable it
-            bool isOpen = false;
-            if (!String.IsNullOrEmpty(salesOrder.ERPSalesOrder.ERPStatus))
-            {
-                isOpen =
-                    (ReferenceEquals(salesOrder.ERPSalesOrder.ERPStatus, GetLocalResourceObject("ERPStatus_Open")) ||
-                    salesOrder.ERPSalesOrder.ERPStatus == "Open" ||
-                    ReferenceEquals(salesOrder.ERPSalesOrder.ERPStatus, GetLocalResourceObject("ERPStatus_Rejected")) ||
-                    salesOrder.ERPSalesOrder.ERPStatus == "Rejected");
-            }
-            bool erpSalesOrder = (mappingService.IsIntegrationEnabled() && (salesOrder.GlobalSyncId.HasValue && !isOpen));
+            SetControlsDisplay(salesOrder);
+            bool closed = salesOrder.IsClosed();
+            lnkDiscount.Enabled = !closed;
+            lnkShipping.Enabled = !closed;
+            lnkTaxRate.Enabled = !closed;
+            lueCurrencyCode.Enabled = !closed;
 
-            if (mappingService.IsIntegrationEnabled())
-            {
-                lnkEmail.Visible = erpSalesOrder;
-            }
-            
-            lnkDiscount.Enabled = !closed && !erpSalesOrder;
-            lnkShipping.Enabled = !closed && !erpSalesOrder;
-            lnkTaxRate.Enabled = !closed && !erpSalesOrder;
-            lueCurrencyCode.Enabled = !closed && !erpSalesOrder;
-
-            double subTotal = salesOrder.OrderTotal ?? 0;
             double taxRate = salesOrder.Tax ?? 0;
             double tax = Sage.SalesLogix.SalesOrder.SalesOrder.GetSalesOrderTaxAmount(salesOrder);
             double discount = salesOrder.Discount ?? 0;
-            double grandTotal = Sage.SalesLogix.SalesOrder.SalesOrder.GetSalesOrderGrandTotal(salesOrder);
-
-            if (BusinessRuleHelper.IsMultiCurrencyEnabled())
-            {
-                UpdateMultiCurrencyExchangeRate(salesOrder, salesOrder.ExchangeRate.GetValueOrDefault(1));
-                SetControlsDisplay();
-            }
-            if (!salesOrder.OrderTotal.HasValue)
-            {
-                foreach (SalesOrderItem item in salesOrder.SalesOrderItems)
-                {
-                    if (item.Discount != null)
-                        subTotal += item.Price.Value*(int) item.Quantity.Value*(1 - item.Discount.Value);
-                    else
-                        subTotal += item.Price.Value;
-                }
-                if (subTotal > 0 && !salesOrder.OrderTotal.Equals(subTotal))
-                    salesOrder.OrderTotal = subTotal;
-            }
-            double discountAmount = subTotal*discount;
-
-            curBaseSubTotal.Text = Convert.ToString(subTotal);
+            curDiscount.Text = discount > 0 ? Convert.ToString((salesOrder.DocOrderTotal ?? 0) * discount) : "0";
+            curBaseDiscount.Text = discount > 0 ? Convert.ToString((salesOrder.OrderTotal ?? 0) * discount) : "0";
+            curMyDiscount.Text = discount > 0 ? Convert.ToString((salesOrder.OrderTotal ?? 0) * discount) : "0";
             curTax.Text = Convert.ToString(tax);
             curMyTax.Text = Convert.ToString(tax);
             curBaseTax.Text = Convert.ToString(tax);
-            curDiscount.Text = Convert.ToString(discountAmount);
-            curMyDiscount.Text = Convert.ToString(discountAmount);
-            curBaseDiscount.Text = Convert.ToString(discountAmount);
             lnkDiscount.Text = discount > 0
-                                   ? String.Format("{1} ({0:0.00%})", discount,
-                                                   GetLocalResourceObject("lnkDiscount.Caption"))
+                                   ? string.Format("{1} ({0}%)", (discount * 10000) / 100,
+                                        GetLocalResourceObject("lnkDiscount.Caption"))
                                    : GetLocalResourceObject("lnkDiscount.Caption").ToString();
             lnkTaxRate.Text = taxRate > 0
-                                  ? String.Format("{1} ({0:0.00%})", taxRate, GetLocalResourceObject("lnkTax.Caption"))
+                                  ? string.Format("{1} ({0}%)", (taxRate * 10000) / 100,
+                                        GetLocalResourceObject("lnkTax.Caption"))
                                   : GetLocalResourceObject("lnkTax.Caption").ToString();
-            curTotal.FormattedText = Convert.ToString(grandTotal);
-            curMyTotal.FormattedText = Convert.ToString(grandTotal);
-            curBaseTotal.Text = Convert.ToString(grandTotal);
         }
     }
 
     /// <summary>
     /// Sets the controls to be displayed based on whether multi-currency is enabled.
     /// </summary>
-    private void SetControlsDisplay()
+    private void SetControlsDisplay(ISalesOrder salesOrder)
     {
-        tblDetails.Border = 1;
-        tblDetails.Width = "100%";
-        rowDetailsHeader.Visible = true;
-        rowSOSubTotal.Visible = true;
-        rowMyCurSubTotal.Visible = true;
-        rowSODiscount.Visible = true;
-        rowMyCurDiscount.Visible = true;
-        rowSOShipping.Visible = true;
-        rowMyCurShipping.Visible = true;
-        rowSOTax.Visible = true;
-        rowMyCurTax.Visible = true;
-        rowSOTotal.Visible = true;
-        rowMyCurTotal.Visible = true;
-        tblMultiCurrency.Visible = true;
-        rowSubTotal.Style.Add(HtmlTextWriterStyle.PaddingRight, "0px");
+        if (BusinessRuleHelper.IsMultiCurrencyEnabled())
+        {
+            UpdateMultiCurrencyExchangeRate(salesOrder, salesOrder.ExchangeRate.GetValueOrDefault(1));
+            tblDetails.Border = 1;
+            tblDetails.Width = "100%";
+            rowDetailsHeader.Visible = true;
+            rowSOSubTotal.Visible = true;
+            rowMyCurSubTotal.Visible = true;
+            rowSODiscount.Visible = true;
+            rowMyCurDiscount.Visible = true;
+            rowSOShipping.Visible = true;
+            rowMyCurShipping.Visible = true;
+            rowSOTax.Visible = true;
+            rowMyCurTax.Visible = true;
+            rowSOTotal.Visible = true;
+            rowMyCurTotal.Visible = true;
+            rowSubTotal.Style.Add(HtmlTextWriterStyle.PaddingRight, "0px");
+        }
+        if (BusinessRuleHelper.IsBOEEnabled(typeof(ISalesOrder)) && !BusinessRuleHelper.IsLocalCRMPricingEnabled("SalesOrder"))
+        {
+            rowDiscount.Visible = false;
+            rowShipping.Visible = false;
+            rowTax.Visible = false;
+            tblMultiCurrency.Visible = string.IsNullOrEmpty(salesOrder.ErpExtId);
+            var pendingChanges = salesOrder.SyncStatus ==
+                                 Saleslogix.Integration.BOE.Common.Constants.SyncStatus.ChangesPending ||
+                                 salesOrder.SyncStatus == Saleslogix.Integration.BOE.Common.Constants.SyncStatus.OutOfSync;
+            lblSyncState.Visible = !string.IsNullOrEmpty(salesOrder.ErpExtId) && !pendingChanges;
+            lblSyncState.Text = string.Format(GetLocalResourceObject("lblSyncStateNoPendingChanges").ToString(), salesOrder.ErpLastModifiedDate);
+            lblPendingChanges.Visible = !string.IsNullOrEmpty(salesOrder.ErpExtId) && pendingChanges;
+            lblPendingChanges.Text = salesOrder.SyncStatus == Saleslogix.Integration.BOE.Common.Constants.SyncStatus.OutOfSync
+                ? GetLocalResourceObject("lblSyncStateError").ToString()
+                : string.Format(GetLocalResourceObject("lblSyncStatePendingChanges").ToString(), salesOrder.ErpLastModifiedDate);
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        ISalesOrder salesOrder = BindingSource.Current as ISalesOrder;
+        var salesOrder = BindingSource.Current as ISalesOrder;
         if (salesOrder != null)
         {
             if (BusinessRuleHelper.IsMultiCurrencyEnabled())
+            {
                 UpdateMultiCurrencyExchangeRate(salesOrder, salesOrder.ExchangeRate.GetValueOrDefault(1));
+            }
         }
     }
 
@@ -176,18 +159,25 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
             // register these with the ClientBindingMgr so they can do their thing without causing the dirty data warning message...
             ClientBindingMgr.RegisterBoundControl(lnkEmail);
         }
-        ISalesOrder salesOrder = BindingSource.Current as ISalesOrder;
+        var salesOrder = BindingSource.Current as ISalesOrder;
         if (salesOrder != null)
         {
+            if (BusinessRuleHelper.IsMultiCurrencyEnabled())
+            {
+                lueCurrencyCode.LookupResultValue =
+                    EntityFactory.GetRepository<IExchangeRate>()
+                        .FindFirstByProperty("CurrencyCode", salesOrder.CurrencyCode);
+            }
+			lueCurrencyCode.SeedValue = GetPeriodIdForCurrentDate();
             SetDisplayValues();
             double shipping = salesOrder.Freight ?? 0;
-            if (String.IsNullOrEmpty(curBaseShipping.FormattedText))
+            if (string.IsNullOrEmpty(curBaseShipping.FormattedText))
                 curBaseShipping.Text = Convert.ToString(shipping);
-            if (String.IsNullOrEmpty(curShipping.FormattedText))
+            if (string.IsNullOrEmpty(curShipping.FormattedText))
                 curShipping.Text = Convert.ToString(shipping);
-            if (String.IsNullOrEmpty(curMyShipping.FormattedText))
+            if (string.IsNullOrEmpty(curMyShipping.FormattedText))
                 curMyShipping.Text = Convert.ToString(shipping);
-            var systemInfo = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.SalesLogix.Services.ISystemOptionsService>(true);
+            var systemInfo = ApplicationContext.Current.Services.Get<ISystemOptionsService>(true);
             if (systemInfo.ChangeSalesOrderRate)
             {
                 divExchangeRateLabel.Visible = false;
@@ -197,9 +187,28 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
             {
                 divExchangeRateLabel.Visible = true;
                 divExchangeRateText.Visible = false;
-                lblExchangeRateValue.Text = numExchangeRateValue.Text;
+                if (!string.IsNullOrEmpty(numExchangeRateValue.Text))
+                {
+                    lblExchangeRateValue.Text = Math.Round(Convert.ToDecimal(numExchangeRateValue.Text), 4).ToString();
+                }
             }
         }
+    }
+	
+	public string GetPeriodIdForCurrentDate()
+    {
+        var periodId = string.Empty;
+        var currentdate = DateTime.UtcNow.Date;
+        using (ISession session = new SessionScopeWrapper())
+        {
+            var presentDatePeriod = session
+                    .Query<IPeriod>().ToList().Find(x => x.EffectiveFrom.Value.Date <= currentdate && x.ExpiresAfter.Value.Date >= currentdate);
+            if (presentDatePeriod != null)
+            {
+                periodId = presentDatePeriod.Id.ToString();
+            }
+        }
+        return periodId;
     }
 
     /// <summary>
@@ -211,8 +220,8 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
     {
         if (DialogService != null)
         {
-            ISalesOrder salesOrder = BindingSource.Current as ISalesOrder;
-            string caption = String.Format(GetLocalResourceObject("lblDetailsView.Caption").ToString(), salesOrder.SalesOrderNumber);
+            var salesOrder = BindingSource.Current as ISalesOrder;
+            string caption = string.Format(GetLocalResourceObject("lblDetailsView.Caption").ToString(), salesOrder.SalesOrderNumber);
             DialogService.SetSpecs(300, 450, 300, 410, "EditSalesOrderDetail", caption, true);
             DialogService.EntityID = salesOrder.Id.ToString();
             DialogService.ShowDialog();
@@ -226,17 +235,18 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void CurrencyCode_OnChange(object sender, EventArgs e)
     {
-        ISalesOrder salesOrder = BindingSource.Current as ISalesOrder;
+        var salesOrder = BindingSource.Current as ISalesOrder;
         if (salesOrder != null)
         {
-            IExchangeRate exchangeRate = EntityFactory.GetById<IExchangeRate>(lueCurrencyCode.LookupResultValue);
+            var exchangeRate = EntityFactory.GetById<IExchangeRate>(lueCurrencyCode.LookupResultValue);
             if (exchangeRate != null)
             {
-                Double rate = exchangeRate.Rate.GetValueOrDefault(1);
-                salesOrder.ExchangeRate = rate;
+                salesOrder.ExchangeRate = exchangeRate.Rate.GetValueOrDefault(1);
                 salesOrder.ExchangeRateDate = DateTime.UtcNow;
-                salesOrder.CurrencyCode = lueCurrencyCode.LookupResultValue.ToString();
-                UpdateMultiCurrencyExchangeRate(salesOrder, rate);
+                salesOrder.CurrencyCode = exchangeRate.CurrencyCode;
+                UpdateMultiCurrencyExchangeRate(salesOrder, exchangeRate.Rate.GetValueOrDefault(1));
+                Sage.SalesLogix.SalesOrder.SalesOrder.RefreshPricing(salesOrder);
+                RefreshWorkSpace();
             }
         }
     }
@@ -248,12 +258,14 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     protected void ExchangeRate_OnChange(object sender, EventArgs e)
     {
-        ISalesOrder salesOrder = BindingSource.Current as ISalesOrder;
+        var salesOrder = BindingSource.Current as ISalesOrder;
         if (salesOrder != null)
         {
-            salesOrder.ExchangeRate = Convert.ToDouble(String.IsNullOrEmpty(numExchangeRateValue.Text) ? "1" : numExchangeRateValue.Text);
+            salesOrder.ExchangeRate = Convert.ToDouble(string.IsNullOrEmpty(numExchangeRateValue.Text) ? "1" : numExchangeRateValue.Text);
             salesOrder.ExchangeRateDate = DateTime.UtcNow;
             UpdateMultiCurrencyExchangeRate(salesOrder, salesOrder.ExchangeRate.Value);
+            Sage.SalesLogix.SalesOrder.SalesOrder.RefreshPricing(salesOrder);
+            RefreshWorkSpace();
         }
     }
 
@@ -262,37 +274,30 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
     /// </summary>
     /// <param name="salesOrder">The sales order.</param>
     /// <param name="exchangeRate">The exchange rate.</param>
-    private void UpdateMultiCurrencyExchangeRate(ISalesOrder salesOrder, Double exchangeRate)
+    private void UpdateMultiCurrencyExchangeRate(ISalesOrder salesOrder, double exchangeRate)
     {
-        string myCurrencyCode = BusinessRuleHelper.GetMyCurrencyCode();
-        IExchangeRate myExchangeRate =
-            EntityFactory.GetById<IExchangeRate>(String.IsNullOrEmpty(myCurrencyCode) ? "USD" : myCurrencyCode);
-        double myRate = 0;
-        if (myExchangeRate != null)
-            myRate = myExchangeRate.Rate.GetValueOrDefault(1);
-        curDiscount.CurrentCode = salesOrder.CurrencyCode;
-        curDiscount.ExchangeRate = exchangeRate;
-        curMyDiscount.CurrentCode = myCurrencyCode;
-        curMyDiscount.ExchangeRate = myRate;
-        curSubTotal.CurrentCode = String.IsNullOrEmpty(lueCurrencyCode.LookupResultValue.ToString())
-                              ? salesOrder.CurrencyCode
-                              : lueCurrencyCode.LookupResultValue.ToString();
-        curTotal.CurrentCode = curSubTotal.CurrentCode;
-        curTotal.ExchangeRate = exchangeRate;
-        curMyTotal.CurrentCode = myCurrencyCode;
-        curMyTotal.ExchangeRate = myRate;
-        curSubTotal.CurrentCode = salesOrder.CurrencyCode;
-        curSubTotal.ExchangeRate = exchangeRate;
-        curMySubTotal.CurrentCode = myCurrencyCode;
-        curMySubTotal.ExchangeRate = myRate;
-        curTax.CurrentCode = salesOrder.CurrencyCode;
-        curTax.ExchangeRate = exchangeRate;
-        curMyTax.CurrentCode = myCurrencyCode;
-        curMyTax.ExchangeRate = myRate;
-        curShipping.CurrentCode = salesOrder.CurrencyCode;
+        var systemInfo = ApplicationContext.Current.Services.Get<ISystemOptionsService>(true);
+        string baseCode = "";
+        if (!string.IsNullOrEmpty(systemInfo.BaseCurrency))
+        {
+            baseCode = systemInfo.BaseCurrency;
+        }
+        var currencyCode = EntityFactory.GetById<IExchangeRate>(lueCurrencyCode.LookupResultValue);
+        string exhangeCode = currencyCode != null ? currencyCode.CurrencyCode : salesOrder.CurrencyCode;
+
+        curBaseSubTotal.CurrentCode = baseCode;
+        curBaseDiscount.CurrentCode = baseCode;
+        curBaseTotal.CurrentCode = baseCode;
+        curBaseTax.CurrentCode = baseCode;
+        curBaseShipping.CurrentCode = baseCode;
+
+        curSubTotal.CurrentCode = exhangeCode;
+        curDiscount.CurrentCode = exhangeCode;
+        curShipping.CurrentCode = exhangeCode;
         curShipping.ExchangeRate = exchangeRate;
-        curMyShipping.CurrentCode = myCurrencyCode;
-        curMyShipping.ExchangeRate = myRate;
+        curTax.CurrentCode = exhangeCode;
+        curTax.ExchangeRate = exchangeRate;
+        curTotal.CurrentCode = exhangeCode;
     }
 
     /// <summary>
@@ -304,39 +309,64 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
     {
         try
         {
-            ISalesOrder salesOrder = BindingSource.Current as ISalesOrder;
+            var salesOrder = BindingSource.Current as ISalesOrder;
             if (salesOrder != null)
             {
-                string emailTo = String.Empty;
-                string emailCC = String.Empty;
+                const string scriptFmtString = @"dojo.require('Sage.Utility.Email');Sage.Utility.Email.writeEmail('{0}', '{1}', '{2}');";
+                var to = new List<EmailTo>();
+                var cc = new EmailTo();
                 if (salesOrder.RequestedBy != null)
-                    if (!salesOrder.RequestedBy.Equals(salesOrder.ShippingContact) || !salesOrder.RequestedBy.Equals(salesOrder.BillingContact))
-                        emailCC = salesOrder.RequestedBy.Email;
+                {
+                    if (!Equals(salesOrder.RequestedBy, salesOrder.ShippingContact) &&
+                        !Equals(salesOrder.RequestedBy, salesOrder.BillingContact))
+                    {
+                        cc.firstName = salesOrder.RequestedBy.FirstName;
+                        cc.lastName = salesOrder.RequestedBy.LastName;
+                        cc.emailAddress = salesOrder.RequestedBy.Email;
+                    }
+                }
                 if (salesOrder.ShippingContact != null)
-                    emailTo = String.Format("{0};", salesOrder.ShippingContact.Email);
-                if (salesOrder.BillingContact != null && !salesOrder.BillingContact.Equals(salesOrder.ShippingContact))
-                    emailTo += salesOrder.BillingContact.Email;
+                {
+                    to.Add(new EmailTo(salesOrder.ShippingContact.FirstName, salesOrder.ShippingContact.LastName, salesOrder.ShippingContact.Email));
+                }
+                if (salesOrder.BillingContact != null && !Equals(salesOrder.BillingContact, salesOrder.ShippingContact))
+                {
+                    to.Add(new EmailTo(salesOrder.BillingContact.FirstName, salesOrder.BillingContact.LastName, salesOrder.BillingContact.Email));
+                }
+
+                var emailTo = new { to = to, cc = cc, bcc = string.Empty };
                 string subject = PortalUtil.JavaScriptEncode(
-                    String.Format(GetLocalResourceObject("lblEmailSubject.Caption").ToString(),
-                                  salesOrder.SalesOrderNumber, salesOrder.Account.AccountName)).Replace(
-                    Environment.NewLine, "%0A");
-                string emailBody = FormatEmailBody(salesOrder).Replace(Environment.NewLine, "%0A");
-                if (!String.IsNullOrEmpty(emailCC))
-                    ScriptManager.RegisterStartupScript(this, GetType(), "emailscript",
-                                                        string.Format(
-                                                            "<script type='text/javascript'>window.location.href='mailto:{0}?cc={1}&subject={2}&body={3}';</script>",
-                                                            emailTo, emailCC, subject, emailBody), false);
-                else
-                    ScriptManager.RegisterStartupScript(this, GetType(), "emailscript",
-                                                        string.Format(
-                                                            "<script type='text/javascript'>window.location.href='mailto:{0}?subject={1}&body={2}';</script>",
-                                                            emailTo, subject, emailBody), false);
+                    string.Format(GetLocalResourceObject("lblEmailSubject.Caption").ToString(),
+                    salesOrder.SalesOrderNumber, salesOrder.Account.AccountName));
+                string emailBody = FormatEmailBody(salesOrder);
+                ScriptManager.RegisterStartupScript(this, GetType(), "emailscript",
+                                    string.Format(scriptFmtString, JsonConvert.SerializeObject(emailTo), subject, emailBody), true);
             }
         }
         catch (Exception ex)
         {
             log.Error(ex.Message);
         }
+    }
+
+    private class EmailTo
+    {
+        public EmailTo()
+        {
+        }
+
+        public EmailTo(string firstName, string lastName, string emailAddress)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.emailAddress = emailAddress;
+        }
+
+        public string firstName { get; set; }
+
+        public string lastName { get; set; }
+
+        public string emailAddress { get; set; }
     }
 
     /// <summary>
@@ -346,7 +376,7 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
     /// <returns></returns>
     private string CheckForNullValue(object value)
     {
-        string outValue = String.Format(GetLocalResourceObject("lblNone.Caption").ToString());
+        string outValue = string.Format(GetLocalResourceObject("lblNone.Caption").ToString());
 
         if (value != null)
         {
@@ -364,78 +394,89 @@ public partial class SalesOrderSnapShot : EntityBoundSmartPartInfoProvider
     /// <returns></returns>
     private string FormatEmailBody(ISalesOrder salesOrder)
     {
-        IContextService context = ApplicationContext.Current.Services.Get<IContextService>(true);
-        TimeZone timeZone = (TimeZone)context.GetContext("TimeZone");
+        var context = ApplicationContext.Current.Services.Get<IContextService>(true);
+        var timeZone = (TimeZone) context.GetContext("TimeZone");
         bool isMultiCurr = BusinessRuleHelper.IsMultiCurrencyEnabled();
         string datePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
 
-        string products = String.Empty;
-        string emailBody = String.Format("{0} %0A", GetLocalResourceObject("lblEmailInfo.Caption"));
-        emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailAccount.Caption"),
-                                   CheckForNullValue(salesOrder.Account.AccountName));
-        emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailOpportunity.Caption"),
-                                   CheckForNullValue(salesOrder.Opportunity != null
-                                                         ? salesOrder.Opportunity.Description
-                                                         : String.Empty));
-        emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailDateCreated.Caption"),
-                                   timeZone.UTCDateTimeToLocalTime((DateTime)salesOrder.CreateDate).ToString(datePattern));
-        emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailDateRequested.Caption"),
-                                   salesOrder.OrderDate.HasValue
-                                       ? timeZone.UTCDateTimeToLocalTime((DateTime)salesOrder.OrderDate).ToString(
-                                             datePattern)
-                                       : String.Empty);
-        emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailDatePromised.Caption"),
-                                   salesOrder.DatePromised.HasValue
-                                       ? timeZone.UTCDateTimeToLocalTime((DateTime)salesOrder.DatePromised).ToString(
-                                             datePattern)
-                                       : String.Empty);
-        emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailSalesOrderId.Caption"),
-                                   salesOrder.SalesOrderNumber);
-        emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailType.Caption"),
-                                   CheckForNullValue(salesOrder.OrderType));
-        emailBody += String.Format("{0} {1} %0A%0A", GetLocalResourceObject("lblEmailStatus.Caption"),
-                                   CheckForNullValue(salesOrder.Status));
-        emailBody += String.Format("{0} {1} %0A%0A", GetLocalResourceObject("lblEmailComments.Caption"),
-                                   CheckForNullValue(salesOrder.Comments));
-        emailBody += String.Format("{0} %0A", GetLocalResourceObject("lblEmailValue.Caption"));
+        string products = string.Empty;
+        string emailBody = string.Format("{0} \r\n", GetLocalResourceObject("lblEmailInfo.Caption"));
+        emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailAccount.Caption"),
+            CheckForNullValue(salesOrder.Account.AccountName));
+        emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailOpportunity.Caption"),
+            CheckForNullValue(salesOrder.Opportunity != null
+                ? salesOrder.Opportunity.Description
+                : string.Empty));
+        emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailDateCreated.Caption"),
+            timeZone.UTCDateTimeToLocalTime((DateTime) salesOrder.CreateDate).ToString(datePattern));
+        emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailDateRequested.Caption"),
+            salesOrder.OrderDate.HasValue
+                ? timeZone.UTCDateTimeToLocalTime((DateTime) salesOrder.OrderDate).ToString(
+                    datePattern)
+                : string.Empty);
+        emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailDatePromised.Caption"),
+            salesOrder.DatePromised.HasValue
+                ? timeZone.UTCDateTimeToLocalTime((DateTime) salesOrder.DatePromised).ToString(
+                    datePattern)
+                : string.Empty);
+        emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailSalesOrderId.Caption"),
+            salesOrder.SalesOrderNumber);
+        emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailType.Caption"),
+            CheckForNullValue(salesOrder.OrderType));
+        emailBody += string.Format("{0} {1} \r\n\r\n", GetLocalResourceObject("lblEmailStatus.Caption"),
+            CheckForNullValue(salesOrder.Status));
+        emailBody += string.Format("{0} {1} \r\n\r\n", GetLocalResourceObject("lblEmailComments.Caption"),
+            CheckForNullValue(salesOrder.Comments));
+        emailBody += string.Format("{0} \r\n", GetLocalResourceObject("lblEmailValue.Caption"));
         curBaseTotal.Text = salesOrder.GrandTotal.ToString();
-        emailBody += String.Format("{0} %0A", String.Format(GetLocalResourceObject("lblEmailBaseGrandTotal.Caption").ToString(),
-                           curBaseTotal.FormattedText));
+        emailBody += string.Format("{0} \r\n",
+            string.Format(GetLocalResourceObject("lblEmailBaseGrandTotal.Caption").ToString(),
+                curBaseTotal.FormattedText));
         if (isMultiCurr)
         {
             curTotal.CurrentCode = salesOrder.CurrencyCode;
-            curTotal.Text = salesOrder.GrandTotal.ToString();
-            emailBody += String.Format("{0} %0A", String.Format(GetLocalResourceObject("lblEmailSalesOrderGrandTotal.Caption").ToString(),
-                                       curTotal.FormattedText));
-            emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailCurrencyCode.Caption"),
-                                       CheckForNullValue(salesOrder.CurrencyCode));
-            emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailExchangeRate.Caption"),
-                                       CheckForNullValue(salesOrder.ExchangeRate));
+            curTotal.Text = salesOrder.DocGrandTotal.ToString();
+            emailBody += string.Format("{0} \r\n",
+                string.Format(GetLocalResourceObject("lblEmailSalesOrderGrandTotal.Caption").ToString(),
+                    curTotal.FormattedText));
+            emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailCurrencyCode.Caption"),
+                CheckForNullValue(salesOrder.CurrencyCode));
+            emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailExchangeRate.Caption"),
+                CheckForNullValue(salesOrder.ExchangeRate));
             if (salesOrder.ExchangeRateDate.HasValue)
-                emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailExchangeRateDate.Caption"),
-                                           timeZone.UTCDateTimeToLocalTime((DateTime)salesOrder.ExchangeRateDate).
-                                               ToString(datePattern));
+                emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailExchangeRateDate.Caption"),
+                    timeZone.UTCDateTimeToLocalTime((DateTime) salesOrder.ExchangeRateDate).
+                        ToString(datePattern));
             else
-                emailBody += String.Format("{0} {1} %0A", GetLocalResourceObject("lblEmailExchangeRateDate.Caption"),
-                                           GetLocalResourceObject("lblNone.Caption"));
+                emailBody += string.Format("{0} {1} \r\n", GetLocalResourceObject("lblEmailExchangeRateDate.Caption"),
+                    GetLocalResourceObject("lblNone.Caption"));
         }
 
-        emailBody += String.Format("%0A{0} %0A", GetLocalResourceObject("lblEmailProducts.Caption"));
-        foreach (ISalesOrderItem item in salesOrder.SalesOrderItems)
-            products += String.Format("{0} ({1}); ", item.Product, item.Quantity);
-        emailBody += String.Format("{0} %0A", CheckForNullValue(products));
-        emailBody += String.Format("%0A{0} %0A", GetLocalResourceObject("lblEmailBillShipAddress.Caption"));
-        emailBody += String.Format("{0} %0A", GetLocalResourceObject("lblEmailBillingAddress.Caption"));
-        emailBody += String.Format("{0} {1} %0A",
-                                   GetLocalResourceObject("lblEmailBillingAddressName.Caption"),
-                                   salesOrder.BillingContact == null ? String.Empty : salesOrder.BillingContact.NameLF);
-        emailBody += salesOrder.BillingAddress.FormatFullSalesOrderAddress().Replace("\r\n", "%0A");
+        emailBody += string.Format("\r\n{0} \r\n", GetLocalResourceObject("lblEmailProducts.Caption"));
+        products = salesOrder.SalesOrderItems.Aggregate(products,
+            (current, item) => current + string.Format("{0} ({1}); ", item.Product, item.Quantity));
+        emailBody += string.Format("{0} \r\n", CheckForNullValue(products));
+        emailBody += string.Format("\r\n{0} \r\n", GetLocalResourceObject("lblEmailBillShipAddress.Caption"));
+        emailBody += string.Format("{0} \r\n", GetLocalResourceObject("lblEmailBillingAddress.Caption"));
+        emailBody += string.Format("{0} {1} \r\n",
+            GetLocalResourceObject("lblEmailBillingAddressName.Caption"),
+            salesOrder.BillingContact == null ? string.Empty : salesOrder.BillingContact.NameLF);
+        emailBody += salesOrder.BillingAddress.FormatFullSalesOrderAddress().Replace("\r\n", "\r\n");
 
-        emailBody += String.Format("%0A %0A{0} %0A", GetLocalResourceObject("lblEmailShippingAddress.Caption"));
-        emailBody += String.Format("{0} {1} %0A",
-                           GetLocalResourceObject("lblEmailShippingAddressName.Caption"),
-                           salesOrder.ShippingContact == null ? String.Empty : salesOrder.ShippingContact.NameLF);
-        emailBody += salesOrder.ShippingAddress.FormatFullSalesOrderAddress().Replace("\r\n", "%0A");
+        emailBody += string.Format("\r\n \r\n{0} \r\n", GetLocalResourceObject("lblEmailShippingAddress.Caption"));
+        emailBody += string.Format("{0} {1} \r\n",
+            GetLocalResourceObject("lblEmailShippingAddressName.Caption"),
+            salesOrder.ShippingContact == null ? string.Empty : salesOrder.ShippingContact.NameLF);
+        emailBody += salesOrder.ShippingAddress.FormatFullSalesOrderAddress().Replace("\r\n", "\r\n");
         return PortalUtil.JavaScriptEncode(emailBody.Replace("+", "%20"));
+    }
+
+    private void RefreshWorkSpace()
+    {
+        var refresher = PageWorkItem.Services.Get<IPanelRefreshService>();
+        if (refresher != null)
+        {
+            refresher.RefreshAll();
+        }
     }
 }

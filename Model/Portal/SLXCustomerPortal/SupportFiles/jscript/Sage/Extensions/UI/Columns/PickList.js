@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Extensions/UI/Columns/PickList", [
     'dojo/_base/declare',
     "dijit/form/ComboBox",
      "Sage/UI/Controls/PickList",

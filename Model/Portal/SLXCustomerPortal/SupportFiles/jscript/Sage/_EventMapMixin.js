@@ -1,4 +1,4 @@
-define([
+define("Sage/_EventMapMixin", [
     'dojo/on',
     'dojo/_base/declare',
     'dojo/_base/array',

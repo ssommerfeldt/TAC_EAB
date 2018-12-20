@@ -117,61 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="usrModifyUser.Caption" xml:space="preserve">
-    <value>Изменено:</value>
-  </data>
-  <data name="ownReceivedBy.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="ownCompletedBy.Caption" xml:space="preserve">
-    <value>Завершено:</value>
-  </data>
-  <data name="ownCompletedBy.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="QFSDataGrid.EmptyTableRowText" xml:space="preserve">
-    <value>Нет соответствующих записей.</value>
-  </data>
-  <data name="QFSDataGrid.172d76f3-99b4-4ea1-8414-da75e5e88912.ColumnHeading" xml:space="preserve">
-    <value>Дата изменений</value>
-  </data>
-  <data name="dtpCompletedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="chkCompletedByNeededDate.Caption" xml:space="preserve">
-    <value>Заверш. к треб. дате</value>
-  </data>
-  <data name="QFSDataGrid.de9a042c-2163-485e-8896-186e17d886ca.ColumnHeading" xml:space="preserve">
-    <value>Новое значение</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="cmdSave.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="dtpReceivedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="chkCompletedByNeededDate.Caption" xml:space="preserve">
+    <value>Заверш. к треб. дате</value>
   </data>
   <data name="hzsAuditTrail.Caption" xml:space="preserve">
-    <value>Аудит</value>
+    <value>Контрольный журнал</value>
+  </data>
+  <data name="dtpReceivedDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpCompletedDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpCreateDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpModifyDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="ownReceivedBy.Caption" xml:space="preserve">
     <value>Получено:</value>
   </data>
+  <data name="ownCompletedBy.Caption" xml:space="preserve">
+    <value>Кем завершено:</value>
+  </data>
   <data name="usrCreateUser.Caption" xml:space="preserve">
-    <value>Создал:</value>
+    <value>Автор:</value>
+  </data>
+  <data name="usrModifyUser.Caption" xml:space="preserve">
+    <value>Автор обновления:</value>
+  </data>
+  <data name="ownReceivedBy.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="ownCompletedBy.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dtpReceivedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dtpCompletedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="QFSDataGrid.172d76f3-99b4-4ea1-8414-da75e5e88912.ColumnHeading" xml:space="preserve">
+    <value>Дата изменения</value>
   </data>
   <data name="QFSDataGrid.51deac7c-b02d-44ec-97ca-b8fea21eea43.ColumnHeading" xml:space="preserve">
     <value>Пользователь</value>
   </data>
+  <data name="QFSDataGrid.d1f6b256-d567-40b6-ae8a-8a3bc328b642.ColumnHeading" xml:space="preserve">
+    <value>Поле изменено</value>
+  </data>
   <data name="QFSDataGrid.19b71659-8053-4cb9-8f99-81170e06c1f7.ColumnHeading" xml:space="preserve">
     <value>Старое значение</value>
+  </data>
+  <data name="QFSDataGrid.de9a042c-2163-485e-8896-186e17d886ca.ColumnHeading" xml:space="preserve">
+    <value>Новое значение</value>
   </data>
   <data name="QFSDataGrid.0bed4c04-75b7-4c30-b38f-adc480b39157.ColumnHeading" xml:space="preserve">
     <value>Заметка</value>
   </data>
-  <data name="QFSDataGrid.d1f6b256-d567-40b6-ae8a-8a3bc328b642.ColumnHeading" xml:space="preserve">
-    <value>Поле изменено</value>
+  <data name="QFSDataGrid.EmptyTableRowText" xml:space="preserve">
+    <value>Нет записей, соответствующих критериям выбора.</value>
   </data>
 </root>

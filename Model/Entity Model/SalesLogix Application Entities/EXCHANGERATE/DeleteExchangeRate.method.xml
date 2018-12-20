@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="13982703-b7ae-4f6d-a58d-935359ae7436" lastModifiedUtc="2017-09-15T05:34:51.298258Z" name="DeleteExchangeRate" returnType="Boolean" methodType="Rule" actionType="None" returnMode="Object">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter />
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget id="8451f732-508b-4ba6-a52d-baa1cd4ad872" lastModifiedUtc="2017-09-15T05:43:09.7552383Z" targetType="Sage.SalesLogix.ExchangeRate.Rules, Sage.SalesLogix.BusinessRules" targetMethod="DeleteExchangeRate" active="true">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTarget" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

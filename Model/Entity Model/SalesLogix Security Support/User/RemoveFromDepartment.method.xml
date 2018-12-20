@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0cd6de07-cc9f-4b94-816a-48d87219c038" lastModifiedUtc="2010-02-08T23:22:48.864503Z" name="RemoveFromDepartment" methodType="Rule" actionType="None" returnMode="None">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="0cd6de07-cc9f-4b94-816a-48d87219c038" lastModifiedUtc="2015-06-25T15:36:55.3163902Z" name="RemoveFromDepartment" methodType="Rule" actionType="None" returnMode="None" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -16,5 +16,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

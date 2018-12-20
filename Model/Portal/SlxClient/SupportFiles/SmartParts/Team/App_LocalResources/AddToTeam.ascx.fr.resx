@@ -117,29 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LookupTeamPropertyHeader" xml:space="preserve">
-    <value>Equipe</value>
-  </data>
-  <data name="chkAddManager.Label" xml:space="preserve">
-    <value>Ajouter automatiquement le responsable de l'utilisateur à l'équipe</value>
-  </data>
-  <data name="luTargetTeam.Caption" xml:space="preserve">
-    <value>Equipe ciblée :</value>
-  </data>
-  <data name="LookupTeamDialogTitle" xml:space="preserve">
-    <value>Recherche d'équipe</value>
-  </data>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Annuler</value>
+  <data name="luTeam.Caption" xml:space="preserve">
+    <value>Equipe :</value>
   </data>
   <data name="btnOk.Caption" xml:space="preserve">
     <value>OK</value>
-  </data>
-  <data name="User" xml:space="preserve">
-    <value>Utilisateur</value>
-  </data>
-  <data name="InvalidUserContext" xml:space="preserve">
-    <value>Des modèles ou des utilisateurs désactivés ne peuvent pas être ajoutés à une équipe.</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Utilisateurs</value>
@@ -147,14 +129,23 @@
   <data name="Title_Add.Caption" xml:space="preserve">
     <value>Ajouter {0} à l'équipe</value>
   </data>
-  <data name="luTeam.Caption" xml:space="preserve">
-    <value>Equipe :</value>
+  <data name="luTargetTeam.Caption" xml:space="preserve">
+    <value>Equipe ciblée :</value>
   </data>
   <data name="Add_Description" xml:space="preserve">
-    <value>Ajouter le ou la ({0}) {1} sélectionné(e) à l'équipe suivante.</value>
+    <value>Ajouter le(s) ({0}) {1} sélectionné(s) à l'équipe suivante.</value>
   </data>
   <data name="Department" xml:space="preserve">
-    <value>Service</value>
+    <value>service</value>
+  </data>
+  <data name="Departments" xml:space="preserve">
+    <value>services</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Utilisateur</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Annuler</value>
   </data>
   <data name="Team" xml:space="preserve">
     <value>Equipe</value>
@@ -162,7 +153,16 @@
   <data name="Teams" xml:space="preserve">
     <value>Equipes</value>
   </data>
-  <data name="Departments" xml:space="preserve">
-    <value>Services</value>
+  <data name="InvalidUserContext" xml:space="preserve">
+    <value>Des modèles ou des utilisateurs désactivés ne peuvent pas être ajoutés à une équipe.</value>
+  </data>
+  <data name="chkAddManager.Label" xml:space="preserve">
+    <value>Ajouter automatiquement le responsable de l'utilisateur à l'équipe</value>
+  </data>
+  <data name="LookupTeamDialogTitle" xml:space="preserve">
+    <value>Rechercher une équipe</value>
+  </data>
+  <data name="LookupTeamPropertyHeader" xml:space="preserve">
+    <value>Equipe</value>
   </data>
 </root>

@@ -117,64 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="securityProfileLookup.Caption" xml:space="preserve">
-    <value>Стандартный профиль безопасности:</value>
-  </data>
-  <data name="ModifyDate.Text" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
-  <data name="bc271642-0466-4c43-a3ea-de5507f0b2e3.Message" xml:space="preserve">
-    <value>Отдел не может быть удален из-за наличия в нем участников. Удалите сначала участников перед удалением отдела.</value>
-  </data>
-  <data name="Type_item0.Text" xml:space="preserve">
-    <value>Отдел</value>
-  </data>
   <data name="CreateDate.Caption" xml:space="preserve">
-    <value>Дата создания:</value>
-  </data>
-  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
-    <value>Вы уверены, что хотите удалить этот отдел?</value>
+    <value>Создано:</value>
   </data>
   <data name="ModifyDate.Caption" xml:space="preserve">
-    <value>Посл. изменение:</value>
-  </data>
-  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
-    <value>Профиль</value>
-  </data>
-  <data name="deleteButton.ToolTip" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="CreateDate.Text" xml:space="preserve">
-    <value>Дата создания</value>
-  </data>
-  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Message" xml:space="preserve">
-    <value>Название отдела отсутствует, неверно или дубликат.</value>
-  </data>
-  <data name="saveButton.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="QFSLXLookup.Caption" xml:space="preserve">
-    <value>Изменено:</value>
-  </data>
-  <data name="QFLabel.Text" xml:space="preserve">
-    <value>Профиль безопасности</value>
-  </data>
-  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Title" xml:space="preserve">
-    <value>Проверка закончилась неудачей</value>
-  </data>
-  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
-    <value>Поиск профиля безопасности</value>
+    <value>Последнее изменение:</value>
   </data>
   <data name="QFSLXLookup.LookupProperties.ModifyUser.PropertyHeader" xml:space="preserve">
-    <value>Кто обновил</value>
+    <value>ModifyUser (автор изменения)</value>
   </data>
   <data name="OwnerDescription.Caption" xml:space="preserve">
     <value>Имя:</value>
   </data>
+  <data name="Type_item1.Text" xml:space="preserve">
+    <value>Команда</value>
+  </data>
+  <data name="Type_item0.Text" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="CreateDate.Text" xml:space="preserve">
+    <value>Создано</value>
+  </data>
+  <data name="ModifyDate.Text" xml:space="preserve">
+    <value>Изменено</value>
+  </data>
+  <data name="QFSLXLookup.Caption" xml:space="preserve">
+    <value>Автор изменения:</value>
+  </data>
+  <data name="QFLabel.Text" xml:space="preserve">
+    <value>Профиль безопасности</value>
+  </data>
+  <data name="securityProfileLookup.Caption" xml:space="preserve">
+    <value>Профиль безопасности по умолчанию:</value>
+  </data>
+  <data name="securityProfileLookup.LookupProperties.ProfileDescription.PropertyHeader" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="deleteButton.ActionConfirmationMessage" xml:space="preserve">
+    <value>Действительно удалить этот отдел?</value>
+  </data>
+  <data name="bc271642-0466-4c43-a3ea-de5507f0b2e3.Message" xml:space="preserve">
+    <value>Невозможно удалить отдел, так как в нем имеются участники. Перед удалением отдела сначала требуется удалить участников.</value>
+  </data>
   <data name="bc271642-0466-4c43-a3ea-de5507f0b2e3.Title" xml:space="preserve">
     <value>Удаление не разрешено</value>
   </data>
-  <data name="Type_item1.Text" xml:space="preserve">
-    <value>Команда</value>
+  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Title" xml:space="preserve">
+    <value>Не удалось выполнить проверку</value>
+  </data>
+  <data name="195062be-510a-4854-9ccd-6c52a295f2e7.Message" xml:space="preserve">
+    <value>Название отдела отсутствует, неверно или дубликат.</value>
+  </data>
+  <data name="deleteButton.ToolTip" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="saveButton.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="securityProfileLookup.LookupDialogTitle" xml:space="preserve">
+    <value>Поиск профиля безопасности</value>
   </data>
 </root>

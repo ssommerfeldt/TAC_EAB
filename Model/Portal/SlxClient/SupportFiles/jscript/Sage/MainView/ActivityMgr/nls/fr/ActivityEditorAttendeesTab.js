@@ -1,16 +1,16 @@
-define((
-{ header_Name: 'Nom',
-  header_AccountName: 'Compte/Société',
-  header_Type: 'Type',
-  header_Primary: 'Principal',
-  header_RoleName: 'Rôle',
-  header_Phone: 'Téléphone',
-  header_Email: 'E-mail',
-  header_TimeZone: 'Fuseau horaire',
-  header_Notes: 'Notes',
-  tooltip_speedSearch: 'Ajouter un participant',
-  tooltip_AddContact: "Ajout un contact",
-  tooltip_AddLead: 'Ajouter un lead',
-  tooltip_Delete: "Supprimer"
-}
-));
+define("Sage/MainView/ActivityMgr/nls/fr/ActivityEditorAttendeesTab", {
+    "header_Name": "Nom",
+    "header_AccountName": "Compte/Société",
+    "header_Type": "Type",
+    "header_Primary": "Principal",
+    "header_RoleName": "Rôle",
+    "header_Phone": "Téléphone",
+    "header_Email": "E-mail",
+    "header_TimeZone": "Fuseau horaire",
+    "header_Notes": "Notes",
+    "tooltip_speedSearch": "Ajouter un participant",
+    "tooltip_AddContact": "Ajouter un contact",
+    "tooltip_AddLead": "Ajouter un lead",
+    "tooltip_Delete": "Supprimer",
+    "header_Attendee": "Est un participant"
+});

@@ -1,3 +1,1 @@
-define((
-{}
-));
+define("Sage/MainView/ReportMgr/nls/it/ReportManagerUtility", {});

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Columns/Email", [
     'Sage/UI/Controls/Email',
     'Sage/UI/Columns/Cell',
     'dojo/_base/declare'

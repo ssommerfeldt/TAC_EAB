@@ -1,6 +1,7 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/MainView/ActivityMgr/BaseListPanelConfig", [
         'Sage/_ConfigurationProvider',
+        'Sage/Store/SData',
         'Sage/Data/SDataStore',
         'dijit/Menu',
         'dijit/PopupMenuItem',
@@ -8,17 +9,20 @@ define([
         'Sage/UI/MenuItem',
         'dojo/i18n!./nls/BaseListPanelConfig',
         'dijit/registry',
+        'dojo/string',
         'dojo/_base/declare'
 ],
 function (
    _ConfigurationProvider,
    SDataStore,
+   OldSDataStore,
    Menu,
    PopupMenuItem,
    MenuSeparator,
    MenuItem,
    nlsResources,
    registry,
+   string,
    declare
    ) {
     var baseListPanelConfig = declare('Sage.MainView.ActivityMgr.BaseListPanelConfig', [_ConfigurationProvider], {
@@ -141,8 +145,9 @@ function (
             ];
             var formatScope = this._getFormatterScope();
             var summaryConfig = {
-                structure: structure,
+                columns: structure,
                 layout: 'layout',
+                keyField: '$key',
                 store: store,
                 rowHeight: 170,
                 rowsPerPage: 10,
@@ -233,7 +238,7 @@ function (
                     } else {
                         var href = mDef.href;
                         if (href.indexOf('javascript:') < 0) {
-                            href = dojo.string.substitute("javascript:${0}()", [href]);
+                            href = string.substitute("javascript:${0}()", [href]);
                         }
                         menuItem = new MenuItem({
                             label: mDef.text || '...',
@@ -268,7 +273,7 @@ function (
             var where = this._where;
             var configuration = {};
             configuration['groupId'] = this._listId;
-            configuration['store'] = new SDataStore({
+            configuration['store'] = new OldSDataStore({
                 executeReadWith: 'readFeed',
                 request: new Sage.SData.Client.SDataResourcePropertyRequest(metaService)
                     .setResourceKind('entities')
@@ -276,10 +281,11 @@ function (
                     .setResourceProperty('filters')
                    .setQueryArg('where', 'filterType ne "analyticsMetric"')
                    .setQueryArg('count', 20)
+				   .setQueryArg('orderby', 'displayName')
             });
             configuration['createStoreForFilter'] = function (filter) {
                 return filter && filter['filterName']
-                    ? new SDataStore({
+                    ? new OldSDataStore({
                         executeReadWith: 'readFeed',
                         request: new Sage.SData.Client.SDataResourcePropertyRequest(systemService)
                             .setResourceKind(resourceKind)

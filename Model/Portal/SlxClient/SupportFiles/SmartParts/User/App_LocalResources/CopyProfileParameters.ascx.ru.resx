@@ -117,14 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ValidationMsgNoSource" xml:space="preserve">
-    <value>Требуется</value>
+  <data name="SourceSelectionContainer.Caption" xml:space="preserve">
+    <value>Пользователь:</value>
+  </data>
+  <data name="SourceUserList.Caption" xml:space="preserve">
+    <value>Пользователь:</value>
   </data>
   <data name="SourceTemplateList.Caption" xml:space="preserve">
     <value>Шаблон:</value>
   </data>
+  <data name="SourceSelectionContainer_item1.Text" xml:space="preserve">
+    <value>Шаблон</value>
+  </data>
+  <data name="SourceSelectionContainer_item0.Text" xml:space="preserve">
+    <value>Существующий пользователь</value>
+  </data>
+  <data name="OkButton.Caption" xml:space="preserve">
+    <value>OК</value>
+  </data>
+  <data name="CancelButton.Caption" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
   <data name="chkGeneral.Caption" xml:space="preserve">
-    <value>Общий</value>
+    <value>Общее</value>
+  </data>
+  <data name="chkEmployee.Caption" xml:space="preserve">
+    <value>Сотрудник</value>
+  </data>
+  <data name="chkSecurity.Caption" xml:space="preserve">
+    <value>Безопасность</value>
   </data>
   <data name="chkTeams.Caption" xml:space="preserve">
     <value>Команды</value>
@@ -132,38 +153,23 @@
   <data name="chkFunctionSecurity.Caption" xml:space="preserve">
     <value>Безопасность функции</value>
   </data>
-  <data name="chkCustom.Caption" xml:space="preserve">
-    <value>Клиентура</value>
-  </data>
-  <data name="SourceSelectionContainer_item0.Text" xml:space="preserve">
-    <value>Существующий Пользователь</value>
-  </data>
-  <data name="CancelButton.Caption" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="lueUser.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
-    <value>Название</value>
-  </data>
   <data name="chkCalendar.Caption" xml:space="preserve">
     <value>Календарь</value>
   </data>
-  <data name="SourceSelectionContainer_item1.Text" xml:space="preserve">
-    <value>Шаблон</value>
+  <data name="chkClientOptions.Caption" xml:space="preserve">
+    <value>Параметры клиента (клиентская система)</value>
   </data>
-  <data name="chkSecurity.Caption" xml:space="preserve">
-    <value>Безопасность</value>
+  <data name="chkServiceSupport.Caption" xml:space="preserve">
+    <value>Сервис/поддержка</value>
   </data>
-  <data name="LookupUserDialogTitle" xml:space="preserve">
-    <value>Поиск пользователя</value>
+  <data name="chkCustom.Caption" xml:space="preserve">
+    <value>Пользовательский</value>
   </data>
   <data name="dialogInfo" xml:space="preserve">
-    <value>Выделите пользовательский профиль или шаблон для копируемого пользователя.  Копирование профиля обновит текущие установки.</value>
+    <value>Выберите профиль пользователя или шаблон для копирования для других пользователей. Копирование профиля обновит текущие настройки.</value>
   </data>
-  <data name="LookupTemplateDialogTitle" xml:space="preserve">
-    <value>Поиск Шаблона</value>
-  </data>
-  <data name="OkButton.Caption" xml:space="preserve">
-    <value>Ок</value>
+  <data name="sourceLabel" xml:space="preserve">
+    <value>Копировать профиль из:</value>
   </data>
   <data name="lueUser.LookupProperties.UserInfo.Department.PropertyHeader" xml:space="preserve">
     <value>Отдел</value>
@@ -171,25 +177,19 @@
   <data name="lueUser.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
     <value>Регион</value>
   </data>
+  <data name="lueUser.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
+    <value>Название</value>
+  </data>
   <data name="lueUser.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="chkClientOptions.Caption" xml:space="preserve">
-    <value>Параметры клиента (клиентская система)</value>
+  <data name="ValidationMsgNoSource" xml:space="preserve">
+    <value>Требуется</value>
   </data>
-  <data name="sourceLabel" xml:space="preserve">
-    <value>Копировать Профиль из:</value>
+  <data name="LookupTemplateDialogTitle" xml:space="preserve">
+    <value>Поиск шаблона</value>
   </data>
-  <data name="chkEmployee.Caption" xml:space="preserve">
-    <value>Сотрудник</value>
-  </data>
-  <data name="chkServiceSupport.Caption" xml:space="preserve">
-    <value>Сервис/Поддержка</value>
-  </data>
-  <data name="SourceUserList.Caption" xml:space="preserve">
-    <value>Пользователь:</value>
-  </data>
-  <data name="SourceSelectionContainer.Caption" xml:space="preserve">
-    <value>Пользователь:</value>
+  <data name="LookupUserDialogTitle" xml:space="preserve">
+    <value>Поиск пользователя</value>
   </data>
 </root>

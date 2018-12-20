@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1b7a9c81-e2fa-40d5-b0db-a561dd17dfea" lastModifiedUtc="2011-09-01T17:29:10.8316678Z" name="GetTicketActivityRates" returnType="Object" methodType="Rule" actionType="None" returnMode="Object">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="1b7a9c81-e2fa-40d5-b0db-a561dd17dfea" lastModifiedUtc="2015-06-25T15:34:40.5966492Z" name="GetTicketActivityRates" returnType="Object" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -14,5 +14,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

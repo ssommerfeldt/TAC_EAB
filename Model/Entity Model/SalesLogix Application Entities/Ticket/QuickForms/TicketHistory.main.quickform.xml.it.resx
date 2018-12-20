@@ -117,61 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="cmdSave.ToolTip" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="chkCompletedByNeededDate.Caption" xml:space="preserve">
+    <value>Completato entro termine previsto</value>
+  </data>
+  <data name="hzsAuditTrail.Caption" xml:space="preserve">
+    <value>Registro di controllo</value>
+  </data>
+  <data name="dtpReceivedDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpCompletedDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpCreateDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpModifyDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ownReceivedBy.Caption" xml:space="preserve">
+    <value>Ricevuto da:</value>
+  </data>
+  <data name="ownCompletedBy.Caption" xml:space="preserve">
+    <value>Completato da:</value>
+  </data>
+  <data name="usrCreateUser.Caption" xml:space="preserve">
+    <value>Creato da:</value>
+  </data>
   <data name="usrModifyUser.Caption" xml:space="preserve">
     <value>Aggiornato da:</value>
   </data>
   <data name="ownReceivedBy.ButtonToolTip" xml:space="preserve">
     <value>Trova</value>
   </data>
-  <data name="ownCompletedBy.Caption" xml:space="preserve">
-    <value>Completato da:</value>
-  </data>
   <data name="ownCompletedBy.ButtonToolTip" xml:space="preserve">
     <value>Trova</value>
-  </data>
-  <data name="QFSDataGrid.EmptyTableRowText" xml:space="preserve">
-    <value>Nessun record corrispondente ai criteri di ricerca selezionati.</value>
-  </data>
-  <data name="QFSDataGrid.172d76f3-99b4-4ea1-8414-da75e5e88912.ColumnHeading" xml:space="preserve">
-    <value>Data modificata</value>
-  </data>
-  <data name="dtpCompletedDate.ButtonToolTip" xml:space="preserve">
-    <value>Calendario</value>
-  </data>
-  <data name="chkCompletedByNeededDate.Caption" xml:space="preserve">
-    <value>Completato entro Data limite</value>
-  </data>
-  <data name="QFSDataGrid.de9a042c-2163-485e-8896-186e17d886ca.ColumnHeading" xml:space="preserve">
-    <value>Nuovo valore</value>
-  </data>
-  <data name="cmdSave.ToolTip" xml:space="preserve">
-    <value>Salva</value>
   </data>
   <data name="dtpReceivedDate.ButtonToolTip" xml:space="preserve">
     <value>Calendario</value>
   </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Salva</value>
+  <data name="dtpCompletedDate.ButtonToolTip" xml:space="preserve">
+    <value>Calendario</value>
   </data>
-  <data name="hzsAuditTrail.Caption" xml:space="preserve">
-    <value>Revisione Modifiche</value>
-  </data>
-  <data name="ownReceivedBy.Caption" xml:space="preserve">
-    <value>Ricevuto Da:</value>
-  </data>
-  <data name="usrCreateUser.Caption" xml:space="preserve">
-    <value>Creato da:</value>
+  <data name="QFSDataGrid.172d76f3-99b4-4ea1-8414-da75e5e88912.ColumnHeading" xml:space="preserve">
+    <value>Data di modifica</value>
   </data>
   <data name="QFSDataGrid.51deac7c-b02d-44ec-97ca-b8fea21eea43.ColumnHeading" xml:space="preserve">
     <value>Utente</value>
   </data>
+  <data name="QFSDataGrid.d1f6b256-d567-40b6-ae8a-8a3bc328b642.ColumnHeading" xml:space="preserve">
+    <value>Campo modificato</value>
+  </data>
   <data name="QFSDataGrid.19b71659-8053-4cb9-8f99-81170e06c1f7.ColumnHeading" xml:space="preserve">
-    <value>Valore prec.</value>
+    <value>Valore precedente</value>
+  </data>
+  <data name="QFSDataGrid.de9a042c-2163-485e-8896-186e17d886ca.ColumnHeading" xml:space="preserve">
+    <value>Nuovo valore</value>
   </data>
   <data name="QFSDataGrid.0bed4c04-75b7-4c30-b38f-adc480b39157.ColumnHeading" xml:space="preserve">
     <value>Nota</value>
   </data>
-  <data name="QFSDataGrid.d1f6b256-d567-40b6-ae8a-8a3bc328b642.ColumnHeading" xml:space="preserve">
-    <value>Campo modificato</value>
+  <data name="QFSDataGrid.EmptyTableRowText" xml:space="preserve">
+    <value>Nessun record corrispondente ai criteri di selezione.</value>
   </data>
 </root>

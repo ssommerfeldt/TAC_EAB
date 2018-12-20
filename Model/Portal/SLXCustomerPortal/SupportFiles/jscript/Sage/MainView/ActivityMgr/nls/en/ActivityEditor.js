@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/ActivityEditor", (
 { labelWidth: '100',
   tabNameGeneralText: 'General',
   tabNameAvailabilityText: 'Availability',
@@ -7,6 +7,9 @@ define((
   tabNameAttachmentsText: 'Attachments',
   tabNameNotesText: 'Notes',
   scheduleText: 'Schedule',
+  scheduleTodo:'Schedule To-Do',
+  schedulePhonecall:'Schedule Phone Call',
+  scheduleMeeting:'Schedule Meeting',
   startTimeText: 'Start Time',
   timeLessText: 'Timeless',
   alarmText: 'Alarm',
@@ -36,6 +39,9 @@ define((
   deletedText: 'Deleted',
   cancelText: 'Cancel',
   okText: 'OK',
+  completeTodo:'Complete To-Do',
+  completePhonecall:'Complete Phone Call',
+  completeMeeting:'Complete Meeting',
   completeText: 'Complete',
   completeBtnText: 'Complete...',
   completedText: 'Completed',
@@ -89,5 +95,8 @@ define((
   couldNotDeleteErrorText: 'We\'re sorry, the activity could not be deleted because an error occurred.',
   couldNotCompleteErrorText: 'We\'re sorry, the activity could not be completed because an error occurred.',
   scheduleFollowUpErrorText: 'The follow up could not be scheduled because the HistoryId could not be determined.',
-  tabNameParticipants: 'Participants' }
+  tabNameParticipants: 'Participants',
+  updateToDo: 'To-Do',
+  updatePhoneCall: 'Phone Call',
+  updateMeeting: 'Meeting'}
 ));

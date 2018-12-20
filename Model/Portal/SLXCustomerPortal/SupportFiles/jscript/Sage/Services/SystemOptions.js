@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Services/SystemOptions", [
     'Sage/Data/SDataServiceRegistry',
     'dojo/_base/declare'
 ],
@@ -21,7 +21,8 @@ function (sDataServiceRegistry, declare) {
                     failure: function (response) {
                         onError.call(scope || this, this.requestFailedErrorMsg);
                     },
-                    scope: this
+                    scope: this,
+                    async: false // added for the currency format column.
                 });
             } else {
                 this._returnOption(optionName, callback, onError, scope);
@@ -41,6 +42,20 @@ function (sDataServiceRegistry, declare) {
             } else {
                 onError.call(scope || this, this.notFoundrrorMsg);
             }
+        },
+        clearCache: function () {
+            var keysCount = sessionStorage.length;
+            var keys = [];
+            for (var i = 0; i < keysCount; i++) {
+                var key = sessionStorage.key(i);
+                if (key.indexOf("systemoptions") > -1) {
+                    keys.push(key);
+                }
+            }
+            for (var j = 0; j < keys.length; j++) {
+                sessionStorage.removeItem(keys[j]);
+            }
+
         }
     });
     /**

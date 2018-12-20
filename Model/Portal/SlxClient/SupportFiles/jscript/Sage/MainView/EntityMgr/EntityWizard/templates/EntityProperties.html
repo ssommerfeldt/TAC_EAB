@@ -1,0 +1,20 @@
+<div>
+    <div data-dojo-type="dijit.Dialog" title="New Entity Wizard" data-dojo-attach-point="_dialog" data-dojo-attach-event="onCancel:_btnCancel_OnClick" style="position:absolute;width: 625px;height:625px;">
+        <div style="padding-bottom:30px;">
+            <label style="font-weight:bold;" data-dojo-attach-point="lblEnterProperties">Enter Fields</label>
+            <p><label data-dojo-attach-point="lblAddNewProperty">Click the add(+) button to add new fields to the entity</label></p>
+            <hr />
+        </div>
+        <div data-dojo-type="dijit.form.Form"  style="height:400px !important;" class="mainContentContent DialogMainForm">
+            <div style="width:100%;" class="fld dijitInline" data-dojo-attach-point="placeGrid"></div>
+        </div>
+        <div data-dojo-attach-point="divValidationMessage" style="color:red">
+            <span data-dojo-attach-point="spanValidationMessage">&nbsp;</span>
+        </div>
+        <div class="lookupButtonWrapper">
+            <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnBack" data-dojo-attach-event="onClick:_btnBack_OnClick">< Back</div>
+            <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnNext" data-dojo-attach-event="onClick:_btnNext_OnClick">Next ></div>
+            <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnCancel" data-dojo-attach-event="onClick:_btnCancel_OnClick" style="margin-left:5px;">Cancel</div>
+        </div>
+    </div>
+</div>

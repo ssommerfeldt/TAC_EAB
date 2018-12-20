@@ -1,7 +1,15 @@
-//>>built
 define(
 "dojo/cldr/nls/rm/gregorian", //begin v1.x content
 {
+	"days-standAlone-short": [
+		"du",
+		"gli",
+		"ma",
+		"me",
+		"gie",
+		"ve",
+		"so"
+	],
 	"months-format-narrow": [
 		"S",
 		"F",
@@ -17,13 +25,22 @@ define(
 		"D"
 	],
 	"field-weekday": "di da l'emna",
-	"dateFormatItem-yyQQQQ": "QQQQ yy",
 	"dateFormatItem-yQQQ": "QQQ y",
-	"dateFormatItem-yMEd": "E, yyyy-M-d",
+	"dateFormatItem-yMEd": "E, y-M-d",
 	"dateFormatItem-MMMEd": "E d. MMM",
 	"eraNarrow": [
 		"av. Cr.",
 		"s. Cr."
+	],
+	"dateFormatItem-yMM": "MM.y",
+	"days-format-short": [
+		"du",
+		"gli",
+		"ma",
+		"me",
+		"gie",
+		"ve",
+		"so"
 	],
 	"dateFormat-long": "d 'da' MMMM y",
 	"months-format-wide": [
@@ -43,9 +60,8 @@ define(
 	"dayPeriods-format-wide-pm": "sm",
 	"dateFormat-full": "EEEE, 'ils' d 'da' MMMM y",
 	"dateFormatItem-Md": "d.M.",
-	"dateFormatItem-yyMMdd": "dd.MM.yy",
 	"field-era": "epoca",
-	"dateFormatItem-yM": "yyyy-M",
+	"dateFormatItem-yM": "y-M",
 	"months-standAlone-wide": [
 		"schaner",
 		"favrer",
@@ -67,11 +83,10 @@ define(
 		"3. quartal",
 		"4. quartal"
 	],
+	"dateFormatItem-yQQQQ": "QQQQ y",
 	"timeFormat-long": "HH:mm:ss z",
 	"field-year": "onn",
 	"dateFormatItem-yMMM": "MMM y",
-	"dateFormatItem-yQ": "Q yyyy",
-	"dateFormatItem-yyyyMMMM": "MMMM y",
 	"field-hour": "ura",
 	"dateFormatItem-MMdd": "dd.MM.",
 	"months-format-abbr": [
@@ -88,7 +103,6 @@ define(
 		"nov.",
 		"dec."
 	],
-	"dateFormatItem-yyQ": "Q yy",
 	"timeFormat-full": "HH:mm:ss zzzz",
 	"field-day-relative+0": "oz",
 	"field-day-relative+1": "damaun",
@@ -132,8 +146,8 @@ define(
 		"sonda"
 	],
 	"dateFormatItem-MMMMd": "d. MMMM",
-	"dateFormatItem-yyMMM": "MMM yy",
 	"timeFormat-medium": "HH:mm:ss",
+	"dateFormatItem-yMMdd": "dd.MM.y",
 	"dateFormatItem-Hm": "H:mm",
 	"quarters-standAlone-abbr": [
 		"1. quartal",
@@ -189,7 +203,6 @@ define(
 		"N",
 		"D"
 	],
-	"dateFormatItem-yyMM": "MM.yy",
 	"days-format-abbr": [
 		"du",
 		"gli",
@@ -226,16 +239,14 @@ define(
 	"dateFormatItem-HHmm": "HH:mm",
 	"dayPeriods-format-wide-am": "am",
 	"dateFormatItem-MMMMEd": "E d. MMMM",
-	"dateFormatItem-MMMMdd": "dd. MMMM",
 	"dateFormat-short": "dd-MM-yy",
 	"dateFormatItem-MMd": "d.MM.",
 	"field-second": "secunda",
 	"dateFormatItem-yMMMEd": "E, d. MMM y",
 	"dateFormatItem-Ed": "E d.",
 	"field-week": "emna",
-	"dateFormat-medium": "dd-MM-yyyy",
-	"dateFormatItem-mmss": "mm:ss",
-	"dateFormatItem-yyyy": "y"
+	"dateFormat-medium": "dd-MM-y",
+	"dateFormatItem-mmss": "mm:ss"
 }
 //end v1.x content
 );

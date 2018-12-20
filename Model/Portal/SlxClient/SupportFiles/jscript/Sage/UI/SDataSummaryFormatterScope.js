@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/SDataSummaryFormatterScope", [
         'Sage/UI/SummaryContainer',
         'dojo/i18n',
         'Sage/UI/SummaryFormatterScope',

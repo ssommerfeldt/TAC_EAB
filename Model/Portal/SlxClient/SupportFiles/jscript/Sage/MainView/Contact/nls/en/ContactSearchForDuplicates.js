@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/Contact/nls/en/ContactSearchForDuplicates", (
 { svAccount_Caption: 'Account:',
   svCompany_Caption: 'Company:',
   svEmail_Caption: 'Email:',

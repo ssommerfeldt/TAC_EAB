@@ -1,4 +1,4 @@
-define((
+define("Sage/Library/nls/en/FolderHandler", (
 { AccessError: 'You do not have the role security required to execute this action.',
   AddFolderError: 'There was an unexpected error attempting to add a library folder.',
   Cancel: 'Cancel',

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo*/
-define([
+/*globals Sage, dojo*/
+define("Sage/Utility/Sql", [
         'dojo/_base/array',
         'dojo/_base/declare',
         'dojo/_base/lang',

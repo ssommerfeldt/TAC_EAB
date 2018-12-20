@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Auswahlliste' }
-));
+define("Sage/QuickForms/Design/nls/de/PickListControlDesigner", {
+    "displayNameText": "Auswahlliste"
+});

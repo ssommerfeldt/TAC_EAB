@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<DeletedItem>
+  <id>eda99a14-d13d-453d-8a48-1ec862700c43</id>
+  <url>\Entity Model\Relationships\SalesOrder.SalesOrderItem.eda99a14d13d453d8a481ec862700c43.relationship.xml</url>
+  <caption>Sales Order.SalesOrderQuotes 1:M Sales Order Item.SalesOrderQuote</caption>
+  <extension>.relationship.xml</extension>
+  <modelId>a7bdd2d9-93b0-499d-9fd4-c3f7a5f94e28</modelId>
+  <dateDeleted>2016-08-24T15:56:13.905375Z</dateDeleted>
+  <restoreDataType>System.String, mscorlib</restoreDataType>
+  <restoreData>
+    <string>&lt;?xml version="1.0"?&gt;
+&lt;relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="eda99a14-d13d-453d-8a48-1ec862700c43" lastModifiedUtc="2014-12-30T23:15:07.9128692Z" parentEntityId="9b47425f-3b70-4f38-a4cf-574c64d46086" childEntityId="897f4970-c7f6-4667-9dd3-dfb814b03f3a"&gt;
+  &lt;extendedMetaData /&gt;
+  &lt;ExtendedPropertiesCollection&gt;
+    &lt;extendee type="Sage.Platform.Orm.Entities.OrmRelationship" /&gt;
+  &lt;/ExtendedPropertiesCollection&gt;
+  &lt;parentProperty id="a8d8f290-b81d-4a42-a31a-89ed61fdf19b" lastModifiedUtc="2014-12-30T23:13:59.6078692Z" name="SalesOrderQuotes" audited="false"&gt;
+    &lt;ExtendedPropertiesCollection&gt;
+      &lt;extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty"&gt;
+        &lt;extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131"&gt;
+          &lt;OrmEntityPropertySDataExtension generate="true" /&gt;
+        &lt;/extender&gt;
+      &lt;/extendee&gt;
+    &lt;/ExtendedPropertiesCollection&gt;
+    &lt;SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7"&gt;
+      &lt;RelationshipDataType /&gt;
+    &lt;/SystemDataType&gt;
+  &lt;/parentProperty&gt;
+  &lt;childProperty id="68588c10-9234-4e02-9d77-fbf16d298f64" lastModifiedUtc="2014-12-30T23:15:05.1368692Z" name="SalesOrderQuote" audited="false"&gt;
+    &lt;ExtendedPropertiesCollection&gt;
+      &lt;extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty"&gt;
+        &lt;extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131"&gt;
+          &lt;OrmEntityPropertySDataExtension generate="true" /&gt;
+        &lt;/extender&gt;
+      &lt;/extendee&gt;
+    &lt;/ExtendedPropertiesCollection&gt;
+    &lt;SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7"&gt;
+      &lt;RelationshipDataType /&gt;
+    &lt;/SystemDataType&gt;
+  &lt;/childProperty&gt;
+  &lt;column&gt;
+    &lt;OrmRelationshipColumn id="20b9f0ce-7466-41a3-842b-43751e9a78e2" parentPropertyId="17935caf-63d3-493c-a723-467cd86393d3" childPropertyId="63667e64-13b5-4d9c-b5f1-9b7473ef51c8" ordinal="0" /&gt;
+  &lt;/column&gt;
+&lt;/relationship&gt;</string>
+  </restoreData>
+</DeletedItem>

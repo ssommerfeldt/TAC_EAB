@@ -1,39 +1,36 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
- */
-define('Mobile/SalesLogix/Fields/AddressField', [
-    'dojo/_base/declare',
-    'Sage/Platform/Mobile/Fields/EditorField',
-    'Sage/Platform/Mobile/FieldManager'
-], function(
-    declare,
-    EditorField,
-    FieldManager
-) {
-    var control = declare('Mobile.SalesLogix.Fields.AddressField', [EditorField], {
-        widgetTemplate: new Simplate([
-            '<label for="{%= $.name %}">{%: $.label %}</label>',
-            '<button class="button simpleSubHeaderButton" aria-label="{%: $.lookupLabelText %}"><span>{%: $.lookupText %}</span></button>',
-            '<div data-dojo-attach-point="inputNode"></div>'
-        ]),
-        attributeMap: {
-            addressContent: {
-                node: 'inputNode',
-                type: 'innerHTML'
-            }
-        },
-        rows: 4,
-        lookupLabelText: 'edit',
-        emptyText: '',
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import EditorField from 'argos/Fields/EditorField';
+import FieldManager from 'argos/FieldManager';
+import getResource from 'argos/I18n';
 
-        _enableTextElement: function() {
-        },
-        _disableTextElement: function() {
-        },
-        setText: function(text) {
-            this.set('addressContent', text);
-        }
-    });
+const resource = getResource('addressField');
 
-    return FieldManager.register('address', control);
+const control = declare('crm.Fields.AddressField', [EditorField], {
+  widgetTemplate: new Simplate([
+    '<label for="{%= $.name %}">{%: $.label %}</label>',
+    '<button class="button simpleSubHeaderButton {% if ($$.iconClass) { %} {%: $$.iconClass %} {% } %}" aria-label="{%: $.lookupLabelText %}"><span>{%: $.lookupText %}</span></button>',
+    '<div data-dojo-attach-point="inputNode"></div>',
+  ]),
+
+  iconClass: 'fa fa-pencil fa-lg',
+
+  attributeMap: {
+    addressContent: {
+      node: 'inputNode',
+      type: 'innerHTML',
+    },
+  },
+  rows: 4,
+  lookupLabelText: resource.lookupLabelText,
+  emptyText: resource.emptyText,
+
+  _enableTextElement: function _enableTextElement() {},
+  _disableTextElement: function _disableTextElement() {},
+  setText: function setText(text) {
+    this.set('addressContent', text);
+  },
 });
+
+lang.setObject('Mobile.SalesLogix.Fields.AddressField', control);
+export default FieldManager.register('address', control);

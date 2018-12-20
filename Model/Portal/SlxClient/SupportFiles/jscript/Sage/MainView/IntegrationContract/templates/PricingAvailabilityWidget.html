@@ -1,0 +1,20 @@
+<div>
+    <div data-dojo-type="dijit.Dialog" data-dojo-attach-point="_dialog" data-dojo-attach-event="onCancel:_btnCancel_OnClick" style="width: 500px">
+        <div data-dojo-type="dijit.form.Form">
+            <div data-dojo-attach-point="divLoadingMessage">
+                <br />
+                <label style="padding-left:100px;font-size:16px;font-weight:bold">{%= Sage.Utility.htmlEncode($.pageLoading_Caption) %}</label>
+            </div>
+            <div data-dojo-attach-point="divErrorMessage" class="display-none">
+                <br />
+                <label data-dojo-attach-point="lblErrorMessage" style="padding-left:10px;font-size:12px;"></label>
+            </div>
+            <div data-dojo-type="dijit.layout.ContentPane" data-dojo-attach-point="warehouses_Container"></div>
+
+            <div align="right" style="margin-top:10px">
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnOK" data-dojo-attach-event="onClick:_btnOk_OnClick">{%= Sage.Utility.htmlEncode($.ok_Caption) %}</div>
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnCancel" data-dojo-attach-event="onClick:_btnCancel_OnClick" style="margin-left:5px;">{%= Sage.Utility.htmlEncode($.cancel_Caption) %}</div>
+            </div>
+        </div>
+    </div>
+</div>

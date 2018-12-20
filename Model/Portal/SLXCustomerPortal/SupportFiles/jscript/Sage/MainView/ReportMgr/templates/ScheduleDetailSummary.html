@@ -1,4 +1,4 @@
-﻿[
+[
   '<table style="width:100%">',
   '    <tbody>',
   '    <col style="width:200px" />',
@@ -13,6 +13,10 @@
   '                <tr id="{%= $.id %}_ScheduleDetailSummary_txtDescription">',
   '                    <td class="SummaryCaption">{%= $.txtDescription_Caption || "Description:" %} </td>',
   '                    <td class="DataItem">{%= Sage.Utility.htmlEncode($.entity.job.$descriptor) %}</td>',
+  '                </tr>',
+  '                <tr id="{%= $.id %}_ScheduleDetailSummary_txtReportName">',
+  '                    <td class="SummaryCaption">{%= $.txtReportName_Caption || "Report:" %} </td>',
+  '                    <td class="DataItem">{%= Sage.Utility.htmlEncode(Sage.MainView.ReportMgr.ReportManagerFormatter.formatTemplateName($.entity.parameters)) %}</td>',
   '                </tr>',
   '                <tr id="{%= $.id %}_ScheduleDetailSummary_txtScheduledBy">',
   '                    <td class="SummaryCaption">{%= $.txtScheduledBy_Caption || "Scheduled By:" %}</td>',

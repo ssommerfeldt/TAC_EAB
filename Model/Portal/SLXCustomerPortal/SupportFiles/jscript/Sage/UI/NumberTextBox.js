@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/NumberTextBox", [
        'dijit/form/NumberTextBox',
        'dijit/form/ValidationTextBox',
        'dojo/number',
@@ -38,10 +38,13 @@ function (NumberTextBox, ValidationTextBox, number, Utility, declare) {
             this.inherited(arguments); // Dojo will format this as a decimal
 
             // HACK
-            if (this.constraints.type === 'percent') {
-                var whole = Math.round(this.value * 10000) / 100;
-                this.textbox.value = number.format(whole,  { locale: Sys.CultureInfo.CurrentCulture.name });
+            if (this.constraints.type === 'percent' || this.formatType === 'Percent') {
+                // var whole = Math.round(this.value * 10000) / 100;
+                // this.textbox.value = number.format(whole, { locale: Sys.CultureInfo.CurrentCulture.name });
+                var whole = ((this.value * 10000) / 100);
+                this.textbox.value = number.format(whole, { places: this.constraints.places, locale: Sys.CultureInfo.CurrentCulture.name });
             }
+
             this.onFocusFiring = false;
         },
         _onBlur: function () {
@@ -53,7 +56,13 @@ function (NumberTextBox, ValidationTextBox, number, Utility, declare) {
                 if (this.textbox.value.indexOf(Sys.CultureInfo.CurrentCulture.numberFormat.PercentSymbol) === -1) {
                     var enteredValue = this.getTextBoxValue();
                     var toDecimal = enteredValue / 100;
-                    this.set('displayedValue', number.format(toDecimal,  { locale: Sys.CultureInfo.CurrentCulture.name })); // trick dojo into thinking we entered a decimal
+                    if (typeof (this.constraints.places) === 'number') {
+                        this.set('displayedValue', number.format(toDecimal, { places: this.constraints.places + 2, locale: Sys.CultureInfo.CurrentCulture.name })); // trick dojo into thinking we entered a decimal
+                    } else if (typeof (this.constraints.places) === 'string' && this.constraints.places.indexOf(',') > 0 && this.constraints.places[2]) {
+                        this.set('displayedValue', number.format(toDecimal, { places: Math.floor(this.constraints.places[2]) + 2, locale: Sys.CultureInfo.CurrentCulture.name }));
+                    } else {
+                        this.set('displayedValue', number.format(toDecimal, { locale: Sys.CultureInfo.CurrentCulture.name }));
+                    }
                 }
             }
             this.onBlurFiring = false;
@@ -88,7 +97,7 @@ function (NumberTextBox, ValidationTextBox, number, Utility, declare) {
             return retVal;
         },
         _sageUINumberTextBox_KeyPress: function (e) {
-            var type = this.constraints.type;
+            var type = typeof this.constraints.type == 'undefined' ? this.formatType : null;
             if (!Utility.restrictToNumberOnKeyPress(e, type)) {
                 dojo.stopEvent(e);
             }
@@ -129,11 +138,16 @@ function (NumberTextBox, ValidationTextBox, number, Utility, declare) {
         getTextBoxValue: function () {
             var results = 0;
             var tbVal = this.textbox.value;
+
+            if (tbVal === '' || tbVal === null) {
+                tbVal = '0';
+            }
+
             if (tbVal.lastIndexOf(Sys.CultureInfo.CurrentCulture.numberFormat.NumberDecimalSeparator) === tbVal.length - 1) {
                 tbVal = tbVal.slice(0, tbVal.length - 1);
             }
 
-                results = number.parse(tbVal, { locale: Sys.CultureInfo.CurrentCulture.name });
+            results = number.parse(tbVal, { locale: Sys.CultureInfo.CurrentCulture.name });
 
             if (isNaN(results)) {
                 results = this.value;

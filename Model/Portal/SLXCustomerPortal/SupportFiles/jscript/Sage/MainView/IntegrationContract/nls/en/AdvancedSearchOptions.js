@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/IntegrationContract/nls/en/AdvancedSearchOptions", (
 { dialogCaption: 'Link to Accounting',
   searchOptionsHeader: 'Search for Matches in ',
   searchOptionsText: 'The following criteria was used in the previous search. Modify the criteria for a new search. Click OK to begin searching.',

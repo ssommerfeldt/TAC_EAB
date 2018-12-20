@@ -1,12 +1,12 @@
-﻿define({
-    colNameScheduleName: 'Планировать',
-    colNameDescription: 'Описание',
-    colNameRunAsUser: 'Запуск от имени',
-    colNameLastExecutionDate: 'Последний запуск',
-    colNameExecutionCount: 'Число выполнений',
-    colNameStartTimeUtc: 'время начала',
-    colNameEndTimeUtc: 'Время окончания',
-    colNamePriority: 'Приоритет',
-    colNameStatus: 'Статус',
-    colNameTemplate: 'Шаблон'
+define("Sage/MainView/ReportMgr/nls/ru/SchedulesListPanelConfig", {
+    "colJobName": "Имя задания",
+    "colNameDescription": "Описание",
+    "colNameRunAsUser": "Запланировал",
+    "colNameLastExecutionDate": "Последнее выполнение",
+    "colNameExecutionCount": "Число выполнений",
+    "colNameStartTimeUtc": "Время начала",
+    "colNameEndTimeUtc": "Время окончания",
+    "colNamePriority": "Приоритет",
+    "colNameStatus": "Статус",
+    "colNameTemplate": "Шаблон"
 });

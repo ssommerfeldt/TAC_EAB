@@ -1,6 +1,6 @@
-define((
-{ newTabTitleText: 'Новое название вкладки',
-  inputTitleText: 'Введите название',
-  copiedPageText: 'Скопированная закладка',
-  showText: 'Отобразить' }
-));
+define("Sage/UI/Dashboard/nls/ru/Dashboard", {
+    "newTabTitleText": "Название новой вкладки",
+    "inputTitleText": "Введите название",
+    "copiedPageText": "Скопированная вкладка",
+    "showText": "Показать"
+});

@@ -1,11 +1,11 @@
-define({
-    colNameDate: 'Дата',
-    colNameScheduleName: 'Description',
-    colNameExecutionType: 'Тип выполнения',
-    colNameRunAs: 'Запуск от имени',
-    colNameScheduledBy: 'Запланировано от имени',
-    colNameReportName: 'Отчет',
-    colNameSize: 'File Size',
-    colNameOutputFormat: 'Формат вывода',
-    colNameReportType: 'Type'
+define("Sage/MainView/ReportMgr/nls/ru/HistoryListPanelConfig", {
+    "colNameDate": "Дата",
+    "colNameScheduleName": "Описание",
+    "colNameExecutionType": "Тип выполнения",
+    "colNameRunAs": "Выполнить от имени",
+    "colNameScheduledBy": "Запланировал",
+    "colNameReportName": "Отчет",
+    "colNameSize": "Размер файла",
+    "colNameOutputFormat": "Формат вывода",
+    "colNameReportType": "Тип"
 });

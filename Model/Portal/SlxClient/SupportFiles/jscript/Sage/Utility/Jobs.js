@@ -1,18 +1,44 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Utility/Jobs", [
     'Sage/Utility',
-    'dijit/registry',
     'dojo/date/locale',
     'dojo/string',
     'dojo/_base/declare',
+    'dojo/dom',
+    'dojo/dom-class',
+    'dojo/dom-construct',
+    'dojo/_base/connect',
     'Sage/UI/Dialogs',
     'dojo/i18n!./nls/Jobs',
     'dijit/ProgressBar',
     'Sage/UI/Controls/_DialogHelpIconMixin',
+    'Sage/Data/SDataServiceRegistry',
     'dojo/_base/lang',
-    'dojo/_base/array'
+    'dojo/_base/array',
+    'dijit/registry',
+    'dijit/form/Button',
+    'dijit/Dialog'    
 ],
-function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsStrings, dijitProgressBar, dialogHelpIconMixin, lang, dojoArray) {
+function (
+    utility,
+    dateLocale,
+    dojoString,
+    declare,
+    dDom,
+    domClass,
+    domConstruct,
+    connect,
+    dialogs,
+    nlsStrings,
+    dijitProgressBar,
+    dialogHelpIconMixin,
+    sDataServiceRegistry,
+    lang,
+    dojoArray,
+    dijitReg,
+    Button,
+    Dialog
+) {
     Sage.namespace('Utility.Jobs');
     lang.mixin(Sage.Utility.Jobs, {
         _intervalId: null,
@@ -22,6 +48,7 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
         _pollIntervalInSeconds: 5,
         progressDialog: false,
         progressBar: false,
+        cancelButton: null,
         /**
         * Triggers a job for immediate execution and displays a progress dialog.
         * @param {Object} options - Options for the function.
@@ -43,12 +70,12 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
         * @param {boolean} [options.ensureZeroFilters] - Forces a check to ensure no filters are applied.
         */
         triggerJobAndDisplayProgressDialog: function (options) {
-            var self = this;
-            self._reset();
+            this._reset();
             if (!this._validateOptions(options)) {
                 return;
             }
-            self._options = {
+
+            this._options = {
                 key: options.key,
                 closable: (typeof options.closable === 'boolean') ? options.closable : true,
                 infoMessage: (typeof options.infoMessage === 'string') ? options.infoMessage : '',
@@ -64,35 +91,31 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
                 ensureZeroFilters: options.ensureZeroFilters === true ? true : false
             };
 
-            if (self._options.ensureZeroFilters && self._getAppliedFilterCount() > 0) {
-                dialogs.showError(nlsStrings.filtersAppliedError, self._options.dialogTitle);
-                return;
-            }
-
             var triggerJobOptions = {
                 descriptor: options.descriptor,
                 key: options.key,
                 parameters: options.parameters,
-                success: function (result) {
-                    self._showProgressDialog(result.response ? result.response.triggerId : result.$key);
-                },
-                failure: function (xhr) {
-                    var errorMsg = self._getErrorMessage(xhr);
-                    if (self._options.showErrorNotification) {
-                        dialogs.showError(errorMsg, self._options.dialogTitle);
+                success: lang.hitch(this, function (result) {
+                    this._showProgressDialog(result.response ? result.response.triggerId : result.$key);
+                }),
+                failure: lang.hitch(this, function (xhr, sdata) {
+                    if (this._options.showErrorNotification) {
+                        var msg = this._errorMessageHandlingBaseOffRequestStatus(xhr.status, true);
+                        if (msg === "") {
+                            utility.ErrorHandler.handleHttpError(xhr, sdata);
+                        } else {
+                            dialogs.showError(msg, this._options.title);
+                        }
                     }
-                    if (self._options.failure) {
-                        self._options.failure(errorMsg);
+                    if (this._options.failure) {
+                        var errorMsg = this._getErrorMessage(xhr);
+                        this._options.failure(errorMsg);
                     }
-                }
+                })
             };
             this._jobService = Sage.Services.getService('JobService');
             this._jobService.scheduleJob(triggerJobOptions);
-            dojo.publish('/job/execution/changed', [self]);
-        },
-        _getAppliedFilterCount: function () {
-            var list = registry.byId('list');
-            return list && list.getAppliedFilterCount();
+            connect.publish('/job/execution/changed', [this]);
         },
         formatElapsedTime: function (elapsedTime) {
             if (!elapsedTime) {
@@ -109,8 +132,8 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
                 return '';
             }
             //The substr function takes out the "/Date(" part, and the parseInt function gets the integer and ignores the ")/" at the end. The resulting number is passed into the Date constructor.
-            var dateVar = new Date(parseInt(jsonDate.substr(6)));
-            return dateLocale.format(dateVar, { selector: 'datetime', fullYear: true });
+            var dateVar = new Date(parseInt(jsonDate.substr(6), 10));
+            return dateLocale.format(dateVar, { selector: 'datetime', fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name });
         },
         formatUser: function (user) {
             return user ? user.$descriptor : '';
@@ -120,6 +143,44 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
                 return nlsStrings.repeatIndefinitely;
             }
             return repeatCount;
+        },
+        formatJobResultGrid: function (rowValue, rowObj) {
+            // attempts to sort the results field in a dgrid
+            var result = rowValue;
+            console.log("formatJobResultLink:  rowValue: %o | rowObj: %o", rowValue, rowObj);
+            return !result ? '' : Sage.Utility.Jobs.formatJobResultLink(result, rowObj.trigger);
+        },
+        formatJobResult: function (item) {
+            //if this was a job which wrote to the result property to format the display as a link, i.e. to open an attachment or redirect to an entity page,
+            //the result should be in the format of a URI i.e. SlxAttachment\\ID or SlxReport\\ID or EntityRedirect\\Entity\\ID
+            var result = item.result;
+            return !result ? '' : Sage.Utility.Jobs.formatJobResultLink(result, item.trigger);
+        },
+        formatJob: function (value) {
+            return !value ? '' : Sage.Utility.Jobs.formatJobResultLink(value.result, value.trigger);
+        },
+        formatJobResultLink: function (result, trigger) {
+            if (result && typeof result === 'string') {
+                var parts = result.split('://');
+                if (parts.length === 1) {
+                    return parts[0];
+                } else {
+                    if (parts.length > 1) {
+                        switch (parts[0]) {
+                            case "SlxAttachment":
+                                return dojoString.substitute('<a href="javascript: Sage.Utility.File.Attachment.getAttachment(\'${1}\');" title="${0}">${0}</a>',
+                                    [trigger ? trigger.$descriptor : '', parts[1]]);
+                            case "GoToEntity":
+                                return dojoString.substitute('<a href="${0}.aspx?entityid=${1}&modeid=Detail">${2}</a>',
+                                    [parts[1], parts[2], trigger ? trigger.$descriptor : '']);
+                            case "GoToGroup":
+                                return dojoString.substitute('<a href="javascript: Sage.Utility.Jobs.gotoGroup(\'${1}\',\'${2}\');" title="${0}">${0}</a>',
+                                    [trigger ? trigger.$descriptor : '', parts[1], parts[2]]);
+                        }
+                    }
+                }
+            }
+            return '';
         },
         getTriggerDescription: function (trigger) {
             if (trigger) {
@@ -140,7 +201,122 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
                 maximum: 100,
                 value: progress
             });
-            return progressBar;
+            return progressBar.domNode;
+        },
+        getParameterRunAsUser: function (parameters) {
+            if (parameters) {
+                var userId = this._getParameterValue(parameters, "RunAsUserId");
+                return utility.getUserName(userId);
+            }
+            return '';
+        },
+        refreshList: function (tabId) {
+            try {
+                var panel = dijitReg.byId('list');
+                if (panel) {
+                    var grpContextSvc = Sage.Services.getService('ClientGroupContext');
+                    if (grpContextSvc) {
+                        var ctx = grpContextSvc.getContext();
+                        if (tabId === ctx.CurrentGroupID) {
+                            panel.refreshView(tabId);
+                        }
+                    }
+                }
+            }
+            catch (e) {
+            }
+        },
+        /**
+        * Return the id of the current group in the listview.
+        * @returns {string} - The id of the current group in the listview.
+        */
+        getCurrentGroupId: function () {
+            var svc = Sage.Services.getService('ClientGroupContext');
+            var context = svc.getContext();
+            return context.CurrentGroupID;
+        },
+        getLookupConditionsForJob: function () {
+            var conditions = [];
+            var grpContextSvc = Sage.Services.getService('ClientGroupContext');
+            if (grpContextSvc) {
+                var contextService = grpContextSvc.getContext();
+                if (contextService && contextService.CurrentGroupID === "LOOKUPRESULTS" && contextService.LookupResultsConditions) {
+                    var lookupConditions = Sys.Serialization.JavaScriptSerializer.deserialize(contextService.LookupResultsConditions);
+                    dojoArray.forEach(lookupConditions, lang.hitch(this, function (condition) {
+                        conditions.push({
+                            dataPath: this._getDataPathFromLayout(condition.fieldname),
+                            op: this._getConditionValue(condition.operator),
+                            value: condition.val
+                        });
+                    }));
+                }
+            }
+            return conditions;
+        },
+        _getDataPathFromLayout: function (alias) {
+            var panel = dijitReg.byId('list');
+            var layout = panel._configurationProvider._currentConfiguration ? panel._configurationProvider._currentConfiguration.layout : null;
+            for (var i = 0; i < layout.length; i++) {
+                var item = layout[i];
+                if (item && item.alias === alias) {
+                    return item.dataPath;
+                }
+            }
+            return alias;
+        },
+        getFiltersForJob: function () {
+            var filters = [];
+            var panel = dijitReg.byId('list');
+            var filterManager = panel.get('filterManager');
+            var layout = panel._configurationProvider._currentConfiguration ? panel._configurationProvider._currentConfiguration.layout : null;
+            var tableAliases = panel._configurationProvider._currentConfiguration ? panel._configurationProvider._currentConfiguration.tableAliases : {};
+
+            var filter = null;
+            var definition = null;
+            var dataPath = null;
+            var filterType;
+
+            for (var key in filterManager._applied) {
+                if (filterManager._applied.hasOwnProperty(key)) {
+                    filter = filterManager._applied[key];
+                    if (filter) {
+                        definition = filterManager._definitionSet[key];
+                        filterType = (definition.details.rangeFilter && 'rangeFilter') || (definition.details.distinctFilter && 'distinctFilter') || (definition.details.lookupFilter && 'lookupFilter');
+                        dataPath = this._resolveProperty(layout, tableAliases, definition.propertyName);
+                        switch (filterType) {
+                            case 'rangeFilter':
+                                filters.push({
+                                    filterName: definition.filterName,
+                                    tableName: dataPath.tableName,
+                                    field: dataPath.alias,
+                                    filterType: 'Range',
+                                    ranges: this._getFilterValues(filter, filterType)
+                                });
+                                break;
+                            case 'distinctFilter':
+                                filters.push({
+                                    filterName: definition.filterName,
+                                    tableName: dataPath.tableName,
+                                    field: dataPath.alias,
+                                    filterType: 'Distinct',
+                                    value: this._getFilterValues(filter, filterType)
+                                });
+                                break;
+                            case 'lookupFilter':
+                                filters.push({
+                                    filterName: definition.filterName,
+                                    filterType: 'Lookup',
+                                    tableName: dataPath.tableName,
+                                    field: dataPath.alias,
+                                    op: filter.value.operator,
+                                    value: [filter.value.value]
+                                });
+                                break;
+                        }
+                    }
+                }
+            }
+            return filters;
         },
         _validateOptions: function (options) {
             if (!options) {
@@ -166,13 +342,6 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
             var errorMsg = dojoString.substitute(nlsStrings.unexpectedErrorMessage, [this._options.key]);
             return errorMsg;
         },
-        getParameterRunAsUser: function (parameters) {
-            if (parameters) {
-                var userId = this._getParameterValue(parameters, "RunAsUserId");
-                return utility.getUserName(userId);
-            }
-            return '';
-        },
         _getParameterValue: function (parameters, name) {
             var value = "";
             if (parameters) {
@@ -194,7 +363,7 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
                     this.progressBar.update({ title: options.title });
                 }
                 if (options && typeof options.infoMessage === 'string') {
-                    var messageDiv = dojo.byId('progressDialogMessageDiv');
+                    var messageDiv = dDom.byId('progressDialogMessageDiv');
                     if (messageDiv) {
                         messageDiv.innerHTML = options.infoMessage;
                     }
@@ -202,23 +371,22 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
             }
         },
         _showProgressDialog: function (triggerId) {
-            var self = this;
-            self._triggerId = triggerId;
-            var options = self._options;
+            this._triggerId = triggerId;
+            var options = this._options;
 
-            this.progressDialog = new dijit.Dialog({
+            this.progressDialog = new Dialog({
                 title: options.title,
-                style: dojo.string.substitute('width: ${0}px;', [options.width]),
+                style: dojoString.substitute('width: ${0}px;', [options.width]),
                 closable: options.closable
             });
 
             //Informational Message
-            var messageDiv = new dojo.create('div', { innerHTML: options.infoMessage, style: 'text-align: left; margin-top: 5px; margin-bottom: 10px', id: 'progressDialogMessageDiv' });
+            var messageDiv = new domConstruct.create('div', { innerHTML: options.infoMessage, style: 'text-align: left; margin-top: 5px; margin-bottom: 10px', id: 'progressDialogMessageDiv' });
             this.progressDialog.containerNode.appendChild(messageDiv);
-            var linkDiv = new dojo.create('div', { style: 'text-align: left; margin-top: 5px; margin-bottom: 10px', id: 'progressDialogLinkDiv', "class": 'display-none' });
+            var linkDiv = new domConstruct.create('div', { style: 'text-align: left; margin-top: 5px; margin-bottom: 10px', id: 'progressDialogLinkDiv', "class": 'display-none' });
             this.progressDialog.containerNode.appendChild(linkDiv);
 
-            this.progressBar = new dijit.ProgressBar({
+            this.progressBar = new dijitProgressBar({
                 style: 'margin-top: 10px; margin-bottom: 20px',
                 indeterminate: options.indeterminate,
                 maximum: options.maximum,
@@ -229,24 +397,21 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
 
             //Dismiss button
             if (options.showDismissButton) {
-                var cancelButton = new dijit.form.Button({
+                this.cancelButton = new Button({
                     label: nlsStrings.cancelButtonCaption,
-                    id: 'progressDialogCancelButton',
                     style: 'margin-right: 3px;',
-                    dojoType: 'dijit.form.Button',
-                    onClick: function (result) {
-                        self._cancelJob();
-                    }
+                    onClick: lang.hitch(this, function () {
+                        this._cancelJob();
+                    })
                 });
-                var closeButton = new dijit.form.Button({
+                var closeButton = new Button({
                     label: nlsStrings.closeButtonCaption,
-                    id: 'progressDialogCloseButton',
-                    onClick: function (result) {
-                        self._closeProgressDialog();
-                    }
+                    onClick: lang.hitch(this, function () {
+                        this._closeProgressDialog();
+                    })
                 });
-                var buttonDiv = new dojo.create('div', { id: 'progressDialogButtonDiv', style: 'text-align: center;' });
-                buttonDiv.appendChild(cancelButton.domNode);
+                var buttonDiv = new domConstruct.create('div', { id: 'progressDialogButtonDiv', style: 'text-align: center;' });
+                buttonDiv.appendChild(this.cancelButton.domNode);
                 buttonDiv.appendChild(closeButton.domNode);
                 this.progressDialog.containerNode.appendChild(buttonDiv);
             }
@@ -270,101 +435,276 @@ function (utility, registry, dateLocale, dojoString, declare, dialogs, nlsString
             if (this.progressDialog) {
                 this.progressDialog.hide();
                 this.progressDialog.destroyDescendants();
+                if (this.cancelButton) {
+                    this.cancelButton.destroyRecursive();
+                }
             }
         },
         _updateProgress: function () {
-            var self = this;
             var jobService = Sage.Services.getService('JobService');
             var options = {
                 triggerId: this._triggerId,
-                success: function (execution) {
+                success: lang.hitch(this, function (execution, sdata) {
                     options = { progress: execution.progress };
-                    self._updateProgressDialog(options);
-                    var cancelButton = dijit.byId('progressDialogCancelButton');
+                    this._updateProgressDialog(options);
                     if (execution.status === 'Complete') {
-                        clearInterval(self._intervalId);
-                        var resultContainer = dojo.byId('progressDialogMessageDiv');
+                        domClass.add(this.cancelButton, "display-none");
+                        clearInterval(this._intervalId);
+                        var resultContainer = dDom.byId('progressDialogMessageDiv');
                         if (resultContainer) {
                             resultContainer.innerHTML = nlsStrings.jobCompletedSuccessfully;
                         }
-                        var linkContainer = dojo.byId('progressDialogLinkDiv');
+                        var linkContainer = dDom.byId('progressDialogLinkDiv');
                         if (linkContainer && execution.result) {
                             var parts = execution.result.split('://');
                             if (parts.length > 1) {
-                                dojo.removeClass(linkContainer, 'display-none');
-                                linkContainer.innerHTML = dojoString.substitute('<a onclick="Sage.Utility.Jobs._closeProgressDialog();" href="javascript: Sage.Utility.File.Attachment.getAttachment(\'${1}\');" title="${0}">${0}</a>',
-                                    [execution.trigger ? execution.trigger.$descriptor : '', parts[1]]);
+                                domClass.remove(linkContainer, 'display-none');
+                                switch (parts[0]) {
+                                    case "SlxAttachment":
+                                        linkContainer.innerHTML = dojoString.substitute('<a onclick="Sage.Utility.Jobs._closeProgressDialog();" href="javascript: Sage.Utility.File.Attachment.getAttachment(\'${1}\');" title="${0}">${0}</a>',
+                                            [execution.trigger ? execution.trigger.$descriptor : '', parts[1]]);
+                                        break;
+                                    case "GoToEntity":
+                                        linkContainer.innerHTML = dojoString.substitute('<a onclick="Sage.Utility.Jobs._closeProgressDialog();" href="${0}.aspx?entityid=${1}&modeid=Detail">${2}</a>',
+                                            [parts[1], parts[2], execution.trigger ? execution.trigger.$descriptor : '']);
+                                        break;
+                                    case "GoToGroup":
+                                        linkContainer.innerHTML = dojoString.substitute('<a onclick="Sage.Utility.Jobs._closeProgressDialog();" href="javascript: Sage.Utility.Jobs.gotoGroup(\'${1}\',\'${2}\');" title="${0}">${0}</a>',
+                                            [execution.trigger ? execution.trigger.$descriptor : '', parts[1], parts[2]]);
+                                }
                             }
                         }
-                        if (cancelButton) {
-                            cancelButton.destroyRecursive();
+                        if (this.cancelButton) {
+                            this.cancelButton.destroyRecursive();
                         }
-                        if (self._options.showCompleteNotification) {
-                            dialogs.showInfo(nlsStrings.jobCompletedSuccessfully, self._options.title);
+                        if (this._options.showCompleteNotification) {
+                            dialogs.showInfo(nlsStrings.jobCompletedSuccessfully, this._options.title);
                         }
-                        if (self._options.complete) {
-                            self._options.complete(execution);
+                        if (this._options.complete) {
+                            this._options.complete(execution);
                         }
-                        dojo.publish('/job/execution/changed', [self]);
+                        this._refreshFavorites();
+                        connect.publish('/job/execution/changed', [this]);
                     }
 
                     if (execution.status === 'Error') {
-                        clearInterval(self._intervalId);
+                        clearInterval(this._intervalId);
                         dialogs.closeProgressBar();
-                        if (self._options.showErrorNotification) {
-                            var errorMsg = execution.statusText ? self._getErrorMessage(execution) : self._getUnexpectedErrorMessage();
-                            dialogs.showError(errorMsg, self._options.title);
+                        if (this._options.showErrorNotification) {
+                            utility.ErrorHandler.handleHttpError(execution, sdata);
                         }
-                        if (self._options.failure) {
-                            self._options.failure(execution);
+                        if (this._options.failure) {
+                            this._options.failure(execution);
                         }
-                        if (cancelButton) {
-                            cancelButton.destroyRecursive();
+                        if (this.cancelButton) {
+                            this.cancelButton.destroyRecursive();
                         }
                     }
-                },
-                failure: function (execution) {
-                    clearInterval(self._intervalId);
+                }),
+                failure: lang.hitch(this, function (execution, sdata) {
+                    clearInterval(this._intervalId);
                     dialogs.closeProgressBar();
-                    if (self._options.showErrorNotification) {
-                        var errorMsg = execution.statusText ? self._getErrorMessage(execution) : self._getUnexpectedErrorMessage();
-                        dialogs.showError(errorMsg, self._options.title);
+                    if (this._options.showErrorNotification) {
+                        var msg = this._errorMessageHandlingBaseOffRequestStatus(execution.status, true);
+                        if (msg === "") {
+                            utility.ErrorHandler.handleHttpError(execution, sdata);
+                        } else {
+                            dialogs.showError(msg, this._options.title);
+                        }
                     }
-                    if (self._options.failure) {
-                        self._options.failure(execution);
+                    if (this._options.failure) {
+                        this._options.failure(execution);
                     }
-                    var cancelButton = dijit.byId('progressDialogCancelButton');
-                    if (cancelButton) {
-                        cancelButton.destroyRecursive();
+                    if (this.cancelButton) {
+                        this.cancelButton.destroyRecursive();
                     }
-                }
+                })
             };
             jobService.getExecution(options);
         },
-        refreshList: function (tabId) {
-            try {
-                var panel = dijit.byId('list');
-                if (panel) {
-                    var grpContextSvc = Sage.Services.getService('ClientGroupContext');
-                    if (grpContextSvc) {
-                        var ctx = grpContextSvc.getContext();
-                        if (tabId === ctx.CurrentGroupID) {
-                            panel.refreshView(tabId);
+        _getConditionValue: function (condition) {
+            switch (condition) {
+                case 'sw':
+                    return 'STARTING WITH';
+                case 'ne':
+                    return '<>';
+                case 'gt':
+                    return '>';
+                case 'ge':
+                    return '>=';
+                case 'lt':
+                    return '<';
+                case 'le':
+                    return '<=';
+                case 'like':
+                    return 'LIKE';
+                default:
+                    return '=';
+            }
+        },
+        _parseProperty: function (propertyName, last) {
+            var parts = propertyName.split(".");
+            if (last) {
+                return parts[parts.length - 1];
+            } else {
+                return propertyName.substr(0, propertyName.length - parts[parts.length - 1].length - 1);
+            }
+        },
+        _getFilterValues: function (filter, filterType) {
+            var values = [];
+            for (var name in filter) {
+                if (filter.hasOwnProperty(name)) {
+                    switch (filterType) {
+                        case 'rangeFilter':
+                            values.push({ lower: filter[name].lower, upper: filter[name].upper });
+                            break;
+                        case 'distinctFilter':
+                            values.push(name);
+                            break;
+                        case 'lookupFilter':
+                            break;
+                    }
+                }
+            }
+            return values;
+        },
+        _resolveProperty: function (layout, tableAliases, propertyName) {
+            if (layout) {
+                var dataPath = this._getFilterDataPath(propertyName, layout, tableAliases, false, false);
+                if (dataPath) {
+                    return dataPath;
+                } else {
+                    dataPath = this._getFilterDataPath(propertyName, layout, tableAliases, true, false);
+                    if (dataPath) {
+                        return dataPath;
+                    } else {
+                        dataPath = this._getFilterDataPath(propertyName, layout, tableAliases, true, true);
+                        return dataPath ? dataPath : propertyName;
+                    }
+                }
+            }
+            return propertyName;
+        },
+        _resolveAliasProperty: function (property, tableAliases) {
+            var fieldName = property;
+            var tableName = '';
+            if (property.indexOf("_") > -1) {
+                var parts = property.split("_");
+                if (parts[0].length === 2) {
+                    fieldName = property.slice(parts[0].length + 1); // remove length of table alias and '_' to get the fieldname
+                    dojoArray.forEach(tableAliases, function (dataPath) {
+                        if (parts[0] === dataPath.alias) {
+                            tableName = dataPath.tableName;
+                            return;
+                        }
+                    });
+                }
+            }
+            return { tableName: tableName, alias: fieldName };
+        },
+        _getFilterDataPath: function (propertyName, layout, tableAliases, splitPath, resolveByItemDataPath) {
+            var i, x, item, alias, table, tableAlias, propertyPathSplit, layoutProperty, dataPathSplit;
+
+            for (i = 0; i < layout.length; i++) {
+                item = layout[i];
+                layoutProperty = item.propertyPath;
+                if (splitPath) {
+                    propertyPathSplit = item.propertyPath && item.propertyPath.split('.');
+                    if (propertyPathSplit.length === 2) {
+                        layoutProperty = propertyPathSplit[1];
+                    }
+                }
+                if (layoutProperty === propertyName) {
+                    if (item.propertyPath.indexOf(".") > -1) {
+                        return this._resolveAliasProperty(item.alias, tableAliases);
+                    } else {
+                        table = item.dataPath && item.dataPath.split(':')[0];
+                        if (/^[a-z]\d+_/i.test(item.alias)) {
+                            alias = item.alias;
+                        } else {
+                            tableAlias = table && tableAliases[table.toUpperCase()];
+                            if (tableAlias) {
+                                alias = tableAlias + '.' + item.alias;
+                            }
+                        }
+                    }
+                    return { tableName: table, alias: alias ? alias : item.alias };
+                }
+                if (resolveByItemDataPath && item.dataPath !== "") {
+                    dataPathSplit = item.dataPath.split(".");
+                    if (dataPathSplit.length > 1) {
+                        var path = dataPathSplit[dataPathSplit.length - 1];
+                        var parts = path.split('!');
+                        if (parts.length > 1) {
+                            for (x = 0; x < tableAliases.length; x++) {
+                                if (tableAliases[x].tableName === parts[0]) {
+                                    return { tableName: tableAliases[x].tableName, alias: parts[1] };
+                                }
+                            }
                         }
                     }
                 }
             }
-            catch (e) {
-            }
+            return null;
         },
-        /**
-        * Return the id of the current group in the listview.
-        * @returns {string} - The id of the current group in the listview.
-        */
-        getCurrentGroupId: function () {
-            var svc = Sage.Services.getService('ClientGroupContext');
-            var context = svc.getContext();
-            return context.CurrentGroupID;
+        gotoGroup: function (entity, groupId) {
+            var service = sDataServiceRegistry.getSDataService('system');
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(service)
+                .setOperationName('setGroupContext');
+            var entry = {
+                request: {
+                    'currentGroupId': groupId,
+                    'currentFamily:': entity,
+                    'clearCache': true /* Clear the group cache so that the group created in the job will be available in the client. */
+                }
+            };
+            request.execute(entry, {
+                success: function () {
+                    window.parent.location = dojoString.substitute("${0}.aspx?gid=${1}&modeid=list", [entity, groupId]);
+                },
+                scope: this
+            });
+        },
+        // used by other namespaces to get a "read-able" error message based on the status.
+        getRequestMessageFromStatus: function (status) {
+            return this._errorMessageHandlingBaseOffRequestStatus(status, false);
+        },
+        _errorMessageHandlingBaseOffRequestStatus: function (status, useDefault) {
+            var errorMsg = "";
+            switch (status) {
+                case 410:
+                    errorMsg = nlsStrings.dataExpiredRefreshPage;
+                    break;
+                case 500:
+                    errorMsg = nlsStrings.JobServerviceOff;
+                    break;
+                default:
+                    errorMsg = useDefault ? "" : nlsStrings.generalCheckJobService;
+                    break;
+            }
+            return errorMsg;
+        },
+        _refreshFavorites: function () {
+            var service = sDataServiceRegistry.getSDataService('system');
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(service);
+            var operation = 'refreshFavorites';
+
+            request.setResourceKind('groups');
+            request.setOperationName(operation);
+
+            var entry = {
+                '$name': operation,
+                request: {}
+            };
+
+            request.execute(entry, {
+                success: function (data) {
+                },
+                failure: function (xhr, sdata) {
+                    console.log("failed updating group favorites");
+                },
+                scope: this
+            });
         }
     });
     return Sage.Utility.Jobs;

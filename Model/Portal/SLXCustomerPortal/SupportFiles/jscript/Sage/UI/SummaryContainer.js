@@ -1,11 +1,12 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/SummaryContainer", [
         'dijit/_Widget',
         'Sage/_Templated',
         'Sage/UI/SummaryContents',
+        'dojo/i18n!./nls/SummaryContainer',
         'dojo/_base/declare'
 ],
-function (_Widget, _Templated, summaryContents, declare) {
+function (_Widget, _Templated, summaryContents, i18nStrings,declare) {
     var summaryContainer = declare('Sage.UI.SummaryContainer', [_Widget, _Templated], {
         widgetsInTemplate: false,
         templateLocation: '', // 'SummaryTemplates/Account.html',
@@ -18,7 +19,7 @@ function (_Widget, _Templated, summaryContents, declare) {
         },
         widgetTemplate: new Simplate([
             '<div class="EntityCard">',
-                '<div dojoAttachPoint="contentNode">Loading...</div>',
+                '<div dojoAttachPoint="contentNode">'+i18nStrings.loadingText+'</div>',
             '</div>'
         ]),
         _setEntityAttr: function (entity) {

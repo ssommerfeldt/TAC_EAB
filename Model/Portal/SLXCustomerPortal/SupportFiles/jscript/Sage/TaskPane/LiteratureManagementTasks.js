@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, $get, LitReqResult */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, $get, LitReqResult */
+define("Sage/TaskPane/LiteratureManagementTasks", [
         'Sage/TaskPane/_BaseTaskPaneTasklet',
         'Sage/UI/Dialogs',
         'dojo/i18n!./nls/LiteratureManagementTasks',

@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ReportMgr/nls/en/ReportManagerActions", (
 { txtSelectRecord: 'Please select a record in the list before continuing.',
   txtInvalidSelectionCount: 'You must have at least one record selected before continuing.',
   confirm_Deletion: 'Are you sure you want to delete the selected ${0}?',

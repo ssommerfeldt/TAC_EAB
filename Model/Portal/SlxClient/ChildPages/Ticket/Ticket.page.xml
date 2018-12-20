@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="2c35ff79-bc41-449b-828f-cc54830ae7a5">
+<PortalPage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="2c35ff79-bc41-449b-828f-cc54830ae7a5" disablePageValidation="false">
   <PageAlias>Ticket</PageAlias>
   <SmallImage>[Localization!Global_Images:ticket_16x16]</SmallImage>
   <LargeImage>[Localization!Global_Images:ticket_24x24]</LargeImage>
@@ -15,4 +15,5 @@
   <IsDefaultPage>false</IsDefaultPage>
   <ExcludedGlobalModules />
   <AppliedSecurity>Entities/Ticket/View</AppliedSecurity>
+  <IncludeScript>~/SmartParts/Ticket/TicketActivitiesSubscription.js</IncludeScript>
 </PortalPage>

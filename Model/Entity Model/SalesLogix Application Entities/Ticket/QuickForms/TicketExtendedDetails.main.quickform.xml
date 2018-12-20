@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="2ae88af5-4a2b-436e-9a73-d970f064776b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="2ae88af5-4a2b-436e-9a73-d970f064776b" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-10-19T18:35:55.2534751Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -8,10 +8,16 @@
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload0</MethodName>
-          <CSharpCodeSnippet>var epage = Page as Sage.Platform.WebPortal.EntityPage;
-if (epage != null &amp;&amp; epage.IsInsertMode)
+          <CSharpCodeSnippet>var ticket = (ITicket)BindingSource.Current;
+var epage = Page as Sage.Platform.WebPortal.EntityPage;
+string punchedInUser = ticket.GetOtherUserPunchedIn();
+if (epage != null &amp;&amp; epage.IsInsertMode || !string.IsNullOrEmpty(punchedInUser))
 {
-	cmdSave.Visible = false;
+    cmdSave.Visible = false;
+}
+else
+{
+    cmdSave.Visible = true;
 }</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
@@ -121,6 +127,7 @@ if (epage != null &amp;&amp; epage.IsInsertMode)
                   <AppliedSecurity />
                   <RefreshData>False</RefreshData>
                 </OnChangeAction>
+                <UserDateStamp>true</UserDateStamp>
                 <Required>false</Required>
               </QFTextBox>
             </Control>
@@ -254,6 +261,7 @@ if (problemSolutions.Count == 1)
                 <SeedValue />
                 <DropDownDisplayProperty />
                 <AllowClearingResult>false</AllowClearingResult>
+                <AppendStringValues>false</AppendStringValues>
                 <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
                 <LookupEntityName>TicketProblemType</LookupEntityName>
                 <LookupEntityTypeName>Sage.Entity.Interfaces.ITicketProblemType, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -269,6 +277,7 @@ if (problemSolutions.Count == 1)
                     <PropertyFormatString />
                     <UseAsResult>true</UseAsResult>
                     <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <PickListName />
                     <IsSortable>true</IsSortable>
                     <HideCondition />
                   </LookupProperty>
@@ -280,6 +289,7 @@ if (problemSolutions.Count == 1)
                     <PropertyFormatString />
                     <UseAsResult>true</UseAsResult>
                     <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <PickListName />
                     <IsSortable>true</IsSortable>
                     <HideCondition />
                   </LookupProperty>
@@ -291,6 +301,7 @@ if (problemSolutions.Count == 1)
                     <PropertyFormatString />
                     <UseAsResult>true</UseAsResult>
                     <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <PickListName />
                     <IsSortable>true</IsSortable>
                     <HideCondition />
                   </LookupProperty>
@@ -302,6 +313,7 @@ if (problemSolutions.Count == 1)
                     <PropertyFormatString />
                     <UseAsResult>true</UseAsResult>
                     <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <PickListName />
                     <IsSortable>true</IsSortable>
                     <HideCondition />
                   </LookupProperty>
@@ -365,6 +377,7 @@ if (problemSolutions.Count == 1)
                   <AppliedSecurity />
                   <RefreshData>False</RefreshData>
                 </OnChangeAction>
+                <UserDateStamp>true</UserDateStamp>
                 <Required>false</Required>
               </QFTextBox>
             </Control>
@@ -492,6 +505,7 @@ _entity.TicketSolution.Notes += resolution.Notes;</CSharpCodeSnippet>
                 <SeedValue />
                 <DropDownDisplayProperty />
                 <AllowClearingResult>false</AllowClearingResult>
+                <AppendStringValues>false</AppendStringValues>
                 <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
                 <LookupEntityName>TicketSolutionType</LookupEntityName>
                 <LookupEntityTypeName>Sage.Entity.Interfaces.ITicketSolutionType, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
@@ -507,6 +521,7 @@ _entity.TicketSolution.Notes += resolution.Notes;</CSharpCodeSnippet>
                     <PropertyFormatString />
                     <UseAsResult>true</UseAsResult>
                     <ExcludeFromFilters>false</ExcludeFromFilters>
+                    <PickListName />
                     <IsSortable>true</IsSortable>
                     <HideCondition />
                   </LookupProperty>

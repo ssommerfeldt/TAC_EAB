@@ -1,3 +1,1 @@
-define((
-{ updatePricingRecords: 'Beim Durchführen dieser Option dürfen Sie nur einen Datensatz auswählen.' }
-));
+define("Sage/TaskPane/nls/de/AccountingTasksTasklet", {});

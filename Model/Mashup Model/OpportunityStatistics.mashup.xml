@@ -5,6 +5,10 @@
       <snippetProcessor id="aad3d802-ce48-44b0-b101-a9bf4a2b7de3" name="OpportunityStatisticsMashup" location="20, 40" expanded="true" width="300" continueOnError="false" methodName="Opportunity.GetOpportunityStatisticsForMashup">
         <parameters>
           <parameter id="514bb32c-b590-462d-9428-8088b9a25276" name="selectionKey" expression="selectionKey" />
+		  <parameter id="42c46596-3dc9-4d6c-9ebd-5d1c1ebce9df" name="GroupId" expression="GroupId" />
+			<parameter id="545aad56-2a1f-4e83-b30a-6e51f9b851be" name="SelectedIds" expression="SelectedIds" />
+			<parameter id="b2a28291-8b96-4a3d-a85e-3e8a26c79755" name="AppliedFilters" expression="AppliedFilters" />
+			<parameter id="96bf214b-e718-4971-85a9-fa8fdb5696ad" name="LookupConditions" expression="LookupConditions" />
         </parameters>
       </snippetProcessor>
     </processor>

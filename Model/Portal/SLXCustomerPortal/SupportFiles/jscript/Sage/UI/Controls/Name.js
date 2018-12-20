@@ -1,5 +1,8 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+require({cache:{
+'url:Sage/UI/Controls/templates/Name.html':"<div class=\"person\" slxcompositecontrol=\"true\" id=\"{%= $.id %}\" ><input id=\"{%= $.id %}-TextBox\" value=\"{%= $.nameDesc %}\"\r\n    data-dojo-type=\"Sage.UI.Controls.TextBox\" name=\"{%= $.name %}\" required=\"{%= $.required %}\" readonly=\"{%= $.readonly %}\" dojoAttachPoint=\"focusNode\"  data-dojo-attach-event=\"onChange:textBoxOnChange, onDblClick: showDialog\" data-dojo-props=\"textWithIcons: {%= $.buttonVisible %}\" />\r\n    {% if ($.buttonVisible) { %}\r\n    <img alt=\"{%= $.buttonToolTip %}\"  data-dojo-attach-event=\"ondijitclick: showDialog\"  tabindex=\"{%= $.tabIndex %}\"     \r\n    style=\"padding-left:0;cursor: pointer; vertical-align: left;\" \r\n    src=\"{%= $.buttonImageUrl %}\" title=\"{%= $.buttonToolTip %}\" id=\"{%= $.id %}-Button\" />\r\n    {% } %}\r\n<!--\r\nSimplate template\r\nhttps://github.com/mmorton/simplate\r\nhttps://github.com/mmorton/simplate/blob/master/demo/index.html\r\nBasic formatting example: {%= $.id %}\r\n-->\r\n</div>",
+'url:Sage/UI/Controls/templates/PersonName.html':"<!--\r\nSimplate template\r\nhttps://github.com/mmorton/simplate\r\nhttps://github.com/mmorton/simplate/blob/master/demo/index.html\r\nBasic formatting example: {%= $.id %}\r\n-->\r\n<div>\r\n        <table width=\"100%\">\r\n            <tr>\r\n                <td><label>{%= $.prefixText %}</label></td>\r\n                <td>\r\n                    <select id=\"{%= $.id %}-Prefix\" data-dojo-type=\"Sage.UI.Controls.DropDownSelectPickList\" \r\n                    dojoAttachPoint=\"_valueBox\"\r\n                    pickListName=\"Name Prefix\"\r\n                    storeMode=\"text\"\r\n                    noDataLoad=\"false\"\r\n                    useCache=\"false\"\r\n                    boundLanguage=\"{%= $.prefixLanguage %}\"\r\n                    filterByLanguage=\"{%= $.prefixLanguageFilters %}\"\r\n                    name=\"{%= $.NamePrefix %}\" \r\n                    style=\"display: inline-block\"\r\n                    shouldPublishMarkDirty=\"false\" />\r\n                </td>\r\n            </tr>\r\n            <tr>\r\n                <td><label>{%= $.nameFirstText %}</label></td>\r\n                <td>\r\n                    <input id=\"{%= $.id %}-First\" data-dojo-type=\"Sage.UI.Controls.TextBox\"\r\n                    style=\"width:inherit;\"\r\n                    textAlign=\"{%= $.textAlign %}\"\r\n                    name=\"{%= $.NameFirst %}\" type=\"text\" data-dojo-attach-point=\"focusNode\"\r\n                    shouldPublishMarkDirty=\"false\">\r\n                </td>\r\n            </tr>\r\n            <tr>\r\n                <td><label>{%= $.nameMiddleText %}</label></td>\r\n                <td>\r\n                    <input id=\"{%= $.id %}-Middle\" data-dojo-type=\"Sage.UI.Controls.TextBox\"\r\n                    style=\"width:inherit;\"\r\n                    textAlign=\"{%= $.textAlign %}\"\r\n                    name=\"{%= $.NameMiddle %}\" type=\"text\" data-dojo-attach-point=\"focusNode\"\r\n                    shouldPublishMarkDirty=\"false\">\r\n                </td>\r\n            </tr>\r\n            <tr>\r\n                <td><label>{%= $.nameLastText %}</label></td>\r\n                <td>\r\n                    <input id=\"{%= $.id %}-Last\" data-dojo-type=\"Sage.UI.Controls.TextBox\"\r\n                    style=\"width:inherit;\"\r\n                    textAlign=\"{%= $.textAlign %}\"\r\n                    name=\"{%= $.NameLast %}\" type=\"text\" data-dojo-attach-point=\"focusNode\"\r\n                    shouldPublishMarkDirty=\"false\">\r\n                </td>\r\n            </tr>\r\n            <tr>\r\n                <td><label>{%= $.suffixText %}</label></td>\r\n                <td>\r\n                    <select id=\"{%= $.id %}-Suffix\" data-dojo-type=\"Sage.UI.Controls.DropDownSelectPickList\"\r\n                    dojoAttachPoint=\"_valueBox\"\r\n                    pickListName=\"Name Suffix\"\r\n                    storeMode=\"text\"\r\n                    noDataLoad=\"false\"\r\n                    useCache=\"false\"\r\n                    boundLanguage=\"{%= $.suffixLanguage %}\"\r\n                    filterByLanguage=\"{%= $.suffixLanguageFilters %}\"\r\n                    name=\"{%= $.NameSuffix %}\"\r\n                    style=\"display: inline-block\"\r\n                    shouldPublishMarkDirty=\"false\" />\r\n                </td>\r\n            </tr>\r\n        </table>                    \r\n        <div class=\"button-bar alignright\" style=\"clear: both\">\r\n            <button id=\"{%= $.id %}-OKButton\" data-dojo-type=\"dijit.form.Button\" type=\"submit\" onClick=\"dijit.byId('{%= $.id %}')._okClicked();\">\r\n                {%= $.okText %}\r\n            </button>\r\n            <button id=\"{%= $.id %}-CancelButton\" data-dojo-type=\"dijit.form.Button\" type=\"button\" onClick=\"dijit.byId('{%= $.id %}')._cancelClicked();\">\r\n                {%= $.cancelText %}\r\n            </button>\r\n        </div>\r\n</div>\r\n"}});
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Controls/Name", [
         'dojo/_base/lang',
         'dojo/_base/declare',
         'dojo/i18n',
@@ -12,7 +15,8 @@ define([
         'Sage/UI/Controls/_DialogHelpIconMixin',
         'dojo/i18n!./nls/Name',
         'dojo/text!./templates/Name.html',
-        'dojo/text!./templates/PersonName.html'
+        'dojo/text!./templates/PersonName.html',
+        'dijit/registry'
 ],
 // ReSharper disable InconsistentNaming
 function (
@@ -28,7 +32,8 @@ function (
     _DialogHelpIconMixin,
     nlsBundle,
     nameTemplate,
-    personNameTemplate
+    personNameTemplate,
+    registry
  ) {
 // ReSharper restore InconsistentNaming
     /**
@@ -50,10 +55,14 @@ function (
         //name: {},
         //TODO: Move up into Name object once sdata name object structure is determined.
         prefix: '',
+        prefixLanguage: '',
+        prefixLanguageFilters: false,
         first: '',
         middle: '',
         last: '',
         suffix: '',
+        suffixLanguage: '',
+        suffixLanguageFilters: false,
         //PickList Data
         'Name Prefix': {},
         'Name Suffix': {},
@@ -61,10 +70,14 @@ function (
         //.net bound controls
         name: '',
         prefixClientId: '',
+        prefixlanguageclientid: '',
+        prefixlanguagefiltersclientid: '',
         nameFirstClientId: '',
         nameMiddleClientId: '',
         nameLastClientid: '',
         suffixClientId: '',
+        suffixlanguageclientid: '',
+        suffixlanguagefiltersclientid: '',
         required: false,
         //.net properties
         autoPostBack: false,
@@ -84,8 +97,10 @@ function (
         },
         postCreate: function () {
             this.getDotNetData();
-            if (!this['Name Prefix'].data || !this['Name Suffix'].data || !this['LastName Prefix'].data) {
-                this.loadPickLists();
+            this.loadPickLists();
+
+            if (this["class"] && this["class"].length > 0 && this.domNode.firstChild) {
+                this.domNode.firstChild.className = this["class"] + ' ' + this.domNode.firstChild.className;
             }
             this.inherited(arguments);
         },
@@ -93,6 +108,10 @@ function (
             var prefixDef = new dojo.Deferred();
             var suffixDef = new dojo.Deferred();
             var lastPreDef = new dojo.Deferred();
+            var browser = document.cookie['SLXLanguageSetting'] || navigator.userLanguage || navigator.browserLanguage || navigator.language;
+
+            this.prefixLanguage = this.prefixLanguage && typeof (this.prefixLanguage) === 'string' ? this.prefixLanguage.trim() : browser;
+            this.suffixLanguage = this.suffixLanguage && typeof (this.suffixLanguage) === 'string' ? this.suffixLanguage.trim() : browser;
 
             var pickListConfig = {
                 pickListName: 'Name Prefix', // Required
@@ -103,7 +122,10 @@ function (
                 sort: true,
                 displayMode: 'AsControl',
                 required: false,
-                autoPostBack: false
+                useCache: false,
+                autoPostBack: false,
+                filterByLanguage: this.prefixLanguageFilters || false,
+                boundLanguage: this.prefixLanguage
             };
 
             var prefixPickList = new pickList(pickListConfig);
@@ -113,6 +135,8 @@ function (
             });
 
             pickListConfig.pickListName = 'Name Suffix';
+            pickListConfig.boundLanguage = this.suffixLanguage;
+            pickListConfig.filterByLanguage = this.suffixLanguageFilters || false;
             var suffixPickList = new pickList(pickListConfig);
             suffixPickList.getPickListData(suffixDef);
             suffixDef.then(dojo.hitch(this, this.storePickListData), function (e) {
@@ -120,6 +144,8 @@ function (
             });
 
             pickListConfig.pickListName = 'LastName Prefix';
+            pickListConfig.boundLanguage = browser;
+            pickListConfig.filterByLanguage = false;
             var lastNamePrefixPickList = new pickList(pickListConfig);
             lastNamePrefixPickList.getPickListData(lastPreDef);
             lastPreDef.then(dojo.hitch(this, this.storePickListData), function (e) {
@@ -131,24 +157,32 @@ function (
             this[data.name].data = data;
         },
         showDialog: function () {
-            this.editDialog = dijit.byId([this.id, '-Dialog'].join(''));
+            if (!this.buttonVisible)
+                return;
+
+            this.editDialog = registry.byId([this.id, '-Dialog'].join(''));
             if (!this.editDialog) {
                 this.editDialog = new dialog({
                     title: this.resources.dialogTitle,
                     id: [this.id, '-Dialog'].join('')
                 });
-
-                this.editDialog.set("content", this.dialogContent.apply({ id: this.id,
-                    prefixText: this.resources.prefixText,
-                    nameFirstText: this.resources.nameFirstText,
-                    nameMiddleText: this.resources.nameMiddleText,
-                    nameLastText: this.resources.nameLastText,
-                    suffixText: this.resources.suffixText,
-                    cancelText: this.resources.cancelText,
-                    okText: this.resources.okText
-                }));
-
             }
+            this.editDialog.set("content", this.dialogContent.apply({ 
+                id: this.id,
+                prefixText: this.resources.prefixText,
+                nameFirstText: this.resources.nameFirstText,
+                nameMiddleText: this.resources.nameMiddleText,
+                nameLastText: this.resources.nameLastText,
+                suffixText: this.resources.suffixText,
+                cancelText: this.resources.cancelText,
+                okText: this.resources.okText,
+                prefixLanguage: this.prefixLanguage,
+                prefixLanguageFilters: this.prefixLanguageFilters,
+                suffixLanguage: this.suffixLanguage,
+                suffixLanguageFilters: this.suffixLanguageFilters
+
+            }));
+
             this.setEditFields();
             // mixin help icon
             lang.mixin(this.editDialog, new _DialogHelpIconMixin());
@@ -230,20 +264,20 @@ function (
             dojo.publish("Sage/events/markDirty");
         },
         updateNameObj: function () {
-            if (dijit.byId([this.id, '-Prefix'].join(''))) {
-                this.prefix = dijit.byId([this.id, '-Prefix'].join('')).comboBox.get('value');
+            if (registry.byId([this.id, '-Prefix'].join(''))) {
+                this.prefix = registry.byId([this.id, '-Prefix'].join('')).comboBox.get('value');
             }
-            if (dijit.byId([this.id, '-First'].join(''))) {
-                this.first = dijit.byId([this.id, '-First'].join('')).get('value');
+            if (registry.byId([this.id, '-First'].join(''))) {
+                this.first = registry.byId([this.id, '-First'].join('')).get('value');
             }
-            if (dijit.byId([this.id, '-Middle'].join(''))) {
-                this.middle = dijit.byId([this.id, '-Middle'].join('')).get('value');
+            if (registry.byId([this.id, '-Middle'].join(''))) {
+                this.middle = registry.byId([this.id, '-Middle'].join('')).get('value');
             }
-            if (dijit.byId([this.id, '-Last'].join(''))) {
-                this.last = dijit.byId([this.id, '-Last'].join('')).get('value');
+            if (registry.byId([this.id, '-Last'].join(''))) {
+                this.last = registry.byId([this.id, '-Last'].join('')).get('value');
             }
-            if (dijit.byId([this.id, '-Suffix'].join(''))) {
-                this.suffix = dijit.byId([this.id, '-Suffix'].join('')).comboBox.get('value');
+            if (registry.byId([this.id, '-Suffix'].join(''))) {
+                this.suffix = registry.byId([this.id, '-Suffix'].join('')).comboBox.get('value');
             }
         },
         getDotNetData: function () {
@@ -251,6 +285,12 @@ function (
             //We have a connected .net control to post values to.
             if (this.prefixClientId !== '') {
                 this.prefix = dojo.byId(this.prefixClientId).value;
+            }
+            if (this.prefixlanguageclientid !== '') {
+                this.prefixLanguage = dojo.byId(this.prefixlanguageclientid).value;
+            }
+            if (this.prefixlanguagefiltersclientid !== '') {
+                this.prefixLanguageFilters = dojo.byId(this.prefixlanguagefiltersclientid).checked;
             }
             if (this.nameFirstClientId !== '') {
                 this.first = dojo.byId(this.nameFirstClientId).value;
@@ -264,32 +304,44 @@ function (
             if (this.suffixClientId !== '') {
                 this.suffix = dojo.byId(this.suffixClientId).value;
             }
+            if (this.suffixlanguageclientid !== '') {
+                this.suffixLanguage = dojo.byId(this.suffixlanguageclientid).value;
+            }
+            if (this.suffixlanguagefiltersclientid !== '') {
+                this.suffixLanguageFilters = dojo.byId(this.suffixlanguagefiltersclientid).checked;
+            }
         },
         setDotNetData: function () {
             dojo.byId(this.prefixClientId).value = this.prefix;
+            dojo.byId(this.prefixlanguageclientid).value = this.prefixLanguage;
+            dojo.byId(this.prefixlanguagefiltersclientid).checked = this.prefixLanguageFilters;
             dojo.byId(this.nameFirstClientId).value = this.first;
             dojo.byId(this.nameMiddleClientId).value = this.middle;
             dojo.byId(this.nameLastClientid).value = this.last;
             dojo.byId(this.suffixClientId).value = this.suffix;
+            dojo.byId(this.suffixlanguageclientid).value = this.suffixLanguage;
+            dojo.byId(this.suffixlanguagefiltersclientid).checked = this.suffixLanguageFilters;
         },
         setEditFields: function () {
-            if (dijit.byId([this.id, '-Prefix'].join(''))) {
-                dijit.byId([this.id, '-Prefix'].join('')).comboBox.set('value', this.prefix);
+            this._setNameSelectField(registry.byId([this.id, '-Prefix'].join('')), this.prefix);
+            this._setNameInputField(registry.byId([this.id, '-First'].join('')), this.first);
+            this._setNameInputField(registry.byId([this.id, '-Middle'].join('')), this.middle);
+            this._setNameInputField(registry.byId([this.id, '-Last'].join('')), this.last);
+            this._setNameSelectField(registry.byId([this.id, '-Suffix'].join('')), this.suffix);
+        },
+        _setNameSelectField: function (registeredNode, data) {
+            if (registeredNode) {
+                registeredNode.comboBox.set('value', this.prefix);
+                var pickListName = registeredNode.pickListName;
+                if (this[pickListName] && this[pickListName].data) {
+                    registeredNode.setItems(this[pickListName].data);
+                }
             }
-            if (dijit.byId([this.id, '-First'].join(''))) {
-                dijit.byId([this.id, '-First'].join('')).set('value', this.first);
-                dijit.byId([this.id, '-First'].join('')).set('style', 'width:100%');
-            }
-            if (dijit.byId([this.id, '-Middle'].join(''))) {
-                dijit.byId([this.id, '-Middle'].join('')).set('value', this.middle);
-                dijit.byId([this.id, '-Middle'].join('')).set('style', 'width:100%');
-            }
-            if (dijit.byId([this.id, '-Last'].join(''))) {
-                dijit.byId([this.id, '-Last'].join('')).set('value', this.last);
-                dijit.byId([this.id, '-Last'].join('')).set('style', 'width:100%');
-            }
-            if (dijit.byId([this.id, '-Suffix'].join(''))) {
-                dijit.byId([this.id, '-Suffix'].join('')).comboBox.set('value', this.suffix);
+        },
+        _setNameInputField: function (registeredNode, data) {
+            if (registeredNode) {
+                registeredNode.set('value', data);
+                registeredNode.set('style', 'width:100%');
             }
         },
         _okClicked: function () {

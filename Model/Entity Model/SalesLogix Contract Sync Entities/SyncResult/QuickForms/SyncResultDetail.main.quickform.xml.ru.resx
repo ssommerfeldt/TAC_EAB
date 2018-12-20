@@ -118,51 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lueERPApplication.Caption" xml:space="preserve">
-    <value>Приложение:</value>
+    <value>Приложение</value>
+  </data>
+  <data name="txtApplicationCode.Caption" xml:space="preserve">
+    <value>ИД/код сообщения</value>
+  </data>
+  <data name="txtDiagnosisCode.Caption" xml:space="preserve">
+    <value>Код диагностики</value>
+  </data>
+  <data name="txtResourceType.Caption" xml:space="preserve">
+    <value>Тип ресурса</value>
+  </data>
+  <data name="txtHttpStatus.Caption" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="txtSeverity.Caption" xml:space="preserve">
+    <value>Важность</value>
+  </data>
+  <data name="dtStamp.Caption" xml:space="preserve">
+    <value>Метка времени даты</value>
+  </data>
+  <data name="txtErrorSeq.Caption" xml:space="preserve">
+    <value>Ошибка последовательности</value>
+  </data>
+  <data name="txtPayLoadPath.Caption" xml:space="preserve">
+    <value>Путь к полезной нагрузке</value>
   </data>
   <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
     <value>Сообщение об ошибке</value>
   </data>
-  <data name="QFHorizontalSeparator3.Caption" xml:space="preserve">
-    <value>Детали нагрузки</value>
-  </data>
-  <data name="btnEmail.ToolTip" xml:space="preserve">
-    <value>Детали E-mail</value>
+  <data name="txtErrorMessage.Caption" xml:space="preserve">
+    <value>Сообщение об ошибке</value>
   </data>
   <data name="QFHorizontalSeparator2.Caption" xml:space="preserve">
-    <value>Стэк трассировки</value>
-  </data>
-  <data name="txtPayLoadPath.Caption" xml:space="preserve">
-    <value>Путь к нагрузке:</value>
-  </data>
-  <data name="txtSentFrom.Caption" xml:space="preserve">
-    <value>Отправлено приложением:</value>
-  </data>
-  <data name="txtErrorSeq.Caption" xml:space="preserve">
-    <value>Последовательность ошибок:</value>
-  </data>
-  <data name="txtHttpStatus.Caption" xml:space="preserve">
-    <value>Http статус:</value>
-  </data>
-  <data name="dtStamp.Caption" xml:space="preserve">
-    <value>Шаблон даты-времени:</value>
-  </data>
-  <data name="txtSeverity.Caption" xml:space="preserve">
-    <value>Важность:</value>
+    <value>Трассировка стека</value>
   </data>
   <data name="txtJob.Caption" xml:space="preserve">
-    <value>Задание синхронизации:</value>
+    <value>Задание синхронизации</value>
   </data>
-  <data name="txtApplicationCode.Caption" xml:space="preserve">
-    <value>Код приложения:</value>
-  </data>
-  <data name="txtResourceType.Caption" xml:space="preserve">
-    <value>Тип ресурсов:</value>
+  <data name="txtStackTrace.Caption" xml:space="preserve">
+    <value>Трассировка стека</value>
   </data>
   <data name="btnEmail.Caption" xml:space="preserve">
-    <value>Эл. почта</value>
+    <value>Электронная почта</value>
   </data>
-  <data name="txtDiagnosisCode.Caption" xml:space="preserve">
-    <value>Код диагностики:</value>
+  <data name="btnEmail.ToolTip" xml:space="preserve">
+    <value>Подробности электронной почты</value>
+  </data>
+  <data name="QFTextBox3.Caption" xml:space="preserve">
+    <value>Тип сущности</value>
+  </data>
+  <data name="QFTextBox4.Caption" xml:space="preserve">
+    <value>Значение сущности</value>
+  </data>
+  <data name="QFHorizontalSeparator3.Caption" xml:space="preserve">
+    <value>Подробности о полезной нагрузке</value>
+  </data>
+  <data name="QFTextBox.Caption" xml:space="preserve">
+    <value>Информация о записи</value>
+  </data>
+  <data name="QFTextBox7.Caption" xml:space="preserve">
+    <value>Отправил</value>
   </data>
 </root>

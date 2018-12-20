@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmRangeEntityFilter" id="737fad9d-4ab7-4e7a-b1fe-f254f01d9205" lastModifiedUtc="2015-08-07T18:33:50.3146017Z" filterName="RateAmount" propertyName="RateAmount" characters="0">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmRangeEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <ranges id="571b29b5-81fc-48f2-b428-fda1700c396f" rangeName="0 to 49" upper="49" />
+  <ranges id="5483040b-6993-4103-b099-d21a86b6b81f" rangeName="50 to 99" lower="50" upper="99" />
+  <ranges id="296d89a8-5c76-4e39-9eea-68ba55ed5b27" rangeName="100 to 199" lower="100" upper="199" />
+  <ranges id="0bf5fee2-6437-40bd-b4ab-95eba18dff63" rangeName="200 to 299" lower="200" upper="299" />
+  <ranges id="f9438419-1349-433a-a901-04a4f9798643" rangeName="300 to 399" lower="300" upper="399" />
+  <ranges id="7adfbe68-45b3-46c9-a046-703860b73f00" rangeName="400 to 499" lower="400" upper="499" />
+  <ranges id="9f37d45a-8a53-464c-b5e9-853cb9dd583d" rangeName="500 to 999" lower="500" upper="999" />
+  <ranges id="8ce33d9a-c4c6-4128-a793-d48b813a8a65" rangeName="1000 to 9999" lower="1000" upper="9999" />
+</entityFilter>

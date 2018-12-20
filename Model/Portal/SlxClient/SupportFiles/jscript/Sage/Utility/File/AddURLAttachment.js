@@ -1,5 +1,5 @@
-﻿/*globals dojo, define, Sage, Simplate  */
-define([
+/*globals dojo, define, Sage, Simplate  */
+define("Sage/Utility/File/AddURLAttachment", [
     'dijit/_Widget',
     'Sage/_Templated',
     'dojo/string',

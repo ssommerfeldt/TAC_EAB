@@ -5,7 +5,13 @@
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
   </ExtendedPropertiesCollection>
   <parameter />
-  <preExecuteTargets />
+  <preExecuteTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="01b63ac6-f9c0-485b-bc04-afb860e01d32" lastModifiedUtc="2015-08-10T04:13:46.8104502Z" targetType="Sage.BusinessRules.CodeSnippets.CustomSettingBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="OnCreateStep" active="true" codeSnippetId="a35da581-1ec4-40c2-9a6e-4856bdd04fe3">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </preExecuteTargets>
   <methodTargets>
     <methodTarget id="f6024d28-4311-4e58-8576-d89f21cff5ec" lastModifiedUtc="2013-07-08T23:11:09.9993032Z" targetType="Sage.Platform.Orm.DefaultCRUDEventHandler, Sage.Platform" targetMethod="OnCreate" active="true">
       <ExtendedPropertiesCollection>

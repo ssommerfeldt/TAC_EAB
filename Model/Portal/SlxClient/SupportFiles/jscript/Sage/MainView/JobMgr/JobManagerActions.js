@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/JobMgr/JobManagerActions", [
     'dojo/_base/declare',
     'Sage/MainView/JobMgr/RunJobDialog',
     'Sage/UI/Dialogs',
@@ -44,6 +44,18 @@ function (declare, RunJobDialog, dialogs, nlsStrings, dojoString, utility, jobUt
                 runJobDialog.show(options);
             }
         },
+		/**
+        * Displays the Run Job Dialog. If the current group is not "Job Definitions" 
+        * or if no record is selected in the listview, a message is displayed to the user, 
+        * and the action is aborted.
+        */
+        showScheduleRunJobDialog: function (options) {
+            var runJobDialog = dijit.byId("dlgRunJob");
+            if (!runJobDialog) {
+                runJobDialog = new RunJobDialog();
+            }
+            runJobDialog.show(options);
+        },
         /**
         * Displays the Run Job Dialog. If the current group is not "Job Definitions" 
         * or if no record is selected in the listview, a message is displayed to the user, 
@@ -55,7 +67,7 @@ function (declare, RunJobDialog, dialogs, nlsStrings, dojoString, utility, jobUt
                 dialogs.showInfo(nlsStrings.error_NoRecordSelected);
             } else {
                 dialogs.raiseQueryDialog(
-                    'Saleslogix',
+                    'Infor CRM',
                     nlsStrings.confirm_ScheduleDeletion,
                     function (result) {
                         if (result) {

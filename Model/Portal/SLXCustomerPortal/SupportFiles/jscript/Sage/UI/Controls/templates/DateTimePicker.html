@@ -21,7 +21,8 @@
                            style="width:16em;"
                            textAlign="${textAlign}"
                            tabindex="0"
-                           type="text" dojoAttachPoint="timeNode">
+                           type="text" dojoAttachPoint="timeNode"
+                           constraints="{locale:Sys.CultureInfo.CurrentCulture.name,timePattern:Sys.CultureInfo.CurrentCulture.dateTimeFormat.ShortTimePattern.replace('tt', 'a').replace('t', 'a')}">
                     <br /><br/>
                     <label for="${id}-TzCalculator">${timeZoneCalculatorText}</label>
                     <div id="timeZoneCalucaltor" class="dateTimePicker-timeZoneCalculator">

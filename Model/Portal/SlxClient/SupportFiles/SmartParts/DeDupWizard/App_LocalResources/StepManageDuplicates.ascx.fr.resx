@@ -117,109 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Filter.Address.State" xml:space="preserve">
-    <value>Département</value>
-  </data>
-  <data name="Filter.WebAddress" xml:space="preserve">
-    <value>Adresse Web</value>
-  </data>
-  <data name="chkCreateResponses.Caption" xml:space="preserve">
-    <value>Créer des réponses pour les enregistrements fusionnés</value>
-  </data>
-  <data name="Filter.EMail" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
-  </data>
-  <data name="lblConflicts.Caption" xml:space="preserve">
-    <value>Conflits :</value>
-  </data>
-  <data name="Filter.WorkPhone" xml:space="preserve">
-    <value>Téléphone professionnel</value>
-  </data>
-  <data name="lbxConflicts_ExistingWins_Item" xml:space="preserve">
-    <value>L'enregistrement existant l'emporte</value>
-  </data>
-  <data name="Target.IAccount" xml:space="preserve">
-    <value>Compte</value>
-  </data>
-  <data name="Filter.Title" xml:space="preserve">
-    <value>Titre</value>
-  </data>
   <data name="chkAutoMergeDups.Caption" xml:space="preserve">
     <value>Fusion automatique d'enregistrements en double</value>
-  </data>
-  <data name="Filter.MainPhone" xml:space="preserve">
-    <value>Tél. principal</value>
-  </data>
-  <data name="Filter.Address.PostalCode" xml:space="preserve">
-    <value>Code postal</value>
-  </data>
-  <data name="Filter.Account.Industry" xml:space="preserve">
-    <value>Secteur</value>
-  </data>
-  <data name="Filter.TollFree" xml:space="preserve">
-    <value>Numéro vert</value>
-  </data>
-  <data name="Filter.Industry" xml:space="preserve">
-    <value>Secteur</value>
-  </data>
-  <data name="cmdMatchOptions.Caption" xml:space="preserve">
-    <value>Options de correspondance avancées...</value>
-  </data>
-  <data name="lblMatchTypes.Caption" xml:space="preserve">
-    <value>Type :</value>
-  </data>
-  <data name="Filter.Account.TollFree" xml:space="preserve">
-    <value>Numéro vert</value>
-  </data>
-  <data name="lblContacts.Caption" xml:space="preserve">
-    <value>Contact</value>
-  </data>
-  <data name="Filter.LastName" xml:space="preserve">
-    <value>Nom</value>
-  </data>
-  <data name="Filter.FirstName" xml:space="preserve">
-    <value>Prénom</value>
-  </data>
-  <data name="cmdRunTest.Caption" xml:space="preserve">
-    <value>Effectuer le test</value>
-  </data>
-  <data name="Filter.Company" xml:space="preserve">
-    <value>Compte/Société</value>
   </data>
   <data name="chkCheckForDups.Caption" xml:space="preserve">
     <value>Vérifier les leads en double</value>
   </data>
-  <data name="Filter.AccountName" xml:space="preserve">
-    <value>Compte/Société</value>
+  <data name="chkCreateResponses.Caption" xml:space="preserve">
+    <value>Créer des réponses pour les enregistrements fusionnés</value>
+  </data>
+  <data name="cmdMatchOptions.Caption" xml:space="preserve">
+    <value>Options de correspondance avancées...</value>
+  </data>
+  <data name="cmdRunTest.Caption" xml:space="preserve">
+    <value>Effectuer le test</value>
+  </data>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Définit les critères correspondants permettant de rechercher les doublons potentiels.</value>
+  </data>
+  <data name="lblMatchFilters.Caption" xml:space="preserve">
+    <value>Correspondre aux filtres :</value>
   </data>
   <data name="lblMatchFiltersDesc.Caption" xml:space="preserve">
     <value>(Doit correspondre à toutes les valeurs sélectionnées)</value>
   </data>
-  <data name="Target.ILead" xml:space="preserve">
-    <value>Lead</value>
+  <data name="lblMatchTypes.Caption" xml:space="preserve">
+    <value>Type :</value>
   </data>
-  <data name="lbxConflicts_ImportedWins_Item" xml:space="preserve">
-    <value>L'enregistrement importé l'emporte</value>
+  <data name="lblRunTest.Caption" xml:space="preserve">
+    <value>Tester le nombre de doublons trouvés (dans les 100 premiers enregistrements).</value>
   </data>
-  <data name="chkCheckForDupsInFile.Caption" xml:space="preserve">
-    <value>Vérifier les doublons contenus dans le fichier source d'importation</value>
-  </data>
-  <data name="Target.IContact" xml:space="preserve">
+  <data name="lblContacts.Caption" xml:space="preserve">
     <value>Contact</value>
   </data>
   <data name="lblleads.Caption" xml:space="preserve">
     <value>Lead</value>
   </data>
-  <data name="lblMatchFilters.Caption" xml:space="preserve">
-    <value>Correspondre aux filtres :</value>
+  <data name="lblConflicts.Caption" xml:space="preserve">
+    <value>Conflits :</value>
   </data>
-  <data name="lblRunTest.Caption" xml:space="preserve">
-    <value>Tester le nombre de doublons trouvés (dans les 100 premiers enregistrements).</value>
+  <data name="lbxConflicts_ExistingWins_Item" xml:space="preserve">
+    <value>L'enregistrement existant l'emporte</value>
   </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Définit les critères correspondants permettant de rechercher les doublons potentiels.</value>
+  <data name="lbxConflicts_ImportedWins_Item" xml:space="preserve">
+    <value>L'enregistrement importé l'emporte</value>
   </data>
   <data name="Filter.Address.City" xml:space="preserve">
     <value>Ville</value>
+  </data>
+  <data name="Filter.Address.PostalCode" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="Filter.Address.State" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="Filter.Company" xml:space="preserve">
+    <value>Compte/Société</value>
+  </data>
+  <data name="Filter.EMail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Filter.FirstName" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="Filter.Industry" xml:space="preserve">
+    <value>Secteur</value>
+  </data>
+  <data name="Filter.LastName" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Filter.Title" xml:space="preserve">
+    <value>Titre</value>
+  </data>
+  <data name="Filter.TollFree" xml:space="preserve">
+    <value>Numéro vert</value>
+  </data>
+  <data name="Filter.WebAddress" xml:space="preserve">
+    <value>Adresse Web</value>
+  </data>
+  <data name="Filter.WorkPhone" xml:space="preserve">
+    <value>Téléphone professionnel</value>
+  </data>
+  <data name="chkCheckForDupsInFile.Caption" xml:space="preserve">
+    <value>Vérifier les doublons contenus dans le fichier source d'importation</value>
+  </data>
+  <data name="Filter.Account.Industry" xml:space="preserve">
+    <value>Secteur</value>
+  </data>
+  <data name="Filter.Account.TollFree" xml:space="preserve">
+    <value>Numéro vert</value>
+  </data>
+  <data name="Filter.AccountName" xml:space="preserve">
+    <value>Compte/Société</value>
+  </data>
+  <data name="Filter.MainPhone" xml:space="preserve">
+    <value>Téléphone principal</value>
+  </data>
+  <data name="Target.IAccount" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="Target.IContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Target.ILead" xml:space="preserve">
+    <value>Lead</value>
   </data>
 </root>

@@ -6,11 +6,6 @@ using Sage.SalesLogix.Web.Controls;
 
 public partial class SmartParts_TaskPane_FormManager_FormManagerPropertiesList : System.Web.UI.UserControl, ISmartPartInfoProvider
 {
-    //protected void Page_Load(object sender, EventArgs e)
-    //{
-
-    //}
-
     #region ISmartPartInfoProvider Members
 
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)

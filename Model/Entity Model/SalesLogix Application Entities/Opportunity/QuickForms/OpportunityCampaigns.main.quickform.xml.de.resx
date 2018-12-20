@@ -117,23 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="grdCampaigns.15d16c78-95dc-4007-8e3a-1f86ac3d880e.ColumnHeading" xml:space="preserve">
+    <value>Kampagnenname</value>
+  </data>
+  <data name="grdCampaigns.15d16c78-95dc-4007-8e3a-1f86ac3d880e.FormatString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdCampaigns.52857363-635c-4794-a3f6-79e8dcb7ecb5.ColumnHeading" xml:space="preserve">
+    <value>Kampagnencode</value>
+  </data>
+  <data name="grdCampaigns.52857363-635c-4794-a3f6-79e8dcb7ecb5.FormatString" xml:space="preserve">
+    <value />
+  </data>
   <data name="grdCampaigns.41f8121c-d2eb-4047-8a73-ae13cbd35c70.ColumnHeading" xml:space="preserve">
     <value>Startdatum</value>
   </data>
-  <data name="lueAssociateCampaign.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Verantwortlicher</value>
+  <data name="grdCampaigns.17d8d40e-7e77-4d59-98cc-7245c8cc395b.ColumnHeading" xml:space="preserve">
+    <value>Enddatum</value>
+  </data>
+  <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.ColumnHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.FormatString" xml:space="preserve">
+    <value />
   </data>
   <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.ConfirmationMessage" xml:space="preserve">
-    <value>Möchten Sie die Beziehung mit dieser Kampagne  wirklich aufheben?</value>
+    <value>Möchten Sie die Beziehung mit dieser Kampagne wirklich aufheben?</value>
   </data>
-  <data name="grdCampaigns.8c4fdbca-209f-4ee9-a206-9582edc128ae.ColumnHeading" xml:space="preserve">
+  <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="grdCampaigns.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  </data>
+  <data name="lueAssociateCampaign.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
+    <value>Kampagnencode</value>
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
     <value>Kampagnenname</value>
   </data>
-  <data name="lueAssociateCampaign.LookupProperties.CreateDate.PropertyHeader" xml:space="preserve">
-    <value>Erstellungsdatum</value>
-  </data>
-  <data name="lueAssociateCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
-    <value>Enddatum</value>
+  <data name="lueAssociateCampaign.LookupProperties.CallToAction.PropertyHeader" xml:space="preserve">
+    <value>Aufforderung zum Handeln</value>
   </data>
   <data name="lueAssociateCampaign.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
     <value>Startdatum</value>
@@ -141,37 +171,25 @@
   <data name="lueAssociateCampaign.LookupProperties.CalendarDisplay.PropertyHeader" xml:space="preserve">
     <value>Kalenderanzeige</value>
   </data>
-  <data name="grdCampaigns.15d16c78-95dc-4007-8e3a-1f86ac3d880e.ColumnHeading" xml:space="preserve">
-    <value>Kampagnenname</value>
+  <data name="lueAssociateCampaign.LookupProperties.EndingDate.PropertyHeader" xml:space="preserve">
+    <value>Enddatum</value>
   </data>
-  <data name="lueAssociateCampaign.LookupProperties.CampaignName.PropertyHeader" xml:space="preserve">
-    <value>Kampagnenname</value>
+  <data name="lueAssociateCampaign.LookupProperties.EndDate.PropertyHeader" xml:space="preserve">
+    <value>Enddatum</value>
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="lueAssociateCampaign.LookupProperties.CreateDate.PropertyHeader" xml:space="preserve">
+    <value>Erstellungsdatum</value>
   </data>
   <data name="lueAssociateCampaign.ButtonToolTip" xml:space="preserve">
     <value>Kampagne verknüpfen</value>
   </data>
-  <data name="grdCampaigns.b62956f1-620f-440d-ac64-44e4ffb10e41.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="lueAssociateCampaign.LookupProperties.CallToAction.PropertyHeader" xml:space="preserve">
-    <value>Aufforderung zum Handeln</value>
-  </data>
-  <data name="lueAssociateCampaign.LookupProperties.CampaignCode.PropertyHeader" xml:space="preserve">
-    <value>Kampagnencode</value>
-  </data>
-  <data name="grdCampaigns.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
-  </data>
-  <data name="lueAssociateCampaign.LookupProperties.EndingDate.PropertyHeader" xml:space="preserve">
-    <value>Enddatum</value>
-  </data>
-  <data name="grdCampaigns.17d8d40e-7e77-4d59-98cc-7245c8cc395b.ColumnHeading" xml:space="preserve">
-    <value>Enddatum</value>
-  </data>
-  <data name="grdCampaigns.52857363-635c-4794-a3f6-79e8dcb7ecb5.ColumnHeading" xml:space="preserve">
-    <value>Kampagnencode</value>
-  </data>
-  <data name="lueAssociateCampaign.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Status</value>
+  <data name="grdCampaigns.8c4fdbca-209f-4ee9-a206-9582edc128ae.ColumnHeading" xml:space="preserve">
+    <value>Kampagnenname</value>
   </data>
 </root>

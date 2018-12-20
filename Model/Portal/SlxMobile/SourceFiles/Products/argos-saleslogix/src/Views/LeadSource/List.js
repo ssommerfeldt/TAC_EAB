@@ -1,40 +1,40 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import string from 'dojo/string';
+import List from 'argos/List';
+import getResource from 'argos/I18n';
+
+const resource = getResource('leadSourceList');
+
+/**
+ * @class crm.Views.LeadSource.List
+ *
+ * @extends argos.List
  */
-define('Mobile/SalesLogix/Views/LeadSource/List', [
-    'dojo/_base/declare',
-    'dojo/string',
-    'Sage/Platform/Mobile/List'
-], function(
-    declare,
-    string,
-    List
-) {
+const __class = declare('crm.Views.LeadSource.List', [List], {
+  // Templates
+  itemTemplate: new Simplate([
+    '<h3>{%: $.Description %}</h3>',
+    '<h4>{%: $.Status %}</h4>',
+  ]),
 
-    return declare('Mobile.SalesLogix.Views.LeadSource.List', [List], {
-        //Templates
-        itemTemplate: new Simplate([
-            '<h3>{%: $.Description %}</h3>',
-            '<h4>{%: $.Status %}</h4>'
-        ]),
+  // Localization
+  titleText: resource.titleText,
 
-        //Localization
-        titleText: 'Lead Sources',
+  // View Properties
+  id: 'leadsource_list',
+  security: 'Entities/LeadSource/View',
+  queryOrderBy: 'Description',
+  querySelect: [
+    'Description',
+    'Status',
+  ],
+  resourceKind: 'leadsources',
 
-        //View Properties
-        icon: 'content/images/Accounts_24x24.gif',
-        id: 'leadsource_list',
-        security: 'Entities/LeadSource/View',
-        queryOrderBy: 'Description',
-        querySelect: [
-            'Description',
-            'Status'
-        ],
-        resourceKind: 'leadsources',
-
-        formatSearchQuery: function(searchQuery) {
-            return string.substitute('upper(Description) like "${0}%"', [this.escapeSearchQuery(searchQuery.toUpperCase())]);
-        }
-    });
+  formatSearchQuery: function formatSearchQuery(searchQuery) {
+    return string.substitute('upper(Description) like "${0}%"', [this.escapeSearchQuery(searchQuery.toUpperCase())]);
+  },
 });
 
+lang.setObject('Mobile.SalesLogix.Views.LeadSource.List', __class);
+export default __class;

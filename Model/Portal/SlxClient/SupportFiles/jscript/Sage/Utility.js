@@ -1,16 +1,18 @@
-/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define,infor, mingleConfig */
+define("Sage/Utility", [
         'dojo/parser',
         'Sage/Data/SDataServiceRegistry',
         'Sage/UI/Dialogs',
         'Sage/Utility/ErrorHandler', // Circular
         'dojox/validate/regexp',
         'dojo/i18n!./Utility/nls/Utility',
+        'dojo/has',
         'dojo/ready',
         'dojo/string',
         'dojo/_base/array',
         'dojo/_base/lang',
-        'dojo/_base/xhr'
+        'dojo/_base/xhr',
+        'dojo/date'
     ],
 function (
         parser,
@@ -19,16 +21,22 @@ function (
         ErrorHandler,
         regexp,
         resource,
+        has,
         ready,
         dString,
         array,
         lang,
-        xhr
+        xhr,
+        dojoDate
     ) {
     Sage.namespace('Utility');
     dojo.mixin(Sage.Utility, {
         _timeZones: null,
+        _ownersCache: null,
+        _ownersCacheKey: 'SecCodeCache',
         _userCache: null,
+        _userCacheKey: '_userCacheKey',
+        isIE: (typeof ActiveXObject !== 'undefined' || has('trident')),
         nameToPathCache: {},
         nlsStrings: resource,
         regexp: {
@@ -41,7 +49,7 @@ function (
             //
             // 1. If the < (less than sign) is followed by a letter, ! (exclamation), / (slash), or
             //    ? (question mark) (i.e. if it looks like a tag or an HTML comment).
-            // 2. If the & (ampersand) is followed by a # (pound sign) (e.g. &#169;).  
+            // 2. If the & (ampersand) is followed by a # (pound sign) (e.g. &#169;).
             //
             // The logic that introduced the HttpRequestValidationException began with ASP.NET 4.0 and
             // is the result of a call to System.Web.HttpRequest.ValidateString() (internal method).
@@ -99,7 +107,7 @@ function (
         // Returns false if s is not a string or if s contains invalidInput character sequences.
         // Note: It's ok to POST data that has invalid input characters, as long as they are [not] part of
         // a Request.Form POST (e.g. application/x-www-form-urlencoded). For example, if the invalid characters
-        // are in JSON data that is part of an application/json POST, there is no need to call the isSafeForPosting() 
+        // are in JSON data that is part of an application/json POST, there is no need to call the isSafeForPosting()
         // function against those strings.
         isSafeForPosting: function (s) {
             if (s && dojo.isString(s)) {
@@ -297,7 +305,7 @@ function (
         },
         /*
         debounce taken from underscore.js.
-            
+
         Underscore.js 1.3.3
         (c) 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.
         Underscore is freely distributable under the MIT license.
@@ -346,7 +354,7 @@ function (
             if (typeof target != "object" && typeof target != "function")
                 target = {};
 
-            // Single parameter extends Sage.Utilities 
+            // Single parameter extends Sage.Utilities
             if (length == i) {
                 target = this;
                 --i;
@@ -383,6 +391,11 @@ function (
             var eContext = contextservice.getContext();
             return eContext.EntityId;
         },
+        getCurrentEntityName: function () {
+            var contextservice = Sage.Services.getService('ClientEntityContext');
+            var eContext = contextservice.getContext();
+            return eContext.DisplayName;
+        },
         getClientContextByKey: function (key) {
             var res = '';
             if (Sage.Services) {
@@ -392,6 +405,20 @@ function (
                 }
             }
             return res;
+        },
+        setClientContextByKey: function (key, value) {
+            if (Sage.Services) {
+                var contextservice = Sage.Services.getService("ClientContextService");
+                if (contextservice) {
+                    if (contextservice.containsKey(key)) {
+                        contextservice.setValue(key, value);
+                    } else {
+                        contextservice.add(key, value);
+                    }
+                    return true;
+                }
+            }
+            return false;
         },
         getVirtualDirectoryName: function () {
             // returns the name of the virtual directory from the url to the current page.
@@ -409,7 +436,7 @@ function (
             //the proxy datastore needs to always keep it's own unique instance of the service.
             return Sage.Data.SDataServiceRegistry.getSDataService(contract, keepUnique, useJson, cacheResult);
         },
-        // BEGIN Ajax/Dojo Patch.  Notifies dojo to reparse partial postback content. 
+        // BEGIN Ajax/Dojo Patch.  Notifies dojo to reparse partial postback content.
         appLoadHandler: function (sender, args) {
             Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(Sage.Utility.pageLoaded);
             Sys.WebForms.PageRequestManager.getInstance().add_pageLoading(Sage.Utility.pageLoading);
@@ -452,7 +479,7 @@ function (
                 dijit.byId(widgetId).destroyRecursive();
             }
         },
-        // END Ajax/Dojo Patch. 
+        // END Ajax/Dojo Patch.
         //Begin ajax request indicator handling.
         showRequestIndicator: function () {
             var elem = document.getElementById("asyncpostbackindicator");
@@ -482,7 +509,7 @@ function (
             // as the length to restrict to.
             if (places.length > 1) {
                 var range = places.split(',');
-                places = parseInt(range[1]);
+                places = parseInt(range[1], 10);
             }
             if (typeof decimalSeparator === 'undefined') {
                 decimalSeparator = Sys.CultureInfo.CurrentCulture.numberFormat.NumberDecimalSeparator;
@@ -630,33 +657,30 @@ function (
                         offset;
 
                     if ((match = jsonDate.exec(value))) {
-                        utc = new Date(parseInt(match[1]));
-
+                        utc = new Date(parseInt(match[1], 10));
                         if (useOffset === true) {
                             if (match[2]) {
-                                h = parseInt(match[3]);
-                                m = parseInt(match[4]);
+                                h = parseInt(match[3], 10);
+                                m = parseInt(match[4], 10);
 
                                 offset = (h * 60) + m;
 
                                 if (match[2] === '-') {
                                     offset = -1 * offset;
                                 }
-
                                 utc.setMinutes(utc.getMinutes() + offset);
                             }
                         }
-
                         value = utc;
                     }
                     else if ((match = isoDate.exec(value))) {
                         utc = new Date(Date.UTC(
-                            parseInt(match[1]),
-                            parseInt(unpad(match[2])) - 1, // zero based
-                            parseInt(unpad(match[3])),
-                            parseInt(unpad(match[4])),
-                            parseInt(unpad(match[5])),
-                            parseInt(unpad(match[6]))
+                            parseInt(match[1], 10),
+                            parseInt(unpad(match[2]), 10) - 1, // zero based
+                            parseInt(unpad(match[3]), 10),
+                            parseInt(unpad(match[4]), 10),
+                            parseInt(unpad(match[5]), 10),
+                            parseInt(unpad(match[6]), 10)
                         ));
 
                         if (match[8] !== 'Z') {
@@ -673,7 +697,7 @@ function (
                     }
                     else if ((match = isoDateOnly.exec(value))) {
                         value = new Date();
-                        value.setYear(parseInt(match[1]));
+                        value.setYear(parseInt(match[1], 10));
                         value.setMonth(parseInt(match[2], 10) - 1);
                         value.setDate(parseInt(match[3], 10));
                         value.setHours(0, 0, 0, 0);
@@ -710,7 +734,6 @@ function (
                 var parts = qry.split('&');
                 for (var i = 0; i < parts.length; i++) {
                     var pair = parts[i].split('=');
-                    //alert(pair[0] + ' is ' + pair[1]);
                     if (pair.length > 1) {
                         if (pair[0].toLowerCase() === 'modeid') {
                             return pair[1];
@@ -718,7 +741,6 @@ function (
                     }
                 }
             }
-            // otherwise - return "None"
             return 'None';
         },
         getPageName: function () {
@@ -730,6 +752,11 @@ function (
             var url = Sage.Link.getHelpUrl(topic, subsystem);
             var target = Sage.Link.getHelpUrlTarget();
             window.open(url, target);
+        },
+        openPdfDoc: function (topic) {
+            var helpPath = Sage.Utility.getClientContextByKey('WebHelpUrlFmt');
+            helpPath = helpPath.replace(helpPath.substring(helpPath.lastIndexOf('/') + 1), '');
+            window.open(helpPath + topic);
         },
         fragger: function (frag, doc) {
             // frag must be a string
@@ -786,8 +813,10 @@ function (
             return Sage.Utility.extract(obj, 2);
         },
         loadDetailsDialog: function (obj) {
-            Sage.ClientLinkHandler.request({ request: 'ShowDialog', type: obj.entityType, smartPart: obj.smartPart, entityId: obj.entityId, dialogTitle: obj.dialogTitle,
-                isCentered: obj.isCentered, dialogTop: obj.dialogTop, dialogLeft: obj.dialogLeft, dialogHeight: obj.dialogHeight, dialogWidth: obj.dialogWidth
+            Sage.ClientLinkHandler.request({
+                request: 'ShowDialog', type: obj.entityType, smartPart: obj.smartPart, entityId: obj.entityId, dialogTitle: obj.dialogTitle,
+                isCentered: obj.isCentered, dialogTop: obj.dialogTop, dialogLeft: obj.dialogLeft, dialogHeight: obj.dialogHeight, dialogWidth: obj.dialogWidth,
+                dialogParameters: obj.dialogParameters, childInsertInfo: obj.childInsertInfo
             });
         },
         values: function (obj) {
@@ -810,15 +839,52 @@ function (
             }
             return precision ? precision : 0;
         },
+		// extract currency symbo info from item.formatString in listPanel
+         getCurrencySymbol: function (str) {
+			var currencySymbol = '';
+			if (str) {
+				var currencySymbols = window.currencySymbolGlobalObj;
+				if (currencySymbols) {
+					var symbolItems = currencySymbols.split('|');
+					for (var i = 0; i < symbolItems.length; i++) {
+						if (str.indexOf(symbolItems[i]) > -1) {
+							currencySymbol = symbolItems[i];
+							return currencySymbol;
+						}
+					}
+				}
+			}
+			return currencySymbol;
+            },
+        // Recursively loop the object and encode it's strings so they are safe for displaying
+        encodeObjectStrings: function(object) {
+            var dataType = typeof object;
+            if (dataType === 'object') {
+                for (var key in object) {
+                    if (object[key]) {
+                        object[key] = this.encodeObjectStrings(object[key]);
+                    }
+                }
+                return object;
+            }
+            return this.htmlEncode(object);
+        },
         htmlEncode: function (str) {
             if (typeof str != "string") { return str; }
             if (!str) { return ''; }
 
             return str.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
         },
+        // This is here for speed's sake.
+        _hiddenPre: document.createElement("pre"),
         htmlDecode: function (str) {
             if (typeof str != "string") { return str; }
-            return str.replace(/&amp;/g, "&").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+            //This needs to decode standard HTML encoded strings
+            // This is how angular.js does it (see sanatize.decodeEntities)
+            this._hiddenPre.innerHTML = str.replace(/</g,"&lt;");
+            // innerText depends on styling as it doesn't display hidden elements.
+            // Therefore, it's better to use textContent not to cause unnecessary reflows.
+            return this._hiddenPre.textContent;
         },
         getSelectionInfo: function () {
             var panel = dijit.byId('list');
@@ -826,6 +892,125 @@ function (
                 return panel.getSelectionInfo();
             }
             return false;
+        },
+getEQLogicalId: function () {
+            var eqLogicalId="";
+                  this.loadEQLogicalId();
+            if(localStorage.getItem('eqLogicalId'))
+                eqLogicalId = localStorage.getItem('eqLogicalId');
+           return eqLogicalId;
+        },
+        loadEQLogicalId: function () {
+            var eqLogicalId = "";
+            var cpqEQ = {
+                "$name": "GetEqCustomSetting",
+            "request": {
+                    "recordName": "CPQ EQ Logical ID"
+                    }
+                };            
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(Sage.Data.SDataServiceRegistry.getSDataService('dynamic'))
+                .setResourceKind('Integrations')
+                .setOperationName('GetEqCustomSetting');
+                request.execute(cpqEQ, {
+                async:false,
+                success: function (result) {
+                    eqLogicalId = result.response.Result;
+                    localStorage.setItem('eqLogicalId', eqLogicalId);
+                },
+                failure: function (result) {
+                    Sage.UI.Dialogs.showError(result);
+                }
+            });
+        },
+        loadEQEnabled: function () {
+            var isEQEnabled = "";
+            var cpqEQ = {
+                "$name": "GetEqCustomSetting",
+            "request": {
+                    "recordName": "CPQ EQ Enabled"
+                   }
+                };            
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(Sage.Data.SDataServiceRegistry.getSDataService('dynamic'))
+                .setResourceKind('Integrations')
+                .setOperationName('GetEqCustomSetting');
+                request.execute(cpqEQ, {
+                async:false,
+                success: function (result) {
+                    isEQEnabled = result.response.Result;
+                    localStorage.setItem('isEQEnabled', isEQEnabled);
+                },
+                failure: function (result) {
+                    Sage.UI.Dialogs.showError(result);
+                }
+            });           
+        },
+        isEQEnabled: function () {
+            var service = Sage.Services.getService('IntegrationContractService');
+            var isEQEnabled=false;
+                this.loadEQEnabled();
+                
+                if(localStorage.getItem('isEQEnabled'))
+                {
+                    if(localStorage.getItem('isEQEnabled').toLowerCase() == 'true')
+                        isEQEnabled=true;
+                }
+           return service.isCPQIntegrationEnabled && isEQEnabled;
+        },
+        isMingleEnabled: function () {            
+           return mingleConfig.isMingleEnabled;
+        },
+        showEQForm: function(ViewId,Id){
+        var alternateDocumentId  ="";	
+        var LogicalId = this.getEQLogicalId();
+        var quote = {
+            "$name": "GetQuoteAlternateDocumentId",
+            "request": {
+                    "quoteId": Id
+                }
+            };
+            var request = new Sage.SData.Client.SDataServiceOperationRequest(Sage.Data.SDataServiceRegistry.getSDataService('dynamic'))
+            .setResourceKind(Sage.Utility.pluralize(ViewId))
+            .setOperationName('GetQuoteAlternateDocumentId');
+            request.execute(quote, {
+                async:false,
+                success: function (result) {
+                    alternateDocumentId = result.response.Result;
+                },
+                failure: function (result) {
+                    Sage.UI.Dialogs.showError(result);
+                }
+            });
+            infor.companyon.client.sendPrepareDrillbackMessage('?LogicalId='+LogicalId+'&EntityType='+ViewId+'&Id1='+alternateDocumentId);
+        },
+        showDetailForm: function(ViewId,Id){
+            if(this.isEQEnabled())
+            {
+                var alternateDocumentId  ="";    
+                var LogicalId = this.getEQLogicalId();
+                var quote = {
+                    "$name": "GetQuoteAlternateDocumentId",
+                    "request": {
+                    "quoteId": Id
+                    }
+                };
+                var request = new Sage.SData.Client.SDataServiceOperationRequest(Sage.Data.SDataServiceRegistry.getSDataService('dynamic'))
+                .setResourceKind(Sage.Utility.pluralize(ViewId))
+                .setOperationName('GetQuoteAlternateDocumentId');
+                request.execute(quote, {
+                    async:false,
+                    success: function (result) {
+                        alternateDocumentId = result.response.Result;
+                    },
+                    failure: function (result) {
+                        Sage.UI.Dialogs.showError(result);
+                    }
+                });
+                infor.companyon.client.sendPrepareDrillbackMessage('?LogicalId='+LogicalId+'&EntityType='+ViewId+'&Id1='+alternateDocumentId);
+            }
+            else
+            {
+                window.document.location = ViewId+'.aspx?entityId='+Id;
+            }    
         },
         Timezone_populatelist: function (controlId, autoPostBack) {
             var sel, selectedKeyname;
@@ -939,11 +1124,50 @@ function (
             }
         },
         //end truncate
+        // parses xml nodes
+        parseXMLNode: function (xmlNode, result) {
+            var aTags = ['[', ']'], jsonObj = {}, length = -1, i = -1, name = xmlNode.nodeName;
+            if (name === "#text" && xmlNode.nodeValue.trim() === "") {
+                return;
+            }
+            var  existing = result[name], children = xmlNode.childNodes, attributes = xmlNode.attributes;
+            try {
+                if (existing) {
+                    if (!dojo.isArray(existing)) {
+                        result[name] = [existing, jsonObj];
+                    }
+                    else {
+                        result[name].push(jsonObj);
+                    }
+                }
+                else {
+                    if (aTags && aTags.indexOf(name) != -1) {
+                        result[name] = [jsonObj];
+                    }
+                    else {
+                        result[name] = jsonObj;
+                    }
+                }
+                if (attributes) {
+                    for (i = 0, length = attributes.length; i < length; i++) {
+                        var attribute = attributes[i];
+                        jsonObj[attribute.nodeName] = attribute.nodeValue;
+                    }
+                }
+                for (i = 0, length = children.length; i < length; i++) {
+                    this.parseXMLNode(children[i], jsonObj);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+            return jsonObj;
+        },
+        // end parseXMLNode
         // General Dashboard helper functions
         Dashboard: {
             // An incremental counter used by generateString()
             counter: 1,
-            /** So that dynamically generated elements can get a 
+            /** So that dynamically generated elements can get a
             unique number appended to their name, ie 'wgt1', 'wgt2'...
             @param str a string passed in to which a number will be appended
             */
@@ -1039,28 +1263,84 @@ function (
         isTrue: function (value) {
             return (this.isBoolean(value)) ? (value === true) : false;
         },
-        getUserName: function (userid) {
-            if (!userid) {
-                return "";
+        getOwnerName: function(secCodeId) {
+            if (!secCodeId) {
+                return '';
             }
-            if (!this._userCache) {
-                this.buildUserCache();
-            }
-            var trimmed = userid.replace(/^\s+|\s+$/g, '');
-            var u = this._userCache[trimmed];
-            return u ? u.name : userid;
+            var trimmed = secCodeId.replace(/^\s+|\s+$/g, '');
+            this.buildOwnersCache(null, null, trimmed);
+            var owner = this._ownersCache[trimmed];
+            return owner ? owner.name : secCodeId;
         },
-        buildUserCache: function () {
-            // summary:
-            //  Populate _userCache object
+        buildOwnersCache: function (count, start, trimmedSecCodeId) {
+            if (sessionStorage.getItem(this._ownersCacheKey)) {
+                this._ownersCache = JSON.parse(sessionStorage.getItem(this._ownersCacheKey));
+                return;
+            }
             var self = this;
+            if (!this._ownersCache) {
+                self._ownersCache = {};
+            }
+            var defaultPageSize = 100;
+            count = count || defaultPageSize;
+            start = start || 1;
+            var defaultUrl = dString.substitute("slxdata.ashx/slx/dynamic/-/owners?select=Type&orderBy=$key&format=json&count=${0}&startIndex=${1}", [count, start]);
             return xhr('GET', {
-                url: "slxdata.ashx/slx/dynamic/-/users?select=Enabled&format=json",
+                url: trimmedSecCodeId ?
+                    defaultUrl + "&where=$key eq '"+trimmedSecCodeId+"'" // we should retrieve one owner by passing the corresponding scecodeid instead of retrieving all the owners to avoid the performance issue
+                    :defaultUrl,
                 handleAs: "json",
                 sync: true  // we have to do a sync call here, because the grid column needs to get HTML.
                 // but, most of the time this will be cached, so it should not be a big impact.
             }).then(function (data) {
+                var totalResults = data.$totalResults;
+                for (var i = 0; i < data.$resources.length; i++) {
+                    var u = data.$resources[i];
+                    self._ownersCache[u.$key.trim()] = {
+                        type: u.Type,
+                        name: u.$descriptor
+                    };
+                }
+                if (totalResults > defaultPageSize && totalResults >= (start + count)) {
+                    start = start + count;
+                    self.buildOwnersCache(count, start);
+                }
+                sessionStorage.setItem(self._ownersCacheKey, JSON.stringify(self._ownersCache));
+            });
+        },
+        getUserName: function (userid) {
+            if (!userid) {
+                return "";
+            }
+            var trimmed = userid.replace(/^\s+|\s+$/g, '');
+            this.buildUserCache(null, null,trimmed);
+            //var trimmed = userid.replace(/^\s+|\s+$/g, '');
+            var u = this._userCache[trimmed];
+            return u ? u.name : userid;
+        },
+        buildUserCache: function (count, start, trimmedUserid) {
+            if (sessionStorage.getItem(this._userCacheKey)) {
+                this._userCache = JSON.parse(sessionStorage.getItem(this._userCacheKey));
+				if(this._userCache[trimmedUserid])
+                return;
+            }
+            var self = this;
+            if (!this._userCache) {
                 self._userCache = {};
+            }
+            var defaultPageSize = 100;
+            count = count || defaultPageSize;
+            start = start || 1;
+            var defatultUrl = dString.substitute("slxdata.ashx/slx/dynamic/-/users?select=Enabled&format=json&Count=${0}&StartIndex=${1}", [count, start]);
+            return xhr('GET', {
+                url: trimmedUserid ?
+                     defatultUrl + "&where=$key eq '"+trimmedUserid+"'" // we should retrieve one user by passing the corresponding userid instead of retrieving all the users to avoid the performance issue
+                    : defatultUrl,
+                handleAs: "json",
+                sync: true  // we have to do a sync call here, because the grid column needs to get HTML.
+                // but, most of the time this will be cached, so it should not be a big impact.
+            }).then(function (data) {
+                var totalResults = data.$totalResults;
                 for (var i = 0; i < data.$resources.length; i++) {
                     var u = data.$resources[i];
                     self._userCache[u.$key] = {
@@ -1068,12 +1348,470 @@ function (
                         name: u.$descriptor
                     };
                 }
+                if (totalResults > defaultPageSize && totalResults >= (start + count)) {
+                    start = start + count;
+                    self.buildUserCache(count, start);
+                }
+                sessionStorage.setItem(self._userCacheKey, JSON.stringify(self._userCache));
             });
         },
         isItemInArray: function include(arr, stringVal) {
             for (var i = 0; i < arr.length; i++) {
                 if (lang.trim(arr[i]) == lang.trim(stringVal)) return true;
             }
+        },
+        pluralize: function (stringVal, revert) {//revert is true if your input is plural and output is singler
+            if (revert === undefined) {
+                revert = false;
+            }
+            var plural = {
+                '(quiz)$': "$1zes",
+                '^(ox)$': "$1en",
+                '([m|l])ouse$': "$1ice",
+                '(matr|vert|ind)ix|ex$': "$1ices",
+                '(x|ch|ss|sh)$': "$1es",
+                '([^aeiouy]|qu)y$': "$1ies",
+                '(hive)$': "$1s",
+                '(?:([^f])fe|([lr])f)$': "$1$2ves",
+                '(shea|lea|loa|thie)f$': "$1ves",
+                'sis$': "ses",
+                '([ti])um$': "$1a",
+                '(tomat|potat|ech|her|vet)o$': "$1oes",
+                '(bu)s$': "$1ses",
+                '(alias)$': "$1es",
+                '(octop)us$': "$1i",
+                '(ax|test)is$': "$1es",
+                '(us)$': "$1es",
+                '([^s]+)$': "$1s"
+            };
+
+            var singular = {
+                '(quiz)zes$': "$1",
+                '(matr)ices$': "$1ix",
+                '(vert|ind)ices$': "$1ex",
+                '^(ox)en$': "$1",
+                '(alias)es$': "$1",
+                '(octop|vir)i$': "$1us",
+                '(cris|ax|test)es$': "$1is",
+                '(shoe)s$': "$1",
+                '(o)es$': "$1",
+                '(bus)es$': "$1",
+                '([m|l])ice$': "$1ouse",
+                '(x|ch|ss|sh)es$': "$1",
+                '(m)ovies$': "$1ovie",
+                '(s)eries$': "$1eries",
+                '([^aeiouy]|qu)ies$': "$1y",
+                '([lr])ves$': "$1f",
+                '(tive)s$': "$1",
+                '(hive)s$': "$1",
+                '(li|wi|kni)ves$': "$1fe",
+                '(shea|loa|lea|thie)ves$': "$1f",
+                '(^analy)ses$': "$1sis",
+                '((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$': "$1$2sis",
+                '([ti])a$': "$1um",
+                '(n)ews$': "$1ews",
+                '(h|bl)ouses$': "$1ouse",
+                '(corpse)s$': "$1",
+                '(us)es$': "$1",
+                's$': ""
+            };
+
+            var irregular = {
+                'move': 'moves',
+                'foot': 'feet',
+                'goose': 'geese',
+                'sex': 'sexes',
+                'child': 'children',
+                'man': 'men',
+                'tooth': 'teeth',
+                'person': 'people'
+            };
+
+            var uncountable = [
+                'sheep',
+                'fish',
+                'deer',
+                'series',
+                'species',
+                'money',
+                'rice',
+                'information',
+                'equipment'
+            ];
+
+
+            // save some time in the case that singular and plural are the same
+            if (uncountable.indexOf(stringVal.toLowerCase()) >= 0)
+                return stringVal;
+            var pattern, replace, array;
+            // check for irregular forms
+            for(var word in irregular){
+
+                if(revert){
+                    pattern = new RegExp(irregular[word]+'$', 'i');
+                    replace = word;
+                } else {
+                    pattern = new RegExp(word + '$', 'i');
+                    replace = irregular[word];
+                }
+                if (pattern.test(stringVal))
+                    return stringVal.replace(pattern, replace);
+            }
+
+            if (revert)
+                array = singular;
+            else
+                array = plural;
+
+            // check for matches using regular expressions
+            for(var reg in array){
+
+                pattern = new RegExp(reg, 'i');
+
+                if (pattern.test(stringVal))
+                    return stringVal.replace(pattern, array[reg]);
+            }
+
+            return stringVal;
+        },
+        getParameterByName: function (name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        },
+        specialDates: {
+            ':now': function (today) {
+                today = new Date();
+                return today;
+            },
+            // today and todaystart are the same
+            ':today': function (today) {
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':todaystart': function (today) {
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':todayend': function (today) {
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            // yesterday and yesterdaystart are the same
+            ':yesterday': function (today) {
+                today.setDate(today.getDate() - 1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':yesterdaystart': function (today) {
+                today.setDate(today.getDate() - 1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':yesterdayend': function (today) {
+                today.setDate(today.getDate() - 1);
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            // tomorrow and tomorrowstart are the same
+            ':tomorrow': function (today) {
+                today.setDate(today.getDate() + 1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':tomorrowstart': function (today) {
+                today.setDate(today.getDate() + 1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':tomorrowend': function (today) {
+                today.setDate(today.getDate() + 1);
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':thisweekstart': function (today) {
+                today.setDate(today.getDate() - today.getDay());
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':thisweekend': function (today) {
+                today.setDate(today.getDate() + (6 - today.getDay()));
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':thismonthstart': function (today) {
+                today.setDate(1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':thismonthend': function (today) {
+                today.setDate(dojoDate.getDaysInMonth(today));
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':thisyearstart': function (today) {
+                today.setDate(1);
+                today.setMonth(0);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':thisyearend': function (today) {
+                today.setDate(31);
+                today.setMonth(11);
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':thisquarterstart': function (today) {
+                // 1 | jan (0), feb (1), march (2)
+                // 2 | april (3), may (4), june (5)
+                // 3 | july (6), august (7), sept (8)
+                // 4 | oct (9), nov (10), dec (11)
+                var month = today.getMonth(),
+                    mod = month % 3;
+                today.setMonth(month - mod);
+                today.setDate(1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':thisquarterend': function (today) {
+                var month = today.getMonth(),
+                    mod = 2 - (month % 3);
+                today.setMonth(month + mod);
+                today.setDate(dojoDate.getDaysInMonth(today));
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':nextweekstart': function (today) {
+                today.setDate(today.getDate() + (7 - today.getDay()));
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':nextweekend': function (today) {
+                today.setDate(today.getDate() + (7 - today.getDay()) + 6);
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':nextmonthstart': function (today) {
+                today.setMonth(today.getMonth() + 1);
+                today.setDate(1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':nextmonthend': function (today) {
+                today.setMonth(today.getMonth() + 1);
+                today.setDate(dojoDate.getDaysInMonth(today));
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':nextyearstart': function (today) {
+                today.setFullYear(today.getFullYear() + 1);
+                today.setMonth(0);
+                today.setDate(1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':nextyearend': function (today) {
+                today.setFullYear(today.getFullYear() + 1);
+                today.setMonth(11);
+                today.setDate(31);
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':nextquarterstart': function (today) {
+                var month = today.getMonth(),
+                    mod = 2 - (month % 3);
+                today.setMonth(month + mod + 1);
+                today.setDate(1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':nextquarterend': function (today) {
+                var month = today.getMonth(),
+                    mod = 2 - (month % 3);
+                today.setMonth(month + mod + 3);
+                today.setDate(dojoDate.getDaysInMonth(today));
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':lastweekstart': function (today) {
+                today.setDate(today.getDate() - today.getDay() - 7);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':lastweekend': function (today) {
+                today.setDate(today.getDate() - today.getDay() - 1);
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':lastmonthstart': function (today) {
+                today.setMonth(today.getMonth() - 1);
+                today.setDate(1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':lastmonthend': function (today) {
+                today.setMonth(today.getMonth() - 1);
+                today.setDate(dojoDate.getDaysInMonth(today));
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':lastyearstart': function (today) {
+                today.setFullYear(today.getFullYear() - 1);
+                today.setMonth(0);
+                today.setDate(1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':lastyearend': function (today) {
+                today.setFullYear(today.getFullYear() - 1);
+                today.setMonth(11);
+                today.setDate(31);
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':lastquarterstart': function (today) {
+                var month = today.getMonth(),
+                    mod = month % 3;
+                today.setMonth(month - mod - 3);
+                today.setDate(1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            },
+            ':lastquarterend': function (today) {
+                var month = today.getMonth(),
+                    mod = month % 3;
+                today.setMonth(month - mod - 1);
+                today.setDate(dojoDate.getDaysInMonth(today));
+                today.setHours(23);
+                today.setMinutes(59);
+                today.setSeconds(59);
+                return today;
+            },
+            ':beforelastyearend': function (today) {
+                today.setFullYear(today.getFullYear() - 2);
+                today.setMonth(0);
+                today.setDate(1);
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                return today;
+            }
+         },
+        /**
+        * @param {item} dataItem
+        * @param {fieldProperty} field property
+        * Return string value of dot notated field
+        *
+        */
+        splitField: function (item, fieldProperty) {
+            var sp = fieldProperty.split(".");
+            var field = item;
+            for (var i = 0; i < sp.length; i++) {
+                if (field === null) {
+                    return '';
+                }
+                field = field[sp[i]];
+            }
+            return field;
+        },
+        /**
+        * @param {item} dataItem
+        * @param {fieldProperty} field property
+        * @param {value} value to be set
+        *
+        */
+        setField: function (item, fieldProperty, value) {
+            var sp = fieldProperty.split(".");
+            var field = item;
+            for (var i = 0; i < sp.length - 1; i++) {
+                if (field.hasOwnProperty(sp[i])) {
+                    field = field[sp[i]];
+                }
+            }
+            if (field) {
+                field[sp[sp.length - 1]] = value;
+            }
+        },
+        dynamicSort: function dynamicSort(property, sortOrder) {
+            // 1 for ascending
+            sortOrder = sortOrder === true ? 0 : 1;
+
+            return function (a,b) {
+                var result = (Sage.Utility.splitField(a, property) < Sage.Utility.splitField(b, property))
+                    ? -1
+                    : (Sage.Utility.splitField(a, property) > Sage.Utility.splitField(b, property))
+                        ? 1
+                        : 0;
+                return result * sortOrder;
+            };
         }
     }); //end dojo.mixin
 

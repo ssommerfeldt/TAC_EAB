@@ -1,14 +1,15 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/Utility/ErrorHandler", [
         'Sage/Utility',
         'Sage/UI/Dialogs',
         'dojo/io-query',
         'dojo/string',
-        'dojo/_base/array'
-    ],
+        'dojo/_base/array', 
+        'dojo/i18n!./nls/ErrorHandler'
+],
 //TODO: Localization
 // ReSharper disable InconsistentNaming
-    function (Utility, Dialogs, ioQuery, dString, array) {
+    function (Utility, Dialogs, ioQuery, dString, array, resources) {
         // ReSharper restore InconsistentNaming
         Sage.namespace('Utility.ErrorHandler');
         dojo.mixin(Sage.Utility.ErrorHandler, {
@@ -18,7 +19,7 @@ define([
                 preemption: {
                     enabled: true,
                     allowAuthRedirect: true,
-                    handledStatusCodes: "577,578,579,580,581,582",
+                    handledStatusCodes: "577,578,579,580,581,582,584",
                     showPreemptedErrorMsg: false,
                     showInternalServerErrorMsg: false,
                     showUnhandledMessagingServiceExceptionMsg: true
@@ -26,6 +27,13 @@ define([
                 authenticationRedirectUrl: null,
                 showExtendedValidationException: false,
                 showExtendedRoleAccessDeniedException: false
+            },
+            _doRedirect: function (location) {
+                var service = Sage.Services.getService("ClientBindingManagerService");
+                if (service) {
+                    service.clearDirtyStatus();
+                }
+                window.location = location;
             },
             _fmtSlxErrorId: function (slxErrorId) {
                 if (Sage.Utility.isStringWithLength(slxErrorId)) {
@@ -74,11 +82,12 @@ define([
                     var fnGetSalesLogixErrorId = function (response) {
                         return fnGetHeaderValue(response, "Sage-SalesLogix-Error-Id");
                     };
+                    var self = this;
                     var fnRedirect = function (url) {
                         if (typeof console !== "undefined") {
                             console.debug("Redirecting to %o", url);
                         }
-                        window.location = url;
+                        self._doRedirect(url);
                     };
                     var sRedirect;
 
@@ -225,6 +234,16 @@ define([
                                 return true;
                             }
                             return false;
+                        case 584:
+                            // ProjectsValidationException
+                            if (typeof console !== "undefined") {
+                                console.error("ProjectsValidationException (584) - Saleslogix Error Id: %o; HTTP Info: %o", fnGetSalesLogixErrorId(xhr), oHttpInfo);
+                            }
+                            if (this.isConfiguredToHandle(oHttpInfo.status)) {
+                                this.showStatusInfoError(oHttpInfo);
+                                return true;
+                            }
+                            return false;
                         default:
                             if (typeof console !== "undefined") {
                                 console.debug("%o (%o) - HTTP Info: %o", oHttpInfo.statusText, oHttpInfo.status, oHttpInfo);
@@ -295,6 +314,7 @@ define([
                                 // unhandled server-side exception (i.e. 5xx) redirected to here from App_Code\Global.cs that requires
                                 // either a redirection to Login.aspx or other special error handling.
                                 __failureHandler: function (response, opt) {
+                                    var referenceError = false;
                                     if (opt.__failure && typeof opt.__failure === "function") {
                                         try {
                                             opt.__failure.call(opt.scope || this, response, opt);
@@ -302,11 +322,19 @@ define([
                                             if (typeof console !== "undefined") {
                                                 console.error("There was an error calling the original failure() handler: %o", e);
                                             }
+                                            if (e instanceof ReferenceError) {
+                                                referenceError = true;
+                                                console.warn("The call to Sage.Utility.ErrorHandler.handleHttpError() may be invalid. Check your spelling and make sure there is a valid Sage/Utility reference or that the fully qualified name is used when calling handleHttpError().");
+                                            }
                                         }
                                     }
                                     var sUrl = opt.url;
                                     if ((Sage.Utility.ErrorHandler._hasErrorHandler(sUrl) === false) || (response.status === 575)) {
-                                        Sage.Utility.ErrorHandler._preemptError(response, opt);
+                                        if (referenceError) {
+                                            Sage.Utility.ErrorHandler.handleHttpError(response, opt);
+                                        } else {
+                                            Sage.Utility.ErrorHandler._preemptError(response, opt);
+                                        }
                                     }
                                     return response;
                                 }
@@ -366,6 +394,8 @@ define([
                                 return 581;
                             case "AccessException":
                                 return 582;
+                            case "ProjectsValidationException":
+                                return 584;
                             default:
                                 return Number(statusInfo.status);
                         }
@@ -389,7 +419,7 @@ define([
                 var options = this._getStatusInfoOptions(opt);
                 var sError = "";
                 if (error && dojo.isObject(error)) {
-                    sError = error.message || "";
+                    sError = error.message || error.result || "";
                 }
                 if (sError !== "" && options.message !== "")
                     options.message = options.message + " " + sError;
@@ -405,8 +435,8 @@ define([
                 if (oStatusInfo !== null)
                     this.showStatusInfoError(oStatusInfo, options);
                 else {
-                    var sMessage = (options && dojo.isObject(options) && Sage.Utility.isStringWithLength(options.message)) ? options.message : "There was an unknown error in response to an HTTP request.";
-                    Dialogs.showError(sMessage);
+                    var sMessage = (options && dojo.isObject(options) && Sage.Utility.isStringWithLength(options.message)) ? options.message : resources.HttpError;
+					Dialogs.showError(sMessage);
                 }
             },
             _hasErrorHandler: function (url) {
@@ -464,7 +494,7 @@ define([
                                     console.debug('handleEndRequestError: ' + message + ' - Redirecting to ' + redirectUrl);
                                 }
                                 args.set_errorHandled(true);
-                                window.location = redirectUrl;
+                                this._doRedirect(redirectUrl);
                                 return;
                             }
                         }
@@ -793,14 +823,16 @@ define([
                                                 showHttpStatus = false;
                                             }
                                             break;
-                                        // ValidationException                                                                                      
+                                            // ValidationException                                                                                      
                                         case 578:
                                             if (!this._configuration.showExtendedValidationException) {
                                                 showHttpStatus = false;
                                             }
                                             break;
-                                        // AccessException                                                                                     
+                                            // AccessException                                                                                     
                                         case 582:
+                                            // ProjectsValidationException
+                                        case 584:
                                             showHttpStatus = false;
                                             break;
                                     }
@@ -895,7 +927,8 @@ define([
                 var internalStatus = this._getInternalHttpStatus(statusInfo);
 
                 if ((internalStatus == 575) && this._configuration.preemption.allowAuthRedirect) {
-                    window.location = this._configuration.authenticationRedirectUrl || 'Login.aspx';
+                    var location = this._configuration.authenticationRedirectUrl || 'Login.aspx';
+                    this._doRedirect(location);
                     return;
                 }
 
@@ -990,10 +1023,10 @@ define([
                             }
                         }
                     }
-                    var mail = { subject: "Saleslogix Exception Details" };
+                    var mail = { subject: "Infor Exception Details" };
                     // Are we dealing with an ErrorInfo object?
                     if (typeof statusInfo.errorInfo === "object") {
-                        sPlainSlxErrorIdMsg = dString.substitute("\r\n\r\nSaleslogix Error Id: ${0}", [statusInfo.errorInfo.slxErrorId]);
+                        sPlainSlxErrorIdMsg = dString.substitute("\r\n\r\nInfor Error Id: ${0}", [statusInfo.errorInfo.slxErrorId]);
                         sSlxErrorIdMsgWithLink = this._fmtSlxErrorId(statusInfo.errorInfo.slxErrorId);
                         sMessage += sSlxErrorIdMsgWithLink;
                         sMessage += dString.substitute("\r\n\r\nURL: ${info.request.url}", { info: statusInfo.errorInfo });
@@ -1005,23 +1038,82 @@ define([
                                 sMessage += dString.substitute("\r\n\r\nException type: ${info.type}\r\n\r\nSource: ${info.source}${info.__stackTrace}\r\n\r\nTarget site: ${info.targetSite}", { info: statusInfo.errorInfo });
                             }
                         }
-                        mail.subject = dString.substitute("Saleslogix Exception Details (Saleslogix Error Id: ${0})", [statusInfo.errorInfo.slxErrorId]);
+                        mail.subject = dString.substitute("Infor Exception Details (Infor Error Id: ${0})", [statusInfo.errorInfo.slxErrorId]);
                     }
+                    var slxErrorId = statusInfo.errorInfo.slxErrorId;
                     mail.subject = encodeURIComponent(mail.subject);
                     if (sPlainTextStackTrace !== "") {
                         sPlainTextStackTrace = dString.substitute("\r\n\r\nStack trace:\r\n${0}", [sPlainTextStackTrace]);
                     }
-                    mail.message = encodeURIComponent(Sage.Utility.htmlDecode(sMessage
-                            .replace(sStackTraceWithTextArea, sPlainTextStackTrace)
-                            .replace(sSlxErrorIdMsgWithLink, sPlainSlxErrorIdMsg)));
+                    mail.toAddress = "";
+                    var officeProfile = this.getOfficeProfile();
+                    if (officeProfile.UseEmailLink) {
+                        mail.toAddress = officeProfile.EmailAddress;
+                        mail.message = this.getShortMailContent(slxErrorId);
+                    }
+                    else {
+                        mail.message = encodeURIComponent(Sage.Utility.htmlDecode(sMessage
+                           .replace(sStackTraceWithTextArea, sPlainTextStackTrace)
+                           .replace(sSlxErrorIdMsgWithLink, sPlainSlxErrorIdMsg)));
+                    }                   
                     mail.linkCaption = "Mail details of this exception to your administrator";
-                    sMessage += dString.substitute("\r\n\r\n<a href=\"mailto:?subject=${info.subject}&amp;body=${info.message}\">${info.linkCaption}</a>", { info: mail });
+                    sMessage += dString.substitute("\r\n\r\n<a href=\"mailto:${info.toAddress}?subject=${info.subject}&amp;body=${info.message}\">${info.linkCaption}</a>", { info: mail });
                 }
                 if (sMessage === "") {
                     sMessage = "There was an unknown error.";
                 }
                 sMessage = sMessage.replace(/(\r\n)/g, "<br />");
                 Dialogs.showError(sMessage);
+            },
+            getOfficeProfile: function () {
+                var officeProfile = {};
+                var service = Sage.Utility.getSDataService('dynamic');
+                var request = new Sage.SData.Client.SDataSingleResourceRequest(service);
+                request.setResourceKind('officeProfiles');
+                request.read({
+                    async: false,
+                    success: function (result) {
+                        officeProfile = result;
+                    },
+                    failure: function (err) {
+                        Sage.UI.Dialogs.showError(err);
+                    }
+                   
+                });
+                return officeProfile;
+            },
+            getShortMailContent: function (slxErrorId)
+            {
+                var sMessage = '';
+                var newLine = "\r\n";
+                var dblNewLine = "\r\n\r\n";
+                var protocal = window.location.protocol;
+                var hostname = window.location.hostname.replace('localhost', '127.0.0.1');
+                var port = '';
+                if(window.location.port) {
+                    port = ":" + window.location.port;
+                }
+                var pathArray = window.location.pathname.split('/');
+                var portalName = '/';
+                if (pathArray[1] !== 'SLXErrorLookupService.asmx') {
+                    portalName = portalName + pathArray[1];
+                }
+                var user='';
+                var clientContextSvc = Sage.Services.getService('ClientContextService');
+                if (clientContextSvc) {
+                    if (clientContextSvc.containsKey('userID')) {
+                        var userId = clientContextSvc.getValue('userID');
+                        user = Sage.Utility.getUserName(userId);
+                    }
+                }
+                var time = new Date().toISOString().split('.')[0];
+                sMessage = dString.substitute(newLine + resources.EmailContentL1);
+                sMessage += dString.substitute(dblNewLine + resources.EmailContentL2, [user, time]);
+                sMessage += dString.substitute(dblNewLine + resources.EmailContentL3);
+                var eventViewerLink = dString.substitute(dblNewLine + "${0}//${1}${2}${3}/SLXErrorLookupService.asmx/GetEventLogError?slxErrorId=${4}",
+                    [protocal, hostname, port, portalName, slxErrorId]);
+                sMessage += eventViewerLink;
+                return encodeURIComponent(sMessage);
             }
         });
 

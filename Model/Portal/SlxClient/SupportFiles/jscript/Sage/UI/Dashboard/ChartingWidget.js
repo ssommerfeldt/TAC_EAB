@@ -1,5 +1,5 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/UI/Dashboard/ChartingWidget", [
     'Sage/UI/Dashboard/BaseWidget',
     'Sage/Utility',
     'dojo/i18n',
@@ -96,26 +96,27 @@ function (baseWidget, util, i18n, declare) {
                             percentileVal = fVal / this.cumulativeValues * 100;
                         }
                         tmp.tooltip = curr.displayName + ', ' + dojo.number.format(percentileVal, {
-                            places: 2
+                            places: 2,
+                            locale: Sys.CultureInfo.CurrentCulture.name
                         }) + '%';
                         
                         formattedValue = fVal;
                         if(formattedValue >= 1000000) {
-                            formattedValue = dojo.number.format((formattedValue / 1000000), {places: 1}) + 'M';
+                            formattedValue = dojo.number.format((formattedValue / 1000000), { places: 1, locale: Sys.CultureInfo.CurrentCulture.name }) + 'M';
                         }
                         else {
-                            formattedValue = dojo.number.format(fVal);
+                            formattedValue = dojo.number.format(fVal, { locale: Sys.CultureInfo.CurrentCulture.name });
                         }
                         
-                        tmp.legend = '<label>' + curr.displayName + '</label><label style="float:right; margin-left:10px; margin-top:2px;">' + formattedValue + '</label>'; // Styling here for the value to be on the right
+                        tmp.legend = '<label>' + curr.displayName + '</label><label style="float:right; margin-left:10px; margin-top:4px;">' + formattedValue + '</label>'; // Styling here for the value to be on the right
                     }
                     else {
                         formattedValue = fVal;
                         if(formattedValue >= 1000000) {
-                            formattedValue = dojo.number.format((formattedValue / 1000000), {places: 1}) + 'M';
+                            formattedValue = dojo.number.format((formattedValue / 1000000), { places: 1, locale: Sys.CultureInfo.CurrentCulture.name }) + 'M';
                         }
                         else {
-                            formattedValue = dojo.number.format(fVal);
+                            formattedValue = dojo.number.format(fVal, { locale: Sys.CultureInfo.CurrentCulture.name });
                         }
                         tmp.value = i + 1; // non-zero based
                         tmp.y = fVal;
@@ -133,6 +134,8 @@ function (baseWidget, util, i18n, declare) {
                         legendDisplay: parentCell.legendDisplay,
                         chartHeight: h
                     }));
+                    // check to see if any other labels can be easily translated.
+                    this._simplyLocalizeAxisSubTitle(parentCell);
                     // assemble and render the chart
                     this._doChart(parentCell, data);
                 }
@@ -157,6 +160,40 @@ function (baseWidget, util, i18n, declare) {
             //Set up the footer before we go.
             this._addFooter();
         },
+        // Check the yAxis, xAxis, and sub title to see if any other labels can be easily translated
+        _simplyLocalizeAxisSubTitle: function (parentCell) {
+            var resources, yAx, xAx, subT;
+
+            resources = Sage.UI.DataStore.Dashboard.WidgetResources;
+
+            // yAxis conversion
+            if (this.options.yAxisName) { // not all widgets have an axis to check
+                yAx = this.options.yAxisName;
+
+                yAx = yAx.replace(/ /g, '_');
+                if (resources[yAx]) {
+                    parentCell._dashboardWidget.options.yAxisName = resources[yAx];
+                }
+            }
+
+            // xAxis conversion
+            if (this.options.xAxisName) { // not all widgets have an axis to check
+                xAx = this.options.xAxisName;
+                xAx = xAx.replace(/ /g, '_');
+                if (resources[xAx]) {
+                    parentCell._dashboardWidget.options.xAxisName = resources[xAx];
+                }
+            }
+
+            // subtitle
+            if (this.options.subtitle) {
+                subT = this.options.subtitle;
+                subT = subT.replace(/ /g, '_');
+                if (resources[subT]) {
+                    parentCell._dashboardWidget.options.subtitle = resources[subT];
+                }
+            }
+        },
         _addFooter: function () {
             var _widgetDefinitionResource = i18n.getLocalization("Sage.UI.Dashboard", "WidgetDefinition");
             var portletContent = ['#', this.parentCellId, ' .dijitTitlePaneContentOuter'].join('');
@@ -173,7 +210,7 @@ function (baseWidget, util, i18n, declare) {
                 }
                 
                 // DateTime Stamp Region
-                footerHtml += '<span style="float:right; margin-top:3px;">' + dojo.date.locale.format(new Date(), {fullYear: true}) + '</span>';
+                footerHtml += '<span style="float:right; margin-top:3px;">' + dojo.date.locale.format(new Date(), {fullYear: true, locale: Sys.CultureInfo.CurrentCulture.name }) + '</span>';
                 
                 footerHtml += '</div>';
 

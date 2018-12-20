@@ -117,121 +117,133 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Доступ</value>
-  </data>
-  <data name="btnSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="lueAccount.Caption" xml:space="preserve">
-    <value>Субъект:</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="txtNotes.Caption" xml:space="preserve">
-    <value>Заметки:</value>
-  </data>
-  <data name="txtStrengths.Caption" xml:space="preserve">
-    <value>Достоинства:</value>
-  </data>
-  <data name="lueContact.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="urlWebAddress.Caption" xml:space="preserve">
-    <value>Веб Адрес:</value>
-  </data>
-  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Конкурент будет удален без возможности восстановления</value>
-  </data>
-  <data name="lueContact.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="txtWeaknesses.Caption" xml:space="preserve">
-    <value>Слабые стороны:</value>
-  </data>
-  <data name="lueContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Город</value>
-  </data>
-  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
-    <value>Подтип</value>
-  </data>
-  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
-    <value>Основной тел.</value>
-  </data>
-  <data name="btnDelete.Caption" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="phnCompetitor.Caption" xml:space="preserve">
-    <value>Телефон:</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Город</value>
-  </data>
-  <data name="lueAccount.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Менеджер</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
-  </data>
-  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
   <data name="txtCompetitor.Caption" xml:space="preserve">
     <value>Конкурент:</value>
-  </data>
-  <data name="lueContact.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
-    <value>Подтип</value>
-  </data>
-  <data name="btnInsertSave.ToolTip" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="lueContact.LookupProperties.Name.PropertyHeader" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="lueContact.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Субъект</value>
-  </data>
-  <data name="lueContact.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Доступ</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="txtStrategy.Caption" xml:space="preserve">
-    <value>Стратегия:</value>
-  </data>
-  <data name="lueContact.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
-  </data>
-  <data name="lueContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
-    <value>Эл.почта</value>
-  </data>
-  <data name="lueContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Контакт</value>
-  </data>
-  <data name="lueContact.LookupProperties.FullName.PropertyHeader" xml:space="preserve">
-    <value>Контакт</value>
-  </data>
-  <data name="lueContact.Caption" xml:space="preserve">
-    <value>Контакт:</value>
   </data>
   <data name="urlWebAddress.ButtonToolTip" xml:space="preserve">
     <value>WWW</value>
   </data>
-  <data name="lueContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Область</value>
+  <data name="urlWebAddress.Caption" xml:space="preserve">
+    <value>Веб-адрес:</value>
   </data>
   <data name="numRating.Caption" xml:space="preserve">
     <value>Рейтинг:</value>
   </data>
+  <data name="txtWeaknesses.Caption" xml:space="preserve">
+    <value>Слабые стороны:</value>
+  </data>
+  <data name="txtStrengths.Caption" xml:space="preserve">
+    <value>Сильные стороны:</value>
+  </data>
+  <data name="txtStrategy.Caption" xml:space="preserve">
+    <value>Стратегия:</value>
+  </data>
+  <data name="txtNotes.Caption" xml:space="preserve">
+    <value>Заметки:</value>
+  </data>
+  <data name="phnCompetitor.Caption" xml:space="preserve">
+    <value>Телефон:</value>
+  </data>
+  <data name="btnDelete.Caption" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="btnDelete.ToolTip" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="lueAccount.Caption" xml:space="preserve">
+    <value>Клиент:</value>
+  </data>
+  <data name="lueContact.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="lueContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="lueContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="lueContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
   <data name="lueContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Раб. телефон</value>
+    <value>Рабочий телефон</value>
+  </data>
+  <data name="lueContact.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="lueContact.LookupProperties.Name.PropertyHeader" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="lueContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Регион</value>
+  </data>
+  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Основной телефон</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Подтип</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="lueAccount.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Менеджер по клиентам</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="btnInsertSave.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnSave.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnInsertSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="btnSave.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="btnSave.ActionConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Конкурент будет удален без возможности восстановления</value>
+  </data>
+  <data name="lueContact.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueContact.LookupProperties.FullName.PropertyHeader" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="lueContact.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="lueContact.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Подтип</value>
+  </data>
+  <data name="lueContact.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="lueContact.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="lueContact.Caption" xml:space="preserve">
+    <value>Контакт:</value>
   </data>
 </root>

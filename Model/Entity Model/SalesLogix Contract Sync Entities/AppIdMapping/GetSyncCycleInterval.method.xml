@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f6d09eb4-835f-40cb-89ff-3fca4b552661" lastModifiedUtc="2010-06-16T21:14:43.6762968Z" name="GetSyncCycleInterval" returnType="Int32" methodType="Rule" actionType="None" returnMode="Object">
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="f6d09eb4-835f-40cb-89ff-3fca4b552661" lastModifiedUtc="2015-06-25T12:49:11.4403835Z" name="GetSyncCycleInterval" returnType="Int32" methodType="Rule" actionType="None" returnMode="Object" isInstance="false">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
@@ -14,5 +14,4 @@
     </methodTarget>
   </methodTargets>
   <postExecuteTargets />
-  <postFlushTargets />
 </method>

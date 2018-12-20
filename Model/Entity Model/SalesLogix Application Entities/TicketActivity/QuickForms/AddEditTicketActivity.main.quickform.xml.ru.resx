@@ -117,35 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="pklPublicAccessCode.Caption" xml:space="preserve">
-    <value>Общий доступ:</value>
-  </data>
-  <data name="usrUser.Caption" xml:space="preserve">
-    <value>Пользователь:</value>
-  </data>
-  <data name="dtpAssignedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
-  </data>
-  <data name="DialogCaption_Edit" xml:space="preserve">
-    <value>Измен. дело по заявке</value>
-  </data>
-  <data name="usrUser.ButtonToolTip" xml:space="preserve">
-    <value>Найти</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="cmdSave.ToolTip" xml:space="preserve">
     <value>Сохранить</value>
-  </data>
-  <data name="curTotalFee.Caption" xml:space="preserve">
-    <value>Полная стоимость:</value>
-  </data>
-  <data name="lueChargeType.LookupProperties.ModifyUser.PropertyHeader" xml:space="preserve">
-    <value>Кто обновил</value>
-  </data>
-  <data name="lueChargeType.Caption" xml:space="preserve">
-    <value>Тип ставки:</value>
-  </data>
-  <data name="dtpCompletedDate.Caption" xml:space="preserve">
-    <value>Дата оконч.:</value>
   </data>
   <data name="txtUnits.Caption" xml:space="preserve">
     <value>Единицы времени:</value>
@@ -153,29 +129,38 @@
   <data name="txtElapsedUnits.Caption" xml:space="preserve">
     <value>Затрач. часов:</value>
   </data>
-  <data name="lnkCancel.ToolTip" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
   <data name="chkFollowUp.Caption" xml:space="preserve">
-    <value>Завершенный</value>
+    <value>Последующее действие</value>
   </data>
-  <data name="lnkContact.Caption" xml:space="preserve">
-    <value>Контакт:</value>
+  <data name="dtpAssignedDate.Caption" xml:space="preserve">
+    <value>Дата начала:</value>
+  </data>
+  <data name="dtpAssignedDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpCompletedDate.Caption" xml:space="preserve">
+    <value>Дата окончания:</value>
+  </data>
+  <data name="dtpCompletedDate.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="curRate.Caption" xml:space="preserve">
     <value>Курс:</value>
   </data>
-  <data name="lueChargeType.ButtonToolTip" xml:space="preserve">
-    <value>Изменить тип ставки</value>
+  <data name="curTotalLabor.Caption" xml:space="preserve">
+    <value>Итого трудозатрат:</value>
   </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="curTotalParts.Caption" xml:space="preserve">
+    <value>Итого компонентов:</value>
   </data>
-  <data name="DialogCaption_Insert" xml:space="preserve">
-    <value>Добавить дело по заявке</value>
+  <data name="curTotalFee.Caption" xml:space="preserve">
+    <value>Итого сборов:</value>
   </data>
-  <data name="dtpCompletedDate.ButtonToolTip" xml:space="preserve">
-    <value>Календарь</value>
+  <data name="lueChargeType.Caption" xml:space="preserve">
+    <value>Тип ставки:</value>
+  </data>
+  <data name="lueChargeType.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lueChargeType.LookupProperties.TypeDescription.PropertyHeader" xml:space="preserve">
     <value>Описание</value>
@@ -183,31 +168,73 @@
   <data name="lueChargeType.LookupProperties.RateTypeCode.PropertyHeader" xml:space="preserve">
     <value>Тип</value>
   </data>
-  <data name="curTotalLabor.Caption" xml:space="preserve">
-    <value>Всего трудозатрат:</value>
+  <data name="lueChargeType.LookupProperties.Amount.PropertyHeader" xml:space="preserve">
+    <value>Ставка</value>
   </data>
-  <data name="txtComments.Caption" xml:space="preserve">
-    <value>Комм-рии:</value>
+  <data name="pklActivityTypeCode.Caption" xml:space="preserve">
+    <value>Тип:</value>
   </data>
-  <data name="curTotalParts.Caption" xml:space="preserve">
-    <value>Всего компонент:</value>
+  <data name="pklPublicAccessCode.Caption" xml:space="preserve">
+    <value>Общий доступ:</value>
   </data>
-  <data name="dtpAssignedDate.Caption" xml:space="preserve">
-    <value>Дата нач.:</value>
+  <data name="usrUser.Caption" xml:space="preserve">
+    <value>Пользователь:</value>
+  </data>
+  <data name="usrUser.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lnkAccount.Caption" xml:space="preserve">
-    <value>Субъект:</value>
+    <value>Клиент:</value>
   </data>
-  <data name="cmdAddDateStamp.ToolTip" xml:space="preserve">
-    <value>Пользовательская отметка даты</value>
+  <data name="lnkContact.Caption" xml:space="preserve">
+    <value>Контакт:</value>
   </data>
   <data name="lnkTicket.Caption" xml:space="preserve">
     <value>Заявка:</value>
   </data>
-  <data name="lueChargeType.LookupProperties.Amount.PropertyHeader" xml:space="preserve">
-    <value>Курс</value>
+  <data name="pklActivityTypeCode.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="pklActivityTypeCode.Caption" xml:space="preserve">
-    <value>Тип:</value>
+  <data name="pklPublicAccessCode.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkCancel.ToolTip" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="txtComments.Caption" xml:space="preserve">
+    <value>Комментарии:</value>
+  </data>
+  <data name="cmdAddDateStamp.ToolTip" xml:space="preserve">
+    <value>Метка даты пользователя</value>
+  </data>
+  <data name="lnkCancel.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="curTotalFee.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueChargeType.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueChargeType.LookupProperties.ModifyUser.PropertyHeader" xml:space="preserve">
+    <value>Автор изменения</value>
+  </data>
+  <data name="DialogCaption_Edit" xml:space="preserve">
+    <value>Редактировать действие по заявке</value>
+  </data>
+  <data name="DialogCaption_Insert" xml:space="preserve">
+    <value>Вставить действие по заявке</value>
+  </data>
+  <data name="usrUser.ButtonToolTip" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="dtpAssignedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="dtpCompletedDate.ButtonToolTip" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="lueChargeType.ButtonToolTip" xml:space="preserve">
+    <value>Изменить тип ставки</value>
   </data>
 </root>

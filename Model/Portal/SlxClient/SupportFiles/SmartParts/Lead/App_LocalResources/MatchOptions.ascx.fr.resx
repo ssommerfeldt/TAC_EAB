@@ -117,49 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdCancel.Caption" xml:space="preserve">
-    <value>Annuler</value>
-  </data>
-  <data name="lblDuplicate.Caption" xml:space="preserve">
-    <value>Dupliquer</value>
-  </data>
-  <data name="chkUseStemming.Caption" xml:space="preserve">
-    <value>Utiliser la lemmatisation (recherche d'autres formes grammaticales du terme)</value>
-  </data>
   <data name="chkUseFuzzy.Caption" xml:space="preserve">
     <value>Utiliser la correspondance approximative (recherche des correspondances n'ayant pas la même orthographe)</value>
-  </data>
-  <data name="lblHeader.Caption" xml:space="preserve">
-    <value>Définition de doublons par score :</value>
-  </data>
-  <data name="lblPossible.Caption" xml:space="preserve">
-    <value>Doublon possible</value>
-  </data>
-  <data name="lblFuzzyLevel.Caption" xml:space="preserve">
-    <value>Niveau d'approximation :</value>
-  </data>
-  <data name="lblFuzzyLevelNote.Caption" xml:space="preserve">
-    <value>Détermine le nombre de caractères différents possibles (Plage = 1 à 10)</value>
-  </data>
-  <data name="chkUseSynonym.Caption" xml:space="preserve">
-    <value>Utiliser un synonyme (utiliser le Thesaurus pour trouver des synonymes)</value>
   </data>
   <data name="chkUsePhonic.Caption" xml:space="preserve">
     <value>Utiliser la phonétique (recherche des termes ayant la même prononciation)</value>
   </data>
+  <data name="chkUseStemming.Caption" xml:space="preserve">
+    <value>Utiliser la lemmatisation (recherche d'autres formes grammaticales du terme)</value>
+  </data>
+  <data name="chkUseSynonym.Caption" xml:space="preserve">
+    <value>Utiliser un synonyme (utiliser le Thesaurus pour trouver des synonymes)</value>
+  </data>
+  <data name="cmdCancel.Caption" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
   <data name="cmdOK.Caption" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="lblDuplicate.Caption" xml:space="preserve">
+    <value>Doublon</value>
+  </data>
+  <data name="lblFuzzyLevel.Caption" xml:space="preserve">
+    <value>Niveau d'approximation :</value>
+  </data>
+  <data name="lblHeader.Caption" xml:space="preserve">
+    <value>Définition de doublons par score :</value>
   </data>
   <data name="lblNoDuplicate.Caption" xml:space="preserve">
     <value>Non dupliqué</value>
   </data>
-  <data name="lblLowValue.Caption" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblHighValue.Caption" xml:space="preserve">
-    <value>120</value>
+  <data name="lblPossible.Caption" xml:space="preserve">
+    <value>Doublon possible</value>
   </data>
   <data name="lblTo.Caption" xml:space="preserve">
-    <value>À</value>
+    <value>à</value>
+  </data>
+  <data name="lblFuzzyLevelNote.Caption" xml:space="preserve">
+    <value>Détermine le nombre de caractères différents possibles (Plage = 1 à 10)</value>
+  </data>
+  <data name="lblHighValue.Caption" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="lblLowValue.Caption" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

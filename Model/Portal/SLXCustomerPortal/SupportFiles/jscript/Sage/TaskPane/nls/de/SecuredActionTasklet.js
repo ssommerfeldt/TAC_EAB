@@ -1,3 +1,3 @@
-define((
-{ addToRoleTitle: 'Zu Rolle hinzufügen' }
-));
+define("Sage/TaskPane/nls/de/SecuredActionTasklet", {
+    "addToRoleTitle": "Zu Rolle hinzufügen"
+});

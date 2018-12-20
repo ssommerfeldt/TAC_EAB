@@ -1,6 +1,6 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define, sessionStorage */
-define(['Sage/Utility', 'dojo/json'],
-function (Utility, json) {
+define("Sage/Data/SDataServiceRegistry", ['Sage/Utility', 'dojo/json'],
+function (utility, json) {
     var _services = {},
     _defaultService = false;
 
@@ -35,12 +35,10 @@ function (Utility, json) {
             return key;
         },
         _loadSDataRequest: function (request, o) {
-            /// <param name="request" type="Sage.SData.Client.SDataBaseRequest" />
             var key = this._createCacheKey(request);
             var feed = this._getFromLocalStorage(key);
             if (feed) {
                 o.result = feed;
-                // o.result = dojo.toJson(feed);
             }
         },
         _cacheSDataRequest: function (request, o, feed) {
@@ -48,7 +46,6 @@ function (Utility, json) {
             if (/get/i.test(o.method) && typeof feed === 'object') {
                 var key = this._createCacheKey(request);
                 this._saveToLocalStorage(key, feed);
-                // this._saveToLocalStorage(key, dojo.fromJson(feed));
             }
         },
         _saveToLocalStorage: function (key, value) {
@@ -70,7 +67,7 @@ function (Utility, json) {
                 sessionStorage.removeItem(keys[j]);
             }
         },
-        getSDataService: function (contract, keepUnique, useJson, cacheResult) {
+        getSDataService: function (contract, keepUnique, useJson, cacheResult, compactMode) {
             // Returns the instance of the service for the specific contract requested.
             // For example, if the data source needs an SData service for the dynamic or system feeds,
             // the code would pass 'dynamic' or 'system' to this method.
@@ -90,6 +87,10 @@ function (Utility, json) {
             if (typeof useJson === 'boolean') {
                 bJson = useJson;
             }
+            var compact = true;
+            if (typeof compactMode === 'boolean') {
+                compact = compactMode;
+            }
 
             var svc = new Sage.SData.Client.SDataService({
                 serverName: window.location.hostname,
@@ -98,7 +99,8 @@ function (Utility, json) {
                 contractName: contract,
                 port: window.location.port && window.location.port !== 80 ? window.location.port : false,
                 protocol: /https/i.test(window.location.protocol) ? 'https' : false,
-                json: bJson
+                json: bJson,
+                compact: compact
             });
 
             if (cacheResult) {
@@ -108,7 +110,6 @@ function (Utility, json) {
 
             if (!keepUnique) {
                 this.registerService(svcKey, svc);
-                //  Sage.Services.registerService(svcKey, svc);
             }
             return svc;
         }

@@ -120,56 +120,44 @@
   <data name="localizeAddGlobalJoin.Text" xml:space="preserve">
     <value>Ajouter une jointure globale</value>
   </data>
-  <data name="localizeIncludeAllRecordsFromParentTableWhere.Text" xml:space="preserve">
-    <value>Inclure TOUS les enregistrements de la Table enfant et seulement ceux de la Table parent où les champs joints sont égaux.</value>
-  </data>
-  <data name="localizeReplace.Text" xml:space="preserve">
-    <value>Remplacer</value>
-  </data>
   <data name="localizeAllow.Text" xml:space="preserve">
     <value>Autoriser</value>
   </data>
-  <data name="localizeVisibility.Text" xml:space="preserve">
-    <value>Visibilité :</value>
+  <data name="localizeAlways.Text" xml:space="preserve">
+    <value>Toujours</value>
   </data>
-  <data name="localizeStopCascade.Text" xml:space="preserve">
-    <value>Supprimer (arrêter la cascade)</value>
-  </data>
-  <data name="localizeJoinType.Text" xml:space="preserve">
-    <value>Type de jointure</value>
-  </data>
-  <data name="localizeParentTableAndJoinField.Text" xml:space="preserve">
-    <value>Table parent et Champ Jointure</value>
+  <data name="localizeCancel.Text" xml:space="preserve">
+    <value>Annuler</value>
   </data>
   <data name="localizeCascadeType.Text" xml:space="preserve">
     <value>Type de cascade :</value>
   </data>
-  <data name="localizeIncludeAllRecordsFromChildTableWhere.Text" xml:space="preserve">
-    <value>Inclure TOUS les enregistrements de la Table parent et seulement ceux de la Table enfant où les champs joints sont égaux.</value>
-  </data>
-  <data name="localizeJoinOptions.Text" xml:space="preserve">
-    <value>Options de jointure</value>
+  <data name="localizeChildTableAndJoinField.Text" xml:space="preserve">
+    <value>Table enfant et Champ Jointure</value>
   </data>
   <data name="localizeClear.Text" xml:space="preserve">
     <value>Effacer</value>
   </data>
+  <data name="localizeDelete.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
   <data name="localizeDontCascade.Text" xml:space="preserve">
     <value>Ignorer (ne pas utiliser en cascade)</value>
   </data>
-  <data name="localizeOnlyIncludeJoinFieldsEqual.Text" xml:space="preserve">
-    <value>N'inclure que les lignes dont les champs joints des deux tables sont égaux.</value>
+  <data name="localizeIncludeAllRecordsFromChildTableWhere.Text" xml:space="preserve">
+    <value>Inclure TOUS les enregistrements de la Table parent et seulement ceux de la Table enfant où les champs joints sont égaux.</value>
   </data>
-  <data name="localizeOK.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="localizeIncludeAllRecordsFromParentTableWhere.Text" xml:space="preserve">
+    <value>Inclure TOUS les enregistrements de la Table enfant et seulement ceux de la Table parent où les champs joints sont égaux.</value>
   </data>
-  <data name="localizeRight.Text" xml:space="preserve">
-    <value>Droite</value>
+  <data name="localizeInner.Text" xml:space="preserve">
+    <value>Interne</value>
   </data>
-  <data name="localizeChildTableAndJoinField.Text" xml:space="preserve">
-    <value>Table enfant et Champ Jointure</value>
+  <data name="localizeJoinOptions.Text" xml:space="preserve">
+    <value>Options de jointure</value>
   </data>
-  <data name="localizeCancel.Text" xml:space="preserve">
-    <value>Annuler</value>
+  <data name="localizeJoinType.Text" xml:space="preserve">
+    <value>Type de jointure</value>
   </data>
   <data name="localizeLeft.Text" xml:space="preserve">
     <value>Gauche</value>
@@ -177,13 +165,25 @@
   <data name="localizeNever.Text" xml:space="preserve">
     <value>Jamais</value>
   </data>
-  <data name="localizeAlways.Text" xml:space="preserve">
-    <value>Toujours</value>
+  <data name="localizeOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="localizeInner.Text" xml:space="preserve">
-    <value>Interne</value>
+  <data name="localizeOnlyIncludeJoinFieldsEqual.Text" xml:space="preserve">
+    <value>Inclure seulement les lignes des deux tables pour lesquelles les champs joints sont égaux.</value>
   </data>
-  <data name="localizeDelete.Text" xml:space="preserve">
-    <value>Supprimer</value>
+  <data name="localizeParentTableAndJoinField.Text" xml:space="preserve">
+    <value>Table parent et champ Jointure</value>
+  </data>
+  <data name="localizeReplace.Text" xml:space="preserve">
+    <value>Remplacer</value>
+  </data>
+  <data name="localizeRight.Text" xml:space="preserve">
+    <value>Droite</value>
+  </data>
+  <data name="localizeStopCascade.Text" xml:space="preserve">
+    <value>Supprimer (arrêter la cascade)</value>
+  </data>
+  <data name="localizeVisibility.Text" xml:space="preserve">
+    <value>Visibilité :</value>
   </data>
 </root>

@@ -25,12 +25,15 @@ obj/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
+.vscode/*
 
 # tooling
 _ReSharper*/
 *.resharper.user
 [Tt]est[Rr]esult*
 .idea/
+docs/
+docs-output/
 
 # os junk files
 Thumbs.db
@@ -53,3 +56,7 @@ node_modules
 .grunt/
 _SpecRunner.html
 report/junit.xml
+coverage
+scripts/config.json
+src-out/
+min/css/

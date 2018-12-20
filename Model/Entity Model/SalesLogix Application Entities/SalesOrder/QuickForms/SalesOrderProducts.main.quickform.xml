@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="90e12bf4-fd63-47e4-b713-d69cfd0d2e09" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="90e12bf4-fd63-47e4-b713-d69cfd0d2e09" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-11-01T02:17:43.4822891Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -8,114 +8,21 @@
       <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
         <CSharpSnippetActionItem>
           <MethodName>quickformload0</MethodName>
-          <CSharpCodeSnippet>Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
+          <CSharpCodeSnippet>var salesOrder = this.BindingSource.Current as ISalesOrder;
 if (salesOrder != null)
 {
-    Sage.Platform.SData.IAppIdMappingService mappingService =
-        Sage.Platform.Application.ApplicationContext.Current.Services.Get&lt;Sage.Platform.SData.IAppIdMappingService&gt;(
-            true);
-    //if this is a Sales Order that synced from the accounting system or the Sales Order has been submitted then we disable it
-    bool isIntegrated = mappingService.IsIntegrationEnabled();
-	if (isIntegrated)
+    var closed = salesOrder.IsClosed();
+    var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
+    if (clientContextService != null)
+    {
+        clientContextService.CurrentContext["ExchangeRate"] = salesOrder.ExchangeRate != null ? salesOrder.ExchangeRate.ToString() : "1";
+        clientContextService.CurrentContext["IsClosed"] = closed.ToString();
+    }
+	if (closed)
 	{
-		var clientContextService = PageWorkItem.Services.Get&lt;Sage.Platform.WebPortal.Services.ClientContextService&gt;();
-		if (clientContextService != null)
-		{
-			// OperatingCompany
-			if (clientContextService.CurrentContext.ContainsKey("OperatingCompany"))
-			{
-                if (salesOrder.OperatingCompany != null)
-                {
-				    clientContextService.CurrentContext["OperatingCompany"] = salesOrder.OperatingCompany.Id.ToString();
-                }
-                else
-                {
-                    clientContextService.CurrentContext.Remove("OperatingCompany");
-                }
-			}
-			else
-			{
-                if (salesOrder.OperatingCompany != null)
-                {
-                    clientContextService.CurrentContext.Add("OperatingCompany", salesOrder.OperatingCompany.Id.ToString());
-                }
-			}
-			
-			// SlxPriceList
-			if (clientContextService.CurrentContext.ContainsKey("SlxPriceList"))
-			{
-                if (salesOrder.SlxPriceList != null)
-                {
-				    clientContextService.CurrentContext["SlxPriceList"] = salesOrder.SlxPriceList.Id.ToString();
-                }
-                else
-                {
-                    clientContextService.CurrentContext.Remove("SlxPriceList");
-                }
-			}
-			else
-			{
-                if (salesOrder.SlxPriceList != null)
-                {
-                    clientContextService.CurrentContext.Add("SlxPriceList", salesOrder.SlxPriceList.Id.ToString());
-                }
-			}			
-
-			// GlobalSyncId			
-			if (clientContextService.CurrentContext.ContainsKey("GlobalSyncId"))
-			{
-				clientContextService.CurrentContext["GlobalSyncId"] = salesOrder.GlobalSyncId.ToString();
-			}
-			else
-			{
-				clientContextService.CurrentContext.Add("GlobalSyncId", salesOrder.GlobalSyncId.ToString());
-			}
-			
-			// SalesOrderStatus
-            if (clientContextService.CurrentContext.ContainsKey("SalesOrderStatus"))
-            {
-                if (salesOrder.ERPSalesOrder != null &amp;&amp; !String.IsNullOrEmpty(salesOrder.ERPSalesOrder.ERPStatus))
-                {
-                    clientContextService.CurrentContext["SalesOrderStatus"] = salesOrder.ERPSalesOrder.ERPStatus;
-                }
-                else
-                {
-                    clientContextService.CurrentContext.Remove("SalesOrderStatus");
-                }
-            }
-            else
-            {
-                if (salesOrder.ERPSalesOrder != null)
-                {
-                    clientContextService.CurrentContext.Add("SalesOrderStatus",
-                                                            !String.IsNullOrEmpty(salesOrder.ERPSalesOrder.ERPStatus)
-                                                                ? salesOrder.ERPSalesOrder.ERPStatus
-                                                                : String.Empty);
-                }
-            }
-        }
+    	btnAddCustomProduct.Visible = false;
+    	btnRenumber.Visible = false;	
 	}
-    bool isOpen = false;
-    if (!String.IsNullOrEmpty(salesOrder.ERPSalesOrder.ERPStatus))
-    {
-        isOpen = (salesOrder.ERPSalesOrder.ERPStatus.Equals(
-            GetLocalResourceObject("erpStatus_Open").ToString()) ||
-            salesOrder.ERPSalesOrder.ERPStatus.Equals(GetLocalResourceObject("erpStatus_Rejected").ToString()));
-    }
-    bool erpSalesOrder = (mappingService.IsIntegrationEnabled() &amp;&amp; (salesOrder.GlobalSyncId.HasValue &amp;&amp; !isOpen));
-        
-    bool lockPriceAccess = RoleSecurityService.HasAccess("Entities/SalesOrders/LockPricing");
-    bool closed = false;
-    if (salesOrder.Status != null)
-    {
-        closed = (salesOrder.Status.ToUpper().Equals(GetLocalResourceObject("SalesOrderStatus_Closed").ToString().ToUpper()) ||
-            salesOrder.Status.ToUpper().Equals(GetLocalResourceObject("SalesOrderStatus_Transmitted").ToString().ToUpper()));
-    }
-    // btnAddCustomProduct.Visible = btnAddCustomProduct.Visible &amp;&amp; !closed &amp;&amp; !erpSalesOrder;
-    btnAddCustomProduct.Visible = false;
-	btnLockAll.Visible = !closed &amp;&amp; isIntegrated &amp;&amp; lockPriceAccess &amp;&amp; !erpSalesOrder;
-    btnUnlockAll.Visible = !closed &amp;&amp; isIntegrated &amp;&amp; lockPriceAccess &amp;&amp; !erpSalesOrder;
-    btnRenumber.Visible = !closed &amp;&amp; !erpSalesOrder &amp;&amp; salesOrder.Id != null;
 }</CSharpCodeSnippet>
         </CSharpSnippetActionItem>
       </Action>
@@ -140,120 +47,29 @@ if (salesOrder != null)
       <AppliedSecurity />
       <RefreshData>False</RefreshData>
     </FormActionDefinition>
-    <FormActionDefinition>
-      <ResourceKey>172c582e-2c20-41c2-a59c-6bc66503b4ee</ResourceKey>
-      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
-        <CSharpSnippetActionItem>
-          <MethodName>quickformload2</MethodName>
-          <CSharpCodeSnippet>//this is a placeholder for aa
-}
-
-protected override void OnLoad(EventArgs e) {
-    base.OnLoad(e);
-    AddGridFilters();
-}
-
-protected void AddGridFilters() {
-    //Add Dynamic Grid filters
-    //Modified 2014-1-8 PG
-    //On load of the page query the products and add a filter checkbox for each distinct family
-
-    //Add hidden Field
-    //HiddenField hid = new HiddenField();
-    //hid.ID = "hidCheckedFilters";
-    //hid.ClientIDMode = System.Web.UI.ClientIDMode.Static;
-    //QFControlsList.Controls.Add(hid);
-
-    //Add filter title
-    Label lbl = new Label();
-    lbl.Text = "Filters: ";
-    lbl.ID = "lblFilter";
-    QFControlsList.Controls.Add(lbl);
-
-    Sage.Entity.Interfaces.ISalesOrder salesOrder = this.BindingSource.Current as Sage.Entity.Interfaces.ISalesOrder;
-    if (salesOrder != null) {
-        var families = (from i in salesOrder.SalesOrderItems
-                        orderby i.Family
-                        select i.Family).Distinct();
-
-        int j = 0;
-        foreach (string f in families) {
-
-            //create a checkbox               
-            SLXCheckBox chk = new SLXCheckBox();
-            chk.ID = "chkFamily" + j;
-            chk.Checked = false;
-            chk.Text = f;
-            chk.CssClass = "slxlabel alignleft checkboxRight";			
-            chk.AutoPostBack = true;
-            chk.CheckedChanged += new EventHandler(CheckBox_CheckedChanged);
-            QFControlsList.Controls.Add(chk);
-            j++;
-        }
-        //fill the hidden field with default values
-        UpdateFilterList();
-    }
-    //Modified 2014-1-8 PG
-
-}
-protected void CheckBox_CheckedChanged(object sender, EventArgs e) {
-    UpdateFilterList();
-}
-
-protected void UpdateFilterList() {
-        //Update the hidden box for each of the checked filters
-        hidCheckedFilters.Value = "";        
-        foreach (Control ctrl in QFControlsList.Controls) {
-            if (ctrl.GetType() == typeof(SLXCheckBox)) {
-                if ((ctrl as SLXCheckBox).Checked == true) {
-                    hidCheckedFilters.Value += "\"" +(ctrl as SLXCheckBox).Text + "\", ";                    
-                }
-            }
-        }
-        if (hidCheckedFilters.Value.Length &gt; 2) {
-            //Remove the last 2 characters
-            hidCheckedFilters.Value = hidCheckedFilters.Value.Remove(hidCheckedFilters.Value.Length - 2);            
-        }</CSharpCodeSnippet>
-        </CSharpSnippetActionItem>
-      </Action>
-      <IsDialogCloseAction>False</IsDialogCloseAction>
-      <RunOnEveryRePaint>False</RunOnEveryRePaint>
-      <DialogActionResult>NoResult</DialogActionResult>
-      <PerformsUpdate>False</PerformsUpdate>
-      <AppliedSecurity />
-      <RefreshData>False</RefreshData>
-    </FormActionDefinition>
   </LoadActions>
   <Name>SalesOrderProducts</Name>
-  <ClientScriptIncludes />
-  <ClientResourceKeys />
+  <ClientScriptIncludes>
+    <string>jscript/Sage/Utility/PricingAndAvailability.js</string>
+  </ClientScriptIncludes>
+  <ClientResourceKeys>
+    <string>error_ZeroBasePrice</string>
+    <string>error_AccountingSystem_Undefined</string>
+    <string>error_ClientContext_Undefined</string>
+    <string>error_ExecutingRequest</string>
+    <string>error_ExecutingRequestExt</string>
+    <string>error_PricingRequest</string>
+    <string>productStatus_Discontinued</string>
+  </ClientResourceKeys>
   <ExtendedProperties />
   <HelpFile />
   <ReadOnly>false</ReadOnly>
   <GeneratePrintView>false</GeneratePrintView>
   <Controls>
-    <Control typeName="Sage.Platform.QuickForms.QFControls.QFControlsList, Sage.Platform.QuickForms.QFControls">
-      <QFControlsList>
-        <Column>0</Column>
-        <Row>0</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>QFControlsList</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>left</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <Caption />
-        <Controls>
-          <ControlsCollection />
-        </Controls>
-      </QFControlsList>
-    </Control>
     <Control typeName="Sage.SalesLogix.QuickForms.QFControls.SDataGrid.QFSDataGrid, Sage.SalesLogix.QuickForms.QFControls">
       <QFSDataGrid>
         <Column>0</Column>
-        <Row>1</Row>
+        <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>grdItems</ControlId>
@@ -263,21 +79,15 @@ protected void UpdateFilterList() {
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <GenerateMember>false</GenerateMember>
-        <ReadOnlyCondition>function() {
-    if (isIntegrationContractEnabled()) {
-        var clientContextService = Sage.Services.getService("ClientContextService");
-        if (clientContextService) {
-            if (clientContextService.containsKey("SalesOrderStatus") &amp;&amp; clientContextService.containsKey("GlobalSyncId")) {
-                var status = clientContextService.getValue("SalesOrderStatus");
-                var globalSyncId = clientContextService.getValue("GlobalSyncId");
-                if (globalSyncId != "" &amp;&amp; (status != "Open" || status != "Rejected")) { 
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}</ReadOnlyCondition>
+        <ReadOnlyCondition>function()
+{					
+	var clientContextService = Sage.Services.getService('ClientContextService');
+	var closed = clientContextService != null &amp;&amp; clientContextService.getValue("IsClosed");
+	return closed == 'True';
+}
+
+
+</ReadOnlyCondition>
         <AppliedSecurity />
         <RelateToPropertyName>SalesOrderItems</RelateToPropertyName>
         <PreviewField />
@@ -286,7 +96,6 @@ protected void UpdateFilterList() {
           <GetPredicate />
         </ResourceKind>
         <PathSegments />
-        <PageSize>1000</PageSize>
         <Columns>
           <QFSDataEditCol>
             <StyleScheme />
@@ -299,8 +108,8 @@ protected void UpdateFilterList() {
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <DialogSpecs>
               <SmartPart>EditSalesOrderItem</SmartPart>
-              <Height>800</Height>
-              <Width>600</Width>
+              <Height>375</Height>
+              <Width>950</Width>
               <Top>0</Top>
               <Left>0</Left>
               <EntityType>SalesOrderItem</EntityType>
@@ -308,120 +117,43 @@ protected void UpdateFilterList() {
               <CenterDialog>True</CenterDialog>
             </DialogSpecs>
             <AppliedSecurity>Entities/SalesOrder/Edit</AppliedSecurity>
-            <HideCondition>function () {
-    if (Sage.Utility.getModeId() === 'insert') {
-        return true;
-    }
-    return isIntegrationContractEnabled();
-}</HideCondition>
+            <HideCondition />
             <Width>4</Width>
           </QFSDataEditCol>
-          <QFSDataEditCol>
-            <StyleScheme />
-            <DataField>Id</DataField>
-            <ColumnId>3160cbc2-c14d-4e58-94c9-5277e17b3951</ColumnId>
-            <HorizontalAlignment>center</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>false</IsSortable>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <DialogSpecs>
-              <SmartPart>ICEditSalesOrderItem</SmartPart>
-              <Height>700</Height>
-              <Width>700</Width>
-              <Top>0</Top>
-              <Left>0</Left>
-              <EntityType>SalesOrderItem</EntityType>
-              <ResourceKey>0475f9ec-f5ca-4fbd-9241-6d93fbcbdaf7</ResourceKey>
-              <CenterDialog>True</CenterDialog>
-            </DialogSpecs>
-            <AppliedSecurity>Entities/SalesOrder/Edit</AppliedSecurity>
-            <HideCondition>function () {
-    if (Sage.Utility.getModeId() === 'insert') {
-        return true;
-    }
-    return !isIntegrationContractEnabled();
-}</HideCondition>
-            <Width>4</Width>
-          </QFSDataEditCol>
-          <QFSDataCheckBoxCol>
-            <StyleScheme />
-            <DataField>ItemLocked</DataField>
-            <ColumnId>eae77157-0570-48d4-bd9a-d78df7b84496</ColumnId>
-            <HorizontalAlignment>center</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>false</IsSortable>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
-            <HideCondition>function () {
-    return !isIntegrationContractEnabled();
-}</HideCondition>
-            <Width>-1</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-          </QFSDataCheckBoxCol>
           <QFEditableCol>
             <StyleScheme />
             <DataField>LineNumber</DataField>
             <ColumnId>530b7cdb-cef1-4e94-a46a-cf8d931ff779</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
+            <SortDirection>Ascending</SortDirection>
             <IsSortable>true</IsSortable>
             <SortField>LineNumber</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
-            <HideCondition />
+            <HideCondition>	  
+function () {
+		return isBackOfficeIntegrationEnabled() &amp;&amp; !isLocalCRMPricingEnabled('SalesOrder');
+}</HideCondition>
             <Width>3</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
           <QFEditableCol>
             <StyleScheme />
-            <DataField>Quantity</DataField>
-            <ColumnId>913de698-8761-4e66-960a-5cc960b7aeda</ColumnId>
+            <DataField>ErpLineNumber</DataField>
+            <ColumnId>7e5c4214-796b-4013-bf3e-dd5d42b3fa08</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>Quantity</SortField>
+            <SortField>ErpLineNumber</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
-            <HideCondition />
-            <Width>3</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
-          <QFEditableCol>
-            <StyleScheme />
-            <DataField>ActualID</DataField>
-            <ColumnId>f405b064-c26a-414b-86b3-855a47ace2a4</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>ActualID</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition />
-            <Width>5</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
-          <QFEditableCol>
-            <StyleScheme />
-            <DataField>UPC</DataField>
-            <ColumnId>718d1e2f-b158-47d8-958d-732c16c58a3e</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>UPC</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition />
-            <Width>8</Width>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function () {
+		return !(isBackOfficeIntegrationEnabled() &amp;&amp; !isLocalCRMPricingEnabled('SalesOrder'));
+}</HideCondition>
+            <Width>-1</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
@@ -441,6 +173,49 @@ protected void UpdateFilterList() {
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
           </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>Description</DataField>
+            <ColumnId>506f0947-d9d3-441f-bfed-329263b9df81</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>Description</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ErpStatus</DataField>
+            <ColumnId>a5c16453-4bc4-417a-9220-0208c6477155</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>Ascending</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>ErpStatus</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition>function()
+{  
+  return  !isCPQIntegrationEnabled();
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter>function (value, item) {
+    var options = {
+        item: item,
+        resourceKind: 'salesOrders',
+        lineResourceKind: 'SalesOrderItems',
+        securedAction: 'Entities/SalesOrder/Configurator'
+    }
+    return Sage.Utility.PricingAndAvailability.requestCPQStatus(options);
+}</CustomFormatter>
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
           <QFSDataLookupCol>
             <StyleScheme />
             <DataField>Program</DataField>
@@ -453,7 +228,7 @@ protected void UpdateFilterList() {
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>true</IsEditable>
             <HideCondition>function () {
-    return true; // isIntegrationContractEnabled();
+  return ((isIntegrationContractEnabled() &amp;&amp; !isLocalCRMPricingEnabled('SalesOrder')) || isCPQIntegrationEnabled());  
 }</HideCondition>
             <Width>-1</Width>
             <CustomFormatter />
@@ -465,6 +240,38 @@ protected void UpdateFilterList() {
             <LookupBindingMode>String</LookupBindingMode>
             <LookupDisplayProperty>Program</LookupDisplayProperty>
           </QFSDataLookupCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>SlxLocation.Name</DataField>
+            <ColumnId>683c40a1-4afa-4b03-96c2-06e54df18fd7</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>SlxLocation.Name</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition>function () {
+		return !(isBackOfficeIntegrationEnabled() &amp;&amp; !isLocalCRMPricingEnabled('SalesOrder'));
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter>function (value, item) {
+	var options = {
+	item: item,
+	resourceKind: 'salesOrders',
+	entityName: 'SalesOrder',
+	entityId: Sage.Utility.getCurrentEntityId(),
+	childEntityName: 'SalesOrderItem',
+	childEntityIds: item.$key,
+	serviceName: 'AvailableToPromise',
+	priceServiceName: 'OrderLineTotal',
+	gridId: this.grid.id,
+	configuredItem: !!item.Product &amp;&amp; item.Product.ErpConfiguredItem
+}
+	return Sage.Utility.PricingAndAvailability.buildWarehouseUrl(options);
+}</CustomFormatter>
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
           <QFSDataCurrencyCol>
             <StyleScheme />
             <DataField>Price</DataField>
@@ -477,13 +284,13 @@ protected void UpdateFilterList() {
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
             <HideCondition />
-            <Width>4</Width>
+            <Width>10</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode />
             <ExchangeRate />
             <ExchangeRateType>BaseRate</ExchangeRateType>
-            <DecimalDigits>-1</DecimalDigits>
+            <DecimalDigits>4</DecimalDigits>
           </QFSDataCurrencyCol>
           <QFSDataNumericCol>
             <StyleScheme />
@@ -495,13 +302,15 @@ protected void UpdateFilterList() {
             <IsSortable>true</IsSortable>
             <SortField>Discount</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition />
-            <Width>4</Width>
+            <IsEditable>true</IsEditable>
+            <HideCondition>function () {
+		return isIntegrationContractEnabled() &amp;&amp; !isLocalCRMPricingEnabled('SalesOrder');
+}</HideCondition>
+            <Width>-1</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <DecimalDigits>
-              <DecimalDigits>2</DecimalDigits>
+              <DecimalDigits>4</DecimalDigits>
               <Strict>false</Strict>
             </DecimalDigits>
             <FormatType>Percent</FormatType>
@@ -516,54 +325,85 @@ protected void UpdateFilterList() {
             <IsSortable>true</IsSortable>
             <SortField>CalculatedPrice</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>true</IsEditable>
+            <IsEditable>function () {
+		return !(isBackOfficeIntegrationEnabled() &amp;&amp; !isLocalCRMPricingEnabled('SalesOrder'));
+}</IsEditable>
             <HideCondition />
-            <Width>4</Width>
+            <Width>10</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode />
             <ExchangeRate />
             <ExchangeRateType>BaseRate</ExchangeRateType>
-            <DecimalDigits>-1</DecimalDigits>
+            <DecimalDigits>4</DecimalDigits>
           </QFSDataCurrencyCol>
           <QFSDataCurrencyCol>
             <StyleScheme />
-            <DataField>CalculatedPrice</DataField>
+            <DataField>DocCalculatedPrice</DataField>
             <ColumnId>28d57a8b-13ca-47c0-b41e-d969ed17dc28</ColumnId>
             <HorizontalAlignment>right</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>CalculatedPrice</SortField>
+            <SortField>DocCalculatedPrice</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
             <HideCondition>function () {
     return !isMultiCurrencyEnabled();
 }</HideCondition>
-            <Width>4</Width>
+            <Width>10</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode>SalesOrder.CurrencyCode</CurrentCode>
-            <ExchangeRate>SalesOrder.ExchangeRate</ExchangeRate>
+            <ExchangeRate />
             <ExchangeRateType>EntityRate</ExchangeRateType>
-            <DecimalDigits>-1</DecimalDigits>
+            <DecimalDigits>4</DecimalDigits>
           </QFSDataCurrencyCol>
-          <QFEditableCol>
+          <QFSDataNumericCol>
             <StyleScheme />
-            <DataField>Product.Unit</DataField>
-            <ColumnId>89dde4ba-017f-4b48-a475-1dbff0490c1b</ColumnId>
+            <DataField>Quantity</DataField>
+            <ColumnId>0fd9479b-1d6f-497f-a870-26efbf44550d</ColumnId>
+            <HorizontalAlignment>right</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>Quantity</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>true</IsEditable>
+            <HideCondition />
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <DecimalDigits>
+              <DecimalDigits>4</DecimalDigits>
+              <Strict>false</Strict>
+            </DecimalDigits>
+            <FormatType>Number</FormatType>
+          </QFSDataNumericCol>
+          <QFSDataLookupCol>
+            <StyleScheme />
+            <DataField>UnitOfMeasure</DataField>
+            <ColumnId>eef3d53b-092f-4f1b-9429-22cfd8dd2bf4</ColumnId>
             <HorizontalAlignment>left</HorizontalAlignment>
             <HeaderAlignment>left</HeaderAlignment>
             <SortDirection>None</SortDirection>
             <IsSortable>true</IsSortable>
-            <SortField>Product.Unit</SortField>
+            <SortField>UnitOfMeasure</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition />
-            <Width>4</Width>
+            <IsEditable>true</IsEditable>
+            <HideCondition>function () {
+		return !(isBackOfficeIntegrationEnabled() &amp;&amp; !isLocalCRMPricingEnabled('SalesOrder'));
+}</HideCondition>
+            <Width>-1</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
+            <SeedOnRowEntity>true</SeedOnRowEntity>
+            <SeedOnRelatedEntity>Product</SeedOnRelatedEntity>
+            <ConditionalWhere />
+            <ResourceKind>unitsOfMeasure</ResourceKind>
+            <LookupBindingMode>Object</LookupBindingMode>
+            <LookupDisplayProperty>Name</LookupDisplayProperty>
+          </QFSDataLookupCol>
           <QFSDataCurrencyCol>
             <StyleScheme />
             <DataField>ExtendedPrice</DataField>
@@ -575,10 +415,127 @@ protected void UpdateFilterList() {
             <SortField>ExtendedPrice</SortField>
             <MultiCurrencyDependent>false</MultiCurrencyDependent>
             <IsEditable>false</IsEditable>
+            <HideCondition />
+            <Width>10</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <CurrentCode />
+            <ExchangeRate />
+            <ExchangeRateType>BaseRate</ExchangeRateType>
+            <DecimalDigits>4</DecimalDigits>
+          </QFSDataCurrencyCol>
+          <QFSDataCurrencyCol>
+            <StyleScheme />
+            <DataField>DocExtendedPrice</DataField>
+            <ColumnId>ff4abcfa-992a-4721-8841-c0c0b6e89485</ColumnId>
+            <HorizontalAlignment>right</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>DocExtendedPrice</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
             <HideCondition>function () {
-    return isMultiCurrencyEnabled();
+    return !isMultiCurrencyEnabled();
 }</HideCondition>
-            <Width>4</Width>
+            <Width>10</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <CurrentCode>SalesOrder.CurrencyCode</CurrentCode>
+            <ExchangeRate />
+            <ExchangeRateType>EntityRate</ExchangeRateType>
+            <DecimalDigits>4</DecimalDigits>
+          </QFSDataCurrencyCol>
+          <QFSDataCurrencyCol>
+            <StyleScheme />
+            <DataField>DocTotalAmount</DataField>
+            <ColumnId>cd0a2117-86c5-43b9-b134-38f459a522c0</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>DocTotalAmount</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function()
+{  
+  return !isBackOfficeIntegrationEnabled() || isLocalCRMPricingEnabled('SalesOrder'); 
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+            <CurrentCode>SalesOrder.CurrencyCode</CurrentCode>
+            <ExchangeRate />
+            <ExchangeRateType>EntityRate</ExchangeRateType>
+            <DecimalDigits>4</DecimalDigits>
+          </QFSDataCurrencyCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ConfigurationID</DataField>
+            <ColumnId>7b511ac9-aa2b-4a8d-aa6d-105f9581f43a</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <SortField>ConfigurationID</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function()
+{  
+  return (!isBackOfficeIntegrationEnabled() || !isCPQIntegrationEnabled()); 
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFEditableCol>
+            <StyleScheme />
+            <DataField>ConfigurationDetailID</DataField>
+            <ColumnId>c714f725-ab4e-4ad6-8c74-9a1f3b009c21</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <SortField>ConfigurationDetailID</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function()
+{  
+  return (!isBackOfficeIntegrationEnabled() || !isCPQIntegrationEnabled()); 
+}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFEditableCol>
+          <QFSDataCheckBoxCol>
+            <StyleScheme />
+            <DataField>Product.ErpConfiguredItem</DataField>
+            <ColumnId>0995a58e-df41-4cc0-afc1-a230052e2d23</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>false</IsSortable>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>false</IsEditable>
+            <HideCondition>function()
+{return true;}</HideCondition>
+            <Width>-1</Width>
+            <CustomFormatter />
+            <AbbreviationLength>0</AbbreviationLength>
+          </QFSDataCheckBoxCol>
+          <QFSDataCurrencyCol>
+            <StyleScheme />
+            <DataField>TotalAmount</DataField>
+            <ColumnId>52117937-4434-4e81-b939-306e5dec6a3b</ColumnId>
+            <HorizontalAlignment>left</HorizontalAlignment>
+            <HeaderAlignment>left</HeaderAlignment>
+            <SortDirection>None</SortDirection>
+            <IsSortable>true</IsSortable>
+            <SortField>TotalAmount</SortField>
+            <MultiCurrencyDependent>false</MultiCurrencyDependent>
+            <IsEditable>False</IsEditable>
+            <HideCondition>function() { return true; }</HideCondition>
+            <Width>-1</Width>
             <CustomFormatter />
             <AbbreviationLength>0</AbbreviationLength>
             <CurrentCode />
@@ -586,217 +543,147 @@ protected void UpdateFilterList() {
             <ExchangeRateType>BaseRate</ExchangeRateType>
             <DecimalDigits>-1</DecimalDigits>
           </QFSDataCurrencyCol>
-          <QFSDataCurrencyCol>
-            <StyleScheme />
-            <DataField>ExtendedPrice</DataField>
-            <ColumnId>ff4abcfa-992a-4721-8841-c0c0b6e89485</ColumnId>
-            <HorizontalAlignment>right</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>ExtendedPrice</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition>function () {
-    return !isMultiCurrencyEnabled();
-}</HideCondition>
-            <Width>4</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-            <CurrentCode>SalesOrder.CurrencyCode</CurrentCode>
-            <ExchangeRate>SalesOrder.ExchangeRate</ExchangeRate>
-            <ExchangeRateType>EntityRate</ExchangeRateType>
-            <DecimalDigits>-1</DecimalDigits>
-          </QFSDataCurrencyCol>
-          <QFEditableCol>
-            <StyleScheme />
-            <DataField>LineType</DataField>
-            <ColumnId>ca87da6c-54ec-4780-b7c9-ff6e49313f91</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>LineType</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition>function () {
-    if (Sage.Utility.getModeId() === 'insert') {
-        return true;
-    }
-    return !isIntegrationContractEnabled();
-}</HideCondition>
-            <Width>-1</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
-          <QFEditableCol>
-            <StyleScheme />
-            <DataField>CommodityType</DataField>
-            <ColumnId>7f13becf-d7b7-41ec-82af-24215aec5077</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>CommodityType</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition>function () {
-    return !isIntegrationContractEnabled();
-}</HideCondition>
-            <Width>-1</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
-          <QFEditableCol>
-            <StyleScheme />
-            <DataField>Product.WarehouseID</DataField>
-            <ColumnId>fefa474f-e28a-4837-a374-ee2910aaccc1</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>Product.WarehouseID</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition />
-            <Width>4</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
-          <QFEditableCol>
-            <StyleScheme />
-            <DataField>Product.QtyAvailable</DataField>
-            <ColumnId>109a9fea-a4ac-4fd6-ac3e-6cd49e07ae7e</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>None</SortDirection>
-            <IsSortable>false</IsSortable>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition />
-            <Width>4</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-          </QFEditableCol>
-          <QFSDataDateTimeCol>
-            <StyleScheme />
-            <DataField>ModifyDate</DataField>
-            <ColumnId>cebab5b5-2612-4def-899c-9cd80371c7ca</ColumnId>
-            <HorizontalAlignment>left</HorizontalAlignment>
-            <HeaderAlignment>left</HeaderAlignment>
-            <SortDirection>Descending</SortDirection>
-            <IsSortable>true</IsSortable>
-            <SortField>ModifyDate</SortField>
-            <MultiCurrencyDependent>false</MultiCurrencyDependent>
-            <IsEditable>false</IsEditable>
-            <HideCondition />
-            <Width>8</Width>
-            <CustomFormatter />
-            <AbbreviationLength>0</AbbreviationLength>
-            <DateOnly>true</DateOnly>
-          </QFSDataDateTimeCol>
         </Columns>
-        <ConditionalWhere>function () {
-            //Modified 2014-1-8 PG
-            var whereclause = 'SalesOrder.Id eq "' + Sage.Utility.getCurrentEntityId() + '"';
-
-            //Add a filter condition on Family from the dynamic checkboxes which populate a hidden field.
-            //var familyList = document.getElementById('hidCheckedFilters').value;            
-            var familyList = document.getElementById('TabControl_element_SalesOrderProducts_element_view_SalesOrderProducts_SalesOrderProducts_hidCheckedFilters').value;
-            //alert(familyList);
-            if (familyList.length &gt; 0) {
-                whereclause += ' and Family not in (' + familyList + ')';
-            }
-
-            //return 'SalesOrder.Id eq "' + Sage.Utility.getCurrentEntityId() + '"';
-            return whereclause;
-            //Modified 2014-1-8 PG
-        }</ConditionalWhere>
+        <ConditionalWhere>function () { return dojo.string.substitute("SalesOrder.Id eq '${0}' and (ErpStatus ne '${1}' and ErpStatus ne '${2}' or ErpStatus eq null)", [Sage.Utility.getCurrentEntityId(), 'Deleted', 'Canceled']); }</ConditionalWhere>
         <Select>
-          <string>Id</string>
-          <string>Product.Id</string>
+          <string>UnitOfMeasure.Id</string>
+          <string>UnitOfMeasure.Name</string>
+          <string>Location.Name</string>
           <string>SalesOrder.CurrencyCode</string>
-          <string>SalesOrder.OperatingCompany.Id</string>
-          <string>SalesOrder.SlxPriceList.Id</string>
         </Select>
         <Include>
-          <string>SalesOrder</string>
           <string>Product</string>
+          <string>SalesOrder</string>
         </Include>
         <FeedCategory>InternalAppEntities</FeedCategory>
         <OnGetMappingId />
         <ParentRelationshipPropertyName>SalesOrder</ParentRelationshipPropertyName>
-        <ChildRelationshipPropertyName>Product</ChildRelationshipPropertyName>
-        <OnDataChange>function (entity, attribute, oldValue, newValue) {
-    if (oldValue === newValue) {
-        return;
-    }
-    if (attribute === 'Discount') {
-        entity.CalculatedPrice = entity.Price - (entity.Price * entity.Discount);
-    } else if (attribute === 'CalculatedPrice') {
-        var calculated = 0;
-        if (entity.Price &gt; 0) {
-            calculated = (entity.Price - entity.CalculatedPrice) / entity.Price;
-        }
-        entity.Discount = Math.round(calculated * 10000) / 10000;
-    }
-    if ((attribute === 'Discount') || (attribute === 'CalculatedPrice')) {
-        //entity.ExtendedPrice = entity.CalculatedPrice * entity.Quantity;
-        entity.ExtendedPrice = (entity.Price - (entity.Price * entity.Discount)) * entity.Quantity;        
-    }
-	// ssommerfeldt Removed the need to reduce Quantity
-    //if (attribute === 'Quantity') {
-    //	if (newValue &gt; entity.Product.QtyAvailable) {
-    //    	alert('Error: You cannot order more than the available: ' + entity.Product.QtyAvailable + ' of the item: ' + entity.ActualID);
-    //            entity.Quantity = oldValue;
-    //    } else {
-    //            entity.ExtendedPrice = (entity.Price - (entity.Price * entity.Discount)) * entity.Quantity; 
-    //    }
-    // }
-    if (attribute === 'Program') {
+        <ChildRelationshipPropertyName>SalesOrder.SalesOrderItems</ChildRelationshipPropertyName>
+        <OnDataChange>function (entity, attribute, oldValue, newValue, evt, grid) {
+	 if (oldValue === newValue) {
+	     return;
+	 }
+     var rate = 1;
+     var contextService = Sage.Services.getService("ClientContextService");
+     if (contextService != null) {
+         if (contextService.containsKey("ExchangeRate")) {
+             rate = contextService.getValue("ExchangeRate");
+         }
+     }
+	 var oService = Sage.Services.getService("IntegrationContractService");
+	 var isICEnabled = (typeof oService !== "undefined" &amp;&amp; oService != null &amp;&amp; oService.isIntegrationEnabled);
+	 var isLocalSalesPriceEnabled = (oService &amp;&amp; oService.isSalesOrderCRMPricingEnabled);
+	 var requestPricingAvailability = function (prod, quantity, unitOfMeasureId) {
+	     var pricingOptions = {
+	         resourceKind: 'salesOrders',
+	         operationName: 'RequestPricingAvailability',
+	         callback: function (pricingResponse) {
+	             if (pricingResponse) {
+	                 var request = pricingResponse.Children[0];
+	                 if (request) {
+	                     var errorProp = request.Properties['messageText'];
+	                     var errorCode = request.Properties['ErrorCode'];
+	                     if (!(errorProp || errorCode)) {	                        
+							Sage.Utility.PricingAndAvailability.updateItemResponsePricing(pricingResponse, entity);
+							evt.grid.updateDirty(evt.rowId, 'DocCalculatedPrice', entity['DocCalculatedPrice']);
+							evt.grid.updateDirty(evt.rowId, 'DocExtendedPrice', entity['DocExtendedPrice']);
+							evt.grid.updateDirty(evt.rowId, 'DocTotalAmount', entity['DocTotalAmount']);
+							evt.grid.updateDirty(evt.rowId, 'SlxLocation', entity['SlxLocation']);
+							grid.update(evt);
+	                     }
+	                 }
+	             }
+	         },
+	         product: prod,
+	         requestOptions: {
+	             childEntityIds: prod.Product.$key,
+	             childEntityName: 'Product',
+	             itemEntityName: 'SalesOrderItem',
+	             entityName: 'SalesOrder',
+				 itemId: prod.$key,
+				 itemQuantity: quantity,
+	             entityId: Sage.Utility.getCurrentEntityId(),
+	             serviceName: 'OrderLineTotal',
+				 unitOfMeasureId: unitOfMeasureId,
+				 autoSave: false
+	         }
+	     }
+	     Sage.Utility.PricingAndAvailability.requestPricingAvailability(pricingOptions);
+	 }
+	switch (attribute) {
+	    case 'Discount':
+		if (entity.Price == 0) {
+			entity.Discount = 0;
+	            Sage.UI.Dialogs.showError(SalesOrderProductsResources.error_ZeroBasePrice);
+		} else {
+	            entity.CalculatedPrice = entity.Price - (entity.Price * newValue);
+                entity.DocCalculatedPrice = entity.CalculatedPrice * rate;
+		}
+        entity.ExtendedPrice = entity.CalculatedPrice * entity.Quantity;
+             entity.DocExtendedPrice = entity.ExtendedPrice * rate;
+	        break;
+	    case 'CalculatedPrice':
+			 entity.Discount = entity.Price == 0 ? 0 : 1 - newValue / entity.Price;
+			 entity.ExtendedPrice = newValue * entity.Quantity;
+             entity.DocExtendedPrice = entity.ExtendedPrice * rate;			 
+		     break;
+	    case 'Quantity':
+		if(entity.Quantity&gt;0){
+			 if (isICEnabled &amp;&amp; entity.Product &amp;&amp; entity.Product.ErpConfiguredItem===false &amp;&amp; !isLocalSalesPriceEnabled) {
+			 	requestPricingAvailability(entity, newValue);
+			} else {
+			 	entity.ExtendedPrice = entity.CalculatedPrice * newValue;
+                entity.DocExtendedPrice = entity.ExtendedPrice * rate;
+				entity.TotalAmount = entity.CalculatedPrice * newValue;
+                entity.DocTotalAmount = entity.DocCalculatedPrice * newValue;
+			}
+			}
+			break;
+		case 'UnitOfMeasure':
+            if (isICEnabled &amp;&amp; entity.Product &amp;&amp; entity.Product.ErpConfiguredItem===false &amp;&amp; !isLocalSalesPriceEnabled) {
+                requestPricingAvailability(entity, entity.Quantity, newValue.$key);
+            }
+            break;
+	    case 'Program':
         if (!entity.Product || typeof entity.Product.$key === 'undefined') {
             /* Custom product (FreeText). */
             entity.Program = null;
             return;
         }
-        var sUrl = String.format("slxdata.ashx/slx/dynamic/-/productPrograms?select=Price&amp;where=Product.Id eq '{0}' and Program eq '{1}'&amp;format=json&amp;_t={2}",
-                    entity.Product.$key, newValue, new Date().getTime().toString());
-        $.ajax({
-            type: "GET",
-            async: false,
-            contentType: "application/json",
+        var sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/productPrograms?select=Price&amp;where=Product.Id eq '${0}' and Program eq '${1}'&amp;format=json",
+        [entity.Product.$key, escape(newValue)]);
+        dojo.xhrGet({
+            cache: false,
+            preventCache: true,
+            handleAs: 'json',
             url: sUrl,
-            dataType: 'json',
-            success: function (programPrice) {
+			sync: true,
+                 load: function (programPrice) {
                 if (programPrice.$resources != null &amp;&amp; programPrice.$resources.length == 1) {
                     entity.Price = programPrice.$resources[0].Price;
                     entity.CalculatedPrice = entity.Price - (entity.Price * entity.Discount);
+                         entity.DocCalculatedPrice = entity.CalculatedPrice * rate;
                     entity.ExtendedPrice = entity.CalculatedPrice * entity.Quantity;
+                         entity.DocExtendedPrice = entity.ExtendedPrice * rate;
                 }
             },
             data: {},
-            error: function (request, status, error) {
-                var sError = String.format("There was an error opening {0}. StatusText: {1}; StatusCode: {2}.", sUrl, request.statusText, request.status);
+                 error: function (request, status, error) {
+	                var sError = dojo.string.substitute(SalesOrderProductsResources.error_ExecutingRequest, [sUrl, request.statusText, request.status]);
                 if (dojo.isString(request.responseText)) {
                     if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
                         var oSDataError = dojo.fromJson(request.responseText);
                         if (dojo.isArray(oSDataError)) {
-                            sError = String.format("There was an error opening {0}. Severity: {1}; SDataCode: {2}; Message: {3}; ApplicationCode: {4}; StatusText: {5}; StatusCode: {6}.",
-                                        sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status);
+	                            sError = dojo.string.substitute(SalesOrderProductsResources.error_ExecutingRequestExt
+                            [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
                         }
                     }
                 }
-                Ext.Msg.show({
-                    title: "Sage SalesLogix",
-                    msg: sError,
-                    buttons: Ext.Msg.OK,
-                    icon: Ext.MessageBox.ERROR
-                });
+                Sage.UI.Dialogs.showError(sError);
             }
-        })
-    }
-    
-      
+	        });
+	        break;
+	    }
 }</OnDataChange>
         <OnAdd />
         <Tools>
@@ -806,110 +693,452 @@ protected void UpdateFilterList() {
             <DisplayInInsert>false</DisplayInInsert>
             <MergePosition>Default</MergePosition>
             <MergeControlId />
-            <OnClick>function () {
-            try {
-                if (Sage.Utility.getModeId() !== 'insert') {
-                    __doPostBack('MainContent', '');
-                }
-            } catch (err) {
-                alert(err.Message);
-            }
-        }</OnClick>
+            <OnClick>function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack('MainContent', ''); } }</OnClick>
             <StyleScheme />
             <AppliedSecurity />
           </SDataGridSaveTool>
-          <SDataGridCancelTool>
-            <Name>Cancel</Name>
-            <Image>[Localization!Global_Images:Reset_16x16]</Image>
-            <DisplayInInsert>false</DisplayInInsert>
+          <SDataGridAddRelationTool>
+            <Name>Relate</Name>
+            <Image />
+            <DisplayInInsert>true</DisplayInInsert>
             <MergePosition>Default</MergePosition>
             <MergeControlId />
-            <OnClick>//default Cancel behavior</OnClick>
+            <OnClick>//default add relationship behavior</OnClick>
             <StyleScheme />
             <AppliedSecurity />
-          </SDataGridCancelTool>
+            <LookupButton>
+              <Column>0</Column>
+              <Row>0</Row>
+              <HotKey>0</HotKey>
+              <TabIndex>0</TabIndex>
+              <ControlId>luProduct</ControlId>
+              <DataBindings />
+              <ControlLabelPlacement>left</ControlLabelPlacement>
+              <ExtendedProperties />
+              <CaptionAlignment>left</CaptionAlignment>
+              <StyleScheme />
+              <OnChangeAction>
+                <ResourceKey>db915983-f6ce-4e4f-99a0-a1a332a6b7cd</ResourceKey>
+                <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
+                  <NoActionActionItem>
+                    <MethodName />
+                  </NoActionActionItem>
+                </Action>
+                <IsDialogCloseAction>False</IsDialogCloseAction>
+                <RunOnEveryRePaint>False</RunOnEveryRePaint>
+                <DialogActionResult>NoResult</DialogActionResult>
+                <PerformsUpdate>False</PerformsUpdate>
+                <AppliedSecurity />
+                <RefreshData>False</RefreshData>
+              </OnChangeAction>
+              <Required>false</Required>
+              <LookupImage>[Localization!Global_Images:add_products_16x16]</LookupImage>
+              <LookupDialogWidth xsi:nil="true" />
+              <LookupDialogHeight xsi:nil="true" />
+              <LookupDisplayMode>ButtonOnly</LookupDisplayMode>
+              <LookupBindingMode>Object</LookupBindingMode>
+              <LookupResultValue xsi:type="xsd:string" />
+              <AddEmptyListItem>false</AddEmptyListItem>
+              <AllowClearingResult>false</AllowClearingResult>
+              <AppendStringValues>false</AppendStringValues>
+              <OverrideSeedOnSearch>false</OverrideSeedOnSearch>
+              <LookupEntityName>Product</LookupEntityName>
+              <LookupEntityTypeName>Sage.Entity.Interfaces.IProduct, Sage.Entity.Interfaces, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</LookupEntityTypeName>
+              <AutoPostBack>false</AutoPostBack>
+              <EnableHyperLinking>false</EnableHyperLinking>
+              <InitializeLookup>false</InitializeLookup>
+              <LookupProperties>
+                <LookupProperty>
+                  <PropertyName>Name</PropertyName>
+                  <PropertyType>System.String</PropertyType>
+                  <PropertyHeader>Name</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>true</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>true</IsSortable>
+                  <HideCondition />
+                </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>Family</PropertyName>
+                  <PropertyType>System.String</PropertyType>
+                  <PropertyHeader>Family</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>true</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>true</IsSortable>
+                  <HideCondition />
+                </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>Status</PropertyName>
+                  <PropertyType>System.String</PropertyType>
+                  <PropertyHeader>Status</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>true</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>true</IsSortable>
+                  <HideCondition />
+                </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>ActualId</PropertyName>
+                  <PropertyType>System.String</PropertyType>
+                  <PropertyHeader>SKU</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>true</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>true</IsSortable>
+                  <HideCondition />
+                </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>ErpConfiguredItem</PropertyName>
+                  <PropertyType>System.Boolean</PropertyType>
+                  <PropertyHeader>Configured Item</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>false</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>false</IsSortable>
+                  <HideCondition>function () {
+    return !isIntegrationContractEnabled();
+}</HideCondition>
+                </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>UnitOfMeasure.Name</PropertyName>
+                  <PropertyType>System.String</PropertyType>
+                  <PropertyHeader>Unit Of Measure</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>false</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>true</IsSortable>
+                  <HideCondition>function()
+{  
+  return !isBackOfficeIntegrationEnabled(); 
+}</HideCondition>
+                </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>ErpLogicalId</PropertyName>
+                  <PropertyType>System.String</PropertyType>
+                  <PropertyHeader>ERP Logical ID</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>false</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>true</IsSortable>
+                  <HideCondition>function () {
+    return !isIntegrationContractEnabled();
+}</HideCondition>
+                </LookupProperty>
+                <LookupProperty>
+                  <PropertyName>ErpAccountingEntityId</PropertyName>
+                  <PropertyType>System.String</PropertyType>
+                  <PropertyHeader>Accounting Entity</PropertyHeader>
+                  <PropertyFormat>None</PropertyFormat>
+                  <PropertyFormatString />
+                  <UseAsResult>false</UseAsResult>
+                  <ExcludeFromFilters>false</ExcludeFromFilters>
+                  <PickListName />
+                  <IsSortable>true</IsSortable>
+                  <HideCondition>function () {
+    return !isIntegrationContractEnabled();
+}</HideCondition>
+                </LookupProperty>
+              </LookupProperties>
+              <LookupPreFilters />
+              <LookupSelectionMode>Multi</LookupSelectionMode>
+              <OnSelection>function (items) {
+    if (!items.length) return;
+    var product;
+    var item;
+    var salesOrderId = Sage.Utility.getCurrentEntityId();
+    var grid = dijit.byId('SalesOrderProductsgrdItems');
+    if (grid &amp;&amp; grid.store) {
+        var oService = Sage.Services.getService("IntegrationContractService");
+        var isICEnabled = (typeof oService !== "undefined" &amp;&amp; oService != null &amp;&amp; oService.isIntegrationEnabled);
+        var recordCount = grid.rowCount;
+        var iCurrentCount = 0;
+        var iTotalCount = 0;
+        var arrItems = [];
+        grid.store.newItem({
+            onComplete: function (salesOrderItem) {
+                var productIds = '';
+                for (i = 0; i &lt; items.length; i += 1) {
+                    var quantity = 1;
+                    item = items[i];
+                    if (item.ProdPackageKitType === 'PKG') {
+                        for (var j = 0; j &lt; item.PackageKitChildViews.$resources.length; j++) {
+                            var prod = item.PackageKitChildViews.$resources[j];
+                            prod.$key = item.PackageKitChildViews.$resources[j].ProductId;
+                            if (productIds != '')
+                                productIds = productIds + ',' + prod.$key;
+                            else
+                                productIds = prod.$key;
+                        }
+                    } else {
+                        productIds = productIds != '' ? productIds + ',' + item.$key : item.$key;
+                    }
+                }
+                var addProduct = function (prod, quantity, exchangeRate, pricingResponse) {
+                    var select = "select=Id,ActualId,CommodityType,Description,Family,Name,UnitOfMeasure/Id,UnitOfMeasure/Name,";
+                    select += "ProductProgram/Program,ProductProgram/Price,ProductProgram/DefaultProgram";
+                    var where = dojo.string.substitute("where=Id eq '${0}'", [prod.$key]);
+                    var sUrl = dojo.string.substitute("slxdata.ashx/slx/dynamic/-/products?${0}&amp;${1}&amp;format=json&amp;_t=${2}",
+                    [select, where, (new Date().getTime().toString())]);
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: sUrl,
+                        dataType: 'json',
+                        success: function (prodResponse) {
+                            //below would indicate that the selected product did not meet the initial condition of the lookup, occurs when 
+                            //filtering on lookup control. To me this would indicate a defect in the conditional lookup control
+                            if (prodResponse.$resources == null || prodResponse.$resources.length == 0) {
+                                alert("invalid product");
+                            } else {
+                                if (prodResponse.$resources != null &amp;&amp; prodResponse.$resources.length &gt; 0) {
+                                    for (var x = 0; x &lt; prodResponse.$resources.length; x++) {
+                                        var newEntity = {};
+                                        product = prodResponse.$resources[x];
+                                        //Insert mode check
+                                        if (Sage.Utility.getModeId() === 'insert') {
+                                            product.$cacheID = new Date().getTime();
+                                        } else {
+                                            salesOrderItem.SalesOrder = { $key: salesOrderId };
+                                        }
+                                        salesOrderItem.Product = {};
+                                        delete product.index;
+                                        Sage.Utility.extend(salesOrderItem.Product, product);
+                                        salesOrderItem.ActualId = product.ActualId;
+                                        salesOrderItem.CommodityType = product.CommodityType;
+                                        salesOrderItem.Discount = 0;
+                                        salesOrderItem.Family = product.Family;
+                                        salesOrderItem.ProductName = product.Name;
+                                        salesOrderItem.Quantity = quantity;
+                                        salesOrderItem.LineNumber = recordCount += 1;
+                                        var price = 0;
+                                        product.Price = 0; // Required because of Sage.Utility.extend().
+                                        salesOrderItem.UnitOfMeasure = product.UnitOfMeasure;
+                                        salesOrderItem.Price = 0;
+                                        salesOrderItem.ExtendedPrice = 0;
+                                        salesOrderItem.DocExtendedPrice = 0;
+                                        salesOrderItem.CalculatedPrice = 0;
+                                        salesOrderItem.DocCalculatedPrice = 0;
+                                        salesOrderItem.Program = null;
+                                        if (prodResponse.$resources[x].ProductProgram != null &amp;&amp;
+                                            prodResponse.$resources[x].ProductProgram.$resources != null &amp;&amp;
+                                            prodResponse.$resources[x].ProductProgram.$resources.length &gt; 0) {
+                                            for (var j = 0; j &lt; prodResponse.$resources[x].ProductProgram.$resources.length; j++) {
+                                                /* Grab the price for the default program. */
+                                                if (prodResponse.$resources[x].ProductProgram.$resources[j].DefaultProgram) {
+                                                    if (prodResponse.$resources[x].ProductProgram.$resources[j].Price != null) {
+                                                        price = prodResponse.$resources[x].ProductProgram.$resources[j].Price;
+                                                    }
+                                                    product.Price = price; // Required because of Sage.Utility.extend().
+                                                    salesOrderItem.CalculatedPrice = price;
+                                                    salesOrderItem.DocCalculatedPrice = price * exchangeRate;
+                                                    salesOrderItem.ExtendedPrice = price;
+                                                    salesOrderItem.DocExtendedPrice = salesOrderItem.DocCalculatedPrice;
+                                                    salesOrderItem.Program = prodResponse.$resources[x].ProductProgram.$resources[j].Program;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        delete product.$key;
+                                        delete product.$name;
+                                        delete product.$url;
+                                        Sage.Utility.extend(true, newEntity, salesOrderItem, product);
+                                        if (pricingResponse) {
+                                            var request = pricingResponse.Children[0];
+                                            if (request) {
+                                                var errorProp = request.Properties['messageText'];
+                                                var errorCode = request.Properties['ErrorCode'];
+                                                if (errorProp || errorCode || errorProp == '') {
+													//if(errorProp != '')
+													//	Sage.UI.Dialogs.showError(dojo.string.substitute(SalesOrderProductsResources.error_PricingRequest, [errorProp]));
+                                                } else {
+                                                   newEntity = Sage.Utility.PricingAndAvailability.updateItemResponsePricing(pricingResponse, newEntity);
+                                               	}
+                                            }
+                                        }
+                                        arrItems.push(newEntity);
+                                        iCurrentCount++;
+                                        if (iCurrentCount === iTotalCount) {
+                                            grid.createItems(arrItems, function () {
+                                                if (Sage.Utility.getModeId() !== 'insert') {
+                                                    __doPostBack("MainContent", "");
+                                                }
+                                            });
+                                        }
+                                    }
+                                } else {
+                                    iTotalCount--;
+                                    if (iCurrentCount === iTotalCount) {
+                                        grid.createItems(arrItems, function () {
+                                            if (Sage.Utility.getModeId() !== 'insert') {
+                                                __doPostBack("MainContent", "");
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                        },
+                        data: {},
+                        error: function (request, status, error) {
+                            if (iTotalCount &gt; 0) {
+                                iTotalCount--;
+                            }
+                            var sError = dojo.string.substitute(SalesOrderProductsResources.error_ExecutingRequest, [sUrl, request.statusText, request.status]);
+                            if (dojo.isString(request.responseText)) {
+                                if ((request.responseText.indexOf("[", 0) == 0) &amp;&amp; (request.responseText.lastIndexOf("]") == request.responseText.length - 1)) {
+                                    var oSDataError = dojo.fromJson(request.responseText);
+                                    if (dojo.isArray(oSDataError)) {
+                                        sError = dojo.string.substitute(SalesOrderProductsResources.error_ExecutingRequestExt,
+                                        [sUrl, oSDataError[0].severity, oSDataError[0].sdataCode, oSDataError[0].message, oSDataError[0].applicationCode, request.statusText, request.status]);
+                                    }
+                                }
+                            }
+                            Sage.UI.Dialogs.showError(sError);
+                        }
+                    });
+                }
+                var getExchangeRate = function () {
+                    var rate = 1;
+                    var contextService = Sage.Services.getService("ClientContextService");
+                    if (contextService != null) {
+                        if (contextService.containsKey("ExchangeRate")) {
+                            rate = contextService.getValue("ExchangeRate");
+                        }
+                    }
+                    return rate;
+                }
+                var getTotalCount = function () {
+                    var iResult = 0;
+                    var i;
+                    for (i = 0; i &lt; items.length; i += 1) {
+                        item = items[i];
+                        if (item.ProdPackageKitType === 'PKG') {
+                            for (var j = 0; j &lt; item.PackageKitChildViews.$resources.length; j++) {
+                                iResult++;
+                            }
+                        } else {
+                            iResult++;
+                        }
+                    }
+                    return iResult;
+                }
+                var requestPricingAvailability = function (prod, quantity, exchangeRate) {
+                    var pricingOptions = {
+                        resourceKind: 'salesOrders',
+                        operationName: 'RequestPricingAvailability',
+                        callback: function (pricingResponse) {
+                            addProduct(prod, quantity, exchangeRate, pricingResponse);
+                        },
+                        product: prod,
+                        quantity: quantity,
+                        exchangeRate: exchangeRate,
+                        requestOptions: {
+							childEntityIds: productIds,
+							childEntityName: 'Product',
+							itemEntityName: 'SalesOrderItem',
+							entityName: 'SalesOrder',
+							entityId: salesOrderId,
+							serviceName: 'OrderLineTotal',
+							quantity: 1 ,
+							unitOfMeasureId: prod.UnitOfMeasure == null ?  "" : prod.UnitOfMeasure.$key
+                        }
+                    }
+                    Sage.Utility.PricingAndAvailability.requestPricingAvailability(pricingOptions);
+                }
+                iTotalCount = getTotalCount();
+                var exchangeRate = getExchangeRate();
+                var iCount = 0;
+                var i;
+                for (i = 0; i &lt; items.length; i += 1) {
+                    var qty = 1;
+                    item = items[i];
+                    if (item.ProdPackageKitType === 'PKG') {
+                        for (var j = 0; j &lt; item.PackageKitChildViews.$resources.length; j++) {
+                            var prod = item.PackageKitChildViews.$resources[j];
+                            prod.$key = item.PackageKitChildViews.$resources[j].ProductId;
+                            if (prod.Quantity != null) {
+                                qty = prod.Quantity;
+                            }
+                            iCount++;
+                            addProduct(prod, qty, exchangeRate);
+                        }
+                    } else {
+                        iCount++;
+                        addProduct(item, qty, exchangeRate);
+                    }
+                }
+            }
+        });
+    }
+}</OnSelection>
+              <OnClose>function(selectedItems) {
+	var service = Sage.Services.getService('IntegrationContractService');
+	if (!service.isBackOfficeIntegrationEnabled || service.isSalesOrderCRMPricingEnabled || selectedItems &amp;&amp; selectedItems.length === 0) {
+	    return;
+	}
+	var requestOptions = {
+	    entityName: 'SalesOrder',
+	    entityId: Sage.Utility.getCurrentEntityId(),
+	    selectedItems: selectedItems,
+	    resourceKind: 'salesOrders',
+	    itemEntityName: 'SalesOrderItem',
+	    serviceName: 'OrderLineTotal',
+		isGridRefresh:true,
+		AutoSave:true
+	};
+	Sage.Utility.PricingAndAvailability.doPricingAvailability(requestOptions);
+}</OnClose>
+              <AdditionalSelectFields>
+                <string>ProductId</string>
+                <string>ProdPackageKitType</string>
+                <string>CommodityType</string>
+                <string>Program</string>
+                <string>Quantity</string>
+                <string>ActiveFlag</string>
+                <string>UnitOfMeasure.Name</string>
+              </AdditionalSelectFields>
+              <ChildEntity>PackageKitChildViews</ChildEntity>
+              <LookupResourceName>ProdPackageKitView</LookupResourceName>
+              <ConditionalWhere>function() { return dojo.string.substitute("(ErpStatus ne 'Deleted' or ErpStatus eq null) and (Status ne '${0}' or Status eq null)", [SalesOrderProductsResources.productStatus_Discontinued]); }</ConditionalWhere>
+              <ConditionalShow />
+            </LookupButton>
+          </SDataGridAddRelationTool>
           <SDataGridDeleteTool>
             <Name>Delete</Name>
             <Image>[Localization!Global_Images:Delete_16x16]</Image>
-            <DisplayInInsert>false</DisplayInInsert>
-            <MergePosition>Default</MergePosition>
-            <MergeControlId />
+            <DisplayInInsert>true</DisplayInInsert>
+            <MergePosition>After</MergePosition>
+            <MergeControlId>btnRenumber</MergeControlId>
             <OnClick>function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack('MainContent', ''); } }</OnClick>
             <StyleScheme />
             <AppliedSecurity />
           </SDataGridDeleteTool>
+          <SDataGridCancelTool>
+            <Name>Cancel</Name>
+            <Image>[Localization!Global_Images:Reset_16x16]</Image>
+            <DisplayInInsert>false</DisplayInInsert>
+            <MergePosition>After</MergePosition>
+            <MergeControlId>btnRenumber</MergeControlId>
+            <OnClick>//default Cancel behavior</OnClick>
+            <StyleScheme />
+            <AppliedSecurity />
+          </SDataGridCancelTool>
         </Tools>
       </QFSDataGrid>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls">
-      <QFDataSource>
-        <Column>0</Column>
-        <Row>1</Row>
-        <Visible>false</Visible>
-        <HotKey>48</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>dsSalesOrderItems</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <EntityTypeName>SalesOrderItem</EntityTypeName>
-        <GetByMethod />
-        <GetByProperty>SalesOrderItems</GetByProperty>
-        <UseSmartSelection>true</UseSmartSelection>
-        <DataOptional>false</DataOptional>
-      </QFDataSource>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.QFControls.QFHidden, Sage.Platform.QuickForms.QFControls">
-      <QFHidden>
-        <Column>0</Column>
-        <Row>0</Row>
-        <Visible>false</Visible>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>hidCheckedFilters</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-      </QFHidden>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.QFControls.QFDataSource, Sage.Platform.QuickForms.QFControls">
-      <QFDataSource>
-        <Column>0</Column>
-        <Row>1</Row>
-        <Visible>false</Visible>
-        <HotKey>48</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>dsSalesOrderItems2</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <EntityTypeName>SalesOrderItem</EntityTypeName>
-        <GetByMethod />
-        <GetByProperty>SalesOrderItems</GetByProperty>
-        <UseSmartSelection>true</UseSmartSelection>
-        <DataOptional>false</DataOptional>
-      </QFDataSource>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.QFControls.QFHidden, Sage.Platform.QuickForms.QFControls">
-      <QFHidden>
-        <Column>0</Column>
-        <Row>0</Row>
-        <Visible>false</Visible>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>hidCheckedFilters2</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-      </QFHidden>
     </Control>
   </Controls>
   <ToolControls>
@@ -947,46 +1176,25 @@ protected void UpdateFilterList() {
         <Row>0</Row>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
-        <ControlId>QFButton</ControlId>
+        <ControlId>btnAddCustomProduct</ControlId>
         <DataBindings />
         <ControlLabelPlacement>none</ControlLabelPlacement>
         <ExtendedProperties />
         <CaptionAlignment>left</CaptionAlignment>
         <StyleScheme />
         <ButtonType>Icon</ButtonType>
-        <Image>[Localization!Global_Images:plus_16x16]</Image>
+        <Image>[Localization!Global_Images:add_custom_product_16x16]</Image>
         <OnClientClick />
         <OnClickAction>
-          <ResourceKey>QFButton</ResourceKey>
+          <ResourceKey>btnAddCustomProduct</ResourceKey>
           <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
             <CSharpSnippetActionItem>
-              <MethodName>QFButton_ClickAction</MethodName>
-              <CSharpCodeSnippet>//Product Search
-    
-    Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
-    if (_entity != null) {
-        object _parent = GetParentEntity();
-        if (DialogService.ChildInsertInfo != null) {
-            if (_parent != null) {
-                if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
-                    DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
-                }
-            }
-        }
-    }
-    
-    
-if (DialogService != null)
-{
-  // InsertChildDialogActionItem
-  DialogService.SetSpecs(400, 600, "ProductSearch", GetLocalResourceObject("35bcdfcb-61df-432f-a950-635223878c1b.DialogTitleOverride").ToString() );
-  DialogService.EntityType = typeof(Sage.Entity.Interfaces.ISalesOrderItem); 
-  DialogService.SetChildIsertInfo(
-    typeof(Sage.Entity.Interfaces.ISalesOrderItem),
-    typeof(Sage.Entity.Interfaces.ISalesOrder),
-    typeof(Sage.Entity.Interfaces.ISalesOrderItem).GetProperty("SalesOrder"),
-    typeof(Sage.Entity.Interfaces.ISalesOrder).GetProperty("SalesOrderItems"));
-  DialogService.ShowDialog();
+              <MethodName>btnAddCustomProduct_ClickAction</MethodName>
+              <CSharpCodeSnippet>if (DialogService != null) {
+	DialogService.SetSpecs(400, 950, "EditSalesOrderItem", GetLocalResourceObject("7a95abab-aa0a-4abb-98d6-363ab585457d.DialogTitleOverride").ToString() );
+	DialogService.EntityType = typeof(ISalesOrderItem);
+	DialogService.DialogParameters["AdHocProduct"] = true;
+	DialogService.ShowDialog();
 }</CSharpCodeSnippet>
             </CSharpSnippetActionItem>
           </Action>
@@ -1003,146 +1211,6 @@ if (DialogService != null)
       <QFButton>
         <Column>0</Column>
         <Row>0</Row>
-        <Visible>false</Visible>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>cmdAddProduct</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>Icon</ButtonType>
-        <Image>[Localization!Global_Images:plus_16x16]</Image>
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>cmdAddProduct</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
-            <CSharpSnippetActionItem>
-              <MethodName>cmdAddProduct_ClickAction</MethodName>
-              <CSharpCodeSnippet>    //Add Sales Products
-    Sage.Entity.Interfaces.ISalesOrderItem _entity = BindingSource.Current as Sage.Entity.Interfaces.ISalesOrderItem;
-    if (_entity != null) {
-        object _parent = GetParentEntity();
-        if (DialogService.ChildInsertInfo != null) {
-            if (_parent != null) {
-                if (DialogService.ChildInsertInfo.ParentReferenceProperty != null) {
-                    DialogService.ChildInsertInfo.ParentReferenceProperty.SetValue(_entity, _parent, null);
-                }
-            }
-        }
-    }
-    
-    
-if (DialogService != null)
-{
-  // InsertChildDialogActionItem
-  DialogService.SetSpecs(400, 600, "AddSalesProducts", GetLocalResourceObject("35bcdfcb-61df-432f-a950-635223878c1b.DialogTitleOverride").ToString() );
-  DialogService.EntityType = typeof(Sage.Entity.Interfaces.ISalesOrderItem); 
-  DialogService.SetChildIsertInfo(
-    typeof(Sage.Entity.Interfaces.ISalesOrderItem),
-    typeof(Sage.Entity.Interfaces.ISalesOrder),
-    typeof(Sage.Entity.Interfaces.ISalesOrderItem).GetProperty("SalesOrder"),
-    typeof(Sage.Entity.Interfaces.ISalesOrder).GetProperty("SalesOrderItems"));
-  DialogService.ShowDialog();
-}</CSharpCodeSnippet>
-            </CSharpSnippetActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <Visible>false</Visible>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>btnLockAll</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>Icon</ButtonType>
-        <Image>[Localization!Global_Images:lock_all_16x16]</Image>
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>btnLockAll</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
-            <BusinessRuleActionItem>
-              <BusinessRule>LockPricingForSOItems</BusinessRule>
-              <Object>SalesOrder</Object>
-              <Parameters />
-              <PassResultsToNextAction>False</PassResultsToNextAction>
-              <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
-                <RefreshDataAction>
-                  <MethodName>btnLockAll_ClickActionBRC</MethodName>
-                </RefreshDataAction>
-              </OnComplete>
-            </BusinessRuleActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>True</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <Visible>false</Visible>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>btnUnlockAll</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>Icon</ButtonType>
-        <Image>[Localization!Global_Images:unlock_all_16x16]</Image>
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>btnUnlockAll</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.BusinessRuleActionItem, Sage.Platform.QuickForms">
-            <BusinessRuleActionItem>
-              <BusinessRule>UnLockPricingForSOItems</BusinessRule>
-              <Object>SalesOrder</Object>
-              <Parameters />
-              <PassResultsToNextAction>False</PassResultsToNextAction>
-              <OnComplete typeName="Sage.Platform.QuickForms.ActionItems.RefreshDataAction, Sage.Platform.QuickForms">
-                <RefreshDataAction>
-                  <MethodName>btnUnlockAll_ClickActionBRC</MethodName>
-                </RefreshDataAction>
-              </OnComplete>
-            </BusinessRuleActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>True</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <Enabled>false</Enabled>
-        <Visible>false</Visible>
         <HotKey>0</HotKey>
         <TabIndex>0</TabIndex>
         <ControlId>btnRenumber</ControlId>
@@ -1178,38 +1246,6 @@ if (DialogService != null)
         </OnClickAction>
       </QFButton>
     </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <Visible>false</Visible>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>btnAddCustomProduct</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>StandardButton</ButtonType>
-        <Image />
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>btnAddCustomProduct</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.NoActionActionItem, Sage.Platform.QuickForms">
-            <NoActionActionItem>
-              <MethodName />
-            </NoActionActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
-          <RefreshData>False</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
   </ToolControls>
   <Columns>
     <ColumnStyle>
@@ -1218,10 +1254,6 @@ if (DialogService != null)
     </ColumnStyle>
   </Columns>
   <Rows>
-    <RowStyle>
-      <SizeType>Absolute</SizeType>
-      <Height>35</Height>
-    </RowStyle>
     <RowStyle>
       <SizeType>Absolute</SizeType>
       <Height>35</Height>

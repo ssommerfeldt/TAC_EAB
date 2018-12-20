@@ -12,8 +12,6 @@ public partial class ChangePasswordOptionsPage : System.Web.UI.UserControl, ISma
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (!IsPostBack)
-        //{
         ChangePasswordOptions options = ChangePasswordOptions.CreateNew();
 
         // this check necessary to allow creation of new instance every postback (known bug), 
@@ -23,7 +21,6 @@ public partial class ChangePasswordOptionsPage : System.Web.UI.UserControl, ISma
             _newPassword.Text = options.NewPassword;  // default is empty
             _confirmPassword.Text = options.NewPassword;  // default is empty
         }
-        //}
         var userService = Sage.Platform.Application.ApplicationContext.Current.Services.Get<Sage.Platform.Security.IUserService>(true);
         curUser = userService.UserId;
 
@@ -44,7 +41,7 @@ public partial class ChangePasswordOptionsPage : System.Web.UI.UserControl, ISma
                      
                  }
              }
-  }
+    }
 
     protected void _changePassword_Click(object sender, EventArgs e)
     {
@@ -119,7 +116,6 @@ public partial class ChangePasswordOptionsPage : System.Web.UI.UserControl, ISma
                 var data = (Sage.SalesLogix.SLXDataService)ApplicationContext.Current.Services.Get<IDataService>(true);
                 var auth = (Sage.SalesLogix.Web.SLXWebAuthenticationProvider)data.AuthenticationProvider;
                 auth.AuthenticateWithContext(currentUser.UserName, newPassword);
-
             }
 
             lblMessage.Text = this.GetLocalResourceObject("passwordChangeSuccess").ToString();
@@ -127,7 +123,6 @@ public partial class ChangePasswordOptionsPage : System.Web.UI.UserControl, ISma
             {
                 lblMessage.Text = this.GetLocalResourceObject("PasswordBlank").ToString();
             }
-
         }
         else
         {
@@ -151,11 +146,6 @@ public partial class ChangePasswordOptionsPage : System.Web.UI.UserControl, ISma
             tinfo.RightTools.Add(c);
         }
 
-        //tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Schdedule_To_Do_24x24.gif");
         return tinfo;
     }
-
-
-
-
 }

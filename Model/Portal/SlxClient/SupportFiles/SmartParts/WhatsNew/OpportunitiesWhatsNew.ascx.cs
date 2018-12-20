@@ -220,16 +220,11 @@ public partial class SmartParts_OppWhatsNew_OppWhatsNew : UserControl, ISmartPar
 
 	public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
 	{
-		ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-
-		Label lbl = new Label();
-		lbl.Text = GetLocalResourceObject("Opportunities_Caption").ToString();
-
-		tinfo.LeftTools.Add(lbl);
-		tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Opportunity_Dashboard_24x24.gif");
-
-		return tinfo;
-	}
+        ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
+        tinfo.Title = GetLocalResourceObject("Opportunities_Caption").ToString();
+        tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Opportunity_Dashboard_24x24.gif");
+        return tinfo;
+    }
 
 	#endregion
 }

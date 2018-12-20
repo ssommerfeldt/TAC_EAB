@@ -1,4 +1,3 @@
-//>>built
 define(
 "dojo/cldr/nls/es-hn/gregorian", //begin v1.x content
 {

@@ -32,69 +32,75 @@
 
 <table border="0" cellpadding="1" cellspacing="0" class="formtable" style="margin-top:0px;">
   <tr>
-		<td class="highlightedCell" >
-			<asp:Label ID="lblActivityOptions" runat="server" Font-Bold="True" Text="<%$ resources:lblActivityOptions.Text %>" ></asp:Label>
-		</td>
-	</tr>
+        <td class="highlightedCell" >
+            <asp:Label ID="lblActivityOptions" runat="server" Font-Bold="True" Text="<%$ resources:lblActivityOptions.Text %>" ></asp:Label>
+        </td>
+    </tr>
  </table>
 
  <table border="0" cellpadding="1" cellspacing="0" class="formtable" style="margin-top:0px">
-	<col width="50%" /><col width="50%" />  
+    <col width="50%" /><col width="50%" />
     <tr>
-		<td>
-			<span class="lbl"><asp:Label ID="lblDefaultView" runat="server" Text="<%$ resources:lblDefaultView.Text %>" ></asp:Label></span>
-        	<span class="textcontrol">
-	            <asp:DropDownList ID="ddlDefaultView" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultViewResource1">
-			    </asp:DropDownList>
-			</span>
+        <td>
+            <span class="lbl"><asp:Label ID="lblDefaultView" runat="server" Text="<%$ resources:lblDefaultView.Text %>" ></asp:Label></span>
+            <span class="textcontrol">
+                <asp:DropDownList ID="ddlDefaultView" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultViewResource1">
+                </asp:DropDownList>
+            </span>
         </td>
         <td>&nbsp;</td>
     </tr>
     <tr>
- 		<td>
-			<span class="lbl"><asp:Label ID="lblDefaultFollowupActivity" runat="server" Text="<%$ resources:lblDefaultFollowupActivity.Text %>" ></asp:Label></span>
-            	<span class="textcontrol">
-				<asp:DropDownList ID="ddlDefaultFollowupActivity" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultFollowupActivityResource1">
-				</asp:DropDownList>
-			</span>
+         <td>
+            <span class="lbl"><asp:Label ID="lblDefaultFollowupActivity" runat="server" Text="<%$ resources:lblDefaultFollowupActivity.Text %>" ></asp:Label></span>
+                <span class="textcontrol">
+                <asp:DropDownList ID="ddlDefaultFollowupActivity" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultFollowupActivityResource1">
+                </asp:DropDownList>
+            </span>
         </td>
-        <td>&nbsp;		
-		</td>
+        <td>&nbsp;
+        </td>
     </tr>
     <tr style="white-space: nowrap">
- 		<td>
-			<span class="lbl"><asp:Label ID="lblCarryOverNotes" runat="server" Text="<%$ resources:lblCarryOverNotes.Text %>" ></asp:Label></span>
+         <td>
+            <span class="lbl"><asp:Label ID="lblCarryOverNotes" runat="server" Text="<%$ resources:lblCarryOverNotes.Text %>" ></asp:Label></span>
             <span class="textcontrol">
-				<asp:DropDownList ID="ddlCarryOverNotes" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlCarryOverNotes">
-				</asp:DropDownList>
-			</span>
+                <asp:DropDownList ID="ddlCarryOverNotes" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlCarryOverNotes">
+                </asp:DropDownList>
+            </span>
         </td>
-        <td>&nbsp;			
-		</td>
+        <td>&nbsp;
+        </td>
     </tr>
     <tr style="white-space: nowrap">
- 		<td>
-			<span class="lbl"><asp:Label ID="lblCarryOverAttachments" runat="server" Text="<%$ resources:lblCarryOverAttachments.Text %>" ></asp:Label></span>
+         <td>
+            <span class="lbl"><asp:Label ID="lblCarryOverAttachments" runat="server" Text="<%$ resources:lblCarryOverAttachments.Text %>" ></asp:Label></span>
             <span class="textcontrol">
-				<asp:DropDownList ID="ddlCarryOverAttachments" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlCarryOverAttachments">
-				</asp:DropDownList>
-			</span>
+                <asp:DropDownList ID="ddlCarryOverAttachments" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlCarryOverAttachments">
+                </asp:DropDownList>
+            </span>
         </td>
-        <td>&nbsp;			
-		</td>
+        <td>&nbsp;
+        </td>
     </tr>
     <tr>
         <td>
             <span class="lbl"><asp:Label ID="lblPastDue" runat="server" Text="<%$ resources:lblPastDue.Caption %>" ></asp:Label></span>
-            <asp:CheckBox ID="chkPastDue" runat="server" onclick="javascript:Sage.UI.Forms.ActivityOptions.togglePastDue();" />
+            <asp:CheckBox ID="chkPastDue" runat="server" onclick="javascript:Sage.UI.Forms.ActivityOptions.togglePastDue();" Text=" " CssClass="inforAspCheckBox lbl"/>
         </td>
         <td></td>
     </tr>
-
+      <tr>
+        <td>
+            <span class="lbl"><asp:Label ID="lblIncludeAttendee" runat="server" Text="<%$ resources:IncludeAttendeeInHistoryTab.Caption %>" ></asp:Label></span>
+            <asp:CheckBox ID="chkIncludeAttendee" runat="server" onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleIncludeAttendee();"  Text=" " CssClass="inforAspCheckBox lbl"/>
+        </td>
+        <td></td>
+    </tr>
     </table>
 
   <table border="0" cellpadding="1" cellspacing="0" style="margin-top:0px; width:60%">
-       
+
     <tr>
         <td colspan="5" style="padding-bottom: 8px; padding-top:10px">
             <asp:Label ID="lblDefaultsPerActivity" runat="server" Font-Bold="True" Text="<%$ resources:lblDefaultsPerActivity.Text %>" ></asp:Label>
@@ -102,7 +108,7 @@
    </tr>
    <tr>
        <td style="width:15%">
-            <span class="actlbl"><asp:Label ID="lblActivityType" runat="server" Text="<%$ resources:lblActivityType.Text %>" /></span> 
+            <span class="actlbl"><asp:Label ID="lblActivityType" runat="server" Text="<%$ resources:lblActivityType.Text %>" /></span>
         </td>
         <td style="width:20%">
             <span class="actlbl"><asp:Label ID="lblDefaultAlarm" runat="server" Text="<%$ resources:lblDefaultAlarm.Text %>" /></span>
@@ -113,8 +119,8 @@
         <td style="width:17%">
             <span class="actlbl"><asp:Label ID="lblDefaultTimeless" runat="server" Text="<%$ resources:lblDefaultTimeless.Text %>" /></span>
          </td>
-        <td style="width:15%"> 
-            <span class="actlbl"><asp:Label ID="lblDefaultRollover" runat="server" Text="<%$ resources:lblDefaultRollover.Text %>" /></span> 
+        <td style="width:15%">
+            <span class="actlbl"><asp:Label ID="lblDefaultRollover" runat="server" Text="<%$ resources:lblDefaultRollover.Text %>" /></span>
          </td>
    </tr>
     <tr>
@@ -122,16 +128,16 @@
               <asp:Label ID="lblActivityType_Meeting"  Width="120px"  runat="server" Text="<%$ resources:lblActivityType_Meeting.Text%>" />
         </td>
         <td>
-           	<span class="textcontrol">  <asp:DropDownList ID="ddlDefaultAlarmValue_Meeting" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultAlarmValue_MeetingResource1" /></span>
+              <span class="textcontrol">  <asp:DropDownList ID="ddlDefaultAlarmValue_Meeting" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultAlarmValue_MeetingResource1" /></span>
         </td>
         <td>
-           	<span class="textcontrol">  <asp:DropDownList ID="ddlDefaultDuration_Meeting" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultDuration_MeetingResource1" /></span>
+              <span class="textcontrol">  <asp:DropDownList ID="ddlDefaultDuration_Meeting" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultDuration_MeetingResource1" /></span>
         </td>
         <td>
-              <asp:CheckBox ID="chkTimelessMeeting"  runat="server" CssClass="chkstyle" onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverMeeting();"  />
+              <asp:CheckBox ID="chkTimelessMeeting"  runat="server" CssClass="chkstyle inforAspCheckBox" onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverMeeting();"  Text=" " />
         </td>
         <td>
-              <asp:CheckBox ID="chkRolloverMeeting" runat="server" CssClass="chkstyle" onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverMeeting();"   />
+              <asp:CheckBox ID="chkRolloverMeeting" runat="server" CssClass="chkstyle inforAspCheckBox" onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverMeeting();"   Text=" " />
         </td>
     </tr>
     <tr>
@@ -139,16 +145,16 @@
             <asp:Label ID="lblActivityType_PhoneCall" runat="server"  Width="120px" Text="<%$ resources:lblActivityType_PhoneCall.Text %>" />
         </td>
         <td>
-          	<span class="textcontrol">  <asp:DropDownList ID="ddlDefaultAlarmValue_PhoneCall" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server"  DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultAlarmValue_PhoneCallResource1" /></span>
+             <span class="textcontrol">  <asp:DropDownList ID="ddlDefaultAlarmValue_PhoneCall" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server"  DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultAlarmValue_PhoneCallResource1" /></span>
         </td>
         <td>
-          	<span class="textcontrol">  <asp:DropDownList ID="ddlDefaultDuration_PhoneCall" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultDuration_PhoneCallResource1" /></span>
+             <span class="textcontrol">  <asp:DropDownList ID="ddlDefaultDuration_PhoneCall" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultDuration_PhoneCallResource1" /></span>
         </td>
         <td>
-             <asp:CheckBox ID="chkTimelessPhoneCall" runat="server" CssClass="chkstyle" onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverPhoneCall();"   />
+             <asp:CheckBox ID="chkTimelessPhoneCall" runat="server" CssClass="chkstyle inforAspCheckBox" onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverPhoneCall();"  Text=" " />
         </td>
         <td>
-             <asp:CheckBox ID="chkRolloverPhoneCall" runat="server" CssClass="chkstyle" onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverPhoneCall();"    />
+             <asp:CheckBox ID="chkRolloverPhoneCall" runat="server" CssClass="chkstyle inforAspCheckBox" onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverPhoneCall();"   Text=" " />
         </td>
     </tr>
     <tr>
@@ -156,16 +162,16 @@
                 <asp:Label ID="lblActivityType_ToDo" runat="server"   Width="120px"  Text="<%$ resources:lblActivityType_ToDo.Text %>" />
          </td>
          <td>
-              	<span class="textcontrol">  <asp:DropDownList ID="ddlDefaultAlarmValue_ToDo" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server"  DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultAlarmValue_ToDoResource1" /></span>
+                <span class="textcontrol">  <asp:DropDownList ID="ddlDefaultAlarmValue_ToDo" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server"  DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultAlarmValue_ToDoResource1" /></span>
         </td>
          <td>
-               	<span class="textcontrol"> <asp:DropDownList ID="ddlDefaultDuration_ToDo" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultDuration_ToDoResource1" /></span>
+                <span class="textcontrol"> <asp:DropDownList ID="ddlDefaultDuration_ToDo" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server" DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultDuration_ToDoResource1" /></span>
         </td>
         <td>
-                <asp:CheckBox ID="chkTimelessToDo" runat="server" CssClass="chkstyle"  onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverToDo();"  />
+                <asp:CheckBox ID="chkTimelessToDo" runat="server" CssClass="chkstyle inforAspCheckBox"  onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverToDo();" Text=" " />
         </td>
          <td>
-                <asp:CheckBox ID="chkRolloverToDo" runat="server" CssClass="chkstyle"  onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverToDo();"   />
+                <asp:CheckBox ID="chkRolloverToDo" runat="server" CssClass="chkstyle inforAspCheckBox"  onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverToDo();"  Text=" " />
         </td>
     </tr>
     <tr>
@@ -173,16 +179,16 @@
               <asp:Label ID="lblActivityType_PersonalActivity"   Width="120px" runat="server" Text="<%$ resources:lblActivityType_PersonalActivity.Text %>" />
         </td>
          <td>
-            	<span class="textcontrol">  <asp:DropDownList ID="ddlDefaultAlarmValue_PersonalActivity" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control"  runat="server"  DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultAlarmValue_PersonalActivityResource1" /></span>
+                <span class="textcontrol">  <asp:DropDownList ID="ddlDefaultAlarmValue_PersonalActivity" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control"  runat="server"  DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultAlarmValue_PersonalActivityResource1" /></span>
         </td>
          <td>
-             	<span class="textcontrol"> <asp:DropDownList ID="ddlDefaultDuration_PersonalActivity" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server"  DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultDuration_PersonalActivityResource1" /></span>
+                <span class="textcontrol"> <asp:DropDownList ID="ddlDefaultDuration_PersonalActivity" data-dojo-type="Sage.UI.Controls.Select" CssClass="select-control" runat="server"  DataTextField="Key" DataValueField="Value" meta:resourcekey="ddlDefaultDuration_PersonalActivityResource1" /></span>
         </td>
         <td>
-                <asp:CheckBox ID="chkTimelessPersonalActivity" runat="server" CssClass="chkstyle"  onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverPersonal();"   />
+                <asp:CheckBox ID="chkTimelessPersonalActivity" runat="server" CssClass="chkstyle inforAspCheckBox"    onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverPersonal();"  Text=" " />
         </td>
          <td>
-                <asp:CheckBox ID="chkRolloverPersonalActivity" runat="server" CssClass="chkstyle"  onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverPersonal();"    />
+                <asp:CheckBox ID="chkRolloverPersonalActivity" runat="server" CssClass="chkstyle inforAspCheckBox"  onclick="javascript:Sage.UI.Forms.ActivityOptions.toggleAutoRolloverPersonal();" Text=" " />
         </td>
     </tr>
 </table>

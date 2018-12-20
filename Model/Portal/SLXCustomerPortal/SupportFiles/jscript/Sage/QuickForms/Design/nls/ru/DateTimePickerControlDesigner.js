@@ -1,3 +1,3 @@
-define((
-{ displayNameText: 'Выбор Дата/Время' }
-));
+define("Sage/QuickForms/Design/nls/ru/DateTimePickerControlDesigner", {
+    "displayNameText": "Выбор DateTime"
+});

@@ -1,124 +1,7 @@
-//>>built
 define(
 "dojo/cldr/nls/lt/buddhist", //begin v1.x content
 {
-	"dateFormatItem-yM": "y-M",
-	"dateFormatItem-yQ": "y Q",
-	"dayPeriods-format-wide-pm": "popiet",
-	"dateFormatItem-MMMEd": "MMM d, E",
-	"dateFormatItem-hms": "hh:mm:ss a",
-	"dateFormatItem-yQQQ": "y QQQ",
-	"days-standAlone-wide": [
-		"sekmadienis",
-		"pirmadienis",
-		"antradienis",
-		"trečiadienis",
-		"ketvirtadienis",
-		"penktadienis",
-		"šeštadienis"
-	],
-	"months-standAlone-narrow": [
-		"S",
-		"V",
-		"K",
-		"B",
-		"G",
-		"B",
-		"L",
-		"R",
-		"R",
-		"S",
-		"L",
-		"G"
-	],
-	"dayPeriods-format-wide-am": "priešpiet",
-	"quarters-standAlone-abbr": [
-		"I ketv.",
-		"II ketv.",
-		"III ketv.",
-		"IV ketv."
-	],
-	"dateFormatItem-y": "y",
-	"months-standAlone-abbr": [
-		"Saus.",
-		"Vas.",
-		"Kov.",
-		"Bal.",
-		"Geg.",
-		"Bir.",
-		"Liep.",
-		"Rugp.",
-		"Rugs.",
-		"Spal.",
-		"Lapkr.",
-		"Gruod."
-	],
-	"dateFormatItem-yMMM": "y MMM",
-	"days-standAlone-narrow": [
-		"S",
-		"P",
-		"A",
-		"T",
-		"K",
-		"P",
-		"Š"
-	],
-	"dateFormat-long": "y 'm'. MMMM d 'd'.",
-	"dateFormat-medium": "y MMM d",
-	"dateFormatItem-yMd": "y-M-d",
-	"quarters-standAlone-wide": [
-		"I ketvirtis",
-		"II ketvirtis",
-		"III ketvirtis",
-		"IV ketvirtis"
-	],
-	"quarters-standAlone-narrow": [
-		"I",
-		"II",
-		"3",
-		"IV"
-	],
-	"months-standAlone-wide": [
-		"Sausis",
-		"Vasaris",
-		"Kovas",
-		"Balandis",
-		"Gegužė",
-		"Birželis",
-		"Liepa",
-		"Rugpjūtis",
-		"Rugsėjis",
-		"Spalis",
-		"Lapkritis",
-		"Gruodis"
-	],
-	"quarters-format-narrow": [
-		"I",
-		"II",
-		"3",
-		"IV"
-	],
-	"months-format-abbr": [
-		"Saus.",
-		"Vas",
-		"Kov.",
-		"Bal.",
-		"Geg.",
-		"Bir.",
-		"Liep.",
-		"Rugp.",
-		"Rugs.",
-		"Spal.",
-		"Lapkr.",
-		"Gruod."
-	],
-	"quarters-format-abbr": [
-		"I k.",
-		"II k.",
-		"III k.",
-		"IV ketv."
-	],
-	"days-format-abbr": [
+	"days-standAlone-short": [
 		"Sk",
 		"Pr",
 		"An",
@@ -127,17 +10,6 @@ define(
 		"Pn",
 		"Št"
 	],
-	"days-format-narrow": [
-		"S",
-		"P",
-		"A",
-		"T",
-		"K",
-		"P",
-		"Š"
-	],
-	"dateFormatItem-yMMMd": "y MMM d",
-	"dateFormatItem-MEd": "M-d, E",
 	"months-format-narrow": [
 		"S",
 		"V",
@@ -152,8 +24,14 @@ define(
 		"L",
 		"G"
 	],
-	"dateFormatItem-hm": "hh:mm a",
-	"days-standAlone-abbr": [
+	"field-second-relative+0": "dabar",
+	"field-weekday": "Savaitės diena",
+	"field-wed-relative+0": "šį trečiadienį",
+	"field-wed-relative+1": "kitą trečiadienį",
+	"dateFormatItem-GyMMMEd": "y MMM d G, E",
+	"dateFormatItem-MMMEd": "MMM-d, E",
+	"field-tue-relative+-1": "praėjusį antradienį",
+	"days-format-short": [
 		"Sk",
 		"Pr",
 		"An",
@@ -162,13 +40,11 @@ define(
 		"Pn",
 		"Št"
 	],
-	"dayPeriods-format-abbr-pm": "pop.",
-	"dateFormat-short": "yyyy-MM-dd",
-	"dateFormatItem-yMMMEd": "y MMM d, E",
-	"dateFormat-full": "y G, MMMM d, EEEE",
-	"dateFormatItem-yMEd": "y-M-d E",
+	"dateFormat-long": "y MMMM d G",
+	"field-fri-relative+-1": "praėjusį penktadienį",
+	"field-wed-relative+-1": "praėjusį trečiadienį",
 	"months-format-wide": [
-		"sausio",
+		"sausis",
 		"vasaris",
 		"kovas",
 		"balandis",
@@ -181,13 +57,126 @@ define(
 		"lapkritis",
 		"gruodis"
 	],
+	"dateFormatItem-yyyyQQQ": "y G QQQ",
+	"dayPeriods-format-wide-pm": "popiet",
+	"dateFormat-full": "y MMMM d G, EEEE",
+	"dateFormatItem-yyyyMEd": "y-MM-dd G, E",
+	"field-thu-relative+-1": "praėjusį ketvirtadienį",
 	"dayPeriods-format-abbr-am": "pr.p.",
+	"field-era": "Era",
+	"months-standAlone-wide": [
+		"sausis",
+		"vasaris",
+		"kovas",
+		"balandis",
+		"gegužė",
+		"birželis",
+		"liepa",
+		"rugpjūtis",
+		"rugsėjis",
+		"spalis",
+		"lapkritis",
+		"gruodis"
+	],
 	"quarters-format-wide": [
 		"I ketvirtis",
 		"II ketvirtis",
 		"III ketvirtis",
 		"IV ketvirtis"
 	],
+	"field-year": "Metai",
+	"field-hour": "Valanda",
+	"months-format-abbr": [
+		"saus.",
+		"vas.",
+		"kov.",
+		"bal.",
+		"geg.",
+		"birž.",
+		"liep.",
+		"rugp.",
+		"rugs.",
+		"spal.",
+		"lapkr.",
+		"gruod."
+	],
+	"field-sat-relative+0": "šį šeštadienį",
+	"field-sat-relative+1": "kitą šeštadienį",
+	"field-day-relative+0": "šiandien",
+	"field-thu-relative+0": "šį ketvirtadienį",
+	"field-day-relative+1": "rytoj",
+	"field-thu-relative+1": "kitą ketvirtadienį",
+	"dateFormatItem-GyMMMd": "y MMM d G",
+	"field-day-relative+2": "poryt",
+	"months-standAlone-abbr": [
+		"saus.",
+		"vas.",
+		"kov.",
+		"bal.",
+		"geg.",
+		"birž.",
+		"liep.",
+		"rugp.",
+		"rugs.",
+		"spal.",
+		"lapkr.",
+		"gruod."
+	],
+	"quarters-format-abbr": [
+		"I k.",
+		"II k.",
+		"III k.",
+		"IV k."
+	],
+	"quarters-standAlone-wide": [
+		"I ketvirtis",
+		"II ketvirtis",
+		"III ketvirtis",
+		"IV ketvirtis"
+	],
+	"dateFormatItem-Gy": "y G",
+	"dateFormatItem-yyyyMMMEd": "y MMM d G, E",
+	"dateFormatItem-M": "LL",
+	"days-standAlone-wide": [
+		"sekmadienis",
+		"pirmadienis",
+		"antradienis",
+		"trečiadienis",
+		"ketvirtadienis",
+		"penktadienis",
+		"šeštadienis"
+	],
+	"dateFormatItem-yyyyMMM": "y MMM G",
+	"dateFormatItem-yyyyMMMd": "y MMM d G",
+	"field-sun-relative+0": "šį sekmadienį",
+	"field-sun-relative+1": "kitą sekmadienį",
+	"quarters-standAlone-abbr": [
+		"I ketv.",
+		"II ketv.",
+		"III ketv.",
+		"IV ketv."
+	],
+	"eraAbbr": [
+		"BE"
+	],
+	"field-minute": "Minutė",
+	"field-dayperiod": "Iki pietų / po pietų",
+	"days-standAlone-abbr": [
+		"sk",
+		"pr",
+		"an",
+		"tr",
+		"kt",
+		"pn",
+		"št"
+	],
+	"field-day-relative+-1": "vakar",
+	"dateFormatItem-h": "hh a",
+	"field-day-relative+-2": "užvakar",
+	"dateFormatItem-MMMd": "MMM-d",
+	"field-fri-relative+0": "šį penktadienį",
+	"field-fri-relative+1": "kitą penktadienį",
+	"field-day": "Diena",
 	"days-format-wide": [
 		"sekmadienis",
 		"pirmadienis",
@@ -197,7 +186,79 @@ define(
 		"penktadienis",
 		"šeštadienis"
 	],
-	"dateFormatItem-h": "hh a"
+	"field-zone": "Laiko juosta",
+	"dateFormatItem-y": "y G",
+	"months-standAlone-narrow": [
+		"S",
+		"V",
+		"K",
+		"B",
+		"G",
+		"B",
+		"L",
+		"R",
+		"R",
+		"S",
+		"L",
+		"G"
+	],
+	"field-year-relative+-1": "praėjusiais metais",
+	"field-month-relative+-1": "praėjusį mėnesį",
+	"dateFormatItem-hm": "hh:mm a",
+	"dayPeriods-format-abbr-pm": "pop.",
+	"days-format-abbr": [
+		"sk",
+		"pr",
+		"an",
+		"tr",
+		"kt",
+		"pn",
+		"št"
+	],
+	"days-format-narrow": [
+		"S",
+		"P",
+		"A",
+		"T",
+		"K",
+		"P",
+		"Š"
+	],
+	"dateFormatItem-yyyyMd": "y-MM-dd G",
+	"field-month": "Mėnuo",
+	"days-standAlone-narrow": [
+		"S",
+		"P",
+		"A",
+		"T",
+		"K",
+		"P",
+		"Š"
+	],
+	"field-tue-relative+0": "šį antradienį",
+	"field-tue-relative+1": "kitą antradienį",
+	"dayPeriods-format-wide-am": "priešpiet",
+	"field-mon-relative+0": "šį pirmadienį",
+	"field-mon-relative+1": "kitą pirmadienį",
+	"dateFormat-short": "y-MM-dd G",
+	"field-second": "Sekundė",
+	"field-sat-relative+-1": "praėjusį šeštadienį",
+	"field-sun-relative+-1": "praėjusį sekmadienį",
+	"field-month-relative+0": "šį mėnesį",
+	"field-month-relative+1": "kitą mėnesį",
+	"field-week": "Savaitė",
+	"dateFormat-medium": "y MMM d G",
+	"field-year-relative+0": "šiais metais",
+	"field-week-relative+-1": "praėjusią savaitę",
+	"dateFormatItem-yyyyM": "y MM G",
+	"field-year-relative+1": "kitais metais",
+	"dateFormatItem-yyyyQQQQ": "y G QQQQ",
+	"dateFormatItem-hms": "hh:mm:ss a",
+	"dateFormatItem-GyMMM": "y MMM G",
+	"field-mon-relative+-1": "praėjusį pirmadienį",
+	"dateFormatItem-yyyy": "y G",
+	"field-week-relative+0": "šią savaitę",
+	"field-week-relative+1": "kitą savaitę"
 }
 //end v1.x content
 );

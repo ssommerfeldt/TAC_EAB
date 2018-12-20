@@ -1,4 +1,4 @@
-﻿[
+[
 '<div>',
     '<table>',
         '<col style="width:180px" />',
@@ -12,8 +12,8 @@
             '<td class="DataItem">{%= $.entity.user ? Sage.Utility.htmlEncode($.entity.user.$descriptor) : "" %}</td>',
         '</tr>',
         '<tr id="{%= $.id %}_ExecutionDetailSummary_txtTriggerId">',
-            '<td>{%= $.txtTriggerId_Caption || "Schedule:" %} </td>',
-            '<td class="DataItem">{%= Sage.Utility.htmlEncode(Sage.Utility.Jobs.getTriggerDescription($.entity.trigger)) %}</td>',
+            '<td>{%= $.txtTriggerId_Caption || "Result:" %} </td>',
+            '<td class="DataItem">{%= Sage.Utility.htmlEncode(Sage.Utility.Jobs.formatJob($.entity)) %}</td>',
         '</tr>',
         '<tr id="{%= $.id %}_ExecutionDetailSummary_txtScheduledStartTime">',
             '<td>{%= $.txtScheduledStartTime_Caption || "Scheduled Start Time:" %}</td>',
@@ -49,7 +49,7 @@
         '</tr>',
         '<tr id="{%= $.id %}_ExecutionDetailSummary_txtResult">',
             '<td>{%= $.txtResult_Caption || "Result:" %}</td>',
-            '<td class="DataItem">{%= Sage.Utility.htmlEncode($.entity.result) %}</td>',
+             '<td class="DataItem"><div>{%= Sage.Utility.Jobs.formatJob($.entity) %}</div></td>',
         '</tr>',
     '</table>',
 '</div>'

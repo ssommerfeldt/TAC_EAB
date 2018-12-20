@@ -1,14 +1,13 @@
-define((
-{ dialogTitle: 'Lookup partecipanti',
-  okText: 'Aggiungi il(i) Selezionato(i)',
-  cancelText: 'Chiudi',
-  noDataText: 'Nessun record corrisponde ai criteri di selezione',
-  srchBtnCaption: 'Cerca',
-  colName: 'Nome',
-  colType: 'Tipo',
-  colAccount: 'Azienda/Società',
-  colTitle: 'Titolo',
-  colEmail: 'E-Mail',
-  colWorkPhone: 'Tel. Ufficio'
-}
-));
+define("Sage/MainView/ActivityMgr/AttendeeLookup/nls/it/SpeedSearchLookup", {
+    "dialogTitle": "Ricerca partecipanti",
+    "okText": "Aggiungi selezionato",
+    "cancelText": "Chiudi",
+    "noDataText": "Nessun record corrispondente ai criteri di selezione",
+    "srchBtnCaption": "Ricerca",
+    "colName": "Nome",
+    "colType": "Tipo",
+    "colAccount": "Società/Azienda",
+    "colTitle": "Titolo",
+    "colEmail": "E-mail",
+    "colWorkPhone": "Telefono ufficio"
+});

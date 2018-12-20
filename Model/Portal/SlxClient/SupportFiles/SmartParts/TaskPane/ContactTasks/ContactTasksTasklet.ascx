@@ -9,9 +9,9 @@
 
 <script type="text/javascript">
     var contactTasksActions;
-    require(['Sage/TaskPane/ContactTasksTasklet'],
-        function (ContactTasksTasklet) {
-            dojo.ready(function () {
+    require(['Sage/TaskPane/ContactTasksTasklet', 'dojo/ready'],
+        function (ContactTasksTasklet, ready) {
+            ready(function () {
                 if (!contactTasksActions) {
                     contactTasksActions = new ContactTasksTasklet({
                         id: "contactTasksActions",

@@ -1,15 +1,13 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            closeText: 'Close',
-            cancelText: 'Cancel',
-            loadingText: 'Loading...',
-            noDataText: 'No records returned'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/nls/SDataLookup", {
+    root: {
+        closeText: 'Close',
+        cancelText: 'Cancel',
+        loadingText: 'Loading...',
+        noDataText: 'No records returned'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

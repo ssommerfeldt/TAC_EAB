@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/SecurityMgr/SecurityManagerGroupContext", [
     'Sage/Groups/GroupContextService',
     'dojo/_base/declare'
 ],

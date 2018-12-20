@@ -1,0 +1,55 @@
+<div>
+    <div data-dojo-type="dijit.Dialog" title="New Entity Wizard" data-dojo-attach-point="_dialog" data-dojo-attach-event="onCancel:_btnCancel_OnClick" style="position:absolute;width: 625px;height:625px;">
+        <div data-dojo-type="dijit.form.Form" style="height:600px !important;" dojoattachpoint="Form">
+
+            <div style="padding-bottom:30px;">
+                <label style="font-weight:bold;" data-dojo-attach-point="lblCreateEntity">Create Entity</label>
+                <p><label data-dojo-attach-point="lblCreateEntityFromTable">Create a new entity from a table</label></p>
+                <hr />
+            </div>
+            
+            <table class="detailTableContainer formtable HundredPercentWidth">
+                <tr data-dojo-attach-point="_displayNameSection">
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="padding:0 !important;" class="lbl alignright">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="lblDisplayName">
+                                Display Name
+                            </label>
+                        </div>
+                        <div class="fld dijitInline" data-dojo-attach-point="displayName">
+                        </div>
+                    </td>
+                </tr>
+                <tr data-dojo-attach-point="_filterNameSection">
+                    <td class="FManagerDialogFieldLabel">
+                        <div style="padding:0 !important;" class="lbl alignright">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="lblEntityName">
+                                Entity Name
+                            </label>
+                        </div>
+                        <div class="fld  dijitInline" data-dojo-attach-point="Name">
+                        </div>
+                    </td>
+                </tr>
+                <tr data-dojo-attach-point="_filterNameSection">
+                    <td class="FManagerDialogFieldLabel">
+                        <div class="lbl alignright">
+                            <label style="line-height:32px !important;">
+                            </label>
+                        </div>
+                        <div class="fld  dijitInline"  data-dojo-attach-point="" style="color:red">
+                            <label style="line-height:32px !important;" data-dojo-attach-point="divValidationMessage">
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div align="right" style="position:absolute;bottom:30px;width:90%;">
+                <!--<div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnBack" data-dojo-attach-event="onClick:_btnBack_OnClick">Back</div>-->
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnNext" data-dojo-attach-event="onClick:_btnNext_OnClick">Next ></div>
+                <div data-dojo-type="dijit.form.Button" data-dojo-attach-point="btnCancel" data-dojo-attach-event="onClick:_btnCancel_OnClick" style="margin-left:5px;">Cancel</div>
+            </div>
+        </div>
+    </div>
+</div>

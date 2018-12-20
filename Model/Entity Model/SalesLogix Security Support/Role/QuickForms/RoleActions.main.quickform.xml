@@ -217,33 +217,40 @@
               <LookupPreFilters />
               <LookupSelectionMode>Multi</LookupSelectionMode>
               <OnSelection>function (items) {
-        var entities = [];
-        for (var i = 0; i &lt; items.length; i++) {
-            var action = {};
-            var hasRec = false;
+            var entities = [];
+            for (var i = 0; i &lt; items.length; i++) {
+                var action = {};
+                var hasRec = false;
 
-            // duplicate detection
-            for (var k in grid.store.dataCache) {
-                var rec = grid.store.dataCache[k];
-                if (rec.SecuredAction &amp;&amp; rec.SecuredAction.$key == items[i].$key)
-                    hasRec = true;
+                // duplicate detection
+                for (var k in grid.store.dataCache) {
+                    var rec = grid.store.dataCache[k];
+                    if (rec.SecuredAction &amp;&amp; rec.SecuredAction.$key == items[i].$key)
+                        hasRec = true;
+                }
+                if (hasRec)
+                    continue;
+
+                //Insert mode check
+                action.Role = { $key: Sage.Utility.getCurrentEntityId() };
+                action.SecuredAction = {};
+                Sage.Utility.extend(action.SecuredAction, items[i]);
+                delete action.$key;
+                delete action.$name;
+                delete action.$url;
+                entities.push(action);
             }
-            if (hasRec)
-                continue;
-
-            //Insert mode check
-            action.Role = { $key: Sage.Utility.getCurrentEntityId() };
-            action.SecuredAction = {};
-            Sage.Utility.extend(action.SecuredAction, items[i]);
-            delete action.$key;
-            delete action.$name;
-            delete action.$url;
-            entities.push(action);
-        }
-        if (entities.length &gt; 0)
-            grid.createItems(entities, function () { if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); } });
-        //this.lookupDialog.hide();
-    }</OnSelection>
+            if (entities.length &gt; 0) {
+                grid.createItems(entities, function () {
+                    var svc = Sage.Services.getService('RoleSecurityService');
+                    if (svc) {
+                        svc.clearCache();
+                    };
+                    if (Sage.Utility.getModeId() !== 'insert') { __doPostBack("MainContent", ""); }
+                });
+            }
+            //this.lookupDialog.hide();
+        }</OnSelection>
               <AdditionalSelectFields />
               <ChildEntity />
               <LookupResourceName>SecuredAction</LookupResourceName>
@@ -257,7 +264,11 @@
             <DisplayInInsert>false</DisplayInInsert>
             <MergePosition>Default</MergePosition>
             <MergeControlId />
-            <OnClick />
+            <OnClick>
+              function (userData) {
+                dojo.publish('service/RoleSecurity/cacheClear');
+              }
+            </OnClick>
             <StyleScheme />
             <AppliedSecurity />
           </SDataGridDeleteTool>

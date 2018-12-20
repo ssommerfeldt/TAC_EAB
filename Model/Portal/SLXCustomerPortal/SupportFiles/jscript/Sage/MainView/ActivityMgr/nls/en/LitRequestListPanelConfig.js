@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/LitRequestListPanelConfig", (
 { colNameView: 'View',
   colNameContact: 'Contact',
   colNameDescription: 'Description',

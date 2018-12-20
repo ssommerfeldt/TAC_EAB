@@ -1,20 +1,40 @@
 <?xml version="1.0"?>
-<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="fdb3e1b5-7f03-4e69-99b6-4e72f7bd0d48" lastModifiedUtc="2010-02-11T21:42:59.7515599Z" parentEntityId="2164532d-3714-403c-90ca-7ab07027b8fd" childEntityId="29a128f1-1c00-4da7-8ed4-3e2345627c6d">
+<relationship xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="fdb3e1b5-7f03-4e69-99b6-4e72f7bd0d48" lastModifiedUtc="2015-04-28T15:28:34.9630358Z" parentEntityId="2164532d-3714-403c-90ca-7ab07027b8fd" childEntityId="29a128f1-1c00-4da7-8ed4-3e2345627c6d">
   <extendedMetaData />
   <ExtendedPropertiesCollection>
     <extendee type="Sage.Platform.Orm.Entities.OrmRelationship" />
   </ExtendedPropertiesCollection>
-  <parentProperty id="983ee3fa-2670-4d28-8d0c-aa0b057e4823" lastModifiedUtc="2010-02-11T21:40:29.2985599Z" name="PickListItems" audited="false">
+  <parentProperty id="983ee3fa-2670-4d28-8d0c-aa0b057e4823" lastModifiedUtc="2015-04-28T15:28:29.0520358Z" name="PickListItems" audited="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />
     </SystemDataType>
   </parentProperty>
-  <childProperty id="a477804d-399e-4eca-af7b-40a224ffb6dc" lastModifiedUtc="2010-02-11T21:40:29.3355599Z" name="PickList" audited="false">
+  <childProperty id="a477804d-399e-4eca-af7b-40a224ffb6dc" lastModifiedUtc="2015-04-28T15:28:34.9630358Z" name="PickList" audited="false">
     <ExtendedPropertiesCollection>
-      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty" />
+      <extendee type="Sage.Platform.Orm.Entities.OrmRelationProperty">
+        <extender guid="ae60621d-9d91-3d9a-b9fb-eb6c8be12131">
+          <OrmEntityPropertySDataExtension generate="true" />
+        </extender>
+        <extender guid="ac7a8695-7689-4c4b-819d-6c3ab7c2e15f">
+          <OrmEntityPropertyImportExtension canImport="false" canMatch="false" />
+        </extender>
+        <extender guid="cbb948ad-9154-4174-847a-690a81c1c2e4">
+          <OrmEntityPropertyBulkActionExtension canBulkUpdate="false" />
+        </extender>
+      </extendee>
     </ExtendedPropertiesCollection>
     <SystemDataType guid="2f770d03-c93c-4605-8ae8-7cdae04830d7">
       <RelationshipDataType />

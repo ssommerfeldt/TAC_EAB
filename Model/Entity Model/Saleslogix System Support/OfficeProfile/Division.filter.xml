@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmUserLookupEntityFilter" id="4de6752b-3364-4de7-b49c-3c2c93636da7" lastModifiedUtc="2015-11-19T14:33:23.4931282Z" filterName="Division" propertyName="Division">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmUserLookupEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <operators>
+    <operator>Equal</operator>
+    <operator>Contains</operator>
+    <operator>StartsWith</operator>
+  </operators>
+</entityFilter>

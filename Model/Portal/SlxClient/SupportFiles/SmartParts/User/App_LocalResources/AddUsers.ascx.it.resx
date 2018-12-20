@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,154 +117,151 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="QFLabel.Text" xml:space="preserve">
-    <value>Importa Da</value>
-  </data>
-  <data name="Customer_Support_Manager" xml:space="preserve">
-    <value>Responsabile dell'assistenza clienti</value>
-  </data>
-  <data name="Sales" xml:space="preserve">
-    <value>Vendite</value>
-  </data>
-  <data name="btnRefreshLic.Caption" xml:space="preserve">
-    <value>Aggiorna Licenze</value>
-  </data>
-  <data name="chkCreateFromProfile.Caption" xml:space="preserve">
-    <value>Crea Da Profilo:</value>
-  </data>
-  <data name="LicNotRequired" xml:space="preserve">
-    <value>(Nessuna licenza richiesta.)</value>
-  </data>
-  <data name="Customer_Support" xml:space="preserve">
-    <value>Assistenza clienti</value>
-  </data>
-  <data name="LicTooFewAvailable" xml:space="preserve">
-    <value>(Troppo poche licenze. Disponibili solo {0}.)</value>
-  </data>
-  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
-    <value>Opzioni Profilo</value>
-  </data>
-  <data name="Customer_Service" xml:space="preserve">
-    <value>Servizio clienti</value>
-  </data>
-  <data name="rdoProfileFrom_item1.Text" xml:space="preserve">
-    <value>Utente Esistente</value>
-  </data>
-  <data name="chkGeneral.Caption" xml:space="preserve">
-    <value>Generale</value>
-  </data>
-  <data name="LicAvailable" xml:space="preserve">
-    <value>({0} Disponibili)</value>
-  </data>
-  <data name="lbxUserType_item1.Text" xml:space="preserve">
-    <value>Utente Solo Web</value>
-  </data>
-  <data name="All_Access" xml:space="preserve">
-    <value>Tutti gli accessi</value>
-  </data>
-  <data name="Sales_Manager" xml:space="preserve">
-    <value>Responsabile delle vendite</value>
-  </data>
-  <data name="lueAddUser.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
-    <value>Regione</value>
-  </data>
-  <data name="lueAddUser.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="btnOk.Caption" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lblAvailableLic.Text" xml:space="preserve">
-    <value>0 Disponibile</value>
-  </data>
-  <data name="chkSync.Caption" xml:space="preserve">
-    <value>Sincr</value>
-  </data>
-  <data name="chkTeams.Caption" xml:space="preserve">
-    <value>Team</value>
-  </data>
-  <data name="lueAddUser.Validate" xml:space="preserve">
-    <value>L'utente è un campo Obbligatorio.</value>
+  <data name="lbxUserType.Caption" xml:space="preserve">
+    <value>Aggiungi:</value>
   </data>
   <data name="numQuantity.Caption" xml:space="preserve">
     <value>Quantità:</value>
   </data>
-  <data name="chkCalender.Caption" xml:space="preserve">
-    <value>Calendario</value>
+  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
+    <value>Opzioni profilo</value>
   </data>
-  <data name="lueAddUser.LookupProperties.UserInfo.Department.PropertyHeader" xml:space="preserve">
-    <value>Reparto</value>
+  <data name="chkCreateFromProfile.Caption" xml:space="preserve">
+    <value>Crea da profilo:</value>
   </data>
-  <data name="chkServiceAndSupport.Caption" xml:space="preserve">
-    <value>Servizio/Supporto</value>
+  <data name="rdoProfileFrom_item1.Text" xml:space="preserve">
+    <value>Utente esistente</value>
   </data>
-  <data name="lblProcessing.Text" xml:space="preserve">
-    <value>Attendere prego... Creazione di   {0}   {1} {2} ... </value>
+  <data name="rdoProfileFrom_item0.Text" xml:space="preserve">
+    <value>Modello</value>
   </data>
-  <data name="chkSecurity.Caption" xml:space="preserve">
-    <value>Sicurezza</value>
+  <data name="lbxTemplates.Caption" xml:space="preserve">
+    <value>Modello:</value>
+  </data>
+  <data name="QFSLXUser.ButtonToolTip" xml:space="preserve">
+    <value>Seleziona utente</value>
+  </data>
+  <data name="QFSLXUser.Caption" xml:space="preserve">
+    <value>Utente:</value>
+  </data>
+  <data name="lblTabOptions.Text" xml:space="preserve">
+    <value>Copia il seguente:</value>
+  </data>
+  <data name="chkGeneral.Caption" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="btnOk.Caption" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="btnCancel.Caption" xml:space="preserve">
     <value>Annulla</value>
   </data>
-  <data name="CreateFromProfile2.Caption" xml:space="preserve">
-    <value>Crea Da Profilo</value>
+  <data name="QFLabel.Text" xml:space="preserve">
+    <value>Importa da</value>
   </data>
-  <data name="lbxUserType.Caption" xml:space="preserve">
-    <value>Aggiungi:</value>
+  <data name="chkEmployee.Caption" xml:space="preserve">
+    <value>Dipendente</value>
   </data>
-  <data name="Executive_Management" xml:space="preserve">
-    <value>Responsabile esecutivo</value>
+  <data name="chkSecurity.Caption" xml:space="preserve">
+    <value>Sicurezza</value>
   </data>
-  <data name="pnlCreateFromProfile.Caption" xml:space="preserve">
-    <value>Crea Da Profilo:</value>
+  <data name="chkTeams.Caption" xml:space="preserve">
+    <value>Team</value>
   </data>
-  <data name="lbxUserType_item0.Text" xml:space="preserve">
-    <value>Utente di Rete</value>
+  <data name="chkFunctionSec.Caption" xml:space="preserve">
+    <value>Sicurezza funzione</value>
   </data>
-  <data name="lbxTemplates.Caption" xml:space="preserve">
-    <value>Modello:</value>
+  <data name="chkCalender.Caption" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="chkSync.Caption" xml:space="preserve">
+    <value>Sincronizzazione</value>
+  </data>
+  <data name="chkClientOptions.Caption" xml:space="preserve">
+    <value>Opzioni client (sistema client)</value>
+  </data>
+  <data name="chkServiceAndSupport.Caption" xml:space="preserve">
+    <value>Servizio/supporto</value>
   </data>
   <data name="chkCustom.Caption" xml:space="preserve">
     <value>Personalizzato</value>
   </data>
   <data name="lbxUserType_item2.Text" xml:space="preserve">
-    <value>Utente Concorrente</value>
+    <value>Utente concorrente</value>
   </data>
-  <data name="chkClientOptions.Caption" xml:space="preserve">
-    <value>Opzioni Client (Sistema Client)</value>
+  <data name="lbxUserType_item1.Text" xml:space="preserve">
+    <value>Utente solo Web</value>
   </data>
-  <data name="Customer_Service_Manager" xml:space="preserve">
-    <value>Responsabile del servizio clienti</value>
+  <data name="lbxUserType_item0.Text" xml:space="preserve">
+    <value>Utente di rete</value>
   </data>
-  <data name="lblTabOptions.Text" xml:space="preserve">
-    <value>Copia il seguente:</value>
+  <data name="lblAvailableLic.Text" xml:space="preserve">
+    <value>0 disponibile</value>
+  </data>
+  <data name="pnlCreateFromProfile.Caption" xml:space="preserve">
+    <value>Crea da profilo:</value>
+  </data>
+  <data name="LicAvailable" xml:space="preserve">
+    <value>({0} disponibili)</value>
+  </data>
+  <data name="LicNotRequired" xml:space="preserve">
+    <value>(Nessuna licenza richiesta.)</value>
+  </data>
+  <data name="LicTooFewAvailable" xml:space="preserve">
+    <value>(Troppo poche licenze. Disponibili solo {0}.)</value>
+  </data>
+  <data name="CreateFromProfile2.Caption" xml:space="preserve">
+    <value>Crea da profilo</value>
+  </data>
+  <data name="btnRefreshLic.Caption" xml:space="preserve">
+    <value>Aggiorna licenze</value>
+  </data>
+  <data name="lueAddUser.LookupProperties.UserInfo.Department.PropertyHeader" xml:space="preserve">
+    <value>Reparto</value>
+  </data>
+  <data name="lueAddUser.LookupProperties.UserInfo.Region.PropertyHeader" xml:space="preserve">
+    <value>Regione</value>
   </data>
   <data name="lueAddUser.LookupProperties.UserInfo.Title.PropertyHeader" xml:space="preserve">
     <value>Titolo</value>
   </data>
-  <data name="Marketing" xml:space="preserve">
-    <value>Marketing</value>
+  <data name="lueAddUser.LookupProperties.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Nome</value>
   </data>
-  <data name="plural" xml:space="preserve">
-    <value>i</value>
+  <data name="lueAddUser.Validate" xml:space="preserve">
+    <value>L'utente è un campo obbligatorio.</value>
   </data>
-  <data name="QFSLXUser.Caption" xml:space="preserve">
-    <value>Utente:</value>
-  </data>
-  <data name="QFSLXUser.ButtonToolTip" xml:space="preserve">
-    <value>Seleziona utente</value>
-  </data>
-  <data name="chkEmployee.Caption" xml:space="preserve">
-    <value>Dipendente</value>
-  </data>
-  <data name="rdoProfileFrom_item0.Text" xml:space="preserve">
-    <value>Modello</value>
+  <data name="lblProcessing.Text" xml:space="preserve">
+    <value>Creazione in corso di {0} con il seguente tipo di utente: {1}. Attendere... </value>
   </data>
   <data name="lueAddUser.LookupProperties.Type.PropertyHeader" xml:space="preserve">
     <value>Tipo</value>
   </data>
-  <data name="chkFunctionSec.Caption" xml:space="preserve">
-    <value>Funzione Sicurezza</value>
+  <data name="All_Access" xml:space="preserve">
+    <value>Tutti gli accessi</value>
+  </data>
+  <data name="Customer_Service" xml:space="preserve">
+    <value>Assistenza clienti</value>
+  </data>
+  <data name="Customer_Service_Manager" xml:space="preserve">
+    <value>Responsabile assistenza clienti</value>
+  </data>
+  <data name="Customer_Support" xml:space="preserve">
+    <value>Supporto tecnico</value>
+  </data>
+  <data name="Customer_Support_Manager" xml:space="preserve">
+    <value>Responsabile supporto tecnico</value>
+  </data>
+  <data name="Executive_Management" xml:space="preserve">
+    <value>Responsabile esecutivo</value>
+  </data>
+  <data name="Marketing" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="Sales" xml:space="preserve">
+    <value>Vendite</value>
+  </data>
+  <data name="Sales_Manager" xml:space="preserve">
+    <value>Responsabile vendite</value>
   </data>
 </root>

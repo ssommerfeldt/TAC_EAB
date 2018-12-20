@@ -1,13 +1,11 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            notificationToolTip: 'You have ${0} job notifications.',
-            notificationErrorToolTip: 'An error occured retrieving job notifications. Please contact your administrator.'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/Alarms/nls/JobNotificationButton", {
+    root: {
+        notificationToolTip: 'You have ${0} job notifications.',
+        notificationErrorToolTip: 'An error occurred retrieving job notifications. Please contact your administrator.'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<mashup id="691675e3-1248-4699-b830-6239365e387d" name="AccountDistanceSearch">
+  <processors>
+    <processor type="Sage.Platform.Mashups.Processors.QueryProcessor, Sage.Platform.Mashups">
+      <queryProcessor id="2e45abae-d844-4e67-b232-4e7a1360e293" name="AccountDistanceSearch" location="20, 20" expanded="true" width="460" continueOnError="false" query="Select a.Id as AccountId, a.AccountName as AccountName, a.AccountManager.UserInfo.UserName as AccountManager, a.Type as AccountType, a.SubType as AccountSubType,&#xD;&#xA;Round(SQRT((69.1*(Cast(addr.GeocodeLatitude as float) - (:Latitude))) * (69.1*(Cast(addr.GeocodeLatitude as float) - (:Latitude))) + (53*(Cast(addr.GeocodeLongitude as float) - (:Longitude))) * (53*(Cast(addr.GeocodeLongitude as float) - (:Longitude)))), 2) as Distance,&#xD;&#xA;a.MainPhone as MainPhone&#xD;&#xA;&#xD;&#xA;from Account a&#xD;&#xA;join a.Address addr&#xD;&#xA;&#xD;&#xA;where addr.GeocodeLatitude is not null and addr.GeocodeLongitude is not null&#xD;&#xA;and a.Type = :AcctType&#xD;&#xA;&#xD;&#xA;order by SQRT((69.1*(Cast(addr.GeocodeLatitude as float) - (:Latitude))) * (69.1*(Cast(addr.GeocodeLatitude as float) - (:Latitude))) + (53*(Cast(addr.GeocodeLongitude as float) - (:Longitude))) * (53*(Cast(addr.GeocodeLongitude as float) - (:Longitude))))">
+        <parameters>
+          <parameter id="ffe6b1c9-0632-46fa-b4f8-b7092a3be4a4" name="Latitude" expression="Lat" />
+          <parameter id="53fb26d3-425d-4f6c-bcb4-e378b3b4499f" name="Longitude" expression="Lon" />
+          <parameter id="8bca90a6-e02d-401f-b9e2-68c05ca8e240" name="AcctType" expression="AccountType" />
+        </parameters>
+      </queryProcessor>
+    </processor>
+  </processors>
+  <parameters>
+    <parameter id="384ae6e3-403e-4a61-8a6a-bbf9f421bae0" name="Lat" expression="38.6273" />
+    <parameter id="e1ed0335-3be5-4826-affe-287af5d2278b" name="Lon" expression="-90.1979" />
+    <parameter id="07fb5099-8df4-4c90-a7cf-6fe221a94d7f" name="AccountType" expression="'Customer'" />
+  </parameters>
+  <links />
+</mashup>

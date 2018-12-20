@@ -1,32 +1,31 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
- */
-define('Mobile/SalesLogix/Fields/NameField', [
-    'dojo/_base/declare',
-    'Sage/Platform/Mobile/Fields/EditorField',
-    'Sage/Platform/Mobile/FieldManager'
-], function(
-    declare,
-    EditorField,
-    FieldManager
-) {
-    var control = declare('Mobile.SalesLogix.Fields.NameField', [EditorField], {
-        // Localization
-        emptyText: '',
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import EditorField from 'argos/Fields/EditorField';
+import FieldManager from 'argos/FieldManager';
+import getResource from 'argos/I18n';
 
-        widgetTemplate: new Simplate([
-            '<label for="{%= $.name %}">{%: $.label %}</label>',
-            '<button class="button simpleSubHeaderButton" aria-label="{%: $.lookupLabelText %}"><span>{%: $.lookupText %}</span></button>',
-            '<input data-dojo-attach-point="inputNode" readonly="readonly" type="text" />'
-        ]),
-        createNavigationOptions: function() {
-            var options = this.inherited(arguments);
-            //Name does not have an entity.
-            delete options.entityName;
+const resource = getResource('nameField');
 
-            return options;
-        }
-    });
+const control = declare('crm.Fields.NameField', [EditorField], {
+  // Localization
+  emptyText: resource.emptyText,
 
-    return FieldManager.register('name', control);
+  widgetTemplate: new Simplate([
+    '<label for="{%= $.name %}">{%: $.label %}</label>',
+    '<button class="button simpleSubHeaderButton {% if ($$.iconClass) { %} {%: $$.iconClass %} {% } %}" aria-label="{%: $.lookupLabelText %}"><span>{%: $.lookupText %}</span></button>',
+    '<input data-dojo-attach-point="inputNode" readonly="readonly" type="text" />',
+  ]),
+
+  iconClass: 'fa fa-pencil fa-lg',
+
+  createNavigationOptions: function createNavigationOptions() {
+    const options = this.inherited(arguments);
+    // Name does not have an entity.
+    delete options.entityName;
+
+    return options;
+  },
 });
+
+lang.setObject('Mobile.SalesLogix.Fields.NameField', control);
+export default FieldManager.register('name', control);

@@ -117,26 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="jsDeleteGlobalJoinPrompt" xml:space="preserve">
+    <value>Souhaitez-vous vraiment supprimer cette jointure globale ?</value>
+  </data>
   <data name="localize1to1" xml:space="preserve">
     <value>1:1</value>
   </data>
-  <data name="localizeRight" xml:space="preserve">
-    <value>Droite</value>
+  <data name="localizeAdd.Text" xml:space="preserve">
+    <value>Ajouter</value>
   </data>
   <data name="localizeAllow" xml:space="preserve">
     <value>Autoriser</value>
   </data>
+  <data name="localizeAlways" xml:space="preserve">
+    <value>Toujours</value>
+  </data>
+  <data name="localizeCascade" xml:space="preserve">
+    <value>Cascade</value>
+  </data>
+  <data name="localizeChildField" xml:space="preserve">
+    <value>Champ enfant</value>
+  </data>
+  <data name="localizeChildTable" xml:space="preserve">
+    <value>Table enfant</value>
+  </data>
+  <data name="localizeClear" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
   <data name="localizeClose.Text" xml:space="preserve">
     <value>Fermer</value>
   </data>
-  <data name="jsDeleteGlobalJoinPrompt" xml:space="preserve">
-    <value>Souhaitez-vous supprimer cette jointure globale ?</value>
+  <data name="localizeDelete.Text" xml:space="preserve">
+    <value>Supprimer</value>
   </data>
-  <data name="localizeSYS" xml:space="preserve">
-    <value>SYS</value>
+  <data name="localizeDeleteStopCascade" xml:space="preserve">
+    <value>Supprimer (arrêter la cascade)</value>
+  </data>
+  <data name="localizeEdit.Text" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="localizeGlobalJoinManager.Text" xml:space="preserve">
+    <value>Gestionnaire de jointures globales</value>
   </data>
   <data name="localizeIgnoreDontCascade" xml:space="preserve">
     <value>Ignorer (ne pas utiliser en cascade)</value>
+  </data>
+  <data name="localizeInner" xml:space="preserve">
+    <value>Interne</value>
+  </data>
+  <data name="localizeJoinDelete" xml:space="preserve">
+    <value>Supprimer</value>
   </data>
   <data name="localizeLeft" xml:space="preserve">
     <value>Gauche</value>
@@ -147,52 +177,22 @@
   <data name="localizeParentField" xml:space="preserve">
     <value>Champ parent</value>
   </data>
-  <data name="localizeEdit.Text" xml:space="preserve">
-    <value>Modifier</value>
-  </data>
-  <data name="localizeClear" xml:space="preserve">
-    <value>Effacer</value>
-  </data>
-  <data name="localizeAdd.Text" xml:space="preserve">
-    <value>Ajouter</value>
-  </data>
-  <data name="localizeType" xml:space="preserve">
-    <value>Type</value>
+  <data name="localizeParentTable" xml:space="preserve">
+    <value>Table parent</value>
   </data>
   <data name="localizeReplace" xml:space="preserve">
     <value>Remplacer</value>
   </data>
-  <data name="localizeAlways" xml:space="preserve">
-    <value>Toujours</value>
+  <data name="localizeRight" xml:space="preserve">
+    <value>Droite</value>
   </data>
-  <data name="localizeDeleteStopCascade" xml:space="preserve">
-    <value>Supprimer (arrêter la cascade)</value>
+  <data name="localizeSYS" xml:space="preserve">
+    <value>SYS</value>
+  </data>
+  <data name="localizeType" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="localizeVisibility" xml:space="preserve">
     <value>Visibilité</value>
-  </data>
-  <data name="localizeJoinDelete" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="localizeParentTable" xml:space="preserve">
-    <value>Table parent</value>
-  </data>
-  <data name="localizeGlobalJoinManager.Text" xml:space="preserve">
-    <value>Gestionnaire de jointures globales</value>
-  </data>
-  <data name="localizeChildField" xml:space="preserve">
-    <value>Champ enfant</value>
-  </data>
-  <data name="localizeChildTable" xml:space="preserve">
-    <value>Table enfant</value>
-  </data>
-  <data name="localizeInner" xml:space="preserve">
-    <value>Interne</value>
-  </data>
-  <data name="localizeDelete.Text" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="localizeCascade" xml:space="preserve">
-    <value>Cascade</value>
   </data>
 </root>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Alarms/main", [
         "Sage/UI/Alarms/ActivityAlarm",
         "Sage/UI/Alarms/AlarmButton",
         "Sage/UI/Alarms/AlarmCountDown",

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmOtherMethod" id="2d5e2334-f2c8-4373-a7a5-b3255f07975d" lastModifiedUtc="2015-12-14T23:46:24.3748856Z" name="tbrSave_OnClickAction" methodType="Other" actionType="None" returnMode="None" isInstance="false" containerName="HelpConfiguration">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmOtherMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="d88cdfb5-d0be-4054-8099-8e7f7278c8b9" paramName="form" sequence="0" paramType="IHelpConfiguration" />
+    <OrmEntityMethodParam id="70b95c51-9e25-4baf-95c0-3dbb476948b4" paramName="args" sequence="0" paramType="EventArgs" />
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="640d2420-c5f0-4dc0-a1ae-7b72e1fb518f" lastModifiedUtc="2015-12-14T23:47:08.4750962Z" targetType="Sage.BusinessRules.CodeSnippets.HelpConfigurationEventHandlers, Sage.SnippetLibrary.CSharp" targetMethod="tbrSave_OnClickActionStep" active="true" codeSnippetId="81526ce1-e9a1-49a6-b66e-eab86a49e14f">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/TaskPane/SecuredActionTasklet", [
     'dojo/i18n!./nls/SecuredActionTasklet',
     'Sage/TaskPane/_BaseTaskPaneTasklet',
     'Sage/TaskPane/TaskPaneContent',

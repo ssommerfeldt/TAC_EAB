@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<entityFilter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="OrmUserLookupEntityFilter" id="3f417ddf-7240-4410-b0b9-17b8e8cda28e" lastModifiedUtc="2015-12-09T09:06:33.077315Z" filterName="Carrier" propertyName="ErpCarrierParty">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmUserLookupEntityFilter" />
+  </ExtendedPropertiesCollection>
+  <operators>
+    <operator>Equal</operator>
+    <operator>NotEqual</operator>
+    <operator>LessThan</operator>
+    <operator>LessThanEqual</operator>
+    <operator>GreaterThanEqual</operator>
+    <operator>GreaterThan</operator>
+    <operator>EndsWith</operator>
+    <operator>Contains</operator>
+    <operator>StartsWith</operator>
+  </operators>
+</entityFilter>

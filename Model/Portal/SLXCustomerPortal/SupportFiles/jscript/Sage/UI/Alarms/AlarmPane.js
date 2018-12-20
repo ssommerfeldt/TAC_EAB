@@ -1,5 +1,5 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/UI/Alarms/AlarmPane", [
     'dijit/form/Button',
     'dijit/form/FilteringSelect',
     'dojo/date',
@@ -127,7 +127,7 @@ function (button, FilteringSelect, dojoDate, utility, AlertPane, ActivityAlarm, 
         },
         _snoozeItem: function (userActivity) {
             var selval = this._selSnoozeBy.get('value');
-            var dur = parseInt(selval);
+            var dur = parseInt(selval, 10);
             var dateNow = new Date();
             var newAlarm = dojoDate.add(dateNow, 'minute', dur);
             //this.store.setValue(userActivity, 'Alarm', true);

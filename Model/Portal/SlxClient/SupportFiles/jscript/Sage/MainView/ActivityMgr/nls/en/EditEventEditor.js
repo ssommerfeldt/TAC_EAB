@@ -1,4 +1,4 @@
-define((
+define("Sage/MainView/ActivityMgr/nls/en/EditEventEditor", (
 { titleScheduleText: 'Schedule Event',
   titleEditText: 'Edit Event',
   lblDayTypeText: 'Day Type:',

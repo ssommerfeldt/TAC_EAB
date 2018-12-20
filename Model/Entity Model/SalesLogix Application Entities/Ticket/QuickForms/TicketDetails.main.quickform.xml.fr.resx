@@ -117,47 +117,167 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lueContract.LookupProperties.TypeCode.PropertyHeader" xml:space="preserve">
-    <value>Type</value>
+  <data name="cmdSave.Caption" xml:space="preserve">
+    <value>Enregistrer</value>
   </data>
-  <data name="phnWorkPhone.Caption" xml:space="preserve">
-    <value>N° de téléphone :</value>
+  <data name="cmdSave.ToolTip" xml:space="preserve">
+    <value>Enregistrer</value>
   </data>
-  <data name="pklStatusCode.Caption" xml:space="preserve">
-    <value>Etat :</value>
+  <data name="cmdEmail.Caption" xml:space="preserve">
+    <value>E-mail</value>
   </data>
-  <data name="dplArea.Caption" xml:space="preserve">
-    <value>Zone :</value>
+  <data name="cmdEmail.ToolTip" xml:space="preserve">
+    <value>Détails de l'e-mail</value>
   </data>
-  <data name="cmdReset.ToolTip" xml:space="preserve">
-    <value>Réinitialiser</value>
-  </data>
-  <data name="dplArea.DependentLookups.Area.PropertyDisplay" xml:space="preserve">
-    <value>Zone :</value>
-  </data>
-  <data name="lueContract.LookupProperties.ServiceCode.PropertyHeader" xml:space="preserve">
-    <value>Code de service</value>
-  </data>
-  <data name="cmdDelete.ToolTip" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="lueContact.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Propriétaire</value>
-  </data>
-  <data name="dtpNeededByDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
+  <data name="cmdAccountService.Caption" xml:space="preserve">
+    <value>Service du compte</value>
   </data>
   <data name="cmdAccountService.ToolTip" xml:space="preserve">
     <value>Informations sur les services du compte</value>
   </data>
-  <data name="lueContact.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Compte</value>
+  <data name="cmdDelete.Caption" xml:space="preserve">
+    <value>Supprimer</value>
   </data>
-  <data name="cmdAccountService.Caption" xml:space="preserve">
-    <value>Service de compte</value>
+  <data name="cmdDelete.ToolTip" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
+    <value>Vous êtes sur le point de supprimer définitivement cet enregistrement.</value>
+  </data>
+  <data name="chkClosedOnFirst.Caption" xml:space="preserve">
+    <value>Résolu au 1er appel ?</value>
+  </data>
+  <data name="chkSubmitSearch.Caption" xml:space="preserve">
+    <value>Soumettre à SpeedSearch</value>
+  </data>
+  <data name="chkAddKnowledge.Caption" xml:space="preserve">
+    <value>Approuvé pour SpeedSearch</value>
+  </data>
+  <data name="lnkPrintViewLink.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lnkPrintViewLink.ToolTip" xml:space="preserve">
+    <value>Vue avant impression</value>
+  </data>
+  <data name="dtpNeededByDate.Caption" xml:space="preserve">
+    <value>Date d'échéance :</value>
+  </data>
+  <data name="dtpNeededByDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dtpAssignedDate.Caption" xml:space="preserve">
+    <value>Date de l'affectation :</value>
+  </data>
+  <data name="dtpAssignedDate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dplArea.Caption" xml:space="preserve">
+    <value>Domaine :</value>
+  </data>
+  <data name="dplArea.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dplArea.DependentLookups.Area.PropertyDisplay" xml:space="preserve">
+    <value>Domaine :</value>
+  </data>
+  <data name="dplArea.DependentLookups.Category.PropertyDisplay" xml:space="preserve">
+    <value>Catégorie :</value>
+  </data>
+  <data name="dplArea.DependentLookups.Issue.PropertyDisplay" xml:space="preserve">
+    <value>Problème :</value>
   </data>
   <data name="emlEmail.Caption" xml:space="preserve">
     <value>E-mail :</value>
+  </data>
+  <data name="emlAssignToEmail.Caption" xml:space="preserve">
+    <value>E-mail :</value>
+  </data>
+  <data name="emlAssignToEmail.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAccount.Caption" xml:space="preserve">
+    <value>Nom du compte :</value>
+  </data>
+  <data name="lueAccount.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Téléphone principal</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Sous-type</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="lueContact.Caption" xml:space="preserve">
+    <value>Nom du Contact :</value>
+  </data>
+  <data name="lueContact.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="lueContact.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="lueContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="lueContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="lueContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
+    <value>Téléphone professionnel</value>
+  </data>
+  <data name="lueContact.LookupProperties.Mobile.PropertyHeader" xml:space="preserve">
+    <value>Téléphone portable</value>
+  </data>
+  <data name="lueContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="lueContact.LookupProperties.AccountManager.UserName.PropertyHeader" xml:space="preserve">
+    <value>Resp. du compte</value>
+  </data>
+  <data name="lueContact.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Propriétaire</value>
+  </data>
+  <data name="lueContract.Caption" xml:space="preserve">
+    <value>Contrat :</value>
+  </data>
+  <data name="lueContract.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueContract.LookupProperties.ReferenceNumber.PropertyHeader" xml:space="preserve">
+    <value>Référence</value>
+  </data>
+  <data name="lueContract.LookupProperties.ServiceCode.PropertyHeader" xml:space="preserve">
+    <value>Code de service</value>
+  </data>
+  <data name="lueContract.LookupProperties.TypeCode.PropertyHeader" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="lueContract.LookupProperties.Remaining.PropertyHeader" xml:space="preserve">
+    <value>Restant</value>
+  </data>
+  <data name="lueContract.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="lueContract.LookupProperties.EndingDate.PropertyHeader" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
+  <data name="lveUrgency.Caption" xml:space="preserve">
+    <value>Priorité :</value>
+  </data>
+  <data name="lveUrgency.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lveUrgency.LookupProperties.Description.PropertyHeader" xml:space="preserve">
     <value>Description</value>
@@ -165,196 +285,142 @@
   <data name="ownAssignedTo.Caption" xml:space="preserve">
     <value>Affecté à :</value>
   </data>
-  <data name="c2f74e4e-f47c-491f-96f3-d1a96c756821.Message" xml:space="preserve">
-    <value>Des activités de ticket ouvertes ont été affectées à d'autres utilisateurs. Veuillez fermer les activités de ticket ouvertes avant de fermer le ticket.</value>
+  <data name="ownAssignedTo.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="lueContact.LookupProperties.LastHistoryDate.PropertyHeader" xml:space="preserve">
-    <value>Date du dernier historique</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Ville</value>
-  </data>
-  <data name="lueContact.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="cmdSave.Caption" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="PunchOut_DisplayName" xml:space="preserve">
-    <value>Arrêt chrono</value>
-  </data>
-  <data name="dtpAssignedDate.ButtonToolTip" xml:space="preserve">
-    <value>Agenda</value>
-  </data>
-  <data name="cmdReset.Caption" xml:space="preserve">
-    <value>Réinitialiser</value>
-  </data>
-  <data name="lueAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
-    <value>Sous-Type</value>
-  </data>
-  <data name="lueContact.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
-    <value>Ville</value>
-  </data>
-  <data name="lueContract.LookupProperties.EndingDate.PropertyHeader" xml:space="preserve">
-    <value>Date de fin</value>
-  </data>
-  <data name="PunchIn_DisplayName" xml:space="preserve">
-    <value>Démarrage chrono</value>
-  </data>
-  <data name="dplArea.DependentLookups.Issue.PropertyDisplay" xml:space="preserve">
-    <value>Problème :</value>
-  </data>
-  <data name="lueContract.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
+  <data name="phnWorkPhone.Caption" xml:space="preserve">
+    <value>Téléphone :</value>
   </data>
   <data name="phnAssignToPhone.Caption" xml:space="preserve">
-    <value>N° de téléphone :</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Département</value>
-  </data>
-  <data name="CompleteTicketActivity_Caption" xml:space="preserve">
-    <value>Terminer l'activité du ticket</value>
-  </data>
-  <data name="6bb1b981-3938-4a7f-ab85-597eb2f4a587.Message" xml:space="preserve">
-    <value>Le statut du ticket a été modifié en fermé mais il existe des activités de ticket ouvertes. Veuillez fermer les activités de ticket ouvertes.</value>
-  </data>
-  <data name="lueAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
-    <value>Compte</value>
-  </data>
-  <data name="lueContract.LookupProperties.ReferenceNumber.PropertyHeader" xml:space="preserve">
-    <value>Référence</value>
-  </data>
-  <data name="cmdEmail.ToolTip" xml:space="preserve">
-    <value>Détails de l'e-mail</value>
-  </data>
-  <data name="cmdSave.ToolTip" xml:space="preserve">
-    <value>Enregistrer</value>
-  </data>
-  <data name="lueAccount.LookupProperties.AccountManager.UserName.PropertyHeader" xml:space="preserve">
-    <value>Nom d'utilisateur du responsable de compte</value>
-  </data>
-  <data name="lueAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
-    <value>Resp. du compte</value>
-  </data>
-  <data name="emlEmail.ButtonToolTip" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
-  </data>
-  <data name="ownAssignedTo.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="lueContact.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
-    <value>Département</value>
-  </data>
-  <data name="lueContact.LookupProperties.NameLF.PropertyHeader" xml:space="preserve">
-    <value>Nom</value>
-  </data>
-  <data name="pklPublicAccessCode.Caption" xml:space="preserve">
-    <value>Accès public :</value>
-  </data>
-  <data name="lueContact.LookupProperties.AccountManager.UserName.PropertyHeader" xml:space="preserve">
-    <value>Resp. du compte</value>
-  </data>
-  <data name="chkClosedOnFirst.Caption" xml:space="preserve">
-    <value>Résolu au 1er appel ?</value>
-  </data>
-  <data name="lnkPrintViewLink.ToolTip" xml:space="preserve">
-    <value>Vue avant impression</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
-    <value>Propriétaire</value>
-  </data>
-  <data name="lueContact.LookupProperties.WorkPhone.PropertyHeader" xml:space="preserve">
-    <value>Téléphone professionnel</value>
-  </data>
-  <data name="dtpAssignedDate.Caption" xml:space="preserve">
-    <value>Date de l'affectation :</value>
-  </data>
-  <data name="lveUrgency.Caption" xml:space="preserve">
-    <value>Priorité :</value>
-  </data>
-  <data name="lueContract.Caption" xml:space="preserve">
-    <value>Contrat :</value>
-  </data>
-  <data name="cmdDelete.ActionConfirmationMessage" xml:space="preserve">
-    <value>Vous êtes sur le point de supprimer définitivement cet enregistrement.</value>
-  </data>
-  <data name="emlAssignToEmail.Caption" xml:space="preserve">
-    <value>E-mail :</value>
-  </data>
-  <data name="dplArea.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
-  </data>
-  <data name="emlAssignToEmail.ButtonToolTip" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
-  </data>
-  <data name="lueContact.LookupProperties.Mobile.PropertyHeader" xml:space="preserve">
-    <value>Mobile</value>
-  </data>
-  <data name="chkSubmitSearch.Caption" xml:space="preserve">
-    <value>Soumettre à SpeedSearch</value>
-  </data>
-  <data name="lueAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
-    <value>Etat</value>
-  </data>
-  <data name="dplArea.DependentLookups.Category.PropertyDisplay" xml:space="preserve">
-    <value>Catégorie :</value>
-  </data>
-  <data name="cmdDelete.Caption" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="lueAccount.LookupProperties.AccountManager.CreateUser.PropertyHeader" xml:space="preserve">
-    <value>Créé par le responsable de compte</value>
-  </data>
-  <data name="lueContact.Caption" xml:space="preserve">
-    <value>Nom du Contact :</value>
-  </data>
-  <data name="OtherUserPunchedIn_Message" xml:space="preserve">
-    <value>Le ticket {0} est en cours de modification par {1}. Une activité de ticket peut être ajoutée.</value>
-  </data>
-  <data name="f12baac1-873a-4872-80ca-c1a74333f703.Title" xml:space="preserve">
-    <value>Saleslogix</value>
-  </data>
-  <data name="lueContract.LookupProperties.Remaining.PropertyHeader" xml:space="preserve">
-    <value>Restant</value>
-  </data>
-  <data name="cmdEmail.Caption" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
-  </data>
-  <data name="lueContract.LookupProperties.StartDate.PropertyHeader" xml:space="preserve">
-    <value>Date de début</value>
-  </data>
-  <data name="lueAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
-    <value>Tél. principal</value>
-  </data>
-  <data name="a93c18b6-1f91-44bf-95d9-fd957094d548.Title" xml:space="preserve">
-    <value>Saleslogix</value>
-  </data>
-  <data name="lueContact.LookupProperties.Email.PropertyHeader" xml:space="preserve">
-    <value>Envoyer par e-mail</value>
+    <value>Téléphone :</value>
   </data>
   <data name="pklViaCode.Caption" xml:space="preserve">
     <value>Source :</value>
   </data>
+  <data name="pklStatusCode.Caption" xml:space="preserve">
+    <value>Etat :</value>
+  </data>
+  <data name="c2f74e4e-f47c-491f-96f3-d1a96c756821.Message" xml:space="preserve">
+    <value>Des activités de ticket ouvertes ont été affectées à d'autres utilisateurs. Veuillez fermer les activités de ticket ouvertes avant de fermer le ticket.</value>
+  </data>
+  <data name="pklPublicAccessCode.Caption" xml:space="preserve">
+    <value>Accès public :</value>
+  </data>
+  <data name="CompleteTicketActivity_Caption" xml:space="preserve">
+    <value>Terminer l'activité du ticket</value>
+  </data>
+  <data name="PunchIn_DisplayName" xml:space="preserve">
+    <value>Démarrage du chrono</value>
+  </data>
+  <data name="PunchOut_DisplayName" xml:space="preserve">
+    <value>Arrêt du chrono</value>
+  </data>
+  <data name="cmdPunchInOut.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="a93c18b6-1f91-44bf-95d9-fd957094d548.Title" xml:space="preserve">
+    <value>Saleslogix</value>
+  </data>
+  <data name="emlEmail.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="f12baac1-873a-4872-80ca-c1a74333f703.Title" xml:space="preserve">
+    <value>Saleslogix</value>
+  </data>
+  <data name="cmdReset.Caption" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
+  <data name="cmdReset.ToolTip" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
+  <data name="OtherUserPunchedIn_Message" xml:space="preserve">
+    <value>Le ticket {0} est en cours de modification par {1}. Une activité de ticket peut être ajoutée.</value>
+  </data>
+  <data name="lueAccount.LookupProperties.AccountManager.UserName.PropertyHeader" xml:space="preserve">
+    <value>Nom d'utilisateur du AccountManager</value>
+  </data>
+  <data name="lueAccount.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueAccount.LookupProperties.AccountManager.CreateUser.PropertyHeader" xml:space="preserve">
+    <value>Créé par le AccountManager</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="lueAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Resp. du compte</value>
+  </data>
+  <data name="lueAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Propriétaire</value>
+  </data>
+  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="lueContact.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="emlEmail.ButtonToolTip" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="lueContract.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="dplArea.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
   <data name="lveUrgency.ButtonToolTip" xml:space="preserve">
     <value>Rechercher</value>
   </data>
-  <data name="dtpNeededByDate.Caption" xml:space="preserve">
-    <value>Echéance :</value>
+  <data name="dtpNeededByDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
   </data>
-  <data name="lueAccount.Caption" xml:space="preserve">
-    <value>Nom du compte :</value>
+  <data name="dtpAssignedDate.ButtonToolTip" xml:space="preserve">
+    <value>Agenda</value>
   </data>
-  <data name="chkAddKnowledge.Caption" xml:space="preserve">
-    <value>Approuvé pour SpeedSearch</value>
+  <data name="ownAssignedTo.ButtonToolTip" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="emlAssignToEmail.ButtonToolTip" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="94481476-98b3-4e66-95e8-403a9121a6f7.Title" xml:space="preserve">
+    <value>Saleslogix</value>
+  </data>
+  <data name="94481476-98b3-4e66-95e8-403a9121a6f7.Message" xml:space="preserve">
+    <value />
+  </data>
+  <data name="d10bff60-376a-4c61-88a9-9c7f7973a172.Message" xml:space="preserve">
+    <value />
+  </data>
+  <data name="d10bff60-376a-4c61-88a9-9c7f7973a172.Title" xml:space="preserve">
+    <value>Saleslogix</value>
+  </data>
+  <data name="6bb1b981-3938-4a7f-ab85-597eb2f4a587.Title" xml:space="preserve">
+    <value>Saleslogix</value>
+  </data>
+  <data name="6bb1b981-3938-4a7f-ab85-597eb2f4a587.Message" xml:space="preserve">
+    <value>Le statut du ticket a été changé en fermé mais il existe des activités de ticket ouvertes. Veuillez fermer les activités de ticket ouvertes.</value>
   </data>
   <data name="lueContact.LookupProperties.CreateDate.PropertyHeader" xml:space="preserve">
     <value>Date de création</value>
   </data>
-  <data name="lueAccount.ButtonToolTip" xml:space="preserve">
-    <value>Rechercher</value>
+  <data name="lueContact.LookupProperties.LastHistoryDate.PropertyHeader" xml:space="preserve">
+    <value>Date du dernier historique</value>
+  </data>
+  <data name="Automated_PunchIn_MSG" xml:space="preserve">
+    <value>Souhaitez-vous déclencher le chrono ?</value>
+  </data>
+  <data name="No_Text" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="Question_Title" xml:space="preserve">
+    <value>Infor CRM</value>
+  </data>
+  <data name="Yes_Text" xml:space="preserve">
+    <value>Oui</value>
   </data>
 </root>

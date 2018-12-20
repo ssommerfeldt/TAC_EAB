@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<method xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="7185ac68-c9f6-4cb1-a43a-f38ecb5c2ddc" lastModifiedUtc="2016-02-16T22:27:13.774118Z" name="UpdateLocaleConfig" methodType="Rule" actionType="None" returnMode="None">
+  <extendedMetaData />
+  <ExtendedPropertiesCollection>
+    <extendee type="Sage.Platform.Orm.Entities.OrmEntityMethod" />
+  </ExtendedPropertiesCollection>
+  <parameter>
+    <OrmEntityMethodParam id="7def21aa-fdcf-4964-b677-036f4d6b908d" paramName="portalName" sequence="0" paramType="String">
+      <description>Name of portal to save available locale values to</description>
+    </OrmEntityMethodParam>
+    <OrmEntityMethodParam id="9e221dee-740a-4b37-b249-ed20811883b3" paramName="localeCSV" sequence="0" paramType="String">
+      <description>CSV list of available languages for help docs</description>
+    </OrmEntityMethodParam>
+  </parameter>
+  <preExecuteTargets />
+  <methodTargets>
+    <methodTarget xsi:type="OrmMethodTargetSnippet" id="00e9103b-27bc-403d-9fb0-a734bcef3f6f" lastModifiedUtc="2016-02-16T22:27:13.7681168Z" targetType="Sage.BusinessRules.CodeSnippets.OfficeProfileBusinessRules, Sage.SnippetLibrary.CSharp" targetMethod="UpdateLocaleConfigStep" active="true" codeSnippetId="ca905be9-013e-4e89-a37a-96c94b04a066">
+      <ExtendedPropertiesCollection>
+        <extendee type="Sage.Platform.Orm.Entities.OrmMethodTargetSnippet" />
+      </ExtendedPropertiesCollection>
+    </methodTarget>
+  </methodTargets>
+  <postExecuteTargets />
+</method>

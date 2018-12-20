@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="9bbae4eb-08ed-4985-a03f-c375b976a793" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-08-24T09:59:54.8541781Z">
+  <ActiveControl />
+  <ImagePath />
+  <LoadActions>
+    <FormActionDefinition>
+      <ResourceKey>674aaf82-dd5d-4d30-9866-58a68fba7539</ResourceKey>
+      <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
+        <CSharpSnippetActionItem>
+          <MethodName>quickformload0</MethodName>
+          <CSharpCodeSnippet>var status = Sage.SalesLogix.BusinessRules.BusinessRuleHelper.GetDexStatus();
+if(status == "" || status == "Completed with errors")
+{
+   pnlPeriodGrid.Visible = true;
+}
+else
+{
+   pnlPeriodGrid.Visible = false;
+}</CSharpCodeSnippet>
+        </CSharpSnippetActionItem>
+      </Action>
+      <IsDialogCloseAction>False</IsDialogCloseAction>
+      <RunOnEveryRePaint>False</RunOnEveryRePaint>
+      <DialogActionResult>NoResult</DialogActionResult>
+      <PerformsUpdate>False</PerformsUpdate>
+      <AppliedSecurity />
+      <RefreshData>False</RefreshData>
+    </FormActionDefinition>
+  </LoadActions>
+  <Name>Periods</Name>
+  <ClientScriptIncludes />
+  <ClientResourceKeys />
+  <ExtendedProperties />
+  <HelpFile />
+  <ReadOnly>false</ReadOnly>
+  <GeneratePrintView>false</GeneratePrintView>
+  <Controls>
+    <Control typeName="Sage.Platform.QuickForms.QFControls.QFPanel, Sage.Platform.QuickForms.QFControls">
+      <QFPanel>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>pnlPeriodGrid</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+        <Caption />
+        <Rows>
+          <Row>
+            <SizeType>Absolute</SizeType>
+            <Height>35</Height>
+          </Row>
+        </Rows>
+        <columns>
+          <column>
+            <SizeType>Percent</SizeType>
+            <Width>100</Width>
+          </column>
+        </columns>
+        <Controls>
+          <ControlsCollection>
+            <Control TypeName="Sage.SalesLogix.QuickForms.QFControls.SDataGrid.QFSDataGrid, Sage.SalesLogix.QuickForms.QFControls">
+              <QFSDataGrid>
+                <Column>0</Column>
+                <Row>0</Row>
+                <HotKey>0</HotKey>
+                <TabIndex>0</TabIndex>
+                <ControlId>grdPeriods</ControlId>
+                <DataBindings />
+                <ControlLabelPlacement>left</ControlLabelPlacement>
+                <ExtendedProperties />
+                <CaptionAlignment>left</CaptionAlignment>
+                <StyleScheme />
+                <GenerateMember>false</GenerateMember>
+                <ReadOnlyCondition>False</ReadOnlyCondition>
+                <AppliedSecurity />
+                <RelateToPropertyName />
+                <PreviewField />
+                <ResourceKind>
+                  <Name>periods</Name>
+                  <GetPredicate />
+                </ResourceKind>
+                <PathSegments />
+                <Columns>
+                  <QFSDataDateTimeCol>
+                    <StyleScheme />
+                    <DataField>EffectiveFrom</DataField>
+                    <ColumnId>a14cc06a-fa73-4e2c-beb8-275cc6a4f4ea</ColumnId>
+                    <HorizontalAlignment>left</HorizontalAlignment>
+                    <HeaderAlignment>left</HeaderAlignment>
+                    <SortDirection>None</SortDirection>
+                    <IsSortable>true</IsSortable>
+                    <SortField>EffectiveFrom</SortField>
+                    <MultiCurrencyDependent>false</MultiCurrencyDependent>
+                    <IsEditable>False</IsEditable>
+                    <HideCondition />
+                    <Width>-1</Width>
+                    <CustomFormatter />
+                    <AbbreviationLength>0</AbbreviationLength>
+                    <DateOnly>true</DateOnly>
+                  </QFSDataDateTimeCol>
+                  <QFSDataDateTimeCol>
+                    <StyleScheme />
+                    <DataField>ExpiresAfter</DataField>
+                    <ColumnId>420d14ad-bf48-4474-b047-a5098f170123</ColumnId>
+                    <HorizontalAlignment>left</HorizontalAlignment>
+                    <HeaderAlignment>left</HeaderAlignment>
+                    <SortDirection>None</SortDirection>
+                    <IsSortable>true</IsSortable>
+                    <SortField>ExpiresAfter</SortField>
+                    <MultiCurrencyDependent>false</MultiCurrencyDependent>
+                    <IsEditable>False</IsEditable>
+                    <HideCondition />
+                    <Width>-1</Width>
+                    <CustomFormatter />
+                    <AbbreviationLength>0</AbbreviationLength>
+                    <DateOnly>true</DateOnly>
+                  </QFSDataDateTimeCol>
+                  <QFSDataDateTimeCol>
+                    <StyleScheme />
+                    <DataField>ModifyDate</DataField>
+                    <ColumnId>83098bc2-06c3-4248-b559-8f8527f3ff65</ColumnId>
+                    <HorizontalAlignment>left</HorizontalAlignment>
+                    <HeaderAlignment>left</HeaderAlignment>
+                    <SortDirection>None</SortDirection>
+                    <IsSortable>true</IsSortable>
+                    <SortField>ModifyDate</SortField>
+                    <MultiCurrencyDependent>false</MultiCurrencyDependent>
+                    <IsEditable>False</IsEditable>
+                    <HideCondition />
+                    <Width>-1</Width>
+                    <CustomFormatter />
+                    <AbbreviationLength>0</AbbreviationLength>
+                    <DateOnly>false</DateOnly>
+                  </QFSDataDateTimeCol>
+                  <QFSDataSlxUserCol>
+                    <StyleScheme />
+                    <DataField>ModifyUser</DataField>
+                    <ColumnId>598a06ba-6888-42a7-bb7a-77aae2ba289e</ColumnId>
+                    <HorizontalAlignment>left</HorizontalAlignment>
+                    <HeaderAlignment>left</HeaderAlignment>
+                    <SortDirection>None</SortDirection>
+                    <IsSortable>true</IsSortable>
+                    <SortField>ModifyUser</SortField>
+                    <MultiCurrencyDependent>false</MultiCurrencyDependent>
+                    <IsEditable>False</IsEditable>
+                    <HideCondition />
+                    <Width>-1</Width>
+                    <CustomFormatter />
+                    <AbbreviationLength>0</AbbreviationLength>
+                  </QFSDataSlxUserCol>
+                  <QFSDataDateTimeCol>
+                    <StyleScheme />
+                    <DataField>CreateDate</DataField>
+                    <ColumnId>3d01042b-a052-439c-a5e6-5b4273ae2f22</ColumnId>
+                    <HorizontalAlignment>left</HorizontalAlignment>
+                    <HeaderAlignment>left</HeaderAlignment>
+                    <SortDirection>None</SortDirection>
+                    <IsSortable>true</IsSortable>
+                    <SortField>CreateDate</SortField>
+                    <MultiCurrencyDependent>false</MultiCurrencyDependent>
+                    <IsEditable>False</IsEditable>
+                    <HideCondition />
+                    <Width>-1</Width>
+                    <CustomFormatter />
+                    <AbbreviationLength>0</AbbreviationLength>
+                    <DateOnly>false</DateOnly>
+                  </QFSDataDateTimeCol>
+                </Columns>
+                <ConditionalWhere />
+                <Select />
+                <Include />
+                <FeedCategory>InternalAppEntities</FeedCategory>
+                <OnGetMappingId />
+                <ParentRelationshipPropertyName />
+                <ChildRelationshipPropertyName />
+                <OnDataChange />
+                <OnAdd />
+                <Tools>
+                  <SDataGridSaveTool>
+                    <Name>Save</Name>
+                    <Image>[Localization!Global_Images:Save_16x16]</Image>
+                    <DisplayInInsert>false</DisplayInInsert>
+                    <MergePosition>Default</MergePosition>
+                    <MergeControlId />
+                    <OnClick />
+                    <StyleScheme />
+                    <AppliedSecurity />
+                  </SDataGridSaveTool>
+                  <SDataGridCancelTool>
+                    <Name>Cancel</Name>
+                    <Image>[Localization!Global_Images:Reset_16x16]</Image>
+                    <DisplayInInsert>false</DisplayInInsert>
+                    <MergePosition>Default</MergePosition>
+                    <MergeControlId />
+                    <OnClick>//default Cancel behavior</OnClick>
+                    <StyleScheme />
+                    <AppliedSecurity />
+                  </SDataGridCancelTool>
+                </Tools>
+              </QFSDataGrid>
+            </Control>
+          </ControlsCollection>
+        </Controls>
+      </QFPanel>
+    </Control>
+  </Controls>
+  <ToolControls>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>fa711c296cd2470fb29593c21b706d36</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+    <Control typeName="Sage.Platform.QuickForms.Controls.QFElementSpacer, Sage.Platform.QuickForms">
+      <QFElementSpacer>
+        <Column>0</Column>
+        <Row>0</Row>
+        <HotKey>0</HotKey>
+        <TabIndex>0</TabIndex>
+        <ControlId>bb3319d0270d4a04ab5ab636affa1b0c</ControlId>
+        <DataBindings />
+        <ControlLabelPlacement>left</ControlLabelPlacement>
+        <ExtendedProperties />
+        <CaptionAlignment>left</CaptionAlignment>
+        <StyleScheme />
+      </QFElementSpacer>
+    </Control>
+  </ToolControls>
+  <Columns>
+    <ColumnStyle>
+      <SizeType>Percent</SizeType>
+      <Width>100</Width>
+    </ColumnStyle>
+  </Columns>
+  <Rows>
+    <RowStyle>
+      <SizeType>Absolute</SizeType>
+      <Height>35</Height>
+    </RowStyle>
+  </Rows>
+  <Description />
+  <UseEntityNameAsTitle>true</UseEntityNameAsTitle>
+  <EntityTypeName>IPeriod</EntityTypeName>
+  <DefaultNamespace>Sage.Entity.Interfaces</DefaultNamespace>
+  <AssemblyName>Sage.Entity.Interfaces</AssemblyName>
+</QuickForm>

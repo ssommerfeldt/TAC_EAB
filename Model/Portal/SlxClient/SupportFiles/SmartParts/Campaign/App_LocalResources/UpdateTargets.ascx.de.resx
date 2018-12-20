@@ -117,32 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblAssignTo.Text" xml:space="preserve">
+    <value>Zuweisen zu:</value>
+  </data>
+  <data name="lblCompletedDate.Text" xml:space="preserve">
+    <value>Abschlussdatum:</value>
+  </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Beschreibung:</value>
-  </data>
-  <data name="rdlDepartment.Text" xml:space="preserve">
-    <value>Vorhandene Abteilung</value>
   </data>
   <data name="lblStatus.Text" xml:space="preserve">
     <value>Status:</value>
   </data>
-  <data name="lblPercentComplete.Text" xml:space="preserve">
-    <value>% abgeschlossen:</value>
+  <data name="lblPriority.Text" xml:space="preserve">
+    <value>Priorität:</value>
   </data>
   <data name="btnSave.ToolTip" xml:space="preserve">
     <value>Speichern</value>
   </data>
-  <data name="grdTargets.ResponseDate.Header" xml:space="preserve">
-    <value>Antwortdatum</value>
+  <data name="lblPercentComplete.Text" xml:space="preserve">
+    <value>% abgeschlossen:</value>
   </data>
-  <data name="cmdUpdate.Text" xml:space="preserve">
-    <value>Aktualisieren</value>
+  <data name="lblNeededDate.Text" xml:space="preserve">
+    <value>Fälligkeitsdatum:</value>
   </data>
-  <data name="rdlInitTargets.Yes.Item" xml:space="preserve">
-    <value>Ja</value>
+  <data name="lblComment.Text" xml:space="preserve">
+    <value>Kommentare:</value>
   </data>
-  <data name="cmdCancel.Text" xml:space="preserve">
-    <value>Schließen</value>
+  <data name="lblEstimated.Text" xml:space="preserve">
+    <value>Geschätzt:</value>
+  </data>
+  <data name="lblActual.Text" xml:space="preserve">
+    <value>Tats.:</value>
+  </data>
+  <data name="lblBudget.Text" xml:space="preserve">
+    <value>Budget</value>
   </data>
   <data name="DialogTitle" xml:space="preserve">
     <value>Ziele aktualisieren</value>
@@ -150,124 +159,115 @@
   <data name="rdlUserTeam.Text" xml:space="preserve">
     <value>Vorhandener Benutzer/vorhandenes Team</value>
   </data>
-  <data name="lblResponseDate.Text" xml:space="preserve">
-    <value>Antwortdatum:</value>
-  </data>
-  <data name="lblCompletedDate.Text" xml:space="preserve">
-    <value>Abschlussdatum:</value>
-  </data>
-  <data name="lblUpdateTargets.Text" xml:space="preserve">
-    <value>Ausgewählte Ziele aktualisieren:</value>
-  </data>
-  <data name="lblBudget.Text" xml:space="preserve">
-    <value>Budget</value>
-  </data>
-  <data name="LeadSourceType.PropertyHeader" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="lblNeededDate.Text" xml:space="preserve">
-    <value>Fälligkeitsdatum:</value>
-  </data>
-  <data name="lblResponseMethods.Text" xml:space="preserve">
-    <value>Antwortmethoden:</value>
-  </data>
-  <data name="grdTargets.Company.Header" xml:space="preserve">
-    <value>Unternehmen</value>
-  </data>
-  <data name="grdTargets.LastUpdated.Header" xml:space="preserve">
-    <value>Letzte Aktualisierung</value>
-  </data>
-  <data name="lblStage.Text" xml:space="preserve">
-    <value>Phase:</value>
-  </data>
-  <data name="lblPriority.Text" xml:space="preserve">
-    <value>Priorität:</value>
-  </data>
-  <data name="lblComment.Text" xml:space="preserve">
-    <value>Kommentare:</value>
-  </data>
-  <data name="LeadSourceSourceDate.PropertyHeader" xml:space="preserve">
-    <value>Datum der Interessentenquelle</value>
+  <data name="lblAssignment.Text" xml:space="preserve">
+    <value>Zuweisung</value>
   </data>
   <data name="lblTaskCosts.Text" xml:space="preserve">
     <value>Kosten für Aufgabe:</value>
   </data>
-  <data name="grdTargets.Status.Header" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="Option_AddResponse" xml:space="preserve">
-    <value>Antwort hinzufügen</value>
-  </data>
-  <data name="lblAssignment.Text" xml:space="preserve">
-    <value>Zuweisung</value>
-  </data>
   <data name="lblTaskHours.Text" xml:space="preserve">
     <value>Für Aufgabe aufgewendete Stunden:</value>
-  </data>
-  <data name="Option_Status" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="lblTo.Text" xml:space="preserve">
-    <value>An:</value>
-  </data>
-  <data name="grdTargets.Name.Header" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="rdlNone.Text" xml:space="preserve">
-    <value>Keine</value>
-  </data>
-  <data name="lblInterest.Text" xml:space="preserve">
-    <value>Interesse</value>
-  </data>
-  <data name="grdTargets.Init.Header" xml:space="preserve">
-    <value>Init</value>
-  </data>
-  <data name="grdTargets.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
-  </data>
-  <data name="lblInterestLevel.Text" xml:space="preserve">
-    <value>Grad des Interesses</value>
-  </data>
-  <data name="Option_Stage" xml:space="preserve">
-    <value>Phase</value>
-  </data>
-  <data name="LeadSourceAbbrev.PropertyHeader" xml:space="preserve">
-    <value>Abk.</value>
-  </data>
-  <data name="grdTargets.Stage.Header" xml:space="preserve">
-    <value>Phase</value>
-  </data>
-  <data name="lblAssignTo.Text" xml:space="preserve">
-    <value>Zuweisen zu:</value>
-  </data>
-  <data name="lblEstimated.Text" xml:space="preserve">
-    <value>Geschätzt:</value>
-  </data>
-  <data name="rdlInitTargets.No.Item" xml:space="preserve">
-    <value>Nein</value>
-  </data>
-  <data name="grdTargets.Type.Header" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="lblActual.Text" xml:space="preserve">
-    <value>Tats.:</value>
-  </data>
-  <data name="lblLeadSource.Text" xml:space="preserve">
-    <value>Interessentenquelle:</value>
-  </data>
-  <data name="lblResponseMetod.Text" xml:space="preserve">
-    <value>Antwortmethode:</value>
-  </data>
-  <data name="rdlOther.Text" xml:space="preserve">
-    <value>Andere Einzelperson</value>
-  </data>
-  <data name="LeadSourceDescription.PropertyHeader" xml:space="preserve">
-    <value>Beschreibung</value>
   </data>
   <data name="rdlContact.Text" xml:space="preserve">
     <value>Vorhandener Kontakt</value>
   </data>
+  <data name="rdlDepartment.Text" xml:space="preserve">
+    <value>Vorhandene Abteilung</value>
+  </data>
+  <data name="rdlNone.Text" xml:space="preserve">
+    <value>Keine</value>
+  </data>
+  <data name="rdlOther.Text" xml:space="preserve">
+    <value>Andere Einzelperson</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="cmdUpdate.Text" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="lblTo.Text" xml:space="preserve">
+    <value>An:</value>
+  </data>
+  <data name="lblUpdateTargets.Text" xml:space="preserve">
+    <value>Ausgewählte Ziele aktualisieren:</value>
+  </data>
+  <data name="rdlInitTargets.Yes.Item" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="rdlInitTargets.No.Item" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="grdTargets.Company.Header" xml:space="preserve">
+    <value>Unternehmen</value>
+  </data>
+  <data name="grdTargets.Init.Header" xml:space="preserve">
+    <value>Init</value>
+  </data>
+  <data name="grdTargets.LastUpdated.Header" xml:space="preserve">
+    <value>Letzte Aktualisierung</value>
+  </data>
+  <data name="grdTargets.Name.Header" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="grdTargets.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  </data>
+  <data name="grdTargets.ResponseDate.Header" xml:space="preserve">
+    <value>Antwortdatum</value>
+  </data>
+  <data name="grdTargets.Stage.Header" xml:space="preserve">
+    <value>Phase</value>
+  </data>
+  <data name="grdTargets.Status.Header" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="grdTargets.Type.Header" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="LeadSourceAbbrev.PropertyHeader" xml:space="preserve">
+    <value>Abk.</value>
+  </data>
+  <data name="LeadSourceDescription.PropertyHeader" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="LeadSourceSourceDate.PropertyHeader" xml:space="preserve">
+    <value>Quelldatum</value>
+  </data>
+  <data name="LeadSourceType.PropertyHeader" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Option_AddResponse" xml:space="preserve">
+    <value>Antwort hinzufügen</value>
+  </data>
   <data name="Option_Initial" xml:space="preserve">
     <value>Anfangsziel</value>
+  </data>
+  <data name="Option_Stage" xml:space="preserve">
+    <value>Phase</value>
+  </data>
+  <data name="Option_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="lblLeadSource.Text" xml:space="preserve">
+    <value>Interessentenquelle:</value>
+  </data>
+  <data name="lblResponseDate.Text" xml:space="preserve">
+    <value>Antwortdatum:</value>
+  </data>
+  <data name="lblResponseMethods.Text" xml:space="preserve">
+    <value>Antwortmethoden:</value>
+  </data>
+  <data name="lblStage.Text" xml:space="preserve">
+    <value>Phase:</value>
+  </data>
+  <data name="lblResponseMetod.Text" xml:space="preserve">
+    <value>Antwortmethode:</value>
+  </data>
+  <data name="lblInterest.Text" xml:space="preserve">
+    <value>Interesse</value>
+  </data>
+  <data name="lblInterestLevel.Text" xml:space="preserve">
+    <value>Grad des Interesses</value>
   </data>
 </root>

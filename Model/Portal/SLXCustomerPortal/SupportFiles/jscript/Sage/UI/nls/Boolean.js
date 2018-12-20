@@ -1,13 +1,11 @@
-define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-            yesText: 'Yes',
-            noText: 'No'
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/UI/nls/Boolean", {
+    root: {
+        yesText: 'Yes',
+        noText: 'No'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

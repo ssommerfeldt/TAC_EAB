@@ -1,268 +1,255 @@
-/*
- * Copyright (c) 1997-2013, SalesLogix, NA., LLC. All rights reserved.
+import declare from 'dojo/_base/declare';
+import lang from 'dojo/_base/lang';
+import string from 'dojo/string';
+import connect from 'dojo/_base/connect';
+import array from 'dojo/_base/array';
+import format from '../../Format';
+import Detail from 'argos/Detail';
+import _LegacySDataDetailMixin from 'argos/_LegacySDataDetailMixin';
+import getResource from 'argos/I18n';
+
+const resource = getResource('opportunityProductDetail');
+
+/**
+ * @class crm.Views.OpportunityProduct.Detail
+ *
+ * @extends argos.Detail
+ * @mixins argos._LegacySDataDetailMixin
+ *
+ * @requires crm.Format
  */
-define('Mobile/SalesLogix/Views/OpportunityProduct/Detail', [
-    'dojo/_base/declare',
-    'dojo/string',
-    'dojo/_base/connect',
-    'dojo/_base/array',
-    'Mobile/SalesLogix/Format',
-    'Sage/Platform/Mobile/Detail'
-], function(
-    declare,
-    string,
-    connect,
-    array,
-    format,
-    Detail
-) {
+const __class = declare('crm.Views.OpportunityProduct.Detail', [Detail, _LegacySDataDetailMixin], {
+  // Localization
+  detailsText: resource.detailsText,
+  opportunityText: resource.opportunityText,
+  productText: resource.productText,
+  productFamilyText: resource.productFamilyText,
+  priceLevelText: resource.priceLevelText,
+  priceText: resource.priceText,
+  basePriceText: resource.basePriceText,
+  discountText: resource.discountText,
+  quantityText: resource.quantityText,
+  baseExtendedPriceText: resource.baseExtendedPriceText,
+  extendedPriceText: resource.extendedPriceText,
+  extendedPriceSectionText: resource.extendedPriceSectionText,
+  adjustedPriceSectionText: resource.adjustedPriceSectionText,
+  baseAdjustedPriceText: resource.baseAdjustedPriceText,
+  adjustedPriceText: resource.adjustedPriceText,
+  myAdjustedPriceText: resource.myAdjustedPriceText,
+  confirmDeleteText: resource.confirmDeleteText,
+  removeOppProductTitleText: resource.removeOppProductTitleText,
+  entityText: resource.entityText,
 
-    return declare('Mobile.SalesLogix.Views.OpportunityProduct.Detail', [Detail], {
-        //Localization
-        detailsText: 'Details',
-        opportunityText: 'opportunity',
-        productText: 'product',
-        productFamilyText: 'product family',
-        priceLevelText: 'price level',
-        priceText: 'price',
-        basePriceText: 'base price',
-        discountText: 'discount',
-        quantityText: 'quantity',
-        baseExtendedPriceText: 'base',
-        extendedPriceText: 'extended price',
-        extendedPriceSectionText: 'Extended Price',
-        adjustedPriceSectionText: 'Adjusted Price',
-        baseAdjustedPriceText: 'base',
-        adjustedPriceText: 'adjusted price',
-        myAdjustedPriceText: 'user',
-        confirmDeleteText: 'Remove ${0} from the opportunity products?',
-        removeOppProductTitleText: 'remove opportunity product',
+  // View Properties
+  id: 'opportunityproduct_detail',
+  editView: 'opportunityproduct_edit',
 
-        //View Properties
-        id: 'opportunityproduct_detail',
-        editView: 'opportunityproduct_edit',
+  security: 'Entities/Opportunity/View',
+  querySelect: [
+    'Opportunity/Description',
+    'Product/Description',
+    'Product/Family',
+    'Product/Name',
+    'Product/Price',
+    'Product/Program',
+    'Product/FixedCost',
+    'AdjustedPrice',
+    'CalculatedPrice',
+    'Discount',
+    'ExtendedPrice',
+    'Price',
+    'Program',
+    'Quantity',
+  ],
+  resourceKind: 'opportunityProducts',
 
-        security: 'Entities/Opportunity/View',
-        querySelect: [
-            'Opportunity/Description',
-            'Product/Description',
-            'Product/Family',
-            'Product/Name',
-            'Product/Price',
-            'Product/Program',
-            'Product/FixedCost',
-            'AdjustedPrice',
-            'CalculatedPrice',
-            'Discount',
-            'ExtendedPrice',
-            'Price',
-            'Program',
-            'Quantity'
-        ],
-        resourceKind: 'opportunityProducts',
+  createEntryForDelete: function createEntryForDelete(e) {
+    const entry = {
+      $key: e.$key,
+      $etag: e.$etag,
+      $name: e.$name,
+    };
+    return entry;
+  },
+  removeOpportunityProduct: function removeOpportunityProduct() {
+    const confirmMessage = string.substitute(this.confirmDeleteText, [this.entry.Product.Name]);
 
-        createEntryForDelete: function(e) {
-            var entry = {
-                '$key': e['$key'],
-                '$etag': e['$etag'],
-                '$name': e['$name']
-            };
-            return entry;
-        },
-        removeOpportunityProduct: function() {
-            var confirmMessage = string.substitute(this.confirmDeleteText, [this.entry.Product.Name]);
+    if (!confirm(confirmMessage)) { // eslint-disable-line
+      return;
+    }
 
-            if (!confirm(confirmMessage)) {
-                return;
-            }
+    const entry = this.createEntryForDelete(this.entry);
+    const request = this.createRequest();
 
-            var entry = this.createEntryForDelete(this.entry),
-                request = this.createRequest();
+    if (request) {
+      request.delete(entry, {
+        success: this.onDeleteSuccess,
+        failure: this.onRequestDataFailure,
+        scope: this,
+      });
+    }
+  },
+  onDeleteSuccess: function onDeleteSuccess() {
+    const views = [
+      App.getView('opportunityproduct_related'),
+      App.getView('opportunity_detail'),
+      App.getView('opportunity_list'),
+    ];
 
-            if (request) {
-                request['delete'](entry, {
-                    success: this.onDeleteSuccess,
-                    failure: this.onRequestDataFailure,
-                    scope: this
-                });
-            }
-        },
-        onDeleteSuccess: function() {
-            var views = [
-                App.getView('opportunityproduct_related'),
-                App.getView('opportunity_detail'),
-                App.getView('opportunity_list')
-            ];
+    array.forEach(views, (view) => {
+      if (view) {
+        view.refreshRequired = true;
+      }
+    }, this);
 
-            array.forEach(views, function(view) {
-                if (view) {
-                    view.refreshRequired = true;
-                }
-            }, this);
-
-            connect.publish('/app/refresh', [{
-                resourceKind: this.resourceKind
-            }]);
-            ReUI.back();
-        },
-        createToolLayout: function() {
-            return this.tools || (this.tools = {
-                'tbar': [{
-                        id: 'edit',
-                        action: 'navigateToEditView',
-                        security: App.getViewSecurity(this.editView, 'update')
-                    }, {
-                        id: 'removeOpportunityProduct',
-                        icon: 'content/images/icons/del_24.png',
-                        action: 'removeOpportunityProduct',
-                        title: this.removeOppProductTitleText
-                    }]
-            });
-        },
-        createLayout: function() {
-            var layout, details, multiCurrency, extendedPrice, adjustedPrice;
-            layout = this.layout || (this.layout = []);
-
-            if (layout.length > 0) {
-                return layout;
-            }
-
-            details = {
-                title: this.detailsText,
-                name: 'DetailsSection',
-                children: [
-                    {
-                        label: this.opportunityText,
-                        name: 'Opportunity.Description',
-                        property: 'Opportunity.Description'
-                    },
-                    {
-                        label: this.productText,
-                        name: 'Product.Name',
-                        property: 'Product.Name'
-                    },
-                    {
-                        label: this.productFamilyText,
-                        name: 'Product.Family',
-                        property: 'Product.Family'
-                    },
-                    {
-                        label: this.priceLevelText,
-                        name: 'Program',
-                        property: 'Program'
-                    },
-                    {
-                        label: App.hasMultiCurrency() ? this.basePriceText : this.priceText,
-                        name: 'Price',
-                        property: 'Price',
-                        renderer: (function(val) {
-                            var exhangeRate, convertedValue;
-                            if (App.hasMultiCurrency()) {
-                                exhangeRate = App.getBaseExchangeRate();
-                                convertedValue = val * exhangeRate.rate;
-                                return format.multiCurrency.call(null, convertedValue, exhangeRate.code);
-                            }
-
-                            return format.currency.call(null, val);
-                        }).bindDelegate(this)
-                    },
-                    {
-                        label: this.discountText,
-                        name: 'Discount',
-                        property: 'Discount',
-                        renderer: format.percent
-                    },
-                    {
-                        label: this.quantityText,
-                        name: 'Quantity',
-                        property: 'Quantity'
-                    }
-                ]
-            };
-
-            if (!App.hasMultiCurrency()) {
-
-                details.children.push({
-                    label: this.adjustedPriceText,
-                    name: 'CalculatedPrice',
-                    property: 'CalculatedPrice',
-                    renderer: format.currency
-                });
-                details.children.push({
-                    label: this.extendedPriceText,
-                    name: 'ExtendedPrice',
-                    property: 'ExtendedPrice',
-                    renderer: format.currency
-                });
-            }
-            extendedPrice = {
-                title: this.extendedPriceSectionText,
-                name: 'OpportunityProductExtendedPriceDetail',
-                children: [
-                    {
-                        label: this.baseExtendedPriceText,
-                        name: 'ExtendedPrice',
-                        property: 'ExtendedPrice',
-                        renderer: (function(val) {
-                            var exchangeRate, convertedValue;
-                            if (App.hasMultiCurrency()) {
-                                exchangeRate = App.getBaseExchangeRate();
-                                convertedValue = val * exchangeRate.rate;
-                                return format.multiCurrency.call(null, convertedValue, exchangeRate.code);
-                            }
-
-                            return format.currency.call(null, val);
-                        }).bindDelegate(this)
-                    }
-                ]
-            };
-            adjustedPrice = {
-                title: this.adjustedPriceSectionText,
-                name: 'OpportunityProductAdjustedPriceDetail',
-                children: [
-                    {
-                        label: this.baseAdjustedPriceText,
-                        name: 'CalculatedPrice',
-                        property: 'CalculatedPrice',
-                        renderer: (function(val) {
-                            var exhangeRate, convertedValue;
-                            if (App.hasMultiCurrency()) {
-                                exhangeRate = App.getBaseExchangeRate();
-                                convertedValue = val * exhangeRate.rate;
-                                return format.multiCurrency.call(null, convertedValue, exhangeRate.code);
-                            }
-
-                            return format.currency.call(null, val);
-                        }).bindDelegate(this)
-                    },
-                    {
-                        label: this.myAdjustedPriceText,
-                        name: 'CalculatedPriceMine',
-                        property: 'CalculatedPrice',
-                        renderer: (function(val) {
-                            var exhangeRate, convertedValue;
-                            exhangeRate = App.getMyExchangeRate();
-                            convertedValue = val * exhangeRate.rate;
-                            return format.multiCurrency.call(null, convertedValue, exhangeRate.code);
-                        }).bindDelegate(this)
-                    }
-                ]
-            };
-
-            layout = this.layout || (this.layout = []);
-
-            if (layout.length > 0) {
-                return layout;
-            }
-
-            layout.push(details);
-
-            if (App.hasMultiCurrency()) {
-                layout.push(adjustedPrice);
-                layout.push(extendedPrice);
-            }
-            return layout;
-        }
+    connect.publish('/app/refresh', [{
+      resourceKind: this.resourceKind,
+    }]);
+    ReUI.back();
+  },
+  createToolLayout: function createToolLayout() {
+    return this.tools || (this.tools = {
+      tbar: [{
+        id: 'edit',
+        cls: 'fa fa-pencil fa-lg',
+        action: 'navigateToEditView',
+        security: App.getViewSecurity(this.editView, 'update'),
+      }, {
+        id: 'removeOpportunityProduct',
+        cls: 'fa fa-times-circle fa-lg',
+        action: 'removeOpportunityProduct',
+        title: this.removeOppProductTitleText,
+      }],
     });
+  },
+  createLayout: function createLayout() {
+    let layout = this.layout || (this.layout = []);
+
+    if (layout.length > 0) {
+      return layout;
+    }
+
+    const details = {
+      title: this.detailsText,
+      name: 'DetailsSection',
+      children: [{
+        label: this.opportunityText,
+        name: 'Opportunity.Description',
+        property: 'Opportunity.Description',
+      }, {
+        label: this.productText,
+        name: 'Product.Name',
+        property: 'Product.Name',
+      }, {
+        label: this.productFamilyText,
+        name: 'Product.Family',
+        property: 'Product.Family',
+      }, {
+        label: this.priceLevelText,
+        name: 'Program',
+        property: 'Program',
+      }, {
+        label: App.hasMultiCurrency() ? this.basePriceText : this.priceText,
+        name: 'Price',
+        property: 'Price',
+        renderer: (function renderPrice(val) {
+          if (App.hasMultiCurrency()) {
+            const exhangeRate = App.getBaseExchangeRate();
+            const convertedValue = val * exhangeRate.rate;
+            return format.multiCurrency.call(null, convertedValue, exhangeRate.code);
+          }
+
+          return format.currency.call(null, val);
+        }).bindDelegate(this),
+      }, {
+        label: this.discountText,
+        name: 'Discount',
+        property: 'Discount',
+        renderer: format.percent,
+      }, {
+        label: this.quantityText,
+        name: 'Quantity',
+        property: 'Quantity',
+      }],
+    };
+
+    if (!App.hasMultiCurrency()) {
+      details.children.push({
+        label: this.adjustedPriceText,
+        name: 'CalculatedPrice',
+        property: 'CalculatedPrice',
+        renderer: format.currency,
+      });
+      details.children.push({
+        label: this.extendedPriceText,
+        name: 'ExtendedPrice',
+        property: 'ExtendedPrice',
+        renderer: format.currency,
+      });
+    }
+
+    const extendedPrice = {
+      title: this.extendedPriceSectionText,
+      name: 'OpportunityProductExtendedPriceDetail',
+      children: [{
+        label: this.baseExtendedPriceText,
+        name: 'ExtendedPrice',
+        property: 'ExtendedPrice',
+        renderer: (function renderExtendedPrice(val) {
+          if (App.hasMultiCurrency()) {
+            const exchangeRate = App.getBaseExchangeRate();
+            const convertedValue = val * exchangeRate.rate;
+            return format.multiCurrency.call(null, convertedValue, exchangeRate.code);
+          }
+
+          return format.currency.call(null, val);
+        }).bindDelegate(this),
+      }],
+    };
+
+    const adjustedPrice = {
+      title: this.adjustedPriceSectionText,
+      name: 'OpportunityProductAdjustedPriceDetail',
+      children: [{
+        label: this.baseAdjustedPriceText,
+        name: 'CalculatedPrice',
+        property: 'CalculatedPrice',
+        renderer: (function renderCalculatedPrice(val) {
+          if (App.hasMultiCurrency()) {
+            const exhangeRate = App.getBaseExchangeRate();
+            const convertedValue = val * exhangeRate.rate;
+            return format.multiCurrency.call(null, convertedValue, exhangeRate.code);
+          }
+
+          return format.currency.call(null, val);
+        }).bindDelegate(this),
+      }, {
+        label: this.myAdjustedPriceText,
+        name: 'CalculatedPriceMine',
+        property: 'CalculatedPrice',
+        renderer: (function renderMyCalculatedPrice(val) {
+          const exhangeRate = App.getMyExchangeRate();
+          const convertedValue = val * exhangeRate.rate;
+          return format.multiCurrency.call(null, convertedValue, exhangeRate.code);
+        }).bindDelegate(this),
+      }],
+    };
+
+    layout = this.layout || (this.layout = []);
+
+    if (layout.length > 0) {
+      return layout;
+    }
+
+    layout.push(details);
+
+    if (App.hasMultiCurrency()) {
+      layout.push(adjustedPrice);
+      layout.push(extendedPrice);
+    }
+    return layout;
+  },
 });
 
+lang.setObject('Mobile.SalesLogix.Views.OpportunityProduct.Detail', __class);
+export default __class;

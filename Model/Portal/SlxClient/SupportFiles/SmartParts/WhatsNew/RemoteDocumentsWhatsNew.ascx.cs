@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -7,13 +8,12 @@ using Sage.Entity.Interfaces;
 using Sage.Platform.Application;
 using Sage.Platform.Application.Services;
 using Sage.Platform.Application.UI;
+using Sage.Platform.Application.UI.Web;
+using Sage.Platform.Configuration;
 using Sage.Platform.WebPortal.SmartParts;
+using Sage.Platform.WebPortal.Workspaces.Tab;
 using Sage.SalesLogix.LegacyBridge;
 using Sage.SalesLogix.Web.Controls;
-using System.Text;
-using Sage.Platform.Configuration;
-using Sage.Platform.Application.UI.Web;
-using Sage.Platform.WebPortal.Workspaces.Tab;
 
 public partial class RemoteDocumentsWhatsNew : UserControl, ISmartPartInfoProvider
 {
@@ -56,9 +56,8 @@ public partial class RemoteDocumentsWhatsNew : UserControl, ISmartPartInfoProvid
             {
                 try
                 {
-                    String searchType;
                     searchDate = DateTime.Parse(userOpts.GetCommonOption("LastWebUpdate", "Web", false, searchDate.ToString(), "LastWebUpdate"));
-                    searchType = userOpts.GetCommonOption("WhatsNewSearchType", "Web", false, WhatsNewSearchOptions.SearchTypeEnum.New.ToString(), "WhatsNewSearchType");
+                    var searchType = userOpts.GetCommonOption("WhatsNewSearchType", "Web", false, WhatsNewSearchOptions.SearchTypeEnum.New.ToString(), "WhatsNewSearchType");
                     if (Enum.IsDefined(typeof(WhatsNewSearchOptions.SearchTypeEnum), searchType))
                         searchTypeEnum = (WhatsNewSearchOptions.SearchTypeEnum)Enum.Parse(typeof(WhatsNewSearchOptions.SearchTypeEnum), searchType, true);
                 }
@@ -107,14 +106,13 @@ public partial class RemoteDocumentsWhatsNew : UserControl, ISmartPartInfoProvid
         vJS.AppendLine("    dojo.publish(\"Sage/Events/WhatsNewTabChange\", \"RemoteDocumentsWhatsNew\");");
         vJS.AppendLine("});");
 
-        ScriptManager.RegisterClientScriptBlock(Page, GetType(), this.ClientID, vJS.ToString(), true);
-
+        ScriptManager.RegisterClientScriptBlock(Page, GetType(), ClientID, vJS.ToString(), true);
     }
 
     private string GetActiveTab()
     {
         ConfigurationManager manager = ApplicationContext.Current.Services.Get<ConfigurationManager>(true);
-        ApplicationPage page = Page as ApplicationPage;
+        ApplicationPage page = (ApplicationPage) Page;
         string pageAlias = Page.GetType().FullName + (String.IsNullOrEmpty(page.ModeId) ? page.ModeId : String.Empty);
 
         TabWorkspaceState tabWorkSpace = manager.GetInstance<TabWorkspaceState>(pageAlias, true);
@@ -124,7 +122,8 @@ public partial class RemoteDocumentsWhatsNew : UserControl, ISmartPartInfoProvid
         }
         return string.Empty;
     }
-        /// <summary>
+
+    /// <summary>
     /// Formats the URL.
     /// </summary>
     /// <param name="id">The id.</param>
@@ -134,12 +133,10 @@ public partial class RemoteDocumentsWhatsNew : UserControl, ISmartPartInfoProvid
     /// <returns></returns>
     public string FormatUrl(object id, object fileName, object dataType, object description)
     {
-        string url =
-            string.Format(
-                "{0}/SmartParts/Attachment/ViewAttachment.aspx?fileId={1}&Filename={2}&DataType={3}&Description={4}",
-                Page.Request.ApplicationPath, id, HttpUtility.UrlEncodeUnicode(fileName.ToString()),
-                dataType, HttpUtility.UrlEncodeUnicode(description.ToString()));
-        return url;
+        return string.Format(
+            "{0}/SmartParts/Attachment/ViewAttachment.aspx?fileId={1}&Filename={2}&DataType={3}&Description={4}",
+            Page.Request.ApplicationPath, id, HttpUtility.UrlEncode(fileName.ToString()),
+            dataType, HttpUtility.UrlEncode(description.ToString()));
     }
 
     #region ISmartPartInfoProvider Members
@@ -152,10 +149,8 @@ public partial class RemoteDocumentsWhatsNew : UserControl, ISmartPartInfoProvid
     public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
     {
         ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-        Label lbl = new Label();
-        lbl.Text = GetLocalResourceObject("NewDocuments_Title").ToString();
+        tinfo.Title = GetLocalResourceObject("NewDocuments_Title").ToString();
         tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Library_3D_32x32.gif");
-        tinfo.LeftTools.Add(lbl);
         return tinfo;
     }
 

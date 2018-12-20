@@ -1,0 +1,1 @@
+define("Sage/UI/Controls/GridParts/Columns/nls/en/SlxEdit", { editText: 'Edit' });

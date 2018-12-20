@@ -133,46 +133,46 @@
     <value>You are about to permanently delete this Account. Doing so will also remove all associated contacts, opportunities and history.</value>
   </data>
   <data name="AccountName.Caption" xml:space="preserve">
-    <value>Account:</value>
+    <value>Account</value>
   </data>
   <data name="Division.Caption" xml:space="preserve">
-    <value>Division:</value>
+    <value>Division</value>
   </data>
   <data name="BusinessDescription.Caption" xml:space="preserve">
-    <value>Desc. of Business:</value>
+    <value>Desc. of Business</value>
   </data>
   <data name="Address.Caption" xml:space="preserve">
-    <value>Address:</value>
+    <value>Address</value>
   </data>
   <data name="Owner.Caption" xml:space="preserve">
-    <value>Owner:</value>
+    <value>Owner</value>
   </data>
   <data name="MainPhone.Caption" xml:space="preserve">
-    <value>Main:</value>
+    <value>Main Phone</value>
   </data>
   <data name="Fax.Caption" xml:space="preserve">
-    <value>Fax:</value>
+    <value>Fax</value>
   </data>
   <data name="TollFree.Caption" xml:space="preserve">
-    <value>Toll Free:</value>
+    <value>Toll Free</value>
   </data>
   <data name="pklType.Caption" xml:space="preserve">
-    <value>Type:</value>
+    <value>Type</value>
   </data>
   <data name="pklSubType.Caption" xml:space="preserve">
-    <value>Sub Type:</value>
+    <value>Sub Type</value>
   </data>
   <data name="Status.Caption" xml:space="preserve">
-    <value>Status:</value>
+    <value>Status</value>
   </data>
   <data name="Industry.Caption" xml:space="preserve">
-    <value>Industry:</value>
+    <value>Industry</value>
   </data>
   <data name="WebAddress.Caption" xml:space="preserve">
-    <value>Web URL:</value>
+    <value>Web URL</value>
   </data>
   <data name="AccManager.Caption" xml:space="preserve">
-    <value>Acc Manager:</value>
+    <value>Acc Manager</value>
   </data>
   <data name="cmdCopyAccount.Caption" xml:space="preserve">
     <value>Copy</value>
@@ -200,5 +200,56 @@
   </data>
   <data name="cmdReset.ToolTip" xml:space="preserve">
     <value>Reset</value>
+  </data>
+  <data name="txtErpCustomerID.Caption" xml:space="preserve">
+    <value>ERP Customer ID</value>
+  </data>
+  <data name="pklErpStatus.Caption" xml:space="preserve">
+    <value>ERP Status</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.AccountName.PropertyHeader" xml:space="preserve">
+    <value>AccountName (Account Name)</value>
+  </data>
+  <data name="lueParentAccount.Caption" xml:space="preserve">
+    <value>Parent Account</value>
+  </data>
+  <data name="lueParentAccount.ButtonToolTip" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Address.City.PropertyHeader" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Address.State.PropertyHeader" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.MainPhone.PropertyHeader" xml:space="preserve">
+    <value>Main Phone</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Type.PropertyHeader" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.SubType.PropertyHeader" xml:space="preserve">
+    <value>Sub-Type</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Status.PropertyHeader" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties..PropertyHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lueParentAccount.LookupProperties.AccountManager.UserInfo.UserName.PropertyHeader" xml:space="preserve">
+    <value>Account Manager</value>
+  </data>
+  <data name="lueParentAccount.LookupProperties.Owner.OwnerDescription.PropertyHeader" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="txtPropensityScore.Caption" xml:space="preserve">
+    <value>Purchase Likelihood Score</value>
+  </data>
+  <data name="btnAcctHierarchy.Caption" xml:space="preserve">
+    <value>View Hierarchy</value>
+  </data>
+  <data name="btnAcctHierarchy.ToolTip" xml:space="preserve">
+    <value>View Parent/Child Hierarchy</value>
   </data>
 </root>

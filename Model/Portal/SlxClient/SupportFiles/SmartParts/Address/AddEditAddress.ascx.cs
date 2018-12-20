@@ -1,14 +1,15 @@
 using System;
-using System.Web.UI;
 using System.Collections.Generic;
-using Sage.Platform.WebPortal.SmartParts;
+using System.Web.UI;
 using Sage.Entity.Interfaces;
-using Sage.Platform.Orm.Interfaces;
+using Sage.Platform.Application.UI;
 using Sage.Platform.ComponentModel;
 using Sage.Platform.EntityBinding;
-using Sage.Platform.Application.UI;
+using Sage.Platform.Orm.Interfaces;
 using Sage.Platform.WebPortal.Services;
+using Sage.Platform.WebPortal.SmartParts;
 using Sage.SalesLogix.Address;
+using Rules = Sage.SalesLogix.Contact.Rules;
 
 public partial class SmartParts_Address_AddEditAddress : EntityBoundSmartPartInfoProvider
 {
@@ -55,6 +56,15 @@ public partial class SmartParts_Address_AddEditAddress : EntityBoundSmartPartInf
 
         BindingSource.AddBindingProvider(txtAddress3 as IEntityBindingProvider);
         BindingSource.Bindings.Add(new PropertyBinding("Address3", txtAddress3, "Text", "", ""));
+		
+		BindingSource.AddBindingProvider(txtAddress4 as IEntityBindingProvider);
+        BindingSource.Bindings.Add(new PropertyBinding("Address4", txtAddress4, "Text", "", ""));
+
+        BindingSource.AddBindingProvider(txtAddress5 as IEntityBindingProvider);
+        BindingSource.Bindings.Add(new PropertyBinding("Address5", txtAddress5, "Text", "", ""));
+
+        BindingSource.AddBindingProvider(txtAddress6 as IEntityBindingProvider);
+        BindingSource.Bindings.Add(new PropertyBinding("Address6", txtAddress6, "Text", "", ""));
 
         BindingSource.AddBindingProvider(pklCity as IEntityBindingProvider);
         BindingSource.Bindings.Add(new PropertyBinding("City", pklCity, "PickListValue", "", ""));
@@ -64,7 +74,7 @@ public partial class SmartParts_Address_AddEditAddress : EntityBoundSmartPartInf
 
         BindingSource.AddBindingProvider(txtPostalCode as IEntityBindingProvider);
         BindingSource.Bindings.Add(new PropertyBinding("PostalCode", txtPostalCode, "Text", "", ""));
-        
+
         BindingSource.AddBindingProvider(txtCounty as IEntityBindingProvider);
         BindingSource.Bindings.Add(new PropertyBinding("County", txtCounty, "Text", "", ""));
 
@@ -97,7 +107,6 @@ public partial class SmartParts_Address_AddEditAddress : EntityBoundSmartPartInf
         btnSave.Click += btnSave_ClickAction;
         btnSave.Click += DialogService.CloseEventHappened;
         btnCancel.Click += DialogService.CloseEventHappened;
-
         base.OnWireEventHandlers();
     }
 
@@ -109,6 +118,7 @@ public partial class SmartParts_Address_AddEditAddress : EntityBoundSmartPartInf
         base.OnFormBound();
         _parentEntity = GetParentEntity() as IPersistentEntity;
         _parentEntityReference = _parentEntity as IComponentReference;
+
         ClientBindingMgr.RegisterDialogCancelButton(btnCancel);
     }
 
@@ -174,7 +184,6 @@ public partial class SmartParts_Address_AddEditAddress : EntityBoundSmartPartInf
     protected void btnSave_ClickAction(object sender, EventArgs e)
     {
         IPersistentEntity persistentEntity = BindingSource.Current as IPersistentEntity;
-
         _parentEntity = GetParentEntity() as IPersistentEntity;
         _parentEntityReference = _parentEntity as IComponentReference;
 
@@ -182,6 +191,11 @@ public partial class SmartParts_Address_AddEditAddress : EntityBoundSmartPartInf
         {
             bool hasContactMatches = false;
             IAddress address = (IAddress) BindingSource.Current;
+
+            if (_parentEntity != null)
+            {
+                address.EntityType = _parentEntity.GetType().Name;
+            }
             if (Mode.Value == "ADD")
                 persistentEntity.Save();
             if (Mode.Value == "UPDATE")
@@ -199,7 +213,7 @@ public partial class SmartParts_Address_AddEditAddress : EntityBoundSmartPartInf
                     UpdateAddressOptionManager addressOptions = new UpdateAddressOptionManager();
                     addressOptions.HasContactAddressChanges = hasContactMatches;
                     addressOptions.OldAddressValues = contact != null
-                                                          ? Sage.SalesLogix.Contact.Rules.getOriginalAddressValues(
+                                                          ? Rules.getOriginalAddressValues(
                                                               contact)
                                                           : Sage.SalesLogix.Account.Rules.getOriginalAddressValues(
                                                               account);
@@ -223,17 +237,26 @@ public partial class SmartParts_Address_AddEditAddress : EntityBoundSmartPartInf
 
     private void UpdateFlags()
     {
-        var thisaddress = BindingSource.Current as IAddress;
+        var thisaddress = (IAddress) BindingSource.Current;
         var pi = _parentEntityReference.GetType().GetProperty("Addresses");
         if (pi != null)
         {
-            foreach (var adr in (pi.GetValue(_parentEntityReference, null) as ICollection<IAddress>))
+            foreach (var adr in (ICollection<IAddress>) pi.GetValue(_parentEntityReference, null))
             {
                 if (adr != thisaddress)
                 {
-                    adr.IsMailing = Convert.ToBoolean(thisaddress.IsMailing) ? false : adr.IsMailing;
-                    adr.IsPrimary = Convert.ToBoolean(thisaddress.IsPrimary) ? false : adr.IsPrimary;
-                    adr.PrimaryAddress = Convert.ToBoolean(thisaddress.PrimaryAddress) ? false : adr.PrimaryAddress;
+                    if (thisaddress.IsMailing ?? false)
+                    {
+                        adr.IsMailing = false;
+                    }
+                    if (thisaddress.IsPrimary ?? false)
+                    {
+                        adr.IsPrimary = false;
+                    }
+                    if (thisaddress.PrimaryAddress ?? false)
+                    {
+                        adr.PrimaryAddress = false;
+                    }
                 }
             }
         }

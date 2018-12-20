@@ -230,16 +230,11 @@ public partial class SmartParts_AccWhatsNew_AccWhatsNew : UserControl, ISmartPar
     /// <returns></returns>
 	public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
 	{
-		ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
-
-		Label lbl = new Label();
-        lbl.Text = GetLocalResourceObject("Accounts_Caption").ToString();
-
-		tinfo.LeftTools.Add(lbl);
-		tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Companies_24x24.gif");
-
-		return tinfo;
-	}
+        ToolsSmartPartInfo tinfo = new ToolsSmartPartInfo();
+        tinfo.Title = GetLocalResourceObject("Accounts_Caption").ToString();
+        tinfo.ImagePath = Page.ResolveClientUrl("~/images/icons/Companies_24x24.gif");
+        return tinfo;
+    }
 
 	#endregion
 }

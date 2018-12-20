@@ -6,6 +6,11 @@
     color:          #aaa;
 }
 
+/* Internet Explorer 10+, Microsoft Edge Browser */
+_:-ms-lang(x), .timeline-ether-marker-bottom { 
+    height:         2.5em; 
+} 
+
 .timeline-ether-marker-bottom-emphasized {
     width:          5em; 
     height:         2em; 
@@ -170,4 +175,5 @@
     position:   relative;
     width:      100%;
     height:     100%;
+    overflow-y: scroll;
 }

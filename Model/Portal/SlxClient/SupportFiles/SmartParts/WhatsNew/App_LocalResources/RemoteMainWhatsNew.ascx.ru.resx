@@ -117,28 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="rdgSearchType_Updated.Caption" xml:space="preserve">
-    <value>Изменено</value>
-  </data>
-  <data name="lblDeleteTransactions.Caption" xml:space="preserve">
-    <value>Удалить транзакции до:</value>
+  <data name="btnDelete_Caption" xml:space="preserve">
+    <value>Удалить</value>
   </data>
   <data name="btnSearch_Caption" xml:space="preserve">
     <value>Поиск</value>
   </data>
-  <data name="rdgSearchType_Deleted.Caption" xml:space="preserve">
-    <value>Удалено</value>
-  </data>
-  <data name="btnDelete_Caption" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
   <data name="error_DeleteTransactions_InvalidDate" xml:space="preserve">
-    <value>Пожалуйста, укажите дату транзакции удаления, прежде чем продолжить.</value>
+    <value>Укажите дату транзакций удаления, прежде чем продолжить.</value>
+  </data>
+  <data name="lblDeleteTransactions.Caption" xml:space="preserve">
+    <value>Удалить транзакции до:</value>
   </data>
   <data name="lblDisplayTransactions.Caption" xml:space="preserve">
     <value>Отображать транзакции через:</value>
   </data>
+  <data name="rdgSearchType_Deleted.Caption" xml:space="preserve">
+    <value>Удалено</value>
+  </data>
   <data name="rdgSearchType_New.Caption" xml:space="preserve">
-    <value>Создать</value>
+    <value>Новый</value>
+  </data>
+  <data name="rdgSearchType_Updated.Caption" xml:space="preserve">
+    <value>Обновлено</value>
   </data>
 </root>

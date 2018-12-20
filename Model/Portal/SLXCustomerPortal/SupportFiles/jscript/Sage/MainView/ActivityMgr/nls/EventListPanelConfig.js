@@ -1,17 +1,15 @@
-﻿define([
-        'Sage/LanguageList',
-        'dojo/_base/lang'
-],
-function (LanguageList, lang) {
-    var nls = {
-        root: {
-           colNameType:'Type',
-           colNameStartDate:'Start Date',
-           colNameEndDate:'End Date',
-           colNameDescription:'Description',
-           colNameUser:'User',
-           colNameLocation: 'Location'    
-        }
-    };
-    return lang.mixin(LanguageList, nls);
+define("Sage/MainView/ActivityMgr/nls/EventListPanelConfig", {
+    root: {
+       colNameType:'Type',
+       colNameStartDate:'Start Date',
+       colNameEndDate:'End Date',
+       colNameDescription:'Description',
+       colNameUser:'User',
+       colNameLocation: 'Location'
+    },
+    "de": true,
+    "en": true,
+    "fr": true,
+    "it": true,
+    "ru": true
 });

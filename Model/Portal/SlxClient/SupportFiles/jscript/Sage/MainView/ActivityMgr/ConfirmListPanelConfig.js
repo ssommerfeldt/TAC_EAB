@@ -1,28 +1,33 @@
 /*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+define("Sage/MainView/ActivityMgr/ConfirmListPanelConfig", [
     'Sage/MainView/ActivityMgr/BaseListPanelConfig',
     'Sage/Utility',
     'Sage/Utility/Activity',
     'Sage/UI/SummaryFormatterScope',
     'Sage/Data/BaseSDataStore',
-    'Sage/UI/Columns/DateTime',
+    'Sage/UI/Controls/GridParts/Columns/DateTime',
+    'Sage/UI/Controls/GridParts/Columns/ActivityType',
     'dojo/_base/declare',
-    'dojo/i18n!./nls/ConfirmListPanelConfig'
+    'dojo/_base/connect',
+    'dojo/string',
+    'dojo/i18n!./nls/ConfirmListPanelConfig',
+    'dojo/i18n!./templates/nls/ConfirmationListSummary',        // Bare import for template NLS dependency.
+    'dojo/i18n!./templates/nls/ConfirmationDetailSummary',      // Bare import for template NLS dependency.
 ],
-
 function (
-    BaseListPanelConfig,
-    SageUtility,
-    UtilityActivity,
-    SummaryFormatterScope,
-    BaseSDataStore,
-    ColumnsDateTime,
+    baseListPanelConfig,
+    sageUtility,
+    utilityActivity,
+    summaryFormatterScope,
+    baseSDataStore,
+    columnsDateTime,
+    ActivityType,
     declare,
+    connect,
+    dString,
     nlsResources
 ) {
-
-    var confirmListPanelConfig = declare('Sage.MainView.ActivityMgr.ConfirmListPanelConfig', [BaseListPanelConfig], {
-
+    var confirmListPanelConfig = declare('Sage.MainView.ActivityMgr.ConfirmListPanelConfig', [baseListPanelConfig], {
         constructor: function () {
             this._nlsResources = nlsResources;
             this._listId = 'confirmations';
@@ -37,17 +42,18 @@ function (
             this._where = this._getWhere();
             this._store = this._getStore();
             this.list = this._getListConfig();
+            this.detail = this._getDetailConfig();
             this.summary = this._getSummaryConfig();
             this.toolBar = this._getToolBars();
-            dojo.subscribe('/entity/userNotification/change', this._onListRefresh);
-            dojo.subscribe('/entity/userNotification/delete', this._onListRefresh);
+            connect.subscribe('/entity/userNotification/change', this._onListRefresh);
+            connect.subscribe('/entity/userNotification/delete', this._onListRefresh);
         },
         _onListRefresh: function (event) {
             var activityService = Sage.Services.getService('ActivityService');
             activityService.refreshList('confirmations');
         },
         _getSelect: function () {
-            var select = [
+            return [
                 '$key',
                 'Type',
                 'ActivityId',
@@ -59,97 +65,95 @@ function (
                 'FromUser/UserInfo/UserName',
                 'ToUser/UserInfo/UserName'
             ];
-            return select;
         },
         _getInclude: function () {
-            var includes = ["UserInfo"];
-            return includes;
+            return ["UserInfo"];
         },
         _getSort: function () {
-            var sort = [
-               { attribute: 'Activity.StartDate', descending: true }
-            ];
-            return sort;
+            return [{ attribute: 'Activity.StartDate', descending: true }];
         },
         _getWhere: function () {
-            var where = (this._currentUserId) ? dojo.string.substitute('ToUser.Id eq "${0}" ', [this._currentUserId]) : '';
-            //var where = (this._currentUserId) ? dojo.string.substitute('(ToUser.UserAccessToOtherCal.OthersAccessToUserCal.Id eq "${0}")', [this._currentUserId]) : '';
-            return where;
+            return (this._currentUserId) ? dString.substitute('ToUser.Id eq "${0}" ', [this._currentUserId]) : '';
         },
-        _getStructure: function () {
-
+        _getStructure: function() {
             var colNameType = this._nlsResources.colNameType || 'Activity Type';
             var colNameStatus = this._nlsResources.colNameNotification || 'Notification';
             var colNameStartDate = this._nlsResources.colNameStartDate || 'Start Date';
-            //var colNameDuration = this._nlsResources.colNameDuration || 'Duration';
             var colNameRegarding = this._nlsResources.colNameRegarding || 'Regarding';
             var colNameFromUser = this._nlsResources.colNameFromUser || 'From';
             var colNameToUser = this._nlsResources.colNameToUser || 'To User';
 
-            var ActivityConfirmCell = declare("Sage.MainView.ActivityMgr.ConfirmListPanelConfig.ActivityConfirmCell", dojox.grid.cells.Cell, {
-                format: function (inRowIndex, inItem) {
-                    //var type = this.get(inRowIndex, inItem);
-                    var key = SageUtility.getValue(inItem, "$key");
-                    var type = SageUtility.getValue(inItem, "Type");
-                    var activityId = SageUtility.getValue(inItem, "ActivityId");
-                    var toUserId = SageUtility.getValue(inItem, "ToUserId");
-                    var statusName = UtilityActivity.getConfirmStatusName(type);
+            var activityConfirmCell = declare("Sage.MainView.ActivityMgr.ConfirmListPanelConfig.ActivityConfirmCell", null, {
+                format: function(inRowIndex, inItem) {
+                    var key = sageUtility.getValue(inItem, "$key");
+                    var type = sageUtility.getValue(inItem, "Type");
+                    var statusName = utilityActivity.getConfirmStatusName(type);
                     var html = "<a href='javascript:Sage.Link.editConfirmation(\"" + key + "\")' >" + statusName + "</a>";
                     return html;
                 }
             });
 
-            var ActivityTypeCell = declare("Sage.MainView.ActivityMgr.ConfirmListPanelConfig.ActivityTypeCell", dojox.grid.cells.Cell, {
-                format: function (inRowIndex, inItem) {
-                    var type = this.get(inRowIndex, inItem);
-                    //var key = SageUtility.getValue(inItem, "$key");
-                    var html = "<div><div class='Global_Images icon16x16 " + UtilityActivity.getActivityImageClass(type, 'small') + "'></div>&nbsp" + UtilityActivity.getActivityTypeName(type) + "</div>";
-
-                    return html;
+            return [
+                {
+                    field: 'Type',
+                    label: colNameStatus,
+                    type: activityConfirmCell,
+                    width: 90
+                },
+                {
+                    field: 'Activity.Type',
+                    label: colNameType,
+                    type: ActivityType,
+                    width: 90
+                },
+                {
+                    field: 'Activity.StartDate',
+                    label: colNameStartDate,
+                    type: columnsDateTime,
+                    timelessField: 'Timeless',
+                    width: 150
+                },
+                {
+                    field: 'Activity.Description',
+                    label: colNameRegarding,
+                    width: 300
+                },
+                {
+                    field: 'FromUser.UserInfo.UserName',
+                    label: colNameFromUser,
+                    width: 100
+                },
+                {
+                    field: 'ToUser.UserInfo.UserName',
+                    label: colNameToUser,
+                    width: 100
                 }
-            });
-
-            var structure = [
-                { field: 'Type', name: colNameStatus, type: ActivityConfirmCell, width: '90px' },
-                { field: 'Activity.Type', name: colNameType, type: ActivityTypeCell, width: '90px' },
-                { field: 'Activity.StartDate', name: colNameStartDate, type: ColumnsDateTime, timelessField: 'Timeless', width: '150px' },
-                { field: 'Activity.Description', name: colNameRegarding, width: '300px' },
-                { field: 'FromUser.UserInfo.UserName', name: colNameFromUser, width: '100px' },
-                { field: 'ToUser.UserInfo.UserName', name: colNameToUser, width: '100px' }
             ];
-
-            return structure;
         },
-
         _getDetailConfig: function () {
             var formatScope = this._getFormatterScope();
-            var detailConfig = {
+            return {
                 resourceKind: this._resourceKind,
                 requestConfiguration: {
                     mashupName: 'ActivityManager',
                     queryName: 'ConfirmationDetailSummary_query'
                 },
-                templateLocation: 'MainView/ActivityMgr/Templates/ConfirmationDetailSummary.html',
+                templateLocation: 'MainView/ActivityMgr/templates/ConfirmationDetailSummary.html',
                 postProcessCallBack: false
             };
-            return detailConfig;
         },
         _getFormatterScope: function () {
-            var formatScope = new SummaryFormatterScope({
+            return new summaryFormatterScope({
                 requestConfiguration: {
                     mashupName: 'ActivityManager',
                     queryName: 'ConfirmationListSummary_query'
                 },
-                templateLocation: 'MainView/ActivityMgr/Templates/ConfirmationListSummary.html'
+                templateLocation: 'MainView/ActivityMgr/templates/ConfirmationListSummary.html'
             });
-            return formatScope;
         },
         _getToolBars: function () {
-            var toolBars = { items: [] };
-            return toolBars;
+            return { items: [] };
         }
-
     });
-
     return confirmListPanelConfig;
 });

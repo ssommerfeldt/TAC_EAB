@@ -1,0 +1,38 @@
+﻿{
+    "widgetId": "infor.crm.opportunityList",
+    "type": "inline",
+    "name": "CRM Opportunities",
+    "version": "4.0.0.5",
+    "category": "application",
+    "applicationLogicalId": "lid://infor.crm",
+    "requiresConfig": true,
+    "settings": [
+     {
+        "name": "limitCount",
+        "labelId": "limitCount",
+        "type": "string",
+        "defaultValue": "10"
+      },
+	    {
+        "name": "applicationLogicalId",
+        "labelId": "Application Logical Id"
+      }
+	  ],
+    "localization": {
+      "en-US": {
+        "widgetTitle": "CRM Opportunities",
+        "widgetDescription": "Displays a group list of opportunities and the quotes associated",
+        "errorOccured": "Error occurred",
+        "viewGroup": "View Group",
+        "searchPlaceholder": "Search Opportunities",
+        "backToOpportunities": "Back to Opportunities",
+        "description": "Description",
+        "estimatedClose": "Est. Close",
+        "quote": "Quote ",
+        "quotesCount": "Quotes",
+        "settingTitle": "Title",
+        "settingLimit": "Limit",
+        "settingCrmLogicalId": "CRM Logical ID"
+      }
+    }
+}

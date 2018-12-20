@@ -1,11 +1,12 @@
-﻿/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
-define([
+/*globals Sage, dojo, dojox, dijit, Simplate, window, Sys, define */
+define("Sage/MainView/JobMgr/SDataDetailViewDataManager", [
     'Sage/Data/SDataServiceRegistry',
     'Sage/Data/SDataStore',
     'dojo/_base/declare',
-    'dojo/_base/lang'
+    'dojo/_base/lang',
+    'Sage/Utility/nls/Jobs'
 ],
-function (sDataServiceRegistry, sDataStore, declare, lang) {
+function (sDataServiceRegistry, sDataStore, declare, lang, Jobs) {
     var sDataDetailRequestQueue = declare('Sage.MainView.JobMgr.SDataDetailRequestQueue', null, {
         select: [],
         resourceKind: '',
@@ -55,6 +56,12 @@ function (sDataServiceRegistry, sDataStore, declare, lang) {
         },
         requestFailed: function (a, b, c) {
             console.log('Request failed %o %o %o', a, b, c);
+            for (var cid in a.requestHash) {
+                var tryThisObject = a.requestHash[cid];
+                if (tryThisObject && tryThisObject.contentNode) {
+                    tryThisObject.contentNode.innerHTML = Jobs.getRequestMessageFromStatus(a.status);
+                }
+            }
         }
     });
     var sDataSummaryVewDataManager = declare('Sage.MainView.JobMgr.SDataDetailViewDataManager', null, {

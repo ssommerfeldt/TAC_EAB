@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d544334c-3b5e-48f7-ad29-99731d7ce475" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms">
+<QuickForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="d544334c-3b5e-48f7-ad29-99731d7ce475" DefinitionType="Sage.Platform.QuickForms.QuickFormMainDetailViewDefinition, Sage.Platform.QuickForms" lastModifiedUtc="2017-04-25T15:26:57.1928219Z">
   <ActiveControl />
   <ImagePath />
   <LoadActions>
@@ -35,7 +35,7 @@ if (integration != null)
         {
             clientContextService.CurrentContext.Add("IntegrationAuthType", integration.AuthorizationType);
         }
-		if (clientContextService.CurrentContext.ContainsKey("IntegrationLinkType"))
+        if (clientContextService.CurrentContext.ContainsKey("IntegrationLinkType"))
         {
             clientContextService.CurrentContext["IntegrationLinkType"] = integration.LinkType;
         }
@@ -107,13 +107,13 @@ if (integration != null)
             </DialogSpecs>
             <AppliedSecurity>Entities/IntegrationLink/Edit</AppliedSecurity>
             <HideCondition>function () {
-	var clientContextService = Sage.Services.getService('ClientContextService');
-	if (clientContextService != null) {
-		if (clientContextService.containsKey('IntegrationAuthType') &amp;&amp; clientContextService.containsKey('IntegrationLinkType')) {
-	    	return clientContextService.getValue('IntegrationAuthType') !== 'Basic' || clientContextService.getValue('IntegrationLinkType') === 'Admin';
-		}
-	}
-	return false;
+    var clientContextService = Sage.Services.getService('ClientContextService');
+    if (clientContextService != null) {
+        if (clientContextService.containsKey('IntegrationAuthType') &amp;&amp; clientContextService.containsKey('IntegrationLinkType')) {
+            return clientContextService.getValue('IntegrationAuthType') !== 'Basic' || clientContextService.getValue('IntegrationLinkType') === 'Admin';
+        }
+    }
+    return false;
 }</HideCondition>
             <Width>6</Width>
           </QFSDataEditCol>
@@ -344,38 +344,6 @@ if (integration != null)
           <DialogActionResult>NoResult</DialogActionResult>
           <PerformsUpdate>False</PerformsUpdate>
           <AppliedSecurity>ENTITIES/AUTHENTICATIONPROVIDER/ADD</AppliedSecurity>
-          <RefreshData>False</RefreshData>
-        </OnClickAction>
-      </QFButton>
-    </Control>
-    <Control typeName="Sage.Platform.QuickForms.Controls.QFButton, Sage.Platform.QuickForms">
-      <QFButton>
-        <Column>0</Column>
-        <Row>0</Row>
-        <HotKey>0</HotKey>
-        <TabIndex>0</TabIndex>
-        <ControlId>btnSyncNow</ControlId>
-        <DataBindings />
-        <ControlLabelPlacement>none</ControlLabelPlacement>
-        <ExtendedProperties />
-        <CaptionAlignment>left</CaptionAlignment>
-        <StyleScheme />
-        <ButtonType>Icon</ButtonType>
-        <Image>[Localization!Global_Images:sync_all_16x16]</Image>
-        <OnClientClick />
-        <OnClickAction>
-          <ResourceKey>btnSyncNow</ResourceKey>
-          <Action typeName="Sage.Platform.QuickForms.ActionItems.CSharpSnippetActionItem, Sage.Platform.QuickForms">
-            <CSharpSnippetActionItem>
-              <MethodName>btnSyncNow_ClickAction</MethodName>
-              <CSharpCodeSnippet>Sage.SalesLogix.AppIdMapping.Rules.ExecuteSyncAll(null);</CSharpCodeSnippet>
-            </CSharpSnippetActionItem>
-          </Action>
-          <IsDialogCloseAction>False</IsDialogCloseAction>
-          <RunOnEveryRePaint>False</RunOnEveryRePaint>
-          <DialogActionResult>NoResult</DialogActionResult>
-          <PerformsUpdate>False</PerformsUpdate>
-          <AppliedSecurity />
           <RefreshData>False</RefreshData>
         </OnClickAction>
       </QFButton>

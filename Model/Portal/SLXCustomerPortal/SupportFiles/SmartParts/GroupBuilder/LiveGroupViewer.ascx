@@ -60,6 +60,7 @@
                     contractName: 'system',
                     port: window.location.port && window.location.port != 80 ? window.location.port : false,
                     json: true,
+                    compact: true,
                     protocol: /https/i.test(window.location.protocol) ? 'https' : false,
                     convertCustomEntityProperty: function(ns, propertyName, value) {
                         if (propertyName === 'layout')

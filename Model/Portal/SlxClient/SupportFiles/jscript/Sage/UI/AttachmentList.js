@@ -1,11 +1,10 @@
-﻿/*globals Sage, dojo, define, window  */
-define([
+/*globals Sage, dojo, define, window  */
+define("Sage/UI/AttachmentList", [
     'dijit/_Widget',
     'Sage/UI/EditableGrid',
     'Sage/Data/SDataServiceRegistry',
     'dojo/string',
-    'Sage/UI/Columns/DateTime',
-    'Sage/UI/Columns/SlxLink',
+    'Sage/UI/Controls/GridParts/Columns/DateTime',
     'Sage/Utility',
     'Sage/Utility/File',
     'Sage/Utility/File/Attachment',
@@ -14,21 +13,25 @@ define([
     'Sage/Utility/File/FallbackFilePicker',
     'Sage/Utility/File/AddURLAttachment',
     'Sage/Utility/File/GoogleDocPicker',
-    'Sage/UI/SLXPreviewGrid',
     'Sage/UI/SLXPreviewGrid/Filter/DateRange',
     'Sage/UI/SLXPreviewGrid/Filter/Text',
     'dojo/_base/declare',
     'dojo/dom-construct',
     'dojo/_base/lang',
     'dojo/_base/connect',
-    'dojo/i18n!./nls/AttachmentList'
+    'dojo/i18n!./nls/AttachmentList',
+    'Sage/Utility',
+    'Sage/Utility/Workspace',
+    'Sage/UI/GridView',
+    'dojo/string',
+    'dojo/store/Memory',
+    'Sage/Store/SData'
 ],
 function (_Widget,
     EditableGrid,
     SDataServiceRegistry,
     dString,
     colDateTime,
-    colLink,
     utility,
     fileUtility,
     attachmentUtility,
@@ -37,14 +40,20 @@ function (_Widget,
     FallbackFilePicker,
     AddURLAttachment,
     GoogleDocPicker,
-    SlxPreviewGrid,
     dateRangeFilter,
     textFilter,
     declare,
     domConstruct,
     lang,
     connect,
-    attachmentListStrings) {
+    attachmentListStrings,
+    Utility,
+    workspaceUtil,
+    GridView,
+    string,
+    Memory,
+    SDataObjectStore
+    ) {
     var attachmentList = declare('Sage.UI.AttachmentList', [_Widget], {
         placeHolder: '',
         conditionFmt: '',
@@ -56,11 +65,14 @@ function (_Widget,
         _attachmentEditor: false,
         _newAttachmentsCache: [],
         subscriptions: [],
+        _grid: null,
+        _store: {},
         constructor: function () {
             lang.mixin(this, attachmentListStrings);
             this.subscriptions = [];
         },
         startup: function (callBack) {
+            this._newAttachmentsCache = [];
             this._checkDbType(callBack);
         },
         _checkDbType: function (callBack) {
@@ -88,21 +100,22 @@ function (_Widget,
                     field: '$key',
                     editable: false,
                     hidden: true,
+                    unhidable: true,
                     id: 'id',
-                    formatter: function (value, rowIdx, cel) {
-                        var insertId = [cel.grid.id, '-row', rowIdx].join('');
-                        var id = (utility.getModeId() === 'insert') ? insertId : value;
-                        var anchor = ['<div id=', id, ' >', id, '</ div>'].join('');
-                        return anchor;
+                    formatter: function (value, rowIdx) {
+                        return ['<div id=', value, ' >', value, '</ div>'].join('');
                     }
                 },
                 {
                     field: 'description',
-                    name: attachmentListStrings.attachmentText,
-                    format: function (rowIdx, rowItem) {
+                    label: attachmentListStrings.attachmentText,
+                    formatter: function (rowIdx, rowItem) {
                         if (!rowItem) {
                             return this.defaultValue;
                         }
+
+                        // Call the utility function to encode the object's strings (recursively)
+                        Utility.encodeObjectStrings(rowItem);
 
                         //console.warn('ToDo: include role security to Attachment description column rendering (or whatever other security) that was applied before.   <---<<<   <---<<<');
                         if (rowItem['url']) {
@@ -123,96 +136,95 @@ function (_Widget,
                 },
                 {
                     field: 'user',
-                    name: attachmentListStrings.userText,
-                    format: function (rowIdx, rowItem) {
+                    label: attachmentListStrings.userText,
+                    formatter: function (rowIdx, rowItem) {
                         if (!rowItem) { return ''; }
                         var user = (rowItem.hasOwnProperty('user') && typeof rowItem['user'] === 'object') ? rowItem.user : null;
                         if (!user) {
                             return '';
                         }
-                        return user['$descriptor'];
+                        return (user['$descriptor']) ? user['$descriptor'] : '';
                     },
                     width: '120px'
                 },
                 {
                     field: 'attachDate',
-                    name: attachmentListStrings.modDateText,
+                    label: attachmentListStrings.modDateText,
+                    type: colDateTime,
                     filterConfig: {
                         widgetType: dateRangeFilter,
                         label: attachmentListStrings.dateRangeText
                     },
-                    type: colDateTime,
                     width: '175px'
                 }, {
                     field: 'fileSize',
-                    name: attachmentListStrings.sizeText,
+                    label: attachmentListStrings.sizeText,
                     formatter: function (v) {
                         return fileUtility.formatFileSize(v);
                     },
                     width: '120px'
                 }, {
                     field: 'fileName',
-                    name: attachmentListStrings.extensionText,
-                    formatter: function (s, rowIdx, cell) {
-                        if (!s) {
+                    label: attachmentListStrings.extensionText,
+                    formatter: function (rowIdx, rowItem) {
+                        if (!rowIdx) {
                             return '.';
                         }
-                        return s.substr(s.lastIndexOf('.'));
+                        return rowIdx.substr(rowIdx.lastIndexOf('.'));
                     },
-                    sortable: false,
-                    width: '120px'
+                    sortable: false
                 }
             ];
             var tools = [
-                {
-                    id: this.id + '_btnBrowse',
-                    imageClass: 'icon_plus_16x16',
-                    handler: this.browseForFiles,
-                    title: attachmentListStrings.addFileText,
-                    alternateText: attachmentListStrings.addFileText,
-                    appliedSecurity: '',
-                    scope: this
-                }, {
-                    //       id: this.id + '_btnAddGoogle',
-                    //      imageClass: 'icon_google_16x16',
-                    //      handler: this.addGoogle,
-                    //      title: attachmentListStrings.addGoogleText,
-                    //      appliedSecurity: '',
-                    //      scope: this
-                    //  }, {
-                    id: this.id + '_btnAddUrl',
-                    imageClass: 'icon_Internet_Service_Add_16x16',
-                    handler: this.addUrlAttachment,
-                    title: attachmentListStrings.addUrlText,
-                    appliedSecurity: '',
-                    alternateText: attachmentListStrings.addUrlText,
-                    scope: this
-                }, {
-                    id: this.id + '_btnEditAttachProps',
-                    imageClass: 'icon_Edit_Item_16x16',
-                    handler: this.editSelectedAttachment,
-                    title: attachmentListStrings.editText,
-                    appliedSecurity: '',
-                    alternateText: attachmentListStrings.editText,
-                    scope: this
-                }, {
-                    id: this.id + '_btnDeleteAttachment',
-                    imageClass: 'icon_Delete_16x16',
-                    title: attachmentListStrings.deleteText,
-                    handler: this.deleteSelectedAttachment,
-                    appliedSecurity: '',
-                    alternateText: attachmentListStrings.deleteText,
-                    scope: this
-                }, {
-                    id: this.id + '_btnHelp',
-                    imageClass: 'icon_Help_16x16',
-                    handler: function () {
-                        utility.openHelp('attachmentstab');
-                    },
-                    title: attachmentListStrings.helpText,
-                    alternateText: attachmentListStrings.helpText,
-                    appliedSecurity: ''
-                }
+                    {
+                        id: this.id + '_btnBrowse',
+                        imageClass: 'icon_Add_File_16x16',
+                        handler: this.browseForFiles,
+                        title: attachmentListStrings.addFileText,
+                        alternateText: attachmentListStrings.addFileText,
+                        appliedSecurity: '',
+                        scope: this
+                    }, {
+                        //       id: this.id + '_btnAddGoogle',
+                        //      imageClass: 'icon_google_16x16',
+                        //      handler: this.addGoogle,
+                        //      title: attachmentListStrings.addGoogleText,
+                        //      appliedSecurity: '',
+                        //      scope: this
+                        //  }, {
+                        id: this.id + '_btnAddUrl',
+                        imageClass: 'icon_Internet_Service_Add_16x16',
+                        handler: this.addUrlAttachment,
+                        title: attachmentListStrings.addUrlText,
+                        appliedSecurity: '',
+                        alternateText: attachmentListStrings.addUrlText,
+                        scope: this
+                    }, {
+                        id: this.id + '_btnEditAttachProps',
+                        imageClass: 'icon_Edit_Item_16x16',
+                        handler: this.editSelectedAttachment,
+                        title: attachmentListStrings.editText,
+                        appliedSecurity: '',
+                        alternateText: attachmentListStrings.editText,
+                        scope: this
+                    }, {
+                        id: this.id + '_btnDeleteAttachment',
+                        imageClass: 'icon_Delete_16x16',
+                        title: attachmentListStrings.deleteText,
+                        handler: this.deleteSelectedAttachment,
+                        appliedSecurity: '',
+                        alternateText: attachmentListStrings.deleteText,
+                        scope: this
+                    }, {
+                        id: this.id + '_btnHelp',
+                        imageClass: 'icon_Help_16x16',
+                        handler: function () {
+                            utility.openHelp('attachmentstab');
+                        },
+                        title: attachmentListStrings.helpText,
+                        alternateText: attachmentListStrings.helpText,
+                        appliedSecurity: ''
+                    }
             ];
 
             if (isRemote) {
@@ -248,55 +260,41 @@ function (_Widget,
                 columns.splice(2, 0, remoteColumn);
             }
 
-            var parentRelationshipName = this.parentRelationshipName;
-            var entityId = utility.getCurrentEntityId();
-            if (parentRelationshipName === 'activityId') {
-                entityId = entityId.substr(0, 12); // for reoccuring activity Ids;
-            }
-            var options = {
-                readOnly: true,
-                columns: columns,
-                tools: tools,
-                storeOptions: {
-                    service: SDataServiceRegistry.getSDataService('system'),
-                    resourceKind: 'attachments',
-                    include: ['$descriptors'],
-                    select: ['description', 'user', 'attachDate', 'fileSize', 'fileName', 'url', 'fileExists', 'remoteStatus', 'dataType'],
-                    sort: [{ attribute: 'attachDate'}]
-                },
-                slxContext: { 'workspace': this.workspace, tabId: this.tabId },
-                contextualCondition: function () {
+            //var store = this._configureGridStore();
+            var contextservice = Sage.Services.getService('ClientEntityContext');
+            var ctx = contextservice.getContext();
+            this.contextEntityType = ctx.EntityType;
 
-
-
-                    return (parentRelationshipName || '\'A\'') + ' eq \'' + entityId + '\'';
-                },
-                id: this.id + '_attachments',
-                rowsPerPage: 20
-            };
             var curId = utility.getCurrentEntityId();
-            if (!curId) {
-                options.storeOptions['isInsertMode'] = true;
-            }
+            var store = this._createLiveStore();
+            this.mode = (!curId) ? 'insert' : '';
+
+            var options = {
+                columns: columns,
+                gridLabel: 'Attachments',
+                tools: tools,
+                store: new Memory({ data: [] }),
+                sort: [{ attribute: 'attachDate', descending: true }],
+                id: this.id + '_attachments',
+                minRowsPerPage: 25,
+                placeHolder: this.placeHolder,
+                mode: this.mode,
+                columnHiding: true,
+                columnResizing: true,
+                columnReordering: true,
+                selectionMode: 'extended',
+                rowSelection: true,
+                slxContext: { 'workspace': this.workspace, tabId: this.tabId }
+            };
+
             //fire this so that customizations can change these options without overriding the whole thing
             this.onBeforeCreateGrid(options);
 
-            var grid = new SlxPreviewGrid.Grid(options, this.placeHolder);
-            grid.setSortColumn('attachDate');
-            this._grid = grid._grid;
-            this._previewGrid = grid;
+            var grid = this._grid = new GridView(options);
+            grid.createGridView();
 
-            grid.startup();
-            // This is not a typo.  The dijit.layout.ContentPane is not affectively determining all of it's layout information
-            // on the first pass through resize.  Calling resize twice effectively renders the grid to fill it's container.
-            if (this.workspace) {
-                var localTC = dijit.byId('tabContent');
-                localTC.resize(); localTC.resize();
-            }
-            //            });
+            dojo.connect(grid, 'destroy', this, this.destroy);
 
-            var self = this;
-            //<input type="file" id="fileElem" multiple="true" accept="image/*" style="display:none" onchange="handleFiles(this.files)">  
             this.fileInputBtn = dojo.doc.createElement('INPUT');
             dojo.attr(this.fileInputBtn, {
                 'type': 'file',
@@ -305,41 +303,54 @@ function (_Widget,
                 'class': 'display-none'
             });
             dojo.place(this.fileInputBtn, this.domNode, 'last');
-            self._fileInputOnChange = connect.connect(this.fileInputBtn, 'onchange', self, self.handleFiles);
+            this._fileInputOnChange = connect.connect(this.fileInputBtn, 'onchange', this, this.handleFiles);
 
             this.subscriptions.push(dojo.subscribe('/entity/attachment/create', this, this.onNewAttachmentEntity));
             this.subscriptions.push(dojo.subscribe('/entity/attachment/update', this, this.onAttachmentUpdated));
             if (isRemote) {
                 this.subscriptions.push(dojo.subscribe('/entity/attachment/requested', this, this.onAttachmentUpdated));
             }
-
-            dojo.connect(grid, 'destroy', this, this.destroy);
-            var contextservice = Sage.Services.getService('ClientEntityContext');
-            var ctx = contextservice.getContext();
-            this.contextEntityType = ctx.EntityType;
+            this.resetEntityContext(); //end of _buildGrid
         },
-        refresh: function () {
-            if (this._grid) {
-                var gridmode = this._grid.get('mode');
-                var curId = utility.getCurrentEntityId();
-                if ((!curId && gridmode !== 'insert') ||
-                   (curId && gridmode === 'insert')) {
-                    this._grid.set('mode', (!curId) ? 'insert' : '');
-                }
-                this._previewGrid.refresh();
+        _createLiveStore: function () {
+            var parentRelationshipName = this.parentRelationshipName;
+            var entityId = utility.getCurrentEntityId();
+            if (parentRelationshipName === 'activityId') {
+                entityId = entityId.substr(0, 12); // for reoccurring activity Ids;
             }
+
+            this._store = new SDataObjectStore({
+                service: SDataServiceRegistry.getSDataService('system'),
+                contractName: 'system',
+                resourceKind: 'attachments',
+                resourcePredicate: null,
+                include: ['$descriptors'],
+                select: ['description', 'user', 'attachDate', 'fileSize', 'fileName', 'url', 'fileExists', 'remoteStatus', 'dataType'],
+                where: string.substitute((parentRelationshipName || '\'A\'') + ' eq "${0}"', [entityId]),
+                scope: this
+            });
         },
         resetEntityContext: function () {
             var parentRelationshipName = this.parentRelationshipName;
             var entityId = utility.getCurrentEntityId();
             if (parentRelationshipName === 'activityId') {
-                entityId = entityId.substr(0, 12); // for reoccuring activity Ids;
+                entityId = entityId.substr(0, 12); // for reoccurring activity Ids;
             }
-            var contextualCondition = function () {
-                return (parentRelationshipName || '\'A\'') + ' eq \'' + entityId + '\'';
-            };
-            this._previewGrid.resetContextualCondition(contextualCondition);
-            this.refresh();
+            var contextualCondition = (parentRelationshipName || '\'A\'') + ' eq \'' + entityId + '\'';
+
+            if ((!entityId && this.mode !== 'insert') ||
+                       (entityId && this.mode === 'insert')) {
+                this.mode = (!entityId) ? 'insert' : '';
+            }
+
+            if (this._grid) {
+                if (this.mode === 'insert') {
+                    this._grid.grid.setStore(new Memory({ data: [] }));
+                } else {
+                    this._store.where = contextualCondition;
+                    this._grid.grid.setStore(this._store);
+                }
+            }
         },
         destroy: function () {
             var len = this.subscriptions.length;
@@ -367,16 +378,21 @@ function (_Widget,
             if (this.contextEntityType !== ctx.EntityType) {
                 return;
             }
-            if (this._grid.mode === 'insert') {
-                if (!attachment) {
-                    this._getFallBackPickerAttachment();
-                    return;
+            if (!attachment) {
+                this._getFallBackPickerAttachment();
+                return;
+            } else {
+                this._newAttachmentsCache.push(attachment);
+
+                if (this.mode === 'insert') {
+                    this._grid.grid.addItem(attachment);
+                    this._grid.refresh();
                 } else {
-                    this._newAttachmentsCache.push(attachment);
-                    this._grid.store.addToCache(this, attachment, 1);
+                    this._grid.grid.store.put(attachment).then(lang.hitch(this, function (response) {
+                        this._grid.refresh();
+                    }));
                 }
             }
-            this._previewGrid.refresh();
         },
         _getFallBackPickerAttachment: function () {
             var editor = dijit.byId('activityEditor');
@@ -399,27 +415,27 @@ function (_Widget,
                     },
                     scope: this
                 });
-
             }
         },
         _receivedFallBackPickerAttachments: function (data) {
             var attachments = data.$resources;
             this.clearNewAttachments();
             for (var i = 0; i < attachments.length; i++) {
-                var att = attachments[i];
-                this._newAttachmentsCache.push(att);
-                this._grid.store.addToCache(this, att, i);
+                var attachment = attachments[i];
+                this._newAttachmentsCache.push(attachment);
+                this._grid.store.put(attachment).then(lang.hitch(this, function (response) {
+                    this._grid.grid.addItem(attachment);
+                }));
             }
-            this._previewGrid.refresh();
+            this._grid.refresh();
         },
         onAttachmentUpdated: function (attachment) {
-
             var contextservice = Sage.Services.getService('ClientEntityContext');
             var ctx = contextservice.getContext();
             if (this.contextEntityType !== ctx.EntityType) {
                 return;
             }
-            if (this._grid.mode === 'insert') {
+            if (this.mode === 'insert') {
                 var newAtts = this._newAttachmentsCache;
                 for (var i = 0; i < newAtts.length; i++) {
                     if (newAtts[i].$key === attachment.$key) {
@@ -427,14 +443,16 @@ function (_Widget,
                     }
                 }
             }
-            this._previewGrid.refresh();
+            this._grid.refresh();
         },
         getNewAttachments: function () {
             return this._newAttachmentsCache;
         },
         clearNewAttachments: function () {
             this._newAttachmentsCache = [];
-            this._grid.store.clearCache();
+            if (this._grid) {
+                this._grid.grid.setStore(new Memory({ data: [] }));
+            }
         },
         _editAttachmentInfo: function (attachId) {
             // use query parameter of _includeFile=false to get only the attachment entity for editing
@@ -447,10 +465,7 @@ function (_Widget,
 
         },
         browseForFiles: function (e) {
-            if (Sage.gears) {
-                var desktop = Sage.gears.factory.create('beta.desktop');
-                desktop.openFiles(this.handleGearsDesktopFileSelect);
-            } else if (fileUtility.supportsHTML5File) {
+            if (fileUtility.supportsHTML5File) {
                 // Re-create the file input, otherwise onchange will not fire if you select the same file to upload again.
                 var node = this.fileInputBtn.cloneNode();
                 domConstruct.destroy(this.fileInputBtn);
@@ -476,7 +491,7 @@ function (_Widget,
             ed.show();
         },
         editSelectedAttachment: function () {
-            var selectedItems = this._grid.selection.getSelected();
+            var selectedItems = this._grid.getSelectedRowData();
             if (selectedItems.length < 1) {
                 return;
             }
@@ -484,9 +499,8 @@ function (_Widget,
             this._editAttachmentInfo(item['$key']);
         },
         deleteSelectedAttachment: function () {
-            this._grid.deleteSelected(function () {
-                dojo.publish('/entity/attachment/delete');
-            });
+            this._grid.deleteSelected();
+            dojo.publish('/entity/attachment/delete');
         },
         addGoogle: function () {
             var gPicker = dijit.byId('googleDocumentPicker');
@@ -523,7 +537,7 @@ function (_Widget,
                         dojo.publish('/entity/attachment/create', att);
                     },
                     failure: function (err) {
-                        console.warn('an exception occurred saving google document attachment ' + err);
+                        console.warn('an exception occurred saving Google document attachment ' + err);
                     },
                     scope: this
                 });
@@ -531,12 +545,11 @@ function (_Widget,
         },
         onBeforeCreateGrid: function (options) { },
         setToReadOnly: function (readOnly) {
-
             var disableList = [this.id + '_btnBrowse',
                              this.id + '_btnAddUrl',
                              this.id + '_btnEditAttachProps',
                              this.id + '_btnDeleteAttachment'
-                             ];
+            ];
             this._bulkSetProperty(this, disableList, 'disabled', readOnly);
 
         },
@@ -548,8 +561,6 @@ function (_Widget,
                 }
             }
         }
-
     });
-
     return attachmentList;
 });

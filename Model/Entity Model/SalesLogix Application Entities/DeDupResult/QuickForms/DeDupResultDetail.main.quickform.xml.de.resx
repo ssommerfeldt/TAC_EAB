@@ -117,73 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtSource.Caption" xml:space="preserve">
+    <value>Quelle:</value>
+  </data>
   <data name="txtSourceType.Caption" xml:space="preserve">
     <value>Quellentyp:</value>
-  </data>
-  <data name="dgFilters.0aa6360b-3cda-461b-8131-e2a7ed7d3afd.ColumnHeading" xml:space="preserve">
-    <value>Aktiviert</value>
-  </data>
-  <data name="dgFilters.cf498714-dc19-451d-971f-4c15f7b79bd6.ColumnHeading" xml:space="preserve">
-    <value>Wert</value>
-  </data>
-  <data name="ownResolvedBy.Caption" xml:space="preserve">
-    <value>Geklärt von:</value>
-  </data>
-  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
-    <value>Nicht aufgelöste Duplikate</value>
-  </data>
-  <data name="grdDupMatches.1138735b-4440-4de2-ba40-218f4d6642a8.ColumnHeading" xml:space="preserve">
-    <value>Datensatztyp</value>
-  </data>
-  <data name="grdDupMatches.bf49cdff-4d90-41e1-919a-8d2a49233425.ColumnHeading" xml:space="preserve">
-    <value>Ergebnis</value>
-  </data>
-  <data name="grdDupMatches.4bc08dda-8714-4541-9a45-0d669143a807.ColumnHeading" xml:space="preserve">
-    <value>Quelle</value>
-  </data>
-  <data name="btnCancel.Caption" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="dtpResolvedDate.Caption" xml:space="preserve">
-    <value>Geklärt am:</value>
-  </data>
-  <data name="btnNoDuplicate.Caption" xml:space="preserve">
-    <value>Kein Duplikat</value>
   </data>
   <data name="grdDupMatches.25547e45-355d-4ce2-a7cc-4cb200357891.ColumnHeading" xml:space="preserve">
     <value>Ziel</value>
   </data>
-  <data name="grdDupMatches.8ba4a56d-b538-4a26-9d5c-ed03cdcf0e2e.ColumnHeading" xml:space="preserve">
-    <value>Ergebnisanzahl</value>
-  </data>
-  <data name="grdDupMatches.e86941c3-f91d-4f3d-a942-264c913c6e62.ColumnHeading" xml:space="preserve">
-    <value>Ergebnistyp</value>
+  <data name="grdDupMatches.1138735b-4440-4de2-ba40-218f4d6642a8.ColumnHeading" xml:space="preserve">
+    <value>Datensatztyp</value>
   </data>
   <data name="grdDupMatches.d61962df-7a76-42c1-b677-2a20f0b51367.ColumnHeading" xml:space="preserve">
     <value>Punktwert</value>
   </data>
-  <data name="lnkDeDupJob.Caption" xml:space="preserve">
-    <value>Auftragsnr.:</value>
+  <data name="grdDupMatches.0cc2e5a5-e289-49d3-b885-2e565fafef20.Text" xml:space="preserve">
+    <value>Zusammenführen</value>
+  </data>
+  <data name="QFHorizontalSeparator.Caption" xml:space="preserve">
+    <value>Nicht aufgelöste Duplikate</value>
+  </data>
+  <data name="QFHorizontalSeparator2.Caption" xml:space="preserve">
+    <value>Suchfilter</value>
+  </data>
+  <data name="dgFilters.eaf9638a-d7cf-4804-a029-bd386082b353.ColumnHeading" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="dgFilters.cf498714-dc19-451d-971f-4c15f7b79bd6.ColumnHeading" xml:space="preserve">
+    <value>Wert</value>
+  </data>
+  <data name="dgFilters.0aa6360b-3cda-461b-8131-e2a7ed7d3afd.ColumnHeading" xml:space="preserve">
+    <value>Aktiviert</value>
+  </data>
+  <data name="grdDupMatches.90af31c9-5d30-44c1-bd96-276e8ad93748.ColumnHeading" xml:space="preserve">
+    <value>Ergebnisstatus</value>
+  </data>
+  <data name="grdDupMatches.4bc08dda-8714-4541-9a45-0d669143a807.ColumnHeading" xml:space="preserve">
+    <value>Quelle</value>
+  </data>
+  <data name="grdDupMatches.bf49cdff-4d90-41e1-919a-8d2a49233425.ColumnHeading" xml:space="preserve">
+    <value>Ergebnis</value>
+  </data>
+  <data name="grdDupMatches.e86941c3-f91d-4f3d-a942-264c913c6e62.ColumnHeading" xml:space="preserve">
+    <value>Ergebnistyp</value>
+  </data>
+  <data name="grdDupMatches.8ba4a56d-b538-4a26-9d5c-ed03cdcf0e2e.ColumnHeading" xml:space="preserve">
+    <value>Ergebnisanzahl</value>
+  </data>
+  <data name="btnNoDuplicate.Caption" xml:space="preserve">
+    <value>Kein Duplikat</value>
+  </data>
+  <data name="btnCancel.Caption" xml:space="preserve">
+    <value>Abbrechen</value>
   </data>
   <data name="Status_Merged" xml:space="preserve">
     <value>Zusammengeführt</value>
   </data>
   <data name="txtStatus.Caption" xml:space="preserve">
-    <value>Klärungsstatus:</value>
+    <value>Status der Auflösung:</value>
   </data>
-  <data name="dgFilters.eaf9638a-d7cf-4804-a029-bd386082b353.ColumnHeading" xml:space="preserve">
-    <value>Filter</value>
+  <data name="ownResolvedBy.Caption" xml:space="preserve">
+    <value>Aufgelöst von:</value>
   </data>
-  <data name="grdDupMatches.0cc2e5a5-e289-49d3-b885-2e565fafef20.Text" xml:space="preserve">
-    <value>Zusammenführen</value>
+  <data name="dtpResolvedDate.Caption" xml:space="preserve">
+    <value>Aufgelöst am:</value>
   </data>
-  <data name="QFHorizontalSeparator2.Caption" xml:space="preserve">
-    <value>Suchfilter</value>
+  <data name="lnkDeDupJob.Caption" xml:space="preserve">
+    <value>Auftragsnr.:</value>
   </data>
-  <data name="grdDupMatches.90af31c9-5d30-44c1-bd96-276e8ad93748.ColumnHeading" xml:space="preserve">
-    <value>Ergebnisstatus</value>
-  </data>
-  <data name="txtSource.Caption" xml:space="preserve">
-    <value>Quelle:</value>
+  <data name="lnkDeDupJob.Text" xml:space="preserve">
+    <value />
   </data>
 </root>

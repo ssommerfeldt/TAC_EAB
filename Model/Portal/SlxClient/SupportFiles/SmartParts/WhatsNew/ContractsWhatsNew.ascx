@@ -52,7 +52,9 @@
                     NavigateUrl="account" EntityId='<%# Eval("Account.Id") %>' />
             </ItemTemplate>
         </asp:TemplateField>
-        <asp:BoundField DataField="Remaining" HeaderText="<%$ resources: grdNewContracts.Remaining.ColumnHeading %>" SortExpression="Remaining" />
+        <asp:BoundField DataField="Remaining" HeaderText="<%$ resources: grdNewContracts.Remaining.ColumnHeading %>" SortExpression="Remaining" DataFormatString="{0:N}">
+            <ItemStyle HorizontalAlign="Right"></ItemStyle>
+        </asp:BoundField>
         <asp:TemplateField HeaderText="<%$ resources: grdNewContracts.CreateDate.ColumnHeading %>" HeaderStyle-Width="100px" SortExpression="CreateDate">
             <ItemTemplate>
                 <SalesLogix:DateTimePicker id="dteCreateDate" Runat="Server" DisplayMode="AsText" DisplayTime="False" DateTimeValue=<%# Eval("CreateDate") %> />
@@ -86,7 +88,7 @@
                     NavigateUrl="account" EntityId='<%# Eval("Account.Id") %>' />
             </ItemTemplate>
         </asp:TemplateField>
-        <asp:BoundField DataField="Remaining" HeaderText="<%$ resources: grdNewContracts.Remaining.ColumnHeading %>" SortExpression="Remaining" />
+        <asp:BoundField DataField="Remaining" HeaderText="<%$ resources: grdNewContracts.Remaining.ColumnHeading %>" SortExpression="Remaining" DataFormatString="{0:N}"/>
         <asp:TemplateField HeaderText="<%$ resources: grdNewContracts.Modified.ColumnHeading %>" HeaderStyle-Width="100px" SortExpression="ModifyDate">
             <ItemTemplate>
                 <SalesLogix:DateTimePicker id="dteModifyDate" Runat="Server" DisplayMode="AsText" DisplayTime="False" DateTimeValue=<%# Eval("ModifyDate") %> />

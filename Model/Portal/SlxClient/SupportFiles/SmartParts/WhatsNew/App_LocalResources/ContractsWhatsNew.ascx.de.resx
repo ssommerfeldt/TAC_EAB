@@ -117,20 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="grdNewContracts.ModifyUser.ColumnHeading" xml:space="preserve">
-    <value>Geändert von</value>
+  <data name="grdChangedContracts.EmptyTableRowText" xml:space="preserve">
+    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
   </data>
-  <data name="grdNewContracts.Remaining.ColumnHeading" xml:space="preserve">
-    <value>Rest</value>
+  <data name="grdNewContracts.AccountName.ColumnHeading" xml:space="preserve">
+    <value>Firma</value>
   </data>
-  <data name="Contracts_Caption" xml:space="preserve">
-    <value>Verträge</value>
-  </data>
-  <data name="ModifiedContracts_Caption" xml:space="preserve">
-    <value>Geänderte Verträge</value>
-  </data>
-  <data name="NewContracts_Caption" xml:space="preserve">
-    <value>Neue Verträge</value>
+  <data name="grdNewContracts.CreateDate.ColumnHeading" xml:space="preserve">
+    <value>Erstellungsdatum</value>
   </data>
   <data name="grdNewContracts.CreateUser.ColumnHeading" xml:space="preserve">
     <value>Benutzer</value>
@@ -139,18 +133,24 @@
     <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
   </data>
   <data name="grdNewContracts.Modified.ColumnHeading" xml:space="preserve">
-    <value>Datum ändern</value>
+    <value>Änderungsdatum</value>
+  </data>
+  <data name="grdNewContracts.ModifyUser.ColumnHeading" xml:space="preserve">
+    <value>Geändert von</value>
   </data>
   <data name="grdNewContracts.ReferenceNumber.ColumnHeading" xml:space="preserve">
     <value>Referenznummer</value>
   </data>
-  <data name="grdNewContracts.AccountName.ColumnHeading" xml:space="preserve">
-    <value>Firma</value>
+  <data name="grdNewContracts.Remaining.ColumnHeading" xml:space="preserve">
+    <value>Rest</value>
   </data>
-  <data name="grdNewContracts.CreateDate.ColumnHeading" xml:space="preserve">
-    <value>Erstellungsdatum</value>
+  <data name="ModifiedContracts_Caption" xml:space="preserve">
+    <value>Geänderte Verträge</value>
   </data>
-  <data name="grdChangedContracts.EmptyTableRowText" xml:space="preserve">
-    <value>Den Auswahlkriterien entsprechen keine Datensätze.</value>
+  <data name="NewContracts_Caption" xml:space="preserve">
+    <value>Neue Verträge</value>
+  </data>
+  <data name="Contracts_Caption" xml:space="preserve">
+    <value>Verträge</value>
   </data>
 </root>
