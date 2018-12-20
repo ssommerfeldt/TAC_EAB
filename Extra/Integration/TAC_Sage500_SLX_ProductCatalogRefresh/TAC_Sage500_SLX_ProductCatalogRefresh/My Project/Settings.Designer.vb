@@ -56,9 +56,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Password=lamb;Persist Security Info=True;User ID=SA;Initial "& _ 
-            "Catalog=SalesLogix_Production_unicode;Data Source=APOLLO2017;Initial File Name="""& _ 
-            """;Server SPN=""""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Password=lambarena;Persist Security Info=True;User ID=SA;Ini"& _ 
+            "tial Catalog=SalesLogix_Production_unicode;Data Source=APOLLO;Initial File Name="& _ 
+            """"";Server SPN=""""")>  _
         Public Property SLXNativeConstr() As String
             Get
                 Return CType(Me("SLXNativeConstr"),String)
@@ -70,9 +70,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Password=lamb;Persist Security Info=True;User ID=sa;Initial "& _ 
-            "Catalog=mas500_eab_app;Data Source=APOLLO2017;Initial File Name="""";Server SPN="""""& _ 
-            "")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Password=lambarena;Persist Security Info=True;User ID=sa;Ini"& _ 
+            "tial Catalog=mas500_eab_app;Data Source=APOLLO;Initial File Name="""";Server SPN="""& _ 
+            """")>  _
         Public Property Sage500Constr() As String
             Get
                 Return CType(Me("Sage500Constr"),String)
@@ -84,9 +84,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password="""";Persist Security Info=True;User ID=admin;Initial "& _ 
-            "Catalog=SalesLogix;Data Source=ATHENA2017;Extended Properties=""PORT=1706;LOG=ON;"& _ 
-            "CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password=""lambarena76"";Persist Security Info=True;User ID=adm"& _ 
+            "in;Initial Catalog=SalesLogix;Data Source=ATHENA2017;Extended Properties=""PORT=1"& _ 
+            "706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
         Public Property SLXConstr() As String
             Get
                 Return CType(Me("SLXConstr"),String)

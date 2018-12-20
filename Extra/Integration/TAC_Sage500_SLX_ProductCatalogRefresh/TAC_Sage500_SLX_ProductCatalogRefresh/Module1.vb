@@ -457,7 +457,7 @@ Module Module1
                     '.Fields("PRODUCTID").Value = Productid
 
                     .Fields("NAME").Value = MyDataRow("NAME")
-                    '.Fields("DESCRIPTION").Value = MyDataRow("DESCRIPTION") ' Can Compare on TEXT Fields 
+                    .Fields("DESCRIPTION").Value = MyDataRow("DESCRIPTION") ' Can Compare on TEXT Fields 
                     .Fields("ACTUALID").Value = MyDataRow("ACTUALID")
                     .Fields("FAMILY").Value = MyDataRow("FAMILY")
                     .Fields("PRICE").Value = MyDataRow("PRICE")
