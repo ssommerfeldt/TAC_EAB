@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<DTSConfiguration>
+	<DTSConfigurationHeading>
+		<DTSConfigurationFileInfo GeneratedBy="SLX754LATEST\Administrator" GeneratedFromPackageName="MAS_toSLX_AccountRefresh" GeneratedFromPackageID="{9D99A365-F57F-4018-A46C-870E92895DE5}" GeneratedDate="11/10/2012 2:50:39 PM"/>
+	</DTSConfigurationHeading>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=APOLLO;User ID=sa;Initial Catalog=mas500_tst_app;Provider=SQLNCLI10.1;Auto Translate=False;Application Name=SSIS-MAS_toSLX_AccountRefresh-{A1807B55-42ED-406B-B5D7-748E3C1E45B5}SLX754LATEST.LiveEAB_MAS;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[Description]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[InitialCatalog]" ValueType="String">
+		<ConfiguredValue>mas500_tst_app</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[Name]" ValueType="String">
+		<ConfiguredValue>MAS500</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[Password]" ValueType="String">
+		<ConfiguredValue>lambarena</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[ProtectionLevel]" ValueType="Int32">
+		<ConfiguredValue>1</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[RetainSameConnection]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[ServerName]" ValueType="String">
+		<ConfiguredValue>APOLLO</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[MAS500].Properties[UserName]" ValueType="String">
+		<ConfiguredValue>sa</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=ATHENA;User ID=admin;Initial Catalog=SALESLOGIX_TEST;Provider=SLXOLEDB.1;Persist Security Info=True;Integrated Security=SSPI;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Description]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[InitialCatalog]" ValueType="String">
+		<ConfiguredValue>SALESLOGIX_TEST</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Name]" ValueType="String">
+		<ConfiguredValue>SLX</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[Password]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ProtectionLevel]" ValueType="Int32">
+		<ConfiguredValue>1</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[RetainSameConnection]" ValueType="Boolean">
+		<ConfiguredValue>0</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[ServerName]" ValueType="String">
+		<ConfiguredValue>ATHENA</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SLX].Properties[UserName]" ValueType="String">
+		<ConfiguredValue>admin</ConfiguredValue>
+	</Configuration>
+</DTSConfiguration>

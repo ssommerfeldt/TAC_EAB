@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataTransformationsUserConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <ServerName>Apollo2017</ServerName>
+        <PathOnServer>\\apollo2017\TAC\SSIS\MAS_SLX_Production</PathOnServer>
+        <StartObjectID>EAB_MASUpdateStagingTables.dtsx</StartObjectID>
+        <Run64BitRuntime>false</Run64BitRuntime>
+        <UserIDs />
+        <UserPasswords />
+        <OfflineMode>false</OfflineMode>
+        <ProgressReporting>true</ProgressReporting>
+        <ParameterConfigurationSensitiveValues>
+          <ConfigurationSetting>
+            <Id>LastModifiedTime</Id>
+            <Name>LastModifiedTime</Name>
+            <Value xsi:type="xsd:dateTime">2018-06-29T23:58:38.0626704Z</Value>
+          </ConfigurationSetting>
+        </ParameterConfigurationSensitiveValues>
+      </Options>
+    </Configuration>
+  </Configurations>
+</DataTransformationsUserConfiguration>

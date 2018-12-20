@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<DTSConfiguration>
+  <DTSConfigurationHeading>
+    <DTSConfigurationFileInfo GeneratedBy="EAB\pgarratt" GeneratedFromPackageName="EAB_MASUpdateStagingTables" GeneratedFromPackageID="{F0CD23B1-5807-4F56-B6FF-5468D83E2586}" GeneratedDate="18/08/2016 2:14:34 PM"/>
+  </DTSConfigurationHeading>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[ConnectionString]" ValueType="String">
+    <ConfiguredValue>Data Source=APOLLO2017;User ID=Admin;Initial Catalog=mas500_eab_app;Provider=SQLNCLI11.1;Persist Security Info=True;</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[Description]" ValueType="String">
+    <ConfiguredValue></ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[InitialCatalog]" ValueType="String">
+    <ConfiguredValue>mas500_eab_app</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[Name]" ValueType="String">
+    <ConfiguredValue>EAB MAS</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[Password]" ValueType="String">
+    <ConfiguredValue>lambarena</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[ProtectionLevel]" ValueType="Int32">
+    <ConfiguredValue>1</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[RetainSameConnection]" ValueType="Boolean">
+    <ConfiguredValue>-1</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[ServerName]" ValueType="String">
+    <ConfiguredValue>APOLLO2017</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB MAS].Properties[UserName]" ValueType="String">
+    <ConfiguredValue>Admin</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[ConnectionString]" ValueType="String">
+    <ConfiguredValue>Data Source=APOLLO2017;User ID=sysdba;Initial Catalog=SalesLogix_Production_unicode;Provider=SQLNCLI11.1;Persist Security Info=True;</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[Description]" ValueType="String">
+    <ConfiguredValue></ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[InitialCatalog]" ValueType="String">
+    <ConfiguredValue>SalesLogix_Production_unicode</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[Name]" ValueType="String">
+    <ConfiguredValue>EAB SLX Native SQL</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[Password]" ValueType="String">
+    <ConfiguredValue>masterkey</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[ProtectionLevel]" ValueType="Int32">
+    <ConfiguredValue>1</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[RetainSameConnection]" ValueType="Boolean">
+    <ConfiguredValue>-1</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[ServerName]" ValueType="String">
+    <ConfiguredValue>APOLLO2017</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Native SQL].Properties[UserName]" ValueType="String">
+    <ConfiguredValue>sysdba</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[ConnectionString]" ValueType="String">
+    <ConfiguredValue>Data Source=Athena2017;User ID=Admin;Initial Catalog=SALESLOGIX;Provider=SLXOLEDB.1;Persist Security Info=True;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;";</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[Description]" ValueType="String">
+    <ConfiguredValue></ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[InitialCatalog]" ValueType="String">
+    <ConfiguredValue>SALESLOGIX</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[Name]" ValueType="String">
+    <ConfiguredValue>EAB SLX Provider</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[Password]" ValueType="String">
+    <ConfiguredValue></ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[ProtectionLevel]" ValueType="Int32">
+    <ConfiguredValue>1</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[RetainSameConnection]" ValueType="Boolean">
+    <ConfiguredValue>-1</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[ServerName]" ValueType="String">
+    <ConfiguredValue>Athena2017</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Connections[EAB SLX Provider].Properties[UserName]" ValueType="String">
+    <ConfiguredValue>Admin</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::AdminPassword].Properties[Description]" ValueType="String">
+    <ConfiguredValue></ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::AdminPassword].Properties[EvaluateAsExpression]" ValueType="Boolean">
+    <ConfiguredValue>0</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::AdminPassword].Properties[Expression]" ValueType="String">
+    <ConfiguredValue></ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::AdminPassword].Properties[IncludeInDebugDump]" ValueType="Boolean">
+    <ConfiguredValue>0</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::AdminPassword].Properties[Name]" ValueType="String">
+    <ConfiguredValue>AdminPassword</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::AdminPassword].Properties[Namespace]" ValueType="String">
+    <ConfiguredValue>User</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::AdminPassword].Properties[RaiseChangedEvent]" ValueType="Boolean">
+    <ConfiguredValue>0</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::AdminPassword].Properties[ReadOnly]" ValueType="Boolean">
+    <ConfiguredValue>0</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::AdminPassword].Properties[Value]" ValueType="String">
+    <ConfiguredValue></ConfiguredValue>
+  </Configuration>
+</DTSConfiguration>

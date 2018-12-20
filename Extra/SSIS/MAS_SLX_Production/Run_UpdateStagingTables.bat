@@ -1,0 +1,1 @@
+"D:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\dtexec.exe" /FILE "D:\TAC\SSIS\MAS_SLX_Production\EAB_MASUpdateStagingTables.dtsx" /CONFIGFILE "D:\TAC\SSIS\MAS_SLX_Production\EAB_MASStagingTables.dtsConfig" /X86  /CHECKPOINTING OFF /REPORTING E
