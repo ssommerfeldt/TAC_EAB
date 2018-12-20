@@ -885,7 +885,8 @@ Module Module1
         sql = sql & " FROM         sysdba.SALESORDERITEMS INNER JOIN"
         sql = sql & "               sysdba.PRODUCT ON sysdba.SALESORDERITEMS.PRODUCTID = sysdba.PRODUCT.PRODUCTID INNER JOIN"
         sql = sql & "                       sysdba.SALESORDER ON sysdba.SALESORDERITEMS.SALESORDERID = sysdba.SALESORDER.SALESORDERID INNER JOIN"
-        sql = sql & "               sysdba.SITE ON sysdba.SALESORDER.USERWHSEID = sysdba.SITE.SITEID AND sysdba.PRODUCT.WAREHOUSEID = sysdba.SITE.SITECODE"
+        sql = sql & "               sysdba.SITE ON sysdba.SALESORDER.USERWHSEID = sysdba.SITE.SITEID "
+        'And sysdba.PRODUCT.WAREHOUSEID = sysdba.SITE.SITECODE" 'sso
         sql = sql & " WHERE     (sysdba.SALESORDERITEMS.SALESORDERID = '" & SalesOrderId & "') and (MASITEMKEY = '" & ItemKey & "')  AND  (sysdba.SALESORDERITEMS.QUANTITY <> 0)"
 
         Dim strConnection As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)

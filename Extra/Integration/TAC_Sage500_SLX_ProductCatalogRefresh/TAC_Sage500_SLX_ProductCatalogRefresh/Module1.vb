@@ -753,6 +753,16 @@ Module Module1
 
                 Console.WriteLine("Processes PRODUCT Changed" & i)
             Next row
+            If i > 0 Then
+                '===================================================================
+                ' Product changes so run the big Query to update the StockCards
+                '===================================================================
+                Dim BigSQL As String = "Update sysdba.STOCKCARDITEMS "
+                BigSQL = BigSQL & "             SET PRODUCTDESCRIPTION = (Select Name from sysdba.PRODUCT PR where PR.PRODUCTID = STOCKCARDITEMS.PRODUCTID)   "
+                ExecuteSQLQuery(BigSQL)
+
+            End If
+
 
         Catch ex As Exception
             'MsgBox(ex.Message)
