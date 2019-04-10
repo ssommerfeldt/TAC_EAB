@@ -17,218 +17,162 @@ Module Module1
 
 #End Region
     Sub Main()
-        '===================================================
-        ' March 22, 2018 Advanced Logging added ssommerfeldt
-        '===================================================
-        _hasErrors = False  'Intialize
-        ' Get Database Id for Log
-        slXLogHeaderID = GetNewSLXID("TACSYNCJOB", My.Settings.SLXConnection)
-        Dim appPath As String
-        Dim appName As String
-        appName = System.Reflection.Assembly.GetExecutingAssembly.GetModules()(0).FullyQualifiedName
-        appPath = System.IO.Path.GetDirectoryName(appName)
+        Try
 
-        Call LogErrors(PROJECTNAME, " - Main", "Process Start", EventLogEntryType.Information)
-        TACSyncJob_Start(PROJECTNAME, appName, slXLogHeaderID)
-        '========================================================================================
-        ' Ensure Single Instance application
-        '==========================================================================================
 
-        Dim appProc() As Process
-        Dim strModName, strProcName As String
-        strModName = Process.GetCurrentProcess.MainModule.ModuleName
-        strProcName = System.IO.Path.GetFileNameWithoutExtension(strModName)
+            '===================================================
+            ' March 22, 2018 Advanced Logging added ssommerfeldt
+            '===================================================
+            _hasErrors = False  'Intialize
+            ' Get Database Id for Log
+            slXLogHeaderID = GetNewSLXID("TACSYNCJOB", My.Settings.SLXConnection)
+            Dim appPath As String
+            Dim appName As String
+            appName = System.Reflection.Assembly.GetExecutingAssembly.GetModules()(0).FullyQualifiedName
+            appPath = System.IO.Path.GetDirectoryName(appName)
 
-        appProc = Process.GetProcessesByName(strProcName)
-        If appProc.Length > 1 Then
-            Console.WriteLine("There is an instance of this application running.")
-            Call LogErrors(PROJECTNAME, " - Main", "Problem with Connectin String so Exit", EventLogEntryType.Error)
-            TACSyncJob_END("Completed - Process already running (Exit without Processing)", slXLogHeaderID)
-            Exit Sub
-        Else
-            Console.WriteLine("There are no other instances running.")
-        End If
-        '==========================================================================================
+            Call LogErrors(PROJECTNAME, " - Main", "Process Start", EventLogEntryType.Information)
+            TACSyncJob_Start(PROJECTNAME, appName, slXLogHeaderID)
+            '========================================================================================
+            ' Ensure Single Instance application
+            '==========================================================================================
 
-        ' strSLXNativeConstr = GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
-        strSLXNativeConstr = My.Settings.SLXNativeConnection
-        'strMASConstr = GetConnection(PROJECTNAME, "Sage500Connection.udl")
-        strMASConstr = My.Settings.Sage500Connection
-        'strSLXConstr = GetConnection(PROJECTNAME, "SLXConnection.udl")
-        strSLXConstr = My.Settings.SLXConnection
+            Dim appProc() As Process
+            Dim strModName, strProcName As String
+            strModName = Process.GetCurrentProcess.MainModule.ModuleName
+            strProcName = System.IO.Path.GetFileNameWithoutExtension(strModName)
 
-        If strSLXConstr = "" Or strSLXNativeConstr = "" Or strMASConstr = "" Then
+            appProc = Process.GetProcessesByName(strProcName)
+            If appProc.Length > 1 Then
+                Console.WriteLine("There is an instance of this application running.")
+                Call LogErrors(PROJECTNAME, " - Main", "Problem with Connectin String so Exit", EventLogEntryType.Error)
+                TACSyncJob_END("Completed - Process already running (Exit without Processing)", slXLogHeaderID)
+                Exit Sub
+            Else
+                Console.WriteLine("There are no other instances running.")
+            End If
+            '==========================================================================================
+
+            ' strSLXNativeConstr = GetConnection(PROJECTNAME, "SLXNativeConnection.udl")
+            strSLXNativeConstr = My.Settings.SLXNativeConnection
+            'strMASConstr = GetConnection(PROJECTNAME, "Sage500Connection.udl")
+            strMASConstr = My.Settings.Sage500Connection
+            'strSLXConstr = GetConnection(PROJECTNAME, "SLXConnection.udl")
+            strSLXConstr = My.Settings.SLXConnection
+
+            If strSLXConstr = "" Or strSLXNativeConstr = "" Or strMASConstr = "" Then
+                '=============================================
+                ' Problem with the Connection String So Exit
+                '===============================================
+                'You must create an empty test.udl file in c:\ first. So, goto to c: - right click and New File - call it test.udl and then run the command above:
+                'C:\Windows\syswow64\rundll32.exe "C:\Program Files (x86)\Common Files\System\Ole DB\oledb32.dll",OpenDSLFile C:\test.udl
+
+                Call LogErrors(PROJECTNAME, " - Main", "Problem with Connectin String so Exit", EventLogEntryType.Error)
+                TACSyncJob_END("Completed - ConnectionStrings issue (Exit without Processing)", slXLogHeaderID)
+                Exit Sub
+
+            End If
+
+            'Console.WriteLine("Move Temp into Compare")
+
+            'Call Move_SalesOrder_Temp_To_Compare()
+            'Console.WriteLine("Clean Temp table")
+            'Call CleanTempDir()
+            'Console.WriteLine("Get Source Data --Header")
+            '====================================================================================================
+            ' HEADER 
+            '====================================================================================================
+            ' MAS500 Query
+            Dim SQLHeader As String = "SELECT     TranStatus, ShipKey AS Key1, UserFld1,UserFld2, UserFld3,UserFld4, TranStatusAsText, TranID"
+            SQLHeader = SQLHeader & " FROM         vdvCustomerReturn"
+            SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL)"
+            SQLHeader = SQLHeader & " UNION"
+            SQLHeader = SQLHeader & " SELECT     Status, SOKey, UserFld1, UserFld2 ,UserFld3,UserFld4,"
+            SQLHeader = SQLHeader & " CASE status WHEN '0' THEN 'Unacknoledged' WHEN '1' THEN 'Open' WHEN '2' THEN 'Inactive' WHEN '3' THEN 'Canceled' WHEN '4' THEN 'Closed' WHEN '5' THEN 'Incomplete'"
+            SQLHeader = SQLHeader & " WHEN '6' THEN 'Pending Approval' END AS StatusTXT, TranID"
+            SQLHeader = SQLHeader & " FROM tsoSalesOrder "
+            SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL) AND (UserFld1 <> '') "
+
+            '=================================================================================
+            ' 1. CLEAN COMPARE
+            '=================================================================================
+            Clean_Table("dbo.MAS_to_SLX_SalesOrderHEADER_TAC_zcompare", strSLXNativeConstr)
+            '=================================================================================
+            ' 2. MOVE TEMP TO COMPARE
+            '=================================================================================
+            Move_Temp_To_Compare("dbo.MAS_to_SLX_SalesOrderHEADER_TAC_zcompare", "dbo.MAS_to_SLX_SalesOrderHEADER_TAC_temp", strSLXNativeConstr)
+            '=================================================================================
+            ' 3. CLEAN TEMP
+            '=================================================================================
+            Clean_Table("dbo.MAS_to_SLX_SalesOrderHEADER_TAC_temp", strSLXNativeConstr)
+            '=================================================================================
+            ' 4. MOVE SOURCE TO TEMP
+            '=================================================================================
+            GetSourceData(SQLHeader, "dbo.MAS_to_SLX_SalesOrderHEADER_TAC_temp")
+            '=================================================================================
+            ' 5. Process Insert / Updates
+            '=================================================================================
+            Process_Changed_SalesOrderHEADER_Info()
+
             '=============================================
-            ' Problem with the Connection String So Exit
-            '===============================================
-            'You must create an empty test.udl file in c:\ first. So, goto to c: - right click and New File - call it test.udl and then run the command above:
-            'C:\Windows\syswow64\rundll32.exe "C:\Program Files (x86)\Common Files\System\Ole DB\oledb32.dll",OpenDSLFile C:\test.udl
-
-            Call LogErrors(PROJECTNAME, " - Main", "Problem with Connectin String so Exit", EventLogEntryType.Error)
-            TACSyncJob_END("Completed - ConnectionStrings issue (Exit without Processing)", slXLogHeaderID)
-            Exit Sub
-
-        End If
-
-        'Console.WriteLine("Move Temp into Compare")
-
-        'Call Move_SalesOrder_Temp_To_Compare()
-        'Console.WriteLine("Clean Temp table")
-        'Call CleanTempDir()
-        'Console.WriteLine("Get Source Data --Header")
-        '====================================================================================================
-        ' HEADER 
-        '====================================================================================================
-        ' MAS500 Query
-        Dim SQLHeader As String = "SELECT     TranStatus, ShipKey AS Key1, UserFld1,UserFld2, UserFld3,UserFld4, TranStatusAsText, TranID"
-        SQLHeader = SQLHeader & " FROM         vdvCustomerReturn"
-        SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL)"
-        SQLHeader = SQLHeader & " UNION"
-        SQLHeader = SQLHeader & " SELECT     Status, SOKey, UserFld1, UserFld2 ,UserFld3,UserFld4,"
-        SQLHeader = SQLHeader & " CASE status WHEN '0' THEN 'Unacknoledged' WHEN '1' THEN 'Open' WHEN '2' THEN 'Inactive' WHEN '3' THEN 'Canceled' WHEN '4' THEN 'Closed' WHEN '5' THEN 'Incomplete'"
-        SQLHeader = SQLHeader & " WHEN '6' THEN 'Pending Approval' END AS StatusTXT, TranID"
-        SQLHeader = SQLHeader & " FROM tsoSalesOrder "
-        SQLHeader = SQLHeader & " WHERE     (UserFld1 IS NOT NULL) AND (UserFld1 <> '') "
-
-        '=================================================================================
-        ' 1. CLEAN COMPARE
-        '=================================================================================
-        Clean_Table("dbo.MAS_to_SLX_SalesOrderHEADER_TAC_zcompare", strSLXNativeConstr)
-        '=================================================================================
-        ' 2. MOVE TEMP TO COMPARE
-        '=================================================================================
-        Move_Temp_To_Compare("dbo.MAS_to_SLX_SalesOrderHEADER_TAC_zcompare", "dbo.MAS_to_SLX_SalesOrderHEADER_TAC_temp", strSLXNativeConstr)
-        '=================================================================================
-        ' 3. CLEAN TEMP
-        '=================================================================================
-        Clean_Table("dbo.MAS_to_SLX_SalesOrderHEADER_TAC_temp", strSLXNativeConstr)
-        '=================================================================================
-        ' 4. MOVE SOURCE TO TEMP
-        '=================================================================================
-        GetSourceData(SQLHeader, "dbo.MAS_to_SLX_SalesOrderHEADER_TAC_temp")
-        '=================================================================================
-        ' 5. Process Insert / Updates
-        '=================================================================================
-        Process_Changed_SalesOrderHEADER_Info()
-
-        '=============================================
-        ' Reconcile with changes made to Salesorders
-        '=============================================
-        'Reconcile_Changed_SalesOrderHEADER_Info()
-        ' 6. Process Deletes
-        '    DO NOT PROCESS DELETES
+            ' Reconcile with changes made to Salesorders
+            '=============================================
+            'Reconcile_Changed_SalesOrderHEADER_Info()
+            ' 6. Process Deletes
+            '    DO NOT PROCESS DELETES
 
 
-        '================================================================
-        '= LINE
-        '================================================================
-        Console.WriteLine("------ Line Changes Start ------")
-        ' MAS500 Query
-        Dim SQL_LINE As String = ""
-        SQL_LINE = SQL_LINE & " SELECT     vdvShipmentLine.ItemKey, vdvShipmentLine.ShipDate, vdvShipmentLine.QtyShipped, vdvShipmentLine.SchdShipDate, tsoSalesOrder.TranID, "
-        SQL_LINE = SQL_LINE & "                       tsoSalesOrder.UserFld1, tsoSalesOrder.UserFld2, tsoSalesOrder.UserFld3, tsoSalesOrder.UserFld4, CONVERT(decimal(16, 8), tmpTotalQTYShipped.TotalQTYShipped)"
-        SQL_LINE = SQL_LINE & "                        AS TotalQTYShipped, Convert(decimal(16,8),tmpQTYOrdered.TotalQTYOrdered) as TotalQTYOrdered , tmpQTYOrdered.StatusText,"
-        SQL_LINE = SQL_LINE & "                         CASE StatusText "
-        SQL_LINE = SQL_LINE & " 							WHEN 'Open' THEN "
-        SQL_LINE = SQL_LINE & " 								Convert(decimal(16,8),ABS(TotalQTYOrdered - CONVERT(decimal(16, 8), tmpTotalQTYShipped.TotalQTYShipped))) "
-        SQL_LINE = SQL_LINE & " 							WHEN 'Closed' THEN Convert(decimal(16,8),0) "
-        SQL_LINE = SQL_LINE & " 						END AS OpenQTY"
-        SQL_LINE = SQL_LINE & " FROM         vdvShipmentLine INNER JOIN"
-        SQL_LINE = SQL_LINE & "                       tsoSalesOrder ON vdvShipmentLine.SOKey = tsoSalesOrder.SOKey LEFT OUTER JOIN"
-        SQL_LINE = SQL_LINE & "                           (SELECT     SUM(tsoSOLineDist.QtyOrd) AS TotalQTYOrdered, timItem.ItemKey, tsoSOLine_1.SOKey, "
-        SQL_LINE = SQL_LINE & "                                                    CASE tsoSOlinedist.Status WHEN 1 THEN 'Open' WHEN 2 THEN 'Closed' END AS StatusText"
-        SQL_LINE = SQL_LINE & "                             FROM          tsoSOLineDist INNER JOIN"
-        SQL_LINE = SQL_LINE & "                                                    tsoSOLine AS tsoSOLine_1 ON tsoSOLine_1.SOLineKey = tsoSOLineDist.SOLineKey INNER JOIN"
-        SQL_LINE = SQL_LINE & "                                                    timItem ON tsoSOLine_1.ItemKey = timItem.ItemKey"
-        SQL_LINE = SQL_LINE & "                             GROUP BY timItem.ItemKey, tsoSOLine_1.SOKey, CASE tsoSOlinedist.Status WHEN 1 THEN 'Open' WHEN 2 THEN 'Closed' END) AS tmpQTYOrdered ON "
-        SQL_LINE = SQL_LINE & "                       vdvShipmentLine.SOKey = tmpQTYOrdered.SOKey AND vdvShipmentLine.ItemKey = tmpQTYOrdered.ItemKey LEFT OUTER JOIN"
-        SQL_LINE = SQL_LINE & "                           (SELECT     SUM(tsoShipLineDist.QtyShipped) AS TotalQTYShipped, tsoShipLine.ItemKey, tsoSOLine.SOKey"
-        SQL_LINE = SQL_LINE & "                             FROM          tsoShipLineDist INNER JOIN"
-        SQL_LINE = SQL_LINE & "                                                    tsoShipLine ON tsoShipLineDist.ShipLineKey = tsoShipLine.ShipLineKey INNER JOIN"
-        SQL_LINE = SQL_LINE & "                                                    tsoShipment ON tsoShipLine.ShipKey = tsoShipment.ShipKey INNER JOIN"
-        SQL_LINE = SQL_LINE & "                                                    tsoSOLine ON tsoSOLine.SOLineKey = tsoShipLine.SOLineKey"
-        SQL_LINE = SQL_LINE & "                             GROUP BY tsoShipLine.ItemKey, tsoSOLine.SOKey) AS tmpTotalQTYShipped ON vdvShipmentLine.SOKey = tmpTotalQTYShipped.SOKey AND "
-        SQL_LINE = SQL_LINE & "         vdvShipmentLine.ItemKey = tmpTotalQTYShipped.ItemKey"
-        SQL_LINE = SQL_LINE & "         WHERE(tsoSalesOrder.UserFld1 Is Not NULL )  "
-        'SQL_LINE = SQL_LINE & "         WHERE(1=2)"
-        SQL_LINE = SQL_LINE & "         UNION"
-        SQL_LINE = SQL_LINE & " SELECT     tsoShipLine.ItemKey, tsoShipment.PostDate, tsoShipLineDist.QtyShipped, tsoShipment.PostDate AS SchdShipDate, vdvCustomerReturn.TranID, "
-        SQL_LINE = SQL_LINE & "                       vdvCustomerReturn.UserFld1, vdvCustomerReturn.UserFld2, vdvCustomerReturn.UserFld3, vdvCustomerReturn.UserFld4, "
-        SQL_LINE = SQL_LINE & "                       CONVERT(decimal(16, 8), tsoShipLineDist.QtyShipped) AS TotalQTYShipped,"
-        SQL_LINE = SQL_LINE & "                       CONVERT(decimal(16, 8), tsoShipLineDist.QtyShipped) AS TotalQTYOrdered,"
-        SQL_LINE = SQL_LINE & "         'Closed' as StatusText,"
-        SQL_LINE = SQL_LINE & "                       Convert(decimal(16,8),0) as OpenQty"
-        SQL_LINE = SQL_LINE & " FROM         vdvCustomerReturn INNER JOIN"
-        SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER JOIN"
-        SQL_LINE = SQL_LINE & "                       tsoShipLineDist ON tsoShipLine.ShipLineKey = tsoShipLineDist.ShipLineKey INNER JOIN"
-        SQL_LINE = SQL_LINE & "                       tsoShipment ON vdvCustomerReturn.ShipKey = tsoShipment.ShipKey"
-        'SQL_LINE = SQL_LINE & "         WHERE( 1=2)"
-        SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.UserFld1 Is Not NULL)"
-        'SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.UserFld1  LIKE '%229-06-137629%')"
+            '================================================================
+            '= LINE
+            '================================================================
+            Console.WriteLine("------ Line Changes Start ------")
+            ' MAS500 Query
+            Dim SQL_LINE As String = My.Settings.LineQuery
 
 
 
 
-        'SQL_LINE = SQL_LINE & " SELECT     vdvShipmentLine.ItemKey, vdvShipmentLine.ShipDate, vdvShipmentLine.QtyShipped, vdvShipmentLine.SchdShipDate, tsoSalesOrder.TranID, "
-        'SQL_LINE = SQL_LINE & "                       tsoSalesOrder.UserFld1, tsoSalesOrder.UserFld2, tsoSalesOrder.UserFld3, tsoSalesOrder.UserFld4, convert(decimal(16,8),tmpTotalQTYShipped.TotalQTYShipped) TotalQTYShipped"
-        'SQL_LINE = SQL_LINE & " FROM         vdvShipmentLine INNER JOIN"
-        'SQL_LINE = SQL_LINE & "                       tsoSalesOrder ON vdvShipmentLine.SOKey = tsoSalesOrder.SOKey LEFT OUTER JOIN"
-        'SQL_LINE = SQL_LINE & "                           (SELECT     SUM(tsoShipLineDist.QtyShipped) AS TotalQTYShipped, tsoShipLine.ItemKey, tsoSOLine.SOKey"
-        'SQL_LINE = SQL_LINE & "                             FROM          tsoShipLineDist INNER JOIN"
-        'SQL_LINE = SQL_LINE & "                                                    tsoShipLine ON tsoShipLineDist.ShipLineKey = tsoShipLine.ShipLineKey INNER JOIN"
-        'SQL_LINE = SQL_LINE & "                                                    tsoShipment ON tsoShipLine.ShipKey = tsoShipment.ShipKey INNER JOIN"
-        'SQL_LINE = SQL_LINE & "                                                    tsoSOLine ON tsoSOLine.SOLineKey = tsoShipLine.SOLineKey"
-        'SQL_LINE = SQL_LINE & "                             GROUP BY tsoShipLine.ItemKey, tsoSOLine.SOKey) AS tmpTotalQTYShipped ON vdvShipmentLine.SOKey = tmpTotalQTYShipped.SOKey AND "
-        'SQL_LINE = SQL_LINE & "         vdvShipmentLine.ItemKey = tmpTotalQTYShipped.ItemKey"
-        'SQL_LINE = SQL_LINE & "         WHERE(tsoSalesOrder.UserFld1 Is Not NULL)"
-        ''SQL_LINE = SQL_LINE & "         WHERE(1=2)"
-        'SQL_LINE = SQL_LINE & "         UNION       "
-        'SQL_LINE = SQL_LINE & " SELECT     tsoShipLine.ItemKey, tsoShipment.PostDate, tsoShipLineDist.QtyShipped, tsoShipment.PostDate AS SchdShipDate, vdvCustomerReturn.TranID, "
-        'SQL_LINE = SQL_LINE & "                       vdvCustomerReturn.UserFld1, vdvCustomerReturn.UserFld2, vdvCustomerReturn.UserFld3, vdvCustomerReturn.UserFld4, Convert(decimal(16,8),QtyShipped )as TotalQTYShipped"
-        'SQL_LINE = SQL_LINE & " FROM         vdvCustomerReturn INNER JOIN"
-        'SQL_LINE = SQL_LINE & "                       tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey INNER join"
-        'SQL_LINE = SQL_LINE & "                       tsoShipLineDist ON tsoShipLine.ShipLineKey = tsoShipLineDist.ShipLineKey INNER JOIN"
-        'SQL_LINE = SQL_LINE & "                       tsoShipment ON vdvCustomerReturn.ShipKey = tsoShipment.ShipKey"
-        '' SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.TranID  LIKE '%20366%')"
-        'SQL_LINE = SQL_LINE & "         WHERE(vdvCustomerReturn.UserFld1 Is Not NULL)"
 
-        '=================================================================================
-        ' 1. CLEAN COMPARE
-        '=================================================================================
-        Clean_Table("dbo.MAS_to_SLX_SalesOrderLINE_TAC_zcompare", strSLXNativeConstr)
-        '=================================================================================
-        ' 2. MOVE TEMP TO COMPARE
-        '=================================================================================
-        Move_Temp_To_Compare("dbo.MAS_to_SLX_SalesOrderLINE_TAC_zcompare", "dbo.MAS_to_SLX_SalesOrderLINE_TAC_temp", strSLXNativeConstr)
-        '=================================================================================
-        ' 3. CLEAN TEMP
-        '=================================================================================
-        Clean_Table("dbo.MAS_to_SLX_SalesOrderLINE_TAC_temp", strSLXNativeConstr)
-        '=================================================================================
-        ' 4. MOVE SOURCE TO TEMP
-        '=================================================================================
-        GetSourceData(SQL_LINE, "dbo.MAS_to_SLX_SalesOrderLINE_TAC_temp")
-        '=================================================================================
-        ' 5. Process Insert / Updates
-        '=================================================================================
-        Process_Changed_SALESORDERLINE()
-        ' 6. Process Deletes
-        '    DO NOT PROCESS DELETES
+            '=================================================================================
+            ' 1. CLEAN COMPARE
+            '=================================================================================
+            Clean_Table("dbo.MAS_to_SLX_SalesOrderLINE_TAC_zcompare", strSLXNativeConstr)
+            '=================================================================================
+            ' 2. MOVE TEMP TO COMPARE
+            '=================================================================================
+            Move_Temp_To_Compare("dbo.MAS_to_SLX_SalesOrderLINE_TAC_zcompare", "dbo.MAS_to_SLX_SalesOrderLINE_TAC_temp", strSLXNativeConstr)
+            '=================================================================================
+            ' 3. CLEAN TEMP
+            '=================================================================================
+            Clean_Table("dbo.MAS_to_SLX_SalesOrderLINE_TAC_temp", strSLXNativeConstr)
+            '=================================================================================
+            ' 4. MOVE SOURCE TO TEMP
+            '=================================================================================
+            GetSourceData(SQL_LINE, "dbo.MAS_to_SLX_SalesOrderLINE_TAC_temp")
+            '=================================================================================
+            ' 5. Process Insert / Updates
+            '=================================================================================
+            Process_Changed_SALESORDERLINE()
+            ' 6. Process Deletes
+            '    DO NOT PROCESS DELETES
 
 
-        '================================================================
-        '= CLEAN UP
-        '================================================================
-        Process_CleanUpUnUsedTransmittedSalesItems()
+            '================================================================
+            '= CLEAN UP
+            '================================================================
+            Process_CleanUpUnUsedTransmittedSalesItems()
 
 
 
-        Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
-        If _hasErrors Then
-            TACSyncJob_END("Completed - WITH ERROR", slXLogHeaderID)
-        Else
-            TACSyncJob_END("Completed - clean run", slXLogHeaderID)
-        End If
+            Call LogErrors(PROJECTNAME, " - Main", "Process End", EventLogEntryType.Information)
+            If _hasErrors Then
+                TACSyncJob_END("Completed - WITH ERROR", slXLogHeaderID)
+            Else
+                TACSyncJob_END("Completed - clean run", slXLogHeaderID)
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
 
@@ -304,17 +248,28 @@ Module Module1
 
         'strSourceSQL = " SELECT * from vdvMAS_to_SLX_SalesOrderItemShipment_TAC"
 
-
-        ' get the source data
+        '================================================================
+        ' get the source data ReWrite April 5, 2019
         '=================================================================
+        Dim conn As New SqlConnection(SourceconnectionString)
+        Try
 
 
-        Using sourceConnection As New SqlConnection(SourceconnectionString)
-            Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
-            myCommand.CommandTimeout = 200 '200 Seconds
-            sourceConnection.Open()
-            Dim reader As SqlDataReader = myCommand.ExecuteReader()
+            'open connection
+            conn.Open()
+            'create the DataAdapter. it will internally create a command object
 
+            Dim da As New SqlDataAdapter(strSourceSQL, conn)
+            da.SelectCommand.CommandTimeout = 1260 ' 3min time out.
+
+
+            'now create the DataSet and use the adapter to fill it
+            Dim ds As New DataSet()
+            da.Fill(ds)
+            'pull out the created DataTable to work with
+            'our table is the first and only one in the tables collection
+            Dim table As DataTable = ds.Tables(0)
+            ' open the destination data
 
             ' open the destination data
             Using destinationConnection As New SqlConnection(SLXConnectionString)
@@ -322,15 +277,45 @@ Module Module1
                 destinationConnection.Open()
 
                 Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
-                    bulkCopy.BatchSize = 500
+                    bulkCopy.BatchSize = 1000
                     bulkCopy.NotifyAfter = 1
                     ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
                     bulkCopy.DestinationTableName = strDestinationTableName
-                    bulkCopy.WriteToServer(reader)
+                    bulkCopy.WriteToServer(table)
                 End Using
             End Using
-            reader.Close()
-        End Using
+
+        Catch ex As Exception
+            Console.WriteLine("An error occurred: " & ex.Message, "Error")
+
+        Finally
+            conn.Dispose()
+            conn = Nothing
+        End Try
+
+
+
+        'Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
+        'myCommand.CommandTimeout = 200 '200 Seconds
+        'sourceConnection.Open()
+        'Dim reader As SqlDataReader = myCommand.ExecuteReader()
+
+
+        '' open the destination data
+        'Using destinationConnection As New SqlConnection(SLXConnectionString)
+        '    ' open the connection
+        '    destinationConnection.Open()
+
+        '    Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
+        '        bulkCopy.BatchSize = 500
+        '        bulkCopy.NotifyAfter = 1
+        '        ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
+        '        bulkCopy.DestinationTableName = strDestinationTableName
+        '        bulkCopy.WriteToServer(reader)
+        '    End Using
+        'End Using
+        'reader.Close()
+        ' End Using
     End Sub
 
 

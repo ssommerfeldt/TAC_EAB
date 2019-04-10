@@ -43,6 +43,7 @@ Module Module1
             '=================================================================================================================================================================
             ' TEST Connectivity to MAS.  This sometimes Fails but we have already moved and Cleaned out Temp so it Re-Syncs  Everything, Causing Large Syncs for Users
             '=================================================================================================================================================================
+            Console.WriteLine("Testing Connectivity to Sage........")
             If TESTSourceData() = False Then
                 '=================
                 ' Log Failure and Email 
@@ -198,57 +199,74 @@ Module Module1
         Dim strSourceSQL As String
         strSourceSQL = My.Settings.SourceQuery
 
-        'strSourceSQL = "SELECT     vdvStockStatus.ShortDesc AS NAME, timItemDescription.LongDesc AS DESCRIPTION, vdvStockStatus.ItemID AS ACTUALID, timItemClass.ItemClassName AS FAMILY, "
-        'strSourceSQL = strSourceSQL & "                      timItem.StdPrice AS PRICE, tmpItemType.LocalText AS PRODUCTGROUP, CONVERT(varchar(255), tmpItemStatus.LocalText) AS STATUS, "
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.UnitMeasID AS UNIT, NULL AS STOCKVOLUME, NULL AS STOCKWEIGHT, NULL AS STOCKITEM, NULL AS PROGRAM, NULL AS SUPPLIER, NULL "
-        'strSourceSQL = strSourceSQL & "                      AS VENDOR, NULL AS SITEID, NULL AS WAREHOUSELOCATION, NULL AS COMMISSIONABLE, NULL AS TAXABLE, NULL AS ACCOUNTINGPERIOD, "
-        'strSourceSQL = strSourceSQL & "                      tglAccount.GLAcctNo AS GLACCOUNTNUMBER, NULL AS GLSUBACCOUNTNUMBER, NULL AS DATAOWNER, NULL AS TYPE, NULL AS FIXEDCOST, NULL "
-        'strSourceSQL = strSourceSQL & "                      AS GLOBALSYNCID, NULL AS APPID, NULL AS TICK, NULL AS COMMODITYGROUPID, NULL AS ACTIVEFLAG, 'T' AS SELLINGALLOWEDFLAG, "
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID, NULL AS SELLINGUOMID, NULL AS SELLINGUOMNUMBER, NULL AS CLASSIFICATION, NULL "
-        'strSourceSQL = strSourceSQL & "                      AS COMMODITYTYPE, vdvStockStatus.ItemKey AS MASITEMKEY, timItemUnitOfMeas.UPC, vdvStockStatus.ItemID AS MASITEMID, "
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.WhseID AS WAREHOUSEID, vdvStockStatus.CompanyID, vdvStockStatus.QtyOnHand, vdvStockStatus.QtyAvailable, vdvStockStatus.SurplusQty, "
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.QtyOnHold, vdvStockStatus.MaxStockLevel, timItem.ProdPriceGroupKey"
-        'strSourceSQL = strSourceSQL & " FROM         tglAccount LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timInventory ON tglAccount.GLAcctKey = timInventory.InvtAcctKey RIGHT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus INNER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey ON timInventory.WhseKey = vdvStockStatus.WhseKey AND "
-        'strSourceSQL = strSourceSQL & "                      timInventory.ItemKey = vdvStockStatus.ItemKey LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timItemUnitOfMeas ON timItem.SalesUnitMeasKey = timItemUnitOfMeas.TargetUnitMeasKey AND timItem.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
-        'strSourceSQL = strSourceSQL & "                            FROM          vListValidationString AS vListValidationString_1"
-        'strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'Status')) AS tmpItemStatus ON timItem.Status = tmpItemStatus.DBValue LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
-        'strSourceSQL = strSourceSQL & "                            FROM          vListValidationString"
-        'strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey"
 
 
-        ' get the source data
-        '=================================================================
+        '==============================================================================
+        ' get the source data USing DataTable Rather than Reader April 4, 2019
+        '==============================================================================
+        Dim conn As New SqlConnection(SourceconnectionString)
+        Try
 
 
-        Using sourceConnection As New SqlConnection(SourceconnectionString)
-            Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
-            sourceConnection.Open()
-            myCommand.CommandTimeout = 1260
-            Dim reader As SqlDataReader = myCommand.ExecuteReader()
+            'open connection
+            conn.Open()
+            'create the DataAdapter. it will internally create a command object
 
+            Dim da As New SqlDataAdapter(strSourceSQL, conn)
+            da.SelectCommand.CommandTimeout = 1260 ' 3min time out.
+
+
+            'now create the DataSet and use the adapter to fill it
+            Dim ds As New DataSet()
+            da.Fill(ds)
+            'pull out the created DataTable to work with
+            'our table is the first and only one in the tables collection
+            Dim table As DataTable = ds.Tables(0)
             ' open the destination data
             Using destinationConnection As New SqlConnection(SLXConnectionString)
                 ' open the connection
                 destinationConnection.Open()
-
                 Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
                     bulkCopy.BatchSize = 500
                     bulkCopy.NotifyAfter = 1000
                     ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
                     bulkCopy.DestinationTableName = "MAS_TO_SLX_PRODUCT_Temp"
-                    bulkCopy.WriteToServer(reader)
+                    bulkCopy.WriteToServer(table)
                 End Using
             End Using
-            reader.Close()
-        End Using
+
+        Catch ex As Exception
+            Console.WriteLine("An error occurred: " & ex.Message, "Error")
+
+        Finally
+            conn.Dispose()
+            conn = Nothing
+        End Try
+
+
+
+        'OLD METHOD
+        'Using sourceConnection As New SqlConnection(SourceconnectionString)
+        '    Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
+        '    sourceConnection.Open()
+        '    myCommand.CommandTimeout = 1260
+        '    Dim reader As SqlDataReader = myCommand.ExecuteReader()
+
+        '    ' open the destination data
+        '    Using destinationConnection As New SqlConnection(SLXConnectionString)
+        '        ' open the connection
+        '        destinationConnection.Open()
+
+        '        Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
+        '            bulkCopy.BatchSize = 500
+        '            bulkCopy.NotifyAfter = 1000
+        '            ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
+        '            bulkCopy.DestinationTableName = "MAS_TO_SLX_PRODUCT_Temp"
+        '            bulkCopy.WriteToServer(reader)
+        '        End Using
+        '    End Using
+        '    reader.Close()
+        'End Using
     End Sub
 
     Private Function TESTSourceData() As Boolean
@@ -256,67 +274,57 @@ Module Module1
         Dim SLXConnectionString As String = CleanBulkLoadNativeSQLConnectionString(strSLXNativeConstr)
         Dim strSourceSQL As String
 
-        'strSourceSQL = "SELECT     vdvStockStatus.ShortDesc AS NAME, timItemDescription.LongDesc AS DESCRIPTION, vdvStockStatus.ItemID AS ACTUALID, timItemClass.ItemClassName AS FAMILY, "
-        'strSourceSQL = strSourceSQL & "                      timItem.StdPrice AS PRICE, tmpItemType.LocalText AS PRODUCTGROUP, CONVERT(varchar(255), tmpItemStatus.LocalText) AS STATUS, "
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.UnitMeasID AS UNIT, NULL AS STOCKVOLUME, NULL AS STOCKWEIGHT, NULL AS STOCKITEM, NULL AS PROGRAM, NULL AS SUPPLIER, NULL "
-        'strSourceSQL = strSourceSQL & "                      AS VENDOR, NULL AS SITEID, NULL AS WAREHOUSELOCATION, NULL AS COMMISSIONABLE, NULL AS TAXABLE, NULL AS ACCOUNTINGPERIOD, "
-        'strSourceSQL = strSourceSQL & "                      tglAccount.GLAcctNo AS GLACCOUNTNUMBER, NULL AS GLSUBACCOUNTNUMBER, NULL AS DATAOWNER, NULL AS TYPE, NULL AS FIXEDCOST, NULL "
-        'strSourceSQL = strSourceSQL & "                      AS GLOBALSYNCID, NULL AS APPID, NULL AS TICK, NULL AS COMMODITYGROUPID, NULL AS ACTIVEFLAG, 'T' AS SELLINGALLOWEDFLAG, "
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.StockUnitMeasKey AS UNITOFMEASUREID, NULL AS SELLINGUOMID, NULL AS SELLINGUOMNUMBER, NULL AS CLASSIFICATION, NULL "
-        'strSourceSQL = strSourceSQL & "                      AS COMMODITYTYPE, vdvStockStatus.ItemKey AS MASITEMKEY, timItemUnitOfMeas.UPC, vdvStockStatus.ItemID AS MASITEMID, "
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.WhseID AS WAREHOUSEID, vdvStockStatus.CompanyID, vdvStockStatus.QtyOnHand, vdvStockStatus.QtyAvailable, vdvStockStatus.SurplusQty, "
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus.QtyOnHold, vdvStockStatus.MaxStockLevel, timItem.ProdPriceGroupKey"
-        'strSourceSQL = strSourceSQL & " FROM         tglAccount LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timInventory ON tglAccount.GLAcctKey = timInventory.InvtAcctKey RIGHT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      vdvStockStatus INNER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timItem ON vdvStockStatus.ItemKey = timItem.ItemKey ON timInventory.WhseKey = vdvStockStatus.WhseKey AND "
-        'strSourceSQL = strSourceSQL & "                      timInventory.ItemKey = vdvStockStatus.ItemKey LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timItemUnitOfMeas ON timItem.SalesUnitMeasKey = timItemUnitOfMeas.TargetUnitMeasKey AND timItem.ItemKey = timItemUnitOfMeas.ItemKey LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
-        'strSourceSQL = strSourceSQL & "                            FROM          vListValidationString AS vListValidationString_1"
-        'strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'Status')) AS tmpItemStatus ON timItem.Status = tmpItemStatus.DBValue LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                          (SELECT     TableName, ColumnName, DBValue, IsDefault, IsHidden, StringNo, LocalText"
-        'strSourceSQL = strSourceSQL & "                            FROM          vListValidationString"
-        'strSourceSQL = strSourceSQL & "                            WHERE      (TableName = 'timItem') AND (ColumnName = 'ItemType')) AS tmpItemType ON timItem.ItemType = tmpItemType.DBValue LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timItemClass ON timItem.ItemClassKey = timItemClass.ItemClassKey LEFT OUTER JOIN"
-        'strSourceSQL = strSourceSQL & "                      timItemDescription ON vdvStockStatus.ItemKey = timItemDescription.ItemKey"
-
         strSourceSQL = My.Settings.SourceQuery
 
-
-        ' get the source data
-        '=================================================================
+        '=========================================================================================
+        ' get the source data Tuned April 4, 2019 Do Not Use Reader as it Locks the System
+        '==========================================================================================
         Dim blnReturn As Boolean = False
+
+        '   Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
+        '    myCommand.CommandTimeout = 1260
+        'sourceConnection.Open()
+        Dim conn As New SqlConnection(SourceconnectionString)
         Try
+            'open connection
+            conn.Open()
+            'create the DataAdapter. it will internally create a command object
 
-       
+            Dim da As New SqlDataAdapter(strSourceSQL, conn)
+            da.SelectCommand.CommandTimeout = 1260 ' 3min time out.
 
-        Using sourceConnection As New SqlConnection(SourceconnectionString)
-                Dim myCommand As New SqlCommand(strSourceSQL, sourceConnection)
-                myCommand.CommandTimeout = 1260
-            sourceConnection.Open()
-            Dim reader As SqlDataReader = myCommand.ExecuteReader()
 
-            '' open the destination data
-            'Using destinationConnection As New SqlConnection(SLXConnectionString)
-            '    ' open the connection
-            '    destinationConnection.Open()
+            'now create the DataSet and use the adapter to fill it
+            Dim ds As New DataSet()
+            da.Fill(ds)
+            blnReturn = True
 
-            '    Using bulkCopy As New SqlBulkCopy(destinationConnection.ConnectionString)
-            '        bulkCopy.BatchSize = 500
-            '        bulkCopy.NotifyAfter = 1000
-            '        ' bulkCopy.SqlRowsCopied += New SqlRowsCopiedEventHandler(bulkCopy_SqlRowsCopied)
-            '        bulkCopy.DestinationTableName = "MAS_TO_SLX_PRODUCT_Temp"
-            '        bulkCopy.WriteToServer(reader)
-            '    End Using
-                'End Using
-                blnReturn = True  ' Return True because we successfully read the data
-            reader.Close()
+            'pull out the created DataTable to work with
+            'our table is the first and only one in the tables collection
+            'Dim table As DataTable = ds.Tables(0)
 
-            End Using
+            ''iterate through the rows in the table's Rows collection
+            'Dim row As DataRow
+            'For Each row In table.Rows
+            '    Try
+            '        ProcessClubContact(row("GN21CLUBID").ToString)
+            '    Catch ex As Exception
+            '        Console.WriteLine(ex.Message)
+            '    End Try
+
+            'Next
+
+            'bind the table to a grid
+            'DataGrid1.DataSource = table
+
         Catch ex As Exception
-            blnReturn = False ' Failed for some reason
+            Console.WriteLine("An error occurred: " & ex.Message, "Error")
+            blnReturn = False
+        Finally
+            conn.Dispose()
+            conn = Nothing
         End Try
+
 
         Return blnReturn
 

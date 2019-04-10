@@ -3,13 +3,94 @@
   <Profiles />
   <Settings>
     <Setting Name="Sage500Connection" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Provider=SQLNCLI11.1;Integrated Security="";Password=lambarena;Persist Security Info=True;User ID=sa;Initial Catalog=mas500_eab_app;Data Source=APOLLO;Initial File Name="";Server SPN=""</Value>
+      <Value Profile="(Default)">Provider=SQLNCLI11.1;Integrated Security="";Password=lambarena;Persist Security Info=True;User ID=sa;Initial Catalog=mas500_tst_app;Data Source=APOLLO;Initial File Name="";Server SPN=""</Value>
     </Setting>
     <Setting Name="SLXConnection" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Provider=SLXOLEDB.1;Password="lambarena76";Persist Security Info=True;User ID=admin;Initial Catalog=SalesLogix;Data Source=ATHENA2017;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
+      <Value Profile="(Default)">Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=INFORCRMTEST;Data Source=PLUTO;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"</Value>
     </Setting>
     <Setting Name="SLXNativeConnection" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Provider=SQLNCLI11.1;Password=lambarena;Persist Security Info=True;User ID=sa;Initial Catalog=SalesLogix_Production_unicode;Data Source=Apollo;Initial File Name="";Server SPN=""</Value>
+      <Value Profile="(Default)">Provider=SQLNCLI11.1;Password=lambarena;Persist Security Info=True;User ID=sa;Initial Catalog=SalesLogix_TEST;Data Source=Apollo;Initial File Name="";Server SPN=""</Value>
+    </Setting>
+    <Setting Name="LineQuery" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT vdvShipmentLine.ItemKey
+	,vdvShipmentLine.ShipDate
+	,vdvShipmentLine.QtyShipped
+	,vdvShipmentLine.SchdShipDate
+	,tsoSalesOrder.TranID
+	,tsoSalesOrder.UserFld1
+	,tsoSalesOrder.UserFld2
+	,tsoSalesOrder.UserFld3
+	,tsoSalesOrder.UserFld4
+	,CONVERT(DECIMAL(16, 8), tmpTotalQTYShipped.TotalQTYShipped) AS TotalQTYShipped
+	,Convert(DECIMAL(16, 8), tmpQTYOrdered.TotalQTYOrdered) AS TotalQTYOrdered
+	,tmpQTYOrdered.StatusText
+	,CASE StatusText
+		WHEN 'Open'
+			THEN Convert(DECIMAL(16, 8), ABS(TotalQTYOrdered - CONVERT(DECIMAL(16, 8), tmpTotalQTYShipped.TotalQTYShipped)))
+		WHEN 'Closed'
+			THEN Convert(DECIMAL(16, 8), 0)
+		END AS OpenQTY
+	
+FROM vdvShipmentLine
+INNER JOIN tsoSalesOrder ON vdvShipmentLine.SOKey = tsoSalesOrder.SOKey
+LEFT JOIN (
+	SELECT SUM(tsoSOLineDist.QtyOrd) AS TotalQTYOrdered
+		,timItem.ItemKey
+		,tsoSOLine_1.SOKey
+		,CASE tsoSOlinedist.STATUS
+			WHEN 1
+				THEN 'Open'
+			WHEN 2
+				THEN 'Closed'
+			END AS StatusText
+	FROM tsoSOLineDist
+	INNER JOIN tsoSOLine AS tsoSOLine_1 ON tsoSOLine_1.SOLineKey = tsoSOLineDist.SOLineKey
+	INNER JOIN timItem ON tsoSOLine_1.ItemKey = timItem.ItemKey
+	GROUP BY timItem.ItemKey
+		,tsoSOLine_1.SOKey
+		,CASE tsoSOlinedist.STATUS
+			WHEN 1
+				THEN 'Open'
+			WHEN 2
+				THEN 'Closed'
+			END
+	) AS tmpQTYOrdered ON vdvShipmentLine.SOKey = tmpQTYOrdered.SOKey
+	AND vdvShipmentLine.ItemKey = tmpQTYOrdered.ItemKey
+LEFT JOIN (
+	SELECT SUM(tsoShipLineDist.QtyShipped) AS TotalQTYShipped
+		,tsoShipLine.ItemKey
+		,tsoSOLine.SOKey
+	FROM tsoShipLineDist
+	INNER JOIN tsoShipLine ON tsoShipLineDist.ShipLineKey = tsoShipLine.ShipLineKey
+	INNER JOIN tsoShipment ON tsoShipLine.ShipKey = tsoShipment.ShipKey
+	INNER JOIN tsoSOLine ON tsoSOLine.SOLineKey = tsoShipLine.SOLineKey
+	GROUP BY tsoShipLine.ItemKey
+		,tsoSOLine.SOKey
+	) AS tmpTotalQTYShipped ON vdvShipmentLine.SOKey = tmpTotalQTYShipped.SOKey
+	AND vdvShipmentLine.ItemKey = tmpTotalQTYShipped.ItemKey
+WHERE (tsoSalesOrder.UserFld1 IS NOT NULL)
+	AND (ShipDate &gt; DATEADD(year, - 1, getdate()))
+UNION
+SELECT tsoShipLine.ItemKey
+	,tsoShipment.PostDate
+	,tsoShipLineDist.QtyShipped
+	,tsoShipment.PostDate AS SchdShipDate
+	,vdvCustomerReturn.TranID
+	,vdvCustomerReturn.UserFld1
+	,vdvCustomerReturn.UserFld2
+	,vdvCustomerReturn.UserFld3
+	,vdvCustomerReturn.UserFld4
+	,CONVERT(DECIMAL(16, 8), tsoShipLineDist.QtyShipped) AS TotalQTYShipped
+	,CONVERT(DECIMAL(16, 8), tsoShipLineDist.QtyShipped) AS TotalQTYOrdered
+	,'Closed' AS StatusText
+	,Convert(DECIMAL(16, 8), 0) AS OpenQty
+	
+FROM vdvCustomerReturn
+INNER JOIN tsoShipLine ON vdvCustomerReturn.ShipKey = tsoShipLine.ShipKey
+INNER JOIN tsoShipLineDist ON tsoShipLine.ShipLineKey = tsoShipLineDist.ShipLineKey
+INNER JOIN tsoShipment ON vdvCustomerReturn.ShipKey = tsoShipment.ShipKey
+WHERE (vdvCustomerReturn.UserFld1 IS NOT NULL)
+	AND (tsoShipment.PostDate &gt; DATEADD(year, - 1, getdate()))</Value>
     </Setting>
   </Settings>
 </SettingsFile>
