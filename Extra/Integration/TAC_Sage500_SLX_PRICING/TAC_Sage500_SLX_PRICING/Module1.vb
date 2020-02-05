@@ -56,7 +56,13 @@ Module Module1
         timPriceGroupPriceMain()
         tarCustAddrMain()
         TACNATIONALACCTITEMEXCMain()
-        TACInventoryItemEXCMain()
+            TACInventoryItemEXCMain()
+
+            '======================================================================
+            '= Check if Pricing is out of Sync and Trigger Refresh if it is
+            '=  ssommerfeldt Aug 1, 2018
+            '======================================================================
+            Process_RefreshPricing()
 
             Call LogErrors(PROJECTNAME, " - Main", "Process Completed", EventLogEntryType.Information)
         Catch ex As Exception
@@ -119,6 +125,45 @@ Module Module1
             Console.WriteLine(ex.Message)
         End Try
 
+    End Sub
+
+    Public Sub Process_RefreshPricing()
+
+        Dim strCountTemp As String
+        Dim strCountSLX
+        strCountTemp = GetField("Count(*)", "dbo.MAS_to_SLX_timPriceSheet_temp", "", strSLXConstr)
+        strCountSLX = GetField("Count(*)", "sysdba.TIMPRICESHEET", "", strSLXConstr)
+
+        If strCountTemp <> strCountSLX Then
+            '==================================================
+            ' If Not Equal then we need to Refresh things
+            '==================================================
+            RunNonQuery("DELETE from sysdba.TIMPRICESHEET", strSLXConstr)
+            RunNonQuery("Delete from dbo.MAS_to_SLX_timPriceSheet_temp ", strSLXNativeConstr)
+            ' Next Run It will Refresh itself
+
+        End If
+
+
+
+    End Sub
+    Public Sub RunNonQuery(strSql As String, strConnection As String)
+        'create the connection
+        Dim conn As New OleDbConnection(strConnection)
+        Try
+            'open connection
+            conn.Open()
+            'create the command and call ExecuteNonQuery to execute the SQL statement in the database
+            Dim sql As String = strSql
+            Dim cmd As New OleDbCommand(sql, conn)
+            cmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+            WriteLine("An error occurred: " & ex.Message, "Error")
+        Finally
+            conn.Dispose()
+            conn = Nothing
+        End Try
     End Sub
 
 
