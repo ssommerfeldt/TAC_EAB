@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 Imports ADODB
 
 Module Module1
-    Dim Application As New SLXCOMInterop.SlxApplication
+
 
     Sub Main(args As String())
         Console.WriteLine("Loading Please Wait.....")
@@ -43,6 +43,14 @@ Module Module1
         ' Step 3.  Update SalesHistory
         '====================================================================================
         ProcessSalesHistory(SalesOrderID, Accountid)
+
+        '=====================================
+        ' Refresh Client
+        '=====================================
+        Console.WriteLine("Preparing to Refresh CRM Client")
+        Dim Application As New SLXCOMInterop.SlxApplication
+        Application.BringToFront()
+        Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
 
     End Sub
 
@@ -180,7 +188,7 @@ Module Module1
             SQL = SQL & "   And (s.STOCKCARDITEMSID Not IN"
             SQL = SQL & "                    (SELECT     TACSTOCKCARDITEMID"
             SQL = SQL & "                      From sysdba.SALESORDERITEMS "
-            SQL = SQL & "                      Where (SALESORDERID = '" & SalesOrderId & "')))"
+            SQL = SQL & "                      Where (SALESORDERID = '" & SalesOrderId & "' AND TACSTOCKCARDITEMID is not null )))"
         End If
         '=========================================================================
         SQL = SQL & " ORDER BY FAMILY"
@@ -218,9 +226,12 @@ Module Module1
             strSourceQuery = strSourceQuery & "   And (s.STOCKCARDITEMSID Not IN"
             strSourceQuery = strSourceQuery & "                    (SELECT     TACSTOCKCARDITEMID"
             strSourceQuery = strSourceQuery & "                      From sysdba.SALESORDERITEMS "
-            strSourceQuery = strSourceQuery & "                      Where (SALESORDERID = '" & SalesorderId & "')))"
+            strSourceQuery = strSourceQuery & "                      Where (SALESORDERID = '" & SalesorderId & "')"
+            strSourceQuery = strSourceQuery & "                      And TACSTOCKCARDITEMID Is Not null"
+            strSourceQuery = strSourceQuery & "        ))"
             'strSourceQuery = strSourceQuery & " Order by FAMILY , ACTUALID , WAREHOUSEID "
         End If
+
         Return strSourceQuery
 
     End Function
@@ -295,12 +306,7 @@ Module Module1
             conn.Dispose()
             conn = Nothing
         End Try
-        '=========================
-        ' Refresh SalesClient
-        '=========================
-        '==========================
-        Application.BringToFront()
-        Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
+
 
     End Sub
 

@@ -1,6 +1,7 @@
 ﻿Imports System.Data.OleDb
 Imports System.Drawing
 
+
 Public Class AddEditOrderProduct
     Property _SalesOrderId As String
     Property _AccountId As String
@@ -11,6 +12,7 @@ Public Class AddEditOrderProduct
     Property _OriginalMargin As Decimal
     Property _SpecialKeyPressed As Boolean
     Property _filter As String
+    Property _Lookupfilter As String
     Property _SalesOrderItemId As String
     Property _ProductId As String
     Property _CurrencyId As String
@@ -50,8 +52,9 @@ Public Class AddEditOrderProduct
 
         If _OrderType = "Sales Order" Then
             'For Sales Orders restrict by warehouse
-            _filter = " IN (SELECT PRODUCTID FROM PRODUCT WHERE  WAREHOUSEID = '" & _WareHouseId & "'"
-            _filter = _filter & " AND Family <> 'Exchange Returns' AND Family <> 'Bulk Products' AND Status <> 'Deleted') AND  1 = "
+            _Lookupfilter = " IN (SELECT PRODUCTID FROM sysdba.PRODUCT WHERE  WAREHOUSEID = '" & _WareHouseId & "'"
+            _Lookupfilter = _Lookupfilter & " AND Family <> 'Exchange Returns' AND Family <> 'Bulk Products' AND Status <> 'Deleted' " 'AND  1 = " Don't need the 1=1
+            _Lookupfilter = _Lookupfilter & ")"
             'lueProduct.LookupRestrictOp = filter
             'lueSKU.LookupRestrictOp = filter
             'lueUPC.LookupRestrictOp = filter
@@ -255,11 +258,14 @@ Public Class AddEditOrderProduct
         '    ' Default if none stored
         '    txtSKU.SetFocus
         'End If
-        txtSKU.Select()
+
         '===================================================================================================
         If ((_ProductId <> "") And (txtQuantity.Text <> "")) Then ' Validate before Saving
             'Check if extended price needs to be calculated - PG 2014-6-12
-            'If txtExtendedPrice.Text = 0 Then
+            'If Not IsNumeric(txtExtendedPrice.Text) Then
+            '    MsgBox("Invalid Quantity")
+            '    Exit Sub ' get outa here
+            'End If
             Dim ExtendedPrice
             ExtendedPrice = 0.0 ' Intitialize
 
@@ -278,33 +284,9 @@ Public Class AddEditOrderProduct
             'don't refresh the main grid to speed things up
             'RefreshMainGrid()
             ClearForm()
-
-            If _OrderType = "Sales Order" Then
-                '========================================================================
-                'pgarratt July 2, 2014 Dealing with Highlighted text after set focus
-                '=======================================================================
-                'txtSKU.SetFocus
-                '=======================================================================
-
-            ElseIf _OrderType = "Return Order" Then
-                '========================================================================
-                ' ssommerfeldt May 7, 2014 Dealing with Highlighted text after set focus
-                '=======================================================================
-                'frmAddProduct.txtUPC.SetFocus
-                '    Dim objSh
-                'Set objSh = CreateObject("WScript.Shell")
-                ''Example sending TAB key
-                'objSh.SendKeys "{END}", False
-                'Set objSh = Nothing
-
-            ElseIf _OrderType = "Transfer Order" Then
-                '========================================================================
-                'pgarratt July 2, 2014 Dealing with Highlighted text after set focus
-                '=======================================================================
-                'txtSKU.SetFocus
-                '=======================================================================
-            End If
+            txtSKU.Select()
         End If
+
         'SetSalesOrderGrandTotal(txtSalesOrderId.Text)
 
         'don't refresh the main grids to speed things up, but detail is ok.
@@ -1154,6 +1136,14 @@ Public Class AddEditOrderProduct
 
             'bind the table to a grid
             DataGridView1.DataSource = table
+            ' Ensure Nice formatting
+            'dgResults.Columns.Item("Productid").Visible = False  ' Hide the ProductId Column
+            'dgResults.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            DataGridView1.Columns(3).AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+            DataGridView1.Columns(1).AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+            DataGridView1.Columns(2).AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+            DataGridView1.Columns(3).AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+            DataGridView1.Columns(4).AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
 
         Catch ex As Exception
             'MessageBox.Show("An error occurred: " & ex.Message, "Error")
@@ -1641,12 +1631,91 @@ Public Class AddEditOrderProduct
         txtListPrice.Text = ""
         txtMaxstockLevel.Text = ""
         txtSuggestedOrder.Text = ""
+        txtStatus.Text = ""
         lblWarning.Visible = False
         CreateRunTimeDatagrid()
 
 
     End Sub
 
+    Private Sub cmdSearchSKU_Click(sender As Object, e As EventArgs) Handles cmdSearchSKU.Click
+        Dim frmSearchByProduct As New frmLookupProduct(SlxApplication.ConnectionString)
+        frmSearchByProduct.cboFilterBy.Text = "SKU"
+        frmSearchByProduct.mFilter = _Lookupfilter
+        frmSearchByProduct.txtSearchfor.Text = txtSKU.Text
+        frmSearchByProduct.GetInfo()
+        If frmSearchByProduct.ShowDialog() = DialogResult.OK Then
+            _ProductId = frmSearchByProduct.mProductId
+            txtSKU.Text = frmSearchByProduct.mSKU
+            If _ProductId <> "" Then
+                GetProductInfo(_ProductId)
+                txtQuantity.Select()
+                'Call CreateRuntimeDataGrid(Productid, dgHistory)
+                CreateRunTimeDatagrid()
+            End If
 
 
+        End If
+    End Sub
+
+    Private Sub cmdSearchUPC_Click(sender As Object, e As EventArgs) Handles cmdSearchUPC.Click
+        Dim frmSearchByProduct As New frmLookupProduct(SlxApplication.ConnectionString)
+        frmSearchByProduct.cboFilterBy.Text = "UPC"
+        frmSearchByProduct.txtSearchfor.Text = txtUPC.Text '"059511" ' Prepend as they typcially would have to type this in anyways
+        frmSearchByProduct.mFilter = _Lookupfilter
+        frmSearchByProduct.GetInfo()
+        If frmSearchByProduct.ShowDialog() = DialogResult.OK Then
+            _ProductId = frmSearchByProduct.mProductId
+            txtUPC.Text = frmSearchByProduct.mUPC
+            If _ProductId <> "" Then
+                GetProductInfo(_ProductId)
+                txtQuantity.Select()
+                'Call CreateRuntimeDataGrid(Productid, dgHistory)
+                CreateRunTimeDatagrid()
+            End If
+
+
+        End If
+    End Sub
+
+    Private Sub txtQuantity_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtQuantity.KeyPress
+        Dim tmp As System.Windows.Forms.KeyPressEventArgs = e
+        If tmp.KeyChar = ChrW(System.Windows.Forms.Keys.Enter) Then
+            '==================
+            ' Pressed Enter
+            '==================
+            cmdSave_Click(sender, e)
+        End If
+        If tmp.KeyChar = ChrW(System.Windows.Forms.Keys.Tab) Then
+            '==================
+            ' Pressed Tab
+            '==================
+            cmdSave_Click(sender, e)
+        End If
+        If Not IsNumeric(e.KeyChar) AndAlso System.Convert.ToByte(e.KeyChar) <> 8 AndAlso Convert.ToByte(e.KeyChar) <> 45 Then
+            e.Handled = True
+        End If
+
+    End Sub
+
+    Private Sub txtQuantity_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles txtQuantity.KeyDown
+        If e.KeyData = System.Windows.Forms.Keys.Tab Then
+            'Debug.WriteLine("Hello tab key")
+            '==================
+            ' Pressed Tab
+            '==================
+            cmdSave_Click(sender, e)
+        End If
+    End Sub
+
+    Private Sub txtQuantity_PreviewKeyDown(sender As Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles txtQuantity.PreviewKeyDown
+        '==================
+        ' Pressed Tab
+        '==================
+        If e.KeyCode = System.Windows.Forms.Keys.Tab Then
+            cmdSave_Click(sender, e)
+            txtDescription.Select()
+
+        End If
+    End Sub
 End Class

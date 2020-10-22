@@ -51,6 +51,8 @@ Partial Class AddEditOrderProduct
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblWarning = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.cmdSearchSKU = New System.Windows.Forms.Button()
+        Me.cmdSearchUPC = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -156,6 +158,7 @@ Partial Class AddEditOrderProduct
         '
         'txtQuantity
         '
+        Me.txtQuantity.AcceptsTab = True
         Me.txtQuantity.Location = New System.Drawing.Point(447, 174)
         Me.txtQuantity.Name = "txtQuantity"
         Me.txtQuantity.Size = New System.Drawing.Size(182, 20)
@@ -298,11 +301,39 @@ Partial Class AddEditOrderProduct
         Me.DataGridView1.Size = New System.Drawing.Size(585, 150)
         Me.DataGridView1.TabIndex = 26
         '
+        'cmdSearchSKU
+        '
+        Me.cmdSearchSKU.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdSearchSKU.Image = CType(resources.GetObject("cmdSearchSKU.Image"), System.Drawing.Image)
+        Me.cmdSearchSKU.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdSearchSKU.Location = New System.Drawing.Point(282, 174)
+        Me.cmdSearchSKU.Name = "cmdSearchSKU"
+        Me.cmdSearchSKU.Size = New System.Drawing.Size(74, 25)
+        Me.cmdSearchSKU.TabIndex = 64
+        Me.cmdSearchSKU.Text = "Search"
+        Me.cmdSearchSKU.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cmdSearchSKU.UseVisualStyleBackColor = True
+        '
+        'cmdSearchUPC
+        '
+        Me.cmdSearchUPC.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdSearchUPC.Image = CType(resources.GetObject("cmdSearchUPC.Image"), System.Drawing.Image)
+        Me.cmdSearchUPC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdSearchUPC.Location = New System.Drawing.Point(282, 212)
+        Me.cmdSearchUPC.Name = "cmdSearchUPC"
+        Me.cmdSearchUPC.Size = New System.Drawing.Size(74, 25)
+        Me.cmdSearchUPC.TabIndex = 65
+        Me.cmdSearchUPC.Text = "Search"
+        Me.cmdSearchUPC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cmdSearchUPC.UseVisualStyleBackColor = True
+        '
         'AddEditOrderProduct
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(658, 520)
+        Me.Controls.Add(Me.cmdSearchUPC)
+        Me.Controls.Add(Me.cmdSearchSKU)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.lblWarning)
         Me.Controls.Add(Me.txtStatus)
@@ -367,4 +398,6 @@ Partial Class AddEditOrderProduct
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblWarning As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents cmdSearchSKU As System.Windows.Forms.Button
+    Friend WithEvents cmdSearchUPC As System.Windows.Forms.Button
 End Class

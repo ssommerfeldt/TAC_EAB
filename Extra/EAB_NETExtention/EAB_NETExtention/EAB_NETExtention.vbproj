@@ -87,6 +87,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Common.vb" />
+    <Compile Include="frmLookupProduct.designer.vb">
+      <DependentUpon>frmLookupProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLookupProduct.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SyncProducts.Designer.vb">
       <DependentUpon>SyncProducts.vb</DependentUpon>
     </Compile>
@@ -113,6 +119,9 @@
     <EmbeddedResource Include="AddEditOrderProduct.resx">
       <DependentUpon>AddEditOrderProduct.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLookupProduct.resx">
+      <DependentUpon>frmLookupProduct.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SyncProducts.resx">
       <DependentUpon>SyncProducts.vb</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +133,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
