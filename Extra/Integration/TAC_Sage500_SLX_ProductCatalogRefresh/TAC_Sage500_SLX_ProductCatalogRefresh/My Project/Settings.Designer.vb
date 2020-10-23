@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -57,8 +57,8 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Password=lambarena;Persist Security Info=True;User ID=SA;Ini"& _ 
-            "tial Catalog=SalesLogix_Test;Data Source=APOLLO;Initial File Name="""";Server SPN="& _ 
-            """""")>  _
+            "tial Catalog=SalesLogix_Production_unicode;Data Source=APOLLO;Initial File Name="& _ 
+            """"";Server SPN=""""")>  _
         Public Property SLXNativeConstr() As String
             Get
                 Return CType(Me("SLXNativeConstr"),String)
@@ -71,7 +71,7 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Password=lambarena;Persist Security Info=True;User ID=sa;Ini"& _ 
-            "tial Catalog=mas500_tst_app;Data Source=APOLLO;Initial File Name="""";Server SPN="""& _ 
+            "tial Catalog=mas500_eab_app;Data Source=APOLLO;Initial File Name="""";Server SPN="""& _ 
             """")>  _
         Public Property Sage500Constr() As String
             Get
@@ -84,9 +84,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password="""";Persist Security Info=True;User ID=admin;Initial "& _ 
-            "Catalog=INFORCRMTEST;Data Source=PLUTO;Extended Properties=""PORT=1706;LOG=ON;CAS"& _ 
-            "EINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password=""lambarena76"";Persist Security Info=True;User ID=adm"& _ 
+            "in;Initial Catalog=SalesLogix;Data Source=ATHENA2017;Extended Properties=""PORT=1"& _ 
+            "706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;""")>  _
         Public Property SLXConstr() As String
             Get
                 Return CType(Me("SLXConstr"),String)
