@@ -35,8 +35,7 @@ Module Module1
 
         Dim strInsertSQL As String = GetInsertQuerySQL(Accountid, SalesOrderID, UserId, isAllStockCards)
         ExecuteBulkLoadInsert(strInsertSQL)
-        SetDisconnectedDataFlag(SalesOrderID, UserId, "T")
-        ' Set Disconnected Flag
+
 
 
         '===================================================================================
@@ -48,6 +47,8 @@ Module Module1
         ' Refresh Client
         '=====================================
         Console.WriteLine("Preparing to Refresh CRM Client")
+        SetDisconnectedDataFlag(SalesOrderID, UserId, "T")
+        ' Set Disconnected Flag
         Dim Application As New SLXCOMInterop.SlxApplication
         Application.BringToFront()
         Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")

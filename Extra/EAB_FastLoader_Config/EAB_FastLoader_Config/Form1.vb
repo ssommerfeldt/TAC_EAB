@@ -47,6 +47,17 @@
     End Function
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
+        Try
+            SaveAddEditConfig()
+            SaveFastLoader()
+            MsgBox("Saved Successfully")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+    End Sub
+    Private Sub SaveFastLoader()
         Dim file As System.IO.StreamWriter
         file = My.Computer.FileSystem.OpenTextFileWriter("C:\EAB\EABFastOrderLoaderTEST.exe.config", False)
         Using file
@@ -82,7 +93,51 @@
 
             file.Close()
         End Using
-        MsgBox("Saved Successfully")
+    End Sub
+    Private Sub SaveAddEditConfig()
+        Dim file As System.IO.StreamWriter
+        file = My.Computer.FileSystem.OpenTextFileWriter("C:\EAB\EABFastOrderLoaderTEST.exe.config", False)
+        Using file
+            file.WriteLine("<?xml version=""1.0"" encoding=""utf-8"" ?>")
+            file.WriteLine("<configuration>")
+            file.WriteLine("    <configSections>")
+            file.WriteLine("         <sectionGroup name = ""userSettings"" type=""System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"" >")
+            file.WriteLine("             <section name = ""EAB_NET_CRMForms.My.MySettings"" type=""System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"" allowExeDefinition=""MachineToLocalUser"" requirePermission=""false"" />")
+            file.WriteLine("         </sectionGroup>")
+            file.WriteLine("     </configSections>")
+            file.WriteLine("     <system.diagnostics>")
+            file.WriteLine("         <sources>")
+            file.WriteLine("                         <!-- This section defines the logging configuration for My.Application.Log -->")
+            file.WriteLine("             <source name = ""DefaultSource"" switchName=""DefaultSwitch"">")
+            file.WriteLine("                 <listeners>")
+            file.WriteLine("                     <add name = ""FileLog"" />")
+            file.WriteLine("             <!-- Uncomment the below section to write to the Application Event Log -->")
+            file.WriteLine("                                 <!--<add name=""EventLog""/>-->")
+            file.WriteLine("                 </listeners>")
+            file.WriteLine("             </source>")
+            file.WriteLine("         </sources>")
+            file.WriteLine("         <switches>")
+            file.WriteLine("             <add name = ""DefaultSwitch"" value=""Information""/>")
+            file.WriteLine("         </switches>")
+            file.WriteLine("         <sharedListeners>")
+            file.WriteLine("             <add name = ""FileLog"" type=""Microsoft.VisualBasic.Logging.FileLogTraceListener, Microsoft.VisualBasic, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"" initializeData=""FileLogWriter""/>")
+            file.WriteLine("             <!-- Uncomment the below section And replace APPLICATION_NAME with the name of your application to write to the Application Event Log -->")
+            file.WriteLine("             <!--<add name=""EventLog"" type=""System.Diagnostics.EventLogTraceListener"" initializeData=""APPLICATION_NAME""/> -->")
+            file.WriteLine("         </sharedListeners>")
+            file.WriteLine("     </system.diagnostics>")
+            file.WriteLine(" <startup><supportedRuntime version = ""v4.0"" sku="".NETFramework,Version=v4.5.2""/></startup><userSettings>")
+            file.WriteLine("         <EAB_NET_CRMForms.My.MySettings>")
+            file.WriteLine("             <setting name = ""SLXConnectionString"" serializeAs=""String"">")
+            '============================================================================================================================
+            file.WriteLine("                <value>" & txtSLXConstring.Text) ' Provider=SLXOLEDB.1;Password="";Persist Security Info=True;User ID=admin;Initial Catalog=SALESLOGIX;Data Source=EAB841;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"
+            file.WriteLine("</value>")
+            '=================================================================================================================================
+            file.WriteLine("                        </setting>")
+            file.WriteLine("          </EAB_NET_CRMForms.My.MySettings>")
+            file.WriteLine("      </userSettings>")
+            file.WriteLine("  </configuration>")
 
+            file.Close()
+        End Using
     End Sub
 End Class
