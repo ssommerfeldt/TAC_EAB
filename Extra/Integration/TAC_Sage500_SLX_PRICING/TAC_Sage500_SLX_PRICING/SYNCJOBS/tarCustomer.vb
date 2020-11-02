@@ -307,7 +307,7 @@ Module tarCustomer
                 .Open(strSQL, objConn)
                 If .EOF Then
                     'adding
-                 
+
 
                 Else
                     '=======================================
@@ -329,6 +329,7 @@ Module tarCustomer
 
         End Try
     End Sub
+
 
 
 
