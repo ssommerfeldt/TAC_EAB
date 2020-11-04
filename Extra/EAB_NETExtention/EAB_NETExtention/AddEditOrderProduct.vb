@@ -30,8 +30,6 @@ Public Class AddEditOrderProduct
 
     Private Sub AddEditOrderProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _SalesOrderId = CurrentID
-
-
         _OriginalProductPrice = 0
         _OriginalMargin = 0
         _SpecialKeyPressed = False
@@ -305,6 +303,7 @@ Public Class AddEditOrderProduct
         ExtendedPrice = RoundUp(Price * Quantity, 2)
         txtExtendedPrice.Text = ExtendedPrice
     End Sub
+
     'Function GetWareHouseId(ByVal SalesOrderId As String)
 
     '    Dim strWareHouseId As String = ""
@@ -319,6 +318,7 @@ Public Class AddEditOrderProduct
     '    GetWareHouseId = strWareHouseId
 
     'End Function
+
     Function GetWareHouseId(ByVal SalesOrderId As String) As String
         Dim strSQL As String = ""
         Dim returnValue As String = ""
@@ -357,6 +357,7 @@ Public Class AddEditOrderProduct
         End Try
         Return returnValue
     End Function
+
     Sub GetProductInfo(ByVal Productid As String)
         'Stop
         Dim Discount As Double
@@ -547,6 +548,7 @@ Public Class AddEditOrderProduct
 
 
     End Sub
+
     Sub ClearProductInfo()
         'Clear the product information before seaching a new product
         txtDescription.Text = ""
@@ -588,6 +590,8 @@ Public Class AddEditOrderProduct
             'cmdSaveClick(sender)
         End If
     End Sub
+
+    '=======================================================================
     Sub GetSalesOrderItemInfo(ByVal SalesOrderItemId)
         '=======================
         'Retrieving a recordset:
@@ -645,6 +649,7 @@ Public Class AddEditOrderProduct
 
 
     End Sub
+
     Function GetOriginalProductPricing(ByVal ActualId As String,
                                        ByVal AccountId As String,
                                        ByRef Price As Decimal, ByRef Margin As Decimal) As String
@@ -1152,6 +1157,7 @@ Public Class AddEditOrderProduct
             conn = Nothing
         End Try
     End Sub
+
     Sub AddEditSalesOrderItem(ByVal SalesOrderItemId, ByVal Quantity, ByVal ListPrice, ByVal Price, ByVal Discount, ByVal ExtendedPrice)
 
         '=======================
@@ -1377,6 +1383,7 @@ Public Class AddEditOrderProduct
 
 
     End Sub
+
     Function GetSalesHistoryByIndex(ByVal Accountid As String, ByVal SKU As String, ByRef Index1 As String, ByRef Index2 As String, ByRef Index3 As String)
 
         Dim SQL As String
@@ -1718,4 +1725,5 @@ Public Class AddEditOrderProduct
 
         End If
     End Sub
+
 End Class

@@ -47,6 +47,7 @@ Public Class frmLookupProduct
         ' This call is required by the Windows Form Designer.
         InitializeComponent()
         _strConn = StrConn
+        Trace.Listeners.Add(New TextWriterTraceListener("Debug.txt"))
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
@@ -124,6 +125,9 @@ Public Class frmLookupProduct
         Try
             'open connection
             conn.Open()
+            Trace.WriteLine("Successfully Connected to the Database")
+            Trace.WriteLine(_strConn)
+            Trace.WriteLine("SQL =" & SQL)
             'create the DataAdapter. it will internally create a command object
             Dim da As New OleDbDataAdapter(SQL, conn)
 
@@ -153,6 +157,7 @@ Public Class frmLookupProduct
             'dgResults.AutoResizeColumns()
 
         Catch ex As Exception
+
             MessageBox.Show("An error occurred: " & ex.Message, "Error")
         Finally
             conn.Dispose()

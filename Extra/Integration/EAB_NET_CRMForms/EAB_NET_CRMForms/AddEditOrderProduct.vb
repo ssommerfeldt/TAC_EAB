@@ -46,7 +46,8 @@ Public Class AddEditOrderProduct
         _SpecialKeyPressed = False
         lblWarning.Visible = False
         '    'Specify filters by order type
-
+        Debug.WriteLine("Loading Add Edit Salesorderid= " & _SalesOrderId)
+        '======================================================================
         _OrderType = GetField("ORDERTYPE", "SALESORDER", " SALESORDERID='" & _SalesOrderId & "'", My.Settings.SLXConnectionString)
         _AccountId = GetField("Accountid", "Salesorder", "Salesorderid ='" & _SalesOrderId & "'", My.Settings.SLXConnectionString)
         _CurrencyId = GetField("Isnull(CURRENCYCODE,'CAD')", "Account", "AccountID = '" & _AccountId & "'", My.Settings.SLXConnectionString)

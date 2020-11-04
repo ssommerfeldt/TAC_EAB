@@ -96,7 +96,7 @@
     End Sub
     Private Sub SaveAddEditConfig()
         Dim file As System.IO.StreamWriter
-        file = My.Computer.FileSystem.OpenTextFileWriter("C:\EAB\EABFastOrderLoaderTEST.exe.config", False)
+        file = My.Computer.FileSystem.OpenTextFileWriter("c:\EAB\EAB_NET_CRMForms.exe.config", False)
         Using file
             file.WriteLine("<?xml version=""1.0"" encoding=""utf-8"" ?>")
             file.WriteLine("<configuration>")

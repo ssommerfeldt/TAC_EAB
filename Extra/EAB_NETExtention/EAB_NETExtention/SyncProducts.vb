@@ -4,6 +4,7 @@ Imports System.Data.OleDb
 
 Public Class SyncProducts : Inherits FX.SalesLogix.NetExtensionsHelper.SalesLogixDialog
     Dim _SalesOrderId As String
+
     Private Sub SyncProducts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _SalesOrderId = CurrentID
         '===========================================================================
@@ -116,6 +117,7 @@ Public Class SyncProducts : Inherits FX.SalesLogix.NetExtensionsHelper.SalesLogi
         Next
         ProgressBar1.Visible = False
     End Sub
+
     Sub SetDisconnectedDataFlag(ByVal SalesOrderId As String, ByVal Flag As String)
         '=======================
         'Retrieving a recordset:
