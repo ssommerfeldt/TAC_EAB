@@ -69,7 +69,7 @@
             file.WriteLine("        </sectionGroup>")
             file.WriteLine("    </configSections>")
             file.WriteLine("    <startup> ")
-            file.WriteLine("        <supportedRuntime version=""v4.0"" sku="".NETFramework,Version=v4.6.1"" />")
+            file.WriteLine("        <supportedRuntime version=""v4.0"" sku="".NETFramework,Version=v4.5.2"" />")
             file.WriteLine("    </startup>")
             file.WriteLine("    <userSettings>")
             file.WriteLine("        <EABFastOrderLoaderTEST.My.MySettings>")

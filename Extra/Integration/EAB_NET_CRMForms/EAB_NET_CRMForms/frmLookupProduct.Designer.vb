@@ -37,11 +37,12 @@ Partial Class frmLookupProduct
         '
         Me.dgResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgResults.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.dgResults.Location = New System.Drawing.Point(0, 87)
+        Me.dgResults.Location = New System.Drawing.Point(0, 108)
         Me.dgResults.Margin = New System.Windows.Forms.Padding(2)
         Me.dgResults.Name = "dgResults"
+        Me.dgResults.RowHeadersWidth = 62
         Me.dgResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgResults.Size = New System.Drawing.Size(806, 166)
+        Me.dgResults.Size = New System.Drawing.Size(907, 208)
         Me.dgResults.TabIndex = 74
         '
         'Label1
@@ -49,10 +50,10 @@ Partial Class frmLookupProduct
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label1.Location = New System.Drawing.Point(6, 52)
+        Me.Label1.Location = New System.Drawing.Point(7, 65)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(92, 19)
+        Me.Label1.Size = New System.Drawing.Size(107, 23)
         Me.Label1.TabIndex = 73
         Me.Label1.Text = "Search By:"
         '
@@ -62,30 +63,29 @@ Partial Class frmLookupProduct
         Me.cboFilterBy.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboFilterBy.FormattingEnabled = True
         Me.cboFilterBy.Items.AddRange(New Object() {"SKU", "UPC"})
-        Me.cboFilterBy.Location = New System.Drawing.Point(124, 44)
+        Me.cboFilterBy.Location = New System.Drawing.Point(140, 55)
         Me.cboFilterBy.Margin = New System.Windows.Forms.Padding(2)
         Me.cboFilterBy.Name = "cboFilterBy"
-        Me.cboFilterBy.Size = New System.Drawing.Size(214, 34)
+        Me.cboFilterBy.Size = New System.Drawing.Size(240, 37)
         Me.cboFilterBy.TabIndex = 72
         '
         'txtSearchfor
         '
         Me.txtSearchfor.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearchfor.Location = New System.Drawing.Point(124, 6)
-        Me.txtSearchfor.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.txtSearchfor.Multiline = True
+        Me.txtSearchfor.Location = New System.Drawing.Point(140, 8)
+        Me.txtSearchfor.Margin = New System.Windows.Forms.Padding(2, 4, 2, 4)
         Me.txtSearchfor.Name = "txtSearchfor"
-        Me.txtSearchfor.Size = New System.Drawing.Size(214, 33)
+        Me.txtSearchfor.Size = New System.Drawing.Size(240, 35)
         Me.txtSearchfor.TabIndex = 68
         '
         'cmdOK
         '
         Me.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.cmdOK.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdOK.Location = New System.Drawing.Point(466, 6)
+        Me.cmdOK.Location = New System.Drawing.Point(524, 8)
         Me.cmdOK.Margin = New System.Windows.Forms.Padding(2)
         Me.cmdOK.Name = "cmdOK"
-        Me.cmdOK.Size = New System.Drawing.Size(92, 36)
+        Me.cmdOK.Size = New System.Drawing.Size(104, 45)
         Me.cmdOK.TabIndex = 71
         Me.cmdOK.Text = "OK"
         Me.cmdOK.UseVisualStyleBackColor = True
@@ -95,10 +95,10 @@ Partial Class frmLookupProduct
         Me.cmdSearch.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSearch.Image = CType(resources.GetObject("cmdSearch.Image"), System.Drawing.Image)
         Me.cmdSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdSearch.Location = New System.Drawing.Point(359, 5)
-        Me.cmdSearch.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.cmdSearch.Location = New System.Drawing.Point(404, 6)
+        Me.cmdSearch.Margin = New System.Windows.Forms.Padding(2, 4, 2, 4)
         Me.cmdSearch.Name = "cmdSearch"
-        Me.cmdSearch.Size = New System.Drawing.Size(92, 36)
+        Me.cmdSearch.Size = New System.Drawing.Size(104, 45)
         Me.cmdSearch.TabIndex = 70
         Me.cmdSearch.Text = "Search"
         Me.cmdSearch.UseVisualStyleBackColor = True
@@ -108,18 +108,18 @@ Partial Class frmLookupProduct
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(8, 14)
+        Me.Label2.Location = New System.Drawing.Point(9, 18)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(92, 19)
+        Me.Label2.Size = New System.Drawing.Size(108, 23)
         Me.Label2.TabIndex = 69
         Me.Label2.Text = "Search for:"
         '
         'frmLookupProduct
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(806, 253)
+        Me.ClientSize = New System.Drawing.Size(907, 316)
         Me.Controls.Add(Me.dgResults)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cboFilterBy)
@@ -127,6 +127,7 @@ Partial Class frmLookupProduct
         Me.Controls.Add(Me.cmdOK)
         Me.Controls.Add(Me.cmdSearch)
         Me.Controls.Add(Me.Label2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmLookupProduct"
         Me.Text = "Lookup Product"
         CType(Me.dgResults, System.ComponentModel.ISupportInitialize).EndInit()

@@ -42,12 +42,12 @@ Public Class frmLookupProduct
         End Set
     End Property
 
-    Public Sub New(ByVal StrConn As String)
+    Public Sub New()
 
         ' This call is required by the Windows Form Designer.
         InitializeComponent()
-        _strConn = StrConn
-        Trace.Listeners.Add(New TextWriterTraceListener("Debug.txt"))
+        _strConn = My.Settings.SLXConnectionString 'StrConn
+        ' Trace.Listeners.Add(New TextWriterTraceListener("Debug.txt"))
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
@@ -68,8 +68,21 @@ Public Class frmLookupProduct
     End Sub
 
     Private Sub txtSearchfor_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSearchfor.KeyPress
-        If e.KeyChar = Chr(13) Then
-            Call GetInfo()
+        'If e.KeyChar = Chr(13) Then
+        '    Call GetInfo()
+        'End If
+        Dim tmp As System.Windows.Forms.KeyPressEventArgs = e
+        If tmp.KeyChar = ChrW(System.Windows.Forms.Keys.Enter) Then
+            '==================
+            ' Pressed Enter
+            '==================
+            GetInfo()
+        End If
+        If tmp.KeyChar = ChrW(System.Windows.Forms.Keys.Tab) Then
+            '==================
+            ' Pressed Tab Doesn't work
+            '==================
+            GetInfo()
         End If
     End Sub
 
@@ -125,9 +138,9 @@ Public Class frmLookupProduct
         Try
             'open connection
             conn.Open()
-            Trace.WriteLine("Successfully Connected to the Database")
-            Trace.WriteLine(_strConn)
-            Trace.WriteLine("SQL =" & SQL)
+            'Trace.WriteLine("Successfully Connected to the Database")
+            'Trace.WriteLine(_strConn)
+            'Trace.WriteLine("SQL =" & SQL)
             'create the DataAdapter. it will internally create a command object
             Dim da As New OleDbDataAdapter(SQL, conn)
 
@@ -164,6 +177,17 @@ Public Class frmLookupProduct
             conn = Nothing
         End Try
 
+    End Sub
+
+    Private Sub txtSearchfor_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtSearchfor.PreviewKeyDown
+        '==================
+        ' Pressed Tab
+        '==================
+        If e.KeyCode = System.Windows.Forms.Keys.Tab Then
+            GetInfo()
+            txtSearchfor.Select()
+
+        End If
     End Sub
 
 

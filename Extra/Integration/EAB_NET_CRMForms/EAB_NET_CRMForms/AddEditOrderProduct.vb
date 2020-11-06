@@ -24,6 +24,7 @@ Public Class AddEditOrderProduct
     Property _ProductName As String
     Property _CurrentID As String
     Property SlxApplication As SLXCOMInterop.SlxApplication
+    Property _LastControlForSearch As String
 
     Property mCurrentID() As String
         Get
@@ -189,7 +190,7 @@ Public Class AddEditOrderProduct
     End Sub
 
     Private Sub cmdSearchSKU_Click(sender As Object, e As EventArgs) Handles cmdSearchSKU.Click
-        Dim frmSearchByProduct As New frmLookupProduct(My.Settings.SLXConnectionString)
+        Dim frmSearchByProduct As New frmLookupProduct()
         frmSearchByProduct.cboFilterBy.Text = "SKU"
         frmSearchByProduct.mFilter = _Lookupfilter
         frmSearchByProduct.txtSearchfor.Text = txtSKU.Text
@@ -208,10 +209,11 @@ Public Class AddEditOrderProduct
 
 
         End If
+        _LastControlForSearch = "txtSKU"
     End Sub
 
     Private Sub cmdSearchUPC_Click(sender As Object, e As EventArgs) Handles cmdSearchUPC.Click
-        Dim frmSearchByProduct As New frmLookupProduct(My.Settings.SLXConnectionString)
+        Dim frmSearchByProduct As New frmLookupProduct()
         frmSearchByProduct.cboFilterBy.Text = "UPC"
         frmSearchByProduct.txtSearchfor.Text = txtUPC.Text '"059511" ' Prepend as they typcially would have to type this in anyways
         frmSearchByProduct.mFilter = _Lookupfilter
@@ -230,6 +232,7 @@ Public Class AddEditOrderProduct
 
 
         End If
+        _LastControlForSearch = "txtUPC"
     End Sub
 
     Private Sub txtSKU_Leave(sender As Object, e As EventArgs) Handles txtSKU.Leave
@@ -288,6 +291,8 @@ Public Class AddEditOrderProduct
 
 
         If _ProductId <> "" Then
+            _LastControlForSearch = "txtSKU"
+
             GetProductInfo(_ProductId)
             txtQuantity.Select()
             'Call CreateRuntimeDataGrid(Productid, dgHistory)
@@ -367,7 +372,8 @@ Public Class AddEditOrderProduct
             'don't refresh the main grid to speed things up
             'RefreshMainGrid()
             ClearForm()
-            txtSKU.Select()
+
+
         End If
 
         'SetSalesOrderGrandTotal(txtSalesOrderId.Text)
@@ -380,6 +386,12 @@ Public Class AddEditOrderProduct
         SlxApplication.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
         'SlxApplication.BringToFront()
         Me.BringToFront()
+        If _LastControlForSearch = "txtSKU" Then
+            txtSKU.Select()
+        End If
+        If _LastControlForSearch = "txtUPC" Then
+            txtUPC.Select()
+        End If
     End Sub
 
     Private Sub txtQuantity_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQuantity.KeyPress
@@ -418,7 +430,17 @@ Public Class AddEditOrderProduct
         '==================
         If e.KeyCode = System.Windows.Forms.Keys.Tab Then
             cmdSave_Click(sender, e)
-            txtDescription.Select()
+            '=================================================
+            ' This is confusing.  So this is basd on the TAB control
+            'so we are setting focus on the Control above as the Tab will contiune and select the contol we want
+            ' not ideal but that is how it is behaving.
+            '===========================================
+            If _LastControlForSearch = "txtSKU" Then
+                txtDescription.Select()
+            End If
+            If _LastControlForSearch = "txtUPC" Then
+                txtSKU.Select()
+            End If
 
         End If
     End Sub
@@ -460,7 +482,7 @@ Public Class AddEditOrderProduct
                 .Close()
             End With
         Catch ex As Exception
-            'MsgBox(ex.Message)
+            MsgBox(ex.Message)
             ' Console.WriteLine(ex.Message)
 
         End Try
@@ -1204,7 +1226,7 @@ Public Class AddEditOrderProduct
         Sql = Sql & " WHERE (A1.QUANTITY > 0) AND (A2.ACCOUNTID = '" & _AccountId & "')"
         Sql = Sql & " AND (A1.ACTUALID = '" & txtSKU.Text & "')"
         Sql = Sql & " And TRANSMITDATE Is Not Null"
-        Sql = Sql & " ORDER BY A2_ORDERDATE DESC"
+        Sql = Sql & " ORDER BY OrderDate DESC"
         Try
             'open connection
             conn.Open()
@@ -1790,6 +1812,7 @@ Public Class AddEditOrderProduct
 
 
         If _ProductId <> "" Then
+            _LastControlForSearch = "txtUPC"
             GetProductInfo(_ProductId)
             txtQuantity.Select()
             'Call CreateRuntimeDataGrid(Productid, dgHistory)

@@ -41,6 +41,10 @@ Module Module1
         '===================================================================================
         ' Step 3.  Update SalesHistory
         '====================================================================================
+        SetDisconnectedDataFlag(SalesOrderID, UserId, "T")
+        Dim Application As New SLXCOMInterop.SlxApplication
+        Application.BringToFront()
+        Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
         ProcessSalesHistory(SalesOrderID, Accountid)
 
         '=====================================
@@ -49,8 +53,7 @@ Module Module1
         Console.WriteLine("Preparing to Refresh CRM Client")
         SetDisconnectedDataFlag(SalesOrderID, UserId, "T")
         ' Set Disconnected Flag
-        Dim Application As New SLXCOMInterop.SlxApplication
-        Application.BringToFront()
+
         Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
 
     End Sub
@@ -334,7 +337,7 @@ Module Module1
         Dim objRS As New ADODB.Recordset
         Dim i As Integer = 0
         Dim returnValue = "None"
-
+        Dim myQTY As String
         Try
             objConn.Open(My.Settings.SLXNative)
             With objRS
@@ -350,17 +353,18 @@ Module Module1
                         '.Fields("OPENQTY").Value = MyDataRow("OPENQTY")
                         Dim OrderDate
                         OrderDate = CDate(.Fields("ORDERDATE").Value)
-
+                        myQTY = CDbl(.Fields("Qty").Value).ToString("####")
+                        returnValue = "Success"
                         If (i = 0) Then
-                            Index1 = MonthName(Month(OrderDate), 1) & " " & Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & .Fields("Qty").Value
+                            Index1 = MonthName(Month(OrderDate), 1) & " " & Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & myQTY
                             returnValue = "Success"
                         End If
                         If (i = 1) Then
-                            Index2 = MonthName(Month(OrderDate), 1) & " " & Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & .Fields("Qty").Value
+                            Index2 = MonthName(Month(OrderDate), 1) & " " & Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & myQTY
                             returnValue = "Success"
                         End If
                         If (i = 2) Then
-                            Index3 = MonthName(Month(OrderDate), 1) & " " & Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & .Fields("Qty").Value
+                            Index3 = MonthName(Month(OrderDate), 1) & " " & Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & myQTY
                             returnValue = "Success"
                         End If
                         If (i > 2) Then
