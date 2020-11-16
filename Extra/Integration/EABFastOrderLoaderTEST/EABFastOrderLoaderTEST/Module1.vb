@@ -54,7 +54,7 @@ Module Module1
         SetDisconnectedDataFlag(SalesOrderID, UserId, "T")
         ' Set Disconnected Flag
 
-        Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
+        ' Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
 
     End Sub
 
@@ -145,9 +145,9 @@ Module Module1
         SQL = SQL & "     z.SLX_SALESORDERITEMID AS SALESORDERITEMSID"
         SQL = SQL & " 	,'" & SalesOrderId & "' AS SALESORDERID"
         SQL = SQL & " 	,'" & UserId & "' AS CREATEUSER"
-        SQL = SQL & " 	,getutcdate() AS CREATEDATE"
+        SQL = SQL & " 	,'" & Now.ToString("yyyyMMdd HH:mm:ss") & "' AS CREATEDATE"
         SQL = SQL & " 	,'" & UserId & "' AS MODIFYUSER"
-        SQL = SQL & " 	,getutcdate() AS MODIFYDATE"
+        SQL = SQL & " 	,'" & Now.ToString("yyyyMMdd HH:mm:ss") & "' AS MODIFYDATE"
         SQL = SQL & " 	,p.NAME AS PRODUCT"
         SQL = SQL & " 	,s.LISTPRICE AS PRICE"
         SQL = SQL & " 	,0 AS QUANTITY"

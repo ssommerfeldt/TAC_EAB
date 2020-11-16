@@ -367,7 +367,7 @@ Public Class AddEditOrderProduct
             ExtendedPrice = RoundUp(Price * Quantity, 2)
             txtExtendedPrice.Text = ExtendedPrice
             'End If
-
+            'AddEditSALESORDERITEM(_SalesOrderItemId)
             AddEditSalesOrderItem(_SalesOrderItemId, txtQuantity.Text, txtListPrice.Text, txtPrice.Text, txtMargin.Text, txtExtendedPrice.Text)
             'don't refresh the main grid to speed things up
             'RefreshMainGrid()
@@ -1291,9 +1291,9 @@ Public Class AddEditOrderProduct
 
         'If item id is blank force a new record
         If SalesOrderItemId = "" Then
-            strSQL = "Select * From SALESORDERITEMS Where 1=2"
+            strSQL = "Select * From sysdba.SALESORDERITEMS Where 1=2"
         Else
-            strSQL = "Select * From SALESORDERITEMS Where SALESORDERITEMSID = '" & SalesOrderItemId & "'" ' sql you want to execute
+            strSQL = "Select * From sysdba.SALESORDERITEMS Where SALESORDERITEMSID = '" & SalesOrderItemId & "'" ' sql you want to execute
         End If
 
         Dim objConn As New ADODB.Connection()
@@ -1317,69 +1317,49 @@ Public Class AddEditOrderProduct
 
 
                 If Not (.BOF And .EOF) Then ' Check not at end/beginning
-                    '.Fields("SALESORDERITEMSID").Value =Application.BasicFunctions.GetIDFor("SALESORDERITEMS")
-                    '.Fields("SALESORDERID").Value =""
-                    '.Fields("CREATEUSER").Value =""
-                    '.Fields("CREATEDATE").Value =""
+
                     .Fields("MODIFYUSER").Value = SlxApplication.BasicFunctions.CurrentUserID
                     .Fields("MODIFYDATE").Value = Now
-                    '.Fields("PRODUCT").Value =""
-                    '.Fields("PROGRAM").Value =""
+
                     .Fields("PRICE").Value = RoundUp(CDbl(CheckEmpty(ListPrice, 0)), 2)
                     .Fields("QUANTITY").Value = CDbl(Quantity)
                     .Fields("DISCOUNT").Value = CDbl(CheckEmpty(Discount, 0))
                     .Fields("CALCULATEDPRICE").Value = RoundUp(CDbl(CheckEmpty(Price, 0)), 2)
                     .Fields("EXTENDEDPRICE").Value = RoundUp(CDbl(ExtendedPrice), 2)
-                    '.Fields("FAMILY").Value =""
-                    '.Fields("OPPPRODUCTID").Value =""
-                    '.Fields("PRODUCTID").Value =""
-                    '.Fields("ACTUALID").Value =""
-                    '.Fields("DESCRIPTION").Value =""
-                    '.Fields("UNIT").Value =""
-                    '.Fields("GLOBALSYNCID").Value =""
-                    If IsNumeric(CheckNull(.Fields("LINENUMBER").Value, "")) Then
+
+                    If .Fields("LINENUMBER").Value IsNot DBNull.Value Then
+                        ' If IsNumeric(CheckNull(.Fields("LINENUMBER").Value, "")) Then
                         'Do Nothing as it allready has a line
                     Else
                         NextLineNumber = CInt(GetField(" ISNULL(MAX(LINENUMBER), 0)", "SALESORDERITEMS", "SALESORDERID='" & _SalesOrderId & "'", My.Settings.SLXConnectionString)) + 1
                         .Fields("LINENUMBER").Value = NextLineNumber
                     End If
 
-                    '.Fields("LINETYPE").Value =""
-                    '.Fields("SLXLOCATIONID").Value =""
-                    '.Fields("UNITOFMEASUREID").Value =""
-                    '.Fields("PRICEDETAILDESCRIPTION").Value =""
-                    '.Fields("PRICEDETAILNOTES").Value =""
-                    '.Fields("ITEMLOCKED").Value =""
-                    '.Fields("TICK").Value =""
-                    '.Fields("APPID").Value =""
-                    '.Fields("COMMODITYTYPE").Value =""
-                    '.Fields("CREATESOURCE").Value =""
-                    '.Fields("UPC").Value =""
-                    '.Fields("MAX_STOCKLEVEL").Value =""
+
                     .Fields("TACACCOUNTID").Value = _AccountId
                     .Fields("ACCOUNTID").Value = _AccountId
-                    '.Fields("TACSTOCKCARDITEMID").Value =""
+
                     .Fields("ORIGPRODUCTPRICE").Value = _OriginalProductPrice
                     .Fields("ORIGPRODUCTDISCOUNT").Value = _OriginalMargin
 
-                    'Add the current and previous sales quantities
+                    'Add the current And previous sales quantities
                     .Fields("CURRENTYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
-                            "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
-                            "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'CLOSED')" &
-                            " And Year(SO.OrderDate) = YEAR(GetDate())" &
-                            " And SOI.QUANTITY <> 0" &
-                            " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
-                            " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
+                        "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
+                        "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'CLOSED')" &
+                        " And Year(SO.OrderDate) = YEAR(GetDate())" &
+                        " And SOI.QUANTITY <> 0" &
+                        " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
+                        " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
 
                     .Fields("PREVIOUSYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
-                            "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
-                            "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'Closed')" &
-                            " And Year(SO.OrderDate) = YEAR(GetDate()) - 1" &
-                            " And SOI.QUANTITY <> 0" &
-                            " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
-                            " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
+                        "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
+                        "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'Closed')" &
+                        " And Year(SO.OrderDate) = YEAR(GetDate()) - 1" &
+                        " And SOI.QUANTITY <> 0" &
+                        " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
+                        " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
 
-                    If GetSalesHistoryByIndex(_AccountId, txtSKU.Text, LastOrder, LastOrder2, LastOrder3) = "SUCCESS" Then
+                    If GetSalesHistoryByIndex(_AccountId, txtSKU.Text, LastOrder, LastOrder2, LastOrder3) = "Success" Then
                         .Fields("LASTORDER").Value = LastOrder
                         .Fields("LASTORDER2").Value = LastOrder2
                         .Fields("LASTORDER3").Value = LastOrder3
@@ -1451,21 +1431,21 @@ Public Class AddEditOrderProduct
                     .Fields("ORIGPRODUCTDISCOUNT").Value = _OriginalMargin
 
                     'Add the current and previous sales quantities
-                    .Fields("CURRENTYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
-                            "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
-                            "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'CLOSED')" &
-                            " And Year(SO.OrderDate) = YEAR(GetDate())" &
-                            " And SOI.QUANTITY <> 0" &
-                            " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
-                            " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
+                    '.Fields("CURRENTYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
+                    '        "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
+                    '        "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'CLOSED')" &
+                    '        " And Year(SO.OrderDate) = YEAR(GetDate())" &
+                    '        " And SOI.QUANTITY <> 0" &
+                    '        " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
+                    '        " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
 
-                    .Fields("PREVIOUSYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
-                            "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
-                            "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'CLOSED')" &
-                            " And Year(SO.OrderDate) = YEAR(GetDate()) - 1" &
-                            " And SOI.QUANTITY <> 0" &
-                            " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
-                            " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
+                    '.Fields("PREVIOUSYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
+                    '        "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
+                    '        "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'CLOSED')" &
+                    '        " And Year(SO.OrderDate) = YEAR(GetDate()) - 1" &
+                    '        " And SOI.QUANTITY <> 0" &
+                    '        " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
+                    '        " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
 
                     If GetSalesHistoryByIndex(_AccountId, txtSKU.Text, LastOrder, LastOrder2, LastOrder3) = "SUCCESS" Then
                         .Fields("LASTORDER").Value = LastOrder
@@ -1486,11 +1466,67 @@ Public Class AddEditOrderProduct
             objRS.Close()
             objRS = Nothing ' Clean up
         Catch ex As Exception
+            'MsgBox("There was a problem " & ex.Message)
 
         End Try
 
 
     End Sub
+    Private Sub Process_CleanUpCorruptSalesItems(ByVal SalesOrderItemId As String)
+
+        Dim i As Integer = 0
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim ID As String
+
+
+        Dim SQL As String = "Select SALESORDERITEMSID  from sysdba.SALESORDERITEMS WHERE SALESORDERITEMSID='" & SalesOrderItemId & "'"
+
+        Try
+            objConn.Open(My.Settings.SLXConnectionString) 'NOTE Uses Native Client we don't want to Sync This
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(SQL, objConn)
+
+                For i = 0 To .RecordCount - 1          ' Loop
+                    If Not (.BOF And .EOF) Then        ' Check not at end/beginning
+                        .Delete()
+
+                        .MoveNext()
+                        Console.WriteLine("Clean SalesItem " & i)
+
+                        If i = 2000 Then ' Max 2000 Items cleans
+                            Console.WriteLine("Reached Limit of 2000 Cleaned Items")
+                            Exit For
+                        End If
+                    End If
+
+                Next
+
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
+
+
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            'Call LogErrors(PROJECTNAME, "SalesOrderItems Clean-up ", ex.Message, EventLogEntryType.Error)
+            'Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            '_hasErrors = True 'Log Errors
+            'Console.WriteLine(ex.Message)
+        Finally
+            If objConn.State = ConnectionState.Open Then objConn.Close()
+        End Try
+        objConn = Nothing
+    End Sub
+
+
+
 
     Function GetSalesHistoryByIndex(ByVal Accountid As String, ByVal SKU As String, ByRef Index1 As String, ByRef Index2 As String, ByRef Index3 As String)
 
@@ -1515,6 +1551,7 @@ Public Class AddEditOrderProduct
         Dim objRS As New ADODB.Recordset
         Dim i As Integer = 0
         Dim returnValue = "None"
+        Dim myQTY As String
 
         Try
             objConn.Open(My.Settings.SLXConnectionString)
@@ -1531,17 +1568,17 @@ Public Class AddEditOrderProduct
                         '.Fields("OPENQTY").Value = MyDataRow("OPENQTY")
                         Dim OrderDate
                         OrderDate = CDate(.Fields("ORDERDATE").Value)
-
+                        myQTY = CDbl(.Fields("Qty").Value).ToString("####")
                         If (i = 0) Then
-                            Index1 = MonthName(Month(OrderDate), 1) & " " & Microsoft.VisualBasic.DateAndTime.Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & .Fields("Qty").Value
+                            Index1 = MonthName(Month(OrderDate), 1) & " " & Microsoft.VisualBasic.DateAndTime.Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & myQTY
                             returnValue = "Success"
                         End If
                         If (i = 1) Then
-                            Index2 = MonthName(Month(OrderDate), 1) & " " & Microsoft.VisualBasic.DateAndTime.Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & .Fields("Qty").Value
+                            Index2 = MonthName(Month(OrderDate), 1) & " " & Microsoft.VisualBasic.DateAndTime.Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & myQTY
                             returnValue = "Success"
                         End If
                         If (i = 2) Then
-                            Index3 = MonthName(Month(OrderDate), 1) & " " & Microsoft.VisualBasic.DateAndTime.Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & .Fields("Qty").Value
+                            Index3 = MonthName(Month(OrderDate), 1) & " " & Microsoft.VisualBasic.DateAndTime.Day(OrderDate) & "/" & Year(OrderDate) & " Qty:" & myQTY
                             returnValue = "Success"
                         End If
                         If (i > 2) Then
