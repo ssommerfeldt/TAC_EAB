@@ -382,7 +382,7 @@ Public Class AddEditOrderProduct
         'Call RefreshSODetailView()
         'Me.RaiseSalesLogixCallbackEvent("EAB", "RefreshClient")
         '        
-        SlxApplication.BasicFunctions.ShowDetails("SALESORDER", _SalesOrderId)
+        'SlxApplication.BasicFunctions.ShowDetails("SALESORDER", _SalesOrderId)
         SlxApplication.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
         'SlxApplication.BringToFront()
         Me.BringToFront()

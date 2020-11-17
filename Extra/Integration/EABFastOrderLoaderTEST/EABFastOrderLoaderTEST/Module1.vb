@@ -42,6 +42,7 @@ Module Module1
         ' Step 3.  Update SalesHistory
         '====================================================================================
         SetDisconnectedDataFlag(SalesOrderID, UserId, "T")
+
         Dim Application As New SLXCOMInterop.SlxApplication
         Application.BringToFront()
         Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
