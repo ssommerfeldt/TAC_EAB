@@ -25,6 +25,7 @@ Public Class SyncProducts
         ' Step 2.  Delete all Existing Products Via Provider
         '=============================================================================
         'DeleteAll_Products()
+        'Me.Show()
         Process_RemoveSalesItems()
         '============================================================================
         ' Close WorkGroup Logs If you Can 
@@ -42,7 +43,8 @@ Public Class SyncProducts
         'Me.RaiseSalesLogixCallbackEvent("EAB", "RefreshClient")
         Button1.Visible = True
         lblFinalMessage.Visible = True
-        SlxApplication.BasicFunctions.ShowDetails("SALESORDER", _SalesOrderId)
+
+        'SlxApplication.BasicFunctions.ShowDetails("SALESORDER", _SalesOrderId)
         SlxApplication.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
 
         Me.Close()  ' Close the form
