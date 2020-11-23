@@ -24,7 +24,8 @@ Public Class SyncProducts
         '============================================================================
         ' Step 2.  Delete all Existing Products Via Provider
         '=============================================================================
-        DeleteAll_Products()
+        'DeleteAll_Products()
+        Process_RemoveSalesItems()
         '============================================================================
         ' Close WorkGroup Logs If you Can 
         '=============================================================================
@@ -88,25 +89,77 @@ Public Class SyncProducts
         Return ds 'Return the Dataset
     End Function
 
-    Sub DeleteAll_Products()
-        'create the connection
-        Dim conn As New OleDbConnection(My.Settings.SLXConnectionString)
+    'Sub DeleteAll_Products()
+    '    'create the connection
+    '    Dim conn As New OleDbConnection(My.Settings.SLXConnectionString)
+    '    Try
+    '        'open connection
+    '        conn.Open()
+    '        'create the command and call ExecuteScalar to get the single result
+    '        ' DO NOT USE THIS AS IT HAS POTENTIAL TO MESS THINGS UP 
+    '        Dim sql As String = "DELETE FROM SYSDBA.SALESORDERITEMS WHERE SALESORDERID ='" & _CurrentID & "'"
+    '        Dim cmd As New OleDbCommand(sql, conn)
+    '        cmd.ExecuteNonQuery()
+
+
+    '    Catch ex As Exception
+
+    '    Finally
+    '        conn.Dispose()
+    '        conn = Nothing
+    '    End Try
+    'End Sub
+    Private Sub Process_RemoveSalesItems()
+
+        Dim i As Integer = 0
+        Dim objConn As New ADODB.Connection()
+        Dim objRS As New ADODB.Recordset
+        Dim ID As String
+
+
+        Dim SQL As String = "Select SALESORDERITEMSID FROM SYSDBA.SALESORDERITEMS WHERE SALESORDERID ='" & _CurrentID & "'"
+
         Try
-            'open connection
-            conn.Open()
-            'create the command and call ExecuteScalar to get the single result
-            Dim sql As String = "DELETE FROM SYSDBA.SALESORDERITEMS WHERE SALESORDERID ='" & _CurrentID & "'"
-            Dim cmd As New OleDbCommand(sql, conn)
-            cmd.ExecuteNonQuery()
+            objConn.Open(My.Settings.SLXConnectionString) ' This Should Sync
+            With objRS
+                .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+                .CursorType = ADODB.CursorTypeEnum.adOpenDynamic
+                .LockType = ADODB.LockTypeEnum.adLockOptimistic
+                .Open(SQL, objConn)
+                ProgressBar1.Maximum = .RecordCount
+                For i = 0 To .RecordCount - 1          ' Loop
+                    If Not (.BOF And .EOF) Then        ' Check not at end/beginning
+                        .Delete()
+
+                        .MoveNext()
+                        ProgressBar1.PerformStep()
+                        'Console.WriteLine("Clean SalesItem " & i)
+
+
+                    End If
+
+                Next
+
+
+                .UpdateBatch()
+                .Close()
+            End With
+
+
 
 
         Catch ex As Exception
-
+            'MsgBox(ex.Message)
+            'Call LogErrors(PROJECTNAME, "SalesOrderItems Clean-up ", ex.Message, EventLogEntryType.Error)
+            'Add_TACSyncJobERROR(ex, slXLogHeaderID)
+            '_hasErrors = True 'Log Errors
+            'Console.WriteLine(ex.Message)
         Finally
-            conn.Dispose()
-            conn = Nothing
+            If objConn.State = ConnectionState.Open Then objConn.Close()
         End Try
+        objConn = Nothing
     End Sub
+
 
     Public Sub ProcessSalesOrderItems(ByVal ds As DataSet)
         Dim table As DataTable = ds.Tables(0)
