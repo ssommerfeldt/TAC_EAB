@@ -1396,7 +1396,7 @@ Public Class AddEditOrderProduct
                     .Fields("CREATEDATE").Value = Now
                     .Fields("MODIFYUSER").Value = SlxApplication.BasicFunctions.CurrentUserID
                     .Fields("MODIFYDATE").Value = Now
-                    .Fields("PRODUCT").Value = _ProductName 'lueProduct.Text
+
                     '.Fields("PROGRAM").Value =""
                     .Fields("PRICE").Value = RoundUp(CDbl(CheckEmpty(ListPrice, 0)), 2)
                     .Fields("QUANTITY").Value = CDbl(Quantity)
@@ -1430,29 +1430,37 @@ Public Class AddEditOrderProduct
                     .Fields("ORIGPRODUCTPRICE").Value = _OriginalProductPrice
                     .Fields("ORIGPRODUCTDISCOUNT").Value = _OriginalMargin
 
-                    'Add the current and previous sales quantities
-                    '.Fields("CURRENTYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
-                    '        "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
-                    '        "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'CLOSED')" &
-                    '        " And Year(SO.OrderDate) = YEAR(GetDate())" &
-                    '        " And SOI.QUANTITY <> 0" &
-                    '        " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
-                    '        " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
+                    '========================================================
+                    ' December 14, 2020 Fixes
+                    '=========================================================
+                    Dim StockCardId As String = GetField("STOCKCARDITEMSID", "STOCKCARDITEMS", "ACCOUNTID='" & _AccountId & "' AND PRODUCTID ='" & _ProductId & "'", My.Settings.SLXConnectionString)
+                    .Fields("TACSTOCKCARDITEMID").Value = StockCardId
+                    .Fields("PRODUCT").Value = GetField("NAME", "PRODUCT", "PRODUCTID='" & _ProductId & "'", My.Settings.SLXConnectionString)
+                    'Add the current And previous sales quantities
+                    .Fields("CURRENTYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
+                        "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
+                        "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'CLOSED')" &
+                        " And Year(SO.OrderDate) = YEAR(GetDate())" &
+                        " And SOI.QUANTITY <> 0" &
+                        " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
+                        " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
 
-                    '.Fields("PREVIOUSYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
-                    '        "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
-                    '        "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'CLOSED')" &
-                    '        " And Year(SO.OrderDate) = YEAR(GetDate()) - 1" &
-                    '        " And SOI.QUANTITY <> 0" &
-                    '        " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
-                    '        " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
+                    .Fields("PREVIOUSYEARSALESQTY").Value = GetField("IsNull(Sum(SOI.QUANTITY), 0) As Quantity",
+                        "sysdba.SALESORDERITEMS As SOI Inner Join sysdba.SALESORDER As SO On SO.SALESORDERID = SOI.SALESORDERID",
+                        "(UPPER(SO.STATUS) = 'TRANSMITTED TO ACCOUNTING' OR UPPER(SO.STATUS) = 'Closed')" &
+                        " And Year(SO.OrderDate) = YEAR(GetDate()) - 1" &
+                        " And SOI.QUANTITY <> 0" &
+                        " And SOI.ACTUALID = '" & txtSKU.Text & "'" &
+                        " And SO.ACCOUNTID = '" & _AccountId & "'", My.Settings.SLXConnectionString)
 
-                    If GetSalesHistoryByIndex(_AccountId, txtSKU.Text, LastOrder, LastOrder2, LastOrder3) = "SUCCESS" Then
+                    If GetSalesHistoryByIndex(_AccountId, txtSKU.Text, LastOrder, LastOrder2, LastOrder3) = "Success" Then
                         .Fields("LASTORDER").Value = LastOrder
                         .Fields("LASTORDER2").Value = LastOrder2
                         .Fields("LASTORDER3").Value = LastOrder3
 
                     End If
+
+
 
                     .Fields("TACACCOUNTID").Value = _AccountId
                     .Fields("ACCOUNTID").Value = _AccountId
@@ -1854,6 +1862,19 @@ Public Class AddEditOrderProduct
             txtQuantity.Select()
             'Call CreateRuntimeDataGrid(Productid, dgHistory)
             CreateRunTimeDatagrid()
+        End If
+    End Sub
+
+    Private Sub txtSKU_KeyDown(sender As Object, e As KeyEventArgs) Handles txtSKU.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            txtSKU_Leave(sender, e)
+        End If
+    End Sub
+
+    Private Sub txtUPC_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUPC.KeyDown
+
+        If e.KeyCode = Keys.Enter Then
+            txtUPC_Leave(sender, e)
         End If
     End Sub
 
