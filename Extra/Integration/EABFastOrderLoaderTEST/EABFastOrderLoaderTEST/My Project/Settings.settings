@@ -3,11 +3,11 @@
   <Profiles />
   <Settings>
     <Setting Name="SLXNative" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Provider=SQLNCLI11.1;Password=SLXMa$t3r;Persist Security Info=True;User ID=sa;Initial Catalog=SLXRemote;Data Source=DESKTOP-B36TG73\SalesLogix;Initial File Name="";Server SPN=""
+      <Value Profile="(Default)">Provider=SQLNCLI11.1;Password=devel0pment!;Persist Security Info=True;User ID=sa;Initial Catalog=SLXRemote;Data Source=EAB841;Initial File Name="";Server SPN=""
 </Value>
     </Setting>
     <Setting Name="SLXConnection" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Provider=SLXOLEDB.1;Password=nt;Persist Security Info=True;User ID=nettest;Initial Catalog=SLXREMOTE;Data Source=DESKTOP-B36TG73;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"
+      <Value Profile="(Default)">Provider=SLXOLEDB.1;Password=wpg;Persist Security Info=True;User ID=wpg;Initial Catalog=SLXREMOTE;Data Source=EAB841;Extended Properties="PORT=1706;LOG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"
 </Value>
     </Setting>
     <Setting Name="strSQLFROM" Type="System.String" Scope="User">
