@@ -57,7 +57,8 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Password=devel0pment!;Persist Security Info=True;User ID=sa;"& _ 
-            "Initial Catalog=SLXRemote;Data Source=EAB841;Initial File Name="""";Server SPN="""""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
+            "Initial Catalog=SalesLogix_Production_unicode;Data Source=EAB841;Initial File Na"& _ 
+            "me="""";Server SPN="""""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
         Public Property SLXNative() As String
             Get
                 Return CType(Me("SLXNative"),String)
@@ -69,9 +70,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password=wpg;Persist Security Info=True;User ID=wpg;Initial C"& _ 
-            "atalog=SLXREMOTE;Data Source=EAB841;Extended Properties=""PORT=1706;LOG=ON;CASEIN"& _ 
-            "SENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password="""";Persist Security Info=True;User ID=admin;Initial "& _ 
+            "Catalog=SALESLOGIX;Data Source=EAB841;Extended Properties=""PORT=1706;LOG=ON;CASE"& _ 
+            "INSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
         Public Property SLXConnection() As String
             Get
                 Return CType(Me("SLXConnection"),String)

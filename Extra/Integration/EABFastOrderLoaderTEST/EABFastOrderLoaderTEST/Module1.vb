@@ -36,27 +36,47 @@ Module Module1
         Dim strInsertSQL As String = GetInsertQuerySQL(Accountid, SalesOrderID, UserId, isAllStockCards)
         ExecuteBulkLoadInsert(strInsertSQL)
 
-
-
         '===================================================================================
         ' Step 3.  Update SalesHistory
         '====================================================================================
         'SetDisconnectedDataFlag(SalesOrderID, UserId, "T")
         ' ssommerfeldt March 9 2021 remove the Disconnected Data Functionality
 
-        Dim Application As New SLXCOMInterop.SlxApplication
-        Application.BringToFront()
-        Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
         ProcessSalesHistory(SalesOrderID, Accountid)
+        Dim Application As New SLXCOMInterop.SlxApplication
+        Try
+            Application.BringToFront()
+            Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
+
+        Catch ex As Exception
+
+        End Try
+
+
 
         '=====================================
         ' ReSYNC Disconnected Data Client
         '=====================================
+
+        Try
+            Application.BringToFront()
+        Catch ex As Exception
+
+        End Try
+
         Console.WriteLine("Preparing to Reconnect CRM Disconnected Data")
         ConnectDisconnectedData(SalesOrderID)
         SetDisconnectedDataFlag(SalesOrderID, UserId, "F") ' ssommerfeldt March 9, 2021 remove Disconected data functionality
-        Application.BringToFront()
-        Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
+        Console.WriteLine("Refreshing Client.....")
+        Try
+            Application.BringToFront()
+            Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
+
+        Catch ex As Exception
+
+        End Try
+
+
         ' Set Disconnected Flag
 
         ' Application.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
@@ -496,39 +516,63 @@ Module Module1
         Dim _SalesOrderId As String = SalesOrderId
 
         '===========================================================================
-        ' Step 1. Get all Products into Disconnected Dataset
+        ' Step 1. Get all Products into Disconnected Dataset THEN Delete and add them again.
         '===========================================================================
         Dim ds As New DataSet()
-        ds = GetProductDataSet(_SalesOrderId)
+        'create the connection
+        Dim conn As New OleDbConnection(My.Settings.SLXConnection)
+        Dim MyAllItemsds As New DataSet()
+        Try
+            'open connection
+            conn.Open()
+            'create the DataAdapter. it will internally create a command object
+            Dim SQL As String = "Select * from sysdba.SALESORDERITEMS"
+            SQL = SQL & " Where SALESORDERID = '" & SalesOrderId & "'"
+            'and  QUANTITY <> 0" ' Remove the ability to make the Sync Smaller
 
-        '============================================================================
-        ' Step 2.  Delete all Existing Products Via Provider
-        '=============================================================================
-        'DeleteAll_Products()
-        'Me.Show()
-        'Process_RemoveSalesItems()
-        '============================================================================
-        ' Close WorkGroup Logs If you Can 
-        '=============================================================================
-        'Me.RaiseSalesLogixCallbackEvent("EAB", "RefreshClient")
+            Dim da As New OleDbDataAdapter(SQL, conn)
 
-        '=============================================================================
-        ' ReAdd All Products from Disconnected Dataset using Provider
-        '==============================================================================
-        ProcessSalesOrderItems(ds)
-        'SetDisconnectedDataFlag(_SalesOrderId, "F")
-        '============================================================
-        ' Refresh Make Ok Button Visible / Complete Label visible.
-        '=============================================================
-        'Me.RaiseSalesLogixCallbackEvent("EAB", "RefreshClient")
-        'Button1.Visible = True
-        'lblFinalMessage.Visible = True
+            'now create the DataSet and use the adapter to fill it
 
-        'SlxApplication.BasicFunctions.ShowDetails("SALESORDER", _SalesOrderId)
-        SlxApplication.BasicFunctions.DoInvoke("Function", "View:RefreshCurrent")
+            da.Fill(MyAllItemsds)
+
+            'pull out the created DataTable to work with
+            'our table is the first and only one in the tables collection
+            Dim table As DataTable = MyAllItemsds.Tables(0)
+
+            'iterate through the rows in the table's Rows collection
+            Dim row As DataRow
+            Dim i As Integer
+            Dim iRecordCount As Integer
+            iRecordCount = table.Rows.Count
+            i = 0
+            For Each row In table.Rows
+                'ListBox1.Items.Add(row("account").ToString())
+                ds = GetProductDataSet(row("SALESORDERITEMSID").ToString())
+                '=============================================================================
+                ' ReAdd All Products from Disconnected Dataset using Provider
+                '==============================================================================
+                ProcessSalesOrderItems(ds)
+                Console.WriteLine("Resync " & i & " of " & iRecordCount)
+                'ProgressBar1.PerformStep()
+                i = i + 1
+            Next
+
+            'bind the table to a grid
+            'DataGrid1.DataSource = table
+
+        Catch ex As Exception
+            'MessageBox.Show("An error occurred: " & ex.Message, "Error")
+        Finally
+            conn.Dispose()
+            conn = Nothing
+        End Try
+
+
+
     End Sub
 
-    Function GetProductDataSet(ByVal SalesOrderId As String) As DataSet
+    Function GetProductDataSet(ByVal SalesOrderItemsId As String) As DataSet
 
         'create the connection
         Dim conn As New OleDbConnection(My.Settings.SLXConnection)
@@ -538,7 +582,7 @@ Module Module1
             conn.Open()
             'create the DataAdapter. it will internally create a command object
             Dim SQL As String = "Select * from sysdba.SALESORDERITEMS"
-            SQL = SQL & " Where SALESORDERID = '" & SalesOrderId & "'"
+            SQL = SQL & " Where SALESORDERITEMSID = '" & SalesOrderItemsId & "'"
             'and  QUANTITY <> 0" ' Remove the ability to make the Sync Smaller
 
             Dim da As New OleDbDataAdapter(SQL, conn)
@@ -577,16 +621,13 @@ Module Module1
         'ProgressBar1.Maximum = table.Rows.Count
         'ProgressBar1.Step = 1
         'ProgressBar1.Visible = True
-        Dim i As Integer
-        Dim iRecordCount As Integer
-        iRecordCount = table.Rows.Count
+
         For Each row In table.Rows
-            i = 0
+
             Try
                 Process_RemoveSalesItem(row("SALESORDERITEMSID").ToString())
                 AddEditSALESORDERITEM(row, row("SALESORDERITEMSID").ToString())
-                Console.WriteLine("Resync " & i & " of " & iRecordCount)
-                'ProgressBar1.PerformStep()
+
             Catch ex As Exception
 
             End Try
