@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -56,9 +56,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Password=SLXMa$t3r;Persist Security Info=True;User ID=sa;Ini"& _ 
-            "tial Catalog=SLXRemote;Data Source=DESKTOP-B36TG73\SalesLogix;Initial File Name="& _ 
-            """"";Server SPN="""""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11.1;Password=devel0pment!;Persist Security Info=True;User ID=sa;"& _ 
+            "Initial Catalog=SalesLogix_Production_unicode;Data Source=EAB841;Initial File Na"& _ 
+            "me="""";Server SPN="""""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
         Public Property SLXNative() As String
             Get
                 Return CType(Me("SLXNative"),String)
@@ -70,9 +70,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password=nt;Persist Security Info=True;User ID=nettest;Initia"& _ 
-            "l Catalog=SLXREMOTE;Data Source=DESKTOP-B36TG73;Extended Properties=""PORT=1706;L"& _ 
-            "OG=ON;CASEINSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SLXOLEDB.1;Password="""";Persist Security Info=True;User ID=admin;Initial "& _ 
+            "Catalog=SALESLOGIX;Data Source=EAB841;Extended Properties=""PORT=1706;LOG=ON;CASE"& _ 
+            "INSENSITIVEFIND=ON;AUTOINCBATCHSIZE=1;SVRCERT=;"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
         Public Property SLXConnection() As String
             Get
                 Return CType(Me("SLXConnection"),String)
