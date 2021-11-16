@@ -36,6 +36,8 @@ Module Module1
                 Exit Sub
 
             End If
+            'Call Process_ChangedProducts() ''''''' TESTING
+
             'Call GetRWPass()
             'Call GetUserID()
             'Call GetPartsHandlerData("Account")
@@ -738,6 +740,7 @@ Module Module1
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            objCMD.CommandTimeout = 500 'ssommerfeldt NOV 16, 2021  This query is timing out so no Changes are being processed
             Dim dt As New DataTable()
             dt.Load(objCMD.ExecuteReader())
 
