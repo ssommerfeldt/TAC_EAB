@@ -954,7 +954,7 @@ Module Module1
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
-
+            objCMD.CommandTimeout = 500 'ssommefeldt Nov16 2021 needed as we are timing out
             objCMD.ExecuteNonQuery()
         Catch ex As Exception
             'MsgBox(ex.Message)

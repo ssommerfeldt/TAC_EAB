@@ -590,6 +590,7 @@ Module Module1
 
             'MsgBox(SQL)
             Dim objCMD As OleDbCommand = New OleDbCommand(SQL, objConn)
+            objCMD.CommandTimeout = 500
             Dim dt As New DataTable()
             dt.Load(objCMD.ExecuteReader())
 
